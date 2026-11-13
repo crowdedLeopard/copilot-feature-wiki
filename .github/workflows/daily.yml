@@ -74,6 +74,8 @@ jobs:
 
       - name: Commit curated changes
         id: commit
+        # Pushes to main only rebuild the site; the scheduled and manual runs own the curation commits.
+        if: github.event_name != 'push'
         run: |
           git config user.name "release-ledger[bot]"
           git config user.email "release-ledger[bot]@users.noreply.github.com"
