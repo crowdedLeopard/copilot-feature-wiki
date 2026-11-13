@@ -1,0 +1,41 @@
+{
+  "name": "copilot-feature-wiki",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Release Ledger: an LLM-maintained wiki of Microsoft Copilot, Power Platform and Modern Work features for service owners and administrators.",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "ingest": "node pipeline/ingest.mjs",
+    "compile": "node pipeline/compile.mjs",
+    "lint:wiki": "node pipeline/lint.mjs",
+    "index:wiki": "node pipeline/index.mjs",
+    "pdf": "node pipeline/pdf.mjs",
+    "daily": "node pipeline/ingest.mjs && node pipeline/compile.mjs && node pipeline/lint.mjs && node pipeline/index.mjs && node pipeline/digest.mjs",
+    "digest": "node pipeline/digest.mjs",
+    "screenshots": "node pipeline/screenshots.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "@astrojs/markdown-satteri": "^0.4.10",
+    "@astrojs/rss": "^4.0.19",
+    "@astrojs/sitemap": "^3.7.5",
+    "@fontsource-variable/newsreader": "^5.3.0",
+    "@fontsource/ibm-plex-mono": "^5.3.0",
+    "@fontsource/ibm-plex-sans": "^5.3.0",
+    "astro": "^7.4.12",
+    "gray-matter": "^4.0.3",
+    "js-yaml": "^5.5.0",
+    "minisearch": "^7.2.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@anthropic-ai/sdk": "^1.8.0",
+    "fast-xml-parser": "^5.12.1",
+    "playwright": "^1.63.0"
+  }
+}

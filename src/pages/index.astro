@@ -1,0 +1,125 @@
+---
+import Base from '../layouts/Base.astro';
+import FeatureRow from '../components/FeatureRow.astro';
+import SectionHead from '../components/SectionHead.astro';
+import Badge from '../components/Badge.astro';
+import { allFeatures, allConcepts, allDigests, byDesk, briefedIds, recentCatalog, stats, catalog } from '../lib/data';
+import { SITE, DESKS, href, featureUrl, deskUrl, conceptUrl, formatDate, shortRoadmapDate } from '../lib/site';
+
+const features = await allFeatures();
+const concepts = await allConcepts();
+const digests = await allDigests();
+const latestDigest = digests[0];
+const actNow = features.filter((f) => f.data.action === 'act-now');
+const prepare = features.filter((f) => f.data.action === 'prepare');
+const desks = byDesk(features);
+const briefed = briefedIds(features);
+const radar = recentCatalog(undefined, 120, 400).filter((i) => !briefed.has(i.id)).slice(0, 10);
+const latestUpdate = features.map((f) => f.data.updated).sort().at(-1) ?? '';
+const trackedByDesk = new Map<string, number>();
+for (const i of catalog.items) if (i.desk) trackedByDesk.set(i.desk, (trackedByDesk.get(i.desk) ?? 0) + 1);
+const tracked = stats.tracked.toLocaleString('en-GB');
+---
+
+<Base title="Home" kind="home">
+  <div class="wrap">
+    <div class="dateline">
+      <span>Issue of <strong>{formatDate(latestUpdate, { long: true })}</strong></span>
+      <span><strong>{features.length}</strong> briefings</span>
+      <span><strong>{actNow.length}</strong> need action now</span>
+      <span><strong>{tracked}</strong> roadmap items tracked</span>
+      <span>Refreshed daily at 06:00 UTC</span>
+    </div>
+
+    <section class="hero">
+      <h1 class="display">What changed in Microsoft Copilot, Power Platform and Modern Work, and what to do about it.</h1>
+      <p class="standfirst">
+        Each briefing rates a feature for risk, cost and impact, states its licensing and scope, and sets out the governance
+        steps an administrator or service owner should take, with Microsoft's own documentation cited beside it.
+      </p>
+      <div class="hero__actions">
+        <a class="btn" href={href('/features/')}>Browse all briefings</a>
+        <a class="btn btn--outline" href={href('/features/?action=act-now')}>Only what needs action</a>
+        <a class="btn btn--outline" href={href('/about/')}>How to read the ratings</a>
+      </div>
+    </section>
+
+    <SectionHead title="Act now" more={{ href: href('/features/?action=act-now'), label: 'All act-now briefings' }} />
+    <p class="muted small" style="margin:-0.4rem 0 0.6rem">On by default, or close to a rollout date. Configure the controls before the date arrives.</p>
+    <ul class="ledger">
+      {actNow.map((f) => <FeatureRow entry={f} />)}
+    </ul>
+
+    <SectionHead title="Prepare" more={{ href: href('/features/?action=prepare'), label: 'All prepare briefings' }} />
+    <ul class="ledger">
+      {prepare.slice(0, 5).map((f) => <FeatureRow entry={f} compact />)}
+    </ul>
+
+    <SectionHead title="By desk" more={{ href: href('/desks/'), label: 'All desks' }} />
+    <div class="desk-grid">
+      {DESKS.map((d) => {
+        const list = desks.get(d.id) ?? [];
+        return (
+          <div class="desk-card">
+            <h3><a href={deskUrl(d.id)}>{d.label}</a> <span class="count">{list.length} briefed · {(trackedByDesk.get(d.id) ?? 0).toLocaleString('en-GB')} tracked</span></h3>
+            <p>{d.blurb}</p>
+            <ul>
+              {list.slice(0, 4).map((f) => (
+                <li><a href={featureUrl(f.data.slug)}>{f.data.title}</a></li>
+              ))}
+              {list.length === 0 && <li class="muted">No briefings yet. See the <a href={href(`/radar/${d.id}/`)}>radar</a> for tracked items.</li>}
+            </ul>
+          </div>
+        );
+      })}
+    </div>
+
+    <div class="two-col">
+      <div>
+        <SectionHead title="This week" more={{ href: href('/digests/'), label: 'All weekly digests' }} />
+        {latestDigest ? (
+          <article class="panel">
+            <h3>Week of {formatDate(latestDigest.data.weekStart, { long: true })}</h3>
+            <p class="row__title" style="font-size:1.35rem"><a href={href(`/digests/${latestDigest.data.slug}/`)} style="color:var(--ink);text-decoration:none">{latestDigest.data.title}</a></p>
+            <p class="muted" style="margin:0.4rem 0 0.8rem">{latestDigest.data.summary}</p>
+            <div class="stats">
+              <div class="stat"><b>{latestDigest.data.counts.updated}</b><span>updated</span></div>
+              <div class="stat"><b>{latestDigest.data.counts.actNow}</b><span>act now</span></div>
+              <div class="stat"><b>{latestDigest.data.counts.highRisk}</b><span>high risk</span></div>
+              <div class="stat"><b>{latestDigest.data.counts.statusChanges}</b><span>status changes</span></div>
+            </div>
+          </article>
+        ) : <p class="muted">The first weekly digest will appear after the next daily run.</p>}
+
+        <SectionHead title="Concepts" more={{ href: href('/concepts/'), label: 'All concepts' }} />
+        <ul class="related">
+          {concepts.map((c) => (
+            <li><a href={conceptUrl(c.data.slug)}>{c.data.title}</a><span class="meta">{c.data.summary}</span></li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <SectionHead title="On the radar" more={{ href: href('/radar/'), label: 'Full radar' }} />
+        <p class="muted small" style="margin:-0.4rem 0 0.6rem">Recently changed roadmap items that do not have a briefing yet. The daily run writes the highest-priority ones first.</p>
+        <table class="radar">
+          <tbody>
+            {radar.map((i) => (
+              <tr>
+                <td class="t"><a href={i.roadmapUrl} rel="noopener">{i.title}</a><br /><span class="muted small">{i.products.slice(0, 2).join(', ')} · <Badge status={i.statusKey} /> · {shortRoadmapDate(i.targetDate)}</span></td>
+                <td class="d">{formatDate(i.modified)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</Base>
+
+<style>
+  .hero { padding: 2.5rem 0 2rem; border-bottom: 1px solid var(--rule); }
+  .hero h1 { max-width: 22ch; }
+  .hero__actions { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 1.6rem; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+  @media (max-width: 900px) { .two-col { grid-template-columns: 1fr; } }
+</style>

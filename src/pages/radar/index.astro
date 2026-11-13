@@ -1,0 +1,64 @@
+---
+import Base from '../../layouts/Base.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import Badge from '../../components/Badge.astro';
+import { allFeatures, briefedIds, catalog, recentCatalog } from '../../lib/data';
+import { DESKS, href, featureUrl, formatDate, shortRoadmapDate } from '../../lib/site';
+
+const features = await allFeatures();
+const briefed = briefedIds(features);
+const byDesk = new Map<string, number>();
+for (const i of catalog.items) if (i.desk) byDesk.set(i.desk, (byDesk.get(i.desk) ?? 0) + 1);
+const recent = recentCatalog(undefined, 30, 60);
+const statusCounts = new Map<string, number>();
+for (const i of catalog.items) statusCounts.set(i.statusKey, (statusCounts.get(i.statusKey) ?? 0) + 1);
+---
+
+<Base title="Radar" description="Every in-scope Microsoft 365 Roadmap item we track, by desk, with the ones briefed so far." current="radar">
+  <div class="wrap">
+    <div class="article-head" style="padding-bottom:1rem">
+      <div class="eyebrow"><span>Radar</span><span class="sep"></span><span>Snapshot {formatDate(catalog.generated)}</span></div>
+      <h1 class="display">Roadmap radar</h1>
+      <p class="standfirst">{catalog.count.toLocaleString('en-GB')} in-scope items from the Microsoft 365 Roadmap. A briefing is written when an item is new, changes status, or is edited by Microsoft, highest impact first.</p>
+      <div class="stats" style="margin-top:1.5rem">
+        <div class="stat"><b>{catalog.count.toLocaleString('en-GB')}</b><span>tracked</span></div>
+        <div class="stat"><b>{features.length}</b><span>briefed</span></div>
+        {['in-development', 'rolling-out', 'launched'].map((s) => <div class="stat"><b>{(statusCounts.get(s) ?? 0).toLocaleString('en-GB')}</b><span>{s.replace('-', ' ')}</span></div>)}
+      </div>
+    </div>
+
+    <SectionHead title="By desk" />
+    <table class="radar">
+      <thead><tr><th>Desk</th><th>Tracked</th><th>Briefed</th><th></th></tr></thead>
+      <tbody>
+        {DESKS.map((d) => (
+          <tr>
+            <td class="t"><a href={href(`/radar/${d.id}/`)}>{d.label}</a><br /><span class="muted small">{d.blurb}</span></td>
+            <td class="d">{(byDesk.get(d.id) ?? 0).toLocaleString('en-GB')}</td>
+            <td class="d">{features.filter((f) => f.data.desk === d.id).length}</td>
+            <td class="d"><a href={href(`/radar/${d.id}/`)}>Open ↗</a></td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+
+    <SectionHead title="Changed in the last 30 days" />
+    <table class="radar">
+      <thead><tr><th>Roadmap item</th><th>Status</th><th>Target</th><th>Modified</th><th>Briefing</th></tr></thead>
+      <tbody>
+        {recent.map((i) => {
+          const b = briefed.get(i.id);
+          return (
+            <tr>
+              <td class="t"><a href={i.roadmapUrl} rel="noopener">{i.title}</a><br /><span class="muted small">{i.products.slice(0, 3).join(', ')}</span></td>
+              <td><Badge status={i.statusKey} /></td>
+              <td class="d">{shortRoadmapDate(i.targetDate)}</td>
+              <td class="d">{formatDate(i.modified)}</td>
+              <td>{b ? <a class="briefed" href={featureUrl(b.data.slug)}>Read briefing</a> : <span class="muted small">Queued</span>}</td>
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
+  </div>
+</Base>

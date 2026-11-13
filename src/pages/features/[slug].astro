@@ -1,0 +1,135 @@
+---
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Facts from '../../components/Facts.astro';
+import Badge from '../../components/Badge.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import { allFeatures, allConcepts } from '../../lib/data';
+import { SITE, DESK_BY_ID, SOURCE_KIND, href, deskUrl, tagUrl, featureUrl, conceptUrl, formatDate, roadmapUrl, tagLabel, extractRationale, youtubeSearchUrl, learnSearchUrl } from '../../lib/site';
+
+export async function getStaticPaths() {
+  const features = await allFeatures();
+  return features.map((f) => ({ params: { slug: f.data.slug }, props: { entry: f } }));
+}
+
+const { entry } = Astro.props;
+const d = entry.data;
+const { Content, headings } = await render(entry);
+const features = await allFeatures();
+const concepts = await allConcepts();
+const desk = (DESK_BY_ID as Record<string, { label: string }>)[d.desk];
+const rationale = extractRationale(entry.body);
+const related = d.related
+  .map((slug) => {
+    const f = features.find((x) => x.data.slug === slug);
+    if (f) return { title: f.data.title, url: featureUrl(slug), meta: `Briefing · ${(DESK_BY_ID as any)[f.data.desk]?.label ?? f.data.desk} · ${f.data.action === 'act-now' ? 'Act now' : f.data.risk + ' risk'}` };
+    const c = concepts.find((x) => x.data.slug === slug);
+    if (c) return { title: c.data.title, url: conceptUrl(slug), meta: 'Concept' };
+    return null;
+  })
+  .filter(Boolean) as { title: string; url: string; meta: string }[];
+const inbound = features.filter((f) => f.data.related.includes(d.slug) && f.data.slug !== d.slug && !d.related.includes(f.data.slug));
+const toc = headings.filter((h) => h.depth === 2);
+const roadmap = roadmapUrl(d.roadmapId);
+const editUrl = `${SITE.repo}/edit/main/wiki/features/${d.slug}.md`;
+const pdfUrl = href(`/downloads/${d.slug}.pdf`);
+const mdUrl = href(`/features/${d.slug}.md`);
+const sources = d.sources.filter((s) => s.kind !== 'roadmap');
+const roadmapSource = d.sources.find((s) => s.kind === 'roadmap');
+---
+
+<Base title={d.title} description={d.summary} kind="article" current="features">
+  <article class="wrap">
+    <header class="article-head">
+      <div class="eyebrow">
+        <a href={deskUrl(d.desk)}>{desk?.label ?? d.desk}</a>
+        {d.roadmapId && <><span class="sep"></span><a href={roadmap!} rel="noopener">Roadmap {d.roadmapId}</a></>}
+        <span class="sep"></span><Badge status={d.status} />
+        <span class="sep"></span><span>Updated {formatDate(d.updated)}</span>
+        {d.confidence !== 'high' && <><span class="sep"></span><span title="How well the sources support this briefing">Confidence {d.confidence}</span></>}
+      </div>
+      <h1 class="display">{d.title}</h1>
+      <p class="standfirst">{d.summary}</p>
+      <Facts data={d} rationale={rationale} />
+    </header>
+
+    <div class="article">
+      <div class="article__body">
+        <div class="prose">
+          <Content />
+        </div>
+
+        <SectionHead title="Microsoft guidance and references" id="references" />
+        <ul class="sources">
+          {roadmapSource && (
+            <li><span class="kind">Roadmap</span><span><a href={roadmapSource.url} rel="noopener">{roadmapSource.title}</a><span class="url">{roadmapSource.url}</span></span></li>
+          )}
+          {sources.map((s) => (
+            <li><span class="kind">{(SOURCE_KIND as Record<string, string>)[s.kind] ?? s.kind}</span><span><a href={s.url} rel="noopener">{s.title}</a><span class="url">{s.url}</span></span></li>
+          ))}
+          <li><span class="kind">Search</span><span><a href={learnSearchUrl(d.title)} rel="noopener">Search Microsoft Learn for this feature</a></span></li>
+        </ul>
+
+        <SectionHead title="Videos" id="videos" />
+        {d.videos.length ? (
+          <ul class="sources">
+            {d.videos.map((v) => (
+              <li><span class="kind">{v.channel ?? 'Video'}</span><span><a href={v.url} rel="noopener">{v.title}</a><span class="url">{v.url}</span></span></li>
+            ))}
+          </ul>
+        ) : (
+          <p class="muted">No Microsoft video has been linked for this feature yet. <a href={youtubeSearchUrl(d.title)} rel="noopener">Search YouTube</a> for Microsoft Mechanics, Microsoft 365 Community and Power CAT sessions; the daily run adds a link when one is verified.</p>
+        )}
+
+        {(related.length > 0 || inbound.length > 0) && (
+          <>
+            <SectionHead title="Related" id="related" />
+            <ul class="related">
+              {related.map((r) => <li><a href={r.url}>{r.title}</a><span class="meta">{r.meta}</span></li>)}
+              {inbound.map((f) => <li><a href={featureUrl(f.data.slug)}>{f.data.title}</a><span class="meta">Links here · {(DESK_BY_ID as any)[f.data.desk]?.label ?? f.data.desk}</span></li>)}
+            </ul>
+          </>
+        )}
+
+        <SectionHead title="Tags" id="tags" />
+        <div class="chips">
+          {d.tags.map((t) => <a class="chip" href={tagUrl(t)}>{tagLabel(t)}</a>)}
+        </div>
+
+        <SectionHead title="Change log" id="changes" />
+        <ul class="changes" style="list-style:none;margin:0;padding:0">
+          {[...d.changes].reverse().map((c) => <li><time datetime={c.date}>{formatDate(c.date)}</time><span>{c.note}</span></li>)}
+          {d.roadmapModified && <li><time datetime={d.roadmapModified}>{formatDate(d.roadmapModified)}</time><span class="muted">Roadmap entry last modified by Microsoft</span></li>}
+        </ul>
+        <p class="small muted" style="margin-top:1.2rem">
+          Version {d.version} · created {formatDate(d.created)} · confidence {d.confidence}. This briefing was written from the sources above and is reviewed when the roadmap entry changes.
+          Spotted an error? <a href={editUrl} rel="noopener">Propose a change on GitHub</a>.
+        </p>
+      </div>
+
+      <aside class="article__aside no-print">
+        <nav class="panel toc" aria-label="On this page">
+          <h3>On this page</h3>
+          <ol>
+            {toc.map((h) => <li><a href={`#${h.slug}`}>{h.text}</a></li>)}
+            <li><a href="#references">Microsoft guidance and references</a></li>
+            <li><a href="#related">Related</a></li>
+          </ol>
+        </nav>
+        <div class="panel">
+          <h3>Download</h3>
+          <div class="downloads">
+            <a href={pdfUrl} download><span>Briefing as PDF</span><span class="ext">A4 · PDF</span></a>
+            <a href={mdUrl} download={`${d.slug}.md`}><span>Briefing as Markdown</span><span class="ext">Obsidian · MD</span></a>
+            {roadmap && <a href={roadmap} rel="noopener"><span>Microsoft 365 Roadmap entry</span><span class="ext">↗</span></a>}
+            <button class="btn-ghost" type="button" onclick="window.print()" style="justify-content:space-between"><span>Print this page</span><span class="ext mono">⌘P</span></button>
+          </div>
+        </div>
+        <div class="panel">
+          <h3>Products</h3>
+          <div class="chips">{d.products.map((p) => <span class="chip">{p}</span>)}</div>
+        </div>
+      </aside>
+    </div>
+  </article>
+</Base>

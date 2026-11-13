@@ -1,0 +1,35 @@
+---
+import Base from '../../layouts/Base.astro';
+import FeatureRow from '../../components/FeatureRow.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import { allFeatures, byDesk, catalog } from '../../lib/data';
+import { DESKS, href, deskUrl } from '../../lib/site';
+
+const features = await allFeatures();
+const desks = byDesk(features);
+const tracked = new Map<string, number>();
+for (const i of catalog.items) if (i.desk) tracked.set(i.desk, (tracked.get(i.desk) ?? 0) + 1);
+---
+
+<Base title="Desks" description="Briefings grouped by the team that owns them: agents, Power Platform, security, admin and billing, Copilot and Modern Work." current="desks">
+  <div class="wrap">
+    <div class="article-head" style="padding-bottom:1rem">
+      <div class="eyebrow"><span>Desks</span><span class="sep"></span><span>{DESKS.length} sections</span></div>
+      <h1 class="display">Desks</h1>
+      <p class="standfirst">Every roadmap item is filed under one desk, matched on Microsoft's product tags. Specific platforms win over the broad Copilot label.</p>
+    </div>
+    {DESKS.map((d) => {
+      const list = desks.get(d.id) ?? [];
+      return (
+        <section>
+          <SectionHead title={`${d.label} · ${list.length} briefed · ${(tracked.get(d.id) ?? 0).toLocaleString('en-GB')} tracked`} more={{ href: deskUrl(d.id), label: 'Open desk' }} />
+          <p class="muted" style="margin:-0.3rem 0 0.5rem">{d.blurb}</p>
+          <ul class="ledger">
+            {list.slice(0, 3).map((f) => <FeatureRow entry={f} compact showDesk={false} />)}
+            {list.length === 0 && <li class="row row--compact"><div></div><p class="muted" style="margin:0">No briefings yet. The <a href={href(`/radar/${d.id}/`)}>radar</a> lists what is tracked.</p></li>}
+          </ul>
+        </section>
+      );
+    })}
+  </div>
+</Base>

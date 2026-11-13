@@ -1,0 +1,33 @@
+---
+import Base from '../../layouts/Base.astro';
+import FeatureRow from '../../components/FeatureRow.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import { allFeatures, allConcepts, tagCounts } from '../../lib/data';
+import { href, conceptUrl, tagLabel } from '../../lib/site';
+
+export async function getStaticPaths() {
+  const features = await allFeatures();
+  const concepts = await allConcepts();
+  return tagCounts(features, concepts).map(([tag]) => ({ params: { tag } }));
+}
+const { tag } = Astro.params;
+const features = (await allFeatures()).filter((f) => f.data.tags.includes(tag!));
+const concepts = (await allConcepts()).filter((c) => c.data.tags.includes(tag!));
+---
+
+<Base title={`Tag: ${tagLabel(tag!)}`} description={`Briefings and concepts tagged ${tagLabel(tag!)}.`}>
+  <div class="wrap">
+    <div class="article-head" style="padding-bottom:1rem">
+      <div class="eyebrow"><a href={href('/tags/')}>Tags</a><span class="sep"></span><span>{features.length} briefings</span>{concepts.length > 0 && <><span class="sep"></span><span>{concepts.length} concepts</span></>}</div>
+      <h1 class="display">{tagLabel(tag!)}</h1>
+    </div>
+    {concepts.length > 0 && (
+      <>
+        <SectionHead title="Concepts" />
+        <ul class="related">{concepts.map((c) => <li><a href={conceptUrl(c.data.slug)}>{c.data.title}</a><span class="meta">{c.data.summary}</span></li>)}</ul>
+      </>
+    )}
+    <SectionHead title="Briefings" />
+    <ul class="ledger">{features.map((f) => <FeatureRow entry={f} />)}</ul>
+  </div>
+</Base>

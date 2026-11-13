@@ -1,0 +1,73 @@
+---
+import Base from '../layouts/Base.astro';
+import SectionHead from '../components/SectionHead.astro';
+import Rating from '../components/Rating.astro';
+import Badge from '../components/Badge.astro';
+import { SITE, RISK, COST, IMPACT, ACTION, DESKS, href } from '../lib/site';
+---
+
+<Base title="About" description="How Release Ledger is compiled, what the ratings mean, and how to correct it." current="about">
+  <article class="wrap wrap--narrow">
+    <header class="article-head">
+      <div class="eyebrow"><span>About</span></div>
+      <h1 class="display">How this ledger works</h1>
+      <p class="standfirst">{SITE.tagline} It is a wiki compiled by a language model from Microsoft's own sources, checked by a linter, and published every day.</p>
+    </header>
+
+    <div class="prose" style="margin-top:2rem">
+      <h2 id="pipeline">The daily run</h2>
+      <p>Every morning at 06:00 UTC a GitHub Actions job does five things, in order.</p>
+      <ol>
+        <li><strong>Ingest.</strong> It downloads the Microsoft 365 Roadmap and keeps every item tagged with a Copilot, Copilot Studio, Agent 365, Power Platform, Purview, Entra, admin center, Teams, SharePoint, OneDrive, Outlook, Viva or Office product. Each item is stored as an immutable JSON snapshot in <code>raw/</code>. Items that are new, have changed status, or have been edited by Microsoft go into a queue, highest impact first.</li>
+        <li><strong>Compile.</strong> For the top of the queue, a model reads the roadmap entry, searches Microsoft Learn through the Learn MCP server, and writes or rewrites the briefing to a fixed schema: what is changing, why it matters, risk, cost and licensing, scope, governance guidance, admin controls and open questions. It must cite at least one Microsoft source and may only cite Microsoft domains. Briefings are rewritten, not appended to, so each page reads as a whole.</li>
+        <li><strong>Lint.</strong> Every page is validated against the schema. Pages that fail are quarantined rather than published. The linter also flags broken links between pages, briefings whose roadmap status has moved on, and pages not reviewed in four months.</li>
+        <li><strong>Index and digest.</strong> The catalogue, tag pages, search index and this week's digest are regenerated.</li>
+        <li><strong>Publish.</strong> The site is built, each briefing is rendered to an A4 PDF, and the result is deployed to GitHub Pages.</li>
+      </ol>
+      <p>The pattern follows Andrej Karpathy's description of an LLM-maintained wiki: raw sources are never edited, the wiki is the compiled layer, a schema file is both the operating manual and the system prompt, and an append-only log records every run. You can read the schema, the log and every raw snapshot <a href={SITE.repo} rel="noopener">in the repository</a>.</p>
+
+      <h2 id="ratings">The ratings</h2>
+      <p>Each briefing carries four judgements. They are editorial, made from Microsoft's published documentation at the time of writing, and are meant to triage, not to replace your own assessment.</p>
+    </div>
+
+    <SectionHead title="Action" />
+    <table>
+      <tbody>{Object.entries(ACTION).map(([k, v]) => <tr><td style="width:9rem"><Badge action={k} /></td><td>{v.help}</td></tr>)}</tbody>
+    </table>
+    <SectionHead title="Risk" />
+    <table>
+      <tbody>{Object.entries(RISK).map(([k, v]) => <tr><td style="width:9rem"><Rating kind="risk" value={k} showLabel={false} /></td><td>{v.help}</td></tr>)}</tbody>
+    </table>
+    <SectionHead title="Cost" />
+    <table>
+      <tbody>{Object.entries(COST).map(([k, v]) => <tr><td style="width:9rem"><Rating kind="cost" value={k} showLabel={false} /></td><td>{v.help}</td></tr>)}</tbody>
+    </table>
+    <SectionHead title="Impact" />
+    <table>
+      <tbody>{Object.entries(IMPACT).map(([k, v]) => <tr><td style="width:9rem"><Rating kind="impact" value={k} showLabel={false} /></td><td>{v.help}</td></tr>)}</tbody>
+    </table>
+
+    <div class="prose" style="margin-top:2.5rem">
+      <h2 id="desks">Desks</h2>
+      <p>Every item is filed under one desk, matched on Microsoft's product tags in this order. Specific platforms win over the broad "Microsoft Copilot (Microsoft 365)" tag, which Microsoft attaches to most AI items.</p>
+      <ul>{DESKS.map((d) => <li><a href={href(`/desks/${d.id}/`)}><strong>{d.label}</strong></a>: {d.blurb}</li>)}</ul>
+
+      <h2 id="sources">Sources and confidence</h2>
+      <p>Briefings cite the Microsoft 365 Roadmap entry and Microsoft Learn documentation, and sometimes Microsoft Tech Community or Microsoft 365 blog posts. Nothing outside Microsoft's domains is cited. Each page states a confidence level: <em>high</em> when the documentation describes the feature as shipped and the admin controls were verified; <em>medium</em> when the roadmap entry is ahead of the documentation; <em>low</em> when only the roadmap text exists. Roadmap dates are Microsoft's targets and move.</p>
+
+      <h2 id="use">Using the ledger</h2>
+      <ul>
+        <li><strong>Search</strong> with <kbd>⌘</kbd><kbd>K</kbd> or <kbd>/</kbd>. It matches titles, summaries, tags, products and roadmap IDs.</li>
+        <li><strong>Filter</strong> on the <a href={href('/features/')}>briefings page</a>. Filters are kept in the URL, so a filtered view can be bookmarked or shared: for example <a href={href('/features/?action=act-now&desk=agents')}>act-now items for the agents desk</a>.</li>
+        <li><strong>Download</strong> any briefing as an A4 PDF for a change board, or as Markdown for Obsidian or a wiki of your own. The Markdown keeps the front matter, so the ratings travel with it.</li>
+        <li><strong>Subscribe</strong> to the <a href={href('/rss.xml')}>RSS feed</a> for new and refreshed briefings, or read the <a href={href('/digests/')}>weekly digest</a>.</li>
+      </ul>
+
+      <h2 id="correct">Correcting it</h2>
+      <p>Every page has a "propose a change" link that opens the Markdown file on GitHub. Edits to the body are kept on the next run unless the roadmap entry changes materially, in which case the page is rewritten and your change is noted in the page's change log for review. Disagreements with a rating are best raised as an issue so the schema's definitions can be tightened for every page, not just one.</p>
+
+      <h2 id="disclaimer">Independence</h2>
+      <p>{SITE.name} is an independent resource. It is not produced, endorsed or reviewed by Microsoft. Microsoft, Microsoft 365, Copilot, Power Platform, Teams, SharePoint, Purview and Entra are trademarks of the Microsoft group of companies. Ratings are opinions; always confirm licensing and admin behaviour against the linked documentation and your own tenant.</p>
+    </div>
+  </article>
+</Base>

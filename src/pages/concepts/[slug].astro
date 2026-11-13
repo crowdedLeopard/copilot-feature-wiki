@@ -1,0 +1,80 @@
+---
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import { allConcepts, allFeatures } from '../../lib/data';
+import { SITE, SOURCE_KIND, DESK_BY_ID, href, featureUrl, conceptUrl, tagUrl, tagLabel, formatDate } from '../../lib/site';
+
+export async function getStaticPaths() {
+  const concepts = await allConcepts();
+  return concepts.map((c) => ({ params: { slug: c.data.slug }, props: { entry: c } }));
+}
+const { entry } = Astro.props;
+const d = entry.data;
+const { Content, headings } = await render(entry);
+const features = await allFeatures();
+const concepts = await allConcepts();
+const uses = features.filter((f) => f.data.related.includes(d.slug));
+const related = d.related.map((s) => {
+  const f = features.find((x) => x.data.slug === s);
+  if (f) return { title: f.data.title, url: featureUrl(s), meta: 'Briefing' };
+  const c = concepts.find((x) => x.data.slug === s);
+  if (c) return { title: c.data.title, url: conceptUrl(s), meta: 'Concept' };
+  return null;
+}).filter(Boolean) as { title: string; url: string; meta: string }[];
+const toc = headings.filter((h) => h.depth === 2);
+---
+
+<Base title={d.title} description={d.summary} kind="article" current="concepts">
+  <article class="wrap">
+    <header class="article-head">
+      <div class="eyebrow"><a href={href('/concepts/')}>Concept</a><span class="sep"></span><span>Updated {formatDate(d.updated)}</span></div>
+      <h1 class="display">{d.title}</h1>
+      <p class="standfirst">{d.summary}</p>
+    </header>
+    <div class="article">
+      <div class="article__body">
+        <div class="prose"><Content /></div>
+
+        {d.sources.length > 0 && (
+          <>
+            <SectionHead title="Microsoft references" id="references" />
+            <ul class="sources">
+              {d.sources.map((s) => <li><span class="kind">{(SOURCE_KIND as Record<string, string>)[s.kind] ?? s.kind}</span><span><a href={s.url} rel="noopener">{s.title}</a><span class="url">{s.url}</span></span></li>)}
+            </ul>
+          </>
+        )}
+
+        {(uses.length > 0 || related.length > 0) && (
+          <>
+            <SectionHead title="Briefings that depend on this" id="related" />
+            <ul class="related">
+              {uses.map((f) => <li><a href={featureUrl(f.data.slug)}>{f.data.title}</a><span class="meta">{(DESK_BY_ID as any)[f.data.desk]?.label ?? f.data.desk} · {f.data.action === 'act-now' ? 'Act now' : `${f.data.risk} risk`}</span></li>)}
+              {related.filter((r) => !uses.some((u) => featureUrl(u.data.slug) === r.url)).map((r) => <li><a href={r.url}>{r.title}</a><span class="meta">{r.meta}</span></li>)}
+            </ul>
+          </>
+        )}
+
+        <SectionHead title="Tags" id="tags" />
+        <div class="chips">{d.tags.map((t) => <a class="chip" href={tagUrl(t)}>{tagLabel(t)}</a>)}</div>
+        <p class="small muted" style="margin-top:1.2rem">Spotted an error? <a href={`${SITE.repo}/edit/main/wiki/concepts/${d.slug}.md`} rel="noopener">Propose a change on GitHub</a>.</p>
+      </div>
+      <aside class="article__aside no-print">
+        <nav class="panel toc" aria-label="On this page">
+          <h3>On this page</h3>
+          <ol>
+            {toc.map((h) => <li><a href={`#${h.slug}`}>{h.text}</a></li>)}
+            <li><a href="#related">Briefings that depend on this</a></li>
+          </ol>
+        </nav>
+        <div class="panel">
+          <h3>Download</h3>
+          <div class="downloads">
+            <a href={href(`/concepts/${d.slug}.md`)} download={`${d.slug}.md`}><span>Page as Markdown</span><span class="ext">Obsidian · MD</span></a>
+            <button class="btn-ghost" type="button" onclick="window.print()" style="justify-content:space-between"><span>Print this page</span><span class="ext mono">⌘P</span></button>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </article>
+</Base>
