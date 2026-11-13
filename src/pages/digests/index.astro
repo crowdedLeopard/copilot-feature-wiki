@@ -1,0 +1,28 @@
+---
+import Base from '../../layouts/Base.astro';
+import { allDigests } from '../../lib/data';
+import { href, formatDate } from '../../lib/site';
+const digests = await allDigests();
+---
+
+<Base title="Weekly digests" description="One page a week: what was briefed, what needs action, and which roadmap entries changed status." current="digests">
+  <div class="wrap wrap--narrow">
+    <div class="article-head" style="padding-bottom:1rem">
+      <div class="eyebrow"><span>Weekly</span><span class="sep"></span><span>{digests.length} issues</span></div>
+      <h1 class="display">Weekly digests</h1>
+      <p class="standfirst">Written every day from the week's changes, so the current week's issue is always up to date. Subscribe with <a href={href('/rss.xml')}>RSS</a> to get each briefing as it lands.</p>
+    </div>
+    <ul class="ledger" style="margin-top:1rem">
+      {digests.map((g) => (
+        <li class="row">
+          <div class="row__action mono small muted">{formatDate(g.data.date)}</div>
+          <div>
+            <h3 class="row__title"><a href={href(`/digests/${g.data.slug}/`)}>{g.data.title}</a></h3>
+            <p class="row__summary">{g.data.summary}</p>
+            <div class="row__meta mono"><span>{g.data.counts.updated} updated</span><span>{g.data.counts.actNow} act now</span><span>{g.data.counts.highRisk} high risk</span><span>{g.data.counts.statusChanges} status changes</span></div>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</Base>

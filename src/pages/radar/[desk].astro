@@ -1,0 +1,63 @@
+---
+import Base from '../../layouts/Base.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import Badge from '../../components/Badge.astro';
+import { allFeatures, briefedIds, catalog } from '../../lib/data';
+import { DESKS, href, featureUrl, formatDate, shortRoadmapDate } from '../../lib/site';
+
+export function getStaticPaths() {
+  return DESKS.map((d) => ({ params: { desk: d.id }, props: { desk: d } }));
+}
+const { desk } = Astro.props;
+const features = await allFeatures();
+const briefed = briefedIds(features);
+const items = catalog.items.filter((i) => i.desk === desk.id).sort((a, b) => b.modified.localeCompare(a.modified));
+const groups: [string, typeof items][] = [
+  ['Rolling out', items.filter((i) => i.statusKey === 'rolling-out')],
+  ['In development', items.filter((i) => i.statusKey === 'in-development')],
+  ['Launched', items.filter((i) => i.statusKey === 'launched')],
+  ['Cancelled', items.filter((i) => i.statusKey === 'cancelled')],
+];
+---
+
+<Base title={`Radar: ${desk.label}`} description={`All ${items.length} tracked roadmap items for ${desk.label}.`} current="radar">
+  <div class="wrap">
+    <div class="article-head" style="padding-bottom:1rem">
+      <div class="eyebrow"><a href={href('/radar/')}>Radar</a><span class="sep"></span><a href={href(`/desks/${desk.id}/`)}>{desk.label} desk</a><span class="sep"></span><span>{items.length.toLocaleString('en-GB')} items</span></div>
+      <h1 class="display">{desk.label} radar</h1>
+      <p class="standfirst">Every tracked roadmap item for this desk, newest change first. Items with a briefing link to it.</p>
+      <input class="search-box" id="radar-filter" type="search" placeholder="Filter this table" aria-label="Filter the table" style="margin-top:1.2rem;max-width:420px" />
+    </div>
+    {groups.filter(([, list]) => list.length).map(([label, list]) => (
+      <section>
+        <SectionHead title={`${label} · ${list.length.toLocaleString('en-GB')}`} />
+        <table class="radar radar--filterable">
+          <thead><tr><th>Roadmap item</th><th>ID</th><th>Target</th><th>Modified</th><th>Briefing</th></tr></thead>
+          <tbody>
+            {list.map((i) => {
+              const b = briefed.get(i.id);
+              return (
+                <tr data-text={`${i.title} ${i.products.join(' ')} ${i.id}`.toLowerCase()}>
+                  <td class="t"><a href={i.roadmapUrl} rel="noopener">{i.title}</a><br /><span class="muted small">{i.products.slice(0, 3).join(', ')}</span></td>
+                  <td class="id">{i.id}</td>
+                  <td class="d">{shortRoadmapDate(i.targetDate)}</td>
+                  <td class="d">{formatDate(i.modified)}</td>
+                  <td>{b ? <a class="briefed" href={featureUrl(b.data.slug)}>Read briefing</a> : <span class="muted small">—</span>}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </section>
+    ))}
+  </div>
+</Base>
+
+<script>
+  const input = document.getElementById('radar-filter') as HTMLInputElement | null;
+  const rows = Array.from(document.querySelectorAll<HTMLTableRowElement>('.radar--filterable tbody tr'));
+  input?.addEventListener('input', () => {
+    const q = input.value.trim().toLowerCase();
+    for (const r of rows) r.hidden = q ? !(r.dataset.text ?? '').includes(q) : false;
+  });
+</script>

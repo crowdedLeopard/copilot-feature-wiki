@@ -1,0 +1,51 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Badge from './Badge.astro';
+import Rating from './Rating.astro';
+import { DESK_BY_ID, featureUrl, deskUrl, formatDate, shortRoadmapDate } from '../lib/site';
+
+interface Props {
+  entry: CollectionEntry<'features'>;
+  compact?: boolean;
+  showDesk?: boolean;
+  /** Add data-* attributes for client-side filtering */
+  filterable?: boolean;
+}
+const { entry, compact = false, showDesk = true, filterable = false } = Astro.props;
+const d = entry.data;
+const desk = (DESK_BY_ID as Record<string, { label: string; short: string }>)[d.desk];
+const attrs = filterable
+  ? {
+      'data-desk': d.desk,
+      'data-risk': d.risk,
+      'data-cost': d.cost,
+      'data-impact': d.impact,
+      'data-action': d.action,
+      'data-status': d.status,
+      'data-default': d.defaultState,
+      'data-licensing': d.licensing.model,
+      'data-audiences': d.audiences.join(' '),
+      'data-tags': d.tags.join(' '),
+      'data-updated': d.updated,
+      'data-title': d.title.toLowerCase(),
+      'data-text': `${d.title} ${d.summary} ${d.products.join(' ')} ${d.tags.join(' ')} ${d.roadmapId ?? ''}`.toLowerCase(),
+    }
+  : {};
+---
+
+<li class={`row${compact ? ' row--compact' : ''}`} {...attrs}>
+  <div class="row__action"><Badge action={d.action} /></div>
+  <div>
+    <h3 class="row__title"><a href={featureUrl(d.slug)}>{d.title}</a></h3>
+    <p class="row__summary">{d.summary}</p>
+    <div class="row__meta">
+      {showDesk && <a href={deskUrl(d.desk)} class="muted" style="text-decoration:none">{desk?.label ?? d.desk}</a>}
+      <Badge status={d.status} />
+      <Rating kind="risk" value={d.risk} />
+      <Rating kind="cost" value={d.cost} />
+      {!compact && <Rating kind="impact" value={d.impact} />}
+      <span class="mono">{d.status === 'launched' ? 'Launched' : `Target ${shortRoadmapDate(d.targetDate)}`}</span>
+      <span class="mono">Updated {formatDate(d.updated)}</span>
+    </div>
+  </div>
+</li>

@@ -1,0 +1,83 @@
+---
+import Base from '../../layouts/Base.astro';
+import FeatureRow from '../../components/FeatureRow.astro';
+import { allFeatures, allConcepts, tagCounts } from '../../lib/data';
+import { DESKS, RISK, COST, IMPACT, ACTION, STATUS, DEFAULT_STATE, LICENSING_MODEL, AUDIENCES, tagLabel } from '../../lib/site';
+
+const features = await allFeatures();
+const concepts = await allConcepts();
+const tags = tagCounts(features, concepts).filter(([t]) => features.some((f) => f.data.tags.includes(t)));
+const count = (key: (f: typeof features[number]) => string | string[]) => {
+  const m = new Map<string, number>();
+  for (const f of features) {
+    const v = key(f);
+    for (const x of Array.isArray(v) ? v : [v]) m.set(x, (m.get(x) ?? 0) + 1);
+  }
+  return m;
+};
+const groups = [
+  { id: 'action', label: 'Action', open: true, options: Object.entries(ACTION).map(([k, v]) => [k, v.label]), counts: count((f) => f.data.action) },
+  { id: 'desk', label: 'Desk', open: true, options: DESKS.map((d) => [d.id, d.label]), counts: count((f) => f.data.desk) },
+  { id: 'risk', label: 'Risk', open: true, options: Object.entries(RISK).map(([k, v]) => [k, v.label]), counts: count((f) => f.data.risk) },
+  { id: 'cost', label: 'Cost', open: false, options: Object.entries(COST).map(([k, v]) => [k, v.label]), counts: count((f) => f.data.cost) },
+  { id: 'impact', label: 'Impact', open: false, options: Object.entries(IMPACT).map(([k, v]) => [k, v.label]), counts: count((f) => f.data.impact) },
+  { id: 'status', label: 'Status', open: false, options: Object.entries(STATUS).map(([k, v]) => [k, v.label]), counts: count((f) => f.data.status) },
+  { id: 'default', label: 'Default state', open: false, options: Object.entries(DEFAULT_STATE).map(([k, v]) => [k, v.label]), counts: count((f) => f.data.defaultState) },
+  { id: 'licensing', label: 'Licensing', open: false, options: Object.entries(LICENSING_MODEL).map(([k, v]) => [k, v]), counts: count((f) => f.data.licensing.model) },
+  { id: 'audiences', label: 'Audience', open: false, options: Object.entries(AUDIENCES).map(([k, v]) => [k, v]), counts: count((f) => f.data.audiences) },
+] as { id: string; label: string; open: boolean; options: [string, string][]; counts: Map<string, number> }[];
+---
+
+<Base title="Briefings" description="Every feature briefing, filterable by desk, action, risk, cost, status, licensing model and audience." current="features">
+  <div class="wrap">
+    <div class="article-head" style="padding-bottom:1rem">
+      <div class="eyebrow"><span>Briefings</span><span class="sep"></span><span>{features.length} features</span></div>
+      <h1 class="display">All briefings</h1>
+      <p class="standfirst">Filter by what you are responsible for. Ratings are explained on the <a href="../about/">about page</a>.</p>
+    </div>
+
+    <div class="filters" id="filters">
+      <aside class="filters__side">
+        <input class="search-box" id="f-text" type="search" placeholder="Filter by title, product, tag or roadmap ID" aria-label="Filter briefings" />
+        {groups.map((g) => (
+          <details class="fgroup" open={g.open} data-group={g.id}>
+            <summary>{g.label}</summary>
+            {g.options.map(([k, label]) => (
+              <label><input type="checkbox" name={g.id} value={k} /> {label} <span class="n">{g.counts.get(k) ?? 0}</span></label>
+            ))}
+          </details>
+        ))}
+        <details class="fgroup" data-group="tags">
+          <summary>Tags</summary>
+          {tags.map(([t, n]) => (
+            <label><input type="checkbox" name="tags" value={t} /> {tagLabel(t)} <span class="n">{n}</span></label>
+          ))}
+        </details>
+      </aside>
+
+      <div>
+        <div class="results-bar">
+          <span><b id="f-count">{features.length}</b> of {features.length} briefings <span id="f-active"></span></span>
+          <span>
+            <label class="small">Sort <select id="f-sort" class="btn-ghost" style="padding:0.2rem 0.4rem">
+              <option value="action">by action</option>
+              <option value="updated">by last updated</option>
+              <option value="risk">by risk</option>
+              <option value="title">by title</option>
+            </select></label>
+            <button type="button" id="f-reset" hidden>Clear filters</button>
+          </span>
+        </div>
+        <ul class="ledger" id="f-list">
+          {features.map((f) => <FeatureRow entry={f} filterable />)}
+        </ul>
+        <p class="empty" id="f-empty" hidden>Nothing matches those filters.</p>
+      </div>
+    </div>
+  </div>
+</Base>
+
+<script>
+  import { initFilters } from '../../scripts/filters';
+  initFilters();
+</script>

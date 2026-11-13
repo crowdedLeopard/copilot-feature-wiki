@@ -1,0 +1,32 @@
+---
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { allDigests } from '../../lib/data';
+import { href, formatDate } from '../../lib/site';
+
+export async function getStaticPaths() {
+  const digests = await allDigests();
+  return digests.map((g) => ({ params: { slug: g.data.slug }, props: { entry: g } }));
+}
+const { entry } = Astro.props;
+const d = entry.data;
+const { Content } = await render(entry);
+---
+
+<Base title={d.title} description={d.summary} kind="article" current="digests">
+  <article class="wrap wrap--narrow">
+    <header class="article-head">
+      <div class="eyebrow"><a href={href('/digests/')}>Weekly digest</a><span class="sep"></span><span>Week of {formatDate(d.weekStart, { long: true })}</span><span class="sep"></span><span>Issued {formatDate(d.date)}</span></div>
+      <h1 class="display">{d.title}</h1>
+      <p class="standfirst">{d.summary}</p>
+      <div class="stats" style="margin-top:1.5rem">
+        <div class="stat"><b>{d.counts.updated}</b><span>briefings updated</span></div>
+        <div class="stat"><b>{d.counts.actNow}</b><span>act now</span></div>
+        <div class="stat"><b>{d.counts.highRisk}</b><span>high risk</span></div>
+        <div class="stat"><b>{d.counts.statusChanges}</b><span>status changes</span></div>
+      </div>
+    </header>
+    <div class="prose" style="margin-top:2rem"><Content /></div>
+    <p class="small muted no-print" style="margin-top:2rem"><a href={href('/features/')}>Browse all briefings</a> · <a href={href('/rss.xml')}>RSS</a></p>
+  </article>
+</Base>

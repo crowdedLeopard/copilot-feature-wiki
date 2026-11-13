@@ -1,0 +1,34 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Rating from './Rating.astro';
+import Badge from './Badge.astro';
+import { DEFAULT_STATE, LICENSING_MODEL, AUDIENCES, cloudShort, shortRoadmapDate } from '../lib/site';
+
+interface Props { data: CollectionEntry<'features'>['data']; rationale?: { risk?: string; cost?: string; impact?: string } }
+const { data: d, rationale = {} } = Astro.props;
+const ds = (DEFAULT_STATE as Record<string, { label: string }>)[d.defaultState]?.label ?? d.defaultState;
+const lic = (LICENSING_MODEL as Record<string, string>)[d.licensing.model] ?? d.licensing.model;
+const aud = d.audiences.map((a) => (AUDIENCES as Record<string, string>)[a] ?? a);
+---
+
+<div class="facts" role="table" aria-label="At a glance">
+  <div class="fact"><div class="fact__k">Action</div><div class="fact__v"><Badge action={d.action} /></div></div>
+  <div class="fact"><div class="fact__k">Risk</div><div class="fact__v"><Rating kind="risk" value={d.risk} showLabel={false} /></div></div>
+  <div class="fact"><div class="fact__k">Cost</div><div class="fact__v"><Rating kind="cost" value={d.cost} showLabel={false} /></div></div>
+  <div class="fact"><div class="fact__k">Impact</div><div class="fact__v"><Rating kind="impact" value={d.impact} showLabel={false} /></div></div>
+  <div class="fact"><div class="fact__k">Default state</div><div class="fact__v">{ds}</div></div>
+  <div class="fact"><div class="fact__k">Licensing</div><div class="fact__v">{lic}</div></div>
+  <div class="fact"><div class="fact__k">Status</div><div class="fact__v"><Badge status={d.status} /></div></div>
+  <div class="fact"><div class="fact__k">Target</div><div class="fact__v">{shortRoadmapDate(d.targetDate)}{d.previewDate && <span class="muted small"> · preview {shortRoadmapDate(d.previewDate)}</span>}</div></div>
+  <div class="fact"><div class="fact__k">Clouds</div><div class="fact__v">{d.clouds.length ? d.clouds.map(cloudShort).join(', ') : 'Not stated'}</div></div>
+  <div class="fact"><div class="fact__k">Platforms</div><div class="fact__v">{d.platforms.length ? d.platforms.join(', ') : 'Not stated'}</div></div>
+  <div class="fact fact--wide"><div class="fact__k">Who should read this</div><div class="fact__v">{aud.join(' · ')}</div></div>
+  {d.licensing.notes && <div class="fact fact--wide"><div class="fact__k">Licensing notes</div><div class="fact__v">{d.licensing.notes}</div></div>}
+</div>
+{(rationale.risk || rationale.cost || rationale.impact) && (
+  <div class="rationale">
+    {rationale.risk && <div><b>Risk.</b> {rationale.risk.replace(/^(Low|Medium|High)\.\s*/, '')}</div>}
+    {rationale.cost && <div><b>Cost.</b> {rationale.cost.replace(/^(None|Low|Medium|High|Variable)\.\s*/, '')}</div>}
+    {rationale.impact && <div><b>Impact.</b> {rationale.impact.replace(/^(Low|Medium|High)\.\s*/, '')}</div>}
+  </div>
+)}

@@ -1,0 +1,55 @@
+---
+import Base from '../../layouts/Base.astro';
+import FeatureRow from '../../components/FeatureRow.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import Badge from '../../components/Badge.astro';
+import { allFeatures, briefedIds, recentCatalog, catalog } from '../../lib/data';
+import { DESKS, href, formatDate, shortRoadmapDate } from '../../lib/site';
+
+export function getStaticPaths() {
+  return DESKS.map((d) => ({ params: { desk: d.id }, props: { desk: d } }));
+}
+const { desk } = Astro.props;
+const features = (await allFeatures()).filter((f) => f.data.desk === desk.id);
+const briefed = briefedIds(features);
+const tracked = catalog.items.filter((i) => i.desk === desk.id).length;
+const radar = recentCatalog(desk.id, 180, 300).filter((i) => !briefed.has(i.id)).slice(0, 12);
+const actNow = features.filter((f) => f.data.action === 'act-now');
+const rest = features.filter((f) => f.data.action !== 'act-now');
+---
+
+<Base title={desk.label} description={desk.blurb} current="desks">
+  <div class="wrap">
+    <div class="article-head" style="padding-bottom:1rem">
+      <div class="eyebrow"><a href={href('/desks/')}>Desks</a><span class="sep"></span><span>{features.length} briefed</span><span class="sep"></span><span>{tracked.toLocaleString('en-GB')} roadmap items tracked</span></div>
+      <h1 class="display">{desk.label}</h1>
+      <p class="standfirst">{desk.blurb}</p>
+      <div class="chips" style="margin-top:1rem">{desk.products.map((p) => <span class="chip">{p}</span>)}</div>
+    </div>
+
+    {actNow.length > 0 && (
+      <>
+        <SectionHead title="Act now" />
+        <ul class="ledger">{actNow.map((f) => <FeatureRow entry={f} showDesk={false} />)}</ul>
+      </>
+    )}
+    <SectionHead title={actNow.length ? 'Everything else' : 'Briefings'} more={{ href: href(`/features/?desk=${desk.id}`), label: 'Filter and sort' }} />
+    {rest.length ? <ul class="ledger">{rest.map((f) => <FeatureRow entry={f} showDesk={false} />)}</ul> : <p class="muted">No further briefings yet for this desk.</p>}
+
+    <SectionHead title="On the radar" more={{ href: href(`/radar/${desk.id}/`), label: 'Full radar for this desk' }} />
+    <p class="muted small" style="margin:-0.4rem 0 0.6rem">Roadmap items changed in the last six months without a briefing yet.</p>
+    <table class="radar">
+      <thead><tr><th>Roadmap item</th><th>Status</th><th>Target</th><th>Modified</th></tr></thead>
+      <tbody>
+        {radar.map((i) => (
+          <tr>
+            <td class="t"><a href={i.roadmapUrl} rel="noopener">{i.title}</a><br /><span class="muted small">{i.products.slice(0, 3).join(', ')}</span></td>
+            <td><Badge status={i.statusKey} /></td>
+            <td class="d">{shortRoadmapDate(i.targetDate)}</td>
+            <td class="d">{formatDate(i.modified)}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</Base>

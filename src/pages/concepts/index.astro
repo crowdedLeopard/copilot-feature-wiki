@@ -1,0 +1,28 @@
+---
+import Base from '../../layouts/Base.astro';
+import { allConcepts } from '../../lib/data';
+import { conceptUrl, formatDate, tagUrl, tagLabel } from '../../lib/site';
+const concepts = await allConcepts();
+---
+
+<Base title="Concepts" description="Background pages that explain the mechanisms several briefings depend on: Copilot Credits, Managed Environments, agent identity and data policies." current="concepts">
+  <div class="wrap wrap--narrow">
+    <div class="article-head" style="padding-bottom:1rem">
+      <div class="eyebrow"><span>Concepts</span><span class="sep"></span><span>{concepts.length} pages</span></div>
+      <h1 class="display">Concepts</h1>
+      <p class="standfirst">The second brain behind the briefings. Each page explains one mechanism once, so individual briefings can stay short and link here.</p>
+    </div>
+    <ul class="ledger" style="margin-top:1rem">
+      {concepts.map((c) => (
+        <li class="row">
+          <div class="row__action mono small muted">Updated {formatDate(c.data.updated)}</div>
+          <div>
+            <h3 class="row__title"><a href={conceptUrl(c.data.slug)}>{c.data.title}</a></h3>
+            <p class="row__summary">{c.data.summary}</p>
+            <div class="chips">{c.data.tags.slice(0, 6).map((t) => <a class="chip" href={tagUrl(t)}>{tagLabel(t)}</a>)}</div>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</Base>

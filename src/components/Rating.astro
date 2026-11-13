@@ -1,0 +1,25 @@
+---
+import { RISK, COST, IMPACT } from '../lib/site';
+
+interface Props {
+  kind: 'risk' | 'cost' | 'impact';
+  value: string;
+  showLabel?: boolean;
+  compact?: boolean;
+}
+const { kind, value, showLabel = true, compact = false } = Astro.props;
+const scale = kind === 'risk' ? RISK : kind === 'cost' ? COST : IMPACT;
+const entry = (scale as Record<string, { label: string; rank: number; help: string }>)[value] ?? { label: value, rank: 0, help: '' };
+const total = 3;
+const filled = Math.round(Math.min(entry.rank, total));
+// Tone: risk and impact use severity colours; cost is neutral unless high/variable.
+const tone = kind === 'cost' ? (value === 'high' ? 'high' : value === 'variable' ? 'variable' : value === 'medium' ? 'medium' : 'neutral') : value;
+---
+
+<span class={`rating rating--${tone}`} title={entry.help} aria-label={`${kind} ${entry.label}`}>
+  {showLabel && <span class="rating__label">{kind}</span>}
+  <span class="pips" aria-hidden="true">
+    {Array.from({ length: total }).map((_, i) => <i class={`pip${i < filled ? ' pip--on' : ''}`}></i>)}
+  </span>
+  {!compact && <span class="rating__value">{entry.label}</span>}
+</span>

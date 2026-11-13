@@ -1,0 +1,25 @@
+---
+import { ACTION, STATUS } from '../lib/site';
+
+interface Props {
+  action?: string;
+  status?: string;
+  text?: string;
+}
+const { action, status, text } = Astro.props;
+let cls = 'badge';
+let label = text ?? '';
+let help = '';
+if (action) {
+  const a = (ACTION as Record<string, { label: string; help: string }>)[action];
+  cls += ` badge--${action}`;
+  label = a?.label ?? action;
+  help = a?.help ?? '';
+} else if (status) {
+  const s = (STATUS as Record<string, { label: string }>)[status];
+  cls += ` badge--status-${status}`;
+  label = s?.label ?? status;
+}
+---
+
+<span class={cls} title={help || undefined}>{label}</span>
