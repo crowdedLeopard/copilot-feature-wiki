@@ -1,9 +1,24 @@
 # Lint report
 
-Generated 2026-11-13T22:33:33.089Z. 22 briefings, 4 concepts, 0 quarantined.
+Generated 2026-11-14T01:28:44.117Z. 34 briefings, 4 concepts, 0 quarantined.
 
 ## Errors (0)
 
 ## Warnings (0)
 
-## Info (0)
+## Info (15)
+- features/power-apps-new-view-layout-in-model-driven-apps.md: low confidence, roadmap text only
+- features/work-iq-execute-recipes.md: low confidence, roadmap text only
+- features/work-iq-memory-capabilities-expand-to-agents.md: low confidence, roadmap text only
+- features/copilot-studio-computer-use-for-web-browsing-on-microsoft-copilot-harness.md: orphan (no inbound related links)
+- features/m365-admin-center-cross-tenant-orchestrated-migration.md: orphan (no inbound related links)
+- features/m365-copilot-new-m365-copilot-usage-reports-for-copilot-search-connectors-and-agents-for-u.md: orphan (no inbound related links)
+- features/microsoft-copilot-microsoft-m365-delegated-prompt-publishing-for-organization-prompts.md: orphan (no inbound related links)
+- features/microsoft-power-platform-governance-and-administration-secure-dataverse-record-with-column.md: orphan (no inbound related links)
+- features/power-apps-form-fill-assistance-using-m365-files-in-model-driven-apps.md: orphan (no inbound related links)
+- features/power-apps-new-view-layout-in-model-driven-apps.md: orphan (no inbound related links)
+- features/power-apps-use-the-modernized-personal-settings-experience.md: orphan (no inbound related links)
+- features/work-iq-business-skills-to-manage-your-business-processes-in-work-iq-mcp.md: orphan (no inbound related links)
+- features/work-iq-execute-recipes.md: orphan (no inbound related links)
+- features/work-iq-federated-connectors.md: orphan (no inbound related links)
+- features/work-iq-memory-capabilities-expand-to-agents.md: orphan (no inbound related links)
