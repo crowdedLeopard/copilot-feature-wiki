@@ -1,0 +1,26 @@
+---
+/** A small plate of the atlas with one page and its links lit. Sits above the Related list. */
+import '../styles/atlas.css';
+import { href } from '../lib/site';
+
+interface Props {
+  /** Atlas node id: `f:slug` or `c:slug` */
+  id: string;
+  /** Where the page sits, for the caption: "Frontal lobe · Agents" */
+  where: string;
+  links: number;
+}
+const { id, where, links } = Astro.props;
+---
+
+<a class="atlas-mini atlas-plate no-print" href={href(`/atlas/?n=${encodeURIComponent(id)}`)} data-atlas data-atlas-mini={id} aria-label={`Open this page in the atlas. It has ${links} links.`}>
+  <canvas aria-hidden="true"></canvas>
+  <i class="tick tick--tl"></i><i class="tick tick--tr"></i><i class="tick tick--bl"></i><i class="tick tick--br"></i>
+  <span class="atlas-hud atlas-hud--tl"><span class="dot"></span><b>In the atlas</b><span class="gap"></span><span class="dim">{where} · {links} links</span></span>
+  <span class="atlas-hud atlas-hud--bl"><b>Open in the atlas</b></span>
+</a>
+
+<script>
+  import { initAtlasEmbeds } from '../scripts/atlas/embed';
+  initAtlasEmbeds();
+</script>

@@ -12,6 +12,12 @@ daily by GitHub Actions.
   Claude Code agent path (`compile-tasks.mjs` prepares `data/compile-tasks/`, the agent follows `pipeline/prompts/compile-agent.md`
   and calls `write-briefing.mjs` per item, `compile-finish.mjs` records the run). Keep page-writing logic in the shared module.
 - `src/` is the Astro site. Design tokens live in `src/styles/tokens.css`.
+- The Atlas (`/atlas/`, the home page teaser and the plate in each briefing's Related section) is one canvas renderer,
+  `src/scripts/atlas/engine.ts`, with no dependencies. `src/lib/graph.ts` builds its nodes and links from the content
+  collections at build time and serves them as `atlas.json` and `atlas-radar.json`. `src/lib/brain.ts` holds the brain
+  geometry and the desk-to-region mapping, and is shared by the build and the browser. Layout is deterministic and
+  briefings are placed oldest first, so a new page never moves an existing one. Colours come from the `--desk-*` and
+  `--atlas-*` tokens.
 
 Commands: `npm run dev`, `npm run build`, `npm run daily` (ingest, compile, lint, index), `npm run pdf` (after build).
 

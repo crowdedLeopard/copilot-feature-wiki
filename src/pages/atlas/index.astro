@@ -1,0 +1,186 @@
+---
+import Base from '../../layouts/Base.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import '../../styles/atlas.css';
+import { allFeatures, allConcepts } from '../../lib/data';
+import { buildAtlas } from '../../lib/graph';
+import { RISK, deskUrl, formatDate, href } from '../../lib/site';
+
+const features = await allFeatures();
+const concepts = await allConcepts();
+const atlas = buildAtlas(features, concepts);
+const c = atlas.counts;
+const latest = features.map((f) => f.data.updated).sort().at(-1) ?? '';
+const n = (v: number) => v.toLocaleString('en-GB');
+const riskCount = (r: string) => features.filter((f) => f.data.risk === r).length;
+const of = (k: string) => atlas.nodes.filter((x) => x.k === k).sort((a, b) => a.t.localeCompare(b.t));
+const actNow = features.filter((f) => f.data.action === 'act-now').length;
+---
+
+<Base title="Atlas" description="The ledger drawn as a second brain: every briefing, concept, tag and product, and the links between them, in an interactive three-dimensional atlas." current="atlas">
+  <div class="wrap">
+    <header class="atlas-head">
+      <div class="eyebrow">
+        <span>Atlas</span><span class="sep"></span><span>{c.briefings} briefings</span><span class="sep"></span><span>{c.links} links</span>
+        <span class="sep"></span><span>{n(c.tracked)} roadmap items tracked</span>
+      </div>
+      <h1 class="display">The ledger as a second brain</h1>
+      <p class="standfirst">
+        Every briefing, concept, tag and product, placed in a brain whose regions are the six desks. Lines are the links between pages.
+        Faint points are roadmap items the ledger tracks but has not briefed yet.
+      </p>
+    </header>
+
+    <section class="atlas" id="atlas" data-atlas aria-label="Atlas">
+      <div class="atlas__stage atlas-plate">
+        <canvas id="atlas-canvas" tabindex="0" role="img" aria-label={`Three-dimensional map of ${c.briefings} briefings, ${c.concepts} concepts, ${c.tags} tags and ${c.products} products arranged in a brain. The same pages are listed under Index below.`}></canvas>
+        <i class="tick tick--tl"></i><i class="tick tick--tr"></i><i class="tick tick--bl"></i><i class="tick tick--br"></i>
+        <div class="atlas-hud atlas-hud--tl"><span class="dot"></span><b>Release Ledger</b> — Atlas<span class="gap"></span><span class="dim">Issue of {formatDate(latest)}</span></div>
+        <div class="atlas-hud atlas-hud--tr">Drag — rotate<span class="gap"></span>Scroll — zoom<span class="gap"></span>Click — inspect</div>
+        <div class="atlas__tools">
+          <button type="button" id="atlas-reset" title="Return to the opening view (0)">Reset</button>
+          <button type="button" id="atlas-spin" aria-pressed="true" title="Turn the slow rotation on or off">Spin</button>
+          <button type="button" id="atlas-out" aria-label="Zoom out" title="Zoom out (−)">−</button>
+          <button type="button" id="atlas-in" aria-label="Zoom in" title="Zoom in (+)">+</button>
+        </div>
+        <div class="atlas__loading">Drawing the atlas</div>
+        <noscript><div class="atlas__loading" style="pointer-events:auto">The atlas needs JavaScript. Every page it shows is listed under Index below.</div></noscript>
+      </div>
+
+      <aside class="atlas__side" aria-label="Atlas controls">
+        <div class="atlas__block atlas__find">
+          <input id="atlas-find" type="search" placeholder="Find a briefing, concept, tag or product" autocomplete="off" spellcheck="false" aria-label="Find a node in the atlas" aria-controls="atlas-hits" />
+          <ul class="atlas__hits" id="atlas-hits"></ul>
+        </div>
+
+        <div class="atlas__block insp" id="atlas-inspector" aria-live="polite">
+          <p class="insp__idle">Hover a point to see what it is. Click to pin it here with its ratings and everything it links to.</p>
+          <p class="insp__idle">{actNow} briefings carry a pulsing ring: they need action now.</p>
+        </div>
+
+        <div class="atlas__block">
+          <h3>Colour briefings by</h3>
+          <div class="seg" id="atlas-colour" role="group" aria-label="Colour briefings by">
+            <button type="button" data-colour="desk" aria-pressed="true">Desk</button>
+            <button type="button" data-colour="risk" aria-pressed="false">Risk</button>
+            <button type="button" data-colour="action" aria-pressed="false">Action</button>
+          </div>
+        </div>
+
+        <div class="atlas__block">
+          <h3><span>Desks</span><button type="button" id="atlas-desks-all">Show all</button></h3>
+          <ul class="atlas__rows" id="atlas-desks">
+            {atlas.desks.map((d, i) => (
+              <li>
+                <button type="button" data-desk={i} aria-pressed="true" style={`--c: var(--desk-${d.id})`} title={d.why}>
+                  <i class="sw"></i>
+                  <span><span class="name">{d.label}</span><span class="sub">{d.regionLabel} · {d.role}</span></span>
+                  <span class="n">{d.briefed} · {n(d.tracked)}</span>
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="atlas__block">
+          <h3>Risk</h3>
+          <ul class="atlas__rows" id="atlas-risk">
+            {(['high', 'medium', 'low'] as const).map((r) => (
+              <li>
+                <button type="button" data-risk={r} aria-pressed="true" style={`--c: var(--risk-${r})`} title={RISK[r].help}>
+                  <i class="sw"></i><span class="name">{RISK[r].label}</span><span class="n">{riskCount(r)}</span>
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="atlas__block">
+          <h3>On the plate</h3>
+          <ul class="atlas__rows" id="atlas-layers">
+            <li class="static">
+              <svg class="gl" viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="4.2" fill="currentColor" /></svg>
+              <span>Briefings</span><span class="n">{c.briefings}</span>
+            </li>
+            <li>
+              <button type="button" data-layer="c" aria-pressed="true">
+                <svg class="gl" viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="4.4" fill="none" stroke="currentColor" stroke-width="1.3" /><circle cx="6" cy="6" r="1.7" fill="currentColor" /></svg>
+                <span class="name">Concepts</span><span class="n">{c.concepts}</span>
+              </button>
+            </li>
+            <li>
+              <button type="button" data-layer="t" aria-pressed="true">
+                <svg class="gl" viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="2.1" fill="currentColor" /></svg>
+                <span class="name">Shared tags</span><span class="n">{c.tags}</span>
+              </button>
+            </li>
+            <li>
+              <button type="button" data-layer="p" aria-pressed="true">
+                <svg class="gl" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 1.4 10.6 6 6 10.6 1.4 6Z" fill="none" stroke="currentColor" stroke-width="1.2" /></svg>
+                <span class="name">Products</span><span class="n">{c.products}</span>
+              </button>
+            </li>
+            <li>
+              <button type="button" data-layer="radar" aria-pressed="true">
+                <svg class="gl" viewBox="0 0 12 12" aria-hidden="true"><g fill="currentColor"><rect x="1.5" y="2" width="1.6" height="1.6" /><rect x="6.5" y="1" width="1.6" height="1.6" /><rect x="4" y="5.4" width="1.6" height="1.6" /><rect x="9" y="5" width="1.6" height="1.6" /><rect x="2" y="9" width="1.6" height="1.6" /><rect x="7" y="9.2" width="1.6" height="1.6" /></g></svg>
+                <span><span class="name">On the radar</span><span class="sub">Tracked, not yet briefed</span></span><span class="n" id="atlas-radar-n">…</span>
+              </button>
+            </li>
+            <li>
+              <button type="button" data-layer="labels" aria-pressed="true">
+                <svg class="gl" viewBox="0 0 12 12" aria-hidden="true"><path d="M1.5 4h9M1.5 8h6" stroke="currentColor" stroke-width="1.3" fill="none" /></svg>
+                <span class="name">Labels</span><span class="n"></span>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </aside>
+    </section>
+
+    <SectionHead title="How to read the atlas" id="reading" />
+    <p class="muted small" style="margin:-0.4rem 0 0.8rem;max-width:70ch">
+      Each desk has a region, chosen for what that part of a brain does. Briefings sit in the cortex of their desk's region; concepts, shared tags and
+      products sit deeper, between the briefings they connect. Positions are fixed: a briefing stays where it is as the daily run adds new ones around it.
+    </p>
+    <div class="lobes">
+      {atlas.desks.map((d) => (
+        <div class="lobe" style={`--c: var(--desk-${d.id})`}>
+          <i class="sw"></i>
+          <div>
+            <h3><a href={deskUrl(d.id)}>{d.label}</a></h3>
+            <div class="where">{d.regionLabel} · {d.role} · {d.briefed} briefed · {n(d.tracked)} tracked</div>
+            <p>{d.why}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <SectionHead title="Index" id="index" />
+    <details class="atlas-index">
+      <summary>List every page in the atlas</summary>
+      {atlas.desks.map((d, i) => {
+        const list = atlas.nodes.filter((x) => x.k === 'f' && x.d === i).sort((a, b) => a.t.localeCompare(b.t));
+        return list.length > 0 && (
+          <>
+            <h3>{d.label}</h3>
+            <ul>{list.map((x) => <li><a href={x.u}>{x.t}</a></li>)}</ul>
+          </>
+        );
+      })}
+      <h3>Concepts</h3>
+      <ul>{of('c').map((x) => <li><a href={x.u}>{x.t}</a></li>)}</ul>
+      <h3>Shared tags</h3>
+      <ul>{of('t').map((x) => <li><a href={x.u}>{x.t}</a> <span class="muted small">{x.n}</span></li>)}</ul>
+      <h3>Products</h3>
+      <ul>{of('p').map((x) => <li><a href={x.u}>{x.t}</a> <span class="muted small">{x.n}</span></li>)}</ul>
+    </details>
+    <p class="small muted" style="margin-top:1rem">
+      The atlas is rebuilt from the wiki's front matter and links on every daily run. See <a href={href('/about/')}>how the ledger is compiled</a>.
+    </p>
+  </div>
+</Base>
+
+<script>
+  import { initAtlasPage } from '../../scripts/atlas/page';
+  initAtlasPage();
+</script>

@@ -47,6 +47,7 @@ const PAGES = [
   ['feature-federated', '/features/m365-copilot-federated-connectors-write-update-delete/'],
   ['desk', '/desks/agents/'],
   ['radar', '/radar/'],
+  ['atlas', '/atlas/'],
   ['concept', '/concepts/copilot-credits/'],
   ['digest', '/digests/2026-w46/'],
   ['about', '/about/'],
@@ -66,14 +67,21 @@ async function shoot(name, url, { width, height, dark, full = false, theme }) {
   if (theme) await page.addInitScript((t) => localStorage.setItem('rl-theme', t), theme);
   await page.goto(origin + url, { waitUntil: 'networkidle' });
   await page.evaluate(() => document.fonts.ready);
+  // Atlas plates draw on a canvas once they scroll into view. Visit each one so it is drawn before the capture.
+  for (const plate of await page.locator('[data-atlas]').all()) {
+    await plate.scrollIntoViewIfNeeded();
+    await page.waitForTimeout(800);
+  }
+  await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
   await page.screenshot({ path: path.join(OUT, `${name}.png`), fullPage: full });
   await ctx.close();
 }
 
 for (const [name, url] of PAGES) {
-  await shoot(`${name}-light`, url, { width: 1440, height: 900, dark: false, full: name !== 'briefings' && name !== 'radar' });
+  await shoot(`${name}-light`, url, { width: 1440, height: 900, dark: false, full: !['briefings', 'radar', 'atlas'].includes(name) });
 }
 await shoot('home-dark', '/', { width: 1440, height: 900, dark: true, full: true });
+await shoot('atlas-dark', '/atlas/', { width: 1440, height: 900, dark: true });
 await shoot('feature-dark', PAGES[2][1], { width: 1440, height: 900, dark: true, full: true });
 await shoot('home-phone', '/', { width: 390, height: 844, dark: false, full: true });
 await shoot('feature-phone', PAGES[2][1], { width: 390, height: 844, dark: false, full: true });

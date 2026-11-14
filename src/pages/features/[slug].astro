@@ -4,7 +4,9 @@ import Base from '../../layouts/Base.astro';
 import Facts from '../../components/Facts.astro';
 import Badge from '../../components/Badge.astro';
 import SectionHead from '../../components/SectionHead.astro';
+import AtlasMini from '../../components/AtlasMini.astro';
 import { allFeatures, allConcepts } from '../../lib/data';
+import { buildAtlas } from '../../lib/graph';
 import { SITE, DESK_BY_ID, SOURCE_KIND, href, deskUrl, tagUrl, featureUrl, conceptUrl, formatDate, roadmapUrl, tagLabel, extractRationale, youtubeSearchUrl, learnSearchUrl } from '../../lib/site';
 
 export async function getStaticPaths() {
@@ -30,6 +32,9 @@ const related = d.related
   .filter(Boolean) as { title: string; url: string; meta: string }[];
 const inbound = features.filter((f) => f.data.related.includes(d.slug) && f.data.slug !== d.slug && !d.related.includes(f.data.slug));
 const toc = headings.filter((h) => h.depth === 2);
+const atlas = buildAtlas(features, concepts);
+const atlasNode = atlas.nodes.find((n) => n.id === `f:${d.slug}`);
+const atlasDesk = atlas.desks.find((x) => x.id === d.desk);
 const roadmap = roadmapUrl(d.roadmapId);
 const editUrl = `${SITE.repo}/edit/main/wiki/features/${d.slug}.md`;
 const pdfUrl = href(`/downloads/${d.slug}.pdf`);
@@ -84,6 +89,7 @@ const roadmapSource = d.sources.find((s) => s.kind === 'roadmap');
         {(related.length > 0 || inbound.length > 0) && (
           <>
             <SectionHead title="Related" id="related" />
+            {atlasNode && atlasDesk && <AtlasMini id={atlasNode.id} where={`${atlasDesk.regionLabel} · ${atlasDesk.short}`} links={atlasNode.n} />}
             <ul class="related">
               {related.map((r) => <li><a href={r.url}>{r.title}</a><span class="meta">{r.meta}</span></li>)}
               {inbound.map((f) => <li><a href={featureUrl(f.data.slug)}>{f.data.title}</a><span class="meta">Links here · {(DESK_BY_ID as any)[f.data.desk]?.label ?? f.data.desk}</span></li>)}

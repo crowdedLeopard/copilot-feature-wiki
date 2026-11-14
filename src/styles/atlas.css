@@ -1,0 +1,157 @@
+/* Atlas: the ledger drawn as a brain. Shared by the full page, the home teaser and the briefing panel. */
+
+.atlas-plate {
+  position: relative;
+  background: radial-gradient(ellipse at 50% 42%, var(--atlas-bg-1) 0%, var(--atlas-bg-2) 100%);
+  overflow: hidden;
+}
+.atlas-plate canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; outline: none; }
+.atlas-plate canvas:focus-visible { outline: 2px solid var(--focus); outline-offset: -3px; }
+
+/* Plate corner marks, as on a printed atlas. */
+.atlas-plate .tick { position: absolute; width: 9px; height: 9px; border: 0 solid var(--ink-3); opacity: 0.55; pointer-events: none; }
+.atlas-plate .tick--tl { top: 7px; left: 7px; border-top-width: 1px; border-left-width: 1px; }
+.atlas-plate .tick--tr { top: 7px; right: 7px; border-top-width: 1px; border-right-width: 1px; }
+.atlas-plate .tick--bl { bottom: 7px; left: 7px; border-bottom-width: 1px; border-left-width: 1px; }
+.atlas-plate .tick--br { bottom: 7px; right: 7px; border-bottom-width: 1px; border-right-width: 1px; }
+
+.atlas-hud {
+  position: absolute; pointer-events: none;
+  font-family: var(--font-mono); font-size: 0.64rem; letter-spacing: 0.13em; text-transform: uppercase; color: var(--ink-3);
+  white-space: nowrap;
+}
+.atlas-hud b { color: var(--ink); font-weight: 500; }
+.atlas-hud .dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); margin-right: 0.6em; vertical-align: 1px; }
+.atlas-hud .gap { display: inline-block; width: 1.4em; }
+.atlas-hud--tl { top: 20px; left: 24px; }
+.atlas-hud--tr { top: 20px; right: 24px; }
+.atlas-hud--bl { bottom: 20px; left: 24px; }
+
+/* ----- Full page ----- */
+.atlas-head { padding: 1.5rem 0 1.1rem; }
+.atlas-head .eyebrow { margin-bottom: 0.6rem; }
+.atlas-head h1.display { font-size: clamp(1.7rem, 1.2rem + 1.5vw, 2.45rem); }
+.atlas-head .standfirst { max-width: 62em; font-size: 1.06rem; margin-top: 0.55rem; }
+
+.atlas {
+  --atlas-h: clamp(480px, calc(100vh - 262px), 820px);
+  display: grid; grid-template-columns: minmax(0, 1fr) 316px;
+  border: 1px solid var(--rule); border-radius: var(--radius); background: var(--surface); box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.atlas__stage { height: var(--atlas-h); }
+.atlas__stage canvas { touch-action: none; cursor: grab; }
+.atlas__stage canvas:active { cursor: grabbing; }
+.atlas__tools { position: absolute; left: 20px; bottom: 18px; display: flex; gap: 6px; }
+.atlas__tools button {
+  font-family: var(--font-mono); font-size: 0.64rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ink-2); background: color-mix(in srgb, var(--atlas-label-bg) 82%, transparent); border: 1px solid var(--rule);
+  border-radius: var(--radius); padding: 0.32rem 0.6rem; cursor: pointer; min-width: 2.1rem; line-height: 1.2;
+}
+.atlas__tools button:hover { color: var(--ink); border-color: var(--ink-3); }
+.atlas__tools button[aria-pressed='true'] { color: var(--ink); border-color: var(--ink-3); }
+.atlas__tools button[aria-pressed='true']::before { content: ''; display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); margin-right: 0.5em; vertical-align: 1px; }
+.atlas__loading { position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); pointer-events: none; transition: opacity 0.4s; }
+.atlas[data-ready='true'] .atlas__loading { opacity: 0; }
+
+.atlas__side { border-left: 1px solid var(--rule); height: var(--atlas-h); overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
+.atlas__block { padding: 0.9rem 1.05rem 1rem; border-bottom: 1px solid var(--rule-2); }
+.atlas__block:last-child { border-bottom: 0; }
+.atlas__block > h3 { margin: 0 0 0.55rem; font-family: var(--font-mono); font-weight: 500; font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); display: flex; justify-content: space-between; align-items: baseline; }
+.atlas__block > h3 button { font: inherit; letter-spacing: inherit; text-transform: inherit; background: none; border: 0; padding: 0; color: var(--link); cursor: pointer; }
+
+.atlas__find { position: relative; }
+.atlas__find input { width: 100%; padding: 0.5rem 0.7rem; border: 1px solid var(--rule); border-radius: var(--radius); background: var(--paper); color: var(--ink); font: inherit; font-size: 0.88rem; }
+.atlas__find input:focus { border-color: var(--accent); outline: none; }
+.atlas__hits { list-style: none; margin: 0.4rem 0 0; padding: 0; }
+.atlas__hits button { display: flex; width: 100%; justify-content: space-between; gap: 0.75rem; align-items: baseline; text-align: left; background: none; border: 0; border-top: 1px solid var(--rule-2); padding: 0.4rem 0; cursor: pointer; font-size: 0.86rem; color: var(--ink); }
+.atlas__hits button:hover span:first-child, .atlas__hits button:focus-visible span:first-child { text-decoration: underline; }
+.atlas__hits .k { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); flex: none; }
+
+/* Inspector */
+.insp { min-height: 11.5rem; }
+.insp .eyebrow { font-size: 0.64rem; margin-bottom: 0.45rem; }
+.insp__title { font-family: var(--font-display); font-weight: 500; font-size: 1.22rem; line-height: 1.22; margin: 0; font-variation-settings: 'opsz' 28; }
+.insp__title a { color: var(--ink); text-decoration: none; }
+.insp__title a:hover { text-decoration: underline; text-decoration-color: var(--accent); }
+.insp__sum { margin: 0.45rem 0 0.7rem; color: var(--ink-2); font-size: 0.88rem; line-height: 1.45; }
+.insp__facts { display: flex; flex-wrap: wrap; gap: 0.4rem 0.9rem; align-items: center; margin-bottom: 0.8rem; }
+.insp__go { display: flex; gap: 0.8rem; align-items: center; flex-wrap: wrap; font-size: 0.82rem; }
+.insp__go .btn { font-size: 0.84rem; padding: 0.38rem 0.75rem; }
+.insp__links { list-style: none; margin: 0.9rem 0 0; padding: 0; }
+.insp__links li { border-top: 1px solid var(--rule-2); }
+.insp__links button { display: flex; width: 100%; justify-content: space-between; gap: 0.75rem; align-items: baseline; text-align: left; background: none; border: 0; padding: 0.36rem 0; cursor: pointer; font-size: 0.86rem; line-height: 1.3; color: var(--ink); }
+.insp__links button:hover span:first-child { text-decoration: underline; }
+.insp__links .k { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); flex: none; }
+.insp__idle { color: var(--ink-2); font-size: 0.9rem; line-height: 1.5; margin: 0; }
+.insp__idle + .insp__idle { margin-top: 0.6rem; color: var(--ink-3); font-size: 0.82rem; }
+
+/* Controls */
+.seg { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; border: 1px solid var(--rule); border-radius: var(--radius); overflow: hidden; }
+.seg button { background: none; border: 0; border-left: 1px solid var(--rule); padding: 0.34rem 0; font-size: 0.82rem; color: var(--ink-2); cursor: pointer; }
+.seg button:first-child { border-left: 0; }
+.seg button[aria-pressed='true'] { background: var(--ink); color: var(--paper); }
+.atlas__rows { list-style: none; margin: 0; padding: 0; }
+.atlas__rows button { display: grid; grid-template-columns: 14px 1fr auto; gap: 0.55rem; align-items: baseline; width: 100%; text-align: left; background: none; border: 0; padding: 0.3rem 0; cursor: pointer; color: var(--ink); font-size: 0.88rem; line-height: 1.25; }
+.atlas__rows button .sw { width: 9px; height: 9px; border-radius: 50%; background: var(--c, var(--ink-3)); align-self: center; box-shadow: 0 0 0 1px var(--surface), 0 0 0 2px var(--c, var(--ink-3)); }
+.atlas__rows button .sub { display: block; font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); margin-top: 0.1rem; }
+.atlas__rows button .n { font-family: var(--font-mono); font-size: 0.7rem; color: var(--ink-3); }
+.atlas__rows button[aria-pressed='false'] { color: var(--ink-3); }
+.atlas__rows button[aria-pressed='false'] .sw { background: transparent; box-shadow: 0 0 0 1px var(--ink-3) inset; }
+.atlas__rows button[aria-pressed='false'] .name { text-decoration: line-through; text-decoration-color: var(--rule); }
+.atlas__rows button:hover .name { text-decoration: underline; }
+/* Glyphs double as the key to the marks on the plate. */
+.gl { width: 12px; height: 12px; align-self: center; color: var(--ink-2); }
+.atlas__rows button[aria-pressed='false'] .gl { opacity: 0.35; }
+.atlas__rows .static { display: grid; grid-template-columns: 14px 1fr auto; gap: 0.55rem; align-items: baseline; padding: 0.3rem 0; font-size: 0.88rem; color: var(--ink); }
+.atlas__rows .static .n { font-family: var(--font-mono); font-size: 0.7rem; color: var(--ink-3); }
+
+@media (max-width: 980px) {
+  .atlas { grid-template-columns: 1fr; --atlas-h: clamp(380px, 64vh, 600px); }
+  .atlas__side { border-left: 0; border-top: 1px solid var(--rule); height: auto; overflow: visible; }
+  .atlas-hud--tr { display: none; }
+  .insp { min-height: 0; }
+}
+@media (max-width: 560px) {
+  .atlas { --atlas-h: clamp(340px, 112vw, 560px); }
+  .atlas-hud--tl .dim { display: none; }
+}
+/* The two captions share the top edge, so they give way by the plate's own width, not the window's. */
+.atlas__stage { container-type: inline-size; }
+@container (max-width: 780px) { .atlas-hud--tl .dim { display: none; } }
+@container (max-width: 600px) { .atlas-hud--tr { display: none; } }
+
+/* ----- How to read ----- */
+.lobes { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 0 1.5rem; }
+.lobe { border-top: 1px solid var(--rule-2); padding: 0.8rem 0 0.9rem; display: grid; grid-template-columns: 14px 1fr; gap: 0.6rem; }
+.lobe .sw { width: 9px; height: 9px; border-radius: 50%; background: var(--c); margin-top: 0.42rem; }
+.lobe h3 { margin: 0; font-size: 0.95rem; font-weight: 600; }
+.lobe h3 a { color: var(--ink); text-decoration: none; }
+.lobe h3 a:hover { text-decoration: underline; }
+.lobe .where { font-family: var(--font-mono); font-size: 0.64rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); margin: 0.15rem 0 0.3rem; }
+.lobe p { margin: 0; color: var(--ink-2); font-size: 0.88rem; }
+.atlas-index summary { cursor: pointer; font-size: 0.9rem; color: var(--link); padding: 0.4rem 0; }
+.atlas-index ul { columns: 3 260px; column-gap: 2rem; list-style: none; margin: 0.6rem 0 1.4rem; padding: 0; font-size: 0.9rem; }
+.atlas-index li { break-inside: avoid; padding: 0.22rem 0; }
+.atlas-index h3 { font-family: var(--font-mono); font-weight: 500; font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); margin: 1rem 0 0; }
+
+/* ----- Home teaser ----- */
+.hero--atlas { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.92fr); gap: 2rem; align-items: stretch; }
+.hero--atlas .hero__text { align-self: center; }
+.atlas-teaser { position: relative; display: block; min-height: 380px; border: 1px solid var(--rule); border-radius: var(--radius); text-decoration: none; color: inherit; }
+.atlas-teaser canvas { cursor: pointer; }
+.atlas-teaser .atlas-hud--bl b { border-bottom: 1px solid var(--accent); padding-bottom: 1px; }
+@media (max-width: 980px) {
+  .hero--atlas { grid-template-columns: 1fr; gap: 1.5rem; }
+  .atlas-teaser { min-height: 0; height: clamp(300px, 52vw, 420px); }
+}
+
+/* ----- Plate inside a briefing or concept: the page and what it links to ----- */
+.atlas-mini { position: relative; display: block; height: 300px; margin: 0 0 0.4rem; border: 1px solid var(--rule); border-radius: var(--radius); text-decoration: none; color: inherit; }
+.atlas-mini canvas { cursor: pointer; }
+.atlas-mini .atlas-hud--tl { top: 16px; left: 18px; }
+.atlas-mini .atlas-hud--bl { bottom: 14px; left: 18px; }
+.atlas-mini .atlas-hud--bl b { border-bottom: 1px solid var(--accent); padding-bottom: 1px; }
+@media (max-width: 560px) { .atlas-mini { height: 250px; } .atlas-mini .atlas-hud--tl .dim { display: none; } }
+
+@media print { .atlas, .atlas-teaser, .atlas-mini { display: none !important; } }
