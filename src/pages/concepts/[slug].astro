@@ -2,6 +2,8 @@
 import { render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import SectionHead from '../../components/SectionHead.astro';
+import AtlasMini from '../../components/AtlasMini.astro';
+import { buildAtlas } from '../../lib/graph';
 import { allConcepts, allFeatures } from '../../lib/data';
 import { SITE, SOURCE_KIND, DESK_BY_ID, href, featureUrl, conceptUrl, tagUrl, tagLabel, formatDate } from '../../lib/site';
 
@@ -23,6 +25,7 @@ const related = d.related.map((s) => {
   return null;
 }).filter(Boolean) as { title: string; url: string; meta: string }[];
 const toc = headings.filter((h) => h.depth === 2);
+const atlasNode = buildAtlas(features, concepts).nodes.find((n) => n.id === `c:${d.slug}`);
 ---
 
 <Base title={d.title} description={d.summary} kind="article" current="concepts">
@@ -48,6 +51,7 @@ const toc = headings.filter((h) => h.depth === 2);
         {(uses.length > 0 || related.length > 0) && (
           <>
             <SectionHead title="Briefings that depend on this" id="related" />
+            {atlasNode && <AtlasMini id={atlasNode.id} where="Core · Concept" links={atlasNode.n} />}
             <ul class="related">
               {uses.map((f) => <li><a href={featureUrl(f.data.slug)}>{f.data.title}</a><span class="meta">{(DESK_BY_ID as any)[f.data.desk]?.label ?? f.data.desk} · {f.data.action === 'act-now' ? 'Act now' : `${f.data.risk} risk`}</span></li>)}
               {related.filter((r) => !uses.some((u) => featureUrl(u.data.slug) === r.url)).map((r) => <li><a href={r.url}>{r.title}</a><span class="meta">{r.meta}</span></li>)}

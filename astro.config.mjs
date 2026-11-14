@@ -31,6 +31,8 @@ export default defineConfig({
   site: SITE_URL,
   base: BASE,
   trailingSlash: 'always',
+  // The atlas is the graph view; keep the obvious address working.
+  redirects: { '/graph': `${BASE}/atlas/` },
   integrations: [sitemap()],
   markdown: {
     processor: satteri({ hastPlugins: [baseLinks] }),

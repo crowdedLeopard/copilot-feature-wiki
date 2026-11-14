@@ -3,8 +3,10 @@ import Base from '../layouts/Base.astro';
 import FeatureRow from '../components/FeatureRow.astro';
 import SectionHead from '../components/SectionHead.astro';
 import Badge from '../components/Badge.astro';
+import AtlasTeaser from '../components/AtlasTeaser.astro';
 import { allFeatures, allConcepts, allDigests, byDesk, briefedIds, recentCatalog, stats, catalog } from '../lib/data';
 import { SITE, DESKS, href, featureUrl, deskUrl, conceptUrl, formatDate, shortRoadmapDate } from '../lib/site';
+import { buildAtlas } from '../lib/graph';
 
 const features = await allFeatures();
 const concepts = await allConcepts();
@@ -19,6 +21,7 @@ const latestUpdate = features.map((f) => f.data.updated).sort().at(-1) ?? '';
 const trackedByDesk = new Map<string, number>();
 for (const i of catalog.items) if (i.desk) trackedByDesk.set(i.desk, (trackedByDesk.get(i.desk) ?? 0) + 1);
 const tracked = stats.tracked.toLocaleString('en-GB');
+const atlas = buildAtlas(features, concepts).counts;
 ---
 
 <Base title="Home" kind="home">
@@ -31,17 +34,20 @@ const tracked = stats.tracked.toLocaleString('en-GB');
       <span>Refreshed daily at 06:00 UTC</span>
     </div>
 
-    <section class="hero">
-      <h1 class="display">What changed in Microsoft Copilot, Power Platform and Modern Work, and what to do about it.</h1>
-      <p class="standfirst">
-        Each briefing rates a feature for risk, cost and impact, states its licensing and scope, and sets out the governance
-        steps an administrator or service owner should take, with Microsoft's own documentation cited beside it.
-      </p>
-      <div class="hero__actions">
-        <a class="btn" href={href('/features/')}>Browse all briefings</a>
-        <a class="btn btn--outline" href={href('/features/?action=act-now')}>Only what needs action</a>
-        <a class="btn btn--outline" href={href('/about/')}>How to read the ratings</a>
+    <section class="hero hero--atlas">
+      <div class="hero__text">
+        <h1 class="display">What changed in Microsoft Copilot, Power Platform and Modern Work, and what to do about it.</h1>
+        <p class="standfirst">
+          Each briefing rates a feature for risk, cost and impact, states its licensing and scope, and sets out the governance
+          steps an administrator or service owner should take, with Microsoft's own documentation cited beside it.
+        </p>
+        <div class="hero__actions">
+          <a class="btn" href={href('/features/')}>Browse all briefings</a>
+          <a class="btn btn--outline" href={href('/features/?action=act-now')}>Only what needs action</a>
+          <a class="btn btn--outline" href={href('/about/')}>How to read the ratings</a>
+        </div>
       </div>
+      <AtlasTeaser briefings={atlas.briefings} links={atlas.links} tracked={atlas.tracked} />
     </section>
 
     <SectionHead title="Act now" more={{ href: href('/features/?action=act-now'), label: 'All act-now briefings' }} />

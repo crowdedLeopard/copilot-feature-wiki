@@ -10,6 +10,11 @@ Markdown with its front matter intact.
 
 The site is rebuilt every day at 06:00 UTC by GitHub Actions.
 
+The [Atlas](https://crowdedleopard.github.io/copilot-feature-wiki/atlas/) draws the whole ledger as an
+interactive three-dimensional brain. The six desks are its regions, briefings are the nodes, and the
+lines are the links, shared tags and products that connect them. Roadmap items that are tracked but
+not yet briefed appear as faint points in their desk's region.
+
 ## How it works
 
 The repository follows the [LLM wiki pattern](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f):
@@ -27,6 +32,7 @@ manual and the system prompt, and an append-only log records every run.
 | Data | `data/*.json` | Catalog, work queue, stats and lint output used by the site. |
 | Pipeline | `pipeline/*.mjs` | `ingest`, `compile` (API) or `compile-tasks` + `write-briefing` + `compile-finish` (Claude Code), `lint`, `index`, `digest`, `pdf`, `screenshots`. Shared briefing logic in `pipeline/lib/briefing.mjs`. |
 | Site | `src/`, `astro.config.mjs` | Astro static site. Design tokens in `src/styles/tokens.css`. |
+| Atlas | `src/lib/graph.ts`, `src/lib/brain.ts`, `src/scripts/atlas/` | The ledger drawn as a second brain at `/atlas/`: every briefing, concept, shared tag and product, and the links between them. Built from the wiki at build time, so it follows the daily run. |
 | Taxonomy | `config/taxonomy.mjs` | Desks, product mapping, rating scales. Shared by the pipeline and the site. |
 
 ### The daily run (`.github/workflows/daily.yml`)
