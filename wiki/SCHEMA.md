@@ -408,7 +408,8 @@ standard. One row per control. Each row has:
   center", "Microsoft Purview portal", "Teams admin center", "Microsoft Entra admin center"), the
   navigation path, and the Learn page that gives it. Write the path as the page gives it, with
   " > " between steps, starting after the admin centre's name, and using the page's own labels. Use
-  a plain lower-case word for a step the admin chooses ("environment", "policy", "agent"). Maker-side
+  a plain lower-case word for a step the admin chooses ("environment", "policy", "agent"), and
+  leave no step out: the tab or the item the admin picks on the way is part of the path. Maker-side
   settings count, with surface "Copilot Studio (maker)" or "Power Apps (maker)" and scope maker or
   agent.
 - `api`: the kind (powershell, graph, power-platform-api, pac-cli, azure-cli, rest, other), the
@@ -564,7 +565,11 @@ The pipeline renders these sections, in this order.
   default is, that nothing else limits something, that a thing cannot be done. Where no Microsoft
   page states the default, say that it is not documented. Silence on a page is not a "cannot".
 - **Cost and licensing**: the licence the mechanism needs, any meter and where it is charged, as
-  Microsoft's pages state them. The rule that "none" is a claim applies here as anywhere.
+  Microsoft's pages state them. The rule that "none" is a claim applies here as anywhere. Stay at
+  the level of the mechanism. Do not survey what each product that uses it charges: give a rate,
+  an exemption or a per-product charge only where the mechanism's own page gives it, and
+  otherwise name the page that holds the rates. "The only" and "the one documented case" claim a
+  survey of every product, and are not written.
 - **Risks and limits**: bullets. Where the mechanism does not reach, the limits Microsoft
   documents, and the mistakes that follow from misreading it. Each bullet names the consequence.
 - **Governance controls**: the controls table, by the rules under "Governance controls" above, for
@@ -575,10 +580,12 @@ The pipeline renders these sections, in this order.
   table. A control named only because it is retiring or replaced does not need one.
 - **Open questions**: what Microsoft has not said that a reader needs in order to decide.
 
-Length follows evidence, as for a briefing: usually 700 to 1,200 words. A concept page is a
-reference an administrator returns to, so it has a hard limit: the validator does not accept more
-than 1,500 words across the sections. Where a briefing or another concept page already explains
-something, link to it.
+A concept page is a reference an administrator returns to, so it is shorter than a briefing:
+usually 600 to 1,000 words, with a hard limit. The validator does not accept more than 1,300
+words across the sections. Every number, role, licence and limit on the page is a statement the
+independent check opens a Microsoft page for, and one wrong statement holds the page, so a page
+that covers its mechanism and stops is also the page most likely to be published. Where a
+briefing or another concept page already explains something, link to it.
 
 ### Keeping a concept page current
 

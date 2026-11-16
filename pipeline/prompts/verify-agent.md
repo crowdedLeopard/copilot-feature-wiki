@@ -126,11 +126,15 @@ supported by the page it cites, with a minor whose fix names the other page and 
 How to judge each type:
 
 - **Admin path** (`controls[].ui`, and any path in the prose). The page names this admin centre and
-  gives these steps in this order with these labels. A step that is added, missing from the middle,
-  renamed or in a different place on the cited page is a contradiction. No path on the page is
+  gives these steps in this order with these labels. A step that is added, renamed or in a
+  different place on the cited page is a contradiction, and so is a menu, page, section or setting
+  missing from the middle: the reader would not find the next step. No path on the page is
   unsupported. Do not fail a path for cosmetic differences: bold type, the word "Select", the arrow
   style (the rendered table prints "›" where the front matter has ">"), a lower-case placeholder
-  for something the admin picks ("environment", "policy"), or a final "Save" left off.
+  for something the admin picks ("environment", "policy"), or a final "Save" left off. A path that
+  leaves out only the step where the admin picks what the setting applies to (the environment, the
+  site, the policy, or the tab that lists them) is supported, with a minor whose fix gives the
+  full path.
 - **Command** (`controls[].api`, and any command in the prose). The cmdlet, endpoint or command
   exists on its reference page; for PowerShell, each parameter named in the call is a real
   parameter of that cmdlet and the module is right; for Microsoft Graph and REST, the HTTP method,

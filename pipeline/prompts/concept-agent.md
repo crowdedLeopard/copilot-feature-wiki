@@ -96,6 +96,9 @@ correction. The comment lists each claim that failed and the fix.
   research as a first draft.
 - A correction replaces text. Say what was corrected in `changeNote`, not in sentences added to
   the page.
+- Carry over word for word the sections and control rows that no finding names. The check
+  confirmed them, and every sentence you rewrite or add is a new statement that can fail the next
+  check. A correction that makes the page longer is usually adding where it should be replacing.
 
 **Rewriting a page written before the concept standard.** An existing page with different headings
 and no controls table was written by hand. Keep its scope and whatever its Microsoft sources still
@@ -196,7 +199,7 @@ Notes on particular fields:
   page an `evidence` entry quotes is listed here; the validator names any that are missing.
 - **relatedSlugs.** Only slugs from the brief's list. The briefings that carry the page's tags are
   listed on the page automatically, so name only the few that show the mechanism best.
-- **sections.** Together, 700 to 1,200 words; the validator rejects more than 1,500 and tells you
+- **sections.** Together, 600 to 1,000 words; the validator rejects more than 1,300 and tells you
   the count. A long page is usually repeating what a briefing or another concept page already
   says: link to it. No H1 or H2 headings inside a section; the template adds them. Use bold labels or
   H3. Link to other pages as `/features/<slug>/` and `/concepts/<slug>/`.
@@ -217,6 +220,8 @@ As the verifier:
   take it out.
 - Does any sentence present a preview as the final design, or one product's control as governing
   another product?
+- Does Cost and licensing stay with the mechanism's own licence and meter? A rate or charge for
+  one product that uses the mechanism belongs on that product's page: name it and link.
 - Find every "by default", "left at defaults", "nothing else", "only", "cannot" and "no way to",
   in Why it matters and Risks and limits above all. Does a Microsoft page say it? A conclusion you
   drew because the pages you read did not mention something is not a fact: search for it, and if
@@ -236,7 +241,7 @@ As the administrator:
   consequence? Remove any line that would fit any other concept page unchanged.
 - Is each gap stated once, where I need it? Does any sentence talk about the research ("the pages
   read") when it should talk about the product?
-- Is the page within 1,200 words, or does every paragraph past that carry a cost, a risk or a
+- Is the page within 1,000 words, or does every paragraph past that carry a cost, a risk or a
   control the reader needs? Cut background, history and anything another page already explains.
 - Is it British English in the prose, with Microsoft's names spelled as Microsoft spells them, and
   free of marketing adjectives and exclamation marks?

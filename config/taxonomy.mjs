@@ -93,8 +93,8 @@ export const CONCEPTS = {
   refreshAfterNewBriefings: 6,
   /** ...or when it has not been written or refreshed for this many days. */
   reviewAfterDays: 120,
-  /** The validator rejects a concept page whose sections run past this many words (the standard asks for 700 to 1,200). */
-  maxWords: 1500,
+  /** The validator rejects a concept page whose sections run past this many words (the standard asks for 600 to 1,000). */
+  maxWords: 1300,
 };
 export const ARCHIVE_REASON = {
   cancelled: { label: 'Cancelled by Microsoft', help: 'Microsoft marked the roadmap item as cancelled.' },
