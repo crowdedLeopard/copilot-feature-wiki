@@ -8,7 +8,7 @@ and impact, states its licensing, scope and default state, sets out governance s
 controls, and cites Microsoft's own documentation. Each one can be downloaded as an A4 PDF or as
 Markdown with its front matter intact.
 
-The site is rebuilt four times a day (00:00, 06:00, 12:00 and 18:00 UTC) by GitHub Actions.
+The site is rebuilt every day at 06:00 UTC by GitHub Actions.
 
 The [Atlas](https://crowdedleopard.github.io/copilot-feature-wiki/atlas/) draws the ledger as a map of
 linked pages. Every briefing and concept is a point, grouped by topic, and a line joins two pages when
@@ -39,7 +39,7 @@ manual and the system prompt, and an append-only log records every run.
 
 1. **Ingest** downloads the Microsoft 365 Roadmap, keeps in-scope items, snapshots them to `raw/`,
    and queues items that are new, changed status or were edited by Microsoft.
-2. **Compile** has Claude write or rewrite a fixed number of briefings from the queue (24 by default).
+2. **Compile** has Claude write or rewrite a fixed number of briefings from the queue (12 by default).
    Each run is shared equally across the five topics: refreshes of existing pages first, then one
    item per topic in turn, most admin-relevant first, so a topic with a long queue such as Modern
    Work never waits behind the others. Every briefing is grounded with the
