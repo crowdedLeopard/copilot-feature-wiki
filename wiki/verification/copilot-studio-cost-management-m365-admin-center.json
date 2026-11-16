@@ -1,0 +1,960 @@
+{
+  "slug": "copilot-studio-cost-management-m365-admin-center",
+  "roadmapId": 577834,
+  "title": "Copilot Studio cost controls move into the Microsoft 365 admin center",
+  "status": "needs-correction",
+  "date": "2026-11-16",
+  "version": 2,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "grace",
+    "since": "2026-11-16",
+    "reasons": [
+      "18 blocking findings (claims 14, 19, 21, 26, 27, 37, 50, 51, 54, 57, 58, 62, 63, 64, 65, 68, 69, 71)",
+      "published before the check existed: kept live with a notice while a corrected version is prepared"
+    ]
+  },
+  "counts": {
+    "claims": 73,
+    "confirmed": 50,
+    "unconfirmed": 10,
+    "contradicted": 13,
+    "blocker": 18,
+    "major": 2,
+    "minor": 7
+  },
+  "summary": "Hold: the briefing understates the transition, because Microsoft 365 spending policies replace the covered environments' Power Platform allocations and billing plans, and Microsoft explicitly warns against moving workloads that use AI Builder. It also gives an outdated billing-plan path, misidentifies an access-request setting as a visibility control, and reports automation and precedence information as undocumented when Microsoft documents them.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap item is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is October CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"October CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The four listed products match the roadmap.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft 365\", \"Microsoft 365 admin center\", \"Microsoft Copilot Studio\", \"Microsoft Power Platform governance and administration\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap was modified at 2026-10-29T23:01:00.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-29T23:01:00\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "Microsoft is expanding cost management into the Microsoft 365 admin center for supported Copilot Studio environments and agents.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "With this update, administrators can bring supported Copilot Studio environments and agents under Cost Management spending policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The Power Platform admin center retains Copilot Studio cost management capabilities.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "while retaining Copilot Studio cost management capabilities in the Power Platform admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "Environments and agents are the first planned resource-based policy scopes.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Resource-based policies for environments and agents are the first planned scopes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Scope; Governance guidance",
+      "type": "record",
+      "claim": "Broader user and group policy support is planned for a later phase.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "with broader user and group policy support planned for a later phase.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Governance guidance",
+      "type": "record",
+      "claim": "The update plans cost data in cost management and the agent registry for Microsoft-platform agents and services, including Cowork and Copilot Studio agents.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "this update will introduce cost data into cost management and agent registry for AI services and agents built on Microsoft platforms (e.g., Cowork, Microsoft Copilot Studio agents).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "summary; What's changing",
+      "type": "applicability",
+      "claim": "The same Cost Management spending-policy experience already governs Copilot Chat alongside Cowork.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Copilot Chat\" \"identity-based\" \"spending policies\". Read usage-based-billing-overview-copilot-credits, usage-based-billing-manage-copilot-credits and pay-as-you-go-overview; Chat is referred to a different billing setup.",
+      "severity": "blocker",
+      "fix": "Remove Copilot Chat from the description of workloads already governed by this spending-policy experience. Retain Cowork and Work IQ API, which the cited overview explicitly places here; distinguish the Copilot Chat billing-policy experience at https://learn.microsoft.com/copilot/plan/pay-as-you-go-overview."
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Until now Copilot Studio credit caps, capacity allocation and usage reporting lived only in the Power Platform admin center.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Copilot Studio\" \"Until\" \"cost management\" \"admin center\". Read manage-Copilot-Studio-costs, the billing overview and Power Platform harness guidance; none states this exclusive history.",
+      "severity": "major",
+      "fix": "Remove 'Until now' and 'only'. Say that existing Power Platform capacity allocations and linked billing plans remain effective until a Microsoft 365 resource-based policy covers the scope."
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Governance guidance",
+      "type": "behaviour",
+      "claim": "A resource-based policy can set a Copilot Credit spending limit for an environment or agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs",
+      "quote": "Choose No limit or set a monthly spending limit for the policy. You can also set a per-agent limit so that no single agent covered by the policy uses more than the amount you specify.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Governance guidance",
+      "type": "behaviour",
+      "claim": "A resource-based spending policy selects the billing method for its scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs",
+      "quote": "Use the default billing method or choose an available billing-method override. Review the settings, then create the policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "applicability",
+      "claim": "Identity-based policies govern the people who use Cowork.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "Use this option when you want a policy to apply to the people who use selected agents and services. For example, a group using Cowork.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits to sources."
+    },
+    {
+      "n": 19,
+      "where": "Scope",
+      "type": "applicability",
+      "claim": "Agents built with Agent Builder in Copilot Chat are already governed through these identity-based spending policies.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Agent Builder\" \"identity-based\" \"policies\" and \"Copilot Chat\" \"identity-based\" \"spending policies\". Read spending-policy guidance and pay-as-you-go-overview; neither places Agent Builder agents under this policy contract.",
+      "severity": "blocker",
+      "fix": "Remove the Agent Builder identity-based-policy assertion. If a distinction is needed, link to https://learn.microsoft.com/copilot/plan/pay-as-you-go-overview and describe its documented Copilot Chat billing-policy setup separately."
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The agent registry exposes ownership and usage information.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/builder/agent-registry#admin-experience-viewing-copilot-studio-agents",
+      "quote": "Review observability data (usage, performance, errors) ... Reassign ... Transfer agent ownership to a different user or team",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/microsoft-agent-365/builder/agent-registry for the existing registry details; describe planned cost data separately without asserting a particular layout."
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Why it matters; Open questions; rationale: risk",
+      "type": "behaviour",
+      "claim": "The change is additive rather than a migration, leaving overlapping Power Platform spending controls in effect for covered resources.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs",
+      "quote": "For resources covered by the spending policy, Copilot Credit management moves to the Microsoft 365 admin center, replacing their Power Platform admin center capacity allocations and linked billing plans.",
+      "severity": "blocker",
+      "fix": "Replace 'additive rather than a migration' with 'Opt-in transition: for covered resources, Microsoft 365 policies replace Power Platform capacity allocations and linked billing plans; uncovered environments retain their existing configuration.' Update the overlap rationale accordingly."
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Governance guidance",
+      "type": "consistency",
+      "claim": "The briefing treats the feature as not yet landed without reporting that its cited Learn article already documents the live setup experience.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs",
+      "quote": "Briefing: 'before the feature lands'. Learn: 'Manage Copilot Studio spending in the Microsoft 365 admin center by creating policies for environments or individual agents.'",
+      "severity": "minor",
+      "fix": "State both: the supplied roadmap still says In development with an October CY2026 target, while Learn already documents creating the policies. Do not infer tenant availability or a staggered rollout from the status mismatch."
+    },
+    {
+      "n": 23,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Copilot Credits are the common meter behind most Microsoft AI consumption.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Copilot Credits\" \"most\" \"AI consumption\". Read the credit overview and dashboard comparison; both describe eligible services, not most Microsoft AI consumption.",
+      "severity": "major",
+      "fix": "Replace 'most Microsoft AI consumption' with 'eligible Microsoft AI experiences enabled by usage-based billing', as stated at https://learn.microsoft.com/copilot/implement/usage-based-billing-compare-dashboard-views."
+    },
+    {
+      "n": 24,
+      "where": "Why it matters",
+      "type": "cost",
+      "claim": "Microsoft Copilot harness agents consume credits during creation, before publication.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness",
+      "quote": "Microsoft Copilot harness agents | No | Billed for all usage. Creation and runtime activities consume Copilot Credits regardless of the user's license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Why it matters",
+      "type": "cost",
+      "claim": "Autonomous agent consumption is charged through the environment where the agent runs rather than the individual end user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness",
+      "quote": "Copilot Credits are charged to the environment where the agent runs, from prepaid capacity or through the environment's pay-as-you-go billing plan, and not to the individual makers or users who run agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Why it matters",
+      "type": "applicability",
+      "claim": "Without a Microsoft 365 spending policy, the only guard rails are Power Platform allocations.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness",
+      "quote": "Set an agent-level monthly limit. | You want to prevent one agent from consuming an excessive amount of capacity. | Configure notifications and stop usage when the agent reaches its limit.",
+      "severity": "blocker",
+      "fix": "Replace the exclusivity claim with the documented combination of environment allocations, tenant-capacity draw settings, agent limits with Stop usage, and pay-as-you-go billing configuration. The page itself also lists an existing agent-limit control."
+    },
+    {
+      "n": 27,
+      "where": "Why it matters",
+      "type": "date",
+      "claim": "Finance sees consumption on an Azure invoice weeks later.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Copilot Studio Azure invoice consumption weeks later billing delay. Read usage-based-billing-compare-dashboard-views; it documents finalized monthly billing and daily cost updates, not a fixed weeks-later invoice delay.",
+      "severity": "blocker",
+      "fix": "Remove 'weeks later'. Say 'The Azure bill reflects finalized billable consumption at month close, while Azure Cost Management updates billed amounts daily and usage can take up to 24 hours to appear', citing https://learn.microsoft.com/copilot/implement/usage-based-billing-compare-dashboard-views."
+    },
+    {
+      "n": 28,
+      "where": "Why it matters; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Consumption reporting can be broken down by policy, user, agent and service.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits",
+      "quote": "Review consumption by spending policy, user, group, agent, service, and funding source.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "A Microsoft 365 spending policy can take precedence over a Power Platform allocation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs",
+      "quote": "If a spending policy in the Microsoft 365 admin center covers the environment or agent, its controls take precedence over the Power Platform admin center controls for that usage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "front matter: defaultState; licensing.notes; Risk assessment: Change & support",
+      "type": "default",
+      "claim": "These policies are admin-opt-in and existing Power Platform configuration continues if no covering policy is created.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs",
+      "quote": "To opt in, create a Microsoft 365 admin center resource-based spending policy. Until then, your existing Power Platform admin center configuration remains in effect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Autonomy & actions; rationale: impact",
+      "type": "behaviour",
+      "claim": "Configured spending limits can constrain the governed agents' consumption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs",
+      "quote": "You can also set a per-agent limit so that no single agent covered by the policy uses more than the amount you specify.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Security & identity; Scope",
+      "type": "role",
+      "claim": "Global Administrators and Billing Administrators can configure billing methods.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
+      "quote": "Global administrator and Billing administrator roles can add, select, and change billing methods, and set billing methods in policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Security & identity; Scope",
+      "type": "role",
+      "claim": "AI Administrators and License Administrators can edit policies, limits and alerts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
+      "quote": "AI administrator and License administrator roles can edit spending policies, manage limits and alerts, and billing methods. However, they can't create spending policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Scope; Governance guidance",
+      "type": "role",
+      "claim": "AI Reader, Global Reader and supported reader roles can review consumption without configuration permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
+      "quote": "AI Reader, Global Reader, License Administrator, and other supported reader-based roles can view consumption dashboards and reports.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Security & identity; rationale: risk",
+      "type": "cost",
+      "claim": "An administrator can change a policy's billing method from prepaid capacity to a linked Azure subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
+      "quote": "You can update the billing method for an existing spending policy. Open the spending policy that you want to modify and update its billing method.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "Dashboard totals can be point-in-time views and are not invoices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-compare-dashboard-views",
+      "quote": "It's not the same as an invoice view. Dashboard totals and exports might be point-in-time views and can refresh at different intervals.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The control is included with Microsoft 365 administration and is free.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Copilot Studio Cost Management admin center free no additional license cost controls; \"Copilot\" \"Cost Management\" \"no additional\". Read Studio cost-management prerequisites, setup, overview and billing comparison; none states this control is free.",
+      "severity": "blocker",
+      "fix": "Remove 'The control is included with Microsoft 365 administration' and 'The control is free'. State that the feature-specific prerequisites name administrative roles but do not state a separate control licence or price; retain the documented workload consumption charges."
+    },
+    {
+      "n": 38,
+      "where": "front matter: licensing.model and cost; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The governed workloads use consumption-based billing measured in Copilot Credits, supporting the consumption model and variable cost rating.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits",
+      "quote": "Microsoft's usage-based billing model charges customers based on actual usage, measured in Copilot Credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "cost",
+      "claim": "Pay-as-you-go charges are billed to a linked Azure subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-compare-dashboard-views",
+      "quote": "Pay-as-you-go bills eligible Copilot Credit usage to the linked Azure subscription without an upfront credit commitment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "A Copilot Credit Pre-purchase Plan (P3) can be bought through the Azure portal or Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
+      "quote": "You can purchase a Copilot Credit Pre-Purchase Plan (P3) from the Microsoft 365 admin center ... You can also complete this step through the Azure portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "P3 is a one-year commitment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-compare-dashboard-views",
+      "quote": "Copilot Credit pre-purchase plans provide discounted commit units for eligible Copilot Credit usage during a one-year term.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "P3 credits have discounted rates compared with pay-as-you-go.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
+      "quote": "Pre-purchasing annual credits provides discounted rates compared to pay-as-you-go pricing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Usage beyond P3 credits falls through to pay-as-you-go.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
+      "quote": "any usage beyond your prepaid credits automatically continues on a pay-as-you-go basis.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Prepaid capacity packs are licence-based purchases.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-compare-dashboard-views",
+      "quote": "Capacity packs are license-based purchases available through the Microsoft 365 Marketplace.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Cost and licensing; Governance guidance",
+      "type": "behaviour",
+      "claim": "Administrators can allocate capacity-pack credits through the Power Platform admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-compare-dashboard-views",
+      "quote": "Admins manage and allocate capacity-pack credits in the Power Platform admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Azure Cost Management shows pay-as-you-go charges and P3 purchase or amortized costs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-compare-dashboard-views",
+      "quote": "Azure Cost Management shows pay-as-you-go charges and purchase or amortized cost information for Copilot Credit pre-purchase plans (P3) and Microsoft Agent pre-purchase plans (P3).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Azure Cost Management does not show consumption against prepaid capacity packs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-compare-dashboard-views",
+      "quote": "Azure Cost Management doesn't show consumption against Prepaid Capacity packs. Use the Microsoft 365 admin center or Power Platform admin center, as applicable, to monitor Prepaid Capacity Pack credit usage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Cowork, Copilot Studio and Work IQ API consumption appear under Microsoft Copilot Studio in Azure.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-compare-dashboard-views",
+      "quote": "Copilot Cowork, Copilot Studio, and Work IQ API consumption appears under the Microsoft Copilot Studio service rather than separate services for each experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "The admin center supplies workload and policy attribution that is not available from a single common service line on the Azure invoice.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-compare-dashboard-views",
+      "quote": "It doesn't show the same user-level or spending-policy context as the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Scope; Governance guidance: At rollout",
+      "type": "applicability",
+      "claim": "Production Copilot Studio environments and high-traffic agents can be brought under the policies without identifying any excluded workload class.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs#choose-what-the-policy-covers",
+      "quote": "Resource-based policies created in the Microsoft 365 admin center don't apply to AI Builder features or the credits they consume. ... Don't move resources, agents, workflows or environments that use AI Builder to these policies.",
+      "severity": "blocker",
+      "fix": "Add the AI Builder exclusion to Scope and the rollout checklist: do not move resources, agents, workflows or environments that use AI Builder to these policies. Inventory this dependency before creating production policies."
+    },
+    {
+      "n": 51,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "Worldwide standard multi-tenant is the only cloud available at launch.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Copilot Studio\" \"cost management\" \"GCC\". Read the Studio cost article and billing overview; neither states an exclusive launch-cloud restriction. The roadmap only lists Worldwide.",
+      "severity": "blocker",
+      "fix": "Replace 'Worldwide (standard multi-tenant) only at launch' with 'The roadmap lists Worldwide (Standard Multi-Tenant); it does not list government clouds.' Do not turn an omitted roadmap cloud into an exclusion."
+    },
+    {
+      "n": 52,
+      "where": "Scope; Open questions; Governance guidance",
+      "type": "absence",
+      "claim": "No government-cloud rollout dates for this specific cost-management feature were found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Copilot Studio\" \"cost management\" \"GCC\"; Copilot Studio spending policy alerts recipients email shared mailbox supported environments government GCC. Opened Studio cost management and billing overview; roadmap lists Worldwide only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Why it matters; Governance guidance",
+      "type": "behaviour",
+      "claim": "Resource-based policies support alert thresholds and recipients.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs",
+      "quote": "Configure alert thresholds and recipients as needed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance guidance: At rollout",
+      "type": "applicability",
+      "claim": "Administrators should turn on user-level threshold notifications for the resource-based Copilot Studio policies just created.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Copilot Studio spending policy alerts recipients email shared mailbox supported environments government GCC. Read resource-policy setup and usage-based-billing-manage-copilot-credits: user notifications require a per-user limit in identity-policy guidance.",
+      "severity": "blocker",
+      "fix": "For Copilot Studio resource policies, recommend documented policy thresholds and recipients only. If retaining user-level notifications, label them as an identity-policy control requiring a monthly per-user limit, not a verified control for these resource policies."
+    },
+    {
+      "n": 55,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The spending-policy experience has an option to automatically include future supported services and agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits",
+      "quote": "The Auto-apply new services setting is enabled by default for spending policies. Administrators can turn off the setting for policies where future services and agents should be reviewed before they're added.",
+      "severity": "minor",
+      "fix": "Say 'Review Auto-apply new services, which is on by default for documented identity-based spending policies.' Distinguish it from All environments, the resource-policy option that includes future environments, rather than suggesting an unverified resource-policy service toggle."
+    },
+    {
+      "n": 56,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Microsoft 365 billing and spending-policy configuration is at Copilot > Cost Management > Configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
+      "quote": "In the Microsoft 365 admin center, go to Copilot > Cost management > Configuration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "/beta/copilot/costManagement (Cost Management API) is an equivalent callable automation control for this row, including resource-based Copilot Studio spending policies.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Copilot Cost Management API\" \"resource\" \"policy\". Read API overview and spendingpolicy-create: the root is a namespace, and concrete policy types are allUsersSpendingPolicy and selectedGroupsSpendingPolicy, not resource policies.",
+      "severity": "blocker",
+      "fix": "Do not present the namespace as a call or promise resource-policy equivalence. Move the Graph overview to a qualified general-API note; only list a verified operation with HTTP method and version for its documented scope. Resource-policy automation is not established by this reference."
+    },
+    {
+      "n": 58,
+      "where": "controls[1].ui; controls[1].governs; Governance controls table",
+      "type": "admin-path",
+      "claim": "The cited setup page documents Copilot > Settings > All Settings > Access to usage-based billing experiences as a control over who can see the experiences.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/copilot/implement/request-access-usage-based-billing-experiences",
+      "quote": "Go to Copilot > Settings > All Settings. ... Select Access to usage-based billing experiences. ... Your selection controls who can request access. It does not complete the usage-based billing setup by itself.",
+      "severity": "blocker",
+      "fix": "Keep the path but change docs to https://learn.microsoft.com/copilot/implement/request-access-usage-based-billing-experiences and governs to 'Who can request a spending policy'. Note Global Administrator. The currently cited setup page lacks this path, and the control is not a visibility switch."
+    },
+    {
+      "n": 59,
+      "where": "controls[1].api; Governance controls table",
+      "type": "absence",
+      "claim": "No automation equivalent was found for configuring who can request a spending policy through Access to usage-based billing experiences.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Access to usage-based billing experiences\" \"API\". Opened request-access-usage-based-billing-experiences and the Cost Management API overview; neither documents this discovery/request-eligibility setting's automation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The agent monthly credit limit is at Licensing > Copilot Studio > Manage Agents > agent > Set limit in the Power Platform admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness#set-a-monthly-limit-for-an-agent",
+      "quote": "In the Power Platform admin center, go to Licensing > Copilot Studio. ... Select Manage Agents. ... Select the agent, and then select Set limit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "controls[2].api; Governance controls table",
+      "type": "absence",
+      "claim": "No explicitly documented agent-monthly-limit automation equivalent was found for this Power Platform control.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Copilot Studio\" \"monthly\" \"agent\" \"limit\" \"API\"; \"Copilot Studio\" \"agent\" \"resource threshold\". Read harness, capacity guidance, pac licensing and Resource Threshold API; generic resource thresholds are not explicitly mapped to agent monthly limits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "controls[3].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The Power Platform environment billing-plan setup path is Billing > Billing plans > Set up pay-as-you-go.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-platform/admin/pay-as-you-go-set-up",
+      "quote": "In the navigation pane, select Licensing. ... select Pay-as-you-go plans. The Billing plans page is displayed. ... Select New billing plan. ... Select Azure subscription.",
+      "severity": "blocker",
+      "fix": "Replace the front matter and rendered path with 'Licensing > Pay-as-you-go plans > New billing plan > Azure subscription'. 'Set up pay-as-you-go' on this page is a maker-side Power Apps action, not the stated admin-center path."
+    },
+    {
+      "n": 63,
+      "where": "controls[3].api; Governance controls table",
+      "type": "absence",
+      "claim": "Microsoft has not documented automation for creating a Power Platform billing plan and linking an environment.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-platform/developer/cli/reference/licensing",
+      "quote": "pac licensing create-billing-policy | (Preview) Creates the billing policy at tenant level. ... pac licensing add-billing-policy-environment | (Preview) Link billing policy ID with environments.",
+      "severity": "blocker",
+      "fix": "Replace null with documented Power Platform CLI billing-policy creation and environment-linking operations from this reference, including their parameters, or split the row into those operations. Mark the CLI surface Preview and cite the licensing reference."
+    },
+    {
+      "n": 64,
+      "where": "controls[3].note; Governance controls table",
+      "type": "role",
+      "claim": "An Environment Administrator or Power Platform Administrator role is sufficient to set up the environment's Azure-linked billing plan.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-platform/admin/pay-as-you-go-set-up",
+      "quote": "You need to have permissions to create new resources and register resource providers in the subscription—or have the ability to work with another user who has these permissions.",
+      "severity": "blocker",
+      "fix": "Qualify the note: Environment admin or Power Platform admin, plus Azure permissions to create resources and register resource providers, or assistance from someone with those permissions. For Environment admins, editing/linking is limited to policies they created and environments they administer."
+    },
+    {
+      "n": 65,
+      "where": "Governance controls prose",
+      "type": "absence",
+      "claim": "The Cost Management API is the only programmatic surface and the Power Platform controls have no documented CLI equivalent.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-platform/developer/cli/reference/licensing",
+      "quote": "pac licensing update-allocations-by-environment | (Preview) Update currency allocations and enforcement rules for an environment. ... pac licensing create-billing-policy | (Preview) Creates the billing policy at tenant level.",
+      "severity": "blocker",
+      "fix": "Remove the exclusivity and blanket no-CLI statements. State that Power Platform documents preview CLI and REST surfaces for billing policies and environment allocations, while Graph's documented policy contract covers user/group audiences rather than verified Copilot Studio resource-policy automation."
+    },
+    {
+      "n": 66,
+      "where": "Governance controls prose",
+      "type": "availability",
+      "claim": "The Microsoft Graph Cost Management API is in beta.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview",
+      "quote": "APIs under the /beta version are subject to change. Use of these APIs in production applications is not supported.",
+      "severity": "minor",
+      "fix": "Retain the beta qualification and add that Microsoft does not support production application use."
+    },
+    {
+      "n": 67,
+      "where": "Governance controls prose",
+      "type": "behaviour",
+      "claim": "Power Platform continues to provide capacity allocation and downloadable consumption reporting alongside the Microsoft 365 experience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness",
+      "quote": "As a Power Platform administrator, you can use controls in the Power Platform admin center to allocate prepaid credits, limit consumption, monitor usage ... Report: Download detailed consumption data for additional analysis.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not published which resource kinds are supported in the first phase.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs#choose-what-the-policy-covers",
+      "quote": "Apps and workflows don't currently appear in the agent selector, so you can't select an individual app or workflow. To cover them, create a policy for the environment where they're deployed.",
+      "severity": "blocker",
+      "fix": "Replace the blanket documentation gap with the published distinction: individual agents are selectable; apps/workflows need environment coverage; AI Builder usage is excluded and Microsoft says not to move workloads using it. Limit any remaining question to environment-type details not stated."
+    },
+    {
+      "n": 69,
+      "where": "Open questions; Why it matters",
+      "type": "absence",
+      "claim": "Precedence between Microsoft 365 spending policies and Power Platform allocations remains unconfirmed.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs#understand-policy-hierarchy",
+      "quote": "Microsoft 365 admin center before Power Platform admin center. If a spending policy in the Microsoft 365 admin center covers the environment or agent, its controls take precedence over the Power Platform admin center controls for that usage.",
+      "severity": "blocker",
+      "fix": "Remove this open question. Document that Microsoft 365 controls take precedence for covered usage, replacing Power Platform allocations and linked billing plans; removing the covering policy restores the applicable Power Platform policy automatically."
+    },
+    {
+      "n": 70,
+      "where": "Open questions",
+      "type": "absence",
+      "claim": "Shared-mailbox eligibility for policy alert recipients is not explicitly settled by the documentation reviewed.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio spending policy alerts recipients email shared mailbox supported environments government GCC. Read setup, resource-policy steps and Graph overview: recipients include stakeholders; Graph requires a real tenant user, but shared-mailbox eligibility is not stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "The agent registry has a documented cost column for administrators to review.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"agent registry\" \"cost\" \"ownership\". Opened agent-registry-overview and searched its full text for cost/Cost/usage/ownership. The roadmap promises cost data but neither it nor the registry page specifies a cost column.",
+      "severity": "blocker",
+      "fix": "Replace 'Review the agent registry cost column quarterly' with 'Review per-agent consumption in Cost Management quarterly; check the registry for the cost data planned by the roadmap as it becomes documented.' Do not invent a column label."
+    },
+    {
+      "n": 72,
+      "where": "Governance guidance: Before rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The checklist tells administrators to inventory current environment capacity allocations, but the controls table omits the environment capacity-allocation control.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: 'Inventory Copilot Studio environments and the billing method each uses today ... (capacity pack, pay-as-you-go, none).' Table: billing policies, request setting, agent limit and billing plan; no capacity-allocation row.",
+      "severity": "minor",
+      "fix": "Add an environment-capacity row sourced to https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness: Licensing > Copilot Studio > Manage Copilot Credits > environment. Note that the covered scope moves to Microsoft 365 policy control."
+    },
+    {
+      "n": 73,
+      "where": "front matter: action",
+      "type": "consistency",
+      "claim": "The prepare action fits an opt-in new control that changes nothing until an administrator configures it.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "action: prepare. Body: 'Policies are opt-in. If nobody creates one, nothing changes'. The standard assigns review to an optional new control that changes nothing until chosen, except a control closing high-rated exposure.",
+      "severity": "minor",
+      "fix": "Set action to 'review'. The page rates risk medium, not high, and Microsoft confirms unchanged existing configuration until opt-in."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-16T13:32:36.501Z",
+    "summary": {
+      "links": 8,
+      "unreachable": 0,
+      "uiPaths": 4,
+      "uiPathsWithMissingWords": 1,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 1,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=577834",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/implement/usage-based-billing-compare-dashboard-views",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness#set-a-monthly-limit-for-an-agent",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/pay-as-you-go-set-up",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Usage-based billing, billing method, spending policies, limits and alerts",
+        "docs": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Cost Management",
+          "Configuration"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Usage-based billing, billing method, spending policies, limits and alerts",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview",
+        "reachable": true,
+        "token": "/beta/copilot/costManagement",
+        "found": false
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Who can see the usage-based billing experiences",
+        "docs": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Settings",
+          "All Settings",
+          "Access to usage-based billing experiences"
+        ],
+        "missing": [
+          "All Settings",
+          "Access to usage-based billing experiences"
+        ]
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Monthly credit limit for an individual agent",
+        "docs": "https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness#set-a-monthly-limit-for-an-agent",
+        "reachable": true,
+        "segments": [
+          "Licensing",
+          "Copilot Studio",
+          "Manage Agents",
+          "Set limit"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Pay-as-you-go billing plan for an environment",
+        "docs": "https://learn.microsoft.com/power-platform/admin/pay-as-you-go-set-up",
+        "reachable": true,
+        "segments": [
+          "Billing",
+          "Billing plans",
+          "Set up pay-as-you-go"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

@@ -1,0 +1,220 @@
+---
+title: "Dynamics 365 Business Central: design custom AI agents with the AI development toolkit"
+slug: "dynamics-365-business-central-copilot-and-agents-envision-and-design-ai-agents-in-business"
+roadmapId: 578068
+topic: "m365-copilot"
+products: ["Microsoft Copilot (Microsoft 365)","Dynamics 365 Business Central"]
+summary: "Business Central adds an in-product designer for custom AI agents, documented as a sandbox-only preview. Agents use Copilot Credits, but their billing events are not yet published. Administrators decide whether to activate it."
+status: "in-development"
+releasePhase: ["General Availability","Preview"]
+clouds: ["Worldwide (Standard Multi-Tenant)"]
+platforms: ["Web"]
+targetDate: "October CY2026"
+previewDate: "February CY2026"
+risk: "medium"
+cost: "variable"
+impact: "low"
+defaultState: "unknown"
+action: "review"
+licensing:
+  model: "consumption"
+  notes: "Learn lists the AI development toolkit among billable agent capabilities that use Copilot Credits, with prepaid capacity or pay-as-you-go. Credit rates for it are not yet published. No separate licence is named on the pages read."
+audiences: ["service-owner","finops","security"]
+tags: ["dynamics-365","business-central","agents","copilot-credits","pay-as-you-go","least-privilege"]
+sources:
+  - title: "Microsoft 365 Roadmap 578068"
+    url: "https://www.microsoft.com/microsoft-365/roadmap?id=578068"
+    kind: "roadmap"
+  - title: "Designing and coding agents (preview)"
+    url: "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-overview"
+    kind: "learn"
+  - title: "Create and activate an agent (preview)"
+    url: "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-agent-create"
+    kind: "learn"
+  - title: "Set up agent permissions and profiles (preview)"
+    url: "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-permissions-profiles"
+    kind: "learn"
+  - title: "Export or import an agent configuration"
+    url: "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-export-import"
+    kind: "learn"
+  - title: "Configure Copilot and agent capabilities"
+    url: "https://learn.microsoft.com/dynamics365/business-central/enable-ai"
+    kind: "learn"
+  - title: "Manage consumption-based billing for agent capabilities"
+    url: "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/administration/tenant-admin-center-manage-consumption-billing"
+    kind: "learn"
+  - title: "Manage Copilot Credits and capacity for Copilot Studio"
+    url: "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity"
+    kind: "learn"
+videos: []
+related: ["copilot-credits","agent-identity"]
+controls:
+  - governs: "Whether the Custom Agent (agent design) capability is active in a Business Central environment"
+    scope: "environment"
+    ui:
+      surface: "Business Central"
+      path: "Copilot & agent capabilities > select the feature > Activate or Deactivate"
+      docs: "https://learn.microsoft.com/dynamics365/business-central/enable-ai"
+    api: null
+    note: "Reached through Search (Alt+Q). Needs SUPER permission or a listed admin licence. Design capability sits under Production ready previews."
+  - governs: "What a designed agent can see and do (profile and permission sets)"
+    scope: "agent"
+    ui:
+      surface: "Business Central"
+      path: "Agent > Create > Create agent wizard > Permissions > Manage permissions"
+      docs: "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-agent-create"
+    api: null
+    note: "The wizard's Profile (role) step sets visible UI. Agents never exceed the permissions of the user who scheduled the task."
+  - governs: "Cross-geography processing of Copilot and agent data"
+    scope: "environment"
+    ui:
+      surface: "Business Central"
+      path: "Copilot & agent capabilities > Allow data movement toggle"
+      docs: "https://learn.microsoft.com/dynamics365/business-central/enable-ai"
+    api: null
+    note: "General control for Copilot and agent capabilities; appears only when relevant. Learn does not say it applies to Custom Agent."
+  - governs: "Copilot Credit capacity available to the environment's agents"
+    scope: "environment"
+    ui:
+      surface: "Power Platform admin center"
+      path: "Licensing > Products > Copilot Studio > Summary > Manage Capacity"
+      docs: "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity"
+    api: null
+    note: "Applies once the Business Central environment is linked to the Power Platform environment, which only internal admins can do. Capacity is not allocatable per feature."
+confidence: "medium"
+created: "2026-11-16"
+updated: "2026-11-16"
+roadmapModified: "2026-10-23T22:46:03"
+changes:
+  - date: "2026-11-16"
+    note: "First briefing for this item: sandbox-only preview of agent design in Business Central, with the billing events for custom agents not yet published."
+version: 1
+verification:
+  status: "held"
+  date: "2026-11-16"
+  version: 1
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 80
+  confirmed: 74
+  unconfirmed: 0
+  contradicted: 6
+  attempts: 1
+---
+
+## What's changing
+
+Microsoft is adding an in-product way to design custom AI agents in Dynamics 365 Business Central. It is part of the AI development toolkit, and a user creates an agent with a wizard, writes its instructions in natural language, assigns a profile and permissions, and runs it by creating tasks for it.
+
+The Learn page for the toolkit describes it as prerelease documentation for a preview feature. It states that the toolkit is available in sandbox environments only, from version 27.2, and that it is meant for product owners, domain experts, consultants and developers prototyping before they build in AL extensions. Learn also says the feature currently supports only English. An agent is Disabled by default after creation and must be activated; the page treats the agent as a user in Business Central that can be given permission sets.
+
+The roadmap description adds that these custom agents use the same agent runtime as the built-in Sales Order and Payables agents, and that agent definitions can be exported and imported as JSON files. The Learn page for exporting describes the exported definition as an .xml file instead. The roadmap description also says there are no built-in triggers for custom agents yet.
+
+The roadmap item lists the status as In development, with a target of October CY2026 and a preview date of February CY2026, for Worldwide (Standard Multi-Tenant) on the web. These are Microsoft's targets: the target month has passed at the time of writing (November 2026) and the status has not moved.
+
+## Why it matters
+
+This change does not touch every user, but it brings agent creation into a system that holds financial records. Whoever holds the agent-design permission can build an agent that reads and changes Business Central data, and its runs consume Copilot Credits from capacity that the whole tenant shares.
+
+If nobody acts, the outcome depends on a default that Microsoft's pages do not settle (see Scope). The practical stance is to decide now who may design agents, which sandboxes they may use, and which credit pool pays, rather than find out from a capacity notification.
+
+## Risk assessment
+
+**Data exposure**
+- Sandboxes can hold customer data: Learn says the sandbox can include sandbox copies of production data. An agent run there can read whatever its profile and permissions expose, so treat a sandbox with production-derived data as sensitive.
+- Learn lists compliance or security evaluation as a case where the toolkit should not be used.
+
+**Security & identity**
+- An agent is a Business Central user with its own permission sets, and Learn says agents cannot have more permissions than their creating user. When a task is scheduled, it runs with the intersection of the user's and the agent's permissions.
+- If the agent raises a user intervention request, the task continues with the permissions of the user who responds, who may not be the task creator.
+
+**Autonomy & actions**
+- Agents interact with the UI their profile shows. A custom profile with page customisation flags such as `InsertAllowed` and `DeleteAllowed` limits what they can change; Learn recommends custom profiles built for agents.
+- The roadmap description says no built-in triggers (email, events, schedules) exist for custom agents yet, so runs start from tasks that people create.
+
+**Change & support**
+- Learn describes a gradual move of agents to GPT-5.3-chat as the default model and recommends re-evaluating agents when the model updates, because behaviour and accuracy may change.
+- Preview documentation is subject to change, so settings and limits described here may move before general availability.
+
+## Cost and licensing
+
+Cost is metered, not a fixed licence. The Learn billing page lists Designing and coding agents (preview) among the billable agent capabilities, which use Copilot Credits. It says the credits an agent consumes depend on its design, how often it is used and the features it uses. The roadmap description makes the same point for custom agents.
+
+The same billing page also says billing events for the AI development toolkit will be announced in a future update, so no credit rates are published for it at the time of writing (November 2026). Rates exist for the Sales Order Agent and Payables Agent only; do not apply them to custom agents.
+
+Business Central supports prepaid capacity (Copilot Credit packs) and pay-as-you-go, and consumes prepaid capacity first when both exist. Without extra setup, environments draw on the default Power Platform environment in the tenant. Capacity is shared with other Business Central environments and other Microsoft services on the tenant, and cannot be allocated to a single feature. When the quota is depleted, the AI capability is unavailable until more capacity is added.
+
+The toolkit page lists billing setup for agent capabilities in the tenant as a prerequisite and names no licence. Learn does not publish a price for this feature.
+
+## Scope
+
+The toolkit is documented for sandbox environments only, from version 27.2, and not for production. Learn separately says the Agent SDK for AL is available in production environments from version 28.1; that is a different capability from the in-product designer.
+
+Prerequisites on the Learn page: the Custom Agent capability enabled, the AGENT - ADMIN permission set to design agents (AGENT - DIAGNOSTICS additionally shows execution cost and the serialised page in task log entries), a sandbox, and billing set up for agent capabilities.
+
+The record lists Worldwide (Standard Multi-Tenant) and the web client. Default state: the Business Central page on configuring capabilities says Copilot and agent capabilities are active by default when available in preview or generally available, while the toolkit pages tell administrators to enable the Custom Agent capability if the Agent icon is absent. Microsoft does not reconcile these, so the default is shown as not stated.
+
+## Governance guidance
+
+### Before rollout
+- Decide whether the Custom Agent capability should be active in each environment, and check its status on the Copilot & agent capabilities page (first control row).
+- Identify which people hold the AGENT - ADMIN and AGENT - DIAGNOSTICS permission sets and remove them from anyone who does not need to design agents.
+- Confirm which sandboxes hold copies of production data, since agent runs there can read it within the agent's permissions.
+- Agree who pays: check prepaid Copilot Credit capacity or pay-as-you-go, and the Power Platform environment linked to each sandbox (fourth control row).
+
+### At rollout
+- Create custom profiles for agents and restrict page actions and insert or delete rights before assigning them in the Create agent wizard.
+- Grant agents only the permission sets their task needs, remembering that each task runs with the intersection of the user's and the agent's permissions.
+- Allocate a bounded amount of prepaid capacity to the Power Platform environment linked to the sandbox where agents are tested.
+
+### After rollout
+- Watch Copilot Credit consumption in the Power Platform admin center, and in Application Insights telemetry if it is set up for the environment.
+- Re-test agents after model changes announced for Business Central agents.
+- Export agent definitions for backup before changing instructions, and store them under version control as the roadmap recommends.
+
+## Governance controls
+
+<p class="controls__lead">Where each control lives. The left column says what the setting decides and how far it reaches; the middle gives the admin centre and the exact path; the right gives the script, API or command that does the same. <em>Not yet documented</em> means Microsoft has not published a control for that surface, so there is nothing to configure yet.</p>
+
+<table class="controls">
+<thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
+<tbody>
+<tr><td data-label="Control"><strong>Whether the Custom Agent (agent design) capability is active in a Business Central environment</strong><br><small>Environment</small><br><small class="controls__note">Reached through Search (Alt+Q). Needs SUPER permission or a listed admin licence. Design capability sits under Production ready previews.</small></td><td data-label="Admin UI"><strong>Business Central</strong><br>Copilot &amp; agent capabilities › select the feature › Activate or Deactivate <a href="https://learn.microsoft.com/dynamics365/business-central/enable-ai" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>What a designed agent can see and do (profile and permission sets)</strong><br><small>Agent</small><br><small class="controls__note">The wizard's Profile (role) step sets visible UI. Agents never exceed the permissions of the user who scheduled the task.</small></td><td data-label="Admin UI"><strong>Business Central</strong><br>Agent › Create › Create agent wizard › Permissions › Manage permissions <a href="https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-agent-create" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Cross-geography processing of Copilot and agent data</strong><br><small>Environment</small><br><small class="controls__note">General control for Copilot and agent capabilities; appears only when relevant. Learn does not say it applies to Custom Agent.</small></td><td data-label="Admin UI"><strong>Business Central</strong><br>Copilot &amp; agent capabilities › Allow data movement toggle <a href="https://learn.microsoft.com/dynamics365/business-central/enable-ai" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Copilot Credit capacity available to the environment's agents</strong><br><small>Environment</small><br><small class="controls__note">Applies once the Business Central environment is linked to the Power Platform environment, which only internal admins can do. Capacity is not allocatable per feature.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Products › Copilot Studio › Summary › Manage Capacity <a href="https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+</tbody>
+</table>
+
+Everything here is configured inside Business Central or in the Power Platform admin center; Microsoft Learn documents no API for the Copilot & agent capabilities page at the time of writing (November 2026). Changing a capability can take time to reach users: some take effect immediately and others after users sign out and in.
+
+The Copilot & agent capabilities page needs SUPER permission or one of the listed administrator licences, and Learn says there are no granular permissions yet for only specific administrators to configure Copilot. Design rights come from the AGENT - ADMIN permission set; the page on assigning permissions in Business Central covers how to grant it.
+
+The Allow data movement toggle appears only when a capability might process data outside the environment's Azure geography. Learn does not say whether it affects the Custom Agent capability. The capacity row limits credits for the linked environment, but it cannot be set per feature, and the quota for this feature's own billing is not yet published.
+
+## Open questions
+
+- What billing events and Copilot Credit rates will apply to custom agents built with the AI development toolkit? The billing page says they will be announced in a future update.
+- Is the Custom Agent capability active by default, or must an administrator activate it? The capability page and the toolkit pages read differently.
+- When will the designer move beyond sandbox-only preview, and will production use be allowed? The roadmap target of October CY2026 has passed with the status still In development.
+- Is the exported agent definition JSON, as the roadmap states, or XML, as the Learn page states? Watch the Learn export page.
+- Does the Allow data movement toggle govern custom agents? Watch the Configure Copilot and agent capabilities page.
+
+<!-- rationale
+risk: Medium. Designed agents act through the Business Central UI under an assigned profile and permission sets, and sandboxes can hold copies of production data; Learn documents the capability as sandbox-only preview.
+cost: Variable. Business Central bills agent capabilities in Copilot Credits (prepaid capacity or pay-as-you-go), but Learn says billing events for the AI development toolkit will be announced in a future update.
+impact: Low. Learn aims the designer at product owners, domain experts, consultants and developers working in sandboxes; most Business Central users will not see it in day-to-day work.
+-->
+
+<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
+The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
+- [contradicted, blocker] controls[1].note; Governance controls table / behaviour: Agents never exceed the permissions of the user who scheduled the task. | Found: If the agent makes a user intervention request, the task continues proceeding with the permissions of the user that responded to that intervention request. This user might be different from the task creator. | Fix: Qualify the control note: 'Initially runs with the intersection of the scheduling user's and agent's permissions; after intervention, the responding user's permissions apply.' The body already documents this exception; carry it into the table. | Source: https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-permissions-profiles
+- [supported, minor] Risk assessment: Change & support / behaviour: Learn describes a gradual transition of Business Central agents to GPT-5.3-chat as their default model. | Found: agents in Business Central are moving to GPT-5.3-chat as the default language model for version 28 and onwards. | Fix: Retain the source's scope: version 28 onwards, with UK, India and Australia excluded from the initial rollout. This avoids implying every version 27.2 sandbox covered by this briefing participates. | Source: https://learn.microsoft.com/dynamics365/business-central/enable-ai
+- [contradicted, blocker] Cost and licensing / cost: Published Business Central agent rates exist only for Sales Order Agent and Payables Agent. | Found: Each uploaded receipt consumes 50 Copilot Credits, regardless of how many lines the resulting expense has. | Fix: Replace 'Rates exist for the Sales Order Agent and Payables Agent only' with 'The page publishes rates for Sales Order Agent, Payables Agent and Expense Agent, but not the AI development toolkit.' Retain the warning not to transfer those rates to custom agents. | Source: https://learn.microsoft.com/dynamics365/business-central/dev-itpro/administration/tenant-admin-center-manage-consumption-billing
+- [supported, minor] controls[3].governs; Governance controls; Governance guidance: At rollout / cost: Allocating prepaid capacity to the linked Power Platform environment limits Business Central credit consumption to that capacity. | Found: Once completed, consumption of the Copilot Credits in the Business Central environment is limited by the capacity allocated to the linked Power Platform environment. | Fix: Report the additional qualification at https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity#manage-capacity: overage settings can draw from tenant capacity or pay-as-you-go. To describe a bounded prepaid pool, say to disable those overage sources; allocation alone is not the whole platform control. | Source: https://learn.microsoft.com/dynamics365/business-central/dev-itpro/administration/tenant-admin-center-manage-consumption-billing
+- [contradicted, blocker] front matter: defaultState; Why it matters; Scope; Open questions / default: The Custom Agent capability's default is not stated because the configuration and toolkit pages do not reconcile it. | Found: Copilot and agent capabilities are active by default when they're available in preview or generally available. | Fix: Set defaultState to 'on' for capability availability and explain that capability availability still requires design permissions and billing setup, while individual created agents start Disabled. Remove the claimed default conflict: 'enable the capability' and 'if the icon isn't present' do not state a contrary default. | Source: https://learn.microsoft.com/dynamics365/business-central/enable-ai
+- [contradicted, blocker] controls[3].api; Governance controls table; Governance controls: opening paragraph / absence: No API or automation is documented for environment Copilot Credit capacity allocation. | Found: you can manage Copilot credit allocations with code by using the Power Platform API and the administration (Admin) SDKs. | Fix: Replace controls[3].api=null with the documented REST allocation operation: PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01, with scope.environmentId, allocatedEntitlements entitlementId MCSMessages and allocation.quantity in the body. Cite this tutorial, preserve its authentication/role requirements and TenantPool enforcement qualification, and remove the UI-only claim from the prose. | Source: https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations
+- [supported, minor] Governance controls: assigning permissions / behaviour: The Business Central assigning-permissions article explains how to grant permission sets to users. | Found: You can assign permissions sets to users in two ways: From the User Card page, by selecting permission sets to assign to the user. | Fix: Add https://learn.microsoft.com/dynamics365/business-central/ui-define-granular-permissions to sources and link the assigning-permissions reference in this paragraph. | Source: https://learn.microsoft.com/dynamics365/business-central/ui-define-granular-permissions
+- [contradicted, minor] Governance guidance: Before rollout; controls / consistency: The checklist tells administrators to inventory and remove human users' design and diagnostics permission sets, but no control row covers that user access. | Found: Identify which people hold the AGENT - ADMIN and AGENT - DIAGNOSTICS permission sets and remove them from anyone who does not need to design agents. | Fix: Add a user-scope row for who may design agents or inspect diagnostics. Use Business Central > Users > user > Edit > User Permission Sets, documented at https://learn.microsoft.com/dynamics365/business-central/ui-define-granular-permissions#to-assign-a-permission-set-on-a-user-card. The existing agent-scope row controls the agent's permissions, not the human designer's.
+- [contradicted, minor] Governance guidance: After rollout; controls / consistency: The checklist tells administrators to monitor consumption, but the capacity-allocation row does not show the monitoring control. | Found: Watch Copilot Credit consumption in the Power Platform admin center, and in Application Insights telemetry if it is set up for the environment. | Fix: Add a monitoring row using Power Platform admin center > Licensing > Products > Copilot Studio > Environments > environment > Copilot Credits capacity, citing https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity. Note the optional Business Central Application Insights telemetry with the consumption-billing source.
+-->

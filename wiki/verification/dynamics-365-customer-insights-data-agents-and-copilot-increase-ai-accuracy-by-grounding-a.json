@@ -1,0 +1,942 @@
+{
+  "slug": "dynamics-365-customer-insights-data-agents-and-copilot-increase-ai-accuracy-by-grounding-a",
+  "roadmapId": 577814,
+  "title": "Customer Insights - Data: MCP server grounds agents in unified customer profiles and insights",
+  "status": "held",
+  "date": "2026-11-16",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-16",
+    "reasons": [
+      "6 blocking findings (claims 45, 46, 47, 63, 66, 71)"
+    ]
+  },
+  "counts": {
+    "claims": 73,
+    "confirmed": 66,
+    "unconfirmed": 0,
+    "contradicted": 7,
+    "blocker": 6,
+    "major": 0,
+    "minor": 1
+  },
+  "summary": "Hold: the consent instructions skip selecting the gateway permission, and the controls table presents service-principal creation as equivalent to granting consent. The briefing also understates published Copilot Studio consumption billing and incorrectly treats connector data-policy coverage as undocumented for the Copilot Studio connection.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap targets general availability in November CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"November CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap preview target is June CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"June CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists only Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [ \"Worldwide (Standard Multi-Tenant)\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [ \"Web\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [ \"General Availability\", \"Preview\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap associates this item with Microsoft Copilot (Microsoft 365) and Dynamics 365 Customer Insights - Data.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [ \"Microsoft Copilot (Microsoft 365)\", \"Dynamics 365 Customer Insights - Data\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 2026-10-22T23:45:47.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-22T23:45:47\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap says the feature is enabled for admins, makers and marketers automatically.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Enabled for admins/makers/marketers automatically",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "title; summary; What's changing",
+      "type": "behaviour",
+      "claim": "The Model Context Protocol server exposes Customer Insights capabilities as callable tools for agents and chat clients.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-tools",
+      "quote": "The Customer Insights Model Context Protocol (MCP) server exposes Dynamics 365 Customer Insights - Data and select Customer Insights - Journeys capabilities as callable tools for LLM agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Agents can resolve Dataverse contacts and leads to unified customer profiles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-tools-reference",
+      "quote": "Resolves a unified customer ID from a record identifier in an ingested source system.\nCall `list_data_sources` first to find valid source entity names, such as `contact`, `lead`, or a custom table.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "summary; What's changing",
+      "type": "behaviour",
+      "claim": "Agents can read a customer's Customer Insights - Data segment memberships.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-tools-reference",
+      "quote": "`get_customer_segments` | Get Customer Segments | Lists the Customer Insights - Data segments a customer belongs to | Customer Insights - Data | Yes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "summary; What's changing",
+      "type": "behaviour",
+      "claim": "Agents can read calculated customer measures.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-tools-reference",
+      "quote": "Returns calculated customer measures and KPIs, such as lifetime value, order counts, and engagement scores.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "summary; What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "Agents can retrieve predictions including churn probability and customer lifetime value.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-tools-reference",
+      "quote": "Returns machine learning predictions for a unified customer, such as churn probability, predicted lifetime value, propensity scores, and next-best-product suggestions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Agents can retrieve cluster membership, such as a household.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-tools-reference",
+      "quote": "`get_cluster_information` | Get Cluster Information | Returns cluster membership, such as a household, and other members | Customer Insights - Data | Yes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "Why it matters; rationale: risk",
+      "type": "behaviour",
+      "claim": "Unified profiles combine Dataverse records with external data such as contract or loyalty information.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-tools",
+      "quote": "Customer Insights - Data matches the lead and contact records and creates a unified customer profile that combines Dynamics 365 data with external contract data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "admin-path",
+      "claim": "In Copilot Studio, makers use the agent's Tools page, Add a tool, the MCP filter, and the search term Dynamics 365 CX Customer Insights.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-agent365-tooling-gateway",
+      "quote": "Go to the Tools page for your agent, and then select Add a tool.\n3. Select the MCP filter.\n4. Search for `Dynamics 365 CX Customer Insights`.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Microsoft documents external-client connections through Agent 365 Tooling Gateway for Visual Studio Code, GitHub Copilot CLI, Cursor, ChatGPT and Claude Code.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-agent365-tooling-gateway",
+      "quote": "Connect supported external MCP clients, such as Visual Studio Code, GitHub Copilot CLI, Cursor, ChatGPT, and Claude Code",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The tools requiring Customer Insights - Data are read-only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-tools-reference",
+      "quote": "`create_journey` is the only tool that writes data. It isn't read-only, destructive, or idempotent, so calling it twice creates two journeys. Every other tool only reads.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "One MCP server serves both Customer Insights - Data and Customer Insights - Journeys.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-tools-reference",
+      "quote": "One MCP server serves both Customer Insights - Data and Customer Insights - Journeys, but each tool works with a specific app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The create_journey tool writes Customer Insights - Journeys data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-tools-reference",
+      "quote": "Validates a complete journey JSON payload, enriches it, validates the enriched payload again, and then creates the Customer Insights - Journeys journey record.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The create_journey tool is not idempotent and retrying can create a duplicate journey.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-tools-reference",
+      "quote": "It isn't idempotent, so retrying a failed call can create a duplicate journey. Have your agent confirm the outcome before it retries.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Profile tools read Dataverse virtual entities reflecting live unified customer data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-tools-reference",
+      "quote": "They read from Dataverse virtual entities, which reflect the live unified customer data that Customer Insights - Data creates, including its segments, measures, predictions, and clusters.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Get Customer Details returns personal profile attributes and source records identifying which source supplied winning unified values.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-tools-reference",
+      "quote": "Each source record includes the non-system attributes from the source entity, how those attributes map to unified profile attributes, and a flag that identifies which source contributed the winning value for each unified field.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Microsoft warns that connections to non-Dynamics 365 services allow data to leave the Dynamics 365 FedRAMP High boundary.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-agent365-tooling-gateway",
+      "quote": "Enabling connections between Dynamics 365 and non-Dynamics 365 services, including Microsoft or external services, allows data to leave the Dynamics 365 FedRAMP High boundary.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
+      "type": "role",
+      "claim": "Microsoft asks the tenant administrator to confirm security, compliance, residency and governance requirements before enabling connections.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-agent365-tooling-gateway",
+      "quote": "Before you enable MCP server connections for your organization, your tenant administrator should confirm that these connections meet your data security, compliance, residency, and governance requirements.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Security & identity; rationale: risk",
+      "type": "behaviour",
+      "claim": "Tool authorization uses the calling user's context.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-tools-reference",
+      "quote": "Authorization is enforced inside the tool logic using the caller's user context.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Security & identity; Governance controls",
+      "type": "applicability",
+      "claim": "Row-level security restricts the data returned by the tools.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-tools-reference",
+      "quote": "Data-level security | Row-level security makes sure users only reach data they're authorized to see",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "Tool execution checks underlying entity privileges.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-tools-reference",
+      "quote": "Tool-level authorization | Each tool checks entity-specific privileges, such as read access to consent purposes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The server never escalates privileges implicitly.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-tools-reference",
+      "quote": "The MCP server never escalates privileges implicitly. Tools act as facades and never do anything beyond what the calling user is permitted to do.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Security & identity; Change & support; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Missing tools can result from the calling user lacking privileges on underlying Dataverse tables.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-agent365-tooling-gateway",
+      "quote": "Tools are missing from the agent | The calling user lacks privileges for the underlying Dataverse tables | Check the user's security role privileges.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The documented gateway connection is protected by OAuth.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-agent365-tooling-gateway",
+      "quote": "Agent 365 Tooling Gateway is an OAuth 2.0-protected resource.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Security & identity; Governance guidance: At rollout",
+      "type": "applicability",
+      "claim": "Using the /.default scope requires admin consent granted in advance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-agent365-tooling-gateway",
+      "quote": "The `/.default` scope doesn't support incremental or dynamic user consent, so admin consent must be granted in advance in the customer tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Security & identity; Governance guidance: At rollout",
+      "type": "applicability",
+      "claim": "Users can consent to the named McpServers.D365CustomerInsights.All permission if tenant user-consent policy permits it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-agent365-tooling-gateway",
+      "quote": "`McpServers.D365CustomerInsights.All` is user-consentable. If your client requests that named permission instead of `/.default`, each person can consent for themselves the first time they sign in, as long as your tenant allows user consent for apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Security & identity; Governance guidance: At rollout",
+      "type": "applicability",
+      "claim": "External clients use their own Entra client apps, which must be allowed to call the gateway.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-agent365-tooling-gateway",
+      "quote": "Each of these clients signs in with its own Microsoft Entra client app, so a tenant admin still needs to allow that client to call the gateway.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "A valid gateway token without the Customer Insights permission causes 403 Forbidden; Microsoft recommends checking the scp claim.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-agent365-tooling-gateway",
+      "quote": "If calls are denied, decode the token and check that the `scp` claim contains `McpServers.D365CustomerInsights.All`.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Omitting /mcp/environments/ from the server URL causes a 404 response.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-agent365-tooling-gateway",
+      "quote": "The `/mcp/environments/` path segment is required. If you leave it out, the request returns `404 RouteNotFound`.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Using a tenant ID in place of the environment ID causes a 400 EndpointInvalid response.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-agent365-tooling-gateway",
+      "quote": "`400 EndpointInvalid`, with the message `Environment id ... is invalid.` | The `/environments/` segment holds a tenant ID or a malformed GUID",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Each environment needs its own connector configuration because the server URL is environment-specific.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-agent365-tooling-gateway",
+      "quote": "The server URL is specific to the environment, so each environment needs its own connector configuration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Customer Insights is licensed per tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/data/paid-license",
+      "quote": "Customer Insights is licensed per tenant and includes multiple capabilities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Additional Customer Insights capacity can be purchased.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/data/paid-license",
+      "quote": "You can purchase more capacity and licenses to increase the default quota.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The feature overview lists Dataverse-table access as its sole prerequisite and names no MCP server licence there.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-tools",
+      "quote": "## Prerequisites\n\nThe user must have access to the Dataverse tables.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "A separate Customer Insights MCP server licence is not published, so the feature-specific licensing model is unknown.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Customer Insights MCP server licensing pricing meter Copilot Studio tool calls; \"Customer Insights\" \"MCP\" \"license\" \"pricing\". Opened: Use tools, tools reference, gateway connection, Purchase a license, and Copilot Studio Billing rates and management; no separate server licence stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No separate meter or charge specifically for the Customer Insights MCP server was found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Customer Insights MCP server licensing pricing meter Copilot Studio tool calls; \"MCP\" \"Copilot Credits\" \"tool\" billing. Opened: Customer Insights MCP overview, reference, gateway, paid-license, and Copilot Studio billing pages. No separate Customer Insights MCP execution rate stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Cost and licensing; rationale: cost; Open questions",
+      "type": "absence",
+      "claim": "Copilot Studio billing for agents that call this server is not documented and remains entirely a question for Microsoft.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
+      "quote": "Agents incur charges for generative answer responses unless the agent is created in Agent Builder in Microsoft 365 and the response doesn't leverage tenant graph grounding.",
+      "severity": "blocker",
+      "fix": "Separate unpublished server-specific execution pricing from published agent billing. State that Copilot Studio agent usage follows its published Copilot Credits billing and Microsoft 365 Copilot inclusion conditions at https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management. For the Microsoft Copilot harness, https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview explicitly includes MCP tools in consumption. Retain only the narrower open question about a separate Customer Insights server charge or feature-specific rate."
+    },
+    {
+      "n": 46,
+      "where": "front matter: cost; rationale: cost",
+      "type": "consistency",
+      "claim": "The low cost rating means only indirect costs are known, with admin time and an existing Customer Insights licence the only supported costs.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
+      "quote": "Low. The only cost the sources show is admin time and the existing per-tenant Customer Insights licence; / Copilot Credits are the unit that measures agent usage.",
+      "severity": "blocker",
+      "fix": "Account for Copilot Studio consumption rather than rating the whole briefing as indirect-cost-only. Set cost to variable for metered agent usage, name Copilot Credits, and explain the published Microsoft 365 Copilot inclusion conditions. Keep separate Customer Insights MCP execution pricing explicitly unknown; do not infer a feature-specific tool-call rate."
+    },
+    {
+      "n": 47,
+      "where": "Cost and licensing: Indirect cost",
+      "type": "behaviour",
+      "claim": "Customer Insights - Data profiles must already exist for the tools to return anything.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-tools-reference",
+      "quote": "The consent service can run independently of a full Customer Insights installation, so these tools are available even in environments where only Dynamics 365 Sales or Contact Center is deployed.",
+      "severity": "blocker",
+      "fix": "Replace the sentence with: 'Profile lookups need unified Customer Insights - Data profiles; consent, journey and email tools have different prerequisites and do not need a unified customer ID.' The reference also documents list_data_sources, so do not claim every Data tool needs an existing profile."
+    },
+    {
+      "n": 48,
+      "where": "Scope: Users and licences",
+      "type": "licensing",
+      "claim": "Customer profile tools require Customer Insights - Data and access to their backing Dataverse tables.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-tools-reference",
+      "quote": "For the customer profile tools, Customer Insights - Data.\nAccess to the Dataverse tables that back the tools you plan to call.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Scope: Users and licences",
+      "type": "licensing",
+      "claim": "Consent tools require Customer Insights - Journeys or Shared Consent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-tools-reference",
+      "quote": "For the consent tools, Customer Insights - Journeys or a Dynamics 365 environment with Shared Consent deployed, for example, Dynamics 365 Sales with Shared Consent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Scope: Users and licences; Risk assessment: Autonomy & actions",
+      "type": "licensing",
+      "claim": "Journey and email tools require Customer Insights - Journeys.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-tools-reference",
+      "quote": "The journey and email tools need Customer Insights - Journeys",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Scope: Roles; Governance controls",
+      "type": "role",
+      "claim": "The System Administrator role is required to configure the MCP server.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-agent365-tooling-gateway",
+      "quote": "The System Administrator role, to configure the MCP server",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Scope: Roles; controls[2].note",
+      "type": "role",
+      "claim": "Manual setup or external-client connection requires tenant admin or delegated admin-consent permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-agent365-tooling-gateway",
+      "quote": "Tenant admin or delegated admin-consent permissions, to set up the server manually or to connect an external MCP client",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Governance guidance: At rollout; Governance controls",
+      "type": "role",
+      "claim": "A tenant admin provisions the gateway service principal if it does not exist.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-agent365-tooling-gateway",
+      "quote": "Before a client app can request a token for it, the gateway service principal must exist in the customer tenant.\n\nAs a tenant admin, run one of the following commands.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[0].ui; Governance guidance: Before rollout; Governance controls table",
+      "type": "admin-path",
+      "claim": "The Microsoft 365 admin center path to the tools registry is Agents > Tools > Registry.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/agent-tools-overview",
+      "quote": "In the left navigation pane, select Agents > Tools > Registry.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[0].api; Governance controls table",
+      "type": "absence",
+      "claim": "An API or automation equivalent for blocking this server in the tenant tools registry is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 agents tools registry block unblock MCP server Microsoft Graph API PowerShell; \"MCP\" \"registry\" \"block\" \"API\" \"Graph\". Opened Tools overview and Customer Insights gateway; read Manage plugins, skills, and MCP servers search excerpts. No matching registry API documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "summary; controls[0].governs; controls[0].note; Governance controls; rationale: risk",
+      "type": "applicability",
+      "claim": "Registry Block and Unblock control tenant-wide agent access to the Customer Insights MCP server.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-agent365-tooling-gateway",
+      "quote": "A tenant admin can check whether the server is available, or block it, in the Microsoft 365 admin center under Agents > Tools > Registry.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[0].note; Scope: Rollout; Why it matters",
+      "type": "availability",
+      "claim": "Whether the server appears in the catalogue depends on registration and whether it is blocked.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-agent365-tooling-gateway",
+      "quote": "The server isn't in the Copilot Studio tools catalog | The server isn't registered or is blocked in the tenant tools registry",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Makers reach per-agent MCP tool selection through Tools > select the MCP server > Allow all.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/mcp-add-components-to-agent",
+      "quote": "Go to the Tools tab for your agent.\n2. Select the MCP server from the list of tools.\nAll tools are turned on by default when you add an MCP server. The Allow all toggle is turned on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "controls[1].api; Governance controls table",
+      "type": "absence",
+      "claim": "An automation equivalent for the Copilot Studio per-agent Allow all and individual-tool toggles is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio MCP Allow all tool selection API automation; \"Copilot Studio\" \"MCP\" \"Allow all\" \"API\". Opened Add tools and resources from an MCP server; searched results cover UI selection or different products, not an API for these per-agent toggles.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[1].note; Governance guidance: At rollout; Governance controls table",
+      "type": "behaviour",
+      "claim": "Turning off Allow all exposes individual tool toggles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/mcp-add-components-to-agent",
+      "quote": "Turn off the Allow all toggle. Toggles become available for each of the individual tools.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "controls[1].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "Tool-selection changes require Save and Publish to become available to the agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/mcp-add-components-to-agent",
+      "quote": "Select Save. To make newly added or removed tools available to the agent, select Publish.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "controls[1].note; Governance guidance: At rollout; Governance controls table",
+      "type": "default",
+      "claim": "After Allow all is turned off, newly added server tools are off by default for that agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/mcp-add-components-to-agent",
+      "quote": "When you turn off Allow all, any new tools added to the MCP server are turned off by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Client-app consent follows API permissions > Add a permission > APIs my organization uses > Grant admin consent.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-agent365-tooling-gateway",
+      "quote": "4. Select APIs my organization uses.\n5. Search for the Agent 365 Tooling Gateway app by using the app ID.\n6. Add the `McpServers.D365CustomerInsights.All` delegated permission.\n7. Select Grant admin consent.",
+      "severity": "blocker",
+      "fix": "On the client app, replace the path with 'API permissions > Add a permission > APIs my organization uses > Agent 365 Tooling Gateway (search by app ID) > McpServers.D365CustomerInsights.All (delegated permission) > Grant admin consent'. Include the missing app-selection and permission-addition steps from the cited gateway page; granting consent is a subsequent action, not the next step from the API search page."
+    },
+    {
+      "n": 64,
+      "where": "controls[2].api; Governance controls table",
+      "type": "command",
+      "claim": "New-MgServicePrincipal -AppId \"<ATG-app-id>\" is the documented PowerShell command to provision the gateway service principal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-agent365-tooling-gateway",
+      "quote": "As a tenant admin, run one of the following commands.\nNew-MgServicePrincipal -AppId \"<ATG-app-id>\"\nMicrosoft Entra creates the Agent 365 Tooling Gateway service principal under Enterprise applications in the customer tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "controls[2].note; Governance controls table",
+      "type": "command",
+      "claim": "The gateway page also documents az ad sp create --id <ATG-app-id> for service-principal provisioning.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-agent365-tooling-gateway",
+      "quote": "As a tenant admin, run one of the following commands.\n\naz ad sp create --id <ATG-app-id>",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "controls[2].governs; controls[2].ui; controls[2].api; Governance controls table lead",
+      "type": "consistency",
+      "claim": "The consent UI and New-MgServicePrincipal are equivalent surfaces for the combined gateway-provisioning and permission-consent control.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-agent365-tooling-gateway",
+      "quote": "Run the commands in this section instead. If you set the server up manually, grant admin consent on your own client app, as described later in this article.",
+      "severity": "blocker",
+      "fix": "Split the combined row into gateway service-principal provisioning and client-app delegated-permission consent. Keep New-MgServicePrincipal on the provisioning row and the corrected API permissions path on the consent row. State explicitly that creating the gateway service principal does not grant McpServers.D365CustomerInsights.All to a client; do not label the two actions as equivalents."
+    },
+    {
+      "n": 67,
+      "where": "summary; controls[1].governs; controls[1].scope; Governance controls",
+      "type": "applicability",
+      "claim": "The maker-side tool selection changes which tools one agent may use, rather than tenant-wide availability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/mcp-add-components-to-agent",
+      "quote": "If you don't want to use all the tools offered by an MCP server, you can selectively turn off MCP server tools directly in your agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Tool availability controls select tools, while access to returned customer data remains governed by Dataverse privileges and row-level security.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-tools-reference",
+      "quote": "Row-level security makes sure users only reach data they're authorized to see\nAuthorization is enforced inside the tool logic using the caller's user context.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "The Customer Insights MCP pages do not give a navigation path for configuring Dataverse security roles or row-level security.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Customer Insights\" \"MCP\" \"security roles\" \"configure\". Opened the MCP overview, full tools reference and gateway connection page. They require and discuss Dataverse privileges but give no security-role configuration path; surrounding Dataverse role guidance exists.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "A data policy regulating Power Platform connectors also regulates access to MCP servers and their tools in Copilot Studio.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/mcp-add-components-to-agent",
+      "quote": "Access to MCP servers in Copilot Studio relies on Power Platform connectors for connectivity. This condition means that if a data policy regulates Power Platform connectors, it also regulates access to the MCP server and its tools for your agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not confirmed that Power Platform data policies apply when Customer Insights is connected to a Copilot Studio agent through the gateway.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/mcp-add-components-to-agent",
+      "quote": "The process is the same, whether you're adding prebuilt Microsoft MCP connectors or an MCP server to which you configured a connection.",
+      "severity": "blocker",
+      "fix": "Remove the unsupported exception for the Copilot Studio gateway connection. State that the cited Copilot Studio MCP documentation applies connector data policies to both prebuilt and configured MCP connections, which includes the documented Customer Insights Copilot Studio connection. Do not extend that coverage to external MCP clients; any remaining open question should be confined to those clients or to a particular policy configuration."
+    },
+    {
+      "n": 72,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: impact",
+      "type": "default",
+      "claim": "Using the server is maker opt-in: it must be attached to an agent, subject to registration, access and tenant controls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-agent365-tooling-gateway",
+      "quote": "When you register the Customer Insights MCP server in your tenant, it appears in the Copilot Studio tools catalog.\nSelect the Customer Insights MCP server in the results, and then select Add.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Governance guidance: Before rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist tells administrators to review Dataverse security-role privileges, but that control has no table row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Review security role privileges on the Dataverse tables behind the tools for the intended users / Dataverse security roles and row-level security, which have no row here",
+      "severity": "minor",
+      "fix": "Add a controls row for Dataverse security-role privileges, which the checklist instructs readers to review. The schema allows naming an existing control without inventing a feature-specific path; obtain the role-management path from Dataverse documentation, and do not describe an unresearched surface as nonexistent."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-16T13:32:38.476Z",
+    "summary": {
+      "links": 8,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=577814",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-tools",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-tools-reference",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-agent365-tooling-gateway",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/manage/agent-tools-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/mcp-add-components-to-agent",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/customer-insights/data/paid-license",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether agents can use the Customer Insights MCP server at all (tenant block or unblock)",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/manage/agent-tools-overview",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "Tools",
+          "Registry"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which of the server's tools an individual agent may call",
+        "docs": "https://learn.microsoft.com/microsoft-copilot-studio/mcp-add-components-to-agent",
+        "reachable": true,
+        "segments": [
+          "Tools",
+          "select the MCP server",
+          "Allow all"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Gateway service principal and consent for the McpServers.D365CustomerInsights.All permission",
+        "docs": "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-agent365-tooling-gateway",
+        "reachable": true,
+        "segments": [
+          "API permissions",
+          "Add a permission",
+          "APIs my organization uses",
+          "Grant admin consent"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Gateway service principal and consent for the McpServers.D365CustomerInsights.All permission",
+        "docs": "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-agent365-tooling-gateway",
+        "reachable": true,
+        "token": "New-MgServicePrincipal",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

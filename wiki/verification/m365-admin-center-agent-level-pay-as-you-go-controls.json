@@ -1,0 +1,858 @@
+{
+  "slug": "m365-admin-center-agent-level-pay-as-you-go-controls",
+  "roadmapId": 496363,
+  "title": "Microsoft 365 admin center: agent-level controls for pay-as-you-go",
+  "status": "needs-correction",
+  "date": "2026-11-16",
+  "version": 2,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "grace",
+    "since": "2026-11-16",
+    "reasons": [
+      "7 blocking findings (claims 13, 19, 22, 29, 39, 49, 57)",
+      "published before the check existed: kept live with a notice while a corrected version is prepared"
+    ]
+  },
+  "counts": {
+    "claims": 63,
+    "confirmed": 51,
+    "unconfirmed": 3,
+    "contradicted": 9,
+    "blocker": 7,
+    "major": 1,
+    "minor": 20
+  },
+  "summary": "Hold: the briefing treats the newer Cost Management spending policies as implemented controls for Copilot Chat and SharePoint agents, although Microsoft documents those services separately. In particular, leaving an agent outside a resource-based policy does not guarantee that it cannot incur charges. The default state and executable API call also need correction.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; front matter: products; What's changing",
+      "type": "record",
+      "claim": "This roadmap item concerns agent-level pay-as-you-go controls in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft 365 Admin Center: Agent-Level Controls for Pay-as-you-go",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is April CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"April CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap preview date is April CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"April CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\n    \"Worldwide (Standard Multi-Tenant)\"\n  ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms",
+      "type": "record",
+      "claim": "The listed platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\n    \"Web\"\n  ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\n    \"General Availability\"\n  ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 2026-01-22T00:00:09.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-01-22T00:00:09\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "summary; What's changing; Why it matters",
+      "type": "record",
+      "claim": "Administrators can specify which users access particular agents through pay-as-you-go.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Administrators can specify which users can access particular agents through pay-as-you-go",
+      "severity": "minor",
+      "fix": "Attribute this to the plan: 'The roadmap proposes controls over which users may access each agent through pay-as-you-go.' Do not present the roadmap description alone as confirmation of shipped functionality."
+    },
+    {
+      "n": 10,
+      "where": "summary; What's changing; Why it matters",
+      "type": "record",
+      "claim": "Administrators can control which agents are available for metered consumption.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "control which agents are available for metered consumption",
+      "severity": "minor",
+      "fix": "Say the roadmap plans agent-level eligibility controls; distinguish that plan from the currently documented service-level billing connections."
+    },
+    {
+      "n": 11,
+      "where": "summary; What's changing; Why it matters",
+      "type": "record",
+      "claim": "Administrators can establish the billing policy for each agent.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "establish billing policy for each agent",
+      "severity": "minor",
+      "fix": "Change the current-tense claim to 'The roadmap plans billing-policy assignment per agent' unless a feature-specific implementation source is added."
+    },
+    {
+      "n": 12,
+      "where": "summary; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap's initial scope is declarative agents in Microsoft 365 Copilot Chat and SharePoint.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Initially focusing on declarative agents in M365 Copilot Chat and SharePoint",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: defaultState",
+      "type": "default",
+      "claim": "The new agent-level control has an admin-opt-in default state.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: '496363 default agent level controls pay as you go'; 'Copilot agent-level pay-as-you-go default'. Opened usage-based billing setup, pay-as-you-go overview and Copilot Studio cost management; these describe billing setup or different controls, not this roadmap control's arrival default.",
+      "severity": "blocker",
+      "fix": "Set defaultState to 'unknown'. State that pay-as-you-go billing itself requires administrator setup, but Microsoft has not stated the arrival default of this roadmap item's agent-level controls."
+    },
+    {
+      "n": 14,
+      "where": "front matter: licensing.model; Cost and licensing",
+      "type": "licensing",
+      "claim": "The pay-as-you-go licensing model is consumption-based.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-services",
+      "quote": "You pay only for what you use, so you can scale services based on your actual needs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: licensing.notes; What's changing; Cost and licensing",
+      "type": "cost",
+      "claim": "Pay-as-you-go agent usage is billed to an Azure subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
+      "quote": "If you choose to override by using the pay-as-you-go option, the connected Azure subscription is billed on a pay-as-you-go basis.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: licensing.notes; Cost and licensing; Governance guidance: Before rollout",
+      "type": "licensing",
+      "claim": "Copilot Credit Pre-purchase Plan (P3) is a documented billing option.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
+      "quote": "Copilot Credit Pre-Purchase Plan (P3) and pay-as-you-go aren't separate billing options. P3 is layered on top of pay-as-you-go.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Prepaid capacity packs can fund agent consumption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-capacity-packs",
+      "quote": "Copilot credit policies are currently only available for Microsoft Copilot Chat. For SharePoint agents, continue using pay-as-you-go billing as described in the existing setup process.",
+      "severity": "minor",
+      "fix": "Cite this feature-specific capacity-pack page alongside the general setup page. Clarify that standalone Copilot credit policies are currently for Copilot Chat, rather than suggesting identical configuration for Chat and SharePoint."
+    },
+    {
+      "n": 18,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 Copilot-licensed users have included agent usage rather than paying the consumption meter for ordinary interactive use.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/cost-considerations#agents-in-copilot",
+      "quote": "For users with Microsoft 365 Copilot add-on licenses, no extra charges.",
+      "severity": "minor",
+      "fix": "Cite the licensing-and-cost page and limit the statement to the documented declarative-agent usage. Keep the distinction from the separately listed Microsoft Copilot harness agents, whose usage is not included with that licence."
+    },
+    {
+      "n": 19,
+      "where": "front matter: licensing.notes; What's changing; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Unlicensed users' agent interactions spin the meter without distinguishing the agent's grounding.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/copilot/manage/manage-agents-copilot-chat",
+      "quote": "Declarative agents that are grounded in instructions and public websites are included with Copilot Chat (Basic), and Microsoft 365 Copilot (Basic) and (Premium).",
+      "severity": "blocker",
+      "fix": "Qualify each broad statement: 'For users without the applicable Copilot add-on licence, agents accessing shared tenant data can consume Copilot Credits; agents grounded only in instructions or public websites are included.' Cite this page."
+    },
+    {
+      "n": 20,
+      "where": "front matter: cost; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Variable is the appropriate cost category because the applicable agent usage is metered in Copilot Credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+      "quote": "The number of credits used depends on the design of the agent, how often users interact with it, and the features the agent uses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[0].ui; Governance controls table; Governance controls prose",
+      "type": "admin-path",
+      "claim": "The Configuration tab of Microsoft 365 admin center > Copilot > Cost Management contains the documented spending-policy configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
+      "quote": "Select Manage Configuration. The Configuration tab within the Cost management page is displayed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "'/beta/copilot/costManagement (Cost Management API)' is an executable API equivalent for the entire listed configuration control.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: 'costManagement resource spendingPolicies Graph agent'. Opened Cost Management API overview and List spendingPolicies. The namespace exists, but no HTTP operation matching the supplied methodless call or its full resource-based-policy scope is documented there.",
+      "severity": "blocker",
+      "fix": "Do not call the namespace invented: it is real. Replace the call with a specific documented operation, such as 'GET /beta/copilot/costManagement/spendingPolicies', cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-list, and label it as listing spending policies, not as the full resource-policy configuration equivalent."
+    },
+    {
+      "n": 23,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Other pay-as-you-go billing policies can be created through Billing > Pay-as-you-go > Billing policies > Add a billing policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node",
+      "quote": "go to Billing > Pay-as-you-go.\n2. On the Billing policies tab, select Add a billing policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[1].api; Governance controls table",
+      "type": "absence",
+      "claim": "An API equivalent for creating the generic Billing-node pay-as-you-go billing policy is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft 365 Billing pay-as-you-go billing policies create API PowerShell'; 'New-BillingPolicy HVE'. Opened Billing-node setup and Get-BillingPolicy. The latter only reads HVE policies; neither it nor application-specific SharePoint billing establishes an equivalent creation API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The Copilot Credits report is under Reports > Usage > Microsoft Copilot > Credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+      "quote": "Select Usage.\n4. On the Usage page, under Reports, select Microsoft Copilot, and then select Credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[2].api; Governance controls table",
+      "type": "absence",
+      "claim": "An API equivalent of this particular Copilot Credits usage report is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Copilot Credits usage report Microsoft Graph API export credits per agent billing policy'; 'Copilot Credits report API Graph export'. Opened Credits report and Cost Management API overview; no equivalent of this particular report was documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[3].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "An individual agent limit can be set through Power Platform admin center > Licensing > Copilot Studio > Manage Agents > agent > Set limit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness#set-a-monthly-limit-for-an-agent",
+      "quote": "go to Licensing > Copilot Studio.\n2. Select Manage Agents.\n3. Select the agent, and then select Set limit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[3].api; Governance controls table",
+      "type": "absence",
+      "claim": "An API for setting the individual agent monthly credit limit is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Copilot Studio agent monthly consumption limit Set limit API PowerShell'; 'Copilot Credits agent limit API Set Power Platform'. Opened harness cost management and read capacity-management and governance search excerpts; allocation and consumption APIs are not agent-limit setters.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing: second paragraph; controls[0] applicability; Governance guidance: At rollout; Governance controls prose",
+      "type": "applicability",
+      "claim": "The cited newer Cost Management identity/resource spending policies implement much of the roadmap's agent-level controls for Copilot Chat and SharePoint agents.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "For Copilot Chat, SharePoint Agents, or Microsoft Copilot Retrieval API (Preview), see Microsoft Copilot pay-as-you-go service overview.",
+      "severity": "blocker",
+      "fix": "Remove the assertion that these documents establish shipment of this roadmap item. Separate the newer dashboard's supported-service and Copilot Studio controls from classic Chat/SharePoint billing. For the latter, cite https://learn.microsoft.com/copilot/implement/setup-pay-as-you-go and https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing; describe agent-level availability as the roadmap plan, not an established equivalence."
+    },
+    {
+      "n": 30,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Identity-based spending policies govern supported users and groups and can have per-user limits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits",
+      "quote": "Control which users and groups can access supported services using identity-based policies.\n- Set spending limits for supported users, environments, and agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Resource-based spending policies can limit Copilot Studio agents or environments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs",
+      "quote": "Manage Copilot Studio spending in the Microsoft 365 admin center by creating policies for environments or individual agents.",
+      "severity": "minor",
+      "fix": "Add this specific source and explicitly identify the policies here as Copilot Studio resource-based policies, including the warning not to move resources using AI Builder to these policies."
+    },
+    {
+      "n": 32,
+      "where": "What's changing; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Spending policies select a billing method.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
+      "quote": "You can choose to apply Prepaid Capacity packs at the individual spending policy level in the Review billing method step.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What's changing; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "The newer dashboard's Consumption tab breaks down credits by spending policy, user, group, agent and service.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits",
+      "quote": "The Consumption tab enables detailed analysis by spending policy, user, group, agent, or service.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Why it matters; Risk assessment; rationale: risk",
+      "type": "cost",
+      "claim": "Widespread pay-as-you-go SharePoint agent use can generate spending without an enforced budget cap.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/setup-pay-as-you-go",
+      "quote": "the system doesn't enforce the budget or prevent your organization from exceeding it. Usage can continue uninterrupted even after the budget is surpassed",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Why it matters; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Site owners can create SharePoint agents when the relevant agent access requirements are met.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/agent-essentials/m365-agents-admin-guide#create-agents",
+      "quote": "Members of your organization can build SharePoint agents if they have access to SharePoint and the tenant has been enabled as pay-as-you-go for SharePoint, or they have a Microsoft 365 Copilot license.",
+      "severity": "minor",
+      "fix": "Cite this creation guidance and retain its prerequisite of SharePoint access plus a Copilot licence or enabled SharePoint pay-as-you-go."
+    },
+    {
+      "n": 36,
+      "where": "Why it matters",
+      "type": "cost",
+      "claim": "When SharePoint pay-as-you-go is configured, an eligible unlicensed colleague's use of a SharePoint agent draws on the billing resource.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing",
+      "quote": "That resource is used whenever a user without a Microsoft Copilot license uses a SharePoint agent.",
+      "severity": "minor",
+      "fix": "Add this feature-specific source and say 'eligible user with access to the agent' so tenant-wide billing is not mistaken for overriding file permissions."
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "SharePoint agents respect users' existing data permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-services",
+      "quote": "They can answer questions, summarize content, and perform tasks based on user permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "DLP and sensitivity labels can govern the content SharePoint agents use.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint",
+      "quote": "To prevent selected files from being used by agents, use sensitivity labels along with Microsoft Purview Data Loss Prevention (DLP).",
+      "severity": "minor",
+      "fix": "Cite this page and make the scope explicit: this is content protection for SharePoint agents, not a feature of the billing control or a sensitivity label placed directly on an .agent file."
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "The roles that can create the relevant billing policies are Global Administrator and Billing Administrator.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/copilot/implement/setup-pay-as-you-go",
+      "quote": "You must have one of the following roles to complete the tasks in this article:\n\n    - Billing Administrator\n    - AI Administrator\n    - Global Administrator",
+      "severity": "blocker",
+      "fix": "Separate classic Chat/SharePoint billing-policy roles from newer spending-policy roles. For classic setup, include AI Administrator and the required Owner or Contributor rights to the Azure subscription and resource group, as stated at this URL."
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "AI Administrators and License Administrators can edit newer spending-policy limits and alerts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
+      "quote": "AI administrator and License administrator roles can edit spending policies, manage limits and alerts, and billing methods. However, they can't create spending policies.",
+      "severity": "minor",
+      "fix": "Identify these as newer spending-policy permissions, not classic agent billing-policy permissions. Note that the same source also lists License Administrator among read-only consumption roles and says those roles cannot change limits or alerts; do not present that role's effective rights as unqualified."
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Membership of a policy's scoped groups determines access to credit-consuming services.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
+      "quote": "You can now add more spending policies to scope access to specific groups, users, or services.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Agents themselves may take actions even though the feature discussed is a billing control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-services",
+      "quote": "They can answer questions, summarize content, and perform tasks based on user permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Change & support; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Enabling tenant-wide service billing can enable metered agent access for the covered population.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
+      "quote": "The default setup targets your entire organization and all users. Optionally, you can customize the default spending policy to specific groups or change the services it governs",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Users without a licence who are excluded from a policy see agents that they cannot use.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: 'Copilot Chat agents excluded billing policy visible'; 'SharePoint agents see pay-as-you-go not access'. Opened pay-as-you-go overview, SharePoint agent access and Copilot Chat agent management; none states this excluded-user visibility behaviour.",
+      "severity": "major",
+      "fix": "Remove the assertion that excluded users see the agents. Retain the analysis as 'Explain eligibility and access requirements to users to reduce support questions.'"
+    },
+    {
+      "n": 45,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The Copilot Credits report gives an example of 10 credits for tenant-graph grounding on a prompt.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+      "quote": "10 credits for tenant graph-grounding",
+      "severity": "minor",
+      "fix": "Keep this explicitly as the report's example and identify the report documentation's preview qualifications rather than implying a final universal per-prompt tariff."
+    },
+    {
+      "n": 46,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The same worked example adds 2 credits for generative answers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+      "quote": "two credits for generative answers",
+      "severity": "minor",
+      "fix": "Retain the example framing and state that the report documentation includes preview qualifications; do not present this as a universal charge for every interaction."
+    },
+    {
+      "n": 47,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "The Copilot Credits report alerts on users exceeding 2,000 credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+      "quote": "the report includes alerts when users in your organization use more than 2,000 credits.",
+      "severity": "minor",
+      "fix": "Mention that these report alerts are documented with preview qualifications. Distinguish the similar 2,000-3,000-credit alert from the Alerts card documented for more than 3,000 credits in the past 30 days."
+    },
+    {
+      "n": 48,
+      "where": "Scope",
+      "type": "applicability",
+      "claim": "Copilot Studio agent spending can be managed through the newer Microsoft 365 Cost Management experience or existing Power Platform controls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs",
+      "quote": "To opt in, create a Microsoft 365 admin center resource-based spending policy. Until then, your existing Power Platform admin center configuration remains in effect.",
+      "severity": "minor",
+      "fix": "Cite this source and explain that coverage by a Microsoft 365 resource policy changes which admin center's spending controls apply."
+    },
+    {
+      "n": 49,
+      "where": "Governance guidance: At rollout",
+      "type": "applicability",
+      "claim": "Leaving agents outside resource-based spending policies makes those agents not billable.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs",
+      "quote": "Environments that aren't linked to a Microsoft 365 admin center resource-based spending policy continue under their applicable Power Platform configuration during the opt-in period.",
+      "severity": "blocker",
+      "fix": "Delete 'leave the rest uncovered so they are not billable'. For Copilot Studio, explain the fallback to existing Power Platform billing and review all applicable policies. For Chat/SharePoint, use documented service billing connections and agent access permissions; do not promise a resource-policy allowlist for this roadmap item."
+    },
+    {
+      "n": 50,
+      "where": "Governance guidance: At rollout; controls[0].governs",
+      "type": "behaviour",
+      "claim": "The newer spending policies provide administrator alerts and user-level threshold notifications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
+      "quote": "If a monthly per-user limit is configured, set the user-level notification thresholds. These notifications alert users as they approach their spending limit",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance guidance: Before rollout; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Administrators can inventory agents through the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint",
+      "quote": "Tenant admins and AI admins can manage actively used agents in SharePoint in the Microsoft 365 admin center, under the Agents section of the Copilot Control System",
+      "severity": "minor",
+      "fix": "Cite this page and qualify the SharePoint view as actively used agents visible through Copilot Chat; it is not proof of a complete inventory of every unused .agent file."
+    },
+    {
+      "n": 52,
+      "where": "Governance controls prose; Governance guidance: After rollout",
+      "type": "cost",
+      "claim": "Azure Cost Management can show billed pay-as-you-go amounts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/view-cost",
+      "quote": "Billed amounts are updated daily and sometimes more frequently. It can take 24 hours after usage of a service to show in Microsoft Cost Management.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Governance controls prose",
+      "type": "absence",
+      "claim": "Azure Cost Management does not provide the Copilot credit-policy configuration control.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Azure Cost Management Copilot spending policies control'. Opened View costs and billing, usage-based billing setup and SharePoint agent billing. These locate credit-policy configuration in Microsoft 365 and describe Azure cost analysis, budgets and alerts, not a credit-policy editor.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[3].governs; Governance controls prose",
+      "type": "applicability",
+      "claim": "The Power Platform individual-agent limit applies to agents powered by the Microsoft Copilot harness.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness",
+      "quote": "The capacity and consumption controls in the Power Platform admin center apply across Copilot Studio. They aren't exclusive to the Microsoft Copilot harness.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance controls prose",
+      "type": "behaviour",
+      "claim": "A tenant may need controls in both Microsoft 365 and Power Platform admin centers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs",
+      "quote": "If a spending policy in the Microsoft 365 admin center covers the environment or agent, its controls take precedence over the Power Platform admin center controls for that usage.",
+      "severity": "minor",
+      "fix": "Cite this page and add the precedence qualification: different scopes may require review in both centers, but Microsoft 365 policies take precedence for covered usage; do not imply two independent additive caps."
+    },
+    {
+      "n": 56,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Government-cloud rollout dates for this roadmap item's new agent-level control have not been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'SharePoint agents GCC pay-as-you-go'; '496363 default agent level controls pay as you go'. Read the roadmap record and Microsoft pay-as-you-go overview and government-availability search excerpts; no government launch date for this new control was returned.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Open questions: Government cloud availability of pay-as-you-go for agents",
+      "type": "absence",
+      "claim": "Government-cloud availability of the underlying pay-as-you-go service is an unpublished question.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/sharepoint/microsoft-365-pay-as-you-go-terms-of-service",
+      "quote": "Microsoft 365 pay-as-you-go is not available for Office 365 government plans or Office 365 operated by 21Vianet to and for PRC-located users.",
+      "severity": "blocker",
+      "fix": "Report this published service restriction, citing the terms page, while keeping future government rollout dates for the new roadmap control as not published. Do not equate an unknown future date with unknown current service availability."
+    },
+    {
+      "n": 58,
+      "where": "controls[0].api; Governance controls prose",
+      "type": "command",
+      "claim": "The Microsoft Graph Cost Management API is a beta API rooted at /copilot/costManagement and covers spending policies and consumption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview",
+      "quote": "APIs under the /beta version are subject to change. ... through Microsoft Graph, rooted at /copilot/costManagement. ... spending policy management ... usage reports that break down consumption by user, security group, governed service, and funding class.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Governance controls prose",
+      "type": "absence",
+      "claim": "No other programmatic route for the newer Microsoft 365 credit spending policies is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Copilot Cost Management spending policies PowerShell API automation alternative Microsoft Graph'. Opened Cost Management API overview and usage-based billing setup; results document Graph, not another equivalent spending-policy interface.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "front matter: action; front matter: risk; rationale: risk",
+      "type": "consistency",
+      "claim": "The prepare action fits a new optional control rated medium risk.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "action: \"prepare\"; risk: \"medium\"; schema: 'review: an optional capability, or a new control, that changes nothing until an admin or maker chooses it.'",
+      "severity": "minor",
+      "fix": "Set action to 'review' for this optional new control. The schema's prepare exception requires an unconfigured control closing an exposure rated high, which is not the page's rating."
+    },
+    {
+      "n": 61,
+      "where": "Governance guidance: Before rollout and After rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The controls table includes the agent-inventory control that the checklist tells administrators to review.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "'Inventory agents in the Microsoft 365 admin center'; the table lists spending policies, other-service billing policies, Credits reporting and individual-agent limits, but no agent inventory.",
+      "severity": "minor",
+      "fix": "Add an agent-inventory/access-management row scoped and qualified using https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint, or remove the inventory instruction if the briefing cannot provide its documented control."
+    },
+    {
+      "n": 62,
+      "where": "Governance guidance: After rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The controls table includes the Consumption tab that the checklist tells administrators to review.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "'Review the Consumption tab and the Copilot Credits usage report monthly'; only the separate 'Reports > Usage > Microsoft Copilot > Credits' report has a reporting row.",
+      "severity": "minor",
+      "fix": "If retaining the newer dashboard as clearly separated background, add 'Copilot > Cost Management > Consumption' with https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending. Do not treat the classic Credits report as that tab."
+    },
+    {
+      "n": 63,
+      "where": "Governance guidance: Before rollout and After rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The controls table includes Azure budget alerts and cost analysis used by the checklist.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "'Set the Azure subscription or P3 plan and budget alerts'; 'Reconcile admin center totals with Azure Cost Management'; no Azure cost-analysis or budget-control row appears.",
+      "severity": "minor",
+      "fix": "Add an Azure Cost Management reporting/budget row using https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing#monitor-consumption-in-microsoft-cost-management, which documents Reporting + analytics > Cost analysis and Monitoring > Budgets. Explicitly say budget alerts do not stop usage."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-16T13:32:38.888Z",
+    "summary": {
+      "links": 10,
+      "unreachable": 0,
+      "uiPaths": 4,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 1,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=496363",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/manage/view-cost",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-services",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness#set-a-monthly-limit-for-an-agent",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Usage-based billing, default, identity-based and resource-based spending policies, alerts",
+        "docs": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Cost Management",
+          "Configuration"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Usage-based billing, default, identity-based and resource-based spending policies, alerts",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview",
+        "reachable": true,
+        "token": "/beta/copilot/costManagement",
+        "found": false
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Billing policies for other pay-as-you-go services",
+        "docs": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node",
+        "reachable": true,
+        "segments": [
+          "Billing",
+          "Pay-as-you-go",
+          "Billing policies",
+          "Add a billing policy"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Credits consumption reporting",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+        "reachable": true,
+        "segments": [
+          "Reports",
+          "Usage",
+          "Microsoft Copilot",
+          "Credits"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Monthly credit limit for an individual agent (Power Platform admin center)",
+        "docs": "https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness#set-a-monthly-limit-for-an-agent",
+        "reachable": true,
+        "segments": [
+          "Licensing",
+          "Copilot Studio",
+          "Manage Agents",
+          "Set limit"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

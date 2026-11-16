@@ -1,150 +1,117 @@
 # Lint report
 
-Generated 2026-11-16T14:30:16.354Z. 62 briefings, 4 concepts, 0 quarantined.
-Independent check: 0 verified, 0 verified with gaps, 1 awaiting correction (live under grace), 65 not yet checked, 0 stale; 0 held and not published.
+Generated 2026-11-16T14:33:22.292Z. 11 briefings, 4 concepts, 0 quarantined.
+Independent check: 0 verified, 0 verified with gaps, 11 awaiting correction (live under grace), 0 not yet checked, 0 stale; 73 held and not published.
 
 ## Errors (0)
 
-## Warnings (1)
-- features/copilot-studio-block-maker-provided-credentials.md: failed its check on 2026-11-16 (4 contradicted, 4 unconfirmed of 32 statements); live under grace with a notice, corrected version queued
+## Warnings (88)
+- _held/copilot-studio-block-maker-provided-credentials.md: held (failed since 2026-11-16, 2 attempts): 1 blocking finding (claim 40)
+- _held/dynamics-365-business-central-copilot-and-agents-envision-and-design-ai-agents-in-business.md: held (failed since 2026-11-16, 1 attempt): 4 blocking findings (claims 34, 45, 56, 69)
+- _held/dynamics-365-customer-insights-data-agents-and-copilot-increase-ai-accuracy-by-grounding-a.md: held (failed since 2026-11-16, 1 attempt): 6 blocking findings (claims 45, 46, 47, 63, 66, 71)
+- _held/m365-admin-center-copilot-credits-usage-report.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/m365-admin-center-cross-tenant-orchestrated-migration.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/m365-copilot-agent-lifecycle-management-rules.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/m365-copilot-chat-usage-based-billing-models-model-selector.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/m365-copilot-copilot-extensibility-users-will-be-able-to-upload-files-stored-locally-or-in.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/m365-copilot-copilot-people-connectors-introduces-people-data-ingestions-with-differentiat.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/m365-copilot-discover-and-act-on-recommended-lead-and-opportunity-actions-in-sales-agent.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/m365-copilot-domain-exclusion-web-grounding.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/m365-copilot-enable-semantic-model-in-sales-agent.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/m365-copilot-federated-connectors-write-update-delete.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/m365-copilot-new-m365-copilot-usage-reports-for-copilot-search-connectors-and-agents-for-u.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/m365-teams-channel-backup.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/microsoft-copilot-microsoft-m365-delegated-prompt-publishing-for-organization-prompts.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/microsoft-copilot-studio-agent-sharing-amongst-makers.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/microsoft-copilot-studio-invoke-agents-as-workflow-steps-with-the-agent-node.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/microsoft-copilot-studio-persistent-identity-for-copilot-studio-agents.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/microsoft-copilot-studio-self-learning-for-copilot-studio-agents.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/microsoft-dataverse-add-users-without-licenses-to-activity-recipient-fields.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/microsoft-dataverse-enable-ai-powered-business-workflows-in-work-iq-with-dataverse-build-d.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/microsoft-dataverse-enable-semantic-data-understanding-for-agentic-use.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/microsoft-dataverse-m365-collaboration-discover-build-customize-and-extend-with-management.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/microsoft-edge-expanded-enforcement-controls-for-data-loss-prevention-connectors.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/microsoft-edge-rewrite-by-copilot-in-edge-is-being-upgraded-to-include-enterprise-data-pro.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/microsoft-power-platform-governance-and-administration-multi-grader-comparison.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/microsoft-power-platform-governance-and-administration-secure-dataverse-record-with-column.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/microsoft-purview-dspm-copilot-readiness-and-data-explorer.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/microsoft-purview-endpoint-data-loss-prevention-policy-sync-and-device-health-ai-powered-i.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/microsoft-purview-endpoint-data-loss-prevention-view-only-access-to-device-onboarding-with.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/microsoft-teams-new-sharing-panel-in-meetings-improved-content-discovery-and-ease-of-shari.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/microsoft-teams-tenant-policy-controls-who-can-record-and-transcribe.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/outlook-keep-folder-sharing-within-your-organization-s-policies.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/outlook-more-visibility-into-usage-for-recoverable-items-storage.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/planner-save-ai-generated-filters-in-planner-agent-chat.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/power-apps-expand-model-access-and-maker-studio-availability-for-generative-pages-via-gith.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/power-apps-form-fill-assistance-using-m365-files-in-model-driven-apps.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/power-apps-form-fill-assistance-using-speech-as-input-in-model-driven-apps.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/power-apps-model-driven-apps-use-row-summaries-in-us-government-clouds.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/power-apps-monitor-generative-pages-with-out-of-the-box-application-insights-telemetry.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/power-apps-new-view-layout-in-model-driven-apps.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/power-apps-use-dataverse-custom-apis-in-generative-pages.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/power-apps-use-power-platform-connectors-in-generative-pages.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/power-apps-use-the-modernized-personal-settings-experience.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/power-automate-ai-assisted-ui-automation-repair.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/power-automate-credentials-integration-with-delinea-secret-server.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/power-automate-process-mining-enable-process-intelligence-studio-in-object-centric-process.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/power-pages-administration-and-governance-configure-site-analytics-and-server-logging.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/power-pages-administration-and-governance-enable-self-service-site-ownership-transfer.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/power-pages-administration-and-governance-manage-external-authentication-providers-with-gr.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/power-pages-design-studio-configure-authentication-with-security-agent.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/power-pages-design-studio-enhance-openid-connect-with-encrypted-token-support.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/power-pages-design-studio-unify-power-pages-authorization-by-merging-web-role-with-dataver.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/power-pages-first-class-support-for-connector-apis-in-power-pages.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/power-pages-plugin-support-for-github-copilot-cli-and-claude-code-to-create-and-edit-tradi.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/power-pages-power-pages-copilot-use-power-pages-mcp-server-capabilities.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/power-pages-professional-developer-experiences-control-power-pages-components-using-client.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/power-pages-track-power-pages-performance-and-usage-with-monitor-hub.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/power-platform-maker-guidelines-copilot-studio.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/purview-dlp-block-sensitive-data-in-copilot-web-search.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/purview-retention-last-accessed-sharepoint-onedrive.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/teams-ai-generated-meeting-memory.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/teams-intelligent-recap-without-saving-transcript.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/work-iq-a2a-and-mcp-elicitation.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/work-iq-a2a-and-mcp-long-running-tasks.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/work-iq-agent-policy-governance.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/work-iq-business-skills-to-manage-your-business-processes-in-work-iq-mcp.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/work-iq-execute-recipes.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/work-iq-federated-connectors.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/work-iq-human-in-the-loop.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/work-iq-memory-capabilities-expand-to-agents.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/work-iq-real-time-transcripts.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- features/agent-365-control-plane-for-agents.md: failed its check on 2026-11-16 (19 contradicted, 3 unconfirmed of 106 statements); live under grace with a notice, corrected version queued
+- features/copilot-studio-computer-use-for-web-browsing-on-microsoft-copilot-harness.md: failed its check on 2026-11-16 (3 contradicted, 1 unconfirmed of 42 statements); live under grace with a notice, corrected version queued
+- features/copilot-studio-cost-management-m365-admin-center.md: failed its check on 2026-11-16 (13 contradicted, 10 unconfirmed of 73 statements); live under grace with a notice, corrected version queued
+- features/copilot-studio-mcp-tools-in-agents.md: failed its check on 2026-11-16 (14 contradicted, 4 unconfirmed of 74 statements); live under grace with a notice, corrected version queued
+- features/copilot-studio-mcp-tools-in-agents.md: body link to missing features/copilot-studio-block-maker-provided-credentials
+- features/copilot-studio-purview-information-protection-labelled-files.md: failed its check on 2026-11-16 (10 contradicted, 6 unconfirmed of 51 statements); live under grace with a notice, corrected version queued
+- features/copilot-studio-require-human-approval-for-tool-calls.md: failed its check on 2026-11-16 (7 contradicted, 9 unconfirmed of 48 statements); live under grace with a notice, corrected version queued
+- features/copilot-studio-require-human-approval-for-tool-calls.md: body link to missing features/copilot-studio-block-maker-provided-credentials
+- features/copilot-studio-safe-sharing-credential-oversharing.md: failed its check on 2026-11-16 (6 contradicted, 4 unconfirmed of 55 statements); live under grace with a notice, corrected version queued
+- features/copilot-studio-safe-sharing-credential-oversharing.md: body link to missing features/copilot-studio-block-maker-provided-credentials
+- features/copilot-studio-share-autonomous-agents-run-only.md: failed its check on 2026-11-16 (8 contradicted, 9 unconfirmed of 60 statements); live under grace with a notice, corrected version queued
+- features/copilot-studio-share-autonomous-agents-run-only.md: body link to missing features/copilot-studio-block-maker-provided-credentials
+- features/dataverse-agent-users-entra-agent-identity.md: failed its check on 2026-11-16 (10 contradicted, 8 unconfirmed of 64 statements); live under grace with a notice, corrected version queued
+- features/entra-id-backup-and-recovery-30-day.md: failed its check on 2026-11-16 (3 contradicted, 7 unconfirmed of 51 statements); live under grace with a notice, corrected version queued
+- features/m365-admin-center-agent-level-pay-as-you-go-controls.md: failed its check on 2026-11-16 (9 contradicted, 3 unconfirmed of 63 statements); live under grace with a notice, corrected version queued
 
-## Info (139)
-- features/agent-365-control-plane-for-agents.md: not yet checked against Microsoft Learn (queued)
-- features/copilot-studio-computer-use-for-web-browsing-on-microsoft-copilot-harness.md: not yet checked against Microsoft Learn (queued)
+## Info (19)
+- features/agent-365-control-plane-for-agents.md: related "m365-copilot-agent-lifecycle-management-rules" is held and not published (the link is dropped from the page until it returns)
 - features/copilot-studio-computer-use-for-web-browsing-on-microsoft-copilot-harness.md: control "Switch specific to web browsing on the Microsoft Copilot harness" has neither an admin UI nor an API documented
-- features/copilot-studio-cost-management-m365-admin-center.md: not yet checked against Microsoft Learn (queued)
-- features/copilot-studio-mcp-tools-in-agents.md: not yet checked against Microsoft Learn (queued)
-- features/copilot-studio-purview-information-protection-labelled-files.md: not yet checked against Microsoft Learn (queued)
+- features/copilot-studio-cost-management-m365-admin-center.md: related "m365-copilot-chat-usage-based-billing-models-model-selector" is held and not published (the link is dropped from the page until it returns)
+- features/copilot-studio-mcp-tools-in-agents.md: related "m365-copilot-federated-connectors-write-update-delete" is held and not published (the link is dropped from the page until it returns)
+- features/copilot-studio-mcp-tools-in-agents.md: related "copilot-studio-block-maker-provided-credentials" is held and not published (the link is dropped from the page until it returns)
+- features/copilot-studio-purview-information-protection-labelled-files.md: related "purview-dlp-block-sensitive-data-in-copilot-web-search" is held and not published (the link is dropped from the page until it returns)
 - features/copilot-studio-purview-information-protection-labelled-files.md: control "Copilot Studio-side switch for labelled files" has neither an admin UI nor an API documented
-- features/copilot-studio-require-human-approval-for-tool-calls.md: not yet checked against Microsoft Learn (queued)
+- features/copilot-studio-require-human-approval-for-tool-calls.md: related "m365-copilot-federated-connectors-write-update-delete" is held and not published (the link is dropped from the page until it returns)
 - features/copilot-studio-require-human-approval-for-tool-calls.md: control "Tenant or environment enforcement of approval for tool calls" has neither an admin UI nor an API documented
-- features/copilot-studio-safe-sharing-credential-oversharing.md: not yet checked against Microsoft Learn (queued)
-- features/copilot-studio-share-autonomous-agents-run-only.md: not yet checked against Microsoft Learn (queued)
-- features/dataverse-agent-users-entra-agent-identity.md: not yet checked against Microsoft Learn (queued)
-- features/entra-id-backup-and-recovery-30-day.md: not yet checked against Microsoft Learn (queued)
-- features/m365-admin-center-agent-level-pay-as-you-go-controls.md: not yet checked against Microsoft Learn (queued)
-- features/m365-admin-center-copilot-credits-usage-report.md: not yet checked against Microsoft Learn (queued)
-- features/m365-admin-center-cross-tenant-orchestrated-migration.md: not yet checked against Microsoft Learn (queued)
-- features/m365-admin-center-cross-tenant-orchestrated-migration.md: control "Admin centre page for the orchestrated migration" has neither an admin UI nor an API documented
-- features/m365-copilot-agent-lifecycle-management-rules.md: not yet checked against Microsoft Learn (queued)
-- features/m365-copilot-chat-usage-based-billing-models-model-selector.md: not yet checked against Microsoft Learn (queued)
-- features/m365-copilot-copilot-people-connectors-introduces-people-data-ingestions-with-differentiat.md: not yet checked against Microsoft Learn (queued)
-- features/m365-copilot-copilot-people-connectors-introduces-people-data-ingestions-with-differentiat.md: control "Scoping imported people data to specific individuals and groups" has neither an admin UI nor an API documented
-- features/m365-copilot-discover-and-act-on-recommended-lead-and-opportunity-actions-in-sales-agent.md: not yet checked against Microsoft Learn (queued)
-- features/m365-copilot-domain-exclusion-web-grounding.md: not yet checked against Microsoft Learn (queued)
-- features/m365-copilot-federated-connectors-write-update-delete.md: not yet checked against Microsoft Learn (queued)
-- features/m365-copilot-new-m365-copilot-usage-reports-for-copilot-search-connectors-and-agents-for-u.md: not yet checked against Microsoft Learn (queued)
-- features/m365-copilot-new-m365-copilot-usage-reports-for-copilot-search-connectors-and-agents-for-u.md: control "US Government cloud-specific switch for the new reports" has neither an admin UI nor an API documented
-- features/m365-teams-channel-backup.md: not yet checked against Microsoft Learn (queued)
-- features/m365-teams-channel-backup.md: control "Teams channel workload in backup policies" has neither an admin UI nor an API documented
-- features/microsoft-copilot-microsoft-m365-delegated-prompt-publishing-for-organization-prompts.md: not yet checked against Microsoft Learn (queued)
-- features/microsoft-copilot-microsoft-m365-delegated-prompt-publishing-for-organization-prompts.md: control "Delegating prompt publishing to other roles or people" has neither an admin UI nor an API documented
-- features/microsoft-copilot-studio-agent-sharing-amongst-makers.md: not yet checked against Microsoft Learn (queued)
-- features/microsoft-copilot-studio-agent-sharing-amongst-makers.md: control "Tenant-wide switch that turns maker-to-maker agent sharing off" has neither an admin UI nor an API documented
-- features/microsoft-dataverse-add-users-without-licenses-to-activity-recipient-fields.md: not yet checked against Microsoft Learn (queued)
-- features/microsoft-dataverse-add-users-without-licenses-to-activity-recipient-fields.md: control "Tenant-wide default for the feature" has neither an admin UI nor an API documented
-- features/microsoft-dataverse-enable-ai-powered-business-workflows-in-work-iq-with-dataverse-build-d.md: not yet checked against Microsoft Learn (queued)
-- features/microsoft-dataverse-enable-ai-powered-business-workflows-in-work-iq-with-dataverse-build-d.md: control "Who can use the Dataverse plugin from a coding agent" has neither an admin UI nor an API documented
-- features/microsoft-dataverse-enable-semantic-data-understanding-for-agentic-use.md: not yet checked against Microsoft Learn (queued)
-- features/microsoft-dataverse-enable-semantic-data-understanding-for-agentic-use.md: control "Environment-level switch for semantic model generation" has neither an admin UI nor an API documented
-- features/microsoft-dataverse-m365-collaboration-discover-build-customize-and-extend-with-management.md: not yet checked against Microsoft Learn (queued)
-- features/microsoft-dataverse-m365-collaboration-discover-build-customize-and-extend-with-management.md: control "Controls specific to the management MCP server" has neither an admin UI nor an API documented
-- features/microsoft-power-platform-governance-and-administration-multi-grader-comparison.md: not yet checked against Microsoft Learn (queued)
-- features/microsoft-power-platform-governance-and-administration-multi-grader-comparison.md: control "Admin switch for multi-grader comparison" has neither an admin UI nor an API documented
-- features/microsoft-power-platform-governance-and-administration-multi-grader-comparison.md: low confidence, roadmap text only
-- features/microsoft-power-platform-governance-and-administration-secure-dataverse-record-with-column.md: not yet checked against Microsoft Learn (queued)
-- features/microsoft-power-platform-governance-and-administration-secure-dataverse-record-with-column.md: control "Filter privileges in security roles" has neither an admin UI nor an API documented
-- features/microsoft-teams-new-sharing-panel-in-meetings-improved-content-discovery-and-ease-of-shari.md: not yet checked against Microsoft Learn (queued)
-- features/microsoft-teams-new-sharing-panel-in-meetings-improved-content-discovery-and-ease-of-shari.md: control "A tenant-wide switch for the new sharing panel" has neither an admin UI nor an API documented
-- features/microsoft-teams-new-sharing-panel-in-meetings-improved-content-discovery-and-ease-of-shari.md: low confidence, roadmap text only
-- features/power-apps-expand-model-access-and-maker-studio-availability-for-generative-pages-via-gith.md: not yet checked against Microsoft Learn (queued)
-- features/power-apps-expand-model-access-and-maker-studio-availability-for-generative-pages-via-gith.md: control "Switch specific to generative pages or to GitHub-hosted models" has neither an admin UI nor an API documented
-- features/power-apps-form-fill-assistance-using-m365-files-in-model-driven-apps.md: not yet checked against Microsoft Learn (queued)
-- features/power-apps-form-fill-assistance-using-m365-files-in-model-driven-apps.md: control "Switch specific to Microsoft 365 files as a source" has neither an admin UI nor an API documented
-- features/power-apps-form-fill-assistance-using-speech-as-input-in-model-driven-apps.md: not yet checked against Microsoft Learn (queued)
-- features/power-apps-form-fill-assistance-using-speech-as-input-in-model-driven-apps.md: control "Speech-specific switch" has neither an admin UI nor an API documented
-- features/power-apps-model-driven-apps-use-row-summaries-in-us-government-clouds.md: not yet checked against Microsoft Learn (queued)
-- features/power-apps-model-driven-apps-use-row-summaries-in-us-government-clouds.md: control "Switch specific to GCC and GCC High" has neither an admin UI nor an API documented
-- features/power-apps-monitor-generative-pages-with-out-of-the-box-application-insights-telemetry.md: not yet checked against Microsoft Learn (queued)
-- features/power-apps-monitor-generative-pages-with-out-of-the-box-application-insights-telemetry.md: control "Telemetry switch for an individual generative page" has neither an admin UI nor an API documented
-- features/power-apps-new-view-layout-in-model-driven-apps.md: not yet checked against Microsoft Learn (queued)
-- features/power-apps-new-view-layout-in-model-driven-apps.md: control "Tenant or environment switch for the calendar and card layouts" has neither an admin UI nor an API documented
-- features/power-apps-new-view-layout-in-model-driven-apps.md: low confidence, roadmap text only
-- features/power-apps-use-dataverse-custom-apis-in-generative-pages.md: not yet checked against Microsoft Learn (queued)
-- features/power-apps-use-dataverse-custom-apis-in-generative-pages.md: control "Switch specific to custom APIs in generative pages" has neither an admin UI nor an API documented
-- features/power-apps-use-power-platform-connectors-in-generative-pages.md: not yet checked against Microsoft Learn (queued)
-- features/power-apps-use-power-platform-connectors-in-generative-pages.md: control "Switch specific to connectors in generative pages" has neither an admin UI nor an API documented
-- features/power-apps-use-the-modernized-personal-settings-experience.md: not yet checked against Microsoft Learn (queued)
-- features/power-apps-use-the-modernized-personal-settings-experience.md: control "Admin switch for the modern personal settings panel" has neither an admin UI nor an API documented
-- features/power-automate-ai-assisted-ui-automation-repair.md: not yet checked against Microsoft Learn (queued)
-- features/power-automate-ai-assisted-ui-automation-repair.md: control "Switch specific to AI-assisted repair in the designer debug run" has neither an admin UI nor an API documented
-- features/power-automate-process-mining-enable-process-intelligence-studio-in-object-centric-process.md: not yet checked against Microsoft Learn (queued)
-- features/power-automate-process-mining-enable-process-intelligence-studio-in-object-centric-process.md: control "Switch for Process Intelligence Studio or object-centric models" has neither an admin UI nor an API documented
-- features/power-pages-administration-and-governance-configure-site-analytics-and-server-logging.md: not yet checked against Microsoft Learn (queued)
-- features/power-pages-administration-and-governance-configure-site-analytics-and-server-logging.md: control "Tenant-wide policy for analytics and server logging" has neither an admin UI nor an API documented
-- features/power-pages-administration-and-governance-manage-external-authentication-providers-with-gr.md: not yet checked against Microsoft Learn (queued)
-- features/power-pages-design-studio-configure-authentication-with-security-agent.md: not yet checked against Microsoft Learn (queued)
-- features/power-pages-design-studio-configure-authentication-with-security-agent.md: control "Switch specific to the security agent" has neither an admin UI nor an API documented
-- features/power-pages-design-studio-unify-power-pages-authorization-by-merging-web-role-with-dataver.md: not yet checked against Microsoft Learn (queued)
-- features/power-pages-design-studio-unify-power-pages-authorization-by-merging-web-role-with-dataver.md: control "Tenant or environment enforcement of enhanced authorization" has neither an admin UI nor an API documented
-- features/power-pages-first-class-support-for-connector-apis-in-power-pages.md: not yet checked against Microsoft Learn (queued)
-- features/power-pages-first-class-support-for-connector-apis-in-power-pages.md: control "Power Pages-specific control for connector APIs" has neither an admin UI nor an API documented
-- features/power-pages-first-class-support-for-connector-apis-in-power-pages.md: low confidence, roadmap text only
-- features/power-pages-plugin-support-for-github-copilot-cli-and-claude-code-to-create-and-edit-tradi.md: not yet checked against Microsoft Learn (queued)
-- features/power-pages-plugin-support-for-github-copilot-cli-and-claude-code-to-create-and-edit-tradi.md: control "Admin switch for the coding-agent plugin" has neither an admin UI nor an API documented
-- features/power-pages-power-pages-copilot-use-power-pages-mcp-server-capabilities.md: not yet checked against Microsoft Learn (queued)
-- features/power-pages-power-pages-copilot-use-power-pages-mcp-server-capabilities.md: control "Tenant-wide switch for the Power Pages MCP server" has neither an admin UI nor an API documented
-- features/power-pages-track-power-pages-performance-and-usage-with-monitor-hub.md: not yet checked against Microsoft Learn (queued)
-- features/power-pages-track-power-pages-performance-and-usage-with-monitor-hub.md: control "Enabling or scoping Power Pages metrics in the monitor hub" has neither an admin UI nor an API documented
-- features/power-pages-track-power-pages-performance-and-usage-with-monitor-hub.md: low confidence, roadmap text only
-- features/power-platform-maker-guidelines-copilot-studio.md: not yet checked against Microsoft Learn (queued)
-- features/purview-dlp-block-sensitive-data-in-copilot-web-search.md: not yet checked against Microsoft Learn (queued)
-- features/purview-retention-last-accessed-sharepoint-onedrive.md: not yet checked against Microsoft Learn (queued)
-- features/purview-retention-last-accessed-sharepoint-onedrive.md: control "Last-accessed start option in the retention policy wizard" has neither an admin UI nor an API documented
-- features/teams-ai-generated-meeting-memory.md: not yet checked against Microsoft Learn (queued)
-- features/teams-intelligent-recap-without-saving-transcript.md: not yet checked against Microsoft Learn (queued)
-- features/work-iq-agent-policy-governance.md: not yet checked against Microsoft Learn (queued)
-- features/work-iq-agent-policy-governance.md: low confidence, roadmap text only
-- features/work-iq-business-skills-to-manage-your-business-processes-in-work-iq-mcp.md: not yet checked against Microsoft Learn (queued)
-- features/work-iq-execute-recipes.md: not yet checked against Microsoft Learn (queued)
-- features/work-iq-execute-recipes.md: control "Control specific to recipes" has neither an admin UI nor an API documented
-- features/work-iq-execute-recipes.md: low confidence, roadmap text only
-- features/work-iq-federated-connectors.md: not yet checked against Microsoft Learn (queued)
-- features/work-iq-federated-connectors.md: control "Work IQ-specific control for federated connectors" has neither an admin UI nor an API documented
-- features/work-iq-human-in-the-loop.md: not yet checked against Microsoft Learn (queued)
-- features/work-iq-human-in-the-loop.md: control "Human-in-the-loop policy for Work IQ agents and agent flows" has neither an admin UI nor an API documented
-- features/work-iq-human-in-the-loop.md: low confidence, roadmap text only
-- features/work-iq-memory-capabilities-expand-to-agents.md: not yet checked against Microsoft Learn (queued)
-- features/work-iq-memory-capabilities-expand-to-agents.md: control "Control over the memory profile path in Work IQ MCP" has neither an admin UI nor an API documented
-- features/work-iq-memory-capabilities-expand-to-agents.md: low confidence, roadmap text only
-- features/work-iq-real-time-transcripts.md: not yet checked against Microsoft Learn (queued)
+- features/copilot-studio-safe-sharing-credential-oversharing.md: related "copilot-studio-block-maker-provided-credentials" is held and not published (the link is dropped from the page until it returns)
+- features/copilot-studio-safe-sharing-credential-oversharing.md: related "power-platform-maker-guidelines-copilot-studio" is held and not published (the link is dropped from the page until it returns)
+- features/copilot-studio-share-autonomous-agents-run-only.md: related "copilot-studio-block-maker-provided-credentials" is held and not published (the link is dropped from the page until it returns)
+- features/dataverse-agent-users-entra-agent-identity.md: related "copilot-studio-block-maker-provided-credentials" is held and not published (the link is dropped from the page until it returns)
+- features/entra-id-backup-and-recovery-30-day.md: related "m365-teams-channel-backup" is held and not published (the link is dropped from the page until it returns)
+- features/m365-admin-center-agent-level-pay-as-you-go-controls.md: related "m365-admin-center-copilot-credits-usage-report" is held and not published (the link is dropped from the page until it returns)
+- features/m365-admin-center-agent-level-pay-as-you-go-controls.md: related "m365-copilot-chat-usage-based-billing-models-model-selector" is held and not published (the link is dropped from the page until it returns)
 - features/copilot-studio-computer-use-for-web-browsing-on-microsoft-copilot-harness.md: orphan (no inbound related links)
-- features/m365-admin-center-cross-tenant-orchestrated-migration.md: orphan (no inbound related links)
-- features/m365-copilot-copilot-people-connectors-introduces-people-data-ingestions-with-differentiat.md: orphan (no inbound related links)
-- features/m365-copilot-discover-and-act-on-recommended-lead-and-opportunity-actions-in-sales-agent.md: orphan (no inbound related links)
-- features/microsoft-copilot-microsoft-m365-delegated-prompt-publishing-for-organization-prompts.md: orphan (no inbound related links)
-- features/microsoft-copilot-studio-agent-sharing-amongst-makers.md: orphan (no inbound related links)
-- features/microsoft-dataverse-add-users-without-licenses-to-activity-recipient-fields.md: orphan (no inbound related links)
-- features/microsoft-dataverse-enable-semantic-data-understanding-for-agentic-use.md: orphan (no inbound related links)
-- features/microsoft-dataverse-m365-collaboration-discover-build-customize-and-extend-with-management.md: orphan (no inbound related links)
-- features/microsoft-power-platform-governance-and-administration-multi-grader-comparison.md: orphan (no inbound related links)
-- features/microsoft-teams-new-sharing-panel-in-meetings-improved-content-discovery-and-ease-of-shari.md: orphan (no inbound related links)
-- features/power-apps-form-fill-assistance-using-speech-as-input-in-model-driven-apps.md: orphan (no inbound related links)
-- features/power-apps-model-driven-apps-use-row-summaries-in-us-government-clouds.md: orphan (no inbound related links)
-- features/power-apps-monitor-generative-pages-with-out-of-the-box-application-insights-telemetry.md: orphan (no inbound related links)
-- features/power-apps-use-dataverse-custom-apis-in-generative-pages.md: orphan (no inbound related links)
-- features/power-automate-process-mining-enable-process-intelligence-studio-in-object-centric-process.md: orphan (no inbound related links)
-- features/power-pages-design-studio-configure-authentication-with-security-agent.md: orphan (no inbound related links)
-- features/power-pages-design-studio-unify-power-pages-authorization-by-merging-web-role-with-dataver.md: orphan (no inbound related links)
-- features/power-pages-plugin-support-for-github-copilot-cli-and-claude-code-to-create-and-edit-tradi.md: orphan (no inbound related links)
-- features/work-iq-agent-policy-governance.md: orphan (no inbound related links)
-- features/work-iq-human-in-the-loop.md: orphan (no inbound related links)
-- features/work-iq-real-time-transcripts.md: orphan (no inbound related links)
-- concepts/agent-identity.md: written by hand before the concept standard (queued for a rewrite)
-- concepts/agent-identity.md: not yet checked against Microsoft Learn (queued)
-- concepts/copilot-credits.md: written by hand before the concept standard (queued for a rewrite)
-- concepts/copilot-credits.md: not yet checked against Microsoft Learn (queued)
-- concepts/data-policies.md: written by hand before the concept standard (queued for a rewrite)
-- concepts/data-policies.md: not yet checked against Microsoft Learn (queued)
-- concepts/managed-environments.md: written by hand before the concept standard (queued for a rewrite)
-- concepts/managed-environments.md: not yet checked against Microsoft Learn (queued)
+- features/copilot-studio-purview-information-protection-labelled-files.md: orphan (no inbound related links)
+- features/entra-id-backup-and-recovery-30-day.md: orphan (no inbound related links)

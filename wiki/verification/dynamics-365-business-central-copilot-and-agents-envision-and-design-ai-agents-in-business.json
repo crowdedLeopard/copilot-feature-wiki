@@ -1,0 +1,1026 @@
+{
+  "slug": "dynamics-365-business-central-copilot-and-agents-envision-and-design-ai-agents-in-business",
+  "roadmapId": 578068,
+  "title": "Dynamics 365 Business Central: design custom AI agents with the AI development toolkit",
+  "status": "held",
+  "date": "2026-11-16",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-16",
+    "reasons": [
+      "4 blocking findings (claims 34, 45, 56, 69)"
+    ]
+  },
+  "counts": {
+    "claims": 80,
+    "confirmed": 74,
+    "unconfirmed": 0,
+    "contradicted": 6,
+    "blocker": 4,
+    "major": 0,
+    "minor": 5
+  },
+  "summary": "Hold: the briefing reports credit-allocation automation as undocumented, although Microsoft publishes a Power Platform API tutorial for it. It also overstates the task creator's permission ceiling, overlooks published Expense Agent rates, and reports the capability default as unstated despite Microsoft's default-on guidance.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; rationale: risk",
+      "type": "behaviour",
+      "claim": "Business Central provides an in-product custom agent designer as part of the AI development toolkit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-overview",
+      "quote": "The ability to design agents is part of the AI development toolkit",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap lists Microsoft Copilot (Microsoft 365) and Dynamics 365 Business Central.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\", \"Dynamics 365 Business Central\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap status remains In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap target is October CY2026, a target month already past on the run date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"October CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is February CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"February CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists the Web platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-10-23T22:46:03.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-23T22:46:03\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "summary; What's changing; Risk assessment; changes; rationale: risk",
+      "type": "availability",
+      "claim": "Learn describes the designer as preview functionality with prerelease documentation subject to change.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-overview",
+      "quote": "[This article is prerelease documentation and is subject to change.]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary; What's changing; Scope; Open questions; rationale: risk",
+      "type": "availability",
+      "claim": "The in-product toolkit is available only in sandboxes, not production.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-overview",
+      "quote": "Sandbox only: Available exclusively in sandbox environments; never in production",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "The sandbox prerequisite starts at version 27.2.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-overview",
+      "quote": "A sandbox environment for testing and experimentation from version 27.2",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; rationale: impact",
+      "type": "behaviour",
+      "claim": "The designer is intended for product owners, domain experts, consultants and developers prototyping before AL implementation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-overview",
+      "quote": "Product owners who want to prototype AI-powered features before building them in AL extensions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The Create agent wizard configures an agent using natural-language instructions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-agent-create",
+      "quote": "You start by defining your agent's identity and purpose, then specify its behavior through natural language instructions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "Users can run custom agents by manually creating tasks.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "You can invoke your agent by manually creating a task for it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "An agent is treated as a Business Central user with assignable permission sets.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-agent-create",
+      "quote": "The agent is considered as a user in Business Central, so it can be assigned permission sets to control what data and actions it can access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "default",
+      "claim": "An individual agent is Disabled by default and must be activated before use.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-agent-create",
+      "quote": "An agent is by default in the Disabled state. You must activate the agent to use it",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "availability",
+      "claim": "The feature currently supports only English.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-overview",
+      "quote": "This feature currently supports only English as language. While this feature can be used in other languages, it might not function as intended.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap says custom agents extend the runtime used by built-in agents.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "extending the same agent runtime capabilities used by built-in Business Central agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap describes exported and imported definitions as JSON files.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "These definitions are stored as simple JSON files containing properties such as agent identity, instructions, assigned profiles, and permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Open questions",
+      "type": "behaviour",
+      "claim": "The Learn export page instead documents XML exports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-export-import",
+      "quote": "The exported agent appears in your Downloads window in .xml format.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap says custom agents do not yet have built-in email, event or recurring-schedule triggers.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "there aren't yet any built-in integrations to automatically trigger these custom agents based on incoming emails, events, or scheduled recurrences (this can be done by professional developers using the APIs available in the AI Development Toolkit).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Scope; summary; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "Designing agents requires the Custom Agent capability to be enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-overview",
+      "quote": "Enable the Custom Agent capability in Business Central.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Scope; Why it matters; Governance guidance; Governance controls",
+      "type": "role",
+      "claim": "AGENT - ADMIN grants permission to design agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-overview",
+      "quote": "\"AGENT - ADMIN\" gives you permission to design agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Scope; Governance guidance: Before rollout",
+      "type": "role",
+      "claim": "AGENT - DIAGNOSTICS exposes execution cost and serialized pages in agent task logs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-overview",
+      "quote": "\"AGENT - DIAGNOSTICS\" gives you access to see the execution cost and the serialized page in the agent task log entries.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Scope; Cost and licensing",
+      "type": "licensing",
+      "claim": "Billing setup for agent capabilities in the tenant is a toolkit prerequisite.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-overview",
+      "quote": "Billing setup for agent capabilities in your tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The toolkit prerequisites name no separate license.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-overview",
+      "quote": "Before you can design agents in Business Central, ensure that you have the following prerequisites in place:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout; rationale: risk",
+      "type": "behaviour",
+      "claim": "Sandbox environments used for the designer can contain copies of production customer data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-overview",
+      "quote": "can include customer data such as sandbox copies of production data",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Why it matters; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Agents can read and modify Business Central business data within their effective permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-permissions-profiles",
+      "quote": "The agent can read and modify customers (both user and agent have these permissions)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Learn advises against using the toolkit when compliance or security evaluation is the primary goal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-overview",
+      "quote": "Don't use the AI development toolkit when: Compliance or security evaluation is the primary goal",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Learn says agents cannot have more permissions than their creating user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-overview",
+      "quote": "Permission inheritance: Agents can't have more permissions than their creating user",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Security & identity; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "On scheduling, tasks execute with the intersection of the user's and agent's permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-permissions-profiles",
+      "quote": "When a user schedules a task for an agent, the task is executed with permissions from the intersection of the user's permissions and the agent's permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "After an intervention request, the task proceeds with the responding user's permissions, and that user may differ from its creator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-permissions-profiles",
+      "quote": "If the agent makes a user intervention request, the task continues proceeding with the permissions of the user that responded to that intervention request. This user might be different from the task creator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[1].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "Agents never exceed the permissions of the user who scheduled the task.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-permissions-profiles",
+      "quote": "If the agent makes a user intervention request, the task continues proceeding with the permissions of the user that responded to that intervention request. This user might be different from the task creator.",
+      "severity": "blocker",
+      "fix": "Qualify the control note: 'Initially runs with the intersection of the scheduling user's and agent's permissions; after intervention, the responding user's permissions apply.' The body already documents this exception; carry it into the table."
+    },
+    {
+      "n": 35,
+      "where": "What's changing; Risk assessment: Autonomy & actions; controls[1].note; rationale: risk",
+      "type": "behaviour",
+      "claim": "The assigned profile, selected in the wizard's Profile (role) section, controls visible and interactive UI.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-agent-create",
+      "quote": "Under Profile (role), use the Setup profile option to select the profile that determines what UI elements the agent can see and interact with.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "InsertAllowed page customization can prohibit agent insert operations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-permissions-profiles",
+      "quote": "InsertAllowed | Boolean | false, the insert action isn't allowed for the agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "DeleteAllowed page customization can prohibit agent delete operations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-permissions-profiles",
+      "quote": "DeleteAllowed | Boolean | false, the delete action isn't allowed for the agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Learn recommends custom profiles specifically built for agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-permissions-profiles",
+      "quote": "it's recommended to build a custom profile for the agent in the same way as you would build a custom profile for a user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Learn describes a gradual transition of Business Central agents to GPT-5.3-chat as their default model.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/enable-ai",
+      "quote": "agents in Business Central are moving to GPT-5.3-chat as the default language model for version 28 and onwards.",
+      "severity": "minor",
+      "fix": "Retain the source's scope: version 28 onwards, with UK, India and Australia excluded from the initial rollout. This avoids implying every version 27.2 sandbox covered by this briefing participates."
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Microsoft recommends re-evaluating agents after model updates because behavior and accuracy can change.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/enable-ai",
+      "quote": "we highly recommend that you reevaluate your agents when the model has updated because agent behavior, as well as accuracy, might be affected.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "front matter: licensing.model, cost, licensing.notes; summary; Why it matters; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The designer is listed as a billable capability using consumption-based Copilot Credits, supporting consumption licensing and variable cost.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/administration/tenant-admin-center-manage-consumption-billing",
+      "quote": "Selected agent capabilities in Business Central use consumption-based billing, charging per use. These capabilities use Copilot Credits for AI interactions and tasks ... Billable agent capabilities ... Designing and coding agents (preview)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Agent consumption depends on its design, frequency of interaction and features used.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/administration/tenant-admin-center-manage-consumption-billing",
+      "quote": "The number of Copilot Credits consumed by an agent depends on the design of the agent, how often customers interact with it, and the features they use.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "summary; licensing.notes; Cost and licensing; Open questions; changes; rationale: cost",
+      "type": "cost",
+      "claim": "The billing page says toolkit billing events will be announced in a future update.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/administration/tenant-admin-center-manage-consumption-billing",
+      "quote": "Billing events for the AI development toolkit will be announced in a future update.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "licensing.notes; Cost and licensing; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Feature-specific custom-agent credit rates and quota are not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Business Central Custom Agent AI development toolkit billing events price Copilot Credits. Opened toolkit overview and Business Central consumption-billing page; searched results included Copilot Studio billing rates. No custom-agent rate or quota was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Published Business Central agent rates exist only for Sales Order Agent and Payables Agent.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/administration/tenant-admin-center-manage-consumption-billing",
+      "quote": "Each uploaded receipt consumes 50 Copilot Credits, regardless of how many lines the resulting expense has.",
+      "severity": "blocker",
+      "fix": "Replace 'Rates exist for the Sales Order Agent and Payables Agent only' with 'The page publishes rates for Sales Order Agent, Payables Agent and Expense Agent, but not the AI development toolkit.' Retain the warning not to transfer those rates to custom agents."
+    },
+    {
+      "n": 46,
+      "where": "licensing.notes; Cost and licensing; rationale: cost; Governance guidance",
+      "type": "licensing",
+      "claim": "Business Central supports prepaid capacity purchased as Copilot Credit packs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/administration/tenant-admin-center-manage-consumption-billing",
+      "quote": "The prepaid capacity model uses Copilot Credit pack subscriptions, which are a licensing option for Microsoft Copilot Studio that you purchase in advance.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "licensing.notes; Cost and licensing; rationale: cost; Governance guidance",
+      "type": "licensing",
+      "claim": "Business Central also supports pay-as-you-go billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/administration/tenant-admin-center-manage-consumption-billing",
+      "quote": "Business Central supports two billing models: prepaid capacity and pay-as-you-go.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "When both models are configured, available prepaid capacity is consumed first.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/administration/tenant-admin-center-manage-consumption-billing",
+      "quote": "Both billing models can be used in the Business Central environment. When available, prepaid capacity is consumed first.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Cost and licensing",
+      "type": "default",
+      "claim": "Without additional setup, Business Central environments consume credits from the tenant's default Power Platform environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/administration/tenant-admin-center-manage-consumption-billing",
+      "quote": "Without any extra setup, Business Central environments automatically consume Copilot Credit capacity from the default Power Platform environment in your tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Why it matters; Cost and licensing",
+      "type": "cost",
+      "claim": "Tenant credit capacity is shared with other Business Central environments and Microsoft services.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/administration/tenant-admin-center-manage-consumption-billing",
+      "quote": "Copilot Credit capacity on the tenant is consumed by Business Central environments and other Microsoft services on the tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Cost and licensing; controls[3].note; Governance controls",
+      "type": "cost",
+      "claim": "The Business Central billing page says capacity cannot be allocated to a specific service or feature.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/administration/tenant-admin-center-manage-consumption-billing",
+      "quote": "It isn't possible to allocate capacity to specific Microsoft services or features.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "Quota depletion makes the AI capability unavailable until capacity is added.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/administration/tenant-admin-center-manage-consumption-billing",
+      "quote": "When the quota is depleted, the AI capability is unavailable until more capacity is added.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[3].note; Governance guidance: Before rollout",
+      "type": "role",
+      "claim": "Only internal admins can link the Business Central environment to its Power Platform environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/administration/tenant-admin-center-manage-consumption-billing",
+      "quote": "Link the Business Central environment to the Power Platform environment. Only internal admins can complete this task.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[3].governs; Governance controls; Governance guidance: At rollout",
+      "type": "cost",
+      "claim": "Allocating prepaid capacity to the linked Power Platform environment limits Business Central credit consumption to that capacity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/administration/tenant-admin-center-manage-consumption-billing",
+      "quote": "Once completed, consumption of the Copilot Credits in the Business Central environment is limited by the capacity allocated to the linked Power Platform environment.",
+      "severity": "minor",
+      "fix": "Report the additional qualification at https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity#manage-capacity: overage settings can draw from tenant capacity or pay-as-you-go. To describe a bounded prepaid pool, say to disable those overage sources; allocation alone is not the whole platform control."
+    },
+    {
+      "n": 55,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "The Agent SDK for AL, unlike the sandbox designer, is available in production from version 28.1.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-overview",
+      "quote": "The Agent SDK for AL is available in sandbox environments and, starting from version 28.1, also in production environments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "front matter: defaultState; Why it matters; Scope; Open questions",
+      "type": "default",
+      "claim": "The Custom Agent capability's default is not stated because the configuration and toolkit pages do not reconcile it.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/enable-ai",
+      "quote": "Copilot and agent capabilities are active by default when they're available in preview or generally available.",
+      "severity": "blocker",
+      "fix": "Set defaultState to 'on' for capability availability and explain that capability availability still requires design permissions and billing setup, while individual created agents start Disabled. Remove the claimed default conflict: 'enable the capability' and 'if the icon isn't present' do not state a contrary default."
+    },
+    {
+      "n": 57,
+      "where": "controls[0].ui; Governance controls table; Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "In Business Central, Copilot & agent capabilities > select the feature > Activate or Deactivate controls capability availability for the environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/enable-ai",
+      "quote": "To turn on a feature, select it in the list, and then select Activate. To turn off a feature, select it in the list, and then select Deactivate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[0].api; Governance controls table; Governance controls prose",
+      "type": "absence",
+      "claim": "No administrator API for activating or deactivating the Custom Agent capability is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Business Central Copilot agent capabilities activate deactivate API PowerShell Allow data movement configuration; \"Copilot Capability\" \"Deactivate\" \"procedure\". Opened enable-ai and SDK configuration; no equivalent admin capability-switch API found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "controls[0].note; Governance controls",
+      "type": "role",
+      "claim": "The capability administration page requires SUPER permission or one of its listed administrator licenses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/enable-ai",
+      "quote": "You need SUPER permission in your Business Central user account or one of the following Business Central licenses:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Business Central does not yet provide granular object-level permissions limiting which administrators can configure Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/enable-ai",
+      "quote": "Business Central doesn't yet offer granular, object-level permissions so that only specific administrators can configure Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "controls[0].note; Governance controls table",
+      "type": "admin-path",
+      "claim": "The design capability is listed under Production ready previews.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-agent-create",
+      "quote": "If the icon isn't present, turn it on from the Copilot & agent capabilities page, like other Copilot features in Business Central. The design capability is listed under Production ready previews.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Agent > Create opens the Create agent wizard, whose Permissions > Manage permissions control assigns agent permission sets.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-agent-create",
+      "quote": "Under Permissions, use Manage permissions to add the permissions that the agent should have.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "controls[1].api; Governance controls table",
+      "type": "absence",
+      "claim": "No equivalent admin automation for changing designed custom agents' profiles and permissions is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Business Central agent SDK set permissions profile AL API Agent SetPermissionSet SetProfile; \"Custom Agent\" \"SetProfile\" \"permissions\" API. Opened SDK configuration: its configuration APIs are limited to agents defined in the caller's own application.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The general cross-geography control is Business Central > Copilot & agent capabilities > Allow data movement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/enable-ai",
+      "quote": "enter Copilot & agent capabilities, and then choose the related link. Switch the Allow data movement toggle on or off as desired.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "controls[2].api; Governance controls table; Governance controls prose",
+      "type": "absence",
+      "claim": "No API equivalent of the Business Central Allow data movement toggle is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Allow data movement\" \"API\" \"Business Central\"; Business Central Copilot agent capabilities activate deactivate API PowerShell Allow data movement configuration. Opened enable-ai and ai-copilot-data-movement; found UI instructions but no toggle API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "controls[2].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The toggle appears only when a capability might process data in a different Azure geography.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/enable-ai",
+      "quote": "The Allow data movement toggle appears when one or more copilot and agent capabilities might process data in a different Azure geography from the Business Central environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "controls[2].note; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Learn does not explicitly identify whether the general geography toggle applies to Custom Agent.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Business Central Custom Agent AI development toolkit Allow data movement geography. Opened enable-ai, ai-copilot-data-movement and toolkit overview. General native-agent routing is documented, but no explicit Custom Agent mapping was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "controls[3].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The Power Platform admin center capacity path is Licensing > Products > Copilot Studio > Summary > Manage Capacity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
+      "quote": "In the Licensing pane, under Products, select Copilot Studio. Select the Summary tab. ... Select Manage Capacity from the Prepaid capacity card.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "controls[3].api; Governance controls table; Governance controls: opening paragraph",
+      "type": "absence",
+      "claim": "No API or automation is documented for environment Copilot Credit capacity allocation.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations",
+      "quote": "you can manage Copilot credit allocations with code by using the Power Platform API and the administration (Admin) SDKs.",
+      "severity": "blocker",
+      "fix": "Replace controls[3].api=null with the documented REST allocation operation: PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01, with scope.environmentId, allocatedEntitlements entitlementId MCSMessages and allocation.quantity in the body. Cite this tutorial, preserve its authentication/role requirements and TenantPool enforcement qualification, and remove the UI-only claim from the prose."
+    },
+    {
+      "n": 70,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Capability changes can be immediate or require users to sign out and back in.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/enable-ai",
+      "quote": "Some AI features take effect immediately, while others require users to sign out and sign in again.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Administrators can monitor prepaid and pay-as-you-go capacity and usage in the Power Platform admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/administration/tenant-admin-center-manage-consumption-billing",
+      "quote": "You can view Copilot Credit capacity and usage for prepaid capacity and pay-as-you-go in the Power Platform admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Consumed-credit telemetry is emitted to the Application Insights resource configured for the Business Central environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/administration/tenant-admin-center-manage-consumption-billing",
+      "quote": "telemetry is emitted to the Application Insights resource set up for the environment for Copilot Credits consumed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Agent definitions can be exported for backup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-export-import",
+      "quote": "The purpose of this feature is to allow you to back up your agent configuration, share it with others, or move it between different sandbox environments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Governance guidance: After rollout",
+      "type": "record",
+      "claim": "The roadmap recommends storing exported definitions in source control.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "We recommend storing these files in a source control system like GitHub to track changes and maintain version history.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "Governance controls: assigning permissions",
+      "type": "behaviour",
+      "claim": "The Business Central assigning-permissions article explains how to grant permission sets to users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/ui-define-granular-permissions",
+      "quote": "You can assign permissions sets to users in two ways: From the User Card page, by selecting permission sets to assign to the user.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/dynamics365/business-central/ui-define-granular-permissions to sources and link the assigning-permissions reference in this paragraph."
+    },
+    {
+      "n": 76,
+      "where": "Governance guidance: Before rollout; controls",
+      "type": "consistency",
+      "claim": "The checklist tells administrators to inventory and remove human users' design and diagnostics permission sets, but no control row covers that user access.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Identify which people hold the AGENT - ADMIN and AGENT - DIAGNOSTICS permission sets and remove them from anyone who does not need to design agents.",
+      "severity": "minor",
+      "fix": "Add a user-scope row for who may design agents or inspect diagnostics. Use Business Central > Users > user > Edit > User Permission Sets, documented at https://learn.microsoft.com/dynamics365/business-central/ui-define-granular-permissions#to-assign-a-permission-set-on-a-user-card. The existing agent-scope row controls the agent's permissions, not the human designer's."
+    },
+    {
+      "n": 77,
+      "where": "Governance guidance: After rollout; controls",
+      "type": "consistency",
+      "claim": "The checklist tells administrators to monitor consumption, but the capacity-allocation row does not show the monitoring control.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Watch Copilot Credit consumption in the Power Platform admin center, and in Application Insights telemetry if it is set up for the environment.",
+      "severity": "minor",
+      "fix": "Add a monitoring row using Power Platform admin center > Licensing > Products > Copilot Studio > Environments > environment > Copilot Credits capacity, citing https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity. Note the optional Business Central Application Insights telemetry with the consumption-billing source."
+    },
+    {
+      "n": 78,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "Microsoft does not publish a feature-specific price for the AI development toolkit.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Business Central Custom Agent AI development toolkit billing events price Copilot Credits. Read the toolkit overview, prerequisites and consumption-billing page; results include generic Copilot Credit prices, not a toolkit-specific price.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 79,
+      "where": "Why it matters; Cost and licensing",
+      "type": "behaviour",
+      "claim": "Business Central displays in-app notifications when the organization's credit quota is low or depleted.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/administration/tenant-admin-center-manage-consumption-billing",
+      "quote": "If your organization's quota is low or depleted, users receive in-app notifications about the status and necessary actions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 80,
+      "where": "controls[0].note; Governance controls table",
+      "type": "admin-path",
+      "claim": "Search (Alt+Q) is the documented entry point to Copilot & agent capabilities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/enable-ai",
+      "quote": "In Business Central, select Search (Alt+Q) in the upper-right corner, enter Copilot & agent capabilities, and then choose the related link.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-16T13:32:38.310Z",
+    "summary": {
+      "links": 8,
+      "unreachable": 0,
+      "uiPaths": 4,
+      "uiPathsWithMissingWords": 1,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=578068",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-agent-create",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-permissions-profiles",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-export-import",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/business-central/enable-ai",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/administration/tenant-admin-center-manage-consumption-billing",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether the Custom Agent (agent design) capability is active in a Business Central environment",
+        "docs": "https://learn.microsoft.com/dynamics365/business-central/enable-ai",
+        "reachable": true,
+        "segments": [
+          "Copilot & agent capabilities",
+          "select the feature",
+          "Activate or Deactivate"
+        ],
+        "missing": [
+          "select the feature"
+        ]
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "What a designed agent can see and do (profile and permission sets)",
+        "docs": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-agent-create",
+        "reachable": true,
+        "segments": [
+          "Create",
+          "Create agent wizard",
+          "Permissions",
+          "Manage permissions"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Cross-geography processing of Copilot and agent data",
+        "docs": "https://learn.microsoft.com/dynamics365/business-central/enable-ai",
+        "reachable": true,
+        "segments": [
+          "Copilot & agent capabilities",
+          "Allow data movement toggle"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Copilot Credit capacity available to the environment's agents",
+        "docs": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
+        "reachable": true,
+        "segments": [
+          "Licensing",
+          "Products",
+          "Copilot Studio",
+          "Summary",
+          "Manage Capacity"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

@@ -1,0 +1,701 @@
+{
+  "slug": "copilot-studio-purview-information-protection-labelled-files",
+  "roadmapId": 571305,
+  "title": "Copilot Studio: agents on the Microsoft 365 channel accept files protected by Purview Information Protection labels",
+  "status": "needs-correction",
+  "date": "2026-11-16",
+  "version": 2,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "grace",
+    "since": "2026-11-16",
+    "reasons": [
+      "13 blocking findings (claims 15, 22, 23, 26, 28, 29, 32, 33, 39, 40, 42, 43, 44)",
+      "published before the check existed: kept live with a notice while a corrected version is prepared"
+    ]
+  },
+  "counts": {
+    "claims": 51,
+    "confirmed": 35,
+    "unconfirmed": 6,
+    "contradicted": 10,
+    "blocker": 13,
+    "major": 1,
+    "minor": 9
+  },
+  "summary": "Hold: the briefing treats SharePoint knowledge-source DLP coverage as protection for uploaded files, although Microsoft documents different coverage and limitations for direct uploads. The DLP rule command is incomplete, and the automatic default and no-additional-licence assertions lack feature-specific evidence.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: products; title",
+      "type": "record",
+      "claim": "The roadmap feature belongs to Microsoft Copilot Studio.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Copilot Studio\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap item remains In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap targets October CY2026 for release.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"October CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap targets October CY2026 for preview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"October CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms",
+      "type": "record",
+      "claim": "The roadmap lists Web as the platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 2026-10-19T23:15:15.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-19T23:15:15\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "title; summary; What's changing; Scope; rationale: risk and impact",
+      "type": "record",
+      "claim": "The planned change enables user uploads of MPIP sensitivity-labelled files to Copilot Studio agents deployed on the M365 channel.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Unblock users from upload files with Microsoft Purview Information Protection (MPIP) sensitivity labels to Copilot Studio agents deployed on the M365 channel.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Why it matters; Risk assessment: Change & support",
+      "type": "record",
+      "claim": "The roadmap describes a block on labelled uploads that this feature is intended to remove.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Unblock users from upload files with Microsoft Purview Information Protection (MPIP) sensitivity labels",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary; What's changing; Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "The planned processing is based on the user's and agent account permissions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "With this support agents can process content based on the user's/agents account permissions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "summary; What's changing; Why it matters",
+      "type": "record",
+      "claim": "The roadmap promises end-to-end label protection for the planned support.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "with label protections enforced end-to-end.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "title; summary; What's changing; Scope",
+      "type": "availability",
+      "claim": "Copilot Studio's Microsoft 365 and Teams channel configuration makes agents available in Microsoft Copilot and Teams.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/publication-add-bot-to-microsoft-teams",
+      "quote": "After you publish your agent at least once, you can connect it to the Microsoft 365 and Microsoft Teams channels so users can chat with it in both Teams and Microsoft Copilot.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/microsoft-copilot-studio/publication-add-bot-to-microsoft-teams to sources for the channel-to-client mapping."
+    },
+    {
+      "n": 14,
+      "where": "What's changing: existing upload block",
+      "type": "behaviour",
+      "claim": "Existing Copilot Studio file input blocks encrypted files.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/image-input-analysis",
+      "quote": "Files with encryption, such as sensitivity labels or password protection, aren't supported.",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/microsoft-copilot-studio/image-input-analysis for the existing encrypted-file limitation and distinguish that documentation from the roadmap's planned support."
+    },
+    {
+      "n": 15,
+      "where": "What's changing: follows the model; controls[2].note; Governance guidance",
+      "type": "applicability",
+      "claim": "The new conversational-upload feature follows the existing SharePoint knowledge-source protection model in all the detailed ways described.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Copilot Studio support sensitive documents protected MPIP labelled encrypted upload roadmap 571305; Copilot Studio sensitivity file protection API. Opened ai-copilot-studio, ai-m365-copilot-considerations and image-input-analysis.",
+      "severity": "blocker",
+      "fix": "Label the EXTRACT, response-label and inheritance discussion as existing Copilot/SharePoint knowledge-source behaviour. Say Microsoft has not yet documented whether every detail carries over to the planned conversational uploads; do not present that transfer as confirmed."
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "In the documented sensitivity-label encryption model, returning data requires the user to have VIEW.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-copilot-studio",
+      "quote": "When the sensitivity label applies encryption, users must have the EXTRACT usage right, as well as VIEW, for the AI apps to return the data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; controls[2].note; Why it matters; rationale: risk",
+      "type": "behaviour",
+      "claim": "In the documented sensitivity-label encryption model, returning data requires the user to have EXTRACT.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-copilot-studio",
+      "quote": "When the sensitivity label applies encryption, users must have the EXTRACT usage right, as well as VIEW, for the AI apps to return the data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "In the documented model, Copilot does not summarize encrypted content for a user who has VIEW but lacks EXTRACT.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/architecture-data-protection-auditing",
+      "quote": "If the user has VIEW but not EXTRACT, Copilot doesn't summarize the content, but it can return a link so the user can open it outside Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing: responses display the highest-priority label",
+      "type": "behaviour",
+      "claim": "The existing Copilot Studio sensitivity-label model displays the highest-priority source label on the latest response.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-copilot-studio",
+      "quote": "the latest response in Copilot displays the highest priority sensitivity label from the data used for that Copilot chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "In the existing documented model, newly created Word and PowerPoint content inherits the highest-priority source label where inheritance is supported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-copilot-studio",
+      "quote": "Also like sensitivity label inheritance for Microsoft 365 Copilot, newly created content from Word and PowerPoint inherits the highest priority sensitivity label.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "The Editor permission level includes EXTRACT, permitting Copilot and agents to return content under that configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-m365-copilot-considerations",
+      "quote": "the default permission level selected is Editor, where you see Copy and extract content(EXTRACT) is included. As a result, content protected with this encryption configuration can be returned by Copilot and agents",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Why it matters; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "Configuring a label without EXTRACT is sufficient to stop agents from accessing that label's content for every user.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/ai-m365-copilot-considerations",
+      "quote": "The person applying the encryption always has the EXTRACT usage right, because they are the Rights Management owner.",
+      "severity": "blocker",
+      "fix": "Say the user's effective rights determine access, not merely the label template: the person applying encryption is the Rights Management owner and retains EXTRACT, and Full control also includes EXTRACT. Do not promise that omitting EXTRACT in label configuration blocks every user."
+    },
+    {
+      "n": 23,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Labels that apply markings but no encryption do not restrict processing at all.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/ai-m365-copilot-considerations",
+      "quote": "You can further prevent Copilot and agents from summarizing labeled files and emails (whether encrypted or not) that are identified by a Microsoft Purview Data Loss Protection policy.",
+      "severity": "blocker",
+      "fix": "Replace with: 'Markings alone do not impose encryption usage rights; however, label-based DLP can restrict processing of labelled content even when it is not encrypted, within its documented coverage.' Keep the direct-upload coverage limitation explicit."
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Uploaded labelled content reaches whatever knowledge sources and tools the agent uses in that turn.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Copilot Studio sensitivity labelled content external tools maker credentials. Opened ai-copilot-studio and guidance/pass-files-to-connectors; the latter documents explicitly configured file inputs, not automatic transmission to every source and tool.",
+      "severity": "major",
+      "fix": "Remove the assertion of automatic propagation. Replace it with advice to inspect which configured tool inputs receive uploaded files or extracted text; Microsoft's file-passing guidance requires explicit configuration and does not say knowledge sources receive the upload."
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Data exposure and Autonomy & actions; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Configured agent tools and flows can pass user-uploaded file data to downstream services.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/guidance/pass-files-to-connectors",
+      "quote": "Optionally, you can add logic in your flow to send this file to SharePoint, ServiceNow, Dynamics 365 Customer Service, and similar services.",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/microsoft-copilot-studio/guidance/pass-files-to-connectors for the general tool-egress risk and retain it as analysis, not a confirmed description of label-encrypted upload handling."
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Labels configured with user-defined permissions always block agent access to unopened files.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/copilot/plan/architecture-data-protection-auditing",
+      "quote": "There are two exceptions: the label is a default sensitivity label that extends SharePoint permissions to downloaded documents, or the user references the document directly by typing \"/\".",
+      "severity": "blocker",
+      "fix": "Limit this statement to labelled and encrypted unopened SharePoint/OneDrive documents, and include both documented exceptions: default labels extending SharePoint permissions and direct '/' references, each requiring EXTRACT. Do not apply this at-rest limitation indiscriminately to uploaded files."
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Agents can use maker-provided tool credentials, introducing access beyond the end user's permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication",
+      "quote": "When someone uses the agent, the agent uses the maker's credentials, not the end user's credentials, to authenticate with connected services.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication to sources for the maker-credential risk and governance recommendation."
+    },
+    {
+      "n": 28,
+      "where": "controls[1].governs; Risk assessment: Change & support; Governance guidance: Before rollout; Governance controls",
+      "type": "applicability",
+      "claim": "A DLP policy at the Copilot location is a confirmed control over the labelled conversational uploads covered by this feature.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "DLP can't scan the contents of files that you upload directly into prompts, so evaluation of the uploaded file for sensitive data doesn't occur. DLP only checks the text you type into the prompt itself.",
+      "severity": "blocker",
+      "fix": "Qualify this as an existing SharePoint knowledge-source control, not confirmed protection for the new uploads. The cited ai-copilot-studio page limits agent label-based DLP coverage to SharePoint knowledge sources; the DLP page separately states the direct-upload limitation. State that coverage of the planned upload feature is not yet documented."
+    },
+    {
+      "n": 29,
+      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The new labelled-file upload capability is included in licences already held and requires no additional licence.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Copilot Studio sensitivity upload license; Copilot Studio sensitivity labelled files no additional license billing consumption. Read ai-copilot-studio, Purview service description and billing-licensing/faq-billing-licensing excerpts; no feature-specific inclusion statement.",
+      "severity": "blocker",
+      "fix": "Set licensing.model to 'unknown' and replace 'No new licence' and 'No additional licence for the feature' with 'Feature-specific licensing has not yet been published.' Separate general Purview prerequisites and Copilot Studio billing from any incremental price or licence for this roadmap item."
+    },
+    {
+      "n": 30,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 E3 includes manual sensitivity labelling.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Microsoft 365 E5/A5/G5/E3/A3/G3/F1/F3/Business Premium\n| Manual Sensitivity Labeling | Included | Included | Included | Included | Included |",
+      "severity": "minor",
+      "fix": "Cite the Microsoft Purview service description's sensitivity-labelling feature matrix for the E3 manual-labelling statement. Do not use this general entitlement as proof that the new upload feature is included."
+    },
+    {
+      "n": 31,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 E5 includes automatic sensitivity labelling.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
+      "quote": "You have E3 or Business Premium. Auto-labeling of files and emails isn't included at this SKU. Sensitivity labels and manual labeling are — auto-labeling requires an E5 / P2-tier add-on.",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/purview/apply-sensitivity-label-automatically and the Purview service-description feature matrix. Make clear that auto-labelling entitlements are background licensing information, not a prerequisite established for this upload feature."
+    },
+    {
+      "n": 32,
+      "where": "front matter: cost; rationale: cost",
+      "type": "consistency",
+      "claim": "A cost rating of none is justified because the feature uses existing Purview entitlements.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Briefing: 'cost: \"none\"' and 'None. Uses existing Purview entitlements.' Standard: 'none: included in licences already held, and the record or a Microsoft page says so.' No verified source states this feature is included.",
+      "severity": "blocker",
+      "fix": "Change cost to 'low' for the known review and communication effort, and change the rationale to 'Low. Label and DLP review takes administrator time; feature-specific licensing has not yet been published.' Do not infer free use or a new meter from general product licensing."
+    },
+    {
+      "n": 33,
+      "where": "front matter: defaultState",
+      "type": "default",
+      "claim": "The labelled-file upload change is on by default.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Copilot Studio sensitivity upload default; Copilot Studio upload sensitivity labeled encrypted files M365 channel enable default license additional cost. Read ai-copilot-studio and image-input-analysis; no statement of this change's default.",
+      "severity": "blocker",
+      "fix": "Set defaultState to 'unknown' and say the feature's rollout default is not stated. Do not substitute the existing maker File uploads setting or general sensitivity-label behaviour for evidence about this change's default."
+    },
+    {
+      "n": 34,
+      "where": "Scope; Open questions",
+      "type": "absence",
+      "claim": "Support for the planned labelled-upload change on other channels is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio M365 channel sensitivity; Copilot Studio support sensitive documents protected MPIP labelled encrypted upload roadmap 571305. Read image-input-analysis and ai-copilot-studio; no other-channel coverage for the planned labelled-upload change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Scope; Open questions",
+      "type": "absence",
+      "claim": "Government-cloud dates for this specific labelled-upload feature are not published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio sensitivity GCC file uploads. Read requirements-licensing-gcc search excerpts and image-input-analysis; no feature-specific government date appeared. The roadmap record lists Worldwide only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Scope; Governance guidance: Before rollout; controls[0].governs",
+      "type": "applicability",
+      "claim": "Enabling sensitivity labels for SharePoint and OneDrive broadens existing Copilot and agent access to encrypted files.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-copilot-studio",
+      "quote": "When sensitivity labels aren't enabled for these services, the encrypted files that Copilot and agents can access are limited to data in use from Office apps on Windows.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The Purview portal path to enable SharePoint and OneDrive label support is Solutions > Information Protection > Sensitivity labels > Turn on now.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files#how-to-enable-sensitivity-labels-for-sharepoint-and-onedrive-opt-in",
+      "quote": "Sign in to the Microsoft Purview portal > Solutions > Information Protection > Sensitivity labels.\n2. If you see a message to turn on the ability to process content in Office online files, select Turn on now:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-SPOTenant -EnableAIPIntegration $true enables the documented SharePoint and OneDrive sensitivity-label processing support.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files#how-to-enable-sensitivity-labels-for-sharepoint-and-onedrive-opt-in",
+      "quote": "To enable the new capabilities, use the Set-SPOTenant cmdlet with the EnableAIPIntegration parameter:\nSet-SPOTenant -EnableAIPIntegration $true",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The DLP creation path goes directly from Custom to the Microsoft Copilot, Copilot Chat, and Copilot Cowork location.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "Select the Custom template, then Custom policy.\n4. On the Locations page, set the Microsoft Copilot, Copilot Chat, and Copilot Cowork location to on.",
+      "severity": "blocker",
+      "fix": "Replace the path with 'Data Loss Prevention > Policies > + Create policy > Custom > Custom policy > Locations > Microsoft Copilot, Copilot Chat, and Copilot Cowork'. Add the documented sensitivity-label condition and processing action in accompanying guidance; qualify the row's coverage as described in the applicability finding."
+    },
+    {
+      "n": 40,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "The displayed New-DlpCompliancePolicy call followed by New-DlpComplianceRule -RestrictAccess creates the equivalent label-based Copilot restriction.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy?view=exchange-ps",
+      "quote": "New-DLPComplianceRule -Name \"Copilot Rule\" -Policy \"Copilot Policy\" -AdvancedRule $advrule -RestrictAccess @(@{setting=\"ExcludeContentProcessing\";value=\"Block\"})",
+      "severity": "blocker",
+      "fix": "Use the complete Example 4 pattern: define the Copilot Locations JSON and a label-GUID AdvancedRule, create the named policy, then call New-DlpComplianceRule -Name <rule-name> -Policy <policy-name> -AdvancedRule $advRule -RestrictAccess @(@{setting='ExcludeContentProcessing';value='Block'}). RestrictAccess takes a hashtable array, not a bare switch; Name and Policy are required by the rule reference. Explain the required variables rather than displaying an incomplete runnable-looking equivalent."
+    },
+    {
+      "n": 41,
+      "where": "controls[2].ui; controls[2].api; Governance controls table",
+      "type": "absence",
+      "claim": "Microsoft has not documented a separate labelled-file-specific Copilot Studio UI or API switch for the planned change.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio sensitivity labelled files upload disable switch setting API EXTRACT; Copilot Studio sensitivity file protection API. Read image-input-analysis and ai-copilot-studio; found general File uploads, not a separate switch for the planned labelled-file change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[2].note; Governance controls table",
+      "type": "default",
+      "claim": "The planned labelled-file support honours labels automatically, with nothing additional for a maker or administrator to turn on.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Copilot Studio labelled file uploads sensitivity labels enforcement Purview Copilot Studio switch automatic. Read ai-copilot-studio and image-input-analysis; neither states the planned change is automatic or needs no additional configuration.",
+      "severity": "blocker",
+      "fix": "Replace the note with 'No separate switch for this planned labelled-file support is documented. Existing standard-harness file uploads have a maker setting under Settings > Generative AI > File processing capabilities > File uploads; Microsoft has not stated how the new support interacts with it.' Cite the file-input page and avoid claiming that absence of a special switch establishes automatic enablement."
+    },
+    {
+      "n": 43,
+      "where": "Governance controls: Enforcement happens in Purview, not in Copilot Studio",
+      "type": "applicability",
+      "claim": "Enforcement for this planned upload feature happens exclusively in Purview rather than Copilot Studio.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Copilot Studio labelled file uploads sensitivity labels enforcement Purview Copilot Studio switch automatic. Read ai-copilot-studio, architecture-data-protection-auditing and image-input-analysis; no exclusive enforcement boundary is stated.",
+      "severity": "blocker",
+      "fix": "Replace with 'Purview configures the documented label and DLP policies; feature-specific enforcement details for the planned labelled uploads have not yet been published.' Remove the assertion that Copilot Studio has no enforcement role."
+    },
+    {
+      "n": 44,
+      "where": "Governance controls: role requirement",
+      "type": "role",
+      "claim": "Purview Data Security AI Administrator is a documented role name for creating the Copilot DLP policy.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "Purview Data Security AI Admin - Role for editing Data Loss Prevention policies related to Copilot and viewing AI content in Data Security Posture Management.",
+      "severity": "blocker",
+      "fix": "Use the documented role name 'Purview Data Security AI Admin', or another role or role group listed in the cited Permissions section; do not rename it to 'Purview Data Security AI Administrator'."
+    },
+    {
+      "n": 45,
+      "where": "Governance guidance: After rollout; Governance controls",
+      "type": "behaviour",
+      "claim": "Purview DSPM for AI can expose Copilot Studio interaction activity, including sensitivity labels on referenced Microsoft 365 files.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-copilot-studio",
+      "quote": "If these files have a sensitivity label applied, that's also captured.\n\nThese events flow into activity explorer in the AI activities tab in the current version of DSPM and in DSPM for AI",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Governance controls: DSPM for AI is a reporting surface, not a control",
+      "type": "behaviour",
+      "claim": "DSPM for AI provides reporting over existing Purview controls rather than being a separate enforcement mechanism.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-copilot-studio",
+      "quote": "Both DSPM versions use existing controls from Microsoft Purview information protection and compliance management with easy-to-use graphical tools and reports",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Open questions: file types",
+      "type": "absence",
+      "claim": "The precise file-type coverage of the planned labelled-upload support, including types beyond Office documents and PDF, is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio support sensitive documents protected MPIP labelled encrypted upload roadmap 571305. Read image-input-analysis: its general file-type list does not specify encrypted file-type coverage for the planned change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Open questions: inheritance through tools",
+      "type": "absence",
+      "claim": "Label inheritance for outputs delivered through tools by the new upload feature is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio label inheritance tool outputs Word PowerPoint. Read ai-copilot-studio, guidance/pass-files-to-connectors and generate-document-output-prompt excerpts; found no inheritance guarantee for this feature's tool outputs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "What's changing; Scope: existing SharePoint knowledge-source model",
+      "type": "behaviour",
+      "claim": "Copilot Studio SharePoint knowledge sources already support sensitivity-label protections and label-based encryption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-copilot-studio",
+      "quote": "Encryption is supported only with sensitivity labels, and only for the SharePoint knowledge source.",
+      "severity": "minor",
+      "fix": "Report the documentation disagreement: https://learn.microsoft.com/troubleshoot/power-platform/copilot-studio/knowledge/sharepoint-no-response says the agent-level SharePoint source cannot extract or ground on files encrypted by sensitivity labels. Retain the cited Purview statement with this qualification rather than implying universal existing support."
+    },
+    {
+      "n": 50,
+      "where": "Governance guidance: Before rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The controls table includes the label-encryption and EXTRACT configuration that the checklist tells administrators to review.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: 'record, per label, whether encryption is applied and whether EXTRACT is granted.' Table: only SharePoint/OneDrive enablement, Copilot DLP, and the absent Studio-specific switch.",
+      "severity": "minor",
+      "fix": "Add a row for sensitivity-label encryption permissions, including effective EXTRACT rights, using the documented Purview configuration and its automation reference. Distinguish this existing control from unconfirmed applicability details of the new uploads."
+    },
+    {
+      "n": 51,
+      "where": "Governance guidance: After rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The controls table includes the DSPM for AI monitoring surface that the checklist tells administrators to use.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: 'Monitor Purview DSPM for AI activity for labelled content flowing through agents.' No monitoring or activity-explorer row appears in controls.",
+      "severity": "minor",
+      "fix": "Add a Copilot Studio interaction-monitoring row sourced to https://learn.microsoft.com/purview/ai-copilot-studio, whose getting-started instructions lead through DSPM for AI (classic) reports to activity explorer. Record an API side only after checking its own documentation."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-16T13:32:37.207Z",
+    "summary": {
+      "links": 8,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 1,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=571305",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/ai-copilot-studio",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/ai-m365-copilot-considerations",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/plan/architecture-data-protection-auditing",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files#how-to-enable-sensitivity-labels-for-sharepoint-and-onedrive-opt-in",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy?view=exchange-ps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/ai-copilot-studio#capabilities-supported",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Sensitivity labels on SharePoint and OneDrive files (prerequisite)",
+        "docs": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files#how-to-enable-sensitivity-labels-for-sharepoint-and-onedrive-opt-in",
+        "reachable": true,
+        "segments": [
+          "Solutions",
+          "Information Protection",
+          "Sensitivity labels",
+          "Turn on now"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Sensitivity labels on SharePoint and OneDrive files (prerequisite)",
+        "docs": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files#how-to-enable-sensitivity-labels-for-sharepoint-and-onedrive-opt-in",
+        "reachable": true,
+        "token": "Set-SPOTenant",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which labelled content Copilot and agents may process",
+        "docs": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+        "reachable": true,
+        "segments": [
+          "Data Loss Prevention",
+          "Policies",
+          "+ Create policy",
+          "Custom",
+          "location Microsoft Copilot, Copilot Chat, and Copilot Cowork"
+        ],
+        "missing": [
+          "location Microsoft Copilot, Copilot Chat, and Copilot Cowork"
+        ]
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Which labelled content Copilot and agents may process",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy?view=exchange-ps",
+        "reachable": true,
+        "token": "New-DlpCompliancePolicy",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

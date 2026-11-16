@@ -1,0 +1,1021 @@
+{
+  "slug": "copilot-studio-mcp-tools-in-agents",
+  "roadmapId": 562221,
+  "title": "Copilot Studio: MCP-compliant tools in agents and workflows",
+  "status": "needs-correction",
+  "date": "2026-11-16",
+  "version": 2,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [
+    "claim 68: severity major on a rationale: risk rating lowered to minor; ratings are judgements and cannot hold a page"
+  ],
+  "hold": {
+    "reason": "grace",
+    "since": "2026-11-16",
+    "reasons": [
+      "10 blocking findings (claims 10, 13, 18, 19, 20, 34, 42, 44, 57, 65)",
+      "published before the check existed: kept live with a notice while a corrected version is prepared"
+    ]
+  },
+  "counts": {
+    "claims": 74,
+    "confirmed": 56,
+    "unconfirmed": 4,
+    "contradicted": 14,
+    "blocker": 10,
+    "major": 1,
+    "minor": 25
+  },
+  "summary": "Hold: the briefing incorrectly extends connector endpoint filtering to custom connectors and recommends end-user-only credentials without warning that this breaks autonomous agents. Standard-harness billing now uses Copilot Credits, not messages, and the Microsoft 365 registry control links to a missing page. The default-state field and several availability and governance claims also need correction.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; What's changing",
+      "type": "record",
+      "claim": "The roadmap feature adds MCP-compliant tools to Copilot Studio agent workflows.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Copilot Studio: Use MCP-compliant tools in agent workflows",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The listed products are Microsoft Copilot (Microsoft 365) and Microsoft Copilot Studio.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\", \"Microsoft Copilot Studio\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The launched feature has a June CY2026 general-availability target.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"June CY2026\", \"status\": \"Launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is May CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"May CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: clouds; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) and does not state government-cloud availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: platforms",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on November 5, 2026 at 23:59:28.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-05T23:59:28\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: defaultState; Scope; rationale: impact",
+      "type": "consistency",
+      "claim": "The feature's default state is on rather than maker opt-in.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "defaultState: \"on\"; \"A maker adds an MCP server as a tool\"; \"not a change to default Copilot behaviour.\"",
+      "severity": "blocker",
+      "fix": "Set defaultState to user-opt-in: makers explicitly add an MCP server to an agent. The schema assigns designer capabilities chosen by a maker to user-opt-in; do not generalize the Dataverse server's separate on-by-default setting to this capability."
+    },
+    {
+      "n": 11,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is consumption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview",
+      "quote": "Usage is billed based on consumption and measured in Copilot Credits.",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview and https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing for consumption billing across the two harnesses."
+    },
+    {
+      "n": 12,
+      "where": "front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "The direct cost is variable and metered in Copilot Credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview",
+      "quote": "The number of Copilot Credits these experiences consume depends on how they are designed, how often they run, and the features they use.",
+      "severity": "minor",
+      "fix": "Retain variable and name Copilot Credits; add https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview to sources."
+    },
+    {
+      "n": 13,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "MCP support is included in Copilot Studio authoring with no separate licence.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Copilot Studio MCP no additional license; MCP additional license. Read agent-extend-action-mcp, agents-experience/tools-add-mcp-server, billing-licensing, and the licensing search excerpts; none states this blanket no-separate-licence entitlement.",
+      "severity": "blocker",
+      "fix": "Remove 'no separate licence' and the unsupported authoring entitlement. State the documented Copilot Studio access options from https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing and the Copilot Credits billing model, without inferring an MCP-specific licence exemption."
+    },
+    {
+      "n": 14,
+      "where": "front matter: licensing.notes; Risk assessment; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Tools, including knowledge and MCP tools, consume Copilot Credits on the Microsoft Copilot harness.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview",
+      "quote": "Copilot Credits are charged for large language model (LLM) tokens, tools (including knowledge and MCPs), and the harness itself.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview to sources."
+    },
+    {
+      "n": 15,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Model tokens are charged in Copilot Credits on the Microsoft Copilot harness.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview",
+      "quote": "Copilot Credits are charged for large language model (LLM) tokens",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview."
+    },
+    {
+      "n": 16,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The Microsoft Copilot harness itself is charged in Copilot Credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview",
+      "quote": "tools (including knowledge and MCPs), and the harness itself. Any experience that uses one of these consumes credits.",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview."
+    },
+    {
+      "n": 17,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Microsoft Copilot harness billing starts when building starts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview",
+      "quote": "the Microsoft Copilot harness charges credits from the moment you start building.",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview."
+    },
+    {
+      "n": 18,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "cost",
+      "claim": "Standard-harness agents bill messages under existing Copilot Studio rates.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing",
+      "quote": "Starting on September 1, 2025, the common currency for agents changed from messages to Copilot Credits.",
+      "severity": "blocker",
+      "fix": "Replace both references to standard-harness message billing with 'Standard-harness agents also use Copilot Credits under the standard-harness billing rates' and cite https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing."
+    },
+    {
+      "n": 19,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Partner MCP server subscriptions or API costs are outside Microsoft billing.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Copilot Studio MCP third-party cost; MCP subscription third-party Copilot Studio. Read billing-licensing, billing-credit-overview and licensing search excerpts; no passage establishes how partner MCP server charges are billed.",
+      "severity": "blocker",
+      "fix": "Replace the billing assertion with advice: 'Check each server provider's licence and commercial terms before approving it.' Remove the asserted partner billing arrangement from the cost rationale."
+    },
+    {
+      "n": 20,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Agents > Tools > Registry > tool > Block is documented at the cited Microsoft 365 Copilot URL.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "Select Agents > Tools, and then select the Registry tab. ... Select Block to restrict the server across your organization",
+      "severity": "blocker",
+      "fix": "The cited /microsoft-365/copilot/manage-plugins-skills-mcp-servers URL returns HTTP 404. Keep the path but replace its docs link, rendered Learn link and source URL with https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers."
+    },
+    {
+      "n": 21,
+      "where": "controls[0].api; Governance controls table",
+      "type": "absence",
+      "claim": "An API equivalent for blocking an MCP server in the Microsoft 365 tools registry is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Copilot manage MCP servers Registry Block PowerShell API; MCP Graph block API registry; MCP Registry PowerShell Block. Read microsoft-agent-365/admin/manage-plugins-skills-mcp-servers; no registry-block API equivalent found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "A data policy is created at Power Platform admin center > Security > Data and privacy > Data policy > New Policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "select Security, and then select Data and privacy. ... Select Data policy. ... select New Policy",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "New-DlpPolicy in Microsoft.PowerApps.Administration.PowerShell creates a data policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest",
+      "quote": "Module: Microsoft.PowerApps.Administration.PowerShell Module ... The New-DlpPolicy cmdlet creates a new DLP policy for the logged in admin's tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Connector endpoint rules are configured at Data policy > Prebuilt Connectors > Configure connector > Connector endpoints.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering",
+      "quote": "the Prebuilt Connectors page in Data Policies ... right-clicking and then selecting Configure connector > Connector endpoints.",
+      "severity": "minor",
+      "fix": "Label connector endpoint filtering as preview in this control's note and the guidance. Retain the path, but separately correct the row's unsupported custom-connector applicability."
+    },
+    {
+      "n": 25,
+      "where": "controls[2].api; Governance controls table",
+      "type": "command",
+      "claim": "New-PowerAppDlpPolicyConnectorConfigurations creates endpoint-filtering connector configurations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering#powershell-support-for-endpoint-filtering",
+      "quote": "Create connector configurations for a data policy ... New-PowerAppDlpPolicyConnectorConfigurations",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[2].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-PowerAppDlpPolicyConnectorConfigurations updates endpoint-filtering connector configurations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering#powershell-support-for-endpoint-filtering",
+      "quote": "Update connector configurations for a data policy ... Set-PowerAppDlpPolicyConnectorConfigurations",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[3].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The environment's Dataverse MCP control is under Manage > Environments > environment > Settings > Product > Features > Dataverse Model Context Protocol.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-disable",
+      "quote": "Select Manage > Environments. ... select Settings. Under Settings, select Product > Features. Scroll down to locate Dataverse Model Context Protocol",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[3].api; Governance controls table",
+      "type": "absence",
+      "claim": "An API equivalent for the environment's Dataverse MCP server availability setting is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio Dataverse MCP disable server API PowerShell setting IsEnabled; Dataverse MCP PowerShell disable. Read data-platform-mcp-disable and Dataverse CLI reference search excerpt; no API for this setting found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[4].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Makers add an MCP tool through the agent's Tools > Add a tool > Model Context Protocol.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent#view-and-make-changes-to-your-tool-configuration",
+      "quote": "Go to the Tools page for the agent. ... Select Add a tool. ... Select the type of tool ... Model Context Protocol",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[4].api; Governance controls table",
+      "type": "absence",
+      "claim": "An API equivalent for configuring the agent's MCP server and tool selection is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio add MCP server tools programmatically API agent configuration; Copilot Studio MCP API add programmatically. Read add-tools-custom-agent and agents-experience/copilot-studio-mcp; no specific MCP attachment API contract found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[4].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "An MCP tool's configuration has Tools and Resources sections showing the server's available tools and resources.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent",
+      "quote": "instead of Inputs and Completion, there are Tools and Resources sections with information about available tools and resources for the MCP server.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "MCP is an open protocol connecting models to external data and tools.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/copilot-studio-mcp",
+      "quote": "MCP is an open standard for connecting applications to tools and context.",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/copilot-studio-mcp or https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp for the open-protocol description."
+    },
+    {
+      "n": 33,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The MCP protocol describes tools, resources and prompts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agent-extend-action-mcp",
+      "quote": "Resources: File-like data ... Tools: Functions that a language model can call ... Prompts: Predefined prompt templates",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing",
+      "type": "availability",
+      "claim": "Agents and workflows can use tools exposed by any MCP server.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/mcp-add-existing-server-to-agent",
+      "quote": "Currently, Copilot Studio supports the Streamable transport type. ... Copilot Studio no longer supports SSE for MCP after August 2025.",
+      "severity": "blocker",
+      "fix": "Replace 'any MCP server' with 'compatible MCP servers using the supported Streamable transport and authentication methods' and cite https://learn.microsoft.com/microsoft-copilot-studio/mcp-add-existing-server-to-agent."
+    },
+    {
+      "n": 35,
+      "where": "title; summary; What's changing",
+      "type": "behaviour",
+      "claim": "MCP tools are usable by Copilot Studio agents and agent flows.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agent-extend-action-mcp",
+      "quote": "This article describes features used in agents or agent flows powered by the standard harness. ... You can extend your agent with tools by using Model Context Protocol (MCP).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "summary; What's changing",
+      "type": "behaviour",
+      "claim": "A maker adds an MCP server to an agent as a tool.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/tools-add-mcp-server",
+      "quote": "When you add an MCP server to your agent, the agent can use every tool that the server exposes during a conversation.",
+      "severity": "minor",
+      "fix": "Distinguish the launched standard-harness capability from the Microsoft Copilot harness integration, which this cited page explicitly marks preview."
+    },
+    {
+      "n": 37,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "The agent discovers server-published tools dynamically.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agent-extend-action-mcp",
+      "quote": "Each tool or resource that a connected MCP server publishes is automatically available for use in Copilot Studio.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "What's changing; Why it matters; Risk assessment",
+      "type": "behaviour",
+      "claim": "The orchestrator selects tools at runtime according to the user's request.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent",
+      "quote": "the orchestrator selects your tool when it deems it relevant to a user query.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "summary; What's changing; Why it matters; Governance controls",
+      "type": "behaviour",
+      "claim": "Copilot Studio MCP server connectivity relies on Power Platform connectors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "connected MCP servers, which rely on Power Platform connectors for connectivity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Microsoft supplies MCP connectors and makers can create custom MCP connectors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/mcp-add-components-to-agent",
+      "quote": "The process is the same, whether you're adding prebuilt Microsoft MCP connectors or an MCP server to which you configured a connection.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/microsoft-copilot-studio/mcp-add-existing-server-to-agent and https://learn.microsoft.com/microsoft-copilot-studio/mcp-add-components-to-agent, which explicitly describes prebuilt Microsoft MCP connectors."
+    },
+    {
+      "n": 41,
+      "where": "summary; controls[1].governs; What's changing; Why it matters; Governance guidance; Governance controls",
+      "type": "applicability",
+      "claim": "Data policies governing connectors also govern their MCP tools, and blocking the connector blocks access to those tools.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "Blocking Power Platform connectors also blocks access to tools in connected MCP servers, which rely on Power Platform connectors for connectivity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[2].governs; summary; What's changing; Why it matters; Risk assessment; Governance guidance; controls table",
+      "type": "applicability",
+      "claim": "The cited connector endpoint filtering control governs HTTP and custom MCP connectors and can pin custom-connector hosts.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering",
+      "quote": "it's exclusively available for the following connectors: HTTP ... HTTP Webhook ... SQL Server ... Azure Blob Storage ... SMTP ... Browser Automation ... UI Automation",
+      "severity": "blocker",
+      "fix": "Remove custom connectors from this row and from the instructions to use this endpoint-filtering control for custom MCP connectors. Describe preview filtering only for supported connectors, and state that only static design-time endpoints are evaluated; dynamic endpoints and environment variables are not covered."
+    },
+    {
+      "n": 43,
+      "where": "What's changing; Risk assessment",
+      "type": "behaviour",
+      "claim": "Tool connections can authenticate using either end-user or maker-provided credentials.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent",
+      "quote": "Authentication: Select whether to use the user's (End user) or maker's (Maker-provided) credentials for the tool.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Security & identity; Governance guidance: At rollout; Governance controls",
+      "type": "applicability",
+      "claim": "Requiring end-user credentials is an unqualified production control for the MCP agents described, including autonomous agents.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication",
+      "quote": "agents triggered by scheduled or autonomous events, or that attempt to run in the background, fail due to missing credentials. All agent triggers must involve an active user.",
+      "severity": "blocker",
+      "fix": "Limit the end-user-credential recommendation to interactive agents. Warn that disabling maker credentials changes existing and new agents immediately and causes scheduled/autonomous/background agents to fail; assess those agents before enforcing it. Cite https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication."
+    },
+    {
+      "n": 45,
+      "where": "What's changing; Governance guidance",
+      "type": "availability",
+      "claim": "Microsoft 365 service MCP servers are available in the agent tool gallery.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/tools-add-mcp-server",
+      "quote": "MCP servers that are already published for your organization, such as Microsoft 365 services, Foundry IQ, and Fabric IQ.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "What's changing",
+      "type": "availability",
+      "claim": "Agent 365 tooling provides Microsoft-hosted MCP servers alongside other server options.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/add-mcp-tools-developer-experiences#add-mcp-servers-to-a-custom-agent",
+      "quote": "Discover and select Microsoft-hosted MCP servers with the Agent 365 CLI.",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/microsoft-agent-365/add-mcp-tools-developer-experiences and describe the documented server catalog, rather than asserting an uncited continuing release cadence."
+    },
+    {
+      "n": 47,
+      "where": "What's changing",
+      "type": "availability",
+      "claim": "Copilot Studio can expose a published agent as an MCP server.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/publication-channels-mcp-agent-to-agent",
+      "quote": "MCP client: Your agent is exposed as a remote Model Context Protocol (MCP) server.",
+      "severity": "minor",
+      "fix": "Add this source and label this distinct capability preview and available only in early release cycle environments."
+    },
+    {
+      "n": 48,
+      "where": "What's changing",
+      "type": "availability",
+      "claim": "Copilot Studio can expose a published agent over A2A for other clients.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/publication-channels-mcp-agent-to-agent",
+      "quote": "A2A client: Your agent is exposed as an agent over the Agent2Agent (A2A) protocol.",
+      "severity": "minor",
+      "fix": "Cite this page and qualify the A2A channel as preview, available only in early release cycle environments."
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Prompt content and retrieved data flow to the MCP server.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Copilot Studio MCP data sent; MCP server tool inputs prompts sent third party data privacy. Read agent-extend-action-mcp, agents-experience/tools-add-mcp-server and security-and-governance; no statement of this blanket payload flow found.",
+      "severity": "major",
+      "fix": "Replace with risk analysis: 'Review the inputs each MCP tool receives; they may contain organisational data. Assess the server operator's terms before allowing external services.' Do not assert that prompts or all retrieved data are automatically transmitted."
+    },
+    {
+      "n": 50,
+      "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "MCP tool descriptions are supplied by the server rather than authored individually by the maker.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agent-extend-action-mcp",
+      "quote": "The server provides the name, description, inputs, and outputs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Why it matters; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "MCP tools can read, create and update business records.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-disable",
+      "quote": "Retrieve or filter records using the read_query tool. ... Create or update records with create_record and update_record.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "MCP servers can expose delete tools.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "tools that write, delete, or process payments",
+      "severity": "minor",
+      "fix": "Cite the working https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers URL."
+    },
+    {
+      "n": 53,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Agent tools can send messages or email.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent",
+      "quote": "Send emails by using the Office 365 Outlook connector ... Read and post messages to Teams",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance: At rollout",
+      "type": "default",
+      "claim": "The tool's end-user confirmation option is off by default, so automatically orchestrated calls need not ask first.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent",
+      "quote": "Ask the end user before running ... This option is set to No by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Autonomous agents can act on external-event triggers without a user prompting them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "Event triggers allow your agents to react to external events without human prompting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Server tool changes can become available without the maker republishing the agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agent-extend-action-mcp",
+      "quote": "When you update or remove tools and resources on the MCP server, Copilot Studio dynamically reflects these changes.",
+      "severity": "minor",
+      "fix": "Distinguish harnesses: the standard-harness overview describes dynamic updates, while the cited Microsoft Copilot harness tools-add-mcp-server page instructs makers to edit the server entry to refresh the connection and re-read a changed tool list."
+    },
+    {
+      "n": 57,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "The capability is on in all environments where makers can add tools unless a data policy blocks the connector.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agent-extend-action-mcp",
+      "quote": "You must turn on generative orchestration to use MCP.",
+      "severity": "blocker",
+      "fix": "Replace the all-environments/unless-DLP assertion with 'Makers add compatible MCP servers to individual agents. MCP requires generative orchestration and is subject to connector policies, server-specific settings and permissions.' Mention that Dataverse MCP can separately be disabled using controls[3]."
+    },
+    {
+      "n": 58,
+      "where": "Scope",
+      "type": "role",
+      "claim": "Makers need Copilot Studio authoring access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing",
+      "quote": "To use Copilot Studio, you need one of the following configurations: ... Copilot Studio user license (free). ... Copilot Studio authors role ... Microsoft 365 Copilot license ... trial license",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing as the source for authoring access; retain the general wording rather than inventing a single required role."
+    },
+    {
+      "n": 59,
+      "where": "Scope; Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "When a tool uses end-user credentials, users can access only what their own permissions allow.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent",
+      "quote": "End user credentials: The agent uses the user's credentials to authenticate with the service. This method ensures users only access data they're authorized to see.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "Microsoft 365 Copilot also exposes MCP-backed federated connectors with Microsoft 365 admin-center governance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+      "quote": "Use Model Context Protocol (MCP) to fetch data in real time. ... Are managed and governed by admins in the Microsoft 365 admin center.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview to sources."
+    },
+    {
+      "n": 61,
+      "where": "Governance guidance: After rollout",
+      "type": "applicability",
+      "claim": "Connector dependency insights let admins review which connector dependencies agents use.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/security-and-governance",
+      "quote": "Connector dependency insights ... Admins can review connector dependencies used by agents to understand data movement risk and apply governance controls before deployment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Governance guidance: After rollout",
+      "type": "applicability",
+      "claim": "Copilot Studio tool and action call telemetry is processed by Microsoft Purview's audit pipeline.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/security-and-governance",
+      "quote": "Telemetry such as agent invocation events, tool and action calls, policy enforcement decisions, and runtime activity signals is processed by the Microsoft Purview audit logging pipeline",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Governance guidance: After rollout",
+      "type": "applicability",
+      "claim": "Administrators can track Copilot Credit consumption by agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview",
+      "quote": "You can view the total Copilot credits an agent consumes on its Monitor page in Copilot Studio.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview as the source for per-agent monitoring."
+    },
+    {
+      "n": 64,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Advanced connector policies can block entire MCP servers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/advanced-connector-policies",
+      "quote": "administrators can see MCP servers listed alongside other connector types and can choose to block an entire MCP server.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "The Microsoft 365 registry governs only Copilot Chat access and does not affect Copilot Studio agents on other channels.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "The policy you set for each tool applies wherever the tool is used and is enforced at runtime by the Agent 365 Tooling Gateway.",
+      "severity": "blocker",
+      "fix": "Remove the channel-based exclusion. Explain that registry controls apply to supported registered servers/tools through Agent 365, and approval and consent make registered servers available in Copilot Studio environments; coverage is determined by the registered-server/gateway integration, not simply the publication channel."
+    },
+    {
+      "n": 66,
+      "where": "Open questions",
+      "type": "absence",
+      "claim": "A general tenant-level MCP server allowlist independent of connector policies is not established by the sources checked.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio MCP tenant allowlist servers governance. Read advanced-connector-policies, microsoft-agent-365/admin/manage-plugins-skills-mcp-servers and BYO search excerpt; found registered-server controls, not a universal allowlist for all Studio MCP connections.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Open questions",
+      "type": "absence",
+      "claim": "How server tool-description changes are surfaced to Copilot Studio administrators remains undocumented in the checked material.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio MCP tool changes notifications administrators. Read agent-extend-action-mcp, agents-experience/tools-add-mcp-server and tools-manage search excerpt; no administrator change-notification mechanism found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "rationale: risk",
+      "type": "behaviour",
+      "claim": "The relevant controls are not configured by default in most tenants.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Copilot Studio MCP most tenants. Read admin-data-loss-prevention, security-and-governance and configure-no-maker-authentication; no evidence establishes the configuration of most tenants.",
+      "severity": "minor",
+      "fix": "Remove the claim about most tenants. Retain the high-risk analysis based on documented external tools, server-supplied descriptions and write capabilities, without asserting tenant population statistics."
+    },
+    {
+      "n": 69,
+      "where": "front matter: action",
+      "type": "consistency",
+      "claim": "The optional maker-selected capability is assigned prepare.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "action: \"prepare\"; \"A maker adds an MCP server as a tool\"; \"not a change to default Copilot behaviour.\"",
+      "severity": "minor",
+      "fix": "Set action to review: the schema assigns optional capabilities chosen by a maker to review, and no verified source states that this change automatically adds MCP tools to existing agents."
+    },
+    {
+      "n": 70,
+      "where": "Governance guidance: At rollout; controls",
+      "type": "consistency",
+      "claim": "The checklist recommends enforcing end-user credentials, but the controls table has no credential-policy row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "\"Require end-user credentials for MCP connections in production environments.\" The five control rows contain no maker-credential policy.",
+      "severity": "minor",
+      "fix": "Add a credential-policy row citing https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication, with the autonomous-agent caveat. The documented environment path is Manage > Environments > environment > Settings > Product > Features > Copilot Studio agents > Control maker credential options."
+    },
+    {
+      "n": 71,
+      "where": "Governance guidance: At rollout; controls",
+      "type": "consistency",
+      "claim": "The checklist recommends tool approval, but the controls table has no approval row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "\"Enable human approval for write-capable tools where the harness supports it.\" No control row covers end-user confirmation.",
+      "severity": "minor",
+      "fix": "Add a maker-side confirmation row using https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent: Tools > tool > Details > Ask the end user before running. Qualify its harness and interactive-user scope."
+    },
+    {
+      "n": 72,
+      "where": "Governance guidance: After rollout; controls",
+      "type": "consistency",
+      "claim": "The checklist recommends reviewing connector dependency insights, but the table has no corresponding row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "\"Review connector dependency insights in the Power Platform admin center quarterly\"; the controls table has no dependency-insights row.",
+      "severity": "minor",
+      "fix": "Add a connector dependency insights row sourced from https://learn.microsoft.com/microsoft-copilot-studio/security-and-governance. Do not invent a navigation path: either research its exact surface or keep this as a general note rather than a checklist instruction."
+    },
+    {
+      "n": 73,
+      "where": "Governance guidance: After rollout; controls",
+      "type": "consistency",
+      "claim": "The checklist recommends Purview audit review, but the table has no audit row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "\"Audit tool call activity in Purview\"; none of the control rows covers audit.",
+      "severity": "minor",
+      "fix": "Add a Purview audit row with its documented search surface and automation equivalent after checking https://learn.microsoft.com/purview/ai-copilot-studio, linked by the cited security-and-governance page; otherwise keep audit as a general note without an instruction to configure it."
+    },
+    {
+      "n": 74,
+      "where": "Governance guidance: After rollout; controls",
+      "type": "consistency",
+      "claim": "The checklist recommends per-agent consumption monitoring, but the table has no consumption row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "\"Track Copilot Credit consumption by agent\"; the table has no credit-consumption row.",
+      "severity": "minor",
+      "fix": "Add a per-agent consumption-monitoring row using the agent's Monitor page and cite https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview. Keep tenant/environment reporting distinct from per-agent reporting."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-16T13:32:36.934Z",
+    "summary": {
+      "links": 12,
+      "unreachable": 1,
+      "uiPaths": 5,
+      "uiPathsWithMissingWords": 1,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=562221",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/agent-extend-action-mcp",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/tools-add-mcp-server",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/security-and-governance",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/manage-plugins-skills-mcp-servers",
+        "ok": false,
+        "status": 404
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering#powershell-support-for-endpoint-filtering",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-disable",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent#view-and-make-changes-to-your-tool-configuration",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/advanced-connector-policies",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which MCP servers users and agents may reach in Microsoft 365 Copilot",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/manage-plugins-skills-mcp-servers",
+        "reachable": false,
+        "segments": [
+          "Agents",
+          "Tools",
+          "Registry",
+          "Block"
+        ],
+        "missing": [
+          "Agents",
+          "Tools",
+          "Registry",
+          "Block"
+        ]
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which connectors, including MCP connectors, agents may use in an environment",
+        "docs": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+        "reachable": true,
+        "segments": [
+          "Security",
+          "Data and privacy",
+          "Data policy",
+          "New Policy"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Which connectors, including MCP connectors, agents may use in an environment",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest",
+        "reachable": true,
+        "token": "New-DlpPolicy",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Allowed endpoints for HTTP and custom connectors",
+        "docs": "https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering",
+        "reachable": true,
+        "segments": [
+          "Data policy",
+          "Prebuilt Connectors",
+          "Configure connector",
+          "Connector endpoints"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Allowed endpoints for HTTP and custom connectors",
+        "docs": "https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering#powershell-support-for-endpoint-filtering",
+        "reachable": true,
+        "token": "New-PowerAppDlpPolicyConnectorConfigurations",
+        "found": true
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Dataverse MCP server availability",
+        "docs": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-disable",
+        "reachable": true,
+        "segments": [
+          "Manage",
+          "Environments",
+          "Settings",
+          "Product",
+          "Features",
+          "Dataverse Model Context Protocol"
+        ],
+        "missing": []
+      },
+      {
+        "index": 4,
+        "side": "ui",
+        "governs": "Which MCP servers and tools an agent connects to",
+        "docs": "https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent#view-and-make-changes-to-your-tool-configuration",
+        "reachable": true,
+        "segments": [
+          "Tools",
+          "Add a tool",
+          "Model Context Protocol"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

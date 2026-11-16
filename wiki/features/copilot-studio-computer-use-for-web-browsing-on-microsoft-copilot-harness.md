@@ -83,6 +83,17 @@ changes:
   - date: "2026-11-16"
     note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
 version: 2
+verification:
+  status: "needs-correction"
+  date: "2026-11-16"
+  version: 2
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 42
+  confirmed: 38
+  unconfirmed: 1
+  contradicted: 3
+  attempts: 1
 ---
 
 ## What's changing
@@ -159,4 +170,19 @@ The environment feature is the only switch with a documented command-line equiva
 risk: High. Agents act on live websites, may download files and enter data, and screen content can steer them in unintended ways.
 cost: Variable. Computer use today bills Copilot Credits per step; billing for this native capability is not yet published.
 impact: Medium. Affects makers and owners of agents that gain web access, and the sites they interact with.
+-->
+
+<!-- verifier-findings (2026-11-16, needs-correction; checked by gpt-6.1-sol)
+The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
+- [supported, minor] What's changing / behaviour: Existing computer use can run on a hosted browser or a machine the customer provides. | Found: When you add computer use to an agent, you have the following options:
+- Hosted browser
+- Cloud PC pool
+- Bring-your-own machine | Fix: Cite https://learn.microsoft.com/microsoft-copilot-studio/configure-where-computer-use-runs and call the existing hosted browser a preview. Keep this explicitly separate from the planned harness capability. | Source: https://learn.microsoft.com/microsoft-copilot-studio/configure-where-computer-use-runs
+- [supported, minor] Risk assessment: Change & support / behaviour: Throttling can affect computer-use reliability. | Found: The hosted browser lets you get started quickly with computer use. However, it's not recommended for production use. Usage might be throttled based on demand. | Fix: Say 'The existing hosted browser preview may be throttled based on demand' and cite https://learn.microsoft.com/microsoft-copilot-studio/configure-where-computer-use-runs. Do not imply that a throttling policy is already documented for the planned harness capability. | Source: https://learn.microsoft.com/microsoft-copilot-studio/configure-where-computer-use-runs
+- [supported, minor] front matter: licensing.model, cost; rationale: cost / licensing: The consumption licensing model and variable cost rating reflect Copilot Credit metering. | Found: For experiences powered by the Microsoft Copilot harness, Copilot Credits are charged for large language model (LLM) tokens, tools (including knowledge and MCPs), and the harness itself. | Fix: Cite https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview for consumption billing and the variable rating. State that harness agents already consume Copilot Credits, while a web-browsing-specific rate is not yet published; do not base these fields only on the neighbouring standard-harness tool. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview
+- [contradicted, blocker] controls[2].ui; Governance controls: third table row / admin-path: The maker path for site restrictions and HTTPS is Tools > Computer use > allow list and Enforce HTTPS. | Found: Go to the Tools page for your agent and select Add tool. ... select New tool. ... Select Computer use. ... Select Add and configure. ... Access control ... Enforce HTTPS | Fix: Replace the path in front matter and the rendered table with 'Tools > Add tool > New tool > Computer use > Add and configure > Access control / Enforce HTTPS'. Explain that instructions are supplied before Add and configure, and that Access control and Enforce HTTPS are separate options on that configuration page. The current final label does not exist. | Source: https://learn.microsoft.com/microsoft-copilot-studio/computer-use#configure-optional-settings
+- [unsupported, blocker] Governance controls: following prose / applicability: Allow lists are not enforced centrally. | Found: Searched: Copilot Studio computer use centrally allow; computer use allow list API configuration centrally. Read computer-use and configure-where-computer-use-runs; maker configuration is documented, but no blanket absence of central enforcement is stated. Learn also recommends Edge policies via Int | Fix: Replace the absolute statement with 'The Access control allow list is configured in the computer-use tool by its maker; no tenant-wide administration surface for that list is documented as of November 2026.' If discussing other controls, note that Learn recommends Edge policies via Intune for managed machines, while the hosted browser is not managed by the tenant's Intune policies. Cite computer-use#best-practices and configure-where-computer-use-runs.
+- [supported, minor] Governance controls: following prose / applicability: Connector data policies and endpoint filtering provide administrator-side restrictions on agents' access to services. | Found: Data policies let you govern how agents connect and interact with data and services ... Alternatively, if you want to allow or deny specific HTTP endpoints instead of blocking all HTTP calls, use endpoint filtering. | Fix: Cite https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention and narrow the sentence to connector access and supported HTTP/knowledge-source endpoints. State that this documentation does not establish a website allow list for native harness computer-use browsing. | Source: https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention
+- [contradicted, minor] Governance guidance; controls / consistency: The governance checklist asks readers to review controls that have no corresponding control rows. | Found: Review data policies and external model settings. ... Require human approval for sensitive actions. ... Review run logs and credit use. No corresponding rows appear among the table's four controls. | Fix: Add rows for the data-policy, external-model and approval controls the checklist recommends, with documented surfaces and explicit applicability caveats for the planned capability. Represent monitoring controls if readers are asked to configure them; otherwise keep log and credit review as operational advice rather than implying an undocumented control.
+- [contradicted, minor] front matter: action / consistency: The prepare action rating treats this as a change that arrives without a maker choosing it. | Found: action: prepare; defaultState: unknown; Open questions: Whether computer use controls apply to the harness capability. The roadmap describes a new capability, not a mandatory replacement or automatic change to existing agents. | Fix: Set action to 'review'. The standard assigns review to a new capability with an unstated default when no source says existing behaviour changes automatically; the roadmap supplies no such statement.
 -->

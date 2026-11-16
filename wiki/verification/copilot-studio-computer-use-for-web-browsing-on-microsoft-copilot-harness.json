@@ -1,0 +1,596 @@
+{
+  "slug": "copilot-studio-computer-use-for-web-browsing-on-microsoft-copilot-harness",
+  "roadmapId": 576272,
+  "title": "Copilot Studio: web browsing for agents on the Microsoft Copilot harness",
+  "status": "needs-correction",
+  "date": "2026-11-16",
+  "version": 2,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "grace",
+    "since": "2026-11-16",
+    "reasons": [
+      "2 blocking findings (claims 33, 38)",
+      "published before the check existed: kept live with a notice while a corrected version is prepared"
+    ]
+  },
+  "counts": {
+    "claims": 42,
+    "confirmed": 38,
+    "unconfirmed": 1,
+    "contradicted": 3,
+    "blocker": 2,
+    "major": 0,
+    "minor": 6
+  },
+  "summary": "Hold: the maker configuration path omits documented steps and substitutes a description for the Access control setting label. The statement that allow lists are not enforced centrally also exceeds the evidence; Microsoft documents maker-side configuration and separately recommends machine-level browser policies.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; front matter: products, roadmapId",
+      "type": "record",
+      "claim": "Roadmap item 576272 concerns computer use for web browsing in Microsoft Copilot Studio on the Microsoft Copilot harness.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Copilot Studio: Computer Use for web browsing on Microsoft Copilot Harness",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing; Scope",
+      "type": "record",
+      "claim": "Microsoft plans native website interaction for Copilot Studio agents powered by the Microsoft Copilot harness.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Enable Microsoft Copilot Studio agents to browse and interact with websites as a native capability powered by the Microsoft Copilot harness.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The planned capability uses natural-language instructions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Using natural-language instructions, agents can navigate web pages, extract information, and download files.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "Agents will be able to navigate web pages.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Using natural-language instructions, agents can navigate web pages",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "summary; What's changing; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "Agents will be able to extract website information.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "agents can navigate web pages, extract information, and download files",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "summary; What's changing; Risk assessment: Data exposure; rationale: risk",
+      "type": "record",
+      "claim": "Agents will be able to download files.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "agents can navigate web pages, extract information, and download files",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "Agents can use extracted information and downloaded files with other tools in end-to-end workflows.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Agents can then use that information and those files alongside other tools to complete end-to-end workflows",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The planned capability extends agents beyond configured knowledge sources and API-based integrations.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "extending their reach beyond configured knowledge sources and API-based integrations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is January CY2027.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"January CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap preview target is November CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"November CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap cloud scope is Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: platforms",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 2026-10-28T20:19:16.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-28T20:19:16\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; rationale: risk",
+      "type": "behaviour",
+      "claim": "The existing computer use tool interprets screens and performs mouse and keyboard actions, including entering data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/faqs-computer-use",
+      "quote": "The tool visually interprets the screen and executes the necessary clicks and keystrokes, emulating human interactions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Existing computer use can run on a hosted browser or a machine the customer provides.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/configure-where-computer-use-runs",
+      "quote": "When you add computer use to an agent, you have the following options:\n- Hosted browser\n- Cloud PC pool\n- Bring-your-own machine",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/microsoft-copilot-studio/configure-where-computer-use-runs and call the existing hosted browser a preview. Keep this explicitly separate from the planned harness capability."
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "The detailed differences between existing computer use and the planned harness web-browsing capability are not yet documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Copilot harness web browsing computer use pricing default enabled controls; Microsoft Copilot harness computer use default browsing. Read computer-use, administer-computer-use, harnesses-overview and agents-experience/overview comparison excerpt: harness computer use is Planned.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Why it matters; rationale: risk",
+      "type": "behaviour",
+      "claim": "Learn warns that ambiguous instructions or unexpected screen content can cause unintended computer-use actions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/faqs-computer-use",
+      "quote": "In some cases, the AI might take unintended actions due to ambiguous instructions or unexpected content on screen.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "behaviour",
+      "claim": "Autonomous computer-use agents can perform tasks without someone watching.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/computer-use",
+      "quote": "Computer use works best for autonomous agents, performing tasks in the background without user interaction.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Website interface changes can affect computer-use reliability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/faqs-computer-use",
+      "quote": "Sensitive to interface and timing changes. Layout changes, loading delays, or unexpected dialogs can produce different outcomes for the same task.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Throttling can affect computer-use reliability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/configure-where-computer-use-runs",
+      "quote": "The hosted browser lets you get started quickly with computer use. However, it's not recommended for production use. Usage might be throttled based on demand.",
+      "severity": "minor",
+      "fix": "Say 'The existing hosted browser preview may be throttled based on demand' and cite https://learn.microsoft.com/microsoft-copilot-studio/configure-where-computer-use-runs. Do not imply that a throttling policy is already documented for the planned harness capability."
+    },
+    {
+      "n": 23,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Existing computer use consumes 5 Copilot Credits per standard-model step.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/computer-use",
+      "quote": "Each step consumes 5 Copilot Credits, or 15 Copilot Credits when using a premium model.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "cost",
+      "claim": "Existing computer use consumes 15 Copilot Credits per premium-model step.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/computer-use",
+      "quote": "Each step consumes 5 Copilot Credits, or 15 Copilot Credits when using a premium model.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Existing computer use bills through the Agent action feature.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/computer-use",
+      "quote": "Computer use bills usage through the Agent action feature with a billing rate of five Copilot Credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "Feature-specific pricing, credit rates and limits for native harness web browsing are not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Copilot harness web browsing computer use pricing default enabled controls; Microsoft Copilot harness web browsing controls pricing. Read computer-use licensing and agents-experience/billing-credit-overview; neither gives a native harness web-browsing rate or limit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "front matter: licensing.model, cost; rationale: cost",
+      "type": "licensing",
+      "claim": "The consumption licensing model and variable cost rating reflect Copilot Credit metering.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview",
+      "quote": "For experiences powered by the Microsoft Copilot harness, Copilot Credits are charged for large language model (LLM) tokens, tools (including knowledge and MCPs), and the harness itself.",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview for consumption billing and the variable rating. State that harness agents already consume Copilot Credits, while a web-browsing-specific rate is not yet published; do not base these fields only on the neighbouring standard-harness tool."
+    },
+    {
+      "n": 28,
+      "where": "front matter: defaultState",
+      "type": "default",
+      "claim": "The default state of the planned native harness web-browsing capability is unknown.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Copilot harness computer use default browsing; Microsoft Copilot harness web browsing computer use pricing default enabled controls. Read roadmap, computer-use, administer-computer-use and harnesses-overview; no default for native harness web browsing was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[0].ui; Governance controls: first table row",
+      "type": "admin-path",
+      "claim": "The environment computer-use toggle is at Power Platform admin center > Manage > Environments > environment > Settings > Product > Features > Computer use.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/administer-computer-use",
+      "quote": "select Manage and then select Environments ... Select the environment to update ... select Settings ... Expand Product, and then select Features ... Scroll to Computer use and turn off the toggle.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[0].api; Governance controls: first table row and following prose",
+      "type": "command",
+      "claim": "The Power Platform CLI command pac env update-settings --environment <environment-id> --name iscomputeruseinmcsenabled --value false disables computer use in an environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/administer-computer-use",
+      "quote": "Run the following command to disable the setting:\npac env update-settings --environment <envid> --name iscomputeruseinmcsenabled --value false",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[1].ui; Governance controls: second table row and following prose",
+      "type": "admin-path",
+      "claim": "The tenant hosted-browser toggle is at Power Platform admin center > Manage > Tenant settings > Hosted browser in computer use.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/administer-computer-use#disable-hosted-browser",
+      "quote": "To disable the hosted browser in a tenant: ... select Manage and then select Tenant settings ... Select Hosted browser in computer use. A pane opens. ... Turn off the toggle.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[1].api; Governance controls: second table row and following prose",
+      "type": "absence",
+      "claim": "No automation equivalent or Set-TenantSettings property is documented for the hosted-browser toggle, unlike the environment switch.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: computer use Set-TenantSettings hosted browser. Read administer-computer-use, power-platform/admin/tenant-settings, powerapps-powershell, and powershell/module/microsoft.powerapps.administration.powershell/set-tenantsettings; no hosted-browser property or equivalent call was documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[2].ui; Governance controls: third table row",
+      "type": "admin-path",
+      "claim": "The maker path for site restrictions and HTTPS is Tools > Computer use > allow list and Enforce HTTPS.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/computer-use#configure-optional-settings",
+      "quote": "Go to the Tools page for your agent and select Add tool. ... select New tool. ... Select Computer use. ... Select Add and configure. ... Access control ... Enforce HTTPS",
+      "severity": "blocker",
+      "fix": "Replace the path in front matter and the rendered table with 'Tools > Add tool > New tool > Computer use > Add and configure > Access control / Enforce HTTPS'. Explain that instructions are supplied before Add and configure, and that Access control and Enforce HTTPS are separate options on that configuration page. The current final label does not exist."
+    },
+    {
+      "n": 34,
+      "where": "controls[2].api; Governance controls: third table row and following prose",
+      "type": "absence",
+      "claim": "No API or command equivalent is documented for the maker's computer-use access-control and HTTPS options.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio computer use Enforce HTTPS API; computer use allow list API configuration centrally. Read computer-use, administer-computer-use and computer-use-standalone search excerpts; found configuration UI but no corresponding published API or command.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[3].ui; controls[3].api; controls[3].note; Governance controls: fourth table row",
+      "type": "absence",
+      "claim": "No separate UI or API switch is documented specifically for native web browsing on the Microsoft Copilot harness.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Copilot harness web browsing controls pricing; Microsoft Copilot harness computer use default browsing. Read roadmap, administer-computer-use and harnesses-overview; agents-experience/overview comparison calls harness computer use Planned, with no switch given.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[3].note; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not confirmed that existing computer-use controls apply to the planned harness capability.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Copilot harness web browsing computer use pricing default enabled controls; Microsoft Copilot harness computer use default browsing. Read computer-use and administer-computer-use, both explicitly scoped to standard harness; no extension to native harness browsing found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[2].scope, note; Risk assessment: Security & identity; Governance controls: following prose",
+      "type": "behaviour",
+      "claim": "Makers configure site allow lists and Enforce HTTPS within an agent's computer-use tool configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/computer-use",
+      "quote": "The configuration page includes optional fields ... Access control ... enable access control to define the specific URLs and desktop applications that computer use should be limited to. ... Turn on Enforce HTTPS",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Governance controls: following prose",
+      "type": "applicability",
+      "claim": "Allow lists are not enforced centrally.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Copilot Studio computer use centrally allow; computer use allow list API configuration centrally. Read computer-use and configure-where-computer-use-runs; maker configuration is documented, but no blanket absence of central enforcement is stated. Learn also recommends Edge policies via Intune.",
+      "severity": "blocker",
+      "fix": "Replace the absolute statement with 'The Access control allow list is configured in the computer-use tool by its maker; no tenant-wide administration surface for that list is documented as of November 2026.' If discussing other controls, note that Learn recommends Edge policies via Intune for managed machines, while the hosted browser is not managed by the tenant's Intune policies. Cite computer-use#best-practices and configure-where-computer-use-runs."
+    },
+    {
+      "n": 39,
+      "where": "Governance controls: following prose",
+      "type": "applicability",
+      "claim": "Connector data policies and endpoint filtering provide administrator-side restrictions on agents' access to services.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "Data policies let you govern how agents connect and interact with data and services ... Alternatively, if you want to allow or deny specific HTTP endpoints instead of blocking all HTTP calls, use endpoint filtering.",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention and narrow the sentence to connector access and supported HTTP/knowledge-source endpoints. State that this documentation does not establish a website allow list for native harness computer-use browsing."
+    },
+    {
+      "n": 40,
+      "where": "Open questions",
+      "type": "absence",
+      "claim": "Handling authenticated websites and downloaded files remains undocumented for this planned native harness browsing capability.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Copilot harness web browsing download authentication; Microsoft Copilot harness web browsing computer use pricing default enabled controls. Read roadmap, computer-use and harnesses-overview; results describe standard-harness credentials or other products, not this planned capability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Governance guidance; controls",
+      "type": "consistency",
+      "claim": "The governance checklist asks readers to review controls that have no corresponding control rows.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Review data policies and external model settings. ... Require human approval for sensitive actions. ... Review run logs and credit use. No corresponding rows appear among the table's four controls.",
+      "severity": "minor",
+      "fix": "Add rows for the data-policy, external-model and approval controls the checklist recommends, with documented surfaces and explicit applicability caveats for the planned capability. Represent monitoring controls if readers are asked to configure them; otherwise keep log and credit review as operational advice rather than implying an undocumented control."
+    },
+    {
+      "n": 42,
+      "where": "front matter: action",
+      "type": "consistency",
+      "claim": "The prepare action rating treats this as a change that arrives without a maker choosing it.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "action: prepare; defaultState: unknown; Open questions: Whether computer use controls apply to the harness capability. The roadmap describes a new capability, not a mandatory replacement or automatic change to existing agents.",
+      "severity": "minor",
+      "fix": "Set action to 'review'. The standard assigns review to a new capability with an unstated default when no source says existing behaviour changes automatically; the roadmap supplies no such statement."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-16T13:32:36.357Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 1,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=576272",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/computer-use",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/faqs-computer-use",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/administer-computer-use",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/administer-computer-use#disable-hosted-browser",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/computer-use#configure-optional-settings",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether computer use is available in an environment",
+        "docs": "https://learn.microsoft.com/microsoft-copilot-studio/administer-computer-use",
+        "reachable": true,
+        "segments": [
+          "Manage",
+          "Environments",
+          "Settings",
+          "Product",
+          "Features",
+          "Computer use"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether computer use is available in an environment",
+        "docs": "https://learn.microsoft.com/microsoft-copilot-studio/administer-computer-use",
+        "reachable": true,
+        "token": "pac env update-settings",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Hosted browser for computer use",
+        "docs": "https://learn.microsoft.com/microsoft-copilot-studio/administer-computer-use#disable-hosted-browser",
+        "reachable": true,
+        "segments": [
+          "Manage",
+          "Tenant settings",
+          "Hosted browser in computer use"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Allowed sites and HTTPS enforcement for an agent's browsing",
+        "docs": "https://learn.microsoft.com/microsoft-copilot-studio/computer-use#configure-optional-settings",
+        "reachable": true,
+        "segments": [
+          "Tools",
+          "Computer use",
+          "allow list and Enforce HTTPS"
+        ],
+        "missing": [
+          "allow list and Enforce HTTPS"
+        ]
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}
