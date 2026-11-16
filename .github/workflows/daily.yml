@@ -2,9 +2,9 @@ name: Daily curation and deploy
 
 on:
   schedule:
-    # One run a day. Each run writes COMPILE_LIMIT briefings shared across the five topics. More runs
-    # or a higher limit clear the backlog faster, at the cost of whichever capacity the writer uses.
-    - cron: '0 6 * * *' # 06:00 UTC every day
+    # Four runs a day. Each run writes COMPILE_LIMIT briefings shared across the five topics, so the
+    # default is 4 x 24 = 96 a day. The minute is off the hour because GitHub delays runs queued at :00.
+    - cron: '23 1,7,13,19 * * *'
   push:
     branches: [main]
   workflow_dispatch:
@@ -12,13 +12,17 @@ on:
       compile_limit:
         description: 'Maximum briefings to write or refresh in this run'
         required: false
-        default: '12'
+        default: '24'
       compile_topic:
         description: 'Spend the whole run on one topic (copilot-studio, power-platform, governance, m365-copilot or modern-work). Empty shares the run across all five.'
         required: false
         default: ''
       compile_only:
         description: 'Comma-separated roadmap IDs to (re)compile, overriding the queue'
+        required: false
+        default: ''
+      compile_writer:
+        description: 'Which capacity writes: copilot (GitHub Copilot seat, default), claude-code (Claude subscription), api (Anthropic API key) or none'
         required: false
         default: ''
       compile_model:
@@ -30,6 +34,7 @@ permissions:
   contents: write
   pages: write
   id-token: write
+  copilot-requests: write # lets the job's token make Copilot requests, billed to the repository owner's seat
 
 # One run at a time: the curation step commits back to main.
 concurrency:
@@ -43,6 +48,7 @@ jobs:
     timeout-minutes: 150
     outputs:
       changed: ${{ steps.commit.outputs.changed }}
+      writer_failed: ${{ steps.copilot.outcome == 'failure' }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -65,35 +71,80 @@ jobs:
       - name: Ingest the Microsoft 365 Roadmap
         run: node pipeline/ingest.mjs
 
-      # ---- Compile: the one step that needs Claude. Two ways to pay for it, in order of preference:
-      #   1. CLAUDE_CODE_OAUTH_TOKEN  (Claude Pro/Max subscription; from `claude setup-token`)
-      #   2. ANTHROPIC_API_KEY        (pay-as-you-go API)
-      # With neither secret the step is skipped and the site still rebuilds from committed pages.
+      # ---- Compile: the one step that needs an LLM. Three writers, chosen by the COMPILE_WRITER
+      # repository variable (or the compile_writer input for one run):
+      #   copilot      GitHub Copilot CLI on the repository owner's Copilot seat (default; no secret needed,
+      #                or a COPILOT_GITHUB_TOKEN fine-grained PAT with "Copilot Requests" to bill a specific user)
+      #   claude-code  Claude Code action on a Claude subscription (CLAUDE_CODE_OAUTH_TOKEN secret)
+      #   api          the Anthropic API (ANTHROPIC_API_KEY secret)
+      #   none         skip writing; the site still rebuilds from committed pages
       # Pushes to main only rebuild; the scheduled and manual runs do the writing.
       - name: Decide how to compile
         id: auth
         if: github.event_name != 'push'
         env:
+          WRITER: ${{ github.event.inputs.compile_writer || vars.COMPILE_WRITER || 'copilot' }}
           OAUTH: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
-          if [ -n "$OAUTH" ]; then
-            echo "mode=claude-code" >> "$GITHUB_OUTPUT"
-          elif [ -n "$KEY" ]; then
-            echo "mode=api" >> "$GITHUB_OUTPUT"
-          else
-            echo "mode=none" >> "$GITHUB_OUTPUT"
-            echo "compile: skipped. Add a CLAUDE_CODE_OAUTH_TOKEN (Claude subscription) or ANTHROPIC_API_KEY repository secret to enable daily curation." >> "$GITHUB_STEP_SUMMARY"
-          fi
+          case "$WRITER" in
+            copilot) mode=copilot ;;
+            claude-code)
+              if [ -n "$OAUTH" ]; then mode=claude-code; else mode=none; echo "compile: skipped. COMPILE_WRITER is claude-code but there is no CLAUDE_CODE_OAUTH_TOKEN secret." >> "$GITHUB_STEP_SUMMARY"; fi ;;
+            api)
+              if [ -n "$KEY" ]; then mode=api; else mode=none; echo "compile: skipped. COMPILE_WRITER is api but there is no ANTHROPIC_API_KEY secret." >> "$GITHUB_STEP_SUMMARY"; fi ;;
+            none|off) mode=none; echo "compile: skipped (COMPILE_WRITER=$WRITER)." >> "$GITHUB_STEP_SUMMARY" ;;
+            *) echo "::error::Unknown compile writer '$WRITER' (use copilot, claude-code, api or none)"; exit 1 ;;
+          esac
+          echo "mode=$mode" >> "$GITHUB_OUTPUT"
+          echo "compile writer: $mode"
 
       - name: Prepare compile tasks
         id: tasks
-        if: steps.auth.outputs.mode == 'claude-code'
+        if: steps.auth.outputs.mode == 'copilot' || steps.auth.outputs.mode == 'claude-code'
         env:
-          COMPILE_LIMIT: ${{ github.event.inputs.compile_limit || '12' }}
+          COMPILE_LIMIT: ${{ github.event.inputs.compile_limit || '24' }}
           COMPILE_TOPIC: ${{ github.event.inputs.compile_topic || '' }}
           COMPILE_ONLY: ${{ github.event.inputs.compile_only || '' }}
         run: node pipeline/compile-tasks.mjs
+
+      - name: Install Copilot CLI
+        if: steps.auth.outputs.mode == 'copilot' && steps.tasks.outputs.count != '0'
+        run: |
+          npm install -g @github/copilot
+          copilot --version
+
+      # Billed in AI credits to the Copilot seat of the repository owner (GITHUB_TOKEN) or of the user who
+      # made the COPILOT_GITHUB_TOKEN PAT. Caps: COMPILE_ITEM_MAX_CREDITS per briefing, COMPILE_MAX_CREDITS per run.
+      - name: Compile briefings with Copilot CLI (GitHub Copilot seat)
+        id: copilot
+        if: steps.auth.outputs.mode == 'copilot' && steps.tasks.outputs.count != '0'
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          COPILOT_PAT: ${{ secrets.COPILOT_GITHUB_TOKEN }}
+          COPILOT_MODEL: ${{ github.event.inputs.compile_model || vars.COPILOT_MODEL || 'claude-opus-5.5' }}
+          COPILOT_REASONING_EFFORT: ${{ vars.COPILOT_REASONING_EFFORT || 'high' }}
+          COMPILE_PARALLEL: ${{ vars.COMPILE_PARALLEL || '2' }}
+          COMPILE_ITEM_MAX_CREDITS: ${{ vars.COMPILE_ITEM_MAX_CREDITS || '300' }}
+          COMPILE_MAX_CREDITS: ${{ vars.COMPILE_MAX_CREDITS || '' }}
+        run: |
+          if [ -n "$COPILOT_PAT" ]; then export COPILOT_GITHUB_TOKEN="$COPILOT_PAT"; fi
+          unset COPILOT_PAT
+          node pipeline/compile-copilot.mjs
+
+      - name: Keep the Copilot session transcripts and usage
+        if: always() && steps.auth.outputs.mode == 'copilot' && steps.tasks.outputs.count != '0'
+        uses: actions/upload-artifact@v4
+        with:
+          name: copilot-sessions-${{ github.run_id }}
+          path: |
+            data/compile-tasks/*.session.md
+            data/compile-tasks/*.usage.json
+            data/compile-tasks/*.output.json
+            data/compile-usage.json
+          if-no-files-found: ignore
+          retention-days: 14
 
       - name: Compile briefings with Claude Code (subscription)
         if: steps.auth.outputs.mode == 'claude-code' && steps.tasks.outputs.count != '0'
@@ -111,16 +162,17 @@ jobs:
             ${{ github.event.inputs.compile_model != '' && format('--model {0}', github.event.inputs.compile_model) || '' }}
 
       - name: Record the compile run
-        if: always() && steps.auth.outputs.mode == 'claude-code' && steps.tasks.outputs.count != '0'
+        if: always() && (steps.auth.outputs.mode == 'copilot' || steps.auth.outputs.mode == 'claude-code') && steps.tasks.outputs.count != '0'
         env:
-          COMPILE_MODEL: ${{ github.event.inputs.compile_model || '' }}
+          COMPILE_PATH: ${{ steps.auth.outputs.mode }}
+          COMPILE_MODEL: ${{ steps.copilot.outputs.model || github.event.inputs.compile_model || '' }}
         run: node pipeline/compile-finish.mjs
 
       - name: Compile briefings with the API key
         if: steps.auth.outputs.mode == 'api'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          COMPILE_LIMIT: ${{ github.event.inputs.compile_limit || '12' }}
+          COMPILE_LIMIT: ${{ github.event.inputs.compile_limit || '24' }}
           COMPILE_TOPIC: ${{ github.event.inputs.compile_topic || '' }}
           COMPILE_ONLY: ${{ github.event.inputs.compile_only || '' }}
           COMPILE_MODEL: ${{ github.event.inputs.compile_model || 'claude-opus-5-5' }}
@@ -181,3 +233,11 @@ jobs:
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
+
+      # The site is rebuilt and deployed even when the writer could not run, but the run is marked
+      # failed so a broken writer is visible in the Actions list rather than silently writing nothing.
+      - name: Flag a failed writer
+        if: needs.curate-and-build.outputs.writer_failed == 'true'
+        run: |
+          echo "::error::The Copilot writer did not run (see the 'Compile briefings with Copilot CLI' step). The site was still rebuilt and deployed."
+          exit 1
