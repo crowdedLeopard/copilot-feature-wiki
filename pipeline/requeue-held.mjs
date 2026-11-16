@@ -14,7 +14,8 @@ import { listHeld, listNeedingCorrection, MAX_REVISIONS } from './lib/verify.mjs
 
 const file = path.join(DATA_DIR, 'queue.json');
 const queue = await readJson(file, { items: [] });
-const held = await listHeld();
+// A held concept page has no roadmap item: pipeline/lib/concepts.mjs queues its correction, so it is not counted here.
+const held = (await listHeld()).filter((h) => h.kind !== 'concept');
 let revise = 0, removed = 0, parked = 0;
 for (const h of held) {
   const id = h.data.roadmapId;

@@ -213,7 +213,15 @@ differences.
 - **A page written before the standard** may have other headings and no controls table. Check its
   statements the same way, and name the heading in `where`.
 
-Severity and the verdict are unchanged. In the verdict file, `id` is `null`.
+- **`where`** names the section and, when it helps, the bullet or table row, in at most 120
+  characters. A claim made in two places names the first.
+- **Dates.** A date on a concept page (a retirement, a rollout) is checked against a Microsoft page
+  like any other fact; there is no roadmap target to compare it with.
+- **Pages relied on but not cited.** When statements rest on Microsoft pages missing from the
+  page's sources, report them together as one minor finding that lists the URLs to add.
+
+Severity and the verdict are unchanged. In the verdict file, `id` is `null`, and the file goes to
+the path your task names.
 
 ## Severity and verdict
 

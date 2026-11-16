@@ -213,11 +213,18 @@ for (const task of tasks) {
   const { yaml = '' } = parseFrontmatter(await fs.readFile(path.join(ROOT, task.page), 'utf8'));
   const title = yaml.match(/^title:\s*["']?(.+?)["']?\s*$/m)?.[1] || task.title;
   results.results = results.results.filter((r) => r.id !== task.id);
-  results.results.push({ id: task.id, at: new Date().toISOString(), ok: true, slug: task.slug, title, file: task.page, reconciled: true });
+  results.results.push({ id: task.id, at: new Date().toISOString(), ok: true, slug: task.slug, title, file: task.page, reconciled: true, ...(isConcept(task) ? { kind: 'concept' } : {}) });
 }
 await writeJson(RESULTS_FILE, results);
 const okIds = new Set(results.results.filter((r) => r.ok).map((r) => r.id));
-const written = tasks.filter((t) => okIds.has(t.id)).length;
+// A concept task can end three ways: a page, a decline (the tag is not a mechanism; nothing is written,
+// and the session did its job), or a failure. Briefings and concept pages are counted apart.
+const declinedIds = new Set(results.results.filter((r) => r.ok && r.declined).map((r) => r.id));
+const written = tasks.filter((t) => !isConcept(t) && okIds.has(t.id)).length;
+const conceptCount = tasks.filter(isConcept).length;
+const conceptsWritten = tasks.filter((t) => isConcept(t) && okIds.has(t.id) && !declinedIds.has(t.id)).length;
+const conceptsDeclined = tasks.filter((t) => isConcept(t) && declinedIds.has(t.id)).length;
+const finished = written + conceptsWritten + conceptsDeclined;
 const perItem = items.length ? (items.reduce((s, i) => s + i.credits, 0)) / items.length : 0;
 
 for (const i of items) {
@@ -228,14 +235,14 @@ for (const i of items) {
 }
 if (stoppedForBudget) note(`Stopped at the ${fmt(BUDGET)}-credit budget for this run with ${queue.length} briefing(s) not started; they stay queued.`);
 
-const status = written ? 'ok' : 'nothing-written';
-const conceptCount = tasks.filter(isConcept).length;
-const conceptsDone = tasks.filter((t) => isConcept(t) && okIds.has(t.id)).length;
-const conceptNote = conceptCount ? ` ${conceptsDone} of the ${conceptCount} concept page task${conceptCount > 1 ? 's' : ''} in the run ${conceptsDone === 1 ? 'is' : 'are'} included in that count.` : '';
-const headline = written
-  ? `Wrote ${written} of ${tasks.length} briefings with ${model} for ${fmt(spent)} AI credits (${fmt(perItem)} per briefing).${conceptNote}${written < tasks.length ? ' The rest stay queued for the next run.' : ''}`
-  : `Ran ${items.length} session(s) with ${model} but no briefing passed validation; ${fmt(spent)} AI credits were spent and the items stay queued.`;
+const status = finished ? 'ok' : 'nothing-written';
+const rest = finished < tasks.length ? ' The rest stay queued for the next run.' : '';
+const headline = !finished
+  ? `Ran ${items.length} session(s) with ${model} but no briefing passed validation; ${fmt(spent)} AI credits were spent and the items stay queued.`
+  : conceptCount
+    ? `Wrote ${written} briefing${written === 1 ? '' : 's'} and ${conceptsWritten} concept page${conceptsWritten === 1 ? '' : 's'}${conceptsDeclined ? ` (${conceptsDeclined} declined)` : ''} of ${tasks.length} tasks with ${model} for ${fmt(spent)} AI credits (${fmt(perItem)} per session).${rest}`
+    : `Wrote ${written} of ${tasks.length} briefings with ${model} for ${fmt(spent)} AI credits (${fmt(perItem)} per briefing).${rest}`;
 await finish({
   status, headline, written, attempted: tasks.length, credits: spent, model,
-  extra: { reasoningEffort: effort, requestedModel: MODEL, budget: BUDGET, itemCap: ITEM_MAX_CREDITS, stoppedForBudget, notReached: queue.length, items: items.map((i) => ({ ...i, ok: okIds.has(i.id) })) },
+  extra: { ...(conceptCount ? { concepts: conceptsWritten, conceptsDeclined } : {}), reasoningEffort: effort, requestedModel: MODEL, budget: BUDGET, itemCap: ITEM_MAX_CREDITS, stoppedForBudget, notReached: queue.length, items: items.map((i) => ({ ...i, ok: okIds.has(i.id) })) },
 });

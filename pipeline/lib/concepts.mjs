@@ -326,6 +326,11 @@ export async function writeConceptPage(task, rawOutput) {
     .map((s) => ({ ...s, url: canonicalUrl(s.url) }))
     .filter((s) => { const key = s.url.replace(/\/+$/, '').toLowerCase(); return seen.has(key) ? false : seen.add(key); });
   sources = mergeControlDocsIntoSources(sources, controls);
+  // Every page the evidence quotes is cited: a reader, and the verifier, can then open what a claim rests on.
+  const pageKey = (u) => canonicalUrl(u).replace(/[?#].*$/, '').replace(/\/+$/, '').toLowerCase();
+  const cited = new Set([...out.sources.map((s) => s.url), ...controls.flatMap((c) => [c.ui?.docs, c.api?.docs]).filter(Boolean)].map(pageKey));
+  const uncited = [...new Set(out.evidence.map((e) => e.url).filter((u) => isAllowedSourceUrl(u) && !cited.has(pageKey(u))).map(pageKey))];
+  if (uncited.length) throw new Error(`sources: ${uncited.length} page(s) quoted in evidence are missing from sources. Add each with its title: ${uncited.join(' ; ')}`);
   if (sources.length < 2) throw new Error('sources: a concept page needs at least two Microsoft pages that were opened for it (allowed Microsoft domains only).');
 
   const known = new Set([...briefings.map((b) => b.slug), ...concepts.map((c) => c.slug)]);

@@ -560,7 +560,9 @@ The pipeline renders these sections, in this order.
   mechanism has variants to compare (three ways to pay, four identity patterns).
 - **Why it matters**: what the mechanism lets an organisation decide, cap or see, and what happens
   where it is left at its defaults or never set up. This is analysis, so make it specific to the
-  mechanism.
+  mechanism. The analysis rests on facts, and those are held to the evidence rules: what the
+  default is, that nothing else limits something, that a thing cannot be done. Where no Microsoft
+  page states the default, say that it is not documented. Silence on a page is not a "cannot".
 - **Cost and licensing**: the licence the mechanism needs, any meter and where it is charged, as
   Microsoft's pages state them. The rule that "none" is a claim applies here as anywhere.
 - **Risks and limits**: bullets. Where the mechanism does not reach, the limits Microsoft
@@ -569,7 +571,8 @@ The pipeline renders these sections, in this order.
   the settings that make up the mechanism or govern it. One to ten rows. Then notes: the roles
   required, how the controls interact, what they do not enforce.
 - **What to check**: a short list of things to look at in your own tenant to know where you stand,
-  each starting with a verb. Every control it names has a row in the table.
+  each starting with a verb. Every control it tells the reader to set or review has a row in the
+  table. A control named only because it is retiring or replaced does not need one.
 - **Open questions**: what Microsoft has not said that a reader needs in order to decide.
 
 Length follows evidence, as for a briefing: usually 700 to 1,200 words. A concept page is a

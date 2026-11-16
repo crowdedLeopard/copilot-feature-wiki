@@ -172,9 +172,11 @@ Notes on particular fields:
   or govern it, the most decisive first. Set `ui` or `api` to `null` when Microsoft has not
   documented that surface, after a search for it; never leave a guess in its place. Every side
   that is not `null` needs a `docs` URL on a Microsoft domain; those pages are added to `sources`
-  for you. A long command is shortened to the cmdlet and the parameters that matter, with
-  `<placeholders>` for values. A report or an audit event with no documented path or command is
-  not a row: say where it appears in the notes under the table.
+  for you. A long command is shortened to the cmdlet and the parameters that matter, with a
+  `<placeholder>` in place of a whole value. Never shorten by cutting part of a literal value: half
+  of a hashtable or a JSON body is a wrong command, and the verifier will hold the page for it. A
+  report or an audit event with no documented path or command is not a row: say where it appears
+  in the notes under the table.
 - **evidence.** One entry for every documented fact a reader could act on: each control side that
   is not `null` (the quote is the text that gives the path, cmdlet or endpoint), every licensing
   and cost statement, every role, limit, number and default, and each statement of what the
@@ -190,7 +192,8 @@ Notes on particular fields:
   those spellings. `tags` help readers find the page. `covers` is a stronger statement: this page
   explains that tag in full. Do not tag clouds (`gcc`, `gcc-high`, `dod`) unless the page is about
   them. Define in `newTags` any tag you use that the glossary does not list.
-- **sources.** At least two, and only pages you opened in this task, on Microsoft's domains.
+- **sources.** At least two, and only pages you opened in this task, on Microsoft's domains. Every
+  page an `evidence` entry quotes is listed here; the validator names any that are missing.
 - **relatedSlugs.** Only slugs from the brief's list. The briefings that carry the page's tags are
   listed on the page automatically, so name only the few that show the mechanism best.
 - **sections.** Together, 700 to 1,200 words; the validator rejects more than 1,500 and tells you
@@ -214,6 +217,10 @@ As the verifier:
   take it out.
 - Does any sentence present a preview as the final design, or one product's control as governing
   another product?
+- Find every "by default", "left at defaults", "nothing else", "only", "cannot" and "no way to",
+  in Why it matters and Risks and limits above all. Does a Microsoft page say it? A conclusion you
+  drew because the pages you read did not mention something is not a fact: search for it, and if
+  nothing settles it, write that Microsoft does not document it, or take the sentence out.
 - For every `null` control side and every "Not yet documented" or "Not yet published": did you run
   a search for that specific control or fact and find nothing? If you did not search, search now or
   take the statement out.

@@ -12,15 +12,17 @@ const tasks = await readJson(path.join(DATA_DIR, 'compile-tasks.json'), { tasks:
 const results = await readJson(path.join(DATA_DIR, 'compile-results.json'), { results: [] });
 const usage = await readJson(path.join(DATA_DIR, 'compile-usage.json'), null);
 const attempted = tasks.tasks.length;
-// Concept pages (kind "concept") are counted beside the briefings; a declined concept wrote nothing.
-const isConcept = (x) => x.kind === 'concept';
+// Concept pages are counted beside the briefings; a declined concept wrote nothing. The task list says
+// which results are concepts, so a result recorded without its kind is still counted on the right side.
+const conceptIds = new Set(tasks.tasks.filter((t) => t.kind === 'concept').map((t) => t.id));
+const isConcept = (r) => conceptIds.has(r.id) || r.kind === 'concept';
 const okResults = results.results.filter((r) => r.ok);
 const conceptsWritten = okResults.filter((r) => isConcept(r) && !r.declined).length;
 const conceptsDeclined = okResults.filter((r) => isConcept(r) && r.declined).length;
 const written = okResults.length - conceptsWritten - conceptsDeclined;
 const rejected = results.results.filter((r) => !r.ok).length;
 const untouched = tasks.tasks.filter((t) => !results.results.some((r) => r.id === t.id && r.ok)).length - rejected;
-const conceptWords = tasks.tasks.some(isConcept) ? `, ${conceptsWritten} concept page${conceptsWritten === 1 ? '' : 's'} written${conceptsDeclined ? ` and ${conceptsDeclined} declined` : ''}` : '';
+const conceptWords = conceptIds.size ? `, ${conceptsWritten} concept page${conceptsWritten === 1 ? '' : 's'} written${conceptsDeclined ? ` and ${conceptsDeclined} declined` : ''}` : '';
 const compilePath = process.env.COMPILE_PATH || usage?.path || 'claude-code';
 const model = process.env.COMPILE_MODEL || usage?.model || `${compilePath} default`;
 const credits = typeof usage?.credits === 'number' ? Math.round(usage.credits) : null;
@@ -38,7 +40,7 @@ if (process.env.GITHUB_STEP_SUMMARY) {
 }
 await writeJson(path.join(DATA_DIR, 'last-compile.json'), {
   date: today(), path: compilePath, written, failed: rejected + untouched, attempted, model,
-  ...(tasks.tasks.some(isConcept) ? { concepts: conceptsWritten, conceptsDeclined } : {}),
+  ...(conceptIds.size ? { concepts: conceptsWritten, conceptsDeclined } : {}),
   ...(credits == null ? {} : { credits }),
   ...(usage?.status ? { status: usage.status, consecutiveFailures: usage.consecutiveFailures || 0 } : {}),
 });
