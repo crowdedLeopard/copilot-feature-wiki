@@ -436,13 +436,19 @@ export function precheckClaims(pc) {
 // ---------------------------------------------------------------------------------------------
 // Recording a verdict.
 
-/** The findings comment appended to a page so the next rewrite sees exactly what to fix. */
+const FINDINGS_HEADING = 'The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.';
+// Pages held before the correction rules changed carry this heading, which asked for a rewrite that fixed every finding.
+const EARLIER_FINDINGS_HEADING = 'The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:';
+/** A held page's text with the findings heading in its current wording, for the writer's brief. */
+export const withCurrentFindingsHeading = (text) => String(text).replace(EARLIER_FINDINGS_HEADING, FINDINGS_HEADING);
+
+/** The findings comment appended to a page so the next correction sees exactly what to change. */
 export function findingsComment(report) {
   const failing = report.claims.filter(isFailing);
   if (!failing.length) return '';
   const lines = [
     `${FINDINGS_OPEN} (${report.date}, ${report.status}; checked by ${report.model})`,
-    'The independent check confirmed every statement on this page except these. Correct them as "Correcting a held briefing" in pipeline/prompts/compile-agent.md sets out, and carry the rest of the page over unchanged:',
+    FINDINGS_HEADING,
     ...failing.map((c) => `- [${c.status}, ${c.severity}] ${c.where} / ${c.type}: ${c.claim.replace(/-->/g, '- >')}${c.quote ? ` | Found: ${c.quote.replace(/-->/g, '- >').slice(0, 300)}` : ''}${c.fix ? ` | Fix: ${c.fix.replace(/-->/g, '- >')}` : ''}${c.source && /^https?:/.test(c.source) ? ` | Source: ${c.source}` : ''}`),
     '-->',
   ];

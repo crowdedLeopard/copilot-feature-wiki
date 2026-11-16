@@ -68,8 +68,8 @@ For each task:
 `<!-- verifier-findings -->` comment, the verifier held that page and this task is a correction.
 The comment lists each statement that failed, what the verifier found, and the fix.
 
-A correction is a repair, not a rewrite. The check read every statement on the existing page and
-confirmed all of them except the ones the comment lists. Every sentence you reword and every row
+A correction is a repair, not a rewrite. The check read the whole of the existing page and found
+fault only with the statements the comment lists. Every sentence you reword and every row
 you add is a new statement that nobody has checked, and pages that fail a second check nearly
 always fail on text the correction added, not on what it was asked to fix. So:
 

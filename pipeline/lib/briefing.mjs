@@ -9,7 +9,7 @@ import path from 'node:path';
 import { briefingOutput, featureFrontmatter, isAllowedSourceUrl } from './schema.mjs';
 import { renderBriefing, API_KIND_LABEL } from './render.mjs';
 import { RAW_DIR, WIKI_DIR, FEATURES_DIR, DATA_DIR, readJson, today } from './util.mjs';
-import { HELD_DIR } from './verify.mjs';
+import { HELD_DIR, withCurrentFindingsHeading } from './verify.mjs';
 import { TOPIC_IDS, TOPIC_BY_ID, topicForProducts } from '../../config/taxonomy.mjs';
 import { loadGlossary, saveGlossary, glossaryLines, normaliseTags, defineTags } from './tags.mjs';
 import { briefSection as messageCenterSection } from './message-center.mjs';
@@ -210,10 +210,10 @@ ${topic ? `${topic.label}: ${topic.blurb}` : item.topic}
 
 ${existing ? (/<!-- verifier-findings/.test(existing) ? `## Existing briefing, held by the independent check
 
-This task is a correction. The independent check read this page and confirmed every statement on it except those listed in the verifier-findings comment at its end. Carry the rest over word for word and change only what the findings name, as "Correcting a held briefing" in pipeline/prompts/compile-agent.md sets out. Say in changeNote what was corrected.
+This task is a correction. The independent check read this page and found fault only with the statements listed in the verifier-findings comment at its end. Carry the rest over word for word and change only what the findings name, as "Correcting a held briefing" in pipeline/prompts/compile-agent.md sets out. Say in changeNote what was corrected.
 
 <existing_briefing>
-${existing.trim()}
+${withCurrentFindingsHeading(existing.trim())}
 </existing_briefing>
 
 ` : `## Existing briefing
