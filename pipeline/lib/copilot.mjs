@@ -61,20 +61,24 @@ export function copilotArgs({
 
 /**
  * Pull the AI-credit figure out of the usage file the CLI writes with --usage-output-file.
- * The file lists credits, premium requests and tokens per model and per agent; the exact shape is
- * the CLI's, so this looks for the first credit-like number breadth-first (totals come before
- * breakdowns) and returns null when there is none. The raw usage object is kept alongside.
+ * `copilot help billing` documents the shape: totalNanoAiu (10^9 nano AIU = 1 AI credit),
+ * totalPremiumRequestCost, modelMetrics and agentMetrics ("main" and each subagent). The total is
+ * read first; failing that, the first nano-AIU or credit-like number breadth-first (totals come
+ * before breakdowns); null when there is none. The raw usage object is kept alongside.
  */
+export const NANO_AIU_PER_CREDIT = 1e9;
 export function creditsFromUsage(usage) {
   if (!usage || typeof usage !== 'object') return null;
-  const direct = ['aiCredits', 'ai_credits', 'totalAiCredits', 'total_ai_credits', 'credits', 'aiCreditsUsed'];
+  if (typeof usage.totalNanoAiu === 'number') return usage.totalNanoAiu / NANO_AIU_PER_CREDIT;
+  const direct = ['totalAiCredits', 'total_ai_credits', 'aiCredits', 'ai_credits', 'credits', 'aiCreditsUsed'];
   for (const key of direct) if (typeof usage[key] === 'number') return usage[key];
   const queue = [usage];
   while (queue.length) {
     const node = queue.shift();
     if (!node || typeof node !== 'object') continue;
     for (const [key, value] of Object.entries(node)) {
-      if (/credit/i.test(key)) {
+      if (/nanoAiu/i.test(key) && typeof value === 'number') return value / NANO_AIU_PER_CREDIT;
+      if (/credit/i.test(key) && !/premium/i.test(key)) {
         if (typeof value === 'number') return value;
         if (value && typeof value === 'object') {
           for (const k of ['total', 'used', 'value', 'amount']) if (typeof value[k] === 'number') return value[k];
@@ -84,6 +88,18 @@ export function creditsFromUsage(usage) {
     for (const value of Object.values(node)) if (value && typeof value === 'object') queue.push(value);
   }
   return null;
+}
+
+/** Credits per model from the usage file's modelMetrics, e.g. { 'claude-sonnet-5.5': 41.2 }; {} when unknown. */
+export function creditsByModel(usage) {
+  const out = {};
+  const metrics = usage?.modelMetrics;
+  if (!metrics || typeof metrics !== 'object') return out;
+  for (const [model, m] of Object.entries(metrics)) {
+    const c = creditsFromUsage(m);
+    if (c != null) out[model] = c;
+  }
+  return out;
 }
 
 /**
@@ -136,6 +152,43 @@ export async function runCopilot(options) {
 }
 
 /** Last `n` lines of a block of text, for step summaries and logs. */
+/**
+ * What went wrong, in words an administrator can act on. Classify only the CLI's own diagnostics
+ * (`cliDiagnostics(result)`: stderr, or stdout when stderr is empty); a reply from the agent itself
+ * is not an error. Kinds: config (a flag the pipeline passes was rejected: a pipeline bug), effort
+ * (the model refuses the reasoning effort), model (the seat has no access to the model), auth (the
+ * token or seat was refused), transient (rate limit, outage, network), unknown.
+ */
+export function classifyCopilotError(text = '') {
+  if (/max-ai-credits|invalid value for|unexpected argument|unrecognized option|unknown option|^usage:/im.test(text)) return 'config';
+  const refused = /not (supported|available|enabled|found|allowed|valid|entitled)|invalid|unsupported|unknown|disabled|does not exist|no access/i;
+  if (/reasoning[ _-]?effort/i.test(text) && refused.test(text)) return 'effort';
+  if (/\bmodel\b/i.test(text) && refused.test(text)) return 'model';
+  if (/unauthori[sz]ed|forbidden|\b40[13]\b|bad credentials|invalid token|token (is|has) (expired|invalid)|not entitled|no copilot|subscription|copilot-requests|permission denied|authentication/i.test(text)) return 'auth';
+  if (/rate limit|\b429\b|too many requests|overloaded|\b50[234]\b|timed? ?out|ECONN|ETIMEDOUT|network|socket hang/i.test(text)) return 'transient';
+  return 'unknown';
+}
+
+/** One plain-English sentence per kind, for step summaries and annotations. */
+export function explainCopilotError(kind, { model } = {}) {
+  switch (kind) {
+    case 'config': return 'Copilot CLI rejected a setting the pipeline passes. That is a pipeline bug to fix, not a problem with the Copilot seat';
+    case 'effort': return `model ${model} does not accept the requested reasoning effort`;
+    case 'model': return `model ${model} is not available to this Copilot seat`;
+    case 'auth': return 'Copilot did not accept the workflow\'s token. Check that the seat behind it has the Copilot CLI policy enabled and that the job has copilot-requests: write';
+    case 'transient': return 'Copilot was temporarily unavailable or rate-limited';
+    case 'timeout': return 'the session ran out of time';
+    case 'rejected': return 'the draft failed validation and the writer could not fix it in three tries';
+    default: return 'Copilot CLI exited with an error (the CLI output is below)';
+  }
+}
+
+/** The CLI's own diagnostics from a runCopilot result: stderr, or stdout when stderr is empty. */
+export const cliDiagnostics = (result) => (result.stderr?.trim() ? result.stderr : result.stdout || '');
+
+/** True when the agent itself answered with the DONE/FAILED protocol, so the session ran to its end. */
+export const agentReplied = (result) => /^(DONE|FAILED)\b/m.test(result.stdout || '');
+
 export function tail(text = '', n = 15) {
   const lines = text.trimEnd().split('\n');
   return lines.slice(-n).join('\n');

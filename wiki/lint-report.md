@@ -1,14 +1,14 @@
 # Lint report
 
-Generated 2026-11-16T12:25:33.918Z. 58 briefings, 4 concepts, 0 quarantined.
-Independent check: 0 verified, 0 verified with gaps, 1 awaiting correction (live under grace), 57 not yet checked, 0 stale; 0 held and not published.
+Generated 2026-11-16T12:46:03.081Z. 61 briefings, 4 concepts, 0 quarantined.
+Independent check: 0 verified, 0 verified with gaps, 1 awaiting correction (live under grace), 60 not yet checked, 0 stale; 0 held and not published.
 
 ## Errors (0)
 
 ## Warnings (1)
 - features/copilot-studio-block-maker-provided-credentials.md: failed its check on 2026-11-16 (4 contradicted, 4 unconfirmed of 32 statements); live under grace with a notice, corrected version queued
 
-## Info (120)
+## Info (129)
 - features/agent-365-control-plane-for-agents.md: not yet checked against Microsoft Learn (queued)
 - features/copilot-studio-computer-use-for-web-browsing-on-microsoft-copilot-harness.md: not yet checked against Microsoft Learn (queued)
 - features/copilot-studio-computer-use-for-web-browsing-on-microsoft-copilot-harness.md: control "Switch specific to web browsing on the Microsoft Copilot harness" has neither an admin UI nor an API documented
@@ -28,6 +28,7 @@ Independent check: 0 verified, 0 verified with gaps, 1 awaiting correction (live
 - features/m365-admin-center-cross-tenant-orchestrated-migration.md: control "Admin centre page for the orchestrated migration" has neither an admin UI nor an API documented
 - features/m365-copilot-agent-lifecycle-management-rules.md: not yet checked against Microsoft Learn (queued)
 - features/m365-copilot-chat-usage-based-billing-models-model-selector.md: not yet checked against Microsoft Learn (queued)
+- features/m365-copilot-discover-and-act-on-recommended-lead-and-opportunity-actions-in-sales-agent.md: not yet checked against Microsoft Learn (queued)
 - features/m365-copilot-domain-exclusion-web-grounding.md: not yet checked against Microsoft Learn (queued)
 - features/m365-copilot-federated-connectors-write-update-delete.md: not yet checked against Microsoft Learn (queued)
 - features/m365-copilot-new-m365-copilot-usage-reports-for-copilot-search-connectors-and-agents-for-u.md: not yet checked against Microsoft Learn (queued)
@@ -36,6 +37,8 @@ Independent check: 0 verified, 0 verified with gaps, 1 awaiting correction (live
 - features/m365-teams-channel-backup.md: control "Teams channel workload in backup policies" has neither an admin UI nor an API documented
 - features/microsoft-copilot-microsoft-m365-delegated-prompt-publishing-for-organization-prompts.md: not yet checked against Microsoft Learn (queued)
 - features/microsoft-copilot-microsoft-m365-delegated-prompt-publishing-for-organization-prompts.md: control "Delegating prompt publishing to other roles or people" has neither an admin UI nor an API documented
+- features/microsoft-copilot-studio-agent-sharing-amongst-makers.md: not yet checked against Microsoft Learn (queued)
+- features/microsoft-copilot-studio-agent-sharing-amongst-makers.md: control "Tenant-wide switch that turns maker-to-maker agent sharing off" has neither an admin UI nor an API documented
 - features/microsoft-dataverse-add-users-without-licenses-to-activity-recipient-fields.md: not yet checked against Microsoft Learn (queued)
 - features/microsoft-dataverse-add-users-without-licenses-to-activity-recipient-fields.md: control "Tenant-wide default for the feature" has neither an admin UI nor an API documented
 - features/microsoft-dataverse-enable-ai-powered-business-workflows-in-work-iq-with-dataverse-build-d.md: not yet checked against Microsoft Learn (queued)
@@ -49,6 +52,9 @@ Independent check: 0 verified, 0 verified with gaps, 1 awaiting correction (live
 - features/microsoft-power-platform-governance-and-administration-multi-grader-comparison.md: low confidence, roadmap text only
 - features/microsoft-power-platform-governance-and-administration-secure-dataverse-record-with-column.md: not yet checked against Microsoft Learn (queued)
 - features/microsoft-power-platform-governance-and-administration-secure-dataverse-record-with-column.md: control "Filter privileges in security roles" has neither an admin UI nor an API documented
+- features/microsoft-teams-new-sharing-panel-in-meetings-improved-content-discovery-and-ease-of-shari.md: not yet checked against Microsoft Learn (queued)
+- features/microsoft-teams-new-sharing-panel-in-meetings-improved-content-discovery-and-ease-of-shari.md: control "A tenant-wide switch for the new sharing panel" has neither an admin UI nor an API documented
+- features/microsoft-teams-new-sharing-panel-in-meetings-improved-content-discovery-and-ease-of-shari.md: low confidence, roadmap text only
 - features/power-apps-expand-model-access-and-maker-studio-availability-for-generative-pages-via-gith.md: not yet checked against Microsoft Learn (queued)
 - features/power-apps-expand-model-access-and-maker-studio-availability-for-generative-pages-via-gith.md: control "Switch specific to generative pages or to GitHub-hosted models" has neither an admin UI nor an API documented
 - features/power-apps-form-fill-assistance-using-m365-files-in-model-driven-apps.md: not yet checked against Microsoft Learn (queued)
@@ -112,11 +118,14 @@ Independent check: 0 verified, 0 verified with gaps, 1 awaiting correction (live
 - features/work-iq-real-time-transcripts.md: not yet checked against Microsoft Learn (queued)
 - features/copilot-studio-computer-use-for-web-browsing-on-microsoft-copilot-harness.md: orphan (no inbound related links)
 - features/m365-admin-center-cross-tenant-orchestrated-migration.md: orphan (no inbound related links)
+- features/m365-copilot-discover-and-act-on-recommended-lead-and-opportunity-actions-in-sales-agent.md: orphan (no inbound related links)
 - features/microsoft-copilot-microsoft-m365-delegated-prompt-publishing-for-organization-prompts.md: orphan (no inbound related links)
+- features/microsoft-copilot-studio-agent-sharing-amongst-makers.md: orphan (no inbound related links)
 - features/microsoft-dataverse-add-users-without-licenses-to-activity-recipient-fields.md: orphan (no inbound related links)
 - features/microsoft-dataverse-enable-semantic-data-understanding-for-agentic-use.md: orphan (no inbound related links)
 - features/microsoft-dataverse-m365-collaboration-discover-build-customize-and-extend-with-management.md: orphan (no inbound related links)
 - features/microsoft-power-platform-governance-and-administration-multi-grader-comparison.md: orphan (no inbound related links)
+- features/microsoft-teams-new-sharing-panel-in-meetings-improved-content-discovery-and-ease-of-shari.md: orphan (no inbound related links)
 - features/power-apps-form-fill-assistance-using-speech-as-input-in-model-driven-apps.md: orphan (no inbound related links)
 - features/power-apps-model-driven-apps-use-row-summaries-in-us-government-clouds.md: orphan (no inbound related links)
 - features/power-apps-monitor-generative-pages-with-out-of-the-box-application-insights-telemetry.md: orphan (no inbound related links)
