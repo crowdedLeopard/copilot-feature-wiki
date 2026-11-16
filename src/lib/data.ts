@@ -1,12 +1,34 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import catalogJson from '../../data/catalog.json';
 import statsJson from '../../data/stats.json';
+import heldJson from '../../data/held.json';
 import lifecycleJson from '../../data/lifecycle.json';
 import { compareByAction, TOPICS, LIFECYCLE } from './site';
 
 export type Feature = CollectionEntry<'features'>;
 export type Concept = CollectionEntry<'concepts'>;
 export type Digest = CollectionEntry<'digests'>;
+export type Verification = CollectionEntry<'verifications'>['data'];
+
+/** A briefing the verifier is holding back from publication, from data/held.json (written by pipeline/verify-finish.mjs). */
+export interface HeldItem {
+  slug: string; roadmapId: number | null; title: string; topic: string | null;
+  reason: string; since: string | null; attempts: number; reasons: string[];
+}
+export const held = heldJson as { generated: string; count: number; items: HeldItem[] };
+
+/** Held briefings keyed by roadmap id, for the radar. */
+export function heldIds() {
+  const m = new Map<number, HeldItem>();
+  for (const h of held.items) if (h.roadmapId) m.set(h.roadmapId, h);
+  return m;
+}
+
+/** The verifier's report for one briefing, or null when it has not been checked yet. */
+export async function verificationFor(slug: string): Promise<Verification | null> {
+  const items = await getCollection('verifications');
+  return items.find((e) => e.data.slug === slug)?.data ?? null;
+}
 
 export interface CatalogItem {
   id: number;
@@ -31,6 +53,7 @@ export interface CatalogItem {
 export const catalog = (catalogJson as { generated: string; count: number; items: CatalogItem[] });
 export const stats = statsJson as {
   generated: string; briefings: number; archived?: number; concepts: number; tracked: number; byTopic: Record<string, number>; actNow: number; updatedThisWeek: number;
+  verification?: { checked: number; needsCorrection: number; unchecked: number; held: number };
 };
 /** When each briefed roadmap item was last seen in the feed, and which are currently missing (written by ingest). */
 export const lifecycle = lifecycleJson as { generated: string | null; graceDays: number; seen: Record<string, string>; missing: Record<string, { lastSeen: string | null; missingSince: string }> };

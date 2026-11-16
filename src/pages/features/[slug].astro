@@ -5,7 +5,7 @@ import Facts from '../../components/Facts.astro';
 import Badge from '../../components/Badge.astro';
 import SectionHead from '../../components/SectionHead.astro';
 import AtlasMini from '../../components/AtlasMini.astro';
-import { allFeatures, allFeaturesIncludingArchived, allConcepts, lifecycle, reviewDue } from '../../lib/data';
+import { allFeatures, allFeaturesIncludingArchived, allConcepts, lifecycle, reviewDue, verificationFor } from '../../lib/data';
 import { buildAtlas } from '../../lib/graph';
 import '../../styles/briefing.css';
 import { SITE, TOPIC_BY_ID, SOURCE_KIND, LIFECYCLE, href, topicUrl, tagUrl, featureUrl, conceptUrl, formatDate, roadmapUrl, extractRationale, youtubeSearchUrl, learnSearchUrl } from '../../lib/site';
@@ -56,6 +56,40 @@ for (const c of d.controls) {
 }
 const gaps = { ui: d.controls.filter((c) => !c.ui).length, api: d.controls.filter((c) => !c.api).length };
 const roadmapSource = d.sources.find((s) => s.kind === 'roadmap');
+
+// The independent check: a second model's claim-by-claim verdict against the roadmap record and Microsoft Learn.
+const report = await verificationFor(d.slug);
+const v = d.verification ?? null;
+const CHECK_LABEL: Record<string, string> = {
+  verified: 'Every statement confirmed against Microsoft documentation',
+  'verified-with-gaps': 'Confirmed, with small corrections pending',
+  'needs-correction': 'Corrections needed. Kept online with this notice while a corrected version is prepared',
+  held: 'Held',
+};
+const ENGINE_LABEL: Record<string, string> = { copilot: 'GitHub Copilot', 'claude-code': 'Claude Code', api: 'Claude API', manual: 'a reviewer with the Microsoft Learn tools' };
+const SEVERITY_LABEL: Record<string, string> = { blocker: 'Must fix', major: 'Should fix', minor: 'Minor' };
+const STATUS_LABEL: Record<string, string> = { supported: 'Confirmed', unsupported: 'Not found', contradicted: 'Contradicted' };
+const SEV_RANK: Record<string, number> = { blocker: 0, major: 1, minor: 2 };
+const SECTION_NAMES: Record<string, string> = { whatschanging: "What's changing", whyitmatters: 'Why it matters', riskassessment: 'Risk assessment', costandlicensing: 'Cost and licensing', scope: 'Scope', governanceguidance: 'Governance guidance', governancecontrols: 'Governance controls', openquestions: 'Open questions' };
+/** "controls[1].ui" -> "Governance controls, row 2, admin UI"; "front matter: defaultState" -> "Default state"; "rationale: cost" -> "Cost rationale". */
+function whereLabel(where: string): string {
+  return where.split(/\s*;\s*/).map((w) => {
+    const ctl = w.match(/^controls\[(\d+)\](?:\.(ui|api|note))?/i);
+    if (ctl) { const side = ctl[2] === 'ui' ? ', admin UI' : ctl[2] === 'api' ? ', API' : ctl[2] === 'note' ? ', note' : ''; return `Governance controls, row ${Number(ctl[1]) + 1}${side}`; }
+    const fm = w.match(/^front matter:\s*(.+)$/i);
+    if (fm) return fm[1].replace(/^licensing\.(model|notes)$/i, 'Licensing $1').replace(/^defaultState$/i, 'Default state').replace(/^targetDate$/i, 'Target date').replace(/^previewDate$/i, 'Preview date').replace(/^(\w)/, (m) => m.toUpperCase()).replace(/([a-z])([A-Z])/g, '$1 $2').toLowerCase().replace(/^(\w)/, (m) => m.toUpperCase());
+    const rat = w.match(/^rationale:\s*(\w+)/i);
+    if (rat) return `${rat[1].charAt(0).toUpperCase()}${rat[1].slice(1)} rationale`;
+    const key = w.toLowerCase().replace(/[^a-z]/g, '');
+    for (const [k, name] of Object.entries(SECTION_NAMES)) if (key.startsWith(k)) return w.replace(/^[^:]+/, name);
+    return w.charAt(0).toUpperCase() + w.slice(1);
+  }).join('; ');
+}
+const findings = report ? [...report.claims].filter((c) => c.status !== 'supported' || c.severity).sort((a, b) => (SEV_RANK[a.severity ?? 'minor'] ?? 3) - (SEV_RANK[b.severity ?? 'minor'] ?? 3) || a.n - b.n) : [];
+const confirmedOnly = report ? report.claims.filter((c) => c.status === 'supported' && !c.severity) : [];
+const needsCorrection = v?.status === 'needs-correction';
+const isUrl = (s: string | null | undefined) => Boolean(s && /^https?:\/\//.test(s));
+const hostOf = (u: string) => { try { return new URL(u).hostname.replace(/^www\./, '') + new URL(u).pathname.replace(/\/$/, ''); } catch { return u; } };
 ---
 
 <Base title={d.title} description={d.summary} kind="article" current="features">
@@ -69,6 +103,12 @@ const roadmapSource = d.sources.find((s) => s.kind === 'roadmap');
         <span class="sep"></span><span>Updated {formatDate(d.updated)}</span>
         {due && <><span class="sep"></span><span class="review-due" title={`Not written or refreshed for more than ${d.status === 'launched' ? LIFECYCLE.reviewAfterDays.launched : LIFECYCLE.reviewAfterDays.default} days. It is queued for a re-check; treat controls and licensing details as possibly out of date.`}>Review due</span></>}
         {d.confidence !== 'high' && <><span class="sep"></span><span title="How well the sources support this briefing">Confidence {d.confidence}</span></>}
+        <span class="sep"></span>
+        {v ? (
+          <a href="#verification" class={`checked checked--${v.status}`} title={`Independent check against Microsoft Learn on ${formatDate(v.date, { long: true })}: ${CHECK_LABEL[v.status] ?? v.status}.`}>{needsCorrection ? 'Awaiting correction' : `Checked ${formatDate(v.date)}`}</a>
+        ) : (
+          <a href="#verification" class="checked checked--none" title="This page has not yet had its independent check against Microsoft Learn.">Not yet checked</a>
+        )}
       </div>
       <h1 class="display">{d.title}</h1>
       <p class="standfirst">{d.summary}</p>
@@ -87,6 +127,11 @@ const roadmapSource = d.sources.find((s) => s.kind === 'roadmap');
           Microsoft may have withdrawn or renumbered the item. If it has not returned after {LIFECYCLE.removedGraceDays} days this briefing moves to the <a href={href('/archive/')}>archive</a>.
         </div>
       )}
+      {needsCorrection && v && (
+        <aside class="notice notice--correction" role="note">
+          <p><b>Awaiting correction.</b> An independent check on {formatDate(v.date, { long: true })} could not confirm {v.unconfirmed} of the {v.claims} statements on this page against Microsoft documentation and found {v.contradicted} contradicted by it. They are listed under <a href="#verification">How this briefing was checked</a>. A corrected version is being prepared. Until then, confirm paths, commands and licensing against the linked Microsoft pages before acting on them.</p>
+        </aside>
+      )}
       <Facts data={d.archived ? { ...d, action: 'none' } : d} rationale={rationale} />
     </header>
 
@@ -95,6 +140,60 @@ const roadmapSource = d.sources.find((s) => s.kind === 'roadmap');
         <div class="prose">
           <Content />
         </div>
+
+        <SectionHead title="How this briefing was checked" id="verification" />
+        {report && v ? (
+          <div class={`check check--${report.status}`}>
+            <p class="check__summary">{report.summary}</p>
+            <dl class="check__facts">
+              <div><dt>Checked</dt><dd>{formatDate(report.date, { long: true })}{report.version !== d.version && <span class="muted"> (at version {report.version}; the page is now version {d.version} and is queued for a new check)</span>}</dd></div>
+              <div><dt>Checked by</dt><dd>{report.model}, {ENGINE_LABEL[report.engine] ?? report.engine}, in a fresh session, against the roadmap entry and Microsoft Learn</dd></div>
+              <div><dt>Statements</dt><dd><b>{report.counts.claims}</b> checked: <span class="check__n check__n--ok">{report.counts.confirmed} confirmed</span> · <span class={`check__n${report.counts.unconfirmed ? ' check__n--warn' : ''}`}>{report.counts.unconfirmed} not found in the documentation</span> · <span class={`check__n${report.counts.contradicted ? ' check__n--bad' : ''}`}>{report.counts.contradicted} contradicted</span></dd></div>
+              <div><dt>Result</dt><dd>{CHECK_LABEL[report.status] ?? report.status}{report.attempts > 1 && <span class="muted"> · attempt {report.attempts}</span>}</dd></div>
+            </dl>
+            {findings.length > 0 && (
+              <>
+                <h3 class="check__h">{findings.length === 1 ? 'One finding' : `${findings.length} findings`}</h3>
+                <ol class="findings">
+                  {findings.map((c) => (
+                    <li class={`finding finding--${c.severity ?? 'note'}`} id={`finding-${c.n}`}>
+                      <div class="finding__head">
+                        {c.severity && <span class={`finding__sev finding__sev--${c.severity}`}>{SEVERITY_LABEL[c.severity]}</span>}
+                        <span class="finding__status">{STATUS_LABEL[c.status] ?? c.status}</span>
+                        <span class="finding__where">{whereLabel(c.where)}</span>
+                      </div>
+                      <p class="finding__claim">{c.claim}</p>
+                      {c.quote && (
+                        <p class="finding__quote">{c.status === 'contradicted' ? 'Microsoft says: ' : c.status === 'unsupported' ? '' : 'Source: '}<q>{c.quote}</q>{isUrl(c.source) && <> <a href={c.source!} rel="noopener">{hostOf(c.source!)}</a></>}</p>
+                      )}
+                      {c.fix && <p class="finding__fix"><b>Correction.</b> {c.fix}</p>}
+                    </li>
+                  ))}
+                </ol>
+              </>
+            )}
+            {confirmedOnly.length > 0 && (
+              <details class="claims">
+                <summary>{confirmedOnly.length} statements confirmed, with the passage each rests on</summary>
+                <table class="claims__table">
+                  <thead><tr><th>Where</th><th>Statement</th><th>Evidence</th></tr></thead>
+                  <tbody>
+                    {confirmedOnly.map((c) => (
+                      <tr>
+                        <td data-label="Where">{whereLabel(c.where)}</td>
+                        <td data-label="Statement">{c.claim}</td>
+                        <td data-label="Evidence">{c.quote && <q>{c.quote}</q>}{isUrl(c.source) ? <> <a href={c.source!} rel="noopener">{hostOf(c.source!)}</a></> : c.source === 'roadmap record' ? <span class="muted"> (roadmap entry)</span> : null}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </details>
+            )}
+            {report.history.length > 0 && <p class="small muted check__history">Earlier checks: {report.history.map((h) => `${formatDate(h.date)} (${CHECK_LABEL[h.status]?.split('.')[0].toLowerCase() ?? h.status}, version ${h.version})`).join('; ')}.</p>}
+          </div>
+        ) : (
+          <p class="muted check__none">Not yet checked. Every briefing is re-read by a second model, in a fresh session, against the roadmap entry and Microsoft Learn; the result appears here, statement by statement. This page is in the queue. Until then, treat its paths, commands and licensing as the writer's reading of the sources, and confirm them against the linked Microsoft pages. <a href={href('/about/#checked')}>How the check works</a>.</p>
+        )}
 
         <SectionHead title="Microsoft guidance and references" id="references" />
         <ul class="sources">
@@ -140,7 +239,7 @@ const roadmapSource = d.sources.find((s) => s.kind === 'roadmap');
           {d.roadmapModified && <li><time datetime={d.roadmapModified}>{formatDate(d.roadmapModified)}</time><span class="muted">Roadmap entry last modified by Microsoft</span></li>}
         </ul>
         <p class="small muted" style="margin-top:1.2rem">
-          Version {d.version} · created {formatDate(d.created)} · confidence {d.confidence}. This briefing was written from the sources above. It is rewritten when the roadmap entry changes and re-checked after {LIFECYCLE.reviewAfterDays.default} days without a change ({LIFECYCLE.reviewAfterDays.launched} once launched). {d.archived ? 'It is archived and will not be refreshed unless the item returns to the roadmap.' : 'If Microsoft cancels or withdraws the item, the page moves to the archive rather than being deleted.'}
+          Version {d.version} · created {formatDate(d.created)} · confidence {d.confidence}. This briefing was written from the sources above{v && v.status !== 'needs-correction' ? `, checked independently against Microsoft Learn on ${formatDate(v.date)},` : ''}. It is rewritten when the roadmap entry changes and re-checked after {LIFECYCLE.reviewAfterDays.default} days without a change ({LIFECYCLE.reviewAfterDays.launched} once launched). {d.archived ? 'It is archived and will not be refreshed unless the item returns to the roadmap.' : 'If Microsoft cancels or withdraws the item, the page moves to the archive rather than being deleted.'}
           Spotted an error? <a href={editUrl} rel="noopener">Propose a change on GitHub</a>.
         </p>
       </div>
@@ -150,6 +249,7 @@ const roadmapSource = d.sources.find((s) => s.kind === 'roadmap');
           <h3>On this page</h3>
           <ol>
             {toc.map((h) => <li><a href={`#${h.slug}`}>{h.text}</a></li>)}
+            <li><a href="#verification">How this briefing was checked</a></li>
             <li><a href="#references">Microsoft guidance and references</a></li>
             <li><a href="#related">Related</a></li>
           </ol>
