@@ -13,9 +13,9 @@
  *   COPILOT_MODEL              model id (default claude-opus-5.5); 'auto' lets Copilot choose
  *   COPILOT_REASONING_EFFORT   low|medium|high|xhigh|max, or empty for the model default (default high)
  *   COMPILE_PARALLEL           sessions at once (default 2)
- *   COMPILE_ITEM_MAX_CREDITS   AI-credit cap per session (default 250 = $2.50)
+ *   COMPILE_ITEM_MAX_CREDITS   AI-credit cap per session (default 300 = $3.00)
  *   COMPILE_MAX_CREDITS        AI-credit budget per run; no new sessions start once it is spent
- *                              (default 150 x tasks)
+ *                              (default 200 x tasks)
  *   COMPILE_ITEM_TIMEOUT_MIN   wall-clock cap per session (default 15)
  *   COPILOT_BIN                path to the copilot binary (default: copilot on PATH)
  *
@@ -30,7 +30,7 @@ import { runCopilot, MICROSOFT_URLS, tail } from './lib/copilot.mjs';
 const MODEL = (process.env.COPILOT_MODEL || 'claude-opus-5.5').trim();
 const EFFORT = (process.env.COPILOT_REASONING_EFFORT ?? 'high').trim();
 const PARALLEL = Math.max(1, Number(process.env.COMPILE_PARALLEL || 2));
-const ITEM_MAX_CREDITS = Math.max(1, Number(process.env.COMPILE_ITEM_MAX_CREDITS || 250));
+const ITEM_MAX_CREDITS = Math.max(1, Number(process.env.COMPILE_ITEM_MAX_CREDITS || 300));
 const ITEM_TIMEOUT_MS = Math.max(1, Number(process.env.COMPILE_ITEM_TIMEOUT_MIN || 15)) * 60 * 1000;
 const TASK_DIR = path.join(DATA_DIR, 'compile-tasks');
 const RESULTS_FILE = path.join(DATA_DIR, 'compile-results.json');
@@ -66,7 +66,7 @@ if (!tasks.length) {
   note('No tasks prepared; nothing to write.');
   await finish({ status: 'empty' });
 }
-const BUDGET = Math.max(ITEM_MAX_CREDITS, Number(process.env.COMPILE_MAX_CREDITS || 0) || 150 * tasks.length);
+const BUDGET = Math.max(ITEM_MAX_CREDITS, Number(process.env.COMPILE_MAX_CREDITS || 0) || 200 * tasks.length);
 const runStart = Date.now();
 note(`${tasks.length} task(s), model ${MODEL}${EFFORT ? ` (reasoning ${EFFORT})` : ''}, ${PARALLEL} at a time, caps ${ITEM_MAX_CREDITS} credits per item and ${fmt(BUDGET)} per run.`);
 

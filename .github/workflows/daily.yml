@@ -126,7 +126,7 @@ jobs:
           COPILOT_MODEL: ${{ github.event.inputs.compile_model || vars.COPILOT_MODEL || 'claude-opus-5.5' }}
           COPILOT_REASONING_EFFORT: ${{ vars.COPILOT_REASONING_EFFORT || 'high' }}
           COMPILE_PARALLEL: ${{ vars.COMPILE_PARALLEL || '2' }}
-          COMPILE_ITEM_MAX_CREDITS: ${{ vars.COMPILE_ITEM_MAX_CREDITS || '250' }}
+          COMPILE_ITEM_MAX_CREDITS: ${{ vars.COMPILE_ITEM_MAX_CREDITS || '300' }}
           COMPILE_MAX_CREDITS: ${{ vars.COMPILE_MAX_CREDITS || '' }}
         run: |
           if [ -n "$COPILOT_PAT" ]; then export COPILOT_GITHUB_TOKEN="$COPILOT_PAT"; fi

@@ -33,8 +33,12 @@ await writeJson(path.join(DATA_DIR, 'last-compile.json'), {
   date: today(), path: compilePath, written, failed: rejected + untouched, attempted, model,
   ...(credits == null ? {} : { credits }),
 });
-// Working files are not committed; clean them so the commit step sees only real changes.
-await fs.rm(path.join(DATA_DIR, 'compile-tasks'), { recursive: true, force: true });
-await fs.rm(path.join(DATA_DIR, 'compile-tasks.json'), { force: true });
-await fs.rm(path.join(DATA_DIR, 'compile-results.json'), { force: true });
-await fs.rm(path.join(DATA_DIR, 'compile-usage.json'), { force: true });
+// The working files (task list, briefs, output JSON with its evidence list, results, usage) are git-ignored
+// and stay in place for the verification step; the next compile-tasks run clears them. COMPILE_CLEAN=1
+// removes them now, for local runs.
+if (process.env.COMPILE_CLEAN === '1') {
+  await fs.rm(path.join(DATA_DIR, 'compile-tasks'), { recursive: true, force: true });
+  await fs.rm(path.join(DATA_DIR, 'compile-tasks.json'), { force: true });
+  await fs.rm(path.join(DATA_DIR, 'compile-results.json'), { force: true });
+  await fs.rm(path.join(DATA_DIR, 'compile-usage.json'), { force: true });
+}
