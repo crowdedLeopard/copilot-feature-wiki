@@ -20,7 +20,7 @@ licensing:
   model: "per-user"
   notes: "Learn: Power Apps premium for model-driven apps; Dynamics 365 enterprise or premium for Dynamics 365 apps. Government terms may differ."
 audiences: ["power-platform-admin","compliance","maker","end-user"]
-tags: ["power-apps","model-driven-apps","row-summary","gcc","gcc-high","copilot"]
+tags: ["power-apps","model-driven-apps","row-summary","copilot","gcc","gcc-high"]
 sources:
   - title: "Microsoft 365 Roadmap item 576279"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=576279"

@@ -47,9 +47,11 @@ const slug = task?.slug || (await existingSlugForRoadmapId(id)) || slugify(item.
 const { existingFm } = await loadExisting(slug);
 const indexSlugs = await loadIndexSlugs();
 try {
-  const { file, title } = await writeBriefingPage(item, raw, { slug, existingFm, indexSlugs });
-  await record({ ok: true, slug, title, file: path.relative(process.cwd(), file) });
+  const { file, title, tags } = await writeBriefingPage(item, raw, { slug, existingFm, indexSlugs });
+  await record({ ok: true, slug, title, file: path.relative(process.cwd(), file), newTags: tags.added, stubTags: tags.stubs });
   console.log(`OK wrote ${path.relative(process.cwd(), file)}\n   ${title}`);
+  if (tags.added.length || tags.filled.length) console.log(`   glossary: defined ${[...tags.added, ...tags.filled].join(', ')}`);
+  if (tags.stubs.length) console.log(`   glossary: ${tags.stubs.join(', ')} still need a description (add them to newTags)`);
 } catch (err) {
   await record({ ok: false, slug, error: err.message });
   console.error(`REJECTED ${id}: ${err.message}`);

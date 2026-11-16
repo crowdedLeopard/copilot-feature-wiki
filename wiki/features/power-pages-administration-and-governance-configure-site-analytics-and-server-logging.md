@@ -20,7 +20,7 @@ licensing:
   model: "consumption"
   notes: "Azure Application Insights billing applies. Power Pages licensing for the feature is not yet published."
 audiences: ["power-platform-admin","compliance","maker","service-owner"]
-tags: ["power-pages","application-insights","analytics","server-logging","privacy","gcc","dod"]
+tags: ["power-pages","application-insights","analytics","server-logging","privacy","gcc","gcc-high","dod"]
 sources:
   - title: "Microsoft 365 Roadmap item 578071"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=578071"

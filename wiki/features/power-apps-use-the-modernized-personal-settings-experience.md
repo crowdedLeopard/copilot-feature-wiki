@@ -20,7 +20,7 @@ licensing:
   model: "included"
   notes: "No separate licence published. Part of model-driven apps in Power Apps."
 audiences: ["power-platform-admin","service-owner","end-user","change-adoption"]
-tags: ["power-apps","model-driven-apps","personal-settings","user-experience"]
+tags: ["power-apps","model-driven-apps","personal-settings","user-experience","gcc","gcc-high","dod"]
 sources:
   - title: "Microsoft 365 Roadmap item 579899"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=579899"

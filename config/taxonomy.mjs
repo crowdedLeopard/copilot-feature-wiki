@@ -103,26 +103,27 @@ export const IMPACT = {
 };
 
 export const DEFAULT_STATE = {
-  on: { label: 'On by default', short: 'On' },
-  off: { label: 'Off by default', short: 'Off' },
-  'admin-opt-in': { label: 'Admin opt-in', short: 'Admin opt-in' },
-  'user-opt-in': { label: 'User opt-in', short: 'User opt-in' },
-  unknown: { label: 'Not stated', short: 'Not stated' },
+  on: { label: 'On by default', short: 'On', help: 'Users get it without anyone in your organisation switching it on.' },
+  off: { label: 'Off by default', short: 'Off', help: 'Nothing changes until an administrator turns it on.' },
+  'admin-opt-in': { label: 'Admin opt-in', short: 'Admin opt-in', help: 'An administrator has to enable it, usually per tenant or per environment.' },
+  'user-opt-in': { label: 'User opt-in', short: 'User opt-in', help: 'Each user chooses whether to turn it on for themselves.' },
+  unknown: { label: 'Not stated', short: 'Not stated', help: 'Microsoft has not said whether it will be on or off by default.' },
 };
 
 export const ACTION = {
   'act-now': { label: 'Act now', rank: 3, help: 'On by default or a deadline is close. Configure controls before the rollout date.' },
   prepare: { label: 'Prepare', rank: 2, help: 'Plan configuration, licensing and comms within the release window.' },
   review: { label: 'Review', rank: 1, help: 'Check fit with your policies. No change needed unless you want it.' },
-  none: { label: 'Awareness', rank: 0, help: 'Informational.' },
+  none: { label: 'No action', rank: 0, help: 'Nothing to configure or budget. Briefed so you know it is coming.' },
 };
 
+// Status follows the Microsoft 365 Roadmap. Help text is shown as a tooltip and in the legend.
 export const STATUS = {
-  'in-development': { label: 'In development', rank: 1 },
-  preview: { label: 'Preview', rank: 2 },
-  'rolling-out': { label: 'Rolling out', rank: 3 },
-  launched: { label: 'Launched', rank: 4 },
-  cancelled: { label: 'Cancelled', rank: 0 },
+  'in-development': { label: 'In development', rank: 1, help: 'Microsoft is still building it. The target date is an estimate and often moves.' },
+  preview: { label: 'Preview', rank: 2, help: 'Available to try before general release. Behaviour and licensing can still change.' },
+  'rolling-out': { label: 'Rolling out', rank: 3, help: 'Microsoft has started switching it on for tenants. It may already be in yours.' },
+  launched: { label: 'Launched', rank: 4, help: 'Generally available in the clouds listed on the briefing.' },
+  cancelled: { label: 'Cancelled', rank: 0, help: 'Microsoft has withdrawn this roadmap item.' },
 };
 
 export function statusFromRoadmap(s = '') {
@@ -141,6 +142,49 @@ export const LICENSING_MODEL = {
   mixed: 'Mixed',
   unknown: 'Not yet published',
 };
+
+export const LICENSING_MODEL_HELP = {
+  included: 'No extra licence. Covered by subscriptions you already hold.',
+  'per-user': 'A licence for each person who uses it.',
+  consumption: 'Metered. You pay for what is used, so spend depends on usage.',
+  'add-on': 'A separate add-on subscription on top of your base licences.',
+  mixed: 'Partly included and partly paid for, depending on the user or the usage.',
+  unknown: 'Microsoft has not published the licensing yet.',
+};
+
+// Microsoft clouds, as the roadmap names them. `short` is the compact form for tables; the full name
+// and the one-line explanation live in the tag glossary (wiki/tags.json) under `tag`, so that the
+// Facts grid, the tag pages and the tooltips all say the same thing.
+export const CLOUDS = {
+  'Worldwide (Standard Multi-Tenant)': { tag: 'worldwide', short: 'Worldwide' },
+  GCC: { tag: 'gcc', short: 'GCC' },
+  'GCC High': { tag: 'gcc-high', short: 'GCC High' },
+  DoD: { tag: 'dod', short: 'DoD' },
+};
+
+// Government clouds are tagged automatically from the roadmap's cloud list, so the "US Government"
+// tag pages are complete rather than dependent on the model remembering. Worldwide is not tagged:
+// it would sit on almost every page and say nothing.
+export const AUTO_TAG_CLOUDS = ['GCC', 'GCC High', 'DoD'];
+
+export function cloudTags(clouds = []) {
+  return clouds.filter((c) => AUTO_TAG_CLOUDS.includes(c)).map((c) => CLOUDS[c].tag);
+}
+
+// Tag groups. Every tag in the glossary (wiki/tags.json) is filed under one of these; the tags index
+// and each tag page use the group to show a tag beside its siblings, for example the other clouds.
+export const TAG_GROUPS = [
+  { id: 'cloud', label: 'Cloud instance', blurb: 'Which Microsoft cloud the change applies to. Features usually reach the US Government clouds after Worldwide, sometimes by a year or more.' },
+  { id: 'product', label: 'Products and services', blurb: 'The Microsoft product, service or tool the change belongs to.' },
+  { id: 'capability', label: 'Capabilities', blurb: 'What a feature does, or the mechanism it relies on.' },
+  { id: 'licensing', label: 'Licensing and cost', blurb: 'Licences, meters, credits and the controls that cap spend.' },
+  { id: 'security', label: 'Security and identity', blurb: 'Who or what a user, visitor or agent acts as, and how that is authenticated and authorised.' },
+  { id: 'governance', label: 'Governance and administration', blurb: 'The policies, settings and admin centres used to control a feature.' },
+  { id: 'data', label: 'Data, privacy and compliance', blurb: 'Where data goes, who can see it, how long it is kept and how that is audited.' },
+  { id: 'other', label: 'Other', blurb: 'Tags that have not been filed under a group yet.' },
+];
+export const TAG_GROUP_IDS = TAG_GROUPS.map((g) => g.id);
+export const TAG_GROUP_BY_ID = Object.fromEntries(TAG_GROUPS.map((g) => [g.id, g]));
 
 export const AUDIENCES = {
   'm365-admin': 'Microsoft 365 admins',

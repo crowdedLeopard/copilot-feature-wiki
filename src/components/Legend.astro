@@ -1,0 +1,40 @@
+---
+/**
+ * The key to the badges and ratings, collapsed by default. It renders the same taxonomy entries the
+ * badges and pips use, so it can never drift from them. Placed above any list of briefing rows.
+ */
+import Badge from './Badge.astro';
+import Rating from './Rating.astro';
+import { ACTION, STATUS, RISK, COST, IMPACT, href } from '../lib/site';
+
+interface Props { open?: boolean; summary?: string }
+const { open = false, summary = 'Key to the badges and ratings' } = Astro.props;
+const rows = (scale: Record<string, { label: string; help: string }>) => Object.entries(scale);
+---
+
+<details class="legend no-print" open={open}>
+  <summary>{summary}</summary>
+  <div class="legend__grid">
+    <section>
+      <h4>Action <span>what to do about it</span></h4>
+      <ul>{rows(ACTION).map(([k, v]) => <li><span><Badge action={k} /></span><span>{v.help}</span></li>)}</ul>
+    </section>
+    <section>
+      <h4>Status <span>Microsoft's roadmap stage</span></h4>
+      <ul>{rows(STATUS).map(([k, v]) => <li><span><Badge status={k} /></span><span>{v.help}</span></li>)}</ul>
+    </section>
+    <section>
+      <h4>Risk <span>if left ungoverned</span></h4>
+      <ul>{rows(RISK).map(([k, v]) => <li><span><Rating kind="risk" value={k} showLabel={false} /></span><span>{v.help}</span></li>)}</ul>
+    </section>
+    <section>
+      <h4>Cost <span>direct and indirect</span></h4>
+      <ul>{rows(COST).map(([k, v]) => <li><span><Rating kind="cost" value={k} showLabel={false} /></span><span>{v.help}</span></li>)}</ul>
+    </section>
+    <section>
+      <h4>Impact <span>how many people notice</span></h4>
+      <ul>{rows(IMPACT).map(([k, v]) => <li><span><Rating kind="impact" value={k} showLabel={false} /></span><span>{v.help}</span></li>)}</ul>
+    </section>
+  </div>
+  <p class="legend__foot">Ratings are editorial judgements made from Microsoft's documentation when the briefing was written. The <a href={href('/about/#ratings')}>about page</a> has the full definitions, and every tag is explained in the <a href={href('/tags/')}>tag glossary</a>.</p>
+</details>

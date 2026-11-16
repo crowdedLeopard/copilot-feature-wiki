@@ -20,7 +20,7 @@ licensing:
   model: "included"
   notes: "Admin centre reports; no separate licence published."
 audiences: ["m365-admin","change-adoption","compliance"]
-tags: ["copilot","usage-reports","gcc","gcc-high","dod","admin-center"]
+tags: ["copilot","usage-reports","admin-center","gcc","gcc-high","dod"]
 sources:
   - title: "Microsoft 365 Roadmap item 573170"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=573170"

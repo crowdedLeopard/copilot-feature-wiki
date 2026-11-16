@@ -3,7 +3,8 @@ import Base from '../layouts/Base.astro';
 import SectionHead from '../components/SectionHead.astro';
 import Rating from '../components/Rating.astro';
 import Badge from '../components/Badge.astro';
-import { SITE, RISK, COST, IMPACT, ACTION, TOPICS, href } from '../lib/site';
+import { SITE, RISK, COST, IMPACT, ACTION, STATUS, DEFAULT_STATE, LICENSING_MODEL, LICENSING_MODEL_HELP, TOPICS, href } from '../lib/site';
+import { tagGroups } from '../lib/tags';
 ---
 
 <Base title="About" description="How Release Ledger is compiled, what the ratings mean, and how to correct it." current="about">
@@ -27,7 +28,7 @@ import { SITE, RISK, COST, IMPACT, ACTION, TOPICS, href } from '../lib/site';
       <p>The pattern follows Andrej Karpathy's description of an LLM-maintained wiki: raw sources are never edited, the wiki is the compiled layer, a schema file is both the operating manual and the system prompt, and an append-only log records every run. You can read the schema, the log and every raw snapshot <a href={SITE.repo} rel="noopener">in the repository</a>.</p>
 
       <h2 id="ratings">The ratings</h2>
-      <p>Each briefing carries four judgements. They are editorial, made from Microsoft's published documentation at the time of writing, and are meant to triage, not to replace your own assessment.</p>
+      <p>Each briefing carries four judgements: what to do, and how it rates for risk, cost and impact. They are editorial, made from Microsoft's published documentation at the time of writing, and are meant to triage, not to replace your own assessment. Every badge and rating on the site shows its definition when you hover over it, and each list of briefings has a collapsible key.</p>
     </div>
 
     <SectionHead title="Action" />
@@ -48,9 +49,29 @@ import { SITE, RISK, COST, IMPACT, ACTION, TOPICS, href } from '../lib/site';
     </table>
 
     <div class="prose" style="margin-top:2.5rem">
+      <h2 id="facts">The facts beside the ratings</h2>
+      <p>Status and the target date are Microsoft's, taken from the roadmap entry. Default state and licensing are read from the roadmap text and Microsoft Learn.</p>
+    </div>
+    <SectionHead title="Status" />
+    <table>
+      <tbody>{Object.entries(STATUS).map(([k, v]) => <tr><td style="width:9rem"><Badge status={k} /></td><td>{v.help}</td></tr>)}</tbody>
+    </table>
+    <SectionHead title="Default state" />
+    <table>
+      <tbody>{Object.entries(DEFAULT_STATE).map(([k, v]) => <tr><td style="width:9rem"><b>{v.label}</b></td><td>{v.help}</td></tr>)}</tbody>
+    </table>
+    <SectionHead title="Licensing" />
+    <table>
+      <tbody>{Object.entries(LICENSING_MODEL).map(([k, v]) => <tr><td style="width:9rem"><b>{v}</b></td><td>{(LICENSING_MODEL_HELP as Record<string, string>)[k]}</td></tr>)}</tbody>
+    </table>
+
+    <div class="prose" style="margin-top:2.5rem">
       <h2 id="topics">Topics</h2>
       <p>Every item is filed under one topic, according to the products Microsoft tags it with. An item tagged with several products goes to the first topic in this list that matches, so a specific platform wins over the broad "Microsoft Copilot (Microsoft 365)" tag, which Microsoft attaches to most AI items.</p>
       <ul>{TOPICS.map((d) => <li><a href={href(`/topics/${d.id}/`)}><strong>{d.label}</strong></a>: {d.blurb}</li>)}</ul>
+
+      <h2 id="tags">Tags</h2>
+      <p>Tags cut across the topics and join pages that share a product, a control, a meter or a risk. Every tag has a plain-English name and a one-line explanation on its page, and the <a href={href('/tags/')}>tag glossary</a> lists them all by group: {tagGroups.filter((g) => g.id !== 'other').map((g) => g.label.toLowerCase()).join(', ')}. The US Government cloud tags (GCC, GCC High and DoD) are added from the roadmap entry's cloud list, so a tag page such as <a href={href('/tags/dod/')}>US Government: DoD</a> is complete. When the daily run needs a tag that does not exist yet, it defines it as it writes the briefing.</p>
 
       <h2 id="sources">Sources and confidence</h2>
       <p>Briefings cite the Microsoft 365 Roadmap entry and Microsoft Learn documentation, and sometimes Microsoft Tech Community or Microsoft 365 blog posts. Nothing outside Microsoft's domains is cited. Each page states a confidence level: <em>high</em> when the documentation describes the feature as shipped and the admin controls were verified; <em>medium</em> when the roadmap entry is ahead of the documentation; <em>low</em> when only the roadmap text exists. Roadmap dates are Microsoft's targets and move.</p>

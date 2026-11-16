@@ -3,7 +3,9 @@
  * Lint: the wiki's health check. Validates every briefing's front matter, drops disallowed sources,
  * finds orphans and broken related links, and flags drift between a briefing and its raw roadmap record.
  * Invalid pages are moved to wiki/_quarantine/ so one bad page never breaks the site build.
- * A page still filed under one of the old desks is rewritten with its topic before it is checked.
+ * A page still filed under one of the old desks is rewritten with its topic before it is checked, and
+ * every page's tag list is brought up to today's rules: aliases resolved, US Government clouds tagged
+ * from the roadmap record, and a glossary entry present for every tag (an empty one is a warning).
  */
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -11,6 +13,7 @@ import { featureFrontmatter, isAllowedSourceUrl } from './lib/schema.mjs';
 import { loadPages, loadConcepts } from './lib/pages.mjs';
 import { RAW_DIR, WIKI_DIR, FEATURES_DIR, DATA_DIR, readJson, writeJson, appendLog, today } from './lib/util.mjs';
 import { LEGACY_DESK_TOPIC } from '../config/taxonomy.mjs';
+import { loadGlossary, saveGlossary, normaliseTags, defineTags } from './lib/tags.mjs';
 
 const QUARANTINE = path.join(WIKI_DIR, '_quarantine');
 
@@ -22,12 +25,18 @@ async function main() {
   const findings = { errors: [], warnings: [], info: [] };
   const inbound = new Map();
   let quarantined = 0;
+  const glossary = await loadGlossary();
+  let glossaryChanged = false;
+  const retagged = await retagConcepts(concepts, glossary);
+  for (const r of retagged) findings.info.push(`concepts/${r.file}: tags rewritten as ${JSON.stringify(r.tags)}`);
 
   for (const page of pages) {
     const where = `features/${page.file}`;
     if (page.error) { findings.errors.push(`${where}: YAML parse error: ${page.error}`); await quarantine(page); quarantined++; continue; }
     const moved = await refileLegacyDesk(page);
     if (moved) findings.info.push(`${where}: desk "${moved.desk}" rewritten as topic "${moved.topic}"`);
+    const retag = await retagPage(page, glossary);
+    if (retag) findings.info.push(`${where}: tags rewritten as ${JSON.stringify(retag)}`);
     const check = featureFrontmatter.safeParse(page.data);
     if (!check.success) {
       findings.errors.push(`${where}: ${check.error.issues.map((i) => `${i.path.join('.')}: ${i.message}`).join('; ')}`);
@@ -68,11 +77,20 @@ async function main() {
         if (raw.modified !== fm.roadmapModified) findings.info.push(`${where}: roadmap record modified ${raw.modified}, briefing based on ${fm.roadmapModified}`);
       }
     }
+    const defined = defineTags(glossary, fm.tags);
+    if (defined.stubs.length) glossaryChanged = true;
+    for (const t of fm.tags) if (!glossary.tags[t]?.description) findings.warnings.push(`${where}: tag "${t}" has no description in wiki/tags.json yet`);
     if (fm.confidence === 'low') findings.info.push(`${where}: low confidence, roadmap text only`);
     const ageDays = (Date.now() - new Date(fm.updated).getTime()) / 86400000;
     if (fm.status !== 'launched' && ageDays > 120) findings.warnings.push(`${where}: not reviewed for ${Math.round(ageDays)} days`);
   }
   for (const p of pages) if (!inbound.has(p.slug) && !p.error) findings.info.push(`features/${p.file}: orphan (no inbound related links)`);
+  for (const c of concepts) {
+    const defined = defineTags(glossary, normaliseTags(c.data.tags || [], [], glossary));
+    if (defined.stubs.length) glossaryChanged = true;
+    for (const t of c.data.tags || []) if (!glossary.tags[t]?.description) findings.warnings.push(`concepts/${c.file}: tag "${t}" has no description in wiki/tags.json yet`);
+  }
+  if (glossaryChanged) await saveGlossary(glossary);
 
   const report = [
     `# Lint report`, ``, `Generated ${new Date().toISOString()}. ${pages.length} briefings, ${concepts.length} concepts, ${quarantined} quarantined.`, ``,
@@ -100,6 +118,28 @@ async function refileLegacyDesk(page) {
   page.data = { ...page.data, topic };
   delete page.data.desk;
   return { desk, topic };
+}
+
+/** Tags are stored on one line (`tags: [...]`). Rewrite it when today's rules give a different list. */
+async function retagPage(page, glossary, dir = FEATURES_DIR, withClouds = true) {
+  if (!Array.isArray(page.data.tags) || !/^tags:\s*\[.*\]\s*$/m.test(page.raw)) return null;
+  const next = normaliseTags(page.data.tags, withClouds ? page.data.clouds || [] : [], glossary);
+  if (JSON.stringify(next) === JSON.stringify(page.data.tags)) return null;
+  const raw = page.raw.replace(/^tags:\s*\[.*\]\s*$/m, `tags: ${JSON.stringify(next)}`);
+  await fs.writeFile(path.join(dir, page.file), raw);
+  page.raw = raw;
+  page.data = { ...page.data, tags: next };
+  return next;
+}
+
+async function retagConcepts(concepts, glossary) {
+  const out = [];
+  for (const c of concepts) {
+    if (c.error) continue;
+    const tags = await retagPage(c, glossary, path.join(WIKI_DIR, 'concepts'), false);
+    if (tags) out.push({ file: c.file, tags });
+  }
+  return out;
 }
 
 async function quarantine(page) {

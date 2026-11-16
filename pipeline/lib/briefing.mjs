@@ -8,8 +8,9 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { briefingOutput, featureFrontmatter, isAllowedSourceUrl } from './schema.mjs';
 import { renderBriefing, API_KIND_LABEL } from './render.mjs';
-import { RAW_DIR, WIKI_DIR, FEATURES_DIR, DATA_DIR, readJson, today, slugify } from './util.mjs';
+import { RAW_DIR, WIKI_DIR, FEATURES_DIR, DATA_DIR, readJson, today } from './util.mjs';
 import { TOPIC_IDS, TOPIC_BY_ID, topicForProducts } from '../../config/taxonomy.mjs';
+import { loadGlossary, saveGlossary, glossaryLines, normaliseTags, defineTags } from './tags.mjs';
 
 /** "slug | title" lines for every briefing and concept page, the set a new page may link to in `related`. */
 export async function loadIndexSlugs() {
@@ -118,8 +119,12 @@ export async function loadExisting(slug) {
   }
 }
 
-/** The per-item brief. Used verbatim as the user turn in the API path and as the task text for the agent path. */
-export function researchBrief(item, existing, indexSlugs) {
+/**
+ * The per-item brief. Used verbatim as the user turn in the API path and as the task text for the
+ * agent path. `glossary` is the tag glossary from loadGlossary(); the model reuses its tags and
+ * defines, in newTags, any tag it needs that is not there.
+ */
+export function researchBrief(item, existing, indexSlugs, glossary = { tags: {}, aliases: {} }) {
   const topic = TOPIC_BY_ID[item.topic];
   return `Write or refresh the briefing for this Microsoft 365 Roadmap item.
 
@@ -139,6 +144,9 @@ ${topic ? `${topic.label}: ${topic.blurb}` : item.topic}
 ${existing ? `## Existing briefing (refresh it: keep what is still true, correct what changed, note the change)\n${existing}\n` : ''}
 ## Existing briefings you may link in relatedSlugs (slug | title)
 ${indexSlugs.slice(0, 400).join('\n') || '(none yet)'}
+
+## Tag glossary (tag | name readers see). Reuse these in tags; define any other tag you use in newTags
+${glossaryLines(glossary).join('\n') || '(empty: define every tag you use in newTags)'}
 
 ## Research steps
 1. Search Microsoft Learn (MCP) for the feature, its admin controls and licensing. Open the one or two most relevant pages.
@@ -180,6 +188,12 @@ export async function writeBriefingPage(item, rawOutput, { slug, existingFm, ind
     throw new Error('Output failed schema: ' + parsed.error.issues.map((i) => i.path.join('.') + ' ' + i.message).join('; '));
   }
   const out = parsed.data;
+  // Tags: canonical spelling, duplicates removed, US Government clouds added from the roadmap record.
+  // Any tag used for the first time is written to the glossary so its page has a name and a description.
+  const glossary = await loadGlossary();
+  const tags = normaliseTags(out.tags, item.clouds, glossary);
+  const defined = defineTags(glossary, tags, out.newTags);
+  if (defined.added.length || defined.filled.length || defined.stubs.length) await saveGlossary(glossary);
   let sources = out.sources.filter((s) => isAllowedSourceUrl(s.url));
   if (!sources.some((s) => s.kind === 'roadmap')) sources.unshift({ title: `Microsoft 365 Roadmap ${item.id}`, url: item.roadmapUrl, kind: 'roadmap' });
   sources = mergeControlDocsIntoSources(sources, out.controls);
@@ -189,7 +203,7 @@ export async function writeBriefingPage(item, rawOutput, { slug, existingFm, ind
     targetDate: item.targetDate, previewDate: item.previewDate || null,
     risk: out.risk, cost: out.cost, impact: out.impact, defaultState: out.defaultState, action: out.action,
     licensing: { model: out.licensingModel, notes: out.licensingNotes },
-    audiences: out.audiences, tags: [...new Set(out.tags.map((t) => slugify(t)).filter(Boolean))],
+    audiences: out.audiences, tags,
     sources, videos: out.videos.filter((v) => isAllowedSourceUrl(v.url)),
     related: out.relatedSlugs.filter((s) => indexSlugs.some((l) => l.startsWith(s + ' |')) && s !== slug).slice(0, 6),
     controls: out.controls,
@@ -206,5 +220,5 @@ export async function writeBriefingPage(item, rawOutput, { slug, existingFm, ind
   await fs.mkdir(FEATURES_DIR, { recursive: true });
   const file = path.join(FEATURES_DIR, `${slug}.md`);
   await fs.writeFile(file, page);
-  return { file, slug, title: out.title };
+  return { file, slug, title: out.title, tags: defined };
 }

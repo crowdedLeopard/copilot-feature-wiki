@@ -32,3 +32,5 @@ Append-only record of ingests, compiles and lint passes. One line per event.
 - 2026-11-16 taxonomy: desks renamed to topics and reduced from six to five (Security & Compliance and Admin & Billing merged into Governance & security); 58 briefings refiled, week 46 digest and index regenerated
 - 2026-11-16 lint: 58 briefings ok, 0 errors (0 quarantined), 0 warnings, 27 notes
 - 2026-11-16 index: 58 briefings, 4 concepts indexed
+- 2026-11-16 lint: 58 briefings ok, 0 errors (0 quarantined), 0 warnings, 36 notes
+- 2026-11-16 lint: 58 briefings ok, 0 errors (0 quarantined), 0 warnings, 63 notes

@@ -8,7 +8,8 @@
  */
 import type { Feature, Concept } from './data';
 import { catalog } from './data';
-import { TOPICS, featureUrl, conceptUrl, tagUrl, tagLabel } from './site';
+import { TOPICS, featureUrl, conceptUrl, tagUrl } from './site';
+import { tagLabel } from './tags';
 import { layout, type LayoutEdge, type LayoutNode } from './layout';
 
 export type NodeKind = 'f' | 'c' | 't';

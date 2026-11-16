@@ -1,8 +1,8 @@
 import {
-  SITE, TOPICS, TOPIC_BY_ID, RISK, COST, IMPACT, DEFAULT_STATE, ACTION, STATUS, LICENSING_MODEL, AUDIENCES, SOURCE_KIND,
+  SITE, TOPICS, TOPIC_BY_ID, RISK, COST, IMPACT, DEFAULT_STATE, ACTION, STATUS, LICENSING_MODEL, LICENSING_MODEL_HELP, AUDIENCES, SOURCE_KIND,
 } from '../../config/taxonomy.mjs';
 
-export { SITE, TOPICS, TOPIC_BY_ID, RISK, COST, IMPACT, DEFAULT_STATE, ACTION, STATUS, LICENSING_MODEL, AUDIENCES, SOURCE_KIND };
+export { SITE, TOPICS, TOPIC_BY_ID, RISK, COST, IMPACT, DEFAULT_STATE, ACTION, STATUS, LICENSING_MODEL, LICENSING_MODEL_HELP, AUDIENCES, SOURCE_KIND };
 
 export const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
 
@@ -42,14 +42,8 @@ export function roadmapUrl(id: number | null) {
   return id ? `https://www.microsoft.com/microsoft-365/roadmap?id=${id}` : null;
 }
 
-export function tagLabel(tag: string) {
-  return tag.replace(/-/g, ' ').replace(/\bm365\b/g, 'M365').replace(/\bmcp\b/g, 'MCP').replace(/\bdlp\b/g, 'DLP').replace(/\bpayg\b/g, 'PAYG')
-    .replace(/\bp3\b/g, 'P3').replace(/\be7\b/g, 'E7').replace(/\bid\b/g, 'ID').replace(/\bai\b/g, 'AI').replace(/\bubb\b/g, 'UBB');
-}
-
-export function cloudShort(c: string) {
-  return c.replace('Worldwide (Standard Multi-Tenant)', 'Worldwide').replace('GCC High', 'GCC High');
-}
+// Tag names, descriptions and cloud names live in ./tags (backed by wiki/tags.json). They are kept out of
+// this module so that the client scripts which import it do not bundle the glossary.
 
 export function compareByAction<T extends { data: { action: string; risk: string; updated: string } }>(a: T, b: T) {
   const ar = (ACTION as any)[a.data.action]?.rank ?? 0, br = (ACTION as any)[b.data.action]?.rank ?? 0;
