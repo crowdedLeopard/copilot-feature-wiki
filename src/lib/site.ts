@@ -1,8 +1,8 @@
 import {
-  SITE, TOPICS, TOPIC_BY_ID, RISK, COST, IMPACT, DEFAULT_STATE, ACTION, STATUS, LICENSING_MODEL, LICENSING_MODEL_HELP, AUDIENCES, SOURCE_KIND, LIFECYCLE, ARCHIVE_REASON,
+  SITE, TOPICS, TOPIC_BY_ID, RISK, COST, IMPACT, DEFAULT_STATE, ACTION, STATUS, LICENSING_MODEL, LICENSING_MODEL_HELP, AUDIENCES, SOURCE_KIND, LIFECYCLE, ARCHIVE_REASON, MESSAGE_CENTER,
 } from '../../config/taxonomy.mjs';
 
-export { SITE, TOPICS, TOPIC_BY_ID, RISK, COST, IMPACT, DEFAULT_STATE, ACTION, STATUS, LICENSING_MODEL, LICENSING_MODEL_HELP, AUDIENCES, SOURCE_KIND, LIFECYCLE, ARCHIVE_REASON };
+export { SITE, TOPICS, TOPIC_BY_ID, RISK, COST, IMPACT, DEFAULT_STATE, ACTION, STATUS, LICENSING_MODEL, LICENSING_MODEL_HELP, AUDIENCES, SOURCE_KIND, LIFECYCLE, ARCHIVE_REASON, MESSAGE_CENTER };
 
 export const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
 
@@ -17,6 +17,26 @@ export function featureUrl(slug: string) { return href(`/features/${slug}/`); }
 export function conceptUrl(slug: string) { return href(`/concepts/${slug}/`); }
 export function topicUrl(topic: string) { return href(`/topics/${topic}/`); }
 export function tagUrl(tag: string) { return href(`/tags/${tag}/`); }
+/** A Message Center post's page on this site (its own Microsoft 365 admin center address is `MESSAGE_CENTER.url(id)`). */
+export function noticeUrl(id: string) { return href(`/message-centre/${id}/`); }
+
+/** Whole days from today (UTC) to a date; negative when it has passed. */
+export function daysUntil(iso: string | null | undefined, now = Date.now()): number | null {
+  if (!iso) return null;
+  const t = new Date(iso).getTime();
+  if (Number.isNaN(t)) return null;
+  const today = new Date(new Date(now).toISOString().slice(0, 10)).getTime();
+  return Math.round((t - today) / 86400000);
+}
+
+/** "in 12 days", "today", "3 days ago": how far off an act-by date is, for a busy reader. */
+export function relativeDays(days: number | null): string {
+  if (days === null) return '';
+  if (days === 0) return 'today';
+  if (days === 1) return 'tomorrow';
+  if (days > 0) return `in ${days} days`;
+  return days === -1 ? 'yesterday' : `${-days} days ago`;
+}
 
 const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 

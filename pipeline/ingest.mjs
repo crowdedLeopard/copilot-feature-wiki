@@ -9,6 +9,10 @@
  *   data/queue.json               items the compile step should write or refresh, best first
  *   data/lifecycle.json           when each briefed item was last seen on the roadmap, and which are missing
  *
+ * Reads data/message-center.json (written by ingest-message-center.mjs, which runs first): an item that
+ * Microsoft has sent a Message Center post about goes to the front of its topic's queue, and a briefing
+ * whose post was published or revised after the page was last written is queued for a refresh.
+ *
  * It also archives briefings whose roadmap item Microsoft has cancelled, or which have been gone from
  * the roadmap for the grace period (see lib/lifecycle.mjs), and queues live pages that are due a re-check.
  */
@@ -17,6 +21,7 @@ import path from 'node:path';
 import { TOPIC_IDS, topicForProducts, statusFromRoadmap } from '../config/taxonomy.mjs';
 import { RAW_DIR, DATA_DIR, FEATURES_DIR, readJson, writeJson, appendLog, today, stripHtml } from './lib/util.mjs';
 import { archiveBriefing, isReviewDue, daysBetween, REMOVED_GRACE_DAYS } from './lib/lifecycle.mjs';
+import { loadMessageIndex, messagesForRoadmap } from './lib/message-center.mjs';
 
 const ROADMAP_URL = process.env.ROADMAP_URL || 'https://www.microsoft.com/releasecommunications/api/v1/m365';
 const ITEMS_DIR = path.join(RAW_DIR, 'roadmap', 'items');
@@ -31,10 +36,13 @@ const ADMIN_CENTRE = /^Microsoft 365 admin center$/i;
 // Priority orders items within a topic. It never weights one topic against another: the compile step
 // shares every run equally across the five topics (selectQueue in lib/briefing.mjs), so a topic with
 // a long queue, such as Modern Work, cannot be starved by the others.
-function priorityFor(item, reason) {
+function priorityFor(item, reason, posts = []) {
   const ageDays = (Date.now() - new Date(item.modified).getTime()) / 86400000;
   let p = 0;
   if (['roadmap-updated', 'status-changed', 'restored'].includes(reason)) p += 4; // keep existing briefings true before writing new ones
+  if (reason === 'message-center') p += 3; // Microsoft has told tenants something new about a briefed item
+  if (posts.length) p += 2; // a Message Center post means the change is reaching tenants, with dates
+  if (posts.some((m) => m.actionRequiredBy && m.actionRequiredBy.slice(0, 10) >= today())) p += 1; // and a deadline
   if (PRIORITY.test(item.title + ' ' + item.description)) p += 2;
   if (PRIORITY.test(item.title)) p += 1; // a control named in the title is nearly always one
   if (item.topic === 'governance' && !item.products.some((name) => ADMIN_CENTRE.test(name))) p -= 1;
@@ -102,8 +110,9 @@ async function main() {
   await fs.mkdir(ITEMS_DIR, { recursive: true });
 
   const briefings = await existingBriefings();
+  const messages = await loadMessageIndex();
   const queue = [];
-  let added = 0, changed = 0, reviewDue = 0;
+  let added = 0, changed = 0, reviewDue = 0, withPosts = 0, postRefresh = 0;
 
   // Briefings whose roadmap item was cancelled, or has gone from the feed, are archived in place. A
   // missing item gets a grace period first, because a feed hiccup should not archive anything.
@@ -140,11 +149,14 @@ async function main() {
       if (isNew) added++; else changed++;
     }
     const brief = briefings.get(item.id);
+    const posts = messagesForRoadmap(messages, item.id);
+    if (posts.length) withPosts++;
     let reason = null;
     if (!brief) reason = 'no-briefing';
     else if (brief.archived) reason = 'restored'; // the item is back on the roadmap: the rewrite replaces the archived page
     else if (brief.roadmapModified && brief.roadmapModified !== item.modified) reason = 'roadmap-updated';
     else if (brief.status && brief.status !== item.statusKey) reason = 'status-changed';
+    else if (brief.updated && posts.some((m) => String(m.lastModified).slice(0, 10) > brief.updated)) { reason = 'message-center'; postRefresh++; } // Microsoft posted or revised a notice since the page was written
     else if (isReviewDue(brief)) { reason = 'review-due'; reviewDue++; } // untouched too long: re-check controls, licensing and status
     if (reason) {
       queue.push({
@@ -152,9 +164,10 @@ async function main() {
         title: item.title,
         topic: item.topic,
         reason,
-        priority: priorityFor(item, reason),
+        priority: priorityFor(item, reason, posts),
         modified: item.modified,
         slug: brief?.slug || null,
+        ...(posts.length ? { messageCenter: posts.map((m) => m.id) } : {}),
       });
     }
   }
@@ -165,7 +178,7 @@ async function main() {
   const byTopic = Object.fromEntries(TOPIC_IDS.map((id) => [id, queue.filter((q) => q.topic === id).length]));
 
   const catalog = inScope
-    .map(({ descriptionHtml, ...rest }) => ({ ...rest, description: rest.description.slice(0, 600), briefing: briefings.get(rest.id)?.slug || null }))
+    .map(({ descriptionHtml, ...rest }) => ({ ...rest, description: rest.description.slice(0, 600), briefing: briefings.get(rest.id)?.slug || null, messageCenter: messagesForRoadmap(messages, rest.id).map((m) => m.id) }))
     .sort((a, b) => b.modified.localeCompare(a.modified));
 
   await writeJson(path.join(DATA_DIR, 'catalog.json'), { generated: new Date().toISOString(), count: catalog.length, items: catalog });
@@ -173,7 +186,7 @@ async function main() {
 
   const depth = Object.entries(byTopic).map(([id, n]) => `${id} ${n}`).join(', ');
   const missing = Object.keys(lifecycle.missing).length;
-  const summary = `- ${today()} ingest: ${all.length} roadmap items fetched, ${inScope.length} in scope, ${added} new, ${changed} changed, ${queue.length} queued for compile (${depth}; ${reviewDue} review due), ${archivedNow.length} archived, ${missing} briefed item(s) missing from the feed (${Math.round((Date.now() - started) / 1000)}s)`;
+  const summary = `- ${today()} ingest: ${all.length} roadmap items fetched, ${inScope.length} in scope, ${added} new, ${changed} changed, ${queue.length} queued for compile (${depth}; ${reviewDue} review due; ${postRefresh} refresh after a Message Center post), ${withPosts} with Message Center posts, ${archivedNow.length} archived, ${missing} briefed item(s) missing from the feed (${Math.round((Date.now() - started) / 1000)}s)`;
   await appendLog(summary);
   for (const a of archivedNow) await appendLog(`- ${today()} archive: ${a}`);
   console.log(summary);

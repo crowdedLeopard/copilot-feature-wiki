@@ -25,6 +25,7 @@ manual and the system prompt, and an append-only log records every run.
 | --- | --- | --- |
 | Schema | `wiki/SCHEMA.md` | The editorial standard: readers, evidence rules, research method, rating scales, voice and refresh rules. The writer's system prompt, and what the verifier checks against. |
 | Raw | `raw/roadmap/items/*.json` | Immutable snapshots of in-scope Microsoft 365 Roadmap items. |
+| | `raw/message-center/*.json` | Microsoft 365 Message Center posts read from the connected tenant, after the publication screen (`data/message-center.json` is the index). See [docs/message-centre.md](docs/message-centre.md). |
 | Wiki | `wiki/features/*.md` | One briefing per feature, validated front matter plus eight fixed sections. |
 | | `wiki/concepts/*.md` | Background pages the briefings link to (Copilot Credits, Managed Environments, agent identity, data policies). |
 | | `wiki/digests/*.md` | One page per ISO week, regenerated daily. |
@@ -40,8 +41,13 @@ manual and the system prompt, and an append-only log records every run.
 
 ### The daily run (`.github/workflows/daily.yml`)
 
-1. **Ingest** downloads the Microsoft 365 Roadmap, keeps in-scope items, snapshots them to `raw/`,
-   and queues items that are new, changed status or were edited by Microsoft. It also archives briefings
+1. **Ingest** first reads the connected tenant's Message Center posts through Microsoft Graph
+   (`ingest-message-center`; skipped, with a note, until a tenant is connected as
+   [docs/message-centre.md](docs/message-centre.md) describes), keeps only posts whose text
+   Microsoft sends to every tenant, and files each under the topic of the roadmap item it names.
+   It then downloads the Microsoft 365 Roadmap, keeps in-scope items, snapshots them to `raw/`,
+   and queues items that are new, changed status, were edited by Microsoft, or have a Message Center
+   post newer than their briefing. It also archives briefings
    whose item Microsoft cancelled or which have been gone from the roadmap for 90 days (the page keeps
    its address and is listed under `/archive/`; nothing is deleted), and queues live pages untouched
    for 120 days (180 once launched) for a re-check.
@@ -137,6 +143,8 @@ replace the secret. To look at the card locally, `npm run teams-digest:preview` 
 npm install
 npm run dev              # Astro dev server
 npm run ingest           # refresh raw/ and data/ from the roadmap
+MC_TENANT_ID=... MC_CLIENT_ID=... MC_CLIENT_SECRET=... npm run ingest:mc   # read Message Center posts from a tenant (or MC_FIXTURE=<file> to test)
+npm test                 # unit tests for the pipeline modules
 ANTHROPIC_API_KEY=... npm run compile   # write briefings via the API (COMPILE_LIMIT, COMPILE_TOPIC=<topic id>, COMPILE_ONLY=<id,id>)
 npm run compile:copilot                 # same, via a signed-in Copilot CLI (`copilot login` first; COPILOT_MODEL, COMPILE_LIMIT)
 npm run lint:wiki && npm run index:wiki && npm run digest

@@ -20,7 +20,7 @@ export const claimSchema = z.object({
   type: z.enum(CLAIM_TYPES),
   claim: z.string().min(8).max(600).describe('The claim as the page makes it, in one sentence.'),
   status: z.enum(CLAIM_STATUS),
-  source: z.string().max(600).nullable().describe('The URL read, "roadmap record" for record facts, or null when nothing was found.'),
+  source: z.string().max(600).nullable().describe('The URL read, "roadmap record" or "Message Center post MC123456" for record facts, or null when nothing was found.'),
   quote: z.string().max(1200).nullable().describe('The text read, copied exactly. For a confirmed absence or an unsupported claim, the searches run.'),
   severity: z.enum(SEVERITIES).nullable().describe('blocker and major only with contradicted or unsupported; minor may sit on a supported claim that is misleading in form; null otherwise.'),
   fix: z.string().max(1200).nullable().optional().describe('What the page should say instead. Null when and only when severity is null.'),

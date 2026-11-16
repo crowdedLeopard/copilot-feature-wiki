@@ -16,7 +16,7 @@ interface Props {
   /** Page type for the <title> suffix and og:type */
   kind?: 'home' | 'page' | 'article';
   bodyClass?: string;
-  current?: 'features' | 'topics' | 'radar' | 'concepts' | 'atlas' | 'digests' | 'about';
+  current?: 'features' | 'topics' | 'radar' | 'message-centre' | 'concepts' | 'atlas' | 'digests' | 'about';
   noindex?: boolean;
 }
 
@@ -27,6 +27,7 @@ const nav = [
   { id: 'features', label: 'Briefings', to: '/features/' },
   { id: 'topics', label: 'Topics', to: '/topics/' },
   { id: 'radar', label: 'Radar', to: '/radar/' },
+  { id: 'message-centre', label: 'Message Centre', to: '/message-centre/' },
   { id: 'concepts', label: 'Concepts', to: '/concepts/' },
   { id: 'atlas', label: 'Atlas', to: '/atlas/' },
   { id: 'digests', label: 'Weekly', to: '/digests/' },
@@ -99,7 +100,7 @@ const nav = [
       <div class="wrap footer__row">
         <div>
           <p><strong>{SITE.name}</strong>. {SITE.tagline}</p>
-          <p>Built from the Microsoft 365 Roadmap and Microsoft Learn, refreshed daily. Assessments are editorial judgements, not Microsoft statements; verify against the linked sources before acting.</p>
+          <p>Built from the Microsoft 365 Roadmap, Message Center and Microsoft Learn, refreshed daily. Assessments are editorial judgements, not Microsoft statements; verify against the linked sources before acting.</p>
         </div>
         <div>
           <p><a href={SITE.repo} rel="noopener">Source on GitHub</a> · <a href={href('/rss.xml')}>RSS</a> · <a href={href('/archive/')}>Archive</a> · <a href={href('/about/')}>How this works</a></p>

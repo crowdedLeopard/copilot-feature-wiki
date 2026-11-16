@@ -11,6 +11,17 @@ daily by GitHub Actions.
   is the independent verifier's method and verdict format. `researchBrief` in `pipeline/lib/briefing.mjs` builds the
   per-item brief, which carries data only. Change wording in those three places, not in workflow files.
 - `raw/` is immutable source material. Do not edit by hand.
+- Message Center posts are the second source. `pipeline/ingest-message-center.mjs` reads one tenant's posts through
+  Microsoft Graph (app permission `ServiceMessage.Read.All`; federated credential or `MC_CLIENT_SECRET`; skipped with a
+  note until `MC_TENANT_ID` and `MC_CLIENT_ID` are set), keeps only posts whose text Microsoft sends to every tenant
+  (`publicationCheck` in `pipeline/lib/message-center.mjs`: Data privacy tag, attachments, tenant words, email
+  addresses, GUIDs and single-organisation wording are withheld, ids and reason codes only recorded) and stores them
+  under `raw/message-center/` with the index `data/message-center.json`. The shared module files each post under a
+  topic (linked roadmap item, then services, then title), gives the writer and verifier the posts for an item as
+  record facts (`briefSection`), and `ingest.mjs` queues a `message-center` refresh when a post is newer than the
+  briefing. An act-by date within about 90 days makes a briefing `act-now` (SCHEMA). The site shows posts at
+  `/message-centre/`, on matching briefings, on the home page and in the digest; all of it hides until the source
+  is connected. Setup for the tenant owner: `docs/message-centre.md`.
 - `wiki/features/*.md` are the briefings. Front matter is validated by `pipeline/lib/schema.mjs` and `src/content.config.ts`.
 - `pipeline/` holds the daily jobs: `ingest` (roadmap), `compile` (LLM writes briefings), `lint`, `index`, `digest`, `pdf`.
   The compile step has three writers that share `pipeline/lib/briefing.mjs`: the Copilot CLI path (default:
