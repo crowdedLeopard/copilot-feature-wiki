@@ -24,6 +24,9 @@ daily by GitHub Actions.
   is connected. Setup for the tenant owner: `docs/message-centre.md`.
 - `wiki/features/*.md` are the briefings. Front matter is validated by `pipeline/lib/schema.mjs` and `src/content.config.ts`.
 - `pipeline/` holds the daily jobs: `ingest` (roadmap), `compile` (LLM writes briefings), `lint`, `index`, `digest`, `pdf`.
+  Curation runs chain: `chain-next.mjs` records the run's AI credits in `data/spend.json` and, while the day stays under
+  `COMPILE_DAILY_CREDITS` (15,000) and the run wrote something, the workflow starts the next run at once (`COMPILE_CHAIN=off`
+  stops it). The four scheduled runs remain as the fallback.
   The compile step has three writers that share `pipeline/lib/briefing.mjs`: the Copilot CLI path (default:
   `compile-tasks.mjs` prepares `data/compile-tasks/`, `compile-copilot.mjs` runs one `copilot -p` session per item through
   `pipeline/lib/copilot.mjs`, each session follows `pipeline/prompts/compile-agent.md` via the one-item wrapper
