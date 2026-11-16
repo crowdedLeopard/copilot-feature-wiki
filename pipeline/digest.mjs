@@ -9,15 +9,7 @@ import path from 'node:path';
 import { loadPages } from './lib/pages.mjs';
 import { WIKI_DIR, DATA_DIR, readJson, appendLog, today, toFrontmatter } from './lib/util.mjs';
 import { TOPICS, ACTION, RISK } from '../config/taxonomy.mjs';
-
-function isoWeek(d = new Date()) {
-  const date = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()));
-  const day = date.getUTCDay() || 7;
-  date.setUTCDate(date.getUTCDate() + 4 - day);
-  const yearStart = new Date(Date.UTC(date.getUTCFullYear(), 0, 1));
-  const week = Math.ceil(((date - yearStart) / 86400000 + 1) / 7);
-  return { year: date.getUTCFullYear(), week };
-}
+import { isoWeek } from './lib/teams-card.mjs';
 
 async function main() {
   const since = Date.now() - 7 * 86400000;
