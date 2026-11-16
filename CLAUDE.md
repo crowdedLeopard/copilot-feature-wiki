@@ -37,6 +37,11 @@ daily by GitHub Actions.
   then one item per topic in turn). `priorityFor` in `pipeline/ingest.mjs` orders items within a topic by admin relevance,
   recency and lead time. It must not weight topics against each other: that is how Modern Work went unbriefed until
   November 2026. `COMPILE_TOPIC` spends a whole run on one topic's backlog.
+- Briefings are never deleted. `pipeline/lib/lifecycle.mjs` archives a page in place (front-matter `archived` block, a
+  dated change note) when ingest finds its roadmap item cancelled, or missing from the feed for `LIFECYCLE.removedGraceDays`
+  (`data/lifecycle.json` tracks last-seen dates). The site keeps the page's URL, lists it under `/archive/` and leaves it
+  out of lists, the Atlas and the digest. Live pages untouched for `LIFECYCLE.reviewAfterDays` are queued as `review-due`,
+  which takes its turn in the topic lanes rather than jumping the queue. Rules live in `config/taxonomy.mjs`.
 - `src/` is the Astro site. Design tokens live in `src/styles/tokens.css`.
 - The Atlas (`/atlas/`, the home page teaser and the plate in each briefing's Related section) is one canvas renderer,
   `src/scripts/atlas/engine.ts`, with no dependencies. `src/lib/graph.ts` builds its nodes and links (briefings,

@@ -21,7 +21,7 @@ function isoWeek(d = new Date()) {
 
 async function main() {
   const since = Date.now() - 7 * 86400000;
-  const pages = (await loadPages()).filter((p) => !p.error && p.data.title);
+  const pages = (await loadPages()).filter((p) => !p.error && p.data.title && !p.data.archived);
   const fresh = pages.filter((p) => new Date(p.data.updated).getTime() >= since);
   const queue = await readJson(path.join(DATA_DIR, 'queue.json'), { items: [] });
   const statusChanges = (queue.items || []).filter((q) => q.reason === 'status-changed').slice(0, 20);

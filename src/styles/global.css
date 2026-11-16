@@ -129,6 +129,13 @@ h2.display { font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2.1rem); }
 .badge--status-rolling-out { color: var(--accent); border-color: var(--accent); }
 .badge--status-preview { color: var(--risk-medium); border-color: var(--risk-medium); }
 .badge--status-cancelled { text-decoration: line-through; }
+
+/* Lifecycle notices on a briefing: archived (kept for reference) or on notice (missing from the roadmap feed). */
+.notice { margin: 1.1rem 0 0; padding: 0.75rem 1rem; border: 1px solid var(--rule); border-left: 4px solid var(--ink-3); border-radius: var(--radius); background: var(--surface); font-size: 0.95rem; line-height: 1.5; max-width: 62em; }
+.notice--missing { border-left-color: var(--risk-medium); background: var(--risk-medium-soft); }
+.notice a { color: var(--link); }
+.review-due { color: var(--risk-medium); font-weight: 600; }
+.archived-mark { color: var(--ink-3) !important; text-decoration: underline !important; }
 .rating { display: inline-flex; align-items: center; gap: 0.45rem; font-size: 0.8rem; color: var(--ink-2); white-space: nowrap; }
 .rating__label { font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); }
 .pips { display: inline-flex; gap: 2px; }

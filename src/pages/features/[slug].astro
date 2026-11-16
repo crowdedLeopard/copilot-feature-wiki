@@ -5,14 +5,15 @@ import Facts from '../../components/Facts.astro';
 import Badge from '../../components/Badge.astro';
 import SectionHead from '../../components/SectionHead.astro';
 import AtlasMini from '../../components/AtlasMini.astro';
-import { allFeatures, allConcepts, verificationFor } from '../../lib/data';
+import { allFeatures, allFeaturesIncludingArchived, allConcepts, lifecycle, reviewDue, verificationFor } from '../../lib/data';
 import { buildAtlas } from '../../lib/graph';
 import '../../styles/briefing.css';
-import { SITE, TOPIC_BY_ID, SOURCE_KIND, href, topicUrl, tagUrl, featureUrl, conceptUrl, formatDate, roadmapUrl, extractRationale, youtubeSearchUrl, learnSearchUrl } from '../../lib/site';
+import { SITE, TOPIC_BY_ID, SOURCE_KIND, LIFECYCLE, href, topicUrl, tagUrl, featureUrl, conceptUrl, formatDate, roadmapUrl, extractRationale, youtubeSearchUrl, learnSearchUrl } from '../../lib/site';
 import { tagLabel } from '../../lib/tags';
 
 export async function getStaticPaths() {
-  const features = await allFeatures();
+  // Archived briefings keep their address, so they are routed too.
+  const features = await allFeaturesIncludingArchived();
   return features.map((f) => ({ params: { slug: f.data.slug }, props: { entry: f } }));
 }
 
@@ -20,13 +21,18 @@ const { entry } = Astro.props;
 const d = entry.data;
 const { Content, headings } = await render(entry);
 const features = await allFeatures();
+const everything = await allFeaturesIncludingArchived();
 const concepts = await allConcepts();
+// Lifecycle: archived pages carry a notice; a live page whose roadmap item has been missing from the feed for more than a week says so; an old page says it is due a re-check.
+const gone = !d.archived && d.roadmapId ? lifecycle.missing[String(d.roadmapId)] : undefined;
+const goneDays = gone ? Math.floor((Date.now() - new Date(gone.missingSince).getTime()) / 86400000) : 0;
+const due = reviewDue(entry);
 const topic = (TOPIC_BY_ID as Record<string, { label: string }>)[d.topic];
 const rationale = extractRationale(entry.body);
 const related = d.related
   .map((slug) => {
-    const f = features.find((x) => x.data.slug === slug);
-    if (f) return { title: f.data.title, url: featureUrl(slug), meta: `Briefing · ${(TOPIC_BY_ID as any)[f.data.topic]?.label ?? f.data.topic} · ${f.data.action === 'act-now' ? 'Act now' : f.data.risk + ' risk'}` };
+    const f = everything.find((x) => x.data.slug === slug);
+    if (f) return { title: f.data.title, url: featureUrl(slug), meta: f.data.archived ? `Archived briefing · ${(TOPIC_BY_ID as any)[f.data.topic]?.label ?? f.data.topic}` : `Briefing · ${(TOPIC_BY_ID as any)[f.data.topic]?.label ?? f.data.topic} · ${f.data.action === 'act-now' ? 'Act now' : f.data.risk + ' risk'}` };
     const c = concepts.find((x) => x.data.slug === slug);
     if (c) return { title: c.data.title, url: conceptUrl(slug), meta: 'Concept' };
     return null;
@@ -93,7 +99,9 @@ const hostOf = (u: string) => { try { return new URL(u).hostname.replace(/^www\.
         <a href={topicUrl(d.topic)}>{topic?.label ?? d.topic}</a>
         {d.roadmapId && <><span class="sep"></span><a href={roadmap!} rel="noopener">Roadmap {d.roadmapId}</a></>}
         <span class="sep"></span><Badge status={d.status} />
+        {d.archived && <><span class="sep"></span><a href={href('/archive/')} class="archived-mark">Archived {formatDate(d.archived.date)}</a></>}
         <span class="sep"></span><span>Updated {formatDate(d.updated)}</span>
+        {due && <><span class="sep"></span><span class="review-due" title={`Not written or refreshed for more than ${d.status === 'launched' ? LIFECYCLE.reviewAfterDays.launched : LIFECYCLE.reviewAfterDays.default} days. It is queued for a re-check; treat controls and licensing details as possibly out of date.`}>Review due</span></>}
         {d.confidence !== 'high' && <><span class="sep"></span><span title="How well the sources support this briefing">Confidence {d.confidence}</span></>}
         <span class="sep"></span>
         {v ? (
@@ -104,12 +112,27 @@ const hostOf = (u: string) => { try { return new URL(u).hostname.replace(/^www\.
       </div>
       <h1 class="display">{d.title}</h1>
       <p class="standfirst">{d.summary}</p>
+      {d.archived && (
+        <div class="notice notice--archived" role="note">
+          <strong>Archived on {formatDate(d.archived.date)}.</strong>{' '}
+          {d.archived.reason === 'cancelled'
+            ? 'Microsoft marked this roadmap item as cancelled.'
+            : `This item left the Microsoft 365 Roadmap${d.archived.lastSeen ? ` (last seen ${formatDate(d.archived.lastSeen)})` : ''} and did not return within ${LIFECYCLE.removedGraceDays} days.`}{' '}
+          The briefing is kept in full for reference. Its ratings and guidance describe the feature as it was announced and are not advice to act on now. <a href={href('/archive/')}>See the archive</a>.
+        </div>
+      )}
+      {gone && goneDays > 7 && (
+        <div class="notice notice--missing" role="note">
+          <strong>Not seen on the Microsoft 365 Roadmap since {formatDate(gone.lastSeen ?? gone.missingSince)}.</strong>{' '}
+          Microsoft may have withdrawn or renumbered the item. If it has not returned after {LIFECYCLE.removedGraceDays} days this briefing moves to the <a href={href('/archive/')}>archive</a>.
+        </div>
+      )}
       {needsCorrection && v && (
         <aside class="notice notice--correction" role="note">
           <p><b>Awaiting correction.</b> An independent check on {formatDate(v.date, { long: true })} could not confirm {v.unconfirmed} of the {v.claims} statements on this page against Microsoft documentation and found {v.contradicted} contradicted by it. They are listed under <a href="#verification">How this briefing was checked</a>. A corrected version is being prepared. Until then, confirm paths, commands and licensing against the linked Microsoft pages before acting on them.</p>
         </aside>
       )}
-      <Facts data={d} rationale={rationale} />
+      <Facts data={d.archived ? { ...d, action: 'none' } : d} rationale={rationale} />
     </header>
 
     <div class="article">
@@ -216,7 +239,7 @@ const hostOf = (u: string) => { try { return new URL(u).hostname.replace(/^www\.
           {d.roadmapModified && <li><time datetime={d.roadmapModified}>{formatDate(d.roadmapModified)}</time><span class="muted">Roadmap entry last modified by Microsoft</span></li>}
         </ul>
         <p class="small muted" style="margin-top:1.2rem">
-          Version {d.version} · created {formatDate(d.created)} · confidence {d.confidence}. This briefing was written from the sources above{v && v.status !== 'needs-correction' ? `, checked independently against Microsoft Learn on ${formatDate(v.date)},` : ''} and is reviewed when the roadmap entry changes.
+          Version {d.version} · created {formatDate(d.created)} · confidence {d.confidence}. This briefing was written from the sources above{v && v.status !== 'needs-correction' ? `, checked independently against Microsoft Learn on ${formatDate(v.date)},` : ''}. It is rewritten when the roadmap entry changes and re-checked after {LIFECYCLE.reviewAfterDays.default} days without a change ({LIFECYCLE.reviewAfterDays.launched} once launched). {d.archived ? 'It is archived and will not be refreshed unless the item returns to the roadmap.' : 'If Microsoft cancels or withdraws the item, the page moves to the archive rather than being deleted.'}
           Spotted an error? <a href={editUrl} rel="noopener">Propose a change on GitHub</a>.
         </p>
       </div>

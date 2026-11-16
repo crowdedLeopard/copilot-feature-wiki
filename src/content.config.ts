@@ -63,6 +63,7 @@ const features = defineCollection({
     changes: z.array(change).default([]),
     version: z.number().int().default(1),
     verification: verification.optional(),
+    archived: z.object({ reason: z.enum(['cancelled', 'removed']), date: z.string(), lastSeen: z.string().nullable().default(null) }).optional(),
   }),
 });
 

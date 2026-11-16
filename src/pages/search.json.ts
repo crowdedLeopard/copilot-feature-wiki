@@ -1,10 +1,10 @@
 import type { APIRoute } from 'astro';
-import { allFeatures, allConcepts } from '../lib/data';
+import { allFeaturesIncludingArchived, allConcepts } from '../lib/data';
 import { TOPIC_BY_ID, featureUrl, conceptUrl } from '../lib/site';
 import { tagLabel } from '../lib/tags';
 
 export const GET: APIRoute = async () => {
-  const features = await allFeatures();
+  const features = await allFeaturesIncludingArchived();
   const concepts = await allConcepts();
   const docs = [
     ...features.map((f) => ({
@@ -13,10 +13,10 @@ export const GET: APIRoute = async () => {
       title: f.data.title,
       summary: f.data.summary,
       url: featureUrl(f.data.slug),
-      topic: (TOPIC_BY_ID as Record<string, { short: string }>)[f.data.topic]?.short ?? f.data.topic,
-      tags: [...f.data.tags, ...f.data.tags.map(tagLabel), String(f.data.roadmapId ?? '')],
+      topic: f.data.archived ? 'Archived' : ((TOPIC_BY_ID as Record<string, { short: string }>)[f.data.topic]?.short ?? f.data.topic),
+      tags: [...f.data.tags, ...f.data.tags.map(tagLabel), String(f.data.roadmapId ?? ''), ...(f.data.archived ? ['archived', 'archive'] : [])],
       products: f.data.products,
-      action: f.data.action,
+      action: f.data.archived ? undefined : f.data.action,
       risk: f.data.risk,
     })),
     ...concepts.map((c) => ({

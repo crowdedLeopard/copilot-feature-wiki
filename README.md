@@ -41,7 +41,10 @@ manual and the system prompt, and an append-only log records every run.
 ### The daily run (`.github/workflows/daily.yml`)
 
 1. **Ingest** downloads the Microsoft 365 Roadmap, keeps in-scope items, snapshots them to `raw/`,
-   and queues items that are new, changed status or were edited by Microsoft.
+   and queues items that are new, changed status or were edited by Microsoft. It also archives briefings
+   whose item Microsoft cancelled or which have been gone from the roadmap for 90 days (the page keeps
+   its address and is listed under `/archive/`; nothing is deleted), and queues live pages untouched
+   for 120 days (180 once launched) for a re-check.
 2. **Compile** writes or rewrites a fixed number of briefings from the queue (24 per run, four runs
    a day by default). Each run is shared equally across the five topics: refreshes of existing pages
    first, then one item per topic in turn, most admin-relevant first, so a topic with a long queue
