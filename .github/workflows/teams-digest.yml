@@ -1,0 +1,74 @@
+name: Weekly digest to Teams
+
+# Posts one Adaptive Card a week to a Teams channel: the briefings created or refreshed in the last seven
+# days, "Act now" first with a line each on risk, cost and where the control lives, linking to the
+# briefing and to the week's digest page. Built from the committed briefings by pipeline/teams-digest.mjs;
+# no model runs, so it costs nothing beyond the Actions minutes.
+#
+# Setup, once: in the Teams channel, "..." > Workflows > "Post to a channel when a webhook request is
+# received", save it, copy the URL it shows, and add it to this repository as a secret named
+# TEAMS_WEBHOOK_URL (Settings > Secrets and variables > Actions). Without the secret the job builds the
+# card, shows it in the run summary and posts nothing.
+
+on:
+  schedule:
+    # Monday 07:17 UTC: 07:17 in the UK in winter, 08:17 in summer, after the 01:23 curation run has committed.
+    - cron: '17 7 * * 1'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Build the card and show it in the run summary without posting it'
+        type: boolean
+        default: false
+      days:
+        description: 'How many days back count as "this week"'
+        required: false
+        default: '7'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-ledger-teams-digest
+  cancel-in-progress: false
+
+jobs:
+  post:
+    name: Build and post the card
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Site URL from the repository name
+        run: |
+          owner=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
+          echo "SITE_URL=https://${owner}.github.io" >> "$GITHUB_ENV"
+          echo "SITE_BASE=/${{ github.event.repository.name }}" >> "$GITHUB_ENV"
+
+      - name: Build the card and post it to Teams
+        env:
+          TEAMS_WEBHOOK_URL: ${{ secrets.TEAMS_WEBHOOK_URL }}
+          TEAMS_DIGEST_DRY_RUN: ${{ github.event.inputs.dry_run == 'true' && '1' || '' }}
+          TEAMS_DIGEST_DAYS: ${{ github.event.inputs.days || vars.TEAMS_DIGEST_DAYS || '7' }}
+          TEAMS_DIGEST_MAX_ITEMS: ${{ vars.TEAMS_DIGEST_MAX_ITEMS || '8' }}
+        run: node pipeline/teams-digest.mjs
+
+      - name: Keep the card that was sent
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: teams-digest-${{ github.run_id }}
+          path: |
+            data/teams-digest.json
+            data/teams-digest.md
+          if-no-files-found: ignore
+          retention-days: 30

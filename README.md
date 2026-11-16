@@ -100,6 +100,37 @@ manual and the system prompt, and an append-only log records every run.
 6. The changes are committed back to `main`, the site is built, each briefing is rendered to PDF,
    and the result is deployed to GitHub Pages.
 
+### The weekly Teams digest (`.github/workflows/teams-digest.yml`)
+
+Every Monday morning (07:17 UTC, so 07:17 in the UK in winter and 08:17 in summer) a second, much
+smaller workflow posts one card to a Microsoft Teams channel: the briefings created or refreshed in
+the last seven days, "Act now" first with one line each on risk, cost and where the control lives,
+each linking to its briefing, then the counts for the rest of the week and buttons to the week's
+digest page and the Act now list. `pipeline/teams-digest.mjs` builds the card from the committed
+briefings (the ratings, the writer's rationales and the controls table), so no model runs and nothing
+is spent. The card is an Adaptive Card sent to a Teams Workflows webhook, which is what replaced the
+retired Office 365 connectors.
+
+Setup, once, by someone who owns the channel:
+
+1. In Teams, open the channel, choose **…** next to its name, then **Workflows**.
+2. Pick the template **Post to a channel when a webhook request is received**, give it a name such
+   as "Release Ledger weekly digest", confirm the team and channel, and add it. Leave "Who can trigger
+   the flow" as **Anyone**: GitHub cannot sign in to your tenant.
+3. Copy the URL the workflow shows when it is saved.
+4. In this repository, Settings → Secrets and variables → Actions → **New repository secret**, name
+   `TEAMS_WEBHOOK_URL`, paste the URL, save.
+5. Actions → **Weekly digest to Teams** → **Run workflow** to post the first card straight away.
+
+Without the secret the job still runs, shows the card it would have sent in the run summary, and
+posts nothing. `TEAMS_DIGEST_DAYS` (7) and `TEAMS_DIGEST_MAX_ITEMS` (8) are optional repository
+variables; the `dry_run` input builds the card without posting it. The exact request body of every
+run is kept as a run artifact for 30 days. A card over Teams' 28 KB limit drops Act now items from the
+bottom of the list and links to the rest. Workflows belong to the person who created them: if that
+person leaves, an administrator can add a co-owner or a colleague can create a new workflow and
+replace the secret. To look at the card locally, `npm run teams-digest:preview` renders it to
+`screenshots/teams-digest/` with Microsoft's Adaptive Cards renderer.
+
 ## Local development
 
 ```bash
