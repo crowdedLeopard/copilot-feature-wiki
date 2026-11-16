@@ -4,9 +4,11 @@
  * one brief per page. Briefings and concept pages are checked alike; a concept page has no roadmap
  * record, default state or licensing model, so its brief leaves those out.
  *
- * Order: pages written but never checked (today's rewrites, and anything held as "unverified"),
- * then pages edited since their last check, then pages whose check has expired. Pages updated
- * today are never cut by the limit: a page is not published unchecked.
+ * Order: pages written but never checked (this run's output, and anything held as "unverified"),
+ * then pages edited since their last check, then pages whose check has expired. Pages written in
+ * this run are never cut by the limit, and are held if the verifier does not reach them: a page is
+ * not published unchecked. A page that was merely edited today (a bulk front-matter change, a lint
+ * rewrite) is already published and is an ordinary candidate, subject to the limit.
  *
  * For each page the brief carries the page as published, the raw roadmap record, the results of
  * the deterministic pre-checks (cited pages reachable, control paths and cmdlets present on the
@@ -39,17 +41,19 @@ async function candidates() {
     ...(await loadPages()).filter((p) => !p.error && p.data.title).map((p) => ({ ...p, kind: 'briefing', where: 'features', dir: FEATURES_DIR })),
     ...(await loadPages(CONCEPTS_DIR)).filter((p) => !p.error && p.data.title).map((p) => ({ ...p, kind: 'concept', where: 'concepts', dir: CONCEPTS_DIR })),
   ];
-  // Pages the writer produced in this run (the Copilot writer leaves compile-results.json in place); a page updated today counts too.
+  // Pages the writer produced in this run: every writer records them in compile-results.json (write-briefing.mjs,
+  // write-concept.mjs, compile.mjs), which compile-finish leaves in place for this step. The updated date is not
+  // used here: a bulk edit can stamp today's date on pages that are already published and checked or in grace.
   const written = new Set(((await readJson(path.join(DATA_DIR, 'compile-results.json'), { results: [] })).results || []).filter((r) => r.ok && r.slug).map((r) => r.slug));
   const now = Date.now();
   for (const p of pages) {
     const due = verificationDue(p.data, now);
-    const todayPage = written.has(p.slug) || p.data.updated === today();
+    const writtenNow = written.has(p.slug);
     if (ALL || due || ONLY.includes(p.slug)) {
       const reason = due || 'requested';
-      const rank = todayPage ? 0 : reason === 'never-checked' ? 1 : reason === 'changed-since-check' ? 2 : reason === 'check-expired' ? 3 : 4;
+      const rank = writtenNow ? 0 : reason === 'never-checked' ? 1 : reason === 'changed-since-check' ? 2 : reason === 'check-expired' ? 3 : 4;
       const key = reason === 'check-expired' ? p.data.verification?.date || '' : `9${String(9e12 - new Date(p.data.updated).getTime()).padStart(13, '0')}`; // newest first, expired oldest first
-      out.push({ slug: p.slug, kind: p.kind, file: path.join(p.dir, p.file), where: p.where, data: p.data, reason, sort: `${rank}-${key}`, today: todayPage, writtenThisRun: todayPage && !p.data.verification });
+      out.push({ slug: p.slug, kind: p.kind, file: path.join(p.dir, p.file), where: p.where, data: p.data, reason, sort: `${rank}-${key}`, today: writtenNow, writtenThisRun: writtenNow && !p.data.verification });
     }
   }
   if (ONLY.length && !ALL) return out.filter((c) => ONLY.includes(c.slug));
