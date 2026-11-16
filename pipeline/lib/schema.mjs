@@ -192,7 +192,7 @@ export const conceptOutput = z.object({
     openQuestions: z.string().min(20).describe('Markdown bullets. What Microsoft has not said that a reader needs in order to decide.'),
   }),
   controls: z.array(controlSchema).min(1).max(10).describe('Where the controls for this mechanism live, one row per control, most decisive first, with the same rules as a briefing.'),
-  evidence: z.array(evidenceSchema).max(80).default([]).describe('One entry for every documented fact a reader could act on, as for a briefing. A concept page has no roadmap record, so every fact that is not analysis needs an entry.'),
+  evidence: z.array(evidenceSchema).max(120).default([]).describe('One entry for every documented fact a reader could act on, as for a briefing. A concept page has no roadmap record, so every fact that is not analysis needs an entry.'),
   sources: z.array(sourceSchema).min(2).describe('Only pages opened during this research, titled as Microsoft titles them.'),
   relatedSlugs: z.array(z.string()).default([]).describe('Up to eight slugs from the brief: the briefings that best show the mechanism at work, and neighbouring concept pages.'),
   changeNote: z.string().min(5).max(300).describe('One line for the reader on what is new or different, e.g. "First version" or "Rewritten to the concept standard; added the Graph endpoint, documented since October".'),

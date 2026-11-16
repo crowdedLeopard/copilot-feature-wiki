@@ -135,7 +135,10 @@ How to judge each type:
   exists on its reference page; for PowerShell, each parameter named in the call is a real
   parameter of that cmdlet and the module is right; for Microsoft Graph and REST, the HTTP method,
   the path and the version (`/v1.0/` or `/beta/`) match; and the page says the call does what the
-  briefing says it does. Check names, not example values.
+  briefing says it does. Check names, not example values: a `<placeholder>`, a sample name, number
+  or URL is not a claim. The exception is a literal the call cannot work without. A hashtable or
+  JSON body printed with a key missing that the reference shows the setting needs (for example
+  `setting=` without its `value=`) is a wrong command, because a reader will copy it as printed.
 - **Licensing and cost.** Licence, plan and SKU names exactly as the page gives them; what is
   included and what is an add-on; the meter and its unit; where the charge appears. Any price,
   credit rate, quota or limit must match the page to the digit and the unit. "No additional licence

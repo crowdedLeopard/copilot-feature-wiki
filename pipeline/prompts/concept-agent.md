@@ -177,7 +177,7 @@ Notes on particular fields:
   of a hashtable or a JSON body is a wrong command, and the verifier will hold the page for it. A
   report or an audit event with no documented path or command is not a row: say where it appears
   in the notes under the table.
-- **evidence.** One entry for every documented fact a reader could act on: each control side that
+- **evidence.** Up to 120 entries. One entry for every documented fact a reader could act on: each control side that
   is not `null` (the quote is the text that gives the path, cmdlet or endpoint), every licensing
   and cost statement, every role, limit, number and default, and each statement of what the
   mechanism governs or does not govern. With no roadmap record, anything that is not the wiki's
@@ -186,10 +186,10 @@ Notes on particular fields:
   link syntax a fetch tool adds); if you cannot produce it, the claim does not belong on the page.
   Copy the quote from the page text in front of you, not from memory: a quote that is not on the
   page word for word counts as no evidence. For a table row, quote the cells that carry the fact,
-  joined with " | ". For a list, quote the sentence that introduces it or the one item that
-  matters. The verifier starts from this list. It is not printed on the page.
+  joined with " | ", leaving out footnote marks such as `^4^`. For a list, quote the sentence that
+  introduces it or the one item that matters. The verifier starts from this list. It is not printed on the page.
 - **tags, covers and newTags.** The brief lists the glossary as `tag | name readers see`. Reuse
-  those spellings. `tags` help readers find the page. `covers` is a stronger statement: this page
+  those spellings. A concept page takes two to ten tags and up to eight `covers`. `tags` help readers find the page. `covers` is a stronger statement: this page
   explains that tag in full. Do not tag clouds (`gcc`, `gcc-high`, `dod`) unless the page is about
   them. Define in `newTags` any tag you use that the glossary does not list.
 - **sources.** At least two, and only pages you opened in this task, on Microsoft's domains. Every
