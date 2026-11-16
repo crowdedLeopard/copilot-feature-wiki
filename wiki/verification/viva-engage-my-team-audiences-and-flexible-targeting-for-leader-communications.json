@@ -5,27 +5,901 @@
   "status": "held",
   "date": "2026-11-16",
   "version": 1,
-  "model": "none",
-  "engine": "manual",
-  "attempts": 0,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [],
   "hold": {
-    "reason": "unverified",
+    "reason": "failed",
     "since": "2026-11-16",
     "reasons": [
-      "Written but not yet checked against Microsoft Learn."
+      "1 blocking finding (claim 68)"
     ]
   },
   "counts": {
-    "claims": 0,
-    "confirmed": 0,
+    "claims": 70,
+    "confirmed": 69,
     "unconfirmed": 0,
-    "contradicted": 0,
-    "blocker": 0,
+    "contradicted": 1,
+    "blocker": 1,
     "major": 0,
-    "minor": 0
+    "minor": 2
   },
-  "summary": "Written but not yet checked against Microsoft Learn.",
-  "claims": [],
-  "precheck": null,
-  "history": []
+  "summary": "Hold: recipient licensing is reported as unpublished, but Microsoft documents a service-plan requirement for receiving announcement notifications in Outlook and Teams. The roadmap dates and all four admin paths are supported; the briefing should also acknowledge Microsoft's public-preview guide and its differing licensing wording.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: products; title",
+      "type": "record",
+      "claim": "This Microsoft Viva roadmap item concerns Viva Engage My Team audiences and flexible targeting for leader communications.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"title\": \"Viva Engage: My Team audiences and flexible targeting for leader communications\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap targets January CY2027.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"January CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed on this roadmap item, without asserting exclusion elsewhere.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The listed platforms are Desktop and Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-11-03T00:14:11.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-03T00:14:11\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "summary; What's changing; Risk assessment; Scope; rationale: risk",
+      "type": "record",
+      "claim": "Microsoft plans publish-time custom audience selection for leaders and their delegates sending Storyline Announcements.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This new feature allows leaders and their delegates to define a custom audience at the time of posting, without relying on pre-configured Leader Audiences.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Why it matters",
+      "type": "record",
+      "claim": "Publish-time targeting removes reliance on pre-configured Leader Audiences.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "without relying on pre-configured Leader Audiences",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "Custom audiences can use department, job title and country attributes.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "using organizational attributes such as department, job title, or country",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "Custom audiences can use Microsoft 365 groups, distribution lists and security groups.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "existing groups like M365 Groups, distribution lists, or security groups",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "Custom audiences can include individual users selected by name.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "and even individual users by name",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "Custom audiences can be saved for reuse.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Audiences can be built, and saved for reuse",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "At publication, leaders and delegates can choose My Team, a saved audience or a custom audience.",
+      "status": "supported",
+      "source": "Message Center post MC1183013",
+      "quote": "For Storyline Announcements, they can also define recipients at the time of publish, choosing My Team, a saved audience, or a custom audience",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "My Team is a ready-made, automatically maintained audience based on the organisational hierarchy.",
+      "status": "supported",
+      "source": "Message Center post MC1183013",
+      "quote": "My Team provides a ready-to-use, automatically maintained audience based on the organizational hierarchy",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "My Team includes people reporting to the leader directly and indirectly.",
+      "status": "supported",
+      "source": "Message Center post MC1183013",
+      "quote": "employees who report up to them, including both direct and indirect reports",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Leaders and delegates can use My Team unchanged or review its membership.",
+      "status": "supported",
+      "source": "Message Center post MC1183013",
+      "quote": "Leaders and delegates can use My Team as-is, review its membership",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Leaders and delegates can customise My Team and save it as a reusable audience.",
+      "status": "supported",
+      "source": "Message Center post MC1183013",
+      "quote": "or further customize and save it as a reusable audience across leader communication experiences",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice describes My Team supporting Storyline Announcements, audience analytics, Leadership Corner, and feed and digest distribution.",
+      "status": "supported",
+      "source": "Message Center post MC1183013",
+      "quote": "making Storyline Announcements, audience analytics, Leadership Corner, and feed and digest distribution more relevant with less setup",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Governance guidance: Before rollout; rationale: impact",
+      "type": "record",
+      "claim": "Existing recipient notification and delivery channels in Teams, email and Viva Engage Inbox remain unchanged.",
+      "status": "supported",
+      "source": "Message Center post MC1183013",
+      "quote": "Notifications and delivery channels (Teams, email, Viva Engage Inbox) remain unchanged for recipients.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; front matter: changes",
+      "type": "record",
+      "claim": "MC1183013 was updated on 2 November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1183013",
+      "quote": "Updated November 2, 2026: We have updated the timeline.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "record",
+      "claim": "The notice targets General Availability beginning mid-January 2027, previously early November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1183013",
+      "quote": "General Availability (Worldwide): Begins mid-January 2027 (previously early November 2026)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice targets General Availability completion by late February 2027, previously late November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1183013",
+      "quote": "completes by late February 2027 (previously late November 2026)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice gives the Public Preview start as mid-November 2025.",
+      "status": "supported",
+      "source": "Message Center post MC1183013",
+      "quote": "Public Preview (Worldwide): Begins mid-November 2025",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice gives Public Preview completion as by mid-March 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1183013",
+      "quote": "completes by mid-March 2026 (previously early February)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Functionality and targeting options may evolve before General Availability.",
+      "status": "supported",
+      "source": "Message Center post MC1183013",
+      "quote": "Available only in public preview; functionality and targeting options may evolve before general availability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The supplied notice sets no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1183013",
+      "quote": "Act by: none",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Scope: Who uses it",
+      "type": "record",
+      "claim": "The notice identifies leaders and delegates in tenants enrolled in public preview as affected during that phase.",
+      "status": "supported",
+      "source": "Message Center post MC1183013",
+      "quote": "Who is affected: Leaders and delegates using Viva Engage Storyline Announcements in tenants enrolled in public preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "summary; Why it matters; Scope: Rollout",
+      "type": "record",
+      "claim": "Microsoft says no admin action is required for rollout.",
+      "status": "supported",
+      "source": "Message Center post MC1183013",
+      "quote": "No admin action is required for rollout.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Scope: Rollout; rationale: risk",
+      "type": "record",
+      "claim": "Leaders need no advance audience setup for the new targeting capability.",
+      "status": "supported",
+      "source": "Message Center post MC1183013",
+      "quote": "No dependency on IT or advance audience setup—leaders can act immediately when communication needs arise.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Why it matters; Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "Microsoft advises validating reporting structure and organisational attributes in Microsoft Entra ID or Organizational Data in Microsoft.",
+      "status": "supported",
+      "source": "Message Center post MC1183013",
+      "quote": "Validate organizational attributes (reporting structure, country, department, role, job title) in Microsoft Entra ID or Organizational Data in Microsoft.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Why it matters; Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "Microsoft advises confirming leader and delegate assignments.",
+      "status": "supported",
+      "source": "Message Center post MC1183013",
+      "quote": "Confirm leader and delegate assignments to ensure the right people can use Storyline Announcements and the new targeting control.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing: documentation caveat",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet describe My Team or publish-time targeting, so the briefing treats their behaviour as roadmap and notice descriptions rather than a documented design.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Engage My Team audiences; Viva Engage flexible targeting licensing. Opened leadership-identification and eac-storyline; no Learn feature guide found. Opened Microsoft Support's Storyline announcements in Viva Engage, which does document My Team and targeting as Public Preview.",
+      "severity": "minor",
+      "fix": "Keep the narrow Learn gap if desired, but replace the implication that no feature guide exists with: 'Microsoft Support documents My Team and flexible targeting as Public Preview; behaviour may change before general availability.' Add https://support.microsoft.com/topic/8db19630-ecd0-4d1e-b735-437aea62e248 to sources. Searches for Viva Engage My Team audiences and flexible targeting returned surrounding Learn documentation, while this opened Support page describes the feature directly."
+    },
+    {
+      "n": 35,
+      "where": "controls[0].ui; Governance controls: first row",
+      "type": "admin-path",
+      "claim": "Leader audience management is at Viva Engage admin center > Feature management > Leadership identification and audiences > Manage leaders > leader (pencil icon) > Manage audiences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/leadership-identification",
+      "quote": "On the Feature management tab, select Leadership identification and audiences to go to the Manage leaders page. ... find the leader’s row and select the pencil icon ... The Manage audiences page appears",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[0].api; Governance controls: first row",
+      "type": "absence",
+      "claim": "An API or command equivalent for leader identification and audience management is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Engage leader audiences management activity log PowerShell Microsoft Graph API. Opened leadership-identification, Graph engagementRole and List roles, and Yammer Core APIs; no equivalent leader/audience management operation documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[0].note; Governance guidance: Before rollout",
+      "type": "role",
+      "claim": "Engage admins, verified admins, network admins and corporate communicators can identify and manage leaders.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/leadership-identification",
+      "quote": "Engage admins, corporate communicators, Engage verified admins, and Engage network admins can identify leaders",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[0].note; Governance controls: closing paragraph",
+      "type": "absence",
+      "claim": "Microsoft has not confirmed that existing pre-configured audience management controls govern My Team or publish-time targeting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Engage My Team audiences targeting disable admin; My Team saved audiences admin limit. Opened leadership-identification and Storyline announcements in Viva Engage; neither establishes that the legacy controls govern the new targeting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Security & identity; Governance guidance: At rollout",
+      "type": "role",
+      "claim": "Only Engage admins, verified admins, network admins and corporate communicators can enable Entire organization for pre-configured audiences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/leadership-identification",
+      "quote": "Leaders and delegate managers can't enable this option. Only Engage admins, Viva Engage verified admins, Viva Engage network admins, and corporate communicators can allow leaders to reach the entire organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Security & identity; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not specified whether broad custom publish-time targeting is constrained by the existing Entire organization permission.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Engage My Team audiences targeting disable admin; flexible targeting licensing. Opened leadership-identification and Storyline announcements in Viva Engage: admin approval for Entire organization is stated, but equivalent broad attribute selections are not addressed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[1].ui; Governance controls: second row",
+      "type": "admin-path",
+      "claim": "In the Engage Teams application, leaders open the ellipsis menu next to their profile picture and select Delegate management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/leadership-identification",
+      "quote": "In the Engage Teams application, select the ellipsis (...) menu next to your profile picture in the upper-right corner to see the list of options. ... Select Delegate management.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[1].api; Governance controls: second row",
+      "type": "absence",
+      "claim": "An API or command equivalent for leader delegate management is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Engage delegate management storyline creators settings PowerShell REST API; Viva Engage delegate API management. Opened leadership-identification, Graph role references and Yammer Core APIs; no delegate-management equivalent documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[1].note",
+      "type": "role",
+      "claim": "The leader configures delegates in the Engage Teams application.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/leadership-identification",
+      "quote": "Leaders follow these steps to configure delegates: ... In the Engage Teams application",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[1].note; Risk assessment; Governance guidance; Governance controls",
+      "type": "role",
+      "claim": "A leader's delegate managers can configure the leader's audiences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/leadership-identification",
+      "quote": "A delegate manager can also configure a leader’s audiences and assign more delegates or delegate managers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Delegate managers can assign additional delegates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/leadership-identification",
+      "quote": "A delegate manager can also configure a leader’s audiences and assign more delegates or delegate managers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[2].ui; Governance controls: third row",
+      "type": "admin-path",
+      "claim": "Storyline creator controls are at Viva Engage admin center > Feature management > Storyline > Advanced Settings > Edit > Specify storyline creators.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/eac-storyline",
+      "quote": "go to Feature management > Storyline. ... Select Edit in Advanced Settings. ... Switch Specify storyline creators to Eligible users from selected group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[2].api; Governance controls: third row",
+      "type": "absence",
+      "claim": "An API or command equivalent for the Specify storyline creators setting is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Engage delegate management storyline creators settings PowerShell REST API; Viva Engage storyline creators PowerShell. Opened eac-storyline, Yammer Core APIs and feature-access-management; no direct equivalent documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[2].note",
+      "type": "behaviour",
+      "claim": "Specify storyline creators controls who has a storyline feed and can create storyline posts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/eac-storyline",
+      "quote": "This setting controls who has a storyline feed on their user profile and who can create new storyline posts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[2].note",
+      "type": "absence",
+      "claim": "Microsoft has not confirmed that Specify storyline creators restricts announcement audience targeting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Engage My Team audiences targeting disable admin; storyline creators settings PowerShell REST API. Opened eac-storyline and Storyline announcements in Viva Engage; creator eligibility is documented, but no targeting restriction is specified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance controls: closing paragraph",
+      "type": "role",
+      "claim": "Engage administrators manage storyline settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/eac-storyline",
+      "quote": "Engage administrators manage storyline for their organizations in the Engage admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[3].ui; Risk assessment; Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "The activity log is on Manage leaders under Feature management > Leadership identification and audiences in the Viva Engage admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/leadership-identification",
+      "quote": "On the Feature management tab, select Leadership identification and audiences to go to the Manage leaders page. ... use the activity log available on the Manage Leaders page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[3].api; Governance controls: fourth row",
+      "type": "absence",
+      "claim": "An API or command equivalent for reviewing the Manage leaders activity log is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Engage leader audiences management activity log PowerShell Microsoft Graph API. Opened leadership-identification, Graph role references and Yammer Core APIs; read track-engage-events search excerpts. No API for this leadership activity log documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[3].note; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "The Manage leaders activity log covers the past 30 days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/leadership-identification",
+      "quote": "To track changes to leaders and their audiences over the past 30 days, use the activity log available on the Manage Leaders page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[3].governs; Risk assessment; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "The activity log records adding or removing leaders and adding, editing or removing leader audiences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/leadership-identification",
+      "quote": "Logged events include: Adding or removing leaders; Adding, editing, or removing a leader's audience",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[3].note; Risk assessment: Change & support; Open questions",
+      "type": "absence",
+      "claim": "Logging of audiences selected at publish time is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Engage flexible targeting saved audiences 40 limit audit administrator review. Opened leadership-identification and Storyline announcements in Viva Engage; read track-engage-events excerpts. No publish-time audience logging specified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[4]; Why it matters; Governance controls; Open questions; rationale: risk",
+      "type": "absence",
+      "claim": "No dedicated tenant-wide UI switch or API control to disable or restrict My Team or publish-time custom targeting is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Engage My Team audiences targeting disable admin; Viva Engage My Team targeting disable PowerShell. Opened leadership-identification, eac-storyline, feature-access-management, Yammer Core APIs and Storyline announcements in Viva Engage; no dedicated switch found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "How administrators list, review or remove saved custom audiences is not yet documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Engage My Team saved audiences admin limit; flexible targeting saved audiences 40 limit audit administrator review. Opened leadership-identification and Storyline announcements in Viva Engage; no admin workflow for saved custom audiences specified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Scope: Prerequisites; Why it matters",
+      "type": "behaviour",
+      "claim": "Existing storyline announcements require leader identification and audience management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/leadership-identification",
+      "quote": "Leader identification and audience management are required for other premium features to work successfully, including storyline announcements, leadership corner, campaigns, and analytics.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Scope: Existing limits",
+      "type": "behaviour",
+      "claim": "Microsoft documents a maximum of 40 audiences for a leader in the existing audience-management experience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/leadership-identification",
+      "quote": "A leader can add up to 40 audiences.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Scope: Existing limits; Open questions",
+      "type": "absence",
+      "claim": "Whether the existing 40-audience limit applies to saved audiences in flexible targeting is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Engage flexible targeting saved audiences 40 limit audit administrator review; My Team saved audiences admin limit. Opened leadership-identification and Storyline announcements in Viva Engage; neither applies the 40-audience limit to new saved audiences.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is per-user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/leadership-identification",
+      "quote": "Identified leaders with a license to the Viva Engage Communities and Communications service plan have access to storyline announcements, leadership corner, campaigns, and AMAs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "record",
+      "claim": "MC1183013 says the feature requires a premium licence available through Viva or Communications and Communities.",
+      "status": "supported",
+      "source": "Message Center post MC1183013",
+      "quote": "This feature requires a premium license available through Viva or Communications and Communities (C&C).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "record",
+      "claim": "Availability may vary with the organisation's Microsoft 365 licensing agreement.",
+      "status": "supported",
+      "source": "Message Center post MC1183013",
+      "quote": "Availability may vary depending on your organization's Microsoft 365 licensing agreement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Cost and licensing: first paragraph",
+      "type": "licensing",
+      "claim": "Learn says identified leaders licensed for the Viva Engage Communities and Communications service plan can use storyline announcements, leadership corner, campaigns and AMAs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/leadership-identification",
+      "quote": "Identified leaders with a license to the Viva Engage Communities and Communications service plan have access to storyline announcements, leadership corner, campaigns, and AMAs.",
+      "severity": "minor",
+      "fix": "Retain the cited Learn statement, but acknowledge that https://support.microsoft.com/topic/8db19630-ecd0-4d1e-b735-437aea62e248 instead says 'This capability requires the Viva Suite license.' Cite that guide and explain that MC1183013 and Learn describe Viva/C&C eligibility while Support uses narrower Viva Suite wording; confirm the applicable entitlement against the tenant agreement."
+    },
+    {
+      "n": 65,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No feature-specific price for flexible targeting has been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Engage flexible targeting price credits meter cost; storyline announcements recipients premium license pricing flexible targeting meter. Opened setup, leadership-identification and Storyline announcements in Viva Engage; no separate flexible-targeting price stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Cost and licensing: second paragraph",
+      "type": "absence",
+      "claim": "No credit rate for flexible targeting has been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Engage flexible targeting price credits meter cost. Opened setup, leadership-identification and Storyline announcements in Viva Engage; no flexible-targeting credit rate specified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No separate consumption meter for flexible targeting has been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Engage flexible targeting price credits meter cost; storyline announcements recipients premium license pricing flexible targeting meter. Opened setup, leadership-identification and Storyline announcements in Viva Engage; no separate targeting meter specified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Cost and licensing: final sentence",
+      "type": "absence",
+      "claim": "Whether announcement recipients need any particular licence is not yet published.",
+      "status": "contradicted",
+      "source": "https://support.microsoft.com/topic/8db19630-ecd0-4d1e-b735-437aea62e248",
+      "quote": "To receive announcement notifications through Outlook and Microsoft Teams, you’ll need a license to the Viva Engage Communities and Communications service plan.",
+      "severity": "blocker",
+      "fix": "Replace the sentence with: 'Microsoft Support says recipients need the Viva Engage Communities and Communications service plan to receive announcement notifications through Outlook and Microsoft Teams. This is a notification-channel requirement, not a statement that all viewing requires that premium licence.' Cite https://support.microsoft.com/topic/8db19630-ecd0-4d1e-b735-437aea62e248."
+    },
+    {
+      "n": 69,
+      "where": "front matter: defaultState; Why it matters",
+      "type": "default",
+      "claim": "The capability arrives without administrators having to enable it, subject to the stated preview eligibility and licensing.",
+      "status": "supported",
+      "source": "Message Center post MC1183013",
+      "quote": "No admin action is required for rollout. ... No dependency on IT or advance audience setup—leaders can act immediately when communication needs arise.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The described change is person-initiated announcement publication; neither the roadmap nor the supplied notice describes automated sending.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This new feature allows leaders and their delegates to define a custom audience at the time of posting",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-16T17:07:02.087Z",
+    "summary": {
+      "links": 4,
+      "unreachable": 0,
+      "uiPaths": 4,
+      "uiPathsWithMissingWords": 1,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=499895",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1183013",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/engage/leadership-identification",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/engage/eac-storyline",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which leaders exist and which audiences each can reach",
+        "docs": "https://learn.microsoft.com/viva/engage/leadership-identification",
+        "reachable": true,
+        "segments": [
+          "Feature management",
+          "Leadership identification and audiences",
+          "Manage leaders",
+          "leader",
+          "Manage audiences"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Who can act for a leader and configure the leader's audiences",
+        "docs": "https://learn.microsoft.com/viva/engage/leadership-identification",
+        "reachable": true,
+        "segments": [
+          "ellipsis  menu next to your profile picture",
+          "Delegate management"
+        ],
+        "missing": [
+          "ellipsis  menu next to your profile picture"
+        ]
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Who can post to a storyline",
+        "docs": "https://learn.microsoft.com/viva/engage/eac-storyline",
+        "reachable": true,
+        "segments": [
+          "Feature management",
+          "Storyline",
+          "Advanced Settings",
+          "Edit",
+          "Specify storyline creators"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Review of changes to leaders and their audiences",
+        "docs": "https://learn.microsoft.com/viva/engage/leadership-identification",
+        "reachable": true,
+        "segments": [
+          "Feature management",
+          "Leadership identification and audiences",
+          "Manage leaders",
+          "activity log"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": [
+    {
+      "date": "2026-11-16",
+      "status": "held",
+      "version": 1,
+      "model": "none"
+    }
+  ]
 }

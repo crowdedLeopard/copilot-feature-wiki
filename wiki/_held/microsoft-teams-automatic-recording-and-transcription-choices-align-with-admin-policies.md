@@ -83,6 +83,17 @@ changes:
   - date: "2026-11-16"
     note: "First briefing for this item, using the roadmap record, MC1508234 (updated 10 November 2026) and the Teams recording, transcription and auto recording pages on Learn."
 version: 1
+verification:
+  status: "held"
+  date: "2026-11-16"
+  version: 1
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 55
+  confirmed: 54
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 1
 ---
 
 ## What's changing
@@ -177,4 +188,10 @@ Learn says the auto recording setting can be managed only with PowerShell or a m
 risk: Low. The change narrows the choices organisers see to those their existing Teams meeting policies allow; the only new option, Record only, appears only where recording is already permitted.
 cost: Low. The only cost the sources show is admin and communication time; Microsoft has not published a licence requirement or meter for this change at the time of writing (November 2026).
 impact: Medium. It changes the Record and transcribe automatically menu for meeting organisers, who are a subset of Teams users, and it arrives without admin action.
+-->
+
+<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
+The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
+- [supported, minor] controls[0].note; Governance controls / behaviour: The cited Learn page says this setting must be managed through PowerShell or a meeting template. | Found: You must use PowerShell or a meeting template to manage this setting for organizers. | Fix: Retain the attribution, but note that https://learn.microsoft.com/microsoftteams/manage-meeting-recording-options#record-and-transcribe-automatically also documents sensitivity labels for enforcing automatic recording. Cite that page and distinguish enforcement from the AutoRecording availability policy. | Source: https://learn.microsoft.com/microsoftteams/manage-teams-auto-recording
+- [contradicted, blocker] Open questions: licensing; Cost and licensing / licensing: Whether any licence is required for the automatic setting itself is entirely not yet published. | Found: Customers with a Microsoft 365 Education A1 subscription don't have the option to record and transcribe meetings automatically. | Fix: Keep licensing.model unknown for this change, but narrow the licensing question to additional requirements for the new alignment and Record only choice. Add the documented baseline exclusion: Microsoft 365 Education A1 customers cannot record and transcribe meetings automatically. Cite https://learn.microsoft.com/microsoftteams/manage-meeting-recording-options#record-and-transcribe-automatically and distinguish this existing restriction from the unpublished licensing of the update. | Source: https://learn.microsoft.com/microsoftteams/manage-meeting-recording-options#record-and-transcribe-automatically
 -->

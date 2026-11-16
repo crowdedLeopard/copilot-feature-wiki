@@ -5,27 +5,963 @@
   "status": "held",
   "date": "2026-11-16",
   "version": 1,
-  "model": "none",
-  "engine": "manual",
-  "attempts": 0,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [],
   "hold": {
-    "reason": "unverified",
+    "reason": "failed",
     "since": "2026-11-16",
     "reasons": [
-      "Written but not yet checked against Microsoft Learn."
+      "2 blocking findings (claims 47, 56)"
     ]
   },
   "counts": {
-    "claims": 0,
-    "confirmed": 0,
-    "unconfirmed": 0,
-    "contradicted": 0,
-    "blocker": 0,
+    "claims": 75,
+    "confirmed": 71,
+    "unconfirmed": 1,
+    "contradicted": 3,
+    "blocker": 2,
     "major": 0,
-    "minor": 0
+    "minor": 2
   },
-  "summary": "Written but not yet checked against Microsoft Learn.",
-  "claims": [],
-  "precheck": null,
-  "history": []
+  "summary": "Hold: the briefing says catch-up email notifications are not a charge, but the supplied notice and Microsoft documentation do not establish that pricing claim. The pinning path also omits the menu needed to reach Manage pinned agents on the cited Learn page; the rollout dates, default state and licence requirement are supported.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "Roadmap item 573168 is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target is October CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"October CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed on the roadmap item.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platforms are Desktop, Teams and Surface Devices, and Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Teams and Surface Devices\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: products, roadmapModified",
+      "type": "record",
+      "claim": "The Planner roadmap item was last modified at 2026-10-14T23:01:02.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-14T23:01:02\", \"products\": [\"Planner\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Planner Agent lets users create, update and manage personal tasks and shared basic plans in Copilot Chat.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "enabling users to create, update, and manage personal tasks and shared basic plans without switching context.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Microsoft published notice MC1539002 on 2026-11-05.",
+      "status": "supported",
+      "source": "Message Center post MC1539002",
+      "quote": "Published 2026-11-05; last updated 2026-11-05",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "Microsoft's notice announces task assignment, scheduled task catch-up and Copilot memory integration.",
+      "status": "supported",
+      "source": "Message Center post MC1539002",
+      "quote": "We are expanding Planner Agent in Microsoft Copilot Chat with task assignment, scheduled task catch-up, and Copilot memory integration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Microsoft's notice also describes better support for larger plans, response quality, speed and reliability.",
+      "status": "supported",
+      "source": "Message Center post MC1539002",
+      "quote": "We are also improving support for larger plans, response quality, speed, and reliability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Users can assign a task to one or more people in a shared basic plan.",
+      "status": "supported",
+      "source": "Message Center post MC1539002",
+      "quote": "Users can assign tasks to one or more people in shared basic plans, including assigning multiple tasks at once.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "Users can assign multiple tasks at once.",
+      "status": "supported",
+      "source": "Message Center post MC1539002",
+      "quote": "including assigning multiple tasks at once.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Users can reassign tasks or remove assignees.",
+      "status": "supported",
+      "source": "Message Center post MC1539002",
+      "quote": "Users can reassign or remove assignees",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Users can view tasks grouped by person.",
+      "status": "supported",
+      "source": "Message Center post MC1539002",
+      "quote": "view tasks grouped by person",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Why it matters; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "Catch-up identifies outstanding work, commitments and items awaiting input from recent emails, chats and meetings.",
+      "status": "supported",
+      "source": "Message Center post MC1539002",
+      "quote": "Users can identify outstanding work, commitments, and items awaiting their input based on recent emails, chats, and meetings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "Users can run catch-up on demand.",
+      "status": "supported",
+      "source": "Message Center post MC1539002",
+      "quote": "Users can generate suggestions on demand",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Risk assessment: Autonomy & actions; Governance guidance",
+      "type": "record",
+      "claim": "Users can configure recurring catch-up schedules.",
+      "status": "supported",
+      "source": "Message Center post MC1539002",
+      "quote": "configure recurring schedules with optional email notifications when suggestions are ready for review.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Risk assessment: Autonomy & actions; Cost and licensing",
+      "type": "record",
+      "claim": "Catch-up schedules offer optional email notifications when suggestions are ready.",
+      "status": "supported",
+      "source": "Message Center post MC1539002",
+      "quote": "optional email notifications when suggestions are ready for review.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "Suggested catch-up tasks include their sources.",
+      "status": "supported",
+      "source": "Message Center post MC1539002",
+      "quote": "Suggested tasks include their sources",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "Suggested catch-up tasks remain editable drafts until users save them to Planner.",
+      "status": "supported",
+      "source": "Message Center post MC1539002",
+      "quote": "remain editable drafts until users save them to Planner.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "Planner Agent personalizes responses using saved memories and preferences inferred from previous Copilot chats.",
+      "status": "supported",
+      "source": "Message Center post MC1539002",
+      "quote": "Planner Agent can personalize responses using saved memories and preferences inferred from previous Copilot chats.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The previous 30-task limit when creating plans is removed.",
+      "status": "supported",
+      "source": "Message Center post MC1539002",
+      "quote": "Users can create plans without the previous 30-task limit",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; rationale",
+      "type": "default",
+      "claim": "The improvements are enabled by default for users who have access to Planner Agent.",
+      "status": "supported",
+      "source": "Message Center post MC1539002",
+      "quote": "These improvements are enabled by default for users with access to Planner Agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "No recurring catch-up schedule is created automatically.",
+      "status": "supported",
+      "source": "Message Center post MC1539002",
+      "quote": "No recurring schedule is created automatically.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Risk assessment: Security & identity; Scope",
+      "type": "record",
+      "claim": "Planner Agent in Copilot Chat supports personal tasks and shared basic plans, not premium plans.",
+      "status": "supported",
+      "source": "Message Center post MC1539002",
+      "quote": "Planner Agent supports personal tasks and shared basic plans, but not premium plans.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing; Why it matters; Risk assessment; Governance guidance",
+      "type": "record",
+      "claim": "Planner Agent cannot delete tasks.",
+      "status": "supported",
+      "source": "Message Center post MC1539002",
+      "quote": "It cannot delete tasks or undo changes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; Why it matters; Risk assessment; Governance guidance",
+      "type": "record",
+      "claim": "Planner Agent cannot undo changes.",
+      "status": "supported",
+      "source": "Message Center post MC1539002",
+      "quote": "It cannot delete tasks or undo changes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing; Risk assessment: Data exposure, Security & identity; rationale: risk",
+      "type": "record",
+      "claim": "Planner Agent uses only Microsoft 365 content the signed-in user already has permission to access.",
+      "status": "supported",
+      "source": "Message Center post MC1539002",
+      "quote": "Planner Agent uses only content that the signed-in user already has permission to access in Microsoft 365.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Users can find Planner Agent under Agents & Skills.",
+      "status": "supported",
+      "source": "Message Center post MC1539002",
+      "quote": "Users can find Planner Agent under Agents & Skills",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Users can pin Planner Agent or invoke it with @Planner Agent in Copilot chats.",
+      "status": "supported",
+      "source": "Message Center post MC1539002",
+      "quote": "pin it, or invoke it using @Planner Agent in Copilot chats.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "summary; What's changing; Scope; front matter: changes",
+      "type": "record",
+      "claim": "The notice says Worldwide general availability rollout begins in early December 2026 and is expected to complete by early December 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1539002",
+      "quote": "General Availability (Worldwide): Rollout will begin in early December 2026 and is expected to complete by early December 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "record",
+      "claim": "Microsoft's end date for the notice is 2027-01-08.",
+      "status": "supported",
+      "source": "Message Center post MC1539002",
+      "quote": "Microsoft's end date 2027-01-08",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "summary; What's changing; Governance guidance: Before rollout; front matter: changes",
+      "type": "record",
+      "claim": "Microsoft's act-by date is 2026-12-04.",
+      "status": "supported",
+      "source": "Message Center post MC1539002",
+      "quote": "Act by: 2026-12-04 (18 days from today)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet describe the new task-assignment or catch-up behavior.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Planner Agent\" \"catch-up\" scheduled; \"Planner Agent\" \"task assignment\" \"catch-up\" administrator control disable. Opened turn-off-planner-agent; results described other Planner experiences, Defender scans and Foundry scheduling, not these additions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Copilot memories are stored in a hidden folder in the user's Exchange mailbox.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-personalization-memory",
+      "quote": "Memories, which include saved memories, details inferred from chat history and custom instructions, are stored in the user's Exchange mailbox in a hidden folder.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Purview retention policies and labels do not apply to Copilot memory.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-personalization-memory",
+      "quote": "Retention policies and retention labels configured in Purview by organization admins don't apply to Copilot memory.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Administrators cannot restrict what type of information is added to Copilot memory.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-personalization-memory",
+      "quote": "No, admins can't restrict what type of information is added to Copilot memory.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[2].note; Risk assessment: Data exposure; Open questions",
+      "type": "availability",
+      "claim": "The Learn documentation marks Copilot personalization and memory as preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-personalization-memory",
+      "quote": "Copilot personalization and memory are in preview and subject to change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance; rationale: risk",
+      "type": "record",
+      "claim": "AI-generated tasks, plans and updates, including assignments, remain drafts until users review and confirm them.",
+      "status": "supported",
+      "source": "Message Center post MC1539002",
+      "quote": "AI-generated tasks, plans, and updates, including task assignments, remain drafts until users review and confirm them.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Autonomy & actions; controls[4].note",
+      "type": "record",
+      "claim": "Users can modify, pause or delete their catch-up schedules.",
+      "status": "supported",
+      "source": "Message Center post MC1539002",
+      "quote": "Users can modify, pause, or delete their schedules.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Autonomy & actions; Open questions",
+      "type": "behaviour",
+      "claim": "Memory and personalization actions do not generate Purview audit log entries.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-personalization-memory",
+      "quote": "Memory and personalization actions don't generate audit log entries in Purview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "The Planner usage report excludes Planner Agent, which is covered by the Microsoft Copilot Agents report instead.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/planner-activity",
+      "quote": "This report covers Planner Usage only for basic and premium plans. Planner Agent is included in the Microsoft Copilot Agents report",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "front matter: licensing; summary; Cost and licensing; Scope; rationale: cost",
+      "type": "licensing",
+      "claim": "The licensing model is per-user: affected users need an active Microsoft Copilot licence and access to Planner Agent.",
+      "status": "supported",
+      "source": "Message Center post MC1539002",
+      "quote": "Users with an active Microsoft Copilot license who have access to Planner Agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The cited Planner access page lists a Microsoft Copilot licence as its prerequisite for Planner Agent in Planner and names no other licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/turn-off-planner-agent",
+      "quote": "Users must have the following license to access Planner Agent in Planner:\n- A Microsoft Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft has not published a separate price, meter, credit rate or additional licence for these task-assignment, catch-up and memory additions.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Planner Agent Copilot Chat scheduled catch-up assignment Copilot Credits pricing license. Read turn-off-planner-agent prerequisites and cost-considerations search excerpts; neither priced these additions. MC1539002 names an active Microsoft Copilot license only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Cost and licensing: final sentence",
+      "type": "cost",
+      "claim": "Optional catch-up email notifications are not a charge.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Planner Agent\" \"catch-up\" \"email\" pricing charge; Planner Agent Copilot Chat scheduled catch-up assignment Copilot Credits pricing license. Read MC1539002, turn-off-planner-agent and cost-considerations excerpts; none states these notifications have no charge.",
+      "severity": "blocker",
+      "fix": "Remove ', not a charge' from the final sentence of Cost and licensing. Say only 'The optional email notifications for catch-up are a user-side setting'; retain the separate statement that feature-specific pricing is not yet published."
+    },
+    {
+      "n": 48,
+      "where": "Scope: Where",
+      "type": "record",
+      "claim": "The notice lists Microsoft Copilot on the web, Microsoft Copilot in Teams and Microsoft Planner as affected platforms and services.",
+      "status": "supported",
+      "source": "Message Center post MC1539002",
+      "quote": "Microsoft Copilot on the web- Microsoft Copilot in Microsoft Teams- Microsoft Planner",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "summary; What's changing; Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "Microsoft says no admin action is required.",
+      "status": "supported",
+      "source": "Message Center post MC1539002",
+      "quote": "No admin action is required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "Microsoft recommends checking that users have an active Microsoft Copilot licence.",
+      "status": "supported",
+      "source": "Message Center post MC1539002",
+      "quote": "Confirm that users have an active Microsoft Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance guidance: Before rollout; Scope; Governance controls",
+      "type": "record",
+      "claim": "Microsoft recommends reviewing Planner Agent availability in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "Message Center post MC1539002",
+      "quote": "Administrators can manage Planner Agent availability through the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Governance guidance: Before rollout, At rollout",
+      "type": "record",
+      "claim": "Microsoft recommends informing users about the capabilities and updating documentation and training materials.",
+      "status": "supported",
+      "source": "Message Center post MC1539002",
+      "quote": "Inform users about the new capabilities, including optional scheduled task catch-up.- Update internal documentation and training materials.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[0].ui; Governance guidance: Before rollout; Governance controls",
+      "type": "admin-path",
+      "claim": "The general tenant-wide block action is Microsoft 365 admin center > Agents > All agents > select the agent > Block.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "Select Agents > All agents.\n3. In the All agents page, select an agent from the list of agents.\n4. In the agent details pane that opens, immediately under the agent's name, select Block or Unblock.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[0].note; Governance controls; Open questions",
+      "type": "applicability",
+      "claim": "The block documentation is general and does not specifically show a Planner Agent entry or confirm which actions that entry offers.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Planner Agent\" \"block\" \"API\"; Microsoft 365 agent block pin API Graph PowerShell manage pinned agents. Opened agent-actions and turn-off-planner-agent; the former gives general blocking steps, the latter redirects Copilot management to the admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[0].api; Governance controls",
+      "type": "absence",
+      "claim": "No API for blocking Planner Agent in Copilot Chat is documented in the references checked.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Planner Agent\" \"block\" \"API\"; Microsoft 365 agent block pin API Graph PowerShell manage pinned agents. Opened agent-actions, agent-registry-overview and turn-off-planner-agent; results documented UI blocking and registry GET APIs, not a Planner Chat block API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[1].ui; Governance guidance: At rollout; Governance controls",
+      "type": "admin-path",
+      "claim": "The cited Learn page gives Agents > All agents > Manage pinned agents without an intervening menu.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview",
+      "quote": "1. In the All agents page, select the ellipse on the right to display a dropdown menu.\n2. Select the Manage pinned agents.",
+      "severity": "blocker",
+      "fix": "In controls[1].ui.path and the repeated table and guidance, use 'Agents > All agents > ellipsis menu > Manage pinned agents'. The notice gives a shortened route, but the cited Learn instructions require opening that menu."
+    },
+    {
+      "n": 57,
+      "where": "controls[1].note; Scope: Roles; Governance guidance: At rollout",
+      "type": "role",
+      "claim": "Pinning requires the AI Administrator role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview",
+      "quote": "For administrators - You, as the administrator, must have the following role and access:\n- AI Administrator\n- Access to the Microsoft 365 admin center",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[1].note; Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Pinned agents can take up to six hours to appear for users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview",
+      "quote": "After you pin an agent, it might take up to six hours for end-users to see the agent pinned.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "controls[1].note",
+      "type": "behaviour",
+      "claim": "Administrators can pin up to three agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview",
+      "quote": "Administrators can pin up to three agents in Microsoft 365 admin center for end-users using Microsoft Copilot in the organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[1].governs, scope, note; Governance controls",
+      "type": "applicability",
+      "claim": "Pinning controls visibility for users or groups rather than granting access to the agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview",
+      "quote": "You can only pin agents that are deployed to some or all users.\nSpecific users or groups the agent is deployed to - Pin for one or more groups or individual accounts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "controls[1].api; Governance controls",
+      "type": "absence",
+      "claim": "No API for pinning Planner Agent is documented in the references checked.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Planner Agent\" \"pin\" \"API\"; Microsoft 365 agent block pin API Graph PowerShell manage pinned agents. Opened agent-registry-overview; its pinning section gives UI steps and its Graph section lists inventory GET operations, not a pin operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "controls[2].api; Governance controls",
+      "type": "command",
+      "claim": "The beta Graph PATCH endpoint /copilot/settings/people/enhancedpersonalization updates isEnabledInOrganization and disabledForGroup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-update?view=graph-rest-beta",
+      "quote": "PATCH https://graph.microsoft.com/beta/copilot/settings/people/enhancedpersonalization\nContent-Type: application/json\n\n{\n  \"isEnabledInOrganization\": true,\n  \"disabledForGroup\": \"edbfe4fb-ec70-4300-928f-dbb2ae86c981\"\n}",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "controls[2].note; Scope: Roles",
+      "type": "role",
+      "claim": "People Administrator is the least privileged Entra role for the Enhanced personalization update operation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-update?view=graph-rest-beta",
+      "quote": "For delegated access using work or school accounts, the admin must be assigned a supported Microsoft Entra role. People Administrator is the least privileged role supported for this operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "controls[2].governs, note; Why it matters; Governance guidance; Governance controls",
+      "type": "applicability",
+      "claim": "Enhanced personalization is a general Copilot memory control and is on by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-personalization-memory",
+      "quote": "Enhanced personalization is the control that allows Copilot memory to be used by end-users. By default, Enhanced personalization is turned on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "controls[2].ui",
+      "type": "absence",
+      "claim": "An administrator UI for the tenant Enhanced personalization control is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Enhanced personalization admin center UI turn off Copilot memory Planner Set-PlannerConfiguration. Opened copilot-personalization-memory and control-enhanced-personalization-privacy; they describe the Graph control and end-user settings, not a tenant admin UI path.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "controls[3].api; Governance controls",
+      "type": "command",
+      "claim": "Set-PlannerConfiguration -AllowPlannerCopilot $true -PlannerCopilotAllowedGroupId <security group id> restricts Planner Agent in Planner to a security group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/turn-off-planner-agent",
+      "quote": "To turn on Planner Agent and Planner Agent chat for a specific security group:\nSet-PlannerConfiguration -AllowPlannerCopilot $true -PlannerCopilotAllowedGroupId <security group id>",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "controls[3].ui, note; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No UI equivalent or confirmation that this Planner PowerShell control governs Planner Agent in Copilot Chat is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Planner Agent in Planner disable admin center UI AllowPlannerCopilot settings. Opened turn-off-planner-agent; its access instructions are PowerShell for Planner and its note redirects Planner Agent in Microsoft Copilot management to the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "controls[3].note",
+      "type": "behaviour",
+      "claim": "Planner configuration changes can take up to one hour to apply.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/turn-off-planner-agent",
+      "quote": "Changes may take up to 1 hour to reflect across your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "controls[4]; Governance guidance: After rollout; Open questions",
+      "type": "absence",
+      "claim": "A separate administrator switch for scheduled catch-up or task assignment is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Planner Agent\" \"task assignment\" \"catch-up\" administrator control disable; Planner Agent Copilot Chat scheduled task catch-up task assignment administrator disable control pricing credits. Opened turn-off-planner-agent and agent-actions; neither gives such a switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Governance controls: final paragraphs",
+      "type": "behaviour",
+      "claim": "Turning off Enhanced personalization stops applying saved memories but does not remove them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-personalization-memory",
+      "quote": "If the Enhanced personalization control is turned off at the admin-level, or if the Saved memories control is turned off at the end-user level, Copilot is stopped from applying saved memories to the chat, but doesn't remove saved memories.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Governance controls: first paragraph",
+      "type": "behaviour",
+      "claim": "The preview registry Graph APIs described by the cited page list agents and retrieve agent details.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview",
+      "quote": "Get all agents in your inventory - By using the GET packages API\nGet details of a particular agent in your inventory - The GET package details API provides rich metadata and details for any agent",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Open questions: auditing",
+      "type": "behaviour",
+      "claim": "The Planner access page says Planner Agent plans to offer the same auditing capabilities as premium plans.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/turn-off-planner-agent",
+      "quote": "Planner Agent plans to provide the same auditing capabilities as premium plans (previously Project for the Web projects).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "controls[2].note; Governance controls",
+      "type": "availability",
+      "claim": "The Enhanced personalization update endpoint is a beta Microsoft Graph API.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-update?view=graph-rest-beta",
+      "quote": "APIs under the /beta version in Microsoft Graph are subject to change. Use of these APIs in production applications is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "front matter: risk; rationale: risk",
+      "type": "consistency",
+      "claim": "A medium risk rating fits this default-on agent change with write access and coarse controls.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "risk: \"medium\"; \"This is a default-on change to an agent that can write to shared plans.\" The assessment scale says \"an on-by-default agent with write access is high\".",
+      "severity": "minor",
+      "fix": "Set risk to high and start its rationale with 'High.': the change is default-on, can write assignments to shared plans and has coarse controls. Retain the user-confirmation and existing-permissions qualifications as mitigations."
+    },
+    {
+      "n": 75,
+      "where": "front matter: impact; rationale: impact",
+      "type": "consistency",
+      "claim": "A medium impact rating fits the change to default behavior for all licensed users with Planner Agent access.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "impact: \"medium\"; \"Every user with a Microsoft Copilot licence and access to Planner Agent sees the new behaviour\". The assessment scale defines high impact as \"most users, or a change to default behaviour\".",
+      "severity": "minor",
+      "fix": "Set impact to high and start its rationale with 'High.': the additions change default behavior for all licensed users who already have Planner Agent access; keep that audience qualification."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-16T17:07:01.062Z",
+    "summary": {
+      "links": 8,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=573168",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1539002",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/planner/turn-off-planner-agent",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/manage/copilot-personalization-memory",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-update?view=graph-rest-beta",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/planner-activity",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Availability of Planner Agent in Microsoft Copilot (tenant-wide block)",
+        "docs": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "All agents",
+          "select the agent",
+          "Block"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether Planner Agent is pinned for users or groups",
+        "docs": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "All agents",
+          "Manage pinned agents"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Copilot memory used by Planner Agent (Enhanced personalization)",
+        "docs": "https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-update?view=graph-rest-beta",
+        "reachable": true,
+        "token": "/beta/copilot/settings",
+        "found": true
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Planner Agent access in Planner (not Copilot Chat)",
+        "docs": "https://learn.microsoft.com/planner/turn-off-planner-agent",
+        "reachable": true,
+        "token": "Set-PlannerConfiguration",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": [
+    {
+      "date": "2026-11-16",
+      "status": "held",
+      "version": 1,
+      "model": "none"
+    }
+  ]
 }

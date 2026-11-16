@@ -77,6 +77,17 @@ changes:
   - date: "2026-11-16"
     note: "First briefing for this item, written after Microsoft's notice MC1518032 and the Update Repair Learn page, which still says preview."
 version: 1
+verification:
+  status: "held"
+  date: "2026-11-16"
+  version: 1
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 60
+  confirmed: 56
+  unconfirmed: 4
+  contradicted: 0
+  attempts: 1
 ---
 
 ## What's changing
@@ -174,4 +185,13 @@ Repair and the report share one surface, and the only gate on Repair that Micros
 risk: Medium. A Repair action closes open Microsoft 365 Apps on the selected devices and reinstalls them, so users can lose unsaved work unless admins warn them first; it reads no new data and starts only when an admin selects it.
 cost: Low. The Update Repair page names no separate licence or meter; the costs shown are admin time, user disruption and a CDN download per repaired device. Inventory itself requires one of the plans its Learn page lists.
 impact: Low. Admins use the report; users notice only on devices an admin repairs, where Office apps close and reinstall.
+-->
+
+<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
+The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
+- [unsupported, blocker] front matter: defaultState / default: Update Repair has an admin-opt-in default state. | Found: Searched: "Update Repair" "default" "enable"; opened Update Repair and Inventory Learn pages. They document Inventory setup and confirmation of each Repair action, not a separate Update Repair enablement default. | Fix: Set defaultState to unknown. Retain the supported, narrower statement that each remote repair requires an administrator to select devices and confirm Repair; do not equate invoking an action with enabling the feature.
+- [unsupported, blocker] front matter: licensing.model / licensing: Update Repair is included in the licences the product already requires. | Found: Searched: "Update Repair" "license" "price" and site:learn.microsoft.com/microsoft-365-apps/ "Update Repair" "license" "included"; opened Update Repair and Inventory. Neither states Update Repair is included. | Fix: Set licensing.model to unknown. Keep the notes distinguishing Inventory's published plan requirements from the Update Repair page's silence about a feature-specific licence; silence does not establish inclusion.
+- [supported, minor] What's changing; Scope: Rollout / record: MC1518032 gives a mid-November 2026 start and late-November 2026 completion window for Worldwide General Availability. | Found: General Availability (Worldwide): Rollout will begin in mid-November 2026 and is expected to complete by late November 2026. | Fix: Preserve the notice's planned wording in both sections: 'MC1518032 says General Availability rollout will begin in mid-November 2026 and is expected to complete by late November 2026.' Replace 'finishing by' and 'began rolling out'; the notice itself does not confirm actual commencement or guarantee completion.
+- [unsupported, blocker] Risk assessment: Security & identity; Governance controls / role: Any holder of the listed Inventory roles can start Repair, and admin-center role membership is the documented authorization gate for Repair. | Found: Searched: "Update Repair" "Microsoft 365 Apps" "role" and site:learn.microsoft.com/microsoft-365-apps/admin-center/ "Update Repair" "permissions"; opened Inventory and Update Repair. Inventory roles are listed, but Repair authorization is not specified. | Fix: Remove 'Any holder can select devices and start a repair' and the assertion that the admin-center role is the only documented Repair authorization gate. Say: 'Inventory lists these access roles; the Update Repair page does not specify which roles can start Repair.' Keep limiting operators as organizational advice, not a documented Repair-specific permission.
+- [unsupported, major] Risk assessment: Change & support / behaviour: A powered-off, signed-out or offline device simply keeps the Repair action pending until it checks in. | Found: Searched: site:learn.microsoft.com/microsoft-365-apps/ "Update Repair" "pending" "signed out"; opened Update Repair. It specifies next-check-in delivery and connectivity advice, not pending-action persistence or expiry for unavailable devices. | Fix: Replace with: 'Keep devices powered on, signed in and connected so they can receive the action at their next Inventory check-in.' Do not promise that an action remains pending for an unavailable device.
 -->

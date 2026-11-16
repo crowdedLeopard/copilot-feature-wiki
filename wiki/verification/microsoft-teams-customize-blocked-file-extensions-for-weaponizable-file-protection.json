@@ -2,30 +2,748 @@
   "slug": "microsoft-teams-customize-blocked-file-extensions-for-weaponizable-file-protection",
   "roadmapId": 571298,
   "title": "Microsoft Teams: customise the file types blocked by Weaponizable File Protection",
-  "status": "held",
+  "status": "verified",
   "date": "2026-11-16",
   "version": 1,
-  "model": "none",
-  "engine": "manual",
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
   "attempts": 0,
-  "hold": {
-    "reason": "unverified",
-    "since": "2026-11-16",
-    "reasons": [
-      "Written but not yet checked against Microsoft Learn."
-    ]
-  },
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
   "counts": {
-    "claims": 0,
-    "confirmed": 0,
+    "claims": 58,
+    "confirmed": 58,
     "unconfirmed": 0,
     "contradicted": 0,
     "blocker": 0,
     "major": 0,
     "minor": 0
   },
-  "summary": "Written but not yet checked against Microsoft Learn.",
-  "claims": [],
-  "precheck": null,
-  "history": []
+  "summary": "The briefing's rollout dates, default behaviour and configuration controls are supported by Microsoft's notice, roadmap record and Learn documentation. It correctly distinguishes the optional custom list from the existing protection switch and does not promise unpublished licensing.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "Microsoft plans to let administrators customise the extensions blocked by Teams Weaponizable File Protection or retain the recommended list.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Administrators will be able to customize which file types are blocked in Teams to align with their organization's security requirements or continue using the Microsoft-recommended default list.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing; controls[0].note",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is December CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"December CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Targeted Release.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platforms are Android, Desktop, iOS, Mac and Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Mac\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-11-03T00:14:11.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-03T00:14:11\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap product is Microsoft Teams.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Teams\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "Customisation is admin-opt-in: without administrative action, enabled tenants retain the recommended list.",
+      "status": "supported",
+      "source": "Message Center post MC1509801",
+      "quote": "No action is required. Organizations with Weaponizable File Protection enabled will continue using the Microsoft-recommended list by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: licensing.model; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Feature-specific licensing is not yet published, so the licensing model is unknown.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams Weaponizable File Protection licensing license pricing prerequisites metered billing; \"weaponizable\" \"license\" Teams. Opened: Weaponizable File Protection in Microsoft Teams; Set-CsTeamsMessagingConfiguration. Neither supplies feature licensing; roadmap and MC1509801 do not either.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "The Weaponizable File Protection Learn page names no licence.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"weaponizable\" \"license\" Teams. Opened and read the complete Weaponizable File Protection in Microsoft Teams page; it contains no licensing statement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The Weaponizable File Protection Learn page lists no prerequisites.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams Weaponizable File Protection licensing license pricing prerequisites metered billing. Read the complete Weaponizable File Protection in Microsoft Teams page; no prerequisites list is given.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Neither the roadmap record nor MC1509801 mentions a charge.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams Weaponizable File Protection licensing license pricing prerequisites metered billing. Read the supplied roadmap record and the complete MC1509801 notice; neither mentions a charge.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "controls[0].ui; Governance controls; Governance guidance: After rollout",
+      "type": "absence",
+      "claim": "No Teams admin center path for customising the extension list is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams Weaponizable File Protection customize file extensions FileTypeCustomizationSetting admin center Messaging safety custom list; \"FileTypeCustomizationSetting\" \"Teams admin center\". Opened: Weaponizable File Protection in Microsoft Teams; Set-CsTeamsMessagingConfiguration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "controls[0].api; Governance controls; Governance guidance: At rollout",
+      "type": "command",
+      "claim": "The MicrosoftTeams cmdlet Set-CsTeamsMessagingConfiguration supports -FileTypeCustomizationSetting CustomBlockList -FileTypeBlockList <string[]> to set the custom list.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingconfiguration",
+      "quote": "CustomBlockList: Blocks the file types you specify in the FileTypeBlockList parameter instead of the Microsoft-recommended list.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[1].ui; Governance controls",
+      "type": "absence",
+      "claim": "No admin UI path for restoring the Microsoft-recommended list is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"MicrosoftRecommendedBlockList\" \"reset\" \"admin center\"; \"FileTypeCustomizationSetting\" \"Teams admin center\". Opened: Weaponizable File Protection in Microsoft Teams; Set-CsTeamsMessagingConfiguration. MC1509801 mentions reset but supplies no navigation path.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[1].api; Governance controls; Governance guidance: After rollout",
+      "type": "command",
+      "claim": "Set-CsTeamsMessagingConfiguration -FileTypeCustomizationSetting MicrosoftRecommendedBlockList selects the recommended list.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingconfiguration",
+      "quote": "MicrosoftRecommendedBlockList: Blocks the file types on the Microsoft-recommended list. This keeps the existing behavior.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[2].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "The protection switch is in Teams admin center > Messaging settings > Messaging safety > Scan messages for file types that are not allowed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/weaponizable-file-protection-teams",
+      "quote": "In the left navigation, select Messaging settings.\n3. Scroll down to Messaging safety settings.\n4. Turn on the setting: Scan messages for file types that are not allowed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[2].api; Governance controls",
+      "type": "command",
+      "claim": "Set-CsTeamsMessagingConfiguration supports -FileTypeCheck with Enabled or Disabled and the -Identity parameter for the protection switch.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingconfiguration",
+      "quote": "This setting enables weaponizable file detection in Teams messages in the tenant.\n\nPossible Values:\n\n- Enabled\n- Disabled",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[3]; Risk assessment: Change & support",
+      "type": "absence",
+      "claim": "No per-user or per-group blocked-extension list control is documented on either surface.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams Weaponizable File Protection custom block list per user group policy FileTypeBlockList. Opened: Weaponizable File Protection in Microsoft Teams; Set-CsTeamsMessagingConfiguration. The reference describes a single global tenant configuration, not user or group lists.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[0..2].scope; Risk assessment: Change & support; Scope; Governance controls",
+      "type": "applicability",
+      "claim": "The messaging configuration and its blocked list apply tenant-wide.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingconfiguration",
+      "quote": "Because each tenant is limited to a single, global collection of messaging settings there is no need include this parameter when calling the cmdlet.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[0].note; Scope; Governance controls",
+      "type": "availability",
+      "claim": "The FileTypeCustomizationSetting reference says it is not available in GCC, GCCH and DOD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingconfiguration",
+      "quote": "-FileTypeCustomizationSetting\n\nNote\n\nThis cmdlet is not available in GCC, GCCH and DOD.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[0].note; Scope; Governance controls",
+      "type": "availability",
+      "claim": "The FileTypeBlockList reference says it is not available in GCC, GCCH and DOD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingconfiguration",
+      "quote": "-FileTypeBlockList\n\nNote\n\nThis cmdlet is not available in GCC, GCCH and DOD.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[1].note; What's changing; Governance controls",
+      "type": "default",
+      "claim": "MicrosoftRecommendedBlockList is the default value of FileTypeCustomizationSetting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingconfiguration",
+      "quote": "-FileTypeCustomizationSetting\n\nParameter properties\n\nType: String\nDefault value: MicrosoftRecommendedBlockList",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[1].note; Governance controls; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Selecting MicrosoftRecommendedBlockList clears FileTypeBlockList.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingconfiguration",
+      "quote": "This setting will clear when FileTypeCustomizationSetting is set to MicrosoftRecommendedBlockList.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "FileTypeBlockList must contain at least one string when CustomBlockList is selected.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingconfiguration",
+      "quote": "When this setting is set to CustomBlockList, FileTypeBlockList must contain at least one string.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Scope; Governance controls",
+      "type": "applicability",
+      "claim": "FileTypeCustomizationSetting applies only when FileTypeCheck is Enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingconfiguration",
+      "quote": "-FileTypeCustomizationSetting\n\nThis setting applies only when FileTypeCheck is set to Enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "FileTypeBlockList applies only when FileTypeCheck is Enabled and FileTypeCustomizationSetting is CustomBlockList.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingconfiguration",
+      "quote": "This setting applies only when FileTypeCheck is set to Enabled. This setting applies only when FileTypeCustomizationSetting is set to CustomBlockList.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "summary; Risk assessment: Data exposure; controls[0]",
+      "type": "behaviour",
+      "claim": "A custom list replaces the Microsoft-recommended list for this protection's file-type blocking.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingconfiguration",
+      "quote": "CustomBlockList: Blocks the file types you specify in the FileTypeBlockList parameter instead of the Microsoft-recommended list.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Teams scans messages to identify files with weaponizable extensions and blocks messages when a blocked type is detected.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/weaponizable-file-protection-teams",
+      "quote": "Teams automatically scans the message and identifies files with weaponizable extensions.\n3. If a blocked file type is detected, Teams prevents the message from being delivered and displays appropriate notifications to both sender and recipients.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Both the attachment and the complete message content are blocked.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/weaponizable-file-protection-teams",
+      "quote": "If you send a message containing a weaponizable file, both the file attachment and the complete message content are blocked.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The sender can edit the original message to remove the unsafe file and resend it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/weaponizable-file-protection-teams",
+      "quote": "Have the option to edit the original message to remove the unsafe file.\n- Resend the message once the problematic file is removed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The feature's Learn page publishes the blocked-extension list, beginning with ace and ending with z.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/weaponizable-file-protection-teams",
+      "quote": "ace, ani, apk, app, appx, arj, bat, cab, cmd, com, deb, dex, dll, docm, elf, exe, hta, img, iso, jar, jnlp, kext, lha, lib, library, lnk, lzh, macho, msc, msi, msix, msp, mst, pif, ppa, ppam, reg, rev, scf, scr, sct, sys, uif, vb, vbe, vbs, vxd, wsc, wsf, wsh, xll, xz, z",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The feature's Learn page states that the blocked-type list is not currently configurable.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/weaponizable-file-protection-teams",
+      "quote": "The list of blocked file types isn't currently configurable by administrators.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "Before this rollout, Microsoft defines the blocked extensions and administrators cannot customise the list.",
+      "status": "supported",
+      "source": "Message Center post MC1509801",
+      "quote": "Before this rollout, Microsoft defines the file extensions blocked by Weaponizable File Protection, and admins cannot customize the list.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What's changing; Why it matters; rationale: risk",
+      "type": "record",
+      "claim": "Organisations retaining the recommended list automatically receive Microsoft's future updates.",
+      "status": "supported",
+      "source": "Message Center post MC1509801",
+      "quote": "Organizations that continue using the Microsoft-recommended list will automatically receive future updates to that list.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "summary; What's changing; Why it matters; Risk assessment; Governance guidance",
+      "type": "record",
+      "claim": "Customising the list stops automatic receipt of future Microsoft-recommended-list updates.",
+      "status": "supported",
+      "source": "Message Center post MC1509801",
+      "quote": "If an admin customizes the list, the organization will use the customized list and will no longer automatically receive future updates to the Microsoft-recommended list.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[1].note; What's changing; Why it matters; Risk assessment; Governance guidance",
+      "type": "record",
+      "claim": "Administrators can reset to the recommended list at any time to resume automatic updates.",
+      "status": "supported",
+      "source": "Message Center post MC1509801",
+      "quote": "Admins can reset the configuration to the Microsoft-recommended default list at any time to resume receiving automatic updates.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "What's changing; Risk assessment: Change & support; rationale: impact",
+      "type": "record",
+      "claim": "Microsoft's notice says the user experience will not change.",
+      "status": "supported",
+      "source": "Message Center post MC1509801",
+      "quote": "The user experience will not change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Microsoft's notice says files with blocked extensions continue to be blocked.",
+      "status": "supported",
+      "source": "Message Center post MC1509801",
+      "quote": "Files with blocked extensions will continue to be blocked in Teams as they are today.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1509801 was updated on 2 November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1509801",
+      "quote": "Updated November 2, 2026: We have updated the timeline.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The notice gives General Availability in Worldwide as beginning in early December 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1509801",
+      "quote": "General Availability (Worldwide): Beginning in early December 2026",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The notice expects General Availability rollout completion by mid-December 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1509801",
+      "quote": "expected to complete by mid-December 2026",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The previous rollout start given in the notice was early November.",
+      "status": "supported",
+      "source": "Message Center post MC1509801",
+      "quote": "Beginning in early December 2026 (previously early November)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The previous expected rollout completion given in the notice was mid-November.",
+      "status": "supported",
+      "source": "Message Center post MC1509801",
+      "quote": "expected to complete by mid-December 2026 (previously mid-November)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The supplied notice sets no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1509801",
+      "quote": "Act by: none",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Microsoft says no action is required.",
+      "status": "supported",
+      "source": "Message Center post MC1509801",
+      "quote": "No action is required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "In external conversations, blocked file types are blocked for everyone when any participating organisation has protection enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/weaponizable-file-protection-teams",
+      "quote": "If any organization in the conversation has File protection enabled, it applies to everyone.\n- Messages containing blocked file types will be blocked for all, when any participating organization has turned on the feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "The feature's Learn page does not specify which organisation's list prevails when external participants use different lists.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Weaponizable File Protection\" \"external\" \"custom\". Opened: Weaponizable File Protection in Microsoft Teams; Set-CsTeamsMessagingConfiguration. The external-collaboration section describes enforcement across organisations but does not explain custom-list precedence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Scope",
+      "type": "default",
+      "claim": "FileTypeCheck has the documented default Enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingconfiguration",
+      "quote": "-FileTypeCheck\n\nParameter properties\n\nType: String\nDefault value: Enabled",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Scope; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "The cited feature and cmdlet pages do not name a required administrator role for changing the setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams Weaponizable File Protection customize blocked extensions administrator role permissions; \"Weaponizable File Protection\" \"role\". Opened: Weaponizable File Protection in Microsoft Teams; Set-CsTeamsMessagingConfiguration. Neither names the required role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No feature-specific billing meter is documented at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams Weaponizable File Protection licensing license pricing prerequisites metered billing; \"Weaponizable File Protection\" \"meter\" \"cap\" \"budget\". Opened: Weaponizable File Protection in Microsoft Teams; Set-CsTeamsMessagingConfiguration. No feature meter was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No feature-specific spending cap is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Weaponizable File Protection\" \"meter\" \"cap\" \"budget\". Opened: Weaponizable File Protection in Microsoft Teams; Set-CsTeamsMessagingConfiguration. No spending cap for this feature was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No feature-specific budget control is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Weaponizable File Protection\" \"meter\" \"cap\" \"budget\". Opened: Weaponizable File Protection in Microsoft Teams; Set-CsTeamsMessagingConfiguration. No budget control for this feature was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Governance controls",
+      "type": "record",
+      "claim": "MC1509801 mentions screenshots of a customise view and an add view.",
+      "status": "supported",
+      "source": "Message Center post MC1509801",
+      "quote": "Screenshot 1 Customize file type view:\n\nScreenshot 2 Customize file type add view:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "What's changing; Scope",
+      "type": "applicability",
+      "claim": "Weaponizable File Protection covers Teams chats and channels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/weaponizable-file-protection-teams",
+      "quote": "Enhanced security protection in Microsoft Teams automatically blocks messages containing potentially weaponizable file types in chats and channels.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Scope",
+      "type": "applicability",
+      "claim": "Once enabled, file protection applies to all users in the tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/weaponizable-file-protection-teams",
+      "quote": "Once enabled, all users in the tenant will have file protection applied to their Teams messages.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-16T17:06:54.761Z",
+    "summary": {
+      "links": 4,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 3,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1509801",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/weaponizable-file-protection-teams",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingconfiguration",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=571298",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Which file extensions are blocked (custom list)",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingconfiguration",
+        "reachable": true,
+        "token": "Set-CsTeamsMessagingConfiguration",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Return to the Microsoft-recommended list and its updates",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingconfiguration",
+        "reachable": true,
+        "token": "Set-CsTeamsMessagingConfiguration",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Whether Weaponizable File Protection is on",
+        "docs": "https://learn.microsoft.com/microsoftteams/weaponizable-file-protection-teams",
+        "reachable": true,
+        "segments": [
+          "Messaging settings",
+          "Messaging safety",
+          "Scan messages for file types that are not allowed"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Whether Weaponizable File Protection is on",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingconfiguration",
+        "reachable": true,
+        "token": "Set-CsTeamsMessagingConfiguration",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": [
+    {
+      "date": "2026-11-16",
+      "status": "held",
+      "version": 1,
+      "model": "none"
+    }
+  ]
 }

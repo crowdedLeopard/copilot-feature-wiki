@@ -44,6 +44,17 @@ changes:
   - date: "2026-11-16"
     note: "First briefing for this item, covering the January 2027 rollout window in MC1269864."
 version: 1
+verification:
+  status: "held"
+  date: "2026-11-16"
+  version: 1
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 40
+  confirmed: 39
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 1
 ---
 
 ## What's changing
@@ -136,4 +147,12 @@ Microsoft's notice MC1269864 states that there are no admin controls for these s
 risk: Low. This is a change to how the chat list is arranged for users; Microsoft's notice describes no new data access, and the Muted chats section is on by default.
 cost: Low. The only cost the sources show is admin and helpdesk time for communication; licensing is not yet published and neither the roadmap item nor Microsoft's notice mentions a charge.
 impact: High. Microsoft's notice says all Teams users are affected and that muted chats move into a separate section by default, which changes what users see in their chat list.
+-->
+
+<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
+The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
+- [contradicted, blocker] What's changing; Cost and licensing; Governance guidance: After rollout / absence: Microsoft Learn does not describe or document these sections at the time of writing. | Found: | MutedChats | The muted chats section. |
+| MeetingChats | The meeting chats section. |
+
+System-defined sections can't be deleted, and only the **sortType** property can be updated. | Fix: Replace the blanket Learn-absence statements with: 'Microsoft Learn's Graph beta teamworkSection reference names MutedChats and MeetingChats and documents limited section operations. The defaults, rollout and user-setting guidance here come from MC1269864.' Add https://learn.microsoft.com/graph/api/resources/teamworksection?view=graph-rest-beta to sources. Revise After rollout to compare observed behaviour with the notice and monitor documentation updates. Do not equate beta per-user section operations with a tenant enable/disable switch. | Source: https://learn.microsoft.com/graph/api/resources/teamworksection?view=graph-rest-beta
 -->

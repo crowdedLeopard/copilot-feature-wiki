@@ -81,6 +81,17 @@ changes:
   - date: "2026-11-16"
     note: "First briefing for this item: documents the roadmap and Message Center description, the SharePoint Advanced Management prerequisites, and that Learn does not yet describe the group report."
 version: 1
+verification:
+  status: "held"
+  date: "2026-11-16"
+  version: 1
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 70
+  confirmed: 65
+  unconfirmed: 2
+  contradicted: 3
+  attempts: 1
 ---
 
 ## What's changing
@@ -182,4 +193,17 @@ Microsoft Learn says the SharePoint Advanced Management Administrator role is ne
 risk: Low. This is a new reporting control: if nobody runs it, any group oversharing it would reveal stays as it is today. Microsoft's notice describes a report, not a change to site permissions; its default state is not stated.
 cost: Low. The only cost the sources show is admin time. Whether the group report needs a licence beyond the SharePoint Advanced Management prerequisites that govern Data access governance reports is not yet published.
 impact: Low. Microsoft's notice names SharePoint administrators as the people affected; site users and group members see no change.
+-->
+
+<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
+The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
+- [contradicted, blocker] controls[1].api / absence: An automation counterpart for accessing the existing Data access governance reports is not documented. | Found: Lists various 'Data Access Governance' (DAG) reports in SharePoint admin center.
+
+This cmdlet fetches details of various DAG reports available in SharePoint admin center. | Fix: Replace this generic reporting row's null API with Get-SPODataAccessGovernanceInsight -ReportEntity <entity>, linking its reference page. Note that it lists existing reports and does not establish support for the new arbitrary-group report; alternatively remove this redundant generic row. | Source: https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/get-spodataaccessgovernanceinsight?view=sharepoint-ps
+- [supported, minor] controls[2].api / command: The cited PowerShell guide documents Start-SPODataAccessGovernanceInsight with PermissionsReport, Snapshot, SharePoint, Name and UserEmailList for the user report. | Found: Start-SPODataAccessGovernanceInsight -ReportEntity PermissionsReport -ReportType Snapshot -Workload SharePoint -Name "UserSharePointReport" -UserEmailList "a@contoso.com","b@contoso.com" | Fix: Explicitly report the documentation disagreement: the cited guide uses -UserEmailList, but https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/start-spodataaccessgovernanceinsight?view=sharepoint-ps lists -UserPrincipalNames as mandatory in UserPermissionsParameterSet and does not list -UserEmailList. Prefer the reference spelling in the copyable command and cite both pages; do not imply the guide's spelling is independently confirmed by the reference. | Source: https://learn.microsoft.com/sharepoint/powershell-for-data-access-governance
+- [contradicted, blocker] front matter: licensing.model / consistency: The briefing assigns the group report a confirmed mixed licensing model. | Found: model: "mixed"; notes: "Licensing for the group report itself is not yet published."; Open questions: "Which licence and role does the group report need" | Fix: Set licensing.model to "unknown". Retain the documented SAM routes as explicitly labelled background in licensing.notes and Cost and licensing, without treating them as a confirmed entitlement for the new group report.
+- [unsupported, blocker] Governance guidance: Before rollout, first bullet / applicability: Confirming a Copilot, Plan 1 or Microsoft 365 E7 SAM route establishes whether this group report will appear. | Found: Searched: SharePoint data access governance group permissions report licensing price meter default enabled role; "SharePoint" "given group" "report". Opened SAM prerequisites and DAG overview; these give general entitlements but do not confirm this report's eligibility. | Fix: Replace the bullet with: "Inventory your tenant's existing SharePoint Advanced Management entitlement (Copilot licence, Plan 1 add-on or Microsoft 365 E7), but do not assume it guarantees access to the group report: Microsoft has not yet published the report-specific licensing requirement."
+- [unsupported, major] Why it matters: opening sentence / behaviour: Group-based access accounts for most oversharing. | Found: Searched: SharePoint oversharing most group based access site permissions groups. Read DAG overview and returned excerpts for organisation permissions, special groups and modern sharing permissions; none says group-based access accounts for most oversharing. | Fix: Replace "Group-based access is how most oversharing happens quietly" with "Broad-membership groups can expose sensitive content to unintended recipients", which the roadmap and MC1540348 state. Present the site-by-site comparison as analysis rather than an absolute claim about what reviews can never show.
+- [supported, minor] Why it matters: group membership and access / behaviour: Granting a SharePoint group permissions grants those group permissions to its members. | Found: All the users in a group automatically have the permission level of the group. | Fix: Add https://learn.microsoft.com/sharepoint/default-sharepoint-groups to sources for the group-permission inheritance premise. | Source: https://learn.microsoft.com/sharepoint/default-sharepoint-groups#permission-levels-for-default-sharepoint-groups
+- [contradicted, minor] Governance guidance versus controls / consistency: The checklist names controls that are missing from the controls table. | Found: Checklist: "Check the Reports setting"; "Run the site permissions for your organisation report first"; "Restricted access control or Site access review". Table rows cover only the group report, general DAG access and the user report. | Fix: Add rows for the Microsoft 365 Reports concealment setting, the organisation-wide permissions baseline, Restricted access control and Site access review, reading their exact paths and automation before filling them. Alternatively remove optional remediation instructions from the checklist and keep them as background notes.
 -->

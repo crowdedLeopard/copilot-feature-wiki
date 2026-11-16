@@ -67,6 +67,17 @@ changes:
   - date: "2026-11-16"
     note: "First briefing for this item, reflecting MC1455014 as updated on 3 November 2026 (rollout from mid-December 2026) and the events policy cmdlet reference."
 version: 1
+verification:
+  status: "held"
+  date: "2026-11-16"
+  version: 1
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 59
+  confirmed: 55
+  unconfirmed: 0
+  contradicted: 4
+  attempts: 1
 ---
 
 ## What's changing
@@ -163,4 +174,14 @@ The Learn reference marks the Teams events policy as still in preview. Both cont
 risk: Medium. Event organisers get reports under the new setting's default (On, organizers can turn it off), and Microsoft has not said whether a meeting policy set to Off carries over to events.
 cost: Low. The only cost evident is admin time to set and communicate the policy; the roadmap and Learn's attendance report page name no licence or meter for it at the time of writing (November 2026).
 impact: Medium. Teams events organisers notice if reports appear or disappear; organisers of ordinary meetings are not affected by the new setting.
+-->
+
+<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
+The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
+- [supported, minor] controls[1].ui; Governance controls / admin-path: The current meeting-report setting is at Teams admin center > Meetings > Meeting policies > Meeting scheduling > Attendance and engagement report. | Found: go to Meetings > Meeting policies. 2. Select the policy you want to update or create a new policy. 3. Go to the Meeting scheduling section. 4. Choose one of the following options for Attendance and engagement report | Fix: Insert the policy-selection step in the front matter and rendered table: Meetings > Meeting policies > policy > Meeting scheduling > Attendance and engagement report. | Source: https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/meeting-attendance-report
+- [supported, minor] Risk assessment: Security & identity / behaviour: Administrators cannot view attendance and engagement reports for events they did not organise. | Found: As an admin, you can’t view the attendance and engagement report for meetings and events that you didn't organize. However, you can view attendees' details for a given meeting or event within 24 hours of that meeting or event. | Fix: Retain the report-access restriction, but qualify the conclusion: administrators can still view participant details within 24 hours through Users > Manage users > organizer > Meetings & calls > meeting or call > Participant details. This is not access to the report itself. | Source: https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/meeting-attendance-report
+- [contradicted, blocker] Open questions / availability: Whether GCC receives the setting at the same time as Worldwide is unstated beyond the roadmap cloud list. | Found: General Availability (Worldwide, GCC): Rollout will begin in mid-December 2026 (previously early November) and is expected to complete by early January 2027 (previously early December 2026) | Fix: Remove this open question and its assertion of missing information. State that MC1455014 gives Worldwide and GCC the same planned rollout window, mid-December 2026 through early January 2027; this does not promise simultaneous activation in every tenant.
+- [contradicted, blocker] Open questions / licensing: Microsoft has not stated whether a licence is required for event reports. | Found: All eligible Teams licenses include the foundational capabilities needed to create and run events, engage attendees, review attendance reports, and publish event recordings. | Fix: Replace this open question with the published distinction at https://learn.microsoft.com/microsoftteams/events-licensing: Attendance reports are foundational; Attendance and engagement reports are advanced event features. Cite that page and its eligible-licence table. Keep any unknown limited to separate licensing for the new policy setting itself, not the reports it governs. | Source: https://learn.microsoft.com/microsoftteams/events-licensing
+- [contradicted, minor] front matter: action / consistency: The prepare action rating fits the standard for the verified rollout and medium risk. | Found: action: "prepare"; risk: "medium"; "If nobody acts, event organisers get the new setting's default"; "rollout begins in mid-December 2026". | Fix: Set action to act-now under the schema's approximately-60-day rule: on 16 November 2026 the automatic mid-December rollout is about one month away, risk is medium, and administrators have a reporting-policy decision to make. This is a wiki action rating, not a Microsoft act-by deadline.
+- [contradicted, minor] Governance guidance: Before rollout and At rollout; Governance controls / consistency: The governance table covers the policy-assignment checks recommended in the checklist. | Found: "Record ... which users hold them"; "Check which events policy each event-organising user holds"; the controls table contains only the two report-setting rows. | Fix: Add a policy-assignment row using https://learn.microsoft.com/microsoftteams/meeting-policies-overview for the documented edit/assignment context and its linked policy-assignment guidance, or remove the assignment-specific checklist instructions. Read the assignment reference before supplying a precise user-assignment path or command.
 -->

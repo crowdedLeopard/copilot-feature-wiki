@@ -5,27 +5,874 @@
   "status": "held",
   "date": "2026-11-16",
   "version": 1,
-  "model": "none",
-  "engine": "manual",
-  "attempts": 0,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [
+    "claim 55: severity major on a rationale: risk rating lowered to minor; ratings are judgements and cannot hold a page"
+  ],
   "hold": {
-    "reason": "unverified",
+    "reason": "failed",
     "since": "2026-11-16",
     "reasons": [
-      "Written but not yet checked against Microsoft Learn."
+      "2 blocking findings (claims 35, 60)"
     ]
   },
   "counts": {
-    "claims": 0,
-    "confirmed": 0,
-    "unconfirmed": 0,
+    "claims": 68,
+    "confirmed": 65,
+    "unconfirmed": 3,
     "contradicted": 0,
-    "blocker": 0,
+    "blocker": 2,
     "major": 0,
-    "minor": 0
+    "minor": 2
   },
-  "summary": "Written but not yet checked against Microsoft Learn.",
-  "claims": [],
-  "precheck": null,
-  "history": []
+  "summary": "Hold: the briefing turns unpublished controls into definite claims that no budget control applies and that anomaly detection cannot be tuned. The rollout, access paths and licensing uncertainty are otherwise supported, but Microsoft's notice does not establish those restrictions or explicitly describe the feature as read-only.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "Microsoft plans AI-powered meeting-quality insights in the Teams admin center.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Gain proactive visibility into meeting quality across your organization with AI-powered insights in the Teams admin center",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is November CY2026, presented as a plan rather than a commitment.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"November CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Targeted Release.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\n    \"General Availability\",\n    \"Targeted Release\"\n  ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) and GCC, without listing other clouds.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\n    \"Worldwide (Standard Multi-Tenant)\",\n    \"GCC\"\n  ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\n    \"Web\"\n  ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap was modified at 2026-10-15T22:47:30.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-15T22:47:30\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: defaultState; summary; Why it matters",
+      "type": "default",
+      "claim": "The insights become available to their intended administrators without administrator configuration, supporting defaultState on.",
+      "status": "supported",
+      "source": "Message Center post MC1523077",
+      "quote": "No configuration is required. Once available in your tenant, navigate to Teams admin center > Meetings > Meetings to start reviewing insights.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "licensing",
+      "claim": "Licensing for these specific insights is not yet published, so the licensing model is unknown.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams\" \"intelligent insights\" \"meeting quality\" licensing billing; \"meeting quality\" \"insights\" \"license\" \"admin center\". Read MC1523077, meeting-troubleshooting documentation and Teams Premium licensing excerpts; none states this feature's licence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "MC1523077 names no licence or add-on for the insights.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams\" \"intelligent insights\" \"meeting quality\" licensing billing. Read the complete supplied MC1523077, including Action Required/Recommendations and Compliance considerations; it names no licence or add-on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No meter is described in the notice or published documentation found for the insights.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"meeting quality\" \"insights\" \"budget\" \"meter\"; \"Teams\" \"intelligent insights\" \"meeting quality\" licensing billing. Read MC1523077 and meeting-troubleshooting documentation; neither names a meter for these insights.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "controls[0].ui; controls[0].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No tenant UI switch, policy, PowerShell setting or API to enable or disable these insights is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams\" \"intelligent insights\" disable PowerShell Graph policy administrative units privacy. Read MC1523077 and Monitor and troubleshoot Teams meetings and calls; no tenant UI switch, policy, PowerShell setting or API for these insights found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The Entra role-assignment path is Entra ID > Users > select the user > Assigned roles > Add assignments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/fundamentals/users-assign-role-azure-portal",
+      "quote": "Browse to **Entra ID** > **Users**. ... Search for and select the user getting the role assignment. ... Select **Assigned roles** from the side menu, then select **Add assignments**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "POST https://graph.microsoft.com/v1.0/roleManagement/directory/roleAssignments creates a directory role assignment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/custom-enterprise-apps",
+      "quote": "POST https://graph.microsoft.com/v1.0/roleManagement/directory/roleAssignments",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "controls[1].note; Governance controls table",
+      "type": "role",
+      "claim": "The cited portal role-assignment procedure requires Privileged Role Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/fundamentals/users-assign-role-azure-portal",
+      "quote": "Sign in to the [Microsoft Entra admin center](https://entra.microsoft.com) as a [Privileged Role Administrator]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[1].note; Governance controls",
+      "type": "applicability",
+      "claim": "Microsoft Entra role assignment is a general control for membership of the Teams administrator roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/using-admin-roles",
+      "quote": "You can assign users or groups to these roles in Microsoft Entra ID.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[2].ui; Governance guidance: Before rollout; Governance controls table",
+      "type": "admin-path",
+      "claim": "The existing dashboard is at Teams admin center > Meetings > Best practice configurations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/best-practice-dashboard",
+      "quote": "In the left navigation of the Teams admin center, go to **Meetings** > **Best practice configurations**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[2].api; Governance controls table",
+      "type": "absence",
+      "claim": "An API or PowerShell equivalent for the best practice configurations dashboard is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams best practice configurations dashboard API PowerShell Microsoft Graph. Opened Best practice configurations dashboard for Microsoft Teams meetings; it documents portal navigation and CSV export, but no dashboard API or cmdlet.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[2].note; Why it matters; Governance controls",
+      "type": "behaviour",
+      "claim": "The existing best practice configurations dashboard highlights locations not following Microsoft's recommended practices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/best-practice-dashboard",
+      "quote": "The dashboard highlights locations that don't follow Microsoft's recommended best practices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[2].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "The existing dashboard evaluates monitored areas over seven days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/best-practice-dashboard",
+      "quote": "All monitored areas are evaluated over a period of seven days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[2].note; Governance controls",
+      "type": "applicability",
+      "claim": "The best practice configurations dashboard is presented only as a separate existing location view, not as a control over the new insights.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/best-practice-dashboard",
+      "quote": "This dashboard provides you with best practice configurations, the effect of your current settings, and actions you can take to follow Microsoft's recommendations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
+      "type": "record",
+      "claim": "The insights evaluate historical meeting-quality data across the organisation.",
+      "status": "supported",
+      "source": "Message Center post MC1523077",
+      "quote": "The experience evaluates historical meeting-quality data across the organization",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "summary; What's changing; Why it matters; Risk assessment",
+      "type": "record",
+      "claim": "The insights highlight locations or public IP addresses where meeting quality behaves unusually.",
+      "status": "supported",
+      "source": "Message Center post MC1523077",
+      "quote": "highlights locations or public IPs where meeting quality is behaving unusually.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Why it matters; Risk assessment",
+      "type": "record",
+      "claim": "Administrators can see how many users are affected by a meeting-quality hotspot.",
+      "status": "supported",
+      "source": "Message Center post MC1523077",
+      "quote": "Identify meeting-quality hotspots across locations and public IPs and see how many users are affected.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Administrators can review meeting-quality trends over time.",
+      "status": "supported",
+      "source": "Message Center post MC1523077",
+      "quote": "Review quality trends to understand how meeting quality has changed over time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Likely network causes include bandwidth, Wi-Fi, VPN and proxy.",
+      "status": "supported",
+      "source": "Message Center post MC1523077",
+      "quote": "network factors such as bandwidth, Wi-Fi, VPN and proxy",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Likely compute causes include CPU, memory and client.",
+      "status": "supported",
+      "source": "Message Center post MC1523077",
+      "quote": "compute factors such as CPU, memory and client",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Likely device causes include microphones, cameras and speakers.",
+      "status": "supported",
+      "source": "Message Center post MC1523077",
+      "quote": "devices such as microphones, cameras and speakers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "summary; What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The insights offer recommended actions based on the likely cause and issue severity.",
+      "status": "supported",
+      "source": "Message Center post MC1523077",
+      "quote": "Take recommended actions based on the likely cause and severity of the issue.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing; Risk assessment",
+      "type": "record",
+      "claim": "Administrators can review affected users and supporting evidence.",
+      "status": "supported",
+      "source": "Message Center post MC1523077",
+      "quote": "Review affected users and supporting evidence to better understand the scope and impact of the anomaly.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "summary; What's changing; Governance guidance: At rollout",
+      "type": "record",
+      "claim": "Insights refresh daily.",
+      "status": "supported",
+      "source": "Message Center post MC1523077",
+      "quote": "Insights are refreshed daily",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What's changing; Why it matters; Risk assessment; Governance guidance: At rollout",
+      "type": "record",
+      "claim": "Machine learning dynamically evaluates what constitutes anomalous meeting quality.",
+      "status": "supported",
+      "source": "Message Center post MC1523077",
+      "quote": "use machine learning to dynamically evaluate what constitutes anomalous behavior",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Administrators do not need to configure anomaly thresholds.",
+      "status": "supported",
+      "source": "Message Center post MC1523077",
+      "quote": "so administrators don’t need to configure thresholds.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "absence",
+      "claim": "There are no thresholds to set and anomaly detection is not tunable.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"meeting quality\" \"insights\" \"thresholds\"; Teams admin center intelligent insights meeting quality licensing enable disable policy PowerShell thresholds. Read MC1523077: it says admins don't need to configure thresholds, not that tuning is impossible.",
+      "severity": "blocker",
+      "fix": "Replace 'so there are no thresholds to set' with 'so administrators do not need to configure thresholds'. Replace 'Anomaly detection is automatic and not tunable' with 'Machine learning evaluates anomalies automatically, without requiring administrators to configure thresholds'. MC1523077 does not state whether optional tuning exists."
+    },
+    {
+      "n": 36,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The insights use meeting data across the tenant and supported clients and platforms.",
+      "status": "supported",
+      "source": "Message Center post MC1523077",
+      "quote": "The insights use meeting data across the tenant and supported clients and platforms.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "record",
+      "claim": "Meeting telemetry from SIP phones is excluded.",
+      "status": "supported",
+      "source": "Message Center post MC1523077",
+      "quote": "They do not include meeting telemetry from SIP phones",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "record",
+      "claim": "Telemetry from PSTN calls is excluded.",
+      "status": "supported",
+      "source": "Message Center post MC1523077",
+      "quote": "or telemetry from PSTN and peer-to-peer calls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "record",
+      "claim": "Telemetry from peer-to-peer calls is excluded.",
+      "status": "supported",
+      "source": "Message Center post MC1523077",
+      "quote": "or telemetry from PSTN and peer-to-peer calls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1523077 was published on 2026-10-23.",
+      "status": "supported",
+      "source": "Message Center post MC1523077",
+      "quote": "Published 2026-10-23; last updated 2026-10-23",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "Administrators find the new troubleshooting enhancements at Teams admin center > Meetings > Meetings.",
+      "status": "supported",
+      "source": "Message Center post MC1523077",
+      "quote": "Administrators can find these insights in Teams admin center > Meetings > Meetings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "What's changing; Scope: Rollout; Governance guidance: At rollout; changes",
+      "type": "record",
+      "claim": "Worldwide rollout begins in mid-November 2026 with expected completion by early December 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1523077",
+      "quote": "General Availability (Worldwide): We will begin rolling out in mid-November 2026 and expect to complete by early December 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "What's changing; Scope: Rollout; Governance guidance: At rollout; Open questions",
+      "type": "record",
+      "claim": "GCC rollout begins in mid-November 2026 with expected completion by mid-December 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1523077",
+      "quote": "General Availability (GCC): We will begin rolling out in mid-November 2026 and expect to complete by mid-December 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "summary; controls[0].note; Why it matters; Governance controls",
+      "type": "record",
+      "claim": "Microsoft's notice says no configuration is required.",
+      "status": "supported",
+      "source": "Message Center post MC1523077",
+      "quote": "No configuration is required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "What's changing; Cost and licensing",
+      "type": "absence",
+      "claim": "No Microsoft Learn page describing these specific insights was found at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams\" \"intelligent insights\" \"meeting quality\"; \"Teams\" \"intelligent insights\" \"meeting quality\" licensing billing. Opened Monitor and troubleshoot Teams meetings and calls and Best practice configurations dashboard; neither describes this new insights experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "The existing documented troubleshooting experience provides per-user and per-meeting investigation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/monitor-troubleshoot-teams-meetings-calls",
+      "quote": "diagnose and resolve meeting and call quality issues for individual users and meetings across your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The existing troubleshooting experience already offers suggested root cause analysis per meeting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/monitor-troubleshoot-teams-meetings-calls",
+      "quote": "**Meeting view** - Shows the details of a specific meeting, including participant summaries, issue trends, and suggested root cause analysis.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "record",
+      "claim": "The notice says the feature does not alter how customer data is stored or processed.",
+      "status": "supported",
+      "source": "Message Center post MC1523077",
+      "quote": "it does not alter how customer data is stored or processed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The existing troubleshooting documentation says identifiable information for federated and external participants is obfuscated.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/monitor-troubleshoot-teams-meetings-calls",
+      "quote": "For federated and external participants, end-user identifiable information (EUII) is obfuscated to protect privacy in accordance with Microsoft data handling policies.",
+      "severity": "minor",
+      "fix": "Add the qualification 'except for peer-to-peer calls, where relevant identifiable information is not obfuscated'. The cited page states that exception immediately afterwards. This does not change the new insights' stated scope because MC1523077 excludes peer-to-peer telemetry."
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "Microsoft Learn does not establish whether the same participant-information obfuscation applies to the new insights.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams intelligent insights meeting quality affected users administrative units obfuscated telemetry retention. Opened Monitor and troubleshoot Teams meetings and calls; its obfuscation statement concerns the meeting participant view, not the new insights.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "summary; Risk assessment: Security & identity; Scope: Who sees it; rationale: impact",
+      "type": "role",
+      "claim": "The notice lists Global Administrators, Teams Administrators, Teams Communications Administrators, Teams Communications Support Engineers and Teams Communications Support Specialists as the audience.",
+      "status": "supported",
+      "source": "Message Center post MC1523077",
+      "quote": "The experience is available to Global Administrators, Teams Administrators, Teams Communications Administrators, Teams Communications Support Engineers, and Teams Communications Support Specialists.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Teams Communications Support Specialist uses basic troubleshooting tools and can view user information only for the specific user being searched for.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/using-admin-roles",
+      "quote": "Troubleshoot communications issues within Teams by using **basic** tools. | Access user profile page for troubleshooting calls in Call Analytics. Can only view user information for the specific user being searched for.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "The feature descriptions do not describe a new identity, permission or consent requirement.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams\" \"intelligent insights\" disable PowerShell Graph policy administrative units privacy; \"Teams\" \"intelligent insights\" \"meeting quality\". Read full MC1523077 and the roadmap; they name existing admin roles but no new identity, permission or consent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "The notice does not describe the feature changing settings itself.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams\" \"intelligent insights\" \"meeting quality\". Read full MC1523077; it describes administrators taking recommended actions, not automatic setting changes. Opened Monitor and troubleshoot Teams meetings and calls; no description of these insights automating changes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "rationale: risk",
+      "type": "behaviour",
+      "claim": "MC1523077 says the insights are read-only analysis.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Teams\" \"intelligent insights\" \"meeting quality\". Read MC1523077 in full and opened meeting-troubleshooting documentation. The notice describes analysis and recommended actions but does not explicitly establish a read-only guarantee.",
+      "severity": "minor",
+      "fix": "Replace 'says the insights are read-only analysis of existing meeting-quality data' with 'says the insights analyse historical meeting-quality data and surface recommendations'. Retain the separately supported statement about unchanged customer-data storage and processing."
+    },
+    {
+      "n": 56,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Existing meeting troubleshooting data is available for all Teams users regardless of licence type.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/monitor-troubleshoot-teams-meetings-calls",
+      "quote": "Meeting troubleshooting data (real-time granular and aggregate) is available for all Teams users regardless of license type.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "For existing troubleshooting data, telemetry depth and retention vary by licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/monitor-troubleshoot-teams-meetings-calls",
+      "quote": "However, the depth and retention period of telemetry data varies by license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "Existing real-time telemetry is retained for seven days after a meeting ends for Teams Premium and Teams Rooms Pro users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/monitor-troubleshoot-teams-meetings-calls",
+      "quote": "Real-time telemetry is available for users and accounts with **Teams Premium** and **Teams Rooms Pro** licenses for seven days after the meeting ends.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "Existing aggregated telemetry is retained for 30 days after a meeting ends for all users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/monitor-troubleshoot-teams-meetings-calls",
+      "quote": "Aggregated telemetry is available for all users for 30 days after the meeting ends.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "No cap or budget control applies because no meter is described.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"meeting quality\" \"insights\" \"budget\" \"meter\"; \"Teams\" \"intelligent insights\" \"meeting quality\" licensing billing. Read MC1523077 and meeting-troubleshooting documentation; neither states that a cap or budget control does not apply.",
+      "severity": "blocker",
+      "fix": "Replace 'No cap or budget control applies, because no meter is described' with 'No meter, spending cap or budget control is documented for these insights at the time of writing (November 2026)'. Unpublished charging information does not establish that budget controls are inapplicable."
+    },
+    {
+      "n": 61,
+      "where": "Scope: Prerequisites",
+      "type": "absence",
+      "claim": "The notice names no setup prerequisites beyond its stated administrator audience.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams\" \"intelligent insights\" \"meeting quality\" licensing billing. Read all sections of MC1523077; it says no configuration is required, names the five administrator roles, and lists no further setup prerequisites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Scope: Prerequisites",
+      "type": "role",
+      "claim": "The existing troubleshooting experience requires a supported admin role assigned in Microsoft Entra ID.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/monitor-troubleshoot-teams-meetings-calls",
+      "quote": "You have one of the supported admin roles assigned in Microsoft Entra ID.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Scope: Prerequisites; Governance controls",
+      "type": "applicability",
+      "claim": "Administrative unit assignment determines which users' meetings an administrator can access in existing troubleshooting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/monitor-troubleshoot-teams-meetings-calls",
+      "quote": "If your organization uses Administrative Units (AUs), your AU assignment determines which users' meetings you can access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Scope: Prerequisites",
+      "type": "role",
+      "claim": "Partner admins using GDAP need Teams Communications Support Specialist or Teams Communications Support Engineer in the customer tenant for existing troubleshooting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/monitor-troubleshoot-teams-meetings-calls",
+      "quote": "Partner admins using Granular Delegated Admin Privileges (GDAP) must be assigned the Teams Communications Support Specialist (TCSS) or Teams Communications Support Engineer (TCSE) role in the customer tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "The Teams administrator roles page describes administrative-unit scoping to selected users or groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/using-admin-roles",
+      "quote": "For more information about scoping these admin roles to select users/ groups within your organization, see [Administrative units for Microsoft Teams]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Scope: Prerequisites; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "The existing troubleshooting prerequisites and administrative-unit limitations are not confirmed as applying to the new insights.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams intelligent insights meeting quality affected users administrative units obfuscated telemetry retention. Read MC1523077 and Monitor and troubleshoot Teams meetings and calls, including prerequisites; no insights-specific administrative-unit rule found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Governance guidance: At rollout",
+      "type": "record",
+      "claim": "Teams Reader is not among the roles named in MC1523077.",
+      "status": "supported",
+      "source": "Message Center post MC1523077",
+      "quote": "The experience is available to Global Administrators, Teams Administrators, Teams Communications Administrators, Teams Communications Support Engineers, and Teams Communications Support Specialists.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Scope: Who sees it; rationale: risk; rationale: impact",
+      "type": "availability",
+      "claim": "The announced insights experience is for administrators rather than end users.",
+      "status": "supported",
+      "source": "Message Center post MC1523077",
+      "quote": "This feature uses AI/machine learning to analyze historical meeting-quality data and surface insights to admins",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-16T17:06:50.865Z",
+    "summary": {
+      "links": 7,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=574108",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1523077",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/monitor-troubleshoot-teams-meetings-calls",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/using-admin-roles",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/fundamentals/users-assign-role-azure-portal",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/best-practice-dashboard",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/role-based-access-control/custom-enterprise-apps",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which administrators can view the insights (Microsoft Entra role assignment)",
+        "docs": "https://learn.microsoft.com/entra/fundamentals/users-assign-role-azure-portal",
+        "reachable": true,
+        "segments": [
+          "Entra ID",
+          "Users",
+          "select the user",
+          "Assigned roles",
+          "Add assignments"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Which administrators can view the insights (Microsoft Entra role assignment)",
+        "docs": "https://learn.microsoft.com/entra/identity/role-based-access-control/custom-enterprise-apps",
+        "reachable": true,
+        "token": "/v1.0/roleManagement/directory",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Existing location view for network best practices (not the new insights)",
+        "docs": "https://learn.microsoft.com/microsoftteams/best-practice-dashboard",
+        "reachable": true,
+        "segments": [
+          "Meetings",
+          "Best practice configurations"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": [
+    {
+      "date": "2026-11-16",
+      "status": "held",
+      "version": 1,
+      "model": "none"
+    }
+  ]
 }

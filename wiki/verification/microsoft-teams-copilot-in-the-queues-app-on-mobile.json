@@ -5,27 +5,699 @@
   "status": "held",
   "date": "2026-11-16",
   "version": 1,
-  "model": "none",
-  "engine": "manual",
-  "attempts": 0,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [],
   "hold": {
-    "reason": "unverified",
+    "reason": "failed",
     "since": "2026-11-16",
     "reasons": [
-      "Written but not yet checked against Microsoft Learn."
+      "3 blocking findings (claims 35, 47, 48)"
     ]
   },
   "counts": {
-    "claims": 0,
-    "confirmed": 0,
+    "claims": 50,
+    "confirmed": 45,
     "unconfirmed": 0,
-    "contradicted": 0,
-    "blocker": 0,
+    "contradicted": 5,
+    "blocker": 3,
     "major": 0,
-    "minor": 0
+    "minor": 3
   },
-  "summary": "Written but not yet checked against Microsoft Learn.",
-  "claims": [],
-  "precheck": null,
-  "history": []
+  "summary": "Hold: the recording PowerShell command omits a private-preview restriction and a warning that saving through Teams admin center removes its setting. The blanket statement that Microsoft has not documented Copilot interaction storage or auditing also overlooks published Purview guidance; distinguish that guidance from unconfirmed mobile Queues-specific details.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is December CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"December CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "summary; front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The mobile feature is planned for Android and iOS.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Android\", \"iOS\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap item was modified at 2026-11-04T00:02:09.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-04T00:02:09\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "summary; What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "Copilot in mobile Queues lets users ask questions about past calls from shared call history and surface conversational information and insights.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "From shared call history, users can ask questions about a past call and use Copilot to surface relevant information and insights from the conversation",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Risk assessment: Security & identity; Scope; rationale: impact",
+      "type": "record",
+      "claim": "Microsoft identifies calling reps and supervisor leads as the intended users.",
+      "status": "supported",
+      "source": "Message Center post MC1552391",
+      "quote": "From shared call history, calling reps and supervisor leads can ask Copilot questions about a past call",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "summary; What's changing; Why it matters; Scope; Governance guidance",
+      "type": "record",
+      "claim": "Copilot is available for recorded call queue calls.",
+      "status": "supported",
+      "source": "Message Center post MC1552391",
+      "quote": "Copilot is available for recorded call queue calls, as it is on desktop.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "Copilot in the Queues app is already available on desktop.",
+      "status": "supported",
+      "source": "Message Center post MC1552391",
+      "quote": "Copilot in the Queues app is already available on desktop, and Mobile brings the same capability to the phone.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Risk assessment: Data exposure; rationale: risk",
+      "type": "record",
+      "claim": "The feature does not change how recordings are created, stored or accessed.",
+      "status": "supported",
+      "source": "Message Center post MC1552391",
+      "quote": "This feature does not change how call recordings are created, stored, or accessed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Microsoft published MC1552391 on 2026-11-13.",
+      "status": "supported",
+      "source": "Message Center post MC1552391",
+      "quote": "Published 2026-11-13; last updated 2026-11-13",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Why it matters",
+      "type": "record",
+      "claim": "Targeted Release is scheduled to begin in late November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1552391",
+      "quote": "Targeted Release (Worldwide): We will begin rolling out on late November 2026",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Targeted Release completion is expected by early December 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1552391",
+      "quote": "Targeted Release (Worldwide): We will begin rolling out on late November 2026 and expect to complete by early December 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "General Availability rollout is scheduled to begin in early December 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1552391",
+      "quote": "General Availability (Worldwide): We will begin rolling out on early December 2026",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "General Availability rollout completion is expected by mid December 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1552391",
+      "quote": "General Availability (Worldwide): We will begin rolling out on early December 2026 and expect to complete by mid December 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice sets no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1552391",
+      "quote": "Act by: none",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "summary; front matter: defaultState; Why it matters",
+      "type": "default",
+      "claim": "The feature reaches eligible users without admin action, supporting defaultState on.",
+      "status": "supported",
+      "source": "Message Center post MC1552391",
+      "quote": "No admin action is required before rollout.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "summary; licensing.notes; Cost and licensing; Scope; rationale: cost",
+      "type": "licensing",
+      "claim": "Users need Teams Premium to use the Queues app.",
+      "status": "supported",
+      "source": "Message Center post MC1552391",
+      "quote": "Users need a Teams Premium license to use the Queues app",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "summary; licensing.notes; Cost and licensing; Scope; rationale: cost",
+      "type": "licensing",
+      "claim": "Users need a Microsoft 365 Copilot licence to use Copilot in the Queues app.",
+      "status": "supported",
+      "source": "Message Center post MC1552391",
+      "quote": "Users need a Teams Premium license to use the Queues app and a Microsoft 365 Copilot license to use Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "licensing.notes; Cost and licensing; Governance guidance: Before rollout",
+      "type": "licensing",
+      "claim": "Queues app users also require Teams Phone.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-queues-app",
+      "quote": "Users must have a Teams Phone and a Teams Premium license to use Queues app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "front matter: licensing.model; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Teams Premium and Copilot are add-on licences, supporting licensing model add-on and medium cost.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/microsoft-teams-add-on-licensing",
+      "quote": "Microsoft Teams Premium is an add-on license to Teams",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/microsoft-teams-add-on-licensing to sources for Teams Premium's add-on classification. The already cited Copilot calling page states: 'For 1:1 Teams calls, assign an add-on Microsoft Copilot license for your intended users.'"
+    },
+    {
+      "n": 24,
+      "where": "Scope: Users",
+      "type": "default",
+      "claim": "The Queues app is enabled by default for voice-enabled Teams users with Teams Premium and Teams Phone.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-queues-app",
+      "quote": "Queues app is enabled by default for all Teams users in your organization who are assigned both a Teams Premium and Teams Phone license and who are voice enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The Queues app can take up to 48 hours to appear after Teams Premium licensing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-queues-app",
+      "quote": "Once a user is licensed for Teams Premium, it can take up to 48 hours for Queues app to be available in the Teams client.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Scope: Platforms and cloud",
+      "type": "availability",
+      "claim": "The Queues app supports iOS and Android mobile clients.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-queues-app",
+      "quote": "The Queues app is currently supported on Teams desktop, Mac, and Virtualized Desktop Infrastructure (VDI) clients, Teams phones (touch devices only), and iOS and Android mobile clients.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing",
+      "type": "date",
+      "claim": "The October 27, 2026 release notes describe Copilot Chat after a call in the Queues app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes#october-27,-2026",
+      "quote": "## October 27, 2026\n### Teams\n1. **Use Copilot Chat after a call in Queues app** [Windows, Mac]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The release notes describe selecting a recorded call from unified call history and launching the Copilot Chat sidecar from Recap.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes#october-27,-2026",
+      "quote": "1.1. Open the Queues app and select a recorded call from unified call history.\n1.2. Select the Recap tab and launch the Copilot Chat sidecar.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "No Microsoft Learn page specific to the mobile Copilot Queues feature was found at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: site:learn.microsoft.com/microsoftteams \"Queues\" \"Copilot\" mobile. Opened manage-queues-app and copilot-teams-calling-transcription; read release-notes#october-27,-2026 excerpts, which specify Windows and Mac, not mobile.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The automatic recording template determines the SharePoint location of recordings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+      "quote": "An automatic recording template for Call Queue defines where, in SharePoint, recordings and transcripts will be stored",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The automatic recording template also determines the SharePoint location of transcripts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+      "quote": "An automatic recording template for Call Queue defines where, in SharePoint, recordings and transcripts will be stored",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Governance guidance: Before rollout; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The template's representative recording-access selection is made during creation and cannot subsequently be modified.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+      "quote": "Select which call recordings call queue representatives (agents) can access. Authorized users have access by default.\nThis setting can't be modified once the template is created.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[0].note",
+      "type": "admin-path",
+      "claim": "Automatic recording template creation is under Teams admin center > Voice > Templates and resources.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+      "quote": "In the Teams admin center, go to Voice > Templates and resources.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "A queue's automatic recording template is assigned at Voice > Call queue > call queue > Templates > Automatic recording template.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+      "quote": "go to Voice > Call queue.\nSelect the call queue you want to have automatic recording for.\nOn the Templates tab, scroll to find the Automatic recording template section.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "Set-CsCallQueue -Identity <Guid> -AutoRecordingTemplateId <String> is presented as an unqualified automation equivalent for assigning a recording template.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-cscallqueue",
+      "quote": "### -AutoRecordingTemplateId\nVoice applications private preview customers only.\nSaving a call queue configuration through Teams admin center will remove this setting.",
+      "severity": "blocker",
+      "fix": "Keep the real cmdlet and parameters, but qualify controls[0].note and the rendered row: the PowerShell reference restricts -AutoRecordingTemplateId to Voice applications private-preview customers and warns that saving the queue through Teams admin center removes it. Report that this conflicts with the setup page's August 13, 2026 statement that automatic recording can be configured through PowerShell; do not present unrestricted availability as settled."
+    },
+    {
+      "n": 36,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "General Teams-call Copilot configuration is at Teams admin center > Voice > Calling policies > policy > Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/copilot-teams-calling-transcription",
+      "quote": "Expand Voice from the navigation pane.\nUnder Voice, select Calling policies.\nEither select an existing policy or create a new one.\nFrom the dropdown for the Copilot setting, select On, On with saved transcript required, or Off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "Set-CsTeamsCallingPolicy -Identity <policy name> -Copilot Disabled turns off Copilot for calls covered by that calling policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/copilot-teams-calling-transcription",
+      "quote": "To turn off Copilot for calls, use the following command:\nSet-CsTeamsCallingPolicy -Identity <policy name> -Copilot Disabled",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[1].note; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "The calling-policy documentation covers 1:1 and PSTN calls but does not confirm application to Copilot in Queues shared call history.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Copilot\" \"Queues app\" disable policy PowerShell; \"Copilot\" \"Queues app\" \"mobile\" policy disable permissions. Opened copilot-teams-calling-transcription and Set-CsTeamsCallingPolicy; neither places Queues shared-history Copilot under this policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "The documented org-wide app switch is at Teams apps > Manage apps > Actions > Org-wide app settings > Microsoft apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-queues-app",
+      "quote": "Navigate to Teams apps > Manage apps. Select Actions > Org-wide app settings > Microsoft apps. Select Off and Save.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[2].note; Risk assessment: Change & support; Governance controls",
+      "type": "behaviour",
+      "claim": "Using that switch turns off the whole Queues app and also other Microsoft apps such as Insights and Tasks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-queues-app",
+      "quote": "You can turn off the Queues app via the Teams admin center. However, doing so also turns off other Microsoft apps like Insights and Tasks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[2].api",
+      "type": "absence",
+      "claim": "No automation equivalent was found for the documented org-wide switch used to disable Queues.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Queues app\" \"Org-wide\" \"PowerShell\" Microsoft apps; site:learn.microsoft.com \"Queues app\" \"PowerShell\" \"disable\". Opened manage-queues-app; its switch instructions give only the Teams admin center UI, and searches returned no equivalent call.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[3]; Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "absence",
+      "claim": "No separate UI or API switch is documented for Copilot in the Queues app on mobile.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Copilot\" \"Queues app\" \"mobile\" policy disable permissions; \"Copilot\" \"Queues app\" disable policy PowerShell. Opened manage-queues-app, copilot-teams-calling-transcription and Set-CsTeamsCallingPolicy; no mobile Queues-specific switch was documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "No separate permission for Copilot in the Queues app is described on Microsoft Learn.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: site:learn.microsoft.com \"Queues app\" \"Copilot\" \"permissions\"; \"Copilot\" \"Queues app\" \"mobile\" policy disable permissions. Opened manage-queues-app and copilot-teams-calling-transcription; no separate Queues Copilot permission was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap and supplied notice describe questions and insights for human follow-up, not autonomous action taking.",
+      "status": "supported",
+      "source": "Message Center post MC1552391",
+      "quote": "Understand a customer conversation and decide on a follow-up without reviewing the full call.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "licensing.notes; Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "No feature-specific price, meter or Copilot Credits charge is stated in the record, notice or relevant Learn documentation read.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Copilot\" \"Queues\" \"Credits\" pricing meter. Read roadmap, MC1552391, manage-queues-app, copilot-teams-calling-transcription and release-note excerpts; meter search returned general Copilot and Studio billing, not a Queues Copilot charge.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[0].note; Scope: Prerequisites; Governance guidance",
+      "type": "record",
+      "claim": "Microsoft recommends confirming automatic recording on relevant queues and reviewing Copilot and Teams Premium licence assignments.",
+      "status": "supported",
+      "source": "Message Center post MC1552391",
+      "quote": "Confirm that automatic recording is turned on for the call queues where you want users to use Copilot.- Review Microsoft 365 Copilot and Teams Premium license assignments for the users who will use the feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Open questions: Copilot questions and answers storage",
+      "type": "absence",
+      "claim": "Microsoft has not said whether Copilot questions and answers on a call are stored or where administrators can find them.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/retention-policies-copilot",
+      "quote": "Data from generative AI messages is stored in a hidden folder in the mailbox of the user who runs the AI app.",
+      "severity": "blocker",
+      "fix": "Replace the blanket 'Microsoft has not said' with the documented general framework: Microsoft 365 Copilot prompts and responses are covered by Purview retention, with compliance copies in hidden Exchange mailbox folders searchable through eDiscovery. Cite https://learn.microsoft.com/purview/retention-policies-copilot. Keep only the narrower open question of mobile Queues-specific behavior or exceptions not documented by these general pages."
+    },
+    {
+      "n": 48,
+      "where": "Open questions: Copilot questions and answers auditing",
+      "type": "absence",
+      "claim": "Microsoft has not said whether Copilot call interactions are audited or where administrators can see them.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/audit-copilot",
+      "quote": "The system automatically generates audit logs when a user interacts with Copilot, Cowork, or an AI application.",
+      "severity": "blocker",
+      "fix": "Acknowledge Microsoft's general Copilot audit documentation: with organizational auditing enabled, Copilot interactions are logged and can be searched through Audit in the Microsoft Purview portal. Cite https://learn.microsoft.com/purview/audit-copilot. Limit the open question to Queues-mobile-specific identifiers, completeness or exceptions that Microsoft has not separately documented; do not claim no auditing guidance exists."
+    },
+    {
+      "n": 49,
+      "where": "front matter: action",
+      "type": "consistency",
+      "claim": "The prepare action rating fits the page's verified rollout timing and medium licensing cost.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "action: \"prepare\"; cost: \"medium\"; Targeted Release begins late November 2026; Plan the licence assignments and the communication to queue teams before the Targeted Release window opens",
+      "severity": "minor",
+      "fix": "Change action to act-now: on the November 16 run date, automatic rollout is within about 60 days and the page rates cost medium while identifying licence and recording decisions before rollout. This follows the action scale, not a mandatory Message Center deadline."
+    },
+    {
+      "n": 50,
+      "where": "Governance guidance: Before rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The controls table covers every control the checklist asks administrators to set or check.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Assign Microsoft 365 Copilot and Teams Premium to the agents and leads who should use the feature, as Microsoft's notice recommends, and confirm they also hold Teams Phone.",
+      "severity": "minor",
+      "fix": "Add a controls row for per-user licence assignments covering Microsoft 365 Copilot, Teams Premium and Teams Phone, with researched admin UI and automation documentation. The current rows cover recording, calling policy and app availability but not this checklist control."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-16T17:06:53.718Z",
+    "summary": {
+      "links": 7,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=578859",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1552391",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/manage-queues-app",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/copilot-teams-calling-transcription",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/set-cscallqueue",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which call queues record calls, and who can access the recordings",
+        "docs": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+        "reachable": true,
+        "segments": [
+          "Voice",
+          "Call queue",
+          "call queue",
+          "Templates",
+          "Automatic recording template"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Which call queues record calls, and who can access the recordings",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/set-cscallqueue",
+        "reachable": true,
+        "token": "Set-CsCallQueue",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether Copilot can be used in Teams calls (documented for 1:1 and PSTN calls)",
+        "docs": "https://learn.microsoft.com/microsoftteams/copilot-teams-calling-transcription",
+        "reachable": true,
+        "segments": [
+          "Voice",
+          "Calling policies",
+          "Copilot"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether Copilot can be used in Teams calls (documented for 1:1 and PSTN calls)",
+        "docs": "https://learn.microsoft.com/microsoftteams/copilot-teams-calling-transcription",
+        "reachable": true,
+        "token": "Set-CsTeamsCallingPolicy",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Whether the Queues app is available in the Teams client",
+        "docs": "https://learn.microsoft.com/microsoftteams/manage-queues-app",
+        "reachable": true,
+        "segments": [
+          "Teams apps",
+          "Manage apps",
+          "Actions",
+          "Org-wide app settings",
+          "Microsoft apps"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": [
+    {
+      "date": "2026-11-16",
+      "status": "held",
+      "version": 1,
+      "model": "none"
+    }
+  ]
 }

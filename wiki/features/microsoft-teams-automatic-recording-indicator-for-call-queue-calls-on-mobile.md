@@ -81,6 +81,17 @@ changes:
   - date: "2026-11-16"
     note: "First briefing for this item, based on roadmap record 578867, Message Center post MC1552392 and Microsoft Learn's call queue recording pages."
 version: 1
+verification:
+  status: "verified-with-gaps"
+  date: "2026-11-16"
+  version: 1
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 61
+  confirmed: 61
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
 ---
 
 ## What's changing
@@ -173,4 +184,16 @@ The template's recording and transcription toggles are on by default when you cr
 risk: Low. Microsoft's notice says only the banner wording changes on automatically recorded call queue calls; how recordings are started, stored and accessed does not change.
 cost: Low. The only cost the sources show is admin time to brief representatives; no licence or meter is published for the banner change itself.
 impact: Medium. Calling reps who answer automatically recorded call queue calls in Teams on Android or iOS will see new banner wording; other users and other calls are not affected.
+-->
+
+<!-- verifier-findings (2026-11-16, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
+- [supported, minor] controls[0].api; Governance controls table and closing notes / command: The MicrosoftTeams Set-CsCallQueue cmdlet's AutoRecordingTemplateId parameter assigns an automatic recording template to a queue. | Found: Voice applications private preview customers only.
+
+Saving a call queue configuration through Teams admin center will remove this setting.
+
+The AutoRecordingTemplateId parameter indicates the Auto Recording template to apply to the call queue. | Fix: Add the reference's warning to this control's note: 'The PowerShell reference also warns that saving the queue through Teams admin center removes this setting; this differs from the setup page documenting assignment through that UI.' Keep the existing private-preview discrepancy warning. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/set-cscallqueue
+- [supported, minor] Scope: Prerequisites / behaviour: The setup page permits a group or channel for call answering with automatic recording. | Found: [Call answering](aa-cq-setup-call-queue#step-3-call-answering)must use a group or channel. | Fix: Report the documentation disagreement: 'The template setup page says group or channel, while the Automatic Recording for Call Queue prerequisites at https://learn.microsoft.com/microsoftteams/aa-cq-reference-prerequisites-licensing say to use Microsoft 365 security groups to assign representatives.' Do not silently choose between them. | Source: https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic
+- [supported, minor] Governance controls: closing notes / default: Recording is enabled by default when creating an automatic recording template. | Found: Call recording is enabled by default. Disable call recording if required. | Fix: Qualify this as creation in Teams admin center. The cited New-CsAutoRecordingTemplate reference instead lists RecordingEnabled's default as False; the UI default should not be presented as applying to all creation methods. | Source: https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic
+- [supported, minor] Governance controls: closing notes / default: Transcription is enabled by default when creating an automatic recording template. | Found: Transcription is enabled by default. Disable transcription if required. | Fix: Qualify this as creation in Teams admin center. The cited New-CsAutoRecordingTemplate reference instead lists TranscriptionEnabled's default as False; retain the explicit PowerShell parameter in the control row. | Source: https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic
 -->

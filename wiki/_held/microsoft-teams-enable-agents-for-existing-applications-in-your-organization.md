@@ -78,6 +78,17 @@ changes:
   - date: "2026-11-16"
     note: "First briefing for this item: covers the roadmap item and MC1481316, and records that no Learn page or enablement setting is documented yet."
 version: 1
+verification:
+  status: "held"
+  date: "2026-11-16"
+  version: 1
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 60
+  confirmed: 57
+  unconfirmed: 1
+  contradicted: 2
+  attempts: 1
 ---
 
 ## What's changing
@@ -172,4 +183,17 @@ To apply the existing controls, Learn states that a Teams Administrator role is 
 risk: Low. Microsoft's notice MC1481316 says no Teams apps or agents are enabled automatically and existing availability settings do not change unless an administrator acts; the exposure is the choices an administrator makes.
 cost: Low. The only cost the sources show is administrator time to review recommendations; Microsoft has not published a licence or meter for the feature, and a third-party app may need its own paid subscription.
 impact: Low. Administrators see the recommendations; users notice only if an administrator makes a recommended agent or app available or installs it for them.
+-->
+
+<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
+The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
+- [contradicted, blocker] controls[1].api; Governance controls table / command: Update-M365TeamsApp -Id <app ID> -AppAssignmentType Everyone | UsersAndGroups [-Groups <groups>] [-Users <users>] is sufficient to manage app availability for everyone or selected users and groups. | Found: -OperationType
+Operation performed on the app assigment.
+Parameter sets
+(Add
+Mandatory: True
+Remove)
+Mandatory: True | Fix: Replace the shorthand with separate documented examples: 'Update-M365TeamsApp -Id <app ID> -AppAssignmentType Everyone' and 'Update-M365TeamsApp -Id <app ID> -AppAssignmentType UsersAndGroups -OperationType Add -Users <users> -Groups <groups>'. Explain that Remove removes assignments and Noone is the no-user assignment type. Do not present a literal pipeline between assignment values. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp
+- [contradicted, blocker] Governance controls: instructions for applying existing availability controls / applicability: The instructions for making apps available through the existing controls apply without an additional step for tenants not migrated to unified app management. | Found: If your organization isn't migrated to unified app management, allow apps and Copilot agents in Teams admin center and under the Integrated apps page in Microsoft 365 admin center. | Fix: Add the missing prerequisite beside the per-app availability instructions and in controls[1].note: 'If your organisation has not migrated to unified app management, allow the app or agent in both Teams admin center and Microsoft 365 admin center > Integrated apps. After migration, either centre is sufficient.' Cite https://learn.microsoft.com/microsoftteams/app-centric-management. | Source: https://learn.microsoft.com/microsoftteams/app-centric-management
+- [unsupported, blocker] Governance guidance: At rollout / admin-path: The new recommendations should be found on the Manage apps page. | Found: Searched: Teams recommendations Manage apps existing. Read Learn manage-apps, app-centric-management and uam-tac-mac: only the existing widget is located there. MC1481316 names Teams admin center, not a page. | Fix: Replace 'Check the Manage apps page for the recommendations' with 'Check Teams admin center for the recommendations; Microsoft has not yet documented the page or enablement path.' Do not transfer the existing widget's location to the new feature.
 -->

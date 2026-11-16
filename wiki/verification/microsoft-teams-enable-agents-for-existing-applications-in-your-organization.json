@@ -5,27 +5,787 @@
   "status": "held",
   "date": "2026-11-16",
   "version": 1,
-  "model": "none",
-  "engine": "manual",
-  "attempts": 0,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [],
   "hold": {
-    "reason": "unverified",
+    "reason": "failed",
     "since": "2026-11-16",
     "reasons": [
-      "Written but not yet checked against Microsoft Learn."
+      "3 blocking findings (claims 33, 51, 52)"
     ]
   },
   "counts": {
-    "claims": 0,
-    "confirmed": 0,
-    "unconfirmed": 0,
-    "contradicted": 0,
-    "blocker": 0,
+    "claims": 60,
+    "confirmed": 57,
+    "unconfirmed": 1,
+    "contradicted": 2,
+    "blocker": 3,
     "major": 0,
     "minor": 0
   },
-  "summary": "Written but not yet checked against Microsoft Learn.",
-  "claims": [],
-  "precheck": null,
-  "history": []
+  "summary": "Hold: the PowerShell example omits the operation required to assign users and groups. The instructions also omit the second admin centre required for tenants not yet using unified app management, and place the new recommendations on Manage apps without supporting documentation.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "Administrators can discover and enable Teams agents corresponding to third-party applications already used in their organisation from Teams admin center.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "For third-party applications already being used in your organization, admins can now discover and enable the corresponding Teams agents from within the Teams Admin Center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The recommendations cover Teams apps as well as agents, with ServiceNow, Workday and Jira as examples of underlying applications.",
+      "status": "supported",
+      "source": "Message Center post MC1481316",
+      "quote": "Organizations often use third-party applications such as ServiceNow, Workday, Jira, and others, but the corresponding Microsoft Teams apps and agents may not be enabled for users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap describes recommendations for high-value agents.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Admins receive recommendations for high-value agents",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap promises visibility into required configuration changes during the enablement workflow.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "gain visibility into any required configuration changes during the enablement workflow.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Usage signals prioritise the recommendations.",
+      "status": "supported",
+      "source": "Message Center post MC1481316",
+      "quote": "Recommendations are prioritized using usage signals",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Administrators can make recommendations available to users already using the corresponding application.",
+      "status": "supported",
+      "source": "Message Center post MC1481316",
+      "quote": "Admins can choose to make a recommended app or agent available to users already using the corresponding application",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "summary; What's changing; Why it matters",
+      "type": "record",
+      "claim": "Administrators can target specific users and groups when enabling recommended apps or agents.",
+      "status": "supported",
+      "source": "Message Center post MC1481316",
+      "quote": "Admins must enable the feature and can target specific users or groups when enabling apps or agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing; Why it matters",
+      "type": "record",
+      "claim": "Administrators can make a recommended app or agent available to everyone in the organisation.",
+      "status": "supported",
+      "source": "Message Center post MC1481316",
+      "quote": "Admins can choose to make a recommended app or agent available to users already using the corresponding application, specific users and groups, or everyone in the organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; rationale: impact",
+      "type": "record",
+      "claim": "Administrators can choose to install a recommended app or agent for applicable users.",
+      "status": "supported",
+      "source": "Message Center post MC1481316",
+      "quote": "Admins can choose to install the app or agent for applicable users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "summary; What's changing; Why it matters; Risk assessment; rationale: risk",
+      "type": "record",
+      "claim": "No Teams apps or agents are enabled automatically by this change.",
+      "status": "supported",
+      "source": "Message Center post MC1481316",
+      "quote": "No Teams apps or agents will be enabled automatically.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Why it matters; Governance guidance; rationale: risk",
+      "type": "record",
+      "claim": "Existing availability and installation settings remain unchanged unless an administrator acts.",
+      "status": "supported",
+      "source": "Message Center post MC1481316",
+      "quote": "Existing app availability and installation settings will not change unless an administrator takes action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: defaultState; controls[0].note; What's changing; Governance guidance",
+      "type": "default",
+      "claim": "The recommendations feature is admin-opt-in: administrators must enable it.",
+      "status": "supported",
+      "source": "Message Center post MC1481316",
+      "quote": "Admins must enable the feature and can target specific users or groups when enabling apps or agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "summary; What's changing; Why it matters; Risk assessment; Open questions",
+      "type": "record",
+      "claim": "When enabled, Microsoft uses application sign-in signals to identify relevant Teams apps and agents and generate recommendations.",
+      "status": "supported",
+      "source": "Message Center post MC1481316",
+      "quote": "If enabled, Microsoft will use signals indicating that users have signed in to applications within your organization to identify relevant Teams apps and agents and provide recommendations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is November CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"November CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Targeted Release.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\n    \"General Availability\",\n    \"Targeted Release\"\n  ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: clouds; What's changing; Risk assessment; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) and GCC.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\n    \"Worldwide (Standard Multi-Tenant)\",\n    \"GCC\"\n  ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\n    \"Web\"\n  ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-09-28T22:58:08.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-09-28T22:58:08\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1481316 was published on 2026-09-28.",
+      "status": "supported",
+      "source": "Message Center post MC1481316",
+      "quote": "Published 2026-09-28; last updated 2026-09-28",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Scope; Governance guidance",
+      "type": "record",
+      "claim": "Targeted Release begins in early November 2026 and is expected to complete by mid-November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1481316",
+      "quote": "Targeted Release: Beginning in early November 2026 and expected to complete by mid-November 2026",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Scope; Governance guidance",
+      "type": "record",
+      "claim": "General Availability for Worldwide and GCC begins in early November 2026 and is expected to complete by mid-November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1481316",
+      "quote": "General Availability (Worldwide, GCC): Beginning in early November 2026 and expected to complete by mid-November 2026",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The supplied notice sets no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1481316",
+      "quote": "Act by: none",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "summary; What's changing; front matter: action",
+      "type": "record",
+      "claim": "No action is required unless the organisation wants to use this optional feature.",
+      "status": "supported",
+      "source": "Message Center post MC1481316",
+      "quote": "No action is required unless you want to use this feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[0].ui; controls[0].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No enablement setting, UI path, PowerShell command or Graph equivalent for the recommendations feature is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams recommendations existing applications 569608 enable feature admin setting PowerShell Graph licensing sign-in signals. Read Learn manage-apps, app-centric-management, uam-tac-mac and Update-M365TeamsApp; no feature switch found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing; front matter: changes",
+      "type": "absence",
+      "claim": "Microsoft Learn has no dedicated description of this recommendations feature at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams recommendations existing applications; Teams recommendations Manage apps existing. Read Learn manage-apps, app-centric-management and uam-tac-mac; results described other recommendations or the existing widget.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; Open questions",
+      "type": "behaviour",
+      "claim": "The existing Popular apps in your org widget on Manage apps shows most-used third-party apps not already installed for everyone.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/uam-tac-mac",
+      "quote": "you can see the Popular apps in your org widget on the Manage apps page. With this widget, you can see two of the most-used third-party apps that your users use the most, that aren't already installed for everyone in the organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "The sources do not establish the relationship between the new recommendations and the existing Popular apps widget.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams recommendations Manage apps existing; Teams recommendations existing applications. Read MC1481316 and Learn app-centric-management and uam-tac-mac widget sections; none identifies the widget with roadmap item 569608.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Why it matters; Risk assessment",
+      "type": "availability",
+      "claim": "App availability set to Everyone includes existing organisation users, new users and guests.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "Everyone | Available to all org users, new users, and guests.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment",
+      "type": "availability",
+      "claim": "Specific users or groups excludes guests even if they are assigned.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "Guests can't use the app if this option is selected and even if guests are assigned to the app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The per-app availability UI is Teams admin center > Teams apps > Manage apps > app > Users and groups > Availability > Edit availability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "Search for the required app and select the app name to open its app details page.\n3. Select the Users and groups tab.\n4. Under Select to manage who this app is installed for or available to in your organization, select Availability.\n5. Select Edit availability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "Update-M365TeamsApp -Id <app ID> -AppAssignmentType Everyone | UsersAndGroups [-Groups <groups>] [-Users <users>] is sufficient to manage app availability for everyone or selected users and groups.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+      "quote": "-OperationType\nOperation performed on the app assigment.\nParameter sets\n(Add\nMandatory: True\nRemove)\nMandatory: True",
+      "severity": "blocker",
+      "fix": "Replace the shorthand with separate documented examples: 'Update-M365TeamsApp -Id <app ID> -AppAssignmentType Everyone' and 'Update-M365TeamsApp -Id <app ID> -AppAssignmentType UsersAndGroups -OperationType Add -Users <users> -Groups <groups>'. Explain that Remove removes assignments and Noone is the no-user assignment type. Do not present a literal pipeline between assignment values."
+    },
+    {
+      "n": 34,
+      "where": "controls[1].note; Scope; Governance controls",
+      "type": "role",
+      "claim": "Learn requires the Teams Administrator role to use Teams admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "To use Teams admin center, you must have a Teams Administrator role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Scope",
+      "type": "role",
+      "claim": "Higher-privilege administrators can also perform app governance tasks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "Some admins with a higher privilege role can accomplish agent and app governance tasks but we recommend using the lower privilege role where possible.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[1].note; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "Availability changes take up to 24 hours to apply.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "It takes up to 24 hours for the availability changes to take effect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "In rare cases availability changes take up to six days to appear in the client.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "In rare cases, it might take up to six days for the changes to reflect in the client.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[2].ui; Governance guidance; Governance controls",
+      "type": "admin-path",
+      "claim": "Teams admin center > Teams apps > Manage apps > Actions > Org-wide app settings > Third-party apps controls bulk third-party app and agent availability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "On Manage apps page, under the Actions menu, select Org-wide app settings. ... Under Third-party apps, a single control manages the bulk availability of both the new and existing third-party agents and apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[2].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The org-wide toggle does not override apps whose availability was set individually.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "This control doesn't override app-level configurations. ... The Org-wide app settings don't apply to: ... All apps that were assigned to Everyone or to No one and saved individually.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[2].api; Governance controls",
+      "type": "absence",
+      "claim": "No automation equivalent for the org-wide Third-party apps toggle is documented in the references searched.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams org-wide app settings Graph; Teams org-wide third-party apps PowerShell. Read Learn manage-apps, app-centric-management, teamsAppSettings and Set-CsTeamsClientConfiguration syntax; none documents automation of this toggle.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment; Open questions",
+      "type": "default",
+      "claim": "Learn states that third-party agents and apps are blocked by default in GCC.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "In a Microsoft 365 Government - GCC, GCCH and DoD deployment of Teams, all third-party agents and apps are blocked by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not described how these recommendations interact with GCC's default block.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams recommendations existing applications 569608 enable feature admin setting PowerShell Graph licensing sign-in signals. Read MC1481316 and Learn manage-apps government section; no description of interaction with GCC's default block.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "The recommendations feature's licence requirement is not yet published, so the licensing model is unknown.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams admin center recommended apps agents existing applications recommendations licensing price meter prerequisites. Read MC1481316, Learn manage-apps and purchase-third-party-apps; no recommendations-specific licence requirement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "A price for the recommendations feature has not been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams admin center recommended apps agents existing applications recommendations licensing price meter prerequisites. Read MC1481316, manage-apps and purchase-third-party-apps; no price for the recommendations feature was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "No meter for the recommendations feature is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams admin center recommended apps agents existing applications recommendations licensing price meter prerequisites. Read MC1481316, Learn manage-apps and purchase-third-party-apps; none states a recommendations meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Some Teams apps require a separate service subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/purchase-third-party-apps",
+      "quote": "Some Teams apps require purchasing a service subscription to use app functionality.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Making a paid third-party app available does not waive its service entitlement requirement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/purchase-third-party-apps",
+      "quote": "Paid apps require users to authenticate to prevent unwarranted access. Also, user sign-in is required to check for entitlement and to make the corresponding app functionality available for the logged-in user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Why it matters; Risk assessment",
+      "type": "behaviour",
+      "claim": "Third-party apps and agents have developer terms and privacy policies describing their data handling.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "In the terms of use and privacy policy of any agent or app, the app developer discloses what data their agent or app uses and how it handles the data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment; Governance guidance",
+      "type": "admin-path",
+      "claim": "The app details page in Teams admin center provides links to the developer's terms and privacy policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "This information is available on app developer's website and you can access the URLs in the app details page in Teams admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "After unified app management migration, apps can be allowed in either Teams admin center or Microsoft 365 admin center's Integrated apps page and changes synchronise.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/uam-tac-mac",
+      "quote": "With unified agent app management, you can now manage agents and apps via the Teams admin center or Integrated apps page in the Microsoft 365 admin center. Any changes made in either admin center are automatically synchronized.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance controls: instructions for applying existing availability controls",
+      "type": "applicability",
+      "claim": "The instructions for making apps available through the existing controls apply without an additional step for tenants not migrated to unified app management.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "If your organization isn't migrated to unified app management, allow apps and Copilot agents in Teams admin center and under the Integrated apps page in Microsoft 365 admin center.",
+      "severity": "blocker",
+      "fix": "Add the missing prerequisite beside the per-app availability instructions and in controls[1].note: 'If your organisation has not migrated to unified app management, allow the app or agent in both Teams admin center and Microsoft 365 admin center > Integrated apps. After migration, either centre is sufficient.' Cite https://learn.microsoft.com/microsoftteams/app-centric-management."
+    },
+    {
+      "n": 52,
+      "where": "Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "The new recommendations should be found on the Manage apps page.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Teams recommendations Manage apps existing. Read Learn manage-apps, app-centric-management and uam-tac-mac: only the existing widget is located there. MC1481316 names Teams admin center, not a page.",
+      "severity": "blocker",
+      "fix": "Replace 'Check the Manage apps page for the recommendations' with 'Check Teams admin center for the recommendations; Microsoft has not yet documented the page or enablement path.' Do not transfer the existing widget's location to the new feature."
+    },
+    {
+      "n": 53,
+      "where": "Governance guidance: Before rollout",
+      "type": "availability",
+      "claim": "Security groups and Microsoft 365 groups can be used to target app availability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "The supported group types are security groups, Microsoft 365 groups, dynamic user membership groups, nested groups, and the distribution lists.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "The documented Users and groups tab can show both the number of users with availability and the actual number using an app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "The Users and groups tab opens, which shows the number of users for whom the selected app is available, and the actual number of users using the app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Cost and licensing",
+      "type": "record",
+      "claim": "The notice recommends communicating the change to administrators responsible for app governance and deployment.",
+      "status": "supported",
+      "source": "Message Center post MC1481316",
+      "quote": "Communicate the change to Teams administrators responsible for app governance and deployment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "MC1481316 recommends updating internal Teams app-management documentation where applicable.",
+      "status": "supported",
+      "source": "Message Center post MC1481316",
+      "quote": "Update any internal documentation related to Teams app management, if applicable.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "A feature-specific administrator role or prerequisite beyond the surrounding Teams administration requirements is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams admin center recommended apps agents existing applications recommendations licensing price meter prerequisites. Read MC1481316 and Learn manage-apps, app-centric-management and uam-tac-mac; no recommendations-specific role or prerequisite list.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Risk assessment; Open questions",
+      "type": "absence",
+      "claim": "The sources do not specify the sign-in signals' origin beyond application sign-ins, or where the signals are processed or stored.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams recommendations sign-in enable. Read MC1481316 and Learn manage-apps, app-centric-management and uam-tac-mac; no feature-specific signal provenance or processing/storage location.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "The sources for this roadmap item do not describe the actions an individual recommended agent can perform after enablement.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams recommendations existing applications. Read roadmap, MC1481316 and Learn manage-apps; none specifies the capabilities of an individual recommended agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Scope; rationale: impact",
+      "type": "record",
+      "claim": "The feature targets Teams administrators managing app and agent deployment, while user access changes only through an administrator's availability or installation choice.",
+      "status": "supported",
+      "source": "Message Center post MC1481316",
+      "quote": "Microsoft Teams administrators managing app and agent deployment ... Existing app availability and installation settings will not change unless an administrator takes action.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-16T17:06:55.243Z",
+    "summary": {
+      "links": 7,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=569608",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1481316",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/manage-apps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/uam-tac-mac",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/purchase-third-party-apps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Who can use a recommended agent or app (everyone, specific users and groups, or no one)",
+        "docs": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+        "reachable": true,
+        "segments": [
+          "Teams apps",
+          "Manage apps",
+          "Users and groups",
+          "Availability",
+          "Edit availability"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Who can use a recommended agent or app (everyone, specific users and groups, or no one)",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+        "reachable": true,
+        "token": "Update-M365TeamsApp",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Bulk availability of third-party agents and apps",
+        "docs": "https://learn.microsoft.com/microsoftteams/manage-apps",
+        "reachable": true,
+        "segments": [
+          "Teams apps",
+          "Manage apps",
+          "Actions",
+          "Org-wide app settings",
+          "Third-party apps"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": [
+    {
+      "date": "2026-11-16",
+      "status": "held",
+      "version": 1,
+      "model": "none"
+    }
+  ]
 }

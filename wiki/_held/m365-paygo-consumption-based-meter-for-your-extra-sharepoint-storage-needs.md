@@ -93,6 +93,17 @@ changes:
   - date: "2026-11-16"
     note: "First briefing for this item; reflects Microsoft's 9 November 2026 notice moving General Availability to January 2027 and the pricing and billing steps documented on Learn."
 version: 1
+verification:
+  status: "held"
+  date: "2026-11-16"
+  version: 1
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 71
+  confirmed: 68
+  unconfirmed: 1
+  contradicted: 2
+  attempts: 1
 ---
 
 ## What's changing
@@ -190,4 +201,13 @@ Connecting and disconnecting the service is the only documented way to start or 
 risk: Low. Microsoft's notice says the meter is opt-in and off by default, so nothing is billed until an administrator connects a billing policy; once connected, the budget raises alerts but does not stop billing.
 cost: Variable. This is a metered pay-as-you-go service billed through an Azure subscription on the gigabytes of SharePoint data above the tenant quota; Learn's pricing page lists $0.20/GB/month.
 impact: Low. Administrators, finance and procurement notice it; Microsoft's notice MC1330893 says there is no impact to users.
+-->
+
+<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
+The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
+- [supported, minor] controls[0].note; Risk assessment: Security & identity; Scope: Roles / role: Setup accepts SharePoint Administrator, Billing Administrator, AI Administrator or Global Administrator. | Found: You must have one of the following roles to complete the tasks in this article: SharePoint Administrator; Billing Administrator; AI Administrator; Global Administrator | Fix: Keep the four roles attributed to the Billing-node setup guide, but disclose that https://learn.microsoft.com/microsoft-365/commerce/add-storage-space instead links SharePoint Storage to shared prerequisites naming only SharePoint Administrator or Global Administrator. | Source: https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node
+- [supported, minor] controls[3].note; Risk assessment: Autonomy & actions; Governance controls / behaviour: Disconnecting the service is the only documented way to stop billing. | Found: The only way to stop billing is to disconnect the payment method. | Fix: Replace the exclusivity claim with 'Disconnect the service to stop this meter; the budget does not stop billing.' The broader terms at https://learn.microsoft.com/sharepoint/microsoft-365-pay-as-you-go-terms-of-service also document cancelling or deleting the Azure subscription to stop processing and billing; do not imply that disabling a whole subscription is necessary. | Source: https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node
+- [contradicted, blocker] controls[4].api; Governance controls / absence: No API or automation is documented for monitoring SharePoint storage usage. | Found: Get the trend of storage allocated and consumed during the reporting period. ... GET https://graph.microsoft.com/v1.0/reports/getSharePointSiteUsageStorage(period='D7') | Fix: Replace controls[4].api: null with the documented Graph report GET /v1.0/reports/getSharePointSiteUsageStorage(period='D7'), using this reference URL. Note that it requires Reports.Read.All and reports storage usage trends, not a live PAYGO billing balance or an exact replica of the Active sites quota bar. Alternatively narrow the row to the specific Active sites quota-bar readout and explicitly distinguish the documented usage-report API. | Source: https://learn.microsoft.com/graph/api/reportroot-getsharepointsiteusagestorage?view=graph-rest-1.0
+- [unsupported, major] Risk assessment: Data exposure / behaviour: The meter introduces no new data access. | Found: Searched: Microsoft 365 SharePoint Storage data access permissions tenant usage data; Microsoft 365 SharePoint Storage permissions access billing; SharePoint pay-as-you-go no data access. Read add-storage-space and the Billing-node setup guide; neither states this assurance. | Fix: Remove 'No new data access'. Retain the supported statements that the meter counts storage volume and that the billing policy's Region determines where tenant ID and usage data are stored.
+- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The checklist directs readers to monitor Azure costs, but the controls table has no cost-monitoring row. | Found: Review spending on the policy's Budget tab and in Microsoft Cost Management; consumption data can take up to four hours to appear. | Fix: Add a spending-monitoring row using Microsoft 365 admin center > Billing > Pay-as-you-go > Billing policies > policy > Budget > Spending, documented in the existing Billing-node source. Mention Microsoft Cost Management as the additional monitoring option and its requirement for at least read access to the billing resource group.
 -->

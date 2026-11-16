@@ -4,46 +4,35 @@
   "title": "Microsoft Teams: tenant meeting policy for who can start recording and transcription",
   "status": "held",
   "date": "2026-11-16",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 2,
   "verifierVerdict": "hold",
   "notes": [],
   "hold": {
     "reason": "failed",
     "since": "2026-11-16",
     "reasons": [
-      "2 blocking findings (claims 23, 45)"
+      "3 blocking findings (claims 36, 37, 48)"
     ]
   },
   "counts": {
-    "claims": 46,
-    "confirmed": 42,
-    "unconfirmed": 1,
+    "claims": 49,
+    "confirmed": 46,
+    "unconfirmed": 0,
     "contradicted": 3,
-    "blocker": 2,
-    "major": 1,
-    "minor": 4
+    "blocker": 3,
+    "major": 0,
+    "minor": 0
   },
-  "summary": "Hold: the auto-recording command omits the required parameter value and cannot run as printed. The risk rationale also promises no enforcement until an administrator acts, although the briefing correctly says the new policy's default is not stated.",
+  "summary": "Hold: the sensitivity-label instructions omit required wizard pages, and the label PowerShell call is incomplete. The page also overstates the Meet Now limitation: Microsoft excludes specific label-controlled options, not all meeting options. The roadmap details and the existing recording, transcription and auto-recording controls are supported.",
   "claims": [
     {
       "n": 1,
-      "where": "front matter: products; title",
+      "where": "title; summary; What's changing; controls[0].note",
       "type": "record",
-      "claim": "This roadmap item concerns Microsoft Teams.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"products\": [\"Microsoft Teams\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 2,
-      "where": "summary; What's changing",
-      "type": "record",
-      "claim": "Microsoft plans meeting-policy controls for administrators to determine who can start recording and transcription.",
+      "claim": "Microsoft plans a Teams meeting policy through which administrators control who can start recording and transcription.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Teams administrators can use meeting policies to control who can start recording and transcription, helping organizations apply consistent meeting settings.",
@@ -51,10 +40,21 @@
       "fix": null
     },
     {
-      "n": 3,
-      "where": "What's changing; Risk assessment: Security & identity",
+      "n": 2,
+      "where": "summary; What's changing; Risk assessment; Scope",
       "type": "record",
-      "claim": "Administrators can restrict initiation to organisers and co-organisers.",
+      "claim": "The planned policy can restrict recording and transcription permissions to organisers and co-organisers.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Administrators can restrict these permissions to organizers and co-organizers or extend them to presenters.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "summary; What's changing; Risk assessment; Scope",
+      "type": "record",
+      "claim": "The planned policy can extend recording and transcription permissions to presenters.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Administrators can restrict these permissions to organizers and co-organizers or extend them to presenters.",
@@ -63,20 +63,9 @@
     },
     {
       "n": 4,
-      "where": "What's changing; Scope: Who is affected",
+      "where": "summary; What's changing; Why it matters; Risk assessment; rationale: impact",
       "type": "record",
-      "claim": "Administrators can extend initiation permissions to presenters.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Administrators can restrict these permissions to organizers and co-organizers or extend them to presenters.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "What's changing; Why it matters; rationale: impact",
-      "type": "record",
-      "claim": "Administrators can allow organisers to modify the setting or enforce it by policy.",
+      "claim": "Administrators can allow organisers to modify the planned setting or enforce it so organisers cannot change it.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "They can also determine whether meeting organizers can modify these settings or whether they are enforced by policy.",
@@ -84,7 +73,7 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 5,
       "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap status is In development.",
@@ -95,10 +84,10 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 6,
       "where": "front matter: targetDate; summary; What's changing; Scope",
       "type": "record",
-      "claim": "December CY2026 is the target, not a committed release date.",
+      "claim": "The roadmap targets December CY2026, rather than committing to availability in that month.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"targetDate\": \"December CY2026\"",
@@ -106,10 +95,10 @@
       "fix": null
     },
     {
-      "n": 8,
+      "n": 7,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
-      "claim": "The release phase is General Availability.",
+      "claim": "The listed release phase is General Availability.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\"]",
@@ -117,10 +106,10 @@
       "fix": null
     },
     {
-      "n": 9,
+      "n": 8,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "The listed clouds are Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
@@ -128,10 +117,10 @@
       "fix": null
     },
     {
-      "n": 10,
+      "n": 9,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "The listed platforms are Android, Desktop, iOS and Mac.",
+      "claim": "The roadmap lists Android, Desktop, iOS and Mac.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Mac\"]",
@@ -139,7 +128,7 @@
       "fix": null
     },
     {
-      "n": 11,
+      "n": 10,
       "where": "front matter: previewDate; What's changing",
       "type": "record",
       "claim": "The roadmap supplies no preview date.",
@@ -150,7 +139,7 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 11,
       "where": "What's changing",
       "type": "record",
       "claim": "The roadmap supplies no more-info link.",
@@ -161,10 +150,10 @@
       "fix": null
     },
     {
-      "n": 13,
+      "n": 12,
       "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "The roadmap modification timestamp is 2026-11-11T00:56:01.",
+      "claim": "The roadmap record was modified at 2026-11-11T00:56:01.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"modified\": \"2026-11-11T00:56:01\"",
@@ -172,32 +161,76 @@
       "fix": null
     },
     {
-      "n": 14,
-      "where": "front matter: defaultState; Scope; Open questions",
-      "type": "default",
-      "claim": "The new tenant policy's default state is not stated.",
+      "n": 13,
+      "where": "controls[0]; summary; What's changing; Governance controls",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet document the planned tenant policy, its admin UI path or its PowerShell parameter.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Teams \"who can record and transcribe\" policy default 579860; Teams \"who can record and transcribe\" default policy license. Opened meeting-recording, manage-meeting-recording-options and Set-CsTeamsMeetingPolicy; none states the new policy's default.",
+      "quote": "Searched: Teams tenant policy who can record transcribe meeting policy organizer override default license. Opened meeting-recording, manage-meeting-recording-options and Set-CsTeamsMeetingPolicy; searched its full parameter list. No new-policy UI or parameter was documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: defaultState; Scope; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "The new control's default and any change to existing behaviour on arrival are not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams \"tenant policy\" \"who can record\" license default administrator. Read roadmap, meeting-recording, manage-meeting-recording-options and Set-CsTeamsMeetingPolicy; none states the new control's default. The rationale labels continued behaviour as an assumption.",
       "severity": null,
       "fix": null
     },
     {
       "n": 15,
-      "where": "front matter: licensing; Cost and licensing; rationale: cost",
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost",
       "type": "licensing",
-      "claim": "Licensing and pricing for the new tenant policy are not yet published, and the roadmap names no licence.",
+      "claim": "Licensing for the new tenant policy is not yet published, so its licensing model is unknown.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Teams \"who can record and transcribe\" tenant license; Teams \"who can record and transcribe\" default policy license. Read the roadmap, recording-options article and Teams Premium licensing search excerpt; only existing organiser-level licensing is described.",
+      "quote": "Searched: Teams \"tenant policy\" \"who can record\" license default administrator. Read roadmap, manage-meeting-recording-options and meeting-recording; only existing-feature licensing is stated, not licensing for the planned tenant policy.",
       "severity": null,
       "fix": null
     },
     {
       "n": 16,
-      "where": "front matter: licensing.notes; controls[4].note; Cost and licensing",
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "No price for the new policy is published in the roadmap or Microsoft documentation found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams \"who can record\" \"meeting policy\" default licensing price administrator role sensitivity labels override. Opened meeting-recording and manage-meeting-recording-options; read the roadmap. No price for the planned tenant policy was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "Scope: Roles to configure it",
+      "type": "role",
+      "claim": "Microsoft has not published the administrator role needed to configure the new policy.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"579860\" Teams recording transcription licensing default policy role sensitivity. Opened meeting-recording and manage-meeting-recording-options; no role for the new policy was specified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "No Message Center post for the item was available to the briefing at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams \"579860\" \"Message center\". No item-specific post returned; none is supplied in the pre-check or roadmap. This confirms no available evidence here, not that every tenant's authenticated Message center has no post.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "licensing",
-      "claim": "The cited Learn comparison table marks the existing organiser-level setting as Teams Premium/Copilot licence.",
+      "claim": "The cited Learn table marks the existing Who can record and transcribe setting for labels, templates and organisers as Teams Premium/Copilot license.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-meeting-recording-options",
       "quote": "| Who can record and transcribe **(Teams Premium/Copilot license)** | No | Yes | Yes | Yes |",
@@ -205,131 +238,21 @@
       "fix": null
     },
     {
-      "n": 17,
-      "where": "controls[0]; What's changing; Governance controls",
-      "type": "absence",
-      "claim": "The planned tenant policy has no documented admin UI path or automation parameter at the time of writing.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams \"tenant policy\" \"record\" \"transcribe\" organizers; Teams \"tenant policy\" \"who can record\" PowerShell. Opened meeting-recording, manage-meeting-recording-options and searched recording/transcription parameters in Set-CsTeamsMeetingPolicy; no new policy found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "controls[1].ui; Governance controls: recording row",
-      "type": "admin-path",
-      "claim": "Meeting recording is configured in Teams admin center under Meetings > Meeting policies > Meeting recording.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-recording",
-      "quote": "1. In the left navigation of the Teams admin center, go to **Meetings** > **Meeting policies**.\n2. Select an existing policy or create a new one.",
-      "severity": "minor",
-      "fix": "Include the policy-selection step in front matter and rendered table: Meetings > Meeting policies > policy > Meeting recording. The next documented step is to turn the Meeting recording toggle On or Off."
-    },
-    {
-      "n": 19,
-      "where": "controls[1].api; Governance controls: recording row",
-      "type": "command",
-      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -AllowCloudRecording $true enables recording permission.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
-      "quote": "Determines whether cloud recording is allowed in a user's meetings. Set this to TRUE to allow the user to be able to record meetings. Set this to FALSE to prohibit the user from recording meetings.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 20,
-      "where": "controls[2].ui; Governance controls: transcription row",
-      "type": "admin-path",
-      "claim": "Transcription is configured in Teams admin center under Meetings > Meeting policies > Transcription.",
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "One existing organiser-level option permits only organisers and co-organisers to record and transcribe.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
-      "quote": "1. In the left navigation of the Teams admin center, go to **Meetings** > **Meeting policies**.\n2. Select the policy that you want to edit or create a new one.",
-      "severity": "minor",
-      "fix": "Include the policy-selection step in front matter and rendered table: Meetings > Meeting policies > policy > Transcription. The next documented step is to toggle Transcription On or Off."
+      "source": "https://learn.microsoft.com/microsoftteams/manage-meeting-recording-options",
+      "quote": "Organizers with a Teams Premium license have two options for who can record and transcribe a meeting:\n\n- Organizers and co-organizers",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 21,
-      "where": "controls[2].api; Governance controls: transcription row",
-      "type": "command",
-      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -AllowTranscription $true enables transcription permission.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
-      "quote": "Set-CsTeamsMeetingPolicy -Identity SalesMeetingPolicy -AllowTranscription $True",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "controls[3].ui; Governance controls: auto-recording row",
-      "type": "absence",
-      "claim": "No admin UI path is documented for the auto-recording policy controlling visibility of the organiser option.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams AutoRecording \"admin center\". Opened manage-teams-auto-recording and manage-meeting-recording-options; the policy is managed through PowerShell, with meeting templates documented separately rather than an admin UI path for this policy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "controls[3].api; Governance controls: auto-recording row",
-      "type": "command",
-      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -AutoRecording is a complete call to configure auto-recording visibility.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
-      "quote": "[-AutoRecording <String>]",
-      "severity": "blocker",
-      "fix": "Supply a value in both front matter and rendered table: Set-CsTeamsMeetingPolicy -Identity <policy name> -AutoRecording Enabled. Use Disabled to hide the option. These complete calls are documented at https://learn.microsoft.com/microsoftteams/manage-teams-auto-recording."
-    },
-    {
-      "n": 24,
-      "where": "controls[3].governs; controls[3].note",
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "The existing AutoRecording policy controls visibility of Record and transcribe automatically, not which meeting roles may initiate recording.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
-      "quote": "This setting allows admins to control the visibility of the auto recording feature in the organizer's **Meeting options**.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "controls[4].ui; Governance controls: organiser row",
-      "type": "admin-path",
-      "claim": "Organisers configure the existing setting at Meeting options > Who can record and transcribe.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/manage-meeting-recording-options",
-      "quote": "Your organizers can manage which users can transcribe their meetings through the **Who can record and transcribe** setting in their **Meeting options**.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "controls[4].api; Governance controls: organiser row",
-      "type": "absence",
-      "claim": "No direct automation equivalent is documented for the organiser's per-meeting choice of recording and transcription roles.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: onlineMeeting \"who can record\" transcribe API; \"Who can record and transcribe\" PowerShell sensitivity. Opened Graph beta onlineMeeting and Set-CsTeamsMeetingPolicy; no direct role-choice property or parameter found. Label/template enforcement is a different control.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
-      "where": "What's changing: existing organiser setting",
-      "type": "role",
-      "claim": "The existing organiser setting offers an Organizers and co-organizers option.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/manage-meeting-recording-options",
-      "quote": "Organizers with a Teams Premium license have two options for who can record and transcribe a meeting:\n\n- Organizers and co-organizers\n- Organizers, co-organizers, and presenters",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
-      "where": "What's changing: existing organiser setting",
-      "type": "role",
-      "claim": "The other existing option includes organisers, co-organisers and presenters.",
+      "claim": "The other existing organiser-level option permits organisers, co-organisers and presenters to record and transcribe.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-meeting-recording-options",
       "quote": "- Organizers, co-organizers, and presenters",
@@ -337,32 +260,197 @@
       "fix": null
     },
     {
-      "n": 29,
-      "where": "What's changing; controls[4].note; Risk assessment: Data exposure",
+      "n": 22,
+      "where": "What's changing; Why it matters; rationale: risk",
+      "type": "behaviour",
+      "claim": "Under the existing feature, organisers normally choose who can record unless a label or template enforces it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-templates-sensitivity-labels-policies",
+      "quote": "Meeting organizer can choose who can record—**Organizers and co-organizers** or **Organizers, co-organizers, and presenters**—unless the setting is enforced by a label or template.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Risk assessment; Governance guidance; controls[4].note; controls[5].note",
       "type": "applicability",
-      "claim": "Meeting templates and sensitivity labels can enforce the existing Who can record and transcribe setting for sensitive meetings.",
+      "claim": "Existing sensitivity labels and meeting templates can enforce who can record and transcribe in specific meetings.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-meeting-recording-options",
-      "quote": "The meeting organizer normally makes this choice when they create the meeting. To restrict recording to organizers in meetings with sensitive information, use a meeting template or sensitivity label to enforce this setting.",
+      "quote": "To restrict recording to organizers in meetings with sensitive information, use a meeting template or sensitivity label to enforce this setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[].scope; Why it matters; Governance controls",
+      "type": "applicability",
+      "claim": "Meeting policies apply to users or groups, whereas labels and templates govern individual meetings that use them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-templates-sensitivity-labels-policies",
+      "quote": "Teams policies—including meeting policies—apply at the user or group level. Sensitivity label and template settings apply at the individual meeting level where those labels and templates are used.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Meeting recording is configured in Teams admin center > Meetings > Meeting policies > policy > Meeting recording.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-recording",
+      "quote": "In the left navigation of the Teams admin center, go to **Meetings** > **Meeting policies**.\nSelect an existing policy or create a new one.\nTurn the **Meeting recording** toggle **On** or **Off**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[1].api; controls[1].note; Governance controls",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -AllowCloudRecording $true enables recording permission for the policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-recording",
+      "quote": "To manage meeting recording by using PowerShell, use the **`-AllowCloudRecording`** parameter in Set-CsTeamsMeetingPolicy.\nSet-CsTeamsMeetingPolicy -Identity \"Your Policy Name\" -AllowCloudRecording $true",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Transcription is configured in Teams admin center > Meetings > Meeting policies > policy > Transcription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+      "quote": "In the left navigation of the Teams admin center, go to **Meetings** > **Meeting policies**.\nSelect the policy that you want to edit or create a new one.\nToggle **Transcription** **On** or **Off**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[2].api; Governance controls",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -AllowTranscription $true allows meeting transcription under the policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+      "quote": "To manage meeting transcription using PowerShell, use the **`-AllowTranscription`** parameter in Set-CsTeamsMeetingPolicy.\nSet-CsTeamsMeetingPolicy -Identity \"Your Policy Name\" -AllowTranscription $true",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[2].note",
+      "type": "behaviour",
+      "claim": "Transcription is both a per-organiser and a per-user policy setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+      "quote": "Transcription is both a per-organizer and per-user policy setting. For meetings and events to include transcripts, the organizer must have this setting turned on. The user who starts the recording or transcript must also have this setting turned on.",
       "severity": null,
       "fix": null
     },
     {
       "n": 30,
-      "where": "What's changing; controls[4].note; Governance controls",
-      "type": "behaviour",
-      "claim": "The cited comparison table currently lists no admin policy for Who can record and transcribe.",
+      "where": "controls[3].ui; controls[3].note",
+      "type": "absence",
+      "claim": "No admin-centre UI is documented for the auto-recording policy that controls visibility of the organiser option.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/manage-meeting-recording-options",
-      "quote": "| Setting | Admin policy | Sensitivity label | Template | Meeting organizer |\n| Who can record and transcribe **(Teams Premium/Copilot license)** | No | Yes | Yes | Yes |",
+      "source": null,
+      "quote": "Searched: Teams auto recording policy Teams admin center PowerShell meeting template AutoRecording. Opened manage-teams-auto-recording: \"You must use PowerShell or a meeting template to manage this setting for organizers.\" No UI for the visibility policy was documented.",
       "severity": null,
       "fix": null
     },
     {
       "n": 31,
+      "where": "controls[3].api; controls[3].governs; controls[3].note",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -AutoRecording Enabled exposes Record and transcribe automatically to organisers rather than deciding who may start recording.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-teams-auto-recording",
+      "quote": "To give organizers with this policy the option to record their meetings, webinars, and town halls automatically, follow this script:\nSet-CsTeamsMeetingPolicy -Identity <policy name> -AutoRecording Enabled",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[4].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The template control is in Teams admin center > Meetings > Meeting templates > Add > Recording & transcription > Who can record.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/create-custom-meeting-template",
+      "quote": "In the Teams admin center, expand **Meetings** and select **Meeting templates**.\nSelect **Add**.\n### Recording & transcription\n| Who can record | Specifies whether meetings can be recorded by organizers and co-organizers only or by organizers, co-organizers, and presenters. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[4].api; controls[4].note",
+      "type": "command",
+      "claim": "Get-CsTeamsMeetingTemplateConfiguration retrieves custom templates and their meeting options; it does not set them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/get-csteamsmeetingtemplateconfiguration",
+      "quote": "Fetches the list of custom templates on the tenant. Each template object contains its list of meeting options, the name of the template, and its ID.\nNote: This configuration is read only and will only have the Global instance.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[4].note; Governance controls",
+      "type": "licensing",
+      "claim": "Only organisers with a Teams Premium licence can use assigned meeting templates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-teams-auto-recording",
+      "quote": "Only organizers with a Teams Premium license can use assigned meeting templates.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[4].note",
+      "type": "absence",
+      "claim": "No PowerShell setter for the custom template's options was found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams meeting templates Set-CsTeamsMeetingTemplateConfiguration who can record PowerShell create update template. Opened Get-CsTeamsMeetingTemplateConfiguration, which says the configuration is read only, and create-custom-meeting-template. No matching setter returned.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[5].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The label wizard goes directly from Create a label to Settings for Teams meetings and chats and Control who can record and transcribe.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/configure-meetings-sensitive-protection",
+      "quote": "On the **Define the scope for this label** page, make sure **Files & other data assets**, **Emails**, and **Meetings** are selected.\nOn the **Choose protection settings for types of items you selected** page, select **Protect Teams meetings and chats**, and then select **Next**.",
+      "severity": "blocker",
+      "fix": "Insert the required wizard pages in controls[5].ui.path and the rendered row: Solutions > Information protection > Labels > Create a label > Define the scope for this label > Choose protection settings for types of items you selected > Protect Teams meetings and chats > Settings for Teams meetings and chats > Control who can record and transcribe. Add a note to enter the label details, select Files & other data assets, Emails and Meetings, and select Next between wizard pages, as documented at https://learn.microsoft.com/microsoftteams/configure-meetings-sensitive-protection."
+    },
+    {
+      "n": 37,
+      "where": "controls[5].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-Label -TeamsWhoCanRecord (Security & Compliance PowerShell) is a usable call to configure the label's recording control.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-label",
+      "quote": "Set-Label\n    [-Identity] <ComplianceRuleIdParameter>\n    [-TeamsWhoCanRecord <Microsoft.Office.CompliancePolicy.PolicyConfiguration.WhoCanRecordOptions>]\nThe TeamsWhoCanRecord parameter controls who can record Teams meetings. Valid values are:\n- Organizer\n- Coorganizers\n- Presenters",
+      "severity": "blocker",
+      "fix": "Replace the call with Set-Label -Identity <label name> -TeamsWhoCanRecord <Organizer|Coorganizers|Presenters>. The current text omits the required label identity and a valid argument to the typed parameter; the parenthesised module name is not that argument. Move 'Security & Compliance PowerShell' into controls[5].note. Keep the existing Set-Label reference URL."
+    },
+    {
+      "n": 38,
+      "where": "controls[5].note",
+      "type": "licensing",
+      "claim": "Some sensitivity-label options require a Teams Premium licence in the tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-meetings",
+      "quote": "You won't be able to configure all the options referenced on this page if a Teams Premium license isn't found for your tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
       "where": "Risk assessment: Data exposure; Cost and licensing",
       "type": "behaviour",
-      "claim": "Meeting recordings are stored in the organiser's OneDrive, or SharePoint for channel meetings.",
+      "claim": "Meeting recordings are stored in the organiser's OneDrive for private meetings or SharePoint for channel meetings.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/meeting-recording",
       "quote": "It gets uploaded to the meeting organizer's OneDrive (private meetings) or SharePoint (channel meetings).",
@@ -370,10 +458,10 @@
       "fix": null
     },
     {
-      "n": 32,
+      "n": 40,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Meeting transcripts are stored alongside recordings in OneDrive and SharePoint.",
+      "claim": "Meeting transcripts are stored with meeting recordings in OneDrive and SharePoint.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
       "quote": "Transcripts are stored together with meeting recordings in OneDrive and SharePoint storage.",
@@ -381,51 +469,18 @@
       "fix": null
     },
     {
-      "n": 33,
-      "where": "Risk assessment: Data exposure",
-      "type": "absence",
-      "claim": "Microsoft has not documented a meeting-sensitivity condition for the new tenant policy.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams recording transcription policy sensitivity enforced. Opened manage-meeting-recording-options and read sensitivity-label search excerpts; they describe labels/templates, not a sensitivity condition in the planned tenant policy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
-      "where": "Risk assessment: Security & identity; controls[1].scope; controls[2].scope",
-      "type": "behaviour",
-      "claim": "Existing Teams meeting policies can be assigned to users and groups.",
+      "n": 41,
+      "where": "Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "Both the organiser and the recording initiator need recording permission under existing recording policies.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/meeting-recording",
-      "quote": "**To specific users**: Select your policy, select **Manage users** > **Assign users**\n**To groups**: Go to the **Group policy assignment** tab",
+      "quote": "Both the organizer and recording initiator need to have recording permissions to record the meeting or event.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 35,
-      "where": "Risk assessment: Security & identity; controls[0].scope",
-      "type": "absence",
-      "claim": "User-policy assignment is explicitly an analogy, because Microsoft has not confirmed assignment mechanics for this new control.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams \"tenant policy\" record transcribe organizers; Teams \"tenant policy\" \"who can record\" PowerShell. Opened recording policies, sensitive-meeting options and the meeting-policy reference; no assignment mechanics for the new role restriction are documented.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "record",
-      "claim": "The roadmap describes a permission control, not an autonomous recording or transcription action.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Teams administrators can use meeting policies to control who can start recording and transcription, helping organizations apply consistent meeting settings.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
+      "n": 42,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
       "claim": "Learn says turning off Microsoft Copilot in Teams meetings and events also turns off recording and transcription.",
@@ -436,76 +491,43 @@
       "fix": null
     },
     {
-      "n": 38,
-      "where": "Risk assessment: Change & support",
-      "type": "behaviour",
-      "claim": "Existing recording, transcription and auto-recording policies will stay as they are today when the new control ships.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: Teams tenant policy record transcribe organizers; Teams recording transcription policy sensitivity enforced. Read the roadmap, meeting-recording, meeting-transcription-captions and manage-teams-auto-recording; none promises existing policies remain unchanged at rollout.",
-      "severity": "major",
-      "fix": "Replace 'Existing recording, transcription and auto-recording policies stay as they are today' with 'Existing recording, transcription and auto-recording policies are documented separately; Microsoft has not yet explained their interaction with the new policy.'"
-    },
-    {
-      "n": 39,
-      "where": "Cost and licensing: storage",
-      "type": "cost",
-      "claim": "Recording files count against OneDrive or SharePoint storage quotas.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/tmr-meeting-recording-change",
-      "quote": "Teams meeting recording files live in OneDrive and SharePoint and are included in your quota for those services.",
-      "severity": "minor",
-      "fix": "Add https://learn.microsoft.com/microsoftteams/tmr-meeting-recording-change to sources for the explicit storage-quota claim."
-    },
-    {
-      "n": 40,
-      "where": "Cost and licensing: storage",
-      "type": "behaviour",
-      "claim": "The existing recording permission policy does not configure or validate recording storage.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-recording",
-      "quote": "**`-AllowCloudRecording`** controls whether users can record meetings; it doesn't configure or validate recording storage.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "Scope: Roles to configure it",
-      "type": "absence",
-      "claim": "The administrator role required specifically for the new tenant policy is not yet published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams \"who can record and transcribe\" \"administrator role\". Opened meeting-recording, manage-meeting-recording-options and Set-CsTeamsMeetingPolicy; none specifies a role for configuring the planned tenant policy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "Governance controls: final paragraph",
-      "type": "behaviour",
-      "claim": "Both the meeting organiser and the recording initiator need recording permission.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-recording",
-      "quote": "Both the organizer and recording initiator need to have recording permissions to record the meeting or event.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 43,
-      "where": "controls[2].note; Governance controls: final paragraph",
-      "type": "behaviour",
-      "claim": "Transcription is per-organiser and per-user, requiring it to be enabled for the organiser and the initiating user.",
+      "where": "controls[1].note; Risk assessment: Security & identity; Risk assessment: Change & support",
+      "type": "absence",
+      "claim": "Microsoft has not documented how the new policy interacts with existing recording, transcription and auto-recording policies.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
-      "quote": "Transcription is both a per-organizer and per-user policy setting. For meetings and events to include transcripts, the organizer must have this setting turned on. The user who starts the recording or transcript must also have this setting turned on.",
+      "source": null,
+      "quote": "Searched: Teams \"who can record\" \"meeting policy\" default licensing price administrator role sensitivity labels override. Read meeting-recording, meeting-transcription-captions and manage-teams-auto-recording; none describes the planned policy's interactions.",
       "severity": null,
       "fix": null
     },
     {
       "n": 44,
-      "where": "Governance controls: final paragraph",
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "Microsoft Learn does not document a link between the new tenant policy and meeting sensitivity.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"579860\" Teams recording transcription licensing default policy role sensitivity. Read configure-meetings-sensitive-protection and meeting-templates-sensitivity-labels-policies; neither links the planned policy to sensitivity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap describes a permission control, not automatic recording or transcription.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Teams administrators can use meeting policies to control who can start recording and transcription, helping organizations apply consistent meeting settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Governance controls; What's changing",
       "type": "applicability",
-      "claim": "Preventing recording entirely requires recording policies, not meeting templates or sensitivity labels.",
+      "claim": "Preventing recording entirely uses admin recording policies, not the Who can record setting in a template or sensitivity label.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-meeting-recording-options",
       "quote": "If you need to prevent meetings and events from being recorded entirely, you must use the recording policies in the Teams admin center. This setting applies to the people or groups that you specify, but can't be applied through a meeting template or sensitivity label.",
@@ -513,36 +535,47 @@
       "fix": null
     },
     {
-      "n": 45,
-      "where": "rationale: risk; front matter: defaultState; Scope",
-      "type": "consistency",
-      "claim": "Nothing is enforced until an administrator sets the new policy, despite the page saying its default is unknown.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "defaultState: \"unknown\"; 'Not stated whether the policy starts restricting anything on arrival.' versus 'nothing is enforced until an admin sets the policy.'",
-      "severity": "blocker",
-      "fix": "Keep defaultState unknown. Replace the risk rationale's last clause with 'the assessment assumes today's behaviour continues because Microsoft has not stated the new policy's default.' Do not state non-enforcement as a confirmed rollout fact."
+      "n": 47,
+      "where": "Governance controls",
+      "type": "licensing",
+      "claim": "Meeting options in sensitivity labels and custom meeting templates require Teams Premium for the organisers using them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/configure-meetings-sensitive-protection",
+      "quote": "Meeting options in sensitivity labels and custom meeting templates require Teams Premium.",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 46,
-      "where": "Governance guidance: Before rollout; Governance controls",
-      "type": "consistency",
-      "claim": "The checklist asks administrators to inventory enforcing templates and sensitivity labels, but the table gives only the organiser setting.",
+      "n": 48,
+      "where": "Governance controls: final sentence",
+      "type": "applicability",
+      "claim": "A sensitivity label's meeting options do not take effect in Meet Now meetings.",
       "status": "contradicted",
-      "source": "page",
-      "quote": "'List the sensitivity labels and meeting templates that already enforce Who can record and transcribe' versus the table's 'Teams meeting options (organiser)' row with no template or label administration rows.",
-      "severity": "minor",
-      "fix": "Add governance-control rows for enforcing Who can record and transcribe through meeting templates and sensitivity labels, researching their respective admin UI and automation surfaces; alternatively remove that inventory instruction from the checklist."
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-meetings",
+      "quote": "The following meeting options won't take effect for a Meet Now meeting:\n\n- Who can record and transcribe\n- Encryption for meeting video and audio\n- Automatically record and transcribe\n- Video watermark for screen sharing and camera streams",
+      "severity": "blocker",
+      "fix": "Replace 'a label's meeting options do not take effect in Meet Now meetings' with 'a label's Who can record and transcribe option does not take effect in Meet Now meetings'. Microsoft limits that exception to the listed options, not all label-controlled meeting settings. Keep the sensitivity-labels-meetings source."
+    },
+    {
+      "n": 49,
+      "where": "What's changing; Governance controls",
+      "type": "behaviour",
+      "claim": "Current Learn documentation explicitly says there is no admin policy for Who can record, unlike the policy planned in the roadmap.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-templates-sensitivity-labels-policies",
+      "quote": "Meeting recording can be disabled completely using a meeting policy, but there's no admin policy for *Who can record*.",
+      "severity": null,
+      "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-16T15:35:51.232Z",
+    "at": "2026-11-16T17:07:09.476Z",
     "summary": {
-      "links": 5,
+      "links": 11,
       "unreachable": 0,
-      "uiPaths": 3,
+      "uiPaths": 4,
       "uiPathsWithMissingWords": 0,
-      "apiCalls": 3,
+      "apiCalls": 5,
       "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
     },
@@ -568,7 +601,37 @@
         "status": 200
       },
       {
-        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+        "url": "https://learn.microsoft.com/microsoftteams/manage-teams-auto-recording",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/create-custom-meeting-template",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/meeting-templates-sensitivity-labels-policies",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/configure-meetings-sensitive-protection",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/sensitivity-labels-meetings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/get-csteamsmeetingtemplateconfiguration",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-label",
         "ok": true,
         "status": 200
       }
@@ -591,7 +654,7 @@
         "index": 1,
         "side": "api",
         "governs": "Whether meeting recording is allowed for users with a policy",
-        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+        "docs": "https://learn.microsoft.com/microsoftteams/meeting-recording",
         "reachable": true,
         "token": "Set-CsTeamsMeetingPolicy",
         "found": true
@@ -613,7 +676,7 @@
         "index": 2,
         "side": "api",
         "governs": "Whether meeting transcription is allowed for users with a policy",
-        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+        "docs": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
         "reachable": true,
         "token": "Set-CsTeamsMeetingPolicy",
         "found": true
@@ -621,8 +684,8 @@
       {
         "index": 3,
         "side": "api",
-        "governs": "Whether organisers see Record and transcribe automatically in Meeting options",
-        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+        "governs": "Whether organisers see Record and transcribe automatically in meeting options",
+        "docs": "https://learn.microsoft.com/microsoftteams/manage-teams-auto-recording",
         "reachable": true,
         "token": "Set-CsTeamsMeetingPolicy",
         "found": true
@@ -630,14 +693,51 @@
       {
         "index": 4,
         "side": "ui",
-        "governs": "Who can record and transcribe in a given meeting, today (organiser setting)",
-        "docs": "https://learn.microsoft.com/microsoftteams/manage-meeting-recording-options",
+        "governs": "Who can record in meetings that use a template (enforced or left to the organiser)",
+        "docs": "https://learn.microsoft.com/microsoftteams/create-custom-meeting-template",
         "reachable": true,
         "segments": [
-          "Meeting options",
-          "Who can record and transcribe"
+          "Meetings",
+          "Meeting templates",
+          "Add",
+          "Recording & transcription",
+          "Who can record"
         ],
         "missing": []
+      },
+      {
+        "index": 4,
+        "side": "api",
+        "governs": "Who can record in meetings that use a template (enforced or left to the organiser)",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/get-csteamsmeetingtemplateconfiguration",
+        "reachable": true,
+        "token": "Get-CsTeamsMeetingTemplateConfiguration",
+        "found": true
+      },
+      {
+        "index": 5,
+        "side": "ui",
+        "governs": "Who can record and transcribe in meetings that carry a sensitivity label",
+        "docs": "https://learn.microsoft.com/microsoftteams/configure-meetings-sensitive-protection",
+        "reachable": true,
+        "segments": [
+          "Solutions",
+          "Information protection",
+          "Labels",
+          "Create a label",
+          "Settings for Teams meetings and chats",
+          "Control who can record and transcribe"
+        ],
+        "missing": []
+      },
+      {
+        "index": 5,
+        "side": "api",
+        "governs": "Who can record and transcribe in meetings that carry a sensitivity label",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-label",
+        "reachable": true,
+        "token": "Set-Label",
+        "found": true
       }
     ],
     "roadmapDrift": []
@@ -648,6 +748,12 @@
       "status": "held",
       "version": 1,
       "model": "none"
+    },
+    {
+      "date": "2026-11-16",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
     }
   ]
 }

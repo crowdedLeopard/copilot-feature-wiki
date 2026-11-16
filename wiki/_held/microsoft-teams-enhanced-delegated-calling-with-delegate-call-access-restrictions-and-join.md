@@ -75,6 +75,17 @@ changes:
   - date: "2026-11-16"
     note: "First briefing for this item: lock and delegate join tone, with the existing delegation controls and the gap in admin controls."
 version: 1
+verification:
+  status: "held"
+  date: "2026-11-16"
+  version: 1
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 55
+  confirmed: 53
+  unconfirmed: 0
+  contradicted: 2
+  attempts: 1
 ---
 
 ## What's changing
@@ -178,4 +189,19 @@ The controls listed below govern call delegation in general. Turning delegation 
 risk: Low. The controls sit with the delegator and only narrow what delegates can do on calls that already exist. No admin setting is documented for either control, so exposure depends on user choice.
 cost: Low. The only cost the sources show is admin and support time for communication. Call delegation itself is included with Teams Phone, but no page states the licence for these new controls.
 impact: Medium. Only users with call delegation configured notice it: executives, assistants, managers and support staff. Everyone else on their calls may hear the new tone.
+-->
+
+<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
+The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
+- [supported, minor] controls[0].ui; Governance controls / admin-path: The delegation policy toggle is at Teams admin center > Voice > Calling policies > Delegation for inbound and outbound calls. | Found: select Voice > Calling policies.
+2. Choose the policy you would like to update or select Add to create a new policy.
+3. Toggle Delegation for inbound and outbound calls on. | Fix: Include the policy-selection step in the front matter and rendered table: Voice > Calling policies > policy > Delegation for inbound and outbound calls. | Source: https://learn.microsoft.com/microsoftteams/user-call-settings
+- [contradicted, blocker] controls[1].api; Governance controls / command: Set-CsUserCallingDelegate -Identity <delegator> -Delegate <delegate> -MakeCalls -ReceiveCalls -ManageSettings changes delegate permissions as printed. | Found: [-MakeCalls <Boolean>]
+[-ManageSettings <Boolean>]
+[-ReceiveCalls <Boolean>]
+Set-CsUserCallingDelegate -Identity user1@contoso.com -Delegate user2@contoso.com -MakeCalls $true | Fix: Supply Boolean arguments in both copies, for example Set-CsUserCallingDelegate -Identity <delegator> -Delegate <delegate> -MakeCalls $true -ReceiveCalls $true -ManageSettings $true, explaining that administrators choose each value. Cite https://learn.microsoft.com/powershell/module/microsoftteams/set-csusercallingdelegate as the command reference. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/set-csusercallingdelegate
+- [contradicted, blocker] controls[1].note; Governance controls / absence: Microsoft Learn does not show join permissions among delegate permissions. | Found: -JoinActiveCalls
+Specifies whether delegate is allowed to join active calls on behalf of the specified user.
+-PickUpHeldCalls
+Specifies whether delegate is allowed to pick up calls on behalf of the specified user. | Fix: Replace the note in both copies with: 'Existing control. Set-CsUserCallingDelegate also documents -JoinActiveCalls and -PickUpHeldCalls permissions; these govern delegate participation generally, not the new per-call lock or warning tone.' Cite https://learn.microsoft.com/powershell/module/microsoftteams/set-csusercallingdelegate. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/set-csusercallingdelegate
 -->

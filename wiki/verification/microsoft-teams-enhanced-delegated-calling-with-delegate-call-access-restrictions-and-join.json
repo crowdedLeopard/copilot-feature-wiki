@@ -5,27 +5,727 @@
   "status": "held",
   "date": "2026-11-16",
   "version": 1,
-  "model": "none",
-  "engine": "manual",
-  "attempts": 0,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [],
   "hold": {
-    "reason": "unverified",
+    "reason": "failed",
     "since": "2026-11-16",
     "reasons": [
-      "Written but not yet checked against Microsoft Learn."
+      "2 blocking findings (claims 34, 35)"
     ]
   },
   "counts": {
-    "claims": 0,
-    "confirmed": 0,
+    "claims": 55,
+    "confirmed": 53,
     "unconfirmed": 0,
-    "contradicted": 0,
-    "blocker": 0,
+    "contradicted": 2,
+    "blocker": 2,
     "major": 0,
-    "minor": 0
+    "minor": 1
   },
-  "summary": "Written but not yet checked against Microsoft Learn.",
-  "claims": [],
-  "precheck": null,
-  "history": []
+  "summary": "Hold: the delegate-permissions command omits required Boolean values and cannot be used as printed. Microsoft also documents a permission to join active calls, contrary to the briefing's statement that no join permission is shown. The feature description and rollout dates match Microsoft's supplied notice and roadmap.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "A delegator authorises a delegate to make or receive calls on their behalf.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/user-call-settings",
+      "quote": "In the context of call delegation, a delegator is the user authorizing a delegate to make or receive calls on their behalf.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing; Risk assessment; Governance guidance; rationale: risk",
+      "type": "record",
+      "claim": "Delegators can lock an active call to prevent delegates from joining it.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Delegators can lock an ongoing call to prevent delegates from joining or resuming the call",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "summary; What's changing; Risk assessment; Governance guidance",
+      "type": "record",
+      "claim": "A locked call cannot be resumed from hold by a delegate.",
+      "status": "supported",
+      "source": "Message Center post MC1429012",
+      "quote": "Delegators can lock an active call to prevent delegates from:\n\n- Resuming a call that has been placed on hold.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "summary; What's changing; Why it matters",
+      "type": "record",
+      "claim": "Delegators can optionally enable a warning tone when a delegate joins an active call.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "can optionally enable warning tones that notify participants when a delegate joins or resumes a call.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The optional warning tone also sounds when a delegate resumes a held call.",
+      "status": "supported",
+      "source": "Message Center post MC1429012",
+      "quote": "When enabled, all call participants will hear an audible notification when a delegate:\n\n- Joins an active call.\n- Resumes a held call.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What's changing; Risk assessment: Data exposure; Governance guidance; rationale: impact",
+      "type": "record",
+      "claim": "All call participants hear an enabled warning tone, including participants outside the organisation.",
+      "status": "supported",
+      "source": "Message Center post MC1429012",
+      "quote": "When enabled, all call participants will hear an audible notification",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "A Lock call control is available in the toolbar during an active call.",
+      "status": "supported",
+      "source": "Message Center post MC1429012",
+      "quote": "During an active call, delegators can use the new Lock call control from the meeting toolbar",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Delegators can also lock an active call from the Calls experience.",
+      "status": "supported",
+      "source": "Message Center post MC1429012",
+      "quote": "Delegators can lock an active Teams call directly from the Calls experience",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Delegates continue to see locked calls in their call history.",
+      "status": "supported",
+      "source": "Message Center post MC1429012",
+      "quote": "Delegates will continue to see locked calls in their call history.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Governance guidance",
+      "type": "record",
+      "claim": "Delegates cannot participate in locked calls until the delegator unlocks them.",
+      "status": "supported",
+      "source": "Message Center post MC1429012",
+      "quote": "Delegates will be unable to participate in locked calls until the delegator unlocks the call.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Warning Tone for Delegate Participation is a separate optional setting in call delegation settings.",
+      "status": "supported",
+      "source": "Message Center post MC1429012",
+      "quote": "A new optional Warning Tone for Delegate Participation setting will be available.Screenshot 3: New call delegation settings allow users to enable an audible notification",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Scope: Who is affected; rationale: impact",
+      "type": "record",
+      "claim": "The capability is available by default to users with call delegation configured.",
+      "status": "supported",
+      "source": "Message Center post MC1429012",
+      "quote": "This change will be available by default to users with call delegation configured.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Why it matters",
+      "type": "record",
+      "claim": "No existing call delegation workflows are removed.",
+      "status": "supported",
+      "source": "Message Center post MC1429012",
+      "quote": "No existing call delegation workflows are removed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "Microsoft requires no immediate administrative action.",
+      "status": "supported",
+      "source": "Message Center post MC1429012",
+      "quote": "No immediate administrative action is required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The supplied notice sets no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1429012",
+      "quote": "Act by: none",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target date is August CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"August CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Targeted Release.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "front matter: clouds; What's changing; Scope: Clouds",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "front matter: platforms; What's changing; Scope: Platforms",
+      "type": "record",
+      "claim": "The roadmap lists Desktop and Mac.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Mac\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The supplied notice was last updated on 22 September 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1429012",
+      "quote": "Updated September 22, 2026: We have updated the timeline.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice targets Worldwide Targeted Release from early August to mid-August 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1429012",
+      "quote": "Targeted Release (Worldwide): We will begin rolling out in early August 2026 and expect to complete by mid-August 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice targets Worldwide General Availability rollout in mid-August 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1429012",
+      "quote": "General Availability (Worldwide): We will begin rolling out in mid-August 2026 and expect to complete by mid-August 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice targets GCC and GCC High rollout from mid-August to late August 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1429012",
+      "quote": "General Availability (GCC, GCC High): We will begin rolling out in mid-August 2026 and expect to complete by late August 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Scope: Clouds",
+      "type": "record",
+      "claim": "The notice targets DoD rollout from mid-August to the end of October 2026, previously mid-September.",
+      "status": "supported",
+      "source": "Message Center post MC1429012",
+      "quote": "General Availability (DoD): We will begin rolling out in mid-August 2026 and expect to complete by end of October 2026 (previously mid-September).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing; Scope: Platforms",
+      "type": "record",
+      "claim": "The notice lists Teams desktop and Teams web as platforms.",
+      "status": "supported",
+      "source": "Message Center post MC1429012",
+      "quote": "Platforms/Services:\n\n- Microsoft Teams\n- Teams Calling\n- Teams desktop\n- Teams web",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; Cost and licensing",
+      "type": "absence",
+      "claim": "The cited Learn delegation article does not yet describe the new lock or warning tone.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams \"Warning Tone for Delegate Participation\"; Teams \"lock\" \"delegator\". Opened learn.microsoft.com/microsoftteams/user-call-settings in full: neither new control is described.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "front matter: defaultState; Risk assessment; Governance controls; rationale: risk",
+      "type": "default",
+      "claim": "The new controls are user-opt-in: delegators choose when to lock calls and whether to enable the tone.",
+      "status": "supported",
+      "source": "Message Center post MC1429012",
+      "quote": "Delegators can lock and unlock ongoing calls and can enable or disable the warning tone notification setting for delegate participation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[0].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "The delegation policy toggle is at Teams admin center > Voice > Calling policies > Delegation for inbound and outbound calls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/user-call-settings",
+      "quote": "select Voice > Calling policies.\n2. Choose the policy you would like to update or select Add to create a new policy.\n3. Toggle Delegation for inbound and outbound calls on.",
+      "severity": "minor",
+      "fix": "Include the policy-selection step in the front matter and rendered table: Voice > Calling policies > policy > Delegation for inbound and outbound calls."
+    },
+    {
+      "n": 31,
+      "where": "controls[0].api; Governance controls",
+      "type": "command",
+      "claim": "Set-CsTeamsCallingPolicy in MicrosoftTeams supports Identity and AllowDelegation to control delegation availability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamscallingpolicy",
+      "quote": "[-Identity] <string>\n[-AllowDelegation <boolean>]\nEnables the user to configure delegation in the Microsoft Teams client",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[0].note; Scope: Prerequisites; Governance controls",
+      "type": "default",
+      "claim": "The general AllowDelegation calling policy setting is on by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/user-call-settings",
+      "quote": "You enable delegation by using the TeamsCallingPolicy AllowDelegation setting. You can use Teams admin center or Teams PowerShell. This setting is turned on by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[1].ui; Governance controls; Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "Administrators access user call delegation settings through Teams admin center > Users > Manage users > user > Voice.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/user-call-settings",
+      "quote": "In the Teams admin center, go to Users > Manage users and select a licensed user.\n6. On the user details page, go to the Voice tab.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[1].api; Governance controls",
+      "type": "command",
+      "claim": "Set-CsUserCallingDelegate -Identity <delegator> -Delegate <delegate> -MakeCalls -ReceiveCalls -ManageSettings changes delegate permissions as printed.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csusercallingdelegate",
+      "quote": "[-MakeCalls <Boolean>]\n[-ManageSettings <Boolean>]\n[-ReceiveCalls <Boolean>]\nSet-CsUserCallingDelegate -Identity user1@contoso.com -Delegate user2@contoso.com -MakeCalls $true",
+      "severity": "blocker",
+      "fix": "Supply Boolean arguments in both copies, for example Set-CsUserCallingDelegate -Identity <delegator> -Delegate <delegate> -MakeCalls $true -ReceiveCalls $true -ManageSettings $true, explaining that administrators choose each value. Cite https://learn.microsoft.com/powershell/module/microsoftteams/set-csusercallingdelegate as the command reference."
+    },
+    {
+      "n": 35,
+      "where": "controls[1].note; Governance controls",
+      "type": "absence",
+      "claim": "Microsoft Learn does not show join permissions among delegate permissions.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csusercallingdelegate",
+      "quote": "-JoinActiveCalls\nSpecifies whether delegate is allowed to join active calls on behalf of the specified user.\n-PickUpHeldCalls\nSpecifies whether delegate is allowed to pick up calls on behalf of the specified user.",
+      "severity": "blocker",
+      "fix": "Replace the note in both copies with: 'Existing control. Set-CsUserCallingDelegate also documents -JoinActiveCalls and -PickUpHeldCalls permissions; these govern delegate participation generally, not the new per-call lock or warning tone.' Cite https://learn.microsoft.com/powershell/module/microsoftteams/set-csusercallingdelegate."
+    },
+    {
+      "n": 36,
+      "where": "controls[2].ui; controls[2].api; summary; Risk assessment; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No feature-specific admin UI, calling policy parameter or API is documented to require the warning tone or enable, disable or force the new call lock.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams delegation \"warning tone\" \"policy\"; Teams \"lock\" \"delegator\"; Teams delegation lock call warning tone admin policy. Opened user-call-settings, Set-CsTeamsCallingPolicy, Set-CsUserCallingDelegate and Graph call delegation overview; none documents either new control.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope",
+      "type": "licensing",
+      "claim": "Both delegator and delegate require a Teams Phone licence for call delegation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/user-call-settings",
+      "quote": "the manager and administrative assistant must each have a Teams Phone license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Call delegation is included with Teams Phone.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/user-call-settings",
+      "quote": "Call delegation and is included with Teams Phone.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "Licensing specific to the new lock and warning tone is not yet published, so the feature's licensing model is unknown.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams delegate call lock warning tone license pricing billing; Teams delegation \"lock call\" \"license\". Opened learn.microsoft.com/microsoftteams/teams-phone-licensing and user-call-settings; neither states licensing specific to the new controls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing: Meter",
+      "type": "absence",
+      "claim": "No meter is documented specifically for these controls at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams delegate call lock warning tone license pricing billing; Teams delegation lock call warning tone admin policy licensing meter. Opened teams-phone-licensing and user-call-settings; neither names a meter for the lock or warning tone.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Scope: Platforms",
+      "type": "availability",
+      "claim": "Learn lists joining active calls as supported on Teams Desktop, Teams Web App (Edge) and Teams IP phone.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/user-call-settings",
+      "quote": "| Capability | Teams Desktop | Teams Mac App | Teams Web App (Edge) | Teams mobile iOS/Android App | Teams IP phone |\n| Join active calls | Yes | No | Yes | No | Yes |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Scope: Platforms; Open questions",
+      "type": "availability",
+      "claim": "Learn lists joining active calls as unsupported on the Teams Mac app and Teams mobile app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/user-call-settings",
+      "quote": "| Capability | Teams Desktop | Teams Mac App | Teams Web App (Edge) | Teams mobile iOS/Android App | Teams IP phone |\n| Join active calls | Yes | No | Yes | No | Yes |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Scope: Prerequisites; Governance controls",
+      "type": "applicability",
+      "claim": "The calling policy enables users to configure delegation relationships, rather than governing the new lock or tone separately.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/user-call-settings",
+      "quote": "You enable delegation by using the TeamsCallingPolicy AllowDelegation setting.\nWhen enabled, the end user can configure their delegation relationships directly in Teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Governance guidance: Before rollout",
+      "type": "command",
+      "claim": "Get-CsUserCallingSettings can show a user's delegates and delegators for an inventory of delegation relationships.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/user-call-settings",
+      "quote": "Get-CsUserCallingSettings - shows call forwarding settings, delegates, and delegator information for a user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Learn advises cleaning up delegation relationships in Teams admin center when turning delegation off for a user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/user-call-settings",
+      "quote": "When you turn off delegation for a user, you also need to clean up delegation relationships for that user in the Teams admin center to avoid incorrect call routing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Learn recommends assigning delegates and delegators the same calling policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/user-call-settings",
+      "quote": "Therefore, it's recommended that delegates and delegators are assigned the same calling policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "A delegate is bound to the settings in their own calling policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/user-call-settings",
+      "quote": "the delegate is bound to the settings configured in their calling policy and the permissions of the delegator's calling policy are not transferred to the delegate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[1].governs; Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The existing make-calls, receive-calls and manage-settings permissions are assigned per delegator and delegate.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/user-call-settings",
+      "quote": "New-CsUserCallingDelegate -Identity user1@contoso.com -Delegate user2@contoso.com -MakeCalls $true -ReceiveCalls $true -ManageSettings $true",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "Locking calls and changing the tone setting are deliberate user actions, not autonomous actions.",
+      "status": "supported",
+      "source": "Message Center post MC1429012",
+      "quote": "Delegators can lock and unlock ongoing calls and can enable or disable the warning tone notification setting for delegate participation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment: Change & support; Governance guidance",
+      "type": "record",
+      "claim": "The notice says the Microsoft Support delegation article will be updated for General Availability rollout.",
+      "status": "supported",
+      "source": "Message Center post MC1429012",
+      "quote": "Learn more: Share a phone line with a delegate in Microsoft Teams | Microsoft Support (will be updated for GA rollout)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Cost and licensing: Indirect cost; Governance guidance",
+      "type": "record",
+      "claim": "Microsoft recommends informing users, updating calling documentation and training materials, and notifying help desk staff.",
+      "status": "supported",
+      "source": "Message Center post MC1429012",
+      "quote": "Inform users who utilize delegated calling about the new lock and notification capabilities.\n- Update internal Teams calling documentation and training materials.\n- Notify help desk and support teams of the new user experience to prepare for potential questions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "Microsoft suggests evaluating whether to recommend the warning tone for confidential or sensitive conversations.",
+      "status": "supported",
+      "source": "Message Center post MC1429012",
+      "quote": "Evaluate whether the delegate participation warning tone should be recommended for users handling confidential or sensitive conversations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Scope: Platforms; Open questions",
+      "type": "absence",
+      "claim": "Client-specific differences in the new lock and tone behaviour are not stated in the supplied sources or identified Learn documentation.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams \"lock\" \"delegator\"; Teams \"Warning Tone for Delegate Participation\". Read MC1429012 and user-call-settings; the former names desktop and web, while the latter's client matrix covers existing delegation, not the new controls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Open questions",
+      "type": "record",
+      "claim": "The notice calls the warning tone optional but does not state its initial on/off value.",
+      "status": "supported",
+      "source": "Message Center post MC1429012",
+      "quote": "A new optional Warning Tone for Delegate Participation setting will be available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Risk assessment: Data exposure; Security & identity; rationale: risk",
+      "type": "record",
+      "claim": "The lock restricts participation in an individual call rather than removing the delegation relationship.",
+      "status": "supported",
+      "source": "Message Center post MC1429012",
+      "quote": "Delegates will continue to see locked calls in their call history.\n- Delegates will be unable to participate in locked calls until the delegator unlocks the call.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-16T17:06:56.391Z",
+    "summary": {
+      "links": 5,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=567306",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1429012",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/user-call-settings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamscallingpolicy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/teams-phone-licensing",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether a user can use call delegation at all",
+        "docs": "https://learn.microsoft.com/microsoftteams/user-call-settings",
+        "reachable": true,
+        "segments": [
+          "Voice",
+          "Calling policies",
+          "Delegation for inbound and outbound calls"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether a user can use call delegation at all",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamscallingpolicy",
+        "reachable": true,
+        "token": "Set-CsTeamsCallingPolicy",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "What each delegate may do for a delegator (make calls, receive calls, manage settings)",
+        "docs": "https://learn.microsoft.com/microsoftteams/user-call-settings",
+        "reachable": true,
+        "segments": [
+          "Users",
+          "Manage users",
+          "Voice"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "What each delegate may do for a delegator (make calls, receive calls, manage settings)",
+        "docs": "https://learn.microsoft.com/microsoftteams/user-call-settings",
+        "reachable": true,
+        "token": "Set-CsUserCallingDelegate",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": [
+    {
+      "date": "2026-11-16",
+      "status": "held",
+      "version": 1,
+      "model": "none"
+    }
+  ]
 }

@@ -50,6 +50,17 @@ changes:
   - date: "2026-11-16"
     note: "First briefing for this item, using the roadmap record and Microsoft's notice MC1187781 as updated on 2026-10-29 (rollout moved to November 2026)."
 version: 1
+verification:
+  status: "verified-with-gaps"
+  date: "2026-11-16"
+  version: 1
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 43
+  confirmed: 43
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
 ---
 
 ## What's changing
@@ -144,4 +155,9 @@ The Teams admin centre setting for communities in Teams governs whether the expe
 risk: Low. The change reorders how existing community conversations are shown and stays inside existing data and permission boundaries; Microsoft's notice identifies no compliance considerations.
 cost: Low. The only cost the sources show is admin and communications time; Microsoft has not published a licence or meter for this change.
 impact: High. It changes the default view of every community for all Viva Engage users in the organisation, so anyone who relied on the old default will notice.
+-->
+
+<!-- verifier-findings (2026-11-16, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
+- [supported, minor] What's changing; Scope; Governance guidance: After rollout / date: Rollout completion is expected by the end of November 2026, but the after-rollout checklist describes that timing as firm. | Found: expect to complete by the end of November 2026 (previously end of October). | Fix: Replace 'once the rollout completes at the end of November 2026' with 'once the rollout completes, which Microsoft expects by the end of November 2026'.
 -->

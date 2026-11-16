@@ -77,6 +77,17 @@ changes:
   - date: "2026-11-16"
     note: "First briefing for this item, based on Microsoft's notice MC1478003 and the Set-CsTeamsMeetingPolicy reference page."
 version: 1
+verification:
+  status: "held"
+  date: "2026-11-16"
+  version: 1
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 46
+  confirmed: 43
+  unconfirmed: 2
+  contradicted: 1
+  attempts: 1
 ---
 
 ## What's changing
@@ -172,4 +183,16 @@ The existing **Transcription** policy setting turns transcription on or off enti
 risk: Low. Masking stays on by default, so exposure arises only if an administrator turns it off in a policy assigned to meeting organisers.
 cost: Low. The only cost the sources show is admin and communication time; Microsoft has not published a licence requirement or meter for this setting.
 impact: Low. Nothing changes for users while the default holds; only people in meetings run by organisers whose policy turns filtering off would see unmasked words.
+-->
+
+<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
+The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
+- [supported, minor] Risk assessment: Data exposure / applicability: The saved transcript is governed by the permissions of the file with which it is stored. | Found: The captions and transcript file is stored with the video in OneDrive for Business or SharePoint. This inherits the same permissions and policy as the video file, so that whoever has access to the video file has access to the captions and transcript. | Fix: Add https://support.microsoft.com/office/3cb9acb6-05b2-4f59-a50d-7df61123aa20 to sources for the statement about transcript permissions. | Source: https://support.microsoft.com/office/3cb9acb6-05b2-4f59-a50d-7df61123aa20
+- [unsupported, major] Risk assessment: Security & identity / behaviour: The change introduces no new identity. | Found: Searched: "Teams" "transcript" "profanity" "identity". Read MC1478003 and the filtering parameter in Set-CsTeamsMeetingPolicy; neither states that no new identity is introduced. | Fix: Remove 'No new identity or permission is introduced.' Keep the following sourced statement that filtering follows the organiser's assigned meeting policy.
+- [unsupported, major] Risk assessment: Security & identity / behaviour: The change introduces no new permission. | Found: Searched: "Teams" "transcript" "profanity" "permissions". Read MC1478003, Set-CsTeamsMeetingPolicy and using-admin-roles; they describe the setting and meeting-policy administration, but do not state that this change introduces no permission. | Fix: Remove the assurance that no permission is introduced; describe the documented Teams meeting-policy administrator roles instead, citing https://learn.microsoft.com/microsoftteams/using-admin-roles.
+- [contradicted, blocker] Scope: Who configures it; Open questions / absence: Microsoft has not stated which Teams administrator role can change this meeting-policy setting. | Found: Teams Administrator | Manage the Teams service
+Everything in the Microsoft Teams admin center and associated PowerShell controls
+Teams Communications Administrator | Manage calling and meetings features within the Teams service.
+Manage meetings, including meeting policies | Fix: Replace the role gap with: 'Teams Administrator and Teams Communications Administrator can manage meeting policies in the Teams admin center and Teams PowerShell.' Cite https://learn.microsoft.com/microsoftteams/using-admin-roles and remove the role question from Open questions. | Source: https://learn.microsoft.com/microsoftteams/using-admin-roles
+- [supported, minor] Governance guidance: Before rollout / record: MC1478003 recommends confirming the business need and recording the business reason before turning filtering off. | Found: Before turning filtering off, confirm the business need and review whether the change aligns with your organization's compliance policies and transcript requirements. | Fix: Replace the bullet with: 'Confirm the business need and review compliance policies and transcript requirements before turning filtering off, as MC1478003 recommends. Record the business reason as an internal governance step.' The notice does not recommend recording the reason.
 -->

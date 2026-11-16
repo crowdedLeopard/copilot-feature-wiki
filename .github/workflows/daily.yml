@@ -41,6 +41,18 @@ on:
         description: 'Model override for the verifier (leave empty for the default)'
         required: false
         default: ''
+      verify_max_run_credits:
+        description: 'AI credits the verifier may spend in this run (empty: the VERIFY_MAX_RUN_CREDITS variable or 2000)'
+        required: false
+        default: ''
+      verify_run_minutes:
+        description: 'Minutes the verifier may keep starting checks for (empty: 75; a run with compile_limit 0 can take 110)'
+        required: false
+        default: ''
+      verify_parallel:
+        description: 'Checks run at once (empty: 3)'
+        required: false
+        default: ''
 
 permissions:
   contents: write
@@ -259,12 +271,12 @@ jobs:
           VERIFY_MODEL: ${{ github.event.inputs.verify_model || vars.VERIFY_MODEL || '' }}
           VERIFY_FALLBACK_MODELS: ${{ vars.VERIFY_FALLBACK_MODELS || '' }}
           VERIFY_MAX_CREDITS: ${{ vars.VERIFY_MAX_CREDITS || '250' }}
-          VERIFY_MAX_RUN_CREDITS: ${{ vars.VERIFY_MAX_RUN_CREDITS || '2000' }}
+          VERIFY_MAX_RUN_CREDITS: ${{ github.event.inputs.verify_max_run_credits || vars.VERIFY_MAX_RUN_CREDITS || '2000' }}
           VERIFY_TIMEOUT_MINUTES: ${{ vars.VERIFY_TIMEOUT_MINUTES || '15' }}
           # Checks run three at a time (a check took about four minutes and 63 credits in the first real run), for up
           # to 75 minutes; the job's 150-minute limit leaves room for the writer and for sessions still in flight.
-          VERIFY_PARALLEL: ${{ vars.VERIFY_PARALLEL || '3' }}
-          VERIFY_RUN_MINUTES: ${{ vars.VERIFY_RUN_MINUTES || '75' }}
+          VERIFY_PARALLEL: ${{ github.event.inputs.verify_parallel || vars.VERIFY_PARALLEL || '3' }}
+          VERIFY_RUN_MINUTES: ${{ github.event.inputs.verify_run_minutes || vars.VERIFY_RUN_MINUTES || '75' }}
           VERIFY_GRACE_EXISTING: ${{ vars.VERIFY_GRACE_EXISTING || '1' }}
           GITHUB_TOKEN: ${{ github.token }}
           COPILOT_PAT: ${{ secrets.COPILOT_GITHUB_TOKEN }}
@@ -343,8 +355,15 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           COMPILE_LIMIT: ${{ vars.COMPILE_LIMIT || '24' }}
         run: |
-          gh workflow run daily.yml --ref main -f compile_limit="$COMPILE_LIMIT"
-          echo "Next run queued with compile_limit=$COMPILE_LIMIT; it starts when this run finishes." >> "$GITHUB_STEP_SUMMARY"
+          # A run someone queued by hand (a full check, say) would be cancelled by a new one in the same lane,
+          # so the chain stands aside when a run is already waiting.
+          waiting=$(gh run list --workflow daily.yml --status queued --json databaseId --jq length)
+          if [ "${waiting:-0}" != "0" ]; then
+            echo "A run is already queued; the chain does not start another." >> "$GITHUB_STEP_SUMMARY"
+          else
+            gh workflow run daily.yml --ref main -f compile_limit="$COMPILE_LIMIT"
+            echo "Next run queued with compile_limit=$COMPILE_LIMIT; it starts when this run finishes." >> "$GITHUB_STEP_SUMMARY"
+          fi
 
       - name: Build the site
         run: npm run build

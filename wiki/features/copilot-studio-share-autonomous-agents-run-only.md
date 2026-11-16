@@ -4,7 +4,7 @@ slug: "copilot-studio-share-autonomous-agents-run-only"
 roadmapId: 567894
 topic: "copilot-studio"
 products: ["Microsoft Copilot Studio"]
-summary: "Makers can share trigger-based agents with people who run them under their own credentials. Each user's runs bill Copilot Credits to the hosting environment, and users manage their own connections and trigger settings."
+summary: "Makers can share a published autonomous agent so recipients run it under their own credentials. Usage bills Copilot Credits to the hosting environment, and no dedicated admin switch for this sharing is documented."
 status: "in-development"
 releasePhase: ["General Availability","Preview"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -14,91 +14,109 @@ previewDate: "August CY2026"
 risk: "high"
 cost: "variable"
 impact: "medium"
-defaultState: "on"
-action: "prepare"
+defaultState: "user-opt-in"
+action: "review"
 licensing:
-  model: "consumption"
-  notes: "Autonomous agent runs bill Copilot Credits through the environment that hosts the agent, totalled per end user. Users sharing or using agents need Copilot Studio access per the sharing prerequisites."
-audiences: ["power-platform-admin","security","finops","maker","service-owner"]
-tags: ["copilot-studio","autonomous-agents","triggers","sharing","run-only","copilot-credits","end-user-authentication"]
+  model: "mixed"
+  notes: "Credits are billed through the hosting environment per end user. Users you share with need a Microsoft Copilot Studio per-user licence; unlicensed users can sign up for a trial. Credit rates for this feature are not stated on the pages read."
+audiences: ["power-platform-admin","security","finops","maker"]
+tags: ["copilot-studio","autonomous-agents","triggers","sharing","run-only","copilot-credits","end-user-authentication","sharing-limits","spending-policies","maker-credentials","copilot-harness"]
 sources:
   - title: "Microsoft 365 Roadmap 567894"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=567894"
     kind: "roadmap"
-  - title: "Share agents with other users and makers: share an autonomous agent for users to run (preview)"
+  - title: "Share agents with other users and makers (Microsoft Copilot)"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-share-agent"
     kind: "learn"
-  - title: "Add triggers to an agent (preview)"
-    url: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-add-event-trigger"
-    kind: "learn"
-  - title: "Set up a shared autonomous agent"
+  - title: "Set up a shared autonomous agent (Microsoft Copilot) (preview)"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/end-user-manage-shared-agent"
     kind: "learn"
-  - title: "Overview of usage-based billing for agents powered by the Microsoft Copilot harness"
+  - title: "Add triggers to an agent (Microsoft Copilot) (preview)"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-add-event-trigger"
+    kind: "learn"
+  - title: "Overview of usage-based billing"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview"
     kind: "learn"
-  - title: "Who may share agents and with how many people (Power Platform admin center)"
-    url: "https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits#agent-sharing-rules"
+  - title: "Limit sharing"
+    url: "https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits"
     kind: "learn"
-  - title: "Who may share agents and with how many people (Power Platform CLI)"
-    url: "https://learn.microsoft.com/power-platform/developer/cli/reference/admin#pac-admin-set-governance-config"
-    kind: "learn"
-  - title: "Whether event triggers are available (Microsoft Copilot Studio connector) (Power Platform admin center)"
+  - title: "Configure data policies for agents"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention"
     kind: "learn"
-  - title: "Whether event triggers are available (Microsoft Copilot Studio connector) (PowerShell)"
+  - title: "New-DlpPolicy"
     url: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest"
     kind: "learn"
-  - title: "Which users can run a shared autonomous agent (Copilot Studio (maker))"
-    url: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-share-agent#share-an-autonomous-agent-for-users-to-run-preview"
+  - title: "Control maker-provided credentials for authentication"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication"
     kind: "learn"
-  - title: "Spending policies and limits for agents (Microsoft 365 admin center)"
+  - title: "Configure sharing agents with embedded maker credentials"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/configure-sharing-agents-embedded-maker-credentials"
+    kind: "learn"
+  - title: "Manage Copilot Studio costs in the Microsoft 365 admin center"
     url: "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs"
     kind: "learn"
-  - title: "Spending policies and limits for agents (Microsoft Graph)"
-    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview"
-    kind: "learn"
 videos: []
-related: ["copilot-studio-block-maker-provided-credentials","copilot-studio-safe-sharing-credential-oversharing","copilot-studio-cost-management-m365-admin-center","copilot-studio-require-human-approval-for-tool-calls","copilot-credits"]
+related: ["copilot-credits","copilot-studio-safe-sharing-credential-oversharing","copilot-studio-cost-management-m365-admin-center","microsoft-copilot-studio-agent-sharing-amongst-makers","managed-environments"]
 controls:
-  - governs: "Who may share agents and with how many people"
+  - governs: "Whether autonomous agents may be shared with Can use (admin switch)"
+    scope: "tenant"
+    ui: null
+    api: null
+    note: "No admin setting for run-only sharing is documented at the time of writing (November 2026). The maker chooses via Share."
+  - governs: "Who may share agents and with how many people (Managed Environments)"
     scope: "environment"
     ui:
       surface: "Power Platform admin center"
-      path: "Manage > Environments > environment > Edit Managed Environments > Limit sharing"
-      docs: "https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits#agent-sharing-rules"
+      path: "Manage > Environments > environment > Edit Managed Environments > Manage sharing"
+      docs: "https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits"
     api:
-      kind: "pac-cli"
-      call: "pac admin set-governance-config --environment <environment-id> --protection-level Standard --limit-sharing-mode <mode> --max-limit-user-sharing <n>"
-      docs: "https://learn.microsoft.com/power-platform/developer/cli/reference/admin#pac-admin-set-governance-config"
-  - governs: "Whether event triggers are available (Microsoft Copilot Studio connector)"
+      kind: "powershell"
+      call: "Set-AdminPowerAppEnvironmentGovernanceConfiguration -EnvironmentName <EnvironmentId> -UpdatedGovernanceConfiguration $governanceConfiguration (extendedSettings bot-limitSharingMode, bot-maxLimitUserSharing)"
+      docs: "https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits"
+    note: "General control: documented for agent Editor and Viewer permissions; Microsoft has not confirmed it applies to Can use sharing. Managed environments only."
+  - governs: "Whether event triggers can be added (Microsoft Copilot Studio connector)"
     scope: "environment"
     ui:
       surface: "Power Platform admin center"
-      path: "Security > Data and privacy > Data policy > New Policy"
+      path: "Security > Data and privacy > Data policy > New Policy > Assign connectors"
       docs: "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention"
     api:
       kind: "powershell"
-      call: "New-DlpPolicy (Microsoft.PowerApps.Administration.PowerShell)"
+      call: "New-DlpPolicy -DisplayName <name> -EnvironmentType <type> (Microsoft.PowerApps.Administration.PowerShell)"
       docs: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest"
-    note: "Blocking the Microsoft Copilot Studio connector removes triggers from the environment."
+    note: "Block the Microsoft Copilot Studio connector. Needs tenant admin or Environment Admin. The cmdlet page does not describe connector classification."
+  - governs: "Which credential types makers may use for agent tools"
+    scope: "environment"
+    ui:
+      surface: "Power Platform admin center"
+      path: "Manage > Environments > environment > Settings > Product > Features > Copilot Studio agents > Control maker credential options"
+      docs: "https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication"
+    api: null
+    note: "Learn warns that blocking maker-provided credentials makes agents triggered by scheduled or autonomous events fail for lack of credentials. Validate before enforcing."
+  - governs: "Sharing agents with embedded maker credentials"
+    scope: "environment"
+    ui:
+      surface: "Power Platform admin center"
+      path: "Manage > Environments > environment > Settings > Features > Sharing agents with embedded maker credentials"
+      docs: "https://learn.microsoft.com/microsoft-copilot-studio/configure-sharing-agents-embedded-maker-credentials"
+    api: null
+    note: "Governs sharing and publishing, not running; not retroactive. Microsoft has not confirmed it evaluates Can use sharing."
+  - governs: "Spending limits for agents and environments (resource-based spending policy)"
+    scope: "environment"
+    ui:
+      surface: "Microsoft 365 admin center"
+      path: "Copilot > Cost Management > Configuration > Add spending policy"
+      docs: "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs"
+    api: null
+    note: "Replaces Power Platform capacity allocations and billing plans for covered resources; excludes AI Builder credits. Learn recommends the AI Administrator role."
   - governs: "Which users can run a shared autonomous agent"
     scope: "agent"
     ui:
       surface: "Copilot Studio (maker)"
-      path: "Share > Can use"
-      docs: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-share-agent#share-an-autonomous-agent-for-users-to-run-preview"
+      path: "Agents > agent > Share > Can use"
+      docs: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-share-agent"
     api: null
-  - governs: "Spending policies and limits for agents"
-    scope: "agent"
-    ui:
-      surface: "Microsoft 365 admin center"
-      path: "Copilot > Cost Management > Configuration"
-      docs: "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs"
-    api:
-      kind: "graph"
-      call: "/beta/copilot/costManagement (Cost Management API)"
-      docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview"
+    note: "Maker-side, preview. Recipients need a Copilot Studio per-user licence and the set-up link."
 confidence: "high"
 created: "2026-11-13"
 updated: "2026-11-16"
@@ -108,82 +126,76 @@ changes:
     note: "Initial briefing"
   - date: "2026-11-16"
     note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
-version: 2
-verification:
-  status: "needs-correction"
-  date: "2026-11-16"
-  version: 2
-  model: "gpt-6.1-sol"
-  engine: "copilot"
-  claims: 60
-  confirmed: 43
-  unconfirmed: 9
-  contradicted: 8
-  attempts: 1
+  - date: "2026-11-16"
+    note: "Corrected after verification: default is now maker-opt-in and action is review; the Managed Environments path and sharing-limits PowerShell, licence prerequisite and Teams + Microsoft 365 qualification are fixed; unsupported claims removed; added credential controls."
+version: 3
 ---
 
 ## What's changing
 
-Autonomous agents in Copilot Studio run from **triggers** (an email arrives, a record changes, a schedule fires) rather than a chat prompt. Until now only the maker could activate such an agent, and it ran with the maker's connections. This feature lets a maker share a published autonomous agent with individual users or security groups using a **Can use** permission.
+Copilot Studio is adding run-only sharing for autonomous agents: a maker can share a published agent that has triggers with individual users or security groups, who run it under their own credentials. The roadmap description says autonomous agents could previously only be used and managed by makers; run-only sharing lets makers reach end users who have no edit permission or ownership.
 
-Recipients receive a set-up link, activate the agent for themselves, connect each trigger and tool with **their own credentials**, and can change only the trigger options the maker permits. They cannot edit the agent, see its configuration, or change tool parameters; tool calls are decided and executed by the model according to the maker's design. Each user manages their copy through an agent management page, where they also consent to any updates the maker publishes.
+Microsoft Learn already documents the behaviour, with the articles marked as prerelease. The maker selects **Share**, gives recipients **Can use**, then copies the **Copy link to set up** link and sends it, because recipients get no notification. Recipients open the agent management page, connect every trigger, tool and workflow that needs their credentials, and can change only the trigger options the maker turned on with **Editable by user**. They cannot change the agent's instructions, tools or other authoring settings, and they cannot specify or modify tool parameters: tool calls are invoked and executed fully with AI, based on the maker's specifications. A workflow used as a tool can accept only end-user credentials.
 
-Billing follows the environment: Microsoft states that each end user's autonomous agent usage is totalled and billed through the environment that hosts the agent. The feature is in preview from August 2026 with General Availability targeted for January 2027.
+The roadmap item is In development, with preview targeted for August CY2026 and General Availability targeted for January CY2027, for Worldwide (Standard Multi-Tenant) on the web. Both dates are targets; Learn describes the preview behaviour, and limits may change at General Availability.
 
 ## Why it matters
 
-This is the point where "an agent a maker runs for themselves" becomes "an automation the whole team depends on". Each shared instance runs under a different person's identity, so one agent can become fifty scheduled jobs touching fifty mailboxes, each with that user's permissions. That is better for least privilege than a single maker credential, and far harder to see from the outside.
+This moves an autonomous agent from something a maker runs for themselves to something many people run on their own accounts. One shared agent becomes one running instance per recipient, each starting from a trigger such as an arriving email and acting on that person's connections. That is a better fit for least privilege than one maker credential, but it spreads activity and credit spend across people the maker may not oversee.
 
-For a service owner the questions are: who is allowed to share autonomous agents, which environments may host them, how much credit they may consume, and what happens when the maker leaves. None of those are answered by the feature itself; they are answered by Managed Environments sharing limits, data policies and spending policies.
+An administrator's questions are who may share, which environments host these agents, how many credits they may use, and which data policies apply. The sharing-specific answers are thin: Microsoft Learn documents controls for neighbouring settings (Editor and Viewer sharing limits, data policies, spending policies) but no switch for Can use sharing itself. If nobody acts, makers in any environment with the feature can share agents, and spend follows the hosting environment's existing capacity or policy.
 
 ## Risk assessment
 
 **Data exposure**
-- Each instance acts on the recipient's data (mail, files, records) with the recipient's permissions, without that person watching. Trigger scoping (which mailbox, which folder, which table) decides the blast radius.
-- Makers cannot see users' data through the shared agent, but they define the instructions that act on it.
+- Each recipient's instance acts on connections that person created, so it can read and send whatever those connections reach. The maker's instructions and tool selection decide what it does with that data; review them before sharing.
+- Data policies apply to connectors, but Learn does not say how they treat a shared run-only instance that is already running (see Open questions).
 
 **Security & identity**
-- Positive: no maker credentials are reused; "workflow as a tool" must use end-user credentials in this model.
-- Users consent to maker updates; a changed instruction set can alter what the agent does with the user's data. Make update consent meaningful by publishing release notes.
+- Recipients authenticate with their own credentials, so no maker credential is needed for triggers or tools. Learn's maker-credential article adds that when an action runs under end-user credentials and the user lacks permission, the agent cannot do it on their behalf.
+- When a maker updates the agent, recipients are asked to connect or confirm the change on the agent management page. A changed instruction set can alter what the agent does with their data.
 
 **Autonomy & actions**
-- This is autonomous by definition: no human reviews each run. Pair with per-tool human approval for consequential actions (send, delete, pay).
-- Users cannot adjust tool parameters, so a flawed instruction affects every instance identically.
+- Runs start from triggers rather than a chat prompt, so the agent can act without anyone opening it. Tool parameters are fixed by the maker and AI, so a flawed instruction affects every recipient alike.
+- Microsoft Learn documents no approval setting for run-only shared agents at the time of writing, so human oversight of consequential actions is a design decision for the maker.
 
 **Change & support**
-- Users do not get a notification when an agent is shared; makers must send the set-up link. Expect confusion about "where is my agent".
-- Users must bookmark the agent management URL to fix broken connections; support teams need to know that page exists.
+- Recipients receive no notification and must be sent the set-up link, then bookmark the agent management URL to check health, fix connections and consent to updates. Expect support questions about where the agent is.
+- The agent management article documents the end-user experience and does not state what an administrator can see of individual instances.
 
 ## Cost and licensing
 
-- **Copilot Credits**, billed through the hosting environment and totalled per user. A popular agent with a frequent trigger can consume credits continuously.
-- Sharing prerequisites include authentication set to Authenticate with Microsoft and publication to Teams and Microsoft 365; users you share with need the relevant Copilot Studio access per the Learn article.
-- No per-instance licence, but a resource-based spending policy per environment or agent is the realistic cap on spend.
-- Indirect: maker time to document trigger scopes and update notes; help desk time for connection failures.
+Usage bills in Copilot Credits. The share article states that each end user's autonomous agent usage is totalled and billed through the underlying environment where the agent is hosted. For the Microsoft Copilot harness, credits are charged for large language model tokens, tools and the harness itself. Credits are managed in the Power Platform admin center, where administrators allocate them to environments. See [Copilot Credits](/concepts/copilot-credits/).
+
+Licence: the sharing prerequisites state that users you share with have a Microsoft Copilot Studio per-user licence, and that users without one can sign up for a trial. The same article lists publication to **Teams + Microsoft 365** with **Make agent available in Microsoft Copilot** turned on, and user authentication set to **Authenticate with Microsoft**.
+
+Cap: a Microsoft 365 admin center resource-based spending policy can cover specific agents or environments, with a monthly limit and an optional per-agent limit. Creating one moves Copilot Credit management for the covered resources into the Microsoft 365 admin center, replacing their Power Platform admin center capacity allocations and linked billing plans, and it does not apply to AI Builder credits. Credit rates specific to autonomous run-only usage, and how per-user totals appear in reports, are not stated on the pages read.
 
 ## Scope
 
-- Agents built in the new Copilot Studio experience with triggers configured for user authentication.
-- Worldwide (standard multi-tenant). No government cloud dates.
-- Recipients: individual users or security groups given **Can use**. Editors still need environment security roles.
-- Limitations in preview: workflows as tools accept end-user credentials only; users cannot modify tool parameters.
+- Agents built in the Microsoft Copilot harness experience, published with triggers, with triggers and tools configured for user authentication.
+- Recipients: individual users or security groups given **Can use**. Editing rights are separate and come from environment security roles.
+- Cloud and platform per the roadmap record: Worldwide (Standard Multi-Tenant), web. No government cloud is listed on the record.
+- Limitations documented for the preview: workflow-as-a-tool accepts end-user credentials only; recipients cannot modify tool parameters.
+- Rollout: preview targeted for August CY2026 and General Availability for January CY2027. No Message Center post was supplied with the record.
 
 ## Governance guidance
 
-**Before rollout**
-- Decide which environments may host shareable autonomous agents (recommend: Managed Environments with sharing limits, not the default environment).
-- Set a resource-based spending policy on those environments so a runaway trigger has a ceiling.
-- Define what a maker must document before sharing: trigger scope, tools used, write actions, expected run frequency and credit estimate.
+### Before rollout
+- Decide which environments may host shareable autonomous agents, and make them managed environments so the sharing rules in the controls table can be set.
+- Create a Microsoft 365 admin center resource-based spending policy with a monthly and per-agent limit for those environments, after checking they use no AI Builder prompts.
+- Test whether the **Control maker credential options** setting suits your environments: Learn warns that blocking maker-provided credentials makes agents triggered by scheduled or autonomous events fail for lack of credentials, while the run-only article requires user-authenticated connections.
+- Require makers to document trigger scope, the tools used, write actions and expected run frequency before they share.
 
-**At rollout**
-- Enforce end-user credentials and safe sharing in the hosting environments.
-- Require human approval on write-capable tools used by shared autonomous agents.
-- Give the help desk the agent management URL and a one-page guide to reconnecting a trigger.
+### At rollout
+- Confirm in the Power Platform admin center that a data policy covers each hosting environment, and decide whether the **Microsoft Copilot Studio** connector should be blocked to prevent event triggers.
+- Tell makers to publish to Teams + Microsoft 365 with Make agent available in Microsoft Copilot on, and to send recipients the **Copy link to set up** link.
+- Brief the help desk on the agent management page: connections, the **Enabled** toggle for triggers, update consent and the **Activity** tab.
 
-**After rollout**
-- Review credit consumption per agent monthly and compare with the maker's estimate.
-- Audit which users have active instances when a maker leaves; reassign ownership before the agent is orphaned.
-- Watch for GA changes to the tool-parameter and workflow-credential limitations.
+### After rollout
+- Check Copilot Credit consumption by environment and agent against the maker's estimate.
+- Review which agents have Can use recipients when a maker leaves, since the page does not say what happens to instances.
+- Watch the preview articles for changes to the tool-parameter and workflow-credential limits before General Availability.
 
 ## Governance controls
 
@@ -192,49 +204,30 @@ For a service owner the questions are: who is allowed to share autonomous agents
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Who may share agents and with how many people</strong><br><small>Environment</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Edit Managed Environments › Limit sharing <a href="https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits#agent-sharing-rules" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform CLI</strong><br><code>pac admin set-governance-config --environment &lt;environment-id&gt; --protection-level Standard --limit-sharing-mode &lt;mode&gt; --max-limit-user-sharing &lt;n&gt;</code> <a href="https://learn.microsoft.com/power-platform/developer/cli/reference/admin#pac-admin-set-governance-config" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether event triggers are available (Microsoft Copilot Studio connector)</strong><br><small>Environment</small><br><small class="controls__note">Blocking the Microsoft Copilot Studio connector removes triggers from the environment.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Data and privacy › Data policy › New Policy <a href="https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpPolicy (Microsoft.PowerApps.Administration.PowerShell)</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which users can run a shared autonomous agent</strong><br><small>Agent</small></td><td data-label="Admin UI"><strong>Copilot Studio (maker)</strong><br>Share › Can use <a href="https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-share-agent#share-an-autonomous-agent-for-users-to-run-preview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Spending policies and limits for agents</strong><br><small>Agent</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>/beta/copilot/costManagement (Cost Management API)</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether autonomous agents may be shared with Can use (admin switch)</strong><br><small>Tenant</small><br><small class="controls__note">No admin setting for run-only sharing is documented at the time of writing (November 2026). The maker chooses via Share.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Who may share agents and with how many people (Managed Environments)</strong><br><small>Environment</small><br><small class="controls__note">General control: documented for agent Editor and Viewer permissions; Microsoft has not confirmed it applies to Can use sharing. Managed environments only.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Edit Managed Environments › Manage sharing <a href="https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-AdminPowerAppEnvironmentGovernanceConfiguration -EnvironmentName &lt;EnvironmentId&gt; -UpdatedGovernanceConfiguration $governanceConfiguration (extendedSettings bot-limitSharingMode, bot-maxLimitUserSharing)</code> <a href="https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether event triggers can be added (Microsoft Copilot Studio connector)</strong><br><small>Environment</small><br><small class="controls__note">Block the Microsoft Copilot Studio connector. Needs tenant admin or Environment Admin. The cmdlet page does not describe connector classification.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Data and privacy › Data policy › New Policy › Assign connectors <a href="https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpPolicy -DisplayName &lt;name&gt; -EnvironmentType &lt;type&gt; (Microsoft.PowerApps.Administration.PowerShell)</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which credential types makers may use for agent tools</strong><br><small>Environment</small><br><small class="controls__note">Learn warns that blocking maker-provided credentials makes agents triggered by scheduled or autonomous events fail for lack of credentials. Validate before enforcing.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › Copilot Studio agents › Control maker credential options <a href="https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Sharing agents with embedded maker credentials</strong><br><small>Environment</small><br><small class="controls__note">Governs sharing and publishing, not running; not retroactive. Microsoft has not confirmed it evaluates Can use sharing.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Features › Sharing agents with embedded maker credentials <a href="https://learn.microsoft.com/microsoft-copilot-studio/configure-sharing-agents-embedded-maker-credentials" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Spending limits for agents and environments (resource-based spending policy)</strong><br><small>Environment</small><br><small class="controls__note">Replaces Power Platform capacity allocations and billing plans for covered resources; excludes AI Builder credits. Learn recommends the AI Administrator role.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › Add spending policy <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which users can run a shared autonomous agent</strong><br><small>Agent</small><br><small class="controls__note">Maker-side, preview. Recipients need a Copilot Studio per-user licence and the set-up link.</small></td><td data-label="Admin UI"><strong>Copilot Studio (maker)</strong><br>Agents › agent › Share › Can use <a href="https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-share-agent" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-Run-only sharing is set by the maker; admins shape it indirectly through sharing limits, data policies and spending policies. Each recipient gets their own instance to manage on the [agent management page](https://learn.microsoft.com/microsoft-copilot-studio/end-user-manage-shared-agent), which admins do not see. The [triggers reference](https://learn.microsoft.com/microsoft-copilot-studio/authoring-triggers-about) explains how a blocked connector disables triggers. Credential options for the agent's tools follow the environment's [maker credential setting](/features/copilot-studio-block-maker-provided-credentials/).
+No tenant or environment switch for Can use sharing is documented at the time of writing (November 2026), so the first row records that gap. The rows after it are general controls: Microsoft has not confirmed that the Managed Environments sharing rules, which Learn describes in terms of Editor and Viewer permissions, or the embedded maker credentials control, which Learn describes for explicit sharing of agents that use maker credentials, evaluate Can use sharing.
+
+The data policy row needs the Environment Admin role or tenant admin. Learn says a policy that blocks the **Microsoft Copilot Studio** connector stops makers adding event triggers and shows an error in the Triggers section; it does not say what happens to a trigger already running. The maker credential setting is immediate for all agents in the environment, and the group page governs environments in a group. Spending policies take precedence over Power Platform admin center spending controls for the resources they cover.
 
 ## Open questions
 
-- How per-user billing appears in the Microsoft 365 admin center consumption view (user or agent attribution).
-- Whether admins will get a tenant-level list of shared autonomous agent instances, or only makers see their recipients.
-- Behaviour when the maker's account is disabled: do instances keep running on users' credentials?
+- Will Microsoft add an admin setting that turns Can use sharing of autonomous agents off per environment or tenant? Watch the Learn sharing article and Message Center.
+- Do Managed Environments sharing limits, or the embedded maker credentials control, apply to Can use sharing? The Learn pages describe Editor and Viewer sharing and explicit sharing respectively.
+- How do blocked event triggers or a data policy change affect shared instances that are already running?
+- Can administrators list or remove individual recipients' instances, and what happens to them when the maker's account is disabled?
+- How will per-user credit totals appear in Microsoft 365 admin center or Power Platform admin center reports, and what credit rates apply to autonomous runs?
 
 <!-- rationale
-risk: High. Autonomous execution on many users' data with no per-run review, billing that scales with recipients, and no admin-side instance inventory yet.
-cost: Variable. Copilot Credits per run through the hosting environment; needs a spending policy.
-impact: Medium. Affects makers and the users they share with; not a default-on change for everyone.
--->
-
-<!-- verifier-findings (2026-11-16, needs-correction; checked by gpt-6.1-sol)
-The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [supported, minor] front matter: previewDate; What's changing / record: The feature is in preview from August 2026. | Found: "previewDate": "August CY2026"; "status": "In development" | Fix: Replace the date sentence with 'The roadmap remains In development, with preview targeted for August CY2026 and General Availability targeted for January CY2027; Learn already documents the preview.' The record does not establish an actual August launch.
-- [unsupported, major] What's changing / behaviour: Recipients cannot see the shared agent's configuration. | Found: Searched: shared autonomous maker see; Copilot Studio shared agent management administrators. Opened authoring-share-agent and agents-experience/end-user-manage-shared-agent; these limit editing but do not state a blanket configuration-visibility prohibition. | Fix: Remove 'see its configuration'. Say recipients cannot change instructions, tools, or authoring settings; the setup article explicitly allows viewing agent details and required setup.
-- [supported, minor] front matter: licensing.notes; Cost and licensing / licensing: Recipients need the relevant Copilot Studio access described in the sharing prerequisites. | Found: Users you share with have a Microsoft Copilot Studio per-user license. Users who don't have a license can sign up for a trial. | Fix: Replace the vague access wording with the cited prerequisite: 'Users you share with need a Microsoft Copilot Studio per-user license; the sharing article also points unlicensed users to trial signup.' Do not imply environment access alone meets this prerequisite. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-share-agent
-- [contradicted, blocker] Cost and licensing / applicability: Publishing to Teams and Microsoft 365 satisfies the stated publication prerequisite for sharing. | Found: Agents you want to share are published to Teams + Microsoft 365, with Make agent available in Microsoft Copilot turned on. | Fix: Use the exact channel label 'Teams + Microsoft 365' and add the required qualification 'with Make agent available in Microsoft Copilot turned on'. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-share-agent
-- [unsupported, blocker] Cost and licensing / licensing: No per-instance licence is required. | Found: Searched: Copilot Studio shared autonomous agents per instance license per-user license. Read authoring-share-agent prerequisites and billing-credit-overview; neither states that no per-instance licence is required. | Fix: Remove 'No per-instance licence'. State the documented Copilot Credits billing and Microsoft Copilot Studio per-user sharing prerequisite instead.
-- [supported, minor] Risk assessment: Data exposure; Why it matters / behaviour: Runs operate using the recipient's identity and permissions on connected services. | Found: The action runs under the end-user's identity. If the user lacks permission for something, the agent is unable to do it on their behalf - by design. | Fix: Cite https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication for the explicit permissions statement, while carrying its autonomous-execution warning as described in the credential-policy finding. | Source: https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication
-- [unsupported, blocker] Risk assessment: Data exposure / role: Makers cannot see users' data through the shared agent. | Found: Searched: Copilot Studio shared makers user data; shared autonomous maker see. Read authoring-share-agent and end-user-manage-shared-agent. Own-credential execution is documented, but no maker data-visibility guarantee was found. | Fix: Remove the data-visibility guarantee. Replace it with 'Runs use each recipient's connections; review what the maker's instructions and tools can read and send.'
-- [unsupported, major] Risk assessment: Autonomy & actions; rationale: risk / behaviour: Autonomous execution means no human reviews each run. | Found: Searched: Copilot Studio autonomous approval tool; Copilot Studio human approval. Read authoring-share-agent, trigger setup, and guidance/autonomous-agents. Automatic triggering is stated, but a universal absence of human review is not. | Fix: Replace 'no human reviews each run' and 'no per-run review' with 'runs can start without a chat prompt'. Treat the amount of human oversight as a design decision rather than a consequence of the word autonomous.
-- [unsupported, blocker] Risk assessment: Autonomy & actions; Governance guidance: At rollout / applicability: A per-tool human-approval control can be required on shared autonomous agents' write-capable tools. | Found: Searched: Copilot Studio human approval; site:learn.microsoft.com/microsoft-copilot-studio/agents-experience approval tool. Read tools-available and tools-add-workflow excerpts; no per-tool approval control for this run-only feature was documented. | Fix: Replace the imperative with 'Design and validate an approval workflow for consequential actions; Microsoft has not confirmed a per-tool approval setting for this run-only preview in the cited documentation.' Do not transfer a control from a neighbouring agent experience.
-- [unsupported, blocker] Why it matters; Governance guidance; Governance controls prose; controls[0].governs / applicability: Managed Environments sharing limits govern this autonomous-agent Can use sharing permission. | Found: Searched: Copilot Studio agents-experience sharing limits run only managed environments. Read managed-environment-sharing-limits and admin-sharing-controls-limits; they describe Editor and Viewer assignments, not the new Can use permission. | Fix: Qualify the sharing-limits row and prose: 'General agent Editor/Viewer sharing control; Microsoft has not confirmed how these limits apply to autonomous-agent Can use sharing.' Do not promise that this is a confirmed run-only sharing restriction.
-- [contradicted, blocker] controls[0].ui; Governance controls table / admin-path: The documented path ends Edit Managed Environments > Limit sharing. | Found: In the command bar, Edit Managed Environments. ... The sharing rules are located in the Manage sharing section. | Fix: Use 'Manage > Environments > environment > Edit Managed Environments > Manage sharing', following the numbered instructions. The page's screenshot description still mentions Limit sharing, but its written navigation now says Manage sharing. | Source: https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits#agent-sharing-rules
-- [contradicted, blocker] controls[0].api; Governance controls table / command: pac admin set-governance-config --environment <environment-id> --protection-level Standard --limit-sharing-mode <mode> --max-limit-user-sharing <n> sets agent sharing limits. | Found: --max-limit-user-sharing: If group sharing is disabled, specify the number of people that makers can share canvas apps with. | Fix: Remove this CLI call as an agent-control equivalent. The sharing-limits article documents Set-AdminPowerAppEnvironmentGovernanceConfiguration with bot-limitSharingMode and bot-maxLimitUserSharing in extendedSettings for agent Viewer limits; cite that example and retain the Can use applicability caveat. | Source: https://learn.microsoft.com/power-platform/developer/cli/reference/admin#pac-admin-set-governance-config
-- [unsupported, major] controls[1].note; Governance controls table / behaviour: Blocking the connector removes triggers from the environment. | Found: Searched: Copilot Studio blocked triggers removed. Read admin-data-loss-prevention and authoring-triggers-about. They describe preventing use and showing policy errors, not deleting or removing existing triggers. | Fix: Replace 'removes triggers from the environment' with 'blocks event-trigger use in the environments covered by the policy'. Do not imply that policy enforcement deletes trigger configuration.
-- [unsupported, blocker] controls[3].api; Governance controls table / command: /beta/copilot/costManagement is an API call equivalent to configuring environment- or agent-scoped spending limits. | Found: Searched: costManagement resource spendingPolicies. Read the Cost Management API overview and spendingpolicy-list excerpts: /copilot/costManagement is a root namespace; listed policy scopes are all users or selected groups, not agent/environment resources. | Fix: Set controls[3].api to null for the resource-based control: no equivalent was established by this search. The root namespace is not an operation. Do not substitute GET or POST /beta/copilot/costManagement/spendingPolicies without documentation for resource scope; flag any beta API as preview.
-- [supported, minor] Cost and licensing; Governance guidance: Before rollout; rationale: cost; controls[3].governs / cost: Resource-based spending policies can set monthly limits for Copilot Studio environments or individual agents. | Found: Choose No limit or set a monthly spending limit for the policy. You can also set a per-agent limit so that no single agent covered by the policy uses more than the amount you specify. | Fix: Keep the recommendation, but explain that creating a resource policy opts covered resources into Microsoft 365 cost management and replaces their Power Platform capacity allocations and billing plans. Include the documented AI Builder exclusion before recommending it for every hosting environment. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs
-- [unsupported, blocker] Governance controls prose / role: Administrators cannot see recipients' agent management pages. | Found: Searched: Copilot Studio shared agent management administrators; shared autonomous admin data. Read the sharing and end-user management articles and agent-registry search excerpts. None establishes that administrators cannot access this page. | Fix: Remove 'which admins do not see'. Say the cited article documents the end-user management experience and does not specify administrator access to per-user instances.
-- [contradicted, blocker] Governance controls prose: agent management page link / admin-path: The linked /microsoft-copilot-studio/end-user-manage-shared-agent URL provides the agent-management guidance. | Found: Failed to fetch https://learn.microsoft.com/en-us/microsoft-copilot-studio/end-user-manage-shared-agent - status code 404 | Fix: Replace the broken body link with https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/end-user-manage-shared-agent, which opened successfully and describes setup, connections, updates, and recent activity. | Source: https://learn.microsoft.com/microsoft-copilot-studio/end-user-manage-shared-agent
-- [supported, minor] rationale: risk; Open questions / absence: A tenant-level administrator inventory of per-recipient shared autonomous-agent instances is not documented in the checked material. | Found: Searched: Copilot Studio shared agent management administrators; shared autonomous admin data. Opened sharing and end-user setup pages; read Agent registry integration excerpts. Registry guidance covers agents but not per-recipient autonomous instances. | Fix: Narrow 'no admin-side instance inventory yet' to 'No admin-side inventory of per-recipient autonomous instances is documented in the sources checked in November 2026'; retain the open question rather than asserting product absence.
-- [contradicted, blocker] front matter: defaultState; rationale: impact / default: This run-only sharing capability has defaultState on. | Found: The agent doesn't run autonomously until you publish it. ... Activate for me takes you to Agent management, where you turn on the agent. After you turn on the agent, your agent starts running on your behalf. | Fix: Change defaultState to user-opt-in: makers publish/share and recipients activate it. Searches for 'Copilot Studio autonomous agent run only sharing API permissions Can use admin enable default' found no dedicated admin enablement switch. This also aligns the field with the impact rationale. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-add-event-trigger
-- [contradicted, blocker] Governance guidance: At rollout; Governance controls prose / applicability: Enforcing the environment's end-user-only credential option is a safe rollout control for these autonomous agents. | Found: agents triggered by scheduled or autonomous events, or that attempt to run in the background, fail due to missing credentials. All agent triggers must involve an active user. | Fix: Do not instruct admins to enforce the environment-wide restriction without qualification. Report that the run-only preview requires user-authenticated connections, while the general credential-policy article warns of autonomous-run failures; validate this combination before enforcing it. | Source: https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication
-- [contradicted, minor] front matter: action / consistency: The prepare action rating matches a capability that changes nothing until makers share it and recipients activate it. | Found: action: "prepare"; 'Recipients receive a set-up link, activate the agent for themselves'; rationale: 'not a default-on change for everyone'. | Fix: Change action to review. The schema assigns review to optional capabilities that change nothing until an administrator or maker chooses them; this is not the exception for a new control closing a high-risk exposure.
-- [contradicted, minor] Governance guidance: At rollout; Governance controls / consistency: The controls table includes every control the rollout checklist instructs readers to enforce or require. | Found: Checklist: 'Enforce end-user credentials and safe sharing' and 'Require human approval'; table rows: sharing limits, data policies, Can use, spending policies. | Fix: After correcting applicability, add rows for Control maker credential options and Sharing agents with embedded maker credentials, with their limitations. Either remove the unverified per-tool approval requirement or add a clearly qualified row if a supporting control is established.
+risk: High. Shared agents run from triggers on each recipient's connections, and Microsoft Learn documents no admin switch for this sharing; the existing controls cover Editor and Viewer sharing, not Can use.
+cost: Variable. Copilot Credits are the meter: each end user's autonomous agent usage is totalled and billed through the environment that hosts the agent. Recipients also need a Copilot Studio per-user licence.
+impact: Medium. Makers and the users they share with notice it; nothing reaches anyone until a maker shares an agent and the recipient activates it.
 -->

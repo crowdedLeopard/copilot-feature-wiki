@@ -5,27 +5,631 @@
   "status": "held",
   "date": "2026-11-16",
   "version": 1,
-  "model": "none",
-  "engine": "manual",
-  "attempts": 0,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [],
   "hold": {
-    "reason": "unverified",
+    "reason": "failed",
     "since": "2026-11-16",
     "reasons": [
-      "Written but not yet checked against Microsoft Learn."
+      "1 blocking finding (claim 39)"
     ]
   },
   "counts": {
-    "claims": 0,
-    "confirmed": 0,
-    "unconfirmed": 0,
-    "contradicted": 0,
-    "blocker": 0,
-    "major": 0,
-    "minor": 0
+    "claims": 46,
+    "confirmed": 43,
+    "unconfirmed": 2,
+    "contradicted": 1,
+    "blocker": 1,
+    "major": 2,
+    "minor": 2
   },
-  "summary": "Written but not yet checked against Microsoft Learn.",
-  "claims": [],
-  "precheck": null,
-  "history": []
+  "summary": "Hold: the briefing says Microsoft has not identified an administrator role, but Microsoft documents meeting-policy management for Teams Administrator and Teams Communications Administrator. The filtering controls, default and rollout details are supported; the assurances about introducing no identity or permission need evidence or removal.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "summary; What's changing; controls[0].governs",
+      "type": "record",
+      "claim": "A Teams meeting policy controls profanity masking in live transcription.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Teams administrators will be able to use a meeting policy to control whether profane words are masked in live transcription and saved meeting transcripts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing; controls[0].governs",
+      "type": "record",
+      "claim": "The filtering control also governs the saved meeting transcript.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Teams administrators will be able to use a meeting policy to control whether profane words are masked in live transcription and saved meeting transcripts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; rationales",
+      "type": "default",
+      "claim": "Filtering remains on by default, preserving the existing masking behaviour.",
+      "status": "supported",
+      "source": "Message Center post MC1478003",
+      "quote": "The setting will be on by default, preserving the current transcript-masking behavior unless an administrator changes the assigned policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "Turning filtering off allows previously masked words to appear in live transcription.",
+      "status": "supported",
+      "source": "Message Center post MC1478003",
+      "quote": "When the setting is off, words that would otherwise be masked can appear in live transcription and in the saved transcript.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What's changing; Why it matters; Risk assessment: Data exposure; rationale: impact",
+      "type": "record",
+      "claim": "Turning filtering off allows previously masked words to appear in the saved transcript.",
+      "status": "supported",
+      "source": "Message Center post MC1478003",
+      "quote": "When the setting is off, words that would otherwise be masked can appear in live transcription and in the saved transcript.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What's changing; Scope; controls[0].note; Governance controls",
+      "type": "record",
+      "claim": "The meeting organiser's assigned policy determines the meeting's filtering behaviour.",
+      "status": "supported",
+      "source": "Message Center post MC1478003",
+      "quote": "The meeting organizer's assigned policy determines the behavior for the meeting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing; Why it matters",
+      "type": "record",
+      "claim": "An organiser's filtering-off policy affects their scheduled meetings rather than requiring a separate choice for each meeting.",
+      "status": "supported",
+      "source": "Message Center post MC1478003",
+      "quote": "If an administrator turns filtering off for the policy assigned to a meeting organizer, words that would otherwise be masked can appear in both the live and saved transcript for that organizer's scheduled meetings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "controls[3].note; Governance controls",
+      "type": "record",
+      "claim": "The change adds no organiser-level control.",
+      "status": "supported",
+      "source": "Message Center post MC1478003",
+      "quote": "This change does not add an organizer-level control and does not change each participant's live-caption profanity preference.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Why it matters; controls[3].note",
+      "type": "record",
+      "claim": "Organisers and co-organisers receive no per-meeting filtering override.",
+      "status": "supported",
+      "source": "Message Center post MC1478003",
+      "quote": "Organizers and co-organizers do not receive a per-meeting override.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Risk assessment: Change & support; Scope; controls[2].note",
+      "type": "record",
+      "claim": "Live captions continue to follow each participant's existing profanity preference, unchanged by this policy.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "while live captions continue to follow each participant's existing profanity setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary; Why it matters; rationale: impact",
+      "type": "record",
+      "claim": "No administrative action is required to preserve current behaviour.",
+      "status": "supported",
+      "source": "Message Center post MC1478003",
+      "quote": "No action is required to preserve current behavior.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target date is October CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"October CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) and GCC.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Android, Desktop, iOS, Mac and Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Mac\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: releasePhase; Scope",
+      "type": "record",
+      "claim": "The roadmap release phases are General Availability and Targeted Release.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap publishes no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-11-04T23:59:50.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-04T23:59:50\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1478003 was published on 23 September 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1478003",
+      "quote": "Published 2026-09-23; last updated 2026-09-23; Microsoft's end date 2026-12-30",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1478003 gives the Targeted Release Worldwide rollout as early to mid-October 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1478003",
+      "quote": "Targeted Release (Worldwide): We will begin rolling out on early October 2026 and expect to complete by mid-October 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1478003 gives General Availability in Worldwide and GCC as mid to late October 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1478003",
+      "quote": "General Availability (Worldwide, GCC): We will begin rolling out on mid-October 2026 and expect to complete by late October 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1478003 sets no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1478003",
+      "quote": "Act by: none",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[0].ui; What's changing; Governance controls",
+      "type": "admin-path",
+      "claim": "The filtering setting is in Teams admin center > Meetings > Meeting policies > policy > Meeting settings > Recording and transcription > Filter out profane words in live transcription.",
+      "status": "supported",
+      "source": "Message Center post MC1478003",
+      "quote": "A new Filter out profane words in live transcription setting will be available in the applicable Teams meeting policy under Meeting settings > Recording and transcription.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "MicrosoftTeams Set-CsTeamsMeetingPolicy accepts -Identity and -FilterProfanityInTranscript with Enabled or Disabled to control transcript filtering.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+      "quote": "Controls whether meeting transcripts filter profanity.\nPossible values are:\n- **Enabled**: Filters profanity from the meeting transcript.\n- **Disabled**: Does not filter profanity from the meeting transcript.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; controls[0].note; Governance guidance: After rollout; Open questions",
+      "type": "behaviour",
+      "claim": "The cmdlet reference still says the feature is not fully released and the setting will have no effect.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+      "quote": "This feature has not been fully released yet, so the setting will have no effect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[1].ui; Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "Teams admin center > Meetings > Meeting policies > policy > Transcription controls whether transcription is allowed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+      "quote": "go to **Meetings** > **Meeting policies**.\n2. Select the policy that you want to edit or create a new one.\n3. Toggle **Transcription** **On** or **Off**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -AllowTranscription accepts $true or $false to allow or prohibit transcription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+      "quote": "### -AllowTranscription\nDetermines whether post-meeting captions and transcriptions are allowed in a user's meetings. Set this to TRUE to allow. Set this to FALSE to prohibit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The existing Transcription control governs allowing transcription, rather than choosing whether profane words are masked.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+      "quote": "### -AllowTranscription\nDetermines whether post-meeting captions and transcriptions are allowed in a user's meetings.\n### -FilterProfanityInTranscript\nControls whether meeting transcripts filter profanity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[2].ui; controls[2].api; Open questions",
+      "type": "absence",
+      "claim": "No admin UI or API controlling each participant's live-caption profanity preference is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams live captions profanity filter admin policy participant preference; \"Teams\" \"profanity\" \"admin\" \"captions\". Read meeting-transcription-captions and searched the full Set-CsTeamsMeetingPolicy reference for profanity; only transcript filtering is documented there.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[3].ui; controls[3].api; Governance controls",
+      "type": "absence",
+      "claim": "No organiser-level or per-meeting override UI or API for transcript filtering is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams\" \"FilterProfanityInTranscript\" \"override\". Read MC1478003, which explicitly denies organiser and co-organiser overrides; read the filtering parameter in Set-CsTeamsMeetingPolicy and meeting-transcription-captions. No separate override surfaced.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "front matter: licensing.model and notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft has not published a licence requirement specifically for the transcript filtering setting, so the licensing model is unknown.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams transcript profanity filtering FilterProfanityInTranscript licensing license price meter; \"FilterProfanityInTranscript\" licensing. Read the record, MC1478003 and filtering reference; searched Teams Premium licensing for profanity/FilterProfanityInTranscript: no matches.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft has not published a meter or price for this setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams transcript profanity filtering FilterProfanityInTranscript licensing license price meter. Read the record, MC1478003, Set-CsTeamsMeetingPolicy filtering section and Teams Premium licensing search; none states a filtering-specific charge or meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Transcripts are stored together with meeting recordings in OneDrive and SharePoint storage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+      "quote": "Transcripts are stored together with meeting recordings in OneDrive and SharePoint storage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "The saved transcript is governed by the permissions of the file with which it is stored.",
+      "status": "supported",
+      "source": "https://support.microsoft.com/office/3cb9acb6-05b2-4f59-a50d-7df61123aa20",
+      "quote": "The captions and transcript file is stored with the video in OneDrive for Business or SharePoint. This inherits the same permissions and policy as the video file, so that whoever has access to the video file has access to the captions and transcript.",
+      "severity": "minor",
+      "fix": "Add https://support.microsoft.com/office/3cb9acb6-05b2-4f59-a50d-7df61123aa20 to sources for the statement about transcript permissions."
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not said whether downstream features such as Copilot recaps receive masked or unmasked text when filtering is off.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams\" \"profanity\" \"Copilot\"; Teams live captions profanity filter admin policy participant preference per meeting override transcript Copilot. Read copilot-teams-transcription, MC1478003 and the filtering reference; no downstream masking rule was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The change introduces no new identity.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Teams\" \"transcript\" \"profanity\" \"identity\". Read MC1478003 and the filtering parameter in Set-CsTeamsMeetingPolicy; neither states that no new identity is introduced.",
+      "severity": "major",
+      "fix": "Remove 'No new identity or permission is introduced.' Keep the following sourced statement that filtering follows the organiser's assigned meeting policy."
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The change introduces no new permission.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Teams\" \"transcript\" \"profanity\" \"permissions\". Read MC1478003, Set-CsTeamsMeetingPolicy and using-admin-roles; they describe the setting and meeting-policy administration, but do not state that this change introduces no permission.",
+      "severity": "major",
+      "fix": "Remove the assurance that no permission is introduced; describe the documented Teams meeting-policy administrator roles instead, citing https://learn.microsoft.com/microsoftteams/using-admin-roles."
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Security & identity; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Meeting policies can be assigned to specific users or groups using the steps on the transcription page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+      "quote": "**To specific users**: Select your policy, select **Manage users** > **Assign users**\n**To groups**: Select the **Group policy assignment** tab, select **Add**, enter the group name, select the policy name, and then select **Apply**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Scope: Who configures it; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated which Teams administrator role can change this meeting-policy setting.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/using-admin-roles",
+      "quote": "Teams Administrator | Manage the Teams service\nEverything in the Microsoft Teams admin center and associated PowerShell controls\nTeams Communications Administrator | Manage calling and meetings features within the Teams service.\nManage meetings, including meeting policies",
+      "severity": "blocker",
+      "fix": "Replace the role gap with: 'Teams Administrator and Teams Communications Administrator can manage meeting policies in the Teams admin center and Teams PowerShell.' Cite https://learn.microsoft.com/microsoftteams/using-admin-roles and remove the role question from Open questions."
+    },
+    {
+      "n": 40,
+      "where": "Governance guidance: At rollout; Governance controls",
+      "type": "behaviour",
+      "claim": "The Global meeting policy supplies the default for users without an existing policy assignment, while custom policies can be assigned to exceptions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+      "quote": "To apply changes to all users in your organization who don't have an existing policy assignment, use the **Global policy**. To exclude certain users from the global policy, create and assign a custom meeting policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "Microsoft documents no separate tenant-wide master switch for transcript profanity filtering.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams\" \"profanity\" \"tenant\" \"policy\"; \"Teams\" \"transcript\" \"profanity\" \"master switch\". Read MC1478003, meeting-transcription-captions and the filtering parameter in Set-CsTeamsMeetingPolicy; only the meeting-policy control surfaced.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "The Learn pages do not yet describe the admin-centre location of the new filtering setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Filter out profane words in live transcription\" \"Meeting settings\". Read meeting-transcription-captions, searched the Set-CsTeamsMeetingPolicy text for profanity, and read the Teams admin release-note excerpt. No Learn navigation path for this setting surfaced.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Change & support; Cost and licensing; Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "MC1478003 asks administrators to notify compliance, legal and helpdesk teams before turning filtering off.",
+      "status": "supported",
+      "source": "Message Center post MC1478003",
+      "quote": "Notify compliance, legal, and helpdesk teams that saved transcripts may contain profane words that were previously masked.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "MC1478003 recommends confirming the business need and recording the business reason before turning filtering off.",
+      "status": "supported",
+      "source": "Message Center post MC1478003",
+      "quote": "Before turning filtering off, confirm the business need and review whether the change aligns with your organization's compliance policies and transcript requirements.",
+      "severity": "minor",
+      "fix": "Replace the bullet with: 'Confirm the business need and review compliance policies and transcript requirements before turning filtering off, as MC1478003 recommends. Record the business reason as an internal governance step.' The notice does not recommend recording the reason."
+    },
+    {
+      "n": 45,
+      "where": "Governance guidance: After rollout",
+      "type": "record",
+      "claim": "Microsoft recommends updating internal transcript guidance if the organisation changes default policy behaviour.",
+      "status": "supported",
+      "source": "Message Center post MC1478003",
+      "quote": "Update internal transcript guidance if your organization changes the default policy behavior.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Scope; rationale: impact",
+      "type": "record",
+      "claim": "Users whose meeting organiser retains a filtering-on policy are not affected.",
+      "status": "supported",
+      "source": "Message Center post MC1478003",
+      "quote": "Who is not affected\n- Users whose meeting organizer is assigned a policy that keeps filtering on.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-16T17:06:51.352Z",
+    "summary": {
+      "links": 4,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 1,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=570467",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1478003",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether profane words are masked in live and saved meeting transcripts",
+        "docs": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1478003",
+        "reachable": true,
+        "segments": [
+          "Meetings",
+          "Meeting policies",
+          "Meeting settings",
+          "Recording and transcription",
+          "Filter out profane words in live transcription"
+        ],
+        "missing": [
+          "Meetings",
+          "Meeting policies",
+          "Meeting settings",
+          "Recording and transcription",
+          "Filter out profane words in live transcription"
+        ]
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether profane words are masked in live and saved meeting transcripts",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+        "reachable": true,
+        "token": "Set-CsTeamsMeetingPolicy",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether transcription is allowed at all for users with a policy",
+        "docs": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+        "reachable": true,
+        "segments": [
+          "Meetings",
+          "Meeting policies",
+          "Transcription"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether transcription is allowed at all for users with a policy",
+        "docs": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+        "reachable": true,
+        "token": "Set-CsTeamsMeetingPolicy",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": [
+    {
+      "date": "2026-11-16",
+      "status": "held",
+      "version": 1,
+      "model": "none"
+    }
+  ]
 }

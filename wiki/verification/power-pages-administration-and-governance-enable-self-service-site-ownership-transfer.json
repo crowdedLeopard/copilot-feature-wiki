@@ -4,31 +4,29 @@
   "title": "Power Pages: self-service site ownership transfer in the admin centre",
   "status": "held",
   "date": "2026-11-16",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 2,
   "verifierVerdict": "hold",
-  "notes": [
-    "claim 55: severity major on a rationale: impact rating lowered to minor; ratings are judgements and cannot hold a page"
-  ],
+  "notes": [],
   "hold": {
     "reason": "failed",
     "since": "2026-11-16",
     "reasons": [
-      "5 blocking findings (claims 19, 31, 36, 40, 48)"
+      "2 blocking findings (claims 44, 45)"
     ]
   },
   "counts": {
-    "claims": 59,
-    "confirmed": 49,
-    "unconfirmed": 4,
-    "contradicted": 6,
-    "blocker": 5,
+    "claims": 65,
+    "confirmed": 62,
+    "unconfirmed": 1,
+    "contradicted": 2,
+    "blocker": 2,
     "major": 1,
-    "minor": 8
+    "minor": 1
   },
-  "summary": "Hold: the controls table omits the managed-identity exception to app ownership, skips documented navigation steps, and presents an API name instead of a callable audit endpoint. The statement that transfers leave licensing unchanged also lacks Microsoft documentation, although the roadmap details and main transfer procedure are supported.",
+  "summary": "Hold: Microsoft documents an API for the SAS logging setting that the controls table reports as undocumented. The auditing setup instructions also omit Microsoft's required domain allow-list prerequisite, without which most SAS functionality will not work.",
   "claims": [
     {
       "n": 1,
@@ -37,7 +35,7 @@
       "claim": "The roadmap status is Launched.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "quote": "\"status\": \"Launched\"",
       "severity": null,
       "fix": null
     },
@@ -67,7 +65,7 @@
       "n": 4,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
-      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "claim": "The record lists General Availability and Preview as release phases.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
@@ -78,7 +76,7 @@
       "n": 5,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), and lists no US Government cloud.",
+      "claim": "The listed cloud is Worldwide (Standard Multi-Tenant).",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -89,7 +87,7 @@
       "n": 6,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap platform is Web.",
+      "claim": "The listed platform is Web.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Web\"]",
@@ -98,39 +96,17 @@
     },
     {
       "n": 7,
-      "where": "front matter: roadmapModified",
+      "where": "Scope: Who and where",
       "type": "record",
-      "claim": "The roadmap modification timestamp is 2026-10-22T23:45:49.",
+      "claim": "The roadmap lists no US Government cloud.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"modified\": \"2026-10-22T23:45:49\"",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
       "severity": null,
       "fix": null
     },
     {
       "n": 8,
-      "where": "summary; What's changing; Why it matters",
-      "type": "record",
-      "claim": "Power Pages supports secure ownership transfer for eligible sites without requiring a support request.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Power Pages now supports secure site ownership transfer for eligible sites. Existing site owners and global administrators can assign ownership to another valid user within the tenant without requiring manual intervention from support.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
-      "where": "Risk assessment: Security & identity; Open questions",
-      "type": "record",
-      "claim": "The roadmap names existing site owners and global administrators as able to transfer ownership.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Existing site owners and global administrators can assign ownership to another valid user within the tenant without requiring manual intervention from support.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
       "where": "front matter: defaultState; What's changing; Scope: Rollout",
       "type": "default",
       "claim": "The capability is on automatically for admins, makers and marketers.",
@@ -141,13 +117,35 @@
       "fix": null
     },
     {
-      "n": 11,
-      "where": "What's changing; Risk assessment: Change & support",
+      "n": 9,
+      "where": "summary; What's changing; Why it matters",
       "type": "record",
-      "claim": "The roadmap describes notifications to the previous owner, new owner and administrators.",
+      "claim": "The roadmap describes secure ownership transfer for eligible sites without a support request.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Notifications are sent to the previous owner, the new owner, and administrators to ensure transparency and continuity and the changes get logged into Compliance Center.",
+      "quote": "Power Pages now supports secure site ownership transfer for eligible sites. Existing site owners and global administrators can assign ownership to another valid user within the tenant without requiring manual intervention from support.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "Risk assessment: Security & identity; Open questions",
+      "type": "record",
+      "claim": "The roadmap names existing site owners and global administrators as able to transfer ownership.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Existing site owners and global administrators can assign ownership to another valid user within the tenant",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "Scope: Who can receive",
+      "type": "record",
+      "claim": "The roadmap requires the new owner to have appropriate environment access.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The new owner must be a valid user with appropriate access to the environment.",
       "severity": null,
       "fix": null
     },
@@ -164,9 +162,20 @@
     },
     {
       "n": 13,
-      "where": "What's changing; Open questions",
+      "where": "What's changing; Risk assessment: Change & support",
       "type": "record",
-      "claim": "The roadmap describes identifying sites without a valid owner in Power Advisor.",
+      "claim": "The roadmap says notifications go to the previous owner, new owner and administrators.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Notifications are sent to the previous owner, the new owner, and administrators",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Governance controls; Open questions",
+      "type": "record",
+      "claim": "The roadmap describes a Power Advisor view of sites without a valid owner.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Power Pages also identifies sites that no longer have a valid owner and surfaces this information on Power Advisor.",
@@ -174,139 +183,40 @@
       "fix": null
     },
     {
-      "n": 14,
-      "where": "Scope: Who can receive",
-      "type": "record",
-      "claim": "The roadmap says the new owner needs appropriate environment access.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "The new owner must be a valid user with appropriate access to the environment.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 15,
       "where": "Why it matters",
       "type": "record",
-      "claim": "The roadmap names team reassignments, role changes and employee departures as transfer scenarios.",
+      "claim": "The roadmap identifies team reassignments, role changes and employee departures as handover scenarios.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Your organization needs a reliable way to transfer ownership of Power Pages sites when responsibilities change due to team reassignments, role changes, or employee departures.",
+      "quote": "transfer ownership of Power Pages sites when responsibilities change due to team reassignments, role changes, or employee departures.",
       "severity": null,
       "fix": null
     },
     {
       "n": 16,
-      "where": "controls[0].ui; Governance controls: transfer row",
-      "type": "admin-path",
-      "claim": "The transfer setting is in Power Platform admin center under Manage > Power Pages > site > Site Details > Edit > Owner.",
+      "where": "Why it matters; Risk assessment: Autonomy & actions; rationale: risk and impact",
+      "type": "behaviour",
+      "claim": "The documented transfer is a deliberate administrator action in the Power Platform admin center.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-pages/admin/transfer-ownership",
-      "quote": "select Manage, and then select Power Pages. ... Select the Power Pages site ... On the Site Details page, select Edit. ... In the Owner field, remove the current owner and search for the new owner.",
+      "quote": "Select the new owner, and then select Save.\nReview the confirmation message, and then select Transfer.",
       "severity": null,
       "fix": null
     },
     {
       "n": 17,
-      "where": "controls[0].api; Governance controls: transfer automation gap",
-      "type": "absence",
-      "claim": "No PowerShell, Microsoft Graph or other API for transferring Power Pages site ownership is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Pages ownership transfer API; Power Pages ownership transfer PowerShell bulk. Opened learn.microsoft.com/power-pages/admin/transfer-ownership and admin-roles; checked Set-AdminPowerAppOwner search excerpts. No site-transfer call found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "controls[0].note; Risk assessment; Scope; Governance guidance",
-      "type": "role",
-      "claim": "The initiating admin needs System administrator, Dynamics 365 administrator or Power Platform administrator.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-pages/admin/transfer-ownership",
-      "quote": "You are the website app owner and have any one of the following roles: System administrator; Dynamics 365 administrator; Power Platform administrator",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "controls[0].note; controls[2].note; Risk assessment: Security & identity; rationale: risk",
-      "type": "role",
-      "claim": "Website app ownership is a prerequisite for every initiating administrator.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/power-pages/admin/transfer-ownership",
-      "quote": "Websites on Power Platform managed identity model don't need web app ownership as a prerequisite for initiating transfer.",
-      "severity": "blocker",
-      "fix": "Carry the managed-identity exception already stated in Scope into both control notes, the Security & identity bullet, Governance controls prose and the risk rationale: app ownership is required only for sites outside the Power Platform managed identity model."
-    },
-    {
-      "n": 20,
-      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
-      "type": "role",
-      "claim": "The required administrative roles must be assigned directly, not inherited through security groups or PIM.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-pages/admin/admin-roles",
-      "quote": "To perform a task, which requires an admin role, a user must be directly assigned to the required role. These roles aren't inherited from security group membership or through privileged identity management (PIM).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "Cost and licensing: prerequisites",
-      "type": "role",
-      "claim": "Access to the Power Platform admin center is a transfer prerequisite.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-pages/admin/transfer-ownership",
-      "quote": "You have access to the Power Platform admin center.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "Risk assessment: Data exposure; Cost and licensing; Scope; Governance guidance; licensing.notes",
-      "type": "role",
-      "claim": "The new owner must be an enabled Microsoft Entra user with a Member user type.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-pages/admin/transfer-ownership",
-      "quote": "The new owner is an enabled Microsoft Entra user with a Member user type.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "Scope: Who can transfer",
-      "type": "role",
-      "claim": "Sites on the Power Platform managed identity model do not require web app ownership to initiate transfer.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-pages/admin/transfer-ownership",
-      "quote": "Websites on Power Platform managed identity model don't need web app ownership as a prerequisite for initiating transfer.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "Scope: Who can transfer; Governance guidance: Before rollout",
-      "type": "behaviour",
-      "claim": "For other sites, an administrator missing the transfer option should check web app ownership.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-pages/admin/transfer-ownership",
-      "quote": "For other portals, if you don't see the ownership transfer option, check whether you're the web app owner.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
       "where": "What's changing; Risk assessment: Data exposure",
       "type": "behaviour",
       "claim": "The selected new owner becomes the primary owner of the site.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-pages/admin/transfer-ownership",
-      "quote": "When the transfer finishes, the selected user becomes the primary owner of the site.",
-      "severity": "minor",
-      "fix": "Keep the feature-page statement but flag the conflicting Website owner paragraph at https://learn.microsoft.com/power-pages/admin/admin-roles, which says ownership remains with the creator and cannot be transferred or changed. The briefing already reports the roadmap/Learn role discrepancy but not this separate Learn/Learn discrepancy."
+      "quote": "The new owner becomes the primary owner of the site.",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 26,
+      "n": 18,
       "where": "What's changing; Why it matters; Risk assessment; Governance guidance; rationale: risk",
       "type": "behaviour",
       "claim": "The previous owner might lose access depending on site permissions and configuration.",
@@ -317,10 +227,10 @@
       "fix": null
     },
     {
-      "n": 27,
+      "n": 19,
       "where": "What's changing; Why it matters; Risk assessment: Change & support; rationale: risk",
       "type": "behaviour",
-      "claim": "Transfers cannot be automatically undone; an authorised administrator must transfer ownership back.",
+      "claim": "A transfer has no automatic undo and restoring the previous owner requires another authorised transfer.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-pages/admin/transfer-ownership",
       "quote": "You can't automatically undo an ownership transfer. To restore the previous owner, an authorized administrator must transfer ownership back to that user.",
@@ -328,283 +238,129 @@
       "fix": null
     },
     {
-      "n": 28,
-      "where": "What's changing: transfer procedure",
+      "n": 20,
+      "where": "What's changing: final paragraph",
+      "type": "absence",
+      "claim": "The Learn transfer page carries no preview label.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Pages transfer site ownership PowerShell Microsoft Graph API bulk automated disable tenant switch approval workflow; opened learn.microsoft.com/power-pages/admin/transfer-ownership in full; no preview label.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[0].ui; What's changing",
       "type": "admin-path",
-      "claim": "After replacing the Owner, the administrator selects Save and confirms with Transfer.",
+      "claim": "Transfer uses Power Platform admin center > Manage > Power Pages > site > Site Details > Edit > Owner.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-pages/admin/transfer-ownership",
-      "quote": "Select the new owner, and then select Save. ... Review the confirmation message, and then select Transfer.",
+      "quote": "select Manage, and then select Power Pages.\nSelect the Power Pages site that you want to update.\nOn the Site Details page, select Edit.\nIn the Owner field, remove the current owner and search for the new owner.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[0].api; Risk assessment: Autonomy & actions; Governance controls",
+      "type": "absence",
+      "claim": "No PowerShell, Microsoft Graph, other API, automated or bulk ownership transfer is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Power Pages\" \"transfer\" \"ownership\" \"API\" \"PowerShell\"; also searched transfer site ownership bulk automated Microsoft Graph API; opened learn.microsoft.com/power-pages/admin/transfer-ownership and admin/admin-roles; only interactive transfer documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[0].note; Risk assessment: Security & identity; Scope; Governance guidance",
+      "type": "role",
+      "claim": "The initiating admin needs any one of System administrator, Dynamics 365 administrator or Power Platform administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/admin/transfer-ownership",
+      "quote": "You are the website app owner and have any one of the following roles:\nSystem administrator\nDynamics 365 administrator\nPower Platform administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[0].note; Risk assessment: Security & identity; Scope; Governance controls",
+      "type": "role",
+      "claim": "Outside the managed identity exception, the initiating admin must also own the website app registration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/admin/transfer-ownership",
+      "quote": "You are the website app owner and have any one of the following roles:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[0].note; Risk assessment: Security & identity; Scope",
+      "type": "role",
+      "claim": "Sites using the Power Platform managed identity model do not require web app ownership to initiate transfer.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/admin/transfer-ownership",
+      "quote": "Websites on Power Platform managed identity model don't need web app ownership as a prerequisite for initiating transfer.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Data exposure; Scope; Governance guidance",
+      "type": "role",
+      "claim": "The recipient must be an enabled Microsoft Entra user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/admin/transfer-ownership",
+      "quote": "The new owner is an enabled Microsoft Entra user with a Member user type.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Data exposure; Scope; Governance guidance",
+      "type": "role",
+      "claim": "The recipient must have Member user type rather than Guest user type.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/admin/transfer-ownership",
+      "quote": "The new owner is an enabled Microsoft Entra user with a Member user type.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Security & identity; Governance guidance",
+      "type": "role",
+      "claim": "Admin roles must be assigned directly, not inherited through security groups or PIM.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/admin/admin-roles",
+      "quote": "To perform a task, which requires an admin role, a user must be directly assigned to the required role. These roles aren't inherited from security group membership or through privileged identity management (PIM).",
       "severity": null,
       "fix": null
     },
     {
       "n": 29,
-      "where": "What's changing: release status paragraph",
-      "type": "availability",
-      "claim": "The Learn transfer page carries no preview label.",
+      "where": "Scope: Who can transfer; Governance guidance",
+      "type": "behaviour",
+      "claim": "For sites outside the managed identity model, a missing transfer option suggests checking web app ownership.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-pages/admin/transfer-ownership",
-      "quote": "Transfer ownership of a Power Pages site ... Prerequisites ... Transfer site ownership ... See also",
+      "quote": "For other portals, if you don't see the ownership transfer option, check whether you're the web app owner.",
       "severity": null,
       "fix": null
     },
     {
       "n": 30,
-      "where": "controls[1].ui; Governance controls: audit row",
+      "where": "What's changing: transfer steps",
       "type": "admin-path",
-      "claim": "Power Pages activity logs are accessible in Microsoft Purview portal through Solutions > Audit.",
+      "claim": "After replacing the Owner field value, the admin selects Save and confirms with Transfer.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/activity-logging-auditing/activity-logs-power-pages",
-      "quote": "On the left navigation pane, select Solutions and then select Audit.",
+      "source": "https://learn.microsoft.com/power-pages/admin/transfer-ownership",
+      "quote": "Select the new owner, and then select Save.\nReview the confirmation message, and then select Transfer.",
       "severity": null,
       "fix": null
     },
     {
       "n": 31,
-      "where": "controls[1].api; Governance controls: audit API cell",
-      "type": "command",
-      "claim": "Office 365 Management API (Power Pages activity logs; operation OwnershipTransferred) is the REST call for retrieving the transfer audit trail.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: Power Pages ownership transfer API. Opened activity-logs-power-pages and office-365-management-activity-api-reference. The cited page confirms API access but this cell supplies neither an HTTP method nor a versioned endpoint.",
-      "severity": "blocker",
-      "fix": "Replace the descriptive API name with a documented method and endpoint, for example GET https://manage.office.com/api/v1.0/{tenant_id}/activity/feed/subscriptions/content?contentType=Audit.General, and cite https://learn.microsoft.com/office/office-365-management-api/office-365-management-activity-api-reference. Explain that this lists available content for an active subscription; retrieve the returned contentUri and filter retrieved records for OwnershipTransferred."
-    },
-    {
-      "n": 32,
-      "where": "summary; What's changing; Governance guidance: After rollout",
-      "type": "behaviour",
-      "claim": "Ownership transfers are searchable as Transfer site ownership with operation OwnershipTransferred in Purview.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/activity-logging-auditing/activity-logs-power-pages",
-      "quote": "Transfer site ownership | OwnershipTransferred | Ownership of the site is transferred to another user.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
-      "where": "controls[1].note; Cost and licensing; Governance guidance: Before rollout",
-      "type": "applicability",
-      "claim": "Auditing must be configured and enabled for the Power Platform production environments to monitor.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/activity-logging-auditing/activity-logs-power-pages",
-      "quote": "Configure and turn on auditing for the Power Platform production environments you want to monitor in Microsoft Purview.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
-      "where": "controls[1].note; Cost and licensing; Governance guidance: Before rollout",
-      "type": "role",
-      "claim": "Reading Power Pages activity logs requires Audit Logs or View-Only Audit Logs permissions in Microsoft Purview.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/activity-logging-auditing/activity-logs-power-pages",
-      "quote": "Manage auditing in Microsoft Purview and assign either the Audit Logs or View-Only Audit Logs role in Microsoft Purview to you.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
       "where": "Governance guidance: After rollout",
-      "type": "record",
-      "claim": "The transfer audit history includes the initiating user.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Every ownership transfer is recorded in an auditable history, including the previous owner, new owner, initiating user, and timestamp.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "controls[2].ui; Governance controls: app-owner UI cell",
-      "type": "admin-path",
-      "claim": "The Azure portal path is Microsoft Entra ID > App registrations > Portals-<website name> > Owners > Add owners.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/power-pages/admin/admin-roles",
-      "quote": "Under Manage, select App registrations. ... Select the website app ... This application is called Portals-<<website name>>. ... Under Manage, select Owners. ... Select Add owners.",
-      "severity": "blocker",
-      "fix": "Use Microsoft Entra ID > Manage > App registrations > website app > Manage > Owners > Add owners, followed by selecting a user and Select. Explain the documented Portals-<<website name>> naming separately. Repair the rendered cell's split placeholder and extra separator. The pre-check's missing placeholder is cosmetic; the omitted Manage sections are not."
-    },
-    {
-      "n": 37,
-      "where": "controls[2].api; Governance controls: app-owner API cell and prose",
-      "type": "command",
-      "claim": "POST https://graph.microsoft.com/v1.0/applications/{application-object-id}/owners/$ref adds an owner to an application registration.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/troubleshoot/entra/entra-id/users-groups-entra-apis/add-owner-for-application-microsoft-graph",
-      "quote": "POST https://graph.microsoft.com/v1.0/applications/{application-object-id}/owners/$ref",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "controls[2].note; Governance controls: website app owner explanation",
-      "type": "role",
-      "claim": "Website app ownership is ownership of the Entra application registration, separate from the Power Platform admin role and from transferring the site itself.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-pages/admin/admin-roles",
-      "quote": "A website app owner is a user who owns the website application registration in the Azure portal.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "controls[3]; Scope: Rollout; Governance controls: tenant-switch gap",
-      "type": "absence",
-      "claim": "No tenant-wide UI or API switch to disable site ownership transfer is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Pages ownership transfer disable approval. Opened learn.microsoft.com/power-pages/admin/transfer-ownership, admin-roles and manage-administrative-access-with-rbac. No tenant-disable UI setting or API found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "controls[3].note; Governance controls: final paragraph",
-      "type": "role",
-      "claim": "Access to transfer is limited only by the required roles.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/power-pages/admin/transfer-ownership",
-      "quote": "You are the website app owner and have any one of the following roles ... You have access to the Power Platform admin center. ... The new owner is an enabled Microsoft Entra user with a Member user type.",
-      "severity": "blocker",
-      "fix": "Replace 'Access is limited only by the required roles' and 'access control only through the required roles' with 'Transfers follow the documented role, app-ownership and recipient prerequisites; sites using Power Platform managed identity do not require app ownership.'"
-    },
-    {
-      "n": 41,
-      "where": "What's changing; Risk assessment: Change & support; Open questions",
-      "type": "absence",
-      "claim": "Learn does not document transfer notifications or notification controls.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Pages ownership transfer notifications. Opened learn.microsoft.com/power-pages/admin/transfer-ownership and admin-roles; checked the activity-logs-power-pages page. No notification behaviour or notification setting found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "What's changing; Open questions: Power Advisor",
-      "type": "absence",
-      "claim": "Learn performance and operational efficiency recommendations do not list a Power Pages ownerless-site recommendation.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Pages Power Advisor ownerless sites recommendations performance operational efficiency. Read all Sites entries at learn.microsoft.com/power-platform/admin/performance-recommendations and operational-efficiency-recommendations. No ownerless-site recommendation listed.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "absence",
-      "claim": "No automated or bulk ownership transfer is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Pages ownership transfer PowerShell bulk; Power Pages ownership transfer API. Opened transfer-ownership and admin-roles; inspected PowerShell search excerpts. Only the interactive, single-site transfer procedure was found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "Governance controls: final paragraph",
-      "type": "absence",
-      "claim": "No approval step for site ownership transfer is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Pages ownership transfer disable approval. Opened learn.microsoft.com/power-pages/admin/transfer-ownership and admin-roles. The documented workflow ends with the initiating admin selecting Save and Transfer; no separate approval control found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "Feature-specific licensing, metering and charges for ownership transfer are not published, so the licensing model is unknown.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Pages ownership transfer license charge; Power Pages transfer ownership licensing charge meter capacity authenticated anonymous users per website month. Read transfer-ownership and Power Pages licensing FAQ excerpts. No transfer-specific licence, meter or fee found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "licensing.notes; Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "The transfer page's prerequisites list roles, admin-center access and an enabled Entra Member user, without naming a licence or charge.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-pages/admin/transfer-ownership",
-      "quote": "You are the website app owner and have any one of the following roles ... You have access to the Power Platform admin center. ... The new owner is an enabled Microsoft Entra user with a Member user type.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
-      "where": "licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "Power Pages licensing is capacity-based, using authenticated and anonymous users per website per month.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq#power-pages",
-      "quote": "Power Pages (formerly Power Apps portals) licensing is capacity based and offers two types of capacities based on user type: Authenticated users per website/month and Anonymous users per website/month.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 48,
-      "where": "Cost and licensing: final clause",
-      "type": "licensing",
-      "claim": "A transfer does not change which site is licensed.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: Power Pages transfer ownership licensing charge meter capacity; Power Pages transfer ownership licensing unchanged. Read transfer-ownership and Power Pages licensing FAQ excerpts. Neither states the licensing consequences of an ownership transfer.",
-      "severity": "blocker",
-      "fix": "Remove 'a transfer does not change which site is licensed'. Retain the sourced product-level capacity explanation and the statement that transfer-specific licensing is not yet published."
-    },
-    {
-      "n": 49,
-      "where": "Cost and licensing: Purview audit retention",
-      "type": "cost",
-      "claim": "Keeping the transfer audit events can involve Purview retention licensing costs.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/audit-log-retention-policies#before-you-create-an-audit-log-retention-policy",
-      "quote": "To retain audit logs for 10 years, the user who generates the audit log must also have a 10-year audit log retention add-on license in addition to an E5 license.",
-      "severity": "minor",
-      "fix": "Clarify that extended retention can require additional licensing, rather than implying all retention costs extra, and cite https://learn.microsoft.com/purview/audit-log-retention-policies and https://learn.microsoft.com/purview/audit-solutions-overview. The latter documents default retention without buying a long-term retention add-on."
-    },
-    {
-      "n": 50,
-      "where": "Governance controls: Set-AdminPowerAppOwner paragraph",
-      "type": "command",
-      "claim": "Set-AdminPowerAppOwner exists and is documented for canvas app ownership, not Power Pages site transfer.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-powershell#power-apps-commands",
-      "quote": "Set logged in user as the owner of a canvas app ... Set-AdminPowerAppOwner -AppName 'AppName' -AppOwner $Global:currentSession.userId -EnvironmentName 'EnvironmentName'",
-      "severity": "minor",
-      "fix": "Add https://learn.microsoft.com/power-platform/admin/powerapps-powershell#power-apps-commands to sources for the canvas-app distinction."
-    },
-    {
-      "n": 51,
-      "where": "Governance guidance: After rollout, inventory bullet",
-      "type": "admin-path",
-      "claim": "Power Platform admin center inventory can be filtered to sites and by owner to review a user's Power Pages sites.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-pages/admin/power-pages-inventory",
-      "quote": "Filtering the Item type column to sites limits the grid to Power Pages sites. ... For example, filter by environment to review sites in a specific environment, by owner to review a user's sites",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 52,
-      "where": "Governance guidance: After rollout, inventory preview qualification",
-      "type": "availability",
-      "claim": "Power Pages inventory is documented as preview.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-pages/admin/power-pages-inventory",
-      "quote": "This feature is in preview. ... This feature is being rolled out gradually across regions and might not be available yet in your region.",
-      "severity": "minor",
-      "fix": "Keep the preview qualification and add that regional rollout is gradual and the view might not yet be available in the reader's region."
-    },
-    {
-      "n": 53,
-      "where": "Governance guidance: After rollout, new-owner access check",
       "type": "behaviour",
       "claim": "Microsoft advises verifying that the new owner can access and manage the site.",
       "status": "supported",
@@ -614,81 +370,389 @@
       "fix": null
     },
     {
-      "n": 54,
-      "where": "Risk assessment: Data exposure; rationale: risk",
+      "n": 32,
+      "where": "summary; What's changing; Risk assessment; Governance guidance",
       "type": "behaviour",
-      "claim": "An ownership transfer does not move site data and stays inside existing data boundaries.",
-      "status": "unsupported",
+      "claim": "Purview exposes a Transfer site ownership activity with operation OwnershipTransferred that can be searched.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/activity-logging-auditing/activity-logs-power-pages",
+      "quote": "You can search Power Pages activities for a specific period by selecting the dates and entering the operation names listed in this section's table\nTransfer site ownership | OwnershipTransferred | Ownership of the site is transferred to another user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "The Power Pages audit log is accessed at Microsoft Purview portal > Solutions > Audit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/activity-logging-auditing/activity-logs-power-pages",
+      "quote": "On the left navigation pane, select Solutions and then select Audit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[1].api; Governance controls",
+      "type": "command",
+      "claim": "GET https://manage.office.com/api/v1.0/{tenant_id}/activity/feed/subscriptions/content?contentType=Audit.General lists available audit content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office/office-365-management-api/office-365-management-activity-api-reference",
+      "quote": "https://manage.office.com/api/v1.0/{tenant_id}/activity/feed/{operation}\nGET {root}/subscriptions/content?contentType=Audit.SharePoint&PublisherIdentifier=46b472a7-c68e-4adf-8ade-3db49497518e\nAudit.General (includes all other workloads not included in the previous content types)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[1].note",
+      "type": "behaviour",
+      "claim": "Listing audit content requires an active subscription for the content type.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office/office-365-management-api/office-365-management-activity-api-reference",
+      "quote": "To begin retrieving content blobs for a tenant, you first create a subscription to the desired content types.\nAn error is returned if the subscription status is disabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Governance controls: audit API explanation",
+      "type": "behaviour",
+      "claim": "The audit listing returns content URIs that must be retrieved to read and filter the underlying events.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office/office-365-management-api/office-365-management-activity-api-reference",
+      "quote": "contentUri: The URL to use when retrieving the content.\nList available content and the corresponding content URLs.\nRetrieving content by using the content URL.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Governance controls: audit API explanation",
+      "type": "availability",
+      "claim": "The displayed Management Activity API host is for the enterprise plan, with distinct hosts for GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office/office-365-management-api/office-365-management-activity-api-reference",
+      "quote": "Enterprise plan\nhttps://manage.office.com/api/v1.0/{tenant_id}/activity/feed/{operation}\nGCC government plan\nGCC High government plan\nDoD government plan",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[1].note",
+      "type": "absence",
+      "claim": "Learn does not explicitly identify the content type containing Power Pages events.",
+      "status": "supported",
       "source": null,
-      "quote": "Searched: Power Pages transfer ownership data visitors. Read learn.microsoft.com/power-pages/admin/transfer-ownership; inspected migration and security search results. The feature page describes ownership and access effects, not a guarantee about data movement or boundaries.",
-      "severity": "major",
-      "fix": "Remove 'it does not move site data' and the unsourced data-boundary assertion from the rationale. Explain the low-risk judgement using the documented deliberate admin action and required permissions instead."
+      "quote": "Searched: \"Power Pages\" \"OwnershipTransferred\" \"Audit.General\"; opened activity-logs-power-pages and office-365-management-activity-api-reference. The latter defines Audit.General broadly; neither explicitly maps Power Pages to a content type.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[1].note; Cost and licensing; Governance guidance",
+      "type": "role",
+      "claim": "Reading Power Platform activity logs in Purview requires Audit Logs or View-Only Audit Logs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/activity-logging-auditing/activity-logs-overview",
+      "quote": "To view Power Platform activity logs in Microsoft Purview, users need to be assigned either the Audit Logs or View-Only Audit Logs role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[2].note; Cost and licensing; Governance guidance",
+      "type": "applicability",
+      "claim": "The Power Pages logging prerequisites require configured auditing for the production environments being monitored.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/activity-logging-auditing/activity-logs-power-pages",
+      "quote": "Configure and turn on auditing for the Power Platform production environments you want to monitor",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[2].note; Cost and licensing",
+      "type": "licensing",
+      "claim": "The option to turn on audit logging is visible only when the minimum Office licensing requirements are met.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/activity-logging-auditing/activity-logs-overview",
+      "quote": "The option to turn on audit logging is only visible when the minimum Office licensing requirements are met.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[2].note",
+      "type": "role",
+      "claim": "A Power Platform system admin or customizer configures auditing and the SAS logging setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/activity-logging-auditing/activity-logs-overview",
+      "quote": "A Power Platform system admin or customizer needs to configure auditing in the Power Platform admin center and then turn on the Enable SAS Logging in Purview setting",
+      "severity": "minor",
+      "fix": "Keep the cited overview's requirement but note that https://learn.microsoft.com/power-platform/admin/security/data-storage#turn-on-purview-audit-logging instead specifies a tenant admin for the logging toggle; the overview's step-by-step toggle procedure specifies signing in as a system admin."
+    },
+    {
+      "n": 43,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "SAS logging uses Manage > Environments > environment > Settings > Product > Privacy and Security > Storage Shared Access Signature (SAS) Security Settings > Enable SAS Logging in Purview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/activity-logging-auditing/activity-logs-overview",
+      "quote": "Select Manage in the navigation pane.\nSelect Environments in the Manage pane.\nExpand the Product list and select Privacy and Security.\nIn the Storage Shared Access Signature (SAS) Security Settings section, toggle the Enable SAS Logging in Purview setting to On.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[2].api",
+      "type": "absence",
+      "claim": "No API for the environment's Enable SAS Logging in Purview setting is documented.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-environmentmanagement-settings",
+      "quote": "\"LoggingEnabledForIpBasedStorageAccessSignature\" = $true\n-Method Patch -Uri \"https://api.powerplatform.com/environmentmanagement/environments/$environmentId/settings/?api-version=2022-03-01-preview\"",
+      "severity": "blocker",
+      "fix": "Replace controls[2].api=null with a power-platform-api entry using PATCH https://api.powerplatform.com/environmentmanagement/environments/{environmentId}/settings/?api-version=2022-03-01-preview and body {\"LoggingEnabledForIpBasedStorageAccessSignature\":true}; cite this tutorial and label its API preview. The current reference also documents PATCH .../settings?api-version=2024-10-01 at https://learn.microsoft.com/rest/api/power-platform/environmentmanagement/environment-management-settings/update-environment-management-settings. Do not change EnableIpBasedStorageAccessSignatureRule merely to enable logging."
+    },
+    {
+      "n": 45,
+      "where": "Governance guidance: Before rollout; controls[2].note",
+      "type": "applicability",
+      "claim": "The SAS logging setup instructions tell admins to enable the setting without the domain allow-list prerequisite.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-platform/admin/activity-logging-auditing/activity-logs-overview",
+      "quote": "Before you activate the Shared Access Signature (SAS) feature, add the https://*.api.powerplatformusercontent.com domain to the allow list. If you don't, most SAS functionalities won't work.",
+      "severity": "blocker",
+      "fix": "Prepend to the SAS logging checklist instruction and add to controls[2].note: 'Before enabling SAS logging, allow access to https://*.api.powerplatformusercontent.com; Microsoft warns that most SAS functionality will not work without this prerequisite.' The same requirement explicitly covers either SAS feature at https://learn.microsoft.com/power-platform/admin/security/data-storage#storage-shared-access-signature-sas-ip-restriction."
+    },
+    {
+      "n": 46,
+      "where": "controls[3].ui",
+      "type": "admin-path",
+      "claim": "Website app owners are added at Azure portal > Microsoft Entra ID > Manage > App registrations > website app > Manage > Owners > Add owners.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/admin/admin-roles",
+      "quote": "Search for and select Microsoft Entra ID.\nUnder Manage, select App registrations.\nSelect the website app from the list of available applications.\nUnder Manage, select Owners.\nSelect Add owners.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[3].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The website app is the separate Entra application registration named Portals-<website name>.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/admin/admin-roles",
+      "quote": "A website app owner is a user who owns the website application registration in the Azure portal.\nThis application is called Portals-<<website name>>.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[3].api and note",
+      "type": "command",
+      "claim": "POST https://graph.microsoft.com/v1.0/applications/{application-object-id}/owners/$ref adds an application owner using the general Graph API.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/entra/entra-id/users-groups-entra-apis/add-owner-for-application-microsoft-graph",
+      "quote": "Application owners can be individual users, the associated service principal, or another service principal.\nPOST https://graph.microsoft.com/v1.0/applications/{application-object-id}/owners/$ref",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[4].ui; Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "Sites and their owners can be found through Power Platform admin center > Manage > Inventory, filtering Item type to sites and filtering by owner.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/admin/power-pages-inventory",
+      "quote": "under Manage > Inventory. Filtering the Item type column to sites limits the grid to Power Pages sites.\nFor example, filter by environment to review sites in a specific environment, by owner to review a user's sites",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[4].api",
+      "type": "command",
+      "claim": "Azure Resource Graph KQL PowerPlatformResources | where type =~ \"microsoft.powerpages/sites\" selects the site inventory records.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/admin/power-pages-inventory",
+      "quote": "The following examples use Kusto Query Language (KQL) against the PowerPlatformResources table in Azure Resource Graph.\nPowerPlatformResources\n| where type =~ \"microsoft.powerpages/sites\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[4].note",
+      "type": "role",
+      "claim": "Inventory requires Global administrator, Power Platform administrator or Dynamics 365 administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/admin/power-pages-inventory",
+      "quote": "One of the following Microsoft Entra roles:\nGlobal administrator\nPower Platform administrator\nDynamics 365 administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[4].note; Governance guidance: After rollout",
+      "type": "availability",
+      "claim": "Power Pages site inventory is in preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/admin/power-pages-inventory",
+      "quote": "This feature is in preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[4].note; Governance guidance: After rollout",
+      "type": "availability",
+      "claim": "Power Pages inventory is rolling out gradually and may not yet be available in the reader's region.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/admin/power-pages-inventory",
+      "quote": "This feature is being rolled out gradually across regions and might not be available yet in your region.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[4].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Site inventory exposes owner IDs rather than user display names.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/admin/power-pages-inventory",
+      "quote": "Owner (properties.ownerId), creator (properties.createdBy), creation date (properties.createdAt), and last modification date (properties.lastModifiedAt).\nUser identifiers are object IDs, not user display names.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 55,
-      "where": "rationale: impact",
-      "type": "behaviour",
-      "claim": "Visitors to the site are not affected by the transfer feature.",
-      "status": "unsupported",
+      "where": "controls[4].note; Governance controls",
+      "type": "absence",
+      "claim": "The documented inventory query does not itself produce a list of sites whose owners are no longer valid.",
+      "status": "supported",
       "source": null,
-      "quote": "Searched: Power Pages transfer ownership data visitors. Read learn.microsoft.com/power-pages/admin/transfer-ownership and its permissions caveat. No passage guarantees that visitors are unaffected.",
-      "severity": "minor",
-      "fix": "Remove the assurance that visitors are unaffected. Keep low impact as the wiki's judgement that the documented workflow is aimed at administrators and the owners involved."
+      "quote": "Searched: \"Power Advisor\" \"owner\" \"sites\" and \"Power Pages\" \"Power Advisor\" orphaned ownerless recommendations; opened power-pages/admin/power-pages-inventory. Its fields expose ownerId, not owner validity; its site query does not validate owners.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 56,
-      "where": "Why it matters; Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "The documented transfer workflow requires an administrator to choose a site, a new owner and confirm the transfer.",
+      "where": "controls[5].ui and api; Scope; Governance controls",
+      "type": "absence",
+      "claim": "No tenant-wide switch to disable ownership transfer is documented.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-pages/admin/transfer-ownership",
-      "quote": "Select the Power Pages site that you want to update. ... Select the new owner, and then select Save. ... Review the confirmation message, and then select Transfer.",
+      "source": null,
+      "quote": "Searched: \"Power Pages\" \"ownership transfer\" \"disable\" \"approval\"; also transfer site ownership tenant switch API; opened learn.microsoft.com/power-pages/admin/transfer-ownership and admin/admin-roles; no disable switch documented.",
       "severity": null,
       "fix": null
     },
     {
       "n": 57,
-      "where": "Governance guidance: After rollout; Governance controls",
-      "type": "consistency",
-      "claim": "The controls table includes the inventory control that the governance checklist tells administrators to use.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Use the Power Platform admin center inventory, filtered to sites and by owner ... [The table has transfer, audit search, app ownership and tenant-disable rows, but no inventory row.]",
-      "severity": "minor",
-      "fix": "Add an inventory row with scope tenant, the preview and gradual-rollout qualifications, and UI Power Platform admin center > Manage > Inventory > Item type: sites; filter by owner. Cite https://learn.microsoft.com/power-pages/admin/power-pages-inventory."
+      "where": "controls[6].ui and api; Governance controls",
+      "type": "absence",
+      "claim": "No separate ownership-transfer approval workflow is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Power Pages\" \"ownership transfer\" \"disable\" \"approval\"; opened learn.microsoft.com/power-pages/admin/transfer-ownership and admin/admin-roles. Transfer has a confirmation step, not a separate approval workflow.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 58,
-      "where": "Governance guidance: Before rollout; Governance controls",
-      "type": "consistency",
-      "claim": "The controls table includes the auditing-enablement control that the governance checklist tells administrators to configure.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Turn on auditing for the production environments that host Power Pages sites ... [The audit row instead leads to Purview Solutions > Audit for reading logs.]",
-      "severity": "minor",
-      "fix": "Add a separate environment-scoped auditing-enablement row. Cite https://learn.microsoft.com/power-platform/admin/activity-logging-auditing/activity-logs-overview and give its documented Manage > Environments > production environment > Settings > Product > Privacy and Security > Storage Shared Access Signature (SAS) Security Settings > Enable SAS Logging in Purview path, with the auditing and licensing prerequisites."
+      "where": "What's changing; Risk assessment: Change & support; Open questions",
+      "type": "absence",
+      "claim": "Learn does not document the roadmap's transfer notifications.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Power Pages\" \"ownership\" \"notifications\" and \"Power Pages\" \"ownership transfer\" notifications licensing eligibility; opened learn.microsoft.com/power-pages/admin/transfer-ownership and activity-logs-power-pages. Neither documents transfer notifications.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 59,
-      "where": "Governance controls: final paragraph and table",
-      "type": "consistency",
-      "claim": "The controls table records the approval-control gap stated in the prose.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "There is ... no documented approval step. [The table has a tenant-disable gap, but no approval-control gap.]",
-      "severity": "minor",
-      "fix": "Add a separate approval-workflow control row with both UI and API null and a note that Microsoft documents no separate approval workflow as of November 2026."
+      "where": "What's changing; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Learn does not document the roadmap's Power Advisor recommendation for ownerless Power Pages sites.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Power Pages\" \"Power Advisor\" orphaned ownerless recommendations; opened power-platform/admin/security-recommendations, power-pages/admin/coe-portals and admin/power-pages-inventory. CoE documents orphan details, not the roadmap's Power Advisor recommendation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost; Open questions",
+      "type": "absence",
+      "claim": "Feature-specific licensing, meter, charge and licence-based eligibility conditions for ownership transfer are not published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Pages transfer ownership licensing price charge meter notifications Power Advisor ownerless sites; ownership transfer notifications licensing eligibility. Opened transfer-ownership and powerapps-flow-licensing-faq; no transfer licence, meter or charge documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The transfer page prerequisites name roles, admin center access and an enabled Entra Member recipient, but no licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/admin/transfer-ownership",
+      "quote": "You are the website app owner and have any one of the following roles:\nSystem administrator\nDynamics 365 administrator\nPower Platform administrator\nYou have access to the Power Platform admin center.\nThe new owner is an enabled Microsoft Entra user with a Member user type.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Power Pages site licensing is capacity based, using authenticated users and anonymous users per website per month.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
+      "quote": "Power Pages (formerly Power Apps portals) licensing is capacity based and offers two types of capacities based on user type: Authenticated users per website/month and Anonymous users per website/month.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Cost and licensing: final paragraph",
+      "type": "absence",
+      "claim": "The cited licensing FAQs say nothing about ownership transfers.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: transfer|ownership in the fetched full text of https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq; no matches. Also searched Power Pages ownership transfer licensing and read the returned licensing excerpts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Open questions: website creator ownership",
+      "type": "behaviour",
+      "claim": "The admin roles page says website ownership remains with the creator and cannot be transferred or changed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/admin/admin-roles",
+      "quote": "The website owner is the user who created the Power Pages website. While you can update website management roles, ownership remains with the creator and can't be transferred or changed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Open questions: website creator ownership",
+      "type": "behaviour",
+      "claim": "The transfer page and admin roles page describe different ownership concepts.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Power Pages transfer site ownership and ownership transfer eligibility; opened learn.microsoft.com/power-pages/admin/transfer-ownership and admin/admin-roles. Both discuss site ownership; neither states that their conflicting ownership descriptions are different concepts.",
+      "severity": "major",
+      "fix": "Replace 'The two Learn pages describe different ownership concepts and do not explain the difference' with 'The two Learn pages appear to conflict and do not explain how the transfer relates to creator ownership.' Do not assert a documented distinction between ownership concepts."
     }
   ],
   "precheck": {
-    "at": "2026-11-16T15:35:52.698Z",
+    "at": "2026-11-16T17:07:11.150Z",
     "summary": {
-      "links": 7,
+      "links": 9,
       "unreachable": 0,
-      "uiPaths": 3,
-      "uiPathsWithMissingWords": 1,
-      "apiCalls": 2,
-      "apiCallsNotOnPage": 1,
+      "uiPaths": 5,
+      "uiPathsWithMissingWords": 2,
+      "apiCalls": 3,
+      "apiCallsNotOnPage": 2,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -713,17 +777,27 @@
         "status": 200
       },
       {
+        "url": "https://learn.microsoft.com/power-platform/admin/activity-logging-auditing/activity-logs-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office/office-365-management-api/office-365-management-activity-api-reference",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-pages/admin/power-pages-inventory",
+        "ok": true,
+        "status": 200
+      },
+      {
         "url": "https://learn.microsoft.com/troubleshoot/entra/entra-id/users-groups-entra-apis/add-owner-for-application-microsoft-graph",
         "ok": true,
         "status": 200
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
-        "ok": true,
-        "status": 200
-      },
-      {
-        "url": "https://learn.microsoft.com/power-pages/admin/power-pages-inventory",
         "ok": true,
         "status": 200
       }
@@ -760,36 +834,79 @@
         "index": 1,
         "side": "api",
         "governs": "Audit trail of site ownership transfers",
-        "docs": "https://learn.microsoft.com/power-platform/admin/activity-logging-auditing/activity-logs-power-pages",
+        "docs": "https://learn.microsoft.com/office/office-365-management-api/office-365-management-activity-api-reference",
         "reachable": true,
-        "token": "Office 365",
-        "found": true
+        "token": "/v1.0/activity/feed",
+        "found": false
       },
       {
         "index": 2,
+        "side": "ui",
+        "governs": "Whether Power Platform activity is sent to Purview for an environment",
+        "docs": "https://learn.microsoft.com/power-platform/admin/activity-logging-auditing/activity-logs-overview",
+        "reachable": true,
+        "segments": [
+          "Manage",
+          "Environments",
+          "Settings",
+          "Product",
+          "Privacy and Security",
+          "Storage Shared Access Signature  Security Settings",
+          "Enable SAS Logging in Purview"
+        ],
+        "missing": [
+          "Storage Shared Access Signature  Security Settings"
+        ]
+      },
+      {
+        "index": 3,
         "side": "ui",
         "governs": "Who is the website app owner for a site",
         "docs": "https://learn.microsoft.com/power-pages/admin/admin-roles",
         "reachable": true,
         "segments": [
           "Microsoft Entra ID",
+          "Manage",
           "App registrations",
-          "Portals-<website name",
+          "website app",
+          "Manage",
           "Owners",
           "Add owners"
         ],
-        "missing": [
-          "Portals-<website name"
-        ]
+        "missing": []
       },
       {
-        "index": 2,
+        "index": 3,
         "side": "api",
         "governs": "Who is the website app owner for a site",
         "docs": "https://learn.microsoft.com/troubleshoot/entra/entra-id/users-groups-entra-apis/add-owner-for-application-microsoft-graph",
         "reachable": true,
         "token": "/v1.0/applications/owners",
         "found": false
+      },
+      {
+        "index": 4,
+        "side": "ui",
+        "governs": "Finding Power Pages sites and their owners",
+        "docs": "https://learn.microsoft.com/power-pages/admin/power-pages-inventory",
+        "reachable": true,
+        "segments": [
+          "Manage",
+          "Inventory",
+          "Item type, filtered to sites"
+        ],
+        "missing": [
+          "Item type, filtered to sites"
+        ]
+      },
+      {
+        "index": 4,
+        "side": "api",
+        "governs": "Finding Power Pages sites and their owners",
+        "docs": "https://learn.microsoft.com/power-pages/admin/power-pages-inventory",
+        "reachable": true,
+        "token": "Azure Resource",
+        "found": true
       }
     ],
     "roadmapDrift": []
@@ -800,6 +917,12 @@
       "status": "held",
       "version": 1,
       "model": "none"
+    },
+    {
+      "date": "2026-11-16",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
     }
   ]
 }

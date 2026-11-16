@@ -1,49 +1,52 @@
 ---
-title: "Microsoft Edge: Rewrite by Copilot gains enterprise data protection"
+title: "Microsoft Edge: Rewrite by Copilot (Writing Assistance) gains enterprise data protection"
 slug: "microsoft-edge-rewrite-by-copilot-in-edge-is-being-upgraded-to-include-enterprise-data-pro"
 roadmapId: 420335
 topic: "modern-work"
 products: ["Microsoft Edge"]
-summary: "Microsoft plans to give Rewrite by Copilot in Edge enterprise data protection for Microsoft Entra ID users. The roadmap says release is paused with a January CY2027 target; admins should plan comms and check the Edge policy."
+summary: "Microsoft's notice MC1146821 says Writing Assistance in Edge for Business will be on by default, rolling late January 2027. Admins should plan user comms and review the Edge policy and DLP rules before then."
 status: "in-development"
 releasePhase: ["General Availability"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
 platforms: ["Web"]
 targetDate: "January CY2027"
 previewDate: null
-risk: "low"
+risk: "medium"
 cost: "low"
-impact: "medium"
-defaultState: "unknown"
-action: "prepare"
+impact: "high"
+defaultState: "on"
+action: "act-now"
 licensing:
   model: "unknown"
-  notes: "Microsoft has not published a licence or meter for this change. The ComposeInlineEnabled policy page says eligible users with access to Microsoft 365 Copilot Chat can use the writing features."
+  notes: "Not yet published for this change. The ComposeInlineEnabled policy page says the writing features are for eligible users with access to Microsoft 365 Copilot Chat."
 audiences: ["m365-admin","security","compliance","change-adoption"]
-tags: ["copilot-chat","microsoft-edge","enterprise-data-protection","entra-id","privacy","dlp","policy","admin-controls"]
+tags: ["copilot-chat","microsoft-edge","edge-for-business","enterprise-data-protection","entra-id","dlp","policy","admin-controls"]
 sources:
   - title: "Microsoft 365 Roadmap 420335"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=420335"
     kind: "roadmap"
+  - title: "MC1146821: (Updated) Rewrite with Microsoft 365 Copilot Chat coming soon to Edge for Business users"
+    url: "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1146821"
+    kind: "message-center"
   - title: "ComposeInlineEnabled"
     url: "https://learn.microsoft.com/deployedge/microsoft-edge-policies/composeinlineenabled"
     kind: "learn"
   - title: "Configuring Copilot Features"
     url: "https://learn.microsoft.com/deployedge/microsoft-edge-management-service-copilot-features"
     kind: "learn"
-  - title: "Enterprise data protection in Microsoft Copilot and Microsoft Copilot Chat"
-    url: "https://learn.microsoft.com/copilot/plan/enterprise-data-protection"
+  - title: "Microsoft 365 Copilot Chat in Edge and Access to Page Content"
+    url: "https://learn.microsoft.com/deployedge/edge-learnmore-copilot-page-summary-results"
     kind: "learn"
-  - title: "Archived release notes for Microsoft Edge Beta Channel"
-    url: "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-archive-beta-channel"
+  - title: "Pages where DLP stops the writing features working (Endpoint DLP sensitive service domain groups) (Microsoft Purview portal)"
+    url: "https://learn.microsoft.com/purview/endpoint-dlp-create-policy-unauthorized-cloud-apps-services"
     kind: "learn"
-  - title: "Manage Copilot Chat"
-    url: "https://learn.microsoft.com/copilot/edge"
+  - title: "Pages where DLP stops the writing features working (Endpoint DLP sensitive service domain groups) (PowerShell)"
+    url: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy"
     kind: "learn"
 videos: []
 related: ["purview-dlp-block-sensitive-data-in-copilot-web-search"]
 controls:
-  - governs: "Whether users can use Rewrite and the other Commercial Writing features in Edge"
+  - governs: "Whether users can use the Commercial Writing features (Rewrite) in Edge"
     scope: "user"
     ui:
       surface: "Group Policy (Microsoft Edge ADMX)"
@@ -53,15 +56,31 @@ controls:
       kind: "other"
       call: "Registry: SOFTWARE\\Policies\\Microsoft\\Edge, value ComposeInlineEnabled (REG_DWORD; 0x00000000 = disabled); macOS preference key ComposeInlineEnabled"
       docs: "https://learn.microsoft.com/deployedge/microsoft-edge-policies/composeinlineenabled"
-    note: "Policy name: Commercial Writing (GP name). Per profile, Entra accounts only. Microsoft has not confirmed it applies to the enterprise data protection upgrade."
-  - governs: "Edge setting for AI-generated text and editing"
-    scope: "group"
+    note: "GP name: Commercial Writing. Per profile; Entra accounts only. MC1146821 names InlineComposeEnabled instead; the mapping is unconfirmed."
+  - governs: "The InlineComposeEnabled policy named in MC1146821"
+    scope: "other"
+    ui: null
+    api: null
+    note: "Named in Microsoft's notice only; no Learn page documents it at the time of writing (November 2026)."
+  - governs: "Edge management service setting for AI-generated text and editing"
+    scope: "other"
     ui:
       surface: "Microsoft Edge management service"
       path: "Copilot > AI-generated text and editing"
       docs: "https://learn.microsoft.com/deployedge/microsoft-edge-management-service-copilot-features"
     api: null
-    note: "The page does not name Rewrite or ComposeInlineEnabled for this setting. Assigned through a new or existing configuration policy."
+    note: "The page does not name Rewrite, Writing Assistance or either policy. Assigned through a new or existing configuration policy."
+  - governs: "Pages where DLP stops the writing features working (Endpoint DLP sensitive service domain groups)"
+    scope: "tenant"
+    ui:
+      surface: "Microsoft Purview portal"
+      path: "Data loss prevention > Settings > Data Loss Prevention > Endpoint DLP settings > Browser and domain restrictions to sensitive data > Sensitive service domain groups"
+      docs: "https://learn.microsoft.com/purview/endpoint-dlp-create-policy-unauthorized-cloud-apps-services"
+    api:
+      kind: "powershell"
+      call: "New-DlpCompliancePolicy -Name <name> -EndpointDlpLocation <locations> (Security & Compliance PowerShell)"
+      docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy"
+    note: "General control. The blocking settings are listed for Copilot Chat in the Edge sidepane; Microsoft has not confirmed they cover Writing Assistance."
 confidence: "medium"
 created: "2026-11-16"
 updated: "2026-11-16"
@@ -69,85 +88,90 @@ roadmapModified: "2026-11-11T00:53:22"
 changes:
   - date: "2026-11-16"
     note: "First briefing for this item; records the March 20, 2026 pause and the Edge policy that governs Rewrite."
-version: 1
+  - date: "2026-11-16"
+    note: "Added Microsoft's notice MC1146821: default now on, rollout late January 2027, and its InlineComposeEnabled policy name; added a DLP control row and corrected unsupported claims."
+version: 2
 verification:
   status: "held"
   date: "2026-11-16"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 51
-  confirmed: 45
-  unconfirmed: 2
-  contradicted: 4
-  attempts: 1
+  claims: 60
+  confirmed: 57
+  unconfirmed: 1
+  contradicted: 2
+  attempts: 2
 ---
 
 ## What's changing
 
-Microsoft plans to add enterprise data protection to Rewrite by Copilot in Microsoft Edge. Rewrite lets users edit typed text for tone, format and length within an open page. The roadmap item states that, once Rewrite is available, users signed in with a Microsoft Entra ID will have enterprise data protection when using it.
+Microsoft plans to add enterprise data protection to Rewrite by Copilot in Microsoft Edge, which lets users edit typed text for tone, format and length. The roadmap item states that, once Rewrite is available, users signed in with a Microsoft Entra ID will have enterprise data protection when using it.
 
-Microsoft Learn documents a Rewrite-style capability already. The ComposeInlineEnabled policy page says it lets eligible users with access to Microsoft 365 Copilot Chat draft, rewrite and dictate text in web editing fields in Microsoft Edge, and that it requires a Microsoft Entra account. That page does not mention the enterprise data protection upgrade or the pause, so it is not clear whether it describes the feature this roadmap item covers. A September 17, 2025 Edge Beta release note (version 141.0.3537.25) listed the same upgrade as a controlled rollout.
+Microsoft's notice MC1146821 (updated November 9, 2026) says it is associated with this roadmap item and describes the same capability as Writing Assistance, powered by Microsoft 365 Copilot Chat. Users highlight editable text and right-click to open the context menu. The notice says Writing Assistance will be enabled by default for Edge for Business users, and that it will not work on content where Data Loss Prevention (DLP) policies restrict Microsoft 365 Copilot from accessing page content. It names the InlineComposeEnabled policy setting as the admin control and says no admin action is required before rollout.
 
-The roadmap record shows status In development, a target of January CY2027, release phase General Availability, Web platform and the Worldwide (Standard Multi-Tenant) cloud. It also carries an update dated March 20, 2026: Microsoft paused release of the feature temporarily and said it will announce new timelines. Treat January CY2027 as a target only; no replacement timeline appears in the record.
+The two Microsoft sources differ on timing. The roadmap record shows status In development, a target of January CY2027, and an update dated March 20, 2026 saying Microsoft had paused release temporarily and would announce new timelines. The notice gives a Worldwide rollout start and completion of late January 2027 (previously end of October 2026 for the start and late October for completion). It sets no act-by date. Treat January CY2027 as a target.
+
+The notice and Microsoft Learn also differ on the policy name. The notice says InlineComposeEnabled; the Learn policy reference documents ComposeInlineEnabled (Commercial Writing), which enables eligible users with access to Microsoft 365 Copilot Chat to draft, rewrite and dictate text in web editing fields in Edge. At the time of writing (November 2026) no Learn page documents a policy named InlineComposeEnabled, so do not assume the two names are the same setting.
 
 ## Why it matters
 
-For a service owner, this is a data-handling change more than a new feature. Rewrite is powered by Microsoft 365 Copilot Chat, so text typed into web editing fields reaches Copilot, and enterprise data protection is the commitment set that governs how Microsoft treats it. Microsoft's enterprise data protection page says prompts and responses are protected by the same contractual terms that cover Exchange email and SharePoint files, and that prompts and responses are not used to train foundation models.
+This puts a generative AI writing option in front of Edge for Business users by default, which means text typed into web editing fields can be sent to Microsoft 365 Copilot Chat when a user invokes it. Enterprise data protection is the commitment the roadmap says will cover that use for Microsoft Entra ID users; decide whether you are content to rely on it for the sites your staff type into.
 
-If nobody acts, users will meet a Rewrite option with no guidance from you. Decide now whether Rewrite is allowed in your tenant, since the Edge policy is already documented, and brief users before the target date.
+If nobody acts, users will find the option in the right-click menu in late January 2027 with no guidance from you, and any page not covered by a DLP rule or Edge policy is open to it. Decide before then whether to allow it, and brief users and the service desk.
 
 ## Risk assessment
 
 **Data exposure**
 
-- Rewrite is powered by Microsoft 365 Copilot Chat, so the text a user edits reaches Copilot. Enterprise data protection is the control the roadmap says will cover that traffic; the Learn pages read do not describe how it applies to Rewrite specifically, so confirm it before relying on it.
-- Per the ComposeInlineEnabled page, the writing features are not available when data loss prevention (DLP) policies block access to the page, so existing DLP policies that block a page also stop Rewrite there.
+- Writing Assistance is powered by Microsoft 365 Copilot Chat (MC1146821), so text a user chooses to rewrite goes to Copilot. The roadmap says enterprise data protection will apply for users signed in with a Microsoft Entra ID; the Learn pages read do not describe how it applies to this feature specifically.
+- The notice and the policy page say the feature is unavailable where DLP blocks access. The Learn page on Copilot Chat page-content access lists the Purview and Intune MAM settings that block Copilot Chat in the Edge sidepane; Microsoft has not confirmed that the same list governs Writing Assistance.
 
 **Security & identity**
 
-- The enterprise protections apply to Microsoft Entra accounts only: the policy page says the features require a Microsoft Entra account and are not available with personal Microsoft accounts.
+- The ComposeInlineEnabled page says the features require a Microsoft Entra account and are not available with personal Microsoft accounts. It also says the policy does not apply to a profile signed in with a Microsoft account.
 
 **Autonomy & actions**
 
-- The roadmap describes Rewrite as editing text a user has typed, for tone, format and length. No autonomous action is described.
+- Users invoke the feature themselves through the right-click menu (MC1146821); no autonomous action is described.
 
 **Change & support**
 
-- The roadmap says release is paused with no new timeline, so expect the feature to appear late or in stages. Expect questions about why the option shows for some users and not others.
-    - The policy page says that when ComposeInlineEnabled is not configured the writing features are available by default, subject to feature availability, so users may already see Rewrite-style options before this upgrade lands.
+- The feature is on by default per MC1146821, and the Learn policy page says an unconfigured policy leaves the writing features available. Expect questions about the new menu item and about why it is missing on DLP-protected pages.
+- Release timing has moved more than once, and the roadmap still carries the March 20, 2026 pause note, so confirm in Message center before you brief users.
 
 ## Cost and licensing
 
-Microsoft has not published a licence requirement or meter for this change. The roadmap record names none, and the ComposeInlineEnabled policy page says the writing features are for eligible users with access to Microsoft 365 Copilot Chat; it adds that users licensed for Microsoft 365 Copilot (Premium) can also use WorkIQ grounding when available.
+Microsoft has not published a licence requirement or meter for this change. The roadmap record and MC1146821 name none. The ComposeInlineEnabled policy page (Learn) says the writing features are for eligible users with access to Microsoft 365 Copilot Chat, and adds that users licensed for Microsoft 365 Copilot (Premium) can also use WorkIQ grounding when available. That page lists no price.
 
-No meter, charge or cap for Rewrite is documented at the time of writing (November 2026). The known cost is admin time: reviewing the Edge policy, checking DLP coverage and communicating with users.
+No meter or cap for this feature is documented at the time of writing (November 2026). The known cost is admin time: setting the Edge policy, reviewing DLP coverage and communicating with users.
 
 ## Scope
 
-Users: the roadmap says users signed in with a Microsoft Entra ID. Personal Microsoft accounts are out of scope for the enterprise protections.
+Users: Edge for Business users signed in with a Microsoft Entra ID (roadmap and MC1146821). Personal Microsoft accounts are outside the Commercial Writing features per the policy page.
 
-Cloud and platform: the record lists Worldwide (Standard Multi-Tenant) and Web only. The ComposeInlineEnabled page lists support from version 115 on Windows and macOS, and no support on Android or iOS.
+Cloud and platform: the record lists Worldwide (Standard Multi-Tenant) and Web. Absence of other clouds from the record is not a statement that the feature is unavailable there. The policy page lists support from version 115 on Windows and macOS and no support on Android or iOS.
 
-Rollout: status In development with a January CY2027 target, and release paused according to the March 20, 2026 update. The default state is not stated for this change.
+Rollout: MC1146821 says Worldwide rollout begins and completes in late January 2027. The roadmap target is January CY2027 and the status is In development. Prerequisite per the policy page: Microsoft 365 Copilot Chat must be available to the intended users.
 
 ## Governance guidance
 
 ### Before rollout
 
-- Decide whether Rewrite should be allowed, and record the decision with the Edge ComposeInlineEnabled policy (Commercial Writing in Group Policy).
-- Check which pages your DLP policies block, because Rewrite is unavailable on them.
-- Confirm which Edge versions your devices run, as the policy is listed for version 115 and later on Windows and macOS.
+- Decide whether to allow Writing Assistance, then plan to set the ComposeInlineEnabled policy (Commercial Writing in Group Policy) to match.
+- Ask your Edge administrator whether InlineComposeEnabled, the name used in MC1146821, appears in your Edge policy templates, and test which policy actually switches the feature off.
+- Review Purview Endpoint DLP and Intune MAM rules that block copy, print, download or upload on sensitive sites, because the notice says Writing Assistance does not work where DLP restricts Copilot access to page content.
+- Confirm devices run Edge 115 or later on Windows or macOS.
 
 ### At rollout
 
-- Tell users that Rewrite works only when signed in with a Microsoft Entra account, and that personal accounts are excluded.
-- Set the policy to Enabled or Disabled in the Edge management service or Group Policy to match your decision.
+- Tell users that the feature works only when signed in with a Microsoft Entra account and appears in the right-click menu on editable text.
+- Check the Edge management service Copilot tab setting AI-generated text and editing and assign it through a configuration policy if you use that service; treat it as a separate control until Microsoft confirms it governs this feature.
 
 ### After rollout
 
-- Watch the roadmap item and Message center for a new release timeline, since release is paused.
-- Review help desk reports of Rewrite appearing or missing, and compare them with the policy state.
+- Watch Message center and the roadmap item for further timeline changes to MC1146821.
+- Compare service desk reports of the option appearing or missing with policy and DLP state.
 
 ## Governance controls
 
@@ -156,37 +180,36 @@ Rollout: status In development with a January CY2027 target, and release paused 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether users can use Rewrite and the other Commercial Writing features in Edge</strong><br><small>User</small><br><small class="controls__note">Policy name: Commercial Writing (GP name). Per profile, Entra accounts only. Microsoft has not confirmed it applies to the enterprise data protection upgrade.</small></td><td data-label="Admin UI"><strong>Group Policy (Microsoft Edge ADMX)</strong><br>Administrative Templates › Microsoft Edge <a href="https://learn.microsoft.com/deployedge/microsoft-edge-policies/composeinlineenabled" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Registry: SOFTWARE\Policies\Microsoft\Edge, value ComposeInlineEnabled (REG_DWORD; 0x00000000 = disabled); macOS preference key ComposeInlineEnabled</code> <a href="https://learn.microsoft.com/deployedge/microsoft-edge-policies/composeinlineenabled" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Edge setting for AI-generated text and editing</strong><br><small>Group</small><br><small class="controls__note">The page does not name Rewrite or ComposeInlineEnabled for this setting. Assigned through a new or existing configuration policy.</small></td><td data-label="Admin UI"><strong>Microsoft Edge management service</strong><br>Copilot › AI-generated text and editing <a href="https://learn.microsoft.com/deployedge/microsoft-edge-management-service-copilot-features" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether users can use the Commercial Writing features (Rewrite) in Edge</strong><br><small>User</small><br><small class="controls__note">GP name: Commercial Writing. Per profile; Entra accounts only. MC1146821 names InlineComposeEnabled instead; the mapping is unconfirmed.</small></td><td data-label="Admin UI"><strong>Group Policy (Microsoft Edge ADMX)</strong><br>Administrative Templates › Microsoft Edge <a href="https://learn.microsoft.com/deployedge/microsoft-edge-policies/composeinlineenabled" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Registry: SOFTWARE\Policies\Microsoft\Edge, value ComposeInlineEnabled (REG_DWORD; 0x00000000 = disabled); macOS preference key ComposeInlineEnabled</code> <a href="https://learn.microsoft.com/deployedge/microsoft-edge-policies/composeinlineenabled" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>The InlineComposeEnabled policy named in MC1146821</strong><br><small class="controls__note">Named in Microsoft's notice only; no Learn page documents it at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Edge management service setting for AI-generated text and editing</strong><br><small class="controls__note">The page does not name Rewrite, Writing Assistance or either policy. Assigned through a new or existing configuration policy.</small></td><td data-label="Admin UI"><strong>Microsoft Edge management service</strong><br>Copilot › AI-generated text and editing <a href="https://learn.microsoft.com/deployedge/microsoft-edge-management-service-copilot-features" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Pages where DLP stops the writing features working (Endpoint DLP sensitive service domain groups)</strong><br><small>Tenant</small><br><small class="controls__note">General control. The blocking settings are listed for Copilot Chat in the Edge sidepane; Microsoft has not confirmed they cover Writing Assistance.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Settings › Data Loss Prevention › Endpoint DLP settings › Browser and domain restrictions to sensitive data › Sensitive service domain groups <a href="https://learn.microsoft.com/purview/endpoint-dlp-create-policy-unauthorized-cloud-apps-services" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpCompliancePolicy -Name &lt;name&gt; -EndpointDlpLocation &lt;locations&gt; (Security &amp; Compliance PowerShell)</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-The ComposeInlineEnabled policy page states three outcomes: if enabled, eligible users can use the features and cannot turn Commercial Writing off in Edge settings; if not configured, the features are available by default and users can turn them off using 'Collaborate with Copilot as you write on the web'; if disabled, users cannot use them. The policy is per profile and can be mandatory but not recommended.
+The ComposeInlineEnabled page gives three outcomes: enabled, eligible users can use the features and cannot turn Commercial Writing off in Edge settings; not configured, the features are available by default and users can turn them off using 'Collaborate with Copilot as you write on the web'; disabled, users cannot use them. It is per profile and can be mandatory but not recommended.
 
-The Edge management service page lists a setting named AI-generated text and editing but does not name Rewrite or the ComposeInlineEnabled policy, so Microsoft has not confirmed that it governs this feature. No API or PowerShell surface for it is documented at the time of writing (November 2026). DLP is a general control: the policy page says the features are unavailable where DLP blocks the page, but its configuration path was not read for this feature.
+Microsoft's notice names InlineComposeEnabled, which no Learn page documents at the time of writing (November 2026), and Learn documents ComposeInlineEnabled. The table therefore records both and does not treat them as one setting.
+
+The Edge management service page lists AI-generated text and editing but does not name Rewrite, Writing Assistance or either policy. No API or PowerShell surface for it appears in Microsoft Learn at the time of writing. The DLP row is a general control: the policy page says the features are unavailable where DLP blocks access, but the listed blocking settings are documented for Copilot Chat in the Edge sidepane.
 
 ## Open questions
 
-- When will Microsoft publish a new release timeline for the paused Rewrite upgrade? Watch the roadmap item and Message center.
-- Does the ComposeInlineEnabled policy (Commercial Writing) govern the enterprise-data-protection version of Rewrite described by the roadmap, or is it a separate feature?
-- Which licence, if any, will Rewrite with enterprise data protection require, and will it be metered? Microsoft has not published this.
-- Will the feature be on or off by default on arrival, and will existing Rewrite users see any change? The record does not say.
+- Is InlineComposeEnabled in MC1146821 the same setting as the documented ComposeInlineEnabled policy, or a separate control? Watch Message center and the Edge policy reference.
+- Will the March 20, 2026 pause note be withdrawn from the roadmap item, and will the late January 2027 rollout hold? Watch MC1146821 and the roadmap.
+- Which licence, if any, does Writing Assistance with enterprise data protection require, and will it be metered? Microsoft has not published this.
+- Which DLP settings block Writing Assistance specifically, as opposed to Copilot Chat in the Edge sidepane? Watch the Learn page on Copilot Chat access to page content.
 
 <!-- rationale
-risk: Low. The change adds data protection to a feature that sends typed text to Copilot; it does not widen data access, and an Edge policy (ComposeInlineEnabled) can switch Rewrite off.
-cost: Low. The only cost the sources show is admin time to review policy and tell users; the licence for this change is not yet published.
-impact: Medium. Anyone signed in to Edge with a Microsoft Entra ID can see a Rewrite option on editable text, so many users could notice it, though each use is user-initiated.
+risk: Medium. Microsoft's notice says the feature is enabled by default for Edge for Business users and sends text to Microsoft 365 Copilot Chat; an Edge policy and DLP can limit it, but both need setting.
+cost: Low. The only cost the sources show is admin time to set policy and tell users; Microsoft has not published a separate licence or meter for this change.
+impact: High. Microsoft's notice says Writing Assistance is enabled by default for Edge for Business users, so eligible users will see a new option in the right-click menu on editable text.
 -->
 
 <!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
 The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [contradicted, blocker] summary; Risk assessment: Change & support; Scope; Open questions / date: Release remains paused with no new timeline available to administrators. | Found: Updated November 9, 2026: We have updated the timeline. ... General Availability (Worldwide): We will begin rolling late January 2027 ... and expect to complete rollout by late January 2027 | Fix: Report both sources: the roadmap retains its March pause and January CY2027 target, but MC1146821, updated November 9, 2026, expects Worldwide rollout to begin and complete in late January 2027. Replace the stale pause-only summary, rollout guidance and timeline question, and cite https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1146821.
-- [contradicted, blocker] front matter: defaultState; Scope; Open questions / default: The arrival default for this change is unknown. | Found: Writing Assistance will be enabled by default for Edge for Business users. | Fix: Set defaultState to on. State that MC1146821 says Writing Assistance will be enabled by default for Edge for Business users; replace the unknown-default statements and cite the supplied post.
-- [supported, minor] controls[1].scope; Governance controls table / applicability: Edge management service configuration policies can be assigned through groups. | Found: These configurations are stored in the cloud and the settings can be applied to a user's browser through group assignment or group policy. | Fix: Add https://learn.microsoft.com/deployedge/microsoft-edge-management-service to sources to substantiate group assignment. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-management-service
-- [unsupported, blocker] Governance guidance: At rollout / applicability: Setting the policy to Enabled or Disabled in the Edge management service governs Rewrite. | Found: Searched: Edge management service AI-generated text and editing API PowerShell configuration policy; Edge management AI-generated text Graph. Read Configuring Copilot Features and ComposeInlineEnabled; the former never maps its setting to Rewrite or ComposeInlineEnabled. | Fix: Restrict the Rewrite instruction to the documented ComposeInlineEnabled Group Policy or registry control. Retain the management-service setting only as a separately documented setting whose Rewrite mapping is unconfirmed, matching the table's existing caveat.
-- [supported, minor] Why it matters; Risk assessment: Data exposure; rationale: risk / behaviour: Text submitted to Rewrite is sent to Microsoft for processing. | Found: Text that you've highlighted or inputted for Compose is sent to Microsoft after you click the Rewrite or Generate button, not while you're selecting text. | Fix: Add https://learn.microsoft.com/legal/microsoft-edge/privacy#compose to sources and clarify that submission occurs after Rewrite or Generate is invoked, rather than suggesting all typing is transmitted. | Source: https://learn.microsoft.com/legal/microsoft-edge/privacy#compose
-- [unsupported, minor] rationale: risk / behaviour: The change does not widen data access. | Found: Searched: Rewrite Edge enterprise data protection data access. Read roadmap, ComposeInlineEnabled, enterprise data protection, Manage Copilot Chat and Beta release-note passage; none establishes an unchanged data-access boundary for the upgrade. | Fix: Remove 'it does not widen data access'. Explain the low-risk judgement in terms of the planned additional protection and documented disabling control without asserting an undocumented data-access comparison.
-- [contradicted, minor] rationale: impact / availability: Anyone signed in to Edge with a Microsoft Entra ID can see Rewrite on editable text. | Found: Enables eligible users with access to Microsoft 365 Copilot Chat ... subject to feature availability and other applicable policies. | Fix: Replace 'Anyone signed in to Edge with a Microsoft Entra ID' with 'Eligible Edge for Business users with access to Copilot Chat, subject to rollout, policy and DLP restrictions'. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-policies/composeinlineenabled
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The governance checklist asks administrators to check DLP policies, but the controls table has no DLP row. | Found: Check which pages your DLP policies block, because Rewrite is unavailable on them. ... Controls table: Commercial Writing; AI-generated text and editing. | Fix: Add a DLP control row covering the page-content restriction. Research and cite its actual configuration surface and automation equivalent before populating the row; do not use null merely because the writer did not read the configuration path.
-- [supported, minor] controls[0].note; What's changing; Open questions / absence: The sources do not explicitly confirm that the policy named ComposeInlineEnabled governs the specific enterprise-data-protection upgrade. | Found: Searched: Edge Rewrite enterprise data protection default enabled InlineComposeEnabled ComposeInlineEnabled. Read policy, Beta upgrade note and MC1146821. The notice identifies this roadmap item but names InlineComposeEnabled, unlike the policy reference's ComposeInlineEnabled. | Fix: Replace the broad uncertainty with the precise discrepancy: MC1146821 explicitly associates Writing Assistance with this roadmap item and names InlineComposeEnabled as its control, while the Learn reference documents ComposeInlineEnabled for Rewrite. Cite the supplied notice and do not silently treat the two identifiers as interchangeable.
+- [contradicted, blocker] controls[3].api; Governance controls table / command: New-DlpCompliancePolicy -Name <name> -EndpointDlpLocation <locations> is the automation counterpart for configuring the sensitive service domain groups and restrictions in this row. | Found: Use the New-DlpCompliancePolicy cmdlet to create data loss prevention (DLP) policies in the Microsoft Purview compliance portal. DLP policies contain DLP rules that identify, monitor, and protect sensitive information. | Fix: Set controls[3].api to null: no equivalent automation for sensitive service domain groups was found in searches for 'sensitive service domain groups PowerShell' and 'sensitive service domain Set- DLP PowerShell'. Remove this call from the rendered row. If retained in prose, label it only as creating an Endpoint DLP policy container, not configuring domains or blocking rules; -EndpointDlpLocation selects user accounts and requires Compliance Administrator or Compliance Data Administrator membership. Retain the documented Purview UI procedure for domain-group configuration. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy
+- [unsupported, blocker] Why it matters / availability: Any page not covered by a DLP rule or Edge policy is open to Writing Assistance. | Found: Searched: "Writing Assistance" "Edge" supported text fields availability restrictions; "Writing Assistance" "DLP" policies Edge. Read ComposeInlineEnabled and MC1146821; neither guarantees every otherwise-unblocked page, and the policy reference qualifies use by feature availability. | Fix: Replace 'any page not covered by a DLP rule or Edge policy is open to it' with 'eligible users can use the writing features in supported web editing fields, subject to feature availability and other applicable policies'. Cite https://learn.microsoft.com/deployedge/microsoft-edge-policies/composeinlineenabled. Do not present DLP and Edge policy coverage as an exhaustive list of availability conditions.
+- [supported, minor] Why it matters / date: Users will find the right-click option in late January 2027. | Found: We will begin rolling late January 2027 (previously end of October 2026) and expect to complete rollout by late January 2027 (previously late October). | Fix: Change 'users will find the option in the right-click menu in late January 2027' to 'Microsoft currently expects eligible users to receive the right-click option during the late January 2027 rollout'. Preserve the distinction between an expected rollout and guaranteed availability.
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist asks administrators to review Intune MAM rules, but the controls table contains no Intune MAM row. | Found: Review Purview Endpoint DLP and Intune MAM rules that block copy, print, download or upload on sensitive sites; table: Pages where DLP stops the writing features working (Endpoint DLP sensitive service domain groups). | Fix: Remove 'and Intune MAM' from the actionable Before rollout checklist unless a separately evidenced Intune MAM control row is added. The general discussion can still identify Intune MAM as a documented sidepane control whose exact applicability to Writing Assistance is unconfirmed.
 -->

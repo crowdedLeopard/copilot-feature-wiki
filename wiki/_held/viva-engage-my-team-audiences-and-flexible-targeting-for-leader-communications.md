@@ -82,6 +82,17 @@ changes:
   - date: "2026-11-16"
     note: "First briefing for this item, using roadmap record 499895 and Message Center post MC1183013 (updated 2 November 2026)."
 version: 1
+verification:
+  status: "held"
+  date: "2026-11-16"
+  version: 1
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 70
+  confirmed: 69
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 1
 ---
 
 ## What's changing
@@ -182,4 +193,11 @@ The controls that exist today govern leaders, delegates and storyline in general
 risk: Medium. Leaders and delegates choose recipients at the moment of posting, without an administrator pre-configuring the audience, and Microsoft Learn documents no switch for the new targeting.
 cost: Low. Microsoft's notice says a premium Viva or Communications and Communities (C&C) licence is required, and no separate meter or price is published; the visible cost is admin time to check people data.
 impact: Medium. Leaders, their delegates and the people they message notice it; other users see no change to how announcements are delivered.
+-->
+
+<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
+The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
+- [supported, minor] What's changing: documentation caveat / absence: Microsoft Learn does not yet describe My Team or publish-time targeting, so the briefing treats their behaviour as roadmap and notice descriptions rather than a documented design. | Found: Searched: Viva Engage My Team audiences; Viva Engage flexible targeting licensing. Opened leadership-identification and eac-storyline; no Learn feature guide found. Opened Microsoft Support's Storyline announcements in Viva Engage, which does document My Team and targeting as Public Preview. | Fix: Keep the narrow Learn gap if desired, but replace the implication that no feature guide exists with: 'Microsoft Support documents My Team and flexible targeting as Public Preview; behaviour may change before general availability.' Add https://support.microsoft.com/topic/8db19630-ecd0-4d1e-b735-437aea62e248 to sources. Searches for Viva Engage My Team audiences and flexible targeting returned surrounding Learn documentation, while this opened Support page describes the feature directly.
+- [supported, minor] Cost and licensing: first paragraph / licensing: Learn says identified leaders licensed for the Viva Engage Communities and Communications service plan can use storyline announcements, leadership corner, campaigns and AMAs. | Found: Identified leaders with a license to the Viva Engage Communities and Communications service plan have access to storyline announcements, leadership corner, campaigns, and AMAs. | Fix: Retain the cited Learn statement, but acknowledge that https://support.microsoft.com/topic/8db19630-ecd0-4d1e-b735-437aea62e248 instead says 'This capability requires the Viva Suite license.' Cite that guide and explain that MC1183013 and Learn describe Viva/C&C eligibility while Support uses narrower Viva Suite wording; confirm the applicable entitlement against the tenant agreement. | Source: https://learn.microsoft.com/viva/engage/leadership-identification
+- [contradicted, blocker] Cost and licensing: final sentence / absence: Whether announcement recipients need any particular licence is not yet published. | Found: To receive announcement notifications through Outlook and Microsoft Teams, you’ll need a license to the Viva Engage Communities and Communications service plan. | Fix: Replace the sentence with: 'Microsoft Support says recipients need the Viva Engage Communities and Communications service plan to receive announcement notifications through Outlook and Microsoft Teams. This is a notification-channel requirement, not a statement that all viewing requires that premium licence.' Cite https://support.microsoft.com/topic/8db19630-ecd0-4d1e-b735-437aea62e248. | Source: https://support.microsoft.com/topic/8db19630-ecd0-4d1e-b735-437aea62e248
 -->

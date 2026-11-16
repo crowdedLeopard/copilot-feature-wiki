@@ -78,6 +78,17 @@ changes:
   - date: "2026-11-16"
     note: "New briefing: Teams admin center AI insights for meeting quality, rolling out from mid-November 2026 per MC1523077."
 version: 1
+verification:
+  status: "held"
+  date: "2026-11-16"
+  version: 1
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 68
+  confirmed: 65
+  unconfirmed: 3
+  contradicted: 0
+  attempts: 1
 ---
 
 ## What's changing
@@ -174,4 +185,12 @@ The Teams administrator roles page says Teams roles can be scoped to selected us
 risk: Low. Microsoft's notice MC1523077 says the insights are read-only analysis of existing meeting-quality data and do not alter how customer data is stored or processed; only admin roles see them.
 cost: Low. Microsoft has not published a licence or meter for the insights, so the only known cost is admin time; Learn says troubleshooting data is available for all Teams users regardless of licence type, with depth and retention varying by licence.
 impact: Low. Only administrators in the listed Teams roles see the insights; end users notice only if admins act on them, for example by changing network or device settings.
+-->
+
+<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
+The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
+- [unsupported, blocker] What's changing; Risk assessment: Change & support / absence: There are no thresholds to set and anomaly detection is not tunable. | Found: Searched: "meeting quality" "insights" "thresholds"; Teams admin center intelligent insights meeting quality licensing enable disable policy PowerShell thresholds. Read MC1523077: it says admins don't need to configure thresholds, not that tuning is impossible. | Fix: Replace 'so there are no thresholds to set' with 'so administrators do not need to configure thresholds'. Replace 'Anomaly detection is automatic and not tunable' with 'Machine learning evaluates anomalies automatically, without requiring administrators to configure thresholds'. MC1523077 does not state whether optional tuning exists.
+- [supported, minor] Risk assessment: Data exposure / behaviour: The existing troubleshooting documentation says identifiable information for federated and external participants is obfuscated. | Found: For federated and external participants, end-user identifiable information (EUII) is obfuscated to protect privacy in accordance with Microsoft data handling policies. | Fix: Add the qualification 'except for peer-to-peer calls, where relevant identifiable information is not obfuscated'. The cited page states that exception immediately afterwards. This does not change the new insights' stated scope because MC1523077 excludes peer-to-peer telemetry. | Source: https://learn.microsoft.com/microsoftteams/monitor-troubleshoot-teams-meetings-calls
+- [unsupported, minor] rationale: risk / behaviour: MC1523077 says the insights are read-only analysis. | Found: Searched: "Teams" "intelligent insights" "meeting quality". Read MC1523077 in full and opened meeting-troubleshooting documentation. The notice describes analysis and recommended actions but does not explicitly establish a read-only guarantee. | Fix: Replace 'says the insights are read-only analysis of existing meeting-quality data' with 'says the insights analyse historical meeting-quality data and surface recommendations'. Retain the separately supported statement about unchanged customer-data storage and processing.
+- [unsupported, blocker] Cost and licensing / cost: No cap or budget control applies because no meter is described. | Found: Searched: "meeting quality" "insights" "budget" "meter"; "Teams" "intelligent insights" "meeting quality" licensing billing. Read MC1523077 and meeting-troubleshooting documentation; neither states that a cap or budget control does not apply. | Fix: Replace 'No cap or budget control applies, because no meter is described' with 'No meter, spending cap or budget control is documented for these insights at the time of writing (November 2026)'. Unpublished charging information does not establish that budget controls are inapplicable.
 -->
