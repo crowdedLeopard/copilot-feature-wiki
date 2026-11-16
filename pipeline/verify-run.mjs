@@ -15,6 +15,8 @@
  *   VERIFY_MAX_RUN_CREDITS Copilot AI-credit budget per run; no new session starts once it is spent
  *                   (default 100 per queued briefing). Unchecked pages written today are held, not published.
  *   VERIFY_TIMEOUT_MINUTES per briefing (default 15).
+ *   VERIFY_RUN_MINUTES     wall-clock budget for the whole run (default 60); no new session starts after it, so the
+ *                   job always reaches lint, index and the commit. Pages not reached are held or stay unchecked.
  *
  * The verifier's editorial rules are pipeline/prompts/verify-agent.md. The per-page brief
  * (data/verify-tasks/<slug>.md, from verify-tasks.mjs) carries the mechanics and the contract.
@@ -38,6 +40,7 @@ const DEFAULT_MODELS = {
 };
 const TIMEOUT_MS = Number(process.env.VERIFY_TIMEOUT_MINUTES || 15) * 60 * 1000;
 const MAX_CREDITS = Math.max(30, Number(process.env.VERIFY_MAX_CREDITS || 250));
+const RUN_MINUTES = Number(process.env.VERIFY_RUN_MINUTES || 60);
 const list = (v) => (v || '').split(',').map((x) => x.trim()).filter(Boolean);
 
 // No shell: the verifier writes one file and the pipeline records it.
@@ -177,11 +180,13 @@ async function main() {
   const promptExists = await exists(PROMPT_FILE);
   const intro = promptExists ? `Read ${PROMPT_FILE} and apply it as your standard.` : FALLBACK_INSTRUCTIONS;
   if (!promptExists) await summary(`verify: ${PROMPT_FILE} is not in the repository yet; running with the built-in minimum instructions.`);
-  const run = { engine, startedAt: new Date().toISOString(), models, runBudget, maxCreditsPerPage: engine === 'copilot' ? MAX_CREDITS : null, promptFile: promptExists ? PROMPT_FILE : null, tasks: [] };
+  const run = { engine, startedAt: new Date().toISOString(), models, runBudget, runMinutes: RUN_MINUTES, maxCreditsPerPage: engine === 'copilot' ? MAX_CREDITS : null, promptFile: promptExists ? PROMPT_FILE : null, tasks: [] };
   const spent = () => run.tasks.reduce((s, t) => s + (t.cost || 0), 0);
+  const startedAt = Date.now();
   let modelIndex = 0, stoppedBecause = null;
   for (const task of tasks) {
     if (runBudget != null && spent() >= runBudget) { stoppedBecause = `the run budget of ${runBudget} AI credits was spent (VERIFY_MAX_RUN_CREDITS)`; break; }
+    if (Date.now() - startedAt >= RUN_MINUTES * 60_000) { stoppedBecause = `the run's time budget of ${RUN_MINUTES} minutes was spent (VERIFY_RUN_MINUTES)`; break; }
     let attempt = 0, result = null, outcome = null, feedback = '';
     while (attempt < 3 && !outcome?.done && !outcome?.incomplete) {
       const model = models[Math.min(modelIndex, models.length - 1)];

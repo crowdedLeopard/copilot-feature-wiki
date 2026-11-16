@@ -90,7 +90,8 @@ manual and the system prompt, and an append-only log records every run.
    `auto` when the seat refuses one; caps of 250 credits per page and 100 per queued page per run,
    `VERIFY_MAX_CREDITS` and `VERIFY_MAX_RUN_CREDITS`), `claude-code`, `api` or `off`.
    `VERIFY_MODEL`, `VERIFY_FALLBACK_MODELS`, `VERIFY_LIMIT` and the `verify_*` run inputs override
-   the defaults. A refused token stops the run with the reason in plain English in the run summary.
+   the defaults. The verifier stops starting sessions after `VERIFY_RUN_MINUTES` (60), so the run
+   always reaches lint, index and the commit; pages it did not reach are held or stay unchecked. A refused token stops the run with the reason in plain English in the run summary.
    Transcripts and verdicts are kept as a run artifact for 14 days.
 4. **Lint** validates every page against the schema, quarantines failures, and flags broken links,
    status drift, stale pages, pages awaiting correction, stale checks and everything held.
