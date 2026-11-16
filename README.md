@@ -23,7 +23,7 @@ manual and the system prompt, and an append-only log records every run.
 
 | Layer | Path | What it is |
 | --- | --- | --- |
-| Schema | `wiki/SCHEMA.md` | Page format, rating scales, voice and refresh rules. Also the compile system prompt. |
+| Schema | `wiki/SCHEMA.md` | The editorial standard: readers, evidence rules, research method, rating scales, voice and refresh rules. The writer's system prompt, and what the verifier checks against. |
 | Raw | `raw/roadmap/items/*.json` | Immutable snapshots of in-scope Microsoft 365 Roadmap items. |
 | Wiki | `wiki/features/*.md` | One briefing per feature, validated front matter plus eight fixed sections. |
 | | `wiki/concepts/*.md` | Background pages the briefings link to (Copilot Credits, Managed Environments, agent identity, data policies). |
