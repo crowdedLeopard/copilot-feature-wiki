@@ -53,6 +53,11 @@ async function githubIdToken() {
   return (await res.json()).value;
 }
 
+/** One claim from a JWT's payload, without verifying it: only used to explain a failed sign-in. */
+function jwtClaim(jwt, name) {
+  try { return JSON.parse(Buffer.from(String(jwt).split('.')[1], 'base64url').toString('utf8'))[name] ?? null; } catch { return null; }
+}
+
 async function graphToken() {
   const body = new URLSearchParams({ client_id: CLIENT, scope: 'https://graph.microsoft.com/.default', grant_type: 'client_credentials' });
   let how;
@@ -68,12 +73,15 @@ async function graphToken() {
   const json = await res.json().catch(() => ({}));
   if (!res.ok || !json.access_token) {
     const code = json.error || res.status;
+    // The subject GitHub put in its token is what the federated credential has to match. It is not a secret
+    // (owner, repository and branch, with GitHub's numeric ids on repositories that use the immutable format).
+    const presented = how.startsWith('federated') ? jwtClaim(body.get('client_assertion'), 'sub') : null;
     const hint = {
-      invalid_client: 'Entra did not accept the credential. For a federated credential, check that its subject is exactly repo:<owner>/<repo>:ref:refs/heads/main and the audience is api://AzureADTokenExchange. For a secret, check it has not expired.',
+      invalid_client: `Entra did not accept the credential. For a federated credential, its subject must be exactly what GitHub presented${presented ? ` (${presented})` : ' (repo:<owner>/<repo>:ref:refs/heads/main, or with @<id> after the owner and repository on newer repositories)'} and the audience api://AzureADTokenExchange. For a secret, check it has not expired.`,
       unauthorized_client: 'The app registration was not found in this tenant, or MC_CLIENT_ID is wrong.',
       invalid_request: 'The token request was malformed; check MC_TENANT_ID.',
     }[json.error] || '';
-    throw new Error(`Could not sign in to Microsoft Graph (${code}, via ${how}). ${hint} ${json.error_description ? `Entra said: ${String(json.error_description).split('\n')[0].slice(0, 300)}` : ''}`.trim());
+    throw new Error(`Could not sign in to Microsoft Graph (${code}, via ${how}). ${hint} ${json.error_description ? `Entra said: ${String(json.error_description).split('\n')[0].slice(0, 400)}` : ''}`.trim());
   }
   return { token: json.access_token, how };
 }
