@@ -30,7 +30,7 @@ manual and the system prompt, and an append-only log records every run.
 | | `wiki/digests/*.md` | One page per ISO week, regenerated daily. |
 | | `wiki/index.md`, `wiki/log.md`, `wiki/lint-report.md` | Catalogue, append-only run log, latest lint result. |
 | Data | `data/*.json` | Catalog, work queue, stats and lint output used by the site. |
-| Pipeline | `pipeline/*.mjs` | `ingest`, `compile` (API) or `compile-tasks` + `write-briefing` + `compile-finish` (Claude Code), `lint`, `index`, `digest`, `pdf`, `screenshots`. Shared briefing logic in `pipeline/lib/briefing.mjs`. |
+| Pipeline | `pipeline/*.mjs` | `ingest`; `compile-tasks` + `compile-copilot` (Copilot CLI, default) or the Claude Code action + `write-briefing` + `compile-finish`, or `compile` (API); `lint`, `index`, `digest`, `pdf`, `screenshots`. Shared briefing logic in `pipeline/lib/briefing.mjs`, Copilot CLI plumbing in `pipeline/lib/copilot.mjs`. |
 | Site | `src/`, `astro.config.mjs` | Astro static site. Design tokens in `src/styles/tokens.css`. |
 | Atlas | `src/lib/graph.ts`, `src/lib/layout.ts`, `src/scripts/atlas/` | The ledger drawn as a map of linked pages at `/atlas/`: every briefing, concept and shared tag, and the links between them. Built from the wiki at build time, so it follows the daily run. |
 | Taxonomy | `config/taxonomy.mjs` | Topics, product mapping, rating scales. Shared by the pipeline and the site. |
@@ -39,19 +39,25 @@ manual and the system prompt, and an append-only log records every run.
 
 1. **Ingest** downloads the Microsoft 365 Roadmap, keeps in-scope items, snapshots them to `raw/`,
    and queues items that are new, changed status or were edited by Microsoft.
-2. **Compile** has Claude write or rewrite a fixed number of briefings from the queue (12 by default).
-   Each run is shared equally across the five topics: refreshes of existing pages first, then one
-   item per topic in turn, most admin-relevant first, so a topic with a long queue such as Modern
-   Work never waits behind the others. Every briefing is grounded with the
-   Microsoft Learn MCP server and web search over Microsoft domains. The step runs one of two ways,
-   chosen by which repository secret exists (Settings → Secrets and variables → Actions):
-   - `CLAUDE_CODE_OAUTH_TOKEN` (preferred): runs Claude Code through the official GitHub Action on a
-     Claude Pro or Max subscription. Generate the token on your own machine with `claude setup-token`
-     and paste the `sk-ant-oat01-…` value into the secret. The agent follows
-     `pipeline/prompts/compile-agent.md`, and every page still goes through the same validator and
-     renderer (`pipeline/write-briefing.mjs`).
-   - `ANTHROPIC_API_KEY` (fallback): calls the API directly from `pipeline/compile.mjs`.
-   - Neither: the step is skipped and everything else still runs.
+2. **Compile** writes or rewrites a fixed number of briefings from the queue (24 per run, four runs
+   a day by default). Each run is shared equally across the five topics: refreshes of existing pages
+   first, then one item per topic in turn, most admin-relevant first, so a topic with a long queue
+   such as Modern Work never waits behind the others. Every briefing is grounded with the Microsoft
+   Learn MCP server and fetches from Microsoft domains, follows `pipeline/prompts/compile-agent.md`,
+   and goes through the same validator and renderer (`pipeline/write-briefing.mjs`) whichever
+   writer runs. The writer is chosen by the `COMPILE_WRITER` repository variable (Settings →
+   Secrets and variables → Actions → Variables), or per run by the `compile_writer` input:
+   - `copilot` (default): GitHub Copilot CLI on the repository owner's Copilot seat, one session per
+     briefing, billed in AI credits. No secret is needed: the job's token carries
+     `copilot-requests: write`. To bill a specific user instead, add a `COPILOT_GITHUB_TOKEN` secret
+     holding a fine-grained personal access token with the "Copilot Requests" permission. Model
+     `claude-opus-5.5` unless `COPILOT_MODEL` says otherwise; caps of 250 credits per briefing and
+     150 per briefing per run (`COMPILE_ITEM_MAX_CREDITS`, `COMPILE_MAX_CREDITS`), with the spend
+     recorded in `wiki/log.md` and the session transcripts kept as a run artifact for 14 days.
+   - `claude-code`: Claude Code through the official GitHub Action on a Claude Pro or Max
+     subscription (`CLAUDE_CODE_OAUTH_TOKEN` secret, from `claude setup-token`).
+   - `api`: the Anthropic API directly from `pipeline/compile.mjs` (`ANTHROPIC_API_KEY` secret).
+   - `none`: the step is skipped and everything else still runs.
 3. **Lint** validates every page against the schema, quarantines failures, and flags broken links,
    status drift and stale pages.
 4. **Index and digest** regenerate the catalogue, stats and this week's digest.
@@ -64,7 +70,8 @@ manual and the system prompt, and an append-only log records every run.
 npm install
 npm run dev              # Astro dev server
 npm run ingest           # refresh raw/ and data/ from the roadmap
-ANTHROPIC_API_KEY=... npm run compile   # write briefings (COMPILE_LIMIT, COMPILE_TOPIC=<topic id>, COMPILE_ONLY=<id,id>)
+ANTHROPIC_API_KEY=... npm run compile   # write briefings via the API (COMPILE_LIMIT, COMPILE_TOPIC=<topic id>, COMPILE_ONLY=<id,id>)
+npm run compile:copilot                 # same, via a signed-in Copilot CLI (`copilot login` first; COPILOT_MODEL, COMPILE_LIMIT)
 npm run lint:wiki && npm run index:wiki && npm run digest
 npm run build && npm run pdf            # site + dist/downloads/*.pdf
 npm run screenshots                     # screenshots/ for design review
