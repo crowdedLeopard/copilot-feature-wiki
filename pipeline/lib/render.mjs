@@ -58,6 +58,23 @@ export function renderBriefing(fm, sections) {
   return `${toFrontmatter(fm)}\n\n${body}\n`;
 }
 
+/**
+ * Render a concept page. Same controls table as a briefing, under the fixed headings the concept
+ * standard sets (wiki/SCHEMA.md, "Concept pages"), so every concept page reads the same way.
+ */
+export function renderConcept(fm, sections) {
+  const body = [
+    `## What it is`, sections.whatItIs.trim(),
+    `## Why it matters`, sections.whyItMatters.trim(),
+    `## Cost and licensing`, sections.costAndLicensing.trim(),
+    `## Risks and limits`, sections.risksAndLimits.trim(),
+    `## Governance controls`, CONTROLS_LEAD, renderControlsTable(fm.controls), sections.governanceControls.trim(),
+    `## What to check`, sections.whatToCheck.trim(),
+    `## Open questions`, sections.openQuestions.trim(),
+  ].filter((part) => part !== '').join('\n\n');
+  return `${toFrontmatter(fm)}\n\n${body}\n`;
+}
+
 /** Split a stored page body back into its sections (used when refreshing a page). */
 export function splitSections(body) {
   const out = {};

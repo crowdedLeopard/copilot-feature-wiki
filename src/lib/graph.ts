@@ -80,7 +80,7 @@ let memo: { key: string; atlas: AtlasData } | null = null;
 
 /** The atlas for the current content. Pages ask for it many times in one build, so it is computed once. */
 export function buildAtlas(features: Feature[], concepts: Concept[]): AtlasData {
-  const key = [...features, ...concepts].map((e) => `${e.data.slug}@${e.data.updated}:${e.data.related.join('+')}:${e.data.tags.join('+')}`).sort().join('|');
+  const key = [...features, ...concepts].map((e) => `${e.data.slug}@${e.data.updated}:${e.data.related.join('+')}:${e.data.tags.join('+')}:${('covers' in e.data ? e.data.covers : []).join('+')}`).sort().join('|');
   if (memo?.key !== key) memo = { key, atlas: compute(features, concepts) };
   return memo.atlas;
 }
@@ -131,8 +131,11 @@ function compute(features: Feature[], concepts: Concept[]): AtlasData {
     for (const slug of pg.related) link(pg.id, index.has(`f:${slug}`) ? `f:${slug}` : `c:${slug}`, EDGE.link);
     for (const m of pg.body.matchAll(BODY_LINK)) link(pg.id, `${m[1] === 'features' ? 'f' : 'c'}:${m[2]}`, EDGE.link);
   }
-  // A tag named after a concept is a link to that concept's page.
+  // A tag named after a concept is a link to that concept's page, and so is a tag the concept covers.
   for (const pg of pages) for (const tag of pg.tags) if (conceptSlugs.has(tag)) link(pg.id, `c:${tag}`, EDGE.link);
+  for (const c of concepts) for (const tag of c.data.covers) {
+    for (const pg of pages) if (pg.id !== `c:${c.data.slug}` && pg.tags.includes(tag)) link(pg.id, `c:${c.data.slug}`, EDGE.link);
+  }
   for (const pg of pages) for (const tag of pg.tags) if (!conceptSlugs.has(tag)) link(pg.id, `t:${tag}`, EDGE.tag);
   for (const [a, b] of edges) { nodes[a].n++; nodes[b].n++; }
 

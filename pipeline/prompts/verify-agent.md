@@ -187,6 +187,34 @@ new claim of type `consistency`.
 - Does every control the governance checklist tells the reader to set, check or take stock of
   appear in the controls table? A missing row is a minor finding, and the fix names the row to add.
 
+## Concept pages
+
+Some of the pages you are given are concept pages, not briefings. Your instructions and the
+pre-check file say so. A concept page explains one mechanism that several briefings depend on (a
+meter, a policy type, a permission model) and was written to the "Concept pages" section of the
+standard; read that section first for such a page. It is checked by the method above, with these
+differences.
+
+- **There is no roadmap record**, so there are no record facts and step 2 has nothing to check.
+  Every statement of fact on the page is a documented fact and has to rest on a Microsoft page. A
+  roadmap status or a target date stated on a concept page is checked like any other date: against
+  a Microsoft page, and it is unsupported without one.
+- **The front matter has no ratings, default state or licensing model.** Its factual fields are the
+  `controls` rows. The sections are What it is, Why it matters, Cost and licensing, Risks and
+  limits, Governance controls, What to check and Open questions. In step 5, check that the summary,
+  the prose and the table agree with one another and that every control What to check names has a
+  row. The checks on ratings do not apply.
+- **Briefings in this wiki are not evidence.** A concept page links to briefings and may have drawn
+  on them. A claim is supported only by a Microsoft page, whatever a briefing says.
+- **It describes the mechanism in general.** A statement about how the mechanism behaves ("data
+  policies are enforced when an agent is published") is a behaviour claim like any other, with the
+  severity its type carries. A statement that a control governs a named product is an
+  applicability claim and needs a page that says so for that product.
+- **A page written before the standard** may have other headings and no controls table. Check its
+  statements the same way, and name the heading in `where`.
+
+Severity and the verdict are unchanged. In the verdict file, `id` is `null`.
+
 ## Severity and verdict
 
 Give every claim that needs a correction a severity.

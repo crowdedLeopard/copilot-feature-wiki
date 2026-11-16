@@ -9,7 +9,7 @@
  */
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { featureFrontmatter, isAllowedSourceUrl } from './lib/schema.mjs';
+import { featureFrontmatter, conceptFrontmatter, isAllowedSourceUrl } from './lib/schema.mjs';
 import { loadPages, loadConcepts } from './lib/pages.mjs';
 import { RAW_DIR, WIKI_DIR, FEATURES_DIR, DATA_DIR, readJson, writeJson, appendLog, today } from './lib/util.mjs';
 import { LEGACY_DESK_TOPIC } from '../config/taxonomy.mjs';
@@ -37,7 +37,7 @@ async function main() {
   const heldSlugs = new Set(held.map((h) => h.slug));
   for (const h of held) {
     const r = h.report;
-    if (slugs.has(h.slug)) findings.errors.push(`_held/${h.slug}.md: the same slug is also in features/ (a page lives in one place only)`);
+    if (slugs.has(h.slug) || conceptSlugs.has(h.slug)) findings.errors.push(`_held/${h.slug}.md: the same slug is also in ${slugs.has(h.slug) ? 'features' : 'concepts'}/ (a page lives in one place only)`);
     const why = r?.hold?.reasons?.length ? r.hold.reasons.join('; ') : 'not yet checked by the verifier';
     findings.warnings.push(`_held/${h.slug}.md: held (${r?.hold?.reason || 'unverified'}${r?.hold?.since ? ` since ${r.hold.since}` : ''}${r?.attempts ? `, ${r.attempts} attempt${r.attempts > 1 ? 's' : ''}` : ''}): ${why}`);
   }
@@ -116,13 +116,44 @@ async function main() {
   try {
     for (const f of (await fs.readdir(REPORT_DIR)).filter((f) => f.endsWith('.json'))) {
       const slug = f.replace(/\.json$/, '');
-      if (!slugs.has(slug) && !heldSlugs.has(slug)) findings.info.push(`verification/${f}: report for a page that no longer exists`);
+      if (!slugs.has(slug) && !conceptSlugs.has(slug) && !heldSlugs.has(slug)) findings.info.push(`verification/${f}: report for a page that no longer exists`);
     }
   } catch { /* no reports yet */ }
+  // Concept pages: same front-matter validation, link checks and independent check as briefings.
   for (const c of concepts) {
-    const defined = defineTags(glossary, normaliseTags(c.data.tags || [], [], glossary));
+    const where = `concepts/${c.file}`;
+    if (c.error) { findings.errors.push(`${where}: YAML parse error: ${c.error}`); await quarantine(c, path.join(WIKI_DIR, 'concepts')); quarantined++; continue; }
+    const check = conceptFrontmatter.safeParse(c.data);
+    if (!check.success) {
+      findings.errors.push(`${where}: ${check.error.issues.map((i) => `${i.path.join('.')}: ${i.message}`).join('; ')}`);
+      await quarantine(c, path.join(WIKI_DIR, 'concepts')); quarantined++; continue;
+    }
+    const fm = check.data;
+    if (fm.slug !== c.slug) findings.warnings.push(`${where}: slug "${fm.slug}" does not match file name`);
+    if (slugs.has(c.slug)) findings.errors.push(`${where}: a briefing has the same slug (verification reports and held pages are keyed by slug)`);
+    const defined = defineTags(glossary, normaliseTags([...fm.tags, ...fm.covers], [], glossary));
     if (defined.stubs.length) glossaryChanged = true;
-    for (const t of c.data.tags || []) if (!glossary.tags[t]?.description) findings.warnings.push(`concepts/${c.file}: tag "${t}" has no description in wiki/tags.json yet`);
+    for (const t of [...fm.tags, ...fm.covers]) if (!glossary.tags[t]?.description) findings.warnings.push(`${where}: tag "${t}" has no description in wiki/tags.json yet`);
+    for (const s of fm.sources) if (!isAllowedSourceUrl(s.url)) findings.warnings.push(`${where}: source outside allowed domains: ${s.url}`);
+    for (const r of fm.related) {
+      if (heldSlugs.has(r)) findings.info.push(`${where}: related "${r}" is held and not published (the link is dropped from the page until it returns)`);
+      else if (!slugs.has(r) && !conceptSlugs.has(r)) findings.warnings.push(`${where}: related "${r}" does not exist`);
+    }
+    for (const m of c.body.matchAll(/\]\(\/(features|concepts)\/([a-z0-9-]+)\/?\)/g)) {
+      const ok = m[1] === 'features' ? slugs.has(m[2]) : conceptSlugs.has(m[2]);
+      if (!ok) findings.warnings.push(`${where}: body link to missing ${m[1]}/${m[2]}`);
+    }
+    if (fm.kind !== 'concept') findings.info.push(`${where}: written by hand before the concept standard (queued for a rewrite)`);
+    else if (!c.body.includes('<table class="controls">')) findings.warnings.push(`${where}: the Governance controls table is missing from the body`);
+    const v = fm.verification;
+    if (!v) { verification.unchecked++; findings.info.push(`${where}: not yet checked against Microsoft Learn (queued)`); }
+    else {
+      if (v.status === 'held') findings.errors.push(`${where}: front matter says held, but the page is in concepts/`);
+      else if (v.status === 'needs-correction') { verification.needsCorrection++; findings.warnings.push(`${where}: failed its check on ${v.date} (${v.contradicted} contradicted, ${v.unconfirmed} unconfirmed of ${v.claims} statements); live under grace with a notice, corrected version queued`); }
+      else if (v.status === 'verified-with-gaps') verification.gaps++;
+      else verification.verified++;
+      if (v.version !== fm.version) { verification.stale++; findings.warnings.push(`${where}: checked at version ${v.version}, page is now version ${fm.version} (re-check queued)`); }
+    }
   }
   if (glossaryChanged) await saveGlossary(glossary);
 
@@ -177,9 +208,9 @@ async function retagConcepts(concepts, glossary) {
   return out;
 }
 
-async function quarantine(page) {
+async function quarantine(page, dir = FEATURES_DIR) {
   await fs.mkdir(QUARANTINE, { recursive: true });
-  await fs.rename(path.join(FEATURES_DIR, page.file), path.join(QUARANTINE, `${today()}-${page.file}`));
+  await fs.rename(path.join(dir, page.file), path.join(QUARANTINE, `${today()}-${page.file}`));
 }
 
 main().catch((err) => { console.error(err); process.exit(1); });

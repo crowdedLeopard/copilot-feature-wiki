@@ -77,7 +77,7 @@ async function resolveEngine() {
 function taskPrompt(task, intro) {
   return `${intro}
 
-Check one briefing, with a fresh mind. Roadmap id: ${task.roadmapId ?? 'none'}. The page: ${task.page}. The roadmap record: ${task.raw ?? 'none'}.${task.writerOutput ? ` The writer's output with its evidence list: ${task.writerOutput}.` : ''} Pre-check file (deterministic findings to confirm, and the rows that must each have a claim): ${task.brief}. Run date: ${today()}.
+${task.kind === 'concept' ? `Check one concept page, with a fresh mind. A concept page has no roadmap record (see "Concept pages" in your instructions). The page: ${task.page}.` : `Check one briefing, with a fresh mind. Roadmap id: ${task.roadmapId ?? 'none'}. The page: ${task.page}. The roadmap record: ${task.raw ?? 'none'}.`}${task.writerOutput ? ` The writer's output with its evidence list: ${task.writerOutput}.` : ''} Pre-check file (deterministic findings to confirm, and the rows that must each have a claim): ${task.brief}. Run date: ${today()}.
 
 Write the verdict JSON to ${task.verdict} and write nothing else. Do not edit the page, the record or any other file. Do not run commands. The pipeline records the verdict after you finish.`;
 }

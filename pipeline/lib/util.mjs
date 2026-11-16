@@ -6,6 +6,7 @@ export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '
 export const RAW_DIR = path.join(ROOT, 'raw');
 export const WIKI_DIR = path.join(ROOT, 'wiki');
 export const FEATURES_DIR = path.join(WIKI_DIR, 'features');
+export const CONCEPTS_DIR = path.join(WIKI_DIR, 'concepts');
 export const DATA_DIR = path.join(ROOT, 'data');
 
 export const today = () => new Date().toISOString().slice(0, 10);

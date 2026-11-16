@@ -4,6 +4,7 @@ slug: "managed-environments"
 summary: "The Power Platform governance tier that unlocks sharing limits, maker guidance, usage insights and group-level rules for Copilot Studio and Power Platform environments, and the licensing condition attached to it."
 updated: "2026-11-13"
 tags: ["managed-environments","environment-groups","power-platform","copilot-studio","sharing-limits","governance","licensing"]
+covers: ["environment-groups","sharing-limits"]
 sources:
   - title: "Managed Environments overview"
     url: "https://learn.microsoft.com/power-platform/admin/managed-environment-overview"

@@ -1,22 +1,36 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { allConcepts } from '../../lib/data';
-import { conceptUrl, formatDate, tagUrl } from '../../lib/site';
+import { allConcepts, allFeatures, briefingsFor } from '../../lib/data';
+import { CONCEPTS, conceptUrl, formatDate, tagUrl, href } from '../../lib/site';
 import { tagLabel } from '../../lib/tags';
-const concepts = await allConcepts();
+const features = await allFeatures();
+// The pages most briefings depend on come first.
+const concepts = (await allConcepts())
+  .map((c) => ({ c, n: briefingsFor(c, features).length }))
+  .sort((a, b) => b.n - a.n || a.c.data.title.localeCompare(b.c.data.title));
+const explained = new Set(concepts.flatMap(({ c }) => briefingsFor(c, features).map((f) => f.data.slug))).size;
 ---
 
-<Base title="Concepts" description="Background pages that explain the mechanisms several briefings depend on: Copilot Credits, Managed Environments, agent identity and data policies." current="concepts">
+<Base title="Concepts" description="Background pages that explain the mechanisms several briefings depend on, each with its governance controls: the meters, policy types, admin centres and identities that Copilot and Power Platform changes rest on." current="concepts">
   <div class="wrap wrap--narrow">
     <div class="article-head" style="padding-bottom:1rem">
-      <div class="eyebrow"><span>Concepts</span><span class="sep"></span><span>{concepts.length} pages</span></div>
+      <div class="eyebrow"><span>Concepts</span><span class="sep"></span><span>{concepts.length} pages</span><span class="sep"></span><span>{explained} of {features.length} briefings link to one</span></div>
       <h1 class="display">Concepts</h1>
-      <p class="standfirst">The shared mechanisms behind the briefings. Each page explains one of them once, so individual briefings can stay short and link here.</p>
+      <p class="standfirst">The shared mechanisms behind the briefings. Each page explains one of them once, with where it is controlled, so individual briefings can stay short and link here.</p>
+      <p class="small muted" style="max-width:68ch">A page is added when {CONCEPTS.minBriefings} or more briefings come to depend on the same mechanism, and is checked against Microsoft Learn in the same way as a briefing. <a href={href('/about/#concepts')}>How concept pages are chosen</a>.</p>
     </div>
     <ul class="ledger" style="margin-top:1rem">
-      {concepts.map((c) => (
+      {concepts.map(({ c, n }) => (
         <li class="row">
-          <div class="row__action mono small muted">Updated {formatDate(c.data.updated)}</div>
+          <div class="row__action mono small muted">
+            <span title="Live briefings that depend on this page">{n} {n === 1 ? 'briefing' : 'briefings'}</span><br />
+            <span title="Last written or rewritten">{formatDate(c.data.updated)}</span><br />
+            {c.data.verification && c.data.verification.status !== 'needs-correction'
+              ? <span style="color:var(--accent)" title={`Checked against Microsoft Learn on ${formatDate(c.data.verification.date, { long: true })}`}>Checked</span>
+              : c.data.verification
+                ? <span style="color:var(--risk-high)" title="The independent check found statements to correct; a corrected version is being prepared">Correcting</span>
+                : <span title="This page has not yet had its independent check against Microsoft Learn">Not checked</span>}
+          </div>
           <div>
             <h3 class="row__title"><a href={conceptUrl(c.data.slug)}>{c.data.title}</a></h3>
             <p class="row__summary">{c.data.summary}</p>

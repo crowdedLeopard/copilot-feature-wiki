@@ -14,15 +14,19 @@
  *   - recordVerification() validate a verdict, write the report (wiki/verification/<slug>.json),
  *                         stamp the page's front matter, hold or release the page.
  *
- * Held pages live in wiki/_held/. The site builds wiki/features/ only, so a held page is never
- * published, and one that was live comes off the site until a rewrite passes.
+ * Held pages live in wiki/_held/. The site builds wiki/features/ and wiki/concepts/ only, so a held
+ * page is never published, and one that was live comes off the site until a rewrite passes.
+ *
+ * Concept pages (wiki/concepts/) go through the same check. A concept page says `kind: concept` in
+ * its front matter, so a held one finds its way home; it has no roadmap record, default state or
+ * licensing model, so those rows are not asked of it. Everything else is the same rule.
  */
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { createHash } from 'node:crypto';
 import { load as yamlLoad } from 'js-yaml';
-import { WIKI_DIR, FEATURES_DIR, DATA_DIR, readJson, writeJson, today, toFrontmatter, stripHtml } from './util.mjs';
-import { featureFrontmatter, isAllowedSourceUrl } from './schema.mjs';
+import { WIKI_DIR, FEATURES_DIR, CONCEPTS_DIR, DATA_DIR, readJson, writeJson, today, toFrontmatter, stripHtml } from './util.mjs';
+import { featureFrontmatter, conceptFrontmatter, isAllowedSourceUrl } from './schema.mjs';
 import { verdictSchema } from './verify-schema.mjs';
 
 export const HELD_DIR = path.join(WIKI_DIR, '_held');
@@ -46,10 +50,17 @@ const FINDINGS_OPEN = '<!-- verifier-findings';
 const FINDINGS_RE = /\n*<!-- verifier-findings[\s\S]*?-->\n*/g;
 
 // ---------------------------------------------------------------------------------------------
-// Pages: where a briefing is (published or held) and how to read and rewrite it.
+// Pages: where a briefing or concept page is (published or held) and how to read and rewrite it.
+
+/** 'concept' for a page in wiki/concepts or one that says so in its front matter; otherwise 'briefing'. */
+export function pageKind(data, where) {
+  return where === 'concepts' || data?.kind === 'concept' ? 'concept' : 'briefing';
+}
+const homeDir = (kind) => (kind === 'concept' ? CONCEPTS_DIR : FEATURES_DIR);
+const homeName = (kind) => (kind === 'concept' ? 'concepts' : 'features');
 
 export async function locatePage(slug) {
-  for (const [dir, where] of [[FEATURES_DIR, 'features'], [HELD_DIR, 'held']]) {
+  for (const [dir, where] of [[FEATURES_DIR, 'features'], [CONCEPTS_DIR, 'concepts'], [HELD_DIR, 'held']]) {
     const file = path.join(dir, `${slug}.md`);
     try { await fs.access(file); return { file, where }; } catch { /* next */ }
   }
@@ -76,7 +87,7 @@ export async function listHeld() {
     const slug = f.replace(/\.md$/, '');
     const { data } = await readPage(path.join(HELD_DIR, f));
     const report = await readReport(slug);
-    out.push({ slug, file: path.join(HELD_DIR, f), data, report });
+    out.push({ slug, file: path.join(HELD_DIR, f), data, report, kind: pageKind(data, 'held') });
   }
   return out;
 }
@@ -286,8 +297,10 @@ export function judge(claims) {
 /**
  * Coverage the recorder insists on, so a verdict cannot pass by checking only the easy statements:
  * every control row's documented sides, the default state and the licensing model each need a claim.
+ * A concept page has no default state or licensing model in its front matter, so only its control
+ * rows are asked for.
  */
-export function coverageGaps(claims, data) {
+export function coverageGaps(claims, data, kind = 'briefing') {
   const text = (c) => `${c.where} ${c.claim}`.toLowerCase();
   const mentions = (needle) => claims.some((c) => text(c).includes(needle.toLowerCase()));
   const missing = [];
@@ -302,6 +315,7 @@ export function coverageGaps(claims, data) {
       if (!mentions(`controls[${i}].api`) && !mentions(token)) missing.push(`controls[${i}].api (${c.governs}: ${token})`);
     }
   });
+  if (kind === 'concept') return missing;
   if (!claims.some((c) => c.type === 'default' || /default ?state|by default/.test(text(c)))) missing.push('the default state (type "default")');
   if (!claims.some((c) => c.type === 'licensing' || /licen[cs]/.test(text(c)))) missing.push('the licensing model (type "licensing")');
   return missing;
@@ -400,8 +414,9 @@ async function appendResult(entry) {
  */
 export async function recordVerification(slug, rawVerdict, { model = 'unknown', engine = 'manual', precheck: pc = null } = {}) {
   const loc = await locatePage(slug);
-  if (!loc) throw new Error(`No page found for "${slug}" in wiki/features or wiki/_held`);
+  if (!loc) throw new Error(`No page found for "${slug}" in wiki/features, wiki/concepts or wiki/_held`);
   const { data, body } = await readPage(loc.file);
+  const kind = pageKind(data, loc.where);
   if (rawVerdict?.slug && rawVerdict.slug !== slug) throw new Error(`Verdict is for "${rawVerdict.slug}", not "${slug}"`);
 
   const parsed = verdictSchema.safeParse({ ...rawVerdict, slug });
@@ -413,10 +428,10 @@ export async function recordVerification(slug, rawVerdict, { model = 'unknown', 
     await appendResult({ slug, ok: false, incomplete: true, error: 'verifier reported incomplete: ' + verdict.summary.slice(0, 300), model, engine });
     return { status: 'incomplete', counts: null, reasons: [verdict.summary], attempts: 0, file: loc.file, where: loc.where };
   }
-  if (verdict.claims.length < 6) throw new Error(`Only ${verdict.claims.length} claims; a briefing has far more statements than that. List every claim, supported ones included.`);
+  if (verdict.claims.length < 6) throw new Error(`Only ${verdict.claims.length} claims; a ${kind === 'concept' ? 'concept page' : 'briefing'} has far more statements than that. List every claim, supported ones included.`);
   const problems = evidenceProblems(verdict.claims);
   if (problems.length) throw new Error('Verdict evidence problems: ' + problems.join('; '));
-  const gaps = coverageGaps(verdict.claims, data);
+  const gaps = coverageGaps(verdict.claims, data, kind);
   if (gaps.length) throw new Error('Verdict does not cover: ' + gaps.join('; ') + '. Add a claim for each.');
 
   if (!pc) pc = await readJson(path.join(VERIFY_TASK_DIR, `${slug}.precheck.json`), null);
@@ -435,13 +450,14 @@ export async function recordVerification(slug, rawVerdict, { model = 'unknown', 
   const previous = await readReport(slug);
   const failedBefore = (previous?.status === 'held' && previous?.hold?.reason === 'failed') || previous?.status === 'needs-correction';
   // Grace for the back catalogue: a live page written before the check existed fails once in public, not into the hold.
-  const graced = status === 'held' && GRACE_EXISTING && loc.where === 'features' && !previous && (data.created || '9999') < STANDARD_DATE;
+  // (The four concept pages written by hand carry no created date; their updated date stands in for it.)
+  const graced = status === 'held' && GRACE_EXISTING && loc.where !== 'held' && !previous && (data.created || (kind === 'concept' && data.updated) || '9999') < STANDARD_DATE;
   if (graced) { status = 'needs-correction'; reasons.push('published before the check existed: kept live with a notice while a corrected version is prepared'); }
   const attempts = status === 'held' || status === 'needs-correction' ? (failedBefore ? (previous.attempts || 1) + 1 : 1) : 0;
   const parked = status === 'held' && attempts >= MAX_REVISIONS;
   const date = today();
   const report = {
-    slug, roadmapId: data.roadmapId ?? null, title: data.title, status, date, version: data.version || 1, model, engine, attempts,
+    slug, ...(kind === 'concept' ? { kind } : {}), roadmapId: data.roadmapId ?? null, title: data.title, status, date, version: data.version || 1, model, engine, attempts,
     verifierVerdict: verdict.verdict, notes,
     hold: status === 'held' ? { reason: parked ? 'parked' : 'failed', since: failedBefore ? (previous.hold?.since || previous.date || date) : date, reasons } : status === 'needs-correction' ? { reason: 'grace', since: date, reasons } : null,
     counts, summary: verdict.summary, claims,
@@ -455,29 +471,31 @@ export async function recordVerification(slug, rawVerdict, { model = 'unknown', 
     status, date, version: report.version, model, engine,
     claims: counts.claims, confirmed: counts.confirmed, unconfirmed: counts.unconfirmed, contradicted: counts.contradicted, attempts,
   };
-  const nextData = { ...data, verification };
-  const check = featureFrontmatter.safeParse(nextData);
+  const nextData = { ...data, ...(kind === 'concept' ? { kind } : {}), verification };
+  const check = (kind === 'concept' ? conceptFrontmatter : featureFrontmatter).safeParse(nextData);
   if (!check.success) throw new Error('Page front matter would be invalid: ' + check.error.issues.map((i) => `${i.path.join('.')} ${i.message}`).join('; '));
   const cleanBody = body.replace(FINDINGS_RE, '\n').replace(/\n{3,}/g, '\n\n').trimEnd() + '\n';
   const nextBody = cleanBody + findingsComment(report);
-  const target = status === 'held' ? path.join(HELD_DIR, `${slug}.md`) : path.join(FEATURES_DIR, `${slug}.md`);
+  const target = status === 'held' ? path.join(HELD_DIR, `${slug}.md`) : path.join(homeDir(kind), `${slug}.md`);
   await fs.mkdir(path.dirname(target), { recursive: true });
   await fs.writeFile(target, renderPage(nextData, nextBody));
   if (target !== loc.file) await fs.rm(loc.file, { force: true });
 
   await appendResult({ slug, ok: true, status, counts, reasons, model, engine, attempts, file: path.relative(process.cwd(), target) });
-  return { status, counts, reasons, attempts, file: target, where: status === 'held' ? 'held' : 'features' };
+  return { status, counts, reasons, attempts, file: target, where: status === 'held' ? 'held' : homeName(kind) };
 }
 
 /** Published pages that failed under grace and are waiting for their rewrite. */
 export async function listNeedingCorrection() {
-  let files = [];
-  try { files = (await fs.readdir(FEATURES_DIR)).filter((f) => f.endsWith('.md')).sort(); } catch { return []; }
   const out = [];
-  for (const f of files) {
-    const slug = f.replace(/\.md$/, '');
-    const { data } = await readPage(path.join(FEATURES_DIR, f));
-    if (data.verification?.status === 'needs-correction') out.push({ slug, file: path.join(FEATURES_DIR, f), data, report: await readReport(slug) });
+  for (const [dir, where] of [[FEATURES_DIR, 'features'], [CONCEPTS_DIR, 'concepts']]) {
+    let files = [];
+    try { files = (await fs.readdir(dir)).filter((f) => f.endsWith('.md')).sort(); } catch { continue; }
+    for (const f of files) {
+      const slug = f.replace(/\.md$/, '');
+      const { data } = await readPage(path.join(dir, f));
+      if (data.verification?.status === 'needs-correction') out.push({ slug, file: path.join(dir, f), data, report: await readReport(slug), kind: pageKind(data, where) });
+    }
   }
   return out;
 }
@@ -487,17 +505,18 @@ export async function holdUnverified(slug, { reason = 'unverified', note = 'Writ
   const loc = await locatePage(slug);
   if (!loc || loc.where === 'held') return null;
   const { data, body } = await readPage(loc.file);
+  const kind = pageKind(data, loc.where);
   const previous = await readReport(slug);
   const date = today();
   const report = {
-    slug, roadmapId: data.roadmapId ?? null, title: data.title, status: 'held', date, version: data.version || 1, model: 'none', engine: 'manual', attempts: previous?.attempts || 0,
+    slug, ...(kind === 'concept' ? { kind } : {}), roadmapId: data.roadmapId ?? null, title: data.title, status: 'held', date, version: data.version || 1, model: 'none', engine: 'manual', attempts: previous?.attempts || 0,
     hold: { reason, since: date, reasons: [note] }, counts: { claims: 0, confirmed: 0, unconfirmed: 0, contradicted: 0, blocker: 0, major: 0, minor: 0 },
     summary: note, claims: [], precheck: null,
     history: [...(previous?.history || []), ...(previous ? [{ date: previous.date, status: previous.status, version: previous.version, model: previous.model }] : [])].slice(-12),
   };
   await fs.mkdir(REPORT_DIR, { recursive: true });
   await writeJson(path.join(REPORT_DIR, `${slug}.json`), report);
-  const nextData = { ...data };
+  const nextData = { ...data, ...(kind === 'concept' ? { kind } : {}) }; // a held concept page must say what it is, to find its way home
   delete nextData.verification; // not checked at this version
   const target = path.join(HELD_DIR, `${slug}.md`);
   await fs.mkdir(HELD_DIR, { recursive: true });
@@ -510,7 +529,7 @@ export async function holdUnverified(slug, { reason = 'unverified', note = 'Writ
 export async function writeHeldIndex() {
   const held = await listHeld();
   const items = held.map((h) => ({
-    slug: h.slug, roadmapId: h.data.roadmapId ?? null, title: h.data.title, topic: h.data.topic,
+    slug: h.slug, ...(h.kind === 'concept' ? { kind: h.kind } : {}), roadmapId: h.data.roadmapId ?? null, title: h.data.title, topic: h.data.topic,
     reason: h.report?.hold?.reason || 'unverified', since: h.report?.hold?.since || h.report?.date || null,
     attempts: h.report?.attempts || 0, reasons: h.report?.hold?.reasons || [],
   }));

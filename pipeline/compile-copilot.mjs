@@ -50,6 +50,9 @@ const RESULTS_FILE = path.join(DATA_DIR, 'compile-results.json');
 const USAGE_FILE = path.join(DATA_DIR, 'compile-usage.json');
 const LAST_FILE = path.join(DATA_DIR, 'last-compile.json');
 const WRAPPER = await fs.readFile(path.join(ROOT, 'pipeline', 'prompts', 'compile-copilot-item.md'), 'utf8');
+// A concept task (kind "concept", see pipeline/lib/concepts.mjs) is the same kind of session with its own wrapper.
+const CONCEPT_WRAPPER = await fs.readFile(path.join(ROOT, 'pipeline', 'prompts', 'concept-copilot-item.md'), 'utf8');
+const isConcept = (t) => t.kind === 'concept';
 
 const ALLOW_TOOLS = [
   'write(data/compile-tasks/**)',   // the JSON output; write-briefing.mjs writes the page itself
@@ -156,9 +159,9 @@ async function pageWrittenThisRun(task) {
 
 async function runTask(task) {
   const output = path.join(TASK_DIR, `${task.id}.output.json`);
-  const prompt = WRAPPER
-    .replaceAll('{{id}}', String(task.id)).replaceAll('{{brief}}', task.brief)
-    .replaceAll('{{raw}}', task.raw).replaceAll('{{output}}', rel(output));
+  const prompt = (isConcept(task) ? CONCEPT_WRAPPER : WRAPPER)
+    .replaceAll('{{id}}', String(task.id)).replaceAll('{{slug}}', task.slug).replaceAll('{{brief}}', task.brief)
+    .replaceAll('{{raw}}', task.raw ?? '').replaceAll('{{output}}', rel(output));
   const opts = {
     prompt, model, maxCredits: ITEM_MAX_CREDITS, timeoutMs: ITEM_TIMEOUT_MS,
     usageFile: rel(path.join(TASK_DIR, `${task.id}.usage.json`)),
@@ -220,13 +223,17 @@ const perItem = items.length ? (items.reduce((s, i) => s + i.credits, 0)) / item
 for (const i of items) {
   const ok = okIds.has(i.id);
   const why = !ok ? (i.timedOut ? explain('timeout') : i.kind ? explain(i.kind, { model }) : (results.results.find((r) => r.id === i.id && !r.ok)?.error ? 'the page failed validation' : 'the session ended without a page')) : '';
-  note(`${ok ? '✓' : '✗'} ${i.id} ${i.title} (${fmt(i.credits)} credits, ${secs(i.durationMs)}${i.attempts > 1 ? `, ${i.attempts} attempts` : ''}${why ? `; ${why}` : ''})`);
+  const declined = results.results.some((r) => r.id === i.id && r.declined);
+  note(`${ok ? '✓' : '✗'} ${i.id} ${i.title}${declined ? ' (declined: not a mechanism that needs a page)' : ''} (${fmt(i.credits)} credits, ${secs(i.durationMs)}${i.attempts > 1 ? `, ${i.attempts} attempts` : ''}${why ? `; ${why}` : ''})`);
 }
 if (stoppedForBudget) note(`Stopped at the ${fmt(BUDGET)}-credit budget for this run with ${queue.length} briefing(s) not started; they stay queued.`);
 
 const status = written ? 'ok' : 'nothing-written';
+const conceptCount = tasks.filter(isConcept).length;
+const conceptsDone = tasks.filter((t) => isConcept(t) && okIds.has(t.id)).length;
+const conceptNote = conceptCount ? ` ${conceptsDone} of the ${conceptCount} concept page task${conceptCount > 1 ? 's' : ''} in the run ${conceptsDone === 1 ? 'is' : 'are'} included in that count.` : '';
 const headline = written
-  ? `Wrote ${written} of ${tasks.length} briefings with ${model} for ${fmt(spent)} AI credits (${fmt(perItem)} per briefing).${written < tasks.length ? ' The rest stay queued for the next run.' : ''}`
+  ? `Wrote ${written} of ${tasks.length} briefings with ${model} for ${fmt(spent)} AI credits (${fmt(perItem)} per briefing).${conceptNote}${written < tasks.length ? ' The rest stay queued for the next run.' : ''}`
   : `Ran ${items.length} session(s) with ${model} but no briefing passed validation; ${fmt(spent)} AI credits were spent and the items stay queued.`;
 await finish({
   status, headline, written, attempted: tasks.length, credits: spent, model,
