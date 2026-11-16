@@ -87,6 +87,9 @@ correction. The comment lists each claim that failed and the fix.
 
 - Apply every fix. Where a fix removes a claim, remove it, or replace it with "Not yet documented"
   or "Not yet published", and take out anything that rested on it.
+- A fix that asks for more detail (a rate for another product, a fuller list of plans) can also be
+  met by taking out the statement it corrects, when that detail belongs on another page. Prefer
+  that to making the page longer, and link to the page that holds the detail.
 - Where a fix replaces a claim, read the replacement on the page it cites before you write it,
   write only the part you read, and give it an `evidence` entry.
 - If you re-open the source and it plainly states a claim the verifier could not find, keep the
