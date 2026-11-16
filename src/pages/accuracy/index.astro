@@ -1,0 +1,153 @@
+---
+/**
+ * Accuracy: the state of every live briefing's independent check, what is held offline and why, and the Microsoft
+ * pages the daily source watch keeps an eye on. Built from the content collections, data/held.json, data/sources.json
+ * and data/stats.json; no model runs here. The rule it describes is VERIFICATION in config/taxonomy.mjs.
+ */
+import Base from '../../layouts/Base.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import { allFeatures, allConcepts, held, stats, sources, changedSourcesFor } from '../../lib/data';
+import { CHECK_LABEL } from '../../lib/check';
+import { TOPIC_BY_ID, VERIFICATION, href, featureUrl, conceptUrl, formatDate } from '../../lib/site';
+
+const features = (await allFeatures()).sort((a, b) => a.data.title.localeCompare(b.data.title));
+const concepts = await allConcepts();
+const v = stats.verification ?? { checked: 0, needsCorrection: 0, unchecked: 0, held: held.count };
+const recheckDays = v.recheckDays ?? VERIFICATION.recheckDays;
+const topicLabel = (id: string) => (TOPIC_BY_ID as Record<string, { label: string }>)[id]?.label ?? id;
+const plusDays = (iso: string, days: number) => new Date(new Date(iso).getTime() + days * 86400000).toISOString().slice(0, 10);
+const today = new Date().toISOString().slice(0, 10);
+
+type Row = { slug: string; title: string; topic: string; state: string; stateLabel: string; checked: string | null; model: string | null; confirmed: number | null; claims: number | null; contradicted: number | null; next: string; nextClass: string; url: string };
+const stateWord: Record<string, string> = { verified: 'Passed', 'verified-with-gaps': 'Passed, gaps noted', 'needs-correction': 'Awaiting correction' };
+function nextCheck(d: { verification?: any; version: number; slug: string }): { text: string; cls: string } {
+  const s = d.verification;
+  if (!s) return { text: 'Queued: first check', cls: 'due' };
+  if (s.version !== d.version) return { text: 'Queued: text changed', cls: 'due' };
+  const changed = changedSourcesFor(d.slug, s.date);
+  if (changed.length) return { text: `Queued: ${changed.length === 1 ? 'a cited Microsoft page' : `${changed.length} cited Microsoft pages`} changed`, cls: 'due' };
+  const due = plusDays(s.date, recheckDays);
+  return due <= today ? { text: 'Queued: routine re-check', cls: 'due' } : { text: `By ${formatDate(due)}`, cls: '' };
+}
+const rows: Row[] = features.map((f) => {
+  const d = f.data;
+  const s = d.verification;
+  const n = nextCheck({ verification: s, version: d.version, slug: d.slug });
+  return {
+    slug: d.slug, title: d.title, topic: d.topic, url: featureUrl(d.slug),
+    state: s?.status ?? 'none', stateLabel: s ? stateWord[s.status] ?? s.status : 'Not yet checked',
+    checked: s?.date ?? null, model: s?.model ?? null, confirmed: s?.confirmed ?? null, claims: s?.claims ?? null, contradicted: s?.contradicted ?? null,
+    next: n.text, nextClass: n.cls,
+  };
+});
+const order: Record<string, number> = { 'needs-correction': 0, none: 1, 'verified-with-gaps': 2, verified: 3 };
+rows.sort((a, b) => (order[a.state] ?? 9) - (order[b.state] ?? 9) || a.title.localeCompare(b.title));
+const dueNow = rows.filter((r) => r.nextClass === 'due' && r.state !== 'none').length;
+const heldReason: Record<string, string> = { failed: 'Failed its check; a corrected version is being written', unverified: 'New; waiting for its first check', parked: 'Failed three checks; waiting for a person' };
+const heldRows = [...held.items].sort((a, b) => (a.reason > b.reason ? 1 : a.reason < b.reason ? -1 : a.title.localeCompare(b.title)));
+const watched = Object.entries(sources.sources);
+const recentlyChanged = watched.filter(([, s]) => s.changedAt).sort((a, b) => (b[1].changedAt! > a[1].changedAt! ? 1 : -1)).slice(0, 25);
+const unreachable = watched.filter(([, s]) => s.error).length;
+const conceptRows = concepts.map((c) => ({ slug: c.data.slug, title: c.data.title, s: c.data.verification ?? null, url: conceptUrl(c.data.slug) }));
+---
+<Base title="Accuracy" description="How every briefing has fared against Microsoft's documentation: checked, awaiting correction, not yet checked, or held offline, and when each is checked next." current="accuracy">
+  <div class="wrap">
+    <div class="article-head" style="padding-bottom:1rem">
+      <div class="eyebrow"><span>Accuracy</span><span class="sep"></span><span>As of {formatDate(stats.generated)}</span></div>
+      <h1 class="display">Is it correct?</h1>
+      <p class="standfirst">Every briefing is checked by a second model, in a fresh session, statement by statement against the roadmap entry and Microsoft Learn before it is published, and again whenever its text changes, whenever a Microsoft page it cites changes, and in any case every {recheckDays} days. A page that fails is taken offline until it is corrected. This page shows where every briefing stands.</p>
+      <div class="stats" style="margin-top:1.5rem">
+        <div class="stat"><b>{features.length}</b><span>live briefings</span></div>
+        <div class="stat"><b>{v.checked}</b><span>passed the check</span></div>
+        <div class="stat"><b>{v.needsCorrection}</b><span>awaiting correction</span></div>
+        <div class="stat"><b>{v.unchecked}</b><span>not yet checked</span></div>
+        <div class="stat"><b>{held.count}</b><span>held offline</span></div>
+        <div class="stat"><b>{v.due ?? dueNow}</b><span>re-check due now</span></div>
+        <div class="stat"><b>{watched.length.toLocaleString('en-GB')}</b><span>Microsoft pages watched</span></div>
+      </div>
+    </div>
+
+    <SectionHead title="How a briefing is checked" id="how" />
+    <p>The checker did not write the page and does not trust it. It lists every statement the page makes, admin paths, commands, licences, prices, dates, default states and behaviour, finds each one in Microsoft's documentation and quotes what it found. A statement the documentation contradicts is a blocker; one blocker, or three lesser findings, fails the page. A failed page is held offline and its findings go to the writer for a corrected version, which is checked again. Each check is written into the page's change log, and the full report is at the foot of every briefing under "How this briefing was checked".</p>
+    <p class="small muted">Pages published before the check existed (16 November 2026) stay online with an "awaiting correction" notice after their first failure while a corrected version is prepared; everything written since is checked before it appears. {sources.generated ? `The source watch last re-read the cited Microsoft pages on ${formatDate(sources.generated)}${unreachable ? `; ${unreachable} could not be reached` : ''}.` : 'The source watch has not run yet.'}</p>
+
+    <SectionHead title={`Every live briefing (${rows.length})`} id="briefings" />
+    <div class="table-scroll">
+      <table class="accuracy">
+        <thead><tr><th>Briefing</th><th>Topic</th><th>Check</th><th>Checked</th><th>Confirmed</th><th>Next check</th></tr></thead>
+        <tbody>
+          {rows.map((r) => (
+            <tr class={`state--${r.state}`}>
+              <td><a href={r.url}>{r.title}</a></td>
+              <td class="muted">{topicLabel(r.topic)}</td>
+              <td><span class={`check check--${r.state}`} title={CHECK_LABEL[r.state] ?? ''}>{r.stateLabel}</span></td>
+              <td class="mono">{r.checked ? <>{formatDate(r.checked)}<span class="muted"> · {r.model}</span></> : '—'}</td>
+              <td class="mono">{r.claims != null ? <>{r.confirmed} / {r.claims}{r.contradicted ? <span class="row__flag"> · {r.contradicted} contradicted</span> : null}</> : '—'}</td>
+              <td class={`mono ${r.nextClass}`}>{r.next}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <SectionHead title={`Held offline (${held.count})`} id="held" />
+    {held.count === 0 ? <p class="muted">Nothing is held.</p> : (
+      <div class="table-scroll">
+        <table class="accuracy">
+          <thead><tr><th>Briefing</th><th>Topic</th><th>Why</th><th>Since</th><th>Checks failed</th></tr></thead>
+          <tbody>
+            {heldRows.map((h) => (
+              <tr>
+                <td>{h.title}</td>
+                <td class="muted">{topicLabel(h.topic)}</td>
+                <td>{heldReason[h.reason] ?? h.reason}{h.reasons?.length ? <span class="muted"> · {h.reasons[0]}</span> : null}</td>
+                <td class="mono">{formatDate(h.since)}</td>
+                <td class="mono">{h.reason === 'unverified' ? '—' : h.attempts ?? 1}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    )}
+    <p class="small muted">A held page keeps its address and comes back when a corrected version passes. Nothing is deleted.</p>
+
+    <SectionHead title={`Concept pages (${conceptRows.length})`} id="concepts" />
+    <ul class="plain">
+      {conceptRows.map((c) => <li><a href={c.url}>{c.title}</a> <span class={`check check--${c.s?.status ?? 'none'}`}>{c.s ? stateWord[c.s.status] ?? c.s.status : 'Not yet checked'}</span>{c.s && <span class="mono muted"> · {formatDate(c.s.date)}</span>}</li>)}
+    </ul>
+
+    <SectionHead title="Microsoft pages watched" id="sources" />
+    <p>{watched.length ? `${watched.length.toLocaleString('en-GB')} pages on learn.microsoft.com are cited by the live briefings. Each is re-read daily; when Microsoft's own date on a page moves, every briefing that cites it is queued for a new check.` : 'The daily source watch has not recorded any pages yet; it runs with the next daily run.'}</p>
+    {recentlyChanged.length > 0 && (
+      <div class="table-scroll">
+        <table class="accuracy">
+          <thead><tr><th>Page</th><th>Changed</th><th>Microsoft's date</th><th>Briefings re-checked</th></tr></thead>
+          <tbody>
+            {recentlyChanged.map(([url, s]) => (
+              <tr>
+                <td><a href={url} rel="noopener">{url.replace('https://learn.microsoft.com/', '')}</a></td>
+                <td class="mono">{formatDate(s.changedAt!)}</td>
+                <td class="mono">{s.msDate ?? '—'}{s.previous?.msDate ? <span class="muted"> (was {s.previous.msDate})</span> : null}</td>
+                <td>{s.pages.map((p) => <a href={featureUrl(p)} style="margin-right:.6em">{features.find((f) => f.data.slug === p)?.data.title ?? p}</a>)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    )}
+  </div>
+</Base>
+
+<style>
+  .table-scroll { overflow-x: auto; margin: 0 -16px; padding: 0 16px; }
+  table.accuracy th, table.accuracy td { text-align: left; padding: 0.55rem 0.75rem 0.55rem 0; border-bottom: 1px solid var(--rule-2); vertical-align: top; }
+  table.accuracy th { font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); font-weight: 500; }
+  table.accuracy td.mono { font-size: 0.82rem; white-space: nowrap; }
+  .check { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.02em; white-space: nowrap; }
+  .check--verified, .check--verified-with-gaps { color: var(--accent); }
+  .check--needs-correction { color: var(--risk-high); font-weight: 600; }
+  .check--none, .check--held { color: var(--ink-3); }
+  .due { color: var(--ink-2); font-style: italic; }
+  ul.plain { list-style: none; margin: 0; padding: 0; }
+  ul.plain li { padding: 0.4rem 0; border-bottom: 1px solid var(--rule-2); }
+</style>

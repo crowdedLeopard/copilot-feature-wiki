@@ -11,7 +11,7 @@ import { allFeatures, allFeaturesIncludingArchived, allConcepts, lifecycle, revi
 import { CHECK_LABEL } from '../../lib/check';
 import { buildAtlas } from '../../lib/graph';
 import '../../styles/briefing.css';
-import { SITE, TOPIC_BY_ID, SOURCE_KIND, LIFECYCLE, href, topicUrl, tagUrl, featureUrl, conceptUrl, noticeUrl, formatDate, roadmapUrl, extractRationale, youtubeSearchUrl, learnSearchUrl } from '../../lib/site';
+import { SITE, TOPIC_BY_ID, SOURCE_KIND, LIFECYCLE, VERIFICATION, href, topicUrl, tagUrl, featureUrl, conceptUrl, noticeUrl, formatDate, roadmapUrl, extractRationale, youtubeSearchUrl, learnSearchUrl } from '../../lib/site';
 import { tagLabel } from '../../lib/tags';
 
 export async function getStaticPaths() {
@@ -174,8 +174,8 @@ const needsCorrection = v?.status === 'needs-correction';
           {d.roadmapModified && <li><time datetime={d.roadmapModified}>{formatDate(d.roadmapModified)}</time><span class="muted">Roadmap entry last modified by Microsoft</span></li>}
         </ul>
         <p class="small muted" style="margin-top:1.2rem">
-          Version {d.version} · created {formatDate(d.created)} · confidence {d.confidence}. This briefing was written from the sources above{v && v.status !== 'needs-correction' ? `, checked independently against Microsoft Learn on ${formatDate(v.date)},` : ''}. It is rewritten when the roadmap entry changes and re-checked after {LIFECYCLE.reviewAfterDays.default} days without a change ({LIFECYCLE.reviewAfterDays.launched} once launched). {d.archived ? 'It is archived and will not be refreshed unless the item returns to the roadmap.' : 'If Microsoft cancels or withdraws the item, the page moves to the archive rather than being deleted.'}
-          Spotted an error? <a href={editUrl} rel="noopener">Propose a change on GitHub</a>.
+          Version {d.version} · created {formatDate(d.created)} · confidence {d.confidence}. This briefing was written from the sources above{v && v.status !== 'needs-correction' ? ` and checked independently against Microsoft Learn on ${formatDate(v.date)}` : ''}. It is rewritten when the roadmap entry changes, and checked again whenever its text changes, whenever a Microsoft page it cites changes, and in any case every {VERIFICATION.recheckDays} days (<a href={href('/accuracy/')}>Accuracy</a> shows every page's state). {d.archived ? 'It is archived and will not be refreshed unless the item returns to the roadmap.' : 'If Microsoft cancels or withdraws the item, the page moves to the archive rather than being deleted.'}
+          {' '}Spotted an error? <a href={editUrl} rel="noopener">Propose a change on GitHub</a>.
         </p>
       </div>
 

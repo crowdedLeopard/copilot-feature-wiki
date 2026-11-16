@@ -4,6 +4,7 @@ import statsJson from '../../data/stats.json';
 import heldJson from '../../data/held.json';
 import lifecycleJson from '../../data/lifecycle.json';
 import messageIndexJson from '../../data/message-center.json';
+import sourcesJson from '../../data/sources.json';
 import { compareByAction, TOPICS, LIFECYCLE } from './site';
 
 export type Feature = CollectionEntry<'features'>;
@@ -93,9 +94,17 @@ export interface CatalogItem {
 export const catalog = (catalogJson as { generated: string; count: number; items: CatalogItem[] });
 export const stats = statsJson as {
   generated: string; briefings: number; archived?: number; concepts: number; tracked: number; byTopic: Record<string, number>; actNow: number; updatedThisWeek: number;
-  verification?: { checked: number; needsCorrection: number; unchecked: number; held: number };
+  verification?: { checked: number; needsCorrection: number; unchecked: number; held: number; due?: number; recheckDays?: number; sourcesWatched?: number; sourcesChecked?: string | null };
   messageCenter?: { posts: number; actBy: number; withheld: number; linked: number };
 };
+/** The daily source watch (pipeline/watch-sources.mjs): every Microsoft page a live briefing cites, when it was last read and when it last changed. */
+export interface WatchedSource { msDate?: string | null; hash?: string | null; status?: number; checkedAt?: string; changedAt?: string; changes?: number; firstSeen?: string; pages: string[]; previous?: { msDate?: string | null; hash?: string | null; seenAt?: string }; error?: string }
+export const sources = sourcesJson as { generated: string | null; sources: Record<string, WatchedSource> };
+/** Sources a briefing cites that changed after its last check. */
+export function changedSourcesFor(slug: string, since: string | null | undefined) {
+  return Object.entries(sources.sources).filter(([, s]) => s.changedAt && (!since || s.changedAt > since) && s.pages.includes(slug)).map(([url, s]) => ({ url, ...s }));
+}
+
 /** When each briefed roadmap item was last seen in the feed, and which are currently missing (written by ingest). */
 export const lifecycle = lifecycleJson as { generated: string | null; graceDays: number; seen: Record<string, string>; missing: Record<string, { lastSeen: string | null; missingSince: string }> };
 

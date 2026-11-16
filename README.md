@@ -115,7 +115,12 @@ manual and the system prompt, and an append-only log records every run.
    real run), `claude-code`, `api` or `off`. `VERIFY_MODEL`, `VERIFY_FALLBACK_MODELS`,
    `VERIFY_LIMIT` (24 further pages a run, on top of everything written in it) and the `verify_*`
    run inputs override the defaults; a full check of every page is one manual run with
-   `compile_limit` 0, `verify_only` all and a larger `verify_max_run_credits`. Checks run `VERIFY_PARALLEL`
+   `compile_limit` 0, `verify_only` all and a larger `verify_max_run_credits`. Checking is
+   continuous: a page is checked again whenever its text changes (the stamp carries a hash of what
+   was checked), whenever a Microsoft page it cites changes (a daily source watch re-reads every
+   cited `learn.microsoft.com` page, no model, `SOURCE_WATCH=off` skips it), and in any case every
+   7 days (`VERIFICATION.recheckDays` in `config/taxonomy.mjs`). Every check is written into the
+   page's change log, and the site's Accuracy page lists every page's state and next check. Checks run `VERIFY_PARALLEL`
    (3) at a time, and the verifier stops starting sessions after `VERIFY_RUN_MINUTES` (75), so the
    run always reaches lint, index and the commit; pages it did not reach are held or stay unchecked.
    A refused token stops the run with the reason in plain English in the run summary.

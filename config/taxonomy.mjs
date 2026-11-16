@@ -71,6 +71,16 @@ export const LIFECYCLE = {
   reviewAfterDays: { default: 120, launched: 180 },
 };
 
+// The independent check (pipeline/lib/verify.mjs, verify-tasks.mjs, watch-sources.mjs, the Accuracy page). A page
+// is re-checked when its own text changes, when a Microsoft page it cites changes (the daily source watch), and in
+// any case once its last check is older than recheckDays. Chris, 16 Nov 2026: "everything completely factually
+// correct and continuously verified".
+export const VERIFICATION = {
+  recheckDays: 7,
+  // Hosts whose pages the daily source watch re-reads for changes.
+  watchedHosts: ['learn.microsoft.com'],
+};
+
 // Concept pages (wiki/concepts/) each explain one mechanism that several briefings depend on. The
 // daily run offers a tag as a concept once enough live briefings carry it and no concept page covers
 // it yet, and spends a few of each run's writer sessions on them. Used by pipeline/lib/concepts.mjs.

@@ -29,6 +29,7 @@ import { load as yamlLoad } from 'js-yaml';
 import { ROOT, WIKI_DIR, FEATURES_DIR, CONCEPTS_DIR, DATA_DIR, readJson, writeJson, today, toFrontmatter, stripHtml } from './util.mjs';
 import { featureFrontmatter, conceptFrontmatter, isAllowedSourceUrl } from './schema.mjs';
 import { verdictSchema, CLAIM_TYPES } from './verify-schema.mjs';
+import { VERIFICATION } from '../../config/taxonomy.mjs';
 
 export const HELD_DIR = path.join(WIKI_DIR, '_held');
 export const REPORT_DIR = path.join(WIKI_DIR, 'verification');
@@ -45,7 +46,7 @@ export const MAX_REVISIONS = Number(process.env.VERIFY_MAX_REVISIONS || 3);
 export const STANDARD_DATE = '2026-11-16';
 export const GRACE_EXISTING = (process.env.VERIFY_GRACE_EXISTING ?? '1') !== '0';
 /** A verified page is checked again after this many days even if nothing changed. */
-export const MAX_AGE_DAYS = Number(process.env.VERIFY_MAX_AGE_DAYS || 90);
+export const MAX_AGE_DAYS = Number(process.env.VERIFY_MAX_AGE_DAYS || VERIFICATION.recheckDays || 90);
 
 const FINDINGS_OPEN = '<!-- verifier-findings';
 const FINDINGS_RE = /\n*<!-- verifier-findings[\s\S]*?-->\n*/g;
@@ -552,14 +553,20 @@ export async function recordVerification(slug, rawVerdict, { model = 'unknown', 
   await fs.mkdir(REPORT_DIR, { recursive: true });
   await writeJson(path.join(REPORT_DIR, `${slug}.json`), report);
 
+  const cleanBody = body.replace(FINDINGS_RE, '\n').replace(/\n{3,}/g, '\n\n').trimEnd() + '\n';
   const verification = {
     status, date, version: report.version, model, engine,
     claims: counts.claims, confirmed: counts.confirmed, unconfirmed: counts.unconfirmed, contradicted: counts.contradicted, attempts,
+    hash: pageHash(data, cleanBody),
   };
-  const nextData = { ...data, ...(kind === 'concept' ? { kind } : {}), verification };
+  // Every check is a line in the page's change log, beside the writer's own notes, so the reader can see what
+  // changed, when, and what the check made of it. The same note is not written twice.
+  const note = checkNote(status, counts, model);
+  const changes = [...(data.changes || [])];
+  if (!changes.some((c) => c.date === date && c.note === note)) changes.push({ date, note });
+  const nextData = { ...data, ...(kind === 'concept' ? { kind } : {}), changes, verification };
   const check = (kind === 'concept' ? conceptFrontmatter : featureFrontmatter).safeParse(nextData);
   if (!check.success) throw new Error('Page front matter would be invalid: ' + check.error.issues.map((i) => `${i.path.join('.')} ${i.message}`).join('; '));
-  const cleanBody = body.replace(FINDINGS_RE, '\n').replace(/\n{3,}/g, '\n\n').trimEnd() + '\n';
   const nextBody = cleanBody + findingsComment(report);
   const target = status === 'held' ? path.join(HELD_DIR, `${slug}.md`) : path.join(homeDir(kind), `${slug}.md`);
   await fs.mkdir(path.dirname(target), { recursive: true });
@@ -626,10 +633,37 @@ export async function writeHeldIndex() {
 }
 
 /** Is this page due a check? Never checked, edited since its last check, or checked too long ago. */
-export function verificationDue(data, now = Date.now()) {
+/**
+ * Why a live page needs the verifier, or null. In order: never checked; its text changed since the check (a new
+ * version, or any edit: the stamp carries a hash of what was checked); a Microsoft page it cites changed after the
+ * check (the daily source watch, passed in as sourceChangedAt); or the check is older than MAX_AGE_DAYS.
+ */
+export function verificationDue(data, now = Date.now(), { body = null, sourceChangedAt = null } = {}) {
   const v = data.verification;
   if (!v) return 'never-checked';
   if (v.version !== (data.version || 1)) return 'changed-since-check';
+  if (body != null && v.hash && pageHash(data, body) !== v.hash) return 'changed-since-check';
+  if (sourceChangedAt && sourceChangedAt > v.date) return 'source-changed';
   if ((now - new Date(v.date).getTime()) / 86400000 > MAX_AGE_DAYS) return 'check-expired';
   return null;
+}
+
+/** Front-matter keys that are not the page's content: the check's own stamp, its log, and dates the pipeline sets. */
+const NOT_CONTENT = new Set(['verification', 'changes', 'updated', 'version']);
+const stable = (value) => Array.isArray(value) ? value.map(stable) : value && typeof value === 'object' ? Object.fromEntries(Object.keys(value).sort().map((k) => [k, stable(value[k])])) : value;
+
+/** A fingerprint of what a reader sees: the front matter minus the stamp and the log, and the body minus the findings comment. */
+export function pageHash(data, body = '') {
+  const content = stable(Object.fromEntries(Object.entries(data || {}).filter(([k]) => !NOT_CONTENT.has(k))));
+  const text = String(body).replace(FINDINGS_RE, '\n').replace(/\s+/g, ' ').trim();
+  return createHash('sha256').update(JSON.stringify(content)).update('\n').update(text).digest('hex').slice(0, 32);
+}
+
+/** The change-log line a check leaves on the page, so the reader sees every check beside every rewrite. */
+export function checkNote(status, counts, model) {
+  const what = status === 'verified' ? `passed: all ${counts.claims} statements confirmed`
+    : status === 'verified-with-gaps' ? `passed with ${counts.unconfirmed} of ${counts.claims} statements not yet confirmed`
+    : status === 'needs-correction' ? `corrections needed: ${counts.contradicted} of ${counts.claims} statements contradicted, ${counts.unconfirmed} unconfirmed; kept online with a notice`
+    : `held: ${counts.contradicted} of ${counts.claims} statements contradicted, ${counts.unconfirmed} unconfirmed; taken offline until corrected`;
+  return `Checked against Microsoft Learn by ${model}: ${what}`.slice(0, 300);
 }

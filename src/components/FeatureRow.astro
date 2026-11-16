@@ -46,7 +46,11 @@ const attrs = filterable
       {!compact && <Rating kind="impact" value={d.impact} />}
       <span class="mono">{d.status === 'launched' ? 'Launched' : `Target ${shortRoadmapDate(d.targetDate)}`}</span>
       <span class="mono">Updated {formatDate(d.updated)}</span>
-      {d.verification?.status === 'needs-correction' && <span class="mono row__flag" title="An independent check against Microsoft Learn could not confirm part of this page. It stays online with a notice while a corrected version is prepared.">Awaiting correction</span>}
+      {d.verification?.status === 'needs-correction'
+        ? <span class="mono row__flag" title="An independent check against Microsoft Learn could not confirm part of this page. It stays online with a notice while a corrected version is prepared.">Awaiting correction</span>
+        : d.verification
+          ? <span class="mono row__check" title={`Checked independently against Microsoft Learn on ${formatDate(d.verification.date, { long: true })}: ${d.verification.confirmed} of ${d.verification.claims} statements confirmed.`}>Checked {formatDate(d.verification.date)}</span>
+          : <span class="mono row__unchecked" title="This page has not yet had its independent check against Microsoft Learn.">Not yet checked</span>}
     </div>
   </div>
 </li>

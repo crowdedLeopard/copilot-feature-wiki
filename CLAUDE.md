@@ -53,6 +53,14 @@ daily by GitHub Actions.
   per page, `VERIFY_MAX_RUN_CREDITS` (2,000) and `VERIFY_RUN_MINUTES` (75) per run, so the job always reaches the
   commit step. `holdUnverified` never holds a page that was published at the run's start (`livedAtRunStart`, git
   `cat-file` on HEAD or `VERIFY_RUN_START_REF`): a rewrite the verifier did not reach stays live, not yet checked.
+  Continuous checking (Chris, 16 Nov 2026: "completely factually correct and continuously verified"): the rule is
+  `VERIFICATION` in `config/taxonomy.mjs`. The stamp carries `hash` (`pageHash`: front matter minus the stamp, log and
+  dates, plus the body minus the findings comment), so `verificationDue` queues a page whose text changed at all
+  (`changed-since-check`), whose cited Microsoft page changed (`source-changed`, from `pipeline/watch-sources.mjs`:
+  a daily no-model step that re-reads every learn.microsoft.com page the live pages cite into `data/sources.json`,
+  `pipeline/lib/sources.mjs`, change = Microsoft's `ms.date` moved) or whose check is older than `recheckDays` (7). Each
+  check writes a line into the page's `changes` log (`checkNote`). `VERIFY_LIMIT` (24) is the number of such pages a run
+  checks on top of everything it wrote. The site's `/accuracy/` page shows every page's state and next check.
 - Each compile run is shared equally across the topics by `selectQueue` in `pipeline/lib/briefing.mjs` (refreshes first,
   then one item per topic in turn). `priorityFor` in `pipeline/ingest.mjs` orders items within a topic by admin relevance,
   recency and lead time. It must not weight topics against each other: that is how Modern Work went unbriefed until

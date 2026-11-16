@@ -26,6 +26,7 @@ import { TOPICS } from '../config/taxonomy.mjs';
 import { loadRawItem } from './lib/briefing.mjs';
 import { VERIFY_TASK_DIR, VERIFY_RESULTS, listHeld, precheck, precheckText, verificationDue } from './lib/verify.mjs';
 import { postsForBrief, briefSection as messageCenterSection } from './lib/message-center.mjs';
+import { loadSources, sourceChangesByPage, changedSourcesFor } from './lib/sources.mjs';
 
 const LIMIT = Number(process.env.VERIFY_LIMIT || 24);
 const ONLY = (process.env.VERIFY_ONLY || '').split(',').map((s) => s.trim()).filter(Boolean);
@@ -47,15 +48,19 @@ async function candidates() {
   // used here: a bulk edit can stamp today's date on pages that are already published and checked or in grace.
   const written = new Set(((await readJson(path.join(DATA_DIR, 'compile-results.json'), { results: [] })).results || []).filter((r) => r.ok && r.slug).map((r) => r.slug));
   const now = Date.now();
+  // The daily source watch: a page whose cited Microsoft page changed after its check is due again.
+  const sources = await loadSources();
+  const sourceChanges = sourceChangesByPage(sources);
   for (const p of pages) {
-    const due = verificationDue(p.data, now);
+    const due = verificationDue(p.data, now, { body: p.body, sourceChangedAt: sourceChanges.get(p.slug) || null });
     const writtenNow = written.has(p.slug);
     if (ALL || due || ONLY.includes(p.slug)) {
       const reason = due || 'requested';
       // Pages that have never been checked come before re-checks; both come after this run's own pages.
-      const rank = writtenNow ? 0 : reason === 'never-checked' ? 1 : reason === 'changed-since-check' ? 2 : reason === 'check-expired' ? 3 : 4;
+      const rank = writtenNow ? 0 : reason === 'never-checked' ? 1 : reason === 'changed-since-check' || reason === 'source-changed' ? 2 : reason === 'check-expired' ? 3 : 4;
       const key = reason === 'check-expired' ? p.data.verification?.date || '' : `9${String(9e12 - new Date(p.data.updated).getTime()).padStart(13, '0')}`; // newest first, expired oldest first
-      out.push({ slug: p.slug, kind: p.kind, file: path.join(p.dir, p.file), where: p.where, data: p.data, reason, sort: `${rank}-${key}`, today: writtenNow, writtenThisRun: writtenNow && !p.data.verification });
+      const changedSources = reason === 'source-changed' ? changedSourcesFor(sources, p.slug, p.data.verification?.date) : [];
+      out.push({ slug: p.slug, kind: p.kind, file: path.join(p.dir, p.file), where: p.where, data: p.data, reason, changedSources, sort: `${rank}-${key}`, today: writtenNow, writtenThisRun: writtenNow && !p.data.verification });
     }
   }
   if (ONLY.length && !ALL) return out.filter((c) => ONLY.includes(c.slug));
@@ -90,6 +95,11 @@ function byTopicInTurn(list) {
 
 function brief(c, raw, pc, writerOutput, posts = []) {
   const d = c.data;
+  const changedSources = (c.changedSources || []).length ? [
+    '## Cited Microsoft pages that changed since the last check', '',
+    'The daily source watch found these pages, which this briefing cites, changed after the briefing was last checked. Read each one with particular care: what it now says may contradict the page.', '',
+    ...c.changedSources.map((s) => `- ${s.url} (Microsoft's date now ${s.msDate || 'not stated'}${s.previousMsDate ? `, was ${s.previousMsDate}` : ''}; change seen ${s.changedAt})`), '',
+  ].join('\n') : '';
   const concept = c.kind === 'concept';
   const coverage = [];
   (d.controls || []).forEach((ctl, i) => {
@@ -124,7 +134,7 @@ ${coverage.join('\n')}
 ## Automatic pre-checks (leads to confirm, not conclusions)
 
 ${prechecks}
-
+${changedSources ? `\n${changedSources}` : ''}
 ${record}
 ${posts.length ? `\n${messageCenterSection(posts).replace('## Message Center posts for this item', '## Message Center posts for this item (record facts: authoritative for the act-by date, rollout window and what Microsoft asks administrators to do)')}` : ''}`;
 }
@@ -157,7 +167,7 @@ for (const c of picked) {
 }
 await writeJson(path.join(DATA_DIR, 'verify-tasks.json'), { generated: new Date().toISOString(), date: today(), limit: LIMIT, only: ONLY, tasks });
 const conceptCount = tasks.filter((t) => t.kind === 'concept').length;
-const line = `verify-tasks: ${tasks.length - conceptCount} briefing(s)${conceptCount ? ` and ${conceptCount} concept page(s)` : ''} queued for the independent check (${tasks.filter((t) => t.reason === 'never-checked' || t.reason === 'unverified').length} never checked, ${tasks.filter((t) => t.reason === 'changed-since-check').length} changed since last check, ${tasks.filter((t) => t.reason === 'check-expired').length} expired)`;
+const line = `verify-tasks: ${tasks.length - conceptCount} briefing(s)${conceptCount ? ` and ${conceptCount} concept page(s)` : ''} queued for the independent check (${tasks.filter((t) => t.reason === 'never-checked' || t.reason === 'unverified').length} never checked, ${tasks.filter((t) => t.reason === 'changed-since-check').length} changed since last check, ${tasks.filter((t) => t.reason === 'source-changed').length} after a cited Microsoft page changed, ${tasks.filter((t) => t.reason === 'check-expired').length} expired)`;
 console.log(line);
 if (process.env.GITHUB_STEP_SUMMARY) await fs.appendFile(process.env.GITHUB_STEP_SUMMARY, line + '\n');
 if (process.env.GITHUB_OUTPUT) await fs.appendFile(process.env.GITHUB_OUTPUT, `count=${tasks.length}\n`);
