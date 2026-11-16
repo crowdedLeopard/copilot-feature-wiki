@@ -70,17 +70,23 @@ h2.display { font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2.1rem); }
 .small { font-size: 0.85rem; }
 .mono { font-family: var(--font-mono); }
 
-/* ----- Masthead ----- */
+/* ----- Masthead -----
+   One row that never stacks. Two faces only: the name in the display serif, everything else in the
+   body sans. The strapline is hidden when the row cannot hold it, the Search button drops to an icon
+   below 1080px, and the menu takes over below 900px. The row is capped at 1240px by .wrap, so on wide
+   screens the free space is constant and the breakpoints hold. */
 .masthead { border-bottom: 1px solid var(--rule); background: var(--paper); position: sticky; top: 0; z-index: 20; backdrop-filter: saturate(1.2) blur(6px); }
-.masthead__row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 56px; }
-.brand { display: flex; align-items: baseline; gap: 0.6rem; text-decoration: none; color: var(--ink); }
+.masthead__row { display: flex; flex-wrap: nowrap; align-items: center; justify-content: space-between; gap: 1rem; min-height: 56px; }
+.brand { display: flex; flex: 0 1 auto; min-width: 0; align-items: baseline; gap: 0.75rem; text-decoration: none; color: var(--ink); }
 .brand__name { white-space: nowrap; font-family: var(--font-display); font-size: 1.45rem; font-weight: 500; letter-spacing: -0.01em; font-variation-settings: 'opsz' 36; }
-.brand__tag { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); }
-.nav { display: flex; gap: 1.2rem; align-items: center; }
+/* The strapline is the only part allowed to give way: it truncates before anything else can wrap. */
+.brand__tag { flex: 0 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: var(--font-body); font-size: 0.8rem; letter-spacing: 0; text-transform: none; color: var(--ink-3); padding-left: 0.75rem; border-left: 1px solid var(--rule); }
+/* The nav sits with the tools on the right, so the free space falls between the strapline and the links. */
+.nav { display: flex; flex: 0 0 auto; gap: 1.1rem; align-items: center; margin-left: auto; }
 .nav a { color: var(--ink-2); text-decoration: none; font-size: 0.92rem; padding: 0.3rem 0; border-bottom: 2px solid transparent; white-space: nowrap; }
 .nav a:hover, .nav a[aria-current='page'] { color: var(--ink); border-bottom-color: var(--accent); }
-.nav__tools { display: flex; gap: 0.5rem; align-items: center; }
-.btn-ghost { background: none; border: 1px solid var(--rule); border-radius: var(--radius); padding: 0.35rem 0.6rem; color: var(--ink-2); cursor: pointer; display: inline-flex; align-items: center; gap: 0.45rem; font-size: 0.85rem; }
+.nav__tools { display: flex; flex: 0 0 auto; gap: 0.5rem; align-items: center; }
+.btn-ghost { background: none; border: 1px solid var(--rule); border-radius: var(--radius); padding: 0.35rem 0.6rem; color: var(--ink-2); cursor: pointer; display: inline-flex; align-items: center; gap: 0.45rem; font-size: 0.85rem; min-height: 32px; }
 .btn-ghost:hover { border-color: var(--ink-3); color: var(--ink); }
 .btn-ghost kbd { margin-left: 0.2rem; }
 .btn { background: var(--accent); color: var(--on-accent); border: 1px solid var(--accent); border-radius: var(--radius); padding: 0.45rem 0.9rem; text-decoration: none; display: inline-flex; gap: 0.5rem; align-items: center; font-size: 0.9rem; cursor: pointer; }
@@ -88,14 +94,17 @@ h2.display { font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2.1rem); }
 .btn--outline { background: transparent; color: var(--ink); border-color: var(--rule); }
 .btn--outline:hover { background: var(--paper-2); border-color: var(--ink-3); }
 .menu-toggle { display: none; }
-@media (max-width: 1320px) { .brand__tag { display: none; } }
-@media (max-width: 1080px) { .nav { gap: 0.85rem; } .nav a { font-size: 0.86rem; } }
-@media (max-width: 760px) {
+@media (max-width: 1279px) { .brand__tag { display: none; } }
+@media (max-width: 1080px) {
+  .nav { gap: 0.9rem; }
+  .nav a { font-size: 0.88rem; }
+  #search-open span, #search-open kbd { display: none; }
+}
+@media (max-width: 900px) {
   .nav { display: none; position: absolute; left: 0; right: 0; top: 56px; background: var(--paper); border-bottom: 1px solid var(--rule); padding: 0.75rem var(--gutter) 1rem; flex-direction: column; align-items: flex-start; gap: 0.4rem; }
+  .nav a { font-size: 0.95rem; }
   .masthead[data-open='true'] .nav { display: flex; }
   .menu-toggle { display: inline-flex; }
-  .brand__tag { display: none; }
-  .btn-ghost kbd { display: none; }
 }
 
 /* ----- Issue line / dateline ----- */
