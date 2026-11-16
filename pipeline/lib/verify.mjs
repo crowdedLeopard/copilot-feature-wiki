@@ -35,8 +35,13 @@ export const HELD_DIR = path.join(WIKI_DIR, '_held');
 export const REPORT_DIR = path.join(WIKI_DIR, 'verification');
 export const VERIFY_TASK_DIR = path.join(DATA_DIR, 'verify-tasks');
 export const VERIFY_RESULTS = path.join(DATA_DIR, 'verify-results.json');
-/** Two failed rewrites and the page is parked for a person. */
-export const MAX_REVISIONS = Number(process.env.VERIFY_MAX_REVISIONS || 3);
+/**
+ * Failed checks before the page is parked for a person: 4 means three correction rounds. Raised from 3 on 16 Nov 2026:
+ * 38 held pages were at their second failure with findings written before the correction rules of PR 29, and corrections
+ * from such findings passed 8 of 30, against 18 of 18 from findings written after; one more round lets them clear rather
+ * than park. Set VERIFY_MAX_REVISIONS=3 (or change this default) once those pages have gone through.
+ */
+export const MAX_REVISIONS = Number(process.env.VERIFY_MAX_REVISIONS || 4);
 /**
  * Pages published before the check existed (created before this date) can get one grace: a first failure
  * leaves the page live with a "needs correction" notice and the findings listed, while the rewrite is
