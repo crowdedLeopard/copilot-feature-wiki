@@ -38,13 +38,13 @@ export const VERIFY_RESULTS = path.join(DATA_DIR, 'verify-results.json');
 /** Two failed rewrites and the page is parked for a person. */
 export const MAX_REVISIONS = Number(process.env.VERIFY_MAX_REVISIONS || 3);
 /**
- * Pages published before the check existed (created before this date) get one grace: a first failure
+ * Pages published before the check existed (created before this date) can get one grace: a first failure
  * leaves the page live with a "needs correction" notice and the findings listed, while the rewrite is
  * prepared. A failure after that rewrite holds the page like any other. VERIFY_GRACE_EXISTING=0 turns
  * the grace off, so every failure holds the page at once.
  */
 export const STANDARD_DATE = '2026-11-16';
-export const GRACE_EXISTING = (process.env.VERIFY_GRACE_EXISTING ?? '1') !== '0';
+export const GRACE_EXISTING = (process.env.VERIFY_GRACE_EXISTING ?? '0') === '1';
 /** A verified page is checked again after this many days even if nothing changed. */
 export const MAX_AGE_DAYS = Number(process.env.VERIFY_MAX_AGE_DAYS || VERIFICATION.recheckDays || 90);
 
@@ -590,6 +590,40 @@ export async function listNeedingCorrection() {
     }
   }
   return out;
+}
+
+/**
+ * Take live pages that failed under grace offline. With the grace off (the default since 16 Nov 2026, Chris: "hide
+ * failures once checked"), a failed check holds the page at once; this moves any page still online with an
+ * "awaiting correction" notice from an earlier run into wiki/_held as failed, keeping its report, findings and
+ * attempt count, and writes a line into its change log. Returns the slugs moved.
+ */
+export async function holdNeedingCorrection({ note = 'Taken offline until a corrected version passes its check: a failed check no longer keeps a page online with a notice.' } = {}) {
+  const moved = [];
+  const date = today();
+  for (const p of await listNeedingCorrection()) {
+    const { data, body } = await readPage(p.file);
+    const v = data.verification;
+    if (p.report) {
+      const reasons = (p.report.hold?.reasons || []).filter((r) => !/published before the check existed/.test(r));
+      const report = {
+        ...p.report, status: 'held',
+        hold: { reason: 'failed', since: p.report.hold?.since || v.date, reasons: reasons.length ? reasons : ['failed its check'] },
+        notes: [...(p.report.notes || []), `${date}: taken offline; the grace for pages published before the check existed is off`],
+      };
+      await writeJson(path.join(REPORT_DIR, `${p.slug}.json`), report);
+    }
+    const changes = [...(data.changes || [])];
+    if (!changes.some((c) => c.date === date && c.note === note)) changes.push({ date, note });
+    const nextData = { ...data, ...(p.kind === 'concept' ? { kind: p.kind } : {}), changes, verification: { ...v, status: 'held', attempts: Math.max(1, v.attempts || 1) } };
+    const check = (p.kind === 'concept' ? conceptFrontmatter : featureFrontmatter).safeParse(nextData);
+    if (!check.success) throw new Error(`${p.slug}: front matter would be invalid: ` + check.error.issues.map((i) => `${i.path.join('.')} ${i.message}`).join('; '));
+    await fs.mkdir(HELD_DIR, { recursive: true });
+    await fs.writeFile(path.join(HELD_DIR, `${p.slug}.md`), renderPage(nextData, body));
+    await fs.rm(p.file, { force: true });
+    moved.push(p.slug);
+  }
+  return moved;
 }
 
 /** A page written but not checked in this run is held as unverified until the verifier reaches it. */

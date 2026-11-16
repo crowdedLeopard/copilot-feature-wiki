@@ -41,7 +41,8 @@ export const verdictSchema = z.object({
 /**
  * verified            every claim supported.
  * verified-with-gaps  published; unsupported or minor findings remain and are listed on the page.
- * needs-correction    failed the check but stays published with a notice while a rewrite is prepared.
+ * needs-correction    failed the check but stays published with a notice while a rewrite is prepared (only with
+ *                     VERIFY_GRACE_EXISTING=1; off by default since 16 Nov 2026, and the next run holds such pages).
  *                     Only for pages that were live before the check existed, and only once.
  * held                failed; in wiki/_held, not published.
  */

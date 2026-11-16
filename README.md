@@ -102,9 +102,10 @@ manual and the system prompt, and an append-only log records every run.
    majors, holds the page. Held pages move to `wiki/_held/` and are not built; the next run's
    writer gets them first, with the findings appended, for up to two correction rounds, after which
    the page is parked for a person. Pages that pass are stamped (`verification` in the front
-   matter) and show the full report on the site. Briefings published before the check existed
-   stay live on their first failure, with a notice, while a corrected version is prepared
-   (`VERIFY_GRACE_EXISTING=0` holds them too). A new page written in the run that the verifier did
+   matter) and show the full report on the site. A failed check takes the page offline whether or
+   not it was published before the check existed (Chris, 16 Nov 2026: hide failures once checked;
+   `VERIFY_GRACE_EXISTING=1` would instead keep such a page live with a notice on its first
+   failure, and the next run takes any page still online with that notice offline). A new page written in the run that the verifier did
    not reach is held as unverified rather than published unchecked; a page that was already
    published when the run started is never taken down for being unreached, it stays live and goes
    first in the next run. The engine is the
