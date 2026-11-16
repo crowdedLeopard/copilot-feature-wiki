@@ -20,20 +20,26 @@ const offline = GRACE_EXISTING ? [] : await holdNeedingCorrection();
 if (offline.length) await writeHeldIndex();
 // A held concept page has no roadmap item: pipeline/lib/concepts.mjs queues its correction, so it is not counted here.
 const held = (await listHeld()).filter((h) => h.kind !== 'concept');
-let revise = 0, removed = 0, parked = 0;
+let removed = 0, parked = 0;
+const revisions = [];
 for (const h of held) {
   const id = h.data.roadmapId;
   const before = queue.items.length;
   queue.items = queue.items.filter((q) => q.id !== id);
   removed += before - queue.items.length;
   const reason = h.report?.hold?.reason || 'unverified';
-  if (reason === 'failed' && (h.report?.attempts || 0) < MAX_REVISIONS && id) {
-    queue.items.unshift({ id, title: h.data.title, topic: h.data.topic, reason: 'revise', priority: 100, modified: h.data.roadmapModified || h.data.updated, slug: h.slug });
-    revise++;
-  } else if (reason === 'parked' || (reason === 'failed' && (h.report?.attempts || 0) >= MAX_REVISIONS)) {
+  const attempts = h.report?.attempts || 0;
+  if (reason === 'failed' && attempts < MAX_REVISIONS && id) {
+    revisions.push({ id, title: h.data.title, topic: h.data.topic, reason: 'revise', priority: 100, modified: h.data.roadmapModified || h.data.updated, slug: h.slug, attempts, since: h.report?.hold?.since || '' });
+  } else if (reason === 'parked' || (reason === 'failed' && attempts >= MAX_REVISIONS)) {
     parked++;
   }
 }
+// The pages with the most correction rounds left go first (fewest failed checks, then the longest held), so a
+// run never spends its places on pages one failure from being parked while first-time corrections wait.
+revisions.sort((a, b) => a.attempts - b.attempts || a.since.localeCompare(b.since) || a.slug.localeCompare(b.slug));
+queue.items = [...revisions.map(({ attempts, since, ...task }) => task), ...queue.items];
+const revise = revisions.length;
 // Pages kept live under grace with a "needs correction" notice are rewritten first of all.
 let correcting = 0;
 for (const p of await listNeedingCorrection()) {
