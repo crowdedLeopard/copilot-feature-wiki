@@ -71,17 +71,15 @@ h2.display { font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2.1rem); }
 .mono { font-family: var(--font-mono); }
 
 /* ----- Masthead -----
-   One row that never stacks. Two faces only: the name in the display serif, everything else in the
-   body sans. The strapline is hidden when the row cannot hold it, the Search button drops to an icon
-   below 1080px, and the menu takes over below 900px. The row is capped at 1240px by .wrap, so on wide
-   screens the free space is constant and the breakpoints hold. */
+   One row that never stacks: the name in the display serif, the nav and tools in the body sans, and
+   nothing else. The Search button drops to an icon below 1080px and the menu takes over below 900px.
+   The row is capped at 1240px by .wrap, so on wide screens the free space is constant and the
+   breakpoints hold. */
 .masthead { border-bottom: 1px solid var(--rule); background: var(--paper); position: sticky; top: 0; z-index: 20; backdrop-filter: saturate(1.2) blur(6px); }
 .masthead__row { display: flex; flex-wrap: nowrap; align-items: center; justify-content: space-between; gap: 1rem; min-height: 56px; }
-.brand { display: flex; flex: 0 1 auto; min-width: 0; align-items: baseline; gap: 0.75rem; text-decoration: none; color: var(--ink); }
+.brand { display: flex; flex: 0 0 auto; align-items: baseline; text-decoration: none; color: var(--ink); }
 .brand__name { white-space: nowrap; font-family: var(--font-display); font-size: 1.45rem; font-weight: 500; letter-spacing: -0.01em; font-variation-settings: 'opsz' 36; }
-/* The strapline is the only part allowed to give way: it truncates before anything else can wrap. */
-.brand__tag { flex: 0 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: var(--font-body); font-size: 0.8rem; letter-spacing: 0; text-transform: none; color: var(--ink-3); padding-left: 0.75rem; border-left: 1px solid var(--rule); }
-/* The nav sits with the tools on the right, so the free space falls between the strapline and the links. */
+/* The nav sits with the tools on the right, so the free space falls between the name and the links. */
 .nav { display: flex; flex: 0 0 auto; gap: 1.1rem; align-items: center; margin-left: auto; }
 .nav a { color: var(--ink-2); text-decoration: none; font-size: 0.92rem; padding: 0.3rem 0; border-bottom: 2px solid transparent; white-space: nowrap; }
 .nav a:hover, .nav a[aria-current='page'] { color: var(--ink); border-bottom-color: var(--accent); }
@@ -94,7 +92,6 @@ h2.display { font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2.1rem); }
 .btn--outline { background: transparent; color: var(--ink); border-color: var(--rule); }
 .btn--outline:hover { background: var(--paper-2); border-color: var(--ink-3); }
 .menu-toggle { display: none; }
-@media (max-width: 1279px) { .brand__tag { display: none; } }
 @media (max-width: 1080px) {
   .nav { gap: 0.9rem; }
   .nav a { font-size: 0.88rem; }
