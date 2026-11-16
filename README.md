@@ -40,8 +40,11 @@ manual and the system prompt, and an append-only log records every run.
 
 1. **Ingest** downloads the Microsoft 365 Roadmap, keeps in-scope items, snapshots them to `raw/`,
    and queues items that are new, changed status or were edited by Microsoft.
-2. **Compile** has Claude write or rewrite briefings for the top of the queue, grounded with the
-   Microsoft Learn MCP server and web search over Microsoft domains. It runs one of two ways,
+2. **Compile** has Claude write or rewrite a fixed number of briefings from the queue (12 by default).
+   Each run is shared equally across the five topics: refreshes of existing pages first, then one
+   item per topic in turn, most admin-relevant first, so a topic with a long queue such as Modern
+   Work never waits behind the others. Every briefing is grounded with the
+   Microsoft Learn MCP server and web search over Microsoft domains. The step runs one of two ways,
    chosen by which repository secret exists (Settings → Secrets and variables → Actions):
    - `CLAUDE_CODE_OAUTH_TOKEN` (preferred): runs Claude Code through the official GitHub Action on a
      Claude Pro or Max subscription. Generate the token on your own machine with `claude setup-token`
@@ -62,7 +65,7 @@ manual and the system prompt, and an append-only log records every run.
 npm install
 npm run dev              # Astro dev server
 npm run ingest           # refresh raw/ and data/ from the roadmap
-ANTHROPIC_API_KEY=... npm run compile   # write briefings (COMPILE_LIMIT, COMPILE_ONLY=<id,id>)
+ANTHROPIC_API_KEY=... npm run compile   # write briefings (COMPILE_LIMIT, COMPILE_TOPIC=<topic id>, COMPILE_ONLY=<id,id>)
 npm run lint:wiki && npm run index:wiki && npm run digest
 npm run build && npm run pdf            # site + dist/downloads/*.pdf
 npm run screenshots                     # screenshots/ for design review

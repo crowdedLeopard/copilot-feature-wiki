@@ -7,6 +7,7 @@ import { TOPICS, href, featureUrl, formatDate, shortRoadmapDate } from '../../li
 
 const features = await allFeatures();
 const briefed = briefedIds(features);
+const waiting = catalog.items.filter((i) => !briefed.has(i.id)).length;
 const byTopic = new Map<string, number>();
 for (const i of catalog.items) if (i.topic) byTopic.set(i.topic, (byTopic.get(i.topic) ?? 0) + 1);
 const recent = recentCatalog(undefined, 30, 60);
@@ -19,10 +20,11 @@ for (const i of catalog.items) statusCounts.set(i.statusKey, (statusCounts.get(i
     <div class="article-head" style="padding-bottom:1rem">
       <div class="eyebrow"><span>Radar</span><span class="sep"></span><span>Snapshot {formatDate(catalog.generated)}</span></div>
       <h1 class="display">Roadmap radar</h1>
-      <p class="standfirst">{catalog.count.toLocaleString('en-GB')} in-scope items from the Microsoft 365 Roadmap. A briefing is written when an item is new, changes status, or is edited by Microsoft, highest impact first.</p>
+      <p class="standfirst">{catalog.count.toLocaleString('en-GB')} in-scope items from the Microsoft 365 Roadmap. Every one of them is tracked; a briefing is written when an item is new, changes status or is edited by Microsoft. Each run writes a fixed number of briefings, shared equally across the five topics and most admin-relevant first, so most items show as not yet briefed until their turn comes.</p>
       <div class="stats" style="margin-top:1.5rem">
         <div class="stat"><b>{catalog.count.toLocaleString('en-GB')}</b><span>tracked</span></div>
         <div class="stat"><b>{features.length}</b><span>briefed</span></div>
+        <div class="stat"><b>{waiting.toLocaleString('en-GB')}</b><span>not yet briefed</span></div>
         {['in-development', 'rolling-out', 'launched'].map((s) => <div class="stat"><b>{(statusCounts.get(s) ?? 0).toLocaleString('en-GB')}</b><span>{s.replace('-', ' ')}</span></div>)}
       </div>
     </div>
@@ -54,7 +56,7 @@ for (const i of catalog.items) statusCounts.set(i.statusKey, (statusCounts.get(i
               <td><Badge status={i.statusKey} /></td>
               <td class="d">{shortRoadmapDate(i.targetDate)}</td>
               <td class="d">{formatDate(i.modified)}</td>
-              <td>{b ? <a class="briefed" href={featureUrl(b.data.slug)}>Read briefing</a> : <span class="muted small">Queued</span>}</td>
+              <td>{b ? <a class="briefed" href={featureUrl(b.data.slug)}>Read briefing</a> : <span class="muted small" style="white-space:nowrap" title="Tracked. Waiting its turn in a later run.">Not yet briefed</span>}</td>
             </tr>
           );
         })}

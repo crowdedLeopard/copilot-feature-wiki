@@ -34,16 +34,59 @@ sources:
   - title: "Usage-based billing: what you see in the Microsoft 365 admin center vs. your Azure bill"
     url: "https://learn.microsoft.com/copilot/implement/usage-based-billing-compare-dashboard-views"
     kind: "learn"
+  - title: "Usage-based billing, spending policies, limits and alerts (Microsoft Graph)"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview"
+    kind: "learn"
+  - title: "Which users may use Anthropic (Claude) models (Microsoft 365 admin center)"
+    url: "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor#opt-in-to-use-claude-models"
+    kind: "learn"
+  - title: "Pay-as-you-go billing policy for Copilot services (Microsoft 365 admin center)"
+    url: "https://learn.microsoft.com/copilot/implement/copilot-capacity-packs#step-2-set-up-your-billing-configuration"
+    kind: "learn"
 videos: []
 related: ["copilot-studio-cost-management-m365-admin-center","m365-admin-center-agent-level-pay-as-you-go-controls","m365-admin-center-copilot-credits-usage-report","copilot-credits"]
+controls:
+  - governs: "Usage-based billing, spending policies, limits and alerts"
+    scope: "tenant"
+    ui:
+      surface: "Microsoft 365 admin center"
+      path: "Copilot > Cost Management > Configuration"
+      docs: "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup"
+    api:
+      kind: "graph"
+      call: "/beta/copilot/costManagement (Cost Management API)"
+      docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview"
+  - governs: "Who can see the usage-based billing experiences"
+    scope: "tenant"
+    ui:
+      surface: "Microsoft 365 admin center"
+      path: "Copilot > Settings > All Settings > Access to usage-based billing experiences"
+      docs: "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup"
+    api: null
+  - governs: "Which users may use Anthropic (Claude) models"
+    scope: "user"
+    ui:
+      surface: "Microsoft 365 admin center"
+      path: "Copilot > Settings > View all > AI providers operating as Microsoft subprocessors > Anthropic > Choose which users"
+      docs: "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor#opt-in-to-use-claude-models"
+    api: null
+  - governs: "Pay-as-you-go billing policy for Copilot services"
+    scope: "tenant"
+    ui:
+      surface: "Microsoft 365 admin center"
+      path: "Copilot > Billing & usage > Pay-as-you-go services"
+      docs: "https://learn.microsoft.com/copilot/implement/copilot-capacity-packs#step-2-set-up-your-billing-configuration"
+    api: null
 confidence: "medium"
 created: "2026-11-13"
-updated: "2026-11-13"
+updated: "2026-11-16"
 roadmapModified: "2026-11-04T23:59:50"
 changes:
   - date: "2026-11-13"
     note: "Initial briefing"
-version: 1
+  - date: "2026-11-16"
+    note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
+version: 2
 ---
 
 ## What's changing
@@ -105,12 +148,21 @@ Service owners should treat this as a budget feature first: decide who gets cred
 - Set a decision date for widening or withdrawing the allocation.
 - Watch Message center for published credit rates per model and for government cloud availability.
 
-## Admin controls
+## Governance controls
 
-- Microsoft 365 admin center > **Copilot** > **Cost Management** > **Configuration**: enable usage-based billing, billing method, spending policies, limits, alerts, request routing.
-- Microsoft 365 admin center > **Copilot** > **Cost Management** > **Overview** and **Consumption**: credit usage by policy, user, group, service.
-- Microsoft 365 admin center > **Copilot** > **Cost Management** > **Credit requests**: approve or deny user requests for access or higher limits.
-- Azure portal > **Cost Management**: billed amounts for pay-as-you-go and P3.
+<p class="controls__lead">Where each control lives. The left column says what the setting decides and how far it reaches; the middle gives the admin centre and the exact path; the right gives the script, API or command that does the same. <em>Not yet documented</em> means Microsoft has not published a control for that surface, so there is nothing to configure yet.</p>
+
+<table class="controls">
+<thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
+<tbody>
+<tr><td data-label="Control"><strong>Usage-based billing, spending policies, limits and alerts</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>/beta/copilot/costManagement (Cost Management API)</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Who can see the usage-based billing experiences</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Settings › All Settings › Access to usage-based billing experiences <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which users may use Anthropic (Claude) models</strong><br><small>User</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Settings › View all › AI providers operating as Microsoft subprocessors › Anthropic › Choose which users <a href="https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor#opt-in-to-use-claude-models" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Pay-as-you-go billing policy for Copilot services</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Billing &amp; usage › Pay-as-you-go services <a href="https://learn.microsoft.com/copilot/implement/copilot-capacity-packs#step-2-set-up-your-billing-configuration" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+</tbody>
+</table>
+
+The model selector itself has no switch: which models appear follows the subprocessor opt-in and the billing configuration. Credit requests from users are approved under Copilot > Cost Management > Credit requests, described in [Manage Copilot Credits](https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits). The Anthropic opt-in is portal-only and is also covered in [Copilot and Anthropic apps](https://learn.microsoft.com/copilot/implement/copilot-anthropic-apps#manage-the-setting-in-the-microsoft-365-admin-center). Billed amounts appear in Azure Cost Management.
 
 ## Open questions
 

@@ -34,16 +34,60 @@ sources:
   - title: "Control how agents are shared"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/admin-sharing-controls-limits"
     kind: "learn"
+  - title: "Which credential types makers may choose (Power Platform admin center)"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication"
+    kind: "learn"
+  - title: "Agent sharing limits in Managed Environments (Power Platform admin center)"
+    url: "https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits#agent-sharing-rules"
+    kind: "learn"
+  - title: "Agent sharing limits in Managed Environments (Power Platform CLI)"
+    url: "https://learn.microsoft.com/power-platform/developer/cli/reference/admin#pac-admin-set-governance-config"
+    kind: "learn"
 videos: []
 related: ["copilot-studio-block-maker-provided-credentials","copilot-studio-share-autonomous-agents-run-only","power-platform-maker-guidelines-copilot-studio","managed-environments"]
+controls:
+  - governs: "Sharing of agents with embedded maker credentials, per environment"
+    scope: "environment"
+    ui:
+      surface: "Power Platform admin center"
+      path: "Manage > Environments > environment > Settings > Product > Features > Sharing agents with embedded maker credentials"
+      docs: "https://learn.microsoft.com/microsoft-copilot-studio/configure-sharing-agents-embedded-maker-credentials"
+    api: null
+    note: "Values: All sharing allowed, Safe sharing enforced."
+  - governs: "The same setting across environment groups"
+    scope: "environment-group"
+    ui:
+      surface: "Power Platform admin center"
+      path: "Security > Threat detection > Sharing agent with embedded maker credentials > Environment groups or Environments > Set up"
+      docs: "https://learn.microsoft.com/power-platform/admin/security/control-sharing-agents-with-embedded-maker-credentials"
+    api: null
+  - governs: "Which credential types makers may choose"
+    scope: "environment"
+    ui:
+      surface: "Power Platform admin center"
+      path: "Manage > Environments > environment > Settings > Product > Features > Copilot Studio agents > Control maker credential options"
+      docs: "https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication"
+    api: null
+  - governs: "Agent sharing limits in Managed Environments"
+    scope: "environment"
+    ui:
+      surface: "Power Platform admin center"
+      path: "Manage > Environments > environment > Edit Managed Environments > Limit sharing"
+      docs: "https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits#agent-sharing-rules"
+    api:
+      kind: "pac-cli"
+      call: "pac admin set-governance-config --environment <environment-id> --protection-level Standard --limit-sharing-mode <mode>"
+      docs: "https://learn.microsoft.com/power-platform/developer/cli/reference/admin#pac-admin-set-governance-config"
 confidence: "high"
 created: "2026-11-13"
-updated: "2026-11-13"
+updated: "2026-11-16"
 roadmapModified: "2026-07-01T23:03:18"
 changes:
   - date: "2026-11-13"
     note: "Initial briefing"
-version: 1
+  - date: "2026-11-16"
+    note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
+version: 2
 ---
 
 ## What's changing
@@ -109,11 +153,21 @@ For a service owner this is the difference between "we have told makers not to d
 - Combine with the credential-choice control to prevent new unsafe agents being created at all.
 - Re-run the review when Microsoft expands dependency-based enforcement.
 
-## Admin controls
+## Governance controls
 
-- Power Platform admin center > **Manage** > **Environments** > select environment > **Settings** > **Features** > **Sharing agents with embedded maker credentials**: All sharing allowed or Safe sharing enforced.
-- Power Platform admin center > **Security** > **Threat detection** > **Sharing agent with embedded maker credentials** > choose environment groups or environments > **Set up** > "Don't let makers share agents with their own credentials embedded (recommended)".
-- Copilot Studio > agent > **Agent status**: shows connection-sharing violations as warnings (unshared agents) or critical errors (already shared agents); tools are marked **Blocked** with a sharing policy violation message.
+<p class="controls__lead">Where each control lives. The left column says what the setting decides and how far it reaches; the middle gives the admin centre and the exact path; the right gives the script, API or command that does the same. <em>Not yet documented</em> means Microsoft has not published a control for that surface, so there is nothing to configure yet.</p>
+
+<table class="controls">
+<thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
+<tbody>
+<tr><td data-label="Control"><strong>Sharing of agents with embedded maker credentials, per environment</strong><br><small>Environment</small><br><small class="controls__note">Values: All sharing allowed, Safe sharing enforced.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › Sharing agents with embedded maker credentials <a href="https://learn.microsoft.com/microsoft-copilot-studio/configure-sharing-agents-embedded-maker-credentials" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>The same setting across environment groups</strong><br><small>Environment group</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Threat detection › Sharing agent with embedded maker credentials › Environment groups or Environments › Set up <a href="https://learn.microsoft.com/power-platform/admin/security/control-sharing-agents-with-embedded-maker-credentials" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which credential types makers may choose</strong><br><small>Environment</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › Copilot Studio agents › Control maker credential options <a href="https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Agent sharing limits in Managed Environments</strong><br><small>Environment</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Edit Managed Environments › Limit sharing <a href="https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits#agent-sharing-rules" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform CLI</strong><br><code>pac admin set-governance-config --environment &lt;environment-id&gt; --protection-level Standard --limit-sharing-mode &lt;mode&gt;</code> <a href="https://learn.microsoft.com/power-platform/developer/cli/reference/admin#pac-admin-set-governance-config" rel="noopener" class="controls__docs">Learn</a></td></tr>
+</tbody>
+</table>
+
+The safe-sharing setting itself has no documented API, so tenants that automate governance will reach it only through the environment group route in the portal. Sharing limits do have a CLI and a PowerShell cmdlet, `Set-AdminPowerAppEnvironmentGovernanceConfiguration`, described on the [Managed Environments enablement page](https://learn.microsoft.com/power-platform/admin/managed-environment-enable). Makers see violations in the agent's status pane; tools are marked Blocked rather than silently failing. The [feature settings reference](https://learn.microsoft.com/power-platform/admin/settings-features#sharing-agents-with-embedded-maker-credentials-preview) lists the preview status.
 
 ## Open questions
 

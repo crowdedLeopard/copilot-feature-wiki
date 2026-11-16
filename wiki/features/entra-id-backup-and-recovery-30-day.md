@@ -34,16 +34,63 @@ sources:
   - title: "Overview of Microsoft 365 Backup"
     url: "https://learn.microsoft.com/microsoft-365/backup/backup-overview"
     kind: "learn"
+  - title: "Microsoft Entra backup, difference reports and recovery (Microsoft Entra admin center)"
+    url: "https://learn.microsoft.com/entra/backup/overview#get-started"
+    kind: "learn"
+  - title: "Microsoft Entra backup, difference reports and recovery (Microsoft Graph)"
+    url: "https://learn.microsoft.com/graph/api/resources/entrarecoveryservices-backup-recovery-overview?view=graph-rest-1.0"
+    kind: "learn"
+  - title: "Microsoft 365 Backup enablement and backup policies (Microsoft 365 admin center)"
+    url: "https://learn.microsoft.com/microsoft-365/backup/backup-setup#2-create-backup-policies-to-protect-your-data"
+    kind: "learn"
+  - title: "Microsoft 365 Backup enablement and backup policies (Microsoft Graph)"
+    url: "https://learn.microsoft.com/graph/api/backuprestoreroot-enable?view=graph-rest-1.0"
+    kind: "learn"
+  - title: "Pay-as-you-go billing policy for backup storage (Microsoft 365 admin center)"
+    url: "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node"
+    kind: "learn"
 videos: []
 related: ["m365-teams-channel-backup","agent-365-control-plane-for-agents"]
+controls:
+  - governs: "Microsoft Entra backup, difference reports and recovery"
+    scope: "tenant"
+    ui:
+      surface: "Microsoft Entra admin center"
+      path: "Backup and recovery > Overview, Backups, Difference Reports, Recovery History, Hard deletion protection"
+      docs: "https://learn.microsoft.com/entra/backup/overview#get-started"
+    api:
+      kind: "graph"
+      call: "entraRecoveryServices resources (Microsoft Graph beta)"
+      docs: "https://learn.microsoft.com/graph/api/resources/entrarecoveryservices-backup-recovery-overview?view=graph-rest-1.0"
+    note: "Always on; cannot be turned off. Needs Entra ID P1 or P2 and the Entra Backup Reader or Entra Backup Administrator role."
+  - governs: "Microsoft 365 Backup enablement and backup policies"
+    scope: "tenant"
+    ui:
+      surface: "Microsoft 365 admin center"
+      path: "Settings > Microsoft 365 Backup"
+      docs: "https://learn.microsoft.com/microsoft-365/backup/backup-setup#2-create-backup-policies-to-protect-your-data"
+    api:
+      kind: "graph"
+      call: "POST /solutions/backupRestore/enable"
+      docs: "https://learn.microsoft.com/graph/api/backuprestoreroot-enable?view=graph-rest-1.0"
+    note: "The Graph call is for backup controller apps and needs BackupRestore-Control.ReadWrite.All."
+  - governs: "Pay-as-you-go billing policy for backup storage"
+    scope: "tenant"
+    ui:
+      surface: "Microsoft 365 admin center"
+      path: "Billing > Pay-as-you-go > Billing policies > Add a billing policy"
+      docs: "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node"
+    api: null
 confidence: "medium"
 created: "2026-11-13"
-updated: "2026-11-13"
+updated: "2026-11-16"
 roadmapModified: "2026-09-01T22:59:38"
 changes:
   - date: "2026-11-13"
     note: "Initial briefing"
-version: 1
+  - date: "2026-11-16"
+    note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
+version: 2
 ---
 
 ## What's changing
@@ -104,12 +151,20 @@ The feature also matters for agent governance: agent identities and their permis
 - Re-test after major directory changes (tenant merges, sync changes, source-of-authority moves).
 - Watch for pricing publication and government cloud availability.
 
-## Admin controls
+## Governance controls
 
-- Microsoft Entra admin center > **Backup and Recovery**: advanced recovery, difference reports, supported object restore.
-- Microsoft 365 admin center > **Settings** > **Microsoft 365 Backup**: Entra workload (with this release) and user recovery actions.
-- Microsoft 365 admin center > **Billing** > **Pay-as-you-go**: billing policy for Microsoft 365 Backup.
-- Microsoft 365 Backup Storage platform APIs for ISV-managed backup.
+<p class="controls__lead">Where each control lives. The left column says what the setting decides and how far it reaches; the middle gives the admin centre and the exact path; the right gives the script, API or command that does the same. <em>Not yet documented</em> means Microsoft has not published a control for that surface, so there is nothing to configure yet.</p>
+
+<table class="controls">
+<thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
+<tbody>
+<tr><td data-label="Control"><strong>Microsoft Entra backup, difference reports and recovery</strong><br><small>Tenant</small><br><small class="controls__note">Always on; cannot be turned off. Needs Entra ID P1 or P2 and the Entra Backup Reader or Entra Backup Administrator role.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Backup and recovery › Overview, Backups, Difference Reports, Recovery History, Hard deletion protection <a href="https://learn.microsoft.com/entra/backup/overview#get-started" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>entraRecoveryServices resources (Microsoft Graph beta)</code> <a href="https://learn.microsoft.com/graph/api/resources/entrarecoveryservices-backup-recovery-overview?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Microsoft 365 Backup enablement and backup policies</strong><br><small>Tenant</small><br><small class="controls__note">The Graph call is for backup controller apps and needs BackupRestore-Control.ReadWrite.All.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Microsoft 365 Backup <a href="https://learn.microsoft.com/microsoft-365/backup/backup-setup#2-create-backup-policies-to-protect-your-data" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /solutions/backupRestore/enable</code> <a href="https://learn.microsoft.com/graph/api/backuprestoreroot-enable?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Pay-as-you-go billing policy for backup storage</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Billing › Pay-as-you-go › Billing policies › Add a billing policy <a href="https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+</tbody>
+</table>
+
+Entra backup is a protection that runs regardless of configuration, so the governance task is access rather than enablement: decide who holds the Backup Administrator role, since restores change directory objects. The Graph surface for Entra recovery is beta and grouped with other tenant backup APIs in the [tenants backup overview](https://learn.microsoft.com/graph/api/resources/tenants-backup-recovery-overview?view=graph-rest-1.0). Microsoft 365 Backup policies for other workloads are a separate, chargeable service.
 
 ## Open questions
 

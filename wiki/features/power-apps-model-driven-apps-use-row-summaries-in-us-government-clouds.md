@@ -31,16 +31,42 @@ sources:
   - title: "Configure a row summary for a model-driven app"
     url: "https://learn.microsoft.com/power-apps/maker/data-platform/configure-form-row-summary"
     kind: "learn"
+  - title: "Row summaries per environment (Power Platform admin center)"
+    url: "https://learn.microsoft.com/power-apps/user/record-summaries#admin-control"
+    kind: "learn"
 videos: []
 related: ["power-apps-form-fill-assistance-using-m365-files-in-model-driven-apps","m365-copilot-new-m365-copilot-usage-reports-for-copilot-search-connectors-and-agents-for-u","managed-environments"]
+controls:
+  - governs: "Row summaries per environment"
+    scope: "environment"
+    ui:
+      surface: "Power Platform admin center"
+      path: "Copilot > Settings > Power Apps > Summary > Row summaries > environment > Edit setting"
+      docs: "https://learn.microsoft.com/power-apps/user/record-summaries#admin-control"
+    api: null
+  - governs: "Summary prompt and whether a table shows a summary"
+    scope: "app"
+    ui:
+      surface: "Power Apps (maker)"
+      path: "Tables > table > Customizations > Row summary"
+      docs: "https://learn.microsoft.com/power-apps/maker/data-platform/configure-form-row-summary"
+    api: null
+    note: "Maker-side. Show row summary hides the card for a table."
+  - governs: "Switch specific to GCC and GCC High"
+    scope: "tenant"
+    ui: null
+    api: null
+    note: "Availability follows the cloud; the same environment setting applies."
 confidence: "medium"
 created: "2026-11-14"
-updated: "2026-11-14"
+updated: "2026-11-16"
 roadmapModified: "2026-10-23T23:10:38"
 changes:
   - date: "2026-11-14"
     note: "New briefing from roadmap item 576279 with Learn admin control details."
-version: 1
+  - date: "2026-11-16"
+    note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
+version: 2
 ---
 
 ## What's changing
@@ -94,9 +120,20 @@ Model-driven apps in GCC and GCC High. DoD is not listed. Weekly release channel
 - [ ] Review user feedback on accuracy.
 - [ ] Revisit prompts when columns or security roles change.
 
-## Admin controls
+## Governance controls
 
-In the Power Platform admin center, go to Copilot > Settings, locate Row summaries under Power Apps > Summary, select the environment and choose Edit setting. Makers configure prompts under Tables > Customizations > Row summary and can hide a summary with Show row summary. The older AI insight cards setting is being removed.
+<p class="controls__lead">Where each control lives. The left column says what the setting decides and how far it reaches; the middle gives the admin centre and the exact path; the right gives the script, API or command that does the same. <em>Not yet documented</em> means Microsoft has not published a control for that surface, so there is nothing to configure yet.</p>
+
+<table class="controls">
+<thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
+<tbody>
+<tr><td data-label="Control"><strong>Row summaries per environment</strong><br><small>Environment</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Copilot › Settings › Power Apps › Summary › Row summaries › environment › Edit setting <a href="https://learn.microsoft.com/power-apps/user/record-summaries#admin-control" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Summary prompt and whether a table shows a summary</strong><br><small>App</small><br><small class="controls__note">Maker-side. Show row summary hides the card for a table.</small></td><td data-label="Admin UI"><strong>Power Apps (maker)</strong><br>Tables › table › Customizations › Row summary <a href="https://learn.microsoft.com/power-apps/maker/data-platform/configure-form-row-summary" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Switch specific to GCC and GCC High</strong><br><small>Tenant</small><br><small class="controls__note">Availability follows the cloud; the same environment setting applies.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+</tbody>
+</table>
+
+The environment setting is the only admin control and it has no API. The older AI insight cards feature flag is being removed, so runbooks that reference it should move to the Copilot settings page. Makers decide the prompt and the tables that show a summary, which is where sensitive tables are excluded. Usage appears in the [Copilot hub](https://learn.microsoft.com/power-platform/admin/copilot/copilot-hub#settings).
 
 ## Open questions
 

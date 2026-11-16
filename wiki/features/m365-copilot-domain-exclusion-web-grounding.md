@@ -34,16 +34,54 @@ sources:
   - title: "Microsoft Copilot prompt defense in depth"
     url: "https://learn.microsoft.com/copilot/plan/copilot-prompt-defense-in-depth"
     kind: "learn"
+  - title: "Whether web search is allowed at all (Microsoft 365 Apps admin center)"
+    url: "https://learn.microsoft.com/copilot/plan/manage-public-web-access#controls-available-to-manage-web-search"
+    kind: "learn"
+  - title: "Sensitive content sent to web search (Microsoft Purview portal)"
+    url: "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about"
+    kind: "learn"
+  - title: "Sensitive content sent to web search (PowerShell)"
+    url: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy?view=exchange-ps"
+    kind: "learn"
 videos: []
 related: ["purview-dlp-block-sensitive-data-in-copilot-web-search","m365-copilot-federated-connectors-write-update-delete"]
+controls:
+  - governs: "Which domains are excluded from web grounding"
+    scope: "tenant"
+    ui: null
+    api:
+      kind: "powershell"
+      call: "ConfigureTenantDomainExclusions.ps1 -Create -FromFile <csv>"
+      docs: "https://learn.microsoft.com/copilot/implement/domain-exclusion"
+    note: "Search Administrator or Global Administrator; needs the Az.Accounts module. The script also supports get, update, delete and template."
+  - governs: "Whether web search is allowed at all"
+    scope: "group"
+    ui:
+      surface: "Microsoft 365 Apps admin center"
+      path: "Cloud Policy > Allow web search in Copilot"
+      docs: "https://learn.microsoft.com/copilot/plan/manage-public-web-access#controls-available-to-manage-web-search"
+    api: null
+    note: "Tenant or group scope; on, off, or off in work mode only."
+  - governs: "Sensitive content sent to web search"
+    scope: "tenant"
+    ui:
+      surface: "Microsoft Purview portal"
+      path: "Data Loss Prevention > Policies > + Create policy > Custom > location Microsoft Copilot, Copilot Chat, and Copilot Cowork"
+      docs: "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about"
+    api:
+      kind: "powershell"
+      call: "New-DlpCompliancePolicy -Name <name> -Locations <location> -EnforcementPlanes @('CopilotExperiences')"
+      docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy?view=exchange-ps"
 confidence: "high"
 created: "2026-11-13"
-updated: "2026-11-13"
+updated: "2026-11-16"
 roadmapModified: "2026-09-01T23:00:02"
 changes:
   - date: "2026-11-13"
     note: "Initial briefing"
-version: 1
+  - date: "2026-11-16"
+    note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
+version: 2
 ---
 
 ## What's changing
@@ -100,12 +138,20 @@ It is also part of Microsoft's prompt-injection defence story: excluding domains
 - Review the list quarterly alongside web filtering policies.
 - Watch Message center for an admin center UI replacing the script, and for GCC availability.
 
-## Admin controls
+## Governance controls
 
-- PowerShell: `ConfigureTenantDomainExclusions.ps1` (get, create, update, delete, template) from aka.ms/Copilot/DomainExclusionScript.
-- Microsoft 365 Apps admin center > **Cloud Policy** > **Allow web search in Copilot**: tenant or group level on/off/work-mode-off.
-- Microsoft Purview portal > **Data Loss Prevention** > policy at the Microsoft Copilot, Copilot Chat and Cowork location with action **Prevent Copilot from processing content** > **Performing Web Searches** for sensitive information types.
-- User side: Copilot app > **Settings** > **Personalization** > **Advanced** > Web search toggle.
+<p class="controls__lead">Where each control lives. The left column says what the setting decides and how far it reaches; the middle gives the admin centre and the exact path; the right gives the script, API or command that does the same. <em>Not yet documented</em> means Microsoft has not published a control for that surface, so there is nothing to configure yet.</p>
+
+<table class="controls">
+<thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
+<tbody>
+<tr><td data-label="Control"><strong>Which domains are excluded from web grounding</strong><br><small>Tenant</small><br><small class="controls__note">Search Administrator or Global Administrator; needs the Az.Accounts module. The script also supports get, update, delete and template.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>ConfigureTenantDomainExclusions.ps1 -Create -FromFile &lt;csv&gt;</code> <a href="https://learn.microsoft.com/copilot/implement/domain-exclusion" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether web search is allowed at all</strong><br><small>Group</small><br><small class="controls__note">Tenant or group scope; on, off, or off in work mode only.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Cloud Policy › Allow web search in Copilot <a href="https://learn.microsoft.com/copilot/plan/manage-public-web-access#controls-available-to-manage-web-search" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Sensitive content sent to web search</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data Loss Prevention › Policies › + Create policy › Custom › location Microsoft Copilot, Copilot Chat, and Copilot Cowork <a href="https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpCompliancePolicy -Name &lt;name&gt; -Locations &lt;location&gt; -EnforcementPlanes @('CopilotExperiences')</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy?view=exchange-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
+</tbody>
+</table>
+
+Domain exclusion is script-only: there is no admin centre page, and the exclusion list is not visible in Cloud Policy. The web search policy is linked from the Microsoft 365 admin center under Copilot > Settings > Data access, as described in [Configure Copilot settings](https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center#configure-data-access), but it is set in Cloud Policy. Users keep a personal web search toggle unless the policy turns it off. The DLP action Performing Web Searches is covered in the [Purview DLP briefing](/features/purview-dlp-block-sensitive-data-in-copilot-web-search/).
 
 ## Open questions
 

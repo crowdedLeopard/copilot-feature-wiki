@@ -28,16 +28,45 @@ sources:
   - title: "Work IQ in Copilot Studio (Microsoft Copilot)"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq"
     kind: "learn"
+  - title: "Work IQ MCP policy on or off for the tenant (Microsoft 365 admin center)"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp#open-policy-settings-in-the-microsoft-365-admin-center"
+    kind: "learn"
+  - title: "Whether an agent asks the user before running a tool (Copilot Studio (maker))"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent#view-and-make-changes-to-your-tool-configuration"
+    kind: "learn"
 videos: []
 related: ["copilot-studio-require-human-approval-for-tool-calls","agent-365-control-plane-for-agents","work-iq-execute-recipes"]
+controls:
+  - governs: "Work IQ MCP policy on or off for the tenant"
+    scope: "tenant"
+    ui:
+      surface: "Microsoft 365 admin center"
+      path: "Agents > Tools > Work IQ MCP > Policy"
+      docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp#open-policy-settings-in-the-microsoft-365-admin-center"
+    api: null
+    note: "Mutation operations such as sending mail are disallowed by default until enabled."
+  - governs: "Whether an agent asks the user before running a tool"
+    scope: "agent"
+    ui:
+      surface: "Copilot Studio (maker)"
+      path: "Tools > tool > Details > Additional details > Ask the end user before running"
+      docs: "https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent#view-and-make-changes-to-your-tool-configuration"
+    api: null
+    note: "Maker-side, per tool."
+  - governs: "Human-in-the-loop policy for Work IQ agents and agent flows"
+    scope: "tenant"
+    ui: null
+    api: null
 confidence: "low"
 created: "2026-11-15"
-updated: "2026-11-15"
+updated: "2026-11-16"
 roadmapModified: "2026-10-19T23:15:15"
 changes:
   - date: "2026-11-15"
     note: "New briefing: Work IQ human in the loop, in development; roadmap text only."
-version: 1
+  - date: "2026-11-16"
+    note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
+version: 2
 ---
 
 ## What's changing
@@ -91,9 +120,20 @@ Agents and agent flows using Work IQ, Worldwide cloud, web. Sovereign cloud avai
 - [ ] Measure how long runs wait for approval.
 - [ ] Review whether approvals are being granted without scrutiny.
 
-## Admin controls
+## Governance controls
 
-None published. No portal path, policy or PowerShell control has been described. Watch Message center and Work IQ documentation.
+<p class="controls__lead">Where each control lives. The left column says what the setting decides and how far it reaches; the middle gives the admin centre and the exact path; the right gives the script, API or command that does the same. <em>Not yet documented</em> means Microsoft has not published a control for that surface, so there is nothing to configure yet.</p>
+
+<table class="controls">
+<thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
+<tbody>
+<tr><td data-label="Control"><strong>Work IQ MCP policy on or off for the tenant</strong><br><small>Tenant</small><br><small class="controls__note">Mutation operations such as sending mail are disallowed by default until enabled.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Work IQ MCP › Policy <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp#open-policy-settings-in-the-microsoft-365-admin-center" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether an agent asks the user before running a tool</strong><br><small>Agent</small><br><small class="controls__note">Maker-side, per tool.</small></td><td data-label="Admin UI"><strong>Copilot Studio (maker)</strong><br>Tools › tool › Details › Additional details › Ask the end user before running <a href="https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent#view-and-make-changes-to-your-tool-configuration" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Human-in-the-loop policy for Work IQ agents and agent flows</strong><br><small>Tenant</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+</tbody>
+</table>
+
+Nothing specific to this capability is documented. The closest administrative control is the Work IQ MCP policy's default of refusing data-changing operations, which forces a deliberate decision before agents can act. Approval prompts in Copilot Studio are a maker setting and cannot be mandated centrally, as the [human approval briefing](/features/copilot-studio-require-human-approval-for-tool-calls/) explains.
 
 ## Open questions
 

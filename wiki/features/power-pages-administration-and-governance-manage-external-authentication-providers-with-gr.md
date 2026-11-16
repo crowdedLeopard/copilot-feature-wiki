@@ -28,16 +28,46 @@ sources:
   - title: "Manage website security from the Power Platform admin center"
     url: "https://learn.microsoft.com/power-pages/admin/admin-center-security"
     kind: "learn"
+  - title: "Which external authentication providers sites in an environment may use (Power Platform admin center)"
+    url: "https://learn.microsoft.com/power-pages/security/external-auth-control#configure-authentication-governance-controls"
+    kind: "learn"
+  - title: "Public visibility for non-production sites (Power Platform admin center)"
+    url: "https://learn.microsoft.com/power-pages/admin/site-visibility-governance"
+    kind: "learn"
+  - title: "Public visibility for non-production sites (PowerShell)"
+    url: "https://learn.microsoft.com/power-pages/security/site-visibility#permissions-required-to-change-site-visibility"
+    kind: "learn"
 videos: []
 related: ["managed-environments","data-policies","agent-identity"]
+controls:
+  - governs: "Which external authentication providers sites in an environment may use"
+    scope: "environment"
+    ui:
+      surface: "Power Platform admin center"
+      path: "Manage > Power Pages > Settings > Authentication > option > environment > Manage"
+      docs: "https://learn.microsoft.com/power-pages/security/external-auth-control#configure-authentication-governance-controls"
+    api: null
+    note: "Values: All sites, All sites except specific sites, Specific sites, None of the sites."
+  - governs: "Public visibility for non-production sites"
+    scope: "tenant"
+    ui:
+      surface: "Power Platform admin center"
+      path: "Manage > Power Pages > Settings > Set site visibility to public access for non-production sites"
+      docs: "https://learn.microsoft.com/power-pages/admin/site-visibility-governance"
+    api:
+      kind: "powershell"
+      call: "Set-TenantSettings -RequestBody @{ powerPlatform = @{ powerPages = @{ enableSystemAdminsToChangeSiteVisibility = $false } } }"
+      docs: "https://learn.microsoft.com/power-pages/security/site-visibility#permissions-required-to-change-site-visibility"
 confidence: "medium"
 created: "2026-11-14"
-updated: "2026-11-14"
+updated: "2026-11-16"
 roadmapModified: "2026-10-23T22:45:54"
 changes:
   - date: "2026-11-14"
     note: "New briefing from roadmap item 578062; roadmap text only."
-version: 1
+  - date: "2026-11-16"
+    note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
+version: 2
 ---
 
 ## What's changing
@@ -90,9 +120,19 @@ Power Platform administrators and Power Pages makers. Clouds: Worldwide, GCC, GC
 - [ ] Review exceptions on a schedule.
 - [ ] Check sign-in failures after enforcement.
 
-## Admin controls
+## Governance controls
 
-Power Platform admin center > Manage > Power Pages > Governance settings > Authentication providers, per the roadmap. Details on PowerShell or API control are not yet published.
+<p class="controls__lead">Where each control lives. The left column says what the setting decides and how far it reaches; the middle gives the admin centre and the exact path; the right gives the script, API or command that does the same. <em>Not yet documented</em> means Microsoft has not published a control for that surface, so there is nothing to configure yet.</p>
+
+<table class="controls">
+<thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
+<tbody>
+<tr><td data-label="Control"><strong>Which external authentication providers sites in an environment may use</strong><br><small>Environment</small><br><small class="controls__note">Values: All sites, All sites except specific sites, Specific sites, None of the sites.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Power Pages › Settings › Authentication › option › environment › Manage <a href="https://learn.microsoft.com/power-pages/security/external-auth-control#configure-authentication-governance-controls" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Public visibility for non-production sites</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Power Pages › Settings › Set site visibility to public access for non-production sites <a href="https://learn.microsoft.com/power-pages/admin/site-visibility-governance" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-TenantSettings -RequestBody @{ powerPlatform = @{ powerPages = @{ enableSystemAdminsToChangeSiteVisibility = $false } } }</code> <a href="https://learn.microsoft.com/power-pages/security/site-visibility#permissions-required-to-change-site-visibility" rel="noopener" class="controls__docs">Learn</a></td></tr>
+</tbody>
+</table>
+
+The authentication governance setting has no documented API; the site visibility setting does, through the tenant settings cmdlet. Blocking a provider overrides maker configuration, and sites that already use it stop authenticating users through it, so audit identity providers per site before enforcing. Power Platform admin is required for both settings.
 
 ## Open questions
 

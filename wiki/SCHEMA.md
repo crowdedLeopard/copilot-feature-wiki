@@ -75,9 +75,39 @@ tag page. Groups: cloud, product, capability, licensing, security, governance, d
 4. **Cost and licensing**: licences required, meters, credits, hidden costs (storage, admin time). Cite the Learn page.
 5. **Scope**: who sees it, which roles, clouds (Worldwide, GCC, GCC High, DoD), platforms, tenants.
 6. **Governance guidance**: a checklist under three headings: Before rollout, At rollout, After rollout. Every item starts with a verb.
-7. **Admin controls**: where the switch is (portal path, policy, PowerShell, Graph). If none exists yet, say so plainly.
+7. **Governance controls**: a table, one row per control, that says where the control lives on both
+   surfaces: the admin UI (which admin centre, exact navigation path) and the API or automation route
+   (PowerShell cmdlet, Microsoft Graph endpoint, Power Platform API, pac CLI). Each side links to the
+   Microsoft Learn page that documents it. A side Microsoft has not documented is printed as "Not yet
+   documented"; a row with both sides undocumented is how the page states that a control does not
+   exist yet. Short notes follow the table: enforcement gaps, roles required, maker-side settings. See
+   "Governance controls" below.
 8. **Microsoft guidance and references**: rendered by the site from front matter `sources`.
 9. **Open questions**: what Microsoft has not said yet, what to watch in Message center.
+
+## Governance controls
+
+Service owners need to know where a control lives before they can govern a change, so every briefing
+records its controls as structured front matter (`controls`), and the renderer prints them as the
+table in section 7. One row per control. Each row has:
+
+- `governs`: what the control decides, as a noun phrase. "Which credential types makers may use",
+  not "Credentials".
+- `scope`: tenant, environment, environment-group, site, group, user, agent, app, maker or other.
+- `ui`: the admin centre by its current name ("Power Platform admin center", "Microsoft 365 admin
+  center", "Microsoft Purview portal", "Teams admin center", "Microsoft Entra admin center") and the
+  exact navigation path with " > " between steps, as Learn gives it, plus the Learn page. Maker-side
+  settings count, with surface "Copilot Studio (maker)" or "Power Apps (maker)" and scope maker or agent.
+- `api`: the kind (powershell, graph, power-platform-api, pac-cli, azure-cli, rest, other), the one-line
+  call (cmdlet and key parameters, HTTP method and endpoint, or CLI command) and the Learn reference page.
+- `note`: optional qualifier. Role required, preview status, "maker-side only".
+
+Rules. Only record what a Microsoft page documents; never infer a path, cmdlet or endpoint from a
+neighbouring feature. Where a surface is not documented, set it to null and let the page say "Not yet
+documented". Prefer the admin-centre path over the maker path when both exist, and add the maker path
+as its own row only when the maker setting is the real control. Keep to the controls that govern this
+change: availability, who can use it, data boundaries, spend, audit. Every `docs` URL is added to the
+briefing's sources automatically.
 
 ## Sources
 

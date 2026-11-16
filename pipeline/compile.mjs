@@ -12,6 +12,7 @@
  *   COMPILE_LIMIT   max items per run (default 12)
  *   COMPILE_MODEL   default claude-opus-5-5
  *   COMPILE_ONLY    comma-separated roadmap ids to force (ignores queue order)
+ *   COMPILE_TOPIC   one topic id, to spend the whole run on that topic's backlog
  *   LEARN_MCP_URL   default https://learn.microsoft.com/api/mcp (set to "off" to disable)
  */
 import fs from 'node:fs/promises';
@@ -20,13 +21,14 @@ import Anthropic from '@anthropic-ai/sdk';
 import { zodOutputFormat } from '@anthropic-ai/sdk/helpers/zod';
 import { briefingOutput } from './lib/schema.mjs';
 import { WIKI_DIR, DATA_DIR, writeJson, appendLog, today, slugify } from './lib/util.mjs';
-import { loadIndexSlugs, selectQueue, loadRawItem, loadExisting, researchBrief, writeBriefingPage, existingSlugForRoadmapId } from './lib/briefing.mjs';
+import { loadIndexSlugs, selectQueue, topicSplit, loadRawItem, loadExisting, researchBrief, writeBriefingPage, existingSlugForRoadmapId } from './lib/briefing.mjs';
 import { loadGlossary } from './lib/tags.mjs';
 
 const LIMIT = Number(process.env.COMPILE_LIMIT || 12);
 const MODEL = process.env.COMPILE_MODEL || 'claude-opus-5-5';
 const LEARN_MCP_URL = process.env.LEARN_MCP_URL || 'https://learn.microsoft.com/api/mcp';
 const ONLY = (process.env.COMPILE_ONLY || '').split(',').map((s) => s.trim()).filter(Boolean).map(Number);
+const TOPIC = (process.env.COMPILE_TOPIC || '').trim();
 
 const MS_DOMAINS = ['learn.microsoft.com', 'techcommunity.microsoft.com', 'adoption.microsoft.com', 'microsoft.com', 'devblogs.microsoft.com', 'youtube.com'];
 
@@ -82,7 +84,7 @@ async function main() {
     await summary('compile: skipped. Add a CLAUDE_CODE_OAUTH_TOKEN or ANTHROPIC_API_KEY repository secret to enable daily curation.');
     return;
   }
-  const items = await selectQueue({ limit: LIMIT, only: ONLY });
+  const items = await selectQueue({ limit: LIMIT, only: ONLY, topic: TOPIC });
   if (!items.length) { await summary('compile: queue empty, nothing to do.'); return; }
 
   const client = new Anthropic({ maxRetries: 3, timeout: 15 * 60 * 1000 });
@@ -109,7 +111,7 @@ async function main() {
       console.error(`FAILED ${q.id}: ${err.message}`);
     }
   }
-  const line = `- ${today()} compile: ${written} briefings written, ${failed} failed, ${items.length} attempted (${MODEL}, ${inTok} in / ${outTok} out tokens)`;
+  const line = `- ${today()} compile: ${written} briefings written, ${failed} failed, ${items.length} attempted (${topicSplit(items)}; ${MODEL}, ${inTok} in / ${outTok} out tokens)`;
   await appendLog(line);
   await summary(line.slice(2));
   await writeJson(path.join(DATA_DIR, 'last-compile.json'), { date: today(), path: 'api', written, failed, attempted: items.length, model: MODEL, inTok, outTok });

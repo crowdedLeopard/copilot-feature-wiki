@@ -34,16 +34,58 @@ sources:
   - title: "Microsoft Copilot reporting options for admins"
     url: "https://learn.microsoft.com/copilot/manage/copilot-admin-reports"
     kind: "learn"
+  - title: "Whether user, group and site names are concealed in reports (Microsoft 365 admin center)"
+    url: "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports#show-user-group-or-site-details-in-usage-reports"
+    kind: "learn"
+  - title: "Whether user, group and site names are concealed in reports (Microsoft Graph)"
+    url: "https://learn.microsoft.com/graph/api/resources/adminreportsettings?view=graph-rest-beta"
+    kind: "learn"
+  - title: "Consumption by policy, user, group, agent and service (Microsoft 365 admin center)"
+    url: "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits"
+    kind: "learn"
+  - title: "Consumption by policy, user, group, agent and service (Microsoft Graph)"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview"
+    kind: "learn"
 videos: []
 related: ["m365-admin-center-agent-level-pay-as-you-go-controls","copilot-studio-cost-management-m365-admin-center","m365-copilot-chat-usage-based-billing-models-model-selector","copilot-credits"]
+controls:
+  - governs: "Access to the Copilot Credits report"
+    scope: "tenant"
+    ui:
+      surface: "Microsoft 365 admin center"
+      path: "Reports > Usage > Microsoft Copilot > Credits"
+      docs: "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits"
+    api: null
+  - governs: "Whether user, group and site names are concealed in reports"
+    scope: "tenant"
+    ui:
+      surface: "Microsoft 365 admin center"
+      path: "Settings > Org settings > Services > Reports > Conceal user, group, and site names in all reports"
+      docs: "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports#show-user-group-or-site-details-in-usage-reports"
+    api:
+      kind: "graph"
+      call: "PATCH /beta/admin/reportSettings { displayConcealedNames }"
+      docs: "https://learn.microsoft.com/graph/api/resources/adminreportsettings?view=graph-rest-beta"
+  - governs: "Consumption by policy, user, group, agent and service"
+    scope: "tenant"
+    ui:
+      surface: "Microsoft 365 admin center"
+      path: "Copilot > Cost Management > Consumption"
+      docs: "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits"
+    api:
+      kind: "graph"
+      call: "/beta/copilot/costManagement (Cost Management API)"
+      docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview"
 confidence: "high"
 created: "2026-11-13"
-updated: "2026-11-13"
+updated: "2026-11-16"
 roadmapModified: "2026-10-28T23:04:31"
 changes:
   - date: "2026-11-13"
     note: "Initial briefing"
-version: 1
+  - date: "2026-11-16"
+    note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
+version: 2
 ---
 
 ## What's changing
@@ -99,11 +141,20 @@ Its limitations matter too: 30 days of history means you need to export regularl
 - Share per-agent credit totals with agent owners so design choices (grounding, generative answers) are made with cost in view.
 - Watch for GA changes to history depth and for the report's data to appear in the Cost Management dashboard.
 
-## Admin controls
+## Governance controls
 
-- Microsoft 365 admin center > **Reports** > **Usage** > **Microsoft Copilot** > **Credits**: the report; 7- or 30-day filter.
-- Microsoft 365 admin center > **Settings** > **Org settings** > **Reports**: display concealed user, group and site names.
-- Microsoft 365 admin center > **Copilot** > **Cost Management** > **Consumption**: policy-based consumption view.
+<p class="controls__lead">Where each control lives. The left column says what the setting decides and how far it reaches; the middle gives the admin centre and the exact path; the right gives the script, API or command that does the same. <em>Not yet documented</em> means Microsoft has not published a control for that surface, so there is nothing to configure yet.</p>
+
+<table class="controls">
+<thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
+<tbody>
+<tr><td data-label="Control"><strong>Access to the Copilot Credits report</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Reports › Usage › Microsoft Copilot › Credits <a href="https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether user, group and site names are concealed in reports</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Org settings › Services › Reports › Conceal user, group, and site names in all reports <a href="https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports#show-user-group-or-site-details-in-usage-reports" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /beta/admin/reportSettings { displayConcealedNames }</code> <a href="https://learn.microsoft.com/graph/api/resources/adminreportsettings?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Consumption by policy, user, group, agent and service</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Consumption <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>/beta/copilot/costManagement (Cost Management API)</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview" rel="noopener" class="controls__docs">Learn</a></td></tr>
+</tbody>
+</table>
+
+The report is a read-only surface; the only settings are who can see it and whether names are concealed. Learn's [Copilot reporting options](https://learn.microsoft.com/copilot/manage/copilot-admin-reports) lists AI Administrator among the roles that can open the Copilot usage reports. The Graph usage reports for Copilot cover licensed users, so the Credits report for pay-as-you-go in Copilot Chat has no documented API of its own; the Cost Management API is the nearest programmatic view.
 
 ## Open questions
 

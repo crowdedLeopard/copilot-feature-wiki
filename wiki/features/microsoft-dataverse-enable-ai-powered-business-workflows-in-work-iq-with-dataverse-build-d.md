@@ -31,16 +31,65 @@ sources:
   - title: "Microsoft Dataverse plugin for AI agents (preview)"
     url: "https://learn.microsoft.com/power-apps/developer/data-platform/agents-plugin/"
     kind: "learn"
+  - title: "Work IQ participation for a Dataverse environment (Power Platform admin center)"
+    url: "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-participation#environment-features-for-work-iq"
+    kind: "learn"
+  - title: "Business Applications data in Work IQ available to Copilot (tenant) (Microsoft 365 admin center)"
+    url: "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings#cascading-control-settings"
+    kind: "learn"
+  - title: "Dataverse MCP server and allowed MCP clients (Power Platform admin center)"
+    url: "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-disable"
+    kind: "learn"
+  - title: "Work IQ MCP server access in Microsoft 365 (Microsoft 365 admin center)"
+    url: "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access#work-iq-mcp-server-access-control"
+    kind: "learn"
 videos: []
 related: ["work-iq-business-skills-to-manage-your-business-processes-in-work-iq-mcp","dataverse-agent-users-entra-agent-identity","agent-identity","managed-environments"]
+controls:
+  - governs: "Work IQ participation for a Dataverse environment"
+    scope: "environment"
+    ui:
+      surface: "Power Platform admin center"
+      path: "Manage > Environments > environment > Settings > Product > Features > Work IQ"
+      docs: "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-participation#environment-features-for-work-iq"
+    api: null
+  - governs: "Business Applications data in Work IQ available to Copilot (tenant)"
+    scope: "tenant"
+    ui:
+      surface: "Microsoft 365 admin center"
+      path: "Copilot > Settings > View all > Business Applications data in Work IQ available to Copilot"
+      docs: "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings#cascading-control-settings"
+    api: null
+  - governs: "Dataverse MCP server and allowed MCP clients"
+    scope: "environment"
+    ui:
+      surface: "Power Platform admin center"
+      path: "Manage > Environments > environment > Settings > Product > Features > Dataverse Model Context Protocol"
+      docs: "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-disable"
+    api: null
+    note: "Allowed MCP Clients are listed under Advanced Settings."
+  - governs: "Work IQ MCP server access in Microsoft 365"
+    scope: "tenant"
+    ui:
+      surface: "Microsoft 365 admin center"
+      path: "Agents > Tools > Work IQ MCP > Block"
+      docs: "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access#work-iq-mcp-server-access-control"
+    api: null
+  - governs: "Who can use the Dataverse plugin from a coding agent"
+    scope: "maker"
+    ui: null
+    api: null
+    note: "Follows the signed-in developer's Dataverse security roles; no separate switch."
 confidence: "medium"
 created: "2026-11-14"
-updated: "2026-11-14"
+updated: "2026-11-16"
 roadmapModified: "2026-10-22T23:45:41"
 changes:
   - date: "2026-11-14"
     note: "New briefing from roadmap item 577815 with Learn plugin and business skills guidance."
-version: 1
+  - date: "2026-11-16"
+    note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
+version: 2
 ---
 
 ## What's changing
@@ -94,9 +143,22 @@ Developers and makers with Dataverse environments, using coding agents such as G
 - [ ] Review created tables, roles and solutions.
 - [ ] Audit use of business skills and who owns them.
 
-## Admin controls
+## Governance controls
 
-Power Platform admin center > environment Settings > Product > Features: Business Applications in Work IQ, and Dataverse Model Context Protocol, including Allowed MCP Clients under Advanced Settings. Business skills use Dataverse roles, including the Skill Sharing Role. The plugin is covered by Security and governance documentation.
+<p class="controls__lead">Where each control lives. The left column says what the setting decides and how far it reaches; the middle gives the admin centre and the exact path; the right gives the script, API or command that does the same. <em>Not yet documented</em> means Microsoft has not published a control for that surface, so there is nothing to configure yet.</p>
+
+<table class="controls">
+<thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
+<tbody>
+<tr><td data-label="Control"><strong>Work IQ participation for a Dataverse environment</strong><br><small>Environment</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › Work IQ <a href="https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-participation#environment-features-for-work-iq" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Business Applications data in Work IQ available to Copilot (tenant)</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Settings › View all › Business Applications data in Work IQ available to Copilot <a href="https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings#cascading-control-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Dataverse MCP server and allowed MCP clients</strong><br><small>Environment</small><br><small class="controls__note">Allowed MCP Clients are listed under Advanced Settings.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › Dataverse Model Context Protocol <a href="https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-disable" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Work IQ MCP server access in Microsoft 365</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Work IQ MCP › Block <a href="https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access#work-iq-mcp-server-access-control" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Who can use the Dataverse plugin from a coding agent</strong><br><small>Maker</small><br><small class="controls__note">Follows the signed-in developer's Dataverse security roles; no separate switch.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+</tbody>
+</table>
+
+The tenant setting cascades over the environment features, so turning it off in the Microsoft 365 admin center overrides every environment. None of the switches has a documented API. The [Dataverse plugin for coding agents](https://learn.microsoft.com/power-apps/developer/data-platform/agents-plugin) runs with the developer's own permissions, so environment access and security roles are the governance lever; App Access Control under Security > Identity & access in the Power Platform admin center can narrow which apps reach an environment. Business skills use Dataverse roles including the Skill Sharing Role, as described in [Business skills in Dataverse](https://learn.microsoft.com/microsoft-sales-copilot/business-skills-dataverse#enable-business-skills-in-dataverse).
 
 ## Open questions
 

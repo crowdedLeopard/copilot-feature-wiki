@@ -31,16 +31,55 @@ sources:
   - title: "Power Pages FAQs"
     url: "https://learn.microsoft.com/power-pages/faq"
     kind: "learn"
+  - title: "Diagnostic logs for a site to Azure Blob storage (Power Platform admin center)"
+    url: "https://learn.microsoft.com/power-pages/admin/view-portal-error-log#enable-diagnostic-logging"
+    kind: "learn"
+  - title: "Site traffic analytics (Power Platform admin center)"
+    url: "https://learn.microsoft.com/power-pages/admin/admin-center-analytics"
+    kind: "learn"
+  - title: "Site-level trace and debug logging (Power Pages Management app)"
+    url: "https://learn.microsoft.com/power-pages/configure/devtools-addon#enable-diagnostic-setting"
+    kind: "learn"
 videos: []
 related: ["managed-environments","data-policies"]
+controls:
+  - governs: "Diagnostic logs for a site to Azure Blob storage"
+    scope: "site"
+    ui:
+      surface: "Power Platform admin center"
+      path: "Resources > Power Pages sites > site > Site Actions > Enable diagnostics logs"
+      docs: "https://learn.microsoft.com/power-pages/admin/view-portal-error-log#enable-diagnostic-logging"
+    api: null
+  - governs: "Site traffic analytics"
+    scope: "tenant"
+    ui:
+      surface: "Power Platform admin center"
+      path: "Manage > Products > Power Pages > Analytics (preview)"
+      docs: "https://learn.microsoft.com/power-pages/admin/admin-center-analytics"
+    api: null
+    note: "Dynamics 365 admin, Power Platform admin, or System Administrator for their environments."
+  - governs: "Site-level trace and debug logging"
+    scope: "site"
+    ui:
+      surface: "Power Pages Management app"
+      path: "Website > Site settings"
+      docs: "https://learn.microsoft.com/power-pages/configure/devtools-addon#enable-diagnostic-setting"
+    api: null
+  - governs: "Tenant-wide policy for analytics and server logging"
+    scope: "tenant"
+    ui: null
+    api: null
+    note: "Not yet on Learn; the roadmap entry describes it."
 confidence: "medium"
 created: "2026-11-14"
-updated: "2026-11-14"
+updated: "2026-11-16"
 roadmapModified: "2026-10-23T22:46:07"
 changes:
   - date: "2026-11-14"
     note: "New briefing from roadmap item 578071 with related Learn logging guidance."
-version: 1
+  - date: "2026-11-16"
+    note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
+version: 2
 ---
 
 ## What's changing
@@ -95,9 +134,21 @@ Power Pages makers and administrators. Clouds: Worldwide, GCC, GCC High and DoD 
 - [ ] Review ingestion volumes and cost monthly.
 - [ ] Audit access to the Application Insights resource.
 
-## Admin controls
+## Governance controls
 
-Configuration starts in the Power Pages Set up workspace for analytics. For server logging today, use Power Pages Management to set UserTrace/Debug and use diagnostic logging from the Power Platform admin center. A tenant-wide policy control is not yet published.
+<p class="controls__lead">Where each control lives. The left column says what the setting decides and how far it reaches; the middle gives the admin centre and the exact path; the right gives the script, API or command that does the same. <em>Not yet documented</em> means Microsoft has not published a control for that surface, so there is nothing to configure yet.</p>
+
+<table class="controls">
+<thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
+<tbody>
+<tr><td data-label="Control"><strong>Diagnostic logs for a site to Azure Blob storage</strong><br><small>Site</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Resources › Power Pages sites › site › Site Actions › Enable diagnostics logs <a href="https://learn.microsoft.com/power-pages/admin/view-portal-error-log#enable-diagnostic-logging" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Site traffic analytics</strong><br><small>Tenant</small><br><small class="controls__note">Dynamics 365 admin, Power Platform admin, or System Administrator for their environments.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Products › Power Pages › Analytics (preview) <a href="https://learn.microsoft.com/power-pages/admin/admin-center-analytics" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Site-level trace and debug logging</strong><br><small>Site</small></td><td data-label="Admin UI"><strong>Power Pages Management app</strong><br>Website › Site settings <a href="https://learn.microsoft.com/power-pages/configure/devtools-addon#enable-diagnostic-setting" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Tenant-wide policy for analytics and server logging</strong><br><small>Tenant</small><br><small class="controls__note">Not yet on Learn; the roadmap entry describes it.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+</tbody>
+</table>
+
+Everything documented is per site and portal-driven. Diagnostic logging writes to a storage account the tenant pays for, so the cost control is the Azure retention policy. Activity logging to Purview for Power Pages is described in [Power Pages activity logs](https://learn.microsoft.com/power-platform/admin/activity-logging-auditing/activity-logs-power-pages) and needs no site setting. The [admin overview](https://learn.microsoft.com/power-pages/admin/admin-overview) lists which roles reach each surface.
 
 ## Open questions
 

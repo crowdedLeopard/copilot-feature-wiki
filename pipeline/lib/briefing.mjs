@@ -7,9 +7,9 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { briefingOutput, featureFrontmatter, isAllowedSourceUrl } from './schema.mjs';
-import { renderBriefing } from './render.mjs';
+import { renderBriefing, API_KIND_LABEL } from './render.mjs';
 import { RAW_DIR, WIKI_DIR, FEATURES_DIR, DATA_DIR, readJson, today } from './util.mjs';
-import { TOPIC_BY_ID, topicForProducts } from '../../config/taxonomy.mjs';
+import { TOPIC_IDS, TOPIC_BY_ID, topicForProducts } from '../../config/taxonomy.mjs';
 import { loadGlossary, saveGlossary, glossaryLines, normaliseTags, defineTags } from './tags.mjs';
 
 /** "slug | title" lines for every briefing and concept page, the set a new page may link to in `related`. */
@@ -40,21 +40,57 @@ export async function existingSlugForRoadmapId(id) {
 }
 
 /**
- * Pick the queue entries for this run. COMPILE_ONLY forces specific roadmap ids, including ones that
- * are not queued because their page is up to date; those keep their existing slug so a forced
- * refresh never creates a second page for the same feature.
+ * Pick the queue entries for this run.
+ *
+ * Every run is shared across the topics so that none of them starves. Refreshes of existing pages
+ * come first (a stale briefing is worse than a missing one), then the remaining slots are dealt
+ * round-robin across the five topics, each offering its highest-priority item. The topic that opens
+ * the deal rotates daily, so the odd extra slots do not always go to the same topics, and a topic
+ * with nothing left passes its turn, so a run is never short while anything is queued.
+ *
+ * COMPILE_TOPIC narrows a run to one topic (a catch-up). COMPILE_ONLY forces specific roadmap ids,
+ * including ones that are not queued because their page is up to date; those keep their existing
+ * slug so a forced refresh never creates a second page for the same feature.
  */
-export async function selectQueue({ limit = 12, only = [] } = {}) {
+export async function selectQueue({ limit = 12, only = [], topic = '' } = {}) {
   const queue = await readJson(path.join(DATA_DIR, 'queue.json'), { items: [] });
-  let items = queue.items;
   if (only.length) {
-    items = [];
+    const items = [];
     for (const id of only) {
       const queued = queue.items.find((q) => q.id === id);
       items.push(queued ? { ...queued, reason: 'forced' } : { id, reason: 'forced', slug: await existingSlugForRoadmapId(id), priority: 0 });
     }
+    return items.slice(0, limit);
   }
-  return items.slice(0, limit);
+  if (topic && !TOPIC_IDS.includes(topic)) throw new Error(`Unknown topic "${topic}". Use one of: ${TOPIC_IDS.join(', ')}`);
+  return shareAcrossTopics(topic ? queue.items.filter((q) => q.topic === topic) : queue.items, limit);
+}
+
+/**
+ * The fair-share selection over a queue that is already sorted best first. Pure, so it can be
+ * checked without a queue file: `day` only decides which topic opens the round-robin.
+ */
+export function shareAcrossTopics(items, limit, { day = Math.floor(Date.now() / 86400000) } = {}) {
+  const picked = items.filter((q) => q.reason !== 'no-briefing').slice(0, limit);
+  const lanes = TOPIC_IDS.map((id) => items.filter((q) => q.reason === 'no-briefing' && q.topic === id));
+  const start = day % lanes.length;
+  while (picked.length < limit && lanes.some((lane) => lane.length)) {
+    for (let i = 0; i < lanes.length && picked.length < limit; i++) {
+      const next = lanes[(start + i) % lanes.length].shift();
+      if (next) picked.push(next);
+    }
+  }
+  // Anything filed under no known topic (it should not happen; ingest drops out-of-scope items) goes last.
+  for (const q of items) {
+    if (picked.length >= limit) break;
+    if (!picked.includes(q)) picked.push(q);
+  }
+  return picked;
+}
+
+/** "copilot-studio 3, power-platform 3, modern-work 2": how a selection splits across topics, for logs. */
+export function topicSplit(items) {
+  return TOPIC_IDS.map((id) => [id, items.filter((q) => q.topic === id).length]).filter(([, n]) => n).map(([id, n]) => `${id} ${n}`).join(', ') || 'nothing';
 }
 
 /**
@@ -114,9 +150,32 @@ ${glossaryLines(glossary).join('\n') || '(empty: define every tag you use in new
 
 ## Research steps
 1. Search Microsoft Learn (MCP) for the feature, its admin controls and licensing. Open the one or two most relevant pages.
-2. If Learn has nothing yet, search web (Microsoft domains only) for the Tech Community or adoption post.
-3. Look for an official Microsoft video (Microsoft Mechanics, Microsoft 365 Community, Power Platform channels). Include only what you actually found.
-4. Then write the briefing as JSON matching the required schema. Markdown inside section strings. No H1/H2 headings inside sections (the renderer adds them); use H3 or bold for sub-labels. British English.`;
+2. For each governance control, find the Learn page that documents it on both surfaces: the admin UI (which admin centre, exact navigation path) and the API or automation route (PowerShell cmdlet, Microsoft Graph endpoint, Power Platform API, pac CLI). Copy the path and the cmdlet or endpoint as Learn states them. Where Learn does not document a surface, set that side to null; the page will print "Not yet documented". Never infer a path, cmdlet or endpoint from a similar feature.
+3. If Learn has nothing yet, search web (Microsoft domains only) for the Tech Community or adoption post.
+4. Look for an official Microsoft video (Microsoft Mechanics, Microsoft 365 Community, Power Platform channels). Include only what you actually found.
+5. Then write the briefing as JSON matching the required schema. Markdown inside section strings. No H1/H2 headings inside sections (the renderer adds them); use H3 or bold for sub-labels. British English.`;
+}
+
+/**
+ * Every Learn page a control points at must also appear in the briefing's sources, so the
+ * references section lists it. Returns a new sources array; URLs already present are left alone.
+ * Throws when a control cites a domain the wiki does not accept.
+ */
+export function mergeControlDocsIntoSources(sources, controls = []) {
+  const norm = (u) => u.replace(/\/+$/, '').toLowerCase();
+  const seen = new Set(sources.map((s) => norm(s.url)));
+  const out = [...sources];
+  for (const c of controls) {
+    for (const [side, label] of [['ui', c.ui?.surface], ['api', API_KIND_LABEL[c.api?.kind]]]) {
+      const docs = c[side]?.docs;
+      if (!docs) continue;
+      if (!isAllowedSourceUrl(docs)) throw new Error(`controls: "${c.governs}" ${side} docs URL is not on an allowed Microsoft domain: ${docs}`);
+      if (seen.has(norm(docs))) continue;
+      seen.add(norm(docs));
+      out.push({ title: `${c.governs} (${label})`, url: docs, kind: /learn\.microsoft\.com/i.test(docs) ? 'learn' : 'docs' });
+    }
+  }
+  return out;
 }
 
 /**
@@ -135,8 +194,9 @@ export async function writeBriefingPage(item, rawOutput, { slug, existingFm, ind
   const tags = normaliseTags(out.tags, item.clouds, glossary);
   const defined = defineTags(glossary, tags, out.newTags);
   if (defined.added.length || defined.filled.length || defined.stubs.length) await saveGlossary(glossary);
-  const sources = out.sources.filter((s) => isAllowedSourceUrl(s.url));
+  let sources = out.sources.filter((s) => isAllowedSourceUrl(s.url));
   if (!sources.some((s) => s.kind === 'roadmap')) sources.unshift({ title: `Microsoft 365 Roadmap ${item.id}`, url: item.roadmapUrl, kind: 'roadmap' });
+  sources = mergeControlDocsIntoSources(sources, out.controls);
   const fm = {
     title: out.title, slug, roadmapId: item.id, topic: item.topic, products: item.products, summary: out.summary,
     status: item.statusKey, releasePhase: item.releasePhase, clouds: item.clouds, platforms: item.platforms,
@@ -146,6 +206,7 @@ export async function writeBriefingPage(item, rawOutput, { slug, existingFm, ind
     audiences: out.audiences, tags,
     sources, videos: out.videos.filter((v) => isAllowedSourceUrl(v.url)),
     related: out.relatedSlugs.filter((s) => indexSlugs.some((l) => l.startsWith(s + ' |')) && s !== slug).slice(0, 6),
+    controls: out.controls,
     confidence: out.confidence, created: existingFm?.created || today(), updated: today(), roadmapModified: item.modified,
     changes: [...(existingFm?.changes || []), { date: today(), note: out.changeNote }],
     version: (existingFm?.version || 0) + 1,

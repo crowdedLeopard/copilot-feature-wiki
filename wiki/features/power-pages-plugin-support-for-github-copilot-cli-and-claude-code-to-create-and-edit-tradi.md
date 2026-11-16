@@ -28,16 +28,34 @@ sources:
   - title: "Get started with the Power Pages plugin for GitHub Copilot CLI and Claude Code"
     url: "https://learn.microsoft.com/power-pages/configure/create-code-site-using-claude-code"
     kind: "learn"
+  - title: "Downloading and uploading site content and code (Power Platform CLI)"
+    url: "https://learn.microsoft.com/power-platform/developer/cli/reference/pages"
+    kind: "learn"
 videos: []
 related: ["agent-identity"]
+controls:
+  - governs: "Downloading and uploading site content and code"
+    scope: "maker"
+    ui: null
+    api:
+      kind: "pac-cli"
+      call: "pac pages download / pac pages upload / pac pages upload-code-site"
+      docs: "https://learn.microsoft.com/power-platform/developer/cli/reference/pages"
+    note: "Runs under the developer's own sign-in and environment roles."
+  - governs: "Admin switch for the coding-agent plugin"
+    scope: "tenant"
+    ui: null
+    api: null
 confidence: "medium"
 created: "2026-11-14"
-updated: "2026-11-14"
+updated: "2026-11-16"
 roadmapModified: "2026-10-23T21:59:27"
 changes:
   - date: "2026-11-14"
     note: "New briefing from roadmap item 577900 with Learn plugin guidance."
-version: 1
+  - date: "2026-11-16"
+    note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
+version: 2
 ---
 
 ## What's changing
@@ -90,9 +108,19 @@ Developers and makers using GitHub Copilot CLI or Claude Code with the Power Pla
 - [ ] Run table permission audits after agent changes.
 - [ ] Review who has installed the plugin and which environments they target.
 
-## Admin controls
+## Governance controls
 
-No Power Platform admin control for the plugin is described. Access follows the developer's own Power Platform CLI sign-in and environment permissions, so use security roles and environment access to limit it.
+<p class="controls__lead">Where each control lives. The left column says what the setting decides and how far it reaches; the middle gives the admin centre and the exact path; the right gives the script, API or command that does the same. <em>Not yet documented</em> means Microsoft has not published a control for that surface, so there is nothing to configure yet.</p>
+
+<table class="controls">
+<thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
+<tbody>
+<tr><td data-label="Control"><strong>Downloading and uploading site content and code</strong><br><small>Maker</small><br><small class="controls__note">Runs under the developer's own sign-in and environment roles.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>Power Platform CLI</strong><br><code>pac pages download / pac pages upload / pac pages upload-code-site</code> <a href="https://learn.microsoft.com/power-platform/developer/cli/reference/pages" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Admin switch for the coding-agent plugin</strong><br><small>Tenant</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+</tbody>
+</table>
+
+The plugin drives the Power Platform CLI, so the governance surface is the CLI's: environment access, the roles the developer holds, and the [Power Platform CLI for Power Pages](https://learn.microsoft.com/power-pages/configure/power-platform-cli) guidance on source control. [Code sites](https://learn.microsoft.com/power-pages/configure/create-code-sites) follow the same path. Nothing in the admin center distinguishes uploads made by a coding agent from uploads made by hand.
 
 ## Open questions
 

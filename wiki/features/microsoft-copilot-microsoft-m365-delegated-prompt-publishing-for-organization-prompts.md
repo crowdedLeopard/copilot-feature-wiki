@@ -30,14 +30,30 @@ sources:
     kind: "learn"
 videos: []
 related: ["m365-copilot-agent-lifecycle-management-rules","m365-admin-center-copilot-credits-usage-report"]
+controls:
+  - governs: "Creating, editing, importing and pinning organisation prompts"
+    scope: "tenant"
+    ui:
+      surface: "Microsoft 365 admin center"
+      path: "Copilot > Prompts"
+      docs: "https://learn.microsoft.com/copilot/manage/organizational-prompts"
+    api: null
+    note: "AI Administrator or Search Editor; up to 1,000 prompts per tenant."
+  - governs: "Delegating prompt publishing to other roles or people"
+    scope: "tenant"
+    ui: null
+    api: null
+    note: "The delegation control this roadmap entry describes is not yet on Learn."
 confidence: "medium"
 created: "2026-11-14"
-updated: "2026-11-14"
+updated: "2026-11-16"
 roadmapModified: "2026-11-12T01:50:56"
 changes:
   - date: "2026-11-14"
     note: "New briefing from roadmap item 569425."
-version: 1
+  - date: "2026-11-16"
+    note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
+version: 2
 ---
 
 ## What's changing
@@ -88,9 +104,19 @@ Tenant-wide organisation prompts shown in Microsoft Copilot Chat, Microsoft Edge
 - Review prompt analytics for active users and submissions.
 - Audit delegate membership regularly and remove stale prompts.
 
-## Admin controls
+## Governance controls
 
-Organisation prompts are managed today under Copilot > Prompts in the Microsoft 365 admin center, which requires the AI Administrator or Search Editor role. The delegation control itself is not yet published.
+<p class="controls__lead">Where each control lives. The left column says what the setting decides and how far it reaches; the middle gives the admin centre and the exact path; the right gives the script, API or command that does the same. <em>Not yet documented</em> means Microsoft has not published a control for that surface, so there is nothing to configure yet.</p>
+
+<table class="controls">
+<thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
+<tbody>
+<tr><td data-label="Control"><strong>Creating, editing, importing and pinning organisation prompts</strong><br><small>Tenant</small><br><small class="controls__note">AI Administrator or Search Editor; up to 1,000 prompts per tenant.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Prompts <a href="https://learn.microsoft.com/copilot/manage/organizational-prompts" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Delegating prompt publishing to other roles or people</strong><br><small>Tenant</small><br><small class="controls__note">The delegation control this roadmap entry describes is not yet on Learn.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+</tbody>
+</table>
+
+Prompt management is portal-only and role-gated. Until the delegation feature is documented, the practical way to widen publishing is to assign Search Editor, which is less privileged than AI Administrator; review that assignment as part of the Copilot settings described in [Configure Copilot settings](https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center). No Graph or PowerShell route for prompts is documented.
 
 ## Open questions
 

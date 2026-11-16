@@ -25,7 +25,7 @@ const groups: [string, typeof items][] = [
     <div class="article-head" style="padding-bottom:1rem">
       <div class="eyebrow"><a href={href('/radar/')}>Radar</a><span class="sep"></span><a href={href(`/topics/${topic.id}/`)}>{topic.label}</a><span class="sep"></span><span>{items.length.toLocaleString('en-GB')} items</span></div>
       <h1 class="display">{topic.label} radar</h1>
-      <p class="standfirst">Every tracked roadmap item for this topic, newest change first. Items with a briefing link to it.</p>
+      <p class="standfirst">Every tracked roadmap item for this topic, newest change first. Items with a briefing link to it; the rest are waiting their turn; each run shares its briefings equally across the five topics.</p>
       <input class="search-box" id="radar-filter" type="search" placeholder="Filter this table" aria-label="Filter the table" style="margin-top:1.2rem;max-width:420px" />
     </div>
     {groups.filter(([, list]) => list.length).map(([label, list]) => (
@@ -42,7 +42,7 @@ const groups: [string, typeof items][] = [
                   <td class="id">{i.id}</td>
                   <td class="d">{shortRoadmapDate(i.targetDate)}</td>
                   <td class="d">{formatDate(i.modified)}</td>
-                  <td>{b ? <a class="briefed" href={featureUrl(b.data.slug)}>Read briefing</a> : <span class="muted small">—</span>}</td>
+                  <td>{b ? <a class="briefed" href={featureUrl(b.data.slug)}>Read briefing</a> : <span class="muted small" style="white-space:nowrap" title="Tracked. Waiting its turn in a later run.">Not yet briefed</span>}</td>
                 </tr>
               );
             })}

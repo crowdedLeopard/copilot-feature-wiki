@@ -34,16 +34,53 @@ sources:
   - title: "How data is protected and audited in Microsoft 365 and Microsoft Copilot"
     url: "https://learn.microsoft.com/copilot/plan/architecture-data-protection-auditing"
     kind: "learn"
+  - title: "Sensitivity labels on SharePoint and OneDrive files (prerequisite) (Microsoft Purview portal)"
+    url: "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files#how-to-enable-sensitivity-labels-for-sharepoint-and-onedrive-opt-in"
+    kind: "learn"
+  - title: "Which labelled content Copilot and agents may process (Microsoft Purview portal)"
+    url: "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about"
+    kind: "learn"
+  - title: "Which labelled content Copilot and agents may process (PowerShell)"
+    url: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy?view=exchange-ps"
+    kind: "learn"
 videos: []
 related: ["copilot-studio-mcp-tools-in-agents","purview-dlp-block-sensitive-data-in-copilot-web-search","data-policies"]
+controls:
+  - governs: "Sensitivity labels on SharePoint and OneDrive files (prerequisite)"
+    scope: "tenant"
+    ui:
+      surface: "Microsoft Purview portal"
+      path: "Solutions > Information Protection > Sensitivity labels > Turn on now"
+      docs: "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files#how-to-enable-sensitivity-labels-for-sharepoint-and-onedrive-opt-in"
+    api:
+      kind: "powershell"
+      call: "Set-SPOTenant -EnableAIPIntegration $true"
+      docs: "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files#how-to-enable-sensitivity-labels-for-sharepoint-and-onedrive-opt-in"
+  - governs: "Which labelled content Copilot and agents may process"
+    scope: "tenant"
+    ui:
+      surface: "Microsoft Purview portal"
+      path: "Data Loss Prevention > Policies > + Create policy > Custom > location Microsoft Copilot, Copilot Chat, and Copilot Cowork"
+      docs: "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about"
+    api:
+      kind: "powershell"
+      call: "New-DlpCompliancePolicy -Name <name> -Locations <location> -EnforcementPlanes @('CopilotExperiences'); New-DlpComplianceRule -RestrictAccess"
+      docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy?view=exchange-ps"
+  - governs: "Copilot Studio-side switch for labelled files"
+    scope: "agent"
+    ui: null
+    api: null
+    note: "Labels are honoured automatically according to the label's EXTRACT right; there is nothing for a maker or admin to turn on."
 confidence: "medium"
 created: "2026-11-13"
-updated: "2026-11-13"
+updated: "2026-11-16"
 roadmapModified: "2026-10-19T23:15:15"
 changes:
   - date: "2026-11-13"
     note: "Initial briefing"
-version: 1
+  - date: "2026-11-16"
+    note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
+version: 2
 ---
 
 ## What's changing
@@ -105,12 +142,20 @@ The caveat for compliance teams is that "enforced end to end" depends on how you
 - Review label inheritance on agent-generated content (Word, PowerPoint outputs).
 - Revisit the label taxonomy annually against agent usage patterns.
 
-## Admin controls
+## Governance controls
 
-- Microsoft Purview portal > **Information Protection** > **Sensitivity labels**: permissions (EXTRACT), encryption, auto-labelling.
-- Microsoft Purview portal > **Data Loss Prevention** > policy at the Microsoft 365 Copilot, Copilot Chat and Cowork location: prevent Copilot and agents processing content with specified labels.
-- Microsoft Purview portal > **DSPM for AI**: activity explorer for AI interactions with sensitive content.
-- Sensitivity labels for SharePoint and OneDrive files: enable via the Purview portal or `Set-SPOTenant -EnableAIPIntegration $true`.
+<p class="controls__lead">Where each control lives. The left column says what the setting decides and how far it reaches; the middle gives the admin centre and the exact path; the right gives the script, API or command that does the same. <em>Not yet documented</em> means Microsoft has not published a control for that surface, so there is nothing to configure yet.</p>
+
+<table class="controls">
+<thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
+<tbody>
+<tr><td data-label="Control"><strong>Sensitivity labels on SharePoint and OneDrive files (prerequisite)</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Information Protection › Sensitivity labels › Turn on now <a href="https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files#how-to-enable-sensitivity-labels-for-sharepoint-and-onedrive-opt-in" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOTenant -EnableAIPIntegration $true</code> <a href="https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files#how-to-enable-sensitivity-labels-for-sharepoint-and-onedrive-opt-in" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which labelled content Copilot and agents may process</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data Loss Prevention › Policies › + Create policy › Custom › location Microsoft Copilot, Copilot Chat, and Copilot Cowork <a href="https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpCompliancePolicy -Name &lt;name&gt; -Locations &lt;location&gt; -EnforcementPlanes @('CopilotExperiences'); New-DlpComplianceRule -RestrictAccess</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy?view=exchange-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Copilot Studio-side switch for labelled files</strong><br><small>Agent</small><br><small class="controls__note">Labels are honoured automatically according to the label's EXTRACT right; there is nothing for a maker or admin to turn on.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+</tbody>
+</table>
+
+Enforcement happens in Purview, not in Copilot Studio. The DLP policy restricts agents by label at the Copilot location; the Purview [Copilot Studio coverage page](https://learn.microsoft.com/purview/ai-copilot-studio#capabilities-supported) lists which channels and knowledge sources this applies to. Creating DLP policies needs a Purview compliance role such as Purview Data Security AI Administrator. DSPM for AI records the interactions but is a reporting surface, not a control.
 
 ## Open questions
 

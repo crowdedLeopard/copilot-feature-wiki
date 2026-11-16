@@ -31,16 +31,56 @@ sources:
   - title: "Manage meeting and events policies in Microsoft Teams"
     url: "https://learn.microsoft.com/microsoftteams/meeting-policies-overview"
     kind: "learn"
+  - title: "Expiry of recap documents for non-transcribed meetings (Teams admin center)"
+    url: "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts#configure-expiration-for-ai-summary-documents"
+    kind: "learn"
+  - title: "Intelligent recap on or off (PowerShell)"
+    url: "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts#manage-intelligent-recap-without-saving-transcripts"
+    kind: "learn"
+  - title: "Copilot in meetings and events (Teams admin center)"
+    url: "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription#manage-copilot-for-teams-meetings-and-events"
+    kind: "learn"
 videos: []
 related: ["teams-ai-generated-meeting-memory","purview-retention-last-accessed-sharepoint-onedrive"]
+controls:
+  - governs: "Expiry of recap documents for non-transcribed meetings"
+    scope: "user"
+    ui:
+      surface: "Teams admin center"
+      path: "Meetings > Meeting policies > policy > Copilot and other AI > Set a default expiration time for Intelligent Recap .docx files for non-transcribed meetings"
+      docs: "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts#configure-expiration-for-ai-summary-documents"
+    api:
+      kind: "powershell"
+      call: "Set-CsTeamsMeetingPolicy -Identity <policy> -IntelligentRecapDocxFileExpirationDays 180"
+      docs: "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts#configure-expiration-for-ai-summary-documents"
+    note: "1 to 9999 days, or -1 for no expiry."
+  - governs: "Intelligent recap on or off"
+    scope: "user"
+    ui: null
+    api:
+      kind: "powershell"
+      call: "Set-CsTeamsMeetingPolicy -Identity <policy> -AllowIntelligentRecap $false"
+      docs: "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts#manage-intelligent-recap-without-saving-transcripts"
+  - governs: "Copilot in meetings and events"
+    scope: "user"
+    ui:
+      surface: "Teams admin center"
+      path: "Meetings > Meeting policies > policy > Recording & transcription > Copilot"
+      docs: "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription#manage-copilot-for-teams-meetings-and-events"
+    api:
+      kind: "powershell"
+      call: "Set-CsTeamsMeetingPolicy -Identity <policy> -Copilot Enabled|EnabledWithTranscript|EnabledWithTranscriptDefaultOn|Disabled"
+      docs: "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription#manage-copilot-for-teams-meetings-and-events"
 confidence: "high"
 created: "2026-11-13"
-updated: "2026-11-13"
+updated: "2026-11-16"
 roadmapModified: "2026-11-04T00:02:09"
 changes:
   - date: "2026-11-13"
     note: "Initial briefing"
-version: 1
+  - date: "2026-11-16"
+    note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
+version: 2
 ---
 
 ## What's changing
@@ -101,11 +141,20 @@ The compliance question shifts from "do we allow transcripts" to "how long do AI
 - Review the expiry setting after six months against actual use.
 - Watch the companion meeting memory feature, which stores AI-generated meeting knowledge for up to five years by default.
 
-## Admin controls
+## Governance controls
 
-- Teams admin center > **Meetings** > **Meeting policies** > policy > **Copilot and other AI** > **Set a default expiration time for Intelligent Recap .docx files for non-transcribed meetings** (1 to 9999 days, -1 for none).
-- PowerShell: `Set-CsTeamsMeetingPolicy -Identity <policy> -IntelligentRecapDocxFileExpirationDays 180`; `-AllowIntelligentRecap $false` to disable recap.
-- Microsoft Purview: eDiscovery and legal hold cover the summary documents; OneDrive retention policies apply.
+<p class="controls__lead">Where each control lives. The left column says what the setting decides and how far it reaches; the middle gives the admin centre and the exact path; the right gives the script, API or command that does the same. <em>Not yet documented</em> means Microsoft has not published a control for that surface, so there is nothing to configure yet.</p>
+
+<table class="controls">
+<thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
+<tbody>
+<tr><td data-label="Control"><strong>Expiry of recap documents for non-transcribed meetings</strong><br><small>User</small><br><small class="controls__note">1 to 9999 days, or -1 for no expiry.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting policies › policy › Copilot and other AI › Set a default expiration time for Intelligent Recap .docx files for non-transcribed meetings <a href="https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts#configure-expiration-for-ai-summary-documents" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity &lt;policy&gt; -IntelligentRecapDocxFileExpirationDays 180</code> <a href="https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts#configure-expiration-for-ai-summary-documents" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Intelligent recap on or off</strong><br><small>User</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity &lt;policy&gt; -AllowIntelligentRecap $false</code> <a href="https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts#manage-intelligent-recap-without-saving-transcripts" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Copilot in meetings and events</strong><br><small>User</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting policies › policy › Recording &amp; transcription › Copilot <a href="https://learn.microsoft.com/microsoftteams/copilot-teams-transcription#manage-copilot-for-teams-meetings-and-events" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity &lt;policy&gt; -Copilot Enabled|EnabledWithTranscript|EnabledWithTranscriptDefaultOn|Disabled</code> <a href="https://learn.microsoft.com/microsoftteams/copilot-teams-transcription#manage-copilot-for-teams-meetings-and-events" rel="noopener" class="controls__docs">Learn</a></td></tr>
+</tbody>
+</table>
+
+The expiry is the control that matters for data minimisation: without it the summary document persists in the organiser's OneDrive. Both settings are meeting policy attributes, so they apply through policy assignment rather than tenant-wide, and the full parameter list is in the [Set-CsTeamsMeetingPolicy reference](https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy). Purview eDiscovery and OneDrive retention policies cover the documents independently of the expiry.
 
 ## Open questions
 

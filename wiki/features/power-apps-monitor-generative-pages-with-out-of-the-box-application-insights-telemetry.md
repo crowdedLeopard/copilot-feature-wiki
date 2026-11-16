@@ -28,16 +28,35 @@ sources:
   - title: "Microsoft 365 Roadmap item 576282"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=576282"
     kind: "roadmap"
+  - title: "Application Insights data export for an environment (Power Platform admin center)"
+    url: "https://learn.microsoft.com/power-platform/admin/set-up-export-application-insights#create-an-export-package"
+    kind: "learn"
 videos: []
 related: ["power-apps-use-power-platform-connectors-in-generative-pages","power-pages-administration-and-governance-configure-site-analytics-and-server-logging","power-pages-track-power-pages-performance-and-usage-with-monitor-hub"]
+controls:
+  - governs: "Application Insights data export for an environment"
+    scope: "environment"
+    ui:
+      surface: "Power Platform admin center"
+      path: "Manage > Data export > App Insights > New data export"
+      docs: "https://learn.microsoft.com/power-platform/admin/set-up-export-application-insights#create-an-export-package"
+    api: null
+    note: "Managed Environments only. Needs Power Platform admin and the System Administrator role in the environment."
+  - governs: "Telemetry switch for an individual generative page"
+    scope: "app"
+    ui: null
+    api: null
+    note: "Telemetry follows the environment export; there is no per-page setting."
 confidence: "high"
 created: "2026-11-15"
-updated: "2026-11-15"
+updated: "2026-11-16"
 roadmapModified: "2026-10-21T23:02:10"
 changes:
   - date: "2026-11-15"
     note: "New briefing: out-of-the-box Application Insights telemetry for generative pages, in development."
-version: 1
+  - date: "2026-11-16"
+    note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
+version: 2
 ---
 
 ## What's changing
@@ -91,9 +110,19 @@ Published generative pages in model-driven apps, in environments that meet the A
 - [ ] Review ingestion volume and cost monthly.
 - [ ] Build alerts on exceptions for critical pages.
 
-## Admin controls
+## Governance controls
 
-Configure data export under the Power Platform admin center for the environment (Export data to Application Insights). There is no per-page switch documented; telemetry follows the environment-level export. Learn also describes model-driven app telemetry events and how to query them.
+<p class="controls__lead">Where each control lives. The left column says what the setting decides and how far it reaches; the middle gives the admin centre and the exact path; the right gives the script, API or command that does the same. <em>Not yet documented</em> means Microsoft has not published a control for that surface, so there is nothing to configure yet.</p>
+
+<table class="controls">
+<thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
+<tbody>
+<tr><td data-label="Control"><strong>Application Insights data export for an environment</strong><br><small>Environment</small><br><small class="controls__note">Managed Environments only. Needs Power Platform admin and the System Administrator role in the environment.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Data export › App Insights › New data export <a href="https://learn.microsoft.com/power-platform/admin/set-up-export-application-insights#create-an-export-package" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Telemetry switch for an individual generative page</strong><br><small>App</small><br><small class="controls__note">Telemetry follows the environment export; there is no per-page setting.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+</tbody>
+</table>
+
+Once the export exists, published generative pages report page loads, unhandled errors, data API calls and navigation without any code in the page, as described under [common tasks with generative pages](https://learn.microsoft.com/power-apps/maker/model-driven-apps/generative-pages#common-tasks-with-generative-pages). The export is portal-only. Costs land in the Azure subscription that owns the Application Insights resource, so the FinOps control is the Azure daily cap and retention, not a Power Platform setting.
 
 ## Open questions
 

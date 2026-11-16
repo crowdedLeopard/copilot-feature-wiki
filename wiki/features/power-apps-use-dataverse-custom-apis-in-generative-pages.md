@@ -28,16 +28,44 @@ sources:
   - title: "Microsoft 365 Roadmap item 576284"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=576284"
     kind: "roadmap"
+  - title: "Copilot preview features in Power Apps (Power Platform admin center)"
+    url: "https://learn.microsoft.com/power-apps/maker/canvas-apps/ai-overview#enable-or-disable-copilot-features"
+    kind: "learn"
+  - title: "Application Insights telemetry for the pages (Power Platform admin center)"
+    url: "https://learn.microsoft.com/power-platform/admin/set-up-export-application-insights#create-an-export-package"
+    kind: "learn"
 videos: []
 related: ["power-apps-use-power-platform-connectors-in-generative-pages","power-apps-expand-model-access-and-maker-studio-availability-for-generative-pages-via-gith"]
+controls:
+  - governs: "Copilot preview features in Power Apps"
+    scope: "tenant"
+    ui:
+      surface: "Power Platform admin center"
+      path: "Settings > Tenant settings > Copilot in Power Apps (preview)"
+      docs: "https://learn.microsoft.com/power-apps/maker/canvas-apps/ai-overview#enable-or-disable-copilot-features"
+    api: null
+  - governs: "Application Insights telemetry for the pages"
+    scope: "environment"
+    ui:
+      surface: "Power Platform admin center"
+      path: "Manage > Data export > App Insights > New data export"
+      docs: "https://learn.microsoft.com/power-platform/admin/set-up-export-application-insights#create-an-export-package"
+    api: null
+  - governs: "Switch specific to custom APIs in generative pages"
+    scope: "environment"
+    ui: null
+    api: null
+    note: "Custom APIs run as the signed-in user and are governed by Dataverse security roles."
 confidence: "high"
 created: "2026-11-15"
-updated: "2026-11-15"
+updated: "2026-11-16"
 roadmapModified: "2026-10-21T23:02:10"
 changes:
   - date: "2026-11-15"
     note: "New briefing: Dataverse custom APIs in generative pages, in development."
-version: 1
+  - date: "2026-11-16"
+    note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
+version: 2
 ---
 
 ## What's changing
@@ -91,9 +119,20 @@ Model-driven apps only. Worldwide, GCC and GCC High per the roadmap. In-browser 
 - [ ] Monitor custom API usage and failures.
 - [ ] Review pages that call state-changing APIs when the API changes.
 
-## Admin controls
+## Governance controls
 
-No tenant-level switch is documented for this capability. Control sits with Dataverse security roles, who can create custom APIs and plug-ins, and who can edit model-driven apps. Admins can also manage solutions that carry generative pages between environments.
+<p class="controls__lead">Where each control lives. The left column says what the setting decides and how far it reaches; the middle gives the admin centre and the exact path; the right gives the script, API or command that does the same. <em>Not yet documented</em> means Microsoft has not published a control for that surface, so there is nothing to configure yet.</p>
+
+<table class="controls">
+<thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
+<tbody>
+<tr><td data-label="Control"><strong>Copilot preview features in Power Apps</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Settings › Tenant settings › Copilot in Power Apps (preview) <a href="https://learn.microsoft.com/power-apps/maker/canvas-apps/ai-overview#enable-or-disable-copilot-features" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Application Insights telemetry for the pages</strong><br><small>Environment</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Data export › App Insights › New data export <a href="https://learn.microsoft.com/power-platform/admin/set-up-export-application-insights#create-an-export-package" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Switch specific to custom APIs in generative pages</strong><br><small>Environment</small><br><small class="controls__note">Custom APIs run as the signed-in user and are governed by Dataverse security roles.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+</tbody>
+</table>
+
+Governance sits in Dataverse security: who may create plug-ins and custom APIs, and which roles can execute them. The [prerequisites](https://learn.microsoft.com/power-apps/maker/model-driven-apps/generative-pages#prerequisites) note that custom APIs are subject to Dataverse security and run in the user's context, so a page cannot escalate beyond what the user already holds. Generative pages are solution-aware, so the usual ALM review applies before promotion.
 
 ## Open questions
 

@@ -34,16 +34,60 @@ sources:
   - title: "Connect to MCP server via Microsoft 365 Copilot"
     url: "https://learn.microsoft.com/power-pages/configure/mcp-connect-clients"
     kind: "learn"
+  - title: "MCP server on or off for a site (Power Pages Management app)"
+    url: "https://learn.microsoft.com/power-pages/configure/mcp-configure-site-settings#create-site-settings"
+    kind: "learn"
+  - title: "App registration that MCP clients authenticate with (Microsoft Entra admin center)"
+    url: "https://learn.microsoft.com/power-pages/configure/mcp-configure-entra"
+    kind: "learn"
+  - title: "Public visibility of the site (Power Platform admin center)"
+    url: "https://learn.microsoft.com/power-pages/admin/site-visibility-governance"
+    kind: "learn"
+  - title: "Public visibility of the site (PowerShell)"
+    url: "https://learn.microsoft.com/power-pages/security/site-visibility#permissions-required-to-change-site-visibility"
+    kind: "learn"
 videos: []
 related: ["copilot-studio-mcp-tools-in-agents","work-iq-business-skills-to-manage-your-business-processes-in-work-iq-mcp","agent-identity"]
+controls:
+  - governs: "MCP server on or off for a site"
+    scope: "site"
+    ui:
+      surface: "Power Pages Management app"
+      path: "Website > Site settings > MCP/Enabled"
+      docs: "https://learn.microsoft.com/power-pages/configure/mcp-configure-site-settings#create-site-settings"
+    api: null
+    note: "Companion site settings cover bearer authentication for MCP clients."
+  - governs: "App registration that MCP clients authenticate with"
+    scope: "tenant"
+    ui:
+      surface: "Microsoft Entra admin center"
+      path: "Entra ID > App registrations"
+      docs: "https://learn.microsoft.com/power-pages/configure/mcp-configure-entra"
+    api: null
+  - governs: "Public visibility of the site"
+    scope: "tenant"
+    ui:
+      surface: "Power Platform admin center"
+      path: "Manage > Power Pages > Settings > Set site visibility to public access for non-production sites"
+      docs: "https://learn.microsoft.com/power-pages/admin/site-visibility-governance"
+    api:
+      kind: "powershell"
+      call: "Set-TenantSettings -RequestBody @{ powerPlatform = @{ powerPages = @{ enableSystemAdminsToChangeSiteVisibility = $false } } }"
+      docs: "https://learn.microsoft.com/power-pages/security/site-visibility#permissions-required-to-change-site-visibility"
+  - governs: "Tenant-wide switch for the Power Pages MCP server"
+    scope: "tenant"
+    ui: null
+    api: null
 confidence: "high"
 created: "2026-11-14"
-updated: "2026-11-14"
+updated: "2026-11-16"
 roadmapModified: "2026-10-22T23:45:38"
 changes:
   - date: "2026-11-14"
     note: "New briefing from roadmap item 577813 with Learn MCP setup guidance."
-version: 1
+  - date: "2026-11-16"
+    note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
+version: 2
 ---
 
 ## What's changing
@@ -96,9 +140,21 @@ Makers and admins of Power Pages sites, and users of MCP-compatible clients such
 - [ ] Review who connects and what operations they run.
 - [ ] Re-test permissions whenever tables or roles change.
 
-## Admin controls
+## Governance controls
 
-Controlled per site through Power Pages Management > Site Settings, including MCP/Enabled and the bearer authentication settings, plus app registrations in the Microsoft Entra admin center. A tenant-wide Power Platform admin switch is not yet published.
+<p class="controls__lead">Where each control lives. The left column says what the setting decides and how far it reaches; the middle gives the admin centre and the exact path; the right gives the script, API or command that does the same. <em>Not yet documented</em> means Microsoft has not published a control for that surface, so there is nothing to configure yet.</p>
+
+<table class="controls">
+<thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
+<tbody>
+<tr><td data-label="Control"><strong>MCP server on or off for a site</strong><br><small>Site</small><br><small class="controls__note">Companion site settings cover bearer authentication for MCP clients.</small></td><td data-label="Admin UI"><strong>Power Pages Management app</strong><br>Website › Site settings › MCP/Enabled <a href="https://learn.microsoft.com/power-pages/configure/mcp-configure-site-settings#create-site-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>App registration that MCP clients authenticate with</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Entra ID › App registrations <a href="https://learn.microsoft.com/power-pages/configure/mcp-configure-entra" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Public visibility of the site</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Power Pages › Settings › Set site visibility to public access for non-production sites <a href="https://learn.microsoft.com/power-pages/admin/site-visibility-governance" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-TenantSettings -RequestBody @{ powerPlatform = @{ powerPages = @{ enableSystemAdminsToChangeSiteVisibility = $false } } }</code> <a href="https://learn.microsoft.com/power-pages/security/site-visibility#permissions-required-to-change-site-visibility" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Tenant-wide switch for the Power Pages MCP server</strong><br><small>Tenant</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+</tbody>
+</table>
+
+The server is off until a site setting turns it on, and each site is governed separately; there is no inventory of MCP-enabled sites in the admin center. Data access through the server follows the site's table permissions and web roles, as the [MCP overview](https://learn.microsoft.com/power-pages/configure/mcp-overview) explains, so those remain the real boundary. Site settings can also be changed through the [Portal Management app](https://learn.microsoft.com/power-pages/configure/configure-site-settings#manage-site-settings).
 
 ## Open questions
 

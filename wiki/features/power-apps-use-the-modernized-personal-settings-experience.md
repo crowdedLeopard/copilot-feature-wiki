@@ -28,16 +28,34 @@ sources:
   - title: "Set personal options in model-driven apps"
     url: "https://learn.microsoft.com/power-apps/user/set-personal-options"
     kind: "learn"
+  - title: "New look for model-driven apps (app setting) (Power Apps (maker))"
+    url: "https://learn.microsoft.com/power-apps/user/modern-fluent-design#revert-to-the-classic-look"
+    kind: "learn"
 videos: []
 related: ["managed-environments"]
+controls:
+  - governs: "New look for model-driven apps (app setting)"
+    scope: "app"
+    ui:
+      surface: "Power Apps (maker)"
+      path: "Solutions > Add existing > More > Setting > New look for model driven apps"
+      docs: "https://learn.microsoft.com/power-apps/user/modern-fluent-design#revert-to-the-classic-look"
+    api: null
+  - governs: "Admin switch for the modern personal settings panel"
+    scope: "environment"
+    ui: null
+    api: null
+    note: "Users can switch back to the classic dialog from within the panel."
 confidence: "medium"
 created: "2026-11-14"
-updated: "2026-11-14"
+updated: "2026-11-16"
 roadmapModified: "2026-11-13T23:01:18"
 changes:
   - date: "2026-11-14"
     note: "New briefing from roadmap item 579899."
-version: 1
+  - date: "2026-11-16"
+    note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
+version: 2
 ---
 
 ## What's changing
@@ -89,9 +107,19 @@ All users of model-driven apps on the web. Roadmap clouds: Worldwide (Standard M
 - Review support tickets for missing or moved options.
 - Remove references to the classic dialog from guidance before it is retired.
 
-## Admin controls
+## Governance controls
 
-No admin control for the new experience is published. Users can switch to classic from within the panel. Related admin-set defaults, such as the organisation-wide privacy preference in System Settings, still hide the Privacy tab.
+<p class="controls__lead">Where each control lives. The left column says what the setting decides and how far it reaches; the middle gives the admin centre and the exact path; the right gives the script, API or command that does the same. <em>Not yet documented</em> means Microsoft has not published a control for that surface, so there is nothing to configure yet.</p>
+
+<table class="controls">
+<thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
+<tbody>
+<tr><td data-label="Control"><strong>New look for model-driven apps (app setting)</strong><br><small>App</small></td><td data-label="Admin UI"><strong>Power Apps (maker)</strong><br>Solutions › Add existing › More › Setting › New look for model driven apps <a href="https://learn.microsoft.com/power-apps/user/modern-fluent-design#revert-to-the-classic-look" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Admin switch for the modern personal settings panel</strong><br><small>Environment</small><br><small class="controls__note">Users can switch back to the classic dialog from within the panel.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+</tbody>
+</table>
+
+The panel ships with the modern look and has no setting of its own. Organisation defaults set by admins, such as the privacy preference in System Settings, still decide which tabs users see, and the [personal options](https://learn.microsoft.com/power-apps/user/set-personal-options) a user may change are unchanged. Display density defaults are described under [appearance settings](https://learn.microsoft.com/power-apps/user/appearance-settings#display-density).
 
 ## Open questions
 

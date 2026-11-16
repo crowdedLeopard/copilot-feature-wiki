@@ -31,16 +31,47 @@ sources:
   - title: "Microsoft Copilot reporting options for admins"
     url: "https://learn.microsoft.com/copilot/manage/copilot-admin-reports"
     kind: "learn"
+  - title: "Whether user, group and site names are concealed in reports (Microsoft 365 admin center)"
+    url: "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports#show-user-group-or-site-details-in-usage-reports"
+    kind: "learn"
+  - title: "Whether user, group and site names are concealed in reports (Microsoft Graph)"
+    url: "https://learn.microsoft.com/graph/api/resources/adminreportsettings?view=graph-rest-beta"
+    kind: "learn"
 videos: []
 related: ["m365-admin-center-copilot-credits-usage-report","m365-admin-center-agent-level-pay-as-you-go-controls"]
+controls:
+  - governs: "Access to the Copilot usage reports"
+    scope: "tenant"
+    ui:
+      surface: "Microsoft 365 admin center"
+      path: "Reports > Usage > Microsoft Copilot"
+      docs: "https://learn.microsoft.com/copilot/manage/copilot-admin-reports"
+    api: null
+  - governs: "Whether user, group and site names are concealed in reports"
+    scope: "tenant"
+    ui:
+      surface: "Microsoft 365 admin center"
+      path: "Settings > Org settings > Services > Reports > Conceal user, group, and site names in all reports"
+      docs: "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports#show-user-group-or-site-details-in-usage-reports"
+    api:
+      kind: "graph"
+      call: "PATCH /beta/admin/reportSettings { displayConcealedNames }"
+      docs: "https://learn.microsoft.com/graph/api/resources/adminreportsettings?view=graph-rest-beta"
+  - governs: "US Government cloud-specific switch for the new reports"
+    scope: "tenant"
+    ui: null
+    api: null
+    note: "Reports appear when the service rolls out; nothing is turned on."
 confidence: "medium"
 created: "2026-11-14"
-updated: "2026-11-14"
+updated: "2026-11-16"
 roadmapModified: "2026-11-03T00:14:11"
 changes:
   - date: "2026-11-14"
     note: "New briefing from roadmap item 573170."
-version: 1
+  - date: "2026-11-16"
+    note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
+version: 2
 ---
 
 ## What's changing
@@ -91,9 +122,20 @@ GCC Moderate, GCC High and DoD tenants, for admins who can open Reports > Usage 
 - Compare usage with licence assignment.
 - Review report access periodically.
 
-## Admin controls
+## Governance controls
 
-Reports > Usage in the Microsoft 365 admin center, as for existing Copilot reports. Report privacy settings for user names are a tenant setting. No new control is published.
+<p class="controls__lead">Where each control lives. The left column says what the setting decides and how far it reaches; the middle gives the admin centre and the exact path; the right gives the script, API or command that does the same. <em>Not yet documented</em> means Microsoft has not published a control for that surface, so there is nothing to configure yet.</p>
+
+<table class="controls">
+<thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
+<tbody>
+<tr><td data-label="Control"><strong>Access to the Copilot usage reports</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Reports › Usage › Microsoft Copilot <a href="https://learn.microsoft.com/copilot/manage/copilot-admin-reports" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether user, group and site names are concealed in reports</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Org settings › Services › Reports › Conceal user, group, and site names in all reports <a href="https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports#show-user-group-or-site-details-in-usage-reports" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /beta/admin/reportSettings { displayConcealedNames }</code> <a href="https://learn.microsoft.com/graph/api/resources/adminreportsettings?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>US Government cloud-specific switch for the new reports</strong><br><small>Tenant</small><br><small class="controls__note">Reports appear when the service rolls out; nothing is turned on.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+</tbody>
+</table>
+
+The reports are read-only; the governance decisions are who holds a reporting role and whether names are pseudonymised. Learn's [reporting options page](https://learn.microsoft.com/copilot/manage/copilot-admin-reports) lists AI Administrator among the roles that can open them. The [agents usage report](https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents-new) describes the commercial version of the agents report that this release brings to GCC and GCC High.
 
 ## Open questions
 

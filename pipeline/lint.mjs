@@ -54,8 +54,21 @@ async function main() {
       const ok = m[1] === 'features' ? slugs.has(m[2]) : conceptSlugs.has(m[2]);
       if (!ok) findings.warnings.push(`${where}: body link to missing ${m[1]}/${m[2]}`);
     }
-    const required = ["What's changing", 'Why it matters', 'Risk assessment', 'Cost and licensing', 'Scope', 'Governance guidance', 'Admin controls', 'Open questions'];
+    const required = ["What's changing", 'Why it matters', 'Risk assessment', 'Cost and licensing', 'Scope', 'Governance guidance', 'Governance controls', 'Open questions'];
     for (const h of required) if (!page.body.includes(`## ${h}`)) findings.warnings.push(`${where}: missing section "${h}"`);
+    // Governance controls: every briefing records where its controls live (admin UI path and API), each side sourced to Learn or marked not yet documented.
+    if (!fm.controls.length) findings.warnings.push(`${where}: no governance controls recorded (queued for refresh)`);
+    const sourceUrls = new Set(fm.sources.map((s) => s.url.replace(/\/+$/, '').toLowerCase()));
+    for (const c of fm.controls) {
+      if (!c.ui && !c.api) findings.info.push(`${where}: control "${c.governs}" has neither an admin UI nor an API documented`);
+      for (const side of ['ui', 'api']) {
+        const docs = c[side]?.docs;
+        if (!docs) continue;
+        if (!isAllowedSourceUrl(docs)) findings.warnings.push(`${where}: control "${c.governs}" ${side} docs outside allowed domains: ${docs}`);
+        else if (!sourceUrls.has(docs.replace(/\/+$/, '').toLowerCase())) findings.warnings.push(`${where}: control "${c.governs}" ${side} docs not listed in sources: ${docs}`);
+      }
+    }
+    if (!page.body.includes('<table class="controls">') && fm.controls.length) findings.warnings.push(`${where}: controls recorded in front matter but the Governance controls table is missing from the body`);
     if (fm.roadmapId) {
       const raw = await readJson(path.join(RAW_DIR, 'roadmap', 'items', `${fm.roadmapId}.json`));
       if (!raw) findings.info.push(`${where}: roadmap ${fm.roadmapId} no longer in scope or feed`);
