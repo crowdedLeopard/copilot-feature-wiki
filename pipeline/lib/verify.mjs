@@ -442,7 +442,7 @@ export function findingsComment(report) {
   if (!failing.length) return '';
   const lines = [
     `${FINDINGS_OPEN} (${report.date}, ${report.status}; checked by ${report.model})`,
-    'The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:',
+    'The independent check confirmed every statement on this page except these. Correct them as "Correcting a held briefing" in pipeline/prompts/compile-agent.md sets out, and carry the rest of the page over unchanged:',
     ...failing.map((c) => `- [${c.status}, ${c.severity}] ${c.where} / ${c.type}: ${c.claim.replace(/-->/g, '- >')}${c.quote ? ` | Found: ${c.quote.replace(/-->/g, '- >').slice(0, 300)}` : ''}${c.fix ? ` | Fix: ${c.fix.replace(/-->/g, '- >')}` : ''}${c.source && /^https?:/.test(c.source) ? ` | Source: ${c.source}` : ''}`),
     '-->',
   ];

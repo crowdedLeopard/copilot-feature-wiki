@@ -208,7 +208,15 @@ ${posts.length ? messageCenterSection(posts) : ''}## Topic
 
 ${topic ? `${topic.label}: ${topic.blurb}` : item.topic}
 
-${existing ? `## Existing briefing
+${existing ? (/<!-- verifier-findings/.test(existing) ? `## Existing briefing, held by the independent check
+
+This task is a correction. The independent check read this page and confirmed every statement on it except those listed in the verifier-findings comment at its end. Carry the rest over word for word and change only what the findings name, as "Correcting a held briefing" in pipeline/prompts/compile-agent.md sets out. Say in changeNote what was corrected.
+
+<existing_briefing>
+${existing.trim()}
+</existing_briefing>
+
+` : `## Existing briefing
 
 This page is already published. Compare its status and dates with the record above to see what moved. Its text is not evidence: pages change, so re-open the Microsoft pages behind its controls, licensing and default state before carrying anything forward. Keep what is still supported, correct what is not, and say in changeNote what is different for the reader.
 
@@ -216,7 +224,7 @@ This page is already published. Compare its status and dates with the record abo
 ${existing.trim()}
 </existing_briefing>
 
-` : ''}## Pages you may link in relatedSlugs (slug | title)
+`) : ''}## Pages you may link in relatedSlugs (slug | title)
 
 ${links.join('\n') || '(none yet)'}
 

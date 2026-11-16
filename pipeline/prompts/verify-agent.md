@@ -199,7 +199,9 @@ new claim of type `consistency`.
 - Do the rationales, the summary and the body say the same thing? A page that contradicts itself on
   a fact has a contradiction, whichever statement is right; check both against the source.
 - Does every control the governance checklist tells the reader to set, check or take stock of
-  appear in the controls table? A missing row is a minor finding, and the fix names the row to add.
+  appear in the controls table? A missing row is a minor finding. Its fix is to take the step out
+  of the checklist, or, where you read the control's path during this check, the row in full with
+  its path and page.
 
 ## Concept pages
 
@@ -318,6 +320,12 @@ Rules for the file:
   "Remove the sentence: no Microsoft page states the retention period". Where the right content is
   on a page you read, give it and the URL. Where nothing supports the claim, the fix is to remove
   it or replace it with "Not yet documented" or "Not yet published".
+- A `fix` is also the smallest change that makes the statement true: remove it, narrow it, or
+  replace it with the text you read. Do not use a fix to ask for more coverage (another control
+  row, a longer list of prerequisites, a further reference). Whatever a correction adds has never
+  been checked, and added text is the commonest reason a page fails its next check. Where a true
+  statement leaves out a qualification its page gives, the fix quotes the qualification as a
+  clause to add to that sentence, or says to remove the sentence.
 - `counts` matches the list.
 
 Before you write the file, read your list once more and ask of each supported claim: did I read
