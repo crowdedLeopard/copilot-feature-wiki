@@ -356,8 +356,11 @@ jobs:
           COMPILE_LIMIT: ${{ vars.COMPILE_LIMIT || '24' }}
         run: |
           # A run someone queued by hand (a full check, say) would be cancelled by a new one in the same lane,
-          # so the chain stands aside when a run is already waiting.
-          waiting=$(gh run list --workflow daily.yml --status queued --json databaseId --jq length)
+          # so the chain stands aside when a run is already waiting. A run held back by the concurrency group
+          # reports "pending", not "queued", so every waiting status is counted (16 Nov 2026: run 42 missed a
+          # pending full check and its dispatch cancelled it).
+          waiting=$(gh run list --workflow daily.yml --limit 30 --json databaseId,status \
+            --jq '[.[] | select(.status == "pending" or .status == "queued" or .status == "waiting" or .status == "requested")] | length')
           if [ "${waiting:-0}" != "0" ]; then
             echo "A run is already queued; the chain does not start another." >> "$GITHUB_STEP_SUMMARY"
           else
