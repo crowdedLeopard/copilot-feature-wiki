@@ -196,9 +196,9 @@ understand it on first reading, without looking anything up?
 - **Short paragraphs.** Bullets for lists and checklists. Tables only when comparing options. No
   exclamation marks. No headings above H3 inside a section; the page template adds the H2s.
 - **Length follows evidence.** A briefing on a well-documented feature usually runs 700 to 1,200
-  words, with the detail spent on cost, risk and control. Where Microsoft has published little, the
-  briefing is shorter and says so. Never pad a thin item with generic advice to make it look
-  complete.
+  words, with the detail spent on cost, risk and control, and should not pass 1,500: beyond that
+  the reader stops finding the three answers. Where Microsoft has published little, the briefing is
+  shorter and says so. Never pad a thin item with generic advice to make it look complete.
 
 ## Assessment scales
 

@@ -60,17 +60,21 @@ For each task:
 
 **Correcting a held briefing.** If the existing page in the brief ends with a
 `<!-- verifier-findings -->` comment, the verifier held that page and this task is a correction.
-The comment lists each claim that failed and the fix. Apply every fix. Where a fix removes a claim,
-remove it, or replace it with "Not yet documented" or "Not yet published", and take out anything
-that rested on it. Where a fix replaces a claim, read the replacement on the page it cites before
-you write it, and give it an `evidence` entry. If you re-open the source and it plainly states a
-claim the verifier could not find, keep the claim and put the exact sentence and its URL in
-`evidence`, so the next check finds it. Do not answer a finding by rewording the same unsupported
-claim more cautiously. Anything you add while correcting, a new control row above all, is new work
-and gets the same research as a first draft: read its path and its command, and search before
-leaving either side `null`. A correction that brings in an unchecked claim gets the page held
-again. Re-check the rest of the page as for any refresh, and say in `changeNote` what was
-corrected.
+The comment lists each claim that failed and the fix.
+
+- Apply every fix. Where a fix removes a claim, remove it, or replace it with "Not yet documented"
+  or "Not yet published", and take out anything that rested on it.
+- Where a fix replaces a claim, read the replacement on the page it cites before you write it,
+  write only the part you read, and give it an `evidence` entry.
+- If you re-open the source and it plainly states a claim the verifier could not find, keep the
+  claim and put the exact sentence and its URL in `evidence`, so the next check finds it. Do not
+  answer a finding by rewording the same unsupported claim more cautiously.
+- Anything you add while correcting, a new control row above all, is new work and gets the same
+  research as a first draft: read its path and its command, and search before leaving either side
+  `null`. A correction that brings in an unchecked claim gets the page held again.
+- A correction replaces text. Say what was corrected in `changeNote`, not in sentences added to
+  the page, and keep the page within the length the standard sets.
+- Re-check the rest of the page as for any refresh.
 
 Each task has a fixed allowance of time and credits, set by the workflow. The research guide in the
 standard fits inside it. A task that is cut off before the validator prints `OK` publishes nothing,
