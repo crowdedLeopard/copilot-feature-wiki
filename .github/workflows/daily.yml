@@ -46,6 +46,7 @@ permissions:
   contents: write
   pages: write
   id-token: write
+  actions: write # lets a curation run start the next one (pipeline/chain-next.mjs decides)
   copilot-requests: write # lets the job's token make Copilot requests, billed to the repository owner's seat
 
 # Curation runs (scheduled and manual) go one at a time because they commit back to main. A push to
@@ -290,6 +291,18 @@ jobs:
           VERIFY_GRACE_EXISTING: ${{ vars.VERIFY_GRACE_EXISTING || '1' }}
         run: node pipeline/verify-finish.mjs
 
+      # Runs chain back to back while the day's AI credits stay under the budget (the site owner's standing
+      # instruction, 16 Nov 2026: keep making the briefings). The scheduled runs remain as the fallback.
+      - name: Record the run's spend and decide whether to start another
+        id: chain
+        if: always() && github.event_name != 'push'
+        env:
+          COMPILE_CHAIN: ${{ vars.COMPILE_CHAIN || 'on' }}
+          COMPILE_DAILY_CREDITS: ${{ vars.COMPILE_DAILY_CREDITS || '15000' }}
+          RUN_WROTE: ${{ steps.auth.outputs.mode == 'api' || ((steps.auth.outputs.mode == 'copilot' || steps.auth.outputs.mode == 'claude-code') && steps.tasks.outputs.count != '0') }}
+          RUN_VERIFIED: ${{ steps.verify_tasks.outputs.count != '' && steps.verify_tasks.outputs.count != '0' }}
+        run: node pipeline/chain-next.mjs
+
       - name: Lint the wiki
         run: node pipeline/lint.mjs
 
@@ -316,6 +329,17 @@ jobs:
             git push origin HEAD:main
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
+
+      # The job's token may start a workflow_dispatch run (unlike the pushes it makes). The new run waits in
+      # the curation lane until this job has finished, then starts from the commit above.
+      - name: Start the next run
+        if: github.event_name != 'push' && steps.chain.outputs.next == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          COMPILE_LIMIT: ${{ vars.COMPILE_LIMIT || '24' }}
+        run: |
+          gh workflow run daily.yml --ref main -f compile_limit="$COMPILE_LIMIT"
+          echo "Next run queued with compile_limit=$COMPILE_LIMIT; it starts when this run finishes." >> "$GITHUB_STEP_SUMMARY"
 
       - name: Build the site
         run: npm run build

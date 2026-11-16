@@ -51,8 +51,11 @@ manual and the system prompt, and an append-only log records every run.
    whose item Microsoft cancelled or which have been gone from the roadmap for 90 days (the page keeps
    its address and is listed under `/archive/`; nothing is deleted), and queues live pages untouched
    for 120 days (180 once launched) for a re-check.
-2. **Compile** writes or rewrites a fixed number of briefings from the queue (24 per run, four runs
-   a day by default). Each run is shared equally across the five topics: refreshes of existing pages
+2. **Compile** writes or rewrites a fixed number of briefings from the queue (24 per run). Four runs a
+   day are scheduled, and a run that wrote something starts the next one as soon as it finishes while
+   the day's AI credits stay under `COMPILE_DAILY_CREDITS` (default 15,000 per UTC day; `COMPILE_CHAIN=off`
+   stops the chaining, and `pipeline/chain-next.mjs` records each run's spend in `data/spend.json` and
+   `wiki/log.md`). Each run is shared equally across the five topics: refreshes of existing pages
    first, then one item per topic in turn, most admin-relevant first, so a topic with a long queue
    such as Modern Work never waits behind the others. Every briefing is grounded with the Microsoft
    Learn MCP server and fetches from Microsoft domains, follows `pipeline/prompts/compile-agent.md`,
