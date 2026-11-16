@@ -83,25 +83,35 @@ standard points to and carry on.
 
 **Correcting a held page.** If the existing page in the brief ends with a
 `<!-- verifier-findings -->` comment, the verifier found faults in it and this task is a
-correction. The comment lists each claim that failed and the fix.
+correction. The comment lists each claim that failed and the fix, in two groups: the findings to
+correct, then the minor ones.
 
-- Apply every fix. Where a fix removes a claim, remove it, or replace it with "Not yet documented"
-  or "Not yet published", and take out anything that rested on it.
-- A fix that asks for more detail (a rate for another product, a fuller list of plans) can also be
-  met by taking out the statement it corrects, when that detail belongs on another page. Prefer
-  that to making the page longer, and link to the page that holds the detail.
-- Where a fix replaces a claim, read the replacement on the page it cites before you write it,
-  write only the part you read, and give it an `evidence` entry.
+A correction is a repair, not a rewrite. The check read the whole of the existing page and found
+fault only with the statements the comment lists. Every sentence you rewrite or add is a new
+statement that nobody has checked, and pages that fail a second check nearly always fail on text
+the correction added.
+
+- Carry over word for word the sections and control rows that no finding names. Do not
+  re-research them, reword them or tidy them.
+- For each finding to correct, make the smallest change that removes the fault: delete the claim,
+  narrow it to what the finding's "Found" text says, or put the replacement the fix words in its
+  place. Where a fix removes a claim the reader needs, say "Not yet documented" or "Not yet
+  published" in its place, and take out anything that rested on it.
+- The only new statements in a correction are the ones a finding hands you: its "Found" text, or
+  a replacement its fix words for you, linked to the finding's source. Read it on that page before
+  you write it, write only the part you read, and give it an `evidence` entry.
+- A fix that asks for more (a rate for another product, a fuller list of plans, another control
+  row, an explanation of a neighbouring setting) is met by the part that removes the fault, or by
+  taking out the statement it corrects when that detail belongs on another page. Link to the page
+  that holds the detail. Do not add a control row in a correction.
+- Leave a minor finding as it is unless removing the statement, or rewording it in the words the
+  fix gives, settles it. A minor finding may also add a page it names for a statement already on
+  the page: put that URL in `sources`.
 - If you re-open the source and it plainly states a claim the verifier could not find, keep the
   claim and put the exact sentence and its URL in `evidence`, so the next check finds it. Do not
   answer a finding by rewording the same unsupported claim more cautiously.
-- Anything you add while correcting, a new control row above all, is new work and gets the same
-  research as a first draft.
-- A correction replaces text. Say what was corrected in `changeNote`, not in sentences added to
-  the page.
-- Carry over word for word the sections and control rows that no finding names. The check
-  confirmed them, and every sentence you rewrite or add is a new statement that can fail the next
-  check. A correction that makes the page longer is usually adding where it should be replacing.
+- Say what was corrected in `changeNote`, not in sentences added to the page. The corrected page
+  is about as long as the page it replaces, or shorter.
 
 **Rewriting a page written before the concept standard.** An existing page with different headings
 and no controls table was written by hand. Keep its scope and whatever its Microsoft sources still

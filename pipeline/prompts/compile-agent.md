@@ -66,7 +66,8 @@ For each task:
 
 **Correcting a held briefing.** If the existing page in the brief ends with a
 `<!-- verifier-findings -->` comment, the verifier held that page and this task is a correction.
-The comment lists each statement that failed, what the verifier found, and the fix.
+The comment lists each statement that failed, what the verifier found, and the fix, in two groups:
+the findings to correct, then the minor ones.
 
 A correction is a repair, not a rewrite. The check read the whole of the existing page and found
 fault only with the statements the comment lists. Every sentence you reword and every row
@@ -76,26 +77,37 @@ always fail on text the correction added, not on what it was asked to fix. So:
 - **Start from the existing page and carry it over.** Every section, control row, rating and field
   that no finding names goes into your JSON word for word, copied from the existing page and its
   front matter. Do not re-research it, reword it, reorder it or tidy it.
-- **For each finding marked blocker or major, make the smallest change that removes the fault.**
-  Delete the statement, narrow it to what the finding's "Found" text says, or replace it as the fix
-  directs. Where the fix gives a replacement, read it on the page it cites before you write it,
-  write only the part you read, and give it an `evidence` entry. If the same wrong statement
-  appears in several places (the finding lists them), correct each one.
-- **For each finding marked minor, apply it only where that means rewording or removing.** A minor
-  that asks for something more (another control row, a further qualification, an extra reference)
-  can be met by narrowing or removing the statement it attaches to, or left as it is. Minor
-  findings do not hold a page; additions made to satisfy them do.
-- **Add nothing else.** No new control row unless a blocker's fix cannot be made without one, no
-  new risk, checklist step or open question, no restructured section. If a fix removes something
-  the reader needs, say "Not yet documented" or "Not yet published" in its place, and take out
-  whatever rested on it. The corrected page is no longer than the page it replaces.
+- **For each finding to correct, make the smallest change that removes the fault.** Delete the
+  statement, narrow it to what the finding's "Found" text says, or put the replacement the fix
+  words in its place. If the same wrong statement appears in several places (the finding lists
+  them), correct each one.
+- **The only new statements in a correction are the ones a finding hands you:** its "Found" text,
+  or a replacement its fix words for you, linked to the finding's source. Read it on that page
+  before you write it, write only the part you read, and give it an `evidence` entry. Anything
+  else a fix asks for is new research that nobody has checked. Where a fix says to add a row,
+  describe further controls, explain how two settings interact or cite more pages, do the part
+  that removes the fault and leave the rest out.
+- **The controls table keeps the rows it has.** A side of a row changes only where a finding names
+  that side, to the path or call the finding gives. Do not add a row in a correction: a new row is
+  a path, a page and an API side, and an API side left empty is itself a statement that needs a
+  search. Where the page wrongly said a control does not exist, take the denial out and say in one
+  sentence, from the finding's "Found" text and with its link, that the control exists. It becomes
+  a row when the page is next refreshed.
+- **Leave a minor finding as it is unless removing the statement, or rewording it in the words
+  the fix gives, settles it.** Minor findings do not hold a page; additions made to satisfy them
+  do. A minor finding may also add a page it names for a statement already on the page: put that
+  URL in `sources`. It adds no row and nothing you would have to research.
+- **Add nothing else.** No new risk, checklist step or open question, no restructured section. If
+  a fix removes something the reader needs, say "Not yet documented" or "Not yet published" in its
+  place, and take out whatever rested on it. The corrected page is about as long as the page it
+  replaces, or shorter.
 - If you re-open the source and it plainly states a claim the verifier could not find, keep the
   claim and put the exact sentence and its URL in `evidence`, so the next check finds it. Do not
   answer a finding by rewording the same unsupported claim more cautiously.
 - Change a rating, the default state or the licensing model only where a finding names it, or
   where it no longer agrees with the corrected text.
-- `evidence` needs entries only for what you changed or added. Say what was corrected in
-  `changeNote`, not in sentences added to the page.
+- `evidence` needs entries only for what you changed. Say what was corrected in `changeNote`, not
+  in sentences added to the page.
 
 Each task has a fixed allowance of time and credits, set by the workflow. The research guide in the
 standard fits inside it. A task that is cut off before the validator prints `OK` publishes nothing,
