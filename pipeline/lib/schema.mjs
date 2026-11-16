@@ -15,6 +15,28 @@ export const videoSchema = z.object({
   channel: z.string().max(100).optional(),
 });
 
+/** Where a control lives. Admin UI side: the admin centre and the exact navigation path. API side: the
+ *  cmdlet, endpoint or CLI command. Both must point at the Microsoft Learn page that documents them;
+ *  `null` means Microsoft has not documented that surface yet, which the page states as such. */
+export const CONTROL_SCOPES = ['tenant', 'environment', 'environment-group', 'site', 'group', 'user', 'agent', 'app', 'maker', 'other'];
+export const API_KINDS = ['powershell', 'graph', 'power-platform-api', 'pac-cli', 'azure-cli', 'rest', 'other'];
+
+export const controlSchema = z.object({
+  governs: z.string().min(3).max(120).describe('What the control decides, as a noun phrase: "Which credential types makers may use", "Tenant-wide availability".'),
+  scope: z.enum(CONTROL_SCOPES).describe('Where the control applies.'),
+  ui: z.object({
+    surface: z.string().min(3).max(80).describe('The admin centre or portal, by its current name: "Power Platform admin center", "Microsoft Purview portal", "Copilot Studio (maker)".'),
+    path: z.string().min(3).max(240).describe('Exact navigation path with " > " between steps, as Microsoft Learn gives it.'),
+    docs: z.string().url().describe('Microsoft Learn page that documents this setting.'),
+  }).nullable().describe('null when no admin UI control is documented.'),
+  api: z.object({
+    kind: z.enum(API_KINDS),
+    call: z.string().min(3).max(240).describe('The cmdlet and key parameters, the HTTP method and endpoint, or the CLI command. One line.'),
+    docs: z.string().url().describe('Microsoft Learn reference page for the cmdlet, endpoint or command.'),
+  }).nullable().describe('null when no programmatic control is documented.'),
+  note: z.string().max(240).optional().describe('One short qualifier if needed: role required, preview status, maker-side only.'),
+});
+
 export const changeSchema = z.object({
   date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
   note: z.string().min(3).max(300),
@@ -50,6 +72,7 @@ export const featureFrontmatter = z.object({
   sources: z.array(sourceSchema).min(1),
   videos: z.array(videoSchema).default([]),
   related: z.array(slug).default([]),
+  controls: z.array(controlSchema).default([]),
   confidence: z.enum(['high', 'medium', 'low']),
   created: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
   updated: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
@@ -84,9 +107,10 @@ export const briefingOutput = z.object({
     costAndLicensing: z.string().min(80).describe('Markdown. Licences, meters, credits, hidden costs. Say "not yet published" where unknown.'),
     scope: z.string().min(60).describe('Markdown. Users, roles, clouds, platforms, tenants affected.'),
     governance: z.string().min(200).describe('Markdown checklist with three headings: Before rollout, At rollout, After rollout. Each item actionable.'),
-    adminControls: z.string().min(60).describe('Markdown. Where the controls live (portal path, policy, PowerShell). Say if none exist yet.'),
+    governanceControls: z.string().min(40).describe('Markdown notes printed under the controls table: enforcement gaps, roles required, complementary controls, maker-side settings. Do not repeat the table.'),
     openQuestions: z.string().min(40).describe('Markdown bullets. Unknowns to watch.'),
   }),
+  controls: z.array(controlSchema).min(1).max(8).describe('Where the governance controls live, one row per control: admin UI path and API or automation equivalent, each with its Learn page, or null where Microsoft has not documented that surface. Never guess a path, cmdlet or endpoint.'),
   sources: z.array(sourceSchema).min(1).describe('Only URLs you actually opened or that came from the roadmap item. No guesses.'),
   videos: z.array(videoSchema).describe('Official Microsoft videos found via search. Empty array if none found.'),
   relatedSlugs: z.array(z.string()).describe('Slugs of existing briefings from the index that this one relates to. Empty if none.'),

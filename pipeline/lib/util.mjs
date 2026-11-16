@@ -60,28 +60,42 @@ export function stripHtml(html = '') {
     .trim();
 }
 
-/** Minimal YAML front matter writer. Values are JSON-encoded so quoting is always safe. */
+/**
+ * Minimal YAML front matter writer. Scalars and arrays of scalars are JSON-encoded (JSON is valid
+ * YAML, so quoting is always safe); objects and arrays of objects are written in block style at any
+ * depth, so nested records such as a control's `ui` and `api` entries stay readable in the page.
+ */
 export function toFrontmatter(obj) {
-  const lines = ['---'];
+  return ['---', ...yamlLines(obj, 0), '---'].join('\n');
+}
+
+const isRecord = (v) => v !== null && typeof v === 'object' && !Array.isArray(v);
+const isBlockArray = (v) => Array.isArray(v) && v.length > 0 && v.every((x) => isRecord(x));
+
+function yamlLines(obj, depth) {
+  const pad = '  '.repeat(depth);
+  const lines = [];
   for (const [k, v] of Object.entries(obj)) {
     if (v === undefined) continue;
-    if (Array.isArray(v) && v.length && typeof v[0] === 'object') {
-      lines.push(`${k}:`);
-      for (const item of v) {
-        const entries = Object.entries(item).filter(([, val]) => val !== undefined);
-        entries.forEach(([ik, iv], idx) => {
-          lines.push(`${idx === 0 ? '  - ' : '    '}${ik}: ${JSON.stringify(iv)}`);
-        });
-      }
-    } else if (v && typeof v === 'object' && !Array.isArray(v)) {
-      lines.push(`${k}:`);
-      for (const [ik, iv] of Object.entries(v)) lines.push(`  ${ik}: ${JSON.stringify(iv)}`);
+    if (isBlockArray(v)) {
+      lines.push(`${pad}${k}:`);
+      for (const item of v) lines.push(...yamlListItem(item, depth + 1));
+    } else if (isRecord(v)) {
+      lines.push(`${pad}${k}:`);
+      lines.push(...yamlLines(v, depth + 1));
     } else {
-      lines.push(`${k}: ${JSON.stringify(v)}`);
+      lines.push(`${pad}${k}: ${JSON.stringify(v)}`);
     }
   }
-  lines.push('---');
-  return lines.join('\n');
+  return lines;
+}
+
+/** One "- key: value" list item; nested records continue on indented lines under the item. */
+function yamlListItem(item, depth) {
+  const pad = '  '.repeat(depth);
+  const inner = yamlLines(item, depth + 1); // lines indented as if two levels deep
+  // The first line carries the dash; its indentation becomes "<pad>- ". Later lines keep the deeper indent.
+  return inner.map((line, i) => (i === 0 ? `${pad}- ${line.trimStart()}` : line));
 }
 
 export function parseFrontmatter(md) {

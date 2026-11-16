@@ -7,7 +7,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { briefingOutput, featureFrontmatter, isAllowedSourceUrl } from './schema.mjs';
-import { renderBriefing } from './render.mjs';
+import { renderBriefing, API_KIND_LABEL } from './render.mjs';
 import { RAW_DIR, WIKI_DIR, FEATURES_DIR, DATA_DIR, readJson, today, slugify } from './util.mjs';
 import { TOPIC_BY_ID, topicForProducts } from '../../config/taxonomy.mjs';
 
@@ -106,9 +106,32 @@ ${indexSlugs.slice(0, 400).join('\n') || '(none yet)'}
 
 ## Research steps
 1. Search Microsoft Learn (MCP) for the feature, its admin controls and licensing. Open the one or two most relevant pages.
-2. If Learn has nothing yet, search web (Microsoft domains only) for the Tech Community or adoption post.
-3. Look for an official Microsoft video (Microsoft Mechanics, Microsoft 365 Community, Power Platform channels). Include only what you actually found.
-4. Then write the briefing as JSON matching the required schema. Markdown inside section strings. No H1/H2 headings inside sections (the renderer adds them); use H3 or bold for sub-labels. British English.`;
+2. For each governance control, find the Learn page that documents it on both surfaces: the admin UI (which admin centre, exact navigation path) and the API or automation route (PowerShell cmdlet, Microsoft Graph endpoint, Power Platform API, pac CLI). Copy the path and the cmdlet or endpoint as Learn states them. Where Learn does not document a surface, set that side to null; the page will print "Not yet documented". Never infer a path, cmdlet or endpoint from a similar feature.
+3. If Learn has nothing yet, search web (Microsoft domains only) for the Tech Community or adoption post.
+4. Look for an official Microsoft video (Microsoft Mechanics, Microsoft 365 Community, Power Platform channels). Include only what you actually found.
+5. Then write the briefing as JSON matching the required schema. Markdown inside section strings. No H1/H2 headings inside sections (the renderer adds them); use H3 or bold for sub-labels. British English.`;
+}
+
+/**
+ * Every Learn page a control points at must also appear in the briefing's sources, so the
+ * references section lists it. Returns a new sources array; URLs already present are left alone.
+ * Throws when a control cites a domain the wiki does not accept.
+ */
+export function mergeControlDocsIntoSources(sources, controls = []) {
+  const norm = (u) => u.replace(/\/+$/, '').toLowerCase();
+  const seen = new Set(sources.map((s) => norm(s.url)));
+  const out = [...sources];
+  for (const c of controls) {
+    for (const [side, label] of [['ui', c.ui?.surface], ['api', API_KIND_LABEL[c.api?.kind]]]) {
+      const docs = c[side]?.docs;
+      if (!docs) continue;
+      if (!isAllowedSourceUrl(docs)) throw new Error(`controls: "${c.governs}" ${side} docs URL is not on an allowed Microsoft domain: ${docs}`);
+      if (seen.has(norm(docs))) continue;
+      seen.add(norm(docs));
+      out.push({ title: `${c.governs} (${label})`, url: docs, kind: /learn\.microsoft\.com/i.test(docs) ? 'learn' : 'docs' });
+    }
+  }
+  return out;
 }
 
 /**
@@ -121,8 +144,9 @@ export async function writeBriefingPage(item, rawOutput, { slug, existingFm, ind
     throw new Error('Output failed schema: ' + parsed.error.issues.map((i) => i.path.join('.') + ' ' + i.message).join('; '));
   }
   const out = parsed.data;
-  const sources = out.sources.filter((s) => isAllowedSourceUrl(s.url));
+  let sources = out.sources.filter((s) => isAllowedSourceUrl(s.url));
   if (!sources.some((s) => s.kind === 'roadmap')) sources.unshift({ title: `Microsoft 365 Roadmap ${item.id}`, url: item.roadmapUrl, kind: 'roadmap' });
+  sources = mergeControlDocsIntoSources(sources, out.controls);
   const fm = {
     title: out.title, slug, roadmapId: item.id, topic: item.topic, products: item.products, summary: out.summary,
     status: item.statusKey, releasePhase: item.releasePhase, clouds: item.clouds, platforms: item.platforms,
@@ -132,6 +156,7 @@ export async function writeBriefingPage(item, rawOutput, { slug, existingFm, ind
     audiences: out.audiences, tags: [...new Set(out.tags.map((t) => slugify(t)).filter(Boolean))],
     sources, videos: out.videos.filter((v) => isAllowedSourceUrl(v.url)),
     related: out.relatedSlugs.filter((s) => indexSlugs.some((l) => l.startsWith(s + ' |')) && s !== slug).slice(0, 6),
+    controls: out.controls,
     confidence: out.confidence, created: existingFm?.created || today(), updated: today(), roadmapModified: item.modified,
     changes: [...(existingFm?.changes || []), { date: today(), note: out.changeNote }],
     version: (existingFm?.version || 0) + 1,
