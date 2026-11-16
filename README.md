@@ -52,9 +52,14 @@ manual and the system prompt, and an append-only log records every run.
      briefing, billed in AI credits. No secret is needed: the job's token carries
      `copilot-requests: write`. To bill a specific user instead, add a `COPILOT_GITHUB_TOKEN` secret
      holding a fine-grained personal access token with the "Copilot Requests" permission. Model
-     `claude-opus-5.5` unless `COPILOT_MODEL` says otherwise; caps of 300 credits per briefing and
-     200 per briefing per run (`COMPILE_ITEM_MAX_CREDITS`, `COMPILE_MAX_CREDITS`), with the spend
-     recorded in `wiki/log.md` and the session transcripts kept as a run artifact for 14 days.
+     `claude-opus-5.5` unless `COPILOT_MODEL` says otherwise, falling back through
+     `COPILOT_FALLBACK_MODELS` (default `claude-sonnet-5.5,auto`) if the seat refuses it; caps of
+     300 credits per briefing and 200 per briefing per run (`COMPILE_ITEM_MAX_CREDITS`,
+     `COMPILE_MAX_CREDITS`), with the spend recorded in `wiki/log.md` and the session transcripts
+     kept as a run artifact for 14 days. The step first proves the token and model with a one-word
+     prompt, retries a session that fails fast, and explains any failure in plain English in the
+     run summary. A failed writer never stops the lint, build and deploy; one failure is a warning,
+     two in a row mark the run failed so it is noticed.
    - `claude-code`: Claude Code through the official GitHub Action on a Claude Pro or Max
      subscription (`CLAUDE_CODE_OAUTH_TOKEN` secret, from `claude setup-token`).
    - `api`: the Anthropic API directly from `pipeline/compile.mjs` (`ANTHROPIC_API_KEY` secret).
