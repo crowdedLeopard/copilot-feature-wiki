@@ -235,10 +235,12 @@ for (const i of items) {
 }
 if (stoppedForBudget) note(`Stopped at the ${fmt(BUDGET)}-credit budget for this run with ${queue.length} briefing(s) not started; they stay queued.`);
 
-const status = finished ? 'ok' : 'nothing-written';
+// A decline is a finished task but not output: a run that wrote no page at all still counts as a
+// strike, so a writer that produces nothing is noticed.
+const status = written + conceptsWritten ? 'ok' : 'nothing-written';
 const rest = finished < tasks.length ? ' The rest stay queued for the next run.' : '';
-const headline = !finished
-  ? `Ran ${items.length} session(s) with ${model} but no briefing passed validation; ${fmt(spent)} AI credits were spent and the items stay queued.`
+const headline = status !== 'ok'
+  ? `Ran ${items.length} session(s) with ${model} but no briefing passed validation${conceptsDeclined ? ` (${conceptsDeclined} concept page${conceptsDeclined === 1 ? '' : 's'} declined)` : ''}; ${fmt(spent)} AI credits were spent and the items stay queued.`
   : conceptCount
     ? `Wrote ${written} briefing${written === 1 ? '' : 's'} and ${conceptsWritten} concept page${conceptsWritten === 1 ? '' : 's'}${conceptsDeclined ? ` (${conceptsDeclined} declined)` : ''} of ${tasks.length} tasks with ${model} for ${fmt(spent)} AI credits (${fmt(perItem)} per session).${rest}`
     : `Wrote ${written} of ${tasks.length} briefings with ${model} for ${fmt(spent)} AI credits (${fmt(perItem)} per briefing).${rest}`;
