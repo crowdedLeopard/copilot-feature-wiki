@@ -34,7 +34,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { setTimeout as sleep } from 'node:timers/promises';
 import { DATA_DIR, ROOT, readJson, writeJson, parseFrontmatter } from './lib/util.mjs';
-import { runCopilot, MICROSOFT_URLS, tail } from './lib/copilot.mjs';
+import { runCopilot, MICROSOFT_URLS, tail, classifyCopilotError, explainCopilotError, cliDiagnostics, agentReplied } from './lib/copilot.mjs';
 
 const MODEL = (process.env.COPILOT_MODEL || 'claude-opus-5.5').trim();
 const FALLBACKS = (process.env.COPILOT_FALLBACK_MODELS ?? 'claude-sonnet-5.5,auto').split(',').map((s) => s.trim()).filter(Boolean);
@@ -63,31 +63,10 @@ const rel = (p) => path.relative(ROOT, p);
 const fmt = (n) => (n == null ? 'n/a' : Number(n).toLocaleString('en-GB', { maximumFractionDigits: 1 }));
 const secs = (ms) => `${Math.round((ms || 0) / 1000)}s`;
 
-// ---- What went wrong, in words an administrator can act on. Only CLI diagnostics are classified
-// (stderr, or stdout when stderr is empty); a reply from the writer itself is not an error.
-function classify(text = '') {
-  if (/max-ai-credits|invalid value for|unexpected argument|unrecognized option|unknown option|^usage:/im.test(text)) return 'config';
-  const refused = /not (supported|available|enabled|found|allowed|valid|entitled)|invalid|unsupported|unknown|disabled|does not exist|no access/i;
-  if (/reasoning[ _-]?effort/i.test(text) && refused.test(text)) return 'effort';
-  if (/\bmodel\b/i.test(text) && refused.test(text)) return 'model';
-  if (/unauthori[sz]ed|forbidden|\b40[13]\b|bad credentials|invalid token|token (is|has) (expired|invalid)|not entitled|no copilot|subscription|copilot-requests|permission denied|authentication/i.test(text)) return 'auth';
-  if (/rate limit|\b429\b|too many requests|overloaded|\b50[234]\b|timed? ?out|ECONN|ETIMEDOUT|network|socket hang/i.test(text)) return 'transient';
-  return 'unknown';
-}
-const diagnostics = (r) => (r.stderr.trim() ? r.stderr : r.stdout);
-const writerReplied = (r) => /^(DONE|FAILED)\b/m.test(r.stdout);
-function explain(kind, { model } = {}) {
-  switch (kind) {
-    case 'config': return 'Copilot CLI rejected a setting the pipeline passes. That is a pipeline bug to fix, not a problem with the Copilot seat';
-    case 'effort': return `model ${model} does not accept the requested reasoning effort`;
-    case 'model': return `model ${model} is not available to this Copilot seat`;
-    case 'auth': return 'Copilot did not accept the workflow\'s token. Check that the seat behind it has the Copilot CLI policy enabled and that the job has copilot-requests: write';
-    case 'transient': return 'Copilot was temporarily unavailable or rate-limited';
-    case 'timeout': return 'the session ran out of time';
-    case 'rejected': return 'the draft failed validation and the writer could not fix it in three tries';
-    default: return 'Copilot CLI exited with an error (the CLI output is below)';
-  }
-}
+const classify = classifyCopilotError;
+const explain = explainCopilotError;
+const diagnostics = cliDiagnostics;
+const writerReplied = agentReplied;
 
 // ---- Reporting: summary bullets, workflow annotations, outputs for later steps.
 const summaryLines = [];
@@ -146,6 +125,7 @@ async function preflight() {
       const kind = r.timedOut ? 'timeout' : classify(text);
       last = { kind, text, model: candidate };
       note(`Preflight with ${candidate}${effort ? ` (reasoning ${effort})` : ''} failed: ${explain(kind, { model: candidate })}.`);
+      if (text.trim()) note(`  CLI said: ${tail(text, 2).trim().replace(/\s+/g, ' ').slice(0, 300)}`);
       if (kind === 'effort' && effort) { effort = null; continue; }               // same model, default effort
       if ((kind === 'transient' || kind === 'unknown' || kind === 'timeout') && !retried) { retried = true; await sleep(RETRY_WAIT_MS); continue; }
       if (kind === 'config' || kind === 'auth') return { ok: false, ...last };     // no model will help
@@ -194,6 +174,7 @@ async function runTask(task) {
     item.durationMs = (item.durationMs || 0) + r.durationMs;
     item.exitCode = r.exitCode; item.timedOut = r.timedOut;
     item.reply = tail(r.stdout, 1).trim().slice(0, 200);
+    if (r.credits == null && r.usage) console.log(`[${task.id}] usage file has no credit field I recognise; top-level keys: ${Object.keys(r.usage).join(', ')}`);
     const written = await pageWrittenThisRun(task);
     console.log(`[${task.id}] attempt ${attempt}: ${r.ok ? 'session ended' : `exit ${r.exitCode ?? r.signal}${r.timedOut ? ' (timed out)' : ''}`} after ${secs(r.durationMs)}, ${fmt(r.credits)} credits${written ? ', page written' : ''}. ${item.reply}`);
     if (r.ok || written || r.timedOut) break;
