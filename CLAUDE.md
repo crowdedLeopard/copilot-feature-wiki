@@ -40,7 +40,10 @@ daily by GitHub Actions.
   `record-verification.mjs` / `pipeline/lib/verify.mjs` apply it: the verdict schema is `pipeline/lib/verify-schema.mjs`,
   severity alone decides (any blocker, or three majors, holds), a held page moves to `wiki/_held/` (not built) and
   `requeue-held.mjs` puts it at the front of the next writer run with the findings appended, up to `VERIFY_MAX_REVISIONS`
-  (3 failed checks) before it is parked. Passing pages carry `verification` in their front matter; the full report is
+  (3 failed checks) before it is parked. A correction is a repair, not a rewrite: `findingsComment` lists the faults to
+  correct and the minor findings separately, and the writer carries the rest of the page over word for word and adds no
+  control rows ("Correcting a held briefing" in `compile-agent.md`; pages that failed a second check failed on text the
+  correction had added). Passing pages carry `verification` in their front matter; the full report is
   `wiki/verification/<slug>.json`, rendered as "How this briefing was checked" by `src/components/CheckReport.astro`. Pages created before 2026-11-16 that fail
   their first check stay live as `needs-correction` with a notice (`VERIFY_GRACE_EXISTING=0` turns that off).
   `verify-finish.mjs` holds anything written in the run that was not checked, writes `data/held.json` and logs the run.

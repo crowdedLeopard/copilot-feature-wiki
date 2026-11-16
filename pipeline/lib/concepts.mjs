@@ -21,7 +21,7 @@ import { FEATURES_DIR, CONCEPTS_DIR, DATA_DIR, readJson, writeJson, today } from
 import { loadPages } from './pages.mjs';
 import { conceptOutput, conceptDecline, conceptFrontmatter, isAllowedSourceUrl } from './schema.mjs';
 import { renderConcept } from './render.mjs';
-import { HELD_DIR, MAX_REVISIONS, listHeld, readPage } from './verify.mjs';
+import { HELD_DIR, MAX_REVISIONS, listHeld, readPage, withCurrentFindingsComment } from './verify.mjs';
 import { loadGlossary, saveGlossary, glossaryLines, canonicalTag, normaliseTags, defineTags } from './tags.mjs';
 import { canonicalUrl, mergeControlDocsIntoSources } from './briefing.mjs';
 
@@ -247,7 +247,15 @@ Do not explain again what one of these already explains. Link to it instead.
 
 ${conceptLines.join('\n') || '(none yet)'}
 
-${existing ? `## Existing page
+${existing ? (/<!-- verifier-findings/.test(existing) ? `## Existing page, held by the independent check
+
+This task is a correction. The independent check read this page and found fault only with the statements listed in the verifier-findings comment at its end. Carry the rest over word for word and change only what the findings name, as "Correcting a held page" in pipeline/prompts/concept-agent.md sets out. A correction adds no control rows and does no new research beyond reading what a finding cites. Say in changeNote what was corrected.
+
+<existing_concept>
+${withCurrentFindingsComment(existing.trim())}
+</existing_concept>
+
+` : `## Existing page
 
 Its text is not evidence: pages change, so re-open the Microsoft pages behind its controls and licensing before carrying anything forward. Keep what is still supported, correct what is not, and say in changeNote what is different for the reader.
 
@@ -255,7 +263,7 @@ Its text is not evidence: pages change, so re-open the Microsoft pages behind it
 ${existing.trim()}
 </existing_concept>
 
-` : ''}## Pages you may link in relatedSlugs (slug | title)
+`) : ''}## Pages you may link in relatedSlugs (slug | title)
 
 ${linkLines.join('\n') || '(none yet)'}
 

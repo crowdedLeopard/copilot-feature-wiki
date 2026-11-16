@@ -66,21 +66,48 @@ For each task:
 
 **Correcting a held briefing.** If the existing page in the brief ends with a
 `<!-- verifier-findings -->` comment, the verifier held that page and this task is a correction.
-The comment lists each claim that failed and the fix.
+The comment lists each statement that failed, what the verifier found, and the fix, in two groups:
+the findings to correct, then the minor ones.
 
-- Apply every fix. Where a fix removes a claim, remove it, or replace it with "Not yet documented"
-  or "Not yet published", and take out anything that rested on it.
-- Where a fix replaces a claim, read the replacement on the page it cites before you write it,
-  write only the part you read, and give it an `evidence` entry.
+A correction is a repair, not a rewrite. The check read the whole of the existing page and found
+fault only with the statements the comment lists. Every sentence you reword and every row
+you add is a new statement that nobody has checked, and pages that fail a second check nearly
+always fail on text the correction added, not on what it was asked to fix. So:
+
+- **Start from the existing page and carry it over.** Every section, control row, rating and field
+  that no finding names goes into your JSON word for word, copied from the existing page and its
+  front matter. Do not re-research it, reword it, reorder it or tidy it.
+- **For each finding to correct, make the smallest change that removes the fault.** Delete the
+  statement, narrow it to what the finding's "Found" text says, or put the replacement the fix
+  words in its place. If the same wrong statement appears in several places (the finding lists
+  them), correct each one.
+- **The only new statements in a correction are the ones a finding hands you:** its "Found" text,
+  or a replacement its fix words for you, linked to the finding's source. Read it on that page
+  before you write it, write only the part you read, and give it an `evidence` entry. Anything
+  else a fix asks for is new research that nobody has checked. Where a fix says to add a row,
+  describe further controls, explain how two settings interact or cite more pages, do the part
+  that removes the fault and leave the rest out.
+- **The controls table keeps the rows it has.** A side of a row changes only where a finding names
+  that side, to the path or call the finding gives. Do not add a row in a correction: a new row is
+  a path, a page and an API side, and an API side left empty is itself a statement that needs a
+  search. Where the page wrongly said a control does not exist, take the denial out and say in one
+  sentence, from the finding's "Found" text and with its link, that the control exists. It becomes
+  a row when the page is next refreshed.
+- **Leave a minor finding as it is unless removing the statement, or rewording it in the words
+  the fix gives, settles it.** Minor findings do not hold a page; additions made to satisfy them
+  do. A minor finding may also add a page it names for a statement already on the page: put that
+  URL in `sources`. It adds no row and nothing you would have to research.
+- **Add nothing else.** No new risk, checklist step or open question, no restructured section. If
+  a fix removes something the reader needs, say "Not yet documented" or "Not yet published" in its
+  place, and take out whatever rested on it. The corrected page is about as long as the page it
+  replaces, or shorter.
 - If you re-open the source and it plainly states a claim the verifier could not find, keep the
   claim and put the exact sentence and its URL in `evidence`, so the next check finds it. Do not
   answer a finding by rewording the same unsupported claim more cautiously.
-- Anything you add while correcting, a new control row above all, is new work and gets the same
-  research as a first draft: read its path and its command, and search before leaving either side
-  `null`. A correction that brings in an unchecked claim gets the page held again.
-- A correction replaces text. Say what was corrected in `changeNote`, not in sentences added to
-  the page, and keep the page within the length the standard sets.
-- Re-check the rest of the page as for any refresh.
+- Change a rating, the default state or the licensing model only where a finding names it, or
+  where it no longer agrees with the corrected text.
+- `evidence` needs entries only for what you changed. Say what was corrected in `changeNote`, not
+  in sentences added to the page.
 
 Each task has a fixed allowance of time and credits, set by the workflow. The research guide in the
 standard fits inside it. A task that is cut off before the validator prints `OK` publishes nothing,
@@ -159,6 +186,18 @@ Notes on particular fields:
   that surface; never leave a guess in its place. A row with both set to `null` states that a
   control an administrator would expect does not exist yet. Every side that is not `null` needs a
   `docs` URL on a Microsoft domain; those pages are added to `sources` for you.
+  A `null` side is printed as "Not yet documented" and checked as a statement: the verifier
+  searches the reference for that platform, and when it finds an operation the page is held. More
+  briefings are held for this than for any other reason. The automation usually sits under the
+  platform that stores the setting (the Power Platform API, the `pac` CLI, the Dataverse Web API
+  table reference, Microsoft Graph, a workload's PowerShell module, the Edge policy reference), so
+  search that reference by name before writing `null`. The standard lists which applies, under
+  Research, question 5.
+  `path` follows the page's numbered steps in order, one label per step, with no tab or group
+  heading left out. `call` is something an administrator could run once the placeholders are filled
+  in: a parameter with its value, an HTTP method with a versioned path. A product, module or API
+  family name is not a call. `docs` is the page on which that exact path or call can be read; if
+  a row would need two reference pages, split it.
 - **evidence.** One entry for every documented fact a reader could act on: each control side that
   is not `null` (the quote is the text that gives the path, cmdlet or endpoint), the default state
   unless it is `unknown`, every licensing and cost statement, every role, limit and number, every
@@ -195,11 +234,30 @@ As the verifier:
 - Does each role, licence, limit and region keep the qualification its page gives for this
   feature's case? Is anything attributed to Microsoft that the page does not say?
 - Does any sentence present the roadmap's plan as shipped behaviour, a preview page as the final
-  design, or a neighbouring feature's control as this feature's?
+  design, or a neighbouring feature's control as this feature's? Check the governance checklist
+  too: a step that relies on a control the table marks as unconfirmed for this feature carries the
+  same condition ("once Microsoft confirms it applies").
 - For every `null` control side and every "Not yet documented" or "Not yet published": did you run
-  a search for that specific control or fact and find nothing? If you did not search, search now or
-  take the statement out. If you saw that it exists but did not read it, it is not "not
-  documented".
+  a search for that specific control or fact and find nothing? For an API side, was one of those
+  searches in the reference for the platform that stores the setting, by name, and not only for
+  the feature? If you did not search, search now or take the statement out. If you saw that it
+  exists but did not read it, it is not "not documented". The page then gives the result, not the
+  search: "Microsoft Learn documents no API for this policy at the time of writing (November
+  2026)", never "a search found none".
+- For every "Microsoft has not said", "has not confirmed" and "is not documented" about billing,
+  data policies, a default or a prerequisite: did you open the platform's own page for that rule?
+  If that page covers this feature's case, state the rule and cite it, and keep only the narrower
+  gap.
+- Find every "only", "all", "every", "always", "never", "cannot", "no way to" and "nothing". Does
+  a page say it in those terms? If not, say what the page says and stop there.
+- Does every sentence about what happens on arrival, or if nobody acts, agree with `defaultState`
+  and rest on a source? With `unknown`, the page says Microsoft has not stated it; it does not say
+  "nothing changes" or "admins opt in".
+- Does any sentence state how the feature works where Microsoft has not described it: what
+  connects to what, which account it uses, who approves? Turn it into something to confirm, or
+  remove it.
+- Compare each `ui.path` with the steps on its page, label by label, and run each `call` in your
+  head: would it work as written, and is it on the `docs` page?
 
 As the administrator:
 

@@ -436,17 +436,45 @@ export function precheckClaims(pc) {
 // ---------------------------------------------------------------------------------------------
 // Recording a verdict.
 
-/** The findings comment appended to a page so the next rewrite sees exactly what to fix. */
+const FINDINGS_HEADING = 'The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.';
+const CORRECT_HEADING = 'Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding\'s own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.';
+const MINOR_HEADING = 'These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.';
+// Pages held before the correction rules changed carry this heading, which asked for a rewrite that fixed every finding.
+const EARLIER_FINDINGS_HEADING = 'The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:';
+const FINDINGS_HEADINGS = new Set([FINDINGS_HEADING, CORRECT_HEADING, MINOR_HEADING, EARLIER_FINDINGS_HEADING]);
+const isMinorLine = (line) => /^- \[[a-z]+, minor\]/.test(line);
+
+/** The comment's text: the opening line, then the findings to correct, then the minor ones, each under its instruction. */
+function findingsBlock(open, findingLines) {
+  const correct = findingLines.filter((l) => !isMinorLine(l));
+  const minor = findingLines.filter(isMinorLine);
+  return [open, FINDINGS_HEADING, ...(correct.length ? [CORRECT_HEADING, ...correct] : []), ...(minor.length ? [MINOR_HEADING, ...minor] : []), '-->'].join('\n');
+}
+
+/**
+ * A held page's text with its findings comment laid out as findingsComment lays it out today, for the writer's
+ * brief. Pages held earlier carry one list under a heading that asked for every finding to be fixed in a rewrite.
+ */
+export function withCurrentFindingsComment(text) {
+  return String(text).replace(/<!-- verifier-findings([^\n]*)\n([\s\S]*?)\n-->/g, (whole, rest, inner) => {
+    const lines = [];
+    for (const raw of inner.split('\n')) {
+      const line = raw.trim();
+      if (!line || FINDINGS_HEADINGS.has(line)) continue;
+      if (line.startsWith('- [')) lines.push(line);
+      else if (lines.length) lines[lines.length - 1] += ` ${line}`; // a finding whose text ran over a line
+    }
+    return lines.length ? findingsBlock(`${FINDINGS_OPEN}${rest}`, lines) : whole;
+  });
+}
+
+/** The findings comment appended to a page so the next correction sees exactly what to change. */
 export function findingsComment(report) {
   const failing = report.claims.filter(isFailing);
   if (!failing.length) return '';
-  const lines = [
-    `${FINDINGS_OPEN} (${report.date}, ${report.status}; checked by ${report.model})`,
-    'The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:',
-    ...failing.map((c) => `- [${c.status}, ${c.severity}] ${c.where} / ${c.type}: ${c.claim.replace(/-->/g, '- >')}${c.quote ? ` | Found: ${c.quote.replace(/-->/g, '- >').slice(0, 300)}` : ''}${c.fix ? ` | Fix: ${c.fix.replace(/-->/g, '- >')}` : ''}${c.source && /^https?:/.test(c.source) ? ` | Source: ${c.source}` : ''}`),
-    '-->',
-  ];
-  return `\n${lines.join('\n')}\n`;
+  const oneLine = (t) => String(t).replace(/-->/g, '- >').replace(/\s*\n\s*/g, ' ');
+  const lines = failing.map((c) => `- [${c.status}, ${c.severity}] ${c.where} / ${c.type}: ${oneLine(c.claim)}${c.quote ? ` | Found: ${oneLine(c.quote).slice(0, 300)}` : ''}${c.fix ? ` | Fix: ${oneLine(c.fix)}` : ''}${c.source && /^https?:/.test(c.source) ? ` | Source: ${c.source}` : ''}`);
+  return `\n${findingsBlock(`${FINDINGS_OPEN} (${report.date}, ${report.status}; checked by ${report.model})`, lines)}\n`;
 }
 
 // Verifier sessions run several at a time, so the shared results file is written by one caller at a time.
