@@ -59,6 +59,7 @@ export const verificationSummary = z.object({
   unconfirmed: z.number().int().nonnegative(),
   contradicted: z.number().int().nonnegative(),
   attempts: z.number().int().nonnegative().default(0).describe('Consecutive holds. Two parks the page for a person.'),
+  hash: z.string().regex(/^[a-f0-9]{32}$/).optional().describe('pageHash of the text that was checked. A page whose text differs is re-checked, whatever its version says.'),
 });
 
 /** Why a page is in wiki/_held. */

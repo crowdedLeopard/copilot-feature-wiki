@@ -117,6 +117,17 @@ jobs:
       - name: Ingest the Microsoft 365 Roadmap
         run: node pipeline/ingest.mjs
 
+      # ---- Source watch (no model): re-read every Microsoft Learn page the live briefings cite. A page whose
+      # ms.date moved queues the briefings that cite it for a re-check (reason source-changed) in this run's verify
+      # step. State in data/sources.json; SOURCE_WATCH=off skips it.
+      - name: Watch the Microsoft pages briefings cite
+        if: github.event_name != 'push' && (vars.SOURCE_WATCH || 'on') != 'off'
+        continue-on-error: true
+        env:
+          SOURCE_WATCH: ${{ vars.SOURCE_WATCH || 'on' }}
+          SOURCE_WATCH_LIMIT: ${{ vars.SOURCE_WATCH_LIMIT || '800' }}
+        run: node pipeline/watch-sources.mjs
+
       # Briefings the verifier held, and live pages it found wanting, go to the front of today's writing queue so
       # the writer corrects them (with the verifier's findings in hand) before it starts anything new.
       - name: Queue held briefings for revision

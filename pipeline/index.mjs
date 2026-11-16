@@ -4,8 +4,9 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { loadPages, loadConcepts } from './lib/pages.mjs';
 import { WIKI_DIR, DATA_DIR, writeJson, appendLog, today, readJson } from './lib/util.mjs';
-import { TOPICS, ACTION } from '../config/taxonomy.mjs';
-import { listHeld } from './lib/verify.mjs';
+import { TOPICS, ACTION, VERIFICATION } from '../config/taxonomy.mjs';
+import { listHeld, verificationDue } from './lib/verify.mjs';
+import { loadSources, sourceChangesByPage } from './lib/sources.mjs';
 import { loadMessageIndex } from './lib/message-center.mjs';
 
 async function main() {
@@ -46,6 +47,8 @@ async function main() {
   }
   // Pages the verifier is holding back are not published; the index says so, with the reason, so they are not forgotten.
   const held = await listHeld();
+  const sources = await loadSources();
+  const sourceChanges = sourceChangesByPage(sources);
   if (held.length) {
     lines.push(`## Held for correction (${held.length})`, '', 'Not published. Each failed its independent check against Microsoft Learn, or has not had one yet, and is queued for the writer with the verifier\'s findings.', '');
     for (const h of held) lines.push(`- [${h.data.title}](_held/${h.slug}.md) · ${h.report?.hold?.reason || 'unverified'}${h.report?.hold?.since ? ` since ${h.report.hold.since}` : ''}. ${(h.report?.hold?.reasons || []).join('; ')}`);
@@ -67,6 +70,11 @@ async function main() {
       needsCorrection: pages.filter((p) => p.data.verification?.status === 'needs-correction').length,
       unchecked: pages.filter((p) => !p.data.verification).length,
       held: held.length,
+      // Pages whose check is due again now (text changed, a cited Microsoft page changed, or the check is old).
+      due: pages.filter((p) => p.data.verification && verificationDue(p.data, Date.now(), { body: p.body, sourceChangedAt: sourceChanges.get(p.slug) || null })).length,
+      recheckDays: VERIFICATION.recheckDays,
+      sourcesWatched: Object.keys(sources.sources || {}).length,
+      sourcesChecked: sources.generated,
     },
     messageCenter: {
       posts: messages.count || 0,
