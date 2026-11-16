@@ -27,7 +27,7 @@ import { createHash } from 'node:crypto';
 import { load as yamlLoad } from 'js-yaml';
 import { WIKI_DIR, FEATURES_DIR, CONCEPTS_DIR, DATA_DIR, readJson, writeJson, today, toFrontmatter, stripHtml } from './util.mjs';
 import { featureFrontmatter, conceptFrontmatter, isAllowedSourceUrl } from './schema.mjs';
-import { verdictSchema } from './verify-schema.mjs';
+import { verdictSchema, CLAIM_TYPES } from './verify-schema.mjs';
 
 export const HELD_DIR = path.join(WIKI_DIR, '_held');
 export const REPORT_DIR = path.join(WIKI_DIR, 'verification');
@@ -323,6 +323,42 @@ export function coverageGaps(claims, data, kind = 'briefing') {
 
 /** Evidence rules the schema cannot express. */
 /**
+ * Small departures from the contract that do not change what a claim says are repaired, not
+ * rejected: a rejected verdict costs a whole new session, and the fields involved are labels and
+ * free text. An over-long "where", claim, quote, fix, source or summary is cut to the limit; a type
+ * the contract does not list (the model wrote "limit" or "audit") becomes "behaviour". Each repair
+ * is recorded in the report's notes. Anything structural (a missing status, a bad severity, too few
+ * claims) still fails the schema and goes back to the verifier once with the message.
+ */
+export function tolerateVerdict(raw) {
+  const notes = [];
+  if (!raw || typeof raw !== 'object') return { verdict: raw, notes };
+  const cut = (text, max, what) => {
+    if (typeof text !== 'string' || text.length <= max) return text;
+    notes.push(`${what} was ${text.length} characters, cut to ${max}`);
+    return text.slice(0, max - 1).trimEnd() + '\u2026';
+  };
+  const verdict = { ...raw, summary: cut(raw.summary, 1500, 'the summary') };
+  if (Array.isArray(raw.claims)) {
+    verdict.claims = raw.claims.map((c, i) => {
+      if (!c || typeof c !== 'object') return c;
+      const label = `claim ${c.n ?? i}`;
+      const out = {
+        ...c,
+        where: cut(c.where, 120, `${label}: where`), claim: cut(c.claim, 600, `${label}: claim`),
+        source: cut(c.source, 600, `${label}: source`), quote: cut(c.quote, 1200, `${label}: quote`), fix: cut(c.fix, 1200, `${label}: fix`),
+      };
+      if (typeof c.type === 'string' && !CLAIM_TYPES.includes(c.type)) {
+        const t = c.type.trim().toLowerCase().replace(/[\s_]+/g, '-');
+        if (CLAIM_TYPES.includes(t)) { out.type = t; } else { out.type = 'behaviour'; notes.push(`${label}: type "${c.type}" is not in the contract, recorded as behaviour`); }
+      }
+      return out;
+    });
+  }
+  return { verdict, notes };
+}
+
+/**
  * The standard says risk, impact and action are judgements that can never hold a page. A verifier that rates a
  * conflict over one of them blocker or major is brought down to minor here, and the report says so, rather than
  * sending the whole verdict back for one severity.
@@ -419,7 +455,8 @@ export async function recordVerification(slug, rawVerdict, { model = 'unknown', 
   const kind = pageKind(data, loc.where);
   if (rawVerdict?.slug && rawVerdict.slug !== slug) throw new Error(`Verdict is for "${rawVerdict.slug}", not "${slug}"`);
 
-  const parsed = verdictSchema.safeParse({ ...rawVerdict, slug });
+  const tolerated = tolerateVerdict({ ...rawVerdict, slug });
+  const parsed = verdictSchema.safeParse(tolerated.verdict);
   if (!parsed.success) throw new Error('Verdict failed schema: ' + parsed.error.issues.map((i) => `${i.path.join('.')} ${i.message}`).join('; '));
   const verdict = parsed.data;
 
@@ -442,7 +479,7 @@ export async function recordVerification(slug, rawVerdict, { model = 'unknown', 
   const judged = judge(claims);
   let { status } = judged;
   const { reasons, counts } = judged;
-  const notes = [...normalised.notes];
+  const notes = [...tolerated.notes, ...normalised.notes];
   if (verdict.verdict === 'hold' && status !== 'held') notes.push('the verifier wrote "hold" but listed no blocker and fewer than three majors; the claims decide, so the page is not held');
   if (verdict.verdict === 'pass' && status === 'held') notes.push(`the verifier wrote "pass" but its claims include ${reasons.join(' and ')}; the claims decide, so the page is held`);
   for (const n of notes) console.warn(`note: ${n}`);
