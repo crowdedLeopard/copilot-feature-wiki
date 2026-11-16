@@ -28,21 +28,22 @@ const actNow = features.filter((f) => f.data.action === 'act-now').length;
       </div>
       <h1 class="display">How the ledger links together</h1>
       <p class="standfirst">
-        Every briefing and concept is a point, grouped by topic. A line joins two pages when one links to the other, or when both carry the same tag.
-        Select a point to see its ratings and everything it connects to.
+        Every briefing and concept is a point in space, grouped by topic. A line joins two pages when one links to the other, or when both carry the same tag.
+        Drag to turn the map, and select a point to see its ratings and everything it connects to.
       </p>
     </header>
 
     <section class="atlas" id="atlas" data-atlas aria-label="Atlas">
       <div class="atlas__stage atlas-plate">
-        <canvas id="atlas-canvas" tabindex="0" role="img" aria-label={`Map of ${c.briefings} briefings, ${c.concepts} concepts and ${c.tags} shared tags, grouped by topic, with ${c.links} links between them. The same pages are listed under Every page below.`}></canvas>
+        <canvas id="atlas-canvas" tabindex="0" role="img" aria-label={`Three-dimensional map of ${c.briefings} briefings, ${c.concepts} concepts and ${c.tags} shared tags, grouped by topic, with ${c.links} links between them. The same pages are listed under Every page below.`}></canvas>
         <i class="tick tick--tl"></i><i class="tick tick--tr"></i><i class="tick tick--bl"></i><i class="tick tick--br"></i>
         <div class="atlas-hud atlas-hud--tl"><span class="dot"></span><b>Release Ledger</b> — Atlas<span class="gap"></span><span class="dim">Issue of {formatDate(latest)}</span></div>
-        <div class="atlas-hud atlas-hud--tr">Drag — move<span class="gap"></span>Scroll — zoom<span class="gap"></span>Click — inspect</div>
+        <div class="atlas-hud atlas-hud--tr">Drag — turn<span class="gap"></span>Scroll — zoom<span class="gap"></span>Click — inspect</div>
         <div class="atlas__tools">
           <button type="button" id="atlas-reset" title="Return to the opening view (0)">Reset</button>
           <button type="button" id="atlas-out" aria-label="Zoom out" title="Zoom out (−)">−</button>
           <button type="button" id="atlas-in" aria-label="Zoom in" title="Zoom in (+)">+</button>
+          <button type="button" id="atlas-spin" aria-pressed="true" title="Let the map turn slowly while it is not in use">Turning</button>
         </div>
         <div class="atlas__loading">Drawing the atlas</div>
         <noscript><div class="atlas__loading" style="pointer-events:auto">The atlas needs JavaScript. Every page it shows is listed under Every page below.</div></noscript>
@@ -147,6 +148,10 @@ const actNow = features.filter((f) => f.data.action === 'act-now').length;
       <li>
         <svg viewBox="0 0 28 16" aria-hidden="true"><path d="M2 5h24" stroke="var(--ink)" stroke-width="1.1" opacity="0.6" /><path d="M2 11h24" stroke="var(--ink)" stroke-width="1" opacity="0.2" /></svg>
         <span><b>Lines.</b> A dark line is a link from one page to another. A faint line joins a page to a tag it carries.</span>
+      </li>
+      <li>
+        <svg viewBox="0 0 28 16" aria-hidden="true"><circle cx="8" cy="8" r="5.2" fill="var(--ink-2)" /><circle cx="18" cy="8" r="3.4" fill="var(--ink-3)" opacity="0.7" /><circle cx="25" cy="8" r="2" fill="var(--ink-3)" opacity="0.4" /></svg>
+        <span><b>Depth.</b> Nearer points are larger and darker, farther ones smaller and paler. Drag to turn the map, or hold Shift and drag to slide it.</span>
       </li>
     </ul>
 

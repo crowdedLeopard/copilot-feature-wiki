@@ -19,8 +19,9 @@ daily by GitHub Actions.
 - The Atlas (`/atlas/`, the home page teaser and the plate in each briefing's Related section) is one canvas renderer,
   `src/scripts/atlas/engine.ts`, with no dependencies. `src/lib/graph.ts` builds its nodes and links (briefings,
   concepts and shared tags) from the content collections at build time and serves them as `atlas.json`.
-  `src/lib/layout.ts` places them: a flat, seeded force layout with one fixed home per topic, so the same wiki always
-  gives the same map. Colours come from the `--topic-*` and `--atlas-*` tokens.
+  `src/lib/layout.ts` places them in three dimensions: a seeded force layout with one fixed home per topic, on a ring
+  around a vertical axis, so the same wiki always gives the same map. The renderer projects it with its own camera
+  (turn, tilt, zoom) and picks the opening view from the data. Colours come from the `--topic-*` and `--atlas-*` tokens.
 - Briefings are filed under one of five topics, defined in `config/taxonomy.mjs` (`TOPICS`). The topic is derived from
   an item's products, never chosen by the LLM. Pages written before November 2026 used `desk:`; `pipeline/lint.mjs`
   rewrites that line to `topic:` if one turns up.

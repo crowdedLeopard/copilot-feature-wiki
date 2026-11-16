@@ -1,6 +1,6 @@
 /**
  * The atlas graph: every briefing, concept and shared tag as a node, with the links between them,
- * laid out as a flat map by src/lib/layout.ts. Built at site build time from the content
+ * placed in three dimensions by src/lib/layout.ts. Built at site build time from the content
  * collections, so the daily run redraws it without any extra pipeline step.
  *
  * Two pages are linked when one names the other in `related` or in its text. A page is linked to a
@@ -26,8 +26,10 @@ export interface AtlasNode {
   u: string;
   /** Index into `topics`, or -1 for a concept or tag */
   d: number;
+  /** Position in map units. x and z are horizontal, y is vertical and grows downwards. */
   x: number;
   y: number;
+  z: number;
   /** Number of links */
   n: number;
   /** Briefings and concepts */
@@ -48,8 +50,8 @@ export interface AtlasTopic {
   blurb: string;
   briefed: number;
   tracked: number;
-  /** Where the topic's briefings sit: the middle of the group and its top and bottom edges. Null while the topic has no briefings. */
-  at: null | { x: number; y: number; top: number; bottom: number };
+  /** Where the topic's briefings sit: the middle of the group, how far it reaches, its top and bottom, and whether it stands above the middle of the map. Null while the topic has no briefings. */
+  at: null | { x: number; y: number; z: number; r: number; top: number; bottom: number; up: boolean };
 }
 
 export interface AtlasData {
@@ -58,8 +60,8 @@ export interface AtlasData {
   nodes: AtlasNode[];
   /** [from, to, kind] as indexes into `nodes` */
   edges: [number, number, number][];
-  /** [minX, minY, maxX, maxY] of the node positions */
-  box: [number, number, number, number];
+  /** Size of the map around its origin: the sphere that holds every node, its reach across and its reach up or down */
+  extent: { radius: number; across: number; tall: number };
   counts: { briefings: number; concepts: number; tags: number; links: number; tracked: number };
 }
 
@@ -92,12 +94,12 @@ function compute(features: Feature[], concepts: Concept[]): AtlasData {
   for (const f of [...features].sort((a, b) => a.data.created.localeCompare(b.data.created) || a.data.slug.localeCompare(b.data.slug))) {
     const d = f.data;
     add({
-      id: `f:${d.slug}`, k: 'f', t: d.title, l: shortLabel(d.title), u: featureUrl(d.slug), d: topicIndex.get(d.topic) ?? -1, x: 0, y: 0, n: 0,
+      id: `f:${d.slug}`, k: 'f', t: d.title, l: shortLabel(d.title), u: featureUrl(d.slug), d: topicIndex.get(d.topic) ?? -1, x: 0, y: 0, z: 0, n: 0,
       s: d.summary, risk: d.risk, cost: d.cost, impact: d.impact, action: d.action, status: d.status, updated: d.updated,
     });
   }
   for (const c of [...concepts].sort((a, b) => a.data.slug.localeCompare(b.data.slug))) {
-    add({ id: `c:${c.data.slug}`, k: 'c', t: c.data.title, l: shortLabel(c.data.title.replace(/:.*$/, ''), 30), u: conceptUrl(c.data.slug), d: -1, x: 0, y: 0, n: 0, s: c.data.summary, updated: c.data.updated });
+    add({ id: `c:${c.data.slug}`, k: 'c', t: c.data.title, l: shortLabel(c.data.title.replace(/:.*$/, ''), 30), u: conceptUrl(c.data.slug), d: -1, x: 0, y: 0, z: 0, n: 0, s: c.data.summary, updated: c.data.updated });
   }
 
   const pages = [
@@ -110,7 +112,7 @@ function compute(features: Feature[], concepts: Concept[]): AtlasData {
   for (const [tag, uses] of [...tagUse.entries()].sort((a, b) => a[0].localeCompare(b[0]))) {
     // A tag that only one page carries connects nothing; a tag named after a concept is that concept.
     if (uses < 2 || conceptSlugs.has(tag)) continue;
-    add({ id: `t:${tag}`, k: 't', t: tagLabel(tag), l: tagLabel(tag), u: tagUrl(tag), d: -1, x: 0, y: 0, n: 0 });
+    add({ id: `t:${tag}`, k: 't', t: tagLabel(tag), l: tagLabel(tag), u: tagUrl(tag), d: -1, x: 0, y: 0, z: 0, n: 0 });
   }
 
   // ---- Links
@@ -138,7 +140,7 @@ function compute(features: Feature[], concepts: Concept[]): AtlasData {
   const lnodes: LayoutNode[] = nodes.map((n) => ({ id: n.id, topic: n.k === 'f' ? n.d : -1, size: SIZE[n.k] }));
   const ledges: LayoutEdge[] = edges.map(([a, b, kind]) => ({ a, b, w: kind === EDGE.link ? 1 : 0.45 }));
   const placed = layout(lnodes, ledges, TOPICS.length);
-  nodes.forEach((n, i) => { n.x = placed.pos[i][0]; n.y = placed.pos[i][1]; });
+  nodes.forEach((n, i) => { [n.x, n.y, n.z] = placed.pos[i]; });
 
   // ---- Topics
   const tracked = new Map<string, number>();
@@ -147,8 +149,10 @@ function compute(features: Feature[], concepts: Concept[]): AtlasData {
     const mine = nodes.filter((n) => n.k === 'f' && n.d === i);
     let at: AtlasTopic['at'] = null;
     if (mine.length) {
-      const x = mine.reduce((s, n) => s + n.x, 0) / mine.length, y = mine.reduce((s, n) => s + n.y, 0) / mine.length;
-      at = { x: Math.round(x * 10) / 10, y: Math.round(y * 10) / 10, top: Math.min(...mine.map((n) => n.y)), bottom: Math.max(...mine.map((n) => n.y)) };
+      const mean = (pick: (n: AtlasNode) => number) => Math.round((mine.reduce((sum, n) => sum + pick(n), 0) / mine.length) * 10) / 10;
+      const x = mean((n) => n.x), y = mean((n) => n.y), z = mean((n) => n.z);
+      const r = Math.round(Math.max(...mine.map((n) => Math.hypot(n.x - x, n.y - y, n.z - z))) * 10) / 10;
+      at = { x, y, z, r, top: Math.min(...mine.map((n) => n.y)), bottom: Math.max(...mine.map((n) => n.y)), up: placed.homes[i][1] <= 0 };
     }
     return { id: t.id, label: t.label, short: t.short, blurb: t.blurb, briefed: mine.length, tracked: tracked.get(t.id) ?? 0, at };
   });
@@ -159,7 +163,7 @@ function compute(features: Feature[], concepts: Concept[]): AtlasData {
     topics,
     nodes,
     edges,
-    box: placed.box,
+    extent: { radius: placed.radius, across: placed.across, tall: placed.tall },
     counts: { briefings: count('f'), concepts: count('c'), tags: count('t'), links: edges.length, tracked: catalog.items.filter((i) => i.topic).length },
   };
 }

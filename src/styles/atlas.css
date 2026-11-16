@@ -49,6 +49,8 @@
   border-radius: var(--radius); padding: 0.32rem 0.6rem; cursor: pointer; min-width: 2.1rem; line-height: 1.2;
 }
 .atlas__tools button:hover { color: var(--ink); border-color: var(--ink-3); }
+.atlas__tools button[aria-pressed]::before { content: ''; display: inline-block; width: 0.42rem; height: 0.42rem; margin-right: 0.45rem; border-radius: 50%; border: 1px solid currentColor; vertical-align: 0.02rem; }
+.atlas__tools button[aria-pressed='true']::before { background: var(--accent); border-color: var(--accent); }
 .atlas__loading { position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); pointer-events: none; transition: opacity 0.4s; }
 .atlas[data-ready='true'] .atlas__loading { opacity: 0; }
 
