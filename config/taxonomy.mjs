@@ -268,7 +268,22 @@ export const MESSAGE_CENTER = {
     'Azure Active Directory': 'Microsoft Entra',
     'Microsoft Copilot Studio': 'Microsoft Copilot Studio',
     'Copilot Studio': 'Microsoft Copilot Studio',
+    'Microsoft OneDrive': 'OneDrive',
+    'Project for the web': 'Microsoft Project',
+    'Microsoft Power Automate': 'Power Automate',
+    'Microsoft Power Automate in Microsoft 365': 'Power Automate',
+    'Power Apps in Microsoft 365': 'Power Apps',
   },
+  // Services that span two topics: the title decides, and the value is the topic when it does not.
+  // Message Center files Copilot Studio posts and Copilot-in-Power-Apps posts under the same service.
+  titleFirstServices: { 'Microsoft Copilot (Power Platform)': 'power-platform' },
+  // Services Message Center uses that the ledger does not cover. A post about only these is left out,
+  // and they say nothing about the topic of a post that also names a covered service. (The roadmap's
+  // "Windows" product tag is almost always Windows 365 and stays in TOPICS; Message Center's "Windows"
+  // service is operating-system servicing: monthly updates, end-of-support reminders, office hours.)
+  excludedServices: ['Windows', 'Windows Autopatch', 'Dynamics 365 Apps', 'Dynamics 365 Business Central', 'Finance and Operations Apps', 'Microsoft Dynamics 365'],
+  // Titles that put a broad-service post outside the ledger when no covered product is named in them.
+  outOfScopeTitles: [/\bwindows\b/i, /\bdynamics 365\b/i, /\bazure\b/i],
   // Services that say nothing about which product a post is about. For these the title decides; a
   // post that names no product in its title is filed as a suite-wide Modern Work notice.
   broadServices: ['Microsoft 365 suite', 'Microsoft 365 apps', 'Microsoft 365 for the web', 'Microsoft Office', 'Microsoft 365'],
@@ -279,7 +294,7 @@ export const MESSAGE_CENTER = {
     [/\bpower (apps|automate|pages|platform|bi)\b|\bdataverse\b|\bai builder\b/i, 'power-platform'],
     [/\bpurview\b|\bentra\b|\bdefender\b|\bintune\b|\bconditional access\b|\badmin cent(er|re)\b|\blicens(e|ing)\b|\bbilling\b/i, 'governance'],
     [/\bcopilot\b/i, 'm365-copilot'],
-    [/\bteams\b|\bsharepoint\b|\bonedrive\b|\boutlook\b|\bexchange\b|\bviva\b|\bword\b|\bexcel\b|\bpowerpoint\b|\bonenote\b|\bloop\b|\bplanner\b|\bforms\b|\bstream\b|\bwhiteboard\b|\bclipchamp\b|\bedge\b|\bwindows\b|\bvisio\b|\bproject\b|\bto do\b/i, 'modern-work'],
+    [/\bteams\b|\bsharepoint\b|\bonedrive\b|\boutlook\b|\bexchange\b|\bviva\b|\bword\b|\bexcel\b|\bpowerpoint\b|\bonenote\b|\bloop\b|\bplanner\b|\bforms\b|\bstream\b|\bwhiteboard\b|\bclipchamp\b|\bedge\b|\bvisio\b|\bproject for the web\b|\bmicrosoft project\b|\bto do\b/i, 'modern-work'],
   ],
   // Message Center's own labels, in plain English for readers.
   category: {
