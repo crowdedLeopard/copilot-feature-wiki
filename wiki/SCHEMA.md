@@ -195,6 +195,19 @@ understand it on first reading, without looking anything up?
   British word in running prose ("meeting organisers"). Use current product names: Copilot Studio,
   not Power Virtual Agents; Microsoft Entra ID, not Azure AD; Microsoft Purview portal, not
   compliance center.
+- **State a gap once.** A page that says "Microsoft has not said" in every paragraph is accurate and
+  tiring to read. Each gap belongs in the one place the reader needs it, and again in Open
+  questions when it affects a decision. Where a feature is known only from the roadmap item, say so
+  once in What's changing ("Microsoft Learn does not describe this feature yet, so what follows
+  about its behaviour is the roadmap's description"), then attribute by paragraph, not by sentence.
+  The caveat that Microsoft has not confirmed a neighbouring control applies is made once, in that
+  control's note. This is about repetition only: every gap is still stated, and nothing is asserted
+  to fill one.
+- **Write about the product, not about the research.** The reader does not need to know which
+  pages were opened. Not "no setting was found in the pages read" or "the paths were not read for
+  this briefing", but "Microsoft Learn documents no such setting at the time of writing (November
+  2026)". Where a control exists and its path was not read, name the control and link the page
+  that covers it.
 - **Short paragraphs.** Bullets for lists and checklists. Tables only when comparing options. No
   exclamation marks. No headings above H3 inside a section; the page template adds the H2s.
 - **Length follows evidence.** A briefing on a well-documented feature usually runs 700 to 1,200
@@ -240,17 +253,23 @@ behaviour.
 
 **Action**: what the reader should do now. Today's date is given with each task; use it.
 
-- `act-now`: the change reaches users or spend without an admin doing anything, and it is rolling
-  out, launched or targeted within about 60 days; or Microsoft has set a deadline for admins.
-- `prepare`: needs a decision, configuration, licence or communication before it arrives, and there
-  is still time.
+- `act-now`: the change reaches users, data or spend without an admin doing anything; it is rolling
+  out, launched or targeted within about 60 days; and there is a control to set or a decision to
+  take before it lands (risk or cost is `medium` or higher). Or Microsoft has set a deadline for
+  admins.
+- `prepare`: the change arrives whether or not anyone chooses it, and needs a decision,
+  configuration, licence or communication first. Either there is still time, or the change is
+  low in risk and cost and all it needs is communication.
 - `review`: an optional capability, or a new control, that changes nothing until an admin or maker
   chooses it. Check fit.
 - `none`: awareness only. Nothing to configure or decide.
 
 Between `prepare` and `review`, ask whether anything happens if the reader does nothing. If the
-change arrives anyway, it is `prepare`. If nothing changes until someone chooses it, including
-when the default is not stated and no source says behaviour will change, it is `review`. One
+change arrives anyway, it is `prepare`: that includes a redesign or replacement of something
+users already have, even when the default state is `unknown`. If nothing changes until someone
+chooses it, including a new capability whose default is not stated when no source says existing
+behaviour will change, it is `review`. Count a month-only target ("January CY2027") from the first
+day of that month. One
 exception: a new control that closes an exposure this briefing rates `high` is `prepare`, because
 leaving it unconfigured is itself the risk.
 
@@ -407,7 +426,9 @@ Rules.
 - Where one surface is not documented, set it to null and the page prints "Not yet documented". A
   row with both sides null is how a briefing states that a control an administrator would expect
   does not exist yet (for example "Tenant-wide switch for this feature"). Include such a row when
-  its absence matters; it is one of the most useful things a briefing can tell a reader.
+  its absence matters; it is one of the most useful things a briefing can tell a reader. If the
+  text says anywhere that a control does not exist ("nothing turns this off separately"), that
+  control is a row with both sides null, so the table shows the gap too.
 - A null is a finding, so it needs its own search. Before setting a side to null, search for that
   control on that surface. Search where the control lives, which is often not where the feature
   lives: a sensitivity label that governs a Teams meeting is scripted through Security & Compliance
@@ -475,7 +496,8 @@ the verifier's findings attached, is corrected, and is checked again before it i
 ## Linking
 
 Use `related` for other briefings that share a control surface, licence or risk, and for the concept
-pages this one depends on. Prefer two to five links, chosen from the list supplied with the task.
+pages this one depends on. Up to five links, chosen from the list supplied with the task, and
+none when nothing on the list is close.
 Concept pages in `wiki/concepts/` explain cross-cutting mechanisms (Copilot Credits, Managed
 Environments, agent identity, data policies). Link to them from governance guidance where
 relevant, as `/concepts/<slug>/`; link to other briefings as `/features/<slug>/`.
