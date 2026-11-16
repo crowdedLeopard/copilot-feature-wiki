@@ -20,7 +20,8 @@ const model = process.env.COMPILE_MODEL || usage?.model || `${compilePath} defau
 const credits = typeof usage?.credits === 'number' ? Math.round(usage.credits) : null;
 const spend = credits == null ? '' : `, ${credits.toLocaleString('en-GB')} AI credits`;
 
-const line = `- ${today()} compile: ${written} briefings written, ${rejected} rejected by schema, ${untouched} not reached, ${attempted} attempted (${compilePath}, ${model}${spend})`;
+const failedToStart = usage?.status === 'failed' ? `; writer did not start (${usage.kind || 'error'})` : '';
+const line = `- ${today()} compile: ${written} briefings written, ${rejected} rejected by schema, ${untouched} not reached, ${attempted} attempted (${compilePath}, ${model}${spend}${failedToStart})`;
 await appendLog(line);
 console.log(line.slice(2));
 if (process.env.GITHUB_STEP_SUMMARY) {
@@ -32,6 +33,7 @@ if (process.env.GITHUB_STEP_SUMMARY) {
 await writeJson(path.join(DATA_DIR, 'last-compile.json'), {
   date: today(), path: compilePath, written, failed: rejected + untouched, attempted, model,
   ...(credits == null ? {} : { credits }),
+  ...(usage?.status ? { status: usage.status, consecutiveFailures: usage.consecutiveFailures || 0 } : {}),
 });
 // The working files (task list, briefs, output JSON with its evidence list, results, usage) are git-ignored
 // and stay in place for the verification step; the next compile-tasks run clears them. COMPILE_CLEAN=1

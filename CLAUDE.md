@@ -48,6 +48,9 @@ Commands: `npm run dev`, `npm run build`, `npm run daily` (ingest, compile, lint
 The compile step runs on the repository owner's GitHub Copilot seat by default (Copilot CLI in Actions; the job's token
 needs `copilot-requests: write`, no secret required; an optional `COPILOT_GITHUB_TOKEN` fine-grained PAT with the
 "Copilot Requests" permission bills a specific user's seat instead). Spend is capped per briefing and per run
-(`COMPILE_ITEM_MAX_CREDITS`, `COMPILE_MAX_CREDITS` repository variables) and logged in `wiki/log.md`. Set `COMPILE_WRITER`
+(`COMPILE_ITEM_MAX_CREDITS`, `COMPILE_MAX_CREDITS` repository variables) and logged in `wiki/log.md`. The CLI refuses a
+credit cap under 30. `compile-copilot.mjs` preflights the token and model (falling back through `COPILOT_FALLBACK_MODELS`),
+retries a fast failure once, writes a plain-English summary and annotations, and only escalates (red run, via the
+`escalate` output and `data/last-compile.json`) after two failed runs in a row. Set `COMPILE_WRITER`
 to `claude-code` (needs `CLAUDE_CODE_OAUTH_TOKEN`) or `api` (needs `ANTHROPIC_API_KEY`) to use Claude capacity instead.
 Without a working writer, the pipeline still ingests and lints, and the site still builds.
