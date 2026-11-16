@@ -1,71 +1,46 @@
 {
   "slug": "microsoft-edge-rewrite-by-copilot-in-edge-is-being-upgraded-to-include-enterprise-data-pro",
   "roadmapId": 420335,
-  "title": "Microsoft Edge: Rewrite by Copilot gains enterprise data protection",
+  "title": "Microsoft Edge: Rewrite by Copilot (Writing Assistance) gains enterprise data protection",
   "status": "held",
   "date": "2026-11-16",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 2,
   "verifierVerdict": "hold",
-  "notes": [
-    "claim 46: severity major on a rationale: risk rating lowered to minor; ratings are judgements and cannot hold a page",
-    "claim 47: severity blocker on a rationale: impact rating lowered to minor; ratings are judgements and cannot hold a page"
-  ],
+  "notes": [],
   "hold": {
     "reason": "failed",
     "since": "2026-11-16",
     "reasons": [
-      "3 blocking findings (claims 12, 13, 28)"
+      "2 blocking findings (claims 51, 55)"
     ]
   },
   "counts": {
-    "claims": 51,
-    "confirmed": 45,
-    "unconfirmed": 2,
-    "contradicted": 4,
-    "blocker": 3,
+    "claims": 60,
+    "confirmed": 57,
+    "unconfirmed": 1,
+    "contradicted": 2,
+    "blocker": 2,
     "major": 0,
-    "minor": 6
+    "minor": 2
   },
-  "summary": "Hold: the briefing omits Microsoft's newer tenant notice, which gives a late January 2027 rollout and says Writing Assistance will be enabled by default. Administrators would incorrectly be told that the default and replacement timeline are unknown; the management-service instructions also assume an unconfirmed setting mapping.",
+  "summary": "Hold: the DLP command creates a policy container but does not configure the sensitive service domain groups or blocking rules shown beside it. The page also overstates availability on unprotected pages; the default-on announcement, roadmap facts and documented Edge policy details are supported.",
   "claims": [
     {
       "n": 1,
-      "where": "summary; What's changing; title",
+      "where": "front matter: products; title",
       "type": "record",
-      "claim": "Microsoft plans to add enterprise data protection to Rewrite by Copilot in Edge.",
+      "claim": "This roadmap change concerns Microsoft Edge.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Rewrite by Copilot in Edge ... is being updated to include enterprise data protection for commercial customers.",
+      "quote": "\"products\": [\"Microsoft Edge\"]",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
-      "where": "What's changing; Risk assessment: Autonomy & actions",
-      "type": "record",
-      "claim": "Rewrite lets users edit typed text for tone, format and length within an open Edge page.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "lets users edit typed text for tone, format, and length within an open page in Microsoft Edge",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 3,
-      "where": "What's changing; Scope",
-      "type": "record",
-      "claim": "The roadmap promises enterprise data protection for signed-in Microsoft Entra ID users once Rewrite is available.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Once Rewrite is available, users signed in with a Microsoft Entra ID will have enterprise data protection when using the feature in Microsoft Edge.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
       "where": "front matter: status; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap status is In development.",
@@ -76,21 +51,10 @@
       "fix": null
     },
     {
-      "n": 5,
-      "where": "front matter: targetDate; summary; What's changing; Scope",
+      "n": 3,
+      "where": "front matter: releasePhase",
       "type": "record",
-      "claim": "The roadmap target is January CY2027, not a guaranteed release date.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"targetDate\": \"January CY2027\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
-      "where": "front matter: releasePhase; What's changing",
-      "type": "record",
-      "claim": "The roadmap release phase is General Availability.",
+      "claim": "The release phase is General Availability.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\"]",
@@ -98,10 +62,10 @@
       "fix": null
     },
     {
-      "n": 7,
-      "where": "front matter: clouds; What's changing; Scope",
+      "n": 4,
+      "where": "front matter: clouds; Scope",
       "type": "record",
-      "claim": "The record lists only Worldwide (Standard Multi-Tenant).",
+      "claim": "The record lists Worldwide (Standard Multi-Tenant), without explicitly excluding other clouds.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -109,10 +73,10 @@
       "fix": null
     },
     {
-      "n": 8,
-      "where": "front matter: platforms; What's changing; Scope",
+      "n": 5,
+      "where": "front matter: platforms; Scope",
       "type": "record",
-      "claim": "The record lists only Web as its platform.",
+      "claim": "The recorded platform is Web.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Web\"]",
@@ -120,10 +84,21 @@
       "fix": null
     },
     {
-      "n": 9,
+      "n": 6,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target is January CY2027.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"January CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
       "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The record publishes no preview date.",
+      "claim": "The record supplies no preview date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": null",
@@ -131,10 +106,10 @@
       "fix": null
     },
     {
-      "n": 10,
+      "n": 8,
       "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "The roadmap modification timestamp is 2026-11-11T00:53:22.",
+      "claim": "The roadmap modification timestamp is November 11, 2026 at 00:53:22.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"modified\": \"2026-11-11T00:53:22\"",
@@ -142,10 +117,32 @@
       "fix": null
     },
     {
-      "n": 11,
-      "where": "What's changing; front matter: changes",
+      "n": 9,
+      "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap carries a March 20, 2026 update announcing a temporary pause and future timelines.",
+      "claim": "Rewrite lets users edit typed text for tone, format and length within an open Edge page.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Rewrite by Copilot in Edge, which lets users edit typed text for tone, format, and length within an open page in Microsoft Edge",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "title; What's changing; Why it matters; Risk assessment",
+      "type": "record",
+      "claim": "The planned change adds enterprise data protection for Rewrite users signed in with Microsoft Entra ID.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Once Rewrite is available, users signed in with a Microsoft Entra ID will have enterprise data protection when using the feature in Microsoft Edge.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Risk assessment; Open questions; changes",
+      "type": "record",
+      "claim": "The roadmap retains a March 20, 2026 update saying release was temporarily paused and new timelines would be announced.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Updated March 20, 2026: We have paused release of this feature temporarily and will announce new release timelines soon.",
@@ -154,42 +151,141 @@
     },
     {
       "n": 12,
-      "where": "summary; Risk assessment: Change & support; Scope; Open questions",
-      "type": "date",
-      "claim": "Release remains paused with no new timeline available to administrators.",
-      "status": "contradicted",
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1146821 was updated November 9, 2026.",
+      "status": "supported",
       "source": "Message Center post MC1146821",
-      "quote": "Updated November 9, 2026: We have updated the timeline. ... General Availability (Worldwide): We will begin rolling late January 2027 ... and expect to complete rollout by late January 2027",
-      "severity": "blocker",
-      "fix": "Report both sources: the roadmap retains its March pause and January CY2027 target, but MC1146821, updated November 9, 2026, expects Worldwide rollout to begin and complete in late January 2027. Replace the stale pause-only summary, rollout guidance and timeline question, and cite https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1146821."
+      "quote": "Updated November 9, 2026: We have updated the timeline.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 13,
-      "where": "front matter: defaultState; Scope; Open questions",
-      "type": "default",
-      "claim": "The arrival default for this change is unknown.",
-      "status": "contradicted",
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1146821 associates its Writing Assistance announcement with roadmap item 420335.",
+      "status": "supported",
       "source": "Message Center post MC1146821",
-      "quote": "Writing Assistance will be enabled by default for Edge for Business users.",
-      "severity": "blocker",
-      "fix": "Set defaultState to on. State that MC1146821 says Writing Assistance will be enabled by default for Edge for Business users; replace the unknown-default statements and cite the supplied post."
+      "quote": "This message is associated with Microsoft 365 Roadmap ID 420335.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 14,
-      "where": "front matter: licensing.model; Cost and licensing; Open questions; rationale: cost",
-      "type": "absence",
-      "claim": "Licensing specific to the enterprise-data-protection upgrade has not been published.",
+      "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
+      "type": "record",
+      "claim": "Writing Assistance is a generative AI drafting and rephrasing capability powered by Microsoft 365 Copilot Chat.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Edge Rewrite Writing Assistance enterprise data protection licensing price meter ComposeInlineEnabled January 2027; Rewrite Copilot licensing Edge. Read ComposeInlineEnabled, Manage Copilot Chat, License options for Microsoft Copilot and licensing search results; none specifies upgrade licensing.",
+      "source": "Message Center post MC1146821",
+      "quote": "Microsoft Edge for Business will soon support Writing Assistance, a new feature powered by Microsoft 365 Copilot Chat. This capability helps users draft and rephrase editable text directly within Edge",
       "severity": null,
       "fix": null
     },
     {
       "n": 15,
-      "where": "front matter: licensing.notes; What's changing; Cost and licensing",
+      "where": "What's changing; Risk assessment; Governance guidance; rationale: impact",
+      "type": "record",
+      "claim": "Users invoke Writing Assistance by highlighting editable text and opening the right-click context menu.",
+      "status": "supported",
+      "source": "Message Center post MC1146821",
+      "quote": "Users can access Writing Assistance by highlighting editable text and right-clicking to open the context menu.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: defaultState; summary; What's changing; Risk assessment; rationales",
+      "type": "default",
+      "claim": "Writing Assistance will be on by default for Edge for Business users.",
+      "status": "supported",
+      "source": "Message Center post MC1146821",
+      "quote": "Writing Assistance will be enabled by default for Edge for Business users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Risk assessment; Governance guidance; rationale: risk",
+      "type": "record",
+      "claim": "Writing Assistance will not function on content where DLP policies restrict Copilot access to page content.",
+      "status": "supported",
+      "source": "Message Center post MC1146821",
+      "quote": "If Microsoft 365 Copilot is restricted from accessing page content due to Data Loss Prevention (DLP) policies, Writing Assistance will not function on that content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[1].note; What's changing; Governance controls",
+      "type": "record",
+      "claim": "The notice names InlineComposeEnabled as the administrative policy setting.",
+      "status": "supported",
+      "source": "Message Center post MC1146821",
+      "quote": "Admins can manage this feature using the InlineComposeEnabled policy setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Microsoft says no administrative action is required before rollout.",
+      "status": "supported",
+      "source": "Message Center post MC1146821",
+      "quote": "No admin action is required before rollout.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "summary; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The notice gives a Worldwide rollout beginning and expected to complete in late January 2027.",
+      "status": "supported",
+      "source": "Message Center post MC1146821",
+      "quote": "General Availability (Worldwide): We will begin rolling late January 2027 (previously end of October 2026) and expect to complete rollout by late January 2027 (previously late October).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The previous rollout start was end of October 2026 and previous completion was late October.",
+      "status": "supported",
+      "source": "Message Center post MC1146821",
+      "quote": "late January 2027 (previously end of October 2026) and expect to complete rollout by late January 2027 (previously late October)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The supplied notice sets no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1146821",
+      "quote": "Act by: none",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "front matter: licensing.model and notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "A licence requirement for this specific enterprise-data-protection upgrade has not been published, so its licensing model is unknown.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Edge Writing Assistance Rewrite Copilot ComposeInlineEnabled licensing price meter limits enterprise data protection; \"Writing Assistance\" \"Edge\" license pricing limits; \"Rewrite\" \"Edge for Business\" \"license\". Read ComposeInlineEnabled, roadmap, MC1146821 and Manage Copilot Chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope",
       "type": "licensing",
-      "claim": "The policy page makes writing features available to eligible users with access to Microsoft 365 Copilot Chat.",
+      "claim": "The policy reference requires eligible users to have access to Microsoft 365 Copilot Chat.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/composeinlineenabled",
       "quote": "Enables eligible users with access to Microsoft 365 Copilot Chat to draft, rewrite, and dictate text directly in web editing fields in Microsoft Edge.",
@@ -197,10 +293,21 @@
       "fix": null
     },
     {
-      "n": 16,
+      "n": 25,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "ComposeInlineEnabled governs drafting, rewriting and dictation in Edge web editing fields.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/composeinlineenabled",
+      "quote": "Enables eligible users with access to Microsoft 365 Copilot Chat to draft, rewrite, and dictate text directly in web editing fields in Microsoft Edge.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "Microsoft 365 Copilot (Premium) licensees can also use WorkIQ grounding when available.",
+      "claim": "Users licensed for Microsoft 365 Copilot (Premium) can additionally use WorkIQ grounding when available.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/composeinlineenabled",
       "quote": "Users licensed for Microsoft 365 Copilot (Premium) can also use WorkIQ grounding when available, subject to content permissions and tenant controls.",
@@ -208,54 +315,65 @@
       "fix": null
     },
     {
-      "n": 17,
-      "where": "front matter: licensing.notes; Cost and licensing",
+      "n": 27,
+      "where": "Cost and licensing",
       "type": "absence",
-      "claim": "No Rewrite-specific meter, charge or cap is documented as of November 2026.",
+      "claim": "The ComposeInlineEnabled reference lists no price.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Rewrite Copilot meter Edge; Microsoft Copilot Chat Edge Writing Assistance Rewrite license included eligible users pricing. Read policy, Manage Copilot Chat, license options and Plan licensing and cost excerpts; no Rewrite-specific meter, charge or cap found.",
+      "quote": "Searched: Edge Writing Assistance Rewrite Copilot ComposeInlineEnabled licensing price meter limits enterprise data protection. Opened and read the complete ComposeInlineEnabled reference; it describes eligibility and Premium grounding but supplies no price.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 18,
+      "n": 28,
+      "where": "Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "No feature-specific meter or cap is documented for this change.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Writing Assistance\" Edge \"meter\" \"cap\"; Edge Writing Assistance Rewrite Copilot ComposeInlineEnabled licensing price meter limits enterprise data protection. Read ComposeInlineEnabled, roadmap and MC1146821; results about local Writing Assistance APIs concern a different feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
       "where": "controls[0].ui; Governance controls table",
       "type": "admin-path",
-      "claim": "The mandatory Edge ADMX Group Policy path for this control is Administrative Templates > Microsoft Edge.",
+      "claim": "The ComposeInlineEnabled Group Policy location is Administrative Templates > Microsoft Edge.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/composeinlineenabled",
-      "quote": "GP path (Mandatory): Administrative Templates/Microsoft Edge ... GP ADMX file name: MSEdge.admx",
+      "quote": "GP path (Mandatory): Administrative Templates/Microsoft Edge",
       "severity": null,
       "fix": null
     },
     {
-      "n": 19,
+      "n": 30,
       "where": "controls[0].api; Governance controls table",
       "type": "command",
-      "claim": "ComposeInlineEnabled uses SOFTWARE\\Policies\\Microsoft\\Edge, REG_DWORD value ComposeInlineEnabled with 0x00000000 for disabled, and the same macOS preference key.",
+      "claim": "ComposeInlineEnabled uses REG_DWORD at SOFTWARE\\Policies\\Microsoft\\Edge, with 0x00000000 disabling it, and the same preference key name on macOS.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/composeinlineenabled",
-      "quote": "Path (Mandatory): SOFTWARE\\Policies\\Microsoft\\Edge ... Value name: ComposeInlineEnabled ... Value type: REG_DWORD ... 0x00000000 ... Preference Key name: ComposeInlineEnabled",
+      "quote": "Path (Mandatory): SOFTWARE\\Policies\\Microsoft\\Edge; Value name: ComposeInlineEnabled; Value type: REG\\_DWORD; Example registry value: 0x00000000; Preference Key name: ComposeInlineEnabled",
       "severity": null,
       "fix": null
     },
     {
-      "n": 20,
-      "where": "controls[0].note; Governance guidance; Governance controls",
+      "n": 31,
+      "where": "controls[0].note; What's changing; Governance guidance",
       "type": "admin-path",
-      "claim": "The fetched policy page gives the Group Policy display name Commercial Writing.",
+      "claim": "The fetched policy reference gives Commercial Writing as the Group Policy display name.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/composeinlineenabled",
-      "quote": "GP unique name: ComposeInlineEnabled ... GP name: Commercial Writing",
+      "quote": "GP unique name: ComposeInlineEnabled; GP name: Commercial Writing",
       "severity": null,
       "fix": null
     },
     {
-      "n": 21,
-      "where": "controls[0].scope; controls[0].note; Governance controls",
+      "n": 32,
+      "where": "controls[0].scope and note; Governance controls",
       "type": "behaviour",
-      "claim": "The writing policy applies per profile.",
+      "claim": "ComposeInlineEnabled is a per-profile policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/composeinlineenabled",
       "quote": "Per Profile: Yes",
@@ -263,8 +381,30 @@
       "fix": null
     },
     {
-      "n": 22,
-      "where": "controls[0].note; Risk assessment: Security & identity; Scope; Governance guidance",
+      "n": 33,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "ComposeInlineEnabled can be mandatory.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/composeinlineenabled",
+      "quote": "Can be mandatory: Yes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "ComposeInlineEnabled cannot be recommended.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/composeinlineenabled",
+      "quote": "Can be recommended: No",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[0].note; Risk assessment; Scope; Governance guidance",
       "type": "availability",
       "claim": "Commercial Writing requires a Microsoft Entra account and is unavailable with personal Microsoft accounts.",
       "status": "supported",
@@ -274,98 +414,43 @@
       "fix": null
     },
     {
-      "n": 23,
-      "where": "controls[1].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "The Edge management service exposes Copilot > AI-generated text and editing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service-copilot-features",
-      "quote": "In the Microsoft Edge management service, select the Copilot tab ... AI-generated text and editing: Provides AI-generated text creation and editing for eligible text fields.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "controls[1].api; Governance controls",
-      "type": "absence",
-      "claim": "No API or PowerShell equivalent for the AI-generated text and editing setting is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Edge management service AI-generated text and editing API PowerShell configuration policy; Edge management AI-generated text Graph; AI-generated text and editing PowerShell API. Read Configuring Copilot Features and configuration-policy excerpts; no equivalent call found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "controls[1].scope; Governance controls table",
+      "n": 36,
+      "where": "Risk assessment: Security & identity",
       "type": "applicability",
-      "claim": "Edge management service configuration policies can be assigned through groups.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service",
-      "quote": "These configurations are stored in the cloud and the settings can be applied to a user's browser through group assignment or group policy.",
-      "severity": "minor",
-      "fix": "Add https://learn.microsoft.com/deployedge/microsoft-edge-management-service to sources to substantiate group assignment."
-    },
-    {
-      "n": 26,
-      "where": "controls[1].note; Governance controls",
-      "type": "absence",
-      "claim": "The cited AI-generated text and editing page does not name Rewrite or ComposeInlineEnabled or confirm that mapping.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched the full fetched Configuring Copilot Features page for Rewrite and ComposeInlineEnabled; neither occurs. Searches for Edge management AI-generated text and editing API configuration policy and Graph did not establish the mapping.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
-      "where": "controls[1].note; Governance controls",
-      "type": "behaviour",
-      "claim": "The management-service dropdown changes are assigned to a new or existing configuration policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service-copilot-features",
-      "quote": "use each dropdown to select Enabled or Disabled and assign the changes to either a new or existing configuration policy",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
-      "where": "Governance guidance: At rollout",
-      "type": "applicability",
-      "claim": "Setting the policy to Enabled or Disabled in the Edge management service governs Rewrite.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: Edge management service AI-generated text and editing API PowerShell configuration policy; Edge management AI-generated text Graph. Read Configuring Copilot Features and ComposeInlineEnabled; the former never maps its setting to Rewrite or ComposeInlineEnabled.",
-      "severity": "blocker",
-      "fix": "Restrict the Rewrite instruction to the documented ComposeInlineEnabled Group Policy or registry control. Retain the management-service setting only as a separately documented setting whose Rewrite mapping is unconfirmed, matching the table's existing caveat."
-    },
-    {
-      "n": 29,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "Enabling ComposeInlineEnabled permits eligible users to use the writing features, subject to feature availability.",
+      "claim": "The policy does not apply to a profile signed in with a Microsoft account.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/composeinlineenabled",
-      "quote": "If you enable this policy, eligible users can use these Writing features, subject to feature availability and other applicable policies.",
+      "quote": "Applies to a profile that is signed in with a Microsoft account: No",
       "severity": null,
       "fix": null
     },
     {
-      "n": 30,
-      "where": "Governance controls",
+      "n": 37,
+      "where": "Governance controls; Governance guidance",
       "type": "behaviour",
-      "claim": "With the policy enabled, users cannot turn Commercial Writing off in Edge settings.",
+      "claim": "Disabling ComposeInlineEnabled prevents use of the writing features.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/composeinlineenabled",
-      "quote": "Users can't turn Commercial Writing off in Microsoft Edge settings.",
+      "quote": "If you disable this policy, users can't use these features.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 31,
+      "n": 38,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Enabling the policy makes the features available to eligible users and prevents users turning Commercial Writing off in Edge settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/composeinlineenabled",
+      "quote": "If you enable this policy, eligible users can use these Writing features, subject to feature availability and other applicable policies. Users can't turn Commercial Writing off in Microsoft Edge settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
       "where": "Risk assessment: Change & support; Governance controls",
       "type": "default",
-      "claim": "When ComposeInlineEnabled is unconfigured, the writing features are available by default subject to feature availability.",
+      "claim": "Leaving ComposeInlineEnabled unconfigured makes writing features available by default.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/composeinlineenabled",
       "quote": "If you don't configure this policy, these Writing features are available by default, subject to feature availability and other applicable policies.",
@@ -373,7 +458,7 @@
       "fix": null
     },
     {
-      "n": 32,
+      "n": 40,
       "where": "Governance controls",
       "type": "admin-path",
       "claim": "With the policy unconfigured, users can turn Commercial Writing off using Collaborate with Copilot as you write on the web in Edge settings.",
@@ -384,43 +469,10 @@
       "fix": null
     },
     {
-      "n": 33,
-      "where": "Governance controls; rationale: risk",
-      "type": "behaviour",
-      "claim": "Disabling ComposeInlineEnabled prevents use of the writing features.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/composeinlineenabled",
-      "quote": "If you disable this policy, users can't use these features.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "ComposeInlineEnabled supports mandatory policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/composeinlineenabled",
-      "quote": "Can be mandatory: Yes",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "ComposeInlineEnabled does not support recommended policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/composeinlineenabled",
-      "quote": "Can be recommended: No",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
+      "n": 41,
       "where": "Scope; Governance guidance: Before rollout",
       "type": "availability",
-      "claim": "The policy supports Windows from Edge version 115.",
+      "claim": "The policy reference lists Windows support from Edge version 115.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/composeinlineenabled",
       "quote": "Windows: ≥ 115",
@@ -428,10 +480,10 @@
       "fix": null
     },
     {
-      "n": 37,
+      "n": 42,
       "where": "Scope; Governance guidance: Before rollout",
       "type": "availability",
-      "claim": "The policy supports macOS from Edge version 115.",
+      "claim": "The policy reference lists macOS support from Edge version 115.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/composeinlineenabled",
       "quote": "macOS: ≥ 115",
@@ -439,7 +491,7 @@
       "fix": null
     },
     {
-      "n": 38,
+      "n": 43,
       "where": "Scope",
       "type": "availability",
       "claim": "The policy is not supported on Android.",
@@ -450,7 +502,7 @@
       "fix": null
     },
     {
-      "n": 39,
+      "n": 44,
       "where": "Scope",
       "type": "availability",
       "claim": "The policy is not supported on iOS.",
@@ -461,54 +513,164 @@
       "fix": null
     },
     {
-      "n": 40,
-      "where": "Why it matters; Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Rewrite is powered by Microsoft 365 Copilot Chat.",
+      "n": 45,
+      "where": "controls[1].ui and controls[1].api; What's changing; Governance controls",
+      "type": "absence",
+      "claim": "No Learn reference documents a control surface under the exact name InlineComposeEnabled.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/composeinlineenabled#supported-versions",
-      "quote": "This policy controls whether users can use writing support features in Microsoft Edge for Business, such as Rewrite, which utilizes Microsoft 365 Copilot Chat.",
+      "source": null,
+      "quote": "Searched: \"InlineComposeEnabled\" Edge policy Writing Assistance; \"InlineComposeEnabled\" policy reference. Results document ComposeInlineEnabled instead. Opened ComposeInlineEnabled and Configuring Copilot Features; neither documents the exact InlineComposeEnabled name.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 41,
-      "where": "Why it matters; Risk assessment: Data exposure; rationale: risk",
-      "type": "behaviour",
-      "claim": "Text submitted to Rewrite is sent to Microsoft for processing.",
+      "n": 46,
+      "where": "controls[2].ui; Governance guidance; Governance controls table",
+      "type": "admin-path",
+      "claim": "The Edge management service exposes AI-generated text and editing under the Copilot tab.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/legal/microsoft-edge/privacy#compose",
-      "quote": "Text that you've highlighted or inputted for Compose is sent to Microsoft after you click the Rewrite or Generate button, not while you're selecting text.",
-      "severity": "minor",
-      "fix": "Add https://learn.microsoft.com/legal/microsoft-edge/privacy#compose to sources and clarify that submission occurs after Rewrite or Generate is invoked, rather than suggesting all typing is transmitted."
-    },
-    {
-      "n": 42,
-      "where": "Why it matters",
-      "type": "behaviour",
-      "claim": "Enterprise data protection gives prompts and responses the same contractual terms and commitments as Exchange email and SharePoint files.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/plan/enterprise-data-protection",
-      "quote": "With EDP, prompts and responses are protected by the same contractual terms and commitments widely trusted by our customers for their emails in Exchange and their files in SharePoint.",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service-copilot-features",
+      "quote": "In the Microsoft Edge management service, select the Copilot tab; AI-generated text and editing: Provides AI-generated text creation and editing for eligible text fields.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 43,
-      "where": "Why it matters",
+      "n": 47,
+      "where": "controls[2].note; Governance guidance",
       "type": "behaviour",
-      "claim": "Copilot prompts and responses are not used to train foundation models.",
+      "claim": "The Edge management service changes are assigned through a new or existing configuration policy.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/plan/enterprise-data-protection",
-      "quote": "the prompts, responses, and data accessed through Microsoft Graph aren't used to train foundation models",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service-copilot-features",
+      "quote": "use each dropdown to select Enabled or Disabled and assign the changes to either a new or existing configuration policy.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 44,
-      "where": "Risk assessment: Data exposure; Governance guidance; Governance controls",
+      "n": 48,
+      "where": "controls[2].note; Governance controls",
+      "type": "absence",
+      "claim": "The cited Edge management service page does not name Rewrite, Writing Assistance, ComposeInlineEnabled or InlineComposeEnabled.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Edge management service \"AI-generated text and editing\" API PowerShell configuration policy. Opened and read the complete Configuring Copilot Features page; it lists AI-generated text and editing but none of the four feature or policy names.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[2].api; Governance controls",
+      "type": "absence",
+      "claim": "No API or PowerShell control for the Edge management service AI-generated text and editing setting was found in Learn.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Edge management service \"AI-generated text and editing\" API PowerShell configuration policy; \"AI-generated text and editing\" \"API\". Read Configuring Copilot Features and Get started with configuration policies search excerpts; no automation for this setting was documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[3].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The Purview path to sensitive service domain groups is Data loss prevention > Settings > Data Loss Prevention > Endpoint DLP settings > Browser and domain restrictions to sensitive data > Sensitive service domain groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-create-policy-unauthorized-cloud-apps-services",
+      "quote": "Data loss prevention > Settings (gear icon in the upper left hand corner) > Data Loss Prevention > Endpoint DLP settings > Browser and domain restrictions to sensitive data > Sensitive service domain groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[3].api; Governance controls table",
+      "type": "command",
+      "claim": "New-DlpCompliancePolicy -Name <name> -EndpointDlpLocation <locations> is the automation counterpart for configuring the sensitive service domain groups and restrictions in this row.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy",
+      "quote": "Use the New-DlpCompliancePolicy cmdlet to create data loss prevention (DLP) policies in the Microsoft Purview compliance portal. DLP policies contain DLP rules that identify, monitor, and protect sensitive information.",
+      "severity": "blocker",
+      "fix": "Set controls[3].api to null: no equivalent automation for sensitive service domain groups was found in searches for 'sensitive service domain groups PowerShell' and 'sensitive service domain Set- DLP PowerShell'. Remove this call from the rendered row. If retained in prose, label it only as creating an Endpoint DLP policy container, not configuring domains or blocking rules; -EndpointDlpLocation selects user accounts and requires Compliance Administrator or Compliance Data Administrator membership. Retain the documented Purview UI procedure for domain-group configuration."
+    },
+    {
+      "n": 52,
+      "where": "Risk assessment: Data exposure; controls[3].note; Governance guidance",
       "type": "applicability",
-      "claim": "Writing features are unavailable where DLP policies block access to the page.",
+      "claim": "The cited page-content documentation lists Purview Endpoint DLP and Intune MAM blocking settings for Copilot Chat in the Edge sidepane.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/edge-learnmore-copilot-page-summary-results",
+      "quote": "This chart covers the behavior of Microsoft 365 Copilot Chat in Edge for Business which is accessible in the sidepane.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[3].note; Risk assessment; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not explicitly confirmed that the same enumerated sidepane DLP settings govern Writing Assistance.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Writing Assistance\" \"DLP\" policies Edge; \"sensitive service domain groups\" \"PowerShell\". Read MC1146821, ComposeInlineEnabled and Copilot Chat in Edge and Access to Page Content: the notice confirms DLP blocking generally, not a feature-specific mapping of these settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "The Learn pages cited by this briefing do not describe the implementation of enterprise data protection specifically for this feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Edge Writing Assistance Rewrite Copilot ComposeInlineEnabled licensing price meter limits enterprise data protection. Read all five cited Learn pages and Manage Copilot Chat; general Copilot EDP descriptions were found, but no feature-specific implementation in the cited pages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Why it matters",
+      "type": "availability",
+      "claim": "Any page not covered by a DLP rule or Edge policy is open to Writing Assistance.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Writing Assistance\" \"Edge\" supported text fields availability restrictions; \"Writing Assistance\" \"DLP\" policies Edge. Read ComposeInlineEnabled and MC1146821; neither guarantees every otherwise-unblocked page, and the policy reference qualifies use by feature availability.",
+      "severity": "blocker",
+      "fix": "Replace 'any page not covered by a DLP rule or Edge policy is open to it' with 'eligible users can use the writing features in supported web editing fields, subject to feature availability and other applicable policies'. Cite https://learn.microsoft.com/deployedge/microsoft-edge-policies/composeinlineenabled. Do not present DLP and Edge policy coverage as an exhaustive list of availability conditions."
+    },
+    {
+      "n": 56,
+      "where": "Why it matters",
+      "type": "date",
+      "claim": "Users will find the right-click option in late January 2027.",
+      "status": "supported",
+      "source": "Message Center post MC1146821",
+      "quote": "We will begin rolling late January 2027 (previously end of October 2026) and expect to complete rollout by late January 2027 (previously late October).",
+      "severity": "minor",
+      "fix": "Change 'users will find the option in the right-click menu in late January 2027' to 'Microsoft currently expects eligible users to receive the right-click option during the late January 2027 rollout'. Preserve the distinction between an expected rollout and guaranteed availability."
+    },
+    {
+      "n": 57,
+      "where": "Risk assessment: Change & support",
+      "type": "record",
+      "claim": "Release timing has moved more than once.",
+      "status": "supported",
+      "source": "Message Center post MC1146821",
+      "quote": "Updated November 9, 2026: We have updated the timeline. Thank you for your patience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The notice describes manual invocation rather than autonomous action.",
+      "status": "supported",
+      "source": "Message Center post MC1146821",
+      "quote": "Users can choose to use the Writing Assistance feature by manually invoking it through the right-click context menu in Edge.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Risk assessment: Data exposure; Governance controls",
+      "type": "behaviour",
+      "claim": "The ComposeInlineEnabled reference also says writing features are unavailable where DLP blocks page access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/composeinlineenabled",
       "quote": "These Writing features aren't available when data loss prevention (DLP) policies block access to the page.",
@@ -516,97 +678,36 @@
       "fix": null
     },
     {
-      "n": 45,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "record",
-      "claim": "The roadmap describes user text editing, not autonomous action.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Rewrite by Copilot in Edge, which lets users edit typed text for tone, format, and length within an open page in Microsoft Edge",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "rationale: risk",
-      "type": "behaviour",
-      "claim": "The change does not widen data access.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: Rewrite Edge enterprise data protection data access. Read roadmap, ComposeInlineEnabled, enterprise data protection, Manage Copilot Chat and Beta release-note passage; none establishes an unchanged data-access boundary for the upgrade.",
-      "severity": "minor",
-      "fix": "Remove 'it does not widen data access'. Explain the low-risk judgement in terms of the planned additional protection and documented disabling control without asserting an undocumented data-access comparison."
-    },
-    {
-      "n": 47,
-      "where": "rationale: impact",
-      "type": "availability",
-      "claim": "Anyone signed in to Edge with a Microsoft Entra ID can see Rewrite on editable text.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/composeinlineenabled",
-      "quote": "Enables eligible users with access to Microsoft 365 Copilot Chat ... subject to feature availability and other applicable policies.",
-      "severity": "minor",
-      "fix": "Replace 'Anyone signed in to Edge with a Microsoft Entra ID' with 'Eligible Edge for Business users with access to Copilot Chat, subject to rollout, policy and DLP restrictions'."
-    },
-    {
-      "n": 48,
-      "where": "What's changing",
-      "type": "date",
-      "claim": "Edge Beta version 141.0.3537.25, dated September 17, 2025, listed the enterprise-data-protection upgrade as a controlled rollout.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-archive-beta-channel",
-      "quote": "Version 141.0.3537.25: September 17, 2025 ... Rewrite by Copilot in Edge upgraded to include enterprise data protection compliance standards ... Controlled feature rollout.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 49,
+      "n": 60,
       "where": "Governance guidance: Before rollout; Governance controls",
       "type": "consistency",
-      "claim": "The governance checklist asks administrators to check DLP policies, but the controls table has no DLP row.",
+      "claim": "The checklist asks administrators to review Intune MAM rules, but the controls table contains no Intune MAM row.",
       "status": "contradicted",
       "source": "page",
-      "quote": "Check which pages your DLP policies block, because Rewrite is unavailable on them. ... Controls table: Commercial Writing; AI-generated text and editing.",
+      "quote": "Review Purview Endpoint DLP and Intune MAM rules that block copy, print, download or upload on sensitive sites; table: Pages where DLP stops the writing features working (Endpoint DLP sensitive service domain groups).",
       "severity": "minor",
-      "fix": "Add a DLP control row covering the page-content restriction. Research and cite its actual configuration surface and automation equivalent before populating the row; do not use null merely because the writer did not read the configuration path."
-    },
-    {
-      "n": 50,
-      "where": "What's changing",
-      "type": "absence",
-      "claim": "The ComposeInlineEnabled page itself does not mention the enterprise-data-protection upgrade or the release pause.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched the full fetched ComposeInlineEnabled page for enterprise data protection and pause; neither is mentioned. Targeted Edge Rewrite enterprise data protection default searches returned the policy and historical release notes, not an upgrade-specific qualification on that page.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 51,
-      "where": "controls[0].note; What's changing; Open questions",
-      "type": "absence",
-      "claim": "The sources do not explicitly confirm that the policy named ComposeInlineEnabled governs the specific enterprise-data-protection upgrade.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Edge Rewrite enterprise data protection default enabled InlineComposeEnabled ComposeInlineEnabled. Read policy, Beta upgrade note and MC1146821. The notice identifies this roadmap item but names InlineComposeEnabled, unlike the policy reference's ComposeInlineEnabled.",
-      "severity": "minor",
-      "fix": "Replace the broad uncertainty with the precise discrepancy: MC1146821 explicitly associates Writing Assistance with this roadmap item and names InlineComposeEnabled as its control, while the Learn reference documents ComposeInlineEnabled for Rewrite. Cite the supplied notice and do not silently treat the two identifiers as interchangeable."
+      "fix": "Remove 'and Intune MAM' from the actionable Before rollout checklist unless a separately evidenced Intune MAM control row is added. The general discussion can still identify Intune MAM as a documented sidepane control whose exact applicability to Writing Assistance is unconfirmed."
     }
   ],
   "precheck": {
-    "at": "2026-11-16T15:35:49.848Z",
+    "at": "2026-11-16T17:07:04.740Z",
     "summary": {
-      "links": 6,
+      "links": 7,
       "unreachable": 0,
-      "uiPaths": 2,
+      "uiPaths": 3,
       "uiPathsWithMissingWords": 0,
-      "apiCalls": 1,
+      "apiCalls": 2,
       "apiCallsNotOnPage": 1,
       "roadmapDrift": 0
     },
     "linkChecks": [
       {
         "url": "https://www.microsoft.com/microsoft-365/roadmap?id=420335",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1146821",
         "ok": true,
         "status": 200
       },
@@ -621,17 +722,17 @@
         "status": 200
       },
       {
-        "url": "https://learn.microsoft.com/copilot/plan/enterprise-data-protection",
+        "url": "https://learn.microsoft.com/deployedge/edge-learnmore-copilot-page-summary-results",
         "ok": true,
         "status": 200
       },
       {
-        "url": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-archive-beta-channel",
+        "url": "https://learn.microsoft.com/purview/endpoint-dlp-create-policy-unauthorized-cloud-apps-services",
         "ok": true,
         "status": 200
       },
       {
-        "url": "https://learn.microsoft.com/copilot/edge",
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy",
         "ok": true,
         "status": 200
       }
@@ -640,7 +741,7 @@
       {
         "index": 0,
         "side": "ui",
-        "governs": "Whether users can use Rewrite and the other Commercial Writing features in Edge",
+        "governs": "Whether users can use the Commercial Writing features (Rewrite) in Edge",
         "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/composeinlineenabled",
         "reachable": true,
         "segments": [
@@ -652,16 +753,16 @@
       {
         "index": 0,
         "side": "api",
-        "governs": "Whether users can use Rewrite and the other Commercial Writing features in Edge",
+        "governs": "Whether users can use the Commercial Writing features (Rewrite) in Edge",
         "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/composeinlineenabled",
         "reachable": true,
         "token": "Registry: SOFTWARE\\Policies\\Microsoft\\Edge,",
         "found": false
       },
       {
-        "index": 1,
+        "index": 2,
         "side": "ui",
-        "governs": "Edge setting for AI-generated text and editing",
+        "governs": "Edge management service setting for AI-generated text and editing",
         "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service-copilot-features",
         "reachable": true,
         "segments": [
@@ -669,6 +770,31 @@
           "AI-generated text and editing"
         ],
         "missing": []
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Pages where DLP stops the writing features working (Endpoint DLP sensitive service domain groups)",
+        "docs": "https://learn.microsoft.com/purview/endpoint-dlp-create-policy-unauthorized-cloud-apps-services",
+        "reachable": true,
+        "segments": [
+          "Data loss prevention",
+          "Settings",
+          "Data Loss Prevention",
+          "Endpoint DLP settings",
+          "Browser and domain restrictions to sensitive data",
+          "Sensitive service domain groups"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Pages where DLP stops the writing features working (Endpoint DLP sensitive service domain groups)",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy",
+        "reachable": true,
+        "token": "New-DlpCompliancePolicy",
+        "found": true
       }
     ],
     "roadmapDrift": []
@@ -679,6 +805,12 @@
       "status": "held",
       "version": 1,
       "model": "none"
+    },
+    {
+      "date": "2026-11-16",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
     }
   ]
 }

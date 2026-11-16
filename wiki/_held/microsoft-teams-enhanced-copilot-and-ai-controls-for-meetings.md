@@ -100,6 +100,17 @@ changes:
   - date: "2026-11-16"
     note: "First briefing: Microsoft's notice MC1532253 replaces the Copilot meeting policy with MeetingAI and TranscriptionWithMeetingAI; rollout moved to December 2026 and January 2027."
 version: 1
+verification:
+  status: "held"
+  date: "2026-11-16"
+  version: 1
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 67
+  confirmed: 64
+  unconfirmed: 1
+  contradicted: 2
+  attempts: 1
 ---
 
 ## What's changing
@@ -203,4 +214,12 @@ Organiser-side meeting options (Who can manage AI, Who can use AI, Intelligent R
 risk: Medium. Existing behaviour is mapped across, but once the new controls are enabled the Copilot policy can no longer be updated directly, so scripts and runbooks that set it will fail, and organisers gain new AI options.
 cost: Low. The only cost the sources show is admin time to update scripts and runbooks; Microsoft has not published a separate licence or meter for the new policies. Copilot in meetings itself already needs an add-on Microsoft Copilot licence.
 impact: Medium. Teams administrators see two settings where there was one, and meeting organisers get new AI options in their meeting options; attendees see no change in what AI does.
+-->
+
+<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
+The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
+- [contradicted, blocker] front matter: defaultState / default: The default state of the new controls is unknown or not stated. | Found: -MeetingAI: Default value: EnabledAllowOrganizerOverride; -TranscriptionWithMeetingAI: Default value: EnabledNoOverride | Fix: Replace unknown with on for the automatically introduced controls. Explain that existing effective behaviour is preserved by MC1532253's automatic mapping, not reset to a universal AI-on configuration; separately give Learn's parameter defaults and its not-fully-released caveat. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy
+- [supported, minor] controls[2].api; Governance controls table / command: Set-CsTeamsMeetingPolicy -Identity <policy name> -Copilot supports Enabled, EnabledWithTranscript, EnabledWithTranscriptDefaultOn and Disabled. | Found: On | Enabled; On with saved transcript required | EnabledWithTranscript; On with transcript saved by default | EnabledWithTranscriptDefaultOn; Off | Disabled | Fix: Keep the values supported by the cited Copilot management page, but note that https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy lists only Enabled and EnabledWithTranscript in its -Copilot parameter description; the two Microsoft references disagree. | Source: https://learn.microsoft.com/microsoftteams/copilot-teams-transcription
+- [contradicted, blocker] Governance controls; Open questions / absence: Microsoft has not documented an administrator setting for the organiser-facing Intelligent Recap option. | Found: To turn off intelligent recap, use the Set-CsTeamsMeetingPolicy cmdlet and set the -AllowIntelligentRecap parameter to $false. | Fix: Replace the blanket absence claim with the documented Set-CsTeamsMeetingPolicy -Identity <policyname> -AllowIntelligentRecap $false control and add its control row and source. Explain that it disables all intelligent recap, with or without saved transcripts, and makes related settings unavailable. Also report the disagreement: the Set-CsTeamsMeetingPolicy reference still says AllowIntelligentRecap is not fully released and has no effect; do not silently choose between the pages. | Source: https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts
+- [unsupported, minor] rationale: impact / behaviour: Attendees see no change in what AI does. | Found: Searched: Teams enhanced Copilot AI controls meetings attendees Who can use AI change post meeting. Opened copilot-teams-transcription and intelligent-recap-without-saving-transcripts; read MC1532253. No statement guarantees unchanged attendee AI behaviour. | Fix: Remove 'attendees see no change in what AI does'. Keep the supported rationale that administrators see two settings and organisers gain AI options; automatic policy mapping preserves existing effective policy behaviour, not a guarantee of an unchanged attendee experience.
 -->

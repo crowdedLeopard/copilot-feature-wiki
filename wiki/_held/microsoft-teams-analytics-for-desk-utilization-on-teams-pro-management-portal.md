@@ -97,6 +97,17 @@ changes:
   - date: "2026-11-16"
     note: "First briefing for this roadmap item: rollout now targeted early December 2026 to mid-January 2027 per MC1490906."
 version: 1
+verification:
+  status: "held"
+  date: "2026-11-16"
+  version: 1
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 77
+  confirmed: 73
+  unconfirmed: 0
+  contradicted: 4
+  attempts: 1
 ---
 
 ## What's changing
@@ -204,4 +215,13 @@ The DeviceDataCollection policy is described on the bookable desks page as gover
 risk: Low. This adds admin-facing reports on desk use, with no documented action taken on desks or users; the exposure that matters is the existing device data collection that feeds bookable desks.
 cost: Medium. The roadmap says each desk needs a Microsoft Teams Shared Space or Shared Space - Single Space licence; the Places page lists the paid licence at $8 per desk per month, with three $0 single-space licences per paid licence.
 impact: Low. Administrators and portal role holders see the analytics; people who book desks see no change documented in the roadmap item or Microsoft's notice.
+-->
+
+<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
+The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
+- [supported, minor] Cost and licensing; Governance guidance: Before rollout / licensing: The Single Space license is only available with a Microsoft Customer Agreement billing account. | Found: the Single Space license is only available for purchase with an MCA billing account | Fix: Qualify this as the Microsoft 365 admin center purchase path. Also report that the cited Places purchasing page documents an Enterprise Agreement route through the Volume Licensing Center for the same no-cost single-space licenses; do not imply EA customers must obtain an MCA. | Source: https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/teams-shared-device-license
+- [contradicted, blocker] controls[0].note; Governance controls table / admin-path: Licenses are bought under Marketplace without qualification by agreement type. | Found: If your organization has an Enterprise Agreement (EA), use the Volume Licensing Center instead of the Marketplace purchase flow. | Fix: Change the control note to: 'MCA customers purchase through Marketplace; EA customers acquire licenses through their reseller or the Volume Licensing Center, following the agreement-specific instructions on the cited Places page.' Qualify Marketplace-specific billing permissions accordingly. | Source: https://learn.microsoft.com/microsoft-365/places/what-is-places/buy-set-up-teams-shared-space-licenses-desks
+- [contradicted, blocker] controls[1].note; Governance controls / role: Assigning portal roles requires Global Administrator, Teams Administrator or Teams Rooms Pro Manager, with no custom-role alternative mentioned. | Found: To assign roles, you must be a Global Administrator/ Teams Administrator or Teams Rooms Pro Manager role or have a custom role with role management permissions. | Fix: Separate creation/editing from assignment in the note, table and prose. Add that assigning roles also permits a custom role with role management permissions, as stated in the cited page's 'Assign a role' section. | Source: https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac
+- [contradicted, blocker] controls[4]; summary; Governance controls; Open questions / absence: No tenant-wide switch to turn desk utilization analytics on or off is documented. | Found: BYOD Rooms and Desk management ... This setting option is located under the General tab in Teams Pro Management portal ... Disabling this setting will stop showing any reports for BYOD rooms or Desks | Fix: Document the existing general control: Teams Pro Management portal > General > BYOD Rooms and Desk management. Explain that it controls cloud ingestion, is enabled by default, and disabling it stops desk/BYOD reports and hides inventory devices. Keep any absence claim narrowly about a dedicated switch for this new release; do not infer a new-release default from this general control. | Source: https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist tells administrators to check enableBuildings, but the controls table has no row for it. | Found: Check that individual desks are visible in the Teams Rooms Pro Management portal, and that enableBuildings is enabled for the tenant. | Fix: Add a controls row for whether Places buildings are enabled and individual desks can appear in the portal. The cited bookable-desks FAQ links Get-PlacesSettings and Set-PlacesSettings; read those references for the exact check/change syntax before adding it.
 -->

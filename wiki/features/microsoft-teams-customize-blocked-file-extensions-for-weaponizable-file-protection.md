@@ -77,6 +77,17 @@ changes:
   - date: "2026-11-16"
     note: "First briefing for this roadmap item, covering the planned customisable block list and the PowerShell parameters already documented on Learn."
 version: 1
+verification:
+  status: "verified"
+  date: "2026-11-16"
+  version: 1
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 58
+  confirmed: 58
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
 ---
 
 ## What's changing

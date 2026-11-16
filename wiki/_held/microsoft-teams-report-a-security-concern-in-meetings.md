@@ -83,6 +83,17 @@ changes:
   - date: "2026-11-16"
     note: "First briefing: covers default-on meeting reporting, the Teams admin center and Defender settings, and gaps between the notice and the Preview Learn page."
 version: 1
+verification:
+  status: "held"
+  date: "2026-11-16"
+  version: 1
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 67
+  confirmed: 61
+  unconfirmed: 1
+  contradicted: 5
+  attempts: 1
 ---
 
 ## What's changing
@@ -190,4 +201,14 @@ Learn also documents Exchange Online PowerShell (`Set-ReportSubmissionPolicy`) f
 risk: Medium. The option is on by default and copies meeting and participant metadata to Microsoft, but Microsoft documents a Teams admin center setting and a Defender portal setting that cover it.
 cost: Low. Microsoft's pages name Defender for Office 365 or Defender XDR as the licences behind reporting, and publish no price or meter for this feature; the known cost is triage time.
 impact: High. Microsoft's notice says the option is enabled by default, so users on supported Teams clients see a new Report a concern entry in every meeting without any admin action.
+-->
+
+<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
+The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
+- [contradicted, blocker] Why it matters; rationale: impact / availability: Every user on a supported client can submit a report from the first meeting after rollout. | Found: User reporting in Teams is supported only for users with an online Teams mailbox. The reporting mailbox configured in **Teams user reported settings** must also be an Exchange Online mailbox. On-premises mailboxes aren't supported in either scenario. | Fix: Replace 'Every user on a supported client' with 'Eligible users on supported clients, with an online Teams mailbox and reporting enabled'. Add the online-mailbox prerequisite to Scope, retain the documented licence qualification, and qualify the impact rationale accordingly. | Source: https://learn.microsoft.com/defender-office-365/submissions-teams
+- [contradicted, blocker] Why it matters; Risk assessment: Data exposure; rationale: risk / behaviour: Submitting a report copies meeting and participant metadata to Microsoft for algorithm review without a destination qualification. | Found: If you select **Send the reported items to** > **My reporting mailbox only**, reported items don't go to Microsoft for analysis unless an admin manually submits the item | Fix: Say 'When a report is sent to Microsoft, meeting and participant metadata is copied for algorithm review.' Explain the Microsoft only, Microsoft and my reporting mailbox, and My reporting mailbox only destinations. Apply the qualification in Why it matters and the risk rationale. | Source: https://learn.microsoft.com/defender-office-365/submissions-teams
+- [unsupported, blocker] Risk assessment: Data exposure; Governance controls / applicability: Monitor reported items in Microsoft Teams is the documented setting that decides whether reports are shared with Microsoft. | Found: Searched: '"Monitor reported items in Microsoft Teams" "PowerShell" parameter'; read submissions-teams and end-user-reporting-teams-meeting. These identify monitoring and a separate reporting experience, but do not identify this toggle as the destination selector. | Fix: Describe Monitor reported items in Microsoft Teams as controlling monitoring and correct display on User reported. Describe sharing using the documented Reported item destinations > Send the reported items to setting at https://learn.microsoft.com/defender-office-365/submissions-teams#what-happens-after-a-user-reports-items-from-teams, and add its control row.
+- [contradicted, blocker] controls[1].ui; Governance controls table / admin-path: The Defender path goes directly from Teams user reported settings to Monitor reported items in Microsoft Teams. | Found: On the **Teams user reported settings** page, go to the **Microsoft Teams** section for the **Monitor reported items in Microsoft Teams** setting. | Fix: Set controls[1].ui.path and the rendered row to 'Settings > Email & collaboration > Teams user reported settings tab > Microsoft Teams > Monitor reported items in Microsoft Teams'. The missing Microsoft Teams section is documented in the cited page. | Source: https://learn.microsoft.com/defender-office-365/submissions-teams
+- [contradicted, blocker] Governance controls / absence: Microsoft does not confirm meeting coverage for the documented Teams reported-item destination configuration. | Found: When users report Teams messages or calls or report meetings or meeting participants as malicious or non malicious, the reported items are sent to Microsoft and/or the reporting mailbox as defined by the Teams user reported settings in Defender for Office 365. | Fix: Replace the meeting-coverage disclaimer with the SecOps guide's explicit statement that meeting and participant reports use Teams user reported destinations. Explain that submissions-teams documents Exchange Online PowerShell for those destinations, while the cmdlet reference still describes its ReportChatMessage parameters in terms of messages and calls. | Source: https://learn.microsoft.com/defender-office-365/mdo-support-teams-sec-ops-guide
+- [contradicted, minor] Governance guidance: At rollout; Governance controls / consistency: The checklist asks administrators to review reported-call alert policies, but the controls table has no alert-policy row. | Found: Review the alert policies for reported calls, which also cover reported meetings and participants, so the right team receives them. | The four control rows cover reporting availability, monitoring, Defender submissions and Teams reports, not alert-policy configuration. | Fix: Add a control row for the reported-call security-risk and not-security-risk alert policies that also cover meetings. Research its management UI and automation separately; use the existing SecOps and submissions-teams sources to establish meeting applicability.
 -->

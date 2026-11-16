@@ -89,6 +89,17 @@ changes:
   - date: "2026-11-16"
     note: "First briefing for roadmap item 578859, using Message Center post MC1552391 and the Queues app, call queue recording and Copilot in Teams calls pages on Microsoft Learn."
 version: 1
+verification:
+  status: "held"
+  date: "2026-11-16"
+  version: 1
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 50
+  confirmed: 45
+  unconfirmed: 0
+  contradicted: 5
+  attempts: 1
 ---
 
 ## What's changing
@@ -185,4 +196,16 @@ The recording template decides which calls exist for Copilot to use; it does not
 risk: Low. Copilot works on call recordings that users can already open in shared call history, and Microsoft's notice says recording creation, storage and access do not change.
 cost: Medium. Users need a Teams Premium licence for the Queues app and a Microsoft 365 Copilot licence for Copilot, so each agent or supervisor who wants the feature needs both add-ons.
 impact: Low. Only calling reps and supervisor leads in call queues, with the right licences and recorded calls, will see it; most Teams users are unaffected.
+-->
+
+<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
+The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
+- [supported, minor] front matter: licensing.model; Cost and licensing; rationale: cost / licensing: Teams Premium and Copilot are add-on licences, supporting licensing model add-on and medium cost. | Found: Microsoft Teams Premium is an add-on license to Teams | Fix: Add https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/microsoft-teams-add-on-licensing to sources for Teams Premium's add-on classification. The already cited Copilot calling page states: 'For 1:1 Teams calls, assign an add-on Microsoft Copilot license for your intended users.' | Source: https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/microsoft-teams-add-on-licensing
+- [contradicted, blocker] controls[0].api / command: Set-CsCallQueue -Identity <Guid> -AutoRecordingTemplateId <String> is presented as an unqualified automation equivalent for assigning a recording template. | Found: ### -AutoRecordingTemplateId
+Voice applications private preview customers only.
+Saving a call queue configuration through Teams admin center will remove this setting. | Fix: Keep the real cmdlet and parameters, but qualify controls[0].note and the rendered row: the PowerShell reference restricts -AutoRecordingTemplateId to Voice applications private-preview customers and warns that saving the queue through Teams admin center removes it. Report that this conflicts with the setup page's August 13, 2026 statement that automatic recording can be configured through PowerShell; do not present unrestricted availability as settled. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/set-cscallqueue
+- [contradicted, blocker] Open questions: Copilot questions and answers storage / absence: Microsoft has not said whether Copilot questions and answers on a call are stored or where administrators can find them. | Found: Data from generative AI messages is stored in a hidden folder in the mailbox of the user who runs the AI app. | Fix: Replace the blanket 'Microsoft has not said' with the documented general framework: Microsoft 365 Copilot prompts and responses are covered by Purview retention, with compliance copies in hidden Exchange mailbox folders searchable through eDiscovery. Cite https://learn.microsoft.com/purview/retention-policies-copilot. Keep only the narrower open question of mobile Queues-specific behavior or exceptions not documented by these general pages. | Source: https://learn.microsoft.com/purview/retention-policies-copilot
+- [contradicted, blocker] Open questions: Copilot questions and answers auditing / absence: Microsoft has not said whether Copilot call interactions are audited or where administrators can see them. | Found: The system automatically generates audit logs when a user interacts with Copilot, Cowork, or an AI application. | Fix: Acknowledge Microsoft's general Copilot audit documentation: with organizational auditing enabled, Copilot interactions are logged and can be searched through Audit in the Microsoft Purview portal. Cite https://learn.microsoft.com/purview/audit-copilot. Limit the open question to Queues-mobile-specific identifiers, completeness or exceptions that Microsoft has not separately documented; do not claim no auditing guidance exists. | Source: https://learn.microsoft.com/purview/audit-copilot
+- [contradicted, minor] front matter: action / consistency: The prepare action rating fits the page's verified rollout timing and medium licensing cost. | Found: action: "prepare"; cost: "medium"; Targeted Release begins late November 2026; Plan the licence assignments and the communication to queue teams before the Targeted Release window opens | Fix: Change action to act-now: on the November 16 run date, automatic rollout is within about 60 days and the page rates cost medium while identifying licence and recording decisions before rollout. This follows the action scale, not a mandatory Message Center deadline.
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The controls table covers every control the checklist asks administrators to set or check. | Found: Assign Microsoft 365 Copilot and Teams Premium to the agents and leads who should use the feature, as Microsoft's notice recommends, and confirm they also hold Teams Phone. | Fix: Add a controls row for per-user licence assignments covering Microsoft 365 Copilot, Teams Premium and Teams Phone, with researched admin UI and automation documentation. The current rows cover recording, calling policy and app availability but not this checklist control.
 -->

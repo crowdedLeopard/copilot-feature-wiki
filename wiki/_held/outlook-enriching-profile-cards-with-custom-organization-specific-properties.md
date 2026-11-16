@@ -79,6 +79,17 @@ changes:
   - date: "2026-11-16"
     note: "First briefing for this item; rollout moved to January 2027 in the 6 November 2026 update of MC1193692."
 version: 1
+verification:
+  status: "held"
+  date: "2026-11-16"
+  version: 1
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 63
+  confirmed: 59
+  unconfirmed: 1
+  contradicted: 3
+  attempts: 1
 ---
 
 ## What's changing
@@ -186,4 +197,14 @@ The second row is an existing control for Microsoft Entra attributes. Microsoft 
 risk: Low. Microsoft's notice says the feature is off by default and needs admin configuration, so nothing is exposed until an admin ingests data and makes a property visible; once visible, every user in the tenant can see it.
 cost: Low. The only cost the sources show is admin time for the connector and settings work; licensing for this feature is not yet published, and connector item quota applies to custom connectors built with the Graph APIs.
 impact: Low. Only admins act at first; users notice a new property in the Contact Information section of profile cards in Outlook on the web only after an admin enables it.
+-->
+
+<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
+The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
+- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: The feature takes no actions. | Found: Searched: Outlook profile card connector custom properties actions automation display name icon January 2027. Read roadmap, MC1193692, peopleconnectors and customize-profile-cards; they describe displaying information but do not expressly establish the blanket no-actions assertion. | Fix: Replace 'No change: the feature displays values on a card and takes no actions' with 'The roadmap describes a display change: custom properties appear in the Contact Information section of profile cards.'
+- [supported, minor] Governance guidance: At rollout / behaviour: Learn recommends piloting with a limited audience before rollout. | Found: Before rollout, confirm governance, privacy, and admin requirements for your connector and pilot with a limited audience. | Fix: Keep the recommendation but add: 'This is not a documented audience-scoping control: the build guide says people-data connections do not support staged connections and require an everyone ACL. Use a test tenant or non-sensitive test data for the pilot.' Cite the already listed build-connectors-with-people-data page. | Source: https://learn.microsoft.com/graph/peopleconnectors
+- [supported, minor] Governance controls: paragraph after table / role: The cited overview says delegated profile-card API operations require a Tenant Administrator role. | Found: Operations on the profileCardProperty resource that use delegated permissions require the signed-in user to have a Tenant Administrator role. | Fix: Report the reference-page disagreement: 'The overview says Tenant Administrator; the Create profileCardProperty reference names People Administrator as the least privileged supported role.' Add https://learn.microsoft.com/graph/api/peopleadminsettings-post-profilecardproperties to sources. | Source: https://learn.microsoft.com/graph/add-properties-profilecard
+- [contradicted, blocker] Open questions: first bullet / consistency: Whether per-property visibility exists for connector-sourced properties remains an open question. | Found: What's changing: 'visibility, display name and icon set per property'; Open questions: 'Does a per-property visibility setting exist for the connector-sourced properties' | Fix: Replace the first open question with 'Is there a tenant-wide switch for the whole feature, in addition to the per-property visibility documented in MC1193692?' The supplied notice explicitly confirms per-property visibility.
+- [contradicted, blocker] rationale: risk; Governance guidance: Leave properties hidden / behaviour: Nothing is exposed until an administrator both ingests data and makes a property visible on profile cards. | Found: By default, people data provided via a Copilot connector is visible to all users in the tenant. | Fix: Change the rationale to 'Low. The new card-display feature requires admin configuration. Ingested people data can already be visible through other Microsoft 365 experiences, so approve data before ingestion, not merely before card visibility is enabled.' Change rollout guidance to require HR validation before ingestion; hiding card properties is not a data-access boundary. | Source: https://learn.microsoft.com/graph/peopleconnectors
+- [contradicted, minor] Governance guidance; Governance controls / consistency: Every control the governance checklist asks administrators to configure or check is represented in the controls table. | Found: Checklist: 'Choose or build the people-data connector' and 'Check your connector item quota'; table: only custom-property visibility and existing Entra profile-card properties. | Fix: Add a people-data connection setup row using the documented Connectors gallery and Microsoft Graph external connections APIs, with the role discrepancy noted. Add an item-quota row only after reading its management surface, or remove the quota-check instruction from the checklist and retain it as an unresolved licensing question.
 -->

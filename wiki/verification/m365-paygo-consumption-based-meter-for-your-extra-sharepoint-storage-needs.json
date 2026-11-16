@@ -5,27 +5,929 @@
   "status": "held",
   "date": "2026-11-16",
   "version": 1,
-  "model": "none",
-  "engine": "manual",
-  "attempts": 0,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [],
   "hold": {
-    "reason": "unverified",
+    "reason": "failed",
     "since": "2026-11-16",
     "reasons": [
-      "Written but not yet checked against Microsoft Learn."
+      "1 blocking finding (claim 51)"
     ]
   },
   "counts": {
-    "claims": 0,
-    "confirmed": 0,
-    "unconfirmed": 0,
-    "contradicted": 0,
-    "blocker": 0,
-    "major": 0,
-    "minor": 0
+    "claims": 71,
+    "confirmed": 68,
+    "unconfirmed": 1,
+    "contradicted": 2,
+    "blocker": 1,
+    "major": 1,
+    "minor": 3
   },
-  "summary": "Written but not yet checked against Microsoft Learn.",
-  "claims": [],
-  "precheck": null,
-  "history": []
+  "summary": "Hold: the controls table incorrectly says no storage-monitoring API is documented, although Microsoft documents a SharePoint storage usage report in Microsoft Graph. The rollout, opt-in default and published consumption pricing are supported, but the assurance of no new data access is not explicitly documented.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing; changes",
+      "type": "record",
+      "claim": "The roadmap General Availability target is January CY2027.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"January CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is June CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"June CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists only Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap product is Microsoft 365.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft 365\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap says the meter integrates with Microsoft 365 Archive.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This reduces the operational overhead associated with purchasing extra storage packs and more seamlessly integrates with Microsoft 365 Archive.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Microsoft's notice says Public Preview rollout completed in June 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1330893",
+      "quote": "Public Preview (Worldwide): We completed rollout in June 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Microsoft expects General Availability rollout to begin in early January 2027, previously early November.",
+      "status": "supported",
+      "source": "Message Center post MC1330893",
+      "quote": "General Availability (WW): We expect to begin rolling out in early January 2027 (previously early November)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Microsoft expects General Availability rollout to complete by late January 2027, previously end of November.",
+      "status": "supported",
+      "source": "Message Center post MC1330893",
+      "quote": "to complete rolling by late January 2027 (previously end of November).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; front matter: changes",
+      "type": "record",
+      "claim": "Microsoft updated its notice on 9 November 2026 to change the timeline.",
+      "status": "supported",
+      "source": "Message Center post MC1330893",
+      "quote": "Updated November 9, 2026: We have updated the timeline. Thank you for your patience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Microsoft's notice sets no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1330893",
+      "quote": "Act by: none",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "The meter is admin-opt-in and off by default, so nothing changes until an administrator enables it.",
+      "status": "supported",
+      "source": "Message Center post MC1330893",
+      "quote": "Admins can enable pay-as-you-go SharePoint storage billing in the Microsoft 365 admin center. ... The feature is opt-in and off by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Scope; rationale: impact",
+      "type": "record",
+      "claim": "Microsoft's notice says there is no impact to users.",
+      "status": "supported",
+      "source": "Message Center post MC1330893",
+      "quote": "There is no impact to users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Why it matters; Cost and licensing",
+      "type": "record",
+      "claim": "The existing Office 365 Extra File Storage add-on remains available as an alternative.",
+      "status": "supported",
+      "source": "Message Center post MC1330893",
+      "quote": "The existing Office 365 Extra File Storage add-on remains available if you prefer to manually increase your storage quota instead.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Administrators enable SharePoint pay-as-you-go storage billing in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "Message Center post MC1330893",
+      "quote": "Admins can enable pay-as-you-go SharePoint storage billing in the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "After enablement, storage over the included tenant quota is billed automatically based on consumption.",
+      "status": "supported",
+      "source": "Message Center post MC1330893",
+      "quote": "Storage used above the included tenant quota will be automatically billed based on consumption.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "front matter: licensing.model, cost; title; summary; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Microsoft 365 SharePoint Storage uses a consumption licensing model and variable pay-as-you-go cost.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/add-storage-space",
+      "quote": "Microsoft 365 SharePoint Storage is a pay-as-you-go service that provides flexible billing to add storage to your SharePoint sites. Use and pay for more storage above the storage quota as needed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "front matter: licensing.notes; Cost and licensing: Licence; Scope",
+      "type": "licensing",
+      "claim": "The tenant must have at least one SharePoint licence or a licence that includes SharePoint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node",
+      "quote": "The tenant must have at least one SharePoint license, or a license that includes SharePoint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "The setup prerequisites name admin roles, Azure rights and a SharePoint licence, but no separate per-user licence for the meter.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node",
+      "quote": "The tenant must have at least one SharePoint license, or a license that includes SharePoint. ... You must have Owner or Contributor rights to the Azure subscription and resource group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "front matter: licensing.notes; summary; What's changing; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Service meter charges are billed through the linked Azure subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/documentprocessing/syntex-pay-as-you-go-services",
+      "quote": "When you use pay-as-you-go services, you're billed using service meters in the Azure subscription that you specified when you set up pay-as-you-go billing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "front matter: licensing.notes; Cost and licensing: Meter; rationale: cost",
+      "type": "cost",
+      "claim": "The Microsoft 365 SharePoint Storage meter counts gigabytes of data exceeding the SharePoint tenant quota.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/documentprocessing/syntex-pay-as-you-go-services",
+      "quote": "Microsoft 365 SharePoint Storage | The number of gigabytes (GB) of data that exceeds the SharePoint tenant quota.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "front matter: licensing.notes; Cost and licensing: Meter; Open questions; rationale: cost",
+      "type": "cost",
+      "claim": "Learn lists Microsoft 365 SharePoint Storage at $0.20/GB/month.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/documentprocessing/syntex-pay-as-you-go-services",
+      "quote": "Microsoft 365 SharePoint Storage ... $0.20/GB/month (shows on invoice as $0.00667/GB/day)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "The SharePoint Storage rate appears on invoices as $0.00667/GB/day.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/documentprocessing/syntex-pay-as-you-go-services",
+      "quote": "$0.20/GB/month (shows on invoice as $0.00667/GB/day)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "The Azure consumption discount applies to storage services.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/documentprocessing/syntex-pay-as-you-go-services",
+      "quote": "The Azure consumption discount (ACD) applies to storage services.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "The Microsoft Azure Consumption Commitment does not apply to storage services.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/documentprocessing/syntex-pay-as-you-go-services",
+      "quote": "The Microsoft Azure Consumption Commitment (MACC) doesn't apply.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Cost and licensing: Meter; Open questions",
+      "type": "absence",
+      "claim": "The cited pricing page does not separate preview and General Availability rates for this meter.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 SharePoint Storage preview general availability pricing $0.20; read https://learn.microsoft.com/microsoft-365/documentprocessing/syntex-pay-as-you-go-services in full. One SharePoint Storage rate is listed, with no preview/GA distinction.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[0].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "Connect the service in Microsoft 365 admin center at Billing > Pay-as-you-go > Services > Connect a policy > Connection status.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node",
+      "quote": "go to Billing > Pay-as-you-go. ... select the Services tab. ... select Connect a policy. ... select the Connection status toggle to set it to Connected.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[0].api; Governance controls",
+      "type": "absence",
+      "claim": "No PowerShell, Microsoft Graph or REST setup call for connecting this SharePoint Storage meter is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 SharePoint Storage PowerShell Graph REST billing policy connect disconnect. Read add-storage-space and pay-as-you-go-setup-billing-node on Learn; results document UI setup, not an API for this meter. Backup and app billing APIs concern other services.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[0].note; Risk assessment: Security & identity; Scope: Roles",
+      "type": "role",
+      "claim": "Setup accepts SharePoint Administrator, Billing Administrator, AI Administrator or Global Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node",
+      "quote": "You must have one of the following roles to complete the tasks in this article: SharePoint Administrator; Billing Administrator; AI Administrator; Global Administrator",
+      "severity": "minor",
+      "fix": "Keep the four roles attributed to the Billing-node setup guide, but disclose that https://learn.microsoft.com/microsoft-365/commerce/add-storage-space instead links SharePoint Storage to shared prerequisites naming only SharePoint Administrator or Global Administrator."
+    },
+    {
+      "n": 32,
+      "where": "controls[1].ui; Governance guidance: At rollout; Governance controls",
+      "type": "admin-path",
+      "claim": "Create a billing policy in Microsoft 365 admin center at Billing > Pay-as-you-go > Billing policies > Add a billing policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node",
+      "quote": "go to Billing > Pay-as-you-go. ... On the Billing policies tab, select Add a billing policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The subscription or resource group associated with a billing policy cannot be edited.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node",
+      "quote": "You can't edit a subscription or resource group associated with a billing policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[1].note; Risk assessment: Security & identity; Scope; Governance guidance",
+      "type": "role",
+      "claim": "Setup requires Owner or Contributor rights on both the Azure subscription and resource group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node",
+      "quote": "You must have Owner or Contributor rights to the Azure subscription and resource group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[1].api; Governance controls",
+      "type": "absence",
+      "claim": "An API for creating this service's billing policy and selecting its Azure billing resources is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 SharePoint Storage PowerShell Graph REST billing policy connect disconnect. Read https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node; no policy-creation API for this service was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[2].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "Budget settings are in Microsoft 365 admin center at Billing > Pay-as-you-go > Billing policies > policy > Budget > Settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node",
+      "quote": "go to Billing > Pay-as-you-go. ... On the Billing policies tab, select a billing policy. ... select the Budget tab. ... To configure your budget and alert preferences, select Settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[2].note; Cost and licensing: Caps",
+      "type": "behaviour",
+      "claim": "Budgets are set only at billing policy level, not per user, agent or site.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node",
+      "quote": "You can only set budgets at the billing policy level, not for individual users, agents, or sites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[2].note; summary; Risk assessment; Cost and licensing; Governance controls; rationale: risk",
+      "type": "behaviour",
+      "claim": "The budget only alerts; reaching 100% does not stop service or billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node",
+      "quote": "Reaching 100% of your budget doesn't stop the service or billing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Governance guidance: Before rollout; At rollout",
+      "type": "behaviour",
+      "claim": "A billing policy budget supports a configurable amount and reset period.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node",
+      "quote": "Enter a value for the budget limit. ... Select when to reset the budget spending: On the first day of the month; On the first day of the quarter; On the first day of the year",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Governance guidance: Before rollout; At rollout",
+      "type": "behaviour",
+      "claim": "Budget alerts have selectable thresholds and mail-enabled group recipients.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node",
+      "quote": "search for and select the names of email-enabled groups that you want to receive budget alerts. ... To set more alerts, select Add more and enter a new value.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Budget alert notifications can take up to 24 hours to reach recipients.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node",
+      "quote": "It can take up to 24 hours for recipients to receive budget alert notifications.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Consumption data can take up to four hours to appear in the budget spending graph.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node",
+      "quote": "To view current expenses for services linked to the policy, select Spending. Consumption data can take up to four hours to appear in the graph.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[2].api",
+      "type": "absence",
+      "claim": "No API is documented for setting this Microsoft 365 billing policy's budget and alerts.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 SharePoint Storage budget API; Microsoft 365 billing policy budget hard cap API PowerShell stop billing SharePoint storage. Read Learn's pay-as-you-go-setup-billing-node and pay-as-you-go-budget; no API for this policy budget was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[3]; Cost and licensing: Caps; Open questions",
+      "type": "absence",
+      "claim": "No UI or API hard spending cap that automatically stops SharePoint Storage billing is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 billing policy budget hard cap API PowerShell stop billing SharePoint storage. Read Learn's pay-as-you-go-setup-billing-node and pay-as-you-go-budget; both say reaching 100% does not stop billing, and no hard-cap control was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[3].note; Risk assessment: Autonomy & actions; Governance controls",
+      "type": "behaviour",
+      "claim": "Disconnecting the service is the only documented way to stop billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node",
+      "quote": "The only way to stop billing is to disconnect the payment method.",
+      "severity": "minor",
+      "fix": "Replace the exclusivity claim with 'Disconnect the service to stop this meter; the budget does not stop billing.' The broader terms at https://learn.microsoft.com/sharepoint/microsoft-365-pay-as-you-go-terms-of-service also document cancelling or deleting the Azure subscription to stop processing and billing; do not imply that disabling a whole subscription is necessary."
+    },
+    {
+      "n": 46,
+      "where": "controls[0].note; Governance controls; Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "Disconnect the service by turning off its Connected toggle in Connection status.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node",
+      "quote": "Select the service that you want to disconnect. ... select the Billing policies tab. ... In the Connection status column, select the Connected toggle to turn it off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "If an over-quota tenant disconnects SharePoint Storage, quota enforcement resumes immediately.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/add-storage-space",
+      "quote": "If you disconnect while your tenant is over its storage quota, enforcement of the quota resumes immediately.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[4].ui; Governance guidance: Before rollout; After rollout; Governance controls",
+      "type": "admin-path",
+      "claim": "Storage monitoring is available in SharePoint admin center > Active sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/add-storage-space",
+      "quote": "Go to the SharePoint admin center and sign in with an account that has SharePoint admin permissions for your organization. ... In the navigation menu, select Active sites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[4].note; Governance controls; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Active sites displays storage used across all sites and the total storage for the subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/add-storage-space",
+      "quote": "The top of the Active sites page displays the amount of storage used across all sites, and the total storage for your subscription.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[4].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The Active sites storage figure excludes changes made in the last 24-48 hours.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/add-storage-space",
+      "quote": "The storage used doesn't include changes made within the last 24-48 hours.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[4].api; Governance controls",
+      "type": "absence",
+      "claim": "No API or automation is documented for monitoring SharePoint storage usage.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/graph/api/reportroot-getsharepointsiteusagestorage?view=graph-rest-1.0",
+      "quote": "Get the trend of storage allocated and consumed during the reporting period. ... GET https://graph.microsoft.com/v1.0/reports/getSharePointSiteUsageStorage(period='D7')",
+      "severity": "blocker",
+      "fix": "Replace controls[4].api: null with the documented Graph report GET /v1.0/reports/getSharePointSiteUsageStorage(period='D7'), using this reference URL. Note that it requires Reports.Read.All and reports storage usage trends, not a live PAYGO billing balance or an exact replica of the Active sites quota bar. Alternatively narrow the row to the specific Active sites quota-bar readout and explicitly distinguish the documented usage-report API."
+    },
+    {
+      "n": 52,
+      "where": "controls[5].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "For Simplified view with an MCA account, buy Extra File Storage at Billing > Add more products > Office 365 > Office 365 Extra File Storage > Details.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/add-storage-space",
+      "quote": "If you're using the Simplified view, select Billing, and then select Add more products. ... Under View by category, select Office 365. ... Find Office 365 Extra File Storage, and then select Details.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[5].api",
+      "type": "absence",
+      "claim": "No automation for the tenant administrator to purchase this Extra File Storage add-on is documented in the checked sources.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Office 365 Extra File Storage purchase API PowerShell. Read https://learn.microsoft.com/microsoft-365/commerce/add-storage-space; it documents MCA/MOSA admin-center purchases, not a purchase command or API for this add-on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Cost and licensing: Alternative; controls[5].note; Governance controls",
+      "type": "cost",
+      "claim": "Office 365 Extra File Storage increases available storage by purchase in 1-GB increments rather than metering overage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/add-storage-space",
+      "quote": "Use the Office 365 Extra File Storage add-on to add more storage in 1-GB increments. You can buy the add-on in the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Cost and licensing: Alternative",
+      "type": "licensing",
+      "claim": "Customers who bought through Volume Licensing or a CSP cannot buy Office 365 Extra File Storage directly from Microsoft.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/add-storage-space",
+      "quote": "If you bought your subscription through Volume Licensing or a Cloud Solution Provider (CSP), you can't buy Office 365 Extra File Storage directly from Microsoft. For help, contact your representative or partner.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "What's changing; Scope: Tenants",
+      "type": "availability",
+      "claim": "Learn says SharePoint Storage is in public preview for all commercial tenants as of June 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/add-storage-space",
+      "quote": "As of June 2026, Microsoft 365 SharePoint storage is in public preview for all commercial tenants.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Scope: Tenants; Open questions",
+      "type": "availability",
+      "claim": "SharePoint Storage is not currently available to education tenants.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/add-storage-space",
+      "quote": "This product isn't currently available to education, GCC, or Microsoft 365 operated by 21Vianet in China customers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Scope: Tenants; Open questions",
+      "type": "availability",
+      "claim": "SharePoint Storage is not currently available to GCC customers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/add-storage-space",
+      "quote": "This product isn't currently available to education, GCC, or Microsoft 365 operated by 21Vianet in China customers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Scope: Tenants; Open questions",
+      "type": "availability",
+      "claim": "SharePoint Storage is not currently available to Microsoft 365 operated by 21Vianet in China customers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/add-storage-space",
+      "quote": "This product isn't currently available to education, GCC, or Microsoft 365 operated by 21Vianet in China customers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Scope: Prerequisites; Governance guidance: At rollout",
+      "type": "licensing",
+      "claim": "The Azure subscription must be in the same tenant as Microsoft 365.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node",
+      "quote": "You must have an Azure subscription in the same tenant as Microsoft 365.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Scope: Prerequisites; Governance guidance: At rollout",
+      "type": "licensing",
+      "claim": "An Azure resource group in the selected subscription is required.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node",
+      "quote": "You must have an Azure resource group in that subscription.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Scope: Prerequisites",
+      "type": "behaviour",
+      "claim": "The Azure subscription and resource group can be created during billing policy setup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node",
+      "quote": "If you don't have an Azure subscription, you can create one during the billing policy setup process. ... If you don't have an Azure resource group, you can create one during the billing policy setup process.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Scope: Roles",
+      "type": "role",
+      "claim": "Creating a new subscription in the Microsoft 365 admin center requires Billing Account Owner or Billing Account Contributor.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node",
+      "quote": "To create a new subscription in the Microsoft 365 admin center, you must be a Billing Account Owner or a Billing Account Contributor.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Scope: Users; controls[0].scope",
+      "type": "behaviour",
+      "claim": "The SharePoint Storage service applies to all users rather than a selected user group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node",
+      "quote": "Choosing users only applies to Microsoft Copilot pay-as-you-go services. For all other services, the All users option is automatically applied.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Risk assessment: Data exposure; controls[1]; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The Region selected in billing policy setup determines where the tenant ID and usage data are stored.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node",
+      "quote": "From the Region drop-down list, select a region. This selection determines where the tenant ID and usage data are stored.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The meter introduces no new data access.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 SharePoint Storage data access permissions tenant usage data; Microsoft 365 SharePoint Storage permissions access billing; SharePoint pay-as-you-go no data access. Read add-storage-space and the Billing-node setup guide; neither states this assurance.",
+      "severity": "major",
+      "fix": "Remove 'No new data access'. Retain the supported statements that the meter counts storage volume and that the billing policy's Region determines where tenant ID and usage data are stored."
+    },
+    {
+      "n": 67,
+      "where": "Cost and licensing: Meter; Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Administrators can monitor spending on the policy Budget tab and in Microsoft Cost Management for Azure.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node",
+      "quote": "In the billing policy side panel, select the Budget tab. The Spending option displays data for the current month ... You can also monitor your pay-as-you-go usage and costs in Microsoft Cost Management for Azure.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "For a multi-geo tenant, storage billing uses the tenant quota rather than each geo's quota.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/add-storage-space",
+      "quote": "If you have a multi-geo tenant that uses pay-as-you-go storage, billing is based on the tenant's storage quota, not each geo's quota.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Multi-geo billing starts when total storage across all geos exceeds the tenant quota.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/add-storage-space",
+      "quote": "Billing starts when the tenant's total storage usage across all geos exceeds the tenant quota.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Enrolled tenants are considered within quota and receive no quota-related emails or SharePoint admin center banner notifications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/add-storage-space",
+      "quote": "While your tenant is enrolled in Microsoft 365 SharePoint Storage, you don't receive quota-related email notifications and banner notifications in the SharePoint admin center because the tenant is considered within quota.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Governance guidance: After rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist directs readers to monitor Azure costs, but the controls table has no cost-monitoring row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Review spending on the policy's Budget tab and in Microsoft Cost Management; consumption data can take up to four hours to appear.",
+      "severity": "minor",
+      "fix": "Add a spending-monitoring row using Microsoft 365 admin center > Billing > Pay-as-you-go > Billing policies > policy > Budget > Spending, documented in the existing Billing-node source. Mention Microsoft Cost Management as the additional monitoring option and its requirement for at least read access to the billing resource group."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-16T17:06:50.403Z",
+    "summary": {
+      "links": 5,
+      "unreachable": 0,
+      "uiPaths": 5,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=506743",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1330893",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/commerce/add-storage-space",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/documentprocessing/syntex-pay-as-you-go-services",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether SharePoint storage above the tenant quota is billed",
+        "docs": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node",
+        "reachable": true,
+        "segments": [
+          "Billing",
+          "Pay-as-you-go",
+          "Services",
+          "Connect a policy",
+          "Connection status"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which Azure subscription, resource group and region receive the charges",
+        "docs": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node",
+        "reachable": true,
+        "segments": [
+          "Billing",
+          "Pay-as-you-go",
+          "Billing policies",
+          "Add a billing policy"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Spending budget and alert thresholds for the billing policy",
+        "docs": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node",
+        "reachable": true,
+        "segments": [
+          "Billing",
+          "Pay-as-you-go",
+          "Billing policies",
+          "Budget",
+          "Settings"
+        ],
+        "missing": []
+      },
+      {
+        "index": 4,
+        "side": "ui",
+        "governs": "Storage used against the tenant quota",
+        "docs": "https://learn.microsoft.com/microsoft-365/commerce/add-storage-space",
+        "reachable": true,
+        "segments": [
+          "Active sites"
+        ],
+        "missing": []
+      },
+      {
+        "index": 5,
+        "side": "ui",
+        "governs": "Prepaid extra storage as an alternative to the meter",
+        "docs": "https://learn.microsoft.com/microsoft-365/commerce/add-storage-space",
+        "reachable": true,
+        "segments": [
+          "Billing",
+          "Add more products",
+          "Office 365",
+          "Office 365 Extra File Storage",
+          "Details"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": [
+    {
+      "date": "2026-11-16",
+      "status": "held",
+      "version": 1,
+      "model": "none"
+    }
+  ]
 }

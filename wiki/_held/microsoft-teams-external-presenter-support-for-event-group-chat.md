@@ -89,6 +89,17 @@ changes:
   - date: "2026-11-16"
     note: "First briefing for this item, based on roadmap item 573706 and Message Center post MC1528011 as updated on 29 October 2026."
 version: 1
+verification:
+  status: "held"
+  date: "2026-11-16"
+  version: 1
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 48
+  confirmed: 46
+  unconfirmed: 0
+  contradicted: 2
+  attempts: 1
 ---
 
 ## What's changing
@@ -193,4 +204,14 @@ The organisation setting and a user policy must both allow external access, and 
 risk: Medium. Federated external presenters will be able to read and post in the event group chat, including earlier messages if the thread shows history, and no admin control for the chat itself is documented.
 cost: Low. Neither the Message Center post nor the roadmap record names a licence or meter, and the licensing is not yet published; the only known cost is admin time to check settings and brief organisers.
 impact: Medium. Organisers, co-organisers and presenters of Teams events and structured meetings with the green room enabled will notice; ordinary attendees do not use this chat.
+-->
+
+<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
+The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
+- [contradicted, blocker] controls[0].api; Governance controls table / command: Set-CsTenantFederationConfiguration -AllowFederatedUsers / -AllowedDomains / -BlockedDomains is a PowerShell call that configures tenant external access. | Found: [-AllowedDomains <IAllowedDomainsChoice>]
+    [-BlockedDomains <List>]
+    [-BlockAllSubdomains <Boolean>]
+    [-AllowFederatedUsers <Boolean>] | Fix: Replace the slash-separated parameter inventory with valid separate calls and explicit values or typed placeholders: 'Set-CsTenantFederationConfiguration -AllowFederatedUsers $true'; 'Set-CsTenantFederationConfiguration -AllowedDomains <allowed-domains-object>'; 'Set-CsTenantFederationConfiguration -BlockedDomains <blocked-domains-list>'. Explain that these are alternatives for different operations, not one command, and that AllowedDomains requires an object created with New-CsEdgeAllowList or New-CsEdgeAllowAllKnownDomains. Cite the cmdlet reference for syntax and object construction; do not present '/' as PowerShell syntax. Update both front matter and the rendered table. | Source: https://learn.microsoft.com/en-us/powershell/module/microsoftteams/set-cstenantfederationconfiguration
+- [contradicted, blocker] controls[1].api; Governance controls table / command: Set-CsExternalAccessPolicy -EnableFederationAccess is a PowerShell call that changes a user's external-access policy. | Found: [-EnableFederationAccess <Boolean>] | Fix: Supply the missing Boolean argument in both copies of the call, for example 'Set-CsExternalAccessPolicy -EnableFederationAccess $false' to disable federation in the default org-wide policy, as illustrated in manage-external-access. State the operation and policy target explicitly; use $true for enabling rather than implying the bare parameter is a switch. | Source: https://learn.microsoft.com/en-us/powershell/module/microsoftteams/set-csexternalaccesspolicy
+- [supported, minor] controls[0].note; Governance controls: label difference / admin-path: The notice uses External collaboration while the cited external-access article uses Users > External access, leaving the label difference unresolved. | Found: In the Teams admin center, go to **Users** > **External access**. | Fix: Keep the path supported by the cited article, but replace 'the label difference is unresolved' with an explanation and citation to https://learn.microsoft.com/microsoftteams/unified-external-collab-settings-management-experience: Microsoft documents an External Collaboration section in the Teams admin center left rail which contains the existing External access page. Report both documented navigation descriptions rather than implying Microsoft has not explained their relationship. | Source: https://learn.microsoft.com/microsoftteams/manage-external-access
 -->

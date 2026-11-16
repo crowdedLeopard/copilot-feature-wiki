@@ -94,6 +94,17 @@ changes:
   - date: "2026-11-16"
     note: "New briefing: Microsoft's notice MC1539002 sets rollout for early December 2026 with an act-by date of 2026-12-04, later than the roadmap's October CY2026 target."
 version: 1
+verification:
+  status: "held"
+  date: "2026-11-16"
+  version: 1
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 75
+  confirmed: 71
+  unconfirmed: 1
+  contradicted: 3
+  attempts: 1
 ---
 
 ## What's changing
@@ -206,4 +217,13 @@ Enhanced personalization governs Copilot memory generally, not only Planner Agen
 risk: Medium. The new capabilities are on by default for users with access and can write assignments to shared plans, but the notice says changes stay drafts until the user confirms them and the agent reads only what the user can already open.
 cost: Low. Microsoft's notice and the Learn page name an active Microsoft Copilot licence as the requirement and list no other licence or meter; the cost shown is admin time, communications and support. Any further pricing is not yet published.
 impact: Medium. Every user with a Microsoft Copilot licence and access to Planner Agent sees the new behaviour, and the notice says it is enabled by default, but Planner Agent is one agent among many in Copilot Chat.
+-->
+
+<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
+The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
+- [unsupported, blocker] Cost and licensing: final sentence / cost: Optional catch-up email notifications are not a charge. | Found: Searched: "Planner Agent" "catch-up" "email" pricing charge; Planner Agent Copilot Chat scheduled catch-up assignment Copilot Credits pricing license. Read MC1539002, turn-off-planner-agent and cost-considerations excerpts; none states these notifications have no charge. | Fix: Remove ', not a charge' from the final sentence of Cost and licensing. Say only 'The optional email notifications for catch-up are a user-side setting'; retain the separate statement that feature-specific pricing is not yet published.
+- [contradicted, blocker] controls[1].ui; Governance guidance: At rollout; Governance controls / admin-path: The cited Learn page gives Agents > All agents > Manage pinned agents without an intervening menu. | Found: 1. In the All agents page, select the ellipse on the right to display a dropdown menu.
+2. Select the Manage pinned agents. | Fix: In controls[1].ui.path and the repeated table and guidance, use 'Agents > All agents > ellipsis menu > Manage pinned agents'. The notice gives a shortened route, but the cited Learn instructions require opening that menu. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview
+- [contradicted, minor] front matter: risk; rationale: risk / consistency: A medium risk rating fits this default-on agent change with write access and coarse controls. | Found: risk: "medium"; "This is a default-on change to an agent that can write to shared plans." The assessment scale says "an on-by-default agent with write access is high". | Fix: Set risk to high and start its rationale with 'High.': the change is default-on, can write assignments to shared plans and has coarse controls. Retain the user-confirmation and existing-permissions qualifications as mitigations.
+- [contradicted, minor] front matter: impact; rationale: impact / consistency: A medium impact rating fits the change to default behavior for all licensed users with Planner Agent access. | Found: impact: "medium"; "Every user with a Microsoft Copilot licence and access to Planner Agent sees the new behaviour". The assessment scale defines high impact as "most users, or a change to default behaviour". | Fix: Set impact to high and start its rationale with 'High.': the additions change default behavior for all licensed users who already have Planner Agent access; keep that audience qualification.
 -->

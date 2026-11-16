@@ -95,6 +95,17 @@ changes:
   - date: "2026-11-16"
     note: "First briefing for this item: documents the OneDrive Storage pay-as-you-go service, its set-up path, meter, budget behaviour and per-user limit controls."
 version: 1
+verification:
+  status: "verified-with-gaps"
+  date: "2026-11-16"
+  version: 1
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 60
+  confirmed: 59
+  unconfirmed: 1
+  contradicted: 0
+  attempts: 0
 ---
 
 ## What's changing
@@ -192,4 +203,9 @@ The budget page gives the path Copilot > Billing & usage, while the Billing node
 risk: Medium. Nothing is billed until an administrator connects a billing policy, but once connected, a budget only sends alerts: Microsoft states that reaching 100% of the budget does not stop the service or billing.
 cost: Variable. Metered per GB per month of OneDrive data above each account's licensed entitlement; Microsoft's pricing page lists $0.20/GB/month, billed through an Azure subscription.
 impact: Low. Administrators set it up, and only the users whose storage limit is raised see more space; users who stay within their licensed quota notice nothing.
+-->
+
+<!-- verifier-findings (2026-11-16, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
+- [unsupported, major] Risk assessment: Data exposure / behaviour: Enabling this service introduces no new data access and does not change who can read OneDrive content. | Found: Searched: "OneDrive Storage" "permissions" "pay-as-you-go" sharing. Read add-storage-space and pay-as-you-go-setup-billing-node, plus search excerpts on OneDrive security; no statement that this feature leaves access unchanged found. | Fix: Remove the categorical sentence beginning 'No new data access'. Replace it with 'Microsoft documents this as additional storage above licensed quotas; the cited setup documentation does not discuss changes to content-access permissions.' Keep the separately supported billing-region statement.
 -->

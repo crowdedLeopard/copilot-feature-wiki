@@ -89,6 +89,17 @@ changes:
   - date: "2026-11-16"
     note: "First briefing for this item, based on roadmap item 577543 and Message Center post MC1530950."
 version: 1
+verification:
+  status: "held"
+  date: "2026-11-16"
+  version: 1
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 54
+  confirmed: 49
+  unconfirmed: 3
+  contradicted: 2
+  attempts: 1
 ---
 
 ## What's changing
@@ -185,4 +196,15 @@ Cloud recording for calling and Transcription are separate existing settings. Th
 risk: Low. The existing explicit consent setting is disabled by default and the change adds no new setting, so only tenants that already require consent see different behaviour on one-to-one PSTN calls.
 cost: Low. The only cost the sources show is admin and communication time; the licence for this capability is not yet published, and no new meter is mentioned in Microsoft's notice.
 impact: Low. Only PSTN participants in one-to-one calls, and the Teams users who call them, in tenants whose calling policy already requires explicit consent.
+-->
+
+<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
+The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
+- [contradicted, blocker] controls[0].ui; Governance controls table / admin-path: The cited consent-setting path is Teams admin center > Voice > Calling policies > policy > Require participant agreement for recording and transcription. | Found: Select the policy or policies that you want to modify, and then select Edit. | Fix: Insert Edit after policy in controls[0].ui.path and the rendered row: Voice > Calling policies > policy > Edit > Require participant agreement for recording and transcription. The cited page explicitly requires Edit after selecting the policy. | Source: https://learn.microsoft.com/microsoftteams/teams-calling-policy
+- [supported, minor] controls[0].api; Governance controls table / command: The MicrosoftTeams module provides Set-CsTeamsCallingPolicy -Identity <policy name> -ExplicitRecordingConsent <string> to modify calling-policy consent. | Found: [-Identity] <string> [...] [-ExplicitRecordingConsent <string>]. This feature has not been released yet and will have no changes if it is enabled or disabled. | Fix: Keep the command, but add that the cmdlet reference currently marks ExplicitRecordingConsent unreleased and ineffective, while the call-configuration guide and MC1530950 describe the existing policy. Report this documentation discrepancy rather than silently presenting the reference as unqualified confirmation. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamscallingpolicy
+- [supported, minor] What's changing; Governance controls / applicability: The call-configuration guide says ExplicitRecordingConsent manages consent for both one-to-one VoIP and PSTN calls. | Found: This parameter manages recording consent for Teams 1:1 VoIP and PSTN calls. | Fix: Keep the attributed statement, but cite https://learn.microsoft.com/microsoftteams/participant-agreement-recording-transcription and note that its endpoint list still places PSTN endpoints in 1:1 calls under auto consent, with consent data logged as 'not applicable' or 'auto consent'. Distinguish that existing documentation from the planned keypad update. | Source: https://learn.microsoft.com/microsoftteams/call-recording-transcription-captions
+- [unsupported, major] Risk assessment: Security & identity / behaviour: No new identity is involved in the capability. | Found: Searched: Teams one-to-one PSTN keypad recording consent no new identity permissions sign-in; read MC1530950 and call-recording-transcription-captions. Neither states the blanket no-new-identity claim. | Fix: Remove 'No new identity ... is involved'. Retain the documented narrower statement that participants respond using the phone keypad and that the notice describes no sign-in step.
+- [unsupported, major] Risk assessment: Security & identity / behaviour: No new permission is involved in the capability. | Found: Searched: Teams one-to-one PSTN keypad recording consent no new identity permissions sign-in; read MC1530950 and call-recording-transcription-captions. Neither states that no new permission is involved. | Fix: Remove the assertion that no new permission is involved. Replace the whole opening clause with 'The notice describes participants responding from their phone keypad, without describing a sign-in step.'
+- [unsupported, major] Risk assessment: Security & identity / behaviour: When the calling-policy consent setting is off, external PSTN participants are included in recordings and transcripts that a Teams user starts. | Found: Searched: Teams 1:1 PSTN calls ExplicitRecordingConsent Disabled participants included recordings transcripts no consent; read the calling-policy reference and call guide. The explicit all-participants inclusion wording found applies to meetings. | Fix: Replace this sentence with 'The calling-policy reference says Disabled does not require users to obtain explicit consent before recording starts.' Do not extend the meeting-policy statement about inclusion in recordings and transcripts to PSTN calls without a stating source.
+- [contradicted, minor] Governance guidance: After rollout; controls / consistency: The checklist tells admins to review consent audit data, but the controls table has no consent-audit row. | Found: Use the Added information about call participants filter in the Teams calling audit logs in Purview to review consent data. [The table contains only consent, a PSTN-only switch, recording and transcription rows.] | Fix: Add a governance-controls row for reviewing call-consent audit data, naming the documented 'Added information about call participants' filter and citing https://learn.microsoft.com/microsoftteams/call-recording-transcription-captions. Preserve the caveat that keypad-specific audit behaviour is unconfirmed; do not invent navigation or an API.
 -->

@@ -5,27 +5,836 @@
   "status": "held",
   "date": "2026-11-16",
   "version": 1,
-  "model": "none",
-  "engine": "manual",
-  "attempts": 0,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [],
   "hold": {
-    "reason": "unverified",
+    "reason": "failed",
     "since": "2026-11-16",
     "reasons": [
-      "Written but not yet checked against Microsoft Learn."
+      "2 blocking findings (claims 60, 61)"
     ]
   },
   "counts": {
-    "claims": 0,
-    "confirmed": 0,
-    "unconfirmed": 0,
-    "contradicted": 0,
-    "blocker": 0,
-    "major": 0,
-    "minor": 0
+    "claims": 63,
+    "confirmed": 59,
+    "unconfirmed": 1,
+    "contradicted": 3,
+    "blocker": 2,
+    "major": 1,
+    "minor": 3
   },
-  "summary": "Written but not yet checked against Microsoft Learn.",
-  "claims": [],
-  "precheck": null,
-  "history": []
+  "summary": "Hold: the risk rationale wrongly implies that ingested people data remains unexposed until a property is made visible on profile cards, although Microsoft documents other consumers of that data. The open questions also cast doubt on per-property visibility, which Microsoft's supplied notice explicitly documents.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "Microsoft plans custom organisation-specific profile-card properties sourced from external systems such as HR platforms.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "These properties can be sourced from external systems like HR platforms, enriching user profiles with relevant organizational details.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing; Cost and licensing; Governance guidance",
+      "type": "record",
+      "claim": "Administrators can add up to 10 custom properties.",
+      "status": "supported",
+      "source": "Message Center post MC1193692",
+      "quote": "You can add up to 10 custom properties to profile cards using Microsoft Graph People connectors.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing; controls[0]; Governance guidance",
+      "type": "record",
+      "claim": "Administrators can configure each custom property's display name.",
+      "status": "supported",
+      "source": "Message Center post MC1193692",
+      "quote": "Admins can configure visibility, display name, and icon for each property",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing; controls[0]; Governance guidance",
+      "type": "record",
+      "claim": "Administrators can configure each custom property's icon.",
+      "status": "supported",
+      "source": "Message Center post MC1193692",
+      "quote": "Admins can configure visibility, display name, and icon for each property",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What's changing; rationale: impact",
+      "type": "record",
+      "claim": "Enabled custom properties appear in the Contact Information section of profile cards.",
+      "status": "supported",
+      "source": "Message Center post MC1193692",
+      "quote": "Once enabled, properties appear in the Contact Information section of profile cards in Outlook Web",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "summary; What's changing; Risk assessment; Scope; Open questions; rationale: impact",
+      "type": "record",
+      "claim": "The notice names Outlook on the web as the surface for the new properties, without naming other clients.",
+      "status": "supported",
+      "source": "Message Center post MC1193692",
+      "quote": "Once enabled, properties appear in the Contact Information section of profile cards in Outlook Web",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing; Scope; Governance guidance",
+      "type": "record",
+      "claim": "Microsoft Graph People connectors ingest the external properties.",
+      "status": "supported",
+      "source": "Message Center post MC1193692",
+      "quote": "Ingest these properties using a Microsoft Graph People connector.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; rationales",
+      "type": "default",
+      "claim": "The feature is off by default and requires administrator configuration, supporting admin-opt-in.",
+      "status": "supported",
+      "source": "Message Center post MC1193692",
+      "quote": "This feature is OFF by default and requires admin configuration to enable.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; controls[0]; Governance guidance",
+      "type": "record",
+      "claim": "Administrators can configure visibility separately for each custom property.",
+      "status": "supported",
+      "source": "Message Center post MC1193692",
+      "quote": "Admins can configure visibility, display name, and icon for each property",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance",
+      "type": "record",
+      "claim": "Changes can take up to 24 hours to appear across profile cards.",
+      "status": "supported",
+      "source": "Message Center post MC1193692",
+      "quote": "Changes may take up to 24 hours to propagate across profile cards.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice plans direct ingestion from SAP SuccessFactors connectors in future updates.",
+      "status": "supported",
+      "source": "Message Center post MC1193692",
+      "quote": "Future updates will include direct ingestion from SAP SuccessFactors and Workday connectors.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice plans direct ingestion from Workday connectors in future updates.",
+      "status": "supported",
+      "source": "Message Center post MC1193692",
+      "quote": "Future updates will include direct ingestion from SAP SuccessFactors and Workday connectors.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is January CY2027.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"January CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: platforms, products; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists Outlook on the Web platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Outlook\"], \"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: previewDate, roadmapModified",
+      "type": "record",
+      "claim": "The record has no preview date and has a modified timestamp of 2026-11-06T23:04:41.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null, \"modified\": \"2026-11-06T23:04:41\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; front matter: changes",
+      "type": "record",
+      "claim": "MC1193692 was updated on 6 November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1193692",
+      "quote": "Updated November 6, 2026: We have updated the timeline.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Scope: Rollout",
+      "type": "record",
+      "claim": "The notice targets the start of rollout for January 2027.",
+      "status": "supported",
+      "source": "Message Center post MC1193692",
+      "quote": "We will begin rolling out in January 2027 (previously November 2026)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Scope: Rollout",
+      "type": "record",
+      "claim": "The notice targets completion of rollout for January 2027.",
+      "status": "supported",
+      "source": "Message Center post MC1193692",
+      "quote": "expect to complete in January 2027 (previously November 2026).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; front matter: changes; Governance guidance",
+      "type": "record",
+      "claim": "The notice moved the rollout window from November 2026 to January 2027.",
+      "status": "supported",
+      "source": "Message Center post MC1193692",
+      "quote": "begin rolling out in January 2027 (previously November 2026) and expect to complete in January 2027 (previously November 2026).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Microsoft's message metadata shows an end date of 2027-03-01, distinguished from the rollout window.",
+      "status": "supported",
+      "source": "Message Center post MC1193692",
+      "quote": "Microsoft's end date 2027-03-01",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The supplied notice sets no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1193692",
+      "quote": "Act by: none",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Scope: Audience",
+      "type": "record",
+      "claim": "The affected audience is Microsoft 365 tenant administrators managing profile cards.",
+      "status": "supported",
+      "source": "Message Center post MC1193692",
+      "quote": "Who is affected: Microsoft 365 tenant admins managing user profile cards",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[0].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "The notice gives Microsoft 365 admin center > Settings > Org settings > People settings > Profile > Person info on profile cards.",
+      "status": "supported",
+      "source": "Message Center post MC1193692",
+      "quote": "in Microsoft 365 admin center under: Settings > Org settings > People settings > Profile > Person info on profile cards",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[0].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No API for visibility, display name and icon of connector-sourced custom profile-card properties is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: profile cards connector custom properties visibility display name icon API person info profile cards. Opened customize-profile-cards, peopleconnectors, build-connectors-with-people-data, add-properties-profilecard and profileCardProperty; no such API identified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[1].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "Optional existing profile properties are configured in Microsoft 365 admin center > Settings > Org settings > People settings > Profile card > Contact info.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/customize-profile-cards",
+      "quote": "admins can configure their visibility by navigating to Settings > Org settings > People settings > Profile card > Contact info in the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[1].api; Governance controls",
+      "type": "command",
+      "claim": "POST https://graph.microsoft.com/v1.0/admin/people/profileCardProperties accepts directoryPropertyName, annotations and isVisible for existing Entra profile-card properties.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/add-properties-profilecard",
+      "quote": "POST https://graph.microsoft.com/v1.0/admin/people/profileCardProperties",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[1].note; Governance controls",
+      "type": "applicability",
+      "claim": "The existing profile-card API covers Microsoft Entra attributes, including CustomAttribute1 through CustomAttribute15.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/add-properties-profilecard",
+      "quote": "You can add any of the 15 Microsoft Entra ID custom extension attributes to users' profile cards",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[1].note; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not confirmed that the existing Entra profile-card property API governs connector-sourced custom properties.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: profile cards connector custom properties visibility display name icon API person info profile cards. Opened add-properties-profilecard and profileCardProperty: both limit directory properties to Entra attributes; neither documents connector-property control.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[0].note; Scope: Roles; Governance guidance",
+      "type": "role",
+      "claim": "Global Administrator or People Administrator can configure People settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/customize-profile-cards",
+      "quote": "You must be a Global Administrator or a People Administrator to do the tasks in this article.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Why it matters; Risk assessment: Data exposure; Governance guidance; rationale: risk",
+      "type": "availability",
+      "claim": "People data provided through a Copilot connector is visible to all users in the organisation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/build-connectors-with-people-data",
+      "quote": "People data provided via a Copilot connector is visible to all users in the organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Connector-sourced people data is stored in the user's Microsoft 365 profile.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/peopleconnectors",
+      "quote": "This connector data is stored in the user's Microsoft 365 profile.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "Learn documents no per-audience visibility setting for these connector custom properties.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: people connectors profile card custom properties restrict audience visibility staged rollout. Opened peopleconnectors and build-connectors-with-people-data: everyone ACL required; staged connections unsupported; no per-property audience control documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Hiding an optional property removes it from profile cards without deleting the underlying Microsoft 365 profile data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/customize-profile-cards",
+      "quote": "Hiding a property removes it from profile cards but doesn't delete the underlying data from Microsoft 365 profiles",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Hiding an optional profile-card property does not stop it appearing in other Microsoft 365 experiences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/customize-profile-cards",
+      "quote": "or stop the property from appearing in other Microsoft 365 experiences.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "Microsoft has not specifically documented whether hiding connector custom properties has the same effects as hiding existing optional properties.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: profile cards connector custom properties visibility display name icon API person info profile cards. Opened customize-profile-cards, peopleconnectors and build-connectors-with-people-data; no connector-custom-property-specific hiding semantics found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Setting up people connectors requires OAuth 2.0 authentication.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/peopleconnectors",
+      "quote": "To set up people connectors, OAuth 2.0 authentication is required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Security & identity; Open questions",
+      "type": "role",
+      "claim": "The people-connectors page lists Global Administrator and Copilot Administrator as configuration roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/peopleconnectors",
+      "quote": "Only users with Global Administrator and Copilot Administrator roles can configure people connectors.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Security & identity; Open questions",
+      "type": "role",
+      "claim": "The general connector prerequisites page instead specifies AI administrator, a disagreement the briefing reports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "To configure and deploy Copilot connectors, you must be an AI administrator in the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "People-data connectors comply with Microsoft Purview Information Barriers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/peopleconnectors",
+      "quote": "Microsoft 365 Copilot connectors for people data comply with information barriers (IB) to ensure compliance across various platforms.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The feature takes no actions.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Outlook profile card connector custom properties actions automation display name icon January 2027. Read roadmap, MC1193692, peopleconnectors and customize-profile-cards; they describe displaying information but do not expressly establish the blanket no-actions assertion.",
+      "severity": "major",
+      "fix": "Replace 'No change: the feature displays values on a card and takes no actions' with 'The roadmap describes a display change: custom properties appear in the Contact Information section of profile cards.'"
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Connector-ingested people data also feeds Microsoft 365 Copilot, Microsoft Search and Org Explorer.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/peopleconnectors",
+      "quote": "Experiences such as Microsoft 365 Copilot, Microsoft Search, profile cards, and Org Explorer use that composed people data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "Properties ingested through people connectors are read-only to users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/peopleconnectors",
+      "quote": "All properties ingested via the people connectors are read-only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "Administrators correct connector-sourced values in the source system.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/peopleconnectors",
+      "quote": "The administrator can update the information directly in the source system.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Corrected values appear after the connector's next scheduled crawl.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/peopleconnectors",
+      "quote": "After the connector performs its next scheduled crawl, the updated data is reflected on the user's profile card.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "front matter: licensing.model, licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft has not published a licence requirement specifically for this connector-sourced profile-card display feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: people data connectors custom profile card properties license pricing quota. Opened prerequisites, peopleconnectors, build-connectors-with-people-data, customize-profile-cards and connectors API overview; no licence specific to the new display feature found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "Neither the roadmap record nor the supplied notice names a licence, meter or price.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: the complete supplied roadmap record and MC1193692, including notice metadata and body; neither names a licence, meter or price.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Items ingested through custom connections built with the Copilot connectors APIs consume item quota.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/connecting-external-content-connectors-api-overview",
+      "quote": "Items ingested through connections built with the APIs consume your item quota.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The connectors API guidance says additional item quota can be purchased.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/connecting-external-content-connectors-api-overview",
+      "quote": "For more information about how to determine how much item quota you have and purchasing additional quota, see licensing requirements and pricing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "General prerequisites say synced connector data indexing incurs no extra cost for tenants with Microsoft 365 licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "Indexing of synced connector data incurs no extra cost for tenants with Microsoft 365 licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "The cited guidance does not specifically explain how people-data connectors are counted against item quota.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: people data connectors custom profile card properties license pricing quota. Opened prerequisites (also the destination of microsoftsearch/licensing), connectors API overview, peopleconnectors and build-connectors-with-people-data; no people-specific counting rule found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Scope: Prerequisites",
+      "type": "behaviour",
+      "claim": "Microsoft Graph ignores non-matching user accounts during people-data ingestion.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/build-connectors-with-people-data",
+      "quote": "Nonmatched user accounts (userPrincipalName or externalDirectoryObjectId) are ignored.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Scope: Prerequisites",
+      "type": "behaviour",
+      "claim": "Microsoft Graph ignores accounts without an Exchange Online mailbox.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/build-connectors-with-people-data",
+      "quote": "Microsoft Graph ignores accounts without an Exchange Online mailbox.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Scope: Prerequisites",
+      "type": "behaviour",
+      "claim": "A new people-data connection can take up to six hours to become available.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/build-connectors-with-people-data",
+      "quote": "Microsoft 365 might take up to 6 hours after the connection is created before it becomes available in search, people experiences, or Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Learn recommends piloting with a limited audience before rollout.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/peopleconnectors",
+      "quote": "Before rollout, confirm governance, privacy, and admin requirements for your connector and pilot with a limited audience.",
+      "severity": "minor",
+      "fix": "Keep the recommendation but add: 'This is not a documented audience-scoping control: the build guide says people-data connections do not support staged connections and require an everyone ACL. Use a test tenant or non-sensitive test data for the pilot.' Cite the already listed build-connectors-with-people-data page."
+    },
+    {
+      "n": 58,
+      "where": "Governance controls: paragraph after table",
+      "type": "role",
+      "claim": "The cited overview says delegated profile-card API operations require a Tenant Administrator role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/add-properties-profilecard",
+      "quote": "Operations on the profileCardProperty resource that use delegated permissions require the signed-in user to have a Tenant Administrator role.",
+      "severity": "minor",
+      "fix": "Report the reference-page disagreement: 'The overview says Tenant Administrator; the Create profileCardProperty reference names People Administrator as the least privileged supported role.' Add https://learn.microsoft.com/graph/api/peopleadminsettings-post-profilecardproperties to sources."
+    },
+    {
+      "n": 59,
+      "where": "Governance controls: paragraph after table",
+      "type": "command",
+      "claim": "Creating or updating existing profile-card properties requires PeopleSettings.ReadWrite.All.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/add-properties-profilecard",
+      "quote": "The new command requires the PeopleSettings.ReadWrite.All permission.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Open questions: first bullet",
+      "type": "consistency",
+      "claim": "Whether per-property visibility exists for connector-sourced properties remains an open question.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "What's changing: 'visibility, display name and icon set per property'; Open questions: 'Does a per-property visibility setting exist for the connector-sourced properties'",
+      "severity": "blocker",
+      "fix": "Replace the first open question with 'Is there a tenant-wide switch for the whole feature, in addition to the per-property visibility documented in MC1193692?' The supplied notice explicitly confirms per-property visibility."
+    },
+    {
+      "n": 61,
+      "where": "rationale: risk; Governance guidance: Leave properties hidden",
+      "type": "behaviour",
+      "claim": "Nothing is exposed until an administrator both ingests data and makes a property visible on profile cards.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/graph/peopleconnectors",
+      "quote": "By default, people data provided via a Copilot connector is visible to all users in the tenant.",
+      "severity": "blocker",
+      "fix": "Change the rationale to 'Low. The new card-display feature requires admin configuration. Ingested people data can already be visible through other Microsoft 365 experiences, so approve data before ingestion, not merely before card visibility is enabled.' Change rollout guidance to require HR validation before ingestion; hiding card properties is not a data-access boundary."
+    },
+    {
+      "n": 62,
+      "where": "Governance guidance; Governance controls",
+      "type": "consistency",
+      "claim": "Every control the governance checklist asks administrators to configure or check is represented in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: 'Choose or build the people-data connector' and 'Check your connector item quota'; table: only custom-property visibility and existing Entra profile-card properties.",
+      "severity": "minor",
+      "fix": "Add a people-data connection setup row using the documented Connectors gallery and Microsoft Graph external connections APIs, with the role discrepancy noted. Add an item-quota row only after reading its management surface, or remove the quota-check instruction from the checklist and retain it as an unresolved licensing question."
+    },
+    {
+      "n": 63,
+      "where": "What's changing; controls[0].note; Governance controls",
+      "type": "absence",
+      "claim": "Learn does not yet describe the new connector-custom-property display-name, icon and visibility configuration; the cited profile-card article covers related existing settings.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: profile cards connector custom properties visibility display name icon API person info profile cards; Outlook profile card connector custom properties actions automation display name icon January 2027. Opened customize-profile-cards and connector guides; no new display configuration found.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-16T17:07:00.377Z",
+    "summary": {
+      "links": 9,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 1,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=529851",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1193692",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/manage/customize-profile-cards",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/peopleconnectors",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/build-connectors-with-people-data",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/add-properties-profilecard",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/resources/profilecardproperty",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/connecting-external-content-connectors-api-overview",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Visibility, display name and icon of connector-sourced custom properties on profile cards",
+        "docs": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1193692",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Org settings",
+          "People settings",
+          "Profile",
+          "Person info on profile cards"
+        ],
+        "missing": [
+          "Settings",
+          "Org settings",
+          "People settings",
+          "Profile",
+          "Person info on profile cards"
+        ]
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Optional Microsoft Entra properties shown on profile cards (existing control)",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/manage/customize-profile-cards",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Org settings",
+          "People settings",
+          "Profile card",
+          "Contact info"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Optional Microsoft Entra properties shown on profile cards (existing control)",
+        "docs": "https://learn.microsoft.com/graph/add-properties-profilecard",
+        "reachable": true,
+        "token": "/v1.0/admin/people",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": [
+    {
+      "date": "2026-11-16",
+      "status": "held",
+      "version": 1,
+      "model": "none"
+    }
+  ]
 }

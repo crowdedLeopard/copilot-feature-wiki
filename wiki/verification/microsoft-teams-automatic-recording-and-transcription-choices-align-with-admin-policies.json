@@ -5,27 +5,736 @@
   "status": "held",
   "date": "2026-11-16",
   "version": 1,
-  "model": "none",
-  "engine": "manual",
-  "attempts": 0,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [],
   "hold": {
-    "reason": "unverified",
+    "reason": "failed",
     "since": "2026-11-16",
     "reasons": [
-      "Written but not yet checked against Microsoft Learn."
+      "1 blocking finding (claim 51)"
     ]
   },
   "counts": {
-    "claims": 0,
-    "confirmed": 0,
+    "claims": 55,
+    "confirmed": 54,
     "unconfirmed": 0,
-    "contradicted": 0,
-    "blocker": 0,
+    "contradicted": 1,
+    "blocker": 1,
     "major": 0,
-    "minor": 0
+    "minor": 1
   },
-  "summary": "Written but not yet checked against Microsoft Learn.",
-  "claims": [],
-  "precheck": null,
-  "history": []
+  "summary": "The rollout information and documented meeting-policy controls are supported. The licensing discussion needs one correction: licensing for the new change is unpublished, but Microsoft already documents that Education A1 customers cannot use the existing automatic recording and transcription option.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: defaultState; summary; What's changing",
+      "type": "default",
+      "claim": "The policy-aligned menu change is enabled automatically without administrator action.",
+      "status": "supported",
+      "source": "Message Center post MC1508234",
+      "quote": "No admin action is required; the feature is enabled automatically as part of the service update.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: licensing.model; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "A licence requirement, price or meter specifically for the new policy-alignment change and Record only option has not been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams \"Record only\" \"automatic\" license Premium pricing transcription meeting options; read MC1508234, roadmap record, manage-teams-auto-recording, meeting-recording, and Teams Premium licensing search excerpts. No change-specific licence or meter found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "Neither the supplied roadmap item nor MC1508234 names a licence or meter.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: licence, license, meter and price in the supplied roadmap record and complete Message Center post MC1508234; neither record names one.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: licensing.notes; controls[0].note; Cost and licensing",
+      "type": "licensing",
+      "claim": "Only organisers with Teams Premium can use assigned meeting templates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-teams-auto-recording",
+      "quote": "Only organizers with a Teams Premium license can use assigned meeting templates.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "controls[0].api; Governance controls; Governance guidance",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingPolicy with Identity and AutoRecording Enabled or Disabled controls whether organisers can access automatic recording.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-teams-auto-recording",
+      "quote": "Set-CsTeamsMeetingPolicy -Identity <policy name> -AutoRecording Enabled\nSet-CsTeamsMeetingPolicy -Identity <policy name> -AutoRecording Disabled",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "controls[0].ui; Governance controls",
+      "type": "absence",
+      "claim": "No direct administrator UI for the AutoRecording policy is documented on the cited surface.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams AutoRecording admin center meeting template PowerShell manage automatic recording; opened manage-teams-auto-recording and read manage-meeting-recording-options excerpts. PowerShell controls policy availability; templates are a separate management route.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The cited Learn page says this setting must be managed through PowerShell or a meeting template.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-teams-auto-recording",
+      "quote": "You must use PowerShell or a meeting template to manage this setting for organizers.",
+      "severity": "minor",
+      "fix": "Retain the attribution, but note that https://learn.microsoft.com/microsoftteams/manage-meeting-recording-options#record-and-transcribe-automatically also documents sensitivity labels for enforcing automatic recording. Cite that page and distinguish enforcement from the AutoRecording availability policy."
+    },
+    {
+      "n": 8,
+      "where": "controls[1].api; Governance controls",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingPolicy with Identity and AllowCloudRecording controls meeting recording permission.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-recording",
+      "quote": "To manage meeting recording by using PowerShell, use the -AllowCloudRecording parameter in Set-CsTeamsMeetingPolicy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "controls[1].ui; Governance controls; Governance guidance",
+      "type": "admin-path",
+      "claim": "The recording control is in Teams admin center under Meetings > Meeting policies > policy > Meeting recording.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-recording",
+      "quote": "In the left navigation of the Teams admin center, go to Meetings > Meeting policies.\nSelect an existing policy or create a new one.\nTurn the Meeting recording toggle On or Off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "controls[2].api; Governance controls",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingPolicy with Identity and AllowTranscription controls meeting transcription permission.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+      "quote": "To manage meeting transcription using PowerShell, use the -AllowTranscription parameter in Set-CsTeamsMeetingPolicy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "controls[2].ui; Governance controls; Governance guidance",
+      "type": "admin-path",
+      "claim": "The transcription control is in Teams admin center under Meetings > Meeting policies > policy > Transcription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+      "quote": "In the left navigation of the Teams admin center, go to Meetings > Meeting policies.\nSelect the policy that you want to edit or create a new one.\nToggle Transcription On or Off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "controls[3]; Governance controls",
+      "type": "absence",
+      "claim": "No separate tenant-wide switch for the new policy alignment or Record only option is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams automatic recording transcription \"Record only\" tenant disable new options license webinar town hall; opened manage-teams-auto-recording and meeting-recording, read manage-meeting-recording-options excerpts and MC1508234. No separate switch found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "controls[1].note; controls[2].note; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not explicitly mapped the notice's recording and transcription policies to the AllowCloudRecording and AllowTranscription parameter names for this update.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams automatic \"Record only\" \"AutoRecording\" \"AllowCloudRecording\" \"AllowTranscription\"; read MC1508234, meeting-recording, meeting-transcription-captions and Set-CsTeamsMeetingPolicy excerpts. No update-specific parameter mapping found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "controls[0].note; Open questions",
+      "type": "absence",
+      "claim": "The interaction of the existing AutoRecording availability policy with the new options is not explicitly documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams automatic \"Record only\" \"AutoRecording\" \"AllowCloudRecording\" \"AllowTranscription\"; opened manage-teams-auto-recording and read MC1508234 and Set-CsTeamsMeetingPolicy search excerpts. No description of that interaction found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "title; summary; What's changing; Why it matters; rationale: risk",
+      "type": "record",
+      "claim": "Organisers will see only automatic recording and transcription choices allowed by their existing meeting policies.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Meeting organizers will only see automatic recording and transcription choices in Meeting Options that are allowed by their organization's existing meeting policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "summary; What's changing; Why it matters; rationale: risk",
+      "type": "record",
+      "claim": "The new Record only choice automatically starts recording without starting transcription.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "A new Record only choice lets organizers automatically start recording without starting transcription.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; controls[1].governs; controls[2].governs",
+      "type": "record",
+      "claim": "When both policies allow their respective functions, the menu offers Record and transcribe, Transcribe only, Record only and Off.",
+      "status": "supported",
+      "source": "Message Center post MC1508234",
+      "quote": "AllowedAllowedRecord and transcribe; Transcribe only; Record only; Off",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "When recording is allowed and transcription is blocked, the automatic choices are Record only and Off.",
+      "status": "supported",
+      "source": "Message Center post MC1508234",
+      "quote": "AllowedBlockedRecord only; Off",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "When recording is blocked and transcription is allowed, the automatic choices are Transcribe only and Off.",
+      "status": "supported",
+      "source": "Message Center post MC1508234",
+      "quote": "BlockedAllowedTranscribe only; Off",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance",
+      "type": "record",
+      "claim": "When both recording and transcription are blocked by policy, the automatic setting is not shown.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "When both recording and transcription are disabled by policy, the automatic setting is not shown.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "Menu evaluation uses the effective meeting policy and respects direct, group and global policy assignments.",
+      "status": "supported",
+      "source": "Message Center post MC1508234",
+      "quote": "Policy evaluation respects policies assigned directly to a user, inherited through group assignment, or applied through the global policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Rolling out.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Rolling out\", \"statusKey\": \"rolling-out\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is November CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"November CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Targeted Release.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platforms are Android, Desktop, iOS and Mac.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Mac\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "front matter: clouds; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The record has no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; front matter: changes",
+      "type": "record",
+      "claim": "MC1508234 was last updated on 10 November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1508234",
+      "quote": "Updated November 10, 2026: We have updated the timeline.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The notice schedules Targeted Release from mid-November 2026, expected to complete by end of November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1508234",
+      "quote": "Targeted Release: Beginning in mid-November 2026 (previously early November) and expected to complete by end of November 2026 (previously mid-November)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The notice schedules Worldwide General Availability from early December 2026, expected to complete by mid-December 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1508234",
+      "quote": "General Availability (Worldwide): Beginning in early December 2026 and expected to complete by mid-December 2026",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice sets no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1508234",
+      "quote": "Act by: none",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice's end date is 15 January 2027.",
+      "status": "supported",
+      "source": "Message Center post MC1508234",
+      "quote": "Microsoft's end date 2027-01-15",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The notice lists Teams desktop, web and mobile clients that support Meeting options.",
+      "status": "supported",
+      "source": "Message Center post MC1508234",
+      "quote": "Teams desktop, web, and mobile clients that support Meeting Options.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "The cited auto recording Learn page does not describe the new Record only or Transcribe only choices.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Record only and Transcribe only in the complete https://learn.microsoft.com/microsoftteams/manage-teams-auto-recording page fetched in this run; neither choice appears.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The auto recording Learn page says its policy setting does not apply to transcripts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-teams-auto-recording",
+      "quote": "This setting doesn't apply to transcripts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Why it matters; Risk assessment: Data exposure; Governance guidance",
+      "type": "behaviour",
+      "claim": "When recording is on and transcription is off, no transcript file is stored next to the recording.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+      "quote": "If recording is turned on, but transcription is turned off, the recording doesn't have a transcript file stored next to it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Data exposure; Cost and licensing",
+      "type": "behaviour",
+      "claim": "Private meeting recordings are uploaded to the organiser's OneDrive.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-recording",
+      "quote": "It gets uploaded to the meeting organizer's OneDrive (private meetings) or SharePoint (channel meetings).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Data exposure; Cost and licensing",
+      "type": "behaviour",
+      "claim": "Channel meeting recordings are uploaded to SharePoint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-recording",
+      "quote": "Channel meeting recordings are stored in SharePoint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "The sources read describe no new storage location introduced by this change.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: storage and recording location in the supplied roadmap record, MC1508234 and the three cited Learn pages opened in this run. The change notices name no new location; meeting-recording describes OneDrive and SharePoint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "Explicit recording consent is a separate meeting policy setting covering recording or transcription in meetings created by organisers assigned that policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-recording",
+      "quote": "To require participants to give their explicit consent to be recorded or transcribed in any meeting that organizers with this policy create, run the following command:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "Microsoft has not described how explicit recording consent interacts with the new automatic choices.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Record only\" and consent in the opened meeting-recording page and supplied MC1508234; reviewed results for Teams automatic recording transcription \"Record only\" tenant disable new options license webinar town hall. No update-specific consent interaction found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "An automatic option can start recording or transcription without someone pressing the start button during the meeting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-teams-auto-recording",
+      "quote": "If they choose to use this template, recording and transcription starts automatically without any user interaction.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "default",
+      "claim": "For meetings, enabling the organiser's auto recording policy leaves the per-meeting automatic option Off by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-teams-auto-recording",
+      "quote": "When you turn on the auto recording policy for an organizer, the meeting option for Record and transcribe automatically is Off by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "AllowCloudRecording does not configure or validate recording storage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-recording",
+      "quote": "-AllowCloudRecording controls whether users can record meetings; it doesn't configure or validate recording storage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Scope; Risk assessment: Change & support; Governance guidance",
+      "type": "record",
+      "claim": "The notice identifies policy-managing Teams administrators and organisers configuring automatic options as affected.",
+      "status": "supported",
+      "source": "Message Center post MC1508234",
+      "quote": "Teams administrators who manage meeting recording and transcription policies- Meeting organizers who configure automatic recording or transcription settings in Meeting options",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "Learn documents the existing Record and transcribe automatically setting for meetings, webinars and town halls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-teams-auto-recording",
+      "quote": "You can control whether organizers have access to the Record and transcribe automatically setting in meeting options, webinars, and town halls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Scope; Open questions",
+      "type": "absence",
+      "claim": "The new policy alignment and Record only option are not explicitly documented for webinars or town halls.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams automatic recording transcription \"Record only\" tenant disable new options license webinar town hall; read roadmap record, MC1508234, manage-teams-auto-recording and recording/transcription policy pages. Results document existing event controls, not this update's applicability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "The supplied notice names no prerequisite or specific administrator role.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: prerequisites and role requirements throughout the supplied MC1508234 text. It identifies affected administrators and organisers but names no prerequisite or administrator role requirement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance controls; Governance guidance",
+      "type": "behaviour",
+      "claim": "Teams meeting policies can be assigned to specific users or groups through the Teams admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-recording",
+      "quote": "To specific users: Select your policy, select Manage users > Assign users ... To groups: Go to the Group policy assignment tab, select Add, enter the group name, select the policy name, and then select Apply.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Transcription permission is checked for the initiating user as well as the organiser.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+      "quote": "For meetings and events to include transcripts, the organizer must have this setting turned on. The user who starts the recording or transcript must also have this setting turned on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Open questions: licensing; Cost and licensing",
+      "type": "licensing",
+      "claim": "Whether any licence is required for the automatic setting itself is entirely not yet published.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-meeting-recording-options#record-and-transcribe-automatically",
+      "quote": "Customers with a Microsoft 365 Education A1 subscription don't have the option to record and transcribe meetings automatically.",
+      "severity": "blocker",
+      "fix": "Keep licensing.model unknown for this change, but narrow the licensing question to additional requirements for the new alignment and Record only choice. Add the documented baseline exclusion: Microsoft 365 Education A1 customers cannot record and transcribe meetings automatically. Cite https://learn.microsoft.com/microsoftteams/manage-meeting-recording-options#record-and-transcribe-automatically and distinguish this existing restriction from the unpublished licensing of the update."
+    },
+    {
+      "n": 52,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 12 November 2026 at 01:50:56.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-12T01:50:56\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Risk assessment: Change & support; Governance guidance",
+      "type": "record",
+      "claim": "Microsoft recommends informing meeting organisers about Record only.",
+      "status": "supported",
+      "source": "Message Center post MC1508234",
+      "quote": "Inform meeting organizers about the new Record only option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Risk assessment: Change & support; Governance guidance",
+      "type": "record",
+      "claim": "Microsoft recommends explaining that organisers' assigned meeting policies determine their automatic options.",
+      "status": "supported",
+      "source": "Message Center post MC1508234",
+      "quote": "Communicate that available automatic recording and transcription options are now determined by the organizer's assigned Teams meeting policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "Microsoft recommends reviewing recording and transcription policies to understand which options organisers will see.",
+      "status": "supported",
+      "source": "Message Center post MC1508234",
+      "quote": "Review recording and transcription policies if you want to understand which options organizers in your organization will see.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-16T17:06:52.366Z",
+    "summary": {
+      "links": 5,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 3,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=570468",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1508234",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/manage-teams-auto-recording",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/meeting-recording",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether organisers see the automatic recording setting at all",
+        "docs": "https://learn.microsoft.com/microsoftteams/manage-teams-auto-recording",
+        "reachable": true,
+        "token": "Set-CsTeamsMeetingPolicy",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether users can record meetings, which gates Record only and Record and transcribe",
+        "docs": "https://learn.microsoft.com/microsoftteams/meeting-recording",
+        "reachable": true,
+        "segments": [
+          "Meetings",
+          "Meeting policies",
+          "Meeting recording"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether users can record meetings, which gates Record only and Record and transcribe",
+        "docs": "https://learn.microsoft.com/microsoftteams/meeting-recording",
+        "reachable": true,
+        "token": "Set-CsTeamsMeetingPolicy",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Whether users can transcribe meetings, which gates Transcribe only and Record and transcribe",
+        "docs": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+        "reachable": true,
+        "segments": [
+          "Meetings",
+          "Meeting policies",
+          "Transcription"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Whether users can transcribe meetings, which gates Transcribe only and Record and transcribe",
+        "docs": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+        "reachable": true,
+        "token": "Set-CsTeamsMeetingPolicy",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": [
+    {
+      "date": "2026-11-16",
+      "status": "held",
+      "version": 1,
+      "model": "none"
+    }
+  ]
 }
