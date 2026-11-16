@@ -407,9 +407,11 @@ Rules.
   does not exist yet (for example "Tenant-wide switch for this feature"). Include such a row when
   its absence matters; it is one of the most useful things a briefing can tell a reader.
 - A null is a finding, so it needs its own search. Before setting a side to null, search for that
-  control on that surface. If research showed that the control exists but you have not read its
-  path or command, do not set it to null: read it, or leave the row out and name the control in
-  the notes without a path.
+  control on that surface. Search where the control lives, which is often not where the feature
+  lives: a sensitivity label that governs a Teams meeting is scripted through Security & Compliance
+  PowerShell (`Set-Label`), not through the Teams module. If research showed that the control
+  exists but you have not read its path or command, do not set it to null: read it, or leave the
+  row out and name the control in the notes without a path.
 - Existing controls that an administrator uses today in place of a missing one are worth a row.
   Say in the note what they do and do not cover, so nobody mistakes them for a control over the new
   feature.

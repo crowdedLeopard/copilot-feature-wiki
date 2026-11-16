@@ -66,8 +66,11 @@ that rested on it. Where a fix replaces a claim, read the replacement on the pag
 you write it, and give it an `evidence` entry. If you re-open the source and it plainly states a
 claim the verifier could not find, keep the claim and put the exact sentence and its URL in
 `evidence`, so the next check finds it. Do not answer a finding by rewording the same unsupported
-claim more cautiously. Re-check the rest of the page as for any refresh, and say in `changeNote`
-what was corrected.
+claim more cautiously. Anything you add while correcting, a new control row above all, is new work
+and gets the same research as a first draft: read its path and its command, and search before
+leaving either side `null`. A correction that brings in an unchecked claim gets the page held
+again. Re-check the rest of the page as for any refresh, and say in `changeNote` what was
+corrected.
 
 Each task has a fixed allowance of time and credits, set by the workflow. The research guide in the
 standard fits inside it. A task that is cut off before the validator prints `OK` publishes nothing,

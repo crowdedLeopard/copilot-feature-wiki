@@ -27,7 +27,8 @@ This is the rule your whole verdict rests on, and it binds you as much as the wr
 
 - A claim is **supported** only when you have read text that states it, in this run: in the roadmap
   record for record facts, or on a Microsoft page for everything else. An excerpt returned by the
-  Microsoft Learn search tool counts as having read that part of the page it came from.
+  Microsoft Learn search tool counts as having read that part of the page it came from, for a
+  page the writer cites as much as for one you found, provided the excerpt contains the passage.
 - **Your own knowledge is not evidence, in either direction.** Do not mark a claim supported because
   you recognise it. Do not mark a claim contradicted because you remember it differently; your
   memory of Microsoft's portals and licensing goes out of date as quickly as the writer's. If you
@@ -157,22 +158,25 @@ How to judge each type:
 "Not yet published" and a default state of `unknown` are claims that Microsoft has not said. The
 page tells readers that "Not yet documented" means there is nothing to configure yet, so a wrong
 one misleads as much as a wrong path. For each, run a targeted search for that control or fact for
-this feature. If a Microsoft page documents it, the claim is contradicted, and the fix gives the
-page and what it says. If the search finds nothing relevant, the absence is confirmed: its status is
+this feature. Search where the control lives, which may be another product's reference (a
+sensitivity label's PowerShell is in Security & Compliance PowerShell, not in the Teams module). If
+a Microsoft page documents it, the claim is contradicted, and the fix gives the page and what it
+says. If the search finds nothing relevant, the absence is confirmed: its status is
 `supported`, its source is `null`, and its quote records the queries you ran and the pages you
 opened. A default state of `user-opt-in` that rests on there being no admin switch is checked the
 same way.
 
-**5. Check that the page agrees with itself.** Using only the facts you have now verified. A check
-here that finds nothing wrong adds nothing to the list; one that finds a conflict adds a claim of
-type `consistency`.
+**5. Check that the page agrees with itself.** Use only the facts you have now verified. A check
+here that finds nothing wrong adds nothing to the list. A conflict is recorded on the claim it
+concerns where that claim is already listed (the default state, for example), and otherwise as a
+new claim of type `consistency`.
 
 - The default state, the licensing model and the cost rating are factual fields. Check each against
   the scale definitions in the standard and the facts you verified. A conflict is a contradiction:
   default `off` where the source says on by default; cost `none` where a meter or an add-on licence
-  is documented, or where neither the record nor a page says the feature is included; licensing `included` where the
-  page names an add-on. Read the standard's definition of default state for features that are
-  themselves controls before judging one.
+  is documented, or where neither the record nor a page says the feature is included; licensing
+  `included` where the page names an add-on. Read the standard's definition of default state for
+  features that are themselves controls before judging one.
 - The risk, impact and action ratings are judgements. Do not hold a page over them. Record a minor
   finding only when a rating cannot be reconciled with its definition on any reading of the
   verified facts, and say which definition it fails.
