@@ -31,16 +31,45 @@ sources:
   - title: "Microsoft 365 Roadmap item 577185"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=577185"
     kind: "roadmap"
+  - title: "Which tables, views and relationships join the semantic model (Power Apps (maker))"
+    url: "https://learn.microsoft.com/power-apps/maker/data-platform/fine-tune-semantic-model-signals#manage-the-semantic-model"
+    kind: "learn"
+  - title: "Work IQ participation for the environment (Power Platform admin center)"
+    url: "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-participation#environment-features-for-work-iq"
+    kind: "learn"
 videos: []
 related: ["microsoft-dataverse-enable-ai-powered-business-workflows-in-work-iq-with-dataverse-build-d","microsoft-power-platform-governance-and-administration-secure-dataverse-record-with-column","dataverse-agent-users-entra-agent-identity","copilot-credits"]
+controls:
+  - governs: "Which tables, views and relationships join the semantic model"
+    scope: "environment"
+    ui:
+      surface: "Power Apps (maker)"
+      path: "More > Semantic model > Configuration > Include in semantic model"
+      docs: "https://learn.microsoft.com/power-apps/maker/data-platform/fine-tune-semantic-model-signals#manage-the-semantic-model"
+    api: null
+    note: "System Administrator, or the Semantic Model role together with Environment Maker."
+  - governs: "Work IQ participation for the environment"
+    scope: "environment"
+    ui:
+      surface: "Power Platform admin center"
+      path: "Manage > Environments > environment > Settings > Product > Features > Work IQ"
+      docs: "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-participation#environment-features-for-work-iq"
+    api: null
+  - governs: "Environment-level switch for semantic model generation"
+    scope: "environment"
+    ui: null
+    api: null
+    note: "Learn says admins can turn generation off per environment but gives no navigation path at review time."
 confidence: "high"
 created: "2026-11-15"
-updated: "2026-11-15"
+updated: "2026-11-16"
 roadmapModified: "2026-10-20T23:00:34"
 changes:
   - date: "2026-11-15"
     note: "New briefing: Dataverse semantic model for agentic use, in development."
-version: 1
+  - date: "2026-11-16"
+    note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
+version: 2
 ---
 
 ## What's changing
@@ -94,9 +123,20 @@ Environments with Dataverse intelligence enabled, in the Worldwide cloud per the
 - [ ] Test agent answers after each regeneration.
 - [ ] Review glossary entries and disabled signals quarterly.
 
-## Admin controls
+## Governance controls
 
-Controls exist at four levels per Learn: environment (Power Platform admin center), signal type, table (Include in semantic model) and individual view or relationship. Makers manage the Semantic model page and Glossary in Power Apps. Environment generation can be turned off by admins.
+<p class="controls__lead">Where each control lives. The left column says what the setting decides and how far it reaches; the middle gives the admin centre and the exact path; the right gives the script, API or command that does the same. <em>Not yet documented</em> means Microsoft has not published a control for that surface, so there is nothing to configure yet.</p>
+
+<table class="controls">
+<thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
+<tbody>
+<tr><td data-label="Control"><strong>Which tables, views and relationships join the semantic model</strong><br><small>Environment</small><br><small class="controls__note">System Administrator, or the Semantic Model role together with Environment Maker.</small></td><td data-label="Admin UI"><strong>Power Apps (maker)</strong><br>More › Semantic model › Configuration › Include in semantic model <a href="https://learn.microsoft.com/power-apps/maker/data-platform/fine-tune-semantic-model-signals#manage-the-semantic-model" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Work IQ participation for the environment</strong><br><small>Environment</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › Work IQ <a href="https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-participation#environment-features-for-work-iq" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Environment-level switch for semantic model generation</strong><br><small>Environment</small><br><small class="controls__note">Learn says admins can turn generation off per environment but gives no navigation path at review time.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+</tbody>
+</table>
+
+Most of the tuning is maker work: signal types, table inclusion and the glossary live on the Semantic model page in Power Apps, described in the [semantic model overview](https://learn.microsoft.com/power-apps/maker/data-platform/semantic-model-overview). Admin governance is indirect, through the Work IQ environment feature and the roles that may edit the model. No API is documented for any of it.
 
 ## Open questions
 

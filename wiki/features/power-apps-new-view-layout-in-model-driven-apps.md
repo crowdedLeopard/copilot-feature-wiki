@@ -28,16 +28,34 @@ sources:
   - title: "Understand model-driven app views"
     url: "https://learn.microsoft.com/power-apps/maker/model-driven-apps/create-edit-views"
     kind: "learn"
+  - title: "Grid and view behaviour settings for an environment (Power Platform admin center)"
+    url: "https://learn.microsoft.com/power-platform/admin/settings-features#grids-and-views"
+    kind: "learn"
 videos: []
 related: []
+controls:
+  - governs: "Grid and view behaviour settings for an environment"
+    scope: "environment"
+    ui:
+      surface: "Power Platform admin center"
+      path: "Manage > Environments > environment > Settings > Product > Features > Grids and views"
+      docs: "https://learn.microsoft.com/power-platform/admin/settings-features#grids-and-views"
+    api: null
+  - governs: "Tenant or environment switch for the calendar and card layouts"
+    scope: "environment"
+    ui: null
+    api: null
+    note: "Layouts are chosen by makers per view in the app designer."
 confidence: "low"
 created: "2026-11-14"
-updated: "2026-11-14"
+updated: "2026-11-16"
 roadmapModified: "2026-11-11T00:51:09"
 changes:
   - date: "2026-11-14"
     note: "New briefing from roadmap item 575294."
-version: 1
+  - date: "2026-11-16"
+    note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
+version: 2
 ---
 
 ## What's changing
@@ -88,9 +106,19 @@ Model-driven apps in Worldwide (Standard Multi-Tenant). Enabled by makers or adm
 - Collect feedback from users.
 - Revisit layout choices after the first release cycle.
 
-## Admin controls
+## Governance controls
 
-Configured by makers in the model-driven app designer. No tenant-level control is documented yet.
+<p class="controls__lead">Where each control lives. The left column says what the setting decides and how far it reaches; the middle gives the admin centre and the exact path; the right gives the script, API or command that does the same. <em>Not yet documented</em> means Microsoft has not published a control for that surface, so there is nothing to configure yet.</p>
+
+<table class="controls">
+<thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
+<tbody>
+<tr><td data-label="Control"><strong>Grid and view behaviour settings for an environment</strong><br><small>Environment</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › Grids and views <a href="https://learn.microsoft.com/power-platform/admin/settings-features#grids-and-views" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Tenant or environment switch for the calendar and card layouts</strong><br><small>Environment</small><br><small class="controls__note">Layouts are chosen by makers per view in the app designer.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+</tbody>
+</table>
+
+There is no admin control for the new layouts themselves; they arrive with the model-driven app runtime and makers opt views into them. The Grids and views environment settings govern related grid behaviour and are the nearest admin lever. `pac env update-settings` can set documented organization settings, but Learn names no setting for this feature.
 
 ## Open questions
 

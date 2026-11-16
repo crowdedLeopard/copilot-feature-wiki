@@ -34,16 +34,48 @@ sources:
   - title: "Secure your Copilot Studio projects"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/guidance/sec-gov-phase3"
     kind: "learn"
+  - title: "Sharing of agents that embed maker credentials (Power Platform admin center)"
+    url: "https://learn.microsoft.com/power-platform/admin/security/control-sharing-agents-with-embedded-maker-credentials"
+    kind: "learn"
+  - title: "Which credential a given tool uses (Copilot Studio (maker))"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent#view-and-make-changes-to-your-tool-configuration"
+    kind: "learn"
 videos: []
 related: ["copilot-studio-safe-sharing-credential-oversharing","copilot-studio-share-autonomous-agents-run-only","copilot-studio-mcp-tools-in-agents","agent-identity"]
+controls:
+  - governs: "Which credential types makers may choose for tools"
+    scope: "environment"
+    ui:
+      surface: "Power Platform admin center"
+      path: "Manage > Environments (or Environment groups) > environment > Settings > Product > Features > Copilot Studio agents > Control maker credential options"
+      docs: "https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication"
+    api: null
+    note: "Environment Admin for a single environment; Power Platform admin for environment groups."
+  - governs: "Sharing of agents that embed maker credentials"
+    scope: "environment-group"
+    ui:
+      surface: "Power Platform admin center"
+      path: "Security > Threat detection > Sharing agent with embedded maker credentials > Set up"
+      docs: "https://learn.microsoft.com/power-platform/admin/security/control-sharing-agents-with-embedded-maker-credentials"
+    api: null
+  - governs: "Which credential a given tool uses"
+    scope: "agent"
+    ui:
+      surface: "Copilot Studio (maker)"
+      path: "Tools > tool > Details > Additional details > Authentication"
+      docs: "https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent#view-and-make-changes-to-your-tool-configuration"
+    api: null
+    note: "Maker-side. The admin setting removes options from this list rather than overriding a saved choice."
 confidence: "high"
 created: "2026-11-13"
-updated: "2026-11-13"
+updated: "2026-11-16"
 roadmapModified: "2026-07-02T23:12:48"
 changes:
   - date: "2026-11-13"
     note: "Initial briefing"
-version: 1
+  - date: "2026-11-16"
+    note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
+version: 2
 ---
 
 ## What's changing
@@ -110,11 +142,20 @@ This setting is the control. It is also one of the few agent governance switches
 - Add "credential model" to the agent review checklist so new agents are built end-user-first.
 - Review environments that were exempted and set a date to re-assess.
 
-## Admin controls
+## Governance controls
 
-- Power Platform admin center > **Manage** > **Environments** (or **Environment groups**) > select > **Settings** > **Product** > **Features** > **Copilot Studio agents** > **Control maker credential options**: tick End-user credentials, Maker-provided credentials, or both.
-- Copilot Studio > agent > **Settings** > **Security** > automatic security scan shows warnings when makers pick maker-provided credentials or share with everyone.
-- Related: Power Platform admin center > **Security** > **Threat detection** > **Sharing agent with embedded maker credentials** (see the safe-sharing briefing).
+<p class="controls__lead">Where each control lives. The left column says what the setting decides and how far it reaches; the middle gives the admin centre and the exact path; the right gives the script, API or command that does the same. <em>Not yet documented</em> means Microsoft has not published a control for that surface, so there is nothing to configure yet.</p>
+
+<table class="controls">
+<thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
+<tbody>
+<tr><td data-label="Control"><strong>Which credential types makers may choose for tools</strong><br><small>Environment</small><br><small class="controls__note">Environment Admin for a single environment; Power Platform admin for environment groups.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments (or Environment groups) › environment › Settings › Product › Features › Copilot Studio agents › Control maker credential options <a href="https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Sharing of agents that embed maker credentials</strong><br><small>Environment group</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Threat detection › Sharing agent with embedded maker credentials › Set up <a href="https://learn.microsoft.com/power-platform/admin/security/control-sharing-agents-with-embedded-maker-credentials" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which credential a given tool uses</strong><br><small>Agent</small><br><small class="controls__note">Maker-side. The admin setting removes options from this list rather than overriding a saved choice.</small></td><td data-label="Admin UI"><strong>Copilot Studio (maker)</strong><br>Tools › tool › Details › Additional details › Authentication <a href="https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent#view-and-make-changes-to-your-tool-configuration" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+</tbody>
+</table>
+
+No PowerShell, Graph or pac CLI equivalent is documented for the credential option setting, so automation has to fall back on environment group rules in the portal. Agents that already use maker-provided credentials keep working until the tool is edited; the agent's security scan flags them. The related safe-sharing control is covered in the [Copilot Studio safe sharing briefing](/features/copilot-studio-safe-sharing-credential-oversharing/).
 
 ## Open questions
 

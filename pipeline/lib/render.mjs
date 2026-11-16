@@ -9,6 +9,8 @@ export const SCOPE_LABEL = {
   agent: 'Agent', app: 'App', maker: 'Maker', other: '',
 };
 export const NOT_DOCUMENTED = 'Not yet documented';
+/** One line above the table so an administrator knows how to read it. Plain English, no jargon. */
+export const CONTROLS_LEAD = '<p class="controls__lead">Where each control lives. The left column says what the setting decides and how far it reaches; the middle gives the admin centre and the exact path; the right gives the script, API or command that does the same. <em>Not yet documented</em> means Microsoft has not published a control for that surface, so there is nothing to configure yet.</p>';
 
 const esc = (s = '') => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 /** "Manage > Environments > Settings" becomes "Manage › Environments › Settings". */
@@ -50,7 +52,7 @@ export function renderBriefing(fm, sections) {
     `## Cost and licensing`, sections.costAndLicensing.trim(),
     `## Scope`, sections.scope.trim(),
     `## Governance guidance`, sections.governance.trim(),
-    `## Governance controls`, renderControlsTable(fm.controls), (sections.governanceControls || sections.adminControls || '').trim(),
+    `## Governance controls`, CONTROLS_LEAD, renderControlsTable(fm.controls), (sections.governanceControls || sections.adminControls || '').trim(),
     `## Open questions`, sections.openQuestions.trim(),
   ].filter((part) => part !== '').join('\n\n');
   return `${toFrontmatter(fm)}\n\n${body}\n`;

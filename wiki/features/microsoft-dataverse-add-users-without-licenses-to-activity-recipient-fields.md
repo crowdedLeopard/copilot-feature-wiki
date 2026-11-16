@@ -28,16 +28,33 @@ sources:
   - title: "Microsoft 365 Roadmap item 574121"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=574121"
     kind: "roadmap"
+  - title: "Whether unlicensed Entra users can be activity recipients (Power Platform admin center)"
+    url: "https://learn.microsoft.com/power-platform/admin/add-unlicensed-users-activities#turn-on-the-feature-in-power-platform-admin-center"
+    kind: "learn"
 videos: []
 related: ["managed-environments","dataverse-agent-users-entra-agent-identity","microsoft-power-platform-governance-and-administration-secure-dataverse-record-with-column"]
+controls:
+  - governs: "Whether unlicensed Entra users can be activity recipients"
+    scope: "environment"
+    ui:
+      surface: "Power Platform admin center"
+      path: "Manage > Environments > environment > Settings > Product > Features > Activities for users without licenses > Add anyone with an Entra ID to an activity's recipients fields"
+      docs: "https://learn.microsoft.com/power-platform/admin/add-unlicensed-users-activities#turn-on-the-feature-in-power-platform-admin-center"
+    api: null
+  - governs: "Tenant-wide default for the feature"
+    scope: "tenant"
+    ui: null
+    api: null
 confidence: "high"
 created: "2026-11-15"
-updated: "2026-11-15"
+updated: "2026-11-16"
 roadmapModified: "2026-10-19T23:15:15"
 changes:
   - date: "2026-11-15"
     note: "New briefing: unlicensed Entra users as activity recipients in Dataverse, in development."
-version: 1
+  - date: "2026-11-16"
+    note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
+version: 2
 ---
 
 ## What's changing
@@ -92,9 +109,19 @@ Environments with Dynamics 365 apps such as Sales and Customer Service, in the W
 - [ ] Check reports and automations that count users.
 - [ ] Confirm licence assignment converts users as expected.
 
-## Admin controls
+## Governance controls
 
-In the Power Platform admin center: Manage > Environments > select environment > Settings > Product > Features > Activities for users without licenses, then select *Add anyone with an Entra ID to an activity's recipients fields*. Grant the read permission on the Microsoft Entra ID table through security roles first.
+<p class="controls__lead">Where each control lives. The left column says what the setting decides and how far it reaches; the middle gives the admin centre and the exact path; the right gives the script, API or command that does the same. <em>Not yet documented</em> means Microsoft has not published a control for that surface, so there is nothing to configure yet.</p>
+
+<table class="controls">
+<thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
+<tbody>
+<tr><td data-label="Control"><strong>Whether unlicensed Entra users can be activity recipients</strong><br><small>Environment</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › Activities for users without licenses › Add anyone with an Entra ID to an activity's recipients fields <a href="https://learn.microsoft.com/power-platform/admin/add-unlicensed-users-activities#turn-on-the-feature-in-power-platform-admin-center" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Tenant-wide default for the feature</strong><br><small>Tenant</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+</tbody>
+</table>
+
+The switch is per environment and portal-only; `pac env update-settings` is documented for organization settings generally in the [CLI reference](https://learn.microsoft.com/power-platform/developer/cli/reference/env#pac-env-update-settings), but Learn does not name this feature's setting, so do not assume it is scriptable. Users also need read permission on the Microsoft Entra ID table through a security role before the recipient lookup returns results.
 
 ## Open questions
 

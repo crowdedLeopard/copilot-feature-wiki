@@ -31,16 +31,57 @@ sources:
   - title: "Microsoft 365 Roadmap item 576752"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=576752"
     kind: "roadmap"
+  - title: "Which MCP tools users reach in Microsoft 365 Copilot (Microsoft 365 admin center)"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/manage-plugins-skills-mcp-servers"
+    kind: "learn"
+  - title: "Connector data policies that cover MCP connectors (Power Platform admin center)"
+    url: "https://learn.microsoft.com/power-platform/admin/connector-action-control"
+    kind: "learn"
+  - title: "Connector data policies that cover MCP connectors (PowerShell)"
+    url: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest"
+    kind: "learn"
 videos: []
 related: ["copilot-studio-mcp-tools-in-agents","data-policies","managed-environments","power-pages-power-pages-copilot-use-power-pages-mcp-server-capabilities"]
+controls:
+  - governs: "Dataverse MCP server availability and allowed MCP clients"
+    scope: "environment"
+    ui:
+      surface: "Power Platform admin center"
+      path: "Manage > Environments > environment > Settings > Product > Features > Dataverse Model Context Protocol"
+      docs: "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-disable"
+    api: null
+  - governs: "Which MCP tools users reach in Microsoft 365 Copilot"
+    scope: "tenant"
+    ui:
+      surface: "Microsoft 365 admin center"
+      path: "Agents > Tools > Registry > tool > Block"
+      docs: "https://learn.microsoft.com/microsoft-365/copilot/manage-plugins-skills-mcp-servers"
+    api: null
+  - governs: "Connector data policies that cover MCP connectors"
+    scope: "environment"
+    ui:
+      surface: "Power Platform admin center"
+      path: "Security > Data and privacy > Data policy > New Policy"
+      docs: "https://learn.microsoft.com/power-platform/admin/connector-action-control"
+    api:
+      kind: "powershell"
+      call: "New-DlpPolicy (Microsoft.PowerApps.Administration.PowerShell)"
+      docs: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest"
+  - governs: "Controls specific to the management MCP server"
+    scope: "environment"
+    ui: null
+    api: null
+    note: "Learn describes governance only in terms of data policies and server- and tool-level access."
 confidence: "medium"
 created: "2026-11-15"
-updated: "2026-11-15"
+updated: "2026-11-16"
 roadmapModified: "2026-10-16T19:08:36"
 changes:
   - date: "2026-11-15"
     note: "New briefing: Dataverse management MCP server, in development."
-version: 1
+  - date: "2026-11-16"
+    note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
+version: 2
 ---
 
 ## What's changing
@@ -95,9 +136,21 @@ Dataverse environments in the Worldwide cloud, per the roadmap. Used by develope
 - [ ] Review tool calls that change data.
 - [ ] Retire unused servers.
 
-## Admin controls
+## Governance controls
 
-The Dataverse MCP server for non-Microsoft clients is controlled in the Power Platform admin center: environment Settings > Product > Features > Dataverse Model Context Protocol, plus client records under Advanced Settings. Managed Environments can govern it via advanced connector policies. Controls specific to the management server are described only as DLP and server and tool-level access.
+<p class="controls__lead">Where each control lives. The left column says what the setting decides and how far it reaches; the middle gives the admin centre and the exact path; the right gives the script, API or command that does the same. <em>Not yet documented</em> means Microsoft has not published a control for that surface, so there is nothing to configure yet.</p>
+
+<table class="controls">
+<thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
+<tbody>
+<tr><td data-label="Control"><strong>Dataverse MCP server availability and allowed MCP clients</strong><br><small>Environment</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › Dataverse Model Context Protocol <a href="https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-disable" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which MCP tools users reach in Microsoft 365 Copilot</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Registry › tool › Block <a href="https://learn.microsoft.com/microsoft-365/copilot/manage-plugins-skills-mcp-servers" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Connector data policies that cover MCP connectors</strong><br><small>Environment</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Data and privacy › Data policy › New Policy <a href="https://learn.microsoft.com/power-platform/admin/connector-action-control" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpPolicy (Microsoft.PowerApps.Administration.PowerShell)</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Controls specific to the management MCP server</strong><br><small>Environment</small><br><small class="controls__note">Learn describes governance only in terms of data policies and server- and tool-level access.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+</tbody>
+</table>
+
+The management server inherits the Dataverse MCP server's environment switch and client allow list; Managed Environments can add [advanced connector policies](https://learn.microsoft.com/power-platform/admin/advanced-connector-policies) that block MCP servers outright. Nothing distinguishes the management server from other MCP endpoints in the admin tooling yet, so a tenant that permits Dataverse MCP for one purpose permits the management server too.
 
 ## Open questions
 

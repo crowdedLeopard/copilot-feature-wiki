@@ -28,16 +28,56 @@ sources:
   - title: "Microsoft 365 Roadmap item 570651"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=570651"
     kind: "roadmap"
+  - title: "Work IQ access to real-time meeting transcripts (Teams admin center)"
+    url: "https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access#manage-work-iq-access-to-real-time-transcripts"
+    kind: "learn"
+  - title: "Transcription allowed in the meeting policy (Teams admin center)"
+    url: "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription#manage-copilot-for-teams-meetings-and-events"
+    kind: "learn"
+  - title: "Transcription allowed in the meeting policy (PowerShell)"
+    url: "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy"
+    kind: "learn"
 videos: []
 related: ["teams-intelligent-recap-without-saving-transcript","teams-ai-generated-meeting-memory","work-iq-memory-capabilities-expand-to-agents"]
+controls:
+  - governs: "Work IQ access to real-time meeting transcripts"
+    scope: "tenant"
+    ui:
+      surface: "Teams admin center"
+      path: "Meetings > Meeting settings > Transcript API access > WorkIQ access"
+      docs: "https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access#manage-work-iq-access-to-real-time-transcripts"
+    api:
+      kind: "powershell"
+      call: "Set-CsTeamsMeetingConfiguration -Identity Global -EnableWorkIQTranscriptAccess $true"
+      docs: "https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access#manage-work-iq-access-to-real-time-transcripts"
+    note: "Off by default. Needs the latest Teams PowerShell module."
+  - governs: "Which apps may read transcripts"
+    scope: "app"
+    ui:
+      surface: "Microsoft Entra admin center"
+      path: "Entra ID > App registrations > app > API permissions"
+      docs: "https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access"
+    api: null
+  - governs: "Transcription allowed in the meeting policy"
+    scope: "user"
+    ui:
+      surface: "Teams admin center"
+      path: "Meetings > Meeting policies > policy > Recording & transcription"
+      docs: "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription#manage-copilot-for-teams-meetings-and-events"
+    api:
+      kind: "powershell"
+      call: "Set-CsTeamsMeetingPolicy -Identity <policy> -AllowTranscription $true"
+      docs: "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy"
 confidence: "high"
 created: "2026-11-15"
-updated: "2026-11-15"
+updated: "2026-11-16"
 roadmapModified: "2026-10-19T23:15:15"
 changes:
   - date: "2026-11-15"
     note: "New briefing: Work IQ real-time Teams transcripts, with setting effective 14 November 2026."
-version: 1
+  - date: "2026-11-16"
+    note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
+version: 2
 ---
 
 ## What's changing
@@ -94,9 +134,20 @@ Teams meetings and calls in the Worldwide cloud, on the web per the roadmap. The
 - [ ] Review which apps receive transcripts.
 - [ ] Revisit the setting if apps change.
 
-## Admin controls
+## Governance controls
 
-Teams admin center: Meetings > Meeting settings > Transcript API access > WorkIQ access toggle (default off). PowerShell: `Set-CsTeamsMeetingConfiguration -EnableWorkIQTranscriptAccess $true -Identity Global`, which needs the latest Teams PowerShell module. Per-app control is through Microsoft Entra API permissions. Allow AI in all meetings must also be on.
+<p class="controls__lead">Where each control lives. The left column says what the setting decides and how far it reaches; the middle gives the admin centre and the exact path; the right gives the script, API or command that does the same. <em>Not yet documented</em> means Microsoft has not published a control for that surface, so there is nothing to configure yet.</p>
+
+<table class="controls">
+<thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
+<tbody>
+<tr><td data-label="Control"><strong>Work IQ access to real-time meeting transcripts</strong><br><small>Tenant</small><br><small class="controls__note">Off by default. Needs the latest Teams PowerShell module.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting settings › Transcript API access › WorkIQ access <a href="https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access#manage-work-iq-access-to-real-time-transcripts" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingConfiguration -Identity Global -EnableWorkIQTranscriptAccess $true</code> <a href="https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access#manage-work-iq-access-to-real-time-transcripts" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which apps may read transcripts</strong><br><small>App</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Entra ID › App registrations › app › API permissions <a href="https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Transcription allowed in the meeting policy</strong><br><small>User</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting policies › policy › Recording &amp; transcription <a href="https://learn.microsoft.com/microsoftteams/copilot-teams-transcription#manage-copilot-for-teams-meetings-and-events" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity &lt;policy&gt; -AllowTranscription $true</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
+</tbody>
+</table>
+
+The tenant toggle is a single switch with no per-group scoping; the per-app boundary is Entra API permissions and admin consent. Allow AI in all meetings must also be on for transcripts to flow. The cmdlet reference for the configuration object is [Set-CsTeamsMeetingConfiguration](https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingconfiguration).
 
 ## Open questions
 

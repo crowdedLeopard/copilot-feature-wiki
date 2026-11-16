@@ -37,16 +37,67 @@ sources:
   - title: "Admin-published federated connectors"
     url: "https://learn.microsoft.com/microsoft-365/copilot/connectors/admin-published-federated-connectors"
     kind: "learn"
+  - title: "Allowing or blocking connectors by publisher type (Microsoft 365 admin center)"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview#admin-experience-and-controls"
+    kind: "learn"
+  - title: "Which users may use connectors (Microsoft 365 admin center)"
+    url: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings"
+    kind: "learn"
+  - title: "Blocking an individual tool (Microsoft 365 admin center)"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/manage-plugins-skills-mcp-servers"
+    kind: "learn"
+  - title: "Who is in a staged rollout (Microsoft 365 admin center)"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/connectors/staged-rollout#modify-staged-rollout"
+    kind: "learn"
 videos: []
 related: ["copilot-studio-mcp-tools-in-agents","copilot-studio-require-human-approval-for-tool-calls","m365-copilot-agent-lifecycle-management-rules","m365-copilot-domain-exclusion-web-grounding"]
+controls:
+  - governs: "Enabling, disabling or staging a federated connector"
+    scope: "tenant"
+    ui:
+      surface: "Microsoft 365 admin center"
+      path: "Copilot > Connectors > Your connections > connector > Enable / Disable / Staged rollout"
+      docs: "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors"
+    api: null
+  - governs: "Allowing or blocking connectors by publisher type"
+    scope: "tenant"
+    ui:
+      surface: "Microsoft 365 admin center"
+      path: "Agents > Settings > Agent and plugin access"
+      docs: "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview#admin-experience-and-controls"
+    api: null
+    note: "Applies to future connectors of that publisher type as well."
+  - governs: "Which users may use connectors"
+    scope: "user"
+    ui:
+      surface: "Microsoft 365 admin center"
+      path: "Agents > Settings > User access"
+      docs: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings"
+    api: null
+  - governs: "Blocking an individual tool"
+    scope: "tenant"
+    ui:
+      surface: "Microsoft 365 admin center"
+      path: "Agents > Tools > Registry > tool > Block"
+      docs: "https://learn.microsoft.com/microsoft-365/copilot/manage-plugins-skills-mcp-servers"
+    api: null
+  - governs: "Who is in a staged rollout"
+    scope: "group"
+    ui:
+      surface: "Microsoft 365 admin center"
+      path: "Copilot > Connectors > Your connections > connector > Staged rollout"
+      docs: "https://learn.microsoft.com/microsoft-365/copilot/connectors/staged-rollout#modify-staged-rollout"
+    api: null
 confidence: "high"
 created: "2026-11-13"
-updated: "2026-11-13"
+updated: "2026-11-16"
 roadmapModified: "2026-10-30T22:08:34"
 changes:
   - date: "2026-11-13"
     note: "Initial briefing"
-version: 1
+  - date: "2026-11-16"
+    note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
+version: 2
 ---
 
 ## What's changing
@@ -111,13 +162,22 @@ Compliance teams should note Microsoft's own wording: these actions "export Cust
 - Sample audit logs for write actions; look for "Always allow" patterns on high-impact tools.
 - Watch for admin controls over approval defaults and for admin-published connectors gaining write support.
 
-## Admin controls
+## Governance controls
 
-- Microsoft 365 admin center > **Copilot** > **Connectors** > **Your connections** > connector: enable, disable, **Staged rollout** (users or groups), view Read tools and Write/Delete tools.
-- Microsoft 365 admin center > **Agents** > **Settings** > **Agent and plugin access**: allow or block connectors by publisher type, applied to future connectors of that type.
-- Microsoft 365 admin center > **Agents** > **Settings** > **User access**: which users may use connectors.
-- Microsoft Purview: audit of connector actions.
-- User side: Copilot Chat > **Settings** > **Sources** > connector > **Write/Delete tools** approval settings.
+<p class="controls__lead">Where each control lives. The left column says what the setting decides and how far it reaches; the middle gives the admin centre and the exact path; the right gives the script, API or command that does the same. <em>Not yet documented</em> means Microsoft has not published a control for that surface, so there is nothing to configure yet.</p>
+
+<table class="controls">
+<thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
+<tbody>
+<tr><td data-label="Control"><strong>Enabling, disabling or staging a federated connector</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Connectors › Your connections › connector › Enable / Disable / Staged rollout <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Allowing or blocking connectors by publisher type</strong><br><small>Tenant</small><br><small class="controls__note">Applies to future connectors of that publisher type as well.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Settings › Agent and plugin access <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview#admin-experience-and-controls" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which users may use connectors</strong><br><small>User</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Settings › User access <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Blocking an individual tool</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Registry › tool › Block <a href="https://learn.microsoft.com/microsoft-365/copilot/manage-plugins-skills-mcp-servers" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Who is in a staged rollout</strong><br><small>Group</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Connectors › Your connections › connector › Staged rollout <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/staged-rollout#modify-staged-rollout" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+</tbody>
+</table>
+
+None of these settings has a documented Graph or PowerShell equivalent, so change control is portal and audit log. The connector details pane lists Read tools and Write/Delete tools separately, which is where an admin sees what a write-capable connector can do before enabling it. Users approve write actions per connector in Copilot Chat settings; that user-side approval is not an admin control. Purview audit records connector actions.
 
 ## Open questions
 

@@ -37,16 +37,51 @@ sources:
   - title: "Learn about retention for SharePoint and OneDrive"
     url: "https://learn.microsoft.com/purview/retention-policies-sharepoint"
     kind: "learn"
+  - title: "Retention policies for SharePoint and OneDrive (Microsoft Purview portal)"
+    url: "https://learn.microsoft.com/purview/create-retention-policies#create-and-configure-a-retention-policy"
+    kind: "learn"
+  - title: "Retention policies for SharePoint and OneDrive (PowerShell)"
+    url: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy?view=exchange-ps"
+    kind: "learn"
+  - title: "Archiving files by last access date (SharePoint Advanced Management) (PowerShell)"
+    url: "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/new-spofilearchivepolicy"
+    kind: "learn"
 videos: []
 related: ["m365-teams-channel-backup","copilot-studio-purview-information-protection-labelled-files"]
+controls:
+  - governs: "Retention policies for SharePoint and OneDrive"
+    scope: "tenant"
+    ui:
+      surface: "Microsoft Purview portal"
+      path: "Solutions > Data Lifecycle Management > Policies > Retention policies > New retention policy"
+      docs: "https://learn.microsoft.com/purview/create-retention-policies#create-and-configure-a-retention-policy"
+    api:
+      kind: "powershell"
+      call: "New-RetentionCompliancePolicy; New-RetentionComplianceRule"
+      docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy?view=exchange-ps"
+  - governs: "Archiving files by last access date (SharePoint Advanced Management)"
+    scope: "tenant"
+    ui: null
+    api:
+      kind: "powershell"
+      call: "New-SPOFileArchivePolicy -Name <n> -PolicyType <t> -LastAccessDateCriteria <days> -IsWhatIfMode; Set-SPOFileArchivePolicy -State Active"
+      docs: "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/new-spofilearchivepolicy"
+    note: "Preview. Archives rather than deletes; needs SharePoint Advanced Management."
+  - governs: "Last-accessed start option in the retention policy wizard"
+    scope: "tenant"
+    ui: null
+    api: null
+    note: "Not in Learn's retention guidance at review time."
 confidence: "medium"
 created: "2026-11-13"
-updated: "2026-11-13"
+updated: "2026-11-16"
 roadmapModified: "2026-10-13T23:01:05"
 changes:
   - date: "2026-11-13"
     note: "Initial briefing"
-version: 1
+  - date: "2026-11-16"
+    note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
+version: 2
 ---
 
 ## What's changing
@@ -108,12 +143,20 @@ The risk is in the other direction: a deletion policy keyed to a metric that was
 - Compare with SharePoint Advanced Management inactive files reports for consistency.
 - Revisit when Microsoft publishes the final semantics of the last-accessed trigger.
 
-## Admin controls
+## Governance controls
 
-- Microsoft Purview portal > **Solutions** > **Data Lifecycle Management** > **Policies** > **Retention policies** > retention period start option (last accessed, when available).
-- Microsoft Purview portal > **Records Management** > retention labels with the same start option; disposition review.
-- SharePoint admin center / PowerShell: `New-SPOFileArchivePolicy -LastAccessDateCriteria` for archive (not deletion) policies in SharePoint Advanced Management.
-- Microsoft 365 audit log: `FileArchived` and retention disposition events.
+<p class="controls__lead">Where each control lives. The left column says what the setting decides and how far it reaches; the middle gives the admin centre and the exact path; the right gives the script, API or command that does the same. <em>Not yet documented</em> means Microsoft has not published a control for that surface, so there is nothing to configure yet.</p>
+
+<table class="controls">
+<thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
+<tbody>
+<tr><td data-label="Control"><strong>Retention policies for SharePoint and OneDrive</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Data Lifecycle Management › Policies › Retention policies › New retention policy <a href="https://learn.microsoft.com/purview/create-retention-policies#create-and-configure-a-retention-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-RetentionCompliancePolicy; New-RetentionComplianceRule</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy?view=exchange-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Archiving files by last access date (SharePoint Advanced Management)</strong><br><small>Tenant</small><br><small class="controls__note">Preview. Archives rather than deletes; needs SharePoint Advanced Management.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-SPOFileArchivePolicy -Name &lt;n&gt; -PolicyType &lt;t&gt; -LastAccessDateCriteria &lt;days&gt; -IsWhatIfMode; Set-SPOFileArchivePolicy -State Active</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/new-spofilearchivepolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Last-accessed start option in the retention policy wizard</strong><br><small>Tenant</small><br><small class="controls__note">Not in Learn's retention guidance at review time.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+</tbody>
+</table>
+
+Today's retention start options are listed under [retention policies and labels](https://learn.microsoft.com/purview/retention#retention-policies-and-retention-labels); the last-accessed trigger is the new element and its cmdlet parameter is not yet documented. The archive policy is a different product and bills storage at archive rates, as described in [manage inactive files](https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files). The retention cmdlets index is at [retention cmdlets](https://learn.microsoft.com/purview/retention-cmdlets).
 
 ## Open questions
 

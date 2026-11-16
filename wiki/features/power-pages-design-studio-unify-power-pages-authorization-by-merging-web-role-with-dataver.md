@@ -28,16 +28,33 @@ sources:
   - title: "Microsoft 365 Roadmap item 576750"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=576750"
     kind: "roadmap"
+  - title: "Enhanced authorization for a site (Power Pages)"
+    url: "https://learn.microsoft.com/power-pages/security/unify-pages-security-with-dataverse#enable-enhanced-authorization"
+    kind: "learn"
 videos: []
 related: ["microsoft-power-platform-governance-and-administration-secure-dataverse-record-with-column","power-pages-administration-and-governance-manage-external-authentication-providers-with-gr"]
+controls:
+  - governs: "Enhanced authorization for a site"
+    scope: "site"
+    ui:
+      surface: "Power Pages"
+      path: "site > ... > Admin center > Edit site details > Enable Enhanced Authorization"
+      docs: "https://learn.microsoft.com/power-pages/security/unify-pages-security-with-dataverse#enable-enhanced-authorization"
+    api: null
+  - governs: "Tenant or environment enforcement of enhanced authorization"
+    scope: "tenant"
+    ui: null
+    api: null
 confidence: "high"
 created: "2026-11-15"
-updated: "2026-11-15"
+updated: "2026-11-16"
 roadmapModified: "2026-10-16T19:08:35"
 changes:
   - date: "2026-11-15"
     note: "New briefing: Power Pages enhanced authorisation merging web roles with Dataverse security roles, in development."
-version: 1
+  - date: "2026-11-16"
+    note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
+version: 2
 ---
 
 ## What's changing
@@ -92,9 +109,19 @@ Power Pages sites in the Worldwide cloud. Requires the minimum Power Pages Core 
 - [ ] Check the growth of system users and security roles.
 - [ ] Monitor Web API performance.
 
-## Admin controls
+## Governance controls
 
-In Power Pages, open the Power Pages admin center for the site (ellipsis next to the site), select Edit next to site details, tick Enable Enhanced Authorization and save. Related controls are table permissions, web roles, and Dataverse column security profiles.
+<p class="controls__lead">Where each control lives. The left column says what the setting decides and how far it reaches; the middle gives the admin centre and the exact path; the right gives the script, API or command that does the same. <em>Not yet documented</em> means Microsoft has not published a control for that surface, so there is nothing to configure yet.</p>
+
+<table class="controls">
+<thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
+<tbody>
+<tr><td data-label="Control"><strong>Enhanced authorization for a site</strong><br><small>Site</small></td><td data-label="Admin UI"><strong>Power Pages</strong><br>site › ... › Admin center › Edit site details › Enable Enhanced Authorization <a href="https://learn.microsoft.com/power-pages/security/unify-pages-security-with-dataverse#enable-enhanced-authorization" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Tenant or environment enforcement of enhanced authorization</strong><br><small>Tenant</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+</tbody>
+</table>
+
+The switch is per site and portal-only. Once on, access is evaluated through Dataverse security roles and column security profiles as well as web roles and table permissions, so review both models before enabling on a production site. Power Platform admins can see which sites have it on from the site details, but there is no tenant report or policy.
 
 ## Open questions
 

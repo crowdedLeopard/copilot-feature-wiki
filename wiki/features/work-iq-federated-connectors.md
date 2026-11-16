@@ -28,16 +28,63 @@ sources:
   - title: "Federated connectors overview"
     url: "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview"
     kind: "learn"
+  - title: "Enabling, disabling or staging a federated connector (Microsoft 365 admin center)"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors"
+    kind: "learn"
+  - title: "Allowing or blocking connectors by publisher type (Microsoft 365 admin center)"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview#admin-experience-and-controls"
+    kind: "learn"
+  - title: "Which users may use connectors (Microsoft 365 admin center)"
+    url: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings"
+    kind: "learn"
+  - title: "Work IQ MCP policy on or off for the tenant (Microsoft 365 admin center)"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp#open-policy-settings-in-the-microsoft-365-admin-center"
+    kind: "learn"
 videos: []
 related: ["m365-copilot-federated-connectors-write-update-delete","copilot-studio-mcp-tools-in-agents","agent-365-control-plane-for-agents"]
+controls:
+  - governs: "Enabling, disabling or staging a federated connector"
+    scope: "tenant"
+    ui:
+      surface: "Microsoft 365 admin center"
+      path: "Copilot > Connectors > Your connections > connector > Enable / Disable / Staged rollout"
+      docs: "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors"
+    api: null
+  - governs: "Allowing or blocking connectors by publisher type"
+    scope: "tenant"
+    ui:
+      surface: "Microsoft 365 admin center"
+      path: "Agents > Settings > Agent and plugin access"
+      docs: "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview#admin-experience-and-controls"
+    api: null
+  - governs: "Which users may use connectors"
+    scope: "user"
+    ui:
+      surface: "Microsoft 365 admin center"
+      path: "Agents > Settings > User access"
+      docs: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings"
+    api: null
+  - governs: "Work IQ MCP policy on or off for the tenant"
+    scope: "tenant"
+    ui:
+      surface: "Microsoft 365 admin center"
+      path: "Agents > Tools > Work IQ MCP > Policy"
+      docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp#open-policy-settings-in-the-microsoft-365-admin-center"
+    api: null
+  - governs: "Work IQ-specific control for federated connectors"
+    scope: "tenant"
+    ui: null
+    api: null
 confidence: "medium"
 created: "2026-11-14"
-updated: "2026-11-14"
+updated: "2026-11-16"
 roadmapModified: "2026-11-06T23:04:41"
 changes:
   - date: "2026-11-14"
     note: "New briefing from roadmap item 570670."
-version: 1
+  - date: "2026-11-16"
+    note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
+version: 2
 ---
 
 ## What's changing
@@ -88,9 +135,22 @@ Work IQ experiences using federated connectors. Cloud scope is not stated in the
 - Audit activity in Microsoft Purview.
 - Review connector permissions after publisher changes.
 
-## Admin controls
+## Governance controls
 
-Federated connectors are managed in the Microsoft 365 admin center; approval settings per write tool are available, and activity can be audited in Purview. Work IQ-specific controls are not yet published.
+<p class="controls__lead">Where each control lives. The left column says what the setting decides and how far it reaches; the middle gives the admin centre and the exact path; the right gives the script, API or command that does the same. <em>Not yet documented</em> means Microsoft has not published a control for that surface, so there is nothing to configure yet.</p>
+
+<table class="controls">
+<thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
+<tbody>
+<tr><td data-label="Control"><strong>Enabling, disabling or staging a federated connector</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Connectors › Your connections › connector › Enable / Disable / Staged rollout <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Allowing or blocking connectors by publisher type</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Settings › Agent and plugin access <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview#admin-experience-and-controls" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which users may use connectors</strong><br><small>User</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Settings › User access <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Work IQ MCP policy on or off for the tenant</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Work IQ MCP › Policy <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp#open-policy-settings-in-the-microsoft-365-admin-center" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Work IQ-specific control for federated connectors</strong><br><small>Tenant</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+</tbody>
+</table>
+
+Federated connector governance is portal-only and lives with the Microsoft 365 Copilot connector settings; Work IQ inherits whatever is enabled there. Write tools on a connector are approved by users per connector in Copilot Chat, which is not an admin control. Purview audit records connector actions. See the [federated connectors briefing](/features/m365-copilot-federated-connectors-write-update-delete/) for the connector-side detail.
 
 ## Open questions
 

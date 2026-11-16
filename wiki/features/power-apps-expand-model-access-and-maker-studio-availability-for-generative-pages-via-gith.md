@@ -28,16 +28,43 @@ sources:
   - title: "Generate a page using natural language"
     url: "https://learn.microsoft.com/power-apps/maker/model-driven-apps/generative-pages"
     kind: "learn"
+  - title: "Agentic coauthoring in Power Apps using GitHub (Power Platform admin center)"
+    url: "https://learn.microsoft.com/power-apps/maker/canvas-apps/canvas-authoring-agent#enable-github-account-connections"
+    kind: "learn"
+  - title: "Copilot preview features in Power Apps (Power Platform admin center)"
+    url: "https://learn.microsoft.com/power-apps/maker/canvas-apps/ai-overview#enable-or-disable-copilot-features"
+    kind: "learn"
 videos: []
 related: ["power-apps-new-view-layout-in-model-driven-apps","data-policies"]
+controls:
+  - governs: "Agentic coauthoring in Power Apps using GitHub"
+    scope: "tenant"
+    ui:
+      surface: "Power Platform admin center"
+      path: "Manage > Tenant settings > Agentic coauthoring in Power Apps using GitHub (preview)"
+      docs: "https://learn.microsoft.com/power-apps/maker/canvas-apps/canvas-authoring-agent#enable-github-account-connections"
+    api: null
+  - governs: "Copilot preview features in Power Apps"
+    scope: "tenant"
+    ui:
+      surface: "Power Platform admin center"
+      path: "Settings > Tenant settings > Copilot in Power Apps (preview)"
+      docs: "https://learn.microsoft.com/power-apps/maker/canvas-apps/ai-overview#enable-or-disable-copilot-features"
+    api: null
+  - governs: "Switch specific to generative pages or to GitHub-hosted models"
+    scope: "tenant"
+    ui: null
+    api: null
 confidence: "medium"
 created: "2026-11-14"
-updated: "2026-11-14"
+updated: "2026-11-16"
 roadmapModified: "2026-10-23T21:59:27"
 changes:
   - date: "2026-11-14"
     note: "New briefing from roadmap item 576285 with Learn generative pages context."
-version: 1
+  - date: "2026-11-16"
+    note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
+version: 2
 ---
 
 ## What's changing
@@ -90,9 +117,20 @@ Makers using Maker Studio generative pages in model-driven apps. Roadmap cloud: 
 - [ ] Review generated pages through normal solution review.
 - [ ] Track GitHub credit use and feedback.
 
-## Admin controls
+## Governance controls
 
-No tenant-level control for the GitHub connection is published. Use Power Platform data policies, environment security roles and your GitHub organisation policies to constrain use. Confirm in Learn at release.
+<p class="controls__lead">Where each control lives. The left column says what the setting decides and how far it reaches; the middle gives the admin centre and the exact path; the right gives the script, API or command that does the same. <em>Not yet documented</em> means Microsoft has not published a control for that surface, so there is nothing to configure yet.</p>
+
+<table class="controls">
+<thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
+<tbody>
+<tr><td data-label="Control"><strong>Agentic coauthoring in Power Apps using GitHub</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Tenant settings › Agentic coauthoring in Power Apps using GitHub (preview) <a href="https://learn.microsoft.com/power-apps/maker/canvas-apps/canvas-authoring-agent#enable-github-account-connections" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Copilot preview features in Power Apps</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Settings › Tenant settings › Copilot in Power Apps (preview) <a href="https://learn.microsoft.com/power-apps/maker/canvas-apps/ai-overview#enable-or-disable-copilot-features" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Switch specific to generative pages or to GitHub-hosted models</strong><br><small>Tenant</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+</tbody>
+</table>
+
+The GitHub connection toggle is the closest tenant control and is listed on the [tenant settings page](https://learn.microsoft.com/power-platform/admin/tenant-settings). `Set-TenantSettings` and `pac admin update-tenant-settings` manage tenant settings generally, but Learn gives no property name for this one, so it is treated as portal-only. Generally available Copilot features in Power Apps can only be turned off through Microsoft Support. GitHub organisation policies on the developer side are outside Microsoft's documentation.
 
 ## Open questions
 

@@ -43,16 +43,73 @@ sources:
   - title: "Connect existing agents to Microsoft Agent 365"
     url: "https://learn.microsoft.com/microsoft-agent-365/connect-existing-agents"
     kind: "learn"
+  - title: "Which agents are blocked, unblocked, installed or pinned for users (Microsoft 365 admin center)"
+    url: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions#block-or-unblock-agents"
+    kind: "learn"
+  - title: "Which agents are blocked, unblocked, installed or pinned for users (Microsoft Graph)"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
+    kind: "learn"
+  - title: "Whether agent identities can sign in to resources (Microsoft Entra admin center)"
+    url: "https://learn.microsoft.com/entra/agent-id/disable-agent-identities#create-conditional-access-policies-to-disable-agent-activities"
+    kind: "learn"
+  - title: "Agent identity inventory and sign-in monitoring (Microsoft Entra admin center)"
+    url: "https://learn.microsoft.com/entra/agent-id/agent-lists"
+    kind: "learn"
+  - title: "Agent identity inventory and sign-in monitoring (Microsoft Graph)"
+    url: "https://learn.microsoft.com/entra/agent-id/manage-agent-identities-admin#monitor-agent-activity"
+    kind: "learn"
 videos: []
 related: ["m365-copilot-agent-lifecycle-management-rules","copilot-studio-cost-management-m365-admin-center","dataverse-agent-users-entra-agent-identity","agent-identity"]
+controls:
+  - governs: "Which agents are blocked, unblocked, installed or pinned for users"
+    scope: "agent"
+    ui:
+      surface: "Microsoft 365 admin center"
+      path: "Agents > All agents > agent > Block / Unblock"
+      docs: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions#block-or-unblock-agents"
+    api:
+      kind: "graph"
+      call: "POST /beta/copilot/admin/catalog/packages/{id}/block"
+      docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
+    note: "The Graph call needs CopilotPackages.ReadWrite.All and an Agent 365 licence. Blocking an agent turns off its instances."
+  - governs: "Agent policy: management rules, agent and plugin access, security templates, sharing, user access and tags"
+    scope: "tenant"
+    ui:
+      surface: "Microsoft 365 admin center"
+      path: "Agents > Settings"
+      docs: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings"
+    api: null
+  - governs: "Whether agent identities can sign in to resources"
+    scope: "tenant"
+    ui:
+      surface: "Microsoft Entra admin center"
+      path: "Entra ID > Conditional Access > Policies > New policy > Users, agents or workload identities > Agents > All agent identities > Block"
+      docs: "https://learn.microsoft.com/entra/agent-id/disable-agent-identities#create-conditional-access-policies-to-disable-agent-activities"
+    api:
+      kind: "graph"
+      call: "POST /identity/conditionalAccess/policies with agent identities as the policy's users condition"
+      docs: "https://learn.microsoft.com/entra/agent-id/disable-agent-identities#create-conditional-access-policies-to-disable-agent-activities"
+    note: "Needs Microsoft Entra ID P1 and the Conditional Access Administrator role."
+  - governs: "Agent identity inventory and sign-in monitoring"
+    scope: "tenant"
+    ui:
+      surface: "Microsoft Entra admin center"
+      path: "Entra ID > Agents > Agent identities"
+      docs: "https://learn.microsoft.com/entra/agent-id/agent-lists"
+    api:
+      kind: "graph"
+      call: "GET /beta/auditLogs/signIns?$filter=agent/agentType eq 'AgentIdentity'"
+      docs: "https://learn.microsoft.com/entra/agent-id/manage-agent-identities-admin#monitor-agent-activity"
 confidence: "high"
 created: "2026-11-13"
-updated: "2026-11-13"
+updated: "2026-11-16"
 roadmapModified: "2026-08-28T21:59:29"
 changes:
   - date: "2026-11-13"
     note: "Initial briefing"
-version: 1
+  - date: "2026-11-16"
+    note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
+version: 2
 ---
 
 ## What's changing
@@ -120,12 +177,21 @@ The cost is real. Agent 365 is a per-user licence (or part of Microsoft 365 E7),
 - Feed agent audit events into your SIEM through Purview.
 - Revisit the licence footprint annually against the number of agents actually governed.
 
-## Admin controls
+## Governance controls
 
-- Microsoft 365 admin center > **Agents** > **Overview**, **All agents**, **Settings** (management rules, agent and plugin access, security templates, sharing, user access, feedback sharing, tags).
-- Microsoft 365 admin center > **Agents** > agent details pane: Install, Block, Uninstall, Pin for users; blocking an agent turns off its instances.
-- Microsoft Entra admin center > **Agent ID**: identity for agents; Conditional Access and sign-in logs.
-- Microsoft Purview: audit and DSPM for AI coverage of agent activity.
+<p class="controls__lead">Where each control lives. The left column says what the setting decides and how far it reaches; the middle gives the admin centre and the exact path; the right gives the script, API or command that does the same. <em>Not yet documented</em> means Microsoft has not published a control for that surface, so there is nothing to configure yet.</p>
+
+<table class="controls">
+<thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
+<tbody>
+<tr><td data-label="Control"><strong>Which agents are blocked, unblocked, installed or pinned for users</strong><br><small>Agent</small><br><small class="controls__note">The Graph call needs CopilotPackages.ReadWrite.All and an Agent 365 licence. Blocking an agent turns off its instances.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › agent › Block / Unblock <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions#block-or-unblock-agents" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Agent policy: management rules, agent and plugin access, security templates, sharing, user access and tags</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Settings <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether agent identities can sign in to resources</strong><br><small>Tenant</small><br><small class="controls__note">Needs Microsoft Entra ID P1 and the Conditional Access Administrator role.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Entra ID › Conditional Access › Policies › New policy › Users, agents or workload identities › Agents › All agent identities › Block <a href="https://learn.microsoft.com/entra/agent-id/disable-agent-identities#create-conditional-access-policies-to-disable-agent-activities" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /identity/conditionalAccess/policies with agent identities as the policy's users condition</code> <a href="https://learn.microsoft.com/entra/agent-id/disable-agent-identities#create-conditional-access-policies-to-disable-agent-activities" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Agent identity inventory and sign-in monitoring</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Entra ID › Agents › Agent identities <a href="https://learn.microsoft.com/entra/agent-id/agent-lists" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>GET /beta/auditLogs/signIns?$filter=agent/agentType eq 'AgentIdentity'</code> <a href="https://learn.microsoft.com/entra/agent-id/manage-agent-identities-admin#monitor-agent-activity" rel="noopener" class="controls__docs">Learn</a></td></tr>
+</tbody>
+</table>
+
+The Microsoft 365 admin center surfaces are the control plane; the Entra surfaces govern the identity underneath. Only the block action has a documented Graph equivalent, so lifecycle rules and access settings are portal-only today. Roles are listed in [Agent 365 roles and permissions](https://learn.microsoft.com/microsoft-agent-365/admin/agent-roles-perms). Purview audit and DSPM for AI record agent activity but add no switch of their own. The separate Agent registry blade in Entra is converging with Agent identities; see [the convergence note](https://learn.microsoft.com/entra/agent-id/agent-registry-convergence) before writing runbooks against it.
 
 ## Open questions
 

@@ -31,16 +31,41 @@ sources:
   - title: "Filtered record ownership (preview)"
     url: "https://learn.microsoft.com/power-apps/maker/data-platform/filtered-view-record-ownership"
     kind: "learn"
+  - title: "Tables with filtered record ownership and their record filters (Power Apps (maker))"
+    url: "https://learn.microsoft.com/power-apps/maker/data-platform/filtered-view-record-ownership#create-and-assign-a-security-role"
+    kind: "learn"
+  - title: "Tables with filtered record ownership and their record filters (REST API)"
+    url: "https://learn.microsoft.com/power-apps/developer/data-platform/filtered-record-ownership#grant-access-with-security-roles"
+    kind: "learn"
 videos: []
 related: ["managed-environments","data-policies","dataverse-agent-users-entra-agent-identity"]
+controls:
+  - governs: "Tables with filtered record ownership and their record filters"
+    scope: "environment"
+    ui:
+      surface: "Power Apps (maker)"
+      path: "Solutions > New table (advanced) > Record ownership: Filtered"
+      docs: "https://learn.microsoft.com/power-apps/maker/data-platform/filtered-view-record-ownership#create-and-assign-a-security-role"
+    api:
+      kind: "rest"
+      call: "Create recordfilter and entityrecordfilter rows through the Dataverse Web API"
+      docs: "https://learn.microsoft.com/power-apps/developer/data-platform/filtered-record-ownership#grant-access-with-security-roles"
+    note: "Preview. Needs the System Administrator role."
+  - governs: "Filter privileges in security roles"
+    scope: "environment"
+    ui: null
+    api: null
+    note: "Documented in the admin guide for filter-based security; the role editor path is not spelt out."
 confidence: "medium"
 created: "2026-11-14"
-updated: "2026-11-14"
+updated: "2026-11-16"
 roadmapModified: "2026-11-11T00:56:01"
 changes:
   - date: "2026-11-14"
     note: "New briefing from roadmap item 577860."
-version: 1
+  - date: "2026-11-16"
+    note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
+version: 2
 ---
 
 ## What's changing
@@ -91,9 +116,19 @@ Dataverse environments in Worldwide (Standard Multi-Tenant). Applies to makers a
 - Review effective access periodically.
 - Check that additive filters on owned tables do not over-share.
 
-## Admin controls
+## Governance controls
 
-Configured in Power Apps and the Power Platform admin center through tables with Filtered record ownership, Record Filters, Entity Record Filters and security role filter privileges. Documented as preview at the time of review.
+<p class="controls__lead">Where each control lives. The left column says what the setting decides and how far it reaches; the middle gives the admin centre and the exact path; the right gives the script, API or command that does the same. <em>Not yet documented</em> means Microsoft has not published a control for that surface, so there is nothing to configure yet.</p>
+
+<table class="controls">
+<thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
+<tbody>
+<tr><td data-label="Control"><strong>Tables with filtered record ownership and their record filters</strong><br><small>Environment</small><br><small class="controls__note">Preview. Needs the System Administrator role.</small></td><td data-label="Admin UI"><strong>Power Apps (maker)</strong><br>Solutions › New table (advanced) › Record ownership: Filtered <a href="https://learn.microsoft.com/power-apps/maker/data-platform/filtered-view-record-ownership#create-and-assign-a-security-role" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>Create recordfilter and entityrecordfilter rows through the Dataverse Web API</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/filtered-record-ownership#grant-access-with-security-roles" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Filter privileges in security roles</strong><br><small>Environment</small><br><small class="controls__note">Documented in the admin guide for filter-based security; the role editor path is not spelt out.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+</tbody>
+</table>
+
+Record Filters and Entity Record Filters are solution components, so they travel with the solution and can be deployed through the usual ALM pipeline. Granting the filter privileges is described in [Filter-based security](https://learn.microsoft.com/power-platform/admin/filter-based-security#grant-filter-privileges-in-security-roles). There is no tenant-level switch; the feature is on wherever the preview has reached.
 
 ## Open questions
 
