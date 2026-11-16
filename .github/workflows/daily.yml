@@ -85,6 +85,17 @@ jobs:
         with:
           fetch-depth: 0
 
+      # A scheduled or hand-started run is created from the commit main was at that moment, then waits in the
+      # curation lane while the run before it works and commits. Working from that stale commit would redo the
+      # earlier run's pages, and the commit step's rebase would let this run's files win over that run's results
+      # (a scheduled run did this on 16 Nov 2026 and was cancelled). So a curation run first moves to main as it is now.
+      - name: Catch up with main
+        if: github.event_name != 'push'
+        run: |
+          git fetch origin main
+          git checkout -B main origin/main
+          echo "Working from main at $(git rev-parse --short HEAD) (the run was created at ${GITHUB_SHA::7})." >> "$GITHUB_STEP_SUMMARY"
+
       - uses: actions/setup-node@v4
         with:
           node-version: 22
