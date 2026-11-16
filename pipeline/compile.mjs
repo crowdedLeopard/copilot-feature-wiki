@@ -23,6 +23,7 @@ import { briefingOutput } from './lib/schema.mjs';
 import { WIKI_DIR, DATA_DIR, writeJson, appendLog, today, slugify } from './lib/util.mjs';
 import { loadIndexSlugs, selectQueue, topicSplit, loadRawItem, loadExisting, researchBrief, writeBriefingPage, existingSlugForRoadmapId } from './lib/briefing.mjs';
 import { loadGlossary } from './lib/tags.mjs';
+import { postsForBrief } from './lib/message-center.mjs';
 
 const LIMIT = Number(process.env.COMPILE_LIMIT || 12);
 const MODEL = process.env.COMPILE_MODEL || 'claude-opus-5-5';
@@ -52,7 +53,8 @@ function buildTools() {
 
 async function compileOne(client, item, existing, indexSlugs, schemaDoc, glossary) {
   const { tools, mcp } = buildTools();
-  const messages = [{ role: 'user', content: researchBrief(item, existing, indexSlugs, glossary) }];
+  const posts = await postsForBrief(item.id);
+  const messages = [{ role: 'user', content: researchBrief(item, existing, indexSlugs, glossary, posts) }];
   let response;
   for (let turn = 0; turn < 6; turn++) {
     const stream = client.beta.messages.stream({

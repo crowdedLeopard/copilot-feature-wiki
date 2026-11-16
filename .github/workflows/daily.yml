@@ -86,6 +86,21 @@ jobs:
           echo "SITE_URL=https://${owner}.github.io" >> "$GITHUB_ENV"
           echo "SITE_BASE=/${{ github.event.repository.name }}" >> "$GITHUB_ENV"
 
+      # Message Center has no public feed, so the ledger reads one tenant's posts through Microsoft Graph with a
+      # read-only app permission (ServiceMessage.Read.All) and publishes only the text Microsoft sends to every
+      # tenant; see docs/message-centre.md for the one-off setup. With no MC_TENANT_ID / MC_CLIENT_ID the step
+      # says so and the run carries on without posts. Sign-in is the workflow's own OIDC token (a federated
+      # credential on the app registration) unless an MC_CLIENT_SECRET is set.
+      - name: Ingest Message Centre posts
+        if: github.event_name != 'push'
+        continue-on-error: true
+        env:
+          MC_TENANT_ID: ${{ secrets.MC_TENANT_ID || vars.MC_TENANT_ID }}
+          MC_CLIENT_ID: ${{ secrets.MC_CLIENT_ID || vars.MC_CLIENT_ID }}
+          MC_CLIENT_SECRET: ${{ secrets.MC_CLIENT_SECRET }}
+          MC_TENANT_WORDS: ${{ vars.MC_TENANT_WORDS }}
+        run: node pipeline/ingest-message-center.mjs
+
       - name: Ingest the Microsoft 365 Roadmap
         run: node pipeline/ingest.mjs
 

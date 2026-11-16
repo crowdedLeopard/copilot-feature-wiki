@@ -22,6 +22,7 @@ import { loadIndexSlugs, selectQueue, topicSplit, loadRawItem, loadExisting, res
 import { loadGlossary } from './lib/tags.mjs';
 import { CONCEPTS } from '../config/taxonomy.mjs';
 import { CONCEPT_STATE, selectConceptTasks, conceptBrief, conceptTaskId, liveBriefings, allConceptPages, loadExistingConcept } from './lib/concepts.mjs';
+import { postsForBrief } from './lib/message-center.mjs';
 
 const LIMIT = Number(process.env.COMPILE_LIMIT || 12);
 const ONLY = (process.env.COMPILE_ONLY || '').split(',').map((s) => s.trim()).filter(Boolean).map(Number);
@@ -47,11 +48,12 @@ for (const q of items) {
   if (!item) { console.warn(`no raw record for ${q.id}`); continue; }
   const slug = q.slug || (await existingSlugForRoadmapId(item.id)) || slugify(item.title);
   const { existing } = await loadExisting(slug);
+  const posts = await postsForBrief(item.id);
   const briefFile = path.join(TASK_DIR, `${q.id}.md`);
-  await fs.writeFile(briefFile, researchBrief(item, existing, indexSlugs, glossary));
+  await fs.writeFile(briefFile, researchBrief(item, existing, indexSlugs, glossary, posts));
   tasks.push({
     id: q.id, reason: q.reason, slug, title: item.title, status: item.status, topic: item.topic,
-    exists: Boolean(existing), brief: path.relative(process.cwd(), briefFile),
+    exists: Boolean(existing), messageCenter: posts.map((p) => p.id), brief: path.relative(process.cwd(), briefFile),
     raw: path.relative(process.cwd(), path.join('raw', 'roadmap', 'items', `${q.id}.json`)),
     page: path.relative(process.cwd(), path.join('wiki', 'features', `${slug}.md`)),
   });

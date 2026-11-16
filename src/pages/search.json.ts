@@ -1,11 +1,12 @@
 import type { APIRoute } from 'astro';
-import { allFeaturesIncludingArchived, allConcepts } from '../lib/data';
-import { TOPIC_BY_ID, featureUrl, conceptUrl } from '../lib/site';
+import { allFeaturesIncludingArchived, allConcepts, allNotices } from '../lib/data';
+import { TOPIC_BY_ID, featureUrl, conceptUrl, noticeUrl } from '../lib/site';
 import { tagLabel } from '../lib/tags';
 
 export const GET: APIRoute = async () => {
   const features = await allFeaturesIncludingArchived();
   const concepts = await allConcepts();
+  const notices = await allNotices();
   const docs = [
     ...features.map((f) => ({
       id: `f:${f.data.slug}`,
@@ -28,6 +29,16 @@ export const GET: APIRoute = async () => {
       topic: 'Concept',
       tags: [...c.data.tags, ...c.data.tags.map(tagLabel)],
       products: [],
+    })),
+    ...notices.map((n) => ({
+      id: `m:${n.data.id}`,
+      kind: 'notice',
+      title: `${n.data.id}: ${n.data.title}`,
+      summary: n.data.summary || `Message Center post, ${n.data.category}${n.data.actionRequiredBy ? `, act by ${n.data.actionRequiredBy.slice(0, 10)}` : ''}.`,
+      url: noticeUrl(n.data.id),
+      topic: 'Message Centre',
+      tags: [n.data.id, ...n.data.tags, ...n.data.roadmapIds.map(String)],
+      products: n.data.services,
     })),
   ];
   return new Response(JSON.stringify(docs), { headers: { 'Content-Type': 'application/json; charset=utf-8' } });

@@ -77,7 +77,7 @@ h2.display { font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2.1rem); }
 .brand__name { white-space: nowrap; font-family: var(--font-display); font-size: 1.45rem; font-weight: 500; letter-spacing: -0.01em; font-variation-settings: 'opsz' 36; }
 .brand__tag { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); }
 .nav { display: flex; gap: 1.2rem; align-items: center; }
-.nav a { color: var(--ink-2); text-decoration: none; font-size: 0.92rem; padding: 0.3rem 0; border-bottom: 2px solid transparent; }
+.nav a { color: var(--ink-2); text-decoration: none; font-size: 0.92rem; padding: 0.3rem 0; border-bottom: 2px solid transparent; white-space: nowrap; }
 .nav a:hover, .nav a[aria-current='page'] { color: var(--ink); border-bottom-color: var(--accent); }
 .nav__tools { display: flex; gap: 0.5rem; align-items: center; }
 .btn-ghost { background: none; border: 1px solid var(--rule); border-radius: var(--radius); padding: 0.35rem 0.6rem; color: var(--ink-2); cursor: pointer; display: inline-flex; align-items: center; gap: 0.45rem; font-size: 0.85rem; }
@@ -88,8 +88,8 @@ h2.display { font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2.1rem); }
 .btn--outline { background: transparent; color: var(--ink); border-color: var(--rule); }
 .btn--outline:hover { background: var(--paper-2); border-color: var(--ink-3); }
 .menu-toggle { display: none; }
-@media (max-width: 1120px) { .brand__tag { display: none; } }
-@media (max-width: 900px) { .nav { gap: 0.95rem; } }
+@media (max-width: 1320px) { .brand__tag { display: none; } }
+@media (max-width: 1080px) { .nav { gap: 0.85rem; } .nav a { font-size: 0.86rem; } }
 @media (max-width: 760px) {
   .nav { display: none; position: absolute; left: 0; right: 0; top: 56px; background: var(--paper); border-bottom: 1px solid var(--rule); padding: 0.75rem var(--gutter) 1rem; flex-direction: column; align-items: flex-start; gap: 0.4rem; }
   .masthead[data-open='true'] .nav { display: flex; }
@@ -266,6 +266,56 @@ dialog.search::backdrop { background: rgba(20, 20, 24, 0.45); backdrop-filter: b
 .radar td.t a:hover { text-decoration: underline; }
 .radar td.d, .radar td.id { font-family: var(--font-mono); font-size: 0.78rem; color: var(--ink-3); white-space: nowrap; }
 .radar .briefed { color: var(--accent); font-size: 0.8rem; }
+
+/* ----- Message Centre: deadlines, posts and Microsoft's text ----- */
+.badge--cat-planForChange { color: var(--risk-medium); border-color: var(--risk-medium); }
+.badge--cat-preventOrFixIssue { color: var(--risk-high); border-color: var(--risk-high); }
+.badge--cat-stayInformed { color: var(--ink-2); }
+.badge--major { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+/* The act-by table: the date leads, in type a reader cannot miss, then how far off it is. */
+.deadlines { width: 100%; border-collapse: collapse; }
+.deadlines td { padding: 0.7rem 0.9rem 0.75rem 0; vertical-align: top; border-bottom: 1px solid var(--rule-2); }
+.deadlines td:last-child { padding-right: 0; }
+.deadlines .when { white-space: nowrap; width: 11.5rem; }
+.deadlines .when b { display: block; font-family: var(--font-display); font-size: 1.35rem; font-weight: 500; line-height: 1.1; letter-spacing: -0.01em; font-variation-settings: 'opsz' 28; }
+.deadlines .when span { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
+.deadlines .when.due--soon b, .deadlines .when.due--soon span { color: var(--risk-high); }
+.deadlines .when.due--near b { color: var(--risk-medium); }
+.deadlines .when.due--past b, .deadlines .when.due--past span { color: var(--ink-3); text-decoration: line-through; }
+.deadlines .what a { font-family: var(--font-display); font-size: 1.12rem; color: var(--ink); text-decoration: none; font-variation-settings: 'opsz' 24; }
+.deadlines .what a:hover { text-decoration: underline; text-decoration-color: var(--accent); }
+.deadlines .meta { display: flex; flex-wrap: wrap; gap: 0.3rem 0.9rem; align-items: center; margin-top: 0.3rem; font-size: 0.78rem; color: var(--ink-3); }
+.deadlines .meta a { color: var(--accent); }
+.deadlines .mcid { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.04em; color: var(--ink-3); }
+@media (max-width: 640px) { .deadlines .when { width: auto; } .deadlines tr { display: grid; grid-template-columns: 1fr; } .deadlines td { border-bottom: 0; padding: 0.2rem 0; } .deadlines tr { border-bottom: 1px solid var(--rule-2); padding: 0.6rem 0; } }
+/* Rows of posts: like ledger rows, with the post's date in the margin where a briefing shows its action. */
+.notices { list-style: none; margin: 0; padding: 0; }
+.notice-row { display: grid; grid-template-columns: 8.5rem 1fr; gap: 0 1.25rem; padding: 0.9rem 0; border-bottom: 1px solid var(--rule-2); align-items: start; }
+.notice-row:last-child { border-bottom: 0; }
+.notice-row__date { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); padding-top: 0.3rem; line-height: 1.5; }
+.notice-row__date b { display: block; color: var(--ink); font-weight: 500; }
+.notice-row__date .act { color: var(--risk-high); font-weight: 600; }
+.notice-row__title { font-family: var(--font-display); font-size: 1.18rem; line-height: 1.3; margin: 0; font-weight: 500; font-variation-settings: 'opsz' 24; }
+.notice-row__title a { color: var(--ink); text-decoration: none; }
+.notice-row__title a:hover { text-decoration: underline; text-decoration-color: var(--accent); }
+.notice-row__summary { margin: 0.3rem 0 0.45rem; color: var(--ink-2); max-width: 72ch; font-size: 0.93rem; }
+.notice-row__meta { display: flex; flex-wrap: wrap; gap: 0.35rem 1rem; align-items: center; font-size: 0.78rem; color: var(--ink-3); }
+.notice-row__meta .mcid { font-family: var(--font-mono); letter-spacing: 0.04em; }
+.notice-row__meta .briefed { color: var(--accent); }
+.notice-row--compact .notice-row__title { font-size: 1.02rem; }
+@media (max-width: 640px) { .notice-row { grid-template-columns: 1fr; } .notice-row__date { padding-bottom: 0.3rem; } }
+/* Microsoft's own text on a post page: set apart from the wiki's voice by a rule and a smaller serif. */
+.mc-text { border-left: 3px solid var(--rule); padding: 0.2rem 0 0.2rem 1.4rem; margin: 0.6rem 0 1.6rem; }
+.mc-text .prose { font-size: 1.04rem; line-height: 1.6; }
+.mc-text .prose p { margin: 0 0 0.85rem; }
+.mc-text .prose b, .mc-text .prose strong { font-weight: 600; }
+.mc-text .prose table { font-size: 0.86rem; }
+.mc-text__note { font-size: 0.8rem; color: var(--ink-3); margin: 0 0 0.6rem; }
+.fact--act .fact__v { color: var(--risk-high); font-weight: 600; }
+.fact--act .fact__v small { display: block; color: var(--ink-3); font-weight: 400; font-size: 0.78rem; }
+.topic-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.6rem 0 0; }
+.topic-chips a.chip[aria-current='true'] { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.screen-note { font-size: 0.85rem; color: var(--ink-3); max-width: 72ch; margin: 0.6rem 0 0; }
 
 /* ----- Footer ----- */
 .footer { border-top: 1px solid var(--rule); margin-top: 4rem; padding: 2rem 0 3rem; color: var(--ink-3); font-size: 0.85rem; }

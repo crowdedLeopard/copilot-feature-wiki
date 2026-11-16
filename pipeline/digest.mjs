@@ -8,8 +8,9 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { loadPages } from './lib/pages.mjs';
 import { WIKI_DIR, DATA_DIR, readJson, appendLog, today, toFrontmatter } from './lib/util.mjs';
-import { TOPICS, ACTION, RISK } from '../config/taxonomy.mjs';
+import { TOPICS, ACTION, RISK, MESSAGE_CENTER } from '../config/taxonomy.mjs';
 import { isoWeek } from './lib/teams-card.mjs';
+import { loadMessageIndex } from './lib/message-center.mjs';
 
 async function main() {
   const since = Date.now() - 7 * 86400000;
@@ -21,6 +22,11 @@ async function main() {
   const slug = `${year}-w${String(week).padStart(2, '0')}`;
   const actNow = fresh.filter((p) => p.data.action === 'act-now');
   const highRisk = fresh.filter((p) => p.data.risk === 'high');
+  // Message Center: posts Microsoft published or revised this week, deadlines first.
+  const messages = await loadMessageIndex();
+  const notices = (messages.posts || []).filter((m) => new Date(m.lastModified).getTime() >= since)
+    .sort((a, b) => (a.actionRequiredBy ? 0 : 1) - (b.actionRequiredBy ? 0 : 1) || String(a.actionRequiredBy || '').localeCompare(String(b.actionRequiredBy || '')) || b.lastModified.localeCompare(a.lastModified));
+  const briefedIds = new Map(pages.filter((p) => p.data.roadmapId).map((p) => [p.data.roadmapId, p]));
 
   const fm = {
     title: `Week ${week}, ${year}: ${fresh.length} briefings updated`,
@@ -28,7 +34,7 @@ async function main() {
     summary: `${fresh.length} briefings created or refreshed, ${actNow.length} need action now, ${highRisk.length} rated high risk.`,
     date: today(),
     weekStart: new Date(since).toISOString().slice(0, 10),
-    counts: { updated: fresh.length, actNow: actNow.length, highRisk: highRisk.length, statusChanges: statusChanges.length },
+    counts: { updated: fresh.length, actNow: actNow.length, highRisk: highRisk.length, statusChanges: statusChanges.length, notices: notices.length },
   };
   const lines = [];
   lines.push('## This week in one paragraph', '');
@@ -50,6 +56,15 @@ async function main() {
     for (const p of mine) {
       const change = p.data.changes?.at(-1)?.note;
       lines.push(`- **[${p.data.title}](/features/${p.slug}/)**. ${ACTION[p.data.action]?.label ?? ''}, ${RISK[p.data.risk].label.toLowerCase()} risk. ${p.data.summary}${change && change !== 'Initial briefing' ? ` *(${change})*` : ''}`);
+    }
+    lines.push('');
+  }
+  if (notices.length) {
+    lines.push('## Message Center this week', '', `${notices.length} post${notices.length === 1 ? '' : 's'} Microsoft published or revised for tenant administrators this week${notices.some((m) => m.actionRequiredBy) ? ', those with an act-by date first' : ''}.`, '');
+    for (const m of notices.slice(0, 25)) {
+      const briefing = (m.roadmapIds || []).map((id) => briefedIds.get(id)).find(Boolean);
+      const cat = MESSAGE_CENTER.category[m.category]?.label || m.category;
+      lines.push(`- ${m.actionRequiredBy ? `**Act by ${m.actionRequiredBy.slice(0, 10)}.** ` : ''}[${m.id}: ${m.title}](/message-centre/${m.id}/). ${cat}${m.isMajorChange ? ', major change' : ''}.${briefing ? ` Briefing: [${briefing.data.title}](/features/${briefing.slug}/).` : ''}`);
     }
     lines.push('');
   }

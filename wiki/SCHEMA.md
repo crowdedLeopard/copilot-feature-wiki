@@ -55,6 +55,13 @@ Every sentence in a briefing is one of three kinds. Know which kind each one is 
   availability table inside the description (version, release channel, feature scope). The record
   is authoritative for these, and they are reported as the record gives them. The roadmap is a
   statement of Microsoft's plans, so its dates are targets and are described as targets.
+  When the task also supplies Message Center posts for the item (under "Message Center posts for
+  this item"), their facts are record facts too: the post's id, the rollout window, whether the
+  change is on by default, what Microsoft asks administrators to do, and above all any **act-by
+  date**. A post is Microsoft's notice to tenant administrators, so it is attributed to Microsoft
+  ("Microsoft's notice MC123456 asks administrators to..."), and its dates are quoted exactly as
+  the post gives them. Where a post and the roadmap record disagree, the post is the later and
+  more specific statement: report both, and give the post's date for anything about rollout.
 - **Documented facts** come from Microsoft's own text, read while researching this briefing: a
   page that was opened, or an excerpt of one returned by the Learn search tool. They cover what the
   feature does in detail, its default, which licence it needs, what it costs, which role configures
@@ -132,8 +139,11 @@ Research is done per item, with the Microsoft Learn search and fetch tools first
 sites second. A search result is a lead; a fact is something read in Microsoft's own text. Work
 through these questions and stop when each is answered or shown to be unanswered:
 
-1. **What is it?** Start from the roadmap record and its "more info" link if there is one. Find the
-   Learn page for the feature itself, and open it. If there is no page for the feature yet, find the
+1. **What is it?** Start from the roadmap record, any Message Center posts supplied with it, and
+   the record's "more info" link if there is one. Read a supplied post in full before searching: it
+   usually names the default, the rollout window, what administrators must do and by when, and the
+   Learn page Microsoft points administrators to. Find the Learn page for the feature itself, and
+   open it. If there is no page for the feature yet, find the
    page for the product area it extends, and treat what that page says as background, not as a
    description of this feature.
 2. **How does it arrive?** Default state, rollout mechanics (release channel, targeted release,
@@ -256,7 +266,9 @@ behaviour.
 - `act-now`: the change reaches users, data or spend without an admin doing anything; it is rolling
   out, launched or targeted within about 60 days; and there is a control to set or a decision to
   take before it lands (risk or cost is `medium` or higher). Or Microsoft has set a deadline for
-  admins.
+  admins: a Message Center post with an act-by date within about 90 days of today is `act-now`
+  whatever the ratings, and the date is stated in the first paragraph of What to do. An act-by date
+  further off is `prepare` at least, with the date stated the same way.
 - `prepare`: the change arrives whether or not anyone chooses it, and needs a decision,
   configuration, licence or communication first. Either there is still time, or the change is
   low in risk and cost and all it needs is communication.
@@ -346,7 +358,9 @@ Then the sections, in this order. The template adds each H2 heading; the text su
 1. **What's changing.** Two to four paragraphs. What the feature does, on which surfaces, for whom,
    and from when. Start with the change itself in one plain sentence. Then how it behaves: the
    default, what the user sees, what happens to existing content or agents. Close with status and
-   dates from the record, and note any difference between the record and Learn.
+   dates from the record, and note any difference between the record and Learn. Where a Message
+   Center post was supplied, give its rollout window and, if it set one, the act-by date and what
+   must be done by then, citing the post by id.
 2. **Why it matters.** The service-owner angle, in one or two paragraphs: what this changes about
    data, identity, spend, support load or user expectations in a tenant. Say what happens if nobody
    acts. This is analysis, and it should commit to a view.
@@ -457,7 +471,9 @@ channels only). Everything else is dropped by the pipeline.
 
 Give each source the title of the page as Microsoft titles it, and its kind: `roadmap`, `learn`,
 `blog`, `message-center`, `docs` or `video`. List the pages the briefing's facts came from, not every
-page that was opened.
+page that was opened. A Message Center post supplied with the task is cited as kind `message-center`,
+titled "MC123456: " followed by the post's title, at the admin center URL the brief gives for it; the
+page shows readers the same post on this site and in their own tenant.
 
 Videos: include only videos found by a search in this run, from Microsoft's own channels. If none,
 return an empty list. The site offers a search link instead.
