@@ -24,8 +24,9 @@ daily by GitHub Actions.
 - The Atlas (`/atlas/`, the home page teaser and the plate in each briefing's Related section) is one canvas renderer,
   `src/scripts/atlas/engine.ts`, with no dependencies. `src/lib/graph.ts` builds its nodes and links (briefings,
   concepts and shared tags) from the content collections at build time and serves them as `atlas.json`.
-  `src/lib/layout.ts` places them: a flat, seeded force layout with one fixed home per topic, so the same wiki always
-  gives the same map. Colours come from the `--topic-*` and `--atlas-*` tokens.
+  `src/lib/layout.ts` places them in three dimensions: a seeded force layout with one fixed home per topic, on a ring
+  around a vertical axis, so the same wiki always gives the same map. The renderer projects it with its own camera
+  (turn, tilt, zoom) and picks the opening view from the data. Colours come from the `--topic-*` and `--atlas-*` tokens.
 - Tags are kebab-case ids; readers see the names in `wiki/tags.json`, the tag glossary (name, group, one-line description per tag).
   `pipeline/lib/tags.mjs` and `src/lib/tags.ts` read it. The compile step defines new tags (`newTags` in the model output) and never
   overwrites an entry; lint keeps tag lists canonical and adds US Government cloud tags from the roadmap record. Badge, rating,
