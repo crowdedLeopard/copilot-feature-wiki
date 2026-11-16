@@ -40,7 +40,14 @@ const DEFAULT_MODELS = {
 };
 const TIMEOUT_MS = Number(process.env.VERIFY_TIMEOUT_MINUTES || 15) * 60 * 1000;
 const MAX_CREDITS = Math.max(30, Number(process.env.VERIFY_MAX_CREDITS || 250));
-const RUN_MINUTES = Number(process.env.VERIFY_RUN_MINUTES || 60);
+const RUN_MINUTES = Number(process.env.VERIFY_RUN_MINUTES || 75);
+// Checks run several at a time: each is one agent session that spends most of its time waiting on the model
+// and on Microsoft Learn, so three in flight roughly triple the pages checked in the run's minutes.
+const PARALLEL = Math.max(1, Math.min(8, Number(process.env.VERIFY_PARALLEL || 3) || 1));
+// A check cost about 63 AI credits on gpt-6.1-sol in the first real run (14 checks, 886 credits), so the default
+// per-run cap pays for a normal run's 24 new briefings with room for part of a backlog. The job always reaches
+// the commit step: whatever the cap leaves unchecked is held (new pages) or kept live unchecked (rewrites).
+const DEFAULT_RUN_CREDITS = 2000;
 const list = (v) => (v || '').split(',').map((x) => x.trim()).filter(Boolean);
 
 // No shell: the verifier writes one file and the pipeline records it.
@@ -176,20 +183,27 @@ async function main() {
   }
   const fallbacks = list(process.env.VERIFY_FALLBACK_MODELS).length ? list(process.env.VERIFY_FALLBACK_MODELS) : process.env.VERIFY_FALLBACK_MODEL ? [process.env.VERIFY_FALLBACK_MODEL] : DEFAULT_MODELS[engine].slice(1);
   const models = [process.env.VERIFY_MODEL || DEFAULT_MODELS[engine][0], ...fallbacks].filter((m, i, a) => m && a.indexOf(m) === i);
-  const runBudget = engine === 'copilot' ? Math.max(MAX_CREDITS, Number(process.env.VERIFY_MAX_RUN_CREDITS || 0) || 100 * tasks.length) : null;
+  const runBudget = engine === 'copilot' ? Math.max(MAX_CREDITS, Number(process.env.VERIFY_MAX_RUN_CREDITS || 0) || DEFAULT_RUN_CREDITS) : null;
   const promptExists = await exists(PROMPT_FILE);
   const intro = promptExists ? `Read ${PROMPT_FILE} and apply it as your standard.` : FALLBACK_INSTRUCTIONS;
   if (!promptExists) await summary(`verify: ${PROMPT_FILE} is not in the repository yet; running with the built-in minimum instructions.`);
-  const run = { engine, startedAt: new Date().toISOString(), models, runBudget, runMinutes: RUN_MINUTES, maxCreditsPerPage: engine === 'copilot' ? MAX_CREDITS : null, promptFile: promptExists ? PROMPT_FILE : null, tasks: [] };
+  const workers = engine === 'api' ? 1 : PARALLEL;
+  const run = { engine, startedAt: new Date().toISOString(), models, runBudget, runMinutes: RUN_MINUTES, parallel: workers, maxCreditsPerPage: engine === 'copilot' ? MAX_CREDITS : null, promptFile: promptExists ? PROMPT_FILE : null, tasks: [] };
   const spent = () => run.tasks.reduce((s, t) => s + (t.cost || 0), 0);
+  // Workers write the run file through one chain so two finishing together cannot interleave.
+  let saving = Promise.resolve();
+  const saveRun = () => { const w = () => writeJson(runFile, run); saving = saving.then(w, w); return saving; };
   const startedAt = Date.now();
-  let modelIndex = 0, stoppedBecause = null;
-  for (const task of tasks) {
-    if (runBudget != null && spent() >= runBudget) { stoppedBecause = `the run budget of ${runBudget} AI credits was spent (VERIFY_MAX_RUN_CREDITS)`; break; }
-    if (Date.now() - startedAt >= RUN_MINUTES * 60_000) { stoppedBecause = `the run's time budget of ${RUN_MINUTES} minutes was spent (VERIFY_RUN_MINUTES)`; break; }
+  const state = { modelIndex: 0, stoppedBecause: null, next: 0, inFlight: 0 };
+  const currentModel = () => models[Math.min(state.modelIndex, models.length - 1)];
+  // What a check costs, for deciding whether the budget can pay for one more while others are still running:
+  // the average so far, or a per-page cap's worth before anything has finished.
+  const expectedCost = () => { const done = run.tasks.filter((t) => t.cost != null); return done.length ? spent() / done.length : Math.min(MAX_CREDITS, 70); };
+
+  async function checkOne(task) {
     let attempt = 0, result = null, outcome = null, feedback = '';
-    while (attempt < 3 && !outcome?.done && !outcome?.incomplete) {
-      const model = models[Math.min(modelIndex, models.length - 1)];
+    while (attempt < 3 && !outcome?.done && !outcome?.incomplete && !state.stoppedBecause) {
+      const model = currentModel();
       console.log(`verify ${task.slug} on ${engine}/${model}${attempt ? ' (retry)' : ''}`);
       const prompt = intro + (feedback ? `\n\nYour previous verdict file was rejected by the recorder: ${feedback}\nRewrite ${task.verdict} so it is accepted.` : '');
       result = engine === 'copilot' ? await runCopilotEngine(task, model, prompt) : engine === 'claude-code' ? await runClaude(task, model, prompt) : await runApi(task, model, prompt);
@@ -199,14 +213,17 @@ async function main() {
         exitCode: result.exitCode ?? null, timedOut: result.timedOut ?? false, kind: result.kind ?? null, durationMs: result.durationMs ?? null, cost: result.cost ?? null, turns: result.turns ?? null,
         error: outcome.done ? null : (outcome.error || result.errorText || '').trim().slice(-1500),
       });
+      await saveRun();
       if (outcome.done || outcome.incomplete) break;
       // The seat or token itself was refused: no model will do better, so stop the run and say why.
-      if (result.fatal) { stoppedBecause = result.errorText.split('\n')[0]; break; }
+      if (result.fatal) { state.stoppedBecause = result.errorText.split('\n')[0]; break; }
       // The model is not available on this seat: move to the next one in the chain and keep it for the
-      // rest of the run. This does not count as one of the task's attempts.
+      // rest of the run. This does not count as one of the task's attempts. (Another worker may have
+      // moved the chain on already; then this one simply takes the model it is now at.)
       if (result.modelRefused || (run.tasks.filter((t) => t.ok).length === 0 && engine !== 'copilot' && !(await findVerdict(task)))) {
-        if (modelIndex >= models.length - 1) { stoppedBecause = `no model in the chain (${models.join(', ')}) is available to this seat`; break; }
-        modelIndex++; feedback = ''; continue;
+        if (currentModel() !== model) { feedback = ''; continue; }
+        if (state.modelIndex >= models.length - 1) { state.stoppedBecause = `no model in the chain (${models.join(', ')}) is available to this seat`; break; }
+        state.modelIndex++; feedback = ''; continue;
       }
       attempt++;
       // A rejected verdict goes back to the same model once with the recorder's message; a transient
@@ -215,18 +232,35 @@ async function main() {
       if (attempt < 2 && result.kind === 'transient') continue;
       break;
     }
-    await writeJson(runFile, run);
-    console.log(outcome?.done ? `  ${outcome.done.status}: ${outcome.done.counts.confirmed}/${outcome.done.counts.claims} confirmed` : outcome?.incomplete ? '  incomplete (verifier tools failed)' : `  no verdict recorded${result?.timedOut ? ' (timed out)' : ''}: ${(outcome?.error || result?.errorText || '').slice(0, 200)}`);
-    if (stoppedBecause) break;
+    console.log(`${task.slug}: ` + (outcome?.done ? `${outcome.done.status}, ${outcome.done.counts.confirmed}/${outcome.done.counts.claims} confirmed` : outcome?.incomplete ? 'incomplete (verifier tools failed)' : `no verdict recorded${result?.timedOut ? ' (timed out)' : ''}: ${(outcome?.error || result?.errorText || '').slice(0, 200)}`));
   }
+
+  // A pool of workers takes tasks in queue order. Before each one, the run's budget and clock are checked
+  // with the checks still in flight counted, so the run does not start what it cannot pay for.
+  async function worker() {
+    while (!state.stoppedBecause && state.next < tasks.length) {
+      if (runBudget != null && spent() + (state.inFlight + 1) * expectedCost() > runBudget) {
+        if (state.inFlight === 0) state.stoppedBecause = `the run budget of ${runBudget} AI credits was spent (VERIFY_MAX_RUN_CREDITS)`;
+        else await new Promise((r) => setTimeout(r, 5_000)); // wait for one to finish, then decide on the real figure
+        continue;
+      }
+      if (Date.now() - startedAt >= RUN_MINUTES * 60_000) { state.stoppedBecause = `the run's time budget of ${RUN_MINUTES} minutes was spent (VERIFY_RUN_MINUTES)`; break; }
+      const task = tasks[state.next++];
+      state.inFlight++;
+      try { await checkOne(task); } finally { state.inFlight--; }
+    }
+  }
+  await Promise.all(Array.from({ length: Math.min(workers, tasks.length) }, worker));
   run.finishedAt = new Date().toISOString();
-  run.stoppedBecause = stoppedBecause;
-  await writeJson(runFile, run);
+  run.stoppedBecause = state.stoppedBecause;
+  await saveRun();
+  const stoppedBecause = state.stoppedBecause;
   const ok = new Set(run.tasks.filter((t) => t.ok).map((t) => t.slug)).size;
   const cost = spent();
-  const usedModels = [...new Set(run.tasks.filter((t) => t.ok).map((t) => t.model))].join(', ') || models[Math.min(modelIndex, models.length - 1)];
+  const usedModels = [...new Set(run.tasks.filter((t) => t.ok).map((t) => t.model))].join(', ') || currentModel();
   const credits = engine === 'copilot' ? `${Math.round(cost * 10) / 10} AI credits (cap ${MAX_CREDITS} per page, ${runBudget} per run)` : `$${cost.toFixed(2)}`;
-  await summary(`verify: ${ok} of ${tasks.length} briefings checked on ${engine} (${usedModels}), ${credits} spent${stoppedBecause ? `. Stopped early: ${stoppedBecause}. The ${tasks.length - new Set(run.tasks.map((t) => t.slug)).size} briefing(s) not reached stay unchecked; any written today are held, not published` : ''}.`);
+  const minutes = Math.round((Date.now() - startedAt) / 60_000);
+  await summary(`verify: ${ok} of ${tasks.length} briefings checked on ${engine} (${usedModels}), ${workers} at a time, ${credits} spent in ${minutes} minutes${stoppedBecause ? `. Stopped early: ${stoppedBecause}. The ${tasks.length - new Set(run.tasks.map((t) => t.slug)).size} briefing(s) not reached stay unchecked; new pages among them are held, not published, and rewrites of published pages stay live unchecked` : ''}.`);
   if (stoppedBecause && ok === 0) process.exit(1);
 }
 

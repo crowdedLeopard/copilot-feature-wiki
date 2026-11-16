@@ -24,10 +24,11 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { createHash } from 'node:crypto';
+import { execFileSync } from 'node:child_process';
 import { load as yamlLoad } from 'js-yaml';
-import { WIKI_DIR, FEATURES_DIR, CONCEPTS_DIR, DATA_DIR, readJson, writeJson, today, toFrontmatter, stripHtml } from './util.mjs';
+import { ROOT, WIKI_DIR, FEATURES_DIR, CONCEPTS_DIR, DATA_DIR, readJson, writeJson, today, toFrontmatter, stripHtml } from './util.mjs';
 import { featureFrontmatter, conceptFrontmatter, isAllowedSourceUrl } from './schema.mjs';
-import { verdictSchema } from './verify-schema.mjs';
+import { verdictSchema, CLAIM_TYPES } from './verify-schema.mjs';
 
 export const HELD_DIR = path.join(WIKI_DIR, '_held');
 export const REPORT_DIR = path.join(WIKI_DIR, 'verification');
@@ -58,6 +59,17 @@ export function pageKind(data, where) {
 }
 const homeDir = (kind) => (kind === 'concept' ? CONCEPTS_DIR : FEATURES_DIR);
 const homeName = (kind) => (kind === 'concept' ? 'concepts' : 'features');
+
+/**
+ * True when the page was published at the commit this run started from: HEAD in Actions, because the
+ * commit step has not run yet (VERIFY_RUN_START_REF names another ref). Such a page is never taken
+ * off the site for being unreached by the verifier; only a page that has never been published is
+ * held as unverified. Without git the answer is false, which is the stricter side.
+ */
+export function livedAtRunStart(slug, kind = 'briefing') {
+  const ref = process.env.VERIFY_RUN_START_REF || 'HEAD';
+  try { execFileSync('git', ['cat-file', '-e', `${ref}:wiki/${homeName(kind)}/${slug}.md`], { cwd: ROOT, stdio: 'ignore' }); return true; } catch { return false; }
+}
 
 export async function locatePage(slug) {
   for (const [dir, where] of [[FEATURES_DIR, 'features'], [CONCEPTS_DIR, 'concepts'], [HELD_DIR, 'held']]) {
@@ -323,6 +335,42 @@ export function coverageGaps(claims, data, kind = 'briefing') {
 
 /** Evidence rules the schema cannot express. */
 /**
+ * Small departures from the contract that do not change what a claim says are repaired, not
+ * rejected: a rejected verdict costs a whole new session, and the fields involved are labels and
+ * free text. An over-long "where", claim, quote, fix, source or summary is cut to the limit; a type
+ * the contract does not list (the model wrote "limit" or "audit") becomes "behaviour". Each repair
+ * is recorded in the report's notes. Anything structural (a missing status, a bad severity, too few
+ * claims) still fails the schema and goes back to the verifier once with the message.
+ */
+export function tolerateVerdict(raw) {
+  const notes = [];
+  if (!raw || typeof raw !== 'object') return { verdict: raw, notes };
+  const cut = (text, max, what) => {
+    if (typeof text !== 'string' || text.length <= max) return text;
+    notes.push(`${what} was ${text.length} characters, cut to ${max}`);
+    return text.slice(0, max - 1).trimEnd() + '\u2026';
+  };
+  const verdict = { ...raw, summary: cut(raw.summary, 1500, 'the summary') };
+  if (Array.isArray(raw.claims)) {
+    verdict.claims = raw.claims.map((c, i) => {
+      if (!c || typeof c !== 'object') return c;
+      const label = `claim ${c.n ?? i}`;
+      const out = {
+        ...c,
+        where: cut(c.where, 120, `${label}: where`), claim: cut(c.claim, 600, `${label}: claim`),
+        source: cut(c.source, 600, `${label}: source`), quote: cut(c.quote, 1200, `${label}: quote`), fix: cut(c.fix, 1200, `${label}: fix`),
+      };
+      if (typeof c.type === 'string' && !CLAIM_TYPES.includes(c.type)) {
+        const t = c.type.trim().toLowerCase().replace(/[\s_]+/g, '-');
+        if (CLAIM_TYPES.includes(t)) { out.type = t; } else { out.type = 'behaviour'; notes.push(`${label}: type "${c.type}" is not in the contract, recorded as behaviour`); }
+      }
+      return out;
+    });
+  }
+  return { verdict, notes };
+}
+
+/**
  * The standard says risk, impact and action are judgements that can never hold a page. A verifier that rates a
  * conflict over one of them blocker or major is brought down to minor here, and the report says so, rather than
  * sending the whole verdict back for one severity.
@@ -401,11 +449,19 @@ export function findingsComment(report) {
   return `\n${lines.join('\n')}\n`;
 }
 
-async function appendResult(entry) {
-  const results = await readJson(VERIFY_RESULTS, { results: [] });
-  results.results = results.results.filter((r) => r.slug !== entry.slug);
-  results.results.push({ at: new Date().toISOString(), ...entry });
-  await writeJson(VERIFY_RESULTS, results);
+// Verifier sessions run several at a time, so the shared results file is written by one caller at a time.
+let resultsLock = Promise.resolve();
+function appendResult(entry) {
+  const write = async () => {
+    const results = await readJson(VERIFY_RESULTS, { results: [] });
+    results.results = results.results.filter((r) => r.slug !== entry.slug);
+    results.results.push({ at: new Date().toISOString(), ...entry });
+    const tmp = `${VERIFY_RESULTS}.${process.pid}.tmp`;
+    await writeJson(tmp, results);
+    await fs.rename(tmp, VERIFY_RESULTS); // atomic: a reader sees the old file or the new one, never half of one
+  };
+  resultsLock = resultsLock.then(write, write);
+  return resultsLock;
 }
 
 /**
@@ -419,7 +475,8 @@ export async function recordVerification(slug, rawVerdict, { model = 'unknown', 
   const kind = pageKind(data, loc.where);
   if (rawVerdict?.slug && rawVerdict.slug !== slug) throw new Error(`Verdict is for "${rawVerdict.slug}", not "${slug}"`);
 
-  const parsed = verdictSchema.safeParse({ ...rawVerdict, slug });
+  const tolerated = tolerateVerdict({ ...rawVerdict, slug });
+  const parsed = verdictSchema.safeParse(tolerated.verdict);
   if (!parsed.success) throw new Error('Verdict failed schema: ' + parsed.error.issues.map((i) => `${i.path.join('.')} ${i.message}`).join('; '));
   const verdict = parsed.data;
 
@@ -442,7 +499,7 @@ export async function recordVerification(slug, rawVerdict, { model = 'unknown', 
   const judged = judge(claims);
   let { status } = judged;
   const { reasons, counts } = judged;
-  const notes = [...normalised.notes];
+  const notes = [...tolerated.notes, ...normalised.notes];
   if (verdict.verdict === 'hold' && status !== 'held') notes.push('the verifier wrote "hold" but listed no blocker and fewer than three majors; the claims decide, so the page is not held');
   if (verdict.verdict === 'pass' && status === 'held') notes.push(`the verifier wrote "pass" but its claims include ${reasons.join(' and ')}; the claims decide, so the page is held`);
   for (const n of notes) console.warn(`note: ${n}`);
@@ -506,6 +563,9 @@ export async function holdUnverified(slug, { reason = 'unverified', note = 'Writ
   if (!loc || loc.where === 'held') return null;
   const { data, body } = await readPage(loc.file);
   const kind = pageKind(data, loc.where);
+  // A page that was already published when the run started stays live, not yet checked; it goes
+  // first in the next run. Only a page nobody has seen yet is held back.
+  if (livedAtRunStart(slug, kind)) return { slug, kept: 'published before this run', file: loc.file };
   const previous = await readReport(slug);
   const date = today();
   const report = {

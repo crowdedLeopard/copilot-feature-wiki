@@ -22,6 +22,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { DATA_DIR, FEATURES_DIR, CONCEPTS_DIR, readJson, writeJson, today } from './lib/util.mjs';
 import { loadPages } from './lib/pages.mjs';
+import { TOPICS } from '../config/taxonomy.mjs';
 import { loadRawItem } from './lib/briefing.mjs';
 import { VERIFY_TASK_DIR, VERIFY_RESULTS, listHeld, precheck, precheckText, verificationDue } from './lib/verify.mjs';
 import { postsForBrief, briefSection as messageCenterSection } from './lib/message-center.mjs';
@@ -59,7 +60,27 @@ async function candidates() {
   if (ONLY.length && !ALL) return out.filter((c) => ONLY.includes(c.slug));
   out.sort((a, b) => a.sort.localeCompare(b.sort));
   const mustTake = out.filter((c) => c.today || c.reason === 'unverified').length;
-  return out.slice(0, Math.max(LIMIT, mustTake));
+  return byTopicInTurn(out.slice(0, Math.max(LIMIT, mustTake)));
+}
+
+/**
+ * The run's own pages are checked one topic at a time in turn, the way the writer shares a run across topics,
+ * so a thin topic (Modern Work in November 2026) is not left for last behind whichever topic happens to sort
+ * first. Pages held as unverified from earlier runs stay ahead of them, and everything else keeps its order.
+ */
+function byTopicInTurn(list) {
+  const head = list.filter((c) => c.reason === 'unverified');
+  const todays = list.filter((c) => c.reason !== 'unverified' && c.today);
+  const rest = list.filter((c) => c.reason !== 'unverified' && !c.today);
+  const lanes = new Map([...TOPICS.map((t) => t.id), 'concepts'].map((id) => [id, []]));
+  for (const c of todays) {
+    const lane = c.kind === 'concept' ? 'concepts' : c.data.topic;
+    if (!lanes.has(lane)) lanes.set(lane, []);
+    lanes.get(lane).push(c);
+  }
+  const inTurn = [];
+  while (inTurn.length < todays.length) for (const lane of lanes.values()) if (lane.length) inTurn.push(lane.shift());
+  return [...head, ...inTurn, ...rest];
 }
 
 function brief(c, raw, pc, writerOutput, posts = []) {
