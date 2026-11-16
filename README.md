@@ -8,7 +8,7 @@ and impact, states its licensing, scope and default state, sets out governance s
 controls, and cites Microsoft's own documentation. Each one can be downloaded as an A4 PDF or as
 Markdown with its front matter intact.
 
-The site is rebuilt twice a day, at 06:00 and 18:00 UTC, by GitHub Actions.
+The site is rebuilt four times a day (00:00, 06:00, 12:00 and 18:00 UTC) by GitHub Actions.
 
 The [Atlas](https://crowdedleopard.github.io/copilot-feature-wiki/atlas/) draws the ledger as a map of
 linked pages. Every briefing and concept is a point, grouped by topic, and a line joins two pages when
