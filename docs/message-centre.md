@@ -70,13 +70,22 @@ choose **Add credential**, scenario **GitHub Actions deploying Azure resources**
 | Field | Value |
 | --- | --- |
 | Organization | `crowdedLeopard` |
+| Organization ID | `99030907` (GitHub's permanent number for the account) |
 | Repository | `copilot-feature-wiki` |
+| Repository ID | `1457123432` (GitHub's permanent number for the repository) |
 | Entity type | Branch |
 | Branch | `main` |
 | Name | `release-ledger-main` |
 
-The audience stays `api://AzureADTokenExchange`. Nothing else is needed: the workflow already
-requests an OIDC token (`id-token: write`) and the ingest step exchanges it for a Graph token.
+The subject identifier the form builds is
+`repo:crowdedLeopard@99030907/copilot-feature-wiki@1457123432:ref:refs/heads/main`: the immutable
+format GitHub uses for repositories created after 15 July 2026, which Entra now asks for so that a
+renamed or recreated repository can never match the trust. (For another repository, the ids come
+from `GET https://api.github.com/repos/<owner>/<repo>`: `id` and `owner.id`. An older repository
+that still uses the name-based subject shows the subject it presents in the ingest step's error
+message if the two disagree.) The audience stays `api://AzureADTokenExchange`. Nothing else is
+needed: the workflow already requests an OIDC token (`id-token: write`) and the ingest step
+exchanges it for a Graph token.
 
 **Client secret (alternative).** Under **Certificates & secrets › Client secrets**, choose
 **New client secret**, pick an expiry, and copy the value once. Store it as the repository secret

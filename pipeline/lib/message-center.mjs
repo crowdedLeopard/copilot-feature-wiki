@@ -82,11 +82,20 @@ const enumKey = (value, table, fallback = 'unknownFutureValue') => {
  */
 export function topicForMessage({ title = '', services = [], roadmapIds = [] } = {}, topicByRoadmapId = new Map()) {
   for (const id of roadmapIds) if (topicByRoadmapId.has(id)) return topicByRoadmapId.get(id);
-  const specific = services.filter((s) => !MESSAGE_CENTER.broadServices.includes(s)).map((s) => MESSAGE_CENTER.serviceAliases[s] || s);
+  const named = services.map((s) => String(s).trim()).filter(Boolean);
+  const broad = named.filter((s) => MESSAGE_CENTER.broadServices.includes(s));
+  const titleFirst = named.filter((s) => s in MESSAGE_CENTER.titleFirstServices);
+  const excluded = named.filter((s) => MESSAGE_CENTER.excludedServices.includes(s));
+  const specific = named.filter((s) => !broad.includes(s) && !titleFirst.includes(s) && !excluded.includes(s)).map((s) => MESSAGE_CENTER.serviceAliases[s] || s);
   const byService = topicForProducts(specific);
   if (byService) return byService;
+  // A post that names a covered service the taxonomy does not know, or only services the ledger leaves out,
+  // is outside the wiki. The title decides only when the services say nothing (none, broad, or title-first).
+  if (specific.length || (excluded.length && !broad.length && !titleFirst.length)) return null;
   for (const [re, topic] of MESSAGE_CENTER.titleTopics) if (re.test(title)) return topic;
-  if (services.some((s) => MESSAGE_CENTER.broadServices.includes(s))) return 'modern-work';
+  if (titleFirst.length) return MESSAGE_CENTER.titleFirstServices[titleFirst[0]];
+  if (MESSAGE_CENTER.outOfScopeTitles.some((re) => re.test(title))) return null;
+  if (broad.length) return 'modern-work';
   return null;
 }
 
@@ -138,7 +147,7 @@ export function normaliseMessage(raw, fetchedAt = new Date().toISOString(), topi
   const bodyHtml = raw.body?.content || '';
   const body = stripHtml(bodyHtml);
   const title = String(raw.title || '').trim();
-  const services = (raw.services || []).filter(Boolean);
+  const services = (raw.services || []).map((s) => String(s).trim()).filter(Boolean);
   const roadmapIds = roadmapIdsIn({ details, body, title });
   const topic = topicForMessage({ title, services, roadmapIds }, topicByRoadmapId);
   if (!topic) return null;

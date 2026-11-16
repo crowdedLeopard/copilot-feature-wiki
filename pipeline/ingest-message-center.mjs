@@ -27,7 +27,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { DATA_DIR, readJson, writeJson, appendLog, today } from './lib/util.mjs';
-import { MC_DIR, MC_INDEX, GRAPH_MESSAGES_URL, messageRecord, normaliseMessage, publicationCheck, WITHHOLD_REASON } from './lib/message-center.mjs';
+import { MC_DIR, MC_INDEX, GRAPH_MESSAGES_URL, messageRecord, normaliseMessage, publicationCheck, topicForMessage, WITHHOLD_REASON } from './lib/message-center.mjs';
 
 const TENANT = (process.env.MC_TENANT_ID || '').trim();
 const CLIENT = (process.env.MC_CLIENT_ID || '').trim();
@@ -53,6 +53,11 @@ async function githubIdToken() {
   return (await res.json()).value;
 }
 
+/** One claim from a JWT's payload, without verifying it: only used to explain a failed sign-in. */
+function jwtClaim(jwt, name) {
+  try { return JSON.parse(Buffer.from(String(jwt).split('.')[1], 'base64url').toString('utf8'))[name] ?? null; } catch { return null; }
+}
+
 async function graphToken() {
   const body = new URLSearchParams({ client_id: CLIENT, scope: 'https://graph.microsoft.com/.default', grant_type: 'client_credentials' });
   let how;
@@ -68,12 +73,15 @@ async function graphToken() {
   const json = await res.json().catch(() => ({}));
   if (!res.ok || !json.access_token) {
     const code = json.error || res.status;
+    // The subject GitHub put in its token is what the federated credential has to match. It is not a secret
+    // (owner, repository and branch, with GitHub's numeric ids on repositories that use the immutable format).
+    const presented = how.startsWith('federated') ? jwtClaim(body.get('client_assertion'), 'sub') : null;
     const hint = {
-      invalid_client: 'Entra did not accept the credential. For a federated credential, check that its subject is exactly repo:<owner>/<repo>:ref:refs/heads/main and the audience is api://AzureADTokenExchange. For a secret, check it has not expired.',
+      invalid_client: `Entra did not accept the credential. For a federated credential, its subject must be exactly what GitHub presented${presented ? ` (${presented})` : ' (repo:<owner>/<repo>:ref:refs/heads/main, or with @<id> after the owner and repository on newer repositories)'} and the audience api://AzureADTokenExchange. For a secret, check it has not expired.`,
       unauthorized_client: 'The app registration was not found in this tenant, or MC_CLIENT_ID is wrong.',
       invalid_request: 'The token request was malformed; check MC_TENANT_ID.',
     }[json.error] || '';
-    throw new Error(`Could not sign in to Microsoft Graph (${code}, via ${how}). ${hint} ${json.error_description ? `Entra said: ${String(json.error_description).split('\n')[0].slice(0, 300)}` : ''}`.trim());
+    throw new Error(`Could not sign in to Microsoft Graph (${code}, via ${how}). ${hint} ${json.error_description ? `Entra said: ${String(json.error_description).split('\n')[0].slice(0, 400)}` : ''}`.trim());
   }
   return { token: json.access_token, how };
 }
@@ -149,12 +157,13 @@ async function main() {
   const fetchedAt = new Date().toISOString();
   const kept = new Map(); // id -> stored record
   const withheld = [];    // { id, reasons }
-  let added = 0, changed = 0, outOfScope = 0;
+  let added = 0, changed = 0, outOfScope = 0, removed = 0;
+  const dropStored = async (id) => { try { await fs.unlink(path.join(MC_DIR, `${id}.json`)); removed++; } catch {} };
 
   for (const item of raw) {
     if (!item?.id) continue;
     const msg = normaliseMessage(item, fetchedAt, topicByRoadmapId);
-    if (!msg) { outOfScope++; continue; }
+    if (!msg) { outOfScope++; await dropStored(item.id); continue; } // a stored post the topic rules no longer cover leaves the ledger
     const check = publicationCheck(msg, { tenantWords: words.words, hasAttachments: Boolean(item.hasAttachments) });
     if (!check.ok) {
       withheld.push({ id: item.id, reasons: check.reasons });
@@ -165,9 +174,10 @@ async function main() {
     if (!parsed.success) { console.warn(`${item.id}: record failed validation (${parsed.error.issues.map((i) => i.path.join('.') + ' ' + i.message).join('; ')}), skipped`); continue; }
     const file = path.join(MC_DIR, `${item.id}.json`);
     const prev = await readJson(file, null);
+    const differs = Boolean(prev) && (prev.lastModified !== parsed.data.lastModified || prev.body !== parsed.data.body || prev.topic !== parsed.data.topic);
     if (!prev) added++;
-    else if (prev.lastModified !== parsed.data.lastModified || prev.body !== parsed.data.body) changed++;
-    if (!prev || prev.lastModified !== parsed.data.lastModified || prev.body !== parsed.data.body) await writeJson(file, parsed.data);
+    else if (differs) changed++;
+    if (!prev || differs) await writeJson(file, parsed.data);
     kept.set(item.id, { ...parsed.data, fetchedAt: prev && prev.lastModified === parsed.data.lastModified ? prev.fetchedAt : fetchedAt });
   }
 
@@ -178,7 +188,10 @@ async function main() {
     const id = f.replace(/\.json$/, '');
     if (inFeed.has(id) || withheldIds.has(id)) continue;
     const stored = await readJson(path.join(MC_DIR, f), null);
-    if (stored) kept.set(id, stored);
+    if (!stored) continue;
+    // The topic rules apply to expired posts too: one they no longer cover is removed rather than kept forever.
+    if (!topicForMessage(stored, topicByRoadmapId)) { await dropStored(id); continue; }
+    kept.set(id, stored);
   }
 
   const posts = [...kept.values()]
@@ -195,7 +208,7 @@ async function main() {
   });
 
   const reasons = Object.entries(byReason).map(([r, n]) => `${n} ${r}`).join(', ') || 'none';
-  const line = `- ${today()} message-center: ${raw.length} posts read (${how}), ${inFeed.size} in scope and published, ${added} new, ${changed} changed, ${outOfScope} outside the topics, ${withheld.length} withheld by the tenant screen (${reasons}); ${posts.length} in the ledger, ${actBy} with an act-by date ahead (${Math.round((Date.now() - started) / 1000)}s)`;
+  const line = `- ${today()} message-center: ${raw.length} posts read (${how}), ${inFeed.size} in scope and published, ${added} new, ${changed} changed, ${outOfScope} outside the topics${removed ? ` (${removed} stored post${removed === 1 ? '' : 's'} removed)` : ''}, ${withheld.length} withheld by the tenant screen (${reasons}); ${posts.length} in the ledger, ${actBy} with an act-by date ahead (${Math.round((Date.now() - started) / 1000)}s)`;
   await appendLog(line);
   await summary(line.slice(2));
   if (!words.fromGraph && !FIXTURE) await summary('message-center: the app may not read the organisation record (Organization.Read.All), so the tenant screen uses MC_TENANT_WORDS only. Grant the permission, or set the variable, to screen for the tenant\'s own name and domains.');

@@ -9,6 +9,25 @@ test('topic: services decide, mapped to roadmap product names', () => {
   assert.equal(topicForMessage({ title: 'x', services: ['Dynamics 365 Apps'] }), null);
 });
 
+test('topic: services the ledger does not cover put a post outside it, whatever the title says', () => {
+  assert.equal(topicForMessage({ title: 'The November 2026 Windows security update is now available', services: ['Windows'] }), null);
+  assert.equal(topicForMessage({ title: 'Dynamics 365 Project Operations - Version 4.172.3603.1 hotfix release', services: ['Dynamics 365 Apps'] }), null);
+  assert.equal(topicForMessage({ title: 'Windows Office Hours: November 19, 2026', services: ['Windows'] }), null);
+  // Mixed posts take the topic of the covered service; a Windows mention does not pull them out.
+  assert.equal(topicForMessage({ title: 'Windows updates are available for 2026 time zone changes', services: ['Exchange Online', 'Windows', 'Power BI'] }), 'power-platform');
+  assert.equal(topicForMessage({ title: 'New Outlook for Windows: All Accounts view', services: ['Exchange Online', 'Microsoft Copilot (Microsoft 365)'] }), 'm365-copilot');
+  // Broad-service posts about Windows or Dynamics are out too, unless the title names a covered product.
+  assert.equal(topicForMessage({ title: 'Microsoft Windows: Updates to address compromised certificates', services: ['Microsoft 365 suite'] }), null);
+  assert.equal(topicForMessage({ title: 'Classic Outlook for Windows: upcoming visual improvements', services: ['Microsoft 365 suite'] }), 'modern-work');
+  // A trailing space in a service name (seen in the feed) does not break the match.
+  assert.equal(topicForMessage({ title: 'x', services: ['Microsoft Clipchamp '] }), 'modern-work');
+  assert.equal(topicForMessage({ title: 'x', services: ['Project for the web'] }), 'modern-work');
+  // Message Center files Copilot Studio under "Microsoft Copilot (Power Platform)": the title separates the two.
+  assert.equal(topicForMessage({ title: 'Copilot Studio - Evaluation Viewer role', services: ['Microsoft Copilot (Power Platform)'] }), 'copilot-studio');
+  assert.equal(topicForMessage({ title: 'Copilot in Power Apps: new formula help', services: ['Microsoft Copilot (Power Platform)'] }), 'power-platform');
+  assert.equal(topicForMessage({ title: 'Something new', services: ['Microsoft Copilot (Power Platform)'] }), 'power-platform');
+});
+
 test('topic: a broad service leaves it to the title, then to Modern Work', () => {
   assert.equal(topicForMessage({ title: 'Microsoft 365 admin center: new report', services: ['Microsoft 365 suite'] }), 'governance');
   assert.equal(topicForMessage({ title: 'Microsoft 365 Copilot: Researcher agent', services: ['Microsoft 365 suite'] }), 'm365-copilot');
