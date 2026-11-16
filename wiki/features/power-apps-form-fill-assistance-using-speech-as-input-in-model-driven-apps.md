@@ -2,7 +2,7 @@
 title: "Power Apps: speech as an input source for form fill assistance in model-driven apps"
 slug: "power-apps-form-fill-assistance-using-speech-as-input-in-model-driven-apps"
 roadmapId: 576281
-desk: "power-platform"
+topic: "power-platform"
 products: ["Power Apps"]
 summary: "Users in model-driven apps can record speech with a microphone icon and have the transcript fill form fields. Recordings are transient and not saved."
 status: "in-development"

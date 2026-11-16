@@ -2,7 +2,7 @@
 title: "Microsoft 365 admin center: agent-level controls for pay-as-you-go"
 slug: "m365-admin-center-agent-level-pay-as-you-go-controls"
 roadmapId: 496363
-desk: "admin-billing"
+topic: "governance"
 products: ["Microsoft 365 admin center"]
 summary: "Admins can decide which users may use a given agent on a metered basis, which agents are available for consumption billing at all, and which billing policy pays for each agent, starting with declarative agents in Copilot Chat and SharePoint."
 status: "in-development"

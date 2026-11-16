@@ -2,7 +2,7 @@
 title: "Power Apps: Power Platform connectors in generative pages"
 slug: "power-apps-use-power-platform-connectors-in-generative-pages"
 roadmapId: 576283
-desk: "power-platform"
+topic: "power-platform"
 products: ["Power Apps"]
 summary: "Makers can bind Power Platform connector data to AI-generated pages in model-driven apps, through the page designer or the generative pages AI plugin."
 status: "in-development"

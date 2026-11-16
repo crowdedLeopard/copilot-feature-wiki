@@ -2,7 +2,7 @@
 title: "Dataverse: build solutions with coding agents using the Dataverse plugin and Work IQ"
 slug: "microsoft-dataverse-enable-ai-powered-business-workflows-in-work-iq-with-dataverse-build-d"
 roadmapId: 577815
-desk: "power-platform"
+topic: "power-platform"
 products: ["Microsoft Copilot (Microsoft 365)","Microsoft Dataverse"]
 summary: "Coding agents will build Dataverse tables, relationships, sample data and solutions from natural-language prompts, using the Dataverse plugin and MCP."
 status: "in-development"

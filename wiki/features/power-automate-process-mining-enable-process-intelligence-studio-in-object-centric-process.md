@@ -2,7 +2,7 @@
 title: "Power Automate process mining: Process Intelligence Studio for object-centric models"
 slug: "power-automate-process-mining-enable-process-intelligence-studio-in-object-centric-process"
 roadmapId: 576765
-desk: "power-platform"
+topic: "power-platform"
 products: ["Power Automate"]
 summary: "The customisable Process Intelligence Studio workspace, with tabs, tile layouts and cascading filters, extends to object-centric process mining models."
 status: "in-development"

@@ -9,7 +9,7 @@ import path from 'node:path';
 import { briefingOutput, featureFrontmatter, isAllowedSourceUrl } from './schema.mjs';
 import { renderBriefing } from './render.mjs';
 import { RAW_DIR, WIKI_DIR, FEATURES_DIR, DATA_DIR, readJson, today, slugify } from './util.mjs';
-import { DESK_BY_ID } from '../../config/taxonomy.mjs';
+import { TOPIC_BY_ID, topicForProducts } from '../../config/taxonomy.mjs';
 
 /** "slug | title" lines for every briefing and concept page, the set a new page may link to in `related`. */
 export async function loadIndexSlugs() {
@@ -56,8 +56,13 @@ export async function selectQueue({ limit = 12, only = [] } = {}) {
   return items.slice(0, limit);
 }
 
+/**
+ * A raw roadmap record with its topic. The topic is worked out from the product tags each time, so
+ * records captured before a taxonomy change are filed by today's rules without touching raw/.
+ */
 export async function loadRawItem(id) {
-  return readJson(path.join(RAW_DIR, 'roadmap', 'items', `${id}.json`));
+  const item = await readJson(path.join(RAW_DIR, 'roadmap', 'items', `${id}.json`));
+  return item ? { ...item, topic: topicForProducts(item.products) } : item;
 }
 
 /** The existing page (if any) plus the front-matter fields the refresh must carry forward. */
@@ -79,7 +84,7 @@ export async function loadExisting(slug) {
 
 /** The per-item brief. Used verbatim as the user turn in the API path and as the task text for the agent path. */
 export function researchBrief(item, existing, indexSlugs) {
-  const desk = DESK_BY_ID[item.desk];
+  const topic = TOPIC_BY_ID[item.topic];
   return `Write or refresh the briefing for this Microsoft 365 Roadmap item.
 
 ## Roadmap record (raw, authoritative for status and dates)
@@ -92,8 +97,8 @@ ${JSON.stringify({
 Description:
 ${item.description}
 
-## Desk
-${desk ? `${desk.label}: ${desk.blurb}` : item.desk}
+## Topic
+${topic ? `${topic.label}: ${topic.blurb}` : item.topic}
 
 ${existing ? `## Existing briefing (refresh it: keep what is still true, correct what changed, note the change)\n${existing}\n` : ''}
 ## Existing briefings you may link in relatedSlugs (slug | title)
@@ -119,7 +124,7 @@ export async function writeBriefingPage(item, rawOutput, { slug, existingFm, ind
   const sources = out.sources.filter((s) => isAllowedSourceUrl(s.url));
   if (!sources.some((s) => s.kind === 'roadmap')) sources.unshift({ title: `Microsoft 365 Roadmap ${item.id}`, url: item.roadmapUrl, kind: 'roadmap' });
   const fm = {
-    title: out.title, slug, roadmapId: item.id, desk: item.desk, products: item.products, summary: out.summary,
+    title: out.title, slug, roadmapId: item.id, topic: item.topic, products: item.products, summary: out.summary,
     status: item.statusKey, releasePhase: item.releasePhase, clouds: item.clouds, platforms: item.platforms,
     targetDate: item.targetDate, previewDate: item.previewDate || null,
     risk: out.risk, cost: out.cost, impact: out.impact, defaultState: out.defaultState, action: out.action,

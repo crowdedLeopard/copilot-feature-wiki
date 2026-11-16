@@ -2,7 +2,7 @@
 title: "Copilot Studio cost controls move into the Microsoft 365 admin center"
 slug: "copilot-studio-cost-management-m365-admin-center"
 roadmapId: 577834
-desk: "agents"
+topic: "copilot-studio"
 products: ["Microsoft 365","Microsoft 365 admin center","Microsoft Copilot Studio","Microsoft Power Platform governance and administration"]
 summary: "Copilot Studio environments and agents can be brought under Cost Management spending policies in the Microsoft 365 admin center, so Copilot Credit spend across agents, Cowork and Copilot Chat is governed in one place."
 status: "in-development"

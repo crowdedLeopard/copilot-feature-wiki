@@ -2,7 +2,7 @@
 title: "Power Apps: GitHub models and wider availability for the generative page agent in Maker Studio"
 slug: "power-apps-expand-model-access-and-maker-studio-availability-for-generative-pages-via-gith"
 roadmapId: 576285
-desk: "power-platform"
+topic: "power-platform"
 products: ["Power Apps"]
 summary: "Makers can connect a GitHub account to choose more models for the generative page agent, extending it to regions without Power Apps GPU capacity."
 status: "in-development"

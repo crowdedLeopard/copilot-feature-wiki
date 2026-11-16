@@ -2,7 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import FeatureRow from '../../components/FeatureRow.astro';
 import { allFeatures, allConcepts, tagCounts } from '../../lib/data';
-import { DESKS, RISK, COST, IMPACT, ACTION, STATUS, DEFAULT_STATE, LICENSING_MODEL, AUDIENCES, tagLabel } from '../../lib/site';
+import { TOPICS, RISK, COST, IMPACT, ACTION, STATUS, DEFAULT_STATE, LICENSING_MODEL, AUDIENCES, tagLabel } from '../../lib/site';
 
 const features = await allFeatures();
 const concepts = await allConcepts();
@@ -17,7 +17,7 @@ const count = (key: (f: typeof features[number]) => string | string[]) => {
 };
 const groups = [
   { id: 'action', label: 'Action', open: true, options: Object.entries(ACTION).map(([k, v]) => [k, v.label]), counts: count((f) => f.data.action) },
-  { id: 'desk', label: 'Desk', open: true, options: DESKS.map((d) => [d.id, d.label]), counts: count((f) => f.data.desk) },
+  { id: 'topic', label: 'Topic', open: true, options: TOPICS.map((t) => [t.id, t.label]), counts: count((f) => f.data.topic) },
   { id: 'risk', label: 'Risk', open: true, options: Object.entries(RISK).map(([k, v]) => [k, v.label]), counts: count((f) => f.data.risk) },
   { id: 'cost', label: 'Cost', open: false, options: Object.entries(COST).map(([k, v]) => [k, v.label]), counts: count((f) => f.data.cost) },
   { id: 'impact', label: 'Impact', open: false, options: Object.entries(IMPACT).map(([k, v]) => [k, v.label]), counts: count((f) => f.data.impact) },
@@ -28,7 +28,7 @@ const groups = [
 ] as { id: string; label: string; open: boolean; options: [string, string][]; counts: Map<string, number> }[];
 ---
 
-<Base title="Briefings" description="Every feature briefing, filterable by desk, action, risk, cost, status, licensing model and audience." current="features">
+<Base title="Briefings" description="Every feature briefing, filterable by topic, action, risk, cost, status, licensing model and audience." current="features">
   <div class="wrap">
     <div class="article-head" style="padding-bottom:1rem">
       <div class="eyebrow"><span>Briefings</span><span class="sep"></span><span>{features.length} features</span></div>

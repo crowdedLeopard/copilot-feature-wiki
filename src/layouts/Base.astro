@@ -16,7 +16,7 @@ interface Props {
   /** Page type for the <title> suffix and og:type */
   kind?: 'home' | 'page' | 'article';
   bodyClass?: string;
-  current?: 'features' | 'desks' | 'radar' | 'concepts' | 'atlas' | 'digests' | 'about';
+  current?: 'features' | 'topics' | 'radar' | 'concepts' | 'atlas' | 'digests' | 'about';
   noindex?: boolean;
 }
 
@@ -25,7 +25,7 @@ const fullTitle = kind === 'home' ? `${SITE.name} · Microsoft Copilot, Power Pl
 const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).toString() : Astro.url.pathname;
 const nav = [
   { id: 'features', label: 'Briefings', to: '/features/' },
-  { id: 'desks', label: 'Desks', to: '/desks/' },
+  { id: 'topics', label: 'Topics', to: '/topics/' },
   { id: 'radar', label: 'Radar', to: '/radar/' },
   { id: 'concepts', label: 'Concepts', to: '/concepts/' },
   { id: 'atlas', label: 'Atlas', to: '/atlas/' },

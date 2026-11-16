@@ -2,7 +2,7 @@
 title: "Work IQ: policy-based governance of agents and their capabilities"
 slug: "work-iq-agent-policy-governance"
 roadmapId: 570652
-desk: "agents"
+topic: "copilot-studio"
 products: ["Work IQ","Microsoft Copilot (Microsoft 365)"]
 summary: "Administrators will get policy-based controls to govern agents and their capabilities at scale through Work IQ. Only the roadmap summary is published so far."
 status: "in-development"

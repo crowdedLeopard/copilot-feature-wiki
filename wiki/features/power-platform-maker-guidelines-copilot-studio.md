@@ -2,7 +2,7 @@
 title: "Power Platform: maker guidelines shown inside the Copilot Studio Review pane"
 slug: "power-platform-maker-guidelines-copilot-studio"
 roadmapId: 570967
-desk: "power-platform"
+topic: "power-platform"
 products: ["Microsoft Power Platform governance and administration"]
 summary: "Admins can publish a 400-character message, a link and a contact address that Copilot Studio makers see in the Review pane next to their agent's blockers and warnings, per managed environment or environment group."
 status: "in-development"

@@ -2,7 +2,7 @@
 title: "Power Apps: row summaries in model-driven apps reach GCC and GCC High"
 slug: "power-apps-model-driven-apps-use-row-summaries-in-us-government-clouds"
 roadmapId: 576279
-desk: "power-platform"
+topic: "power-platform"
 products: ["Power Apps"]
 summary: "AI-generated row summaries become available in model-driven apps in GCC and GCC High, in the weekly release channel from version 2611.1."
 status: "in-development"

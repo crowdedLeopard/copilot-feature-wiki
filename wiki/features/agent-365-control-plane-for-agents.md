@@ -2,7 +2,7 @@
 title: "Microsoft Agent 365: the control plane for agents"
 slug: "agent-365-control-plane-for-agents"
 roadmapId: 558448
-desk: "agents"
+topic: "copilot-studio"
 products: ["Microsoft Agent 365"]
 summary: "Agent 365 is a per-user licensed service that gives IT and security one registry, policy set and observability layer for every agent in the tenant, including agents built outside Microsoft."
 status: "launched"

@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { ALLOWED_SOURCE_DOMAINS } from '../../config/taxonomy.mjs';
+import { ALLOWED_SOURCE_DOMAINS, TOPIC_IDS } from '../../config/taxonomy.mjs';
 
 const slug = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, 'kebab-case slug');
 
@@ -25,7 +25,7 @@ export const featureFrontmatter = z.object({
   title: z.string().min(8).max(160),
   slug,
   roadmapId: z.number().int().positive().nullable(),
-  desk: z.enum(['agents', 'copilot', 'power-platform', 'security-compliance', 'admin-billing', 'modern-work']),
+  topic: z.enum(TOPIC_IDS),
   products: z.array(z.string()).min(1),
   summary: z.string().min(40).max(260),
   status: z.enum(['in-development', 'preview', 'rolling-out', 'launched', 'cancelled']),

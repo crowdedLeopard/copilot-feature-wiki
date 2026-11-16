@@ -2,7 +2,7 @@
 title: "Power Pages: MCP server exposes site data to AI clients"
 slug: "power-pages-power-pages-copilot-use-power-pages-mcp-server-capabilities"
 roadmapId: 577813
-desk: "power-platform"
+topic: "power-platform"
 products: ["Microsoft Copilot (Microsoft 365)","Power Pages"]
 summary: "Makers can provision an MCP server endpoint for a Power Pages site so AI clients can run create, read, update and delete operations over its Web API."
 status: "in-development"

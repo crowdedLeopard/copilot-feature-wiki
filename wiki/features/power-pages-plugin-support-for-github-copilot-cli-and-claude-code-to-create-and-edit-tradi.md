@@ -2,7 +2,7 @@
 title: "Power Pages: plugin for GitHub Copilot CLI and Claude Code edits traditional sites"
 slug: "power-pages-plugin-support-for-github-copilot-cli-and-claude-code-to-create-and-edit-tradi"
 roadmapId: 577900
-desk: "power-platform"
+topic: "power-platform"
 products: ["Power Pages"]
 summary: "The Power Pages plugin for GitHub Copilot CLI and Claude Code will create and edit traditional (non-SPA) sites, uploading changes with the Power Platform CLI."
 status: "in-development"

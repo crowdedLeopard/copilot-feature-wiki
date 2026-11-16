@@ -2,7 +2,7 @@
 title: "Microsoft 365 Backup: 30-day backup and recovery for Microsoft Entra ID objects"
 slug: "entra-id-backup-and-recovery-30-day"
 roadmapId: 567885
-desk: "security-compliance"
+topic: "governance"
 products: ["Microsoft 365","Microsoft 365 admin center","Microsoft Entra"]
 summary: "Extended 30-day point-in-time recovery of Entra objects (users, groups, app registrations and more) through the Microsoft 365 Backup app and Backup Storage APIs, beyond the 7-day recovery included with Entra ID P1 and P2."
 status: "in-development"

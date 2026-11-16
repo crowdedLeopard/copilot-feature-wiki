@@ -2,7 +2,7 @@
 title: "Power Pages: enhanced authorisation maps web roles and site users to Dataverse security"
 slug: "power-pages-design-studio-unify-power-pages-authorization-by-merging-web-role-with-dataver"
 roadmapId: 576750
-desk: "power-platform"
+topic: "power-platform"
 products: ["Power Pages"]
 summary: "Power Pages web roles and site users are mapped to Dataverse security roles and system users so Dataverse evaluates permissions directly and records operations under the site user."
 status: "in-development"

@@ -2,7 +2,7 @@
 title: "Dataverse: create agent users with Microsoft Entra agent identity"
 slug: "dataverse-agent-users-entra-agent-identity"
 roadmapId: 576843
-desk: "power-platform"
+topic: "power-platform"
 products: ["Microsoft Copilot (Microsoft 365)","Microsoft Dataverse"]
 summary: "Agents can be provisioned as Dataverse agent users backed by Entra agent identities, with their own least-privilege security roles and full auditing, instead of borrowing a person's or an application user's access."
 status: "launched"

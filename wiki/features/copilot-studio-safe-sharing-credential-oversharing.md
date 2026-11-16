@@ -2,7 +2,7 @@
 title: "Copilot Studio: enforce safe sharing by detecting credential oversharing"
 slug: "copilot-studio-safe-sharing-credential-oversharing"
 roadmapId: 566873
-desk: "agents"
+topic: "copilot-studio"
 products: ["Microsoft Copilot (Microsoft 365)","Microsoft Copilot Studio"]
 summary: "Copilot Studio evaluates an agent's connections at share and publish time and can block agents that rely on embedded maker credentials from reaching end users."
 status: "in-development"

@@ -2,7 +2,7 @@
 title: "Copilot Studio: MCP-compliant tools in agents and workflows"
 slug: "copilot-studio-mcp-tools-in-agents"
 roadmapId: 562221
-desk: "agents"
+topic: "copilot-studio"
 products: ["Microsoft Copilot (Microsoft 365)","Microsoft Copilot Studio"]
 summary: "Makers can connect Model Context Protocol servers as tools, giving agents live access to external systems. MCP tools ride on Power Platform connectors, so data policies and endpoint filtering are the governing controls."
 status: "launched"

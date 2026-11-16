@@ -2,7 +2,7 @@
 title: "Microsoft Dataverse: unlicensed Entra users as activity recipients"
 slug: "microsoft-dataverse-add-users-without-licenses-to-activity-recipient-fields"
 roadmapId: 574121
-desk: "power-platform"
+topic: "power-platform"
 products: ["Microsoft 365 app","Dynamics 365 Sales","Dynamics 365 Customer Service","Microsoft Dataverse"]
 summary: "Any active Microsoft Entra user can be added to activity recipient fields in Dynamics 365 apps without a Dataverse or Power Apps licence; the created user records stay disabled."
 status: "in-development"

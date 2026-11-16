@@ -2,7 +2,7 @@
 title: "Work IQ: real-time Teams meeting transcripts for apps and agents"
 slug: "work-iq-real-time-transcripts"
 roadmapId: 570651
-desk: "agents"
+topic: "copilot-studio"
 products: ["Microsoft Teams","Microsoft Copilot (Microsoft 365)","Work IQ"]
 summary: "Apps and agents can receive Teams meeting transcripts while the meeting is in progress through Work IQ. Admins control it with a separate Teams setting that is off by default."
 status: "in-development"

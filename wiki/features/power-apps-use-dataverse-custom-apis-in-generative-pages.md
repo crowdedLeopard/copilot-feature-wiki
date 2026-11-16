@@ -2,7 +2,7 @@
 title: "Power Apps: Dataverse custom APIs in generative pages"
 slug: "power-apps-use-dataverse-custom-apis-in-generative-pages"
 roadmapId: 576284
-desk: "power-platform"
+topic: "power-platform"
 products: ["Power Apps"]
 summary: "Makers can point a model-driven generative page at a Dataverse custom API so the page runs server-side business logic such as approving an order or validating a transaction."
 status: "in-development"

@@ -3,18 +3,18 @@ import Base from '../../layouts/Base.astro';
 import SectionHead from '../../components/SectionHead.astro';
 import Badge from '../../components/Badge.astro';
 import { allFeatures, briefedIds, catalog, recentCatalog } from '../../lib/data';
-import { DESKS, href, featureUrl, formatDate, shortRoadmapDate } from '../../lib/site';
+import { TOPICS, href, featureUrl, formatDate, shortRoadmapDate } from '../../lib/site';
 
 const features = await allFeatures();
 const briefed = briefedIds(features);
-const byDesk = new Map<string, number>();
-for (const i of catalog.items) if (i.desk) byDesk.set(i.desk, (byDesk.get(i.desk) ?? 0) + 1);
+const byTopic = new Map<string, number>();
+for (const i of catalog.items) if (i.topic) byTopic.set(i.topic, (byTopic.get(i.topic) ?? 0) + 1);
 const recent = recentCatalog(undefined, 30, 60);
 const statusCounts = new Map<string, number>();
 for (const i of catalog.items) statusCounts.set(i.statusKey, (statusCounts.get(i.statusKey) ?? 0) + 1);
 ---
 
-<Base title="Radar" description="Every in-scope Microsoft 365 Roadmap item we track, by desk, with the ones briefed so far." current="radar">
+<Base title="Radar" description="Every in-scope Microsoft 365 Roadmap item we track, by topic, with the ones briefed so far." current="radar">
   <div class="wrap">
     <div class="article-head" style="padding-bottom:1rem">
       <div class="eyebrow"><span>Radar</span><span class="sep"></span><span>Snapshot {formatDate(catalog.generated)}</span></div>
@@ -27,15 +27,15 @@ for (const i of catalog.items) statusCounts.set(i.statusKey, (statusCounts.get(i
       </div>
     </div>
 
-    <SectionHead title="By desk" />
+    <SectionHead title="By topic" />
     <table class="radar">
-      <thead><tr><th>Desk</th><th>Tracked</th><th>Briefed</th><th></th></tr></thead>
+      <thead><tr><th>Topic</th><th>Tracked</th><th>Briefed</th><th></th></tr></thead>
       <tbody>
-        {DESKS.map((d) => (
+        {TOPICS.map((d) => (
           <tr>
             <td class="t"><a href={href(`/radar/${d.id}/`)}>{d.label}</a><br /><span class="muted small">{d.blurb}</span></td>
-            <td class="d">{(byDesk.get(d.id) ?? 0).toLocaleString('en-GB')}</td>
-            <td class="d">{features.filter((f) => f.data.desk === d.id).length}</td>
+            <td class="d">{(byTopic.get(d.id) ?? 0).toLocaleString('en-GB')}</td>
+            <td class="d">{features.filter((f) => f.data.topic === d.id).length}</td>
             <td class="d"><a href={href(`/radar/${d.id}/`)}>Open ↗</a></td>
           </tr>
         ))}

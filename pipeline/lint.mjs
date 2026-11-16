@@ -3,12 +3,14 @@
  * Lint: the wiki's health check. Validates every briefing's front matter, drops disallowed sources,
  * finds orphans and broken related links, and flags drift between a briefing and its raw roadmap record.
  * Invalid pages are moved to wiki/_quarantine/ so one bad page never breaks the site build.
+ * A page still filed under one of the old desks is rewritten with its topic before it is checked.
  */
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { featureFrontmatter, isAllowedSourceUrl } from './lib/schema.mjs';
 import { loadPages, loadConcepts } from './lib/pages.mjs';
 import { RAW_DIR, WIKI_DIR, FEATURES_DIR, DATA_DIR, readJson, writeJson, appendLog, today } from './lib/util.mjs';
+import { LEGACY_DESK_TOPIC } from '../config/taxonomy.mjs';
 
 const QUARANTINE = path.join(WIKI_DIR, '_quarantine');
 
@@ -24,6 +26,8 @@ async function main() {
   for (const page of pages) {
     const where = `features/${page.file}`;
     if (page.error) { findings.errors.push(`${where}: YAML parse error: ${page.error}`); await quarantine(page); quarantined++; continue; }
+    const moved = await refileLegacyDesk(page);
+    if (moved) findings.info.push(`${where}: desk "${moved.desk}" rewritten as topic "${moved.topic}"`);
     const check = featureFrontmatter.safeParse(page.data);
     if (!check.success) {
       findings.errors.push(`${where}: ${check.error.issues.map((i) => `${i.path.join('.')}: ${i.message}`).join('; ')}`);
@@ -69,6 +73,20 @@ async function main() {
   await appendLog(line);
   console.log(line);
   if (process.env.GITHUB_STEP_SUMMARY) await fs.appendFile(process.env.GITHUB_STEP_SUMMARY, line.slice(2) + '\n');
+}
+
+/** Desks became topics in November 2026. Rewrite the one front-matter line so the page validates. */
+async function refileLegacyDesk(page) {
+  const desk = page.data.desk;
+  const topic = LEGACY_DESK_TOPIC[desk];
+  if (page.data.topic || !topic) return null;
+  const next = page.raw.replace(/^desk:[^\n]*$/m, `topic: ${JSON.stringify(topic)}`);
+  if (next === page.raw) return null;
+  await fs.writeFile(path.join(FEATURES_DIR, page.file), next);
+  page.raw = next;
+  page.data = { ...page.data, topic };
+  delete page.data.desk;
+  return { desk, topic };
 }
 
 async function quarantine(page) {

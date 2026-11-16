@@ -2,7 +2,7 @@
 title: "Microsoft 365 Copilot: usage reports for Copilot Search, connectors and agents in US Government clouds"
 slug: "m365-copilot-new-m365-copilot-usage-reports-for-copilot-search-connectors-and-agents-for-u"
 roadmapId: 573170
-desk: "admin-billing"
+topic: "governance"
 products: ["Microsoft Copilot (Microsoft 365)","Microsoft 365 admin center"]
 summary: "New admin centre usage reports for Copilot Search, Copilot Connectors and Copilot Agents come to GCC, GCC High and DoD, at organisation and user level."
 status: "in-development"

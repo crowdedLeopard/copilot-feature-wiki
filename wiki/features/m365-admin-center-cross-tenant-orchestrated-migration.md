@@ -2,7 +2,7 @@
 title: "Microsoft 365 admin center: Cross-Tenant Orchestrated Migration"
 slug: "m365-admin-center-cross-tenant-orchestrated-migration"
 roadmapId: 576273
-desk: "admin-billing"
+topic: "governance"
 products: ["Microsoft 365 admin center"]
 summary: "Orchestrated cross-tenant migration moves user data and shared data such as mailboxes, OneDrive, Teams and SharePoint between Microsoft 365 tenants."
 status: "in-development"

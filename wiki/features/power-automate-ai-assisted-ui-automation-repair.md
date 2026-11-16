@@ -2,7 +2,7 @@
 title: "Power Automate: AI-assisted UI automation repair in the desktop flow designer"
 slug: "power-automate-ai-assisted-ui-automation-repair"
 roadmapId: 577869
-desk: "power-platform"
+topic: "power-platform"
 products: ["Power Automate","Microsoft Copilot (Microsoft 365)"]
 summary: "A debug run in Power Automate for desktop validates each UI selector and proposes a replacement when one fails, after the maker captures the element."
 status: "in-development"

@@ -1,6 +1,6 @@
 import type { APIRoute } from 'astro';
 import { allFeatures, allConcepts } from '../lib/data';
-import { DESK_BY_ID, featureUrl, conceptUrl } from '../lib/site';
+import { TOPIC_BY_ID, featureUrl, conceptUrl } from '../lib/site';
 
 export const GET: APIRoute = async () => {
   const features = await allFeatures();
@@ -12,7 +12,7 @@ export const GET: APIRoute = async () => {
       title: f.data.title,
       summary: f.data.summary,
       url: featureUrl(f.data.slug),
-      desk: (DESK_BY_ID as Record<string, { short: string }>)[f.data.desk]?.short ?? f.data.desk,
+      topic: (TOPIC_BY_ID as Record<string, { short: string }>)[f.data.topic]?.short ?? f.data.topic,
       tags: [...f.data.tags, String(f.data.roadmapId ?? '')],
       products: f.data.products,
       action: f.data.action,
@@ -24,7 +24,7 @@ export const GET: APIRoute = async () => {
       title: c.data.title,
       summary: c.data.summary,
       url: conceptUrl(c.data.slug),
-      desk: 'Concept',
+      topic: 'Concept',
       tags: c.data.tags,
       products: [],
     })),

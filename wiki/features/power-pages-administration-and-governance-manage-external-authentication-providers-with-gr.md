@@ -2,7 +2,7 @@
 title: "Power Pages: environment-level governance of external authentication providers"
 slug: "power-pages-administration-and-governance-manage-external-authentication-providers-with-gr"
 roadmapId: 578062
-desk: "power-platform"
+topic: "power-platform"
 products: ["Power Pages"]
 summary: "Administrators will set which external identity providers Power Pages sites may use across an environment, with optional site-level exceptions."
 status: "in-development"

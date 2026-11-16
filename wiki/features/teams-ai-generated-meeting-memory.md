@@ -2,7 +2,7 @@
 title: "Microsoft Teams: AI-generated meeting memory for knowledge retention"
 slug: "teams-ai-generated-meeting-memory"
 roadmapId: 558933
-desk: "copilot"
+topic: "m365-copilot"
 products: ["Microsoft Teams","Microsoft Copilot (Microsoft 365)"]
 summary: "Teams will store an AI-generated .meeting memory file for recapped meetings so Copilot and Facilitator can answer questions after the transcript expires. On by default, kept five years unless admins or Purview say otherwise."
 status: "in-development"

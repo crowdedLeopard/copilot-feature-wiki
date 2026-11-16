@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 import SectionHead from '../components/SectionHead.astro';
 import Rating from '../components/Rating.astro';
 import Badge from '../components/Badge.astro';
-import { SITE, RISK, COST, IMPACT, ACTION, DESKS, href } from '../lib/site';
+import { SITE, RISK, COST, IMPACT, ACTION, TOPICS, href } from '../lib/site';
 ---
 
 <Base title="About" description="How Release Ledger is compiled, what the ratings mean, and how to correct it." current="about">
@@ -48,9 +48,9 @@ import { SITE, RISK, COST, IMPACT, ACTION, DESKS, href } from '../lib/site';
     </table>
 
     <div class="prose" style="margin-top:2.5rem">
-      <h2 id="desks">Desks</h2>
-      <p>Every item is filed under one desk, matched on Microsoft's product tags in this order. Specific platforms win over the broad "Microsoft Copilot (Microsoft 365)" tag, which Microsoft attaches to most AI items.</p>
-      <ul>{DESKS.map((d) => <li><a href={href(`/desks/${d.id}/`)}><strong>{d.label}</strong></a>: {d.blurb}</li>)}</ul>
+      <h2 id="topics">Topics</h2>
+      <p>Every item is filed under one topic, according to the products Microsoft tags it with. An item tagged with several products goes to the first topic in this list that matches, so a specific platform wins over the broad "Microsoft Copilot (Microsoft 365)" tag, which Microsoft attaches to most AI items.</p>
+      <ul>{TOPICS.map((d) => <li><a href={href(`/topics/${d.id}/`)}><strong>{d.label}</strong></a>: {d.blurb}</li>)}</ul>
 
       <h2 id="sources">Sources and confidence</h2>
       <p>Briefings cite the Microsoft 365 Roadmap entry and Microsoft Learn documentation, and sometimes Microsoft Tech Community or Microsoft 365 blog posts. Nothing outside Microsoft's domains is cited. Each page states a confidence level: <em>high</em> when the documentation describes the feature as shipped and the admin controls were verified; <em>medium</em> when the roadmap entry is ahead of the documentation; <em>low</em> when only the roadmap text exists. Roadmap dates are Microsoft's targets and move.</p>
@@ -58,8 +58,8 @@ import { SITE, RISK, COST, IMPACT, ACTION, DESKS, href } from '../lib/site';
       <h2 id="use">Using the ledger</h2>
       <ul>
         <li><strong>Search</strong> with <kbd>⌘</kbd><kbd>K</kbd> or <kbd>/</kbd>. It matches titles, summaries, tags, products and roadmap IDs.</li>
-        <li><strong>Explore</strong> the <a href={href('/atlas/')}>atlas</a>, which draws the ledger as a brain: each desk is a region, each briefing a point, and the lines are the links, shared tags and products between them. Every briefing also shows its own corner of the atlas above its related pages.</li>
-        <li><strong>Filter</strong> on the <a href={href('/features/')}>briefings page</a>. Filters are kept in the URL, so a filtered view can be bookmarked or shared: for example <a href={href('/features/?action=act-now&desk=agents')}>act-now items for the agents desk</a>.</li>
+        <li><strong>Explore</strong> the <a href={href('/atlas/')}>atlas</a>, a map of how the pages link together: each briefing and concept is a point, coloured by topic, and a line joins two pages when one links to the other or they share a tag. Every briefing also shows its own links above its related pages.</li>
+        <li><strong>Filter</strong> on the <a href={href('/features/')}>briefings page</a>. Filters are kept in the URL, so a filtered view can be bookmarked or shared: for example <a href={href('/features/?action=act-now&topic=copilot-studio')}>act-now items for Copilot Studio and agents</a>.</li>
         <li><strong>Download</strong> any briefing as an A4 PDF for a change board, or as Markdown for Obsidian or a wiki of your own. The Markdown keeps the front matter, so the ratings travel with it.</li>
         <li><strong>Subscribe</strong> to the <a href={href('/rss.xml')}>RSS feed</a> for new and refreshed briefings, or read the <a href={href('/digests/')}>weekly digest</a>.</li>
       </ul>

@@ -1,17 +1,17 @@
 ---
-/** The atlas on the home page: a slow-turning plate that links through to /atlas/. */
+/** The atlas on the home page: the whole map on one plate, linking through to /atlas/. */
 import '../styles/atlas.css';
 import { href } from '../lib/site';
 
-interface Props { briefings: number; links: number; tracked: number }
-const { briefings, links, tracked } = Astro.props;
+interface Props { briefings: number; links: number }
+const { briefings, links } = Astro.props;
 ---
 
-<a class="atlas-teaser atlas-plate no-print" href={href('/atlas/')} data-atlas data-atlas-teaser aria-label={`Open the atlas: ${briefings} briefings and the ${links} links between them, drawn as a brain.`}>
+<a class="atlas-teaser atlas-plate no-print" href={href('/atlas/')} data-atlas data-atlas-teaser aria-label={`Open the atlas: a map of ${briefings} briefings and the ${links} links between them.`}>
   <canvas aria-hidden="true"></canvas>
   <i class="tick tick--tl"></i><i class="tick tick--tr"></i><i class="tick tick--bl"></i><i class="tick tick--br"></i>
-  <span class="atlas-hud atlas-hud--tl"><span class="dot"></span><b>Atlas</b> — the ledger as a second brain</span>
-  <span class="atlas-hud atlas-hud--bl"><b>Open the atlas</b><span class="gap"></span>{briefings} briefings · {links} links · {tracked.toLocaleString('en-GB')} tracked</span>
+  <span class="atlas-hud atlas-hud--tl"><span class="dot"></span><b>Atlas</b> — how the pages link together</span>
+  <span class="atlas-hud atlas-hud--bl"><b>Open the atlas</b><span class="gap"></span>{briefings} briefings · {links} links</span>
 </a>
 
 <script>

@@ -1,4 +1,4 @@
-/** The two small atlases: the teaser on the home page and the plate inside a briefing or concept. */
+/** The two small atlases: the map on the home page and the plate inside a briefing or concept. */
 import { Atlas, loadAtlas } from './engine';
 import type { AtlasData, AtlasNode } from '../../lib/graph';
 
@@ -25,7 +25,7 @@ function mount(link: HTMLAnchorElement, mode: 'teaser' | 'mini', focus?: string)
     try { atlas = await data(); } catch { return; }
     if (focus && !atlas.nodes.some((n) => n.id === focus)) { link.hidden = true; return; }
     let hot: AtlasNode | null = null;
-    new Atlas(canvas, atlas, { mode, focus, onHover: (pick) => { hot = pick?.type === 'node' ? pick.node : null; } });
+    new Atlas(canvas, atlas, { mode, focus, onHover: (pick) => { hot = pick?.node ?? null; } });
     link.dataset.ready = 'true';
     // The plate is a plain link to the atlas. With a node under the pointer, go to that node instead.
     link.addEventListener('click', (e) => {

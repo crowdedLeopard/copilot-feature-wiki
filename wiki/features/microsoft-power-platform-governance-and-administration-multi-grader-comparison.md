@@ -2,7 +2,7 @@
 title: "Power Platform governance: multi-grader comparison for agent evaluations"
 slug: "microsoft-power-platform-governance-and-administration-multi-grader-comparison"
 roadmapId: 577183
-desk: "power-platform"
+topic: "power-platform"
 products: ["Microsoft Copilot (Microsoft 365)","Microsoft Power Platform governance and administration"]
 summary: "Makers can compare results from several graders applied to the same evaluation, seeing score agreement, pass or fail differences and each grader's explanation and evidence."
 status: "in-development"

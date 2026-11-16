@@ -2,7 +2,7 @@
 title: "Power Apps: calendar and card layouts for views in model-driven apps"
 slug: "power-apps-new-view-layout-in-model-driven-apps"
 roadmapId: 575294
-desk: "power-platform"
+topic: "power-platform"
 products: ["Power Apps"]
 summary: "Makers can show model-driven app data as a calendar or a stack of cards instead of the default grid, configured in the app designer."
 status: "in-development"
