@@ -159,6 +159,18 @@ Notes on particular fields:
   that surface; never leave a guess in its place. A row with both set to `null` states that a
   control an administrator would expect does not exist yet. Every side that is not `null` needs a
   `docs` URL on a Microsoft domain; those pages are added to `sources` for you.
+  A `null` side is printed as "Not yet documented" and checked as a statement: the verifier
+  searches the reference for that platform, and when it finds an operation the page is held. More
+  briefings are held for this than for any other reason. The automation usually sits under the
+  platform that stores the setting (the Power Platform API, the `pac` CLI, the Dataverse Web API
+  table reference, Microsoft Graph, a workload's PowerShell module, the Edge policy reference), so
+  search that reference by name before writing `null`. The standard lists which applies, under
+  Research, question 5.
+  `path` follows the page's numbered steps in order, one label per step, with no tab or group
+  heading left out. `call` is something an administrator could run once the placeholders are filled
+  in: a parameter with its value, an HTTP method with a versioned path. A product, module or API
+  family name is not a call. `docs` is the page on which that exact path or call can be read; if
+  a row would need two reference pages, split it.
 - **evidence.** One entry for every documented fact a reader could act on: each control side that
   is not `null` (the quote is the text that gives the path, cmdlet or endpoint), the default state
   unless it is `unknown`, every licensing and cost statement, every role, limit and number, every
@@ -195,11 +207,30 @@ As the verifier:
 - Does each role, licence, limit and region keep the qualification its page gives for this
   feature's case? Is anything attributed to Microsoft that the page does not say?
 - Does any sentence present the roadmap's plan as shipped behaviour, a preview page as the final
-  design, or a neighbouring feature's control as this feature's?
+  design, or a neighbouring feature's control as this feature's? Check the governance checklist
+  too: a step that relies on a control the table marks as unconfirmed for this feature carries the
+  same condition ("once Microsoft confirms it applies").
 - For every `null` control side and every "Not yet documented" or "Not yet published": did you run
-  a search for that specific control or fact and find nothing? If you did not search, search now or
-  take the statement out. If you saw that it exists but did not read it, it is not "not
-  documented".
+  a search for that specific control or fact and find nothing? For an API side, was one of those
+  searches in the reference for the platform that stores the setting, by name, and not only for
+  the feature? If you did not search, search now or take the statement out. If you saw that it
+  exists but did not read it, it is not "not documented". The page then gives the result, not the
+  search: "Microsoft Learn documents no API for this policy at the time of writing (November
+  2026)", never "a search found none".
+- For every "Microsoft has not said", "has not confirmed" and "is not documented" about billing,
+  data policies, a default or a prerequisite: did you open the platform's own page for that rule?
+  If that page covers this feature's case, state the rule and cite it, and keep only the narrower
+  gap.
+- Find every "only", "all", "every", "always", "never", "cannot", "no way to" and "nothing". Does
+  a page say it in those terms? If not, say what the page says and stop there.
+- Does every sentence about what happens on arrival, or if nobody acts, agree with `defaultState`
+  and rest on a source? With `unknown`, the page says Microsoft has not stated it; it does not say
+  "nothing changes" or "admins opt in".
+- Does any sentence state how the feature works where Microsoft has not described it: what
+  connects to what, which account it uses, who approves? Turn it into something to confirm, or
+  remove it.
+- Compare each `ui.path` with the steps on its page, label by label, and run each `call` in your
+  head: would it work as written, and is it on the `docs` page?
 
 As the administrator:
 
