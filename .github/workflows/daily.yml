@@ -145,6 +145,8 @@ jobs:
           COMPILE_LIMIT: ${{ github.event.inputs.compile_limit || '24' }}
           COMPILE_TOPIC: ${{ github.event.inputs.compile_topic || '' }}
           COMPILE_ONLY: ${{ github.event.inputs.compile_only || '' }}
+          # Concept pages written per run, out of COMPILE_LIMIT (default 2, CONCEPTS.perRun; 0 turns them off).
+          COMPILE_CONCEPTS: ${{ vars.COMPILE_CONCEPTS || '' }}
         run: node pipeline/compile-tasks.mjs
 
       - name: Install Copilot CLI
@@ -201,7 +203,7 @@ jobs:
           claude_args: >-
             --max-turns ${{ steps.tasks.outputs.turns || '400' }}
             --mcp-config pipeline/mcp.json
-            --allowedTools "Read,Glob,Grep,Write,Edit,WebSearch,WebFetch(domain:learn.microsoft.com),WebFetch(domain:techcommunity.microsoft.com),WebFetch(domain:adoption.microsoft.com),WebFetch(domain:www.microsoft.com),Bash(node pipeline/write-briefing.mjs:*),Bash(node pipeline/lint.mjs),Bash(cat:*),Bash(ls:*),mcp__microsoft-learn"
+            --allowedTools "Read,Glob,Grep,Write,Edit,WebSearch,WebFetch(domain:learn.microsoft.com),WebFetch(domain:techcommunity.microsoft.com),WebFetch(domain:adoption.microsoft.com),WebFetch(domain:www.microsoft.com),Bash(node pipeline/write-briefing.mjs:*),Bash(node pipeline/write-concept.mjs:*),Bash(node pipeline/lint.mjs),Bash(cat:*),Bash(ls:*),mcp__microsoft-learn"
             ${{ github.event.inputs.compile_model != '' && format('--model {0}', github.event.inputs.compile_model) || '' }}
 
       - name: Record the compile run

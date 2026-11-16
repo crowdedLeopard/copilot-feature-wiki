@@ -186,8 +186,8 @@ export function explainCopilotError(kind, { model } = {}) {
 /** The CLI's own diagnostics from a runCopilot result: stderr, or stdout when stderr is empty. */
 export const cliDiagnostics = (result) => (result.stderr?.trim() ? result.stderr : result.stdout || '');
 
-/** True when the agent itself answered with the DONE/FAILED protocol, so the session ran to its end. */
-export const agentReplied = (result) => /^(DONE|FAILED)\b/m.test(result.stdout || '');
+/** True when the agent itself answered with the DONE/FAILED protocol (DECLINED for a concept task), so the session ran to its end. */
+export const agentReplied = (result) => /^(DONE|DECLINED|FAILED)\b/m.test(result.stdout || '');
 
 export function tail(text = '', n = 15) {
   const lines = text.trimEnd().split('\n');

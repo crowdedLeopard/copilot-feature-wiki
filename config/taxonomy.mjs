@@ -70,6 +70,32 @@ export const LIFECYCLE = {
   removedGraceDays: 90,
   reviewAfterDays: { default: 120, launched: 180 },
 };
+
+// Concept pages (wiki/concepts/) each explain one mechanism that several briefings depend on. The
+// daily run offers a tag as a concept once enough live briefings carry it and no concept page covers
+// it yet, and spends a few of each run's writer sessions on them. Used by pipeline/lib/concepts.mjs.
+export const CONCEPTS = {
+  /** Live briefings that must carry a tag before it is offered as a concept. */
+  minBriefings: 4,
+  /** Writer sessions per run spent on concept pages. They come out of COMPILE_LIMIT, not on top of it. */
+  perRun: 2,
+  /** A run smaller than this writes no concept pages, so a three-briefing test run stays three briefings. */
+  minRunLimit: 8,
+  /** Tag groups that name a mechanism. A capability tag counts only when it turns up under two or more topics. */
+  mechanismGroups: ['licensing', 'security', 'governance', 'data'],
+  /** A tag on more than this share of the live briefings is a category ("agents"), not a mechanism. */
+  maxShare: 0.15,
+  /** Product and cloud tags are not concepts, with these exceptions. Each is the lead tag of one page. */
+  alsoTags: ['work-iq'],
+  /** A tag the writer declined is offered again once this many times as many briefings carry it. */
+  reofferFactor: 2,
+  /** A concept page is refreshed once this many more briefings depend on it than when it was written. */
+  refreshAfterNewBriefings: 6,
+  /** ...or when it has not been written or refreshed for this many days. */
+  reviewAfterDays: 120,
+  /** The validator rejects a concept page whose sections run past this many words (the standard asks for 600 to 1,000). */
+  maxWords: 1300,
+};
 export const ARCHIVE_REASON = {
   cancelled: { label: 'Cancelled by Microsoft', help: 'Microsoft marked the roadmap item as cancelled.' },
   removed: { label: 'Left the roadmap', help: `The item disappeared from the Microsoft 365 Roadmap and did not return within ${LIFECYCLE.removedGraceDays} days.` },

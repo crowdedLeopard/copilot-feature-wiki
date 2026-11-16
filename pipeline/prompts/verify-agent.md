@@ -133,16 +133,23 @@ supported by the page it cites, with a minor whose fix names the other page and 
 How to judge each type:
 
 - **Admin path** (`controls[].ui`, and any path in the prose). The page names this admin centre and
-  gives these steps in this order with these labels. A step that is added, missing from the middle,
-  renamed or in a different place on the cited page is a contradiction. No path on the page is
+  gives these steps in this order with these labels. A step that is added, renamed or in a
+  different place on the cited page is a contradiction, and so is a menu, page, section or setting
+  missing from the middle: the reader would not find the next step. No path on the page is
   unsupported. Do not fail a path for cosmetic differences: bold type, the word "Select", the arrow
   style (the rendered table prints "›" where the front matter has ">"), a lower-case placeholder
-  for something the admin picks ("environment", "policy"), or a final "Save" left off.
+  for something the admin picks ("environment", "policy"), or a final "Save" left off. A path that
+  leaves out only the step where the admin picks what the setting applies to (the environment, the
+  site, the policy, or the tab that lists them) is supported, with a minor whose fix gives the
+  full path.
 - **Command** (`controls[].api`, and any command in the prose). The cmdlet, endpoint or command
   exists on its reference page; for PowerShell, each parameter named in the call is a real
   parameter of that cmdlet and the module is right; for Microsoft Graph and REST, the HTTP method,
   the path and the version (`/v1.0/` or `/beta/`) match; and the page says the call does what the
-  briefing says it does. Check names, not example values.
+  briefing says it does. Check names, not example values: a `<placeholder>`, a sample name, number
+  or URL is not a claim. The exception is a literal the call cannot work without. A hashtable or
+  JSON body printed with a key missing that the reference shows the setting needs (for example
+  `setting=` without its `value=`) is a wrong command, because a reader will copy it as printed.
 - **Licensing and cost.** Licence, plan and SKU names exactly as the page gives them; what is
   included and what is an add-on; the meter and its unit; where the charge appears. Any price,
   credit rate, quota or limit must match the page to the digit and the unit. "No additional licence
@@ -193,6 +200,42 @@ new claim of type `consistency`.
   a fact has a contradiction, whichever statement is right; check both against the source.
 - Does every control the governance checklist tells the reader to set, check or take stock of
   appear in the controls table? A missing row is a minor finding, and the fix names the row to add.
+
+## Concept pages
+
+Some of the pages you are given are concept pages, not briefings. Your instructions and the
+pre-check file say so. A concept page explains one mechanism that several briefings depend on (a
+meter, a policy type, a permission model) and was written to the "Concept pages" section of the
+standard; read that section first for such a page. It is checked by the method above, with these
+differences.
+
+- **There is no roadmap record**, so there are no record facts and step 2 has nothing to check.
+  Every statement of fact on the page is a documented fact and has to rest on a Microsoft page. A
+  roadmap status or a target date stated on a concept page is checked like any other date: against
+  a Microsoft page, and it is unsupported without one.
+- **The front matter has no ratings, default state or licensing model.** Its factual fields are the
+  `controls` rows. The sections are What it is, Why it matters, Cost and licensing, Risks and
+  limits, Governance controls, What to check and Open questions. In step 5, check that the summary,
+  the prose and the table agree with one another and that every control What to check names has a
+  row. The checks on ratings do not apply.
+- **Briefings in this wiki are not evidence.** A concept page links to briefings and may have drawn
+  on them. A claim is supported only by a Microsoft page, whatever a briefing says.
+- **It describes the mechanism in general.** A statement about how the mechanism behaves ("data
+  policies are enforced when an agent is published") is a behaviour claim like any other, with the
+  severity its type carries. A statement that a control governs a named product is an
+  applicability claim and needs a page that says so for that product.
+- **A page written before the standard** may have other headings and no controls table. Check its
+  statements the same way, and name the heading in `where`.
+
+- **`where`** names the section and, when it helps, the bullet or table row, in at most 120
+  characters. A claim made in two places names the first.
+- **Dates.** A date on a concept page (a retirement, a rollout) is checked against a Microsoft page
+  like any other fact; there is no roadmap target to compare it with.
+- **Pages relied on but not cited.** When statements rest on Microsoft pages missing from the
+  page's sources, report them together as one minor finding that lists the URLs to add.
+
+Severity and the verdict are unchanged. In the verdict file, `id` is `null`, and the file goes to
+the path your task names.
 
 ## Severity and verdict
 

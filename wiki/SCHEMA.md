@@ -422,7 +422,8 @@ standard. One row per control. Each row has:
   center", "Microsoft Purview portal", "Teams admin center", "Microsoft Entra admin center"), the
   navigation path, and the Learn page that gives it. Write the path as the page gives it, with
   " > " between steps, starting after the admin centre's name, and using the page's own labels. Use
-  a plain lower-case word for a step the admin chooses ("environment", "policy", "agent"). Maker-side
+  a plain lower-case word for a step the admin chooses ("environment", "policy", "agent"), and
+  leave no step out: the tab or the item the admin picks on the way is part of the path. Maker-side
   settings count, with surface "Copilot Studio (maker)" or "Power Apps (maker)" and scope maker or
   agent.
 - `api`: the kind (powershell, graph, power-platform-api, pac-cli, azure-cli, rest, other), the
@@ -509,14 +510,119 @@ A briefing that states less, accurately, passes. A briefing that states more tha
 support is held, and its accurate parts are held with it. A held page goes back to the writer with
 the verifier's findings attached, is corrected, and is checked again before it is published.
 
+## Concept pages
+
+A briefing covers one change. A concept page covers one **mechanism** that several changes depend
+on: a meter (Copilot Credits), a policy type (data policies), a permission model (Dataverse
+security roles), a governance tier (Managed Environments), a protocol or shared service (MCP, Work
+IQ). It is explained once, so that briefings can stay short and link to it, and so that an
+administrator who meets the same term in five briefings has one place to learn what it is.
+
+The reader is the same administrator with the same three questions, asked of the mechanism rather
+than of a change: what it costs, what can go wrong with it, and where its controls are. They arrive
+from a briefing, part-way through a decision, so the page has to stand on its own.
+
+Everything in this standard applies to a concept page: the evidence rule, the research method, the
+voice, the controls table, the sources. What differs:
+
+- **There is no roadmap record.** Every fact is a documented fact, read in Microsoft's own text
+  during this research, or it is the wiki's analysis. Nothing is a record fact.
+- **Briefings are not evidence.** The task lists the briefings that depend on the mechanism and the
+  Microsoft pages they cite. Use them to see where administrators meet the mechanism and which
+  pages to open, and then open the pages. A path, command, licence or number goes on a concept page
+  only if it was read on a Microsoft page for this page, however many briefings already state it.
+- **It describes the mechanism as it works today.** A concept page is not news. Write in the
+  present tense about what Microsoft documents as available, and say which parts are in preview.
+  Leave rollout dates and roadmap status to the briefings, and link to them.
+- **It explains the mechanism, not the features that use it.** Say what the mechanism is and how it
+  behaves in general, with one or two briefings linked as examples of it at work. Do not summarise
+  the briefings; the page lists them automatically.
+
+### What earns a page
+
+The pipeline offers a tag as a concept once several live briefings carry it and no concept page
+covers it. Counting cannot tell a mechanism from a label, so the first decision is the writer's:
+does this tag name one mechanism that an administrator has to understand in order to govern the
+changes that depend on it?
+
+Write the page when it does: there is a thing with its own behaviour, its own controls or its own
+cost, and Microsoft documents it.
+
+Decline the tag, with a reason of one or two sentences, when it is:
+
+- a broad category rather than one mechanism ("governance", "privacy", "agents");
+- a product, an app type or an admin centre, which is a place where mechanisms live;
+- a single feature, however many roadmap items it has;
+- already explained by an existing concept page, which the reason names.
+
+A declined tag is not offered again until many more briefings carry it. Declining is a correct
+outcome. A thin page about something that is not a mechanism is the failure.
+
+A concept page is named after its tag and may **cover** neighbouring tags that it explains in full
+(`covers`): the page on Copilot Credits covers pay-as-you-go and capacity packs. A covered tag is
+not offered as a concept of its own, and the briefings that carry it are listed on the page. Cover
+a tag only when a reader looking for it would find it explained here, not merely mentioned.
+
+### The page, section by section
+
+The pipeline renders these sections, in this order.
+
+- **title**: the mechanism by the name Microsoft gives it, then, where it helps, a colon and the
+  question the page answers: "Agent identity: whose permissions does an agent use?". Sentence case.
+- **summary**: one or two sentences saying what the mechanism is and what an administrator uses it
+  to decide, cap or see.
+- **What it is**: the definition first, in one or two plain sentences that make sense to someone
+  who has never met the term. Then how it works: its parts, who sets what, and where it sits among
+  the things around it. Explain each further term on first use. A short table is welcome where the
+  mechanism has variants to compare (three ways to pay, four identity patterns).
+- **Why it matters**: what the mechanism lets an organisation decide, cap or see, and what happens
+  where it is left at its defaults or never set up. This is analysis, so make it specific to the
+  mechanism. The analysis rests on facts, and those are held to the evidence rules: what the
+  default is, that nothing else limits something, that a thing cannot be done. Where no Microsoft
+  page states the default, say that it is not documented. Silence on a page is not a "cannot".
+- **Cost and licensing**: the licence the mechanism needs, any meter and where it is charged, as
+  Microsoft's pages state them. The rule that "none" is a claim applies here as anywhere. Stay at
+  the level of the mechanism. Do not survey what each product that uses it charges: give a rate,
+  an exemption or a per-product charge only where the mechanism's own page gives it, and
+  otherwise name the page that holds the rates. "The only" and "the one documented case" claim a
+  survey of every product, and are not written.
+- **Risks and limits**: bullets. Where the mechanism does not reach, the limits Microsoft
+  documents, and the mistakes that follow from misreading it. Each bullet names the consequence.
+- **Governance controls**: the controls table, by the rules under "Governance controls" above, for
+  the settings that make up the mechanism or govern it. One to ten rows. Then notes: the roles
+  required, how the controls interact, what they do not enforce.
+- **What to check**: a short list of things to look at in your own tenant to know where you stand,
+  each starting with a verb. Every control it tells the reader to set or review has a row in the
+  table. A control named only because it is retiring or replaced does not need one.
+- **Open questions**: what Microsoft has not said that a reader needs in order to decide.
+
+A concept page is a reference an administrator returns to, so it is shorter than a briefing:
+usually 600 to 1,000 words, with a hard limit. The validator does not accept more than 1,300
+words across the sections. Every number, role, licence and limit on the page is a statement the
+independent check opens a Microsoft page for, and one wrong statement holds the page, so a page
+that covers its mechanism and stops is also the page most likely to be published. Where a
+briefing or another concept page already explains something, link to it.
+
+### Keeping a concept page current
+
+A concept page is rewritten when the independent check finds a fault in it, when many more
+briefings have come to depend on it than when it was written, or when it has not been touched for
+120 days. A rewrite is a re-check: re-open the pages behind every control and licensing statement
+before carrying it forward. The change note says what is different for the reader.
+
+Concept pages pass the same three checks as briefings before they are published. The verifier asks
+the same questions of them, with one difference: there is no roadmap record to check against, so
+every factual statement has to rest on a Microsoft page.
+
 ## Linking
 
 Use `related` for other briefings that share a control surface, licence or risk, and for the concept
 pages this one depends on. Up to five links, chosen from the list supplied with the task, and
 none when nothing on the list is close.
-Concept pages in `wiki/concepts/` explain cross-cutting mechanisms (Copilot Credits, Managed
-Environments, agent identity, data policies). Link to them from governance guidance where
-relevant, as `/concepts/<slug>/`; link to other briefings as `/features/<slug>/`.
+Concept pages in `wiki/concepts/` explain the mechanisms several briefings depend on (Copilot
+Credits, Managed Environments, agent identity, data policies; see "Concept pages"). Link to them
+from governance guidance where relevant, as `/concepts/<slug>/`; link to other briefings as
+`/features/<slug>/`.
 
 ## Index and log
 

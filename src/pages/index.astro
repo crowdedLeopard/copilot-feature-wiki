@@ -5,12 +5,14 @@ import SectionHead from '../components/SectionHead.astro';
 import Badge from '../components/Badge.astro';
 import Legend from '../components/Legend.astro';
 import AtlasTeaser from '../components/AtlasTeaser.astro';
-import { allFeatures, allConcepts, allDigests, byTopic, briefedIds, recentCatalog, stats, catalog, allNotices, actByNotices } from '../lib/data';
+import { allFeatures, allConcepts, allDigests, byTopic, briefedIds, recentCatalog, stats, catalog, briefingsFor, allNotices, actByNotices } from '../lib/data';
 import { SITE, TOPICS, TOPIC_BY_ID, href, featureUrl, topicUrl, conceptUrl, noticeUrl, formatDate, shortRoadmapDate, daysUntil, relativeDays } from '../lib/site';
 import { buildAtlas } from '../lib/graph';
 
 const features = await allFeatures();
 const concepts = await allConcepts();
+// The home page shows the concepts most briefings depend on; the full list is on /concepts/.
+const topConcepts = concepts.map((c) => ({ c, n: briefingsFor(c, features).length })).sort((a, b) => b.n - a.n || a.c.data.title.localeCompare(b.c.data.title)).slice(0, 6);
 const digests = await allDigests();
 const latestDigest = digests[0];
 const actNow = features.filter((f) => f.data.action === 'act-now');
@@ -130,8 +132,8 @@ const dueClass = (days: number | null) => (days === null ? '' : days <= 30 ? 'du
 
         <SectionHead title="Concepts" more={{ href: href('/concepts/'), label: 'All concepts' }} />
         <ul class="related">
-          {concepts.map((c) => (
-            <li><a href={conceptUrl(c.data.slug)}>{c.data.title}</a><span class="meta">{c.data.summary}</span></li>
+          {topConcepts.map(({ c, n }) => (
+            <li><a href={conceptUrl(c.data.slug)}>{c.data.title}</a><span class="meta">{n} {n === 1 ? 'briefing depends' : 'briefings depend'} on it · {c.data.summary}</span></li>
           ))}
         </ul>
       </div>

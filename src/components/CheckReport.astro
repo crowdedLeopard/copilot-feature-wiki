@@ -1,0 +1,102 @@
+---
+/**
+ * "How this briefing was checked": the independent verifier's report for one page, claim by claim.
+ * Shared by briefings and concept pages. The report is wiki/verification/<slug>.json; `stamp` is the
+ * summary in the page's own front matter, and `version` the page's current version.
+ */
+import SectionHead from './SectionHead.astro';
+import { verificationFor } from '../lib/data';
+import { CHECK_LABEL } from '../lib/check';
+import { href, formatDate } from '../lib/site';
+
+interface Props {
+  slug: string;
+  version: number;
+  stamp: { status: string; date: string } | null | undefined;
+  /** A concept page has no roadmap entry to be checked against. */
+  kind?: 'briefing' | 'concept';
+}
+const { slug, version, stamp, kind = 'briefing' } = Astro.props;
+const v = stamp ?? null;
+const noun = kind === 'concept' ? 'page' : 'briefing';
+const against = kind === 'concept' ? 'Microsoft Learn' : 'the roadmap entry and Microsoft Learn';
+const unchecked = kind === 'concept' ? 'paths, commands and licensing terms' : 'paths, commands and licensing';
+const report = await verificationFor(slug);
+const ENGINE_LABEL: Record<string, string> = { copilot: 'GitHub Copilot', 'claude-code': 'Claude Code', api: 'Claude API', manual: 'a reviewer with the Microsoft Learn tools' };
+const SEVERITY_LABEL: Record<string, string> = { blocker: 'Must fix', major: 'Should fix', minor: 'Minor' };
+const STATUS_LABEL: Record<string, string> = { supported: 'Confirmed', unsupported: 'Not found', contradicted: 'Contradicted' };
+const SEV_RANK: Record<string, number> = { blocker: 0, major: 1, minor: 2 };
+const SECTION_NAMES: Record<string, string> = { whatschanging: "What's changing", whyitmatters: 'Why it matters', riskassessment: 'Risk assessment', costandlicensing: 'Cost and licensing', scope: 'Scope', governanceguidance: 'Governance guidance', governancecontrols: 'Governance controls', openquestions: 'Open questions', whatitis: 'What it is', risksandlimits: 'Risks and limits', whattocheck: 'What to check' };
+/** "controls[1].ui" -> "Governance controls, row 2, admin UI"; "front matter: defaultState" -> "Default state"; "rationale: cost" -> "Cost rationale". */
+function whereLabel(where: string): string {
+  return where.split(/\s*;\s*/).map((w) => {
+    const ctl = w.match(/^controls\[(\d+)\](?:\.(ui|api|note))?/i);
+    if (ctl) { const side = ctl[2] === 'ui' ? ', admin UI' : ctl[2] === 'api' ? ', API' : ctl[2] === 'note' ? ', note' : ''; return `Governance controls, row ${Number(ctl[1]) + 1}${side}`; }
+    const fm = w.match(/^front matter:\s*(.+)$/i);
+    if (fm) return fm[1].replace(/^licensing\.(model|notes)$/i, 'Licensing $1').replace(/^defaultState$/i, 'Default state').replace(/^targetDate$/i, 'Target date').replace(/^previewDate$/i, 'Preview date').replace(/^(\w)/, (m) => m.toUpperCase()).replace(/([a-z])([A-Z])/g, '$1 $2').toLowerCase().replace(/^(\w)/, (m) => m.toUpperCase());
+    const rat = w.match(/^rationale:\s*(\w+)/i);
+    if (rat) return `${rat[1].charAt(0).toUpperCase()}${rat[1].slice(1)} rationale`;
+    const key = w.toLowerCase().replace(/[^a-z]/g, '');
+    for (const [k, name] of Object.entries(SECTION_NAMES)) if (key.startsWith(k)) return w.replace(/^[^:]+/, name);
+    return w.charAt(0).toUpperCase() + w.slice(1);
+  }).join('; ');
+}
+const findings = report ? [...report.claims].filter((c) => c.status !== 'supported' || c.severity).sort((a, b) => (SEV_RANK[a.severity ?? 'minor'] ?? 3) - (SEV_RANK[b.severity ?? 'minor'] ?? 3) || a.n - b.n) : [];
+const confirmedOnly = report ? report.claims.filter((c) => c.status === 'supported' && !c.severity) : [];
+const isUrl = (s: string | null | undefined) => Boolean(s && /^https?:\/\//.test(s));
+const hostOf = (u: string) => { try { return new URL(u).hostname.replace(/^www\./, '') + new URL(u).pathname.replace(/\/$/, ''); } catch { return u; } };
+---
+
+<SectionHead title={`How this ${noun} was checked`} id="verification" />
+{report && v ? (
+  <div class={`check check--${report.status}`}>
+    <p class="check__summary">{report.summary}</p>
+    <dl class="check__facts">
+      <div><dt>Checked</dt><dd>{formatDate(report.date, { long: true })}{report.version !== version && <span class="muted"> (at version {report.version}; the page is now version {version} and is queued for a new check)</span>}</dd></div>
+      <div><dt>Checked by</dt><dd>{report.model}, {ENGINE_LABEL[report.engine] ?? report.engine}, in a fresh session, against {against}</dd></div>
+      <div><dt>Statements</dt><dd><b>{report.counts.claims}</b> checked: <span class="check__n check__n--ok">{report.counts.confirmed} confirmed</span> · <span class={`check__n${report.counts.unconfirmed ? ' check__n--warn' : ''}`}>{report.counts.unconfirmed} not found in the documentation</span> · <span class={`check__n${report.counts.contradicted ? ' check__n--bad' : ''}`}>{report.counts.contradicted} contradicted</span></dd></div>
+      <div><dt>Result</dt><dd>{CHECK_LABEL[report.status] ?? report.status}{report.attempts > 1 && <span class="muted"> · attempt {report.attempts}</span>}</dd></div>
+    </dl>
+    {findings.length > 0 && (
+      <>
+        <h3 class="check__h">{findings.length === 1 ? 'One finding' : `${findings.length} findings`}</h3>
+        <ol class="findings">
+          {findings.map((c) => (
+            <li class={`finding finding--${c.severity ?? 'note'}`} id={`finding-${c.n}`}>
+              <div class="finding__head">
+                {c.severity && <span class={`finding__sev finding__sev--${c.severity}`}>{SEVERITY_LABEL[c.severity]}</span>}
+                <span class="finding__status">{STATUS_LABEL[c.status] ?? c.status}</span>
+                <span class="finding__where">{whereLabel(c.where)}</span>
+              </div>
+              <p class="finding__claim">{c.claim}</p>
+              {c.quote && (
+                <p class="finding__quote">{c.status === 'contradicted' ? 'Microsoft says: ' : c.status === 'unsupported' ? '' : 'Source: '}<q>{c.quote}</q>{isUrl(c.source) && <> <a href={c.source!} rel="noopener">{hostOf(c.source!)}</a></>}</p>
+              )}
+              {c.fix && <p class="finding__fix"><b>Correction.</b> {c.fix}</p>}
+            </li>
+          ))}
+        </ol>
+      </>
+    )}
+    {confirmedOnly.length > 0 && (
+      <details class="claims">
+        <summary>{confirmedOnly.length} statements confirmed, with the passage each rests on</summary>
+        <table class="claims__table">
+          <thead><tr><th>Where</th><th>Statement</th><th>Evidence</th></tr></thead>
+          <tbody>
+            {confirmedOnly.map((c) => (
+              <tr>
+                <td data-label="Where">{whereLabel(c.where)}</td>
+                <td data-label="Statement">{c.claim}</td>
+                <td data-label="Evidence">{c.quote && <q>{c.quote}</q>}{isUrl(c.source) ? <> <a href={c.source!} rel="noopener">{hostOf(c.source!)}</a></> : c.source === 'roadmap record' ? <span class="muted"> (roadmap entry)</span> : null}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </details>
+    )}
+    {report.history.length > 0 && <p class="small muted check__history">Earlier checks: {report.history.map((h) => `${formatDate(h.date)} (${CHECK_LABEL[h.status]?.split('.')[0].toLowerCase() ?? h.status}, version ${h.version})`).join('; ')}.</p>}
+  </div>
+) : (
+  <p class="muted check__none">Not yet checked. Every {noun} is re-read by a second model, in a fresh session, against {against}; the result appears here, statement by statement. This page is in the queue. Until then, treat its {unchecked} as the writer's reading of the sources, and confirm them against the linked Microsoft pages. <a href={href('/about/#checked')}>How the check works</a>.</p>
+)}

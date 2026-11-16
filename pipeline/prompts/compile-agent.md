@@ -35,6 +35,9 @@ Your instructions name either one task id, or the task list `data/compile-tasks.
 - Given the list, do each task in the order listed, finishing one completely before starting the
   next. Tasks are independent. Research each one afresh, and never reuse a path, command or licence
   statement from an earlier task unless you re-read it on a page for this one.
+- A task in the list whose `kind` is `concept` is a concept page, not a briefing. For that task,
+  follow `pipeline/prompts/concept-agent.md` in place of the steps below, with the brief the task
+  names, and validate with `node pipeline/write-concept.mjs <slug> <output file>`.
 
 For each task:
 

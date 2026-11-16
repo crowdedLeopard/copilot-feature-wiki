@@ -27,7 +27,7 @@ manual and the system prompt, and an append-only log records every run.
 | Raw | `raw/roadmap/items/*.json` | Immutable snapshots of in-scope Microsoft 365 Roadmap items. |
 | | `raw/message-center/*.json` | Microsoft 365 Message Center posts read from the connected tenant, after the publication screen (`data/message-center.json` is the index). See [docs/message-centre.md](docs/message-centre.md). |
 | Wiki | `wiki/features/*.md` | One briefing per feature, validated front matter plus eight fixed sections. |
-| | `wiki/concepts/*.md` | Background pages the briefings link to (Copilot Credits, Managed Environments, agent identity, data policies). |
+| | `wiki/concepts/*.md` | Concept pages: one mechanism several briefings depend on (a meter, a policy type, an admin centre, an identity), explained once with its own controls table. Named after a tag, proposed by the daily run when enough briefings carry that tag, written and checked like a briefing. |
 | | `wiki/digests/*.md` | One page per ISO week, regenerated daily. |
 | | `wiki/verification/*.json` | The independent check's report for each briefing: verdict, every statement with its status, source and quote, and the history of earlier checks. Rendered on the page as "How this briefing was checked". |
 | | `wiki/_held/*.md` | Briefings held back from publication: failed the check, or written but not yet checked. Not built. The writer takes them from here, with the verifier's findings appended, and rewrites them. |
@@ -75,6 +75,18 @@ manual and the system prompt, and an append-only log records every run.
      subscription (`CLAUDE_CODE_OAUTH_TOKEN` secret, from `claude setup-token`).
    - `api`: the Anthropic API directly from `pipeline/compile.mjs` (`ANTHROPIC_API_KEY` secret).
    - `none`: the step is skipped and everything else still runs.
+
+
+   Up to two of a run's tasks are **concept pages** (`COMPILE_CONCEPTS`, 0 turns them off; none on a
+   run narrowed to one topic or to named items). `pipeline/lib/concepts.mjs` works out the
+   candidates from the tags on live briefings, with the rules in `CONCEPTS` in
+   `config/taxonomy.mjs`: a tag four or more briefings carry, in the licensing, security, governance
+   or data groups (or a capability found in more than one topic), that no concept page explains
+   yet. The writer follows `pipeline/prompts/concept-agent.md` and the "Concept pages" section of
+   the schema, and either writes the page through `pipeline/write-concept.mjs` or declines the tag
+   with a reason, which `data/concepts.json` remembers until twice as many briefings carry it.
+   Concept pages are corrected, rewritten when six more briefings depend on them or after 120 days,
+   and checked by the same verifier as briefings. The `api` writer does not write concept pages.
 3. **Verify** re-reads every briefing written or refreshed in the run, plus a slice of the back
    catalogue (24 a page at a time by default, oldest check first), with a second model in a fresh
    session. The verifier follows `pipeline/prompts/verify-agent.md`: it lists every statement of

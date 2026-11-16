@@ -128,6 +128,25 @@ export async function allConcepts(): Promise<Concept[]> {
   return items.sort((a, b) => a.data.title.localeCompare(b.data.title));
 }
 
+/** The tags a concept page explains: its own slug (a concept is named after a tag) and the tags it `covers`. */
+export function conceptTags(c: Concept): string[] {
+  return [c.data.slug, ...c.data.covers];
+}
+
+/**
+ * The live briefings a concept page explains: those carrying its tag or a tag it covers, and those that
+ * name it in `related`. The same rule as `dependentsOf` in pipeline/lib/concepts.mjs.
+ */
+export function briefingsFor(c: Concept, features: Feature[]): Feature[] {
+  const tags = new Set(conceptTags(c));
+  return features.filter((f) => f.data.related.includes(c.data.slug) || f.data.tags.some((t) => tags.has(t)));
+}
+
+/** The concept pages that explain something a briefing depends on: the other side of `briefingsFor`. */
+export function conceptsExplaining(f: Feature, concepts: Concept[]): Concept[] {
+  return concepts.filter((c) => f.data.related.includes(c.data.slug) || conceptTags(c).some((t) => f.data.tags.includes(t)));
+}
+
 export async function allDigests(): Promise<Digest[]> {
   const items = await getCollection('digests');
   return items.sort((a, b) => b.data.date.localeCompare(a.data.date));

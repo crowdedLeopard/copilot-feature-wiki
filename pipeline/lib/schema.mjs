@@ -145,6 +145,64 @@ export const briefingOutput = z.object({
   changeNote: z.string().min(5).max(300).describe('One line for the reader on what is new or different on the page, e.g. "Initial briefing" or "Status moved to Rolling out; added the tenant setting, documented since October".'),
 });
 
+const tagId = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/);
+const isoDate = z.string().regex(/^\d{4}-\d{2}-\d{2}$/);
+
+/**
+ * Front matter of a concept page (wiki/concepts/). Lenient where the four pages written by hand in
+ * November 2026 differ from the pages the pipeline writes: those have no kind, created, version,
+ * covers or controls until their first rewrite. The site's content collection validates the same shape.
+ */
+export const conceptFrontmatter = z.object({
+  kind: z.literal('concept').optional(),
+  title: z.string().min(3).max(160),
+  slug,
+  summary: z.string().min(40).max(320),
+  updated: isoDate,
+  created: isoDate.optional(),
+  version: z.number().int().positive().default(1),
+  tags: z.array(tagId).default([]),
+  /** Tags this page explains, besides the one it is named after. A covered tag is not offered as a concept of its own. */
+  covers: z.array(tagId).default([]),
+  sources: z.array(sourceSchema).default([]),
+  related: z.array(slug).default([]),
+  controls: z.array(controlSchema).default([]),
+  confidence: z.enum(['high', 'medium', 'low']).optional(),
+  /** Live briefings that depended on the page when it was written; the refresh rule compares today's count with it. */
+  dependents: z.number().int().nonnegative().optional(),
+  changes: z.array(changeSchema).default([]),
+  verification: verificationSummary.optional(),
+});
+
+/** What the model returns for one concept page. The pipeline adds bookkeeping fields and renders markdown. */
+export const conceptOutput = z.object({
+  title: z.string().min(3).max(120).describe('The name of the mechanism as Microsoft names it, then, if it helps, a colon and the question the page answers. Sentence case. No marketing adjectives.'),
+  summary: z.string().min(40).max(320).describe('One or two sentences: what the mechanism is and what an administrator uses it to decide, cap or see.'),
+  tags: z.array(z.string()).min(2).max(10).describe('kebab-case tags from the glossary, the lead tag first. Tags are for finding the page; covers says what it explains.'),
+  newTags: z.array(tagDefinition).default([]).describe('A definition for every tag in tags or covers that is not in the glossary listed in the brief.'),
+  covers: z.array(z.string()).max(8).default([]).describe('Other tags from the brief\'s list of recurring tags that this page explains fully enough that they need no page of their own. Empty when the page explains only its lead tag.'),
+  confidence: z.enum(['high', 'medium', 'low']).describe('high = every control and licensing statement read on a Microsoft page; medium = some surfaces not documented; low = thinly documented.'),
+  sections: z.object({
+    whatItIs: z.string().min(200).describe('Markdown. The definition in one or two plain sentences first, then how it works: its parts, who does what, where it sits. H3 headings allowed.'),
+    whyItMatters: z.string().min(120).describe('Markdown, 1 or 2 paragraphs. What it lets an organisation decide, cap or see, and what happens where it is not set up.'),
+    costAndLicensing: z.string().min(60).describe('Markdown. The licence it needs, any meter and where it is charged, as Microsoft pages state them, or that none is documented or published.'),
+    risksAndLimits: z.string().min(120).describe('Markdown bullets. Where the mechanism does not reach, limits Microsoft documents, and the mistakes that follow from misunderstanding it. Each names the consequence.'),
+    governanceControls: z.string().min(40).describe('Markdown notes printed under the controls table: roles required, how the controls interact, enforcement gaps. Do not repeat the table.'),
+    whatToCheck: z.string().min(80).describe('Markdown bullets that start with a verb: what to look at in your own tenant to know where you stand. Every control named here has a row in controls.'),
+    openQuestions: z.string().min(20).describe('Markdown bullets. What Microsoft has not said that a reader needs in order to decide.'),
+  }),
+  controls: z.array(controlSchema).min(1).max(10).describe('Where the controls for this mechanism live, one row per control, most decisive first, with the same rules as a briefing.'),
+  evidence: z.array(evidenceSchema).max(120).default([]).describe('One entry for every documented fact a reader could act on, as for a briefing. A concept page has no roadmap record, so every fact that is not analysis needs an entry.'),
+  sources: z.array(sourceSchema).min(2).describe('Only pages opened during this research, titled as Microsoft titles them.'),
+  relatedSlugs: z.array(z.string()).default([]).describe('Up to eight slugs from the brief: the briefings that best show the mechanism at work, and neighbouring concept pages.'),
+  changeNote: z.string().min(5).max(300).describe('One line for the reader on what is new or different, e.g. "First version" or "Rewritten to the concept standard; added the Graph endpoint, documented since October".'),
+});
+
+/** Returned instead of a page when the tag offered does not name a mechanism worth a page of its own. */
+export const conceptDecline = z.object({
+  decline: z.string().min(20).max(400).describe('One or two sentences saying why: too broad to explain in one page, a feature rather than a shared mechanism, or already explained by a named concept page.'),
+});
+
 export function isAllowedSourceUrl(url) {
   try {
     const host = new URL(url).hostname.toLowerCase();

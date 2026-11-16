@@ -38,7 +38,7 @@ daily by GitHub Actions.
   severity alone decides (any blocker, or three majors, holds), a held page moves to `wiki/_held/` (not built) and
   `requeue-held.mjs` puts it at the front of the next writer run with the findings appended, up to `VERIFY_MAX_REVISIONS`
   (3 failed checks) before it is parked. Passing pages carry `verification` in their front matter; the full report is
-  `wiki/verification/<slug>.json`, rendered as "How this briefing was checked". Pages created before 2026-11-16 that fail
+  `wiki/verification/<slug>.json`, rendered as "How this briefing was checked" by `src/components/CheckReport.astro`. Pages created before 2026-11-16 that fail
   their first check stay live as `needs-correction` with a notice (`VERIFY_GRACE_EXISTING=0` turns that off).
   `verify-finish.mjs` holds anything written in the run that was not checked, writes `data/held.json` and logs the run.
   On Copilot the verifier tries `gpt-6.1-sol` first (a different family from the writer), then `VERIFY_FALLBACK_MODELS`
@@ -49,6 +49,15 @@ daily by GitHub Actions.
   then one item per topic in turn). `priorityFor` in `pipeline/ingest.mjs` orders items within a topic by admin relevance,
   recency and lead time. It must not weight topics against each other: that is how Modern Work went unbriefed until
   November 2026. `COMPILE_TOPIC` spends a whole run on one topic's backlog.
+- Concept pages (`wiki/concepts/*.md`) explain one mechanism several briefings depend on, and are named after a tag
+  (slug = tag id). `pipeline/lib/concepts.mjs` proposes them from the tags on live briefings (`conceptCandidates`; the
+  rules are `CONCEPTS` in `config/taxonomy.mjs`), `compile-tasks.mjs` gives them up to `CONCEPTS.perRun` of a run's tasks
+  (out of `COMPILE_LIMIT`, not on top; `COMPILE_CONCEPTS=0` turns them off), and the writer follows
+  `pipeline/prompts/concept-agent.md` (one-item wrapper `concept-copilot-item.md`) and calls `write-concept.mjs`, which
+  either writes the page or records a decline in `data/concepts.json`. `covers` in a concept's front matter lists other
+  tags it explains; a briefing carrying the slug tag or a covered tag links to it on the site and in the Atlas. Concept
+  pages go through the same verifier, hold and requeue as briefings; `pageKind` in `pipeline/lib/verify.mjs` picks the
+  schema and the home directory. Pages without `kind: concept` were written by hand and are queued for a rewrite.
 - Briefings are never deleted. `pipeline/lib/lifecycle.mjs` archives a page in place (front-matter `archived` block, a
   dated change note) when ingest finds its roadmap item cancelled, or missing from the feed for `LIFECYCLE.removedGraceDays`
   (`data/lifecycle.json` tracks last-seen dates). The site keeps the page's URL, lists it under `/archive/` and leaves it

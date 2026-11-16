@@ -4,6 +4,7 @@ slug: "copilot-credits"
 summary: "The common meter for usage-based Microsoft AI consumption: what consumes credits, the three ways to pay for them, where limits and reports live, and how the Microsoft 365 and Power Platform admin centers divide the job."
 updated: "2026-11-13"
 tags: ["copilot-credits","usage-based-billing","pay-as-you-go","p3","capacity-packs","cost-management","finops"]
+covers: ["usage-based-billing","pay-as-you-go","p3","capacity-packs"]
 sources:
   - title: "Understand usage-based billing and cost management for Copilot Credits"
     url: "https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits"

@@ -50,6 +50,9 @@ const RESULTS_FILE = path.join(DATA_DIR, 'compile-results.json');
 const USAGE_FILE = path.join(DATA_DIR, 'compile-usage.json');
 const LAST_FILE = path.join(DATA_DIR, 'last-compile.json');
 const WRAPPER = await fs.readFile(path.join(ROOT, 'pipeline', 'prompts', 'compile-copilot-item.md'), 'utf8');
+// A concept task (kind "concept", see pipeline/lib/concepts.mjs) is the same kind of session with its own wrapper.
+const CONCEPT_WRAPPER = await fs.readFile(path.join(ROOT, 'pipeline', 'prompts', 'concept-copilot-item.md'), 'utf8');
+const isConcept = (t) => t.kind === 'concept';
 
 const ALLOW_TOOLS = [
   'write(data/compile-tasks/**)',   // the JSON output; write-briefing.mjs writes the page itself
@@ -156,9 +159,9 @@ async function pageWrittenThisRun(task) {
 
 async function runTask(task) {
   const output = path.join(TASK_DIR, `${task.id}.output.json`);
-  const prompt = WRAPPER
-    .replaceAll('{{id}}', String(task.id)).replaceAll('{{brief}}', task.brief)
-    .replaceAll('{{raw}}', task.raw).replaceAll('{{output}}', rel(output));
+  const prompt = (isConcept(task) ? CONCEPT_WRAPPER : WRAPPER)
+    .replaceAll('{{id}}', String(task.id)).replaceAll('{{slug}}', task.slug).replaceAll('{{brief}}', task.brief)
+    .replaceAll('{{raw}}', task.raw ?? '').replaceAll('{{output}}', rel(output));
   const opts = {
     prompt, model, maxCredits: ITEM_MAX_CREDITS, timeoutMs: ITEM_TIMEOUT_MS,
     usageFile: rel(path.join(TASK_DIR, `${task.id}.usage.json`)),
@@ -210,25 +213,38 @@ for (const task of tasks) {
   const { yaml = '' } = parseFrontmatter(await fs.readFile(path.join(ROOT, task.page), 'utf8'));
   const title = yaml.match(/^title:\s*["']?(.+?)["']?\s*$/m)?.[1] || task.title;
   results.results = results.results.filter((r) => r.id !== task.id);
-  results.results.push({ id: task.id, at: new Date().toISOString(), ok: true, slug: task.slug, title, file: task.page, reconciled: true });
+  results.results.push({ id: task.id, at: new Date().toISOString(), ok: true, slug: task.slug, title, file: task.page, reconciled: true, ...(isConcept(task) ? { kind: 'concept' } : {}) });
 }
 await writeJson(RESULTS_FILE, results);
 const okIds = new Set(results.results.filter((r) => r.ok).map((r) => r.id));
-const written = tasks.filter((t) => okIds.has(t.id)).length;
+// A concept task can end three ways: a page, a decline (the tag is not a mechanism; nothing is written,
+// and the session did its job), or a failure. Briefings and concept pages are counted apart.
+const declinedIds = new Set(results.results.filter((r) => r.ok && r.declined).map((r) => r.id));
+const written = tasks.filter((t) => !isConcept(t) && okIds.has(t.id)).length;
+const conceptCount = tasks.filter(isConcept).length;
+const conceptsWritten = tasks.filter((t) => isConcept(t) && okIds.has(t.id) && !declinedIds.has(t.id)).length;
+const conceptsDeclined = tasks.filter((t) => isConcept(t) && declinedIds.has(t.id)).length;
+const finished = written + conceptsWritten + conceptsDeclined;
 const perItem = items.length ? (items.reduce((s, i) => s + i.credits, 0)) / items.length : 0;
 
 for (const i of items) {
   const ok = okIds.has(i.id);
   const why = !ok ? (i.timedOut ? explain('timeout') : i.kind ? explain(i.kind, { model }) : (results.results.find((r) => r.id === i.id && !r.ok)?.error ? 'the page failed validation' : 'the session ended without a page')) : '';
-  note(`${ok ? '✓' : '✗'} ${i.id} ${i.title} (${fmt(i.credits)} credits, ${secs(i.durationMs)}${i.attempts > 1 ? `, ${i.attempts} attempts` : ''}${why ? `; ${why}` : ''})`);
+  const declined = results.results.some((r) => r.id === i.id && r.declined);
+  note(`${ok ? '✓' : '✗'} ${i.id} ${i.title}${declined ? ' (declined: not a mechanism that needs a page)' : ''} (${fmt(i.credits)} credits, ${secs(i.durationMs)}${i.attempts > 1 ? `, ${i.attempts} attempts` : ''}${why ? `; ${why}` : ''})`);
 }
 if (stoppedForBudget) note(`Stopped at the ${fmt(BUDGET)}-credit budget for this run with ${queue.length} briefing(s) not started; they stay queued.`);
 
-const status = written ? 'ok' : 'nothing-written';
-const headline = written
-  ? `Wrote ${written} of ${tasks.length} briefings with ${model} for ${fmt(spent)} AI credits (${fmt(perItem)} per briefing).${written < tasks.length ? ' The rest stay queued for the next run.' : ''}`
-  : `Ran ${items.length} session(s) with ${model} but no briefing passed validation; ${fmt(spent)} AI credits were spent and the items stay queued.`;
+// A decline is a finished task but not output: a run that wrote no page at all still counts as a
+// strike, so a writer that produces nothing is noticed.
+const status = written + conceptsWritten ? 'ok' : 'nothing-written';
+const rest = finished < tasks.length ? ' The rest stay queued for the next run.' : '';
+const headline = status !== 'ok'
+  ? `Ran ${items.length} session(s) with ${model} but no briefing passed validation${conceptsDeclined ? ` (${conceptsDeclined} concept page${conceptsDeclined === 1 ? '' : 's'} declined)` : ''}; ${fmt(spent)} AI credits were spent and the items stay queued.`
+  : conceptCount
+    ? `Wrote ${written} briefing${written === 1 ? '' : 's'} and ${conceptsWritten} concept page${conceptsWritten === 1 ? '' : 's'}${conceptsDeclined ? ` (${conceptsDeclined} declined)` : ''} of ${tasks.length} tasks with ${model} for ${fmt(spent)} AI credits (${fmt(perItem)} per session).${rest}`
+    : `Wrote ${written} of ${tasks.length} briefings with ${model} for ${fmt(spent)} AI credits (${fmt(perItem)} per briefing).${rest}`;
 await finish({
   status, headline, written, attempted: tasks.length, credits: spent, model,
-  extra: { reasoningEffort: effort, requestedModel: MODEL, budget: BUDGET, itemCap: ITEM_MAX_CREDITS, stoppedForBudget, notReached: queue.length, items: items.map((i) => ({ ...i, ok: okIds.has(i.id) })) },
+  extra: { ...(conceptCount ? { concepts: conceptsWritten, conceptsDeclined } : {}), reasoningEffort: effort, requestedModel: MODEL, budget: BUDGET, itemCap: ITEM_MAX_CREDITS, stoppedForBudget, notReached: queue.length, items: items.map((i) => ({ ...i, ok: okIds.has(i.id) })) },
 });

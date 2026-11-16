@@ -2,8 +2,8 @@
 /**
  * Verify, step 3 of 3: record the outcome and enforce the gate.
  *
- * A briefing written in this run that the verifier did not reach is held as "unverified" so it is
- * never published unchecked; the next run verifies it first. Writes data/held.json (what is held
+ * A briefing or concept page written in this run that the verifier did not reach is held as
+ * "unverified" so it is never published unchecked; the next run verifies it first. Writes data/held.json (what is held
  * and why, for the radar and the run summary), data/last-verify.json, the log line and the step
  * summary, then removes the working files so the commit step sees only real changes.
  */
@@ -25,7 +25,7 @@ if (ran) {
     if (outcome.has(t.slug)) continue;
     // Only pages written in this run are held for being unreached; a live page whose scheduled
     // re-check did not happen keeps its earlier stamp until the next run.
-    if (t.writtenThisRun && t.where === 'features') {
+    if (t.writtenThisRun && (t.where === 'features' || t.where === 'concepts')) {
       const h = await holdUnverified(t.slug);
       if (h) heldNow.push(t.slug);
     }

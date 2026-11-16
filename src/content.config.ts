@@ -112,6 +112,18 @@ const concepts = defineCollection({
     tags: z.array(z.string()).default([]),
     sources: z.array(source).default([]),
     related: z.array(z.string()).default([]),
+    // Set on pages the concept writer produced (pipeline/lib/concepts.mjs). The four pages written by hand
+    // in November 2026 carry none of these until the run rewrites them to the standard.
+    kind: z.literal('concept').optional(),
+    /** Other tags this page explains: a briefing carrying one of them is linked to the page. */
+    covers: z.array(z.string()).default([]),
+    controls: z.array(control).default([]),
+    confidence: z.enum(['high', 'medium', 'low']).optional(),
+    created: z.string().optional(),
+    version: z.number().int().default(1),
+    changes: z.array(change).default([]),
+    dependents: z.number().int().optional(),
+    verification: verification.optional(),
   }),
 });
 

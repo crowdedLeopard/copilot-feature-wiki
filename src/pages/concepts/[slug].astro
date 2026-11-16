@@ -3,8 +3,11 @@ import { render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import SectionHead from '../../components/SectionHead.astro';
 import AtlasMini from '../../components/AtlasMini.astro';
+import CheckReport from '../../components/CheckReport.astro';
 import { buildAtlas } from '../../lib/graph';
-import { allConcepts, allFeatures } from '../../lib/data';
+import { allConcepts, allFeatures, briefingsFor } from '../../lib/data';
+import { CHECK_LABEL } from '../../lib/check';
+import '../../styles/briefing.css';
 import { SITE, SOURCE_KIND, TOPIC_BY_ID, href, featureUrl, conceptUrl, tagUrl, formatDate } from '../../lib/site';
 import { tagLabel } from '../../lib/tags';
 
@@ -17,7 +20,8 @@ const d = entry.data;
 const { Content, headings } = await render(entry);
 const features = await allFeatures();
 const concepts = await allConcepts();
-const uses = features.filter((f) => f.data.related.includes(d.slug));
+// The briefings this page explains: those tagged with its tag or one it covers, and those that name it.
+const uses = briefingsFor(entry, features);
 const related = d.related.map((s) => {
   const f = features.find((x) => x.data.slug === s);
   if (f) return { title: f.data.title, url: featureUrl(s), meta: 'Briefing' };
@@ -27,18 +31,57 @@ const related = d.related.map((s) => {
 }).filter(Boolean) as { title: string; url: string; meta: string }[];
 const toc = headings.filter((h) => h.depth === 2);
 const atlasNode = buildAtlas(features, concepts).nodes.find((n) => n.id === `c:${d.slug}`);
+
+// A page the daily run wrote to the concept standard carries `kind: concept`. The pages written by hand
+// in November 2026 do not; they wait their turn to be rewritten and checked, and say so.
+const toStandard = d.kind === 'concept';
+const v = d.verification ?? null;
+const needsCorrection = v?.status === 'needs-correction';
+const covers = d.covers.filter((t) => t !== d.slug);
+
+// Which admin centres and automation routes the controls sit in, for the side panel.
+const API_KIND_LABEL: Record<string, string> = { powershell: 'PowerShell', graph: 'Microsoft Graph', 'power-platform-api': 'Power Platform API', 'pac-cli': 'Power Platform CLI', 'azure-cli': 'Azure CLI', rest: 'REST API', other: 'API' };
+const surfaces = new Map<string, number>();
+for (const c of d.controls) {
+  if (c.ui) surfaces.set(c.ui.surface, (surfaces.get(c.ui.surface) ?? 0) + 1);
+  if (c.api) surfaces.set(API_KIND_LABEL[c.api.kind] ?? 'API', (surfaces.get(API_KIND_LABEL[c.api.kind] ?? 'API') ?? 0) + 1);
+}
+const gaps = { ui: d.controls.filter((c) => !c.ui).length, api: d.controls.filter((c) => !c.api).length };
 ---
 
 <Base title={d.title} description={d.summary} kind="article" current="concepts">
   <article class="wrap">
     <header class="article-head">
-      <div class="eyebrow"><a href={href('/concepts/')}>Concept</a><span class="sep"></span><span>Updated {formatDate(d.updated)}</span></div>
+      <div class="eyebrow">
+        <a href={href('/concepts/')}>Concept</a>
+        <span class="sep"></span><span>Updated {formatDate(d.updated)}</span>
+        <span class="sep"></span><span>{uses.length} {uses.length === 1 ? 'briefing depends' : 'briefings depend'} on this</span>
+        {d.confidence && d.confidence !== 'high' && <><span class="sep"></span><span title="How well the sources support this page">Confidence {d.confidence}</span></>}
+        <span class="sep"></span>
+        {v ? (
+          <a href="#verification" class={`checked checked--${v.status}`} title={`Independent check against Microsoft Learn on ${formatDate(v.date, { long: true })}: ${CHECK_LABEL[v.status] ?? v.status}.`}>{needsCorrection ? 'Awaiting correction' : `Checked ${formatDate(v.date)}`}</a>
+        ) : (
+          <a href="#verification" class="checked checked--none" title="This page has not yet had its independent check against Microsoft Learn.">Not yet checked</a>
+        )}
+      </div>
       <h1 class="display">{d.title}</h1>
       <p class="standfirst">{d.summary}</p>
+      {needsCorrection && v && (
+        <aside class="notice notice--correction" role="note">
+          <p><b>Awaiting correction.</b> An independent check on {formatDate(v.date, { long: true })} could not confirm {v.unconfirmed} of the {v.claims} statements on this page against Microsoft documentation and found {v.contradicted} contradicted by it. They are listed under <a href="#verification">How this page was checked</a>. A corrected version is being prepared. Until then, confirm paths, commands and licensing terms against the linked Microsoft pages before acting on them.</p>
+        </aside>
+      )}
+      {!toStandard && !v && (
+        <aside class="notice" role="note">
+          <p><b>An early page.</b> This was written by hand when the wiki was set up, before concept pages were held to the same standard as briefings. It is queued to be rewritten from Microsoft Learn, given a controls table and checked independently.</p>
+        </aside>
+      )}
     </header>
     <div class="article">
       <div class="article__body">
         <div class="prose"><Content /></div>
+
+        <CheckReport slug={d.slug} version={d.version} stamp={v} kind="concept" />
 
         {d.sources.length > 0 && (
           <>
@@ -62,13 +105,30 @@ const atlasNode = buildAtlas(features, concepts).nodes.find((n) => n.id === `c:$
 
         <SectionHead title="Tags" id="tags" />
         <div class="chips">{d.tags.map((t) => <a class="chip" href={tagUrl(t)}>{tagLabel(t)}</a>)}</div>
-        <p class="small muted" style="margin-top:1.2rem">Spotted an error? <a href={`${SITE.repo}/edit/main/wiki/concepts/${d.slug}.md`} rel="noopener">Propose a change on GitHub</a>.</p>
+        {covers.length > 0 && (
+          <p class="small muted" style="margin-top:0.8rem">Also explains: {covers.map((t, i) => <>{i > 0 && ', '}<a href={tagUrl(t)}>{tagLabel(t)}</a></>)}. A briefing carrying any of these tags links here.</p>
+        )}
+
+        {d.changes.length > 0 && (
+          <>
+            <SectionHead title="Change log" id="changes" />
+            <ul class="changes" style="list-style:none;margin:0;padding:0">
+              {[...d.changes].reverse().map((c) => <li><time datetime={c.date}>{formatDate(c.date)}</time><span>{c.note}</span></li>)}
+            </ul>
+          </>
+        )}
+        <p class="small muted" style="margin-top:1.2rem">
+          {toStandard && <>Version {d.version}{d.created ? ` · created ${formatDate(d.created)}` : ''}{d.confidence ? ` · confidence ${d.confidence}` : ''}. This page was written from the Microsoft sources above{v && v.status !== 'needs-correction' ? `, checked independently against Microsoft Learn on ${formatDate(v.date)}` : ''} and is rewritten when the briefings that depend on it change. </>}
+          Spotted an error? <a href={`${SITE.repo}/edit/main/wiki/concepts/${d.slug}.md`} rel="noopener">Propose a change on GitHub</a>.
+        </p>
       </div>
       <aside class="article__aside no-print">
         <nav class="panel toc" aria-label="On this page">
           <h3>On this page</h3>
           <ol>
             {toc.map((h) => <li><a href={`#${h.slug}`}>{h.text}</a></li>)}
+            <li><a href="#verification">How this page was checked</a></li>
+            {d.sources.length > 0 && <li><a href="#references">Microsoft references</a></li>}
             <li><a href="#related">Briefings that depend on this</a></li>
           </ol>
         </nav>
@@ -79,6 +139,17 @@ const atlasNode = buildAtlas(features, concepts).nodes.find((n) => n.id === `c:$
             <button class="btn-ghost" type="button" onclick="window.print()" style="justify-content:space-between"><span>Print this page</span><span class="ext mono">⌘P</span></button>
           </div>
         </div>
+        {d.controls.length > 0 && (
+          <div class="panel">
+            <h3>Control surfaces</h3>
+            <ul class="surfaces">
+              {[...surfaces.entries()].sort((x, y) => y[1] - x[1] || x[0].localeCompare(y[0])).map(([name, n]) => <li><a href="#governance-controls">{name}</a><span class="n">{n} {n === 1 ? 'control' : 'controls'}</span></li>)}
+              {gaps.ui > 0 && <li><span class="gap">No admin UI documented</span><span class="n">{gaps.ui} of {d.controls.length}</span></li>}
+              {gaps.api > 0 && <li><span class="gap">No API documented</span><span class="n">{gaps.api} of {d.controls.length}</span></li>}
+            </ul>
+            <p class="surfaces__foot">Paths and cmdlets as Microsoft Learn documents them. Gaps are stated, not guessed.</p>
+          </div>
+        )}
       </aside>
     </div>
   </article>

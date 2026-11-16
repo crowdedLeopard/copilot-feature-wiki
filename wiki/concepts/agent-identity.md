@@ -4,6 +4,7 @@ slug: "agent-identity"
 summary: "The four identity patterns an agent can run under (end user, maker, service identity, Entra agent identity), what each means for data access and audit, and which Microsoft controls push makers toward the right one."
 updated: "2026-11-13"
 tags: ["agent-identity","entra-agent-id","end-user-authentication","maker-credentials","service-principal","least-privilege","auditing"]
+covers: ["entra-agent-id","end-user-authentication","maker-credentials"]
 sources:
   - title: "Control maker-provided credentials for authentication"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication"

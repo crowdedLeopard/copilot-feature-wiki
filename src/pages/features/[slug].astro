@@ -5,8 +5,10 @@ import Facts from '../../components/Facts.astro';
 import Badge from '../../components/Badge.astro';
 import SectionHead from '../../components/SectionHead.astro';
 import AtlasMini from '../../components/AtlasMini.astro';
+import CheckReport from '../../components/CheckReport.astro';
 import NoticeRow from '../../components/NoticeRow.astro';
-import { allFeatures, allFeaturesIncludingArchived, allConcepts, lifecycle, reviewDue, verificationFor, allNotices, nearestActBy } from '../../lib/data';
+import { allFeatures, allFeaturesIncludingArchived, allConcepts, lifecycle, reviewDue, conceptsExplaining, allNotices, nearestActBy } from '../../lib/data';
+import { CHECK_LABEL } from '../../lib/check';
 import { buildAtlas } from '../../lib/graph';
 import '../../styles/briefing.css';
 import { SITE, TOPIC_BY_ID, SOURCE_KIND, LIFECYCLE, href, topicUrl, tagUrl, featureUrl, conceptUrl, noticeUrl, formatDate, roadmapUrl, extractRationale, youtubeSearchUrl, learnSearchUrl } from '../../lib/site';
@@ -40,6 +42,8 @@ const related = d.related
   })
   .filter(Boolean) as { title: string; url: string; meta: string }[];
 const inbound = features.filter((f) => f.data.related.includes(d.slug) && f.data.slug !== d.slug && !d.related.includes(f.data.slug));
+// Concept pages that explain a mechanism this briefing is tagged with, beyond those it names in `related`.
+const explained = conceptsExplaining(entry, concepts).filter((c) => !d.related.includes(c.data.slug));
 const toc = headings.filter((h) => h.depth === 2);
 const atlas = buildAtlas(features, concepts);
 const atlasNode = atlas.nodes.find((n) => n.id === `f:${d.slug}`);
@@ -61,39 +65,9 @@ const roadmapSource = d.sources.find((s) => s.kind === 'roadmap');
 const notices = d.roadmapId ? (await allNotices()).filter((n) => n.data.roadmapIds.includes(d.roadmapId!)) : [];
 const actBy = d.archived ? null : nearestActBy(notices);
 
-// The independent check: a second model's claim-by-claim verdict against the roadmap record and Microsoft Learn.
-const report = await verificationFor(d.slug);
+// The independent check: the stamp in the front matter. The full report is rendered by CheckReport.
 const v = d.verification ?? null;
-const CHECK_LABEL: Record<string, string> = {
-  verified: 'Every statement confirmed against Microsoft documentation',
-  'verified-with-gaps': 'Confirmed, with small corrections pending',
-  'needs-correction': 'Corrections needed. Kept online with this notice while a corrected version is prepared',
-  held: 'Held',
-};
-const ENGINE_LABEL: Record<string, string> = { copilot: 'GitHub Copilot', 'claude-code': 'Claude Code', api: 'Claude API', manual: 'a reviewer with the Microsoft Learn tools' };
-const SEVERITY_LABEL: Record<string, string> = { blocker: 'Must fix', major: 'Should fix', minor: 'Minor' };
-const STATUS_LABEL: Record<string, string> = { supported: 'Confirmed', unsupported: 'Not found', contradicted: 'Contradicted' };
-const SEV_RANK: Record<string, number> = { blocker: 0, major: 1, minor: 2 };
-const SECTION_NAMES: Record<string, string> = { whatschanging: "What's changing", whyitmatters: 'Why it matters', riskassessment: 'Risk assessment', costandlicensing: 'Cost and licensing', scope: 'Scope', governanceguidance: 'Governance guidance', governancecontrols: 'Governance controls', openquestions: 'Open questions' };
-/** "controls[1].ui" -> "Governance controls, row 2, admin UI"; "front matter: defaultState" -> "Default state"; "rationale: cost" -> "Cost rationale". */
-function whereLabel(where: string): string {
-  return where.split(/\s*;\s*/).map((w) => {
-    const ctl = w.match(/^controls\[(\d+)\](?:\.(ui|api|note))?/i);
-    if (ctl) { const side = ctl[2] === 'ui' ? ', admin UI' : ctl[2] === 'api' ? ', API' : ctl[2] === 'note' ? ', note' : ''; return `Governance controls, row ${Number(ctl[1]) + 1}${side}`; }
-    const fm = w.match(/^front matter:\s*(.+)$/i);
-    if (fm) return fm[1].replace(/^licensing\.(model|notes)$/i, 'Licensing $1').replace(/^defaultState$/i, 'Default state').replace(/^targetDate$/i, 'Target date').replace(/^previewDate$/i, 'Preview date').replace(/^(\w)/, (m) => m.toUpperCase()).replace(/([a-z])([A-Z])/g, '$1 $2').toLowerCase().replace(/^(\w)/, (m) => m.toUpperCase());
-    const rat = w.match(/^rationale:\s*(\w+)/i);
-    if (rat) return `${rat[1].charAt(0).toUpperCase()}${rat[1].slice(1)} rationale`;
-    const key = w.toLowerCase().replace(/[^a-z]/g, '');
-    for (const [k, name] of Object.entries(SECTION_NAMES)) if (key.startsWith(k)) return w.replace(/^[^:]+/, name);
-    return w.charAt(0).toUpperCase() + w.slice(1);
-  }).join('; ');
-}
-const findings = report ? [...report.claims].filter((c) => c.status !== 'supported' || c.severity).sort((a, b) => (SEV_RANK[a.severity ?? 'minor'] ?? 3) - (SEV_RANK[b.severity ?? 'minor'] ?? 3) || a.n - b.n) : [];
-const confirmedOnly = report ? report.claims.filter((c) => c.status === 'supported' && !c.severity) : [];
 const needsCorrection = v?.status === 'needs-correction';
-const isUrl = (s: string | null | undefined) => Boolean(s && /^https?:\/\//.test(s));
-const hostOf = (u: string) => { try { return new URL(u).hostname.replace(/^www\./, '') + new URL(u).pathname.replace(/\/$/, ''); } catch { return u; } };
 ---
 
 <Base title={d.title} description={d.summary} kind="article" current="features">
@@ -153,59 +127,7 @@ const hostOf = (u: string) => { try { return new URL(u).hostname.replace(/^www\.
           </>
         )}
 
-        <SectionHead title="How this briefing was checked" id="verification" />
-        {report && v ? (
-          <div class={`check check--${report.status}`}>
-            <p class="check__summary">{report.summary}</p>
-            <dl class="check__facts">
-              <div><dt>Checked</dt><dd>{formatDate(report.date, { long: true })}{report.version !== d.version && <span class="muted"> (at version {report.version}; the page is now version {d.version} and is queued for a new check)</span>}</dd></div>
-              <div><dt>Checked by</dt><dd>{report.model}, {ENGINE_LABEL[report.engine] ?? report.engine}, in a fresh session, against the roadmap entry and Microsoft Learn</dd></div>
-              <div><dt>Statements</dt><dd><b>{report.counts.claims}</b> checked: <span class="check__n check__n--ok">{report.counts.confirmed} confirmed</span> · <span class={`check__n${report.counts.unconfirmed ? ' check__n--warn' : ''}`}>{report.counts.unconfirmed} not found in the documentation</span> · <span class={`check__n${report.counts.contradicted ? ' check__n--bad' : ''}`}>{report.counts.contradicted} contradicted</span></dd></div>
-              <div><dt>Result</dt><dd>{CHECK_LABEL[report.status] ?? report.status}{report.attempts > 1 && <span class="muted"> · attempt {report.attempts}</span>}</dd></div>
-            </dl>
-            {findings.length > 0 && (
-              <>
-                <h3 class="check__h">{findings.length === 1 ? 'One finding' : `${findings.length} findings`}</h3>
-                <ol class="findings">
-                  {findings.map((c) => (
-                    <li class={`finding finding--${c.severity ?? 'note'}`} id={`finding-${c.n}`}>
-                      <div class="finding__head">
-                        {c.severity && <span class={`finding__sev finding__sev--${c.severity}`}>{SEVERITY_LABEL[c.severity]}</span>}
-                        <span class="finding__status">{STATUS_LABEL[c.status] ?? c.status}</span>
-                        <span class="finding__where">{whereLabel(c.where)}</span>
-                      </div>
-                      <p class="finding__claim">{c.claim}</p>
-                      {c.quote && (
-                        <p class="finding__quote">{c.status === 'contradicted' ? 'Microsoft says: ' : c.status === 'unsupported' ? '' : 'Source: '}<q>{c.quote}</q>{isUrl(c.source) && <> <a href={c.source!} rel="noopener">{hostOf(c.source!)}</a></>}</p>
-                      )}
-                      {c.fix && <p class="finding__fix"><b>Correction.</b> {c.fix}</p>}
-                    </li>
-                  ))}
-                </ol>
-              </>
-            )}
-            {confirmedOnly.length > 0 && (
-              <details class="claims">
-                <summary>{confirmedOnly.length} statements confirmed, with the passage each rests on</summary>
-                <table class="claims__table">
-                  <thead><tr><th>Where</th><th>Statement</th><th>Evidence</th></tr></thead>
-                  <tbody>
-                    {confirmedOnly.map((c) => (
-                      <tr>
-                        <td data-label="Where">{whereLabel(c.where)}</td>
-                        <td data-label="Statement">{c.claim}</td>
-                        <td data-label="Evidence">{c.quote && <q>{c.quote}</q>}{isUrl(c.source) ? <> <a href={c.source!} rel="noopener">{hostOf(c.source!)}</a></> : c.source === 'roadmap record' ? <span class="muted"> (roadmap entry)</span> : null}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </details>
-            )}
-            {report.history.length > 0 && <p class="small muted check__history">Earlier checks: {report.history.map((h) => `${formatDate(h.date)} (${CHECK_LABEL[h.status]?.split('.')[0].toLowerCase() ?? h.status}, version ${h.version})`).join('; ')}.</p>}
-          </div>
-        ) : (
-          <p class="muted check__none">Not yet checked. Every briefing is re-read by a second model, in a fresh session, against the roadmap entry and Microsoft Learn; the result appears here, statement by statement. This page is in the queue. Until then, treat its paths, commands and licensing as the writer's reading of the sources, and confirm them against the linked Microsoft pages. <a href={href('/about/#checked')}>How the check works</a>.</p>
-        )}
+        <CheckReport slug={d.slug} version={d.version} stamp={v} />
 
         <SectionHead title="Microsoft guidance and references" id="references" />
         <ul class="sources">
@@ -229,12 +151,13 @@ const hostOf = (u: string) => { try { return new URL(u).hostname.replace(/^www\.
           <p class="muted">No Microsoft video has been linked for this feature yet. <a href={youtubeSearchUrl(d.title)} rel="noopener">Search YouTube</a> for Microsoft Mechanics, Microsoft 365 Community and Power CAT sessions; the daily run adds a link when one is verified.</p>
         )}
 
-        {(related.length > 0 || inbound.length > 0) && (
+        {(related.length > 0 || inbound.length > 0 || explained.length > 0) && (
           <>
             <SectionHead title="Related" id="related" />
             {atlasNode && <AtlasMini id={atlasNode.id} where={topic?.label ?? d.topic} links={atlasNode.n} />}
             <ul class="related">
               {related.map((r) => <li><a href={r.url}>{r.title}</a><span class="meta">{r.meta}</span></li>)}
+              {explained.map((c) => <li><a href={conceptUrl(c.data.slug)}>{c.data.title}</a><span class="meta">Concept</span></li>)}
               {inbound.map((f) => <li><a href={featureUrl(f.data.slug)}>{f.data.title}</a><span class="meta">Links here · {(TOPIC_BY_ID as any)[f.data.topic]?.label ?? f.data.topic}</span></li>)}
             </ul>
           </>
