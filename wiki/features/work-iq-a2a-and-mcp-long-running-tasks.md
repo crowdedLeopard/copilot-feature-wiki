@@ -114,6 +114,17 @@ changes:
   - date: "2026-11-16"
     note: "Added the Graph API for spending policies and a consumption-monitoring row, and reported the differing Work IQ MCP and Copilot Studio write-operation defaults."
 version: 2
+verification:
+  status: "verified-with-gaps"
+  date: "2026-11-16"
+  version: 2
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 80
+  confirmed: 79
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 0
 ---
 
 ## What's changing
@@ -215,4 +226,11 @@ The Cost Management Graph APIs are in beta, and Microsoft says APIs under /beta 
 risk: Medium. Tasks that run beyond a single request extend how long an agent acts on Microsoft 365 data, and Learn does not yet say how identity, result storage or audit apply to them.
 cost: Variable. Work IQ API use consumes Copilot Credits shared with other services; Microsoft has not published whether long-running tasks are priced differently.
 impact: Low. Developers and agent owners who call Work IQ over A2A or MCP notice it; end users only meet it through agents that adopt it.
+-->
+
+<!-- verifier-findings (2026-11-16, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
+- [supported, minor] controls[3].note; Scope / role: The enablement guide requires a Global Administrator for one-time Work IQ setup. | Found: A user with Global Administrator role for the one-time Work IQ setup | Fix: Keep the role requirement for manual setup, but add that the cited MCP overview says the service principal is created automatically on first use; manual provisioning is needed when it does not yet exist, for example before configuring policy. Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/overview. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq
+- [supported, minor] controls[1].api; Governance controls table / command: POST https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies creates a spending policy. | Found: For a group-scoped policy, follow the safe-create sequence: create the policy disabled, link its audience with Add assigned group, and let the service enable it once its requirements are satisfied. | Fix: Extend the note to explain that the printed create call alone does not attach a group: create disabled, then use the reference page's Add assigned group operation. If supplying nonempty assignedGroups during creation instead, also request CopilotCostManagement-Assignment.ReadWrite.All. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-create
+- [contradicted, minor] Governance guidance: At rollout; Governance controls table / consistency: The checklist's Auto-apply new services and email-alert controls lack explicit table coverage. | Found: Checklist: "Turn off Auto-apply new services" and "Set per-user and policy limits and alert recipients". The spending-policy row describes limits and service selection, but not automatic service inclusion or alerts. | Fix: Add explicit coverage for automatic inclusion of new services and spending-threshold email alerts, either as rows or by expanding the spending-policy row. Use the existing spending-policy management source and its Select agents and services and Set limits and alerts sections.
 -->

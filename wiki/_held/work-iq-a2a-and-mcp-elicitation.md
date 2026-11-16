@@ -103,6 +103,17 @@ changes:
   - date: "2026-11-16"
     note: "Corrected after verification: added the documented Graph beta spending-policy and usage-report calls, fixed the Consumption tab path, and removed unsupported claims about consent and who answers requests."
 version: 2
+verification:
+  status: "held"
+  date: "2026-11-16"
+  version: 2
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 63
+  confirmed: 62
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 1
 ---
 
 ## What's changing
@@ -207,4 +218,10 @@ Spending policies limit who can consume credits and how much; they do not decide
 risk: Medium. A task that can stop and ask for authorisation adds a new prompt path into agent runs, and Microsoft Learn documents no control specific to it; the existing Work IQ MCP tenant policy covers MCP tool requests only.
 cost: Variable. Work IQ API usage consumes Copilot Credits under usage-based billing; no rate or charge specific to elicitation is published.
 impact: Low. The roadmap item is aimed at A2A and MCP callers, so those who notice are developers, agent owners and the users their agents prompt; administrators see nothing unless they govern Work IQ access.
+-->
+
+<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
+The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
+- [supported, minor] Risk assessment: Autonomy & actions / default: The MCP policy page says mutation operations, including create, update, delete and actions such as sending email, are disallowed by default. | Found: By default, mutation operations aren't allowed for safety. This restriction includes create, update, delete, and action requests that modify data, such as sending email. | Fix: Retain the attribution to the MCP policy page, but add that https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq#work-iq-key-features says "Write operations are on by default. Your organization's permissions and policies still apply." Cite that page and advise checking the actual agent and tenant policy rather than treating the two descriptions as one universal default. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp
+- [contradicted, blocker] controls[1].api; Governance controls table / command: GET, POST, PATCH and DELETE all operate on https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies. | Found: Update spendingPolicy | PATCH `/copilot/costManagement/spendingPolicies/{id}` | Update a spending policy. ... Delete spendingPolicy | DELETE `/copilot/costManagement/spendingPolicies/{id}` | Delete a spending policy. | Fix: Replace the call in both front matter and rendered table with 'GET https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies (POST to create; PATCH and DELETE use https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/{id})'. The cited overview documents all four operations; PATCH and DELETE require the policy ID, as confirmed by its linked update and delete references. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview
 -->

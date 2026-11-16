@@ -88,6 +88,17 @@ changes:
   - date: "2026-11-16"
     note: "Corrected after verification: default state now follows the settings reference (On, preview), licensing is marked not yet published, paths and the sharing-limits PowerShell call were re-read, and unsupported role and environment-group claims were removed."
 version: 3
+verification:
+  status: "held"
+  date: "2026-11-16"
+  version: 3
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 56
+  confirmed: 53
+  unconfirmed: 0
+  contradicted: 3
+  attempts: 2
 ---
 
 ## What's changing
@@ -182,4 +193,15 @@ The two admin centre routes to this setting are documented in different articles
 risk: Medium. The Learn settings reference lists blocking as On by default, but the control does not unshare agents that are already shared, and the Learn pages describe it as preview.
 cost: Low. The only cost the sources show is admin and maker time; no feature-specific licence or Copilot Credit charge is published, and environment groups can only hold Managed Environments.
 impact: Medium. Makers meet blocked Share and Publish actions and must rework connections; end users are not asked to do anything.
+-->
+
+<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
+The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
+- [contradicted, blocker] What's changing: Publishing is disabled while enforcement is active / behaviour: Publishing is disabled whenever enforcement is active and an agent uses the maker's credentials at runtime. | Found: For authenticated agents, an agent that you didn't share can publish successfully, while an agent you already shared with another user is blocked from publishing when enforcement applies. | Fix: Qualify the sentence: 'For channels where publishing distributes the agent without a separate Share action, maker user credentials can disable publishing. For authenticated agents, an unshared agent can publish successfully; an already-shared violating agent is blocked.' Cite https://learn.microsoft.com/microsoft-copilot-studio/admin-sharing-controls-limits alongside the configuration article. | Source: https://learn.microsoft.com/microsoft-copilot-studio/admin-sharing-controls-limits
+- [supported, minor] controls[1].ui; Governance controls row 2 / admin-path: The group route is Power Platform admin center > Security > Threat detection > Sharing agent with embedded maker credentials > Environment groups or Environments > Set up. | Found: Environment groups: In the Environment groups tab, select the environment group for which you want to configure the setting.
+Environments: In the Environments tab, select the environment for which you want to configure the setting.
+Select Set up. | Fix: The pre-check's combined label is a choice between two real tabs, not an invented menu. Add the omitted target-selection step: 'Security > Threat detection > Sharing agent with embedded maker credentials > Environment groups > environment group > Set up', or the 'Environments > environment' alternative. | Source: https://learn.microsoft.com/power-platform/admin/security/control-sharing-agents-with-embedded-maker-credentials
+- [contradicted, blocker] controls[2].api; Governance controls row 3 / command: The printed Set-AdminPowerAppEnvironmentGovernanceConfiguration call, including '(set bot-limitSharingMode, bot-maxLimitUserSharing or bot-authoringSharingDisabled)', is a sharing-limits PowerShell command. | Found: Set-AdminPowerAppEnvironmentGovernanceConfiguration -EnvironmentName <EnvironmentId> -UpdatedGovernanceConfiguration $governanceConfiguration | Fix: Set controls[2].api.call to 'Set-AdminPowerAppEnvironmentGovernanceConfiguration -EnvironmentName <EnvironmentId> -UpdatedGovernanceConfiguration $governanceConfiguration' and update the rendered table. Move the parenthetical out of code into the note: first retrieve the environment's governanceConfiguration, then update settings.extendedSettings using the cited Add-Member examples. For example, bot-limitSharingMode='ExcludeSharingToSecurityGroups' and bot-maxLimitUserSharing='20' restrict viewer sharing; bot-authoringSharingDisabled=True disables Editor sharing. The current '(set ... or ...)' is prose, not documented executable syntax. | Source: https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits
+- [supported, minor] Risk assessment: Change & support / behaviour: Affected tools are marked Blocked with a Sharing policy violation message. | Found: These tools are marked as Blocked with a Sharing policy violation message explaining that a connection violates the administrator's connection-sharing policy. | Fix: Add the documented display qualification: 'If a tool is also restricted by a data policy, Copilot Studio displays Data policy violation instead.' The qualification changes the diagnostic label, not the remediation advice. | Source: https://learn.microsoft.com/microsoft-copilot-studio/admin-sharing-controls-limits
+- [contradicted, blocker] Scope: Not covered / applicability: Agents that are already shared are not covered by the control. | Found: A later publish of an already-shared agent can be blocked if the agent still contains unsafe embedded maker credentials. | Fix: Replace 'Not covered: Agents that use end-user credentials, and agents that are already shared' with 'Not restricted: connections using end-user credentials. Existing sharing and running agents are not retroactively disabled, but later publishing of an already-shared unsafe agent can be blocked.' This also resolves the conflict with What's changing and Why it matters. | Source: https://learn.microsoft.com/microsoft-copilot-studio/configure-sharing-agents-embedded-maker-credentials
 -->

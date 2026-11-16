@@ -91,6 +91,17 @@ changes:
   - date: "2026-11-16"
     note: "First briefing for this roadmap item: records the planned people data ACL support (In development, June CY2027 target) against today's documented everyone-visible limit."
 version: 1
+verification:
+  status: "held"
+  date: "2026-11-16"
+  version: 1
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 58
+  confirmed: 52
+  unconfirmed: 3
+  contradicted: 3
+  attempts: 1
 ---
 
 ## What's changing
@@ -198,4 +209,14 @@ The Permissions view and the Copilot Visibility toggle are documented on the con
 risk: Medium. Today Microsoft Learn says people connector data is visible to all users in the tenant; the planned ACL support narrows that, but how it is configured and enforced is not yet documented.
 cost: Low. The only cost the sources show is admin and developer time to build or change a connector; licensing for the new ACL capability is not yet published, and Copilot grounding on connector data needs a Copilot licence.
 impact: Low. Only admins and developers who build or run people connectors are affected directly; users would notice only when Copilot answers people questions with different data.
+-->
+
+<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
+The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
+- [unsupported, blocker] front matter: defaultState; Why it matters / default: The new ACL control is admin-opt-in and nothing changes on arrival if administrators do nothing. | Found: Searched: "people" "connectors" "access control" "default". Read the roadmap, graph/peopleconnectors and the people-data build guide; none states the new control's default. | Fix: Set defaultState to unknown. Replace 'If nobody acts, nothing changes on arrival' with 'Microsoft has not stated the new ACL control's default or whether existing connections change automatically.' Admin configuration of today's connectors does not establish the new control's default.
+- [unsupported, blocker] Why it matters / default: A connector built under today's rules will keep its everyone ACL after the new capability arrives. | Found: Searched: "people" "connectors" "existing" "ACL" update migration. Read the roadmap, graph/peopleconnectors, the people-data build guide and manage-access-permissions; none describes migration or the resulting ACLs of existing people connections. | Fix: Replace the assurance about existing ACLs with 'Microsoft has not documented how existing people connections with everyone ACLs will migrate; verify their permissions when rollout documentation is published.'
+- [unsupported, blocker] Why it matters; Cost and licensing; Governance guidance: At rollout; Governance controls / applicability: The general delete-and-recreate permission workflow establishes how people connectors must move to the planned ACL capability. | Found: Searched: "people" "connectors" "existing" "ACL" update migration. Opened manage-access-permissions and the people-data build guide; neither documents this feature's migration workflow. | Fix: Keep deletion and recreation explicitly labelled as today's general connector guidance, not the documented migration route for future people ACLs. Replace 'Plan to rebuild rather than edit' and the categorical At rollout instruction with advice to confirm the published migration process before deleting or rebuilding people connections.
+- [contradicted, blocker] controls[1].ui; Governance controls table / admin-path: The recorded path to a connector's permission model is Microsoft 365 admin center > Copilot > Connectors > Your Connections. | Found: Select the connector you want to review to open the details pane. ... Under Permissions, you can view the permissions set for the connector. | Fix: Set controls[1].ui.path to 'Copilot > Connectors > Your Connections > select the connector > Permissions' and update the rendered row. The listed path stops at the connections list, omitting both selection and the Permissions section, not just an item-selection step. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-access-permissions
+- [contradicted, blocker] controls[4].api; Governance controls table / absence: An API for removing the people connector is not yet documented. | Found: Deletes an externalConnection object. ... DELETE https://graph.microsoft.com/v1.0/external/connections/contosohr | Fix: Populate controls[4].api with kind 'graph', call 'DELETE https://graph.microsoft.com/v1.0/external/connections/{connectionId}', and docs 'https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-delete'. People connections use this externalConnection resource; retain the note about deletion delays and do not imply immediate profile-data purging. | Source: https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-delete?view=graph-rest-1.0
+- [contradicted, minor] Governance guidance: Before rollout and After rollout; Governance controls / consistency: The governance checklist names profile-property editing and connection monitoring controls without corresponding controls-table rows. | Found: Checklist: 'Review user editing ... in the SharePoint admin center' and 'Watch the Connection state ... and the service health notifications'. The table covers ACL scoping, Permissions, Copilot Visibility, creation and deletion only. | Fix: Add documented rows for profile-property user editing and connection monitoring, or remove those control-specific checklist instructions. Use the existing peopleconnectors citation for editing and manage-connector citation for Connection state and service health; read the linked editing instructions before adding an exact editing path.
 -->

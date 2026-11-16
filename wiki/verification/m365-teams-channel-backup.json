@@ -1,0 +1,708 @@
+{
+  "slug": "m365-teams-channel-backup",
+  "roadmapId": 570668,
+  "title": "Microsoft 365 Backup: Teams channel backup and recovery",
+  "status": "needs-correction",
+  "date": "2026-11-16",
+  "version": 2,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "grace",
+    "since": "2026-11-16",
+    "reasons": [
+      "10 blocking findings (claims 11, 18, 20, 24, 25, 27, 28, 41, 48, 52)",
+      "published before the check existed: kept live with a notice while a corrected version is prepared"
+    ]
+  },
+  "counts": {
+    "claims": 52,
+    "confirmed": 40,
+    "unconfirmed": 6,
+    "contradicted": 6,
+    "blocker": 10,
+    "major": 1,
+    "minor": 4
+  },
+  "summary": "Hold: the API shown for managing backup policies actually enables Backup Storage, and the briefing incorrectly says the existing workloads have a 30-day recovery window. Shared-channel coverage contradicts the page's own scope statement, while Teams restore destinations and administrator permissions are asserted without Teams-specific documentation.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status",
+      "type": "record",
+      "claim": "The roadmap item is in development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap lists December 2026 as the target.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"December CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "No preview date is given.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The release phases are General Availability and Targeted Release.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms",
+      "type": "record",
+      "claim": "The listed platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The listed products are Microsoft 365 and Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft 365\", \"Microsoft 365 admin center\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: defaultState",
+      "type": "default",
+      "claim": "Microsoft 365 Backup requires administrator configuration rather than end-user enablement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-setup",
+      "quote": "Only tenant-level admins can create and manage backups using Microsoft 365 Backup for their users. End users don't have the ability to enable backup or restores for their user account, distribution lists, mailboxes, or sites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: licensing.model, cost; summary; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Microsoft 365 Backup has a consumption-based pay-as-you-go licensing model.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-overview",
+      "quote": "Microsoft 365 Backup is a pay-as-you-go offering that charges based on consumption, unlike traditional user-based licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "Scope; What's changing; summary",
+      "type": "record",
+      "claim": "The roadmap covers teams, standard, private and public channels, and underlying messages and files.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Supported items include Team, Channels (Standard, Private, Public) and underlying data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Scope; Open questions",
+      "type": "consistency",
+      "claim": "What's changing includes shared channels, but Scope and Open questions say shared-channel coverage is not established.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "What's changing: \"standard, private and shared channels\". Scope: \"standard, private, public per the roadmap; shared channels not named\". Open questions: \"Whether chats, meeting recordings and shared channels are included.\"",
+      "severity": "blocker",
+      "fix": "Replace 'standard, private and shared channels' in What's changing with 'standard, private and public channels, using the roadmap's wording'. Keep shared-channel coverage as an open question; the record does not name shared channels."
+    },
+    {
+      "n": 12,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "The planned capability recovers team and channel data to a previously known good state after accidental changes or security compromises.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "A backup and recovery feature that lets you recover team & channel data (like files, messages exchanged over channels) in Microsoft Teams to a previously known good state after accidental changes or security compromises.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap states a supported retention period of 30 days.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Retention period supported is 30 days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap description does not specify chats or meeting content.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "A backup and recovery feature that lets you recover team & channel data (like files, messages exchanged over channels) in Microsoft Teams to a previously known good state after accidental changes or security compromises.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Existing Microsoft 365 Backup workloads include OneDrive accounts, SharePoint sites and Exchange mailboxes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-overview",
+      "quote": "With the ability to back up all or select SharePoint sites, OneDrive accounts, and Exchange mailboxes, Microsoft 365 Backup provides comprehensive coverage for your critical data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Existing workloads have frequent restore points.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-restore-data",
+      "quote": "| Full OneDrive account and full SharePoint site restore | 10 minutes | One week, through the configured recovery window of up to 10 years |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Microsoft 365 Backup provides fast restores through the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-overview",
+      "quote": "Microsoft 365 Backup provides ultra-fast backup and restore capabilities by creating backups within the protected services' data boundaries.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Before this capability, Purview retention and SharePoint recycle bins are the only safety nets and deleted channels have no clean recovery path.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/shared-channels",
+      "quote": "Deleted shared channel can be restored within 30 days after deletion. When a deleted shared channel is restored, all previous memberships (individual and team sharing) will be restored.",
+      "severity": "blocker",
+      "fix": "Remove the 'only safety nets' and 'no clean recovery path' assertions. Distinguish the planned point-in-time recovery from existing deleted-team and deleted-channel recovery, citing https://learn.microsoft.com/microsoftteams/shared-channels."
+    },
+    {
+      "n": 19,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Purview retention preserves Teams content but does not restore structure.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Teams retention policies restore messages. Opened learn.microsoft.com/purview/retention-policies-teams; it describes compliance copies and eDiscovery, not the asserted structural-restore limitation.",
+      "severity": "major",
+      "fix": "Replace the parenthesis with 'which preserves compliance copies searchable through eDiscovery' and cite https://learn.microsoft.com/purview/retention-policies-teams; remove the unsubstantiated structural-restore comparison."
+    },
+    {
+      "n": 20,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "The Teams 30-day recovery window matches the rest of Microsoft 365 Backup.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-whats-new",
+      "quote": "SharePoint and OneDrive backup policies now support recovery windows of 3 months, 6 months, or any whole number of years from 1 through 10. Exchange options remain 3 months, 6 months, 1 year, or 2 years.",
+      "severity": "blocker",
+      "fix": "Delete 'and the 30-day window matches the rest of Microsoft 365 Backup'. If comparing workloads, state that existing policies default to one year and offer configurable windows, citing the What's new page."
+    },
+    {
+      "n": 21,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Backup restores can recover previously deleted content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-restore-data",
+      "quote": "Once you back up your data, you might need to restore the data if there was an accidental deletion, ransomware attack, or other event.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Microsoft 365 Backup data remains within the Microsoft 365 trust boundary and respects data residency.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-overview",
+      "quote": "Data never leaves the Microsoft 365 data trust boundary and honors the geographic locations of your current data residency. Limited metadata (for example, tenantID and siteIDs) sent to Azure for billing purposes only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Existing Microsoft 365 Backup workloads support multi-geo.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-overview",
+      "quote": "Microsoft 365 Backup supports the backup of sites and user accounts from both the central and satellite locations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "SharePoint Administrators will have authority to overwrite live Teams channel content through restore.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Backup Teams channel restore SharePoint Administrator new location default opt in pricing. Opened backup-setup and backup-restore-data; the role matrix covers OneDrive, SharePoint and Exchange, not Teams.",
+      "severity": "blocker",
+      "fix": "Remove the Teams-specific SharePoint Administrator assignment. Describe the existing role matrix only as background and state that Microsoft has not yet documented the role mapping for Teams channel restores."
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Security & identity; Scope",
+      "type": "role",
+      "claim": "Microsoft 365 Backup Administrators will have authority to overwrite live Teams channel content through restore.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Backup Teams channel backup pricing default enable policy roles shared channels restore new location. Opened backup-setup and backup-restore-data; neither documents Teams restore permissions.",
+      "severity": "blocker",
+      "fix": "Qualify the role description as applying to currently documented workloads. Replace the unqualified Teams restore-permission assertion with 'Teams backup and restore roles are not yet documented'."
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Security & identity; Cost and licensing",
+      "type": "behaviour",
+      "claim": "Departmental billing can restrict backup management to administrators with access to the relevant Azure subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-billing",
+      "quote": "To limit admins who can manage Backup within a department or group, every backup admin should also have an Owner or Contributor role on the subscription.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/microsoft-365/backup/backup-billing to sources and specify that departmental billing restricts backup-policy creation and editing through Azure Owner or Contributor access, not all restore authority."
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Change & support; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "Teams channel restoration supports an in-place operation that replaces current content.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Backup Teams channel restore SharePoint Administrator new location default opt in pricing. Opened backup-restore-data; its destination workflows cover OneDrive, SharePoint and Exchange, not Teams.",
+      "severity": "blocker",
+      "fix": "State that in-place overwrite behaviour is documented for existing workloads but not yet for Teams. Make the Teams overwrite warning conditional on the eventual restore design."
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "applicability",
+      "claim": "A team can be restored to a new location without overwriting existing content, with changed links.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Backup Teams channel backup pricing default enable policy roles shared channels restore new location. Opened backup-restore-data and backup-whats-new; new-location restores are not documented for Teams.",
+      "severity": "blocker",
+      "fix": "Replace the new-location assertion and test instruction with 'When Teams restore options are documented, test a supported restore destination and record overwrite and link behaviour'. Add restore destinations to Open questions."
+    },
+    {
+      "n": 29,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "cost",
+      "claim": "Microsoft 365 Backup billing uses an Azure subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-setup",
+      "quote": "As a first step, you should link an Azure subscription in pay-as-you-go, if you haven't already done so.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "cost",
+      "claim": "Existing Microsoft 365 Backup workloads have a list price of $0.15 per GiB per month of protected content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-pricing",
+      "quote": "The list price is $0.15/GiB/month of protected content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The existing protected-content meter includes live content and deleted or versioned data held for recovery.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-pricing",
+      "quote": "Summation of the user-facing size of the protected content:\nSummation of the deleted and versioned data held for recovery in the backups:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "A Teams-specific backup price has not yet been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams\" \"backup\" \"pricing\" \"policy\" \"Microsoft 365 Backup\". Opened backup-pricing, backup-overview and backup-whats-new; pricing describes OneDrive, SharePoint and Exchange, not a Teams-specific rate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Cost and licensing; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The Billing > Pay-as-you-go experience offers budget alerts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node",
+      "quote": "To send budget spending alerts, in the Recipients box, select the name of one or more groups that you want to receive alert messages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "The pay-as-you-go setup experience supports creating an Azure subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node",
+      "quote": "From the Subscription drop-down list, select an existing Azure subscription, or select Create a new subscription.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "Microsoft 365 Backup for existing workloads is available in GCC.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-overview",
+      "quote": "Microsoft 365 Backup is now available for Government Community Cloud (GCC) organizations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Scope",
+      "type": "role",
+      "claim": "The existing Backup setup guide names SharePoint Administrator or Global Administrator for setup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-setup",
+      "quote": "You must be a SharePoint Administrator or Global Administrator to be able to access the Microsoft 365 admin center and set up Microsoft 365 Backup.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Scope",
+      "type": "role",
+      "claim": "Microsoft 365 Backup Administrator can manage the currently documented Backup workloads.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-setup",
+      "quote": "We have also introduced a new dedicated role for this tool, the Microsoft 365 Backup Administrator, that can control the entire tool.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Governance guidance: Before rollout",
+      "type": "date",
+      "claim": "Customers onboarded before April 2026 can migrate to the new billing experience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-whats-new",
+      "quote": "Customers onboarded before April 1, 2026 can use Migrate to move Microsoft 365 Backup pay-as-you-go billing management from Setup or Org settings into the Billing experience in the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Governance guidance: At rollout; Governance controls",
+      "type": "behaviour",
+      "claim": "Backup event email digests can be configured from the Microsoft 365 Backup home page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-setup",
+      "quote": "Go to the Email notifications option on the Microsoft 365 Backup home page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Backup policy configuration is reached through Microsoft 365 admin center > Settings > Microsoft 365 Backup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies#create-backup-policies",
+      "quote": "Select Settings.\nSelect Microsoft 365 Backup from the list of products.\nOn the Microsoft 365 Backup page, in the SharePoint section, select Set up policy.",
+      "severity": "minor",
+      "fix": "Extend the policy path to 'Settings > Microsoft 365 Backup > workload > Set up policy', explaining that the documented workload sections are SharePoint, OneDrive and Exchange; Teams configuration is not yet documented."
+    },
+    {
+      "n": 41,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "POST /solutions/backupRestore/enable is the API equivalent of configuring backup policies per workload and restore points.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/graph/api/backuprestoreroot-enable?view=graph-rest-1.0",
+      "quote": "Enable the Microsoft 365 Backup Storage service for a tenant.",
+      "severity": "blocker",
+      "fix": "Remove this endpoint from the policy-management row: it enables Backup Storage rather than configuring policies or restore points. If retained as a separate enablement control, label it accordingly and use 'POST /v1.0/solutions/backupRestore/enable' with the controller-app restriction."
+    },
+    {
+      "n": 42,
+      "where": "controls[0].note; Governance controls table",
+      "type": "command",
+      "claim": "The enable API is intended for registered Backup Controller applications and requires BackupRestore-Control.ReadWrite.All.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/backuprestoreroot-enable?view=graph-rest-1.0",
+      "quote": "These APIs are intended for use by registered Backup Controller applications.\n| Application | BackupRestore-Control.ReadWrite.All | Not available. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[1].ui; Governance controls table; Cost and licensing",
+      "type": "admin-path",
+      "claim": "Billing policy creation is at Microsoft 365 admin center > Billing > Pay-as-you-go > Billing policies > Add a billing policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node",
+      "quote": "Sign in to the Microsoft 365 admin center, and then go to Billing > Pay-as-you-go.\nOn the Billing policies tab, select Add a billing policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[1].api; Governance controls table",
+      "type": "absence",
+      "claim": "An API equivalent for the direct-service pay-as-you-go billing policy and budget-alert wizard is not yet documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Backup billing policy budget alerts API PowerShell. Opened pay-as-you-go-setup-billing-node and backup/storage/backup-3p-billing; the latter's New-SPOAppBillingPolicy applies to controller applications, not this billing-policy and budget wizard.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[2].ui; controls[2].api; controls[2].note; Governance controls table",
+      "type": "absence",
+      "claim": "Teams channel workload configuration in backup policies has no documented admin UI or API yet.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Backup Teams channel policy enable. Opened backup-setup, backup-view-edit-policies, backup-whats-new and graph/api/resources/backuprestoreroot; the workload policy documentation covers SharePoint, OneDrive and Exchange, not Teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Pay-as-you-go billing is configured before creating backup policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-setup",
+      "quote": "1. Set up pay-as-you-go billing\n2. Create backup policies to protect your data",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The Backup Storage enable API is intended for controller applications rather than ordinary tenant-admin Graph PowerShell scripting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/backuprestoreroot-enable?view=graph-rest-1.0",
+      "quote": "If this API is called via Microsoft Graph PowerShell, it returns a 403 Forbidden response code because the Microsoft Graph PowerShell SDK isn't a supported client for these operations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Governance controls",
+      "type": "admin-path",
+      "claim": "Departmental billing is configured in the same Backup pages as notification digests.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-billing",
+      "quote": "In the Services tab of Pay-as-you-go page, select Microsoft 365 Backup.\nTo enable departmental billing, in the Settings tab of Microsoft 365 Backup page, select the checkbox for limiting management of Backup within departments.",
+      "severity": "blocker",
+      "fix": "Separate the locations: notifications are under Settings > Microsoft 365 Backup > Email notifications; departmental billing is under Billing > Pay-as-you-go > Services > Microsoft 365 Backup > Settings. Cite backup-setup and backup-billing respectively."
+    },
+    {
+      "n": 49,
+      "where": "Governance controls",
+      "type": "cost",
+      "claim": "Microsoft 365 Backup billed consumption can be viewed by meter in Azure Cost Management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-billing",
+      "quote": "You can view actual and accumulated cost breakdown by tenants and service type for OneDrive, SharePoint, and Exchange in Microsoft Cost Management in the Azure portal",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/microsoft-365/backup/backup-billing to sources for consumption and meter reporting."
+    },
+    {
+      "n": 50,
+      "where": "Open questions",
+      "type": "behaviour",
+      "claim": "SharePoint granular file and folder restore has a 14-day recovery-point window.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-restore-data",
+      "quote": "Granular file and folder restore is available only for recovery points within the most recent 14 days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance guidance: At rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist instructs readers to configure email notifications, but the controls table has no notification row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: \"Configure email notifications for backup events to the operations team.\" Controls rows: backup policies, billing policies and budget alerts, and Teams channel workload.",
+      "severity": "minor",
+      "fix": "Add an email-notification control row with the UI path 'Settings > Microsoft 365 Backup > Email notifications' and https://learn.microsoft.com/microsoft-365/backup/backup-setup#enable-email-notifications; research its API side separately."
+    },
+    {
+      "n": 52,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "Teams channel backup will launch worldwide only, excluding other clouds.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Backup Teams channel backup pricing default enable policy roles shared channels restore new location. Opened backup-overview and backup-whats-new. The roadmap lists Worldwide; no read source explicitly excludes other clouds for Teams.",
+      "severity": "blocker",
+      "fix": "Replace 'worldwide only' and 'Worldwide ... at launch' with 'The roadmap lists Worldwide (Standard Multi-Tenant); other clouds are not listed'. Do not turn the roadmap's omission into an exclusion."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-16T18:26:35.137Z",
+    "summary": {
+      "links": 10,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=570668",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/backup/backup-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/backup/backup-pricing",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/backup/backup-setup",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/backup/backup-restore-data",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/backup/backup-whats-new",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies#create-backup-policies",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/backuprestoreroot-enable?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/backup/backup-setup#2-create-backup-policies-to-protect-your-data",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Backup policies per workload and restore points",
+        "docs": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies#create-backup-policies",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Microsoft 365 Backup"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Backup policies per workload and restore points",
+        "docs": "https://learn.microsoft.com/graph/api/backuprestoreroot-enable?view=graph-rest-1.0",
+        "reachable": true,
+        "token": "POST /solutions/backupRestore/enable",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Pay-as-you-go billing policy and budget alerts for backup",
+        "docs": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node",
+        "reachable": true,
+        "segments": [
+          "Billing",
+          "Pay-as-you-go",
+          "Billing policies",
+          "Add a billing policy"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

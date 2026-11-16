@@ -4,7 +4,7 @@ slug: "viva-engage-my-team-audiences-and-flexible-targeting-for-leader-communica
 roadmapId: 499895
 topic: "modern-work"
 products: ["Microsoft Viva"]
-summary: "Leaders and delegates will be able to pick My Team, a saved audience or a custom one when they post a Storyline Announcement. Targeted for January 2027; Microsoft says no admin action is required."
+summary: "Leaders and delegates will be able to pick My Team, a saved audience or a custom one when they post a Storyline Announcement. Targeted for January CY2027; Microsoft says no admin action is required."
 status: "in-development"
 releasePhase: ["General Availability"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -18,7 +18,7 @@ defaultState: "on"
 action: "act-now"
 licensing:
   model: "per-user"
-  notes: "Microsoft's notice MC1183013 says the feature requires a premium licence available through Viva or Communications and Communities (C&C), and that availability may vary by agreement. No price is published."
+  notes: "MC1183013 says a premium licence available through Viva or Communications and Communities (C&C) is required; the Microsoft Support page says the Viva Suite licence. No price is published."
 audiences: ["m365-admin","service-owner","change-adoption"]
 tags: ["viva-engage","delegation","entra-id","governance","licensing","user-experience"]
 sources:
@@ -28,6 +28,9 @@ sources:
   - title: "MC1183013: (Updated) Microsoft Viva Engage: Flexible targeting of Storyline Announcements"
     url: "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1183013"
     kind: "message-center"
+  - title: "Storyline announcements in Viva Engage"
+    url: "https://support.microsoft.com/topic/8db19630-ecd0-4d1e-b735-437aea62e248"
+    kind: "docs"
   - title: "The role of leaders"
     url: "https://learn.microsoft.com/viva/engage/leadership-identification"
     kind: "learn"
@@ -44,7 +47,7 @@ controls:
       path: "Feature management > Leadership identification and audiences > Manage leaders > leader (pencil icon) > Manage audiences"
       docs: "https://learn.microsoft.com/viva/engage/leadership-identification"
     api: null
-    note: "Existing control for pre-configured audiences. Microsoft has not said it governs My Team or publish-time targeting. Roles: Engage admin, verified admin, network admin, corporate communicator."
+    note: "Existing control for pre-configured audiences. Microsoft has not said it governs My Team or publish-time targeting. Only admin roles can enable Entire organization."
   - governs: "Who can act for a leader and configure the leader's audiences"
     scope: "user"
     ui:
@@ -60,7 +63,7 @@ controls:
       path: "Feature management > Storyline > Advanced Settings > Edit > Specify storyline creators"
       docs: "https://learn.microsoft.com/viva/engage/eac-storyline"
     api: null
-    note: "Limits who has a storyline and can post to it. Microsoft has not confirmed it restricts announcement targeting."
+    note: "Limits who has a storyline and can create storyline posts. Microsoft has not confirmed it restricts announcement targeting."
   - governs: "Review of changes to leaders and their audiences"
     scope: "tenant"
     ui:
@@ -81,87 +84,91 @@ roadmapModified: "2026-11-03T00:14:11"
 changes:
   - date: "2026-11-16"
     note: "First briefing for this item, using roadmap record 499895 and Message Center post MC1183013 (updated 2 November 2026)."
-version: 1
+  - date: "2026-11-16"
+    note: "Added Microsoft Support's Public Preview documentation of My Team and flexible targeting, reconciled the licence wording (Viva Suite versus Viva or C&C) and added the recipient notification licence requirement."
+version: 2
 verification:
   status: "held"
   date: "2026-11-16"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 70
-  confirmed: 69
+  claims: 69
+  confirmed: 67
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
+  contradicted: 2
+  attempts: 2
 ---
 
 ## What's changing
 
-Microsoft plans to let leaders and their delegates choose who receives a Storyline Announcement at the time they post it, instead of relying only on the pre-configured Leader Audiences an administrator or delegate manager sets up. The roadmap item describes the choices as organisational attributes (department, job title, country), existing groups (Microsoft 365 groups, distribution lists, security groups) and individual users by name, and says audiences can be saved for reuse.
+Microsoft plans to let leaders and their delegates choose who receives a Storyline Announcement at the time they post it, instead of relying only on the pre-configured Leader Audiences set up in the Viva Engage admin center. The roadmap item describes the choices as organisational attributes (department, job title, country), existing groups (Microsoft 365 groups, distribution lists, security groups) and individual users by name, and says audiences can be saved for reuse.
 
-Microsoft's notice MC1183013 adds **My Team**: a ready-made audience that is kept up to date from the organisational hierarchy and covers the people who report up to the leader, directly or indirectly. According to the notice, leaders and delegates can use My Team as it is, review its membership, or customise and save it as a reusable audience. The notice also says My Team is meant to feed Storyline Announcements, audience analytics, Leadership Corner and feed and digest distribution. Recipients keep the existing Teams, email and Viva Engage Inbox notifications.
+Microsoft's notice MC1183013 adds **My Team**, an audience kept up to date from the reporting structure that covers people who report up to the leader, directly or indirectly. Microsoft Support documents My Team and flexible targeting as Public Preview on its Storyline announcements page, so the behaviour may change before general availability. It says leaders and delegates can use My Team as it is, review its membership, or customise and save it as a reusable audience, and that attribute-based audiences are built with dynamic filters that show an audience size and a user preview before posting. Notification channels and settings stay consistent with existing Storyline Announcements. Microsoft Learn's pages on leaders and storyline do not yet describe My Team or publish-time targeting.
 
-Microsoft Learn does not yet describe My Team or the publish-time targeting, so the behaviour above is Microsoft's description in the roadmap item and the notice, not a documented design. The roadmap shows status In development, target January CY2027, platforms Desktop and Web, Worldwide (Standard Multi-Tenant) only, with no preview date. The notice, updated 2 November 2026, gives General Availability as beginning mid-January 2027 (previously early November 2026) and completing by late February 2027 (previously late November 2026). It also describes a Public Preview that began mid-November 2025 and completes by mid-March 2026, and says options may change before general availability. The notice sets no act-by date.
+The roadmap shows status In development, target January CY2027, platforms Desktop and Web, Worldwide (Standard Multi-Tenant) only, with no preview date. The notice, updated 2 November 2026, gives General Availability as beginning mid-January 2027 (previously early November 2026) and completing by late February 2027 (previously late November 2026). It also describes a Public Preview that began mid-November 2025 and completes by mid-March 2026 (previously early February). The notice sets no act-by date and says no admin action is required for rollout.
 
 ## Why it matters
 
-Today the audiences a leader can reach are shaped by the admin-side Leader Audiences page. Publish-time targeting moves part of that decision to the leader, so the quality of your people data and your leader and delegate assignments start to decide who gets an announcement. The notice itself asks administrators to check organisational attributes in Microsoft Entra ID or Organizational Data in Microsoft, and to confirm leader and delegate assignments.
+Today the audiences a leader can reach are shaped by the Manage audiences page in the Viva Engage admin center. Publish-time targeting moves part of that decision to the leader, so the quality of your people data and your leader and delegate assignments start to decide who gets an announcement. Microsoft Support says the availability and accuracy of organisational attributes depend on the data maintained in your network, and the notice asks administrators to check attributes in Microsoft Entra ID or Organizational Data in Microsoft.
 
-If nobody acts, the feature still arrives as planned. The likely result is announcements that reach the wrong group because a manager, department or country attribute is stale, and help-desk questions about why someone received, or missed, a leadership message. Because Learn documents no tenant switch for the new targeting, the controls you have are the ones that decide who is a leader and who is a delegate.
+If nobody acts, the feature still arrives as planned. The likely result is announcements that miss or reach the wrong group because a manager, department or country value is stale, and questions about why someone received, or did not receive, a leadership message. Because Microsoft documents no tenant switch for the new targeting, the controls you have are the ones that decide who is a leader and who is a delegate manager.
 
 ## Risk assessment
 
 **Data exposure**
 
-- A leader or delegate can address an announcement to people chosen by attribute, group or name. Recipients are only as correct as the underlying Entra ID or Organizational Data values, so a wrong manager or department attribute can send a message to the wrong people. My Team depends on the reporting hierarchy in the same way.
-- Saved custom audiences are reusable, so a poorly built audience can keep mis-targeting later announcements. How saved audiences are listed or reviewed by administrators is not yet documented.
+- A leader or delegate can address an announcement to people chosen by attribute, group or name. Recipients are only as correct as the underlying user-profile and reporting-structure data, so a wrong manager or department value can send a message to the wrong people. My Team depends on the reporting structure in the same way.
+- Saved audiences are reusable, so a poorly built one can keep mis-targeting later announcements. Microsoft documents no administrator view of saved audiences at the time of writing (November 2026).
 
 **Security & identity**
 
-- Learn documents that, for pre-configured audiences, only Engage admins, verified admins, network admins and corporate communicators can enable **Entire organization**. Microsoft has not said whether publish-time targeting respects that limit, so broad attribute or group selections might approximate an organisation-wide post. Treat this as an open question until Microsoft documents it.
-- Delegate managers can already configure a leader's audiences and assign further delegates, so the people who hold that role matter more once they can also target at publish time.
+- For pre-configured audiences, Learn says only Engage admins, Viva Engage verified admins, Viva Engage network admins and corporate communicators can allow a leader to reach the **Entire organization**. Microsoft has not said whether publish-time targeting respects that limit, so broad attribute or group selections might approximate an organisation-wide post. This is an open question.
+- Delegate managers can already configure a leader's audiences and assign further delegates, so who holds that role matters more once the same people can also target at publish time.
 
 **Autonomy & actions**
 
-- No change to autonomy: a person writes and sends each announcement. The roadmap and notice describe no automated sending.
+- No change to autonomy: a person writes and sends each announcement. Neither the roadmap nor the notice describes automated sending.
 
 **Change & support**
 
 - Microsoft has moved the General Availability start from early November 2026 to mid-January 2027, so plan against the notice rather than the earlier date.
-- Learn documents an activity log on the Manage leaders page for changes to leaders and their audiences. It does not say that audiences chosen at publish time appear there.
+- Learn documents a 30-day activity log on the Manage leaders page for changes to leaders and their audiences. It does not say that audiences chosen at publish time appear there.
 
 ## Cost and licensing
 
-Microsoft's notice MC1183013 says the feature "requires a premium license available through Viva or Communications and Communities (C&C)" and that availability may vary with your Microsoft 365 licensing agreement. This is consistent with the Learn page on the role of leaders, which says identified leaders with a licence to the Viva Engage Communities and Communications service plan have access to storyline announcements, leadership corner, campaigns and AMAs.
+The licence is described differently on different Microsoft pages. Notice MC1183013 says the feature "requires a premium license available through Viva or Communications and Communities (C&C)" and that availability may vary with your Microsoft 365 licensing agreement. The Microsoft Support page on Storyline announcements says "This capability requires the Viva Suite license." The Learn page on the role of leaders says identified leaders with a licence to the Viva Engage Communities and Communications service plan have access to storyline announcements, leadership corner, campaigns and AMAs (Asks Me Anything sessions). Confirm the applicable entitlement against your agreement.
 
-No price, credit rate or separate meter for flexible targeting is published at the time of writing (November 2026). The indirect cost is admin and communications time: checking Entra ID or Organizational Data attributes and briefing leaders and delegates. Whether recipients of an announcement need any particular licence is not yet published.
+On recipients, Microsoft Support says people need a licence to the Viva Engage Communities and Communications service plan to receive announcement notifications through Outlook and Microsoft Teams. That is a requirement for those notification channels, not a statement that viewing an announcement needs the premium licence.
+
+No price, credit rate or separate meter for flexible targeting is published at the time of writing (November 2026). The indirect cost is admin and communications time: checking people data and briefing leaders and delegates.
 
 ## Scope
 
-- **Who uses it:** leaders and their delegates posting Storyline Announcements. The notice says it affects tenants enrolled in public preview during that phase.
+- **Who uses it:** leaders, their delegates, delegate managers and corporate communicators posting Storyline Announcements. Microsoft Support says users identified as leaders with a configured audience can post announcements.
 - **Clouds and platforms:** the roadmap lists Worldwide (Standard Multi-Tenant), Desktop and Web. Other clouds are not listed on the roadmap item.
-- **Prerequisites:** leaders must already be identified in the Viva Engage admin center. Learn says leader identification and audience management are required for storyline announcements to work.
-- **Existing limits:** Learn states a leader can add up to 40 audiences for pre-configured audiences. Whether that limit applies to saved audiences in the new experience is not yet documented.
-- **Rollout:** the notice says no admin action is required for rollout and that leaders need no advance audience setup. Release dates are in What's changing.
+- **Prerequisites:** leaders must already be identified in the Viva Engage admin center; Learn says leader identification and audience management are required for storyline announcements to work.
+- **Existing limit:** Learn states that a leader can add up to 40 audiences. Whether that limit applies to saved audiences in the new experience is not yet documented.
+- **Rollout:** the notice says no admin action is required and that leaders need no advance audience setup. Release dates are in What's changing.
 
 ## Governance guidance
 
 ### Before rollout
 
 - Check department, job title, country and manager values for leaders' organisations in Microsoft Entra ID or Organizational Data in Microsoft, as the notice advises; My Team and attribute targeting depend on them.
-- Review the **Manage leaders** list in the Viva Engage admin center and remove leaders who no longer need storyline announcements. The Engage admin, verified admin, network admin and corporate communicators can edit it.
+- Review the **Manage leaders** list in the Viva Engage admin center and remove leaders who no longer need storyline announcements.
 - Review who holds delegate or delegate manager rights for each leader, because delegate managers can configure a leader's audiences.
-- Tell leaders and delegates that recipients are chosen at publish time and that delivery channels do not change.
+- Tell leaders and delegates that recipients can be chosen at publish time and that notification channels do not change.
 
 ### At rollout
 
-- Pilot with one leader whose reporting line you have checked and compare My Team membership with the real team before wider use.
-- Check that **Entire organization** is still enabled only for the leaders who should have it, and test whether a broad attribute selection reaches more people than intended.
+- Pilot with one leader whose reporting line you have checked and compare the My Team membership with the real team before wider use.
+- Check that **Entire organization** is enabled only for the leaders who should have it, and test whether a broad attribute selection reaches more people than intended.
 
 ### After rollout
 
 - Watch the activity log on the **Manage leaders** page for leader and audience changes; it covers the last 30 days.
-- Collect help-desk reports of misdirected or missed announcements and trace them to attribute or delegate errors.
+- Trace help-desk reports of misdirected or missed announcements to attribute or delegate errors.
 - Watch Message center and the Learn page on the role of leaders for documentation of My Team and any admin setting.
 
 ## Governance controls
@@ -171,33 +178,35 @@ No price, credit rate or separate meter for flexible targeting is published at t
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which leaders exist and which audiences each can reach</strong><br><small>User</small><br><small class="controls__note">Existing control for pre-configured audiences. Microsoft has not said it governs My Team or publish-time targeting. Roles: Engage admin, verified admin, network admin, corporate communicator.</small></td><td data-label="Admin UI"><strong>Viva Engage admin center</strong><br>Feature management › Leadership identification and audiences › Manage leaders › leader (pencil icon) › Manage audiences <a href="https://learn.microsoft.com/viva/engage/leadership-identification" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which leaders exist and which audiences each can reach</strong><br><small>User</small><br><small class="controls__note">Existing control for pre-configured audiences. Microsoft has not said it governs My Team or publish-time targeting. Only admin roles can enable Entire organization.</small></td><td data-label="Admin UI"><strong>Viva Engage admin center</strong><br>Feature management › Leadership identification and audiences › Manage leaders › leader (pencil icon) › Manage audiences <a href="https://learn.microsoft.com/viva/engage/leadership-identification" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Who can act for a leader and configure the leader's audiences</strong><br><small>User</small><br><small class="controls__note">Set by the leader in the Engage app in Teams. Delegate managers can configure the leader's audiences.</small></td><td data-label="Admin UI"><strong>Viva Engage (leader)</strong><br>ellipsis (...) menu next to your profile picture › Delegate management <a href="https://learn.microsoft.com/viva/engage/leadership-identification" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Who can post to a storyline</strong><br><small>Tenant</small><br><small class="controls__note">Limits who has a storyline and can post to it. Microsoft has not confirmed it restricts announcement targeting.</small></td><td data-label="Admin UI"><strong>Viva Engage admin center</strong><br>Feature management › Storyline › Advanced Settings › Edit › Specify storyline creators <a href="https://learn.microsoft.com/viva/engage/eac-storyline" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Who can post to a storyline</strong><br><small>Tenant</small><br><small class="controls__note">Limits who has a storyline and can create storyline posts. Microsoft has not confirmed it restricts announcement targeting.</small></td><td data-label="Admin UI"><strong>Viva Engage admin center</strong><br>Feature management › Storyline › Advanced Settings › Edit › Specify storyline creators <a href="https://learn.microsoft.com/viva/engage/eac-storyline" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Review of changes to leaders and their audiences</strong><br><small>Tenant</small><br><small class="controls__note">Covers the past 30 days. Not documented to include audiences chosen at publish time.</small></td><td data-label="Admin UI"><strong>Viva Engage admin center</strong><br>Feature management › Leadership identification and audiences › Manage leaders › activity log <a href="https://learn.microsoft.com/viva/engage/leadership-identification" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Tenant-wide switch for My Team and publish-time targeting</strong><br><small>Tenant</small><br><small class="controls__note">No such control is documented at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-The controls that exist today govern leaders, delegates and storyline in general. Microsoft has not documented a control that switches off or restricts My Team or publish-time targeting, so the last row states that gap. Roles that can edit leader audiences are listed on the Learn page: Engage admin, verified admin, network admin, corporate communicator, and the leader's delegate managers. Storyline settings are managed by Engage administrators.
+The controls that exist today govern leaders, delegates and storyline in general. Microsoft has not documented a control that switches off or restricts My Team or publish-time targeting, and the last row states that gap. A search of Microsoft Learn for a PowerShell, Graph or other API for leader audiences returned nothing at the time of writing (November 2026), so the API side of each row is not documented.
+
+Roles that can edit leader audiences are listed on the Learn page: Engage admin, verified admin, network admin, corporate communicator, and the leader or the leader's delegate managers. Only the first four can enable **Entire organization**. Storyline settings are managed by Engage administrators.
 
 ## Open questions
 
 - Does publish-time targeting respect the **Entire organization** limit that only admins can enable for pre-configured audiences? Watch the Learn page on the role of leaders.
-- Is there an admin setting to turn off My Team or custom audiences, or to limit them to chosen leaders? None is documented at the time of writing (November 2026).
-- Which exact licence or service plan does the feature need, and does it differ from the Communications and Communities service plan already needed for storyline announcements? Watch Message center and Viva Engage licensing pages.
+- Is there an admin setting to turn off My Team or custom audiences, or to limit them to chosen leaders? None is documented at the time of writing (November 2026); watch Message center.
+- Which licence does the feature need: the Viva Suite licence named on the Support page, or the Viva or Communications and Communities (C&C) licence named in MC1183013? Watch the Viva Engage licensing pages.
 - Will audiences chosen at publish time, and saved custom audiences, appear in the Manage leaders activity log or any audit record?
 - Does the 40-audience limit apply to saved audiences, and can administrators list or remove them?
 
 <!-- rationale
-risk: Medium. Leaders and delegates choose recipients at the moment of posting, without an administrator pre-configuring the audience, and Microsoft Learn documents no switch for the new targeting.
-cost: Low. Microsoft's notice says a premium Viva or Communications and Communities (C&C) licence is required, and no separate meter or price is published; the visible cost is admin time to check people data.
+risk: Medium. Leaders and delegates choose recipients at the moment of posting, using people data you maintain, and Microsoft documents no tenant switch for the new targeting at the time of writing (November 2026).
+cost: Low. Microsoft's notice MC1183013 says a premium Viva or Communications and Communities (C&C) licence is required and no price or meter is published; the visible cost is admin time to check people data.
 impact: Medium. Leaders, their delegates and the people they message notice it; other users see no change to how announcements are delivered.
 -->
 
 <!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
 The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [supported, minor] What's changing: documentation caveat / absence: Microsoft Learn does not yet describe My Team or publish-time targeting, so the briefing treats their behaviour as roadmap and notice descriptions rather than a documented design. | Found: Searched: Viva Engage My Team audiences; Viva Engage flexible targeting licensing. Opened leadership-identification and eac-storyline; no Learn feature guide found. Opened Microsoft Support's Storyline announcements in Viva Engage, which does document My Team and targeting as Public Preview. | Fix: Keep the narrow Learn gap if desired, but replace the implication that no feature guide exists with: 'Microsoft Support documents My Team and flexible targeting as Public Preview; behaviour may change before general availability.' Add https://support.microsoft.com/topic/8db19630-ecd0-4d1e-b735-437aea62e248 to sources. Searches for Viva Engage My Team audiences and flexible targeting returned surrounding Learn documentation, while this opened Support page describes the feature directly.
-- [supported, minor] Cost and licensing: first paragraph / licensing: Learn says identified leaders licensed for the Viva Engage Communities and Communications service plan can use storyline announcements, leadership corner, campaigns and AMAs. | Found: Identified leaders with a license to the Viva Engage Communities and Communications service plan have access to storyline announcements, leadership corner, campaigns, and AMAs. | Fix: Retain the cited Learn statement, but acknowledge that https://support.microsoft.com/topic/8db19630-ecd0-4d1e-b735-437aea62e248 instead says 'This capability requires the Viva Suite license.' Cite that guide and explain that MC1183013 and Learn describe Viva/C&C eligibility while Support uses narrower Viva Suite wording; confirm the applicable entitlement against the tenant agreement. | Source: https://learn.microsoft.com/viva/engage/leadership-identification
-- [contradicted, blocker] Cost and licensing: final sentence / absence: Whether announcement recipients need any particular licence is not yet published. | Found: To receive announcement notifications through Outlook and Microsoft Teams, you’ll need a license to the Viva Engage Communities and Communications service plan. | Fix: Replace the sentence with: 'Microsoft Support says recipients need the Viva Engage Communities and Communications service plan to receive announcement notifications through Outlook and Microsoft Teams. This is a notification-channel requirement, not a statement that all viewing requires that premium licence.' Cite https://support.microsoft.com/topic/8db19630-ecd0-4d1e-b735-437aea62e248. | Source: https://support.microsoft.com/topic/8db19630-ecd0-4d1e-b735-437aea62e248
+- [supported, minor] front matter: licensing.model / licensing: The required premium licensing is per user. | Found: Microsoft Viva Suite ... $12.00 ... user/month, paid yearly ... (Annual commitment) | Fix: Add https://www.microsoft.com/microsoft-viva/pricing to sources; it explicitly documents the per-user charging unit. | Source: https://www.microsoft.com/microsoft-viva/pricing
+- [contradicted, blocker] front matter: licensing.notes / cost: No price is published for the premium licensing described in the licensing notes. | Found: Microsoft Viva Employee Communications and Communities ... $2.00 ... user/month, paid yearly ... Microsoft Viva Suite ... $12.00 ... user/month, paid yearly | Fix: Replace the unqualified 'No price is published' with 'No separate price for flexible targeting is documented; the prerequisite premium plans have published per-user prices at https://www.microsoft.com/microsoft-viva/pricing. Confirm the applicable plan and agreement price.' | Source: https://www.microsoft.com/microsoft-viva/pricing
+- [contradicted, blocker] front matter: cost; rationale: cost / consistency: Cost low represents indirect admin and communications time only despite the published premium licence prerequisite. | Found: cost: "low"; "Low. ... a premium Viva or Communications and Communities (C&C) licence is required". The scale defines low as "indirect cost only" and medium as "add-on licences for a subset of users". | Fix: Set cost to medium and start its rationale 'Medium. Leaders need premium Viva licensing, and recipients need the Communities and Communications service plan for Outlook and Teams notifications; confirm existing entitlements before rollout.' Distinguish existing licensed users from users needing purchases rather than asserting indirect cost only.
 -->

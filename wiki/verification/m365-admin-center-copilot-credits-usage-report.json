@@ -1,0 +1,723 @@
+{
+  "slug": "m365-admin-center-copilot-credits-usage-report",
+  "roadmapId": 490738,
+  "title": "Microsoft 365 admin center: Copilot Credits usage report for pay-as-you-go in Copilot Chat",
+  "status": "needs-correction",
+  "date": "2026-11-16",
+  "version": 2,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "grace",
+    "since": "2026-11-16",
+    "reasons": [
+      "8 blocking findings (claims 8, 9, 14, 15, 16, 44, 48, 49)",
+      "published before the check existed: kept live with a notice while a corrected version is prepared"
+    ]
+  },
+  "counts": {
+    "claims": 52,
+    "confirmed": 42,
+    "unconfirmed": 6,
+    "contradicted": 4,
+    "blocker": 8,
+    "major": 2,
+    "minor": 7
+  },
+  "summary": "Hold: the report-settings request is missing its required Boolean value, and the Cost Management entry gives an API namespace rather than a reporting request. The briefing also needs to qualify report access, substantiate its no-cost licensing statements, and include Microsoft's full rollout window.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status",
+      "type": "record",
+      "claim": "The roadmap status is in development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap targets General Availability for April CY2027.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"April CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate; summary; What's changing",
+      "type": "record",
+      "claim": "The preview dates from May CY2025.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"May CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms",
+      "type": "record",
+      "claim": "The roadmap specifies no platforms.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": []",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: defaultState",
+      "type": "default",
+      "claim": "The report is on by default.",
+      "status": "supported",
+      "source": "Message Center post MC1069563",
+      "quote": "This new report will be on by default and will be available in the Microsoft admin center",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The report's licensing model is included and no licence is needed for the report.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Copilot Credits report free no additional cost license report; \"Copilot Credits report\" \"free\" \"license\"; \"Copilot Credits report\" \"no additional\". Opened Microsoft Copilot Credits report and usage reports overview; read MC1069563.",
+      "severity": "blocker",
+      "fix": "Set licensing.model to unknown unless an explicit report entitlement is sourced. Replace the broad no-licence assertion with the narrower fact that MC1069563 says a Microsoft Copilot license is not required for this pay-as-you-go scenario; Learn lists report-viewing roles and pay-as-you-go setup."
+    },
+    {
+      "n": 9,
+      "where": "front matter: cost; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "There is no cost for the report, warranting a cost rating of none.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Copilot Credits report free no additional cost license report; \"Copilot Credits report\" \"free\" \"license\"; \"Copilot Credits report\" \"no additional\". Opened Microsoft Copilot Credits report and usage reports overview; neither states a report price or included entitlement.",
+      "severity": "blocker",
+      "fix": "Remove 'No cost for the report' and the unsupported no-cost rationale. State that the feature page names no separate reporting price, rather than asserting no charge. Use cost low for the page's identified export/admin work, noting that separate report pricing is not stated and underlying usage is metered."
+    },
+    {
+      "n": 10,
+      "where": "front matter: licensing.notes; Scope",
+      "type": "applicability",
+      "claim": "The report appears for Copilot Chat pay-as-you-go agent usage configured in either admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+      "quote": "After you set up pay-as-you-go for Microsoft Copilot Chat, either in the Microsoft 365 admin center or the Power Platform admin center, and enable agent usage in your organization, you see a new report that includes metrics for credits used.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "Open the report in Microsoft 365 admin center at Reports > Usage > Microsoft Copilot > Credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+      "quote": "In the navigation menu, select Reports. If you don't see Reports, select Show all, and then select Reports.\n3. Select Usage.\n4. On the Usage page, under Reports, select Microsoft Copilot, and then select Credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "controls[0].api; Governance controls",
+      "type": "absence",
+      "claim": "No dedicated API for the Copilot Chat pay-as-you-go Credits report is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Copilot Credits report\" \"API\". Opened Credits report and Cost Management API overview; read Copilot usage user-detail API search excerpts. No dedicated Credits report API found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "The tenant concealment setting is under Settings > Org settings > Services > Reports > Conceal user, group, and site names in all reports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports#show-user-group-or-site-details-in-usage-reports",
+      "quote": "Select Org Settings.\n4. On the Services tab, select Reports.\n5. In the Reports panel, uncheck the checkbox next to Conceal user, group, and site names in all reports.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "PATCH /beta/admin/reportSettings { displayConcealedNames } is the request for changing report concealment.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/graph/api/adminreportsettings-update?view=graph-rest-beta",
+      "quote": "PATCH https://graph.microsoft.com/beta/admin/reportSettings\nContent-Type: application/json\nContent-length: 37\n\n{\n  \"displayConcealedNames\": true\n}",
+      "severity": "blocker",
+      "fix": "The endpoint exists, but replace the incomplete body with valid JSON, for example PATCH /beta/admin/reportSettings { \"displayConcealedNames\": true }, explaining true conceals and false reveals. Link the update method at https://learn.microsoft.com/graph/api/adminreportsettings-update?view=graph-rest-beta and flag beta limitations."
+    },
+    {
+      "n": 15,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "The cited managing-credits page documents Copilot > Cost Management > Consumption.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "To review consumption, see Monitor Copilot Credit spending.",
+      "severity": "blocker",
+      "fix": "Keep the navigation path, which is documented on the linked monitoring article, but change ui.docs and its source to https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending. The currently cited page gives Configuration workflows, not the Consumption path."
+    },
+    {
+      "n": 16,
+      "where": "controls[2].api",
+      "type": "command",
+      "claim": "/beta/copilot/costManagement (Cost Management API) is the automation call for the row's consumption breakdowns.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Copilot Credits report\" \"API\". Opened Cost Management API overview and List costManagementUserUsageRecords: root is a namespace; reporting operations require child paths and time selectors.",
+      "severity": "blocker",
+      "fix": "Replace the namespace with a real, explicitly scoped request, for example GET /beta/copilot/costManagement/usageReports/userUsageRecords?startDate={startDate}&endDate={endDate}. Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/costmanagementuserusagerecord-list; explain its completed-UTC-day, delegated-permission and beta restrictions, and that it is not every UI breakdown or the dedicated Credits report."
+    },
+    {
+      "n": 17,
+      "where": "title; summary; What's changing",
+      "type": "behaviour",
+      "claim": "The Microsoft Copilot Credits report helps administer metered Copilot Chat consumption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+      "quote": "The Microsoft Copilot Credits report helps you manage metered consumption costs for Microsoft Copilot Chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The report shows total credits used.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+      "quote": "Total credits used",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The report shows a cumulative time series.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+      "quote": "Cumulative and daily time series",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The report shows a daily time series.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+      "quote": "Cumulative and daily time series",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "summary; What's changing",
+      "type": "behaviour",
+      "claim": "Consumption is broken down per user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+      "quote": "Credits used per user, per agent, per billing policy, and per agent-user pair",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "summary; What's changing; Governance guidance",
+      "type": "behaviour",
+      "claim": "Consumption is broken down per agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+      "quote": "Credits used per user, per agent, per billing policy, and per agent-user pair",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "summary; What's changing",
+      "type": "behaviour",
+      "claim": "Consumption is broken down per billing policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+      "quote": "Credits used per user, per agent, per billing policy, and per agent-user pair",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "summary; What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "Consumption is broken down per agent-user pair.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+      "quote": "Credits used per user, per agent, per billing policy, and per agent-user pair",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Usage can appear within an hour of a metered interaction.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+      "quote": "You can view usage within an hour from when users interact with a metered agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "summary; What's changing; Governance guidance",
+      "type": "behaviour",
+      "claim": "The report alerts administrators when users consume more than 2,000 credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+      "quote": "To help you mitigate overspending, the report includes alerts when users in your organization use more than 2,000 credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing; Why it matters; Risk assessment; Cost and licensing; Governance guidance",
+      "type": "behaviour",
+      "claim": "Preview history is limited to 30 days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+      "quote": "During preview, the report displays a maximum of 30 days of Copilot Credits history.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing",
+      "type": "date",
+      "claim": "Usage before 3 May 2025 is not available in the report.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+      "quote": "usage information from before May 3, 2025, isn't available in the report.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing; controls[2].governs",
+      "type": "behaviour",
+      "claim": "The Cost Management Consumption dashboard provides breakdowns by spending policy, user, group, agent and service.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending",
+      "quote": "The Consumption tab provides reporting experiences for copilot credit usage by:\n- Spending policy\n- User\n- Group\n- Agent\n- Service",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending to sources for these breakdowns."
+    },
+    {
+      "n": 30,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The newer Cost Management dashboard is where Microsoft is adding new reporting.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Copilot Credits report\" \"API\". Opened managing-credits and monitoring-spending articles and Cost Management API overview; no statement of reporting direction or chronology.",
+      "severity": "major",
+      "fix": "Remove the assertion about Microsoft's reporting direction and 'newer', or replace it with the documented current breakdowns and link to Monitor Copilot Credit spending."
+    },
+    {
+      "n": 31,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Azure Cost Management can lag usage by up to 24 hours.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/view-cost",
+      "quote": "Billed amounts are updated daily and sometimes more frequently. It can take 24 hours after usage of a service to show in Microsoft Cost Management.",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/copilot/manage/view-cost for the Copilot pay-as-you-go billing delay."
+    },
+    {
+      "n": 32,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Azure Cost Management is a meter-oriented billing view rather than the report's per-person operational view.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-compare-dashboard-views",
+      "quote": "Shows billing-oriented cost data, such as costs by subscription, service, resource, meter, or invoice period. It doesn't show the same user-level or spending-policy context as the Microsoft 365 admin center.",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/copilot/implement/usage-based-billing-compare-dashboard-views and use its qualified comparison, noting that article focuses on experiences governed through the newer usage-based billing policies."
+    },
+    {
+      "n": 33,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The reported consumption comes from unlicensed users interacting with agents in Copilot Chat through the Copilot Studio meter.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+      "quote": "users in your organization who don't have a Microsoft Copilot license and are interacting with agents in Copilot Chat that spin the Copilot Studio meter",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Why it matters",
+      "type": "applicability",
+      "claim": "This Credits report is scoped to Copilot Chat metered interactions rather than general standalone Copilot Studio agent usage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+      "quote": "If you configure pay-as-you-go, and users without a Microsoft Copilot license use metered agents in Copilot Chat, the data appears in the report.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "The report can expose employee identities alongside their consumption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+      "quote": "By default, user-specific information like usernames, display names, groups, and sites is hidden in usage reports.",
+      "severity": "minor",
+      "fix": "Clarify that the privacy exposure arises when identifiable details are enabled: names are hidden by default. Keep the recommendation to review concealment and authorised access."
+    },
+    {
+      "n": 36,
+      "where": "Scope; Risk assessment: Data exposure",
+      "type": "role",
+      "claim": "Reports Reader can view usage reports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+      "quote": "Reports Reader",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Scope",
+      "type": "role",
+      "claim": "Usage Summary Reports Reader can view usage reports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+      "quote": "Usage Summary Reports Reader (with no user details).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Data exposure",
+      "type": "role",
+      "claim": "Usage Summary Reports Reader is a report-access role relevant to the access review.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+      "quote": "Usage Summary Reports Reader (with no user details).",
+      "severity": "minor",
+      "fix": "Qualify the access-review advice and Scope role list: Usage Summary Reports Reader has no user details. Distinguish reviewing aggregate-report access from reviewing access to identifiable per-user consumption."
+    },
+    {
+      "n": 39,
+      "where": "Scope",
+      "type": "role",
+      "claim": "Global Reader has usage-report read access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/permissions-reference#global-reader",
+      "quote": "microsoft.office365.usageReports/allEntities/allProperties/read | Read Office 365 usage reports",
+      "severity": "minor",
+      "fix": "Cite the Global Reader role reference rather than implying the usage overview lists it. Distinguish general read access from guaranteed per-user details; the Graph reporting authorisation article limits Global Reader to tenant-level data."
+    },
+    {
+      "n": 40,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Microsoft's Copilot reporting options page lists AI Administrator as able to access Copilot reports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-admin-reports",
+      "quote": "AI Administrator: Accesses the Copilot reports.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "Agent design and features influence credit consumption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+      "quote": "The number of credits used depends on the design of the agent, how often users interact with it, and the features the agent uses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Change & support",
+      "type": "cost",
+      "claim": "Microsoft's example allocates 10 credits to tenant graph grounding.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+      "quote": "10 credits for tenant graph-grounding, and two credits for generative answers",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Change & support",
+      "type": "cost",
+      "claim": "Microsoft's example allocates two credits to generative answers in the same prompt.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+      "quote": "an agent grounded in a tenant graph could use 12 credits (10 credits for tenant graph-grounding, and two credits for generative answers) to respond to a single complex prompt from a user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Change & support",
+      "type": "role",
+      "claim": "Makers influence cost without seeing this report.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Copilot Credits report\" \"read-only\" \"makers\". Opened Credits report, usage reports overview and Copilot reporting options. Report access is role-based; no passage says makers cannot also hold a reporting role or see this report.",
+      "severity": "blocker",
+      "fix": "Replace 'without seeing this report' with 'and makers who lack an authorised reporting role may need administrators to share the consumption totals'."
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Security & identity; Governance controls; rationale: risk",
+      "type": "behaviour",
+      "claim": "The report is an explicitly read-only surface.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Copilot Credits report\" \"read-only\" \"makers\". Opened Microsoft Copilot Credits report, usage reports overview and Copilot reporting options. These describe viewing, filtering and exporting but do not explicitly state a read-only guarantee.",
+      "severity": "major",
+      "fix": "Use the documented description 'a consumption-reporting surface with viewing, filtering and export functions' rather than an absolute read-only guarantee. Keep the low-risk judgement framed as the wiki's assessment."
+    },
+    {
+      "n": 46,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "The only settings governing the report are access and concealment.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Copilot Credits report\" configure settings controls permissions. Opened Credits report, usage reports overview and reportSettings reference; read Copilot settings search excerpts. No additional report-governance settings found beyond role access and concealment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Governance guidance: At rollout; Why it matters",
+      "type": "behaviour",
+      "claim": "Report details can be exported to CSV for offline retention.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+      "quote": "Select View Copilot credits details to see the user list and export it to CSV.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "What's changing: rollout timing",
+      "type": "consistency",
+      "claim": "The briefing gives only the April roadmap target and omits the supplied notice's full General Availability rollout window.",
+      "status": "contradicted",
+      "source": "Message Center post MC1069563",
+      "quote": "Page: 'GA now targeted for April 2027.' MC1069563: 'We will begin rolling out in end of April 2027 (previously early January) and expect to complete by end of May 2027 (previously end of January).'",
+      "severity": "blocker",
+      "fix": "Retain the roadmap's April CY2027 target and add that MC1069563, updated 28 October 2026, schedules Worldwide GA rollout from end of April 2027 through end of May 2027. Cite the supplied Message Center URL, report public preview as available now, and state that Microsoft requires no pre-rollout admin action."
+    },
+    {
+      "n": 49,
+      "where": "Open questions: Cost Management relationship",
+      "type": "behaviour",
+      "claim": "Copilot Studio agent governance in the Microsoft 365 Cost Management dashboard is still a future development.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs",
+      "quote": "To opt in, create a Microsoft 365 admin center resource-based spending policy. Until then, your existing Power Platform admin center configuration remains in effect. No separate migration step is required.",
+      "severity": "blocker",
+      "fix": "Remove the 'once Copilot Studio agents are governed there' premise. State that resource-based spending policies already provide an opt-in route for eligible agents/environments and cite this article. The remaining open question can ask whether the dedicated Copilot Chat Credits report will be integrated, without asserting a future availability condition."
+    },
+    {
+      "n": 50,
+      "where": "Governance controls: Graph usage reports",
+      "type": "applicability",
+      "claim": "The Microsoft 365 Copilot Graph usage reports cover licensed users rather than unlicensed Copilot Chat usage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/reports/copilotreportroot-getmicrosoft365copilotusageuserdetail",
+      "quote": "This API only returns usage data for users who have a Microsoft 365 Copilot license. Unlicensed Copilot Chat usage data isn't available through Microsoft Graph reports APIs.",
+      "severity": "minor",
+      "fix": "Cite this API reference for the distinction, and keep it scoped to Copilot usage reports rather than all Microsoft Graph APIs, since Cost Management has separate credit-consumption APIs."
+    },
+    {
+      "n": 51,
+      "where": "Governance controls: Cost Management API alternative",
+      "type": "behaviour",
+      "claim": "The Cost Management API provides a separate programmatic view of credit consumption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview",
+      "quote": "usage reports that break down consumption by user, security group, governed service, and funding class.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Scope: government clouds",
+      "type": "availability",
+      "claim": "The usage reports overview lists the Credits report as unavailable in government clouds.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+      "quote": "| Microsoft Copilot credits | Yes | N/A | N/A | N/A | N/A |",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-16T18:26:30.206Z",
+    "summary": {
+      "links": 8,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 2,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=490738",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/manage/copilot-admin-reports",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports#show-user-group-or-site-details-in-usage-reports",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/resources/adminreportsettings?view=graph-rest-beta",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Access to the Copilot Credits report",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits",
+        "reachable": true,
+        "segments": [
+          "Reports",
+          "Usage",
+          "Microsoft Copilot",
+          "Credits"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether user, group and site names are concealed in reports",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports#show-user-group-or-site-details-in-usage-reports",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Org settings",
+          "Services",
+          "Reports",
+          "Conceal user, group, and site names in all reports"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether user, group and site names are concealed in reports",
+        "docs": "https://learn.microsoft.com/graph/api/resources/adminreportsettings?view=graph-rest-beta",
+        "reachable": true,
+        "token": "/beta/admin/reportSettings",
+        "found": false
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Consumption by policy, user, group, agent and service",
+        "docs": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Cost Management",
+          "Consumption"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Consumption by policy, user, group, agent and service",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview",
+        "reachable": true,
+        "token": "/beta/copilot/costManagement",
+        "found": false
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

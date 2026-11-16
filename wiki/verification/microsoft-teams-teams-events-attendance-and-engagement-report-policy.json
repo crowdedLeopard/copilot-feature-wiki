@@ -4,46 +4,68 @@
   "title": "Microsoft Teams: separate attendance and engagement report policy for Teams events",
   "status": "held",
   "date": "2026-11-16",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 2,
   "verifierVerdict": "hold",
   "notes": [],
   "hold": {
     "reason": "failed",
     "since": "2026-11-16",
     "reasons": [
-      "2 blocking findings (claims 48, 49)"
+      "4 blocking findings (claims 31, 61, 62, 66)"
     ]
   },
   "counts": {
-    "claims": 59,
-    "confirmed": 55,
-    "unconfirmed": 0,
-    "contradicted": 4,
-    "blocker": 2,
-    "major": 0,
-    "minor": 4
+    "claims": 68,
+    "confirmed": 63,
+    "unconfirmed": 2,
+    "contradicted": 3,
+    "blocker": 4,
+    "major": 1,
+    "minor": 2
   },
-  "summary": "Hold: the open questions incorrectly say Microsoft has not published event-report licensing or a GCC rollout window. Microsoft documents report capabilities by licence, and its tenant notice gives Worldwide and GCC the same rollout schedule; the core policy description and controls are supported.",
+  "summary": "Hold: the guidance tells administrators to check assignments with a command that changes them, and the events-setting command prints alternatives as a PowerShell pipeline. The licensing field also claims inclusion without supporting documentation, and the assertion that no administrator role is documented overlooks Microsoft's Teams Administrator permissions.",
   "claims": [
     {
       "n": 1,
-      "where": "summary; What's changing; Why it matters; controls[1].note",
+      "where": "front matter: title, products, roadmapId",
       "type": "record",
-      "claim": "Microsoft plans separate event-report controls in CsTeamsEventsPolicy, independent of meeting-report controls in CsTeamsMeetingPolicy.",
+      "claim": "Roadmap item 567466 concerns Microsoft Teams events attendance and engagement report policy.",
       "status": "supported",
-      "source": "Message Center post MC1455014",
-      "quote": "administrators can independently manage organizer access to attendance and engagement reports for Teams Events through CsTeamsEventsPolicy, without affecting attendance and engagement report settings for Teams Meetings managed through CsTeamsMeetingPolicy.",
+      "source": "roadmap record",
+      "quote": "\"id\": 567466; \"title\": \"Microsoft Teams: Teams events attendance and engagement report policy\"; \"products\": [\"Microsoft Teams\"]",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
+      "where": "summary; What's changing; Scope; controls[0]",
+      "type": "record",
+      "claim": "A new CsTeamsEventsPolicy setting will independently govern event organisers' access to attendance and engagement reports.",
+      "status": "supported",
+      "source": "Message Center post MC1455014",
+      "quote": "administrators can independently manage organizer access to attendance and engagement reports for Teams Events through CsTeamsEventsPolicy",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing; rationale: impact",
+      "type": "record",
+      "claim": "The events setting will not affect the separate report settings for ordinary Teams meetings.",
+      "status": "supported",
+      "source": "Message Center post MC1455014",
+      "quote": "without affecting attendance and engagement report settings for Teams Meetings managed through CsTeamsMeetingPolicy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
       "where": "front matter: status; What's changing",
       "type": "record",
-      "claim": "The roadmap item is In development.",
+      "claim": "The roadmap status is In development.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
@@ -51,7 +73,7 @@
       "fix": null
     },
     {
-      "n": 3,
+      "n": 5,
       "where": "front matter: targetDate; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap target is December CY2026.",
@@ -62,18 +84,7 @@
       "fix": null
     },
     {
-      "n": 4,
-      "where": "front matter: previewDate",
-      "type": "record",
-      "claim": "The roadmap lists no preview date.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": null",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
+      "n": 6,
       "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap release phase is General Availability.",
@@ -84,7 +95,7 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 7,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) and GCC, without listing other clouds.",
@@ -95,10 +106,10 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 8,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "Desktop is the only platform listed on the roadmap item.",
+      "claim": "The roadmap lists Desktop, without listing other platforms.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Desktop\"]",
@@ -106,10 +117,21 @@
       "fix": null
     },
     {
-      "n": 8,
+      "n": 9,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
       "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "The roadmap record was modified on 4 November 2026.",
+      "claim": "The roadmap record was modified at 2026-11-04T00:02:09.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"modified\": \"2026-11-04T00:02:09\"",
@@ -117,10 +139,10 @@
       "fix": null
     },
     {
-      "n": 9,
-      "where": "front matter: changes; What's changing",
+      "n": 11,
+      "where": "What's changing; front matter: changes",
       "type": "record",
-      "claim": "The supplied Message Center notice was updated on 3 November 2026.",
+      "claim": "MC1455014 was updated on 3 November 2026.",
       "status": "supported",
       "source": "Message Center post MC1455014",
       "quote": "Updated November 3, 2026: We have updated the timeline.",
@@ -128,10 +150,10 @@
       "fix": null
     },
     {
-      "n": 10,
-      "where": "summary; What's changing; Scope",
+      "n": 12,
+      "where": "summary; What's changing; Why it matters; Scope",
       "type": "record",
-      "claim": "The notice schedules rollout to begin in mid-December 2026.",
+      "claim": "MC1455014 schedules rollout to begin in mid-December 2026 for Worldwide and GCC.",
       "status": "supported",
       "source": "Message Center post MC1455014",
       "quote": "General Availability (Worldwide, GCC): Rollout will begin in mid-December 2026",
@@ -139,57 +161,35 @@
       "fix": null
     },
     {
-      "n": 11,
-      "where": "What's changing; Scope",
-      "type": "record",
-      "claim": "The notice expects rollout completion by early January 2027.",
-      "status": "supported",
-      "source": "Message Center post MC1455014",
-      "quote": "is expected to complete by early January 2027",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The previous rollout start was early November.",
-      "status": "supported",
-      "source": "Message Center post MC1455014",
-      "quote": "mid-December 2026 (previously early November)",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 13,
       "where": "What's changing",
       "type": "record",
-      "claim": "The previous rollout completion target was early December 2026.",
+      "claim": "The previous rollout start in MC1455014 was early November.",
       "status": "supported",
       "source": "Message Center post MC1455014",
-      "quote": "early January 2027 (previously early December 2026)",
+      "quote": "Rollout will begin in mid-December 2026 (previously early November)",
       "severity": null,
       "fix": null
     },
     {
       "n": 14,
-      "where": "What's changing",
+      "where": "What's changing; Scope",
       "type": "record",
-      "claim": "The notice sets no act-by date.",
+      "claim": "MC1455014 expects rollout completion by early January 2027 for Worldwide and GCC.",
       "status": "supported",
       "source": "Message Center post MC1455014",
-      "quote": "Act by: none; No immediate action is required before rollout.",
-      "severity": null,
-      "fix": null
+      "quote": "General Availability (Worldwide, GCC): Rollout will begin in mid-December 2026 (previously early November) and is expected to complete by early January 2027",
+      "severity": "minor",
+      "fix": "In Scope, replace 'completes by early January 2027' with 'is expected to complete by early January 2027', preserving the qualification already present in What's changing."
     },
     {
       "n": 15,
       "where": "What's changing",
       "type": "record",
-      "claim": "On allows event organisers to view and download reports for all events.",
+      "claim": "The previous expected rollout completion was early December 2026.",
       "status": "supported",
       "source": "Message Center post MC1455014",
-      "quote": "On- Organizers can view and download attendance and engagement reports for all events.",
+      "quote": "is expected to complete by early January 2027 (previously early December 2026)",
       "severity": null,
       "fix": null
     },
@@ -197,7 +197,40 @@
       "n": 16,
       "where": "What's changing",
       "type": "record",
-      "claim": "On prevents organisers from disabling attendance and engagement reporting.",
+      "claim": "The supplied notice sets no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1455014",
+      "quote": "Act by: none",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Microsoft says no immediate action is required before rollout.",
+      "status": "supported",
+      "source": "Message Center post MC1455014",
+      "quote": "No immediate action is required before rollout.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "record",
+      "claim": "On allows organisers to view and download reports for all their events.",
+      "status": "supported",
+      "source": "Message Center post MC1455014",
+      "quote": "On- Organizers can view and download attendance and engagement reports for all events.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "record",
+      "claim": "On prevents organisers from disabling reporting.",
       "status": "supported",
       "source": "Message Center post MC1455014",
       "quote": "Organizers cannot disable attendance and engagement reporting.",
@@ -205,7 +238,7 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 20,
       "where": "What's changing; Risk assessment: Change & support",
       "type": "record",
       "claim": "Off prevents organisers from viewing or downloading reports for any events.",
@@ -216,10 +249,10 @@
       "fix": null
     },
     {
-      "n": 18,
+      "n": 21,
       "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
-      "type": "default",
-      "claim": "The new setting defaults to On, organizers can turn it off.",
+      "type": "record",
+      "claim": "The default is On, organizers can turn it off, allowing organisers to view and download event reports.",
       "status": "supported",
       "source": "Message Center post MC1455014",
       "quote": "On, organizers can turn it off (default)- Organizers can view and download attendance and engagement reports for events",
@@ -227,10 +260,10 @@
       "fix": null
     },
     {
-      "n": 19,
+      "n": 22,
       "where": "What's changing; Risk assessment: Change & support",
       "type": "record",
-      "claim": "Under the default, organisers may disable reporting in event options.",
+      "claim": "Under the default value, organisers can disable reporting in event options.",
       "status": "supported",
       "source": "Message Center post MC1455014",
       "quote": "can disable attendance and engagement reporting in event options.",
@@ -238,428 +271,43 @@
       "fix": null
     },
     {
-      "n": 20,
+      "n": 23,
       "where": "What's changing",
       "type": "record",
-      "claim": "Off, organizers can turn it on disables reporting initially but permits enabling it for individual events.",
+      "claim": "Off, organizers can turn it on disables reporting by default.",
       "status": "supported",
       "source": "Message Center post MC1455014",
-      "quote": "Off, organizers can turn it on- Attendance and engagement reporting is disabled by default. Organizers can enable attendance and engagement reporting in event options for individual events.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "What's changing; Why it matters; Governance guidance",
-      "type": "record",
-      "claim": "Microsoft asks admins not to assume continued meeting-policy inheritance for event reporting.",
-      "status": "supported",
-      "source": "Message Center post MC1455014",
-      "quote": "Do not assume Teams Events will continue to inherit attendance and engagement report settings from CsTeamsMeetingPolicy.- Update internal administrative documentation and guidance if you currently manage attendance reporting through Teams meeting policies.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "What's changing; Why it matters; controls[1].note; Governance controls",
-      "type": "behaviour",
-      "claim": "The current Learn attendance-report page describes the meeting policy as covering both meetings and events.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/meeting-attendance-report",
-      "quote": "Organizers with this policy can view and download the attendance and engagement reports for all meetings and events they create.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "What's changing; controls[0].note; Governance controls",
-      "type": "availability",
-      "claim": "The Set-CsTeamsEventsPolicy reference marks the policy as still in preview.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy?view=teams-ps",
-      "quote": "Note that this policy is currently still in preview.",
+      "quote": "Off, organizers can turn it on- Attendance and engagement reporting is disabled by default.",
       "severity": null,
       "fix": null
     },
     {
       "n": 24,
-      "where": "controls[0].api; What's changing; Governance guidance; Governance controls",
-      "type": "command",
-      "claim": "Set-CsTeamsEventsPolicy supports -Identity and -AllowEngagementReport with Enabled, Disabled, ForceEnabled and ForceDisabled to control event reporting.",
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "record",
+      "claim": "Off, organizers can turn it on lets organisers enable reporting for individual events.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy?view=teams-ps",
-      "quote": "-Identity: Unique identifier assigned to the Teams Events policy. -AllowEngagementReport: Controls whether attendance and engagement reports are allowed for events. Possible values are: Enabled; Disabled; ForceEnabled; ForceDisabled.",
+      "source": "Message Center post MC1455014",
+      "quote": "Organizers can enable attendance and engagement reporting in event options for individual events.",
       "severity": null,
       "fix": null
     },
     {
       "n": 25,
-      "where": "controls[0].note; Governance controls",
-      "type": "command",
-      "claim": "The events parameter value Enabled means On, but organizers can turn it off.",
+      "where": "What's changing; Governance guidance; controls[2].note; Governance controls",
+      "type": "record",
+      "claim": "Microsoft warns administrators not to assume event reports will continue inheriting the meeting policy settings.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy?view=teams-ps",
-      "quote": "Enabled: On, but organizers can turn it off.",
+      "source": "Message Center post MC1455014",
+      "quote": "Do not assume Teams Events will continue to inherit attendance and engagement report settings from CsTeamsMeetingPolicy.",
       "severity": null,
       "fix": null
     },
     {
       "n": 26,
-      "where": "controls[0].note; Governance controls",
-      "type": "command",
-      "claim": "The events parameter value Disabled means Off, but organizers can turn it on.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy?view=teams-ps",
-      "quote": "Disabled: Off, but organizers can turn it on.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
-      "where": "controls[0].ui; Scope; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "No Teams admin center path is documented for the new events-policy attendance setting at the time of writing.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"events\" \"attendance\" \"Events policies\" \"Attendance and engagement report\"; \"Teams\" \"events policy\" \"attendance\" \"admin center\". Opened attendance-report, meeting-policies-overview, plan-events and Set-CsTeamsEventsPolicy; only the meeting-policy reporting path was found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
-      "where": "controls[1].ui; Governance controls",
-      "type": "admin-path",
-      "claim": "The current meeting-report setting is at Teams admin center > Meetings > Meeting policies > Meeting scheduling > Attendance and engagement report.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/meeting-attendance-report",
-      "quote": "go to Meetings > Meeting policies. 2. Select the policy you want to update or create a new policy. 3. Go to the Meeting scheduling section. 4. Choose one of the following options for Attendance and engagement report",
-      "severity": "minor",
-      "fix": "Insert the policy-selection step in the front matter and rendered table: Meetings > Meeting policies > policy > Meeting scheduling > Attendance and engagement report."
-    },
-    {
-      "n": 29,
-      "where": "controls[1].api; Governance controls",
-      "type": "command",
-      "claim": "Set-CsTeamsMeetingPolicy supports -Identity and -AllowEngagementReport with Disabled, Enabled and ForceEnabled for current meeting reporting.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/meeting-attendance-report",
-      "quote": "Set-CsTeamsMeetingPolicy -Identity <policy name> -AllowEngagementReport Disabled\nSet-CsTeamsMeetingPolicy -Identity <policy name> -AllowEngagementReport ForceEnabled\nSet-CsTeamsMeetingPolicy -Identity <policy name> -AllowEngagementReport Enabled",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
-      "where": "controls[0].scope; Risk assessment: Security & identity; Scope; Governance controls",
-      "type": "applicability",
-      "claim": "The events policy is user-level and governs the assigned user's event-organiser reporting capabilities.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy?view=teams-ps",
-      "quote": "User-level policy for tenant admin to configure options for customizing Teams events experiences. Use this cmdlet to update an existing policy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
-      "where": "Risk assessment: Security & identity; Governance guidance",
-      "type": "behaviour",
-      "claim": "A user can be assigned only one events policy at a time.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-overview",
-      "quote": "A user can be assigned only one meeting policy and one events policy at a time.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
-      "where": "Risk assessment: Security & identity",
-      "type": "behaviour",
-      "claim": "An assigned custom events policy replaces the global policy for that user rather than adding to it.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-overview",
-      "quote": "Users get the global policy unless you create and assign a custom policy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
-      "where": "Why it matters; Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Attendance reports identify attendees and their join and leave times.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/meeting-attendance-report",
-      "quote": "The report shows who attended a meeting or event, along with the exact times each attendee joined and left, and other engagement metrics.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Engagement information includes counts of attendees who unmuted.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/meeting-attendance-report",
-      "quote": "The engagement data shows the total count of attendees that performed the following actions: Unmuted during the meeting or event",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Engagement information includes counts of attendees who used their cameras.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/meeting-attendance-report",
-      "quote": "The engagement data shows the total count of attendees that performed the following actions: ... Turned on their cameras",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Engagement information includes counts of attendees who raised their hands.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/meeting-attendance-report",
-      "quote": "The engagement data shows the total count of attendees that performed the following actions: ... Raised their hands",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Engagement information includes counts of attendees who used each reaction type.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/meeting-attendance-report",
-      "quote": "The engagement data shows the total count of attendees that performed the following actions: ... Used each type of meeting reaction",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Engagement information includes counts of attendees who initiated questions, answers and discussions through Q&A.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/meeting-attendance-report",
-      "quote": "The engagement data shows the total count of attendees that performed the following actions: ... Initiated questions, answers, and discussions through Q&A.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "Risk assessment: Security & identity",
-      "type": "behaviour",
-      "claim": "Administrators cannot view attendance and engagement reports for events they did not organise.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/meeting-attendance-report",
-      "quote": "As an admin, you can’t view the attendance and engagement report for meetings and events that you didn't organize. However, you can view attendees' details for a given meeting or event within 24 hours of that meeting or event.",
-      "severity": "minor",
-      "fix": "Retain the report-access restriction, but qualify the conclusion: administrators can still view participant details within 24 hours through Users > Manage users > organizer > Meetings & calls > meeting or call > Participant details. This is not access to the report itself."
-    },
-    {
-      "n": 40,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "The setting governs human report access rather than introducing an autonomous action.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy?view=teams-ps",
-      "quote": "Controls whether attendance and engagement reports are allowed for events.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "Microsoft has not published a licence or meter specific to the new events-policy setting itself, so its licensing model is unknown.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"CsTeamsEventsPolicy\" \"AllowEngagementReport\" \"license\". Opened Set-CsTeamsEventsPolicy, attendance-report and events-licensing; read roadmap and MC1455014. Report licensing exists, but no setting-specific licence or meter was found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "The attendance-report page says a tenant needs at least one active Teams Premium licence to manage Teams Premium features.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/meeting-attendance-report",
-      "quote": "To manage Teams Premium features, your tenant must have at least one active Teams Premium license.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "Cost and licensing",
-      "type": "absence",
-      "claim": "The attendance-report page's generic Teams Premium note does not identify attendance reporting itself as a Premium-only feature.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"CsTeamsEventsPolicy\" \"AllowEngagementReport\" \"license\"; opened the complete attendance-report article and events-licensing. The attendance article's Premium note does not classify the reports; events-licensing separately classifies attendance and engagement reporting.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "Why it matters; Risk assessment: Data exposure; Open questions; rationale: risk",
-      "type": "absence",
-      "claim": "Microsoft has not specified whether an existing meeting-policy restriction will be copied into the events policy at rollout.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"AllowEngagementReport\" \"events\" \"inherit\"; Teams events CsTeamsEventsPolicy attendance report AllowTrackingInReport migration inherit meeting policy. Read MC1455014, attendance-report and Set-CsTeamsEventsPolicy; no migration or copy rule was found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "Scope",
-      "type": "absence",
-      "claim": "The researched Learn documentation does not name a required administrator role for editing the new events reporting setting.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"CsTeamsEventsPolicy\" \"AllowEngagementReport\" \"role\"; \"Teams events policy\" \"administrator role\". Opened Set-CsTeamsEventsPolicy, meeting-policies-overview and plan-events; no named required role for this setting was found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "Open questions",
-      "type": "command",
-      "claim": "Set-CsTeamsEventsPolicy documents -InfoShownInReportMode alongside -AllowEngagementReport.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy?view=teams-ps",
-      "quote": "[-AllowEngagementReport <String>]\n[-InfoShownInReportMode <String>]\n-InfoShownInReportMode: Controls what information is shown in attendance reports.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
-      "where": "Open questions",
-      "type": "absence",
-      "claim": "The Set-CsTeamsEventsPolicy syntax lists no attendee-inclusion parameter.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams events CsTeamsEventsPolicy attendance report AllowTrackingInReport migration inherit meeting policy. Read the Set-CsTeamsEventsPolicy syntax and searched its full reference for AllowTrackingInReport; only AllowEngagementReport and InfoShownInReportMode were listed for reporting.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 48,
-      "where": "Open questions",
-      "type": "availability",
-      "claim": "Whether GCC receives the setting at the same time as Worldwide is unstated beyond the roadmap cloud list.",
-      "status": "contradicted",
-      "source": "Message Center post MC1455014",
-      "quote": "General Availability (Worldwide, GCC): Rollout will begin in mid-December 2026 (previously early November) and is expected to complete by early January 2027 (previously early December 2026)",
-      "severity": "blocker",
-      "fix": "Remove this open question and its assertion of missing information. State that MC1455014 gives Worldwide and GCC the same planned rollout window, mid-December 2026 through early January 2027; this does not promise simultaneous activation in every tenant."
-    },
-    {
-      "n": 49,
-      "where": "Open questions",
-      "type": "licensing",
-      "claim": "Microsoft has not stated whether a licence is required for event reports.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoftteams/events-licensing",
-      "quote": "All eligible Teams licenses include the foundational capabilities needed to create and run events, engage attendees, review attendance reports, and publish event recordings.",
-      "severity": "blocker",
-      "fix": "Replace this open question with the published distinction at https://learn.microsoft.com/microsoftteams/events-licensing: Attendance reports are foundational; Attendance and engagement reports are advanced event features. Cite that page and its eligible-licence table. Keep any unknown limited to separate licensing for the new policy setting itself, not the reports it governs."
-    },
-    {
-      "n": 50,
-      "where": "front matter: action",
-      "type": "consistency",
-      "claim": "The prepare action rating fits the standard for the verified rollout and medium risk.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "action: \"prepare\"; risk: \"medium\"; \"If nobody acts, event organisers get the new setting's default\"; \"rollout begins in mid-December 2026\".",
-      "severity": "minor",
-      "fix": "Set action to act-now under the schema's approximately-60-day rule: on 16 November 2026 the automatic mid-December rollout is about one month away, risk is medium, and administrators have a reporting-policy decision to make. This is a wiki action rating, not a Microsoft act-by deadline."
-    },
-    {
-      "n": 51,
-      "where": "Governance guidance: Before rollout and At rollout; Governance controls",
-      "type": "consistency",
-      "claim": "The governance table covers the policy-assignment checks recommended in the checklist.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "\"Record ... which users hold them\"; \"Check which events policy each event-organising user holds\"; the controls table contains only the two report-setting rows.",
-      "severity": "minor",
-      "fix": "Add a policy-assignment row using https://learn.microsoft.com/microsoftteams/meeting-policies-overview for the documented edit/assignment context and its linked policy-assignment guidance, or remove the assignment-specific checklist instructions. Read the assignment reference before supplying a precise user-assignment path or command."
-    },
-    {
-      "n": 52,
-      "where": "rationale: impact",
+      "where": "Governance guidance: After rollout",
       "type": "record",
-      "claim": "The new events control does not alter ordinary meeting-report settings.",
-      "status": "supported",
-      "source": "Message Center post MC1455014",
-      "quote": "without affecting attendance and engagement report settings for Teams Meetings managed through CsTeamsMeetingPolicy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 53,
-      "where": "front matter: cost; Cost and licensing; rationale: cost",
-      "type": "cost",
-      "claim": "The low cost rating describes known administration and communication work, not a claim that Microsoft guarantees the new setting is free.",
-      "status": "supported",
-      "source": "Message Center post MC1455014",
-      "quote": "Configure the appropriate setting in the new Teams Events attendance and engagement report policy based on your organizational needs.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 54,
-      "where": "front matter: defaultState",
-      "type": "default",
-      "claim": "Admin-opt-in describes the new control's restrictive effect, which requires configuration rather than restricting organiser reports by default.",
-      "status": "supported",
-      "source": "Message Center post MC1455014",
-      "quote": "On, organizers can turn it off (default)- Organizers can view and download attendance and engagement reports for events and can disable attendance and engagement reporting in event options.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 55,
-      "where": "Why it matters; Governance guidance: Before rollout",
-      "type": "record",
-      "claim": "Microsoft recommends reviewing current attendance and engagement reporting requirements for events.",
-      "status": "supported",
-      "source": "Message Center post MC1455014",
-      "quote": "Review your current attendance and engagement reporting requirements for Teams Events.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 56,
-      "where": "Governance guidance: At rollout",
-      "type": "record",
-      "claim": "Microsoft recommends configuring an appropriate value in the new events reporting policy.",
-      "status": "supported",
-      "source": "Message Center post MC1455014",
-      "quote": "Configure the appropriate setting in the new Teams Events attendance and engagement report policy based on your organizational needs.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 57,
-      "where": "Why it matters; Governance guidance: After rollout",
-      "type": "record",
-      "claim": "Microsoft recommends reviewing and validating policy settings after the feature becomes available.",
-      "status": "supported",
-      "source": "Message Center post MC1455014",
-      "quote": "we recommend reviewing and validating policy settings after the feature becomes available to ensure Teams Events reporting behavior aligns with your organization's requirements.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 58,
-      "where": "Why it matters; Governance guidance: After rollout",
-      "type": "record",
-      "claim": "Microsoft recommends updating internal documentation and guidance that manages event attendance reporting through meeting policies.",
+      "claim": "Microsoft recommends updating internal documentation that manages event attendance reporting through meeting policies.",
       "status": "supported",
       "source": "Message Center post MC1455014",
       "quote": "Update internal administrative documentation and guidance if you currently manage attendance reporting through Teams meeting policies.",
@@ -667,25 +315,476 @@
       "fix": null
     },
     {
-      "n": 59,
-      "where": "title; front matter: products",
-      "type": "record",
-      "claim": "The roadmap feature belongs to Microsoft Teams.",
+      "n": 27,
+      "where": "What's changing; Why it matters; controls[2].note; Governance controls",
+      "type": "applicability",
+      "claim": "The Learn attendance-report page currently describes the meeting-policy control as covering meetings and events.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"products\": [\"Microsoft Teams\"]",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/meeting-attendance-report",
+      "quote": "Organizers with this policy can view and download the attendance and engagement reports for all meetings and events they create.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; controls[0].note; Governance controls",
+      "type": "availability",
+      "claim": "The Set-CsTeamsEventsPolicy reference marks the events policy as still in preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy?view=teams-ps",
+      "quote": "This cmdlet allows you to configure options for customizing Teams events experiences. Note that this policy is currently still in preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[1].note",
+      "type": "availability",
+      "claim": "The Grant-CsTeamsEventsPolicy reference also marks the policy as preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/grant-csteamseventspolicy?view=teams-ps",
+      "quote": "Assigns Teams Events policy to a user, group of users, or the entire tenant. Note that this policy is currently still in preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[0].ui; Scope; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No Teams admin center path for the new events-report setting is documented at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams events policy AllowEngagementReport Teams admin center attendance engagement report events policy setting. Opened meeting-attendance-report, meeting-policies-overview and Set-CsTeamsEventsPolicy; results document the meeting setting and the events parameter, not an events-setting UI path.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "The events-setting call can use '-AllowEngagementReport Enabled | Disabled | ForceEnabled | ForceDisabled' as printed.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy?view=teams-ps",
+      "quote": "[-AllowEngagementReport <String>]\nControls whether attendance and engagement reports are allowed for events.\nPossible values are:",
+      "severity": "blocker",
+      "fix": "Print one value in the call, for example 'Set-CsTeamsEventsPolicy -Identity <policy name> -AllowEngagementReport ForceDisabled', and label it as the example that blocks reports. List Enabled, Disabled, ForceEnabled and ForceDisabled with their meanings in the note. The current pipes invoke additional commands rather than select a parameter value; the cmdlet and both parameter names themselves are documented."
+    },
+    {
+      "n": 32,
+      "where": "controls[0].note; What's changing",
+      "type": "behaviour",
+      "claim": "Enabled means reporting is on but organisers can turn it off.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy?view=teams-ps",
+      "quote": "Enabled: On, but organizers can turn it off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[0].note; What's changing",
+      "type": "behaviour",
+      "claim": "Disabled means reporting is off but organisers can turn it on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy?view=teams-ps",
+      "quote": "Disabled: Off, but organizers can turn it on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing: parameter has matching values",
+      "type": "behaviour",
+      "claim": "ForceEnabled corresponds to On without organiser opt-out.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy?view=teams-ps",
+      "quote": "ForceEnabled: On. Organizers cannot turn off attendance and engagement reports.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[0].note; What's changing",
+      "type": "behaviour",
+      "claim": "ForceDisabled corresponds to Off, preventing organisers from viewing or downloading reports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy?view=teams-ps",
+      "quote": "ForceDisabled: Off. Organizers cannot view or download attendance and engagement reports.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[1].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "An existing events policy can be edited in Teams admin center through Meetings > Events policies > policy > Edit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-overview",
+      "quote": "go to Meetings > Meeting policies or Events policies.\n2. Choose the policy by clicking to the left of the policy name, and then select Edit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[1].api; Governance controls",
+      "type": "command",
+      "claim": "Grant-CsTeamsEventsPolicy -Identity <user> -Policy <policy name> assigns an events policy to a user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/grant-csteamseventspolicy?view=teams-ps",
+      "quote": "Grant-CsTeamsEventsPolicy -Identity \"user1@contoso.com\" -Policy DisablePublicWebinars\nThe command shown in Example 1 assigns the per-user Teams Events policy, DisablePublicWebinars, to the user",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[1].note; Risk assessment: Security & identity; Governance guidance",
+      "type": "behaviour",
+      "claim": "A user can have only one effective events policy at a time.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-overview",
+      "quote": "A user can be assigned only one meeting policy and one events policy at a time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Assigning a custom events policy replaces the global events policy for that user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-overview",
+      "quote": "You can edit the settings in the global policy or create and assign one or more custom policies. Users get the global policy unless you create and assign a custom policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[2].ui; Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "The current report setting is at Teams admin center > Meetings > Meeting policies > policy > Meeting scheduling > Attendance and engagement report.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/meeting-attendance-report",
+      "quote": "go to Meetings > Meeting policies.\n2. Select the policy you want to update or create a new policy.\n3. Go to the Meeting scheduling section.\n4. Choose one of the following options for Attendance and engagement report:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[2].api",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -AllowEngagementReport Disabled turns off reports under the current meeting policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/meeting-attendance-report",
+      "quote": "To turn off attendance and engagement reports, use the following script:\nSet-CsTeamsMeetingPolicy -Identity <policy name> -AllowEngagementReport Disabled",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Why it matters; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Attendance reports identify who attended a meeting or event.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/meeting-attendance-report",
+      "quote": "The report shows who attended a meeting or event",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Why it matters; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Reports can show attendees' exact join and leave times.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/meeting-attendance-report",
+      "quote": "along with the exact times each attendee joined and left, and other engagement metrics.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Engagement information counts attendees who unmuted.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/meeting-attendance-report",
+      "quote": "The engagement data shows the total count of attendees that performed the following actions:\n- Unmuted during the meeting or event",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Engagement information counts attendees who turned on their cameras.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/meeting-attendance-report",
+      "quote": "The engagement data shows the total count of attendees that performed the following actions:\n- Unmuted during the meeting or event\n- Turned on their cameras",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Engagement information counts attendees who raised their hands.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/meeting-attendance-report",
+      "quote": "The engagement data shows the total count of attendees that performed the following actions:\n- Unmuted during the meeting or event\n- Turned on their cameras\n- Raised their hands",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Engagement information counts attendees using each type of meeting reaction.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/meeting-attendance-report",
+      "quote": "The engagement data shows the total count of attendees that performed the following actions:\n- Used each type of meeting reaction",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Engagement information counts attendees initiating questions, answers and discussions through Q&A.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/meeting-attendance-report",
+      "quote": "The engagement data shows the total count of attendees that performed the following actions:\n- Initiated questions, answers, and discussions through Q&A.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Being an administrator does not allow viewing reports for events the administrator did not organise.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/meeting-attendance-report",
+      "quote": "As an admin, you can’t view the attendance and engagement report for meetings and events that you didn't organize.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Administrators can instead view attendee details within 24 hours of the meeting or event.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/meeting-attendance-report",
+      "quote": "However, you can view attendees' details for a given meeting or event within 24 hours of that meeting or event.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risk assessment: Security & identity",
+      "type": "admin-path",
+      "claim": "Attendee details are under Users > Manage users > organizer > Meetings & calls > meeting or call ID > Participant details.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/meeting-attendance-report",
+      "quote": "go to Users > Manage users. Choose the display name for the meeting organizer. Select the Meetings & calls tab, and then choose the appropriate meeting ID or call ID. Then, select Participant details.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The setting starts no automated action.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"TeamsEventsPolicy\" \"AllowEngagementReport\" \"automatic\". Opened Set-CsTeamsEventsPolicy and meeting-attendance-report and read MC1455014; they describe report access and generation, not an explicit guarantee that no automated action occurs.",
+      "severity": "major",
+      "fix": "Replace the bullet with 'The announced change separates policy control over organisers' report access.' Remove the unsupported categorical statement about automated actions."
+    },
+    {
+      "n": 53,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "No separate licence condition for the new policy setting is published in the checked sources.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams events attendance engagement report policy AllowEngagementReport licensing license meter price; \"TeamsEventsPolicy\" \"AllowEngagementReport\" \"license\". Opened events-licensing, meeting-attendance-report and Set-CsTeamsEventsPolicy; read roadmap and MC1455014. No setting-specific licence stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "No separate meter for the new policy setting is published in the checked sources.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams events attendance engagement report policy AllowEngagementReport licensing license meter price. Opened events-licensing, meeting-attendance-report and Set-CsTeamsEventsPolicy; read roadmap and MC1455014. No meter or rate for the setting was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "All eligible Teams licences include foundational event capabilities, including reviewing attendance reports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/events-licensing",
+      "quote": "All eligible Teams licenses include the foundational capabilities needed to create and run events, engage attendees, review attendance reports, and publish event recordings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "licensing",
+      "claim": "Attendance and engagement reports are listed among the advanced event features.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/events-licensing",
+      "quote": "Organizers with a license in the Advanced event features category have all foundational event capabilities plus the following advanced event features.\nAttendance and engagement reports | Organizers can view and download attendance and engagement reports for events they create.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The Enterprise advanced category lists Office 365 E1, E3, E5 and Microsoft 365 E3, E5, E7.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/events-licensing",
+      "quote": "| Enterprise | Not applicable | Office 365 E1, E3, E5Microsoft 365 E3, E5, E7 |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The listed Microsoft 365 Business licences belong to the foundational category.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/events-licensing",
+      "quote": "| SMB | Microsoft 365 Business Basic, Business Standard, Business Premium | Not applicable |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The listed frontline licences belong to the foundational category.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/events-licensing",
+      "quote": "| Frontline (FLW) | Microsoft 365 F1, F3Office 365 F3 | Not applicable |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Access to the full Teams events feature set requires a licence from the advanced category.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/events-licensing",
+      "quote": "To access the full set of Teams events features, users must have a license from the Advanced event features category.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The new policy setting's licensing model is included.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Teams events attendance engagement report policy AllowEngagementReport licensing license meter price; \"TeamsEventsPolicy\" \"AllowEngagementReport\" \"license\". Opened events-licensing, meeting-attendance-report and Set-CsTeamsEventsPolicy. Report licensing does not state inclusion of the new setting.",
+      "severity": "blocker",
+      "fix": "Set licensing.model to 'unknown'. Keep the documented report-licensing background and the existing statement that a separate condition for the new setting is not yet published; those do not establish that the setting is included."
+    },
+    {
+      "n": 62,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Learn names no administrator role needed to edit the events policy.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/using-admin-roles",
+      "quote": "Teams Administrator | Manage the Teams service, and manage and create Microsoft 365 Groups. | Everything in the Microsoft Teams admin center and associated PowerShell controls",
+      "severity": "blocker",
+      "fix": "Replace the sentence with 'The Teams Administrator role can manage the Teams admin center and its associated PowerShell controls.' Cite https://learn.microsoft.com/microsoftteams/using-admin-roles. Do not assert this is the only or least-privileged eligible role."
+    },
+    {
+      "n": 63,
+      "where": "Why it matters; Risk assessment: Data exposure; Open questions; rationale: risk",
+      "type": "absence",
+      "claim": "Microsoft has not specified whether an existing meeting-policy Off value will be copied into the events policy at rollout.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: CsTeamsEventsPolicy AllowEngagementReport existing meeting policy migration copied inherited settings rollout; \"TeamsEventsPolicy\" \"attendance\" \"inherit\". Read MC1455014 and opened Set-CsTeamsEventsPolicy and meeting-attendance-report. No migration or copying rule was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Open questions",
+      "type": "command",
+      "claim": "Set-CsTeamsEventsPolicy syntax lists InfoShownInReportMode alongside AllowEngagementReport.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy?view=teams-ps",
+      "quote": "[-AllowEngagementReport <String>]\n    [-InfoShownInReportMode <String>]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Open questions",
+      "type": "absence",
+      "claim": "The Set-CsTeamsEventsPolicy reference lists no attendee-inclusion parameter.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Set-CsTeamsEventsPolicy reference text for Identity, InfoShownInReportMode, Tracking and inclusion; read its complete syntax. AllowEngagementReport and InfoShownInReportMode are present; no attendee-inclusion or AllowTrackingInReport parameter is listed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Governance guidance: At rollout",
+      "type": "command",
+      "claim": "Grant-CsTeamsEventsPolicy can be used to check which events policy a user currently holds.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/grant-csteamseventspolicy?view=teams-ps",
+      "quote": "Assigns Teams Events policy to a user, group of users, or the entire tenant.",
+      "severity": "blocker",
+      "fix": "Replace 'or Grant-CsTeamsEventsPolicy' with 'or Get-CsUserPolicyAssignment -Identity <user>'. Cite https://learn.microsoft.com/powershell/module/microsoftteams/get-csuserpolicyassignment?view=teams-ps, which returns effective assignments and explains that a missing effective policy entry means the tenant or system global default. Retain Grant only for assigning a policy, not inspecting one."
+    },
+    {
+      "n": 67,
+      "where": "Governance controls: assignment overview",
+      "type": "behaviour",
+      "claim": "The policy assignment overview linked by the meeting-policies page describes other policy assignment methods.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/policy-assignment-overview",
+      "quote": "Assign a policy directly to users, either individually or at scale through a batch assignment, or to a group that the users are members of.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/microsoftteams/policy-assignment-overview to sources and link the existing mention of the policy assignment overview directly to it."
+    },
+    {
+      "n": 68,
+      "where": "front matter: defaultState",
+      "type": "default",
+      "claim": "The new access-restriction control is admin-opt-in under the standard's special rule for controls that impose no restriction until configured.",
+      "status": "supported",
+      "source": "Message Center post MC1455014",
+      "quote": "On, organizers can turn it off (default)- Organizers can view and download attendance and engagement reports for events and can disable attendance and engagement reporting in event options.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-16T17:06:59.149Z",
+    "at": "2026-11-16T18:26:25.609Z",
     "summary": {
-      "links": 5,
+      "links": 7,
       "unreachable": 0,
-      "uiPaths": 1,
+      "uiPaths": 2,
       "uiPathsWithMissingWords": 0,
-      "apiCalls": 2,
+      "apiCalls": 3,
       "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
     },
@@ -711,7 +810,17 @@
         "status": 200
       },
       {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/grant-csteamseventspolicy?view=teams-ps",
+        "ok": true,
+        "status": 200
+      },
+      {
         "url": "https://learn.microsoft.com/microsoftteams/meeting-policies-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/events-licensing",
         "ok": true,
         "status": 200
       }
@@ -729,6 +838,28 @@
       {
         "index": 1,
         "side": "ui",
+        "governs": "Which events policy each organiser holds (create, edit and assign events policies)",
+        "docs": "https://learn.microsoft.com/microsoftteams/meeting-policies-overview",
+        "reachable": true,
+        "segments": [
+          "Meetings",
+          "Events policies",
+          "Edit"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Which events policy each organiser holds (create, edit and assign events policies)",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/grant-csteamseventspolicy?view=teams-ps",
+        "reachable": true,
+        "token": "Grant-CsTeamsEventsPolicy",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
         "governs": "Whether meeting organisers can view and download attendance and engagement reports (current control)",
         "docs": "https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/meeting-attendance-report",
         "reachable": true,
@@ -741,7 +872,7 @@
         "missing": []
       },
       {
-        "index": 1,
+        "index": 2,
         "side": "api",
         "governs": "Whether meeting organisers can view and download attendance and engagement reports (current control)",
         "docs": "https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/meeting-attendance-report",
@@ -758,6 +889,12 @@
       "status": "held",
       "version": 1,
       "model": "none"
+    },
+    {
+      "date": "2026-11-16",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
     }
   ]
 }

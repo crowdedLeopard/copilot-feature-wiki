@@ -5,28 +5,854 @@
   "status": "held",
   "date": "2026-11-16",
   "version": 2,
-  "model": "none",
-  "engine": "manual",
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
   "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [],
   "hold": {
-    "reason": "unverified",
+    "reason": "failed",
     "since": "2026-11-16",
     "reasons": [
-      "Written but not yet checked against Microsoft Learn."
+      "1 blocking finding (claim 50)"
     ]
   },
   "counts": {
-    "claims": 0,
-    "confirmed": 0,
+    "claims": 63,
+    "confirmed": 62,
     "unconfirmed": 0,
-    "contradicted": 0,
-    "blocker": 0,
+    "contradicted": 1,
+    "blocker": 1,
     "major": 0,
-    "minor": 0
+    "minor": 1
   },
-  "summary": "Written but not yet checked against Microsoft Learn.",
-  "claims": [],
-  "precheck": null,
+  "summary": "Hold: the spending-policy command incorrectly says PATCH and DELETE use the collection path; both require a policy ID. The roadmap details, billing model and monitoring path are supported, but Microsoft's conflicting descriptions of default write access should also be acknowledged.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Why it matters",
+      "type": "record",
+      "claim": "Microsoft plans for Work IQ A2A and MCP tasks to request missing information.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Enable A2A and MCP tasks to request missing information or authorization and then resume.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "title; summary; What's changing; Risk assessment",
+      "type": "record",
+      "claim": "The planned requests can ask for authorisation.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Enable A2A and MCP tasks to request missing information or authorization and then resume.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "title; summary; What's changing; Risk assessment: Change & support",
+      "type": "record",
+      "claim": "The planned capability lets tasks resume after requesting the missing information or authorisation.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Enable A2A and MCP tasks to request missing information or authorization and then resume.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: status; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: previewDate; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap preview target is October CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"October CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: targetDate; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap target date is November CY2026, not a committed release date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"November CY2026\", \"status\": \"In development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview as release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only listed cloud, with no US Government cloud listed.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "Web is the listed platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 2026-10-13T23:01:05.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-13T23:01:05\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Work IQ offers A2A, a remote MCP server and a REST API.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
+      "quote": "Work IQ API endpoints include A2A, a remote MCP server, and a REST API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "command",
+      "claim": "Work IQ A2A documents GetTask, CancelTask and SubscribeToTask for task management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/a2a/overview",
+      "quote": "Work IQ supports the GetTask, CancelTask, and SubscribeToTask methods for managing tasks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Work IQ A2A uses delegated Microsoft Entra ID authentication.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/a2a/overview",
+      "quote": "Work IQ A2A uses Microsoft Entra ID delegated authentication.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Work IQ MCP uses Microsoft Entra ID authentication.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/overview",
+      "quote": "The Work IQ MCP server uses Microsoft Entra ID for authentication.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Copilot Cowork documents MCP elicitation pausing execution to present a native form.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-elicitation-forms",
+      "quote": "When an MCP server needs structured input from the user mid-tool-call—a confirmation, a picked option, a few form fields—it can use elicitation to pause execution and present a native form.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "In that Cowork mechanism, tool execution resumes with the submitted data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-elicitation-forms",
+      "quote": "The user fills it out, submits, and tool execution resumes with the data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Foundry's existing Work IQ MCP guidance says oauth_consent_request means the request awaits user authorisation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/foundry/agents/how-to/tools/work-iq",
+      "quote": "An `oauth_consent_request` means the request is waiting for user authorization, not that retrieval succeeded.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "summary; What's changing",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet describe the Work IQ elicitation feature itself.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ A2A MCP elicitation enable disable default authorization missing information paused task timeout resume billing pricing. Opened Work IQ overview, API overview, A2A overview, MCP overview and Cowork elicitation forms; no Work IQ elicitation description found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "front matter: defaultState; Why it matters; Open questions",
+      "type": "default",
+      "claim": "The elicitation default and whether existing A2A or MCP callers gain it automatically are not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"elicitation\" admin policy Graph API enable default. Opened roadmap record, Work IQ A2A overview, MCP overview and policy governance; none states an elicitation default or automatic enablement for existing callers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Why it matters",
+      "type": "absence",
+      "claim": "Microsoft has not stated who receives or may approve Work IQ elicitation requests.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"elicitation\" timeout task state resume authorization input recipients. Opened A2A overview, MCP overview, API overview and Foundry Work IQ consent passage; no elicitation recipient or approver specification found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Why it matters; Risk assessment: Security & identity; Open questions",
+      "type": "absence",
+      "claim": "The relationship between elicitation authorisation, new consent, action confirmation and existing consent is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ elicitation authorization agents consent admin controls prerequisites rollout answers storage. Opened Foundry Work IQ consent passage, A2A overview and MCP overview; existing OAuth consent is described, but its relationship to elicitation is not.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "Permitted Work IQ elicitation input and whether it uses form mode or URL mode are not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"elicitation\" timeout task state resume authorization input recipients. Opened Work IQ MCP overview, A2A overview and Cowork elicitation forms; only Cowork input modes are specified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "Microsoft has not documented where Work IQ elicitation answers go.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ elicitation authorization agents consent admin controls prerequisites rollout answers storage. Opened Work IQ overview, API overview, A2A overview and MCP overview; no elicitation-answer destination or storage description found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[3]; Governance controls; Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "No elicitation-specific UI or API control to enable it or restrict requesting agents is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"elicitation\" admin policy Graph API enable default; Work IQ elicitation authorization agents consent admin controls prerequisites rollout answers storage. Opened MCP policy governance, A2A and MCP overviews; no elicitation switch or agent restriction found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[0].api; Governance controls",
+      "type": "absence",
+      "claim": "An automation endpoint for changing Work IQ MCP tenant policy is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ MCP policy governance configure policy Microsoft Graph API PowerShell endpoint. Opened policy-governance-mcp and read search excerpts from the tool reference and migration guide; no policy-setting API or PowerShell call found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Work IQ MCP policy is reached in Microsoft 365 admin center through Agents > Tools > Work IQ MCP > Policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "In the left navigation, select Agents > Tools. ... In the tools registry, select Work IQ MCP. ... On the Work IQ MCP details pane, select the Policy tab when it's available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[0].scope; Governance controls",
+      "type": "applicability",
+      "claim": "The documented MCP policy control applies tenant-wide.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "In the initial release, Work IQ MCP provides tenant-level policy control. In the Microsoft 365 admin center, tenant administrators can turn Work IQ MCP policy on or off for the tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[0].note",
+      "type": "availability",
+      "claim": "The documentation qualifies access to the Policy tab as when it is available.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "On the Work IQ MCP details pane, select the Policy tab when it's available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[0].note; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "MCP policy changes can take up to 24 hours to apply.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "After you save the setting, it can take up to 24 hours for the policy change to apply across your tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "default",
+      "claim": "The MCP policy page says mutation operations, including create, update, delete and actions such as sending email, are disallowed by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "By default, mutation operations aren't allowed for safety. This restriction includes create, update, delete, and action requests that modify data, such as sending email.",
+      "severity": "minor",
+      "fix": "Retain the attribution to the MCP policy page, but add that https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq#work-iq-key-features says \"Write operations are on by default. Your organization's permissions and policies still apply.\" Cite that page and advise checking the actual agent and tenant policy rather than treating the two descriptions as one universal default."
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Work IQ MCP policy evaluates each MCP tool request.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "Policy layer | Applies tenant governance rules to each MCP tool request",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "Whether a resumed elicitation task is evaluated again is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"elicitation\" admin policy Graph API enable default; \"Work IQ\" \"elicitation\" timeout task state resume authorization input recipients. Opened MCP policy governance and A2A overview; no resumed-task evaluation semantics found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Work IQ requests remain in the signed-in user's access context, and MCP policy cannot grant access beyond that user's permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
+      "quote": "Actions are user scoped, meaning every request runs in the context of a specific user and only accesses what that user is allowed to see or do.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Change & support",
+      "type": "absence",
+      "claim": "The resumable lifetime of a paused Work IQ elicitation task is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"elicitation\" timeout task state resume authorization input recipients. Opened A2A overview and MCP overview; neither specifies an elicitation timeout or resumable lifetime.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Change & support",
+      "type": "absence",
+      "claim": "The outcome when nobody answers a Work IQ elicitation request is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"elicitation\" timeout task state resume authorization input recipients. Opened A2A overview, MCP overview and Cowork elicitation forms; Cowork cancellation behaviour is documented, but no Work IQ unanswered-request behaviour is specified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The Cowork elicitation page says not all MCP hosts support elicitation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-elicitation-forms",
+      "quote": "Not all MCP hosts support elicitation yet.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Cowork guidance says never to request passwords, API keys or tokens through elicitation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-elicitation-forms",
+      "quote": "No secrets in forms. Never request passwords, API keys, or tokens via elicitation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "front matter: licensing.model; Cost and licensing",
+      "type": "licensing",
+      "claim": "Work IQ API uses a consumption-based licensing model rather than per-user API licensing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
+      "quote": "You pay for use of the Work IQ API through a usage-based model that uses Copilot Credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Work IQ API access is independent of Microsoft 365 Copilot licensing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
+      "quote": "Work IQ API access is independent of Microsoft 365 Copilot licensing and available through usage-based billing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "For Microsoft 365 Copilot licensed users, Work IQ is subject to usage-based billing in custom and third-party agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
+      "quote": "For Microsoft 365 Copilot licensed users, Work IQ is available in all Microsoft 365 Copilot experiences and agents. It is subject to usage-based billing for custom and third-party agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Users without a Microsoft 365 Copilot licence are billed based on Work IQ usage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
+      "quote": "Users without a Microsoft 365 Copilot license are billed based on usage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "front matter: cost; licensing.notes; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Work IQ API has variable usage-based cost metered in Copilot Credits shared with other eligible services.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
+      "quote": "Work IQ cost is variable based on usage and can be managed in the Microsoft 365 admin center. ... Work IQ API usage consumes Copilot Credits shared with other eligible services.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "A separate Work IQ elicitation rate or charge has not been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ elicitation Copilot Credits waiting input rate metered paused resume; \"Work IQ\" \"elicitation\" usage reports session billing credits waiting. Opened Work IQ overview and API overview; pricing excerpts describe general consumption, not a separate elicitation charge.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "Whether a Work IQ task is metered while waiting for elicitation input is not published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ elicitation Copilot Credits waiting input rate metered paused resume; \"Work IQ\" \"elicitation\" usage reports session billing credits waiting. Opened Work IQ overview and API overview; no waiting-time metering statement found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Add a spending policy in Microsoft 365 admin center through Copilot > Cost Management > Configuration > + Add spending policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "In the Microsoft 365 admin center, go to Copilot > Cost Management. ... Select the Configuration tab and then select + Add spending policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Cost and licensing; Governance controls",
+      "type": "behaviour",
+      "claim": "Spending policies do not reserve or allocate Copilot Credits to users or groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "Spending policies are limit-based controls and don't reserve or allocate Copilot Credits to users or groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[1].governs; Cost and licensing; Governance controls",
+      "type": "cost",
+      "claim": "A limited monthly spending-policy budget caps monthly credits consumed within its scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "Limited monthly budget: When you select a limited monthly budget, you limit the number of credits that this policy can spend each month.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "The spending-policy page says users who hit the limit lose access to agents and services for the rest of the month.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "When users hit the limit, they lose access to agents and services for the rest of the month until credits reset on the first of the month.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[1].note; Governance controls",
+      "type": "role",
+      "claim": "Creating a spending policy requires the Billing Administrator or Global Administrator directory role at runtime.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview",
+      "quote": "Creating a spending policy also requires the Billing Administrator or Global Administrator directory role at runtime.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "GET, POST, PATCH and DELETE all operate on https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview",
+      "quote": "Update spendingPolicy | PATCH `/copilot/costManagement/spendingPolicies/{id}` | Update a spending policy. ... Delete spendingPolicy | DELETE `/copilot/costManagement/spendingPolicies/{id}` | Delete a spending policy.",
+      "severity": "blocker",
+      "fix": "Replace the call in both front matter and rendered table with 'GET https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies (POST to create; PATCH and DELETE use https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/{id})'. The cited overview documents all four operations; PATCH and DELETE require the policy ID, as confirmed by its linked update and delete references."
+    },
+    {
+      "n": 51,
+      "where": "controls[1].note; controls[2].note; Governance controls",
+      "type": "availability",
+      "claim": "The cost-management Graph APIs are beta and not supported for production applications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview",
+      "quote": "APIs under the `/beta` version are subject to change. Use of these APIs in production applications is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[2].ui; Governance controls table; Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "Service consumption is shown in Microsoft 365 admin center under Copilot > Cost Management > Consumption > Agents and services.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending",
+      "quote": "go to Copilot > Cost Management. ... Select the Consumption tab. ... In the Agents and services view, review usage for supported services. For example, Cowork and Work IQ API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[2].note",
+      "type": "behaviour",
+      "claim": "The Agents and services view reports active users, credits used and session count for each supported service.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending",
+      "quote": "This view shows active users, credits used, and session count for each supported service.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[2].note",
+      "type": "absence",
+      "claim": "The documented consumption view does not break out elicitation separately.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"elicitation\" usage reports session billing credits waiting. Opened Monitor Copilot Credit spending, Cost Management API overview and List costManagementServiceUsageRecords; documented dimensions include services, not elicitation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[2].api; Governance controls table",
+      "type": "command",
+      "claim": "GET https://graph.microsoft.com/beta/copilot/costManagement/usageReports/serviceUsageRecords?startDate=YYYY-MM-DD&endDate=YYYY-MM-DD lists service consumption for the selected day.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview",
+      "quote": "List costManagementServiceUsageRecords | GET `/copilot/costManagement/usageReports/serviceUsageRecords` | List reported consumption per governed service for one completed UTC day.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[2].note; Governance controls",
+      "type": "command",
+      "claim": "Service usage reports require startDate and endDate selecting one completed UTC day, with endDate exactly one day after startDate.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview",
+      "quote": "Completed UTC day | `startDate`, `endDate` | Date, `YYYY-MM-DD`. Inclusive start and exclusive end. `endDate` must equal `startDate` plus one day, and its UTC midnight must not be later than the current time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Work IQ A2A is intended for agent collaboration and delegation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
+      "quote": "A2A | Structured agent-to-agent communication | Multi-agent systems, delegation",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Work IQ MCP supports tool-based clients such as IDEs, CLIs and AI coding assistants.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
+      "quote": "Remote MCP | Tool-based context access | IDEs, CLIs, AI coding assistants",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Work IQ elicitation rollout mechanics are not published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ elicitation authorization agents consent admin controls prerequisites rollout answers storage. Opened roadmap record, A2A overview and MCP overview; roadmap targets exist, but no elicitation rollout mechanics are specified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Feature-specific prerequisites for Work IQ elicitation are not published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ elicitation authorization agents consent admin controls prerequisites rollout answers storage. Opened API overview, A2A overview, MCP overview and Foundry Work IQ consent passage; general Work IQ prerequisites do not specify elicitation prerequisites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "An administrator role for configuring elicitation specifically has not been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ elicitation authorization agents consent admin controls prerequisites rollout answers storage; \"Work IQ\" \"elicitation\" admin policy Graph API enable default. Opened MCP policy governance and A2A overview; no elicitation configuration role found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "controls[0].note; controls[1].note; Why it matters; Governance controls; rationale: risk",
+      "type": "absence",
+      "claim": "The existing MCP policy and credit controls are not documented as specific controls over elicitation, and MCP policy applicability to A2A elicitation is not confirmed.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"elicitation\" admin policy Graph API enable default. Opened MCP policy governance, spending-policy management and Cost Management API overview; no elicitation-specific governance or A2A policy coverage stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Per-user, per-app and per-agent templates are not part of the initial Work IQ MCP policy control surface.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "Per-user, per-app, per-agent, or scenario-specific policy templates aren't part of the initial policy control surface.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-16T18:26:17.202Z",
+    "summary": {
+      "links": 11,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 1,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=570852",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/a2a/overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/cowork/cowork-elicitation-forms",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/azure/foundry/agents/how-to/tools/work-iq",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether Work IQ MCP tool requests are governed by tenant policy",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "Tools",
+          "Work IQ MCP"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Who can consume Copilot Credits for Work IQ API, and the limits and billing method",
+        "docs": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Cost Management",
+          "Configuration",
+          "+ Add spending policy"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Who can consume Copilot Credits for Work IQ API, and the limits and billing method",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview",
+        "reachable": true,
+        "token": "/beta/copilot/costManagement",
+        "found": false
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Monitoring Work IQ API credit use by user, group and service",
+        "docs": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Cost Management",
+          "Consumption",
+          "Agents and services"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Monitoring Work IQ API credit use by user, group and service",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview",
+        "reachable": true,
+        "token": "YYYY-MM",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
   "history": [
     {
       "date": "2026-11-16",
@@ -39,6 +865,12 @@
       "status": "held",
       "version": 1,
       "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-16",
+      "status": "held",
+      "version": 2,
+      "model": "none"
     }
   ]
 }

@@ -54,6 +54,17 @@ changes:
   - date: "2026-11-16"
     note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
 version: 2
+verification:
+  status: "needs-correction"
+  date: "2026-11-16"
+  version: 2
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 40
+  confirmed: 36
+  unconfirmed: 1
+  contradicted: 3
+  attempts: 1
 ---
 
 ## What's changing
@@ -128,4 +139,14 @@ Prompt management is portal-only and role-gated. Until the delegation feature is
 risk: Medium. Delegates can publish tenant-wide prompts that users see and run, so poor or unreviewed prompts can reach everyone without admin involvement.
 cost: Low. Admin time to define the delegate list and a review process; no licence change is published.
 impact: Medium. Affects prompt authors and admins directly, and all users who see suggested organisation prompts indirectly.
+-->
+
+<!-- verifier-findings (2026-11-16, needs-correction; checked by gpt-6.1-sol)
+The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
+- [supported, minor] Why it matters; controls[0].note; Governance controls / role: Current organisation prompt management uses the AI Administrator or Search Editor role. | Found: To manage, create, update, edit, import, and delete organizational prompts, use one of the following roles, or a role with equivalent permissions: AI Administrator; Search Editor | Fix: Qualify the current-role statement and control note with 'or a role with equivalent permissions', as the cited prerequisites do. | Source: https://learn.microsoft.com/copilot/manage/organizational-prompts
+- [contradicted, blocker] Scope; front matter: clouds / availability: Cloud availability is not stated in the material reviewed. | Found: "clouds": ["Worldwide (Standard Multi-Tenant)"] | Fix: Replace the scope sentence with 'The roadmap lists Worldwide (Standard Multi-Tenant).' Do not infer exclusion of clouds the record does not list.
+- [unsupported, blocker] Governance controls / absence: Prompt management is portal-only. | Found: Searched: '"organizational prompts" "API"', '"organizational prompts" "Graph" "PowerShell"'; opened Learn /copilot/manage/organizational-prompts and /copilot/implement/configure-copilot-admin-center. Neither states portal management is the only possible route. | Fix: Replace 'Prompt management is portal-only and role-gated' with 'Microsoft Learn documents role-gated prompt management in the admin centre; no Graph or PowerShell equivalent is documented at the time of writing (November 2026).'
+- [supported, minor] Governance controls / role: Search Editor is a less privileged publishing option than AI Administrator. | Found: Search Editor: Users in this role can create, manage, and delete content for Microsoft Search ... AI Administrator: This is a privileged role ... Manage all aspects of Microsoft Copilot | Fix: Cite https://learn.microsoft.com/entra/identity/role-based-access-control/permissions-reference#search-editor and #ai-administrator for the role-scope comparison; the linked Configure Copilot settings page does not make that comparison. | Source: https://learn.microsoft.com/entra/identity/role-based-access-control/permissions-reference
+- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The checklist tells administrators to review prompt analytics, but the controls table has no analytics row. | Found: After rollout: 'Review prompt analytics for active users and submissions.' Controls rows: 'Creating, editing, importing and pinning organisation prompts'; 'Delegating prompt publishing to other roles or people'. | Fix: Add a 'Reviewing organisation prompt analytics' control row. Cite https://learn.microsoft.com/copilot/manage/organizational-prompts#review-analytics-for-organizational-prompts; use the documented Copilot > Prompts management location and note Active users and Submissions.
+- [contradicted, minor] front matter: action / consistency: The prepare action rating conflicts with the standard for an optional administrator-configured capability. | Found: action: "prepare"; defaultState: "admin-opt-in"; 'admins can grant prompt publishing to individual users, Microsoft Entra security groups and distribution groups.' | Fix: Change action to 'review': this is an optional new delegation control, no source says existing publishing behaviour changes without administrator action, and the briefing does not rate the remaining exposure high.
 -->
