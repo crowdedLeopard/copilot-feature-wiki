@@ -48,9 +48,13 @@ permissions:
   id-token: write
   copilot-requests: write # lets the job's token make Copilot requests, billed to the repository owner's seat
 
-# One run at a time: the curation step commits back to main.
+# Curation runs (scheduled and manual) go one at a time because they commit back to main. A push to
+# main only rebuilds the site, so it has its own lane: GitHub keeps one pending run per group, and a
+# push that joined the curation lane cancelled a waiting curation run (16 Nov 2026). The curation
+# run's commit step rebases onto whatever a concurrent push merged, and the deploy job has its own
+# group so Pages deployments still happen one at a time.
 concurrency:
-  group: release-ledger
+  group: release-ledger-${{ github.event_name == 'push' && 'rebuild' || 'curate' }}
   cancel-in-progress: false
 
 jobs:
@@ -317,6 +321,9 @@ jobs:
     name: Deploy to GitHub Pages
     needs: curate-and-build
     runs-on: ubuntu-latest
+    concurrency:
+      group: release-ledger-pages
+      cancel-in-progress: false
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
