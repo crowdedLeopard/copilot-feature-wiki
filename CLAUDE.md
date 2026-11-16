@@ -54,6 +54,11 @@ daily by GitHub Actions.
   (`data/lifecycle.json` tracks last-seen dates). The site keeps the page's URL, lists it under `/archive/` and leaves it
   out of lists, the Atlas and the digest. Live pages untouched for `LIFECYCLE.reviewAfterDays` are queued as `review-due`,
   which takes its turn in the topic lanes rather than jumping the queue. Rules live in `config/taxonomy.mjs`.
+- `.github/workflows/teams-digest.yml` posts one Adaptive Card a week (Monday 07:17 UTC) to a Teams channel through a
+  Workflows webhook held in the `TEAMS_WEBHOOK_URL` secret. `pipeline/teams-digest.mjs` builds it from the committed
+  briefings with `pipeline/lib/teams-card.mjs` (Act now first, one line each on risk, cost and control, taken from the
+  ratings, the rationale comment and the first documented control); no model runs. Without the secret it posts nothing
+  and shows the card in the run summary. `pipeline/teams-digest-preview.mjs` renders the card to PNG for review.
 - `src/` is the Astro site. Design tokens live in `src/styles/tokens.css`.
 - The Atlas (`/atlas/`, the home page teaser and the plate in each briefing's Related section) is one canvas renderer,
   `src/scripts/atlas/engine.ts`, with no dependencies. `src/lib/graph.ts` builds its nodes and links (briefings,

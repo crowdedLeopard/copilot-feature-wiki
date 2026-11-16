@@ -17,6 +17,8 @@
     "pdf": "node pipeline/pdf.mjs",
     "daily": "node pipeline/ingest-message-center.mjs; node pipeline/ingest.mjs && node pipeline/compile.mjs && node pipeline/lint.mjs && node pipeline/index.mjs && node pipeline/digest.mjs",
     "digest": "node pipeline/digest.mjs",
+    "teams-digest": "node pipeline/teams-digest.mjs",
+    "teams-digest:preview": "node pipeline/teams-digest.mjs --dry-run && node pipeline/teams-digest-preview.mjs",
     "screenshots": "node pipeline/screenshots.mjs",
     "test": "node --test \"pipeline/lib/*.test.mjs\""
   },
@@ -38,6 +40,7 @@
   },
   "devDependencies": {
     "@anthropic-ai/sdk": "^1.8.0",
+    "adaptivecards": "^3.0.6",
     "fast-xml-parser": "^5.12.1",
     "playwright": "^1.63.0"
   }
