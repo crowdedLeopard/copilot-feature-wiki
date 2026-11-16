@@ -20,7 +20,7 @@ licensing:
   model: "unknown"
   notes: "Not yet published."
 audiences: ["power-platform-admin","security","maker"]
-tags: ["power-pages","authentication","identity-providers","governance","power-platform-admin-center","gcc"]
+tags: ["power-pages","authentication","identity-providers","governance","power-platform-admin-center","gcc","gcc-high","dod"]
 sources:
   - title: "Microsoft 365 Roadmap item 578062"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=578062"

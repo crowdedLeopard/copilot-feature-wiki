@@ -8,7 +8,8 @@ import AtlasMini from '../../components/AtlasMini.astro';
 import { allFeatures, allConcepts } from '../../lib/data';
 import { buildAtlas } from '../../lib/graph';
 import '../../styles/briefing.css';
-import { SITE, TOPIC_BY_ID, SOURCE_KIND, href, topicUrl, tagUrl, featureUrl, conceptUrl, formatDate, roadmapUrl, tagLabel, extractRationale, youtubeSearchUrl, learnSearchUrl } from '../../lib/site';
+import { SITE, TOPIC_BY_ID, SOURCE_KIND, href, topicUrl, tagUrl, featureUrl, conceptUrl, formatDate, roadmapUrl, extractRationale, youtubeSearchUrl, learnSearchUrl } from '../../lib/site';
+import { tagLabel } from '../../lib/tags';
 
 export async function getStaticPaths() {
   const features = await allFeatures();

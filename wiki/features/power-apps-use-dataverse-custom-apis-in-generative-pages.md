@@ -20,7 +20,7 @@ licensing:
   model: "included"
   notes: "Learn states no additional AI or message credits are needed for the generative pages maker experience. Standard Power Apps and Dataverse licensing applies."
 audiences: ["maker","power-platform-admin","service-owner"]
-tags: ["power-apps","generative-pages","dataverse","custom-api","model-driven-apps","plug-ins"]
+tags: ["power-apps","generative-pages","dataverse","custom-api","model-driven-apps","plug-ins","gcc","gcc-high"]
 sources:
   - title: "Generate a page using natural language"
     url: "https://learn.microsoft.com/en-us/power-apps/maker/model-driven-apps/generative-pages"

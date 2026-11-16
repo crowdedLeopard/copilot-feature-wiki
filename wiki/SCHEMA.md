@@ -49,6 +49,24 @@ Default state: `on`, `off`, `admin-opt-in`, `user-opt-in`, `unknown`. Read the r
 
 Confidence: `high` when key claims are verified in Microsoft Learn; `medium` when roadmap text plus partial docs; `low` when the roadmap text is the only source.
 
+## Tags
+
+Tags cut across topics and link pages that share a product, control, meter or risk. A tag is a
+kebab-case id; readers see its glossary name, so `dod` appears as "US Government: DoD". The glossary
+is `wiki/tags.json`: one entry per tag with the name, a group and a one-line explanation shown on the
+tag page. Groups: cloud, product, capability, licensing, security, governance, data.
+
+- Reuse a glossary tag before inventing one (the brief lists them). Use the canonical spelling:
+  `mcp`, not `model-context-protocol`; `m365-copilot`, not `microsoft-365-copilot`.
+- Define every new tag in `newTags`: a plain-English name with abbreviations expanded, a group, and
+  one sentence that says what it is and why an administrator cares. The pipeline adds it to the
+  glossary and never overwrites an entry that already has a description, so hand edits stick.
+- Prefer the name of a product, control, meter or risk to a theme: `spending-policies`, not `cost`.
+- Do not tag clouds. The pipeline adds `gcc`, `gcc-high` and `dod` from the roadmap record's cloud
+  list, so the US Government tag pages are complete. Worldwide is not tagged.
+- 2 to 12 tags per page. A tag earns its place by linking pages; one that only this page will ever
+  carry adds little.
+
 ## Briefing sections, in this order
 
 1. **What's changing**: 2 to 4 paragraphs. What the feature does, in which surfaces, from when.

@@ -20,7 +20,7 @@ licensing:
   model: "consumption"
   notes: "Azure Application Insights ingestion is metered by Azure Monitor. Exact charges depend on your workspace configuration."
 audiences: ["power-platform-admin","finops","maker","service-owner"]
-tags: ["power-apps","generative-pages","application-insights","telemetry","monitoring","data-export"]
+tags: ["power-apps","generative-pages","application-insights","telemetry","monitoring","data-export","gcc","gcc-high"]
 sources:
   - title: "Generate a page using natural language"
     url: "https://learn.microsoft.com/en-us/power-apps/maker/model-driven-apps/generative-pages"

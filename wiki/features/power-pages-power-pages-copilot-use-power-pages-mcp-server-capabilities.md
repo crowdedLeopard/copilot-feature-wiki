@@ -20,7 +20,7 @@ licensing:
   model: "mixed"
   notes: "Learn requires a Microsoft 365 Copilot licence for end users of the Copilot agent example. Power Pages licensing is separate."
 audiences: ["power-platform-admin","security","maker","service-owner"]
-tags: ["power-pages","mcp","model-context-protocol","web-api","dataverse","table-permissions","microsoft-365-copilot"]
+tags: ["power-pages","mcp","web-api","dataverse","table-permissions","m365-copilot"]
 sources:
   - title: "Microsoft 365 Roadmap item 577813"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=577813"
