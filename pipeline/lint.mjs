@@ -14,6 +14,7 @@ import { loadPages, loadConcepts } from './lib/pages.mjs';
 import { RAW_DIR, WIKI_DIR, FEATURES_DIR, DATA_DIR, readJson, writeJson, appendLog, today } from './lib/util.mjs';
 import { LEGACY_DESK_TOPIC } from '../config/taxonomy.mjs';
 import { loadGlossary, saveGlossary, normaliseTags, defineTags } from './lib/tags.mjs';
+import { listHeld, REPORT_DIR, MAX_AGE_DAYS } from './lib/verify.mjs';
 import { isReviewDue, reviewDueAfter } from './lib/lifecycle.mjs';
 
 const QUARANTINE = path.join(WIKI_DIR, '_quarantine');
@@ -30,6 +31,17 @@ async function main() {
   let glossaryChanged = false;
   const retagged = await retagConcepts(concepts, glossary);
   for (const r of retagged) findings.info.push(`concepts/${r.file}: tags rewritten as ${JSON.stringify(r.tags)}`);
+
+  // Verification. Held pages live in wiki/_held and are not built; they are listed here so nobody has to remember to look.
+  const held = await listHeld();
+  const heldSlugs = new Set(held.map((h) => h.slug));
+  for (const h of held) {
+    const r = h.report;
+    if (slugs.has(h.slug)) findings.errors.push(`_held/${h.slug}.md: the same slug is also in features/ (a page lives in one place only)`);
+    const why = r?.hold?.reasons?.length ? r.hold.reasons.join('; ') : 'not yet checked by the verifier';
+    findings.warnings.push(`_held/${h.slug}.md: held (${r?.hold?.reason || 'unverified'}${r?.hold?.since ? ` since ${r.hold.since}` : ''}${r?.attempts ? `, ${r.attempts} attempt${r.attempts > 1 ? 's' : ''}` : ''}): ${why}`);
+  }
+  const verification = { verified: 0, gaps: 0, needsCorrection: 0, unchecked: 0, stale: 0, held: held.length };
 
   for (const page of pages) {
     const where = `features/${page.file}`;
@@ -48,8 +60,21 @@ async function main() {
     for (const s of fm.sources) if (!isAllowedSourceUrl(s.url)) findings.warnings.push(`${where}: source outside allowed domains: ${s.url}`);
     for (const v of fm.videos) if (!isAllowedSourceUrl(v.url)) findings.warnings.push(`${where}: video outside allowed domains: ${v.url}`);
     for (const r of fm.related) {
-      if (!slugs.has(r) && !conceptSlugs.has(r)) findings.warnings.push(`${where}: related "${r}" does not exist`);
+      if (heldSlugs.has(r)) findings.info.push(`${where}: related "${r}" is held and not published (the link is dropped from the page until it returns)`);
+      else if (!slugs.has(r) && !conceptSlugs.has(r)) findings.warnings.push(`${where}: related "${r}" does not exist`);
       else inbound.set(r, (inbound.get(r) || 0) + 1);
+    }
+    // The independent check. Every published page should carry a current one; the states are explained in wiki/SCHEMA.md.
+    const v = fm.verification;
+    if (!v) { verification.unchecked++; findings.info.push(`${where}: not yet checked against Microsoft Learn (queued)`); }
+    else {
+      if (v.status === 'held') findings.errors.push(`${where}: front matter says held, but the page is in features/`);
+      else if (v.status === 'needs-correction') { verification.needsCorrection++; findings.warnings.push(`${where}: failed its check on ${v.date} (${v.contradicted} contradicted, ${v.unconfirmed} unconfirmed of ${v.claims} statements); live under grace with a notice, corrected version queued`); }
+      else if (v.status === 'verified-with-gaps') verification.gaps++;
+      else verification.verified++;
+      if (v.version !== fm.version) { verification.stale++; findings.warnings.push(`${where}: checked at version ${v.version}, page is now version ${fm.version} (re-check queued)`); }
+      const checkAge = (Date.now() - new Date(v.date).getTime()) / 86400000;
+      if (checkAge > MAX_AGE_DAYS) findings.info.push(`${where}: last checked ${Math.round(checkAge)} days ago (re-check due)`);
     }
     for (const m of page.body.matchAll(/\]\(\/(features|concepts)\/([a-z0-9-]+)\/?\)/g)) {
       const ok = m[1] === 'features' ? slugs.has(m[2]) : conceptSlugs.has(m[2]);
@@ -87,6 +112,13 @@ async function main() {
     if (fm.archived && !page.body.includes('## ')) findings.warnings.push(`${where}: archived page has lost its body`);
   }
   for (const p of pages) if (!inbound.has(p.slug) && !p.error) findings.info.push(`features/${p.file}: orphan (no inbound related links)`);
+  // A verification report whose page has gone is noise; say so once.
+  try {
+    for (const f of (await fs.readdir(REPORT_DIR)).filter((f) => f.endsWith('.json'))) {
+      const slug = f.replace(/\.json$/, '');
+      if (!slugs.has(slug) && !heldSlugs.has(slug)) findings.info.push(`verification/${f}: report for a page that no longer exists`);
+    }
+  } catch { /* no reports yet */ }
   for (const c of concepts) {
     const defined = defineTags(glossary, normaliseTags(c.data.tags || [], [], glossary));
     if (defined.stubs.length) glossaryChanged = true;
@@ -95,14 +127,15 @@ async function main() {
   if (glossaryChanged) await saveGlossary(glossary);
 
   const report = [
-    `# Lint report`, ``, `Generated ${new Date().toISOString()}. ${pages.length} briefings, ${concepts.length} concepts, ${quarantined} quarantined.`, ``,
+    `# Lint report`, ``, `Generated ${new Date().toISOString()}. ${pages.length} briefings, ${concepts.length} concepts, ${quarantined} quarantined.`,
+    `Independent check: ${verification.verified} verified, ${verification.gaps} verified with gaps, ${verification.needsCorrection} awaiting correction (live under grace), ${verification.unchecked} not yet checked, ${verification.stale} stale; ${held.length} held and not published.`, ``,
     `## Errors (${findings.errors.length})`, ...findings.errors.map((e) => `- ${e}`), ``,
     `## Warnings (${findings.warnings.length})`, ...findings.warnings.map((e) => `- ${e}`), ``,
     `## Info (${findings.info.length})`, ...findings.info.map((e) => `- ${e}`), ``,
   ].join('\n');
   await fs.writeFile(path.join(WIKI_DIR, 'lint-report.md'), report);
-  await writeJson(path.join(DATA_DIR, 'lint.json'), { generated: new Date().toISOString(), pages: pages.length - quarantined, quarantined, ...findings });
-  const line = `- ${today()} lint: ${pages.length - quarantined} briefings ok, ${findings.errors.length} errors (${quarantined} quarantined), ${findings.warnings.length} warnings, ${findings.info.length} notes`;
+  await writeJson(path.join(DATA_DIR, 'lint.json'), { generated: new Date().toISOString(), pages: pages.length - quarantined, quarantined, verification, ...findings });
+  const line = `- ${today()} lint: ${pages.length - quarantined} briefings ok, ${findings.errors.length} errors (${quarantined} quarantined), ${findings.warnings.length} warnings, ${findings.info.length} notes; ${verification.verified + verification.gaps} checked, ${verification.needsCorrection} awaiting correction, ${held.length} held`;
   await appendLog(line);
   console.log(line);
   if (process.env.GITHUB_STEP_SUMMARY) await fs.appendFile(process.env.GITHUB_STEP_SUMMARY, line.slice(2) + '\n');
