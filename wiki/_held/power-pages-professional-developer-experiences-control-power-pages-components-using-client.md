@@ -90,6 +90,17 @@ changes:
   - date: "2026-11-16"
     note: "First briefing: documents the Power Pages client API, its table-permission boundary and the absence of a documented switch to turn it off."
 version: 1
+verification:
+  status: "held"
+  date: "2026-11-16"
+  version: 1
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 67
+  confirmed: 62
+  unconfirmed: 2
+  contradicted: 3
+  attempts: 1
 ---
 
 ## What's changing
@@ -192,4 +203,15 @@ No administrator setting to turn the client API off for a site is documented at 
 risk: Medium. Site script can create, update and delete Dataverse records through $pages.webAPI, so the exposure depends on table permissions and web roles; Learn documents no switch to turn the API off.
 cost: Low. The client API pages name no licence or meter, so the known cost is developer and review time; the site itself is licensed by Power Pages capacity, and the licence position for client API calls is not stated.
 impact: Low. Developers and makers who write site script notice it; site visitors see changes only when a developer ships script that uses the API.
+-->
+
+<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
+The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
+- [supported, minor] Risk assessment: Data exposure; Governance guidance: Before rollout / applicability: Assigning table access to the Anonymous users web role makes the data accessible to any visitor. | Found: When the Anonymous users web role is granted access to a table, any user who visits the site can access the data in the table. | Fix: Add https://learn.microsoft.com/power-pages/security/assign-table-permissions to sources; it directly states the anonymous-access warning. | Source: https://learn.microsoft.com/power-pages/security/assign-table-permissions
+- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: Server logic and cloud flows triggered from page events run with no approval step. | Found: Searched: Power Pages client API cloud flows approval step page events. Read client-api/ajax and cloud-flow-integration; they demonstrate invocation but do not guarantee that the called logic or flow has no approval step. | Fix: Replace the absolute statement with: 'Developers choose when scripts invoke these endpoints. Any approval or business checks depend on the called server logic or flow.'
+- [contradicted, blocker] Risk assessment: Change & support / command: A developer needing a total larger than 5,000 must use $count=true with retrieveMultipleRecords. | Found: This option includes a count of rows that match the filter criteria, up to 5,000 for standard tables and 500 for elastic tables | Fix: Keep the documented getRecordCount cap, but replace the workaround with: 'retrieveMultipleRecords with $count=true returns records together with a count; it does not bypass the Dataverse count limit.' Cite https://learn.microsoft.com/power-apps/developer/data-platform/webapi/query/count-rows. The client API page recommends this option for records plus a count, not for a larger count. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/webapi/query/count-rows
+- [contradicted, blocker] controls[0].api; controls[0].note; Governance controls / absence: Microsoft Learn documents no CLI command or other automation for table permissions. | Found: Support for download/upload of website configuration data to/from the local file system | Fix: Replace the undocumented automation side with the documented PAC CLI configuration workflow. The Supported tables section explicitly includes adx_entitypermission. Download the site, edit its table-permission YAML, and deploy using 'pac pages upload --path <site-folder> --modelVersion <1-or-2>'. Cite https://learn.microsoft.com/power-pages/configure/power-platform-cli and update the note and repeated prose; this is configuration deployment, not a dedicated permission-setting cmdlet. | Source: https://learn.microsoft.com/power-pages/configure/power-platform-cli
+- [contradicted, blocker] controls[1].api; Governance controls / absence: Microsoft Learn documents no automation for the Web API site settings. | Found: In this file, you can have the table (entity) name with table ID, list of attributes, and the values that you want to override while uploading the portal configuration using the `deploymentProfile` parameter. | Fix: Replace the undocumented automation side with PAC CLI configuration deployment. This reference includes adx_sitesetting among supported tables and shows site-setting overrides in deployment YAML. Use 'pac pages upload --path <site-folder> --deploymentProfile <profile> --modelVersion <1-or-2>' after preparing the site's configuration/profile. Cite https://learn.microsoft.com/power-pages/configure/power-platform-cli; retain the caveat that client API applicability is not explicitly stated. | Source: https://learn.microsoft.com/power-pages/configure/power-platform-cli
+- [supported, minor] Cost and licensing / licensing: Invoking Power Automate flows from Power Pages has its own licensing requirement. | Found: To integrate with Power Pages, a Power Automate license is required. | Fix: Add https://learn.microsoft.com/power-pages/configure/cloud-flow-integration to sources and cite its Prerequisites section for the separate Power Automate requirement. | Source: https://learn.microsoft.com/power-pages/configure/cloud-flow-integration
+- [unsupported, major] Why it matters / behaviour: If nobody acts, nothing breaks and all existing sites behave as before. | Found: Searched: site:learn.microsoft.com/power-pages/configure/client-api existing scripts sites unchanged no administrator action. Read overview and initialization; continued support is stated for the deprecated alias, not a blanket guarantee for existing sites. | Fix: Remove 'nothing breaks' and the blanket compatibility guarantee. Say: 'Using the new APIs requires developers to add calls to their site scripts; Microsoft also says the deprecated initialization alias still works for existing scripts.'
 -->

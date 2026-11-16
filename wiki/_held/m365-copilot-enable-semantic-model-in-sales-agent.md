@@ -105,6 +105,17 @@ changes:
   - date: "2026-11-16"
     note: "First briefing for this roadmap item, written from the roadmap record and the preview Learn pages for Sales agent, the semantic model and Work IQ."
 version: 1
+verification:
+  status: "held"
+  date: "2026-11-16"
+  version: 1
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 78
+  confirmed: 73
+  unconfirmed: 1
+  contradicted: 4
+  attempts: 1
 ---
 
 ## What's changing
@@ -213,4 +224,14 @@ Glossary terms for Dynamics 365 are, per the Sales agent page, added in Copilot 
 risk: Medium. The model reads CRM metadata and, if switched on, sample data rows, and the Work IQ setting behind it is documented as on by default for qualifying environments from November 2026, so it needs review.
 cost: Low. The only costs Learn shows are admin time and extra Dataverse storage for search indexes. Sales agent needs a Microsoft 365 Copilot licence; any charge specific to the semantic model is not yet published.
 impact: Medium. Sellers using Sales agent will notice changed answers; the admins and makers who manage the CRM environment do the configuring. Nobody else is affected.
+-->
+
+<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
+The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
+- [contradicted, blocker] What's changing: rollout paragraph; sources / date: The briefing presents only the December roadmap target as the announced general availability timing. | Found: This feature will reach general availability on November 17, 2026. | Fix: Retain December CY2026 explicitly as the roadmap target, but add that Microsoft's notice MC1540293 announces general availability on November 17, 2026, and says no action is required. Cite https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1540293 and report the discrepancy rather than silently choosing the roadmap.
+- [supported, minor] front matter: licensing.notes; Cost and licensing; Scope; rationale: cost / licensing: Sales agent is available to Microsoft 365 Copilot licensees, and the briefing describes that licence as required. | Found: The Sales agent is available to users who have access to a Microsoft 365 Copilot license. | Fix: Retain the cited setup-page statement, but qualify the blanket requirement: https://learn.microsoft.com/microsoft-sales-copilot/use-sales-chat also says Dynamics 365 Sales Enterprise or Premium users without Microsoft 365 Copilot can use Sales agent with CRM data only. Name that discrepancy and add the source. | Source: https://learn.microsoft.com/microsoft-sales-copilot/set-up-sales-chat
+- [contradicted, blocker] Risk assessment: Security & identity; Open questions / absence: Microsoft has not said whether the Salesforce msdyn_viva environment falls under the Work IQ default. | Found: The msdyn_viva environment is of type Trial. If you need to convert the environment to Production, follow the steps in the Convert the sales environment from Trial to Production article. | Fix: Replace the unresolved question with the documented qualification: msdyn_viva is provisioned as Trial, and trial environments are excluded from Work IQ automatic enablement by https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings. If it has been converted to Production, check the other eligibility exceptions. Add the data-handling source. | Source: https://learn.microsoft.com/microsoft-sales-copilot/data-handling#sales-agent,-dataverse,-and-your-crm
+- [unsupported, blocker] Cost and licensing: final paragraph / cost: Removing tables from the Sales agent entity list reduces index storage. | Found: Searched: "Sales agent" "remove tables" "storage" "index". Opened Sales setup and read Free up storage space search passages. The documented storage action is removing tables from Dataverse search, not merely from the Sales agent entity list. | Fix: Replace with: 'For Dynamics 365, removing tables from Dataverse search can reduce index-related storage costs, but those tables can no longer be queried in Sales agent.' Cite https://learn.microsoft.com/microsoft-sales-copilot/set-up-sales-chat#step-1-configure-crm-entities-dynamics-365-tables-or-salesforce-objects. Do not equate the Sales agent entity list with the Dataverse search index configuration.
+- [contradicted, blocker] Governance controls: final sentence / absence: No scripted control for any of the glossary management just described is documented. | Found: Entity set path: [organization URI]/api/data/v9.2/copilotglossaryterms ... Operations supported: POSTGETPATCHDELETE | Fix: Remove 'No scripted control for any of this is documented'. Microsoft documents Dataverse CRUD for CopilotGlossaryTerm, including term, description and skill properties, at the cited reference. Restrict any remaining absence statement to the Work IQ switch and the specific Semantic model UI controls whose API mapping is not documented; do not imply Salesforce glossary rows have no automation surface. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/copilotglossaryterm
+- [contradicted, minor] Governance guidance: At rollout; After rollout; Governance controls / consistency: The governance checklist asks administrators to use controls that lack their own corresponding table rows. | Found: Switch off views or relationships ... leave Sample table rows off ... an admin can regenerate manually ... Turn Dataverse Intelligence off and on again | Fix: Add distinct rows for signal-type/sample-row configuration, individual view/relationship switches and manual regeneration. The existing controls[2] path only shows table inclusion. Also map the Dataverse Intelligence restart instruction explicitly to the environment control row, noting Microsoft's terminology, rather than leaving its relationship to Work IQ implicit.
 -->

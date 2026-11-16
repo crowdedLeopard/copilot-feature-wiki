@@ -72,6 +72,17 @@ changes:
   - date: "2026-11-16"
     note: "First briefing for roadmap item 577187: planned read-only View-Only Device Management role for the Endpoint DLP Devices page."
 version: 1
+verification:
+  status: "held"
+  date: "2026-11-16"
+  version: 1
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 44
+  confirmed: 43
+  unconfirmed: 1
+  contradicted: 0
+  attempts: 1
 ---
 
 ## What's changing
@@ -163,4 +174,10 @@ The Entra role route stays the documented way to reach the Devices page today. T
 risk: Low. The roadmap item describes a read-only role that narrows who needs broad admin roles; existing roles keep full access, so exposure stays as it is until someone assigns the new role.
 cost: Low. The only cost the sources show is admin time to assign roles; Microsoft has not published any licence or meter for this role, and the roadmap record names none.
 impact: Low. Only administrators, auditors and security analysts who look at the Devices page notice it; end users and onboarded devices are unaffected.
+-->
+
+<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
+The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
+- [unsupported, blocker] front matter: defaultState; summary; Why it matters; Risk assessment; rationale: risk / default: The change is admin-opt-in and nothing changes until an administrator assigns the role. | Found: Searched: "View-Only Device Management" "Devices" enable default role groups; "View-Only Device Management" "onboarding" export enable switch default. Read roadmap, device-onboarding-overview and scc-permissions; none says existing role-group members need a new assignment. | Fix: Set defaultState to unknown. Replace the summary's 'nothing changes until an administrator assigns it' and equivalent body/risk-rationale assurances with 'Existing administrative roles retain full access; Microsoft has not stated whether existing holders of View-Only Device Management gain Devices page access automatically.' Keep review as a judgement if desired, but do not infer an opt-in rollout from unchanged access for current administrators.
+- [supported, minor] front matter: licensing.model and notes; Cost and licensing; Open questions; rationale: cost / licensing: A specific licence or SKU for this planned role is not yet published, so its licensing model is unknown. | Found: Searched: "View-Only Device Management" licensing price meter Purview. Opened device-onboarding-overview and Microsoft Purview service description; searched the latter for the role name. No role-specific SKU was stated, but general licensing covers users assigned Purview roles. | Fix: Keep licensing.model unknown for the unpublished role-specific SKU, but add: 'Microsoft's general Purview service description says users assigned a Purview role for use in the portal require a licence; the specific licence for this planned access is not yet published.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#which-users-need-a-license in sources.
 -->

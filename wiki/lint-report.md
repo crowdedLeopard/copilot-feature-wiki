@@ -1,34 +1,55 @@
 # Lint report
 
-Generated 2026-11-16T14:53:07.180Z. 61 briefings, 4 concepts, 0 quarantined.
-Independent check: 0 verified, 0 verified with gaps, 11 awaiting correction (live under grace), 54 not yet checked, 0 stale; 23 held and not published.
+Generated 2026-11-16T16:37:36.701Z. 64 briefings, 4 concepts, 0 quarantined.
+Independent check: 1 verified, 2 verified with gaps, 11 awaiting correction (live under grace), 54 not yet checked, 0 stale; 44 held and not published.
 
 ## Errors (0)
 
-## Warnings (39)
+## Warnings (60)
 - _held/copilot-studio-block-maker-provided-credentials.md: held (failed since 2026-11-16, 2 attempts): 1 blocking finding (claim 40)
 - _held/dynamics-365-business-central-copilot-and-agents-envision-and-design-ai-agents-in-business.md: held (failed since 2026-11-16, 1 attempt): 4 blocking findings (claims 34, 45, 56, 69)
 - _held/dynamics-365-customer-insights-data-agents-and-copilot-increase-ai-accuracy-by-grounding-a.md: held (failed since 2026-11-16, 1 attempt): 6 blocking findings (claims 45, 46, 47, 63, 66, 71)
-- _held/m365-copilot-copilot-extensibility-users-will-be-able-to-upload-files-stored-locally-or-in.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
-- _held/m365-copilot-enable-semantic-model-in-sales-agent.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
-- _held/microsoft-copilot-studio-invoke-agents-as-workflow-steps-with-the-agent-node.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
-- _held/microsoft-copilot-studio-persistent-identity-for-copilot-studio-agents.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
-- _held/microsoft-copilot-studio-self-learning-for-copilot-studio-agents.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
-- _held/microsoft-edge-expanded-enforcement-controls-for-data-loss-prevention-connectors.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
-- _held/microsoft-edge-rewrite-by-copilot-in-edge-is-being-upgraded-to-include-enterprise-data-pro.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
-- _held/microsoft-purview-dspm-copilot-readiness-and-data-explorer.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
-- _held/microsoft-purview-endpoint-data-loss-prevention-policy-sync-and-device-health-ai-powered-i.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
-- _held/microsoft-purview-endpoint-data-loss-prevention-view-only-access-to-device-onboarding-with.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
-- _held/microsoft-teams-tenant-policy-controls-who-can-record-and-transcribe.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
-- _held/outlook-keep-folder-sharing-within-your-organization-s-policies.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
-- _held/outlook-more-visibility-into-usage-for-recoverable-items-storage.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
-- _held/planner-save-ai-generated-filters-in-planner-agent-chat.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
-- _held/power-automate-credentials-integration-with-delinea-secret-server.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
-- _held/power-pages-administration-and-governance-enable-self-service-site-ownership-transfer.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
-- _held/power-pages-design-studio-enhance-openid-connect-with-encrypted-token-support.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
-- _held/power-pages-professional-developer-experiences-control-power-pages-components-using-client.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
-- _held/work-iq-a2a-and-mcp-elicitation.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
-- _held/work-iq-a2a-and-mcp-long-running-tasks.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/m365-app-inventory-update-repair.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/m365-copilot-copilot-extensibility-users-will-be-able-to-upload-files-stored-locally-or-in.md: held (failed since 2026-11-16, 1 attempt): 2 blocking findings (claims 33, 45)
+- _held/m365-copilot-enable-semantic-model-in-sales-agent.md: held (failed since 2026-11-16, 1 attempt): 4 blocking findings (claims 12, 46, 60, 73)
+- _held/m365-pay-as-you-go-storage-for-onedrive.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/m365-paygo-consumption-based-meter-for-your-extra-sharepoint-storage-needs.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/microsoft-copilot-studio-invoke-agents-as-workflow-steps-with-the-agent-node.md: held (failed since 2026-11-16, 1 attempt): 5 blocking findings (claims 54, 56, 57, 58, 60)
+- _held/microsoft-copilot-studio-persistent-identity-for-copilot-studio-agents.md: held (failed since 2026-11-16, 1 attempt): 2 blocking findings (claims 30, 44)
+- _held/microsoft-copilot-studio-self-learning-for-copilot-studio-agents.md: held (failed since 2026-11-16, 1 attempt): 1 blocking finding (claim 31)
+- _held/microsoft-edge-expanded-enforcement-controls-for-data-loss-prevention-connectors.md: held (failed since 2026-11-16, 1 attempt): 7 blocking findings (claims 12, 15, 21, 24, 25, 44, 47)
+- _held/microsoft-edge-rewrite-by-copilot-in-edge-is-being-upgraded-to-include-enterprise-data-pro.md: held (failed since 2026-11-16, 1 attempt): 3 blocking findings (claims 12, 13, 28)
+- _held/microsoft-purview-endpoint-data-loss-prevention-view-only-access-to-device-onboarding-with.md: held (failed since 2026-11-16, 1 attempt): 1 blocking finding (claim 34)
+- _held/microsoft-teams-admin-center-intelligent-insights-for-meeting-quality.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/microsoft-teams-admins-can-control-profanity-filtering-in-meeting-transcripts.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/microsoft-teams-analytics-for-desk-utilization-on-teams-pro-management-portal.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/microsoft-teams-automatic-recording-and-transcription-choices-align-with-admin-policies.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/microsoft-teams-automatic-recording-indicator-for-call-queue-calls-on-mobile.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/microsoft-teams-copilot-in-the-queues-app-on-mobile.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/microsoft-teams-customize-blocked-file-extensions-for-weaponizable-file-protection.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/microsoft-teams-enable-agents-for-existing-applications-in-your-organization.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/microsoft-teams-enhanced-copilot-and-ai-controls-for-meetings.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/microsoft-teams-enhanced-delegated-calling-with-delegate-call-access-restrictions-and-join.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/microsoft-teams-explicit-consent-for-recording-and-transcription-in-one-to-one-pstn-calls.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/microsoft-teams-external-presenter-support-for-event-group-chat.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/microsoft-teams-improved-organization-for-muted-and-meeting-chats.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/microsoft-teams-report-a-security-concern-in-meetings.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/microsoft-teams-report-suspicious-guest-invitations.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/microsoft-teams-teams-events-attendance-and-engagement-report-policy.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/microsoft-teams-tenant-policy-controls-who-can-record-and-transcribe.md: held (failed since 2026-11-16, 1 attempt): 2 blocking findings (claims 23, 45)
+- _held/microsoft-viva-engage-community-feed-improvements.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/outlook-enriching-profile-cards-with-custom-organization-specific-properties.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/outlook-keep-folder-sharing-within-your-organization-s-policies.md: held (failed since 2026-11-16, 1 attempt): 3 blocking findings (claims 32, 35, 36)
+- _held/planner-planner-agent-in-copilot-v2-improvements.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/planner-save-ai-generated-filters-in-planner-agent-chat.md: held (failed since 2026-11-16, 1 attempt): 1 blocking finding (claim 31)
+- _held/power-automate-credentials-integration-with-delinea-secret-server.md: held (failed since 2026-11-16, 1 attempt): 7 blocking findings (claims 22, 53, 55, 56, 57, 58, 59)
+- _held/power-pages-administration-and-governance-enable-self-service-site-ownership-transfer.md: held (failed since 2026-11-16, 1 attempt): 5 blocking findings (claims 19, 31, 36, 40, 48)
+- _held/power-pages-design-studio-enhance-openid-connect-with-encrypted-token-support.md: held (failed since 2026-11-16, 1 attempt): 1 blocking finding (claim 15)
+- _held/power-pages-professional-developer-experiences-control-power-pages-components-using-client.md: held (failed since 2026-11-16, 1 attempt): 3 blocking findings (claims 44, 46, 48)
+- _held/sharepoint-admin-center-data-access-governance-permission-report-for-a-given-group.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/viva-engage-my-team-audiences-and-flexible-targeting-for-leader-communications.md: held (unverified since 2026-11-16): Written but not yet checked against Microsoft Learn.
+- _held/work-iq-a2a-and-mcp-elicitation.md: held (failed since 2026-11-16, 1 attempt): 7 blocking findings (claims 20, 24, 25, 43, 44, 45, 58)
+- _held/work-iq-a2a-and-mcp-long-running-tasks.md: held (failed since 2026-11-16, 1 attempt): 1 blocking finding (claim 23)
 - features/agent-365-control-plane-for-agents.md: failed its check on 2026-11-16 (19 contradicted, 3 unconfirmed of 106 statements); live under grace with a notice, corrected version queued
 - features/copilot-studio-computer-use-for-web-browsing-on-microsoft-copilot-harness.md: failed its check on 2026-11-16 (3 contradicted, 1 unconfirmed of 42 statements); live under grace with a notice, corrected version queued
 - features/copilot-studio-cost-management-m365-admin-center.md: failed its check on 2026-11-16 (13 contradicted, 10 unconfirmed of 73 statements); live under grace with a notice, corrected version queued
@@ -46,7 +67,7 @@ Independent check: 0 verified, 0 verified with gaps, 11 awaiting correction (liv
 - features/m365-admin-center-agent-level-pay-as-you-go-controls.md: failed its check on 2026-11-16 (9 contradicted, 3 unconfirmed of 63 statements); live under grace with a notice, corrected version queued
 - features/microsoft-copilot-studio-agent-sharing-amongst-makers.md: body link to missing features/copilot-studio-block-maker-provided-credentials
 
-## Info (136)
+## Info (142)
 - features/copilot-studio-computer-use-for-web-browsing-on-microsoft-copilot-harness.md: control "Switch specific to web browsing on the Microsoft Copilot harness" has neither an admin UI nor an API documented
 - features/copilot-studio-mcp-tools-in-agents.md: related "copilot-studio-block-maker-provided-credentials" is held and not published (the link is dropped from the page until it returns)
 - features/copilot-studio-purview-information-protection-labelled-files.md: control "Copilot Studio-side switch for labelled files" has neither an admin UI nor an API documented
@@ -86,9 +107,12 @@ Independent check: 0 verified, 0 verified with gaps, 11 awaiting correction (liv
 - features/microsoft-power-platform-governance-and-administration-multi-grader-comparison.md: low confidence, roadmap text only
 - features/microsoft-power-platform-governance-and-administration-secure-dataverse-record-with-column.md: not yet checked against Microsoft Learn (queued)
 - features/microsoft-power-platform-governance-and-administration-secure-dataverse-record-with-column.md: control "Filter privileges in security roles" has neither an admin UI nor an API documented
+- features/microsoft-purview-dspm-copilot-readiness-and-data-explorer.md: control "Tenant-wide switch for the readiness and data explorer experiences" has neither an admin UI nor an API documented
+- features/microsoft-purview-endpoint-data-loss-prevention-policy-sync-and-device-health-ai-powered-i.md: control "Tenant switch for AI-powered device and policy sync investigation" has neither an admin UI nor an API documented
 - features/microsoft-teams-new-sharing-panel-in-meetings-improved-content-discovery-and-ease-of-shari.md: not yet checked against Microsoft Learn (queued)
 - features/microsoft-teams-new-sharing-panel-in-meetings-improved-content-discovery-and-ease-of-shari.md: control "A tenant-wide switch for the new sharing panel" has neither an admin UI nor an API documented
 - features/microsoft-teams-new-sharing-panel-in-meetings-improved-content-discovery-and-ease-of-shari.md: low confidence, roadmap text only
+- features/outlook-more-visibility-into-usage-for-recoverable-items-storage.md: control "Whether the Recoverable Items usage display is shown" has neither an admin UI nor an API documented
 - features/power-apps-expand-model-access-and-maker-studio-availability-for-generative-pages-via-gith.md: not yet checked against Microsoft Learn (queued)
 - features/power-apps-expand-model-access-and-maker-studio-availability-for-generative-pages-via-gith.md: control "Switch specific to generative pages or to GitHub-hosted models" has neither an admin UI nor an API documented
 - features/power-apps-form-fill-assistance-using-m365-files-in-model-driven-apps.md: not yet checked against Microsoft Learn (queued)
@@ -161,7 +185,10 @@ Independent check: 0 verified, 0 verified with gaps, 11 awaiting correction (liv
 - features/microsoft-dataverse-enable-semantic-data-understanding-for-agentic-use.md: orphan (no inbound related links)
 - features/microsoft-dataverse-m365-collaboration-discover-build-customize-and-extend-with-management.md: orphan (no inbound related links)
 - features/microsoft-power-platform-governance-and-administration-multi-grader-comparison.md: orphan (no inbound related links)
+- features/microsoft-purview-dspm-copilot-readiness-and-data-explorer.md: orphan (no inbound related links)
+- features/microsoft-purview-endpoint-data-loss-prevention-policy-sync-and-device-health-ai-powered-i.md: orphan (no inbound related links)
 - features/microsoft-teams-new-sharing-panel-in-meetings-improved-content-discovery-and-ease-of-shari.md: orphan (no inbound related links)
+- features/outlook-more-visibility-into-usage-for-recoverable-items-storage.md: orphan (no inbound related links)
 - features/power-apps-form-fill-assistance-using-speech-as-input-in-model-driven-apps.md: orphan (no inbound related links)
 - features/power-apps-model-driven-apps-use-row-summaries-in-us-government-clouds.md: orphan (no inbound related links)
 - features/power-apps-monitor-generative-pages-with-out-of-the-box-application-insights-telemetry.md: orphan (no inbound related links)

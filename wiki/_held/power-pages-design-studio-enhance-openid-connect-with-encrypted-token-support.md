@@ -69,6 +69,17 @@ changes:
   - date: "2026-11-16"
     note: "First briefing: the roadmap item is documented only by its description; no Learn page covers encrypted ID tokens yet."
 version: 1
+verification:
+  status: "held"
+  date: "2026-11-16"
+  version: 1
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 42
+  confirmed: 40
+  unconfirmed: 0
+  contradicted: 2
+  attempts: 1
 ---
 
 ## What's changing
@@ -172,4 +183,16 @@ The provider setup path is a maker-side path in the design studio; Learn gives n
 risk: Low. The roadmap says existing sign-in flows do not change, and the feature adds a stricter token option; no Microsoft page yet documents its default or any new data access.
 cost: Low. Microsoft has not published feature-specific licensing; the only cost the sources show is admin time to reconfigure an identity provider, plus existing Power Pages capacity or pay-as-you-go charges.
 impact: Low. Site makers and identity administrators notice it when they connect a provider that issues encrypted tokens; the roadmap says existing sign-in flows are unchanged.
+-->
+
+<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
+The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
+- [contradicted, blocker] front matter: defaultState; rationale: risk; Governance guidance: At rollout / default: The feature's default state is unknown. | Found: Enabled for end users automatically | Fix: Set defaultState to on under the standard's definition of automatic availability. State that the roadmap says it is enabled for end users automatically while the configuration and decryption mechanics remain undocumented; do not imply that automatic availability establishes a site's encryption configuration.
+- [supported, minor] controls[0].ui; Governance controls; Governance guidance: Before rollout / admin-path: Authentication governance is under Power Platform admin center > Manage > Products > Power Pages > Settings > Authentication. | Found: Under Authentication, select the authentication option you want to manage.
+6. Select an environment, and then select Manage.
+7. Choose the sites where makers can configure the authentication option. | Fix: Complete the location with the documented targeting steps: Manage > Products > Power Pages > Settings > Authentication > OpenID Connect > environment > Manage, then choose the site targeting option. The current path reaches the correct section but stops before the option and target selection. | Source: https://learn.microsoft.com/power-pages/security/external-auth-control
+- [supported, minor] Risk assessment: Data exposure; Governance guidance: After rollout / behaviour: Registration claims mapping and Login claims mapping configure mapping of provider claims to contact attributes. | Found: Set the Registration claims mapping additional site setting; for example, firstname=given_name,lastname=family_name.
+4. Set the Login claims mapping additional site setting; for example, firstname=given_name,lastname=family_name. | Fix: Add https://learn.microsoft.com/power-pages/security/authentication/openid-settings#set-up-additional-claims to sources for the contact-attribute mapping claim. The cited generic provider article names the settings, while this page explicitly documents the mapping and contact-attribute qualification. | Source: https://learn.microsoft.com/power-pages/security/authentication/openid-settings
+- [contradicted, minor] Open questions: final bullet / consistency: The August CY2026 preview target can still be described as a future target to be met. | Found: The preview target month has passed and the status still reads In development.
+Will the August CY2026 preview target be met, given the status is still In development? | Fix: Replace the final question with: 'Has the August CY2026 preview shipped, or has Microsoft revised that target? The roadmap still says In development.'
 -->

@@ -58,6 +58,17 @@ changes:
   - date: "2026-11-16"
     note: "First briefing for this roadmap item; no Learn page describes saved filters yet, so controls rest on the existing Planner Agent access setting."
 version: 1
+verification:
+  status: "held"
+  date: "2026-11-16"
+  version: 1
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 46
+  confirmed: 43
+  unconfirmed: 3
+  contradicted: 0
+  attempts: 1
 ---
 
 ## What's changing
@@ -153,4 +164,11 @@ Security group access depends on a valid group ID: Learn says that if the ID is 
 risk: Low. Saving a filter reuses plan data the user can already see through Planner Agent chat; Microsoft documents no new data source, and access is already controllable through the existing Planner Agent setting.
 cost: Low. The only cost the sources show is admin time and communications. Planner Agent chat in general needs a Microsoft Copilot licence; licensing for this feature specifically is not yet published.
 impact: Low. Only users of Planner Agent chat in premium plans notice it, as a convenience inside a chat that is already available to them. Nothing changes for other Planner users.
+-->
+
+<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
+The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
+- [unsupported, blocker] Why it matters: If nobody acts / default: If nobody acts, users who already have Planner Agent chat will be able to save filters when the feature arrives. | Found: Searched: "Planner Agent" "saved filters" "default" "rollout"; opened https://learn.microsoft.com/planner/turn-off-planner-agent and https://learn.microsoft.com/microsoft-365/copilot/release-notes; neither these nor the roadmap states automatic saved-filter availability. | Fix: Replace this sentence with: 'Microsoft has not stated whether saved filters will become available automatically to users who already have Planner Agent chat.' Keep the defaultState field unknown and the corresponding open question.
+- [unsupported, major] Data exposure; rationale: risk / behaviour: A saved filter is built from plan content the user can already reach through Planner Agent chat. | Found: Searched: "Planner Agent chat" "permissions" "plan"; "Planner Agent" "saved filters" "identity" "permissions" "data"; opened https://learn.microsoft.com/planner/turn-off-planner-agent; it describes plan summaries, not saved-filter data inputs or permissions. | Fix: Replace the assertion in Data exposure and the risk rationale with the roadmap-supported fact that this saves AI-generated filters for reuse on plans. Say that the saved-filter data inputs and permission behavior are not yet documented rather than asserting them.
+- [unsupported, major] Change & support; Governance guidance: At rollout / behaviour: Saved-filter results depend on the agent's interpretation of the request. | Found: Searched: "Planner" "filter" "interpretation" "agent"; "Planner Agent" "filters" "save"; opened https://learn.microsoft.com/microsoft-365/copilot/release-notes and https://learn.microsoft.com/planner/turn-off-planner-agent; no saved-filter execution semantics found. | Fix: Remove 'because an AI-generated filter is interpreted by the agent' and 'results depend on the agent's interpretation of the request'. Retain the explicitly qualified statement that behavior when plan data changes is not documented and the advice to collect unexpected-result reports.
 -->

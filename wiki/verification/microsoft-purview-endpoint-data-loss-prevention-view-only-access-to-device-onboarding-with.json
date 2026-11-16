@@ -5,27 +5,597 @@
   "status": "held",
   "date": "2026-11-16",
   "version": 1,
-  "model": "none",
-  "engine": "manual",
-  "attempts": 0,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [],
   "hold": {
-    "reason": "unverified",
+    "reason": "failed",
     "since": "2026-11-16",
     "reasons": [
-      "Written but not yet checked against Microsoft Learn."
+      "1 blocking finding (claim 34)"
     ]
   },
   "counts": {
-    "claims": 0,
-    "confirmed": 0,
-    "unconfirmed": 0,
+    "claims": 44,
+    "confirmed": 43,
+    "unconfirmed": 1,
     "contradicted": 0,
-    "blocker": 0,
+    "blocker": 1,
     "major": 0,
-    "minor": 0
+    "minor": 1
   },
-  "summary": "Written but not yet checked against Microsoft Learn.",
-  "claims": [],
-  "precheck": null,
-  "history": []
+  "summary": "The briefing cannot promise that Devices page access stays unchanged until an administrator assigns the role. Microsoft already lists the role in existing role groups but has not explained whether their members gain access automatically; the default must remain unstated.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "Microsoft plans read-only Devices page access through the View-Only Device Management role.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "A new View-Only Device Management role enables users, such as auditors or security analysts, to view device onboarding status",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "General availability is targeted for January CY2027.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"January CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate; What's changing; Scope",
+      "type": "record",
+      "claim": "Preview is targeted for December CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"December CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; Scope",
+      "type": "record",
+      "claim": "The listed release phases are General Availability and Preview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"Worldwide (Standard Multi-Tenant)\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists GCC.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"GCC\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists GCC High.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"GCC High\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"DoD\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The listed platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 2026-11-11T00:51:09.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-11T00:51:09\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Risk assessment: Data exposure; Governance guidance",
+      "type": "record",
+      "claim": "The planned role lets users such as auditors and security analysts view device onboarding status.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "A new View-Only Device Management role enables users, such as auditors or security analysts, to view device onboarding status",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Risk assessment: Data exposure; Governance guidance",
+      "type": "record",
+      "claim": "The planned role lets users search for devices.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "search for devices",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "The planned role lets users review configuration details.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "review configuration details",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Risk assessment: Data exposure; Governance guidance",
+      "type": "record",
+      "claim": "The planned role lets users export device data.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "export device data",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Risk assessment: Autonomy & actions; Governance guidance",
+      "type": "record",
+      "claim": "The planned role does not grant permission to change onboarding configuration.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "without granting permission to change onboarding configuration or other administrative settings",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The planned role does not grant permission to change other administrative settings.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "without granting permission to change onboarding configuration or other administrative settings",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Why it matters",
+      "type": "record",
+      "claim": "The roadmap says viewing or managing onboarding previously required broad roles such as Compliance Administrator, Global Administrator or Security Administrator.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Previously, viewing or managing device onboarding required broad administrative roles (such as Compliance Administrator, Global Administrator, or Security Administrator).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Governance controls",
+      "type": "record",
+      "claim": "The roadmap describes granting device access through least-privilege Purview RBAC roles.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "With this update, organizations can grant access using least-privilege Purview role-based access control (RBAC) roles scoped specifically to device operations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
+      "type": "record",
+      "claim": "Existing administrative roles retain full access.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Existing administrative roles continue to have full access",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "record",
+      "claim": "Current administrative workflows are unaffected.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Existing administrative roles continue to have full access, so current workflows are unaffected.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Why it matters; controls[2].note; Governance controls",
+      "type": "role",
+      "claim": "Learn currently documents only Entra roles for device management, including viewing its settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/device-onboarding-overview",
+      "quote": "Device management currently only supports Entra roles. Purview roles are not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Risk assessment: Change & support; Governance controls; Open questions",
+      "type": "role",
+      "claim": "Learn says Purview roles are not currently supported for device management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/device-onboarding-overview",
+      "quote": "Device management currently only supports Entra roles. Purview roles are not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Risk assessment: Security & identity; Governance guidance; Open questions",
+      "type": "role",
+      "claim": "View-Only Device Management is already a default role in the Security Administrator role group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/scc-permissions",
+      "quote": "View-Only Audit Logs  View-Only Device Management  View-Only DLP Compliance Management  View-Only IB Compliance Management  View-Only Manage Alerts",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Risk assessment: Security & identity; Governance guidance; Open questions",
+      "type": "role",
+      "claim": "View-Only Device Management is already a default role in the Security Operator role group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/scc-permissions",
+      "quote": "View-Only Audit Logs  View-Only Device Management  View-Only DLP Compliance Management  View-Only IB Compliance Management  View-Only Manage Alerts",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Risk assessment: Security & identity; Governance guidance; Open questions",
+      "type": "role",
+      "claim": "View-Only Device Management is already a default role in the Security Reader role group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/scc-permissions",
+      "quote": "Tag Reader  View-Only Device Management  View-Only DLP Compliance Management  View-Only IB Compliance Management  View-Only Manage Alerts",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[0].ui; Governance guidance; Governance controls",
+      "type": "admin-path",
+      "claim": "The general Purview role-group UI is Microsoft Purview portal > Settings > Roles and scopes > Role groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "Go to **Settings** > **Roles and scopes** to view and manage compliance and governance roles in your organization.\n2. Select **Role groups**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[0].api; Governance controls",
+      "type": "command",
+      "claim": "New-RoleGroup is the general PowerShell cmdlet for creating a role group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-rolegroup",
+      "quote": "Use the New-RoleGroup cmdlet to create management role groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[0].note; Scope; Governance guidance; Governance controls",
+      "type": "role",
+      "claim": "Managing Purview role groups requires Role Management or global administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "users need to be a global administrator or need to be assigned the *Role Management* role (assigned only to the *Organization Management* role group). The *Role Management* role allows users to view, create, and modify role groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[0].note; What's changing; Governance controls",
+      "type": "absence",
+      "claim": "Learn does not yet document applying View-Only Device Management to the Devices page, so the role-group controls are presented only as general controls.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"View-Only Device Management\"; \"Purview\" \"View-Only Device Management\" \"Devices page\"; \"Endpoint DLP\" \"view-only\" \"onboarding\". Opened device-onboarding-overview, scc-permissions, purview-permissions and New-RoleGroup; no feature-specific instructions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[1].ui; controls[1].api; Governance controls",
+      "type": "absence",
+      "claim": "No UI or API tenant switch enabling this role for the Devices page is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"View-Only Device Management\" \"Devices\" enable default role groups; \"View-Only Device Management\" \"onboarding\" export enable switch default. Opened device-onboarding-overview, purview-permissions and scc-permissions; no role-enablement switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[2].ui; Governance controls; What's changing",
+      "type": "admin-path",
+      "claim": "The current Devices page path is Microsoft Purview portal > Settings > Device onboarding > Devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/device-onboarding-overview",
+      "quote": "Open the [Microsoft Purview portal](https://purview.microsoft.com). Choose **Settings** > **Device onboarding** > **Devices**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[2].api; controls[2].note; Governance controls",
+      "type": "absence",
+      "claim": "No corresponding Purview or Graph API for this Devices page is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview device onboarding Devices page Microsoft Graph API PowerShell export device inventory; site:learn.microsoft.com/purview \"Devices\" \"API\" \"onboarding\". Opened device-onboarding-overview; results concerned onboarding scripts or unrelated directory/Intune APIs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "front matter: defaultState; summary; Why it matters; Risk assessment; rationale: risk",
+      "type": "default",
+      "claim": "The change is admin-opt-in and nothing changes until an administrator assigns the role.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"View-Only Device Management\" \"Devices\" enable default role groups; \"View-Only Device Management\" \"onboarding\" export enable switch default. Read roadmap, device-onboarding-overview and scc-permissions; none says existing role-group members need a new assignment.",
+      "severity": "blocker",
+      "fix": "Set defaultState to unknown. Replace the summary's 'nothing changes until an administrator assigns it' and equivalent body/risk-rationale assurances with 'Existing administrative roles retain full access; Microsoft has not stated whether existing holders of View-Only Device Management gain Devices page access automatically.' Keep review as a judgement if desired, but do not infer an opt-in rollout from unchanged access for current administrators."
+    },
+    {
+      "n": 35,
+      "where": "front matter: licensing.model and notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "licensing",
+      "claim": "A specific licence or SKU for this planned role is not yet published, so its licensing model is unknown.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"View-Only Device Management\" licensing price meter Purview. Opened device-onboarding-overview and Microsoft Purview service description; searched the latter for the role name. No role-specific SKU was stated, but general licensing covers users assigned Purview roles.",
+      "severity": "minor",
+      "fix": "Keep licensing.model unknown for the unpublished role-specific SKU, but add: 'Microsoft's general Purview service description says users assigned a Purview role for use in the portal require a licence; the specific licence for this planned access is not yet published.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#which-users-need-a-license in sources."
+    },
+    {
+      "n": 36,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "record",
+      "claim": "The roadmap record names no licence, meter or price.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This change helps organizations follow the principle of least privilege and simplifies granting read-only visibility into device onboarding without over-provisioning permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The device onboarding overview links to general licensing pages rather than specifying a licence for this role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/device-onboarding-overview",
+      "quote": "For information on licensing, see\n\n- [Microsoft 365 Enterprise Plans](https://aka.ms/M365EnterprisePlans)\n- [Microsoft 365 Service Descriptions]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No meter is published specifically for this role at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"View-Only Device Management\" licensing price meter Purview. Opened the onboarding overview and Purview service description; read returned Purview billing-model excerpts. No role-specific meter was documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No price is published specifically for this role at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"View-Only Device Management\" licensing price meter Purview. Opened the onboarding overview and Purview service description; read returned Purview billing-model excerpts. No role-specific price was documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "Learn does not yet specify which attributes this role can export.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"View-Only Device Management\" Devices onboarding role enable licensing export API; \"Purview\" \"device onboarding\" \"export\" \"role\". Opened device-onboarding-overview and scc-permissions; generic export features are mentioned, not this role's export fields.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Security & identity; Why it matters; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not said whether existing Security Administrator, Security Operator and Security Reader role-group members gain Devices page access.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"View-Only Device Management\" \"Devices\" enable default role groups; \"Purview\" \"View-Only Device Management\" \"Devices page\". Read roadmap, scc-permissions and device-onboarding-overview; no mapping of existing group membership to future Devices access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap describes no new automated action.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "view device onboarding status, search for devices, review configuration details, and export device data, without granting permission to change onboarding configuration or other administrative settings",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Devices must have been onboarded to appear in the managed devices list, including devices already onboarded to Defender for Endpoint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/device-onboarding-overview",
+      "quote": "If you've already onboarded devices to MDE, they appear in the managed devices list and no further steps are necessary to onboard those specific devices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Open questions: exported attributes",
+      "type": "behaviour",
+      "claim": "The device onboarding page has a logged-in user details feature.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/device-onboarding-overview",
+      "quote": "Logged-in user details (user email) on the device onboarding page (Roadmap ID 548669)",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-16T15:35:50.823Z",
+    "summary": {
+      "links": 5,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=577187",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/device-onboarding-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/defender-office-365/scc-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/purview-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-rolegroup",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which users hold the View-Only Device Management role, through role group membership",
+        "docs": "https://learn.microsoft.com/purview/purview-permissions",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Roles and scopes",
+          "Role groups"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Which users hold the View-Only Device Management role, through role group membership",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-rolegroup",
+        "reachable": true,
+        "token": "New-RoleGroup",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Current access to the Devices page and device onboarding through Entra roles",
+        "docs": "https://learn.microsoft.com/purview/device-onboarding-overview",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Device onboarding",
+          "Devices"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": [
+    {
+      "date": "2026-11-16",
+      "status": "held",
+      "version": 1,
+      "model": "none"
+    }
+  ]
 }

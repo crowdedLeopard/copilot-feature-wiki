@@ -89,6 +89,17 @@ changes:
   - date: "2026-11-16"
     note: "First briefing for this roadmap item; Learn documents A2A task methods and Work IQ billing and policy controls, but not the long-running feature itself."
 version: 1
+verification:
+  status: "held"
+  date: "2026-11-16"
+  version: 1
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 62
+  confirmed: 60
+  unconfirmed: 0
+  contradicted: 2
+  attempts: 1
 ---
 
 ## What's changing
@@ -187,4 +198,16 @@ No control specific to long-running tasks is documented at the time of writing (
 risk: Medium. Tasks that run beyond a single request extend how long an agent acts on Microsoft 365 data, and Learn does not yet say how identity, result storage or audit apply to them.
 cost: Variable. Work IQ API use is metered in Copilot Credits shared with other services; Microsoft has not published whether long-running tasks are priced differently.
 impact: Low. Developers and agent owners who call Work IQ over A2A or MCP notice it; end users only see it through agents that adopt it.
+-->
+
+<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
+The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
+- [contradicted, blocker] controls[1].api; Governance controls / absence: An API or automation surface for Work IQ spending policies is not yet documented. | Found: POST https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies
+"serviceSettings": [
+    { "serviceId": "cowork", "state": "enabled" },
+    { "serviceId": "workIQ", "state": "enabled" }
+  ] | Fix: Replace controls[1].api null and its rendered gap with kind graph, call POST https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies and this reference URL. Explain that this is beta and not supported for production applications. Link the documented required body, including concrete @odata.type, displayName, periodLimit, perUserLimit and serviceSettings; group policies are created disabled and need their audience linked. State the delegated permission and Billing Administrator or Global Administrator requirement. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-create
+- [supported, minor] Risk assessment: Autonomy & actions; Governance guidance: Before rollout / default: Work IQ MCP mutations, including create, update, delete and sending email, are not allowed by default and can be enabled by tenant policy. | Found: By default, mutation operations aren't allowed for safety. This restriction includes create, update, delete, and action requests that modify data, such as sending email. | Fix: Keep the statement attributed to the MCP policy-governance page, but cite https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq as well and report its different statement: 'Write operations are on by default. Your organization's permissions and policies still apply.' Explain that the latter describes the Copilot Studio harness experience; do not imply one unqualified default across experiences. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp
+- [supported, minor] Governance guidance: After rollout / behaviour: Administrators can review Work IQ API credit consumption and compare it with spending-policy limits. | Found: In the Agents and services view, review usage for supported services. For example, Cowork and Work IQ API. This view shows active users, credits used, and session count for each supported service. | Fix: Add https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-copilot-credits-monitor-spending to sources and cite it for the monthly consumption review. | Source: https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-copilot-credits-monitor-spending
+- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The governance checklist calls for consumption monitoring, but no controls row records that monitoring surface. | Found: Checklist: 'Review Copilot Credit consumption for Work IQ API each month against the spending policy limits.' The controls table has MCP policy, spending-policy configuration, service-principal creation and the absent task switch, but no consumption-monitoring row. | Fix: Add a consumption-monitoring row with Microsoft 365 admin center > Copilot > Cost Management > Consumption, noting the Policies and Agents and services views. Use https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-copilot-credits-monitor-spending for its UI documentation; the beta Cost Management API overview also documents service and funding usage reports.
 -->

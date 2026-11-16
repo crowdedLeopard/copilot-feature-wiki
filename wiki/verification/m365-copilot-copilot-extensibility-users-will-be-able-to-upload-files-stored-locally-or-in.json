@@ -5,27 +5,678 @@
   "status": "held",
   "date": "2026-11-16",
   "version": 1,
-  "model": "none",
-  "engine": "manual",
-  "attempts": 0,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [],
   "hold": {
-    "reason": "unverified",
+    "reason": "failed",
     "since": "2026-11-16",
     "reasons": [
-      "Written but not yet checked against Microsoft Learn."
+      "2 blocking findings (claims 33, 45)"
     ]
   },
   "counts": {
-    "claims": 0,
-    "confirmed": 0,
-    "unconfirmed": 0,
-    "contradicted": 0,
-    "blocker": 0,
-    "major": 0,
-    "minor": 0
+    "claims": 50,
+    "confirmed": 47,
+    "unconfirmed": 2,
+    "contradicted": 1,
+    "blocker": 2,
+    "major": 1,
+    "minor": 2
   },
-  "summary": "Written but not yet checked against Microsoft Learn.",
-  "claims": [],
-  "precheck": null,
-  "history": []
+  "summary": "Hold: the checklist presents tenant-wide User access as a way to restrict selected agents, which could unintentionally restrict access to all agents and plugins. The page also asserts that uploaded-file storage, retention and logging depend solely on agent code, although Microsoft has not documented those boundaries for this planned feature. The roadmap facts and the cited control endpoints are supported.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "Microsoft plans to let users upload locally stored files to custom engine agents.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Users will be able to upload files stored locally or in one drive to custom engine agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "The planned upload capability includes files stored in OneDrive.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Users will be able to upload files stored locally or in one drive to custom engine agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "January CY2027 is the roadmap target, not a committed availability date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"targetDate\": \"January CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap record supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The listed cloud is Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope; rationale: impact",
+      "type": "record",
+      "claim": "Web is the platform named by the roadmap record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The record lists no US Government cloud, without establishing that those clouds are excluded.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-11-11T00:53:22.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-11T00:53:22\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Custom engine agents bring their own orchestrator and models rather than using Copilot's.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/agents-overview",
+      "quote": "the custom engine approach, where you bring your own orchestrator and models to create a fully tailored agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "summary; What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "Learn currently lists file and image attachments in custom engine agent chats as unsupported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/known-issues",
+      "quote": "Custom engine agents don't support file or image attachments in agent chats.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Images uploaded in chat are not passed to the agent for processing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/known-issues",
+      "quote": "Images uploaded in chat aren't passed to the agent for processing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "The documented custom engine agent limitations apply to agents built with the Microsoft 365 Agents Toolkit and Agents SDK.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/known-issues",
+      "quote": "These issues apply to custom engine agents built using the Microsoft 365 Agents Toolkit and the Microsoft 365 Agents SDK.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; front matter: changes",
+      "type": "absence",
+      "claim": "Learn does not yet document the planned local and OneDrive file-upload feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: custom engine agents Microsoft 365 Copilot file upload OneDrive local admin disable default permission licensing limits. Opened known-issues, agents-overview, cost-considerations and agent-settings; results describe unsupported attachments or other upload scenarios.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: defaultState; What's changing; Open questions",
+      "type": "default",
+      "claim": "The file-upload default and any agent opt-in requirement are not stated, so defaultState is unknown.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"custom engine agents\" \"file\" \"upload\" \"default\". Opened known-issues, agent-settings and agents-overview; checked the roadmap record. No result states this planned feature's default or opt-in requirement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[2].ui; controls[2].api; summary; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No upload-only admin UI or API control for custom engine agents is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"custom engine agents\" \"file\" \"upload\" \"disable\". Opened agent-settings, agent-actions and known-issues. Results document whole-agent blocking and unrelated Genie upload controls, not this feature's upload-only UI or API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "Learn has not documented the permission model for this planned upload capability.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"custom engine agents\" \"upload\" \"permission\". Opened known-issues and agent-settings; read results on app-package upload, which is not document upload. No applicable upload permission model found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "Licensing specific to file uploads is not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"custom engine agents\" \"file\" \"upload\" \"licensing\". Opened cost-considerations and known-issues; read custom engine agent overview search excerpts. General agent costs are documented, but no file-upload-specific licence is stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "A separate file-upload meter or charge has not been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"custom engine agents\" \"file\" \"upload\" \"licensing\". Opened cost-considerations, whose custom engine section covers usage and hosting but states no separate file-upload meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "Limits for the planned uploaded files have not been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"custom engine agents\" \"upload\" \"size\" \"labels\". Opened known-issues and cost-considerations; read returned custom engine manifest and UX excerpts. No applicable file-upload size limit found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not said how the planned upload feature will treat sensitivity labels.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"custom engine agents\" \"upload\" \"size\" \"labels\". Opened known-issues; read agent-details and Purview search excerpts. Existing unsupported labels and Agent Builder embedded-file rules do not define this planned upload feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "Learn does not describe what an agent may do with a file supplied through the planned upload feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: custom engine agents Microsoft 365 Copilot file upload OneDrive local admin disable default permission licensing limits. Opened agents-overview and known-issues; neither specifies uploaded-file processing or actions for the planned feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[0].ui; Governance guidance: At rollout; Governance controls",
+      "type": "admin-path",
+      "claim": "The Microsoft 365 admin center exposes agent blocking through Agents > All agents > agent > Block.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "Select **Agents** &gt; **All agents**.\n3. In the **All agents** page, select an agent from the list of agents.\n4. In the agent details pane that opens, immediately under the agent's name, select **Block** or **Unblock**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[0].api; Governance controls: paragraph after table",
+      "type": "command",
+      "claim": "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block blocks a Copilot package.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Block a Copilot package to prevent its usage.\nPOST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block",
+      "severity": "minor",
+      "fix": "In the paragraph after the controls table, change 'The Package Management API in the second row' to 'The Package Management API in the first row'. The endpoint itself is correct."
+    },
+    {
+      "n": 26,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The package-block API is beta and not supported for production applications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "APIs under the `/beta` version are subject to change. Use of these APIs in production applications is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[0].note; Governance controls",
+      "type": "licensing",
+      "claim": "Access to the Package Management API requires a Microsoft Agent 365 licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Access to the Package Management API requires a [Microsoft Agent 365](https://www.microsoft.com/microsoft-agent-365) license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[0].governs; controls[0].note; Governance controls",
+      "type": "applicability",
+      "claim": "Blocking is a whole-agent access control for the organization, rather than a file-upload-only control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "**Block and unblock** | Restrict access to an agent across the organization, preventing any user from using it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[1].ui; Risk assessment: Security & identity; Governance controls",
+      "type": "admin-path",
+      "claim": "The tenant User access setting is at Microsoft 365 admin center > Agents > Settings > User access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+      "quote": "Select **Agents** &gt; **Settings** &gt; **User access** to manage your organization's agents and plugins.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "User access offers All users, No users, and Specific users or groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+      "quote": "**All users** - This option is the default.\n**No users** - This option means that no users in the organization can access agents and plugins.\n**Specific users or groups** - This option lets you select specific users or groups in your organization to have access to agents and plugins.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[1].note",
+      "type": "default",
+      "claim": "All users is the default for the general User access setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+      "quote": "**All users** - This option is the default. It means that all users in the organization can access agents and plugins, subject to the existing app policies and user assignments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[1].api",
+      "type": "absence",
+      "claim": "No automation equivalent for the tenant Agents > Settings > User access control is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 agents User access settings Graph API users groups access; \"User access\" \"agents and plugins\" API PowerShell. Opened agent-settings; read results on Entra app-role assignments, which do not automate this tenant setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Governance guidance: Before rollout; summary; Governance controls",
+      "type": "applicability",
+      "claim": "The User access setting can limit selected agents to named users or groups.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+      "quote": "only the users or groups you select in this setting can use agents and plugins.",
+      "severity": "blocker",
+      "fix": "Replace the Before rollout bullet with 'Decide whether tenant-wide access to agents and plugins should be restricted using Agents > Settings > User access; this affects all agents and plugins, not selected agents.' Change the summary's 'control is per agent' to 'general controls govern whole-agent availability or tenant-wide access to agents and plugins'. Keep controls[1].scope as tenant."
+    },
+    {
+      "n": 34,
+      "where": "controls[0].note; controls[1].note; Governance controls",
+      "type": "absence",
+      "claim": "Microsoft has not confirmed upload-specific behavior for either of the general controls presented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"custom engine agents\" \"file\" \"upload\" \"disable\"; \"custom engine agents\" \"upload\" \"permission\". Opened agent-actions, agent-settings and known-issues. No passage defines how these general controls affect the planned upload capability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "For custom engine agents generally, users do not need a Copilot licence to access them in Microsoft 365 Copilot Chat.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/cost-considerations",
+      "quote": "Users don't need a Copilot license to access custom engine agents in Microsoft 365 Copilot Chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "cost",
+      "claim": "Learn says users with a Microsoft 365 Copilot licence incur no additional custom engine agent usage charges.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/cost-considerations",
+      "quote": "Users with a Microsoft 365 Copilot license don't incur additional charges.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Users without a Microsoft 365 Copilot licence may incur Copilot Credits charges through Copilot Studio when an agent interacts with shared tenant data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/cost-considerations",
+      "quote": "Users without a Microsoft 365 Copilot license might incur **usage-based billing charges** if the agent interacts with shared tenant data (SharePoint or Copilot connectors), metered in Copilot Credits via Copilot Studio.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Custom engine agent hosting can incur separate additional costs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/cost-considerations",
+      "quote": "Hosting these agents might incur additional hosting costs",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "front matter: licensing.model; front matter: cost; rationale: cost",
+      "type": "licensing",
+      "claim": "The documented general agent licensing context is mixed and costs can be metered, while upload-specific pricing remains unknown.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/cost-considerations",
+      "quote": "Varies based on license.Users with a Copilot license don't incur additional charges. Users without a Copilot license might incur usage-based billing charges (Copilot Credits) when shared data is used.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Why it matters; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "Custom engine agents are hosted outside Microsoft 365 Copilot using their own orchestrator and models.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/cost-considerations",
+      "quote": "Custom engine agents are hosted outside of Microsoft 365 Copilot using your own orchestrator and/or models.",
+      "severity": "minor",
+      "fix": "Qualify the hosting statements: 'The cost page describes custom engine agents as hosted outside Microsoft 365 Copilot; the comparison page's Engine hosting row also lists hosting in Microsoft 365 with Copilot Studio.' Name both cited sources rather than treating all agents' hosting as identical. The differing row is at https://learn.microsoft.com/microsoft-365/copilot/extensibility/agents-overview."
+    },
+    {
+      "n": 41,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "The custom engine agent builder is responsible for compliance, responsible AI practices and security.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/agents-overview",
+      "quote": "Must ensure your own compliance, RAI practices, and security measures.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Custom engine agents can be programmed to initiate workflows and actions independently.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/agents-overview",
+      "quote": "**Autonomy and proactive agentic support** to programmatically initiate workflows and actions, enabling agents to operate independently, make decisions, and escalate tasks as needed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "behaviour",
+      "claim": "The Learn known-issues table lists sensitivity labels as unsupported for these custom engine agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/known-issues",
+      "quote": "| Sensitivity labels | Sensitivity labels aren't supported. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Unsupported chat attachments mean no document leaves the user's device or OneDrive through that route today.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"custom engine agents\" \"upload\" \"permission\"; \"custom engine agents\" \"files\" \"retention\" storage upload permissions sensitivity labels. Opened known-issues. It states attachments are unsupported, not that no document is transmitted from the device or OneDrive.",
+      "severity": "major",
+      "fix": "Replace 'Today, a custom engine agent cannot receive a file from a chat, so no document leaves a user's device or OneDrive through that route' with 'Learn currently lists file attachments in custom engine agent chats as unsupported.' Do not infer a transport or data-boundary guarantee from unsupported functionality."
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Data exposure; Why it matters",
+      "type": "applicability",
+      "claim": "Storage, retention and logging of uploaded files depend on the agent's code rather than any Microsoft control.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"custom engine agents\" \"files\" \"retention\" storage upload permissions sensitivity labels. Opened known-issues, agents-overview and cost-considerations; read custom engine overview privacy excerpts. No source establishes these exclusive boundaries for planned uploads.",
+      "severity": "blocker",
+      "fix": "Replace 'Where the file is stored, retained or logged depends on that agent's code, not on a Microsoft control' with 'Microsoft has not documented the storage, retention, logging or Microsoft governance coverage for files supplied through this planned upload capability. Ask each agent owner to explain its downstream processing and controls.' Recast 'the agent's own code decides what happens next' as a risk to assess, not an exclusive governance fact."
+    },
+    {
+      "n": 46,
+      "where": "Scope; Governance controls",
+      "type": "role",
+      "claim": "AI Admin is a documented role for configuring, managing and deploying agents in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/agent-essentials/m365-agents-admin-guide",
+      "quote": "To configure, manage, and deploy agents, you must have the following required user roles and permissions:\n\n- AI Admin",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Scope; Governance controls",
+      "type": "role",
+      "claim": "Global Admin is a documented role for configuring, managing and deploying agents in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/agent-essentials/m365-agents-admin-guide",
+      "quote": "To configure, manage, and deploy agents, you must have the following required user roles and permissions:\n\n- AI Admin\n- Global Admin",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Scope",
+      "type": "role",
+      "claim": "Global Reader has view-only access without editing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/agent-essentials/m365-agents-admin-guide",
+      "quote": "Global Reader (view-only, no edit)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "The agent inventory is accessible through Agents > All agents in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "Select **Agents** &gt; **All agents**.\n3. In the **All agents** page, select an agent from the list of agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The supplied roadmap record names no licence, role or prerequisite for the planned capability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Users will be able to upload files stored locally or in one drive to custom engine agents.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-16T15:35:47.478Z",
+    "summary": {
+      "links": 8,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=503767",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/known-issues",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/cost-considerations",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/agents-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/agent-essentials/m365-agents-admin-guide",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether a custom engine agent is available to anyone in the organisation",
+        "docs": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "All agents",
+          "Block"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether a custom engine agent is available to anyone in the organisation",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "reachable": true,
+        "token": "/beta/copilot/admin",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which users or groups can access agents and plugins",
+        "docs": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "Settings",
+          "User access"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": [
+    {
+      "date": "2026-11-16",
+      "status": "held",
+      "version": 1,
+      "model": "none"
+    }
+  ]
 }

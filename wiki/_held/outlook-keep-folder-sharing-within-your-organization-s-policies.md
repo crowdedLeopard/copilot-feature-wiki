@@ -58,6 +58,17 @@ changes:
   - date: "2026-11-16"
     note: "First briefing for this roadmap item; the roadmap record is the only source on the feature itself."
 version: 1
+verification:
+  status: "held"
+  date: "2026-11-16"
+  version: 1
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 46
+  confirmed: 43
+  unconfirmed: 1
+  contradicted: 2
+  attempts: 1
 ---
 
 ## What's changing
@@ -153,4 +164,13 @@ The Cloud Policy route applies to classic Outlook, new Outlook and Outlook on th
 risk: Low. The change keeps sharing inside restrictions an organisation already sets and leaves permissions for individual users alone; the default state is not stated, so the exposure that remains is today's behaviour continuing.
 cost: Low. The only cost the sources show is admin time to check restrictions and brief users; no licence or meter is published for this item at the time of writing (November 2026).
 impact: Low. Only users who edit the Default or Anonymous entry on a folder, and only where a restriction is enabled, will notice the setting is locked; individual-user permissions are unaffected.
+-->
+
+<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
+The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
+- [supported, minor] What's changing / behaviour: Anonymous is the entry for unauthenticated callers. | Found: Anonymous applies to callers who aren't authenticated and don't have access through a calendar-sharing relationship. | Fix: Complete the background definition: 'Anonymous applies to callers who are not authenticated and do not have access through a calendar-sharing relationship.' This qualification does not change the proposed restriction-setting procedure. | Source: https://learn.microsoft.com/exchange/collaboration-exo/shared-calendars/understand-calendar-delegate-permissions
+- [contradicted, blocker] Risk assessment: Data exposure / behaviour: The Default entry lets any authenticated user in the organisation reach a folder. | Found: Default applies to authenticated users in the organization who don't have an explicit permission entry. Its typical value is AvailabilityOnly. ... None | No | No | No | No | No calendar access. | Fix: Replace with: 'Default determines baseline calendar permissions for authenticated users in the organisation who have no explicit permission entry; the access they receive depends on its assigned permission level.' Do not imply that the entry itself grants folder access. | Source: https://learn.microsoft.com/exchange/collaboration-exo/shared-calendars/understand-calendar-delegate-permissions
+- [contradicted, blocker] controls[0].note; Governance controls table / admin-path: The documented Cloud Policy restriction procedure is to enable Do not allow users to change permissions on folders in a policy configuration. | Found: Enable each of the following policies: Turn off sharing recommendation; Do not allow users to change permissions on folders; Control Calendar Sharing. | Fix: State the complete documented general procedure in the row note and rendered table: create a policy configuration with the applicable scope, enable 'Turn off sharing recommendation', 'Do not allow users to change permissions on folders', and 'Control Calendar Sharing', then select Update. Retain the caveat that Microsoft has not confirmed this procedure governs roadmap item 579185. | Source: https://learn.microsoft.com/microsoft-365-apps/outlook/configuration/restrict-users-from-modifying-folder-permissions
+- [unsupported, blocker] controls[0].governs; Governance controls table / applicability: The Cloud Policy folder-permission restriction applies to all Outlook clients. | Found: Searched: Do not allow users to change permissions on folders Mac mobile. Read restriction article and Cloud Policy overview; restriction article names classic Outlook, new Outlook and Outlook on the Web, not all clients. | Fix: Replace '(all Outlook clients)' with '(classic Outlook, new Outlook and Outlook on the web)' in controls[0].governs and its rendered table row. Do not extend coverage to Mac or mobile without documentation.
+- [supported, minor] Scope; Governance guidance: At rollout / behaviour: The folder-permission restriction article says Cloud Policy changes can take up to 90 minutes to reach Outlook clients. | Found: After a policy configuration is created or changed, it can take up to 90 minutes for the change to be applied to the Outlook clients. | Fix: Retain the attributed 90-minute statement, but add that the Cloud Policy overview says desktop Office policies apply when the app is restarted and a user without an assigned configuration can have a 24-hour check-in interval. Cite https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy so testing advice does not treat 90 minutes alone as sufficient. | Source: https://learn.microsoft.com/microsoft-365-apps/outlook/configuration/restrict-users-from-modifying-folder-permissions
 -->

@@ -69,6 +69,17 @@ changes:
   - date: "2026-11-16"
     note: "First briefing for this roadmap item, which Microsoft Learn does not yet describe; DSPM background and roles come from the general DSPM pages."
 version: 1
+verification:
+  status: "verified-with-gaps"
+  date: "2026-11-16"
+  version: 1
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 59
+  confirmed: 57
+  unconfirmed: 1
+  contradicted: 1
+  attempts: 0
 ---
 
 ## What's changing
@@ -159,4 +170,11 @@ Learn documents no tenant switch, role or API specific to the two new experience
 risk: Low. The roadmap describes read-and-investigate views for data security teams, so nothing reaches users or changes data unless an admin acts; the default state is not stated, so this rates today's behaviour continuing.
 cost: Low. The only cost the sources show is admin time; the licence for these two experiences is not yet published, and the DSPM Learn page lists only 'a supporting license' without naming one.
 impact: Low. Data security and compliance administrators are the audience; end users and makers will not see these views.
+-->
+
+<!-- verifier-findings (2026-11-16, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
+- [supported, minor] Cost and licensing / applicability: The cited Copilot prerequisite concerns existing DSPM coverage of Copilot interactions rather than documenting a licence for the new views. | Found: Required for monitoring interactions with Copilot and agents: ... For Microsoft 365 Copilot and agents, users are assigned a license for Microsoft 365 Copilot. | Fix: Cite https://learn.microsoft.com/purview/dspm-for-ai-considerations#prerequisites-for-data-security-posture-management-for-ai for the explicit monitoring qualification. Identify it as the classic documentation; the current DSPM considerations page repeats the licence prerequisite without that heading. | Source: https://learn.microsoft.com/purview/dspm-for-ai-considerations#prerequisites-for-data-security-posture-management-for-ai
+- [unsupported, major] Why it matters / behaviour: Oversharing is the usual reason a Copilot rollout stalls. | Found: Searched: DSPM Copilot oversharing deployment barrier most common; "Copilot" "oversharing" "stalls". Read DSPM Oversharing and search excerpts from Secure and govern Microsoft Copilot: Foundational deployment guidance; they establish a risk, not the usual reason deployments stall. | Fix: Replace the sentence's opening with 'Oversharing is a risk to address before a Copilot rollout.' The cited DSPM oversharing page supports that narrower statement; no source checked establishes how often it stalls deployments.
+- [contradicted, minor] Governance guidance: Before rollout and At rollout; Governance controls / consistency: The checklist asks readers to review DSPM roles and administrative-unit boundaries, but neither access control appears as a controls-table row. | Found: Checklist: 'Compare the people who will use these views with the DSPM role lists in Learn' and 'check whether results respect administrative units.' Table: tenant-wide switch, data risk assessments, and asset explorer only. | Fix: Add rows for existing DSPM role-based access and administrative-unit scoping, using the Permissions and Considerations sources already cited. Explicitly retain the qualification that their applicability to the two new views is not documented; research each UI/API side before populating it.
 -->

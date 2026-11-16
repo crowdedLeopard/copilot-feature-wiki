@@ -61,6 +61,17 @@ changes:
   - date: "2026-11-16"
     note: "First briefing: the feature is known only from the roadmap item, with no Learn page yet; cost controls described are general Copilot Studio ones."
 version: 1
+verification:
+  status: "held"
+  date: "2026-11-16"
+  version: 1
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 42
+  confirmed: 40
+  unconfirmed: 0
+  contradicted: 2
+  attempts: 1
 ---
 
 ## What's changing
@@ -159,4 +170,12 @@ The monthly limit is a general Copilot Credit control, not a control over this f
 risk: Medium. The feature reads completed agent runs and proposes changes to instructions and tools, and Microsoft documents no admin switch for it, although the roadmap says makers accept, test and publish each change.
 cost: Low. The only cost the sources show is maker and admin time; the roadmap says the aim is to control costs, but no meter or licence for the feature itself is yet published.
 impact: Medium. Makers see the recommendations and publish the refined copies; end users notice only if a refined agent behaves differently from the original.
+-->
+
+<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
+The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
+- [contradicted, blocker] Cost and licensing: Two indirect costs / cost: Extra consumption from testing a refined copy is a real cost whatever the feature's final licence. | Found: When you test an agent in the test chat, the agent's own activity, such as classic answers, generative answers, agent actions, and tenant graph grounding, doesn't consume Copilot Credits | Fix: Replace the unconditional testing-cost assertion with: 'Maker review, testing and publishing take time. Testing may also consume credits, depending on the harness and tools; this feature's harness and testing charges are not stated.' Cite this FAQ for standard-harness test-chat exemptions and the existing Microsoft Copilot harness cost page for billable testing. The cited Billing rates page also exempts agent-flow test runs. | Source: https://learn.microsoft.com/microsoft-copilot-studio/faq-billing-licensing
+- [supported, minor] controls[1].ui; Governance guidance: Before rollout; Governance controls / admin-path: An agent's monthly Copilot Credit limit is set in Power Platform admin center under Licensing > Copilot Studio > Manage Agents > agent > Set limit. | Found: 1. In the Power Platform admin center, go to Licensing > Copilot Studio. 2. Select Manage Agents. 3. Select the agent, and then select Set limit. | Fix: Retain the supported path, but qualify the guidance for resources still governed in Power Platform admin center. Cite https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs and explain that Microsoft 365 resource-based policies take precedence for covered agents/environments; Manage capacity and Manage agent show which experience governs them. | Source: https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness
+- [supported, minor] Governance controls: final paragraph / admin-path: The Customer Conversation harness cost page documents the same monthly-limit path. | Found: 1. In the Power Platform admin center, go to Licensing > Copilot Studio. 2. Select Manage Agents. 3. Select the customer conversation agent, and then select Set limit. | Fix: Add https://learn.microsoft.com/power-platform/admin/manage-usage-customer-conversation-harness to sources, or remove the uncited attribution to that harness's page. | Source: https://learn.microsoft.com/power-platform/admin/manage-usage-customer-conversation-harness
+- [contradicted, minor] Governance controls: environment controls missing from table / consistency: The guidance tells readers to control agent flows through environment capacity and pay-as-you-go configuration, but these controls have no table rows. | Found: control those through the environment's capacity allocation and its pay-as-you-go billing plan. The table contains only self-learning availability and the monthly agent limit. | Fix: Add a general environment-capacity row covering allocation and Capacity overages, citing https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity#manage-capacity. Give Licensing > Copilot Studio > Summary > Manage Copilot Credits > environment, and identify Draw from the available capacity in my tenant and Bill to my pay-as-you-go billing plan. Keep the Microsoft 365 policy-precedence qualification.
 -->

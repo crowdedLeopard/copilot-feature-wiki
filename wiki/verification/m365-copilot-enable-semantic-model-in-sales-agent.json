@@ -5,27 +5,1028 @@
   "status": "held",
   "date": "2026-11-16",
   "version": 1,
-  "model": "none",
-  "engine": "manual",
-  "attempts": 0,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [],
   "hold": {
-    "reason": "unverified",
+    "reason": "failed",
     "since": "2026-11-16",
     "reasons": [
-      "Written but not yet checked against Microsoft Learn."
+      "4 blocking findings (claims 12, 46, 60, 73)"
     ]
   },
   "counts": {
-    "claims": 0,
-    "confirmed": 0,
-    "unconfirmed": 0,
-    "contradicted": 0,
-    "blocker": 0,
+    "claims": 78,
+    "confirmed": 73,
+    "unconfirmed": 1,
+    "contradicted": 4,
+    "blocker": 4,
     "major": 0,
-    "minor": 0
+    "minor": 2
   },
-  "summary": "Written but not yet checked against Microsoft Learn.",
-  "claims": [],
-  "precheck": null,
-  "history": []
+  "summary": "Hold: the briefing omits Microsoft's notice announcing general availability on 17 November 2026 and instead reports only the later roadmap target. It also leaves a documented Salesforce environment exception unresolved, overstates the absence of automation, and gives an unsupported storage-saving instruction.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: platforms; Scope",
+      "type": "record",
+      "claim": "The roadmap platforms are Desktop, Mobile, Teams and Surface Devices, and Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Mobile\", \"Teams and Surface Devices\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview target is October CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"October CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap general availability target is December CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"December CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 11 November 2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-11T00:51:09\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "Microsoft plans a semantic model that helps Sales agent interpret CRM business language and questions spanning related records.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Sales Agent can retrieve this context when responding to questions, improving its ability to interpret business language and answer complex questions that span related CRM records.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap model covers tables or objects, fields, descriptions, data types, relationships, views, pick-list values and glossary terms.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "It creates a connected representation of CRM metadata, including tables or objects, fields, descriptions, data types, relationships, views, pick-list values, and glossary terms.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap says Dynamics 365 admins enable the model in Power Apps Maker Portal and configure its data coverage and signals.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Dynamics 365 admins can enable and turn on semantic model in Power Apps Maker Portal and configure the data coverage and signals that Sales Agent should use.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "For Salesforce, the roadmap starts from existing table and glossary configuration and allows additional relationship and view signals in the maker portal.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "For Salesforce customers, the semantic model will be based on existing Sales agent table and glossary configuration in Sales agent settings or Power Apps Maker Portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing: rollout paragraph; sources",
+      "type": "date",
+      "claim": "The briefing presents only the December roadmap target as the announced general availability timing.",
+      "status": "contradicted",
+      "source": "Message Center post MC1540293",
+      "quote": "This feature will reach general availability on November 17, 2026.",
+      "severity": "blocker",
+      "fix": "Retain December CY2026 explicitly as the roadmap target, but add that Microsoft's notice MC1540293 announces general availability on November 17, 2026, and says no action is required. Cite https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1540293 and report the discrepancy rather than silently choosing the roadmap."
+    },
+    {
+      "n": 13,
+      "where": "controls[0].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "The environment Work IQ switch is at Power Platform admin center > Manage > environment > Settings > Product > Features > Work IQ.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/quickstart",
+      "quote": "Select Manage, and select the environment containing your application. ... Select Settings > Product > Features. ... Turn on Work IQ.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "controls[0].api; Governance controls",
+      "type": "absence",
+      "claim": "No automation equivalent for the environment Work IQ switch is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ environment enable disable PowerShell API semantic model settings. Opened quickstart, default-settings and administration; reviewed manage-participation search passages. No switch API was documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "controls[0].note; Scope",
+      "type": "role",
+      "claim": "The quickstart names Power Platform Administrator for environment settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/quickstart",
+      "quote": "Power Platform Administrator to configure environment settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "controls[0].note",
+      "type": "role",
+      "claim": "The default-settings page instead specifies an environment administrator account for the environment setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+      "quote": "You need an environment administrator account.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[1].ui; Governance controls; Governance guidance",
+      "type": "admin-path",
+      "claim": "Tenant audience control is at Microsoft 365 admin center > Copilot > Settings > View all > Business Applications data in Work IQ available to Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+      "quote": "select Copilot > Settings. ... select View all > Business Applications data in Work IQ available to Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[1].api; Governance controls",
+      "type": "absence",
+      "claim": "No scripted equivalent of the tenant Business Applications audience setting is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Business Applications data in Work IQ\" \"PowerShell\" Graph settings. Opened default-settings and quickstart; search returned unrelated Graph settings rather than an equivalent API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[1].note; Scope",
+      "type": "role",
+      "claim": "The tenant setting requires a tenant administrator account.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+      "quote": "You need a tenant administrator account.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[1].note; Governance controls",
+      "type": "applicability",
+      "claim": "The tenant setting must be on for environments to use Work IQ capabilities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+      "quote": "It must be on for environments to use Work IQ capabilities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[2].ui; Governance controls; Governance guidance",
+      "type": "admin-path",
+      "claim": "Table inclusion is configured in Power Apps > More > Discover all > Semantic model > model > Configuration > table > Include in semantic model.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/fine-tune-semantic-model-signals",
+      "quote": "select More ... select Discover all, and then select Semantic model. ... select Configuration ... Select the table, and then check or clear Include in semantic model.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[2].api; Governance controls",
+      "type": "absence",
+      "claim": "No API equivalent of fine-tuning the existing Sales agent model's signals and table switches is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"semantic model\" \"signals\" \"API\" Dataverse configuration. Opened fine-tune-semantic-model-signals and developer ask/manage-semantic-models; the API lists, creates and deletes models, but directs fine-tuning to Power Apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[2].note; Risk assessment; Scope; Governance guidance",
+      "type": "role",
+      "claim": "Managing the semantic model requires System Administrator or both Semantic Model and Environment Maker.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/fine-tune-semantic-model-signals",
+      "quote": "You need either of the following security roles to manage the semantic model: System Administrator -or- Semantic Model and Environment Maker",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[2].note; Risk assessment; Governance controls",
+      "type": "behaviour",
+      "claim": "Sales agent and Copilot in Dynamics 365 Sales share SalesSpecificQnA, and changes apply to both.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/fine-tune-semantic-model-signals",
+      "quote": "Sales Agent and Copilot in Dynamics 365 Sales both use SalesSpecificQnA ... changes to that model apply to all experiences associated with it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[3].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "A semantic model glossary entry is added in Power Apps from the model overview > Glossary > Add item.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/manage-semantic-model-glossary",
+      "quote": "Sign in to Power Apps ... From the semantic model overview, go to Glossary. ... Select Add item.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[3].api; Governance controls",
+      "type": "absence",
+      "claim": "No API is documented specifically as the equivalent of the Semantic model page's glossary control.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"semantic model\" \"glossary\" \"API\" Dataverse. Opened manage-semantic-model-glossary and ask/manage-semantic-models. Neither maps that UI to an API; CopilotGlossaryTerm CRUD alone does not establish that mapping.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[3].note; Risk assessment",
+      "type": "behaviour",
+      "claim": "Semantic model glossary changes take effect at the next regeneration unless regeneration is triggered manually.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/manage-semantic-model-glossary",
+      "quote": "Changes are picked up during the next regeneration cycle. To make the entry available immediately, trigger a manual regeneration",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[4].ui; Governance controls; Governance guidance",
+      "type": "admin-path",
+      "claim": "Sales agent's CRM entity list is managed at Sales agent administrator settings > Features > Sales Chat > Add.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/set-up-sales-chat",
+      "quote": "Open the Sales agent administrator settings. ... Under Features, select Sales Chat. ... Select Add.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[4].api; Governance controls",
+      "type": "absence",
+      "claim": "No API equivalent of the Sales Chat CRM entity-list control is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Sales agent Sales Chat configure CRM entities tables PowerShell API. Opened set-up-sales-chat; reviewed Sales Agent Configuration entity search passages, which do not document the Sales Chat entity-list control.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[4].note; Governance controls",
+      "type": "behaviour",
+      "claim": "At least one entity must remain configured for Sales agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/set-up-sales-chat",
+      "quote": "You must have at least one entity configured for Sales agent to function.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[5].ui; controls[5].api; controls[5].note; Governance controls",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no scripted switch for Work IQ or the existing Sales agent semantic model.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ environment enable disable PowerShell API semantic model settings. Opened quickstart, default-settings, fine-tune-semantic-model-signals and ask/manage-semantic-models. No enable/disable API for the existing Sales agent model was documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "front matter: defaultState; Open questions",
+      "type": "absence",
+      "claim": "An unconditional arrival default for this Sales agent change is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Sales agent semantic model pricing licensing meter default enabled msdyn_viva. Opened Sales setup, semantic-model-overview, semantic-model-faq and Work IQ default-settings. These describe conditional generation and environment defaults, not one universal Sales agent arrival default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "front matter: licensing.model; licensing.notes; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft has not published a distinct licensing model for this Sales agent semantic model feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"semantic model\" \"Sales agent\" \"licensing\" \"price\". Opened Sales setup, semantic model overview and FAQ, and Work IQ understand-costs. No distinct Sales semantic-model licence was specified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope; rationale: cost",
+      "type": "licensing",
+      "claim": "Sales agent is available to Microsoft 365 Copilot licensees, and the briefing describes that licence as required.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/set-up-sales-chat",
+      "quote": "The Sales agent is available to users who have access to a Microsoft 365 Copilot license.",
+      "severity": "minor",
+      "fix": "Retain the cited setup-page statement, but qualify the blanket requirement: https://learn.microsoft.com/microsoft-sales-copilot/use-sales-chat also says Dynamics 365 Sales Enterprise or Premium users without Microsoft 365 Copilot can use Sales agent with CRM data only. Name that discrepancy and add the source."
+    },
+    {
+      "n": 35,
+      "where": "summary; front matter: licensing.notes; Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "No separate Sales agent semantic model price or meter is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Sales agent semantic model pricing licensing meter; \"semantic model\" \"Sales agent\" \"licensing\" \"price\". Opened Sales setup, semantic model overview and Work IQ understand-costs; no feature-specific price or meter was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The Sales agent setup page names no separate licence for its semantic model step.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Sales agent semantic model pricing licensing meter. Opened set-up-sales-chat in full: the opening names Microsoft 365 Copilot; Step 2 gives Work IQ setup and generation instructions without a separate semantic-model licence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Learn directs admins to enable Work IQ and says the Dynamics 365 model is then generated automatically.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/set-up-sales-chat",
+      "quote": "Follow the steps to turn on Work IQ in your environment. ... Dynamics 365: The model is automatically generated after you enable the setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "For Salesforce, generation occurs at the next metadata cache refresh rather than immediately after enablement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/set-up-sales-chat",
+      "quote": "Salesforce: The model isn't generated immediately after you enable the setting. It's generated on the next metadata cache refresh.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "What's changing; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "The model extracts relationships, views, form display names, descriptions and optionally sample data rows from existing metadata and data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/semantic-model-overview",
+      "quote": "table relationships, views, forms, column description summaries, and optionally sample data rows. ... For forms, only the display name is captured.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "What's changing; Risk assessment; Governance guidance",
+      "type": "default",
+      "claim": "The sample data rows signal is off by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/fine-tune-semantic-model-signals",
+      "quote": "The sample data rows signal is disabled by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "What's changing; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "The semantic model automatically regenerates every 12 hours.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/semantic-model-overview",
+      "quote": "The semantic model regenerates automatically every 12 hours to reflect schema changes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "What's changing; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "An administrator can trigger regeneration without waiting for the scheduled cycle.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/fine-tune-semantic-model-signals",
+      "quote": "you can trigger a manual regeneration instead of waiting for the next scheduled run.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Initial semantic model generation can take up to two hours.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/semantic-model-overview",
+      "quote": "Initial generation can take up to two hours",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Why it matters; Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Work IQ preserves existing user, agent and application access permissions rather than granting additional CRM row access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/",
+      "quote": "Work IQ respects the user, agent, and application access already configured for the underlying business data. ... Enabling an experience doesn't grant access to business data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Salesforce administrators must assign the relevant security role in the msdyn_viva environment in Power Platform admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/set-up-sales-chat",
+      "quote": "If you are a Salesforce admin, you must assign the security role in the msdyn_viva environment in Power Platform admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Security & identity; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not said whether the Salesforce msdyn_viva environment falls under the Work IQ default.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/data-handling#sales-agent,-dataverse,-and-your-crm",
+      "quote": "The msdyn_viva environment is of type Trial. If you need to convert the environment to Production, follow the steps in the Convert the sales environment from Trial to Production article.",
+      "severity": "blocker",
+      "fix": "Replace the unresolved question with the documented qualification: msdyn_viva is provisioned as Trial, and trial environments are excluded from Work IQ automatic enablement by https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings. If it has been converted to Production, check the other eligibility exceptions. Add the data-handling source."
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Computed semantic model signals are read-only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/fine-tune-semantic-model-signals",
+      "quote": "Computed signals are read-only. You can't directly edit an artifact generated by the system.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Change & support; controls[3].governs",
+      "type": "behaviour",
+      "claim": "A glossary definition can correct system-generated semantic understanding.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/fine-tune-semantic-model-signals",
+      "quote": "To override system-generated understanding, use the Glossary to add a corrected definition.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The semantic model does not currently support environment copy or move operations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/semantic-model-overview",
+      "quote": "The semantic model currently doesn't support environment copy or move operations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "After an environment copy or move, Microsoft instructs admins to turn Dataverse Intelligence off and back on in Power Platform admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/semantic-model-overview",
+      "quote": "After any environment copy or move, turn Dataverse Intelligence off and back on in the Power Platform Admin Center to force a restart.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "summary; controls notes; What's changing; Risk assessment",
+      "type": "availability",
+      "claim": "The cited semantic model, Work IQ and Sales agent semantic-model setup documentation is marked preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/set-up-sales-chat",
+      "quote": "Step 2: Configure the semantic model (preview) ... This is a preview feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Microsoft says the semantic model preview may be modified or discontinued.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/semantic-model-overview",
+      "quote": "Preview offerings are provided as-is and may be modified or discontinued at any time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Why it matters",
+      "type": "date",
+      "claim": "Work IQ is enabled by default for qualifying new environments starting 30 September 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+      "quote": "Starting September 30, 2026, Microsoft turns on these capabilities by default for all new environments that aren't listed as exceptions in this article.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Why it matters; rationale: risk",
+      "type": "date",
+      "claim": "Work IQ default enablement for qualifying existing environments starts in November 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+      "quote": "Starting in November 2026, Microsoft turns on Business Applications in Work IQ for existing environments that aren't listed as exceptions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Scope: Environments",
+      "type": "default",
+      "claim": "Trial, sandbox and developer environments are among the Work IQ automatic-enablement exceptions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+      "quote": "Nonproduction environments: This exception applies to trial, sandbox, and developer environments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[0].governs; Why it matters; Governance controls",
+      "type": "applicability",
+      "claim": "The environment Work IQ setting controls semantic modelling.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+      "quote": "The Work IQ setting turns on business skills, semantic modeling, and access to Dataverse data ... If you turn off this setting, these features aren't available in the environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The preview banner warns that underlying application services may continue to incur licence fees for consumption-based services.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/semantic-model-overview",
+      "quote": "For consumption-based services, usage of underlying application services may continue to incur license fees during the preview period.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "That preview warning does not identify which underlying services would be charged for the Sales agent model.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Sales agent semantic model pricing licensing meter. Opened semantic-model-overview, Sales setup and Work IQ understand-costs; the generic preview warning does not identify Sales semantic-model underlying-service charges.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Dataverse search and semantic modelling can use additional storage for search indexes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+      "quote": "Some features use extra storage for search indexes. These features include semantic modeling and access to Power Apps and Dynamics 365 data through Microsoft 365 Copilot Chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Cost and licensing: final paragraph",
+      "type": "cost",
+      "claim": "Removing tables from the Sales agent entity list reduces index storage.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Sales agent\" \"remove tables\" \"storage\" \"index\". Opened Sales setup and read Free up storage space search passages. The documented storage action is removing tables from Dataverse search, not merely from the Sales agent entity list.",
+      "severity": "blocker",
+      "fix": "Replace with: 'For Dynamics 365, removing tables from Dataverse search can reduce index-related storage costs, but those tables can no longer be queried in Sales agent.' Cite https://learn.microsoft.com/microsoft-sales-copilot/set-up-sales-chat#step-1-configure-crm-entities-dynamics-365-tables-or-salesforce-objects. Do not equate the Sales agent entity list with the Dataverse search index configuration."
+    },
+    {
+      "n": 61,
+      "where": "Cost and licensing; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Removing an entity from Sales agent removes its availability to Sales agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/set-up-sales-chat",
+      "quote": "When you remove a record, the Sales agent will no longer have access to it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Scope: Users",
+      "type": "behaviour",
+      "claim": "The documented setup prerequisites include installing Sales agent in both Outlook and Teams.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/set-up-sales-chat",
+      "quote": "The Sales agent is installed in both Outlook and Teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Scope: Users",
+      "type": "behaviour",
+      "claim": "Sales Chat must be enabled in Access settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/set-up-sales-chat",
+      "quote": "Sales Chat must be turned on in Access settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "title; Scope: CRM",
+      "type": "availability",
+      "claim": "Sales agent supports Dynamics 365 Sales and Salesforce CRM.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/set-up-sales-chat",
+      "quote": "Currently, it supports Dynamics 365 Sales and Salesforce.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Scope: CRM",
+      "type": "admin-path",
+      "claim": "For Salesforce, the Sales agent setup instructions place the Work IQ switch in msdyn_viva.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/set-up-sales-chat",
+      "quote": "Select your Dynamics 365 environment or, for Salesforce, the msdyn_viva environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Scope: Prerequisite; Governance guidance",
+      "type": "behaviour",
+      "claim": "Fine-tuning requires Dataverse with Dynamics 365 apps enabled at version 9.2.26054.00125 or later.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/fine-tune-semantic-model-signals",
+      "quote": "Dataverse version with Dynamics 365 apps enabled must be 9.2.26054.00125 or later version.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Scope: Clouds and platforms",
+      "type": "availability",
+      "claim": "Business Applications in Work IQ is not currently available in DoD, GCC or GCC High.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+      "quote": "Business Applications in Work IQ isn't currently available in sovereign or government cloud environments, including Department of Defense (DoD), Government Community Cloud (GCC), and GCC High.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Semantic model controls exist at environment, signal-type, table and individual view or relationship levels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/fine-tune-semantic-model-signals",
+      "quote": "Environment level ... Signal-type level ... Table level ... Item level ... Enable or disable a specific view or relationship within a table",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "controls[4].note; Governance controls",
+      "type": "absence",
+      "claim": "The cited documentation does not establish that the Sales Chat entity list limits the semantic model's table scope.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Sales agent semantic model Copilot Studio glossary relationship data scope write capabilities. Opened Sales setup, semantic-model-overview and fine-tune-semantic-model-signals; the entity list and model configuration are separate procedures without an explicit limiting relationship.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Governance controls",
+      "type": "admin-path",
+      "claim": "The Sales agent setup page tells Dynamics 365 administrators to add glossary terms in Copilot Studio.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/set-up-sales-chat",
+      "quote": "You must add glossary terms in Microsoft Copilot Studio.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Salesforce glossary terms are rows in CopilotGlossaryTerms in the msdyn_viva environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/sf-glossary-support",
+      "quote": "Select the msdyn_viva environment. ... Search for the CopilotGlossaryTerms table. ... Open the Active CopilotGlossaryTerms view. ... select New.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Governance controls; Open questions",
+      "type": "absence",
+      "claim": "The cited pages do not explicitly explain how the Semantic model glossary UI relates to the older Dynamics 365 and Salesforce glossary procedures.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Sales agent semantic model Copilot Studio glossary relationship data scope write capabilities. Opened Sales setup, sf-glossary-support, manage-semantic-model-glossary and fine-tune-semantic-model-signals; no explicit UI-to-UI glossary mapping was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Governance controls: final sentence",
+      "type": "absence",
+      "claim": "No scripted control for any of the glossary management just described is documented.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/copilotglossaryterm",
+      "quote": "Entity set path: [organization URI]/api/data/v9.2/copilotglossaryterms ... Operations supported: POSTGETPATCHDELETE",
+      "severity": "blocker",
+      "fix": "Remove 'No scripted control for any of this is documented'. Microsoft documents Dataverse CRUD for CopilotGlossaryTerm, including term, description and skill properties, at the cited reference. Restrict any remaining absence statement to the Work IQ switch and the specific Semantic model UI controls whose API mapping is not documented; do not imply Salesforce glossary rows have no automation surface."
+    },
+    {
+      "n": 74,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "The semantic model documentation describes interpretation and grounding, not a model write capability.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Sales agent semantic model Copilot Studio glossary relationship data scope write capabilities. Opened semantic-model-overview, fine-tune-semantic-model-signals and Sales setup Step 2; no CRM write capability was assigned to the semantic model itself.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "Governance guidance: At rollout; After rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The governance checklist asks administrators to use controls that lack their own corresponding table rows.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Switch off views or relationships ... leave Sample table rows off ... an admin can regenerate manually ... Turn Dataverse Intelligence off and on again",
+      "severity": "minor",
+      "fix": "Add distinct rows for signal-type/sample-row configuration, individual view/relationship switches and manual regeneration. The existing controls[2] path only shows table inclusion. Also map the Dataverse Intelligence restart instruction explicitly to the environment control row, noting Microsoft's terminology, rather than leaving its relationship to Work IQ implicit."
+    },
+    {
+      "n": 76,
+      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Sales agent has access to all columns in each entity added to its CRM entity list.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/set-up-sales-chat",
+      "quote": "Sales agent will have access to all columns in the added entities (tables in Dynamics 365 or objects in Salesforce).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "controls[1].governs; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The tenant Business Applications audience setting offers No users, All users and Specific groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+      "quote": "To turn off access for everyone, select No users. ... To turn on access for everyone, select All users. ... To provide access to a limited audience, select Specific groups",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The Sales agent setup page warns that enabling Dataverse search can increase storage usage by creating searchable-table indexes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/set-up-sales-chat",
+      "quote": "Enabling Dataverse search can increase storage usage because indexes are created for searchable tables.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-16T15:35:47.914Z",
+    "summary": {
+      "links": 9,
+      "unreachable": 0,
+      "uiPaths": 5,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=573294",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-sales-copilot/set-up-sales-chat",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/maker/data-platform/semantic-model-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/maker/data-platform/fine-tune-semantic-model-signals",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/maker/data-platform/manage-semantic-model-glossary",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-sales-copilot/sf-glossary-support",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/quickstart",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether Work IQ features, including semantic models, are on in an environment",
+        "docs": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/quickstart",
+        "reachable": true,
+        "segments": [
+          "Manage",
+          "Settings",
+          "Product",
+          "Features",
+          "Work IQ"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether Business Applications data in Work IQ is available to Copilot, for all users, groups or no one",
+        "docs": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Settings",
+          "View all",
+          "Business Applications data in Work IQ available to Copilot"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Which tables, signal types, views and relationships feed the Sales agent semantic model",
+        "docs": "https://learn.microsoft.com/power-apps/maker/data-platform/fine-tune-semantic-model-signals",
+        "reachable": true,
+        "segments": [
+          "More",
+          "Discover all",
+          "Semantic model",
+          "model",
+          "Configuration",
+          "Include in semantic model"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Business terms and definitions that correct how the model reads CRM data",
+        "docs": "https://learn.microsoft.com/power-apps/maker/data-platform/manage-semantic-model-glossary",
+        "reachable": true,
+        "segments": [
+          "Semantic model",
+          "model",
+          "Glossary",
+          "Add item"
+        ],
+        "missing": []
+      },
+      {
+        "index": 4,
+        "side": "ui",
+        "governs": "Which CRM tables or objects Sales agent can query",
+        "docs": "https://learn.microsoft.com/microsoft-sales-copilot/set-up-sales-chat",
+        "reachable": true,
+        "segments": [
+          "Features",
+          "Sales Chat",
+          "Add"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": [
+    {
+      "date": "2026-11-16",
+      "status": "held",
+      "version": 1,
+      "model": "none"
+    }
+  ]
 }

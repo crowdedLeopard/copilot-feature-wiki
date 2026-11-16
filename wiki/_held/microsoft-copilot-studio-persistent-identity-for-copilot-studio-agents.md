@@ -80,6 +80,17 @@ changes:
   - date: "2026-11-16"
     note: "First briefing: documents the Frontier preview of agent accounts, its two admin switches, per-agent licence and shared-memory behaviour."
 version: 1
+verification:
+  status: "held"
+  date: "2026-11-16"
+  version: 1
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 68
+  confirmed: 65
+  unconfirmed: 0
+  contradicted: 3
+  attempts: 1
 ---
 
 ## What's changing
@@ -178,4 +189,16 @@ Switching Agent accounts off in an environment hides the **Agent account** butto
 risk: High. An agent with an account keeps one shared memory across everyone it works with, Microsoft says it can surface content to users who lack access to the source, and an admin cannot turn that memory off separately from agent accounts.
 cost: Variable. Each agent account uses one Microsoft 365 Frontier for AI Teammates licence, makers need Microsoft 365 E5 with the Agent 365 add-on or Microsoft 365 E7, and usage may consume Copilot Credits.
 impact: Medium. Only makers selected by an admin can create these agents, but colleagues will see the agent in Teams, email and the directory, and anyone who talks to it contributes to its shared memory.
+-->
+
+<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
+The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
+- [contradicted, blocker] controls[2].api; Governance controls table / absence: The general agent-blocking control has no documented API or automation equivalent. | Found: Block a Copilot package to prevent its usage.
+POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block | Fix: Set controls[2].api to kind graph, call 'POST /beta/copilot/admin/catalog/packages/{id}/block', and docs https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/package/copilotpackage-block. State that this is a preview API, requires Microsoft Agent 365 licensing and delegated CopilotPackages.ReadWrite.All, and is not supported for production applications. Retain the row's general-control applicability caveat. | Source: https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/package/copilotpackage-block
+- [contradicted, blocker] Risk assessment: Autonomy & actions / absence: Microsoft documents no tenant-level control limiting agent-account actions beyond the Agent accounts switch and agent blocking. | Found: Policies with a tenant scope apply to all agents in all environments across the tenant.
+To prevent agent makers from using Power Platform connectors as tools in Copilot Studio agents, configure a data policy with the connectors you want to block. | Fix: Remove the broad absence claim. Replace it with: 'Tenant-scoped Copilot Studio data policies can restrict connector tools and supported capabilities; this is not a universal per-account action allow-list.' Cite https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention and describe only its documented scope. The already-cited govern-agents-identities-overview also states that advanced connector policies and data policies govern connector calls at execution time. | Source: https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention
+- [supported, minor] Cost and licensing; Governance guidance: Before rollout / licensing: Tenant enrolment in the Microsoft Frontier Program is required. | Found: Your tenant is enrolled in the Microsoft Frontier Program, with the Microsoft Agent 365 Terms of Service accepted | Fix: Keep the feature-page prerequisites, but also cite https://learn.microsoft.com/microsoft-agent-365/frontier and report its additional tenant prerequisite: at least one Microsoft E7 licence to access Agent 365 preview features. Distinguish that tenant requirement from the feature page's E5-plus-Agent-365 or E7 maker options. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account
+- [supported, minor] Cost and licensing / absence: The feature page does not publish the number of Frontier for AI Teammates licences provisioned on enrolment. | Found: Searched: "agent accounts" "Frontier" pricing licenses general availability pool. Read authoring-agent-account, which says 'enough' without a number; also read microsoft-agent-365/frontier, which specifies 25 active licences. | Fix: Avoid leaving the known pool size as an unresolved gap: cite https://learn.microsoft.com/microsoft-agent-365/frontier and say its enrolment instructions tell admins to confirm 25 active Microsoft 365 Frontier for AI Teammates licences at Billing > Licenses.
+- [supported, minor] Cost and licensing; Open questions / absence: The agent-account feature page does not publish its general-availability licensing. | Found: Searched: "agent accounts" "Frontier" pricing licenses general availability pool. Read authoring-agent-account and microsoft-agent-365/frontier; the feature page describes preview licensing, while Frontier's FAQ separately explains Agent 365 GA per-user licensing. | Fix: Keep the feature-specific GA question, but distinguish it from published Agent 365 GA licensing. Cite https://learn.microsoft.com/microsoft-agent-365/frontier: Agent 365 at GA is licensed per user and agents managed or owned by that licensed user do not need their own Agent 365 or E7 licence. Do not equate that general rule with an announced GA design for this roadmap feature.
+- [contradicted, minor] Governance guidance: Before rollout and After rollout; controls / consistency: Every control the governance checklist asks readers to check or manage appears in the controls table. | Found: confirm your tenant is enrolled in Frontier and has free Microsoft 365 Frontier for AI Teammates licences; Check the agent's Entra Agent ID and sign-in state; Monitor Copilot Credits consumption. The four table rows cover activation, Agent accounts, blocking and shared memory only. | Fix: Add rows for Frontier enrolment/licence-pool management, Entra Agent ID sign-in/risk inspection, and Copilot Credits consumption monitoring, with documented surfaces and separately researched automation sides. Alternatively remove checklist instructions for controls the table does not cover.
 -->

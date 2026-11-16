@@ -5,27 +5,876 @@
   "status": "held",
   "date": "2026-11-16",
   "version": 1,
-  "model": "none",
-  "engine": "manual",
-  "attempts": 0,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [],
   "hold": {
-    "reason": "unverified",
+    "reason": "failed",
     "since": "2026-11-16",
     "reasons": [
-      "Written but not yet checked against Microsoft Learn."
+      "2 blocking findings (claims 30, 44)"
     ]
   },
   "counts": {
-    "claims": 0,
-    "confirmed": 0,
+    "claims": 68,
+    "confirmed": 65,
     "unconfirmed": 0,
-    "contradicted": 0,
-    "blocker": 0,
+    "contradicted": 3,
+    "blocker": 2,
     "major": 0,
-    "minor": 0
+    "minor": 4
   },
-  "summary": "Written but not yet checked against Microsoft Learn.",
-  "claims": [],
-  "precheck": null,
-  "history": []
+  "summary": "Hold: the table says agent blocking has no documented API, but Microsoft publishes a preview Graph endpoint for that action. The statement that no tenant-level controls restrict agent actions beyond the account switch and blocking also overlooks documented data policies. The roadmap dates, activation paths, preview licensing and shared-memory warnings are supported.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "summary; What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "An account gives a Copilot Studio agent its own Microsoft 365 identity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account",
+      "quote": "An account gives a Copilot Studio agent its own identity in Microsoft 365 so it can take a business process from start to finish on its own.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "A published agent with an account has its own mailbox.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account",
+      "quote": "When you publish it, the agent is provisioned with its mailbox, Teams presence, directory entry, and Microsoft Entra Agent IDs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The agent can send and receive email using its mailbox.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account",
+      "quote": "It has its own mailbox, so it can send and receive email and be added to distribution lists.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The agent can be added to distribution lists.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account",
+      "quote": "It has its own mailbox, so it can send and receive email and be added to distribution lists.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "summary; What's changing; rationale: impact",
+      "type": "behaviour",
+      "claim": "Publishing provisions the agent's Teams presence, subject to the stated EEA licensing qualification.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account",
+      "quote": "When you publish it, the agent is provisioned with its mailbox, Teams presence, directory entry, and Microsoft Entra Agent IDs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What's changing; Why it matters; rationale: impact",
+      "type": "behaviour",
+      "claim": "The published agent appears in the organisation's directory.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account",
+      "quote": "It appears in Microsoft Teams and your organization's directory, where people can find and @mention it like a colleague.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Colleagues can find and @mention the agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account",
+      "quote": "It appears in Microsoft Teams and your organization's directory, where people can find and @mention it like a colleague.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Supported operations can use the agent's scoped access rights.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account",
+      "quote": "Supported operations can use the agent's own scoped access rights.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Tools configured for end-user authentication use the agent's identity and consent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account",
+      "quote": "Tools configured for end-user authentication use the agent's identity and consent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "availability",
+      "claim": "In this preview the agent does not respond to anyone outside its tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account",
+      "quote": "External users: the agent doesn't respond to anyone outside its tenant. There's no workaround in this preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The agent responds only in email conversations with up to 250 people.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account",
+      "quote": "Email audience: the agent responds only in email conversations with up to 250 people.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The agent cannot co-author existing documents in this preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account",
+      "quote": "Document editing: generating new documents is supported; editing existing documents through co-authoring isn't supported yet.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Risk assessment: Data exposure; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Agents with accounts cannot read protected documents, including documents protected with Confidential or Internal Only sensitivity labels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account",
+      "quote": "Agents with an account can't read protected documents. For example, they can't access documents protected with Confidential or Internal Only sensitivity labels, or the equivalent for your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development, not Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is September CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"September CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: targetDate; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap target date is November CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"November CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "summary; What's changing; controls notes",
+      "type": "availability",
+      "claim": "Learn documents agent accounts as a Frontier preview with prerelease capabilities and licensing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account",
+      "quote": "[This article is prerelease documentation and is subject to change.]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "front matter: defaultState; summary; Why it matters; Governance controls",
+      "type": "default",
+      "claim": "Agent accounts require admin opt-in through both template activation and the environment setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account",
+      "quote": "An admin completed both steps to turn on agent accounts: activate the Copilot Studio agent template in the Microsoft 365 admin center and turn on Agent accounts for your environment in the Power Platform admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[0].ui; Governance controls table; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "Template activation uses Microsoft 365 admin center > All Agents > filter Agent template: Yes > Copilot Studio (Frontier) > Activate > Users step.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account",
+      "quote": "a tenant admin goes to All Agents, filters by Agent template: Yes, selects Copilot Studio (Frontier), and then selects Activate.\n2. In the activation wizard, at the Users step, select the users or groups",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[0].api; Governance controls table and notes",
+      "type": "absence",
+      "claim": "No PowerShell, Graph or Power Platform API for Copilot Studio (Frontier) template activation is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio \"Agent accounts\" \"PowerShell\" \"API\" \"template\"; \"Copilot Studio\" \"agent accounts\" \"template\" \"Graph\" activation. Opened authoring-agent-account, agent-actions, Agent 365 graph-api and Package Management API overview; none documents template activation automation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[0].note; Scope",
+      "type": "role",
+      "claim": "A tenant admin activates the Copilot Studio agent template.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account",
+      "quote": "In the Microsoft 365 admin center, a tenant admin goes to All Agents",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Scope; Governance guidance: Before rollout; rationale: impact",
+      "type": "availability",
+      "claim": "Only users selected at activation and members of selected groups can create agents with accounts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account",
+      "quote": "Only the users you select at this step and members of the selected groups can create agents with accounts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[1].ui; Governance controls table; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "The environment setting is Power Platform admin center > Copilot > Settings > Copilot Studio > Agent accounts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account",
+      "quote": "select Copilot on the side bar, and then select Settings. The Settings page appears.\n2. Under Copilot Studio, select Agent accounts and turn on the setting for your environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[1].api; Governance controls table and notes; Open questions",
+      "type": "absence",
+      "claim": "No PowerShell, Graph or Power Platform API to change the Agent accounts environment setting is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Agent accounts\" \"setting\" \"PowerShell\" Copilot Studio; Copilot Studio \"Agent accounts\" \"PowerShell\" \"API\" \"template\". Opened authoring-agent-account and Agent 365 Graph/Package Management overviews; no Agent accounts setting API was documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Turning off Agent accounts hides the Agent account button for agents in that environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account",
+      "quote": "If you turn it off, the Agent account button isn't available for agents in the environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[2].ui; Governance controls table; Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "The general agent-blocking action is at Microsoft 365 admin center > Agents > All agents > select an agent > Block.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "Select Agents > All agents.\n3. In the All agents page, select an agent from the list of agents.\n4. In the agent details pane that opens, immediately under the agent's name, select Block or Unblock.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[2].api; Governance controls table",
+      "type": "absence",
+      "claim": "The general agent-blocking control has no documented API or automation equivalent.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Block a Copilot package to prevent its usage.\nPOST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block",
+      "severity": "blocker",
+      "fix": "Set controls[2].api to kind graph, call 'POST /beta/copilot/admin/catalog/packages/{id}/block', and docs https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/package/copilotpackage-block. State that this is a preview API, requires Microsoft Agent 365 licensing and delegated CopilotPackages.ReadWrite.All, and is not supported for production applications. Retain the row's general-control applicability caveat."
+    },
+    {
+      "n": 31,
+      "where": "controls[3].ui and api; Why it matters; Governance controls; rationale: risk",
+      "type": "absence",
+      "claim": "There is no independent admin UI or API control to turn off shared memory while retaining agent accounts.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio agent accounts shared memory disable administrator Graph API. Opened faq-agent-accounts and authoring-agent-account; FAQ explicitly says shared memory cannot be turned off independently of agent accounts in this preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Why it matters; Risk assessment: Data exposure; rationale: risk and impact",
+      "type": "behaviour",
+      "claim": "An agent with an account retains one shared memory across the people it works with.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/faq-agent-accounts",
+      "quote": "The agent keeps one memory across everyone it works with, so what one person explains benefits the whole team.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Why it matters; rationale: risk",
+      "type": "behaviour",
+      "claim": "Shared memory has no privacy boundary between users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/faq-agent-accounts",
+      "quote": "The agent is guided not to bring up one person's details with someone else, but shared memory has no privacy boundary between users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout; rationale: risk",
+      "type": "behaviour",
+      "claim": "The People card warns that shared files and chats can be summarised in responses to people without source permissions, regardless of sensitivity label.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/faq-agent-accounts",
+      "quote": "Any files or chats you share can be summarized and included in the agent's responses to any user, even users without permissions to the files or chats and regardless of sensitivity label.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Shared memories are automatically deleted after 28 days without anyone interacting with the agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/faq-agent-accounts",
+      "quote": "If no one interacts with the agent for 28 days, the system automatically deletes its shared memories.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Data exposure; controls[3].note",
+      "type": "behaviour",
+      "claim": "End users cannot opt out of shared memory in this preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/faq-agent-accounts",
+      "quote": "No. End users can't opt out of shared memory in this preview. By using the agent, you consent to its use of shared memory.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Security & identity; Governance controls",
+      "type": "behaviour",
+      "claim": "An agent with an account has a Microsoft Entra account and a separate Microsoft Entra Agent ID managed separately in the Entra admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account",
+      "quote": "Copilot Studio also creates a Microsoft Entra Agent ID that admins manage separately, for each agent that has an account.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The account does not automatically grant every tool permission.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account",
+      "quote": "The agent account does not automatically grant every tool permission. Check which identity a tool uses and grant only the access needed for the job.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The agent's email address cannot be changed after publishing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account",
+      "quote": "You also can't change the email address for your agent after you publish the agent. Plan your agent's identity before publishing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The maker-based alias prefix cannot be changed during the preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account",
+      "quote": "During this preview, you can't change the maker-based alias prefix or reporting relationship.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The agent's reporting relationship cannot be changed during the preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account",
+      "quote": "During this preview, you can't change the maker-based alias prefix or reporting relationship.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Agents with accounts can run from configured triggers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account",
+      "quote": "Configure supported tools and a recurrence trigger; instructions alone don't create a schedule or grant access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Agents with accounts can generate new documents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account",
+      "quote": "Document editing: generating new documents is supported; editing existing documents through co-authoring isn't supported yet.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "Microsoft documents no tenant-level control limiting agent-account actions beyond the Agent accounts switch and agent blocking.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "Policies with a tenant scope apply to all agents in all environments across the tenant.\nTo prevent agent makers from using Power Platform connectors as tools in Copilot Studio agents, configure a data policy with the connectors you want to block.",
+      "severity": "blocker",
+      "fix": "Remove the broad absence claim. Replace it with: 'Tenant-scoped Copilot Studio data policies can restrict connector tools and supported capabilities; this is not a universal per-account action allow-list.' Cite https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention and describe only its documented scope. The already-cited govern-agents-identities-overview also states that advanced connector policies and data policies govern connector calls at execution time."
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Change & support; Cost and licensing",
+      "type": "licensing",
+      "claim": "Publishing fails when no Microsoft 365 Frontier for AI Teammates licence is available.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account",
+      "quote": "If no Microsoft 365 Frontier for AI Teammates license is available in your tenant when you publish, publishing fails.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Change & support",
+      "type": "licensing",
+      "claim": "In the EEA the agent appears in Teams only if the tenant separately licenses Teams.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account",
+      "quote": "Your agent still gets its account, mailbox, and directory presence, but it appears in Microsoft Teams only if your tenant separately licenses Teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Microsoft 365 E5 with the Microsoft Agent 365 add-on is a documented maker licence option.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account",
+      "quote": "You have a maker license: a Microsoft 365 E5 license with the Microsoft Agent 365 add-on, or a Microsoft 365 E7 license, which includes Agent 365.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Microsoft 365 E7 is a documented maker licence option and includes Agent 365.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account",
+      "quote": "a Microsoft 365 E7 license, which includes Agent 365.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Cost and licensing; Governance guidance: Before rollout",
+      "type": "licensing",
+      "claim": "Tenant enrolment in the Microsoft Frontier Program is required.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account",
+      "quote": "Your tenant is enrolled in the Microsoft Frontier Program, with the Microsoft Agent 365 Terms of Service accepted",
+      "severity": "minor",
+      "fix": "Keep the feature-page prerequisites, but also cite https://learn.microsoft.com/microsoft-agent-365/frontier and report its additional tenant prerequisite: at least one Microsoft E7 licence to access Agent 365 preview features. Distinguish that tenant requirement from the feature page's E5-plus-Agent-365 or E7 maker options."
+    },
+    {
+      "n": 50,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The tenant must accept the Microsoft Agent 365 Terms of Service.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account",
+      "quote": "with the Microsoft Agent 365 Terms of Service accepted",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "summary; front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Each agent account uses one Microsoft 365 Frontier for AI Teammates licence when published.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account",
+      "quote": "Your agent uses one of these licenses for its account when you publish it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Cost and licensing; Governance guidance: After rollout",
+      "type": "licensing",
+      "claim": "An admin can free a licence by removing it from another agent or acquire more licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account",
+      "quote": "Ask your admin to free up a license by removing it from another agent, or to acquire more licenses, and then publish again.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "cost",
+      "claim": "Account licensing and usage-based service charges are separate.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account",
+      "quote": "Account licensing and usage-based service charges are separate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Using, building, testing and evaluating agents on this harness might consume Copilot Credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account",
+      "quote": "The harness used to build this agent uses usage-based billing. Using, building, testing, and evaluating agents might consume Copilot Credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is mixed, combining an agent account licence with usage-based charges.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account",
+      "quote": "An agent account requires a Microsoft 365 Frontier for AI Teammates license and tenant Frontier enrollment, as described in Prerequisites. Account licensing and usage-based service charges are separate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "Variable cost is supported by documented Copilot Credits usage-based billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account",
+      "quote": "The harness used to build this agent uses usage-based billing. Using, building, testing, and evaluating agents might consume Copilot Credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The feature page does not publish the number of Frontier for AI Teammates licences provisioned on enrolment.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"agent accounts\" \"Frontier\" pricing licenses general availability pool. Read authoring-agent-account, which says 'enough' without a number; also read microsoft-agent-365/frontier, which specifies 25 active licences.",
+      "severity": "minor",
+      "fix": "Avoid leaving the known pool size as an unresolved gap: cite https://learn.microsoft.com/microsoft-agent-365/frontier and say its enrolment instructions tell admins to confirm 25 active Microsoft 365 Frontier for AI Teammates licences at Billing > Licenses."
+    },
+    {
+      "n": 58,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "The agent-account feature page does not publish a price for Microsoft 365 Frontier for AI Teammates.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"agent accounts\" \"Frontier\" pricing licenses general availability pool. Opened authoring-agent-account and microsoft-agent-365/frontier; neither publishes a price for Microsoft 365 Frontier for AI Teammates.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "The agent-account feature page does not publish its general-availability licensing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"agent accounts\" \"Frontier\" pricing licenses general availability pool. Read authoring-agent-account and microsoft-agent-365/frontier; the feature page describes preview licensing, while Frontier's FAQ separately explains Agent 365 GA per-user licensing.",
+      "severity": "minor",
+      "fix": "Keep the feature-specific GA question, but distinguish it from published Agent 365 GA licensing. Cite https://learn.microsoft.com/microsoft-agent-365/frontier: Agent 365 at GA is licensed per user and agents managed or owned by that licensed user do not need their own Agent 365 or E7 licence. Do not equate that general rule with an announced GA design for this roadmap feature."
+    },
+    {
+      "n": 60,
+      "where": "Scope; Governance guidance: At rollout; Open questions",
+      "type": "availability",
+      "claim": "Agent accounts require an early release cycle environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account",
+      "quote": "Your environment uses the early release cycle. In the Power Platform admin center, verify that Release cycle for your environment is Early.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "Makers create agents with accounts in Copilot Studio Preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account",
+      "quote": "Open Copilot Studio Preview. Use the environment picker to switch to your early release cycle environment if it's not already in focus.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "Learn says agent accounts are available to customers in the EEA.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account",
+      "quote": "Agent accounts are available to customers in the European Economic Area (EEA).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Scope",
+      "type": "admin-path",
+      "claim": "Frontier enrolment starts at Microsoft 365 admin center > Agents > Overview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account",
+      "quote": "A global admin enrolls the tenant from the Microsoft 365 admin center by going to Agents > Overview and selecting Try now.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Scope; Governance guidance: Before rollout",
+      "type": "role",
+      "claim": "A global admin enrols the tenant in Agent 365 Frontier.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account",
+      "quote": "A global admin enrolls the tenant from the Microsoft 365 admin center",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "The feature's Learn instructions do not name a role for changing Agent accounts in the Power Platform admin center.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Copilot Studio\" \"Agent accounts\" \"Power Platform\" \"role\" administrator. Read authoring-agent-account including prerequisites and Turn on Agent accounts; it names tenant/global admins elsewhere but no role for this Power Platform step.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "A disabled or blocked Entra Agent ID can make an agent stop responding in Teams, and Learn directs admins to inspect its sign-in and risk state.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/govern-agents-identities-overview",
+      "quote": "If an agent in Teams stops responding without displaying an error, its Entra Agent ID might be disabled or blocked. In the Microsoft Entra admin center, review the agent identity's sign-in and risk state",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "controls[2].note; Governance controls",
+      "type": "applicability",
+      "claim": "The general Microsoft 365 agent-blocking control affects Copilot Studio agents in Copilot and host products such as Outlook and Teams, without specifically documenting agent accounts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "Blocking or unblocking an agent that you created by using Microsoft Copilot Agent Builder and Microsoft Copilot Studio affects its availability and functionality in Microsoft Copilot. It also affects availability and functionality in other host products",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Governance guidance: Before rollout and After rollout; controls",
+      "type": "consistency",
+      "claim": "Every control the governance checklist asks readers to check or manage appears in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "confirm your tenant is enrolled in Frontier and has free Microsoft 365 Frontier for AI Teammates licences; Check the agent's Entra Agent ID and sign-in state; Monitor Copilot Credits consumption. The four table rows cover activation, Agent accounts, blocking and shared memory only.",
+      "severity": "minor",
+      "fix": "Add rows for Frontier enrolment/licence-pool management, Entra Agent ID sign-in/risk inspection, and Copilot Credits consumption monitoring, with documented surfaces and separately researched automation sides. Alternatively remove checklist instructions for controls the table does not cover."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-16T15:35:49.051Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 1,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=570430",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/faq-agent-accounts",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/admin-use-entra-agent-identities",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/govern-agents-identities-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which users and groups can create agents with accounts (template activation)",
+        "docs": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account",
+        "reachable": true,
+        "segments": [
+          "All Agents",
+          "filter Agent template: Yes",
+          "Copilot Studio",
+          "Activate",
+          "Users step"
+        ],
+        "missing": [
+          "filter Agent template: Yes"
+        ]
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether agents in an environment can have accounts",
+        "docs": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Settings",
+          "Copilot Studio",
+          "Agent accounts"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Blocking a specific agent that has an account",
+        "docs": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "All agents",
+          "select an agent",
+          "Block"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": [
+    {
+      "date": "2026-11-16",
+      "status": "held",
+      "version": 1,
+      "model": "none"
+    }
+  ]
 }

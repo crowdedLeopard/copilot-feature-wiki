@@ -82,6 +82,17 @@ changes:
   - date: "2026-11-16"
     note: "First briefing for roadmap item 565374: roadmap-only description of the AI capability, with today's documented device status and health tools shown as the manual route."
 version: 2
+verification:
+  status: "verified"
+  date: "2026-11-16"
+  version: 2
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 64
+  confirmed: 64
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
 ---
 
 ## What's changing

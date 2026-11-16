@@ -63,6 +63,17 @@ changes:
   - date: "2026-11-16"
     note: "First briefing for this roadmap item: the plan is known only from the roadmap; Learn documents no Delinea setup, licence or controls yet."
 version: 1
+verification:
+  status: "held"
+  date: "2026-11-16"
+  version: 1
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 60
+  confirmed: 52
+  unconfirmed: 4
+  contradicted: 4
+  attempts: 1
 ---
 
 ## What's changing
@@ -163,4 +174,25 @@ For CyberArk, the application and its certificate are configured per machine or 
 risk: Medium. The feature lets desktop flows retrieve privileged machine credentials from an external vault, and Microsoft Learn documents no admin switch or setup path for it at the time of writing (November 2026).
 cost: Low. The only cost the sources show is admin and security-team time; Power Automate licensing for this provider is not yet published, and Delinea's own licence terms are outside the Microsoft sources.
 impact: Low. Admins, security teams and makers who run desktop flows would notice; end users do not, and the roadmap item describes a new provider option rather than a change to existing flows.
+-->
+
+<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
+The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
+- [contradicted, blocker] controls[2].api; Governance controls: final paragraph / absence: No API for managing or restricting access to existing credentials is documented. | Found: The following operations can be used with the credential entity type.
+GrantAccess
+ModifyAccess
+RetrievePrincipalAccess
+RetrieveSharedPrincipalsAndAccess
+RevokeAccess | Fix: Replace the absence claim with the documented Dataverse credential access operations GrantAccess, ModifyAccess and RevokeAccess, and cite this entity reference and their action references. State separately that applicability to the planned Delinea provider is unconfirmed; do not claim these restrict allowed stores. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/credential
+- [contradicted, blocker] Governance controls: final paragraph / absence: No API for creating existing Power Automate credentials is documented. | Found: Entity set path:
+[organization URI]/api/data/v9.2/credentials
+Operations supported:
+POSTGETPATCHDELETE | Fix: Remove the broad API-absence sentence. State that the Dataverse credential entity documents creation and other CRUD operations, citing this reference, while no Delinea-specific creation contract was found. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/credential
+- [unsupported, major] Why it matters: first paragraph / behaviour: Teams with machine accounts in Delinea would otherwise have to copy passwords to Azure Key Vault or CyberArk or type them into desktop flow connections. | Found: Searched: "Power Automate" "Delinea"; "Delinea" Power Automate desktop credential authentication machine network service account. Opened both existing provider pages and Secret Server (Preview); none establishes this exhaustive list of required alternatives. | Fix: Replace the necessity claim with: 'A native provider could reduce the need to duplicate or manually maintain credentials in existing desktop flow configurations.' Keep this explicitly as the wiki's expectation, not an exhaustive statement of current integration options.
+- [unsupported, blocker] Why it matters: second paragraph; Governance guidance: Before rollout / role: The planned Delinea provider will use a Delinea-side service account. | Found: Searched: "Delinea" Power Automate desktop credential authentication machine network service account. Opened both existing provider pages and Secret Server (Preview); its application account belongs to the separate connector. Roadmap specifies no authentication identity. | Fix: Replace 'who owns the Delinea-side service account that Power Automate will use' with 'who will own the authentication identity, if one is required'. Make the service-account and folder-permission checklist conditional on Microsoft's eventual provider authentication documentation.
+- [unsupported, blocker] Cost and licensing: indirect costs; Governance guidance: Before rollout / applicability: The Delinea provider requires the machines running desktop flows to reach the Delinea Secret Server instance directly. | Found: Searched: "Delinea" Power Automate desktop credential authentication machine network service account. Opened both existing provider pages and Secret Server (Preview); only CyberArk documents machine-to-vault connectivity, not the planned Delinea architecture. | Fix: Replace the asserted machine connectivity requirement with 'Confirm Microsoft's documented network requirements and which component contacts Delinea before changing firewall rules.' Describe infrastructure costs as possible rather than a verified machine-to-vault prerequisite.
+- [contradicted, blocker] Risk assessment: Autonomy & actions / behaviour: The Delinea-held account's permissions, not Power Automate, bound what the flow can do. | Found: When a desktop flow is triggered by a cloud flow, the actions contained in the desktop flow that require elevated privileges won't have any effect. Therefore, Power Automate won't be able to access applications that run with elevated rights. | Fix: Remove 'not Power Automate'. Say 'Review the account's permissions as one security boundary; Power Automate execution restrictions and other applicable controls also constrain the flow.' Cite this page if explaining the elevated-rights restriction. | Source: https://learn.microsoft.com/power-automate/desktop-flows/how-to/run-power-automate-elevated-rights
+- [unsupported, blocker] Governance guidance: At rollout / role: Existing Credentials page sharing roles can limit who creates credentials. | Found: Searched: "Power Automate" "Credentials" "create" "sharing" permissions roles; "Delinea" Power Automate desktop credential default admin switch licensing meter version sharing sensitive logs troubleshooting rollout roles. Read Share a credential and credential EntityType; no such control found. | Fix: Remove 'create' from the sharing-role advice. Existing Share roles govern permissions on a specific credential; separately verify and document the control over credential creation before recommending one.
+- [contradicted, blocker] Governance guidance: At rollout; controls[2].note / consistency: The rollout checklist presents existing sharing roles as a Delinea control although the table says applicability is unconfirmed. | Found: Limit who can create and share credentials in the pilot environment, using the existing Credentials page sharing roles.
+Microsoft has not confirmed it applies to Delinea-backed credentials. | Fix: Replace the sharing advice with: 'Once Microsoft confirms the Delinea permission model, restrict credential use and sharing through its documented controls.' Keep the control-table qualification that current sharing documentation is for existing stores.
 -->

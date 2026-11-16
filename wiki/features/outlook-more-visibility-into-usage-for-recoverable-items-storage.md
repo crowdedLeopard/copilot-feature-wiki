@@ -72,6 +72,17 @@ changes:
   - date: "2026-11-16"
     note: "First briefing for this roadmap item; Microsoft Learn has no page for the feature itself, so behaviour rests on the roadmap description and existing Recoverable Items documentation."
 version: 1
+verification:
+  status: "verified-with-gaps"
+  date: "2026-11-16"
+  version: 1
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 44
+  confirmed: 43
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 0
 ---
 
 ## What's changing
@@ -170,4 +181,11 @@ The other rows are existing Exchange Online controls. Learn says the retention t
 risk: Low. The roadmap describes a view of storage already in use, not a new data access, action or admin switch. The default state is not stated, so this rates today's behaviour continuing.
 cost: Low. The only cost the sources show is admin and helpdesk time; Microsoft has not published a licence or meter for this feature.
 impact: Low. It is an informational display; users nearest their Recoverable Items limit, mostly mailboxes on hold, are the ones likely to notice and ask questions.
+-->
+
+<!-- verifier-findings (2026-11-16, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
+- [supported, minor] controls[2].ui; Governance controls / admin-path: The cited quota article gives Exchange admin center > Compliance management > Retention policies for creating the policy containing the Recoverable Items tag. | Found: In the EAC, go to Compliance management > Retention policies, and then select Add | Fix: Acknowledge the documentation conflict: this article gives the EAC path, while https://learn.microsoft.com/exchange/security-and-compliance/recoverable-items-folder/recoverable-items-folder says Exchange security and compliance features are no longer available in the new EAC. Do not present the old path as unqualified current-portal guidance. | Source: https://learn.microsoft.com/purview/edisc-hold-increase-recoverable-item-quota
+- [supported, minor] Cost and licensing / cost: Litigation Hold, In-Place Hold or a Microsoft 365 or Office 365 retention policy automatically raises the stated baseline limits to 90 GB and 100 GB. | Found: the quotas for the Recoverable Items folder are automatically increased to 90 GB and 100 GB, respectively, when you place a mailbox on Litigation Hold or In-Place Hold or if a Microsoft 365 or Office 365 retention policy is applied to the mailbox. | Fix: Keep these baseline figures but add the same page's qualification: enabling archiving for a mailbox on hold or assigned a retention policy raises the primary mailbox's warning quota to 95 GB and storage quota to 105 GB. This matters because the briefing discusses archive configuration as a response to storage pressure. | Source: https://learn.microsoft.com/exchange/security-and-compliance/recoverable-items-folder/recoverable-items-folder
+- [contradicted, minor] Governance guidance: Before rollout and After rollout; Governance controls / consistency: The controls table covers every control the governance checklist asks administrators to inspect. | Found: Identify mailboxes on Litigation Hold, In-Place Hold or a retention policy, using Exchange Online PowerShell. ... decide whether the archive mailbox and a retention policy tag ... fit your holds. The table covers only display availability, folder statistics and tag/policy creation. | Fix: Add rows for checking mailbox hold/retention status and archive-mailbox enablement, with researched UI/API documentation, or narrow the checklist to the controls already documented in the table. Do not use the tag-creation row as a substitute for checking archive enablement.
 -->

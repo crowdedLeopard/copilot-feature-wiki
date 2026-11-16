@@ -5,27 +5,595 @@
   "status": "held",
   "date": "2026-11-16",
   "version": 1,
-  "model": "none",
-  "engine": "manual",
-  "attempts": 0,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [],
   "hold": {
-    "reason": "unverified",
+    "reason": "failed",
     "since": "2026-11-16",
     "reasons": [
-      "Written but not yet checked against Microsoft Learn."
+      "3 blocking findings (claims 32, 35, 36)"
     ]
   },
   "counts": {
-    "claims": 0,
-    "confirmed": 0,
-    "unconfirmed": 0,
-    "contradicted": 0,
-    "blocker": 0,
+    "claims": 46,
+    "confirmed": 43,
+    "unconfirmed": 1,
+    "contradicted": 2,
+    "blocker": 3,
     "major": 0,
-    "minor": 0
+    "minor": 2
   },
-  "summary": "Written but not yet checked against Microsoft Learn.",
-  "claims": [],
-  "precheck": null,
-  "history": []
+  "summary": "Hold: the Cloud Policy instructions omit two policies that Microsoft's procedure requires, and the control's claimed coverage of all Outlook clients is not documented. The risk section also incorrectly implies that the Default entry itself grants every authenticated user access, regardless of its permission level.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Why it matters",
+      "type": "record",
+      "claim": "Microsoft plans for Outlook folder sharing to respect organisation restrictions on Default and Anonymous permissions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Folder sharing in Outlook will respect your organization's restrictions for Default and Anonymous permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing; Risk assessment; Governance guidance; rationale: impact",
+      "type": "record",
+      "claim": "When the relevant restriction is enabled, users cannot change Default permissions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "When these restrictions are enabled, you won't be able to change either setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "summary; What's changing; Risk assessment; Governance guidance; rationale: impact",
+      "type": "record",
+      "claim": "When the relevant restriction is enabled, users cannot change Anonymous permissions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "When these restrictions are enabled, you won't be able to change either setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing; Risk assessment; Governance guidance; rationales",
+      "type": "record",
+      "claim": "The planned change leaves permissions granted directly to individual users unaffected.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Permissions granted directly to individual users will remain unaffected.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap description is tagged #newoutlookforwindows.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "#newoutlookforwindows",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: products; Scope",
+      "type": "record",
+      "claim": "The roadmap product is Outlook.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Outlook\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Desktop as a platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Web as a platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "summary; front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is January CY2027, presented as a target rather than a commitment.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"January CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) as the cloud.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-11-11T00:56:01.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-11T00:56:01\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: defaultState; Open questions; rationale: risk",
+      "type": "default",
+      "claim": "Microsoft has not stated the change's default activation or rollout state.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Outlook Default Anonymous folder permissions restrictions default rollout 579185. Read roadmap, Restrict users from changing folder permissions in Outlook, and calendar permissions; none states this feature's default activation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: licensing.model; Cost and licensing; Scope",
+      "type": "licensing",
+      "claim": "Microsoft has not published a licensing model or licence requirement specifically for this roadmap change.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Outlook 579185 Default Anonymous folder sharing restrictions default enabled licensing pricing; Outlook Keep folder sharing licensing. Read roadmap and folder-restriction article; no feature-specific licensing statement found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "The cited article on restricting folder permissions itself lists no licence requirement for its existing controls.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Outlook Keep folder sharing licensing. Read Restrict users from changing folder permissions in Outlook in full; it lists no licence requirement. The linked Cloud Policy overview separately documents licensing requirements for that service.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No meter is published specifically for this roadmap item.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Outlook 579185 Default Anonymous folder sharing restrictions default enabled licensing pricing; Outlook Keep folder sharing licensing. Read roadmap, restriction article and Cloud Policy overview; no feature-specific meter found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No price is published specifically for this change.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Outlook 579185 Default Anonymous folder sharing restrictions default enabled licensing pricing; Outlook Keep folder sharing licensing. Read roadmap, restriction article and Cloud Policy overview; no price for this change found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No credit rate is published for this change.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Outlook 579185 Default Anonymous folder sharing restrictions default enabled licensing pricing; Outlook Keep folder sharing licensing. Read roadmap, restriction article and Cloud Policy overview; no credit rate for this change found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No spending cap is published for this change.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Outlook 579185 Default Anonymous folder sharing restrictions default enabled licensing pricing; Outlook Keep folder sharing licensing. Read roadmap, restriction article and Cloud Policy overview; no spending cap for this change found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Default applies to authenticated users in the organisation who have no explicit permission entry.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/collaboration-exo/shared-calendars/understand-calendar-delegate-permissions",
+      "quote": "Default applies to authenticated users in the organization who don't have an explicit permission entry.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Anonymous is the entry for unauthenticated callers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/collaboration-exo/shared-calendars/understand-calendar-delegate-permissions",
+      "quote": "Anonymous applies to callers who aren't authenticated and don't have access through a calendar-sharing relationship.",
+      "severity": "minor",
+      "fix": "Complete the background definition: 'Anonymous applies to callers who are not authenticated and do not have access through a calendar-sharing relationship.' This qualification does not change the proposed restriction-setting procedure."
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "default",
+      "claim": "The calendar permissions article gives AvailabilityOnly as the typical value of Default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/collaboration-exo/shared-calendars/understand-calendar-delegate-permissions",
+      "quote": "Default applies to authenticated users in the organization who don't have an explicit permission entry. Its typical value is AvailabilityOnly.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing",
+      "type": "default",
+      "claim": "The calendar permissions article gives None as the typical value of Anonymous.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/collaboration-exo/shared-calendars/understand-calendar-delegate-permissions",
+      "quote": "Anonymous applies to callers who aren't authenticated and don't have access through a calendar-sharing relationship. Its typical value is None.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap description does not specify which folder types or mailbox types the restriction covers.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Folder sharing in Outlook will respect your organization's restrictions for Default and Anonymous permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing; front matter: changes",
+      "type": "absence",
+      "claim": "No Microsoft Learn article describing roadmap item 579185 itself was found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Outlook 579185 Default Anonymous folder sharing restrictions default enabled licensing pricing; Outlook Default Anonymous restrictions folder permissions policy; Outlook Keep folder sharing licensing. Opened restriction and calendar articles; neither describes this item.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "summary; What's changing; controls notes; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not identified which restriction this feature reads or documented a feature-specific Default or Anonymous switch.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Outlook Default Anonymous restrictions folder permissions policy; Outlook Default Anonymous folder permissions restrictions default rollout 579185. Read roadmap, folder-restriction article and Cloud Policy overview; no feature-specific mapping or switch found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap does not explicitly establish whether classic Outlook or Outlook for Mac is included.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Web\"]; description ends with \"#newoutlookforwindows\".",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "The roadmap describes a restriction on editing permissions, not a new identity or access path.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "When these restrictions are enabled, you won't be able to change either setting. Permissions granted directly to individual users will remain unaffected.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap describes no agent or automated action.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Folder sharing in Outlook will respect your organization's restrictions for Default and Anonymous permissions. When these restrictions are enabled, you won't be able to change either setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The Default entry lets any authenticated user in the organisation reach a folder.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/exchange/collaboration-exo/shared-calendars/understand-calendar-delegate-permissions",
+      "quote": "Default applies to authenticated users in the organization who don't have an explicit permission entry. Its typical value is AvailabilityOnly. ... None | No | No | No | No | No calendar access.",
+      "severity": "blocker",
+      "fix": "Replace with: 'Default determines baseline calendar permissions for authenticated users in the organisation who have no explicit permission entry; the access they receive depends on its assigned permission level.' Do not imply that the entry itself grants folder access."
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Increasing Anonymous above None can expose calendar information more broadly than intended.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/collaboration-exo/shared-calendars/understand-calendar-delegate-permissions",
+      "quote": "Increasing Anonymous above None can expose calendar information more broadly than intended.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Policy configurations are found in the Microsoft 365 Apps admin center under Customization > Policy Management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/configuration/restrict-users-from-modifying-folder-permissions",
+      "quote": "Sign in to the Microsoft 365 Apps admin center. ... To view a list of policy configurations, select Customization > Policy Management.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[0].note; Governance controls table",
+      "type": "admin-path",
+      "claim": "The documented Cloud Policy restriction procedure is to enable Do not allow users to change permissions on folders in a policy configuration.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/configuration/restrict-users-from-modifying-folder-permissions",
+      "quote": "Enable each of the following policies: Turn off sharing recommendation; Do not allow users to change permissions on folders; Control Calendar Sharing.",
+      "severity": "blocker",
+      "fix": "State the complete documented general procedure in the row note and rendered table: create a policy configuration with the applicable scope, enable 'Turn off sharing recommendation', 'Do not allow users to change permissions on folders', and 'Control Calendar Sharing', then select Update. Retain the caveat that Microsoft has not confirmed this procedure governs roadmap item 579185."
+    },
+    {
+      "n": 36,
+      "where": "controls[0].governs; Governance controls table",
+      "type": "applicability",
+      "claim": "The Cloud Policy folder-permission restriction applies to all Outlook clients.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Do not allow users to change permissions on folders Mac mobile. Read restriction article and Cloud Policy overview; restriction article names classic Outlook, new Outlook and Outlook on the Web, not all clients.",
+      "severity": "blocker",
+      "fix": "Replace '(all Outlook clients)' with '(classic Outlook, new Outlook and Outlook on the web)' in controls[0].governs and its rendered table row. Do not extend coverage to Mac or mobile without documentation."
+    },
+    {
+      "n": 37,
+      "where": "controls[0].api; Governance controls table",
+      "type": "absence",
+      "claim": "No API or automation equivalent is documented for configuring this Cloud Policy folder-permission restriction.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Cloud Policy service Microsoft 365 API PowerShell policy configurations Do not allow users to change permissions on folders. Opened folder-restriction article and Cloud Policy overview; no equivalent management API or cmdlet found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "Set DisableEditPermissions and DisableEditDefaultUserPermissions to DWORD value 1 under HKCU\\Software\\Policies\\Microsoft\\Office\\16.0\\Outlook\\Options\\Folders.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/configuration/restrict-users-from-modifying-folder-permissions",
+      "quote": "Either directly or through Group Policy, set the value of the following registry entries to 1: ... DisableEditPermissions ... DisableEditDefaultUserPermissions ... set their type to DWORD (32-bit).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "absence",
+      "claim": "No admin-centre UI path is documented for the specific classic-Outlook registry control.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: DisableEditPermissions DisableEditDefaultUserPermissions Group Policy user interface Outlook folder permissions. Read restriction article; it documents registry values directly or through Group Policy, but no admin-centre UI path for these values.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[1].note; Governance controls",
+      "type": "applicability",
+      "claim": "The documented registry restriction route is for classic Outlook only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/configuration/restrict-users-from-modifying-folder-permissions",
+      "quote": "Restrict users from changing folder permissions in classic Outlook only",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "With those registry values set, the Permissions tab remains visible and permission-editing options are greyed out.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/configuration/restrict-users-from-modifying-folder-permissions",
+      "quote": "After you set these registry values, users can still view the Permissions tab in a folder's Properties dialog box. However, the options to modify folder permissions are disabled (grayed out).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "The documented Cloud Policy procedure covers classic Outlook, new Outlook and Outlook on the web.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/configuration/restrict-users-from-modifying-folder-permissions",
+      "quote": "Restrict users from changing folder permissions in classic Outlook, new Outlook, and Outlook on the Web",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[0].scope; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "A Cloud Policy configuration is scoped to a set of users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/configuration/restrict-users-from-modifying-folder-permissions",
+      "quote": "Each policy configuration is scoped to a set of users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Scope; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The folder-permission restriction article says Cloud Policy changes can take up to 90 minutes to reach Outlook clients.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/configuration/restrict-users-from-modifying-folder-permissions",
+      "quote": "After a policy configuration is created or changed, it can take up to 90 minutes for the change to be applied to the Outlook clients.",
+      "severity": "minor",
+      "fix": "Retain the attributed 90-minute statement, but add that the Cloud Policy overview says desktop Office policies apply when the app is restarted and a user without an assigned configuration can have a 24-hour check-in interval. Cite https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy so testing advice does not treat 90 minutes alone as sufficient."
+    },
+    {
+      "n": 45,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Microsoft has not published more specific affected user groups for this roadmap change.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Outlook Default Anonymous restrictions folder permissions policy; Outlook 579185 Default Anonymous folder sharing restrictions default enabled licensing pricing. Read roadmap and restriction article; no feature-specific affected user-group definition found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Microsoft has not published feature-specific role requirements for this roadmap change.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Outlook Default Anonymous restrictions folder permissions policy; Outlook 579185 Default Anonymous folder sharing restrictions default enabled licensing pricing. Read roadmap, restriction article and Cloud Policy overview; only general Cloud Policy admin roles are documented.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-16T15:35:51.403Z",
+    "summary": {
+      "links": 3,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 1,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=579185",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365-apps/outlook/configuration/restrict-users-from-modifying-folder-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/exchange/collaboration-exo/shared-calendars/understand-calendar-delegate-permissions",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether users can change permissions on folders (all Outlook clients)",
+        "docs": "https://learn.microsoft.com/microsoft-365-apps/outlook/configuration/restrict-users-from-modifying-folder-permissions",
+        "reachable": true,
+        "segments": [
+          "Customization",
+          "Policy Management"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether users can edit folder permissions and default-user permissions in classic Outlook",
+        "docs": "https://learn.microsoft.com/microsoft-365-apps/outlook/configuration/restrict-users-from-modifying-folder-permissions",
+        "reachable": true,
+        "token": "Set registry",
+        "found": false
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": [
+    {
+      "date": "2026-11-16",
+      "status": "held",
+      "version": 1,
+      "model": "none"
+    }
+  ]
 }

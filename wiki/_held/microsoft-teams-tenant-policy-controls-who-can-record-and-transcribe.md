@@ -91,6 +91,17 @@ changes:
   - date: "2026-11-16"
     note: "First briefing for this roadmap item; Learn does not yet document the new tenant policy."
 version: 1
+verification:
+  status: "held"
+  date: "2026-11-16"
+  version: 1
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 46
+  confirmed: 42
+  unconfirmed: 1
+  contradicted: 3
+  attempts: 1
 ---
 
 ## What's changing
@@ -195,4 +206,17 @@ The existing recording and transcription toggles decide whether recording or tra
 risk: Low. The roadmap item describes a new admin control; its default is not stated, so on today's behaviour organisers keep choosing who can record and transcribe, and nothing is enforced until an admin sets the policy.
 cost: Low. Admin time and organiser communication are the only costs the sources show; the licence for the new policy is not yet published, and the organiser-level setting it parallels is marked Teams Premium/Copilot licence.
 impact: Medium. Organisers and presenters notice if an admin enforces the setting: presenters who record today could lose that ability, and organisers could lose the option to change it per meeting.
+-->
+
+<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
+The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
+- [supported, minor] controls[1].ui; Governance controls: recording row / admin-path: Meeting recording is configured in Teams admin center under Meetings > Meeting policies > Meeting recording. | Found: 1. In the left navigation of the Teams admin center, go to **Meetings** > **Meeting policies**.
+2. Select an existing policy or create a new one. | Fix: Include the policy-selection step in front matter and rendered table: Meetings > Meeting policies > policy > Meeting recording. The next documented step is to turn the Meeting recording toggle On or Off. | Source: https://learn.microsoft.com/microsoftteams/meeting-recording
+- [supported, minor] controls[2].ui; Governance controls: transcription row / admin-path: Transcription is configured in Teams admin center under Meetings > Meeting policies > Transcription. | Found: 1. In the left navigation of the Teams admin center, go to **Meetings** > **Meeting policies**.
+2. Select the policy that you want to edit or create a new one. | Fix: Include the policy-selection step in front matter and rendered table: Meetings > Meeting policies > policy > Transcription. The next documented step is to toggle Transcription On or Off. | Source: https://learn.microsoft.com/microsoftteams/meeting-transcription-captions
+- [contradicted, blocker] controls[3].api; Governance controls: auto-recording row / command: Set-CsTeamsMeetingPolicy -Identity <policy name> -AutoRecording is a complete call to configure auto-recording visibility. | Found: [-AutoRecording <String>] | Fix: Supply a value in both front matter and rendered table: Set-CsTeamsMeetingPolicy -Identity <policy name> -AutoRecording Enabled. Use Disabled to hide the option. These complete calls are documented at https://learn.microsoft.com/microsoftteams/manage-teams-auto-recording. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy
+- [unsupported, major] Risk assessment: Change & support / behaviour: Existing recording, transcription and auto-recording policies will stay as they are today when the new control ships. | Found: Searched: Teams tenant policy record transcribe organizers; Teams recording transcription policy sensitivity enforced. Read the roadmap, meeting-recording, meeting-transcription-captions and manage-teams-auto-recording; none promises existing policies remain unchanged at rollout. | Fix: Replace 'Existing recording, transcription and auto-recording policies stay as they are today' with 'Existing recording, transcription and auto-recording policies are documented separately; Microsoft has not yet explained their interaction with the new policy.'
+- [supported, minor] Cost and licensing: storage / cost: Recording files count against OneDrive or SharePoint storage quotas. | Found: Teams meeting recording files live in OneDrive and SharePoint and are included in your quota for those services. | Fix: Add https://learn.microsoft.com/microsoftteams/tmr-meeting-recording-change to sources for the explicit storage-quota claim. | Source: https://learn.microsoft.com/microsoftteams/tmr-meeting-recording-change
+- [contradicted, blocker] rationale: risk; front matter: defaultState; Scope / consistency: Nothing is enforced until an administrator sets the new policy, despite the page saying its default is unknown. | Found: defaultState: "unknown"; 'Not stated whether the policy starts restricting anything on arrival.' versus 'nothing is enforced until an admin sets the policy.' | Fix: Keep defaultState unknown. Replace the risk rationale's last clause with 'the assessment assumes today's behaviour continues because Microsoft has not stated the new policy's default.' Do not state non-enforcement as a confirmed rollout fact.
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist asks administrators to inventory enforcing templates and sensitivity labels, but the table gives only the organiser setting. | Found: 'List the sensitivity labels and meeting templates that already enforce Who can record and transcribe' versus the table's 'Teams meeting options (organiser)' row with no template or label administration rows. | Fix: Add governance-control rows for enforcing Who can record and transcribe through meeting templates and sensitivity labels, researching their respective admin UI and automation surfaces; alternatively remove that inventory instruction from the checklist.
 -->

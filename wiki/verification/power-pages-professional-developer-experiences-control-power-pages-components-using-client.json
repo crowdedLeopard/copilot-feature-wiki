@@ -5,27 +5,875 @@
   "status": "held",
   "date": "2026-11-16",
   "version": 1,
-  "model": "none",
-  "engine": "manual",
-  "attempts": 0,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [],
   "hold": {
-    "reason": "unverified",
+    "reason": "failed",
     "since": "2026-11-16",
     "reasons": [
-      "Written but not yet checked against Microsoft Learn."
+      "3 blocking findings (claims 44, 46, 48)"
     ]
   },
   "counts": {
-    "claims": 0,
-    "confirmed": 0,
-    "unconfirmed": 0,
-    "contradicted": 0,
-    "blocker": 0,
-    "major": 0,
-    "minor": 0
+    "claims": 67,
+    "confirmed": 62,
+    "unconfirmed": 2,
+    "contradicted": 3,
+    "blocker": 3,
+    "major": 2,
+    "minor": 2
   },
-  "summary": "Written but not yet checked against Microsoft Learn.",
-  "claims": [],
-  "precheck": null,
-  "history": []
+  "summary": "Hold: Microsoft documents CLI automation for table permissions and site settings, although the briefing labels both automation surfaces undocumented. The suggested counting workaround is also wrong: adding $count=true does not remove the documented count limit.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: releasePhase; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap lists both General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is November CY2025.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"November CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target date is September CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"September CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only listed cloud, without an express exclusion of other clouds.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The listed platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: defaultState; summary; Scope",
+      "type": "default",
+      "claim": "The capability is on in the sense that it is enabled automatically without administrator enablement.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Enabled for:\n\nEnabled for end users automatically",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap positions supported client APIs as an alternative to fragile custom DOM manipulation.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Power Pages Client APIs address these challenges by offering stable, documented, and supported methods to interact with components, reducing risk, improving maintainability, and accelerating development.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap description labels the client APIs Preview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The Power Pages Client APIs (Preview) provide a JavaScript interface for controlling UI components and performing operations on your Power Pages site.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "The cited client API Learn pages do not label the APIs preview.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Pages client API; read the cited overview, initialization, dataverse, user-authentication, ajax, agents and examples pages, including their notices. No preview label appears in those pages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "title; summary; What's changing",
+      "type": "behaviour",
+      "claim": "The JavaScript client API can retrieve and modify forms and form controls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/client-api/",
+      "quote": "Retrieve and modify forms and form controls",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "summary; What's changing",
+      "type": "behaviour",
+      "claim": "The client API can read and style rows, columns and cells in modern lists.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/client-api/",
+      "quote": "Read and style rows, columns, and cells in modern lists",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Risk assessment: Security & identity",
+      "type": "command",
+      "claim": "$pages.user.signIn redirects the visitor to the sign-in page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/client-api/user-authentication",
+      "quote": "`signIn` | Redirects the user to the sign-in page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Risk assessment: Security & identity",
+      "type": "command",
+      "claim": "$pages.user.signOut signs out the currently signed-in user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/client-api/user-authentication",
+      "quote": "`signOut` | Signs out the currently signed-in user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Why it matters; Risk assessment: Data exposure; rationale: risk",
+      "type": "command",
+      "claim": "$pages.webAPI.createRecord creates a Dataverse record.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/client-api/dataverse",
+      "quote": "`createRecord` | Creates a new record in the specified table.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "Risk assessment: Data exposure",
+      "type": "command",
+      "claim": "$pages.webAPI.retrieveRecord retrieves a record by its unique identifier.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/client-api/dataverse",
+      "quote": "`retrieveRecord` | Retrieves a record by its unique identifier.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "Risk assessment: Data exposure",
+      "type": "command",
+      "claim": "$pages.webAPI.retrieveMultipleRecords retrieves records using query options.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/client-api/dataverse",
+      "quote": "`retrieveMultipleRecords` | Retrieves multiple records based on the provided query options.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Why it matters; Risk assessment: Data exposure; rationale: risk",
+      "type": "command",
+      "claim": "$pages.webAPI.updateRecord updates an existing Dataverse record.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/client-api/dataverse",
+      "quote": "`updateRecord` | Updates an existing record in the specified table.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Why it matters; Risk assessment: Data exposure; rationale: risk",
+      "type": "command",
+      "claim": "$pages.webAPI.deleteRecord deletes a Dataverse record.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/client-api/dataverse",
+      "quote": "`deleteRecord` | Deletes a record from the specified table.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "$pages.webAPI supports uploading files and images.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/client-api/dataverse",
+      "quote": "`uploadFileToColumn` | Uploads a file or an image to a file column or an image column of an existing record.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "$pages.webAPI supports downloading files and images.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/client-api/dataverse",
+      "quote": "`downloadFileFromColumn` | Downloads the binary content of a file column or an image column of an existing record.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Languages and multilingual content are part of the client API surface.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/client-api/",
+      "quote": "Work with multilingual content",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "command",
+      "claim": "$pages.ajax.request can call server logic at /_api/serverlogics/ endpoints.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/client-api/ajax",
+      "quote": "method: 'POST',\n      url: '/_api/serverlogics/createorder',",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Site scripts can trigger cloud flows registered with the site.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/client-api/ajax",
+      "quote": "Trigger a cloud flow | Triggers a cloud flow registered with the site and handles the flow response.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "command",
+      "claim": "$pages.agent.SendActivity sends messages or events to a Copilot Studio agent available to the current user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/client-api/agents",
+      "quote": "Use the Power Pages Client API `$pages.agent` object and its SendActivity method to send messages or invoke events in the Microsoft Copilot Studio agent available to the current user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing",
+      "type": "command",
+      "claim": "Microsoft.PowerPages.onPagesClientApiReady supplies the API object after initialization.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/client-api/initialization",
+      "quote": "Use the `Microsoft.PowerPages.onPagesClientApiReady` function to assign the API object to `$pages` when it's ready, so your scripts can access page APIs only after initialization completes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The overview says the client API becomes available when the page loads.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/client-api/",
+      "quote": "The client API becomes available when your page loads and can be accessed through a global variable with a name you choose.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Client API script can be placed in a JavaScript web file or a page's Custom JavaScript section.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/client-api/examples",
+      "quote": "Each example is complete, so you can copy it into a JavaScript web file or into the **Custom JavaScript** section of a page",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "Microsoft.Dynamic365.Portal.onPagesClientApiReady is deprecated in favor of Microsoft.PowerPages.onPagesClientApiReady.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/client-api/initialization",
+      "quote": "The `Microsoft.Dynamic365.Portal.onPagesClientApiReady` alias is deprecated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The deprecated initialization alias still works.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/client-api/initialization",
+      "quote": "It still works so that existing scripts keep running",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Using the deprecated alias writes a one-time console warning.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/client-api/initialization",
+      "quote": "it writes a one-time warning to the browser console",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "Microsoft says the deprecated alias will be removed in a future release.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/client-api/initialization",
+      "quote": "is removed in a future release. Use `Microsoft.PowerPages.onPagesClientApiReady` instead.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "summary; controls[0].note; Risk assessment: Data exposure; Governance controls; rationale: risk",
+      "type": "applicability",
+      "claim": "Power Pages enforces table permissions on the server and the client API cannot override them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/client-api/examples",
+      "quote": "Power Pages applies form metadata and table permissions on the server, and the client API can't override those settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "Assigning table access to the Anonymous users web role makes the data accessible to any visitor.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/security/assign-table-permissions",
+      "quote": "When the Anonymous users web role is granted access to a table, any user who visits the site can access the data in the table.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/power-pages/security/assign-table-permissions to sources; it directly states the anonymous-access warning."
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Data exposure; Governance guidance: At rollout",
+      "type": "command",
+      "claim": "setVisible(false) only hides a control in the browser; table permissions and column security protect the data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/client-api/examples",
+      "quote": "The `setVisible(false)` method hides a control in the browser only. Use table permissions and column security to protect data. Never rely on hiding a control to secure data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Data exposure",
+      "type": "command",
+      "claim": "row.setVisible(false) changes the displayed list rather than the data returned by the server.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/client-api/examples",
+      "quote": "Hiding a row changes only what people see in the list; it doesn't change the data or the number of records that the server returns.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Governance guidance: At rollout",
+      "type": "command",
+      "claim": "Client-side setDisabled changes do not override server-enforced restrictions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/client-api/examples",
+      "quote": "When a control is locked on the server, such as a multiselect picklist on a read-only form or field, the `setDisabled(false)` method has no effect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "$pages.ajax requests include the session cookie.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/client-api/ajax",
+      "quote": "**Credentials**: The session cookie is included with every request.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "$pages.ajax automatically adds a CSRF token to every request.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/client-api/ajax",
+      "quote": "**Cross-site request forgery (CSRF) token**: The token is retrieved when it's first needed, cached in memory, and added to the header of every request.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The documented signIn and signOut operations perform session navigation rather than configure identity providers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/client-api/user-authentication",
+      "quote": "`signIn` | Redirects the user to the sign-in page.\n`signOut` | Signs out the currently signed-in user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[1].note; Risk assessment: Security & identity; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "The cited client API pages do not explicitly state whether Webapi table site settings gate $pages.webAPI.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Pages client API disable enable administrator site setting Webapi $pages.webAPI licensing. Read client-api/dataverse, client-api/examples and web-api-overview; the client API pages do not expressly discuss those settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Server logic and cloud flows triggered from page events run with no approval step.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Power Pages client API cloud flows approval step page events. Read client-api/ajax and cloud-flow-integration; they demonstrate invocation but do not guarantee that the called logic or flow has no approval step.",
+      "severity": "major",
+      "fix": "Replace the absolute statement with: 'Developers choose when scripts invoke these endpoints. Any approval or business checks depend on the called server logic or flow.'"
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Change & support",
+      "type": "command",
+      "claim": "getRecordCount returns at most 5,000.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/client-api/dataverse",
+      "quote": "The server returns a maximum count of 5,000. When a table contains more than 5,000 records, the result is 5,000.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Change & support",
+      "type": "command",
+      "claim": "A developer needing a total larger than 5,000 must use $count=true with retrieveMultipleRecords.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/query/count-rows",
+      "quote": "This option includes a count of rows that match the filter criteria, up to 5,000 for standard tables and 500 for elastic tables",
+      "severity": "blocker",
+      "fix": "Keep the documented getRecordCount cap, but replace the workaround with: 'retrieveMultipleRecords with $count=true returns records together with a count; it does not bypass the Dataverse count limit.' Cite https://learn.microsoft.com/power-apps/developer/data-platform/webapi/query/count-rows. The client API page recommends this option for records plus a count, not for a larger count."
+    },
+    {
+      "n": 45,
+      "where": "controls[0].ui; Governance guidance; Governance controls; Scope",
+      "type": "admin-path",
+      "claim": "Table permissions are managed in Power Pages design studio at Security > Table permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/security/table-permissions",
+      "quote": "In the design studio on the side menu, select **Security**.\n2. On the left pane in the **Protect** section, select **Table permissions** to add and modify table permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[0].api; controls[0].note; Governance controls",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no CLI command or other automation for table permissions.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-pages/configure/power-platform-cli",
+      "quote": "Support for download/upload of website configuration data to/from the local file system",
+      "severity": "blocker",
+      "fix": "Replace the undocumented automation side with the documented PAC CLI configuration workflow. The Supported tables section explicitly includes adx_entitypermission. Download the site, edit its table-permission YAML, and deploy using 'pac pages upload --path <site-folder> --modelVersion <1-or-2>'. Cite https://learn.microsoft.com/power-pages/configure/power-platform-cli and update the note and repeated prose; this is configuration deployment, not a dedicated permission-setting cmdlet."
+    },
+    {
+      "n": 47,
+      "where": "controls[1].ui; Governance guidance: At rollout; Governance controls",
+      "type": "admin-path",
+      "claim": "Site Settings is reachable from the editing experience through More items (...) > Portal Management > Site Settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/security/manage-content-security-policy",
+      "quote": "In the left side panel, select **More items** (**...**) > **Portal Management**.\n3. Select **Site Settings** in the **Portal Management** app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[1].api; Governance controls",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no automation for the Web API site settings.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-pages/configure/power-platform-cli",
+      "quote": "In this file, you can have the table (entity) name with table ID, list of attributes, and the values that you want to override while uploading the portal configuration using the `deploymentProfile` parameter.",
+      "severity": "blocker",
+      "fix": "Replace the undocumented automation side with PAC CLI configuration deployment. This reference includes adx_sitesetting among supported tables and shows site-setting overrides in deployment YAML. Use 'pac pages upload --path <site-folder> --deploymentProfile <profile> --modelVersion <1-or-2>' after preparing the site's configuration/profile. Cite https://learn.microsoft.com/power-pages/configure/power-platform-cli; retain the caveat that client API applicability is not explicitly stated."
+    },
+    {
+      "n": 49,
+      "where": "controls[2]; summary; Why it matters; Governance controls; rationale: risk",
+      "type": "absence",
+      "claim": "No dedicated tenant or site administrator switch for disabling the client API was found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Pages client API disable enable administrator site setting; Power Pages client API $pages disable switch tenant site licensing pricing meter. Read client API overview and references; search returned other governance controls, not a dedicated client API switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[1].note; Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "Webapi/<table-name>/enabled enables or disables the portals Web API for that table.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/web-api-overview",
+      "quote": "`Webapi/<table-name>/enabled` | Enables or disables the Web API for <table name>.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[1].note; Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "Webapi/<table-name>/fields specifies columns available through the portals Web API.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/web-api-overview",
+      "quote": "`Webapi/<table-name>/fields` | Defines a comma-separated list of column logical names available through the Web API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The seven cited client API reference pages do not name a licence, price or meter.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Pages client API $pages disable switch tenant site licensing pricing meter. Read overview, initialization, dataverse, user-authentication, ajax, agents and examples in full; none specifies a licence, price or meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; Open questions",
+      "type": "licensing",
+      "claim": "Feature-specific client API licensing and any separately counted client API calls are not published in the material found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Pages client API $pages disable switch tenant site licensing pricing meter. Read client API references, portals Web API overview and Power Pages licensing FAQ; no separate client API SKU or call meter was specified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Power Pages has capacity-based licensing measured in authenticated and anonymous users per website per month.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
+      "quote": "Power Pages (formerly Power Apps portals) licensing is capacity based and offers two types of capacities based on user type: **Authenticated users per website/month** and **Anonymous users per website/month**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The separate portals Web API overview requires a Power Pages licence for its operations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/web-api-overview",
+      "quote": "Portals Web API operations require a Power Pages license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The portals Web API overview says anonymous Web API calls count toward anonymous user capacity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/web-api-overview",
+      "quote": "Web API calls made by anonymous users count towards the anonymous user capacity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The portals Web API overview requires applicable authenticated user capacity licences for authenticated callers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/web-api-overview",
+      "quote": "Web API calls made by authenticated users (internal or external) don't count towards page views, but require applicable authenticated user capacity licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "The client API references do not expressly explain whether the older portals Web API licensing statement applies unchanged to $pages.webAPI.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Pages client API $pages disable switch tenant site licensing pricing meter. Read client-api/dataverse, client API overview, web-api-overview and the Power Pages licensing FAQ; no explicit licensing cross-reference for $pages.webAPI was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Invoking Power Automate flows from Power Pages has its own licensing requirement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/cloud-flow-integration",
+      "quote": "To integrate with Power Pages, a Power Automate license is required.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/power-pages/configure/cloud-flow-integration to sources and cite its Prerequisites section for the separate Power Automate requirement."
+    },
+    {
+      "n": 60,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Copilot Studio agents have their own licensing rather than a licence specified by the client API reference.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
+      "quote": "Licensed by tenant, Microsoft Copilot Studio entitles a tenant to 25,000 messages per month.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "The cited client API reference pages list neither a prerequisite licence nor a prerequisite administrator role.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: site:learn.microsoft.com/power-pages/configure/client-api disable enable license prerequisites role. Read the seven cited client API references; none lists a prerequisite licence or administrator role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "If nobody acts, nothing breaks and all existing sites behave as before.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: site:learn.microsoft.com/power-pages/configure/client-api existing scripts sites unchanged no administrator action. Read overview and initialization; continued support is stated for the deprecated alias, not a blanket guarantee for existing sites.",
+      "severity": "major",
+      "fix": "Remove 'nothing breaks' and the blanket compatibility guarantee. Say: 'Using the new APIs requires developers to add calls to their site scripts; Microsoft also says the deprecated initialization alias still works for existing scripts.'"
+    },
+    {
+      "n": 63,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "Content Security Policy is a separate general control not mentioned by the cited client API pages.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Pages client API disable enable administrator site setting. Read manage-content-security-policy and the seven cited client API pages; CSP is documented separately and is not named in those client API references.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "applicability",
+      "claim": "Agent access permissions apply to the visitor using SendActivity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/client-api/agents",
+      "quote": "Invalid bot schema name provided or user doesn't have access permissions to the agent",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "front matter: products; title; Scope",
+      "type": "record",
+      "claim": "The roadmap item applies to Power Pages.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Power Pages\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-10-22T23:45:46.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-22T23:45:46\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "summary; What's changing",
+      "type": "behaviour",
+      "claim": "$pages is the documented naming convention for the client API object.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/client-api/",
+      "quote": "This documentation uses the variable name `$pages` throughout examples and recommends you follow this naming convention for consistency.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-16T15:35:53.540Z",
+    "summary": {
+      "links": 12,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=577821",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-pages/configure/client-api",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-pages/configure/client-api/initialization",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-pages/configure/client-api/dataverse",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-pages/configure/client-api/user-authentication",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-pages/configure/client-api/ajax",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-pages/configure/client-api/agents",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-pages/configure/client-api/examples",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-pages/configure/web-api-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-pages/security/table-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-pages/security/manage-content-security-policy",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which Dataverse records and operations site script can reach through the client API",
+        "docs": "https://learn.microsoft.com/power-pages/security/table-permissions",
+        "reachable": true,
+        "segments": [
+          "Security",
+          "Table permissions"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether the portals Web API is enabled for a table, and which columns it exposes",
+        "docs": "https://learn.microsoft.com/power-pages/security/manage-content-security-policy",
+        "reachable": true,
+        "segments": [
+          "More items",
+          "Portal Management",
+          "Site Settings"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": [
+    {
+      "date": "2026-11-16",
+      "status": "held",
+      "version": 1,
+      "model": "none"
+    }
+  ]
 }

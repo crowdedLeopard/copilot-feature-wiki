@@ -5,27 +5,554 @@
   "status": "held",
   "date": "2026-11-16",
   "version": 1,
-  "model": "none",
-  "engine": "manual",
-  "attempts": 0,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [],
   "hold": {
-    "reason": "unverified",
+    "reason": "failed",
     "since": "2026-11-16",
     "reasons": [
-      "Written but not yet checked against Microsoft Learn."
+      "1 blocking finding (claim 31)"
     ]
   },
   "counts": {
-    "claims": 0,
-    "confirmed": 0,
+    "claims": 42,
+    "confirmed": 40,
     "unconfirmed": 0,
-    "contradicted": 0,
-    "blocker": 0,
+    "contradicted": 2,
+    "blocker": 1,
     "major": 0,
-    "minor": 0
+    "minor": 3
   },
-  "summary": "Written but not yet checked against Microsoft Learn.",
-  "claims": [],
-  "precheck": null,
-  "history": []
+  "summary": "Hold: testing is presented as an unavoidable consumption cost, but Microsoft documents unbilled test-chat activity and agent-flow test runs, and the feature's harness is unknown. The roadmap facts and cited monthly-limit path are supported; the controls guidance also needs qualifications and missing control rows.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: products; title; Scope",
+      "type": "record",
+      "claim": "The roadmap feature belongs to Microsoft Copilot Studio.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"title\": \"Microsoft Copilot Studio: Self-learning for Copilot Studio Agents\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing; rationale: risk",
+      "type": "record",
+      "claim": "Microsoft plans recommendations based on lessons from completed agent runs.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Soon agents can help makers improve agents using lessons from completed runs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "The feature will identify repeated tool sequences that workflows can handle.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "It will identify repeated tool sequences that can be handled by workflows",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "record",
+      "claim": "Standardising agent behaviour is a stated aim.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "to standardize agent behavior",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Reducing errors is a stated aim.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "minimize errors",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What's changing; Why it matters; rationale: cost",
+      "type": "record",
+      "claim": "Controlling costs is a stated aim rather than a quantified saving.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "and most importantly control costs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Makers will receive recommendations and supporting evidence.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Makers will be presented with recommendations and supporting evidence",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Recommendations will show expected impact.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "expected impact",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "summary; What's changing; Why it matters",
+      "type": "record",
+      "claim": "Recommendations will include related instruction and tool changes.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "and the related instruction and tool changes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "record",
+      "claim": "Makers accept recommendations, configure, test and publish a refined agent copy.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Makers accept recommendations, configure, test, and publish a refined copy of the agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap says work requiring model judgement is preserved.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "while preserving work that requires model judgment and keeping makers in control.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: status; What's changing; Open questions",
+      "type": "record",
+      "claim": "The record status remains In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The record's preview target is September CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"September CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: targetDate; What's changing; Open questions",
+      "type": "record",
+      "claim": "The target is October CY2026, so both target months have passed as of 16 November 2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"October CY2026\", \"previewDate\": \"September CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: roadmapModified; What's changing",
+      "type": "record",
+      "claim": "The record was last modified on 30 September 2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-09-30T23:31:03\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists both General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The only listed cloud is Worldwide (Standard Multi-Tenant), with no US Government cloud listed.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The listed platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; changes[0]; front matter: confidence",
+      "type": "absence",
+      "claim": "No Microsoft Learn documentation for this specific self-learning feature was found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"self-learning\" \"Copilot Studio\"; \"Copilot Studio\" \"recommendations\" \"completed runs\". Opened What's new in Copilot Studio and the cited billing/capacity pages; no self-learning feature description found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "The feature's run-data contents and processing location are not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Copilot Studio\" \"self-learning\" \"data\" \"permissions\". Read roadmap record and What's new in Copilot Studio; reviewed search results for security and data documentation. No feature-specific data scope or processing location found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "The identities used to analyse runs or execute proposed workflows are not documented for this feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio self-learning refined copy run data permissions workflows harness availability; \"Copilot Studio\" \"self-learning\" \"data\" \"permissions\". Read roadmap and What's new; no feature-specific analysis or workflow identity found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "The record does not establish enforced testing or a reviewer other than the maker.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Makers accept recommendations, configure, test, and publish a refined copy of the agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Change & support; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Replacement behaviour and inheritance of sharing, channels, connections and monthly limits are not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio self-learning refined copy run data permissions workflows harness availability. Read roadmap, What's new and both capacity-management pages. No self-learning copy lifecycle or inheritance rules found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Scope",
+      "type": "absence",
+      "claim": "Eligible agent types, harnesses, makers, roles, environments and release channels are not specified for self-learning.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio self-learning refined copy run data permissions workflows harness availability; \"self-learning\" \"Copilot Studio\". Read roadmap and What's new; no feature-specific eligibility or rollout mechanics found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "front matter: defaultState",
+      "type": "default",
+      "claim": "The feature's default state is unknown.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Copilot Studio\" \"self-learning\" \"license\" \"default\" \"admin\"; Copilot Studio self-learning recommendations completed runs enable disable admin settings default licensing credits. Read roadmap and What's new; no default stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The self-learning feature's licensing model is unknown and no specific licence requirement is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Copilot Studio\" \"self-learning\" \"license\" \"default\" \"admin\". Read roadmap, Billing rates and management, What's new and licensing search excerpts. No licence requirement for self-learning found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Why it matters; Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "No self-learning price, analysis meter, free-use entitlement or quantified saving is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio self-learning recommendations completed runs enable disable admin settings default licensing credits. Read roadmap, Billing rates and management and Microsoft Copilot harness cost management; no self-learning price or saving found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "cost",
+      "claim": "Copilot Credits are the documented unit for Copilot Studio agent usage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
+      "quote": "Copilot Credits measure agent usage. One interaction with an agent can consume several credits because each feature the agent uses in that interaction has its own rate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "Agent flows are predefined flow-action sequences that avoid reasoning and orchestration at each step.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
+      "quote": "which are predefined sequences of flow actions to execute repetitive tasks quickly, without requiring agent reasoning and orchestration at each step.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The cited billing page adds a reasoning-model premium of 10 Copilot Credits per 1,000 billed tokens.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
+      "quote": "It's billed as Text and generative AI tools (premium) per 1000 tokens, at 10 Copilot Credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Cost and licensing: Two indirect costs",
+      "type": "cost",
+      "claim": "Extra consumption from testing a refined copy is a real cost whatever the feature's final licence.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/faq-billing-licensing",
+      "quote": "When you test an agent in the test chat, the agent's own activity, such as classic answers, generative answers, agent actions, and tenant graph grounding, doesn't consume Copilot Credits",
+      "severity": "blocker",
+      "fix": "Replace the unconditional testing-cost assertion with: 'Maker review, testing and publishing take time. Testing may also consume credits, depending on the harness and tools; this feature's harness and testing charges are not stated.' Cite this FAQ for standard-harness test-chat exemptions and the existing Microsoft Copilot harness cost page for billable testing. The cited Billing rates page also exempts agent-flow test runs."
+    },
+    {
+      "n": 32,
+      "where": "controls[1].ui; Governance guidance: Before rollout; Governance controls",
+      "type": "admin-path",
+      "claim": "An agent's monthly Copilot Credit limit is set in Power Platform admin center under Licensing > Copilot Studio > Manage Agents > agent > Set limit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness",
+      "quote": "1. In the Power Platform admin center, go to Licensing > Copilot Studio. 2. Select Manage Agents. 3. Select the agent, and then select Set limit.",
+      "severity": "minor",
+      "fix": "Retain the supported path, but qualify the guidance for resources still governed in Power Platform admin center. Cite https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs and explain that Microsoft 365 resource-based policies take precedence for covered agents/environments; Manage capacity and Manage agent show which experience governs them."
+    },
+    {
+      "n": 33,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The monthly-limit hard stop is optional through Stop usage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness",
+      "quote": "Turn on Stop usage if the agent should be turned off when it reaches the limit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Monthly agent limits are not applied instantly.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
+      "quote": "Limits aren't applied instantly. An agent can continue to respond for some time after it reaches its limit, so set limits and notification thresholds with some margin.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[1].note; Cost and licensing; Governance controls",
+      "type": "behaviour",
+      "claim": "An agent's monthly limit does not stop agent flows it calls, which are billed and capacity-checked separately.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
+      "quote": "An agent's monthly limit doesn't stop the agent flows that the agent calls. Agent flows are billed and checked for capacity separately",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[1].api; Governance controls",
+      "type": "absence",
+      "claim": "No API for setting an individual agent's monthly limit was found in the searched Learn documentation.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio agent monthly consumption limit Set limit API PowerShell; \"Copilot Studio\" \"agent\" \"monthly limit\" \"API\" \"set\". Read capacity and harness cost pages and govern-credit-consumption excerpts; found allocation APIs, not a per-agent limit call.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[0].ui and api; summary; Governance controls",
+      "type": "absence",
+      "claim": "No tenant, environment or agent-level UI/API switch for self-learning recommendations is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio self-learning recommendations completed runs enable disable admin settings default licensing credits; \"Copilot Studio\" \"self-learning\" \"tenant\" \"PowerShell\". Read What's new and cited admin pages; no feature-specific switch found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Governance guidance: Before rollout and After rollout",
+      "type": "behaviour",
+      "claim": "Manage Agents exposes month-to-date billed credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
+      "quote": "See month-to-date billed credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Governance controls: final paragraph",
+      "type": "behaviour",
+      "claim": "General agent-flow consumption controls include environment allocation and pay-as-you-go configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
+      "quote": "To control agent flow consumption, manage the environment's allocation, whether it can draw from tenant capacity, and its pay-as-you-go billing plan.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Governance controls: final paragraph",
+      "type": "admin-path",
+      "claim": "The Customer Conversation harness cost page documents the same monthly-limit path.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-customer-conversation-harness",
+      "quote": "1. In the Power Platform admin center, go to Licensing > Copilot Studio. 2. Select Manage Agents. 3. Select the customer conversation agent, and then select Set limit.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/power-platform/admin/manage-usage-customer-conversation-harness to sources, or remove the uncited attribution to that harness's page."
+    },
+    {
+      "n": 41,
+      "where": "Governance controls: environment controls missing from table",
+      "type": "consistency",
+      "claim": "The guidance tells readers to control agent flows through environment capacity and pay-as-you-go configuration, but these controls have no table rows.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "control those through the environment's capacity allocation and its pay-as-you-go billing plan. The table contains only self-learning availability and the monthly agent limit.",
+      "severity": "minor",
+      "fix": "Add a general environment-capacity row covering allocation and Capacity overages, citing https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity#manage-capacity. Give Licensing > Copilot Studio > Summary > Manage Copilot Credits > environment, and identify Draw from the available capacity in my tenant and Bill to my pay-as-you-go billing plan. Keep the Microsoft 365 policy-precedence qualification."
+    },
+    {
+      "n": 42,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Agent-flow consumption is tracked separately from the calling agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
+      "quote": "To monitor credit consumption for agent flows, look for the Agent flow actions feature in the Copilot credit consumption details grid.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-16T15:35:49.306Z",
+    "summary": {
+      "links": 5,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=570432",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/whats-new",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Monthly Copilot Credit limit for an agent",
+        "docs": "https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness",
+        "reachable": true,
+        "segments": [
+          "Licensing",
+          "Copilot Studio",
+          "Manage Agents",
+          "Set limit"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": [
+    {
+      "date": "2026-11-16",
+      "status": "held",
+      "version": 1,
+      "model": "none"
+    }
+  ]
 }

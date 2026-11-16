@@ -81,6 +81,17 @@ changes:
   - date: "2026-11-16"
     note: "First briefing: roadmap-only item. Learn lists file attachments as unsupported for custom engine agents and documents no upload-specific control."
 version: 1
+verification:
+  status: "held"
+  date: "2026-11-16"
+  version: 1
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 50
+  confirmed: 47
+  unconfirmed: 2
+  contradicted: 1
+  attempts: 1
 ---
 
 ## What's changing
@@ -177,4 +188,14 @@ The Package Management API in the second row requires a Microsoft Agent 365 lice
 risk: Medium. Uploaded files would go to custom engine agents that run on your own orchestrator and models outside Microsoft 365 Copilot, and the only documented controls block or limit a whole agent, not uploads.
 cost: Variable. Learn documents Copilot Credits for users without a Microsoft 365 Copilot licence when a custom engine agent uses shared tenant data, plus hosting costs; pricing for file upload itself is not yet published.
 impact: Medium. Only people who use custom engine agents on the web would notice, but those users would start sending documents to agents that their tenant, or a vendor, built and hosts.
+-->
+
+<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
+The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
+- [supported, minor] controls[0].api; Governance controls: paragraph after table / command: POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block blocks a Copilot package. | Found: Block a Copilot package to prevent its usage.
+POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block | Fix: In the paragraph after the controls table, change 'The Package Management API in the second row' to 'The Package Management API in the first row'. The endpoint itself is correct. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block
+- [contradicted, blocker] Governance guidance: Before rollout; summary; Governance controls / applicability: The User access setting can limit selected agents to named users or groups. | Found: only the users or groups you select in this setting can use agents and plugins. | Fix: Replace the Before rollout bullet with 'Decide whether tenant-wide access to agents and plugins should be restricted using Agents > Settings > User access; this affects all agents and plugins, not selected agents.' Change the summary's 'control is per agent' to 'general controls govern whole-agent availability or tenant-wide access to agents and plugins'. Keep controls[1].scope as tenant. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings
+- [supported, minor] Why it matters; Risk assessment: Data exposure; rationale: risk / behaviour: Custom engine agents are hosted outside Microsoft 365 Copilot using their own orchestrator and models. | Found: Custom engine agents are hosted outside of Microsoft 365 Copilot using your own orchestrator and/or models. | Fix: Qualify the hosting statements: 'The cost page describes custom engine agents as hosted outside Microsoft 365 Copilot; the comparison page's Engine hosting row also lists hosting in Microsoft 365 with Copilot Studio.' Name both cited sources rather than treating all agents' hosting as identical. The differing row is at https://learn.microsoft.com/microsoft-365/copilot/extensibility/agents-overview. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/cost-considerations
+- [unsupported, major] Why it matters / behaviour: Unsupported chat attachments mean no document leaves the user's device or OneDrive through that route today. | Found: Searched: "custom engine agents" "upload" "permission"; "custom engine agents" "files" "retention" storage upload permissions sensitivity labels. Opened known-issues. It states attachments are unsupported, not that no document is transmitted from the device or OneDrive. | Fix: Replace 'Today, a custom engine agent cannot receive a file from a chat, so no document leaves a user's device or OneDrive through that route' with 'Learn currently lists file attachments in custom engine agent chats as unsupported.' Do not infer a transport or data-boundary guarantee from unsupported functionality.
+- [unsupported, blocker] Risk assessment: Data exposure; Why it matters / applicability: Storage, retention and logging of uploaded files depend on the agent's code rather than any Microsoft control. | Found: Searched: "custom engine agents" "files" "retention" storage upload permissions sensitivity labels. Opened known-issues, agents-overview and cost-considerations; read custom engine overview privacy excerpts. No source establishes these exclusive boundaries for planned uploads. | Fix: Replace 'Where the file is stored, retained or logged depends on that agent's code, not on a Microsoft control' with 'Microsoft has not documented the storage, retention, logging or Microsoft governance coverage for files supplied through this planned upload capability. Ask each agent owner to explain its downstream processing and controls.' Recast 'the agent's own code decides what happens next' as a risk to assess, not an exclusive governance fact.
 -->
