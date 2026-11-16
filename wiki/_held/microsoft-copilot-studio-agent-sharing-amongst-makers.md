@@ -64,6 +64,17 @@ changes:
   - date: "2026-11-16"
     note: "First briefing: records the roadmap's Viewer and Editor sharing against Learn's narrower wording, and the Managed Environments sharing rules that limit it."
 version: 1
+verification:
+  status: "held"
+  date: "2026-11-16"
+  version: 1
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 58
+  confirmed: 54
+  unconfirmed: 1
+  contradicted: 3
+  attempts: 1
 ---
 
 ## What's changing
@@ -160,4 +171,12 @@ Assigning editing rights through environment security roles is a separate route 
 risk: Medium. An Editor can edit, configure, share and publish an agent per the roadmap, and viewers reach it through the owner's connections; the Managed Environments sharing rules cover this only if they apply to the new experience.
 cost: Variable. Microsoft Learn says the Microsoft Copilot harness uses usage-based billing, so using, building, testing and evaluating shared agents might consume Copilot Credits; no separate charge for sharing is documented.
 impact: Medium. Makers and the people they share with notice it; end users who only chat with an agent do not need Editor or Viewer access.
+-->
+
+<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
+The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
+- [contradicted, blocker] controls[0].api; Governance controls / command: The printed Set-AdminPowerAppEnvironmentGovernanceConfiguration call with trailing (extendedSettings 'bot-authoringSharingDisabled') configures agent sharing limits. | Found: $governanceConfiguration.settings.extendedSettings | Add-Member -MemberType NoteProperty -Name 'bot-authoringSharingDisabled' -Value True -Force | Fix: Remove the trailing parenthetical, which is not a cmdlet argument or a property assignment. Document the complete script: retrieve the environment with Get-AdminPowerAppEnvironment, assign $governanceConfiguration = $environment.Internal.properties.governanceConfiguration, add bot-authoringSharingDisabled with value True using the cited Add-Member statement, then run Set-AdminPowerAppEnvironmentGovernanceConfiguration -EnvironmentName <EnvironmentId> -UpdatedGovernanceConfiguration $governanceConfiguration. State that this example disables Editor sharing only; the same source documents bot-limitSharingMode and bot-maxLimitUserSharing for group and viewer limits. | Source: https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits
+- [unsupported, major] Risk assessment: Data exposure / behaviour: Anything in the agent's instructions or knowledge configuration is visible to viewers. | Found: Searched: Copilot Studio agent viewer view instructions knowledge configuration owner connections editor publishing approval sharing. Read authoring-share-agent and admin-share-bots excerpts; viewing agent details is stated, but visibility of all instructions and knowledge configuration is not. | Fix: Replace the inferred visibility statement with: 'Learn says viewers can open the agent to view details and test it; it does not specify which instructions or knowledge configuration details are visible.'
+- [contradicted, minor] rationale: risk / behaviour: Viewers reach the agent through the owner's connections. | Found: Connections configured to use end-user credentials aren't subject to this connection-sharing restriction because each user authenticates by using their own connection at runtime. | Fix: Replace the blanket owner-connection assertion with: 'When tools use maker-provided credentials, shared-agent users can act with the maker's permissions; tools configured for end-user credentials use each user's own connection.' Keep the risk rationale consistent with the body. | Source: https://learn.microsoft.com/microsoft-copilot-studio/admin-sharing-controls-limits
+- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The checklist directs readers to review credit use and remove access, but those controls have no rows in the controls table. | Found: Review credit use in the environments hosting shared agents using the cost controls ... Remove access ... through the Share panel's delete icon. The controls table lists only environment sharing limits and an absent tenant switch. | Fix: Add rows for credit-usage review and maker-side access removal. For usage, https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview gives Power Platform admin center > Licensing > Copilot Studio. For removal, the cited sharing page gives Agents > agent > Share > People who can use the agent > delete icon > Share. Search each automation surface before claiming it is undocumented.
 -->

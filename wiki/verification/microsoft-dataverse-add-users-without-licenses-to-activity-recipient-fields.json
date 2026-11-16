@@ -1,0 +1,506 @@
+{
+  "slug": "microsoft-dataverse-add-users-without-licenses-to-activity-recipient-fields",
+  "roadmapId": 574121,
+  "title": "Microsoft Dataverse: unlicensed Entra users as activity recipients",
+  "status": "needs-correction",
+  "date": "2026-11-16",
+  "version": 2,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "grace",
+    "since": "2026-11-16",
+    "reasons": [
+      "2 blocking findings (claims 9, 33)",
+      "published before the check existed: kept live with a notice while a corrected version is prepared"
+    ]
+  },
+  "counts": {
+    "claims": 38,
+    "confirmed": 35,
+    "unconfirmed": 2,
+    "contradicted": 1,
+    "blocker": 2,
+    "major": 0,
+    "minor": 3
+  },
+  "summary": "The admin path, required roles, recipient licence exemption and roadmap details are supported. However, the documentation does not establish that the feature is portal-only or included in a named existing licence; those assertions should be narrowed to what Microsoft documents.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status",
+      "type": "record",
+      "claim": "The roadmap status is in-development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "General availability is targeted for January CY2027.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"January CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap gives October CY2026 as the preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"October CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: products; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Microsoft 365 app, Dynamics 365 Sales, Dynamics 365 Customer Service and Microsoft Dataverse.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft 365 app\", \"Dynamics 365 Sales\", \"Dynamics 365 Customer Service\", \"Microsoft Dataverse\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: defaultState",
+      "type": "default",
+      "claim": "The feature is admin-opt-in.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/add-unlicensed-users-activities",
+      "quote": "By default, you can only add users with a Dataverse or Power Apps license to activities in Dynamics 365 apps. Turn on the *Activities for users without licenses* feature in the Power Platform admin center",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The feature's licensing model is included in an existing product licence.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Add users without licenses\" activities pricing charge license; \"add-unlicensed-users-activities\" \"license\" pricing included. Read feature page; it exempts recipients but names no licence that includes the feature.",
+      "severity": "blocker",
+      "fix": "Set licensing.model to unknown unless a Microsoft source explicitly establishes inclusion in a named existing licence. Retain the supported notes that recipients need no Dataverse or Power Apps licence and cannot run Dynamics 365 apps; distinguish that exemption from the feature's overall licensing."
+    },
+    {
+      "n": 10,
+      "where": "summary; licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Recipients do not need a Dataverse or Power Apps licence to be added to activity recipient fields.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/add-unlicensed-users-activities",
+      "quote": "Turn on this feature in the Power Platform admin center to allow users with a Microsoft Entra ID to be added to activity recipient fields without requiring a Dataverse or Power Apps license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary; What's changing",
+      "type": "behaviour",
+      "claim": "The feature allows active Microsoft Entra users in the tenant to be activity recipients in Dynamics 365 apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/add-unlicensed-users-activities",
+      "quote": "Users without licenses are people in your tenant who have an active Microsoft Entra ID account but don't have a Dataverse or Power Apps license.",
+      "severity": "minor",
+      "fix": "Introduce the behavior as 'Activities for users without licenses is currently documented as a preview feature; the following behavior and licensing describe that preview.' The cited feature page is titled 'Add users without licenses to activity recipient fields (preview)'."
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Supported email recipient fields include To, Cc and Bcc.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/add-unlicensed-users-activities",
+      "quote": "such as the To, Cc, or Bcc fields of an email",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The feature supports appointment attendees.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/add-unlicensed-users-activities",
+      "quote": "Required Attendees, Optional attendees of appointment",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The feature supports Call From and Call To fields on phone calls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/add-unlicensed-users-activities",
+      "quote": "Call From, or Call To of phone call.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Why it matters",
+      "type": "licensing",
+      "claim": "Without enabling this feature, the default restriction is that only users with a Dataverse or Power Apps licence can be added to Dynamics 365 activities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/add-unlicensed-users-activities",
+      "quote": "By default, you can only add users with a Dataverse or Power Apps license to activities in Dynamics 365 apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "After the feature is enabled, the user lookup uses the Microsoft Entra ID table.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/add-unlicensed-users-activities",
+      "quote": "After you enable the *Activities for users without licenses* feature in the Power Platform admin center, the user lookup uses the **Microsoft Entra ID** table",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The Microsoft Entra ID table is a virtual Dataverse table displaying active Entra users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/add-unlicensed-users-activities",
+      "quote": "a virtual Dataverse table that displays the current list of active Microsoft Entra ID users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "Selecting a Microsoft Entra user for an activity creates a corresponding unlicensed-user record in the environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/add-unlicensed-users-activities",
+      "quote": "When you select a Microsoft Entra ID user for an activity, Dataverse creates a corresponding unlicensed-user record in the environment so that the user can be added to the activity's recipient fields.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "summary; What's changing; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "The newly created unlicensed-user record has disabled status.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/add-unlicensed-users-activities",
+      "quote": "The user record is created with a disabled status.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "licensing.notes; What's changing; Risk assessment; Cost and licensing; rationale: risk",
+      "type": "licensing",
+      "claim": "These unlicensed recipients cannot sign in to or run Dynamics 365 apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/add-unlicensed-users-activities",
+      "quote": "These users can be included as recipients, but they can't sign in to or run Dynamics 365 apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Governance guidance: After rollout; rationale: cost",
+      "type": "behaviour",
+      "claim": "Assigning a licence automatically updates the unlicensed user to a licensed user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/add-unlicensed-users-activities",
+      "quote": "When a user without a license is assigned a license, the user is automatically updated to a licensed user and can use the application based on their assigned security roles and permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Earlier activities remain associated with the same user record after licence assignment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/add-unlicensed-users-activities",
+      "quote": "Activities previously associated with the user remain associated with the same user record. No migration or conversion of the user or their existing activities is required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment; Cost and licensing; Governance guidance; Governance controls",
+      "type": "applicability",
+      "claim": "All users in the tenant must receive read permission on the Microsoft Entra ID table before the feature is enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/add-unlicensed-users-activities",
+      "quote": "Before you turn on the feature in the Power Platform admin center, you need to grant all users in the tenant **read** permission on the **Microsoft Entra ID** table.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "Existing security roles can be updated to grant read access to the Microsoft Entra ID table.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/add-unlicensed-users-activities",
+      "quote": "Update each existing security role assigned to users and add **read** permission for the **Microsoft Entra ID** table.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Governance guidance: Before rollout; At rollout",
+      "type": "applicability",
+      "claim": "A custom role granting read permission on the Microsoft Entra ID table can instead be assigned to all users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/add-unlicensed-users-activities",
+      "quote": "Create a custom security role that grants **read** permission for the **Microsoft Entra ID** table, and then assign the role to all users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Scope",
+      "type": "role",
+      "claim": "Privileged Role Administrator is required for the step granting table read access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/add-unlicensed-users-activities",
+      "quote": "You need to be a **Privileged Role Administrator** in the Microsoft Entra admin center to grant users read access to the Microsoft Entra ID table.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Scope",
+      "type": "role",
+      "claim": "Power Platform administrator is required to enable the feature.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/add-unlicensed-users-activities",
+      "quote": "You need to be a **Power Platform administrator** to turn on the feature in Power Platform admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[0].ui; Governance controls: first row",
+      "type": "admin-path",
+      "claim": "The switch is in Power Platform admin center > Manage > Environments > environment > Settings > Product > Features > Activities for users without licenses > Add anyone with an Entra ID to an activity's recipients fields.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/add-unlicensed-users-activities#turn-on-the-feature-in-power-platform-admin-center",
+      "quote": "Select **Settings**.\n5. Select **Product**, and then select **Features**.\n6. Go to **Activities for users without licenses**.\n7. Select the **Add anyone with an Entra ID to an activity's recipients fields** checkbox.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[0].scope; Scope; Governance controls",
+      "type": "applicability",
+      "claim": "The documented switch is configured per environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/add-unlicensed-users-activities#turn-on-the-feature-in-power-platform-admin-center",
+      "quote": "In the **Manage** pane, select **Environments**. Then select an environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[0].api; Governance controls: first row",
+      "type": "absence",
+      "claim": "Microsoft has not documented an API or automation equivalent for this feature's switch.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Dataverse unlicensed users activity recipients organization table API setting EnableUnlicensed. Opened feature page and pac env; searched Organization reference for unlicen, recipient, aaduser, entra. No feature switch identified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[1]; Governance controls: second row",
+      "type": "absence",
+      "claim": "Microsoft has not documented a tenant-wide default control for this feature on either the admin UI or API surface.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Activities for users without licenses\" \"tenant-wide\"; Dataverse \"activity\" \"unlicensed\" \"tenant\" settings default. Read feature page and Tenant settings. No tenant-wide default control found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Governance controls: paragraph after table",
+      "type": "command",
+      "claim": "pac env update-settings is documented for changing environment organization settings generally.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/developer/cli/reference/env#pac-env-update-settings",
+      "quote": "The pac env list-settings command returns all the columns from the first and only row of the [organization entity type](/en-us/power-apps/developer/data-platform/webapi/reference/organization). Use `pac env update-settings` to change those settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Governance controls: paragraph after table",
+      "type": "absence",
+      "claim": "The feature's switch is portal-only.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Activities for users without licenses\" API organization setting tenant default PowerShell. Read feature and pac env pages; searched Organization reference. None states that only the portal can set it.",
+      "severity": "blocker",
+      "fix": "Replace 'The switch is per environment and portal-only' with 'The switch is per environment. As of November 2026, Microsoft documents the admin UI but no feature-specific API or automation equivalent.' Keep controls[0].api null; absence of API documentation does not establish a portal-only restriction."
+    },
+    {
+      "n": 34,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No feature-specific charge is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Add users without licenses\" activities pricing charge license; \"add-unlicensed-users-activities\" \"license\" pricing included. Read the feature page and licensing search results; none publishes a charge for this recipient feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Cost and licensing; front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "The documented setup requires administrator effort to grant read access and enable the setting, supporting a low known implementation cost.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/add-unlicensed-users-activities",
+      "quote": "Before you turn on the feature in the Power Platform admin center, you need to grant all users in the tenant **read** permission on the **Microsoft Entra ID** table.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Data exposure; Why it matters",
+      "type": "behaviour",
+      "claim": "The Microsoft Entra ID lookup exposes basic directory information about users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/aaduser#writable-columns-attributes",
+      "quote": "| Description | **The name displayed in the address book for the user.** |\n| DisplayName | **Display Name** |\n| IsValidForForm | True |\n| IsValidForRead | True |",
+      "severity": "minor",
+      "fix": "Add the Microsoft Entra ID (aaduser) table reference to sources to substantiate the directory-attributes exposure: https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/aaduser."
+    },
+    {
+      "n": 37,
+      "where": "Governance guidance: Before rollout; At rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist instructs administrators to configure Entra ID table read permission, but that control has no row in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Plan the security role change: update existing roles or create a custom role with read on the Entra ID table. | Controls: Whether unlicensed Entra users can be activity recipients; Tenant-wide default for the feature.",
+      "severity": "minor",
+      "fix": "Add a controls row for 'Who can read the Microsoft Entra ID table', covering the security-role prerequisite and linking to https://learn.microsoft.com/power-platform/admin/add-unlicensed-users-activities#grant-users-read-access-to-the-microsoft-entra-id-table. Research its UI and API surfaces before filling them."
+    },
+    {
+      "n": 38,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 2026-10-19T23:15:15.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-19T23:15:15\"",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-16T18:26:36.083Z",
+    "summary": {
+      "links": 4,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/en-us/power-platform/admin/add-unlicensed-users-activities",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=574121",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/add-unlicensed-users-activities#turn-on-the-feature-in-power-platform-admin-center",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/developer/cli/reference/env#pac-env-update-settings",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether unlicensed Entra users can be activity recipients",
+        "docs": "https://learn.microsoft.com/power-platform/admin/add-unlicensed-users-activities#turn-on-the-feature-in-power-platform-admin-center",
+        "reachable": true,
+        "segments": [
+          "Manage",
+          "Environments",
+          "Settings",
+          "Product",
+          "Features",
+          "Activities for users without licenses",
+          "Add anyone with an Entra ID to an activity's recipients fields"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

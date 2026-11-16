@@ -4,7 +4,7 @@ slug: "microsoft-teams-tenant-policy-controls-who-can-record-and-transcribe"
 roadmapId: 579860
 topic: "modern-work"
 products: ["Microsoft Teams"]
-summary: "Microsoft plans a Teams meeting policy that sets whether organisers, co-organisers or presenters can start recording and transcription, and whether organisers may change it. Targeted December CY2026; Microsoft Learn does not describe it yet."
+summary: "Microsoft plans a Teams meeting policy that sets whether organisers, co-organisers or presenters can start recording and transcription, and whether organisers may change it. Targeted December CY2026; Learn does not describe it yet."
 status: "in-development"
 releasePhase: ["General Availability"]
 clouds: ["Worldwide (Standard Multi-Tenant)","GCC","GCC High","DoD"]
@@ -18,7 +18,7 @@ defaultState: "unknown"
 action: "review"
 licensing:
   model: "unknown"
-  notes: "Not yet published for the new policy. Microsoft Learn marks today's \"Who can record and transcribe\" setting (labels, templates, organiser) as needing a Teams Premium/Copilot licence."
+  notes: "Not yet published for the new policy. Microsoft Learn says organisers with a Teams Premium licence can use meeting options to control who can record and transcribe, and that label and template meeting options require Teams Premium."
 audiences: ["m365-admin","compliance","change-adoption"]
 tags: ["teams","meeting-policy","meeting-transcripts","transcripts","policy","admin-controls","governance","sensitivity-labels","gcc","gcc-high","dod"]
 sources:
@@ -31,17 +31,14 @@ sources:
   - title: "Manage Microsoft Teams meeting recording and transcription options for sensitive meetings"
     url: "https://learn.microsoft.com/microsoftteams/manage-meeting-recording-options"
     kind: "learn"
+  - title: "Use Teams meeting templates, sensitivity labels, and admin policies together for sensitive meetings"
+    url: "https://learn.microsoft.com/microsoftteams/meeting-templates-sensitivity-labels-policies"
+    kind: "learn"
   - title: "Admins - Manage transcription and captions for Teams meetings"
     url: "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions"
     kind: "learn"
-  - title: "Manage Teams meeting auto recording"
-    url: "https://learn.microsoft.com/microsoftteams/manage-teams-auto-recording"
-    kind: "learn"
   - title: "IT admins - Create a custom meeting template in Microsoft Teams"
     url: "https://learn.microsoft.com/microsoftteams/create-custom-meeting-template"
-    kind: "learn"
-  - title: "Use Teams meeting templates, sensitivity labels, and admin policies together for sensitive meetings"
-    url: "https://learn.microsoft.com/microsoftteams/meeting-templates-sensitivity-labels-policies"
     kind: "learn"
   - title: "Configure Teams meetings with protection for sensitive data"
     url: "https://learn.microsoft.com/microsoftteams/configure-meetings-sensitive-protection"
@@ -56,7 +53,7 @@ sources:
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/set-label"
     kind: "learn"
 videos: []
-related: ["teams-intelligent-recap-without-saving-transcript","work-iq-real-time-transcripts","teams-ai-generated-meeting-memory"]
+related: ["microsoft-teams-automatic-recording-indicator-for-call-queue-calls-on-mobile","teams-intelligent-recap-without-saving-transcript","work-iq-real-time-transcripts"]
 controls:
   - governs: "Who can start recording and transcription (the planned tenant policy)"
     scope: "user"
@@ -85,14 +82,6 @@ controls:
       call: "Set-CsTeamsMeetingPolicy -Identity <policy name> -AllowTranscription $true"
       docs: "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions"
     note: "Existing control. Learn says it is both a per-organiser and a per-user policy setting."
-  - governs: "Whether organisers see Record and transcribe automatically in meeting options"
-    scope: "user"
-    ui: null
-    api:
-      kind: "powershell"
-      call: "Set-CsTeamsMeetingPolicy -Identity <policy name> -AutoRecording Enabled"
-      docs: "https://learn.microsoft.com/microsoftteams/manage-teams-auto-recording"
-    note: "Existing control. Learn says to use PowerShell or a meeting template; it governs auto-recording, not who can start recording."
   - governs: "Who can record in meetings that use a template (enforced or left to the organiser)"
     scope: "other"
     ui:
@@ -103,18 +92,18 @@ controls:
       kind: "powershell"
       call: "Get-CsTeamsMeetingTemplateConfiguration"
       docs: "https://learn.microsoft.com/powershell/module/microsoftteams/get-csteamsmeetingtemplateconfiguration"
-    note: "Existing alternative, per meeting. Only organisers with a Teams Premium licence can use assigned templates. The cmdlet fetches templates and their options; no setter was found."
+    note: "Existing alternative, per meeting; needs Teams Premium. The cmdlet only fetches templates and their options; no setter was found."
   - governs: "Who can record and transcribe in meetings that carry a sensitivity label"
     scope: "other"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Solutions > Information protection > Labels > Create a label > Settings for Teams meetings and chats > Control who can record and transcribe"
+      path: "Solutions > Information protection > Labels > Create a label > Choose protection settings for types of items you selected > Protect Teams meetings and chats > Settings for Teams meetings and chats > Control who can record and transcribe"
       docs: "https://learn.microsoft.com/microsoftteams/configure-meetings-sensitive-protection"
     api:
       kind: "powershell"
-      call: "Set-Label -TeamsWhoCanRecord (Security & Compliance PowerShell)"
+      call: "Set-Label -Identity <label name> -TeamsWhoCanRecord <value>"
       docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/set-label"
-    note: "Existing alternative, per meeting. Some label options need a Teams Premium licence in the tenant."
+    note: "Existing alternative, per meeting; needs Teams Premium. On Define the scope for this label, select Files & other data assets, Emails and Meetings. Set-Label runs in Security & Compliance PowerShell."
 confidence: "medium"
 created: "2026-11-16"
 updated: "2026-11-16"
@@ -124,25 +113,27 @@ changes:
     note: "First briefing for this roadmap item; Learn does not yet document the new tenant policy."
   - date: "2026-11-16"
     note: "Corrected control paths and the auto-recording command, removed an unsupported claim about existing policies, and added template and sensitivity label rows."
-version: 2
+  - date: "2026-11-16"
+    note: "Corrected the sensitivity label path and Set-Label call, narrowed the Meet Now limitation to the Who can record and transcribe option, and removed the auto-recording row."
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-16"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 49
-  confirmed: 46
+  claims: 50
+  confirmed: 50
   unconfirmed: 0
-  contradicted: 3
-  attempts: 2
+  contradicted: 0
+  attempts: 0
 ---
 
 ## What's changing
 
 Microsoft plans to let Teams administrators use meeting policies to decide who can start recording and transcription in a meeting. According to the roadmap item, an administrator can restrict these permissions to organisers and co-organisers, or extend them to presenters, and can decide whether organisers may change the setting or whether the policy enforces it.
 
-Microsoft Learn does not describe this tenant policy yet, so the behaviour above is the roadmap's description. Today Learn documents **Who can record and transcribe** as an organiser setting with two options (organisers and co-organisers, or organisers, co-organisers and presenters), which a meeting template or sensitivity label can enforce. Learn states there is no admin policy for **Who can record**; the admin meeting policies only switch recording on or off.
+Microsoft Learn does not describe this tenant policy yet, so the behaviour above is the roadmap's description. Today Learn documents who can record as a choice made by the meeting organiser (organisers and co-organisers, or organisers, co-organisers and presenters), which a meeting template or sensitivity label can enforce. Learn also states that no admin policy exists for **Who can record**: a meeting policy can only disable recording completely.
 
 The roadmap item is In development, targeted for December CY2026 as General Availability, for Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD, on Android, Desktop, iOS and Mac. It has no preview date and no more-info link. The target is Microsoft's plan, not a commitment, and no Message Center post for the item was available at the time of writing (November 2026).
 
@@ -150,19 +141,19 @@ The roadmap item is In development, targeted for December CY2026 as General Avai
 
 If the policy ships as described, administrators get a tenant-level way to apply one recording and transcription permission model, instead of relying on each organiser's meeting options or on templates and labels that only cover meetings that use them. That matters most where recordings of sensitive meetings must not be started by every presenter.
 
-If nobody acts, neither the roadmap nor Learn says existing behaviour changes, so organisers keep choosing for themselves. The decision to prepare for is enforcement: an enforced policy removes the organiser's option, and the wiki expects support questions from presenters who can no longer record.
+If nobody acts, neither the roadmap nor Learn says existing behaviour changes, so organisers keep choosing for themselves. The decision to prepare for is enforcement: an enforced policy would remove the organiser's option, and the wiki expects support questions from presenters who can no longer record.
 
 ## Risk assessment
 
 **Data exposure**
 
-- Recordings and transcripts are stored in the organiser's OneDrive (or SharePoint for channel meetings), so a wider group allowed to start recording means more content in that storage. Limiting the permission to organisers and co-organisers narrows who can create it.
+- Learn says a recorded meeting is uploaded to the organiser's OneDrive (private meetings) or SharePoint (channel meetings), so a wider group allowed to start recording means more content in that storage. Limiting the permission to organisers and co-organisers would narrow who can create it.
 - Microsoft Learn documents no link between the new policy and meeting sensitivity. Sensitivity labels and meeting templates remain the documented way to enforce who can record in specific meetings.
 
 **Security & identity**
 
 - The roadmap names organisers and co-organisers as the restricted option and presenters as the wider one, so meeting role assignment becomes the permission boundary for recording. Check who gets promoted to presenter.
-- Learn says that both the organiser and the person starting the recording need recording permission under the existing policies. How the new policy combines with that rule is not stated.
+- Learn says that both the organiser and the recording initiator need recording permissions under the existing recording policy. How the new policy combines with that rule is not stated.
 
 **Autonomy & actions**
 
@@ -172,22 +163,22 @@ If nobody acts, neither the roadmap nor Learn says existing behaviour changes, s
 **Change & support**
 
 - If the policy is enforced, organisers lose the per-meeting choice and presenters may lose the record option. Expect help-desk questions and tell organisers before it lands.
-- Existing recording, transcription and auto-recording policies are documented separately; Microsoft has not yet explained how they interact with the new policy.
+- Existing recording and transcription policies are documented separately; Microsoft has not yet explained how they interact with the new policy.
 
 ## Cost and licensing
 
 No licence or price is published for the new meeting policy (Not yet published), and the roadmap item names none.
 
-For context, Learn marks the existing **Who can record and transcribe** setting for labels, templates and organisers as needing a Teams Premium/Copilot licence ("Manage Microsoft Teams meeting recording and transcription options for sensitive meetings"). Whether the new tenant policy carries the same requirement is not stated.
+For context, Learn says organisers with a Teams Premium licence can use their meeting options to control who can record and transcribe, and that meeting options in sensitivity labels and custom meeting templates require Teams Premium ("Manage Teams recording policies for meetings and events"; "Configure Teams meetings with protection for sensitive data"). Whether the new tenant policy carries the same requirement is not stated.
 
-The only cost the sources support is administrator time and communication to organisers. Learn says recordings are stored in the organiser's OneDrive and SharePoint storage, so wider recording permission can add to that storage use.
+The only cost the sources support is administrator time and communication to organisers. Learn says recordings are stored in the organiser's OneDrive or SharePoint, so wider recording permission can add to storage use.
 
 ## Scope
 
 - **Clouds, per the roadmap record:** Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.
 - **Platforms, per the roadmap record:** Android, Desktop, iOS and Mac.
 - **Who is affected:** meeting organisers, co-organisers and presenters, according to the roadmap description.
-- **Roles to configure it:** not yet published. Learn does not name the role for the new policy.
+- **Roles to configure it:** Not yet published. Learn does not name the role for the new policy.
 - **Rollout and default:** targeted for December CY2026. Not stated whether the policy restricts anything on arrival.
 
 ## Governance guidance
@@ -196,7 +187,7 @@ The only cost the sources support is administrator time and communication to org
 
 - Record the current **Meeting recording** and **Transcription** values in each Teams meeting policy, so you know who can record today.
 - Identify the sensitivity labels and meeting templates that already enforce **Who can record**, so you can see which meetings the new policy would overlap.
-- Decide which groups should be limited to organisers and co-organisers and which can extend to presenters.
+- Decide which groups should be limited to organisers and co-organisers and which could extend to presenters.
 
 ### At rollout
 
@@ -219,15 +210,14 @@ The only cost the sources support is administrator time and communication to org
 <tr><td data-label="Control"><strong>Who can start recording and transcription (the planned tenant policy)</strong><br><small>User</small><br><small class="controls__note">Not yet documented at the time of writing (November 2026). The roadmap describes it as a Teams meeting policy setting.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether meeting recording is allowed for users with a policy</strong><br><small>User</small><br><small class="controls__note">Existing control. It switches recording on or off; Microsoft has not said how it combines with the new policy.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting policies › policy › Meeting recording <a href="https://learn.microsoft.com/microsoftteams/meeting-recording" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity &lt;policy name&gt; -AllowCloudRecording $true</code> <a href="https://learn.microsoft.com/microsoftteams/meeting-recording" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether meeting transcription is allowed for users with a policy</strong><br><small>User</small><br><small class="controls__note">Existing control. Learn says it is both a per-organiser and a per-user policy setting.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting policies › policy › Transcription <a href="https://learn.microsoft.com/microsoftteams/meeting-transcription-captions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity &lt;policy name&gt; -AllowTranscription $true</code> <a href="https://learn.microsoft.com/microsoftteams/meeting-transcription-captions" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether organisers see Record and transcribe automatically in meeting options</strong><br><small>User</small><br><small class="controls__note">Existing control. Learn says to use PowerShell or a meeting template; it governs auto-recording, not who can start recording.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity &lt;policy name&gt; -AutoRecording Enabled</code> <a href="https://learn.microsoft.com/microsoftteams/manage-teams-auto-recording" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Who can record in meetings that use a template (enforced or left to the organiser)</strong><br><small class="controls__note">Existing alternative, per meeting. Only organisers with a Teams Premium licence can use assigned templates. The cmdlet fetches templates and their options; no setter was found.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting templates › Add › Recording &amp; transcription › Who can record <a href="https://learn.microsoft.com/microsoftteams/create-custom-meeting-template" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Get-CsTeamsMeetingTemplateConfiguration</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/get-csteamsmeetingtemplateconfiguration" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Who can record and transcribe in meetings that carry a sensitivity label</strong><br><small class="controls__note">Existing alternative, per meeting. Some label options need a Teams Premium licence in the tenant.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Information protection › Labels › Create a label › Settings for Teams meetings and chats › Control who can record and transcribe <a href="https://learn.microsoft.com/microsoftteams/configure-meetings-sensitive-protection" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-Label -TeamsWhoCanRecord (Security &amp; Compliance PowerShell)</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/set-label" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Who can record in meetings that use a template (enforced or left to the organiser)</strong><br><small class="controls__note">Existing alternative, per meeting; needs Teams Premium. The cmdlet only fetches templates and their options; no setter was found.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting templates › Add › Recording &amp; transcription › Who can record <a href="https://learn.microsoft.com/microsoftteams/create-custom-meeting-template" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Get-CsTeamsMeetingTemplateConfiguration</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/get-csteamsmeetingtemplateconfiguration" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Who can record and transcribe in meetings that carry a sensitivity label</strong><br><small class="controls__note">Existing alternative, per meeting; needs Teams Premium. On Define the scope for this label, select Files &amp; other data assets, Emails and Meetings. Set-Label runs in Security &amp; Compliance PowerShell.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Information protection › Labels › Create a label › Choose protection settings for types of items you selected › Protect Teams meetings and chats › Settings for Teams meetings and chats › Control who can record and transcribe <a href="https://learn.microsoft.com/microsoftteams/configure-meetings-sensitive-protection" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-Label -Identity &lt;label name&gt; -TeamsWhoCanRecord &lt;value&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/set-label" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-The new policy has no documented admin centre path or PowerShell parameter at the time of writing (November 2026). The Set-CsTeamsMeetingPolicy parameter list shows nothing for who can start recording, and Learn states there is no admin policy for **Who can record**.
+At the time of writing (November 2026), Microsoft Learn documents no admin centre path or PowerShell parameter for the new policy. Learn states that there is no admin policy for **Who can record**.
 
-The existing recording and transcription toggles decide whether recording or transcription is allowed at all, not who within a meeting can start it. Learn says to prevent meetings and events being recorded entirely you must use the recording policies in the Teams admin center, which a template or label cannot do. Templates and labels set who can record per meeting, need a Teams Premium licence for their organisers, and a label's meeting options do not take effect in Meet Now meetings.
+The existing recording and transcription toggles decide whether recording or transcription is allowed at all, not who within a meeting can start it. Learn says that to prevent meetings and events being recorded entirely you must use the recording policies in the Teams admin center, which a template or sensitivity label cannot do. Templates and labels set who can record per meeting and need Teams Premium. A label's **Who can record and transcribe** option does not take effect in Meet Now meetings.
 
 ## Open questions
 
@@ -238,26 +228,12 @@ The existing recording and transcription toggles decide whether recording or tra
 - Does the policy cover recording and transcription together or as two settings, and does it apply to channel meetings and events?
 
 <!-- rationale
-risk: Low. The roadmap describes a new admin control and no default is stated, so the rating assumes today's behaviour continues: organisers choose who can record, and nothing new is enforced until Microsoft documents otherwise.
-cost: Low. Admin time and organiser communication are the only costs the sources show; the licence for the new policy is not yet published, and the organiser-level setting it parallels is marked Teams Premium/Copilot licence.
+risk: Low. The roadmap describes a new admin control and states no default, so the rating assumes today's behaviour continues: organisers choose who can record, and nothing new is enforced until Microsoft documents otherwise.
+cost: Low. Admin time and organiser communication are the only costs the sources show; the licence for the new policy is not yet published, and the organiser-level setting it parallels is marked as needing Teams Premium.
 impact: Medium. Organisers and presenters notice if an admin enforces it: presenters who can record today could lose that ability, and organisers could lose the per-meeting choice.
 -->
 
-<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-16, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [contradicted, blocker] controls[5].ui; Governance controls table / admin-path: The label wizard goes directly from Create a label to Settings for Teams meetings and chats and Control who can record and transcribe. | Found: On the **Define the scope for this label** page, make sure **Files & other data assets**, **Emails**, and **Meetings** are selected.
-On the **Choose protection settings for types of items you selected** page, select **Protect Teams meetings and chats**, and then select **Next**. | Fix: Insert the required wizard pages in controls[5].ui.path and the rendered row: Solutions > Information protection > Labels > Create a label > Define the scope for this label > Choose protection settings for types of items you selected > Protect Teams meetings and chats > Settings for Teams meetings and chats > Control who can record and transcribe. Add a note to enter the label details, select Files & other data assets, Emails and Meetings, and select Next between wizard pages, as documented at https://learn.microsoft.com/microsoftteams/configure-meetings-sensitive-protection. | Source: https://learn.microsoft.com/microsoftteams/configure-meetings-sensitive-protection
-- [contradicted, blocker] controls[5].api; Governance controls table / command: Set-Label -TeamsWhoCanRecord (Security & Compliance PowerShell) is a usable call to configure the label's recording control. | Found: Set-Label
-    [-Identity] <ComplianceRuleIdParameter>
-    [-TeamsWhoCanRecord <Microsoft.Office.CompliancePolicy.PolicyConfiguration.WhoCanRecordOptions>]
-The TeamsWhoCanRecord parameter controls who can record Teams meetings. Valid values are:
-- Organizer
-- Coorganizers
-- Presenters | Fix: Replace the call with Set-Label -Identity <label name> -TeamsWhoCanRecord <Organizer|Coorganizers|Presenters>. The current text omits the required label identity and a valid argument to the typed parameter; the parenthesised module name is not that argument. Move 'Security & Compliance PowerShell' into controls[5].note. Keep the existing Set-Label reference URL. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/set-label
-- [contradicted, blocker] Governance controls: final sentence / applicability: A sensitivity label's meeting options do not take effect in Meet Now meetings. | Found: The following meeting options won't take effect for a Meet Now meeting:
-
-- Who can record and transcribe
-- Encryption for meeting video and audio
-- Automatically record and transcribe
-- Video watermark for screen sharing and camera streams | Fix: Replace 'a label's meeting options do not take effect in Meet Now meetings' with 'a label's Who can record and transcribe option does not take effect in Meet Now meetings'. Microsoft limits that exception to the listed options, not all label-controlled meeting settings. Keep the sensitivity-labels-meetings source. | Source: https://learn.microsoft.com/purview/sensitivity-labels-meetings
+- [supported, minor] controls[4].ui; Governance controls: sensitivity-label row / admin-path: The label control is in the Purview Labels creation wizard under Protect Teams meetings and chats > Settings for Teams meetings and chats > Control who can record and transcribe. | Found: On the Define the scope for this label page, make sure Files & other data assets, Emails, and Meetings are selected. ... On the Choose protection settings for types of items you selected page, select Protect Teams meetings and chats | Fix: Insert 'Define the scope for this label' between 'Create a label' and 'Choose protection settings for types of items you selected' in controls[4].ui.path and the rendered row. Its required selections are already correctly supplied in the note; the cited procedure includes this scope-selection page. | Source: https://learn.microsoft.com/microsoftteams/configure-meetings-sensitive-protection
 -->

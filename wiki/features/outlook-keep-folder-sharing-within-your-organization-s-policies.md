@@ -62,18 +62,20 @@ changes:
     note: "First briefing for this roadmap item; the roadmap record is the only source on the feature itself."
   - date: "2026-11-16"
     note: "Corrected the Default definition, the full Cloud Policy procedure and client coverage; added Cloud Policy timing and roles."
-version: 2
+  - date: "2026-11-16"
+    note: "Corrected the Cloud Policy licensing qualification for Microsoft 365 Apps for business and volume-licensed Office, and limited the individual-user statement to what the roadmap says."
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-16"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 53
-  confirmed: 51
-  unconfirmed: 1
-  contradicted: 1
-  attempts: 2
+  claims: 55
+  confirmed: 55
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
 ---
 
 ## What's changing
@@ -97,7 +99,7 @@ If you have no such restriction, nothing in the roadmap text says behaviour chan
 **Data exposure**
 
 - Default sets the baseline for authenticated users in the organisation who have no explicit entry, and Microsoft's calendar page says raising Anonymous above None can expose calendar information more broadly than intended. Locking both entries addresses that, but only where a restriction is enabled.
-- Permissions granted directly to individual users stay editable, according to the roadmap item, so a user can still share a folder with named colleagues despite the restriction.
+- Permissions granted directly to individual users remain unaffected, according to the roadmap item.
 
 **Security & identity**
 
@@ -114,7 +116,9 @@ If you have no such restriction, nothing in the roadmap text says behaviour chan
 
 ## Cost and licensing
 
-Microsoft has not published a licence requirement or meter for this item. The roadmap item names none, and the Learn page on restricting folder permissions names no licence for the existing controls it describes. For the Cloud Policy route, the Cloud Policy overview says it supports most Microsoft 365 subscription plans that include Microsoft 365 Apps.
+Microsoft has not published a licence requirement or meter for this item. The roadmap item names none, and the Learn page on restricting folder permissions names no licence for the existing controls it describes.
+
+For the Cloud Policy route, the Cloud Policy overview says it supports most Microsoft 365 subscription plans that include Microsoft 365 Apps. For Microsoft 365 Apps for business, Cloud Policy supports only policy settings related to privacy controls, so do not assume that subscription supports the folder-permission policies. Cloud Policy configurations also cannot be applied to volume licensed versions of Office that use Click-to-Run. This is a qualification on the existing control, not a licence statement for the roadmap feature.
 
 The cost the sources support is admin time to review restrictions and communicate with users. No price, credit rate or cap is published. Watch the roadmap item and Message center for any licensing statement.
 
@@ -129,12 +133,13 @@ Microsoft has not said which users, licences or roles are affected beyond "your 
 ### Before rollout
 
 - Identify which folder-permission restrictions your organisation has set: Cloud Policy configurations in the Microsoft 365 Apps admin center and, for classic Outlook, any Group Policy or registry values (see the controls table).
+- Check that your Microsoft 365 subscription is one Cloud Policy supports for these settings; Microsoft 365 Apps for business supports only privacy-control policy settings.
 - Decide whether the Default and Anonymous entries should be locked for each user group, and scope the policy configuration to those groups.
 - List users who legitimately change those entries, such as owners of shared calendars, and agree what route they use instead.
 
 ### At rollout
 
-- Brief users that the Default and Anonymous settings may be unavailable while a restriction is enabled, and that sharing with named individuals is unaffected.
+- Brief users that the Default and Anonymous settings may be unavailable while a restriction is enabled, and that the roadmap says permissions granted directly to individual users are unaffected.
 - Allow for the Cloud Policy timing before testing a client: up to 90 minutes after a configuration changes, policies apply when the Office app is restarted, and a user with no assigned configuration checks back every 24 hours.
 
 ### After rollout
@@ -171,8 +176,7 @@ cost: Low. The only cost the sources show is admin time to check restrictions an
 impact: Low. Only users who edit the Default or Anonymous entry on a folder, and only where a restriction is enabled, will notice the setting is locked; individual-user permissions are unaffected.
 -->
 
-<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-16, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [contradicted, blocker] Cost and licensing: Cloud Policy subscription support / licensing: For the folder-permission Cloud Policy route, the briefing gives support for most Microsoft 365 plans including Microsoft 365 Apps without the Apps for business policy restriction. | Found: You can create a policy configuration for Microsoft 365 Apps for business, but only policy settings related to privacy controls are supported. | Fix: After the Cloud Policy subscription sentence, add: 'For Microsoft 365 Apps for business, Cloud Policy supports only privacy-control policy settings; do not assume that subscription supports these folder-permission policies. Cloud Policy configurations also cannot be applied to volume-licensed Click-to-Run Office.' Cite the existing Cloud Policy overview. Keep this general-control qualification separate from the still-unpublished licensing for the roadmap feature. | Source: https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy
-- [unsupported, major] Risk assessment: Data exposure, second bullet / behaviour: Named-user permissions stay editable, so users can still share a folder with named colleagues despite the restriction. | Found: Searched: Outlook Default Anonymous restrictions permissions. Read roadmap: existing grants remain unaffected; opened Restrict users from changing folder permissions: its general controls disable permission editing. No promise of continued named-user editing found. | Fix: Replace the bullet with 'Permissions granted directly to individual users remain unaffected, according to the roadmap item.' Remove 'stay editable' and the promise of continuing to create named-user shares: neither the record nor the cited documentation establishes that distinction for the new feature.
+- [supported, minor] controls[0].note; Governance controls table / admin-path: After creating a policy configuration and enabling the three settings, select Update. | Found: Create a new policy configuration, and select the applicable scope. [...] To apply the policy configuration, select Update. | Fix: Acknowledge the documentation difference in the control note: the folder-permission article says Update, but https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy says to select Create for a new configuration and Update on Review and publish when changing an existing configuration. | Source: https://learn.microsoft.com/microsoft-365-apps/outlook/configuration/restrict-users-from-modifying-folder-permissions
 -->

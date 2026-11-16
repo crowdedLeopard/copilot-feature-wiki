@@ -72,6 +72,17 @@ changes:
   - date: "2026-11-16"
     note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
 version: 2
+verification:
+  status: "needs-correction"
+  date: "2026-11-16"
+  version: 2
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 30
+  confirmed: 22
+  unconfirmed: 4
+  contradicted: 4
+  attempts: 1
 ---
 
 ## What's changing
@@ -147,4 +158,27 @@ The reports are read-only; the governance decisions are who holds a reporting ro
 risk: Low. Read-only reporting for admins; the main care is who can see user-level data.
 cost: None. Reports are part of the Microsoft 365 admin center; no licence change is published.
 impact: Low. Affects admins and adoption leads in US Government tenants.
+-->
+
+<!-- verifier-findings (2026-11-16, needs-correction; checked by gpt-6.1-sol)
+The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
+- [unsupported, blocker] front matter: defaultState; controls[2].note; Governance controls: third row / default: The government reports are on by default and appear automatically at rollout without an administrator enabling them. | Found: Searched: Copilot usage reports GCC automatically; Copilot usage reports GCC enable; 573170 reports default license. Read the roadmap, reporting options, usage overview and Search, Connectors and Agents report pages; none states this rollout default. | Fix: Set defaultState to unknown. Replace the third control's note with 'Microsoft has not documented a government-specific report switch or stated the rollout default as of November 2026.' Do not infer automatic enablement from the absence of a documented switch.
+- [unsupported, blocker] front matter: licensing.model / licensing: The new government reports are included in an existing licence. | Found: Searched: Microsoft 365 Copilot Search connectors agents usage reports government license prerequisites pricing; Copilot usage reports government license reports. Read reporting options, usage overview and individual report pages; none names an included licence for this government release. | Fix: Set licensing.model to unknown and retain a narrowly scoped note that licensing for the new government reporting release is not yet published. Do not treat membership of the admin center as proof of licence inclusion.
+- [contradicted, blocker] front matter: cost; rationale: cost / consistency: The cost rating can be none because these reports are in the admin center and no licence change is published. | Found: cost: "none"
+No cost published. Reports are part of the Microsoft 365 admin center. Not yet published: any licence prerequisite.
+cost: None. Reports are part of the Microsoft 365 admin center; no licence change is published. | Fix: Change cost to low and the rationale to 'Low. Admin time to review report access and adoption metrics; licensing for the government reporting release is not yet published.' The standard permits none only with explicit evidence of inclusion in licences already held.
+- [contradicted, blocker] controls[0].api; Governance controls: first row / absence: No API or automation is documented for controlling access to Copilot usage reports. | Found: Create a role assignment for the directory provider:
+POST /roleManagement/directory/roleAssignments | Fix: Distinguish report navigation from access administration. Report-reader and AI Administrator access uses Microsoft Entra roles, which can be assigned through the documented Graph directory role-assignment API. Replace the absence with that general role-assignment mechanism, or remove this misleading access-control row and describe report navigation in prose. | Source: https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0
+- [contradicted, blocker] controls[1].api; Governance controls: second row / command: PATCH /beta/admin/reportSettings { displayConcealedNames } is the documented request for changing report-name concealment. | Found: PATCH https://graph.microsoft.com/beta/admin/reportSettings
+Content-Type: application/json
+Content-length: 37
+
+{
+  "displayConcealedNames": true
+} | Fix: The endpoint exists, but replace the body with valid JSON containing a Boolean, for example PATCH /beta/admin/reportSettings { "displayConcealedNames": true }. Explain true conceals names and false reveals them. Link to https://learn.microsoft.com/graph/api/adminreportsettings-update?view=graph-rest-beta rather than just the resource schema, and disclose that beta APIs are subject to change and unsupported for production applications. Do not blindly substitute v1.0: its deployment table excludes US Government L4 and L5. | Source: https://learn.microsoft.com/graph/api/adminreportsettings-update?view=graph-rest-beta
+- [unsupported, major] Governance controls: final paragraph; rationale: risk / behaviour: The new reports are read-only. | Found: Searched: Copilot usage report read-only. Read reporting options, usage overview and individual Search, Connectors and Agents report pages; they describe viewing, filtering and exporting metrics but do not explicitly establish a read-only guarantee for this release. | Fix: Replace the categorical read-only claim with the documented function: 'The reports provide usage and adoption insights for administrators.' Retain the privacy and access recommendations as analysis.
+- [unsupported, major] Governance controls: final paragraph / behaviour: The specific agents-new report documented by Learn is the commercial report version that this roadmap release will bring to government tenants. | Found: Searched: 573170 reports default license; Copilot usage reports government license reports. Read the roadmap and microsoft-365-copilot-agents-new page. The record promises Agents reporting but does not identify this particular report version; Learn titles it '(Preview)'. | Fix: Say 'For background, Learn documents an Agents usage report in preview; Microsoft has not confirmed that its exact design and metrics describe this government release.' Remove the asserted version mapping and identify the linked report as preview.
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls: first row / consistency: The controls table supplies the access control needed to decide which roles may read user-level Copilot usage. | Found: Decide which roles may read user-level Copilot usage.
+Access to the Copilot usage reports
+Reports > Usage > Microsoft Copilot | Fix: Add an actual reporting-role assignment control, distinguishing it from opening reports. Learn gives Microsoft Entra admin center > Identity > Users > All users > user > Assigned roles > Add assignment > role > Add at https://learn.microsoft.com/graph/reportroot-authorization#assign-microsoft-entra-roles-to-users. Note that Usage Summary Reports Reader does not provide user details.
 -->

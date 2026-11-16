@@ -1,0 +1,754 @@
+{
+  "slug": "m365-admin-center-cross-tenant-orchestrated-migration",
+  "roadmapId": 576273,
+  "title": "Microsoft 365 admin center: Cross-Tenant Orchestrated Migration",
+  "status": "needs-correction",
+  "date": "2026-11-16",
+  "version": 2,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "grace",
+    "since": "2026-11-16",
+    "reasons": [
+      "5 blocking findings (claims 24, 33, 39, 51, 54)",
+      "published before the check existed: kept live with a notice while a corrected version is prepared"
+    ]
+  },
+  "counts": {
+    "claims": 57,
+    "confirmed": 50,
+    "unconfirmed": 0,
+    "contradicted": 7,
+    "blocker": 5,
+    "major": 0,
+    "minor": 11
+  },
+  "summary": "Hold: the guidance incorrectly puts rebuilding security groups after migration and says source tenants cannot run migration commands, although the documented standalone OneDrive and SharePoint moves start there. The batch command combines separate commands incorrectly, and the shared-data licensing statement omits Enterprise Agreement eligibility.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: title, products",
+      "type": "record",
+      "claim": "Roadmap item 576273 is Microsoft 365 admin center: Cross-Tenant Orchestrated Migration.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"title\": \"Microsoft 365 admin center: Cross-Tenant Orchestrated Migration\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status",
+      "type": "record",
+      "claim": "The roadmap status is in-development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The listed release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms",
+      "type": "record",
+      "claim": "The roadmap lists Desktop and Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is December CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"December CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-11-12T01:35:00.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-12T01:35:00\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap more-info link reads TBD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"moreInfoLink\": \"TBD\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "summary; What's changing; rationale: risk",
+      "type": "record",
+      "claim": "Cross-Tenant Orchestrated Migration moves Microsoft 365 data between Microsoft tenants.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "allows customers to move their Microsoft 365 data from one Microsoft tenant to another.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "User Data Migration includes user mailboxes.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "UDM includes the ability to move user mailboxes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "User Data Migration includes OneDrive accounts.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "UDM includes the ability to move user mailboxes, OneDrive accounts, Teams chats, and Teams meetings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "User Data Migration includes Teams chats.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "UDM includes the ability to move user mailboxes, OneDrive accounts, Teams chats, and Teams meetings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "User Data Migration includes Teams meetings.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "UDM includes the ability to move user mailboxes, OneDrive accounts, Teams chats, and Teams meetings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Shared Data Migration includes Microsoft 365 Groups.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "SDM includes the ability to move M365 Groups, SharePoint Sites, Group Mailboxes, and teams and channels.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "Shared Data Migration includes SharePoint sites.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "SDM includes the ability to move M365 Groups, SharePoint Sites, Group Mailboxes, and teams and channels.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Shared Data Migration includes group mailboxes.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "SDM includes the ability to move M365 Groups, SharePoint Sites, Group Mailboxes, and teams and channels.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "Shared Data Migration includes teams and channels.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "SDM includes the ability to move M365 Groups, SharePoint Sites, Group Mailboxes, and teams and channels.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "front matter: defaultState",
+      "type": "default",
+      "claim": "Migration is admin-opt-in rather than an automatic move of tenant data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/migration/migration-orchestrator-5-running-migration",
+      "quote": "All commands below are run through Microsoft Graph from the target tenant by Microsoft M365 Migration Administrators or Global Administrators.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "front matter: licensing.model, licensing.notes; Governance controls",
+      "type": "licensing",
+      "claim": "Cross Tenant User Data Migration is a required per-user add-on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/migration/migration-orchestrator-1-overview?view=o365-worldwide",
+      "quote": "Cross-Tenant migrations require a per-user license (one-time fee) and can be assigned on either the source or target user object. This license enables the migration of all content supported by orchestration. Cross Tenant User Data Migration is available as an add-on",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The user migration licence has a one-time fee.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/migration/migration-orchestrator-1-overview?view=o365-worldwide",
+      "quote": "Cross-Tenant migrations require a per-user license (one-time fee)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The migration licence can be assigned to either the source or target user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/migration/migration-orchestrator-1-overview?view=o365-worldwide",
+      "quote": "can be assigned on either the source or target user object.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Migrations fail without the required migration licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/migration/cross-tenant-mailbox-migration?view=o365-worldwide#licensing",
+      "quote": "If you don't have the proper license assigned to the user being migrated, the migration fails",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/microsoft-365/migration/cross-tenant-mailbox-migration?view=o365-worldwide#licensing to sources for the licence-failure statement."
+    },
+    {
+      "n": 24,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Shared data migration licences are offered per 100 GB, without an eligibility qualification.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/migration/cross-tenant-sharepoint-migration",
+      "quote": "The Cross-Tenant Shared Data Migration feature and licenses are currently only available to Enterprise Agreement customers. ... Licenses are offered on a per 100 GB of data moved basis.",
+      "severity": "blocker",
+      "fix": "Qualify the notes and cost section: 'For the existing cross-tenant SharePoint migration tool, Cross-Tenant Shared Data Migration licences are currently available only to Enterprise Agreement customers and are offered per 100 GB moved.' Cite https://learn.microsoft.com/microsoft-365/migration/cross-tenant-sharepoint-migration and distinguish this from final licensing for the roadmap experience."
+    },
+    {
+      "n": 25,
+      "where": "Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "Pricing for the roadmap's orchestrated service has not yet been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Cross Tenant Orchestrated Migration pricing price Shared Data Migration 100 GB User Data Migration. Opened orchestrator overview, cross-tenant OneDrive and SharePoint overviews, and the SharePoint licensing link; found licensing terms but no service price.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The documented Migration Orchestrator automatically sequences supported workloads.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/migration/microsoft-365-tenant-to-tenant-migrations?view=o365-worldwide",
+      "quote": "The Migration Orchestrator handles sequencing automatically for supported workloads.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Individual cross-tenant tools exist for mailbox, OneDrive and SharePoint migration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/migration/microsoft-365-tenant-to-tenant-migrations?view=o365-worldwide",
+      "quote": "Individual workload migration | Migrating a single workload, or when you need granular control over each workload's timeline | Cross-tenant tools (mailbox, OneDrive, SharePoint)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Why it matters; rationale: impact",
+      "type": "behaviour",
+      "claim": "Mergers, divestitures and tenant consolidations are migration scenarios.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/migration/microsoft-365-tenant-to-tenant-migrations?view=o365-worldwide",
+      "quote": "Merger or acquisition ... Divestiture or spin-off ... Consolidation: Your organization has multiple tenants from past acquisitions and wants to consolidate into one.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Learn says migrations are not subject to SLAs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/migration/migration-orchestrator-1-overview?view=o365-worldwide",
+      "quote": "Migrations are not subject to SLAs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Security & identity; Governance guidance; rationale: risk",
+      "type": "behaviour",
+      "claim": "Identity mapping is required.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/migration/migration-orchestrator-1-overview?view=o365-worldwide",
+      "quote": "Identity Mapping is required, which means the specific user configuration supported by Identity Mapping is required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Security & identity; controls[1]",
+      "type": "behaviour",
+      "claim": "Cross-tenant migration requires trust between the participating tenants.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/migration/cross-tenant-sharepoint-migration-step2",
+      "quote": "After you connect to the source and target tenant, the next step in performing a cross-tenant SharePoint migration is establishing trust between the tenants.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Security groups need to be recreated or prepared in the target tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/migration/cross-tenant-onedrive-migration-step4",
+      "quote": "Precreate users and groups as needed in the target tenant's directory. ... Precreated users must be added as members of any appropriate security groups or unified groups before the OneDrive migration begins.",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/microsoft-365/migration/cross-tenant-onedrive-migration-step4 and state that target groups and membership must be prepared before migration."
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Change & support; rationale: risk",
+      "type": "behaviour",
+      "claim": "Cross-tenant moves generally are one-way moves with redirects left behind.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/migration/cross-tenant-mailbox-migration?view=o365-worldwide#prepare-target-user-objects-for-migration",
+      "quote": "Move mailboxes back to the original source ... If a mailbox is required to move back to the original source tenant, the same set of steps and scripts must be run in both new source and new target tenants, with some variance.",
+      "severity": "blocker",
+      "fix": "Limit the one-and-done, redirect statement to the documented OneDrive and SharePoint moves, citing their migration overviews. Remove the blanket one-way assertion from the risk rationale; mailbox documentation describes a reverse migration, and the orchestrator overview says original Teams content remains in the source."
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "OneDrive cross-tenant migration does not support incremental or delta passes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/migration/cross-tenant-onedrive-migration",
+      "quote": "Incremental and delta migration passes cannot be performed.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/microsoft-365/migration/cross-tenant-onedrive-migration to sources."
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "SharePoint cross-tenant migration does not support incremental or delta passes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/migration/cross-tenant-sharepoint-migration",
+      "quote": "Incremental and delta migration passes can't be performed.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/microsoft-365/migration/cross-tenant-sharepoint-migration to sources."
+    },
+    {
+      "n": 36,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "Cross-tenant OneDrive migration is not supported in government clouds.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/migration/cross-tenant-onedrive-migration",
+      "quote": "This feature isn't supported for users of the Government Cloud, including GCC, Consumer, GCC High, or DoD.",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/microsoft-365/migration/cross-tenant-onedrive-migration for this cloud restriction; retain its explicit scope to the existing OneDrive migration feature."
+    },
+    {
+      "n": 37,
+      "where": "Scope; rationale: impact",
+      "type": "role",
+      "claim": "Administrators in both source and target tenants must participate.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/migration/cross-tenant-sharepoint-migration-step2",
+      "quote": "To establish trust, each SharePoint tenant administrator must run specific commands on both source and target tenants.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "absence",
+      "claim": "No admin UI path is documented for creating, validating and running an orchestrator batch.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: cross tenant migration orchestrator admin center user interface create validate run migration batch. Opened Running the migration and orchestrator overview; documented execution uses Graph PowerShell or Graph Explorer, not an admin-center batch path.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "The printed Connect-MgGraph; Test-MgBetaCrossTenantMigrationJob / Move-MgBetaCrossTenantMigrationJob expression is the call for creating, validating and running a batch.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/migration/migration-orchestrator-5-running-migration",
+      "quote": "Test-MgBetaCrossTenantMigrationJob -CrossTenantMigrationJobId <batch display name or job id> ... Once the batch status is ValidatePassed, call migrate ... Move-MgBetaCrossTenantMigrationJob -CrossTenantMigrationJobId <batch display name or job id>",
+      "severity": "blocker",
+      "fix": "Remove the slash-combined expression. Show Test-MgBetaCrossTenantMigrationJob -CrossTenantMigrationJobId <id> and Move-MgBetaCrossTenantMigrationJob -CrossTenantMigrationJobId <id> as separate commands, with a requirement to wait for ValidatePassed before running Move. Retain the documented Connect-MgGraph scope. Rename the row to validating and running an existing batch, or separately document creation with New-MgBetaCrossTenantMigrationJob and the required settings from the cited page."
+    },
+    {
+      "n": 40,
+      "where": "controls[0].note; Governance controls table",
+      "type": "role",
+      "claim": "Orchestrator migration commands run in the target tenant as Microsoft 365 Migration Administrator or Global Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/migration/migration-orchestrator-5-running-migration",
+      "quote": "All commands below are run through Microsoft Graph from the target tenant by Microsoft M365 Migration Administrators or Global Administrators.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[0].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "An orchestrator batch holds at most 100 users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/migration/migration-orchestrator-5-running-migration",
+      "quote": "The maximum batch size is 100 users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "absence",
+      "claim": "No admin UI path is documented for SharePoint and OneDrive cross-tenant migration trust.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint OneDrive cross tenant trust migration admin center UI Set-SPOCrossTenantRelationship Start-SPOCrossTenantUserContentMove Start-SPOCrossTenantSiteContentMove. Opened both trust step-2 pages; both give PowerShell, not a UI trust path.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-SPOCrossTenantRelationship -Scenario MnA -PartnerRole Target -PartnerCrossTenantHostUrl <url> requests migration trust with the target tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/migration/cross-tenant-sharepoint-migration-step2",
+      "quote": "On the source tenant, run this command to send a trust request to the target tenant: Set-SPOCrossTenantRelationship -Scenario MnA -PartnerRole Target -PartnerCrossTenantHostUrl <TARGETCrossTenantHostUrl>",
+      "severity": "minor",
+      "fix": "Add a note that this command runs on the source tenant and is only one half of the trust setup. The target administrator must also run Set-SPOCrossTenantRelationship -Scenario MnA -PartnerRole Source -PartnerCrossTenantHostUrl <SOURCECrossTenantHostUrl>, as the cited page states."
+    },
+    {
+      "n": 44,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "absence",
+      "claim": "No admin UI path is documented for the existing cross-tenant OneDrive move.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint OneDrive cross tenant trust migration admin center UI Set-SPOCrossTenantRelationship Start-SPOCrossTenantUserContentMove Start-SPOCrossTenantSiteContentMove. Opened OneDrive overview and step 6; the move is documented through PowerShell only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[2].api; Governance controls table",
+      "type": "command",
+      "claim": "Start-SPOCrossTenantUserContentMove with source UPN, target UPN and target cross-tenant host URL starts one user's OneDrive move.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/migration/cross-tenant-onedrive-migration-step6",
+      "quote": "Start-SPOCrossTenantUserContentMove -SourceUserPrincipalName <...> -TargetUserPrincipalName <...> -TargetCrossTenantHostUrl <...>",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[3].ui; Governance controls table",
+      "type": "absence",
+      "claim": "No admin UI path is documented for the existing SharePoint cross-tenant site move.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint OneDrive cross tenant trust migration admin center UI Set-SPOCrossTenantRelationship Start-SPOCrossTenantUserContentMove Start-SPOCrossTenantSiteContentMove. Opened SharePoint overview and step 6; found a PowerShell move, not an admin UI path.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[3].api; Governance controls table",
+      "type": "command",
+      "claim": "Start-SPOCrossTenantSiteContentMove is the documented cmdlet for moving a SharePoint site.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/migration/cross-tenant-sharepoint-migration-step6",
+      "quote": "Start-SPOCrossTenantSiteContentMove -SourceSiteUrl <...> -TargetSiteUrl <...> -TargetCrossTenantHostUrl <...>",
+      "severity": "minor",
+      "fix": "Replace the bare cmdlet name with the useful documented call: Start-SPOCrossTenantSiteContentMove -SourceSiteUrl <source-site-url> -TargetSiteUrl <target-site-url> -TargetCrossTenantHostUrl <target-host-url>. Note that it runs on the source tenant."
+    },
+    {
+      "n": 48,
+      "where": "controls[4].ui, controls[4].api, controls[4].note; Governance controls table",
+      "type": "absence",
+      "claim": "No control for an orchestrated migration admin-center page is documented; current Learn instructions instead describe Graph execution.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: migration orchestrator admin center migration UI; cross tenant migration orchestrator admin center user interface create validate run migration batch. Opened overview and Running the migration; found Graph execution but no admin-center page control or API to configure such a page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance controls: closing paragraph",
+      "type": "behaviour",
+      "claim": "Learn documents orchestrator execution through Graph APIs using PowerShell or Graph Explorer.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/migration/migration-orchestrator-5-running-migration",
+      "quote": "Migrations are managed through Graph APIs. These APIs can be run with PowerShell 5 or 7, or with Graph Explorer.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance controls: closing paragraph",
+      "type": "command",
+      "claim": "The workload-specific SharePoint and OneDrive commands use SharePoint Online Management Shell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/migration/cross-tenant-onedrive-migration",
+      "quote": "Microsoft SharePoint Online Powershell. Confirm you have the most recent version installed. Download SharePoint Online Management Shell from the official Microsoft Download Center.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/microsoft-365/migration/cross-tenant-onedrive-migration and https://learn.microsoft.com/microsoft-365/migration/cross-tenant-sharepoint-migration to sources for the workload tooling prerequisites."
+    },
+    {
+      "n": 51,
+      "where": "Governance controls: closing paragraph",
+      "type": "role",
+      "claim": "Source tenants cannot run migration commands, stated without limiting this to orchestrator commands.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/migration/cross-tenant-onedrive-migration-step6",
+      "quote": "To start the migration, a SharePoint Admin or Microsoft 365 Global Admin of the source tenant must run the following command: Start-SPOCrossTenantUserContentMove",
+      "severity": "blocker",
+      "fix": "Replace with: 'Orchestrator Graph migration commands run only from the target tenant. The standalone OneDrive and SharePoint move commands in this table run from the source tenant as a SharePoint Admin or Microsoft 365 Global Admin.' The respective step-6 pages document this distinction."
+    },
+    {
+      "n": 52,
+      "where": "Governance controls: closing paragraph",
+      "type": "behaviour",
+      "claim": "Validation results expire after seven days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/migration/migration-orchestrator-5-running-migration",
+      "quote": "Validation must pass within the last seven days. If more than seven days elapsed since validation passed, you must revalidate before migrating.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Why it matters; Governance guidance: Before rollout; rationale: risk",
+      "type": "behaviour",
+      "claim": "Compliance holds affect migration eligibility and require planning.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/migration/migration-orchestrator-1-overview?view=o365-worldwide",
+      "quote": "Mailboxes on any type of hold aren't migrated, and a move for those mailboxes is blocked. Talk to our engineering team before attempting to move any users with holds applied.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Rebuilding security groups belongs after the migration rollout.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/migration/cross-tenant-onedrive-migration-step4",
+      "quote": "Precreate users and groups as needed in the target tenant's directory. ... Precreated users must be added as members of any appropriate security groups or unified groups before the OneDrive migration begins.",
+      "severity": "blocker",
+      "fix": "Move security-group preparation to Before rollout: 'Precreate target security groups, populate required memberships and include them in identity mapping before migrating content.' After rollout, verify memberships and permissions instead of first rebuilding the groups."
+    },
+    {
+      "n": 55,
+      "where": "front matter: action",
+      "type": "consistency",
+      "claim": "The prepare action rating fits an optional admin-opt-in migration capability.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "action: \"prepare\"; defaultState: \"admin-opt-in\". The assessment scale assigns review when nothing changes until an administrator chooses an optional capability.",
+      "severity": "minor",
+      "fix": "Set action to review. The verified migration process requires explicit administrative configuration and submission; the sources do not describe an automatic migration or a mandatory deadline."
+    },
+    {
+      "n": 56,
+      "where": "Governance guidance; Governance controls",
+      "type": "consistency",
+      "claim": "The controls table covers the operational controls the governance checklist asks administrators to plan or check.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "The checklist says 'Plan identity mapping, licences in the target tenant and holds' and 'Rebuild security groups'; the table contains batch execution, trust, workload moves and an admin-page gap, but no rows for these controls.",
+      "severity": "minor",
+      "fix": "Add rows for migration identity mapping, licence assignment and hold checks, and target group preparation, within the eight-row limit by combining directly related preparation controls. Research and cite each documented surface rather than assuming a null. Correct group preparation timing as separately noted."
+    },
+    {
+      "n": 57,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Some associated objects must be rebuilt rather than being moved intact.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/migration/cross-tenant-sharepoint-migration",
+      "quote": "Workflows (2010 or 2013) must be re-created and republished on the Target tenant. ... PowerApps and Automation Tasks must be recreated and reconnected to the Site on the target tenant.",
+      "severity": "minor",
+      "fix": "Make the vague 'some objects' specific to the existing SharePoint tool: workflows and Power Apps/automation tasks require recreation. Cite https://learn.microsoft.com/microsoft-365/migration/cross-tenant-sharepoint-migration."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-16T18:26:30.844Z",
+    "summary": {
+      "links": 8,
+      "unreachable": 0,
+      "uiPaths": 0,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 4,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=576273",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/migration/migration-orchestrator-1-overview?view=o365-worldwide",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/migration/microsoft-365-tenant-to-tenant-migrations?view=o365-worldwide",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/migration/migration-orchestrator-5-running-migration",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/migration/cross-tenant-sharepoint-migration-step2",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/migration/cross-tenant-onedrive-migration-step6",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/migration/cross-tenant-sharepoint-migration-step6",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/migration/migration-orchestrator-1-overview",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Creating, validating and running a migration batch",
+        "docs": "https://learn.microsoft.com/microsoft-365/migration/migration-orchestrator-5-running-migration",
+        "reachable": true,
+        "token": "Connect-MgGraph",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "SharePoint and OneDrive trust between the two tenants",
+        "docs": "https://learn.microsoft.com/microsoft-365/migration/cross-tenant-sharepoint-migration-step2",
+        "reachable": true,
+        "token": "Set-SPOCrossTenantRelationship",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Moving one user's OneDrive (existing tooling)",
+        "docs": "https://learn.microsoft.com/microsoft-365/migration/cross-tenant-onedrive-migration-step6",
+        "reachable": true,
+        "token": "Start-SPOCrossTenantUserContentMove",
+        "found": true
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Moving a SharePoint site (existing tooling)",
+        "docs": "https://learn.microsoft.com/microsoft-365/migration/cross-tenant-sharepoint-migration-step6",
+        "reachable": true,
+        "token": "Start-SPOCrossTenantSiteContentMove",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

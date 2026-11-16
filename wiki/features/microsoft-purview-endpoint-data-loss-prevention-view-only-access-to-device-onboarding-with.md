@@ -37,6 +37,9 @@ sources:
   - title: "New-RoleGroup"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-rolegroup"
     kind: "learn"
+  - title: "Security & Compliance PowerShell"
+    url: "https://learn.microsoft.com/powershell/exchange/scc-powershell"
+    kind: "learn"
   - title: "Microsoft Purview service description"
     url: "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description"
     kind: "learn"
@@ -53,7 +56,7 @@ controls:
       kind: "powershell"
       call: "New-RoleGroup -Name <name> -Roles <roles> -Members <members>"
       docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-rolegroup"
-    note: "General control: no Learn page yet confirms it governs the Devices page, or that the Exchange cmdlet page covers Purview role groups. Needs global administrator or Role Management."
+    note: "General role-group control; Learn does not yet confirm it governs the Devices page. Viewing Role groups needs global administrator or Role Management. The cmdlet runs in Security & Compliance PowerShell."
   - governs: "Switch that enables the View-Only Device Management role for the Devices page"
     scope: "tenant"
     ui: null
@@ -76,18 +79,20 @@ changes:
     note: "First briefing for roadmap item 577187: planned read-only View-Only Device Management role for the Endpoint DLP Devices page."
   - date: "2026-11-16"
     note: "Default state now Not stated; removed the claim that nothing changes until an admin assigns the role; added that Learn already lists the role in several role groups, and the Purview licence statement."
-version: 2
+  - date: "2026-11-16"
+    note: "Corrected the role-group cmdlet note: New-RoleGroup applies to Security & Compliance PowerShell. Added Global Reader to the role groups that already list View-Only Device Management."
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-16"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 50
-  confirmed: 49
+  claims: 46
+  confirmed: 46
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
+  contradicted: 0
+  attempts: 0
 ---
 
 ## What's changing
@@ -102,9 +107,9 @@ The roadmap record shows status In development, with a preview target of Decembe
 
 ## Why it matters
 
-This would let a service owner show device onboarding status to an auditor or analyst without handing over Compliance Administrator, Security Administrator or Global Administrator. Today the Learn page for onboarding lists Entra roles for viewing device management settings, including Compliance data admin and Global reader, so a read-only audience already has some narrower options than the roadmap's wording suggests.
+This would let a service owner show device onboarding status to an auditor or analyst without handing over Compliance Administrator, Security Administrator or Global Administrator. The device onboarding page already lists Compliance data admin and Global reader among the Entra roles that can view device management settings, so the roadmap's wording about broad roles being required is only part of the picture today.
 
-If nobody acts, the roadmap says existing roles keep full access. The decision is whether to move read-only audiences onto the new role once it ships, and whether role groups that already contain View-Only Device Management gain Devices page access as a side effect. Microsoft has not said.
+If nobody acts, the roadmap says existing roles keep full access. The decision is whether to move read-only audiences onto the new role once it ships, and whether role groups that already list View-Only Device Management gain Devices page access as a side effect. Microsoft has not said.
 
 ## Risk assessment
 
@@ -114,14 +119,14 @@ If nobody acts, the roadmap says existing roles keep full access. The decision i
 
 **Security & identity**
 - This adds a narrower option than Security Administrator or Compliance Administrator for people who only read. Leaving it unconfigured keeps today's assignments in place.
-- Learn already lists View-Only Device Management in the default roles of the Compliance Administrator, Compliance Data Administrator, Security Administrator, Security Operator and Security Reader role groups, and under Organization Management. Check whether members of those groups will see the Devices page; Microsoft has not said.
+- Learn already lists View-Only Device Management among the default roles of the Compliance Administrator, Compliance Data Administrator, Global Reader, Organization Management, Security Administrator, Security Operator and Security Reader role groups. Check whether members of those groups will see the Devices page; Microsoft has not said.
 
 **Autonomy & actions**
 - No change: the roadmap describes no automated action, and the role is described as unable to change onboarding configuration.
 
 **Change & support**
 - Learn says Purview roles are not supported for device management, which differs from the roadmap's Purview RBAC wording. Expect documentation and portal behaviour to change during the preview, and test with a pilot account before relying on it.
-- Existing Entra role assignments stay valid per the roadmap, so help-desk instructions for current admins do not change.
+- Existing role assignments stay valid per the roadmap, so help-desk instructions for current admins do not change.
 
 ## Cost and licensing
 
@@ -135,12 +140,12 @@ The other cost is admin time to create or edit a role group, assign members and 
 
 The roadmap record lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD, with the web as the platform. It lists both Preview (December CY2026 target) and General Availability (January CY2027 target).
 
-The audience is whoever you want to give read-only visibility of the Devices page: auditors and security analysts, per the roadmap item. Viewing Role groups in the Purview portal needs global administrator or the Role Management role, per the Learn page on Purview permissions. Devices must already be onboarded for the page to show anything.
+The audience is whoever you want to give read-only visibility of the Devices page: auditors and security analysts, per the roadmap item. Viewing Role groups in the Purview portal needs global administrator or the Role Management role, per the Learn page on Purview permissions. Devices must already be onboarded for the page to list anything.
 
 ## Governance guidance
 
 ### Before rollout
-- Compare the members of the Compliance Administrator, Compliance Data Administrator, Security Administrator, Security Operator and Security Reader role groups with the people you want on the Devices page, since Learn lists View-Only Device Management in each.
+- Compare the members of the Compliance Administrator, Compliance Data Administrator, Global Reader, Security Administrator, Security Operator and Security Reader role groups with the people you want on the Devices page, since Learn lists View-Only Device Management in each.
 - List the auditors and analysts who hold Compliance Administrator, Security Administrator or Global Administrator only to read the Devices page, so you can move them when the role ships.
 - Ask a Role Management holder to plan a custom role group for read-only device access under Settings > Roles and scopes > Role groups.
 
@@ -159,7 +164,7 @@ The audience is whoever you want to give read-only visibility of the Devices pag
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which users hold the View-Only Device Management role, through role group membership</strong><br><small>User</small><br><small class="controls__note">General control: no Learn page yet confirms it governs the Devices page, or that the Exchange cmdlet page covers Purview role groups. Needs global administrator or Role Management.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and scopes › Role groups <a href="https://learn.microsoft.com/purview/purview-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-RoleGroup -Name &lt;name&gt; -Roles &lt;roles&gt; -Members &lt;members&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-rolegroup" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which users hold the View-Only Device Management role, through role group membership</strong><br><small>User</small><br><small class="controls__note">General role-group control; Learn does not yet confirm it governs the Devices page. Viewing Role groups needs global administrator or Role Management. The cmdlet runs in Security &amp; Compliance PowerShell.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and scopes › Role groups <a href="https://learn.microsoft.com/purview/purview-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-RoleGroup -Name &lt;name&gt; -Roles &lt;roles&gt; -Members &lt;members&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-rolegroup" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Switch that enables the View-Only Device Management role for the Devices page</strong><br><small>Tenant</small><br><small class="controls__note">None documented at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Current access to the Devices page and device onboarding through Entra roles</strong><br><small>Tenant</small><br><small class="controls__note">Today's route, not a control over the new role. Learn documents no API for the Devices page at the time of writing.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Device onboarding › Devices <a href="https://learn.microsoft.com/purview/device-onboarding-overview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
@@ -178,12 +183,7 @@ No Purview, Graph or PowerShell interface for the Devices page itself is documen
 - What licence, if any, does Microsoft attach to read-only use of this access? Watch the Microsoft Purview service description.
 
 <!-- rationale
-risk: Low. The role is read-only and existing roles keep full access, so today's exposure continues. The unknown is whether role groups that already hold View-Only Device Management gain Devices page access when the change ships.
+risk: Low. The role is described as read-only and existing roles keep full access, so today's exposure continues. The unknown is whether role groups that already list View-Only Device Management gain Devices page access.
 cost: Low. The only cost the sources show is admin time. No licence for this access is published; Microsoft's Purview service description says users with a Purview role assigned for the portal need a licence.
 impact: Low. Only administrators, auditors and security analysts who use the Devices page notice it; end users and onboarded devices are unaffected.
--->
-
-<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
-The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [contradicted, blocker] controls[0].note; Governance controls table / absence: Microsoft has not confirmed that the Exchange cmdlet reference covers Purview role groups. | Found: Applicable: Exchange Server 2010, Exchange Server 2013, Exchange Server 2016, Exchange Server 2019, Exchange Server SE, Exchange Online, Security & Compliance, Built-in security add-on for on-premises mailboxes | Fix: Remove 'or that the Exchange cmdlet page covers Purview role groups' from controls[0].note and the rendered table. The Name, Roles and Members parameter sections explicitly include Security & Compliance. State that this is a general role-group command used through Security & Compliance PowerShell, citing https://learn.microsoft.com/powershell/exchange/scc-powershell, which identifies that interface as managing Microsoft Purview risk and compliance features and says to check each cmdlet's applicability. Retain the separate warning that Learn has not confirmed this role's planned Devices-page access. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/new-rolegroup
 -->

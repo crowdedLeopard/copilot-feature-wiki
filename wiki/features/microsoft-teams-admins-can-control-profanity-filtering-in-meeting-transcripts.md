@@ -4,7 +4,7 @@ slug: "microsoft-teams-admins-can-control-profanity-filtering-in-meeting-transcr
 roadmapId: 570467
 topic: "modern-work"
 products: ["Microsoft Teams"]
-summary: "A Teams meeting policy setting now decides whether profane words are masked in live and saved transcripts. Masking stays on by default; no action is needed unless you want it off for some organisers."
+summary: "A Teams meeting policy setting decides whether profane words are masked in live and saved transcripts. Masking stays on by default; no action is needed unless you want it off for some organisers."
 status: "launched"
 releasePhase: ["General Availability","Targeted Release"]
 clouds: ["Worldwide (Standard Multi-Tenant)","GCC"]
@@ -33,6 +33,12 @@ sources:
     kind: "learn"
   - title: "Admins - Manage transcription and captions for Teams meetings"
     url: "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions"
+    kind: "learn"
+  - title: "Use Microsoft Teams administrator roles to manage Teams"
+    url: "https://learn.microsoft.com/microsoftteams/using-admin-roles"
+    kind: "learn"
+  - title: "Release notes for Microsoft Teams admin features"
+    url: "https://learn.microsoft.com/officeupdates/teams-admin"
     kind: "learn"
 videos: []
 related: ["teams-intelligent-recap-without-saving-transcript","work-iq-real-time-transcripts"]
@@ -63,7 +69,7 @@ controls:
     scope: "user"
     ui: null
     api: null
-    note: "MC1478003 says the new setting leaves the participant's own preference unchanged; no admin control for it is documented."
+    note: "MC1478003 says the new setting leaves the participant's own preference unchanged. A Teams release note says users can update this preference in settings; no admin control for it is documented."
   - governs: "Per-organiser or per-meeting override of the filtering setting"
     scope: "other"
     ui: null
@@ -76,18 +82,20 @@ roadmapModified: "2026-11-04T23:59:50"
 changes:
   - date: "2026-11-16"
     note: "First briefing for this item, based on Microsoft's notice MC1478003 and the Set-CsTeamsMeetingPolicy reference page."
-version: 1
+  - date: "2026-11-16"
+    note: "Added the Teams Administrator and Teams Communications Administrator roles that can manage meeting policies, removed unsupported statements about identity and permissions, and aligned the pre-rollout advice with what MC1478003 recommends."
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-16"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 46
-  confirmed: 43
-  unconfirmed: 2
+  confirmed: 45
+  unconfirmed: 0
   contradicted: 1
-  attempts: 1
+  attempts: 0
 ---
 
 ## What's changing
@@ -98,61 +106,61 @@ The notice names the setting **Filter out profane words in live transcription** 
 
 The roadmap item is Launched, with a target date of October CY2026, for Worldwide and GCC, on Android, desktop, iOS, Mac and web. MC1478003 (published 23 September 2026) gives Targeted Release (Worldwide) as early to mid-October 2026 and General Availability (Worldwide, GCC) as mid to late October 2026, and sets no act-by date.
 
-The records disagree on one point. At the time of writing (November 2026) the Set-CsTeamsMeetingPolicy reference page documents the matching `-FilterProfanityInTranscript` parameter but still carries the note "This feature has not been fully released yet, so the setting will have no effect." Check that the setting is visible and effective in your tenant before relying on it.
+The sources differ on one point. At the time of writing (November 2026) the Set-CsTeamsMeetingPolicy reference page documents the matching `-FilterProfanityInTranscript` parameter (default `Enabled`) but still carries the note "This feature has not been fully released yet, so the setting will have no effect." Check that the setting is visible and effective in your tenant before relying on it.
 
 ## Why it matters
 
-This is a new control over what transcripts contain, and it ships switched to the existing behaviour. If nobody acts, transcripts keep masking profane words. The decision for a service owner is whether any group has a real need for verbatim transcripts, such as HR or legal workflows, and whether that justifies a separate policy.
+This is a new control over what transcripts contain, and it ships set to the existing behaviour. If nobody acts, transcripts keep masking profane words. The decision for a service owner is whether any group has a real need for verbatim transcripts, such as HR or legal workflows, and whether that justifies a separate policy.
 
-Because the setting is on the organiser's policy, turning it off changes what is stored in the saved transcript for every scheduled meeting that organiser runs, and the notice describes no per-meeting override. Settle who may be assigned a filtering-off policy before anyone edits a policy.
+Because the setting sits on the organiser's policy, turning it off changes what is stored in the saved transcript for every scheduled meeting that organiser runs, and the notice describes no per-meeting override. Settle who may be assigned a filtering-off policy before anyone edits a policy.
 
 ## Risk assessment
 
 **Data exposure**
-- With filtering off, saved transcripts can contain profane words that were previously masked. Transcripts are stored together with meeting recordings in OneDrive and SharePoint storage, so the unmasked text sits wherever those files are and is governed by their permissions.
+- With filtering off, saved transcripts can contain profane words that were previously masked. Microsoft Learn says transcripts are stored together with meeting recordings in OneDrive and SharePoint storage, so the unmasked text sits wherever those files are.
 - Microsoft has not said whether downstream uses of the transcript, such as Copilot recaps, see masked or unmasked text.
 
 **Security & identity**
-- No new identity or permission is introduced. The behaviour follows the meeting organiser's assigned policy, so group or user policy assignment is the mechanism that decides which meetings are affected.
+- The behaviour follows the meeting organiser's assigned meeting policy, so user or group policy assignment decides which meetings are affected. Teams Administrator and Teams Communications Administrator can both manage meeting policies, so either role can change which organisers get unmasked transcripts.
 
 **Autonomy & actions**
 - No change: the setting takes no actions on its own and only changes how recognised words are written to the transcript.
 
 **Change & support**
 - Live captions keep following each participant's own profanity setting, while the transcript follows the organiser's policy. In a meeting whose organiser has filtering off, the two can differ, so expect helpdesk questions about the mismatch.
-- Microsoft's notice asks administrators to tell compliance, legal and helpdesk teams before turning filtering off.
+- Microsoft's notice asks administrators to notify compliance, legal and helpdesk teams before turning filtering off.
 
 ## Cost and licensing
 
 No licence, meter or price is published for this setting. The Set-CsTeamsMeetingPolicy reference page and MC1478003 state none, so treat the licensing as not yet published rather than as free.
 
-The cost the sources do show is indirect: administrator time to create or edit meeting policies, and communication to compliance, legal and helpdesk teams that MC1478003 recommends before filtering is turned off.
+The cost the sources do show is indirect: administrator time to create or edit meeting policies, and the communication to compliance, legal and helpdesk teams that MC1478003 recommends before filtering is turned off.
 
 ## Scope
 
-The setting applies per meeting organiser through the Teams meeting policy assigned to them. Per MC1478003, users whose organiser is assigned a policy that keeps filtering on are not affected, and neither is each participant's live-caption preference.
+The setting applies per meeting organiser, through the Teams meeting policy assigned to them. Per MC1478003, users whose organiser is assigned a policy that keeps filtering on are not affected, and neither is each participant's live-caption preference.
 
 - **Clouds:** the roadmap item lists Worldwide (Standard Multi-Tenant) and GCC.
 - **Platforms:** Android, desktop, iOS, Mac and web.
 - **Release phase:** General Availability and Targeted Release.
-- **Who configures it:** Microsoft has not stated which Teams admin role is required for this setting.
+- **Who configures it:** Microsoft Learn says Teams Administrator and Teams Communications Administrator can manage meetings, including meeting policies, in the Teams admin center and PowerShell. It does not name a role for this specific setting.
 
 ## Governance guidance
 
 ### Before rollout
-- Decide whether any group needs unmasked transcripts, and record the business reason as MC1478003 recommends before any policy turns filtering off.
+- Confirm the business need and review compliance policies and transcript requirements before turning filtering off, as MC1478003 recommends. Recording the business reason is a suggested internal step, not a Microsoft requirement.
 - List the meeting policies in use under Meetings > Meeting policies in the Teams admin center and identify which organisers each is assigned to.
 - Notify compliance, legal and helpdesk teams that saved transcripts may contain words that were previously masked.
 
 ### At rollout
 - Leave the setting on in the Global policy so existing behaviour is preserved.
-- Create a separate custom policy for any group that needs filtering off, rather than editing the Global policy.
-- Assign that policy only to named users or groups, using the policy assignment steps on the Learn transcription page.
+- Create a separate custom meeting policy for any group that needs filtering off, rather than editing the Global policy.
+- Assign that policy only to named users or groups, using the assignment steps on the Learn transcription page.
 
 ### After rollout
 - Check the **Filter out profane words in live transcription** value on each policy in the Teams admin center, and test a meeting transcript, given the Learn note that the setting may not yet take effect.
 - Update internal transcript guidance if the default policy behaviour changes.
-- Review the custom filtering-off policy membership on a schedule so organisers do not keep it without a reason.
+- Review membership of any filtering-off policy on a schedule so organisers do not keep it without a reason.
 
 ## Governance controls
 
@@ -163,20 +171,20 @@ The setting applies per meeting organiser through the Teams meeting policy assig
 <tbody>
 <tr><td data-label="Control"><strong>Whether profane words are masked in live and saved meeting transcripts</strong><br><small>User</small><br><small class="controls__note">Applies through the policy assigned to the meeting organiser. The Learn page notes the setting has no effect until the feature is fully released.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting policies › policy › Meeting settings › Recording and transcription › Filter out profane words in live transcription <a href="https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1478003" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity &lt;policy name&gt; -FilterProfanityInTranscript Enabled|Disabled</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether transcription is allowed at all for users with a policy</strong><br><small>User</small><br><small class="controls__note">Existing control. It switches transcription on or off; it does not control profanity masking.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting policies › policy › Transcription <a href="https://learn.microsoft.com/microsoftteams/meeting-transcription-captions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity &lt;policy name&gt; -AllowTranscription $true|$false</code> <a href="https://learn.microsoft.com/microsoftteams/meeting-transcription-captions" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Admin control over each participant's live-caption profanity preference</strong><br><small>User</small><br><small class="controls__note">MC1478003 says the new setting leaves the participant's own preference unchanged; no admin control for it is documented.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Admin control over each participant's live-caption profanity preference</strong><br><small>User</small><br><small class="controls__note">MC1478003 says the new setting leaves the participant's own preference unchanged. A Teams release note says users can update this preference in settings; no admin control for it is documented.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Per-organiser or per-meeting override of the filtering setting</strong><br><small class="controls__note">MC1478003 states organisers and co-organisers receive no per-meeting override and no organiser-level control is added.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-The filtering setting lives only in the Teams meeting policy, so its scope is the organiser's policy assignment. Microsoft documents no tenant-wide master switch for it and no organiser-level or per-meeting override; the Global policy is the nearest tenant default.
+The filtering setting lives only in the Teams meeting policy, so its scope is the organiser's policy assignment. Microsoft documents no tenant-wide master switch for it and no organiser-level or per-meeting override; the Global policy is the nearest tenant default. The Teams admin center location comes from MC1478003; at the time of writing (November 2026) the Learn pages do not describe it.
 
-The existing **Transcription** policy setting turns transcription on or off entirely. It is an alternative if unmasked transcripts are unacceptable, but it does not control masking. Teams admin centre path details for the new setting come from MC1478003; the Learn pages do not yet describe its location.
+The existing **Transcription** policy setting turns transcription on or off entirely. It is an alternative if unmasked transcripts are unacceptable, but it does not control masking. Teams Administrator and Teams Communications Administrator can manage meeting policies.
 
 ## Open questions
 
-- Which Teams admin role is needed to change the filtering setting, and does it appear in the Teams admin center for all tenants yet? The Learn reference page still says the setting has no effect; watch that page and Message center.
+- Does the **Filter out profane words in live transcription** setting appear and take effect in every tenant yet? The Set-CsTeamsMeetingPolicy page still says the setting has no effect; watch that page and Message center.
 - Do downstream features that read transcripts, such as Copilot meeting recaps, use masked or unmasked text when filtering is off? Watch the Teams Copilot documentation.
-- Is there any admin control over participants' live-caption profanity preference, or only the user's own setting?
+- Will Microsoft document an administrator control over participants' live-caption profanity preference, or will it stay a user setting?
 - Will a licence or meter ever apply to this setting? None is published at the time of writing (November 2026).
 
 <!-- rationale
@@ -185,14 +193,7 @@ cost: Low. The only cost the sources show is admin and communication time; Micro
 impact: Low. Nothing changes for users while the default holds; only people in meetings run by organisers whose policy turns filtering off would see unmasked words.
 -->
 
-<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-16, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [supported, minor] Risk assessment: Data exposure / applicability: The saved transcript is governed by the permissions of the file with which it is stored. | Found: The captions and transcript file is stored with the video in OneDrive for Business or SharePoint. This inherits the same permissions and policy as the video file, so that whoever has access to the video file has access to the captions and transcript. | Fix: Add https://support.microsoft.com/office/3cb9acb6-05b2-4f59-a50d-7df61123aa20 to sources for the statement about transcript permissions. | Source: https://support.microsoft.com/office/3cb9acb6-05b2-4f59-a50d-7df61123aa20
-- [unsupported, major] Risk assessment: Security & identity / behaviour: The change introduces no new identity. | Found: Searched: "Teams" "transcript" "profanity" "identity". Read MC1478003 and the filtering parameter in Set-CsTeamsMeetingPolicy; neither states that no new identity is introduced. | Fix: Remove 'No new identity or permission is introduced.' Keep the following sourced statement that filtering follows the organiser's assigned meeting policy.
-- [unsupported, major] Risk assessment: Security & identity / behaviour: The change introduces no new permission. | Found: Searched: "Teams" "transcript" "profanity" "permissions". Read MC1478003, Set-CsTeamsMeetingPolicy and using-admin-roles; they describe the setting and meeting-policy administration, but do not state that this change introduces no permission. | Fix: Remove the assurance that no permission is introduced; describe the documented Teams meeting-policy administrator roles instead, citing https://learn.microsoft.com/microsoftteams/using-admin-roles.
-- [contradicted, blocker] Scope: Who configures it; Open questions / absence: Microsoft has not stated which Teams administrator role can change this meeting-policy setting. | Found: Teams Administrator | Manage the Teams service
-Everything in the Microsoft Teams admin center and associated PowerShell controls
-Teams Communications Administrator | Manage calling and meetings features within the Teams service.
-Manage meetings, including meeting policies | Fix: Replace the role gap with: 'Teams Administrator and Teams Communications Administrator can manage meeting policies in the Teams admin center and Teams PowerShell.' Cite https://learn.microsoft.com/microsoftteams/using-admin-roles and remove the role question from Open questions. | Source: https://learn.microsoft.com/microsoftteams/using-admin-roles
-- [supported, minor] Governance guidance: Before rollout / record: MC1478003 recommends confirming the business need and recording the business reason before turning filtering off. | Found: Before turning filtering off, confirm the business need and review whether the change aligns with your organization's compliance policies and transcript requirements. | Fix: Replace the bullet with: 'Confirm the business need and review compliance policies and transcript requirements before turning filtering off, as MC1478003 recommends. Record the business reason as an internal governance step.' The notice does not recommend recording the reason.
+- [contradicted, minor] Governance guidance: At rollout; Governance controls / consistency: The controls table covers every control the checklist asks administrators to configure and every control the prose reports as absent. | Found: Assign that policy only to named users or groups, using the assignment steps on the Learn transcription page. / Microsoft documents no tenant-wide master switch for it | Fix: Add a meeting-policy assignment row with the user and group assignment paths documented at https://learn.microsoft.com/microsoftteams/meeting-transcription-captions. Add a separate tenant-wide profanity-filter master-switch row with ui and api null to represent the absence already stated in the prose.
 -->

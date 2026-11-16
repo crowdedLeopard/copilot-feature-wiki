@@ -37,6 +37,9 @@ sources:
   - title: "Power Platform activity logs and auditing in Microsoft Purview"
     url: "https://learn.microsoft.com/power-platform/admin/activity-logging-auditing/activity-logs-overview"
     kind: "learn"
+  - title: "Tutorial: Create, update, and list Environment Management Settings"
+    url: "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-environmentmanagement-settings"
+    kind: "learn"
   - title: "Office 365 Management Activity API reference"
     url: "https://learn.microsoft.com/office/office-365-management-api/office-365-management-activity-api-reference"
     kind: "learn"
@@ -68,7 +71,7 @@ controls:
       docs: "https://learn.microsoft.com/power-platform/admin/activity-logging-auditing/activity-logs-power-pages"
     api:
       kind: "rest"
-      call: "GET https://manage.office.com/api/v1.0/{tenant_id}/activity/feed/subscriptions/content?contentType=Audit.General"
+      call: "GET {root}/subscriptions/content?contentType={ContentType}&startTime={0}&endTime={1}"
       docs: "https://learn.microsoft.com/office/office-365-management-api/office-365-management-activity-api-reference"
     note: "Reading needs the Audit Logs or View-Only Audit Logs role. API lists content for an active subscription; Learn does not state which content type holds Power Pages events."
   - governs: "Whether Power Platform activity is sent to Purview for an environment"
@@ -77,8 +80,11 @@ controls:
       surface: "Power Platform admin center"
       path: "Manage > Environments > environment > Settings > Product > Privacy and Security > Storage Shared Access Signature (SAS) Security Settings > Enable SAS Logging in Purview"
       docs: "https://learn.microsoft.com/power-platform/admin/activity-logging-auditing/activity-logs-overview"
-    api: null
-    note: "Production environments only. A system admin or customizer configures it; the option appears only when minimum Office licensing is met."
+    api:
+      kind: "power-platform-api"
+      call: "PATCH https://api.powerplatform.com/environmentmanagement/environments/{environmentId}/settings/?api-version=2022-03-01-preview with body {\"LoggingEnabledForIpBasedStorageAccessSignature\": true}"
+      docs: "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-environmentmanagement-settings"
+    note: "Production environments only; steps say sign in as a system admin. Allow-list https://*.api.powerplatformusercontent.com first or most SAS functionality fails. API tutorial is preview."
   - governs: "Who is the website app owner for a site"
     scope: "site"
     ui:
@@ -120,18 +126,20 @@ changes:
     note: "First briefing: documents the admin-centre transfer steps, required roles and Purview audit event; notifications and the Power Advisor ownerless-sites view remain roadmap-only."
   - date: "2026-11-16"
     note: "Corrected after verification: app ownership is not required for managed identity sites, fixed the Azure portal path and audit API call, and added rows for auditing setup, inventory and the approval gap."
-version: 2
+  - date: "2026-11-16"
+    note: "Corrected after verification: added the Power Platform API call for the SAS logging setting, the SAS domain allow-list prerequisite, and softened the ownership-concept wording in open questions."
+version: 3
 verification:
   status: "held"
   date: "2026-11-16"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 65
-  confirmed: 62
-  unconfirmed: 1
+  claims: 68
+  confirmed: 66
+  unconfirmed: 0
   contradicted: 2
-  attempts: 2
+  attempts: 3
 ---
 
 ## What's changing
@@ -159,7 +167,7 @@ If nobody acts, nothing changes: a transfer only happens when an admin makes one
 
 **Security & identity**
 
-- The initiating admin needs any one of System administrator, Dynamics 365 administrator or Power Platform administrator, and, except for sites on the Power Platform managed identity model, the website app owner role. Learn says admin roles must be assigned directly to the user, not inherited through security group membership or Privileged Identity Management.
+- The initiating admin needs the website app owner role and any one of System administrator, Dynamics 365 administrator or Power Platform administrator, except that sites on the Power Platform managed identity model do not need web app ownership to start a transfer. Learn says admin roles must be assigned directly to the user, not inherited through security group membership or Privileged Identity Management.
 - The roadmap says existing site owners and global administrators can transfer ownership. The Learn page lists the website app owner plus one of the three roles above and does not name global administrator for this task. Plan on the Learn rule until Microsoft reconciles the two.
 
 **Autonomy & actions**
@@ -195,7 +203,8 @@ Power Pages sites themselves are licensed by capacity (authenticated users and a
 
 - Agree which named admins may transfer Power Pages sites, and confirm each holds System administrator, Dynamics 365 administrator or Power Platform administrator directly rather than through a security group.
 - Check who owns the website app registration for sites outside the managed identity model, because the transfer option is missing for admins who are not the web app owner.
-- Turn on auditing and **Enable SAS Logging in Purview** for the production environments that host Power Pages sites, and give your compliance team the Audit Logs or View-Only Audit Logs role.
+- Add `https://*.api.powerplatformusercontent.com` to your domain allow list, then turn on auditing and **Enable SAS Logging in Purview** for the production environments that host Power Pages sites. Learn warns that most SAS functionality does not work without the allow-list entry.
+- Give your compliance team the Audit Logs or View-Only Audit Logs role in Microsoft Purview.
 
 ### At rollout
 
@@ -216,8 +225,8 @@ Power Pages sites themselves are licensed by capacity (authenticated users and a
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Transferring a Power Pages site to a new owner</strong><br><small>Site</small><br><small class="controls__note">Needs a System administrator, Dynamics 365 administrator or Power Platform administrator role, plus website app owner unless the site uses the managed identity model. No API found.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Power Pages › site › Site Details › Edit › Owner <a href="https://learn.microsoft.com/power-pages/admin/transfer-ownership" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Audit trail of site ownership transfers</strong><br><small>Tenant</small><br><small class="controls__note">Reading needs the Audit Logs or View-Only Audit Logs role. API lists content for an active subscription; Learn does not state which content type holds Power Pages events.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Audit <a href="https://learn.microsoft.com/power-platform/admin/activity-logging-auditing/activity-logs-power-pages" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>GET https://manage.office.com/api/v1.0/{tenant_id}/activity/feed/subscriptions/content?contentType=Audit.General</code> <a href="https://learn.microsoft.com/office/office-365-management-api/office-365-management-activity-api-reference" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether Power Platform activity is sent to Purview for an environment</strong><br><small>Environment</small><br><small class="controls__note">Production environments only. A system admin or customizer configures it; the option appears only when minimum Office licensing is met.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Privacy and Security › Storage Shared Access Signature (SAS) Security Settings › Enable SAS Logging in Purview <a href="https://learn.microsoft.com/power-platform/admin/activity-logging-auditing/activity-logs-overview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Audit trail of site ownership transfers</strong><br><small>Tenant</small><br><small class="controls__note">Reading needs the Audit Logs or View-Only Audit Logs role. API lists content for an active subscription; Learn does not state which content type holds Power Pages events.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Audit <a href="https://learn.microsoft.com/power-platform/admin/activity-logging-auditing/activity-logs-power-pages" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>GET {root}/subscriptions/content?contentType={ContentType}&amp;startTime={0}&amp;endTime={1}</code> <a href="https://learn.microsoft.com/office/office-365-management-api/office-365-management-activity-api-reference" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether Power Platform activity is sent to Purview for an environment</strong><br><small>Environment</small><br><small class="controls__note">Production environments only; steps say sign in as a system admin. Allow-list https://*.api.powerplatformusercontent.com first or most SAS functionality fails. API tutorial is preview.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Privacy and Security › Storage Shared Access Signature (SAS) Security Settings › Enable SAS Logging in Purview <a href="https://learn.microsoft.com/power-platform/admin/activity-logging-auditing/activity-logs-overview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform API</strong><br><code>PATCH https://api.powerplatform.com/environmentmanagement/environments/{environmentId}/settings/?api-version=2022-03-01-preview with body {&quot;LoggingEnabledForIpBasedStorageAccessSignature&quot;: true}</code> <a href="https://learn.microsoft.com/power-platform/admin/programmability-tutorial-environmentmanagement-settings" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Who is the website app owner for a site</strong><br><small>Site</small><br><small class="controls__note">Prerequisite, not a control over the feature. The website app is named Portals-&lt;website name&gt;. The Graph page is a general application-owner example, not Power Pages specific.</small></td><td data-label="Admin UI"><strong>Azure portal</strong><br>Microsoft Entra ID › Manage › App registrations › website app › Manage › Owners › Add owners <a href="https://learn.microsoft.com/power-pages/admin/admin-roles" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/v1.0/applications/{application-object-id}/owners/$ref</code> <a href="https://learn.microsoft.com/troubleshoot/entra/entra-id/users-groups-entra-apis/add-owner-for-application-microsoft-graph" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Finding Power Pages sites and their owners</strong><br><small>Tenant</small><br><small class="controls__note">Preview, rolling out gradually. Needs Global administrator, Power Platform administrator or Dynamics 365 administrator. Shows owner IDs, not a list of ownerless sites.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Inventory › Item type, filtered to sites <a href="https://learn.microsoft.com/power-pages/admin/power-pages-inventory" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Azure Resource Graph (KQL): PowerPlatformResources | where type =~ &quot;microsoft.powerpages/sites&quot;</code> <a href="https://learn.microsoft.com/power-pages/admin/power-pages-inventory" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Tenant-wide switch to disable site ownership transfer</strong><br><small>Tenant</small><br><small class="controls__note">No such switch found at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
@@ -227,16 +236,16 @@ Power Pages sites themselves are licensed by capacity (authenticated users and a
 
 The transfer is an admin-centre action. At the time of writing (November 2026), searches of Microsoft Learn found no PowerShell, Microsoft Graph or other API for transferring Power Pages site ownership, no tenant switch to disable the transfer and no documented approval step. Access follows the documented role, app-ownership and recipient prerequisites.
 
-The website app owner is a separate Microsoft Entra-side requirement from the admin roles; the row for it is a prerequisite, not a control over the feature. The audit API row lists available content only: retrieve each returned content URI and filter for `OwnershipTransferred`. The endpoint shown is for the enterprise plan; Learn gives different hosts for GCC, GCC High and DoD.
+The website app owner is a separate Microsoft Entra-side requirement from the admin roles; the row for it is a prerequisite, not a control over the feature. The audit API row lists available content only: retrieve each returned content URI and filter for `OwnershipTransferred`.
 
-The inventory row reads site owners but does not by itself identify sites with no valid owner; the Power Advisor view the roadmap describes is not documented.
+The inventory row reads site owners but does not by itself identify sites with no valid owner; the Power Advisor view the roadmap describes is not documented. The SAS logging row is an existing environment setting that Purview auditing depends on, not a setting for this feature.
 
 ## Open questions
 
 - Does a Power Advisor recommendation for Power Pages sites with no valid owner exist, and where does it appear? Learn does not document it at the time of writing. Watch the Power Platform admin center recommendations pages.
 - Which notifications are sent on a transfer, to whom, and can they be turned off? Learn does not document them.
 - Can global administrators transfer a site without being the website app owner, as the roadmap implies? The Learn page lists different prerequisites.
-- How does the transfer relate to the Learn statement that the website owner is the creator and ownership "can't be transferred or changed"? The two Learn pages describe different ownership concepts and do not explain the difference.
+- How does the transfer relate to the Learn statement that the website owner is the creator and ownership "can't be transferred or changed"? The two Learn pages appear to conflict and do not explain how the transfer relates to creator ownership.
 - What are the "eligible sites" the roadmap mentions, and is any licence or capacity condition attached?
 
 <!-- rationale
@@ -247,9 +256,11 @@ impact: Low. The documented workflow is run by administrators and affects the pr
 
 <!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
 The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [supported, minor] controls[2].note / role: A Power Platform system admin or customizer configures auditing and the SAS logging setting. | Found: A Power Platform system admin or customizer needs to configure auditing in the Power Platform admin center and then turn on the Enable SAS Logging in Purview setting | Fix: Keep the cited overview's requirement but note that https://learn.microsoft.com/power-platform/admin/security/data-storage#turn-on-purview-audit-logging instead specifies a tenant admin for the logging toggle; the overview's step-by-step toggle procedure specifies signing in as a system admin. | Source: https://learn.microsoft.com/power-platform/admin/activity-logging-auditing/activity-logs-overview
-- [contradicted, blocker] controls[2].api / absence: No API for the environment's Enable SAS Logging in Purview setting is documented. | Found: "LoggingEnabledForIpBasedStorageAccessSignature" = $true
--Method Patch -Uri "https://api.powerplatform.com/environmentmanagement/environments/$environmentId/settings/?api-version=2022-03-01-preview" | Fix: Replace controls[2].api=null with a power-platform-api entry using PATCH https://api.powerplatform.com/environmentmanagement/environments/{environmentId}/settings/?api-version=2022-03-01-preview and body {"LoggingEnabledForIpBasedStorageAccessSignature":true}; cite this tutorial and label its API preview. The current reference also documents PATCH .../settings?api-version=2024-10-01 at https://learn.microsoft.com/rest/api/power-platform/environmentmanagement/environment-management-settings/update-environment-management-settings. Do not change EnableIpBasedStorageAccessSignatureRule merely to enable logging. | Source: https://learn.microsoft.com/power-platform/admin/programmability-tutorial-environmentmanagement-settings
-- [contradicted, blocker] Governance guidance: Before rollout; controls[2].note / applicability: The SAS logging setup instructions tell admins to enable the setting without the domain allow-list prerequisite. | Found: Before you activate the Shared Access Signature (SAS) feature, add the https://*.api.powerplatformusercontent.com domain to the allow list. If you don't, most SAS functionalities won't work. | Fix: Prepend to the SAS logging checklist instruction and add to controls[2].note: 'Before enabling SAS logging, allow access to https://*.api.powerplatformusercontent.com; Microsoft warns that most SAS functionality will not work without this prerequisite.' The same requirement explicitly covers either SAS feature at https://learn.microsoft.com/power-platform/admin/security/data-storage#storage-shared-access-signature-sas-ip-restriction. | Source: https://learn.microsoft.com/power-platform/admin/activity-logging-auditing/activity-logs-overview
-- [unsupported, major] Open questions: website creator ownership / behaviour: The transfer page and admin roles page describe different ownership concepts. | Found: Searched: Power Pages transfer site ownership and ownership transfer eligibility; opened learn.microsoft.com/power-pages/admin/transfer-ownership and admin/admin-roles. Both discuss site ownership; neither states that their conflicting ownership descriptions are different concepts. | Fix: Replace 'The two Learn pages describe different ownership concepts and do not explain the difference' with 'The two Learn pages appear to conflict and do not explain how the transfer relates to creator ownership.' Do not assert a documented distinction between ownership concepts.
+- [contradicted, blocker] controls[3].api / command: The printed POST https://graph.microsoft.com/v1.0/applications/{application-object-id}/owners/$ref call adds the selected website app owner. | Found: In the request body, supply the identifier of the directory object to be assigned as owner.
+{
+    "@odata.id": "https://graph.microsoft.com/v1.0/directoryObjects/{id}"
+} | Fix: Keep the documented endpoint but append: with body {"@odata.id":"https://graph.microsoft.com/v1.0/directoryObjects/{new-owner-user-object-id}"}. The current call omits the required owner reference entirely. The existing cited troubleshooting page shows this body, and https://learn.microsoft.com/graph/api/application-post-owners?view=graph-rest-1.0 confirms individual users are valid owners. Keep the note that this is a general app-ownership API, not the site-transfer API. | Source: https://learn.microsoft.com/graph/api/application-post-owners?view=graph-rest-1.0
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: Every setup control the governance checklist tells readers to configure or check has a controls-table row. | Found: confirm each holds System administrator, Dynamics 365 administrator or Power Platform administrator directly
+turn on auditing and Enable SAS Logging in Purview
+Give your compliance team the Audit Logs or View-Only Audit Logs role | Fix: Add table coverage for transfer administrator-role assignment, enabling environment auditing separately from SAS logging, and assigning Purview audit-reader permissions. The current rows cover app ownership and SAS logging, not these three checklist controls. Retain the eight-row schema limit by consolidating related auditing rows or shortening the checklist to the controls the table documents.
 -->

@@ -2,37 +2,31 @@
   "slug": "microsoft-teams-improved-organization-for-muted-and-meeting-chats",
   "roadmapId": 559605,
   "title": "Microsoft Teams: new chat sections for muted and meeting chats",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-16",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
-  "verifierVerdict": "hold",
+  "attempts": 0,
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-16",
-    "reasons": [
-      "1 blocking finding (claim 38)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 40,
-    "confirmed": 39,
-    "unconfirmed": 0,
-    "contradicted": 1,
-    "blocker": 1,
-    "major": 0,
+    "claims": 47,
+    "confirmed": 46,
+    "unconfirmed": 1,
+    "contradicted": 0,
+    "blocker": 0,
+    "major": 1,
     "minor": 0
   },
-  "summary": "Hold: the briefing incorrectly says Microsoft Learn does not document these sections. The Microsoft Graph beta reference explicitly describes MutedChats and MeetingChats and their supported operations; the briefing should acknowledge that limited documentation without presenting it as a tenant-wide enablement switch. The defaults, rollout window and administrator preparation advice match the supplied records.",
+  "summary": "The defaults, rollout targets, affected users and absence of tenant controls agree with Microsoft's notice and roadmap. The Graph beta statements are documented. One descriptive sentence extends the notice's drag-and-drop behaviour from sections to chats without supporting evidence.",
   "claims": [
     {
       "n": 1,
-      "where": "What's changing; title; summary",
+      "where": "summary; What's changing; title",
       "type": "record",
-      "claim": "Teams is introducing Muted chats and Meeting chats as system sections in the chat and channels list.",
+      "claim": "Teams is introducing system sections named Muted chats and Meeting chats.",
       "status": "supported",
       "source": "Message Center post MC1269864",
       "quote": "Microsoft Teams is introducing two new system chat sections called Muted chats and Meeting chats.",
@@ -41,12 +35,12 @@
     },
     {
       "n": 2,
-      "where": "front matter: defaultState; summary; What's changing; Why it matters; rationale: risk",
+      "where": "front matter: defaultState; summary; What's changing; rationale: risk",
       "type": "default",
-      "claim": "The change is on by default because the Muted chats section is enabled without administrator action.",
+      "claim": "The change arrives without admin action, with Muted chats enabled by default, supporting defaultState on.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "Muted chats (on by default) are grouped together in a dedicated area",
+      "source": "Message Center post MC1269864",
+      "quote": "Muted chats section- Enabled by default.",
       "severity": null,
       "fix": null
     },
@@ -56,8 +50,8 @@
       "type": "default",
       "claim": "The Meeting chats section is disabled by default.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "meeting chats (off by default) can be collected into a single section for quick access.",
+      "source": "Message Center post MC1269864",
+      "quote": "Meeting chats section- Disabled by default.",
       "severity": null,
       "fix": null
     },
@@ -74,7 +68,40 @@
     },
     {
       "n": 5,
-      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "where": "summary; controls[0].note; Why it matters; Governance controls",
+      "type": "record",
+      "claim": "Microsoft's notice explicitly states that there are no admin controls for the sections.",
+      "status": "supported",
+      "source": "Message Center post MC1269864",
+      "quote": "There are no admin controls for these sections.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "controls[0].ui and controls[0].api; Governance guidance; Governance controls",
+      "type": "absence",
+      "claim": "No tenant-wide UI setting or automation switch for these sections is documented as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: MutedChats MeetingChats admin policy; Set-CsTeamsMessagingPolicy Muted sections. Read Manage messaging policies in Teams, cmdlet syntax excerpt, teamworkSection and MC1269864; no tenant switch found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: licensing.model and licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "Feature-specific licensing and metering are not yet published, so the licensing model is unknown.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Teams Muted chats Meeting chats sections license licensing pricing badge counts notifications; Muted chats sections Teams licensing. Read roadmap, MC1269864, teamworkSection and Teams Premium licensing excerpts; no licence or meter for these sections found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing",
       "type": "record",
       "claim": "Users can drag and drop the sections to reorder them.",
       "status": "supported",
@@ -84,7 +111,7 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 9,
       "where": "What's changing; Why it matters; Risk assessment; Governance guidance",
       "type": "record",
       "claim": "The Meeting chats section replaces the Meeting chats filter previously at the top of the chat and channel list.",
@@ -95,10 +122,21 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 10,
+      "where": "What's changing; Why it matters; Risk assessment; Governance guidance",
+      "type": "record",
+      "claim": "The Muted chats section initially appears at the bottom of the chat list.",
+      "status": "supported",
+      "source": "Message Center post MC1269864",
+      "quote": "Muted chats section- Enabled by default.- Muted chats that are not in Favorites or user‑created sections automatically move to this section.- The section appears at the bottom of the chat list.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
       "where": "What's changing; Why it matters; Scope; rationale: impact",
       "type": "record",
-      "claim": "Muted chats outside Favorites and user-created sections automatically move to the Muted chats section.",
+      "claim": "Muted chats outside Favorites and user-created sections automatically move into the Muted chats section.",
       "status": "supported",
       "source": "Message Center post MC1269864",
       "quote": "Muted chats that are not in Favorites or user‑created sections automatically move to this section.",
@@ -106,40 +144,18 @@
       "fix": null
     },
     {
-      "n": 8,
-      "where": "What's changing; Why it matters; Risk assessment; Governance guidance",
-      "type": "record",
-      "claim": "The Muted chats section initially appears at the bottom of the chat list.",
-      "status": "supported",
-      "source": "Message Center post MC1269864",
-      "quote": "The section appears at the bottom of the chat list.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
-      "where": "What's changing; Risk assessment: Change & support",
+      "n": 12,
+      "where": "What's changing; Risk assessment",
       "type": "record",
       "claim": "Unread chats in the Muted chats section continue to appear bold.",
       "status": "supported",
       "source": "Message Center post MC1269864",
-      "quote": "Unread chats continue to appear bold.",
+      "quote": "The section appears at the bottom of the chat list.- Unread chats continue to appear bold.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 10,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "Once enabled by the user, the Meeting chats section automatically collects meeting chats outside Favorites and user-created sections.",
-      "status": "supported",
-      "source": "Message Center post MC1269864",
-      "quote": "When enabled by the user, meeting chats that are not in Favorites or user‑created sections automatically move to this section.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
+      "n": 13,
       "where": "What's changing",
       "type": "record",
       "claim": "The Meeting chats section initially appears below the main chats list.",
@@ -150,10 +166,21 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 14,
+      "where": "What's changing; Risk assessment",
+      "type": "record",
+      "claim": "When users enable Meeting chats, meeting chats outside Favorites and user-created sections automatically move into it.",
+      "status": "supported",
+      "source": "Message Center post MC1269864",
+      "quote": "When enabled by the user, meeting chats that are not in Favorites or user‑created sections automatically move to this section.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
       "where": "What's changing",
       "type": "record",
-      "claim": "Unread meeting chats continue to appear bold.",
+      "claim": "Unread meeting chats continue to appear bold in the Meeting chats section.",
       "status": "supported",
       "source": "Message Center post MC1269864",
       "quote": "Unread chats continue to appear bold and contribute to badge counts.",
@@ -161,10 +188,10 @@
       "fix": null
     },
     {
-      "n": 13,
+      "n": 16,
       "where": "What's changing; Open questions",
       "type": "record",
-      "claim": "Unread meeting chats contribute to badge counts.",
+      "claim": "Unread meeting chats in the Meeting chats section contribute to badge counts.",
       "status": "supported",
       "source": "Message Center post MC1269864",
       "quote": "Unread chats continue to appear bold and contribute to badge counts.",
@@ -172,10 +199,10 @@
       "fix": null
     },
     {
-      "n": 14,
+      "n": 17,
       "where": "What's changing; Scope",
       "type": "record",
-      "claim": "Chats in Favorites or user-created sections are not moved.",
+      "claim": "Chats in Favorites or user-created sections are not moved by the new grouping.",
       "status": "supported",
       "source": "Message Center post MC1269864",
       "quote": "Chats in Favorites or user‑created sections are not moved.",
@@ -183,43 +210,32 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 18,
       "where": "front matter: status; What's changing",
       "type": "record",
-      "claim": "The roadmap status is In development.",
+      "claim": "Roadmap item 559605 has status In development.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "quote": "\"id\": 559605, \"status\": \"In development\", \"statusKey\": \"in-development\"",
       "severity": null,
       "fix": null
     },
     {
-      "n": 16,
+      "n": 19,
       "where": "front matter: targetDate; summary; What's changing",
       "type": "record",
-      "claim": "The roadmap target is January CY2027.",
+      "claim": "The roadmap target is January CY2027, not a committed delivery date.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"targetDate\": \"January CY2027\"",
+      "quote": "\"status\": \"In development\", \"targetDate\": \"January CY2027\"",
       "severity": null,
       "fix": null
     },
     {
-      "n": 17,
-      "where": "front matter: previewDate",
-      "type": "record",
-      "claim": "The roadmap gives no preview date.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": null",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
+      "n": 20,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
-      "claim": "The release phase is General Availability.",
+      "claim": "The roadmap lists General Availability as the release phase.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\"]",
@@ -227,7 +243,7 @@
       "fix": null
     },
     {
-      "n": 19,
+      "n": 21,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
@@ -238,7 +254,7 @@
       "fix": null
     },
     {
-      "n": 20,
+      "n": 22,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap lists Android, Desktop, iOS, Mac and Web.",
@@ -249,10 +265,21 @@
       "fix": null
     },
     {
-      "n": 21,
+      "n": 23,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap provides no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
       "where": "What's changing; Risk assessment; Governance guidance; Open questions",
       "type": "record",
-      "claim": "The roadmap states that Microsoft temporarily rolled back the feature on July 20, 2026.",
+      "claim": "The roadmap description records a temporary rollback on July 20, 2026.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Updated July 20, 2026: We have temporarily rolled back this feature. We apologize for any inconvenience.",
@@ -260,41 +287,30 @@
       "fix": null
     },
     {
-      "n": 22,
+      "n": 25,
       "where": "What's changing; Scope",
       "type": "record",
-      "claim": "The supplied Message Center notice was updated on November 5, 2026.",
+      "claim": "MC1269864 was updated on 5 November 2026.",
       "status": "supported",
       "source": "Message Center post MC1269864",
-      "quote": "Updated November 5, 2026: We have updated the timeline.",
+      "quote": "Updated November 5, 2026: We have updated the timeline. Thank you for your patience.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 23,
-      "where": "What's changing; Scope; front matter: changes",
-      "type": "date",
+      "n": 26,
+      "where": "What's changing; Scope",
+      "type": "record",
       "claim": "The notice targets the start of rollout for early January 2027.",
       "status": "supported",
       "source": "Message Center post MC1269864",
-      "quote": "Rollout begins in early January 2027 (previously early November 2026) (previously mid-October)",
+      "quote": "General Availability (Worldwide, GCC, GCC High, DoD): Rollout begins in early January 2027",
       "severity": null,
       "fix": null
     },
     {
-      "n": 24,
-      "where": "What's changing; Scope",
-      "type": "date",
-      "claim": "The notice expects rollout to complete by late January 2027.",
-      "status": "supported",
-      "source": "Message Center post MC1269864",
-      "quote": "is expected to complete by late January 2027 (previously mid-November 2026).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "What's changing; Risk assessment",
+      "n": 27,
+      "where": "What's changing; Risk assessment; Governance guidance",
       "type": "record",
       "claim": "The notice previously targeted the rollout start for early November 2026.",
       "status": "supported",
@@ -304,10 +320,10 @@
       "fix": null
     },
     {
-      "n": 26,
-      "where": "What's changing; Risk assessment",
+      "n": 28,
+      "where": "What's changing; Risk assessment; Governance guidance",
       "type": "record",
-      "claim": "An earlier rollout start target was mid-October.",
+      "claim": "The notice also records an earlier mid-October rollout-start target.",
       "status": "supported",
       "source": "Message Center post MC1269864",
       "quote": "(previously early November 2026) (previously mid-October)",
@@ -315,41 +331,63 @@
       "fix": null
     },
     {
-      "n": 27,
-      "where": "What's changing; Risk assessment",
-      "type": "record",
-      "claim": "The notice previously expected rollout completion by mid-November 2026.",
-      "status": "supported",
-      "source": "Message Center post MC1269864",
-      "quote": "expected to complete by late January 2027 (previously mid-November 2026).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
-      "where": "What's changing",
-      "type": "date",
-      "claim": "The roadmap dates are estimates rather than commitments.",
-      "status": "supported",
-      "source": "https://www.microsoft.com/microsoft-365/roadmap?id=559605",
-      "quote": "The AI at Work roadmap provides estimated release dates and descriptions for commercial features. All information is subject to change.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 29,
-      "where": "summary; controls[0].note; Why it matters; Governance controls",
+      "where": "What's changing; Scope",
       "type": "record",
-      "claim": "Microsoft's supplied notice states that there are no admin controls for these sections.",
+      "claim": "The notice expects rollout to complete by late January 2027.",
       "status": "supported",
       "source": "Message Center post MC1269864",
-      "quote": "There are no admin controls for these sections.",
+      "quote": "is expected to complete by late January 2027",
       "severity": null,
       "fix": null
     },
     {
       "n": 30,
-      "where": "Scope; Why it matters; rationale: impact",
+      "where": "What's changing; Risk assessment",
+      "type": "record",
+      "claim": "The notice previously targeted rollout completion for mid-November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1269864",
+      "quote": "is expected to complete by late January 2027 (previously mid-November 2026).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Beyond the acknowledged Graph beta reference, Learn has no feature page describing the announced user-interface behaviour as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Muted chats Meeting chats sections; Microsoft Teams Muted chats Meeting chats sections tenant admin policy enable disable. Read teamworkSection and Manage messaging policies in Teams; results described Graph or unrelated meeting-chat policies, not the announced UI behaviour.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing; Governance controls",
+      "type": "behaviour",
+      "claim": "The teamworkSection reference lists MutedChats and MeetingChats as system-defined section names.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/teamworksection?view=graph-rest-beta",
+      "quote": "System-defined sections\nMutedChats | The muted chats section.\nMeetingChats | The meeting chats section.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What's changing; Governance controls",
+      "type": "availability",
+      "claim": "The cited Microsoft Graph reference is a beta API reference, not a final production API guarantee.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/teamworksection?view=graph-rest-beta",
+      "quote": "APIs under the `/beta` version in Microsoft Graph are subject to change. Use of these APIs in production applications is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Why it matters; Scope; rationale: impact",
       "type": "record",
       "claim": "The notice identifies all Teams users in Microsoft 365 tenants, including Worldwide, GCC, GCC High and DoD, as affected.",
       "status": "supported",
@@ -359,10 +397,10 @@
       "fix": null
     },
     {
-      "n": 31,
+      "n": 35,
       "where": "Scope; Why it matters",
       "type": "record",
-      "claim": "The notice says no admin action is required.",
+      "claim": "The notice requires no admin action for the rollout.",
       "status": "supported",
       "source": "Message Center post MC1269864",
       "quote": "No admin action is required.",
@@ -370,10 +408,21 @@
       "fix": null
     },
     {
-      "n": 32,
-      "where": "Risk assessment; Governance guidance; Governance controls",
+      "n": 36,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The supplied notice sets no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1269864",
+      "quote": "Act by: none",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[0].note; Risk assessment; Governance guidance; Governance controls",
       "type": "admin-path",
-      "claim": "Microsoft's notice directs users to Settings > Chats and channels to manage the sections.",
+      "claim": "The notice directs users to Settings > Chats and channels to manage the sections.",
       "status": "supported",
       "source": "Message Center post MC1269864",
       "quote": "Direct users to Settings > Chats and channels to manage these sections.",
@@ -381,76 +430,21 @@
       "fix": null
     },
     {
-      "n": 33,
-      "where": "Cost and licensing; Governance guidance; rationale: cost",
-      "type": "record",
-      "claim": "The notice suggests informing users that the sections are available and can be turned on or off.",
-      "status": "supported",
-      "source": "Message Center post MC1269864",
-      "quote": "Inform users that new chat sections are available and that they can turn them on or off.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
-      "where": "Cost and licensing; Governance guidance; rationale: cost",
-      "type": "record",
-      "claim": "The notice suggests notifying helpdesk staff that muted chats may appear in a separate section by default.",
-      "status": "supported",
-      "source": "Message Center post MC1269864",
-      "quote": "Notify helpdesk staff that muted chats may appear in a separate section by default.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
-      "where": "Risk assessment: Security & identity",
-      "type": "record",
-      "claim": "The notice states that no compliance considerations were identified.",
-      "status": "supported",
-      "source": "Message Center post MC1269864",
-      "quote": "No compliance considerations identified. Review as appropriate for your organization.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "front matter: licensing; Cost and licensing; Open questions; rationale: cost",
-      "type": "absence",
-      "claim": "Feature-specific licensing and metering are not yet published, so the licensing model is unknown.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams \"Muted chats\" licensing license pricing; Teams \"Meeting chats\" \"sections\" \"license\". Read roadmap, supplied notice, learn.microsoft.com/microsoftteams/user-access and Graph beta teamworkSection reference; no feature-specific licence or meter found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "controls[0].ui and .api; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "No tenant-wide switch for enabling or disabling the two sections is documented in admin UI or automation.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams \"Muted chats\" admin disable policy PowerShell; Teams \"Meeting chats section\" license admin PowerShell. Read notice, Learn messaging-policies-in-teams and Graph beta teamworkSection; no tenant enable/disable switch found. Graph documents per-user section operations, not this switch.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 38,
-      "where": "What's changing; Cost and licensing; Governance guidance: After rollout",
-      "type": "absence",
-      "claim": "Microsoft Learn does not describe or document these sections at the time of writing.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/graph/api/resources/teamworksection?view=graph-rest-beta",
-      "quote": "| MutedChats | The muted chats section. |\n| MeetingChats | The meeting chats section. |\n\nSystem-defined sections can't be deleted, and only the **sortType** property can be updated.",
-      "severity": "blocker",
-      "fix": "Replace the blanket Learn-absence statements with: 'Microsoft Learn's Graph beta teamworkSection reference names MutedChats and MeetingChats and documents limited section operations. The defaults, rollout and user-setting guidance here come from MC1269864.' Add https://learn.microsoft.com/graph/api/resources/teamworksection?view=graph-rest-beta to sources. Revise After rollout to compare observed behaviour with the notice and monitor documentation updates. Do not equate beta per-user section operations with a tenant enable/disable switch."
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "record",
+      "claim": "The notice describes grouping existing chats, not new data access or sharing.",
+      "status": "supported",
+      "source": "Message Center post MC1269864",
+      "quote": "These sections allow users to organize their chat and channels list by grouping muted conversations and meeting chats into dedicated sections that users can turn on or off.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 39,
-      "where": "Risk assessment: Data exposure; Security & identity; rationale: risk",
+      "where": "Risk assessment: Security & identity",
       "type": "record",
-      "claim": "The notice describes chat-list grouping rather than announcing new data access, sharing, identity or permission changes.",
+      "claim": "The notice describes no identity, permission or access changes.",
       "status": "supported",
       "source": "Message Center post MC1269864",
       "quote": "These sections allow users to organize their chat and channels list by grouping muted conversations and meeting chats into dedicated sections that users can turn on or off.",
@@ -459,20 +453,97 @@
     },
     {
       "n": 40,
-      "where": "Risk assessment: Change & support; Open questions",
+      "where": "Risk assessment: Security & identity",
       "type": "record",
-      "claim": "The notice explicitly mentions badge counts for meeting chats but does not state badge-count behaviour for muted chats.",
+      "claim": "Microsoft states that no compliance considerations were identified.",
       "status": "supported",
       "source": "Message Center post MC1269864",
-      "quote": "The section appears at the bottom of the chat list.- Unread chats continue to appear bold.- Meeting chats section- Disabled by default.",
+      "quote": "No compliance considerations identified. Review as appropriate for your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Chats are moved by the user's own drag and drop.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Teams chat sections drag drop chats sections user organize. Read MC1269864 and teamworkSection; searched Learn results on organising Teams chats. The notice documents dragging sections, not dragging chats, and no authoritative passage read establishes this sentence.",
+      "severity": "major",
+      "fix": "Replace the bullet with: 'No change: chats are grouped automatically according to the muted-chat and meeting-chat rules described above; users can drag and drop the sections to reorder them.' MC1269864 documents moving sections, not moving chats by drag and drop."
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Change & support; Open questions",
+      "type": "record",
+      "claim": "The notice specifies badge counts for meeting chats but does not state badge-count or notification behaviour for the Muted chats section.",
+      "status": "supported",
+      "source": "Message Center post MC1269864",
+      "quote": "Muted chats section- Enabled by default.- Muted chats that are not in Favorites or user‑created sections automatically move to this section.- The section appears at the bottom of the chat list.- Unread chats continue to appear bold.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Cost and licensing; Governance guidance; rationale: cost",
+      "type": "record",
+      "claim": "Microsoft suggests informing users and notifying helpdesk staff about the change.",
+      "status": "supported",
+      "source": "Message Center post MC1269864",
+      "quote": "Inform users that new chat sections are available and that they can turn them on or off.- Notify helpdesk staff that muted chats may appear in a separate section by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The teamworkSection API represents and operates on sections within an individual user's Teams chat list.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/teamworksection?view=graph-rest-beta",
+      "quote": "Represents a section in a user's Microsoft Teams chat list that organizes chats, channels, and meetings into custom or system-defined groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "System-defined sections cannot be deleted through the documented API.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/teamworksection?view=graph-rest-beta",
+      "quote": "System-defined sections can't be deleted, and only the **sortType** property can be updated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Only sortType can be updated on system-defined sections through the documented API.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/teamworksection?view=graph-rest-beta",
+      "quote": "System-defined sections can't be deleted, and only the **sortType** property can be updated. Attempts to update other properties or to delete a system-defined section return `403 Forbidden`.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 5 November 2026 at 23:59:28.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-05T23:59:28\"",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-16T17:06:57.345Z",
+    "at": "2026-11-16T18:26:24.445Z",
     "summary": {
-      "links": 2,
+      "links": 3,
       "unreachable": 0,
       "uiPaths": 0,
       "uiPathsWithMissingWords": 0,
@@ -490,6 +561,11 @@
         "url": "https://www.microsoft.com/microsoft-365/roadmap?id=559605",
         "ok": true,
         "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/resources/teamworksection?view=graph-rest-beta",
+        "ok": true,
+        "status": 200
       }
     ],
     "controlChecks": [],
@@ -501,6 +577,12 @@
       "status": "held",
       "version": 1,
       "model": "none"
+    },
+    {
+      "date": "2026-11-16",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
     }
   ]
 }

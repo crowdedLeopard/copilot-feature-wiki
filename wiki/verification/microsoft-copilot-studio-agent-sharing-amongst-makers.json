@@ -1,0 +1,739 @@
+{
+  "slug": "microsoft-copilot-studio-agent-sharing-amongst-makers",
+  "roadmapId": 569475,
+  "title": "Copilot Studio: share agents with other makers on the Microsoft Copilot harness",
+  "status": "held",
+  "date": "2026-11-16",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [
+    "claim 52: severity blocker on a rationale: risk rating lowered to minor; ratings are judgements and cannot hold a page"
+  ],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-16",
+    "reasons": [
+      "1 blocking finding (claim 13)"
+    ]
+  },
+  "counts": {
+    "claims": 58,
+    "confirmed": 54,
+    "unconfirmed": 1,
+    "contradicted": 3,
+    "blocker": 1,
+    "major": 1,
+    "minor": 2
+  },
+  "summary": "Hold: the PowerShell example is not an executable version of Microsoft's documented sharing control, and the risk rationale incorrectly assumes viewers use the owner's connections. The roadmap facts and the warning about inconsistent Viewer and Editor documentation are supported.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "summary; What's changing; Scope",
+      "type": "record",
+      "claim": "Makers can share agents with other makers in the new Microsoft Copilot harness.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Enables sharing of agents with other makers in the new Microsoft Copilot harness.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap defines Agent Viewer as access to analytics and evaluations only.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Agent Viewer (view analytics/evaluations only)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap's Editor access permits viewing, editing, configuring, sharing and publishing the agent.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Editor (view, edit, configure, share, publish) access to an agent",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Security roles are assigned automatically.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "with auto-assigned security roles.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: status; summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The preview date is September CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"September CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The target date is October CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"October CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists General Availability and Preview without assigning separate feature parts to those phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\n    \"General Availability\",\n    \"Preview\"\n  ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\n    \"Worldwide (Standard Multi-Tenant)\"\n  ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The listed platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\n    \"Web\"\n  ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The Microsoft Copilot harness is a redesigned agent-building experience in Copilot Studio.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/faqs-copilot-harness",
+      "quote": "It's a redesigned way to build agents in Microsoft Copilot Studio, a single consolidated build surface",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "controls[0].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "Sharing rules are under Power Platform admin center > Manage > Environments > managed environment > Edit Managed Environments > Manage sharing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits",
+      "quote": "select Manage. ... select Environments. ... select a managed environment. ... Edit Managed Environments. ... Manage sharing",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "controls[0].api; Governance controls",
+      "type": "command",
+      "claim": "The printed Set-AdminPowerAppEnvironmentGovernanceConfiguration call with trailing (extendedSettings 'bot-authoringSharingDisabled') configures agent sharing limits.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits",
+      "quote": "$governanceConfiguration.settings.extendedSettings | Add-Member -MemberType NoteProperty -Name 'bot-authoringSharingDisabled' -Value True -Force",
+      "severity": "blocker",
+      "fix": "Remove the trailing parenthetical, which is not a cmdlet argument or a property assignment. Document the complete script: retrieve the environment with Get-AdminPowerAppEnvironment, assign $governanceConfiguration = $environment.Internal.properties.governanceConfiguration, add bot-authoringSharingDisabled with value True using the cited Add-Member statement, then run Set-AdminPowerAppEnvironmentGovernanceConfiguration -EnvironmentName <EnvironmentId> -UpdatedGovernanceConfiguration $governanceConfiguration. State that this example disables Editor sharing only; the same source documents bot-limitSharingMode and bot-maxLimitUserSharing for group and viewer limits."
+    },
+    {
+      "n": 14,
+      "where": "controls[1].ui and controls[1].api; Governance controls",
+      "type": "absence",
+      "claim": "No tenant-wide UI or automation switch specifically turning maker-to-maker agent sharing off is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio Microsoft Copilot harness agent sharing tenant-wide disable sharing PowerShell admin switch; \"Copilot Studio\" \"sharing\" \"tenant\" \"Set-TenantSettings\". Read sharing-controls-limits, Limit sharing, harness FAQ, tenant-settings and Set-TenantSettings excerpts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: defaultState; summary; Why it matters",
+      "type": "default",
+      "claim": "Sharing is user-opt-in: makers choose to share, without a separate harness enablement switch.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-share-agent",
+      "quote": "You can share your agents with others in your organization so they can see, test, and use your agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: licensing.model and licensing.notes",
+      "type": "licensing",
+      "claim": "The mixed licensing model reflects the sharing page's per-user prerequisite and usage-based Copilot Credit billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-share-agent",
+      "quote": "Using, building, testing, and evaluating agents might consume Copilot Credits. ... Users you share with have a Microsoft Copilot Studio per-user license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Using, building, testing and evaluating harness agents might consume Copilot Credits through usage-based billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-share-agent",
+      "quote": "The harness used to build this agent uses usage-based billing. Using, building, testing, and evaluating agents might consume Copilot Credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No separate sharing charge or pricing specifically for Agent Viewer or Editor access is published in the documentation checked.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio harness Agent Viewer Editor sharing license pricing Copilot Credits sharing charge. Read authoring-share-agent, harness FAQ and billing-credit-overview; licensing and cost-management search excerpts describe usage billing, not a sharing fee.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Cost and licensing; Governance guidance: Before rollout",
+      "type": "licensing",
+      "claim": "The Learn sharing page lists a Microsoft Copilot Studio per-user licence for users receiving sharing access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-share-agent",
+      "quote": "Users you share with have a Microsoft Copilot Studio per-user license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The sharing page says users without the licence can sign up for a trial.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-share-agent",
+      "quote": "Users who don't have a license can sign up for a trial.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "default",
+      "claim": "The documented sharing prerequisite is agent authentication configured to Authenticate with Microsoft.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-share-agent",
+      "quote": "User authentication for the agent is configured to Authenticate with Microsoft.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The sharing page requires publication to Teams + Microsoft 365 with Make agent available in Microsoft Copilot enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-share-agent",
+      "quote": "Agents you want to share are published to Teams + Microsoft 365, with Make agent available in Microsoft Copilot turned on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing",
+      "type": "admin-path",
+      "claim": "To share, open the agent from Agents, select Share near Publish, enter users or security groups and select Share.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-share-agent",
+      "quote": "Open the agent from the Agents page. ... Select the Share ... icon near Publish ... enter the user name, email addresses of individual users, or security groups ... Select Share to share the agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Learn says viewers can see the agent in their list, open its details and test it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-share-agent",
+      "quote": "Viewers can see the agent in their list of agents, open it to view details and test it",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Those viewers cannot edit the agent or its content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-share-agent",
+      "quote": "but they can't edit the agent or its content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "Learn distinguishes the new sharing experience from classic and says the new share experience gives viewing rights only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-share-agent",
+      "quote": "This article describes how to share agents that you create by using the new agent experience. ... When you use the new share experience, you can only give viewing rights to agents you share.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Learn directs makers to standard harness access to enable editing when sharing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-share-agent",
+      "quote": "Access standard harness agents and agent flows to enable editing when sharing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; Governance controls",
+      "type": "role",
+      "claim": "Learn also describes granting editing rights through environment security roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-share-agent",
+      "quote": "Add users to the agent's environment, and then assign users editing rights through the environment's security roles.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The same sharing page shows a Share permission dropdown containing Can edit and Can view analytics.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-share-agent",
+      "quote": "Screenshot of the Share panel permission dropdown with Can use selected and highlighted, alongside Can edit, Can view analytics, and Remove access options.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "The cited sharing page and roadmap do not explicitly map Agent Viewer and Editor to the new sharing page's different permission descriptions.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio agent viewer view instructions knowledge configuration owner connections editor publishing approval sharing. Read roadmap, authoring-share-agent, admin-sharing-controls-limits and admin-share-bots excerpts; no explicit cross-experience mapping found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Agents can be shared with the members of specified security groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-share-agent",
+      "quote": "All members within security groups that you specify",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Anything in the agent's instructions or knowledge configuration is visible to viewers.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Copilot Studio agent viewer view instructions knowledge configuration owner connections editor publishing approval sharing. Read authoring-share-agent and admin-share-bots excerpts; viewing agent details is stated, but visibility of all instructions and knowledge configuration is not.",
+      "severity": "major",
+      "fix": "Replace the inferred visibility statement with: 'Learn says viewers can open the agent to view details and test it; it does not specify which instructions or knowledge configuration details are visible.'"
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Learn warns that individual-user connection identities can make a shared agent work for its maker but fail for others.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-share-agent",
+      "quote": "connections are tied to the identity of each individual agent user. This means an agent might work for you but not for other users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "When an agent tool uses maker credentials, other users can perform operations with those credentials' permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-sharing-controls-limits",
+      "quote": "When an agent uses such a connection, other users of the agent can perform operations by using the permissions associated with the maker's credentials.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "The documented Editor/Viewer model permits Editor permissions for individual users, not security groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-sharing-controls-limits",
+      "quote": "Editor permissions can only be given to individual users. You can't grant Editor permissions to security groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "The documentation checked does not explicitly settle whether that individual-only Editor restriction holds in the new harness sharing experience.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Microsoft Copilot harness\" \"Editor\" \"security groups\" sharing. Read authoring-share-agent, admin-sharing-controls-limits, Limit sharing and harness FAQ; no explicit new-harness Editor/group rule found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "No separate approval step for an Editor's agent content changes is documented in the feature material checked.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Microsoft Copilot harness\" sharing publish changes approval. Read publication-publish-agent excerpt: maker reviews and confirms publishing; authoring-share-agent and sharing-controls-limits specify no separate change approver. Catalog submission approval is a distinct workflow.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Change & support; Governance controls",
+      "type": "behaviour",
+      "claim": "Sharing rules are enforced when someone attempts to share.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-sharing-controls-limits",
+      "quote": "Sharing rules are enforced when users try to share an app, flow, or agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Sharing rules do not revoke access users already had before the rules were applied.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-sharing-controls-limits",
+      "quote": "This enforcement doesn't affect users who already have access to the app, flow, or agent before you apply the rules.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Sharing-rule enforcement can take up to an hour after configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-sharing-controls-limits",
+      "quote": "After sharing rules are set in the Power Platform admin center, it might take up to an hour for them to start being enforced.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[0].note; Scope; Governance controls",
+      "type": "applicability",
+      "claim": "The sharing-limit rules described here are a Managed Environments control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-sharing-controls-limits",
+      "quote": "You configure the sharing limits for agents as a Managed Environments control in the Power Platform admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Sharing limits apply only to agents requiring authentication.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-sharing-controls-limits",
+      "quote": "Sharing limits only apply to agents that require authentication.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Sharing controls can be applied at scale through environment groups and rules.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-sharing-controls-limits",
+      "quote": "apply the sharing controls at scale using Environment Groups and Rules in the Power Platform admin center",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[0].governs; Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Only share with individuals (no security groups) prevents sharing with security groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits",
+      "quote": "If this setting is selected, owners and editors can only share with individuals as viewers. They can't share with a security group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[0].governs",
+      "type": "applicability",
+      "claim": "The Managed Environments sharing controls include a maximum-viewer setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits",
+      "quote": "If Only share with individuals (no security groups) is selected, you can control the maximum number of viewers with whom an agent can be shared with.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "summary; controls[0].note; Governance controls",
+      "type": "applicability",
+      "claim": "The harness FAQ identifies Managed Environment sharing controls and environment security groups as its sharing governance controls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/faqs-copilot-harness",
+      "quote": "Who agents are shared with: Managed environment sharing controls and environment security groups",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "The cited sharing and sharing-limit pages do not name the administrative role required to set the environment sharing limits.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio Managed Environments sharing limits administrator roles Power Platform administrator System Administrator. Read authoring-share-agent, admin-sharing-controls-limits and Limit sharing; these pages name no limit-setting admin role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "The cited sharing page does not separately specify a new-harness Editor licence requirement beyond its general sharing prerequisite.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio harness Agent Viewer Editor sharing license pricing Copilot Credits sharing charge. Read authoring-share-agent and harness FAQ; the prerequisite is generic and the editing instructions do not separately define Editor licensing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Cost and licensing",
+      "type": "applicability",
+      "claim": "The harness FAQ names environment credit allocations as a Power Platform admin center cost control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/faqs-copilot-harness",
+      "quote": "Set environment credit allocations: Reserve credits for an environment. This control applies only to prepaid capacity packs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Cost and licensing",
+      "type": "applicability",
+      "claim": "The harness FAQ names agent spending limits as a Power Platform admin center cost control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/faqs-copilot-harness",
+      "quote": "Set agent limits: Set limits on how much an agent can spend. An agent must consume some credits before you can set limits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "Access is removed through the Share panel's delete icon.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-share-agent",
+      "quote": "select the delete icon (\"X\") next to each group or user. You can undo the deletion if necessary. ... Select Share to stop sharing with your org or the removed users or groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "rationale: risk",
+      "type": "behaviour",
+      "claim": "Viewers reach the agent through the owner's connections.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-sharing-controls-limits",
+      "quote": "Connections configured to use end-user credentials aren't subject to this connection-sharing restriction because each user authenticates by using their own connection at runtime.",
+      "severity": "minor",
+      "fix": "Replace the blanket owner-connection assertion with: 'When tools use maker-provided credentials, shared-agent users can act with the maker's permissions; tools configured for end-user credentials use each user's own connection.' Keep the risk rationale consistent with the body."
+    },
+    {
+      "n": 53,
+      "where": "front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "Variable cost is appropriate because the harness has metered Copilot Credit consumption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/faqs-copilot-harness",
+      "quote": "The harness used to build this agent uses usage-based billing. Using, building, testing, and evaluating agents might consume Copilot Credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance guidance: After rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist directs readers to review credit use and remove access, but those controls have no rows in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Review credit use in the environments hosting shared agents using the cost controls ... Remove access ... through the Share panel's delete icon. The controls table lists only environment sharing limits and an absent tenant switch.",
+      "severity": "minor",
+      "fix": "Add rows for credit-usage review and maker-side access removal. For usage, https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview gives Power Platform admin center > Licensing > Copilot Studio. For removal, the cited sharing page gives Agents > agent > Share > People who can use the agent > delete icon > Share. Search each automation surface before claiming it is undocumented."
+    },
+    {
+      "n": 55,
+      "where": "rationale: impact",
+      "type": "behaviour",
+      "claim": "Users who only chat with an agent do not need Editor or viewing/testing access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-share-agent",
+      "quote": "select End user access. This action allows anyone in your organization to find and use the agent, but they can't see the agent's details or edit it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[0].governs; Governance guidance: Before rollout; Open questions",
+      "type": "applicability",
+      "claim": "The environment rule Let people grant Editor permissions when agents are shared controls owners' and editors' ability to grant Editor access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits",
+      "quote": "When selected: Owners and editors can share with any individual as an editor. When not selected: Owners and editors can't share with an individual as an editor.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[0].governs; Governance controls",
+      "type": "applicability",
+      "claim": "The environment rule Let people grant Viewer permissions when agents are shared controls sharing with individual viewers and security groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits",
+      "quote": "When selected: Owners and editors can share with any individual as a viewer and any security group. When not selected: Owners and editors can't share with an individual as a viewer, nor can they share with a security group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[0].note; Governance controls",
+      "type": "absence",
+      "claim": "The two sharing-limit pages do not explicitly name the new Microsoft Copilot harness Share panel as their enforcement surface.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Microsoft Copilot harness\" \"Editor\" \"security groups\" sharing. Read admin-sharing-controls-limits and managed-environment-sharing-limits in full; neither explicitly names that Share panel. The separate harness FAQ does identify these as sharing controls.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-16T18:26:35.831Z",
+    "summary": {
+      "links": 5,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=569475",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-share-agent",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/admin-sharing-controls-limits",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/faqs-copilot-harness",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether makers can share agents as Editor or Viewer, with security groups, and how many viewers",
+        "docs": "https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits",
+        "reachable": true,
+        "segments": [
+          "Manage",
+          "Environments",
+          "managed environment",
+          "Edit Managed Environments",
+          "Manage sharing"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether makers can share agents as Editor or Viewer, with security groups, and how many viewers",
+        "docs": "https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits",
+        "reachable": true,
+        "token": "Set-AdminPowerAppEnvironmentGovernanceConfiguration",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}
