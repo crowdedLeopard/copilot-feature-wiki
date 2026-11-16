@@ -79,7 +79,8 @@ every statement of fact as a single claim. Split compound sentences: "Global Adm
 turn it off under Settings > Org settings, and it is off by default in GCC" is three claims (the
 role, the path, the default in GCC). One claim is one checkable fact. A fact the page repeats, in
 the front matter, the table and the prose, is one claim that names each place it appears. Each
-control row gives at least two: the admin path and the call, or the absence of each.
+control row gives one claim per side: the admin path or its absence, and the call or its absence. A
+row with both sides `null` is a single absence claim.
 
 Sort each sentence into one of the three kinds the standard defines:
 
@@ -90,8 +91,9 @@ Sort each sentence into one of the three kinds the standard defines:
 - *Analysis*: the wiki's own reasoning and advice ("expect a rise in help-desk tickets", "pilot
   with a small group first"). Analysis is not checked for truth. But pull out any factual premise
   it rests on ("because transcripts are stored in the organiser's OneDrive") and check that premise
-  as a claim of whatever type it is, with the severity that type carries. Flag analysis that is
-  presented as Microsoft's own statement.
+  as a claim of whatever type it is, with the severity that type carries. Where advice is
+  attributed to Microsoft ("as Microsoft advises"), the attribution is a claim: the page must say
+  it. Advice that goes further than the page while carrying Microsoft's name is a minor finding.
 
 **2. Check record facts against the roadmap record.** Status, target and preview dates, clouds,
 platforms and release phase must match the record exactly wherever the prose mentions them. A date
@@ -99,12 +101,24 @@ more precise than the record gives is a contradiction. A target date written as 
 ("will be available in December 2026") while the status is not Launched is a finding. So is a
 cloud the page says is excluded when the record only fails to list it. Where the record and a
 Microsoft page disagree (the roadmap says "In development", Learn documents the setting as live),
-a page that reports both is right, and a page that silently picks one has a finding.
+a page that reports both is right, and a page that silently picks one has a finding. "Until now",
+"for the first time" and "previously" are claims about what the product did before, and need a
+source like any other.
 
 **3. Check documented facts against Microsoft pages.** Take the cited pages one at a time. For each,
-open it and check every claim that points to it. Then deal with the claims that point nowhere, with
-one or two targeted Learn searches each. If you find the supporting text on a Microsoft page the
-briefing does not cite, the claim is supported, and the fix is to cite that page.
+open it and check every claim that points to it. Then deal with the claims that point nowhere, by
+searching Learn. One search can serve several claims; what matters is that each of those claims
+was looked for with a query that names its subject. If you find the supporting text on a Microsoft
+page the briefing does not cite, the claim is supported, with a minor finding whose fix is to cite
+that page.
+
+Read the sentences around each passage you find. If the page states what the briefing says and then
+qualifies it for a case this feature falls in (a different role where the environment has a
+Dataverse database, a licence needed above a limit, a region excluded), a briefing that leaves the
+qualification out is contradicted when the qualification changes which role, licence, path or
+command its readers need. Where it changes nothing they would do, the claim is supported with a
+minor. If two Microsoft pages disagree and the briefing gives only one of them, the claim is
+supported by the page it cites, with a minor whose fix names the other page and what it says.
 
 How to judge each type:
 
@@ -122,7 +136,9 @@ How to judge each type:
 - **Licensing and cost.** Licence, plan and SKU names exactly as the page gives them; what is
   included and what is an add-on; the meter and its unit; where the charge appears. Any price,
   credit rate, quota or limit must match the page to the digit and the unit. "No additional licence
-  is required" and "included in" are claims like any other and need a stating passage. A narrower
+  is required", "included in", "not metered" and "no charge" are claims like any other and need a
+  stating passage; silence on a page about cost does not support them. "No meter is documented"
+  is the narrower claim that Microsoft has not said, and is checked as an absence in step 4. A narrower
   statement, that the feature's page lists its prerequisites and names no licence among them, is
   supported when you have read those prerequisites and that is what they show.
 - **Default state, roles, limits, retention periods, audit events, and dates that are not in the
@@ -135,46 +151,55 @@ How to judge each type:
   licensing or behaviour as final, that is a finding.
 - **Links.** A `docs` URL that does not open, or opens a page that does not contain the path or
   call, is a finding against that control side, even if the path turns out to be right elsewhere.
+  A link that works is part of that side's claim, not a claim of its own.
 
 **4. Check what the page says is absent.** "Not yet documented" (a control side set to `null`),
 "Not yet published" and a default state of `unknown` are claims that Microsoft has not said. The
 page tells readers that "Not yet documented" means there is nothing to configure yet, so a wrong
 one misleads as much as a wrong path. For each, run a targeted search for that control or fact for
-this feature. If a Microsoft page documents it, that is a finding, and the fix gives the page and
-what it says. If the search finds nothing relevant, the absence is supported; record the query you
-used.
+this feature. If a Microsoft page documents it, the claim is contradicted, and the fix gives the
+page and what it says. If the search finds nothing relevant, the absence is confirmed: its status is
+`supported`, its source is `null`, and its quote records the queries you ran and the pages you
+opened. A default state of `user-opt-in` that rests on there being no admin switch is checked the
+same way.
 
-**5. Check that the page agrees with itself.** Using only the facts you have now verified:
+**5. Check that the page agrees with itself.** Using only the facts you have now verified. A check
+here that finds nothing wrong adds nothing to the list; one that finds a conflict adds a claim of
+type `consistency`.
 
 - The default state, the licensing model and the cost rating are factual fields. Check each against
   the scale definitions in the standard and the facts you verified. A conflict is a contradiction:
   default `off` where the source says on by default; cost `none` where a meter or an add-on licence
-  is documented; licensing `included` where the page names an add-on. Read the standard's
-  definition of default state for features that are themselves controls before judging one.
+  is documented, or where neither the record nor a page says the feature is included; licensing `included` where the
+  page names an add-on. Read the standard's definition of default state for features that are
+  themselves controls before judging one.
 - The risk, impact and action ratings are judgements. Do not hold a page over them. Record a minor
   finding only when a rating cannot be reconciled with its definition on any reading of the
   verified facts, and say which definition it fails.
 - Do the rationales, the summary and the body say the same thing? A page that contradicts itself on
   a fact has a contradiction, whichever statement is right; check both against the source.
-- Does every control the governance checklist tells the reader to use appear in the controls table?
+- Does every control the governance checklist tells the reader to set, check or take stock of
+  appear in the controls table? A missing row is a minor finding, and the fix names the row to add.
 
 ## Severity and verdict
 
 Give every claim that needs a correction a severity.
 
-- **blocker**: a reader who trusted it could do the wrong thing. That is every contradicted claim,
-  and every unsupported claim of a kind readers act on: an admin path or setting label, a command or
-  any part of one, a licence requirement, a price, rate, quota or limit, a date, a default state, a
-  role, cloud availability, a retention period, an audit event, or a statement that a control
-  applies to this feature. It also covers a control or fact reported as absent that Microsoft
+- **blocker**: a reader who trusted it could do the wrong thing. That is every record fact or
+  documented fact that a source contradicts, and every unsupported claim of a kind readers act on:
+  an admin path or setting label, a command or any part of one, a licence requirement, a price,
+  rate, quota or limit (or a statement that there is none), a date, a default state, a role, cloud
+  availability, a retention period, an audit event, or a statement that a control applies to this
+  feature. It also covers a control or fact reported as absent that Microsoft
   documents, a `docs` link that does not show the path or call, and a factual field (default state,
   licensing model, cost) that conflicts with a verified fact.
 - **major**: an unsupported statement about how the feature behaves that would not by itself change
   what an administrator does.
 - **minor**: true but misleading in form, or a matter of judgement: a target date worded as firm, a
   preview not flagged, an out-of-date product name, a source that supports the claim but is not
-  cited, a risk, impact or action rating that does not fit its definition. A minor can sit on a
-  supported claim.
+  cited, a second Microsoft page that disagrees, advice attributed to Microsoft beyond what the
+  page says, a checklist control with no row in the table, a risk, impact or action rating that
+  does not fit its definition. A minor can sit on a supported claim.
 
 The verdict follows mechanically:
 
@@ -208,7 +233,7 @@ file. UTF-8, no comments, no trailing commas, no Markdown fence.
       "type": "record | admin-path | command | licensing | cost | default | role | date | availability | behaviour | applicability | absence | consistency",
       "claim": "The claim as the page makes it, in one sentence.",
       "status": "supported | contradicted | unsupported",
-      "source": "The URL you read, 'roadmap record' for record facts, 'page' for a conflict inside the page, or null when nothing was found.",
+      "source": "The URL you read, 'roadmap record' for record facts, 'page' for a conflict inside the page, or null when no page states it (an unsupported claim, or a confirmed absence).",
       "quote": "The text you read that supports or contradicts the claim, as it reads on the page, up to 300 characters. For a confirmed absence or an unsupported claim, 'Searched:' followed by the queries you ran and the pages you opened.",
       "severity": "blocker | major | minor | null",
       "fix": "What the page should say instead, exactly enough for the writer to apply without further research; null when nothing needs to change."
@@ -226,7 +251,10 @@ Rules for the file:
   form needs correcting.
 - A claim of type `consistency` is a conflict inside the page or between a field and the standard's
   scale. Its status is `contradicted`, its source is the page or the Microsoft page that settles
-  it, and its quote gives the two passages that disagree.
+  it, and its quote gives the two passages that disagree. Its severity is blocker when the conflict
+  is over a fact (two statements disagree, or a factual field conflicts with a verified fact) and
+  minor when it is a matter of judgement or form (a risk, impact or action rating, or a checklist
+  control with no row). Severity alone decides the verdict.
 - A `fix` is concrete: "Set controls[1].api to null: the cited reference page has no -AllowedTypes
   parameter", "Replace the path with 'Settings > Org settings > Copilot' as given at <url>",
   "Change 'will be available in December 2026' to 'targeted for December CY2026 on the roadmap'",

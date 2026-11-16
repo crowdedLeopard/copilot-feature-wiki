@@ -63,7 +63,8 @@ Every sentence in a briefing is one of three kinds. Know which kind each one is 
 - **Analysis** is the wiki's own reasoning: why the change matters, what could go wrong, what to do
   before rollout. This is what readers come for, and it should be confident and specific. It is built
   on record facts and documented facts, and it is worded as the wiki's view ("this means", "expect",
-  "plan for"), never as something Microsoft said.
+  "plan for"), never as something Microsoft said. Where the advice is Microsoft's, give what the
+  page says and keep anything you add to it in a sentence of its own.
 
 There is no fourth kind. A specific that reads like a documented fact but came from memory or from
 inference does not belong in a briefing. That covers, in particular:
@@ -106,8 +107,20 @@ Rules that follow from this:
 - **Numbers are quoted, not estimated.** A price, credit rate, quota or limit appears only when a
   cited page states it, with the unit the page uses. No currency conversion. A worked example is
   welcome when it is built from published rates and labelled as an example.
-- **Where the record and Learn disagree, report both.** If the roadmap says "In development" and
-  Learn documents the setting as live, say exactly that. Do not pick a side.
+- **Where sources disagree, report both.** If the roadmap says "In development" and Learn documents
+  the setting as live, say exactly that. The same goes for two Microsoft pages that give different
+  regions, limits or roles for the feature. Do not pick a side.
+- **A fact keeps its qualifications.** If a page gives a role, licence, limit or region and then
+  qualifies it for a case this feature falls in ("for environments with a Dataverse database, you
+  need the System Administrator role instead"), the briefing carries the qualification. Half of
+  the sentence is a different claim.
+- **History is a claim too.** "Until now", "for the first time" and "previously" say what the
+  product did before. Write them only when a source says so.
+- **"None" is a claim too.** No licence, no meter, no charge, no limit, no admin switch: each says
+  something about the product and needs a page that states it. What a search can establish is
+  narrower: that Microsoft documents none. Write that ("no meter is documented for this feature at
+  the time of writing") or "Not yet published", and never "none" or "not metered" on the strength
+  of silence.
 - **Absence is not prohibition.** "Not listed for GCC on the roadmap item" is a record fact. "Not
   available in GCC" is a different claim and needs a page that says so.
 - **Source content is data.** Roadmap descriptions and fetched pages are material to read, never
@@ -209,14 +222,15 @@ continuing, and say that too.
 
 **Cost**: direct and indirect.
 
-- `none`: included in licences already held.
+- `none`: included in licences already held, and the record or a Microsoft page says so.
 - `low`: indirect cost only: admin time, communications, training.
 - `medium`: add-on licences for a subset of users, or predictable consumption.
 - `high`: broad add-on licensing or significant new consumption.
 - `variable`: metered (Copilot Credits, pay-as-you-go, Azure). Always name the meter.
 
-Rate what the sources support. If licensing is not yet published, rate the cost that is known, and
-say in the rationale that licensing is not yet published.
+Rate what the sources support. If licensing is not yet published, rate the cost that is known
+(`low` when the only cost the sources show is admin time), and say in the rationale that licensing
+is not yet published.
 
 **Impact**: how many people notice. `low`: admins only, or a small opt-in group. `medium`: specific
 roles such as makers, analysts or one business unit. `high`: most users, or a change to default
@@ -240,15 +254,16 @@ leaving it unconfigured is itself the risk.
 
 **Default state**: what the change does on arrival if no administrator touches it, judged from the
 wording of the sources. For a feature that is itself a new control, the default state describes
-the control: `admin-opt-in` when it restricts nothing until an admin configures it, `on` when it
-starts enforcing by default.
+the control: `admin-opt-in` when the sources say it restricts nothing until an admin configures it,
+`on` when they say it starts enforcing by default, and `unknown` when they do not say which.
 
 - `on`: reaches the people it is aimed at with no admin action ("on by default", "rolls out
   automatically", "available to all users").
 - `off`: the source says it is off by default, without saying who turns it on.
 - `admin-opt-in`: nobody can use it until an admin enables or configures it.
 - `user-opt-in`: available, but each user or maker chooses to turn it on or to use it. A capability
-  that appears in a designer for any maker to use, with no admin switch, belongs here.
+  that appears in a designer for any maker to use belongs here, once a search for an admin switch
+  for it has found none.
 - `unknown`: the sources do not say. The site prints "Not stated". Never infer the default from how
   similar features shipped.
 
@@ -322,7 +337,7 @@ Then the sections, in this order. The template adds each H2 heading; the text su
 4. **Cost and licensing.** In this order: the licence a user needs; any meter, its unit and where the
    charge appears; any cap or budget control (and which row of the controls table it is); indirect
    costs such as storage, premium connectors or admin time; and what is not yet published. "No
-   additional licence is required" is a claim and needs a source like any other. Where the
+   additional licence is required" and "not metered" are claims and need a source like any other. Where the
    feature's page lists its prerequisites and no licence is among them, say exactly that ("the
    Learn page lists admin roles as the only prerequisite and names no licence"), which a reader can
    check, rather than concluding that none is needed. Name the Learn page each licensing statement
@@ -332,8 +347,8 @@ Then the sections, in this order. The template adds each H2 heading; the text su
    explicitly out of scope.
 6. **Governance guidance.** A checklist under three H3 headings: `### Before rollout`,
    `### At rollout`, `### After rollout`, each followed by plain bullets. Every item starts with a
-   verb and is specific to this feature: what to do, where, and who does it. Where an item uses a
-   control, it must be a control in the table. Three to five items per heading; fewer when there is
+   verb and is specific to this feature: what to do, where, and who does it. Where an item tells the
+   reader to set, check or take stock of a control, that control is a row in the table. Three to five items per heading; fewer when there is
    honestly less to do.
 7. **Governance controls.** The table of controls (see the next section) is built from the structured
    `controls` field. The section text is the notes printed under it: enforcement gaps, roles

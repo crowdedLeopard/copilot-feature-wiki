@@ -175,8 +175,11 @@ As the verifier:
 
 - For every admin path, setting label, cmdlet, parameter, endpoint and command: is there an
   `evidence` entry whose quote contains it? If not, set that side to `null` or remove the sentence.
-- For every licence, price, credit rate, limit, role, date and default: the same test. Dates and
-  status in the text match the roadmap record exactly.
+- For every licence, price, credit rate, limit, role, date and default: the same test. It applies
+  equally to "none": no licence, no meter, no charge, no admin switch. Dates and status in the text
+  match the roadmap record exactly.
+- Does each role, licence, limit and region keep the qualification its page gives for this
+  feature's case? Is anything attributed to Microsoft that the page does not say?
 - Does any sentence present the roadmap's plan as shipped behaviour, a preview page as the final
   design, or a neighbouring feature's control as this feature's?
 - For every `null` control side and every "Not yet documented" or "Not yet published": did you run
