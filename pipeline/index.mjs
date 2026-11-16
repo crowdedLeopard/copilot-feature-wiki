@@ -36,6 +36,8 @@ async function main() {
   if (held.length) {
     lines.push(`## Held for correction (${held.length})`, '', 'Not published. Each failed its independent check against Microsoft Learn, or has not had one yet, and is queued for the writer with the verifier\'s findings.', '');
     for (const h of held) lines.push(`- [${h.data.title}](_held/${h.slug}.md) · ${h.report?.hold?.reason || 'unverified'}${h.report?.hold?.since ? ` since ${h.report.hold.since}` : ''}. ${(h.report?.hold?.reasons || []).join('; ')}`);
+    lines.push('');
+  }
   if (archived.length) {
     lines.push(`## Archive (${archived.length})`, '', 'Briefings whose roadmap item was cancelled or left the roadmap. Kept for reference, not for action.', '');
     for (const p of archived) lines.push(`- [${p.data.title}](features/${p.slug}.md) · archived ${p.data.archived.date} (${p.data.archived.reason === 'cancelled' ? 'cancelled by Microsoft' : 'left the roadmap'}). ${p.data.summary}`);
