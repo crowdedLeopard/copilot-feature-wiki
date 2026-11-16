@@ -1,7 +1,7 @@
 # Lint report
 
-Generated 2026-11-16T14:33:22.292Z. 11 briefings, 4 concepts, 0 quarantined.
-Independent check: 0 verified, 0 verified with gaps, 11 awaiting correction (live under grace), 0 not yet checked, 0 stale; 73 held and not published.
+Generated 2026-11-16T14:44:29.657Z. 11 briefings, 4 concepts, 0 quarantined.
+Independent check: 0 verified, 0 verified with gaps, 11 awaiting correction (live under grace), 4 not yet checked, 0 stale; 73 held and not published.
 
 ## Errors (0)
 
@@ -95,7 +95,7 @@ Independent check: 0 verified, 0 verified with gaps, 11 awaiting correction (liv
 - features/entra-id-backup-and-recovery-30-day.md: failed its check on 2026-11-16 (3 contradicted, 7 unconfirmed of 51 statements); live under grace with a notice, corrected version queued
 - features/m365-admin-center-agent-level-pay-as-you-go-controls.md: failed its check on 2026-11-16 (9 contradicted, 3 unconfirmed of 63 statements); live under grace with a notice, corrected version queued
 
-## Info (19)
+## Info (33)
 - features/agent-365-control-plane-for-agents.md: related "m365-copilot-agent-lifecycle-management-rules" is held and not published (the link is dropped from the page until it returns)
 - features/copilot-studio-computer-use-for-web-browsing-on-microsoft-copilot-harness.md: control "Switch specific to web browsing on the Microsoft Copilot harness" has neither an admin UI nor an API documented
 - features/copilot-studio-cost-management-m365-admin-center.md: related "m365-copilot-chat-usage-based-billing-models-model-selector" is held and not published (the link is dropped from the page until it returns)
@@ -115,3 +115,17 @@ Independent check: 0 verified, 0 verified with gaps, 11 awaiting correction (liv
 - features/copilot-studio-computer-use-for-web-browsing-on-microsoft-copilot-harness.md: orphan (no inbound related links)
 - features/copilot-studio-purview-information-protection-labelled-files.md: orphan (no inbound related links)
 - features/entra-id-backup-and-recovery-30-day.md: orphan (no inbound related links)
+- concepts/agent-identity.md: related "copilot-studio-block-maker-provided-credentials" is held and not published (the link is dropped from the page until it returns)
+- concepts/agent-identity.md: related "m365-copilot-federated-connectors-write-update-delete" is held and not published (the link is dropped from the page until it returns)
+- concepts/agent-identity.md: written by hand before the concept standard (queued for a rewrite)
+- concepts/agent-identity.md: not yet checked against Microsoft Learn (queued)
+- concepts/copilot-credits.md: related "m365-copilot-chat-usage-based-billing-models-model-selector" is held and not published (the link is dropped from the page until it returns)
+- concepts/copilot-credits.md: related "m365-admin-center-copilot-credits-usage-report" is held and not published (the link is dropped from the page until it returns)
+- concepts/copilot-credits.md: written by hand before the concept standard (queued for a rewrite)
+- concepts/copilot-credits.md: not yet checked against Microsoft Learn (queued)
+- concepts/data-policies.md: written by hand before the concept standard (queued for a rewrite)
+- concepts/data-policies.md: not yet checked against Microsoft Learn (queued)
+- concepts/managed-environments.md: related "power-platform-maker-guidelines-copilot-studio" is held and not published (the link is dropped from the page until it returns)
+- concepts/managed-environments.md: related "copilot-studio-block-maker-provided-credentials" is held and not published (the link is dropped from the page until it returns)
+- concepts/managed-environments.md: written by hand before the concept standard (queued for a rewrite)
+- concepts/managed-environments.md: not yet checked against Microsoft Learn (queued)
