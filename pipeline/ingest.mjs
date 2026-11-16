@@ -7,11 +7,16 @@
  *   raw/roadmap/items/<id>.json   one file per in-scope roadmap item (raw layer, never edited by hand)
  *   data/catalog.json             lightweight list of every in-scope item (powers the Radar page)
  *   data/queue.json               items the compile step should write or refresh, best first
+ *   data/lifecycle.json           when each briefed item was last seen on the roadmap, and which are missing
+ *
+ * It also archives briefings whose roadmap item Microsoft has cancelled, or which have been gone from
+ * the roadmap for the grace period (see lib/lifecycle.mjs), and queues live pages that are due a re-check.
  */
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { TOPIC_IDS, topicForProducts, statusFromRoadmap } from '../config/taxonomy.mjs';
 import { RAW_DIR, DATA_DIR, FEATURES_DIR, readJson, writeJson, appendLog, today, stripHtml } from './lib/util.mjs';
+import { archiveBriefing, isReviewDue, daysBetween, REMOVED_GRACE_DAYS } from './lib/lifecycle.mjs';
 
 const ROADMAP_URL = process.env.ROADMAP_URL || 'https://www.microsoft.com/releasecommunications/api/v1/m365';
 const ITEMS_DIR = path.join(RAW_DIR, 'roadmap', 'items');
@@ -29,7 +34,7 @@ const ADMIN_CENTRE = /^Microsoft 365 admin center$/i;
 function priorityFor(item, reason) {
   const ageDays = (Date.now() - new Date(item.modified).getTime()) / 86400000;
   let p = 0;
-  if (reason !== 'no-briefing') p += 4; // keep existing briefings true before writing new ones
+  if (['roadmap-updated', 'status-changed', 'restored'].includes(reason)) p += 4; // keep existing briefings true before writing new ones
   if (PRIORITY.test(item.title + ' ' + item.description)) p += 2;
   if (PRIORITY.test(item.title)) p += 1; // a control named in the title is nearly always one
   if (item.topic === 'governance' && !item.products.some((name) => ADMIN_CENTRE.test(name))) p -= 1;
@@ -81,7 +86,9 @@ async function existingBriefings() {
     const id = md.match(/^roadmapId:\s*(\d+)/m)?.[1];
     const status = md.match(/^status:\s*"?([a-z-]+)"?/m)?.[1];
     const modified = md.match(/^roadmapModified:\s*"?([^"\n]+)"?/m)?.[1];
-    if (id) map.set(Number(id), { file: f, slug: f.replace(/\.md$/, ''), status, roadmapModified: modified });
+    const updated = md.match(/^updated:\s*"?(\d{4}-\d{2}-\d{2})"?/m)?.[1];
+    const archived = /^archived:/m.test(md);
+    if (id) map.set(Number(id), { file: f, slug: f.replace(/\.md$/, ''), status, roadmapModified: modified, updated, archived });
   }
   return map;
 }
@@ -89,12 +96,39 @@ async function existingBriefings() {
 async function main() {
   const started = Date.now();
   const all = await fetchRoadmap();
-  const inScope = all.map(normalise).filter((i) => i.topic && i.statusKey !== 'cancelled');
+  const feed = all.map(normalise).filter((i) => i.topic); // everything in scope, cancelled items included
+  const inScope = feed.filter((i) => i.statusKey !== 'cancelled'); // what the radar tracks and the queue draws from
+  const feedById = new Map(feed.map((i) => [i.id, i]));
   await fs.mkdir(ITEMS_DIR, { recursive: true });
 
   const briefings = await existingBriefings();
   const queue = [];
-  let added = 0, changed = 0;
+  let added = 0, changed = 0, reviewDue = 0;
+
+  // Briefings whose roadmap item was cancelled, or has gone from the feed, are archived in place. A
+  // missing item gets a grace period first, because a feed hiccup should not archive anything.
+  const lifecycle = await readJson(path.join(DATA_DIR, 'lifecycle.json'), { seen: {}, missing: {} });
+  lifecycle.seen ||= {}; lifecycle.missing ||= {};
+  const archivedNow = [];
+  for (const [id, brief] of briefings) {
+    if (brief.archived) { delete lifecycle.seen[id]; delete lifecycle.missing[id]; continue; }
+    const item = feedById.get(id);
+    if (item && item.statusKey === 'cancelled') {
+      if (await archiveBriefing(brief.slug, { reason: 'cancelled', lastSeen: today() })) archivedNow.push(`${brief.slug} (cancelled by Microsoft)`);
+      delete lifecycle.seen[id]; delete lifecycle.missing[id];
+    } else if (item) {
+      lifecycle.seen[id] = today();
+      delete lifecycle.missing[id];
+    } else {
+      const gone = lifecycle.missing[id] || { lastSeen: lifecycle.seen[id] || null, missingSince: today() };
+      lifecycle.missing[id] = gone;
+      if (daysBetween(gone.missingSince) >= REMOVED_GRACE_DAYS) {
+        if (await archiveBriefing(brief.slug, { reason: 'removed', lastSeen: gone.lastSeen })) archivedNow.push(`${brief.slug} (left the roadmap)`);
+        delete lifecycle.seen[id]; delete lifecycle.missing[id];
+      }
+    }
+  }
+  await writeJson(path.join(DATA_DIR, 'lifecycle.json'), { generated: new Date().toISOString(), graceDays: REMOVED_GRACE_DAYS, seen: lifecycle.seen, missing: lifecycle.missing });
 
   for (const item of inScope) {
     const file = path.join(ITEMS_DIR, `${item.id}.json`);
@@ -108,8 +142,10 @@ async function main() {
     const brief = briefings.get(item.id);
     let reason = null;
     if (!brief) reason = 'no-briefing';
+    else if (brief.archived) reason = 'restored'; // the item is back on the roadmap: the rewrite replaces the archived page
     else if (brief.roadmapModified && brief.roadmapModified !== item.modified) reason = 'roadmap-updated';
     else if (brief.status && brief.status !== item.statusKey) reason = 'status-changed';
+    else if (isReviewDue(brief)) { reason = 'review-due'; reviewDue++; } // untouched too long: re-check controls, licensing and status
     if (reason) {
       queue.push({
         id: item.id,
@@ -136,10 +172,16 @@ async function main() {
   await writeJson(path.join(DATA_DIR, 'queue.json'), { generated: new Date().toISOString(), count: queue.length, byTopic, items: queue });
 
   const depth = Object.entries(byTopic).map(([id, n]) => `${id} ${n}`).join(', ');
-  const summary = `- ${today()} ingest: ${all.length} roadmap items fetched, ${inScope.length} in scope, ${added} new, ${changed} changed, ${queue.length} queued for compile (${depth}) (${Math.round((Date.now() - started) / 1000)}s)`;
+  const missing = Object.keys(lifecycle.missing).length;
+  const summary = `- ${today()} ingest: ${all.length} roadmap items fetched, ${inScope.length} in scope, ${added} new, ${changed} changed, ${queue.length} queued for compile (${depth}; ${reviewDue} review due), ${archivedNow.length} archived, ${missing} briefed item(s) missing from the feed (${Math.round((Date.now() - started) / 1000)}s)`;
   await appendLog(summary);
+  for (const a of archivedNow) await appendLog(`- ${today()} archive: ${a}`);
   console.log(summary);
-  if (process.env.GITHUB_STEP_SUMMARY) await fs.appendFile(process.env.GITHUB_STEP_SUMMARY, summary.slice(2) + '\n');
+  for (const a of archivedNow) console.log(`archived ${a}`);
+  if (process.env.GITHUB_STEP_SUMMARY) {
+    await fs.appendFile(process.env.GITHUB_STEP_SUMMARY, summary.slice(2) + '\n');
+    for (const a of archivedNow) await fs.appendFile(process.env.GITHUB_STEP_SUMMARY, `- archived ${a}\n`);
+  }
 }
 
 main().catch((err) => { console.error(err); process.exit(1); });

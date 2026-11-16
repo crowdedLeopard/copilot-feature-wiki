@@ -14,6 +14,7 @@ import { loadPages, loadConcepts } from './lib/pages.mjs';
 import { RAW_DIR, WIKI_DIR, FEATURES_DIR, DATA_DIR, readJson, writeJson, appendLog, today } from './lib/util.mjs';
 import { LEGACY_DESK_TOPIC } from '../config/taxonomy.mjs';
 import { loadGlossary, saveGlossary, normaliseTags, defineTags } from './lib/tags.mjs';
+import { isReviewDue, reviewDueAfter } from './lib/lifecycle.mjs';
 
 const QUARANTINE = path.join(WIKI_DIR, '_quarantine');
 
@@ -82,7 +83,8 @@ async function main() {
     for (const t of fm.tags) if (!glossary.tags[t]?.description) findings.warnings.push(`${where}: tag "${t}" has no description in wiki/tags.json yet`);
     if (fm.confidence === 'low') findings.info.push(`${where}: low confidence, roadmap text only`);
     const ageDays = (Date.now() - new Date(fm.updated).getTime()) / 86400000;
-    if (fm.status !== 'launched' && ageDays > 120) findings.warnings.push(`${where}: not reviewed for ${Math.round(ageDays)} days`);
+    if (isReviewDue(fm)) findings.warnings.push(`${where}: not reviewed for ${Math.round(ageDays)} days (limit ${reviewDueAfter(fm.status)}; queued as review-due)`);
+    if (fm.archived && !page.body.includes('## ')) findings.warnings.push(`${where}: archived page has lost its body`);
   }
   for (const p of pages) if (!inbound.has(p.slug) && !p.error) findings.info.push(`features/${p.file}: orphan (no inbound related links)`);
   for (const c of concepts) {

@@ -61,6 +61,19 @@ export const TOPICS = [
 ];
 
 export const TOPIC_IDS = TOPICS.map((t) => t.id);
+
+// What happens to a briefing after it is written. Nothing is deleted: a page whose roadmap item is
+// cancelled, or has been gone from the roadmap for the grace period, is archived in place (kept at
+// its address, listed under /archive/). A live page untouched for the review period goes back into
+// its topic's queue for a re-check. Used by pipeline/lib/lifecycle.mjs and the site.
+export const LIFECYCLE = {
+  removedGraceDays: 90,
+  reviewAfterDays: { default: 120, launched: 180 },
+};
+export const ARCHIVE_REASON = {
+  cancelled: { label: 'Cancelled by Microsoft', help: 'Microsoft marked the roadmap item as cancelled.' },
+  removed: { label: 'Left the roadmap', help: `The item disappeared from the Microsoft 365 Roadmap and did not return within ${LIFECYCLE.removedGraceDays} days.` },
+};
 export const TOPIC_BY_ID = Object.fromEntries(TOPICS.map((t) => [t.id, t]));
 
 export function topicForProducts(products = []) {

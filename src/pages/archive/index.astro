@@ -1,0 +1,77 @@
+---
+import Base from '../../layouts/Base.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import Badge from '../../components/Badge.astro';
+import { archivedFeatures, allFeatures, lifecycle, catalog } from '../../lib/data';
+import { TOPIC_BY_ID, ARCHIVE_REASON, LIFECYCLE, featureUrl, formatDate, href } from '../../lib/site';
+
+const archived = await archivedFeatures();
+const live = await allFeatures();
+const byReason = ['cancelled', 'removed'].map((r) => ({ id: r, ...(ARCHIVE_REASON as Record<string, { label: string; help: string }>)[r], items: archived.filter((f) => f.data.archived?.reason === r) }));
+// Live briefings whose roadmap item has not been seen in the feed lately: on notice, not yet archived.
+const onNotice = live
+  .map((f) => ({ f, gone: f.data.roadmapId ? lifecycle.missing[String(f.data.roadmapId)] : undefined }))
+  .filter((x): x is { f: typeof live[number]; gone: { lastSeen: string | null; missingSince: string } } => Boolean(x.gone))
+  .sort((a, b) => a.gone.missingSince.localeCompare(b.gone.missingSince));
+---
+
+<Base title="Archive" description="Briefings whose roadmap item Microsoft cancelled or withdrew. Kept in full for reference." current="archive">
+  <div class="wrap">
+    <div class="article-head" style="padding-bottom:1rem">
+      <div class="eyebrow"><span>Archive</span><span class="sep"></span><span>{archived.length} briefings</span></div>
+      <h1 class="display">Archive</h1>
+      <p class="standfirst">Briefings are never deleted. When Microsoft cancels a roadmap item, or an item leaves the roadmap and stays away for {LIFECYCLE.removedGraceDays} days, its briefing moves here. Each page keeps its address, its full text and its place in search, with a dated notice explaining why it was archived. Read them for what was planned and how it was assessed, not as guidance to act on.</p>
+      <div class="stats" style="margin-top:1.5rem">
+        <div class="stat"><b>{archived.length}</b><span>archived</span></div>
+        {byReason.map((r) => <div class="stat"><b>{r.items.length}</b><span>{r.label.toLowerCase()}</span></div>)}
+        <div class="stat"><b>{onNotice.length}</b><span>on notice</span></div>
+        <div class="stat"><b>{live.length}</b><span>live briefings</span></div>
+      </div>
+    </div>
+
+    {byReason.map((r) => (
+      <>
+        <SectionHead title={`${r.label} · ${r.items.length}`} />
+        {r.items.length ? (
+          <table class="radar">
+            <thead><tr><th>Briefing</th><th>Topic</th><th>Status</th><th>Archived</th></tr></thead>
+            <tbody>
+              {r.items.map((f) => (
+                <tr>
+                  <td class="t"><a href={featureUrl(f.data.slug)}>{f.data.title}</a><br /><span class="muted small">{f.data.summary}</span></td>
+                  <td>{(TOPIC_BY_ID as Record<string, { short: string }>)[f.data.topic]?.short ?? f.data.topic}</td>
+                  <td><Badge status={f.data.status} /></td>
+                  <td class="d">{formatDate(f.data.archived!.date)}{f.data.archived!.lastSeen && r.id === 'removed' ? <><br /><span class="muted small">last seen {formatDate(f.data.archived!.lastSeen)}</span></> : null}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <p class="muted">None yet. {r.help}</p>
+        )}
+      </>
+    ))}
+
+    <SectionHead title={`On notice · ${onNotice.length}`} />
+    <p class="muted small" style="margin:-0.4rem 0 0.8rem">Live briefings whose roadmap item has not appeared in the Microsoft 365 Roadmap feed lately. They are archived automatically if the item has not returned after {LIFECYCLE.removedGraceDays} days.</p>
+    {onNotice.length ? (
+      <table class="radar">
+        <thead><tr><th>Briefing</th><th>Topic</th><th>Last seen</th><th>Missing since</th></tr></thead>
+        <tbody>
+          {onNotice.map(({ f, gone }) => (
+            <tr>
+              <td class="t"><a href={featureUrl(f.data.slug)}>{f.data.title}</a></td>
+              <td>{(TOPIC_BY_ID as Record<string, { short: string }>)[f.data.topic]?.short ?? f.data.topic}</td>
+              <td class="d">{gone.lastSeen ? formatDate(gone.lastSeen) : 'before tracking began'}</td>
+              <td class="d">{formatDate(gone.missingSince)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    ) : (
+      <p class="muted">Every live briefing's roadmap item was present in the feed on {formatDate(lifecycle.generated ?? catalog.generated)}.</p>
+    )}
+
+    <p class="small muted" style="margin-top:2rem">How this works: the daily ingest compares every briefed item against the roadmap feed. A cancelled item archives its briefing the same day; a missing item is given {LIFECYCLE.removedGraceDays} days to return. Live pages untouched for {LIFECYCLE.reviewAfterDays.default} days ({LIFECYCLE.reviewAfterDays.launched} once launched) go back into their topic's queue for a re-check. See <a href={href('/about/')}>how this works</a>.</p>
+  </div>
+</Base>
