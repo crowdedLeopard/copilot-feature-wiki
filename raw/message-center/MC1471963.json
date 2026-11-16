@@ -1,0 +1,29 @@
+{
+  "id": "MC1471963",
+  "title": "30-Day Reminder: AD FS DKM container ACL hardening begins in October 2026",
+  "category": "stayInformed",
+  "severity": "normal",
+  "services": [
+    "Windows"
+  ],
+  "tags": [
+    "Admin impact"
+  ],
+  "isMajorChange": false,
+  "published": "2026-09-14T20:56:14.233Z",
+  "lastModified": "2026-09-14T20:56:15.3Z",
+  "endDate": "2027-09-14T20:56:14.233Z",
+  "actionRequiredBy": null,
+  "roadmapIds": [],
+  "links": {
+    "external": null,
+    "blog": null,
+    "help": null
+  },
+  "summary": "",
+  "body": "What and whyIn October 2026, Windows updates will begin Enforcement mode for AD FS Distributed Key Manager (DKM) container ACL hardening. This hardening change is designed to address the elevation of privilege vulnerability documented in CVE-2026-56155 by automatically remediating insecure DKM container ACL configurations on supported Windows Server versions.\nIf your organization uses Active Directory Federation Services (AD FS), use the remaining Audit mode period to validate DKM container permissions, identify compatibility issues, and complete preparation before Enforcement mode begins.\nRollout scheduleEnforcement mode begins with the October 2026 Windows security update.\nImpact on your organizationOrganizations using AD FS might see changes to DKM container permissions when remediation is applied during Enforcement mode. During the October 2026 update, supported Windows Server versions will run remediation by default unless administrators explicitly opt out. Windows Server 2012 and Windows Server 2012 R2 still require manual remediation and will not be automatically remediated.\nAction required/recommendationsOrganizations using AD FS should:- Install the July 14, 2026 Windows security update or a later Windows update on AD FS servers.- Review AD FS Admin event logs for Event ID 1132, which indicates that DKM container permissions require attention.- Test remediation during the current Audit mode phase and address findings before Enforcement mode begins in October 2026.- See the guidance in: CVE-2026-56155: AD FS Distributed Key Manager container ACL hardening.",
+  "bodyHtml": "<p><b>What and why</b></p><p>In October 2026, Windows updates will begin Enforcement mode for AD FS Distributed Key Manager (DKM) container ACL hardening. This hardening change is designed to address the elevation of privilege vulnerability documented in <a href=\"https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-56155\" rel=\"noopener\">CVE-2026-56155</a> by automatically remediating insecure DKM container ACL configurations on supported Windows Server versions.</p><p><br></p><p>If your organization uses Active Directory Federation Services (AD FS), use the remaining Audit mode period to validate DKM container permissions, identify compatibility issues, and complete preparation before Enforcement mode begins.</p><p><br></p><p><b>Rollout schedule</b></p><p>Enforcement mode begins with the October 2026 Windows security update.</p><p><br></p><p><b>Impact on your organization</b></p><p>Organizations using AD FS might see changes to DKM container permissions when remediation is applied during Enforcement mode. During the October 2026 update, supported Windows Server versions will run remediation by default unless administrators explicitly opt out. Windows Server 2012 and Windows Server 2012 R2 still require manual remediation and will not be automatically remediated.</p><p><br></p><p><b>Action required/recommendations</b></p><p>Organizations using AD FS should:</p><ul><li>Install the <a href=\"https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-56155\" rel=\"noopener\">July 14, 2026 Windows security update</a> or a later Windows update on AD FS servers.</li><li>Review AD FS Admin event logs for Event ID 1132, which indicates that DKM container permissions require attention.</li><li>Test remediation during the current Audit mode phase and address findings before Enforcement mode begins in October 2026.</li><li>See the guidance in: <a href=\"https://support.microsoft.com/servicing/os/windows/docs/2026/07/kb5121391-cve-2026-56155-ad-fs-dkm-container-acl-hardening\" rel=\"noopener\">CVE-2026-56155: AD FS Distributed Key Manager container ACL hardening</a>.</li></ul>",
+  "topic": "modern-work",
+  "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1471963",
+  "fetchedAt": "2026-11-16T14:30:14.852Z"
+}

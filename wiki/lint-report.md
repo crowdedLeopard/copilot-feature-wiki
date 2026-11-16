@@ -1,14 +1,14 @@
 # Lint report
 
-Generated 2026-11-16T13:00:26.000Z. 62 briefings, 4 concepts, 0 quarantined.
-Independent check: 0 verified, 0 verified with gaps, 1 awaiting correction (live under grace), 61 not yet checked, 0 stale; 0 held and not published.
+Generated 2026-11-16T14:30:16.354Z. 62 briefings, 4 concepts, 0 quarantined.
+Independent check: 0 verified, 0 verified with gaps, 1 awaiting correction (live under grace), 65 not yet checked, 0 stale; 0 held and not published.
 
 ## Errors (0)
 
 ## Warnings (1)
 - features/copilot-studio-block-maker-provided-credentials.md: failed its check on 2026-11-16 (4 contradicted, 4 unconfirmed of 32 statements); live under grace with a notice, corrected version queued
 
-## Info (131)
+## Info (139)
 - features/agent-365-control-plane-for-agents.md: not yet checked against Microsoft Learn (queued)
 - features/copilot-studio-computer-use-for-web-browsing-on-microsoft-copilot-harness.md: not yet checked against Microsoft Learn (queued)
 - features/copilot-studio-computer-use-for-web-browsing-on-microsoft-copilot-harness.md: control "Switch specific to web browsing on the Microsoft Copilot harness" has neither an admin UI nor an API documented
@@ -140,3 +140,11 @@ Independent check: 0 verified, 0 verified with gaps, 1 awaiting correction (live
 - features/work-iq-agent-policy-governance.md: orphan (no inbound related links)
 - features/work-iq-human-in-the-loop.md: orphan (no inbound related links)
 - features/work-iq-real-time-transcripts.md: orphan (no inbound related links)
+- concepts/agent-identity.md: written by hand before the concept standard (queued for a rewrite)
+- concepts/agent-identity.md: not yet checked against Microsoft Learn (queued)
+- concepts/copilot-credits.md: written by hand before the concept standard (queued for a rewrite)
+- concepts/copilot-credits.md: not yet checked against Microsoft Learn (queued)
+- concepts/data-policies.md: written by hand before the concept standard (queued for a rewrite)
+- concepts/data-policies.md: not yet checked against Microsoft Learn (queued)
+- concepts/managed-environments.md: written by hand before the concept standard (queued for a rewrite)
+- concepts/managed-environments.md: not yet checked against Microsoft Learn (queued)

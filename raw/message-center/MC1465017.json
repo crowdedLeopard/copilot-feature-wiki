@@ -1,0 +1,29 @@
+{
+  "id": "MC1465017",
+  "title": "Reminder: Configure firewall and proxies for smooth Windows updates",
+  "category": "stayInformed",
+  "severity": "normal",
+  "services": [
+    "Windows"
+  ],
+  "tags": [
+    "Admin impact"
+  ],
+  "isMajorChange": false,
+  "published": "2026-08-31T17:10:02.317Z",
+  "lastModified": "2026-08-31T17:10:04.533Z",
+  "endDate": "2027-08-31T17:10:02.317Z",
+  "actionRequiredBy": null,
+  "roadmapIds": [],
+  "links": {
+    "external": null,
+    "blog": null,
+    "help": null
+  },
+  "summary": "",
+  "body": "What and whyBy design, Windows Update doesn't trust servers that don't have TLS certificates issued by an actual Windows Update trust anchor. We published guidance in May 2026 to help you diagnose and fix connection issues that result from this design.\nRollout schedule- This guidance was published in May to help with ongoing troubleshooting.- Connection issues might be ongoing until you apply the existing solution.\nImpact on your organizationYour firewalls and proxies might block access to the trustworthy and necessary Windows Update service if your configuration is either intercepting TLS connections or isn't passing TLS requests through for the necessary DNS subdomains. The published guide helps you diagnose and fix related issues.\nAction required/recommendationsDiagnose connection issues by checking the Windows Update audit log. Our detailed guidance lists the recommended PowerShell command and four error codes that can confirm the issue.\nTo remedy the situation, trust all the DNS hosts and subdomains related to wildcard FQDN for the connection to work properly. For example, a recommended DNS host name *.update.microsoft.com represents all the following hosts and subdomains:- update.microsoft.com- sls.update.microsoft.com- tas02.sls.update.microsoft.com\nUpdate your proxy and firewall configurations if any of these subdomains are missing. If your devices connect to an IT-managed Windows Server Update Services (WSUS) server, these exceptions aren't necessary.\nCompliance considerationsDevices that cannot reach the Windows Update service will stop receiving security updates.\nAdditional information- Configuring firewall and proxies for smooth Windows updates- Windows Update security- Transport Layer Security protocol- Connection endpoints for Windows 11 Enterprise- Scan changes and certificates add security for Windows devices using WSUS for updates",
+  "bodyHtml": "<p><b>What and why</b></p><p>By design, Windows Update doesn't trust servers that don't have TLS certificates issued by an actual Windows Update trust anchor. We published guidance in May 2026 to help you diagnose and fix connection issues that result from this design.</p><p><br></p><p><b>Rollout schedule</b></p><ul><li>This guidance was published in May to help with ongoing troubleshooting.</li><li>Connection issues might be ongoing until you apply the existing solution.</li></ul><p><br></p><p><b>Impact on your organization</b></p><p>Your firewalls and proxies might block access to the trustworthy and necessary Windows Update service if your configuration is either intercepting TLS connections or isn't passing TLS requests through for the necessary DNS subdomains. The published guide helps you diagnose and fix related issues.</p><p><br></p><p><b>Action required/recommendations</b></p><p>Diagnose connection issues by checking the <a href=\"https://learn.microsoft.com/powershell/module/windowsupdate/get-windowsupdatelog?view=windowsserver2025-ps\" rel=\"noopener\">Windows Update audit log</a>. <a href=\"https://techcommunity.microsoft.com/blog/windows-itpro-blog/configuring-firewall-and-proxies-for-smooth-windows-updates/4517913\" rel=\"noopener\">Our detailed guidance</a> lists the recommended PowerShell command and four error codes that can confirm the issue.</p><p><br></p><p>To remedy the situation, trust all the DNS hosts and subdomains related to wildcard FQDN for the connection to work properly. For example, a recommended DNS host name *.update.microsoft.com represents all the following hosts and subdomains:</p><ul><li>update.microsoft.com</li><li>sls.update.microsoft.com</li><li>tas02.sls.update.microsoft.com</li></ul><p><br></p><p>Update your proxy and firewall configurations if any of these subdomains are missing. If your devices connect to an IT-managed Windows Server Update Services (WSUS) server, these exceptions aren't necessary.</p><p><br></p><p><b>Compliance considerations</b></p><p>Devices that cannot reach the <a href=\"https://techcommunity.microsoft.com/blog/windows-itpro-blog/configuring-firewall-and-proxies-for-smooth-windows-updates/4517913\" rel=\"noopener\">Windows Update</a> service will stop receiving security updates.</p><p><br></p><p><b>Additional information</b></p><ul><li><a href=\"https://techcommunity.microsoft.com/blog/windows-itpro-blog/configuring-firewall-and-proxies-for-smooth-windows-updates/4517913\" rel=\"noopener\">Configuring firewall and proxies for smooth Windows updates</a></li><li><a href=\"https://learn.microsoft.com/windows/deployment/update/windows-update-security\" rel=\"noopener\">Windows Update security</a></li><li><a href=\"https://learn.microsoft.com/windows-server/security/tls/transport-layer-security-protocol\" rel=\"noopener\">Transport Layer Security protocol</a></li><li><a href=\"https://learn.microsoft.com/windows/privacy/manage-windows-11-endpoints\" rel=\"noopener\">Connection endpoints for Windows 11 Enterprise</a></li><li><a href=\"https://techcommunity.microsoft.com/blog/windows-itpro-blog/scan-changes-and-certificates-add-security-for-windows-devices-using-wsus-for-up/2053668\" rel=\"noopener\">Scan changes and certificates add security for Windows devices using WSUS for updates</a></li></ul>",
+  "topic": "modern-work",
+  "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1465017",
+  "fetchedAt": "2026-11-16T14:30:14.852Z"
+}

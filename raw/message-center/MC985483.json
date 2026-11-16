@@ -1,0 +1,31 @@
+{
+  "id": "MC985483",
+  "title": "Microsoft Graph: New default passcode in the Create Meeting API",
+  "category": "planForChange",
+  "severity": "normal",
+  "services": [
+    "Microsoft 365 suite"
+  ],
+  "tags": [
+    "User impact",
+    "Admin impact",
+    "Retirement"
+  ],
+  "isMajorChange": true,
+  "published": "2025-01-22T02:03:58Z",
+  "lastModified": "2025-01-22T02:05:30.777Z",
+  "endDate": "2027-11-30T07:00:00Z",
+  "actionRequiredBy": null,
+  "roadmapIds": [],
+  "links": {
+    "external": null,
+    "blog": null,
+    "help": null
+  },
+  "summary": "The Microsoft Graph API's Create Meeting API will require a passcode by default from February 24, 2025, changing the current default setting. In October 2027, the option to create meetings without passcodes will be removed for increased security. Users should update applications accordingly.",
+  "body": "Before this retirement, when creating an online meeting using the Microsoft Graph API, admins or users can choose whether to require a passcode. If no value is specified, the default behavior does not require a passcode.\n\nAfter this update: For enhanced security, users will still have the option to specify whether a passcode is required when creating a meeting. If no value is specified, the default behavior will require a passcode for the meeting.\n\nEffective February 24, 2025, the default value of the isPasscodeRequired property will change from false to true.\n\nUpdate your applications\n\nReview and update any applications that use the Create onlineMeeting API and passcode to ensure they account for the new default behavior.\n\nLooking ahead\n\nIn October 2027, we will remove the option to specify the need for passcodes. This change will ensure that all meetings are consistently secured with passcodes. This final step will simplify the meeting creation process and provide an additional layer of protection for users. We will remove the isPasscodeRequired property on the joinMeetingIdSettings resource of the Microsoft Graph online meetings API.",
+  "bodyHtml": "<p>Before this retirement, when <a href=\"https://learn.microsoft.com/graph/api/application-post-onlinemeetings?view=graph-rest-1.0&amp;tabs=http#example-3-create-an-online-meeting-that-doesnt-require-a-passcode\" rel=\"noopener\">creating an online meeting using the Microsoft Graph API</a>, admins or users can choose whether to require a passcode. If no value is specified, the default behavior does not require a passcode.\n</p><p>After this update: For enhanced security, users will still have the option to specify whether a passcode is required when creating a meeting. If no value is specified, the default behavior will require a passcode for the meeting.\n</p><p>Effective February 24, 2025, the default value of the isPasscodeRequired property will change from false to true.\n</p><p><i>Update your applications</i>\n</p><p>Review and update any applications that use the Create onlineMeeting API and passcode to ensure they account for the new default behavior.\n</p><p><i>Looking ahead</i>\n</p><p>In October 2027, we will remove the option to specify the need for passcodes. This change will ensure that all meetings are consistently secured with passcodes. This final step will simplify the meeting creation process and provide an additional layer of protection for users. We will remove the isPasscodeRequired property on the <a href=\"https://learn.microsoft.com/graph/api/resources/joinmeetingidsettings?view=graph-rest-1.0\" rel=\"noopener\">joinMeetingIdSettings</a> resource of the Microsoft Graph online meetings API.</p>",
+  "topic": "modern-work",
+  "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC985483",
+  "fetchedAt": "2026-11-16T14:30:14.852Z"
+}

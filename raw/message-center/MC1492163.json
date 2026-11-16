@@ -1,0 +1,33 @@
+{
+  "id": "MC1492163",
+  "title": "Microsoft API Hub: Zendesk OAuth tokens will require expiration and automatic refresh",
+  "category": "stayInformed",
+  "severity": "normal",
+  "services": [
+    "Power Apps in Microsoft 365",
+    "Microsoft Power Automate in Microsoft 365",
+    "Power Platform",
+    "Microsoft Copilot (Microsoft 365)"
+  ],
+  "tags": [
+    "User impact",
+    "Admin impact"
+  ],
+  "isMajorChange": false,
+  "published": "2026-10-08T23:12:52Z",
+  "lastModified": "2026-10-08T23:12:57.583Z",
+  "endDate": "2027-02-27T08:00:00Z",
+  "actionRequiredBy": null,
+  "roadmapIds": [],
+  "links": {
+    "external": null,
+    "blog": null,
+    "help": null
+  },
+  "summary": "Microsoft API Hub will update Zendesk OAuth tokens to expire after 48 hours with refresh tokens expiring after 90 days, supporting automatic refresh. Existing connections must be reauthorized by early 2027 to avoid failures. Organizations should identify and reauthorize affected connections and inform developers.",
+  "body": "[What and why]\n\nTo align with updated Zendesk security requirements, Microsoft API Hub is changing how OAuth tokens are issued and managed for Zendesk connections. New Zendesk connections and existing connections that are reauthorized after rollout will receive access tokens that expire after 48 hours, refresh tokens that expire after 90 days, and automatic token refresh support.\n\n[Rollout schedule]\n\n- General Availability (Worldwide): Beginning in early October 2026 and expected to complete by late January 2027[Impact on your organization]\n\nWho is affected\n\n- Organizations using Zendesk OAuth connections in Microsoft API Hub- Developers who manage Zendesk connections and affected flowsPlatforms and services\n\n- Microsoft API Hub- Zendesk integrations and connected workflowsWhat will happen\n\n- New Zendesk connections will receive access tokens with a 48-hour lifetime, refresh tokens with a 90-day lifetime, and automatic token refresh support.- Existing Zendesk connections created before this change cannot be automatically migrated to the new token model.- Existing connections must be reauthorized to receive expiring tokens and automatic refresh support.- Active new or reauthorized connections should refresh automatically.- Connections that remain unused for 90 days may lose refresh capability and require reauthorization when they are used again.- Flows that rely on existing Zendesk connections may fail until those connections are reauthorized.[Action required and recommendations]\n\nAction is required for existing Zendesk connections created before this change.\n\n- Identify existing Zendesk connections that require reauthorization.- Reauthorize those connections to receive expiring tokens and automatic refresh support.- Inform developers who manage Zendesk connections and affected workflows about this change.- Review affected flows that depend on existing Zendesk connections.Learn more\n\n- Zendesk - Connectors | Microsoft Learn[Compliance considerations]\n\nNo compliance considerations identified. Review as appropriate for your organization.",
+  "bodyHtml": "<p><b>[What and why]</b></p><p>To align with updated Zendesk security requirements, Microsoft API Hub is changing how OAuth tokens are issued and managed for Zendesk connections. New Zendesk connections and existing connections that are reauthorized after rollout will receive access tokens that expire after 48 hours, refresh tokens that expire after 90 days, and automatic token refresh support.</p><p><b>[Rollout schedule]</b></p><ul><li><b>General Availability (Worldwide):</b> Beginning in <b>early October 2026</b> and expected to complete by <b>late January 2027</b></li></ul><p><b>[Impact on your organization]</b></p><p><i>Who is affected</i></p><ul><li>Organizations using Zendesk OAuth connections in Microsoft API Hub</li><li>Developers who manage Zendesk connections and affected flows</li></ul><p><i>Platforms and services</i></p><ul><li>Microsoft API Hub</li><li>Zendesk integrations and connected workflows</li></ul><p><i>What will happen</i></p><ul><li>New Zendesk connections will receive access tokens with a 48-hour lifetime, refresh tokens with a 90-day lifetime, and automatic token refresh support.</li><li>Existing Zendesk connections created before this change cannot be automatically migrated to the new token model.</li><li>Existing connections must be reauthorized to receive expiring tokens and automatic refresh support.</li><li>Active new or reauthorized connections should refresh automatically.</li><li>Connections that remain unused for 90 days may lose refresh capability and require reauthorization when they are used again.</li><li>Flows that rely on existing Zendesk connections may fail until those connections are reauthorized.</li></ul><p><b>[Action required and recommendations]</b></p><p>Action is required for existing Zendesk connections created before this change.</p><ul><li>Identify existing Zendesk connections that require reauthorization.</li><li>Reauthorize those connections to receive expiring tokens and automatic refresh support.</li><li>Inform developers who manage Zendesk connections and affected workflows about this change.</li><li>Review affected flows that depend on existing Zendesk connections.</li></ul><p>Learn more</p><ul><li><a href=\"https://learn.microsoft.com/connectors/zendesk/\" rel=\"noopener\">Zendesk - Connectors | Microsoft Learn</a></li></ul><p><b>[Compliance considerations]</b></p><p>No compliance considerations identified. Review as appropriate for your organization.</p>",
+  "topic": "power-platform",
+  "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1492163",
+  "fetchedAt": "2026-11-16T14:30:14.852Z"
+}

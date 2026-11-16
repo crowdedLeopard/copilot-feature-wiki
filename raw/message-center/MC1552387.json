@@ -1,0 +1,29 @@
+{
+  "id": "MC1552387",
+  "title": "Retired: Microsoft Defender for Identity classic alerts (Remote code execution attempt and pass-the-hash)",
+  "category": "planForChange",
+  "severity": "normal",
+  "services": [
+    "Microsoft Defender XDR"
+  ],
+  "tags": [
+    "Retirement"
+  ],
+  "isMajorChange": false,
+  "published": "2026-11-13T23:43:53Z",
+  "lastModified": "2026-11-13T23:43:58.467Z",
+  "endDate": "2026-12-30T08:00:00Z",
+  "actionRequiredBy": "2026-11-30T08:00:00Z",
+  "roadmapIds": [],
+  "links": {
+    "external": null,
+    "blog": null,
+    "help": null
+  },
+  "summary": "Microsoft Defender for Identity will retire two classic alerts—Remote code execution attempt and pass-the-hash—by late November 2026. Users should create custom detection rules for RCE and rely on Defender for Endpoint for pass-the-hash monitoring. No compliance issues are identified.",
+  "body": "[What and Why:]\n\nMicrosoft Defender for Identity (MDI) is retiring two classic alerts at the end of November 2026: Remote code execution attempt (RCE) and Suspected identity theft (pass-the-hash). This update aligns detection workflows with current Microsoft Defender XDR and endpoint monitoring capabilities.\n\n[Rollout Schedule:]\n\nGeneral Availability (Worldwide, GCC, GCC High, DoD): We will begin rolling out in late November 2026 and expect to complete by late November 2026.\n\n[Impact on Your Organization:]\n\nWho is affected:\n\n- Security teams using classic MDI alert workflows for RCE and pass-the-hash scenarios.\n\nPlatforms/Services:\n\n- Microsoft Defender for Identity\n\n- Microsoft Defender XDR services\n\nWhat will happen:\n\n- The two classic alerts will no longer be available after rollout completes.\n\n- RCE activity can continue to be monitored with a custom detection rule in Advanced Hunting.\n\n- Pass-the-hash monitoring should continue through Microsoft Defender for Endpoint on onboarded devices.\n\n[Action Required/Recommendations:]\n\nBefore the end of November 2026:\n\n- Create an Advanced Hunting custom detection rule for RCE scenarios using the published query.\n\n- Confirm pass-the-hash detection coverage through Defender for Endpoint on onboarded devices.\n\n- Review guidance: MDI classic alerts documentation.\n\n- Use the published query: RCE custom detection query.\n\n[Compliance considerations:]\n\nNo compliance considerations identified. Review as appropriate for your organization.",
+  "bodyHtml": "<p><b>[What and Why:]</b></p><p>Microsoft Defender for Identity (MDI) is retiring two classic alerts at the end of November 2026: <i>Remote code execution attempt (RCE)</i> and <i>Suspected identity theft (pass-the-hash)</i>. This update aligns detection workflows with current Microsoft Defender XDR and endpoint monitoring capabilities.</p><p><b>[Rollout Schedule:]</b></p><p>General Availability (Worldwide, GCC, GCC High, DoD): We will begin rolling out in late November 2026 and expect to complete by late November 2026.</p><p><b>[Impact on Your Organization:]</b></p><p><b>Who is affected:</b></p><p>- Security teams using classic MDI alert workflows for RCE and pass-the-hash scenarios.</p><p><b>Platforms/Services:</b></p><p>- Microsoft Defender for Identity</p><p>- Microsoft Defender XDR services</p><p><b>What will happen:</b></p><p>- The two classic alerts will no longer be available after rollout completes.</p><p>- RCE activity can continue to be monitored with a custom detection rule in Advanced Hunting.</p><p>- Pass-the-hash monitoring should continue through Microsoft Defender for Endpoint on onboarded devices.</p><p><b>[Action Required/Recommendations:]</b></p><p>Before the end of November 2026:</p><p>- Create an Advanced Hunting custom detection rule for RCE scenarios using the published query.</p><p>- Confirm pass-the-hash detection coverage through Defender for Endpoint on onboarded devices.</p><p>- Review guidance: <a href=\"https://learn.microsoft.com/en-us/defender-for-identity/alerts-mdi-classic\" rel=\"noopener\">MDI classic alerts documentation</a>.</p><p>- Use the published query: <a href=\"https://github.com/microsoft/Microsoft-Defender-for-Identity/blob/main/AdvancedHunting/RemoteCodeExecution.md\" rel=\"noopener\">RCE custom detection query</a>.</p><p><b>[Compliance considerations:]</b></p><p>No compliance considerations identified. Review as appropriate for your organization.</p>",
+  "topic": "governance",
+  "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1552387",
+  "fetchedAt": "2026-11-16T14:30:14.852Z"
+}

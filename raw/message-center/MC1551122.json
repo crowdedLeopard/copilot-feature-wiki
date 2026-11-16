@@ -1,0 +1,29 @@
+{
+  "id": "MC1551122",
+  "title": "Power Platform - Information regarding the end of support for SharePoint temporary authentication URLs",
+  "category": "stayInformed",
+  "severity": "normal",
+  "services": [
+    "Power Platform"
+  ],
+  "tags": [
+    "Retirement"
+  ],
+  "isMajorChange": false,
+  "published": "2026-11-13T00:59:35Z",
+  "lastModified": "2026-11-13T01:01:33.92Z",
+  "endDate": "2027-05-01T23:59:00Z",
+  "actionRequiredBy": null,
+  "roadmapIds": [],
+  "links": {
+    "external": null,
+    "blog": null,
+    "help": null
+  },
+  "summary": "",
+  "body": "Starting April 1, 2027, SharePoint temporary authentication URLs will be retired. Power Apps and Automate functionality that relies on these URLs will break when they are retired.\n\nHow does this affect me?\nAny Power Apps app or Power Automate cloud flow that relies upon the temporary authentication URLs will stop working.\n\nWhat action do I need to take?\nIf you are using only native controls, actions, and connectors, and as long as you are not providing pre-authenticated URLs from SharePoint, then there is no action needed.\n\n \n\nIf you have authored a custom control, action, or connector with tempauth URLs, then you will need to ensure you have migrated to the new authentication. This may come up in a few ways such as: \n\n \n\n- SharePoint document-library thumbnails not loading \n\n- SharePoint-stored Images displayed through Image control not loading \n\n- For the Word Online (Business) connector, CreateWordFileWithContent currently returns a pre-authorized URL that can be used to download the generated document without additional authentication. After temporary authentication is removed, customers should no longer rely on this URL as an unauthenticated file-download mechanism. \n\n \n\nAfter making the required changes, publish updated apps or save and publish updated flows, as applicable. Ensure the updated apps and flows are enabled and tested before the retirement date \n\nFor more information on this, visit Pre-authenticated (tempauth) URLs are retiring: move to Microsoft Entra ID tokens before April 1, 2027.",
+  "bodyHtml": "Starting April 1, 2027, SharePoint temporary authentication URLs will be retired. Power Apps and Automate functionality that relies on these URLs will break when they are retired.<br><br><b>How does this affect me?</b><br>Any Power Apps app or Power Automate cloud flow that relies upon the temporary authentication URLs will stop working.<br><br><b>What action do I need to take?</b><br>If you are using only native controls, actions, and connectors, and as long as you are not providing pre-authenticated URLs from SharePoint, then there is no action needed.<br><br>\nIf you have authored a custom control, action, or connector with tempauth URLs, then you will need to ensure you have migrated to the new authentication. This may come up in a few ways such as:\n<ul>\n<li>SharePoint document-library thumbnails not loading</li>\n<li>SharePoint-stored Images displayed through Image control not loading</li>\n<li>For the Word Online (Business) connector, CreateWordFileWithContent currently returns a pre-authorized URL that can be used to download the generated document without additional authentication. After temporary authentication is removed, customers should no longer rely on this URL as an unauthenticated file-download mechanism.</li>\n</ul>\nAfter making the required changes, publish updated apps or save and publish updated flows, as applicable. Ensure the updated apps and flows are enabled and tested before the retirement date\n<br><br>For more information on this, visit <a href=\"https://aka.ms/ADO18147\" rel=\"noopener\">Pre-authenticated (tempauth) URLs are retiring: move to Microsoft Entra ID tokens before April 1, 2027</a>.",
+  "topic": "power-platform",
+  "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1551122",
+  "fetchedAt": "2026-11-16T14:30:14.852Z"
+}

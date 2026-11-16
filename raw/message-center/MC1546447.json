@@ -1,0 +1,31 @@
+{
+  "id": "MC1546447",
+  "title": "Microsoft Defender for Office 365: Updated recipient inclusion logic for threat protection policies",
+  "category": "stayInformed",
+  "severity": "normal",
+  "services": [
+    "Microsoft Defender XDR"
+  ],
+  "tags": [
+    "Feature update",
+    "User impact",
+    "Admin impact"
+  ],
+  "isMajorChange": false,
+  "published": "2026-11-10T00:50:37Z",
+  "lastModified": "2026-11-10T00:50:32.843Z",
+  "endDate": "2027-01-04T08:00:00Z",
+  "actionRequiredBy": null,
+  "roadmapIds": [],
+  "links": {
+    "external": null,
+    "blog": null,
+    "help": null
+  },
+  "summary": "Microsoft Defender for Office 365 will change recipient inclusion logic in threat protection policies from Match all (AND) to Match any (OR) when multiple recipient types are specified. This update, rolling out in December 2026, expands policy scope upon modification but does not auto-convert existing policies.",
+  "body": "[What and why]\n\nMicrosoft Defender for Office 365 is updating how recipient inclusion conditions are evaluated when targeting threat protection policies. When a policy includes multiple recipient condition types, such as users, groups, and domains, policies will use Match any (OR) logic instead of Match all (AND) logic. This change simplifies policy targeting and reduces the risk that intended recipients are excluded because they do not satisfy every configured recipient condition.\n\n[Rollout schedule]\n\n- General Availability (Worldwide): We will begin rolling out in early December 2026 and expect to complete by early December 2026.\n\n[Impact on your organization]\n\nWho is affected\n\n- Administrators who create or modify Microsoft Defender for Office 365 threat protection policies that use recipient inclusion conditionsPlatforms and services\n\n- Microsoft Defender for Office 365, including policy changes made through the Microsoft Defender portal or Exchange Online PowerShellWhat will happen\n\n- New policies created after rollout will use Match any (OR) logic by default.- Existing policies will not be automatically converted during rollout.- When an administrator modifies an existing policy, that policy will transition to the new recipient inclusion logic.- The transition from Match all (AND) to Match any (OR) can expand the population to which the policy applies.- The Microsoft Defender portal will provide warning and confirmation messaging during the transition.- For changes made through Exchange Online PowerShell, administrators will receive a warning when importing the PowerShell module.- Existing policies remain unchanged until they are modified, allowing organizations to transition progressively rather than through an automatic tenant-wide conversion.\n\n[Action required and recommendations]\n\nBefore modifying an existing policy that uses recipient inclusion conditions:\n\n- Review the configured users, groups, and domains.- Review the resulting policy scope because transitioning from Match all (AND) to Match any (OR) can expand the population to which the policy applies.- Review the warning and confirmation messaging provided in the Microsoft Defender portal or Exchange Online PowerShell before completing the change.No action is required for existing policies that you do not modify.\n\n[Compliance considerations]\n\nNo compliance considerations identified. Review as appropriate for your organization.",
+  "bodyHtml": "<p><b>[What and why]</b></p><p>Microsoft Defender for Office 365 is updating how recipient inclusion conditions are evaluated when targeting threat protection policies. When a policy includes multiple recipient condition types, such as users, groups, and domains, policies will use Match any (OR) logic instead of Match all (AND) logic. This change simplifies policy targeting and reduces the risk that intended recipients are excluded because they do not satisfy every configured recipient condition.</p><p><b>[Rollout schedule]</b></p><ul><li><b>General Availability (Worldwide)</b>: We will begin rolling out in <b>early December 2026</b> and expect to complete by <b>early December 2026</b>.</li></ul><p><b>[Impact on your organization]</b></p><p><i>Who is affected</i></p><ul><li>Administrators who create or modify Microsoft Defender for Office 365 threat protection policies that use recipient inclusion conditions</li></ul><p><i>Platforms and services</i></p><ul><li>Microsoft Defender for Office 365, including policy changes made through the Microsoft Defender portal or Exchange Online PowerShell</li></ul><p><i>What will happen</i></p><ul><li>New policies created after rollout will use Match any (OR) logic by default.</li><li>Existing policies will not be automatically converted during rollout.</li><li>When an administrator modifies an existing policy, that policy will transition to the new recipient inclusion logic.</li><li>The transition from Match all (AND) to Match any (OR) can expand the population to which the policy applies.</li><li>The Microsoft Defender portal will provide warning and confirmation messaging during the transition.</li><li>For changes made through Exchange Online PowerShell, administrators will receive a warning when importing the PowerShell module.</li><li>Existing policies remain unchanged until they are modified, allowing organizations to transition progressively rather than through an automatic tenant-wide conversion.</li></ul><p><b>[Action required and recommendations]</b></p><p>Before modifying an existing policy that uses recipient inclusion conditions:</p><ul><li>Review the configured users, groups, and domains.</li><li>Review the resulting policy scope because transitioning from Match all (AND) to Match any (OR) can expand the population to which the policy applies.</li><li>Review the warning and confirmation messaging provided in the Microsoft Defender portal or Exchange Online PowerShell before completing the change.</li></ul><p>No action is required for existing policies that you do not modify.</p><p><b>[Compliance considerations]</b></p><p>No compliance considerations identified. Review as appropriate for your organization.</p>",
+  "topic": "governance",
+  "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1546447",
+  "fetchedAt": "2026-11-16T14:30:14.852Z"
+}

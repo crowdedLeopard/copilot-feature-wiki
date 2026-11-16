@@ -49,3 +49,8 @@ Append-only record of ingests, compiles and lint passes. One line per event.
 - 2026-11-16 lint: 62 briefings ok, 0 errors (0 quarantined), 0 warnings, 70 notes
 - 2026-11-16 index: 62 briefings, 4 concepts indexed
 - 2026-11-16 digest: 2026-w47 written (62 updated briefings)
+- 2026-11-16 message-center: 863 posts read (federated credential (GitHub Actions OIDC)), 805 in scope and published, 805 new, 0 changed, 40 outside the topics, 18 withheld by the tenant screen (10 targeted-wording, 3 tenant-word, 1 email-address, 4 guid); 805 in the ledger, 19 with an act-by date ahead (2s)
+- 2026-11-16 ingest: 2310 roadmap items fetched, 1877 in scope, 0 new, 0 changed, 1815 queued for compile (copilot-studio 30, power-platform 42, governance 381, m365-copilot 493, modern-work 869; 0 review due; 0 refresh after a Message Center post), 234 with Message Center posts, 0 archived, 0 briefed item(s) missing from the feed (0s)
+- 2026-11-16 lint: 62 briefings ok, 0 errors (0 quarantined), 1 warnings, 139 notes; 0 checked, 1 awaiting correction, 0 held
+- 2026-11-16 index: 62 briefings, 0 archived, 4 concepts indexed
+- 2026-11-16 digest: 2026-w47 written (62 updated briefings)

@@ -1,0 +1,29 @@
+{
+  "id": "MC1188230",
+  "title": "Microsoft Entra ID: Retirement of duplicative properties in passkey (FIDO2) authentication methods policy",
+  "category": "planForChange",
+  "severity": "normal",
+  "services": [
+    "Microsoft Entra"
+  ],
+  "tags": [
+    "Retirement"
+  ],
+  "isMajorChange": true,
+  "published": "2025-11-19T23:33:48Z",
+  "lastModified": "2025-11-19T23:34:30.66Z",
+  "endDate": "2027-12-31T08:00:00Z",
+  "actionRequiredBy": "2027-10-14T07:00:00Z",
+  "roadmapIds": [],
+  "links": {
+    "external": null,
+    "blog": null,
+    "help": null
+  },
+  "summary": "Starting October to November 2027, Microsoft will retire the isAttestationEnforced and keyRestrictions properties from the fido2AuthenticationMethodConfiguration API. These will sync with new properties in the updated passkey policy API schema during transition. Admins must update configurations, automations, and integrations accordingly.",
+  "body": "Introduction\n\nStarting October 2027 and ending November 2027, we will retire the isAttestationEnforced and keyRestrictionsproperties from the existing fido2AuthenticationMethodConfiguration API schema. This change aligns with the latest update to the passkey policy API schema, which introduces support for granular group-based configurations with passkey profiles.\n\nDuring the retirement period, isAttestationEnforced and keyRestrictions will remain in sync with their counterparts attestationEnforcement and keyRestrictions within the Default passkey profile.\n\nWhen this will happen \n\nRetirement begins in mid-October 2027 and is expected to complete by early November 2027.\n\nHow this affects your organization:\n\nYou are receiving this message because our reporting indicates your organization may be using this feature.\n\nWho is affected: Admins managing FIDO2 authentication configurations and any custom automations or third-party integrations using these properties.\n\nWhat will happen\n\n- isAttestationEnforced and keyRestrictions properties will be retired.\n- New properties are available in the updated passkey policy API schema.\n- Existing properties will sync with new ones during the transition period.\n- Automations or integrations using retired properties will stop working after the change.\n\nWhat you can do to prepare\n\n- Review your current configuration.\n- Update any custom automations and third-party integrations to support the new schema.\n- Notify your admins and update internal documentation.Screenshot - The read arrows indicate the properties to be retired:\n\nLearn more: fido2AuthenticationMethodConfiguration resource type | Microsoft Graph | Microsoft Learn\n\nCompliance considerations:\n\nNo compliance considerations identified, review as appropriate for your organization.",
+  "bodyHtml": "<p><b>Introduction</b>\n</p><p>Starting October 2027 and ending November 2027, we <b>will retire</b> the isAttestationEnforced and keyRestrictionsproperties from the existing<b> </b><a href=\"https://learn.microsoft.com/graph/api/resources/fido2authenticationmethodconfiguration?view=graph-rest-1.0\" rel=\"noopener\">fido2AuthenticationMethodConfiguration API </a>schema. This change aligns with the latest update to the passkey policy API schema, which introduces support for granular group-based configurations with passkey profiles.</p>\n<p>During the retirement period, isAttestationEnforced and keyRestrictions will remain in sync with their counterparts attestationEnforcement and keyRestrictions within the Default passkey profile.</p>\n<p><b>When this will happen</b>&nbsp;</p><p>Retirement begins in mid-October 2027 and is expected to complete by early November 2027.</p>\n<p><b>How this affects your organization:</b></p><p>You are receiving this message because our reporting indicates your organization may be using this feature.\n</p><p><b>Who is affected:</b> Admins managing FIDO2 authentication configurations and any custom automations or third-party integrations using these properties.\n</p><p><b>What will happen</b></p><ul>\n<li>isAttestationEnforced and keyRestrictions properties <b>will be retired</b>.</li>\n<li>New properties are available in the <i>updated passkey policy API schema</i>.</li>\n<li>Existing properties will sync with new ones during the transition period.</li>\n<li>Automations or integrations using retired properties will stop working after the change.</li>\n</ul>\n<p><b>What you can do to prepare</b></p><ul>\n<li>Review your current configuration.</li>\n<li>Update any custom automations and third-party integrations to support the new schema.</li>\n<li>Notify your admins and update internal documentation.</li></ul><p><i>Screenshot - The read arrows indicate the properties to be retired:</i></p><ul>\n</ul><p>Learn more: <a href=\"https://learn.microsoft.com/graph/api/resources/fido2authenticationmethodconfiguration?view=graph-rest-1.0\" rel=\"noopener\">fido2AuthenticationMethodConfiguration resource type | Microsoft Graph | Microsoft Learn</a></p><p><b>Compliance considerations:</b>\n</p><p>No compliance considerations identified, review as appropriate for your organization.</p>",
+  "topic": "governance",
+  "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1188230",
+  "fetchedAt": "2026-11-16T14:30:14.852Z"
+}
