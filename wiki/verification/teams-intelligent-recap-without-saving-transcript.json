@@ -2,56 +2,39 @@
   "slug": "teams-intelligent-recap-without-saving-transcript",
   "roadmapId": 558286,
   "title": "Microsoft Teams: intelligent recap without saving a transcript",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-16",
-  "version": 3,
+  "version": 4,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 2,
-  "verifierVerdict": "hold",
+  "attempts": 0,
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-16",
-    "reasons": [
-      "1 blocking finding (claim 59)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 61,
-    "confirmed": 60,
+    "claims": 65,
+    "confirmed": 65,
     "unconfirmed": 0,
-    "contradicted": 1,
-    "blocker": 1,
+    "contradicted": 0,
+    "blocker": 0,
     "major": 0,
-    "minor": 1
+    "minor": 2
   },
-  "summary": "The documented controls, rollout windows and summary lifecycle are supported. The cost rating needs correction: the standard reserves Low for indirect costs only, whereas the briefing documents a required Copilot add-on licence for organisers and viewers.",
+  "summary": "The briefing passes: its licensing, access restrictions, storage lifecycle and administrative controls are supported by Microsoft's documentation and the supplied records. Two minor qualifications should flag that the PowerShell reference still describes the recap settings as ineffective, whereas the feature article documents their use.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing; rationale: risk",
-      "type": "behaviour",
-      "claim": "This feature generates an AI meeting summary without saving a persistent transcript or recording.",
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
-      "quote": "Organizers with a Microsoft Copilot license can generate AI summaries of Teams meetings without saving a recording or persistent transcript.",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\"",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
-      "where": "front matter: status; What's changing",
-      "type": "record",
-      "claim": "Roadmap item 558286 is Launched.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 3,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
       "claim": "The roadmap target is October CY2026.",
@@ -62,7 +45,7 @@
       "fix": null
     },
     {
-      "n": 4,
+      "n": 3,
       "where": "front matter: previewDate",
       "type": "record",
       "claim": "The roadmap supplies no preview date.",
@@ -73,10 +56,10 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 4,
       "where": "front matter: releasePhase",
       "type": "record",
-      "claim": "The release phases are General Availability and Targeted Release.",
+      "claim": "The roadmap lists General Availability and Targeted Release.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
@@ -84,7 +67,7 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 5,
       "where": "front matter: clouds; Scope",
       "type": "record",
       "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
@@ -95,10 +78,10 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 6,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap lists Android, Desktop, iOS, Mac and Web.",
+      "claim": "The listed platforms are Android, Desktop, iOS, Mac and Web.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Mac\", \"Web\"]",
@@ -106,41 +89,30 @@
       "fix": null
     },
     {
-      "n": 8,
-      "where": "front matter: licensing.model and notes; summary; Cost and licensing; Scope; rationale: cost",
-      "type": "licensing",
-      "claim": "Licensing is per user, with a Microsoft Copilot licence required for the organiser generating a summary.",
+      "n": 7,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap associates this feature with Microsoft Teams and Microsoft Copilot (Microsoft 365).",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
-      "quote": "Organizers in your organization with a Copilot license can generate the summary",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Teams\", \"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-11-04T00:02:09.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-04T00:02:09\"",
       "severity": null,
       "fix": null
     },
     {
       "n": 9,
-      "where": "front matter: licensing.notes; What's changing; Cost and licensing; Scope; rationale: cost",
-      "type": "licensing",
-      "claim": "Attendees need a Copilot licence to view the summary.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
-      "quote": "attendees in your organization who have a Copilot license can view it on the Recap tab after the meeting.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
-      "where": "front matter: defaultState; licensing.notes; What's changing; Why it matters; rationales",
-      "type": "default",
-      "claim": "The feature arrives automatically for Copilot-licensed users assigned a meeting policy with Copilot enabled.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
-      "quote": "Intelligent recap without saving transcripts is automatically available to users who have a Microsoft Copilot license and are assigned a Teams meeting policy with Copilot enabled.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
-      "where": "What's changing",
+      "where": "What's changing: opening sentence",
       "type": "behaviour",
       "claim": "The full intelligent recap experience includes transcription and recordings.",
       "status": "supported",
@@ -150,120 +122,43 @@
       "fix": null
     },
     {
-      "n": 12,
-      "where": "summary; What's changing; Scope",
-      "type": "availability",
-      "claim": "This experience supports scheduled meetings only, not ad hoc meetings or calls.",
+      "n": 10,
+      "where": "summary; licensing.model and notes; What's changing; Cost and licensing; Scope; rationale: cost",
+      "type": "licensing",
+      "claim": "Generating the summary requires a Copilot licence for the organiser, supporting the per-user licensing classification.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
-      "quote": "Is an AI summary generated for scheduled meetings, unscheduled meetings, and calls? AI summaries are generated for scheduled meetings only.",
+      "quote": "Organizers with a Microsoft Copilot license can generate AI summaries of Teams meetings without saving a recording or persistent transcript.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary; What's changing; Scope",
+      "type": "availability",
+      "claim": "The feature supports scheduled meetings only, not ad hoc meetings or calls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+      "quote": "AI summaries are generated for scheduled meetings only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "summary; What's changing; Why it matters; rationale: risk",
+      "type": "behaviour",
+      "claim": "This experience generates an AI summary without saving a persistent meeting transcript.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+      "quote": "No meeting transcript is saved or retained after the meeting.",
       "severity": null,
       "fix": null
     },
     {
       "n": 13,
-      "where": "What's changing; Why it matters",
-      "type": "role",
-      "claim": "Copilot-licensed organisers can enable or disable it in Meeting options before the meeting.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
-      "quote": "Organizers with a Copilot license can turn it on or off in Meeting options before the meeting.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "What's changing; Why it matters",
-      "type": "role",
-      "claim": "Copilot-licensed organisers, co-organisers and presenters can turn it on or off during the meeting.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
-      "quote": "Organizers, co-organizers, and presenters with a Copilot license can turn it on or off during the meeting by using the meeting controls.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The summary is available on the Recap tab after the meeting.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
-      "quote": "attendees in your organization who have a Copilot license can view it on the Recap tab after the meeting.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "What's changing; Risk assessment: Change & support",
-      "type": "record",
-      "claim": "The roadmap says chapters, topics, mentions and audio recap may not be available.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "After the meeting, the AI Summary will be available, but other elements of the recap may not be available (Chapters, Topics, Mentions, Audio recap).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The roadmap describes in-meeting enablement by organisers and eligible participants.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Meeting organizers can choose this setting from the meeting options before the meeting, or organizers and eligible participants can enable it during the meeting.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "What's changing: notice inconsistency",
-      "type": "record",
-      "claim": "The notice's in-meeting controls paragraph says participants cannot change the setting.",
-      "status": "supported",
-      "source": "Message Center post MC1275312",
-      "quote": "Participants can see whether AI is being turned on/off, while participants cannot change this setting.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "What's changing: notice inconsistency",
-      "type": "record",
-      "claim": "The same notice's compliance table says organisers or Copilot-licensed participants can toggle it during the meeting.",
-      "status": "supported",
-      "source": "Message Center post MC1275312",
-      "quote": "Meeting organizers can enable or disable the feature before the meeting, and organizers or participants with Copilot licenses can toggle it during the meeting.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Transcription data is temporarily held in a service-managed cache during summary generation.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
-      "quote": "During recap generation, transcription data is temporarily stored in a service-managed cache used by the recap service to generate the AI summary.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The cached transcription data is purged within one day.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
-      "quote": "The cached data is automatically purged within one day.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
       "where": "summary; What's changing; Why it matters; rationale: risk",
       "type": "behaviour",
-      "claim": "No transcript or recording is saved as part of this experience.",
+      "claim": "No meeting recording is saved as part of this experience.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
       "quote": "No meeting transcript or recording is saved as part of this experience.",
@@ -271,10 +166,10 @@
       "fix": null
     },
     {
-      "n": 23,
-      "where": "summary; What's changing; Risk assessment: Data exposure",
+      "n": 14,
+      "where": "summary; What's changing; Risk assessment",
       "type": "behaviour",
-      "claim": "The summary is a read-only Word document.",
+      "claim": "The AI summary is stored as a read-only Word document.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
       "quote": "The AI summary is stored as a read-only Word document in the organizer's OneDrive.",
@@ -282,10 +177,21 @@
       "fix": null
     },
     {
-      "n": 24,
+      "n": 15,
       "where": "summary; What's changing; Why it matters; Risk assessment; Cost and licensing; Governance controls",
       "type": "behaviour",
-      "claim": "AI summary documents are stored in the Meetings folder of the organiser's OneDrive.",
+      "claim": "The summary document is stored in the organiser's OneDrive.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+      "quote": "The AI summary is stored as a read-only Word document in the organizer's OneDrive.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing: storage paragraph",
+      "type": "behaviour",
+      "claim": "The summary is stored in the Meetings folder.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
       "quote": "AI summary documents are stored in the Meetings folder of the meeting organizer's OneDrive",
@@ -293,7 +199,7 @@
       "fix": null
     },
     {
-      "n": 25,
+      "n": 17,
       "where": "summary; What's changing; Why it matters; Governance guidance; Governance controls",
       "type": "default",
       "claim": "Summary documents expire after 120 days by default.",
@@ -304,32 +210,197 @@
       "fix": null
     },
     {
-      "n": 26,
-      "where": "controls[0].note; What's changing; Governance controls table",
-      "type": "behaviour",
-      "claim": "Administrators can configure summary expiration from 1 to 9999 days.",
+      "n": 18,
+      "where": "What's changing; Why it matters",
+      "type": "role",
+      "claim": "Copilot-licensed organisers can enable or disable the experience in Meeting options before the meeting.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts#configure-expiration-for-ai-summary-documents",
-      "quote": "You can specify a value from 1 to 9999 days, or -1 for no expiration.",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+      "quote": "Organizers with a Copilot license can turn it on or off in Meeting options before the meeting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Why it matters",
+      "type": "role",
+      "claim": "Copilot-licensed organisers can change the setting during the meeting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+      "quote": "Organizers, co-organizers, and presenters with a Copilot license can turn it on or off during the meeting by using the meeting controls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing: opening paragraph",
+      "type": "role",
+      "claim": "Copilot-licensed co-organisers can change the setting during the meeting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+      "quote": "Organizers, co-organizers, and presenters with a Copilot license can turn it on or off during the meeting by using the meeting controls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing: opening paragraph",
+      "type": "role",
+      "claim": "Copilot-licensed presenters can change the setting during the meeting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+      "quote": "Organizers, co-organizers, and presenters with a Copilot license can turn it on or off during the meeting by using the meeting controls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing: opening paragraph",
+      "type": "behaviour",
+      "claim": "Eligible attendees can view the AI summary on the Recap tab after the meeting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+      "quote": "attendees in your organization who have a Copilot license can view it on the Recap tab after the meeting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "licensing.notes; What's changing; Risk assessment; Cost and licensing; Scope; rationale: cost",
+      "type": "licensing",
+      "claim": "Attendees need their own Copilot licences to view the summary.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+      "quote": "Attendees in the same organization as the meeting organizer who have a Copilot license can access the AI summary.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Risk assessment; Scope",
+      "type": "availability",
+      "claim": "Summary access is for attendees in the same organisation as the organiser.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+      "quote": "Attendees in the same organization as the meeting organizer who have a Copilot license can access the AI summary.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Risk assessment: Security & identity",
+      "type": "availability",
+      "claim": "Guests cannot access this summary.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+      "quote": "Guests and external attendees can't access it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Risk assessment",
+      "type": "availability",
+      "claim": "External attendees cannot access this summary.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+      "quote": "Guests and external attendees can't access it.",
       "severity": null,
       "fix": null
     },
     {
       "n": 27,
-      "where": "controls[0].note; What's changing; Governance controls table",
-      "type": "behaviour",
-      "claim": "Setting expiration to -1 means no expiration.",
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "record",
+      "claim": "The roadmap says chapters, topics, mentions and audio recap may be unavailable in this experience.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts#configure-expiration-for-ai-summary-documents",
-      "quote": "You can specify a value from 1 to 9999 days, or -1 for no expiration.",
+      "source": "roadmap record",
+      "quote": "After the meeting, the AI Summary will be available, but other elements of the recap may not be available (Chapters, Topics, Mentions, Audio recap).",
       "severity": null,
       "fix": null
     },
     {
       "n": 28,
+      "where": "What's changing: second paragraph",
+      "type": "record",
+      "claim": "The roadmap describes in-meeting enablement by organisers and eligible participants.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Meeting organizers can choose this setting from the meeting options before the meeting, or organizers and eligible participants can enable it during the meeting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing: second paragraph",
+      "type": "record",
+      "claim": "The notice's in-meeting controls paragraph says participants cannot change the setting.",
+      "status": "supported",
+      "source": "Message Center post MC1275312",
+      "quote": "Participants can see whether AI is being turned on/off, while participants cannot change this setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing: second paragraph",
+      "type": "record",
+      "claim": "In conflict with its in-meeting paragraph, the notice's compliance table allows Copilot-licensed participants to toggle the setting.",
+      "status": "supported",
+      "source": "Message Center post MC1275312",
+      "quote": "Meeting organizers can enable or disable the feature before the meeting, and organizers or participants with Copilot licenses can toggle it during the meeting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing: storage paragraph",
+      "type": "behaviour",
+      "claim": "Transcription data is temporarily held in a service-managed cache during summary generation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+      "quote": "During recap generation, transcription data is temporarily stored in a service-managed cache used by the recap service to generate the AI summary.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing: storage paragraph",
+      "type": "behaviour",
+      "claim": "Cached transcription data is purged within one day.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+      "quote": "The cached data is automatically purged within one day.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[0].note; What's changing; Governance controls: first row",
+      "type": "behaviour",
+      "claim": "Administrators can configure summary expiry from 1 to 9999 days per meeting policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+      "quote": "Select an existing policy or create a new one. Under Copilot and other AI ... You can specify a value from 1 to 9999 days, or -1 for no expiration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[0].note; What's changing; Governance controls: first row",
+      "type": "behaviour",
+      "claim": "Setting the expiry value to -1 means no expiration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+      "quote": "You can specify a value from 1 to 9999 days, or -1 for no expiration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
       "where": "What's changing; Governance guidance: After rollout; Governance controls",
       "type": "applicability",
-      "claim": "AI summary documents support Purview eDiscovery with indexed titles, keywords and content.",
+      "claim": "Summary documents support Purview eDiscovery indexing.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
       "quote": "AI summary documents support Microsoft Purview eDiscovery. The document title, keywords, and content are indexed for search.",
@@ -337,10 +408,10 @@
       "fix": null
     },
     {
-      "n": 29,
+      "n": 36,
       "where": "What's changing; Governance guidance: After rollout; Governance controls",
       "type": "applicability",
-      "claim": "AI summary documents support Purview legal hold.",
+      "claim": "Summary documents support Microsoft Purview legal hold.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
       "quote": "AI summary documents support Microsoft Purview legal hold.",
@@ -348,10 +419,10 @@
       "fix": null
     },
     {
-      "n": 30,
+      "n": 37,
       "where": "What's changing; Governance guidance: At rollout",
       "type": "role",
-      "claim": "Organisers can delete a summary from the Recap tab or its Word document in OneDrive.",
+      "claim": "Organisers can delete the summary from the Recap tab or OneDrive.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
       "quote": "Meeting organizers can delete the AI summary from the Recap tab or the corresponding Word document in OneDrive.",
@@ -359,10 +430,10 @@
       "fix": null
     },
     {
-      "n": 31,
-      "where": "What's changing",
+      "n": 38,
+      "where": "What's changing: deletion sentence",
       "type": "behaviour",
-      "claim": "Deleting a summary from either location also deletes it from the other.",
+      "claim": "Deleting the summary from either location also deletes it from the other.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
       "quote": "Deleting the AI summary from either location also deletes it from the other location.",
@@ -370,19 +441,19 @@
       "fix": null
     },
     {
-      "n": 32,
-      "where": "What's changing; Risk assessment: Data exposure and Security & identity; Scope",
-      "type": "availability",
-      "claim": "Viewers must be in the organiser's organisation; guests and external attendees cannot access the summary.",
+      "n": 39,
+      "where": "front matter: defaultState; licensing.notes; What's changing; Why it matters; Risk assessment; rationales",
+      "type": "default",
+      "claim": "The feature is automatically available without a separate admin rollout to Copilot-licensed users with Copilot-enabled meeting policies, supporting defaultState on.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
-      "quote": "Attendees in the same organization as the meeting organizer who have a Copilot license can access the AI summary. Guests and external attendees can't access it.",
+      "quote": "Intelligent recap without saving transcripts is automatically available to users who have a Microsoft Copilot license and are assigned a Teams meeting policy with Copilot enabled.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 33,
-      "where": "What's changing",
+      "n": 40,
+      "where": "What's changing: rollout paragraph",
       "type": "record",
       "claim": "MC1275312 was updated on 27 July 2026.",
       "status": "supported",
@@ -392,10 +463,10 @@
       "fix": null
     },
     {
-      "n": 34,
-      "where": "What's changing",
+      "n": 41,
+      "where": "What's changing: rollout paragraph",
       "type": "record",
-      "claim": "The notice expects Targeted Release from early October to mid-October 2026.",
+      "claim": "Microsoft expected Targeted Release rollout from early October to mid-October 2026.",
       "status": "supported",
       "source": "Message Center post MC1275312",
       "quote": "Targeted Release: We will begin rolling out early October 2026 (previously mid-August) and expect to complete by mid-October 2026 (previously late August).",
@@ -403,10 +474,10 @@
       "fix": null
     },
     {
-      "n": 35,
-      "where": "What's changing",
+      "n": 42,
+      "where": "What's changing: rollout paragraph",
       "type": "record",
-      "claim": "The notice expects Worldwide General Availability from mid-October to late October 2026.",
+      "claim": "Microsoft expected General Availability Worldwide rollout from mid-October to late October 2026.",
       "status": "supported",
       "source": "Message Center post MC1275312",
       "quote": "General Availability (Worldwide): We will begin rolling out mid-October 2026 (previously late August) and expect to complete by late October 2026 (previously late September).",
@@ -414,10 +485,10 @@
       "fix": null
     },
     {
-      "n": 36,
-      "where": "Why it matters",
+      "n": 43,
+      "where": "Why it matters: opening paragraph",
       "type": "behaviour",
-      "claim": "Microsoft positions this experience for organisations that restrict transcript or recording retention for compliance reasons.",
+      "claim": "Microsoft positions this experience for organisations restricting transcript or recording retention for compliance reasons.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
       "quote": "Intelligent recap without saving transcripts provides AI-generated meeting summaries for organizations that don't allow meeting transcripts or recordings, or that need to limit transcript and recording retention for compliance reasons.",
@@ -425,51 +496,40 @@
       "fix": null
     },
     {
-      "n": 37,
-      "where": "Risk assessment: Data exposure; Change & support",
-      "type": "licensing",
-      "claim": "Attendees without a Copilot licence cannot view this summary.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
-      "quote": "Attendees in the same organization as the meeting organizer who have a Copilot license can access the AI summary.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "Why it matters; Open questions",
+      "n": 44,
+      "where": "Why it matters: organiser account deletion; Open questions",
       "type": "absence",
-      "claim": "The feature article does not explain summary behaviour when the organiser's account is deleted before expiry.",
+      "claim": "The feature article does not specify what happens to a summary when the organiser's account is deleted.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"intelligent recap without saving transcripts\" \"organizer\" \"deleted\". Opened the complete feature article and Memory for Microsoft Teams Meetings; only the distinct meeting-memory artifact has account-deactivation guidance.",
+      "quote": "Searched: \"intelligent recap without saving transcripts\" \"organizer\" \"deleted\" account. Read the feature article in full; its FAQ covers summary deletion, not account deletion. Meeting memory guidance concerns a different artifact.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 39,
+      "n": 45,
       "where": "Risk assessment: Data exposure",
       "type": "absence",
-      "claim": "The feature article does not describe how sharing restrictions, sensitivity labels or DLP apply to summary documents.",
+      "claim": "The feature article does not explain how sharing restrictions, sensitivity labels and DLP apply to these summaries.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"intelligent recap without saving transcripts\" \"sensitivity\" \"DLP\". Read the complete feature article and Enable sensitivity labels for files in SharePoint and OneDrive. The feature article covers eDiscovery and legal hold, not these controls.",
+      "quote": "Searched: \"intelligent recap without saving transcripts\" \"sensitivity\" \"DLP\" sharing. Read the feature article in full and SharePoint/OneDrive sensitivity-label guidance; the feature article does not describe these controls.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 40,
-      "where": "Risk assessment: Data exposure",
+      "n": 46,
+      "where": "Risk assessment: Data exposure; writer evidence",
       "type": "applicability",
-      "claim": "Sensitivity-label support needs to be enabled and configured for OneDrive files.",
+      "claim": "Sensitivity-label support needs enabling and configuration for OneDrive files.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
       "quote": "Enable built-in labeling for supported Office files and PDF files in SharePoint and OneDrive so that users can apply your sensitivity labels in Office for the web.",
-      "severity": "minor",
-      "fix": "Add https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files to sources for the statement about enabling sensitivity labels for OneDrive files."
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 41,
+      "n": 47,
       "where": "Cost and licensing",
       "type": "record",
       "claim": "MC1275312 names the M365 Copilot (Premium) licence.",
@@ -480,96 +540,107 @@
       "fix": null
     },
     {
-      "n": 42,
+      "n": 48,
       "where": "Cost and licensing; rationale: cost",
       "type": "absence",
-      "claim": "No separate meter for this experience is documented in the feature guidance at the time of writing.",
+      "claim": "The feature guidance documents no separate meter for this experience at the time of writing in November 2026.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: intelligent recap without saving transcripts billing meter license pricing. Read the complete feature article and Copilot meeting policy guidance, plus recap licensing search excerpts. No separate meter is specified for this experience.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "controls[0].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Summary expiry is configured under Teams admin center > Meetings > Meeting policies > policy > Copilot and other AI > Set a default expiration time for Intelligent Recap .docx files for non-transcribed meetings.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts#configure-expiration-for-ai-summary-documents",
-      "quote": "go to Meetings > Meeting policies. ... Select an existing policy or create a new one. ... Under Copilot and other AI, next to Set a default expiration time for Intelligent Recap .docx files for non-transcribed meetings, enter the number of days that documents are retained.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "controls[0].api; Governance controls table; Governance guidance: At rollout",
-      "type": "command",
-      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy> -IntelligentRecapDocxFileExpirationDays 180 sets summary expiration to 180 days.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts#configure-expiration-for-ai-summary-documents",
-      "quote": "The following example sets the default expiration time to 180 days. ... Set-CsTeamsMeetingPolicy -Identity <policyname> -IntelligentRecapDocxFileExpirationDays 180",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "controls[1].ui; Governance controls table",
-      "type": "absence",
-      "claim": "No admin UI path is documented for the intelligent recap on/off policy control.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams intelligent recap AllowIntelligentRecap Teams admin center turn off intelligent recap UI. Read the feature article and Copilot policy article; results document -AllowIntelligentRecap in PowerShell but no matching admin UI path.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "controls[1].api; Governance controls table; Governance guidance: Before rollout",
-      "type": "command",
-      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy> -AllowIntelligentRecap $false turns off intelligent recap.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts#manage-intelligent-recap-without-saving-transcripts",
-      "quote": "To turn off intelligent recap, use the Set-CsTeamsMeetingPolicy cmdlet and set the -AllowIntelligentRecap parameter to $false. ... Set-CsTeamsMeetingPolicy -Identity <policyname> -AllowIntelligentRecap $false",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
-      "where": "Governance guidance: Before rollout",
-      "type": "applicability",
-      "claim": "Turning off intelligent recap disables it regardless of whether transcripts are saved while leaving Copilot enabled.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
-      "quote": "To prevent users from using this feature while keeping Copilot enabled, turn off intelligent recap in the Teams meeting policy. ... Turning off intelligent recap disables intelligent recap for all meetings, regardless of whether transcripts are saved.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 48,
-      "where": "controls[2].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "The Copilot setting is under Teams admin center > Meetings > Meeting policies > policy > Recording & transcription > Copilot.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription#manage-copilot-for-teams-meetings-and-events",
-      "quote": "In the left navigation of the Teams admin center, go to Meetings > Meeting policies. ... Select an existing policy or create a new one. ... Go to the Recording & transcription section and find the Copilot setting.",
+      "quote": "Searched: \"intelligent recap\" \"without\" \"transcripts\" \"meter\" licensing billing. Read the feature article, Copilot meeting prerequisites and recap licensing search excerpts; the feature guidance names licences but no separate meter.",
       "severity": null,
       "fix": null
     },
     {
       "n": 49,
-      "where": "controls[2].api; Governance controls table",
-      "type": "command",
-      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy> -Copilot Enabled configures the Copilot meeting policy to On.",
+      "where": "Scope; Open questions: Government cloud availability",
+      "type": "absence",
+      "claim": "Government cloud dates are not published for this roadmap item.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription#manage-copilot-for-teams-meetings-and-events",
-      "quote": "On | Enabled ... Set-CsTeamsMeetingPolicy -Identity <policy name> -Copilot Enabled",
+      "source": null,
+      "quote": "Searched: \"intelligent recap without saving transcripts\" government GCC availability. Read the roadmap record, MC1275312 and feature article; none provides government-cloud dates. Search results about multilingual and ad-hoc recap concern other features.",
       "severity": null,
       "fix": null
     },
     {
       "n": 50,
-      "where": "controls[2].note; Governance controls table",
+      "where": "controls[0].ui; Governance controls: expiry row",
+      "type": "admin-path",
+      "claim": "The expiry control is at Teams admin center > Meetings > Meeting policies > policy > Copilot and other AI > Set a default expiration time for Intelligent Recap .docx files for non-transcribed meetings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts#configure-expiration-for-ai-summary-documents",
+      "quote": "go to Meetings > Meeting policies. Select an existing policy or create a new one. Under Copilot and other AI, next to Set a default expiration time for Intelligent Recap .docx files for non-transcribed meetings, enter the number of days",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[0].api; Governance guidance: At rollout; Governance controls: expiry row",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy> -IntelligentRecapDocxFileExpirationDays 180 configures summary expiry.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts#configure-expiration-for-ai-summary-documents",
+      "quote": "The following example sets the default expiration time to 180 days.\nSet-CsTeamsMeetingPolicy -Identity <policyname> -IntelligentRecapDocxFileExpirationDays 180",
+      "severity": "minor",
+      "fix": "Add this qualification after the controls table: 'The feature article documents -IntelligentRecapDocxFileExpirationDays for expiry, but the Set-CsTeamsMeetingPolicy reference still says this feature has not been fully released and the setting will have no effect.' Cite https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy#-intelligentrecapdocxfileexpirationdays."
+    },
+    {
+      "n": 52,
+      "where": "controls[1].ui; Governance controls: Intelligent recap row",
+      "type": "absence",
+      "claim": "An admin UI control for turning intelligent recap off is not yet documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"AllowIntelligentRecap\" \"Teams admin center\" turn off. Read the feature article's Turn off intelligent recap and FAQ, Copilot meeting controls and cmdlet reference; they document PowerShell, not an admin UI path for this switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[1].api; Governance guidance: Before rollout; Governance controls: Intelligent recap row",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy> -AllowIntelligentRecap $false turns off intelligent recap.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts#manage-intelligent-recap-without-saving-transcripts",
+      "quote": "To turn off intelligent recap, use the Set-CsTeamsMeetingPolicy cmdlet and set the -AllowIntelligentRecap parameter to $false.",
+      "severity": "minor",
+      "fix": "Add this qualification after the controls table: 'The feature article documents -AllowIntelligentRecap $false to disable recap, but the Set-CsTeamsMeetingPolicy reference still says this feature has not been fully released and the setting will have no effect.' Cite https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy#-allowintelligentrecap."
+    },
+    {
+      "n": 54,
+      "where": "Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "Disabling intelligent recap blocks recap in all meetings regardless of saved transcripts while allowing Copilot to remain enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+      "quote": "To prevent users from using this feature while keeping Copilot enabled, turn off intelligent recap in the Teams meeting policy.\nTurning off intelligent recap disables intelligent recap for all meetings, regardless of whether transcripts are saved.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[2].ui; Governance controls: Copilot row",
+      "type": "admin-path",
+      "claim": "The Copilot control is at Teams admin center > Meetings > Meeting policies > policy > Recording & transcription > Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription#manage-copilot-for-teams-meetings-and-events",
+      "quote": "go to Meetings > Meeting policies.\nSelect an existing policy or create a new one.\nGo to the Recording & transcription section and find the Copilot setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[2].api; Governance controls: Copilot row",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy> -Copilot Enabled configures Copilot for meetings and events.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription#manage-copilot-for-teams-meetings-and-events",
+      "quote": "To allow users to use Copilot Only during the meeting in meetings and events created by organizers with this policy:\nSet-CsTeamsMeetingPolicy -Identity <policy name> -Copilot Enabled",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[2].note; Governance controls: Copilot row",
       "type": "default",
       "claim": "EnabledWithTranscript is the default Copilot meeting policy value.",
       "status": "supported",
@@ -579,21 +650,21 @@
       "fix": null
     },
     {
-      "n": 51,
-      "where": "controls[2].note; Governance controls table",
+      "n": 58,
+      "where": "controls[2].note; Governance controls: Copilot row",
       "type": "command",
-      "claim": "EnabledWithTranscriptDefaultOn and Disabled are additional documented -Copilot values.",
+      "claim": "The Copilot guidance also documents EnabledWithTranscriptDefaultOn and Disabled as -Copilot values.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription",
-      "quote": "Set-CsTeamsMeetingPolicy -Identity <policy name> -Copilot EnabledWithTranscriptDefaultOn ... Set-CsTeamsMeetingPolicy -Identity <policy name> -Copilot Disabled",
+      "quote": "Set-CsTeamsMeetingPolicy -Identity <policy name> -Copilot EnabledWithTranscriptDefaultOn\nSet-CsTeamsMeetingPolicy -Identity <policy name> -Copilot Disabled",
       "severity": null,
       "fix": null
     },
     {
-      "n": 52,
-      "where": "controls: scope fields; Governance controls",
+      "n": 59,
+      "where": "controls[].scope; Governance controls: closing paragraph",
       "type": "applicability",
-      "claim": "These are meeting policy settings applicable to users, and Copilot meeting policies can be assigned to groups or individual users.",
+      "claim": "These are user-scoped meeting policy settings, and Copilot meeting policies can be assigned to groups or individual users.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription",
       "quote": "You can apply your Copilot meeting policies to groups or individual users.",
@@ -601,7 +672,7 @@
       "fix": null
     },
     {
-      "n": 53,
+      "n": 60,
       "where": "Governance guidance: After rollout",
       "type": "availability",
       "claim": "The companion meeting memory feature is in preview.",
@@ -612,7 +683,7 @@
       "fix": null
     },
     {
-      "n": 54,
+      "n": 61,
       "where": "Governance guidance: After rollout",
       "type": "availability",
       "claim": "Meeting memory is available only to organisations in the Teams TAP programme.",
@@ -623,10 +694,10 @@
       "fix": null
     },
     {
-      "n": 55,
+      "n": 62,
       "where": "Governance guidance: After rollout",
       "type": "default",
-      "claim": "Meeting memory files default to a five-year expiration of 1,825 days.",
+      "claim": "Meeting memory files have a default expiration time of five years, specified as 1,825 days.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings",
       "quote": "The default expiration time for memory files is five years (1,825 days), but admins can customize the expiration time as needed for their organization.",
@@ -634,18 +705,18 @@
       "fix": null
     },
     {
-      "n": 56,
+      "n": 63,
       "where": "Governance guidance: After rollout",
       "type": "behaviour",
-      "claim": "Administrators can customise the expiration period for meeting memory files.",
+      "claim": "Administrators can change the meeting memory expiration time.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings",
-      "quote": "The default expiration time for memory files is five years (1,825 days), but admins can customize the expiration time as needed for their organization.",
+      "quote": "Default expiration of memory files is controlled through the Teams Admin Center. The default expiration time for memory files is five years (1,825 days), but admins can customize the expiration time as needed for their organization.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 57,
+      "n": 64,
       "where": "Governance guidance: After rollout",
       "type": "applicability",
       "claim": "Purview retention policies take precedence over the meeting memory expiration setting.",
@@ -656,54 +727,21 @@
       "fix": null
     },
     {
-      "n": 58,
-      "where": "Scope; Open questions",
-      "type": "absence",
-      "claim": "Government cloud dates are not published for this roadmap item.",
+      "n": 65,
+      "where": "rationale: cost; front matter: cost; writer evidence",
+      "type": "licensing",
+      "claim": "The prerequisite Copilot licence is documented as an add-on, supporting the medium cost rating rather than indirect-cost-only low.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"intelligent recap without saving transcripts\" \"GCC\". Read roadmap 558286, MC1275312, the feature article and Copilot policy article. No government rollout dates were found for this experience; other recap GCC results concern different experiences.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 59,
-      "where": "front matter: cost; rationale: cost",
-      "type": "consistency",
-      "claim": "Cost is Low, meaning indirect costs only, despite the documented Copilot add-on licence requirement.",
-      "status": "contradicted",
       "source": "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription",
-      "quote": "Prerequisites: An add-on Microsoft Copilot license for intended users. The briefing rates cost Low; the standard defines Low as indirect cost only and Medium as add-on licences for a subset of users.",
-      "severity": "blocker",
-      "fix": "Change cost to medium and replace the cost rationale with: \"Medium. Organisers and attendees who view the summary need a Copilot licence, documented as an add-on prerequisite. The feature guidance documents no separate meter at the time of writing (November 2026).\""
-    },
-    {
-      "n": 60,
-      "where": "Governance controls: Set-CsTeamsMeetingPolicy reference link",
-      "type": "command",
-      "claim": "The linked MicrosoftTeams module reference lists the command and its Identity, Copilot, AllowIntelligentRecap and IntelligentRecapDocxFileExpirationDays parameters.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps",
-      "quote": "Module: MicrosoftTeams PowerShell module ... Set-CsTeamsMeetingPolicy ... [[-Identity] <XdsIdentity>] ... [-AllowIntelligentRecap <Boolean>] ... [-Copilot <String>] ... [-IntelligentRecapDocxFileExpirationDays <Int32>]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 61,
-      "where": "front matter: products",
-      "type": "record",
-      "claim": "The roadmap associates this item with Microsoft Teams and Microsoft Copilot (Microsoft 365).",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"products\": [\"Microsoft Teams\", \"Microsoft Copilot (Microsoft 365)\"]",
+      "quote": "An add-on Microsoft Copilot license for intended users.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-16T22:01:00.104Z",
+    "at": "2026-11-16T22:41:14.454Z",
     "summary": {
-      "links": 9,
+      "links": 10,
       "unreachable": 0,
       "uiPaths": 2,
       "uiPathsWithMissingWords": 0,
@@ -734,6 +772,11 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
         "ok": true,
         "status": 200
       },
@@ -822,6 +865,12 @@
       "date": "2026-11-16",
       "status": "held",
       "version": 2,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-16",
+      "status": "held",
+      "version": 3,
       "model": "gpt-6.1-sol"
     }
   ]

@@ -12,13 +12,13 @@ platforms: ["Web"]
 targetDate: "December CY2026"
 previewDate: null
 risk: "high"
-cost: "low"
+cost: "variable"
 impact: "medium"
 defaultState: "unknown"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "Not yet published."
+  model: "consumption"
+  notes: "Work IQ API uses usage-based billing measured in Copilot Credits; a rate specific to the memory path is not yet published."
 audiences: ["m365-admin","security","compliance","service-owner"]
 tags: ["work-iq","memory","mcp","personalisation","privacy"]
 sources:
@@ -72,10 +72,6 @@ controls:
       path: "Agents > Tools > Work IQ MCP > Policy"
       docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp#open-policy-settings-in-the-microsoft-365-admin-center"
     api: null
-  - governs: "Control over the memory profile path in Work IQ MCP"
-    scope: "tenant"
-    ui: null
-    api: null
 confidence: "low"
 created: "2026-11-14"
 updated: "2026-11-16"
@@ -91,19 +87,23 @@ changes:
     note: "Correction: narrowed the cloud wording, Graph call, agent memory path and retention, eDiscovery and audit statements; cost lowered to low."
   - date: "2026-11-16"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 49 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-16"
+    note: "Correction: Work IQ API Copilot Credits billing now stated (cost variable, licensing consumption); removed the claim that no control over the memory path is documented."
+  - date: "2026-11-16"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 58 statements not yet confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-16"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 49
-  confirmed: 45
+  claims: 58
+  confirmed: 58
   unconfirmed: 0
-  contradicted: 4
-  attempts: 2
-  hash: "9db50e5f76cffdb330b768af0d4e25cb"
+  contradicted: 0
+  attempts: 0
+  hash: "bdb508f29da0c4e54a1a9bacd61d13f1"
 ---
 
 ## What's changing
@@ -134,7 +134,7 @@ Memory profiles can contain personal preferences and inferred information from c
 
 ## Cost and licensing
 
-Not yet published. Learn's page for the Work IQ MCP `retrieve` tool (public preview) lists usage-based billing for Copilot Credits, with calling users assigned to a spending policy that includes Work IQ API, as a prerequisite for that tool. Whether the memory path follows it is unknown. The only cost the sources show for this path is staff time for privacy review and user communications.
+Work IQ API uses usage-based billing measured in Copilot Credits; a rate specific to the memory path is not yet published. Learn's page for the Work IQ MCP `retrieve` tool (public preview) lists usage-based billing for Copilot Credits, with calling users assigned to a spending policy that includes Work IQ API, as a prerequisite for that tool. Plan for Copilot Credits consumption as well as staff time for privacy review and user communications.
 
 ## Scope
 
@@ -164,7 +164,6 @@ Authorised agents acting for a user, Worldwide (Standard Multi-Tenant) per the r
 <tr><td data-label="Control"><strong>Enhanced personalization (Copilot memory) for the tenant</strong><br><small>Tenant</small><br><small class="controls__note">On by default; preview, subject to change; not the default of the new path. Beta API; PeopleSettings.ReadWrite.All; delegated use needs the People Administrator role. Off disables saved memories, chat history, custom instructions.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH https://graph.microsoft.com/beta/copilot/settings/people/enhancedpersonalization with body {&quot;isEnabledInOrganization&quot;: false}</code> <a href="https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-update?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Memory on or off for a Copilot Studio agent using the Microsoft Copilot harness (preview)</strong><br><small>Agent</small><br><small class="controls__note">Maker-side. If a user does not interact with that agent for 28 days, their memories from that agent are deleted; turning memory off does not delete them.</small></td><td data-label="Admin UI"><strong>Copilot Studio (maker)</strong><br>agent › Build › components panel › Memory toggle <a href="https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/memory-overview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Work IQ MCP policy on or off for the tenant</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Work IQ MCP › Policy <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp#open-policy-settings-in-the-microsoft-365-admin-center" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Control over the memory profile path in Work IQ MCP</strong><br><small>Tenant</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
@@ -177,16 +176,13 @@ The Copilot memory control is a Graph setting with no admin centre page document
 - Which consent scopes grant the path.
 
 <!-- rationale
-risk: High. Exposes personal memory derived from chat history and work account data to agents, with controls not yet published.
-cost: Low. Privacy review and user communications require staff time; memory-path licensing and metering are not yet published.
+risk: High. Exposes personal memory derived from chat history and work account data to agents, with no memory-specific switch documented.
+cost: Variable. Work IQ API uses Copilot Credits consumption billing; a rate specific to the memory path is not yet published.
 impact: Medium. Affects users whose memory is read by agents and admins who authorise agents.
 -->
 
-<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-16, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing; Cost and licensing; rationale: cost / licensing: The licensing and metering model for this Work IQ MCP path is unpublished, so whether Work IQ usage-based billing applies is unknown. | Found: You pay for use of the Work IQ API through a usage-based model that uses Copilot Credits. | Fix: Set licensing.model to consumption and licensing.notes to 'Work IQ API uses usage-based billing measured in Copilot Credits; a rate specific to the memory path is not yet published.' Replace 'Not yet published' and 'Whether the memory path follows it is unknown' in Cost and licensing with that sentence. The cited Work IQ API overview states the platform-wide rule without exempting MCP paths. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview
-- [contradicted, blocker] Cost and licensing; rationale: cost / cost: Staff time for privacy review and user communications is the only cost the sources show for this path. | Found: You pay for use of the Work IQ API through a usage-based model that uses Copilot Credits. | Fix: Replace the final sentence of Cost and licensing with 'Plan for Copilot Credits consumption as well as staff time for privacy review and user communications.' Replace the cost rationale with 'Variable. Work IQ API uses Copilot Credits consumption billing; a rate specific to the memory path is not yet published.' | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview
-- [contradicted, blocker] front matter: cost / consistency: A low cost rating, meaning indirect cost only, fits this feature's documented billing. | Found: Briefing: cost: "low". Standard: low means indirect cost only; variable means metered. Microsoft: 'You pay for use of the Work IQ API through a usage-based model that uses Copilot Credits.' | Fix: Set front matter cost to variable. Use the Copilot Credits rationale specified for the Cost and licensing correction. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview
-- [contradicted, blocker] controls[3]; Governance controls table; rationale: risk / absence: No tenant control over the memory profile path in Work IQ MCP is documented. | Found: It adds a request-time governance layer that can allow or deny specific MCP tool requests based on tenant policy. When you turn on the policy, it applies across the tenant and helps control MCP tool access at request time. | Fix: Remove controls[3] and its rendered both-null row: the general Work IQ MCP request-policy layer is already represented by controls[2]. Replace 'with controls not yet published' in the risk rationale with 'with no memory-specific switch documented'. Do not imply that the absence of a dedicated memory setting exempts these MCP requests from tenant policy. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Why it matters / behaviour: Memory profiles can contain personal preferences. | Found: Copilot learns how you work and understands your needs and preferences through your chats, job profile, custom instructions, and more. | Fix: Add https://learn.microsoft.com/graph/control-enhanced-personalization-privacy to sources to support the statement that memory can contain personal preferences. | Source: https://learn.microsoft.com/graph/control-enhanced-personalization-privacy
 -->

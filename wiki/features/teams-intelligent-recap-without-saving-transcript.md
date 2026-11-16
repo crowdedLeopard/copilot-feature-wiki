@@ -12,7 +12,7 @@ platforms: ["Android","Desktop","iOS","Mac","Web"]
 targetDate: "October CY2026"
 previewDate: null
 risk: "medium"
-cost: "low"
+cost: "medium"
 impact: "high"
 defaultState: "on"
 action: "act-now"
@@ -36,6 +36,9 @@ sources:
     kind: "learn"
   - title: "Memory for Microsoft Teams Meetings"
     url: "https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings"
+    kind: "learn"
+  - title: "Enable sensitivity labels for files in SharePoint and OneDrive"
+    url: "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files"
     kind: "learn"
   - title: "Expiry of recap documents for non-transcribed meetings (Teams admin center)"
     url: "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts#configure-expiration-for-ai-summary-documents"
@@ -93,19 +96,23 @@ changes:
     note: "Corrected after verification: softened unsupported claims on prior use, recap elements, identities and permissions, and cost; added the MC1275312 rollout window, in-meeting roles and meeting memory preview status."
   - date: "2026-11-16"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 61 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-16"
+    note: "Corrected after verification: cost rating raised from low to medium because the Copilot licence is documented as an add-on prerequisite; added the sensitivity labels source."
+  - date: "2026-11-16"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 65 statements not yet confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-16"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 61
-  confirmed: 60
+  claims: 65
+  confirmed: 65
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "69aca0f54bb304a1e8da763304d7b046"
+  contradicted: 0
+  attempts: 0
+  hash: "90ca6e3403fff2521a8c1b46a585a867"
 ---
 
 ## What's changing
@@ -192,14 +199,13 @@ The expiry is the control that matters for data minimisation: it sets how long t
 
 <!-- rationale
 risk: Medium. It is automatically available to Copilot-licensed users and creates a new AI-generated record with its own lifecycle, though no transcript or recording is saved.
-cost: Low. It needs a Copilot licence for the organiser and for attendees who view the summary; Microsoft documents no separate meter for it at the time of writing (November 2026), so the known cost is policy review and communications.
+cost: Medium. Organisers and attendees who view the summary need a Copilot licence, documented as an add-on prerequisite. The feature guidance documents no separate meter at the time of writing (November 2026).
 impact: High. It is automatically available to Copilot-licensed organisers and attendees whose meeting policy has Copilot enabled, so most Copilot users in a tenant can meet it.
 -->
 
-<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-16, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: cost; rationale: cost / consistency: Cost is Low, meaning indirect costs only, despite the documented Copilot add-on licence requirement. | Found: Prerequisites: An add-on Microsoft Copilot license for intended users. The briefing rates cost Low; the standard defines Low as indirect cost only and Medium as add-on licences for a subset of users. | Fix: Change cost to medium and replace the cost rationale with: "Medium. Organisers and attendees who view the summary need a Copilot licence, documented as an add-on prerequisite. The feature guidance documents no separate meter at the time of writing (November 2026)." | Source: https://learn.microsoft.com/microsoftteams/copilot-teams-transcription
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Data exposure / applicability: Sensitivity-label support needs to be enabled and configured for OneDrive files. | Found: Enable built-in labeling for supported Office files and PDF files in SharePoint and OneDrive so that users can apply your sensitivity labels in Office for the web. | Fix: Add https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files to sources for the statement about enabling sensitivity labels for OneDrive files. | Source: https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files
+- [supported, minor] controls[0].api; Governance guidance: At rollout; Governance controls: expiry row / command: Set-CsTeamsMeetingPolicy -Identity <policy> -IntelligentRecapDocxFileExpirationDays 180 configures summary expiry. | Found: The following example sets the default expiration time to 180 days. Set-CsTeamsMeetingPolicy -Identity <policyname> -IntelligentRecapDocxFileExpirationDays 180 | Fix: Add this qualification after the controls table: 'The feature article documents -IntelligentRecapDocxFileExpirationDays for expiry, but the Set-CsTeamsMeetingPolicy reference still says this feature has not been fully released and the setting will have no effect.' Cite https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy#-intelligentrecapdocxfileexpirationdays. | Source: https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts#configure-expiration-for-ai-summary-documents
+- [supported, minor] controls[1].api; Governance guidance: Before rollout; Governance controls: Intelligent recap row / command: Set-CsTeamsMeetingPolicy -Identity <policy> -AllowIntelligentRecap $false turns off intelligent recap. | Found: To turn off intelligent recap, use the Set-CsTeamsMeetingPolicy cmdlet and set the -AllowIntelligentRecap parameter to $false. | Fix: Add this qualification after the controls table: 'The feature article documents -AllowIntelligentRecap $false to disable recap, but the Set-CsTeamsMeetingPolicy reference still says this feature has not been fully released and the setting will have no effect.' Cite https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy#-allowintelligentrecap. | Source: https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts#manage-intelligent-recap-without-saving-transcripts
 -->

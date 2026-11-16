@@ -1,14 +1,12 @@
 # Lint report
 
-Generated 2026-11-16T22:25:48.174Z. 23 briefings, 0 concepts, 0 quarantined.
-Independent check: 6 verified, 17 verified with gaps, 0 awaiting correction (live under grace), 0 not yet checked, 0 stale; 91 held and not published.
+Generated 2026-11-16T23:03:08.832Z. 41 briefings, 2 concepts, 0 quarantined.
+Independent check: 16 verified, 27 verified with gaps, 0 awaiting correction (live under grace), 0 not yet checked, 0 stale; 71 held and not published.
 
 ## Errors (0)
 
-## Warnings (91)
+## Warnings (71)
 - _held/agent-365-control-plane-for-agents.md: held (failed since 2026-11-16, 2 attempts): 1 blocking finding (claim 97)
-- _held/agent-identity.md: held (failed since 2026-11-16, 2 attempts): 4 blocking findings (claims 38, 70, 73, 81)
-- _held/copilot-credits.md: held (failed since 2026-11-16, 2 attempts): 5 blocking findings (claims 2, 8, 11, 14, 23)
 - _held/copilot-studio-block-maker-provided-credentials.md: held (failed since 2026-11-16, 2 attempts): 1 blocking finding (claim 40)
 - _held/copilot-studio-computer-use-for-web-browsing-on-microsoft-copilot-harness.md: held (failed since 2026-11-16, 2 attempts): 1 blocking finding (claim 42)
 - _held/copilot-studio-cost-management-m365-admin-center.md: held (failed since 2026-11-16, 2 attempts): 1 blocking finding (claim 76)
@@ -73,87 +71,85 @@ Independent check: 6 verified, 17 verified with gaps, 0 awaiting correction (liv
 - _held/power-apps-monitor-generative-pages-with-out-of-the-box-application-insights-telemetry.md: held (failed since 2026-11-16, 1 attempt): 6 blocking findings (claims 28, 33, 34, 37, 38, 40)
 - _held/power-apps-new-view-layout-in-model-driven-apps.md: held (failed since 2026-11-16, 1 attempt): 5 blocking findings (claims 15, 16, 18, 20, 30); 5 major findings
 - _held/power-apps-use-dataverse-custom-apis-in-generative-pages.md: held (failed since 2026-11-16, 1 attempt): 5 blocking findings (claims 29, 34, 37, 39, 42)
-- _held/power-apps-use-power-platform-connectors-in-generative-pages.md: held (failed since 2026-11-16, 1 attempt): 9 blocking findings (claims 28, 29, 30, 35, 36, 38, 39, 40, 43)
-- _held/power-apps-use-the-modernized-personal-settings-experience.md: held (failed since 2026-11-16, 1 attempt): 4 blocking findings (claims 16, 19, 20, 40); 3 major findings
-- _held/power-automate-ai-assisted-ui-automation-repair.md: held (failed since 2026-11-16, 1 attempt): 5 blocking findings (claims 25, 36, 39, 40, 43)
-- _held/power-automate-process-mining-enable-process-intelligence-studio-in-object-centric-process.md: held (failed since 2026-11-16, 1 attempt): 3 blocking findings (claims 32, 33, 35)
-- _held/power-pages-administration-and-governance-configure-site-analytics-and-server-logging.md: held (failed since 2026-11-16, 1 attempt): 5 blocking findings (claims 18, 27, 29, 39, 40)
+- _held/power-apps-use-power-platform-connectors-in-generative-pages.md: held (failed since 2026-11-16, 2 attempts): 4 blocking findings (claims 31, 35, 40, 41)
+- _held/power-automate-ai-assisted-ui-automation-repair.md: held (failed since 2026-11-16, 2 attempts): 4 blocking findings (claims 20, 38, 42, 43)
+- _held/power-automate-process-mining-enable-process-intelligence-studio-in-object-centric-process.md: held (failed since 2026-11-16, 2 attempts): 2 blocking findings (claims 11, 23)
 - _held/power-pages-administration-and-governance-enable-self-service-site-ownership-transfer.md: held (parked since 2026-11-16, 3 attempts): 1 blocking finding (claim 47)
-- _held/power-pages-administration-and-governance-manage-external-authentication-providers-with-gr.md: held (failed since 2026-11-16, 1 attempt): 7 blocking findings (claims 13, 14, 21, 22, 23, 24, 27)
-- _held/power-pages-design-studio-configure-authentication-with-security-agent.md: held (failed since 2026-11-16, 2 attempts): 1 blocking finding (claim 24)
-- _held/power-pages-first-class-support-for-connector-apis-in-power-pages.md: held (failed since 2026-11-16, 2 attempts): 2 blocking findings (claims 15, 17)
-- _held/power-pages-plugin-support-for-github-copilot-cli-and-claude-code-to-create-and-edit-tradi.md: held (failed since 2026-11-16, 2 attempts): 2 blocking findings (claims 14, 26)
-- _held/power-pages-power-pages-copilot-use-power-pages-mcp-server-capabilities.md: held (failed since 2026-11-16, 2 attempts): 4 blocking findings (claims 22, 27, 30, 33)
-- _held/power-pages-professional-developer-experiences-control-power-pages-components-using-client.md: held (failed since 2026-11-16, 2 attempts): 1 blocking finding (claim 48)
-- _held/power-pages-track-power-pages-performance-and-usage-with-monitor-hub.md: held (failed since 2026-11-16, 2 attempts): 3 blocking findings (claims 24, 26, 36)
-- _held/power-platform-maker-guidelines-copilot-studio.md: held (failed since 2026-11-16, 2 attempts): 2 blocking findings (claims 28, 44)
-- _held/purview-dlp-block-sensitive-data-in-copilot-web-search.md: held (failed since 2026-11-16, 2 attempts): 1 blocking finding (claim 17)
-- _held/purview-retention-last-accessed-sharepoint-onedrive.md: held (failed since 2026-11-16, 2 attempts): 2 blocking findings (claims 63, 73)
-- _held/teams-ai-generated-meeting-memory.md: held (failed since 2026-11-16, 2 attempts): 2 blocking findings (claims 52, 59)
-- _held/teams-intelligent-recap-without-saving-transcript.md: held (failed since 2026-11-16, 2 attempts): 1 blocking finding (claim 59)
-- _held/work-iq-business-skills-to-manage-your-business-processes-in-work-iq-mcp.md: held (failed since 2026-11-16, 2 attempts): 1 blocking finding (claim 45)
-- _held/work-iq-federated-connectors.md: held (failed since 2026-11-16, 2 attempts): 2 blocking findings (claims 22, 45)
-- _held/work-iq-human-in-the-loop.md: held (failed since 2026-11-16, 2 attempts): 1 blocking finding (claim 11)
-- _held/work-iq-memory-capabilities-expand-to-agents.md: held (failed since 2026-11-16, 2 attempts): 4 blocking findings (claims 17, 23, 24, 41)
-- _held/work-iq-real-time-transcripts.md: held (failed since 2026-11-16, 2 attempts): 2 blocking findings (claims 26, 40)
+- _held/power-pages-administration-and-governance-manage-external-authentication-providers-with-gr.md: held (failed since 2026-11-16, 2 attempts): 5 blocking findings (claims 20, 23, 34, 35, 36)
 - _held/work-iq.md: held (failed since 2026-11-16, 2 attempts): 1 blocking finding (claim 90)
 
-## Info (58)
-- features/microsoft-purview-dspm-copilot-readiness-and-data-explorer.md: related "purview-dlp-block-sensitive-data-in-copilot-web-search" is held and not published (the link is dropped from the page until it returns)
-- features/microsoft-purview-dspm-copilot-readiness-and-data-explorer.md: related "purview-retention-last-accessed-sharepoint-onedrive" is held and not published (the link is dropped from the page until it returns)
+## Info (74)
 - features/microsoft-purview-dspm-copilot-readiness-and-data-explorer.md: related "copilot-studio-purview-information-protection-labelled-files" is held and not published (the link is dropped from the page until it returns)
 - features/microsoft-purview-dspm-copilot-readiness-and-data-explorer.md: control "Tenant-wide switch for the readiness and data explorer experiences" has neither an admin UI nor an API documented
-- features/microsoft-purview-endpoint-data-loss-prevention-policy-sync-and-device-health-ai-powered-i.md: related "purview-dlp-block-sensitive-data-in-copilot-web-search" is held and not published (the link is dropped from the page until it returns)
 - features/microsoft-purview-endpoint-data-loss-prevention-policy-sync-and-device-health-ai-powered-i.md: control "Tenant switch for AI-powered device and policy sync investigation" has neither an admin UI nor an API documented
 - features/microsoft-purview-endpoint-data-loss-prevention-view-only-access-to-device-onboarding-with.md: control "Switch that enables the View-Only Device Management role for the Devices page" has neither an admin UI nor an API documented
-- features/microsoft-teams-admins-can-control-profanity-filtering-in-meeting-transcripts.md: related "teams-intelligent-recap-without-saving-transcript" is held and not published (the link is dropped from the page until it returns)
-- features/microsoft-teams-admins-can-control-profanity-filtering-in-meeting-transcripts.md: related "work-iq-real-time-transcripts" is held and not published (the link is dropped from the page until it returns)
 - features/microsoft-teams-admins-can-control-profanity-filtering-in-meeting-transcripts.md: control "Admin control over each participant's live-caption profanity preference" has neither an admin UI nor an API documented
 - features/microsoft-teams-admins-can-control-profanity-filtering-in-meeting-transcripts.md: control "Per-organiser or per-meeting override of the filtering setting" has neither an admin UI nor an API documented
-- features/microsoft-teams-automatic-recording-and-transcription-choices-align-with-admin-policies.md: related "teams-intelligent-recap-without-saving-transcript" is held and not published (the link is dropped from the page until it returns)
-- features/microsoft-teams-automatic-recording-and-transcription-choices-align-with-admin-policies.md: related "work-iq-real-time-transcripts" is held and not published (the link is dropped from the page until it returns)
-- features/microsoft-teams-automatic-recording-and-transcription-choices-align-with-admin-policies.md: related "teams-ai-generated-meeting-memory" is held and not published (the link is dropped from the page until it returns)
 - features/microsoft-teams-automatic-recording-and-transcription-choices-align-with-admin-policies.md: control "Tenant-wide switch to turn off the new options or Record only" has neither an admin UI nor an API documented
 - features/microsoft-teams-automatic-recording-indicator-for-call-queue-calls-on-mobile.md: control "Mobile recording banner wording or a switch for the new banner" has neither an admin UI nor an API documented
 - features/microsoft-teams-customize-blocked-file-extensions-for-weaponizable-file-protection.md: control "Different blocked lists for different users or groups" has neither an admin UI nor an API documented
 - features/microsoft-teams-improved-organization-for-muted-and-meeting-chats.md: control "Tenant-wide switch for the Muted chats and Meeting chats sections" has neither an admin UI nor an API documented
-- features/microsoft-teams-tenant-policy-controls-who-can-record-and-transcribe.md: related "teams-intelligent-recap-without-saving-transcript" is held and not published (the link is dropped from the page until it returns)
-- features/microsoft-teams-tenant-policy-controls-who-can-record-and-transcribe.md: related "work-iq-real-time-transcripts" is held and not published (the link is dropped from the page until it returns)
 - features/microsoft-teams-tenant-policy-controls-who-can-record-and-transcribe.md: control "Who can start recording and transcription (the planned tenant policy)" has neither an admin UI nor an API documented
 - features/microsoft-viva-engage-community-feed-improvements.md: control "Tenant-wide switch to keep the previous community feed default" has neither an admin UI nor an API documented
 - features/outlook-more-visibility-into-usage-for-recoverable-items-storage.md: control "Whether the Recoverable Items usage display is shown" has neither an admin UI nor an API documented
 - features/planner-save-ai-generated-filters-in-planner-agent-chat.md: control "Whether users can save AI-generated filters" has neither an admin UI nor an API documented
+- features/power-apps-use-the-modernized-personal-settings-experience.md: control "Admin switch for the modern personal settings panel" has neither an admin UI nor an API documented
 - features/power-automate-credentials-integration-with-delinea-secret-server.md: control "Setup and availability of the Delinea Secret Server credential provider" has neither an admin UI nor an API documented
+- features/power-pages-administration-and-governance-configure-site-analytics-and-server-logging.md: control "Tenant-wide policy for analytics and server logging" has neither an admin UI nor an API documented
+- features/power-pages-design-studio-configure-authentication-with-security-agent.md: control "Switch specific to the security agent" has neither an admin UI nor an API documented
 - features/power-pages-design-studio-enhance-openid-connect-with-encrypted-token-support.md: control "Switch or setting for accepting encrypted ID tokens" has neither an admin UI nor an API documented
 - features/power-pages-design-studio-enhance-openid-connect-with-encrypted-token-support.md: low confidence, roadmap text only
 - features/power-pages-design-studio-unify-power-pages-authorization-by-merging-web-role-with-dataver.md: control "Tenant or environment enforcement of enhanced authorization" has neither an admin UI nor an API documented
+- features/power-pages-first-class-support-for-connector-apis-in-power-pages.md: control "Power Pages-specific control for connector APIs" has neither an admin UI nor an API documented
+- features/power-pages-first-class-support-for-connector-apis-in-power-pages.md: low confidence, roadmap text only
+- features/power-pages-plugin-support-for-github-copilot-cli-and-claude-code-to-create-and-edit-tradi.md: control "Admin switch for the coding-agent plugin" has neither an admin UI nor an API documented
+- features/power-pages-power-pages-copilot-use-power-pages-mcp-server-capabilities.md: control "Tenant-wide switch for the Power Pages MCP server" has neither an admin UI nor an API documented
+- features/power-pages-professional-developer-experiences-control-power-pages-components-using-client.md: control "Tenant or site switch to turn the client API off" has neither an admin UI nor an API documented
+- features/power-pages-track-power-pages-performance-and-usage-with-monitor-hub.md: control "Power Pages-specific enablement or scoping switch in Monitor" has neither an admin UI nor an API documented
+- features/power-pages-track-power-pages-performance-and-usage-with-monitor-hub.md: low confidence, roadmap text only
+- features/purview-retention-last-accessed-sharepoint-onedrive.md: control "Last-accessed start option in the retention policy wizard" has neither an admin UI nor an API documented
 - features/sharepoint-admin-center-data-access-governance-permission-report-for-a-given-group.md: control "Running the permission report for a given group" has neither an admin UI nor an API documented
 - features/viva-engage-my-team-audiences-and-flexible-targeting-for-leader-communications.md: control "Tenant-wide switch for My Team and publish-time targeting" has neither an admin UI nor an API documented
-- features/work-iq-a2a-and-mcp-elicitation.md: related "work-iq-human-in-the-loop" is held and not published (the link is dropped from the page until it returns)
 - features/work-iq-a2a-and-mcp-elicitation.md: control "Whether tasks may request missing information or authorisation, and from which agents" has neither an admin UI nor an API documented
-- features/work-iq-a2a-and-mcp-long-running-tasks.md: related "copilot-credits" is held and not published (the link is dropped from the page until it returns)
 - features/work-iq-a2a-and-mcp-long-running-tasks.md: related "copilot-studio-cost-management-m365-admin-center" is held and not published (the link is dropped from the page until it returns)
 - features/work-iq-a2a-and-mcp-long-running-tasks.md: related "copilot-studio-mcp-tools-in-agents" is held and not published (the link is dropped from the page until it returns)
-- features/work-iq-a2a-and-mcp-long-running-tasks.md: related "agent-identity" is held and not published (the link is dropped from the page until it returns)
 - features/work-iq-a2a-and-mcp-long-running-tasks.md: control "Tenant switch for Work IQ A2A and MCP long-running tasks" has neither an admin UI nor an API documented
 - features/work-iq-execute-recipes.md: control "Control specific to recipes" has neither an admin UI nor an API documented
 - features/work-iq-execute-recipes.md: low confidence, roadmap text only
+- features/work-iq-federated-connectors.md: control "Work IQ-specific control for federated connectors" has neither an admin UI nor an API documented
+- features/work-iq-human-in-the-loop.md: control "Human-in-the-loop policy for Work IQ agents and agent flows" has neither an admin UI nor an API documented
+- features/work-iq-human-in-the-loop.md: low confidence, roadmap text only
+- features/work-iq-memory-capabilities-expand-to-agents.md: low confidence, roadmap text only
 - features/m365-pay-as-you-go-storage-for-onedrive.md: orphan (no inbound related links)
-- features/microsoft-purview-dspm-copilot-readiness-and-data-explorer.md: orphan (no inbound related links)
 - features/microsoft-purview-endpoint-data-loss-prevention-view-only-access-to-device-onboarding-with.md: orphan (no inbound related links)
 - features/microsoft-teams-admins-can-control-profanity-filtering-in-meeting-transcripts.md: orphan (no inbound related links)
-- features/microsoft-teams-automatic-recording-and-transcription-choices-align-with-admin-policies.md: orphan (no inbound related links)
 - features/microsoft-teams-customize-blocked-file-extensions-for-weaponizable-file-protection.md: orphan (no inbound related links)
 - features/microsoft-teams-improved-organization-for-muted-and-meeting-chats.md: orphan (no inbound related links)
-- features/microsoft-teams-tenant-policy-controls-who-can-record-and-transcribe.md: orphan (no inbound related links)
 - features/microsoft-viva-engage-community-feed-improvements.md: orphan (no inbound related links)
 - features/outlook-keep-folder-sharing-within-your-organization-s-policies.md: orphan (no inbound related links)
 - features/outlook-more-visibility-into-usage-for-recoverable-items-storage.md: orphan (no inbound related links)
 - features/planner-save-ai-generated-filters-in-planner-agent-chat.md: orphan (no inbound related links)
+- features/power-apps-use-the-modernized-personal-settings-experience.md: orphan (no inbound related links)
 - features/power-automate-credentials-integration-with-delinea-secret-server.md: orphan (no inbound related links)
+- features/power-pages-administration-and-governance-configure-site-analytics-and-server-logging.md: orphan (no inbound related links)
+- features/power-pages-design-studio-configure-authentication-with-security-agent.md: orphan (no inbound related links)
 - features/power-pages-design-studio-enhance-openid-connect-with-encrypted-token-support.md: orphan (no inbound related links)
 - features/power-pages-design-studio-unify-power-pages-authorization-by-merging-web-role-with-dataver.md: orphan (no inbound related links)
+- features/power-pages-first-class-support-for-connector-apis-in-power-pages.md: orphan (no inbound related links)
+- features/power-pages-plugin-support-for-github-copilot-cli-and-claude-code-to-create-and-edit-tradi.md: orphan (no inbound related links)
+- features/power-pages-power-pages-copilot-use-power-pages-mcp-server-capabilities.md: orphan (no inbound related links)
+- features/power-pages-professional-developer-experiences-control-power-pages-components-using-client.md: orphan (no inbound related links)
+- features/power-pages-track-power-pages-performance-and-usage-with-monitor-hub.md: orphan (no inbound related links)
+- features/power-platform-maker-guidelines-copilot-studio.md: orphan (no inbound related links)
 - features/sharepoint-admin-center-data-access-governance-permission-report-for-a-given-group.md: orphan (no inbound related links)
 - features/viva-engage-my-team-audiences-and-flexible-targeting-for-leader-communications.md: orphan (no inbound related links)
 - features/work-iq-a2a-and-mcp-elicitation.md: orphan (no inbound related links)
+- features/work-iq-business-skills-to-manage-your-business-processes-in-work-iq-mcp.md: orphan (no inbound related links)
 - features/work-iq-execute-recipes.md: orphan (no inbound related links)
+- features/work-iq-federated-connectors.md: orphan (no inbound related links)
+- features/work-iq-memory-capabilities-expand-to-agents.md: orphan (no inbound related links)
+- concepts/agent-identity.md: related "data-policies" is held and not published (the link is dropped from the page until it returns)
+- concepts/agent-identity.md: related "managed-environments" is held and not published (the link is dropped from the page until it returns)
+- concepts/agent-identity.md: related "mcp" is held and not published (the link is dropped from the page until it returns)
+- concepts/copilot-credits.md: related "work-iq" is held and not published (the link is dropped from the page until it returns)
+- concepts/copilot-credits.md: related "managed-environments" is held and not published (the link is dropped from the page until it returns)

@@ -4,7 +4,7 @@ slug: "power-automate-process-mining-enable-process-intelligence-studio-in-objec
 roadmapId: 576765
 topic: "power-platform"
 products: ["Power Automate"]
-summary: "The customisable Process Intelligence Studio workspace, with tabs, tile layouts and cascading filters, extends to object-centric process mining models."
+summary: "The roadmap plans to extend the customisable Process Intelligence Studio workspace, with tabs, tile layouts and cascading filters, to object-centric process mining models."
 status: "in-development"
 releasePhase: ["General Availability","Preview"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -13,7 +13,7 @@ targetDate: "October CY2026"
 previewDate: "September CY2026"
 risk: "low"
 cost: "low"
-impact: "low"
+impact: "medium"
 defaultState: "on"
 action: "none"
 licensing:
@@ -28,38 +28,57 @@ sources:
   - title: "Overview of object-centric process mining"
     url: "https://learn.microsoft.com/power-automate/object-centric-overview"
     kind: "learn"
+  - title: "OCPM process overview"
+    url: "https://learn.microsoft.com/power-automate/object-centric-process-overview"
+    kind: "learn"
+  - title: "Ingest an object-centric event log"
+    url: "https://learn.microsoft.com/power-automate/object-centric-ingest-event-log"
+    kind: "learn"
   - title: "Microsoft 365 Roadmap item 576765"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=576765"
     kind: "roadmap"
+  - title: "Capacity add-ons"
+    url: "https://learn.microsoft.com/power-platform/admin/capacity-add-on"
+    kind: "learn"
+  - title: "List tenant settings (preview)"
+    url: "https://learn.microsoft.com/power-platform/admin/list-tenantsettings"
+    kind: "learn"
   - title: "Process mining capacity allocated to an environment (Power Platform admin center)"
     url: "https://learn.microsoft.com/power-platform/admin/capacity-add-on#allocate-or-change-capacity-in-an-environment"
     kind: "learn"
   - title: "Process mining capacity allocated to an environment (Power Platform API)"
-    url: "https://learn.microsoft.com/rest/api/power-platform/licensing/currency-allocation"
+    url: "https://learn.microsoft.com/rest/api/power-platform/licensing/currency-allocation/patch-currency-allocation-by-environment"
     kind: "learn"
   - title: "Who may allocate add-on capacity (Power Platform admin center)"
     url: "https://learn.microsoft.com/power-platform/admin/capacity-add-on#control-who-can-allocate-add-on-capacity"
     kind: "learn"
+  - title: "Who may allocate add-on capacity (PowerShell)"
+    url: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/set-tenantsettings"
+    kind: "learn"
 videos: []
-related: ["power-automate-ai-assisted-ui-automation-repair","managed-environments"]
+related: []
 controls:
   - governs: "Process mining capacity allocated to an environment"
     scope: "environment"
     ui:
       surface: "Power Platform admin center"
-      path: "Licensing > Capacity add-ons > Add-ons > Manage"
+      path: "Licensing > Capacity add-ons > Summary > Add-ons > Manage"
       docs: "https://learn.microsoft.com/power-platform/admin/capacity-add-on#allocate-or-change-capacity-in-an-environment"
     api:
       kind: "power-platform-api"
-      call: "Currency allocation operations (Power Platform licensing API)"
-      docs: "https://learn.microsoft.com/rest/api/power-platform/licensing/currency-allocation"
+      call: "PATCH https://api.powerplatform.com/licensing/environments/{environmentId}/allocations?api-version=2024-10-01 with body {\"currencyAllocations\":[{\"currencyType\":\"ProcessMiningDataStorage\",\"allocated\":<count>}]}"
+      docs: "https://learn.microsoft.com/rest/api/power-platform/licensing/currency-allocation/patch-currency-allocation-by-environment"
   - governs: "Who may allocate add-on capacity"
     scope: "tenant"
     ui:
       surface: "Power Platform admin center"
       path: "Settings > Power Platform settings > Tenant settings > Add-on capacity assignments > Only specific admins"
       docs: "https://learn.microsoft.com/power-platform/admin/capacity-add-on#control-who-can-allocate-add-on-capacity"
-    api: null
+    api:
+      kind: "powershell"
+      call: "Set-TenantSettings -RequestBody @{disableCapacityAllocationByEnvironmentAdmins=$true}"
+      docs: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/set-tenantsettings"
+    note: "The setting definition is on a Learn page marked preview (list tenant settings)."
   - governs: "Switch for Process Intelligence Studio or object-centric models"
     scope: "environment"
     ui: null
@@ -76,31 +95,36 @@ changes:
     note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
   - date: "2026-11-16"
     note: "Taken offline until a corrected version passes its check: a failed check no longer keeps a page online with a notice."
-version: 2
+  - date: "2026-11-16"
+    note: "Corrected the capacity allocation path and API call, added the PowerShell tenant setting for who may allocate capacity, softened the autonomy statement, attributed OCPM parity to the roadmap plan and raised impact to medium."
+  - date: "2026-11-16"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 42 statements contradicted, 1 unconfirmed; taken offline until corrected"
+version: 3
 verification:
   status: "held"
   date: "2026-11-16"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 39
-  confirmed: 33
-  unconfirmed: 2
-  contradicted: 4
-  attempts: 1
+  claims: 42
+  confirmed: 39
+  unconfirmed: 1
+  contradicted: 2
+  attempts: 2
+  hash: "7d446e94835c418ff6f7571e333175cd"
 ---
 
 ## What's changing
 
 Process Intelligence Studio is the customisable analysis workspace in Power Automate Process Mining. It offers tab-based navigation, tiles (cards) arranged in flexible grid layouts, filters applied once across all tiles, and saved workspace configurations that can be reused as templates.
 
-This item extends it to object-centric process mining (OCPM) models, where one event can relate to several objects such as orders, invoices and payments. Learn describes OCPM models built from an object-centric event log held in Azure Data Lake Gen2 or OneLake.
+The roadmap item plans to extend it to object-centric process mining (OCPM) models, where one event can relate to several objects such as orders, invoices and payments, and describes this as full functionality for OCPM models. Learn describes OCPM models built from an object-centric event log held in Azure Data Lake Gen2 or OneLake. Learn's OCPM process overview page currently documents a preview in which only the Process overview tab and the Default view are available.
 
-The roadmap shows a preview from September 2026 and general availability targeted for October 2026 in Worldwide. Learn calls the case-centric interface the process intelligence experience.
+The roadmap shows a preview targeted for September CY2026 and general availability targeted for October CY2026 in Worldwide; the status is In development. Learn calls the case-centric interface the process intelligence experience.
 
 ## Why it matters
 
-Teams analysing multi-object processes get the same workspace as for case-centric ones. Governance impact is mostly about who can access event data and the saved views shared with colleagues.
+If the roadmap plan holds, teams analysing multi-object processes get the same workspace as for case-centric ones. Governance impact is mostly about who can access event data and the saved views shared with colleagues.
 
 ## Risk assessment
 
@@ -111,7 +135,7 @@ Teams analysing multi-object processes get the same workspace as for case-centri
 - Learn mentions the Environment Maker role for creating processes.
 
 **Autonomy & actions**
-- None; it is analysis only.
+- The roadmap describes an analysis workspace, not a new autonomous automation capability.
 
 **Change & support**
 - Saved workspaces shared across teams need ownership to avoid conflicting views.
@@ -122,20 +146,20 @@ Not yet published for this change. Process mining has its own licensing in Power
 
 ## Scope
 
-Power Automate Process Mining users in the Worldwide cloud, on the web. Applies to OCPM and case-centric process models.
+Power Automate Process Mining users in the Worldwide cloud, on the web. The roadmap plans the workspace for both OCPM and case-centric process models.
 
 ## Governance guidance
 
 ### Before rollout
-- [ ] Confirm which processes and event logs are used with OCPM.
-- [ ] Check who holds the Environment Maker role.
+- Confirm which processes and event logs are used with OCPM.
+- Check who holds the Environment Maker role.
 
 ### At rollout
-- [ ] Create shared templates for common analyses.
+- Create shared templates for common analyses.
 
 ### After rollout
-- [ ] Review who can see sensitive process data.
-- [ ] Retire outdated saved workspaces.
+- Review who can see sensitive process data.
+- Retire outdated saved workspaces.
 
 ## Governance controls
 
@@ -144,8 +168,8 @@ Power Automate Process Mining users in the Worldwide cloud, on the web. Applies 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Process mining capacity allocated to an environment</strong><br><small>Environment</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Capacity add-ons › Add-ons › Manage <a href="https://learn.microsoft.com/power-platform/admin/capacity-add-on#allocate-or-change-capacity-in-an-environment" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform API</strong><br><code>Currency allocation operations (Power Platform licensing API)</code> <a href="https://learn.microsoft.com/rest/api/power-platform/licensing/currency-allocation" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Who may allocate add-on capacity</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Settings › Power Platform settings › Tenant settings › Add-on capacity assignments › Only specific admins <a href="https://learn.microsoft.com/power-platform/admin/capacity-add-on#control-who-can-allocate-add-on-capacity" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Process mining capacity allocated to an environment</strong><br><small>Environment</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Capacity add-ons › Summary › Add-ons › Manage <a href="https://learn.microsoft.com/power-platform/admin/capacity-add-on#allocate-or-change-capacity-in-an-environment" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform API</strong><br><code>PATCH https://api.powerplatform.com/licensing/environments/{environmentId}/allocations?api-version=2024-10-01 with body {&quot;currencyAllocations&quot;:[{&quot;currencyType&quot;:&quot;ProcessMiningDataStorage&quot;,&quot;allocated&quot;:&lt;count&gt;}]}</code> <a href="https://learn.microsoft.com/rest/api/power-platform/licensing/currency-allocation/patch-currency-allocation-by-environment" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Who may allocate add-on capacity</strong><br><small>Tenant</small><br><small class="controls__note">The setting definition is on a Learn page marked preview (list tenant settings).</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Settings › Power Platform settings › Tenant settings › Add-on capacity assignments › Only specific admins <a href="https://learn.microsoft.com/power-platform/admin/capacity-add-on#control-who-can-allocate-add-on-capacity" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-TenantSettings -RequestBody @{disableCapacityAllocationByEnvironmentAdmins=$true}</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/set-tenantsettings" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Switch for Process Intelligence Studio or object-centric models</strong><br><small>Environment</small><br><small class="controls__note">Access follows Power Automate environment roles and the storage location of the event log.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -159,23 +183,21 @@ Governance here is capacity and roles rather than a feature flag. Capacity comes
 - Are saved workspaces solution-aware?
 
 <!-- rationale
-risk: Low. It is an analysis interface over process data the organisation has already ingested, with no new external actions.
+risk: Low. The roadmap describes an analysis workspace over process data the organisation has already ingested, not a new autonomous automation capability.
 cost: Low, provisional. No change to licensing is stated; existing Power Automate process mining licensing and data lake storage costs continue to apply.
-impact: Low. Process analysts and owners use it; most users never see it.
+impact: Medium. The roadmap says it is enabled automatically for admins, makers and marketers, and it affects specific roles: process analysts and process owners.
 -->
 
-<!-- verifier-findings (2026-11-16, needs-correction; checked by gpt-6.1-sol)
-The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [supported, minor] front matter: previewDate; What's changing / record: The roadmap shows a preview from September 2026. | Found: "previewDate": "September CY2026", "status": "In development" | Fix: Replace 'a preview from September 2026' with 'a preview targeted for September CY2026'; the record still says In development on the verification date.
-- [supported, minor] summary; What's changing; Why it matters; Scope / record: The item extends the full workspace to OCPM models alongside traditional case-centric models. | Found: Object-centric support: Extends full functionality to OCPM models, enabling multi-dimensional analysis of interconnected objects, relationships, and cross-object metrics within the same intuitive interface. | Fix: Attribute full workspace parity explicitly to the roadmap plan, rather than describing it as current OCPM behaviour. Add that https://learn.microsoft.com/power-automate/object-centric-process-overview currently documents an OCPM preview with only the Process overview tab and Default view.
-- [supported, minor] What's changing; Cost and licensing / behaviour: OCPM models are built by ingesting an object-centric event log stored in Azure Data Lake Gen2 or OneLake. | Found: To access OCPM (object-centric process mining) in Power Automate Process Mining, first create a process model by ingesting the object-centric event log (OCEL). | Fix: Add https://learn.microsoft.com/power-automate/object-centric-ingest-event-log to sources; it explicitly instructs storing the event log in Azure Data Lake Gen2 or OneLake, whereas the cited conceptual overview does not. | Source: https://learn.microsoft.com/power-automate/object-centric-ingest-event-log
-- [supported, minor] controls[2].note / applicability: The event log's storage location introduces access prerequisites. | Found: The Owner role (on a storage account level) must be attributed to the user performing the initial container setup (user then becomes the Owner of the process). | Fix: Cite https://learn.microsoft.com/power-automate/process-mining-byo-azure-data-lake and https://learn.microsoft.com/power-automate/process-mining-files-fabric-onelake for storage-specific prerequisites. Clarify that these are connection/setup permissions, not a claim that every report viewer needs direct storage access. | Source: https://learn.microsoft.com/power-automate/process-mining-byo-azure-data-lake
-- [unsupported, major] Risk assessment: Autonomy & actions; rationale: risk / behaviour: The feature is analysis only and introduces no external actions. | Found: Searched: process intelligence experience actions analysis. Opened process-mining-studio-overview and object-centric-process-overview; they describe analytical functionality but do not expressly establish the blanket absence of external actions. | Fix: Replace the categorical absence with 'The roadmap describes an analysis workspace, not a new autonomous automation capability.' Keep the low-risk assessment as the wiki's judgement rather than an exhaustive product guarantee.
-- [supported, minor] Cost and licensing; rationale: cost / cost: Azure Data Lake storage carries storage costs. | Found: Azure Data Lake Storage is priced at Azure Blob Storage levels. | Fix: Cite https://learn.microsoft.com/azure/storage/blobs/data-lake-storage-introduction for the Azure Data Lake storage-cost statement. | Source: https://learn.microsoft.com/azure/storage/blobs/data-lake-storage-introduction#azure-data-lake-storage-capabilities
-- [supported, minor] Cost and licensing; rationale: cost / cost: OneLake storage carries storage costs. | Found: As you move from the hot tier to the cool or cold tier, static storage prices lower but transaction prices rise. | Fix: Cite https://learn.microsoft.com/fabric/onelake/onelake-storage-tiers for the OneLake storage-cost statement. | Source: https://learn.microsoft.com/fabric/onelake/onelake-storage-tiers
-- [contradicted, blocker] controls[0].ui; Governance controls table / admin-path: The cited allocation page gives Licensing > Capacity add-ons > Add-ons > Manage. | Found: On the Capacity page, select the Summary tab. ... Scroll down to the Add-ons section, and select Manage. | Fix: Use 'Licensing > Capacity add-ons > Summary > Add-ons > Manage' for this docs URL. The separately linked programmability tutorial gives the older Add-ons tab > Manage route; mention that documentation difference rather than silently mixing the paths. | Source: https://learn.microsoft.com/power-platform/admin/capacity-add-on#allocate-or-change-capacity-in-an-environment
-- [unsupported, blocker] controls[0].api; Governance controls table / command: 'Currency allocation operations (Power Platform licensing API)' supplies the API call for changing process mining allocations. | Found: Searched: Process mining capacity environment allocate. Opened currency-allocation and its Get/Patch references. The printed text is an operation-family description, not a call with an HTTP method, path, API version or allocation body. | Fix: Replace the label with 'PATCH https://api.powerplatform.com/licensing/environments/{environmentId}/allocations?api-version=2024-10-01' and document body {"currencyAllocations":[{"currencyType":"ProcessMiningDataStorage","allocated":<count>}]}. Set docs to https://learn.microsoft.com/rest/api/power-platform/licensing/currency-allocation/patch-currency-allocation-by-environment.
-- [contradicted, blocker] controls[1].api; Governance controls table / absence: Automation for restricting who may allocate add-on capacity is not documented. | Found: disableCapacityAllocationByEnvironmentAdmins | Boolean | Ability to disable capacity allocation by environment administrators. Default value is false. | Fix: Replace null with PowerShell management using Set-TenantSettings -RequestBody @{disableCapacityAllocationByEnvironmentAdmins=$true}. Cite https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/set-tenantsettings and the setting definition at https://learn.microsoft.com/power-platform/admin/list-tenantsettings; flag the latter documentation as preview. | Source: https://learn.microsoft.com/power-platform/admin/list-tenantsettings#definitions
-- [contradicted, minor] Governance guidance; Governance controls / consistency: The checklist's controls for Environment Maker assignment and sensitive process access are represented in the controls table. | Found: Check who holds the Environment Maker role. ... Review who can see sensitive process data. ... Controls rows: capacity allocation, capacity allocators, and a missing feature switch. | Fix: Add controls rows for environment security-role assignments and process sharing/access, using the documented process mining security model. The note on the absent feature switch is not a row explaining either access control.
-- [contradicted, minor] front matter: impact; rationale: impact / consistency: An automatically enabled change for process analysts and owners has low impact because most users never see it. | Found: impact: low ... Low. Process analysts and owners use it; most users never see it. | Fix: Set impact to medium and explain that it affects specific analyst and process-owner roles. The scale reserves low for admins only or a small opt-in group; the record says this change is enabled automatically.
+<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [unsupported, blocker] controls[0].ui: applicability to Process mining capacity / applicability: The generic add-on allocation UI specifically permits allocation of Process Mining capacity. | Found: Searched: Power Automate process mining capacity allocation environment admin center ProcessMiningDataStorage; "process mining" "allocate" "capacity" "environment" "admin". Opened capacity-add-on and programmability-tutorial-allocate-capacity-addons; neither identifies Process Mining in the UI. | Fix: Set controls[0].ui to null and render that side as 'Not yet documented'. Keep its verified ProcessMiningDataStorage API call. The cited tutorial explicitly warns that not all add-ons are available in the admin UI, so the API enumeration alone does not establish UI availability.
+- [contradicted, blocker] What's changing: filters applied once across all tiles / behaviour: The existing workspace applies filters across all tiles without restricting that statement to the active tab. | Found: Filters apply to all cards and visualizations on the current tab. | Fix: Replace 'filters applied once across all tiles' in What's changing with 'filters applied across all cards and visualisations on the current tab'. The roadmap-attributed summary may continue to describe the planned cascading filters. | Source: https://learn.microsoft.com/power-automate/process-mining-studio-overview
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] front matter: licensing; Cost and licensing; rationale: cost; Open questions / absence: Item-specific licensing changes or separate OCPM charges have not been published. | Found: Searched: object-centric process mining OCPM licensing Process Intelligence Studio Power Automate Premium capacity; "object-centric" "licensing" Power Automate. Opened process-advisor-overview, object-centric-overview, object-centric-ingest-event-log and power-automate-licensing/types. | Fix: Keep licensing.model unknown for the incremental change, but replace licensing.notes and the first Cost and licensing sentence with: 'Additional licensing for this change is not yet published; the documented Power Automate process mining licensing remains the baseline.' This avoids implying that baseline process mining entitlement is unconfirmed.
+- [supported, minor] controls[2].note: storage location and access / applicability: The event-log storage source introduces access requirements for process mining. | Found: all users that have the Owner or Co-Owner role on the process must be attributed: Storage Blob Data Reader or Storage Blob Data Contributor role assigned Azure Resource Manager Reader role assigned, at minimum. | Fix: Add https://learn.microsoft.com/power-automate/process-mining-byo-azure-data-lake and https://learn.microsoft.com/power-automate/process-mining-files-fabric-onelake to sources for the statement about source-dependent access requirements. | Source: https://learn.microsoft.com/power-automate/process-mining-byo-azure-data-lake
+- [supported, minor] What's changing: saved workspace configurations; Risk assessment: Change & support / record: The roadmap describes saved workspace configurations, reusable templates and views shared across the organisation. | Found: Process Intelligence Studio saves your workspace configurations, allowing teams to create reusable analysis templates and share standardized views across the organization for consistent process monitoring and improvement tracking. | Fix: Move 'saved workspace configurations that can be reused as templates' out of the unqualified current-capabilities sentence and replace it with: 'The roadmap also describes saved workspace configurations that teams can reuse as analysis templates and share as standardised views.'
+- [supported, minor] Cost and licensing: Azure Data Lake storage; rationale: cost / cost: Azure Data Lake storage carries storage costs. | Found: To analyze differences in data storage prices, transaction prices, and storage capacity reservation pricing between accounts that have a flat namespace versus a hierarchical namespace, see Azure Data Lake Storage pricing. | Fix: Add https://learn.microsoft.com/azure/storage/blobs/data-lake-storage-namespace#decide-whether-to-enable-a-hierarchical-namespace to sources for the Azure Data Lake storage-cost statement. | Source: https://learn.microsoft.com/azure/storage/blobs/data-lake-storage-namespace#decide-whether-to-enable-a-hierarchical-namespace
+- [supported, minor] Cost and licensing: OneLake storage; rationale: cost / cost: OneLake storage carries storage costs. | Found: Storage tiers affect both your pay-as-you-go rate for OneLake storage and your Fabric Capacity Unit (CU) consumption for OneLake transactions: Storage charges: The per-GB, per-month cost that's highest for hot storage and lowest for cold storage. | Fix: Add https://learn.microsoft.com/fabric/onelake/onelake-storage-tiers#storage-tiers-and-onelake-consumption to sources for the OneLake storage-cost statement. | Source: https://learn.microsoft.com/fabric/onelake/onelake-storage-tiers#storage-tiers-and-onelake-consumption
+- [contradicted, minor] Governance guidance: Before rollout and After rollout; Governance controls table / consistency: The checklist asks readers to review Environment Maker assignments and process-data access, but neither control has a corresponding table row. | Found: Check who holds the Environment Maker role. Review who can see sensitive process data. The table instead lists capacity allocation, who may allocate capacity, and an undocumented feature switch. | Fix: Remove the checklist bullets 'Check who holds the Environment Maker role' and 'Review who can see sensitive process data' to eliminate instructions for controls not represented in the table; do not add unverified control rows.
 -->

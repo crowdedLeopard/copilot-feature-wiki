@@ -17,8 +17,8 @@ impact: "medium"
 defaultState: "unknown"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "Not published. Work IQ in Copilot Studio is stated to use consumption billing."
+  model: "consumption"
+  notes: "Work IQ uses consumption billing with Copilot Credits; any additional charge specific to pauses or approvals is not yet published."
 audiences: ["service-owner","security","maker","m365-admin"]
 tags: ["work-iq","human-in-the-loop","agents","agent-flows","approvals","governance"]
 sources:
@@ -58,7 +58,7 @@ controls:
       path: "Tools > tool > Details > Additional details > Ask the end user before running"
       docs: "https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent#view-and-make-changes-to-your-tool-configuration"
     api: null
-    note: "Maker-side, per tool."
+    note: "Maker-side, per tool, for agents using the standard harness."
   - governs: "Human-in-the-loop policy for Work IQ agents and agent flows"
     scope: "tenant"
     ui: null
@@ -78,19 +78,23 @@ changes:
     note: "Corrected after a failed check: removed the claim that Copilot Studio approval prompts cannot be mandated centrally, noted the conflicting write-operation defaults, and set action to review."
   - date: "2026-11-16"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 27 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-16"
+    note: "Corrected after a failed check: licensing is now consumption (Work IQ uses consumption billing with Copilot Credits), and the Copilot Studio tool-confirmation setting is described as applying to agents using the standard harness."
+  - date: "2026-11-16"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 29 statements not yet confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-16"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 27
-  confirmed: 26
+  claims: 29
+  confirmed: 29
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "1900fb42d70bfe5b8923ec31fddd74a4"
+  contradicted: 0
+  attempts: 0
+  hash: "3d894cc45c210cb7670454165b3d8763"
 ---
 
 ## What's changing
@@ -99,7 +103,7 @@ The roadmap states: allow agents and agent flows to pause for human input or app
 
 The item is listed under Work IQ and Microsoft Copilot (Microsoft 365), for Worldwide, on the web. A preview is shown for November 2026 and general availability is targeted for January 2027.
 
-It is not yet clear whether the pause is configured by makers, enforced by admin policy, or both, nor where approvers respond. Copilot Studio already has a separate capability to require human approval for tool calls.
+It is not yet clear whether the pause is configured by makers, enforced by admin policy, or both, nor where approvers respond. Copilot Studio separately documents a per-tool end-user confirmation setting for agents using the standard harness.
 
 ## Why it matters
 
@@ -123,7 +127,7 @@ Service owners should plan which actions need approval and who approves, because
 
 ## Cost and licensing
 
-Not yet published. Work IQ in Copilot Studio uses consumption billing with Copilot Credits according to Learn; whether pauses or approvals add cost is unknown.
+Work IQ uses consumption billing with Copilot Credits, according to the [Work IQ in Copilot Studio page](https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq). Any additional charge specific to pauses or approvals is not yet published.
 
 ## Scope
 
@@ -152,7 +156,7 @@ Agents and agent flows using Work IQ, Worldwide cloud, web. Sovereign cloud avai
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Work IQ MCP policy on or off for the tenant</strong><br><small>Tenant</small><br><small class="controls__note">The MCP policy article says mutation operations such as sending email are not allowed by default; the Work IQ in Copilot Studio page says write operations are on by default. Verify your tenant.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Work IQ MCP › Policy <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp#open-policy-settings-in-the-microsoft-365-admin-center" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether an agent asks the user before running a tool</strong><br><small>Agent</small><br><small class="controls__note">Maker-side, per tool.</small></td><td data-label="Admin UI"><strong>Copilot Studio (maker)</strong><br>Tools › tool › Details › Additional details › Ask the end user before running <a href="https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent#view-and-make-changes-to-your-tool-configuration" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether an agent asks the user before running a tool</strong><br><small>Agent</small><br><small class="controls__note">Maker-side, per tool, for agents using the standard harness.</small></td><td data-label="Admin UI"><strong>Copilot Studio (maker)</strong><br>Tools › tool › Details › Additional details › Ask the end user before running <a href="https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent#view-and-make-changes-to-your-tool-configuration" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Human-in-the-loop policy for Work IQ agents and agent flows</strong><br><small>Tenant</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -170,14 +174,12 @@ The [Add tools to custom agents page](https://learn.microsoft.com/microsoft-copi
 
 <!-- rationale
 risk: Low. The feature adds a control point for human oversight rather than new autonomy, although details of enforcement are not yet published.
-cost: Variable. Not yet published. Work IQ in Copilot Studio uses consumption billing with Copilot Credits, so paused runs and approvals may have credit implications.
+cost: Variable. Work IQ uses consumption billing with Copilot Credits; any additional charge specific to pauses or approvals is not yet published.
 impact: Medium. It changes how approvers and agent owners interact with agent runs.
 -->
 
-<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-16, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.model and notes; Cost and licensing; rationale: cost / licensing: The licensing model is unknown and not published. | Found: Work IQ uses consumption billing. A separate spending policy isn't required for Work IQ. | Fix: Set licensing.model to consumption. Replace the unqualified 'Not published' and 'Not yet published' licensing statements, including the cost rationale, with: 'Work IQ uses consumption billing with Copilot Credits; any additional charge specific to pauses or approvals is not yet published.' Keep cost variable. The cited Work IQ page states the platform billing rule. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; Governance controls; controls[1].note / behaviour: Copilot Studio separately offers a maker-configured, per-tool confirmation setting. | Found: This article describes features used in agents or agent flows powered by the standard harness. | Fix: Replace 'Copilot Studio already has a separate capability to require human approval for tool calls' with 'Copilot Studio separately documents a per-tool end-user confirmation setting for agents using the standard harness.' Change controls[1].note to 'Maker-side, per tool, for agents using the standard harness.' Keep the relationship to the planned Work IQ capability an open question. | Source: https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: The per-tool confirmation setting is at Copilot Studio > Tools > tool > Details > Additional details > Ask the end user before running. | Found: Go to the Tools page for your agent, and select the tool from the list of tools. ... Details ... Additional details ... Ask the end user before running | Fix: Include the initial agent selection: 'Agents > agent > Tools > tool > Details > Additional details > Ask the end user before running', as documented at https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent. | Source: https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent#view-and-make-changes-to-your-tool-configuration
 -->

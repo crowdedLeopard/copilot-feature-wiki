@@ -62,7 +62,7 @@ controls:
     scope: "environment"
     ui:
       surface: "Power Platform admin center"
-      path: "Manage > Environments > environment > Settings > Product > Features > Work IQ"
+      path: "Manage > environment > Settings > Product > Features > Work IQ"
       docs: "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-participation#environment-features-for-work-iq"
     api: null
   - governs: "Business Applications data in Work IQ available to Copilot (tenant)"
@@ -104,19 +104,23 @@ changes:
     note: "Corrected after the independent check: default state is now on (Microsoft's default enablement from November 2026, with exceptions), skill-access and activation wording, mixed licensing, cloud availability, and the Allowed MCP Clients API."
   - date: "2026-11-16"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 60 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-16"
+    note: "Corrected after the independent check: the Work IQ environment path now matches the Learn page (no separate Environments step), and two checklist steps without a controls-table row were removed."
+  - date: "2026-11-16"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 64 statements confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-16"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 60
-  confirmed: 58
+  claims: 64
+  confirmed: 64
   unconfirmed: 0
-  contradicted: 2
-  attempts: 2
-  hash: "8f8a18288671752480300a2fdace6975"
+  contradicted: 0
+  attempts: 0
+  hash: "65554afc2ee0fd52d39c36c0d34bd321"
 ---
 
 ## What's changing
@@ -165,14 +169,12 @@ The roadmap lists Worldwide (Standard Multi-Tenant). Learn states that Business 
 
 ### Before rollout
 - Decide which environments take part in Work IQ.
-- Assign skill authoring to approved makers only.
 
 ### At rollout
 - Write descriptions that state what a skill does and when to use it.
 - Test representative requests before sharing widely.
 
 ### After rollout
-- Review skill ownership and sharing regularly.
 - Track agent outcomes against the intended process.
 
 ## Governance controls
@@ -182,7 +184,7 @@ The roadmap lists Worldwide (Standard Multi-Tenant). Learn states that Business 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Work IQ participation for a Dataverse environment</strong><br><small>Environment</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › Work IQ <a href="https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-participation#environment-features-for-work-iq" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Work IQ participation for a Dataverse environment</strong><br><small>Environment</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › environment › Settings › Product › Features › Work IQ <a href="https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-participation#environment-features-for-work-iq" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Business Applications data in Work IQ available to Copilot (tenant)</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Settings › View all › Business Applications data in Work IQ available to Copilot <a href="https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings#cascading-control-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Allowed MCP clients for the Dataverse MCP server</strong><br><small>Environment</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › Dataverse Model Context Protocol › Advanced Settings › Allowed MCP Clients <a href="https://learn.microsoft.com/microsoft-sales-copilot/business-skills-dataverse#enable-business-skills-in-dataverse" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>PATCH [organization URI]/api/data/v9.2/allowedmcpclients({allowedmcpclientid}) with body {&quot;isenabled&quot;: false}</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/allowedmcpclient" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Work IQ MCP server access in Microsoft 365</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Work IQ MCP › Block <a href="https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access#work-iq-mcp-server-access-control" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
@@ -203,12 +205,4 @@ For Allowed MCP Clients, the Dataverse Web API reference documents the allowedmc
 risk: Medium. Skills steer agent behaviour across surfaces, so a wrong or over-shared skill changes how agents act on business processes.
 cost: Variable. The meter is Copilot Credits for Work IQ API and Cowork use; licensed Microsoft 365 Copilot Chat business-data grounding is included in the applicable entitlement. No rate specific to business skills is published.
 impact: Medium. Affects makers, process owners and users of agents that discover skills.
--->
-
-<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].ui; Governance controls: first table row / admin-path: The cited participation page gives Manage > Environments > environment > Settings > Product > Features > Work IQ. | Found: Select Manage, and select the environment. Select Settings > Product > Features. Locate Work IQ. | Fix: In controls[0].ui.path and the corresponding rendered table row, replace the path with 'Manage > environment > Settings > Product > Features > Work IQ' to match the cited participation page. That page does not specify the additional 'Environments' step. | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-participation#environment-features-for-work-iq
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout and After rollout; Governance controls table / consistency: The governance checklist asks readers to control skill authoring and review ownership and sharing, but the controls table has no corresponding row. | Found: Assign skill authoring to approved makers only. Review skill ownership and sharing regularly. | Fix: Remove 'Assign skill authoring to approved makers only' and 'Review skill ownership and sharing regularly' from the governance checklist; neither step has a corresponding controls-table row. Keep the existing sourced ownership and sharing explanation.
 -->

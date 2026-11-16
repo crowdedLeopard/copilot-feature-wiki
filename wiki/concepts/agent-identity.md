@@ -5,14 +5,14 @@ slug: "agent-identity"
 summary: "The identity patterns an agent can run under (end user, maker, service identity, Entra agent identity), what each exposes, and the Power Platform and Microsoft Entra controls that steer makers toward the right one."
 created: "2026-11-13"
 updated: "2026-11-16"
-version: 2
+version: 3
 tags: ["agent-identity","entra-agent-id","end-user-authentication","maker-credentials","service-principal","least-privilege","auditing"]
 covers: ["entra-agent-id","end-user-authentication","maker-credentials"]
 sources:
   - title: "Control maker-provided credentials for authentication"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication"
     kind: "learn"
-  - title: "Agent identities and authentication for Copilot Studio"
+  - title: "App registration, agent identities, and authentication"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/govern-agents-identities-overview"
     kind: "learn"
   - title: "Configure sharing agents with embedded maker credentials"
@@ -50,6 +50,12 @@ sources:
     kind: "learn"
   - title: "Update agentIdentity"
     url: "https://learn.microsoft.com/graph/api/agentidentity-update?view=graph-rest-1.0"
+    kind: "learn"
+  - title: "Disable agent identities in your tenant"
+    url: "https://learn.microsoft.com/entra/agent-id/disable-agent-identities"
+    kind: "learn"
+  - title: "Governing Microsoft Entra service accounts"
+    url: "https://learn.microsoft.com/entra/architecture/govern-service-accounts"
     kind: "learn"
 related: ["data-policies","managed-environments","mcp"]
 controls:
@@ -95,15 +101,18 @@ controls:
       kind: "graph"
       call: "PATCH https://graph.microsoft.com/v1.0/servicePrincipals/{id}/microsoft.graph.agentIdentity"
       docs: "https://learn.microsoft.com/graph/api/agentidentity-update?view=graph-rest-1.0"
-    note: "Agent ID Administrator or Cloud Application Administrator. The API page lists AgentIdentity.EnableDisable.All as the least-privileged permission."
+    note: "Agent ID Administrator or Cloud Application Administrator; agent identity owners can manage their own agents without these roles. The API page lists AgentIdentity.EnableDisable.All as the least-privileged permission."
   - governs: "Conditional Access for agent identities and agent users"
     scope: "tenant"
     ui:
       surface: "Microsoft Entra admin center"
       path: "Assignments > Users, agents, or workload identities > Agents"
       docs: "https://learn.microsoft.com/entra/identity/conditional-access/agent-id"
-    api: null
-    note: "Needs licences listed under Cost. Copilot Studio enforcement for connector calls currently applies only in Microsoft Teams."
+    api:
+      kind: "graph"
+      call: "POST https://graph.microsoft.com/beta/identity/conditionalAccess/policies with a policy JSON body; the documented example blocks all agent identities in report-only state"
+      docs: "https://learn.microsoft.com/entra/agent-id/disable-agent-identities"
+    note: "Needs licences listed under Cost. Copilot Studio enforcement for connector calls currently applies only in Microsoft Teams. The documented Graph example is report-only and targets agent identities."
   - governs: "Sign-in records for agent identities"
     scope: "tenant"
     ui:
@@ -124,18 +133,22 @@ changes:
     note: "Corrected after the independent check: removed unsupported audit-attribution, maker-reach and departure claims, qualified Conditional Access (Teams only) and the embedded-credentials control (preview, share and publish time), and added a controls table."
   - date: "2026-11-16"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 5 of 84 statements contradicted, 0 unconfirmed; taken offline until corrected"
+  - date: "2026-11-16"
+    note: "Corrected after the independent check: directory quota qualified for self-service tenants, agent identity owners added to the management roles, a Graph example added for Conditional Access, and the runtime-check wording fixed."
+  - date: "2026-11-16"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 93 statements not yet confirmed"
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-16"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 84
-  confirmed: 79
+  claims: 93
+  confirmed: 93
   unconfirmed: 0
-  contradicted: 5
-  attempts: 2
-  hash: "99979e58212c89a7b460df96b2e7c31f"
+  contradicted: 0
+  attempts: 0
+  hash: "167eb6ab9906c2275932542ad9c5635a"
 ---
 
 ## What it is
@@ -175,7 +188,7 @@ The Copilot Studio pages for the maker-credential and embedded-credential settin
 
 - **Conditional Access for agents** requires Microsoft 365 E7 (which includes Agent 365 and Microsoft Entra Suite), or a Microsoft Agent 365 licence paired with at least Microsoft Entra P1 or Microsoft 365 E3.
 - **ID Protection for agents** requires a Microsoft Entra ID P2 licence during preview.
-- **Directory quota:** every Entra Agent ID that Copilot Studio creates counts against the tenant's resource quota, 50,000 directory objects by default or 300,000 with a verified domain.
+- **Directory quota:** every Entra Agent ID that Copilot Studio creates counts against the tenant's resource quota, normally 50,000 directory objects by default or 300,000 with a verified domain; tenants created through self-service signup remain at 50,000 even after domain verification.
 
 Usage billing for agents is covered in [Copilot Credits](/concepts/copilot-credits/). Microsoft states that each end user's autonomous agent usage is totalled and billed through the environment hosting the agent.
 
@@ -201,17 +214,17 @@ Usage billing for agents is covered in [Copilot Credits](/concepts/copilot-credi
 <tr><td data-label="Control"><strong>Whether agents sharing or publishing with embedded maker credentials is detected only or blocked</strong><br><small>Environment</small><br><small class="controls__note">Preview. Modes: All sharing allowed or Safe sharing enforced. Does not unshare existing agents.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Features › Sharing agents with embedded maker credentials <a href="https://learn.microsoft.com/microsoft-copilot-studio/configure-sharing-agents-embedded-maker-credentials" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Which credentials each connector tool uses</strong><br><small>Agent</small><br><small class="controls__note">Maker-side. Maker-provided credentials need an authenticated channel; the default is user credentials.</small></td><td data-label="Admin UI"><strong>Copilot Studio (maker)</strong><br>Agents › agent › Tools › tool › Overview › Details › Additional details › Credentials to use <a href="https://learn.microsoft.com/microsoft-copilot-studio/advanced-connectors" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Dataverse access for an agent user linked to an Entra agent identity</strong><br><small>Environment</small><br><small class="controls__note">Preview. Choose the agent user, then select a security role for it.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Users + permissions › Agents › + Add agent <a href="https://learn.microsoft.com/power-platform/admin/create-users" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Viewing, disabling and updating individual agent identities</strong><br><small>Agent</small><br><small class="controls__note">Agent ID Administrator or Cloud Application Administrator. The API page lists AgentIdentity.EnableDisable.All as the least-privileged permission.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Entra ID › Agents › Agent identities <a href="https://learn.microsoft.com/entra/agent-id/manage-agent-identities-admin" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH https://graph.microsoft.com/v1.0/servicePrincipals/{id}/microsoft.graph.agentIdentity</code> <a href="https://learn.microsoft.com/graph/api/agentidentity-update?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Conditional Access for agent identities and agent users</strong><br><small>Tenant</small><br><small class="controls__note">Needs licences listed under Cost. Copilot Studio enforcement for connector calls currently applies only in Microsoft Teams.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Assignments › Users, agents, or workload identities › Agents <a href="https://learn.microsoft.com/entra/identity/conditional-access/agent-id" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Viewing, disabling and updating individual agent identities</strong><br><small>Agent</small><br><small class="controls__note">Agent ID Administrator or Cloud Application Administrator; agent identity owners can manage their own agents without these roles. The API page lists AgentIdentity.EnableDisable.All as the least-privileged permission.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Entra ID › Agents › Agent identities <a href="https://learn.microsoft.com/entra/agent-id/manage-agent-identities-admin" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH https://graph.microsoft.com/v1.0/servicePrincipals/{id}/microsoft.graph.agentIdentity</code> <a href="https://learn.microsoft.com/graph/api/agentidentity-update?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Conditional Access for agent identities and agent users</strong><br><small>Tenant</small><br><small class="controls__note">Needs licences listed under Cost. Copilot Studio enforcement for connector calls currently applies only in Microsoft Teams. The documented Graph example is report-only and targets agent identities.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Assignments › Users, agents, or workload identities › Agents <a href="https://learn.microsoft.com/entra/identity/conditional-access/agent-id" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/identity/conditionalAccess/policies with a policy JSON body; the documented example blocks all agent identities in report-only state</code> <a href="https://learn.microsoft.com/entra/agent-id/disable-agent-identities" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Sign-in records for agent identities</strong><br><small>Tenant</small><br><small class="controls__note">At least Reports Reader. Filter by Agent type or Is Agent.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Entra ID › Monitoring &amp; health › Sign-in logs <a href="https://learn.microsoft.com/entra/agent-id/sign-in-audit-logs-agents" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>GET https://graph.microsoft.com/beta/auditLogs/signIns?$filter=signInEventTypes/any(t: t eq 'servicePrincipal') and agent/agentType eq 'AgentIdentity'</code> <a href="https://learn.microsoft.com/entra/agent-id/sign-in-audit-logs-agents" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-Environment Admin can configure the maker-credential option for a single environment; Power Platform Administrator or Global Admin is needed for environment groups, and the group's settings override any environment setting. In Entra, managing agent identities needs Agent ID Administrator or Cloud Application Administrator, Conditional Access policies need Conditional Access Administrator, and sign-in logs need at least Reports Reader.
+Environment Admin can configure the maker-credential option for a single environment; Power Platform Administrator or Global Admin is needed for environment groups, and the group's settings override any environment setting. In Entra, managing agent identities needs Agent ID Administrator or Cloud Application Administrator, although agent identity owners can manage their own agents without these roles. Conditional Access policies need Conditional Access Administrator, and sign-in logs need at least Reports Reader.
 
 The embedded-credentials setting is documented on two Learn pages with different paths (one under Security > Threat detection, one under the environment's Features); the row follows the configuration page. The security scan has no setting: it warns makers automatically.
 
-None of the Copilot Studio rows is a runtime check. They govern what makers can choose and share, so review Entra sign-in logs and the connected service's own audit records for what agents actually did.
+The embedded-credentials sharing control acts at share and publish time, but enforcing end-user credentials changes authentication requirements at runtime for all tools in affected environments.
 
 ## What to check
 
@@ -220,7 +233,7 @@ None of the Copilot Studio rows is a runtime check. They govern what makers can 
 - Set **Sharing agents with embedded maker credentials** to All sharing allowed first to see which agents are affected, then decide on Safe sharing enforced.
 - Open Entra ID > Agents > Agent identities and confirm each agent identity has an owner or sponsor and an expected status.
 - Check which Conditional Access policies target agent identities and agent users, and whether the agents you care about run in Teams.
-- Filter Entra sign-in logs by Agent type and compare with the connected services' own audit records.
+- Filter Entra sign-in logs by Agent type.
 
 ## Open questions
 
@@ -229,14 +242,8 @@ None of the Copilot Studio rows is a runtime check. They govern what makers can 
 - Will the embedded-maker-credentials control leave preview, and will dependency-based enforcement change which agents are blocked?
 - Does Microsoft document an API for the Copilot Studio maker-credential option or for adding Dataverse agent users? None was found at the time of writing (November 2026).
 
-<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-16, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Cost and licensing: Directory quota / behaviour: The directory resource quota is 50,000 objects by default or 300,000 with a verified domain, without an exception. | Found: Tenants created through self-service signup remain at 50,000 even after a domain is verified. Agent identities (along with all other Microsoft Entra resources) can use no more than 95% of this quota. | Fix: Replace the quota clause with 'normally 50,000 directory objects by default or 300,000 with a verified domain; tenants created through self-service signup remain at 50,000 even after domain verification'. Keep the existing cited source. | Source: https://learn.microsoft.com/microsoft-copilot-studio/govern-agents-identities-overview
-- [contradicted, blocker] controls[4].note; Governance controls: Entra management roles / role: Managing agent identities requires Agent ID Administrator or Cloud Application Administrator, without an owner exception. | Found: Manage agent identities | Agent ID Administrator or Cloud Application Administrator | Agent identity owners can manage their own agents without these roles. | Fix: Add to the management-role sentence and controls[4].note: 'Agent identity owners can manage their own agents without these roles.' Do not extend the portal's role statement to delegated Graph callers: the API reference specifically names Agent ID Administrator for nonowners. | Source: https://learn.microsoft.com/entra/agent-id/manage-agent-identities-admin
-- [contradicted, blocker] controls[5].api; Governance controls table / absence: An API or automation for Conditional Access policies targeting agent identities and agent users is not documented. | Found: These policies can be created in the Microsoft Entra admin center or through the Microsoft Graph API. | Fix: Replace controls[5].api null with kind 'graph', docs 'https://learn.microsoft.com/entra/agent-id/disable-agent-identities', and call 'POST https://graph.microsoft.com/beta/identity/conditionalAccess/policies' with body '{"displayName":"Block all agent identities from accessing resources","conditions":{"clientApplications":{"includeAgentIdServicePrincipals":["All"],"excludeAgentIdServicePrincipals":[],"agentIdServicePrincipalFilter":null},"applications":{"includeApplications":["All"],"excludeApplications":[]}},"grantControls":{"operator":"AND","builtInControls":["block"]},"state":"enabledForReportingButNotEnforced"}'. State that this documented example is report-only and targets agent identities. | Source: https://learn.microsoft.com/entra/agent-id/disable-agent-identities
-- [contradicted, blocker] Governance controls: final paragraph; Risks and limits: Enforcing end-user credentials / consistency: None of the Copilot Studio controls is a runtime check; they only govern maker choices and sharing. | Found: Governance controls: 'None of the Copilot Studio rows is a runtime check.' Risks and limits: 'All tools for all agents in the affected environments change to require end-user credentials at runtime'. | Fix: Replace 'None of the Copilot Studio rows is a runtime check. They govern what makers can choose and share' with 'The embedded-credentials sharing control acts at share and publish time, but enforcing end-user credentials changes authentication requirements at runtime for all tools in affected environments'. This matches https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication and https://learn.microsoft.com/microsoft-copilot-studio/configure-sharing-agents-embedded-maker-credentials.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What it is: Service identity data reach / behaviour: The service-identity access statement has supporting Microsoft documentation not included in the page's sources. | Found: See, Introduction to permissions and consent to limit the functionality a service account can access on a resource | Fix: Add https://learn.microsoft.com/entra/architecture/govern-service-accounts to sources. Also add https://learn.microsoft.com/entra/agent-id/disable-agent-identities when correcting the Conditional Access API absence. | Source: https://learn.microsoft.com/entra/architecture/govern-service-accounts#principle-of-least-privileges
-- [contradicted, minor] What to check: final bullet; Governance controls table / consistency: The checklist tells readers to inspect connected-service audit records, but the controls table has no row for those records. | Found: What to check: 'Filter Entra sign-in logs by Agent type and compare with the connected services' own audit records.' The table's only logging row is 'Sign-in records for agent identities'. | Fix: Remove 'and compare with the connected services' own audit records' from the final What to check bullet; no control row covers that checklist step.
+- [supported, minor] Cost and licensing: Conditional Access / licensing: The alternative licence requirement is Microsoft Agent 365 paired with at least Microsoft Entra P1 or Microsoft 365 E3. | Found: **Microsoft Agent 365** license paired with at least Microsoft Entra P1 or Microsoft 365 E3. | Fix: After the Conditional Access licence bullet, add: "Microsoft's agent-management and disable-agent guides instead state Microsoft Entra ID P1 for configuring these policies; those pages do not repeat the Agent 365 requirement (https://learn.microsoft.com/entra/agent-id/manage-agent-identities-admin and https://learn.microsoft.com/entra/agent-id/disable-agent-identities)." Keep the dedicated Conditional Access page's stated requirement. | Source: https://learn.microsoft.com/entra/identity/conditional-access/agent-id
 -->

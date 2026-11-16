@@ -14,11 +14,11 @@ previewDate: "July CY2026"
 risk: "low"
 cost: "low"
 impact: "low"
-defaultState: "admin-opt-in"
+defaultState: "unknown"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "Not yet published. Learn lists the Copilot in Power Automate admin setting as the prerequisite."
+  model: "included"
+  notes: "Preview: Learn states it is available for organization premium accounts at no extra cost, and usage might be subject to service limits or changes. Licensing at general availability is not yet published."
 audiences: ["power-platform-admin","maker","service-owner"]
 tags: ["power-automate","desktop-flows","ui-automation","selectors","copilot-in-power-automate","debugging"]
 sources:
@@ -31,17 +31,29 @@ sources:
   - title: "Repair flow automation errors (preview)"
     url: "https://learn.microsoft.com/power-automate/desktop-flows/repair-at-runtime"
     kind: "learn"
+  - title: "Get started with Copilot in Power Automate for desktop"
+    url: "https://learn.microsoft.com/power-automate/desktop-flows/copilot-in-power-automate-for-desktop"
+    kind: "learn"
+  - title: "Tenant settings"
+    url: "https://learn.microsoft.com/power-platform/admin/tenant-settings"
+    kind: "learn"
+  - title: "Track, manage, and scale Copilot adoption in the Power Platform"
+    url: "https://learn.microsoft.com/power-platform/admin/copilot/copilot-hub#settings"
+    kind: "learn"
+  - title: "Copilot in Power Automate"
+    url: "https://learn.microsoft.com/power-automate/copilot-overview#enable-or-disable-copilot-in-power-automate"
+    kind: "learn"
+  - title: "Governance in Power Automate for desktop"
+    url: "https://learn.microsoft.com/power-automate/desktop-flows/governance#prevent-users-from-sending-copilot-related-feedback"
+    kind: "learn"
   - title: "Copilot in Power Automate for an environment (Power Platform admin center)"
     url: "https://learn.microsoft.com/power-automate/desktop-flows/ai-assisted-ui-automation-repair#how-to-turn-on-and-use-the-feature"
     kind: "learn"
   - title: "Desktop flow repair at runtime (Power Platform admin center)"
     url: "https://learn.microsoft.com/power-platform/admin/settings-features#desktop-flow-repair-at-runtime-configuration-preview"
     kind: "learn"
-  - title: "Copilot feedback from Power Automate for desktop (API)"
-    url: "https://learn.microsoft.com/power-automate/desktop-flows/governance#prevent-users-from-sending-copilot-related-feedback"
-    kind: "learn"
 videos: []
-related: ["power-platform-maker-guidelines-copilot-studio","managed-environments"]
+related: []
 controls:
   - governs: "Copilot in Power Automate for an environment"
     scope: "environment"
@@ -60,11 +72,15 @@ controls:
     note: "Preview. Governs the earlier Repair with Copilot capability."
   - governs: "Copilot feedback from Power Automate for desktop"
     scope: "tenant"
-    ui: null
+    ui:
+      surface: "Power Platform admin center"
+      path: "Manage > Tenant settings"
+      docs: "https://learn.microsoft.com/power-platform/admin/tenant-settings"
     api:
       kind: "other"
       call: "disableSurveyFeedback governance setting for Power Automate for desktop"
       docs: "https://learn.microsoft.com/power-automate/desktop-flows/governance#prevent-users-from-sending-copilot-related-feedback"
+    note: "The desktop Copilot page names a \"Copilot feedback\" tenant setting; the tenant settings page lists Additional Copilot feedback for Copilot in Power Apps. Confirm which applies to desktop flows."
   - governs: "Switch specific to AI-assisted repair in the designer debug run"
     scope: "environment"
     ui: null
@@ -80,18 +96,23 @@ changes:
     note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
   - date: "2026-11-16"
     note: "Taken offline until a corrected version passes its check: a failed check no longer keeps a page online with a notice."
-version: 2
+  - date: "2026-11-16"
+    note: "Correction: licensing now reflects the preview's documented no-extra-cost availability; default state set to unknown; feedback tenant setting added; unsupported claims about hierarchy data, session identity and portal-only control removed."
+  - date: "2026-11-16"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 51 statements contradicted, 2 unconfirmed; taken offline until corrected"
+version: 3
 verification:
   status: "held"
   date: "2026-11-16"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 44
-  confirmed: 37
-  unconfirmed: 5
+  claims: 51
+  confirmed: 47
+  unconfirmed: 2
   contradicted: 2
-  attempts: 1
+  attempts: 2
+  hash: "a79907803e146abf4dbb8bc2e20d1cde"
 ---
 
 ## What's changing
@@ -106,7 +127,7 @@ The roadmap lists a preview from July CY2026 and general availability in March C
 
 Broken selectors are a common cause of failed UI automation after an application or web page changes. A guided repair loop at design time can reduce the support effort for maintaining desktop flows.
 
-For service owners the question is data handling and consistency: element hierarchy information is sent to an AI service, and repaired selectors change the behaviour of production flows once saved.
+For service owners the question is data handling and consistency: the feature analyses the failing selector and a newly captured selector, so confirm the data-handling implications before allowing sensitive captures. Repaired selectors change the behaviour of production flows once saved. Microsoft has not stated what happens on arrival for the shared Copilot in Power Automate setting that the feature requires.
 
 ## Risk assessment
 
@@ -114,7 +135,7 @@ For service owners the question is data handling and consistency: element hierar
 - UI element details from the target application are used to propose selectors. Confirm which applications and screens makers may capture.
 
 **Security & identity**
-- Runs under the maker's own session. No new identity or permission model is described.
+- Runs only through the desktop flow designer during debugging. No new identity or permission model is described.
 
 **Autonomy & actions**
 - The maker must capture the element and accept the proposal. Skipping with no error handling stops the debug run.
@@ -124,26 +145,26 @@ For service owners the question is data handling and consistency: element hierar
 
 ## Cost and licensing
 
-No separate licence or meter is published. Learn lists enabling Copilot in Power Automate in the Power Platform admin center as the prerequisite. Pricing for general availability is not yet published; watch for changes to Copilot Credits or licence requirements.
+Learn states that AI-assisted UI automation repair in Power Automate for desktop is currently available for organization premium accounts at no extra cost, and that usage might be subject to service limits or changes. It lists enabling Copilot in Power Automate in the Power Platform admin center as a prerequisite. Pricing for general availability is not yet published; watch for changes to Copilot Credits or licence requirements.
 
 ## Scope
 
-Makers building UI and browser automation in Power Automate for desktop, version 2.70 or later. Roadmap cloud: Worldwide (Standard Multi-Tenant) only. Platform: web. Learn notes that Copilot in Power Automate for desktop has had regional and account-type limits in earlier preview features, so check current availability.
+Makers building UI and browser automation in Power Automate for desktop, version 2.70 or later. Learn states the preview is currently available for organization premium accounts. Roadmap cloud: Worldwide (Standard Multi-Tenant) only. Platform: web. Learn notes that Copilot in Power Automate for desktop has had regional and account-type limits in earlier preview features, so check current availability.
 
 ## Governance guidance
 
 ### Before rollout
-- [ ] Decide whether makers may use AI-assisted repair, and record the decision.
-- [ ] Check the Copilot in Power Automate setting for each environment.
-- [ ] Identify desktop flows that touch sensitive applications.
+- Decide whether makers may use AI-assisted repair, and record the decision.
+- Check the Copilot in Power Automate setting for each environment.
+- Identify desktop flows that touch sensitive applications.
 
 ### At rollout
-- [ ] Enable the setting for a pilot group of makers first.
-- [ ] Brief makers to review every proposed selector before accepting it.
+- Enable the setting for a pilot group of makers first.
+- Brief makers to review every proposed selector before accepting it.
 
 ### After rollout
-- [ ] Review saved selector changes in solution history.
-- [ ] Collect maker feedback on repair accuracy before wider use.
+- Review saved selector changes in solution history.
+- Collect maker feedback on repair accuracy before wider use.
 
 ## Governance controls
 
@@ -154,12 +175,18 @@ Makers building UI and browser automation in Power Automate for desktop, version
 <tbody>
 <tr><td data-label="Control"><strong>Copilot in Power Automate for an environment</strong><br><small>Environment</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Copilot › Settings › Power Automate › Copilot in Power Automate › On <a href="https://learn.microsoft.com/power-automate/desktop-flows/ai-assisted-ui-automation-repair#how-to-turn-on-and-use-the-feature" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Desktop flow repair at runtime</strong><br><small>Environment</small><br><small class="controls__note">Preview. Governs the earlier Repair with Copilot capability.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › Desktop flow repair at runtime configuration <a href="https://learn.microsoft.com/power-platform/admin/settings-features#desktop-flow-repair-at-runtime-configuration-preview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Copilot feedback from Power Automate for desktop</strong><br><small>Tenant</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>API</strong><br><code>disableSurveyFeedback governance setting for Power Automate for desktop</code> <a href="https://learn.microsoft.com/power-automate/desktop-flows/governance#prevent-users-from-sending-copilot-related-feedback" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Copilot feedback from Power Automate for desktop</strong><br><small>Tenant</small><br><small class="controls__note">The desktop Copilot page names a &quot;Copilot feedback&quot; tenant setting; the tenant settings page lists Additional Copilot feedback for Copilot in Power Apps. Confirm which applies to desktop flows.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Tenant settings <a href="https://learn.microsoft.com/power-platform/admin/tenant-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>disableSurveyFeedback governance setting for Power Automate for desktop</code> <a href="https://learn.microsoft.com/power-automate/desktop-flows/governance#prevent-users-from-sending-copilot-related-feedback" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Switch specific to AI-assisted repair in the designer debug run</strong><br><small>Environment</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-The Copilot setting is per environment and portal-only; turning it off removes every Copilot feature in Power Automate for that environment, not just repair. Runtime repair has its own flag and a separate [self-healing](https://learn.microsoft.com/power-automate/desktop-flows/self-healing#how-to-turn-on-the-feature) setting. In regions without local GPU capacity, Copilot depends on the cross-geo data movement toggle described in the [Copilot overview](https://learn.microsoft.com/power-automate/copilot-overview#enable-or-disable-copilot-in-power-automate).
+The repair article documents the admin-center path for the Copilot in Power Automate setting; an API equivalent for this setting is not yet documented. AI-assisted repair requires this shared setting, so assess the effect on other Power Automate Copilot capabilities before changing it. Microsoft's desktop governance page directs administrators who want to prevent users from using any Copilot capability to contact Microsoft Support.
+
+The pages disagree on scope. The [Copilot hub](https://learn.microsoft.com/power-platform/admin/copilot/copilot-hub#settings) page says settings can be configured at the environment level, with most also configurable through environment groups, while the [Copilot in Power Automate overview](https://learn.microsoft.com/power-automate/copilot-overview#enable-or-disable-copilot-in-power-automate) says disabling Copilot is done at tenant level and environment-level support isn't available. Confirm which applies to your tenant.
+
+Runtime repair has its own flag and a separate [self-healing](https://learn.microsoft.com/power-automate/desktop-flows/self-healing#how-to-turn-on-the-feature) setting. In regions without local GPU capacity, Copilot depends on the cross-geo data movement toggle described in the [Copilot overview](https://learn.microsoft.com/power-automate/copilot-overview#enable-or-disable-copilot-in-power-automate).
+
+For Copilot feedback, the desktop Copilot page names a "Copilot feedback" tenant setting, while the governance page names disableSurveyFeedback. Microsoft does not state that they are the same setting, so confirm before relying on either.
 
 ## Open questions
 
@@ -168,20 +195,16 @@ The Copilot setting is per environment and portal-only; turning it off removes e
 - Is a dedicated admin control planned beyond the Copilot in Power Automate setting?
 
 <!-- rationale
-risk: Low. The repair runs in the maker's design session, needs a person to capture and accept each selector, and is governed by the existing Copilot in Power Automate setting.
-cost: Low. No separate licence is published; the cost is maker time and the Copilot in Power Automate setting. Pricing is not yet published for general availability.
+risk: Low. The repair runs in the maker's design session, needs a person to capture and accept each selector, and needs the shared Copilot in Power Automate setting; Microsoft documents no initial state for it.
+cost: Low. The preview is documented as available for organization premium accounts at no extra cost, so the known cost is maker time. Pricing for general availability is not yet published.
 impact: Low. It affects makers who build UI and browser automation in desktop flows, not end users or flow consumers.
 -->
 
-<!-- verifier-findings (2026-11-16, needs-correction; checked by gpt-6.1-sol)
-The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [unsupported, major] Why it matters / behaviour: This designer repair feature sends element hierarchy information to an AI service. | Found: Searched: "AI-assisted UI automation repair" "hierarchy"; "AI-assisted UI automation repair" "data" "sent". Read feature article and FAQ for Repair with Copilot at runtime; only the separate runtime feature explicitly describes sending the hierarchy tree. | Fix: Replace the hierarchy-transfer assertion with 'The feature analyzes the failing selector and a newly captured selector; confirm the data-handling implications before allowing sensitive captures.' The designer feature article does not specify hierarchy transfer.
-- [unsupported, major] Risk assessment: Security & identity / behaviour: The repair runs under the maker's own session. | Found: Searched: "AI-assisted UI automation repair" "session"; "Power Automate" "debugging" "current user" session. Read feature article and search excerpts for Debug a desktop flow and flow designer; none explicitly states the execution-session identity. | Fix: Replace 'Runs under the maker's own session' with the documented statement 'Runs only through the desktop flow designer during debugging.' Do not assert an execution identity without a stating source.
-- [contradicted, blocker] front matter: licensing.model and notes; Cost and licensing; rationale: cost; Scope / licensing: The licensing model is unknown and licensing has not yet been published. | Found: AI-assisted UI automation repair in Power Automate for desktop is currently available for organization premium accounts at no extra cost. Usage might be subject to service limits or changes. | Fix: Set licensing.model to 'included' for the documented preview and name 'organization premium accounts' in the notes. State that the preview is available at no extra cost, subject to service limits or changes; add that account requirement to Scope and the cost rationale. Keep GA licensing explicitly unresolved. | Source: https://learn.microsoft.com/power-automate/desktop-flows/ai-assisted-ui-automation-repair
-- [supported, minor] controls[2].api; Governance controls table / command: The disableSurveyFeedback tenant setting governs Copilot feedback from Power Automate for desktop. | Found: As a Power Platform admin you can prevent users from sending feedback to Microsoft by disabling the disableSurveyFeedback tenant setting. | Fix: Retain the documented setting name: the deterministic missing-name lead is not confirmed. Add a note that https://learn.microsoft.com/power-platform/admin/list-tenantsettings describes disableSurveyFeedback as controlling NPS survey prompts, while newer desktop Copilot guidance points to the Copilot feedback tenant setting; do not imply these descriptions are identical. | Source: https://learn.microsoft.com/power-automate/desktop-flows/governance#prevent-users-from-sending-copilot-related-feedback
-- [contradicted, blocker] controls[2].ui; Governance controls table / absence: No admin UI is documented for controlling Copilot feedback from Power Automate for desktop. | Found: As a Power Platform admin, you can prevent users from sending Copilot feedback to Microsoft by using the "Copilot feedback" tenant setting. | Fix: Replace the blanket undocumented-UI claim with the documented Copilot feedback tenant-setting reference. Cite this desktop Copilot page and https://learn.microsoft.com/power-platform/admin/tenant-settings for Manage > Tenant settings. Explicitly flag the naming/applicability discrepancy: the current tenant index labels Basic Copilot Feedback as Power Apps, so do not invent an exact final label or equate it silently with disableSurveyFeedback. | Source: https://learn.microsoft.com/power-automate/desktop-flows/copilot-in-power-automate-for-desktop#use-copilot-to-summarize-actions-and-subflows
-- [supported, minor] controls[0].scope; Governance controls following paragraph; Governance guidance / applicability: Copilot hub settings can be configured at environment scope. | Found: You can configure settings at the environment level, with most settings also configurable through environment groups and rules. | Fix: Cite the Copilot hub guidance for environment scoping and its environment/group selection step. Also report the disagreement with https://learn.microsoft.com/power-automate/copilot-overview#enable-or-disable-copilot-in-power-automate, which says disabling is tenant-level and environment support is unavailable; do not present the documents as consistent. | Source: https://learn.microsoft.com/power-platform/admin/copilot/copilot-hub#settings
-- [unsupported, blocker] Governance controls following paragraph / applicability: The Copilot setting is portal-only. | Found: Searched: "Copilot in Power Automate" environment turn off PowerShell API settings. Read feature prerequisites, Copilot overview, Copilot hub and tenant-settings reference; no text establishes that this setting can only be controlled through the portal. | Fix: Replace 'portal-only' with 'The repair article documents the admin-center path; an API equivalent for this setting is not yet documented.' Absence of a published API is not proof that no other configuration mechanism exists.
-- [unsupported, blocker] Governance controls following paragraph / applicability: Turning off the environment Copilot setting removes every Copilot feature in Power Automate for that environment. | Found: Searched: "Copilot in Power Automate" "environment" "setting" "off". Read repair prerequisites, Copilot hub, Copilot overview and desktop governance; none states this environment switch disables every Power Automate Copilot capability. | Fix: Replace the universal assertion with 'AI-assisted repair requires the shared Copilot in Power Automate setting. Assess effects on other capabilities before changing it.' Desktop governance instead directs admins to Microsoft Support to disable all Copilot functionality tenant-wide.
-- [unsupported, blocker] front matter: defaultState; rationale: risk / default: The feature's arrival state is admin-opt-in, so nothing happens until an administrator opts in. | Found: Searched: "Copilot in Power Automate" environment turn off PowerShell API settings; "AI-assisted UI automation repair" admin disable setting data hierarchy session licensing. Read feature prerequisites and Copilot overview; neither establishes a feature-specific admin-opt-in arrival state. | Fix: Set defaultState to 'unknown' and state that Microsoft documents the required Copilot setting but not its initial state for this feature. Remove the assumption that a fresh administrator opt-in is always necessary; distinguish the maker's explicit debug-run choice from the shared setting's default.
+<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] Why it matters / behaviour: Repaired selectors change production-flow behavior once saved. | Found: Save draft: Save your latest changes without releasing them as the official version. ... Publish: Set a version as official so it runs from the console or cloud. | Fix: Replace 'Repaired selectors change the behaviour of production flows once saved.' with 'Selector changes are permanently saved when the maker saves the flow.' The repair article supports persistence, not the claim that saving alone updates production execution in environments with version control. | Source: https://learn.microsoft.com/power-automate/desktop-flows/version-control
+- [unsupported, blocker] controls[2].api; Governance controls table / command: The API column supplies 'disableSurveyFeedback governance setting for Power Automate for desktop' as the automation call. | Found: Searched: "disableSurveyFeedback" "Set-TenantSettings". Opened desktop governance, Set-TenantSettings and List tenant settings. disableSurveyFeedback exists, contrary to the pre-check lead, but this phrase specifies no executable operation, parameters or value. | Fix: Remove the feedback control row from the controls array and rendered table, retaining the existing prose about the documented disableSurveyFeedback tenant setting. The supplied phrase is not a call under the schema's runnable-call requirement; do not replace it with a claim that no automation exists, since governance links to Set-TenantSettings.
+- [unsupported, blocker] Governance guidance: At rollout / applicability: The shared Copilot setting can be enabled specifically for a pilot group of makers. | Found: Searched: "Copilot in Power Automate" setting specific users security group. Opened the repair article and Copilot hub. Configuration is described for environments or environment groups, not a maker-group audience for this setting. | Fix: Replace 'Enable the setting for a pilot group of makers first.' with 'Pilot use with a small group of makers; the documented Copilot setting is environment-scoped, not a documented maker-group switch.'
+- [contradicted, blocker] Governance guidance: After rollout / admin-path: Saved selector changes can be reviewed in solution history. | Found: An operation can be a solution import, export, or uninstall. The solution history displays information such as solution version, solution publisher, type of operation, operation start and end time, and operation status. | Fix: Replace 'Review saved selector changes in solution history.' with 'Review saved selector changes before wider use.' Solution history records solution operations; it is not the desktop-flow version comparison surface. | Source: https://learn.microsoft.com/power-apps/maker/data-platform/solution-history
 -->

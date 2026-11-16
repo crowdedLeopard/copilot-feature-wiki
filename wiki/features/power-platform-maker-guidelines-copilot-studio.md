@@ -63,7 +63,7 @@ controls:
     scope: "environment"
     ui:
       surface: "Power Platform admin center"
-      path: "Copilot > Settings > Maker guidance"
+      path: "Copilot > Settings > Copilot Studio > Maker guidance"
       docs: "https://learn.microsoft.com/microsoft-copilot-studio/authoring-agent-status#custom-guidance-message-preview"
     api: null
     note: "Preview."
@@ -82,19 +82,23 @@ changes:
     note: "Corrected after verification: removed unsupported history, role, cost and 'portal-only' claims; licensing now unknown and cost low; fixed admin paths and docs links."
   - date: "2026-11-16"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 50 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-16"
+    note: "Corrected after verification: custom guidance path now includes the Copilot Studio section; removed the environment-admin role gap and the unsupported claim that the feature moves no data."
+  - date: "2026-11-16"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 47 statements not yet confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-16"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 50
+  claims: 47
   confirmed: 47
-  unconfirmed: 1
-  contradicted: 2
-  attempts: 2
-  hash: "ec020518f45c2759a8356e08d9304fb6"
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "afece02d48afe6348e61666f5648cf1d"
 ---
 
 ## What's changing
@@ -116,7 +120,7 @@ It is a low-risk, low-cost change whose value depends entirely on the quality of
 ## Risk assessment
 
 **Data exposure**
-- None. The feature displays admin-authored text.
+- The documented function is to display admin-authored guidance and links to help.
 
 **Security & identity**
 - The button link is an HTTPS URL that makers will click; keep it on a trusted internal site and review who can edit the setting (Power Platform administrators with group edit rights).
@@ -138,7 +142,7 @@ It is a low-risk, low-cost change whose value depends entirely on the quality of
 
 - Copilot Studio makers in managed environments or environment groups where the message is configured or the rule is published.
 - Worldwide (standard multi-tenant). Government cloud dates not published.
-- Roles: the Maker guidelines page is written for Power Platform administrators, and Learn documents creating environment groups and configuring their rules for Power Platform tenant administrators. Whether an environment admin can configure the environment-level setting is not yet documented.
+- Roles: the Maker guidelines page is written for Power Platform administrators, and Learn documents creating environment groups and configuring their rules for Power Platform tenant administrators.
 
 ## Governance guidance
 
@@ -163,7 +167,7 @@ It is a low-risk, low-cost change whose value depends entirely on the quality of
 <tbody>
 <tr><td data-label="Control"><strong>Maker guidelines message, link and contact</strong><br><small>Environment</small><br><small class="controls__note">Preview.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Copilot › Settings › Maker guidelines › Environments › environment › Edit setting <a href="https://learn.microsoft.com/power-platform/admin/maker-guidelines" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Maker guidelines as an environment group rule</strong><br><small>Environment group</small><br><small class="controls__note">Preview. Add rules is needed only if Maker guidelines is not already listed.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environment groups › group › Rules › Add rules › Maker guidelines › Save › Publish rules <a href="https://learn.microsoft.com/power-platform/admin/maker-guidelines" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Custom guidance message for blocked items in the agent status pane</strong><br><small>Environment</small><br><small class="controls__note">Preview.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Copilot › Settings › Maker guidance <a href="https://learn.microsoft.com/microsoft-copilot-studio/authoring-agent-status#custom-guidance-message-preview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Custom guidance message for blocked items in the agent status pane</strong><br><small>Environment</small><br><small class="controls__note">Preview.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Copilot › Settings › Copilot Studio › Maker guidance <a href="https://learn.microsoft.com/microsoft-copilot-studio/authoring-agent-status#custom-guidance-message-preview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
@@ -173,18 +177,15 @@ As of November 2026, Microsoft documents portal configuration but no automation 
 
 - Whether rich text or localisation will be supported at General Availability.
 - Whether the same guidance surface will extend to Power Apps and Power Automate makers.
-- Whether an environment admin, not only a Power Platform administrator, can configure the environment-level setting.
 
 <!-- rationale
-risk: Low. The documented function is to display organisational guidance and links to help in the Review pane; it moves no data and acts on nothing.
+risk: Low. The documented function is to display organisational guidance and links to help in the Review pane.
 cost: Low. The known cost is admin time to write and maintain the message. Feature-specific licensing is not yet published; the feature needs Managed Environments, which have their own licensing.
 impact: Low. The audience is Copilot Studio makers in managed environments where an admin has configured the message.
 -->
 
-<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-16, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Scope: Roles; Open questions: environment admin / absence: Whether an environment admin can configure the environment-level setting is not documented. | Found: The maker is the admin of their personal environment, with the System Administrator security role in environments that have Dataverse. As admin, the maker can configure the environment's settings, except settings that an environment group rule governs. Those settings are locked. | Fix: Remove 'Whether an environment admin can configure the environment-level setting is not yet documented' from Scope and remove the corresponding Open questions bullet. Microsoft's personal-environment guidance already covers environment settings for that class of managed environment, with the exception of settings locked by group rules. | Source: https://learn.microsoft.com/power-platform/admin/personal-environments-overview#frequently-asked-questions
-- [contradicted, blocker] controls[2].ui; Governance controls: third row; What's changing / admin-path: The full custom guidance navigation path is Copilot > Settings > Maker guidance. | Found: From the Settings menu, under the Copilot Studio section, select Maker guidance. The Maker guidance panel opens. | Fix: Replace controls[2].ui.path and the corresponding rendered path with 'Copilot > Settings > Copilot Studio > Maker guidance'. The cited instructions explicitly place Maker guidance under the Copilot Studio section; retain that section in the path. | Source: https://learn.microsoft.com/microsoft-copilot-studio/authoring-agent-status#custom-guidance-message-preview
-- [unsupported, major] rationale: risk; Risk assessment: Data exposure / behaviour: The feature moves no data. | Found: Searched: '"maker guidelines" "data" "access"'. Read maker-guidelines and authoring-agent-status; they describe displaying configured guidance, links and email, but do not state that no data moves or provide a no-exposure guarantee. | Fix: Remove 'it moves no data' from the risk rationale. Replace the Data exposure bullet with 'The documented function is to display admin-authored guidance and links to help.' Keep the low-risk assessment as the wiki's judgement rather than an absolute data-handling guarantee.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] What's changing; Governance guidance: At rollout; controls[2].note / behaviour: The related custom guidance message preview replaces Contact your admin when a maker encounters blocked connectors or channels. | Found: This article describes features used in agents or agent flows powered by the standard harness. As an admin, you can set an environment-level guidance message for users when they encounter a blocked or disabled capability. This plain-text message replaces the default Contact your admin prompt. | Fix: Replace the first custom-guidance sentence with: 'For agents and agent flows powered by the standard harness, a related preview, custom guidance message, replaces the generic "Contact your admin" prompt that appears when a maker hits a blocked connector or channel.' | Source: https://learn.microsoft.com/microsoft-copilot-studio/authoring-agent-status
 -->

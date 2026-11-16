@@ -17,7 +17,7 @@ impact: "medium"
 defaultState: "admin-opt-in"
 action: "act-now"
 licensing:
-  model: "unknown"
+  model: "consumption"
   notes: "No separate transcript-specific licence or rate is documented as of November 2026. Work IQ uses consumption billing, and enabling it requires a usage-based billing plan with the user assigned to it."
 audiences: ["m365-admin","security","compliance","service-owner"]
 tags: ["work-iq","teams","meeting-transcripts","real-time","transcript-api","agents","privacy"]
@@ -73,7 +73,7 @@ controls:
       kind: "graph"
       call: "POST https://graph.microsoft.com/v1.0/oauth2PermissionGrants with body clientId, consentType (AllPrincipals), resourceId, scope"
       docs: "https://learn.microsoft.com/entra/identity/enterprise-apps/grant-admin-consent"
-    note: "General Entra consent route for apps registered in the tenant. The grant takes effect immediately, without review."
+    note: "General Entra consent route for apps registered in the tenant. Permissions granted programmatically are not subject to review or confirmation and take effect immediately."
   - governs: "Transcription allowed in the meeting policy"
     scope: "user"
     ui:
@@ -99,19 +99,23 @@ changes:
     note: "Corrected the Entra app-permissions control (path, link, Graph consent call), narrowed the licensing statement, and updated the action to act-now now that 14 November 2026 has passed."
   - date: "2026-11-16"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 47 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-16"
+    note: "Corrected after the check: licensing model set to consumption, and the Entra consent note now says that programmatically granted permissions take effect immediately without review."
+  - date: "2026-11-16"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 48 statements confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-16"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 47
-  confirmed: 45
+  claims: 48
+  confirmed: 48
   unconfirmed: 0
-  contradicted: 2
-  attempts: 2
-  hash: "89671e07ecd2f6c20912773cb117ead4"
+  contradicted: 0
+  attempts: 0
+  hash: "d3c23a3bff6367f79cb9b6437eb59517"
 ---
 
 ## What's changing
@@ -176,7 +180,7 @@ Teams meetings and calls in the Worldwide cloud, on the web per the roadmap. The
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Work IQ access to real-time meeting transcripts</strong><br><small>Tenant</small><br><small class="controls__note">Off by default. Needs the latest Teams PowerShell module.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting settings › Transcript API access › WorkIQ access <a href="https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access#manage-work-iq-access-to-real-time-transcripts" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingConfiguration -Identity Global -EnableWorkIQTranscriptAccess $true</code> <a href="https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access#manage-work-iq-access-to-real-time-transcripts" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which apps may read transcripts</strong><br><small>App</small><br><small class="controls__note">General Entra consent route for apps registered in the tenant. The grant takes effect immediately, without review.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Entra ID › App registrations › app › API permissions <a href="https://learn.microsoft.com/entra/identity-platform/quickstart-configure-app-access-web-apis" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/v1.0/oauth2PermissionGrants with body clientId, consentType (AllPrincipals), resourceId, scope</code> <a href="https://learn.microsoft.com/entra/identity/enterprise-apps/grant-admin-consent" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which apps may read transcripts</strong><br><small>App</small><br><small class="controls__note">General Entra consent route for apps registered in the tenant. Permissions granted programmatically are not subject to review or confirmation and take effect immediately.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Entra ID › App registrations › app › API permissions <a href="https://learn.microsoft.com/entra/identity-platform/quickstart-configure-app-access-web-apis" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/v1.0/oauth2PermissionGrants with body clientId, consentType (AllPrincipals), resourceId, scope</code> <a href="https://learn.microsoft.com/entra/identity/enterprise-apps/grant-admin-consent" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Transcription allowed in the meeting policy</strong><br><small>User</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting policies › policy › Recording &amp; transcription <a href="https://learn.microsoft.com/microsoftteams/copilot-teams-transcription#manage-copilot-for-teams-meetings-and-events" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity &lt;policy&gt; -AllowTranscription $true</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
@@ -194,11 +198,4 @@ The tenant toggle is a single switch with no per-group scoping; the per-app boun
 risk: High. Live transcripts can contain sensitive spoken content and speaker names, and the setting takes effect on 14 November 2026, with organiser-tenant rules deciding access.
 cost: Variable. No separate transcript-specific licence or rate is documented as of November 2026; Work IQ uses consumption billing, so agents consuming transcripts may use Copilot Credits.
 impact: Medium. Meeting participants are affected indirectly; admins and app owners must act.
--->
-
-<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.model / consistency: The licensing model is unknown, meaning Not yet published under the schema. | Found: Work IQ uses consumption billing. A separate spending policy isn't required for Work IQ. | Fix: Set licensing.model to consumption. Keep the narrower statement that no separate transcript-specific licence or rate is documented; that gap does not make the documented consumption model unknown. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq
-- [contradicted, blocker] controls[1].note; Governance controls table / behaviour: The general Entra consent route grants permissions immediately without review. | Found: The Grant admin consent for {your tenant} button allows an admin to grant admin consent to the permissions configured for the application. When you select the button, a dialog is shown requesting that you confirm the consent action. | Fix: Replace 'The grant takes effect immediately, without review.' with 'Permissions granted programmatically are not subject to review or confirmation and take effect immediately.' The programmatic-only qualification is stated at https://learn.microsoft.com/entra/identity/enterprise-apps/grant-admin-consent. | Source: https://learn.microsoft.com/entra/identity-platform/quickstart-configure-app-access-web-apis
 -->

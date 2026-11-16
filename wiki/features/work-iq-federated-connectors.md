@@ -12,13 +12,13 @@ platforms: ["Developer"]
 targetDate: "November CY2026"
 previewDate: "October CY2026"
 risk: "medium"
-cost: "variable"
+cost: "medium"
 impact: "medium"
 defaultState: "unknown"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "Specific licensing for this roadmap capability is not yet published; Work IQ API usage already has published Copilot Credits billing."
+  model: "add-on"
+  notes: "Existing federated Copilot connectors require a Microsoft 365 Copilot add-on licence or Microsoft 365 E7 for users querying the source. Microsoft has not published whether this Work IQ capability changes those requirements."
 audiences: ["m365-admin","security","service-owner","compliance"]
 tags: ["work-iq","federated-connectors","mcp","microsoft-graph","governance"]
 sources:
@@ -27,6 +27,12 @@ sources:
     kind: "roadmap"
   - title: "Federated connectors overview"
     url: "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview"
+    kind: "learn"
+  - title: "Prerequisites for deploying connectors"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites"
+    kind: "learn"
+  - title: "Microsoft 365 Copilot connectors overview"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/connectors/overview"
     kind: "learn"
   - title: "Enabling, disabling or staging a federated connector (Microsoft 365 admin center)"
     url: "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors"
@@ -118,19 +124,23 @@ changes:
     note: "Correction: cloud scope now follows the roadmap record, default state is Not stated, Graph block/unblock added for connector availability, and controls are no longer described as portal-only or inherited by Work IQ."
   - date: "2026-11-16"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 48 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-16"
+    note: "Correction: cost and licensing now follow the documented add-on licence for federated connectors; added the Researcher read-only qualification; removed two checklist steps without a control row."
+  - date: "2026-11-16"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 52 statements not yet confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-16"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 48
-  confirmed: 44
+  claims: 52
+  confirmed: 52
   unconfirmed: 0
-  contradicted: 4
-  attempts: 2
-  hash: "a4ce21a1f26b45b4914e671ba61e2924"
+  contradicted: 0
+  attempts: 0
+  hash: "66913e6dea21978fa5cfd4d661a48ebb"
 ---
 
 ## What's changing
@@ -154,14 +164,16 @@ It widens the systems an agent can reach. Because the source system enforces per
 - Uses OAuth 2.0 and the user's permissions in the source system.
 
 **Autonomy & actions**
-- Where connectors provide tools, Copilot can create, update or delete with user approval; new write tools default to Needs approval.
+- Where connectors provide tools, Copilot can create, update or delete with user approval; new write tools default to Needs approval. The Researcher agent remains read-only. The [Copilot connectors overview](https://learn.microsoft.com/microsoft-365/copilot/connectors/overview#types-of-copilot-connectors) still describes federated connectors as read-only, whereas the [federated connectors overview](https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview) documents write actions.
 
 **Change & support**
 - Firewalls for MCP servers may need static egress IP allow-listing.
 
 ## Cost and licensing
 
-Specific licensing for this roadmap capability is not yet published. As background, the [Work IQ API overview](https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview#licensing-requirements) says Work IQ API use is paid for through a usage-based model that uses Copilot Credits. The preview [Foundry Work IQ page](https://learn.microsoft.com/azure/foundry/agents/how-to/tools/work-iq) says a connector can require a Microsoft 365 Copilot licence for each calling user. Neither is a confirmed rule for this roadmap capability.
+Existing federated Copilot connectors require a Microsoft 365 Copilot add-on licence or Microsoft 365 E7 for users querying the source, per the [connectors prerequisites page](https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites). Microsoft has not published whether this Work IQ capability changes those requirements.
+
+Background, labelled separately: the [Work IQ API overview](https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview#licensing-requirements) says Work IQ API use is paid for through a usage-based model that uses Copilot Credits. The preview [Foundry Work IQ page](https://learn.microsoft.com/azure/foundry/agents/how-to/tools/work-iq) says a connector can require a Microsoft 365 Copilot licence for each calling user. Neither is a confirmed rule for this roadmap capability.
 
 ## Scope
 
@@ -175,10 +187,8 @@ Work IQ experiences using federated connectors. The roadmap lists Worldwide (Sta
 
 ### At rollout
 - Approve connectors in the Microsoft 365 admin center, an existing control whose application to this capability Microsoft has not confirmed.
-- Keep write tools on Needs approval.
 
 ### After rollout
-- Audit activity in Microsoft Purview.
 - Review connector permissions after publisher changes.
 
 ## Governance controls
@@ -210,17 +220,12 @@ Write tools on a connector are approved by users per connector in Copilot Chat, 
 
 <!-- rationale
 risk: Medium. Extends agent reach to external systems in real time with the user's identity; write actions may be possible where connectors provide tools.
-cost: Variable. Work IQ API usage is billed in Copilot Credits; licensing for this roadmap capability is not yet published.
+cost: Medium. Existing federated Copilot connectors require a Microsoft 365 Copilot add-on licence or Microsoft 365 E7 for querying users; Work IQ-specific changes to those requirements are not yet published.
 impact: Medium. Affects users of Work IQ-enabled agents and admins who approve connectors.
 -->
 
-<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-16, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.model and notes; Cost and licensing; rationale: cost / licensing: Licensing is wholly unpublished for this capability, with existing connector licensing presented only as an unconfirmed possible rule. | Found: Federated Copilot connectors are available only to tenants and users with a Microsoft 365 Copilot add-on license (or Microsoft 365 E7). They aren't supported with Copilot Studio licenses or Microsoft 365 Copilot pay-as-you-go. | Fix: Replace the blanket gap with: 'Existing federated Copilot connectors require a Microsoft 365 Copilot add-on licence or Microsoft 365 E7 for users querying the source. Microsoft has not published whether this Work IQ capability changes those requirements.' Cite https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites. Set licensing.model to 'add-on' and make the notes state this existing requirement and the narrower Work IQ-specific gap; retain Work IQ API billing as separately labelled background. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites
-- [contradicted, blocker] front matter: cost; rationale: cost; Cost and licensing / consistency: The variable cost rating describes a confirmed meter for this roadmap capability. | Found: cost: 'variable'; rationale: 'Work IQ API usage is billed in Copilot Credits'; Cost and licensing: 'As background' and 'Neither is a confirmed rule for this roadmap capability.' | Fix: Do not infer this capability's meter from background API pricing. Set cost to 'medium' on the documented existing per-user federated connector licensing and replace the rationale with 'Medium. Existing federated Copilot connectors require a Microsoft 365 Copilot add-on licence or Microsoft 365 E7 for querying users; Work IQ-specific changes to those requirements are not yet published.'
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Autonomy & actions; rationale: risk / behaviour: Where a connector supplies the tools, Copilot can create, update or delete data with user approval. | Found: Can read data and, where a connector provides the tools, create, update, or delete data with the user's approval. Admins can audit activity in Microsoft Purview. | Fix: Add the qualification: 'The Researcher agent remains read-only.' Also acknowledge that https://learn.microsoft.com/microsoft-365/copilot/connectors/overview#types-of-copilot-connectors still describes federated connectors as read-only, whereas the cited federated overview documents write actions. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview
-- [contradicted, minor] Governance controls: final paragraph; Governance guidance: After rollout / consistency: The governance checklist's Purview audit step has a corresponding control row. | Found: Governance guidance: 'Audit activity in Microsoft Purview.' The five controls rows cover connector availability, publisher access, User access, Work IQ MCP policy and a dedicated-control gap; none covers audit. | Fix: Remove the checklist bullet 'Audit activity in Microsoft Purview.' The prose statement about existing connector auditing can remain: the cited federated overview says 'Admins can audit activity in Microsoft Purview.'
-- [contradicted, minor] Governance guidance: At rollout; Governance controls / consistency: The checklist's instruction to keep write tools on Needs approval has a corresponding control row. | Found: Governance guidance: 'Keep write tools on Needs approval.' Governance controls: 'Write tools on a connector are approved by users ... which is not an admin control.' No row covers those user-side settings. | Fix: Remove 'Keep write tools on Needs approval' from the administrator checklist. Retain the prose explaining that approvals are user-managed; do not imply that administrators enforce the user's approval preference.
+- [supported, minor] Risk assessment: Security & identity / behaviour: Federated connectors use OAuth 2.0. | Found: OAuth 2.0 and encrypted communication ensure secure access and authentication. | Fix: Remove 'Uses OAuth 2.0 and' from the bullet and retain 'Uses the user's permissions in the source system.' The cited overview supports OAuth, but https://learn.microsoft.com/microsoft-365/copilot/connectors/set-up-custom-federated-connectors also lists 'No Auth' with 'Users don't need to authenticate.' | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview
 -->

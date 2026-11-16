@@ -43,6 +43,9 @@ sources:
   - title: "Allowed endpoints for HTTP and other endpoint-configurable connectors (PowerShell)"
     url: "https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering#powershell-support-for-endpoint-filtering"
     kind: "learn"
+  - title: "Power Platform licensing FAQs"
+    url: "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq#power-pages"
+    kind: "learn"
 videos: []
 related: []
 controls:
@@ -54,7 +57,7 @@ controls:
       docs: "https://learn.microsoft.com/power-platform/admin/connector-action-control"
     api:
       kind: "powershell"
-      call: "New-DlpPolicy (Microsoft.PowerApps.Administration.PowerShell)"
+      call: "New-DlpPolicy -NewPolicy $NewPolicy"
       docs: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest"
     note: "General control: Microsoft has not confirmed it applies to native Power Pages connector APIs."
   - governs: "Allowed endpoints for HTTP and other endpoint-configurable connectors"
@@ -88,19 +91,23 @@ changes:
     note: "Correction: default state set to not stated, cost to low and action to review; controls marked as general and unconfirmed for this feature; risk bullets reworded to what is documented."
   - date: "2026-11-16"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 34 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-16"
+    note: "Correction: Cost and licensing now cites the documented capacity-based Power Pages licensing and limits the unpublished part to native connector APIs; the data-policy PowerShell call is now New-DlpPolicy -NewPolicy $NewPolicy."
+  - date: "2026-11-16"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 44 statements confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-16"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 34
-  confirmed: 32
+  claims: 44
+  confirmed: 44
   unconfirmed: 0
-  contradicted: 2
-  attempts: 2
-  hash: "73a908623724f24dbeed08ffc20d5cef"
+  contradicted: 0
+  attempts: 0
+  hash: "c98f094dd8526cf433692bbdf4d0f26e"
 ---
 
 ## What's changing
@@ -134,7 +141,7 @@ It may also replace bespoke middleware, which can cut support effort but moves r
 
 ## Cost and licensing
 
-Not yet published. The cost evidenced so far is planning and administration time. Whether premium connector licensing, gateway hosting or Power Pages capacity apply is to be confirmed when Microsoft publishes the terms.
+Not yet published. The cost evidenced so far is planning and administration time. Power Pages website licensing is capacity based, with two capacity types by user type: Authenticated users per website/month and Anonymous users per website/month ([Power Platform licensing FAQs](https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq#power-pages)). Any additional premium connector licensing, gateway hosting charges or capacity charges specific to native connector APIs are not yet published.
 
 ## Scope
 
@@ -163,7 +170,7 @@ Makers and developers of Power Pages sites; tenants that use the on-premises dat
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which connectors may be used in an environment</strong><br><small>Environment</small><br><small class="controls__note">General control: Microsoft has not confirmed it applies to native Power Pages connector APIs.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Data and privacy › Data policy › New Policy <a href="https://learn.microsoft.com/power-platform/admin/connector-action-control" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpPolicy (Microsoft.PowerApps.Administration.PowerShell)</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which connectors may be used in an environment</strong><br><small>Environment</small><br><small class="controls__note">General control: Microsoft has not confirmed it applies to native Power Pages connector APIs.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Data and privacy › Data policy › New Policy <a href="https://learn.microsoft.com/power-platform/admin/connector-action-control" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpPolicy -NewPolicy $NewPolicy</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Allowed endpoints for HTTP and other endpoint-configurable connectors</strong><br><small>Environment</small><br><small class="controls__note">Preview. General control, not confirmed for this feature. Needs Endpoint configurable = Yes; evaluates static designer endpoints, not runtime-bound ones.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Data policy › policy › Prebuilt Connectors › connector › Configure connector › Connector endpoints <a href="https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-PowerAppDlpPolicyConnectorConfigurations -TenantId $TenantId -PolicyName $PolicyName -NewDlpPolicyConnectorConfigurations $ConnectorConfigurations</code> <a href="https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering#powershell-support-for-endpoint-filtering" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Power Pages-specific control for connector APIs</strong><br><small>Site</small><br><small class="controls__note">Not yet on Learn; the roadmap says existing Power Platform policies will apply.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
@@ -185,11 +192,4 @@ Power Pages sites are available to internal users by default, and the public set
 risk: High. It lets a public-facing site reach on-premises enterprise systems, so a permission or design error could expose internal data.
 cost: Low. The only cost the sources show is planning and administration time; licensing for this feature is not yet published, so no connector or gateway charge is rated.
 impact: Medium. It affects teams that build external sites on enterprise data, and the visitors who use them.
--->
-
-<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Cost and licensing / licensing: Whether Power Pages capacity applies is to be confirmed when Microsoft publishes the terms. | Found: Power Pages (formerly Power Apps portals) licensing is capacity based and offers two types of capacities based on user type: Authenticated users per website/month and Anonymous users per website/month. | Fix: Replace the final sentence of Cost and licensing with: "Any additional premium connector licensing, gateway hosting charges or capacity charges specific to native connector APIs are not yet published." Existing Power Pages website licensing is documented at https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq#power-pages; do not describe its applicability as unpublished. | Source: https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq#power-pages
-- [contradicted, blocker] controls[0].api; Governance controls table / command: New-DlpPolicy (Microsoft.PowerApps.Administration.PowerShell) is the runnable PowerShell call for the data-policy row. | Found: New-DlpPolicy -NewPolicy $NewPolicy Creates a new policy with the $NewPolicy object. | Fix: Replace controls[0].api.call and the corresponding rendered table code with "New-DlpPolicy -NewPolicy $NewPolicy". The module name is metadata, not a parenthesized argument to execute; the reference documents -NewPolicy as the required policy-object parameter. | Source: https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest
 -->

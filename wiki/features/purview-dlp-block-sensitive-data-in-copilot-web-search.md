@@ -85,7 +85,7 @@ controls:
     scope: "group"
     ui:
       surface: "Microsoft 365 Apps admin center"
-      path: "Customization > Policy Management > Policy configurations > Create > Start with the basics > Choose the scope > Configure Settings > Allow web search in Copilot"
+      path: "Customization > Policy Management > Policy configurations > Create > Start with the basics > Choose the scope > Configure Settings"
       docs: "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy"
     api:
       kind: "graph"
@@ -114,19 +114,23 @@ changes:
     note: "Corrected licensing to not yet published (cost low), the Purview and Cloud Policy paths, the DLP rule and Graph calls, the role name, scoping, the DSPM wording and the identity statement."
   - date: "2026-11-16"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 60 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-16"
+    note: "Corrected the Cloud Policy admin path to end at Configure Settings, removed two After rollout steps with no control row, and added the documented Cowork and domain-exclusion limits."
+  - date: "2026-11-16"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 60 statements confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-16"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 60
-  confirmed: 58
-  unconfirmed: 1
-  contradicted: 1
-  attempts: 2
-  hash: "10e556d457cc481b12b2487c42c381e1"
+  confirmed: 60
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "4810d03294f8497a3f413f685f971e17"
 ---
 
 ## What's changing
@@ -153,7 +157,7 @@ It is opt-in and needs a DLP policy, so nothing changes until someone builds one
 - Not applicable.
 
 **Change & support**
-- Users may notice fewer web citations on certain prompts without being told why. The feature article states that DLP alerts and DLP notifications are supported and documents customising the Learn about access restrictions link through Policy Tips; it does not describe messaging specific to a web-search-only block.
+- Users may notice fewer web citations on certain prompts without being told why. The feature article states that DLP alerts and DLP notifications are supported and documents customising the Learn about access restrictions link through Policy Tips; customising this link is not yet supported for Cowork. It does not describe messaging specific to a web-search-only block.
 - False positives on common sensitive information types (for example numbers that look like national IDs) could block web grounding for benign prompts; tune confidence levels.
 
 ## Cost and licensing
@@ -181,9 +185,7 @@ It is opt-in and needs a DLP policy, so nothing changes until someone builds one
 - Tell users that some prompts will not use web content and why.
 
 ### After rollout
-- Review DLP alerts and DSPM for AI (classic) activity explorer monthly for match volumes and false positives.
-- Add new custom SITs as internal classification matures.
-- Combine with domain exclusion for site-level control.
+- Combine with domain exclusion for site-level control. Domain exclusions filter web page results only; results from other answer verticals, such as news, might still be cited.
 
 ## Governance controls
 
@@ -193,7 +195,7 @@ It is opt-in and needs a DLP policy, so nothing changes until someone builds one
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>DLP policy at the Copilot location with the Performing Web Searches action</strong><br><small>Tenant</small><br><small class="controls__note">Needs a Purview compliance role such as Purview Data Security AI Admin.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data Loss Prevention › Policies › + Create policy › Custom › Custom policy › Locations › Microsoft Copilot, Copilot Chat, and Copilot Cowork <a href="https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpComplianceRule -Name &lt;rule&gt; -Policy &lt;policy&gt; -ContentContainsSensitiveInformation @(@{Name=&quot;&lt;SIT name&gt;&quot;}) -RestrictWebGrounding $true</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule?view=exchange-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether web search is allowed at all</strong><br><small>Group</small><br><small class="controls__note">Cloud Policy can target groups; the Graph beta API is tenant-level only. Delegated CopilotPolicySettings.ReadWrite only; beta.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › Policy configurations › Create › Start with the basics › Choose the scope › Configure Settings › Allow web search in Copilot <a href="https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH https://graph.microsoft.com/beta/copilot/admin/policySettings/microsoft.copilot.allowwebsearch with body {&quot;value&quot;: &quot;&lt;value&gt;&quot;}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/copilotpolicysetting-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether web search is allowed at all</strong><br><small>Group</small><br><small class="controls__note">Cloud Policy can target groups; the Graph beta API is tenant-level only. Delegated CopilotPolicySettings.ReadWrite only; beta.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › Policy configurations › Create › Start with the basics › Choose the scope › Configure Settings <a href="https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH https://graph.microsoft.com/beta/copilot/admin/policySettings/microsoft.copilot.allowwebsearch with body {&quot;value&quot;: &quot;&lt;value&gt;&quot;}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/copilotpolicysetting-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which domains are excluded from web grounding</strong><br><small>Tenant</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>ConfigureTenantDomainExclusions.ps1 -Create -FromFile &lt;csv&gt;</code> <a href="https://learn.microsoft.com/copilot/implement/domain-exclusion" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
@@ -213,15 +215,4 @@ DLP policies can be created in Security & Compliance PowerShell as well as the p
 risk: Low. A restrictive control that reduces data leaving the tenant; opt-in.
 cost: Low. The only cost the sources show is admin time to design, test and tune the policy; licensing for this web-search action is Not yet published.
 impact: Medium. Affects which prompts get web-grounded answers for users in scope.
--->
-
-<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] controls[1].ui; Governance controls / admin-path: The cited Cloud Policy overview documents the entire path through Configure Settings > Allow web search in Copilot. | Found: Searched: Cloud Policy Allow web search in Copilot Customization Policy Management Configure Settings. Opened overview-cloud-policy and manage-public-web-access: the overview documents navigation only through Configure Settings, not the named final policy. | Fix: Shorten controls[1].ui.path and its rendered counterpart to 'Customization > Policy Management > Policy configurations > Create > Start with the basics > Choose the scope > Configure Settings', retaining the existing overview-cloud-policy docs URL. Keep the separately sourced policy name in the prose; https://learn.microsoft.com/copilot/plan/manage-public-web-access documents that name.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] summary; What's changing; Why it matters / behaviour: The Copilot-location DLP rule detects configured sensitive information types in prompt text. | Found: Add a rule with the Content contains > Sensitive information types condition and choose the SITs you want to detect. | Fix: Add: 'The feature article documents SIT-based web-search blocking; the general DLP policy reference still labels the Copilot location preview and its content-definition table says SIT detection is unsupported.' The conflicting table is at https://learn.microsoft.com/purview/dlp-policy-reference#location-support-for-how-content-can-be-defined. | Source: https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about
-- [supported, minor] Risk assessment: Change & support; Open questions / behaviour: The feature article documents customising the Learn about access restrictions link through Policy Tips. | Found: In the rule's user notification settings, turn on Policy Tips. Select Provide a compliance URL for the end user to learn more about your organization's policies. Customizing the link in Copilot policy tips isn't yet supported for Cowork. | Fix: Add the qualification 'Customising this link is not yet supported for Cowork.' to the existing Policy Tips sentence. | Source: https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about
-- [supported, minor] controls[2].governs; Why it matters; Governance guidance: After rollout; Governance controls / behaviour: Domain exclusion provides site-based filtering of web-grounding sources. | Found: Currently, domain exclusions support filtering on web page results only. Results from other answer verticals, such as news, might still be cited. | Fix: Qualify the site-level-control statement with: 'Domain exclusions filter web page results only; results from other answer verticals, such as news, might still be cited.' | Source: https://learn.microsoft.com/copilot/implement/domain-exclusion
-- [contradicted, minor] Governance guidance: After rollout versus Governance controls / consistency: Every control the governance checklist asks the reader to manage or review is represented in the controls table. | Found: Checklist: 'Review DLP alerts and DSPM for AI (classic) activity explorer monthly' and 'Add new custom SITs'. Table: DLP policy creation, web-search availability, domain exclusion only. | Fix: The monitoring-review and custom-SIT-management steps have no corresponding control rows. Without adding rows, remove the first two After rollout bullets; retain the domain-exclusion bullet.
 -->

@@ -43,6 +43,9 @@ sources:
   - title: "Assign table permissions"
     url: "https://learn.microsoft.com/power-pages/security/assign-table-permissions"
     kind: "learn"
+  - title: "Security and data access"
+    url: "https://learn.microsoft.com/power-apps/developer/data-platform/security-model"
+    kind: "learn"
 videos: []
 related: []
 controls:
@@ -54,7 +57,7 @@ controls:
       docs: "https://learn.microsoft.com/power-pages/configure/vs-code-extension"
     api:
       kind: "pac-cli"
-      call: "pac pages download / pac pages upload / pac pages upload-code-site"
+      call: "pac pages download --path <download-folder> --webSiteId <site-guid> --modelVersion <model-version>; pac pages upload --path <site-folder> --modelVersion <model-version>"
       docs: "https://learn.microsoft.com/power-platform/developer/cli/reference/pages"
     note: "Developer UI, not a plugin-specific tenant switch. Runs under the developer's own sign-in and environment roles."
   - governs: "Admin switch for the coding-agent plugin"
@@ -76,19 +79,23 @@ changes:
     note: "Corrected after a failed check: removed unsupported approval-gate, billing and admin-centre claims; added the Visual Studio Code upload/download path."
   - date: "2026-11-16"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 40 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-16"
+    note: "Corrected after a failed check: cloud wording now follows the roadmap, the pac pages download and upload call lists its documented arguments, and an unsupported claim about traditional sites was replaced."
+  - date: "2026-11-16"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 40 statements not yet confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-16"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 40
-  confirmed: 36
-  unconfirmed: 2
-  contradicted: 2
-  attempts: 2
-  hash: "c9c55c13bdcf27e9c0c56641aa1cd8d2"
+  confirmed: 39
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 0
+  hash: "c84661717540a301e20fcd3025ac068c"
 ---
 
 ## What's changing
@@ -97,11 +104,11 @@ The Power Pages plugin for GitHub Copilot CLI and Claude Code will support tradi
 
 The roadmap lists web pages, web templates, content snippets, basic and multistep forms, lists, table permissions, web roles and site settings. Changes are uploaded back to the environment with the Power Platform CLI.
 
-Preview is listed for October CY2026 and general availability for November CY2026, Worldwide only. Learn today describes the plugin for modern SPA sites, with a warning that generated code and configuration can be inaccurate and must be reviewed.
+Preview is listed for October CY2026 and general availability for November CY2026, with Worldwide (Standard Multi-Tenant) listed on the roadmap. Learn today describes the plugin for modern SPA sites, with a warning that generated code and configuration can be inaccurate and must be reviewed.
 
 ## Why it matters
 
-Traditional sites often hold years of configuration, including table permissions and web roles that protect Dataverse data. Letting an agent edit these is productive but needs control.
+Table permissions assigned to web roles control access to Dataverse data. Letting an agent edit these is productive but needs control.
 
 It also introduces third-party AI tools into the Power Platform developer workflow, which security teams should know about.
 
@@ -125,7 +132,7 @@ No Microsoft charge for the plugin is published. Coding-agent costs depend on th
 
 ## Scope
 
-Developers and makers using GitHub Copilot CLI or Claude Code with the Power Platform CLI. Roadmap cloud: Worldwide only.
+Developers and makers using GitHub Copilot CLI or Claude Code with the Power Platform CLI. The roadmap lists Worldwide (Standard Multi-Tenant).
 
 ## Governance guidance
 
@@ -148,7 +155,7 @@ Developers and makers using GitHub Copilot CLI or Claude Code with the Power Pla
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Downloading and uploading site content and code</strong><br><small>Maker</small><br><small class="controls__note">Developer UI, not a plugin-specific tenant switch. Runs under the developer's own sign-in and environment roles.</small></td><td data-label="Admin UI"><strong>Visual Studio Code (Power Platform Tools)</strong><br>Explorer › Power Pages Actions › Active Sites › site (right-click) › Download / Upload <a href="https://learn.microsoft.com/power-pages/configure/vs-code-extension" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform CLI</strong><br><code>pac pages download / pac pages upload / pac pages upload-code-site</code> <a href="https://learn.microsoft.com/power-platform/developer/cli/reference/pages" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Downloading and uploading site content and code</strong><br><small>Maker</small><br><small class="controls__note">Developer UI, not a plugin-specific tenant switch. Runs under the developer's own sign-in and environment roles.</small></td><td data-label="Admin UI"><strong>Visual Studio Code (Power Platform Tools)</strong><br>Explorer › Power Pages Actions › Active Sites › site (right-click) › Download / Upload <a href="https://learn.microsoft.com/power-pages/configure/vs-code-extension" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform CLI</strong><br><code>pac pages download --path &lt;download-folder&gt; --webSiteId &lt;site-guid&gt; --modelVersion &lt;model-version&gt;; pac pages upload --path &lt;site-folder&gt; --modelVersion &lt;model-version&gt;</code> <a href="https://learn.microsoft.com/power-platform/developer/cli/reference/pages" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Admin switch for the coding-agent plugin</strong><br><small>Tenant</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -167,13 +174,8 @@ cost: Low. No charge for the plugin is published; coding-agent costs depend on t
 impact: Low. It affects developers and makers who adopt the plugin.
 -->
 
-<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-16, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] What's changing; Scope / availability: Traditional-site plugin support is Worldwide only. | Found: Searched: Power Pages traditional sites Worldwide GCC GitHub Copilot CLI Claude Code plugin availability. Opened plugin guidance and create-code-sites; the roadmap lists Worldwide but does not state that other clouds are excluded. | Fix: Replace 'Worldwide only' in What's changing with 'with Worldwide (Standard Multi-Tenant) listed on the roadmap'. Replace 'Roadmap cloud: Worldwide only.' in Scope with 'The roadmap lists Worldwide (Standard Multi-Tenant).'
-- [contradicted, blocker] controls[0].api; Governance controls table / command: The printed automation call 'pac pages download / pac pages upload / pac pages upload-code-site' supplies the calls for downloading and uploading site content and code. | Found: Required Parameters for pages download: --path ... --webSiteId ... Required Parameters for pages upload: --path ... Required Parameters for pages upload-code-site: --rootPath | Fix: Replace controls[0].api.call and its rendered counterpart with 'pac pages download --path <download-folder> --webSiteId <site-guid> --modelVersion <model-version>; pac pages upload --path <site-folder> --modelVersion <model-version>'. The cited reference documents these arguments. Remove upload-code-site from this traditional-site row rather than presenting the SPA operation as another equivalent. | Source: https://learn.microsoft.com/power-platform/developer/cli/reference/pages
-- [unsupported, major] Why it matters / behaviour: Traditional Power Pages sites often hold years of configuration. | Found: Searched: "traditional" "Power Pages" "years" configuration. Opened plugin guidance, Power Platform CLI support and create-code-sites; none substantiates how often traditional sites contain years of configuration. | Fix: Replace 'Traditional sites often hold years of configuration, including table permissions and web roles that protect Dataverse data.' with 'Table permissions assigned to web roles control access to Dataverse data.'
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].note; Governance controls / applicability: The developer's environment security roles govern access to the Dataverse configuration modified through the CLI. | Found: Your code will only be able to perform operations based on the privileges assigned to the user account through security roles or team membership. | Fix: Cite https://learn.microsoft.com/power-apps/developer/data-platform/security-model for the statement that environment roles govern the developer's Dataverse operations. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/security-model
-- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: The checklist's table-permission audit control is represented in the controls table. | Found: Checklist: 'Run table permission audits after agent changes.' Table rows: 'Downloading and uploading site content and code' and 'Admin switch for the coding-agent plugin'. | Fix: The checklist step 'Run table permission audits after agent changes' has no corresponding controls-table row; do not imply that the current table locates this audit control.
+- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: Every control the governance checklist tells readers to check has a controls-table row. | Found: Run table permission audits after agent changes. Review who has installed the plugin and which environments they target. The table contains only downloading/uploading content and the missing tenant admin switch. | Fix: The 'After rollout' steps for table permission audits and reviewing plugin installations and target environments have no corresponding controls-table rows. Do not add rows as part of this correction.
 -->

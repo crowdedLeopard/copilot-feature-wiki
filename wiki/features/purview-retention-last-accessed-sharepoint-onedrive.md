@@ -14,7 +14,7 @@ previewDate: "January CY2027"
 risk: "medium"
 cost: "low"
 impact: "medium"
-defaultState: "admin-opt-in"
+defaultState: "unknown"
 action: "review"
 licensing:
   model: "unknown"
@@ -66,8 +66,9 @@ controls:
       docs: "https://learn.microsoft.com/purview/create-retention-policies#create-and-configure-a-retention-policy"
     api:
       kind: "powershell"
-      call: "New-RetentionCompliancePolicy; New-RetentionComplianceRule"
+      call: "New-RetentionCompliancePolicy -Name <policy-name> -SharePointLocation <site-url> -OneDriveLocation <onedrive-url>"
       docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy?view=exchange-ps"
+    note: "Creates the policy object; creating a policy also requires New-RetentionComplianceRule."
   - governs: "Archiving files by last access date (SharePoint Advanced Management)"
     scope: "tenant"
     ui: null
@@ -96,19 +97,23 @@ changes:
     note: "Corrected after the check: limited to Office file types per MC999442, licensing now not yet published, cost rated low, archive-preview caveats kept separate from Purview, SPO archive command fixed."
   - date: "2026-11-16"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 76 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-16"
+    note: "Corrected after the check: default state is now not stated, the retention policy cmdlet shows its mandatory parameters, and an unmatched permissions checklist bullet is removed."
+  - date: "2026-11-16"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 80 statements confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-16"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 76
-  confirmed: 73
-  unconfirmed: 1
-  contradicted: 2
-  attempts: 2
-  hash: "f58e14df90b4ce12a95a734ec02a7c48"
+  claims: 80
+  confirmed: 80
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "e931409768552db274af37766d00a343"
 ---
 
 ## What's changing
@@ -117,7 +122,7 @@ The roadmap item describes the ability to apply retention to each SharePoint or 
 
 Purview retention policies and labels currently start the retention clock from one of four points: when content was created, when it was last modified (SharePoint, OneDrive and Microsoft 365 Groups files only), when it was labelled, or when an event occurs. This item adds a fifth: when the item was last accessed. The roadmap item is tagged #copilotcontrolsystem, and the notice says the feature will help delete obsolete data, which will improve the quality and relevance of Microsoft 365 Copilot responses.
 
-The roadmap record shows status In development, with preview targeted for January CY2027 and General Availability for February CY2027, for Worldwide (Standard Multi-Tenant) on the web. The item was created in December 2024; the timeline was revised in Microsoft's October 13, 2026 update to MC999442. The notice gives these windows: preview begins mid-January 2027 (previously late November 2026) and completes by late February 2027 (previously end of December 2026); General Availability (Worldwide) begins late February 2027 (previously early January) and completes by late March 2027 (previously early February). The notice has no act-by date. It says the feature will be available by default, that no admin action is required before rollout, and that after rollout admins can use the retention control 'When items were last accessed' when configuring labels and policies. Microsoft says it will update the notice with documentation before rollout.
+The roadmap record shows status In development, with preview targeted for January CY2027 and General Availability for February CY2027, for Worldwide (Standard Multi-Tenant) on the web. The item was created in December 2024; the timeline was revised in Microsoft's October 13, 2026 update to MC999442. The notice gives these windows: preview begins mid-January 2027 (previously late November 2026) and completes by late February 2027 (previously end of December 2026); General Availability (Worldwide) begins late February 2027 (previously early January) and completes by late March 2027 (previously early February). The notice has no act-by date. It says the feature will be available by default, that no admin action is required before rollout, and that after rollout admins can use the retention control 'When items were last accessed' when configuring labels and policies. Microsoft has not stated whether existing retention configurations change automatically. Microsoft says it will update the notice with documentation before rollout.
 
 Microsoft Learn does not yet describe the Purview option at the time of writing (November 2026), so the behaviour above is the notice's description. The related SharePoint Advanced Management inactive files policy, a separate archive preview that archives rather than deletes, documents how its last access date works: it is the recorded date a human last accessed a file, and AI agent, application, script and system access don't update it; updates can take up to 30 days; and human access before July 2025 might not have been captured. Microsoft has not said whether the Purview option shares any of these behaviours.
 
@@ -157,7 +162,7 @@ Microsoft 365 Archive is a separate storage option. Its [pricing page](https://l
 - Office file types in SharePoint and OneDrive, per MC999442; non-Office file types are not supported in this release. The notice names OneDrive and SharePoint only, and Teams, Exchange and Microsoft 365 Groups mailboxes are not stated.
 - Worldwide (Standard Multi-Tenant) on the web, as the roadmap record lists. Government clouds are not listed on the roadmap item.
 - Roles: Microsoft recommends the Compliance Administrator role group for managing retention policies and labels. A retention policy that includes SharePoint sites can't be configured by an administrator assigned administrative units; it needs an unrestricted administrator.
-- Rollout: Microsoft's notice says the feature will be available by default and rolls out automatically, with the windows given above.
+- Rollout: Microsoft's notice says the feature will be available by default and rolls out automatically, with the windows given above. Microsoft has not stated whether existing retention configurations change automatically.
 
 ## Governance guidance
 
@@ -165,7 +170,6 @@ Microsoft 365 Archive is a separate storage option. Its [pricing page](https://l
 - Identify which SharePoint sites and OneDrive accounts hold Office files that would be candidates for last-accessed deletion, and which hold records or regulated content that must keep creation- or event-based schedules.
 - Read the Learn documentation Microsoft says it will add to MC999442 before rollout, and note its definition of access, update latency, access-history limits and treatment of automations.
 - Check your current retention licences against the general guidance in the Purview service description, and watch for feature-specific licensing once Microsoft publishes it.
-- Check who holds the Compliance Administrator role group and whether any retention administrator is limited by administrative units.
 
 ### At rollout
 - Verify whether Purview provides an evaluation mode for last-accessed deletion before enabling deletion. The documented simulation workflow belongs to SharePoint Advanced Management archiving, not to this option.
@@ -184,7 +188,7 @@ Microsoft 365 Archive is a separate storage option. Its [pricing page](https://l
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Retention policies for SharePoint and OneDrive</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Data Lifecycle Management › Policies › Retention policies › New retention policy <a href="https://learn.microsoft.com/purview/create-retention-policies#create-and-configure-a-retention-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-RetentionCompliancePolicy; New-RetentionComplianceRule</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy?view=exchange-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Retention policies for SharePoint and OneDrive</strong><br><small>Tenant</small><br><small class="controls__note">Creates the policy object; creating a policy also requires New-RetentionComplianceRule.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Data Lifecycle Management › Policies › Retention policies › New retention policy <a href="https://learn.microsoft.com/purview/create-retention-policies#create-and-configure-a-retention-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-RetentionCompliancePolicy -Name &lt;policy-name&gt; -SharePointLocation &lt;site-url&gt; -OneDriveLocation &lt;onedrive-url&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy?view=exchange-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Archiving files by last access date (SharePoint Advanced Management)</strong><br><small>Tenant</small><br><small class="controls__note">Preview. Archives rather than deletes; needs SharePoint Advanced Management.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-SPOFileArchivePolicy -Name &lt;n&gt; -PolicyType &lt;t&gt; -LastAccessDateCriteria &lt;months&gt; -IsWhatIfMode $true</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/new-spofilearchivepolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Last-accessed start option in the retention policy wizard</strong><br><small>Tenant</small><br><small class="controls__note">Announced in MC999442; not in Learn's retention guidance at the time of writing.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
@@ -206,13 +210,4 @@ The archive policy is a different product and archives rather than deletes. Duri
 risk: Medium. A deletion policy keyed to last access could remove files people still use if Purview's access signal lags or misses some access; Microsoft has not yet published how that signal behaves.
 cost: Low. The only cost the sources show is administrator and records-management time; feature-specific licensing for last-accessed retention is not yet published.
 impact: Medium. Site owners and users whose Office files are deleted would notice; compliance teams gain a new retention rule.
--->
-
-<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].api; Governance controls: first row API / command: New-RetentionCompliancePolicy; New-RetentionComplianceRule is the runnable automation equivalent for creating the general retention policy. | Found: New-RetentionCompliancePolicy [-Name] <String> The Name parameter specifies the unique name of the retention policy. | Mandatory: | True | | Fix: Replace the API call in front matter and the table with 'New-RetentionCompliancePolicy -Name <policy-name> -SharePointLocation <site-url> -OneDriveLocation <onedrive-url>', keeping its existing docs URL. Add the qualifier 'Creates the policy object; creating a policy also requires New-RetentionComplianceRule.' The existing two bare cmdlets omit mandatory arguments; the separately checked rule reference also requires -Policy and, for its default parameter set, -Name. Do not present this general policy-creation call as configuring the undocumented last-accessed trigger. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy?view=exchange-ps
-- [unsupported, blocker] front matter: defaultState / default: The new Purview last-accessed control has an admin-opt-in default. | Found: Searched: "Purview" "last accessed" "default"; read roadmap record, MC999442, /purview/retention and /purview/create-retention-policies. MC999442 states automatic availability, but no source explicitly states the new control's default enforcement. | Fix: Set defaultState to 'unknown'. Preserve the attributed statement that MC999442 says the feature will be available by default and roll out automatically, and add: 'Microsoft has not stated whether existing retention configurations change automatically.' For a feature that is itself a control, the standard requires explicit evidence that it enforces by default or restricts nothing until configured; automatic availability alone does not establish either.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The governance checklist's retention-administrator permission review has a corresponding controls-table row. | Found: Checklist: 'Check who holds the Compliance Administrator role group and whether any retention administrator is limited by administrative units.' Table rows cover retention policies, archive policies and the last-accessed start option, but not administrator permissions. | Fix: Remove the checklist bullet 'Check who holds the Compliance Administrator role group and whether any retention administrator is limited by administrative units.' The verified role and administrative-unit facts can remain in Scope; do not add a control row as part of this correction.
 -->

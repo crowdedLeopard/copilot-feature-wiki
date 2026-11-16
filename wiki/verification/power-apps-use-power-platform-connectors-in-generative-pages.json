@@ -4,37 +4,57 @@
   "title": "Power Apps: Power Platform connectors in generative pages",
   "status": "held",
   "date": "2026-11-16",
-  "version": 2,
+  "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 2,
   "verifierVerdict": "hold",
-  "notes": [
-    "2026-11-16: taken offline; the grace for pages published before the check existed is off"
-  ],
+  "notes": [],
   "hold": {
     "reason": "failed",
     "since": "2026-11-16",
     "reasons": [
-      "9 blocking findings (claims 28, 29, 30, 35, 36, 38, 39, 40, 43)"
+      "4 blocking findings (claims 31, 35, 40, 41)"
     ]
   },
   "counts": {
     "claims": 45,
-    "confirmed": 33,
-    "unconfirmed": 6,
-    "contradicted": 6,
-    "blocker": 9,
-    "major": 2,
-    "minor": 10
+    "confirmed": 41,
+    "unconfirmed": 0,
+    "contradicted": 4,
+    "blocker": 4,
+    "major": 0,
+    "minor": 1
   },
-  "summary": "Hold: the briefing promises data-policy enforcement for generative pages without supporting documentation and incorrectly applies Managed Environments sharing limits to model-driven apps. The admin opt-in default, licensing classification and connection-reference controls also need correction before administrators can rely on the page.",
+  "summary": "Hold: the briefing postpones checking data policies even though Microsoft's platform guidance covers connector connections used by apps. The policy-creation command is not runnable as printed, and the connection-reference UI link does not document the complete path shown.",
   "claims": [
     {
       "n": 1,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "Makers can incorporate Power Platform connector data through the page designer or the generative pages AI plugin.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Connector data can be incorporated while working in the Maker Studio generative page designer or through the generative pages AI plugin.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; Scope",
+      "type": "record",
+      "claim": "This feature applies to model-driven apps.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Applies to\nModel-driven apps",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
       "where": "front matter: status",
       "type": "record",
-      "claim": "The roadmap status is in development.",
+      "claim": "The roadmap status is In development.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
@@ -42,35 +62,13 @@
       "fix": null
     },
     {
-      "n": 2,
-      "where": "front matter: targetDate; What's changing; Scope",
-      "type": "record",
-      "claim": "General availability is listed for December CY2026.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"targetDate\": \"December CY2026\"",
-      "severity": "minor",
-      "fix": "Describe December CY2026 as the roadmap's general-availability target in What's changing and Scope, rather than an unqualified availability date."
-    },
-    {
-      "n": 3,
-      "where": "front matter: previewDate; What's changing; Scope",
-      "type": "record",
-      "claim": "The roadmap lists preview in September CY2026.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": \"September CY2026\"",
-      "severity": "minor",
-      "fix": "In Scope, attribute September CY2026 to the roadmap preview target. Retain the separate statement that Learn currently documents connector support as preview."
-    },
-    {
       "n": 4,
-      "where": "front matter: clouds; What's changing; Scope",
+      "where": "front matter: releasePhase",
       "type": "record",
-      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC and GCC High.",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\"]",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
       "severity": null,
       "fix": null
     },
@@ -87,29 +85,40 @@
     },
     {
       "n": 6,
-      "where": "front matter: releasePhase",
+      "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap release phases are General Availability and Preview.",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC and GCC High.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\"]",
       "severity": null,
       "fix": null
     },
     {
       "n": 7,
-      "where": "title; summary; front matter: products; Scope",
+      "where": "front matter: targetDate; What's changing; Scope",
       "type": "record",
-      "claim": "This Power Apps capability applies to model-driven apps.",
+      "claim": "The general availability target is December CY2026.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"products\": [\"Power Apps\"]; Applies to\nModel-driven apps",
+      "quote": "\"targetDate\": \"December CY2026\"",
       "severity": null,
       "fix": null
     },
     {
       "n": 8,
-      "where": "What's changing: roadmap paragraph",
+      "where": "front matter: previewDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The preview target is September CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"September CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing",
       "type": "record",
       "claim": "The roadmap specifies version Gen page v302.",
       "status": "supported",
@@ -119,8 +128,8 @@
       "fix": null
     },
     {
-      "n": 9,
-      "where": "What's changing: roadmap paragraph",
+      "n": 10,
+      "where": "What's changing",
       "type": "record",
       "claim": "The roadmap feature scope is admins or makers.",
       "status": "supported",
@@ -130,85 +139,52 @@
       "fix": null
     },
     {
-      "n": 10,
-      "where": "title; summary; What's changing; rationale: impact",
-      "type": "behaviour",
-      "claim": "Makers can bring Power Platform connector data into generative pages.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/generative-page-external-tools",
-      "quote": "Connector support lets a generative page use data outside of Dataverse through the Power Platform connector ecosystem.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 11,
-      "where": "What's changing: first paragraph",
-      "type": "behaviour",
-      "claim": "Using connector data requires creating and authenticating a connection.",
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The described workflow starts by creating and authenticating a connection and adding a connection reference to the environment.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/generative-pages",
-      "quote": "If your page uses a Power Platform connector (preview), create and authenticate a connection.",
+      "source": "roadmap record",
+      "quote": "After creating and authenticating a connection and adding a connection reference to the environment, you select the connector data and describe how the generated page should use it.",
       "severity": null,
       "fix": null
     },
     {
       "n": 12,
-      "where": "What's changing: first paragraph",
-      "type": "behaviour",
-      "claim": "The page uses a connection reference in the environment.",
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The maker selects connector data and describes how the page should use it.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/generative-pages",
-      "quote": "Then open Solutions > Default Solution and create a connection reference that uses the connection.",
+      "source": "roadmap record",
+      "quote": "you select the connector data and describe how the generated page should use it.",
       "severity": null,
       "fix": null
     },
     {
       "n": 13,
-      "where": "What's changing: first paragraph",
-      "type": "behaviour",
-      "claim": "The maker selects connector data and describes how the page should use it.",
+      "where": "What's changing",
+      "type": "admin-path",
+      "claim": "The designer exposes connector data through Add data > Connectors.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/generative-pages",
-      "quote": "select the prepared connection reference, and choose the connector data that the page should use. In your prompt, describe how you want the page to use the selected data.",
+      "quote": "To use data from a Power Platform connector (preview), select **Add data** > **Connectors**, select the prepared connection reference, and choose the connector data that the page should use.",
       "severity": null,
       "fix": null
     },
     {
       "n": 14,
-      "where": "summary; What's changing: second paragraph",
-      "type": "record",
-      "claim": "Connector data can be incorporated through either the generative page designer or the generative pages AI plugin.",
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "AI code generation tools such as GitHub Copilot CLI can create connector-backed generative pages.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "Connector data can be incorporated while working in the Maker Studio generative page designer or through the generative pages AI plugin.",
+      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/generative-page-external-tools",
+      "quote": "This article describes how to use AI code generation tools, such as GitHub Copilot CLI, to create and edit generative pages for model-driven apps in Power Apps. ... Pages can use Microsoft Dataverse tables, Power Platform connectors (preview), and Dataverse custom APIs (preview).",
       "severity": null,
       "fix": null
     },
     {
       "n": 15,
-      "where": "What's changing: second paragraph",
-      "type": "behaviour",
-      "claim": "GitHub Copilot CLI is one of the tools supported for the plugin-based authoring experience.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/generative-page-external-tools",
-      "quote": "This article describes how to use AI code generation tools, such as GitHub Copilot CLI, to create and edit generative pages for model-driven apps in Power Apps.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "What's changing: Add data > Connectors",
-      "type": "admin-path",
-      "claim": "The in-browser designer exposes connector data under Add data > Connectors.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/generative-pages",
-      "quote": "To use data from a Power Platform connector (preview), select Add data > Connectors, select the prepared connection reference, and choose the connector data that the page should use.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "What's changing: second paragraph",
+      "where": "What's changing; Cost and licensing; Scope",
       "type": "availability",
       "claim": "Learn currently labels connector support in generative pages as preview.",
       "status": "supported",
@@ -218,43 +194,43 @@
       "fix": null
     },
     {
-      "n": 18,
-      "where": "Why it matters: Generated pages stop being limited to Dataverse tables",
+      "n": 16,
+      "where": "Why it matters; rationale: impact",
       "type": "behaviour",
-      "claim": "Before this change, generative pages were limited to Dataverse tables.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: \"generative pages\" \"previously\" \"Dataverse\". Opened generative-pages and generative-page-external-tools; their current data-source descriptions do not establish this historical restriction.",
-      "severity": "major",
-      "fix": "Replace the historical claim with 'Connector support lets generative pages use data outside Dataverse.'"
-    },
-    {
-      "n": 19,
-      "where": "Why it matters: first paragraph; rationale: risk and impact",
-      "type": "behaviour",
-      "claim": "A generative page can read or change external data through connectors, including SharePoint, SQL and SaaS services.",
+      "claim": "Connector support lets generative pages use data outside Dataverse.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/developer/model-driven-apps/generative-page/data-api/connector-methods",
-      "quote": "| `createConnectorRow` | Creates a new row in the specified connector table. |\n| `updateConnectorRow` | Updates an existing row in the specified connector table. |",
-      "severity": "minor",
-      "fix": "Add https://learn.microsoft.com/power-apps/developer/model-driven-apps/generative-page/data-api/connector-methods to sources for read/write operations. The already-cited external-tools page states that all Power Platform connectors are supported in preview."
-    },
-    {
-      "n": 20,
-      "where": "Why it matters: Because code is AI-generated",
-      "type": "behaviour",
-      "claim": "Generative pages contain AI-generated code.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/generative-pages",
-      "quote": "the system then processes your requirements and specifications and intelligently generates React code",
+      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/generative-page-external-tools",
+      "quote": "Connector support lets a generative page use data outside of Dataverse through the Power Platform connector ecosystem. All Power Platform connectors are supported.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 21,
+      "n": 17,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Connector-backed pages can show or change data in external services such as SharePoint, SQL and SaaS systems.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/generative-page-external-tools",
+      "quote": "All Power Platform connectors are supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Why it matters; Risk assessment",
+      "type": "behaviour",
+      "claim": "Generative page code is AI-generated.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/generative-pages",
+      "quote": "After you describe the page, the system then processes your requirements and specifications and intelligently generates React code",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
       "where": "Risk assessment: Data exposure; rationale: impact",
       "type": "behaviour",
-      "claim": "Connector-backed pages can show connector data to app users.",
+      "claim": "Pages can display connector data to app users.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/generative-page-external-tools",
       "quote": "For example, ask the agent to create a page that displays documents from a SharePoint list.",
@@ -262,10 +238,10 @@
       "fix": null
     },
     {
-      "n": 22,
-      "where": "Risk assessment: Data exposure; Governance guidance: At rollout and After rollout",
+      "n": 20,
+      "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Microsoft advises reviewing the connector plan before build approval and testing with users' identities and permissions.",
+      "claim": "Learn advises testing connector-backed pages with the identities and permissions users will use.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/generative-page-external-tools",
       "quote": "Review the connector data source in the plan before you approve the build. Test the generated page with the identities and permissions that your users will use.",
@@ -273,268 +249,290 @@
       "fix": null
     },
     {
-      "n": 23,
+      "n": 21,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "Connections carry authentication credentials.",
+      "claim": "A connection is a stored authentication credential for a connector.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/data-platform/create-connection-reference",
       "quote": "A connection is a stored authentication credential for a connector, for example OAuth credentials for the SharePoint connector.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The connector methods reference exposes create, update and delete row operations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/model-driven-apps/generative-page/data-api/connector-methods",
+      "quote": "Creates a new row in the specified connector table. ... Deletes a row from the specified connector table. ... Updates an existing row in the specified connector table.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Connector calls reject their promises for unresolved connection references or unauthorised connections.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/model-driven-apps/generative-page/data-api/connector-methods",
+      "quote": "when the connection reference can't be resolved, the connection isn't authorized and the user doesn't complete the consent prompt, or the connector returns an error status.",
       "severity": "minor",
-      "fix": "Add https://learn.microsoft.com/power-apps/maker/data-platform/create-connection-reference to sources."
+      "fix": "Replace the final sentence with: 'The connector methods reference says calls reject the returned promise when, for example, the connection reference cannot be resolved, or the connection is not authorised and the user does not complete the consent prompt.'"
     },
     {
       "n": 24,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "Generated page code can write data through connector operations.",
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "A licensing model specific to connectors in generative pages is not yet published.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/developer/model-driven-apps/generative-page/data-api/connector-methods",
-      "quote": "| `createConnectorRow` | Creates a new row in the specified connector table. |\n| `deleteConnectorRow` | Deletes a row from the specified connector table. |",
-      "severity": "minor",
-      "fix": "Cite the connector-methods reference for the supported write operations; retain the advice to review the plan."
+      "source": null,
+      "quote": "Searched: \"generative pages\" connectors licensing credits billing price. Opened generative-pages, generative-page-external-tools and powerapps-licensing-faq; no connector-specific generative-pages licensing model found.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 25,
-      "where": "Risk assessment: Change & support",
-      "type": "behaviour",
-      "claim": "Broken or expired connections will produce user-facing errors.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: \"generative pages\" \"connector\" \"expired\". Opened external-tools and connector-methods. The API documents rejected promises and error results, not guaranteed user-facing errors for expired connections.",
-      "severity": "major",
-      "fix": "Replace with 'Connection failures can interrupt page operations; review generated error handling and test failed or unauthorised connections.' Cite https://learn.microsoft.com/power-apps/developer/model-driven-apps/generative-page/data-api/connector-methods."
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Every user running a model-driven app needs a licence providing Power Apps premium use rights.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq",
+      "quote": "Every user who runs a model-driven app needs a license that provides Power Apps premium use rights.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 26,
-      "where": "Cost and licensing: first sentence; rationale: cost",
-      "type": "absence",
-      "claim": "Separate licensing terms specific to connector support in generative pages have not been published.",
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Premium connectors are among the features requiring premium entitlements.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"generative pages\" \"licensing\"; \"generative pages\" \"connector\" \"licensing\" \"credits\". Opened generative-pages, external-tools and Power Apps licensing FAQs: general licensing and maker-credit guidance, but no separate connector-feature terms.",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq",
+      "quote": "Some examples of features that require premium entitlements include: premium connectors",
       "severity": null,
       "fix": null
     },
     {
       "n": 27,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
-      "claim": "Existing Power Apps licensing requires appropriate premium entitlements for premium connectors.",
+      "claim": "The Power Platform Licensing Guide lists qualifying licences providing premium Power Apps use rights.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq",
-      "quote": "Some examples of features that require premium entitlements include: premium connectors, Dataverse entities, on-premises data gateways, custom APIs, etc.",
-      "severity": "minor",
-      "fix": "Cite https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq. Clarify that model-driven apps already require premium use rights, so adding a premium connector does not by itself establish an incremental licence purchase."
-    },
-    {
-      "n": 28,
-      "where": "front matter: licensing.model",
-      "type": "licensing",
-      "claim": "The feature's licensing model is per-user.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq",
-      "quote": "While Power Apps Premium, Power Apps per app plans, and the Power Apps per app pay-as-you-go meter that give premium Power Apps usage rights satisfy the requirement generally, use rights differ by license and by the context the app runs in.",
-      "severity": "blocker",
-      "fix": "Set licensing.model to 'unknown' if it describes this feature's unpublished separate terms. Explain the general Power Apps entitlement options in notes, rather than assigning a single per-user model; cite https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq."
-    },
-    {
-      "n": 29,
-      "where": "front matter: cost; rationale: cost",
-      "type": "cost",
-      "claim": "This change has a known medium direct cost because premium connectors may require additional user licensing.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: generative pages connectors licensing premium connectors Power Apps license meter. Opened generative-pages and Power Apps licensing FAQs: model-driven apps already require premium rights; no incremental connector-feature licence or charge is stated.",
-      "severity": "blocker",
-      "fix": "Set cost to 'low' for the evidenced review and pilot work, and state that any separate feature-specific licensing is not yet published. Do not infer new licence purchases from premium connectors in an already-premium model-driven app."
-    },
-    {
-      "n": 30,
-      "where": "front matter: defaultState",
-      "type": "default",
-      "claim": "Nobody can use connector support in generative pages until an administrator opts in.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: \"generative pages\" \"enable\" \"admin\"; \"generative pages\" \"connector\" \"PowerShell\" \"disable\". Opened generative-pages and external-tools prerequisites: maker-selected connector use is described, but no required administrator enablement.",
-      "severity": "blocker",
-      "fix": "Set defaultState to 'user-opt-in': the documented maker workflow selects connector data, and the targeted searches found no feature-specific admin switch. Do not classify creation of a connection reference as administrator opt-in."
-    },
-    {
-      "n": 31,
-      "where": "controls[0].ui; Governance controls: first row",
-      "type": "admin-path",
-      "claim": "The Power Platform admin center path Security > Data and privacy > Data policy > New Policy opens data-policy creation.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/connector-action-control",
-      "quote": "On the navigation pane, select Security, and then on the Security pane, select Data and privacy.",
+      "quote": "For the complete and current list of qualifying licenses that provide premium Power Apps use rights, refer to the Microsoft Power Platform Licensing Guide.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 32,
-      "where": "controls[0].api; Governance controls: first row",
-      "type": "command",
-      "claim": "New-DlpPolicy belongs to Microsoft.PowerApps.Administration.PowerShell and creates a data policy.",
+      "n": 28,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "An additional licence purchase cannot be established solely from adding a premium connector; use rights must be checked for the licence and context.",
       "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq",
+      "quote": "While Power Apps Premium, Power Apps per app plans, and the Power Apps per app pay-as-you-go meter that give premium Power Apps usage rights satisfy the requirement generally, use rights differ by license and by the context the app runs in.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "front matter: defaultState",
+      "type": "default",
+      "claim": "Connector use is maker-selected, with no documented separate administrator enablement switch for this capability.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"generative pages\" connectors enable disable admin PowerShell Power Platform API pac setting. Opened generative-pages and generative-page-external-tools; read pac admin and Power Apps PowerShell search excerpts. Maker selects connectors; no feature-specific switch found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Power Platform admin center > Security > Data and privacy > Data policy > New Policy reaches data-policy creation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/connector-action-control",
+      "quote": "select **Security**, and then on the **Security** pane, select **Data and privacy**. ... select **Data policy**. ... select **New Policy** to create a new policy to configure.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "New-DlpPolicy (Microsoft.PowerApps.Administration.PowerShell) is a runnable policy-creation call.",
+      "status": "contradicted",
       "source": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest",
-      "quote": "Module: Microsoft.PowerApps.Administration.PowerShell Module\nCreates a new DLP policy in the tenant by using the `NewPolicy DLPPolicyDefinition` object.",
+      "quote": "New-DlpPolicy\n    -NewPolicy <Object>\n    [-ApiVersion <String>]\n    [<CommonParameters>]",
+      "severity": "blocker",
+      "fix": "Replace controls[0].api.call and the rendered command with 'New-DlpPolicy -NewPolicy $NewPolicy'. The module name is metadata, not a parenthesised argument; $NewPolicy is the policy-definition object placeholder documented by the reference."
+    },
+    {
+      "n": 32,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "A data policy's Prebuilt Connectors page exposes Configure connector > Connector endpoints for the selected connector.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering",
+      "quote": "If the value of the **Endpoint configurable** column is **Yes**, you can use this capability by right-clicking and then selecting **Configure connector** > **Connector endpoints**.",
       "severity": null,
       "fix": null
     },
     {
       "n": 33,
-      "where": "controls[1].ui; Governance controls: second row",
-      "type": "admin-path",
-      "claim": "Endpoint filtering is configured through Data policy > Prebuilt Connectors > Configure connector > Connector endpoints.",
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "New-PowerAppDlpPolicyConnectorConfigurations with TenantId, PolicyName and NewDlpPolicyConnectorConfigurations creates endpoint-filtering configurations.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering",
-      "quote": "If the value of the Endpoint configurable column is Yes, you can use this capability by right-clicking and then selecting Configure connector > Connector endpoints.",
-      "severity": "minor",
-      "fix": "Expand the path to select or edit a data policy, then Prebuilt Connectors > connector > Configure connector > Connector endpoints. Say this is preview and only applies where Endpoint configurable is Yes. Remove custom connectors from the row's scope."
+      "source": "https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering#powershell-support-for-endpoint-filtering",
+      "quote": "New-PowerAppDlpPolicyConnectorConfigurations -TenantId $TenantId -PolicyName $PolicyName -NewDlpPolicyConnectorConfigurations $ConnectorConfigurations",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 34,
-      "where": "controls[1].api; Governance controls: second row",
-      "type": "command",
-      "claim": "New-PowerAppDlpPolicyConnectorConfigurations creates connector configurations containing endpoint filtering rules.",
+      "where": "controls[1].note; Governance controls",
+      "type": "applicability",
+      "claim": "Endpoint filtering is a preview capability restricted to supported prebuilt connectors marked Endpoint configurable = Yes.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering#powershell-support-for-endpoint-filtering",
-      "quote": "Create connector configurations for a data policy\n\nNew-PowerAppDlpPolicyConnectorConfigurations",
-      "severity": "minor",
-      "fix": "Flag endpoint filtering as preview and restrict the row to supported prebuilt connectors. The command exists, but neither this command nor this reference establishes custom-connector endpoint filtering."
+      "source": "https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering",
+      "quote": "The **Endpoint configurable** column on the **Prebuilt Connectors** page in **Data Policies** indicates whether the endpoint filtering capability is supported for the connector.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 35,
-      "where": "controls[2].ui; Governance controls: third row",
+      "where": "controls[2].ui; Governance controls table",
       "type": "admin-path",
-      "claim": "Solutions > Default Solution > connection reference is the documented path for setting up the connection reference.",
+      "claim": "The cited connection-reference page documents Solutions > Default Solution > New > More > Connection Reference.",
       "status": "contradicted",
       "source": "https://learn.microsoft.com/power-apps/maker/data-platform/create-connection-reference",
-      "quote": "On the command bar, select New > More > Connection Reference.",
+      "quote": "3. Create a new or open an existing solution.\n4. On the command bar, select **New** > **More** > **Connection Reference**.",
       "severity": "blocker",
-      "fix": "Replace the path with 'Solutions > Default Solution > New > More > Connection Reference'. Retain the feature prerequisite link and add https://learn.microsoft.com/power-apps/maker/data-platform/create-connection-reference for the creation steps."
+      "fix": "Change controls[2].ui.path and the rendered path to 'Solutions > solution > New > More > Connection Reference'. Keep the separate note attributing Default Solution to the generative-pages prerequisites: that requirement is supported there, but not on this row's linked page."
     },
     {
       "n": 36,
-      "where": "controls[2].api; Governance controls: third row",
-      "type": "absence",
-      "claim": "No API or automation surface is documented for managing the connection reference.",
-      "status": "contradicted",
+      "where": "controls[2].api; Governance controls table",
+      "type": "command",
+      "claim": "GET [organization URI]/api/data/v9.2/connectionreferences is a supported Dataverse entity-set request.",
+      "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/connectionreference?view=dataverse-latest",
-      "quote": "Entity set path:\n[organization URI]/api/data/v9.2/connectionreferences\nOperations supported:\nPOSTGETPATCHDELETE",
-      "severity": "blocker",
-      "fix": "Replace api:null with a Dataverse REST control, for example 'GET [organization URI]/api/data/v9.2/connectionreferences', citing this entity reference; explain that POST and PATCH create and update references. Do not label connection-reference automation undocumented."
+      "quote": "Entity set path:\n    - [organization URI]/api/data/v9.2/connectionreferences\n\nOperations supported:\n    - POSTGETPATCHDELETE",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 37,
-      "where": "controls[3].ui and controls[3].api; Governance controls: fourth row",
-      "type": "absence",
-      "claim": "Microsoft documents no environment switch specific to connector support in generative pages, in either UI or automation.",
+      "where": "controls[2].note; Governance controls table",
+      "type": "command",
+      "claim": "The connectionreference entity supports POST, GET, PATCH and DELETE.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"generative pages\" \"enable\" \"admin\"; \"generative pages\" \"connector\" \"PowerShell\" \"disable\". Opened generative-pages and external-tools; reviewed pac model search excerpts. No feature-specific enable/disable control was documented.",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/connectionreference?view=dataverse-latest",
+      "quote": "Operations supported:\n    - POSTGETPATCHDELETE",
       "severity": null,
       "fix": null
     },
     {
       "n": 38,
-      "where": "Governance controls: paragraph after table; controls[0] and controls[1]; rationale: risk",
-      "type": "applicability",
-      "claim": "Data policies govern generative pages exactly as they govern canvas apps and flows.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: \"generative pages\" \"data policies\"; \"generative pages\" \"DLP\". Opened generative-pages, external-tools, connector-action-control and connector-endpoint-filtering. None states equivalent data-policy enforcement for generative pages.",
-      "severity": "blocker",
-      "fix": "Remove the assertion of equivalent enforcement. Label the data-policy and endpoint-filtering rows as general platform controls whose applicability to generative pages Microsoft has not confirmed in the sources checked, and repeat this uncertainty in Open questions."
-    },
-    {
-      "n": 39,
-      "where": "Governance controls: a blocked connector cannot be referenced",
-      "type": "applicability",
-      "claim": "A data-policy-blocked connector cannot be referenced by a generative page.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: \"generative pages\" \"data policies\"; \"generative pages\" \"DLP\". Read generative-pages, external-tools and the cited connector control references; no passage establishes blocking of generative-page connection references.",
-      "severity": "blocker",
-      "fix": "Remove 'a blocked connector cannot be referenced'. Replace it with an open question about how data-policy blocking is enforced for designer-created and plugin-created generative pages."
-    },
-    {
-      "n": 40,
-      "where": "controls[1].governs; Governance controls: endpoint row scope",
-      "type": "applicability",
-      "claim": "The cited endpoint-filtering control filters endpoints for HTTP and custom connectors.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering",
-      "quote": "it's exclusively available for the following connectors:\n- HTTP\n- HTTP with Microsoft Entra ID (AD)\n- HTTP Webhook\n- SQL Server",
-      "severity": "blocker",
-      "fix": "Remove 'custom connectors' from the endpoint-filtering row; the exclusive supported list does not include them. Describe this preview control as endpoint filtering for supported prebuilt connectors."
-    },
-    {
-      "n": 41,
-      "where": "Governance controls: Connection references are maker-managed",
-      "type": "behaviour",
-      "claim": "Makers can manage the connection references used by generative pages.",
+      "where": "controls[2].note",
+      "type": "admin-path",
+      "claim": "The generative-pages prerequisites specify creating a connection reference in Solutions > Default Solution.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/generative-pages",
-      "quote": "Then open Solutions > Default Solution and create a connection reference that uses the connection.",
+      "quote": "Then open **Solutions** > **Default Solution** and create a connection reference that uses the connection.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 42,
-      "where": "Governance controls: connection references travel with the solution",
-      "type": "behaviour",
-      "claim": "Connection references are solution components that can move with a solution.",
+      "n": 39,
+      "where": "controls[3].ui; controls[3].api; Governance controls table",
+      "type": "absence",
+      "claim": "A switch specific to connectors in generative pages is not documented on the admin UI or automation surface.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/create-connection-reference",
-      "quote": "A connection reference is a solution component that contains a reference to a connection about a specific connector.",
-      "severity": "minor",
-      "fix": "Cite https://learn.microsoft.com/power-apps/maker/data-platform/create-connection-reference and clarify that the target environment supplies the connection during solution import; credentials are not implied to travel with the solution."
+      "source": null,
+      "quote": "Searched: \"generative pages\" connectors enable disable admin PowerShell Power Platform API pac setting. Opened generative-pages and generative-page-external-tools; read pac admin and Power Apps PowerShell search excerpts. No feature-specific switch found.",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 43,
-      "where": "Governance controls: Managed Environments sharing limits",
-      "type": "applicability",
-      "claim": "Managed Environments sharing limits apply to the model-driven app carrying a generative page.",
+      "n": 40,
+      "where": "controls[0].note; Governance guidance: Before rollout; Governance controls; rationale: risk",
+      "type": "absence",
+      "claim": "Microsoft has not confirmed that data policies apply to generative-page connector use, so checking them should wait for confirmation.",
       "status": "contradicted",
-      "source": "https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits",
-      "quote": "In managed environments, admins can limit how broadly users can share canvas apps, flows, and agents.",
+      "source": "https://learn.microsoft.com/power-platform/admin/wp-data-loss-prevention",
+      "quote": "Scan connections. If the policy blocks the whole connector, set the connection to a *disabled* state so that it can't operate.\n7. Any resources that are running and attempting to use an inactive connection, action, trigger, or MCP server that is blocked, fail at runtime.",
       "severity": "blocker",
-      "fix": "Remove the assertion that Managed Environments sharing limits govern the host model-driven app. The documented sharing-limit controls cover canvas apps, solution-aware cloud flows and agents, not model-driven apps."
+      "fix": "Replace the unconfirmed-data-policy statements with: 'Platform data policies can disable connections whose connectors are blocked; resources using inactive connections fail at runtime. The feature-specific enforcement sequence is not described.' Cite https://learn.microsoft.com/power-platform/admin/wp-data-loss-prevention. Change the Before rollout bullet to 'Check data policies for the connectors makers are likely to use.' Remove the open question asking whether data policies apply; retain the narrower question about the designer and AI plugin enforcement sequence."
     },
     {
-      "n": 44,
-      "where": "Governance guidance: Before rollout; Governance controls",
-      "type": "consistency",
-      "claim": "The checklist instructs readers to define who may create connection references, but the controls table does not identify a creation-permission control.",
+      "n": 41,
+      "where": "controls[1].note; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not confirmed whether endpoint-filtering controls apply to generative pages.",
       "status": "contradicted",
-      "source": "page",
-      "quote": "Define who may create connection references in each environment.\nConnection reference the page uses",
-      "severity": "minor",
-      "fix": "Add a separate row for permission to create connection references, with verified control surfaces, or replace the checklist instruction with an ownership review that the existing connection-reference row actually covers."
+      "source": "https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering",
+      "quote": "Connector endpoint filtering lets admins control which specific endpoints makers can connect to when building apps, flows, or chatbots. It's configured within a data policy",
+      "severity": "blocker",
+      "fix": "Replace the unconfirmed endpoint-filtering statements with: 'Endpoint filtering is a preview platform control for supported connectors and static endpoints selected at design time; rules do not apply to environment variables, custom inputs or dynamically bound runtime endpoints.' Keep the existing cited endpoint-filtering URL. Narrow the open question to 'How are connector endpoints evaluated in the generative page designer and AI plugin?'"
     },
     {
-      "n": 45,
-      "where": "Governance controls: Connector action control",
+      "n": 42,
+      "where": "Governance controls",
       "type": "behaviour",
-      "claim": "Connector action control on a data policy can narrow the individual actions exposed by a permitted connector.",
+      "claim": "Connector action control can narrow the actions exposed by a permitted connector.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/connector-action-control",
       "quote": "You can use connector action control to allow or block individual actions or triggers within a given connector.",
       "severity": null,
       "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "A connection reference is a solution component pointing to a connection for a particular connector.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/create-connection-reference",
+      "quote": "A connection reference is a solution component that contains a reference to a connection about a specific connector.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "During solution import into a target environment, a connection is provided for each connection reference.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/create-connection-reference",
+      "quote": "During solution import into a target environment, a connection is provided for all the connection references",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "rationale: risk",
+      "type": "behaviour",
+      "claim": "Connection identity and permissions affect which external data the page can access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/model-driven-apps/generative-page/data-api/connector-methods",
+      "quote": "Lists the datasets available for the connector, such as the SharePoint sites a connection can access.",
+      "severity": null,
+      "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-16T19:29:26.977Z",
+    "at": "2026-11-16T22:41:08.875Z",
     "summary": {
-      "links": 8,
+      "links": 11,
       "unreachable": 0,
       "uiPaths": 3,
-      "uiPathsWithMissingWords": 0,
-      "apiCalls": 2,
-      "apiCallsNotOnPage": 0,
+      "uiPathsWithMissingWords": 1,
+      "apiCalls": 3,
+      "apiCallsNotOnPage": 1,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -554,6 +552,31 @@
         "status": 200
       },
       {
+        "url": "https://learn.microsoft.com/power-apps/developer/model-driven-apps/generative-page/data-api/connector-methods",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/maker/data-platform/create-connection-reference",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/connectionreference?view=dataverse-latest",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering",
+        "ok": true,
+        "status": 200
+      },
+      {
         "url": "https://learn.microsoft.com/power-platform/admin/connector-action-control",
         "ok": true,
         "status": 200
@@ -564,17 +587,7 @@
         "status": 200
       },
       {
-        "url": "https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering",
-        "ok": true,
-        "status": 200
-      },
-      {
         "url": "https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering#powershell-support-for-endpoint-filtering",
-        "ok": true,
-        "status": 200
-      },
-      {
-        "url": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/generative-pages#prerequisites",
         "ok": true,
         "status": 200
       }
@@ -606,7 +619,7 @@
       {
         "index": 1,
         "side": "ui",
-        "governs": "Allowed endpoints for HTTP and custom connectors",
+        "governs": "Endpoint filtering for supported prebuilt connectors (preview)",
         "docs": "https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering",
         "reachable": true,
         "segments": [
@@ -620,7 +633,7 @@
       {
         "index": 1,
         "side": "api",
-        "governs": "Allowed endpoints for HTTP and custom connectors",
+        "governs": "Endpoint filtering for supported prebuilt connectors (preview)",
         "docs": "https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering#powershell-support-for-endpoint-filtering",
         "reachable": true,
         "token": "New-PowerAppDlpPolicyConnectorConfigurations",
@@ -630,17 +643,37 @@
         "index": 2,
         "side": "ui",
         "governs": "Connection reference the page uses",
-        "docs": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/generative-pages#prerequisites",
+        "docs": "https://learn.microsoft.com/power-apps/maker/data-platform/create-connection-reference",
         "reachable": true,
         "segments": [
           "Solutions",
           "Default Solution",
-          "connection reference"
+          "New",
+          "More",
+          "Connection Reference"
         ],
-        "missing": []
+        "missing": [
+          "Default Solution"
+        ]
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Connection reference the page uses",
+        "docs": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/connectionreference?view=dataverse-latest",
+        "reachable": true,
+        "token": "GET [organization",
+        "found": false
       }
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-16",
+      "status": "held",
+      "version": 2,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

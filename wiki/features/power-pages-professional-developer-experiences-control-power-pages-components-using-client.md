@@ -17,8 +17,8 @@ impact: "low"
 defaultState: "on"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "The client API pages state no licence, price or meter. Power Pages is licensed by capacity (authenticated and anonymous users per website per month); whether client API calls count differently is not stated."
+  model: "mixed"
+  notes: "Power Pages uses authenticated and anonymous user capacity per website per month, with subscription and pay-as-you-go options. Web API operations require the applicable Power Pages capacity. Cloud flow integration requires a Power Automate licence. The client API reference publishes no separate client-API charge."
 audiences: ["power-platform-admin","maker","security","service-owner"]
 tags: ["power-pages","client-api","web-api","table-permissions","web-roles","extensibility","end-user-authentication","copilot-studio","server-logic","power-platform-cli"]
 sources:
@@ -97,7 +97,7 @@ controls:
       kind: "pac-cli"
       call: "pac pages upload --path <site-folder> --deploymentProfile <profile> --modelVersion <1|2>"
       docs: "https://learn.microsoft.com/power-pages/configure/power-platform-cli"
-    note: "Needs the system administrator role in the site's environment. A Learn troubleshooting page covers $pages.webAPI calls under these settings; the client API reference itself omits them."
+    note: "System administrators can use the app; system customizers also have access, with limited privileges on some tables. A Learn troubleshooting page covers $pages.webAPI calls under these settings; the client API reference itself omits them."
   - governs: "Tenant or site switch to turn the client API off"
     scope: "site"
     ui: null
@@ -116,19 +116,23 @@ changes:
     note: "Corrected after verification: Web API site settings now tied to $pages.webAPI by a Learn troubleshooting page, anonymous-access qualification added, and the unsupported column-security and cloud-flow checklist items removed."
   - date: "2026-11-16"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 68 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-16"
+    note: "Corrected after verification: Web API capacity licensing now stated as applying to $pages.webAPI (licensing model mixed), and the Portal Management app role note carries its system customizer qualification."
+  - date: "2026-11-16"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 81 statements confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-16"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 68
-  confirmed: 67
+  claims: 81
+  confirmed: 81
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "61bc338e2061d9a06c038d55baaed2ba"
+  contradicted: 0
+  attempts: 0
+  hash: "f8eb668259a25c67d592a972ce5dbfe2"
 ---
 
 ## What's changing
@@ -175,7 +179,7 @@ Using the new APIs requires developers to add calls to their site scripts. Learn
 
 The client API pages read (overview, initialisation, Dataverse, user authentication, server endpoints and cloud flows, Copilot Studio agents and examples) name no licence, price or meter. That is a statement about those pages at the time of writing (November 2026), not a statement that nothing is charged.
 
-The Power Platform licensing FAQs say Power Pages licensing is capacity based, with authenticated users per website per month and anonymous users per website per month. The portals Web API overview adds that its operations "require a Power Pages license", that calls by anonymous users count towards anonymous user capacity, and that calls by authenticated users need the applicable authenticated user capacity licences. Learn does not say whether that applies unchanged to `$pages.webAPI`.
+The Power Platform licensing FAQs say Power Pages licensing is capacity based, with authenticated users per website per month and anonymous users per website per month. The portals Web API overview adds that its operations "require a Power Pages license", that calls by anonymous users count towards anonymous user capacity, and that calls by authenticated users need the applicable authenticated user capacity licences. These capacity requirements apply to `$pages.webAPI` operations; the troubleshooting guidance identifies these methods as Power Pages Web API calls.
 
 Cloud flows called from script carry their own requirement: the cloud flow integration page lists a Power Automate licence as a prerequisite and recommends a Power Automate Process licence in production. Licensing for Copilot Studio agents called through `$pages.agent` is not covered on the client API page. Indirect cost is developer time to learn and migrate to the API, and security review time for script that writes data.
 
@@ -211,7 +215,7 @@ The Learn client API pages list no prerequisite licence or admin role. Table per
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Which Dataverse records and operations site script can reach through the client API</strong><br><small>Site</small><br><small class="controls__note">Site owner task. Learn says the client API cannot override table permissions. The PAC CLI deploys site configuration (adx_entitypermission is a supported table); it is not a dedicated permission cmdlet.</small></td><td data-label="Admin UI"><strong>Power Pages design studio</strong><br>Security › Table permissions <a href="https://learn.microsoft.com/power-pages/security/assign-table-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform CLI</strong><br><code>pac pages upload --path &lt;site-folder&gt; --modelVersion &lt;1|2&gt;</code> <a href="https://learn.microsoft.com/power-pages/configure/power-platform-cli" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether the portals Web API is enabled for a table, and which columns it exposes</strong><br><small>Site</small><br><small class="controls__note">Needs the system administrator role in the site's environment. A Learn troubleshooting page covers $pages.webAPI calls under these settings; the client API reference itself omits them.</small></td><td data-label="Admin UI"><strong>Portal Management app (opened from Power Pages design studio)</strong><br>Website › Site settings <a href="https://learn.microsoft.com/power-pages/configure/configure-site-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform CLI</strong><br><code>pac pages upload --path &lt;site-folder&gt; --deploymentProfile &lt;profile&gt; --modelVersion &lt;1|2&gt;</code> <a href="https://learn.microsoft.com/power-pages/configure/power-platform-cli" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether the portals Web API is enabled for a table, and which columns it exposes</strong><br><small>Site</small><br><small class="controls__note">System administrators can use the app; system customizers also have access, with limited privileges on some tables. A Learn troubleshooting page covers $pages.webAPI calls under these settings; the client API reference itself omits them.</small></td><td data-label="Admin UI"><strong>Portal Management app (opened from Power Pages design studio)</strong><br>Website › Site settings <a href="https://learn.microsoft.com/power-pages/configure/configure-site-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform CLI</strong><br><code>pac pages upload --path &lt;site-folder&gt; --deploymentProfile &lt;profile&gt; --modelVersion &lt;1|2&gt;</code> <a href="https://learn.microsoft.com/power-pages/configure/power-platform-cli" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Tenant or site switch to turn the client API off</strong><br><small>Site</small><br><small class="controls__note">A search of Microsoft Learn found no such control at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -225,19 +229,10 @@ No administrator switch for the client API itself is documented at the time of w
 ## Open questions
 
 - Is the feature preview or generally available? The roadmap record lists both release phases and the Launched status, and its description says Preview, while the Learn pages read do not state a phase.
-- Do calls made through `$pages.webAPI` and `$pages.ajax` count towards Power Pages anonymous or authenticated user capacity any differently from other site traffic? Watch the Power Platform licensing FAQs.
 - Will Microsoft add an administrator control, in the Power Platform admin center or through an API, to restrict or audit client API use per site?
 
 <!-- rationale
 risk: Medium. Site script can create, update and delete Dataverse records through $pages.webAPI, so exposure rests on table permissions and web roles; Microsoft Learn documents no switch that turns the client API off.
-cost: Low. The client API pages name no licence or meter, so the known cost is developer and review time; the Power Pages capacity licensing position for client API calls is not stated.
+cost: Low. The client API pages name no licence or meter, so the known cost is developer and review time; Web API calls remain subject to Power Pages capacity licensing.
 impact: Low. Developers and makers who write site script notice it; site visitors see a change only when a developer ships script that uses the API.
--->
-
-<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.model; Cost and licensing; rationale: cost; Open questions / licensing: Licensing is unknown because Learn does not establish whether the published Web API capacity licensing rule applies to $pages.webAPI. | Found: Portals Web API operations require a Power Pages license. For example, Web API calls made by anonymous users count towards the anonymous user capacity. | Fix: The cited wildcard troubleshooting page explicitly identifies $pages.webAPI.retrieveRecord and retrieveMultipleRecords as Power Pages Web API call patterns, so apply the published Web API licensing rule. Set licensing.model to 'mixed' and replace the licensing notes with: 'Power Pages uses authenticated and anonymous user capacity per website per month, with subscription and pay-as-you-go options. Web API operations require the applicable Power Pages capacity. Cloud flow integration requires a Power Automate licence. The client API reference publishes no separate client-API charge.' Replace 'Learn does not say whether that applies unchanged to $pages.webAPI' with 'These capacity requirements apply to $pages.webAPI operations; the troubleshooting guidance identifies these methods as Power Pages Web API calls.' In the cost rationale, replace 'the Power Pages capacity licensing position for client API calls is not stated' with 'Web API calls remain subject to Power Pages capacity licensing'. Remove the Open questions bullet questioning whether $pages.webAPI capacity accounting is published; do not imply a per-call charge. Sources: https://learn.microsoft.com/troubleshoot/power-platfo… | Source: https://learn.microsoft.com/power-pages/configure/web-api-overview
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].note; Scope; rendered controls table / role: The Portal Management app requires the system administrator role in the site's Dataverse environment, qualified in Scope by system customizer access. | Found: To use the Portal Management app, you need to be assigned the system administrator role in the same Microsoft Dataverse environment as your site. Users in the system customizer role also have access | Fix: Make the table note carry the qualification already present in Scope: replace 'Needs the system administrator role in the site's environment' with 'System administrators can use the app; system customizers also have access, with limited privileges on some tables'. | Source: https://learn.microsoft.com/power-pages/configure/portal-management-app
 -->
