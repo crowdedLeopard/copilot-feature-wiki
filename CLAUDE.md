@@ -13,9 +13,12 @@ daily by GitHub Actions.
 - `raw/` is immutable source material. Do not edit by hand.
 - `wiki/features/*.md` are the briefings. Front matter is validated by `pipeline/lib/schema.mjs` and `src/content.config.ts`.
 - `pipeline/` holds the daily jobs: `ingest` (roadmap), `compile` (LLM writes briefings), `lint`, `index`, `digest`, `pdf`.
-  The compile step has two implementations that share `pipeline/lib/briefing.mjs`: `compile.mjs` (direct API) and the
-  Claude Code agent path (`compile-tasks.mjs` prepares `data/compile-tasks/`, the agent follows `pipeline/prompts/compile-agent.md`
-  and calls `write-briefing.mjs` per item, `compile-finish.mjs` records the run). Keep page-writing logic in the shared module.
+  The compile step has three writers that share `pipeline/lib/briefing.mjs`: the Copilot CLI path (default:
+  `compile-tasks.mjs` prepares `data/compile-tasks/`, `compile-copilot.mjs` runs one `copilot -p` session per item through
+  `pipeline/lib/copilot.mjs`, each session follows `pipeline/prompts/compile-agent.md` via the one-item wrapper
+  `compile-copilot-item.md` and calls `write-briefing.mjs`, `compile-finish.mjs` records the run and the AI credits), the
+  Claude Code agent path (same tasks, the action follows `compile-agent.md` directly) and `compile.mjs` (direct Anthropic API).
+  The workflow picks the writer from the `COMPILE_WRITER` repository variable. Keep page-writing logic in the shared module.
 - Each compile run is shared equally across the topics by `selectQueue` in `pipeline/lib/briefing.mjs` (refreshes first,
   then one item per topic in turn). `priorityFor` in `pipeline/ingest.mjs` orders items within a topic by admin relevance,
   recency and lead time. It must not weight topics against each other: that is how Modern Work went unbriefed until
@@ -37,5 +40,9 @@ daily by GitHub Actions.
 
 Commands: `npm run dev`, `npm run build`, `npm run daily` (ingest, compile, lint, index), `npm run pdf` (after build).
 
-The compile step needs a `CLAUDE_CODE_OAUTH_TOKEN` (Claude subscription, via the Claude Code GitHub Action) or an
-`ANTHROPIC_API_KEY` repository secret. Without either, the pipeline still ingests and lints, and the site still builds.
+The compile step runs on the repository owner's GitHub Copilot seat by default (Copilot CLI in Actions; the job's token
+needs `copilot-requests: write`, no secret required; an optional `COPILOT_GITHUB_TOKEN` fine-grained PAT with the
+"Copilot Requests" permission bills a specific user's seat instead). Spend is capped per briefing and per run
+(`COMPILE_ITEM_MAX_CREDITS`, `COMPILE_MAX_CREDITS` repository variables) and logged in `wiki/log.md`. Set `COMPILE_WRITER`
+to `claude-code` (needs `CLAUDE_CODE_OAUTH_TOKEN`) or `api` (needs `ANTHROPIC_API_KEY`) to use Claude capacity instead.
+Without a working writer, the pipeline still ingests and lints, and the site still builds.
