@@ -30,6 +30,9 @@ daily by GitHub Actions.
   `wiki/verification/<slug>.json`, rendered as "How this briefing was checked". Pages created before 2026-11-16 that fail
   their first check stay live as `needs-correction` with a notice (`VERIFY_GRACE_EXISTING=0` turns that off).
   `verify-finish.mjs` holds anything written in the run that was not checked, writes `data/held.json` and logs the run.
+  On Copilot the verifier tries `gpt-6.1-sol` first (a different family from the writer), then `VERIFY_FALLBACK_MODELS`
+  (default `gpt-5.6-sol,claude-sonnet-5.5,auto`); it uses the shared error classifier in `pipeline/lib/copilot.mjs`, stops
+  the run on a refused token, and spends at most `VERIFY_MAX_CREDITS` per page and `VERIFY_MAX_RUN_CREDITS` per run.
 - Each compile run is shared equally across the topics by `selectQueue` in `pipeline/lib/briefing.mjs` (refreshes first,
   then one item per topic in turn). `priorityFor` in `pipeline/ingest.mjs` orders items within a topic by admin relevance,
   recency and lead time. It must not weight topics against each other: that is how Modern Work went unbriefed until

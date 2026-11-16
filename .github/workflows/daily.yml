@@ -233,8 +233,9 @@ jobs:
         env:
           VERIFY_ENGINE: ${{ vars.VERIFY_ENGINE || 'copilot' }}
           VERIFY_MODEL: ${{ github.event.inputs.verify_model || vars.VERIFY_MODEL || '' }}
-          VERIFY_FALLBACK_MODEL: ${{ vars.VERIFY_FALLBACK_MODEL || '' }}
+          VERIFY_FALLBACK_MODELS: ${{ vars.VERIFY_FALLBACK_MODELS || '' }}
           VERIFY_MAX_CREDITS: ${{ vars.VERIFY_MAX_CREDITS || '250' }}
+          VERIFY_MAX_RUN_CREDITS: ${{ vars.VERIFY_MAX_RUN_CREDITS || '' }}
           VERIFY_TIMEOUT_MINUTES: ${{ vars.VERIFY_TIMEOUT_MINUTES || '15' }}
           VERIFY_GRACE_EXISTING: ${{ vars.VERIFY_GRACE_EXISTING || '1' }}
           GITHUB_TOKEN: ${{ github.token }}
