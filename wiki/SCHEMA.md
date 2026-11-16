@@ -155,6 +155,8 @@ An excerpt returned by the Learn search tool is text from the page, so a path or
 appears in full in an excerpt has been read and can be used. But excerpts are partial. Always open
 the feature's own page, and open any page whose excerpt shows that a control exists without giving
 all of it: an excerpt rarely carries the prerequisites, the role required or the "preview" banner.
+Where a reference page is too long to return whole, search its text for the cmdlet, parameter or
+setting you need. What that search does not find on the page is not on the page.
 When a page names a setting and links elsewhere for its path, follow the link and read the path
 there.
 

@@ -29,6 +29,8 @@ This is the rule your whole verdict rests on, and it binds you as much as the wr
   record for record facts, or on a Microsoft page for everything else. An excerpt returned by the
   Microsoft Learn search tool counts as having read that part of the page it came from, for a
   page the writer cites as much as for one you found, provided the excerpt contains the passage.
+  Where a reference page is too long to read whole, searching its text for the names you are
+  checking counts as reading it for those names, present or absent.
 - **Your own knowledge is not evidence, in either direction.** Do not mark a claim supported because
   you recognise it. Do not mark a claim contradicted because you remember it differently; your
   memory of Microsoft's portals and licensing goes out of date as quickly as the writer's. If you
@@ -249,7 +251,8 @@ file. UTF-8, no comments, no trailing commas, no Markdown fence.
 Rules for the file:
 
 - **Every claim you listed in step 1 appears in `claims`**, supported ones included. The quote on a
-  supported claim is the proof that it was checked, so it is never empty.
+  supported claim is the proof that it was checked, so it is never empty. Step 5 is a check, not a
+  source of claims: it adds to the list only when it finds a conflict.
 - `severity` and `fix` are `null` together, when nothing needs to change. Blocker and major go
   only with `contradicted` or `unsupported`. Minor may go with `supported`, for a true claim whose
   form needs correcting.
