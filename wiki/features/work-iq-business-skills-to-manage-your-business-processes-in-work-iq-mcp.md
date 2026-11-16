@@ -2,7 +2,7 @@
 title: "Work IQ: business skills for agents through Work IQ MCP"
 slug: "work-iq-business-skills-to-manage-your-business-processes-in-work-iq-mcp"
 roadmapId: 573290
-desk: "agents"
+topic: "copilot-studio"
 products: ["Microsoft Copilot (Microsoft 365)","Microsoft Dataverse","Work IQ"]
 summary: "Business skills are natural-language process instructions stored in Dataverse that agents discover through Work IQ MCP to follow organisational processes."
 status: "in-development"

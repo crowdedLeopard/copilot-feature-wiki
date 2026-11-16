@@ -2,7 +2,7 @@
 title: "Microsoft Dataverse: semantic data understanding for agents and Copilot"
 slug: "microsoft-dataverse-enable-semantic-data-understanding-for-agentic-use"
 roadmapId: 577185
-desk: "power-platform"
+topic: "power-platform"
 products: ["Microsoft Copilot (Microsoft 365)","Microsoft Dataverse"]
 summary: "Dataverse builds a semantic model from existing views, forms and metadata so agents and Copilot understand business data with less setup, with controls at environment, signal and table level."
 status: "in-development"

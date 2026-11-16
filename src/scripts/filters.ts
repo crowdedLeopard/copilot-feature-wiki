@@ -15,7 +15,7 @@ export function initFilters() {
   const boxes = Array.from(document.querySelectorAll<HTMLInputElement>('.fgroup input[type=checkbox]'));
   const multiValued = new Set(['audiences', 'tags']);
 
-  // Preselect from the query string: ?action=act-now&desk=agents&tag=x
+  // Preselect from the query string: ?action=act-now&topic=copilot-studio&tag=x
   const params = new URLSearchParams(location.search);
   for (const [k, v] of params) {
     const name = k === 'tag' ? 'tags' : k === 'audience' ? 'audiences' : k;

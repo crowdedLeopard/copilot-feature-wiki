@@ -2,7 +2,7 @@
 title: "Work IQ: agents can execute reusable recipes"
 slug: "work-iq-execute-recipes"
 roadmapId: 570866
-desk: "agents"
+topic: "copilot-studio"
 products: ["Work IQ","Microsoft Copilot (Microsoft 365)"]
 summary: "Agents will be able to run reusable Work IQ recipes that coordinate supported tools and actions."
 status: "in-development"

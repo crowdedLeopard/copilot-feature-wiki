@@ -2,7 +2,7 @@
 title: "Microsoft 365 Copilot: federated connectors can create, update and delete in third-party systems"
 slug: "m365-copilot-federated-connectors-write-update-delete"
 roadmapId: 570964
-desk: "copilot"
+topic: "m365-copilot"
 products: ["Microsoft Copilot (Microsoft 365)"]
 summary: "MCP-based federated connectors can now run write tools from Copilot Chat. Actions run as the user with explicit confirmation, nothing is indexed, and admins see read and write tools per connector in the Microsoft 365 admin center."
 status: "launched"

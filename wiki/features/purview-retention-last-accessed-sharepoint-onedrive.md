@@ -2,7 +2,7 @@
 title: "Microsoft Purview: retention based on last accessed date for SharePoint and OneDrive files"
 slug: "purview-retention-last-accessed-sharepoint-onedrive"
 roadmapId: 472030
-desk: "security-compliance"
+topic: "governance"
 products: ["Microsoft Copilot (Microsoft 365)","Microsoft Purview"]
 summary: "Data Lifecycle Management will be able to start a retention period from when a file was last accessed by a person, not only from creation or last modification, so stale content Copilot might surface can be cleaned up."
 status: "in-development"

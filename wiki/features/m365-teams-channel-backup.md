@@ -2,7 +2,7 @@
 title: "Microsoft 365 Backup: Teams channel backup and recovery"
 slug: "m365-teams-channel-backup"
 roadmapId: 570668
-desk: "admin-billing"
+topic: "governance"
 products: ["Microsoft 365","Microsoft 365 admin center"]
 summary: "Microsoft 365 Backup will cover teams and channels, so channel messages and files can be restored to a known good point within 30 days after accidental change or compromise. Billing is pay-as-you-go like the rest of Microsoft 365 Backup."
 status: "in-development"

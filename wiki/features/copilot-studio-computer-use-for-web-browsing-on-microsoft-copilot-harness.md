@@ -2,7 +2,7 @@
 title: "Copilot Studio: web browsing for agents on the Microsoft Copilot harness"
 slug: "copilot-studio-computer-use-for-web-browsing-on-microsoft-copilot-harness"
 roadmapId: 576272
-desk: "agents"
+topic: "copilot-studio"
 products: ["Microsoft Copilot Studio"]
 summary: "Copilot Studio agents will browse and interact with websites natively on the Microsoft Copilot harness: navigating, extracting information and downloading files."
 status: "in-development"

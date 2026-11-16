@@ -4,8 +4,8 @@ import FeatureRow from '../components/FeatureRow.astro';
 import SectionHead from '../components/SectionHead.astro';
 import Badge from '../components/Badge.astro';
 import AtlasTeaser from '../components/AtlasTeaser.astro';
-import { allFeatures, allConcepts, allDigests, byDesk, briefedIds, recentCatalog, stats, catalog } from '../lib/data';
-import { SITE, DESKS, href, featureUrl, deskUrl, conceptUrl, formatDate, shortRoadmapDate } from '../lib/site';
+import { allFeatures, allConcepts, allDigests, byTopic, briefedIds, recentCatalog, stats, catalog } from '../lib/data';
+import { SITE, TOPICS, href, featureUrl, topicUrl, conceptUrl, formatDate, shortRoadmapDate } from '../lib/site';
 import { buildAtlas } from '../lib/graph';
 
 const features = await allFeatures();
@@ -14,12 +14,12 @@ const digests = await allDigests();
 const latestDigest = digests[0];
 const actNow = features.filter((f) => f.data.action === 'act-now');
 const prepare = features.filter((f) => f.data.action === 'prepare');
-const desks = byDesk(features);
+const topics = byTopic(features);
 const briefed = briefedIds(features);
 const radar = recentCatalog(undefined, 120, 400).filter((i) => !briefed.has(i.id)).slice(0, 10);
 const latestUpdate = features.map((f) => f.data.updated).sort().at(-1) ?? '';
-const trackedByDesk = new Map<string, number>();
-for (const i of catalog.items) if (i.desk) trackedByDesk.set(i.desk, (trackedByDesk.get(i.desk) ?? 0) + 1);
+const trackedByTopic = new Map<string, number>();
+for (const i of catalog.items) if (i.topic) trackedByTopic.set(i.topic, (trackedByTopic.get(i.topic) ?? 0) + 1);
 const tracked = stats.tracked.toLocaleString('en-GB');
 const atlas = buildAtlas(features, concepts).counts;
 ---
@@ -47,7 +47,7 @@ const atlas = buildAtlas(features, concepts).counts;
           <a class="btn btn--outline" href={href('/about/')}>How to read the ratings</a>
         </div>
       </div>
-      <AtlasTeaser briefings={atlas.briefings} links={atlas.links} tracked={atlas.tracked} />
+      <AtlasTeaser briefings={atlas.briefings} links={atlas.links} />
     </section>
 
     <SectionHead title="Act now" more={{ href: href('/features/?action=act-now'), label: 'All act-now briefings' }} />
@@ -61,13 +61,13 @@ const atlas = buildAtlas(features, concepts).counts;
       {prepare.slice(0, 5).map((f) => <FeatureRow entry={f} compact />)}
     </ul>
 
-    <SectionHead title="By desk" more={{ href: href('/desks/'), label: 'All desks' }} />
-    <div class="desk-grid">
-      {DESKS.map((d) => {
-        const list = desks.get(d.id) ?? [];
+    <SectionHead title="By topic" more={{ href: href('/topics/'), label: 'All topics' }} />
+    <div class="topic-grid">
+      {TOPICS.map((d) => {
+        const list = topics.get(d.id) ?? [];
         return (
-          <div class="desk-card">
-            <h3><a href={deskUrl(d.id)}>{d.label}</a> <span class="count">{list.length} briefed · {(trackedByDesk.get(d.id) ?? 0).toLocaleString('en-GB')} tracked</span></h3>
+          <div class="topic-card">
+            <h3><a href={topicUrl(d.id)}>{d.label}</a> <span class="count">{list.length} briefed · {(trackedByTopic.get(d.id) ?? 0).toLocaleString('en-GB')} tracked</span></h3>
             <p>{d.blurb}</p>
             <ul>
               {list.slice(0, 4).map((f) => (

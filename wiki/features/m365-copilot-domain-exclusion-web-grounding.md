@@ -2,7 +2,7 @@
 title: "Microsoft 365 Copilot: exclude specific domains from web grounding"
 slug: "m365-copilot-domain-exclusion-web-grounding"
 roadmapId: 503144
-desk: "copilot"
+topic: "m365-copilot"
 products: ["Microsoft Copilot (Microsoft 365)"]
 summary: "Admins can list up to 1,000 sites that Microsoft 365 Copilot and Copilot Chat must not use when grounding answers in web content, via a PowerShell script. Cowork honours the same exclusions."
 status: "rolling-out"

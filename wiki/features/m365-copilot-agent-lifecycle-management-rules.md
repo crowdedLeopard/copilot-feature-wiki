@@ -2,7 +2,7 @@
 title: "Microsoft 365 admin center: rules that automate agent lifecycle management"
 slug: "m365-copilot-agent-lifecycle-management-rules"
 roadmapId: 481518
-desk: "copilot"
+topic: "m365-copilot"
 products: ["Microsoft 365 Admin Center","Microsoft Copilot (Microsoft 365)"]
 summary: "Admins can define rules that automatically block risky agents, delete inactive agents and reassign ownerless agents to the owner's manager, from the Agent settings page in the Microsoft 365 admin center."
 status: "launched"

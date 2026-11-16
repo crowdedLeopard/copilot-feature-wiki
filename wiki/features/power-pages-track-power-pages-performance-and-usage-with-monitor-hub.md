@@ -2,7 +2,7 @@
 title: "Power Pages: performance and usage metrics in the Power Platform admin center monitor hub"
 slug: "power-pages-track-power-pages-performance-and-usage-with-monitor-hub"
 roadmapId: 577859
-desk: "power-platform"
+topic: "power-platform"
 products: ["Power Pages"]
 summary: "Power Pages joins the monitor hub with session count, session duration, page load time and error rate, plus trends and downloadable reports."
 status: "in-development"

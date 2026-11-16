@@ -2,7 +2,7 @@
 title: "Copilot Studio: makers can require human approval before an agent runs a tool"
 slug: "copilot-studio-require-human-approval-for-tool-calls"
 roadmapId: 570434
-desk: "agents"
+topic: "copilot-studio"
 products: ["Microsoft Copilot Studio"]
 summary: "A per-tool, per-agent toggle pauses the agent and shows an approval card before a gated tool runs, giving a deterministic guard rail for actions such as sending email, closing tickets or making payments."
 status: "in-development"

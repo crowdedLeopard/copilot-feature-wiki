@@ -45,7 +45,7 @@ const PAGES = [
   ['briefings', '/features/'],
   ['feature', '/features/copilot-studio-block-maker-provided-credentials/'],
   ['feature-federated', '/features/m365-copilot-federated-connectors-write-update-delete/'],
-  ['desk', '/desks/agents/'],
+  ['topic', '/topics/copilot-studio/'],
   ['radar', '/radar/'],
   ['atlas', '/atlas/'],
   ['concept', '/concepts/copilot-credits/'],

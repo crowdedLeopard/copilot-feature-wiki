@@ -2,7 +2,7 @@
 title: "Power Pages: security agent in design studio configures authentication and authorisation"
 slug: "power-pages-design-studio-configure-authentication-with-security-agent"
 roadmapId: 577809
-desk: "power-platform"
+topic: "power-platform"
 products: ["Power Pages"]
 summary: "An AI chat panel in the Power Pages design studio Security workspace reviews and configures authentication, web roles and table permissions, applying changes only after the maker approves them."
 status: "in-development"

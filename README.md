@@ -10,10 +10,10 @@ Markdown with its front matter intact.
 
 The site is rebuilt every day at 06:00 UTC by GitHub Actions.
 
-The [Atlas](https://crowdedleopard.github.io/copilot-feature-wiki/atlas/) draws the whole ledger as an
-interactive three-dimensional brain. The six desks are its regions, briefings are the nodes, and the
-lines are the links, shared tags and products that connect them. Roadmap items that are tracked but
-not yet briefed appear as faint points in their desk's region.
+The [Atlas](https://crowdedleopard.github.io/copilot-feature-wiki/atlas/) draws the ledger as a map of
+linked pages. Every briefing and concept is a point, grouped by topic, and a line joins two pages when
+one links to the other or when both carry the same tag. Selecting a point shows its ratings and
+everything it connects to.
 
 ## How it works
 
@@ -32,8 +32,8 @@ manual and the system prompt, and an append-only log records every run.
 | Data | `data/*.json` | Catalog, work queue, stats and lint output used by the site. |
 | Pipeline | `pipeline/*.mjs` | `ingest`, `compile` (API) or `compile-tasks` + `write-briefing` + `compile-finish` (Claude Code), `lint`, `index`, `digest`, `pdf`, `screenshots`. Shared briefing logic in `pipeline/lib/briefing.mjs`. |
 | Site | `src/`, `astro.config.mjs` | Astro static site. Design tokens in `src/styles/tokens.css`. |
-| Atlas | `src/lib/graph.ts`, `src/lib/brain.ts`, `src/scripts/atlas/` | The ledger drawn as a second brain at `/atlas/`: every briefing, concept, shared tag and product, and the links between them. Built from the wiki at build time, so it follows the daily run. |
-| Taxonomy | `config/taxonomy.mjs` | Desks, product mapping, rating scales. Shared by the pipeline and the site. |
+| Atlas | `src/lib/graph.ts`, `src/lib/layout.ts`, `src/scripts/atlas/` | The ledger drawn as a map of linked pages at `/atlas/`: every briefing, concept and shared tag, and the links between them. Built from the wiki at build time, so it follows the daily run. |
+| Taxonomy | `config/taxonomy.mjs` | Topics, product mapping, rating scales. Shared by the pipeline and the site. |
 
 ### The daily run (`.github/workflows/daily.yml`)
 

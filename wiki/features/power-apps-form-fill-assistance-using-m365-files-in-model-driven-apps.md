@@ -2,7 +2,7 @@
 title: "Power Apps: form fill assistance using Microsoft 365 files in model-driven apps"
 slug: "power-apps-form-fill-assistance-using-m365-files-in-model-driven-apps"
 roadmapId: 576280
-desk: "power-platform"
+topic: "power-platform"
 products: ["Power Apps"]
 summary: "Form fill assistance in model-driven apps will use Microsoft 365 files as a source for suggested form entries."
 status: "in-development"

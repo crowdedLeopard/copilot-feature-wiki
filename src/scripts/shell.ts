@@ -1,6 +1,6 @@
 import MiniSearch from 'minisearch';
 
-type Doc = { id: string; title: string; summary: string; kind: 'briefing' | 'concept'; url: string; desk?: string; tags: string[]; products?: string[]; action?: string; risk?: string };
+type Doc = { id: string; title: string; summary: string; kind: 'briefing' | 'concept'; url: string; topic?: string; tags: string[]; products?: string[]; action?: string; risk?: string };
 
 const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
 
@@ -47,8 +47,8 @@ function search() {
       loading = fetch(`${BASE}/search.json`).then((r) => r.json()).then((data: Doc[]) => {
         docs = data;
         index = new MiniSearch<Doc>({
-          fields: ['title', 'summary', 'tags', 'products', 'desk'],
-          storeFields: ['title', 'summary', 'kind', 'url', 'desk', 'action', 'risk'],
+          fields: ['title', 'summary', 'tags', 'products', 'topic'],
+          storeFields: ['title', 'summary', 'kind', 'url', 'topic', 'action', 'risk'],
           searchOptions: { boost: { title: 3, tags: 2 }, prefix: true, fuzzy: 0.2, combineWith: 'AND' },
         });
         index.addAll(data);
@@ -72,7 +72,7 @@ function search() {
       const a = document.createElement('a');
       a.href = d.url;
       if (i === 0) a.setAttribute('aria-selected', 'true');
-      a.innerHTML = `<span class="k">${d.kind === 'concept' ? 'Concept' : (d.action === 'act-now' ? 'Act now' : d.desk ?? 'Briefing')}</span><span class="t"></span><span class="s"></span>`;
+      a.innerHTML = `<span class="k">${d.kind === 'concept' ? 'Concept' : (d.action === 'act-now' ? 'Act now' : d.topic ?? 'Briefing')}</span><span class="t"></span><span class="s"></span>`;
       (a.querySelector('.t') as HTMLElement).textContent = d.title;
       (a.querySelector('.s') as HTMLElement).textContent = d.summary;
       li.appendChild(a);

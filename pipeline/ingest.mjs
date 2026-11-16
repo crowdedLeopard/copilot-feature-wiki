@@ -10,7 +10,7 @@
  */
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { deskForProducts, statusFromRoadmap } from '../config/taxonomy.mjs';
+import { topicForProducts, statusFromRoadmap } from '../config/taxonomy.mjs';
 import { RAW_DIR, DATA_DIR, FEATURES_DIR, readJson, writeJson, appendLog, today, stripHtml } from './lib/util.mjs';
 
 const ROADMAP_URL = process.env.ROADMAP_URL || 'https://www.microsoft.com/releasecommunications/api/v1/m365';
@@ -19,12 +19,15 @@ const ITEMS_DIR = path.join(RAW_DIR, 'roadmap', 'items');
 // Items that mention these are more likely to need governance attention; they go to the front of the queue.
 const PRIORITY = /\b(admin|govern|agent|licen[cs]|billing|pay-as-you-go|payg|purview|security|dlp|sensitiv|retention|audit|control|policy|consumption|credit|identity|entra|default|tenant|compliance|mcp|autonomous|cost|usage report)/i;
 
-// Desks the wiki exists for get written first; Modern Work is covered but trails.
-const DESK_WEIGHT = { agents: 3, 'power-platform': 3, 'admin-billing': 3, copilot: 2, 'security-compliance': 2, 'modern-work': 0 };
+// Topics the wiki exists for get written first; Modern Work is covered but trails.
+const TOPIC_WEIGHT = { 'copilot-studio': 3, 'power-platform': 3, governance: 3, 'm365-copilot': 2, 'modern-work': 0 };
+// Inside Governance & security, the admin centre (licensing, billing, usage reports) leads Purview, Entra and Defender.
+const ADMIN_CENTRE = /^Microsoft 365 admin center$/i;
 
 function priorityFor(item, reason) {
   const ageDays = (Date.now() - new Date(item.modified).getTime()) / 86400000;
-  let p = DESK_WEIGHT[item.desk] ?? 0;
+  let p = TOPIC_WEIGHT[item.topic] ?? 0;
+  if (item.topic === 'governance' && !item.products.some((name) => ADMIN_CENTRE.test(name))) p -= 1;
   if (reason !== 'no-briefing') p += 4; // keep existing briefings true before writing new ones
   if (PRIORITY.test(item.title + ' ' + item.description)) p += 2;
   if (ageDays <= 30) p += 2; else if (ageDays <= 120) p += 1;
@@ -60,7 +63,7 @@ function normalise(item) {
     clouds: names(tc.cloudInstances),
     releasePhase: names(tc.releasePhase),
     platforms: names(tc.platforms),
-    desk: deskForProducts(products),
+    topic: topicForProducts(products),
     roadmapUrl: `https://www.microsoft.com/microsoft-365/roadmap?id=${item.id}`,
   };
 }
@@ -83,7 +86,7 @@ async function existingBriefings() {
 async function main() {
   const started = Date.now();
   const all = await fetchRoadmap();
-  const inScope = all.map(normalise).filter((i) => i.desk && i.statusKey !== 'cancelled');
+  const inScope = all.map(normalise).filter((i) => i.topic && i.statusKey !== 'cancelled');
   await fs.mkdir(ITEMS_DIR, { recursive: true });
 
   const briefings = await existingBriefings();
@@ -108,7 +111,7 @@ async function main() {
       queue.push({
         id: item.id,
         title: item.title,
-        desk: item.desk,
+        topic: item.topic,
         reason,
         priority: priorityFor(item, reason),
         modified: item.modified,

@@ -2,7 +2,7 @@
 title: "Power Apps: out-of-the-box Application Insights telemetry for generative pages"
 slug: "power-apps-monitor-generative-pages-with-out-of-the-box-application-insights-telemetry"
 roadmapId: 576282
-desk: "power-platform"
+topic: "power-platform"
 products: ["Power Apps"]
 summary: "Once an admin enables Application Insights export for an environment, published generative pages automatically send page loads, errors, data operations and navigation without any telemetry code."
 status: "in-development"

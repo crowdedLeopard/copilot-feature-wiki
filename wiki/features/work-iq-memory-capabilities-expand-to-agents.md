@@ -2,7 +2,7 @@
 title: "Work IQ: memory profile path in Work IQ MCP for agents"
 slug: "work-iq-memory-capabilities-expand-to-agents"
 roadmapId: 578869
-desk: "agents"
+topic: "copilot-studio"
 products: ["Work IQ"]
 summary: "A new Work IQ MCP path gives authorised agents access to a user's memory profile, including custom instructions, saved memories and chat-derived memories."
 status: "in-development"

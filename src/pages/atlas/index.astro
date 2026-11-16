@@ -4,7 +4,7 @@ import SectionHead from '../../components/SectionHead.astro';
 import '../../styles/atlas.css';
 import { allFeatures, allConcepts } from '../../lib/data';
 import { buildAtlas } from '../../lib/graph';
-import { RISK, deskUrl, formatDate, href } from '../../lib/site';
+import { RISK, topicUrl, formatDate, href } from '../../lib/site';
 
 const features = await allFeatures();
 const concepts = await allConcepts();
@@ -13,69 +13,70 @@ const c = atlas.counts;
 const latest = features.map((f) => f.data.updated).sort().at(-1) ?? '';
 const n = (v: number) => v.toLocaleString('en-GB');
 const riskCount = (r: string) => features.filter((f) => f.data.risk === r).length;
-const of = (k: string) => atlas.nodes.filter((x) => x.k === k).sort((a, b) => a.t.localeCompare(b.t));
+const of = (k: string) => atlas.nodes.filter((x) => x.k === k);
+const byTitle = (k: string) => of(k).sort((a, b) => a.t.localeCompare(b.t));
+const byLinks = (k: string) => of(k).sort((a, b) => b.n - a.n || a.t.localeCompare(b.t));
 const actNow = features.filter((f) => f.data.action === 'act-now').length;
 ---
 
-<Base title="Atlas" description="The ledger drawn as a second brain: every briefing, concept, tag and product, and the links between them, in an interactive three-dimensional atlas." current="atlas">
+<Base title="Atlas" description="A map of the ledger: every briefing and concept, grouped by topic, with the links and shared tags that join them." current="atlas">
   <div class="wrap">
     <header class="atlas-head">
       <div class="eyebrow">
-        <span>Atlas</span><span class="sep"></span><span>{c.briefings} briefings</span><span class="sep"></span><span>{c.links} links</span>
-        <span class="sep"></span><span>{n(c.tracked)} roadmap items tracked</span>
+        <span>Atlas</span><span class="sep"></span><span>{c.briefings} briefings</span><span class="sep"></span><span>{c.concepts} concepts</span>
+        <span class="sep"></span><span>{c.links} links</span>
       </div>
-      <h1 class="display">The ledger as a second brain</h1>
+      <h1 class="display">How the ledger links together</h1>
       <p class="standfirst">
-        Every briefing, concept, tag and product, placed in a brain whose regions are the six desks. Lines are the links between pages.
-        Faint points are roadmap items the ledger tracks but has not briefed yet.
+        Every briefing and concept is a point, grouped by topic. A line joins two pages when one links to the other, or when both carry the same tag.
+        Select a point to see its ratings and everything it connects to.
       </p>
     </header>
 
     <section class="atlas" id="atlas" data-atlas aria-label="Atlas">
       <div class="atlas__stage atlas-plate">
-        <canvas id="atlas-canvas" tabindex="0" role="img" aria-label={`Three-dimensional map of ${c.briefings} briefings, ${c.concepts} concepts, ${c.tags} tags and ${c.products} products arranged in a brain. The same pages are listed under Index below.`}></canvas>
+        <canvas id="atlas-canvas" tabindex="0" role="img" aria-label={`Map of ${c.briefings} briefings, ${c.concepts} concepts and ${c.tags} shared tags, grouped by topic, with ${c.links} links between them. The same pages are listed under Every page below.`}></canvas>
         <i class="tick tick--tl"></i><i class="tick tick--tr"></i><i class="tick tick--bl"></i><i class="tick tick--br"></i>
         <div class="atlas-hud atlas-hud--tl"><span class="dot"></span><b>Release Ledger</b> — Atlas<span class="gap"></span><span class="dim">Issue of {formatDate(latest)}</span></div>
-        <div class="atlas-hud atlas-hud--tr">Drag — rotate<span class="gap"></span>Scroll — zoom<span class="gap"></span>Click — inspect</div>
+        <div class="atlas-hud atlas-hud--tr">Drag — move<span class="gap"></span>Scroll — zoom<span class="gap"></span>Click — inspect</div>
         <div class="atlas__tools">
           <button type="button" id="atlas-reset" title="Return to the opening view (0)">Reset</button>
-          <button type="button" id="atlas-spin" aria-pressed="true" title="Turn the slow rotation on or off">Spin</button>
           <button type="button" id="atlas-out" aria-label="Zoom out" title="Zoom out (−)">−</button>
           <button type="button" id="atlas-in" aria-label="Zoom in" title="Zoom in (+)">+</button>
         </div>
         <div class="atlas__loading">Drawing the atlas</div>
-        <noscript><div class="atlas__loading" style="pointer-events:auto">The atlas needs JavaScript. Every page it shows is listed under Index below.</div></noscript>
+        <noscript><div class="atlas__loading" style="pointer-events:auto">The atlas needs JavaScript. Every page it shows is listed under Every page below.</div></noscript>
       </div>
 
       <aside class="atlas__side" aria-label="Atlas controls">
         <div class="atlas__block atlas__find">
-          <input id="atlas-find" type="search" placeholder="Find a briefing, concept, tag or product" autocomplete="off" spellcheck="false" aria-label="Find a node in the atlas" aria-controls="atlas-hits" />
+          <input id="atlas-find" type="search" placeholder="Find a briefing, concept or tag" autocomplete="off" spellcheck="false" aria-label="Find a page in the atlas" aria-controls="atlas-hits" />
           <ul class="atlas__hits" id="atlas-hits"></ul>
         </div>
 
         <div class="atlas__block insp" id="atlas-inspector" aria-live="polite">
           <p class="insp__idle">Hover a point to see what it is. Click to pin it here with its ratings and everything it links to.</p>
-          <p class="insp__idle">{actNow} briefings carry a pulsing ring: they need action now.</p>
+          <p class="insp__idle">{actNow} {actNow === 1 ? 'briefing has' : 'briefings have'} a red ring: {actNow === 1 ? 'it needs' : 'they need'} action now.</p>
         </div>
 
         <div class="atlas__block">
           <h3>Colour briefings by</h3>
           <div class="seg" id="atlas-colour" role="group" aria-label="Colour briefings by">
-            <button type="button" data-colour="desk" aria-pressed="true">Desk</button>
+            <button type="button" data-colour="topic" aria-pressed="true">Topic</button>
             <button type="button" data-colour="risk" aria-pressed="false">Risk</button>
             <button type="button" data-colour="action" aria-pressed="false">Action</button>
           </div>
         </div>
 
         <div class="atlas__block">
-          <h3><span>Desks</span><button type="button" id="atlas-desks-all">Show all</button></h3>
-          <ul class="atlas__rows" id="atlas-desks">
-            {atlas.desks.map((d, i) => (
+          <h3><span>Topics</span><button type="button" id="atlas-topics-all">Show all</button></h3>
+          <ul class="atlas__rows" id="atlas-topics">
+            {atlas.topics.map((t, i) => (
               <li>
-                <button type="button" data-desk={i} aria-pressed="true" style={`--c: var(--desk-${d.id})`} title={d.why}>
+                <button type="button" data-topic={i} aria-pressed="true" style={`--c: var(--topic-${t.id})`} title={t.blurb}>
                   <i class="sw"></i>
-                  <span><span class="name">{d.label}</span><span class="sub">{d.regionLabel} · {d.role}</span></span>
-                  <span class="n">{d.briefed} · {n(d.tracked)}</span>
+                  <span class="name">{t.label}</span>
+                  <span class="n">{t.briefed}</span>
                 </button>
               </li>
             ))}
@@ -96,7 +97,7 @@ const actNow = features.filter((f) => f.data.action === 'act-now').length;
         </div>
 
         <div class="atlas__block">
-          <h3>On the plate</h3>
+          <h3>On the map</h3>
           <ul class="atlas__rows" id="atlas-layers">
             <li class="static">
               <svg class="gl" viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="4.2" fill="currentColor" /></svg>
@@ -115,21 +116,9 @@ const actNow = features.filter((f) => f.data.action === 'act-now').length;
               </button>
             </li>
             <li>
-              <button type="button" data-layer="p" aria-pressed="true">
-                <svg class="gl" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 1.4 10.6 6 6 10.6 1.4 6Z" fill="none" stroke="currentColor" stroke-width="1.2" /></svg>
-                <span class="name">Products</span><span class="n">{c.products}</span>
-              </button>
-            </li>
-            <li>
-              <button type="button" data-layer="radar" aria-pressed="true">
-                <svg class="gl" viewBox="0 0 12 12" aria-hidden="true"><g fill="currentColor"><rect x="1.5" y="2" width="1.6" height="1.6" /><rect x="6.5" y="1" width="1.6" height="1.6" /><rect x="4" y="5.4" width="1.6" height="1.6" /><rect x="9" y="5" width="1.6" height="1.6" /><rect x="2" y="9" width="1.6" height="1.6" /><rect x="7" y="9.2" width="1.6" height="1.6" /></g></svg>
-                <span><span class="name">On the radar</span><span class="sub">Tracked, not yet briefed</span></span><span class="n" id="atlas-radar-n">…</span>
-              </button>
-            </li>
-            <li>
               <button type="button" data-layer="labels" aria-pressed="true">
                 <svg class="gl" viewBox="0 0 12 12" aria-hidden="true"><path d="M1.5 4h9M1.5 8h6" stroke="currentColor" stroke-width="1.3" fill="none" /></svg>
-                <span class="name">Labels</span><span class="n"></span>
+                <span class="name">Names</span><span class="n"></span>
               </button>
             </li>
           </ul>
@@ -138,44 +127,79 @@ const actNow = features.filter((f) => f.data.action === 'act-now').length;
     </section>
 
     <SectionHead title="How to read the atlas" id="reading" />
-    <p class="muted small" style="margin:-0.4rem 0 0.8rem;max-width:70ch">
-      Each desk has a region, chosen for what that part of a brain does. Briefings sit in the cortex of their desk's region; concepts, shared tags and
-      products sit deeper, between the briefings they connect. Positions are fixed: a briefing stays where it is as the daily run adds new ones around it.
-    </p>
-    <div class="lobes">
-      {atlas.desks.map((d) => (
-        <div class="lobe" style={`--c: var(--desk-${d.id})`}>
+    <ul class="atlas-key">
+      <li>
+        <svg viewBox="0 0 28 16" aria-hidden="true"><circle cx="14" cy="8" r="5.5" fill="var(--topic-copilot-studio)" /></svg>
+        <span><b>Briefing.</b> Its colour is its topic and its size is the number of links it has. It sits close to the pages it links to.</span>
+      </li>
+      <li>
+        <svg viewBox="0 0 28 16" aria-hidden="true"><circle cx="14" cy="8" r="4" fill="var(--topic-power-platform)" /><circle cx="14" cy="8" r="7" fill="none" stroke="var(--risk-high)" stroke-width="1.3" /></svg>
+        <span><b>Act now.</b> A red ring marks a briefing that is on by default or close to its rollout date.</span>
+      </li>
+      <li>
+        <svg viewBox="0 0 28 16" aria-hidden="true"><circle cx="14" cy="8" r="5.6" fill="none" stroke="var(--ink)" stroke-width="1.5" /><circle cx="14" cy="8" r="2.1" fill="var(--ink)" /></svg>
+        <span><b>Concept.</b> A page that explains a mechanism several briefings rely on, such as Copilot Credits or data policies.</span>
+      </li>
+      <li>
+        <svg viewBox="0 0 28 16" aria-hidden="true"><circle cx="14" cy="8" r="2.6" fill="var(--ink-3)" /></svg>
+        <span><b>Shared tag.</b> A tag that two or more pages carry. It sits between the pages that use it.</span>
+      </li>
+      <li>
+        <svg viewBox="0 0 28 16" aria-hidden="true"><path d="M2 5h24" stroke="var(--ink)" stroke-width="1.1" opacity="0.6" /><path d="M2 11h24" stroke="var(--ink)" stroke-width="1" opacity="0.2" /></svg>
+        <span><b>Lines.</b> A dark line is a link from one page to another. A faint line joins a page to a tag it carries.</span>
+      </li>
+    </ul>
+
+    <SectionHead title="Topics" id="topics" more={{ href: href('/topics/'), label: 'All topics' }} />
+    <div class="atlas-topics">
+      {atlas.topics.map((t) => (
+        <div class="atlas-topic" style={`--c: var(--topic-${t.id})`}>
           <i class="sw"></i>
           <div>
-            <h3><a href={deskUrl(d.id)}>{d.label}</a></h3>
-            <div class="where">{d.regionLabel} · {d.role} · {d.briefed} briefed · {n(d.tracked)} tracked</div>
-            <p>{d.why}</p>
+            <h3><a href={topicUrl(t.id)}>{t.label}</a></h3>
+            <div class="where">{t.briefed} briefed · <a href={href(`/radar/${t.id}/`)}>{n(t.tracked)} tracked</a></div>
+            <p>{t.blurb}</p>
           </div>
         </div>
       ))}
     </div>
 
-    <SectionHead title="Index" id="index" />
+    <SectionHead title="Most connected" id="hubs" />
+    <p class="muted small" style="margin:-0.4rem 0 0.4rem;max-width:70ch">The pages and tags with the most links: the quickest way to see what ties this ledger together.</p>
+    <div class="atlas-hubs">
+      <div>
+        <h3>Briefings</h3>
+        <ol>{byLinks('f').slice(0, 8).map((x) => <li><a href={x.u}>{x.t}</a><span>{x.n}</span></li>)}</ol>
+      </div>
+      <div>
+        <h3>Concepts</h3>
+        <ol>{byLinks('c').map((x) => <li><a href={x.u}>{x.t}</a><span>{x.n}</span></li>)}</ol>
+      </div>
+      <div>
+        <h3>Shared tags</h3>
+        <ol>{byLinks('t').slice(0, 10).map((x) => <li><a href={x.u}>{x.t}</a><span>{x.n}</span></li>)}</ol>
+      </div>
+    </div>
+
+    <SectionHead title="Every page" id="index" />
     <details class="atlas-index">
       <summary>List every page in the atlas</summary>
-      {atlas.desks.map((d, i) => {
-        const list = atlas.nodes.filter((x) => x.k === 'f' && x.d === i).sort((a, b) => a.t.localeCompare(b.t));
+      {atlas.topics.map((t, i) => {
+        const list = byTitle('f').filter((x) => x.d === i);
         return list.length > 0 && (
           <>
-            <h3>{d.label}</h3>
+            <h3>{t.label}</h3>
             <ul>{list.map((x) => <li><a href={x.u}>{x.t}</a></li>)}</ul>
           </>
         );
       })}
       <h3>Concepts</h3>
-      <ul>{of('c').map((x) => <li><a href={x.u}>{x.t}</a></li>)}</ul>
+      <ul>{byTitle('c').map((x) => <li><a href={x.u}>{x.t}</a></li>)}</ul>
       <h3>Shared tags</h3>
-      <ul>{of('t').map((x) => <li><a href={x.u}>{x.t}</a> <span class="muted small">{x.n}</span></li>)}</ul>
-      <h3>Products</h3>
-      <ul>{of('p').map((x) => <li><a href={x.u}>{x.t}</a> <span class="muted small">{x.n}</span></li>)}</ul>
+      <ul>{byTitle('t').map((x) => <li><a href={x.u}>{x.t}</a> <span class="muted small">{x.n}</span></li>)}</ul>
     </details>
     <p class="small muted" style="margin-top:1rem">
-      The atlas is rebuilt from the wiki's front matter and links on every daily run. See <a href={href('/about/')}>how the ledger is compiled</a>.
+      The atlas is redrawn from the wiki's links and tags on every daily run. See <a href={href('/about/')}>how the ledger is compiled</a>.
     </p>
   </div>
 </Base>

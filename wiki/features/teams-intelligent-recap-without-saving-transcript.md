@@ -2,7 +2,7 @@
 title: "Microsoft Teams: intelligent recap without saving a transcript"
 slug: "teams-intelligent-recap-without-saving-transcript"
 roadmapId: 558286
-desk: "copilot"
+topic: "m365-copilot"
 products: ["Microsoft Teams","Microsoft Copilot (Microsoft 365)"]
 summary: "Copilot-licensed organisers can get an AI summary of a scheduled meeting without retaining a transcript or recording. The summary is a read-only Word file in the organiser's OneDrive that expires after 120 days by default."
 status: "launched"

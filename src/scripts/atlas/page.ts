@@ -1,7 +1,7 @@
 /** Wires the /atlas/ page: the renderer, the inspector, search and the filter controls. */
-import { Atlas, loadAtlas, type ColourBy, type Pick, type RadarItem } from './engine';
+import { Atlas, loadAtlas, type ColourBy, type Pick } from './engine';
 import type { AtlasNode } from '../../lib/graph';
-import { ACTION, COST, IMPACT, RISK, STATUS, formatDate, href } from '../../lib/site';
+import { ACTION, COST, IMPACT, RISK, STATUS, formatDate } from '../../lib/site';
 
 const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
 
@@ -13,7 +13,7 @@ function h<K extends keyof HTMLElementTagNameMap>(tag: K, attrs: Record<string, 
   return el;
 }
 
-const KIND: Record<string, string> = { f: 'Briefing', c: 'Concept', t: 'Tag', p: 'Product' };
+const KIND: Record<string, string> = { f: 'Briefing', c: 'Concept', t: 'Tag' };
 
 function rating(kind: 'risk' | 'cost' | 'impact', value: string) {
   const scale = (kind === 'risk' ? RISK : kind === 'cost' ? COST : IMPACT) as Record<string, { label: string; rank: number; help: string }>;
@@ -44,8 +44,7 @@ export async function initAtlasPage() {
   const show = (pick: Pick) => {
     insp.replaceChildren();
     if (!pick) { insp.append(...idle.map((n) => n.cloneNode(true))); return; }
-    const card = pick.type === 'radar' ? radarCard(pick.item) : nodeCard(pick.node);
-    insp.append(...(card.filter(Boolean) as (Node | string)[]));
+    insp.append(...(nodeCard(pick.node).filter(Boolean) as (Node | string)[]));
   };
 
   const linkRow = (n: AtlasNode, label: string) => {
@@ -55,10 +54,10 @@ export async function initAtlasPage() {
   };
 
   function nodeCard(n: AtlasNode): Child[] {
-    const desk = n.d >= 0 ? data!.desks[n.d] : null;
+    const topic = n.d >= 0 ? data!.topics[n.d] : null;
     const out: Child[] = [];
     const eyebrow = h('div', { class: 'eyebrow' }, h('span', {}, KIND[n.k]));
-    if (desk) eyebrow.append(h('span', { class: 'sep' }), h('span', {}, desk.label));
+    if (topic) eyebrow.append(h('span', { class: 'sep' }), h('span', {}, topic.label));
     out.push(eyebrow, h('h2', { class: 'insp__title' }, h('a', { href: n.u }, n.t)));
     if (n.s) out.push(h('p', { class: 'insp__sum' }, n.s));
     if (n.k === 'f') {
@@ -69,29 +68,17 @@ export async function initAtlasPage() {
         st && h('span', { class: `badge badge--status-${n.status}` }, st.label),
         rating('risk', n.risk ?? ''), rating('cost', n.cost ?? ''), rating('impact', n.impact ?? '')));
     } else if (!n.s) {
-      out.push(h('p', { class: 'insp__sum' }, n.k === 't' ? `${n.n} pages carry this tag.` : `${n.n} ${n.n === 1 ? 'briefing covers' : 'briefings cover'} this product.`));
+      out.push(h('p', { class: 'insp__sum' }, `${n.n} pages carry this tag.`));
     }
-    const go = n.k === 'f' ? 'Open briefing' : n.k === 'c' ? 'Open concept' : n.k === 't' ? 'Open tag page' : 'List its briefings';
+    const go = n.k === 'f' ? 'Open briefing' : n.k === 'c' ? 'Open concept' : 'Open tag page';
     out.push(h('div', { class: 'insp__go' }, h('a', { class: 'btn', href: n.u }, go), n.updated ? h('span', { class: 'muted' }, `Updated ${formatDate(n.updated)}`) : null));
-    const links = atlas.neighbours(n.id).sort((a, b) => a.kind - b.kind || (a.node.k === 'f' ? 0 : 1) - (b.node.k === 'f' ? 0 : 1) || b.node.n - a.node.n);
+    const links = atlas.neighbours(n.id).sort((a, b) => a.kind - b.kind || 'cft'.indexOf(a.node.k) - 'cft'.indexOf(b.node.k) || b.node.n - a.node.n);
     if (links.length) {
       const ul = h('ul', { class: 'insp__links' });
-      for (const l of links) ul.append(linkRow(l.node, l.kind === 0 ? (l.node.k === 'c' ? 'Concept' : 'Related') : l.node.k === 'f' ? (n.k === 't' ? 'Tagged' : n.k === 'p' ? 'Covers' : 'Depends') : KIND[l.node.k]));
+      for (const l of links) ul.append(linkRow(l.node, l.node.k === 'c' ? 'Concept' : l.node.k === 't' ? 'Tag' : n.k === 't' ? 'Tagged' : n.k === 'c' ? 'Briefing' : 'Related'));
       out.push(ul);
     }
     return out;
-  }
-
-  function radarCard(it: RadarItem): Child[] {
-    const desk = data!.desks[it.desk];
-    const st = (STATUS as Record<string, { label: string }>)[it.status];
-    return [
-      h('div', { class: 'eyebrow' }, h('span', {}, 'On the radar'), h('span', { class: 'sep' }), h('span', {}, desk.label)),
-      h('h2', { class: 'insp__title' }, h('a', { href: `https://www.microsoft.com/microsoft-365/roadmap?id=${it.id}`, rel: 'noopener' }, it.title)),
-      h('div', { class: 'insp__facts', style: 'margin-top:0.6rem' }, st && h('span', { class: `badge badge--status-${it.status}` }, st.label), h('span', { class: 'mono small muted' }, `Roadmap ${it.id} · changed ${formatDate(it.modified)}`)),
-      h('p', { class: 'insp__sum' }, 'Tracked from the Microsoft 365 Roadmap. No briefing has been written yet; the daily run takes the highest-priority items first.'),
-      h('div', { class: 'insp__go' }, h('a', { class: 'btn btn--outline', href: `https://www.microsoft.com/microsoft-365/roadmap?id=${it.id}`, rel: 'noopener' }, 'Roadmap entry'), h('a', { href: href(`/radar/${desk.id}/`) }, `${desk.short} radar`)),
-    ];
   }
 
   const atlas = new Atlas(canvas, data, {
@@ -101,18 +88,11 @@ export async function initAtlasPage() {
       pinned = pick;
       show(pick);
       const url = new URL(location.href);
-      if (pick?.type === 'node') url.searchParams.set('n', pick.node.id); else url.searchParams.delete('n');
+      if (pick) url.searchParams.set('n', pick.node.id); else url.searchParams.delete('n');
       history.replaceState(null, '', url);
     },
   });
   root.dataset.ready = 'true';
-
-  // The radar layer is the heavy part of the data, so it arrives after the first frame.
-  const radarN = document.getElementById('atlas-radar-n');
-  fetch(`${BASE}/atlas-radar.json`).then((r) => r.json()).then((radar) => {
-    atlas.loadRadar(radar);
-    if (radarN) radarN.textContent = radar.items.length.toLocaleString('en-GB');
-  }).catch(() => { if (radarN) radarN.textContent = '0'; });
 
   const start = new URLSearchParams(location.search).get('n');
   if (start && data.nodes.some((n) => n.id === start)) atlas.select(start);
@@ -121,9 +101,6 @@ export async function initAtlasPage() {
   document.getElementById('atlas-reset')?.addEventListener('click', () => atlas.reset());
   document.getElementById('atlas-in')?.addEventListener('click', () => atlas.zoomBy(1.35));
   document.getElementById('atlas-out')?.addEventListener('click', () => atlas.zoomBy(1 / 1.35));
-  const spin = document.getElementById('atlas-spin');
-  spin?.setAttribute('aria-pressed', String(atlas.spinning));
-  spin?.addEventListener('click', () => { const on = spin.getAttribute('aria-pressed') !== 'true'; spin.setAttribute('aria-pressed', String(on)); atlas.setSpin(on); });
 
   // ---- Colour
   const colour = document.getElementById('atlas-colour');
@@ -134,18 +111,18 @@ export async function initAtlasPage() {
     atlas.setColour(b.dataset.colour as ColourBy);
   });
 
-  // ---- Desks: click to hide or show a region, hover to light it.
-  const desks = document.getElementById('atlas-desks');
-  const deskButtons = Array.from(desks?.querySelectorAll<HTMLButtonElement>('button') ?? []);
-  deskButtons.forEach((b) => {
-    const i = Number(b.dataset.desk);
-    b.addEventListener('click', () => { const on = b.getAttribute('aria-pressed') !== 'true'; b.setAttribute('aria-pressed', String(on)); atlas.setDesk(i, on); });
-    b.addEventListener('pointerenter', () => atlas.highlightDesk(i));
-    b.addEventListener('pointerleave', () => atlas.highlightDesk(-1));
-    b.addEventListener('focus', () => atlas.highlightDesk(i));
-    b.addEventListener('blur', () => atlas.highlightDesk(-1));
+  // ---- Topics: click to hide or show one, hover to pick it out.
+  const topics = document.getElementById('atlas-topics');
+  const topicButtons = Array.from(topics?.querySelectorAll<HTMLButtonElement>('button') ?? []);
+  topicButtons.forEach((b) => {
+    const i = Number(b.dataset.topic);
+    b.addEventListener('click', () => { const on = b.getAttribute('aria-pressed') !== 'true'; b.setAttribute('aria-pressed', String(on)); atlas.setTopic(i, on); });
+    b.addEventListener('pointerenter', () => atlas.highlightTopic(i));
+    b.addEventListener('pointerleave', () => atlas.highlightTopic(-1));
+    b.addEventListener('focus', () => atlas.highlightTopic(i));
+    b.addEventListener('blur', () => atlas.highlightTopic(-1));
   });
-  document.getElementById('atlas-desks-all')?.addEventListener('click', () => deskButtons.forEach((b) => { b.setAttribute('aria-pressed', 'true'); atlas.setDesk(Number(b.dataset.desk), true); }));
+  document.getElementById('atlas-topics-all')?.addEventListener('click', () => topicButtons.forEach((b) => { b.setAttribute('aria-pressed', 'true'); atlas.setTopic(Number(b.dataset.topic), true); }));
 
   document.querySelectorAll<HTMLButtonElement>('#atlas-risk button').forEach((b) => b.addEventListener('click', () => {
     const on = b.getAttribute('aria-pressed') !== 'true'; b.setAttribute('aria-pressed', String(on)); atlas.setRisk(b.dataset.risk!, on);
@@ -164,7 +141,7 @@ export async function initAtlasPage() {
       if (!q) return;
       const words = q.split(/\s+/);
       const found = data!.nodes.filter((n) => { const hay = `${n.t} ${n.id}`.toLowerCase(); return words.every((w) => hay.includes(w)); })
-        .sort((a, b) => 'fctp'.indexOf(a.k) - 'fctp'.indexOf(b.k) || b.n - a.n).slice(0, 7);
+        .sort((a, b) => 'fct'.indexOf(a.k) - 'fct'.indexOf(b.k) || b.n - a.n).slice(0, 7);
       if (!found.length) { hits.append(h('li', { class: 'muted small', style: 'padding:0.4rem 0' }, 'Nothing in the atlas matches.')); return; }
       for (const n of found) {
         const b = h('button', { type: 'button' }, h('span', {}, n.t), h('span', { class: 'k' }, KIND[n.k]));

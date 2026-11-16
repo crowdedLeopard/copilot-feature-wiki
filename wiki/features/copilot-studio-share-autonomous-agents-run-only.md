@@ -2,7 +2,7 @@
 title: "Copilot Studio: share autonomous agents with end users (run-only)"
 slug: "copilot-studio-share-autonomous-agents-run-only"
 roadmapId: 567894
-desk: "agents"
+topic: "copilot-studio"
 products: ["Microsoft Copilot Studio"]
 summary: "Makers can share trigger-based agents with people who run them under their own credentials. Each user's runs bill Copilot Credits to the hosting environment, and users manage their own connections and trigger settings."
 status: "in-development"

@@ -2,7 +2,7 @@
 title: "Power Pages: site analytics and server logging configuration"
 slug: "power-pages-administration-and-governance-configure-site-analytics-and-server-logging"
 roadmapId: 578071
-desk: "power-platform"
+topic: "power-platform"
 products: ["Power Pages"]
 summary: "Makers will configure Application Insights analytics for page views, forms and sessions, and see server-side errors and access logs for a Power Pages site."
 status: "in-development"

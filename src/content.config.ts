@@ -1,5 +1,6 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
+import { TOPIC_IDS } from '../config/taxonomy.mjs';
 
 const slug = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/);
 const source = z.object({ title: z.string(), url: z.string().url(), kind: z.enum(['roadmap', 'learn', 'blog', 'message-center', 'docs', 'video']) });
@@ -12,7 +13,7 @@ const features = defineCollection({
     title: z.string(),
     slug,
     roadmapId: z.number().int().nullable(),
-    desk: z.enum(['agents', 'copilot', 'power-platform', 'security-compliance', 'admin-billing', 'modern-work']),
+    topic: z.enum(TOPIC_IDS as [string, ...string[]]),
     products: z.array(z.string()).min(1),
     summary: z.string(),
     status: z.enum(['in-development', 'preview', 'rolling-out', 'launched', 'cancelled']),

@@ -2,7 +2,7 @@
 title: "Microsoft Dataverse: management MCP server for building and governing MCP servers"
 slug: "microsoft-dataverse-m365-collaboration-discover-build-customize-and-extend-with-management"
 roadmapId: 576752
-desk: "power-platform"
+topic: "power-platform"
 products: ["Microsoft Dataverse"]
 summary: "An environment-scoped endpoint lets developers and agents discover tools and assemble custom MCP servers from connectors, Graph APIs and custom APIs, with DLP and access controls."
 status: "in-development"

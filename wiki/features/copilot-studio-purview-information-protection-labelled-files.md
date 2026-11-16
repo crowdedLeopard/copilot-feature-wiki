@@ -2,7 +2,7 @@
 title: "Copilot Studio: agents on the Microsoft 365 channel accept files protected by Purview Information Protection labels"
 slug: "copilot-studio-purview-information-protection-labelled-files"
 roadmapId: 571305
-desk: "agents"
+topic: "copilot-studio"
 products: ["Microsoft Copilot Studio"]
 summary: "Users can upload sensitivity-labelled files to Copilot Studio agents in Copilot and Teams. Agents process the content according to the user's and agent's permissions, with label protections enforced end to end."
 status: "in-development"

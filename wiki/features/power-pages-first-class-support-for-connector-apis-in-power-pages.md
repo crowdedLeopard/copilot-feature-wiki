@@ -2,7 +2,7 @@
 title: "Power Pages: first-class support for Power Platform connector APIs"
 slug: "power-pages-first-class-support-for-connector-apis-in-power-pages"
 roadmapId: 577897
-desk: "power-platform"
+topic: "power-platform"
 products: ["Power Pages"]
 summary: "Power Pages sites will call Power Platform connectors, including SQL, SAP and Oracle through the on-premises data gateway, with server-side logic."
 status: "in-development"

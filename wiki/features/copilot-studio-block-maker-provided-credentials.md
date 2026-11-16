@@ -2,7 +2,7 @@
 title: "Copilot Studio: block maker-provided credentials for tool authentication"
 slug: "copilot-studio-block-maker-provided-credentials"
 roadmapId: 566997
-desk: "agents"
+topic: "copilot-studio"
 products: ["Microsoft Copilot (Microsoft 365)","Microsoft Copilot Studio"]
 summary: "Admins can stop makers choosing their own credentials when they connect tools to agents, forcing end-user authentication so an agent never acts with more access than the person using it."
 status: "in-development"

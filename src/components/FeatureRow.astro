@@ -2,21 +2,21 @@
 import type { CollectionEntry } from 'astro:content';
 import Badge from './Badge.astro';
 import Rating from './Rating.astro';
-import { DESK_BY_ID, featureUrl, deskUrl, formatDate, shortRoadmapDate } from '../lib/site';
+import { TOPIC_BY_ID, featureUrl, topicUrl, formatDate, shortRoadmapDate } from '../lib/site';
 
 interface Props {
   entry: CollectionEntry<'features'>;
   compact?: boolean;
-  showDesk?: boolean;
+  showTopic?: boolean;
   /** Add data-* attributes for client-side filtering */
   filterable?: boolean;
 }
-const { entry, compact = false, showDesk = true, filterable = false } = Astro.props;
+const { entry, compact = false, showTopic = true, filterable = false } = Astro.props;
 const d = entry.data;
-const desk = (DESK_BY_ID as Record<string, { label: string; short: string }>)[d.desk];
+const topic = (TOPIC_BY_ID as Record<string, { label: string; short: string }>)[d.topic];
 const attrs = filterable
   ? {
-      'data-desk': d.desk,
+      'data-topic': d.topic,
       'data-risk': d.risk,
       'data-cost': d.cost,
       'data-impact': d.impact,
@@ -39,7 +39,7 @@ const attrs = filterable
     <h3 class="row__title"><a href={featureUrl(d.slug)}>{d.title}</a></h3>
     <p class="row__summary">{d.summary}</p>
     <div class="row__meta">
-      {showDesk && <a href={deskUrl(d.desk)} class="muted" style="text-decoration:none">{desk?.label ?? d.desk}</a>}
+      {showTopic && <a href={topicUrl(d.topic)} class="muted" style="text-decoration:none">{topic?.label ?? d.topic}</a>}
       <Badge status={d.status} />
       <Rating kind="risk" value={d.risk} />
       <Rating kind="cost" value={d.cost} />

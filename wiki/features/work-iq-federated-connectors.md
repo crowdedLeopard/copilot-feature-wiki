@@ -2,7 +2,7 @@
 title: "Work IQ: federated connectors for governed access to more data sources"
 slug: "work-iq-federated-connectors"
 roadmapId: 570670
-desk: "agents"
+topic: "copilot-studio"
 products: ["Microsoft Graph","Work IQ"]
 summary: "Work IQ will be able to use federated connectors to reach additional enterprise data sources under governance."
 status: "in-development"

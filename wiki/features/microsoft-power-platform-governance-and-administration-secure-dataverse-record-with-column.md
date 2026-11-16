@@ -2,7 +2,7 @@
 title: "Power Platform: secure Dataverse records with column-based filtering"
 slug: "microsoft-power-platform-governance-and-administration-secure-dataverse-record-with-column"
 roadmapId: 577860
-desk: "power-platform"
+topic: "power-platform"
 products: ["Microsoft Power Platform governance and administration"]
 summary: "Dataverse security can grant record access by column values such as region or department rather than by ownership, aimed at reporting and aggregated data."
 status: "in-development"

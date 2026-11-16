@@ -2,7 +2,7 @@
 title: "Microsoft 365 Copilot Chat: usage-based billing models in the model selector"
 slug: "m365-copilot-chat-usage-based-billing-models-model-selector"
 roadmapId: 571400
-desk: "copilot"
+topic: "m365-copilot"
 products: ["Microsoft Copilot (Microsoft 365)"]
 summary: "Users will be able to pick models that bill in Copilot Credits from the model selector in Copilot Chat. Admins must allocate credits through spending policies first, and users can request more when they run out."
 status: "in-development"

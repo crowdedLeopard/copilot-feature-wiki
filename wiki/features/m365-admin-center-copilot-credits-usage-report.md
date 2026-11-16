@@ -2,7 +2,7 @@
 title: "Microsoft 365 admin center: Copilot Credits usage report for pay-as-you-go in Copilot Chat"
 slug: "m365-admin-center-copilot-credits-usage-report"
 roadmapId: 490738
-desk: "admin-billing"
+topic: "governance"
 products: ["Microsoft 365 Admin Center","Microsoft Copilot (Microsoft 365)"]
 summary: "A usage report that breaks metered Copilot Chat agent consumption down by user, billing policy, agent and agent-user pair, with alerts for users above 2,000 credits. In preview since May 2025; GA now targeted for April 2027."
 status: "in-development"

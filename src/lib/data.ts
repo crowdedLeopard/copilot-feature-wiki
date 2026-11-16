@@ -1,7 +1,7 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import catalogJson from '../../data/catalog.json';
 import statsJson from '../../data/stats.json';
-import { compareByAction, DESKS } from './site';
+import { compareByAction, TOPICS } from './site';
 
 export type Feature = CollectionEntry<'features'>;
 export type Concept = CollectionEntry<'concepts'>;
@@ -22,14 +22,14 @@ export interface CatalogItem {
   clouds: string[];
   releasePhase: string[];
   platforms: string[];
-  desk: string | null;
+  topic: string | null;
   roadmapUrl: string;
   briefing: string | null;
 }
 
 export const catalog = (catalogJson as { generated: string; count: number; items: CatalogItem[] });
 export const stats = statsJson as {
-  generated: string; briefings: number; concepts: number; tracked: number; byDesk: Record<string, number>; actNow: number; updatedThisWeek: number;
+  generated: string; briefings: number; concepts: number; tracked: number; byTopic: Record<string, number>; actNow: number; updatedThisWeek: number;
 };
 
 export async function allFeatures(): Promise<Feature[]> {
@@ -47,10 +47,10 @@ export async function allDigests(): Promise<Digest[]> {
   return items.sort((a, b) => b.data.date.localeCompare(a.data.date));
 }
 
-export function byDesk(features: Feature[]) {
+export function byTopic(features: Feature[]) {
   const map = new Map<string, Feature[]>();
-  for (const d of DESKS) map.set(d.id, []);
-  for (const f of features) map.get(f.data.desk)?.push(f);
+  for (const t of TOPICS) map.set(t.id, []);
+  for (const f of features) map.get(f.data.topic)?.push(f);
   return map;
 }
 
@@ -68,10 +68,10 @@ export function briefedIds(features: Feature[]) {
   return m;
 }
 
-export function recentCatalog(deskId?: string, days = 90, limit = 250) {
+export function recentCatalog(topicId?: string, days = 90, limit = 250) {
   const cutoff = Date.now() - days * 86400000;
   return catalog.items
-    .filter((i) => (!deskId || i.desk === deskId) && new Date(i.modified).getTime() >= cutoff)
+    .filter((i) => (!topicId || i.topic === topicId) && new Date(i.modified).getTime() >= cutoff)
     .sort((a, b) => b.modified.localeCompare(a.modified))
     .slice(0, limit);
 }

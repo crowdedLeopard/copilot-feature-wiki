@@ -13,7 +13,7 @@ const tags = tagCounts(features, concepts);
     <div class="article-head" style="padding-bottom:1rem">
       <div class="eyebrow"><span>Tags</span><span class="sep"></span><span>{tags.length} tags</span></div>
       <h1 class="display">Tags</h1>
-      <p class="standfirst">Tags cross the desks. Sized by how often they appear.</p>
+      <p class="standfirst">Tags cut across the topics. Sized by how often they appear.</p>
     </div>
     <div class="chips" style="margin-top:1.5rem;gap:0.6rem">
       {tags.map(([t, n]) => <a class="chip" href={tagUrl(t)} style={`font-size:${Math.min(1.25, 0.8 + n * 0.08)}rem`}>{tagLabel(t)} <span class="muted mono" style="font-size:0.7em">{n}</span></a>)}

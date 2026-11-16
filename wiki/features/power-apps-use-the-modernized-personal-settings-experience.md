@@ -2,7 +2,7 @@
 title: "Power Apps: modernised Personal settings experience in model-driven apps"
 slug: "power-apps-use-the-modernized-personal-settings-experience"
 roadmapId: 579899
-desk: "power-platform"
+topic: "power-platform"
 products: ["Power Apps"]
 summary: "Model-driven apps get a redesigned Personal settings panel with clearer organisation and navigation, with a button to return to the classic view."
 status: "in-development"

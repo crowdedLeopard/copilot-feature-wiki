@@ -8,7 +8,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { loadPages } from './lib/pages.mjs';
 import { WIKI_DIR, DATA_DIR, readJson, appendLog, today, toFrontmatter } from './lib/util.mjs';
-import { DESKS, ACTION, RISK } from '../config/taxonomy.mjs';
+import { TOPICS, ACTION, RISK } from '../config/taxonomy.mjs';
 
 function isoWeek(d = new Date()) {
   const date = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()));
@@ -42,19 +42,19 @@ async function main() {
   lines.push('## This week in one paragraph', '');
   if (!fresh.length) lines.push('No briefings were created or refreshed this week. The roadmap feed was ingested as usual; see the log for details.', '');
   else {
-    const byDesk = DESKS.map((d) => [d, fresh.filter((p) => p.data.desk === d.id)]).filter(([, l]) => l.length);
-    lines.push(`${fresh.length} briefings changed across ${byDesk.length} desk${byDesk.length === 1 ? '' : 's'}: ${byDesk.map(([d, l]) => `${l.length} in ${d.label}`).join(', ')}. ${actNow.length ? `${actNow.length} carry an "Act now" rating because they are on by default or close to a deadline.` : 'Nothing is rated "Act now".'} ${highRisk.length ? `${highRisk.length} are rated high risk, mostly because they move organisational data or let agents act on their own.` : ''}`.trim(), '');
+    const byTopic = TOPICS.map((t) => [t, fresh.filter((p) => p.data.topic === t.id)]).filter(([, l]) => l.length);
+    lines.push(`${fresh.length} briefings changed across ${byTopic.length} topic${byTopic.length === 1 ? '' : 's'}: ${byTopic.map(([t, l]) => `${l.length} in ${t.label}`).join(', ')}. ${actNow.length ? `${actNow.length} carry an "Act now" rating because they are on by default or close to a deadline.` : 'Nothing is rated "Act now".'} ${highRisk.length ? `${highRisk.length} are rated high risk, mostly because they move organisational data or let agents act on their own.` : ''}`.trim(), '');
   }
   if (actNow.length) {
     lines.push('## Act now', '');
     for (const p of actNow) lines.push(`- **[${p.data.title}](/features/${p.slug}/)** (${RISK[p.data.risk].label} risk). ${p.data.summary}`);
     lines.push('');
   }
-  for (const desk of DESKS) {
-    const mine = fresh.filter((p) => p.data.desk === desk.id && p.data.action !== 'act-now')
+  for (const topic of TOPICS) {
+    const mine = fresh.filter((p) => p.data.topic === topic.id && p.data.action !== 'act-now')
       .sort((a, b) => (ACTION[b.data.action]?.rank ?? 0) - (ACTION[a.data.action]?.rank ?? 0));
     if (!mine.length) continue;
-    lines.push(`## ${desk.label}`, '');
+    lines.push(`## ${topic.label}`, '');
     for (const p of mine) {
       const change = p.data.changes?.at(-1)?.note;
       lines.push(`- **[${p.data.title}](/features/${p.slug}/)**. ${ACTION[p.data.action]?.label ?? ''}, ${RISK[p.data.risk].label.toLowerCase()} risk. ${p.data.summary}${change && change !== 'Initial briefing' ? ` *(${change})*` : ''}`);

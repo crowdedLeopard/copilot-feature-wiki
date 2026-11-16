@@ -1,8 +1,8 @@
 import {
-  SITE, DESKS, DESK_BY_ID, RISK, COST, IMPACT, DEFAULT_STATE, ACTION, STATUS, LICENSING_MODEL, AUDIENCES, SOURCE_KIND,
+  SITE, TOPICS, TOPIC_BY_ID, RISK, COST, IMPACT, DEFAULT_STATE, ACTION, STATUS, LICENSING_MODEL, AUDIENCES, SOURCE_KIND,
 } from '../../config/taxonomy.mjs';
 
-export { SITE, DESKS, DESK_BY_ID, RISK, COST, IMPACT, DEFAULT_STATE, ACTION, STATUS, LICENSING_MODEL, AUDIENCES, SOURCE_KIND };
+export { SITE, TOPICS, TOPIC_BY_ID, RISK, COST, IMPACT, DEFAULT_STATE, ACTION, STATUS, LICENSING_MODEL, AUDIENCES, SOURCE_KIND };
 
 export const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
 
@@ -15,7 +15,7 @@ export function href(path: string): string {
 
 export function featureUrl(slug: string) { return href(`/features/${slug}/`); }
 export function conceptUrl(slug: string) { return href(`/concepts/${slug}/`); }
-export function deskUrl(desk: string) { return href(`/desks/${desk}/`); }
+export function topicUrl(topic: string) { return href(`/topics/${topic}/`); }
 export function tagUrl(tag: string) { return href(`/tags/${tag}/`); }
 
 const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];

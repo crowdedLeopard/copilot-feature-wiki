@@ -2,7 +2,7 @@
 title: "Work IQ: human in the loop for agents and agent flows"
 slug: "work-iq-human-in-the-loop"
 roadmapId: 570672
-desk: "agents"
+topic: "copilot-studio"
 products: ["Work IQ","Microsoft Copilot (Microsoft 365)"]
 summary: "Agents and agent flows will be able to pause for human input or approval before continuing, using Work IQ. Roadmap text is the only published detail so far."
 status: "in-development"

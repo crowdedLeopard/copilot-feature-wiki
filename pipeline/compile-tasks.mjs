@@ -33,7 +33,7 @@ for (const q of items) {
   const briefFile = path.join(TASK_DIR, `${q.id}.md`);
   await fs.writeFile(briefFile, researchBrief(item, existing, indexSlugs));
   tasks.push({
-    id: q.id, reason: q.reason, slug, title: item.title, status: item.status, desk: item.desk,
+    id: q.id, reason: q.reason, slug, title: item.title, status: item.status, topic: item.topic,
     exists: Boolean(existing), brief: path.relative(process.cwd(), briefFile),
     raw: path.relative(process.cwd(), path.join('raw', 'roadmap', 'items', `${q.id}.json`)),
     page: path.relative(process.cwd(), path.join('wiki', 'features', `${slug}.md`)),

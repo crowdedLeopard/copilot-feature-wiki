@@ -6,48 +6,43 @@ export const SITE = {
   repo: 'https://github.com/crowdedLeopard/copilot-feature-wiki',
 };
 
-// Desks are the top-level sections. Order matters: an item with several products
-// is filed under the first desk whose product list matches. Specific platforms come before
-// the broad "Microsoft Copilot (Microsoft 365)" tag, which Microsoft adds to most AI items.
-export const DESKS = [
+// Topics are the top-level categories. Every roadmap item is filed under exactly one.
+// Order matters twice: it is the order topics are listed in, and an item with several products is
+// filed under the first topic whose product list matches. Specific platforms come before the broad
+// "Microsoft Copilot (Microsoft 365)" tag, which Microsoft adds to most AI items.
+export const TOPICS = [
   {
-    id: 'agents',
-    label: 'Agents & Copilot Studio',
-    short: 'Agents',
-    blurb: 'Copilot Studio, Agent 365, Work IQ and the agent control plane.',
+    id: 'copilot-studio',
+    label: 'Copilot Studio & agents',
+    short: 'Copilot Studio',
+    blurb: 'Copilot Studio, Agent 365, Work IQ and the controls for building and running agents.',
     products: ['Microsoft Copilot Studio', 'Copilot Studio', 'Microsoft Agent 365', 'Agent 365', 'Work IQ'],
   },
   {
     id: 'power-platform',
     label: 'Power Platform',
     short: 'Power Platform',
-    blurb: 'Power Apps, Power Automate, Power Pages, Dataverse and platform governance.',
+    blurb: 'Power Apps, Power Automate, Power Pages, Dataverse and platform administration.',
     products: [
       'Power Apps', 'PowerApps', 'Power Automate', 'Power Pages', 'Microsoft Dataverse', 'Dataverse',
       'Microsoft Power Platform governance and administration', 'Power Platform', 'Power BI', 'AI Builder',
     ],
   },
   {
-    id: 'security-compliance',
-    label: 'Security & Compliance',
-    short: 'Security',
-    blurb: 'Purview, Entra, Defender and Intune changes that touch Copilot and collaboration data.',
+    id: 'governance',
+    label: 'Governance & security',
+    short: 'Governance',
+    blurb: 'Purview, Entra, Defender, Intune and the Microsoft 365 admin centre: compliance, identity, licensing and billing.',
     products: [
       'Microsoft Purview', 'Microsoft Purview compliance portal', 'Microsoft Entra', 'Microsoft Defender for Office 365',
       'Microsoft Intune', 'Microsoft 365 Defender', 'Microsoft Defender', 'Microsoft Information Protection',
+      'Microsoft 365 admin center', 'Microsoft 365 Admin Center',
     ],
   },
   {
-    id: 'admin-billing',
-    label: 'Admin & Billing',
-    short: 'Admin',
-    blurb: 'Microsoft 365 admin center, usage reporting, licensing and pay-as-you-go billing.',
-    products: ['Microsoft 365 admin center', 'Microsoft 365 Admin Center'],
-  },
-  {
-    id: 'copilot',
+    id: 'm365-copilot',
     label: 'Microsoft 365 Copilot',
-    short: 'Copilot',
+    short: 'M365 Copilot',
     blurb: 'Copilot Chat, Microsoft 365 Copilot, Researcher, Analyst, connectors and Copilot in the apps.',
     products: ['Microsoft Copilot (Microsoft 365)', 'Microsoft 365 Copilot', 'Microsoft 365 Copilot Chat', 'Microsoft Copilot'],
   },
@@ -65,14 +60,26 @@ export const DESKS = [
   },
 ];
 
-export const DESK_BY_ID = Object.fromEntries(DESKS.map((d) => [d.id, d]));
+export const TOPIC_IDS = TOPICS.map((t) => t.id);
+export const TOPIC_BY_ID = Object.fromEntries(TOPICS.map((t) => [t.id, t]));
 
-export function deskForProducts(products = []) {
-  for (const desk of DESKS) {
-    if (products.some((p) => desk.products.includes(p))) return desk.id;
+export function topicForProducts(products = []) {
+  for (const topic of TOPICS) {
+    if (products.some((p) => topic.products.includes(p))) return topic.id;
   }
   return null; // out of scope (for example Dynamics 365)
 }
+
+// Until November 2026 topics were called "desks" and there were six of them. Pages and links written
+// under the old names are mapped here; the lint step rewrites any page that still carries a desk.
+export const LEGACY_DESK_TOPIC = {
+  agents: 'copilot-studio',
+  'power-platform': 'power-platform',
+  'security-compliance': 'governance',
+  'admin-billing': 'governance',
+  copilot: 'm365-copilot',
+  'modern-work': 'modern-work',
+};
 
 // Assessment scales. Labels are what readers see; ids are what pages store.
 export const RISK = {

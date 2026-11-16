@@ -2,7 +2,7 @@
 title: "Microsoft Purview DLP: stop Copilot sending sensitive data to external web search"
 slug: "purview-dlp-block-sensitive-data-in-copilot-web-search"
 roadmapId: 548671
-desk: "security-compliance"
+topic: "governance"
 products: ["Microsoft Purview"]
 summary: "A DLP rule at the Copilot location can detect sensitive information types in a prompt and block web grounding for that response, so Copilot answers from internal data only. Covers Copilot Chat, Microsoft 365 Copilot and Copilot Studio agents in Copilot."
 status: "launched"

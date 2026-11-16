@@ -2,7 +2,7 @@
 title: "Microsoft Copilot: delegated publishing of organisation prompts"
 slug: "microsoft-copilot-microsoft-m365-delegated-prompt-publishing-for-organization-prompts"
 roadmapId: 569425
-desk: "admin-billing"
+topic: "governance"
 products: ["Microsoft 365 admin center","Microsoft Copilot (Microsoft 365)"]
 summary: "Admins can delegate organisation prompt publishing to users and groups, who manage tenant-wide prompts in the Prompt Lab without admin centre access."
 status: "in-development"
