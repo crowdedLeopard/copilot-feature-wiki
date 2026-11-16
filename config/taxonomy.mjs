@@ -220,6 +220,71 @@ export const SOURCE_KIND = {
   video: 'Video',
 };
 
+// Microsoft 365 Message Center posts (the notices Microsoft sends to tenant administrators) are the
+// wiki's second source after the roadmap. They are read from Microsoft Graph with an app-only
+// permission and only the posts every tenant receives are published; see pipeline/lib/message-center.mjs
+// for the screen that keeps anything tenant-specific out of the public repository.
+export const MESSAGE_CENTER = {
+  // Message Center names services differently from the roadmap's product tags. Each alias maps to a
+  // product name in TOPICS, so a post is filed under a topic by the same rule as a roadmap item.
+  serviceAliases: {
+    'SharePoint Online': 'SharePoint',
+    'OneDrive for Business': 'OneDrive',
+    'Exchange Online': 'Exchange',
+    'Microsoft Forms': 'Forms',
+    'Microsoft Planner': 'Planner',
+    'Microsoft Whiteboard': 'Whiteboard',
+    'Microsoft Defender XDR': 'Microsoft Defender',
+    'Microsoft Defender for Endpoint': 'Microsoft Defender',
+    'Microsoft Defender for Identity': 'Microsoft Defender',
+    'Microsoft Defender for Cloud Apps': 'Microsoft Defender',
+    'Microsoft Entra ID': 'Microsoft Entra',
+    'Azure Active Directory': 'Microsoft Entra',
+    'Microsoft Copilot Studio': 'Microsoft Copilot Studio',
+    'Copilot Studio': 'Microsoft Copilot Studio',
+  },
+  // Services that say nothing about which product a post is about. For these the title decides; a
+  // post that names no product in its title is filed as a suite-wide Modern Work notice.
+  broadServices: ['Microsoft 365 suite', 'Microsoft 365 apps', 'Microsoft 365 for the web', 'Microsoft Office', 'Microsoft 365'],
+  // Title patterns, in the order of TOPICS, so a title that names two products is filed the way a
+  // roadmap item tagged with both would be.
+  titleTopics: [
+    [/\bcopilot studio\b|\bagent 365\b|\bwork iq\b/i, 'copilot-studio'],
+    [/\bpower (apps|automate|pages|platform|bi)\b|\bdataverse\b|\bai builder\b/i, 'power-platform'],
+    [/\bpurview\b|\bentra\b|\bdefender\b|\bintune\b|\bconditional access\b|\badmin cent(er|re)\b|\blicens(e|ing)\b|\bbilling\b/i, 'governance'],
+    [/\bcopilot\b/i, 'm365-copilot'],
+    [/\bteams\b|\bsharepoint\b|\bonedrive\b|\boutlook\b|\bexchange\b|\bviva\b|\bword\b|\bexcel\b|\bpowerpoint\b|\bonenote\b|\bloop\b|\bplanner\b|\bforms\b|\bstream\b|\bwhiteboard\b|\bclipchamp\b|\bedge\b|\bwindows\b|\bvisio\b|\bproject\b|\bto do\b/i, 'modern-work'],
+  ],
+  // Message Center's own labels, in plain English for readers.
+  category: {
+    planForChange: { label: 'Plan for change', help: 'Microsoft is changing something and expects administrators to prepare: a new default, a retirement or a required action.' },
+    stayInformed: { label: 'Stay informed', help: 'A new or updated feature. Nothing has to be done, but users may notice the change.' },
+    preventOrFixIssue: { label: 'Prevent or fix an issue', help: 'An issue Microsoft has found and the steps that avoid or correct it.' },
+    unknownFutureValue: { label: 'Notice', help: 'A Message Center post of a kind this ledger does not yet classify.' },
+  },
+  severity: {
+    critical: { label: 'Critical', rank: 3 },
+    high: { label: 'High', rank: 2 },
+    normal: { label: 'Normal', rank: 1 },
+    unknownFutureValue: { label: 'Unrated', rank: 0 },
+  },
+  // Tags Microsoft puts on a post. "Data privacy" posts are restricted to Global Administrators and
+  // Message Center Privacy Readers, and are never published here.
+  privateTags: ['Data privacy', 'Data Privacy'],
+  tagHelp: {
+    'Admin impact': 'The change alters something administrators see or configure.',
+    'User impact': 'Users will notice a change to what they see or how they work.',
+    'Major update': 'A change Microsoft communicates at least 30 days in advance.',
+    'New feature': 'A new feature or service.',
+    'Feature update': 'An update to an existing feature.',
+    Retirement: 'A service or feature is being retired.',
+    'Updated message': 'Microsoft has revised this post since it was first published.',
+    'Deferred feature': 'Available first to tenants on deferred release.',
+  },
+  // The post in the Microsoft 365 admin center. Opens for anyone with a Message Center role in their own tenant.
+  url: (id) => `https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/${id}`,
+};
+
 // Domains a briefing may cite. Anything else is dropped by the pipeline.
 export const ALLOWED_SOURCE_DOMAINS = [
   'learn.microsoft.com', 'www.microsoft.com', 'microsoft.com', 'techcommunity.microsoft.com', 'adoption.microsoft.com',

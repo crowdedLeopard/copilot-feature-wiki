@@ -3,12 +3,50 @@ import catalogJson from '../../data/catalog.json';
 import statsJson from '../../data/stats.json';
 import heldJson from '../../data/held.json';
 import lifecycleJson from '../../data/lifecycle.json';
+import messageIndexJson from '../../data/message-center.json';
 import { compareByAction, TOPICS, LIFECYCLE } from './site';
 
 export type Feature = CollectionEntry<'features'>;
 export type Concept = CollectionEntry<'concepts'>;
 export type Digest = CollectionEntry<'digests'>;
 export type Verification = CollectionEntry<'verifications'>['data'];
+/** A Microsoft 365 Message Center post, from raw/message-center (see pipeline/ingest-message-center.mjs). */
+export type Notice = CollectionEntry<'messages'>;
+
+/** What the Message Center ingest recorded about its last run: counts, and how many posts the tenant-privacy screen kept back, by reason. */
+export const messageIndex = messageIndexJson as {
+  generated: string | null; source?: string; count: number; inFeed?: number; actBy?: number;
+  screen?: { withheld: number; byReason: Record<string, number>; reasons: Record<string, string>; tenantWordsFromGraph?: boolean };
+  withheld?: { id: string; reasons: string[] }[];
+  posts: { id: string; title: string; topic: string; roadmapIds: number[]; actionRequiredBy: string | null; lastModified: string; published: string; inFeed?: boolean }[];
+};
+
+/** Every published Message Center post, most recently revised first. */
+export async function allNotices(): Promise<Notice[]> {
+  const items = await getCollection('messages');
+  return items.sort((a, b) => b.data.lastModified.localeCompare(a.data.lastModified) || a.data.id.localeCompare(b.data.id));
+}
+
+/** Posts keyed by the roadmap ids they name. */
+export function noticesByRoadmap(notices: Notice[]) {
+  const m = new Map<number, Notice[]>();
+  for (const n of notices) for (const id of n.data.roadmapIds) { if (!m.has(id)) m.set(id, []); m.get(id)!.push(n); }
+  return m;
+}
+
+/** Posts with an act-by date that has not passed (or passed within `graceDays`), soonest first. */
+export function actByNotices(notices: Notice[], { graceDays = 7, now = Date.now() } = {}) {
+  const floor = now - graceDays * 86400000;
+  return notices
+    .filter((n) => n.data.actionRequiredBy && new Date(n.data.actionRequiredBy).getTime() >= floor)
+    .sort((a, b) => a.data.actionRequiredBy!.localeCompare(b.data.actionRequiredBy!));
+}
+
+/** The earliest act-by date still ahead among a briefing's posts, with the post it comes from. */
+export function nearestActBy(posts: Notice[], now = Date.now()) {
+  const ahead = actByNotices(posts, { graceDays: 0, now });
+  return ahead.length ? { date: ahead[0].data.actionRequiredBy!, post: ahead[0] } : null;
+}
 
 /** A briefing the verifier is holding back from publication, from data/held.json (written by pipeline/verify-finish.mjs). */
 export interface HeldItem {
@@ -48,12 +86,15 @@ export interface CatalogItem {
   topic: string | null;
   roadmapUrl: string;
   briefing: string | null;
+  /** Message Center posts that name this item (ids), added by ingest when the Message Center source is connected. */
+  messageCenter?: string[];
 }
 
 export const catalog = (catalogJson as { generated: string; count: number; items: CatalogItem[] });
 export const stats = statsJson as {
   generated: string; briefings: number; archived?: number; concepts: number; tracked: number; byTopic: Record<string, number>; actNow: number; updatedThisWeek: number;
   verification?: { checked: number; needsCorrection: number; unchecked: number; held: number };
+  messageCenter?: { posts: number; actBy: number; withheld: number; linked: number };
 };
 /** When each briefed roadmap item was last seen in the feed, and which are currently missing (written by ingest). */
 export const lifecycle = lifecycleJson as { generated: string | null; graceDays: number; seen: Record<string, string>; missing: Record<string, { lastSeen: string | null; missingSince: string }> };

@@ -21,6 +21,7 @@ import { DATA_DIR, FEATURES_DIR, readJson, writeJson, today } from './lib/util.m
 import { loadPages } from './lib/pages.mjs';
 import { loadRawItem } from './lib/briefing.mjs';
 import { VERIFY_TASK_DIR, VERIFY_RESULTS, listHeld, precheck, precheckText, verificationDue } from './lib/verify.mjs';
+import { postsForBrief, briefSection as messageCenterSection } from './lib/message-center.mjs';
 
 const LIMIT = Number(process.env.VERIFY_LIMIT || 24);
 const ONLY = (process.env.VERIFY_ONLY || '').split(',').map((s) => s.trim()).filter(Boolean);
@@ -53,7 +54,7 @@ async function candidates() {
   return out.slice(0, Math.max(LIMIT, mustTake));
 }
 
-function brief(c, raw, pc, writerOutput) {
+function brief(c, raw, pc, writerOutput, posts = []) {
   const d = c.data;
   const coverage = [];
   (d.controls || []).forEach((ctl, i) => {
@@ -80,7 +81,7 @@ ${precheckText(pc)}
 \`\`\`json
 ${raw ? JSON.stringify({ id: raw.id, title: raw.title, status: raw.status, statusKey: raw.statusKey, targetDate: raw.targetDate, previewDate: raw.previewDate, products: raw.products, clouds: raw.clouds, releasePhase: raw.releasePhase, platforms: raw.platforms, created: raw.created, modified: raw.modified, moreInfoLink: raw.moreInfoLink, roadmapUrl: raw.roadmapUrl, description: raw.description }, null, 2) : 'No roadmap record for this page.'}
 \`\`\`
-`;
+${posts.length ? `\n${messageCenterSection(posts).replace('## Message Center posts for this item', '## Message Center posts for this item (record facts: authoritative for the act-by date, rollout window and what Microsoft asks administrators to do)')}` : ''}`;
 }
 
 const picked = await candidates();
@@ -95,13 +96,14 @@ for (const c of picked) {
   const body = (await fs.readFile(c.file, 'utf8')).replace(/^---\n[\s\S]*?\n---\n?/, '');
   const pc = await precheck(c.data, body, raw);
   const writerOutput = c.data.roadmapId ? await exists(path.join(DATA_DIR, 'compile-tasks', `${c.data.roadmapId}.output.json`)) : null;
+  const posts = c.data.roadmapId ? await postsForBrief(c.data.roadmapId) : [];
   const briefFile = path.join(VERIFY_TASK_DIR, `${c.slug}.md`);
-  await fs.writeFile(briefFile, brief(c, raw, pc, writerOutput));
+  await fs.writeFile(briefFile, brief(c, raw, pc, writerOutput, posts));
   await writeJson(path.join(VERIFY_TASK_DIR, `${c.slug}.precheck.json`), pc);
   tasks.push({
     slug: c.slug, title: c.data.title, roadmapId: c.data.roadmapId ?? null, topic: c.data.topic, version: c.data.version || 1,
     reason: c.reason, where: c.where, page: rel(c.file), brief: rel(briefFile), writerOutput,
-    raw: c.data.roadmapId ? `raw/roadmap/items/${c.data.roadmapId}.json` : null, writtenThisRun: Boolean(c.writtenThisRun),
+    raw: c.data.roadmapId ? `raw/roadmap/items/${c.data.roadmapId}.json` : null, messageCenter: posts.map((p) => p.id), writtenThisRun: Boolean(c.writtenThisRun),
     verdict: rel(path.join(VERIFY_TASK_DIR, `${c.slug}.verdict.json`)), precheck: pc.summary,
   });
   console.log(`  ${c.slug} (${c.reason}): ${pc.summary.unreachable} dead link(s), ${pc.summary.uiPathsWithMissingWords} path(s) with missing words, ${pc.summary.apiCallsNotOnPage} call(s) not on page, ${pc.summary.roadmapDrift} roadmap drift`);

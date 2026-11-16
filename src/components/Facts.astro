@@ -2,11 +2,17 @@
 import type { CollectionEntry } from 'astro:content';
 import Rating from './Rating.astro';
 import Badge from './Badge.astro';
-import { DEFAULT_STATE, LICENSING_MODEL, LICENSING_MODEL_HELP, AUDIENCES, href, shortRoadmapDate } from '../lib/site';
+import { DEFAULT_STATE, LICENSING_MODEL, LICENSING_MODEL_HELP, AUDIENCES, href, shortRoadmapDate, formatDate, daysUntil, relativeDays, noticeUrl } from '../lib/site';
 import { cloudInfo } from '../lib/tags';
 
-interface Props { data: CollectionEntry<'features'>['data']; rationale?: { risk?: string; cost?: string; impact?: string } }
-const { data: d, rationale = {} } = Astro.props;
+interface Props {
+  data: CollectionEntry<'features'>['data'];
+  rationale?: { risk?: string; cost?: string; impact?: string };
+  /** The nearest act-by date Microsoft has given tenants for this change, in a Message Center post. */
+  actBy?: { date: string; id: string } | null;
+}
+const { data: d, rationale = {}, actBy = null } = Astro.props;
+const actDays = actBy ? daysUntil(actBy.date) : null;
 const ds = (DEFAULT_STATE as Record<string, { label: string; help: string }>)[d.defaultState];
 const lic = (LICENSING_MODEL as Record<string, string>)[d.licensing.model] ?? d.licensing.model;
 const licHelp = (LICENSING_MODEL_HELP as Record<string, string>)[d.licensing.model] ?? '';
@@ -20,6 +26,9 @@ const tip = (c: { label: string; description: string }) => (c.description ? `${c
 
 <div class="facts" role="table" aria-label="At a glance">
   <div class="fact"><div class="fact__k">Action</div><div class="fact__v"><Badge action={d.action} /></div></div>
+  {actBy && (
+    <div class="fact fact--act"><div class="fact__k">Act by</div><div class="fact__v"><span title={`Microsoft gave tenant administrators this deadline in Message Center post ${actBy.id}.`}>{formatDate(actBy.date)}</span><small>{relativeDays(actDays)} · <a href={noticeUrl(actBy.id)}>{actBy.id}</a></small></div></div>
+  )}
   <div class="fact"><div class="fact__k">Risk</div><div class="fact__v"><Rating kind="risk" value={d.risk} showLabel={false} /></div></div>
   <div class="fact"><div class="fact__k">Cost</div><div class="fact__v"><Rating kind="cost" value={d.cost} showLabel={false} /></div></div>
   <div class="fact"><div class="fact__k">Impact</div><div class="fact__v"><Rating kind="impact" value={d.impact} showLabel={false} /></div></div>

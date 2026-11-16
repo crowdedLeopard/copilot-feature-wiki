@@ -115,6 +115,33 @@ const concepts = defineCollection({
   }),
 });
 
+// Microsoft 365 Message Center posts, one JSON file per post under raw/message-center (written by
+// pipeline/ingest-message-center.mjs after the tenant-privacy screen). Bodies are Microsoft's text.
+const messages = defineCollection({
+  loader: glob({ pattern: '*.json', base: './raw/message-center' }),
+  schema: z.object({
+    id: z.string(),
+    title: z.string(),
+    category: z.string(),
+    severity: z.string(),
+    services: z.array(z.string()).default([]),
+    tags: z.array(z.string()).default([]),
+    isMajorChange: z.boolean().default(false),
+    published: z.string(),
+    lastModified: z.string(),
+    endDate: z.string().nullable().default(null),
+    actionRequiredBy: z.string().nullable().default(null),
+    roadmapIds: z.array(z.number()).default([]),
+    links: z.object({ external: z.string().nullable().default(null), blog: z.string().nullable().default(null), help: z.string().nullable().default(null) }).default({ external: null, blog: null, help: null }),
+    summary: z.string().default(''),
+    body: z.string().default(''),
+    bodyHtml: z.string().default(''),
+    topic: z.enum(TOPIC_IDS as [string, ...string[]]),
+    url: z.string(),
+    fetchedAt: z.string(),
+  }).passthrough(),
+});
+
 const digests = defineCollection({
   loader: glob({ pattern: '*.md', base: './wiki/digests' }),
   schema: z.object({
@@ -123,8 +150,8 @@ const digests = defineCollection({
     summary: z.string(),
     date: z.string(),
     weekStart: z.string(),
-    counts: z.object({ updated: z.number(), actNow: z.number(), highRisk: z.number(), statusChanges: z.number() }),
+    counts: z.object({ updated: z.number(), actNow: z.number(), highRisk: z.number(), statusChanges: z.number(), notices: z.number().default(0) }),
   }),
 });
 
-export const collections = { features, concepts, digests, verifications };
+export const collections = { features, concepts, digests, verifications, messages };

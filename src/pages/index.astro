@@ -5,8 +5,8 @@ import SectionHead from '../components/SectionHead.astro';
 import Badge from '../components/Badge.astro';
 import Legend from '../components/Legend.astro';
 import AtlasTeaser from '../components/AtlasTeaser.astro';
-import { allFeatures, allConcepts, allDigests, byTopic, briefedIds, recentCatalog, stats, catalog } from '../lib/data';
-import { SITE, TOPICS, href, featureUrl, topicUrl, conceptUrl, formatDate, shortRoadmapDate } from '../lib/site';
+import { allFeatures, allConcepts, allDigests, byTopic, briefedIds, recentCatalog, stats, catalog, allNotices, actByNotices } from '../lib/data';
+import { SITE, TOPICS, TOPIC_BY_ID, href, featureUrl, topicUrl, conceptUrl, noticeUrl, formatDate, shortRoadmapDate, daysUntil, relativeDays } from '../lib/site';
 import { buildAtlas } from '../lib/graph';
 
 const features = await allFeatures();
@@ -23,6 +23,10 @@ const trackedByTopic = new Map<string, number>();
 for (const i of catalog.items) if (i.topic) trackedByTopic.set(i.topic, (trackedByTopic.get(i.topic) ?? 0) + 1);
 const tracked = stats.tracked.toLocaleString('en-GB');
 const atlas = buildAtlas(features, concepts).counts;
+// Message Center deadlines: the dates Microsoft has set, soonest first. Hidden until the source is connected.
+const notices = await allNotices();
+const deadlines = actByNotices(notices, { graceDays: 0 }).slice(0, 6);
+const dueClass = (days: number | null) => (days === null ? '' : days <= 30 ? 'due--soon' : days <= 90 ? 'due--near' : '');
 ---
 
 <Base title="Home" kind="home">
@@ -31,6 +35,7 @@ const atlas = buildAtlas(features, concepts).counts;
       <span>Issue of <strong>{formatDate(latestUpdate, { long: true })}</strong></span>
       <span><strong>{features.length}</strong> briefings</span>
       <span><strong>{actNow.length}</strong> need action now</span>
+      {notices.length > 0 && <span><strong>{actByNotices(notices, { graceDays: 0 }).length}</strong> Message Centre deadlines ahead</span>}
       <span><strong>{tracked}</strong> roadmap items tracked</span>
       <span>Refreshed daily at 06:00 UTC</span>
     </div>
@@ -50,6 +55,30 @@ const atlas = buildAtlas(features, concepts).counts;
       </div>
       <AtlasTeaser briefings={atlas.briefings} links={atlas.links} />
     </section>
+
+    {deadlines.length > 0 && (
+      <>
+        <SectionHead title="Act by" more={{ href: href('/message-centre/'), label: 'All Message Centre posts' }} />
+        <p class="muted small" style="margin:-0.4rem 0 0.6rem">Dates Microsoft has set in Message Center, by which administrators must have done something. Soonest first.</p>
+        <table class="deadlines">
+          <tbody>
+            {deadlines.map((n) => {
+              const days = daysUntil(n.data.actionRequiredBy);
+              const b = n.data.roadmapIds.map((id) => briefed.get(id)).find(Boolean);
+              return (
+                <tr>
+                  <td class={`when ${dueClass(days)}`}><b>{formatDate(n.data.actionRequiredBy)}</b><span>{relativeDays(days)}</span></td>
+                  <td class="what">
+                    <a href={noticeUrl(n.data.id)}>{n.data.title}</a>
+                    <div class="meta"><span class="mcid">{n.data.id}</span><span>{(TOPIC_BY_ID as Record<string, { label: string }>)[n.data.topic]?.label}</span>{b && <a href={featureUrl(b.data.slug)}>Read the briefing</a>}</div>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </>
+    )}
 
     <SectionHead title="Act now" more={{ href: href('/features/?action=act-now'), label: 'All act-now briefings' }} />
     <p class="muted small" style="margin:-0.4rem 0 0.6rem">On by default, or close to a rollout date. Configure the controls before the date arrives.</p>

@@ -5,10 +5,11 @@ import Facts from '../../components/Facts.astro';
 import Badge from '../../components/Badge.astro';
 import SectionHead from '../../components/SectionHead.astro';
 import AtlasMini from '../../components/AtlasMini.astro';
-import { allFeatures, allFeaturesIncludingArchived, allConcepts, lifecycle, reviewDue, verificationFor } from '../../lib/data';
+import NoticeRow from '../../components/NoticeRow.astro';
+import { allFeatures, allFeaturesIncludingArchived, allConcepts, lifecycle, reviewDue, verificationFor, allNotices, nearestActBy } from '../../lib/data';
 import { buildAtlas } from '../../lib/graph';
 import '../../styles/briefing.css';
-import { SITE, TOPIC_BY_ID, SOURCE_KIND, LIFECYCLE, href, topicUrl, tagUrl, featureUrl, conceptUrl, formatDate, roadmapUrl, extractRationale, youtubeSearchUrl, learnSearchUrl } from '../../lib/site';
+import { SITE, TOPIC_BY_ID, SOURCE_KIND, LIFECYCLE, href, topicUrl, tagUrl, featureUrl, conceptUrl, noticeUrl, formatDate, roadmapUrl, extractRationale, youtubeSearchUrl, learnSearchUrl } from '../../lib/site';
 import { tagLabel } from '../../lib/tags';
 
 export async function getStaticPaths() {
@@ -56,6 +57,9 @@ for (const c of d.controls) {
 }
 const gaps = { ui: d.controls.filter((c) => !c.ui).length, api: d.controls.filter((c) => !c.api).length };
 const roadmapSource = d.sources.find((s) => s.kind === 'roadmap');
+// Message Center posts Microsoft has sent tenants about this roadmap item, and the nearest deadline among them.
+const notices = d.roadmapId ? (await allNotices()).filter((n) => n.data.roadmapIds.includes(d.roadmapId!)) : [];
+const actBy = d.archived ? null : nearestActBy(notices);
 
 // The independent check: a second model's claim-by-claim verdict against the roadmap record and Microsoft Learn.
 const report = await verificationFor(d.slug);
@@ -132,7 +136,7 @@ const hostOf = (u: string) => { try { return new URL(u).hostname.replace(/^www\.
           <p><b>Awaiting correction.</b> An independent check on {formatDate(v.date, { long: true })} could not confirm {v.unconfirmed} of the {v.claims} statements on this page against Microsoft documentation and found {v.contradicted} contradicted by it. They are listed under <a href="#verification">How this briefing was checked</a>. A corrected version is being prepared. Until then, confirm paths, commands and licensing against the linked Microsoft pages before acting on them.</p>
         </aside>
       )}
-      <Facts data={d.archived ? { ...d, action: 'none' } : d} rationale={rationale} />
+      <Facts data={d.archived ? { ...d, action: 'none' } : d} rationale={rationale} actBy={actBy ? { date: actBy.date, id: actBy.post.data.id } : null} />
     </header>
 
     <div class="article">
@@ -140,6 +144,14 @@ const hostOf = (u: string) => { try { return new URL(u).hostname.replace(/^www\.
         <div class="prose">
           <Content />
         </div>
+
+        {notices.length > 0 && (
+          <>
+            <SectionHead title="Message Centre notices" id="message-centre" />
+            <p class="muted small" style="margin:-0.4rem 0 0.4rem;max-width:72ch">What Microsoft has told tenant administrators about this change, with any date by which something must be done. The briefing above was written with these posts in hand; open a post for Microsoft's full text.</p>
+            <ul class="notices">{notices.map((n) => <NoticeRow entry={n} showTopic={false} />)}</ul>
+          </>
+        )}
 
         <SectionHead title="How this briefing was checked" id="verification" />
         {report && v ? (
@@ -249,6 +261,7 @@ const hostOf = (u: string) => { try { return new URL(u).hostname.replace(/^www\.
           <h3>On this page</h3>
           <ol>
             {toc.map((h) => <li><a href={`#${h.slug}`}>{h.text}</a></li>)}
+            {notices.length > 0 && <li><a href="#message-centre">Message Centre notices</a></li>}
             <li><a href="#verification">How this briefing was checked</a></li>
             <li><a href="#references">Microsoft guidance and references</a></li>
             <li><a href="#related">Related</a></li>
@@ -263,6 +276,15 @@ const hostOf = (u: string) => { try { return new URL(u).hostname.replace(/^www\.
             <button class="btn-ghost" type="button" onclick="window.print()" style="justify-content:space-between"><span>Print this page</span><span class="ext mono">⌘P</span></button>
           </div>
         </div>
+        {notices.length > 0 && (
+          <div class="panel">
+            <h3>Message Centre</h3>
+            <ul class="surfaces">
+              {notices.map((n) => <li><a href={noticeUrl(n.data.id)} title={n.data.title}>{n.data.id}</a><span class="n">{n.data.actionRequiredBy ? `Act by ${formatDate(n.data.actionRequiredBy)}` : formatDate(n.data.lastModified)}</span></li>)}
+            </ul>
+            <p class="surfaces__foot">Microsoft's notices to tenant administrators about this item.</p>
+          </div>
+        )}
         {d.controls.length > 0 && (
           <div class="panel">
             <h3>Control surfaces</h3>

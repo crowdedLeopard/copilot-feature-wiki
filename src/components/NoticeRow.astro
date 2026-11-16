@@ -1,0 +1,45 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Badge from './Badge.astro';
+import { TOPIC_BY_ID, topicUrl, featureUrl, noticeUrl, formatDate, daysUntil, relativeDays } from '../lib/site';
+
+/**
+ * One Message Center post in a list: its date in the margin (the act-by date when Microsoft gave
+ * one, otherwise when the post was last revised), then the title, Microsoft's summary and the
+ * facts a reader filters on. `briefings` are the wiki pages that cover the roadmap items it names.
+ */
+interface Props {
+  entry: CollectionEntry<'messages'>;
+  briefings?: { slug: string; title: string }[];
+  compact?: boolean;
+  showTopic?: boolean;
+}
+const { entry, briefings = [], compact = false, showTopic = true } = Astro.props;
+const d = entry.data;
+const topic = (TOPIC_BY_ID as Record<string, { label: string }>)[d.topic];
+const days = daysUntil(d.actionRequiredBy);
+const revised = d.lastModified.slice(0, 10) !== d.published.slice(0, 10);
+---
+
+<li class={`notice-row${compact ? ' notice-row--compact' : ''}`} data-topic={d.topic}>
+  <div class="notice-row__date">
+    {d.actionRequiredBy ? (
+      <><span class="act">Act by</span><b class={days !== null && days < 0 ? 'muted' : ''}>{formatDate(d.actionRequiredBy)}</b>{days !== null && <span>{relativeDays(days)}</span>}</>
+    ) : (
+      <>{revised ? 'Revised' : 'Published'}<b>{formatDate(d.lastModified)}</b></>
+    )}
+  </div>
+  <div>
+    <h3 class="notice-row__title"><a href={noticeUrl(d.id)}>{d.title}</a></h3>
+    {!compact && d.summary && <p class="notice-row__summary">{d.summary}</p>}
+    <div class="notice-row__meta">
+      <span class="mcid">{d.id}</span>
+      <Badge category={d.category} />
+      {d.isMajorChange && <span class="badge badge--major" title="Microsoft marks a change as major when it communicates it at least 30 days in advance: a new default, a retirement, or something most users will notice.">Major change</span>}
+      {showTopic && topic && <a href={topicUrl(d.topic)} class="muted" style="text-decoration:none">{topic.label}</a>}
+      {d.services.length > 0 && <span>{d.services.slice(0, 3).join(', ')}</span>}
+      {d.actionRequiredBy && revised && <span class="mono">Revised {formatDate(d.lastModified)}</span>}
+      {briefings.map((b) => <a class="briefed" href={featureUrl(b.slug)}>Briefing: {b.title}</a>)}
+    </div>
+  </div>
+</li>

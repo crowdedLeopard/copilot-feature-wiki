@@ -1,18 +1,20 @@
 ---
-import { ACTION, STATUS } from '../lib/site';
+import { ACTION, STATUS, MESSAGE_CENTER } from '../lib/site';
 
 /**
- * A small uppercase label for an action ("Act now", "Prepare", "Review", "No action") or a roadmap
- * status ("In development", "Rolling out", ...). The taxonomy's help text is the tooltip, and the
+ * A small uppercase label for an action ("Act now", "Prepare", "Review", "No action"), a roadmap
+ * status ("In development", "Rolling out", ...) or a Message Center category ("Plan for change",
+ * "Stay informed", "Prevent or fix an issue"). The taxonomy's help text is the tooltip, and the
  * Legend component spells the same text out for readers who do not hover.
  */
 interface Props {
   action?: string;
   status?: string;
+  category?: string;
   text?: string;
   title?: string;
 }
-const { action, status, text, title } = Astro.props;
+const { action, status, category, text, title } = Astro.props;
 let cls = 'badge';
 let label = text ?? '';
 let help = title ?? '';
@@ -26,6 +28,11 @@ if (action) {
   cls += ` badge--status-${status}`;
   label = s?.label ?? status;
   help = s ? `Status: ${s.label}. ${s.help}` : '';
+} else if (category) {
+  const c = (MESSAGE_CENTER.category as Record<string, { label: string; help: string }>)[category];
+  cls += ` badge--cat-${category}`;
+  label = c?.label ?? category;
+  help = c ? `Message Centre category: ${c.label}. ${c.help}` : '';
 }
 ---
 

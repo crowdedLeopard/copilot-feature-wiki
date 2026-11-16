@@ -9,14 +9,16 @@
     "build": "astro build",
     "preview": "astro preview",
     "ingest": "node pipeline/ingest.mjs",
+    "ingest:mc": "node pipeline/ingest-message-center.mjs",
     "compile": "node pipeline/compile.mjs",
     "compile:copilot": "node pipeline/compile-tasks.mjs && node pipeline/compile-copilot.mjs; node pipeline/compile-finish.mjs",
     "lint:wiki": "node pipeline/lint.mjs",
     "index:wiki": "node pipeline/index.mjs",
     "pdf": "node pipeline/pdf.mjs",
-    "daily": "node pipeline/ingest.mjs && node pipeline/compile.mjs && node pipeline/lint.mjs && node pipeline/index.mjs && node pipeline/digest.mjs",
+    "daily": "node pipeline/ingest-message-center.mjs; node pipeline/ingest.mjs && node pipeline/compile.mjs && node pipeline/lint.mjs && node pipeline/index.mjs && node pipeline/digest.mjs",
     "digest": "node pipeline/digest.mjs",
-    "screenshots": "node pipeline/screenshots.mjs"
+    "screenshots": "node pipeline/screenshots.mjs",
+    "test": "node --test \"pipeline/lib/*.test.mjs\""
   },
   "engines": {
     "node": ">=22"
