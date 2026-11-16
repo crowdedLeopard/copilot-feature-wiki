@@ -10,26 +10,29 @@
  */
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { topicForProducts, statusFromRoadmap } from '../config/taxonomy.mjs';
+import { TOPIC_IDS, topicForProducts, statusFromRoadmap } from '../config/taxonomy.mjs';
 import { RAW_DIR, DATA_DIR, FEATURES_DIR, readJson, writeJson, appendLog, today, stripHtml } from './lib/util.mjs';
 
 const ROADMAP_URL = process.env.ROADMAP_URL || 'https://www.microsoft.com/releasecommunications/api/v1/m365';
 const ITEMS_DIR = path.join(RAW_DIR, 'roadmap', 'items');
 
-// Items that mention these are more likely to need governance attention; they go to the front of the queue.
-const PRIORITY = /\b(admin|govern|agent|licen[cs]|billing|pay-as-you-go|payg|purview|security|dlp|sensitiv|retention|audit|control|policy|consumption|credit|identity|entra|default|tenant|compliance|mcp|autonomous|cost|usage report)/i;
-
-// Topics the wiki exists for get written first; Modern Work is covered but trails.
-const TOPIC_WEIGHT = { 'copilot-studio': 3, 'power-platform': 3, governance: 3, 'm365-copilot': 2, 'modern-work': 0 };
+// Admin-relevance signals: cost, risk and control words. An item whose title or description carries
+// one is more likely to change something a tenant has to pay for, secure or configure, so it goes to
+// the front of its topic's queue.
+const PRIORITY = /\b(admin|govern|agent|licen[cs]|billing|pay-as-you-go|payg|purview|security|dlp|sensitiv|retention|audit|control|polic(?:y|ies)|consumption|credit|identity|entra|default|tenant|compliance|mcp|autonomous|cost|usage report|guest|external|sharing|anonymous|powershell|graph|retire|deprecat|end of support|block|restrict|encrypt|ediscovery|residency|multi-geo|recording|transcri|storage|quota|meter|opt[- ]?out)/i;
 // Inside Governance & security, the admin centre (licensing, billing, usage reports) leads Purview, Entra and Defender.
 const ADMIN_CENTRE = /^Microsoft 365 admin center$/i;
 
+// Priority orders items within a topic. It never weights one topic against another: the compile step
+// shares every run equally across the five topics (selectQueue in lib/briefing.mjs), so a topic with
+// a long queue, such as Modern Work, cannot be starved by the others.
 function priorityFor(item, reason) {
   const ageDays = (Date.now() - new Date(item.modified).getTime()) / 86400000;
-  let p = TOPIC_WEIGHT[item.topic] ?? 0;
-  if (item.topic === 'governance' && !item.products.some((name) => ADMIN_CENTRE.test(name))) p -= 1;
+  let p = 0;
   if (reason !== 'no-briefing') p += 4; // keep existing briefings true before writing new ones
   if (PRIORITY.test(item.title + ' ' + item.description)) p += 2;
+  if (PRIORITY.test(item.title)) p += 1; // a control named in the title is nearly always one
+  if (item.topic === 'governance' && !item.products.some((name) => ADMIN_CENTRE.test(name))) p -= 1;
   if (ageDays <= 30) p += 2; else if (ageDays <= 120) p += 1;
   if (item.statusKey === 'in-development') p += 1; // readers need lead time
   return p;
@@ -120,17 +123,20 @@ async function main() {
     }
   }
 
-  // Refreshes first, then governance-relevant items, then most recently modified.
+  // Refreshes first, then the most admin-relevant items, then most recently modified. The compile
+  // step deals this order out topic by topic, so no topic has to wait for another.
   queue.sort((a, b) => b.priority - a.priority || b.modified.localeCompare(a.modified));
+  const byTopic = Object.fromEntries(TOPIC_IDS.map((id) => [id, queue.filter((q) => q.topic === id).length]));
 
   const catalog = inScope
     .map(({ descriptionHtml, ...rest }) => ({ ...rest, description: rest.description.slice(0, 600), briefing: briefings.get(rest.id)?.slug || null }))
     .sort((a, b) => b.modified.localeCompare(a.modified));
 
   await writeJson(path.join(DATA_DIR, 'catalog.json'), { generated: new Date().toISOString(), count: catalog.length, items: catalog });
-  await writeJson(path.join(DATA_DIR, 'queue.json'), { generated: new Date().toISOString(), count: queue.length, items: queue });
+  await writeJson(path.join(DATA_DIR, 'queue.json'), { generated: new Date().toISOString(), count: queue.length, byTopic, items: queue });
 
-  const summary = `- ${today()} ingest: ${all.length} roadmap items fetched, ${inScope.length} in scope, ${added} new, ${changed} changed, ${queue.length} queued for compile (${Math.round((Date.now() - started) / 1000)}s)`;
+  const depth = Object.entries(byTopic).map(([id, n]) => `${id} ${n}`).join(', ');
+  const summary = `- ${today()} ingest: ${all.length} roadmap items fetched, ${inScope.length} in scope, ${added} new, ${changed} changed, ${queue.length} queued for compile (${depth}) (${Math.round((Date.now() - started) / 1000)}s)`;
   await appendLog(summary);
   console.log(summary);
   if (process.env.GITHUB_STEP_SUMMARY) await fs.appendFile(process.env.GITHUB_STEP_SUMMARY, summary.slice(2) + '\n');

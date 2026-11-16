@@ -11,6 +11,10 @@ daily by GitHub Actions.
   The compile step has two implementations that share `pipeline/lib/briefing.mjs`: `compile.mjs` (direct API) and the
   Claude Code agent path (`compile-tasks.mjs` prepares `data/compile-tasks/`, the agent follows `pipeline/prompts/compile-agent.md`
   and calls `write-briefing.mjs` per item, `compile-finish.mjs` records the run). Keep page-writing logic in the shared module.
+- Each compile run is shared equally across the topics by `selectQueue` in `pipeline/lib/briefing.mjs` (refreshes first,
+  then one item per topic in turn). `priorityFor` in `pipeline/ingest.mjs` orders items within a topic by admin relevance,
+  recency and lead time. It must not weight topics against each other: that is how Modern Work went unbriefed until
+  November 2026. `COMPILE_TOPIC` spends a whole run on one topic's backlog.
 - `src/` is the Astro site. Design tokens live in `src/styles/tokens.css`.
 - The Atlas (`/atlas/`, the home page teaser and the plate in each briefing's Related section) is one canvas renderer,
   `src/scripts/atlas/engine.ts`, with no dependencies. `src/lib/graph.ts` builds its nodes and links (briefings,
