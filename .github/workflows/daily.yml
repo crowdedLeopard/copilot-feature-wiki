@@ -48,7 +48,8 @@ jobs:
     timeout-minutes: 150
     outputs:
       changed: ${{ steps.commit.outputs.changed }}
-      writer_failed: ${{ steps.copilot.outcome == 'failure' }}
+      # 'true' only when the Copilot writer has failed on two runs in a row (compile-copilot.mjs keeps count).
+      writer_escalate: ${{ steps.copilot.outputs.escalate }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -116,6 +117,9 @@ jobs:
 
       # Billed in AI credits to the Copilot seat of the repository owner (GITHUB_TOKEN) or of the user who
       # made the COPILOT_GITHUB_TOKEN PAT. Caps: COMPILE_ITEM_MAX_CREDITS per briefing, COMPILE_MAX_CREDITS per run.
+      # The step checks the token and model first (falling back through COPILOT_FALLBACK_MODELS), retries a
+      # session that fails fast, and explains any failure in plain English in the run summary. It never fails
+      # the job: the rest of the run (lint, build, deploy) carries on with what is committed.
       - name: Compile briefings with Copilot CLI (GitHub Copilot seat)
         id: copilot
         if: steps.auth.outputs.mode == 'copilot' && steps.tasks.outputs.count != '0'
@@ -124,6 +128,7 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
           COPILOT_PAT: ${{ secrets.COPILOT_GITHUB_TOKEN }}
           COPILOT_MODEL: ${{ github.event.inputs.compile_model || vars.COPILOT_MODEL || 'claude-opus-5.5' }}
+          COPILOT_FALLBACK_MODELS: ${{ vars.COPILOT_FALLBACK_MODELS || 'claude-sonnet-5.5,auto' }}
           COPILOT_REASONING_EFFORT: ${{ vars.COPILOT_REASONING_EFFORT || 'high' }}
           COMPILE_PARALLEL: ${{ vars.COMPILE_PARALLEL || '2' }}
           COMPILE_ITEM_MAX_CREDITS: ${{ vars.COMPILE_ITEM_MAX_CREDITS || '300' }}
@@ -234,10 +239,11 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-      # The site is rebuilt and deployed even when the writer could not run, but the run is marked
-      # failed so a broken writer is visible in the Actions list rather than silently writing nothing.
-      - name: Flag a failed writer
-        if: needs.curate-and-build.outputs.writer_failed == 'true'
+      # The site is rebuilt and deployed even when the writer could not run. One failed writer run is a
+      # warning in the run summary (Copilot can be busy, and the next run retries). Two in a row mark the
+      # run failed so a broken writer shows up in the Actions list rather than silently writing nothing.
+      - name: Flag a writer that has failed twice in a row
+        if: needs.curate-and-build.outputs.writer_escalate == 'true'
         run: |
-          echo "::error::The Copilot writer did not run (see the 'Compile briefings with Copilot CLI' step). The site was still rebuilt and deployed."
+          echo "::error title=Copilot writer::No briefings were written on this run or the one before it. The site was still rebuilt and deployed. Open the 'Compile briefings with Copilot CLI' step of the 'Curate, lint, build' job for the reason in plain English."
           exit 1
