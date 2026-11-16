@@ -45,6 +45,15 @@ export const controlSchema = z.object({
   note: z.string().max(240).optional().describe('One short qualifier if needed: role required, preview status, maker-side only.'),
 });
 
+/** One documented fact the briefing relies on, with the page and the sentence it was read in. Not
+ *  printed on the page: it makes the writer check each fact before stating it, and it is where the
+ *  verifier starts. See SCHEMA.md, "Evidence". */
+export const evidenceSchema = z.object({
+  claim: z.string().min(8).max(400).describe('One fact the briefing states, in a sentence.'),
+  url: z.string().url().describe('The Microsoft page the fact was read on during this research.'),
+  quote: z.string().min(8).max(400).describe('The sentence or phrase on that page that states it, copied exactly.'),
+});
+
 export const changeSchema = z.object({
   date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
   note: z.string().min(3).max(300),
@@ -91,18 +100,18 @@ export const featureFrontmatter = z.object({
 
 /** What the model returns for one roadmap item. The pipeline adds bookkeeping fields and renders markdown. */
 export const briefingOutput = z.object({
-  title: z.string().min(8).max(160).describe('Plain-English title. Product first, then the capability. No marketing adjectives.'),
-  summary: z.string().min(40).max(260).describe('One or two sentences a service owner can skim. State what changes and who it affects.'),
-  risk: z.enum(['low', 'medium', 'high']),
-  riskRationale: z.string().min(20).max(400),
-  cost: z.enum(['none', 'low', 'medium', 'high', 'variable']),
-  costRationale: z.string().min(20).max(400),
-  impact: z.enum(['low', 'medium', 'high']),
-  impactRationale: z.string().min(20).max(400),
-  defaultState: z.enum(['on', 'off', 'admin-opt-in', 'user-opt-in', 'unknown']),
-  action: z.enum(['act-now', 'prepare', 'review', 'none']),
-  licensingModel: z.enum(['included', 'per-user', 'consumption', 'add-on', 'mixed', 'unknown']),
-  licensingNotes: z.string().max(400),
+  title: z.string().min(8).max(160).describe('Product first, then the capability, in plain words. Sentence case. No marketing adjectives.'),
+  summary: z.string().min(40).max(260).describe('One or two sentences a service owner can act on: what changes, who is affected, and whether an administrator has to do anything.'),
+  risk: z.enum(['low', 'medium', 'high']).describe('Exposure if the change is left ungoverned. Scale in SCHEMA.md.'),
+  riskRationale: z.string().min(20).max(400).describe('Starts with the rating word ("High."), then the one fact that decided it, in plain words. Printed beside the rating.'),
+  cost: z.enum(['none', 'low', 'medium', 'high', 'variable']).describe('Direct and indirect cost. "variable" means metered.'),
+  costRationale: z.string().min(20).max(400).describe('Starts with the rating word. Names the licence or the meter, or says licensing is not yet published.'),
+  impact: z.enum(['low', 'medium', 'high']).describe('How many people notice.'),
+  impactRationale: z.string().min(20).max(400).describe('Starts with the rating word. Says who notices.'),
+  defaultState: z.enum(['on', 'off', 'admin-opt-in', 'user-opt-in', 'unknown']).describe('From the wording of the sources only. "unknown" when they do not say; never inferred from similar features.'),
+  action: z.enum(['act-now', 'prepare', 'review', 'none']).describe('What the reader should do now, judged against today\'s date in the brief.'),
+  licensingModel: z.enum(['included', 'per-user', 'consumption', 'add-on', 'mixed', 'unknown']).describe('"unknown" when Microsoft has not published the licensing.'),
+  licensingNotes: z.string().max(400).describe('One or two sentences on the licence or meter as a Microsoft page states it, or that it is not yet published.'),
   audiences: z.array(z.enum([
     'm365-admin', 'power-platform-admin', 'service-owner', 'security', 'compliance', 'finops', 'maker', 'end-user', 'change-adoption',
   ])).min(1),
@@ -110,20 +119,21 @@ export const briefingOutput = z.object({
   newTags: z.array(tagDefinition).default([]).describe('A definition for every tag in tags that is not in the glossary listed in the brief, or that the brief marks as needing a description. Empty when every tag is already defined.'),
   confidence: z.enum(['high', 'medium', 'low']).describe('high = key claims verified in Microsoft Learn; medium = roadmap text plus partial docs; low = roadmap text only'),
   sections: z.object({
-    whatsChanging: z.string().min(200).describe('Markdown. 2 to 4 paragraphs. Neutral, specific, no hype.'),
-    whyItMatters: z.string().min(120).describe('Markdown. Why a service owner or administrator should care.'),
-    riskAssessment: z.string().min(120).describe('Markdown bullets grouped by: Data exposure, Security & identity, Autonomy & actions, Change & support.'),
-    costAndLicensing: z.string().min(80).describe('Markdown. Licences, meters, credits, hidden costs. Say "not yet published" where unknown.'),
-    scope: z.string().min(60).describe('Markdown. Users, roles, clouds, platforms, tenants affected.'),
-    governance: z.string().min(200).describe('Markdown checklist with three headings: Before rollout, At rollout, After rollout. Each item actionable.'),
-    governanceControls: z.string().min(40).describe('Markdown notes printed under the controls table: enforcement gaps, roles required, complementary controls, maker-side settings. Do not repeat the table.'),
-    openQuestions: z.string().min(40).describe('Markdown bullets. Unknowns to watch.'),
+    whatsChanging: z.string().min(200).describe('Markdown, 2 to 4 paragraphs. The change in one plain sentence first, then how it behaves, then status and dates as the roadmap record gives them.'),
+    whyItMatters: z.string().min(120).describe('Markdown, 1 or 2 paragraphs. What this changes for a service owner (data, identity, spend, support) and what happens if nobody acts.'),
+    riskAssessment: z.string().min(120).describe('Markdown bullets under four bold labels: Data exposure, Security & identity, Autonomy & actions, Change & support. Each bullet names the mechanism, the consequence and the control that covers it, or says there is none.'),
+    costAndLicensing: z.string().min(80).describe('Markdown. The licence a user needs, any meter and where it is charged, caps, indirect costs. Say "not yet published" where Microsoft has not said. No figure without a cited page.'),
+    scope: z.string().min(60).describe('Markdown. Users and licences in scope, roles that configure it, clouds and platforms as the record lists them, rollout mechanics, prerequisites.'),
+    governance: z.string().min(200).describe('Markdown: three H3 headings (Before rollout, At rollout, After rollout), each with plain bullets that start with a verb and are specific to this feature.'),
+    governanceControls: z.string().min(40).describe('Markdown notes printed under the controls table: enforcement gaps, roles required, how the controls interact, maker-side settings. Do not repeat the table.'),
+    openQuestions: z.string().min(40).describe('Markdown bullets. What Microsoft has not said that a reader needs in order to decide, each as a question specific to this feature.'),
   }),
-  controls: z.array(controlSchema).min(1).max(8).describe('Where the governance controls live, one row per control: admin UI path and API or automation equivalent, each with its Learn page, or null where Microsoft has not documented that surface. Never guess a path, cmdlet or endpoint.'),
-  sources: z.array(sourceSchema).min(1).describe('Only URLs you actually opened or that came from the roadmap item. No guesses.'),
+  controls: z.array(controlSchema).min(1).max(8).describe('Where the governance controls live, one row per control, most decisive first: admin UI path and API or automation equivalent, each with the Learn page it was read on, or null where Microsoft has not documented that surface. Never guess a path, cmdlet or endpoint.'),
+  evidence: z.array(evidenceSchema).max(60).default([]).describe('One entry for every documented fact a reader could act on: each control side that is not null, the default state, every licensing and cost statement, every role, limit, number and date that did not come from the roadmap record. A fact with no quote to support it does not belong in the briefing.'),
+  sources: z.array(sourceSchema).min(1).describe('Only pages opened during this research or links from the roadmap record, titled as Microsoft titles them. No guesses.'),
   videos: z.array(videoSchema).describe('Official Microsoft videos found via search. Empty array if none found.'),
   relatedSlugs: z.array(z.string()).describe('Slugs of existing briefings from the index that this one relates to. Empty if none.'),
-  changeNote: z.string().min(5).max(300).describe('One line for the change log, e.g. "Initial briefing" or "Status moved to Rolling out; added admin control path".'),
+  changeNote: z.string().min(5).max(300).describe('One line for the reader on what is new or different on the page, e.g. "Initial briefing" or "Status moved to Rolling out; added the tenant setting, documented since October".'),
 });
 
 export function isAllowedSourceUrl(url) {

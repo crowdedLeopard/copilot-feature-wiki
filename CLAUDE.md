@@ -4,7 +4,12 @@ An LLM-maintained wiki of Microsoft Copilot, Power Platform and Modern Work chan
 service owners and administrators. Static site built with Astro, deployed to GitHub Pages, curated
 daily by GitHub Actions.
 
-- `wiki/SCHEMA.md` is the operating manual and the system prompt for the curation step. Read it first.
+- `wiki/SCHEMA.md` is the operating manual and editorial standard: the system prompt for the writing step and the
+  standard the verifier checks against. Read it first. What a briefing may claim, how to research and how ratings are
+  decided live there and nowhere else.
+- `pipeline/prompts/compile-agent.md` is the writer's run procedure and output format; `pipeline/prompts/verify-agent.md`
+  is the independent verifier's method and verdict format. `researchBrief` in `pipeline/lib/briefing.mjs` builds the
+  per-item brief, which carries data only. Change wording in those three places, not in workflow files.
 - `raw/` is immutable source material. Do not edit by hand.
 - `wiki/features/*.md` are the briefings. Front matter is validated by `pipeline/lib/schema.mjs` and `src/content.config.ts`.
 - `pipeline/` holds the daily jobs: `ingest` (roadmap), `compile` (LLM writes briefings), `lint`, `index`, `digest`, `pdf`.
