@@ -2,6 +2,8 @@ name: Daily curation and deploy
 
 on:
   schedule:
+    # One run a day. Each run writes COMPILE_LIMIT briefings shared across the five topics. More runs
+    # or a higher limit clear the backlog faster, at the cost of whichever capacity the writer uses.
     - cron: '0 6 * * *' # 06:00 UTC every day
   push:
     branches: [main]
@@ -11,6 +13,10 @@ on:
         description: 'Maximum briefings to write or refresh in this run'
         required: false
         default: '12'
+      compile_topic:
+        description: 'Spend the whole run on one topic (copilot-studio, power-platform, governance, m365-copilot or modern-work). Empty shares the run across all five.'
+        required: false
+        default: ''
       compile_only:
         description: 'Comma-separated roadmap IDs to (re)compile, overriding the queue'
         required: false
@@ -85,6 +91,7 @@ jobs:
         if: steps.auth.outputs.mode == 'claude-code'
         env:
           COMPILE_LIMIT: ${{ github.event.inputs.compile_limit || '12' }}
+          COMPILE_TOPIC: ${{ github.event.inputs.compile_topic || '' }}
           COMPILE_ONLY: ${{ github.event.inputs.compile_only || '' }}
         run: node pipeline/compile-tasks.mjs
 
@@ -98,7 +105,7 @@ jobs:
             Read pipeline/prompts/compile-agent.md and carry out the run it describes.
             The task list for this run is in data/compile-tasks.json.
           claude_args: >-
-            --max-turns 400
+            --max-turns ${{ steps.tasks.outputs.turns || '400' }}
             --mcp-config pipeline/mcp.json
             --allowedTools "Read,Glob,Grep,Write,Edit,WebSearch,WebFetch(domain:learn.microsoft.com),WebFetch(domain:techcommunity.microsoft.com),WebFetch(domain:adoption.microsoft.com),WebFetch(domain:www.microsoft.com),Bash(node pipeline/write-briefing.mjs:*),Bash(node pipeline/lint.mjs),Bash(cat:*),Bash(ls:*),mcp__microsoft-learn"
             ${{ github.event.inputs.compile_model != '' && format('--model {0}', github.event.inputs.compile_model) || '' }}
@@ -114,6 +121,7 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           COMPILE_LIMIT: ${{ github.event.inputs.compile_limit || '12' }}
+          COMPILE_TOPIC: ${{ github.event.inputs.compile_topic || '' }}
           COMPILE_ONLY: ${{ github.event.inputs.compile_only || '' }}
           COMPILE_MODEL: ${{ github.event.inputs.compile_model || 'claude-opus-5-5' }}
         run: node pipeline/compile.mjs

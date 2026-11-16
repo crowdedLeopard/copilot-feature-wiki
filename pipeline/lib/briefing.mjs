@@ -9,7 +9,7 @@ import path from 'node:path';
 import { briefingOutput, featureFrontmatter, isAllowedSourceUrl } from './schema.mjs';
 import { renderBriefing, API_KIND_LABEL } from './render.mjs';
 import { RAW_DIR, WIKI_DIR, FEATURES_DIR, DATA_DIR, readJson, today, slugify } from './util.mjs';
-import { TOPIC_BY_ID, topicForProducts } from '../../config/taxonomy.mjs';
+import { TOPIC_IDS, TOPIC_BY_ID, topicForProducts } from '../../config/taxonomy.mjs';
 
 /** "slug | title" lines for every briefing and concept page, the set a new page may link to in `related`. */
 export async function loadIndexSlugs() {
@@ -39,21 +39,57 @@ export async function existingSlugForRoadmapId(id) {
 }
 
 /**
- * Pick the queue entries for this run. COMPILE_ONLY forces specific roadmap ids, including ones that
- * are not queued because their page is up to date; those keep their existing slug so a forced
- * refresh never creates a second page for the same feature.
+ * Pick the queue entries for this run.
+ *
+ * Every run is shared across the topics so that none of them starves. Refreshes of existing pages
+ * come first (a stale briefing is worse than a missing one), then the remaining slots are dealt
+ * round-robin across the five topics, each offering its highest-priority item. The topic that opens
+ * the deal rotates daily, so the odd extra slots do not always go to the same topics, and a topic
+ * with nothing left passes its turn, so a run is never short while anything is queued.
+ *
+ * COMPILE_TOPIC narrows a run to one topic (a catch-up). COMPILE_ONLY forces specific roadmap ids,
+ * including ones that are not queued because their page is up to date; those keep their existing
+ * slug so a forced refresh never creates a second page for the same feature.
  */
-export async function selectQueue({ limit = 12, only = [] } = {}) {
+export async function selectQueue({ limit = 12, only = [], topic = '' } = {}) {
   const queue = await readJson(path.join(DATA_DIR, 'queue.json'), { items: [] });
-  let items = queue.items;
   if (only.length) {
-    items = [];
+    const items = [];
     for (const id of only) {
       const queued = queue.items.find((q) => q.id === id);
       items.push(queued ? { ...queued, reason: 'forced' } : { id, reason: 'forced', slug: await existingSlugForRoadmapId(id), priority: 0 });
     }
+    return items.slice(0, limit);
   }
-  return items.slice(0, limit);
+  if (topic && !TOPIC_IDS.includes(topic)) throw new Error(`Unknown topic "${topic}". Use one of: ${TOPIC_IDS.join(', ')}`);
+  return shareAcrossTopics(topic ? queue.items.filter((q) => q.topic === topic) : queue.items, limit);
+}
+
+/**
+ * The fair-share selection over a queue that is already sorted best first. Pure, so it can be
+ * checked without a queue file: `day` only decides which topic opens the round-robin.
+ */
+export function shareAcrossTopics(items, limit, { day = Math.floor(Date.now() / 86400000) } = {}) {
+  const picked = items.filter((q) => q.reason !== 'no-briefing').slice(0, limit);
+  const lanes = TOPIC_IDS.map((id) => items.filter((q) => q.reason === 'no-briefing' && q.topic === id));
+  const start = day % lanes.length;
+  while (picked.length < limit && lanes.some((lane) => lane.length)) {
+    for (let i = 0; i < lanes.length && picked.length < limit; i++) {
+      const next = lanes[(start + i) % lanes.length].shift();
+      if (next) picked.push(next);
+    }
+  }
+  // Anything filed under no known topic (it should not happen; ingest drops out-of-scope items) goes last.
+  for (const q of items) {
+    if (picked.length >= limit) break;
+    if (!picked.includes(q)) picked.push(q);
+  }
+  return picked;
+}
+
+/** "copilot-studio 3, power-platform 3, modern-work 2": how a selection splits across topics, for logs. */
+export function topicSplit(items) {
+  return TOPIC_IDS.map((id) => [id, items.filter((q) => q.topic === id).length]).filter(([, n]) => n).map(([id, n]) => `${id} ${n}`).join(', ') || 'nothing';
 }
 
 /**
