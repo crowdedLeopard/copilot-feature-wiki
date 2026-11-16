@@ -10,10 +10,14 @@
  */
 import path from 'node:path';
 import { DATA_DIR, readJson, writeJson } from './lib/util.mjs';
-import { listHeld, listNeedingCorrection, MAX_REVISIONS } from './lib/verify.mjs';
+import { GRACE_EXISTING, holdNeedingCorrection, listHeld, listNeedingCorrection, MAX_REVISIONS, writeHeldIndex } from './lib/verify.mjs';
 
 const file = path.join(DATA_DIR, 'queue.json');
 const queue = await readJson(file, { items: [] });
+// With the grace off (the default), a page still online with an "awaiting correction" notice from an earlier run
+// goes offline now, and is queued for its rewrite with the other held pages below.
+const offline = GRACE_EXISTING ? [] : await holdNeedingCorrection();
+if (offline.length) await writeHeldIndex();
 // A held concept page has no roadmap item: pipeline/lib/concepts.mjs queues its correction, so it is not counted here.
 const held = (await listHeld()).filter((h) => h.kind !== 'concept');
 let revise = 0, removed = 0, parked = 0;
@@ -41,6 +45,6 @@ for (const p of await listNeedingCorrection()) {
 }
 queue.count = queue.items.length;
 await writeJson(file, queue);
-const line = `requeue-held: ${held.length} held page(s), ${correcting} live page(s) needing correction; ${revise + correcting} queued for revision, ${parked} parked for a person, ${removed} stale queue entr${removed === 1 ? 'y' : 'ies'} removed`;
+const line = `requeue-held: ${held.length} held page(s)${offline.length ? ` (${offline.length} taken offline now, awaiting correction)` : ''}, ${correcting} live page(s) needing correction; ${revise + correcting} queued for revision, ${parked} parked for a person, ${removed} stale queue entr${removed === 1 ? 'y' : 'ies'} removed`;
 console.log(line);
-if (process.env.GITHUB_STEP_SUMMARY && (held.length || correcting)) { const fs = await import('node:fs/promises'); await fs.appendFile(process.env.GITHUB_STEP_SUMMARY, line + '\n'); }
+if (process.env.GITHUB_STEP_SUMMARY && (held.length || correcting || offline.length)) { const fs = await import('node:fs/promises'); await fs.appendFile(process.env.GITHUB_STEP_SUMMARY, line + '\n'); }

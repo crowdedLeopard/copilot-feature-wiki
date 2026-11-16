@@ -44,8 +44,10 @@ daily by GitHub Actions.
   correct and the minor findings separately, and the writer carries the rest of the page over word for word and adds no
   control rows ("Correcting a held briefing" in `compile-agent.md`; pages that failed a second check failed on text the
   correction had added). Passing pages carry `verification` in their front matter; the full report is
-  `wiki/verification/<slug>.json`, rendered as "How this briefing was checked" by `src/components/CheckReport.astro`. Pages created before 2026-11-16 that fail
-  their first check stay live as `needs-correction` with a notice (`VERIFY_GRACE_EXISTING=0` turns that off).
+  `wiki/verification/<slug>.json`, rendered as "How this briefing was checked" by `src/components/CheckReport.astro`. A failed check holds the
+  page whenever it was created (Chris, 16 Nov 2026: "hide failures once checked"); `VERIFY_GRACE_EXISTING=1` would let a page
+  created before 2026-11-16 stay live as `needs-correction` with a notice after its first failure, and `requeue-held.mjs`
+  (`holdNeedingCorrection`) takes any page still online with that notice offline when the grace is off.
   `verify-finish.mjs` holds anything written in the run that was not checked, writes `data/held.json` and logs the run.
   On Copilot the verifier tries `gpt-6.1-sol` first (a different family from the writer), then `VERIFY_FALLBACK_MODELS`
   (default `gpt-5.6-sol,claude-sonnet-5.5,auto`); it uses the shared error classifier in `pipeline/lib/copilot.mjs`, stops

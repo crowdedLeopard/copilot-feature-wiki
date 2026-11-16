@@ -132,6 +132,8 @@ jobs:
       # the writer corrects them (with the verifier's findings in hand) before it starts anything new.
       - name: Queue held briefings for revision
         if: github.event_name != 'push'
+        env:
+          VERIFY_GRACE_EXISTING: ${{ vars.VERIFY_GRACE_EXISTING || '0' }}
         run: node pipeline/requeue-held.mjs
 
       # ---- Compile: the one step that needs an LLM. Three writers, chosen by the COMPILE_WRITER
@@ -250,9 +252,9 @@ jobs:
       # ---- Verify: a second model, in a fresh session, checks every briefing written or refreshed today, and a
       # slice of the back catalogue, claim by claim against the roadmap record and Microsoft Learn
       # (pipeline/prompts/verify-agent.md). A page with a contradicted or unsupported path, command, licence, price,
-      # date or default is held in wiki/_held and not published; the next run's writer gets its findings. Pages
-      # published before the check existed stay live with a notice on their first failure (VERIFY_GRACE_EXISTING=0
-      # holds them too). A page that was already published when the run started is never taken down for being
+      # date or default is held in wiki/_held and not published; the next run's writer gets its findings. That
+      # includes pages published before the check existed (VERIFY_GRACE_EXISTING=1 would keep them live with a
+      # notice on their first failure). A page that was already published when the run started is never taken down for being
       # unreached: only a page nobody has seen yet is held as unverified. Runs on the same Copilot seat by default;
       # VERIFY_ENGINE = copilot | claude-code | api | off.
       - name: Prepare verification tasks
@@ -288,7 +290,7 @@ jobs:
           # to 75 minutes; the job's 150-minute limit leaves room for the writer and for sessions still in flight.
           VERIFY_PARALLEL: ${{ github.event.inputs.verify_parallel || vars.VERIFY_PARALLEL || '3' }}
           VERIFY_RUN_MINUTES: ${{ github.event.inputs.verify_run_minutes || vars.VERIFY_RUN_MINUTES || '75' }}
-          VERIFY_GRACE_EXISTING: ${{ vars.VERIFY_GRACE_EXISTING || '1' }}
+          VERIFY_GRACE_EXISTING: ${{ vars.VERIFY_GRACE_EXISTING || '0' }}
           GITHUB_TOKEN: ${{ github.token }}
           COPILOT_PAT: ${{ secrets.COPILOT_GITHUB_TOKEN }}
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
@@ -316,7 +318,7 @@ jobs:
         if: always() && steps.verify_tasks.outputs.count != '0'
         env:
           VERIFY_ENGINE: ${{ vars.VERIFY_ENGINE || 'copilot' }}
-          VERIFY_GRACE_EXISTING: ${{ vars.VERIFY_GRACE_EXISTING || '1' }}
+          VERIFY_GRACE_EXISTING: ${{ vars.VERIFY_GRACE_EXISTING || '0' }}
         run: node pipeline/verify-finish.mjs
 
       # Runs chain back to back while the day's AI credits stay under the budget (the site owner's standing
