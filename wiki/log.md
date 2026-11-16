@@ -44,3 +44,8 @@ Append-only record of ingests, compiles and lint passes. One line per event.
 - 2026-11-16 lint: 61 briefings ok, 0 errors (0 quarantined), 0 warnings, 69 notes
 - 2026-11-16 index: 61 briefings, 4 concepts indexed
 - 2026-11-16 digest: 2026-w47 written (61 updated briefings)
+- 2026-11-16 ingest: 2310 roadmap items fetched, 1877 in scope, 0 new, 0 changed, 1816 queued for compile (copilot-studio 30, power-platform 42, governance 381, m365-copilot 494, modern-work 869) (1s)
+- 2026-11-16 compile: 1 briefings written, 0 rejected by schema, 0 not reached, 1 attempted (copilot, claude-sonnet-5.5, 47 AI credits)
+- 2026-11-16 lint: 62 briefings ok, 0 errors (0 quarantined), 0 warnings, 70 notes
+- 2026-11-16 index: 62 briefings, 4 concepts indexed
+- 2026-11-16 digest: 2026-w47 written (62 updated briefings)

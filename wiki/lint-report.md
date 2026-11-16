@@ -1,16 +1,17 @@
 # Lint report
 
-Generated 2026-11-16T12:34:19.675Z. 61 briefings, 4 concepts, 0 quarantined.
+Generated 2026-11-16T12:48:02.997Z. 62 briefings, 4 concepts, 0 quarantined.
 
 ## Errors (0)
 
 ## Warnings (0)
 
-## Info (69)
+## Info (70)
 - features/copilot-studio-computer-use-for-web-browsing-on-microsoft-copilot-harness.md: control "Switch specific to web browsing on the Microsoft Copilot harness" has neither an admin UI nor an API documented
 - features/copilot-studio-purview-information-protection-labelled-files.md: control "Copilot Studio-side switch for labelled files" has neither an admin UI nor an API documented
 - features/copilot-studio-require-human-approval-for-tool-calls.md: control "Tenant or environment enforcement of approval for tool calls" has neither an admin UI nor an API documented
 - features/m365-admin-center-cross-tenant-orchestrated-migration.md: control "Admin centre page for the orchestrated migration" has neither an admin UI nor an API documented
+- features/m365-copilot-copilot-people-connectors-introduces-people-data-ingestions-with-differentiat.md: control "Scoping imported people data to specific individuals and groups" has neither an admin UI nor an API documented
 - features/m365-copilot-new-m365-copilot-usage-reports-for-copilot-search-connectors-and-agents-for-u.md: control "US Government cloud-specific switch for the new reports" has neither an admin UI nor an API documented
 - features/m365-teams-channel-backup.md: control "Teams channel workload in backup policies" has neither an admin UI nor an API documented
 - features/microsoft-copilot-microsoft-m365-delegated-prompt-publishing-for-organization-prompts.md: control "Delegating prompt publishing to other roles or people" has neither an admin UI nor an API documented
@@ -56,6 +57,7 @@ Generated 2026-11-16T12:34:19.675Z. 61 briefings, 4 concepts, 0 quarantined.
 - features/work-iq-memory-capabilities-expand-to-agents.md: low confidence, roadmap text only
 - features/copilot-studio-computer-use-for-web-browsing-on-microsoft-copilot-harness.md: orphan (no inbound related links)
 - features/m365-admin-center-cross-tenant-orchestrated-migration.md: orphan (no inbound related links)
+- features/m365-copilot-copilot-people-connectors-introduces-people-data-ingestions-with-differentiat.md: orphan (no inbound related links)
 - features/m365-copilot-discover-and-act-on-recommended-lead-and-opportunity-actions-in-sales-agent.md: orphan (no inbound related links)
 - features/microsoft-copilot-microsoft-m365-delegated-prompt-publishing-for-organization-prompts.md: orphan (no inbound related links)
 - features/microsoft-copilot-studio-agent-sharing-amongst-makers.md: orphan (no inbound related links)
@@ -73,6 +75,5 @@ Generated 2026-11-16T12:34:19.675Z. 61 briefings, 4 concepts, 0 quarantined.
 - features/power-pages-design-studio-unify-power-pages-authorization-by-merging-web-role-with-dataver.md: orphan (no inbound related links)
 - features/power-pages-plugin-support-for-github-copilot-cli-and-claude-code-to-create-and-edit-tradi.md: orphan (no inbound related links)
 - features/work-iq-agent-policy-governance.md: orphan (no inbound related links)
-- features/work-iq-federated-connectors.md: orphan (no inbound related links)
 - features/work-iq-human-in-the-loop.md: orphan (no inbound related links)
 - features/work-iq-real-time-transcripts.md: orphan (no inbound related links)
