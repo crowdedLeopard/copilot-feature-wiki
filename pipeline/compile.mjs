@@ -20,7 +20,7 @@ import path from 'node:path';
 import Anthropic from '@anthropic-ai/sdk';
 import { zodOutputFormat } from '@anthropic-ai/sdk/helpers/zod';
 import { briefingOutput } from './lib/schema.mjs';
-import { WIKI_DIR, DATA_DIR, writeJson, appendLog, today, slugify } from './lib/util.mjs';
+import { WIKI_DIR, DATA_DIR, readJson, writeJson, appendLog, today, slugify } from './lib/util.mjs';
 import { loadIndexSlugs, selectQueue, topicSplit, loadRawItem, loadExisting, researchBrief, writeBriefingPage, existingSlugForRoadmapId } from './lib/briefing.mjs';
 import { loadGlossary } from './lib/tags.mjs';
 import { postsForBrief } from './lib/message-center.mjs';
@@ -108,15 +108,27 @@ async function main() {
       const { title } = await writeBriefingPage(item, out, { slug, existingFm, indexSlugs });
       written++;
       indexSlugs.push(`${slug} | ${title}`);
+      await record(q.id, { ok: true, slug, title });
     } catch (err) {
       failed++;
       console.error(`FAILED ${q.id}: ${err.message}`);
+      await record(q.id, { ok: false, slug, error: err.message });
     }
   }
   const line = `- ${today()} compile: ${written} briefings written, ${failed} failed, ${items.length} attempted (${topicSplit(items)}; ${MODEL}, ${inTok} in / ${outTok} out tokens)`;
   await appendLog(line);
   await summary(line.slice(2));
   await writeJson(path.join(DATA_DIR, 'last-compile.json'), { date: today(), path: 'api', written, failed, attempted: items.length, model: MODEL, inTok, outTok });
+}
+
+/** data/compile-results.json: what this run wrote, in the shape write-briefing.mjs uses. The verification step reads
+ * it to know which pages must be checked before they are published; compile-finish leaves it in place for that. */
+async function record(id, entry) {
+  const file = path.join(DATA_DIR, 'compile-results.json');
+  const results = await readJson(file, { results: [] });
+  results.results = (results.results || []).filter((r) => r.id !== id);
+  results.results.push({ id, at: new Date().toISOString(), ...entry });
+  await writeJson(file, results);
 }
 
 main().catch(async (err) => { console.error(err); await summary(`compile: failed. ${err.message}`); process.exit(1); });
