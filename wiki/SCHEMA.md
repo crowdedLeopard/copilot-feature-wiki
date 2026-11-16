@@ -572,7 +572,10 @@ The pipeline renders these sections, in this order.
   each starting with a verb. Every control it names has a row in the table.
 - **Open questions**: what Microsoft has not said that a reader needs in order to decide.
 
-Length follows evidence, as for a briefing: usually 700 to 1,200 words, and not past 1,500.
+Length follows evidence, as for a briefing: usually 700 to 1,200 words. A concept page is a
+reference an administrator returns to, so it has a hard limit: the validator does not accept more
+than 1,500 words across the sections. Where a briefing or another concept page already explains
+something, link to it.
 
 ### Keeping a concept page current
 

@@ -48,7 +48,9 @@ standard points to and carry on.
 3. **Fix the scope in one sentence** before you search: "This page explains X: what it is, what it
    costs and where its controls are." Decide which, if any, of the brief's other recurring tags
    the page will explain in full; those go in `covers`. Anything outside the sentence stays out
-   of the page.
+   of the page. If the briefings use the tag in two senses, the page is about the sense most of
+   them depend on. Give the other sense one short paragraph that links to the concept page which
+   explains it, and at most one row in the controls table.
 
 4. **Research** with the Microsoft Learn search and fetch tools, as the "Research" section of the
    standard sets out, asking its questions of the mechanism rather than of one change:
@@ -68,7 +70,9 @@ standard points to and carry on.
    notes become the `evidence` list. A briefing in this wiki is never the source of a fact: if a
    briefing gives a path or a command, read it on the Microsoft page before you use it.
 
-   As a guide, a concept page needs six to ten searches and four to six opened pages.
+   As a guide, a concept page needs four to six opened pages and about ten searches. The number
+   of searches rises with the number of controls, because each control's admin path and its API
+   are searched for separately. Stop when the questions above are answered.
 
 5. **Write the output file** in the format below.
 6. **Check it** against the list under "Before you validate".
@@ -147,8 +151,8 @@ Otherwise:
     {
       "governs": "What the control decides, as a noun phrase, 3 to 120 characters",
       "scope": "tenant | environment | environment-group | site | group | user | agent | app | maker | other",
-      "ui": { "surface": "Admin centre by its current name", "path": "Step > Step > Step, as the Learn page gives it", "docs": "URL of the page where the path can be read" },
-      "api": { "kind": "powershell | graph | power-platform-api | pac-cli | azure-cli | rest | other", "call": "One line: the cmdlet and key parameters, the HTTP method and versioned path, or the CLI command", "docs": "URL of the reference page" },
+      "ui": { "surface": "Admin centre by its current name", "path": "Step > Step > Step, as the Learn page gives it, up to 240 characters", "docs": "URL of the page where the path can be read" },
+      "api": { "kind": "powershell | graph | power-platform-api | pac-cli | azure-cli | rest | other", "call": "One line, up to 240 characters: the cmdlet and key parameters, the HTTP method and versioned path, or the CLI command", "docs": "URL of the reference page" },
       "note": "Optional, up to 240 characters: role required, preview status, maker-side only"
     }
   ],
@@ -163,11 +167,14 @@ Otherwise:
 
 Notes on particular fields:
 
-- **controls.** One to ten rows, by the rules in the standard's "Governance controls" section: the
-  settings that make up the mechanism or govern it, the most decisive first. Set `ui` or `api` to
-  `null` when Microsoft has not documented that surface, after a search for it; never leave a guess
-  in its place. Every side that is not `null` needs a `docs` URL on a Microsoft domain; those pages
-  are added to `sources` for you.
+- **controls.** One to ten rows (a concept may need more than a briefing's eight), otherwise by the
+  rules in the standard's "Governance controls" section: the settings that make up the mechanism
+  or govern it, the most decisive first. Set `ui` or `api` to `null` when Microsoft has not
+  documented that surface, after a search for it; never leave a guess in its place. Every side
+  that is not `null` needs a `docs` URL on a Microsoft domain; those pages are added to `sources`
+  for you. A long command is shortened to the cmdlet and the parameters that matter, with
+  `<placeholders>` for values. A report or an audit event with no documented path or command is
+  not a row: say where it appears in the notes under the table.
 - **evidence.** One entry for every documented fact a reader could act on: each control side that
   is not `null` (the quote is the text that gives the path, cmdlet or endpoint), every licensing
   and cost statement, every role, limit, number and default, and each statement of what the
@@ -175,7 +182,10 @@ Notes on particular fields:
   own analysis needs an entry. The quote must be text you read on that page in this task, written
   as it reads on the page (plain characters: ">" not "&gt;", and without the `**`, backticks or
   link syntax a fetch tool adds); if you cannot produce it, the claim does not belong on the page.
-  The verifier starts from this list. It is not printed on the page.
+  Copy the quote from the page text in front of you, not from memory: a quote that is not on the
+  page word for word counts as no evidence. For a table row, quote the cells that carry the fact,
+  joined with " | ". For a list, quote the sentence that introduces it or the one item that
+  matters. The verifier starts from this list. It is not printed on the page.
 - **tags, covers and newTags.** The brief lists the glossary as `tag | name readers see`. Reuse
   those spellings. `tags` help readers find the page. `covers` is a stronger statement: this page
   explains that tag in full. Do not tag clouds (`gcc`, `gcc-high`, `dod`) unless the page is about
@@ -183,7 +193,9 @@ Notes on particular fields:
 - **sources.** At least two, and only pages you opened in this task, on Microsoft's domains.
 - **relatedSlugs.** Only slugs from the brief's list. The briefings that carry the page's tags are
   listed on the page automatically, so name only the few that show the mechanism best.
-- **sections.** No H1 or H2 headings inside a section; the template adds them. Use bold labels or
+- **sections.** Together, 700 to 1,200 words; the validator rejects more than 1,500 and tells you
+  the count. A long page is usually repeating what a briefing or another concept page already
+  says: link to it. No H1 or H2 headings inside a section; the template adds them. Use bold labels or
   H3. Link to other pages as `/features/<slug>/` and `/concepts/<slug>/`.
 
 ## Before you validate
@@ -217,6 +229,7 @@ As the administrator:
   consequence? Remove any line that would fit any other concept page unchanged.
 - Is each gap stated once, where I need it? Does any sentence talk about the research ("the pages
   read") when it should talk about the product?
-- Is the page within the length the standard sets?
+- Is the page within 1,200 words, or does every paragraph past that carry a cost, a risk or a
+  control the reader needs? Cut background, history and anything another page already explains.
 - Is it British English in the prose, with Microsoft's names spelled as Microsoft spells them, and
   free of marketing adjectives and exclamation marks?

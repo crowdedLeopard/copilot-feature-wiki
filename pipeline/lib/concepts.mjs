@@ -278,6 +278,15 @@ export async function recordDecline(tag, reason, briefings) {
  * Validate a structured output and write the concept page, or record a decline. Throws with a
  * readable message when the output does not pass. Returns { declined, file, slug, title, tags }.
  */
+/** Words a reader meets in the sections: link targets, table rules and markdown marks are not counted. */
+export function countWords(markdown) {
+  return markdown
+    .replace(/\]\([^)]*\)/g, ']')
+    .replace(/^\s*\|?[\s:|-]+\|?\s*$/gm, ' ')
+    .split(/\s+/)
+    .filter((w) => /[A-Za-z0-9]/.test(w)).length;
+}
+
 export async function writeConceptPage(task, rawOutput) {
   const slug = task.slug;
   const [briefings, concepts, glossary, existing] = await Promise.all([liveBriefings(), allConceptPages(), loadGlossary(), loadExistingConcept(slug)]);
@@ -294,6 +303,8 @@ export async function writeConceptPage(task, rawOutput) {
   const parsed = conceptOutput.safeParse(rawOutput);
   if (!parsed.success) throw new Error('Output failed schema: ' + parsed.error.issues.map((i) => i.path.join('.') + ' ' + i.message).join('; '));
   const out = parsed.data;
+  const words = countWords(Object.values(out.sections).join('\n'));
+  if (words > RULES.maxWords) throw new Error(`The sections run to ${words} words; a concept page is at most ${RULES.maxWords} (aim for 700 to 1,200). Cut background and anything a briefing or another concept page already explains, and link to it.`);
   try { await fs.access(path.join(FEATURES_DIR, `${slug}.md`)); throw new Error(`A briefing already uses the slug "${slug}"; a concept page cannot share it.`); } catch (err) { if (err.code !== 'ENOENT') throw err; }
 
   // Tags: canonical spelling, the tag the page is named after first. Covers: only tags no other concept page explains.
