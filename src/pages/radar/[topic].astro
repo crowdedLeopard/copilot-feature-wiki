@@ -42,7 +42,7 @@ const groups: [string, typeof items][] = [
                   <td class="id">{i.id}</td>
                   <td class="d">{shortRoadmapDate(i.targetDate)}</td>
                   <td class="d">{formatDate(i.modified)}</td>
-                  <td>{b ? <a class="briefed" href={featureUrl(b.data.slug)}>Read briefing</a> : <span class="muted small" title="Tracked. Waiting its turn in the twice-daily run.">Not yet briefed</span>}</td>
+                  <td>{b ? <a class="briefed" href={featureUrl(b.data.slug)}>Read briefing</a> : <span class="muted small" style="white-space:nowrap" title="Tracked. Waiting its turn in the twice-daily run.">Not yet briefed</span>}</td>
                 </tr>
               );
             })}

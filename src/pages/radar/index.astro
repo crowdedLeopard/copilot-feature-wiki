@@ -56,7 +56,7 @@ for (const i of catalog.items) statusCounts.set(i.statusKey, (statusCounts.get(i
               <td><Badge status={i.statusKey} /></td>
               <td class="d">{shortRoadmapDate(i.targetDate)}</td>
               <td class="d">{formatDate(i.modified)}</td>
-              <td>{b ? <a class="briefed" href={featureUrl(b.data.slug)}>Read briefing</a> : <span class="muted small" title="Tracked. Waiting its turn in the twice-daily run.">Not yet briefed</span>}</td>
+              <td>{b ? <a class="briefed" href={featureUrl(b.data.slug)}>Read briefing</a> : <span class="muted small" style="white-space:nowrap" title="Tracked. Waiting its turn in the twice-daily run.">Not yet briefed</span>}</td>
             </tr>
           );
         })}
