@@ -52,6 +52,7 @@ async function candidates() {
     const writtenNow = written.has(p.slug);
     if (ALL || due || ONLY.includes(p.slug)) {
       const reason = due || 'requested';
+      // Pages that have never been checked come before re-checks; both come after this run's own pages.
       const rank = writtenNow ? 0 : reason === 'never-checked' ? 1 : reason === 'changed-since-check' ? 2 : reason === 'check-expired' ? 3 : 4;
       const key = reason === 'check-expired' ? p.data.verification?.date || '' : `9${String(9e12 - new Date(p.data.updated).getTime()).padStart(13, '0')}`; // newest first, expired oldest first
       out.push({ slug: p.slug, kind: p.kind, file: path.join(p.dir, p.file), where: p.where, data: p.data, reason, sort: `${rank}-${key}`, today: writtenNow, writtenThisRun: writtenNow && !p.data.verification });
@@ -59,8 +60,12 @@ async function candidates() {
   }
   if (ONLY.length && !ALL) return out.filter((c) => ONLY.includes(c.slug));
   out.sort((a, b) => a.sort.localeCompare(b.sort));
+  // Everything written in this run and everything held as unverified is always checked; VERIFY_LIMIT is the number
+  // of other pages (never checked, changed since their check, check expired) on top of that, as the workflow input
+  // says. Before 16 Nov 2026 the limit was shared, so a run that wrote 24 pages never reached an older one. The
+  // run's credit cap (VERIFY_MAX_RUN_CREDITS) still bounds what is actually spent.
   const mustTake = out.filter((c) => c.today || c.reason === 'unverified').length;
-  return byTopicInTurn(out.slice(0, Math.max(LIMIT, mustTake)));
+  return byTopicInTurn(out.slice(0, mustTake + LIMIT));
 }
 
 /**

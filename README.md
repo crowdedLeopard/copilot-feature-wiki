@@ -113,7 +113,9 @@ manual and the system prompt, and an append-only log records every run.
    `auto` when the seat refuses one; caps of 250 credits per page and 2,000 per run,
    `VERIFY_MAX_CREDITS` and `VERIFY_MAX_RUN_CREDITS`; a check cost about 63 credits in the first
    real run), `claude-code`, `api` or `off`. `VERIFY_MODEL`, `VERIFY_FALLBACK_MODELS`,
-   `VERIFY_LIMIT` and the `verify_*` run inputs override the defaults. Checks run `VERIFY_PARALLEL`
+   `VERIFY_LIMIT` (24 further pages a run, on top of everything written in it) and the `verify_*`
+   run inputs override the defaults; a full check of every page is one manual run with
+   `compile_limit` 0, `verify_only` all and a larger `verify_max_run_credits`. Checks run `VERIFY_PARALLEL`
    (3) at a time, and the verifier stops starting sessions after `VERIFY_RUN_MINUTES` (75), so the
    run always reaches lint, index and the commit; pages it did not reach are held or stay unchecked.
    A refused token stops the run with the reason in plain English in the run summary.
