@@ -4,38 +4,101 @@
   "title": "Power Pages: first-class support for Power Platform connector APIs",
   "status": "held",
   "date": "2026-11-16",
-  "version": 2,
+  "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 2,
   "verifierVerdict": "hold",
-  "notes": [
-    "2026-11-16: taken offline; the grace for pages published before the check existed is off"
-  ],
+  "notes": [],
   "hold": {
     "reason": "failed",
     "since": "2026-11-16",
     "reasons": [
-      "5 blocking findings (claims 16, 22, 24, 27, 32)",
-      "3 major findings"
+      "2 blocking findings (claims 15, 17)"
     ]
   },
   "counts": {
     "claims": 34,
-    "confirmed": 24,
-    "unconfirmed": 6,
-    "contradicted": 4,
-    "blocker": 5,
-    "major": 3,
-    "minor": 5
+    "confirmed": 32,
+    "unconfirmed": 0,
+    "contradicted": 2,
+    "blocker": 2,
+    "major": 0,
+    "minor": 0
   },
-  "summary": "Hold: Microsoft has not established that this capability requires administrator opt-in or that the listed connector controls enforce its boundaries. The endpoint-filtering row also incorrectly includes custom connectors, and the cost rating assumes licensing that has not been published.",
+  "summary": "Hold: the data-policy PowerShell entry is not a runnable command in the form shown. The licensing paragraph also treats existing Power Pages capacity requirements as unpublished, although Microsoft documents capacity-based licensing for website visitors; only additional terms specific to native connector APIs remain unconfirmed.",
   "claims": [
     {
       "n": 1,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "Microsoft plans native Power Pages connectors to enterprise systems such as SQL, SAP and Oracle.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Native connectors support through Power Pages will allow organizations to securely connect their websites/portals directly to enterprise systems such as SQL, SAP, and Oracle",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing; Why it matters",
+      "type": "record",
+      "claim": "The planned capability avoids building or maintaining a custom integration layer.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "without building or maintaining custom integration layers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap highlights regulated enterprise customers with data behind corporate firewalls.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This capability is especially valuable for regulated and enterprise customers such as banking and financial services, who need to surface data from systems hosted behind corporate firewalls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "summary; What's changing; Scope",
+      "type": "record",
+      "claim": "The design uses the Power Platform on-premises data gateway and connector framework.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "By leveraging the Power Platform on-premises data gateway and connector framework",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap describes server-side logic interacting with on-premises data sources.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "while gaining the flexibility to build server-side logic that can interact with on-premises data sources.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "Why it matters; controls[2].note; Governance controls",
+      "type": "record",
+      "claim": "The roadmap promises consistent security and governance with existing Power Platform policies.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Customers benefit from consistent security, governance, and compliance with existing Power Platform policies",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
       "where": "front matter: status",
       "type": "record",
-      "claim": "The roadmap status is In development.",
+      "claim": "The roadmap status is in development.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
@@ -43,10 +106,10 @@
       "fix": null
     },
     {
-      "n": 2,
+      "n": 8,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
-      "claim": "The roadmap lists June CY2027 for general availability.",
+      "claim": "General availability is listed for June CY2027.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"targetDate\": \"June CY2027\"",
@@ -54,10 +117,10 @@
       "fix": null
     },
     {
-      "n": 3,
+      "n": 9,
       "where": "front matter: previewDate; What's changing",
       "type": "record",
-      "claim": "The roadmap lists March CY2027 for preview.",
+      "claim": "Preview is listed for March CY2027.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": \"March CY2027\"",
@@ -65,21 +128,10 @@
       "fix": null
     },
     {
-      "n": 4,
-      "where": "front matter: releasePhase",
-      "type": "record",
-      "claim": "The release phases are General Availability and Preview.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
+      "n": 10,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed on this roadmap item.",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) only.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -87,7 +139,7 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 11,
       "where": "front matter: platforms",
       "type": "record",
       "claim": "The roadmap platform is Web.",
@@ -98,131 +150,54 @@
       "fix": null
     },
     {
-      "n": 7,
-      "where": "front matter: roadmapModified",
-      "type": "record",
-      "claim": "The roadmap record was modified on 2026-10-26T23:15:50.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"modified\": \"2026-10-26T23:15:50\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
-      "where": "title; summary; What's changing",
-      "type": "record",
-      "claim": "Microsoft plans native Power Pages connector support for direct connections to systems such as SQL, SAP and Oracle.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Native connectors support through Power Pages will allow organizations to securely connect their websites/portals directly to enterprise systems such as SQL, SAP, and Oracle",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The planned capability avoids building or maintaining a custom integration layer.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "without building or maintaining custom integration layers.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The roadmap highlights regulated customers with data behind corporate firewalls.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "This capability is especially valuable for regulated and enterprise customers such as banking and financial services, who need to surface data from systems hosted behind corporate firewalls.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
-      "where": "summary; What's changing; Scope",
-      "type": "record",
-      "claim": "The planned integration uses the Power Platform on-premises data gateway.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "By leveraging the Power Platform on-premises data gateway and connector framework",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 12,
-      "where": "What's changing",
+      "where": "front matter: releasePhase",
       "type": "record",
-      "claim": "The planned integration uses the Power Platform connector framework.",
+      "claim": "The roadmap release phases are General Availability and Preview.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "By leveraging the Power Platform on-premises data gateway and connector framework",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
       "severity": null,
       "fix": null
     },
     {
       "n": 13,
-      "where": "summary; What's changing",
-      "type": "record",
-      "claim": "The roadmap plans server-side logic that can interact with on-premises sources.",
+      "where": "front matter: defaultState",
+      "type": "default",
+      "claim": "The default state of the planned native connector API capability is not stated.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "gaining the flexibility to build server-side logic that can interact with on-premises data sources.",
+      "source": null,
+      "quote": "Searched: \"Power Pages\" \"connector APIs\" \"enable\"; \"Power Pages\" \"native connectors\" \"connector APIs\" licensing default. Read roadmap and Server logic overview; neither states the planned native connector capability's default.",
       "severity": null,
       "fix": null
     },
     {
       "n": 14,
-      "where": "Why it matters",
-      "type": "record",
-      "claim": "The roadmap promises governance consistent with existing Power Platform policies.",
+      "where": "front matter: licensing; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Licensing terms specific to the planned native connector API capability have not been published.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "Customers benefit from consistent security, governance, and compliance with existing Power Platform policies",
+      "source": null,
+      "quote": "Searched: Power Pages licensing native Power Platform connectors on premises gateway premium connector licensing. Opened Power Pages licensing and Power Platform licensing FAQs; neither specifies additional native connector API terms.",
       "severity": null,
       "fix": null
     },
     {
       "n": 15,
-      "where": "What's changing",
-      "type": "absence",
-      "claim": "Learn does not yet document the planned native connector API capability.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Pages first class connector APIs 577897 preview March 2027 licensing admin enable connector API; \"Power Pages\" \"connector APIs\". Opened server-logic-overview and connector governance pages; results describe adjacent features, not this capability.",
-      "severity": null,
-      "fix": null
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Whether Power Pages capacity applies is to be confirmed when Microsoft publishes the terms.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq#power-pages",
+      "quote": "Power Pages (formerly Power Apps portals) licensing is capacity based and offers two types of capacities based on user type: Authenticated users per website/month and Anonymous users per website/month.",
+      "severity": "blocker",
+      "fix": "Replace the final sentence of Cost and licensing with: \"Any additional premium connector licensing, gateway hosting charges or capacity charges specific to native connector APIs are not yet published.\" Existing Power Pages website licensing is documented at https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq#power-pages; do not describe its applicability as unpublished."
     },
     {
       "n": 16,
-      "where": "front matter: defaultState",
-      "type": "default",
-      "claim": "Nobody can use the capability until an administrator enables or configures it.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: Power Pages connector APIs server-side logic connectors site enable disable licensing data policies table permissions identity; \"Power Pages\" \"connectors\" \"enable\" \"PowerShell\". Read server-logic-overview and disable-external-service-calls; neither establishes this default.",
-      "severity": "blocker",
-      "fix": "Set defaultState to unknown. The roadmap does not specify an administrator opt-in requirement; do not infer one from gateway setup or from existing server logic settings."
-    },
-    {
-      "n": 17,
-      "where": "front matter: licensing; Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "Feature-specific licensing and connector-tier requirements have not yet been published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Power Pages\" \"connector\" \"licensing\" \"server\"; Power Pages first class connector APIs 577897 preview March 2027 licensing admin enable connector API. Opened go-live/assign-licensing; read Power Platform licensing FAQ excerpts. Neither specifies this feature's terms.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "controls[0].ui; Governance controls",
+      "where": "controls[0].ui; Governance controls table",
       "type": "admin-path",
-      "claim": "Security > Data and privacy > Data policy > New Policy opens data policy creation in the Power Platform admin center.",
+      "claim": "Data policy creation is reached in Power Platform admin center through Security > Data and privacy > Data policy > New Policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/connector-action-control",
       "quote": "select Security, and then on the Security pane, select Data and privacy.\n3. On the Data protection and privacy page, select Data policy.\n4. Select an existing policy on the command bar and then select Edit policy, or select New Policy",
@@ -230,186 +205,208 @@
       "fix": null
     },
     {
-      "n": 19,
-      "where": "controls[0].api; Governance controls",
+      "n": 17,
+      "where": "controls[0].api; Governance controls table",
       "type": "command",
-      "claim": "New-DlpPolicy belongs to Microsoft.PowerApps.Administration.PowerShell and creates a data policy.",
-      "status": "supported",
+      "claim": "New-DlpPolicy (Microsoft.PowerApps.Administration.PowerShell) is the runnable PowerShell call for the data-policy row.",
+      "status": "contradicted",
       "source": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest",
-      "quote": "Module:\n    - Microsoft.PowerApps.Administration.PowerShell Module\n\nCreates a new DLP policy in the tenant by using the NewPolicy DLPPolicyDefinition object.",
+      "quote": "New-DlpPolicy -NewPolicy $NewPolicy\n\nCreates a new policy with the $NewPolicy object.",
+      "severity": "blocker",
+      "fix": "Replace controls[0].api.call and the corresponding rendered table code with \"New-DlpPolicy -NewPolicy $NewPolicy\". The module name is metadata, not a parenthesized argument to execute; the reference documents -NewPolicy as the required policy-object parameter."
+    },
+    {
+      "n": 18,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Endpoint filtering is configured within a data policy through Prebuilt Connectors > connector > Configure connector > Connector endpoints.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering",
+      "quote": "The Endpoint configurable column on the Prebuilt Connectors page in Data Policies indicates whether the endpoint filtering capability is supported for the connector.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "New-PowerAppDlpPolicyConnectorConfigurations with TenantId, PolicyName and NewDlpPolicyConnectorConfigurations creates policy endpoint configurations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering#powershell-support-for-endpoint-filtering",
+      "quote": "New-PowerAppDlpPolicyConnectorConfigurations -TenantId $TenantId -PolicyName $PolicyName -NewDlpPolicyConnectorConfigurations $ConnectorConfigurations",
       "severity": null,
       "fix": null
     },
     {
       "n": 20,
-      "where": "controls[1].ui; Governance controls",
-      "type": "admin-path",
-      "claim": "A data policy's Prebuilt Connectors page exposes Configure connector > Connector endpoints for eligible connectors.",
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Connector endpoint filtering is a preview feature.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering",
-      "quote": "If the value of the Endpoint configurable column is Yes, you can use this capability by right-clicking and then selecting Configure connector > Connector endpoints.",
-      "severity": "minor",
-      "fix": "Include the policy-selection step: Data policy > policy > Prebuilt Connectors > connector > Configure connector > Connector endpoints. State that Endpoint configurable must be Yes."
+      "quote": "This is a preview feature.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 21,
-      "where": "controls[1].api; Governance controls",
-      "type": "command",
-      "claim": "New-PowerAppDlpPolicyConnectorConfigurations creates connector configurations for endpoint filtering.",
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Endpoint filtering evaluates static designer endpoints rather than dynamically bound runtime endpoints.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering#powershell-support-for-endpoint-filtering",
-      "quote": "Create connector configurations for a data policy\n\nNew-PowerAppDlpPolicyConnectorConfigurations",
+      "source": "https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering",
+      "quote": "Endpoint filtering rules don't apply to environment variables, custom inputs, or any endpoint dynamically created at runtime. Only static endpoints are evaluated in the app, flow, or chatbot designers.",
       "severity": null,
       "fix": null
     },
     {
       "n": 22,
-      "where": "controls[1].governs; Governance controls",
-      "type": "applicability",
-      "claim": "The listed endpoint-filtering UI and cmdlet govern allowed endpoints for custom connectors as well as HTTP connectors.",
-      "status": "contradicted",
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The connector must have Endpoint configurable set to Yes to expose the endpoint-filtering UI.",
+      "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering",
-      "quote": "it's exclusively available for the following connectors:\n- HTTP\n- HTTP with Microsoft Entra ID (AD)\n- HTTP Webhook\n- SQL Server (includes using SQL Server Connector to access Azure Synapse data warehouse)\n- Azure Blob Storage\n- SMTP\n- Browser Automation\n- UI Automation",
-      "severity": "blocker",
-      "fix": "Remove custom connectors from this row's governs text. Custom connector host-URL classification is a different control under Data Policies > Custom connectors, documented at https://learn.microsoft.com/power-platform/admin/dlp-custom-connector-parity."
+      "quote": "If the value of the Endpoint configurable column is Yes, you can use this capability by right-clicking and then selecting Configure connector > Connector endpoints.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 23,
-      "where": "controls[1]; Governance controls",
-      "type": "behaviour",
-      "claim": "Endpoint filtering is presented without a preview qualification.",
+      "where": "controls[0].note; controls[1].note; Why it matters; Governance controls",
+      "type": "absence",
+      "claim": "Learn does not confirm that the two general data-policy controls govern the planned native Power Pages connector APIs.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering",
-      "quote": "This is a preview feature.\n- Preview features aren’t meant for production use and might have restricted functionality.",
-      "severity": "minor",
-      "fix": "Add a note marking endpoint filtering as preview and stating that it evaluates static designer endpoints, not dynamically bound runtime endpoints."
+      "source": null,
+      "quote": "Searched: \"Power Pages\" \"connector\" \"on-premises\" \"policies\". Opened Data policies, Connector action control and Connector endpoint filtering; read Advanced connector policies excerpts. None identifies native Power Pages connector APIs as covered.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 24,
-      "where": "Why it matters; controls[0]; controls[1]; Governance controls closing paragraph",
-      "type": "applicability",
-      "claim": "The listed data-policy and endpoint-filtering controls are confirmed controls for the new native Power Pages connector workload.",
-      "status": "unsupported",
+      "where": "controls[2].ui; controls[2].api; Governance controls table",
+      "type": "absence",
+      "claim": "No Power Pages-specific UI or automation control for native connector APIs is yet documented.",
+      "status": "supported",
       "source": null,
-      "quote": "Searched: \"Power Pages\" \"connector\" \"data policies\"; Power Pages connector APIs server-side logic connectors site enable disable licensing data policies table permissions identity. Read connector-action-control, connector-endpoint-filtering and Data policies excerpts; none confirms this feature's enforcement.",
-      "severity": "blocker",
-      "fix": "Mark both rows as general controls whose applicability to native Power Pages connector APIs is not yet confirmed. Attribute the general governance promise to the roadmap and remove the assertion that these are certain enforcing controls for this workload."
+      "quote": "Searched: \"Power Pages\" \"connector APIs\" \"enable\"; \"Power Pages\" \"connector APIs\" \"pac pages\" \"PowerShell\". Read admin API and CLI search results and Server logic overview; found only controls for other capabilities.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 25,
-      "where": "controls[2].ui; controls[2].api",
+      "where": "What's changing; front matter: confidence",
       "type": "absence",
-      "claim": "No Power Pages-specific UI or automation control for native connector APIs is documented yet.",
+      "claim": "No Learn documentation for the planned native connector API feature was found.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Power Pages\" \"connector APIs\"; \"Power Pages\" \"connectors\" \"enable\" \"PowerShell\"; Power Pages first class connector APIs 577897 preview March 2027 licensing admin enable connector API. Read admin API excerpts and server logic governance pages; no native connector switch was documented.",
+      "quote": "Searched: \"Power Pages\" \"native connectors\" \"connector APIs\" licensing default; \"Power Pages\" \"connector APIs\" \"enable\". Results concerned connector catalogs, server logic, MCP, or other products, not this planned capability.",
       "severity": null,
       "fix": null
     },
     {
       "n": 26,
-      "where": "Risk assessment: Data exposure; rationale: risk",
-      "type": "record",
-      "claim": "The planned capability can surface on-premises enterprise data through a website.",
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "Per-visitor authorisation for the planned native connector API data is not yet documented.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "who need to surface data from systems hosted behind corporate firewalls.",
+      "source": null,
+      "quote": "Searched: \"Power Pages\" \"connector APIs\" permissions connection identity supported operations admin site settings PowerShell Dataverse. Opened Server logic overview and Power Pages security; these document general and Dataverse access, not native connector authorisation.",
       "severity": null,
       "fix": null
     },
     {
       "n": 27,
-      "where": "Risk assessment: Data exposure",
-      "type": "applicability",
-      "claim": "Table permissions do not apply to this capability's non-Dataverse data, so filtering must be implemented in logic.",
-      "status": "unsupported",
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "Connection identity and per-visitor delegation for the planned native connector capability are not yet documented.",
+      "status": "supported",
       "source": null,
-      "quote": "Searched: \"Power Pages\" \"table permissions\" \"external\" \"virtual\"; Power Pages server logic connectors external data table permissions stored credentials write gateway errors. Read server-logic-overview and virtual-table security excerpts; neither defines native connector API authorization.",
-      "severity": "blocker",
-      "fix": "Replace with: Microsoft has not documented how per-visitor authorization is enforced for native connector API data; validate this before exposing records. Do not assert that table permissions cannot participate."
+      "quote": "Searched: \"Power Pages\" \"native connectors\" \"identity\"; \"Power Pages\" \"connector APIs\" permissions connection identity supported operations admin site settings PowerShell Dataverse. Read Power Pages security and Server logic overview; no native connector identity model found.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 28,
-      "where": "Risk assessment: Security & identity",
-      "type": "behaviour",
-      "claim": "Connections for this new capability run with a stored identity.",
-      "status": "unsupported",
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "Supported operations for the planned native connector capability are not yet documented.",
+      "status": "supported",
       "source": null,
-      "quote": "Searched: Power Pages server logic connectors external data table permissions stored credentials write gateway errors. Read server-logic-overview and Power Pages connectivity excerpts; these describe general server secrets or Dataverse authentication, not native connector connection identity.",
-      "severity": "major",
-      "fix": "Replace with: Connection identity and per-visitor delegation are not yet documented; confirm whose credentials are used and how they are scoped."
+      "quote": "Searched: \"Power Pages\" \"connector APIs\" permissions connection identity supported operations admin site settings PowerShell Dataverse. Opened Server logic overview; its methods describe general server logic, not the planned native connector operation set.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 29,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "The planned native connector integration can write to external systems, not only read.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: Power Pages server logic connectors external data table permissions stored credentials write gateway errors. Read server-logic-overview, including Supported HTTP methods. General server logic supports external writes, but neither it nor the roadmap specifies native connector operations.",
-      "severity": "major",
-      "fix": "Say that general Power Pages server logic supports external writes, citing https://learn.microsoft.com/power-pages/configure/server-logic-overview, but supported operations for the planned native connector capability are not yet documented."
+      "claim": "General Power Pages server logic supports POST for sending data to external systems.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/server-logic-overview",
+      "quote": "POST | function post() { } | Create records or send new data. | Commonly used to insert new records into Dataverse or send data to external systems.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 30,
-      "where": "Risk assessment: Change & support",
+      "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "Gateway outages will surface as site errors.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: \"Power Pages\" \"gateway\" \"error\"; Power Pages server logic connectors external data table permissions stored credentials write gateway errors. Read server-logic-overview and Power Pages FAQ error excerpts; no native connector gateway failure behavior is specified.",
-      "severity": "major",
-      "fix": "Frame this as a risk to test: Gateway outages could disrupt site integrations; test failure handling and agree support ownership before production."
+      "claim": "General Power Pages server logic supports PUT for replacing or updating records.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/server-logic-overview",
+      "quote": "PUT | function put() { } | Replace or update records. | Updates or replaces an entire record or dataset.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 31,
-      "where": "Governance controls closing paragraph; rationale: risk",
+      "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "Power Pages sites can be publicly accessible to anonymous visitors.",
+      "claim": "General Power Pages server logic supports PATCH for partial record updates.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-pages/security/power-pages-security",
-      "quote": "The public setting makes the site accessible to everyone over the Internet anonymously or to users authenticated through identity providers.",
-      "severity": "minor",
-      "fix": "Cite https://learn.microsoft.com/power-pages/security/power-pages-security for this background fact; distinguish public-site scenarios from the default private visibility."
+      "source": "https://learn.microsoft.com/power-pages/configure/server-logic-overview",
+      "quote": "PATCH | function patch() { } | Updates part of a record (upsert). | Performs a partial update of existing data without replacing the entire record.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 32,
-      "where": "front matter: cost; rationale: cost",
-      "type": "consistency",
-      "claim": "A medium cost rating is justified despite unpublished feature licensing and no established feature-specific consumption cost.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "cost: \"medium\"; licensing.model: \"unknown\"; rationale: \"Connector and gateway use may need premium licensing and gateway infrastructure\". The standard requires low when unpublished licensing leaves only admin time established.",
-      "severity": "blocker",
-      "fix": "Set cost to low and explain that currently evidenced work is planning and administration while feature-specific licensing remains unpublished. Do not rate hypothetical premium licensing as an established cost."
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "General Power Pages server logic supports DELETE for removing data from external systems.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/server-logic-overview",
+      "quote": "DELETE | function del() { } | Delete records or fields. | Removes records or data from Dataverse or an external system.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 33,
-      "where": "front matter: action",
-      "type": "consistency",
-      "claim": "Prepare is the appropriate action for this optional new connector capability.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "action: \"prepare\"; What's changing: \"Power Pages will support native Power Platform connectors\". The standard assigns review to a new optional capability when no source says existing behavior changes without adoption.",
-      "severity": "minor",
-      "fix": "Set action to review: neither the roadmap nor the researched documentation says existing sites change or start calling connectors automatically."
+      "where": "Governance controls",
+      "type": "default",
+      "claim": "Power Pages sites are available to internal users by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/security/power-pages-security",
+      "quote": "By default, all Power Pages sites are available to users who are internal to your organization.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 34,
-      "where": "Governance guidance; Governance controls",
-      "type": "consistency",
-      "claim": "The governance table represents all controls the checklist asks administrators to review or monitor.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Checklist: \"Plan gateway capacity, high availability and network rules\", \"Define who may create connections\", \"Monitor gateway health and call volumes\", \"Audit connection ownership\". The table contains only data policies, endpoint filtering and an undocumented feature control.",
-      "severity": "minor",
-      "fix": "Add documented rows for gateway availability/monitoring and connection creation/ownership controls, or narrow the checklist to planning and testing advice that does not imply these controls have been mapped."
+      "where": "Governance controls; Why it matters; rationale: risk",
+      "type": "behaviour",
+      "claim": "Public site visibility allows anonymous Internet access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/security/power-pages-security",
+      "quote": "The public setting makes the site accessible to everyone over the Internet anonymously or to users authenticated through identity providers.",
+      "severity": null,
+      "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-16T19:29:30.399Z",
+    "at": "2026-11-16T22:01:02.265Z",
     "summary": {
-      "links": 5,
+      "links": 7,
       "unreachable": 0,
       "uiPaths": 2,
       "uiPathsWithMissingWords": 0,
@@ -435,6 +432,16 @@
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-pages/configure/server-logic-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-pages/security/power-pages-security",
         "ok": true,
         "status": 200
       },
@@ -471,7 +478,7 @@
       {
         "index": 1,
         "side": "ui",
-        "governs": "Allowed endpoints for HTTP and custom connectors",
+        "governs": "Allowed endpoints for HTTP and other endpoint-configurable connectors",
         "docs": "https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering",
         "reachable": true,
         "segments": [
@@ -485,7 +492,7 @@
       {
         "index": 1,
         "side": "api",
-        "governs": "Allowed endpoints for HTTP and custom connectors",
+        "governs": "Allowed endpoints for HTTP and other endpoint-configurable connectors",
         "docs": "https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering#powershell-support-for-endpoint-filtering",
         "reachable": true,
         "token": "New-PowerAppDlpPolicyConnectorConfigurations",
@@ -494,5 +501,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-16",
+      "status": "held",
+      "version": 2,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

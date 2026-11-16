@@ -4,37 +4,35 @@
   "title": "Power Pages: MCP server exposes site data to AI clients",
   "status": "held",
   "date": "2026-11-16",
-  "version": 2,
+  "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 2,
   "verifierVerdict": "hold",
-  "notes": [
-    "2026-11-16: taken offline; the grace for pages published before the check existed is off"
-  ],
+  "notes": [],
   "hold": {
     "reason": "failed",
     "since": "2026-11-16",
     "reasons": [
-      "4 blocking findings (claims 27, 29, 31, 36)"
+      "4 blocking findings (claims 22, 27, 30, 33)"
     ]
   },
   "counts": {
-    "claims": 39,
-    "confirmed": 33,
-    "unconfirmed": 0,
-    "contradicted": 6,
+    "claims": 48,
+    "confirmed": 41,
+    "unconfirmed": 2,
+    "contradicted": 5,
     "blocker": 4,
-    "major": 0,
-    "minor": 7
+    "major": 2,
+    "minor": 3
   },
-  "summary": "Hold: the visibility command controls which system administrators may change site visibility, not the non-production public-access policy shown beside it. Documented automation is incorrectly marked absent for site settings and app registrations, and the low cost rating conflicts with the licensing and potential consumption described.",
+  "summary": "Hold: the governance paths do not match their linked instructions, including a missing Products section in the public-access policy path. The statement that agents can query anything allowed by table permissions overlooks Web API exposure and column restrictions; claims about arbitrary queries and misconfiguration exposing the endpoint also need narrowing.",
   "claims": [
     {
       "n": 1,
       "where": "front matter: status",
       "type": "record",
-      "claim": "The roadmap status is in-development.",
+      "claim": "The roadmap status is In development.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
@@ -43,20 +41,20 @@
     },
     {
       "n": 2,
-      "where": "front matter: targetDate; What's changing",
+      "where": "What's changing; front matter: targetDate; Open questions",
       "type": "record",
-      "claim": "The roadmap targets general availability for January CY2027.",
+      "claim": "The roadmap lists general availability in January CY2027.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"targetDate\": \"January CY2027\"",
-      "severity": null,
-      "fix": null
+      "quote": "\"targetDate\": \"January CY2027\", \"status\": \"In development\"",
+      "severity": "minor",
+      "fix": "Replace 'general availability in January CY2027' with 'a general availability target of January CY2027'; replace 'What will be generally available at January CY2027?' with 'What will the January CY2027 general availability target cover?'"
     },
     {
       "n": 3,
-      "where": "front matter: previewDate; What's changing",
+      "where": "What's changing; front matter: previewDate",
       "type": "record",
-      "claim": "The roadmap lists a preview date of January CY2026.",
+      "claim": "The roadmap preview date is January CY2026.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": \"January CY2026\"",
@@ -65,9 +63,9 @@
     },
     {
       "n": 4,
-      "where": "front matter: clouds; What's changing; Scope",
+      "where": "What's changing; Scope; front matter: clouds",
       "type": "record",
-      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed on the roadmap.",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed by the roadmap.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -100,7 +98,7 @@
       "n": 7,
       "where": "front matter: products",
       "type": "record",
-      "claim": "The roadmap products are Microsoft Copilot (Microsoft 365) and Power Pages.",
+      "claim": "The record associates Microsoft Copilot (Microsoft 365) and Power Pages with this change.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\", \"Power Pages\"]",
@@ -111,7 +109,7 @@
       "n": 8,
       "where": "title; summary; What's changing",
       "type": "behaviour",
-      "claim": "The Power Pages MCP server exposes site data and operations through a standardized interface for AI clients.",
+      "claim": "The Power Pages MCP server exposes site data and operations through a standard interface for AI clients.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-pages/configure/mcp-overview",
       "quote": "MCP Server for Power Pages is a feature that exposes Power Pages data, APIs, and business logic through an MCP-compliant interface.",
@@ -120,9 +118,9 @@
     },
     {
       "n": 9,
-      "where": "summary; What's changing; Risk assessment; rationale: risk",
+      "where": "summary; What's changing; Risk assessment: Autonomy & actions; rationale: risk",
       "type": "behaviour",
-      "claim": "AI clients can create, read, update and delete Dataverse records through the site's Web APIs.",
+      "claim": "AI agents can create, read, update and delete Dataverse records through the Power Pages Web API.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-pages/configure/mcp-overview",
       "quote": "Allow AI agents to interact with Power Pages Web APIs to create, read, update, and delete Dataverse records.",
@@ -133,7 +131,7 @@
       "n": 10,
       "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap describes public-preview CRUD enablement without custom code.",
+      "claim": "The public preview described by the roadmap enables CRUD operations without custom code.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "In the public preview release, makers can enable Create, Read, Update, Delete (CRUD) operations via the site’s Web API layer without writing custom code.",
@@ -142,20 +140,20 @@
     },
     {
       "n": 11,
-      "where": "summary; What's changing",
+      "where": "summary; What's changing; Scope; rationale: impact",
       "type": "record",
-      "claim": "Makers can provision the MCP endpoint through site settings.",
+      "claim": "Makers provision the endpoint through site settings for end users.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Makers can provision the MCP server endpoint through site settings",
+      "quote": "Makers can provision the MCP server endpoint through site settings, allowing customers to securely interact with site data or perform operations using natural language queries through popular AI chat clients.",
       "severity": null,
       "fix": null
     },
     {
       "n": 12,
-      "where": "What's changing; Risk assessment: Data exposure; Governance controls; rationale: risk",
-      "type": "behaviour",
-      "claim": "MCP data access respects web roles, table permissions and authentication boundaries.",
+      "where": "What's changing; Governance controls; rationale: risk",
+      "type": "applicability",
+      "claim": "The MCP server respects the site's web roles, table permissions and authentication boundaries.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-pages/configure/mcp-overview",
       "quote": "It lets AI agents like Microsoft 365 Copilot perform secure CRUD (Create, Read, Update, Delete) operations on Dataverse data while respecting web roles, table permissions, and authentication boundaries.",
@@ -166,7 +164,7 @@
       "n": 13,
       "where": "What's changing; Governance guidance: Before rollout",
       "type": "behaviour",
-      "claim": "MCP setup supports Microsoft Entra ID or Microsoft Entra External ID as the site's identity provider.",
+      "claim": "Setup supports Microsoft Entra ID or Microsoft Entra External ID as the identity provider.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-pages/configure/mcp-configure-entra",
       "quote": "This article shows you how to set up Microsoft Entra ID or Microsoft Entra External ID as an identity provider for your Power Pages site and configure it to expose the MCP scope.",
@@ -175,12 +173,12 @@
     },
     {
       "n": 14,
-      "where": "What's changing; Risk assessment: Security & identity",
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "Setup uses app registrations with an exposed MCP scope and delegated permissions for the MCP client.",
+      "claim": "Setup involves an exposed MCP scope and an app registration with delegated permissions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-pages/configure/mcp-configure-entra",
-      "quote": "In this section, you configure delegated access that MCP clients need to authenticate by using the Power Pages MCP server.",
+      "quote": "follow the steps in the following sections to add a custom scope, create a new app registration, and assign delegated permissions.",
       "severity": null,
       "fix": null
     },
@@ -188,73 +186,29 @@
       "n": 15,
       "where": "What's changing; Scope",
       "type": "behaviour",
-      "claim": "A Copilot Studio agent can connect to the Power Pages MCP server and be published to Microsoft 365 Copilot.",
+      "claim": "A Copilot Studio agent can connect to the MCP server and be published to Microsoft 365 Copilot.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-pages/configure/mcp-connect-clients",
-      "quote": "Create a new agent in Microsoft Copilot Studio that serves as the interface.\nThis will create a new agent that we will publish later to Microsoft 365 Copilot.",
+      "quote": "This will create a new agent that we will publish later to Microsoft 365 Copilot.",
       "severity": null,
       "fix": null
     },
     {
       "n": 16,
-      "where": "Risk assessment: Security & identity",
-      "type": "behaviour",
-      "claim": "The documented Copilot Studio connection uses OAuth 2.0 with the MCP, openid and profile scopes.",
+      "where": "front matter: defaultState; Governance controls",
+      "type": "default",
+      "claim": "Use requires an administrator or maker to enable the capability through site configuration.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-pages/configure/mcp-connect-clients",
-      "quote": "Scopes: Enter the required scopes (MCP scope URI such as `api://00000000-0000-0000-0000-000000000000/mcp`, openid, profile)",
+      "source": "roadmap record",
+      "quote": "Enabled by admins/makers/marketers for end users",
       "severity": null,
       "fix": null
     },
     {
       "n": 17,
-      "where": "Risk assessment: Security & identity; controls[0].note",
-      "type": "behaviour",
-      "claim": "Companion site settings configure bearer authentication for MCP clients.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-pages/configure/mcp-configure-site-settings",
-      "quote": "These settings control bearer authentication, specify the OpenID Connect protocol, and connect your MCP client application.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "Risk assessment: Security & identity",
-      "type": "behaviour",
-      "claim": "The documented client setup involves a client secret and redirect URI configuration.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-pages/configure/mcp-connect-clients",
-      "quote": "Completed the Configure redirect URIs for MCP clients setup\nThe third-party app registration details (Client ID, Client Secret, Authorization URL, Token URL, and Scopes)",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "Why it matters; Scope",
-      "type": "behaviour",
-      "claim": "Internal teams can perform portal operations through AI clients without navigating the portal UI.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-pages/configure/mcp-overview",
-      "quote": "Support internal workflows: Empower internal teams to perform portal operations without navigating the portal UI.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "Scope",
-      "type": "behaviour",
-      "claim": "VS Code and Microsoft Copilot Studio are examples of compatible MCP clients.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-pages/configure/mcp-configure-entra",
-      "quote": "Access to an MCP protocol-compatible client (VS Code, Microsoft Copilot Studio)",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
       "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "licensing",
-      "claim": "The Power Pages connection example lists a Microsoft 365 Copilot licence as a prerequisite for end users of the agent.",
+      "claim": "The documented Copilot agent example requires a Microsoft 365 Copilot licence for end users.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-pages/configure/mcp-connect-clients",
       "quote": "Microsoft 365 Copilot license for end users who use the agent",
@@ -262,212 +216,355 @@
       "fix": null
     },
     {
-      "n": 22,
+      "n": 18,
       "where": "front matter: licensing.notes",
       "type": "licensing",
-      "claim": "Power Pages has its own licensing, separate from the Copilot agent's end-user prerequisite.",
+      "claim": "Power Pages has its own licensing requirement, separate from the AI-client licence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-pages/go-live/assign-licensing",
       "quote": "As you work on projects and need to establish permanent sites that don't expire, you can apply Power Pages subscriptions and convert websites from trial to production.",
-      "severity": "minor",
-      "fix": "Add https://learn.microsoft.com/power-pages/go-live/assign-licensing to sources for the statement about separate Power Pages licensing."
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The mixed licensing classification describes Power Pages and AI-client licensing layers rather than a separate MCP tariff.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/web-api-overview",
+      "quote": "Portals Web API operations require a Power Pages license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Cost and licensing; front matter: licensing.notes; rationale: cost",
+      "type": "absence",
+      "claim": "No separate charge for the Power Pages MCP server has been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Pages MCP pricing licensing charge. Opened mcp-overview, mcp-connect-clients, assign-licensing, web-api-overview and Copilot Studio billing-licensing; read Power Platform licensing FAQ search excerpts. No separate MCP-server tariff found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Copilot Studio use may consume credits depending on the agent design.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing",
+      "quote": "Copilot Credits measure the time and effort your agent needs to retrieve information, respond to prompts, and use any actions or custom Azure Bot Service skills.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The linked MCP configuration page documents Power Pages Management app > Website > Site settings > MCP/Enabled.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-pages/configure/mcp-configure-site-settings#create-site-settings",
+      "quote": "Select Site Settings from the Portal Management menu. ... For each setting, select New to create a new site setting record.",
+      "severity": "blocker",
+      "fix": "Replace controls[0].ui.path and the rendered path with 'Site Settings > New'. Retain the docs URL and add to the existing note: 'Create a site setting named MCP/Enabled with value true to enable the server.' The cited page does not give a Website step or an existing MCP/Enabled navigation item."
     },
     {
       "n": 23,
-      "where": "front matter: licensing.model",
-      "type": "licensing",
-      "claim": "The solution's licensing model is mixed, reflecting client licensing and potential consumption rather than a published standalone MCP server SKU.",
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "pac pages upload --path <site-folder> --modelVersion <1-or-2> uploads changed site configuration.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing",
-      "quote": "Copilot Credits are the common currency across Copilot Studio capabilities. You can get them through pay-as-you-go meters, prepurchase plans, and Copilot Credit prepaid pack subscriptions.",
-      "severity": "minor",
-      "fix": "Retain mixed, but explain that it describes the Power Pages and chosen AI client's licensing layers, not a separately published Power Pages MCP tariff. Add https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing to sources."
+      "source": "https://learn.microsoft.com/power-pages/configure/power-platform-cli-tutorial",
+      "quote": "pac pages upload --path [Folder-location] --modelVersion [ModelVersion]",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 24,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "A separate charge for the Power Pages MCP server is not published in the documentation checked.",
+      "where": "controls[0].note",
+      "type": "behaviour",
+      "claim": "The CLI supports the adx_sitesetting table, enabling deployment of site-setting configuration.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Power Pages\" \"MCP\" \"pricing\" \"license\"; \"Power Pages\" \"MCP\" \"no additional\" cost. Opened MCP overview, MCP client connection guidance, Power Pages capacity management and Copilot Studio licensing; none states a separate Power Pages MCP server price.",
+      "source": "https://learn.microsoft.com/power-pages/configure/power-platform-cli",
+      "quote": "Portals support for Microsoft Power Platform CLI is limited to the following tables. ... adx_sitesetting",
       "severity": null,
       "fix": null
     },
     {
       "n": 25,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "Copilot Studio usage can consume Copilot Credits depending on the agent design.",
+      "where": "controls[0].note",
+      "type": "command",
+      "claim": "The documented configuration workflow downloads the site with pac pages download before editing and uploading it.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
-      "quote": "The number of Copilot Credits an agent consumes depends on the design of the agent, how often customers interact with it, and the features they use.",
-      "severity": "minor",
-      "fix": "Cite https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management and add that eligible employee-facing agent usage under the authenticated Microsoft 365 Copilot licence holder's identity is included, subject to the documented conditions; other designs can consume credits."
+      "source": "https://learn.microsoft.com/power-pages/configure/power-platform-cli-tutorial",
+      "quote": "Step 3. Download website content ... pac pages download --path [PATH] -id [WebSiteId-GUID] --modelVersion [DataModel]",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 26,
-      "where": "controls[0].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Website > Site settings is the management-app navigation for the MCP/Enabled site setting.",
+      "where": "Risk assessment: Security & identity; controls[0].note",
+      "type": "behaviour",
+      "claim": "OAuth scopes and bearer-authentication site settings configure authentication for the MCP endpoint.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-pages/configure/configure-site-settings#manage-site-settings",
-      "quote": "Using the Portal Management app, select Site settings under the Website section.",
+      "source": "https://learn.microsoft.com/power-pages/configure/mcp-configure-site-settings",
+      "quote": "These settings control bearer authentication, specify the OpenID Connect protocol, and connect your MCP client application.",
       "severity": null,
       "fix": null
     },
     {
       "n": 27,
-      "where": "controls[0].api; Governance controls table",
-      "type": "absence",
-      "claim": "Automation for changing the site's MCP enablement setting is not yet documented.",
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The linked MCP identity-provider article documents Entra ID > App registrations in Microsoft Entra admin center.",
       "status": "contradicted",
-      "source": "https://learn.microsoft.com/power-pages/configure/power-platform-cli",
-      "quote": "Supported tables\nadx_sitesetting\nIn this file, you can have the table (entity) name with table ID, list of attributes, and the values that you want to override while uploading the portal configuration using the `deploymentProfile` parameter.",
+      "source": "https://learn.microsoft.com/power-pages/configure/mcp-configure-entra",
+      "quote": "In the Microsoft Entra admin center, select App registrations from the navigation pane.",
       "severity": "blocker",
-      "fix": "Replace the absence with documented site-setting deployment automation: download the site, change the MCP/Enabled site-setting record, then use pac pages upload --path <site-folder> --modelVersion <1-or-2>. Cite https://learn.microsoft.com/power-pages/configure/power-platform-cli and https://learn.microsoft.com/power-pages/configure/power-platform-cli-tutorial. Explain that this is configuration deployment, not a dedicated MCP toggle command; the CLI supported-tables list includes adx_sitesetting."
+      "fix": "Keep 'Entra ID > App registrations', but replace controls[1].ui.docs and the rendered link with https://learn.microsoft.com/entra/identity-platform/quickstart-register-app#register-an-application, which explicitly says 'Browse to Entra ID > App registrations'. Add that URL to sources."
     },
     {
       "n": 28,
-      "where": "controls[1].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "App registrations are reached through Microsoft Entra admin center > Entra ID > App registrations.",
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "POST https://graph.microsoft.com/v1.0/applications with displayName in the request body creates an application object.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/entra/identity-platform/quickstart-register-app#register-an-application",
-      "quote": "Browse to Entra ID > App registrations and select New registration.",
-      "severity": "minor",
-      "fix": "Add https://learn.microsoft.com/entra/identity-platform/quickstart-register-app#register-an-application as the exact navigation reference; retain the MCP identity-provider page for the feature-specific scope and delegated-permission setup."
+      "source": "https://learn.microsoft.com/graph/api/application-post-applications?view=graph-rest-1.0",
+      "quote": "POST https://graph.microsoft.com/v1.0/applications ... The request body must contain displayName, which is a required property.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 29,
-      "where": "controls[1].api; Governance controls table",
-      "type": "absence",
-      "claim": "Automation for the app registration used by MCP clients is not yet documented.",
-      "status": "contradicted",
+      "where": "controls[1].note",
+      "type": "behaviour",
+      "claim": "The displayed application-creation call alone does not configure the MCP scope, delegated permissions, consent or redirect URIs.",
+      "status": "supported",
       "source": "https://learn.microsoft.com/graph/api/application-post-applications?view=graph-rest-1.0",
-      "quote": "Create a new application object.\nPOST https://graph.microsoft.com/v1.0/applications",
-      "severity": "blocker",
-      "fix": "Replace the absence with Microsoft Graph POST /v1.0/applications, supplying the required displayName in the request body, and cite https://learn.microsoft.com/graph/api/application-post-applications?view=graph-rest-1.0. Note that creating the registration alone does not complete the MCP scope, delegated permissions, consent or redirect-URI configuration."
+      "quote": "\"oauth2PermissionScopes\": [], ... \"requiredResourceAccess\": [], ... \"web\": { \"redirectUris\": []",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 30,
       "where": "controls[2].ui; Governance controls table",
       "type": "admin-path",
-      "claim": "The non-production public-access governance setting is under Power Platform admin center > Manage > Power Pages > Settings > Set site visibility to public access for non-production sites.",
-      "status": "supported",
+      "claim": "The public-access policy path is Manage > Power Pages > Settings > Set site visibility to public access for non-production sites.",
+      "status": "contradicted",
       "source": "https://learn.microsoft.com/power-pages/admin/site-visibility-governance",
-      "quote": "Under Products, select Power Pages.\nSelect the Settings tab.\nSelect Set site visibility to public access for non-production sites.\nSelect the environment you want to manage.",
+      "quote": "In the left navigation pane, select Manage. ... Under Products, select Power Pages. ... Select the Settings tab.",
+      "severity": "blocker",
+      "fix": "Replace controls[2].ui.path and the rendered path with 'Manage > Products > Power Pages > Settings > Set site visibility to public access for non-production sites'. Retain the existing docs URL."
+    },
+    {
+      "n": 31,
+      "where": "controls[2].api; Governance controls",
+      "type": "absence",
+      "claim": "No API is documented for the non-production public-access policy.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Pages non-production site visibility policy Power Platform API PowerShell CLI; Power Pages non-production policy API visibility tenant settings. Read site-visibility-governance, site-visibility and admin-api/pac power-pages excerpts: per-site operations, not this policy.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 31,
-      "where": "controls[2].api; Governance controls table",
-      "type": "command",
-      "claim": "Setting enableSystemAdminsToChangeSiteVisibility to false is the automation equivalent of the non-production public-access policy shown in this row.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/power-pages/security/site-visibility#permissions-required-to-change-site-visibility",
-      "quote": "When you don't want all system administrators to be able to change site visibility, set `enableSystemAdminsToChangeSiteVisibility` to `false`. Then delegate site visibility management to a select set of users.",
-      "severity": "blocker",
-      "fix": "Do not present this command as the equivalent of the non-production visibility policy. Move it to a separate control describing delegation of site-visibility changes by system administrators, and explain that false requires the documented delegated security-group membership. Keep the non-production policy and this role-delegation setting distinct."
-    },
-    {
       "n": 32,
-      "where": "controls[3]; Governance controls table; Open questions",
+      "where": "controls[3].ui; controls[3].api; Open questions",
       "type": "absence",
-      "claim": "A tenant-wide Power Pages MCP server switch is not documented.",
+      "claim": "No tenant-wide switch specifically for Power Pages MCP server is documented on the UI or automation surface.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Power Pages\" \"MCP\" \"tenant-wide\"; Power Pages MCP server off default tenant disable inventory admin center licensing pricing. Opened MCP overview, site-settings and identity-provider guidance; found site-level enablement, not a tenant-wide Power Pages MCP switch.",
+      "quote": "Searched: Power Pages MCP server tenant admin disable; Power Pages MCP tenant-wide disable PowerShell API. Opened mcp-overview, mcp-configure-site-settings and copilot-hub. Found per-site MCP/Enabled; no tenant-wide Power Pages MCP-server switch.",
       "severity": null,
       "fix": null
     },
     {
       "n": 33,
-      "where": "front matter: defaultState; Governance controls",
-      "type": "default",
-      "claim": "The feature requires explicit configuration and enablement before use, consistent with admin-opt-in.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-pages/configure/mcp-configure-site-settings",
-      "quote": "Create the required site settings to enable and configure MCP server functionality. For each setting, select New to create a new site setting record.",
-      "severity": null,
-      "fix": null
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Agents can query anything the signed-in user's web role and table permissions allow.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-pages/configure/web-api-overview",
+      "quote": "To enable the portals Web API for your site, configure the site settings for each table that you want to expose. ... You can configure column permissions to further define privileges to individual columns within a table while using the portal Web API.",
+      "severity": "blocker",
+      "fix": "Replace the bullet with 'Agent access through the site's Web API respects web roles and table permissions, and is also limited by the tables and columns exposed through the Web API and any column permissions.' Cite https://learn.microsoft.com/power-pages/configure/web-api-overview."
     },
     {
       "n": 34,
-      "where": "controls[0]; Governance controls",
+      "where": "Why it matters",
       "type": "behaviour",
-      "claim": "MCP/Enabled enables or disables the MCP server separately for a site.",
+      "claim": "An agent can issue arbitrary queries against the site.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Power Pages MCP arbitrary queries; Power Pages MCP Web API table permissions queries authentication misconfigured. Opened mcp-overview and web-api-overview. They document conversational CRUD through a constrained Web API, not arbitrary query execution.",
+      "severity": "major",
+      "fix": "Replace 'Table permissions that were adequate for a form-based site can behave differently when an agent issues arbitrary queries.' with 'Review existing table permissions before exposing site data through natural-language queries.'"
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Misconfigured authentication site settings can break sign-in.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-pages/configure/mcp-configure-site-settings#create-site-settings",
-      "quote": "| Enable MCP server | `MCP/Enabled` | `true` | This site setting enables or disables MCP server for the site. |",
+      "source": "https://learn.microsoft.com/power-pages/security/security-agent#security-scenarios",
+      "quote": "Configure authentication providers, validate authentication settings, and diagnose common sign-in problems. ... Users click Sign in but return to the sign-in page. Help me identify the problem.",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/power-pages/security/security-agent#security-scenarios for the sign-in troubleshooting statement, or narrow it to the MCP configuration article's statement that incorrect site-setting names or values prevent the MCP server from functioning properly."
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Misconfigured site settings can leave the MCP endpoint exposed.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Power Pages MCP misconfigured authentication endpoint exposed. Opened mcp-configure-site-settings and mcp-overview; read security-agent search excerpts. No passage states that an MCP site-setting error bypasses authentication or exposes the endpoint.",
+      "severity": "major",
+      "fix": "Remove 'or leave the endpoint exposed'. Alternatively replace the entire bullet with 'Incorrect site-setting names or values prevent the MCP server from functioning properly', as stated at https://learn.microsoft.com/power-pages/configure/mcp-configure-site-settings#verify-configuration."
+    },
+    {
+      "n": 37,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Internal teams can perform portal operations from Copilot without using the portal UI.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/mcp-overview",
+      "quote": "Support internal workflows: Empower internal teams to perform portal operations without navigating the portal UI.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 35,
+      "n": 38,
       "where": "Governance controls",
       "type": "absence",
-      "claim": "No admin-center inventory specifically identifying MCP-enabled Power Pages sites is documented.",
+      "claim": "Microsoft documents no admin-center inventory field identifying MCP-enabled Power Pages sites.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Power Pages\" \"MCP\" \"tenant\" \"inventory\". Opened https://learn.microsoft.com/power-pages/admin/power-pages-inventory and MCP overview; the inventory's documented site fields do not include MCP enablement.",
-      "severity": "minor",
-      "fix": "Replace 'there is no inventory of MCP-enabled sites in the admin center' with 'As of November 2026, Microsoft documents no admin-center inventory field identifying MCP-enabled sites.' Do not imply that the documented general Power Pages site inventory does not exist."
-    },
-    {
-      "n": 36,
-      "where": "front matter: cost; rationale: cost",
-      "type": "consistency",
-      "claim": "The low cost rating correctly represents indirect costs only.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "cost: \"low\"\nLearn lists a Microsoft 365 Copilot licence for end users of the Copilot agent example, and Copilot Studio use may consume credits.",
-      "severity": "blocker",
-      "fix": "Change cost to medium for the documented licensed-user example and explain the subset-user licence requirement in the rationale. If retaining metered Copilot Studio deployments as part of the assessed scenario, use variable and name Copilot Credits. Do not justify low solely by the absence of a separate server price."
-    },
-    {
-      "n": 37,
-      "where": "front matter: action",
-      "type": "consistency",
-      "claim": "Prepare is the appropriate action rating for this optional, explicitly enabled capability.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "action: \"prepare\"\nThe server is off until a site setting turns it on, and each site is governed separately",
-      "severity": "minor",
-      "fix": "Change action to review: this optional capability changes nothing until it is configured. The standard's prepare exception for a new control closing an existing high exposure does not describe this new data-access capability."
-    },
-    {
-      "n": 38,
-      "where": "Governance guidance: Before rollout; Governance controls",
-      "type": "consistency",
-      "claim": "The controls table includes the data-boundary controls that the checklist asks administrators to audit.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Audit table permissions and web roles for every table the Web API exposes.\nMCP server on or off for a site\nApp registration that MCP clients authenticate with\nPublic visibility of the site\nTenant-wide switch for the Power Pages MCP server",
-      "severity": "minor",
-      "fix": "Add a governance-control row for the site's table permissions and associated web roles, with a Microsoft-documented management path and a separately researched automation side."
+      "quote": "Searched: Power Pages MCP inventory admin center enabled sites. Opened power-pages-inventory, copilot-hub and mcp-configure-site-settings. Inventory lists site state, access, ownership and URLs; no MCP-enabled field is documented.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 39,
+      "where": "Governance controls",
+      "type": "admin-path",
+      "claim": "Site settings can also be changed through the Portal Management app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/configure-site-settings#manage-site-settings",
+      "quote": "Using the Portal Management app, select Site settings under the Website section. ... To edit an existing setting, select the Site Setting listed in the grid.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Governance controls; controls[0].scope",
+      "type": "applicability",
+      "claim": "MCP/Enabled governs the MCP server for an individual site.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/mcp-configure-site-settings",
+      "quote": "Enable MCP server | MCP/Enabled | true | This site setting enables or disables MCP server for the site.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Governance controls; controls[2].governs",
+      "type": "applicability",
+      "claim": "The site-visibility policy row concerns non-production public access, not system-administrator visibility delegation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/admin/site-visibility-governance",
+      "quote": "Tenant admins can control whether makers can make a Power Pages site public when either the site or its environment is non-production.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "When enableSystemAdminsToChangeSiteVisibility is false, System administrators must belong to an authorised exclusive Entra security group to change site visibility.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/security/site-visibility#permissions-required-to-change-site-visibility",
+      "quote": "If the tenant-level setting enableSystemAdminsToChangeSiteVisibility is set to false, members of the System administrator security role must be a member of an exclusive security group in Microsoft Entra that has the permissions to manage site visibility.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
       "where": "Governance guidance: At rollout",
-      "type": "behaviour",
-      "claim": "The documented setup grants delegated MCP, openid and profile permissions and then admin consent.",
+      "type": "applicability",
+      "claim": "The documented identity setup grants delegated MCP, openid and profile permissions and admin consent.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-pages/configure/mcp-configure-entra",
-      "quote": "Select the check box next to MCP and select Add permissions.\nSelect Delegated permissions, select the check boxes next to openid and profile, and then select Add permissions.\nSelect Grant admin consent for [your tenant], and then select Yes to finish the permissions setup.",
+      "quote": "Select the check box next to MCP and select Add permissions. ... select the check boxes next to openid and profile ... Select Grant admin consent for [your tenant]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Governance guidance: Before rollout and After rollout",
+      "type": "consistency",
+      "claim": "The checklist tells administrators to audit and re-test table permissions and web roles, but neither control has a table row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Audit table permissions and web roles for every table the Web API exposes. ... Re-test permissions whenever tables or roles change. ... Table rows cover MCP, app registration, public visibility and a tenant switch.",
+      "severity": "minor",
+      "fix": "The table has no row for the checklist's table-permission and web-role audit and re-test steps. Remove those checklist bullets to resolve the mismatch without adding unverified control rows."
+    },
+    {
+      "n": 45,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "The separate tenant-level enableSystemAdminsToChangeSiteVisibility setting governs whether System administrators can change site visibility.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/security/site-visibility#permissions-required-to-change-site-visibility",
+      "quote": "When the tenant-level setting enableSystemAdminsToChangeSiteVisibility is set to true, members of the System administrator security role can change the site visibility.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "VS Code and Microsoft Copilot Studio are examples of MCP-compatible clients for this setup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/mcp-configure-entra",
+      "quote": "Access to an MCP protocol-compatible client (VS Code, Microsoft Copilot Studio)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The documented Copilot Studio connection setup uses a client secret and a redirect URI.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/mcp-connect-clients",
+      "quote": "Client Secret: Enter the client secret value ... Select Authentication, select Add URI, paste the redirect URL, and then select Save.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 2026-10-22T23:45:38.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-22T23:45:38\"",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-16T19:29:31.178Z",
+    "at": "2026-11-16T22:01:04.449Z",
     "summary": {
-      "links": 9,
+      "links": 14,
       "unreachable": 0,
       "uiPaths": 3,
       "uiPathsWithMissingWords": 1,
-      "apiCalls": 1,
+      "apiCalls": 2,
       "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
     },
@@ -493,7 +590,27 @@
         "status": 200
       },
       {
+        "url": "https://learn.microsoft.com/power-pages/configure/power-platform-cli",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-pages/go-live/assign-licensing",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing",
+        "ok": true,
+        "status": 200
+      },
+      {
         "url": "https://learn.microsoft.com/power-pages/configure/mcp-configure-site-settings#create-site-settings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-pages/configure/power-platform-cli-tutorial",
         "ok": true,
         "status": 200
       },
@@ -503,17 +620,22 @@
         "status": 200
       },
       {
+        "url": "https://learn.microsoft.com/graph/api/application-post-applications?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
         "url": "https://learn.microsoft.com/power-pages/admin/site-visibility-governance",
         "ok": true,
         "status": 200
       },
       {
-        "url": "https://learn.microsoft.com/power-pages/security/site-visibility#permissions-required-to-change-site-visibility",
+        "url": "https://learn.microsoft.com/power-pages/configure/configure-site-settings#manage-site-settings",
         "ok": true,
         "status": 200
       },
       {
-        "url": "https://learn.microsoft.com/power-pages/configure/configure-site-settings#manage-site-settings",
+        "url": "https://learn.microsoft.com/power-pages/security/site-visibility#permissions-required-to-change-site-visibility",
         "ok": true,
         "status": 200
       }
@@ -535,6 +657,15 @@
         ]
       },
       {
+        "index": 0,
+        "side": "api",
+        "governs": "MCP server on or off for a site",
+        "docs": "https://learn.microsoft.com/power-pages/configure/power-platform-cli-tutorial",
+        "reachable": true,
+        "token": "pac pages upload",
+        "found": true
+      },
+      {
         "index": 1,
         "side": "ui",
         "governs": "App registration that MCP clients authenticate with",
@@ -545,6 +676,15 @@
           "App registrations"
         ],
         "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "App registration that MCP clients authenticate with",
+        "docs": "https://learn.microsoft.com/graph/api/application-post-applications?view=graph-rest-1.0",
+        "reachable": true,
+        "token": "/v1.0/applications",
+        "found": true
       },
       {
         "index": 2,
@@ -559,18 +699,16 @@
           "Set site visibility to public access for non-production sites"
         ],
         "missing": []
-      },
-      {
-        "index": 2,
-        "side": "api",
-        "governs": "Public visibility of the site",
-        "docs": "https://learn.microsoft.com/power-pages/security/site-visibility#permissions-required-to-change-site-visibility",
-        "reachable": true,
-        "token": "Set-TenantSettings",
-        "found": true
       }
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-16",
+      "status": "held",
+      "version": 2,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

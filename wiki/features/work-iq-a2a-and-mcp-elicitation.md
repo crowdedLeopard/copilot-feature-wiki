@@ -55,8 +55,11 @@ sources:
   - title: "Connect agents to Microsoft 365 with Work IQ (preview)"
     url: "https://learn.microsoft.com/azure/foundry/agents/how-to/tools/work-iq"
     kind: "learn"
+  - title: "Work IQ in Copilot Studio (Microsoft Copilot)"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq"
+    kind: "learn"
 videos: []
-related: ["work-iq-human-in-the-loop","work-iq-agent-policy-governance","copilot-credits","agent-identity"]
+related: ["work-iq-human-in-the-loop","work-iq-agent-policy-governance"]
 controls:
   - governs: "Whether Work IQ MCP tool requests are governed by tenant policy"
     scope: "tenant"
@@ -74,7 +77,7 @@ controls:
       docs: "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits"
     api:
       kind: "graph"
-      call: "GET https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies (also POST, PATCH and DELETE on the same path)"
+      call: "GET https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies (POST to create; PATCH and DELETE use https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/{id})"
       docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview"
     note: "General control for credit spend; not documented as specific to elicitation. Graph is beta and not supported in production. Creating a policy needs the Billing Administrator or Global Administrator role."
   - governs: "Monitoring Work IQ API credit use by user, group and service"
@@ -102,18 +105,23 @@ changes:
     note: "First briefing: roadmap-only description of Work IQ elicitation, with the existing MCP policy and spending controls and no documented elicitation control."
   - date: "2026-11-16"
     note: "Corrected after verification: added the documented Graph beta spending-policy and usage-report calls, fixed the Consumption tab path, and removed unsupported claims about consent and who answers requests."
-version: 2
+  - date: "2026-11-16"
+    note: "Corrected the Graph spending-policy call so PATCH and DELETE use the policy ID path, and added the Copilot Studio page's statement on write operations next to the MCP policy default."
+  - date: "2026-11-16"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 2 of 80 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-16"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 63
-  confirmed: 62
-  unconfirmed: 0
-  contradicted: 1
-  attempts: 1
+  claims: 80
+  confirmed: 78
+  unconfirmed: 2
+  contradicted: 0
+  attempts: 0
+  hash: "017fbe1f91b2e2a94388ee259b894c20"
 ---
 
 ## What's changing
@@ -146,7 +154,7 @@ If the capability is enabled or adopted in your tenant, review the existing Work
 
 **Autonomy & actions**
 
-- Work IQ MCP policy states "By default, mutation operations aren't allowed for safety", including create, update, delete and action requests such as sending email. The page says policy evaluates each MCP tool request; whether a resumed task is evaluated again is not documented.
+- The Work IQ MCP policy page says "By default, mutation operations aren't allowed for safety", including create, update, delete and action requests such as sending email. The Copilot Studio page for Work IQ says "Write operations are on by default. Your organization's permissions and policies still apply." Check the actual agent and tenant policy rather than treating the two descriptions as one universal default. The MCP policy page says policy evaluates each MCP tool request; whether a resumed task is evaluated again is not documented.
 
 **Change & support**
 
@@ -194,7 +202,7 @@ The affected surfaces are the Work IQ A2A endpoint and the Work IQ MCP server. L
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether Work IQ MCP tool requests are governed by tenant policy</strong><br><small>Tenant</small><br><small class="controls__note">MCP only as documented; the page does not say it covers A2A or elicitation. The Policy tab appears &quot;when it's available&quot;. Changes can take up to 24 hours.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Work IQ MCP › Policy <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Who can consume Copilot Credits for Work IQ API, and the limits and billing method</strong><br><small>Group</small><br><small class="controls__note">General control for credit spend; not documented as specific to elicitation. Graph is beta and not supported in production. Creating a policy needs the Billing Administrator or Global Administrator role.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › + Add spending policy <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>GET https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies (also POST, PATCH and DELETE on the same path)</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Who can consume Copilot Credits for Work IQ API, and the limits and billing method</strong><br><small>Group</small><br><small class="controls__note">General control for credit spend; not documented as specific to elicitation. Graph is beta and not supported in production. Creating a policy needs the Billing Administrator or Global Administrator role.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › + Add spending policy <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>GET https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies (POST to create; PATCH and DELETE use https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/{id})</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Monitoring Work IQ API credit use by user, group and service</strong><br><small>Tenant</small><br><small class="controls__note">Shows active users, credits used and session count per service; elicitation is not broken out. Graph is beta; endDate must be startDate plus one day.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Consumption › Agents and services <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>GET https://graph.microsoft.com/beta/copilot/costManagement/usageReports/serviceUsageRecords?startDate=YYYY-MM-DD&amp;endDate=YYYY-MM-DD</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether tasks may request missing information or authorisation, and from which agents</strong><br><small>Tenant</small><br><small class="controls__note">Not documented at the time of writing (November 2026); the roadmap item describes the capability only.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
@@ -220,8 +228,12 @@ cost: Variable. Work IQ API usage consumes Copilot Credits under usage-based bil
 impact: Low. The roadmap item is aimed at A2A and MCP callers, so those who notice are developers, agent owners and the users their agents prompt; administrators see nothing unless they govern Work IQ access.
 -->
 
-<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
-The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [supported, minor] Risk assessment: Autonomy & actions / default: The MCP policy page says mutation operations, including create, update, delete and actions such as sending email, are disallowed by default. | Found: By default, mutation operations aren't allowed for safety. This restriction includes create, update, delete, and action requests that modify data, such as sending email. | Fix: Retain the attribution to the MCP policy page, but add that https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq#work-iq-key-features says "Write operations are on by default. Your organization's permissions and policies still apply." Cite that page and advise checking the actual agent and tenant policy rather than treating the two descriptions as one universal default. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp
-- [contradicted, blocker] controls[1].api; Governance controls table / command: GET, POST, PATCH and DELETE all operate on https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies. | Found: Update spendingPolicy | PATCH `/copilot/costManagement/spendingPolicies/{id}` | Update a spending policy. ... Delete spendingPolicy | DELETE `/copilot/costManagement/spendingPolicies/{id}` | Delete a spending policy. | Fix: Replace the call in both front matter and rendered table with 'GET https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies (POST to create; PATCH and DELETE use https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/{id})'. The cited overview documents all four operations; PATCH and DELETE require the policy ID, as confirmed by its linked update and delete references. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview
+<!-- verifier-findings (2026-11-16, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [unsupported, major] Risk assessment: Change & support / behaviour: Pause-and-resume is a new task state. | Found: Searched: "Work IQ" "elicitation" configuration default authorization pause resume timeout; "Work IQ" "elicitation" "timeout" "input". Opened A2A overview and MCP overview; neither documents a new task state or its history. | Fix: Replace 'Pause-and-resume is a new task state for agent builders and support teams.' with 'Plan support for tasks that request information or authorisation and then resume.' The roadmap supports the planned capability, not a new protocol task state.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Cost and licensing: opening sentence / licensing: Work IQ API is not licensed per user. | Found: There's no separate Work IQ API subscription, SKU, or per-user license. | Fix: Add https://learn.microsoft.com/partner-center/announcements/2026-june#work-iq-api-and-consumptive-pricing-update to sources for the explicit statement that there is no separate Work IQ API per-user licence. | Source: https://learn.microsoft.com/partner-center/announcements/2026-june#work-iq-api-and-consumptive-pricing-update
+- [supported, minor] controls[1].governs; Cost and licensing; Governance guidance / applicability: Spending policies govern user and group access and credit spending for Work IQ API. | Found: Services managed by usage-based billing in the Microsoft admin center now include: Work IQ API for custom apps and agents Control which users and groups can access supported services using identity-based policies. | Fix: Add https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits to sources: it explicitly lists Work IQ API among the services governed by these spending controls. | Source: https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits
+- [unsupported, minor] rationale: risk / applicability: The existing Work IQ MCP tenant policy covers MCP tool requests only. | Found: Searched: "Work IQ" "A2A" "policy governance"; "Work IQ" "elicitation" "enable" "policy". Opened policy-governance-mcp and Work IQ overview; the article's MCP focus does not establish that the policy cannot cover other Work IQ experiences. | Fix: Replace 'the existing Work IQ MCP tenant policy covers MCP tool requests only' with 'the existing Work IQ MCP tenant policy is documented for MCP tool requests, without confirming coverage of A2A tasks or elicitation'. The source says the policy layer 'can apply across Work IQ experiences': https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp.
 -->

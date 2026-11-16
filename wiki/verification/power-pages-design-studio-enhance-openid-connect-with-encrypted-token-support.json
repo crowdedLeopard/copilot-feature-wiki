@@ -2,37 +2,31 @@
   "slug": "power-pages-design-studio-enhance-openid-connect-with-encrypted-token-support",
   "roadmapId": 576395,
   "title": "Power Pages: OpenID Connect sign-in accepts encrypted ID tokens",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-16",
-  "version": 2,
+  "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
-  "verifierVerdict": "hold",
+  "attempts": 0,
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-16",
-    "reasons": [
-      "1 blocking finding (claim 36)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 47,
-    "confirmed": 45,
+    "claims": 42,
+    "confirmed": 42,
     "unconfirmed": 0,
-    "contradicted": 2,
-    "blocker": 1,
+    "contradicted": 0,
+    "blocker": 0,
     "major": 0,
-    "minor": 2
+    "minor": 1
   },
-  "summary": "The roadmap description, automatic enablement and target dates are accurately reported, and the encrypted-token documentation gaps were confirmed. However, the table incorrectly reports no automation for existing provider configuration: Microsoft documents deploying site settings through PAC CLI. The checklist also names claims-mapping controls that the table should identify explicitly.",
+  "summary": "The roadmap dates, automatic enablement and existing authentication controls are supported. Searches found no Power Pages documentation for the encrypted-token settings or feature-specific licensing. Clarify that the existing governance control restricts the protocol rather than selectively controlling token encryption.",
   "claims": [
     {
       "n": 1,
-      "where": "summary; What's changing; Risk assessment: Security & identity",
+      "where": "title; summary; What's changing; Risk assessment",
       "type": "record",
-      "claim": "Power Pages plans to accept encrypted OpenID Connect ID tokens in addition to signed tokens.",
+      "claim": "Microsoft plans for Power Pages to accept encrypted ID tokens in addition to signed tokens.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "This feature adds support for token-level encryption during authentication, allowing Power Pages to accept encrypted ID tokens in addition to signed tokens.",
@@ -41,31 +35,9 @@
     },
     {
       "n": 2,
-      "where": "What's changing: first paragraph",
-      "type": "behaviour",
-      "claim": "An ID token is a security token used to verify a user's identity.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-pages/security/authentication/openid-provider",
-      "quote": "An ID token is a security token that allows a client to verify the identity of a user.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 3,
-      "where": "What's changing: first paragraph",
-      "type": "behaviour",
-      "claim": "ID tokens carry profile claims such as an email address.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-pages/security/authentication/openid-provider",
-      "quote": "ID Token Claims – Basic user attributes like first name or email are in the token.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
-      "where": "What's changing: second paragraph",
+      "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap lists this feature under Power Pages design studio.",
+      "claim": "The roadmap lists this change under the Power Pages design studio.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Power Pages: Design studio - Enhance OpenID Connect with encrypted token support",
@@ -73,238 +45,40 @@
       "fix": null
     },
     {
-      "n": 5,
-      "where": "What's changing: second paragraph",
+      "n": 3,
+      "where": "What's changing; Why it matters",
       "type": "record",
-      "claim": "The roadmap says encrypted-token support improves compatibility with advanced identity providers.",
+      "claim": "The planned change improves compatibility with advanced identity providers.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "It ensures secure claim transmission, improves compatibility with advanced identity providers, and strengthens overall authentication security without changing existing sign-in flows.",
+      "quote": "improves compatibility with advanced identity providers",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing; Why it matters; rationale: risk; rationale: impact",
+      "type": "record",
+      "claim": "The roadmap says existing sign-in flows will not change.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "strengthens overall authentication security without changing existing sign-in flows",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: defaultState; summary; What's changing; Scope",
+      "type": "default",
+      "claim": "The feature's default state is on because the roadmap says it is enabled automatically for end users.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Enabled for end users automatically",
       "severity": null,
       "fix": null
     },
     {
       "n": 6,
-      "where": "What's changing; Why it matters; rationale: risk and impact",
-      "type": "record",
-      "claim": "The roadmap says existing sign-in flows do not change.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "without changing existing sign-in flows.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
-      "where": "front matter: defaultState; summary; What's changing; Scope",
-      "type": "default",
-      "claim": "The feature is enabled automatically for end users, supporting defaultState on.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Enabled for:\n\nEnabled for end users automatically",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
-      "where": "What's changing: second paragraph",
-      "type": "record",
-      "claim": "The automatic-enablement line does not specify whether a maker or admin must configure provider encryption keys.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Enabled for:\n\nEnabled for end users automatically",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
-      "where": "summary; What's changing; front matter: changes and confidence",
-      "type": "absence",
-      "claim": "Microsoft Learn does not yet describe this encrypted-ID-token feature as of November 2026.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Pages encrypted ID tokens OpenID Connect encryption algorithms decryption key settings licensing prerequisites; \"Power Pages\" \"encrypted\" \"ID tokens\". Opened openid-provider, openid-settings and openid-faqs; results described existing authentication, not this feature.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
-      "where": "controls[2].ui and api; What's changing; Governance controls; rationale: risk",
-      "type": "absence",
-      "claim": "No UI setting or automation for accepting encrypted ID tokens, including a separate off switch, is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Pages encrypted token support pricing license meter default enabled switch; Power Pages encrypted ID tokens OpenID Connect encryption algorithms decryption key settings licensing prerequisites. Opened openid-provider, openid-settings, openid-faqs and external-auth-control.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
-      "where": "What's changing: third paragraph; Open questions",
-      "type": "absence",
-      "claim": "The supported providers for encrypted-ID-token acceptance are not documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Pages encrypted ID tokens OpenID Connect encryption algorithms decryption key settings licensing prerequisites; \"Power Pages\" \"encrypted\" \"ID tokens\". Opened openid-provider, openid-settings and openid-faqs; none identifies encrypted-token providers.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
-      "where": "What's changing: third paragraph; Open questions",
-      "type": "absence",
-      "claim": "Accepted ID-token encryption methods and algorithms are not documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Pages encrypted ID tokens OpenID Connect encryption algorithms decryption key settings licensing prerequisites. Opened openid-provider, openid-settings and openid-faqs; no ID-token encryption algorithm list.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
-      "where": "What's changing; Risk assessment: Security & identity; Open questions",
-      "type": "absence",
-      "claim": "The decryption-key source, storage location and handling for this feature are not documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Pages encrypted ID tokens OpenID Connect encryption algorithms decryption key settings licensing prerequisites. Opened openid-provider, openid-settings and openid-faqs; private_key_jwt signs client assertions, not encrypted incoming ID tokens.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "Risk assessment: Security & identity; Governance guidance: After rollout",
-      "type": "absence",
-      "claim": "Responsibility for rotating the ID-token decryption key is not documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Pages encrypted ID tokens OpenID Connect encryption algorithms decryption key settings licensing prerequisites; \"Power Pages\" \"encrypted\" \"ID tokens\". Opened openid-provider, openid-settings and openid-faqs; no decryption-key lifecycle instructions.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "Risk assessment: Security & identity; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not documented whether an encryption-configured provider's signed-only tokens will be rejected.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Power Pages\" \"encrypted\" \"ID tokens\"; Power Pages encrypted ID tokens OpenID Connect encryption algorithms decryption key settings licensing prerequisites. Opened openid-provider, openid-settings and openid-faqs; no encrypted-versus-signed acceptance policy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "What's changing: third paragraph; Risk assessment: Security & identity",
-      "type": "behaviour",
-      "claim": "The existing documented signature-verification model requires the provider's public JWKS URI endpoint.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-pages/security/authentication/openid-faqs",
-      "quote": "Power Pages also requires the identity provider to provide a public JWKS URI endpoint where the public keys are available to verify the signature of the ID token.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "front matter: status; What's changing; Open questions",
-      "type": "record",
-      "claim": "The roadmap status is In development.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"status\": \"In development\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "front matter: previewDate; What's changing; Scope; Open questions",
-      "type": "record",
-      "claim": "The preview target is August CY2026.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": \"August CY2026\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "front matter: targetDate; What's changing; Scope",
-      "type": "record",
-      "claim": "The general-availability target is December CY2026.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"targetDate\": \"December CY2026\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "front matter: clouds; What's changing; Scope",
-      "type": "record",
-      "claim": "The listed cloud is Worldwide (Standard Multi-Tenant).",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\n    \"Worldwide (Standard Multi-Tenant)\"\n  ]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "front matter: platforms; What's changing; Scope",
-      "type": "record",
-      "claim": "The listed platform is Web.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\n    \"Web\"\n  ]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "front matter: releasePhase; Scope",
-      "type": "record",
-      "claim": "The roadmap lists Preview and General Availability release phases.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"releasePhase\": [\n    \"General Availability\",\n    \"Preview\"\n  ]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "title; front matter: products; Scope",
-      "type": "record",
-      "claim": "The feature belongs to Power Pages.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"products\": [\n    \"Power Pages\"\n  ]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "Scope: Product and cloud",
-      "type": "record",
-      "claim": "Other clouds are not listed on the roadmap record.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\n    \"Worldwide (Standard Multi-Tenant)\"\n  ]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "What's changing: final paragraph; Open questions",
-      "type": "date",
-      "claim": "The preview target month has already passed at the November 16, 2026 run date.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": \"August CY2026\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
       "where": "Risk assessment: Data exposure",
       "type": "record",
       "claim": "The roadmap describes secure claim transmission as a benefit.",
@@ -315,32 +89,219 @@
       "fix": null
     },
     {
-      "n": 27,
-      "where": "Why it matters: first paragraph",
+      "n": 7,
+      "where": "Why it matters",
       "type": "record",
       "claim": "The roadmap identifies sensitive, external-facing applications as a use case.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "allows your organization to confidently use Power Pages for sensitive, external-facing applications.",
+      "quote": "allows your organization to confidently use Power Pages for sensitive, external-facing applications",
       "severity": null,
       "fix": null
     },
     {
-      "n": 28,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Registration claims mapping and Login claims mapping map provider claims to contact fields.",
+      "n": 8,
+      "where": "front matter: status; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-pages/security/authentication/openid-settings",
-      "quote": "Set the Registration claims mapping additional site setting; for example, firstname=given_name,lastname=family_name.",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\"",
       "severity": null,
       "fix": null
     },
     {
-      "n": 29,
+      "n": 9,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "General availability is targeted for December CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"December CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: previewDate; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The preview target is August CY2026, a month already past on the supplied run date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"August CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: releasePhase; Scope",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: products; Scope",
+      "type": "record",
+      "claim": "The product is Power Pages.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Power Pages\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the cloud listed in the record, which lists no other clouds.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Web as the platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing: first paragraph",
+      "type": "behaviour",
+      "claim": "An ID token lets a client verify the identity of a user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/security/authentication/openid-provider",
+      "quote": "An ID token is a security token that allows a client to verify the identity of a user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing: first paragraph",
+      "type": "behaviour",
+      "claim": "ID tokens carry identity claims such as an email address.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/security/authentication/openid-provider",
+      "quote": "a claim is information that describes a user's identity, like an email address or date of birth",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "summary; What's changing; front matter: changes",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet describe encrypted ID-token acceptance in Power Pages.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Power Pages\" \"encrypted\" \"ID tokens\"; Power Pages encrypted token support licensing prerequisites. Opened openid-provider, openid-settings and openid-faqs; results concerned other token flows or Microsoft.Identity.Web, not this Power Pages capability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[2].ui; controls[2].api; What's changing; Governance controls; rationale: risk",
+      "type": "absence",
+      "claim": "No UI setting or automation call for accepting encrypted ID tokens in Power Pages is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Pages encrypted ID tokens settings; encrypted token site settings Dataverse API; authentication governance encrypted tokens restrict encryption setting. Opened openid-provider, openid-settings, openid-faqs, pac pages and Power Platform API Websites; no matching setting or call.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing: third paragraph",
+      "type": "absence",
+      "claim": "The identity providers supported specifically for encrypted ID tokens are not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Pages encrypted ID tokens OpenID Connect encryption algorithms decryption keys settings licensing. Opened openid-provider, openid-settings and openid-faqs; they document general providers but not providers supporting this new token-encryption feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "The encryption algorithms and key sources supported by this Power Pages feature are not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Pages encrypted ID tokens OpenID Connect encryption algorithms decryption keys settings licensing. Opened openid-provider, openid-settings and openid-faqs; none describes encrypted-ID-token algorithms or key sources for Power Pages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Risk assessment: Security & identity; Open questions",
+      "type": "absence",
+      "claim": "Power Pages decryption-key storage and rotation responsibilities for this feature are not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Pages encrypted token support decryption keys prerequisites; Power Pages encrypted ID tokens OpenID Connect decryption keys. Opened openid-provider, openid-settings and openid-faqs; private_key_jwt documentation concerns signing client assertions, not decrypting ID tokens.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Security & identity; Open questions",
+      "type": "absence",
+      "claim": "Whether a provider configured for encryption can still send signed-only tokens is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Pages encrypted token licensing prerequisites decryption signed-only. Opened openid-provider, openid-settings and openid-faqs; no provider-specific rejection or fallback rule was documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "absence",
+      "claim": "Learn does not identify new claim or site-data access introduced by this feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Pages encrypted ID tokens OpenID Connect encryption algorithms decryption keys settings licensing. Opened openid-provider, openid-settings and openid-faqs; no encrypted-token-specific data-access description was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Scope: Roles and prerequisites",
+      "type": "absence",
+      "claim": "Roles and prerequisites specific to encrypted ID-token support are not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Pages encrypted token support licensing pricing prerequisites roles enable disable encryption site settings Dataverse API. Opened openid-provider, openid-settings and openid-faqs; none lists encrypted-ID-token prerequisites or required roles.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing: third paragraph; Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The documented signature-verification model requires the provider's public JWKS URI endpoint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/security/authentication/openid-faqs",
+      "quote": "Power Pages also requires the identity provider to provide a public JWKS URI endpoint where the public keys are available to verify the signature of the ID token.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
       "where": "Risk assessment: Change & support; Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "Changes to site authentication settings might take a few minutes to appear.",
+      "claim": "Authentication-setting changes can take a few minutes to appear on the site.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-pages/security/authentication/openid-provider",
       "quote": "Changes to your site's authentication settings might take a few minutes to be reflected on the site.",
@@ -348,10 +309,43 @@
       "fix": null
     },
     {
+      "n": 27,
+      "where": "Risk assessment: Data exposure; controls[1]; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Registration claims mapping and Login claims mapping configure provider claims used for contact profile attributes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/security/authentication/openid-settings",
+      "quote": "the first name, last name, and email addresses supplied with the additional claims become the default values in the profile page in the website",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The protocol control is reached through Manage > Products > Power Pages > Settings > Authentication > OpenID Connect > environment > Manage in the Power Platform admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/security/external-auth-control",
+      "quote": "select Manage. Under Products, select Power Pages. Select the Settings tab. ... Under Authentication, select the authentication option you want to manage. ... Select an environment, and then select Manage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Microsoft marks authentication protocol governance controls as prerelease.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/security/external-auth-control",
+      "quote": "Authentication protocols (preview)\n[This section is prerelease documentation and is subject to change.]",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 30,
       "where": "controls[0].governs; Governance guidance: Before rollout; Governance controls",
-      "type": "behaviour",
-      "claim": "Authentication protocol governance decides whether makers can configure OpenID Connect providers on targeted sites.",
+      "type": "applicability",
+      "claim": "The OpenID Connect protocol control decides whether makers can configure providers using that protocol on targeted sites.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-pages/security/external-auth-control",
       "quote": "Each protocol control determines whether makers can configure identity providers that use that protocol on the targeted sites.",
@@ -360,20 +354,9 @@
     },
     {
       "n": 31,
-      "where": "controls[0].note; Governance controls",
-      "type": "availability",
-      "claim": "Learn marks authentication protocol controls as prerelease.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-pages/security/external-auth-control",
-      "quote": "Authentication protocols (preview)\n\n[This section is prerelease documentation and is subject to change.]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
       "where": "Risk assessment: Change & support; Governance controls",
       "type": "behaviour",
-      "claim": "Blocking OpenID Connect through authentication governance stops sign-in using that option.",
+      "claim": "Blocking the protocol prevents users from signing in through that authentication option.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-pages/security/external-auth-control",
       "quote": "When a governance setting that blocks an authentication option takes effect, users can no longer sign in or register by using that authentication option.",
@@ -381,32 +364,21 @@
       "fix": null
     },
     {
-      "n": 33,
-      "where": "controls[0].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "OpenID Connect governance is under Manage > Products > Power Pages > Settings > Authentication > OpenID Connect > environment > Manage.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-pages/security/external-auth-control",
-      "quote": "In the left navigation pane, select Manage.\nUnder Products, select Power Pages.\nSelect the Settings tab.\nUnder Authentication, select the authentication option you want to manage.\nSelect an environment, and then select Manage.",
-      "severity": "minor",
-      "fix": "Keep the operational path. Explain that after Manage the admin chooses site targeting, selects Continue, reviews affected sites and confirms Update. Note that the release-plan search excerpt at https://learn.microsoft.com/power-platform/release-plan/2025wave2/power-pages/manage-external-authentication-provider-governance instead gives Manage > Power Pages > Governance settings > Authentication providers; prefer the cited operational guidance."
-    },
-    {
-      "n": 34,
+      "n": 32,
       "where": "controls[0].api; Governance controls",
       "type": "absence",
-      "claim": "No script or API equivalent for OpenID Connect authentication governance was documented.",
+      "claim": "No script or API for the authentication governance protocol setting is documented.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Power Pages authentication governance OpenID Connect PowerShell API configure authentication options; \"Power Pages\" \"authentication\" \"governance\" \"API\" \"PowerShell\". Opened external-auth-control; results gave UI controls, not governance commands.",
+      "quote": "Searched: Power Pages authentication governance OpenID Connect Power Platform API PowerShell pac admin block protocol; \"Power Pages\" \"authentication governance\" \"PowerShell\". Opened external-auth-control, pac pages and Power Platform API Websites; no protocol-governance operation found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 35,
+      "n": 33,
       "where": "controls[1].ui; Governance guidance: Before rollout; Governance controls table",
       "type": "admin-path",
-      "claim": "Power Pages site provider setup starts under Security > Identity providers in design studio.",
+      "claim": "Security > Identity providers is the design-studio entry point for configuring an OpenID Connect provider.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-pages/security/authentication/openid-provider",
       "quote": "In your Power Pages site, select Security > Identity providers.",
@@ -414,43 +386,43 @@
       "fix": null
     },
     {
-      "n": 36,
+      "n": 34,
       "where": "controls[1].api; Governance controls table",
-      "type": "absence",
-      "claim": "Automation for existing OpenID Connect provider configuration on a site is not documented.",
-      "status": "contradicted",
+      "type": "command",
+      "claim": "pac pages upload --path \"<site-folder>\" --modelVersion 2 uploads prepared website content to the current Dataverse environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/developer/cli/reference/pages#pac-pages-upload",
+      "quote": "Upload Power Pages website content to current Dataverse environment.\npac pages upload --path \"C:\\portals\\starter-portal\" --modelVersion 2",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[1].note; Governance controls: PAC CLI paragraph",
+      "type": "behaviour",
+      "claim": "Power Platform CLI website-configuration deployment includes site settings, rather than being an encryption-specific switch.",
+      "status": "supported",
       "source": "https://learn.microsoft.com/power-pages/configure/power-platform-cli",
-      "quote": "With this feature, the Microsoft Power Platform CLI enables CI/CD (Continuous Integration/Continuous Deployment) of a Power Pages site configuration.",
-      "severity": "blocker",
-      "fix": "Replace the blanket automation gap with PAC CLI deployment of provider site settings. Microsoft lists adx_sitesetting as a supported table at https://learn.microsoft.com/power-pages/configure/power-platform-cli, and https://learn.microsoft.com/power-pages/security/authentication/openid-provider documents OpenID Connect configuration as site settings. Use kind pac-cli, call pac pages upload --path \"<site-folder>\" --modelVersion 2, docs https://learn.microsoft.com/power-platform/developer/cli/reference/pages#pac-pages-upload. Explain that this uploads prepared website configuration containing the provider settings, not an encryption-specific switch."
+      "quote": "Support for download/upload of website configuration data to/from the local file system\nSupported tables\nPortals support for Microsoft Power Platform CLI is limited to the following tables.\n...\nadx_sitesetting",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Licensing and pricing specific to encrypted ID-token support have not been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Pages encrypted token support licensing pricing prerequisites; Power Pages encrypted token licensing prerequisites decryption signed-only. Opened the Power Platform licensing FAQ and OpenID Connect articles; no feature-specific licensing or price statement found.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 37,
-      "where": "controls[0].note; Risk assessment: Change & support; Governance controls",
-      "type": "absence",
-      "claim": "No encryption-specific restriction is documented for the general OpenID Connect protocol governance control.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Pages authentication governance OpenID Connect PowerShell API configure authentication options; Power Pages encrypted token support pricing license meter default enabled switch. Opened external-auth-control and openid-provider; controls govern protocol availability, not encryption policy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "Feature-specific licensing and pricing have not been published, supporting licensing model unknown.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Pages encrypted token support pricing license meter default enabled switch; Power Pages encrypted ID tokens OpenID Connect encryption algorithms decryption key settings licensing prerequisites. Read the licensing FAQ Power Pages section and OpenID articles; no feature-specific terms.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
       "where": "Cost and licensing: first paragraph",
       "type": "record",
-      "claim": "The roadmap record names no licence or meter.",
+      "claim": "The roadmap record names no licence or meter for this feature.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "This feature adds support for token-level encryption during authentication, allowing Power Pages to accept encrypted ID tokens in addition to signed tokens.",
@@ -458,73 +430,29 @@
       "fix": null
     },
     {
-      "n": 40,
+      "n": 38,
       "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "licensing",
-      "claim": "Power Pages licensing is capacity based.",
+      "claim": "The Power Platform licensing FAQ describes Power Pages capacity in authenticated users per website/month and anonymous users per website/month.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
-      "quote": "Power Pages (formerly Power Apps portals) licensing is capacity based",
+      "quote": "Power Pages (formerly Power Apps portals) licensing is capacity based and offers two types of capacities based on user type: Authenticated users per website/month and Anonymous users per website/month.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 41,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "One Power Pages capacity type is authenticated users per website per month.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
-      "quote": "Authenticated users per website/month",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "Another Power Pages capacity type is anonymous users per website per month.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
-      "quote": "Anonymous users per website/month",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
+      "n": 39,
       "where": "Cost and licensing: second paragraph; Open questions",
       "type": "absence",
-      "claim": "No encrypted-token effect on Power Pages user counts or charges is published.",
+      "claim": "Neither the licensing FAQ nor the roadmap specifies an encrypted-token-specific change to counting or charges.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Power Pages encrypted token support pricing license meter default enabled switch. Read roadmap, licensing FAQ Power Pages section, openid-provider, openid-settings and openid-faqs; none states a token-encryption-specific counting or charging change.",
+      "quote": "Searched: encrypted and Power Pages capacity in the fetched Power Platform licensing FAQ; Power Pages encrypted token support licensing pricing. Read the roadmap description and FAQ Power Pages capacity definitions; neither states an encryption-specific counting or charging change.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 44,
-      "where": "Scope: Roles and prerequisites",
-      "type": "absence",
-      "claim": "Feature-specific roles and prerequisites are not documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Pages encrypted ID tokens OpenID Connect encryption algorithms decryption key settings licensing prerequisites; \"Power Pages\" \"encrypted\" \"ID tokens\". Opened openid-provider, openid-settings and openid-faqs; no encrypted-token prerequisites or role requirements.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "Risk assessment: Data exposure; rationale: risk",
-      "type": "absence",
-      "claim": "Learn does not document feature-specific affected claims, site data or new data access.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Pages encrypted ID tokens OpenID Connect encryption algorithms decryption key settings licensing prerequisites; \"Power Pages\" \"encrypted\" \"ID tokens\". Opened OpenID provider, settings and FAQ articles; they describe general claims but not this feature's data effects.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
+      "n": 40,
       "where": "Risk assessment: Autonomy & actions",
       "type": "record",
       "claim": "The roadmap describes authentication rather than an agent or autonomous action.",
@@ -535,25 +463,36 @@
       "fix": null
     },
     {
-      "n": 47,
-      "where": "Governance guidance: After rollout; Governance controls table",
-      "type": "consistency",
-      "claim": "The checklist names Registration claims mapping and Login claims mapping, but no controls row explicitly names them.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Retest sign-in and Registration claims mapping and Login claims mapping for existing OpenID Connect providers; table: OpenID Connect provider configuration on a site.",
+      "n": 41,
+      "where": "What's changing: second paragraph",
+      "type": "record",
+      "claim": "The roadmap's automatic-enablement line does not specify whether a maker or administrator must configure encryption keys.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Enabled for:\n\nEnabled for end users automatically",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[0].note; Risk assessment: Change & support; Governance controls: final sentence",
+      "type": "applicability",
+      "claim": "The documented governance setting restricts the OpenID Connect protocol rather than providing a selective token-encryption control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/security/external-auth-control",
+      "quote": "Use the parent control to restrict external authentication as a whole, or use the child controls to restrict individual protocols, providers, or local authentication.",
       "severity": "minor",
-      "fix": "Expand the provider-configuration row to explicitly name Registration claims mapping and Login claims mapping, or add a dedicated row for these existing controls. Cite https://learn.microsoft.com/power-pages/security/authentication/openid-settings#set-up-additional-claims and distinguish these existing settings from undocumented encryption-specific controls."
+      "fix": "Replace the final sentence 'It does not restrict encryption.' with 'This is a protocol control, not a documented encryption-specific switch.' This preserves the documented distinction without suggesting that encrypted-token sign-in could bypass a protocol block."
     }
   ],
   "precheck": {
-    "at": "2026-11-16T19:29:50.878Z",
+    "at": "2026-11-16T22:00:58.848Z",
     "summary": {
-      "links": 6,
+      "links": 9,
       "unreachable": 0,
       "uiPaths": 2,
       "uiPathsWithMissingWords": 0,
-      "apiCalls": 0,
+      "apiCalls": 1,
       "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
     },
@@ -587,6 +526,21 @@
         "url": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
         "ok": true,
         "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-pages/configure/power-platform-cli",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/developer/cli/reference/pages",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/developer/cli/reference/pages#pac-pages-upload",
+        "ok": true,
+        "status": 200
       }
     ],
     "controlChecks": [
@@ -610,7 +564,7 @@
       {
         "index": 1,
         "side": "ui",
-        "governs": "OpenID Connect provider configuration on a site",
+        "governs": "OpenID Connect provider configuration on a site, including Registration claims mapping and Login claims mapping",
         "docs": "https://learn.microsoft.com/power-pages/security/authentication/openid-provider",
         "reachable": true,
         "segments": [
@@ -618,6 +572,15 @@
           "Identity providers"
         ],
         "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "OpenID Connect provider configuration on a site, including Registration claims mapping and Login claims mapping",
+        "docs": "https://learn.microsoft.com/power-platform/developer/cli/reference/pages#pac-pages-upload",
+        "reachable": true,
+        "token": "pac pages upload",
+        "found": true
       }
     ],
     "roadmapDrift": []
@@ -638,6 +601,12 @@
     {
       "date": "2026-11-16",
       "status": "verified-with-gaps",
+      "version": 2,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-16",
+      "status": "held",
       "version": 2,
       "model": "gpt-6.1-sol"
     }

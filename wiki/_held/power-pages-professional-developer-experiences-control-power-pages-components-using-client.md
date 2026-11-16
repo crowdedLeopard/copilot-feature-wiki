@@ -52,6 +52,12 @@ sources:
   - title: "Assign table permissions"
     url: "https://learn.microsoft.com/power-pages/security/assign-table-permissions"
     kind: "learn"
+  - title: "Use governance controls to disable anonymous access"
+    url: "https://learn.microsoft.com/power-pages/security/disable-anonymous-access"
+    kind: "learn"
+  - title: "Power Pages Web API requests fail after wildcard column configuration is deprecated"
+    url: "https://learn.microsoft.com/troubleshoot/power-platform/power-pages/migrate-web-api-wildcard"
+    kind: "learn"
   - title: "Configure Power Automate cloud flows in Power Pages"
     url: "https://learn.microsoft.com/power-pages/configure/cloud-flow-integration"
     kind: "learn"
@@ -68,7 +74,7 @@ sources:
     url: "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq"
     kind: "learn"
 videos: []
-related: ["power-pages-first-class-support-for-connector-apis-in-power-pages","power-pages-design-studio-unify-power-pages-authorization-by-merging-web-role-with-dataver","power-pages-power-pages-copilot-use-power-pages-mcp-server-capabilities","power-pages-plugin-support-for-github-copilot-cli-and-claude-code-to-create-and-edit-tradi"]
+related: []
 controls:
   - governs: "Which Dataverse records and operations site script can reach through the client API"
     scope: "site"
@@ -91,7 +97,7 @@ controls:
       kind: "pac-cli"
       call: "pac pages upload --path <site-folder> --deploymentProfile <profile> --modelVersion <1|2>"
       docs: "https://learn.microsoft.com/power-pages/configure/power-platform-cli"
-    note: "Needs the system administrator role in the site's environment. Documented for the portals Web API; Learn's client API pages do not say these settings gate $pages.webAPI."
+    note: "Needs the system administrator role in the site's environment. A Learn troubleshooting page covers $pages.webAPI calls under these settings; the client API reference itself omits them."
   - governs: "Tenant or site switch to turn the client API off"
     scope: "site"
     ui: null
@@ -106,18 +112,23 @@ changes:
     note: "First briefing: documents the Power Pages client API, its table-permission boundary and the absence of a documented switch to turn it off."
   - date: "2026-11-16"
     note: "Corrected after verification: replaced the 'no approval step' and 'nothing breaks' claims, fixed the $count guidance, and added the PAC CLI deployment route, the Anonymous users warning and cloud flow licensing."
-version: 2
+  - date: "2026-11-16"
+    note: "Corrected after verification: Web API site settings now tied to $pages.webAPI by a Learn troubleshooting page, anonymous-access qualification added, and the unsupported column-security and cloud-flow checklist items removed."
+  - date: "2026-11-16"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 68 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 3
 verification:
   status: "held"
   date: "2026-11-16"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 77
-  confirmed: 74
+  claims: 68
+  confirmed: 67
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
+  contradicted: 1
+  attempts: 2
+  hash: "61bc338e2061d9a06c038d55baaed2ba"
 ---
 
 ## What's changing
@@ -141,14 +152,14 @@ Using the new APIs requires developers to add calls to their site scripts. Learn
 **Data exposure**
 
 - `$pages.webAPI` offers `createRecord`, `retrieveRecord`, `retrieveMultipleRecords`, `updateRecord`, `deleteRecord` and file upload and download. Learn states that Power Pages applies table permissions on the server and the client API cannot override them, so the web roles on each table permission set the ceiling.
-- Granting the Anonymous users web role access to a table makes its data available to any visitor, and that includes script calling `$pages.webAPI`.
+- Granting the Anonymous users web role access to a table makes its data available to any visitor, and that includes script calling `$pages.webAPI`. Learn says the tenant's Anonymous access to Dataverse setting can override maker table permissions and block anonymous reads, while unauthenticated users can still write data to Dataverse when it is on.
 - `setVisible(false)` on a control, and `row.setVisible(false)` on a list row, change only what the browser shows. Learn says to protect data with table permissions and column security, not by hiding it.
 
 **Security & identity**
 
 - `$pages.user.signIn` redirects the user to the sign-in page and `signOut` signs the current user out. Learn gives no method that changes which identity providers the site accepts.
 - `$pages.ajax.request` adds the cross-site request forgery (CSRF) token and the session cookie to every call, so scripted requests run in the visitor's own session.
-- Learn does not say whether the Web API site settings (`Webapi/<table-name>/enabled` and `Webapi/<table-name>/fields`) gate `$pages.webAPI`; see Open questions.
+- A Learn troubleshooting page lists `$pages.webAPI.retrieveRecord` and `$pages.webAPI.retrieveMultipleRecords` among the calls to review when configuring the `Webapi/<table-name>/fields` site setting, and tells readers to confirm that `Webapi/<table-name>/enabled` is set to `True`. The client API reference pages themselves do not mention these settings.
 
 **Autonomy & actions**
 
@@ -184,9 +195,8 @@ The Learn client API pages list no prerequisite licence or admin role. Table per
 
 ### At rollout
 
-- Ask developers to treat `setVisible(false)` and `setDisabled` as presentation only, and to enforce rules through table permissions and column security, as Learn instructs.
+- Ask developers to treat `setVisible(false)` and `setDisabled` as presentation only, and to enforce rules through table permissions, as Learn instructs.
 - Check the `Webapi/<table-name>/enabled` and `Webapi/<table-name>/fields` site settings in the Portal Management app (Site settings) for tables a script calls, and confirm with a test user that calls succeed or fail as the web role intends.
-- Confirm that any cloud flow a script triggers is registered with the site and secured with a web role, as the cloud flow integration page requires.
 
 ### After rollout
 
@@ -201,20 +211,19 @@ The Learn client API pages list no prerequisite licence or admin role. Table per
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Which Dataverse records and operations site script can reach through the client API</strong><br><small>Site</small><br><small class="controls__note">Site owner task. Learn says the client API cannot override table permissions. The PAC CLI deploys site configuration (adx_entitypermission is a supported table); it is not a dedicated permission cmdlet.</small></td><td data-label="Admin UI"><strong>Power Pages design studio</strong><br>Security › Table permissions <a href="https://learn.microsoft.com/power-pages/security/assign-table-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform CLI</strong><br><code>pac pages upload --path &lt;site-folder&gt; --modelVersion &lt;1|2&gt;</code> <a href="https://learn.microsoft.com/power-pages/configure/power-platform-cli" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether the portals Web API is enabled for a table, and which columns it exposes</strong><br><small>Site</small><br><small class="controls__note">Needs the system administrator role in the site's environment. Documented for the portals Web API; Learn's client API pages do not say these settings gate $pages.webAPI.</small></td><td data-label="Admin UI"><strong>Portal Management app (opened from Power Pages design studio)</strong><br>Website › Site settings <a href="https://learn.microsoft.com/power-pages/configure/configure-site-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform CLI</strong><br><code>pac pages upload --path &lt;site-folder&gt; --deploymentProfile &lt;profile&gt; --modelVersion &lt;1|2&gt;</code> <a href="https://learn.microsoft.com/power-pages/configure/power-platform-cli" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether the portals Web API is enabled for a table, and which columns it exposes</strong><br><small>Site</small><br><small class="controls__note">Needs the system administrator role in the site's environment. A Learn troubleshooting page covers $pages.webAPI calls under these settings; the client API reference itself omits them.</small></td><td data-label="Admin UI"><strong>Portal Management app (opened from Power Pages design studio)</strong><br>Website › Site settings <a href="https://learn.microsoft.com/power-pages/configure/configure-site-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform CLI</strong><br><code>pac pages upload --path &lt;site-folder&gt; --deploymentProfile &lt;profile&gt; --modelVersion &lt;1|2&gt;</code> <a href="https://learn.microsoft.com/power-pages/configure/power-platform-cli" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Tenant or site switch to turn the client API off</strong><br><small>Site</small><br><small class="controls__note">A search of Microsoft Learn found no such control at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
 Table permissions are the control that bounds what `$pages.webAPI` can reach, because Learn states that the client API cannot override them. The Learn page that documents PAC CLI configuration deployment lists `adx_entitypermission` and `adx_sitesetting` among its supported tables, so table permissions and site settings can be moved between environments as site configuration; it is not a dedicated permission-setting command, and the page lists standard data model (`adx_`) tables only.
 
-The Web API site settings are documented for the portals Web API. The client API pages do not say they gate `$pages.webAPI`, so treat that row as a related control and verify it by test. On a site that uses the enhanced data model, the app is named Power Pages Management rather than Portal Management.
+A Learn troubleshooting page ties the Web API site settings to `$pages.webAPI`: it lists `$pages.webAPI.retrieveRecord` and `$pages.webAPI.retrieveMultipleRecords` among the calls to review when configuring `Webapi/<table-name>/fields`, and tells readers to confirm that `Webapi/<table-name>/enabled` is set to `True`. It says `fields` takes an explicit comma-separated list of column logical names, optionally combined with `Webapi/<table-name>/UseFieldsFromView` on site version 9.8.8.x and later, and that the wildcard value `*` is not supported on any website from 14 September 2026. The client API reference pages themselves do not mention these settings. On a site that uses the enhanced data model, the app is named Power Pages Management rather than Portal Management.
 
 No administrator switch for the client API itself is documented at the time of writing (November 2026), so site-level governance rests on who may edit site script and on table permissions.
 
 ## Open questions
 
-- Do the `Webapi/<table-name>/enabled` and `Webapi/<table-name>/fields` site settings, which govern the portals Web API, also gate `$pages.webAPI`? Watch the client API Dataverse page on Microsoft Learn.
 - Is the feature preview or generally available? The roadmap record lists both release phases and the Launched status, and its description says Preview, while the Learn pages read do not state a phase.
 - Do calls made through `$pages.webAPI` and `$pages.ajax` count towards Power Pages anonymous or authenticated user capacity any differently from other site traffic? Watch the Power Platform licensing FAQs.
 - Will Microsoft add an administrator control, in the Power Platform admin center or through an API, to restrict or audit client API use per site?
@@ -226,17 +235,9 @@ impact: Low. Developers and makers who write site script notice it; site visitor
 -->
 
 <!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
-The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [supported, minor] Risk assessment: Data exposure; Governance guidance: Before rollout / applicability: Granting the Anonymous users web role table access makes the table's data available to any visitor. | Found: When the Anonymous users web role is granted access to a table, any user who visits the site can access the data in the table. | Fix: Also cite https://learn.microsoft.com/power-pages/security/disable-anonymous-access and qualify the warning: the tenant's Anonymous access to Dataverse control can override maker table permissions and block anonymous reads, while anonymous writes can remain possible. | Source: https://learn.microsoft.com/power-pages/security/assign-table-permissions
-- [contradicted, blocker] Risk assessment: Security & identity; controls[1].note; Governance controls; Open questions / absence: Microsoft Learn does not establish whether Web API table and column site settings apply to $pages.webAPI. | Found: Common call patterns include:
-
-```javascript
-$.ajax(...)
-fetch(...)
-webapi.safeAjax(...)
-$pages.webAPI.retrieveRecord(...)
-$pages.webAPI.retrieveMultipleRecords(...)
-``` | Fix: Cite this troubleshooting page: it explicitly includes $pages.webAPI calls in Web API column-configuration migration and tells readers to verify Webapi/<table-name>/enabled=True. Replace the unresolved-applicability statements with that documented relationship. Explain that fields uses explicit columns, optionally combined with UseFieldsFromView on supported versions; wildcard fields are no longer supported. Remove the corresponding open question. The narrower observation that the client API reference itself omits these settings can remain only alongside this documentation. | Source: https://learn.microsoft.com/troubleshoot/power-platform/power-pages/migrate-web-api-wildcard
-- [contradicted, minor] Governance guidance: At rollout; Governance controls / consistency: The checklist's instruction to enforce rules through column security is represented in the controls table. | Found: The checklist says 'enforce rules through table permissions and column security'; the table contains table permissions, portals Web API site settings and a client API switch gap, but no column-security row. | Fix: Add a separate column-security control row, or remove column security from the actionable checklist while retaining the sourced explanation in Risk assessment. Research its exact UI and automation routes before populating that row.
-- [contradicted, minor] Governance guidance: At rollout; Governance controls / consistency: The checklist's cloud-flow registration and web-role control is represented in the controls table. | Found: The checklist says 'Confirm that any cloud flow a script triggers is registered with the site and secured with a web role'; none of the three control rows covers cloud-flow registration or access. | Fix: Add a site-scoped cloud-flow registration/access row. UI: Power Pages > site > + Edit > Set up > Integrations > Cloud flows > + Add cloud flow > select flow > Roles > + Add roles > select roles > Save. Cite https://learn.microsoft.com/power-pages/configure/cloud-flow-integration and research automation before filling that side or marking it undocumented.
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] front matter: licensing.model; Cost and licensing; rationale: cost; Open questions / licensing: Licensing is unknown because Learn does not establish whether the published Web API capacity licensing rule applies to $pages.webAPI. | Found: Portals Web API operations require a Power Pages license. For example, Web API calls made by anonymous users count towards the anonymous user capacity. | Fix: The cited wildcard troubleshooting page explicitly identifies $pages.webAPI.retrieveRecord and retrieveMultipleRecords as Power Pages Web API call patterns, so apply the published Web API licensing rule. Set licensing.model to 'mixed' and replace the licensing notes with: 'Power Pages uses authenticated and anonymous user capacity per website per month, with subscription and pay-as-you-go options. Web API operations require the applicable Power Pages capacity. Cloud flow integration requires a Power Automate licence. The client API reference publishes no separate client-API charge.' Replace 'Learn does not say whether that applies unchanged to $pages.webAPI' with 'These capacity requirements apply to $pages.webAPI operations; the troubleshooting guidance identifies these methods as Power Pages Web API calls.' In the cost rationale, replace 'the Power Pages capacity licensing position for client API calls is not stated' with 'Web API calls remain subject to Power Pages capacity licensing'. Remove the Open questions bullet questioning whether $pages.webAPI capacity accounting is published; do not imply a per-call charge. Sources: https://learn.microsoft.com/troubleshoot/power-platfo… | Source: https://learn.microsoft.com/power-pages/configure/web-api-overview
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[1].note; Scope; rendered controls table / role: The Portal Management app requires the system administrator role in the site's Dataverse environment, qualified in Scope by system customizer access. | Found: To use the Portal Management app, you need to be assigned the system administrator role in the same Microsoft Dataverse environment as your site. Users in the system customizer role also have access | Fix: Make the table note carry the qualification already present in Scope: replace 'Needs the system administrator role in the site's environment' with 'System administrators can use the app; system customizers also have access, with limited privileges on some tables'. | Source: https://learn.microsoft.com/power-pages/configure/portal-management-app
 -->

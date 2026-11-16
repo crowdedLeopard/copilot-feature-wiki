@@ -15,7 +15,7 @@ risk: "low"
 cost: "variable"
 impact: "medium"
 defaultState: "unknown"
-action: "none"
+action: "review"
 licensing:
   model: "unknown"
   notes: "Not published. Work IQ in Copilot Studio is stated to use consumption billing."
@@ -28,6 +28,12 @@ sources:
   - title: "Work IQ in Copilot Studio (Microsoft Copilot)"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq"
     kind: "learn"
+  - title: "Policy governance for Work IQ MCP"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp"
+    kind: "learn"
+  - title: "Add tools to custom agents"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent"
+    kind: "learn"
   - title: "Work IQ MCP policy on or off for the tenant (Microsoft 365 admin center)"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp#open-policy-settings-in-the-microsoft-365-admin-center"
     kind: "learn"
@@ -35,7 +41,7 @@ sources:
     url: "https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent#view-and-make-changes-to-your-tool-configuration"
     kind: "learn"
 videos: []
-related: ["copilot-studio-require-human-approval-for-tool-calls","agent-365-control-plane-for-agents","work-iq-execute-recipes"]
+related: ["work-iq-a2a-and-mcp-long-running-tasks"]
 controls:
   - governs: "Work IQ MCP policy on or off for the tenant"
     scope: "tenant"
@@ -44,7 +50,7 @@ controls:
       path: "Agents > Tools > Work IQ MCP > Policy"
       docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp#open-policy-settings-in-the-microsoft-365-admin-center"
     api: null
-    note: "Mutation operations such as sending mail are disallowed by default until enabled."
+    note: "The MCP policy article says mutation operations such as sending email are not allowed by default; the Work IQ in Copilot Studio page says write operations are on by default. Verify your tenant."
   - governs: "Whether an agent asks the user before running a tool"
     scope: "agent"
     ui:
@@ -68,18 +74,23 @@ changes:
     note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
   - date: "2026-11-16"
     note: "Taken offline until a corrected version passes its check: a failed check no longer keeps a page online with a notice."
-version: 2
+  - date: "2026-11-16"
+    note: "Corrected after a failed check: removed the claim that Copilot Studio approval prompts cannot be mandated centrally, noted the conflicting write-operation defaults, and set action to review."
+  - date: "2026-11-16"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 27 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 3
 verification:
   status: "held"
   date: "2026-11-16"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 31
-  confirmed: 29
-  unconfirmed: 1
+  claims: 27
+  confirmed: 26
+  unconfirmed: 0
   contradicted: 1
-  attempts: 1
+  attempts: 2
+  hash: "1900fb42d70bfe5b8923ec31fddd74a4"
 ---
 
 ## What's changing
@@ -121,17 +132,17 @@ Agents and agent flows using Work IQ, Worldwide cloud, web. Sovereign cloud avai
 ## Governance guidance
 
 ### Before rollout
-- [ ] List agent actions that should need human approval.
-- [ ] Identify approvers and a fallback for absences.
-- [ ] Review existing approval controls in Copilot Studio.
+- List agent actions that should need human approval.
+- Identify approvers and a fallback for absences.
+- Review existing approval controls in Copilot Studio.
 
 ### At rollout
-- [ ] Pilot with low-volume agents first.
-- [ ] Communicate to approvers how requests appear.
+- Pilot with low-volume agents first.
+- Communicate to approvers how requests appear.
 
 ### After rollout
-- [ ] Measure how long runs wait for approval.
-- [ ] Review whether approvals are being granted without scrutiny.
+- Measure how long runs wait for approval.
+- Review whether approvals are being granted without scrutiny.
 
 ## Governance controls
 
@@ -140,13 +151,15 @@ Agents and agent flows using Work IQ, Worldwide cloud, web. Sovereign cloud avai
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Work IQ MCP policy on or off for the tenant</strong><br><small>Tenant</small><br><small class="controls__note">Mutation operations such as sending mail are disallowed by default until enabled.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Work IQ MCP › Policy <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp#open-policy-settings-in-the-microsoft-365-admin-center" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Work IQ MCP policy on or off for the tenant</strong><br><small>Tenant</small><br><small class="controls__note">The MCP policy article says mutation operations such as sending email are not allowed by default; the Work IQ in Copilot Studio page says write operations are on by default. Verify your tenant.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Work IQ MCP › Policy <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp#open-policy-settings-in-the-microsoft-365-admin-center" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether an agent asks the user before running a tool</strong><br><small>Agent</small><br><small class="controls__note">Maker-side, per tool.</small></td><td data-label="Admin UI"><strong>Copilot Studio (maker)</strong><br>Tools › tool › Details › Additional details › Ask the end user before running <a href="https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent#view-and-make-changes-to-your-tool-configuration" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Human-in-the-loop policy for Work IQ agents and agent flows</strong><br><small>Tenant</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-Nothing specific to this capability is documented. The closest administrative control is the Work IQ MCP policy's default of refusing data-changing operations, which forces a deliberate decision before agents can act. Approval prompts in Copilot Studio are a maker setting and cannot be mandated centrally, as the [human approval briefing](/features/copilot-studio-require-human-approval-for-tool-calls/) explains.
+Nothing specific to this capability is documented. The closest administrative control is the Work IQ MCP policy. The [MCP policy governance article](https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp) says mutation operations are not allowed by default, while the [Work IQ in Copilot Studio page](https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq) says write operations are on by default. Verify your tenant's effective policy rather than treating read-only as a universal default.
+
+The [Add tools to custom agents page](https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent) documents a per-tool maker setting; no central policy requiring that setting was found as of November 2026.
 
 ## Open questions
 
@@ -157,13 +170,14 @@ Nothing specific to this capability is documented. The closest administrative co
 
 <!-- rationale
 risk: Low. The feature adds a control point for human oversight rather than new autonomy, although details of enforcement are not yet published.
-cost: Not yet published. Work IQ in Copilot Studio uses consumption billing with Copilot Credits, so paused runs and approvals may have credit implications.
+cost: Variable. Not yet published. Work IQ in Copilot Studio uses consumption billing with Copilot Credits, so paused runs and approvals may have credit implications.
 impact: Medium. It changes how approvers and agent owners interact with agent runs.
 -->
 
-<!-- verifier-findings (2026-11-16, needs-correction; checked by gpt-6.1-sol)
-The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [supported, minor] controls[0].note; Governance controls: first row and closing paragraph / default: Work IQ MCP mutation operations, including sending mail, are disallowed by default until administrators enable them. | Found: By default, mutation operations aren't allowed for safety. This restriction includes create, update, delete, and action requests that modify data, such as sending email. | Fix: Attribute this default specifically to the MCP policy governance article and disclose the conflicting cited page: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq says 'Write operations are on by default.' Tell readers to verify their tenant's effective policy rather than treating read-only as a universal default. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp
-- [unsupported, blocker] Governance controls: closing paragraph / applicability: Copilot Studio approval prompts cannot be mandated centrally. | Found: Searched: Copilot Studio tool human approval centrally enforce admin policy Ask the end user before running; "Ask the end user before running" API configuration YAML approval admin centrally require. Opened Add tools; its maker setting does not establish that central enforcement is impossible. | Fix: Replace 'cannot be mandated centrally, as the human approval briefing explains' with 'The cited Learn page documents a per-tool maker setting; no central policy requiring that setting was found as of November 2026.' Cite https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent instead of relying on another wiki briefing as evidence.
-- [contradicted, minor] front matter: action / consistency: The action rating is none, meaning awareness only with nothing to configure or decide. | Found: action: "none"; Before rollout: "List agent actions that should need human approval" and "Review existing approval controls in Copilot Studio." | Fix: Set action to 'review': this is a new optional control with no documented automatic change to existing behavior, and the briefing asks service owners to assess approval needs.
+<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] front matter: licensing.model and notes; Cost and licensing; rationale: cost / licensing: The licensing model is unknown and not published. | Found: Work IQ uses consumption billing. A separate spending policy isn't required for Work IQ. | Fix: Set licensing.model to consumption. Replace the unqualified 'Not published' and 'Not yet published' licensing statements, including the cost rationale, with: 'Work IQ uses consumption billing with Copilot Credits; any additional charge specific to pauses or approvals is not yet published.' Keep cost variable. The cited Work IQ page states the platform billing rule. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] What's changing; Governance controls; controls[1].note / behaviour: Copilot Studio separately offers a maker-configured, per-tool confirmation setting. | Found: This article describes features used in agents or agent flows powered by the standard harness. | Fix: Replace 'Copilot Studio already has a separate capability to require human approval for tool calls' with 'Copilot Studio separately documents a per-tool end-user confirmation setting for agents using the standard harness.' Change controls[1].note to 'Maker-side, per tool, for agents using the standard harness.' Keep the relationship to the planned Work IQ capability an open question. | Source: https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent
 -->

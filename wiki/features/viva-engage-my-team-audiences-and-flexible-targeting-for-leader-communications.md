@@ -12,22 +12,22 @@ platforms: ["Desktop","Web"]
 targetDate: "January CY2027"
 previewDate: null
 risk: "medium"
-cost: "low"
+cost: "medium"
 impact: "medium"
 defaultState: "on"
 action: "act-now"
 licensing:
   model: "per-user"
-  notes: "MC1183013 says a premium licence available through Viva or Communications and Communities (C&C) is required; the Microsoft Support page says the Viva Suite licence. No price is published."
+  notes: "MC1183013 says a premium licence available through Viva or Communications and Communities (C&C) is required; the Microsoft Support page says the Viva Suite licence. No separate price for flexible targeting is documented; the prerequisite premium plans have published per-user prices at https://www.microsoft.com/microsoft-viva/pricing. Confirm the applicable plan and agreement price."
 audiences: ["m365-admin","service-owner","change-adoption"]
 tags: ["viva-engage","delegation","entra-id","governance","licensing","user-experience"]
 sources:
   - title: "Microsoft 365 Roadmap 499895"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=499895"
     kind: "roadmap"
-  - title: "MC1183013: (Updated) Microsoft Viva Engage: Flexible targeting of Storyline Announcements"
-    url: "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1183013"
-    kind: "message-center"
+  - title: "Microsoft Viva plans and pricing"
+    url: "https://www.microsoft.com/microsoft-viva/pricing"
+    kind: "docs"
   - title: "Storyline announcements in Viva Engage"
     url: "https://support.microsoft.com/topic/8db19630-ecd0-4d1e-b735-437aea62e248"
     kind: "docs"
@@ -37,6 +37,9 @@ sources:
   - title: "Manage and set up storyline in Viva Engage"
     url: "https://learn.microsoft.com/viva/engage/eac-storyline"
     kind: "learn"
+  - title: "MC1183013: (Updated) Microsoft Viva Engage: Flexible targeting of Storyline Announcements"
+    url: "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1183013"
+    kind: "message-center"
 videos: []
 related: []
 controls:
@@ -86,18 +89,23 @@ changes:
     note: "First briefing for this item, using roadmap record 499895 and Message Center post MC1183013 (updated 2 November 2026)."
   - date: "2026-11-16"
     note: "Added Microsoft Support's Public Preview documentation of My Team and flexible targeting, reconciled the licence wording (Viva Suite versus Viva or C&C) and added the recipient notification licence requirement."
-version: 2
+  - date: "2026-11-16"
+    note: "Corrected the cost rating to medium and replaced the claim that no price is published with the published per-user Viva plan pricing page."
+  - date: "2026-11-16"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 67 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-16"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 69
-  confirmed: 67
+  claims: 67
+  confirmed: 66
   unconfirmed: 0
-  contradicted: 2
-  attempts: 2
+  contradicted: 1
+  attempts: 0
+  hash: "8bd0083d76c3d4bdad4703b63d07ed92"
 ---
 
 ## What's changing
@@ -141,7 +149,7 @@ The licence is described differently on different Microsoft pages. Notice MC1183
 
 On recipients, Microsoft Support says people need a licence to the Viva Engage Communities and Communications service plan to receive announcement notifications through Outlook and Microsoft Teams. That is a requirement for those notification channels, not a statement that viewing an announcement needs the premium licence.
 
-No price, credit rate or separate meter for flexible targeting is published at the time of writing (November 2026). The indirect cost is admin and communications time: checking people data and briefing leaders and delegates.
+No separate price, credit rate or meter for flexible targeting is documented at the time of writing (November 2026); the prerequisite premium plans have published per-user prices at https://www.microsoft.com/microsoft-viva/pricing. Confirm the applicable plan and agreement price. The indirect cost is admin and communications time: checking people data and briefing leaders and delegates.
 
 ## Scope
 
@@ -200,13 +208,12 @@ Roles that can edit leader audiences are listed on the Learn page: Engage admin,
 
 <!-- rationale
 risk: Medium. Leaders and delegates choose recipients at the moment of posting, using people data you maintain, and Microsoft documents no tenant switch for the new targeting at the time of writing (November 2026).
-cost: Low. Microsoft's notice MC1183013 says a premium Viva or Communications and Communities (C&C) licence is required and no price or meter is published; the visible cost is admin time to check people data.
+cost: Medium. Leaders need premium Viva licensing, and recipients need the Communities and Communications service plan for Outlook and Teams notifications; confirm existing entitlements before rollout.
 impact: Medium. Leaders, their delegates and the people they message notice it; other users see no change to how announcements are delivered.
 -->
 
-<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
-The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [supported, minor] front matter: licensing.model / licensing: The required premium licensing is per user. | Found: Microsoft Viva Suite ... $12.00 ... user/month, paid yearly ... (Annual commitment) | Fix: Add https://www.microsoft.com/microsoft-viva/pricing to sources; it explicitly documents the per-user charging unit. | Source: https://www.microsoft.com/microsoft-viva/pricing
-- [contradicted, blocker] front matter: licensing.notes / cost: No price is published for the premium licensing described in the licensing notes. | Found: Microsoft Viva Employee Communications and Communities ... $2.00 ... user/month, paid yearly ... Microsoft Viva Suite ... $12.00 ... user/month, paid yearly | Fix: Replace the unqualified 'No price is published' with 'No separate price for flexible targeting is documented; the prerequisite premium plans have published per-user prices at https://www.microsoft.com/microsoft-viva/pricing. Confirm the applicable plan and agreement price.' | Source: https://www.microsoft.com/microsoft-viva/pricing
-- [contradicted, blocker] front matter: cost; rationale: cost / consistency: Cost low represents indirect admin and communications time only despite the published premium licence prerequisite. | Found: cost: "low"; "Low. ... a premium Viva or Communications and Communities (C&C) licence is required". The scale defines low as "indirect cost only" and medium as "add-on licences for a subset of users". | Fix: Set cost to medium and start its rationale 'Medium. Leaders need premium Viva licensing, and recipients need the Communities and Communications service plan for Outlook and Teams notifications; confirm existing entitlements before rollout.' Distinguish existing licensed users from users needing purchases rather than asserting indirect cost only.
+<!-- verifier-findings (2026-11-16, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [contradicted, minor] Governance guidance: Before rollout, first bullet / consistency: Every control the governance checklist asks readers to check has a controls-table row. | Found: Check department, job title, country and manager values ... in Microsoft Entra ID or Organizational Data in Microsoft; the controls table covers leaders, delegates, storyline creators, the activity log and the targeting switch, but not organisational-data maintenance. | Fix: The organisational-data validation step has no corresponding control row. Remove this checklist bullet; retain the notice's organisational-data advice in Why it matters.
 -->

@@ -2,39 +2,31 @@
   "slug": "work-iq-execute-recipes",
   "roadmapId": 570866,
   "title": "Work IQ: agents can execute reusable recipes",
-  "status": "held",
+  "status": "verified",
   "date": "2026-11-16",
-  "version": 2,
+  "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
-  "verifierVerdict": "hold",
-  "notes": [
-    "2026-11-16: taken offline; the grace for pages published before the check existed is off"
-  ],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-16",
-    "reasons": [
-      "8 blocking findings (claims 10, 31, 34, 36, 40, 42, 43, 44)"
-    ]
-  },
+  "attempts": 0,
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
   "counts": {
-    "claims": 45,
-    "confirmed": 36,
-    "unconfirmed": 4,
-    "contradicted": 5,
-    "blocker": 8,
+    "claims": 42,
+    "confirmed": 42,
+    "unconfirmed": 0,
+    "contradicted": 0,
+    "blocker": 0,
     "major": 0,
-    "minor": 3
+    "minor": 0
   },
-  "summary": "Hold: the briefing presents general Work IQ permission, policy and billing controls as confirmed controls for recipes, although recipe-specific documentation was not found. It also incorrectly says the roadmap gives no cloud scope and omits the documented Microsoft Graph method for administering app consent.",
+  "summary": "The briefing matches the roadmap record and the cited documentation supports its general Work IQ controls. Recipe-specific defaults, licensing and configuration remain unconfirmed, and the briefing clearly separates those gaps from documented platform behaviour.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing; rationale: risk",
+      "where": "title; summary; What's changing; Scope; rationale: risk",
       "type": "record",
-      "claim": "Microsoft plans to let agents execute reusable Work IQ recipes coordinating supported tools and actions.",
+      "claim": "The roadmap plans to let agents execute reusable Work IQ recipes coordinating supported tools and actions.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Enable agents to execute reusable Work IQ recipes that coordinate supported tools and actions.",
@@ -56,7 +48,7 @@
       "n": 3,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
-      "claim": "The roadmap target is November 2026.",
+      "claim": "The roadmap target is November CY2026.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"targetDate\": \"November CY2026\"",
@@ -67,7 +59,7 @@
       "n": 4,
       "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The roadmap preview target is October CY2026.",
+      "claim": "The roadmap preview date is October CY2026.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": \"October CY2026\"",
@@ -76,7 +68,18 @@
     },
     {
       "n": 5,
-      "where": "front matter: clouds",
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap lists Work IQ and Microsoft Copilot (Microsoft 365) as products.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Work IQ\", \"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; Scope",
       "type": "record",
       "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
       "status": "supported",
@@ -86,8 +89,8 @@
       "fix": null
     },
     {
-      "n": 6,
-      "where": "front matter: releasePhase",
+      "n": 7,
+      "where": "front matter: releasePhase; Scope",
       "type": "record",
       "claim": "The roadmap lists General Availability and Preview release phases.",
       "status": "supported",
@@ -97,10 +100,10 @@
       "fix": null
     },
     {
-      "n": 7,
-      "where": "front matter: platforms",
+      "n": 8,
+      "where": "front matter: platforms; Scope",
       "type": "record",
-      "claim": "The roadmap lists Web as the platform.",
+      "claim": "The roadmap platform is Web.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Web\"]",
@@ -108,21 +111,10 @@
       "fix": null
     },
     {
-      "n": 8,
-      "where": "front matter: products",
-      "type": "record",
-      "claim": "The roadmap associates this change with Work IQ and Microsoft Copilot (Microsoft 365).",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"products\": [\"Work IQ\", \"Microsoft Copilot (Microsoft 365)\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 9,
       "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "The roadmap record was modified on 2026-11-06T23:04:41.",
+      "claim": "The roadmap modification timestamp is 2026-11-06T23:04:41.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"modified\": \"2026-11-06T23:04:41\"",
@@ -131,23 +123,23 @@
     },
     {
       "n": 10,
-      "where": "Scope",
-      "type": "record",
-      "claim": "Cloud scope is not stated in the roadmap record.",
-      "status": "contradicted",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
-      "severity": "blocker",
-      "fix": "Replace the cloud statement with 'The roadmap lists Worldwide (Standard Multi-Tenant), Web, and General Availability and Preview release phases.' Do not infer exclusion of other clouds."
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "No Microsoft Learn documentation confirming the recipe format was found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"recipes\"; \"Work IQ\" \"recipes\" \"format\" \"limits\". Opened Work IQ overview and API overview; results described other Work IQ surfaces, not a recipe format.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 11,
-      "where": "Scope",
-      "type": "record",
-      "claim": "The roadmap does not describe tenant-level rollout scope.",
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "Recipe authoring and sharing are not yet documented.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "Enable agents to execute reusable Work IQ recipes that coordinate supported tools and actions.",
+      "source": null,
+      "quote": "Searched: Work IQ Execute Recipes recipe licensing default state controls authoring; \"Work IQ\" \"recipes\" \"authoring\" \"permissions\". Opened Work IQ overview and API overview; no recipe authoring or sharing documentation found.",
       "severity": null,
       "fix": null
     },
@@ -155,183 +147,18 @@
       "n": 12,
       "where": "What's changing",
       "type": "absence",
-      "claim": "No Microsoft Learn page describing this recipes feature was found at review time.",
+      "claim": "Recipe-specific limits cannot yet be confirmed.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Work IQ\" \"recipes\" controls enable default licensing authoring limits audit; \"Work IQ\" \"recipes\" \"policy\" \"API\". Opened Work IQ api-overview, enable-work-iq, permissions, policy-governance-mcp and Foundry work-iq; none describes recipes.",
+      "quote": "Searched: \"Work IQ\" \"recipes\" \"format\" \"limits\". Opened Work IQ API overview, retrieve documentation and MCP policy governance; none specifies limits for recipes.",
       "severity": null,
       "fix": null
     },
     {
       "n": 13,
       "where": "What's changing",
-      "type": "absence",
-      "claim": "The recipe format is not documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Work IQ\" \"recipes\" controls enable default licensing authoring limits audit. Opened Work IQ api-overview and enable-work-iq and Foundry work-iq; no recipe format was stated.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "What's changing; Open questions",
-      "type": "absence",
-      "claim": "Recipe authoring is not documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Work IQ\" \"recipes\" controls enable default licensing authoring limits audit. Opened Work IQ api-overview, enable-work-iq and Foundry work-iq; no recipe-authoring procedure was stated.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "Open questions",
-      "type": "absence",
-      "claim": "How recipes are shared remains unpublished.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Work IQ\" \"recipes\" controls enable default licensing authoring limits audit; \"Work IQ\" \"recipes\" \"policy\" \"API\". Opened Work IQ api-overview and policy-governance-mcp and Foundry work-iq; no recipe-sharing mechanism was stated.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "Open questions",
-      "type": "absence",
-      "claim": "How recipes are versioned remains unpublished.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Work IQ\" \"recipes\" controls enable default licensing authoring limits audit; \"Work IQ\" \"recipes\" \"policy\" \"API\". Opened Work IQ api-overview and Foundry work-iq; no recipe-versioning mechanism was stated.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "What's changing",
-      "type": "absence",
-      "claim": "Recipe limits are not documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Work IQ\" \"recipes\" controls enable default licensing authoring limits audit. Opened Work IQ api-overview and policy-governance-mcp; their general Work IQ information does not specify recipe limits.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not specified the tools and actions recipes support.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Work IQ\" \"recipes\" \"policy\" \"API\". Opened Work IQ api-overview and permissions; read MCP overview and tool-reference search excerpts. They describe general tools and permissions, not recipe-supported tools.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "Risk assessment: Data exposure",
-      "type": "absence",
-      "claim": "The exact data reach of recipes is unpublished.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Work IQ\" \"recipes\" \"policy\" \"API\". Opened Work IQ api-overview, permissions and policy-governance-mcp; none states recipe-specific data access.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "Cost and licensing; Open questions; rationale: cost",
-      "type": "absence",
-      "claim": "Recipe-specific metering is not published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Work IQ\" \"recipes\" \"licensing\" \"default\"; \"Work IQ\" \"retrieve\" \"spending policy\". Opened Work IQ api-overview, enable-work-iq, retrieve and Copilot Credits billing setup; none specifies a recipe meter.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "Open questions",
-      "type": "absence",
-      "claim": "How recipe usage is audited remains unpublished.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Work IQ\" \"recipes\" \"audit logs\". Read Work IQ overview logging excerpt and opened api-overview, policy-governance-mcp and Foundry work-iq; no recipe-run audit record or access procedure was documented.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "front matter: defaultState",
-      "type": "default",
-      "claim": "The default state of the recipes feature is unknown.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Work IQ\" \"recipes\" controls enable default licensing authoring limits audit; \"Work IQ\" \"recipes\" \"licensing\" \"default\". Opened api-overview, enable-work-iq and policy-governance-mcp; no recipe default was stated.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "front matter: licensing.model; Cost and licensing",
-      "type": "licensing",
-      "claim": "The licensing model for recipes is not yet published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Work IQ\" \"recipes\" \"licensing\" \"default\". Opened Work IQ api-overview, enable-work-iq and retrieve and read cost-considerations search excerpts; they document general API billing, not recipe licensing.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "front matter: licensing.notes; rationale: cost",
-      "type": "cost",
-      "claim": "Work IQ API use is billed using Copilot Credits.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
-      "quote": "You pay for use of the Work IQ API through a usage-based model that uses Copilot Credits.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "Work IQ retrieve requires Copilot Credits billing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/retrieve",
-      "quote": "The `retrieve` tool is available in public preview. ... Set up usage-based billing for Copilot Credits",
-      "severity": "minor",
-      "fix": "Say 'The public-preview retrieve tool requires Copilot Credits billing' and cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/retrieve. Keep the existing caveat that recipe billing is unknown."
-    },
-    {
-      "n": 26,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "Work IQ retrieve requires a spending policy that includes Work IQ API.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/azure/foundry/agents/how-to/tools/work-iq",
-      "quote": "For `retrieve`, also complete the retrieve prerequisites, including Copilot Credits billing and a spending policy that includes Work IQ API.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
-      "where": "What's changing",
       "type": "behaviour",
-      "claim": "Work IQ exposes Microsoft 365 work context to agents through MCP.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
-      "quote": "Use remote MCP to expose Microsoft 365 work context as tools for AI assistants running in developer environments.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Work IQ supports A2A for agent access.",
+      "claim": "General Work IQ exposes Microsoft 365 work context through MCP and A2A.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
       "quote": "Work IQ provides multiple protocols to interact with agents - Agent-to-Agent (A2A), Model Context Protocol (MCP), and REST",
@@ -339,10 +166,10 @@
       "fix": null
     },
     {
-      "n": 29,
+      "n": 14,
       "where": "What's changing; Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "Work IQ uses delegated Microsoft Entra authentication.",
+      "claim": "General Work IQ uses Microsoft Entra ID delegated authentication.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
       "quote": "Work IQ uses Microsoft Entra ID delegated authentication.",
@@ -350,10 +177,21 @@
       "fix": null
     },
     {
-      "n": 30,
+      "n": 15,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "General Work IQ API requests run in the context of the signed-in user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
+      "quote": "Requests run in the context of the signed-in user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "Work IQ does not support application-only authentication.",
+      "claim": "General Work IQ does not support application-only authentication.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
       "quote": "Application-only authentication isn't supported.",
@@ -361,179 +199,300 @@
       "fix": null
     },
     {
-      "n": 31,
+      "n": 17,
       "where": "Risk assessment: Data exposure",
-      "type": "applicability",
-      "claim": "Recipes use supported tools with the signed-in user's permissions.",
-      "status": "unsupported",
+      "type": "absence",
+      "claim": "Microsoft has not separately documented the recipe execution identity model.",
+      "status": "supported",
       "source": null,
-      "quote": "Searched: \"Work IQ\" \"recipes\" \"policy\" \"API\". Opened api-overview, permissions and policy-governance-mcp; these establish user-scoped API access but do not describe recipe execution or its identity model.",
-      "severity": "blocker",
-      "fix": "Replace with 'General Work IQ API requests run in the context of the signed-in user; Microsoft has not documented the identity model or exact data reach for recipes.' Cite the API overview only for the general statement."
+      "quote": "Searched: \"Work IQ\" \"recipes\" \"authoring\" \"permissions\"; \"Work IQ\" \"recipes\" \"controls\" \"API\" \"audit\". Opened Work IQ overview and API overview; general user-scoped authentication is described, but no recipe execution model is specified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "The exact data reach of recipes is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"recipes\" \"authoring\" \"permissions\"; \"Work IQ\" \"recipes\" \"controls\" \"API\" \"audit\". Opened Work IQ overview, API overview and retrieve documentation; none identifies the data sources or tools used by recipe execution.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "front matter: defaultState; Governance controls",
+      "type": "absence",
+      "claim": "The default state of recipe execution is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"recipes\" \"default\" \"enable\". Read roadmap description and opened Work IQ API overview, enablement and MCP policy governance. General Work IQ defaults do not explicitly identify recipes; the record states no recipe default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Recipe-specific licensing has not been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"recipes\" \"licensing\". Opened Work IQ overview, API overview, Plan licensing and cost, and Copilot Credits billing overview. These document general Work IQ charges but do not identify how recipes are exposed or licensed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Cost and licensing; Governance controls; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "Recipe metering and the spending policies covering recipe execution have not been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ recipes execute licensing Copilot Credits spending policy default admin controls; \"Work IQ\" \"recipes\" \"licensing\". Opened API overview, Plan licensing and cost, and both Copilot Credits billing pages; no recipe-specific billing coverage found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Cost and licensing",
+      "type": "availability",
+      "claim": "The Work IQ MCP retrieve tool is in public preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/retrieve",
+      "quote": "The `retrieve` tool is available in public preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "front matter: licensing.notes; Cost and licensing; Governance controls",
+      "type": "licensing",
+      "claim": "General Work IQ API usage is billed through Copilot Credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
+      "quote": "You pay for use of the Work IQ API through a usage-based model that uses Copilot Credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The preview retrieve tool requires Copilot Credits billing and a spending policy including Work IQ API.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/retrieve",
+      "quote": "Set up usage-based billing for Copilot Credits and assign the calling users to a spending policy that includes Work IQ API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "POST /v1.0/servicePrincipals with appId fdcc1f02-fc51-4226-8753-f668596af7f7 provisions the organisation's Work IQ service principal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq#enable-work-iq-api-in-your-organization",
+      "quote": "Set the method to **POST** and the URL to `https://graph.microsoft.com/v1.0/servicePrincipals`.\n{\n  \"appId\": \"fdcc1f02-fc51-4226-8753-f668596af7f7\"\n}",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[0].ui",
+      "type": "absence",
+      "claim": "A dedicated admin-centre navigation path for Work IQ API provisioning is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: enable Work IQ API tenant Microsoft Entra admin center service principal UI. Opened Enable your tenant for Work IQ and Foundry Work IQ setup. The documented admin-center tab uses Graph Explorer to execute the Graph API, not an admin-centre setting path.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "App consent is granted in Microsoft Entra admin center under Entra ID > App registrations > app > API permissions > Grant admin consent for [your tenant].",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/foundry/agents/how-to/tools/work-iq#admin-management",
+      "quote": "In the [Microsoft Entra admin center](https://entra.microsoft.com/), go to **Entra ID** &gt; **App registrations** &gt; select the app &gt; **API permissions**. Select **Grant admin consent for [your tenant]**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "Graph grants tenant-wide delegated consent using POST /v1.0/oauth2PermissionGrants with clientId, consentType AllPrincipals, resourceId and scope, and revokes it using DELETE /v1.0/oauth2PermissionGrants/{grant-id}.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/permissions-grant-via-msgraph",
+      "quote": "POST https://graph.microsoft.com/v1.0/oauth2PermissionGrants\nThe **consentType** is `AllPrincipals`, indicating that you're consenting on behalf of all users in the tenant.\nTo revoke all grants, send a DELETE request to the oauth2PermissionGrant object.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[1].api: scope",
+      "type": "behaviour",
+      "claim": "WorkIQAgent.Ask is the delegated permission for an application to ask Work IQ.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/retrieve",
+      "quote": "Register a client application and grant the delegated `WorkIQAgent.Ask` permission.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[1].note: revoke UI",
+      "type": "admin-path",
+      "claim": "On the app's API permissions page, select WorkIQAgent.Ask and Revoke admin consent to revoke consent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/foundry/agents/how-to/tools/work-iq#admin-management",
+      "quote": "On the same **API permissions** page, select the `WorkIQAgent.Ask` permission and select **Revoke admin consent**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[1].note: existing tokens",
+      "type": "behaviour",
+      "claim": "Existing tokens remain valid until expiry after admin consent is revoked.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/foundry/agents/how-to/tools/work-iq#admin-management",
+      "quote": "Existing tokens remain valid until they expire; no new tokens can be issued after revocation.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 32,
-      "where": "controls[0].ui; Governance controls table",
-      "type": "absence",
-      "claim": "No separate admin-centre UI setting is documented for provisioning the Work IQ API service principal.",
+      "where": "controls[1].note: Graph DELETE",
+      "type": "behaviour",
+      "claim": "Graph DELETE removes all permission grants represented by that oauth2PermissionGrant object.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Work IQ\" \"enable\" \"Entra admin center\" service principal. Opened enable-work-iq and Foundry work-iq; the browser-based provisioning procedure runs the Graph POST in Graph Explorer, not a separate admin-centre setting.",
+      "source": "https://learn.microsoft.com/graph/permissions-grant-via-msgraph",
+      "quote": "To revoke all grants, send a DELETE request to the oauth2PermissionGrant object.",
       "severity": null,
       "fix": null
     },
     {
       "n": 33,
-      "where": "controls[0].api; Governance controls table",
-      "type": "command",
-      "claim": "POST /v1.0/servicePrincipals with appId fdcc1f02-fc51-4226-8753-f668596af7f7 provisions Work IQ for the organisation.",
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "Tenant Work IQ MCP policy is managed in Microsoft 365 admin center under Agents > Tools > Work IQ MCP > Policy.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq#enable-work-iq-api-in-your-organization",
-      "quote": "Set the method to POST and the URL to https://graph.microsoft.com/v1.0/servicePrincipals. ... { \"appId\": \"fdcc1f02-fc51-4226-8753-f668596af7f7\" }",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp#open-policy-settings-in-the-microsoft-365-admin-center",
+      "quote": "In the left navigation, select **Agents** &gt; **Tools**.\nIn the tools registry, select **Work IQ MCP**.\nOn the Work IQ MCP details pane, select the **Policy** tab when it's available.",
       "severity": null,
       "fix": null
     },
     {
       "n": 34,
-      "where": "controls[1].ui; Governance controls table: grant consent",
-      "type": "admin-path",
-      "claim": "Granting consent follows Entra ID > App registrations > app > API permissions > WorkIQAgent.Ask > Grant admin consent.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/azure/foundry/agents/how-to/tools/work-iq#admin-management",
-      "quote": "Grant consent: In the Microsoft Entra admin center, go to Entra ID > App registrations > select the app > API permissions. Select Grant admin consent for [your tenant].",
-      "severity": "blocker",
-      "fix": "Separate the grant and revoke instructions. For grant use 'Entra ID > App registrations > app > API permissions > Grant admin consent for [your tenant]'; do not insert WorkIQAgent.Ask as an intermediate grant step. Point docs to #admin-management."
+      "where": "controls[2].api",
+      "type": "absence",
+      "claim": "An API equivalent for the tenant Work IQ MCP policy toggle is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ MCP policy automation Microsoft Graph beta API policy settings; \"Work IQ MCP\" \"policy\" \"graph.microsoft.com/beta\". Opened MCP policy governance and checked Graph-targeted results; no method or endpoint for configuring this toggle found.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 35,
-      "where": "controls[1].ui; Governance controls table: revoke consent",
-      "type": "admin-path",
-      "claim": "Revoking consent uses the app's API permissions page, selects WorkIQAgent.Ask and then Revoke admin consent.",
+      "where": "controls[3]; Governance controls; rationale: risk",
+      "type": "absence",
+      "claim": "A recipe-specific tenant control is not documented on either the admin UI or API surface.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/azure/foundry/agents/how-to/tools/work-iq#admin-management",
-      "quote": "On the same API permissions page, select the WorkIQAgent.Ask permission and select Revoke admin consent.",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"recipes\" \"default\" \"enable\"; \"Work IQ\" \"recipes\" \"controls\" \"API\" \"audit\". Opened Work IQ overview, API overview, tenant enablement and MCP policy governance; no recipe-specific UI or automation control found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 36,
-      "where": "controls[1].api; Governance controls table",
+      "where": "Governance controls: general-control qualification",
       "type": "absence",
-      "claim": "An API equivalent for administering app consent is not documented.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/graph/permissions-grant-via-msgraph",
-      "quote": "You can use Microsoft Graph to grant or revoke API permissions for an app. ... The consentType is AllPrincipals, indicating that you're consenting on behalf of all users in the tenant.",
-      "severity": "blocker",
-      "fix": "Document POST /v1.0/oauth2PermissionGrants with clientId set to the client service-principal object ID, consentType AllPrincipals, resourceId set to the tenant's Work IQ service-principal object ID, and scope WorkIQAgent.Ask. For revocation document DELETE /v1.0/oauth2PermissionGrants/{grant-id}; warn that deleting a grant revokes all scopes in that grant. Cite https://learn.microsoft.com/graph/permissions-grant-via-msgraph and https://learn.microsoft.com/graph/api/oauth2permissiongrant-post?view=graph-rest-1.0."
+      "claim": "Microsoft has not explicitly confirmed how the listed general Work IQ controls apply to recipes.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"recipes\" \"controls\" \"API\" \"audit\"; \"Work IQ\" \"recipes\" \"authoring\" \"permissions\". Opened tenant enablement, Foundry admin management and MCP policy governance; none explicitly places recipes within these control surfaces.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 37,
-      "where": "controls[2].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Tenant-wide Work IQ MCP policy settings are at Microsoft 365 admin center > Agents > Tools > Work IQ MCP > Policy.",
+      "where": "Governance controls: mutation default",
+      "type": "default",
+      "claim": "The Work IQ MCP policy documentation says mutation operations are disallowed by default.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp#open-policy-settings-in-the-microsoft-365-admin-center",
-      "quote": "In the left navigation, select Agents > Tools. ... In the tools registry, select Work IQ MCP. ... On the Work IQ MCP details pane, select the Policy tab when it's available.",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "By default, mutation operations aren't allowed for safety. This restriction includes create, update, delete, and action requests that modify data, such as sending email.",
       "severity": null,
       "fix": null
     },
     {
       "n": 38,
-      "where": "controls[2].api; Governance controls table",
-      "type": "absence",
-      "claim": "An API equivalent for configuring the tenant's Work IQ MCP policy is not yet documented.",
+      "where": "Governance controls: mutation enablement",
+      "type": "behaviour",
+      "claim": "The Work IQ MCP policy documentation lets administrators enable supported mutation scenarios through tenant policy.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Work IQ MCP\" policy API configure settings; \"Work IQ MCP\" \"policy\" \"PATCH\". Opened policy-governance-mcp and read MCP overview, entity-model and tool-reference excerpts; no configuration endpoint or command was specified.",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "Administrators can enable supported mutation scenarios through tenant policy in the Microsoft 365 admin center when those capabilities are needed.",
       "severity": null,
       "fix": null
     },
     {
       "n": 39,
-      "where": "controls[3]; Governance controls; rationale: risk",
-      "type": "absence",
-      "claim": "No recipe-specific control is documented on either the admin UI or API surface.",
+      "where": "Governance controls: spending controls",
+      "type": "behaviour",
+      "claim": "General Work IQ API usage has Copilot Credits spending controls.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Work IQ\" \"recipes\" controls enable default licensing authoring limits audit; \"Work IQ\" \"recipes\" \"policy\" \"API\". Opened enable-work-iq, permissions, policy-governance-mcp and Foundry work-iq; no recipe-specific control was stated.",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/retrieve",
+      "quote": "assign the calling users to a spending policy that includes Work IQ API.",
       "severity": null,
       "fix": null
     },
     {
       "n": 40,
-      "where": "Governance controls: paragraph after table",
-      "type": "applicability",
-      "claim": "Work IQ enablement, per-app consent and MCP policy are confirmed governance levers for recipes.",
-      "status": "unsupported",
+      "where": "Open questions: supported tools and actions",
+      "type": "absence",
+      "claim": "Microsoft has not identified the specific tools and actions supported by recipes.",
+      "status": "supported",
       "source": null,
-      "quote": "Searched: \"Work IQ\" \"recipes\" \"policy\" \"API\". Opened api-overview, enable-work-iq, permissions and policy-governance-mcp; the latter focuses on MCP tool requests and none places recipes on that control surface.",
-      "severity": "blocker",
-      "fix": "Replace the opening governance paragraph with 'These are general Work IQ controls. Microsoft has not confirmed how they apply to recipes.' Put that qualification in the control notes and remove the assertion that recipes run inside this documented permission model."
+      "quote": "Searched: \"Work IQ\" \"recipes\" \"format\" \"limits\"; \"Work IQ\" \"recipes\" \"controls\" \"API\" \"audit\". Opened Work IQ overview, API overview and MCP policy governance; general tools are described, but no recipe tool or action list was found.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 41,
-      "where": "Governance controls: paragraph after table",
-      "type": "default",
-      "claim": "Work IQ MCP policy blocks mutation operations by default unless an administrator enables supported scenarios.",
+      "where": "Governance guidance: After rollout; Open questions: auditing",
+      "type": "absence",
+      "claim": "The recipe-specific execution records available for administrative review remain unconfirmed.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
-      "quote": "By default, mutation operations aren't allowed for safety. ... Administrators can enable supported mutation scenarios through tenant policy in the Microsoft 365 admin center",
-      "severity": "minor",
-      "fix": "Keep this scoped to the cited MCP policy documentation and note that https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq#work-iq-key-features separately says 'Write operations are on by default' for the Microsoft Copilot harness experience. Do not promise either default for recipes."
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"recipes\" \"controls\" \"API\" \"audit\". Opened Work IQ overview and MCP policy governance; general tool logging is described, but no recipe execution record or administrator review procedure is identified.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 42,
-      "where": "Governance controls: Credit consumption follows the tenant's spending policies",
-      "type": "applicability",
-      "claim": "Recipe credit consumption follows the tenant's Copilot Credits spending policies.",
-      "status": "unsupported",
+      "where": "Open questions: versioning",
+      "type": "absence",
+      "claim": "Recipe versioning has not been documented.",
+      "status": "supported",
       "source": null,
-      "quote": "Searched: \"Work IQ\" \"recipes\" \"licensing\" \"default\"; \"Work IQ\" \"retrieve\" \"spending policy\". Opened Copilot Credits billing setup, api-overview and retrieve; none establishes recipe billing or spending-policy coverage.",
-      "severity": "blocker",
-      "fix": "Replace with 'Work IQ API usage has Copilot Credits spending controls; Microsoft has not published how recipe usage is charged or which spending policies cover it.' Retain the billing setup link only as general background."
-    },
-    {
-      "n": 43,
-      "where": "front matter: cost; rationale: cost",
-      "type": "consistency",
-      "claim": "The variable cost rating is justified despite recipe metering being unknown.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "cost: \"variable\"; 'whether recipes follow the same model is unknown.' Standard: 'If licensing is not yet published, rate the cost that is known (low when the only cost the sources show is admin time)'.",
-      "severity": "blocker",
-      "fix": "Set cost to low and change its rationale to 'Low. Planning and review take administrator time; recipe licensing and metering are not yet published.' Do not use another Work IQ capability's meter to assign a factual recipe cost field."
-    },
-    {
-      "n": 44,
-      "where": "Governance guidance: After rollout",
-      "type": "applicability",
-      "claim": "Administrators can review audit logs for recipe runs.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: \"Work IQ\" \"recipes\" \"audit logs\". Read Work IQ overview's general tool-invocation logging statement and opened api-overview, policy-governance-mcp and Foundry work-iq; no accessible recipe-run audit log was documented.",
-      "severity": "blocker",
-      "fix": "Replace 'Review audit logs for recipe runs' with 'Before expanding a pilot, confirm which recipe execution records Microsoft exposes and how administrators can review them.' Keep recipe auditing as an open question."
-    },
-    {
-      "n": 45,
-      "where": "Governance guidance; Governance controls table",
-      "type": "consistency",
-      "claim": "The controls table covers every control the governance checklist asks administrators to use.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Checklist: 'Agree an approval route for recipe authoring'; 'Limit recipe availability to a pilot'; 'Require human approval for write actions where supported'; 'Review audit logs for recipe runs'. Table: 'Control specific to recipes'.",
-      "severity": "minor",
-      "fix": "Replace the catch-all recipe-control row with explicit rows for recipe authoring approval, pilot availability, human approval for writes and recipe-run monitoring, leaving both surfaces null where undocumented; alternatively rewrite these checklist items as decisions to investigate, not available configuration controls."
+      "quote": "Searched: Work IQ Execute Recipes recipe licensing default state controls authoring; \"Work IQ\" \"recipes\" \"authoring\" \"permissions\"; \"Work IQ\" \"recipes\". Opened Work IQ overview and API overview; no recipe lifecycle or versioning documentation found.",
+      "severity": null,
+      "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-16T19:29:35.574Z",
+    "at": "2026-11-16T22:01:01.783Z",
     "summary": {
-      "links": 6,
+      "links": 9,
       "unreachable": 0,
       "uiPaths": 2,
-      "uiPathsWithMissingWords": 1,
-      "apiCalls": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
       "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
     },
@@ -554,12 +513,27 @@
         "status": 200
       },
       {
-        "url": "https://learn.microsoft.com/azure/foundry/agents/how-to/tools/work-iq#data-governance-and-compliance",
+        "url": "https://learn.microsoft.com/azure/foundry/agents/how-to/tools/work-iq#admin-management",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/permissions-grant-via-msgraph",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/oauth2permissiongrant-post?view=graph-rest-1.0",
         "ok": true,
         "status": 200
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp#open-policy-settings-in-the-microsoft-365-admin-center",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/retrieve",
         "ok": true,
         "status": 200
       },
@@ -583,18 +557,24 @@
         "index": 1,
         "side": "ui",
         "governs": "Admin consent for an app to ask Work IQ",
-        "docs": "https://learn.microsoft.com/azure/foundry/agents/how-to/tools/work-iq#data-governance-and-compliance",
+        "docs": "https://learn.microsoft.com/azure/foundry/agents/how-to/tools/work-iq#admin-management",
         "reachable": true,
         "segments": [
           "Entra ID",
           "App registrations",
           "API permissions",
-          "WorkIQAgent.Ask",
-          "Grant admin consent / Revoke admin consent"
+          "Grant admin consent for"
         ],
-        "missing": [
-          "Grant admin consent / Revoke admin consent"
-        ]
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Admin consent for an app to ask Work IQ",
+        "docs": "https://learn.microsoft.com/graph/permissions-grant-via-msgraph",
+        "reachable": true,
+        "token": "/v1.0/oauth2PermissionGrants",
+        "found": true
       },
       {
         "index": 2,
@@ -612,5 +592,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-16",
+      "status": "held",
+      "version": 2,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

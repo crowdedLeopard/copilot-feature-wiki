@@ -14,11 +14,11 @@ previewDate: "September CY2026"
 risk: "medium"
 cost: "variable"
 impact: "medium"
-defaultState: "admin-opt-in"
-action: "prepare"
+defaultState: "on"
+action: "act-now"
 licensing:
-  model: "consumption"
-  notes: "Preview. Skills are stored in Dataverse; underlying services may still incur fees during preview."
+  model: "mixed"
+  notes: "Preview. Billing follows the consuming experience: licensed Microsoft 365 Copilot Chat grounding is in the applicable entitlement, Cowork use is attributed to Cowork, and direct custom or coding-agent calls are billed under Work IQ API."
 audiences: ["power-platform-admin","service-owner","maker","security"]
 tags: ["work-iq","mcp","business-skills","dataverse","agents"]
 sources:
@@ -26,7 +26,19 @@ sources:
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=573290"
     kind: "roadmap"
   - title: "Business skills overview (preview)"
-    url: "https://learn.microsoft.com/en-us/power-apps/maker/data-platform/data-platform-business-skill-overview"
+    url: "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skill-overview"
+    kind: "learn"
+  - title: "Create and use business skills (preview)"
+    url: "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills"
+    kind: "learn"
+  - title: "Business Applications in Work IQ default settings (preview)"
+    url: "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings"
+    kind: "learn"
+  - title: "Understand costs for Business Applications in Work IQ (preview)"
+    url: "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/understand-costs"
+    kind: "learn"
+  - title: "Work IQ overview"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/"
     kind: "learn"
   - title: "Work IQ participation for a Dataverse environment (Power Platform admin center)"
     url: "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-participation#environment-features-for-work-iq"
@@ -37,11 +49,14 @@ sources:
   - title: "Allowed MCP clients for the Dataverse MCP server (Power Platform admin center)"
     url: "https://learn.microsoft.com/microsoft-sales-copilot/business-skills-dataverse#enable-business-skills-in-dataverse"
     kind: "learn"
+  - title: "Allowed MCP clients for the Dataverse MCP server (REST API)"
+    url: "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/allowedmcpclient"
+    kind: "learn"
   - title: "Work IQ MCP server access in Microsoft 365 (Microsoft 365 admin center)"
     url: "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access#work-iq-mcp-server-access-control"
     kind: "learn"
 videos: []
-related: ["copilot-studio-mcp-tools-in-agents","agent-identity","copilot-credits","agent-365-control-plane-for-agents"]
+related: ["work-iq-a2a-and-mcp-long-running-tasks"]
 controls:
   - governs: "Work IQ participation for a Dataverse environment"
     scope: "environment"
@@ -63,7 +78,10 @@ controls:
       surface: "Power Platform admin center"
       path: "Manage > Environments > environment > Settings > Product > Features > Dataverse Model Context Protocol > Advanced Settings > Allowed MCP Clients"
       docs: "https://learn.microsoft.com/microsoft-sales-copilot/business-skills-dataverse#enable-business-skills-in-dataverse"
-    api: null
+    api:
+      kind: "rest"
+      call: "PATCH [organization URI]/api/data/v9.2/allowedmcpclients({allowedmcpclientid}) with body {\"isenabled\": false}"
+      docs: "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/allowedmcpclient"
   - governs: "Work IQ MCP server access in Microsoft 365"
     scope: "tenant"
     ui:
@@ -82,18 +100,23 @@ changes:
     note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
   - date: "2026-11-16"
     note: "Taken offline until a corrected version passes its check: a failed check no longer keeps a page online with a notice."
-version: 2
+  - date: "2026-11-16"
+    note: "Corrected after the independent check: default state is now on (Microsoft's default enablement from November 2026, with exceptions), skill-access and activation wording, mixed licensing, cloud availability, and the Allowed MCP Clients API."
+  - date: "2026-11-16"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 60 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 3
 verification:
   status: "held"
   date: "2026-11-16"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 45
-  confirmed: 37
+  claims: 60
+  confirmed: 58
   unconfirmed: 0
-  contradicted: 8
-  attempts: 1
+  contradicted: 2
+  attempts: 2
+  hash: "8f8a18288671752480300a2fdace6975"
 ---
 
 ## What's changing
@@ -102,11 +125,15 @@ Business skills are natural-language instructions that capture how an organisati
 
 Per Microsoft Learn, skills have frontmatter (name, description, metadata), instructions and attached resource files. Agents query the frontmatter to find relevant skills and retrieve the full instructions only when needed. Skills are not executable code.
 
+Microsoft Learn's default-settings page (prerelease documentation) says that starting September 30, 2026 Microsoft turns on Business Applications in Work IQ by default for new environments that are not listed as exceptions, and that starting in November 2026 it does the same for existing environments that are not listed as exceptions. The default applies to public production environments. The exceptions are EU and EFTA environments (Microsoft plans to enable them when the feature becomes generally available; during public preview customers can turn on Work IQ with the corresponding setting in the Microsoft 365 admin center), government-related environments, and nonproduction (trial, sandbox and developer) environments. The business skills overview describes the manual route: a Power Platform administrator turns on Work IQ in the environment.
+
 The roadmap target is November 2026, status In development; the Learn page is marked preview.
 
 ## Why it matters
 
-Skills become a governed layer that shapes agent behaviour. A Power Platform admin must turn on Work IQ in a Dataverse environment, and skill selection is probabilistic, so testing matters before broad sharing.
+Skills become a governed layer that shapes agent behaviour. Work IQ has to be on in a Dataverse environment before business skills are used there, either automatically under Microsoft's default for eligible environments or manually by a Power Platform admin, and skill selection is probabilistic, so testing matters before broad sharing.
+
+For an eligible existing environment, Microsoft's default starts in November 2026, so decide now whether it should take part rather than finding out after it has been turned on.
 
 ## Risk assessment
 
@@ -114,21 +141,25 @@ Skills become a governed layer that shapes agent behaviour. A Power Platform adm
 - Resource files and instructions may contain policy or process detail; sharing settings control who can read them.
 
 **Security & identity**
-- Access follows Dataverse security roles, ownership and sharing. Users need the Skill Sharing Role as well as the selected role.
+- Access follows Dataverse security roles, ownership and sharing. Users accessing a skill through security-role sharing need both the selected Dataverse security role and Skill Sharing Role. General access and direct sharing are separate access methods.
 
 **Autonomy & actions**
 - Skills guide what agents do with their connected tools, so they influence actions.
 
 **Change & support**
-- Editing one skill changes behaviour across all agents that use it.
+- Activating an updated skill changes the instructions available to agents that use it; editing and saving a working copy alone does not change the active version.
 
 ## Cost and licensing
 
-Learn says consumption-based services may continue to incur licence fees during preview. Work IQ API access elsewhere requires Copilot Credits billing. Specific pricing for business skills is not yet published.
+Billing follows the experience that uses the skill, according to the preview cost page for Business Applications in Work IQ. Licensed Microsoft 365 Copilot Chat business-data grounding is included in the applicable entitlement and is not charged extra as a Work IQ API interaction. Work IQ consumption that supports a Cowork task is attributed to Cowork. Coding agents or custom integrations that call Work IQ directly appear under Work IQ API, and Work IQ API usage consumes Copilot Credits shared with other eligible services.
+
+Learn also says that for consumption-based services, usage of underlying application services may continue to incur licence fees during the preview period. Specific pricing for business skills is not yet published.
 
 ## Scope
 
-Dataverse environments where a Power Platform admin has turned on Work IQ. Used in Copilot, Work IQ connected agents and agents connected to the Dataverse MCP server. Cloud availability is not stated.
+Dataverse environments where Work IQ is on, either through Microsoft's default for eligible public production environments (see What's changing for the dates and exceptions) or because a Power Platform admin turned it on. Used in Copilot, Work IQ connected agents and agents connected to the Dataverse MCP server.
+
+The roadmap lists Worldwide (Standard Multi-Tenant). Learn states that Business Applications in Work IQ is not currently available in sovereign or government cloud environments, including DoD, GCC and GCC High.
 
 ## Governance guidance
 
@@ -153,37 +184,31 @@ Dataverse environments where a Power Platform admin has turned on Work IQ. Used 
 <tbody>
 <tr><td data-label="Control"><strong>Work IQ participation for a Dataverse environment</strong><br><small>Environment</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › Work IQ <a href="https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-participation#environment-features-for-work-iq" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Business Applications data in Work IQ available to Copilot (tenant)</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Settings › View all › Business Applications data in Work IQ available to Copilot <a href="https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings#cascading-control-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Allowed MCP clients for the Dataverse MCP server</strong><br><small>Environment</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › Dataverse Model Context Protocol › Advanced Settings › Allowed MCP Clients <a href="https://learn.microsoft.com/microsoft-sales-copilot/business-skills-dataverse#enable-business-skills-in-dataverse" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Allowed MCP clients for the Dataverse MCP server</strong><br><small>Environment</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › Dataverse Model Context Protocol › Advanced Settings › Allowed MCP Clients <a href="https://learn.microsoft.com/microsoft-sales-copilot/business-skills-dataverse#enable-business-skills-in-dataverse" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>PATCH [organization URI]/api/data/v9.2/allowedmcpclients({allowedmcpclientid}) with body {&quot;isenabled&quot;: false}</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/allowedmcpclient" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Work IQ MCP server access in Microsoft 365</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Work IQ MCP › Block <a href="https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access#work-iq-mcp-server-access-control" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-The tenant setting cascades over the environment features. Who can author and share a skill is a Dataverse matter: ownership, sharing and security roles including the Skill Sharing Role. None of these settings has a documented API. The [quickstart](https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/quickstart) walks through enabling an environment end to end.
+The tenant setting cascades over the environment features. Who can author and share a skill is a Dataverse matter: ownership, sharing and security roles including the Skill Sharing Role. Skills are shared in Power Apps by selecting a skill and then **Share**; **Manage access** shows who has access and lets you change or remove it ([Create and use business skills](https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills#share-a-business-skill)).
+
+For Allowed MCP Clients, the Dataverse Web API reference documents the allowedmcpclients entity set, and the Dataverse CLI reference documents `dataverse mcp allow <appId>` for allowing an application ([Dataverse CLI reference](https://learn.microsoft.com/power-apps/developer/data-platform/cli/reference)). Microsoft Learn documents no API for the other three settings at the time of writing (November 2026). The [quickstart](https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/quickstart) walks through enabling an environment end to end.
 
 ## Open questions
 
 - Pricing and metering at general availability.
 - Audit coverage of skill creation and use.
-- Cloud support beyond the commercial cloud.
+- On what date will EU and EFTA environments be enabled by default? Learn says Microsoft plans to do so when the feature becomes generally available.
 
 <!-- rationale
 risk: Medium. Skills steer agent behaviour across surfaces, so a wrong or over-shared skill changes how agents act on business processes.
-cost: Variable. Agent use may consume Copilot Credits or other metered usage; Learn notes preview usage of underlying services may incur fees.
+cost: Variable. The meter is Copilot Credits for Work IQ API and Cowork use; licensed Microsoft 365 Copilot Chat business-data grounding is included in the applicable entitlement. No rate specific to business skills is published.
 impact: Medium. Affects makers, process owners and users of agents that discover skills.
 -->
 
-<!-- verifier-findings (2026-11-16, needs-correction; checked by gpt-6.1-sol)
-The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [contradicted, blocker] front matter: defaultState; Why it matters; Scope / default: Business skills are admin-opt-in and require an administrator to turn on Work IQ before use in every environment. | Found: Starting in November 2026, Microsoft turns on Business Applications in Work IQ for existing environments that aren't listed as exceptions. | Fix: Set defaultState to on. Explain that Work IQ is enabled by default for eligible public production environments: new environments from September 30, 2026 and existing environments starting November 2026. Carry the EU/EFTA preview, government-related and nonproduction exceptions. Replace the universal admin-opt-in wording in Why it matters and Scope with a requirement that Work IQ be enabled, automatically or manually. Report this alongside the overview's manual-enablement guidance. | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings
-- [contradicted, blocker] Risk assessment: Security & identity / role: Users need the Skill Sharing Role as well as the selected role. | Found: Users who access a skill through a Dataverse security role must have both the selected role and the Skill Sharing Role security role. | Fix: Qualify the sentence: 'Users accessing a skill through security-role sharing need both the selected Dataverse security role and Skill Sharing Role. General access and direct sharing are separate access methods.' | Source: https://learn.microsoft.com/en-us/power-apps/maker/data-platform/data-platform-business-skill-overview
-- [contradicted, blocker] Risk assessment: Change & support / behaviour: Editing one skill changes behaviour across all agents that use it. | Found: Save | Saves your working copy without changing the version agents use. A new skill remains inactive. If the skill already has an active version, that version stays active. | Fix: Replace with 'Activating an updated skill changes the instructions available to agents that use it; editing and saving a working copy alone does not change the active version.' Cite https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills#save-and-activate-a-business-skill. | Source: https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills
-- [contradicted, blocker] front matter: licensing.model / licensing: The licensing model for the briefing's supported experiences is consumption. | Found: Microsoft 365 Copilot Chat: The applicable entitlement includes business-data grounding in the licensed chat scenario. You don't pay extra for it as a Work IQ API interaction. | Fix: Set licensing.model to mixed and explain that billing follows the consuming experience: licensed Microsoft 365 Copilot Chat business-data grounding is included in the applicable entitlement, Cowork consumption is attributed to Cowork, and direct custom or coding-agent connections are billed under Work IQ API. Do not infer universal consumption licensing from the conditional preview notice. | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/understand-costs
-- [supported, minor] Cost and licensing / cost: Work IQ API usage consumes Copilot Credits. | Found: Work IQ API usage consumes Copilot Credits shared with other eligible services. | Fix: Add https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/ and https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/understand-costs to sources and cite them in Cost and licensing for the meter and experience-dependent treatment. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/
-- [contradicted, blocker] Scope; Open questions: Cloud support / availability: Cloud availability is not stated. | Found: Business Applications in Work IQ isn't currently available in sovereign or government cloud environments, including Department of Defense (DoD), Government Community Cloud (GCC), and GCC High. | Fix: Replace 'Cloud availability is not stated' with 'The roadmap lists Worldwide (Standard Multi-Tenant). Learn states that Business Applications in Work IQ is not currently available in sovereign or government cloud environments, including DoD, GCC and GCC High.' Replace the broad cloud open question with any remaining, specifically unidentified gap. | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings
-- [contradicted, blocker] controls[2].api; Governance controls / absence: No API or automation is documented for Allowed MCP Clients, and none of the listed settings has a documented API. | Found: An MCP client that is allowed to talk to MCP endpoint
-Entity set path: [organization URI]/api/data/v9.2/allowedmcpclients
-Operations supported: POSTGETPATCHDELETE
-isenabled | Edm.Boolean | Display name: Is Enabled | Fix: Replace controls[2].api null with the documented allowedmcpclient Web API surface: the allowedmcpclients entity set supports PATCH and exposes the writable isenabled Boolean. Cite this reference, update the rendered table and remove the blanket claim that none has an API. For adding allowed clients, the documented command is dataverse mcp allow <appId>, at https://learn.microsoft.com/power-apps/developer/data-platform/cli/reference. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/allowedmcpclient
-- [contradicted, minor] Governance guidance: Before rollout and After rollout; controls / consistency: The controls table covers the authoring, ownership and sharing controls recommended in the governance checklist. | Found: Assign skill authoring to approved makers only. Review skill ownership and sharing regularly. The table contains only environment participation, tenant audience, Allowed MCP Clients and Work IQ MCP server blocking. | Fix: Add a skill-sharing/access row: Power Apps (maker) > environment > More > Business skills (preview) > skill > Share, citing https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills#share-a-business-skill. Include Manage access for reviewing/removing access, and add or identify the Dataverse security-role control used to restrict skill creation.
-- [contradicted, minor] front matter: action / consistency: The prepare action rating matches the scale and verified rollout facts on November 16, 2026. | Found: Starting in November 2026, Microsoft turns on Business Applications in Work IQ for existing environments that aren't listed as exceptions. | Fix: Set action to act-now: eligible existing environments are being enabled automatically in the run month, risk is medium, and administrators have participation and access controls to review before exposure. | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings
+<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[0].ui; Governance controls: first table row / admin-path: The cited participation page gives Manage > Environments > environment > Settings > Product > Features > Work IQ. | Found: Select Manage, and select the environment. Select Settings > Product > Features. Locate Work IQ. | Fix: In controls[0].ui.path and the corresponding rendered table row, replace the path with 'Manage > environment > Settings > Product > Features > Work IQ' to match the cited participation page. That page does not specify the additional 'Environments' step. | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-participation#environment-features-for-work-iq
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [contradicted, minor] Governance guidance: Before rollout and After rollout; Governance controls table / consistency: The governance checklist asks readers to control skill authoring and review ownership and sharing, but the controls table has no corresponding row. | Found: Assign skill authoring to approved makers only. Review skill ownership and sharing regularly. | Fix: Remove 'Assign skill authoring to approved makers only' and 'Review skill ownership and sharing regularly' from the governance checklist; neither step has a corresponding controls-table row. Keep the existing sourced ownership and sharing explanation.
 -->

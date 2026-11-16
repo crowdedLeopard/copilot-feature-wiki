@@ -4,48 +4,35 @@
   "title": "Power Pages: plugin for GitHub Copilot CLI and Claude Code edits traditional sites",
   "status": "held",
   "date": "2026-11-16",
-  "version": 2,
+  "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 2,
   "verifierVerdict": "hold",
-  "notes": [
-    "2026-11-16: taken offline; the grace for pages published before the check existed is off"
-  ],
+  "notes": [],
   "hold": {
     "reason": "failed",
     "since": "2026-11-16",
     "reasons": [
-      "4 blocking findings (claims 24, 25, 27, 35)"
+      "2 blocking findings (claims 14, 26)"
     ]
   },
   "counts": {
-    "claims": 37,
-    "confirmed": 31,
+    "claims": 40,
+    "confirmed": 36,
     "unconfirmed": 2,
-    "contradicted": 4,
-    "blocker": 4,
+    "contradicted": 2,
+    "blocker": 2,
     "major": 1,
-    "minor": 3
+    "minor": 2
   },
-  "summary": "The briefing reports site upload/download UI controls as undocumented even though Microsoft documents them in Visual Studio Code. Its blanket provider-billing statements and claim that administrators cannot distinguish agent uploads also need correction.",
+  "summary": "Hold: the automation row lists command names without the required arguments, so readers cannot run the calls as printed. The briefing also turns the roadmap's listed cloud into an unsupported exclusion of other clouds. The Visual Studio Code Download and Upload actions are documented; the automatic path warning is not a substantive error.",
   "claims": [
     {
       "n": 1,
-      "where": "front matter: products; title",
-      "type": "record",
-      "claim": "This roadmap item concerns Power Pages.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"products\": [\"Power Pages\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 2,
       "where": "front matter: status",
       "type": "record",
-      "claim": "The feature is in development.",
+      "claim": "The roadmap status is In development.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
@@ -53,10 +40,21 @@
       "fix": null
     },
     {
+      "n": 2,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap product is Power Pages.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Power Pages\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 3,
       "where": "front matter: releasePhase",
       "type": "record",
-      "claim": "The listed release phases are General Availability and Preview.",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
@@ -65,9 +63,31 @@
     },
     {
       "n": 4,
+      "where": "front matter: clouds",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms",
+      "type": "record",
+      "claim": "The roadmap platform is Developer.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Developer\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
-      "claim": "The roadmap lists November CY2026 as the general availability target.",
+      "claim": "The roadmap lists November CY2026 for general availability.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"targetDate\": \"November CY2026\"",
@@ -75,7 +95,7 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 7,
       "where": "front matter: previewDate; What's changing",
       "type": "record",
       "claim": "The roadmap lists October CY2026 for preview.",
@@ -86,32 +106,10 @@
       "fix": null
     },
     {
-      "n": 6,
-      "where": "front matter: clouds; What's changing; Scope",
-      "type": "record",
-      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed on the roadmap item.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
-      "where": "front matter: platforms",
-      "type": "record",
-      "claim": "Developer is the listed platform.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\"Developer\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 8,
       "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "The roadmap record was modified on 2026-10-23T21:59:27.",
+      "claim": "The roadmap record was modified at 2026-10-23T21:59:27.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"modified\": \"2026-10-23T21:59:27\"",
@@ -120,9 +118,9 @@
     },
     {
       "n": 9,
-      "where": "title; summary; What's changing",
+      "where": "title; summary; What's changing; rationale: risk",
       "type": "record",
-      "claim": "Microsoft plans traditional non-SPA site creation and editing through the Power Pages plugin for GitHub Copilot CLI and Claude Code.",
+      "claim": "The planned plugin support covers creating and editing traditional, non-SPA Power Pages sites.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "The Power Pages plugin for GitHub Copilot CLI and Claude Code now supports creating and editing traditional (non-SPA) Power Pages sites.",
@@ -133,7 +131,7 @@
       "n": 10,
       "where": "What's changing",
       "type": "record",
-      "claim": "Developers will be able to create a traditional site using natural-language prompts.",
+      "claim": "Developers can use natural-language prompts to create a traditional site.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Developers can use natural-language prompts in their AI coding agent to create a new traditional site",
@@ -142,23 +140,23 @@
     },
     {
       "n": 11,
-      "where": "What's changing",
+      "where": "What's changing; rationale: risk",
       "type": "record",
-      "claim": "Developers will be able to download, inspect and update existing site metadata.",
+      "claim": "The roadmap describes downloading, inspecting and updating existing site metadata.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "or download, inspect, and update existing site metadata",
+      "quote": "download, inspect, and update existing site metadata",
       "severity": null,
       "fix": null
     },
     {
       "n": 12,
-      "where": "What's changing; rationale: risk",
+      "where": "What's changing; Why it matters; rationale: risk",
       "type": "record",
-      "claim": "The planned editable metadata includes web pages, web templates, content snippets, basic and multistep forms, lists, table permissions, web roles and site settings.",
+      "claim": "The listed metadata includes web pages, web templates, content snippets, basic and multistep forms, lists, table permissions, web roles and site settings.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "such as web pages, web templates, content snippets, basic and multistep forms, lists, table permissions, web roles, and site settings",
+      "quote": "web pages, web templates, content snippets, basic and multistep forms, lists, table permissions, web roles, and site settings",
       "severity": null,
       "fix": null
     },
@@ -166,7 +164,7 @@
       "n": 13,
       "where": "summary; What's changing; Governance controls",
       "type": "record",
-      "claim": "Changes will be uploaded to the environment using the Power Platform CLI.",
+      "claim": "The plugin workflow uploads changes back to the environment using the Power Platform CLI.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "then upload changes back to their environment using the Power Platform CLI.",
@@ -175,9 +173,20 @@
     },
     {
       "n": 14,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "Traditional-site plugin support is Worldwide only.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Power Pages traditional sites Worldwide GCC GitHub Copilot CLI Claude Code plugin availability. Opened plugin guidance and create-code-sites; the roadmap lists Worldwide but does not state that other clouds are excluded.",
+      "severity": "blocker",
+      "fix": "Replace 'Worldwide only' in What's changing with 'with Worldwide (Standard Multi-Tenant) listed on the roadmap'. Replace 'Roadmap cloud: Worldwide only.' in Scope with 'The roadmap lists Worldwide (Standard Multi-Tenant).'"
+    },
+    {
+      "n": 15,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The cited Learn plugin guide describes modern SPA sites.",
+      "claim": "Microsoft Learn currently describes the plugin for modern single-page application sites.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-pages/configure/create-code-site-using-claude-code",
       "quote": "provides an AI-assisted workflow for creating, deploying, and managing modern single-page application (SPA) sites on Power Pages.",
@@ -185,131 +194,32 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 16,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Microsoft warns that generated code and configuration can be inaccurate and must be reviewed.",
+      "claim": "Microsoft warns that AI-generated code and configuration can be inaccurate.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-pages/configure/create-code-site-using-claude-code",
-      "quote": "Code and configuration generated by the AI coding agent can be inaccurate. Review, test, and validate all generated content before you approve or deploy it.",
+      "quote": "Code and configuration generated by the AI coding agent can be inaccurate.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 16,
-      "where": "Why it matters; Risk assessment: Security & identity",
-      "type": "behaviour",
-      "claim": "Table permissions and web roles control access to Dataverse data, including anonymous access.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-pages/security/assign-table-permissions",
-      "quote": "Table permissions assigned to web roles allow members of the web role to access data that's stored in Dataverse tables. ... When the Anonymous users web role is granted access to a table, any user who visits the site can access the data in the table.",
-      "severity": "minor",
-      "fix": "Add https://learn.microsoft.com/power-pages/security/assign-table-permissions to sources and cite it for the table-permission and anonymous-access risk."
-    },
-    {
       "n": 17,
-      "where": "Risk assessment: Data exposure",
+      "where": "What's changing; Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "Downloading site metadata places configuration files on the developer's local machine.",
+      "claim": "Learn tells developers to review, test and validate generated content before approval or deployment.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-pages/configure/power-platform-cli",
-      "quote": "Support for download/upload of website configuration data to/from the local file system",
+      "source": "https://learn.microsoft.com/power-pages/configure/create-code-site-using-claude-code",
+      "quote": "Review, test, and validate all generated content before you approve or deploy it. Always review agent proposals before approving them.",
       "severity": null,
       "fix": null
     },
     {
       "n": 18,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "Agent uploads of traditional-site changes happen after developer approval.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: Power Pages plugin Claude Code approval before upload; read plugin guide and roadmap. The guide requires review as advice and documents some proposal gates, but no universal approval gate for traditional-site uploads.",
-      "severity": "major",
-      "fix": "Replace the assertion with advice: 'Require developers to review and approve proposed changes before upload. Learn says to review, test and validate generated content before approving or deploying it.' Do not promise an enforced traditional-site upload approval gate."
-    },
-    {
-      "n": 19,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "Learn tells developers to review agent proposals before approving them.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-pages/configure/create-code-site-using-claude-code",
-      "quote": "Always review agent proposals before approving them.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "Why it matters; Scope",
-      "type": "behaviour",
-      "claim": "The workflow uses external coding-agent tools, GitHub Copilot CLI or Claude Code, with Power Platform tooling.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-pages/configure/create-code-site-using-claude-code",
-      "quote": "A generative AI coding agent, such as GitHub Copilot CLI or Claude Code, uses this plugin's skills and workflows to complete Power Pages-specific tasks.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "Governance controls; Risk assessment: Change & support",
-      "type": "behaviour",
-      "claim": "Power Platform CLI guidance supports storing site configuration in source control.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-pages/configure/power-platform-cli",
-      "quote": "You can now check in the website configuration to source control and move the website configuration to any environment using Microsoft Power Platform CLI.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "front matter: licensing.model",
-      "type": "licensing",
-      "claim": "The plugin's licensing model is not yet published, so the model is unknown.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Pages plugin GitHub Copilot CLI Claude Code license subscription; Power Pages licensing FAQ plugin pricing. Opened plugin guide and Power Platform licensing FAQs; neither specifies a plugin licensing model.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "Microsoft has not published a plugin-specific charge.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Power Pages\" \"plugin\" \"pricing\" \"Claude\"; Power Pages licensing FAQ plugin pricing. Opened plugin guide and Power Platform licensing FAQs and searched their text; no plugin-specific charge is stated.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "GitHub Copilot subscriptions are separate, outside Microsoft licensing and billed by their provider.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/azure/cost-management-billing/reservations/github-pre-purchase",
-      "quote": "All GitHub usage from that organization — including GitHub Copilot and GitHub Actions — flows to that subscription.",
-      "severity": "blocker",
-      "fix": "Remove the blanket 'outside Microsoft licensing' and provider-only billing assertion. Say that coding-agent costs depend on the organisation's existing plan and billing arrangement; GitHub Copilot can be billed through a linked Azure subscription. Cite https://learn.microsoft.com/azure/cost-management-billing/reservations/github-pre-purchase."
-    },
-    {
-      "n": 25,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "Claude Code costs are a separate provider-billed subscription outside Microsoft billing.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/azure/foundry/foundry-models/how-to/configure-claude-code",
-      "quote": "When you configure Claude Code with Microsoft Foundry, you run the coding agent on Azure infrastructure ... To use Claude models in Microsoft Foundry, you must have a paid Azure subscription",
-      "severity": "blocker",
-      "fix": "Remove the universal provider-subscription billing statement. Say that Claude Code billing depends on its configured service; Microsoft documents a Microsoft Foundry configuration requiring a paid Azure subscription at https://learn.microsoft.com/azure/foundry/foundry-models/how-to/configure-claude-code. Keep plugin-specific licensing as not yet published."
-    },
-    {
-      "n": 26,
-      "where": "front matter: defaultState",
+      "where": "front matter: defaultState; Scope; rationale: impact",
       "type": "default",
-      "claim": "The capability is user-opt-in.",
+      "claim": "The plugin is user-opt-in, used by developers and makers who choose to adopt it.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-pages/configure/create-code-site-using-claude-code",
       "quote": "Install the Power Pages plugin from the marketplace. ... After you install the plugin, restart Claude Code or GitHub Copilot CLI to access the plugin's skills as slash commands in your agent session.",
@@ -317,87 +227,186 @@
       "fix": null
     },
     {
-      "n": 27,
-      "where": "controls[0].ui; Governance controls table",
+      "n": 19,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model for this plugin extension is not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Pages plugin GitHub Copilot CLI Claude Code pricing licensing cost subscription. Opened plugin prerequisites and Power Platform licensing FAQs, including Power Pages licensing; no plugin-specific licensing model was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "absence",
-      "claim": "No UI surface is documented for downloading and uploading site content.",
-      "status": "contradicted",
+      "claim": "No Microsoft charge for the plugin is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Pages licensing billing plugin GitHub Copilot CLI Claude Code price charge. Opened plugin guidance and Power Platform licensing FAQs; neither states a plugin-specific charge.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Coding-agent costs depend on the organisation's existing plan and billing arrangement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/cost-management-billing/reservations/github-pre-purchase",
+      "quote": "Pre-purchase plan discounts don't combine with other discounts you might have. ... Factor in your existing discounts when estimating savings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "cost",
+      "claim": "GitHub usage, including GitHub Copilot, can be billed through the Azure subscription linked to the GitHub organisation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/cost-management-billing/reservations/github-pre-purchase",
+      "quote": "Each GitHub organization is linked to a specific Azure subscription for billing purposes. All GitHub usage from that organization — including GitHub Copilot and GitHub Actions — flows to that subscription.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Claude Code's billing depends on the service it is configured to use.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/foundry/foundry-models/how-to/configure-claude-code",
+      "quote": "Claude models use Global Standard deployments with pay-per-token billing, so idle deployments don't incur charges. ... Without this variable, Claude Code uses the default Anthropic API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Learn documents a Claude Code configuration using Microsoft Foundry that requires a paid Azure subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/foundry/foundry-models/how-to/configure-claude-code",
+      "quote": "To use Claude models in Microsoft Foundry, you must have a paid Azure subscription with a billing account in a country or region where Anthropic offers the models for purchase.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Power Platform Tools exposes Download and Upload by right-clicking an active site under Explorer > Power Pages Actions > Active Sites.",
+      "status": "supported",
       "source": "https://learn.microsoft.com/power-pages/configure/vs-code-extension",
-      "quote": "Power Pages Actions is available in the pane titled Power Pages Actions in the Explorer sidebar of Visual Studio Code. ... Upload: Uploads local changes back to your environment. Download: Downloads the site content to a local folder for offline editing.",
+      "quote": "Power Pages Actions is available ... in the Explorer sidebar ... Right-click on Active Sites ... Upload: Uploads local changes back to your environment. ... Download: Downloads the site content to a local folder for offline editing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "The printed automation call 'pac pages download / pac pages upload / pac pages upload-code-site' supplies the calls for downloading and uploading site content and code.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-platform/developer/cli/reference/pages",
+      "quote": "Required Parameters for pages download: --path ... --webSiteId ... Required Parameters for pages upload: --path ... Required Parameters for pages upload-code-site: --rootPath",
       "severity": "blocker",
-      "fix": "Replace controls[0].ui=null with a maker-side Visual Studio Code (Power Platform Tools) entry: 'Explorer > Power Pages Actions > Active Sites > site (right-click) > Download / Upload', citing https://learn.microsoft.com/power-pages/configure/vs-code-extension#power-pages-actions. Note that this is a developer UI, not a plugin-specific tenant switch."
+      "fix": "Replace controls[0].api.call and its rendered counterpart with 'pac pages download --path <download-folder> --webSiteId <site-guid> --modelVersion <model-version>; pac pages upload --path <site-folder> --modelVersion <model-version>'. The cited reference documents these arguments. Remove upload-code-site from this traditional-site row rather than presenting the SPA operation as another equivalent."
+    },
+    {
+      "n": 27,
+      "where": "controls[0].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "The Visual Studio Code control is a developer UI rather than a plugin-specific tenant switch.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/vs-code-extension",
+      "quote": "The Power Platform Tools adds the capability to configure websites using Visual Studio Code ... Upload: Uploads local changes back to your environment.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 28,
-      "where": "controls[0].api; Governance controls table",
-      "type": "command",
-      "claim": "pac pages download downloads website content from the current Dataverse environment.",
+      "where": "controls[0].note; Governance controls; rationale: risk",
+      "type": "behaviour",
+      "claim": "The developer signs in to the target environment before using the download and upload workflow.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/developer/cli/reference/pages",
-      "quote": "pac pages download | Download Power Pages website content from the current Dataverse environment.",
+      "source": "https://learn.microsoft.com/power-pages/configure/create-code-site-using-claude-code",
+      "quote": "An authenticated PAC CLI session connected to your target environment. ... An Azure CLI session signed in to the same tenant.",
       "severity": null,
       "fix": null
     },
     {
       "n": 29,
-      "where": "controls[0].api; Governance controls table",
-      "type": "command",
-      "claim": "pac pages upload uploads website content to the current Dataverse environment.",
+      "where": "controls[0].note; Governance controls",
+      "type": "applicability",
+      "claim": "The developer's environment security roles govern access to the Dataverse configuration modified through the CLI.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/developer/cli/reference/pages",
-      "quote": "pac pages upload | Upload Power Pages website content to current Dataverse environment.",
-      "severity": null,
-      "fix": null
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/security-model",
+      "quote": "Your code will only be able to perform operations based on the privileges assigned to the user account through security roles or team membership.",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/power-apps/developer/data-platform/security-model for the statement that environment roles govern the developer's Dataverse operations."
     },
     {
       "n": 30,
-      "where": "controls[0].api; Governance controls table",
-      "type": "command",
-      "claim": "pac pages upload-code-site uploads compiled site code.",
+      "where": "controls[1].ui and controls[1].api; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not documented a plugin-specific tenant admin switch on the UI or automation surface.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/developer/cli/reference/pages",
-      "quote": "pac pages upload-code-site | Uploads your compiled code to Power Pages site",
+      "source": null,
+      "quote": "Searched: Power Pages plugin tenant disable Power Platform API tenant settings PowerShell coding agents. Opened plugin guidance, Copilot hub for Power Pages and List tenant settings; checked pac admin search results. No plugin-specific switch was documented.",
       "severity": null,
       "fix": null
     },
     {
       "n": 31,
-      "where": "controls[0].note; Governance controls",
+      "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "The documented developer workflow uses the developer's authenticated Power Platform CLI session.",
+      "claim": "Downloading site metadata places configuration on the developer's local file system.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-pages/configure/create-code-site-using-claude-code",
-      "quote": "An authenticated PAC CLI session connected to your target environment. Run pac auth create if you didn't connect yet.",
+      "source": "https://learn.microsoft.com/power-pages/configure/power-platform-cli",
+      "quote": "Support for download/upload of website configuration data to/from the local file system",
       "severity": null,
       "fix": null
     },
     {
       "n": 32,
-      "where": "controls[0].note; Governance controls; rationale: risk",
-      "type": "applicability",
-      "claim": "The developer's environment permissions govern access to the Dataverse site configuration.",
+      "where": "Why it matters; Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Table permissions assigned to web roles control access to Dataverse data.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/security-roles-privileges#role-name-and-description-of-a-security-role",
-      "quote": "Table privileges define which tasks a user with access to a table record can do, such as Read, Create, Delete, Write, Assign, Share, Append, and Append To.",
-      "severity": "minor",
-      "fix": "Cite https://learn.microsoft.com/power-platform/admin/security-roles-privileges for Dataverse role enforcement alongside the CLI authentication guidance. Do not imply that this establishes a separate coding-agent permission model."
+      "source": "https://learn.microsoft.com/power-pages/security/assign-table-permissions",
+      "quote": "Table permissions assigned to web roles allow members of the web role to access data that's stored in Dataverse tables.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 33,
-      "where": "controls[1].ui and controls[1].api; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not documented a tenant admin UI or API switch specifically for this coding-agent plugin.",
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "A permission or web role change can widen site visitors' access to data.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Pages plugin admin disable tenant switch; \"Power Pages\" \"plugin\" disable PowerShell API tenant setting. Opened plugin guide and Copilot hub for Power Pages; neither documents a plugin-specific switch. Search results describe other controls.",
+      "source": "https://learn.microsoft.com/power-pages/security/assign-table-permissions",
+      "quote": "When the Anonymous users web role is granted access to a table, any user who visits the site can access the data in the table.",
       "severity": null,
       "fix": null
     },
     {
       "n": 34,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "The workflow introduces a third-party AI coding tool, Claude Code, into Power Pages development.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/foundry/foundry-models/how-to/configure-claude-code",
+      "quote": "Anthropic's Claude Code is an agentic coding tool that reads your codebase, edits files, runs commands, and integrates with your development tools.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
       "where": "Governance controls",
       "type": "behaviour",
-      "claim": "Code sites also use the Power Platform CLI upload/download workflow.",
+      "claim": "Code sites also use a Power Platform CLI upload and download workflow.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-pages/configure/create-code-sites",
       "quote": "Power Pages SPA sites are managed using the PAC CLI commands upload-code-site and download-code-site.",
@@ -405,46 +414,68 @@
       "fix": null
     },
     {
-      "n": 35,
-      "where": "Governance controls",
-      "type": "absence",
-      "claim": "Nothing in the admin center distinguishes coding-agent uploads from manual uploads.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: Power Pages plugin audit logs; Power Pages plugin audit admin center. Read plugin guide, Copilot hub and View Power Pages activity logs in Microsoft Purview; none states that agent and manual uploads cannot be distinguished.",
-      "severity": "blocker",
-      "fix": "Replace the categorical assertion with 'Microsoft has not documented a plugin-specific upload identifier in the admin center at the time of writing (November 2026).' Keep the plugin audit-trail question open; do not conclude that identification is impossible."
-    },
-    {
       "n": 36,
-      "where": "Open questions: existing security review skills",
+      "where": "Governance controls; Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "The existing plugin has security review skills.",
+      "claim": "Power Platform CLI guidance supports keeping website configuration in source control.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-pages/configure/create-code-site-using-claude-code",
-      "quote": "Run security review | /security-review | Orchestrates the focused security skills and consolidates every finding into a single HTML report.",
+      "source": "https://learn.microsoft.com/power-pages/configure/power-platform-cli",
+      "quote": "You can now check in the website configuration to source control and move the website configuration to any environment using Microsoft Power Platform CLI.",
       "severity": null,
       "fix": null
     },
     {
       "n": 37,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "Microsoft has not documented a plugin-specific upload identifier in the admin center as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Pages plugin GitHub Copilot CLI Claude Code audit upload identifier admin center logs. Opened plugin guidance, CLI reference, CLI support guidance and Copilot hub; no admin-center plugin-specific upload identifier was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Open questions: existing security review skills",
+      "type": "behaviour",
+      "claim": "The existing SPA plugin has security review skills.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/create-code-site-using-claude-code",
+      "quote": "Run security review ... Orchestrates the focused security skills and consolidates every finding into a single HTML report.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Traditional Power Pages sites often hold years of configuration.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"traditional\" \"Power Pages\" \"years\" configuration. Opened plugin guidance, Power Platform CLI support and create-code-sites; none substantiates how often traditional sites contain years of configuration.",
+      "severity": "major",
+      "fix": "Replace 'Traditional sites often hold years of configuration, including table permissions and web roles that protect Dataverse data.' with 'Table permissions assigned to web roles control access to Dataverse data.'"
+    },
+    {
+      "n": 40,
       "where": "Governance guidance: After rollout; Governance controls table",
       "type": "consistency",
-      "claim": "The checklist asks readers to run table-permission audits, but the controls table has no permission-review row.",
+      "claim": "The checklist's table-permission audit control is represented in the controls table.",
       "status": "contradicted",
       "source": "page",
       "quote": "Checklist: 'Run table permission audits after agent changes.' Table rows: 'Downloading and uploading site content and code' and 'Admin switch for the coding-agent plugin'.",
       "severity": "minor",
-      "fix": "Add a site-scoped table-permission review row. The documented manual UI is Power Pages site > Security > Table permissions > table (...) > Edit, at https://learn.microsoft.com/power-pages/security/assign-table-permissions. The plugin guide also documents /audit-permissions for its current SPA workflow; explicitly leave traditional-site applicability unconfirmed."
+      "fix": "The checklist step 'Run table permission audits after agent changes' has no corresponding controls-table row; do not imply that the current table locates this audit control."
     }
   ],
   "precheck": {
-    "at": "2026-11-16T19:29:30.869Z",
+    "at": "2026-11-16T22:01:03.187Z",
     "summary": {
-      "links": 5,
+      "links": 9,
       "unreachable": 0,
-      "uiPaths": 0,
-      "uiPathsWithMissingWords": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 1,
       "apiCalls": 1,
       "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
@@ -466,6 +497,26 @@
         "status": 200
       },
       {
+        "url": "https://learn.microsoft.com/power-pages/configure/vs-code-extension",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/azure/cost-management-billing/reservations/github-pre-purchase",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/azure/foundry/foundry-models/how-to/configure-claude-code",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-pages/security/assign-table-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
         "url": "https://learn.microsoft.com/power-pages/configure/power-platform-cli",
         "ok": true,
         "status": 200
@@ -479,6 +530,22 @@
     "controlChecks": [
       {
         "index": 0,
+        "side": "ui",
+        "governs": "Downloading and uploading site content and code",
+        "docs": "https://learn.microsoft.com/power-pages/configure/vs-code-extension",
+        "reachable": true,
+        "segments": [
+          "Explorer",
+          "Power Pages Actions",
+          "Active Sites",
+          "Download / Upload"
+        ],
+        "missing": [
+          "Download / Upload"
+        ]
+      },
+      {
+        "index": 0,
         "side": "api",
         "governs": "Downloading and uploading site content and code",
         "docs": "https://learn.microsoft.com/power-platform/developer/cli/reference/pages",
@@ -489,5 +556,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-16",
+      "status": "held",
+      "version": 2,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }
