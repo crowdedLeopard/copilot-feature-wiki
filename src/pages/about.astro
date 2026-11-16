@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 import SectionHead from '../components/SectionHead.astro';
 import Rating from '../components/Rating.astro';
 import Badge from '../components/Badge.astro';
-import { SITE, RISK, COST, IMPACT, ACTION, STATUS, DEFAULT_STATE, LICENSING_MODEL, LICENSING_MODEL_HELP, TOPICS, href } from '../lib/site';
+import { SITE, RISK, COST, IMPACT, ACTION, STATUS, DEFAULT_STATE, LICENSING_MODEL, LICENSING_MODEL_HELP, TOPICS, href, LIFECYCLE } from '../lib/site';
 import { tagGroups } from '../lib/tags';
 ---
 
@@ -19,9 +19,9 @@ import { tagGroups } from '../lib/tags';
       <h2 id="pipeline">The daily run</h2>
       <p>Every morning at 06:00 UTC a GitHub Actions job does five things, in order.</p>
       <ol>
-        <li><strong>Ingest.</strong> It downloads the Microsoft 365 Roadmap and keeps every item tagged with a Copilot, Copilot Studio, Agent 365, Power Platform, Purview, Entra, admin center, Teams, SharePoint, OneDrive, Outlook, Viva or Office product. Each item is stored as an immutable JSON snapshot in <code>raw/</code>. Items that are new, have changed status, or have been edited by Microsoft go into a queue, ordered by how likely they are to change cost, risk or control for a tenant.</li>
+        <li><strong>Ingest.</strong> It downloads the Microsoft 365 Roadmap and keeps every item tagged with a Copilot, Copilot Studio, Agent 365, Power Platform, Purview, Entra, admin center, Teams, SharePoint, OneDrive, Outlook, Viva or Office product. Each item is stored as an immutable JSON snapshot in <code>raw/</code>. Items that are new, have changed status, or have been edited by Microsoft go into a queue, ordered by how likely they are to change cost, risk or control for a tenant. Nothing is deleted: when Microsoft cancels an item, or an item leaves the roadmap and stays away for {LIFECYCLE.removedGraceDays} days, its briefing moves to the <a href={href('/archive/')}>archive</a> with a dated notice, still readable at its address and still in search. A live page untouched for {LIFECYCLE.reviewAfterDays.default} days ({LIFECYCLE.reviewAfterDays.launched} once launched) goes back into its topic's queue for a re-check.</li>
         <li><strong>Compile.</strong> Each run writes a fixed number of briefings, shared equally across the five topics so that a busy product such as Teams never crowds out Copilot Studio, or the reverse. For each item picked, a model reads the roadmap entry, searches Microsoft Learn through the Learn MCP server, and writes or rewrites the briefing to a fixed schema: what is changing, why it matters, risk, cost and licensing, scope, governance guidance, admin controls and open questions. It must cite at least one Microsoft source and may only cite Microsoft domains. Briefings are rewritten, not appended to, so each page reads as a whole.</li>
-        <li><strong>Lint.</strong> Every page is validated against the schema. Pages that fail are quarantined rather than published. The linter also flags broken links between pages, briefings whose roadmap status has moved on, and pages not reviewed in four months.</li>
+        <li><strong>Lint.</strong> Every page is validated against the schema. Pages that fail are quarantined rather than published. The linter also flags broken links between pages, briefings whose roadmap status has moved on, and pages that are due a re-check.</li>
         <li><strong>Index and digest.</strong> The catalogue, tag pages, search index and this week's digest are regenerated.</li>
         <li><strong>Publish.</strong> The site is built, each briefing is rendered to an A4 PDF, and the result is deployed to GitHub Pages.</li>
       </ol>

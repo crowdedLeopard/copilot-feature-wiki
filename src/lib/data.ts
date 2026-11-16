@@ -1,7 +1,8 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import catalogJson from '../../data/catalog.json';
 import statsJson from '../../data/stats.json';
-import { compareByAction, TOPICS } from './site';
+import lifecycleJson from '../../data/lifecycle.json';
+import { compareByAction, TOPICS, LIFECYCLE } from './site';
 
 export type Feature = CollectionEntry<'features'>;
 export type Concept = CollectionEntry<'concepts'>;
@@ -29,12 +30,33 @@ export interface CatalogItem {
 
 export const catalog = (catalogJson as { generated: string; count: number; items: CatalogItem[] });
 export const stats = statsJson as {
-  generated: string; briefings: number; concepts: number; tracked: number; byTopic: Record<string, number>; actNow: number; updatedThisWeek: number;
+  generated: string; briefings: number; archived?: number; concepts: number; tracked: number; byTopic: Record<string, number>; actNow: number; updatedThisWeek: number;
 };
+/** When each briefed roadmap item was last seen in the feed, and which are currently missing (written by ingest). */
+export const lifecycle = lifecycleJson as { generated: string | null; graceDays: number; seen: Record<string, string>; missing: Record<string, { lastSeen: string | null; missingSince: string }> };
 
+/** Live briefings: everything that is not archived. Lists, the Atlas, search ranking and the digest use this. */
 export async function allFeatures(): Promise<Feature[]> {
   const items = await getCollection('features');
-  return items.sort(compareByAction);
+  return items.filter((f) => !f.data.archived).sort(compareByAction);
+}
+
+/** Archived briefings (cancelled by Microsoft, or gone from the roadmap). Newest archive first. */
+export async function archivedFeatures(): Promise<Feature[]> {
+  const items = await getCollection('features');
+  return items.filter((f) => f.data.archived).sort((a, b) => b.data.archived!.date.localeCompare(a.data.archived!.date) || a.data.title.localeCompare(b.data.title));
+}
+
+/** Every briefing page, live and archived: for routes and for resolving links, so an archived page keeps its address. */
+export async function allFeaturesIncludingArchived(): Promise<Feature[]> {
+  return [...(await allFeatures()), ...(await archivedFeatures())];
+}
+
+/** A live page not written or refreshed for longer than its status allows (120 days, 180 once launched). */
+export function reviewDue(f: Feature, now = Date.now()) {
+  if (f.data.archived) return false;
+  const limit = f.data.status === 'launched' ? LIFECYCLE.reviewAfterDays.launched : LIFECYCLE.reviewAfterDays.default;
+  return (now - new Date(f.data.updated).getTime()) / 86400000 > limit;
 }
 
 export async function allConcepts(): Promise<Concept[]> {

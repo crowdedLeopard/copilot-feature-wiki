@@ -71,8 +71,11 @@ export async function selectQueue({ limit = 12, only = [], topic = '' } = {}) {
  * checked without a queue file: `day` only decides which topic opens the round-robin.
  */
 export function shareAcrossTopics(items, limit, { day = Math.floor(Date.now() / 86400000) } = {}) {
-  const picked = items.filter((q) => q.reason !== 'no-briefing').slice(0, limit);
-  const lanes = TOPIC_IDS.map((id) => items.filter((q) => q.reason === 'no-briefing' && q.topic === id));
+  // Refreshes jump the queue: a page the roadmap has moved on from is worse than a missing one.
+  // Routine re-checks ('review-due') take their turn in the topic lanes alongside new pages.
+  const isRefresh = (q) => q.reason !== 'no-briefing' && q.reason !== 'review-due';
+  const picked = items.filter(isRefresh).slice(0, limit);
+  const lanes = TOPIC_IDS.map((id) => items.filter((q) => !isRefresh(q) && q.topic === id));
   const start = day % lanes.length;
   while (picked.length < limit && lanes.some((lane) => lane.length)) {
     for (let i = 0; i < lanes.length && picked.length < limit; i++) {

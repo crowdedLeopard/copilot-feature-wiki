@@ -96,6 +96,12 @@ export const featureFrontmatter = z.object({
   roadmapModified: z.string().nullable().default(null),
   changes: z.array(changeSchema).default([]),
   version: z.number().int().positive().default(1),
+  // Set by pipeline/lib/lifecycle.mjs when the roadmap item is cancelled or has left the roadmap. Absent on live pages.
+  archived: z.object({
+    reason: z.enum(['cancelled', 'removed']),
+    date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+    lastSeen: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).nullable().default(null),
+  }).optional(),
 });
 
 /** What the model returns for one roadmap item. The pipeline adds bookkeeping fields and renders markdown. */

@@ -47,6 +47,7 @@ const features = defineCollection({
     roadmapModified: z.string().nullable().default(null),
     changes: z.array(change).default([]),
     version: z.number().int().default(1),
+    archived: z.object({ reason: z.enum(['cancelled', 'removed']), date: z.string(), lastSeen: z.string().nullable().default(null) }).optional(),
   }),
 });
 

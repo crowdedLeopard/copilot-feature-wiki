@@ -1,9 +1,9 @@
 import type { APIRoute } from 'astro';
 import { readFile } from 'node:fs/promises';
-import { allFeatures } from '../../lib/data';
+import { allFeaturesIncludingArchived } from '../../lib/data';
 
 export async function getStaticPaths() {
-  const features = await allFeatures();
+  const features = await allFeaturesIncludingArchived();
   return features.map((f) => ({ params: { slug: f.data.slug }, props: { file: f.filePath } }));
 }
 

@@ -2,12 +2,13 @@
 import Base from '../../layouts/Base.astro';
 import FeatureRow from '../../components/FeatureRow.astro';
 import Legend from '../../components/Legend.astro';
-import { allFeatures, allConcepts, tagCounts } from '../../lib/data';
-import { TOPICS, RISK, COST, IMPACT, ACTION, STATUS, DEFAULT_STATE, LICENSING_MODEL, AUDIENCES } from '../../lib/site';
+import { allFeatures, allConcepts, archivedFeatures, tagCounts } from '../../lib/data';
+import { TOPICS, RISK, COST, IMPACT, ACTION, STATUS, DEFAULT_STATE, LICENSING_MODEL, AUDIENCES, href } from '../../lib/site';
 import { tagLabel } from '../../lib/tags';
 
 const features = await allFeatures();
 const concepts = await allConcepts();
+const archived = await archivedFeatures();
 const tags = tagCounts(features, concepts).filter(([t]) => features.some((f) => f.data.tags.includes(t)));
 const count = (key: (f: typeof features[number]) => string | string[]) => {
   const m = new Map<string, number>();
@@ -36,6 +37,7 @@ const groups = [
       <div class="eyebrow"><span>Briefings</span><span class="sep"></span><span>{features.length} features</span></div>
       <h1 class="display">All briefings</h1>
       <p class="standfirst">Filter by what you are responsible for. Open the key below if a badge or rating is unfamiliar.</p>
+      {archived.length > 0 && <p class="muted small" style="margin-top:0.6rem">{archived.length} briefing{archived.length === 1 ? '' : 's'} whose roadmap item was cancelled or withdrawn {archived.length === 1 ? 'is' : 'are'} kept in full in the <a href={href('/archive/')}>archive</a>.</p>}
     </div>
     <Legend />
 
