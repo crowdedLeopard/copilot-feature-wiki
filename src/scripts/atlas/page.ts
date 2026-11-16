@@ -101,6 +101,12 @@ export async function initAtlasPage() {
   document.getElementById('atlas-reset')?.addEventListener('click', () => atlas.reset());
   document.getElementById('atlas-in')?.addEventListener('click', () => atlas.zoomBy(1.35));
   document.getElementById('atlas-out')?.addEventListener('click', () => atlas.zoomBy(1 / 1.35));
+  const spin = document.getElementById('atlas-spin');
+  if (spin) {
+    // Off from the start for readers who have asked their device for less motion.
+    spin.setAttribute('aria-pressed', String(atlas.spinning));
+    spin.addEventListener('click', () => { atlas.setSpin(!atlas.spinning); spin.setAttribute('aria-pressed', String(atlas.spinning)); });
+  }
 
   // ---- Colour
   const colour = document.getElementById('atlas-colour');
