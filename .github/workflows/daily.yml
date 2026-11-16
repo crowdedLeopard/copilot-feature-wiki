@@ -228,7 +228,9 @@ jobs:
       # (pipeline/prompts/verify-agent.md). A page with a contradicted or unsupported path, command, licence, price,
       # date or default is held in wiki/_held and not published; the next run's writer gets its findings. Pages
       # published before the check existed stay live with a notice on their first failure (VERIFY_GRACE_EXISTING=0
-      # holds them too). Runs on the same Copilot seat by default; VERIFY_ENGINE = copilot | claude-code | api | off.
+      # holds them too). A page that was already published when the run started is never taken down for being
+      # unreached: only a page nobody has seen yet is held as unverified. Runs on the same Copilot seat by default;
+      # VERIFY_ENGINE = copilot | claude-code | api | off.
       - name: Prepare verification tasks
         id: verify_tasks
         if: github.event_name != 'push' && (vars.VERIFY_ENGINE || 'copilot') != 'off'
@@ -256,9 +258,12 @@ jobs:
           VERIFY_MODEL: ${{ github.event.inputs.verify_model || vars.VERIFY_MODEL || '' }}
           VERIFY_FALLBACK_MODELS: ${{ vars.VERIFY_FALLBACK_MODELS || '' }}
           VERIFY_MAX_CREDITS: ${{ vars.VERIFY_MAX_CREDITS || '250' }}
-          VERIFY_MAX_RUN_CREDITS: ${{ vars.VERIFY_MAX_RUN_CREDITS || '' }}
+          VERIFY_MAX_RUN_CREDITS: ${{ vars.VERIFY_MAX_RUN_CREDITS || '2000' }}
           VERIFY_TIMEOUT_MINUTES: ${{ vars.VERIFY_TIMEOUT_MINUTES || '15' }}
-          VERIFY_RUN_MINUTES: ${{ vars.VERIFY_RUN_MINUTES || '60' }}
+          # Checks run three at a time (a check took about four minutes and 63 credits in the first real run), for up
+          # to 75 minutes; the job's 150-minute limit leaves room for the writer and for sessions still in flight.
+          VERIFY_PARALLEL: ${{ vars.VERIFY_PARALLEL || '3' }}
+          VERIFY_RUN_MINUTES: ${{ vars.VERIFY_RUN_MINUTES || '75' }}
           VERIFY_GRACE_EXISTING: ${{ vars.VERIFY_GRACE_EXISTING || '1' }}
           GITHUB_TOKEN: ${{ github.token }}
           COPILOT_PAT: ${{ secrets.COPILOT_GITHUB_TOKEN }}

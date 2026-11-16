@@ -101,15 +101,19 @@ manual and the system prompt, and an append-only log records every run.
    the page is parked for a person. Pages that pass are stamped (`verification` in the front
    matter) and show the full report on the site. Briefings published before the check existed
    stay live on their first failure, with a notice, while a corrected version is prepared
-   (`VERIFY_GRACE_EXISTING=0` holds them too). Anything written in the run that the verifier did
-   not reach is held as unverified rather than published unchecked. The engine is the
+   (`VERIFY_GRACE_EXISTING=0` holds them too). A new page written in the run that the verifier did
+   not reach is held as unverified rather than published unchecked; a page that was already
+   published when the run started is never taken down for being unreached, it stays live and goes
+   first in the next run. The engine is the
    `VERIFY_ENGINE` variable: `copilot` (default: the same seat as the writer, but a different
    model family first, `gpt-6.1-sol`, falling back through `gpt-5.6-sol`, `claude-sonnet-5.5` and
-   `auto` when the seat refuses one; caps of 250 credits per page and 100 per queued page per run,
-   `VERIFY_MAX_CREDITS` and `VERIFY_MAX_RUN_CREDITS`), `claude-code`, `api` or `off`.
-   `VERIFY_MODEL`, `VERIFY_FALLBACK_MODELS`, `VERIFY_LIMIT` and the `verify_*` run inputs override
-   the defaults. The verifier stops starting sessions after `VERIFY_RUN_MINUTES` (60), so the run
-   always reaches lint, index and the commit; pages it did not reach are held or stay unchecked. A refused token stops the run with the reason in plain English in the run summary.
+   `auto` when the seat refuses one; caps of 250 credits per page and 2,000 per run,
+   `VERIFY_MAX_CREDITS` and `VERIFY_MAX_RUN_CREDITS`; a check cost about 63 credits in the first
+   real run), `claude-code`, `api` or `off`. `VERIFY_MODEL`, `VERIFY_FALLBACK_MODELS`,
+   `VERIFY_LIMIT` and the `verify_*` run inputs override the defaults. Checks run `VERIFY_PARALLEL`
+   (3) at a time, and the verifier stops starting sessions after `VERIFY_RUN_MINUTES` (75), so the
+   run always reaches lint, index and the commit; pages it did not reach are held or stay unchecked.
+   A refused token stops the run with the reason in plain English in the run summary.
    Transcripts and verdicts are kept as a run artifact for 14 days.
 4. **Lint** validates every page against the schema, quarantines failures, and flags broken links,
    status drift, stale pages, pages awaiting correction, stale checks and everything held.

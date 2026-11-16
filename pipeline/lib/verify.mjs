@@ -24,8 +24,9 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { createHash } from 'node:crypto';
+import { execFileSync } from 'node:child_process';
 import { load as yamlLoad } from 'js-yaml';
-import { WIKI_DIR, FEATURES_DIR, CONCEPTS_DIR, DATA_DIR, readJson, writeJson, today, toFrontmatter, stripHtml } from './util.mjs';
+import { ROOT, WIKI_DIR, FEATURES_DIR, CONCEPTS_DIR, DATA_DIR, readJson, writeJson, today, toFrontmatter, stripHtml } from './util.mjs';
 import { featureFrontmatter, conceptFrontmatter, isAllowedSourceUrl } from './schema.mjs';
 import { verdictSchema, CLAIM_TYPES } from './verify-schema.mjs';
 
@@ -58,6 +59,17 @@ export function pageKind(data, where) {
 }
 const homeDir = (kind) => (kind === 'concept' ? CONCEPTS_DIR : FEATURES_DIR);
 const homeName = (kind) => (kind === 'concept' ? 'concepts' : 'features');
+
+/**
+ * True when the page was published at the commit this run started from: HEAD in Actions, because the
+ * commit step has not run yet (VERIFY_RUN_START_REF names another ref). Such a page is never taken
+ * off the site for being unreached by the verifier; only a page that has never been published is
+ * held as unverified. Without git the answer is false, which is the stricter side.
+ */
+export function livedAtRunStart(slug, kind = 'briefing') {
+  const ref = process.env.VERIFY_RUN_START_REF || 'HEAD';
+  try { execFileSync('git', ['cat-file', '-e', `${ref}:wiki/${homeName(kind)}/${slug}.md`], { cwd: ROOT, stdio: 'ignore' }); return true; } catch { return false; }
+}
 
 export async function locatePage(slug) {
   for (const [dir, where] of [[FEATURES_DIR, 'features'], [CONCEPTS_DIR, 'concepts'], [HELD_DIR, 'held']]) {
@@ -437,11 +449,19 @@ export function findingsComment(report) {
   return `\n${lines.join('\n')}\n`;
 }
 
-async function appendResult(entry) {
-  const results = await readJson(VERIFY_RESULTS, { results: [] });
-  results.results = results.results.filter((r) => r.slug !== entry.slug);
-  results.results.push({ at: new Date().toISOString(), ...entry });
-  await writeJson(VERIFY_RESULTS, results);
+// Verifier sessions run several at a time, so the shared results file is written by one caller at a time.
+let resultsLock = Promise.resolve();
+function appendResult(entry) {
+  const write = async () => {
+    const results = await readJson(VERIFY_RESULTS, { results: [] });
+    results.results = results.results.filter((r) => r.slug !== entry.slug);
+    results.results.push({ at: new Date().toISOString(), ...entry });
+    const tmp = `${VERIFY_RESULTS}.${process.pid}.tmp`;
+    await writeJson(tmp, results);
+    await fs.rename(tmp, VERIFY_RESULTS); // atomic: a reader sees the old file or the new one, never half of one
+  };
+  resultsLock = resultsLock.then(write, write);
+  return resultsLock;
 }
 
 /**
@@ -543,6 +563,9 @@ export async function holdUnverified(slug, { reason = 'unverified', note = 'Writ
   if (!loc || loc.where === 'held') return null;
   const { data, body } = await readPage(loc.file);
   const kind = pageKind(data, loc.where);
+  // A page that was already published when the run started stays live, not yet checked; it goes
+  // first in the next run. Only a page nobody has seen yet is held back.
+  if (livedAtRunStart(slug, kind)) return { slug, kept: 'published before this run', file: loc.file };
   const previous = await readReport(slug);
   const date = today();
   const report = {
