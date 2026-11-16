@@ -14,6 +14,21 @@ const control = z.object({
   note: z.string().optional(),
 });
 
+const VERIFICATION_STATUS = ['verified', 'verified-with-gaps', 'needs-correction', 'held'] as const;
+// Stamped on a page by pipeline/lib/verify.mjs after the independent check; the full report is the `verifications` collection.
+const verification = z.object({
+  status: z.enum(VERIFICATION_STATUS),
+  date: z.string(),
+  version: z.number().int(),
+  model: z.string(),
+  engine: z.string(),
+  claims: z.number().int(),
+  confirmed: z.number().int(),
+  unconfirmed: z.number().int(),
+  contradicted: z.number().int(),
+  attempts: z.number().int().default(0),
+});
+
 const features = defineCollection({
   loader: glob({ pattern: '*.md', base: './wiki/features' }),
   schema: z.object({
@@ -47,7 +62,43 @@ const features = defineCollection({
     roadmapModified: z.string().nullable().default(null),
     changes: z.array(change).default([]),
     version: z.number().int().default(1),
+    verification: verification.optional(),
   }),
+});
+
+// One report per checked briefing, written by the verifier run to wiki/verification/<slug>.json: the verdict summary,
+// every claim with its status, source and quote, and the history of earlier checks.
+const claim = z.object({
+  n: z.number().int(),
+  where: z.string(),
+  type: z.string(),
+  claim: z.string(),
+  status: z.enum(['supported', 'contradicted', 'unsupported']),
+  source: z.string().nullable().default(null),
+  quote: z.string().nullable().default(null),
+  severity: z.enum(['blocker', 'major', 'minor']).nullable().default(null),
+  fix: z.string().nullable().default(null),
+});
+const verifications = defineCollection({
+  loader: glob({ pattern: '*.json', base: './wiki/verification' }),
+  schema: z.object({
+    slug,
+    roadmapId: z.number().int().nullable().default(null),
+    title: z.string(),
+    status: z.enum(VERIFICATION_STATUS),
+    date: z.string(),
+    version: z.number().int(),
+    model: z.string(),
+    engine: z.string(),
+    attempts: z.number().int().default(0),
+    verifierVerdict: z.string().optional(),
+    notes: z.array(z.string()).default([]),
+    hold: z.object({ reason: z.string(), since: z.string().nullable().default(null), reasons: z.array(z.string()).default([]) }).nullable().default(null),
+    counts: z.object({ claims: z.number(), confirmed: z.number(), unconfirmed: z.number(), contradicted: z.number(), blocker: z.number(), major: z.number(), minor: z.number() }),
+    summary: z.string(),
+    claims: z.array(claim),
+    history: z.array(z.object({ date: z.string(), status: z.string(), version: z.number(), model: z.string() })).default([]),
+  }).passthrough(),
 });
 
 const concepts = defineCollection({
@@ -75,4 +126,4 @@ const digests = defineCollection({
   }),
 });
 
-export const collections = { features, concepts, digests };
+export const collections = { features, concepts, digests, verifications };

@@ -28,10 +28,12 @@ manual and the system prompt, and an append-only log records every run.
 | Wiki | `wiki/features/*.md` | One briefing per feature, validated front matter plus eight fixed sections. |
 | | `wiki/concepts/*.md` | Background pages the briefings link to (Copilot Credits, Managed Environments, agent identity, data policies). |
 | | `wiki/digests/*.md` | One page per ISO week, regenerated daily. |
+| | `wiki/verification/*.json` | The independent check's report for each briefing: verdict, every statement with its status, source and quote, and the history of earlier checks. Rendered on the page as "How this briefing was checked". |
+| | `wiki/_held/*.md` | Briefings held back from publication: failed the check, or written but not yet checked. Not built. The writer takes them from here, with the verifier's findings appended, and rewrites them. |
 | | `wiki/tags.json` | The tag glossary: for every tag, the name readers see, its group and a one-line explanation. The compile step adds new tags; existing entries are kept. |
 | | `wiki/index.md`, `wiki/log.md`, `wiki/lint-report.md` | Catalogue, append-only run log, latest lint result. |
-| Data | `data/*.json` | Catalog, work queue, stats and lint output used by the site. |
-| Pipeline | `pipeline/*.mjs` | `ingest`; `compile-tasks` + `compile-copilot` (Copilot CLI, default) or the Claude Code action + `write-briefing` + `compile-finish`, or `compile` (API); `lint`, `index`, `digest`, `pdf`, `screenshots`. Shared briefing logic in `pipeline/lib/briefing.mjs`, Copilot CLI plumbing in `pipeline/lib/copilot.mjs`. |
+| Data | `data/*.json` | Catalog, work queue, stats, lint output and the held list (`held.json`) used by the site. |
+| Pipeline | `pipeline/*.mjs` | `ingest`; `requeue-held`; `compile-tasks` + `compile-copilot` (Copilot CLI, default) or the Claude Code action + `write-briefing` + `compile-finish`, or `compile` (API); `verify-tasks` + `verify-run` + `verify-finish` (the independent check; `record-verification` applies one verdict, `verify` is the API engine); `lint`, `index`, `digest`, `pdf`, `screenshots`. Shared briefing logic in `pipeline/lib/briefing.mjs`, verification rules in `pipeline/lib/verify.mjs` and `verify-schema.mjs`, Copilot CLI plumbing in `pipeline/lib/copilot.mjs`. |
 | Site | `src/`, `astro.config.mjs` | Astro static site. Design tokens in `src/styles/tokens.css`. |
 | Atlas | `src/lib/graph.ts`, `src/lib/layout.ts`, `src/scripts/atlas/` | The ledger drawn as a three-dimensional map of linked pages at `/atlas/`: every briefing, concept and shared tag, and the links between them. Built from the wiki at build time, so it follows the daily run. |
 | Taxonomy | `config/taxonomy.mjs` | Topics, product mapping, rating scales, cloud names and tag groups. Shared by the pipeline and the site. |
@@ -59,10 +61,31 @@ manual and the system prompt, and an append-only log records every run.
      subscription (`CLAUDE_CODE_OAUTH_TOKEN` secret, from `claude setup-token`).
    - `api`: the Anthropic API directly from `pipeline/compile.mjs` (`ANTHROPIC_API_KEY` secret).
    - `none`: the step is skipped and everything else still runs.
-3. **Lint** validates every page against the schema, quarantines failures, and flags broken links,
-   status drift and stale pages.
-4. **Index and digest** regenerate the catalogue, stats and this week's digest.
-5. The changes are committed back to `main`, the site is built, each briefing is rendered to PDF,
+3. **Verify** re-reads every briefing written or refreshed in the run, plus a slice of the back
+   catalogue (24 a page at a time by default, oldest check first), with a second model in a fresh
+   session. The verifier follows `pipeline/prompts/verify-agent.md`: it lists every statement of
+   fact on the page, checks record facts against the roadmap snapshot and everything else against
+   Microsoft Learn, and writes one verdict file per page with each claim marked supported,
+   unsupported or contradicted, the passage it rests on, and a severity. Before the model runs, a
+   script checks the cited links, the admin-path words, the cmdlets and the roadmap fields, and
+   hands it the leads. `pipeline/lib/verify.mjs` applies the rule: any blocking finding (a path,
+   command, licence, price, date, default or role that is contradicted or unsupported), or three
+   majors, holds the page. Held pages move to `wiki/_held/` and are not built; the next run's
+   writer gets them first, with the findings appended, for up to two correction rounds, after which
+   the page is parked for a person. Pages that pass are stamped (`verification` in the front
+   matter) and show the full report on the site. Briefings published before the check existed
+   stay live on their first failure, with a notice, while a corrected version is prepared
+   (`VERIFY_GRACE_EXISTING=0` holds them too). Anything written in the run that the verifier did
+   not reach is held as unverified rather than published unchecked. The engine is the
+   `VERIFY_ENGINE` variable: `copilot` (default, same seat and caps as the writer:
+   `VERIFY_MAX_CREDITS`, 250 per page), `claude-code`, `api` or `off`; `VERIFY_MODEL`,
+   `VERIFY_LIMIT` and the `verify_*` run inputs override the defaults. Transcripts and verdicts
+   are kept as a run artifact for 14 days.
+4. **Lint** validates every page against the schema, quarantines failures, and flags broken links,
+   status drift, stale pages, pages awaiting correction, stale checks and everything held.
+5. **Index and digest** regenerate the catalogue (held pages are listed at the end), stats and
+   this week's digest.
+6. The changes are committed back to `main`, the site is built, each briefing is rendered to PDF,
    and the result is deployed to GitHub Pages.
 
 ## Local development

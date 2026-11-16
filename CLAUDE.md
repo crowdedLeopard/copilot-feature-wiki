@@ -19,6 +19,17 @@ daily by GitHub Actions.
   `compile-copilot-item.md` and calls `write-briefing.mjs`, `compile-finish.mjs` records the run and the AI credits), the
   Claude Code agent path (same tasks, the action follows `compile-agent.md` directly) and `compile.mjs` (direct Anthropic API).
   The workflow picks the writer from the `COMPILE_WRITER` repository variable. Keep page-writing logic in the shared module.
+- Every briefing is checked by a second model before it is published: `verify-tasks.mjs` prepares `data/verify-tasks/`
+  (pre-check file per page: dead links, admin-path words missing from the cited page, cmdlets missing from their reference,
+  roadmap drift), `verify-run.mjs` runs one fresh session per page (Copilot CLI by default, `VERIFY_ENGINE` = copilot |
+  claude-code | api | off) that follows `pipeline/prompts/verify-agent.md` and writes a verdict file, and
+  `record-verification.mjs` / `pipeline/lib/verify.mjs` apply it: the verdict schema is `pipeline/lib/verify-schema.mjs`,
+  severity alone decides (any blocker, or three majors, holds), a held page moves to `wiki/_held/` (not built) and
+  `requeue-held.mjs` puts it at the front of the next writer run with the findings appended, up to `VERIFY_MAX_REVISIONS`
+  (3 failed checks) before it is parked. Passing pages carry `verification` in their front matter; the full report is
+  `wiki/verification/<slug>.json`, rendered as "How this briefing was checked". Pages created before 2026-11-16 that fail
+  their first check stay live as `needs-correction` with a notice (`VERIFY_GRACE_EXISTING=0` turns that off).
+  `verify-finish.mjs` holds anything written in the run that was not checked, writes `data/held.json` and logs the run.
 - Each compile run is shared equally across the topics by `selectQueue` in `pipeline/lib/briefing.mjs` (refreshes first,
   then one item per topic in turn). `priorityFor` in `pipeline/ingest.mjs` orders items within a topic by admin relevance,
   recency and lead time. It must not weight topics against each other: that is how Modern Work went unbriefed until

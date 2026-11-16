@@ -29,6 +29,18 @@ on:
         description: 'Model override for the compile step (leave empty for the default)'
         required: false
         default: ''
+      verify_limit:
+        description: 'Maximum briefings the independent check re-verifies in this run, on top of everything written today'
+        required: false
+        default: ''
+      verify_only:
+        description: 'Comma-separated briefing slugs to verify, or "all" (overrides the queue)'
+        required: false
+        default: ''
+      verify_model:
+        description: 'Model override for the verifier (leave empty for the default)'
+        required: false
+        default: ''
 
 permissions:
   contents: write
@@ -49,6 +61,7 @@ jobs:
     outputs:
       changed: ${{ steps.commit.outputs.changed }}
       writer_failed: ${{ steps.copilot.outcome == 'failure' }}
+      verifier_failed: ${{ steps.verify.outcome == 'failure' }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -70,6 +83,12 @@ jobs:
 
       - name: Ingest the Microsoft 365 Roadmap
         run: node pipeline/ingest.mjs
+
+      # Briefings the verifier held, and live pages it found wanting, go to the front of today's writing queue so
+      # the writer corrects them (with the verifier's findings in hand) before it starts anything new.
+      - name: Queue held briefings for revision
+        if: github.event_name != 'push'
+        run: node pipeline/requeue-held.mjs
 
       # ---- Compile: the one step that needs an LLM. Three writers, chosen by the COMPILE_WRITER
       # repository variable (or the compile_writer input for one run):
@@ -178,6 +197,71 @@ jobs:
           COMPILE_MODEL: ${{ github.event.inputs.compile_model || 'claude-opus-5-5' }}
         run: node pipeline/compile.mjs
 
+      # ---- Verify: a second model, in a fresh session, checks every briefing written or refreshed today, and a
+      # slice of the back catalogue, claim by claim against the roadmap record and Microsoft Learn
+      # (pipeline/prompts/verify-agent.md). A page with a contradicted or unsupported path, command, licence, price,
+      # date or default is held in wiki/_held and not published; the next run's writer gets its findings. Pages
+      # published before the check existed stay live with a notice on their first failure (VERIFY_GRACE_EXISTING=0
+      # holds them too). Runs on the same Copilot seat by default; VERIFY_ENGINE = copilot | claude-code | api | off.
+      - name: Prepare verification tasks
+        id: verify_tasks
+        if: github.event_name != 'push' && (vars.VERIFY_ENGINE || 'copilot') != 'off'
+        env:
+          VERIFY_LIMIT: ${{ github.event.inputs.verify_limit || vars.VERIFY_LIMIT || '24' }}
+          VERIFY_ONLY: ${{ github.event.inputs.verify_only || '' }}
+        run: node pipeline/verify-tasks.mjs
+
+      - name: Install the verifier's CLI
+        if: steps.verify_tasks.outputs.count != '0'
+        env:
+          VERIFY_ENGINE: ${{ vars.VERIFY_ENGINE || 'copilot' }}
+        run: |
+          case "$VERIFY_ENGINE" in
+            copilot) command -v copilot >/dev/null || npm install -g @github/copilot; copilot --version ;;
+            claude-code) command -v claude >/dev/null || npm install -g @anthropic-ai/claude-code; claude --version ;;
+          esac
+
+      - name: Verify briefings against Microsoft Learn
+        id: verify
+        if: steps.verify_tasks.outputs.count != '0'
+        continue-on-error: true
+        env:
+          VERIFY_ENGINE: ${{ vars.VERIFY_ENGINE || 'copilot' }}
+          VERIFY_MODEL: ${{ github.event.inputs.verify_model || vars.VERIFY_MODEL || '' }}
+          VERIFY_FALLBACK_MODEL: ${{ vars.VERIFY_FALLBACK_MODEL || '' }}
+          VERIFY_MAX_CREDITS: ${{ vars.VERIFY_MAX_CREDITS || '250' }}
+          VERIFY_TIMEOUT_MINUTES: ${{ vars.VERIFY_TIMEOUT_MINUTES || '15' }}
+          VERIFY_GRACE_EXISTING: ${{ vars.VERIFY_GRACE_EXISTING || '1' }}
+          GITHUB_TOKEN: ${{ github.token }}
+          COPILOT_PAT: ${{ secrets.COPILOT_GITHUB_TOKEN }}
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ -n "$COPILOT_PAT" ]; then export COPILOT_GITHUB_TOKEN="$COPILOT_PAT"; fi
+          unset COPILOT_PAT
+          node pipeline/verify-run.mjs
+
+      - name: Keep the verifier transcripts and verdicts
+        if: always() && steps.verify_tasks.outputs.count != '0'
+        uses: actions/upload-artifact@v4
+        with:
+          name: verify-sessions-${{ github.run_id }}
+          path: |
+            data/verify-tasks/
+            data/verify-tasks.json
+            data/verify-results.json
+            data/verify-run.json
+          if-no-files-found: ignore
+          retention-days: 14
+
+      # Holds anything written today that the verifier did not get to, writes data/held.json, logs the run.
+      - name: Record the verification run
+        if: always() && steps.verify_tasks.outputs.count != '0'
+        env:
+          VERIFY_ENGINE: ${{ vars.VERIFY_ENGINE || 'copilot' }}
+          VERIFY_GRACE_EXISTING: ${{ vars.VERIFY_GRACE_EXISTING || '1' }}
+        run: node pipeline/verify-finish.mjs
+
       - name: Lint the wiki
         run: node pipeline/lint.mjs
 
@@ -240,4 +324,11 @@ jobs:
         if: needs.curate-and-build.outputs.writer_failed == 'true'
         run: |
           echo "::error::The Copilot writer did not run (see the 'Compile briefings with Copilot CLI' step). The site was still rebuilt and deployed."
+          exit 1
+
+      # Likewise for the verifier: today's new pages were held rather than published unchecked, and the run is marked.
+      - name: Flag a failed verifier
+        if: needs.curate-and-build.outputs.verifier_failed == 'true'
+        run: |
+          echo "::error::The verifier did not finish (see the 'Verify briefings against Microsoft Learn' step). Briefings it did not check were held, not published."
           exit 1

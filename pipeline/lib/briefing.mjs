@@ -9,6 +9,7 @@ import path from 'node:path';
 import { briefingOutput, featureFrontmatter, isAllowedSourceUrl } from './schema.mjs';
 import { renderBriefing, API_KIND_LABEL } from './render.mjs';
 import { RAW_DIR, WIKI_DIR, FEATURES_DIR, DATA_DIR, readJson, today } from './util.mjs';
+import { HELD_DIR } from './verify.mjs';
 import { TOPIC_IDS, TOPIC_BY_ID, topicForProducts } from '../../config/taxonomy.mjs';
 import { loadGlossary, saveGlossary, glossaryLines, normaliseTags, defineTags } from './tags.mjs';
 
@@ -29,12 +30,15 @@ export async function loadIndexSlugs() {
 
 /** Slug of the page that already covers a roadmap id, or null. Scans the pages, which are authoritative. */
 export async function existingSlugForRoadmapId(id) {
-  let files = [];
-  try { files = await fs.readdir(FEATURES_DIR); } catch { return null; }
-  for (const f of files.filter((f) => f.endsWith('.md'))) {
-    const md = await fs.readFile(path.join(FEATURES_DIR, f), 'utf8');
-    const m = md.match(/^roadmapId:\s*(\d+)/m);
-    if (m && Number(m[1]) === Number(id)) return f.replace(/\.md$/, '');
+  // A held page (wiki/_held, failed or awaiting the independent check) keeps its slug too.
+  for (const dir of [FEATURES_DIR, HELD_DIR]) {
+    let files = [];
+    try { files = await fs.readdir(dir); } catch { continue; }
+    for (const f of files.filter((f) => f.endsWith('.md'))) {
+      const md = await fs.readFile(path.join(dir, f), 'utf8');
+      const m = md.match(/^roadmapId:\s*(\d+)/m);
+      if (m && Number(m[1]) === Number(id)) return f.replace(/\.md$/, '');
+    }
   }
   return null;
 }
@@ -104,7 +108,10 @@ export async function loadRawItem(id) {
 
 /** The existing page (if any) plus the front-matter fields the refresh must carry forward. */
 export async function loadExisting(slug) {
-  const file = path.join(FEATURES_DIR, `${slug}.md`);
+  // A page the verifier held lives in wiki/_held; its text (with the verifier's findings appended)
+  // is the existing page the rewrite starts from.
+  let file = path.join(FEATURES_DIR, `${slug}.md`);
+  try { await fs.access(file); } catch { file = path.join(HELD_DIR, `${slug}.md`); }
   try {
     const existing = await fs.readFile(file, 'utf8');
     const yaml = existing.match(/^---\n([\s\S]*?)\n---/)?.[1] || '';
@@ -297,5 +304,8 @@ export async function writeBriefingPage(item, rawOutput, { slug, existingFm, ind
   await fs.mkdir(FEATURES_DIR, { recursive: true });
   const file = path.join(FEATURES_DIR, `${slug}.md`);
   await fs.writeFile(file, page);
+  // A rewrite supersedes the held copy. The new page carries no verification stamp, so the
+  // verify step checks it before the site shows it.
+  await fs.rm(path.join(HELD_DIR, `${slug}.md`), { force: true });
   return { file, slug, title: out.title, tags: defined };
 }

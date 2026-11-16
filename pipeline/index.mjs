@@ -5,6 +5,7 @@ import path from 'node:path';
 import { loadPages, loadConcepts } from './lib/pages.mjs';
 import { WIKI_DIR, DATA_DIR, writeJson, appendLog, today, readJson } from './lib/util.mjs';
 import { TOPICS, ACTION } from '../config/taxonomy.mjs';
+import { listHeld } from './lib/verify.mjs';
 
 async function main() {
   const pages = (await loadPages()).filter((p) => !p.error && p.data.title);
@@ -28,12 +29,25 @@ async function main() {
     for (const c of concepts) lines.push(`- [${c.data.title}](concepts/${c.slug}.md). ${c.data.summary || ''}`);
     lines.push('');
   }
+  // Pages the verifier is holding back are not published; the index says so, with the reason, so they are not forgotten.
+  const held = await listHeld();
+  if (held.length) {
+    lines.push(`## Held for correction (${held.length})`, '', 'Not published. Each failed its independent check against Microsoft Learn, or has not had one yet, and is queued for the writer with the verifier\'s findings.', '');
+    for (const h of held) lines.push(`- [${h.data.title}](_held/${h.slug}.md) · ${h.report?.hold?.reason || 'unverified'}${h.report?.hold?.since ? ` since ${h.report.hold.since}` : ''}. ${(h.report?.hold?.reasons || []).join('; ')}`);
+    lines.push('');
+  }
   await fs.writeFile(path.join(WIKI_DIR, 'index.md'), lines.join('\n'));
   const stats = {
     generated: new Date().toISOString(), briefings: pages.length, concepts: concepts.length, tracked: catalog.items.length,
     byTopic: Object.fromEntries(TOPICS.map((t) => [t.id, pages.filter((p) => p.data.topic === t.id).length])),
     actNow: pages.filter((p) => p.data.action === 'act-now').length,
     updatedThisWeek: pages.filter((p) => (Date.now() - new Date(p.data.updated)) < 7 * 86400000).length,
+    verification: {
+      checked: pages.filter((p) => ['verified', 'verified-with-gaps'].includes(p.data.verification?.status)).length,
+      needsCorrection: pages.filter((p) => p.data.verification?.status === 'needs-correction').length,
+      unchecked: pages.filter((p) => !p.data.verification).length,
+      held: held.length,
+    },
   };
   await writeJson(path.join(DATA_DIR, 'stats.json'), stats);
   const line = `- ${today()} index: ${pages.length} briefings, ${concepts.length} concepts indexed`;

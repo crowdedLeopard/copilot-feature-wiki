@@ -76,6 +76,10 @@ import { tagGroups } from '../lib/tags';
       <h2 id="sources">Sources and confidence</h2>
       <p>Briefings cite the Microsoft 365 Roadmap entry and Microsoft Learn documentation, and sometimes Microsoft Tech Community or Microsoft 365 blog posts. Nothing outside Microsoft's domains is cited. Each page states a confidence level: <em>high</em> when the documentation describes the feature as shipped and the admin controls were verified; <em>medium</em> when the roadmap entry is ahead of the documentation; <em>low</em> when only the roadmap text exists. Roadmap dates are Microsoft's targets and move.</p>
 
+      <h2 id="checked">How briefings are checked</h2>
+      <p>Every briefing is written by one AI model and then checked by a second, in a fresh session, against the roadmap entry and Microsoft Learn. The checker lists each statement of fact on the page, looks it up, and marks it confirmed, not found or contradicted, with the passage it rests on. A briefing with a contradicted or unsupported admin path, command, licence, price, date or default state is held back and not published until it is corrected: the writer gets the checker's findings and tries again, twice at most, before a person has to look. Pages that pass carry a "Checked" date in their heading and a section, <em>How this briefing was checked</em>, that shows the result statement by statement, including the small corrections still pending.</p>
+      <p>Briefings published before this check existed, in November 2026, stay online when they first fail, with a notice at the top that says what could not be confirmed, while a corrected version is prepared; a page that fails its correction is withdrawn. Risk, impact and action are judgements and are never grounds for holding a page. Default state, licensing and cost are facts, and are.</p>
+
       <h2 id="use">Using the ledger</h2>
       <ul>
         <li><strong>Search</strong> with <kbd>⌘</kbd><kbd>K</kbd> or <kbd>/</kbd>. It matches titles, summaries, tags, products and roadmap IDs.</li>

@@ -2,7 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import SectionHead from '../../components/SectionHead.astro';
 import Badge from '../../components/Badge.astro';
-import { allFeatures, briefedIds, catalog } from '../../lib/data';
+import { allFeatures, briefedIds, heldIds, catalog } from '../../lib/data';
 import { TOPICS, href, featureUrl, formatDate, shortRoadmapDate } from '../../lib/site';
 
 export function getStaticPaths() {
@@ -11,6 +11,7 @@ export function getStaticPaths() {
 const { topic } = Astro.props;
 const features = await allFeatures();
 const briefed = briefedIds(features);
+const heldBy = heldIds();
 const items = catalog.items.filter((i) => i.topic === topic.id).sort((a, b) => b.modified.localeCompare(a.modified));
 const groups: [string, typeof items][] = [
   ['Rolling out', items.filter((i) => i.statusKey === 'rolling-out')],
@@ -36,13 +37,14 @@ const groups: [string, typeof items][] = [
           <tbody>
             {list.map((i) => {
               const b = briefed.get(i.id);
+              const h = heldBy.get(i.id);
               return (
                 <tr data-text={`${i.title} ${i.products.join(' ')} ${i.id}`.toLowerCase()}>
                   <td class="t"><a href={i.roadmapUrl} rel="noopener">{i.title}</a><br /><span class="muted small">{i.products.slice(0, 3).join(', ')}</span></td>
                   <td class="id">{i.id}</td>
                   <td class="d">{shortRoadmapDate(i.targetDate)}</td>
                   <td class="d">{formatDate(i.modified)}</td>
-                  <td>{b ? <a class="briefed" href={featureUrl(b.data.slug)}>Read briefing</a> : <span class="muted small" style="white-space:nowrap" title="Tracked. Waiting its turn in a later run.">Not yet briefed</span>}</td>
+                  <td>{b ? <a class="briefed" href={featureUrl(b.data.slug)}>Read briefing</a> : h ? <span class="muted small" style="white-space:nowrap" title={`Written, but held back: ${h.reason === 'unverified' ? 'it has not yet passed the independent check against Microsoft Learn.' : h.reasons.join('; ') || 'it failed the independent check against Microsoft Learn.'} A corrected version is queued.`}>Held for correction</span> : <span class="muted small" style="white-space:nowrap" title="Tracked. Waiting its turn in a later run.">Not yet briefed</span>}</td>
                 </tr>
               );
             })}

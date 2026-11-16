@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { ALLOWED_SOURCE_DOMAINS, TOPIC_IDS, TAG_GROUP_IDS } from '../../config/taxonomy.mjs';
+import { verificationSummary } from './verify-schema.mjs';
 
 const slug = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, 'kebab-case slug');
 
@@ -96,6 +97,8 @@ export const featureFrontmatter = z.object({
   roadmapModified: z.string().nullable().default(null),
   changes: z.array(changeSchema).default([]),
   version: z.number().int().positive().default(1),
+  /** Stamped by the independent check (pipeline/lib/verify.mjs). Absent until a page has been checked at its current version. */
+  verification: verificationSummary.optional(),
 });
 
 /** What the model returns for one roadmap item. The pipeline adds bookkeeping fields and renders markdown. */
