@@ -222,8 +222,10 @@ h2.display { font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2.1rem); }
 
 /* ----- Filters (browse page) ----- */
 .filters { display: grid; grid-template-columns: 260px 1fr; gap: 2.5rem; align-items: start; margin-top: 1.5rem; }
-.filters__side { position: sticky; top: 72px; display: grid; gap: 1.2rem; }
-@media (max-width: 900px) { .filters { grid-template-columns: 1fr; } .filters__side { position: static; } }
+/* The sidebar sticks, but it is taller than many screens (the tag list alone is long), so it scrolls inside the
+   viewport rather than hiding its last groups below the fold. */
+.filters__side { position: sticky; top: 72px; display: grid; gap: 1.2rem; align-content: start; max-height: calc(100vh - 72px - 1rem); overflow-y: auto; overscroll-behavior: contain; padding: 0 0.6rem 1.5rem 0; scrollbar-width: thin; scrollbar-color: var(--rule) transparent; }
+@media (max-width: 900px) { .filters { grid-template-columns: 1fr; } .filters__side { position: static; max-height: none; overflow: visible; padding-right: 0; } }
 .fgroup summary { cursor: pointer; font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); padding: 0.4rem 0; border-top: 1px solid var(--rule-2); list-style: none; display: flex; justify-content: space-between; }
 .fgroup summary::-webkit-details-marker { display: none; }
 .fgroup summary::after { content: '+'; }
