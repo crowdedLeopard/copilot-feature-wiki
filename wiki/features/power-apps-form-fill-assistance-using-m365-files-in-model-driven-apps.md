@@ -31,16 +31,54 @@ sources:
   - title: "FAQ about form fill assistance"
     url: "https://learn.microsoft.com/power-apps/maker/common/faq-from-filling-assistance"
     kind: "learn"
+  - title: "Form fill assistance (data entry agent) per environment (Power Platform admin center)"
+    url: "https://learn.microsoft.com/power-apps/user/form-filling-assistance#admin-control"
+    kind: "learn"
+  - title: "Legacy environment switch for form fill assistance (Power Platform admin center)"
+    url: "https://learn.microsoft.com/power-platform/admin/settings-features#ai-form-fill-assistance"
+    kind: "learn"
+  - title: "Smart paste and the form fill toolbar for an app (Power Apps (maker))"
+    url: "https://learn.microsoft.com/power-apps/maker/model-driven-apps/app-properties"
+    kind: "learn"
 videos: []
 related: ["copilot-studio-purview-information-protection-labelled-files","managed-environments"]
+controls:
+  - governs: "Form fill assistance (data entry agent) per environment"
+    scope: "environment"
+    ui:
+      surface: "Power Platform admin center"
+      path: "Copilot > Settings > Power Apps > Data entry"
+      docs: "https://learn.microsoft.com/power-apps/user/form-filling-assistance#admin-control"
+    api: null
+  - governs: "Legacy environment switch for form fill assistance"
+    scope: "environment"
+    ui:
+      surface: "Power Platform admin center"
+      path: "Manage > Environments > environment > Settings > Product > Features > AI form fill assistance"
+      docs: "https://learn.microsoft.com/power-platform/admin/settings-features#ai-form-fill-assistance"
+    api: null
+    note: "Being removed in favour of the Copilot settings page."
+  - governs: "Smart paste and the form fill toolbar for an app"
+    scope: "app"
+    ui:
+      surface: "Power Apps (maker)"
+      path: "Model-driven app designer > Settings (app properties)"
+      docs: "https://learn.microsoft.com/power-apps/maker/model-driven-apps/app-properties"
+    api: null
+  - governs: "Switch specific to Microsoft 365 files as a source"
+    scope: "environment"
+    ui: null
+    api: null
 confidence: "medium"
 created: "2026-11-14"
-updated: "2026-11-14"
+updated: "2026-11-16"
 roadmapModified: "2026-11-04T00:02:09"
 changes:
   - date: "2026-11-14"
     note: "New briefing from roadmap item 576280."
-version: 1
+  - date: "2026-11-16"
+    note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
+version: 2
 ---
 
 ## What's changing
@@ -91,9 +129,21 @@ Model-driven apps on the web with the modern look, Worldwide (Standard Multi-Ten
 - Sample accepted suggestions for accuracy.
 - Review licensing against actual use.
 
-## Admin controls
+## Governance controls
 
-Learn states the primary admin control is moving to the Power Platform admin center under Copilot > Settings > Power Apps > Data entry. Smart paste and the toolbar can be set at app level in the app designer.
+<p class="controls__lead">Where each control lives. The left column says what the setting decides and how far it reaches; the middle gives the admin centre and the exact path; the right gives the script, API or command that does the same. <em>Not yet documented</em> means Microsoft has not published a control for that surface, so there is nothing to configure yet.</p>
+
+<table class="controls">
+<thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
+<tbody>
+<tr><td data-label="Control"><strong>Form fill assistance (data entry agent) per environment</strong><br><small>Environment</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Copilot › Settings › Power Apps › Data entry <a href="https://learn.microsoft.com/power-apps/user/form-filling-assistance#admin-control" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Legacy environment switch for form fill assistance</strong><br><small>Environment</small><br><small class="controls__note">Being removed in favour of the Copilot settings page.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › AI form fill assistance <a href="https://learn.microsoft.com/power-platform/admin/settings-features#ai-form-fill-assistance" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Smart paste and the form fill toolbar for an app</strong><br><small>App</small></td><td data-label="Admin UI"><strong>Power Apps (maker)</strong><br>Model-driven app designer › Settings (app properties) <a href="https://learn.microsoft.com/power-apps/maker/model-driven-apps/app-properties" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Switch specific to Microsoft 365 files as a source</strong><br><small>Environment</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+</tbody>
+</table>
+
+There is no API for the Copilot settings page. Makers can also set Allow form fill assistance per column, which is the finest-grained control and the one to use for sensitive fields. Usage appears in the Power Platform admin center's [Copilot hub](https://learn.microsoft.com/power-platform/admin/copilot/copilot-hub#settings) under the data entry agent.
 
 ## Open questions
 

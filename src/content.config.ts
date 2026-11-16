@@ -6,6 +6,13 @@ const slug = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/);
 const source = z.object({ title: z.string(), url: z.string().url(), kind: z.enum(['roadmap', 'learn', 'blog', 'message-center', 'docs', 'video']) });
 const video = z.object({ title: z.string(), url: z.string().url(), channel: z.string().optional() });
 const change = z.object({ date: z.string(), note: z.string() });
+const control = z.object({
+  governs: z.string(),
+  scope: z.enum(['tenant', 'environment', 'environment-group', 'site', 'group', 'user', 'agent', 'app', 'maker', 'other']),
+  ui: z.object({ surface: z.string(), path: z.string(), docs: z.string().url() }).nullable(),
+  api: z.object({ kind: z.enum(['powershell', 'graph', 'power-platform-api', 'pac-cli', 'azure-cli', 'rest', 'other']), call: z.string(), docs: z.string().url() }).nullable(),
+  note: z.string().optional(),
+});
 
 const features = defineCollection({
   loader: glob({ pattern: '*.md', base: './wiki/features' }),
@@ -33,6 +40,7 @@ const features = defineCollection({
     sources: z.array(source).min(1),
     videos: z.array(video).default([]),
     related: z.array(z.string()).default([]),
+    controls: z.array(control).default([]),
     confidence: z.enum(['high', 'medium', 'low']),
     created: z.string(),
     updated: z.string(),

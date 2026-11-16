@@ -7,6 +7,7 @@ import SectionHead from '../../components/SectionHead.astro';
 import AtlasMini from '../../components/AtlasMini.astro';
 import { allFeatures, allConcepts } from '../../lib/data';
 import { buildAtlas } from '../../lib/graph';
+import '../../styles/briefing.css';
 import { SITE, TOPIC_BY_ID, SOURCE_KIND, href, topicUrl, tagUrl, featureUrl, conceptUrl, formatDate, roadmapUrl, tagLabel, extractRationale, youtubeSearchUrl, learnSearchUrl } from '../../lib/site';
 
 export async function getStaticPaths() {
@@ -39,6 +40,14 @@ const editUrl = `${SITE.repo}/edit/main/wiki/features/${d.slug}.md`;
 const pdfUrl = href(`/downloads/${d.slug}.pdf`);
 const mdUrl = href(`/features/${d.slug}.md`);
 const sources = d.sources.filter((s) => s.kind !== 'roadmap');
+// Where this briefing's governance controls live: distinct admin centres and API kinds, with how many controls each covers.
+const API_KIND_LABEL: Record<string, string> = { powershell: 'PowerShell', graph: 'Microsoft Graph', 'power-platform-api': 'Power Platform API', 'pac-cli': 'Power Platform CLI', 'azure-cli': 'Azure CLI', rest: 'REST API', other: 'API' };
+const surfaces = new Map<string, number>();
+for (const c of d.controls) {
+  if (c.ui) surfaces.set(c.ui.surface, (surfaces.get(c.ui.surface) ?? 0) + 1);
+  if (c.api) surfaces.set(API_KIND_LABEL[c.api.kind] ?? 'API', (surfaces.get(API_KIND_LABEL[c.api.kind] ?? 'API') ?? 0) + 1);
+}
+const gaps = { ui: d.controls.filter((c) => !c.ui).length, api: d.controls.filter((c) => !c.api).length };
 const roadmapSource = d.sources.find((s) => s.kind === 'roadmap');
 ---
 
@@ -130,6 +139,17 @@ const roadmapSource = d.sources.find((s) => s.kind === 'roadmap');
             <button class="btn-ghost" type="button" onclick="window.print()" style="justify-content:space-between"><span>Print this page</span><span class="ext mono">⌘P</span></button>
           </div>
         </div>
+        {d.controls.length > 0 && (
+          <div class="panel">
+            <h3>Control surfaces</h3>
+            <ul class="surfaces">
+              {[...surfaces.entries()].sort((x, y) => y[1] - x[1] || x[0].localeCompare(y[0])).map(([name, n]) => <li><a href="#governance-controls">{name}</a><span class="n">{n} {n === 1 ? 'control' : 'controls'}</span></li>)}
+              {gaps.ui > 0 && <li><span class="gap">No admin UI documented</span><span class="n">{gaps.ui} of {d.controls.length}</span></li>}
+              {gaps.api > 0 && <li><span class="gap">No API documented</span><span class="n">{gaps.api} of {d.controls.length}</span></li>}
+            </ul>
+            <p class="surfaces__foot">Paths and cmdlets as Microsoft Learn documents them. Gaps are stated, not guessed.</p>
+          </div>
+        )}
         <div class="panel">
           <h3>Products</h3>
           <div class="chips">{d.products.map((p) => <span class="chip">{p}</span>)}</div>

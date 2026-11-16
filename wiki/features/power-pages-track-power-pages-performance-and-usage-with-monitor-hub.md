@@ -28,16 +28,45 @@ sources:
   - title: "Manage website security from the Power Platform admin center"
     url: "https://learn.microsoft.com/power-pages/admin/admin-center-security"
     kind: "learn"
+  - title: "Site traffic analytics (Power Platform admin center)"
+    url: "https://learn.microsoft.com/power-pages/admin/admin-center-analytics"
+    kind: "learn"
+  - title: "Diagnostic logs for a site (Power Platform admin center)"
+    url: "https://learn.microsoft.com/power-pages/admin/view-portal-error-log#enable-diagnostic-logging"
+    kind: "learn"
 videos: []
 related: ["managed-environments"]
+controls:
+  - governs: "Site traffic analytics"
+    scope: "tenant"
+    ui:
+      surface: "Power Platform admin center"
+      path: "Manage > Products > Power Pages > Analytics (preview)"
+      docs: "https://learn.microsoft.com/power-pages/admin/admin-center-analytics"
+    api: null
+    note: "Dynamics 365 admin, Power Platform admin, or System Administrator for their environments. Public sites only."
+  - governs: "Diagnostic logs for a site"
+    scope: "site"
+    ui:
+      surface: "Power Platform admin center"
+      path: "Resources > Power Pages sites > site > Site Actions > Enable diagnostics logs"
+      docs: "https://learn.microsoft.com/power-pages/admin/view-portal-error-log#enable-diagnostic-logging"
+    api: null
+  - governs: "Enabling or scoping Power Pages metrics in the monitor hub"
+    scope: "tenant"
+    ui: null
+    api: null
+    note: "Not yet on Learn."
 confidence: "low"
 created: "2026-11-14"
-updated: "2026-11-14"
+updated: "2026-11-16"
 roadmapModified: "2026-10-27T23:05:02"
 changes:
   - date: "2026-11-14"
     note: "New briefing from roadmap item 577859; roadmap text only."
-version: 1
+  - date: "2026-11-16"
+    note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
+version: 2
 ---
 
 ## What's changing
@@ -90,9 +119,20 @@ Site owners, makers and Power Platform administrators. Roadmap cloud: Worldwide 
 - [ ] Set a regular review of error rate and page load time.
 - [ ] Feed findings into site backlog and capacity planning.
 
-## Admin controls
+## Governance controls
 
-The monitor hub is in the Power Platform admin center. Controls for enabling or scoping Power Pages metrics are not yet published. Existing site-level controls are under Manage > Power Pages.
+<p class="controls__lead">Where each control lives. The left column says what the setting decides and how far it reaches; the middle gives the admin centre and the exact path; the right gives the script, API or command that does the same. <em>Not yet documented</em> means Microsoft has not published a control for that surface, so there is nothing to configure yet.</p>
+
+<table class="controls">
+<thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
+<tbody>
+<tr><td data-label="Control"><strong>Site traffic analytics</strong><br><small>Tenant</small><br><small class="controls__note">Dynamics 365 admin, Power Platform admin, or System Administrator for their environments. Public sites only.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Products › Power Pages › Analytics (preview) <a href="https://learn.microsoft.com/power-pages/admin/admin-center-analytics" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Diagnostic logs for a site</strong><br><small>Site</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Resources › Power Pages sites › site › Site Actions › Enable diagnostics logs <a href="https://learn.microsoft.com/power-pages/admin/view-portal-error-log#enable-diagnostic-logging" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Enabling or scoping Power Pages metrics in the monitor hub</strong><br><small>Tenant</small><br><small class="controls__note">Not yet on Learn.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+</tbody>
+</table>
+
+The monitor hub is the [Monitor area](https://learn.microsoft.com/power-platform/admin/monitoring/monitoring-overview) of the Power Platform admin center, which aggregates runtime logs into health metrics for admins and makers; it is a reporting surface, so the governance question is who holds the admin roles that can open it. Traffic analytics exclude private sites. Capacity and licensing views sit under [capacity management](https://learn.microsoft.com/power-pages/admin/capacity-management).
 
 ## Open questions
 

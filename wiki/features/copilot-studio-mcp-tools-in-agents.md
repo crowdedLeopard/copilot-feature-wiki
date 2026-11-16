@@ -37,16 +37,79 @@ sources:
   - title: "Key concepts: Copilot Studio security and governance"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/security-and-governance"
     kind: "learn"
+  - title: "Which MCP servers users and agents may reach in Microsoft 365 Copilot (Microsoft 365 admin center)"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/manage-plugins-skills-mcp-servers"
+    kind: "learn"
+  - title: "Which connectors, including MCP connectors, agents may use in an environment (PowerShell)"
+    url: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest"
+    kind: "learn"
+  - title: "Allowed endpoints for HTTP and custom connectors (Power Platform admin center)"
+    url: "https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering"
+    kind: "learn"
+  - title: "Allowed endpoints for HTTP and custom connectors (PowerShell)"
+    url: "https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering#powershell-support-for-endpoint-filtering"
+    kind: "learn"
+  - title: "Dataverse MCP server availability (Power Platform admin center)"
+    url: "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-disable"
+    kind: "learn"
+  - title: "Which MCP servers and tools an agent connects to (Copilot Studio (maker))"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent#view-and-make-changes-to-your-tool-configuration"
+    kind: "learn"
 videos: []
 related: ["m365-copilot-federated-connectors-write-update-delete","copilot-studio-require-human-approval-for-tool-calls","copilot-studio-block-maker-provided-credentials","data-policies"]
+controls:
+  - governs: "Which MCP servers users and agents may reach in Microsoft 365 Copilot"
+    scope: "tenant"
+    ui:
+      surface: "Microsoft 365 admin center"
+      path: "Agents > Tools > Registry > tool > Block"
+      docs: "https://learn.microsoft.com/microsoft-365/copilot/manage-plugins-skills-mcp-servers"
+    api: null
+  - governs: "Which connectors, including MCP connectors, agents may use in an environment"
+    scope: "environment"
+    ui:
+      surface: "Power Platform admin center"
+      path: "Security > Data and privacy > Data policy > New Policy"
+      docs: "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention"
+    api:
+      kind: "powershell"
+      call: "New-DlpPolicy (Microsoft.PowerApps.Administration.PowerShell)"
+      docs: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest"
+  - governs: "Allowed endpoints for HTTP and custom connectors"
+    scope: "environment"
+    ui:
+      surface: "Power Platform admin center"
+      path: "Data policy > Prebuilt Connectors > Configure connector > Connector endpoints"
+      docs: "https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering"
+    api:
+      kind: "powershell"
+      call: "New-PowerAppDlpPolicyConnectorConfigurations / Set-PowerAppDlpPolicyConnectorConfigurations"
+      docs: "https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering#powershell-support-for-endpoint-filtering"
+  - governs: "Dataverse MCP server availability"
+    scope: "environment"
+    ui:
+      surface: "Power Platform admin center"
+      path: "Manage > Environments > environment > Settings > Product > Features > Dataverse Model Context Protocol"
+      docs: "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-disable"
+    api: null
+  - governs: "Which MCP servers and tools an agent connects to"
+    scope: "agent"
+    ui:
+      surface: "Copilot Studio (maker)"
+      path: "Tools > Add a tool > Model Context Protocol"
+      docs: "https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent#view-and-make-changes-to-your-tool-configuration"
+    api: null
+    note: "Maker-side. The tool's Tools and Resources sections list what the server exposes."
 confidence: "high"
 created: "2026-11-13"
-updated: "2026-11-13"
+updated: "2026-11-16"
 roadmapModified: "2026-11-05T23:59:28"
 changes:
   - date: "2026-11-13"
     note: "Initial briefing"
-version: 1
+  - date: "2026-11-16"
+    note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
+version: 2
 ---
 
 ## What's changing
@@ -112,13 +175,22 @@ The good news is that the control surface already exists. Because MCP rides on c
 - Audit tool call activity in Purview and watch for servers whose tool lists change.
 - Track Copilot Credit consumption by agent; investigate agents whose tool usage rises without a change in user volume.
 
-## Admin controls
+## Governance controls
 
-- Power Platform admin center > **Policies** > **Data policies**: classify or block the connectors that expose MCP servers (blocking a connector blocks its MCP tools).
-- Power Platform admin center > **Policies** > **Connector endpoint filtering**: allow or deny specific hosts for HTTP and custom connectors.
-- Power Platform admin center > environment > **Settings** > **Features** > **Control maker credential options**: force end-user credentials for tools.
-- Copilot Studio > agent > **Tools** > **Add a tool** > **Model Context Protocol**: maker-side list of connected servers and their tools.
-- Microsoft 365 admin center > **Agents** > **Settings** > **Agent and plugin access**: governs MCP-based federated connectors in Copilot Chat.
+<p class="controls__lead">Where each control lives. The left column says what the setting decides and how far it reaches; the middle gives the admin centre and the exact path; the right gives the script, API or command that does the same. <em>Not yet documented</em> means Microsoft has not published a control for that surface, so there is nothing to configure yet.</p>
+
+<table class="controls">
+<thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
+<tbody>
+<tr><td data-label="Control"><strong>Which MCP servers users and agents may reach in Microsoft 365 Copilot</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Registry › tool › Block <a href="https://learn.microsoft.com/microsoft-365/copilot/manage-plugins-skills-mcp-servers" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which connectors, including MCP connectors, agents may use in an environment</strong><br><small>Environment</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Data and privacy › Data policy › New Policy <a href="https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpPolicy (Microsoft.PowerApps.Administration.PowerShell)</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Allowed endpoints for HTTP and custom connectors</strong><br><small>Environment</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Data policy › Prebuilt Connectors › Configure connector › Connector endpoints <a href="https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-PowerAppDlpPolicyConnectorConfigurations / Set-PowerAppDlpPolicyConnectorConfigurations</code> <a href="https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering#powershell-support-for-endpoint-filtering" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Dataverse MCP server availability</strong><br><small>Environment</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › Dataverse Model Context Protocol <a href="https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-disable" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which MCP servers and tools an agent connects to</strong><br><small>Agent</small><br><small class="controls__note">Maker-side. The tool's Tools and Resources sections list what the server exposes.</small></td><td data-label="Admin UI"><strong>Copilot Studio (maker)</strong><br>Tools › Add a tool › Model Context Protocol <a href="https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent#view-and-make-changes-to-your-tool-configuration" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+</tbody>
+</table>
+
+Blocking a connector in a data policy removes its MCP tools, which is the broadest enforcement available. Managed Environments can also block MCP servers through [advanced connector policies](https://learn.microsoft.com/power-platform/admin/advanced-connector-policies). Credential options for tools follow the [maker credential setting](/features/copilot-studio-block-maker-provided-credentials/). The Microsoft 365 admin center registry governs what Copilot Chat users reach; it does not reach into Copilot Studio agents published to other channels.
 
 ## Open questions
 

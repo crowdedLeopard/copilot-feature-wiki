@@ -28,16 +28,50 @@ sources:
   - title: "Run evaluations and view results"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-results"
     kind: "learn"
+  - title: "Running evaluations and comparing runs (Copilot Studio (maker))"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-results#compare-test-results"
+    kind: "learn"
+  - title: "Whether evaluations with user authentication can run (Microsoft Copilot Studio connector) (Power Platform admin center)"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention"
+    kind: "learn"
+  - title: "Whether evaluations with user authentication can run (Microsoft Copilot Studio connector) (PowerShell)"
+    url: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest"
+    kind: "learn"
 videos: []
 related: ["power-platform-maker-guidelines-copilot-studio","copilot-studio-require-human-approval-for-tool-calls","copilot-credits"]
+controls:
+  - governs: "Running evaluations and comparing runs"
+    scope: "agent"
+    ui:
+      surface: "Copilot Studio (maker)"
+      path: "agent > Evaluation > Evaluate / Compare with"
+      docs: "https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-results#compare-test-results"
+    api: null
+    note: "Maker-side. Only the maker who started a run can see the agent's responses and explanations."
+  - governs: "Whether evaluations with user authentication can run (Microsoft Copilot Studio connector)"
+    scope: "environment"
+    ui:
+      surface: "Power Platform admin center"
+      path: "Security > Data and privacy > Data policy > New Policy"
+      docs: "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention"
+    api:
+      kind: "powershell"
+      call: "New-DlpPolicy (Microsoft.PowerApps.Administration.PowerShell)"
+      docs: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest"
+  - governs: "Admin switch for multi-grader comparison"
+    scope: "tenant"
+    ui: null
+    api: null
 confidence: "low"
 created: "2026-11-15"
-updated: "2026-11-15"
+updated: "2026-11-16"
 roadmapModified: "2026-10-20T23:00:34"
 changes:
   - date: "2026-11-15"
     note: "New briefing: multi-grader comparison for evaluations, in development; roadmap text only."
-version: 1
+  - date: "2026-11-16"
+    note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
+version: 2
 ---
 
 ## What's changing
@@ -87,9 +121,20 @@ Makers evaluating agents, in the Worldwide cloud, on the web. The exact product 
 - [ ] Review disagreements between graders and refine rubrics.
 - [ ] Track credit use across evaluation runs.
 
-## Admin controls
+## Governance controls
 
-None published. No admin portal setting, policy or PowerShell control is described in the roadmap item. Evaluation access follows Copilot Studio maker permissions.
+<p class="controls__lead">Where each control lives. The left column says what the setting decides and how far it reaches; the middle gives the admin centre and the exact path; the right gives the script, API or command that does the same. <em>Not yet documented</em> means Microsoft has not published a control for that surface, so there is nothing to configure yet.</p>
+
+<table class="controls">
+<thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
+<tbody>
+<tr><td data-label="Control"><strong>Running evaluations and comparing runs</strong><br><small>Agent</small><br><small class="controls__note">Maker-side. Only the maker who started a run can see the agent's responses and explanations.</small></td><td data-label="Admin UI"><strong>Copilot Studio (maker)</strong><br>agent › Evaluation › Evaluate / Compare with <a href="https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-results#compare-test-results" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether evaluations with user authentication can run (Microsoft Copilot Studio connector)</strong><br><small>Environment</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Data and privacy › Data policy › New Policy <a href="https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpPolicy (Microsoft.PowerApps.Administration.PowerShell)</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Admin switch for multi-grader comparison</strong><br><small>Tenant</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+</tbody>
+</table>
+
+Evaluation is a maker feature with no admin-side toggle; the one lever is the data policy, because [running a test set](https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-results#run-a-test-with-a-test-set) with user authentication depends on the Microsoft Copilot Studio connector. Evaluations run as the signed-in maker and consume Copilot Credits. The available graders are listed under [evaluation methods](https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-overview).
 
 ## Open questions
 

@@ -31,16 +31,50 @@ sources:
   - title: "Microsoft 365 Roadmap item 576765"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=576765"
     kind: "roadmap"
+  - title: "Process mining capacity allocated to an environment (Power Platform admin center)"
+    url: "https://learn.microsoft.com/power-platform/admin/capacity-add-on#allocate-or-change-capacity-in-an-environment"
+    kind: "learn"
+  - title: "Process mining capacity allocated to an environment (Power Platform API)"
+    url: "https://learn.microsoft.com/rest/api/power-platform/licensing/currency-allocation"
+    kind: "learn"
+  - title: "Who may allocate add-on capacity (Power Platform admin center)"
+    url: "https://learn.microsoft.com/power-platform/admin/capacity-add-on#control-who-can-allocate-add-on-capacity"
+    kind: "learn"
 videos: []
 related: ["power-automate-ai-assisted-ui-automation-repair","managed-environments"]
+controls:
+  - governs: "Process mining capacity allocated to an environment"
+    scope: "environment"
+    ui:
+      surface: "Power Platform admin center"
+      path: "Licensing > Capacity add-ons > Add-ons > Manage"
+      docs: "https://learn.microsoft.com/power-platform/admin/capacity-add-on#allocate-or-change-capacity-in-an-environment"
+    api:
+      kind: "power-platform-api"
+      call: "Currency allocation operations (Power Platform licensing API)"
+      docs: "https://learn.microsoft.com/rest/api/power-platform/licensing/currency-allocation"
+  - governs: "Who may allocate add-on capacity"
+    scope: "tenant"
+    ui:
+      surface: "Power Platform admin center"
+      path: "Settings > Power Platform settings > Tenant settings > Add-on capacity assignments > Only specific admins"
+      docs: "https://learn.microsoft.com/power-platform/admin/capacity-add-on#control-who-can-allocate-add-on-capacity"
+    api: null
+  - governs: "Switch for Process Intelligence Studio or object-centric models"
+    scope: "environment"
+    ui: null
+    api: null
+    note: "Access follows Power Automate environment roles and the storage location of the event log."
 confidence: "medium"
 created: "2026-11-15"
-updated: "2026-11-15"
+updated: "2026-11-16"
 roadmapModified: "2026-10-16T19:08:49"
 changes:
   - date: "2026-11-15"
     note: "New briefing: Process Intelligence Studio for object-centric process mining, in development."
-version: 1
+  - date: "2026-11-16"
+    note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
+version: 2
 ---
 
 ## What's changing
@@ -90,9 +124,20 @@ Power Automate Process Mining users in the Worldwide cloud, on the web. Applies 
 - [ ] Review who can see sensitive process data.
 - [ ] Retire outdated saved workspaces.
 
-## Admin controls
+## Governance controls
 
-No tenant switch is described. Access follows Power Automate environment roles and the storage location of the event log (Azure Data Lake Gen2 or OneLake). Optional export of the OCPM semantic model to a Fabric workspace is available in preview.
+<p class="controls__lead">Where each control lives. The left column says what the setting decides and how far it reaches; the middle gives the admin centre and the exact path; the right gives the script, API or command that does the same. <em>Not yet documented</em> means Microsoft has not published a control for that surface, so there is nothing to configure yet.</p>
+
+<table class="controls">
+<thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
+<tbody>
+<tr><td data-label="Control"><strong>Process mining capacity allocated to an environment</strong><br><small>Environment</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Capacity add-ons › Add-ons › Manage <a href="https://learn.microsoft.com/power-platform/admin/capacity-add-on#allocate-or-change-capacity-in-an-environment" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform API</strong><br><code>Currency allocation operations (Power Platform licensing API)</code> <a href="https://learn.microsoft.com/rest/api/power-platform/licensing/currency-allocation" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Who may allocate add-on capacity</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Settings › Power Platform settings › Tenant settings › Add-on capacity assignments › Only specific admins <a href="https://learn.microsoft.com/power-platform/admin/capacity-add-on#control-who-can-allocate-add-on-capacity" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Switch for Process Intelligence Studio or object-centric models</strong><br><small>Environment</small><br><small class="controls__note">Access follows Power Automate environment roles and the storage location of the event log.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+</tbody>
+</table>
+
+Governance here is capacity and roles rather than a feature flag. Capacity comes from Power Automate Premium licences and the Process Mining add-on, pooled tenant-wide and allocated per environment, as set out in the [licensing section](https://learn.microsoft.com/power-automate/process-advisor-overview#licensing). Roles for processes are described in [process mining security](https://learn.microsoft.com/power-automate/process-advisor-security). The programmability tutorial for [allocating add-ons](https://learn.microsoft.com/power-platform/admin/programmability-tutorial-allocate-capacity-addons) shows the API in a flow.
 
 ## Open questions
 

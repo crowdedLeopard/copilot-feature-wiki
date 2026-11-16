@@ -34,16 +34,76 @@ sources:
   - title: "Manage Dataverse auditing"
     url: "https://learn.microsoft.com/power-platform/admin/manage-dataverse-auditing"
     kind: "learn"
+  - title: "Creating an agent user in an environment and assigning security roles (Power Platform admin center)"
+    url: "https://learn.microsoft.com/power-platform/admin/create-users#create-an-agent-user-preview"
+    kind: "learn"
+  - title: "Agent identity lifecycle in Microsoft Entra (Microsoft Entra admin center)"
+    url: "https://learn.microsoft.com/entra/agent-id/create-delete-agent-identities#use-the-microsoft-entra-admin-center"
+    kind: "learn"
+  - title: "Agent identity lifecycle in Microsoft Entra (Microsoft Graph)"
+    url: "https://learn.microsoft.com/graph/api/agentidentity-post?view=graph-rest-1.0"
+    kind: "learn"
+  - title: "Blocking or restricting agent sign-ins (Microsoft Entra admin center)"
+    url: "https://learn.microsoft.com/entra/agent-id/disable-agent-identities#create-conditional-access-policies-to-disable-agent-activities"
+    kind: "learn"
+  - title: "Dataverse auditing of what the agent user does (Power Platform admin center)"
+    url: "https://learn.microsoft.com/power-platform/admin/manage-dataverse-auditing#configure-auditing-for-an-environment"
+    kind: "learn"
+  - title: "Dataverse auditing of what the agent user does (REST API)"
+    url: "https://learn.microsoft.com/power-apps/developer/data-platform/auditing/configure"
+    kind: "learn"
 videos: []
 related: ["agent-365-control-plane-for-agents","copilot-studio-block-maker-provided-credentials","copilot-studio-share-autonomous-agents-run-only","agent-identity"]
+controls:
+  - governs: "Creating an agent user in an environment and assigning security roles"
+    scope: "environment"
+    ui:
+      surface: "Power Platform admin center"
+      path: "Manage > Environments > environment > Settings > Users + permissions > Agents > + Add agent"
+      docs: "https://learn.microsoft.com/power-platform/admin/create-users#create-an-agent-user-preview"
+    api: null
+    note: "Preview."
+  - governs: "Agent identity lifecycle in Microsoft Entra"
+    scope: "tenant"
+    ui:
+      surface: "Microsoft Entra admin center"
+      path: "Entra ID > Agents > Agent identities > New agent identity (Preview)"
+      docs: "https://learn.microsoft.com/entra/agent-id/create-delete-agent-identities#use-the-microsoft-entra-admin-center"
+    api:
+      kind: "graph"
+      call: "Create agentIdentity (POST, Microsoft Graph v1.0)"
+      docs: "https://learn.microsoft.com/graph/api/agentidentity-post?view=graph-rest-1.0"
+  - governs: "Blocking or restricting agent sign-ins"
+    scope: "tenant"
+    ui:
+      surface: "Microsoft Entra admin center"
+      path: "Entra ID > Conditional Access > Policies > New policy > Users, agents or workload identities > Agents"
+      docs: "https://learn.microsoft.com/entra/agent-id/disable-agent-identities#create-conditional-access-policies-to-disable-agent-activities"
+    api:
+      kind: "graph"
+      call: "POST /identity/conditionalAccess/policies with agent identities as the policy's users condition"
+      docs: "https://learn.microsoft.com/entra/agent-id/disable-agent-identities#create-conditional-access-policies-to-disable-agent-activities"
+    note: "Needs Microsoft Entra ID P1."
+  - governs: "Dataverse auditing of what the agent user does"
+    scope: "environment"
+    ui:
+      surface: "Power Platform admin center"
+      path: "Manage > Environments > environment > Settings > Audit and logs > Audit settings"
+      docs: "https://learn.microsoft.com/power-platform/admin/manage-dataverse-auditing#configure-auditing-for-an-environment"
+    api:
+      kind: "rest"
+      call: "Update IsAuditEnabled on the organization table through the Dataverse Web API"
+      docs: "https://learn.microsoft.com/power-apps/developer/data-platform/auditing/configure"
 confidence: "medium"
 created: "2026-11-13"
-updated: "2026-11-13"
+updated: "2026-11-16"
 roadmapModified: "2026-10-16T19:09:45"
 changes:
   - date: "2026-11-13"
     note: "Initial briefing"
-version: 1
+  - date: "2026-11-16"
+    note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
+version: 2
 ---
 
 ## What's changing
@@ -103,12 +163,21 @@ Agent users fix both. They also plug Dataverse into the wider agent identity mod
 - Monitor Entra sign-in logs for agent identities and alert on unexpected locations or volumes.
 - Migrate legacy application-user integrations that are really agents.
 
-## Admin controls
+## Governance controls
 
-- Power Platform admin center > **Manage** > **Environments** > environment > **Settings** > **Users + permissions** > **Users** > add agent user; assign security roles.
-- Power Platform admin center > **Security** > **Compliance** > **Auditing**: enable auditing and set event log retention; table and column auditing in the maker portal.
-- Microsoft Entra admin center > **Agent ID**: identity lifecycle, Conditional Access, sign-in logs.
-- Microsoft 365 admin center > **Agents**: registry view where Agent 365 is in use.
+<p class="controls__lead">Where each control lives. The left column says what the setting decides and how far it reaches; the middle gives the admin centre and the exact path; the right gives the script, API or command that does the same. <em>Not yet documented</em> means Microsoft has not published a control for that surface, so there is nothing to configure yet.</p>
+
+<table class="controls">
+<thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
+<tbody>
+<tr><td data-label="Control"><strong>Creating an agent user in an environment and assigning security roles</strong><br><small>Environment</small><br><small class="controls__note">Preview.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Users + permissions › Agents › + Add agent <a href="https://learn.microsoft.com/power-platform/admin/create-users#create-an-agent-user-preview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Agent identity lifecycle in Microsoft Entra</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Entra ID › Agents › Agent identities › New agent identity (Preview) <a href="https://learn.microsoft.com/entra/agent-id/create-delete-agent-identities#use-the-microsoft-entra-admin-center" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>Create agentIdentity (POST, Microsoft Graph v1.0)</code> <a href="https://learn.microsoft.com/graph/api/agentidentity-post?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Blocking or restricting agent sign-ins</strong><br><small>Tenant</small><br><small class="controls__note">Needs Microsoft Entra ID P1.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Entra ID › Conditional Access › Policies › New policy › Users, agents or workload identities › Agents <a href="https://learn.microsoft.com/entra/agent-id/disable-agent-identities#create-conditional-access-policies-to-disable-agent-activities" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /identity/conditionalAccess/policies with agent identities as the policy's users condition</code> <a href="https://learn.microsoft.com/entra/agent-id/disable-agent-identities#create-conditional-access-policies-to-disable-agent-activities" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Dataverse auditing of what the agent user does</strong><br><small>Environment</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Audit and logs › Audit settings <a href="https://learn.microsoft.com/power-platform/admin/manage-dataverse-auditing#configure-auditing-for-an-environment" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>Update IsAuditEnabled on the organization table through the Dataverse Web API</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/auditing/configure" rel="noopener" class="controls__docs">Learn</a></td></tr>
+</tbody>
+</table>
+
+The Dataverse side (creating the agent user, granting roles) is portal-only; the Entra side has full Graph coverage, including [agent blueprints](https://learn.microsoft.com/entra/agent-id/manage-agent-blueprint) for identities created at scale. Disabling an identity, a blueprint or all agents by Conditional Access is described in [Manage agent identities](https://learn.microsoft.com/entra/agent-id/manage-agent-identities-admin#disable-or-restrict-agent-identities). Table- and column-level auditing is configured by makers once environment auditing is on. The [agent users overview](https://learn.microsoft.com/power-platform/admin/agent-users) covers licensing and limits.
 
 ## Open questions
 

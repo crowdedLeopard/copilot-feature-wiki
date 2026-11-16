@@ -40,16 +40,51 @@ sources:
   - title: "What's new in Microsoft 365 Backup"
     url: "https://learn.microsoft.com/microsoft-365/backup/backup-whats-new"
     kind: "learn"
+  - title: "Backup policies per workload and restore points (Microsoft 365 admin center)"
+    url: "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies#create-backup-policies"
+    kind: "learn"
+  - title: "Backup policies per workload and restore points (Microsoft Graph)"
+    url: "https://learn.microsoft.com/graph/api/backuprestoreroot-enable?view=graph-rest-1.0"
+    kind: "learn"
+  - title: "Pay-as-you-go billing policy and budget alerts for backup (Microsoft 365 admin center)"
+    url: "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node"
+    kind: "learn"
 videos: []
 related: ["entra-id-backup-and-recovery-30-day","purview-retention-last-accessed-sharepoint-onedrive"]
+controls:
+  - governs: "Backup policies per workload and restore points"
+    scope: "tenant"
+    ui:
+      surface: "Microsoft 365 admin center"
+      path: "Settings > Microsoft 365 Backup"
+      docs: "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies#create-backup-policies"
+    api:
+      kind: "graph"
+      call: "POST /solutions/backupRestore/enable"
+      docs: "https://learn.microsoft.com/graph/api/backuprestoreroot-enable?view=graph-rest-1.0"
+    note: "The Graph call is for backup controller apps (BackupRestore-Control.ReadWrite.All)."
+  - governs: "Pay-as-you-go billing policy and budget alerts for backup"
+    scope: "tenant"
+    ui:
+      surface: "Microsoft 365 admin center"
+      path: "Billing > Pay-as-you-go > Billing policies > Add a billing policy"
+      docs: "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node"
+    api: null
+  - governs: "Teams channel workload in backup policies"
+    scope: "tenant"
+    ui: null
+    api: null
+    note: "Not in the setup guide at review time; expected to appear with the release."
 confidence: "medium"
 created: "2026-11-13"
-updated: "2026-11-13"
+updated: "2026-11-16"
 roadmapModified: "2026-09-08T22:57:21"
 changes:
   - date: "2026-11-13"
     note: "Initial briefing"
-version: 1
+  - date: "2026-11-16"
+    note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
+version: 2
 ---
 
 ## What's changing
@@ -108,12 +143,20 @@ Because Microsoft 365 Backup is consumption billed, the service owner for Teams 
 - Review protected size and cost monthly; remove teams that have been archived or deleted from policies.
 - Re-test restore procedures twice a year and after any Teams structural change.
 
-## Admin controls
+## Governance controls
 
-- Microsoft 365 admin center > **Settings** > **Microsoft 365 Backup**: policies per workload, restore points, restores (Teams workload to appear with the release).
-- Microsoft 365 admin center > **Billing** > **Pay-as-you-go**: billing policies, budget alerts, departmental billing.
-- Microsoft 365 admin center > **Settings** > **Microsoft 365 Backup** > notifications: daily digests to up to 20 recipients.
-- Azure portal > **Cost Management**: billed amounts for the Microsoft 365 Backup meter.
+<p class="controls__lead">Where each control lives. The left column says what the setting decides and how far it reaches; the middle gives the admin centre and the exact path; the right gives the script, API or command that does the same. <em>Not yet documented</em> means Microsoft has not published a control for that surface, so there is nothing to configure yet.</p>
+
+<table class="controls">
+<thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
+<tbody>
+<tr><td data-label="Control"><strong>Backup policies per workload and restore points</strong><br><small>Tenant</small><br><small class="controls__note">The Graph call is for backup controller apps (BackupRestore-Control.ReadWrite.All).</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Microsoft 365 Backup <a href="https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies#create-backup-policies" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /solutions/backupRestore/enable</code> <a href="https://learn.microsoft.com/graph/api/backuprestoreroot-enable?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Pay-as-you-go billing policy and budget alerts for backup</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Billing › Pay-as-you-go › Billing policies › Add a billing policy <a href="https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Teams channel workload in backup policies</strong><br><small>Tenant</small><br><small class="controls__note">Not in the setup guide at review time; expected to appear with the release.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+</tbody>
+</table>
+
+Setup is described in [Set up Microsoft 365 Backup](https://learn.microsoft.com/microsoft-365/backup/backup-setup#2-create-backup-policies-to-protect-your-data); a pay-as-you-go billing policy must exist before a backup policy can be created. The Graph Backup Storage API is designed for partner controller apps rather than for tenant admins scripting their own policies. Notification digests and departmental billing are set in the same Backup pages. Billed amounts appear in Azure Cost Management under the Microsoft 365 Backup meter.
 
 ## Open questions
 

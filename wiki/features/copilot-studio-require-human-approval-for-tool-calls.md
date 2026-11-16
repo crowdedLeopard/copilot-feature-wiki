@@ -34,16 +34,50 @@ sources:
   - title: "Agent Framework: tool approval (human-in-the-loop)"
     url: "https://learn.microsoft.com/agent-framework/agents/tools/tool-approval"
     kind: "learn"
+  - title: "Whether the end user is asked before a tool runs (Copilot Studio (maker))"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent#view-and-make-changes-to-your-tool-configuration"
+    kind: "learn"
+  - title: "Which tools can run at all (connector data policies) (Power Platform admin center)"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention"
+    kind: "learn"
+  - title: "Which tools can run at all (connector data policies) (PowerShell)"
+    url: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest"
+    kind: "learn"
 videos: []
 related: ["copilot-studio-mcp-tools-in-agents","copilot-studio-share-autonomous-agents-run-only","m365-copilot-federated-connectors-write-update-delete"]
+controls:
+  - governs: "Whether the end user is asked before a tool runs"
+    scope: "agent"
+    ui:
+      surface: "Copilot Studio (maker)"
+      path: "Tools > tool > Details > Additional details > Ask the end user before running"
+      docs: "https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent#view-and-make-changes-to-your-tool-configuration"
+    api: null
+    note: "Maker-side, per tool. Set to No by default."
+  - governs: "Tenant or environment enforcement of approval for tool calls"
+    scope: "tenant"
+    ui: null
+    api: null
+  - governs: "Which tools can run at all (connector data policies)"
+    scope: "environment"
+    ui:
+      surface: "Power Platform admin center"
+      path: "Security > Data and privacy > Data policy > New Policy"
+      docs: "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention"
+    api:
+      kind: "powershell"
+      call: "New-DlpPolicy (Microsoft.PowerApps.Administration.PowerShell)"
+      docs: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest"
 confidence: "medium"
 created: "2026-11-13"
-updated: "2026-11-13"
+updated: "2026-11-16"
 roadmapModified: "2026-09-01T22:59:38"
 changes:
   - date: "2026-11-13"
     note: "Initial briefing"
-version: 1
+  - date: "2026-11-16"
+    note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
+version: 2
 ---
 
 ## What's changing
@@ -105,11 +139,20 @@ For governance teams the feature changes the review conversation from "does this
 - Review Purview audit events for gated tools to confirm approvals are being recorded with the approver's identity.
 - Watch Message center for any admin-level enforcement option (mandatory approval for tool classes).
 
-## Admin controls
+## Governance controls
 
-- Copilot Studio > agent > **Tools** > select tool > approval toggle (maker-side, per tool).
-- No tenant-level enforcement published. Complementary admin controls: data policies to block tools outright; connector endpoint filtering; credential controls so the tool runs as the approving user.
-- Microsoft Purview audit for agent and tool activity.
+<p class="controls__lead">Where each control lives. The left column says what the setting decides and how far it reaches; the middle gives the admin centre and the exact path; the right gives the script, API or command that does the same. <em>Not yet documented</em> means Microsoft has not published a control for that surface, so there is nothing to configure yet.</p>
+
+<table class="controls">
+<thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
+<tbody>
+<tr><td data-label="Control"><strong>Whether the end user is asked before a tool runs</strong><br><small>Agent</small><br><small class="controls__note">Maker-side, per tool. Set to No by default.</small></td><td data-label="Admin UI"><strong>Copilot Studio (maker)</strong><br>Tools › tool › Details › Additional details › Ask the end user before running <a href="https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent#view-and-make-changes-to-your-tool-configuration" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Tenant or environment enforcement of approval for tool calls</strong><br><small>Tenant</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which tools can run at all (connector data policies)</strong><br><small>Environment</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Data and privacy › Data policy › New Policy <a href="https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpPolicy (Microsoft.PowerApps.Administration.PowerShell)</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest" rel="noopener" class="controls__docs">Learn</a></td></tr>
+</tbody>
+</table>
+
+Approval is a maker decision and there is no documented way to require it centrally. Admins who need a hard stop should block the connector in a data policy or restrict endpoints, and use the [credential option setting](/features/copilot-studio-block-maker-provided-credentials/) so that a tool runs as the approving user rather than the maker. Microsoft's [AI approvals FAQ](https://learn.microsoft.com/microsoft-copilot-studio/faqs-ai-approvals) describes the responsible-AI design but names no admin switch.
 
 ## Open questions
 

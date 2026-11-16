@@ -37,16 +37,62 @@ sources:
   - title: "Pay-as-you-go services available in Microsoft 365"
     url: "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-services"
     kind: "learn"
+  - title: "Usage-based billing, default, identity-based and resource-based spending policies, alerts (Microsoft Graph)"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview"
+    kind: "learn"
+  - title: "Billing policies for other pay-as-you-go services (Microsoft 365 admin center)"
+    url: "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node"
+    kind: "learn"
+  - title: "Credits consumption reporting (Microsoft 365 admin center)"
+    url: "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits"
+    kind: "learn"
+  - title: "Monthly credit limit for an individual agent (Power Platform admin center) (Power Platform admin center)"
+    url: "https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness#set-a-monthly-limit-for-an-agent"
+    kind: "learn"
 videos: []
 related: ["copilot-studio-cost-management-m365-admin-center","m365-admin-center-copilot-credits-usage-report","m365-copilot-chat-usage-based-billing-models-model-selector","copilot-credits"]
+controls:
+  - governs: "Usage-based billing, default, identity-based and resource-based spending policies, alerts"
+    scope: "agent"
+    ui:
+      surface: "Microsoft 365 admin center"
+      path: "Copilot > Cost Management > Configuration"
+      docs: "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup"
+    api:
+      kind: "graph"
+      call: "/beta/copilot/costManagement (Cost Management API)"
+      docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview"
+  - governs: "Billing policies for other pay-as-you-go services"
+    scope: "tenant"
+    ui:
+      surface: "Microsoft 365 admin center"
+      path: "Billing > Pay-as-you-go > Billing policies > Add a billing policy"
+      docs: "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node"
+    api: null
+  - governs: "Credits consumption reporting"
+    scope: "tenant"
+    ui:
+      surface: "Microsoft 365 admin center"
+      path: "Reports > Usage > Microsoft Copilot > Credits"
+      docs: "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits"
+    api: null
+  - governs: "Monthly credit limit for an individual agent (Power Platform admin center)"
+    scope: "agent"
+    ui:
+      surface: "Power Platform admin center"
+      path: "Licensing > Copilot Studio > Manage Agents > agent > Set limit"
+      docs: "https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness#set-a-monthly-limit-for-an-agent"
+    api: null
 confidence: "medium"
 created: "2026-11-13"
-updated: "2026-11-13"
+updated: "2026-11-16"
 roadmapModified: "2026-01-22T00:00:09"
 changes:
   - date: "2026-11-13"
     note: "Initial briefing"
-version: 1
+  - date: "2026-11-16"
+    note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
+version: 2
 ---
 
 ## What's changing
@@ -106,12 +152,21 @@ Service owners of SharePoint and intranet content are the unexpected stakeholder
 - Re-run the agent inventory quarterly for new SharePoint agents created by site owners.
 - Reconcile admin center totals with Azure Cost Management for finance.
 
-## Admin controls
+## Governance controls
 
-- Microsoft 365 admin center > **Copilot** > **Cost Management** > **Configuration**: enable usage-based billing, default spending policy, identity-based and resource-based policies, billing methods, alerts, request routing.
-- Microsoft 365 admin center > **Billing** > **Pay-as-you-go**: other pay-as-you-go services and billing policies.
-- Microsoft 365 admin center > **Reports** > **Usage** > **Microsoft Copilot** > **Credits**: Copilot Credits report.
-- Microsoft 365 admin center > **Billing** > **Cost Management** and Azure portal > **Cost Management**: billed amounts.
+<p class="controls__lead">Where each control lives. The left column says what the setting decides and how far it reaches; the middle gives the admin centre and the exact path; the right gives the script, API or command that does the same. <em>Not yet documented</em> means Microsoft has not published a control for that surface, so there is nothing to configure yet.</p>
+
+<table class="controls">
+<thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
+<tbody>
+<tr><td data-label="Control"><strong>Usage-based billing, default, identity-based and resource-based spending policies, alerts</strong><br><small>Agent</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>/beta/copilot/costManagement (Cost Management API)</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Billing policies for other pay-as-you-go services</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Billing › Pay-as-you-go › Billing policies › Add a billing policy <a href="https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Credits consumption reporting</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Reports › Usage › Microsoft Copilot › Credits <a href="https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Monthly credit limit for an individual agent (Power Platform admin center)</strong><br><small>Agent</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Copilot Studio › Manage Agents › agent › Set limit <a href="https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness#set-a-monthly-limit-for-an-agent" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+</tbody>
+</table>
+
+Agent-level policies sit in the same Configuration page as the tenant default; the Cost Management API (beta) is the one programmatic route and covers policies and consumption. Azure Cost Management shows billed amounts but offers no control over Copilot credit policies. The Power Platform admin center limit applies to agents on the Microsoft Copilot harness and is separate from the Microsoft 365 admin center spending policy, so a tenant may need both. See [Manage Copilot Credits](https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits) for the consumption views.
 
 ## Open questions
 

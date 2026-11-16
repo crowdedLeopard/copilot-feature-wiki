@@ -37,16 +37,63 @@ sources:
   - title: "Copilot controls for management: agent lifecycle"
     url: "https://learn.microsoft.com/copilot/implement/copilot-controls-management"
     kind: "learn"
+  - title: "Automated lifecycle rules for agents (Microsoft 365 admin center)"
+    url: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#agent-management-rules"
+    kind: "learn"
+  - title: "Manual block, unblock, uninstall and pin for an agent (Microsoft 365 admin center)"
+    url: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions#block-or-unblock-agents"
+    kind: "learn"
+  - title: "Manual block, unblock, uninstall and pin for an agent (Microsoft Graph)"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
+    kind: "learn"
+  - title: "Who may use agents (Microsoft 365 admin center)"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/agent-essentials/m365-agents-admin-guide#set-agent-policies"
+    kind: "learn"
 videos: []
 related: ["agent-365-control-plane-for-agents","copilot-studio-safe-sharing-credential-oversharing","m365-copilot-federated-connectors-write-update-delete"]
+controls:
+  - governs: "Automated lifecycle rules for agents"
+    scope: "tenant"
+    ui:
+      surface: "Microsoft 365 admin center"
+      path: "Agents > Settings > Agent management rules > Add rule"
+      docs: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#agent-management-rules"
+    api: null
+    note: "Rules include installing Microsoft agents, reassigning ownerless agents, blocking ownerless agents without usage, applying a template and rejecting stale publish requests."
+  - governs: "Manual block, unblock, uninstall and pin for an agent"
+    scope: "agent"
+    ui:
+      surface: "Microsoft 365 admin center"
+      path: "Agents > All agents > agent > Block / Unblock"
+      docs: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions#block-or-unblock-agents"
+    api:
+      kind: "graph"
+      call: "POST /beta/copilot/admin/catalog/packages/{id}/block"
+      docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
+  - governs: "Who may use agents"
+    scope: "tenant"
+    ui:
+      surface: "Microsoft 365 admin center"
+      path: "Copilot > Settings > Data access > Agents"
+      docs: "https://learn.microsoft.com/microsoft-365/copilot/agent-essentials/m365-agents-admin-guide#set-agent-policies"
+    api: null
+  - governs: "Approving or rejecting agent publish requests"
+    scope: "tenant"
+    ui:
+      surface: "Microsoft 365 admin center"
+      path: "Agents > All agents > Requests > Publish / Reject"
+      docs: "https://learn.microsoft.com/microsoft-365/copilot/agent-essentials/m365-agents-admin-guide"
+    api: null
 confidence: "high"
 created: "2026-11-13"
-updated: "2026-11-13"
+updated: "2026-11-16"
 roadmapModified: "2026-05-12T23:00:33"
 changes:
   - date: "2026-11-13"
     note: "Initial briefing"
-version: 1
+  - date: "2026-11-16"
+    note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
+version: 2
 ---
 
 ## What's changing
@@ -105,12 +152,21 @@ Rules turn the lifecycle policy you have written down into behaviour the platfor
 - Review rule outcomes monthly; tune inactivity thresholds.
 - Feed blocked and deleted agent events into the change log and, where relevant, to the maker community.
 
-## Admin controls
+## Governance controls
 
-- Microsoft 365 admin center > **Agents** > **Settings** > **Agent management rules**: define and run rules.
-- Microsoft 365 admin center > **Agents** > **All agents** > agent details pane: Block, Unblock, Uninstall, Pin for users; filters for ownerless and unavailable agents.
-- Microsoft 365 admin center > **Agents** > **Settings** > **Agent and plugin access**, **User access**, **Sharing**, **Security templates**.
-- Power Platform admin center: sharing limits and data policies for Copilot Studio-built agents.
+<p class="controls__lead">Where each control lives. The left column says what the setting decides and how far it reaches; the middle gives the admin centre and the exact path; the right gives the script, API or command that does the same. <em>Not yet documented</em> means Microsoft has not published a control for that surface, so there is nothing to configure yet.</p>
+
+<table class="controls">
+<thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
+<tbody>
+<tr><td data-label="Control"><strong>Automated lifecycle rules for agents</strong><br><small>Tenant</small><br><small class="controls__note">Rules include installing Microsoft agents, reassigning ownerless agents, blocking ownerless agents without usage, applying a template and rejecting stale publish requests.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Settings › Agent management rules › Add rule <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#agent-management-rules" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Manual block, unblock, uninstall and pin for an agent</strong><br><small>Agent</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › agent › Block / Unblock <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions#block-or-unblock-agents" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Who may use agents</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Settings › Data access › Agents <a href="https://learn.microsoft.com/microsoft-365/copilot/agent-essentials/m365-agents-admin-guide#set-agent-policies" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Approving or rejecting agent publish requests</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › Requests › Publish / Reject <a href="https://learn.microsoft.com/microsoft-365/copilot/agent-essentials/m365-agents-admin-guide" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+</tbody>
+</table>
+
+Rules are portal-only; nothing in Graph creates or lists them, so a change record has to be kept by hand or from the audit log. The block endpoint is the one lifecycle action with an API and it needs an Agent 365 licence. Roles are set out in [Agent 365 roles and permissions](https://learn.microsoft.com/microsoft-agent-365/admin/agent-roles-perms). Agents built in Copilot Studio are additionally bound by Power Platform sharing limits and data policies in their home environment.
 
 ## Open questions
 

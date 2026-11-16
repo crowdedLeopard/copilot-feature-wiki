@@ -34,16 +34,47 @@ sources:
   - title: "Enable maker welcome content"
     url: "https://learn.microsoft.com/power-platform/admin/welcome-content"
     kind: "learn"
+  - title: "Maker guidelines as an environment group rule (Power Platform admin center)"
+    url: "https://learn.microsoft.com/power-platform/admin/environment-groups-rules"
+    kind: "learn"
+  - title: "Custom guidance message for blocked items in the agent status pane (Power Platform admin center)"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/authoring-agent-status#custom-guidance-message-preview"
+    kind: "learn"
 videos: []
 related: ["copilot-studio-safe-sharing-credential-oversharing","copilot-studio-block-maker-provided-credentials","managed-environments"]
+controls:
+  - governs: "Maker guidelines message, link and contact"
+    scope: "environment"
+    ui:
+      surface: "Power Platform admin center"
+      path: "Copilot > Settings > Maker guidelines > Environments or Environment groups > Edit setting"
+      docs: "https://learn.microsoft.com/power-platform/admin/maker-guidelines"
+    api: null
+  - governs: "Maker guidelines as an environment group rule"
+    scope: "environment-group"
+    ui:
+      surface: "Power Platform admin center"
+      path: "Manage > Environment groups > group > Rules > Add rules > Maker guidelines > Publish rules"
+      docs: "https://learn.microsoft.com/power-platform/admin/environment-groups-rules"
+    api: null
+  - governs: "Custom guidance message for blocked items in the agent status pane"
+    scope: "environment"
+    ui:
+      surface: "Power Platform admin center"
+      path: "Copilot > Settings > Maker guidance"
+      docs: "https://learn.microsoft.com/microsoft-copilot-studio/authoring-agent-status#custom-guidance-message-preview"
+    api: null
+    note: "Preview."
 confidence: "high"
 created: "2026-11-13"
-updated: "2026-11-13"
+updated: "2026-11-16"
 roadmapModified: "2026-09-25T22:37:50"
 changes:
   - date: "2026-11-13"
     note: "Initial briefing"
-version: 1
+  - date: "2026-11-16"
+    note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
+version: 2
 ---
 
 ## What's changing
@@ -101,12 +132,20 @@ It is a low-risk, low-cost change whose value depends entirely on the quality of
 - Review the contact mailbox monthly; recurring questions indicate a missing approved pattern.
 - Update the message when data policies or approved connector lists change.
 
-## Admin controls
+## Governance controls
 
-- Power Platform admin center > **Copilot** > **Settings** > **Maker guidelines** > **Environments** or **Environment groups** tab > **Edit setting** / **Edit rule**: message, button link, button label, contact email.
-- Power Platform admin center > **Manage** > **Environment groups** > group > **Rules** > **Add rules** > **Maker guidelines** > **Publish rules**.
-- Power Platform admin center > **Copilot** > **Settings** > **Maker guidance**: custom guidance message for blocked items and the agent status View action.
-- Power Platform admin center > environment > **Edit Managed Environment** > **Maker welcome content**: first-run guidance with optional consent logging.
+<p class="controls__lead">Where each control lives. The left column says what the setting decides and how far it reaches; the middle gives the admin centre and the exact path; the right gives the script, API or command that does the same. <em>Not yet documented</em> means Microsoft has not published a control for that surface, so there is nothing to configure yet.</p>
+
+<table class="controls">
+<thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
+<tbody>
+<tr><td data-label="Control"><strong>Maker guidelines message, link and contact</strong><br><small>Environment</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Copilot › Settings › Maker guidelines › Environments or Environment groups › Edit setting <a href="https://learn.microsoft.com/power-platform/admin/maker-guidelines" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Maker guidelines as an environment group rule</strong><br><small>Environment group</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environment groups › group › Rules › Add rules › Maker guidelines › Publish rules <a href="https://learn.microsoft.com/power-platform/admin/environment-groups-rules" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Custom guidance message for blocked items in the agent status pane</strong><br><small>Environment</small><br><small class="controls__note">Preview.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Copilot › Settings › Maker guidance <a href="https://learn.microsoft.com/microsoft-copilot-studio/authoring-agent-status#custom-guidance-message-preview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+</tbody>
+</table>
+
+All three settings are portal-only. Guidelines are advisory text: they tell makers what the organisation expects but enforce nothing, so pair them with the data policies and sharing limits they describe. Environment group rules push the same text to every environment in the group and need Managed Environments. Maker welcome content, set when editing a Managed Environment, is a separate first-run message.
 
 ## Open questions
 

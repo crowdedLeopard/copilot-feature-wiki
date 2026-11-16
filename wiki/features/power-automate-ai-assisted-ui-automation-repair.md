@@ -31,16 +31,54 @@ sources:
   - title: "Repair flow automation errors (preview)"
     url: "https://learn.microsoft.com/power-automate/desktop-flows/repair-at-runtime"
     kind: "learn"
+  - title: "Copilot in Power Automate for an environment (Power Platform admin center)"
+    url: "https://learn.microsoft.com/power-automate/desktop-flows/ai-assisted-ui-automation-repair#how-to-turn-on-and-use-the-feature"
+    kind: "learn"
+  - title: "Desktop flow repair at runtime (Power Platform admin center)"
+    url: "https://learn.microsoft.com/power-platform/admin/settings-features#desktop-flow-repair-at-runtime-configuration-preview"
+    kind: "learn"
+  - title: "Copilot feedback from Power Automate for desktop (API)"
+    url: "https://learn.microsoft.com/power-automate/desktop-flows/governance#prevent-users-from-sending-copilot-related-feedback"
+    kind: "learn"
 videos: []
 related: ["power-platform-maker-guidelines-copilot-studio","managed-environments"]
+controls:
+  - governs: "Copilot in Power Automate for an environment"
+    scope: "environment"
+    ui:
+      surface: "Power Platform admin center"
+      path: "Copilot > Settings > Power Automate > Copilot in Power Automate > On"
+      docs: "https://learn.microsoft.com/power-automate/desktop-flows/ai-assisted-ui-automation-repair#how-to-turn-on-and-use-the-feature"
+    api: null
+  - governs: "Desktop flow repair at runtime"
+    scope: "environment"
+    ui:
+      surface: "Power Platform admin center"
+      path: "Manage > Environments > environment > Settings > Product > Features > Desktop flow repair at runtime configuration"
+      docs: "https://learn.microsoft.com/power-platform/admin/settings-features#desktop-flow-repair-at-runtime-configuration-preview"
+    api: null
+    note: "Preview. Governs the earlier Repair with Copilot capability."
+  - governs: "Copilot feedback from Power Automate for desktop"
+    scope: "tenant"
+    ui: null
+    api:
+      kind: "other"
+      call: "disableSurveyFeedback governance setting for Power Automate for desktop"
+      docs: "https://learn.microsoft.com/power-automate/desktop-flows/governance#prevent-users-from-sending-copilot-related-feedback"
+  - governs: "Switch specific to AI-assisted repair in the designer debug run"
+    scope: "environment"
+    ui: null
+    api: null
 confidence: "medium"
 created: "2026-11-14"
-updated: "2026-11-14"
+updated: "2026-11-16"
 roadmapModified: "2026-10-27T23:05:02"
 changes:
   - date: "2026-11-14"
     note: "New briefing from roadmap item 577869 with Learn guidance on the preview."
-version: 1
+  - date: "2026-11-16"
+    note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
+version: 2
 ---
 
 ## What's changing
@@ -94,9 +132,21 @@ Makers building UI and browser automation in Power Automate for desktop, version
 - [ ] Review saved selector changes in solution history.
 - [ ] Collect maker feedback on repair accuracy before wider use.
 
-## Admin controls
+## Governance controls
 
-In the Power Platform admin center, go to Copilot > Settings, then under Power Automate select Copilot in Power Automate and turn it on. Separate repair-at-runtime settings exist for the earlier Repair with Copilot feature. No dedicated switch for this debug run has been published.
+<p class="controls__lead">Where each control lives. The left column says what the setting decides and how far it reaches; the middle gives the admin centre and the exact path; the right gives the script, API or command that does the same. <em>Not yet documented</em> means Microsoft has not published a control for that surface, so there is nothing to configure yet.</p>
+
+<table class="controls">
+<thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
+<tbody>
+<tr><td data-label="Control"><strong>Copilot in Power Automate for an environment</strong><br><small>Environment</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Copilot › Settings › Power Automate › Copilot in Power Automate › On <a href="https://learn.microsoft.com/power-automate/desktop-flows/ai-assisted-ui-automation-repair#how-to-turn-on-and-use-the-feature" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Desktop flow repair at runtime</strong><br><small>Environment</small><br><small class="controls__note">Preview. Governs the earlier Repair with Copilot capability.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › Desktop flow repair at runtime configuration <a href="https://learn.microsoft.com/power-platform/admin/settings-features#desktop-flow-repair-at-runtime-configuration-preview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Copilot feedback from Power Automate for desktop</strong><br><small>Tenant</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>API</strong><br><code>disableSurveyFeedback governance setting for Power Automate for desktop</code> <a href="https://learn.microsoft.com/power-automate/desktop-flows/governance#prevent-users-from-sending-copilot-related-feedback" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Switch specific to AI-assisted repair in the designer debug run</strong><br><small>Environment</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+</tbody>
+</table>
+
+The Copilot setting is per environment and portal-only; turning it off removes every Copilot feature in Power Automate for that environment, not just repair. Runtime repair has its own flag and a separate [self-healing](https://learn.microsoft.com/power-automate/desktop-flows/self-healing#how-to-turn-on-the-feature) setting. In regions without local GPU capacity, Copilot depends on the cross-geo data movement toggle described in the [Copilot overview](https://learn.microsoft.com/power-automate/copilot-overview#enable-or-disable-copilot-in-power-automate).
 
 ## Open questions
 

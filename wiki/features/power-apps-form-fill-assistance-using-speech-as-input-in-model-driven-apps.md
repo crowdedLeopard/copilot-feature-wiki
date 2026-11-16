@@ -28,16 +28,44 @@ sources:
   - title: "Use AI form fill assistance feature in model-driven apps"
     url: "https://learn.microsoft.com/power-apps/user/form-filling-assistance"
     kind: "learn"
+  - title: "Form fill assistance (data entry agent) per environment (Power Platform admin center)"
+    url: "https://learn.microsoft.com/power-apps/user/form-filling-assistance#admin-control"
+    kind: "learn"
+  - title: "Smart paste and the form fill toolbar for an app (Power Apps (maker))"
+    url: "https://learn.microsoft.com/power-apps/maker/model-driven-apps/app-properties"
+    kind: "learn"
 videos: []
 related: ["power-apps-form-fill-assistance-using-m365-files-in-model-driven-apps","power-apps-use-the-modernized-personal-settings-experience"]
+controls:
+  - governs: "Form fill assistance (data entry agent) per environment"
+    scope: "environment"
+    ui:
+      surface: "Power Platform admin center"
+      path: "Copilot > Settings > Power Apps > Data entry"
+      docs: "https://learn.microsoft.com/power-apps/user/form-filling-assistance#admin-control"
+    api: null
+  - governs: "Smart paste and the form fill toolbar for an app"
+    scope: "app"
+    ui:
+      surface: "Power Apps (maker)"
+      path: "Model-driven app designer > Settings (app properties)"
+      docs: "https://learn.microsoft.com/power-apps/maker/model-driven-apps/app-properties"
+    api: null
+  - governs: "Speech-specific switch"
+    scope: "environment"
+    ui: null
+    api: null
+    note: "Speech input follows the form fill assistance setting; no separate control is documented."
 confidence: "medium"
 created: "2026-11-14"
-updated: "2026-11-14"
+updated: "2026-11-16"
 roadmapModified: "2026-10-23T21:59:27"
 changes:
   - date: "2026-11-14"
     note: "New briefing from roadmap item 576281 with Learn form fill guidance."
-version: 1
+  - date: "2026-11-16"
+    note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
+version: 2
 ---
 
 ## What's changing
@@ -92,9 +120,20 @@ Users of model-driven apps with form fill assistance on, including mobile platfo
 - [ ] Sample records for transcription errors.
 - [ ] Gather user feedback and adjust settings.
 
-## Admin controls
+## Governance controls
 
-Learn says the primary control for form fill assistance is moving to the Power Platform admin center under Copilot > Settings > Power Apps > Data entry. App-level settings are in the app designer, and the column property Allow form fill assistance applies per column. A speech-specific switch is not yet published.
+<p class="controls__lead">Where each control lives. The left column says what the setting decides and how far it reaches; the middle gives the admin centre and the exact path; the right gives the script, API or command that does the same. <em>Not yet documented</em> means Microsoft has not published a control for that surface, so there is nothing to configure yet.</p>
+
+<table class="controls">
+<thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
+<tbody>
+<tr><td data-label="Control"><strong>Form fill assistance (data entry agent) per environment</strong><br><small>Environment</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Copilot › Settings › Power Apps › Data entry <a href="https://learn.microsoft.com/power-apps/user/form-filling-assistance#admin-control" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Smart paste and the form fill toolbar for an app</strong><br><small>App</small></td><td data-label="Admin UI"><strong>Power Apps (maker)</strong><br>Model-driven app designer › Settings (app properties) <a href="https://learn.microsoft.com/power-apps/maker/model-driven-apps/app-properties" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Speech-specific switch</strong><br><small>Environment</small><br><small class="controls__note">Speech input follows the form fill assistance setting; no separate control is documented.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+</tbody>
+</table>
+
+Turning form fill assistance off removes speech input with it; there is no way to allow text and file sources while blocking the microphone. The legacy environment feature flag is listed in the [feature settings reference](https://learn.microsoft.com/power-platform/admin/settings-features#ai-form-fill-assistance) and is being retired. Column-level Allow form fill assistance remains the finest control. No API is documented.
 
 ## Open questions
 
