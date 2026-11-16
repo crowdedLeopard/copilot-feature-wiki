@@ -20,7 +20,7 @@ licensing:
   model: "per-user"
   notes: "Connector licensing follows existing Power Platform rules; confirm for generative pages."
 audiences: ["maker","power-platform-admin","security"]
-tags: ["power-apps","generative-pages","connectors","model-driven-apps","connection-references","gcc"]
+tags: ["power-apps","generative-pages","connectors","model-driven-apps","connection-references","gcc","gcc-high"]
 sources:
   - title: "Microsoft 365 Roadmap item 576283"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=576283"

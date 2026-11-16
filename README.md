@@ -28,12 +28,13 @@ manual and the system prompt, and an append-only log records every run.
 | Wiki | `wiki/features/*.md` | One briefing per feature, validated front matter plus eight fixed sections. |
 | | `wiki/concepts/*.md` | Background pages the briefings link to (Copilot Credits, Managed Environments, agent identity, data policies). |
 | | `wiki/digests/*.md` | One page per ISO week, regenerated daily. |
+| | `wiki/tags.json` | The tag glossary: for every tag, the name readers see, its group and a one-line explanation. The compile step adds new tags; existing entries are kept. |
 | | `wiki/index.md`, `wiki/log.md`, `wiki/lint-report.md` | Catalogue, append-only run log, latest lint result. |
 | Data | `data/*.json` | Catalog, work queue, stats and lint output used by the site. |
 | Pipeline | `pipeline/*.mjs` | `ingest`, `compile` (API) or `compile-tasks` + `write-briefing` + `compile-finish` (Claude Code), `lint`, `index`, `digest`, `pdf`, `screenshots`. Shared briefing logic in `pipeline/lib/briefing.mjs`. |
 | Site | `src/`, `astro.config.mjs` | Astro static site. Design tokens in `src/styles/tokens.css`. |
 | Atlas | `src/lib/graph.ts`, `src/lib/layout.ts`, `src/scripts/atlas/` | The ledger drawn as a map of linked pages at `/atlas/`: every briefing, concept and shared tag, and the links between them. Built from the wiki at build time, so it follows the daily run. |
-| Taxonomy | `config/taxonomy.mjs` | Topics, product mapping, rating scales. Shared by the pipeline and the site. |
+| Taxonomy | `config/taxonomy.mjs` | Topics, product mapping, rating scales, cloud names and tag groups. Shared by the pipeline and the site. |
 
 ### The daily run (`.github/workflows/daily.yml`)
 

@@ -1,15 +1,24 @@
 # Lint report
 
-Generated 2026-11-16T10:50:49.141Z. 58 briefings, 4 concepts, 0 quarantined.
+Generated 2026-11-16T11:34:04.678Z. 58 briefings, 4 concepts, 0 quarantined.
 
 ## Errors (0)
 
 ## Warnings (0)
 
-## Info (27)
+## Info (36)
+- features/m365-copilot-new-m365-copilot-usage-reports-for-copilot-search-connectors-and-agents-for-u.md: tags rewritten as ["copilot","usage-reports","admin-center","gcc","gcc-high","dod"]
 - features/microsoft-power-platform-governance-and-administration-multi-grader-comparison.md: low confidence, roadmap text only
+- features/power-apps-model-driven-apps-use-row-summaries-in-us-government-clouds.md: tags rewritten as ["power-apps","model-driven-apps","row-summary","copilot","gcc","gcc-high"]
+- features/power-apps-monitor-generative-pages-with-out-of-the-box-application-insights-telemetry.md: tags rewritten as ["power-apps","generative-pages","application-insights","telemetry","monitoring","data-export","gcc","gcc-high"]
 - features/power-apps-new-view-layout-in-model-driven-apps.md: low confidence, roadmap text only
+- features/power-apps-use-dataverse-custom-apis-in-generative-pages.md: tags rewritten as ["power-apps","generative-pages","dataverse","custom-api","model-driven-apps","plug-ins","gcc","gcc-high"]
+- features/power-apps-use-power-platform-connectors-in-generative-pages.md: tags rewritten as ["power-apps","generative-pages","connectors","model-driven-apps","connection-references","gcc","gcc-high"]
+- features/power-apps-use-the-modernized-personal-settings-experience.md: tags rewritten as ["power-apps","model-driven-apps","personal-settings","user-experience","gcc","gcc-high","dod"]
+- features/power-pages-administration-and-governance-configure-site-analytics-and-server-logging.md: tags rewritten as ["power-pages","application-insights","analytics","server-logging","privacy","gcc","gcc-high","dod"]
+- features/power-pages-administration-and-governance-manage-external-authentication-providers-with-gr.md: tags rewritten as ["power-pages","authentication","identity-providers","governance","power-platform-admin-center","gcc","gcc-high","dod"]
 - features/power-pages-first-class-support-for-connector-apis-in-power-pages.md: low confidence, roadmap text only
+- features/power-pages-power-pages-copilot-use-power-pages-mcp-server-capabilities.md: tags rewritten as ["power-pages","mcp","web-api","dataverse","table-permissions","m365-copilot"]
 - features/power-pages-track-power-pages-performance-and-usage-with-monitor-hub.md: low confidence, roadmap text only
 - features/work-iq-agent-policy-governance.md: low confidence, roadmap text only
 - features/work-iq-execute-recipes.md: low confidence, roadmap text only

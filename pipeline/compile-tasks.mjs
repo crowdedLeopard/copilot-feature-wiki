@@ -13,6 +13,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { DATA_DIR, writeJson, slugify, today } from './lib/util.mjs';
 import { loadIndexSlugs, selectQueue, loadRawItem, loadExisting, researchBrief, existingSlugForRoadmapId } from './lib/briefing.mjs';
+import { loadGlossary } from './lib/tags.mjs';
 
 const LIMIT = Number(process.env.COMPILE_LIMIT || 12);
 const ONLY = (process.env.COMPILE_ONLY || '').split(',').map((s) => s.trim()).filter(Boolean).map(Number);
@@ -20,6 +21,7 @@ const TASK_DIR = path.join(DATA_DIR, 'compile-tasks');
 
 const items = await selectQueue({ limit: LIMIT, only: ONLY });
 const indexSlugs = await loadIndexSlugs();
+const glossary = await loadGlossary();
 await fs.rm(TASK_DIR, { recursive: true, force: true });
 await fs.mkdir(TASK_DIR, { recursive: true });
 await fs.rm(path.join(DATA_DIR, 'compile-results.json'), { force: true });
@@ -31,7 +33,7 @@ for (const q of items) {
   const slug = q.slug || (await existingSlugForRoadmapId(item.id)) || slugify(item.title);
   const { existing } = await loadExisting(slug);
   const briefFile = path.join(TASK_DIR, `${q.id}.md`);
-  await fs.writeFile(briefFile, researchBrief(item, existing, indexSlugs));
+  await fs.writeFile(briefFile, researchBrief(item, existing, indexSlugs, glossary));
   tasks.push({
     id: q.id, reason: q.reason, slug, title: item.title, status: item.status, topic: item.topic,
     exists: Boolean(existing), brief: path.relative(process.cwd(), briefFile),

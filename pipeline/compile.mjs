@@ -21,6 +21,7 @@ import { zodOutputFormat } from '@anthropic-ai/sdk/helpers/zod';
 import { briefingOutput } from './lib/schema.mjs';
 import { WIKI_DIR, DATA_DIR, writeJson, appendLog, today, slugify } from './lib/util.mjs';
 import { loadIndexSlugs, selectQueue, loadRawItem, loadExisting, researchBrief, writeBriefingPage, existingSlugForRoadmapId } from './lib/briefing.mjs';
+import { loadGlossary } from './lib/tags.mjs';
 
 const LIMIT = Number(process.env.COMPILE_LIMIT || 12);
 const MODEL = process.env.COMPILE_MODEL || 'claude-opus-5-5';
@@ -47,9 +48,9 @@ function buildTools() {
   return { tools, mcp };
 }
 
-async function compileOne(client, item, existing, indexSlugs, schemaDoc) {
+async function compileOne(client, item, existing, indexSlugs, schemaDoc, glossary) {
   const { tools, mcp } = buildTools();
-  const messages = [{ role: 'user', content: researchBrief(item, existing, indexSlugs) }];
+  const messages = [{ role: 'user', content: researchBrief(item, existing, indexSlugs, glossary) }];
   let response;
   for (let turn = 0; turn < 6; turn++) {
     const stream = client.beta.messages.stream({
@@ -96,7 +97,8 @@ async function main() {
     const { existing, existingFm } = await loadExisting(slug);
     try {
       console.log(`compiling ${q.id} ${item.title} (${q.reason})`);
-      const { out, usage } = await compileOne(client, item, existing, indexSlugs, schemaDoc);
+      // The glossary is re-read per item: writeBriefingPage may have added tags for the previous one.
+      const { out, usage } = await compileOne(client, item, existing, indexSlugs, schemaDoc, await loadGlossary());
       inTok += usage.input_tokens + (usage.cache_read_input_tokens || 0) + (usage.cache_creation_input_tokens || 0);
       outTok += usage.output_tokens;
       const { title } = await writeBriefingPage(item, out, { slug, existingFm, indexSlugs });

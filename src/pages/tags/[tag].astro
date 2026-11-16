@@ -2,8 +2,10 @@
 import Base from '../../layouts/Base.astro';
 import FeatureRow from '../../components/FeatureRow.astro';
 import SectionHead from '../../components/SectionHead.astro';
+import Legend from '../../components/Legend.astro';
 import { allFeatures, allConcepts, tagCounts } from '../../lib/data';
-import { href, conceptUrl, tagLabel } from '../../lib/site';
+import { SITE, href, conceptUrl, tagUrl } from '../../lib/site';
+import { tagInfo, siblingTags } from '../../lib/tags';
 
 export async function getStaticPaths() {
   const features = await allFeatures();
@@ -11,23 +13,55 @@ export async function getStaticPaths() {
   return tagCounts(features, concepts).map(([tag]) => ({ params: { tag } }));
 }
 const { tag } = Astro.params;
-const features = (await allFeatures()).filter((f) => f.data.tags.includes(tag!));
-const concepts = (await allConcepts()).filter((c) => c.data.tags.includes(tag!));
+const allF = await allFeatures();
+const allC = await allConcepts();
+const features = allF.filter((f) => f.data.tags.includes(tag!));
+const concepts = allC.filter((c) => c.data.tags.includes(tag!));
+const info = tagInfo(tag!);
+const siblings = siblingTags(tag!, tagCounts(allF, allC));
+const editUrl = `${SITE.repo}/edit/main/wiki/tags.json`;
+const description = info.description || `Briefings and concepts that carry the tag "${info.label}".`;
 ---
 
-<Base title={`Tag: ${tagLabel(tag!)}`} description={`Briefings and concepts tagged ${tagLabel(tag!)}.`}>
+<Base title={`Tag: ${info.label}`} description={description}>
   <div class="wrap">
     <div class="article-head" style="padding-bottom:1rem">
-      <div class="eyebrow"><a href={href('/tags/')}>Tags</a><span class="sep"></span><span>{features.length} briefings</span>{concepts.length > 0 && <><span class="sep"></span><span>{concepts.length} concepts</span></>}</div>
-      <h1 class="display">{tagLabel(tag!)}</h1>
+      <div class="eyebrow">
+        <a href={href('/tags/')}>Tags</a>
+        <span class="sep"></span><a href={href(`/tags/#${info.group}`)} title={`Tag group: ${info.groupLabel}`}>{info.groupLabel}</a>
+        <span class="sep"></span><span>{features.length} {features.length === 1 ? 'briefing' : 'briefings'}</span>
+        {concepts.length > 0 && <><span class="sep"></span><span>{concepts.length} {concepts.length === 1 ? 'concept' : 'concepts'}</span></>}
+      </div>
+      <h1 class="display">{info.label}</h1>
+      <p class="standfirst">{description}</p>
+      <p class="small muted" style="margin-top:0.8rem">
+        Tag <span class="tag-id">{info.tag}</span>
+        {info.defined
+          ? <> · <a href={editUrl} rel="noopener">Improve this description on GitHub</a></>
+          : <> · This tag has no description yet. The next daily run adds one when it is reused, or <a href={editUrl} rel="noopener">add one on GitHub</a>.</>}
+      </p>
     </div>
+
     {concepts.length > 0 && (
       <>
         <SectionHead title="Concepts" />
         <ul class="related">{concepts.map((c) => <li><a href={conceptUrl(c.data.slug)}>{c.data.title}</a><span class="meta">{c.data.summary}</span></li>)}</ul>
       </>
     )}
+
     <SectionHead title="Briefings" />
+    <Legend />
     <ul class="ledger">{features.map((f) => <FeatureRow entry={f} />)}</ul>
+    {features.length === 0 && <p class="muted">No briefings carry this tag yet.</p>}
+
+    {siblings.length > 0 && (
+      <>
+        <SectionHead title="Related tags" more={{ href: href(`/tags/#${info.group}`), label: `All ${info.groupLabel.toLowerCase()} tags` }} />
+        <p class="muted small" style="margin:-0.4rem 0 0.7rem">Other tags filed under {info.groupLabel.toLowerCase()}. Hover one for what it means.</p>
+        <div class="chips">
+          {siblings.map((s) => <a class="chip" href={tagUrl(s.tag)} title={s.description || undefined}>{s.label}<span class="n">{s.count}</span></a>)}
+        </div>
+      </>
+    )}
   </div>
 </Base>

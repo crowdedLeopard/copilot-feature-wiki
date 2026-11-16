@@ -17,6 +17,10 @@ daily by GitHub Actions.
   concepts and shared tags) from the content collections at build time and serves them as `atlas.json`.
   `src/lib/layout.ts` places them: a flat, seeded force layout with one fixed home per topic, so the same wiki always
   gives the same map. Colours come from the `--topic-*` and `--atlas-*` tokens.
+- Tags are kebab-case ids; readers see the names in `wiki/tags.json`, the tag glossary (name, group, one-line description per tag).
+  `pipeline/lib/tags.mjs` and `src/lib/tags.ts` read it. The compile step defines new tags (`newTags` in the model output) and never
+  overwrites an entry; lint keeps tag lists canonical and adds US Government cloud tags from the roadmap record. Badge, rating,
+  status and default-state help text lives in `config/taxonomy.mjs` and is shown as tooltips and in `src/components/Legend.astro`.
 - Briefings are filed under one of five topics, defined in `config/taxonomy.mjs` (`TOPICS`). The topic is derived from
   an item's products, never chosen by the LLM. Pages written before November 2026 used `desk:`; `pipeline/lint.mjs`
   rewrites that line to `topic:` if one turns up.

@@ -1,8 +1,10 @@
 ---
 import Base from '../../layouts/Base.astro';
 import FeatureRow from '../../components/FeatureRow.astro';
+import Legend from '../../components/Legend.astro';
 import { allFeatures, allConcepts, tagCounts } from '../../lib/data';
-import { TOPICS, RISK, COST, IMPACT, ACTION, STATUS, DEFAULT_STATE, LICENSING_MODEL, AUDIENCES, tagLabel } from '../../lib/site';
+import { TOPICS, RISK, COST, IMPACT, ACTION, STATUS, DEFAULT_STATE, LICENSING_MODEL, AUDIENCES } from '../../lib/site';
+import { tagLabel } from '../../lib/tags';
 
 const features = await allFeatures();
 const concepts = await allConcepts();
@@ -33,8 +35,9 @@ const groups = [
     <div class="article-head" style="padding-bottom:1rem">
       <div class="eyebrow"><span>Briefings</span><span class="sep"></span><span>{features.length} features</span></div>
       <h1 class="display">All briefings</h1>
-      <p class="standfirst">Filter by what you are responsible for. Ratings are explained on the <a href="../about/">about page</a>.</p>
+      <p class="standfirst">Filter by what you are responsible for. Open the key below if a badge or rating is unfamiliar.</p>
     </div>
+    <Legend />
 
     <div class="filters" id="filters">
       <aside class="filters__side">

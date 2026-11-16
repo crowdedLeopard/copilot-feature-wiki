@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { ALLOWED_SOURCE_DOMAINS, TOPIC_IDS } from '../../config/taxonomy.mjs';
+import { ALLOWED_SOURCE_DOMAINS, TOPIC_IDS, TAG_GROUP_IDS } from '../../config/taxonomy.mjs';
 
 const slug = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, 'kebab-case slug');
 
@@ -13,6 +13,14 @@ export const videoSchema = z.object({
   title: z.string().min(3).max(200),
   url: z.string().url(),
   channel: z.string().max(100).optional(),
+});
+
+/** A glossary entry for a tag the model is using for the first time. See wiki/tags.json and SCHEMA.md, "Tags". */
+export const tagDefinition = z.object({
+  tag: slug.describe('The kebab-case tag exactly as it appears in tags.'),
+  label: z.string().min(2).max(60).describe('The name readers see. Plain English, abbreviations expanded: "US Government: DoD", "Pay-as-you-go", "MCP (Model Context Protocol)".'),
+  group: z.enum(TAG_GROUP_IDS.filter((g) => g !== 'other')).describe('cloud | product | capability | licensing | security | governance | data'),
+  description: z.string().min(20).max(220).describe('One sentence for the tag page: what it is, and why an administrator cares (cost, risk or control).'),
 });
 
 export const changeSchema = z.object({
@@ -75,7 +83,8 @@ export const briefingOutput = z.object({
   audiences: z.array(z.enum([
     'm365-admin', 'power-platform-admin', 'service-owner', 'security', 'compliance', 'finops', 'maker', 'end-user', 'change-adoption',
   ])).min(1),
-  tags: z.array(z.string()).min(2).max(12).describe('kebab-case topic tags, e.g. dlp, pay-as-you-go, mcp, agent-identity'),
+  tags: z.array(z.string()).min(2).max(12).describe('kebab-case tags. Reuse the glossary tags listed in the brief before inventing one; prefer the name of a product, control, meter or risk. Do not add cloud tags (gcc, gcc-high, dod): the pipeline adds them from the roadmap record.'),
+  newTags: z.array(tagDefinition).default([]).describe('A definition for every tag in tags that is not in the glossary listed in the brief, or that the brief marks as needing a description. Empty when every tag is already defined.'),
   confidence: z.enum(['high', 'medium', 'low']).describe('high = key claims verified in Microsoft Learn; medium = roadmap text plus partial docs; low = roadmap text only'),
   sections: z.object({
     whatsChanging: z.string().min(200).describe('Markdown. 2 to 4 paragraphs. Neutral, specific, no hype.'),

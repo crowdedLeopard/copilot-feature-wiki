@@ -46,7 +46,8 @@ Do not write anything to `wiki/log.md`; the workflow records the run.
   "licensingModel": "included | per-user | consumption | add-on | mixed | unknown",
   "licensingNotes": "up to 400 characters",
   "audiences": ["m365-admin | power-platform-admin | service-owner | security | compliance | finops | maker | end-user | change-adoption"],
-  "tags": ["2 to 12 kebab-case topic tags"],
+  "tags": ["2 to 12 kebab-case tags, reusing the glossary listed in the brief; no cloud tags"],
+  "newTags": [{ "tag": "a tag above that is not in the glossary", "label": "Name readers see, abbreviations expanded", "group": "cloud | product | capability | licensing | security | governance | data", "description": "One sentence: what it is and why an administrator cares, 20 to 220 characters" }],
   "confidence": "high | medium | low",
   "sections": {
     "whatsChanging": "Markdown, 2 to 4 paragraphs, at least 200 characters",
@@ -69,3 +70,9 @@ Rules that the validator enforces: no H1 or H2 headings inside section strings (
 them), at least one source, sources only on Microsoft domains (and youtube.com for videos), tags in
 kebab-case, relatedSlugs that exist in the index. British English throughout. Neutral voice, no
 marketing language, no exclamation marks.
+
+Tags: the brief lists the glossary as `tag | name readers see`. Reuse those spellings. For any tag
+that is not listed, or that the brief marks as needing a description, add an entry to `newTags`;
+the writer adds it to `wiki/tags.json` so its page has a plain-English name and a one-line
+explanation. Do not tag clouds (gcc, gcc-high, dod): the writer adds them from the roadmap record.
+`newTags` may be an empty array.

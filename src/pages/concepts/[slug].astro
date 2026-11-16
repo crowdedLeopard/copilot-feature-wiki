@@ -5,7 +5,8 @@ import SectionHead from '../../components/SectionHead.astro';
 import AtlasMini from '../../components/AtlasMini.astro';
 import { buildAtlas } from '../../lib/graph';
 import { allConcepts, allFeatures } from '../../lib/data';
-import { SITE, SOURCE_KIND, TOPIC_BY_ID, href, featureUrl, conceptUrl, tagUrl, tagLabel, formatDate } from '../../lib/site';
+import { SITE, SOURCE_KIND, TOPIC_BY_ID, href, featureUrl, conceptUrl, tagUrl, formatDate } from '../../lib/site';
+import { tagLabel } from '../../lib/tags';
 
 export async function getStaticPaths() {
   const concepts = await allConcepts();

@@ -2,13 +2,20 @@
 import type { CollectionEntry } from 'astro:content';
 import Rating from './Rating.astro';
 import Badge from './Badge.astro';
-import { DEFAULT_STATE, LICENSING_MODEL, AUDIENCES, cloudShort, shortRoadmapDate } from '../lib/site';
+import { DEFAULT_STATE, LICENSING_MODEL, LICENSING_MODEL_HELP, AUDIENCES, href, shortRoadmapDate } from '../lib/site';
+import { cloudInfo } from '../lib/tags';
 
 interface Props { data: CollectionEntry<'features'>['data']; rationale?: { risk?: string; cost?: string; impact?: string } }
 const { data: d, rationale = {} } = Astro.props;
-const ds = (DEFAULT_STATE as Record<string, { label: string }>)[d.defaultState]?.label ?? d.defaultState;
+const ds = (DEFAULT_STATE as Record<string, { label: string; help: string }>)[d.defaultState];
 const lic = (LICENSING_MODEL as Record<string, string>)[d.licensing.model] ?? d.licensing.model;
+const licHelp = (LICENSING_MODEL_HELP as Record<string, string>)[d.licensing.model] ?? '';
 const aud = d.audiences.map((a) => (AUDIENCES as Record<string, string>)[a] ?? a);
+// Clouds read as "Worldwide · US Government: GCC, GCC High, DoD", or "US Government only: GCC, GCC High".
+const clouds = d.clouds.map(cloudInfo);
+const worldwide = clouds.filter((c) => !c.government);
+const government = clouds.filter((c) => c.government);
+const tip = (c: { label: string; description: string }) => (c.description ? `${c.label}. ${c.description}` : c.label);
 ---
 
 <div class="facts" role="table" aria-label="At a glance">
@@ -16,11 +23,21 @@ const aud = d.audiences.map((a) => (AUDIENCES as Record<string, string>)[a] ?? a
   <div class="fact"><div class="fact__k">Risk</div><div class="fact__v"><Rating kind="risk" value={d.risk} showLabel={false} /></div></div>
   <div class="fact"><div class="fact__k">Cost</div><div class="fact__v"><Rating kind="cost" value={d.cost} showLabel={false} /></div></div>
   <div class="fact"><div class="fact__k">Impact</div><div class="fact__v"><Rating kind="impact" value={d.impact} showLabel={false} /></div></div>
-  <div class="fact"><div class="fact__k">Default state</div><div class="fact__v">{ds}</div></div>
-  <div class="fact"><div class="fact__k">Licensing</div><div class="fact__v">{lic}</div></div>
+  <div class="fact"><div class="fact__k">Default state</div><div class="fact__v"><span title={ds?.help}>{ds?.label ?? d.defaultState}</span></div></div>
+  <div class="fact"><div class="fact__k">Licensing</div><div class="fact__v"><span title={licHelp || undefined}>{lic}</span></div></div>
   <div class="fact"><div class="fact__k">Status</div><div class="fact__v"><Badge status={d.status} /></div></div>
   <div class="fact"><div class="fact__k">Target</div><div class="fact__v">{shortRoadmapDate(d.targetDate)}{d.previewDate && <span class="muted small"> · preview {shortRoadmapDate(d.previewDate)}</span>}</div></div>
-  <div class="fact"><div class="fact__k">Clouds</div><div class="fact__v">{d.clouds.length ? d.clouds.map(cloudShort).join(', ') : 'Not stated'}</div></div>
+  <div class="fact">
+    <div class="fact__k">Clouds</div>
+    <div class="fact__v">
+      {clouds.length === 0 && 'Not stated'}
+      {worldwide.map((c, i) => <><span title={tip(c)}>{c.short}</span>{i < worldwide.length - 1 ? ', ' : ''}</>)}
+      {worldwide.length > 0 && government.length > 0 && <span class="muted"> · </span>}
+      {government.length > 0 && (
+        <span>{worldwide.length ? 'US Government: ' : 'US Government only: '}{government.map((c, i) => <><span title={tip(c)}>{c.short}</span>{i < government.length - 1 ? ', ' : ''}</>)}</span>
+      )}
+    </div>
+  </div>
   <div class="fact"><div class="fact__k">Platforms</div><div class="fact__v">{d.platforms.length ? d.platforms.join(', ') : 'Not stated'}</div></div>
   <div class="fact fact--wide"><div class="fact__k">Who should read this</div><div class="fact__v">{aud.join(' · ')}</div></div>
   {d.licensing.notes && <div class="fact fact--wide"><div class="fact__k">Licensing notes</div><div class="fact__v">{d.licensing.notes}</div></div>}
@@ -32,3 +49,4 @@ const aud = d.audiences.map((a) => (AUDIENCES as Record<string, string>)[a] ?? a
     {rationale.impact && <div><b>Impact.</b> {rationale.impact.replace(/^(Low|Medium|High)\.\s*/, '')}</div>}
   </div>
 )}
+<p class="facts__key small muted no-print">Hover any badge or rating for its definition, or read the <a href={href('/about/#ratings')}>key to the ratings</a>.</p>
