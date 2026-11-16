@@ -142,7 +142,7 @@ it. Section text is Markdown inside JSON strings, so escape double quotes and wr
   ],
   "sources": [{ "title": "The page's own title", "url": "https://learn.microsoft.com/...", "kind": "roadmap | learn | blog | message-center | docs | video" }],
   "videos": [{ "title": "...", "url": "https://www.youtube.com/...", "channel": "Microsoft Mechanics" }],
-  "relatedSlugs": ["two to five slugs from the brief's list"],
+  "relatedSlugs": ["up to five slugs from the brief's list, the closest first; empty if none is close"],
   "changeNote": "One line for the reader on what is new or different on the page. 5 to 300 characters"
 }
 ```
@@ -160,8 +160,8 @@ Notes on particular fields:
   feature. An existing control described as today's alternative needs entries for its own path and
   command, not for applying to the new feature. Facts taken from the roadmap record need no entry.
   The quote must be text you read on that page in this task, written as it reads on the page
-  (plain characters, not HTML entities or Markdown markup); if you cannot produce it, the claim
-  does not belong in the briefing. The verifier starts from this list, so a complete one gets a
+  (plain characters: ">" not "&gt;", and without the `**`, backticks or link syntax a fetch tool
+  adds); if you cannot produce it, the claim does not belong in the briefing. The verifier starts from this list, so a complete one gets a
   correct page published sooner. It is not printed on the page.
 - **tags and newTags.** The brief lists the glossary as `tag | name readers see`. Reuse those
   spellings. For any tag that is not listed, or that the brief marks as needing a description, add
@@ -202,5 +202,9 @@ As the administrator:
 - Do the ratings agree with their rationales and with the body?
 - Is every risk bullet and checklist item about this feature, naming a mechanism, a setting or a
   role? Remove any line that would fit any other briefing unchanged.
+- Is each gap stated once, where I need it, and not repeated in every section? Does any sentence
+  talk about the research ("the pages read", "not read for this briefing") when it should talk
+  about the product?
+- Is the page within the length the standard sets?
 - Is it British English in the prose, with Microsoft's names spelled as Microsoft spells them, and
   free of marketing adjectives and exclamation marks?
