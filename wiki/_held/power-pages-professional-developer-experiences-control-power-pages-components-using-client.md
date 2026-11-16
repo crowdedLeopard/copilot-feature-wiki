@@ -108,16 +108,16 @@ changes:
     note: "Corrected after verification: replaced the 'no approval step' and 'nothing breaks' claims, fixed the $count guidance, and added the PAC CLI deployment route, the Anonymous users warning and cloud flow licensing."
 version: 2
 verification:
-  status: "verified-with-gaps"
+  status: "held"
   date: "2026-11-16"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 69
-  confirmed: 68
+  claims: 77
+  confirmed: 74
   unconfirmed: 0
-  contradicted: 1
-  attempts: 0
+  contradicted: 3
+  attempts: 1
 ---
 
 ## What's changing
@@ -225,8 +225,18 @@ cost: Low. The client API pages name no licence or meter, so the known cost is d
 impact: Low. Developers and makers who write site script notice it; site visitors see a change only when a developer ships script that uses the API.
 -->
 
-<!-- verifier-findings (2026-11-16, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
 The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [supported, minor] Risk assessment: Data exposure; Governance guidance / applicability: Granting the Anonymous users web role table access makes the table's data available to any visitor. | Found: When the Anonymous users web role is granted access to a table, any user who visits the site can access the data in the table. | Fix: Retain the cited warning, but also cite https://learn.microsoft.com/power-pages/security/disable-anonymous-access and explain its qualification: the tenant's Anonymous access to Dataverse control can block anonymous reads despite maker table permissions; anonymous writes can remain possible. That separate Microsoft page says the control overrides maker configurations. | Source: https://learn.microsoft.com/power-pages/security/assign-table-permissions
-- [contradicted, minor] Governance guidance: At rollout; Governance controls / consistency: The checklist's cloud-flow registration and web-role control has a corresponding controls-table row. | Found: Confirm that any cloud flow a script triggers is registered with the site and secured with a web role, as the cloud flow integration page requires. The table contains table permissions, portals Web API site settings and the undocumented client API switch, but no cloud-flow row. | Fix: Add a site-scoped cloud-flow access row with the documented steps: Power Pages > site > + Edit > Set up > Integrations > Cloud flows > + Add cloud flow > flow > Roles > + Add roles > Save, citing https://learn.microsoft.com/power-pages/configure/cloud-flow-integration. Research the automation side before populating it or marking it undocumented.
+- [supported, minor] Risk assessment: Data exposure; Governance guidance: Before rollout / applicability: Granting the Anonymous users web role table access makes the table's data available to any visitor. | Found: When the Anonymous users web role is granted access to a table, any user who visits the site can access the data in the table. | Fix: Also cite https://learn.microsoft.com/power-pages/security/disable-anonymous-access and qualify the warning: the tenant's Anonymous access to Dataverse control can override maker table permissions and block anonymous reads, while anonymous writes can remain possible. | Source: https://learn.microsoft.com/power-pages/security/assign-table-permissions
+- [contradicted, blocker] Risk assessment: Security & identity; controls[1].note; Governance controls; Open questions / absence: Microsoft Learn does not establish whether Web API table and column site settings apply to $pages.webAPI. | Found: Common call patterns include:
+
+```javascript
+$.ajax(...)
+fetch(...)
+webapi.safeAjax(...)
+$pages.webAPI.retrieveRecord(...)
+$pages.webAPI.retrieveMultipleRecords(...)
+``` | Fix: Cite this troubleshooting page: it explicitly includes $pages.webAPI calls in Web API column-configuration migration and tells readers to verify Webapi/<table-name>/enabled=True. Replace the unresolved-applicability statements with that documented relationship. Explain that fields uses explicit columns, optionally combined with UseFieldsFromView on supported versions; wildcard fields are no longer supported. Remove the corresponding open question. The narrower observation that the client API reference itself omits these settings can remain only alongside this documentation. | Source: https://learn.microsoft.com/troubleshoot/power-platform/power-pages/migrate-web-api-wildcard
+- [contradicted, minor] Governance guidance: At rollout; Governance controls / consistency: The checklist's instruction to enforce rules through column security is represented in the controls table. | Found: The checklist says 'enforce rules through table permissions and column security'; the table contains table permissions, portals Web API site settings and a client API switch gap, but no column-security row. | Fix: Add a separate column-security control row, or remove column security from the actionable checklist while retaining the sourced explanation in Risk assessment. Research its exact UI and automation routes before populating that row.
+- [contradicted, minor] Governance guidance: At rollout; Governance controls / consistency: The checklist's cloud-flow registration and web-role control is represented in the controls table. | Found: The checklist says 'Confirm that any cloud flow a script triggers is registered with the site and secured with a web role'; none of the three control rows covers cloud-flow registration or access. | Fix: Add a site-scoped cloud-flow registration/access row. UI: Power Pages > site > + Edit > Set up > Integrations > Cloud flows > + Add cloud flow > select flow > Roles > + Add roles > select roles > Save. Cite https://learn.microsoft.com/power-pages/configure/cloud-flow-integration and research automation before filling that side or marking it undocumented.
 -->

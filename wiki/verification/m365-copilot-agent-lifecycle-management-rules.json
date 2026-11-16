@@ -2,102 +2,35 @@
   "slug": "m365-copilot-agent-lifecycle-management-rules",
   "roadmapId": 481518,
   "title": "Microsoft 365 admin center: rules that automate agent lifecycle management",
-  "status": "needs-correction",
+  "status": "held",
   "date": "2026-11-16",
   "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 2,
   "verifierVerdict": "hold",
   "notes": [],
   "hold": {
-    "reason": "grace",
+    "reason": "failed",
     "since": "2026-11-16",
     "reasons": [
-      "7 blocking findings (claims 23, 24, 26, 42, 51, 53, 55)",
-      "5 major findings",
-      "published before the check existed: kept live with a notice while a corrected version is prepared"
+      "8 blocking findings (claims 25, 28, 33, 46, 49, 60, 61, 64)",
+      "5 major findings"
     ]
   },
   "counts": {
-    "claims": 59,
-    "confirmed": 46,
-    "unconfirmed": 7,
+    "claims": 65,
+    "confirmed": 51,
+    "unconfirmed": 8,
     "contradicted": 6,
-    "blocker": 7,
+    "blocker": 8,
     "major": 5,
-    "minor": 11
+    "minor": 13
   },
-  "summary": "Hold: the briefing incorrectly describes deletion as irreversible and omits the Agent Builder-only restriction on the manager-reassignment rule. It also treats administrator-run bulk rules as universally automatic and incorrectly says blocking is the only lifecycle action with an API. The roadmap metadata and the cited block endpoint are correct.",
+  "summary": "Hold for corrections: deletion is described as irreversible even though Microsoft documents soft deletion with a 30-day recovery window. Manager reassignment is overstated beyond Agent Builder agents, and the claim that blocking is the only lifecycle API is false. The flagged Block/Unblock and Publish/Reject labels are documented.",
   "claims": [
     {
       "n": 1,
-      "where": "front matter: status; What's changing",
-      "type": "record",
-      "claim": "The roadmap feature is launched.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 2,
-      "where": "front matter: targetDate; What's changing",
-      "type": "record",
-      "claim": "The roadmap launch month is May CY2026.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"targetDate\": \"May CY2026\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 3,
-      "where": "front matter: previewDate",
-      "type": "record",
-      "claim": "The roadmap provides no preview date.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": null",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
-      "where": "front matter: releasePhase",
-      "type": "record",
-      "claim": "The roadmap release phase is General Availability.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "front matter: clouds; Scope",
-      "type": "record",
-      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
-      "where": "front matter: platforms",
-      "type": "record",
-      "claim": "The roadmap platforms are Desktop and Web.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\"Desktop\", \"Web\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
       "where": "front matter: products",
       "type": "record",
       "claim": "The roadmap products are Microsoft 365 Admin Center and Microsoft Copilot (Microsoft 365).",
@@ -108,13 +41,79 @@
       "fix": null
     },
     {
-      "n": 8,
-      "where": "What's changing: roadmap scenarios",
+      "n": 2,
+      "where": "front matter: status; What's changing",
       "type": "record",
-      "claim": "The roadmap names automatically blocking risky agents.",
+      "claim": "The feature is launched.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "1. Auto block risky agents.",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: clouds; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms",
+      "type": "record",
+      "claim": "The roadmap lists Desktop and Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The launched feature has a roadmap target of May CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"targetDate\": \"May CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap specifies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 2026-05-12T23:00:33.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-05-12T23:00:33\"",
       "severity": null,
       "fix": null
     },
@@ -122,10 +121,10 @@
       "n": 9,
       "where": "What's changing: roadmap scenarios",
       "type": "record",
-      "claim": "The roadmap names automatically deleting inactive agents.",
+      "claim": "The roadmap names automatic risky-agent blocking.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "2. Auto delete inactive agents.",
+      "quote": "1. Auto block risky agents.",
       "severity": null,
       "fix": null
     },
@@ -133,7 +132,18 @@
       "n": 10,
       "where": "What's changing: roadmap scenarios",
       "type": "record",
-      "claim": "The roadmap names automatically reassigning ownerless agents to a manager.",
+      "claim": "The roadmap names automatic inactive-agent deletion.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "2. Auto delete inactive agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing: roadmap scenarios",
+      "type": "record",
+      "claim": "The roadmap names automatic reassignment of ownerless agents to a manager.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "3. Auto reassign ownerless agents to manager.",
@@ -141,10 +151,10 @@
       "fix": null
     },
     {
-      "n": 11,
+      "n": 12,
       "where": "controls[0].ui; What's changing; Governance controls table",
       "type": "admin-path",
-      "claim": "The rule-creation path is Microsoft 365 admin center > Agents > Settings > Agent management rules > Add rule.",
+      "claim": "The rule builder is at Microsoft 365 admin center > Agents > Settings > Agent management rules > Add rule.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#agent-management-rules",
       "quote": "In the Microsoft 365 admin center, go to **Agents** > **Settings** > **Agent management rules**, and then select **Add rule**.",
@@ -152,29 +162,29 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 13,
       "where": "controls[0].api; Governance controls: portal-only rules",
       "type": "absence",
       "claim": "No API for creating or listing these Microsoft 365 admin center agent management rules is documented.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"agent management rules\" \"API\"; \"agent management rules\" \"PowerShell\"; Microsoft Graph agent management rules create list lifecycle rules API admin settings user access publish reject requests. Opened agent-settings and Package Management API overview; no matching rule API.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
-      "where": "controls[1].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "An individual agent can be blocked or unblocked through Agents > All agents > agent > Block / Unblock.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions#block-or-unblock-agents",
-      "quote": "Select **Agents** > **All agents**.\n3. In the **All agents** page, select an agent from the list of agents.\n4. In the agent details pane that opens, immediately under the agent's name, select **Block** or **Unblock**.",
+      "quote": "Searched: Microsoft 365 agent management rules Graph API create list rules automated lifecycle. Read agent-settings and Package Management API overview; results also describe separate Entra Agent ID lifecycle-policy APIs, not this rule builder.",
       "severity": "minor",
-      "fix": "The pre-check's missing-word warning is cosmetic: Block and Unblock are documented. Narrow this row's governs label to 'Manual block or unblock for an agent'; the supplied path does not describe uninstalling or pinning."
+      "fix": "Replace the categorical 'nothing in Graph creates or lists them' with 'As of November 2026, Microsoft documents no API for configuring these admin-center rules.' Distinguish the separate Entra Agent ID lifecycle-policy APIs."
     },
     {
       "n": 14,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "An agent can be blocked or unblocked through Agents > All agents > agent > Block / Unblock.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions#block-or-unblock-agents",
+      "quote": "Select **Agents** > **All agents**.\nIn the **All agents** page, select an agent from the list of agents.\nIn the agent details pane that opens, immediately under the agent's name, select **Block** or **Unblock**.",
+      "severity": "minor",
+      "fix": "The pre-check warning is cosmetic: both action labels are documented. Narrow the row's governs label to 'Manual block or unblock for an agent'; this path does not describe uninstalling or pinning."
+    },
+    {
+      "n": 15,
       "where": "controls[1].api; Governance controls table",
       "type": "command",
       "claim": "POST /beta/copilot/admin/catalog/packages/{id}/block blocks a Copilot package.",
@@ -182,154 +192,132 @@
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
       "quote": "Block a Copilot package to prevent its usage.\nPOST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block",
       "severity": "minor",
-      "fix": "Keep the endpoint, but label it preview/beta and block-only: it does not unblock, uninstall or pin. Add that production use is unsupported and that it requires delegated CopilotPackages.ReadWrite.All; application permissions are unavailable."
+      "fix": "Label this preview/beta and block-only, not an equivalent for unblock, uninstall and pin. State that production applications are unsupported; delegated CopilotPackages.ReadWrite.All is required and application permissions are unavailable."
     },
     {
-      "n": 15,
+      "n": 16,
       "where": "controls[2].ui; Governance controls table",
       "type": "admin-path",
-      "claim": "Tenant agent access can be managed at Copilot > Settings > Data access > Agents.",
+      "claim": "Tenant agent access is managed at Copilot > Settings > Data access > Agents.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/agent-essentials/m365-agents-admin-guide#set-agent-policies",
       "quote": "Select **Copilot** > **Settings** > **Data access** > **Agents** to manage your organization's agents.",
       "severity": "minor",
-      "fix": "The cited guide supports the path. Note that https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#user-access gives the newer route 'Agents > Settings > User access'; report both rather than silently choosing one."
-    },
-    {
-      "n": 16,
-      "where": "controls[2].api",
-      "type": "absence",
-      "claim": "No API equivalent of the tenant-wide agent user-access selector is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"agents\" \"user access\" \"PowerShell\" Microsoft 365 admin center; \"Copilot\" \"agent access\" \"Graph\" tenant settings API. Opened agent-settings, the admin guide and Package Management API overview; found no API for this tenant selector.",
-      "severity": null,
-      "fix": null
+      "fix": "Retain the cited guide's route but also report the different route in https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#user-access: Agents > Settings > User access."
     },
     {
       "n": 17,
-      "where": "controls[3].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Agent publish requests are approved or rejected under Agents > All agents > Requests > Publish / Reject.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/agent-essentials/m365-agents-admin-guide",
-      "quote": "Select **Agents** > **All agents** > **Requests**.\n3. Select the requested agent and view the agent's details.\n4. Next to the name of the agent, select the action to **Publish** or **Reject** the agent.",
-      "severity": "minor",
-      "fix": "Insert the omitted selection: 'Agents > All agents > Requests > agent > Publish / Reject'. The pre-check's missing words are present as separate labels. Also note https://learn.microsoft.com/microsoft-agent-365/admin/agent-requests uses 'Publish to store' and 'Reject submission'."
-    },
-    {
-      "n": 18,
-      "where": "controls[3].api",
+      "where": "controls[2].api; Governance controls table",
       "type": "absence",
-      "claim": "An API for approving or rejecting these tenant agent publish requests is not documented.",
+      "claim": "No API equivalent of the tenant-wide who-may-use-agents setting is documented.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"agent\" \"publish requests\" \"API\" \"reject\" Microsoft 365; \"agent publish\" \"approve\" \"Graph API\". Read admin-guide request steps, agent-requests search excerpts and Package Management API overview; request listing is documented, approval/rejection calls are not.",
+      "quote": "Searched: Microsoft 365 tenant agent user access settings Graph PowerShell API publish reject requests API copilot package; Copilot agent tenant user access PowerShell. Read agent-settings, admin guide, Package Management overview and update reference; package access is per-package.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 19,
-      "where": "front matter: defaultState",
-      "type": "default",
-      "claim": "Lifecycle rules are admin-opt-in rather than enforced without administrator configuration.",
+      "n": 18,
+      "where": "controls[3].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Publish requests can be approved or rejected at Agents > All agents > Requests > Publish / Reject.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#agent-management-rules",
-      "quote": "Define the applicable criteria that determine which agent instances the rule applies to.\n5. In the rule details pane, choose all agents or select a subset of agents from the list. Run the rule to apply the template.",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/agent-essentials/m365-agents-admin-guide",
+      "quote": "Select **Agents** > **All agents** > **Requests**.\nSelect the requested agent and view the agent's details.\nNext to the name of the agent, select the action to **Publish** or **Reject** the agent.",
+      "severity": "minor",
+      "fix": "Insert the omitted item selection: Agents > All agents > Requests > agent > Publish / Reject. The pre-check's missing labels are present as separate actions, not a literal slash-delimited label."
+    },
+    {
+      "n": 19,
+      "where": "controls[3].api; Governance controls table",
+      "type": "absence",
+      "claim": "An API for approving or rejecting these agent publishing requests is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 tenant agent user access settings Graph PowerShell API publish reject requests API copilot package. Read admin guide, Package Management overview and update reference; APIs list requests and change package audiences, but do not document approving or rejecting submissions.",
       "severity": null,
       "fix": null
     },
     {
       "n": 20,
-      "where": "front matter: licensing, cost; Cost and licensing; rationale: cost",
+      "where": "front matter: defaultState",
+      "type": "default",
+      "claim": "The lifecycle-rule control is admin-opt-in.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#agent-management-rules",
+      "quote": "Review impacted agents before running the rule\nIn the rule details pane, choose all agents or select a subset of agents from the list. Run the rule to apply the template.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "front matter: licensing; Cost and licensing",
       "type": "licensing",
-      "claim": "Condition-based agent lifecycle rules are included without an additional licence for Copilot-licensed tenants.",
+      "claim": "Condition-based lifecycle rules are included without another licence for Copilot-licensed tenants.",
       "status": "supported",
       "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365",
       "quote": "Included with Microsoft 365 Enterprise, Business, Education, and Front Line Worker plans\n| Automate agent lifecycle actions using conditions-based rules | Microsoft 365 Admin Center | Yes | Yes | Yes |",
       "severity": "minor",
-      "fix": "Keep licensing.model 'included' and cost 'none', but cite this service description. State that condition-based lifecycle rules are included with the listed Microsoft 365 plans, not exclusively with Copilot subscriptions; separately identify premium template and Graph requirements."
-    },
-    {
-      "n": 21,
-      "where": "front matter: licensing.notes; Cost and licensing; Scope",
-      "type": "licensing",
-      "claim": "Agent 365 extends management coverage to other agent types and connected platforms.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365",
-      "quote": "Agent 365 works with agents built on Microsoft platforms and with agents built or acquired from third-party sources; and integrates with Microsoft 365 administration, identity, security, and compliance capabilities.",
-      "severity": "minor",
-      "fix": "Cite the service description and avoid implying Agent 365 is required merely to synchronize external agents: its feature table also includes external-platform registry synchronization in Microsoft 365 plans. Name premium capabilities, such as Graph access and policy templates, separately."
+      "fix": "Cite the service description and name its Microsoft 365 plans rather than implying Copilot is the only qualifying subscription. Distinguish included rules from premium policy templates and Graph access, which the same table does not include in those base plans."
     },
     {
       "n": 22,
-      "where": "What's changing: Agent settings controls",
-      "type": "behaviour",
-      "claim": "Agent settings includes templates, publisher-category access, sharing, user access and tags.",
+      "where": "front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "The base lifecycle-rule capability has cost none because it is included in existing licences.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
-      "quote": "The **Agent settings** page includes the following configuration options:\n**Agent and plugin access**\n**Security templates**\n**Sharing**\n**User access**\n**Tags**",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365",
+      "quote": "Included with Microsoft 365 Enterprise, Business, Education, and Front Line Worker plans\n| Automate agent lifecycle actions using conditions-based rules | Microsoft 365 Admin Center | Yes | Yes | Yes |",
       "severity": null,
       "fix": null
     },
     {
       "n": 23,
-      "where": "What's changing: first paragraph; Why it matters",
-      "type": "behaviour",
-      "claim": "Agent management rules generally run automatically and continuously apply lifecycle policy without an administrator running them.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#agent-management-rules",
-      "quote": "Review impacted agents before running the rule\nApply governance actions across affected agents in bulk\nThe **Apply template** action is a one-time bulk operation. It isn't a scheduled rule.",
-      "severity": "blocker",
-      "fix": "Describe the documented experience as administrator-reviewed, rule-based bulk actions. Explicitly say Apply template is a one-time, administrator-run operation, not scheduled. Attribute automation scenarios to roadmap 481518 instead of promising all configured rules execute unattended."
+      "where": "front matter: licensing.notes; Cost and licensing; Scope",
+      "type": "licensing",
+      "claim": "Agent 365 extends management coverage across additional agent types and platforms.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365",
+      "quote": "Agent 365 works with agents built on Microsoft platforms and with agents built or acquired from third-party sources; and integrates with Microsoft 365 administration, identity, security, and compliance capabilities.",
+      "severity": "minor",
+      "fix": "Cite the service description. Avoid implying Agent 365 is required merely to inventory connected-platform agents: the same table includes external-platform registry synchronization in Microsoft 365 plans. Identify premium coverage separately."
     },
     {
       "n": 24,
-      "where": "Risk assessment: Security & identity; Open questions",
-      "type": "admin-path",
-      "claim": "A configurable condition named 'block risky agents' exists in this rule builder.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: \"agent management rules\" \"risky\"; Microsoft 365 agent management rules risky signals automatic deletion notification audit reassignment reverse. Read agent-settings and agent-365-overview; overview mentions risky-agent automation but no matching rule-builder condition is documented.",
-      "severity": "blocker",
-      "fix": "Do not present 'block risky agents' as a verified condition label. Say roadmap 481518 names risky-agent blocking, while the settings documentation lists 'Block ownerless agents without usage'; the exact risky-agent rule condition and signals are not documented there."
+      "where": "summary; What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "Agent management rules automatically apply lifecycle policy on administrators' behalf.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-365-overview",
+      "quote": "Leverage rules-based agent management to automatically enforce lifecycle policies, such as flagging ownerless agents, or blocking risky agents.",
+      "severity": "minor",
+      "fix": "Cite this overview but report the more specific agent-settings documentation too: administrators review affected agents and run bulk actions, and Apply template is explicitly one-time, not scheduled. Do not promise unattended execution for every supported rule."
     },
     {
       "n": 25,
+      "where": "Risk assessment: Security & identity; Open questions",
+      "type": "admin-path",
+      "claim": "The settings rule builder has a configurable condition called 'block risky agents'.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: agent management rules risky signals inactive delete notification audit reassignment reversible owner leaves unused store; \"agent management rules\" \"risky\" \"delete\". Read agent-settings and agent-management overview; no such builder condition label is specified.",
+      "severity": "blocker",
+      "fix": "Remove the quoted condition label. Attribute risky-agent blocking to the roadmap and management overview; say the settings documentation instead lists 'Block ownerless agents without usage' and does not specify the risky-agent condition or its signals."
+    },
+    {
+      "n": 26,
       "where": "summary; Risk assessment; Governance guidance",
       "type": "behaviour",
       "claim": "An automatic inactive-agent deletion rule is currently available on this settings page.",
       "status": "unsupported",
       "source": null,
-      "quote": "Searched: \"agent management rules\" \"delete\". Opened agent-settings, agent-actions and agent-365-overview. The settings page's supported actions omit deletion; agent-actions documents manual soft deletion, not an inactive-agent deletion rule.",
+      "quote": "Searched: Microsoft 365 agent management rules risky signals inactive delete notification audit reassignment reversible owner leaves unused store; \"agent management rules\" \"risky\" \"delete\". Read agent-settings and agent-actions; Entra identity lifecycle policies are a separate feature.",
       "severity": "major",
-      "fix": "Attribute automatic inactive-agent deletion only to the roadmap description. Explain that Learn's current supported-rule list does not document that rule, and make any inactivity/deletion-policy advice contingent on confirming the capability in the tenant."
-    },
-    {
-      "n": 26,
-      "where": "summary; Scope; Why it matters; Governance guidance",
-      "type": "applicability",
-      "claim": "The manager-reassignment rule applies generally to ownerless agents across the listed platforms.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#agent-management-rules",
-      "quote": "#### Reassign ownerless agents created with Agent Builder to manager\nThis rule only supports agents created by using Microsoft Copilot Agent Builder.",
-      "severity": "blocker",
-      "fix": "Qualify the summary, scope and reassignment guidance: this documented rule supports Microsoft Copilot Agent Builder agents only. Do not promise manager reassignment for Copilot Studio, SharePoint, Foundry or connected-platform agents."
+      "fix": "Attribute automatic inactive-agent deletion to roadmap 481518 only. State that the current settings page does not list a deletion rule; make deletion-threshold advice conditional on verifying tenant capability rather than importing Entra identity-policy behaviour."
     },
     {
       "n": 27,
-      "where": "controls[0].note; Governance controls table",
-      "type": "behaviour",
-      "claim": "Rules support installing Microsoft agents.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#agent-management-rules",
-      "quote": "By using the **Install Microsoft (1P) Agents** rule, you can:\nIdentify Microsoft-published agents within the tenant\nReview eligible agents before installation\nInstall selected agents for all users through a single bulk action",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
-      "where": "controls[0].note; What's changing",
+      "where": "summary; What's changing; Why it matters; controls[0].note",
       "type": "behaviour",
       "claim": "The ownerless-agent rule can transfer ownership to the previous owner's manager.",
       "status": "supported",
@@ -339,10 +327,32 @@
       "fix": null
     },
     {
+      "n": 28,
+      "where": "summary; Scope; Why it matters; Governance guidance",
+      "type": "applicability",
+      "claim": "The manager-reassignment rule applies generally to ownerless agents across the platforms listed in Scope.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#agent-management-rules",
+      "quote": "Reassign ownerless agents created with Agent Builder to manager\nThis rule only supports agents created by using Microsoft Copilot Agent Builder.",
+      "severity": "blocker",
+      "fix": "Qualify manager reassignment everywhere as supporting Microsoft Copilot Agent Builder agents only. Label the platform list as registry coverage, not coverage of every rule."
+    },
+    {
       "n": 29,
       "where": "controls[0].note; Governance controls table",
       "type": "behaviour",
-      "claim": "Rules support blocking ownerless agents that have no usage.",
+      "claim": "Agent management rules support installing Microsoft agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#agent-management-rules",
+      "quote": "Install selected agents for all users through a single bulk action",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[0].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "Rules support blocking ownerless agents without usage.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#agent-management-rules",
       "quote": "Admins can create a custom rule to block multiple ownerless agents that have no usage.",
@@ -350,7 +360,7 @@
       "fix": null
     },
     {
-      "n": 30,
+      "n": 31,
       "where": "controls[0].note; Governance controls table",
       "type": "behaviour",
       "claim": "Rules support applying a template.",
@@ -361,10 +371,10 @@
       "fix": null
     },
     {
-      "n": 31,
+      "n": 32,
       "where": "controls[0].note; Governance controls table",
       "type": "behaviour",
-      "claim": "Rules support rejecting publish requests older than a specified number of days.",
+      "claim": "Rules support rejecting stale publish requests.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#agent-management-rules",
       "quote": "Admins can create a custom rule to reject multiple agent publish requests that are older than a specified number of days.",
@@ -372,32 +382,43 @@
       "fix": null
     },
     {
-      "n": 32,
-      "where": "What's changing: manual actions",
-      "type": "behaviour",
-      "claim": "Administrators can install agents for users.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
-      "quote": "Install an agent for users so it's ready to use without manual installation by end users.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 33,
       "where": "What's changing: manual actions",
-      "type": "behaviour",
-      "claim": "Administrators can uninstall previously installed agents.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
-      "quote": "Admin can uninstall a previously installed agent.",
-      "severity": null,
-      "fix": null
+      "type": "applicability",
+      "claim": "Install, block, unblock, uninstall and pin actions are available on every agent in the registry.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview",
+      "quote": "You can only pin agents that are deployed to some or all users.",
+      "severity": "blocker",
+      "fix": "Replace 'available on every agent' with 'available for eligible agents, depending on platform and deployment state'. Pinning requires prior deployment; agent-actions also says Uninstall may not appear when the agent is not installed."
     },
     {
       "n": 34,
-      "where": "What's changing: manual actions",
+      "where": "What's changing: Install",
       "type": "behaviour",
-      "claim": "Administrators can pin agents for users.",
+      "claim": "Administrators can manually install agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "You can install agents across the whole organization or for specific users or groups by using the same controls that work for any other app in the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What's changing: Uninstall",
+      "type": "behaviour",
+      "claim": "Administrators can manually uninstall agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "You can uninstall first-party or external agents across the whole organization or for specific users or groups",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "What's changing: Pin for users",
+      "type": "behaviour",
+      "claim": "Administrators can pin deployed agents for users.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/agent-essentials/m365-agents-admin-guide",
       "quote": "As an administrator, you can choose to pin a deployed agent to the **Agents** list within Microsoft Copilot.",
@@ -405,21 +426,21 @@
       "fix": null
     },
     {
-      "n": 35,
+      "n": 37,
       "where": "What's changing; Governance guidance: Before rollout",
       "type": "admin-path",
-      "claim": "All agents provides a Missing an owner inventory filter.",
+      "claim": "All agents offers a Missing an owner inventory filter.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/agent-essentials/m365-agents-admin-guide",
-      "quote": "Select **Agents** > **All agents**.\nBelow Agent inventory, select Missing an owner. Consider removing agents that no longer have an owner.",
+      "quote": "Select **Agents** > **All agents**.\nBelow Agent inventory, select Missing an owner.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 36,
+      "n": 38,
       "where": "What's changing; Governance guidance: Before rollout",
       "type": "admin-path",
-      "claim": "All agents provides an Availability > No users inventory filter.",
+      "claim": "All agents offers an Availability > No users inventory filter.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/agent-essentials/m365-agents-admin-guide",
       "quote": "Next to Filters, select Availability > No users. Note which agents aren't available to members of your organization.",
@@ -427,19 +448,19 @@
       "fix": null
     },
     {
-      "n": 37,
-      "where": "What's changing: blocking effects",
+      "n": 39,
+      "where": "What's changing: blocking Agent Builder and Copilot Studio agents",
       "type": "behaviour",
       "claim": "Blocking Agent Builder or Copilot Studio agents affects Copilot and other host apps such as Teams and Outlook.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions#block-or-unblock-agents",
-      "quote": "Blocking or unblocking an agent that you created by using Microsoft Copilot Agent Builder and Microsoft Copilot Studio affects its availability and functionality in Microsoft Copilot. It also affects availability and functionality in other host products, such as Microsoft Outlook, Microsoft Teams",
+      "quote": "It also affects availability and functionality in other host products, such as Microsoft Outlook, Microsoft Teams, or other Microsoft 365 applications.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 38,
-      "where": "What's changing: blocking effects",
+      "n": 40,
+      "where": "What's changing: blocking SharePoint and Foundry agents",
       "type": "behaviour",
       "claim": "Blocking SharePoint or Foundry agents affects only their availability in Copilot Chat.",
       "status": "supported",
@@ -449,40 +470,95 @@
       "fix": null
     },
     {
-      "n": 39,
+      "n": 41,
       "where": "What's changing: Researcher and Analyst",
       "type": "behaviour",
-      "claim": "Researcher and Analyst can be blocked tenant-wide but cannot be scoped through Edit users.",
+      "claim": "Researcher and Analyst can be blocked tenant-wide.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions#block-or-unblock-agents",
-      "quote": "For the Researcher and Analyst agents, the **Edit users** panel is disabled. To manage their availability, block the agent for the entire tenant by using the **Block** action in the Microsoft 365 admin center.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "Risk assessment: Security & identity",
-      "type": "behaviour",
-      "claim": "Agent risk assessments use Microsoft security signals.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview",
-      "quote": "Risk signals are sourced from: Displays the Microsoft security platforms contributing risk signals for the agent, such as Microsoft Purview, Microsoft Entra, and Microsoft Defender.",
-      "severity": "minor",
-      "fix": "Cite the registry documentation and describe this as the registry's risk assessment, not proof of the undocumented risky-agent rule condition. Retain the open question about which signals that specific rule uses."
-    },
-    {
-      "n": 41,
-      "where": "Risk assessment: reassignment rights",
-      "type": "behaviour",
-      "claim": "Reassignment grants the new owner control over the inherited agent.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
-      "quote": "The new owner gets full edit and delete permissions, plus access to any files the previous owner uploaded.",
+      "quote": "To manage their availability, block the agent for the entire tenant by using the **Block** action in the Microsoft 365 admin center.",
       "severity": null,
       "fix": null
     },
     {
       "n": 42,
+      "where": "What's changing: Researcher and Analyst",
+      "type": "behaviour",
+      "claim": "Researcher and Analyst cannot be scoped to users through Edit users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions#block-or-unblock-agents",
+      "quote": "For the Researcher and Analyst agents, the **Edit users** panel is disabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "What's changing: other settings",
+      "type": "behaviour",
+      "claim": "The same settings page carries security-template, publisher access, sharing, user access and tag controls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+      "quote": "**Agent and plugin access** - Specify which categories of AI agents and plugins are permitted for use within the organization.\n**Security templates** - Create preset policies, rules, and allow lists for new AI agents to ensure consistency and compliance.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Why it matters: departed makers",
+      "type": "behaviour",
+      "claim": "Agents built by departed employees keep running without an accountable owner.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 agent management rules risky signals inactive delete notification audit reassignment reversible owner leaves unused store. Read agent-settings and agent-registry-overview; ownerless shared agents are documented, but continued runtime across platforms is not.",
+      "severity": "major",
+      "fix": "Replace with 'Shared agents can become ownerless when their creator is deleted from the organisation, creating an ownership-governance gap.' Do not assert continued execution across all agent types."
+    },
+    {
+      "n": 45,
+      "where": "Why it matters: unused agents in the store",
+      "type": "behaviour",
+      "claim": "Agents nobody uses still appear in the store.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 agent management rules risky signals inactive delete notification audit reassignment reversible owner leaves unused store. Read agent-settings, agent-actions and registry documentation; no general store-persistence rule based solely on inactivity is stated.",
+      "severity": "major",
+      "fix": "Replace the unsupported persistence assertion with advice: 'Review unused agents to reduce inventory and governance overhead.'"
+    },
+    {
+      "n": 46,
+      "where": "Why it matters: unused agents in audit scope",
+      "type": "applicability",
+      "claim": "Unused agents remain in audit scope.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 agent management rules risky signals inactive delete notification audit reassignment reversible owner leaves unused store. Read registry documentation and the Microsoft 365 Admin Center Agent Management audit-activities excerpt; inactivity-based audit scope is not stated.",
+      "severity": "blocker",
+      "fix": "Remove 'and in audit scope'. The documented administrative audit events do not establish this general audit-coverage claim."
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Agent risk assessments use Microsoft security signals.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview#agent-risks",
+      "quote": "Risk signals are sourced from: Displays the Microsoft security platforms contributing risk signals for the agent, such as Microsoft Purview, Microsoft Entra, and Microsoft Defender.",
+      "severity": "minor",
+      "fix": "Cite the registry documentation and identify this as the registry's risk assessment, not proof of the specific lifecycle-rule condition. Keep the question about that rule's exact criteria open."
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Security & identity; rationale: impact",
+      "type": "behaviour",
+      "claim": "Reassignment grants the new owner rights over the agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions#assign-new-owner-to-an-agent",
+      "quote": "The new owner gets full edit and delete permissions, plus access to any files the previous owner uploaded.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
       "claim": "Automated deletion is irreversible for the agent definition.",
@@ -490,35 +566,46 @@
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions#delete-agents",
       "quote": "When you delete an agent in the Microsoft 365 admin center, the agent is soft deleted.\nDuring the 30-day retention period, you can restore the agent or permanently delete it.",
       "severity": "blocker",
-      "fix": "Replace with: 'Microsoft 365 admin center deletion is soft deletion with a 30-day recovery window; permanent deletion cannot be undone. Microsoft Learn does not establish a separate irreversible automatic-deletion rule here.'"
+      "fix": "Replace with 'Admin-center deletion is soft deletion with a 30-day recovery window; permanent deletion cannot be undone.' The settings page does not document a separate irreversible automatic-deletion rule."
     },
     {
-      "n": 43,
+      "n": 50,
       "where": "Risk assessment: Change & support; rationale: impact",
       "type": "behaviour",
-      "claim": "Blocking or deleting an agent can remove users' access.",
+      "claim": "Blocking an agent removes users' access to it.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
-      "quote": "**Block and unblock** | Restrict access to an agent across the organization, preventing any user from using it.\nA soft-deleted agent is unavailable to its maker and end users",
+      "quote": "**Block and unblock** | Restrict access to an agent across the organization, preventing any user from using it.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 44,
-      "where": "Risk assessment: Change & support",
+      "n": 51,
+      "where": "Risk assessment: Change & support; rationale: impact",
       "type": "behaviour",
-      "claim": "Affected users receive no notice of blocking or deletion unless administrators add a communication step.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: \"agent management rules\" \"notifications\" \"audit\"; Microsoft 365 admin center agent rules block delete notify users audit log rule changes. Read agent-settings and agent-actions; neither establishes the notification behaviour of these lifecycle rules.",
-      "severity": "major",
-      "fix": "Replace the assertion with advice: 'Plan communications for affected users; notification behaviour for these lifecycle rules is not documented in the cited pages.' Keep notification options as an open question."
+      "claim": "Deleted agents are unavailable to users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions#delete-agents",
+      "quote": "A soft-deleted agent is unavailable to its maker and end users",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 45,
-      "where": "Risk assessment; Governance guidance: manager attributes",
+      "n": 52,
+      "where": "Risk assessment: Change & support; Open questions",
       "type": "behaviour",
-      "claim": "Manager reassignment depends on the previous owner's Microsoft Entra hierarchy.",
+      "claim": "Users receive no notice of blocking or deletion unless administrators add a communication step.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"agent management rules\" \"audit\" \"notifications\"; \"agent management rules\" \"reversible\" \"notification\". Read agent-settings and agent-actions; neither states notification behaviour for these rule executions. Separate Entra identity policies do document notifications.",
+      "severity": "major",
+      "fix": "Replace the assertion with 'Plan communications for affected users; notification behaviour for these lifecycle rules is not documented in the cited pages.' Retain notification options as an open question."
+    },
+    {
+      "n": 53,
+      "where": "Risk assessment: Change & support; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Manager reassignment depends on the Microsoft Entra hierarchy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#agent-management-rules",
       "quote": "Transfer ownership by using a bulk reassignment action to the manager of the previous owner based on Microsoft Entra ID hierarchy",
@@ -526,54 +613,32 @@
       "fix": null
     },
     {
-      "n": 46,
-      "where": "Why it matters: departed makers",
-      "type": "behaviour",
-      "claim": "Agents built by departed employees keep running without an accountable owner.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: Microsoft 365 agent management rules risky signals automatic deletion notification audit reassignment reverse. Read agent-settings, agent-actions and registry ownerless-agent documentation; continued runtime after owner departure is not stated.",
-      "severity": "major",
-      "fix": "Replace with the documented narrower fact: 'Shared agents can become ownerless when their creator is deleted from the organisation, creating an ownership-governance gap.' Do not promise continued execution across agent types."
-    },
-    {
-      "n": 47,
-      "where": "Why it matters: unused agents",
-      "type": "behaviour",
-      "claim": "Unused agents remain in the store and in audit scope.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: \"agent management rules\" \"delete\"; Microsoft 365 admin center agent rules block delete notify users audit log rule changes. Read agent-settings, agent-actions and registry documentation; no passage establishes store retention or audit scope solely from lack of usage.",
-      "severity": "major",
-      "fix": "Remove the assertion about store persistence and audit scope, or recast it as analysis: 'Review unused agents to reduce inventory and governance overhead.'"
-    },
-    {
-      "n": 48,
-      "where": "Scope: registered agent platforms",
+      "n": 54,
+      "where": "Scope: registry platforms",
       "type": "availability",
-      "claim": "The admin center inventory spans Agent Builder, Copilot Studio, SharePoint, Foundry and connected platforms.",
+      "claim": "The admin-center inventory covers Agent Builder, Copilot Studio, SharePoint, Foundry and connected platforms.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-365-overview",
       "quote": "Specific platforms supported include: Microsoft Copilot Studio, SharePoint, Agent Builder, AI Foundry, Agents Toolkit, other Microsoft agentic types (such as Researcher), and non-Microsoft agentic platforms (such as Manus or Genspark).",
       "severity": "minor",
-      "fix": "Cite the overview. Label this as registry coverage, not a promise that every lifecycle rule supports every platform; state each rule's narrower applicability, especially Agent Builder-only manager reassignment."
+      "fix": "Cite this overview and distinguish registry visibility from each rule's narrower applicability, particularly Agent Builder-only manager reassignment."
     },
     {
-      "n": 49,
+      "n": 55,
       "where": "Scope: government cloud dates",
       "type": "absence",
-      "claim": "The roadmap and checked documentation publish no government-cloud rollout dates for this item.",
+      "claim": "Government-cloud rollout dates for this roadmap item are not published.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"agent management rules\" \"GCC\" rollout date. Read roadmap 481518, agent-settings and Microsoft Agent 365 service description. No government rollout date for this item was found; the service description does list GCC availability for condition-based lifecycle actions.",
+      "quote": "Searched: \"agent management rules\" \"GCC\" rollout date. Read roadmap 481518, agent-settings and Agent 365 service description; no item-specific government rollout date was found. The service description nevertheless lists GCC availability for condition-based lifecycle rules.",
       "severity": "minor",
-      "fix": "Keep the roadmap cloud listing, but add that the current Agent 365 service description lists GCC availability for condition-based lifecycle actions. Do not let 'dates not published' imply the broader capability is unavailable in GCC."
+      "fix": "Keep the item-specific absence of dates but add that the current Agent 365 service description lists condition-based lifecycle actions as available in GCC. Do not imply government clouds are excluded."
     },
     {
-      "n": 50,
+      "n": 56,
       "where": "Scope: roles; Governance controls: roles link",
       "type": "role",
-      "claim": "Agent governance actions require an administrator role with agent-management authority.",
+      "claim": "Agent management requires an administrator with agent management permissions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-roles-perms",
       "quote": "The **AI Administrator** and **Global Administrator** roles have tenant-wide visibility and governance authority",
@@ -581,21 +646,65 @@
       "fix": null
     },
     {
-      "n": 51,
-      "where": "Governance controls: API exclusivity",
-      "type": "absence",
-      "claim": "The block endpoint is the only lifecycle action with an API.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview",
-      "quote": "- Block, unblock, and reassign ownership of packages.\n- Admin reassigns package ownership when an employee leaves the organization.",
-      "severity": "blocker",
-      "fix": "Replace with: 'The preview Package Management API supports block, unblock and ownership reassignment, in addition to inventory operations.' Cite this overview and the corresponding unblock and reassign references; distinguish individual actions from a rule-configuration API."
+      "n": 57,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Ownerless-agent manager reassignment is reversible.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 agent management rules risky signals inactive delete notification audit reassignment reversible owner leaves unused store; \"agent management rules\" \"reversible\" \"notification\". Read agent-settings and agent-actions; no undo of this rule is documented.",
+      "severity": "major",
+      "fix": "Remove '(reversible)'. Administrators can perform further ownership assignments for eligible shared agents, but that is not a documented undo operation restoring a departed original owner."
     },
     {
-      "n": 52,
-      "where": "Governance controls: block API licensing",
+      "n": 58,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Agent-blocking events can be used in a change log.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-activities#microsoft-365-admin-center-agent-management-activities",
+      "quote": "| Blocked Agent | BlockedAgent | An admin blocked an agent. Users in the organization can't use the agent. |",
+      "severity": "minor",
+      "fix": "Cite the audit-activities reference and distinguish administrative action events from unverified automatic-rule execution or rule-definition history."
+    },
+    {
+      "n": 59,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Agent-deletion events can be used in a change log.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions#delete-agents",
+      "quote": "Soft-delete, restore, and permanent-delete events are recorded in the audit log with information about the system that initiated the action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Governance controls: rule change records",
+      "type": "behaviour",
+      "claim": "The audit log can supply a change record of these rule configurations.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"agent management rules\" \"audit\" \"notifications\"; site:learn.microsoft.com/purview/audit-log-activities \"Agent\" \"BlockedAgent\" \"DeletedAgent\". Read settings and audit-activities excerpts; no reconstructable rule-definition/configuration payload is established.",
+      "severity": "blocker",
+      "fix": "Remove the claim that audit logs supply rule configuration history. Recommend recording rule definitions and changes manually until Microsoft documents the applicable rule-configuration events and payloads; do not confuse action events with rule definitions."
+    },
+    {
+      "n": 61,
+      "where": "Governance controls: API exclusivity",
+      "type": "absence",
+      "claim": "Blocking is the only lifecycle action with an API.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview",
+      "quote": "Block, unblock, and reassign ownership of packages.",
+      "severity": "blocker",
+      "fix": "Replace with 'The Package Management API supports block, unblock and ownership reassignment, plus package audience/deployment updates; the mutation endpoints are preview.' Cite the overview and distinguish individual actions from a rule-configuration API."
+    },
+    {
+      "n": 62,
+      "where": "Governance controls: block endpoint licensing",
       "type": "licensing",
-      "claim": "The block Package Management API requires Microsoft Agent 365.",
+      "claim": "The block endpoint requires a Microsoft Agent 365 licence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
       "quote": "Access to the Package Management API requires a Microsoft Agent 365 license.",
@@ -603,85 +712,41 @@
       "fix": null
     },
     {
-      "n": 53,
-      "where": "Governance controls: Power Platform sharing limits",
+      "n": 63,
+      "where": "Governance controls: Copilot Studio data policies",
+      "type": "applicability",
+      "claim": "Copilot Studio agents are additionally governed by Power Platform data policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/copilot-controls-management",
+      "quote": "Use Data Loss Prevention (DLP) policies in Copilot Studio to block publishing agents through Copilot Studio supported channels.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Governance controls: Copilot Studio sharing limits",
       "type": "applicability",
       "claim": "Copilot Studio agents are generally bound by Power Platform sharing limits in their home environment.",
       "status": "contradicted",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-sharing-controls-limits",
       "quote": "You configure the sharing limits for agents as a Managed Environments control in the Power Platform admin center.\nSharing limits only apply to agents that require authentication.",
       "severity": "blocker",
-      "fix": "Qualify the sentence: 'For authenticated Copilot Studio agents in Managed Environments, configured Power Platform sharing limits govern new sharing operations; existing access is not retroactively removed.' Cite this sharing-controls page."
+      "fix": "Qualify this as configured sharing limits for authenticated agents in Managed Environments. They govern new sharing operations and do not retroactively remove existing access. Cite this sharing-controls page."
     },
     {
-      "n": 54,
-      "where": "Governance controls: Power Platform data policies",
-      "type": "applicability",
-      "claim": "Power Platform data policies also govern Copilot Studio agents.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/implement/copilot-controls-management",
-      "quote": "**Use Data Loss Prevention (DLP) policies** in Copilot Studio to block publishing agents through Copilot Studio supported channels.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 55,
-      "where": "Governance controls: rule change records",
-      "type": "behaviour",
-      "claim": "A change record of these rule configurations can be reconstructed from the audit log.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: \"agent management rules\" \"notifications\" \"audit\"; site:learn.microsoft.com/purview/audit-log-activities \"rule\" \"agent\". Read agent-settings and the Agent Management audit-activities search excerpt; no rule-definition or rule-configuration audit payload is established.",
-      "severity": "blocker",
-      "fix": "Remove the promise that audit logs provide a rule change record. Recommend recording rule definitions and changes manually until Microsoft documents the specific rule-configuration events and payloads; distinguish documented agent-action events from rule-definition history."
-    },
-    {
-      "n": 56,
-      "where": "Governance guidance: After rollout",
-      "type": "behaviour",
-      "claim": "Agent blocking and deletion events can be used in a change log.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/audit-log-activities#microsoft-365-admin-center-agent-management-activities",
-      "quote": "| Blocked Agent | BlockedAgent | An admin blocked an agent. Users in the organization can't use the agent. |\n| Deleted Agent | DeletedAgent | An admin deleted a shared agent that deletes the underlying files and the agent. |",
-      "severity": "minor",
-      "fix": "Cite this audit-activities reference. Describe these as documented administrative action events, not verified evidence that every automated rule execution or rule-definition change is logged with reconstructable details."
-    },
-    {
-      "n": 57,
-      "where": "Governance guidance; Governance controls table",
+      "n": 65,
+      "where": "Governance guidance: Before rollout; Governance controls table",
       "type": "consistency",
-      "claim": "The controls table covers the filters and lifecycle actions the governance checklist asks administrators to use.",
+      "claim": "The controls table includes every control the governance checklist directs administrators to use.",
       "status": "contradicted",
       "source": "page",
-      "quote": "Run the **Missing an owner** and **Availability: No users** filters\nStart with reassignment of ownerless agents\nThe table lists rules, manual block/unblock, agent access and publish requests, but not the inventory filters or manual reassignment/deletion controls.",
+      "quote": "Run the **Missing an owner** and **Availability: No users** filters to size the backlog before any rule runs.\nThe controls table has rows for rules, manual blocking, user access and publishing requests, but none for these inventory filters.",
       "severity": "minor",
-      "fix": "Add an agent-inventory review row covering the two documented filters. Where manual reassignment or deletion remains in the checklist, add their documented controls from agent-actions, or clearly make the advice conditional on the corresponding documented rule."
-    },
-    {
-      "n": 58,
-      "where": "Governance guidance: At rollout",
-      "type": "behaviour",
-      "claim": "The ownerless-agent manager reassignment is reversible.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: Microsoft 365 agent management rules risky signals automatic deletion notification audit reassignment reverse. Read agent-settings, agent-actions and copilotPackage: reassign; ownership transfer is documented, but undoing this rule or restoring a departed original owner is not.",
-      "severity": "major",
-      "fix": "Remove '(reversible)'. If useful, say that administrators can perform a further ownership reassignment for eligible shared agents, without promising an undo operation for the manager-reassignment rule."
-    },
-    {
-      "n": 59,
-      "where": "front matter: roadmapModified",
-      "type": "record",
-      "claim": "The roadmap modification timestamp is 2026-05-12T23:00:33.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"modified\": \"2026-05-12T23:00:33\"",
-      "severity": null,
-      "fix": null
+      "fix": "Add an inventory-review row at Microsoft 365 admin center > Agents > All agents documenting Missing an owner and Availability > No users, sourced to the cited admin guide. If manual deletion or reassignment remains checklist advice, add its documented control or clearly tie it to a documented rule."
     }
   ],
   "precheck": {
-    "at": "2026-11-16T18:26:31.272Z",
+    "at": "2026-11-16T19:29:39.726Z",
     "summary": {
       "links": 10,
       "unreachable": 0,
@@ -815,5 +880,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-16",
+      "status": "needs-correction",
+      "version": 2,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

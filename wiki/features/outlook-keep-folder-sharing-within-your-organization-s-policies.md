@@ -71,8 +71,8 @@ verification:
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 55
-  confirmed: 55
+  claims: 56
+  confirmed: 56
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -178,5 +178,5 @@ impact: Low. Only users who edit the Default or Anonymous entry on a folder, and
 
 <!-- verifier-findings (2026-11-16, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [supported, minor] controls[0].note; Governance controls table / admin-path: After creating a policy configuration and enabling the three settings, select Update. | Found: Create a new policy configuration, and select the applicable scope. [...] To apply the policy configuration, select Update. | Fix: Acknowledge the documentation difference in the control note: the folder-permission article says Update, but https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy says to select Create for a new configuration and Update on Review and publish when changing an existing configuration. | Source: https://learn.microsoft.com/microsoft-365-apps/outlook/configuration/restrict-users-from-modifying-folder-permissions
+- [supported, minor] controls[0].note; Governance controls table / admin-path: After creating a policy configuration and enabling the three settings, select Update. | Found: Create a new policy configuration, and select the applicable scope. [...] To apply the policy configuration, select Update. | Fix: Acknowledge the documentation difference in the control note: the folder-permission article says Update, but https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy says select Create for a new configuration, and Review and publish > Update when changing an existing configuration. | Source: https://learn.microsoft.com/microsoft-365-apps/outlook/configuration/restrict-users-from-modifying-folder-permissions
 -->

@@ -55,8 +55,8 @@ verification:
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 47
-  confirmed: 46
+  claims: 52
+  confirmed: 51
   unconfirmed: 1
   contradicted: 0
   attempts: 0
@@ -158,5 +158,5 @@ impact: High. MC1269864 says all Teams users are affected and that muted chats m
 
 <!-- verifier-findings (2026-11-16, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: Chats are moved by the user's own drag and drop. | Found: Searched: Teams chat sections drag drop chats sections user organize. Read MC1269864 and teamworkSection; searched Learn results on organising Teams chats. The notice documents dragging sections, not dragging chats, and no authoritative passage read establishes this sentence. | Fix: Replace the bullet with: 'No change: chats are grouped automatically according to the muted-chat and meeting-chat rules described above; users can drag and drop the sections to reorder them.' MC1269864 documents moving sections, not moving chats by drag and drop.
+- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: Chats are moved by the user's own drag and drop. | Found: Searched: Teams organize chat move chats drag drop sections; Teams chat drag sections organize. Read MC1269864, teamworkSection and Learn search excerpts. The notice describes dragging sections; no passage read establishes dragging chats for these sections. | Fix: Replace the bullet with: 'No change: chats are grouped automatically according to the muted-chat and meeting-chat rules described above; users can drag and drop the sections to reorder them.' MC1269864 documents section reordering, not moving chats by drag and drop.
 -->

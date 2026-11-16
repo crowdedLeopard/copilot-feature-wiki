@@ -88,6 +88,17 @@ changes:
   - date: "2026-11-16"
     note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
 version: 2
+verification:
+  status: "needs-correction"
+  date: "2026-11-16"
+  version: 2
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 39
+  confirmed: 33
+  unconfirmed: 0
+  contradicted: 6
+  attempts: 1
 ---
 
 ## What's changing
@@ -166,4 +177,28 @@ The server is off until a site setting turns it on, and each site is governed se
 risk: High. It opens site data and write operations to AI agents, so a weak table permission or web role could expose or alter Dataverse records.
 cost: Low. No charge is published for the server; Learn notes users of Microsoft 365 Copilot agents need a licence.
 impact: Medium. It affects site makers and the users or agents that connect to site data.
+-->
+
+<!-- verifier-findings (2026-11-16, needs-correction; checked by gpt-6.1-sol)
+The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
+- [supported, minor] front matter: licensing.notes / licensing: Power Pages has its own licensing, separate from the Copilot agent's end-user prerequisite. | Found: As you work on projects and need to establish permanent sites that don't expire, you can apply Power Pages subscriptions and convert websites from trial to production. | Fix: Add https://learn.microsoft.com/power-pages/go-live/assign-licensing to sources for the statement about separate Power Pages licensing. | Source: https://learn.microsoft.com/power-pages/go-live/assign-licensing
+- [supported, minor] front matter: licensing.model / licensing: The solution's licensing model is mixed, reflecting client licensing and potential consumption rather than a published standalone MCP server SKU. | Found: Copilot Credits are the common currency across Copilot Studio capabilities. You can get them through pay-as-you-go meters, prepurchase plans, and Copilot Credit prepaid pack subscriptions. | Fix: Retain mixed, but explain that it describes the Power Pages and chosen AI client's licensing layers, not a separately published Power Pages MCP tariff. Add https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing to sources. | Source: https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing
+- [supported, minor] Cost and licensing / cost: Copilot Studio usage can consume Copilot Credits depending on the agent design. | Found: The number of Copilot Credits an agent consumes depends on the design of the agent, how often customers interact with it, and the features they use. | Fix: Cite https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management and add that eligible employee-facing agent usage under the authenticated Microsoft 365 Copilot licence holder's identity is included, subject to the documented conditions; other designs can consume credits. | Source: https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management
+- [contradicted, blocker] controls[0].api; Governance controls table / absence: Automation for changing the site's MCP enablement setting is not yet documented. | Found: Supported tables
+adx_sitesetting
+In this file, you can have the table (entity) name with table ID, list of attributes, and the values that you want to override while uploading the portal configuration using the `deploymentProfile` parameter. | Fix: Replace the absence with documented site-setting deployment automation: download the site, change the MCP/Enabled site-setting record, then use pac pages upload --path <site-folder> --modelVersion <1-or-2>. Cite https://learn.microsoft.com/power-pages/configure/power-platform-cli and https://learn.microsoft.com/power-pages/configure/power-platform-cli-tutorial. Explain that this is configuration deployment, not a dedicated MCP toggle command; the CLI supported-tables list includes adx_sitesetting. | Source: https://learn.microsoft.com/power-pages/configure/power-platform-cli
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: App registrations are reached through Microsoft Entra admin center > Entra ID > App registrations. | Found: Browse to Entra ID > App registrations and select New registration. | Fix: Add https://learn.microsoft.com/entra/identity-platform/quickstart-register-app#register-an-application as the exact navigation reference; retain the MCP identity-provider page for the feature-specific scope and delegated-permission setup. | Source: https://learn.microsoft.com/entra/identity-platform/quickstart-register-app#register-an-application
+- [contradicted, blocker] controls[1].api; Governance controls table / absence: Automation for the app registration used by MCP clients is not yet documented. | Found: Create a new application object.
+POST https://graph.microsoft.com/v1.0/applications | Fix: Replace the absence with Microsoft Graph POST /v1.0/applications, supplying the required displayName in the request body, and cite https://learn.microsoft.com/graph/api/application-post-applications?view=graph-rest-1.0. Note that creating the registration alone does not complete the MCP scope, delegated permissions, consent or redirect-URI configuration. | Source: https://learn.microsoft.com/graph/api/application-post-applications?view=graph-rest-1.0
+- [contradicted, blocker] controls[2].api; Governance controls table / command: Setting enableSystemAdminsToChangeSiteVisibility to false is the automation equivalent of the non-production public-access policy shown in this row. | Found: When you don't want all system administrators to be able to change site visibility, set `enableSystemAdminsToChangeSiteVisibility` to `false`. Then delegate site visibility management to a select set of users. | Fix: Do not present this command as the equivalent of the non-production visibility policy. Move it to a separate control describing delegation of site-visibility changes by system administrators, and explain that false requires the documented delegated security-group membership. Keep the non-production policy and this role-delegation setting distinct. | Source: https://learn.microsoft.com/power-pages/security/site-visibility#permissions-required-to-change-site-visibility
+- [supported, minor] Governance controls / absence: No admin-center inventory specifically identifying MCP-enabled Power Pages sites is documented. | Found: Searched: "Power Pages" "MCP" "tenant" "inventory". Opened https://learn.microsoft.com/power-pages/admin/power-pages-inventory and MCP overview; the inventory's documented site fields do not include MCP enablement. | Fix: Replace 'there is no inventory of MCP-enabled sites in the admin center' with 'As of November 2026, Microsoft documents no admin-center inventory field identifying MCP-enabled sites.' Do not imply that the documented general Power Pages site inventory does not exist.
+- [contradicted, blocker] front matter: cost; rationale: cost / consistency: The low cost rating correctly represents indirect costs only. | Found: cost: "low"
+Learn lists a Microsoft 365 Copilot licence for end users of the Copilot agent example, and Copilot Studio use may consume credits. | Fix: Change cost to medium for the documented licensed-user example and explain the subset-user licence requirement in the rationale. If retaining metered Copilot Studio deployments as part of the assessed scenario, use variable and name Copilot Credits. Do not justify low solely by the absence of a separate server price.
+- [contradicted, minor] front matter: action / consistency: Prepare is the appropriate action rating for this optional, explicitly enabled capability. | Found: action: "prepare"
+The server is off until a site setting turns it on, and each site is governed separately | Fix: Change action to review: this optional capability changes nothing until it is configured. The standard's prepare exception for a new control closing an existing high exposure does not describe this new data-access capability.
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The controls table includes the data-boundary controls that the checklist asks administrators to audit. | Found: Audit table permissions and web roles for every table the Web API exposes.
+MCP server on or off for a site
+App registration that MCP clients authenticate with
+Public visibility of the site
+Tenant-wide switch for the Power Pages MCP server | Fix: Add a governance-control row for the site's table permissions and associated web roles, with a Microsoft-documented management path and a separately researched automation side.
 -->

@@ -1,0 +1,666 @@
+{
+  "slug": "power-pages-design-studio-configure-authentication-with-security-agent",
+  "roadmapId": 577809,
+  "title": "Power Pages: security agent in design studio configures authentication and authorisation",
+  "status": "needs-correction",
+  "date": "2026-11-16",
+  "version": 2,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "grace",
+    "since": "2026-11-16",
+    "reasons": [
+      "4 blocking findings (claims 13, 15, 16, 17)",
+      "published before the check existed: kept live with a notice while a corrected version is prepared"
+    ]
+  },
+  "counts": {
+    "claims": 48,
+    "confirmed": 43,
+    "unconfirmed": 3,
+    "contradicted": 2,
+    "blocker": 4,
+    "major": 0,
+    "minor": 4
+  },
+  "summary": "The feature description and roadmap dates are supported, but the briefing incorrectly presents a site-chatbot publishing setting as a gate for the maker security agent. It also asserts unverified access and governance rules, and its scan automation entry is an operation name rather than a usable API call.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; changes",
+      "type": "record",
+      "claim": "The roadmap item is in development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The release phases are General Availability and Preview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing; changes",
+      "type": "record",
+      "claim": "General availability is targeted for November CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"November CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap gives April CY2026 as the preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"April CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed on the roadmap; sovereign clouds are not listed.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: defaultState; Scope",
+      "type": "default",
+      "claim": "The capability is enabled automatically for admins, makers and marketers, supporting defaultState on.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Enabled for admins/makers/marketers automatically",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The publishing setting is at Power Platform admin center > Manage > Tenant settings > Publish Copilots with AI features.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/tenant-settings",
+      "quote": "In the navigation pane, select Manage. ... In the Manage pane, select Tenant settings. ... Publish Copilots with AI features",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "controls[0].api; Governance controls table",
+      "type": "absence",
+      "claim": "An automation equivalent for the named publishing setting is not yet documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Publish Copilots with AI features tenant setting PowerShell Set-TenantSettings api. Opened tenant-settings and list-tenantsettings; the possible enableOpenAiBotPublishing property is explicitly unused, not a documented working equivalent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Power Pages AI settings are at Power Platform admin center > Copilot Hub > Power Pages > Settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/admin/copilot-hub#admin-experience",
+      "quote": "To view or update these settings, navigate to Copilot hub > Power Pages > Settings in the Power Platform admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "controls[1].api; Governance controls table",
+      "type": "absence",
+      "claim": "An automation equivalent for environment-level Power Pages maker AI settings is not yet documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Pages Copilot hub maker AI features environment settings PowerShell API disable; Power Pages Copilot environment API settings disable maker. Opened copilot-hub and admin-api; PowerShell references concern tenant settings, not this environment control.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The Run scan section is in the Security workspace of Power Pages design studio.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/security/security-scan",
+      "quote": "You can view the scan report summary by returning to the Run scan section of the Security workspace.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "controls[2].api; Governance controls table",
+      "type": "command",
+      "claim": "Start Deep Scan / Get Security Scan Report (powerpages namespace) is the API call for scan automation.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: opened admin-api and the linked start-deep-scan and get-security-scan-report references. The printed text names operations but provides no HTTP method, endpoint or API version and is not an executable call.",
+      "severity": "blocker",
+      "fix": "Replace the call with POST https://api.powerplatform.com/powerpages/environments/{environmentId}/websites/{id}/scan/deep/start?api-version=2024-10-01 and docs https://learn.microsoft.com/rest/api/power-platform/powerpages/websites/start-deep-scan. If showing report retrieval, give a separate GET https://api.powerplatform.com/powerpages/environments/{environmentId}/websites/{id}/scan/deep/getLatestCompletedReport?api-version=2024-10-01 with its get-security-scan-report reference."
+    },
+    {
+      "n": 14,
+      "where": "controls[3].ui and controls[3].api; Open questions",
+      "type": "absence",
+      "claim": "A dedicated whole-security-agent switch has no documented UI or API.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Pages security agent disable switch tenant environment; Power Pages security agent disable. Opened security-agent, faq-security-agent, copilot-hub and admin-api. FAQ mentions toggling individual use cases, not a whole-agent switch or its path/API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "controls[0].governs; Governance controls prose",
+      "type": "applicability",
+      "claim": "Publish Copilots with AI features gates all Power Pages AI features, including the maker security agent.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-pages/admin/copilot-hub",
+      "quote": "Chat agent (site Copilot) specific setting: If the setting for “Publish bots with AI” is disabled at the tenant level, admins are unable to configure site Copilot at the environment level.",
+      "severity": "blocker",
+      "fix": "Remove this setting as a prerequisite or gate for the security agent. If retaining the row as background, label it a site-chatbot publishing control and explicitly state that Microsoft has not confirmed applicability to the maker security agent."
+    },
+    {
+      "n": 16,
+      "where": "controls[1].governs; Governance controls prose",
+      "type": "applicability",
+      "claim": "The security agent inherits the Copilot hub's environment-level governance.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Power Pages security agent disable enable governance; Power Pages Copilot hub maker AI features environment settings. Opened security-agent, copilot-hub and copilot-governance. None explicitly puts Security agent under Studio Copilot or confirms this inheritance.",
+      "severity": "blocker",
+      "fix": "Keep the documented general Power Pages maker-AI control, but add a note: 'General Power Pages AI control; Microsoft has not confirmed that it governs Security agent.' Replace the categorical inheritance statement with that qualification."
+    },
+    {
+      "n": 17,
+      "where": "controls[3].note; Governance controls table",
+      "type": "role",
+      "claim": "Who can edit the site determines who can use the security agent.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Power Pages security agent role access edit permissions; Power Pages security agent permissions edit. Opened security-agent and faq-security-agent; neither defines site-edit permission as the sufficient access rule for the agent.",
+      "severity": "blocker",
+      "fix": "Replace 'Governed by who can edit the site' with 'The feature documentation does not specify the roles or privileges required to use the agent; confirm access in a test environment.'"
+    },
+    {
+      "n": 18,
+      "where": "title; summary; What's changing",
+      "type": "behaviour",
+      "claim": "The security agent is an AI assistant embedded in the design studio Security workspace.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/en-us/power-pages/security/security-agent",
+      "quote": "Security agent is an AI-powered assistant built into the Power Pages Security workspace",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "summary; What's changing",
+      "type": "behaviour",
+      "claim": "Makers use the Security agent chat panel with natural-language requests.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/en-us/power-pages/security/security-agent",
+      "quote": "After launching the Security agent chat panel, describe what you want to accomplish using natural language.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The preview documentation defines four primary security scenarios.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/en-us/power-pages/security/security-agent",
+      "quote": "Security agent supports four primary security scenarios that cover the core areas of Power Pages site protection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The agent reviews the site's security posture.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/en-us/power-pages/security/security-agent",
+      "quote": "Review your site's overall security in a single conversation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "summary; What's changing",
+      "type": "behaviour",
+      "claim": "The agent helps create and update web roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/en-us/power-pages/security/security-agent",
+      "quote": "The agent helps create and update web roles, page permissions, and table permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The agent helps create and update page permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/en-us/power-pages/security/security-agent",
+      "quote": "The agent helps create and update web roles, page permissions, and table permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "summary; What's changing",
+      "type": "behaviour",
+      "claim": "The agent helps create and update table permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/en-us/power-pages/security/security-agent",
+      "quote": "The agent helps create and update web roles, page permissions, and table permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Authentication configuration and troubleshooting supports Microsoft Entra ID, OpenID Connect and SAML 2.0.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/en-us/power-pages/security/security-agent",
+      "quote": "The agent supports Microsoft Entra ID, OpenID Connect, and SAML 2.0, and recommends configuration updates to resolve authentication problems.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Application security configuration covers CSP, HTTP headers, CORS, cookies and session management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/en-us/power-pages/security/security-agent",
+      "quote": "Review and configure application-level security settings including Content Security Policy (CSP), HTTP security headers, CORS, cookie settings, session management, and WAF-related configurations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Recommendations use site configuration, data schema and permissions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Using the site’s data schema and usage patterns, it suggests appropriate access levels",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The agent assists with identity-provider configuration, redirect settings and session controls.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "It guides makers through configuring identity providers ... validating redirect settings, or tightening session-related controls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The agent recommends least-privilege access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/en-us/power-pages/security/security-agent",
+      "quote": "It explains existing authorization settings and recommends least-privilege access based on your site's configuration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "summary; Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "behaviour",
+      "claim": "Every configuration update requires user approval before application.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/en-us/power-pages/security/security-agent",
+      "quote": "For any configuration changes, the agent always requests your approval before making updates",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The agent confirms what it updated after applying approved changes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/en-us/power-pages/security/security-agent",
+      "quote": "Before applying any change, it requests your approval and, once complete, confirms exactly what was updated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "availability",
+      "claim": "The Learn documentation marks the feature as preview and prerelease.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/en-us/power-pages/security/security-agent",
+      "quote": "[This article is prerelease documentation and is subject to change.] ... This is a preview feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Change & support",
+      "type": "availability",
+      "claim": "The preview is not meant for production use.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/en-us/power-pages/security/security-agent",
+      "quote": "Preview features aren’t meant for production use and might have restricted functionality.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Governance guidance: Before rollout; rationale: risk",
+      "type": "behaviour",
+      "claim": "Microsoft recommends development or test use before promoting changes to production.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/en-us/power-pages/security/security-agent",
+      "quote": "Use Security agent in development or test environments before promoting changes to production.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Microsoft recommends validating and deploying approved changes through the organisation's standard ALM process.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/en-us/power-pages/security/security-agent",
+      "quote": "Validate and deploy approved changes using your organization's standard ALM process.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Microsoft recommends reviewing proposed changes before approving write actions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/en-us/power-pages/security/security-agent",
+      "quote": "Review all proposed configuration changes before approving write actions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Power Pages sites can serve anonymous or external users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/security/power-pages-security",
+      "quote": "The public setting makes the site accessible to everyone over the Internet anonymously or to users authenticated through identity providers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Overly permissive table permissions can expose site data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/en-us/power-pages/security/security-agent",
+      "quote": "Check whether sensitive Dataverse tables are exposed through overly permissive permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "front matter: licensing.model and notes; Cost and licensing",
+      "type": "absence",
+      "claim": "A separate licence for this security-agent capability is not stated, so its licensing model is unknown.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Pages security agent licensing; Power Pages security agent preview licensing pricing credits. Opened security-agent and faq-security-agent and read licensing FAQ search excerpts; no security-agent licence requirement was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No separate security-agent meter or credit charge is stated in the roadmap or preview documentation.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Pages security agent credits pricing; Power Pages security agent preview licensing pricing credits. Read the roadmap, security-agent, faq-security-agent and licensing search results; none states a security-agent meter or credit rate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "General-availability pricing and any consumption model for this capability are not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Pages security agent credits pricing; Power Pages security agent licensing. Read security-agent, faq-security-agent and Power Pages licensing search results; no GA pricing or consumption model specific to Security agent was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Power Pages licensing continues to apply to the underlying site.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/go-live/assign-licensing",
+      "quote": "As you work on projects and need to establish permanent sites that don't expire, you can apply Power Pages subscriptions and convert websites from trial to production.",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/power-pages/go-live/assign-licensing for the underlying site's licensing, without implying it establishes the security agent's separate entitlement."
+    },
+    {
+      "n": 43,
+      "where": "Governance controls prose",
+      "type": "behaviour",
+      "claim": "The older tenant-level governance experience under Resources is being deprecated in favour of Copilot hub.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/admin/copilot-hub#admin-experience",
+      "quote": "The tenant-level governance configuration feature is now deprecated. ... Going forward, all governance settings for Copilot features must be managed through the Copilot hub.",
+      "severity": "minor",
+      "fix": "Point the deprecation link to https://learn.microsoft.com/power-pages/admin/copilot-hub#admin-experience, which states the deprecation. Clarify that the older control covered site-user AI experiences and expressly excluded maker experiences."
+    },
+    {
+      "n": 44,
+      "where": "Governance controls prose",
+      "type": "behaviour",
+      "claim": "Administrators can initiate the Power Pages deep security scan from the admin center's security pages.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/admin/admin-center-security",
+      "quote": "Site-specific details, including the scan status, scan score (number of passed/failed checks), if the scan is completed, a view of the scan results, and an option to initiate the scan.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Governance controls prose",
+      "type": "behaviour",
+      "claim": "The security-agent system includes security scanning.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/faq-security-agent",
+      "quote": "It combines scheduled vulnerability scanning, real-time traffic anomaly detection, and guided remediation",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/power-pages/faq-security-agent and distinguish the broader agent system's scheduled scanning from the chat assistant's documented ability to analyse scan findings; avoid implying a chat command to launch a scan is documented."
+    },
+    {
+      "n": 46,
+      "where": "Governance controls prose",
+      "type": "behaviour",
+      "claim": "The Power Pages admin API exposes deep-scan initiation and report retrieval.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/admin/admin-api#power-pages-operations",
+      "quote": "Get Security Scan Report ... Get deep scan report for a Power Pages website. ... Start Deep Scan ... Start deep scan for a Power Pages website.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Governance guidance: Before rollout and After rollout",
+      "type": "consistency",
+      "claim": "The checklist asks readers to review Security workspace access, web roles and table permissions without corresponding control rows.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Confirm which roles can open the Security workspace. ... Review web roles and table permissions after agent-driven changes. The table contains publishing, AI feature settings, scans and a missing dedicated switch.",
+      "severity": "minor",
+      "fix": "Add rows for site-maker/Security workspace access, web roles and table permissions. For web roles and table permissions, use https://learn.microsoft.com/power-pages/getting-started/use-security-workspace and its linked configuration references; keep unconfirmed agent-specific access requirements explicit."
+    },
+    {
+      "n": 48,
+      "where": "front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "The low cost rating covers known admin and maker review time while feature-specific licensing remains unpublished.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/en-us/power-pages/security/security-agent",
+      "quote": "Review all proposed configuration changes before approving write actions. ... Validate and deploy approved changes using your organization's standard ALM process.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-16T19:29:29.717Z",
+    "summary": {
+      "links": 8,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/en-us/power-pages/security/security-agent",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=577809",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/tenant-settings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-pages/admin/copilot-hub#admin-experience",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-pages/security/security-scan",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-pages/admin/admin-api#power-pages-operations",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-pages/admin/copilot-governance",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-pages/admin/admin-center-security",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Publish Copilots with AI features (prerequisite for site agents)",
+        "docs": "https://learn.microsoft.com/power-platform/admin/tenant-settings",
+        "reachable": true,
+        "segments": [
+          "Manage",
+          "Tenant settings",
+          "Publish Copilots with AI features"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "AI features for Power Pages per environment",
+        "docs": "https://learn.microsoft.com/power-pages/admin/copilot-hub#admin-experience",
+        "reachable": true,
+        "segments": [
+          "Copilot Hub",
+          "Power Pages",
+          "Settings"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Security scan of a site",
+        "docs": "https://learn.microsoft.com/power-pages/security/security-scan",
+        "reachable": true,
+        "segments": [
+          "Security workspace",
+          "Run scan"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Security scan of a site",
+        "docs": "https://learn.microsoft.com/power-pages/admin/admin-api#power-pages-operations",
+        "reachable": true,
+        "token": "Start Deep",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

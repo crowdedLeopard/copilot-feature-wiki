@@ -75,16 +75,16 @@ changes:
     note: "Corrected after verification: PowerShell examples now match the cmdlet reference, the unified app management prerequisite is stated, and the recommendations page is no longer placed on Manage apps."
 version: 2
 verification:
-  status: "verified-with-gaps"
+  status: "held"
   date: "2026-11-16"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 65
-  confirmed: 65
+  claims: 64
+  confirmed: 63
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
 ---
 
 ## What's changing
@@ -181,8 +181,8 @@ cost: Low. The only cost the sources show is administrator time to review recomm
 impact: Low. Teams administrators see the recommendations; users notice only if an administrator makes a recommended agent or app available or installs it for them.
 -->
 
-<!-- verifier-findings (2026-11-16, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
 The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [supported, minor] controls[1].api; Governance controls table / command: Update-M365TeamsApp -Id <app ID> -AppAssignmentType Everyone sets per-app availability to Everyone. | Found: Update-M365TeamsApp -Id 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b -AppAssignmentType Everyone | Fix: Show the two alternatives as separate complete calls rather than joining them with '; or'. Use 'Update-M365TeamsApp -Id <app ID> -AppAssignmentType Everyone' and 'Update-M365TeamsApp -Id <app ID> -AppAssignmentType UsersAndGroups -OperationType Add -Users <users> -Groups <groups>', matching the reference examples. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp
-- [supported, minor] controls[2].governs and note; Governance guidance; Governance controls / behaviour: The existing Third-party apps toggle manages bulk availability of third-party agents and apps. | Found: This control doesn't override app-level configurations. The Org-wide app settings don't apply to: All apps that have user assignment set to Specific users and groups and saved by you. | Fix: Add to controls[2].note and the surrounding explanation: 'Under app-centric management, this default applies to new and unmanaged apps; it does not override saved per-app assignments or blocked apps.' The qualification is documented at https://learn.microsoft.com/microsoftteams/app-centric-management#default-settings-for-app-availability. | Source: https://learn.microsoft.com/microsoftteams/app-centric-management
+- [contradicted, blocker] controls[1].api; Governance controls table / command: The printed PowerShell line provides working alternatives for assigning Everyone or selected users and groups. | Found: Update-M365TeamsApp -Id 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b -AppAssignmentType Everyone | Fix: Replace the single code string containing '; or' with two separately labelled, complete alternatives: 'Update-M365TeamsApp -Id <app ID> -AppAssignmentType Everyone' and 'Update-M365TeamsApp -Id <app ID> -AppAssignmentType UsersAndGroups -OperationType Add -Users <users> -Groups <groups>'. Keep the word 'or' outside executable code and tell readers to run only the intended alternative. The current line first sets Everyone and then starts a statement named 'or', not Update-M365TeamsApp, so it cannot perform the selected-users alternative as printed. Microsoft documents that semicolons delimit PowerShell statements at https://learn.microsoft.com/windows/terminal/command-line-arguments#command-line-argument-examples; the cmdlet reference documents both assignment types and the named parameters. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp
+- [supported, minor] controls[2].governs and note; Governance guidance: Before rollout; Governance controls / behaviour: The existing Third-party apps toggle manages bulk availability of third-party agents and apps. | Found: Under Third-party apps, a single control manages the bulk availability of both the new and existing third-party agents and apps. | Fix: Add the qualification from the already-cited https://learn.microsoft.com/microsoftteams/app-centric-management#default-settings-for-app-availability to controls[2].note and the surrounding explanation: 'Under app-centric management, org-wide defaults apply to new and unmanaged apps; they do not override saved per-app assignments to Specific users and groups, Everyone or No one, or blocked apps.' That page states: 'This control doesn't override app-level configurations.' Avoid implying that changing this default overrides the availability of an individually managed recommendation. | Source: https://learn.microsoft.com/microsoftteams/manage-apps
 -->

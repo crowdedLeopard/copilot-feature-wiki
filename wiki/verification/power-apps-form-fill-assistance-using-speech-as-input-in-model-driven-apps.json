@@ -1,0 +1,599 @@
+{
+  "slug": "power-apps-form-fill-assistance-using-speech-as-input-in-model-driven-apps",
+  "roadmapId": 576281,
+  "title": "Power Apps: speech as an input source for form fill assistance in model-driven apps",
+  "status": "needs-correction",
+  "date": "2026-11-16",
+  "version": 2,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "grace",
+    "since": "2026-11-16",
+    "reasons": [
+      "8 blocking findings (claims 22, 25, 37, 38, 40, 41, 43, 44)",
+      "published before the check existed: kept live with a notice while a corrected version is prepared"
+    ]
+  },
+  "counts": {
+    "claims": 45,
+    "confirmed": 35,
+    "unconfirmed": 7,
+    "contradicted": 3,
+    "blocker": 8,
+    "major": 1,
+    "minor": 5
+  },
+  "summary": "Hold: the briefing promises that transcripts are not stored, but the roadmap only makes that promise about recordings. The app configuration path omits Features, an API is incorrectly reported as undocumented, and the asserted relationship between speech and existing controls is not established by Microsoft documentation.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status",
+      "type": "record",
+      "claim": "The roadmap status is in development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing; Governance guidance: At rollout",
+      "type": "record",
+      "claim": "The roadmap lists December CY2026 for release, called the December release in the checklist.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"December CY2026\"; \"status\": \"In development\"",
+      "severity": "minor",
+      "fix": "Call December CY2026 a target explicitly, including changing 'before the December release' to 'before the roadmap target of December CY2026'."
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Android, iOS and Web, including mobile platforms.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Android\", \"iOS\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 2026-10-23T21:59:27.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-23T21:59:27\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap specifies the monthly release channel.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Release Channel\nMonthly",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap specifies version 2612.1.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Version\n2612.1",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; rationale: impact",
+      "type": "record",
+      "claim": "The roadmap feature scope is users.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Feature Scope\nUsers (enabled by default)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: defaultState; What's changing; Why it matters; rationales: risk, impact",
+      "type": "default",
+      "claim": "Speech input is enabled by default for its intended users.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Feature Scope\nUsers (enabled by default)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "title; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "Microsoft plans to expand form fill assistance in model-driven Power Apps to accept speech as a source.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "We’re expanding form fill assistance in Power Apps to use speech as a source, providing users a more natural way to fill forms.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "Users select a microphone icon to provide speech input.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Users select the microphone icon, record their content, and the transcript is used as a source for the form entry.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "Users record their spoken content.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Users select the microphone icon, record their content",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "summary; What's changing; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "Speech is transcribed and the transcript is used as a source for form entry.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "the transcript is used as a source for the form entry.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "summary; What's changing; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "The roadmap says recordings are transient and not saved.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Recordings are transient and not saved.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Form fill assistance suggests AI-generated field values.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/form-filling-assistance",
+      "quote": "Form fill assistance suggests AI-generated content for fields, so it's easier and faster to enter data in forms.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Users must explicitly review and accept suggestions before saving them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/form-filling-assistance",
+      "quote": "The user must explicitly review and accept the suggestions before saving them.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Why it matters; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Suggested values are saved only after user acceptance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/form-filling-assistance",
+      "quote": "Suggestions are entirely optional and aren't saved in the app until you accept them.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Current form fill assistance sources include files.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/form-filling-assistance",
+      "quote": "Based on the file contents the user provides through the Files capability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Current form fill assistance sources include pasted text.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/form-filling-assistance",
+      "quote": "Based on the copied text the user provides through the Smart paste capability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "The transcript is not stored.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"form fill assistance\" \"transcript\" \"stored\"; \"form fill\" \"speech\" \"transcript\". Read form-filling-assistance and faq-from-filling-assistance; neither states transcript retention. The roadmap only says recordings are not saved.",
+      "severity": "blocker",
+      "fix": "Replace 'the transcript is not stored' with 'the roadmap says recordings are transient and not saved; transcript storage and retention are not yet documented'. Do not extend the audio-recording statement to transcripts."
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Speech is sent for processing.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Power Apps form fill assistance speech microphone disable speech control transcript stored browser permissions. Read form-filling-assistance and its responsible AI FAQ; neither describes speech processing or transmission.",
+      "severity": "major",
+      "fix": "Replace this processing assertion with 'The roadmap says a transcript supplies form entry; the speech processing architecture is not yet documented.'"
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Fields with column security are not supported for suggestions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/form-filling-assistance",
+      "quote": "Fields that have column security aren't currently supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "Device and browser permissions govern microphone access for this feature.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"form fill assistance\" \"microphone\" \"permissions\". Read form-filling-assistance and its FAQ. Results document Windows speech APIs, Edge Web Speech and canvas microphone controls, not this model-driven-app speech feature.",
+      "severity": "blocker",
+      "fix": "Replace with 'Microphone permission requirements for this speech feature are not yet documented.' Do not imply that documentation for canvas controls or a particular browser establishes this feature's controls."
+    },
+    {
+      "n": 26,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "Form fill assistance uses per-user licensing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/form-filling-assistance",
+      "quote": "The form fill assistance requires specific user licenses based on the product.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Users of Power Apps model-driven apps need a Power Apps premium license for form fill assistance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/form-filling-assistance",
+      "quote": "Power Apps model-driven app: The user must have a Power Apps premium license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Users of Dynamics 365 model-driven apps need a Dynamics 365 enterprise or premium license.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/form-filling-assistance",
+      "quote": "Dynamics 365 model-driven app: The user must have a Dynamics 365 enterprise or premium license as outlined in Dynamics 365 License Guide.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The feature is hidden from users without the required license.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/form-filling-assistance",
+      "quote": "If the user doesn't have the license, the feature is hidden. This license enforcement gradually rolls out following the feature's general availability.",
+      "severity": "minor",
+      "fix": "Add the qualification that license enforcement is gradually rolling out following general availability."
+    },
+    {
+      "n": 30,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No extra speech meter or additional speech charge is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Apps speech form fill assistance pricing meter credits; \"form fill assistance\" \"speech\" \"meter\". Read form-filling-assistance licensing requirements and pay-as-you-go-meters search excerpts; no speech-specific charge found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Usage may be subject to service limits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/form-filling-assistance",
+      "quote": "Usage might be subject to service limits or throttling. Microsoft reserves the right to update the limits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Scope",
+      "type": "applicability",
+      "claim": "Form fill assistance must be enabled for users to use it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/form-filling-assistance",
+      "quote": "At least one of the AI form fill assistance environment feature settings enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Scope; Governance guidance: At rollout",
+      "type": "applicability",
+      "claim": "The Allow form fill assistance column property controls whether a column can receive suggestions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/form-filling-assistance",
+      "quote": "The Allow form fill assistance column property enabled for the column where form fill assistance occurs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Supported field types are text, numeric, choice and date.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/form-filling-assistance",
+      "quote": "The currently supported field types inside apps are text, numeric, choice, and date. ... This feature is in production ready preview in Power Apps.",
+      "severity": "minor",
+      "fix": "Identify these as current form fill assistance limits, noting that Learn marks the underlying Power Apps feature production-ready preview. Do not present current preview limits and licensing as final speech-release specifications."
+    },
+    {
+      "n": 35,
+      "where": "controls[0].ui; Governance guidance: At rollout; Governance controls",
+      "type": "admin-path",
+      "claim": "The environment form fill assistance control is in Power Platform admin center under Copilot > Settings > Power Apps > Data entry.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/form-filling-assistance#admin-control",
+      "quote": "The primary admin control for form fill assistance is moving to the Power Platform admin center under Copilot > Settings > Power Apps > Data entry. ... This change is gradually rolling out.",
+      "severity": "minor",
+      "fix": "Keep the path, but add a control note that this move is gradually rolling out. Explain that selecting the setting opens a panel to select the environment and Edit setting, as described at https://learn.microsoft.com/power-platform/admin/copilot/copilot-hub."
+    },
+    {
+      "n": 36,
+      "where": "controls[0].api; Governance controls: environment row",
+      "type": "absence",
+      "claim": "No API equivalent is documented for the new Data entry environment control.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Data entry\" \"form fill\" PowerShell API; \"form fill assistance\" \"PowerShell\" \"disable\". Read form-filling-assistance Admin control, settings-features AI form fill assistance, and copilot-hub; no API for the new control found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[1].ui; Governance controls: app row",
+      "type": "admin-path",
+      "claim": "Smart paste and the form fill toolbar are configured at Model-driven app designer > Settings (app properties).",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/app-properties",
+      "quote": "When you select Settings from the command bar, select Features to enable or disable model-driven app features for the app. ... Form fill assist toolbar.",
+      "severity": "blocker",
+      "fix": "The descriptive name 'Model-driven app designer' is not the problem; the missing Features step is. Replace the path with 'app designer > Settings > Features > Form fill assist toolbar' for the documented toolbar control, and state that app changes require Save and Publish. Document Smart paste separately using its setting definition if its designer label is not shown."
+    },
+    {
+      "n": 38,
+      "where": "controls[1].api; Governance controls: app row and closing 'No API is documented'",
+      "type": "absence",
+      "claim": "No API is documented for the Smart paste and form fill toolbar app settings.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-apps/developer/model-driven-apps/clientapi/get-update-setting-value-using-code",
+      "quote": "saveSettingValue: Adds or updates the setting app value for the current app or the setting environment value for the current environment.",
+      "severity": "blocker",
+      "fix": "Replace this absence claim: the cited form fill article identifies FormPredictSmartPasteEnabled and FormFileUploadEnabled as app settings and links to the settings mechanism; its developer reference documents saveSettingValue with overrideScope 2 for app values and also links SaveSettingValue Web API. Populate the app API side using that documented mechanism, and restrict any remaining API absence statement to the new Data entry control."
+    },
+    {
+      "n": 39,
+      "where": "controls[2].ui and controls[2].api; Governance controls: speech row",
+      "type": "absence",
+      "claim": "No speech-specific switch is documented on the UI or API surface.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"form fill assistance\" \"speech\" \"disable\"; \"form fill assistance\" \"speech\" \"admin\" \"setting\". Read form-filling-assistance, settings-features, copilot-hub and the responsible AI FAQ; no speech-specific UI or API control found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[2].note; Governance controls: closing paragraph",
+      "type": "applicability",
+      "claim": "Speech input follows the existing form fill assistance setting, so turning that setting off removes speech input.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"form fill assistance\" \"speech\" \"admin\" \"setting\"; \"form fill assistance\" \"speech\" \"disable\". Read form-filling-assistance, settings-features and copilot-hub; none connects the planned speech source to a specific existing setting.",
+      "severity": "blocker",
+      "fix": "Replace the speech-row note and the definitive shutdown statement with 'Microsoft has not yet documented which existing controls govern the speech source.' Keep the general form fill controls clearly distinguished from confirmed speech-specific governance."
+    },
+    {
+      "n": 41,
+      "where": "Governance controls: closing paragraph",
+      "type": "applicability",
+      "claim": "There is no way to allow text and file sources while blocking the microphone.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"form fill assistance\" \"speech\" \"disable\"; \"form fill assistance\" \"speech\" \"admin\" \"setting\". Read form-filling-assistance, app-properties and copilot-hub; none states that independent blocking is impossible.",
+      "severity": "blocker",
+      "fix": "Replace with 'A separate speech-source control is not yet documented as of November 2026.' Documentation silence does not establish that selective blocking is impossible."
+    },
+    {
+      "n": 42,
+      "where": "Governance controls: closing paragraph",
+      "type": "behaviour",
+      "claim": "Legacy environment feature settings are being removed as controls move to the new location and app settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/settings-features#ai-form-fill-assistance",
+      "quote": "Admin controls for the AI form fill assistance feature are changing. The primary admin control moves to Copilot > Settings > Power Apps > Data entry. ... The following settings are removed from the Environment > Settings > Features page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Governance controls: closing paragraph",
+      "type": "applicability",
+      "claim": "Column-level Allow form fill assistance is the finest control for this speech change.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"form fill assistance\" \"column\" \"control\" \"granular\"; speech admin setting queries. Read form-filling-assistance and copilot-hub, plus create-edit-field-portal search excerpt; column control exists, but speech applicability and finest granularity are not stated.",
+      "severity": "blocker",
+      "fix": "Replace with 'Allow form fill assistance is a documented column-level control for current form fill suggestions; Microsoft has not yet confirmed its behavior for speech input.' Remove the unsupported superlative."
+    },
+    {
+      "n": 44,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "The speech feature is available in Worldwide only.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Power Apps\" \"form fill assistance\" \"speech\" \"Worldwide\". Read roadmap record and form-filling-assistance; Worldwide is listed, but no exclusion of other clouds is stated.",
+      "severity": "blocker",
+      "fix": "Replace both instances of 'Worldwide only' with 'The roadmap lists Worldwide (Standard Multi-Tenant); other clouds are not listed.'"
+    },
+    {
+      "n": 45,
+      "where": "Governance guidance: At rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist directs readers to disable Allow form fill assistance for sensitive columns, but the controls table has no column-property row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: 'Switch off the Allow form fill assistance column property for sensitive columns.' Controls table: environment data entry, app smart paste/toolbar, and speech-specific switch only.",
+      "severity": "minor",
+      "fix": "Add a row for the existing column-level Allow form fill assistance property, citing https://learn.microsoft.com/power-apps/maker/data-platform/create-edit-field-portal#create-a-column. The documentation permits disabling it for sensitive columns and labels it preview; make clear speech-specific applicability is not yet confirmed."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-16T19:29:25.083Z",
+    "summary": {
+      "links": 5,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 1,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=576281",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/user/form-filling-assistance",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/user/form-filling-assistance#admin-control",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/app-properties",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/settings-features#ai-form-fill-assistance",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Form fill assistance (data entry agent) per environment",
+        "docs": "https://learn.microsoft.com/power-apps/user/form-filling-assistance#admin-control",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Settings",
+          "Power Apps",
+          "Data entry"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Smart paste and the form fill toolbar for an app",
+        "docs": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/app-properties",
+        "reachable": true,
+        "segments": [
+          "Model-driven app designer",
+          "Settings"
+        ],
+        "missing": [
+          "Model-driven app designer"
+        ]
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

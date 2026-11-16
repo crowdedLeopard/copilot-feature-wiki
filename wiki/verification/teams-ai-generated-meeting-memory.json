@@ -1,0 +1,799 @@
+{
+  "slug": "teams-ai-generated-meeting-memory",
+  "roadmapId": 558933,
+  "title": "Microsoft Teams: AI-generated meeting memory for knowledge retention",
+  "status": "needs-correction",
+  "date": "2026-11-16",
+  "version": 2,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "grace",
+    "since": "2026-11-16",
+    "reasons": [
+      "4 blocking findings (claims 18, 49, 54, 57)",
+      "published before the check existed: kept live with a notice while a corrected version is prepared"
+    ]
+  },
+  "counts": {
+    "claims": 59,
+    "confirmed": 53,
+    "unconfirmed": 2,
+    "contradicted": 4,
+    "blocker": 4,
+    "major": 1,
+    "minor": 5
+  },
+  "summary": "Hold: the retention command does not create an effective retention policy by itself, and the claim that meeting memory is included at no cost lacks published support. The briefing also omits the same-tenant access restriction and confuses the January rollout of administrator controls with memory generation four weeks later.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status",
+      "type": "record",
+      "claim": "The roadmap status is in-development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap targets General Availability for January CY2027.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"January CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Targeted Release.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; Scope",
+      "type": "record",
+      "claim": "The listed cloud is Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms",
+      "type": "record",
+      "claim": "The roadmap lists Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The products are Microsoft Teams and Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Teams\", \"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-11-03T00:14:11.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-03T00:14:11\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: licensing.notes; What's changing; Scope",
+      "type": "behaviour",
+      "claim": "Memory generation requires intelligent recap to be turned on for the meeting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings",
+      "quote": "When enabled in the Teams Admin Center, meeting memory is generated for meetings where:\n1. Intelligent recap was turned on for the meeting,",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: licensing.model and notes; What's changing; Cost and licensing; Scope",
+      "type": "licensing",
+      "claim": "The per-user licensing prerequisite for generation is an invited Copilot-licensed participant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings",
+      "quote": "A Copilot-licensed participant was invited to the meeting",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Meeting memory uses the .meeting extension and was formerly called AI meeting archive.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings",
+      "quote": "The meeting memory (formerly called AI meeting archive) is an AI-generated artifact\nMeeting memory is stored as a file with the .meeting extension",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Memory contains meeting metadata including title, date and invite list.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings",
+      "quote": "includes meeting metadata, such as the meeting title, date and invite list",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "Memory contains an AI-generated summary of key insights and discussion.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings",
+      "quote": "as well as a summary of the key insights and meeting discussion.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Microsoft says memory contains only AI-generated content, not raw user data or transcript excerpts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings",
+      "quote": "No raw user data or transcript excerpts are included in meeting memory, only AI-generated content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Risk assessment; Cost and licensing",
+      "type": "behaviour",
+      "claim": "Memory is stored in Teams-owned SharePoint Embedded containers rather than a user's storage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings",
+      "quote": "The memory file is stored within a Teams-owned SharePoint Embedded container rather than a particular user's space",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "Users cannot see or directly open memory files.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings",
+      "quote": "Content in meeting memory is only accessible through Copilot, Facilitator, and other Microsoft AI tools. Users can't open or view the memory file directly.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "summary; What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "Copilot, Facilitator and other Microsoft AI tools use meeting memory to answer meeting questions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings",
+      "quote": "Copilot and Facilitator use meeting memory to answer questions about a meeting.",
+      "severity": "minor",
+      "fix": "Retain the Learn description but also cite MC1429018 at https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1429018: the notice says Facilitator uses memory at release and Copilot will use it in the future. Explicitly distinguish that release sequencing from Learn's broader description."
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Memory has the same access boundary as the recap, extended by recap sharing.",
+      "status": "contradicted",
+      "source": "Message Center post MC1429018",
+      "quote": "Memory knowledge is only shared with users who are in the same tenant as the meeting organizer.",
+      "severity": "blocker",
+      "fix": "Qualify both access descriptions: users must have meeting or shared-recap access and be in the same tenant as the organiser. Remove 'the same boundary as the recap': https://learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings explicitly allows sharing a recap with external attendees, whereas MC1429018 restricts memory knowledge to the organiser's tenant."
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Responses grounded in memory cite the meeting recap or invite.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings",
+      "quote": "If AI uses meeting memory to generate a response, the response includes a citation that links to the meeting recap or meeting invite.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Memory files are indexed for search.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings",
+      "quote": "Meeting memory files are indexed for search.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Opening a memory search result redirects to the meeting recap page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings",
+      "quote": "Opening a memory file from a search point redirects the user to the meeting recap page or meeting invite.",
+      "severity": "minor",
+      "fix": "Complete the destination description: 'redirects to the meeting recap page or meeting invite'."
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Memory files cannot be moved.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings",
+      "quote": "The memory file can't be moved, renamed, or modified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Memory files cannot be renamed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings",
+      "quote": "The memory file can't be moved, renamed, or modified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Memory files cannot be modified.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings",
+      "quote": "The memory file can't be moved, renamed, or modified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Scope",
+      "type": "applicability",
+      "claim": "Memory is not generated for meetings with sensitivity labels that include encryption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings",
+      "quote": "Memory won't be created for meetings with sensitivity labels which include encryption",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Scope",
+      "type": "applicability",
+      "claim": "Memory is not generated for end-to-end encrypted meetings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings",
+      "quote": "Memory won't be created for meetings with sensitivity labels which include encryption, meetings with end-to-end encryption",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing; Scope",
+      "type": "applicability",
+      "claim": "Memory is not generated for meetings where copying and forwarding are restricted.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings",
+      "quote": "or meetings where copying and forwarding content is restricted.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; Scope; rationale: risk",
+      "type": "default",
+      "claim": "Meeting memory generation is on by default for each tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings",
+      "quote": "Meeting memory is enabled by default for every tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "summary; What's changing; Why it matters; Risk assessment; rationale: risk",
+      "type": "default",
+      "claim": "The default memory expiry is five years, or 1,825 days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings",
+      "quote": "The default expiration time for memory files is five years (1,825 days)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing; Why it matters; Governance guidance",
+      "type": "behaviour",
+      "claim": "Administrators can customise default memory expiration in the Teams admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings",
+      "quote": "Default expiration of memory files is controlled through the Teams Admin Center. The default expiration time for memory files is five years (1,825 days), but admins can customize the expiration time as needed for their organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "summary; What's changing; Governance controls",
+      "type": "applicability",
+      "claim": "Purview retention policies take precedence over Teams' memory expiration setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings",
+      "quote": "Purview retention policies will take precedence over the meeting memory expiration setting in the Teams Admin Center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "summary; What's changing; Why it matters; rationale: risk",
+      "type": "behaviour",
+      "claim": "Deleting or expiring a transcript does not automatically delete the meeting memory that AI tools can use.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings",
+      "quote": "Meeting memory won't automatically be deleted if the transcript or recording is deleted or expired.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Deleting or expiring a recording does not automatically delete meeting memory.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings",
+      "quote": "Meeting memory won't automatically be deleted if the transcript or recording is deleted or expired.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Organisers delete meeting memory by deleting recap content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings",
+      "quote": "The meeting organizer can delete meeting memory by deleting the meeting recap. First, navigate to the meeting recap. Then, open the ... menu, and select Delete recap content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What's changing; Governance controls",
+      "type": "applicability",
+      "claim": "Purview eDiscovery can search memory through the All SharePoint Sites workload.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings",
+      "quote": "Admins can perform eDiscovery searches on all SharePoint Embedded content using the All SharePoint Sites workload.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "What's changing; Why it matters; Governance guidance; Governance controls",
+      "type": "applicability",
+      "claim": "eDiscovery can target memory container URLs and place memory content on hold.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings",
+      "quote": "Admins can also specify specific meeting memory containers using container URLs. eDiscovery admins can perform eDiscovery Hold and Export on memory file content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What's changing; Risk assessment; rationale: risk",
+      "type": "applicability",
+      "claim": "Meeting memory does not yet support Information Barriers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings",
+      "quote": "Meeting memory files do not yet support Information Barriers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "front matter: licensing.notes; What's changing; Scope",
+      "type": "availability",
+      "claim": "The feature is in preview and limited to Teams TAP organisations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings",
+      "quote": "Meeting memory is in preview and only available to organizations in the Teams TAP program.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "An organiser's deactivation does not delete memory stored in Teams-owned containers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings",
+      "quote": "the meeting memory still exists even if the meeting organizer's account is deactivated. The memory remains until the default expiration time specified in the Teams Admin Center, unless Purview retention policies are set.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Memory deleted at expiration cannot be recovered.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings",
+      "quote": "When the expiration time is reached, the memory file is deleted and can't be recovered.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[0].ui; Governance guidance; Governance controls",
+      "type": "admin-path",
+      "claim": "The Meeting memory setting is under Teams admin center > Meetings > Meeting policies > policy, with On, transcription-only and Off choices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings",
+      "quote": "Go to Meetings > Meeting policies.\nFind the Meeting memory setting.\nOn for all meetings (default): Memory is created for meetings with Intelligent Recap.\nOnly for meetings with transcription: Memory is created for meetings with Intelligent Recap that are transcribed.\nOff:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[0].api; Governance controls",
+      "type": "absence",
+      "claim": "A direct API or PowerShell parameter for the Meeting memory generation setting is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams meeting memory Set-CsTeamsMeetingPolicy MeetingMemory AI archive PowerShell parameter; \"meeting memory\" \"PowerShell\" \"generation\". Opened the memory feature article and searched the full Set-CsTeamsMeetingPolicy reference for memory/archive: no matching parameter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[0].scope and note",
+      "type": "applicability",
+      "claim": "Meeting policies can be assigned to users, consistent with the control's user scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-overview",
+      "quote": "You can edit the settings in the global policy or create and assign one or more custom policies. Users get the global policy unless you create and assign a custom policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[1].api; What's changing; Governance guidance; Governance controls",
+      "type": "command",
+      "claim": "Teams administrators can find a memory container URL with Get-AIGeneratedKnowledgeContainer and delete memory with Remove-AIGeneratedKnowledge, using the required ThreadId.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings",
+      "quote": "Run Connect-MicrosoftTeams and sign in with your Teams admin account.\nRun the following command (ThreadId is required; CallId is optional)\nRemove-AIGeneratedKnowledge -ThreadId <String> -CallId <String>\nGet-AIGeneratedKnowledgeContainer -ThreadId <String> -CallId <String>",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[1].ui",
+      "type": "absence",
+      "claim": "No administrator UI for inspecting or removing a meeting's generated memory is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams meeting memory inspect remove generated memory Teams admin center Delete recap content. Opened the memory feature article and search results: administrator inspection/deletion uses PowerShell; Delete recap content is the organiser's meeting UI, not an admin-centre control.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[2].ui and scope; Governance controls",
+      "type": "admin-path",
+      "claim": "Copilot for meetings and events is controlled through Teams admin center > Meetings > Meeting policies > policy > Recording & transcription > Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription#manage-copilot-for-teams-meetings-and-events",
+      "quote": "go to Meetings > Meeting policies.\nSelect an existing policy or create a new one.\nGo to the Recording & transcription section and find the Copilot setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[2].api; Governance controls",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy> -Copilot accepts Enabled, EnabledWithTranscript, EnabledWithTranscriptDefaultOn or Disabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription#manage-copilot-for-teams-meetings-and-events",
+      "quote": "PowerShell setting value\nEnabled\nEnabledWithTranscript\nEnabledWithTranscriptDefaultOn\nDisabled\nSet-CsTeamsMeetingPolicy -Identity <policy name> -Copilot Enabled",
+      "severity": "minor",
+      "fix": "Keep the call supported by the cited management article, but note that https://learn.microsoft.com/powershell/module/teams/set-csteamsmeetingpolicy currently lists only Enabled and EnabledWithTranscript in its -Copilot parameter description; the management article documents all four values."
+    },
+    {
+      "n": 48,
+      "where": "controls[3].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "Retention policies are created through Microsoft Purview portal > Solutions > Data Lifecycle Management > Policies > Retention policies > New retention policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-retention-policies#create-and-configure-a-retention-policy",
+      "quote": "Sign in to the Microsoft Purview portal > Solutions > Data Lifecycle Management > Policies > Retention policies.\nSelect New retention policy to start the Create retention policy configuration",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[3].api; Governance controls",
+      "type": "command",
+      "claim": "New-RetentionCompliancePolicy alone is the automation equivalent for configuring retention of memory containers.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy?view=exchange-ps",
+      "quote": "Policies are not valid until a rule is added (for retention policies) or a label is added (for retention label policies). In addition, at least one location parameter must be defined to create a retention policy or retention label policy.",
+      "severity": "blocker",
+      "fix": "Replace the bare cmdlet with a scoped policy-and-rule sequence in Security & Compliance PowerShell: New-RetentionCompliancePolicy -Name <policy> -SharePointLocation <container-url>; New-RetentionComplianceRule -Name <rule> -Policy <policy> -RetentionDuration <days> -RetentionComplianceAction <action>. Explain that the action is Keep, Delete or KeepAndDelete and cite https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancerule?view=exchange-ps for the rule. Do not imply that creating an unscoped policy alone enforces retention."
+    },
+    {
+      "n": 50,
+      "where": "controls[3]; Governance guidance; Governance controls",
+      "type": "applicability",
+      "claim": "Purview retention policies apply to memory files and can target their container URLs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings",
+      "quote": "Retention policies on memory files are managed in the Purview Data lifecycle management tool.\nTo target memory with a different policy, you can use the include or exclude settings to scope your search to your meeting memory container URLs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "The feature documentation states no additional licence for memory beyond its published prerequisites.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams meeting memory licensing pricing storage charges intelligent recap Teams Premium Copilot; \"meeting memory\" \"included\" \"cost\". Read the memory article and intelligent recap licensing: no separate memory licence stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Intelligent recap requires Teams Premium or Microsoft Copilot licensing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings",
+      "quote": "You must assign a Teams Premium license or Microsoft Copilot license to your users.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings to sources for the recap licensing statement; preserve the separately stated Copilot-licensed-invitee prerequisite for memory generation."
+    },
+    {
+      "n": 53,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No customer-visible storage charge for meeting memory is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams meeting memory licensing pricing storage charges intelligent recap Teams Premium Copilot; \"meeting memory\" \"included\" \"cost\". Read the memory article's storage section and returned Microsoft documentation: no memory storage price or billing rule stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "Meeting memory is included with Copilot and recap licensing, justifying cost none.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Teams meeting memory licensing pricing storage charges intelligent recap Teams Premium Copilot; \"meeting memory\" \"included\" \"cost\". Read memory prerequisites/storage and intelligent recap licensing: no passage says memory is included at no additional cost.",
+      "severity": "blocker",
+      "fix": "Change cost to low for the documented administrative and communications work. Replace the rationale with 'Low. Compliance review, configuration and communication are the known costs; additional memory licensing and storage billing are not yet published.' Keep 'no additional licence stated' distinct from a promise of inclusion or no charge."
+    },
+    {
+      "n": 55,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Turning off intelligent recap in meeting options prevents memory generation for that meeting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings",
+      "quote": "Memory generation can be turned off for a specific meeting by turning off Intelligent Recap in the meeting options.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The meeting memory setting can be read back from the policy.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"meeting memory\" \"read\" \"policy\" Teams PowerShell. Opened the memory article, full Get-CsTeamsMeetingPolicy reference and searched Set-CsTeamsMeetingPolicy: no passage identifies a meeting-memory readback property or procedure.",
+      "severity": "major",
+      "fix": "Remove 'and read back from the policy'. Retain the documented Teams admin center configuration route without implying an undocumented readback capability."
+    },
+    {
+      "n": 57,
+      "where": "Why it matters; rationale: impact; What's changing",
+      "type": "record",
+      "claim": "Memory generation applies as soon as the January General Availability rollout arrives.",
+      "status": "contradicted",
+      "source": "Message Center post MC1429018",
+      "quote": "The dates above reflect when admin controls become available.\nMemory file generation will begin 4 weeks after the setting is released to your organization.",
+      "severity": "blocker",
+      "fix": "Keep January CY2027 as the roadmap target, but cite MC1429018 and state its actual sequencing: Targeted Release controls begin early January 2027 and complete mid-January 2027; Worldwide GA controls begin mid-January 2027 and complete late January 2027. Memory file generation begins four weeks after the setting reaches the organisation. Replace 'when GA arrives it will apply to every recapped meeting' and the impact rationale with 'memory generation begins four weeks after controls arrive, for eligible meetings with recap enabled and a Copilot-licensed invitee'."
+    },
+    {
+      "n": 58,
+      "where": "Governance guidance: At rollout; controls",
+      "type": "consistency",
+      "claim": "The controls table covers the default-expiration setting administrators are instructed to configure.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Set the Meeting memory meeting policy and the default expiration in the Teams admin center before GA reaches the tenant.\nThe controls rows cover generation, inspection/removal, Copilot, and Purview retention, but not the Teams default-expiration setting.",
+      "severity": "minor",
+      "fix": "Add a separate 'Default expiration of meeting memory files' control row. The cited memory article documents the Teams admin center surface and configurable five-year default, but gives no exact navigation path; research that path and the automation equivalent before populating the row rather than inventing either."
+    },
+    {
+      "n": 59,
+      "where": "Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "Administrators cannot directly manage meeting memory containers through SharePoint Embedded APIs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings",
+      "quote": "Meeting memory containers are fully managed in Microsoft Teams' services. Admins can't directly use SharePoint Embedded APIs to manage meeting memory containers.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-16T19:29:33.810Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 3,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=558933",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/meeting-policies-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription#manage-copilot-for-teams-meetings-and-events",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/create-retention-policies#create-and-configure-a-retention-policy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy?view=exchange-ps",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether meeting memory is generated and for which meetings",
+        "docs": "https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings",
+        "reachable": true,
+        "segments": [
+          "Meetings",
+          "Meeting policies",
+          "Meeting memory"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Inspecting and removing generated memory for a meeting",
+        "docs": "https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings",
+        "reachable": true,
+        "token": "Get-AIGeneratedKnowledgeContainer",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Copilot in meetings and events",
+        "docs": "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription#manage-copilot-for-teams-meetings-and-events",
+        "reachable": true,
+        "segments": [
+          "Meetings",
+          "Meeting policies",
+          "Recording & transcription",
+          "Copilot"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Copilot in meetings and events",
+        "docs": "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription#manage-copilot-for-teams-meetings-and-events",
+        "reachable": true,
+        "token": "Set-CsTeamsMeetingPolicy",
+        "found": true
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Retention of memory containers",
+        "docs": "https://learn.microsoft.com/purview/create-retention-policies#create-and-configure-a-retention-policy",
+        "reachable": true,
+        "segments": [
+          "Solutions",
+          "Data Lifecycle Management",
+          "Policies",
+          "Retention policies",
+          "New retention policy"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Retention of memory containers",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy?view=exchange-ps",
+        "reachable": true,
+        "token": "New-RetentionCompliancePolicy",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

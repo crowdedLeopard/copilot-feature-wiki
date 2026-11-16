@@ -122,8 +122,8 @@ verification:
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 50
-  confirmed: 50
+  claims: 55
+  confirmed: 55
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -235,5 +235,5 @@ impact: Medium. Organisers and presenters notice if an admin enforces it: presen
 
 <!-- verifier-findings (2026-11-16, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [supported, minor] controls[4].ui; Governance controls: sensitivity-label row / admin-path: The label control is in the Purview Labels creation wizard under Protect Teams meetings and chats > Settings for Teams meetings and chats > Control who can record and transcribe. | Found: On the Define the scope for this label page, make sure Files & other data assets, Emails, and Meetings are selected. ... On the Choose protection settings for types of items you selected page, select Protect Teams meetings and chats | Fix: Insert 'Define the scope for this label' between 'Create a label' and 'Choose protection settings for types of items you selected' in controls[4].ui.path and the rendered row. Its required selections are already correctly supplied in the note; the cited procedure includes this scope-selection page. | Source: https://learn.microsoft.com/microsoftteams/configure-meetings-sensitive-protection
+- [supported, minor] controls[4].ui; Governance controls: sensitivity-label row / admin-path: The label creation path reaches Control who can record and transcribe through Protect Teams meetings and chats. | Found: On the Define the scope for this label page, make sure Files & other data assets, Emails, and Meetings are selected. ... On the Choose protection settings for types of items you selected page, select Protect Teams meetings and chats | Fix: Insert 'Define the scope for this label' after 'Create a label' and before 'Choose protection settings for types of items you selected' in controls[4].ui.path and the rendered row. Keep the existing note specifying Files & other data assets, Emails and Meetings; the cited procedure includes this scope-selection page. | Source: https://learn.microsoft.com/microsoftteams/configure-meetings-sensitive-protection
 -->

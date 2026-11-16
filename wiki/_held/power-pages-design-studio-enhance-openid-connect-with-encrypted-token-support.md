@@ -75,16 +75,16 @@ changes:
     note: "Default state now read as on, from the roadmap's \"Enabled for end users automatically\"; action moved to prepare; admin path completed; the August CY2026 preview question updated."
 version: 2
 verification:
-  status: "verified-with-gaps"
+  status: "held"
   date: "2026-11-16"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 42
-  confirmed: 41
+  claims: 47
+  confirmed: 45
   unconfirmed: 0
-  contradicted: 1
-  attempts: 0
+  contradicted: 2
+  attempts: 1
 ---
 
 ## What's changing
@@ -188,11 +188,13 @@ cost: Low. Licensing for this feature is not yet published; the only cost the so
 impact: Low. Site makers and identity administrators notice it when connecting a provider that encrypts ID tokens; the roadmap says sign-in flows are not changed for existing users.
 -->
 
-<!-- verifier-findings (2026-11-16, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
 The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: OpenID Connect governance is reached in Power Platform admin center through Manage > Products > Power Pages > Settings > Authentication > OpenID Connect > environment > Manage. | Found: Under Products, select Power Pages.
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: OpenID Connect governance is under Manage > Products > Power Pages > Settings > Authentication > OpenID Connect > environment > Manage. | Found: In the left navigation pane, select Manage.
+Under Products, select Power Pages.
 Select the Settings tab.
 Under Authentication, select the authentication option you want to manage.
-Select an environment, and then select Manage. | Fix: Keep the cited operational path. Note that https://learn.microsoft.com/power-platform/release-plan/2025wave2/power-pages/manage-external-authentication-provider-governance instead gives Manage > Power Pages > Governance settings > Authentication providers. Also mention that after Manage the administrator chooses all, specific, excluded or no sites before reviewing and applying the change. | Source: https://learn.microsoft.com/power-pages/security/external-auth-control
-- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: The checklist explicitly recommends retesting Registration claims mapping and Login claims mapping, but the controls table names only general provider configuration. | Found: Retest sign-in and Registration claims mapping and Login claims mapping for existing OpenID Connect providers; table: OpenID Connect provider configuration on a site. | Fix: Add a row explicitly naming Registration claims mapping and Login claims mapping, or expand the existing provider-configuration row to name these controls. Cite https://learn.microsoft.com/power-pages/security/authentication/openid-settings#set-up-additional-claims and describe these as existing controls rather than encryption-specific controls.
+Select an environment, and then select Manage. | Fix: Keep the operational path. Explain that after Manage the admin chooses site targeting, selects Continue, reviews affected sites and confirms Update. Note that the release-plan search excerpt at https://learn.microsoft.com/power-platform/release-plan/2025wave2/power-pages/manage-external-authentication-provider-governance instead gives Manage > Power Pages > Governance settings > Authentication providers; prefer the cited operational guidance. | Source: https://learn.microsoft.com/power-pages/security/external-auth-control
+- [contradicted, blocker] controls[1].api; Governance controls table / absence: Automation for existing OpenID Connect provider configuration on a site is not documented. | Found: With this feature, the Microsoft Power Platform CLI enables CI/CD (Continuous Integration/Continuous Deployment) of a Power Pages site configuration. | Fix: Replace the blanket automation gap with PAC CLI deployment of provider site settings. Microsoft lists adx_sitesetting as a supported table at https://learn.microsoft.com/power-pages/configure/power-platform-cli, and https://learn.microsoft.com/power-pages/security/authentication/openid-provider documents OpenID Connect configuration as site settings. Use kind pac-cli, call pac pages upload --path "<site-folder>" --modelVersion 2, docs https://learn.microsoft.com/power-platform/developer/cli/reference/pages#pac-pages-upload. Explain that this uploads prepared website configuration containing the provider settings, not an encryption-specific switch. | Source: https://learn.microsoft.com/power-pages/configure/power-platform-cli
+- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: The checklist names Registration claims mapping and Login claims mapping, but no controls row explicitly names them. | Found: Retest sign-in and Registration claims mapping and Login claims mapping for existing OpenID Connect providers; table: OpenID Connect provider configuration on a site. | Fix: Expand the provider-configuration row to explicitly name Registration claims mapping and Login claims mapping, or add a dedicated row for these existing controls. Cite https://learn.microsoft.com/power-pages/security/authentication/openid-settings#set-up-additional-claims and distinguish these existing settings from undocumented encryption-specific controls.
 -->

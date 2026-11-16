@@ -1,0 +1,456 @@
+{
+  "slug": "power-pages-administration-and-governance-manage-external-authentication-providers-with-gr",
+  "roadmapId": 578062,
+  "title": "Power Pages: environment-level governance of external authentication providers",
+  "status": "needs-correction",
+  "date": "2026-11-16",
+  "version": 2,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "grace",
+    "since": "2026-11-16",
+    "reasons": [
+      "7 blocking findings (claims 13, 14, 21, 22, 23, 24, 27)",
+      "published before the check existed: kept live with a notice while a corrected version is prepared"
+    ]
+  },
+  "counts": {
+    "claims": 31,
+    "confirmed": 23,
+    "unconfirmed": 3,
+    "contradicted": 5,
+    "blocker": 7,
+    "major": 0,
+    "minor": 5
+  },
+  "summary": "Hold: the PowerShell command changes who can manage site visibility, not the non-production public-access policy shown beside it. The page also assumes licence inclusion without evidence and says authentication defaults are unclear even though Microsoft documents them.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status",
+      "type": "record",
+      "claim": "The roadmap status is in development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "Preview is listed for November CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"November CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "General availability is listed for January CY2027.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"January CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide, GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The release phases are General Availability and Preview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms",
+      "type": "record",
+      "claim": "The listed platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "title; summary; What's changing; Scope",
+      "type": "behaviour",
+      "claim": "Administrators can govern the external authentication options available to Power Pages makers across an environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/security/external-auth-control",
+      "quote": "Authentication governance gives you, as an admin, control over which authentication options makers can configure for Power Pages sites in your environments.",
+      "severity": "minor",
+      "fix": "Acknowledge that Learn now documents the control while the roadmap remains In development. Flag the authentication-protocol and individual OAuth provider controls as preview, as the cited Learn page does, rather than describing all granular behaviour as final."
+    },
+    {
+      "n": 8,
+      "where": "summary; What's changing",
+      "type": "behaviour",
+      "claim": "Environment-level governance permits site-specific exceptions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/security/external-auth-control",
+      "quote": "For targeting choices that apply to selected sites, select the sites to include or exclude.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Governance guidance; rationale: impact",
+      "type": "record",
+      "claim": "Makers will only see and select approved identity providers.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Makers will only see and select from the approved IDPs when setting up authentication",
+      "severity": "minor",
+      "fix": "Distinguish the roadmap wording from current Learn guidance: blocked options remain visible but dimmed and cannot be configured. State that makers can configure only allowed options; cite https://learn.microsoft.com/power-pages/security/external-auth-control#what-makers-see."
+    },
+    {
+      "n": 10,
+      "where": "What's changing: roadmap navigation path",
+      "type": "record",
+      "claim": "The roadmap gives Power Platform admin center > Manage > Power Pages > Governance settings > Authentication providers.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Navigate to Manage > Power Pages > Governance settings > Authentication providers.",
+      "severity": "minor",
+      "fix": "Keep this explicitly attributed to the roadmap and explain that current Learn uses Manage > Power Pages > Settings > Authentication > option > environment > Manage, as already shown in the table. Identify this as a source difference rather than leaving two unexplained paths."
+    },
+    {
+      "n": 11,
+      "where": "What's changing: roadmap configuration description",
+      "type": "record",
+      "claim": "The roadmap describes configuring allowed or restricted providers, enabling controls for environments and managing site exceptions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Here, you can configure allowed or restricted external IDPs, enable the control for environments, and manage exceptions for specific sites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing: automatic enablement",
+      "type": "record",
+      "claim": "The roadmap entry describes automatic enablement.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Enabled for end users automatically",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing: restriction default",
+      "type": "default",
+      "claim": "Whether any restriction applies by default is unclear.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-pages/security/external-auth-control",
+      "quote": "By default, all authentication options are allowed for makers to configure. No action is required unless your organization wants to restrict the options available to makers.",
+      "severity": "blocker",
+      "fix": "Replace the uncertainty with: 'Learn says all authentication options are allowed by default; administrators configure restrictions if required. Previously configured tenant restrictions are preserved and should be reviewed per environment.' Keep the roadmap's automatic-availability wording separate."
+    },
+    {
+      "n": 14,
+      "where": "What's changing: I found no Learn page yet",
+      "type": "absence",
+      "claim": "There is no Microsoft Learn page describing this feature.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-pages/security/external-auth-control",
+      "quote": "# Use governance controls to manage site authentication",
+      "severity": "blocker",
+      "fix": "Remove 'I found no Learn page yet.' Cite the already-listed authentication governance page and use its documented defaults, enforcement behaviour and preview qualifications."
+    },
+    {
+      "n": 15,
+      "where": "front matter: defaultState",
+      "type": "default",
+      "claim": "The restriction control is admin-opt-in.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/security/external-auth-control",
+      "quote": "By default, all authentication options are allowed for makers to configure. No action is required unless your organization wants to restrict the options available to makers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Without configured restrictions, makers can choose supported authentication options for a site.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/security/external-auth-control",
+      "quote": "By default, all authentication options are allowed for makers to configure.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Authentication governance is configured in Power Platform admin center > Manage > Power Pages > Settings > Authentication > option > environment > Manage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/security/external-auth-control#configure-authentication-governance-controls",
+      "quote": "Under **Authentication**, select the authentication option you want to manage.\n6. Select an environment, and then select **Manage**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[0].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "Authentication options can target all sites, all except selected sites, selected sites only or no sites in an environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/security/external-auth-control",
+      "quote": "All sites in this environment | Makers can configure the authentication option for every site in the environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[0].api; Governance controls closing paragraph",
+      "type": "absence",
+      "claim": "Microsoft has not documented an API or automation equivalent for authentication governance.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Pages authentication governance controls external-auth-control PowerShell API tenant settings; \"Power Pages\" \"authentication\" \"governance\" \"API\" \"PowerShell\" external controls. Opened external-auth-control and Set-TenantSettings; no equivalent documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Non-production public-access governance is under Manage > Power Pages > Settings > Set site visibility to public access for non-production sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/admin/site-visibility-governance",
+      "quote": "5. Select **Set site visibility to public access for non-production sites**.\n6. Select the environment you want to manage.\n7. Choose a policy value:",
+      "severity": "minor",
+      "fix": "Append '> environment' to controls[1].ui.path and the rendered table so readers reach the policy values."
+    },
+    {
+      "n": 21,
+      "where": "controls[1].scope; Governance controls table",
+      "type": "applicability",
+      "claim": "The non-production public-access policy shown in this row has tenant scope.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-pages/admin/site-visibility-governance",
+      "quote": "Select the environment you want to manage.",
+      "severity": "blocker",
+      "fix": "Set controls[1].scope to 'environment' and render 'Environment': a tenant administrator selects an environment and can target sites within it. Do not equate the administrator's tenant role with the policy's scope."
+    },
+    {
+      "n": 22,
+      "where": "controls[1].api; Governance controls table and closing paragraph",
+      "type": "command",
+      "claim": "Set-TenantSettings with enableSystemAdminsToChangeSiteVisibility = $false is the automation equivalent of the non-production public-access policy.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-pages/security/site-visibility#permissions-required-to-change-site-visibility",
+      "quote": "When you don't want all system administrators to be able to change site visibility, set `enableSystemAdminsToChangeSiteVisibility` to `false`. Then delegate site visibility management to a select set of users.",
+      "severity": "blocker",
+      "fix": "Remove this command from the non-production public-access row and remove the equivalence asserted below the table. It controls delegation of site-visibility permissions, not the environment's None/All/site-targeting policy. If retained, give it a separate, accurately named tenant delegation row."
+    },
+    {
+      "n": 23,
+      "where": "Governance controls closing paragraph: authentication role",
+      "type": "role",
+      "claim": "The Power Platform administrator role is required to configure authentication governance.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Power Pages authentication governance configure required role Power Platform administrator. Read external-auth-control and admin-roles search excerpts; neither states an exclusive required role for this authentication control.",
+      "severity": "blocker",
+      "fix": "Remove the assertion that Power Platform administrator is required for authentication governance. State that the feature page describes administrator configuration but does not specify the exact required role."
+    },
+    {
+      "n": 24,
+      "where": "Governance controls closing paragraph: public-access role",
+      "type": "role",
+      "claim": "The Power Platform administrator role is required to configure the non-production public-access policy.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Power Pages authentication governance configure required role Power Platform administrator. Opened site-visibility-governance and site-visibility; the former says tenant admins, while the latter's named roles concern a different site-visibility permissions control.",
+      "severity": "blocker",
+      "fix": "Replace this part of 'Power Platform admin is required for both settings' with 'Tenant administrators configure non-production public-access governance', matching https://learn.microsoft.com/power-pages/admin/site-visibility-governance. Do not assert an exclusive named role."
+    },
+    {
+      "n": 25,
+      "where": "front matter: licensing; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Feature-specific licensing requirements have not been published, so the licensing model is unknown.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Pages authentication governance external authentication controls licensing Managed Environments license pricing meter. Read external-auth-control, release-plan search excerpt and Power Platform licensing FAQs excerpts; no feature-specific licence requirement stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No feature-specific meter is published for this governance control.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Pages authentication governance external authentication controls licensing Managed Environments license pricing meter. Read external-auth-control and pay-as-you-go meters search excerpt; the latter meters site users, not authentication governance.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Cost and licensing: Treat it as included in Power Pages",
+      "type": "licensing",
+      "claim": "Administrators should treat the authentication governance feature as included in Power Pages.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Power Pages authentication governance external authentication controls licensing Managed Environments license pricing meter. Read external-auth-control and Power Platform licensing FAQs excerpts; neither states that this feature is included.",
+      "severity": "blocker",
+      "fix": "Delete 'Treat it as included in Power Pages.' Retain licensing.model = 'unknown' and say 'Feature-specific licensing and metering have not yet been published; the known preparation cost is administrator time.'"
+    },
+    {
+      "n": 28,
+      "where": "Cost and licensing: Managed Environments dependency",
+      "type": "absence",
+      "claim": "Microsoft has not published whether authentication governance depends on Managed Environments.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Power Pages\" \"authentication governance\" \"Managed Environments\" license. Read external-auth-control, licensing FAQs and managed-environment-licensing excerpts; no dependency for this authentication control was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Why it matters; Risk assessment; Governance controls; rationale: risk and impact",
+      "type": "behaviour",
+      "claim": "Blocking an authentication option can stop existing users signing in through that option on live sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/security/external-auth-control",
+      "quote": "When a governance setting that blocks an authentication option takes effect, users can no longer sign in or register by using that authentication option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Governance controls closing paragraph",
+      "type": "behaviour",
+      "claim": "Authentication governance takes precedence over an existing maker configuration that uses a blocked option.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/security/external-auth-control",
+      "quote": "If an existing site configuration uses a sign-in method associated with a blocked option, the governance setting takes precedence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "front matter: action",
+      "type": "consistency",
+      "claim": "The prepare action rating fits a low-risk optional restriction control that changes nothing until configured.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-pages/security/external-auth-control",
+      "quote": "No action is required unless your organization wants to restrict the options available to makers.",
+      "severity": "minor",
+      "fix": "Set action to 'review'. The standard assigns review to an optional new control with no default behaviour change; the page rates the remaining exposure low, so the high-risk-control exception does not apply."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-16T19:29:29.233Z",
+    "summary": {
+      "links": 5,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=578062",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-pages/admin/admin-center-security",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-pages/security/external-auth-control#configure-authentication-governance-controls",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-pages/admin/site-visibility-governance",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-pages/security/site-visibility#permissions-required-to-change-site-visibility",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which external authentication providers sites in an environment may use",
+        "docs": "https://learn.microsoft.com/power-pages/security/external-auth-control#configure-authentication-governance-controls",
+        "reachable": true,
+        "segments": [
+          "Manage",
+          "Power Pages",
+          "Settings",
+          "Authentication",
+          "option",
+          "Manage"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Public visibility for non-production sites",
+        "docs": "https://learn.microsoft.com/power-pages/admin/site-visibility-governance",
+        "reachable": true,
+        "segments": [
+          "Manage",
+          "Power Pages",
+          "Settings",
+          "Set site visibility to public access for non-production sites"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Public visibility for non-production sites",
+        "docs": "https://learn.microsoft.com/power-pages/security/site-visibility#permissions-required-to-change-site-visibility",
+        "reachable": true,
+        "token": "Set-TenantSettings",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

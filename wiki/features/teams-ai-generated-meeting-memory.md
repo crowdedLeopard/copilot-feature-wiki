@@ -88,6 +88,17 @@ changes:
   - date: "2026-11-16"
     note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
 version: 2
+verification:
+  status: "needs-correction"
+  date: "2026-11-16"
+  version: 2
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 59
+  confirmed: 53
+  unconfirmed: 2
+  contradicted: 4
+  attempts: 1
 ---
 
 ## What's changing
@@ -175,4 +186,25 @@ The meeting memory policy setting has no documented cmdlet parameter yet, so it 
 risk: High. Default-on, five-year, user-invisible AI-derived records that outlive transcripts and lack Information Barriers support.
 cost: None. Included with Copilot and recap licensing.
 impact: High. Applies to every recapped meeting in the tenant once GA arrives.
+-->
+
+<!-- verifier-findings (2026-11-16, needs-correction; checked by gpt-6.1-sol)
+The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
+- [supported, minor] summary; What's changing; Why it matters / behaviour: Copilot, Facilitator and other Microsoft AI tools use meeting memory to answer meeting questions. | Found: Copilot and Facilitator use meeting memory to answer questions about a meeting. | Fix: Retain the Learn description but also cite MC1429018 at https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1429018: the notice says Facilitator uses memory at release and Copilot will use it in the future. Explicitly distinguish that release sequencing from Learn's broader description. | Source: https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings
+- [contradicted, blocker] What's changing; Risk assessment: Data exposure / applicability: Memory has the same access boundary as the recap, extended by recap sharing. | Found: Memory knowledge is only shared with users who are in the same tenant as the meeting organizer. | Fix: Qualify both access descriptions: users must have meeting or shared-recap access and be in the same tenant as the organiser. Remove 'the same boundary as the recap': https://learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings explicitly allows sharing a recap with external attendees, whereas MC1429018 restricts memory knowledge to the organiser's tenant.
+- [supported, minor] What's changing / behaviour: Opening a memory search result redirects to the meeting recap page. | Found: Opening a memory file from a search point redirects the user to the meeting recap page or meeting invite. | Fix: Complete the destination description: 'redirects to the meeting recap page or meeting invite'. | Source: https://learn.microsoft.com/microsoftteams/ai-archive-teams-meetings
+- [supported, minor] controls[2].api; Governance controls / command: Set-CsTeamsMeetingPolicy -Identity <policy> -Copilot accepts Enabled, EnabledWithTranscript, EnabledWithTranscriptDefaultOn or Disabled. | Found: PowerShell setting value
+Enabled
+EnabledWithTranscript
+EnabledWithTranscriptDefaultOn
+Disabled
+Set-CsTeamsMeetingPolicy -Identity <policy name> -Copilot Enabled | Fix: Keep the call supported by the cited management article, but note that https://learn.microsoft.com/powershell/module/teams/set-csteamsmeetingpolicy currently lists only Enabled and EnabledWithTranscript in its -Copilot parameter description; the management article documents all four values. | Source: https://learn.microsoft.com/microsoftteams/copilot-teams-transcription#manage-copilot-for-teams-meetings-and-events
+- [contradicted, blocker] controls[3].api; Governance controls / command: New-RetentionCompliancePolicy alone is the automation equivalent for configuring retention of memory containers. | Found: Policies are not valid until a rule is added (for retention policies) or a label is added (for retention label policies). In addition, at least one location parameter must be defined to create a retention policy or retention label policy. | Fix: Replace the bare cmdlet with a scoped policy-and-rule sequence in Security & Compliance PowerShell: New-RetentionCompliancePolicy -Name <policy> -SharePointLocation <container-url>; New-RetentionComplianceRule -Name <rule> -Policy <policy> -RetentionDuration <days> -RetentionComplianceAction <action>. Explain that the action is Keep, Delete or KeepAndDelete and cite https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancerule?view=exchange-ps for the rule. Do not imply that creating an unscoped policy alone enforces retention. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy?view=exchange-ps
+- [supported, minor] Cost and licensing / licensing: Intelligent recap requires Teams Premium or Microsoft Copilot licensing. | Found: You must assign a Teams Premium license or Microsoft Copilot license to your users. | Fix: Add https://learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings to sources for the recap licensing statement; preserve the separately stated Copilot-licensed-invitee prerequisite for memory generation. | Source: https://learn.microsoft.com/microsoftteams/intelligent-recap-calls-meetings
+- [unsupported, blocker] front matter: cost; rationale: cost / cost: Meeting memory is included with Copilot and recap licensing, justifying cost none. | Found: Searched: Teams meeting memory licensing pricing storage charges intelligent recap Teams Premium Copilot; "meeting memory" "included" "cost". Read memory prerequisites/storage and intelligent recap licensing: no passage says memory is included at no additional cost. | Fix: Change cost to low for the documented administrative and communications work. Replace the rationale with 'Low. Compliance review, configuration and communication are the known costs; additional memory licensing and storage billing are not yet published.' Keep 'no additional licence stated' distinct from a promise of inclusion or no charge.
+- [unsupported, major] Governance controls / behaviour: The meeting memory setting can be read back from the policy. | Found: Searched: "meeting memory" "read" "policy" Teams PowerShell. Opened the memory article, full Get-CsTeamsMeetingPolicy reference and searched Set-CsTeamsMeetingPolicy: no passage identifies a meeting-memory readback property or procedure. | Fix: Remove 'and read back from the policy'. Retain the documented Teams admin center configuration route without implying an undocumented readback capability.
+- [contradicted, blocker] Why it matters; rationale: impact; What's changing / record: Memory generation applies as soon as the January General Availability rollout arrives. | Found: The dates above reflect when admin controls become available.
+Memory file generation will begin 4 weeks after the setting is released to your organization. | Fix: Keep January CY2027 as the roadmap target, but cite MC1429018 and state its actual sequencing: Targeted Release controls begin early January 2027 and complete mid-January 2027; Worldwide GA controls begin mid-January 2027 and complete late January 2027. Memory file generation begins four weeks after the setting reaches the organisation. Replace 'when GA arrives it will apply to every recapped meeting' and the impact rationale with 'memory generation begins four weeks after controls arrive, for eligible meetings with recap enabled and a Copilot-licensed invitee'.
+- [contradicted, minor] Governance guidance: At rollout; controls / consistency: The controls table covers the default-expiration setting administrators are instructed to configure. | Found: Set the Meeting memory meeting policy and the default expiration in the Teams admin center before GA reaches the tenant.
+The controls rows cover generation, inspection/removal, Copilot, and Purview retention, but not the Teams default-expiration setting. | Fix: Add a separate 'Default expiration of meeting memory files' control row. The cited memory article documents the Teams admin center surface and configurable five-year default, but gives no exact navigation path; research that path and the automation equivalent before populating the row rather than inventing either.
 -->

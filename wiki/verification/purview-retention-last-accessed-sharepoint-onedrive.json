@@ -1,0 +1,750 @@
+{
+  "slug": "purview-retention-last-accessed-sharepoint-onedrive",
+  "roadmapId": 472030,
+  "title": "Microsoft Purview: retention based on last accessed date for SharePoint and OneDrive files",
+  "status": "needs-correction",
+  "date": "2026-11-16",
+  "version": 2,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "grace",
+    "since": "2026-11-16",
+    "reasons": [
+      "13 blocking findings (claims 13, 17, 20, 34, 35, 36, 37, 39, 40, 41, 43, 50, 54)",
+      "published before the check existed: kept live with a notice while a corrected version is prepared"
+    ]
+  },
+  "counts": {
+    "claims": 56,
+    "confirmed": 41,
+    "unconfirmed": 7,
+    "contradicted": 8,
+    "blocker": 13,
+    "major": 1,
+    "minor": 9
+  },
+  "summary": "Hold: the briefing omits Microsoft's Office-file-only restriction and recommends disposition review for retention policies, which do not support it. The archive command also lacks required arguments, while the licensing assurance and the transfer of archive access-history limitations to Purview are not established by the sources.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "Microsoft plans retention based on when a user last accessed a SharePoint or OneDrive item.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This creates the ability to apply Retention to each SharePoint or OneDrive item based on when it was last accessed by a user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status",
+      "type": "record",
+      "claim": "The roadmap status is in-development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap targets General Availability for February CY2027.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"February CY2027\"",
+      "severity": "minor",
+      "fix": "Keep the roadmap target, but add the more specific supplied notice MC999442: Worldwide GA is planned to begin late February 2027 and complete by late March 2027. Cite https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC999442."
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap lists public preview for January CY2027.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"January CY2027\"",
+      "severity": "minor",
+      "fix": "Keep the roadmap target, but add MC999442's rollout window: preview is planned to begin mid-January 2027 and complete by late February 2027. Attribute the window to Microsoft's notice rather than presenting January as the whole rollout."
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; Scope",
+      "type": "record",
+      "claim": "The listed cloud is Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms",
+      "type": "record",
+      "claim": "The listed platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap lists Microsoft Copilot (Microsoft 365) and Microsoft Purview as products.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\", \"Microsoft Purview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap item was created in December 2024.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"created\": \"2024-12-11T00:15:40\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The release schedule has moved several times since the item was created.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"472030\" retention roadmap timeline last accessed. Read the supplied roadmap and MC999442; they establish a revised schedule but not several successive revisions.",
+      "severity": "major",
+      "fix": "Replace 'dates that have moved several times' with 'a timeline revised in Microsoft's October 13, 2026 update to MC999442'."
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Microsoft tags this item as part of the Copilot Control System.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "#copilotcontrolsystem",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: defaultState",
+      "type": "default",
+      "claim": "The new retention control is admin-opt-in: administrators must configure a policy or label to use it.",
+      "status": "supported",
+      "source": "Message Center post MC999442",
+      "quote": "After the rollout, admins can use the retention control When items were last accessed when configuring labels and policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: licensing.model; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The last-accessed feature is included in existing Purview entitlements with no additional licence required.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Purview retention last accessed SharePoint OneDrive retention policies licensing; \"Purview\" \"last accessed\" \"retention\" licensing labels policies. Read retention, retention-settings and the Purview service description; none states this feature's entitlement.",
+      "severity": "blocker",
+      "fix": "Set licensing.model to 'unknown' and say 'Feature-specific licensing for last-accessed retention is not yet published.' Present the documented general retention entitlements separately, without asserting they establish this option's licence."
+    },
+    {
+      "n": 14,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 E3 includes rights for basic retention policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "For organization-wide, location-wide, or include/exclude retention policies, the following licenses provide user rights:\n- Microsoft 365 E5/A5/G5/E3/A3/G3, Business Premium",
+      "severity": "minor",
+      "fix": "Cite the Microsoft Purview service description. Describe E3 as one qualifying plan, not a universal minimum: the same section lists Business Premium, Office 365 E3 and SharePoint Plan 2 rights."
+    },
+    {
+      "n": 15,
+      "where": "front matter: licensing.notes; Cost and licensing; Governance guidance",
+      "type": "licensing",
+      "claim": "Microsoft 365 E5 or Microsoft Purview Suite provides rights for adaptive retention policy scopes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "If the retention policy uses an adaptive policy scope, then one of the following licenses is required to provide user rights:\n- Microsoft 365 E5/A5/G5\n- Microsoft Purview Suite/EDU/GOV/FLW",
+      "severity": "minor",
+      "fix": "Add the Microsoft Purview service description to sources and cite its adaptive-scope licensing section; qualify this as general retention licensing."
+    },
+    {
+      "n": 16,
+      "where": "Cost and licensing; Governance guidance",
+      "type": "licensing",
+      "claim": "Microsoft 365 E5 or Microsoft Purview Suite provides rights for disposition review.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Trigger a disposition review at the end of the retention period\nDuring the retention period mark items as a record or a regulatory record\nAfter the retention period, automatically change the retention label,\nRequire these specific licenses to provide users rights:\n- Microsoft 365 E5/A5/G5",
+      "severity": "minor",
+      "fix": "Cite the service description's 'Licensing for retention labels' section, which lists Microsoft 365 E5/A5/G5 and Microsoft Purview Suite among qualifying licences. Do not treat that general entitlement as confirmation of last-accessed disposition support."
+    },
+    {
+      "n": 17,
+      "where": "front matter: cost; rationale: cost",
+      "type": "consistency",
+      "claim": "A cost rating of none is justified for this feature.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "cost: \"none\"; licensing.notes: \"Check the licensing guidance for the specific option when published.\"; rationale: \"Cost: None. Existing Purview entitlements.\"",
+      "severity": "blocker",
+      "fix": "Change cost to 'low' for the known administrative effort and state in the rationale that feature-specific licensing is not yet published. The standard permits 'none' only with an explicit inclusion statement, not an assumption from general retention licensing."
+    },
+    {
+      "n": 18,
+      "where": "controls[0].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "Retention policies are created in the Microsoft Purview portal under Solutions > Data Lifecycle Management > Policies > Retention policies > New retention policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-retention-policies#create-and-configure-a-retention-policy",
+      "quote": "Solutions > Data Lifecycle Management > Policies > Retention policies.\n2. Select New retention policy to start the Create retention policy configuration",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[0].api; Governance controls",
+      "type": "command",
+      "claim": "New-RetentionCompliancePolicy and New-RetentionComplianceRule are the PowerShell cmdlets used to create general retention policies and their rules.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy?view=exchange-ps",
+      "quote": "Use the New-RetentionCompliancePolicy cmdlet to create new retention policies and new retention label policies in the Microsoft Purview compliance portal. Creating a new policy also requires use of the New-RetentionComplianceRule cmdlet.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[1].api; Governance controls",
+      "type": "command",
+      "claim": "The displayed New-SPOFileArchivePolicy command followed by Set-SPOFileArchivePolicy -State Active configures and activates an archive policy.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/new-spofilearchivepolicy",
+      "quote": "[-IsWhatIfMode <Boolean>]\nSpecifies the number of months since a file was last accessed before it becomes eligible for archiving.",
+      "severity": "blocker",
+      "fix": "Supply '-IsWhatIfMode $true', not a bare Boolean parameter, and rename '<days>' to '<months>'. Activation must include '-PolicyId <guid>': 'Set-SPOFileArchivePolicy -PolicyId <guid> -State Active', as verified at https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spofilearchivepolicy. For SelectedSites, add at least one included site before activation. State that Active plus simulation enabled evaluates without archiving."
+    },
+    {
+      "n": 21,
+      "where": "controls[1].note; What's changing; Governance controls",
+      "type": "availability",
+      "claim": "The related SharePoint Advanced Management inactive-files archiving policy is in preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files",
+      "quote": "Manage inactive files policy with SharePoint Advanced Management (preview)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[1].scope",
+      "type": "applicability",
+      "claim": "Archive policies are created for the tenant, with policy scope selecting the sites they govern.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/new-spofilearchivepolicy",
+      "quote": "Creates a new file archive policy for the tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[1].note; What's changing",
+      "type": "licensing",
+      "claim": "The related inactive-files policy needs a SharePoint Advanced Management entitlement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files",
+      "quote": "Your tenant has the required SharePoint Advanced Management entitlement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[1].ui",
+      "type": "absence",
+      "claim": "An admin UI for inactive-files archive policy management is not yet documented for the current preview.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint Advanced Management inactive files policy admin center UI PowerShell preview. Opened manage-inactive-files; it states that the current preview is available only through PowerShell and SharePoint Admin Agent support is planned.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[2].ui; controls[2].api; Governance controls",
+      "type": "absence",
+      "claim": "Learn does not yet document the Purview last-accessed wizard option or its PowerShell configuration.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview retention \"last accessed\" \"When items\"; \"retention\" \"last accessed\" \"New-RetentionComplianceRule\". Opened retention, retention-settings, create-retention-policies, retention-cmdlets and New-RetentionComplianceRule; no last-accessed option or value is documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Existing retention policies and labels can start retention when content was created.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention-settings",
+      "quote": "For the start of the retention period, you can choose when the content was created",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The existing last-modified start option is supported only for files in SharePoint, OneDrive and Microsoft 365 Groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention-settings",
+      "quote": "supported only for files and the SharePoint, OneDrive, and Microsoft 365 Groups, when the content was last modified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Retention labels provide an existing start option based on when content was labelled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention",
+      "quote": "When the content was labeled. Available with retention labels, for documents in SharePoint and OneDrive, and for email items.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Retention labels provide an existing event-based start option.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention",
+      "quote": "When an event occurs. Available with retention labels that are configured for event-based retention, such as when employees leave the organization or contracts expire.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The related archive policy's last access date records human access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files",
+      "quote": "Last access date (LAD) is the recorded date a human last accessed a file.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "AI agent, application, script and system access do not update the related archive policy's last access date.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files",
+      "quote": "AI agent, application, script, and system access don't update it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The related archive policy's last access date can take up to 30 days to update.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files",
+      "quote": "Last access date updates can take up to 30 days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What's changing",
+      "type": "date",
+      "claim": "Human access before July 2025 might be missing from the related archive policy's access history.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files",
+      "quote": "Human access before July 2025 might not have been captured, so a recorded LAD can make a file look inactive longer than it really was.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Why it matters; rationale: risk",
+      "type": "applicability",
+      "claim": "Purview last-accessed deletion uses an access metric that lags by up to 30 days.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Purview \"last accessed\" \"30 days\" retention. Opened retention, retention-settings and manage-inactive-files. The 30-day statement covers the archive policy; no read source assigns it to Purview last-accessed retention.",
+      "severity": "blocker",
+      "fix": "State the 30-day lag only for the related SharePoint Advanced Management archive preview. For Purview, say the access-update latency is not yet published; frame possible similar risks conditionally throughout the body and rationale."
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Change & support; Governance guidance",
+      "type": "applicability",
+      "claim": "Purview last-accessed retention has the archive policy's July 2025 access-history boundary.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Purview retention last accessed SharePoint OneDrive retention policies licensing; Purview \"last accessed\" \"30 days\" retention. Opened retention, retention-settings and manage-inactive-files; the July 2025 boundary is documented for archiving, not Purview.",
+      "severity": "blocker",
+      "fix": "Do not prescribe a July 2025 Purview threshold as a documented requirement. Keep that boundary in the explicitly separate archive-preview discussion and ask administrators to verify Purview's own access-history semantics when published."
+    },
+    {
+      "n": 36,
+      "where": "Why it matters",
+      "type": "date",
+      "claim": "The last-access metric was only recorded from mid-2025.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files",
+      "quote": "July 2025 is a data-quality boundary, not an archiving restriction. Older LADs still exist, and policies use them.",
+      "severity": "blocker",
+      "fix": "Replace 'only recorded from mid-2025' with 'the related archive preview warns that some human access before July 2025 might not have been captured'. Do not imply that older recorded dates do not exist or that Purview shares this boundary."
+    },
+    {
+      "n": 37,
+      "where": "Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Choosing an inactivity threshold entirely after July 2025 makes the access history complete.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files",
+      "quote": "This provides a more complete observation period; it doesn't exclude files with older LADs. Review simulation results with site owners—simulation doesn't recover missing access history.",
+      "severity": "blocker",
+      "fix": "For the related archive preview, say this provides a more complete observation period, not complete history or exclusion of old LADs; require review of older-date candidates. Remove the unconditional application of this advice to Purview until its semantics are documented."
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The announced last-accessed feature supports deletion after an inactivity period.",
+      "status": "supported",
+      "source": "Message Center post MC999442",
+      "quote": "In this release, users will be able to set up delete policies based on Last Accessed Date of Office file types.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "summary; What's changing; Governance guidance: At rollout",
+      "type": "applicability",
+      "claim": "Administrators can use the new last-accessed trigger with retain-only or retain-then-delete configurations.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Purview last accessed retention policies simulation retain only disposition review. Read retention-settings, retention and MC999442. General retention supports those modes, but the supplied feature notice describes last-accessed delete policies only.",
+      "severity": "blocker",
+      "fix": "Describe the announced release as last-accessed deletion for Office files. Remove the instruction to start with last-accessed retain-only or retain-then-delete; list those modes as unconfirmed rather than assuming general retention capabilities apply."
+    },
+    {
+      "n": 40,
+      "where": "Why it matters; Risk assessment: Autonomy & actions; Governance guidance: At rollout",
+      "type": "applicability",
+      "claim": "A retention policy can be configured for retain-then-delete with disposition review.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/retention",
+      "quote": "| Disposition review | No | Yes |",
+      "severity": "blocker",
+      "fix": "State that disposition review is a retention-label capability, not a retention-policy capability. Remove the unconditional instruction to combine it with the new last-accessed policy; compatibility of last-accessed deletion with disposition review needs feature-specific confirmation."
+    },
+    {
+      "n": 41,
+      "where": "Why it matters; Cost and licensing; Governance guidance",
+      "type": "applicability",
+      "claim": "Simulation is an available safety control for the new Purview last-accessed retention feature.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Purview last accessed retention policies simulation retain only disposition review. Read create-retention-policies, retention-settings, MC999442 and manage-inactive-files. Simulation is documented for the separate archive preview, not this Purview option.",
+      "severity": "blocker",
+      "fix": "Replace the instruction that simulation is mandatory with a recommendation to verify whether Purview provides an evaluation mode before enabling deletion. Attribute the documented simulation workflow only to SharePoint Advanced Management archiving."
+    },
+    {
+      "n": 42,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Purview retention policies and labels support auditing of administrative activities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention",
+      "quote": "| Audit admin activities | Yes | Yes |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Scope; summary; What's changing",
+      "type": "availability",
+      "claim": "The announced last-accessed release covers files in SharePoint and OneDrive without a file-type restriction.",
+      "status": "contradicted",
+      "source": "Message Center post MC999442",
+      "quote": "In this release, users will be able to set up delete policies based on Last Accessed Date of Office file types. Non-office file types are not supported in this release.",
+      "severity": "blocker",
+      "fix": "Explicitly restrict the announced release to Office file types in SharePoint and OneDrive, and state that non-Office files are unsupported in this release. Add MC999442 as a message-center source using its supplied URL."
+    },
+    {
+      "n": 44,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The roadmap does not state last-accessed support for Teams, Exchange or Microsoft 365 Groups mailboxes.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "apply Retention to each SharePoint or OneDrive item",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Scope",
+      "type": "record",
+      "claim": "No government-cloud rollout dates are published in the supplied roadmap or feature notice.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Scope; Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Compliance Administrator is a documented role group for managing retention policies and labels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/get-started-with-data-lifecycle-management",
+      "quote": "To grant permissions for this limited administration, we recommend that you add users to the Compliance Administrator admin role group.",
+      "severity": "minor",
+      "fix": "Cite the permissions section of Get started with data lifecycle management and call Compliance Administrator a role group. Clarify that SharePoint retention policy configuration requires an unrestricted administrator."
+    },
+    {
+      "n": 47,
+      "where": "Scope",
+      "type": "role",
+      "claim": "The Records Management role group provides permissions for records-management retention and disposition administration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/get-started-with-records-management#licensing-and-billing-requirements",
+      "quote": "we recommend that you add users to the Records Management admin role group. This role group grants permissions for all features related to records management",
+      "severity": "minor",
+      "fix": "Cite Get started with records management, name the Records Management role group accurately, and distinguish its retention-label/disposition permissions from general policy administration."
+    },
+    {
+      "n": 48,
+      "where": "Cost and licensing; Governance controls",
+      "type": "cost",
+      "claim": "Microsoft 365 Archive is a separate pay-as-you-go storage option that can reduce storage charges compared with active SharePoint storage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/archive/archive-pricing?view=o365-worldwide",
+      "quote": "Storage consumption is charged at a per-GB monthly rate. This meter is charged only when archived storage plus active storage in SharePoint exceeds the included or licensed allocated SharePoint storage capacity limit of the tenant.",
+      "severity": "minor",
+      "fix": "Cite the Archive pricing page and say savings concern storage charges when applicable, not reduced total stored data or site quota usage. Keep Archive billing separate from the unconfirmed licensing for last-accessed retention."
+    },
+    {
+      "n": 49,
+      "where": "Governance guidance: At rollout",
+      "type": "applicability",
+      "claim": "General SharePoint retention policies support adaptive scopes or static site inclusions rather than only tenant-wide application.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-retention-policies#create-and-configure-a-retention-policy",
+      "quote": "For the Choose the type of retention policy to create page, select Adaptive or Static",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Open questions",
+      "type": "record",
+      "claim": "Whether the last-accessed option will support retention labels as well as policies is still unknown.",
+      "status": "contradicted",
+      "source": "Message Center post MC999442",
+      "quote": "Enable admins to apply retention policy or retention label in OneDrive and SharePoint for files that have not been accessed by anyone in the organization after a period of time.",
+      "severity": "blocker",
+      "fix": "Remove this open question and report Microsoft's announced policy-and-label support, limited to last-accessed deletion of Office file types. Retain open questions about detailed semantics and advanced combinations that the notice does not establish."
+    },
+    {
+      "n": 51,
+      "where": "Governance guidance; Governance controls",
+      "type": "consistency",
+      "claim": "The controls table covers every control the governance checklist asks administrators to use.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "'Scope with adaptive scopes or site includes'; 'Review disposition queues monthly'. The table lists retention policy creation, archive policy creation and the undocumented last-accessed start option, but no adaptive-scope or disposition-review control.",
+      "severity": "minor",
+      "fix": "After correcting the unsupported feature-specific recommendations, add rows for adaptive-scope management and disposition review if the checklist still recommends them. Mark them as general controls whose applicability to advanced last-accessed scenarios is unconfirmed."
+    },
+    {
+      "n": 52,
+      "where": "summary; Why it matters; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "The feature is intended to remove obsolete data and improve the relevance of Copilot responses.",
+      "status": "supported",
+      "source": "Message Center post MC999442",
+      "quote": "This feature will help delete obsolete data, which will improve the quality and relevance of Microsoft 365 Copilot responses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[1].note; What's changing; Governance controls",
+      "type": "behaviour",
+      "claim": "The related inactive-files policy archives files rather than replacing Purview retention or deletion requirements.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files",
+      "quote": "Archiving changes the file's storage and access state; it doesn't replace retention requirements.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Risk assessment: Change & support",
+      "type": "applicability",
+      "claim": "The Purview last-access date excludes agent and application access, making files read only by automations appear inactive.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Purview \"last accessed\" \"30 days\" retention; Purview retention \"last accessed\" \"When items\". Read retention, retention-settings, manage-inactive-files and MC999442. Explicit exclusion of automated access is documented for archiving, not Purview.",
+      "severity": "blocker",
+      "fix": "Attribute the explicit agent/application/script exclusion to the separate archive preview. Say the roadmap describes user access, but Purview's precise access signals and treatment of automations remain to be documented."
+    },
+    {
+      "n": 55,
+      "where": "controls[0].scope; Governance controls",
+      "type": "applicability",
+      "claim": "General retention policy administration can govern tenant-wide locations while allowing narrower scoping.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-retention-policies#create-and-configure-a-retention-policy",
+      "quote": "For each location, you can leave it at the default to apply the policy to the entire location, or specify includes and excludes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The supplied roadmap record was modified on October 13, 2026 at 23:01:05.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-13T23:01:05\"",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-16T19:29:33.482Z",
+    "summary": {
+      "links": 10,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=472030",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/retention",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/retention-settings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/archive/manage-inactive-files",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/retention-policies-sharepoint",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/create-retention-policies#create-and-configure-a-retention-policy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy?view=exchange-ps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/new-spofilearchivepolicy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/retention#retention-policies-and-retention-labels",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/retention-cmdlets",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Retention policies for SharePoint and OneDrive",
+        "docs": "https://learn.microsoft.com/purview/create-retention-policies#create-and-configure-a-retention-policy",
+        "reachable": true,
+        "segments": [
+          "Solutions",
+          "Data Lifecycle Management",
+          "Policies",
+          "Retention policies",
+          "New retention policy"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Retention policies for SharePoint and OneDrive",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy?view=exchange-ps",
+        "reachable": true,
+        "token": "New-RetentionCompliancePolicy",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Archiving files by last access date (SharePoint Advanced Management)",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/new-spofilearchivepolicy",
+        "reachable": true,
+        "token": "New-SPOFileArchivePolicy",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

@@ -75,6 +75,17 @@ changes:
   - date: "2026-11-16"
     note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
 version: 2
+verification:
+  status: "needs-correction"
+  date: "2026-11-16"
+  version: 2
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 34
+  confirmed: 24
+  unconfirmed: 6
+  contradicted: 4
+  attempts: 1
 ---
 
 ## What's changing
@@ -154,4 +165,30 @@ Until Microsoft publishes preview documentation, the only certain controls are t
 risk: High. It lets a public-facing site reach on-premises enterprise systems, so a permission or design error could expose internal data.
 cost: Medium. Connector and gateway use may need premium licensing and gateway infrastructure; Power Pages terms for this feature are not yet published.
 impact: Medium. It affects teams that build external sites on enterprise data, and the visitors who use them.
+-->
+
+<!-- verifier-findings (2026-11-16, needs-correction; checked by gpt-6.1-sol)
+The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
+- [unsupported, blocker] front matter: defaultState / default: Nobody can use the capability until an administrator enables or configures it. | Found: Searched: Power Pages connector APIs server-side logic connectors site enable disable licensing data policies table permissions identity; "Power Pages" "connectors" "enable" "PowerShell". Read server-logic-overview and disable-external-service-calls; neither establishes this default. | Fix: Set defaultState to unknown. The roadmap does not specify an administrator opt-in requirement; do not infer one from gateway setup or from existing server logic settings.
+- [supported, minor] controls[1].ui; Governance controls / admin-path: A data policy's Prebuilt Connectors page exposes Configure connector > Connector endpoints for eligible connectors. | Found: If the value of the Endpoint configurable column is Yes, you can use this capability by right-clicking and then selecting Configure connector > Connector endpoints. | Fix: Include the policy-selection step: Data policy > policy > Prebuilt Connectors > connector > Configure connector > Connector endpoints. State that Endpoint configurable must be Yes. | Source: https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering
+- [contradicted, blocker] controls[1].governs; Governance controls / applicability: The listed endpoint-filtering UI and cmdlet govern allowed endpoints for custom connectors as well as HTTP connectors. | Found: it's exclusively available for the following connectors:
+- HTTP
+- HTTP with Microsoft Entra ID (AD)
+- HTTP Webhook
+- SQL Server (includes using SQL Server Connector to access Azure Synapse data warehouse)
+- Azure Blob Storage
+- SMTP
+- Browser Automation
+- UI Automation | Fix: Remove custom connectors from this row's governs text. Custom connector host-URL classification is a different control under Data Policies > Custom connectors, documented at https://learn.microsoft.com/power-platform/admin/dlp-custom-connector-parity. | Source: https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering
+- [supported, minor] controls[1]; Governance controls / behaviour: Endpoint filtering is presented without a preview qualification. | Found: This is a preview feature.
+- Preview features aren’t meant for production use and might have restricted functionality. | Fix: Add a note marking endpoint filtering as preview and stating that it evaluates static designer endpoints, not dynamically bound runtime endpoints. | Source: https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering
+- [unsupported, blocker] Why it matters; controls[0]; controls[1]; Governance controls closing paragraph / applicability: The listed data-policy and endpoint-filtering controls are confirmed controls for the new native Power Pages connector workload. | Found: Searched: "Power Pages" "connector" "data policies"; Power Pages connector APIs server-side logic connectors site enable disable licensing data policies table permissions identity. Read connector-action-control, connector-endpoint-filtering and Data policies excerpts; none confirms this feature's en | Fix: Mark both rows as general controls whose applicability to native Power Pages connector APIs is not yet confirmed. Attribute the general governance promise to the roadmap and remove the assertion that these are certain enforcing controls for this workload.
+- [unsupported, blocker] Risk assessment: Data exposure / applicability: Table permissions do not apply to this capability's non-Dataverse data, so filtering must be implemented in logic. | Found: Searched: "Power Pages" "table permissions" "external" "virtual"; Power Pages server logic connectors external data table permissions stored credentials write gateway errors. Read server-logic-overview and virtual-table security excerpts; neither defines native connector API authorization. | Fix: Replace with: Microsoft has not documented how per-visitor authorization is enforced for native connector API data; validate this before exposing records. Do not assert that table permissions cannot participate.
+- [unsupported, major] Risk assessment: Security & identity / behaviour: Connections for this new capability run with a stored identity. | Found: Searched: Power Pages server logic connectors external data table permissions stored credentials write gateway errors. Read server-logic-overview and Power Pages connectivity excerpts; these describe general server secrets or Dataverse authentication, not native connector connection identity. | Fix: Replace with: Connection identity and per-visitor delegation are not yet documented; confirm whose credentials are used and how they are scoped.
+- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: The planned native connector integration can write to external systems, not only read. | Found: Searched: Power Pages server logic connectors external data table permissions stored credentials write gateway errors. Read server-logic-overview, including Supported HTTP methods. General server logic supports external writes, but neither it nor the roadmap specifies native connector operations. | Fix: Say that general Power Pages server logic supports external writes, citing https://learn.microsoft.com/power-pages/configure/server-logic-overview, but supported operations for the planned native connector capability are not yet documented.
+- [unsupported, major] Risk assessment: Change & support / behaviour: Gateway outages will surface as site errors. | Found: Searched: "Power Pages" "gateway" "error"; Power Pages server logic connectors external data table permissions stored credentials write gateway errors. Read server-logic-overview and Power Pages FAQ error excerpts; no native connector gateway failure behavior is specified. | Fix: Frame this as a risk to test: Gateway outages could disrupt site integrations; test failure handling and agree support ownership before production.
+- [supported, minor] Governance controls closing paragraph; rationale: risk / behaviour: Power Pages sites can be publicly accessible to anonymous visitors. | Found: The public setting makes the site accessible to everyone over the Internet anonymously or to users authenticated through identity providers. | Fix: Cite https://learn.microsoft.com/power-pages/security/power-pages-security for this background fact; distinguish public-site scenarios from the default private visibility. | Source: https://learn.microsoft.com/power-pages/security/power-pages-security
+- [contradicted, blocker] front matter: cost; rationale: cost / consistency: A medium cost rating is justified despite unpublished feature licensing and no established feature-specific consumption cost. | Found: cost: "medium"; licensing.model: "unknown"; rationale: "Connector and gateway use may need premium licensing and gateway infrastructure". The standard requires low when unpublished licensing leaves only admin time established. | Fix: Set cost to low and explain that currently evidenced work is planning and administration while feature-specific licensing remains unpublished. Do not rate hypothetical premium licensing as an established cost.
+- [contradicted, minor] front matter: action / consistency: Prepare is the appropriate action for this optional new connector capability. | Found: action: "prepare"; What's changing: "Power Pages will support native Power Platform connectors". The standard assigns review to a new optional capability when no source says existing behavior changes without adoption. | Fix: Set action to review: neither the roadmap nor the researched documentation says existing sites change or start calling connectors automatically.
+- [contradicted, minor] Governance guidance; Governance controls / consistency: The governance table represents all controls the checklist asks administrators to review or monitor. | Found: Checklist: "Plan gateway capacity, high availability and network rules", "Define who may create connections", "Monitor gateway health and call volumes", "Audit connection ownership". The table contains only data policies, endpoint filtering and an undocumented feature control. | Fix: Add documented rows for gateway availability/monitoring and connection creation/ownership controls, or narrow the checklist to planning and testing advice that does not imply these controls have been mapped.
 -->

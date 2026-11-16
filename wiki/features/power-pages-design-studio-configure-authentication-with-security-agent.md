@@ -82,6 +82,17 @@ changes:
   - date: "2026-11-16"
     note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
 version: 2
+verification:
+  status: "needs-correction"
+  date: "2026-11-16"
+  version: 2
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 48
+  confirmed: 43
+  unconfirmed: 3
+  contradicted: 2
+  attempts: 1
 ---
 
 ## What's changing
@@ -165,4 +176,16 @@ The agent is a maker tool and inherits the Copilot governance for Power Pages: t
 risk: Medium. The agent can change authentication and permission settings, but every write needs explicit maker approval and Microsoft advises using it in development or test first.
 cost: Low. The roadmap and Learn pages state no separate licence or meter; the main cost is admin and maker time for review. Pricing is not yet published for general availability.
 impact: Medium. It is aimed at makers and site owners who configure Power Pages sites, not at end users or site visitors.
+-->
+
+<!-- verifier-findings (2026-11-16, needs-correction; checked by gpt-6.1-sol)
+The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
+- [unsupported, blocker] controls[2].api; Governance controls table / command: Start Deep Scan / Get Security Scan Report (powerpages namespace) is the API call for scan automation. | Found: Searched: opened admin-api and the linked start-deep-scan and get-security-scan-report references. The printed text names operations but provides no HTTP method, endpoint or API version and is not an executable call. | Fix: Replace the call with POST https://api.powerplatform.com/powerpages/environments/{environmentId}/websites/{id}/scan/deep/start?api-version=2024-10-01 and docs https://learn.microsoft.com/rest/api/power-platform/powerpages/websites/start-deep-scan. If showing report retrieval, give a separate GET https://api.powerplatform.com/powerpages/environments/{environmentId}/websites/{id}/scan/deep/getLatestCompletedReport?api-version=2024-10-01 with its get-security-scan-report reference.
+- [contradicted, blocker] controls[0].governs; Governance controls prose / applicability: Publish Copilots with AI features gates all Power Pages AI features, including the maker security agent. | Found: Chat agent (site Copilot) specific setting: If the setting for “Publish bots with AI” is disabled at the tenant level, admins are unable to configure site Copilot at the environment level. | Fix: Remove this setting as a prerequisite or gate for the security agent. If retaining the row as background, label it a site-chatbot publishing control and explicitly state that Microsoft has not confirmed applicability to the maker security agent. | Source: https://learn.microsoft.com/power-pages/admin/copilot-hub
+- [unsupported, blocker] controls[1].governs; Governance controls prose / applicability: The security agent inherits the Copilot hub's environment-level governance. | Found: Searched: Power Pages security agent disable enable governance; Power Pages Copilot hub maker AI features environment settings. Opened security-agent, copilot-hub and copilot-governance. None explicitly puts Security agent under Studio Copilot or confirms this inheritance. | Fix: Keep the documented general Power Pages maker-AI control, but add a note: 'General Power Pages AI control; Microsoft has not confirmed that it governs Security agent.' Replace the categorical inheritance statement with that qualification.
+- [unsupported, blocker] controls[3].note; Governance controls table / role: Who can edit the site determines who can use the security agent. | Found: Searched: Power Pages security agent role access edit permissions; Power Pages security agent permissions edit. Opened security-agent and faq-security-agent; neither defines site-edit permission as the sufficient access rule for the agent. | Fix: Replace 'Governed by who can edit the site' with 'The feature documentation does not specify the roles or privileges required to use the agent; confirm access in a test environment.'
+- [supported, minor] Cost and licensing / licensing: Power Pages licensing continues to apply to the underlying site. | Found: As you work on projects and need to establish permanent sites that don't expire, you can apply Power Pages subscriptions and convert websites from trial to production. | Fix: Cite https://learn.microsoft.com/power-pages/go-live/assign-licensing for the underlying site's licensing, without implying it establishes the security agent's separate entitlement. | Source: https://learn.microsoft.com/power-pages/go-live/assign-licensing
+- [supported, minor] Governance controls prose / behaviour: The older tenant-level governance experience under Resources is being deprecated in favour of Copilot hub. | Found: The tenant-level governance configuration feature is now deprecated. ... Going forward, all governance settings for Copilot features must be managed through the Copilot hub. | Fix: Point the deprecation link to https://learn.microsoft.com/power-pages/admin/copilot-hub#admin-experience, which states the deprecation. Clarify that the older control covered site-user AI experiences and expressly excluded maker experiences. | Source: https://learn.microsoft.com/power-pages/admin/copilot-hub#admin-experience
+- [supported, minor] Governance controls prose / behaviour: The security-agent system includes security scanning. | Found: It combines scheduled vulnerability scanning, real-time traffic anomaly detection, and guided remediation | Fix: Cite https://learn.microsoft.com/power-pages/faq-security-agent and distinguish the broader agent system's scheduled scanning from the chat assistant's documented ability to analyse scan findings; avoid implying a chat command to launch a scan is documented. | Source: https://learn.microsoft.com/power-pages/faq-security-agent
+- [contradicted, minor] Governance guidance: Before rollout and After rollout / consistency: The checklist asks readers to review Security workspace access, web roles and table permissions without corresponding control rows. | Found: Confirm which roles can open the Security workspace. ... Review web roles and table permissions after agent-driven changes. The table contains publishing, AI feature settings, scans and a missing dedicated switch. | Fix: Add rows for site-maker/Security workspace access, web roles and table permissions. For web roles and table permissions, use https://learn.microsoft.com/power-pages/getting-started/use-security-workspace and its linked configuration references; keep unconfirmed agent-specific access requirements explicit.
 -->

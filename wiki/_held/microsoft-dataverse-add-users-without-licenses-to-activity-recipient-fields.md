@@ -56,16 +56,16 @@ changes:
     note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
 version: 2
 verification:
-  status: "needs-correction"
+  status: "held"
   date: "2026-11-16"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 38
-  confirmed: 35
+  claims: 40
+  confirmed: 37
   unconfirmed: 2
   contradicted: 1
-  attempts: 1
+  attempts: 2
 ---
 
 ## What's changing
@@ -146,14 +146,14 @@ cost: Low. The point is to avoid buying licences for recipients; cost is admin e
 impact: Medium. Sales and service users who send email or schedule meetings with colleagues gain broader recipient lookup.
 -->
 
-<!-- verifier-findings (2026-11-16, needs-correction; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
 The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [unsupported, blocker] front matter: licensing.model / licensing: The feature's licensing model is included in an existing product licence. | Found: Searched: "Add users without licenses" activities pricing charge license; "add-unlicensed-users-activities" "license" pricing included. Read feature page; it exempts recipients but names no licence that includes the feature. | Fix: Set licensing.model to unknown unless a Microsoft source explicitly establishes inclusion in a named existing licence. Retain the supported notes that recipients need no Dataverse or Power Apps licence and cannot run Dynamics 365 apps; distinguish that exemption from the feature's overall licensing.
-- [supported, minor] summary; What's changing / behaviour: The feature allows active Microsoft Entra users in the tenant to be activity recipients in Dynamics 365 apps. | Found: Users without licenses are people in your tenant who have an active Microsoft Entra ID account but don't have a Dataverse or Power Apps license. | Fix: Introduce the behavior as 'Activities for users without licenses is currently documented as a preview feature; the following behavior and licensing describe that preview.' The cited feature page is titled 'Add users without licenses to activity recipient fields (preview)'. | Source: https://learn.microsoft.com/power-platform/admin/add-unlicensed-users-activities
-- [unsupported, blocker] Governance controls: paragraph after table / absence: The feature's switch is portal-only. | Found: Searched: "Activities for users without licenses" API organization setting tenant default PowerShell. Read feature and pac env pages; searched Organization reference. None states that only the portal can set it. | Fix: Replace 'The switch is per environment and portal-only' with 'The switch is per environment. As of November 2026, Microsoft documents the admin UI but no feature-specific API or automation equivalent.' Keep controls[0].api null; absence of API documentation does not establish a portal-only restriction.
-- [supported, minor] Risk assessment: Data exposure; Why it matters / behaviour: The Microsoft Entra ID lookup exposes basic directory information about users. | Found: | Description | **The name displayed in the address book for the user.** |
-| DisplayName | **Display Name** |
-| IsValidForForm | True |
-| IsValidForRead | True | | Fix: Add the Microsoft Entra ID (aaduser) table reference to sources to substantiate the directory-attributes exposure: https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/aaduser. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/aaduser#writable-columns-attributes
-- [contradicted, minor] Governance guidance: Before rollout; At rollout; Governance controls / consistency: The checklist instructs administrators to configure Entra ID table read permission, but that control has no row in the controls table. | Found: Plan the security role change: update existing roles or create a custom role with read on the Entra ID table. | Controls: Whether unlicensed Entra users can be activity recipients; Tenant-wide default for the feature. | Fix: Add a controls row for 'Who can read the Microsoft Entra ID table', covering the security-role prerequisite and linking to https://learn.microsoft.com/power-platform/admin/add-unlicensed-users-activities#grant-users-read-access-to-the-microsoft-entra-id-table. Research its UI and API surfaces before filling them.
+- [unsupported, blocker] front matter: licensing.model / licensing: The feature is included in a licence the product already needs. | Found: Searched: "add-unlicensed-users-activities" pricing included license charge; "Activities for users without licenses" pricing licensing cost. Opened the feature page; it exempts recipients but identifies no existing licence that includes the feature. | Fix: Set licensing.model to unknown. Keep the recipient licence exemption in licensing.notes, but do not treat that exemption as proof that the feature is included in a named existing licence. State in the cost rationale that overall feature licensing is not yet published.
+- [supported, minor] summary; What's changing / behaviour: The feature allows active Microsoft Entra users in the tenant to be activity recipients in Dynamics 365 apps. | Found: Add users without licenses to activity recipient fields (preview)
+Users without licenses are people in your tenant who have an active Microsoft Entra ID account but don't have a Dataverse or Power Apps license. | Fix: At the start of What's changing, explicitly say that Microsoft Learn currently documents this as a preview feature and that the described behaviour and recipient licensing apply to that preview. The roadmap phase list and a preview date alone do not qualify the documented behaviour. | Source: https://learn.microsoft.com/en-us/power-platform/admin/add-unlicensed-users-activities
+- [supported, minor] Why it matters; Risk assessment: Data exposure / behaviour: The Entra ID table used for lookup exposes basic directory details. | Found: DisplayName
+Description | The name displayed in the address book for the user.
+IsValidForRead | True | Fix: Add https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/aaduser to sources as the reference for the readable directory attributes. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/aaduser
+- [unsupported, blocker] Governance controls: paragraph after table / absence: The switch is portal-only. | Found: Searched: "Activities for users without licenses" API organization setting tenant default pricing license; Dataverse organization unlicensed activity recipients setting API EnableUnlicensed. Opened feature and pac env references; neither states that only the portal can configure it. | Fix: Replace 'The switch is per environment and portal-only' with 'The switch is per environment. As of November 2026, Microsoft documents the admin UI but no feature-specific API or automation equivalent.' Keep controls[0].api null; undocumented automation does not establish a portal-only restriction.
+- [contradicted, minor] Governance guidance: Before rollout; At rollout; Governance controls / consistency: The checklist requires configuring Entra ID table read permission, but the controls table has no corresponding row. | Found: Checklist: 'Plan the security role change: update existing roles or create a custom role with read on the Entra ID table.' Table rows: 'Whether unlicensed Entra users can be activity recipients'; 'Tenant-wide default for the feature'. | Fix: Add a controls row for 'Who can read the Microsoft Entra ID table', with the documented security-role prerequisite and https://learn.microsoft.com/power-platform/admin/add-unlicensed-users-activities#grant-users-read-access-to-the-microsoft-entra-id-table. Research the UI and API surfaces before filling them.
 -->

@@ -78,6 +78,17 @@ changes:
   - date: "2026-11-16"
     note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
 version: 2
+verification:
+  status: "needs-correction"
+  date: "2026-11-16"
+  version: 2
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 43
+  confirmed: 39
+  unconfirmed: 1
+  contradicted: 3
+  attempts: 1
 ---
 
 ## What's changing
@@ -160,4 +171,15 @@ The tenant toggle is a single switch with no per-group scoping; the per-app boun
 risk: High. Live transcripts can contain sensitive spoken content and speaker names, and the setting takes effect on 14 November 2026, with organiser-tenant rules deciding access.
 cost: Not yet published. Work IQ in Copilot Studio uses consumption billing, so agents consuming transcripts may use Copilot Credits.
 impact: Medium. Meeting participants are affected indirectly; admins and app owners must act.
+-->
+
+<!-- verifier-findings (2026-11-16, needs-correction; checked by gpt-6.1-sol)
+The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
+- [unsupported, blocker] controls[1].ui; Governance controls / admin-path: The cited transcript access page documents Entra ID > App registrations > app > API permissions. | Found: Searched: Microsoft Entra app registrations API permissions. Opened meeting-transcript-api-access (only an Entra permissions link, no path), quickstart-configure-app-access-web-apis (path present), and grant-admin-consent. | Fix: Keep the app-registration path but change controls[1].ui.docs, the rendered table link and sources to https://learn.microsoft.com/entra/identity-platform/quickstart-configure-app-access-web-apis, which explicitly gives Entra ID > App registrations > client application > API permissions. Qualify this route as for apps registered in the tenant; for other enterprise apps, cite https://learn.microsoft.com/entra/identity/enterprise-apps/grant-admin-consent and document Entra ID > Enterprise apps > All applications > app > Security > Permissions.
+- [contradicted, blocker] controls[1].api; Governance controls / absence: Automation for the per-app Entra API permissions/consent boundary is not yet documented. | Found: Grant admin consent for delegated permissions using Microsoft Graph API ... POST https://graph.microsoft.com/v1.0/oauth2PermissionGrants | Fix: Replace the null API side with the documented general Entra consent automation. For example, use POST https://graph.microsoft.com/v1.0/oauth2PermissionGrants with body keys clientId, consentType (AllPrincipals for tenant-wide consent), resourceId and scope, and cite this page. State that the resource service principal and delegated scopes must be those required by the app; do not copy the article's sample Graph scopes as Work IQ permissions. | Source: https://learn.microsoft.com/entra/identity/enterprise-apps/grant-admin-consent
+- [supported, minor] front matter: licensing; Cost and licensing; rationale: cost / absence: Microsoft has not published a separate licence or price specifically for the real-time transcript access setting. | Found: Searched: "Work IQ" "real-time transcripts" "license" "billing"; "Work IQ" "real-time" "transcript" "pricing". Read meeting-transcript-api-access, enable-work-iq and Work IQ API overview/licensing excerpts; no separate transcript-specific licence or rate found. | Fix: Narrow 'Not yet published for transcript access itself' to 'No separate transcript-specific licence or rate is documented as of November 2026.' Add that enabling Work IQ requires a usage-based billing plan and user assignment, citing https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq. Distinguish the unknown transcript-specific charge from the published Work IQ consumption model.
+- [supported, minor] front matter: licensing.notes; Cost and licensing; rationale: cost / cost: Work IQ in Copilot Studio uses consumption billing, so consuming agents may incur consumption costs. | Found: Work IQ uses consumption billing. A separate spending policy isn't required for Work IQ. | Fix: Add https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq to sources and cite it in Cost and licensing; it supports the consumption billing, Copilot Credits and separate-spending-policy statements but is currently absent from the source list. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq
+- [supported, minor] controls[1].scope; Governance controls / applicability: Per-app access is bounded by Entra API permissions and consent. | Found: Users, or their admins, will need to consent to these permissions before using your app. ... As an admin, you can grant admin consent for the full set of an API's permissions that appear in the table, and revoke consent for individual permissions. | Fix: Cite this Entra permissions page alongside the feature-specific prerequisite that the app acts for a signed-in user with Entra permissions. Say 'Entra API permissions and the required consent' rather than implying every general delegated permission requires administrator consent. | Source: https://learn.microsoft.com/entra/identity-platform/quickstart-configure-app-access-web-apis
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist asks administrators to review Allow AI in all meetings, but the controls table has no row for it. | Found: Review "Allow AI in all meetings" and transcription policies. ... [Controls table lists Work IQ access, app permissions and transcription policy only.] | Fix: Add an 'Allow AI in all meetings' control row after researching its documented UI and automation. The cited transcript access article establishes applicability but does not give its configuration path, so do not infer a path or command.
+- [contradicted, minor] front matter: action; Governance guidance: Before rollout / consistency: The page labels the action prepare and asks readers to decide before 14 November 2026, although that date has passed. | Found: Work IQ access takes effect on November 14, 2026. If apps in your organization already receive real-time transcripts through Work IQ, turn on Work IQ access before that date to keep them working. | Fix: For the 16 November 2026 run, change action to act-now because the default-off setting can interrupt existing apps. Replace the past-deadline checklist item with 'Immediately confirm whether existing apps need Work IQ transcript access and enable the setting if approved'; retain Microsoft's original effective date. | Source: https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access
 -->

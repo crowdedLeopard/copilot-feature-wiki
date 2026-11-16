@@ -56,8 +56,8 @@ verification:
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 43
-  confirmed: 43
+  claims: 48
+  confirmed: 48
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -159,5 +159,5 @@ impact: High. It changes the default view of every community for all Viva Engage
 
 <!-- verifier-findings (2026-11-16, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [supported, minor] What's changing; Scope; Governance guidance: After rollout / date: Rollout completion is expected by the end of November 2026, but the after-rollout checklist describes that timing as firm. | Found: expect to complete by the end of November 2026 (previously end of October). | Fix: Replace 'once the rollout completes at the end of November 2026' with 'once the rollout completes, which Microsoft expects by the end of November 2026'.
+- [supported, minor] What's changing; Scope; Governance guidance: After rollout / date: Rollout completion is expected by the end of November 2026, previously the end of October, but the checklist presents that timing as firm. | Found: expect to complete by the end of November 2026 (previously end of October). | Fix: In Governance guidance, replace 'once the rollout completes at the end of November 2026' with 'once the rollout completes, which Microsoft expects by the end of November 2026'.
 -->

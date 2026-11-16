@@ -91,10 +91,10 @@ verification:
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 46
-  confirmed: 45
+  claims: 45
+  confirmed: 43
   unconfirmed: 0
-  contradicted: 1
+  contradicted: 2
   attempts: 0
 ---
 
@@ -195,5 +195,6 @@ impact: Low. Nothing changes for users while the default holds; only people in m
 
 <!-- verifier-findings (2026-11-16, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [contradicted, minor] Governance guidance: At rollout; Governance controls / consistency: The controls table covers every control the checklist asks administrators to configure and every control the prose reports as absent. | Found: Assign that policy only to named users or groups, using the assignment steps on the Learn transcription page. / Microsoft documents no tenant-wide master switch for it | Fix: Add a meeting-policy assignment row with the user and group assignment paths documented at https://learn.microsoft.com/microsoftteams/meeting-transcription-captions. Add a separate tenant-wide profanity-filter master-switch row with ui and api null to represent the absence already stated in the prose.
+- [contradicted, minor] Governance guidance: Before rollout, At rollout; Governance controls / consistency: The controls table includes the meeting-policy assignment control that the governance checklist tells administrators to inventory and configure. | Found: List the meeting policies in use ... and identify which organisers each is assigned to. / Assign that policy only to named users or groups ... / The table has filtering, transcription, caption preference and override rows, but no assignment row. | Fix: Add a meeting-policy assignment row citing https://learn.microsoft.com/microsoftteams/meeting-transcription-captions. Give Meetings > Meeting policies > policy > Manage users > Assign users for users, and Meetings > Meeting policies > Group policy assignment > Add for groups. The same source documents Grant-CsTeamsMeetingPolicy -Identity <user> -PolicyName <policy> and -Group <group ID> -PolicyName <policy>.
+- [contradicted, minor] Governance controls / consistency: The controls table represents the separate tenant-wide master switch reported as undocumented in the prose. | Found: Microsoft documents no tenant-wide master switch for it ... / The controls table has no tenant-wide master-switch row. | Fix: Add a row governing a separate tenant-wide transcript profanity-filter master switch, with scope tenant and both ui and api null. Explain that no separate master switch is documented and that the Global meeting policy is the default for users without another assignment.
 -->

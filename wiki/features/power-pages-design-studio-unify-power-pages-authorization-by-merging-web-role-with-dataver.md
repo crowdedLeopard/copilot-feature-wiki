@@ -55,6 +55,17 @@ changes:
   - date: "2026-11-16"
     note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
 version: 2
+verification:
+  status: "needs-correction"
+  date: "2026-11-16"
+  version: 2
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 44
+  confirmed: 37
+  unconfirmed: 1
+  contradicted: 6
+  attempts: 1
 ---
 
 ## What's changing
@@ -133,4 +144,21 @@ The switch is per site and portal-only. Once on, access is evaluated through Dat
 risk: Medium. Authorisation moves into Dataverse with impersonation, which changes plug-in context and column security behaviour, but existing configuration is meant to remain intact.
 cost: Low. Learn says the created system users need no extra licensing and access stays governed by Power Pages licensing; cost is testing effort.
 impact: Medium. Site makers and administrators see new system user and security role records, while site visitors see no change.
+-->
+
+<!-- verifier-findings (2026-11-16, needs-correction; checked by gpt-6.1-sol)
+The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
+- [supported, minor] front matter: previewDate; What's changing / record: The roadmap shows a preview from July 2026. | Found: "previewDate": "July CY2026" | Fix: Replace 'a preview from July 2026' with 'a preview target of July CY2026'; the record supplies a target, not proof of when preview began.
+- [contradicted, blocker] summary; What's changing; Why it matters; Governance guidance: After rollout / behaviour: Enabling enhanced authorization records operations and audit entries under the site user without any stated auditing prerequisite. | Found: When auditing is enabled on a Dataverse table, any operation performed from the Power Pages site tracks under the respective site user. | Fix: Qualify the summary and auditing prose: 'When auditing is enabled on the Dataverse table, operations from the site are audited under the respective site user.' Add a checklist step to verify auditing is enabled for the relevant tables before relying on these entries. | Source: https://learn.microsoft.com/en-us/power-pages/security/unify-pages-security-with-dataverse
+- [contradicted, blocker] controls[0].ui; Governance controls table / admin-path: The enablement path is Power Pages > site > ... > Admin center > Edit site details > Enable Enhanced Authorization. | Found: Select Edit next to the site details.
+Select the Enable Enhanced Authorization check box and save. | Fix: Use 'environment > site > ... > Admin center > Edit (next to site details) > Enable Enhanced Authorization' in controls[0].ui.path and the rendered table. The documented button is 'Edit', not 'Edit site details'; also restore the environment-selection step. | Source: https://learn.microsoft.com/power-pages/security/unify-pages-security-with-dataverse#enable-enhanced-authorization
+- [supported, minor] controls[0].api; Governance controls table and prose / absence: No API or automation control is documented for enabling enhanced authorization. | Found: Searched: '"enhanced authorization" "Power Pages" automation PowerShell REST'. Read Enable enhanced authorization and Power Platform API Websites operations; no enablement API found. | Fix: Retain the null API side, but replace the absolute 'portal-only' with 'Microsoft documents per-site enablement in the portal; no equivalent automation control was found as of November 2026.'
+- [supported, minor] Governance controls: closing paragraph / role: Power Platform administrators can inspect sites and their details to check the enhanced authorization setting. | Found: From here you can configure website details, for more information go to site details.
+If you are a service administrator (Dynamics 365 administrator or Power Platform administrator), you can view the list of all websites in your tenant. | Fix: Cite https://learn.microsoft.com/power-pages/admin/power-platform-admin-center for administrator access to site details, alongside the existing feature page documenting the checkbox. | Source: https://learn.microsoft.com/power-pages/admin/power-platform-admin-center
+- [supported, minor] Governance controls: closing paragraph / absence: No tenant report identifying enhanced authorization enablement is documented. | Found: Searched: '"enhanced authorization" "Power Pages" "report" "policy"'. Read feature enablement, admin-center tenant listing and Get Websites response schema; no enhanced-authorization reporting field found. | Fix: Replace 'there is no tenant report or policy' with 'No tenant-wide enhanced-authorization report or enforcement policy was found in Microsoft's documentation as of November 2026.'
+- [unsupported, minor] rationale: impact / behaviour: Site visitors see no change. | Found: Searched: '"enhanced authorization" "Power Pages" "visitors"'. Read Enable enhanced authorization; it preserves role definitions but does not promise unchanged visitor experience or results. | Fix: Remove 'while site visitors see no change'. Replace with 'Existing role definitions continue to work, but teams should verify visitor access, plug-ins and column security on a test site.'
+- [contradicted, minor] front matter: action / consistency: The prepare action fits a capability that requires per-site administrative opt-in. | Found: action: "prepare"; defaultState: "admin-opt-in"; 'Enabled per site by an admin.' | Fix: Set action to 'review': the Assessment scales define review for optional capabilities that change nothing until an administrator chooses them, and no supplied notice establishes an automatic transition or deadline.
+- [contradicted, minor] front matter: risk; rationale: risk / consistency: Medium risk describes the exposure when a typical tenant leaves this opt-in control untouched. | Found: risk: "medium"; defaultState: "admin-opt-in"; 'Enabled per site by an admin.' | Fix: Set risk to 'low' and explain that current authorization remains in place until the administrator opts in. Keep plug-in context and column security as testing risks when evaluating adoption.
+- [contradicted, minor] Governance guidance; Governance controls table / consistency: The controls table includes the permission and auditing controls the checklist asks administrators to review. | Found: 'Review Web API column permissions and plan column security profiles'; 'Verify access for each web role'; 'Review audit logs for site-user entries'. The table lists only site enablement and tenant/environment enforcement. | Fix: Add rows for column security profiles, web-role/table-permission configuration, and Dataverse auditing. For column profiles, https://learn.microsoft.com/power-pages/security/column-security-profile documents Power Pages studio > Security > Column Security Profile > profile; research the other row surfaces before publishing.
+- [contradicted, minor] Governance controls: closing paragraph and table / consistency: The table represents the tenant enablement-reporting gap described in the prose. | Found: The prose says 'there is no tenant report or policy'; the only tenant row is 'Tenant or environment enforcement of enhanced authorization'. | Fix: Add a separate tenant-scoped row for 'Enhanced authorization enablement reporting', with UI and API null and a note that no reporting control was found as of November 2026; the enforcement row does not describe reporting.
 -->

@@ -66,8 +66,8 @@ verification:
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 47
-  confirmed: 47
+  claims: 49
+  confirmed: 49
   unconfirmed: 0
   contradicted: 0
   attempts: 0

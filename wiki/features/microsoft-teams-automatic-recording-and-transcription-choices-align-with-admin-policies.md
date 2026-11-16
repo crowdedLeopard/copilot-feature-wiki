@@ -94,8 +94,8 @@ verification:
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 75
-  confirmed: 74
+  claims: 78
+  confirmed: 77
   unconfirmed: 0
   contradicted: 1
   attempts: 0
@@ -197,5 +197,6 @@ impact: Medium. Meeting organisers see a changed Record and transcribe automatic
 
 <!-- verifier-findings (2026-11-16, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: Every control the governance checklist asks readers to review has a row in the controls table. | Found: Review policy assignments to users and groups so the effective policy for each organiser group is the one you intend. The table covers auto recording visibility, recording permission, transcription permission and a separate tenant switch, but has no policy-assignment row. | Fix: Add a row for assignment of meeting policies to users and groups. Cite https://learn.microsoft.com/microsoftteams/meeting-recording and give Teams admin center > Meetings > Meeting policies > policy > Manage users > Assign users; describe the Group policy assignment route in its note.
+- [supported, minor] Governance controls: sensitivity label enforcement / applicability: A sensitivity label can enforce automatic recording. | Found: If all of a particular type of meeting must be recorded (for example, all sensitive meetings), consider enforcing this option by using a sensitivity label. | Fix: After naming the enforcement routes, add 'Meeting options in sensitivity labels also require Teams Premium.' Cite https://learn.microsoft.com/microsoftteams/meeting-templates-sensitivity-labels-policies, which states 'Meeting options in sensitivity labels and custom meeting templates require Teams Premium.' Keep this separate from licensing of the new menu. | Source: https://learn.microsoft.com/microsoftteams/manage-meeting-recording-options
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: Every control the governance checklist asks readers to review is represented in the controls table. | Found: 'Review policy assignments to users and groups so the effective policy for each organiser group is the one you intend.' The four table rows cover automatic-setting visibility, recording, transcription and a tenant switch, but none covers assignments. | Fix: Add a meeting-policy-assignment row. Cite https://learn.microsoft.com/microsoftteams/meeting-recording and use Teams admin center > Meetings > Meeting policies > policy > Manage users > Assign users. In the note, give the Group policy assignment > Add route for groups.
 -->

@@ -101,8 +101,8 @@ verification:
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 60
-  confirmed: 59
+  claims: 72
+  confirmed: 71
   unconfirmed: 1
   contradicted: 0
   attempts: 0
@@ -207,5 +207,6 @@ impact: Low. Administrators set it up, and only the users whose storage limit is
 
 <!-- verifier-findings (2026-11-16, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [unsupported, major] Risk assessment: Data exposure / behaviour: Enabling this service introduces no new data access and does not change who can read OneDrive content. | Found: Searched: "OneDrive Storage" "permissions" "pay-as-you-go" sharing. Read add-storage-space and pay-as-you-go-setup-billing-node, plus search excerpts on OneDrive security; no statement that this feature leaves access unchanged found. | Fix: Remove the categorical sentence beginning 'No new data access'. Replace it with 'Microsoft documents this as additional storage above licensed quotas; the cited setup documentation does not discuss changes to content-access permissions.' Keep the separately supported billing-region statement.
+- [unsupported, major] Risk assessment: Data exposure / behaviour: The service introduces no new data access and does not change who can read OneDrive content. | Found: Searched: "OneDrive Storage" permissions sharing "pay-as-you-go". Opened add-storage-space and pay-as-you-go-setup-billing-node; read OneDrive service and Graph overview search excerpts. None states this service leaves access permissions unchanged. | Fix: Replace 'No new data access: the service changes how much a user's own OneDrive can hold, not who can read it' with 'Microsoft documents additional storage above licensed quotas; the cited setup documentation does not discuss changes to content-access permissions.' Keep the billing-region sentence.
+- [supported, minor] Governance guidance: Before rollout / admin-path: Administrators can identify accounts near their quota using the Active users > OneDrive > Storage used view. | Found: In the left pane, select Users, and then select Active users. Select the user. Select the OneDrive tab. Next to "Storage used," look at the max value | Fix: Expand the abbreviated checklist path to 'Users > Active users > user > OneDrive > Storage used'. The omitted user-selection step is required; the full per-user control row already includes it. | Source: https://learn.microsoft.com/onedrive/set-default-storage-space
 -->

@@ -1,0 +1,544 @@
+{
+  "slug": "data-policies",
+  "kind": "concept",
+  "roadmapId": null,
+  "title": "Data policies (DLP) for Copilot Studio agents",
+  "status": "needs-correction",
+  "date": "2026-11-16",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "grace",
+    "since": "2026-11-16",
+    "reasons": [
+      "5 blocking findings (claims 6, 36, 37, 40, 42)",
+      "published before the check existed: kept live with a notice while a corrected version is prepared"
+    ]
+  },
+  "counts": {
+    "claims": 43,
+    "confirmed": 37,
+    "unconfirmed": 2,
+    "contradicted": 4,
+    "blocker": 5,
+    "major": 0,
+    "minor": 5
+  },
+  "summary": "Hold: the page overstates endpoint filtering for custom connectors and MCP servers, and omits the knowledge-source and channel restrictions on Purview DLP. It also confuses the January 2025 enforcement announcement with the end of enforcement exemptions in March 2025.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "What a data policy does: first sentence",
+      "type": "behaviour",
+      "claim": "Power Platform data policies, also called DLP policies, classify connectors into Business, Non-business and Blocked groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "In the Power Platform admin center, you can classify Copilot Studio connectors within a data policy under the following data groups:\n- Business\n- Non-business\n- Blocked",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What a data policy does; Operating pattern: environment-scoped policies",
+      "type": "applicability",
+      "claim": "Data policies can be scoped to a tenant or to specific environments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-dlp-troubleshooting",
+      "quote": "Data policies can be defined at the tenant level (applying to all environments in a tenant) or for one or more specific environments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What a data policy does: apps and flows cannot combine connector groups",
+      "type": "behaviour",
+      "claim": "An app or flow cannot combine Business and Non-business connectors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/dlp-connector-classification",
+      "quote": "makers can't create an app or flow that uses both the SharePoint and Gmail connectors.",
+      "severity": "minor",
+      "fix": "Add the Microsoft pages relied on but absent from sources, together: https://learn.microsoft.com/power-platform/admin/dlp-connector-classification ; https://learn.microsoft.com/power-platform/admin/wp-data-loss-prevention ; https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-status ; https://learn.microsoft.com/microsoft-copilot-studio/authoring-agent-status ; https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent ; https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits ; https://learn.microsoft.com/purview/ai-copilot-studio . These substantiate connector classification, virtual connectors, readiness and guidance, credential selection, sharing and Purview applicability."
+    },
+    {
+      "n": 4,
+      "where": "What a data policy does: agents cannot combine connector groups",
+      "type": "behaviour",
+      "claim": "An agent cannot combine connectors from different data groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "In a data policy, the connectors must be in the same data group because data can't be shared among connectors that are in different groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What a data policy does: Blocked connector",
+      "type": "behaviour",
+      "claim": "A connector classified as Blocked cannot be used.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/dlp-connector-classification",
+      "quote": "Classify connectors that you want to keep from being used at all across one or more environments as Blocked.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What a data policy does: Since January 2025",
+      "type": "date",
+      "claim": "Mandatory data policy enforcement on every agent without opt-in has applied since January 2025.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-dlp-troubleshooting",
+      "quote": "Since March 2025, agents can't be exempted from data policy enforcement. It's no longer possible to exempt agents with a PowerShell command.",
+      "severity": "blocker",
+      "fix": "Replace the date with 'Since March 2025, agents cannot be exempted from data policy enforcement.' January 6, 2025 was the MC973179 announcement date, not the documented date exemptions ended."
+    },
+    {
+      "n": 7,
+      "where": "What a data policy does: every agent without an opt-in",
+      "type": "default",
+      "claim": "Data policy enforcement now applies to all tenants and agents without the earlier opt-in exemption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "Agent data policy enforcement exemption is no longer supported. Agents that were previously exempted from data policy enforcement are all subject to enforcement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What a data policy does: maker errors",
+      "type": "behaviour",
+      "claim": "Agents violating data policies show errors in the maker experience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "Copilot Studio supports data policy enforcement in real time. Agent makers and users see error messages for any data policy violation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What a data policy does: publication blocked",
+      "type": "behaviour",
+      "claim": "An agent violating a data policy cannot be published.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "When a data policy violation occurs, the Publish button becomes unavailable.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What a data policy does: already-published agents",
+      "type": "behaviour",
+      "claim": "Already-published agents fail when they attempt to use a capability blocked by data policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/wp-data-loss-prevention",
+      "quote": "Any resources that are running and attempting to use an inactive connection, action, trigger, or MCP server that is blocked, fail at runtime.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary; What a data policy does: capabilities as connectors",
+      "type": "applicability",
+      "claim": "Copilot Studio exposes agent capabilities through connectors so data policies govern tools, knowledge, channels and triggers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/security-and-governance",
+      "quote": "including:\n- Maker and user authentication\n- Knowledge sources\n- Actions, connectors, and Azure Bot Service skills\n- HTTP requests\n- Publication to channels\n- Azure Monitor Application Insights\n- Triggers",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "Connector names that govern agent capabilities: authentication row",
+      "type": "admin-path",
+      "claim": "Blocking Chat without Microsoft Entra ID authentication in Copilot Studio prevents publishing agents without authentication.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "To prevent agent makers from publishing agents that don't require authentication, configure a data policy that blocks the connector Chat without Microsoft Entra ID authentication in Copilot Studio.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "Connector names that govern agent capabilities: HTTP row",
+      "type": "admin-path",
+      "claim": "Blocking the HTTP connector prevents makers from publishing agents that make HTTP requests.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "To prevent agent makers from publishing agents that make HTTP requests, configure a data policy that blocks the HTTP connector.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "Connector names that govern agent capabilities: HTTP endpoint filtering",
+      "type": "behaviour",
+      "claim": "HTTP supports endpoint filtering with allow or deny lists.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "Alternatively, if you want to allow or deny specific HTTP endpoints instead of blocking all HTTP calls, use endpoint filtering.",
+      "severity": "minor",
+      "fix": "Mark HTTP connector endpoint filtering as preview, as explicitly stated at https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering . Its HTTP section documents ordered Allow and Deny URL patterns."
+    },
+    {
+      "n": 15,
+      "where": "Connector names that govern agent capabilities: Direct Line row",
+      "type": "admin-path",
+      "claim": "Blocking Direct Line channels in Copilot Studio prevents publishing to web, mobile and custom Direct Line channels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "Direct Line channels in Copilot Studio (applies to the Demo website, custom websites, mobile app, and other Direct Line channels)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "Connector names that govern agent capabilities: Teams and Microsoft 365 row",
+      "type": "admin-path",
+      "claim": "Microsoft Teams + Microsoft 365 Channel in Copilot Studio governs publication to Teams and Microsoft 365 Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "| Publishing to the Microsoft 365 and Microsoft Teams channel. | Microsoft Teams + Microsoft 365 Channel in Copilot Studio |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "Connector names that govern agent capabilities: corresponding channel connector, SharePoint",
+      "type": "applicability",
+      "claim": "A corresponding channel connector can block publication to SharePoint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "| Publishing to the SharePoint channel. | SharePoint channel in Copilot Studio |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Connector names that govern agent capabilities: corresponding channel connector, WhatsApp",
+      "type": "applicability",
+      "claim": "A corresponding channel connector can block publication to WhatsApp.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "| Publishing to the WhatsApp channel. | WhatsApp channel in Copilot Studio |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Connector names that govern agent capabilities: corresponding channel connector, Facebook",
+      "type": "applicability",
+      "claim": "A corresponding channel connector can block publication to Facebook.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "| Publishing to the Facebook channel. | Facebook channel in Copilot Studio |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Connector names that govern agent capabilities: corresponding channel connector, Customer Service",
+      "type": "applicability",
+      "claim": "A corresponding channel connector can block publication to Dynamics 365 Customer Service.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "| Publishing to the Dynamics 365 Customer Service channel. | Omnichannel in Copilot Studio |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Connector names that govern agent capabilities: event triggers row",
+      "type": "admin-path",
+      "claim": "Blocking the Microsoft Copilot Studio connector prevents use of event triggers for autonomous agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "To prevent agent makers from adding event triggers to their agents or running automated evaluations by using an authenticated account, configure a data policy that blocks the Microsoft Copilot Studio connector.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Connector names that govern agent capabilities: authenticated evaluations row",
+      "type": "admin-path",
+      "claim": "Blocking the Microsoft Copilot Studio connector prevents automated evaluations using authenticated accounts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "| Using event triggers in Copilot Studio agents or running automated evaluations using authenticated accounts. | Microsoft Copilot Studio |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Connector names that govern agent capabilities: skills row",
+      "type": "admin-path",
+      "claim": "Blocking Skills with Copilot Studio prevents use of Azure Bot Service skills.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "To prevent agent makers from publishing agents that use Azure Bot Service skills, configure a data policy that blocks the Skills with Copilot Studio connector.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Connector names that govern agent capabilities: telemetry row",
+      "type": "admin-path",
+      "claim": "Application Insights in Copilot Studio governs connecting agents to Application Insights for telemetry.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "| Connecting agents with Application Insights. | Application Insights in Copilot Studio |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Connector names that govern agent capabilities: Power Platform tools row",
+      "type": "applicability",
+      "claim": "Data policies govern Power Platform connector tools through the specific prebuilt or custom connectors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "| Using Power Platform connectors as tools in Copilot Studio agents. | Many prebuilt and custom connectors |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "summary; Connector names that govern agent capabilities: MCP tools",
+      "type": "applicability",
+      "claim": "Blocking Power Platform connectors also blocks tools in connected MCP servers that rely on those connectors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "Blocking Power Platform connectors also blocks access to tools in connected MCP servers, which rely on Power Platform connectors for connectivity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Connector names that govern agent capabilities: every channel blocked",
+      "type": "behaviour",
+      "claim": "Agents cannot be published if every channel is blocked.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-dlp-troubleshooting",
+      "quote": "If all channels for the agent are blocked by data policies, you can't publish your agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Connector names that govern agent capabilities: allowed channel not configured",
+      "type": "behaviour",
+      "claim": "Agents cannot be published if no unblocked channel is configured.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "If makers don't configure their agents for a channel that isn't blocked (Direct Line channels are allowed by default), or if the administrators don't allow any channel, agents can't be published.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Connector names that govern agent capabilities: Direct Line default",
+      "type": "default",
+      "claim": "Direct Line channels are allowed by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "Direct Line channels are allowed by default",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "How restrictions appear to makers: disabled capabilities",
+      "type": "behaviour",
+      "claim": "Blocked connectors and channels appear disabled in the authoring interface.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "a blocked connector appears disabled when a maker adds tools to an agent, and a restricted channel appears disabled when a maker attempts to add a channel while publishing an agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "How restrictions appear to makers: hover explanation",
+      "type": "behaviour",
+      "claim": "Makers can hover over blocked capabilities to see why they are restricted.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "Makers can hover over the unavailable capability to view information about why it's restricted.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "How restrictions appear to makers: Review pane",
+      "type": "behaviour",
+      "claim": "The Review pane lists blocking issues and warnings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-status",
+      "quote": "The Review panel lists issues ordered by severity: Blocking issues first, followed by Warnings.",
+      "severity": "minor",
+      "fix": "Identify the harness: the Microsoft Copilot harness has the Review panel described at this URL. For standard-harness agents, describe Overview > Agent status > Review and flag that readiness experience as preview, as documented at https://learn.microsoft.com/microsoft-copilot-studio/authoring-agent-status ."
+    },
+    {
+      "n": 33,
+      "where": "How restrictions appear to makers; Operating pattern: custom guidance message",
+      "type": "behaviour",
+      "claim": "Administrators can set a custom guidance message and contact details for makers blocked by policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/authoring-agent-status",
+      "quote": "Custom guidance message (preview)\n\nAs an admin, you can set an environment-level guidance message for users when they encounter a blocked or disabled capability. This plain-text message replaces the default Contact your admin prompt.",
+      "severity": "minor",
+      "fix": "Label custom guidance messages as preview in both their description and the operating-pattern recommendation. Distinguish this environment/environment-group Maker guidance feature from the existing tenant-wide data-policy contact email and Learn more link."
+    },
+    {
+      "n": 34,
+      "where": "How restrictions appear to makers: DlpViolationError",
+      "type": "behaviour",
+      "claim": "Publishing an agent that violates a data policy produces a DlpViolationError.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-dlp-troubleshooting",
+      "quote": "| errorDescription | At least one connector here has been blocked by your admin |\n| $kind | DlpViolationError |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "How restrictions appear to makers: violationType",
+      "type": "behaviour",
+      "claim": "The error's violationType identifies the cause, for example BlockedConnector.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-dlp-troubleshooting",
+      "quote": "| errorDescription | At least one connector here has been blocked by your admin |\n| $kind | DlpViolationError |\n| violationType | BlockedConnector |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Working with the rest of the control set: Endpoint filtering",
+      "type": "applicability",
+      "claim": "Connector endpoint filtering narrows both HTTP and custom connectors to specific hosts.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering",
+      "quote": "it's exclusively available for the following connectors:\n- HTTP\n- HTTP with Microsoft Entra ID (AD)\n- HTTP Webhook\n- SQL Server (includes using SQL Server Connector to access Azure Synapse data warehouse)\n- Azure Blob Storage\n- SMTP\n- Browser Automation\n- UI Automation",
+      "severity": "blocker",
+      "fix": "Separate the controls: HTTP connector endpoint filtering is preview and evaluates static design-time endpoints, not dynamically bound runtime endpoints. Custom connectors are classified by Host URL patterns in tenant-level data policies, as documented at https://learn.microsoft.com/power-platform/admin/dlp-connector-classification#tenant-level-data-policies ; do not describe that classification as the same endpoint-filtering feature."
+    },
+    {
+      "n": 37,
+      "where": "Working with the rest of the control set: pin an MCP server",
+      "type": "applicability",
+      "claim": "Endpoint filtering can pin an MCP server without blocking its connector.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Copilot Studio MCP endpoint filtering. Opened connector-endpoint-filtering, dlp-connector-classification, admin-data-loss-prevention and wp-data-loss-prevention; none states that HTTP endpoint rules pin an MCP server while leaving its connector available.",
+      "severity": "blocker",
+      "fix": "Remove 'which is how you pin an MCP server or API without blocking the connector'. State instead that blocking an MCP server's underlying connector blocks its tools; custom connector Host URL classification and HTTP static-endpoint rules are distinct controls with different scopes."
+    },
+    {
+      "n": 38,
+      "where": "Working with the rest of the control set: Credential controls",
+      "type": "applicability",
+      "claim": "Credential configuration decides whose identity a permitted connector tool uses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent",
+      "quote": "Authentication: Select whether to use the user's (End user) or maker's (Maker-provided) credentials for the tool. By default, user authentication applies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Working with the rest of the control set: Sharing limits",
+      "type": "applicability",
+      "claim": "Managed Environments sharing limits govern how broadly agents can be shared.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits",
+      "quote": "In managed environments, admins can limit how broadly users can share canvas apps, flows, and agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Working with the rest of the control set: Purview DLP",
+      "type": "applicability",
+      "claim": "Purview DLP at the Microsoft 365 Copilot location governs what content agents may process without knowledge-source or channel qualifications.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/ai-copilot-studio",
+      "quote": "When the knowledge source is SharePoint, a DLP policy scoped to the Microsoft 365 Copilot location can restrict agents built in Copilot Studio for Microsoft Teams, SharePoint, and Microsoft 365 Copilot from processing sensitive content based on a specified sensitivity label.",
+      "severity": "blocker",
+      "fix": "Replace with: 'For SharePoint knowledge sources, a Purview DLP policy scoped to the Microsoft 365 Copilot location can restrict Copilot Studio agents for Teams, SharePoint and Microsoft 365 Copilot from processing content with a specified sensitivity label. This is separate from connector governance.'"
+    },
+    {
+      "n": 41,
+      "where": "Operating pattern: review connector dependency insights",
+      "type": "behaviour",
+      "claim": "Administrators can review connector dependencies used by agents to assess data movement risk before applying governance controls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/security-and-governance",
+      "quote": "Admins can review connector dependencies used by agents to understand data movement risk and apply governance controls before deployment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Operating pattern: connector dependency insights in the Power Platform admin center",
+      "type": "admin-path",
+      "claim": "Copilot Studio connector dependency insights are available in the Power Platform admin center.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Copilot Studio connector dependency admin center; site:learn.microsoft.com/power-platform connector dependencies agents; Copilot Studio dependency insights. Opened security-and-governance and admin-data-loss-prevention; neither locates that view in the portal.",
+      "severity": "blocker",
+      "fix": "Remove the unverified portal location. For an actionable documented alternative, direct makers and admins to check published agent status and download policy-violation reports from the agent's Channels page in Copilot Studio, as documented at https://learn.microsoft.com/microsoft-copilot-studio/admin-dlp-troubleshooting#identify-agents-in-violation-of-a-data-policy ."
+    },
+    {
+      "n": 43,
+      "where": "Operating pattern: controls named without governance control rows",
+      "type": "consistency",
+      "claim": "The operating checklist tells administrators to configure controls that have no corresponding governance controls rows.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Start from the default environment: block channels and connectors citizen makers should not use; allow Teams and Microsoft 365 if that is your intended surface.\nSet a custom guidance message so blocked makers get your request process, not a generic prompt.",
+      "severity": "minor",
+      "fix": "Add governance controls rows for environment/tenant data policies controlling connectors and channels, and for custom maker guidance. Use the documented Power Platform admin center paths in admin-data-loss-prevention and authoring-agent-status respectively; flag Maker guidance as preview."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-16T19:29:37.998Z",
+    "summary": {
+      "links": 4,
+      "unreachable": 0,
+      "uiPaths": 0,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/admin-dlp-troubleshooting",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/security-and-governance",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [],
+    "roadmapDrift": []
+  },
+  "history": []
+}

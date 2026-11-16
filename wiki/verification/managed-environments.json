@@ -1,0 +1,417 @@
+{
+  "slug": "managed-environments",
+  "kind": "concept",
+  "roadmapId": null,
+  "title": "Managed Environments and environment groups",
+  "status": "needs-correction",
+  "date": "2026-11-16",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "grace",
+    "since": "2026-11-16",
+    "reasons": [
+      "6 blocking findings (claims 7, 12, 23, 25, 29, 30)",
+      "published before the check existed: kept live with a notice while a corrected version is prepared"
+    ]
+  },
+  "counts": {
+    "claims": 31,
+    "confirmed": 23,
+    "unconfirmed": 2,
+    "contradicted": 6,
+    "blocker": 6,
+    "major": 1,
+    "minor": 4
+  },
+  "summary": "Hold: the licensing explanation excludes qualifying meters and other entitlements, and licensed makers alone do not satisfy the requirements for active usage. The page also overstates agent sharing protection, describes undocumented data policy inheritance, and misidentifies who receives usage emails.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "What it is, paragraph 1",
+      "type": "behaviour",
+      "claim": "Managed Environments is an enableable governance property on a Power Platform environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/managed-environment-enable",
+      "quote": "Admins enable, disable, and edit managed environments in the Power Platform admin center.",
+      "severity": "minor",
+      "fix": "Add the additional Microsoft sources used to substantiate this page: https://learn.microsoft.com/power-platform/admin/managed-environment-enable ; https://learn.microsoft.com/power-platform/admin/managed-environment-licensing ; https://learn.microsoft.com/power-platform/admin/maker-guidelines ; https://learn.microsoft.com/power-platform/admin/environment-groups-rules ; https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication ; https://learn.microsoft.com/power-platform/admin/security/control-sharing-agents-with-embedded-maker-credentials ; https://learn.microsoft.com/power-platform/admin/managed-environment-usage-insights . Report these citation additions together rather than as separate findings."
+    },
+    {
+      "n": 2,
+      "where": "What it is, paragraph 1",
+      "type": "applicability",
+      "claim": "Managed Environments supplies sharing limits for apps and flows.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits",
+      "quote": "In managed environments, admins can limit how broadly users can share canvas apps, flows, and agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What it is, paragraph 1",
+      "type": "behaviour",
+      "claim": "Agent sharing controls include rules for granting Editor permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits",
+      "quote": "Let people grant **Editor** permissions when agents are shared",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What it is, paragraph 1",
+      "type": "behaviour",
+      "claim": "Agent sharing controls include rules for granting Viewer permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits",
+      "quote": "Let people grant **Viewer** permissions when agents are shared",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What it is, paragraph 1",
+      "type": "behaviour",
+      "claim": "Agent sharing controls can restrict sharing with security groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits",
+      "quote": "Only share with individuals (no security groups)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What it is, paragraph 1",
+      "type": "behaviour",
+      "claim": "Agent sharing controls include viewer caps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits",
+      "quote": "If **Only share with individuals (no security groups)** is selected, you can control the maximum number of viewers with whom an agent can be shared with.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What it is, paragraph 1; Why service owners care, bullet 2",
+      "type": "applicability",
+      "claim": "Agent sharing limits control how far agents spread without an authentication or existing-access qualification.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-sharing-controls-limits",
+      "quote": "Sharing limits only apply to agents that require authentication.",
+      "severity": "blocker",
+      "fix": "State that sharing limits apply only to authenticated agents, do not revoke access granted before the rules, and do not restrict publishing to the bound Teams team in Dataverse for Teams. Describe them as prospective sharing restrictions, not a universal boundary on agent reach."
+    },
+    {
+      "n": 8,
+      "where": "What it is, paragraph 1",
+      "type": "behaviour",
+      "claim": "Managed Environments includes maker welcome content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/managed-environment-overview",
+      "quote": "[Maker welcome content](welcome-content)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What it is, paragraph 1",
+      "type": "applicability",
+      "claim": "Maker guidelines is available only in Managed Environments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/maker-guidelines",
+      "quote": "Maker guidelines is available only for managed environments.",
+      "severity": "minor",
+      "fix": "Label maker guidelines as preview wherever the page presents the capability; the source is titled 'Configure maker guidelines for Copilot Studio (preview)' and explicitly identifies itself as prerelease documentation."
+    },
+    {
+      "n": 10,
+      "where": "What it is, paragraph 1; Why service owners care, bullet 3",
+      "type": "behaviour",
+      "claim": "Managed Environments includes weekly usage insights emails about apps, makers and usage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/managed-environment-usage-insights",
+      "quote": "Analytics about your top apps, your most impactful makers, and inactive resources you can safely clean up are distilled and delivered to your mailbox once a week.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What it is, paragraph 1",
+      "type": "behaviour",
+      "claim": "Managed Environments includes solution checker enforcement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/environment-groups-rules",
+      "quote": "Solution checker enforcement",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What it is, paragraph 1",
+      "type": "applicability",
+      "claim": "Enabling Managed Environments unlocks data policy inheritance that unmanaged environments do not get.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"managed environments\" \"data policy inheritance\". Opened managed-environment-overview, managed-environment-data-policies and wp-data-loss-prevention on Microsoft Learn; found filtered policy visibility and general policy cascading, not managed-only inheritance.",
+      "severity": "blocker",
+      "fix": "Replace 'data policy inheritance' with 'a filtered view of the data policies applied to the environment'. https://learn.microsoft.com/power-platform/admin/managed-environment-data-policies documents that filtered view, not a separate inheritance capability."
+    },
+    {
+      "n": 13,
+      "where": "What it is, paragraph 1",
+      "type": "behaviour",
+      "claim": "Managed Environments includes IP firewall capabilities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/managed-environment-overview",
+      "quote": "[IP Firewall](ip-firewall)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What it is, paragraph 2",
+      "type": "behaviour",
+      "claim": "Environment groups let administrators manage multiple managed environments together.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/environment-groups",
+      "quote": "Environment groups can only contain managed environments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What it is, paragraph 2; Operating pattern, step 3",
+      "type": "applicability",
+      "claim": "Sharing limits can be configured at environment-group scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-sharing-controls-limits",
+      "quote": "You can configure these controls for an individual Managed Environment, or you can apply the sharing controls at scale using Environment Groups and Rules in the Power Platform admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What it is, paragraph 2; Why service owners care, bullet 1; Operating pattern, step 3",
+      "type": "applicability",
+      "claim": "Maker guidelines can be configured at environment-group scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/maker-guidelines",
+      "quote": "You can configure maker guidelines for an individual managed environment or for an environment group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What it is, paragraph 2; Why service owners care, bullet 1; Operating pattern, step 3",
+      "type": "applicability",
+      "claim": "Maker credential controls can govern all agents in an environment group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication",
+      "quote": "Choose whether end-user or maker credentials (or both) can be selected by makers for agents in an environment, or for all agents in all environments in an environment group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What it is, paragraph 2; Operating pattern, step 3",
+      "type": "applicability",
+      "claim": "Environment-group rules include Copilot and generative AI settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/environment-groups",
+      "quote": "These rules span critical areas of environment management, such as security and sharing, AI feature enablement, data retention policies, and application lifecycle management (ALM).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What it is, paragraph 2",
+      "type": "behaviour",
+      "claim": "Publishing an environment-group rule applies it to every member environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/environment-groups",
+      "quote": "When a rule is published at the environment group level, it's enforced across every environment within that group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What it is, paragraph 2",
+      "type": "behaviour",
+      "claim": "Individual environments cannot override published group settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/environment-groups",
+      "quote": "This means the corresponding setting or policy becomes locked (read-only) within individual environments, ensuring that local system administrators can't modify or override these centrally defined rules.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What it is, paragraph 2; Operating pattern, step 4",
+      "type": "behaviour",
+      "claim": "Default environment routing can automatically place new personal developer environments in a chosen group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/environment-groups",
+      "quote": "Instead of having new makers build in the shared Default environment, environment routing provisions a dedicated developer environment for each maker and optionally assigns it to an environment group of your choice.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "The licensing condition",
+      "type": "licensing",
+      "claim": "Managed Environments is an entitlement rather than a separate required SKU.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/managed-environment-overview",
+      "quote": "Managed environments are included as an entitlement with standalone Power Apps, Power Automate, Microsoft Copilot Studio, Power Pages, and Dynamics 365 licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "The licensing condition",
+      "type": "licensing",
+      "claim": "Users running apps, flows and agents must hold standalone Power Platform or Copilot Studio licences for the environment to be managed.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-platform/admin/managed-environment-licensing",
+      "quote": "Pay-as-you-go meters for Power Apps per app, Power Pages, and Copilot Studio also qualify. When you activate managed environments in an environment, all active usage requires one of these standalone licenses or pay-as-you-go meters.",
+      "severity": "blocker",
+      "fix": "Describe compliance for active usage, not a technical restriction on enabling management. Include qualifying Dynamics 365 and Power Pages entitlements, Copilot Studio for Microsoft 365 Copilot for Copilot Studio-related features, and qualifying capacity plans or pay-as-you-go meters. Refer to https://learn.microsoft.com/power-platform/admin/managed-environment-licensing for workload-specific coverage rather than requiring every user to hold one of the three named standalone licences."
+    },
+    {
+      "n": 24,
+      "where": "The licensing condition",
+      "type": "licensing",
+      "claim": "Ordinary Power Platform use rights seeded in Microsoft 365 alone do not satisfy Managed Environments licensing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/managed-environment-licensing",
+      "quote": "When you activate managed environments in an environment, all active usage requires one of these standalone licenses or pay-as-you-go meters.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "The licensing condition, sentence 2",
+      "type": "licensing",
+      "claim": "Having licensed makers is sufficient to make a production environment managed.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-platform/admin/managed-environment-licensing",
+      "quote": "Every user who runs an app in a managed environment is in scope, including users who run standard apps. The requirement applies to active usage in the environment rather than to the type of app.",
+      "severity": "blocker",
+      "fix": "Replace 'production environments with licensed makers can be managed' with 'Before enabling management, verify qualifying coverage for all active usage, including app runners and applicable flow usage, not just makers.' Keep the default-environment licensing review as advice."
+    },
+    {
+      "n": 26,
+      "where": "Why service owners care, bullet 1; Operating pattern, step 5",
+      "type": "behaviour",
+      "claim": "Most new Copilot Studio governance controls are delivered as environment-group rules.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Copilot Studio\" \"most\" \"environment group\" \"governance\"; \"Copilot Studio\" \"credential\" \"environment groups\". Read environment-groups-rules, environment-groups, maker-guidelines and credential-control documentation; no source establishes 'most new' controls.",
+      "severity": "major",
+      "fix": "Replace both majority assertions with 'Environment groups support sharing controls, maker guidelines (preview), credential controls and other governance settings; review the available rules when planning governance changes.' Do not quantify how many new features add a rule type."
+    },
+    {
+      "n": 27,
+      "where": "Why service owners care, bullet 1",
+      "type": "applicability",
+      "claim": "Safe sharing enforcement for embedded maker credentials can be applied at environment-group scale.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/security/control-sharing-agents-with-embedded-maker-credentials",
+      "quote": "You can configure the setting for an individual environment or an environment group.",
+      "severity": "minor",
+      "fix": "Call this 'Sharing agents with embedded maker credentials (preview)' rather than presenting safe sharing enforcement as an unqualified final capability."
+    },
+    {
+      "n": 28,
+      "where": "Why service owners care, bullet 1",
+      "type": "behaviour",
+      "claim": "Without environment groups, these controls can be configured individually for each environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/environment-groups",
+      "quote": "This centralized approach eliminates the need to configure each environment one-by-one, ensures consistency, significantly reduces administrative overhead, and prevents issues such as configuration drift",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Why service owners care, bullet 2",
+      "type": "applicability",
+      "claim": "Sharing limits are the only structural control over how far an agent can spread inside the tenant.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-sharing-controls-limits",
+      "quote": "Administrators can use the **Sharing agents with embedded maker credentials** setting in the Power Platform admin center to prevent agents from being shared when they contain connections configured to use maker credentials that other users aren't permitted to reuse.",
+      "severity": "blocker",
+      "fix": "Remove 'the only structural control'. Say 'Sharing limits restrict prospective Editor and Viewer sharing for authenticated agents; other controls, including embedded-credential sharing policy, also constrain sharing or access.'"
+    },
+    {
+      "n": 30,
+      "where": "Why service owners care, bullet 3",
+      "type": "role",
+      "claim": "Environment admins receive the weekly usage insights view by virtue of their environment-admin role.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-platform/admin/managed-environment-usage-insights",
+      "quote": "The weekly digest is sent to all users with the roles of Power Platform administrator and Dynamics 365 service administrator.",
+      "severity": "blocker",
+      "fix": "Say the digest goes to Power Platform administrators and Dynamics 365 service administrators, with environment admins included only if added as additional recipients. Mention that tenant-level analytics must be enabled and the relevant environments included in the digest."
+    },
+    {
+      "n": 31,
+      "where": "Operating pattern, steps 2-4",
+      "type": "consistency",
+      "claim": "The operating checklist recommends configuring management, group rules and routing without any corresponding controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Make production and shared development environments managed; decide what to do about the default environment. / Publish rules per group: sharing limits, maker guidelines, credential controls, Copilot settings. / Use environment routing so new environments land in the right group.",
+      "severity": "minor",
+      "fix": "Add governance-control rows for enabling Managed Environments, configuring and publishing group rules, sharing limits, maker guidelines, credential controls, the specific Copilot settings intended, and developer-environment routing. Use the verified Microsoft pages for each UI path; research any API absence before setting that side to null."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-16T19:29:38.339Z",
+    "summary": {
+      "links": 5,
+      "unreachable": 0,
+      "uiPaths": 0,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/managed-environment-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/environment-groups",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/admin-sharing-controls-limits",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/tenant-settings",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [],
+    "roadmapDrift": []
+  },
+  "history": []
+}

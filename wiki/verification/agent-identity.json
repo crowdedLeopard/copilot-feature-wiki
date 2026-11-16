@@ -1,0 +1,495 @@
+{
+  "slug": "agent-identity",
+  "kind": "concept",
+  "roadmapId": null,
+  "title": "Agent identity: whose permissions does an agent use?",
+  "status": "needs-correction",
+  "date": "2026-11-16",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "grace",
+    "since": "2026-11-16",
+    "reasons": [
+      "6 blocking findings (claims 3, 9, 12, 19, 23, 27)",
+      "5 major findings",
+      "published before the check existed: kept live with a notice while a corrected version is prepared"
+    ]
+  },
+  "counts": {
+    "claims": 38,
+    "confirmed": 26,
+    "unconfirmed": 8,
+    "contradicted": 4,
+    "blocker": 6,
+    "major": 5,
+    "minor": 4
+  },
+  "summary": "Hold: the page overstates protection against unsafe sharing and implies that Copilot always asks before writes, although users can allow subsequent writes without another prompt. It also omits a Copilot Studio channel limitation on Conditional Access and makes unsupported blanket promises about audit attribution.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "The question to ask of every agent: End user row, How it works",
+      "type": "behaviour",
+      "claim": "End-user authentication uses the connected service account of the person using the agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication",
+      "quote": "Once the user signs in with their own account for the required service, the agent proceeds with the action using the user's credentials.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "The question to ask of every agent: End user row, Data access",
+      "type": "behaviour",
+      "claim": "Tools using end-user authentication cannot exceed that user's permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication",
+      "quote": "If the user lacks permission for something, the agent is unable to do it on their behalf - by design.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "The question to ask of every agent: End user row, Audit trail",
+      "type": "behaviour",
+      "claim": "The audit trail for the end-user pattern is attributed to the user.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Copilot Studio maker credentials audit logs attributed maker end user; Copilot audit UserId service principal. Read the cited authentication page, Agents FAQ and Copilot interaction events overview; none establishes this across connected-service audit trails.",
+      "severity": "blocker",
+      "fix": "Replace the blanket audit statement with 'Verify attribution in the connected service and the relevant Copilot audit records.' The Copilot interaction schema documents user interaction records, not a universal rule for all tool audit trails."
+    },
+    {
+      "n": 4,
+      "where": "The question to ask of every agent: End user row, When acceptable",
+      "type": "default",
+      "claim": "End-user credentials are the default for interactive connector and flow tools.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/security-scan",
+      "quote": "The default option for connectors and flows is End user credentials, and the security scan provides a warning if the maker changes it to Maker-provided credentials.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "The question to ask of every agent: End user row, autonomous agents shared run-only",
+      "type": "behaviour",
+      "claim": "An autonomous agent shared for others to run can use each recipient's own credentials.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-share-agent",
+      "quote": "Share an autonomous agent for users to run (preview)\n\nYou can share a published agent that has triggers with users who need to run the agent by using their own credentials.",
+      "severity": "minor",
+      "fix": "Label this as the preview shared-autonomous-agent experience, requiring user-authenticated triggers and tools. Also distinguish the cited configure-no-maker-authentication page, which warns that its enforcement requires live user sign-in and causes scheduled/background agents to fail."
+    },
+    {
+      "n": 6,
+      "where": "The question to ask of every agent: Maker-provided row, connection",
+      "type": "behaviour",
+      "claim": "An agent can retain a configured maker-owned connection for use at runtime.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/configure-sharing-agents-embedded-maker-credentials",
+      "quote": "These embedded maker credentials are supplied at design time and can be used when the agent runs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "The question to ask of every agent: Maker-provided row, runtime identity",
+      "type": "behaviour",
+      "claim": "Tools configured with maker credentials authenticate as the maker even when someone else uses the agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication",
+      "quote": "When someone uses the agent, the agent uses the maker's credentials, not the end user's credentials, to authenticate with connected services.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "The question to ask of every agent: Maker-provided row, Data access",
+      "type": "behaviour",
+      "claim": "A maker-provided connection gives the agent access to everything the maker can reach.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Copilot Studio maker credentials; mixed authentication tools. Read configure-no-maker-authentication, configure-enduser-authentication, advanced-connectors and govern-agents-identities-overview; none says a connection exposes everything the maker can access.",
+      "severity": "major",
+      "fix": "Replace 'Everything the maker can reach' with 'The configured tools can use the maker's permissions in their connected services, potentially exposing data or actions unavailable to the end user.'"
+    },
+    {
+      "n": 9,
+      "where": "The question to ask of every agent: Maker-provided row, Audit trail",
+      "type": "behaviour",
+      "claim": "The audit trail is attributed to the maker regardless of who used the agent.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Copilot Studio maker credentials audit logs attributed maker; Copilot Studio maker credentials audit trail. Read configure-no-maker-authentication, Agents FAQ and security-and-governance excerpts; runtime authentication is stated, but this blanket audit rule is not.",
+      "severity": "blocker",
+      "fix": "Remove the universal attribution promise. Say 'Connected-service operations use the maker's credentials; verify how that service and Copilot record the caller and the interacting user.'"
+    },
+    {
+      "n": 10,
+      "where": "The question to ask of every agent: Service identity row, How it works",
+      "type": "behaviour",
+      "claim": "An organization-approved service identity can use a service principal, API key or managed identity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/configure-sharing-agents-embedded-maker-credentials",
+      "quote": "Agents that use an approved system identity, such as a service principal, API key, or managed identity, can be published when the associated connection supports the scenario.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "The question to ask of every agent: Service identity row, Data access",
+      "type": "behaviour",
+      "claim": "Service-identity data access is governed by the permissions assigned to that identity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/agent-essentials/m365-agents-faq",
+      "quote": "An agent can use APIs or connectors according to existing permissions assigned.\n\nRole-based access control (RBAC) is part of the enforcement model.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "The question to ask of every agent: Service identity row, Audit trail",
+      "type": "behaviour",
+      "claim": "The audit trail is attributed to the service identity for all listed service-authentication methods.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: service principal audit logs API key agent; agent API key audit identity attribution. Read Agents FAQ, configure-sharing-agents-embedded-maker-credentials and Agent ID logs; none guarantees equivalent audit attribution for API keys, managed identities and service principals.",
+      "severity": "blocker",
+      "fix": "Replace with 'Attribution depends on the connected service and authentication method; verify the service's audit records.' Do not imply that an API key guarantees an identifiable service-principal audit trail."
+    },
+    {
+      "n": 13,
+      "where": "The question to ask of every agent: Entra agent identity row, How it works",
+      "type": "behaviour",
+      "claim": "An agent can have its own Microsoft Entra agent identity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/agent-id/agent-identities",
+      "quote": "An agent identity is a special service principal in Microsoft Entra ID.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "The question to ask of every agent: Entra row; Controls: Dataverse agent users",
+      "type": "behaviour",
+      "claim": "Dataverse can represent agents as agent users linked to Microsoft Entra agent identities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/create-users#agent-users-preview",
+      "quote": "Agent users (preview)\n\n[This section is prerelease documentation and is subject to change.]\n\nThese users have agent identities in Microsoft Entra Agent ID and are added into the Dataverse environment to get data access.",
+      "severity": "minor",
+      "fix": "Mark Dataverse agent users as preview in the table and controls bullet. Describe administrators adding an agent user to an environment and assigning its security role, rather than implying automatic access provisioning."
+    },
+    {
+      "n": 15,
+      "where": "The question to ask of every agent: Entra row, roles; Controls: Dataverse agent users",
+      "type": "role",
+      "claim": "A Dataverse agent user can be assigned its own security role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/create-users#create-an-agent-user-preview",
+      "quote": "On the Manage security roles page, select a security role for your agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "The question to ask of every agent: Entra row, other services provision an agent user",
+      "type": "behaviour",
+      "claim": "Other services provision an agent user with dedicated roles when the agent has an Entra Agent ID.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: agent identity API key service principal managed identity; agent identity standard autonomous. Read agent-identities, Agent 365 identity and create-users; user accounts are optional, and no passage establishes this generalized service-provisioning behavior.",
+      "severity": "major",
+      "fix": "Remove 'and other services'. Retain the documented Dataverse preview example and explain that an Entra agent identity and an optional agent user account are different objects."
+    },
+    {
+      "n": 17,
+      "where": "The question to ask of every agent: Entra row, Audit trail",
+      "type": "behaviour",
+      "claim": "Microsoft Entra audit records can identify an agent as the initiator or performer of an operation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/agent-id/sign-in-audit-logs-agents",
+      "quote": "An agent identity and an agent's user account can both be represented in the initiatedBy and performedBy events. A value other than notAgentic indicates agent involvement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "The question to ask of every agent: Entra row, sign-in logs",
+      "type": "applicability",
+      "claim": "Microsoft Entra provides sign-in logs for agent identities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/agent-id/sign-in-audit-logs-agents",
+      "quote": "The agentSignIn sign-in event type contains properties about the agent, such as if the agent is an app or an instance of an app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "The question to ask of every agent: Entra row; Controls: Agent 365 and Entra Agent ID",
+      "type": "applicability",
+      "claim": "Conditional Access applies to agents using Entra Agent ID without a channel qualification.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/govern-agents-identities-overview",
+      "quote": "Conditional Access is enforced today only when the agent runs in Microsoft Teams (see the note at the start of this section).",
+      "severity": "blocker",
+      "fix": "State that Entra supports Conditional Access for agent identities, but Copilot Studio currently evaluates it for connector calls only in Microsoft Teams. Other channels use the existing Power Platform connector authentication flow; seeing scopes is not evidence of enforcement there."
+    },
+    {
+      "n": 20,
+      "where": "The question to ask of every agent: Entra row, Microsoft is standardising on",
+      "type": "behaviour",
+      "claim": "Microsoft is moving Copilot Studio agents toward Entra Agent IDs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/govern-agents-identities-overview",
+      "quote": "New agents: Automatically get Microsoft Entra Agent IDs.\nExisting agents: Continue using app registrations and will be migrated to use Agent IDs in the future.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "The question to ask of every agent: paragraph after the table, Microsoft 365 Copilot itself",
+      "type": "behaviour",
+      "claim": "Microsoft 365 Copilot respects the current user's data-access permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy#how-does-microsoft-copilot-protect-organizational-data",
+      "quote": "Semantic Index honors the user identity-based access boundary so that the grounding process only accesses content that the current user is authorized to access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "The question to ask of every agent: paragraph after the table, federated connectors",
+      "type": "behaviour",
+      "claim": "Federated connectors use the user's account and permissions in the third-party system.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+      "quote": "The authenticated user's identity and permissions in the source system govern tool access. Users can only access information they're authorized to view and change data they're authorized to modify.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "The question to ask of every agent: paragraph after the table, confirmation before writes",
+      "type": "behaviour",
+      "claim": "Copilot asks for confirmation before writes through federated connectors.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+      "quote": "Tools that create, update, or delete data initially require the user's explicit approval. Users can choose whether Copilot asks again for that tool, as described in Confirm an action.",
+      "severity": "blocker",
+      "fix": "Replace with 'Federated connector write tools require approval by default; users can select Allow for conversation or Always allow for an individual tool, so later writes need not prompt again.' Limit this statement to federated connector tools."
+    },
+    {
+      "n": 24,
+      "where": "Controls that enforce the right pattern: Control maker credential options, location and label",
+      "type": "admin-path",
+      "claim": "Control maker credential options is a setting in the Power Platform admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication",
+      "quote": "Admins can enable and disable the selection of maker-provided credentials in the Power Platform admin center, as described in this article.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Controls that enforce the right pattern: Control maker credential options, scope",
+      "type": "applicability",
+      "claim": "The maker-credential control can be configured per environment or environment group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication",
+      "quote": "Choose whether end-user or maker credentials (or both) can be selected by makers for agents in an environment, or for all agents in all environments in an environment group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Controls that enforce the right pattern: Control maker credential options, removal",
+      "type": "behaviour",
+      "claim": "The maker-credential control can remove the maker-provided authentication choice.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication",
+      "quote": "Any toggle or dropdown for authentication methods have maker-provided credentials disabled or hidden.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Controls that enforce the right pattern: Sharing agents with embedded maker credentials, blocking",
+      "type": "applicability",
+      "claim": "The embedded-maker-credentials control blocks sharing or publishing any agent that still carries maker connections.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-platform/admin/security/control-sharing-agents-with-embedded-maker-credentials",
+      "quote": "Administrators can prevent makers from sharing or publishing Copilot Studio agents that expose a connection with maker-provided credentials to end users when the connection isn't safe to share.",
+      "severity": "blocker",
+      "fix": "Say the preview control blocks applicable unsafe share/publish paths when a connection violates the connection-sharing policy, not all maker connections. Explain that it does not retroactively unshare or disable existing agents, as documented at https://learn.microsoft.com/microsoft-copilot-studio/configure-sharing-agents-embedded-maker-credentials."
+    },
+    {
+      "n": 28,
+      "where": "Controls that enforce the right pattern: Sharing agents with embedded maker credentials, detect-only",
+      "type": "behaviour",
+      "claim": "The sharing control has a nonblocking detection mode suitable for assessing impact before enforcement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/configure-sharing-agents-embedded-maker-credentials",
+      "quote": "All sharing allowed | Copilot Studio detects and informs makers about unsafe credential use, but doesn’t block sharing. | Use to assess impact, educate makers, and prepare an environment before enforcement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Controls that enforce the right pattern: Agent 365 and Entra Agent ID, inventory",
+      "type": "behaviour",
+      "claim": "Agent 365 inventories agents, while Microsoft Entra provides identity management for agents with Agent IDs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/agent-id/agent-registry-convergence",
+      "quote": "The Microsoft Entra admin center focuses on identity and access management for agents. Identity administrators can see agents that have a Microsoft Entra Agent ID for viewing and managing them.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Controls that enforce the right pattern: Agent 365 and Entra Agent ID, disable",
+      "type": "applicability",
+      "claim": "Administrators can centrally disable an Entra agent identity to block access and token issuance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/agent-id/manage-agent-identities-admin",
+      "quote": "Disable a specific agent identity to block its access and token issuance. Administrators use the admin center; owners and sponsors use the My Account portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Controls that enforce the right pattern: Copilot Studio automatic security scan, timing",
+      "type": "behaviour",
+      "claim": "Copilot Studio automatically runs a security scan and warns makers before publishing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/security-scan",
+      "quote": "Copilot Studio automatically runs a security scan and warns makers before publishing.",
+      "severity": "minor",
+      "fix": "Add the uncited supporting Microsoft pages to sources: https://learn.microsoft.com/microsoft-copilot-studio/security-scan ; https://learn.microsoft.com/microsoft-copilot-studio/configure-sharing-agents-embedded-maker-credentials ; https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-share-agent ; https://learn.microsoft.com/entra/agent-id/agent-identities ; https://learn.microsoft.com/entra/agent-id/sign-in-audit-logs-agents ; https://learn.microsoft.com/entra/agent-id/manage-agent-identities-admin ; https://learn.microsoft.com/microsoft-copilot-studio/govern-agents-identities-overview ; https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy . This is the grouped missing-citations finding."
+    },
+    {
+      "n": 32,
+      "where": "Controls that enforce the right pattern: Copilot Studio automatic security scan, maker credentials",
+      "type": "applicability",
+      "claim": "Selecting maker-provided credentials triggers a security warning.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/security-scan",
+      "quote": "The default option for connectors and flows is End user credentials, and the security scan provides a warning if the maker changes it to Maker-provided credentials.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Controls that enforce the right pattern: Copilot Studio automatic security scan, everyone",
+      "type": "applicability",
+      "claim": "Sharing an agent with everyone in the organization is a risk surfaced by the security scan.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/security-scan",
+      "quote": "Makers see risks when the following secure default settings are updated:\n\nThe maker shares an agent with everyone in the organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Review checklist: item 1, Mixed agents are common",
+      "type": "behaviour",
+      "claim": "Agents mixing identity patterns are common.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: agents mix credentials; Copilot Studio mixed authentication tools. Read configure-enduser-authentication, authoring-connections and Plan your agent identity architecture excerpts; mixed configurations are possible, but no passage establishes their prevalence.",
+      "severity": "major",
+      "fix": "Delete 'Mixed agents are common.' Keep the advice to inspect each tool, or replace it with 'Authentication is configured per tool' using https://learn.microsoft.com/microsoft-copilot-studio/configure-enduser-authentication."
+    },
+    {
+      "n": 35,
+      "where": "Review checklist: item 4, Purview audit",
+      "type": "applicability",
+      "claim": "Microsoft Purview provides auditing for agents in Microsoft 365.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/agent-essentials/m365-agents-faq",
+      "quote": "Microsoft Purview provides unified audit and compliance across all extensibility options.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Review checklist: item 5, maker departure breaks agents",
+      "type": "behaviour",
+      "claim": "Maker-provided agents can break when the maker leaves the organization.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Copilot Studio maker leaves connection; agent maker leaves the organization; Copilot Studio connections owner leaves. Read authoring-connections, configure-enduser-authentication and Agent settings excerpts; no passage states this agent-specific departure outcome.",
+      "severity": "major",
+      "fix": "Keep the review question but replace the asserted outcome with advice: 'Document who will replace or reauthenticate maker-owned connections during offboarding.' The connection documentation supports failures from expired or invalid credentials, not departure alone."
+    },
+    {
+      "n": 37,
+      "where": "Review checklist: item 5, maker departure leaves agents working",
+      "type": "behaviour",
+      "claim": "Maker-provided agents can keep working with the departed maker's access after the maker leaves.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Copilot Studio maker leaves connection; Copilot Studio connection owner deleted; Copilot Studio connections owner leaves. Read authoring-connections and configure-enduser-authentication; neither establishes continuing access after maker offboarding.",
+      "severity": "major",
+      "fix": "Remove 'or, worse, keep working.' Instead advise administrators to verify connection revocation and ownership during offboarding without asserting an undocumented post-departure access outcome."
+    },
+    {
+      "n": 38,
+      "where": "Review checklist: items 1, 2 and 4; missing governance controls table",
+      "type": "consistency",
+      "claim": "The checklist asks readers to review tool authentication, identity permissions and Purview audit without corresponding controls rows.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Which pattern does each tool in the agent use? ... what roles does it hold ... Are audit events landing in Purview under the right principal? The page has no controls table.",
+      "severity": "minor",
+      "fix": "Add documented controls rows for reviewing tool authentication, assigning Dataverse agent-user roles, managing Entra agent permissions and accessing relevant audit logs. Use the already verified Microsoft references; do not infer missing UI or API paths."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-16T19:29:37.408Z",
+    "summary": {
+      "links": 5,
+      "unreachable": 0,
+      "uiPaths": 0,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/agent-id/agent-registry-convergence",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/create-users#agent-users-preview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/agent-essentials/m365-agents-faq",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [],
+    "roadmapDrift": []
+  },
+  "history": []
+}

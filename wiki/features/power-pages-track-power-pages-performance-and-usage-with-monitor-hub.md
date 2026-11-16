@@ -67,6 +67,17 @@ changes:
   - date: "2026-11-16"
     note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
 version: 2
+verification:
+  status: "needs-correction"
+  date: "2026-11-16"
+  version: 2
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 45
+  confirmed: 40
+  unconfirmed: 4
+  contradicted: 1
+  attempts: 1
 ---
 
 ## What's changing
@@ -144,4 +155,15 @@ The monitor hub is the [Monitor area](https://learn.microsoft.com/power-platform
 risk: Low. It adds read-only telemetry for existing sites in the admin center, with no new end-user behaviour.
 cost: Low. No licence is published; the main cost is admin time to review the metrics. Confirm any storage or data export costs when details appear.
 impact: Low. Site owners, makers and administrators see the insights; site visitors do not.
+-->
+
+<!-- verifier-findings (2026-11-16, needs-correction; checked by gpt-6.1-sol)
+The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
+- [supported, minor] front matter: targetDate; What's changing / record: The roadmap gives January CY2027 for general availability. | Found: "targetDate": "January CY2027", "status": "In development" | Fix: In What's changing, say 'general availability targeted for January CY2027', rather than 'general availability in January CY2027'.
+- [supported, minor] front matter: previewDate; What's changing / record: The roadmap gives October CY2026 for preview. | Found: "previewDate": "October CY2026", "status": "In development" | Fix: Replace 'a preview from October CY2026' with 'a preview targeted for October CY2026'; the record still says In development and does not establish that preview has started.
+- [unsupported, blocker] Cost and licensing: Treat it as included until Microsoft states otherwise / licensing: Administrators can treat the monitor hub integration as included until Microsoft states otherwise. | Found: Searched: Power Pages monitor hub tenant analytics enable disable settings API PowerShell licensing price; "Power Pages" "monitor hub" "licensing" "retention". Read monitoring-overview, capacity-management and licensing FAQ excerpts; none establishes inclusion for this feature. | Fix: Remove 'Treat it as included until Microsoft states otherwise.' Replace it with 'Licensing for this integration is not yet published; do not assume it is included.' Keep licensing.model as unknown and the low cost rationale limited to known administrative work.
+- [unsupported, major] Risk assessment: Autonomy & actions; rationale: risk / behaviour: The integration is read-only and takes no actions on sites. | Found: Searched: "Power Pages" "monitor hub" "read-only" actions. Opened monitoring-overview and read the roadmap. The roadmap lists reporting capabilities but does not state an absolute read-only or no-actions guarantee for the integration. | Fix: Replace the categorical statement with 'The roadmap describes metrics, trends and report downloads; it does not describe autonomous site actions.' In the risk rationale, describe the planned reporting scope instead of asserting read-only operation.
+- [unsupported, major] Why it matters: first paragraph / behaviour: Existing Power Pages performance and error data is spread across the admin center, Application Insights and diagnostic logs. | Found: Searched: Power Pages Application Insights performance telemetry page load error monitoring; "Power Pages" "Application Insights" integration monitoring site performance. Opened overview-integration-application-insights, admin-center-analytics and view-portal-error-log; no source states this topolog | Fix: Replace with 'Existing Learn guidance documents site traffic analytics in the admin center and website error logs sent to Azure Blob storage.' Cite admin-center-analytics and view-portal-error-log. Do not present the general Dataverse Application Insights integration as Power Pages-specific evidence.
+- [contradicted, minor] front matter: action; Governance guidance / consistency: The action rating none is consistent with the briefing's recommendation that administrators decide how to use and govern the new reporting capability. | Found: action: "none"; Before rollout: "Decide which roles should see site metrics and how long to retain downloaded reports." The standard defines none as nothing to configure or decide, and review as checking fit for an optional capability or new control. | Fix: Set action to review: this is a new reporting capability whose default is unknown, with no sourced claim that existing behaviour changes, and the checklist asks administrators to make decisions about its use.
+- [unsupported, minor] rationale: risk; rationale: impact / behaviour: The integration introduces no new end-user behaviour and site visitors are unaffected. | Found: Searched: "Power Pages" "monitor hub" "read-only" actions; "Power Pages" "monitor hub" "reports" "identifiers". Read the roadmap and monitoring-overview; neither states that collection for this integration has no effects on visitors or end-user behaviour. | Fix: Remove the categorical visitor and end-user assurances. State instead that the roadmap describes an admin-center reporting capability for site owners, makers and administrators, and rate impact on that documented audience.
 -->
