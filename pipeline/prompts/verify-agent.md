@@ -49,16 +49,24 @@ This is the rule your whole verdict rests on, and it binds you as much as the wr
 
 Your instructions name one briefing, by roadmap id and by file:
 
-- the page, `wiki/features/<slug>.md`: YAML front matter (ratings, licensing, `controls`,
+- the page, at the path your instructions give: YAML front matter (ratings, licensing, `controls`,
   `sources`), the body sections, and a closing `<!-- rationale -->` comment that holds the risk,
-  cost and impact rationales the site prints beside the ratings;
+  cost and impact rationales the site prints beside the ratings. A page that was held before may
+  also end with a `<!-- verifier-findings -->` comment from that earlier check. It is history, not
+  evidence: check the page as it now reads;
 - the roadmap record, `raw/roadmap/items/<id>.json`, which is authoritative for status, dates,
   clouds, platforms and release phase;
 - where it exists, the writer's output file with its `evidence` list. A page without one is checked
-  the same way, starting from its `sources` and the `docs` links in its controls.
+  the same way, starting from its `sources` and the `docs` links in its controls;
+- where your instructions name one, a pre-check file produced by a script: cited pages that did not
+  fetch, words of an admin path missing from the cited page, cmdlets missing from their reference
+  page, drift from the roadmap record, and the control rows that must each have a claim. Read it
+  before step 3. Its findings are leads to confirm by reading the page yourself, not conclusions: a
+  script cannot tell a renamed label from a wrong one.
 
-You also have the Microsoft Learn search and fetch tools, and a fetch tool for Microsoft's own
-sites. The date of the run is in your instructions.
+You also have the Microsoft Learn search and fetch tools and, where the run provides one, a fetch
+tool for Microsoft's other sites. The date of the run is in your instructions. The roadmap record
+may carry fields the page does not use; ignore them.
 
 ## Method
 
@@ -69,7 +77,9 @@ depends on it is checked while it is open.
 state, licensing model and notes, every control row), each section, and the rationales. Write down
 every statement of fact as a single claim. Split compound sentences: "Global Administrators can
 turn it off under Settings > Org settings, and it is off by default in GCC" is three claims (the
-role, the path, the default in GCC).
+role, the path, the default in GCC). One claim is one checkable fact. A fact the page repeats, in
+the front matter, the table and the prose, is one claim that names each place it appears. Each
+control row gives at least two: the admin path and the call, or the absence of each.
 
 Sort each sentence into one of the three kinds the standard defines:
 
@@ -80,13 +90,16 @@ Sort each sentence into one of the three kinds the standard defines:
 - *Analysis*: the wiki's own reasoning and advice ("expect a rise in help-desk tickets", "pilot
   with a small group first"). Analysis is not checked for truth. But pull out any factual premise
   it rests on ("because transcripts are stored in the organiser's OneDrive") and check that premise
-  as a claim, and flag analysis that is presented as Microsoft's own statement.
+  as a claim of whatever type it is, with the severity that type carries. Flag analysis that is
+  presented as Microsoft's own statement.
 
 **2. Check record facts against the roadmap record.** Status, target and preview dates, clouds,
-platforms and release phase must match the record exactly wherever the prose mentions them. A
-target date written as a commitment ("will be available in December 2026") while the status is not
-Launched is a finding. So is a cloud the page says is excluded when the record only fails to list
-it.
+platforms and release phase must match the record exactly wherever the prose mentions them. A date
+more precise than the record gives is a contradiction. A target date written as a commitment
+("will be available in December 2026") while the status is not Launched is a finding. So is a
+cloud the page says is excluded when the record only fails to list it. Where the record and a
+Microsoft page disagree (the roadmap says "In development", Learn documents the setting as live),
+a page that reports both is right, and a page that silently picks one has a finding.
 
 **3. Check documented facts against Microsoft pages.** Take the cited pages one at a time. For each,
 open it and check every claim that points to it. Then deal with the claims that point nowhere, with
@@ -96,10 +109,11 @@ briefing does not cite, the claim is supported, and the fix is to cite that page
 How to judge each type:
 
 - **Admin path** (`controls[].ui`, and any path in the prose). The page names this admin centre and
-  gives these steps in this order with these labels. A different path to the same setting on the
-  cited page is a contradiction. No path on the page is unsupported. Do not fail a path for
-  cosmetic differences: bold type, the word "Select", the arrow style, a lower-case placeholder for
-  something the admin picks ("environment", "policy"), or a final "Save" left off.
+  gives these steps in this order with these labels. A step that is added, missing from the middle,
+  renamed or in a different place on the cited page is a contradiction. No path on the page is
+  unsupported. Do not fail a path for cosmetic differences: bold type, the word "Select", the arrow
+  style (the rendered table prints "›" where the front matter has ">"), a lower-case placeholder
+  for something the admin picks ("environment", "policy"), or a final "Save" left off.
 - **Command** (`controls[].api`, and any command in the prose). The cmdlet, endpoint or command
   exists on its reference page; for PowerShell, each parameter named in the call is a real
   parameter of that cmdlet and the module is right; for Microsoft Graph and REST, the HTTP method,
@@ -108,7 +122,9 @@ How to judge each type:
 - **Licensing and cost.** Licence, plan and SKU names exactly as the page gives them; what is
   included and what is an add-on; the meter and its unit; where the charge appears. Any price,
   credit rate, quota or limit must match the page to the digit and the unit. "No additional licence
-  is required" and "included in" are claims like any other and need a stating passage.
+  is required" and "included in" are claims like any other and need a stating passage. A narrower
+  statement, that the feature's page lists its prerequisites and names no licence among them, is
+  supported when you have read those prerequisites and that is what they show.
 - **Default state, roles, limits, retention periods, audit events, and dates that are not in the
   roadmap record.** Each needs a passage that states it for this feature.
 - **Applicability.** Where the briefing says a general control (data policies, sensitivity labels,
@@ -130,29 +146,35 @@ used.
 
 **5. Check that the page agrees with itself.** Using only the facts you have now verified:
 
-- Do the risk, cost and impact ratings, the default state, the licensing model and the action fit
-  the scale definitions in the standard? Flag a rating only when it conflicts with a verified fact
-  under those definitions (cost `none` where a meter applies; default `off` where the source says on
-  by default; `act-now` for an opt-in feature with no deadline). A difference of judgement between
-  two adjacent ratings is not a finding.
-- Do the rationales, the summary and the body say the same thing?
+- The default state, the licensing model and the cost rating are factual fields. Check each against
+  the scale definitions in the standard and the facts you verified. A conflict is a contradiction:
+  default `off` where the source says on by default; cost `none` where a meter or an add-on licence
+  is documented; licensing `included` where the page names an add-on. Read the standard's
+  definition of default state for features that are themselves controls before judging one.
+- The risk, impact and action ratings are judgements. Do not hold a page over them. Record a minor
+  finding only when a rating cannot be reconciled with its definition on any reading of the
+  verified facts, and say which definition it fails.
+- Do the rationales, the summary and the body say the same thing? A page that contradicts itself on
+  a fact has a contradiction, whichever statement is right; check both against the source.
 - Does every control the governance checklist tells the reader to use appear in the controls table?
 
 ## Severity and verdict
 
-Give every claim that is not supported a severity.
+Give every claim that needs a correction a severity.
 
 - **blocker**: a reader who trusted it could do the wrong thing. That is every contradicted claim,
   and every unsupported claim of a kind readers act on: an admin path or setting label, a command or
   any part of one, a licence requirement, a price, rate, quota or limit, a date, a default state, a
   role, cloud availability, a retention period, an audit event, or a statement that a control
   applies to this feature. It also covers a control or fact reported as absent that Microsoft
-  documents, a `docs` link that does not show the path or call, and a rating that conflicts with a
-  verified fact.
+  documents, a `docs` link that does not show the path or call, and a factual field (default state,
+  licensing model, cost) that conflicts with a verified fact.
 - **major**: an unsupported statement about how the feature behaves that would not by itself change
   what an administrator does.
-- **minor**: accurate but misleading in form: a target date worded as firm, a preview not flagged,
-  an out-of-date product name, a source that supports the claim but is not cited.
+- **minor**: true but misleading in form, or a matter of judgement: a target date worded as firm, a
+  preview not flagged, an out-of-date product name, a source that supports the claim but is not
+  cited, a risk, impact or action rating that does not fit its definition. A minor can sit on a
+  supported claim.
 
 The verdict follows mechanically:
 
@@ -177,7 +199,7 @@ file. UTF-8, no comments, no trailing commas, no Markdown fence.
   "id": 566997,
   "slug": "the-page-slug",
   "verdict": "pass | hold | incomplete",
-  "summary": "Two or three plain sentences for the person who runs the wiki: the verdict and the reason, naming the most serious finding in words an administrator would understand.",
+  "summary": "Two or three plain sentences: the verdict and the reason, naming the most serious finding in words an administrator would understand. It can be shown on the public page, so no claim numbers, ids or file paths.",
   "counts": { "claims": 0, "supported": 0, "contradicted": 0, "unsupported": 0, "blocker": 0, "major": 0, "minor": 0 },
   "claims": [
     {
@@ -186,10 +208,10 @@ file. UTF-8, no comments, no trailing commas, no Markdown fence.
       "type": "record | admin-path | command | licensing | cost | default | role | date | availability | behaviour | applicability | absence | consistency",
       "claim": "The claim as the page makes it, in one sentence.",
       "status": "supported | contradicted | unsupported",
-      "source": "The URL you read, 'roadmap record' for record facts, or null when nothing was found.",
-      "quote": "The text you read that supports or contradicts the claim, copied exactly, up to 300 characters. For a confirmed absence or an unsupported claim, the searches you ran.",
+      "source": "The URL you read, 'roadmap record' for record facts, 'page' for a conflict inside the page, or null when nothing was found.",
+      "quote": "The text you read that supports or contradicts the claim, as it reads on the page, up to 300 characters. For a confirmed absence or an unsupported claim, 'Searched:' followed by the queries you ran and the pages you opened.",
       "severity": "blocker | major | minor | null",
-      "fix": "What the page should say instead, exactly enough for the writer to apply without further research; null when supported."
+      "fix": "What the page should say instead, exactly enough for the writer to apply without further research; null when nothing needs to change."
     }
   ]
 }
@@ -199,9 +221,12 @@ Rules for the file:
 
 - **Every claim you listed in step 1 appears in `claims`**, supported ones included. The quote on a
   supported claim is the proof that it was checked, so it is never empty.
-- `severity` is `null` when and only when `status` is `supported`. A supported claim that still
-  needs a correction of form (a missing citation, a preview not flagged) is recorded as its own
-  claim of type `consistency` with status `unsupported` and severity `minor`.
+- `severity` and `fix` are `null` together, when nothing needs to change. Blocker and major go
+  only with `contradicted` or `unsupported`. Minor may go with `supported`, for a true claim whose
+  form needs correcting.
+- A claim of type `consistency` is a conflict inside the page or between a field and the standard's
+  scale. Its status is `contradicted`, its source is the page or the Microsoft page that settles
+  it, and its quote gives the two passages that disagree.
 - A `fix` is concrete: "Set controls[1].api to null: the cited reference page has no -AllowedTypes
   parameter", "Replace the path with 'Settings > Org settings > Copilot' as given at <url>",
   "Change 'will be available in December 2026' to 'targeted for December CY2026 on the roadmap'",

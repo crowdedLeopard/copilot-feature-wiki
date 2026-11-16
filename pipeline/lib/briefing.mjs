@@ -216,12 +216,20 @@ ${glossaryLines(glossary).join('\n') || '(empty: define every tag you use in new
 }
 
 /**
+ * One spelling per Microsoft Learn page: the language segment is dropped, so
+ * learn.microsoft.com/en-us/x and learn.microsoft.com/x are the same source and are listed once.
+ */
+export function canonicalUrl(url) {
+  return String(url).replace(/^(https?:\/\/learn\.microsoft\.com)\/[a-z]{2}-[a-z]{2}\//i, '$1/');
+}
+
+/**
  * Every Learn page a control points at must also appear in the briefing's sources, so the
  * references section lists it. Returns a new sources array; URLs already present are left alone.
  * Throws when a control cites a domain the wiki does not accept.
  */
 export function mergeControlDocsIntoSources(sources, controls = []) {
-  const norm = (u) => u.replace(/\/+$/, '').toLowerCase();
+  const norm = (u) => canonicalUrl(u).replace(/\/+$/, '').toLowerCase();
   const seen = new Set(sources.map((s) => norm(s.url)));
   const out = [...sources];
   for (const c of controls) {
@@ -253,9 +261,19 @@ export async function writeBriefingPage(item, rawOutput, { slug, existingFm, ind
   const tags = normaliseTags(out.tags, item.clouds, glossary);
   const defined = defineTags(glossary, tags, out.newTags);
   if (defined.added.length || defined.filled.length || defined.stubs.length) await saveGlossary(glossary);
-  let sources = out.sources.filter((s) => isAllowedSourceUrl(s.url));
+  // One spelling per Learn page, so a page cited with and without its language segment is listed once.
+  const controls = out.controls.map((c) => ({
+    ...c,
+    ui: c.ui && { ...c.ui, docs: canonicalUrl(c.ui.docs) },
+    api: c.api && { ...c.api, docs: canonicalUrl(c.api.docs) },
+  }));
+  const seenSource = new Set();
+  let sources = out.sources
+    .filter((s) => isAllowedSourceUrl(s.url))
+    .map((s) => ({ ...s, url: canonicalUrl(s.url) }))
+    .filter((s) => { const key = s.url.replace(/\/+$/, '').toLowerCase(); return seenSource.has(key) ? false : seenSource.add(key); });
   if (!sources.some((s) => s.kind === 'roadmap')) sources.unshift({ title: `Microsoft 365 Roadmap ${item.id}`, url: item.roadmapUrl, kind: 'roadmap' });
-  sources = mergeControlDocsIntoSources(sources, out.controls);
+  sources = mergeControlDocsIntoSources(sources, controls);
   const fm = {
     title: out.title, slug, roadmapId: item.id, topic: item.topic, products: item.products, summary: out.summary,
     status: item.statusKey, releasePhase: item.releasePhase, clouds: item.clouds, platforms: item.platforms,
@@ -265,7 +283,7 @@ export async function writeBriefingPage(item, rawOutput, { slug, existingFm, ind
     audiences: out.audiences, tags,
     sources, videos: out.videos.filter((v) => isAllowedSourceUrl(v.url)),
     related: out.relatedSlugs.filter((s) => indexSlugs.some((l) => l.startsWith(s + ' |')) && s !== slug).slice(0, 6),
-    controls: out.controls,
+    controls,
     confidence: out.confidence, created: existingFm?.created || today(), updated: today(), roadmapModified: item.modified,
     changes: [...(existingFm?.changes || []), { date: today(), note: out.changeNote }],
     version: (existingFm?.version || 0) + 1,

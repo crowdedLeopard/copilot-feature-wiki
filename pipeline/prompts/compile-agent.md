@@ -57,6 +57,17 @@ For each task:
    JSON file and run it again. Fix the format, not the facts: never add a claim or drop a "Not yet
    documented" to satisfy the validator.
 
+**Correcting a held briefing.** If the existing page in the brief ends with a
+`<!-- verifier-findings -->` comment, the verifier held that page and this task is a correction.
+The comment lists each claim that failed and the fix. Apply every fix. Where a fix removes a claim,
+remove it, or replace it with "Not yet documented" or "Not yet published", and take out anything
+that rested on it. Where a fix replaces a claim, read the replacement on the page it cites before
+you write it, and give it an `evidence` entry. If you re-open the source and it plainly states a
+claim the verifier could not find, keep the claim and put the exact sentence and its URL in
+`evidence`, so the next check finds it. Do not answer a finding by rewording the same unsupported
+claim more cautiously. Re-check the rest of the page as for any refresh, and say in `changeNote`
+what was corrected.
+
 Each task has a fixed allowance of time and credits, set by the workflow. The research guide in the
 standard fits inside it. A task that is cut off before the validator prints `OK` publishes nothing,
 so once research has answered the questions, write the file and validate rather than searching
@@ -137,11 +148,13 @@ Notes on particular fields:
 - **evidence.** One entry for every documented fact a reader could act on: each control side that
   is not `null` (the quote is the text that gives the path, cmdlet or endpoint), the default state
   unless it is `unknown`, every licensing and cost statement, every role, limit and number, every
-  date that did not come from the roadmap record, and each statement that a general control applies
-  to this feature. Facts taken from the roadmap record need no entry. The quote must be text you
-  read on that page in this task; if you cannot produce it, the claim does not belong in the
-  briefing. The verifier starts from this list, so a complete one gets a correct page published
-  sooner. It is not printed on the page.
+  date that did not come from the roadmap record, and each statement that a control governs this
+  feature. An existing control described as today's alternative needs entries for its own path and
+  command, not for applying to the new feature. Facts taken from the roadmap record need no entry.
+  The quote must be text you read on that page in this task, written as it reads on the page
+  (plain characters, not HTML entities or Markdown markup); if you cannot produce it, the claim
+  does not belong in the briefing. The verifier starts from this list, so a complete one gets a
+  correct page published sooner. It is not printed on the page.
 - **tags and newTags.** The brief lists the glossary as `tag | name readers see`. Reuse those
   spellings. For any tag that is not listed, or that the brief marks as needing a description, add
   an entry to `newTags`; it is added to `wiki/tags.json` so the tag has a plain-English name and a
@@ -166,7 +179,10 @@ As the verifier:
   status in the text match the roadmap record exactly.
 - Does any sentence present the roadmap's plan as shipped behaviour, a preview page as the final
   design, or a neighbouring feature's control as this feature's?
-- Do "Not yet documented" and "Not yet published" appear only where you searched and found nothing?
+- For every `null` control side and every "Not yet documented" or "Not yet published": did you run
+  a search for that specific control or fact and find nothing? If you did not search, search now or
+  take the statement out. If you saw that it exists but did not read it, it is not "not
+  documented".
 
 As the administrator:
 

@@ -51,13 +51,15 @@ that fills the gap with something plausible is defective, however well it reads.
 Every sentence in a briefing is one of three kinds. Know which kind each one is as you write it.
 
 - **Record facts** come from the roadmap record supplied with the task: title, status, target and
-  preview dates, clouds, platforms, release phase and the description text. The record is
-  authoritative for these, and they are reported as the record gives them. The roadmap is a statement
-  of Microsoft's plans, so its dates are targets and are described as targets.
-- **Documented facts** come from a Microsoft page that was opened and read while researching this
-  briefing: what the feature does in detail, its default, which licence it needs, what it costs,
-  which role configures it, where each control lives. A documented fact uses the page's own wording
-  for names, paths, commands and numbers.
+  preview dates, clouds, platforms, release phase and the description text, including any
+  availability table inside the description (version, release channel, feature scope). The record
+  is authoritative for these, and they are reported as the record gives them. The roadmap is a
+  statement of Microsoft's plans, so its dates are targets and are described as targets.
+- **Documented facts** come from Microsoft's own text, read while researching this briefing: a
+  page that was opened, or an excerpt of one returned by the Learn search tool. They cover what the
+  feature does in detail, its default, which licence it needs, what it costs, which role configures
+  it and where each control lives. A documented fact uses the page's own wording for names, paths,
+  commands and numbers.
 - **Analysis** is the wiki's own reasoning: why the change matters, what could go wrong, what to do
   before rollout. This is what readers come for, and it should be confident and specific. It is built
   on record facts and documented facts, and it is worded as the wiki's view ("this means", "expect",
@@ -96,6 +98,9 @@ Rules that follow from this:
   only from the record. Do not turn "targeted for December CY2026" into "available in December".
   Give dates as the record gives them, with the month and year, and call them targets until the
   status is Launched.
+- **Documentation moves.** Where a statement depends on when the research was done ("the cmdlet
+  reference lists no such parameter"), say "at the time of writing" with the month and year, so a
+  reader who arrives later knows to check.
 - **Preview documentation describes the preview.** Where a Learn page is marked preview, say so, and
   do not present its limits, licensing or behaviour as the final design.
 - **Numbers are quoted, not estimated.** A price, credit rate, quota or limit appears only when a
@@ -111,8 +116,8 @@ Rules that follow from this:
 ## Research: finding what a briefing needs
 
 Research is done per item, with the Microsoft Learn search and fetch tools first and Microsoft's own
-sites second. A search result is a lead; a fact is something read on an opened page. Work through
-these questions and stop when each is answered or shown to be unanswered:
+sites second. A search result is a lead; a fact is something read in Microsoft's own text. Work
+through these questions and stop when each is answered or shown to be unanswered:
 
 1. **What is it?** Start from the roadmap record and its "more info" link if there is one. Find the
    Learn page for the feature itself, and open it. If there is no page for the feature yet, find the
@@ -133,11 +138,17 @@ these questions and stop when each is answered or shown to be unanswered:
 6. **How is it watched?** Audit events, usage reports, alerts, and where they appear.
 7. **Is there an official video?** Only from Microsoft's own channels, and only if a search finds it.
 
-Open the pages that matter rather than relying on search snippets: a snippet rarely carries the
-prerequisites, the role required or the "preview" banner. As a guide, a well-documented feature needs
-four to eight searches and three to five opened pages; a feature with nothing beyond the roadmap text
-needs three or four searches to establish that, and then a short, honest briefing. Spend the effort
-on questions 3 and 5, because those are the ones readers act on.
+An excerpt returned by the Learn search tool is text from the page, so a path or command that
+appears in full in an excerpt has been read and can be used. But excerpts are partial. Always open
+the feature's own page, and open any page whose excerpt shows that a control exists without giving
+all of it: an excerpt rarely carries the prerequisites, the role required or the "preview" banner.
+When a page names a setting and links elsewhere for its path, follow the link and read the path
+there.
+
+As a guide, a well-documented feature needs four to eight searches and three to five opened pages; a
+feature with nothing beyond the roadmap text needs three or four searches to establish that, and
+then a short, honest briefing. Spend the effort on questions 3 and 5, because those are the ones
+readers act on.
 
 If the Learn tools return errors rather than results, stop and report it. A briefing written without
 working research would state "Not yet documented" for controls that may well be documented, which is
@@ -164,13 +175,17 @@ understand it on first reading, without looking anything up?
 - **British English in prose, Microsoft's spelling in Microsoft's names.** Write "organisation",
   "licence" (noun), "authorise", "admin centre" in running text. Keep product names, portal names
   and setting labels exactly as Microsoft writes them: "Power Platform admin center", "Message
-  center", "Assign licenses". Use current product names: Copilot Studio, not Power Virtual Agents;
-  Microsoft Entra ID, not Azure AD; Microsoft Purview portal, not compliance center.
+  center", "Assign licenses". Where a Microsoft label is also an ordinary word, use Microsoft's
+  spelling only when quoting the label ("the **Organizers and co-organizers** option") and the
+  British word in running prose ("meeting organisers"). Use current product names: Copilot Studio,
+  not Power Virtual Agents; Microsoft Entra ID, not Azure AD; Microsoft Purview portal, not
+  compliance center.
 - **Short paragraphs.** Bullets for lists and checklists. Tables only when comparing options. No
   exclamation marks. No headings above H3 inside a section; the page template adds the H2s.
-- **Length follows evidence.** A briefing on a well-documented feature usually runs 600 to 1,000
-  words. Where Microsoft has published little, the briefing is shorter and says so. Never pad a
-  thin item with generic advice to make it look complete.
+- **Length follows evidence.** A briefing on a well-documented feature usually runs 700 to 1,200
+  words, with the detail spent on cost, risk and control. Where Microsoft has published little, the
+  briefing is shorter and says so. Never pad a thin item with generic advice to make it look
+  complete.
 
 ## Assessment scales
 
@@ -189,7 +204,8 @@ safe default; a cosmetic change is `low` and an on-by-default agent with write a
   controls, or creates uncapped spend.
 
 For a feature that is itself a new control, rate the exposure that remains if the control is left at
-its default, and say so in the rationale.
+its default, and say so in the rationale. If its default is not stated, rate on today's behaviour
+continuing, and say that too.
 
 **Cost**: direct and indirect.
 
@@ -212,16 +228,27 @@ behaviour.
   out, launched or targeted within about 60 days; or Microsoft has set a deadline for admins.
 - `prepare`: needs a decision, configuration, licence or communication before it arrives, and there
   is still time.
-- `review`: an optional capability that stays off until an admin or maker chooses it. Check fit.
+- `review`: an optional capability, or a new control, that changes nothing until an admin or maker
+  chooses it. Check fit.
 - `none`: awareness only. Nothing to configure or decide.
 
-**Default state**: judged from the administrator's seat, from the wording of the sources.
+Between `prepare` and `review`, ask whether anything happens if the reader does nothing. If the
+change arrives anyway, it is `prepare`. If nothing changes until someone chooses it, including
+when the default is not stated and no source says behaviour will change, it is `review`. One
+exception: a new control that closes an exposure this briefing rates `high` is `prepare`, because
+leaving it unconfigured is itself the risk.
+
+**Default state**: what the change does on arrival if no administrator touches it, judged from the
+wording of the sources. For a feature that is itself a new control, the default state describes
+the control: `admin-opt-in` when it restricts nothing until an admin configures it, `on` when it
+starts enforcing by default.
 
 - `on`: reaches the people it is aimed at with no admin action ("on by default", "rolls out
   automatically", "available to all users").
 - `off`: the source says it is off by default, without saying who turns it on.
 - `admin-opt-in`: nobody can use it until an admin enables or configures it.
-- `user-opt-in`: available, but each user or maker chooses to turn it on.
+- `user-opt-in`: available, but each user or maker chooses to turn it on or to use it. A capability
+  that appears in a designer for any maker to use, with no admin switch, belongs here.
 - `unknown`: the sources do not say. The site prints "Not stated". Never infer the default from how
   similar features shipped.
 
@@ -295,8 +322,11 @@ Then the sections, in this order. The template adds each H2 heading; the text su
 4. **Cost and licensing.** In this order: the licence a user needs; any meter, its unit and where the
    charge appears; any cap or budget control (and which row of the controls table it is); indirect
    costs such as storage, premium connectors or admin time; and what is not yet published. "No
-   additional licence is required" is a claim and needs a source like any other. Name the Learn page
-   each licensing statement comes from.
+   additional licence is required" is a claim and needs a source like any other. Where the
+   feature's page lists its prerequisites and no licence is among them, say exactly that ("the
+   Learn page lists admin roles as the only prerequisite and names no licence"), which a reader can
+   check, rather than concluding that none is needed. Name the Learn page each licensing statement
+   comes from.
 5. **Scope.** Who gets it and where: users and licences in scope, roles that can configure it,
    clouds as the record lists them, platforms, rollout mechanics, prerequisites, and anything
    explicitly out of scope.
@@ -361,12 +391,21 @@ Rules.
   row with both sides null is how a briefing states that a control an administrator would expect
   does not exist yet (for example "Tenant-wide switch for this feature"). Include such a row when
   its absence matters; it is one of the most useful things a briefing can tell a reader.
+- A null is a finding, so it needs its own search. Before setting a side to null, search for that
+  control on that surface. If research showed that the control exists but you have not read its
+  path or command, do not set it to null: read it, or leave the row out and name the control in
+  the notes without a path.
+- Existing controls that an administrator uses today in place of a missing one are worth a row.
+  Say in the note what they do and do not cover, so nobody mistakes them for a control over the new
+  feature.
 - Keep to the controls that govern this change: availability, who can use it, data boundaries,
   spend, audit. Order the rows that way, the most decisive control first. One to eight rows.
 - Prefer the admin-centre path over the maker path when both exist, and add the maker path as its
   own row only when the maker setting is the real control.
 - The `docs` link is the page where the path or call can be read, not the product's landing page.
-  Every `docs` URL is added to the briefing's sources automatically.
+  Every `docs` URL is added to the briefing's sources automatically. Give Microsoft Learn URLs
+  without the language segment: `learn.microsoft.com/power-platform/...`, not
+  `learn.microsoft.com/en-us/power-platform/...`.
 
 ## Sources
 
@@ -411,15 +450,16 @@ Three checks stand between a draft and the published wiki.
 3. **The linter** checks links, drift from the roadmap record and age.
 
 A briefing that states less, accurately, passes. A briefing that states more than its sources
-support is held, and its accurate parts are held with it.
+support is held, and its accurate parts are held with it. A held page goes back to the writer with
+the verifier's findings attached, is corrected, and is checked again before it is published.
 
 ## Linking
 
-Use `related` for other briefings that share a control surface, licence or risk. Prefer two to five
-links, chosen from the list supplied with the task. Concept pages in `wiki/concepts/` explain
-cross-cutting mechanisms (Copilot Credits, Managed Environments, agent identity, data policies).
-Link to them from governance guidance where relevant, as `/concepts/<slug>/`; link to other
-briefings as `/features/<slug>/`.
+Use `related` for other briefings that share a control surface, licence or risk, and for the concept
+pages this one depends on. Prefer two to five links, chosen from the list supplied with the task.
+Concept pages in `wiki/concepts/` explain cross-cutting mechanisms (Copilot Credits, Managed
+Environments, agent identity, data policies). Link to them from governance guidance where
+relevant, as `/concepts/<slug>/`; link to other briefings as `/features/<slug>/`.
 
 ## Index and log
 
