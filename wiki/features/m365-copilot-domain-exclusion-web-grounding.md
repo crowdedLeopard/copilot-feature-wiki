@@ -61,7 +61,7 @@ controls:
     scope: "group"
     ui:
       surface: "Microsoft 365 Apps admin center"
-      path: "Customization > Policy Management > Policy configurations > Create > Start with the basics > Choose the scope > Configure Settings > Allow web search in Copilot"
+      path: "Customization > Policy Management > Policy configurations > Create > Start with the basics > Choose the scope > Configure Settings"
       docs: "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy"
     api: null
     note: "Tenant or group scope; on, off, or off in work mode only."
@@ -89,19 +89,23 @@ changes:
     note: "Correction: domain exclusion filters web page results only; default set to admin opt-in; licensing marked not yet published and cost rated low; Cloud Policy and Purview paths, roles and query-data wording corrected; unsupported claims removed."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 51 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-17"
+    note: "Correction: shortened the Cloud Policy path in the web search control row to the steps its Learn page documents; the policy name stays in the prose."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 56 statements confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-17"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 51
-  confirmed: 50
-  unconfirmed: 1
+  claims: 56
+  confirmed: 56
+  unconfirmed: 0
   contradicted: 0
-  attempts: 3
-  hash: "ed735660d7211fad743e24d601e52085"
+  attempts: 0
+  hash: "cd808a965b8e178edb836f7956f04317"
 ---
 
 ## What's changing
@@ -168,7 +172,7 @@ It is also part of Microsoft's prompt-injection defence story: excluding domains
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Which domains are excluded from web grounding</strong><br><small>Tenant</small><br><small class="controls__note">Search Administrator or Global Administrator; needs the Az.Accounts module. The script also supports get, update, delete and template.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>ConfigureTenantDomainExclusions.ps1 -Create -FromFile &lt;csv&gt;</code> <a href="https://learn.microsoft.com/copilot/implement/domain-exclusion" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether web search is allowed at all</strong><br><small>Group</small><br><small class="controls__note">Tenant or group scope; on, off, or off in work mode only.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › Policy configurations › Create › Start with the basics › Choose the scope › Configure Settings › Allow web search in Copilot <a href="https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether web search is allowed at all</strong><br><small>Group</small><br><small class="controls__note">Tenant or group scope; on, off, or off in work mode only.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › Policy configurations › Create › Start with the basics › Choose the scope › Configure Settings <a href="https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Sensitive content sent to web search</strong><br><small>Tenant</small><br><small class="controls__note">Rule: Content contains &gt; Sensitive information types, action Prevent Copilot from processing content &gt; Performing Web Searches. The cmdlet creates the policy only; a rule is also needed.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data Loss Prevention › Policies › + Create policy › Custom › Custom policy › Locations › Microsoft Copilot, Copilot Chat, and Copilot Cowork <a href="https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpCompliancePolicy -Name &lt;name&gt; -Locations &lt;location&gt; -EnforcementPlanes @('CopilotExperiences')</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy?view=exchange-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
@@ -187,10 +191,4 @@ The Purview rule for blocking web search uses **Content contains** > **Sensitive
 risk: Low. A restrictive control that narrows web grounding; no new data movement.
 cost: Low. Maintaining the CSV and running the script take administrator time; feature-specific licensing and pricing are not yet published.
 impact: Medium. Changes what web sources every Copilot user may see cited once configured.
--->
-
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] controls[1].ui / admin-path: The linked Cloud Policy overview documents the full path ending Configure Settings > Allow web search in Copilot. | Found: Searched: Microsoft Graph beta Cloud Policy Allow web search in Copilot PowerShell API policy configuration. Read overview-cloud-policy: wizard ends at selecting policies by name; Allow web search in Copilot appears on manage-public-web-access, not this row's docs page. | Fix: In controls[1].ui and its rendered table cell, shorten the path to 'Customization > Policy Management > Policy configurations > Create > Start with the basics > Choose the scope > Configure Settings'. Keep the existing docs URL. Keep the specific policy name in the surrounding prose, supported by https://learn.microsoft.com/copilot/plan/manage-public-web-access.
 -->

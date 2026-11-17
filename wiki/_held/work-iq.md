@@ -4,8 +4,8 @@ title: "Work IQ: how agents reach Microsoft 365 and business data, and what an a
 slug: "work-iq"
 summary: "Work IQ is Microsoft's workplace intelligence layer that lets agents and apps reason over Microsoft 365 and business data as the signed-in user. Admins use it to decide who can call it, what it may do and what it costs."
 created: "2026-11-16"
-updated: "2026-11-16"
-version: 2
+updated: "2026-11-17"
+version: 3
 tags: ["work-iq","mcp","mcp-server","a2a","agents","copilot-credits","spending-policies","admin-controls","licensing"]
 covers: []
 sources:
@@ -54,10 +54,13 @@ sources:
   - title: "Microsoft 365 Copilot Cost Management API overview"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview"
     kind: "learn"
-  - title: "List spendingPolicies"
-    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-list"
+  - title: "workIQAdminActivity resource type"
+    url: "https://learn.microsoft.com/graph/api/resources/security-workiqadminactivity?view=graph-rest-1.0"
     kind: "learn"
-related: ["copilot-credits","mcp","managed-environments","agent-identity","work-iq-agent-policy-governance","microsoft-dataverse-enable-ai-powered-business-workflows-in-work-iq-with-dataverse-build-d","work-iq-real-time-transcripts"]
+  - title: "auditLogRecordType enum type"
+    url: "https://learn.microsoft.com/graph/api/resources/security-auditlogrecordtype?view=graph-rest-1.0"
+    kind: "learn"
+related: ["copilot-credits","mcp","managed-environments","agent-identity","work-iq-agent-policy-governance","work-iq-real-time-transcripts"]
 controls:
   - governs: "Work IQ API enablement for the organisation (service principal creation)"
     scope: "tenant"
@@ -125,7 +128,7 @@ controls:
     scope: "environment"
     ui:
       surface: "Power Platform admin center"
-      path: "Security > Identity and access > App access control > environment > Set up app access control > Access control > Enabled > Allow or Block > Save"
+      path: "Security > Identity and access > App access control > environment > Set up app access control > Access control > Enabled > Dataverse application > Allow or Block > Save"
       docs: "https://learn.microsoft.com/power-platform/admin/control-app-access-environment"
     api: null
     note: "Needs a Managed Environment. The Work IQ preview page gives a shorter procedure (Enable, then Save); the two Microsoft procedures differ. Power Platform Administrator role."
@@ -138,23 +141,28 @@ controls:
     api: null
     note: "Maker-side only. Whole workloads only; does not override organisational permissions or policies."
 confidence: "medium"
-dependents: 8
+dependents: 12
 changes:
   - date: "2026-11-16"
     note: "First concept page on Work IQ: what it is, how it is billed, and where its tenant, environment and agent controls are."
   - date: "2026-11-16"
     note: "Corrected the Entra consent path and added its Azure CLI command, the Work IQ feature row, the App Access procedure differences, the spending-policy disagreement and a billing row; removed the fixed tool count and the unsupported oversharing claim."
+  - date: "2026-11-17"
+    note: "Corrected: replaced the oversharing claim with permission-review advice, replaced the blanket 'no audit event name' with the documented WorkIQAdminActivity audit records, added the app-selection step to the App Access path and clarified that the environment row covers features only."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 100 statements contradicted, 0 unconfirmed; taken offline until corrected"
 verification:
   status: "held"
-  date: "2026-11-16"
-  version: 2
+  date: "2026-11-17"
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 95
-  confirmed: 92
-  unconfirmed: 1
+  claims: 100
+  confirmed: 98
+  unconfirmed: 0
   contradicted: 2
-  attempts: 2
+  attempts: 3
+  hash: "1e6da77241588210172713ba48d8f2f2"
 ---
 
 ## What it is
@@ -170,8 +178,6 @@ It is reached through A2A (agent-to-agent), a remote [MCP](/concepts/mcp/) serve
 | Tools | Generic MCP tools whose verbs (fetch, create, update) act on resource paths |
 | Workspaces | SharePoint Embedded working storage for intermediate data and outputs |
 
-The Work IQ overview says ten generic tools, while the Work IQ MCP overview tables name more; check the live `tools/list` response.
-
 **What it can reach.** The API overview lists email, meetings and calendar data, OneDrive and SharePoint documents, Teams messages, people, Planner plans and enterprise search results. Business Applications in Work IQ (preview) adds Power Apps and Dynamics 365 data.
 
 **How access is decided.** Work IQ uses Microsoft Entra ID delegated authentication; application-only authentication is not supported. A Rego-based policy engine (Open Policy Agent's policy language) evaluates each MCP request. Policy does not replace Entra authentication, OAuth permissions or the user's own Microsoft 365 permissions, and it cannot grant more than the user can already access.
@@ -180,7 +186,7 @@ In Copilot Studio, Work IQ is added by default to every new agent that uses the 
 
 ## Why it matters
 
-Copilot Studio agents, Microsoft 365 Copilot experiences and MCP clients draw on one service, so a few tenant settings decide what many agents can retrieve and do. Requests are user-scoped, so an agent can reach whatever its user can already reach. Work IQ does not repair oversharing in SharePoint or mailboxes; what you can narrow is the tenant policy (paths, operations, collection reads) and, in Copilot Studio, each agent's workloads.
+Copilot Studio agents, Microsoft 365 Copilot experiences and MCP clients draw on one service, so a few tenant settings decide what many agents can retrieve and do. Requests are user-scoped, so an agent can reach whatever its user can already reach. Because access is user-scoped, review existing SharePoint and mailbox permissions rather than treating Work IQ policy as a substitute for that review; what you can narrow is the tenant policy (paths, operations, collection reads) and, in Copilot Studio, each agent's workloads.
 
 Confirm defaults rather than assuming them. Copilot Studio states that write operations are on by default, subject to organisational permissions and policies; the Work IQ MCP policy page states that mutation operations, such as sending email, are not allowed by default. The pages describe different surfaces and do not reconcile the two, so test a write request. Business Applications in Work IQ (preview) is also on by default for public production environments that are not listed as exceptions: from 30 September 2026 for new environments and from November 2026 for existing ones.
 
@@ -200,7 +206,6 @@ A per-request credit rate is Not yet published on the Work IQ pages at the time 
 - **Policy is tenant-wide only.** Per-user, per-app, per-agent and scenario-specific templates are not part of the initial control surface, so Work IQ MCP policy cannot allow one agent and block another.
 - **Policy changes are not instant.** After saving, a change can take up to 24 hours to apply.
 - **A policy denial looks like a failure.** A request can fail on tenant policy even when the user is authenticated and the app holds the OAuth permission.
-- **Policy set too early can fail.** If you configure Work IQ MCP policy before any MCP use in the tenant, the service principal might not exist yet; create it with the enablement steps.
 - **Participation settings do not block agents.** The environment Work IQ settings do not prevent agentic access to environment data; App Access Control does.
 - **Workload scoping is coarse.** Copilot Studio selects whole workloads, not individual sites or mailboxes.
 - **Business Applications in Work IQ is preview and not for government clouds.** It is not currently available in DoD, GCC or GCC High, and enabling it might send data outside a FedRAMP-accredited environment's authorization boundary.
@@ -221,16 +226,16 @@ A per-request credit rate is Not yet published on the Work IQ pages at the time 
 <tr><td data-label="Control"><strong>Spending policy and consumption for Work IQ API</strong><br><small>Tenant</small><br><small class="controls__note">Beta API, subject to change and not supported for production. Creating a policy needs Billing Administrator or Global Administrator.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost management <a href="https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-overview-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>GET or POST /beta/copilot/costManagement/spendingPolicies; PATCH /beta/copilot/costManagement/spendingPolicies/{id}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Who can use Business Applications data in Work IQ through Microsoft 365 Copilot</strong><br><small>Tenant</small><br><small class="controls__note">Options: All users (the default), Specific groups, No users. Preview feature.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Settings › View all › Business Applications data in Work IQ available to Copilot <a href="https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Work IQ feature enablement for a Dataverse environment</strong><br><small>Environment</small><br><small class="controls__note">Preview. Does not prevent agentic access to environment data; use App Access Control for that.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › environment › Settings › Product › Features › Work IQ <a href="https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-participation" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which applications may access data in an environment (App Access Control)</strong><br><small>Environment</small><br><small class="controls__note">Needs a Managed Environment. The Work IQ preview page gives a shorter procedure (Enable, then Save); the two Microsoft procedures differ. Power Platform Administrator role.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Identity and access › App access control › environment › Set up app access control › Access control › Enabled › Allow or Block › Save <a href="https://learn.microsoft.com/power-platform/admin/control-app-access-environment" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which applications may access data in an environment (App Access Control)</strong><br><small>Environment</small><br><small class="controls__note">Needs a Managed Environment. The Work IQ preview page gives a shorter procedure (Enable, then Save); the two Microsoft procedures differ. Power Platform Administrator role.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Identity and access › App access control › environment › Set up app access control › Access control › Enabled › Dataverse application › Allow or Block › Save <a href="https://learn.microsoft.com/power-platform/admin/control-app-access-environment" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Which Microsoft 365 workloads a Copilot Studio agent's Work IQ tool uses</strong><br><small>Agent</small><br><small class="controls__note">Maker-side only. Whole workloads only; does not override organisational permissions or policies.</small></td><td data-label="Admin UI"><strong>Copilot Studio (maker)</strong><br>Build › Tools › Work IQ › Edit tool › Sources <a href="https://learn.microsoft.com/microsoft-copilot-studio/use-work-iq" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
 **Roles.** Microsoft documents Global Administrator for the one-time enablement and tenant-wide admin consent, AI Administrator for the Microsoft 365 admin center settings, Power Platform Administrator for App Access and environment settings, and Environment Maker or System Customizer for application-level participation. Creating a spending policy through the Cost Management API also requires Billing Administrator or Global Administrator.
 
-**How they interact.** For business data, three settings cascade: the tenant audience setting, the environment Work IQ setting and each app's maker setting. Turning off the tenant setting stops sharing between Microsoft 365 Copilot Chat and Dataverse even if an app is set to share. The Work IQ MCP Block applies to the whole server, separately from the audience settings and App Access. Enabling Work IQ features in an environment is a separate decision from allowing Work IQ to reason over its data; no separate path is documented at the time of writing. App Access needs a [Managed Environment](/concepts/managed-environments/).
+**How they interact.** For business data, three settings cascade: the tenant audience setting, the environment Work IQ setting and each app's maker setting. Turning off the tenant setting stops sharing between Microsoft 365 Copilot Chat and Dataverse even if an app is set to share. The Work IQ MCP Block applies to the whole server, separately from the audience settings and App Access. The environment row above covers the Work IQ features setting only. Microsoft documents environment data participation (which environments Work IQ may reason over and return data from) as a separate decision from enabling features, but no separate path is documented at the time of writing. App Access needs a [Managed Environment](/concepts/managed-environments/).
 
-**Not enforced.** Microsoft says every tool invocation is logged and evaluated, but no Work IQ audit event name or report path is documented at the time of writing. A Learn page notes that allowing or disallowing MCP servers in the Microsoft 365 admin center might not yet be available in every region.
+**Not enforced.** Microsoft says every tool invocation is logged and evaluated. Microsoft Graph documents WorkIQAdminActivity admin audit records. The Work IQ pages do not identify the operation names that capture individual tool invocations. A Learn page notes that allowing or disallowing MCP servers in the Microsoft 365 admin center might not yet be available in every region.
 
 ## What to check
 
@@ -251,10 +256,11 @@ A per-request credit rate is Not yet published on the Work IQ pages at the time 
 - Under which Microsoft Purview audit event names do Work IQ tool invocations appear?
 - Will Work IQ MCP policy gain per-user, per-app or per-agent scope? Microsoft says more granular controls might be added later.
 
-<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
-The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [supported, minor] controls[7].ui / admin-path: App Access Control uses Security > Identity and access > App access control > environment > Set up app access control > Access control > Enabled > Allow or Block > Save. | Found: Select Enabled in the Access control dropdown list. ... Select a Dataverse application, then select one of these options, located above the grid: Allow to allow access to the app. Block to deny access to the app. | Fix: Insert the app-selection step: Security > Identity and access > App access control > environment > Set up app access control > Access control > Enabled > Dataverse application > Allow or Block > Save. | Source: https://learn.microsoft.com/power-platform/admin/control-app-access-environment
-- [unsupported, major] Why it matters: first paragraph / behaviour: Work IQ does not repair oversharing in SharePoint or mailboxes. | Found: Searched: "Work IQ" "oversharing"; "Work IQ" "oversharing" SharePoint permissions. Opened the Work IQ overview, API overview and policy page. They document permission trimming and policy, not whether Work IQ repairs oversharing. | Fix: Replace the categorical product claim with analysis tied to the documented premise: 'Because access is user-scoped, review existing SharePoint and mailbox permissions rather than treating Work IQ policy as a substitute for that review.'
-- [contradicted, blocker] Governance controls: Not enforced / absence: No Work IQ audit event name is documented. | Found: Audit data for Work IQ Admin Activity events returned in the auditData property of an auditLogRecord. | Fix: Replace the blanket absence with: 'Microsoft Graph documents WorkIQAdminActivity admin audit records. The Work IQ pages do not identify the operation names that capture individual tool invocations.' Cite this resource and https://learn.microsoft.com/graph/api/resources/security-auditlogrecordtype?view=graph-rest-1.0, whose enum includes WorkIQAdminActivity. Do not equate admin activity with tool-invocation coverage. | Source: https://learn.microsoft.com/graph/api/resources/security-workiqadminactivity?view=graph-rest-1.0
-- [contradicted, minor] Governance controls: How they interact; controls / consistency: The prose identifies a separate environment data-participation decision with no documented path, but the controls table does not show that gap. | Found: Enabling Work IQ features in an environment is a separate decision from allowing Work IQ to reason over its data; no separate path is documented at the time of writing. ... Work IQ feature enablement for a Dataverse environment | Fix: Add an environment-scoped row for 'Whether Work IQ may reason over and return environment data', with both surfaces null and a note distinguishing the documented participation decision from feature enablement, citing manage-participation.
+<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] Cost and licensing: per-request rate; Open questions / absence: A per-request credit rate is not yet published on the Work IQ pages as of November 2026. | Found: | Static | Work IQ Tool API | 0.1 Copilot Credits per API call | | Fix: Replace the unpublished-rate sentence with: 'Microsoft publishes a Work IQ Tool API rate of 0.1 Copilot Credits per API call; Work IQ Chat API and Context API consumption is variable.' Cite https://www.microsoft.com/en-us/licensing/news/work-iq-general-availability. In Open questions, remove 'What is the credit rate per Work IQ request, and' and retain the spending-policy question. | Source: https://www.microsoft.com/en-us/licensing/news/work-iq-general-availability
+- [contradicted, blocker] Governance controls: How they interact / absence: No separate environment data-participation path is documented. | Found: | Allow data availability in Microsoft 365 Copilot | When On, allows Dynamics 365 and Dataverse data to be available in Microsoft 365 Copilot Chat. | Off | | Fix: Remove ', but no separate path is documented at the time of writing'. The general feature-settings reference documents a separate Allow data availability in Microsoft 365 Copilot setting under Power Platform admin center > Manage > Environments > environment > Settings > Product > Features > Dataverse intelligence (preview), alongside the Work IQ feature setting. It covers Copilot Chat data availability; do not imply that it is absent or infer that it controls every MCP data-participation scenario. | Source: https://learn.microsoft.com/power-platform/admin/settings-features
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Why it matters: Business Applications default / default: Business Applications in Work IQ is enabled by default for public production environments except the documented exceptions. | Found: The default applies to public production environments created for new or existing tenants. The following environments are exceptions: | Fix: After the default-enablement sentence, add: 'The general Power Platform Features reference still lists Allow data availability in Microsoft 365 Copilot and Turn on Dataverse intelligence (Work IQ) for agents and AI experiences as Off by default; confirm the effective settings in your environment.' Cite https://learn.microsoft.com/power-platform/admin/settings-features#dataverse-intelligence-preview alongside the existing Work IQ-specific source. | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings
 -->

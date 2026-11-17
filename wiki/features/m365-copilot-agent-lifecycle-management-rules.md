@@ -58,6 +58,12 @@ sources:
   - title: "Who may use agents (Microsoft 365 admin center)"
     url: "https://learn.microsoft.com/microsoft-365/copilot/agent-essentials/m365-agents-admin-guide#set-agent-policies"
     kind: "learn"
+  - title: "Microsoft Agent 365 - Service Descriptions"
+    url: "https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365"
+    kind: "learn"
+  - title: "Understand Agents in Microsoft Copilot"
+    url: "https://learn.microsoft.com/copilot/manage/copilot-agent-store"
+    kind: "learn"
 videos: []
 related: ["work-iq-agent-policy-governance"]
 controls:
@@ -95,6 +101,7 @@ controls:
       path: "Agents > All agents > Requests > agent > Publish / Reject"
       docs: "https://learn.microsoft.com/microsoft-365/copilot/agent-essentials/m365-agents-admin-guide"
     api: null
+    note: "The cited admin guide says Publish / Reject; https://learn.microsoft.com/copilot/manage/copilot-agent-store instead labels these actions Publish to store / Reject submission."
 confidence: "high"
 created: "2026-11-13"
 updated: "2026-11-17"
@@ -108,19 +115,23 @@ changes:
     note: "Corrected after verification: manager reassignment limited to Agent Builder agents, deletion rule attributed to the roadmap only, and the risky-agent, deletion, notification, reversibility, audit-log and API claims narrowed to what Microsoft documents."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 72 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-17"
+    note: "Corrected after verification: registry risk signals now carry the E7 or A365 licence condition, the inventory-filter checklist step was removed, and the publish-request row notes the store page's labels."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 78 statements not yet confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-17"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 72
-  confirmed: 70
+  claims: 78
+  confirmed: 78
   unconfirmed: 0
-  contradicted: 2
-  attempts: 3
-  hash: "e578a64ffbaf8b78a23f65dac1450e16"
+  contradicted: 0
+  attempts: 0
+  hash: "bee0a147c960f5d1eccabba29e85b972"
 ---
 
 ## What's changing
@@ -145,7 +156,7 @@ Rules let you apply a written lifecycle policy in bulk after you have reviewed t
 - Positive: blocking risky and ownerless agents reduces the number of agents with access to data and nobody watching.
 
 **Security & identity**
-- The roadmap item names blocking of risky agents, and Microsoft's Agent 365 overview describes rules-based management that can block risky agents. The Agent settings page instead lists 'Block ownerless agents without usage' and does not specify a risky-agent condition or its signals, so confirm what a rule can act on before relying on it. The agent registry shows risk signals from Microsoft security platforms such as Microsoft Purview, Microsoft Entra and Microsoft Defender; whether a rule uses them is not specified.
+- The roadmap item names blocking of risky agents, and Microsoft's Agent 365 overview describes rules-based management that can block risky agents. The Agent settings page instead lists 'Block ownerless agents without usage' and does not specify a risky-agent condition or its signals, so confirm what a rule can act on before relying on it. For tenants with an E7 or A365 licence, the agent registry shows risk signals from Microsoft security platforms such as Microsoft Purview, Microsoft Entra and Microsoft Defender; whether a rule uses them is not specified.
 - Reassignment gives a manager owner rights over an agent they did not build, and applies only to Agent Builder agents; the manager may not know what it does.
 
 **Autonomy & actions**
@@ -171,7 +182,6 @@ Rules let you apply a written lifecycle policy in bulk after you have reviewed t
 ### Before rollout
 - Write the lifecycle policy: when an unused agent is blocked, when a blocked agent is deleted, and who inherits ownerless agents. Check which rules your tenant offers under **Agents** > **Settings** > **Agent management rules** before relying on automatic deletion.
 - Check manager attributes in Entra for the maker population of Agent Builder agents so reassignment works.
-- Run the **Missing an owner** and **Availability: No users** filters to size the backlog before any rule runs.
 
 ### At rollout
 - Start with reassignment of ownerless Agent Builder agents and blocking of ownerless agents without usage; hold any deletion until the first review cycle completes.
@@ -191,7 +201,7 @@ Rules let you apply a written lifecycle policy in bulk after you have reviewed t
 <tr><td data-label="Control"><strong>Automated lifecycle rules for agents</strong><br><small>Tenant</small><br><small class="controls__note">Rules include installing Microsoft agents, reassigning ownerless Agent Builder agents to the manager, blocking ownerless agents without usage, applying a template (one-time) and rejecting stale publish requests.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Settings › Agent management rules › Add rule <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#agent-management-rules" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Manual block or unblock for an agent</strong><br><small>Agent</small><br><small class="controls__note">Graph side is beta and block only; production use is unsupported. Needs delegated CopilotPackages.ReadWrite.All (no application permission) and an Agent 365 licence.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › agent › Block / Unblock <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions#block-or-unblock-agents" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Who may use agents</strong><br><small>Tenant</small><br><small class="controls__note">The Agent settings page gives a different route to user access: Agents &gt; Settings &gt; User access.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Settings › Data access › Agents <a href="https://learn.microsoft.com/microsoft-365/copilot/agent-essentials/m365-agents-admin-guide#set-agent-policies" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Approving or rejecting agent publish requests</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › Requests › agent › Publish / Reject <a href="https://learn.microsoft.com/microsoft-365/copilot/agent-essentials/m365-agents-admin-guide" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Approving or rejecting agent publish requests</strong><br><small>Tenant</small><br><small class="controls__note">The cited admin guide says Publish / Reject; https://learn.microsoft.com/copilot/manage/copilot-agent-store instead labels these actions Publish to store / Reject submission.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › Requests › agent › Publish / Reject <a href="https://learn.microsoft.com/microsoft-365/copilot/agent-essentials/m365-agents-admin-guide" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
@@ -213,12 +223,10 @@ cost: None. Included in Copilot controls.
 impact: Medium. Users can lose agents; managers inherit ownership.
 -->
 
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Security & identity / licensing: The registry shows risk signals from Purview, Entra and Defender without any stated additional licensing qualification. | Found: Prerequisites for viewing risk signals ... Your tenant must have an E7 or A365 license. | Fix: Replace the registry risk-signals sentence with: 'For tenants with an E7 or A365 licence, the agent registry shows risk signals from Microsoft security platforms such as Microsoft Purview, Microsoft Entra and Microsoft Defender; whether a rule uses them is not specified.' The qualification is stated at https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview#prerequisites-for-viewing-risk-signals. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model, cost; Cost and licensing; rationale: cost / licensing: Conditions-based lifecycle rules are included rather than requiring an additional licence for Copilot-licensed tenants. | Found: | Automate agent lifecycle actions using conditions-based rules | Microsoft 365 Admin Center | Yes | Yes | Yes | | Fix: Add https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365 to sources: its Feature availability table explicitly marks conditions-based lifecycle actions as included with Microsoft 365 Enterprise, Business, Education, and Front Line Worker plans. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365
-- [supported, minor] controls[3].ui / admin-path: Publish requests are handled at Agents > All agents > Requests > agent > Publish / Reject. | Found: Select Agents > All agents > Requests. ... Select the requested agent and view the agent's details. ... Next to the name of the agent, select the action to Publish or Reject the agent. | Fix: Add to controls[3].note: 'The cited admin guide says Publish / Reject; https://learn.microsoft.com/copilot/manage/copilot-agent-store instead labels these actions Publish to store / Reject submission.' | Source: https://learn.microsoft.com/microsoft-365/copilot/agent-essentials/m365-agents-admin-guide
-- [contradicted, minor] Governance guidance: Before rollout / consistency: The checklist asks readers to use inventory filters that have no corresponding controls-table row. | Found: Run the Missing an owner and Availability: No users filters to size the backlog before any rule runs. The table covers rules, block/unblock, user access and publish requests, but not inventory filtering. | Fix: The Before rollout step 'Run the Missing an owner and Availability: No users filters to size the backlog before any rule runs' has no corresponding controls-table row.
+- [supported, minor] What's changing / behaviour: Agent details provides a Pin for users action. | Found: Pin for users | The agent is pinned in the UI (based on channel) where the agent was deployed, so that the agent can be found more easily. | Fix: Add https://learn.microsoft.com/microsoft-agent-365/admin/agent-details to sources for the exact Pin for users action label. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-details#view-agent-details
+- [supported, minor] What's changing / admin-path: All agents has a Missing an owner inventory filter. | Found: Below Agent inventory, select Missing an owner. Consider removing agents that no longer have an owner. | Fix: Add after the inventory-filter sentence: 'The registry page instead describes an Agents without owners card that filters by Publisher type and Owner.' Cite https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview#agents-without-owners. | Source: https://learn.microsoft.com/microsoft-365/copilot/agent-essentials/m365-agents-admin-guide
+- [supported, minor] What's changing / admin-path: All agents has an Availability > No users inventory filter. | Found: Next to Filters, select Availability > No users. Note which agents aren't available to members of your organization. | Fix: Add after the inventory-filter sentence: 'The registry page lists Status, Publisher Type, Channel, Platform and Data source filters rather than Availability.' Cite https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview#agent-registry-filters. | Source: https://learn.microsoft.com/microsoft-365/copilot/agent-essentials/m365-agents-admin-guide
 -->

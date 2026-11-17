@@ -111,19 +111,23 @@ changes:
     note: "Correction: licensing now names the Copilot add-on or E7 requirement; individual tool blocking and staged rollout paths corrected; admin tool view qualified as Coming soon; first-time claim removed."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 66 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-17"
+    note: "Correction: admin-published connectors now described as supporting create, update and delete where the connector provides those tools; removed two Purview audit checklist bullets that had no controls-table row."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 68 statements not yet confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-17"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 66
-  confirmed: 64
-  unconfirmed: 0
-  contradicted: 2
-  attempts: 3
-  hash: "637b332cb1a409bb47c0feada8aeddf9"
+  claims: 68
+  confirmed: 67
+  unconfirmed: 1
+  contradicted: 0
+  attempts: 0
+  hash: "b207cbe3caebf8b3f3ff8f10d2644daa"
 ---
 
 ## What's changing
@@ -132,7 +136,7 @@ verification:
 
 The model is the same as for read tools: Copilot acts with the **user's own account and permissions** at the third-party service, and no data is indexed. The roadmap item says every create, update or delete action requires the user's explicit confirmation before it runs. Microsoft Learn gives the detail: write, update and delete tools default to **Needs approval**, Copilot shows a confirmation card with the parameters it will send, and nothing is transmitted until the user responds. Users can choose **Allow once**, **Allow for conversation**, **Always allow** (per tool, revocable in Settings > Sources) or **Cancel**, so reusable choices mean later calls to the same tool need not ask again. If a publisher adds or changes a write tool, it reverts to Needs approval.
 
-The roadmap item says administrators can view each connector's read and write/delete tools in the Microsoft 365 admin center and disable connectors that do not meet policy. Learn labels that tool list **Coming soon** and says it is not available for all connectors. For supported connectors, the admin signs in to the third-party service in the connector's **Tools** section and selects **All tools**; the list reflects the permissions of the account used to sign in. Where it is unavailable, Learn points to Copilot **Settings** > **Sources** > connector > **Write/Delete tools**. Write actions are supported in Copilot Chat, agents, Cowork and Copilot in Word, Excel, PowerPoint and Outlook; the Researcher agent remains read-only. Microsoft-published default connectors appear as Ready in the admin center; admin-published connector templates currently support read-only tools.
+The roadmap item says administrators can view each connector's read and write/delete tools in the Microsoft 365 admin center and disable connectors that do not meet policy. Learn labels that tool list **Coming soon** and says it is not available for all connectors. For supported connectors, the admin signs in to the third-party service in the connector's **Tools** section and selects **All tools**; the list reflects the permissions of the account used to sign in. Where it is unavailable, Learn points to Copilot **Settings** > **Sources** > connector > **Write/Delete tools**. Write actions are supported in Copilot Chat, agents, Cowork and Copilot in Word, Excel, PowerPoint and Outlook; the Researcher agent remains read-only. Microsoft-published default connectors appear as Ready in the admin center. Admin-published federated connectors can also create, update or delete data where the connector provides those tools, with user approval and subject to source-system permissions; supported actions vary by connector.
 
 ## Why it matters
 
@@ -169,7 +173,7 @@ Compliance teams should note Microsoft's own wording: these actions "export Cust
 - Microsoft 365 Copilot Chat, agents, Cowork and Copilot in Word, Excel, PowerPoint and Outlook. Researcher excluded.
 - All users who can connect federated connectors and who hold the third-party account; staged rollout per connector limits the population.
 - Worldwide (standard multi-tenant). Government cloud availability not stated.
-- Admin-published connector templates: read-only tools only at present.
+- Admin-published federated connectors can also create, update or delete data where the connector provides those tools, with user approval and subject to source-system permissions; supported actions vary by connector.
 
 ## Governance guidance
 
@@ -181,12 +185,10 @@ Compliance teams should note Microsoft's own wording: these actions "export Cust
 ### At rollout
 - Use **Agent and plugin access** to block external publishers by default and allow specific connectors through staged rollout to pilot groups.
 - Brief users: read the card, prefer Allow once, know that Cancel changes nothing.
-- Confirm Purview audit is capturing connector actions for the pilot.
 
 ### After rollout
 - Review connector tool lists monthly for newly added write tools.
-- Sample audit logs for write actions; look for "Always allow" patterns on high-impact tools.
-- Watch for admin controls over approval defaults and for admin-published connectors gaining write support.
+- Watch for admin controls over approval defaults.
 
 ## Governance controls
 
@@ -208,7 +210,6 @@ None of these settings has a documented Graph or PowerShell equivalent, so chang
 ## Open questions
 
 - Whether administrators will get a tenant-wide "always require approval" setting for write tools.
-- When admin-published federated connectors will support write tools.
 - Whether individual tool blocking on Agent 365 will cover federated connectors, and when the admin centre tool list leaves Coming soon.
 - Government cloud timelines and whether DLP policies at the Copilot location will be able to inspect write payloads.
 
@@ -218,11 +219,10 @@ cost: None. Connector grounding adds no extra Microsoft charge for users who alr
 impact: High. Changes what every Copilot Chat user can do with enabled connectors.
 -->
 
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] What's changing: admin-published; Scope; Governance guidance; Open questions / availability: Admin-published connector templates currently support read-only tools and write support is still a future question. | Found: Admin-published FCCs can also create, update, or delete data where the connector provides those tools, with the user's approval and subject to their permissions in the source system. Supported actions vary by connector. | Fix: Replace the read-only statements in What's changing and Scope with: 'Admin-published federated connectors can also create, update or delete data where the connector provides those tools, with user approval and subject to source-system permissions; supported actions vary by connector.' In Governance guidance, remove 'and for admin-published connectors gaining write support'. Remove the open question asking when admin-published connectors will support write tools. Keep the existing citation to https://learn.microsoft.com/microsoft-365/copilot/connectors/admin-published-federated-connectors. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/admin-published-federated-connectors
+- [unsupported, major] Risk assessment: Change & support, the card explains this / behaviour: The confirmation card itself explains that cancelling leaves the third-party system unchanged. | Found: Searched: federated connectors confirmation Cancel card. Opened federated-connectors-overview: its documentation table explains Cancel and its image description names the Cancel button, but neither establishes that the card itself explains the outcome. | Fix: Replace 'the card explains this but training helps' with 'training helps'. The documented claim that Cancel leaves the connected system unchanged can remain.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] title; summary; What's changing; Why it matters / behaviour: Publisher-provided create, update and delete tools let users modify third-party records without leaving Copilot. | Found: When a connector provides the appropriate tools, users can ask Microsoft 365 Copilot to create, update, or delete information in a connected third-party system on their behalf. Users can complete work without leaving Copilot. | Fix: Add: 'The general Copilot connectors overview still describes federated connectors as read-only, while the dedicated federated connectors overview documents write actions.' The conflicting page is https://learn.microsoft.com/microsoft-365/copilot/connectors/overview. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview
-- [contradicted, minor] Governance guidance: At rollout and After rollout; Governance controls / consistency: The governance checklist asks readers to check and sample Purview audit, but no audit control appears in the controls table. | Found: "Confirm Purview audit is capturing connector actions for the pilot." / "Sample audit logs for write actions"; the five table rows cover connector availability, publisher types, user access, individual MCP tools and staged rollout only. | Fix: Remove the two checklist bullets 'Confirm Purview audit is capturing connector actions for the pilot' and 'Sample audit logs for write actions; look for "Always allow" patterns on high-impact tools.' They have no corresponding controls-table row; retain the independently supported statement that Purview can audit connector activity.
+- [supported, minor] title; summary; What's changing; Why it matters / behaviour: Publisher-provided create, update and delete tools are now usable in Copilot Chat. | Found: When a connector provides the appropriate tools, users can ask Microsoft 365 Copilot to create, update, or delete information in a connected third-party system on their behalf. | Fix: Add after the first paragraph of What's changing: 'The general Copilot connectors overview still describes federated connectors as read-only, alongside a note that write actions start in early October 2026; this briefing follows the launched roadmap item and the feature-specific federated connectors overview.' The conflicting page is https://learn.microsoft.com/microsoft-365/copilot/connectors/overview. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview
 -->

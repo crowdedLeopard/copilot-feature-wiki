@@ -58,6 +58,9 @@ sources:
   - title: "Microsoft 365 Copilot release notes"
     url: "https://learn.microsoft.com/microsoft-365/copilot/release-notes"
     kind: "learn"
+  - title: "License options for Microsoft Copilot"
+    url: "https://learn.microsoft.com/copilot/plan/copilot-license-options"
+    kind: "learn"
 videos: []
 related: ["microsoft-teams-automatic-recording-indicator-for-call-queue-calls-on-mobile","teams-intelligent-recap-without-saving-transcript"]
 controls:
@@ -120,19 +123,23 @@ changes:
     note: "Corrected the Graph licence-assignment role note (delegated role or custom role; application permission) and reworded the first licensing checklist bullet to separate Microsoft's recommendation to review from the advice to assign."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 71 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-17"
+    note: "Corrected four statements: licence wording now refers to entitlements rather than separate add-on purchases, the audit and retention uncertainty is replaced by Microsoft's general Copilot rules, and the recording-access sentence now depends on the Copilot licence."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 74 statements confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-17"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 71
-  confirmed: 67
+  claims: 74
+  confirmed: 74
   unconfirmed: 0
-  contradicted: 4
-  attempts: 3
-  hash: "4a9505d78138f6b6f427d5b086591ccd"
+  contradicted: 0
+  attempts: 0
+  hash: "a81398dd9b88d0cd8e750d77004a7e00"
 ---
 
 ## What's changing
@@ -153,9 +160,9 @@ The work is licensing and recording coverage, and it falls in the weeks before t
 
 **Data exposure**
 
-- Copilot answers questions from recorded call queue calls opened from shared call history. Anyone who can already open a recording there can now query it on mobile, so check who the automatic recording template lets representatives access (a control row below). That choice cannot be changed once the template is created.
+- Copilot answers questions from recorded call queue calls opened from shared call history. Users with the required Copilot licence who can already open a recording there can query it on mobile as rollout reaches them, so check who the automatic recording template lets representatives access (a control row below). That choice cannot be changed once the template is created.
 - Microsoft's notice says the feature does not change how recordings are created, stored or accessed. Where the recordings and any transcripts sit is set by the template's SharePoint site.
-- Microsoft's general Copilot documentation says prompts and responses can be audited and retained: with auditing enabled, Copilot interactions are logged and searchable under **Audit** in the Microsoft Purview portal, and retention policies cover Microsoft 365 Copilot prompts and responses, stored in a hidden mailbox folder that eDiscovery tools can search. Microsoft has not said whether Copilot use in the Queues app on mobile is recorded the same way.
+- Microsoft's general Copilot documentation says prompts and responses can be audited and retained: with auditing enabled, Copilot interactions are logged and searchable under **Audit** in the Microsoft Purview portal, and retention policies cover Microsoft 365 Copilot prompts and responses, stored in a hidden mailbox folder that eDiscovery tools can search. The general Copilot audit rules cover these interactions when auditing is enabled. Microsoft 365 Copilot retention policies cover its prompts and responses, including this experience.
 
 **Security & identity**
 
@@ -174,7 +181,7 @@ The work is licensing and recording coverage, and it falls in the weeks before t
 
 Microsoft's notice MC1552391 says users need a Teams Premium licence to use the Queues app and a Microsoft 365 Copilot licence to use Copilot. The Queues app page on Microsoft Learn adds that users must also have a Teams Phone licence (see [Manage Queues app for Microsoft Teams in your organization](https://learn.microsoft.com/microsoftteams/manage-queues-app)). Microsoft's Teams add-on licence page describes Teams Premium as an add-on license to Teams.
 
-No price, meter or Copilot Credits charge is stated for this feature in the roadmap record, the notice or the Learn pages at the time of writing (November 2026). Budget for the two add-on licences per user plus admin time to assign them and to confirm recording is on. Once a user is licensed for Teams Premium, the Queues app page says it can take up to 48 hours for the Queues app to appear in the Teams client.
+No price, meter or Copilot Credits charge is stated for this feature in the roadmap record, the notice or the Learn pages at the time of writing (November 2026). Budget for any missing Teams Premium and Microsoft 365 Copilot entitlements per user plus admin time to assign them and to confirm recording is on. Once a user is licensed for Teams Premium, the Queues app page says it can take up to 48 hours for the Queues app to appear in the Teams client.
 
 ## Scope
 
@@ -226,20 +233,10 @@ The Teams calling policy **Copilot** setting is documented for one-to-one and gr
 
 - Does the Teams calling policy **Copilot** setting, or any other policy, turn off Copilot on call queue calls in the Queues app? Watch the Learn page on managing Copilot in Teams calls and MC1552391.
 - Is a Copilot Credits meter or any other charge involved beyond the two licences? Watch the Microsoft 365 Copilot and Teams Premium licensing pages.
-- Are Copilot interactions in the Queues app on mobile audited and retained under the general Copilot audit and retention behaviour, or are there exceptions? Watch the Purview audit and retention pages for Copilot.
 - Will the mobile feature match desktop for queue types and call types? Watch Message center and the Teams Phone Copilot pages.
 
 <!-- rationale
 risk: Low. Copilot works on call recordings that users can already open in shared call history, and Microsoft's notice says recording creation, storage and access do not change.
-cost: Medium. Users need a Teams Premium licence for the Queues app and a Microsoft 365 Copilot licence for Copilot, so each agent or supervisor who wants the feature needs both add-ons.
+cost: Medium. Users need a Teams Premium licence for the Queues app and a Microsoft 365 Copilot licence for Copilot, so each agent or supervisor who wants the feature needs both entitlements.
 impact: Low. Only calling reps and supervisor leads in call queues, with the right licences and recorded calls, will see it; most Teams users are unaffected.
--->
-
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Cost and licensing; rationale: cost / licensing: Every agent or supervisor needs both Teams Premium and Copilot as separately purchased add-ons. | Found: Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible commercial, US Government, and education subscription plans. | Fix: Replace 'Budget for the two add-on licences per user' with 'Budget for any missing Teams Premium and Microsoft 365 Copilot entitlements per user'. In the cost rationale replace 'needs both add-ons' with 'needs both entitlements'. Do not imply that users already entitled through a suite must buy a separate Copilot add-on. | Source: https://learn.microsoft.com/copilot/plan/copilot-license-options
-- [contradicted, blocker] Risk assessment: Data exposure; Open questions / absence: Microsoft has not said whether the general Copilot auditing rules cover Queues mobile Copilot interactions. | Found: The system automatically generates audit logs when a user interacts with Copilot, Cowork, or an AI application. | Fix: Replace the auditing part of the uncertainty statement with 'The general Copilot audit rules cover these interactions when auditing is enabled.' Remove the question of whether general auditing applies from Open questions; a narrower question about the feature's specific audit identifiers may remain. | Source: https://learn.microsoft.com/purview/audit-copilot
-- [contradicted, blocker] Risk assessment: Data exposure; Open questions / absence: Microsoft has not said whether the general Microsoft 365 Copilot retention rules cover Queues mobile Copilot prompts and responses. | Found: Retention policies for AI apps include user prompts and responses for Microsoft 365 Copilot and Copilot Studio | Fix: Replace the retention part of the uncertainty statement with 'Microsoft 365 Copilot retention policies cover its prompts and responses, including this experience.' Remove the question of whether general retention applies from Open questions. | Source: https://learn.microsoft.com/purview/retention-policies-copilot
-- [contradicted, blocker] Risk assessment: Data exposure / consistency: Anyone who can already open a recording can query it with Copilot on mobile. | Found: Anyone who can already open a recording there can now query it on mobile ... Users need a Teams Premium licence to use the Queues app and a Microsoft 365 Copilot licence to use Copilot. | Fix: Replace 'Anyone who can already open a recording there can now query it on mobile' with 'Users with the required Copilot licence who can already open a recording there can query it on mobile as rollout reaches them'.
 -->

@@ -14,11 +14,11 @@ previewDate: null
 risk: "high"
 cost: "high"
 impact: "medium"
-defaultState: "admin-opt-in"
+defaultState: "unknown"
 action: "review"
 licensing:
-  model: "add-on"
-  notes: "Cross-tenant User Data Migration is a per-user one-time licence add-on. For the existing cross-tenant SharePoint tool, Cross-Tenant Shared Data Migration licences are currently available only to Enterprise Agreement customers, per 100 GB moved."
+  model: "unknown"
+  notes: "For the existing tools: Cross-tenant User Data Migration is a per-user one-time licence add-on. For the existing cross-tenant SharePoint tool, Cross-Tenant Shared Data Migration licences are currently available only to Enterprise Agreement customers, per 100 GB moved."
 audiences: ["m365-admin","service-owner","security","compliance","finops"]
 tags: ["migration","cross-tenant","tenant-to-tenant","exchange","onedrive","sharepoint","teams"]
 sources:
@@ -63,9 +63,9 @@ controls:
     ui: null
     api:
       kind: "powershell"
-      call: "Connect-MgGraph -Scopes 'CrossTenantContentMigration.ReadWrite.All'; Test-MgBetaCrossTenantMigrationJob -CrossTenantMigrationJobId <id>; once the status is ValidatePassed, Move-MgBetaCrossTenantMigrationJob -CrossTenantMigrationJobId <id>"
+      call: "Connect-MgGraph -Scopes 'CrossTenantContentMigration.ReadWrite.All'; Test-MgBetaCrossTenantMigrationJob -CrossTenantMigrationJobId <id>"
       docs: "https://learn.microsoft.com/microsoft-365/migration/migration-orchestrator-5-running-migration"
-    note: "Run from the target tenant as Microsoft 365 Migration Administrator or Global Administrator. Batches hold up to 100 users."
+    note: "Run from the target tenant as Microsoft 365 Migration Administrator or Global Administrator. Batches hold up to 100 users. After status ValidatePassed, run Move-MgBetaCrossTenantMigrationJob -CrossTenantMigrationJobId <id>."
   - governs: "SharePoint and OneDrive trust between the two tenants"
     scope: "tenant"
     ui: null
@@ -108,26 +108,30 @@ changes:
     note: "Correction: limited one-way and redirect statements to the workloads Learn describes, qualified shared data licensing to Enterprise Agreement customers, split the batch commands, clarified source and target roles, and moved group preparation before migration."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 65 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-17"
+    note: "Correction: batch validation and migration commands split, default state and licensing model set to unknown for the roadmap experience, and group and identity checklist steps narrowed to planning advice."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 73 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 4
 verification:
   status: "held"
   date: "2026-11-17"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 65
-  confirmed: 61
-  unconfirmed: 1
-  contradicted: 3
-  attempts: 3
-  hash: "08ac9a6547df1ebe9b6719b0392cbcf5"
+  claims: 73
+  confirmed: 71
+  unconfirmed: 0
+  contradicted: 2
+  attempts: 4
+  hash: "dee3e764d9f0cf4df43ee6c025b06273"
 ---
 
 ## What's changing
 
 Cross-Tenant Orchestrated Migration lets customers move Microsoft 365 data from one tenant to another. User Data Migration (UDM) covers mailboxes, OneDrive accounts, Teams chats and Teams meetings. Shared Data Migration (SDM) covers Microsoft 365 Groups, SharePoint sites, group mailboxes, and teams and channels.
 
-The roadmap entry lists the Microsoft 365 admin center, Worldwide only, with a December 2026 target. The more-info link reads TBD.
+The roadmap entry lists the Microsoft 365 admin center, Worldwide only, with a December 2026 target. The more-info link reads TBD. Microsoft has not stated the default for the roadmap admin-center experience.
 
 Microsoft Learn already documents a Migration Orchestrator that sequences supported workloads, alongside individual cross-tenant tools for mailbox, OneDrive and SharePoint.
 
@@ -161,8 +165,8 @@ Worldwide (Standard Multi-Tenant) per the roadmap. Learn states the existing cro
 
 ### Before rollout
 - Confirm legal and compliance sign-off for the data move.
-- Plan identity mapping, licences in the target tenant and holds.
-- Precreate target security groups, populate memberships and include them in identity mapping before migrating content.
+- Plan identity mapping, target-tenant licences and holds with the teams that own them.
+- Plan the precreation of target groups and their memberships ahead of content migration, as Learn describes for OneDrive.
 
 ### At rollout
 - Pilot with a small batch and validate redirects, permissions and Teams content.
@@ -170,7 +174,7 @@ Worldwide (Standard Multi-Tenant) per the roadmap. Learn states the existing cro
 
 ### After rollout
 - Reconcile mailbox and file counts.
-- Verify group memberships and permissions, and decommission source content per policy.
+- Compare group memberships and permissions between source and target, and decommission source content per policy.
 
 ## Governance controls
 
@@ -179,7 +183,7 @@ Worldwide (Standard Multi-Tenant) per the roadmap. Learn states the existing cro
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Validating and running an existing migration batch</strong><br><small>Tenant</small><br><small class="controls__note">Run from the target tenant as Microsoft 365 Migration Administrator or Global Administrator. Batches hold up to 100 users.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Connect-MgGraph -Scopes 'CrossTenantContentMigration.ReadWrite.All'; Test-MgBetaCrossTenantMigrationJob -CrossTenantMigrationJobId &lt;id&gt;; once the status is ValidatePassed, Move-MgBetaCrossTenantMigrationJob -CrossTenantMigrationJobId &lt;id&gt;</code> <a href="https://learn.microsoft.com/microsoft-365/migration/migration-orchestrator-5-running-migration" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Validating and running an existing migration batch</strong><br><small>Tenant</small><br><small class="controls__note">Run from the target tenant as Microsoft 365 Migration Administrator or Global Administrator. Batches hold up to 100 users. After status ValidatePassed, run Move-MgBetaCrossTenantMigrationJob -CrossTenantMigrationJobId &lt;id&gt;.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Connect-MgGraph -Scopes 'CrossTenantContentMigration.ReadWrite.All'; Test-MgBetaCrossTenantMigrationJob -CrossTenantMigrationJobId &lt;id&gt;</code> <a href="https://learn.microsoft.com/microsoft-365/migration/migration-orchestrator-5-running-migration" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>SharePoint and OneDrive trust between the two tenants</strong><br><small>Tenant</small><br><small class="controls__note">Run on the source tenant; trust setup has two halves. The target tenant runs Set-SPOCrossTenantRelationship -Scenario MnA -PartnerRole Source -PartnerCrossTenantHostUrl &lt;source-host-url&gt;.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOCrossTenantRelationship -Scenario MnA -PartnerRole Target -PartnerCrossTenantHostUrl &lt;target-host-url&gt;</code> <a href="https://learn.microsoft.com/microsoft-365/migration/cross-tenant-sharepoint-migration-step2" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Moving one user's OneDrive (existing tooling)</strong><br><small>User</small><br><small class="controls__note">Run from the source tenant by a SharePoint Admin or Microsoft 365 Global Admin.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Start-SPOCrossTenantUserContentMove -SourceUserPrincipalName &lt;upn&gt; -TargetUserPrincipalName &lt;upn&gt; -TargetCrossTenantHostUrl &lt;url&gt;</code> <a href="https://learn.microsoft.com/microsoft-365/migration/cross-tenant-onedrive-migration-step6" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Moving a SharePoint site (existing tooling)</strong><br><small>Site</small><br><small class="controls__note">Run from the source tenant by a SharePoint Admin or Microsoft 365 Global Admin.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Start-SPOCrossTenantSiteContentMove -SourceSiteUrl &lt;source-site-url&gt; -TargetSiteUrl &lt;target-site-url&gt; -TargetCrossTenantHostUrl &lt;target-host-url&gt;</code> <a href="https://learn.microsoft.com/microsoft-365/migration/cross-tenant-sharepoint-migration-step6" rel="noopener" class="controls__docs">Learn</a></td></tr>
@@ -204,9 +208,6 @@ impact: Medium. Affects migrating users and the admins of the source and target 
 <!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].api; Governance controls: first row / command: The displayed Connect/Test/once-the-status-is-ValidatePassed/Move sequence is a runnable PowerShell call. | Found: Test-MgBetaCrossTenantMigrationJob -CrossTenantMigrationJobId <batch display name or job id> Once the batch status is ValidatePassed, call migrate to start the actual migration. Move-MgBetaCrossTenantMigrationJob -CrossTenantMigrationJobId <batch display name or job id> | Fix: Set controls[0].api.call to "Connect-MgGraph -Scopes 'CrossTenantContentMigration.ReadWrite.All'; Test-MgBetaCrossTenantMigrationJob -CrossTenantMigrationJobId <id>". Move the English instruction out of the call and append to the existing note: "After the batch status reaches ValidatePassed, run Move-MgBetaCrossTenantMigrationJob -CrossTenantMigrationJobId <id>." Apply the same change to the rendered row. The cited Learn page documents validation and migration as separate steps, not an inline 'once' command. | Source: https://learn.microsoft.com/microsoft-365/migration/migration-orchestrator-5-running-migration
-- [unsupported, blocker] front matter: defaultState / default: The roadmap admin-center experience has a documented admin-opt-in default. | Found: Searched: "Cross-Tenant Orchestrated Migration" "enable" "default". Read roadmap, orchestrator overview, Running the migration and tenant-configuration search excerpt. Existing tools require admin setup; none states the new admin-center experience's default on arrival. | Fix: Set defaultState to "unknown" and state "Microsoft has not stated the default for the roadmap admin-center experience." Do not transfer the existing script-based orchestrator's setup requirements to the future experience without a source connecting them.
-- [contradicted, blocker] front matter: licensing.model; Cost and licensing / consistency: The page consistently establishes add-on licensing for the roadmap experience. | Found: licensing: model: "add-on" That describes the existing tool; final licensing for the roadmap experience is not yet published. | Fix: Set licensing.model to "unknown". Prefix licensing.notes with "For the existing tools: " so the verified User Data Migration and Shared Data Migration licence details remain explicitly separate from the unpublished licensing for the roadmap experience.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout and After rollout; Governance controls / consistency: Every governance-checklist control is represented in the controls table. | Found: Plan identity mapping, licences in the target tenant and holds. Precreate target security groups, populate memberships and include them in identity mapping before migrating content. Verify group memberships and permissions, and decommission source content per policy. | Fix: The Before rollout steps for identity mapping, licence assignment, holds and group preparation, and the After rollout step for group memberships and permissions, name controls without corresponding table rows. Narrow those checklist steps to planning and reconciliation advice rather than instructions to configure or check controls the table does not cover.
+- [contradicted, blocker] Governance controls: Everything documented today is script-driven / admin-path: Everything Microsoft currently documents for these migration tools is script-driven. | Found: Migration batch submission is also supported from the new Exchange admin center when selecting the cross-tenant option. | Fix: Replace 'Everything documented today is script-driven' with 'The controls documented in this table use Microsoft Graph or SharePoint Online PowerShell'. This limits the statement to the checked rows rather than incorrectly excluding the documented standalone mailbox admin UI. | Source: https://learn.microsoft.com/microsoft-365/migration/cross-tenant-mailbox-migration?view=o365-worldwide
+- [contradicted, blocker] front matter: cost; rationale: cost / consistency: The high cost rating is established for the new roadmap experience by the licences required for existing migration tools. | Found: cost: "high"; rationale: 'Per-user migration licences are required'; body: 'That describes the existing tool; final licensing for the roadmap experience is not yet published.' | Fix: Set cost to 'low' and replace the cost rationale with 'Low. Migration planning and administration require staff time; licensing and pricing for the roadmap admin-centre experience are not yet published.' The assessment scale requires rating the known cost of this change, not carrying existing-tool licensing into an experience whose licensing is unconfirmed. Keep the qualified existing-tool licensing background.
 -->

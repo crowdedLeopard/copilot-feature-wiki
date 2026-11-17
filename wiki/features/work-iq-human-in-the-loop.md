@@ -55,7 +55,7 @@ controls:
     scope: "agent"
     ui:
       surface: "Copilot Studio (maker)"
-      path: "Tools > tool > Details > Additional details > Ask the end user before running"
+      path: "Agents > agent > Tools > tool > Details > Ask the end user before running"
       docs: "https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent#view-and-make-changes-to-your-tool-configuration"
     api: null
     note: "Maker-side, per tool, for agents using the standard harness."
@@ -65,7 +65,7 @@ controls:
     api: null
 confidence: "low"
 created: "2026-11-15"
-updated: "2026-11-16"
+updated: "2026-11-17"
 roadmapModified: "2026-10-19T23:15:15"
 changes:
   - date: "2026-11-15"
@@ -84,19 +84,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 29 statements not yet confirmed"
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 30 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 4
+  - date: "2026-11-17"
+    note: "Corrected the Copilot Studio tool-confirmation path to Agents > agent > Tools > tool > Details > Ask the end user before running."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 32 statements confirmed"
+version: 5
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-17"
-  version: 4
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 30
-  confirmed: 29
+  claims: 32
+  confirmed: 32
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "3d894cc45c210cb7670454165b3d8763"
+  contradicted: 0
+  attempts: 0
+  hash: "8614d3f5c724ff9e2d67e55c31b2a5fa"
 ---
 
 ## What's changing
@@ -158,7 +162,7 @@ Agents and agent flows using Work IQ, Worldwide cloud, web. Sovereign cloud avai
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Work IQ MCP policy on or off for the tenant</strong><br><small>Tenant</small><br><small class="controls__note">The MCP policy article says mutation operations such as sending email are not allowed by default; the Work IQ in Copilot Studio page says write operations are on by default. Verify your tenant.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Work IQ MCP › Policy <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp#open-policy-settings-in-the-microsoft-365-admin-center" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether an agent asks the user before running a tool</strong><br><small>Agent</small><br><small class="controls__note">Maker-side, per tool, for agents using the standard harness.</small></td><td data-label="Admin UI"><strong>Copilot Studio (maker)</strong><br>Tools › tool › Details › Additional details › Ask the end user before running <a href="https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent#view-and-make-changes-to-your-tool-configuration" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether an agent asks the user before running a tool</strong><br><small>Agent</small><br><small class="controls__note">Maker-side, per tool, for agents using the standard harness.</small></td><td data-label="Admin UI"><strong>Copilot Studio (maker)</strong><br>Agents › agent › Tools › tool › Details › Ask the end user before running <a href="https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent#view-and-make-changes-to-your-tool-configuration" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Human-in-the-loop policy for Work IQ agents and agent flows</strong><br><small>Tenant</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -178,10 +182,4 @@ The [Add tools to custom agents page](https://learn.microsoft.com/microsoft-copi
 risk: Low. The feature adds a control point for human oversight rather than new autonomy, although details of enforcement are not yet published.
 cost: Variable. Work IQ uses consumption billing with Copilot Credits; any additional charge specific to pauses or approvals is not yet published.
 impact: Medium. It changes how approvers and agent owners interact with agent runs.
--->
-
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].ui; Governance controls table / admin UI / admin-path: The tool-confirmation path is Tools > tool > Details > Additional details > Ask the end user before running in Copilot Studio. | Found: The configuration page has three sections: Details, Inputs, and Completion. ... Details ... Ask the end user before running | Asks the user to confirm before the tool runs. Set to No by default. | Fix: Replace controls[1].ui.path and the corresponding rendered table path with 'Agents > agent > Tools > tool > Details > Ask the end user before running'. The current cited page places the setting directly under Details; remove 'Additional details'. | Source: https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent#view-and-make-changes-to-your-tool-configuration
 -->

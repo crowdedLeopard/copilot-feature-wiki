@@ -2,111 +2,28 @@
   "slug": "microsoft-teams-enhanced-copilot-and-ai-controls-for-meetings",
   "roadmapId": 577399,
   "title": "Microsoft Teams: MeetingAI and TranscriptionWithMeetingAI replace the Copilot meeting policy",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-17",
-  "version": 3,
+  "version": 4,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 3,
-  "verifierVerdict": "hold",
+  "attempts": 0,
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-16",
-    "reasons": [
-      "2 blocking findings (claims 50, 52)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 69,
-    "confirmed": 67,
+    "claims": 75,
+    "confirmed": 74,
     "unconfirmed": 0,
-    "contradicted": 2,
-    "blocker": 2,
+    "contradicted": 1,
+    "blocker": 0,
     "major": 0,
-    "minor": 0
+    "minor": 1
   },
-  "summary": "The migration, rollout windows, roles and PowerShell controls are supported. However, the table describes the two new admin UI controls as not documented even though Microsoft's notice documents their planned locations and options; a missing complete Learn navigation path is not an absent control.",
+  "summary": "The migration, rollout windows and documented controls are supported by Microsoft's notice and Microsoft Learn. The page correctly distinguishes automatic migration from parameter defaults and reports the documentation disagreements. One minor table-coverage issue remains: the checklist names the two replacement policies, which are described below the table but have no rows.",
   "claims": [
     {
       "n": 1,
-      "where": "front matter: status; What's changing",
-      "type": "record",
-      "claim": "The roadmap status is In development.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"status\": \"In development\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 2,
-      "where": "front matter: targetDate; What's changing; Open questions",
-      "type": "record",
-      "claim": "The roadmap target is December CY2026, not a committed availability date.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"targetDate\": \"December CY2026\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 3,
-      "where": "front matter: previewDate",
-      "type": "record",
-      "claim": "The roadmap gives no preview date.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": null",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
-      "where": "front matter: clouds; Scope",
-      "type": "record",
-      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), not GCC, GCC High or DoD.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [ \"Worldwide (Standard Multi-Tenant)\" ]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "front matter: platforms; Scope",
-      "type": "record",
-      "claim": "The listed platforms are Android, Desktop, iOS, Mac and Web.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [ \"Android\", \"Desktop\", \"iOS\", \"Mac\", \"Web\" ]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
-      "where": "front matter: releasePhase; Scope",
-      "type": "record",
-      "claim": "The roadmap lists General Availability and Targeted Release.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"releasePhase\": [ \"General Availability\", \"Targeted Release\" ]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
-      "where": "Scope",
-      "type": "record",
-      "claim": "MC1532253 names Microsoft Teams and Microsoft Copilot (Microsoft 365) as its services.",
-      "status": "supported",
-      "source": "Message Center post MC1532253",
-      "quote": "Services: Microsoft Teams, Microsoft Copilot (Microsoft 365)",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
       "where": "title; summary; What's changing; rationale: impact",
       "type": "record",
       "claim": "Microsoft plans to replace the Copilot meeting policy with MeetingAI and TranscriptionWithMeetingAI.",
@@ -117,10 +34,10 @@
       "fix": null
     },
     {
-      "n": 9,
-      "where": "What's changing; Scope; controls[0].governs",
+      "n": 2,
+      "where": "What's changing; Scope",
       "type": "record",
-      "claim": "MeetingAI governs availability of Copilot, Facilitator, Intelligent Recap and other AI features in meetings.",
+      "claim": "MeetingAI controls availability of Copilot, Facilitator, Intelligent Recap and other AI features in meetings.",
       "status": "supported",
       "source": "Message Center post MC1532253",
       "quote": "MeetingAI - controls whether Copilot, Facilitator, Intelligent Recap, and other AI features are available in meetings.",
@@ -128,10 +45,10 @@
       "fix": null
     },
     {
-      "n": 10,
-      "where": "What's changing; Risk assessment: Autonomy & actions; controls[1].governs",
+      "n": 3,
+      "where": "What's changing; controls[1].note",
       "type": "record",
-      "claim": "TranscriptionWithMeetingAI governs automatic transcription when meeting AI is turned on.",
+      "claim": "TranscriptionWithMeetingAI controls whether transcription starts automatically when meeting AI is turned on.",
       "status": "supported",
       "source": "Message Center post MC1532253",
       "quote": "TranscriptionWithMeetingAI - controls whether transcription starts automatically when meeting AI is turned on.",
@@ -139,21 +56,21 @@
       "fix": null
     },
     {
-      "n": 11,
+      "n": 4,
       "where": "What's changing; Why it matters",
       "type": "record",
-      "claim": "The current Copilot policy combines AI availability and the requirement for a saved transcript; the replacement separates them.",
+      "claim": "The current Copilot policy combines AI availability and whether a saved transcript is required.",
       "status": "supported",
       "source": "Message Center post MC1532253",
-      "quote": "Today, the Copilot policy combines whether AI is available in a meeting with whether a saved transcript is required. After this update, these behaviors are represented by two separate settings:",
+      "quote": "Today, the Copilot policy combines whether AI is available in a meeting with whether a saved transcript is required.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 12,
+      "n": 5,
       "where": "What's changing",
       "type": "record",
-      "claim": "The new model includes the ability to enforce Copilot off.",
+      "claim": "The new model adds the ability to enforce Copilot off.",
       "status": "supported",
       "source": "Message Center post MC1532253",
       "quote": "including the ability to enforce Copilot off.",
@@ -161,21 +78,21 @@
       "fix": null
     },
     {
-      "n": 13,
-      "where": "front matter: defaultState; What's changing",
+      "n": 6,
+      "where": "front matter: defaultState; summary; What's changing",
       "type": "default",
-      "claim": "The replacement policy model arrives automatically without administrator migration action.",
+      "claim": "The control replacement arrives automatically without administrator action, represented by defaultState on.",
       "status": "supported",
       "source": "Message Center post MC1532253",
-      "quote": "No admin action is required to migrate existing configurations.",
+      "quote": "No admin action is required to migrate existing configurations. ... Existing configurations will be mapped automatically.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 14,
-      "where": "summary; What's changing; rationale: risk; rationale: impact",
+      "n": 7,
+      "where": "What's changing; Governance guidance; rationale: risk; rationale: impact",
       "type": "record",
-      "claim": "A one-time mapping of existing Copilot values preserves current effective behaviour rather than resetting existing policies to parameter defaults.",
+      "claim": "A one-time mapping of existing Copilot values preserves current effective behaviour rather than resetting policies to parameter defaults.",
       "status": "supported",
       "source": "Message Center post MC1532253",
       "quote": "Microsoft will perform a one-time update mapping each existing Copilot value to the corresponding MeetingAI and TranscriptionWithMeetingAI values, preserving the current effective behavior for your organization.",
@@ -183,7 +100,7 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 8,
       "where": "What's changing",
       "type": "record",
       "claim": "Administrators do not need to recreate existing policies.",
@@ -194,54 +111,43 @@
       "fix": null
     },
     {
-      "n": 16,
-      "where": "What's changing; controls[0].note",
-      "type": "default",
-      "claim": "The MeetingAI parameter reference gives EnabledAllowOrganizerOverride as its default.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
-      "quote": "### -MeetingAI\n| Default value: | EnabledAllowOrganizerOverride |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "What's changing; controls[1].note",
-      "type": "default",
-      "claim": "The TranscriptionWithMeetingAI parameter reference gives EnabledNoOverride as its default.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
-      "quote": "### -TranscriptionWithMeetingAI\n| Default value: | EnabledNoOverride |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "What's changing; controls[0].note; Governance controls",
-      "type": "behaviour",
-      "claim": "The MeetingAI reference says the feature is not fully released and the setting has no effect yet.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
-      "quote": "### -MeetingAI\nNote\nThis feature has not been fully released yet, so the setting will have no effect.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "What's changing; controls[1].note; Governance controls",
-      "type": "behaviour",
-      "claim": "The TranscriptionWithMeetingAI reference says the feature is not fully released and the setting has no effect yet.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
-      "quote": "### -TranscriptionWithMeetingAI\nNote\nThis feature has not been fully released yet, so the setting will have no effect.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
+      "n": 9,
       "where": "What's changing",
+      "type": "default",
+      "claim": "The cmdlet reference gives EnabledAllowOrganizerOverride as the MeetingAI parameter default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+      "quote": "### -MeetingAI ... | Default value: | EnabledAllowOrganizerOverride |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "default",
+      "claim": "The cmdlet reference gives EnabledNoOverride as the TranscriptionWithMeetingAI parameter default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+      "quote": "### -TranscriptionWithMeetingAI ... | Default value: | EnabledNoOverride |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Governance controls",
+      "type": "availability",
+      "claim": "The cmdlet reference says both replacement parameters are not fully released and have no effect yet.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+      "quote": "This feature has not been fully released yet, so the setting will have no effect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Governance controls",
       "type": "record",
-      "claim": "The notice places the planned new settings in the Teams admin center meeting policy under Recording and transcription and Copilot and other AI.",
+      "claim": "The planned Teams admin center meeting-policy settings appear under Recording and transcription and Copilot and other AI.",
       "status": "supported",
       "source": "Message Center post MC1532253",
       "quote": "The new settings will appear in the Teams admin center meeting policy under Recording and transcription and Copilot and other AI.",
@@ -249,10 +155,10 @@
       "fix": null
     },
     {
-      "n": 21,
+      "n": 13,
       "where": "What's changing",
       "type": "record",
-      "claim": "Allow AI in meetings has On, Off with organiser override, and enforced Off options.",
+      "claim": "Allow AI in meetings offers On, Off but organisers can change, and Off and organisers cannot change.",
       "status": "supported",
       "source": "Message Center post MC1532253",
       "quote": "Allow AI in meetings: On / Off, but organizers can change / Off, and organizers cannot change",
@@ -260,10 +166,10 @@
       "fix": null
     },
     {
-      "n": 22,
+      "n": 14,
       "where": "What's changing",
       "type": "record",
-      "claim": "Start transcription when AI is turned on has On with override, enforced On, and Off options.",
+      "claim": "Start transcription when AI is turned on offers On but organisers can change, On and organisers cannot change, and Off.",
       "status": "supported",
       "source": "Message Center post MC1532253",
       "quote": "Start transcription when AI is turned on: On, but organizers can change / On, and organizers cannot change / Off",
@@ -271,10 +177,10 @@
       "fix": null
     },
     {
-      "n": 23,
-      "where": "What's changing; controls[3].note",
+      "n": 15,
+      "where": "What's changing; controls[1].note",
       "type": "record",
-      "claim": "The Transcription policy remains and governs whether transcription is allowed.",
+      "claim": "The Transcription policy remains and still controls whether transcription is allowed.",
       "status": "supported",
       "source": "Message Center post MC1532253",
       "quote": "The Transcription policy remains available and continues to control whether transcription is allowed.",
@@ -282,10 +188,10 @@
       "fix": null
     },
     {
-      "n": 24,
+      "n": 16,
       "where": "What's changing; Governance controls",
       "type": "record",
-      "claim": "Who can manage AI replaces the organiser's Allow Copilot and Facilitator meeting option.",
+      "claim": "Who can manage AI is a meeting option replacing Allow Copilot and Facilitator.",
       "status": "supported",
       "source": "Message Center post MC1532253",
       "quote": "Who can manage AI - replaces the existing Allow Copilot and Facilitator option and determines who can turn Copilot and other AI features on or off during a meeting.",
@@ -293,7 +199,7 @@
       "fix": null
     },
     {
-      "n": 25,
+      "n": 17,
       "where": "What's changing",
       "type": "record",
       "claim": "Who can manage AI is set to No one if an administrator turns Meeting AI off.",
@@ -304,10 +210,10 @@
       "fix": null
     },
     {
-      "n": 26,
-      "where": "What's changing; Risk assessment: Autonomy & actions; Governance controls",
+      "n": 18,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
       "type": "record",
-      "claim": "Who can use AI is an organiser meeting option for narrowing which participants can use Copilot and other AI capabilities.",
+      "claim": "Who can use AI gives organisers finer control over which meeting participants can use Copilot and other AI capabilities.",
       "status": "supported",
       "source": "Message Center post MC1532253",
       "quote": "Who can use AI - provides more granular control over which meeting participants can use Copilot and other AI capabilities.",
@@ -315,10 +221,10 @@
       "fix": null
     },
     {
-      "n": 27,
+      "n": 19,
       "where": "What's changing; Risk assessment: Data exposure",
       "type": "record",
-      "claim": "Organisers can choose whether transcription starts with AI where the policy allows them to change that setting.",
+      "claim": "Start Transcription with AI lets organisers choose whether transcription starts with AI where policy permits that choice.",
       "status": "supported",
       "source": "Message Center post MC1532253",
       "quote": "Start Transcription with AI - lets organizers choose whether transcription starts with AI.",
@@ -326,7 +232,18 @@
       "fix": null
     },
     {
-      "n": 28,
+      "n": 20,
+      "where": "What's changing; rationale: impact",
+      "type": "record",
+      "claim": "Organisers gain Intelligent Recap controls in meeting options.",
+      "status": "supported",
+      "source": "Message Center post MC1532253",
+      "quote": "Intelligent Recap controls - lets organizers decide whether an Intelligent Recap is created when Copilot is turned on, including for meetings where a transcript is not created.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
       "where": "What's changing; Governance controls",
       "type": "record",
       "claim": "Administrators can also control Start Transcription with AI through Teams admin center.",
@@ -337,32 +254,32 @@
       "fix": null
     },
     {
-      "n": 29,
-      "where": "What's changing; rationale: risk; rationale: impact",
+      "n": 22,
+      "where": "front matter: status; What's changing",
       "type": "record",
-      "claim": "New Intelligent Recap meeting options let organisers choose recap creation when Copilot is turned on, including without a saved transcript.",
+      "claim": "The roadmap status is In development.",
       "status": "supported",
-      "source": "Message Center post MC1532253",
-      "quote": "Intelligent Recap controls - lets organizers decide whether an Intelligent Recap is created when Copilot is turned on, including for meetings where a transcript is not created.",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
       "severity": null,
       "fix": null
     },
     {
-      "n": 30,
-      "where": "What's changing",
+      "n": 23,
+      "where": "front matter: targetDate; What's changing; Open questions",
       "type": "record",
-      "claim": "MC1532253 was updated on 3 November 2026.",
+      "claim": "The roadmap target is December CY2026.",
       "status": "supported",
-      "source": "Message Center post MC1532253",
-      "quote": "Updated November 3, 2026: We have updated the timeline.",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"December CY2026\"",
       "severity": null,
       "fix": null
     },
     {
-      "n": 31,
+      "n": 24,
       "where": "What's changing",
       "type": "record",
-      "claim": "The notice targets Targeted Release from early December to mid-December 2026.",
+      "claim": "The notice targets Worldwide Targeted Release from early December to mid-December 2026.",
       "status": "supported",
       "source": "Message Center post MC1532253",
       "quote": "Targeted Release (Worldwide): We will begin rolling out in early December 2026 (previously mid-November) and expect to complete by mid-December 2026 (previously early December).",
@@ -370,7 +287,7 @@
       "fix": null
     },
     {
-      "n": 32,
+      "n": 25,
       "where": "What's changing; Open questions",
       "type": "record",
       "claim": "The notice targets Worldwide General Availability from early January to mid-January 2027.",
@@ -381,7 +298,18 @@
       "fix": null
     },
     {
-      "n": 33,
+      "n": 26,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1532253 was updated on 3 November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1532253",
+      "quote": "Updated November 3, 2026: We have updated the timeline.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
       "where": "What's changing",
       "type": "record",
       "claim": "The supplied notice sets no act-by date.",
@@ -392,10 +320,10 @@
       "fix": null
     },
     {
-      "n": 34,
-      "where": "Why it matters; controls[2].note; Governance guidance; rationale: risk",
+      "n": 28,
+      "where": "summary; Why it matters; Governance guidance; controls[0].note; rationale: risk",
       "type": "record",
-      "claim": "Once the new controls are enabled, direct updates to the Copilot policy are rejected with guidance to use the new policies.",
+      "claim": "Once the new controls are enabled, direct Copilot policy updates stop working and return guidance to use the replacement policies.",
       "status": "supported",
       "source": "Message Center post MC1532253",
       "quote": "Once the new controls are enabled, the Copilot policy can no longer be updated directly - attempts will return guidance to use the new policies.",
@@ -403,10 +331,10 @@
       "fix": null
     },
     {
-      "n": 35,
+      "n": 29,
       "where": "Risk assessment: Data exposure",
       "type": "record",
-      "claim": "The notice says this change does not alter processing or storage of existing customer data.",
+      "claim": "Microsoft says the change does not alter processing or storage of existing customer data.",
       "status": "supported",
       "source": "Message Center post MC1532253",
       "quote": "This change affects administrative controls over AI and transcription availability in meetings but does not alter how existing customer data is processed or stored.",
@@ -414,65 +342,87 @@
       "fix": null
     },
     {
-      "n": 36,
-      "where": "Risk assessment: Data exposure; controls[5].note",
+      "n": 30,
+      "where": "Risk assessment: Data exposure; controls[3].note; Governance guidance",
       "type": "applicability",
-      "claim": "Work IQ real-time transcript access requires AI to be allowed; with Allow AI in all meetings Off, neither Work IQ access value yields a transcript.",
+      "claim": "With Allow AI in all meetings Off, Work IQ cannot supply an app a transcript regardless of the Work IQ access setting.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access",
-      "quote": "| Allow AI in all meetings | Work IQ access | Result |\n| Off | Off or On | No transcript is available. |",
+      "quote": "| Off | Off or On | No transcript is available. |",
       "severity": null,
       "fix": null
     },
     {
-      "n": 37,
+      "n": 31,
       "where": "Risk assessment: Security & identity",
       "type": "record",
-      "claim": "The supplied notice describes no identity, permission or role change.",
+      "claim": "The supplied notice describes no change to identity, permissions or roles.",
       "status": "supported",
       "source": "Message Center post MC1532253",
-      "quote": "This change affects administrative controls over AI and transcription availability in meetings",
+      "quote": "This change affects administrative controls over AI and transcription availability in meetings but does not alter how existing customer data is processed or stored.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 38,
+      "n": 32,
       "where": "Risk assessment: Security & identity",
       "type": "role",
-      "claim": "Teams Administrator can manage meeting policies through Teams admin center and associated PowerShell controls.",
+      "claim": "Teams Administrators can manage meeting policies through Teams admin center and PowerShell.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/using-admin-roles",
-      "quote": "Everything in the Microsoft Teams admin center and associated PowerShell controls, including:\n- Manage meetings, including meeting policies, configurations, and conference bridges.",
+      "quote": "Everything in the Microsoft Teams admin center and associated PowerShell controls, including: ... Manage meetings, including meeting policies, configurations, and conference bridges.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 39,
+      "n": 33,
       "where": "Risk assessment: Security & identity",
       "type": "role",
-      "claim": "Teams Communications Administrator can manage meeting policies through Teams admin center and PowerShell.",
+      "claim": "Teams Communications Administrators can manage meeting policies through Teams admin center and PowerShell.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/using-admin-roles",
-      "quote": "Teams Communications Administrator | Manage calling and meetings features within the Teams service. | Manage meetings, including meeting policies, configurations, and conference bridges.^1,2^",
+      "quote": "Teams Communications Administrator ... Manage meetings, including meeting policies, configurations, and conference bridges. ... 1 PowerShell - Microsoft Teams module 2 Microsoft Teams admin center",
       "severity": null,
       "fix": null
     },
     {
-      "n": 40,
+      "n": 34,
       "where": "Risk assessment: Security & identity",
       "type": "absence",
       "claim": "No separate role requirement is stated for the new parameters.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Teams MeetingAI \"Who can use AI\" administrator role policy post meeting. Opened using-admin-roles and Set-CsTeamsMeetingPolicy; read MeetingAI and TranscriptionWithMeetingAI parameter sections. No separate role requirement found.",
+      "quote": "Searched: \"MeetingAI\" \"role\"; read Set-CsTeamsMeetingPolicy MeetingAI and TranscriptionWithMeetingAI sections, using-admin-roles, and MC1532253. No parameter-specific role stated.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 41,
+      "n": 35,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "Transcription can start automatically when AI is turned on without a separate transcription action by the organiser.",
+      "status": "supported",
+      "source": "Message Center post MC1532253",
+      "quote": "TranscriptionWithMeetingAI - controls whether transcription starts automatically when meeting AI is turned on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Autonomy & actions; Governance controls",
+      "type": "record",
+      "claim": "The supplied notice names no administrator control over Who can use AI.",
+      "status": "supported",
+      "source": "Message Center post MC1532253",
+      "quote": "Who can use AI - provides more granular control over which meeting participants can use Copilot and other AI capabilities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
       "where": "Risk assessment: Change & support; Governance guidance",
       "type": "record",
-      "claim": "Enforcing MeetingAI off also turns transcription off.",
+      "claim": "Setting MeetingAI to enforced off also turns transcription off.",
       "status": "supported",
       "source": "Message Center post MC1532253",
       "quote": "if MeetingAI is set to enforced off, transcription will also be turned off",
@@ -480,10 +430,10 @@
       "fix": null
     },
     {
-      "n": 42,
+      "n": 38,
       "where": "Risk assessment: Change & support",
       "type": "record",
-      "claim": "Turning transcription back on removes MeetingAI's enforced-off state.",
+      "claim": "Turning transcription back on means MeetingAI is no longer enforced off.",
       "status": "supported",
       "source": "Message Center post MC1532253",
       "quote": "if transcription is then turned back on, MeetingAI will no longer be enforced off.",
@@ -491,43 +441,43 @@
       "fix": null
     },
     {
-      "n": 43,
+      "n": 39,
       "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
       "type": "absence",
-      "claim": "Microsoft has not published separate licensing requirements for the new policies, so the page records their licensing model as unknown.",
+      "claim": "Licensing for the new policy settings is not separately published, so their licensing model is unknown.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Teams MeetingAI TranscriptionWithMeetingAI Teams admin center policy configuration licence pricing meter; \"TranscriptionWithMeetingAI\" licensing price billing. Opened Copilot AI overview, Copilot meeting guidance and cmdlet reference; no policy-specific licence found.",
+      "quote": "Searched: Teams MeetingAI TranscriptionWithMeetingAI licensing license billing meter; \"MeetingAI\" \"TranscriptionWithMeetingAI\" \"license\". Read copilot-ai-agents-overview, copilot-teams-transcription and Set-CsTeamsMeetingPolicy; no separate policy licence specified.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 44,
+      "n": 40,
       "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "absence",
       "claim": "No separate meter is documented for MeetingAI or TranscriptionWithMeetingAI.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Teams MeetingAI TranscriptionWithMeetingAI Teams admin center policy configuration licence pricing meter; \"TranscriptionWithMeetingAI\" licensing price billing. Opened Copilot AI overview, Copilot meeting guidance and policy reference; no separate policy meter found.",
+      "quote": "Searched: Teams MeetingAI TranscriptionWithMeetingAI licensing license billing meter; \"TranscriptionWithMeetingAI\" \"billing\" \"meter\". Read copilot-ai-agents-overview, copilot-teams-transcription and Set-CsTeamsMeetingPolicy; no policy meter documented.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 45,
+      "n": 41,
       "where": "Cost and licensing",
-      "type": "absence",
-      "claim": "Neither the supplied roadmap record nor MC1532253 mentions a charge.",
+      "type": "record",
+      "claim": "Neither the roadmap record nor MC1532253 mentions a charge.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: charge, licence, licensing, price and meter in the supplied roadmap record and full MC1532253 notice; neither text states a charge.",
+      "source": "Message Center post MC1532253",
+      "quote": "No admin action is required to migrate existing configurations.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 46,
+      "n": 42,
       "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "licensing",
-      "claim": "Manage Teams meeting transcription lists an add-on Microsoft Copilot licence for intended users as its prerequisite for the current experience.",
+      "claim": "Manage Teams meeting transcription lists an add-on Microsoft Copilot licence for intended users as its prerequisite.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription",
       "quote": "## Prerequisites\n- An add-on Microsoft Copilot license for intended users.",
@@ -535,7 +485,95 @@
       "fix": null
     },
     {
+      "n": 43,
+      "where": "front matter: cost; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "The known cost of this control migration is indirect administration work, supporting a low cost rating while separate licensing remains unpublished.",
+      "status": "supported",
+      "source": "Message Center post MC1532253",
+      "quote": "Review any automation or scripts that read or update the Copilot meeting policy, and update them to use MeetingAI and TranscriptionWithMeetingAI.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "front matter: clouds; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) only.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "front matter: platforms; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Android, Desktop, iOS, Mac and Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Mac\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "front matter: releasePhase; Scope",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Targeted Release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 47,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The notice names Microsoft Teams and Microsoft Copilot (Microsoft 365) as its services.",
+      "status": "supported",
+      "source": "Message Center post MC1532253",
+      "quote": "Services: Microsoft Teams, Microsoft Copilot (Microsoft 365)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The roadmap does not list GCC, GCC High or DoD, without establishing their exclusion.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Scope; controls[0].scope; controls[1].scope; controls[2].scope",
+      "type": "applicability",
+      "claim": "Teams meeting policies can apply to individual users, giving these meeting-policy controls user scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+      "quote": "The Set-CsTeamsMeetingPolicy cmdlet allows administrators to update existing meeting policies that can be assigned to particular users to control Teams features related to meetings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Scope",
+      "type": "applicability",
+      "claim": "Copilot meeting policies can be applied to groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription",
+      "quote": "You can apply your Copilot meeting policies to groups or individual users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
       "where": "Scope",
       "type": "availability",
       "claim": "Copilot in Teams meetings and events is not available in end-to-end encrypted meetings.",
@@ -546,230 +584,43 @@
       "fix": null
     },
     {
-      "n": 48,
-      "where": "Scope; controls[0..4].scope",
-      "type": "applicability",
-      "claim": "Meeting policies can be assigned to groups or individual users.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription",
-      "quote": "You can apply your Copilot meeting policies to groups or individual users.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 49,
-      "where": "Scope",
-      "type": "absence",
-      "claim": "Post-meeting coverage of the new policy model is not detailed beyond the roadmap's general description.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams MeetingAI \"Who can use AI\" administrator role policy post meeting. Read MC1532253 and MeetingAI reference; neither details post-meeting enforcement. Roadmap names meetings and post-meeting experiences.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 50,
-      "where": "controls[0].ui; rendered table; Governance controls",
-      "type": "absence",
-      "claim": "The MeetingAI admin UI control is Not yet documented because Learn supplies no complete navigation path.",
-      "status": "contradicted",
-      "source": "Message Center post MC1532253",
-      "quote": "The new settings will appear in the Teams admin center meeting policy under Recording and transcription and Copilot and other AI.",
-      "severity": "blocker",
-      "fix": "Remove the MeetingAI table row, including its rendered copy, rather than representing its known planned UI as an absent control. Retain the already verified command and planned-UI description in Governance controls prose. State: 'MC1532253 documents the planned admin UI, but Microsoft Learn does not yet give its complete navigation path (November 2026).' The standard permits describing a known control in notes without a path; it does not permit a null UI solely because its full path has not been published."
-    },
-    {
-      "n": 51,
-      "where": "controls[0].api; rendered table; Governance guidance",
-      "type": "command",
-      "claim": "MicrosoftTeams Set-CsTeamsMeetingPolicy supports Identity, MeetingAI and TranscriptionWithMeetingAI together to configure meeting AI.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
-      "quote": "Determines whether AI (Copilot, Facilitator, or Intelligent Recap) can be used in meetings.\nThis parameter must be used together with -TranscriptionWithMeetingAI.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 52,
-      "where": "controls[1].ui; rendered table; Governance controls",
-      "type": "absence",
-      "claim": "The TranscriptionWithMeetingAI admin UI control is Not yet documented because Learn supplies no complete navigation path.",
-      "status": "contradicted",
-      "source": "Message Center post MC1532253",
-      "quote": "Start Transcription with AI - lets organizers choose whether transcription starts with AI. Administrators can also control this option through Teams admin center.",
-      "severity": "blocker",
-      "fix": "Remove the TranscriptionWithMeetingAI table row, including its rendered copy, rather than representing its known planned UI as an absent control. Retain the already verified command and planned-UI description in Governance controls prose. Use the same qualification as for MeetingAI: 'MC1532253 documents the planned admin UI, but Microsoft Learn does not yet give its complete navigation path (November 2026).' Do not invent a complete path by combining separate sources."
+      "where": "Scope",
+      "type": "record",
+      "claim": "The roadmap broadly mentions governance of post-meeting experiences, while the notice does not detail that coverage for MeetingAI.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "IT admins get a simpler policy model for governing AI across meetings and post-meeting experiences.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 53,
-      "where": "controls[1].api; rendered table; Governance guidance",
+      "where": "Governance guidance: Before rollout; Governance controls",
       "type": "command",
-      "claim": "MicrosoftTeams Set-CsTeamsMeetingPolicy supports TranscriptionWithMeetingAI together with MeetingAI to configure transcription with AI.",
+      "claim": "MeetingAI and TranscriptionWithMeetingAI must be used together.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
-      "quote": "Determines whether transcription is turned on along with Copilot. Transcription allows Copilot to continue to use meeting data for questions after the meeting ends.\nThis parameter must be used together with -MeetingAI.",
+      "quote": "This parameter must be used together with -TranscriptionWithMeetingAI.",
       "severity": null,
       "fix": null
     },
     {
       "n": 54,
-      "where": "controls[2].ui; rendered table",
-      "type": "admin-path",
-      "claim": "The current Copilot setting is at Teams admin center > Meetings > Meeting policies > policy > Recording & transcription > Copilot.",
+      "where": "Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Current Copilot policy labels include On, On with saved transcript required, On with transcript saved by default, and Off.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription",
-      "quote": "go to Meetings > Meeting policies.\n2. Select an existing policy or create a new one.\n3. Go to the Recording & transcription section and find the Copilot setting.",
+      "quote": "In the dropdown list, choose On, On with saved transcript required, On with transcript saved by default, or Off.",
       "severity": null,
       "fix": null
     },
     {
       "n": 55,
-      "where": "controls[2].api; rendered table; Governance guidance",
-      "type": "command",
-      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -Copilot accepts the four current values listed in the briefing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription",
-      "quote": "| On | Enabled |\n| On with saved transcript required | EnabledWithTranscript |\n| On with transcript saved by default | EnabledWithTranscriptDefaultOn |\n| Off | Disabled |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 56,
-      "where": "controls[2].note; Governance controls",
-      "type": "behaviour",
-      "claim": "The cmdlet reference lists only Enabled and EnabledWithTranscript for Copilot, unlike the four-value product guidance.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
-      "quote": "### -Copilot\nThis setting allows the admin to choose whether Copilot will be enabled with a persisted transcript or a non-persisted transcript.\nPossible values are:\n- Enabled\n- EnabledWithTranscript",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 57,
-      "where": "controls[3].ui; rendered table",
-      "type": "admin-path",
-      "claim": "Transcription policy can be managed in the Recording & transcription section of a Teams meeting policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription",
-      "quote": "You can use the Recording & Transcription section in the Teams admin center or the -AllowTranscription parameter in the CsTeamsMeetingPolicy PowerShell cmdlet to manage your transcription policy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 58,
-      "where": "controls[3].api; rendered table",
-      "type": "command",
-      "claim": "MicrosoftTeams Set-CsTeamsMeetingPolicy -Identity <policy name> -AllowTranscription accepts true or false to allow or prohibit transcription.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
-      "quote": "### -AllowTranscription\nDetermines whether post-meeting captions and transcriptions are allowed in a user's meetings. Set this to TRUE to allow. Set this to FALSE to prohibit.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 59,
-      "where": "controls[4].ui; rendered table",
-      "type": "absence",
-      "claim": "An admin UI for AllowIntelligentRecap is not yet documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams AllowIntelligentRecap turn off Teams admin center policy. Opened intelligent-recap-without-saving-transcripts and Set-CsTeamsMeetingPolicy. Disabling recap is documented through PowerShell; the UI path shown is for expiration, not this switch.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 60,
-      "where": "controls[4].api; rendered table; Governance guidance",
-      "type": "command",
-      "claim": "Set-CsTeamsMeetingPolicy -Identity <policyname> -AllowIntelligentRecap $false is the documented command to turn off intelligent recap.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
-      "quote": "To turn off intelligent recap, use the Set-CsTeamsMeetingPolicy cmdlet and set the -AllowIntelligentRecap parameter to $false.\nSet-CsTeamsMeetingPolicy -Identity <policyname> -AllowIntelligentRecap $false",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 61,
-      "where": "controls[4].note; Governance controls",
-      "type": "behaviour",
-      "claim": "The recap guidance says disabling intelligent recap applies to meetings with or without saved transcripts and makes related settings unavailable.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
-      "quote": "Turning off intelligent recap disables intelligent recap for all meetings, regardless of whether transcripts are saved, and the related settings are unavailable in Teams.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 62,
-      "where": "controls[4].note; Governance controls",
-      "type": "behaviour",
-      "claim": "The cmdlet reference instead says AllowIntelligentRecap is not fully released and has no effect.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
-      "quote": "### -AllowIntelligentRecap\nNote\nThis feature has not been fully released yet, so the setting will have no effect. Controls whether Intelligent Recap is allowed for the user's meetings.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 63,
-      "where": "controls[5].ui; rendered table",
-      "type": "admin-path",
-      "claim": "Work IQ access is at Teams admin center > Meetings > Meeting settings > Transcript API access > WorkIQ access.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access",
-      "quote": "In the Teams admin center, go to Meetings > Meeting settings. Under Transcript API access, turn the WorkIQ access toggle On.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 64,
-      "where": "controls[5].api; rendered table; controls[5].scope",
-      "type": "command",
-      "claim": "Set-CsTeamsMeetingConfiguration -EnableWorkIQTranscriptAccess $true -Identity Global enables tenant Work IQ real-time transcript access.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access",
-      "quote": "Set-CsTeamsMeetingConfiguration -EnableWorkIQTranscriptAccess $true -Identity Global",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 65,
-      "where": "controls[5].note; rendered table",
-      "type": "default",
-      "claim": "Work IQ transcript access is off by default.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access",
-      "quote": "The Work IQ access setting controls whether they can. It's independent of Microsoft Graph access, and it's off by default.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 66,
-      "where": "Risk assessment: Autonomy & actions; Governance controls",
+      "where": "Governance guidance: At rollout",
       "type": "record",
-      "claim": "The notice names no administrator control over Who can use AI and specifically names administrator control for Start Transcription with AI.",
-      "status": "supported",
-      "source": "Message Center post MC1532253",
-      "quote": "Who can use AI - provides more granular control over which meeting participants can use Copilot and other AI capabilities.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 67,
-      "where": "Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not detailed the interaction of AllowIntelligentRecap with MeetingAI or an administrator setting for Who can use AI.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"MeetingAI\" \"AllowIntelligentRecap\" interaction; Teams MeetingAI \"Who can use AI\" administrator role policy post meeting. Read MC1532253, recap guidance and both cmdlet sections; no interaction rule or Who can use AI admin setting found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 68,
-      "where": "Governance guidance: At rollout; changes",
-      "type": "record",
-      "claim": "Microsoft has already moved the notice's rollout dates.",
+      "claim": "Microsoft has already moved the rollout dates.",
       "status": "supported",
       "source": "Message Center post MC1532253",
       "quote": "Updated November 3, 2026: We have updated the timeline.",
@@ -777,26 +628,235 @@
       "fix": null
     },
     {
-      "n": 69,
-      "where": "summary; Risk assessment: Change & support; Governance guidance; rationale: cost",
-      "type": "record",
-      "claim": "Microsoft recommends updating scripts, tooling and runbooks that read or update the Copilot meeting policy to use the replacement policies.",
+      "n": 56,
+      "where": "Governance controls: replacement-policy command example",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingPolicy accepts Identity and the three listed values for each of MeetingAI and TranscriptionWithMeetingAI.",
       "status": "supported",
-      "source": "Message Center post MC1532253",
-      "quote": "Review any automation or scripts that read or update the Copilot meeting policy, and update them to use MeetingAI and TranscriptionWithMeetingAI.",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+      "quote": "MeetingAI: EnabledAllowOrganizerOverride, DisabledAllowOrganizerOverride, DisabledNoOverride. TranscriptionWithMeetingAI: EnabledAllowOrganizerOverride, DisabledAllowOrganizerOverride, EnabledNoOverride.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[0].note; Governance controls",
+      "type": "command",
+      "claim": "The cmdlet reference lists only Enabled and EnabledWithTranscript for Copilot, unlike the four values in the feature article.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+      "quote": "### -Copilot ... Possible values are: - Enabled - EnabledWithTranscript",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[2].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The intelligent-recap feature article says turning off intelligent recap disables it for all meetings, with or without saved transcripts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+      "quote": "Turning off intelligent recap disables intelligent recap for all meetings, regardless of whether transcripts are saved.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The intelligent-recap feature article says the related settings become unavailable when intelligent recap is disabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+      "quote": "Turning off intelligent recap disables intelligent recap for all meetings, regardless of whether transcripts are saved, and the related settings are unavailable in Teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[2].note; Governance controls",
+      "type": "availability",
+      "claim": "The cmdlet reference instead says AllowIntelligentRecap is not fully released and has no effect.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+      "quote": "### -AllowIntelligentRecap ... This feature has not been fully released yet, so the setting will have no effect. Controls whether Intelligent Recap is allowed for the user's meetings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "The current Copilot setting is at Teams admin center > Meetings > Meeting policies > policy > Recording & transcription > Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription",
+      "quote": "go to Meetings > Meeting policies. ... Select an existing policy or create a new one. ... Go to the Recording & transcription section and find the Copilot setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -Copilot supports the four listed values in the cited feature article.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription",
+      "quote": "| On | Enabled | ... | On with saved transcript required | EnabledWithTranscript | ... | On with transcript saved by default | EnabledWithTranscriptDefaultOn | ... | Off | Disabled |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "The transcription policy is managed in the Recording & transcription section of a Teams admin center meeting policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription",
+      "quote": "You can use the Recording & Transcription section in the Teams admin center or the -AllowTranscription parameter in the CsTeamsMeetingPolicy PowerShell cmdlet to manage your transcription policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -AllowTranscription <$true|$false> controls transcription permission.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+      "quote": "### -AllowTranscription\nDetermines whether post-meeting captions and transcriptions are allowed in a user's meetings. Set this to TRUE to allow. Set this to FALSE to prohibit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "controls[2].ui",
+      "type": "absence",
+      "claim": "An administrator UI for the AllowIntelligentRecap enable/disable control is not yet documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams admin center AllowIntelligentRecap turn off intelligent recap policy UI. Read intelligent-recap-without-saving-transcripts and search excerpts for enhanced-teams-experience; no admin UI for AllowIntelligentRecap found. Expiration and meeting memory are different controls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "controls[2].api; Governance guidance: After rollout",
+      "type": "command",
+      "claim": "The cited feature article documents Set-CsTeamsMeetingPolicy -Identity <policyname> -AllowIntelligentRecap $false to disable intelligent recap.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
+      "quote": "Set-CsTeamsMeetingPolicy -Identity <policyname> -AllowIntelligentRecap $false",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "controls[3].ui",
+      "type": "admin-path",
+      "claim": "Work IQ transcript access is at Teams admin center > Meetings > Meeting settings > Transcript API access > WorkIQ access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access",
+      "quote": "In the Teams admin center, go to Meetings > Meeting settings. Under Transcript API access, turn the WorkIQ access toggle On.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "controls[3].api",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingConfiguration -EnableWorkIQTranscriptAccess $true -Identity Global enables Work IQ real-time transcript access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access",
+      "quote": "Set-CsTeamsMeetingConfiguration -EnableWorkIQTranscriptAccess $true -Identity Global",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "controls[3].note",
+      "type": "default",
+      "claim": "Work IQ real-time transcript access is off by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access",
+      "quote": "The Work IQ access setting controls whether they can. It's independent of Microsoft Graph access, and it's off by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Governance guidance: Before rollout and At rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist names MeetingAI and TranscriptionWithMeetingAI, but neither replacement control has a controls-table row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "plan changes to -MeetingAI and -TranscriptionWithMeetingAI ... Compare each policy's mapped MeetingAI and TranscriptionWithMeetingAI values ... [The table contains current Copilot, Transcription, AllowIntelligentRecap and Work IQ rows.]",
+      "severity": "minor",
+      "fix": "The Before rollout inventory step and At rollout comparison step refer to MeetingAI and TranscriptionWithMeetingAI without corresponding table rows; the controls are currently described only in the notes below the table."
+    },
+    {
+      "n": 71,
+      "where": "Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet document the complete admin navigation path for the replacement policy settings.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams MeetingAI TranscriptionWithMeetingAI Teams admin center Meetings meeting policies navigation; \"MeetingAI\" \"Teams admin center\". Read copilot-teams-transcription and Set-CsTeamsMeetingPolicy; found parameter documentation, not the new controls' full UI path.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Open questions",
+      "type": "absence",
+      "claim": "The interaction between AllowIntelligentRecap and MeetingAI has not been specified.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"AllowIntelligentRecap\" \"MeetingAI\". Read both parameter sections in Set-CsTeamsMeetingPolicy, intelligent-recap-without-saving-transcripts and MC1532253; no interaction rule specified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Open questions",
+      "type": "absence",
+      "claim": "The sources do not specify a tenant enablement signal or whether retirement of direct Copilot updates happens per tenant or per policy.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams MeetingAI TranscriptionWithMeetingAI rollout tenant policy enabled notification. Read MC1532253 and Set-CsTeamsMeetingPolicy; no enablement signal or tenant-versus-policy retirement granularity specified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not documented whether administrators will get a control over Who can use AI.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams Who can use AI administrator policy Who can manage AI role MeetingAI; \"Who can use AI\" \"admin\". Read MC1532253 and MeetingAI parameter documentation; no administrator control over that meeting option found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "controls[3].scope",
+      "type": "applicability",
+      "claim": "The Work IQ transcript-access control is tenant-scoped.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access",
+      "quote": "The organizer's organization decides. Work IQ uses the setting of the organization that organized the meeting, not the setting of the app's organization or of the user the app acts for.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-17T01:27:14.073Z",
+    "at": "2026-11-17T02:48:29.827Z",
     "summary": {
       "links": 7,
-      "unreachable": 4,
+      "unreachable": 5,
       "uiPaths": 3,
       "uiPathsWithMissingWords": 3,
-      "apiCalls": 6,
-      "apiCallsNotOnPage": 6,
+      "apiCalls": 4,
+      "apiCallsNotOnPage": 4,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -832,59 +892,41 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/using-admin-roles",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       }
     ],
     "controlChecks": [
       {
         "index": 0,
+        "side": "ui",
+        "governs": "Current Copilot meeting policy, which Microsoft says the new policies replace",
+        "docs": "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription",
+        "reachable": false,
+        "segments": [
+          "Meetings",
+          "Meeting policies",
+          "Recording & transcription",
+          "Copilot"
+        ],
+        "missing": [
+          "Meetings",
+          "Meeting policies",
+          "Recording & transcription",
+          "Copilot"
+        ]
+      },
+      {
+        "index": 0,
         "side": "api",
-        "governs": "Whether AI is available in meetings, and whether organisers can change it (MeetingAI)",
-        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+        "governs": "Current Copilot meeting policy, which Microsoft says the new policies replace",
+        "docs": "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription",
         "reachable": false,
         "token": "Set-CsTeamsMeetingPolicy",
         "found": false
       },
       {
         "index": 1,
-        "side": "api",
-        "governs": "Whether transcription starts when meeting AI is turned on (TranscriptionWithMeetingAI)",
-        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
-        "reachable": false,
-        "token": "Set-CsTeamsMeetingPolicy",
-        "found": false
-      },
-      {
-        "index": 2,
-        "side": "ui",
-        "governs": "Current Copilot meeting policy, which Microsoft says the new policies replace",
-        "docs": "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription",
-        "reachable": false,
-        "segments": [
-          "Meetings",
-          "Meeting policies",
-          "Recording & transcription",
-          "Copilot"
-        ],
-        "missing": [
-          "Meetings",
-          "Meeting policies",
-          "Recording & transcription",
-          "Copilot"
-        ]
-      },
-      {
-        "index": 2,
-        "side": "api",
-        "governs": "Current Copilot meeting policy, which Microsoft says the new policies replace",
-        "docs": "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription",
-        "reachable": false,
-        "token": "Set-CsTeamsMeetingPolicy",
-        "found": false
-      },
-      {
-        "index": 3,
         "side": "ui",
         "governs": "Whether transcription is allowed (Transcription policy, which remains)",
         "docs": "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription",
@@ -901,7 +943,7 @@
         ]
       },
       {
-        "index": 3,
+        "index": 1,
         "side": "api",
         "governs": "Whether transcription is allowed (Transcription policy, which remains)",
         "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
@@ -910,7 +952,7 @@
         "found": false
       },
       {
-        "index": 4,
+        "index": 2,
         "side": "api",
         "governs": "Whether intelligent recap is allowed in meetings (AllowIntelligentRecap)",
         "docs": "https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts",
@@ -919,7 +961,7 @@
         "found": false
       },
       {
-        "index": 5,
+        "index": 3,
         "side": "ui",
         "governs": "Whether agents and apps receive real-time transcripts through Work IQ",
         "docs": "https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access",
@@ -938,7 +980,7 @@
         ]
       },
       {
-        "index": 5,
+        "index": 3,
         "side": "api",
         "governs": "Whether agents and apps receive real-time transcripts through Work IQ",
         "docs": "https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access",
@@ -966,6 +1008,12 @@
       "date": "2026-11-16",
       "status": "held",
       "version": 2,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-17",
+      "status": "held",
+      "version": 3,
       "model": "gpt-6.1-sol"
     }
   ]

@@ -46,6 +46,9 @@ sources:
   - title: "Manage AI experience access to Business Applications in Work IQ (preview)"
     url: "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access"
     kind: "learn"
+  - title: "Manage participation in Business Applications in Work IQ (preview)"
+    url: "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-participation#environment-features-for-work-iq"
+    kind: "learn"
   - title: "Understand costs for Business Applications in Work IQ (preview)"
     url: "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/understand-costs"
     kind: "learn"
@@ -64,9 +67,6 @@ sources:
   - title: "Dataverse capacity-based storage details"
     url: "https://learn.microsoft.com/power-platform/admin/capacity-storage#dataverse-page-in-licenses"
     kind: "learn"
-  - title: "Work IQ participation for a Dataverse environment (Power Platform admin center)"
-    url: "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-participation#environment-features-for-work-iq"
-    kind: "learn"
   - title: "Business Applications data in Work IQ available to Copilot (tenant) (Microsoft 365 admin center)"
     url: "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings#cascading-control-settings"
     kind: "learn"
@@ -80,7 +80,7 @@ controls:
     scope: "environment"
     ui:
       surface: "Power Platform admin center"
-      path: "Manage > Environments > environment > Settings > Product > Features > Work IQ"
+      path: "Manage > environment > Settings > Product > Features > Work IQ"
       docs: "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-participation#environment-features-for-work-iq"
     api: null
   - governs: "Business Applications data in Work IQ available to Copilot (tenant)"
@@ -126,19 +126,23 @@ changes:
     note: "Correction: default state is now user-opt-in, licensing mixed and cost variable (Copilot Credits); added the allowed-clients REST call and narrowed the tenant-setting cascade."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 73 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-17"
+    note: "Correction: fixed the Work IQ environment path in the controls table and removed the claim that the Work IQ MCP server control governs directly authenticated plugin tools."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 78 statements confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-17"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 73
-  confirmed: 70
+  claims: 78
+  confirmed: 78
   unconfirmed: 0
-  contradicted: 3
-  attempts: 3
-  hash: "c6e3f39db4e478084e341846200f61ab"
+  contradicted: 0
+  attempts: 0
+  hash: "fc30a24fa4f4b700642f260aa489df06"
 ---
 
 ## What's changing
@@ -204,7 +208,6 @@ Roadmap cloud: Worldwide only.
 
 ### After rollout
 - Review created tables, roles and solutions.
-- Audit use of business skills and who owns them.
 
 ## Governance controls
 
@@ -213,7 +216,7 @@ Roadmap cloud: Worldwide only.
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Work IQ participation for a Dataverse environment</strong><br><small>Environment</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › Work IQ <a href="https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-participation#environment-features-for-work-iq" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Work IQ participation for a Dataverse environment</strong><br><small>Environment</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › environment › Settings › Product › Features › Work IQ <a href="https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-participation#environment-features-for-work-iq" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Business Applications data in Work IQ available to Copilot (tenant)</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Settings › View all › Business Applications data in Work IQ available to Copilot <a href="https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings#cascading-control-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Dataverse MCP server and allowed MCP clients</strong><br><small>Environment</small><br><small class="controls__note">Allowed MCP Clients are listed under Advanced Settings.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › Dataverse Model Context Protocol <a href="https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-disable" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>PATCH [organization URI]/api/data/v9.2/allowedmcpclients(&lt;allowedmcpclientid&gt;) with body {&quot;isenabled&quot;: false} to disable a client, or true to enable it</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/allowedmcpclient" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Work IQ MCP server access in Microsoft 365</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Work IQ MCP › Block <a href="https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access#work-iq-mcp-server-access-control" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
@@ -221,7 +224,7 @@ Roadmap cloud: Worldwide only.
 </tbody>
 </table>
 
-The cascade in Microsoft's description covers the Microsoft 365 Copilot Chat and Dataverse connection: if the tenant setting is off, data isn't shared between Microsoft 365 Copilot Chat and Dataverse, even if an app is configured to share data. It is not a universal block. Microsoft says Work IQ participation settings don't prevent agentic access, the Work IQ MCP server has its own Block control for the entire server, and the plugin's directly authenticated tools are outside the MCP-specific controls. For those, use the server control, App Access Control (Security > Identity & access > App Access Control in the Power Platform admin center) and the developer's Dataverse security roles.
+The cascade in Microsoft's description covers the Microsoft 365 Copilot Chat and Dataverse connection: if the tenant setting is off, data isn't shared between Microsoft 365 Copilot Chat and Dataverse, even if an app is configured to share data. It is not a universal block. Microsoft says Work IQ participation settings don't prevent agentic access, the Work IQ MCP server has its own Block control for the entire server, and the plugin's directly authenticated tools are outside the MCP-specific controls. For directly authenticated plugin tools, Dataverse authorization and the authenticated identity's permissions still apply.
 
 The allowed-client REST call sets one allowed MCP client record; it does not cover the server-wide setting. The [Dataverse plugin for coding agents](https://learn.microsoft.com/power-apps/developer/data-platform/agents-plugin) runs with the developer's own permissions, so environment access and security roles are the governance lever.
 
@@ -237,13 +240,4 @@ Business skills are shared by general access, Dataverse security role or direct 
 risk: High. Autonomous agents can create schema, load data and change security in a live environment, acting with the developer's permissions.
 cost: Variable. Copilot Credits meter Dataverse MCP tool calls and direct Work IQ API use, and the coding agent's own subscription or consumption charges are separate; no plugin-specific price is published.
 impact: Medium. It affects developers and makers building Dataverse solutions, and the environments they use.
--->
-
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].ui / admin-path: The cited Work IQ participation instructions give Manage > Environments > environment > Settings > Product > Features > Work IQ. | Found: Select Manage, and select the environment. Select Settings > Product > Features. Locate Work IQ. | Fix: Replace the path in controls[0].ui and its rendered row with 'Manage > environment > Settings > Product > Features > Work IQ' in the Power Platform admin center. The cited participation instructions do not include an 'Environments' step. | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-participation#environment-features-for-work-iq
-- [contradicted, blocker] Governance controls: 'For those, use the server control' / applicability: The Work IQ MCP server control is a governance lever for the plugin's directly authenticated tools. | Found: Other tools used by the plugin, such as the Dataverse SDK for Python and Power Platform CLI, authenticate directly and aren't subject to these MCP-specific controls. Their requests still require Dataverse authorization. | Fix: Replace 'For those, use the server control, App Access Control (Security > Identity & access > App Access Control in the Power Platform admin center) and the developer's Dataverse security roles.' with 'For directly authenticated plugin tools, Dataverse authorization and the authenticated identity's permissions still apply.' Keep the preceding statement about the separate Work IQ MCP server Block control. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/agents-plugin/security-governance
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: After rollout / consistency: The checklist's instruction to audit business-skill use and ownership has a corresponding governance-control row. | Found: Audit use of business skills and who owns them. The controls table lists environment participation, tenant Copilot availability, Dataverse MCP, Work IQ MCP, and coding-plugin access; it has no business-skill audit or ownership control. | Fix: Remove the checklist bullet 'Audit use of business skills and who owns them.' It names a control not represented in the table; do not add an unverified control row.
 -->

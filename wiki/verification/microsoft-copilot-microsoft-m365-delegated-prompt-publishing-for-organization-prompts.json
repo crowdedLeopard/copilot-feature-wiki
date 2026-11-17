@@ -2,31 +2,25 @@
   "slug": "microsoft-copilot-microsoft-m365-delegated-prompt-publishing-for-organization-prompts",
   "roadmapId": 569425,
   "title": "Microsoft Copilot: delegated publishing of organisation prompts",
-  "status": "held",
+  "status": "verified",
   "date": "2026-11-17",
-  "version": 3,
+  "version": 4,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 3,
-  "verifierVerdict": "hold",
+  "attempts": 0,
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-16",
-    "reasons": [
-      "1 blocking finding (claim 38)"
-    ]
-  },
+  "hold": null,
   "counts": {
     "claims": 41,
-    "confirmed": 40,
-    "unconfirmed": 1,
+    "confirmed": 41,
+    "unconfirmed": 0,
     "contradicted": 0,
-    "blocker": 1,
+    "blocker": 0,
     "major": 0,
     "minor": 0
   },
-  "summary": "Hold: the admin-opt-in default is not established by the sources. The roadmap describes administrator delegation but does not state the permissions or assignments on arrival; the existing prompt-management path, roles and limits are supported.",
+  "summary": "The briefing passes: its roadmap details, prompt-management path, roles and limits are supported. Searches confirmed that delegation configuration, default permissions, delegate licensing and delegation-specific audit details remain undocumented.",
   "claims": [
     {
       "n": 1,
@@ -43,7 +37,7 @@
       "n": 2,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
-      "claim": "The roadmap target is December 2026.",
+      "claim": "The roadmap target is December CY2026.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"targetDate\": \"December CY2026\"",
@@ -65,7 +59,7 @@
       "n": 4,
       "where": "front matter: releasePhase",
       "type": "record",
-      "claim": "The listed release phase is General Availability.",
+      "claim": "The release phase is General Availability.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\"]",
@@ -109,7 +103,7 @@
       "n": 8,
       "where": "front matter: products",
       "type": "record",
-      "claim": "The roadmap associates this change with Microsoft 365 admin center and Microsoft Copilot (Microsoft 365).",
+      "claim": "Microsoft 365 admin center is a listed product.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"products\": [\"Microsoft 365 admin center\", \"Microsoft Copilot (Microsoft 365)\"]",
@@ -118,20 +112,53 @@
     },
     {
       "n": 9,
-      "where": "front matter: roadmapModified",
+      "where": "front matter: products",
       "type": "record",
-      "claim": "The roadmap modification timestamp is 2026-11-12T01:50:56.",
+      "claim": "Microsoft Copilot (Microsoft 365) is a listed product.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"modified\": \"2026-11-12T01:50:56\"",
+      "quote": "\"products\": [\"Microsoft 365 admin center\", \"Microsoft Copilot (Microsoft 365)\"]",
       "severity": null,
       "fix": null
     },
     {
       "n": 10,
-      "where": "What's changing: first paragraph",
+      "where": "front matter: defaultState; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated the default delegation assignments or permissions on arrival, so the default state is unknown.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"organization prompts\" \"delegation\" \"default\"; organizational prompts delegated publishing Prompt Lab delegation default permissions licensing audit pin. Read roadmap, Organizational prompts overview and Configure Microsoft Copilot settings; none states delegation defaults.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: licensing.model and notes; Cost and licensing",
+      "type": "absence",
+      "claim": "The licensing model for delegated publishing, including whether delegates need a specific Copilot licence, is not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"organizational prompts\" \"license\"; organizational prompts delegated publishing Prompt Lab delegation default permissions licensing audit pin. Read Organizational prompts overview, Microsoft Copilot overview and license-options search excerpts; none specifies delegate licensing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No pricing change for delegated organisation prompt publishing is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"organizational prompts\" \"license\"; organizational prompts delegated publishing Prompt Lab delegation default permissions licensing audit pin. Read roadmap, Organizational prompts overview and Microsoft Copilot overview licensing and usage-based billing text; no delegation pricing stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
       "type": "record",
-      "claim": "Existing organisation prompts let administrators upload custom prompts for the Copilot app home screen.",
+      "claim": "Organisation prompts let administrators upload custom prompts for the Copilot app home screen.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "This release follows the availability of organization prompts, providing admins the ability to upload custom prompts for their organization in the Copilot app home screen.",
@@ -139,8 +166,8 @@
       "fix": null
     },
     {
-      "n": 11,
-      "where": "What's changing: first paragraph",
+      "n": 14,
+      "where": "What's changing",
       "type": "behaviour",
       "claim": "Organisation prompts appear in the prompt lab.",
       "status": "supported",
@@ -150,10 +177,10 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 15,
       "where": "summary; What's changing; Scope",
       "type": "record",
-      "claim": "The planned change allows administrators to delegate organisation prompt publishing to individual users.",
+      "claim": "The planned capability lets administrators delegate organisation prompt publishing to individual users.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Now, admins can delegate organization prompt publishing to users, AAD security groups, and distribution groups.",
@@ -161,10 +188,10 @@
       "fix": null
     },
     {
-      "n": 13,
-      "where": "What's changing: first paragraph; Scope",
+      "n": 16,
+      "where": "summary; What's changing; Scope",
       "type": "record",
-      "claim": "Security groups can receive delegated prompt publishing.",
+      "claim": "The planned delegation supports Microsoft Entra security groups.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Now, admins can delegate organization prompt publishing to users, AAD security groups, and distribution groups.",
@@ -172,10 +199,10 @@
       "fix": null
     },
     {
-      "n": 14,
-      "where": "What's changing: first paragraph; Scope; Risk assessment",
+      "n": 17,
+      "where": "summary; What's changing; Scope; Risk assessment: Security & identity",
       "type": "record",
-      "claim": "Distribution groups can receive delegated prompt publishing.",
+      "claim": "The planned delegation supports distribution groups.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Now, admins can delegate organization prompt publishing to users, AAD security groups, and distribution groups.",
@@ -183,8 +210,8 @@
       "fix": null
     },
     {
-      "n": 15,
-      "where": "What's changing: second paragraph; rationale: risk",
+      "n": 18,
+      "where": "What's changing; rationale: risk",
       "type": "record",
       "claim": "Delegates will be able to create organisation prompts.",
       "status": "supported",
@@ -194,8 +221,8 @@
       "fix": null
     },
     {
-      "n": 16,
-      "where": "What's changing: second paragraph",
+      "n": 19,
+      "where": "What's changing",
       "type": "record",
       "claim": "Delegates will be able to edit organisation prompts.",
       "status": "supported",
@@ -205,8 +232,8 @@
       "fix": null
     },
     {
-      "n": 17,
-      "where": "What's changing: second paragraph",
+      "n": 20,
+      "where": "What's changing",
       "type": "record",
       "claim": "Delegates will be able to delete organisation prompts.",
       "status": "supported",
@@ -216,8 +243,8 @@
       "fix": null
     },
     {
-      "n": 18,
-      "where": "summary; What's changing; Scope; controls: scope; rationale: risk",
+      "n": 21,
+      "where": "summary; What's changing; Scope; controls[1].scope; rationale: risk and impact",
       "type": "record",
       "claim": "Delegated organisation prompt management operates at tenant level.",
       "status": "supported",
@@ -227,10 +254,10 @@
       "fix": null
     },
     {
-      "n": 19,
-      "where": "summary; What's changing: second paragraph",
+      "n": 22,
+      "where": "summary; What's changing",
       "type": "record",
-      "claim": "Delegates manage prompts through the Prompt Lab.",
+      "claim": "Delegates will manage organisation prompts through the Prompt Lab.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "These delegated users and groups will be able to create, edit and delete organization prompts at the tenant level through the Prompt Lab",
@@ -238,10 +265,10 @@
       "fix": null
     },
     {
-      "n": 20,
-      "where": "summary; What's changing: second paragraph; rationale: risk",
+      "n": 23,
+      "where": "summary; What's changing; rationale: risk",
       "type": "record",
-      "claim": "Delegates do not need to access the Microsoft 365 admin center to manage organisation prompts.",
+      "claim": "Delegates will not need to access the Microsoft 365 admin center to manage organisation prompts.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "without having to access the Microsoft 365 Admin Center.",
@@ -249,10 +276,10 @@
       "fix": null
     },
     {
-      "n": 21,
-      "where": "What's changing: second paragraph",
+      "n": 24,
+      "where": "What's changing",
       "type": "record",
-      "claim": "Administrators retain monitoring and oversight through the existing Microsoft 365 admin center experience.",
+      "claim": "Administrators will retain oversight through the existing Microsoft 365 admin center experience.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Admins can continue to monitor and provide oversight through the current experience in the Microsoft 365 Admin Center.",
@@ -260,32 +287,54 @@
       "fix": null
     },
     {
-      "n": 22,
-      "where": "controls[0].note; Why it matters",
-      "type": "role",
-      "claim": "AI Administrator is a documented role for existing organisation prompt management.",
+      "n": 25,
+      "where": "controls[0].ui; Governance controls table; front matter: licensing.notes",
+      "type": "admin-path",
+      "claim": "Tenant organisation prompts can be created, edited, imported and pinned in Microsoft 365 admin center > Copilot > Prompts.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/manage/organizational-prompts",
-      "quote": "To manage, create, update, edit, import, and delete organizational prompts, use one of the following roles, or a role with equivalent permissions:\n\n- AI Administrator\n- Search Editor",
+      "quote": "Sign in to the Microsoft 365 admin center if needed.\nExpand Copilot and select Prompts.\nThe following actions are available for prompts:\nCreate prompt\nEdit\nDelete\nExport all prompts\nImport prompts\nPin",
       "severity": null,
       "fix": null
     },
     {
-      "n": 23,
-      "where": "controls[0].note; Why it matters; Governance controls: final paragraph",
-      "type": "role",
-      "claim": "Search Editor is a documented role that can be assigned for existing organisation prompt management.",
+      "n": 26,
+      "where": "controls[0].api; Governance controls table and prose",
+      "type": "absence",
+      "claim": "No Microsoft Graph or PowerShell equivalent for tenant organisation prompt management is documented as of November 2026.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/manage/organizational-prompts",
-      "quote": "To manage, create, update, edit, import, and delete organizational prompts, use one of the following roles, or a role with equivalent permissions:\n\n- AI Administrator\n- Search Editor",
+      "source": null,
+      "quote": "Searched: organizational prompts Microsoft Graph PowerShell API create publish prompts tenant; site:learn.microsoft.com/graph \"organizational prompts\" beta. Read Organizational prompts overview and Graph search excerpts; returned prompt APIs concern Security Copilot, not this library.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 24,
+      "n": 27,
+      "where": "controls[0].note; Why it matters; Governance controls",
+      "type": "role",
+      "claim": "AI Administrator is a documented role for managing organisation prompts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/organizational-prompts",
+      "quote": "To manage, create, update, edit, import, and delete organizational prompts, use one of the following roles, or a role with equivalent permissions:\nAI Administrator\nSearch Editor",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[0].note; Why it matters; Governance controls",
+      "type": "role",
+      "claim": "Search Editor is a documented role for managing organisation prompts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/organizational-prompts",
+      "quote": "To manage, create, update, edit, import, and delete organizational prompts, use one of the following roles, or a role with equivalent permissions:\nAI Administrator\nSearch Editor",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
       "where": "controls[0].note; Why it matters",
       "type": "role",
-      "claim": "A role with equivalent permissions can also manage existing organisation prompts.",
+      "claim": "A role with equivalent permissions can also manage organisation prompts.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/manage/organizational-prompts",
       "quote": "To manage, create, update, edit, import, and delete organizational prompts, use one of the following roles, or a role with equivalent permissions:",
@@ -293,21 +342,10 @@
       "fix": null
     },
     {
-      "n": 25,
-      "where": "controls[0].ui; licensing.notes; Governance controls table and final paragraph",
-      "type": "admin-path",
-      "claim": "Existing tenant prompt creation, editing, import and pinning are managed at Microsoft 365 admin center > Copilot > Prompts.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/manage/organizational-prompts",
-      "quote": "Sign in to the Microsoft 365 admin center if needed.\n2. Expand Copilot and select Prompts.\n3. View your list of organizational prompts.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
+      "n": 30,
       "where": "controls[0].note; Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "The tenant limit is 1,000 published organisation prompts.",
+      "claim": "A tenant can publish up to 1,000 organisation prompts.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/manage/organizational-prompts",
       "quote": "You can publish up to 1,000 organizational prompts in your tenant.",
@@ -315,7 +353,7 @@
       "fix": null
     },
     {
-      "n": 27,
+      "n": 31,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
       "claim": "Up to four organisation prompts can be pinned.",
@@ -326,7 +364,7 @@
       "fix": null
     },
     {
-      "n": 28,
+      "n": 32,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
       "claim": "Selecting an organisation prompt places it in the Copilot Chat message box.",
@@ -337,10 +375,10 @@
       "fix": null
     },
     {
-      "n": 29,
+      "n": 33,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "Selecting an organisation prompt does not automatically submit it.",
+      "claim": "Selecting an organisation prompt does not submit it automatically.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/manage/organizational-prompts",
       "quote": "Selecting a prompt places the prompt into the Copilot Chat message box but doesn't submit it. Users can modify the prompt easily before they submit it.",
@@ -348,145 +386,101 @@
       "fix": null
     },
     {
-      "n": 30,
-      "where": "Scope; Why it matters; Risk assessment: Data exposure; rationale: impact",
-      "type": "availability",
-      "claim": "Published organisation prompts are shared with tenant users in Microsoft Copilot Chat.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/manage/organizational-prompts",
-      "quote": "Administrators can create, view, update, delete, import, and publish prompts so they're shared with users in your organizations. When the prompts are published, they're displayed to users in Microsoft Copilot Chat, Microsoft Edge, and Microsoft Teams.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
-      "where": "Scope",
-      "type": "availability",
-      "claim": "Organisation prompts are displayed in Microsoft Edge.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/manage/organizational-prompts",
-      "quote": "When the prompts are published, they're displayed to users in Microsoft Copilot Chat, Microsoft Edge, and Microsoft Teams.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
-      "where": "Scope",
-      "type": "availability",
-      "claim": "Organisation prompts are displayed in Microsoft Teams.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/manage/organizational-prompts",
-      "quote": "When the prompts are published, they're displayed to users in Microsoft Copilot Chat, Microsoft Edge, and Microsoft Teams.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
-      "where": "controls[0].api; Governance controls table and final paragraph",
-      "type": "absence",
-      "claim": "No Microsoft Graph or PowerShell equivalent for organisation prompt management is documented at the time of writing.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"organizational prompts\" PowerShell Graph API publish; opened https://learn.microsoft.com/copilot/manage/organizational-prompts and https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center. No matching management call found.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 34,
-      "where": "controls[1].ui and controls[1].api; controls[1].note; Open questions: first bullet",
-      "type": "absence",
-      "claim": "Microsoft Learn has not documented the UI or API for the roadmap's prompt-publishing delegation control.",
+      "where": "Scope; Risk assessment: Data exposure; rationale: impact",
+      "type": "availability",
+      "claim": "Published organisation prompts are displayed to users in Microsoft Copilot Chat.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"organizational prompts\" \"delegation\"; \"organization prompts\" \"delegated\"; \"organizational prompts\" PowerShell Graph API publish. Opened https://learn.microsoft.com/copilot/manage/organizational-prompts and configure-copilot-admin-center; no delegation control found.",
+      "source": "https://learn.microsoft.com/copilot/manage/organizational-prompts",
+      "quote": "When the prompts are published, they're displayed to users in Microsoft Copilot Chat, Microsoft Edge, and Microsoft Teams.",
       "severity": null,
       "fix": null
     },
     {
       "n": 35,
-      "where": "front matter: licensing.model and notes; Cost and licensing",
-      "type": "absence",
-      "claim": "Licensing for delegated prompt publishing, including whether delegates need a particular Copilot licence, is not yet published.",
+      "where": "Scope",
+      "type": "availability",
+      "claim": "Published organisation prompts are displayed to users in Microsoft Edge.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"organizational prompts\" \"license\"; \"delegated prompt publishing\" licence pricing admin. Opened https://learn.microsoft.com/copilot/manage/organizational-prompts and https://learn.microsoft.com/copilot/plan/copilot-overview; neither specifies delegate licensing.",
+      "source": "https://learn.microsoft.com/copilot/manage/organizational-prompts",
+      "quote": "When the prompts are published, they're displayed to users in Microsoft Copilot Chat, Microsoft Edge, and Microsoft Teams.",
       "severity": null,
       "fix": null
     },
     {
       "n": 36,
-      "where": "Cost and licensing",
-      "type": "absence",
-      "claim": "No pricing change for delegated prompt publishing has been published.",
+      "where": "Scope",
+      "type": "availability",
+      "claim": "Published organisation prompts are displayed to users in Microsoft Teams.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"organizational prompts\" \"pricing\"; \"delegated prompt publishing\" licence pricing admin. Opened https://learn.microsoft.com/copilot/manage/organizational-prompts and https://learn.microsoft.com/copilot/plan/copilot-overview; no feature-specific pricing found.",
+      "source": "https://learn.microsoft.com/copilot/manage/organizational-prompts",
+      "quote": "When the prompts are published, they're displayed to users in Microsoft Copilot Chat, Microsoft Edge, and Microsoft Teams.",
       "severity": null,
       "fix": null
     },
     {
       "n": 37,
-      "where": "Cost and licensing; rationale: cost",
+      "where": "controls[1].ui and api; controls[1].note; Governance controls; Open questions",
       "type": "absence",
-      "claim": "No licence change for delegated prompt publishing has been published.",
+      "claim": "Microsoft Learn has not documented the UI or API for configuring the roadmap's delegated prompt publishing.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"organizational prompts\" \"license\"; \"delegated prompt publishing\" licence pricing admin. Read the roadmap record, organizational-prompts and copilot/plan/copilot-overview on Learn; no licence change for publishing delegation found.",
+      "quote": "Searched: \"delegated prompt publishing\" \"Prompt Lab\"; \"organizational prompts\" delegation permissions Microsoft Graph beta PowerShell. Read Organizational prompts overview, Configure Microsoft Copilot settings and search excerpts; no delegation configuration UI or API found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 38,
-      "where": "front matter: defaultState",
-      "type": "default",
-      "claim": "Delegated prompt publishing is admin-opt-in on arrival.",
-      "status": "unsupported",
+      "where": "Open questions: delegate pinning",
+      "type": "absence",
+      "claim": "Whether delegates can pin organisation prompts is not documented.",
+      "status": "supported",
       "source": null,
-      "quote": "Searched: \"organizational prompts\" \"default\"; \"organizational prompts\" \"delegation\". Read the roadmap record and https://learn.microsoft.com/copilot/manage/organizational-prompts; neither states the delegation assignments or default permissions on arrival.",
-      "severity": "blocker",
-      "fix": "Set defaultState to \"unknown\". Add to Open questions: \"Microsoft has not stated the default delegation assignments or permissions on arrival.\" The roadmap's ability to grant delegation does not explicitly establish the initial state."
+      "quote": "Searched: \"organizational prompts\" \"delegate\" \"pin\". Read Organizational prompts overview including Pin an organizational prompt and the roadmap description; pinning is documented for existing management, not for the planned delegates.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 39,
-      "where": "Open questions: second bullet",
+      "where": "Open questions: delegation auditing",
       "type": "absence",
-      "claim": "Whether delegates can pin prompts is not stated.",
+      "claim": "Whether configuration of delegated organisation prompt publishing is audited is not published.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"organizational prompts\" \"pin\" \"delegates\"; Copilot organization prompts delegated publishing Prompt Lab pin permissions licensing. Read the roadmap and https://learn.microsoft.com/copilot/manage/organizational-prompts; pinning is not specified for delegates.",
+      "quote": "Searched: \"organizational prompts\" \"audit\" \"delegated\"; site:learn.microsoft.com/purview \"organizational prompts\". Read Organizational prompts overview; searched Audit log activities for organizational, organization prompts and prompt operations; no delegation audit event found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 40,
-      "where": "Open questions: first bullet",
+      "where": "Open questions: Purview audit",
       "type": "absence",
-      "claim": "Auditing of the prompt-publishing delegation control is not published.",
+      "claim": "Whether delegated edits to organisation prompts are logged in Purview audit is unconfirmed.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"organizational prompts\" \"audit\"; site:learn.microsoft.com/purview \"organizational prompts\". Opened organizational-prompts and https://learn.microsoft.com/purview/audit-log-activities; searched the latter for organization/organizational prompts and prompt delegation: no matches.",
+      "quote": "Searched: \"organizational prompts\" \"audit\" \"delegated\"; site:learn.microsoft.com/purview \"organizational prompts\". Read Organizational prompts overview; searched Audit log activities for organizational and prompt edit/publish operations; no event for delegated library edits found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 41,
-      "where": "Open questions: third bullet",
-      "type": "absence",
-      "claim": "Purview audit logging of delegated organisation prompt edits is unconfirmed.",
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 2026-11-12T01:50:56.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"organizational prompts\" \"audit\"; site:learn.microsoft.com/purview \"organizational prompts\". Read organizational-prompts; searched https://learn.microsoft.com/purview/audit-log-activities for organization/organizational prompts and prompt delegation: no matches.",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-12T01:50:56\"",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-17T01:27:13.360Z",
+    "at": "2026-11-17T02:48:28.855Z",
     "summary": {
       "links": 3,
-      "unreachable": 2,
+      "unreachable": 0,
       "uiPaths": 1,
-      "uiPathsWithMissingWords": 1,
+      "uiPathsWithMissingWords": 0,
       "apiCalls": 0,
       "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
@@ -499,13 +493,13 @@
       },
       {
         "url": "https://learn.microsoft.com/copilot/manage/organizational-prompts",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       }
     ],
     "controlChecks": [
@@ -514,15 +508,12 @@
         "side": "ui",
         "governs": "Creating, editing, importing and pinning organisation prompts",
         "docs": "https://learn.microsoft.com/copilot/manage/organizational-prompts",
-        "reachable": false,
+        "reachable": true,
         "segments": [
           "Copilot",
           "Prompts"
         ],
-        "missing": [
-          "Copilot",
-          "Prompts"
-        ]
+        "missing": []
       }
     ],
     "roadmapDrift": []
@@ -538,6 +529,12 @@
       "date": "2026-11-16",
       "status": "held",
       "version": 2,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-17",
+      "status": "held",
+      "version": 3,
       "model": "gpt-6.1-sol"
     }
   ]

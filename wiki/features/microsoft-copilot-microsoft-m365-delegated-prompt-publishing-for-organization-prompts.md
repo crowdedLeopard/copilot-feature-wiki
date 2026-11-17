@@ -14,7 +14,7 @@ previewDate: null
 risk: "medium"
 cost: "low"
 impact: "medium"
-defaultState: "admin-opt-in"
+defaultState: "unknown"
 action: "review"
 licensing:
   model: "unknown"
@@ -57,19 +57,23 @@ changes:
     note: "Corrected the cloud statement to the roadmap record, softened the portal-only claim, qualified the role statement and set action to review."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 41 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-17"
+    note: "Corrected the default state to unknown, as Microsoft has not stated the delegation default, and added it to open questions."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 41 statements confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-17"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 41
-  confirmed: 40
-  unconfirmed: 1
+  confirmed: 41
+  unconfirmed: 0
   contradicted: 0
-  attempts: 3
-  hash: "d87d00fefe86508caa090e075dc851ab"
+  attempts: 0
+  hash: "253494458b75eb47635a8354916bb823"
 ---
 
 ## What's changing
@@ -138,15 +142,10 @@ Microsoft Learn documents role-gated prompt management in the admin centre; no G
 - Where admins configure delegation and whether it is audited is not published.
 - Whether delegates can pin prompts is unstated.
 - Whether delegated edits are logged in Purview audit is unconfirmed.
+- Microsoft has not stated the default delegation assignments or permissions on arrival.
 
 <!-- rationale
 risk: Medium. Delegates can publish tenant-wide prompts that users see and run, so poor or unreviewed prompts can reach everyone without admin involvement.
 cost: Low. Admin time to define the delegate list and a review process; no licence change is published.
 impact: Medium. Affects prompt authors and admins directly, and all users who see suggested organisation prompts indirectly.
--->
-
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] front matter: defaultState / default: Delegated prompt publishing is admin-opt-in on arrival. | Found: Searched: "organizational prompts" "default"; "organizational prompts" "delegation". Read the roadmap record and https://learn.microsoft.com/copilot/manage/organizational-prompts; neither states the delegation assignments or default permissions on arrival. | Fix: Set defaultState to "unknown". Add to Open questions: "Microsoft has not stated the default delegation assignments or permissions on arrival." The roadmap's ability to grant delegation does not explicitly establish the initial state.
 -->

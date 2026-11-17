@@ -98,19 +98,23 @@ changes:
     note: "Corrected after verification: one example value in the events policy call with all four values in the note, licensing model set to unknown, Teams Administrator role stated, and Get-CsUserPolicyAssignment used to check a user's events policy."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 70 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-17"
+    note: "Corrected after verification: removed the undocumented Teams admin center route for checking which events policy a user holds; the check now uses Get-CsUserPolicyAssignment."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 73 statements confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-17"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 70
-  confirmed: 69
-  unconfirmed: 1
+  claims: 73
+  confirmed: 73
+  unconfirmed: 0
   contradicted: 0
-  attempts: 3
-  hash: "796f3c3d965bf6c4c99d8720b93f591b"
+  attempts: 0
+  hash: "f731ef5660467ca329f3574a7ff69f87"
 ---
 
 ## What's changing
@@ -173,7 +177,7 @@ Microsoft's notice says rollout begins in mid-December 2026 and is expected to c
 ### At rollout
 
 - Set the attendance and engagement report value in each custom events policy with Set-CsTeamsEventsPolicy rather than relying on the default (see the controls table).
-- Check which events policy each event-organising user holds, using Teams admin center > Meetings > Events policies or Get-CsUserPolicyAssignment -Identity <user>, because a user can be assigned only one events policy at a time.
+- Check which events policy each event-organising user holds, using Get-CsUserPolicyAssignment -Identity <user>, because a user can be assigned only one events policy at a time.
 
 ### After rollout
 
@@ -208,10 +212,4 @@ The meeting policy row is the current alternative. Its Learn page says it covers
 risk: Medium. Under the notice's default (On, organizers can turn it off) event organisers can view and download reports, and Microsoft has not said whether a meeting policy set to Off carries over to events.
 cost: Low. The only cost shown is admin time to choose and communicate a value; Learn's events licensing page puts attendance and engagement reports under the advanced event features licences, and no separate licence for the new setting is published.
 impact: Medium. Teams events organisers notice if reports appear or disappear; organisers of ordinary meetings are not affected by the new events setting, per Microsoft's notice MC1455014.
--->
-
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Governance guidance: At rollout, second bullet / admin-path: Teams admin center > Meetings > Events policies is a documented route for checking which events policy each event-organising user holds. | Found: Searched: Teams admin center view users assigned events policy Meetings Events policies. Opened meeting-policies-overview, policy-assignment-overview and assign-policies-users-and-groups. The cited Events policies route documents editing policies, not viewing each user's effective assignment. | Fix: Replace the bullet with: "Check which events policy each event-organising user holds, using Get-CsUserPolicyAssignment -Identity <user>, because a user can be assigned only one events policy at a time." This retains the supported command and removes the undocumented UI shortcut.
 -->

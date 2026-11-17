@@ -61,9 +61,6 @@ sources:
   - title: "Who may allocate add-on capacity (Power Platform admin center)"
     url: "https://learn.microsoft.com/power-platform/admin/capacity-add-on#control-who-can-allocate-add-on-capacity"
     kind: "learn"
-  - title: "Who may allocate add-on capacity (PowerShell)"
-    url: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/set-tenantsettings"
-    kind: "learn"
 videos: []
 related: []
 controls:
@@ -80,11 +77,8 @@ controls:
       surface: "Power Platform admin center"
       path: "Settings > Power Platform settings > Tenant settings > Add-on capacity assignments > Only specific admins"
       docs: "https://learn.microsoft.com/power-platform/admin/capacity-add-on#control-who-can-allocate-add-on-capacity"
-    api:
-      kind: "powershell"
-      call: "Set-TenantSettings -RequestBody @{disableCapacityAllocationByEnvironmentAdmins=$true}"
-      docs: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/set-tenantsettings"
-    note: "The setting definition is on a Learn page marked preview (list tenant settings)."
+    api: null
+    note: "The preview list-tenantsettings documentation defines disableCapacityAllocationByEnvironmentAdmins, but the Set-TenantSettings reference does not document a PowerShell call for this setting."
   - governs: "Switch for Process Intelligence Studio or object-centric models"
     scope: "environment"
     ui: null
@@ -109,19 +103,23 @@ changes:
     note: "Corrected the filter scope to the current tab, removed the unconfirmed admin centre path for process mining capacity, reworded the licensing note and removed checklist items without a control row."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 43 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 4
+  - date: "2026-11-17"
+    note: "Removed the unsupported Set-TenantSettings PowerShell call from the add-on capacity control and noted that the Set-TenantSettings reference does not document one."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 43 statements not yet confirmed"
+version: 5
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-17"
-  version: 4
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 43
-  confirmed: 42
-  unconfirmed: 1
+  confirmed: 43
+  unconfirmed: 0
   contradicted: 0
-  attempts: 3
-  hash: "c1b88dc040a44ecfa51654a22ddd2d3c"
+  attempts: 0
+  hash: "f7d196f87ca1dd2000fb873ac8fc894a"
 ---
 
 ## What's changing
@@ -177,7 +175,7 @@ Power Automate Process Mining users in the Worldwide cloud, on the web. The road
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Process mining capacity allocated to an environment</strong><br><small>Environment</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>Power Platform API</strong><br><code>PATCH https://api.powerplatform.com/licensing/environments/{environmentId}/allocations?api-version=2024-10-01 with body {&quot;currencyAllocations&quot;:[{&quot;currencyType&quot;:&quot;ProcessMiningDataStorage&quot;,&quot;allocated&quot;:&lt;count&gt;}]}</code> <a href="https://learn.microsoft.com/rest/api/power-platform/licensing/currency-allocation/patch-currency-allocation-by-environment" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Who may allocate add-on capacity</strong><br><small>Tenant</small><br><small class="controls__note">The setting definition is on a Learn page marked preview (list tenant settings).</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Settings › Power Platform settings › Tenant settings › Add-on capacity assignments › Only specific admins <a href="https://learn.microsoft.com/power-platform/admin/capacity-add-on#control-who-can-allocate-add-on-capacity" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-TenantSettings -RequestBody @{disableCapacityAllocationByEnvironmentAdmins=$true}</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/set-tenantsettings" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Who may allocate add-on capacity</strong><br><small>Tenant</small><br><small class="controls__note">The preview list-tenantsettings documentation defines disableCapacityAllocationByEnvironmentAdmins, but the Set-TenantSettings reference does not document a PowerShell call for this setting.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Settings › Power Platform settings › Tenant settings › Add-on capacity assignments › Only specific admins <a href="https://learn.microsoft.com/power-platform/admin/capacity-add-on#control-who-can-allocate-add-on-capacity" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Switch for Process Intelligence Studio or object-centric models</strong><br><small>Environment</small><br><small class="controls__note">Access follows Power Automate environment roles and the storage location of the event log.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -196,8 +194,8 @@ cost: Low, provisional. No change to licensing is stated; existing Power Automat
 impact: Medium. The roadmap says it is enabled automatically for admins, makers and marketers, and it affects specific roles: process analysts and process owners.
 -->
 
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] controls[1].api; Governance controls table / command: The linked Set-TenantSettings reference documents Set-TenantSettings -RequestBody @{disableCapacityAllocationByEnvironmentAdmins=$true} as the automation equivalent of the capacity-assignment restriction. | Found: Searched: "Set-TenantSettings" "disableCapacityAllocationByEnvironmentAdmins". Opened Set-TenantSettings and list-tenantsettings: the reference documents -RequestBody but not this key; the preview list defines the key but does not document this PowerShell call. | Fix: Set controls[1].api to null and remove its rendered PowerShell call. Replace the row note with 'The preview list-tenantsettings documentation defines disableCapacityAllocationByEnvironmentAdmins, but the Set-TenantSettings reference does not document a PowerShell call for this setting.' Retain the verified UI path.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[1].note; Governance controls table / absence: The Set-TenantSettings reference does not document a PowerShell call specifically for disableCapacityAllocationByEnvironmentAdmins. | Found: Searched: 'disableCapacityAllocationByEnvironmentAdmins update tenant settings API PowerShell'. Read the entire Set-TenantSettings reference: its example sets WalkMeOptOut and its parameters are RequestBody and ApiVersion; the capacity-allocation property is not present. | Fix: Add https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/set-tenantsettings to sources, and date the note's reference check 'at the time of writing (November 2026)'.
 -->

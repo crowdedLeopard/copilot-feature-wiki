@@ -9,7 +9,7 @@ status: "in-development"
 releasePhase: ["General Availability"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
 platforms: ["Web"]
-targetDate: "December CY2026"
+targetDate: "January CY2027"
 previewDate: null
 risk: "low"
 cost: "low"
@@ -33,6 +33,9 @@ sources:
     kind: "learn"
   - title: "Set up a Symantec DLP Connector"
     url: "https://learn.microsoft.com/deployedge/microsoft-edge-connectors-symantec"
+    kind: "learn"
+  - title: "Set up a Trellix DLP Connector"
+    url: "https://learn.microsoft.com/deployedge/microsoft-edge-connectors-trellix"
     kind: "learn"
   - title: "OnFileAttachedEnterpriseConnector"
     url: "https://learn.microsoft.com/deployedge/microsoft-edge-policies/onfileattachedenterpriseconnector"
@@ -86,8 +89,8 @@ controls:
     note: "No setting is documented at the time of writing (November 2026)."
 confidence: "medium"
 created: "2026-11-16"
-updated: "2026-11-16"
-roadmapModified: "2026-11-11T00:56:01"
+updated: "2026-11-17"
+roadmapModified: "2026-11-17T00:31:56"
 changes:
   - date: "2026-11-16"
     note: "First briefing: roadmap item 579894, In development, targeted December CY2026; Learn documents the existing connectors but not the new controls."
@@ -95,30 +98,34 @@ changes:
     note: "Corrected after verification: default state is now not stated, third-party licensing claims removed, audit-trail and justification-reporting claims removed, and connector policy automation entries narrowed to the upload and paste references."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 2 of 61 statements not yet confirmed"
-version: 2
+  - date: "2026-11-17"
+    note: "Corrected after verification: connector behaviour and verdict-waiting now stated as Learn documents them, impact rationale narrowed, Trellix source added, and target date updated to the roadmap's January CY2027."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 67 statements confirmed"
+version: 3
 verification:
-  status: "verified-with-gaps"
+  status: "verified"
   date: "2026-11-17"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 61
-  confirmed: 59
-  unconfirmed: 2
+  claims: 67
+  confirmed: 67
+  unconfirmed: 0
   contradicted: 0
   attempts: 0
-  hash: "3f5a62938b7e438959cde558fc409ae1"
+  hash: "3e873220145946b2d71e92d787e3d930"
 ---
 
 ## What's changing
 
 Microsoft plans to extend the Data Loss Prevention (DLP) connectors in Microsoft Edge for Business. The roadmap item says administrators will be able to configure more consistent enforcement across download, upload, paste and print, and adds a required bypass justification and administrator-defined guidance.
 
-Microsoft Learn does not describe the new controls yet, so the paragraph above is the roadmap's description. What Learn does document today is the existing connector: Edge for Business sends content from specific user actions to an on-device DLP agent and waits for the verdict before proceeding. The connector overview lists Symantec DLP, Trellix and Cisco Secure Access as providers, and paste, print and upload as the actions that can send content (at the time of writing, November 2026, download is not on that list).
+Microsoft Learn does not describe the new controls yet, so the paragraph above is the roadmap's description. What Learn does document today is the existing connector: Edge for Business sends content from specific user actions to an on-device DLP agent. The policy reference says Edge waits for the agent's response when `block_until_verdict` is set to 1; any other integer value lets the page access the data immediately. The connector overview lists Symantec DLP, Trellix and Cisco Secure Access as providers, and paste, print and upload as the actions that can send content (at the time of writing, November 2026, download is not on that list).
 
 Learn already documents a `require_justification_tags` field in the paste and upload connector policies, which makes users enter a justification before bypassing a warning. The roadmap does not say whether the planned justification control builds on that field or replaces it.
 
-The roadmap item is In development with a target of December CY2026, release phase General Availability, Worldwide (Standard Multi-Tenant), platform Web. Dates are Microsoft's targets, not commitments.
+The roadmap item is In development with a target of January CY2027, release phase General Availability, Worldwide (Standard Multi-Tenant), platform Web. Dates are Microsoft's targets, not commitments.
 
 ## Why it matters
 
@@ -140,7 +147,7 @@ Existing connectors require configuration; Microsoft has not stated defaults for
 
 **Autonomy & actions**
 
-- No change: the connector evaluates user actions in the browser and takes no actions of its own.
+- The documented connector sends content from specific user actions to an on-device DLP agent and enforces its verdict.
 
 **Change & support**
 
@@ -212,15 +219,5 @@ A configuration policy must exist before you can assign a connector. Microsoft E
 <!-- rationale
 risk: Low. Microsoft has not stated the default for the new controls, so this rates today's behaviour continuing: connectors need configuration and the roadmap item adds controls, not data access. The remaining risk is a connector left at its fail-open fallback, which Learn lets you set to allow.
 cost: Low. Learn says Edge for Business connectors extend security investments at no additional cost. Licensing for the new controls is not yet published, so the known cost is admin time; confirm third-party vendor entitlements separately.
-impact: Low. Admins who run a Symantec, Trellix or Cisco Secure Access connector configure it. Their users would notice only prompts that ask for a justification or show guidance, and only once the controls ship.
--->
-
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: The connector takes no actions of its own. | Found: Searched: "Edge" "DLP" "connector" "autonomous". Read DLP overview, Symantec setup and upload/paste/print references; these describe reactions to user actions but do not state that the connector takes no independent actions. | Fix: Replace 'No change: the connector evaluates user actions in the browser and takes no actions of its own' with 'The documented connector sends content from specific user actions to an on-device DLP agent and enforces its verdict.'
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Cost and licensing / behaviour: The Trellix integration is with Trellix DLP Endpoint. | Found: This connector ensures a secure browsing experience through an API integration between Edge for Business and Trellix Data Loss Prevention (DLP) Endpoint for Windows. | Fix: Add https://learn.microsoft.com/deployedge/microsoft-edge-connectors-trellix to sources for the Trellix DLP Endpoint product identification. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-connectors-trellix
-- [supported, minor] What's changing: existing connector waits for the verdict / behaviour: The existing connector waits for a verdict before proceeding. | Found: When enabled, Microsoft Edge sends content from specific user actions to the on-device agent and waits for the verdict before proceeding. | Fix: Replace the unconditional waiting clause with: 'The policy reference says Edge waits when block_until_verdict is set to 1; other integer values let the page access the data immediately.' Cite https://learn.microsoft.com/deployedge/microsoft-edge-policies/onfileattachedenterpriseconnector, which qualifies the overview's statement. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-connectors-data-loss-prevention-overview
-- [unsupported, minor] rationale: impact / behaviour: Users would notice only prompts asking for justification or showing guidance once the controls ship. | Found: Searched: "Edge" "DLP" "expanded enforcement" "prompts". Read DLP overview, Symantec setup and policy references; none limits the planned user-visible effects to prompts. | Fix: Replace 'Their users would notice only prompts that ask for a justification or show guidance, and only once the controls ship' with 'The roadmap plans more consistent enforcement, required bypass justification and administrator-defined guidance; the user experience is not yet documented.'
+impact: Low. Admins who run a Symantec, Trellix or Cisco Secure Access connector configure it. The roadmap plans more consistent enforcement, required bypass justification and administrator-defined guidance; the user experience is not yet documented.
 -->

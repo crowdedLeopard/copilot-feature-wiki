@@ -76,7 +76,7 @@ controls:
     ui: null
     api:
       kind: "graph"
-      call: "PATCH https://graph.microsoft.com/beta/copilot/settings/people/enhancedpersonalization (isEnabledInOrganization, disabledForGroup)"
+      call: "PATCH https://graph.microsoft.com/beta/copilot/settings/people/enhancedpersonalization with Content-Type: application/json and body {\"isEnabledInOrganization\": false}"
       docs: "https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-update?view=graph-rest-beta"
     note: "Beta API; People Administrator is the least privileged role. General Copilot memory control, on by default; the memory Learn page is preview."
   - governs: "Planner Agent access in Planner (not Copilot Chat)"
@@ -105,19 +105,23 @@ changes:
     note: "Corrected after verification: the Block control now cites the beta Microsoft Graph copilotPackage block call with its caveats, and the pinning path includes the Registry step."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 94 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-17"
+    note: "Corrected after verification: the Enhanced personalization Graph call now gives the JSON body instead of a property list, and the private-message sharing claim is reworded as a caution."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 95 statements not yet confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-17"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 94
-  confirmed: 92
-  unconfirmed: 1
+  claims: 95
+  confirmed: 94
+  unconfirmed: 0
   contradicted: 1
-  attempts: 3
-  hash: "602367344f0e262cfcfbdfdee9cb6305"
+  attempts: 0
+  hash: "ff545088fa72272f3e3b85c7e8a9053a"
 ---
 
 ## What's changing
@@ -140,7 +144,7 @@ The effect for a service owner is on support and data handling rather than licen
 
 **Data exposure**
 
-- Catch-up reads recent emails, chats and meetings to propose tasks. The notice says Planner Agent uses only content the signed-in user can already access, so permissions are not widened. A user can still save a suggestion drawn from a private message into a shared plan; suggestions show their sources and stay drafts until saved.
+- Catch-up reads recent emails, chats and meetings to propose tasks. The notice says Planner Agent uses only content the signed-in user can already access, so permissions are not widened. Consider the risk of users moving information from private messages into shared plans; suggestions show their sources and stay drafts until saved.
 - Memory integration lets Planner Agent use saved memories and preferences inferred from earlier chats. Microsoft Learn says memories are stored in the user's Exchange mailbox in a hidden folder, that Purview retention policies and labels do not apply to Copilot memory, and that admins cannot restrict what type of information is added. That Learn page is marked preview.
 
 **Security & identity**
@@ -206,7 +210,7 @@ No price, meter or Copilot Credits rate for task assignment, scheduled catch-up 
 <tbody>
 <tr><td data-label="Control"><strong>Availability of Planner Agent in Microsoft Copilot (tenant-wide block)</strong><br><small>Tenant</small><br><small class="controls__note">General agent control; Planner Agent entry not shown on Learn. API is beta, unsupported for production, needs Agent 365 licence and delegated CopilotPackages.ReadWrite.All; Planner applicability not established.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › agent › Block <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether Planner Agent is pinned for users or groups</strong><br><small>Group</small><br><small class="controls__note">AI Administrator role, per the notice. Up to three admin-pinned agents; can take up to six hours to appear. Visibility only, not an access control.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › Registry › ellipsis menu › Manage pinned agents <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Copilot memory used by Planner Agent (Enhanced personalization)</strong><br><small>Tenant</small><br><small class="controls__note">Beta API; People Administrator is the least privileged role. General Copilot memory control, on by default; the memory Learn page is preview.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH https://graph.microsoft.com/beta/copilot/settings/people/enhancedpersonalization (isEnabledInOrganization, disabledForGroup)</code> <a href="https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-update?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Copilot memory used by Planner Agent (Enhanced personalization)</strong><br><small>Tenant</small><br><small class="controls__note">Beta API; People Administrator is the least privileged role. General Copilot memory control, on by default; the memory Learn page is preview.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH https://graph.microsoft.com/beta/copilot/settings/people/enhancedpersonalization with Content-Type: application/json and body {&quot;isEnabledInOrganization&quot;: false}</code> <a href="https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-update?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Planner Agent access in Planner (not Copilot Chat)</strong><br><small>Tenant</small><br><small class="controls__note">Documented for Planner Agent in Planner; Microsoft has not confirmed it applies to Planner Agent in Copilot Chat. Changes can take up to 1 hour.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-PlannerConfiguration -AllowPlannerCopilot $true -PlannerCopilotAllowedGroupId &lt;security group id&gt;</code> <a href="https://learn.microsoft.com/planner/turn-off-planner-agent" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Switch for scheduled task catch-up or task assignment</strong><br><small>Tenant</small><br><small class="controls__note">Not documented at the time of writing. Users manage their own catch-up schedules.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
@@ -234,9 +238,9 @@ cost: Low. Microsoft's notice names an active Microsoft Copilot licence as the r
 impact: High. The additions change default behaviour for every user with a Microsoft Copilot licence and access to Planner Agent, and the notice says they are enabled by default; users notice new assignment, catch-up and memory behaviour in Copilot Chat.
 -->
 
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[2].api / command: The printed PATCH call with '(isEnabledInOrganization, disabledForGroup)' is a usable configuration call for Enhanced personalization. | Found: | isEnabledInOrganization | Boolean | If true, enables the enhanced personalization control and therefore related features as defined in control enhanced personalization privacy Required. | | Fix: Replace the call with 'PATCH https://graph.microsoft.com/beta/copilot/settings/people/enhancedpersonalization' and supply 'Content-Type: application/json' with the JSON body '{"isEnabledInOrganization": false}' to turn the control off tenant-wide. Remove the parenthesised property list. The cited reference requires a Boolean value in the request body, not bare property names. | Source: https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-update?view=graph-rest-beta
-- [unsupported, major] Risk assessment: Data exposure, first bullet / behaviour: A user can save a catch-up suggestion drawn from a private message into a shared plan. | Found: Searched: "Planner Agent" "shared" "email" "suggestions"; "Planner Agent" "catch-up" "assignment". Read MC1539002 and returned Learn excerpts. The notice says suggestions save to Planner, but does not state that catch-up offers shared-plan destinations. | Fix: Replace 'A user can still save a suggestion drawn from a private message into a shared plan' with the analytical caution 'Consider the risk of users moving information from private messages into shared plans'. Keep the supported statement that suggestions show their sources and remain drafts until saved.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] summary; What's changing; Why it matters; Scope; Risk assessment: Change & support / date: The notice schedules the start of Worldwide general availability rollout for early December 2026. | Found: General Availability (Worldwide): Rollout will begin in early December 2026 and is expected to complete by early December 2026. | Fix: In Why it matters, replace the sentence beginning 'Nothing needs configuring' with 'No admin configuration is required for rollout; Microsoft plans to deliver task assignment, optional scheduled catch-up and memory-based personalisation to licensed users with Planner Agent access in early December 2026.' This keeps the rollout a plan rather than guaranteeing every user's delivery date.
+- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The checklist tells administrators to review the Copilot Agents usage report, but the controls table has no reporting row. | Found: Review Planner Agent use in the Microsoft 365 Copilot Agents report, because the Planner usage report does not cover it. | Fix: Remove the After rollout checklist bullet beginning 'Review Planner Agent use in the Microsoft 365 Copilot Agents report'. The supported reporting information can remain in Risk assessment; no new control row is requested.
 -->

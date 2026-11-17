@@ -17,8 +17,8 @@ impact: "high"
 defaultState: "on"
 action: "act-now"
 licensing:
-  model: "unknown"
-  notes: "Microsoft's pages tie reporting to Microsoft Defender for Office 365 Plan 1 or Plan 2, or Microsoft Defender XDR. No separate price or meter for meeting reporting is published at the time of writing (November 2026)."
+  model: "included"
+  notes: "Meeting and participant reporting is included in Microsoft Defender for Office 365 Plan 1 and Plan 2. Which licence is needed to see meeting reports in the Teams admin center without Defender is not yet published, and no separate price or meter is published at the time of writing (November 2026)."
 audiences: ["security","m365-admin","change-adoption","compliance"]
 tags: ["teams","defender-for-office-365","threat-detection","impersonation","privacy","monitoring","admin-center","user-experience","powershell"]
 sources:
@@ -33,6 +33,9 @@ sources:
     kind: "learn"
   - title: "Security Operations Guide for Teams protection in Microsoft Defender for Office 365"
     url: "https://learn.microsoft.com/defender-office-365/mdo-support-teams-sec-ops-guide"
+    kind: "learn"
+  - title: "Microsoft Defender for Office 365 support for Microsoft Teams"
+    url: "https://learn.microsoft.com/defender-office-365/mdo-support-teams-about"
     kind: "learn"
   - title: "Set-CsTeamsMeetingConfiguration"
     url: "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingconfiguration"
@@ -119,19 +122,23 @@ changes:
     note: "Corrected after verification: replaced the destination PowerShell call with the complete documented example, removed New-ProtectionAlert from the alert row, stated what built-in alert policies allow, and softened the manual-action claim."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 74 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-17"
+    note: "Corrected licensing: meeting and participant reporting is listed in Microsoft Defender for Office 365 Plan 1 and Plan 2, so the licensing model is now included."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 91 statements confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-17"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 74
-  confirmed: 73
+  claims: 91
+  confirmed: 91
   unconfirmed: 0
-  contradicted: 1
-  attempts: 3
-  hash: "e40789c8f68015eba62439073009b97c"
+  contradicted: 0
+  attempts: 0
+  hash: "1ea8b089ac9835fbaabbf37159ce7cfa"
 ---
 
 ## What's changing
@@ -174,7 +181,7 @@ If nobody acts, reports land in the Defender portal and Teams admin center with 
 
 ## Cost and licensing
 
-Microsoft's page on Teams user reporting states that, in organisations with Microsoft Defender for Office 365 Plan 1 or Plan 2, or Microsoft Defender XDR, admins can decide whether users can report messages, calls, meetings or meeting participants. The meeting reporting page says users can report suspicious meetings in organisations with Microsoft Defender for Office 365 or Microsoft Defender XDR. The notice adds that detailed reported-meeting submissions in the Microsoft Defender portal are for those same licences.
+Microsoft's page on Teams user reporting states that, in organisations with Microsoft Defender for Office 365 Plan 1 or Plan 2, or Microsoft Defender XDR, admins can decide whether users can report messages, calls, meetings or meeting participants. The meeting reporting page says users can report suspicious meetings in organisations with Microsoft Defender for Office 365 or Microsoft Defender XDR. The notice adds that detailed reported-meeting submissions in the Microsoft Defender portal are for those same licences. Microsoft's page on Defender for Office 365 support for Teams lists user-reported Teams items (messages, calls, meetings and meeting participants) as a feature of both Plan 1 and Plan 2.
 
 Which licence a tenant needs to see meeting reports in the Teams admin center is not stated. No price, meter or cap for meeting reporting is published at the time of writing (November 2026). The practical cost is analyst time to triage reports and the effort of updating user guidance and incident response documentation.
 
@@ -247,10 +254,4 @@ No supported command for changing the built-in alert policies that reported meet
 risk: Medium. The option is on by default and, when reports go to Microsoft, copies meeting and participant metadata for review; Microsoft documents a Teams setting, a Defender destination setting and a PowerShell parameter that cover it.
 cost: Low. Microsoft's pages tie meeting reporting to Defender for Office 365 Plan 1 or Plan 2, or Defender XDR, and publish no separate price or meter for it; the known cost is triage time.
 impact: High. Microsoft's notice says the capability is enabled by default, so eligible users on supported clients see Report a concern in meetings without any admin action; reporting needs an online Teams mailbox.
--->
-
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.model / licensing: The licensing model is unknown, meaning Microsoft has not yet published it. | Found: Microsoft Defender for Office 365 Plan 1 provides the following extra Teams protection features: Report Teams items: Users can report Teams messages, calls, meetings, or meeting participants as malicious or not malicious. | Fix: Set licensing.model to "included". Start licensing.notes with "Meeting and participant reporting is included in Microsoft Defender for Office 365 Plan 1 and Plan 2." Cite https://learn.microsoft.com/defender-office-365/mdo-support-teams-about, whose feature table lists user-reported meetings and participants in both plans. Retain the separately qualified uncertainty about Teams admin center access without Defender. | Source: https://learn.microsoft.com/defender-office-365/mdo-support-teams-about
 -->

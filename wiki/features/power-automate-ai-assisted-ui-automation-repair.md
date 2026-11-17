@@ -49,9 +49,6 @@ sources:
   - title: "Copilot in Power Automate for an environment (Power Platform admin center)"
     url: "https://learn.microsoft.com/power-automate/desktop-flows/ai-assisted-ui-automation-repair#how-to-turn-on-and-use-the-feature"
     kind: "learn"
-  - title: "Desktop flow repair at runtime (Power Platform admin center)"
-    url: "https://learn.microsoft.com/power-platform/admin/settings-features#desktop-flow-repair-at-runtime-configuration-preview"
-    kind: "learn"
 videos: []
 related: []
 controls:
@@ -62,14 +59,6 @@ controls:
       path: "Copilot > Settings > Power Automate > Copilot in Power Automate > On"
       docs: "https://learn.microsoft.com/power-automate/desktop-flows/ai-assisted-ui-automation-repair#how-to-turn-on-and-use-the-feature"
     api: null
-  - governs: "Desktop flow repair at runtime"
-    scope: "environment"
-    ui:
-      surface: "Power Platform admin center"
-      path: "Manage > Environments > environment > Settings > Product > Features > Desktop flow repair at runtime configuration"
-      docs: "https://learn.microsoft.com/power-platform/admin/settings-features#desktop-flow-repair-at-runtime-configuration-preview"
-    api: null
-    note: "Preview. Governs the earlier Repair with Copilot capability."
   - governs: "Switch specific to AI-assisted repair in the designer debug run"
     scope: "environment"
     ui: null
@@ -93,19 +82,23 @@ changes:
     note: "Correction: saved-selector wording narrowed to what Learn states, pilot and review guidance reworded, and the feedback control row removed from the table (its prose is kept)."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 51 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 4
+  - date: "2026-11-17"
+    note: "Correction: Why it matters and the risk rationale now cite the Copilot in Power Automate overview for the initial state, and the Desktop flow repair at runtime row is removed from the controls table."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 53 statements confirmed"
+version: 5
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-17"
-  version: 4
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 51
-  confirmed: 49
+  claims: 53
+  confirmed: 53
   unconfirmed: 0
-  contradicted: 2
-  attempts: 3
-  hash: "7414286efd4cdb5f326485631fcb7ac3"
+  contradicted: 0
+  attempts: 0
+  hash: "51416a32b9051eabeb127b2f2aee8aa6"
 ---
 
 ## What's changing
@@ -120,7 +113,7 @@ The roadmap lists a preview from July CY2026 and general availability in March C
 
 Broken selectors are a common cause of failed UI automation after an application or web page changes. A guided repair loop at design time can reduce the support effort for maintaining desktop flows.
 
-For service owners the question is data handling and consistency: the feature analyses the failing selector and a newly captured selector, so confirm the data-handling implications before allowing sensitive captures. Selector changes are permanently saved when the maker saves the flow. Microsoft has not stated what happens on arrival for the shared Copilot in Power Automate setting that the feature requires.
+For service owners the question is data handling and consistency: the feature analyses the failing selector and a newly captured selector, so confirm the data-handling implications before allowing sensitive captures. Selector changes are permanently saved when the maker saves the flow. The repair article does not specify the initial state of its required setting; the broader Copilot in Power Automate overview says Copilot is on by default, but describes tenant-level rather than environment-level controls.
 
 ## Risk assessment
 
@@ -167,7 +160,6 @@ Makers building UI and browser automation in Power Automate for desktop, version
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Copilot in Power Automate for an environment</strong><br><small>Environment</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Copilot › Settings › Power Automate › Copilot in Power Automate › On <a href="https://learn.microsoft.com/power-automate/desktop-flows/ai-assisted-ui-automation-repair#how-to-turn-on-and-use-the-feature" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Desktop flow repair at runtime</strong><br><small>Environment</small><br><small class="controls__note">Preview. Governs the earlier Repair with Copilot capability.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › Desktop flow repair at runtime configuration <a href="https://learn.microsoft.com/power-platform/admin/settings-features#desktop-flow-repair-at-runtime-configuration-preview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Switch specific to AI-assisted repair in the designer debug run</strong><br><small>Environment</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -187,14 +179,7 @@ For Copilot feedback, the desktop Copilot page names a "Copilot feedback" tenant
 - Is a dedicated admin control planned beyond the Copilot in Power Automate setting?
 
 <!-- rationale
-risk: Low. The repair runs in the maker's design session, needs a person to capture and accept each selector, and needs the shared Copilot in Power Automate setting; Microsoft documents no initial state for it.
+risk: Low. The repair runs in the maker's design session, needs a person to capture and accept each selector, and needs the shared Copilot in Power Automate setting; the repair article does not specify its initial state.
 cost: Low. The preview is documented as available for organization premium accounts at no extra cost, so the known cost is maker time. Pricing for general availability is not yet published.
 impact: Low. It affects makers who build UI and browser automation in desktop flows, not end users or flow consumers.
--->
-
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Why it matters; rationale: risk / default: Microsoft has not stated an initial state for the shared Copilot in Power Automate setting. | Found: If a region has GPUs (UK, Australia, US, India), Microsoft turns on Copilot by default. | Fix: Replace the final sentence of Why it matters with: 'The repair article does not specify the initial state of its required setting; the broader Copilot in Power Automate overview says Copilot is on by default, but describes tenant-level rather than environment-level controls.' Replace 'Microsoft documents no initial state for it' in the risk rationale with 'the repair article does not specify its initial state'. Keep defaultState unknown for the designer feature rather than inferring its arrival behaviour from the broader overview. | Source: https://learn.microsoft.com/power-automate/copilot-overview#enable-or-disable-copilot-in-power-automate
-- [contradicted, blocker] controls[1].api; Governance controls table / absence: API automation for Desktop flow repair at runtime is not yet documented. | Found: Writable columns/attributes ... LogicalName | isdesktopflowruntimerepairattendedenabled ... LogicalName | isdesktopflowruntimerepairunattendedenabled | Fix: Remove the Desktop flow repair at runtime row from controls and the rendered table rather than reporting its automation as undocumented. Microsoft documents writable organization columns isdesktopflowruntimerepairattendedenabled and isdesktopflowruntimerepairunattendedenabled at https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/organization#writable-columns-attributes; the organization Web API reference documents GET and PATCH at https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/organization?view=dataverse-latest. The existing prose may continue distinguishing this earlier runtime capability from designer repair. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/organization#writable-columns-attributes
 -->
