@@ -34,6 +34,12 @@ sources:
   - title: "Get ready to debug"
     url: "https://learn.microsoft.com/power-automate/guidance/rpa-sap-playbook/getting-ready-to-debug"
     kind: "learn"
+  - title: "Power Automate v2 schema"
+    url: "https://learn.microsoft.com/power-automate/desktop-flows/schema"
+    kind: "learn"
+  - title: "Secure your data"
+    url: "https://learn.microsoft.com/power-automate/guidance/desktop-flow-coding-guidelines/secure-your-data"
+    kind: "learn"
 videos: []
 related: ["power-automate-ai-assisted-ui-automation-repair"]
 controls:
@@ -59,19 +65,23 @@ changes:
     note: "First briefing for this item: documents the Edit flow variable default value and the Run from here with default values command."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 43 statements contradicted, 4 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-17"
+    note: "Correction: replaced the storage-absence statements with the documented v2 schema fact, removed unsupported security and write-access assurances, reworded the admin-control statements and dropped the masking checklist bullet."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 34 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-17"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 43
-  confirmed: 35
-  unconfirmed: 4
-  contradicted: 4
-  attempts: 1
-  hash: "1b135a127acf07c09b85a28a5e4d24f7"
+  claims: 34
+  confirmed: 33
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 2
+  hash: "682667a6b3afb10eaf9e99944be3ec75"
 ---
 
 ## What's changing
@@ -86,21 +96,21 @@ The roadmap record shows status Launched, target date June CY2026, release phase
 
 ## Why it matters
 
-This is a maker productivity change with a small governance footprint. Nothing reaches users, data or spend without a maker choosing to use it, and Microsoft has not described an administrator switch for it, so there is nothing for an administrator to approve or block.
+This is a maker productivity change with a small governance footprint. Nothing reaches users, data or spend without a maker choosing to use it, and Microsoft has not described an administrator switch for it, so no feature-specific administrator enablement is documented.
 
-The point for service owners is where the values end up. Learn says default values on sensitive input variables are not protected in the action modals and the flow definition in Dataverse, so makers should not use real credentials or personal data as debug defaults. Microsoft has not stated whether flow-variable defaults set for this feature are stored with the flow definition.
+The point for service owners is where the values end up. Learn says default values on sensitive input variables are not protected in the action modals and the flow definition in Dataverse, so makers should not use real credentials or personal data as debug defaults. For desktop flows saved in Dataverse using v2 schema, Microsoft documents variable default values as contributing to the stored flow definition.
 
 ## Risk assessment
 
 **Data exposure**
-- A maker who types a real password, PIN or customer value as a default may leave it in the saved flow. Learn says default values of sensitive input variables are not protected in the action modals and the flow definition in Dataverse; Microsoft has not said how flow-variable defaults set for this feature are stored.
+- A maker who types a real password, PIN or customer value as a default may leave it in the saved flow. Learn says default values of sensitive input variables are not protected in the action modals and the flow definition in Dataverse. For desktop flows saved in Dataverse using v2 schema, Microsoft documents variable default values as contributing to the stored flow definition.
 - Marking a variable as sensitive masks its value in the designer UI, which Learn describes as basic protection against someone looking at the screen.
 
 **Security & identity**
-- No change documented: the feature does not add a connection, identity or permission. Who can open and edit a desktop flow is governed by the existing sharing of the flow.
+- The roadmap describes a designer-side debugging capability. Who can open and edit a desktop flow is governed by the existing sharing of the flow.
 
 **Autonomy & actions**
-- Run from here with default values starts a debug run in the maker's designer. The actions after the chosen step still run against real systems, so a test that starts mid-flow can still write to them.
+- Run from here with default values starts a debug run in the maker's designer. Before testing mid-flow, confirm which systems the remaining actions target and whether those actions can write data.
 
 **Change & support**
 - Makers get a faster way to test branches. A default left on a variable could mask a missing input; the roadmap says defaults apply only to debug runs, and a Learn walkthrough elsewhere tells makers to delete default values before leaving the authoring experience.
@@ -124,7 +134,6 @@ The indirect cost is maker time to learn the commands and, where makers use sens
 
 ### Before rollout
 - Tell makers that default values are for debugging, and agree what may be used as one: use test data, not production credentials or personal data.
-- Check that makers know to mark variables holding secrets as sensitive in the **Edit flow variable** dialog.
 
 ### At rollout
 - Share the **Run from here with default values** command (Alt+F5) with makers who maintain complex desktop flows.
@@ -146,13 +155,13 @@ The indirect cost is maker time to learn the commands and, where makers use sens
 </tbody>
 </table>
 
-Both rows are maker-side. Microsoft Learn documents no tenant or environment setting that turns the feature off at the time of writing (November 2026), so the only brake is the maker's own choice to set a default value; the roadmap says clearing the default value restores standard handling.
+The documented default-value setting is maker-side; the second row records the absence of a dedicated tenant or environment switch. Microsoft Learn documents no tenant or environment setting that turns the feature off at the time of writing (November 2026), so the documented feature-specific choice is the maker setting a default value; the roadmap says clearing the default value restores standard handling.
 
 Sensitive-variable masking is a separate maker setting on the same page and does not make a default value safe to store: see the risk assessment.
 
 ## Open questions
 
-- Are default values set on flow variables stored in the flow definition in Dataverse, and are they protected when the variable is marked as sensitive? Watch the Manage variables page.
+- Are default values set on flow variables protected when the variable is marked as sensitive? Learn says default values of sensitive input variables are not protected in the action modals and the flow definition in Dataverse. Watch the Manage variables page.
 - Which minimum Power Automate for desktop version includes **Run from here with default values**? Microsoft Learn names none.
 - Will Microsoft add an environment or tenant setting to turn the feature off? None is documented at the time of writing (November 2026).
 - Does the roadmap's platform label Web mean anything for the designer, which Learn describes in Power Automate for desktop?
@@ -166,14 +175,5 @@ impact: Low. Only makers who build and debug desktop flows in the designer notic
 <!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Why it matters; Risk assessment: Data exposure; Open questions / absence: Microsoft has not stated whether flow-variable defaults are stored with the flow definition in Dataverse. | Found: The limit applies to the definition of the desktop flow saved in Dataverse, which can't exceed 16M characters. The issue can occur with a large desktop flow, such as when actions have large property values or variables have large default values. | Fix: Replace the storage-absence statements with: 'For desktop flows saved in Dataverse using v2 schema, Microsoft documents variable default values as contributing to the stored flow definition.' Cite https://learn.microsoft.com/power-automate/desktop-flows/schema. Narrow the open question to protection of flow-variable debug defaults when marked sensitive. | Source: https://learn.microsoft.com/power-automate/desktop-flows/schema
-- [unsupported, major] Risk assessment: Security & identity / behaviour: The feature does not add a connection. | Found: Searched: "Run from here with default values" license permission connection storage. Opened manage-variables, debugging-flow and developer/desktop-flow-public-apis; none explicitly states this connection assurance. | Fix: Remove 'connection' from the assurance, or replace the whole sentence with 'The roadmap describes a designer-side debugging capability.'
-- [unsupported, major] Risk assessment: Security & identity / behaviour: The feature does not add an identity. | Found: Searched: "Run from here with default values" license permission connection storage. Opened manage-variables, debugging-flow and developer/desktop-flow-public-apis; no passage specifies an unchanged identity model for this feature. | Fix: Remove 'identity' from the assurance, or replace the whole sentence with 'The roadmap describes a designer-side debugging capability.'
-- [unsupported, blocker] Risk assessment: Security & identity / role: The feature does not add a permission. | Found: Searched: "Run from here with default values" license permission connection storage. Opened manage-variables, governance and developer/desktop-flow-public-apis; no passage states this feature needs no additional permissions. | Fix: Remove the assurance about permissions; replace the whole sentence with 'The roadmap describes a designer-side debugging capability.'
-- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: The actions after the chosen step still run against real systems and can write to them. | Found: Searched: Power Automate desktop debug run actions real data test environment updates production; "Power Automate" "debugging" "production" "data". Opened manage-variables and debugging-flow; neither explicitly describes target-system writes for this command. | Fix: Replace the sentence with advice: 'Before testing mid-flow, confirm which systems the remaining actions target and whether those actions can write data.'
-- [contradicted, blocker] Governance controls / consistency: Both controls rows are maker-side. | Found: Both rows are maker-side. / governs: "Tenant or environment switch for variable default values in debug runs"; scope: "tenant" | Fix: Replace 'Both rows are maker-side.' with 'The documented default-value setting is maker-side; the second row records the absence of a dedicated tenant or environment switch.'
-- [contradicted, blocker] Governance controls; Why it matters / applicability: The maker's choice is the only brake and there is nothing for an administrator to approve or block. | Found: To restrict access to Power Automate for desktop on a workstation with Windows 10 or Windows 11, use AppLocker. | Fix: Replace 'so there is nothing for an administrator to approve or block' with 'so no feature-specific administrator enablement is documented'. Replace 'so the only brake is the maker's own choice to set a default value' with 'the documented feature-specific choice is the maker setting a default value'. | Source: https://learn.microsoft.com/power-automate/desktop-flows/governance
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Security & identity / applicability: Existing desktop-flow access controls govern who can open and edit a flow. | Found: To enable other makers to manage your flow and collaborate on it, share it with them with **Co-owner access**. | Fix: Add https://learn.microsoft.com/power-automate/guidance/desktop-flow-coding-guidelines/secure-your-data to sources for the existing flow-access claim. | Source: https://learn.microsoft.com/power-automate/guidance/desktop-flow-coding-guidelines/secure-your-data
-- [contradicted, minor] Governance guidance: Before rollout; controls / consistency: The checklist tells readers to check sensitive-variable masking, but the controls table has no masking row. | Found: Check that makers know to mark variables holding secrets as sensitive in the **Edit flow variable** dialog. / Controls rows cover variable defaults and an undocumented tenant or environment switch. | Fix: Remove the checklist bullet 'Check that makers know to mark variables holding secrets as sensitive in the **Edit flow variable** dialog.' The risk assessment can retain its documented masking explanation.
+- [contradicted, blocker] front matter: licensing.model and licensing.notes; Cost and licensing / licensing: The applicable licensing model is unknown and whether a separate licence applies is Not yet published. | Found: The Power Automate Free license includes creating and running cloud flows (without sharing), as well as authoring and running desktop flows locally (attended). Connector usage is limited to standard connectors only. | Fix: Set licensing.model to included. Replace the unpublished-licensing statements and notes with: 'For local authoring and attended execution, Power Automate Free includes authoring and running desktop flows locally; connector usage is limited to standard connectors. Free users cannot share flows.' Cite https://learn.microsoft.com/power-platform/admin/power-automate-licensing/types and https://learn.microsoft.com/power-platform/admin/power-automate-licensing/deep-dive-on-specific-license#power-automate-free-license. Keep the narrower observation that the feature page names no separate licence or meter; do not extend Free entitlements to sharing or premium connectors. | Source: https://learn.microsoft.com/power-platform/admin/power-automate-licensing/types
 -->

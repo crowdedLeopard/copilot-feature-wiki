@@ -17,8 +17,8 @@ impact: "medium"
 defaultState: "on"
 action: "act-now"
 licensing:
-  model: "unknown"
-  notes: "Not yet published for this feature. Learn says integrating Pulse results into the dashboard needs Viva Suite, Viva Workplace Analytics and Employee Feedback, Viva Glint or Microsoft Copilot; it names no licence for pre-built audiences."
+  model: "included"
+  notes: "Microsoft documents full Viva Pulse functionality for users with a Microsoft Copilot licence. Dashboard integration requires Viva Suite, Viva Workplace Analytics and Employee Feedback, Viva Glint or Microsoft Copilot. No separate price or meter for targeted audience surveys is documented at the time of writing (November 2026)."
 audiences: ["m365-admin","service-owner","change-adoption","compliance"]
 tags: ["viva-insights","viva-pulse","viva-feature-access-management","m365-copilot","adoption","privacy","admin-controls"]
 sources:
@@ -49,7 +49,7 @@ sources:
   - title: "Manage settings for the Microsoft Copilot Dashboard, Agent Dashboard, Consumption Dashboard, and Viva Insights web app"
     url: "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard"
     kind: "learn"
-  - title: "MC1446805"
+  - title: "MC1446805: (Updated) Microsoft Viva: Targeted audience surveys in the Copilot dashboard"
     url: "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1446805"
     kind: "message-center"
 videos: []
@@ -83,19 +83,23 @@ changes:
     note: "New briefing: leaders can survey all licensed or active Copilot users from the Copilot Dashboard; on by default, with a Viva feature access management switch."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 61 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-17"
+    note: "Corrected licensing to included (Copilot licence gives full Viva Pulse functionality per Learn) and removed the unverified claim that Pulse reports show surveys sent per leader."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 65 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-17"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 61
-  confirmed: 58
-  unconfirmed: 1
+  claims: 65
+  confirmed: 63
+  unconfirmed: 0
   contradicted: 2
-  attempts: 1
-  hash: "ad976a00c578426d5cd84e804ca85f86"
+  attempts: 0
+  hash: "e1c2d86bba67543317398363016fe1af"
 ---
 
 ## What's changing
@@ -134,9 +138,9 @@ If nobody acts, the notice says the feature is enabled by default for eligible o
 
 ## Cost and licensing
 
-Microsoft has not published a licence, price or meter specific to targeted audience surveys. The Learn page on measuring Copilot impact with Viva Pulse lists the subscription licences needed to integrate Pulse results into the dashboard: Viva Suite, Viva Workplace Analytics and Employee Feedback, Viva Glint, or Microsoft Copilot, and says Pulse results for the Copilot impact template are shared to the dashboard automatically under the Microsoft Copilot subscription.
+Microsoft documents full Viva Pulse functionality for users with a Microsoft Copilot licence ([Granular access controls for Viva Pulse](https://learn.microsoft.com/viva/pulse/setup-admin-access/granular-access-controls)). Dashboard integration requires Viva Suite, Viva Workplace Analytics and Employee Feedback, Viva Glint or Microsoft Copilot, and Pulse results for the Copilot impact template are shared to the dashboard automatically under the Microsoft Copilot subscription ([Measure Microsoft Copilot impact with Viva Pulse](https://learn.microsoft.com/viva/pulse/viva-integrations/measure-copilot-impact-in-your-organization)). No separate price or meter for targeted audience surveys is documented at the time of writing (November 2026).
 
-Microsoft's notice lists organisations with 50 or more Copilot licences as affected. The Copilot Dashboard page says tenants with at least 50 Copilot licences or at least 50 Viva Insights licences get survey data in the dashboard. The indirect cost is admin and communication time. Confirm the licence position for pre-built audiences before budgeting.
+Leader access and tenant eligibility still apply: Learn says other managers cannot use the pre-built groups, and Microsoft's notice lists organisations with 50 or more Copilot licences as affected. The Copilot Dashboard page says tenants with at least 50 Copilot licences or at least 50 Viva Insights licences get survey data in the dashboard. The indirect cost is admin and communication time.
 
 ## Scope
 
@@ -163,7 +167,7 @@ Microsoft's notice lists organisations with 50 or more Copilot licences as affec
 
 ### After rollout
 
-- Review which leaders have sent surveys and how often, using Viva Pulse reports; Microsoft documents no cap on frequency.
+- Review which leaders have sent surveys and how often; Microsoft documents no cap on frequency.
 - Re-check exclusion lists and role assignments after reorganisations, as audiences update from Viva Insights data.
 
 ## Governance controls
@@ -184,22 +188,21 @@ Turning the setting off hides the pre-built audience options but, per Learn, doe
 
 ## Open questions
 
-- Which licence, if any, does Microsoft require for pre-built audience surveys, and will a separate price be published? Watch the Learn page on measuring Copilot impact with Viva Pulse and MC1446805.
+- Will Microsoft publish a separate price or meter for pre-built audience surveys, given none is documented at the time of writing (November 2026)? Watch the Learn page on measuring Copilot impact with Viva Pulse and MC1446805.
 - What is the FeatureId for Targeted Audience Surveys in Get-VivaModuleFeature -ModuleId VivaPulse, and which admin centre path is authoritative (the notice or the Learn page)?
 - Will General Availability keep the late November 2026 date, given the October update moved it from late October, and when does Learn drop the Public Preview note?
 - Does a tenant-level policy also affect leaders who send surveys with manually chosen recipients? Learn says the standard Start new Pulse survey button still appears.
 
 <!-- rationale
 risk: Medium. Microsoft says the feature is on by default for eligible organisations and builds survey audiences from Copilot Dashboard data, but individual identities are not exposed and a Viva feature access management control can switch it off.
-cost: Low. The only cost the sources show is admin and communication time; Microsoft has not published a licence or meter specific to targeted audience surveys. Pulse results reach the dashboard only with a qualifying Viva or Copilot subscription.
+cost: Low. The only cost the sources show is admin and communication time; Microsoft documents no separate price or meter for targeted audience surveys at the time of writing (November 2026).
 impact: Medium. Leaders with the CxO or CxO-delegate role in the dashboard gain the option; employees in the Copilot licensed or active populations may start receiving Pulse surveys they did not receive before.
 -->
 
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.model, licensing.notes; Cost and licensing; Open questions; rationale: cost / licensing: The licensing model for this Viva Pulse capability is unknown because Microsoft has not published a licence for it. | Found: Users with a Microsoft Copilot license have access to the full functionality of Viva Pulse to gather real-time feedback from their teams. | Fix: Set licensing.model to included. Replace the unpublished-licence assertions and the licence question with: 'Microsoft documents full Viva Pulse functionality for users with a Microsoft Copilot licence. Dashboard integration requires Viva Suite, Viva Workplace Analytics and Employee Feedback, Viva Glint or Microsoft Copilot. No separate price or meter for targeted audience surveys is documented at the time of writing (November 2026).' Cite https://learn.microsoft.com/viva/pulse/setup-admin-access/granular-access-controls and retain the existing integration citation; keep the separate leader-access and tenant-eligibility qualifications. | Source: https://learn.microsoft.com/viva/pulse/setup-admin-access/granular-access-controls
-- [unsupported, blocker] Governance guidance: After rollout, first bullet / applicability: Administrators can use Viva Pulse reports to review which leaders sent surveys and how frequently each leader sent them. | Found: Searched: Viva Pulse admin reports view which authors sent surveys frequency report; Viva Pulse admin usage report total pulses sent author names sent requests. Opened tenant-admin-dashboard and export-pulse-data; aggregate usage and qualified exports do not document this report. | Fix: Delete 'using Viva Pulse reports' from the After rollout bullet, leaving the review as operational advice rather than attributing an unverified per-leader monitoring capability to Pulse reports.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance; controls / consistency: Every governance checklist control has a corresponding controls-table row. | Found: Checklist: 'Review who holds the CxO or CxO-delegate role'; 'Check that the Viva Insights exclusion list is current'. Table: pre-built audience access and minimum recipient count only. | Fix: The checklist steps for reviewing dashboard role assignments and checking the Viva Insights exclusion list have no matching controls-table rows. The table therefore does not cover those checklist controls.
+- [supported, minor] front matter: licensing.notes; Cost and licensing / licensing: Microsoft documents full Viva Pulse functionality for users with a Microsoft Copilot licence. | Found: Users with a Microsoft Copilot license have access to the full functionality of Viva Pulse to gather real-time feedback from their teams. | Fix: After this sentence, add: 'Microsoft documentation is inconsistent: the general Viva Pulse licensing requirements page lists Viva Suite, Viva Workplace Analytics and Employee Feedback, Viva Glint and the admin-led trial for the full premium experience, but does not list Microsoft Copilot.' Cite https://learn.microsoft.com/viva/pulse/get-started/licensing-requirements. | Source: https://learn.microsoft.com/viva/pulse/setup-admin-access/granular-access-controls
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: The checklist instructs readers to review and remove CxO or CxO-delegate assignments, but the controls table has no corresponding row. | Found: Checklist: 'Review who holds the CxO or CxO-delegate role ... and remove anyone who should not survey the whole Copilot population.' Table rows cover only pre-built audience availability and minimum recipient count. | Fix: Append to the role-review checklist item: 'Role-assignment management is not covered by the controls table.' Do not add a control row.
+- [contradicted, minor] Governance guidance: Before rollout and After rollout; Governance controls table / consistency: The checklist instructs readers to check the Viva Insights exclusion list, but the controls table has no corresponding row. | Found: Checklist: 'Check that the Viva Insights exclusion list is current'. Governance controls: 'The Viva Insights exclusion list ... is not a row here because no feature-specific path was read'. | Fix: Append to the exclusion-list checklist item: 'Exclusion-list management is not covered by the controls table.' Do not add a control row.
 -->

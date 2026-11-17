@@ -46,6 +46,12 @@ sources:
   - title: "Teams Rooms on Android shows events-style meeting interface"
     url: "https://learn.microsoft.com/troubleshoot/microsoftteams/teams-rooms-and-devices/incorrect-events-style-meeting-interface"
     kind: "learn"
+  - title: "Host or attend an event from a Microsoft Teams Room (MTR)"
+    url: "https://support.microsoft.com/office/host-or-attend-an-event-from-a-microsoft-teams-room-mtr-d7ff15e0-6516-4ebc-ae03-a2bdf58a4478"
+    kind: "docs"
+  - title: "Set-CsTeamsMeetingPolicy"
+    url: "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps"
+    kind: "learn"
 videos: []
 related: ["microsoft-teams-external-presenter-support-for-event-group-chat","meeting-policy"]
 controls:
@@ -57,8 +63,8 @@ controls:
       docs: "https://learn.microsoft.com/microsoftteams/manage-meeting-chat"
     api:
       kind: "powershell"
-      call: "Set-CsTeamsMeetingPolicy -Identity <policy name> -MeetingChatEnabledType Disabled"
-      docs: "https://learn.microsoft.com/microsoftteams/manage-meeting-chat"
+      call: "Set-CsTeamsMeetingPolicy -Identity <policy name> -MeetingChatEnabledType Disabled -LobbyChat Disabled"
+      docs: "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps"
     note: "General control: Microsoft has not confirmed it applies to the Event group or Planning group chat or to Teams Rooms on Android."
   - governs: "Whether a meeting or event uses a green room, which the notice says the chat tab depends on"
     scope: "other"
@@ -74,19 +80,23 @@ changes:
     note: "New briefing: Event group chat for Teams Rooms on Android presenters in webinars and structured meetings, rolling out from mid November 2026."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 50 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-17"
+    note: "Corrected after verification: cited Microsoft Support for the MTR console and view-only presenter chat, removed unsupported no-change claims, added LobbyChat Disabled to the policy command and aligned the cost and risk rationales."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 50 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-17"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 50
-  confirmed: 45
-  unconfirmed: 1
-  contradicted: 4
-  attempts: 1
-  hash: "5ccd542c210097537401da1f1799309d"
+  confirmed: 50
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "d037517f36231e0f8d4237d895f68280"
 ---
 
 ## What's changing
@@ -107,8 +117,8 @@ For service owners the work is communication and a decision: tell event organise
 
 **Data exposure**
 
-- The Event group or Planning group tab is a private chat for organisers, co-organisers and presenters, and the notice says people in the room get access to it. Anyone physically in the room can therefore read backstage messages through the room, which matters if presenters discuss attendees or unreleased content. Microsoft's release notes say the front-of-room display defaults to the attendee view for Webinar and Structured Meeting presenters; which screen shows this chat is not stated.
-- Whether people in the room can send messages as well as read them is not stated. Learn lists a related limit for Teams Rooms on Windows with a Pro license, which can't use chat when they join meetings as a presenter, and names no equivalent for Android.
+- The Event group or Planning group tab is a private chat for organisers, co-organisers and presenters, and the notice says people in the room get access to it. Anyone physically in the room can therefore read backstage messages through the room, which matters if presenters discuss attendees or unreleased content. Microsoft's release notes say the front-of-room display defaults to the attendee view for Webinar and Structured Meeting presenters; Microsoft Support documents event group chat on the MTR console ([Host or attend an event from a Microsoft Teams Room](https://support.microsoft.com/office/host-or-attend-an-event-from-a-microsoft-teams-room-mtr-d7ff15e0-6516-4ebc-ae03-a2bdf58a4478)).
+- Microsoft Support says event group chat is view-only for MTRs joined as presenters ([Host or attend an event from a Microsoft Teams Room](https://support.microsoft.com/office/host-or-attend-an-event-from-a-microsoft-teams-room-mtr-d7ff15e0-6516-4ebc-ae03-a2bdf58a4478)). Learn lists a related limit for Teams Rooms on Windows with a Pro license, which can't use chat when they join meetings as a presenter.
 
 **Security & identity**
 
@@ -131,7 +141,7 @@ No separate meter, price or cap is documented for this feature at the time of wr
 
 ## Scope
 
-- **Who**: organisers, co-organisers and presenters using a Teams Rooms on Android device in structured meetings and webinars, in Pro-licensed rooms. Attendees and other users see no change.
+- **Who**: organisers, co-organisers and presenters using a Teams Rooms on Android device in structured meetings and webinars, in Pro-licensed rooms.
 - **Prerequisite**: the notice says the meeting or event must have green room enabled.
 - **Platform and clouds**: Android; the roadmap item lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD. The notice's rollout schedule names Worldwide only.
 - **Rollout**: In development, targeted for November CY2026. The notice gives General Availability (Worldwide) as starting mid November 2026 and completing by late November 2026.
@@ -162,7 +172,7 @@ No separate meter, price or cap is documented for this feature at the time of wr
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether participants in meetings and events can read and send chat (Meeting chat policy)</strong><br><small>User</small><br><small class="controls__note">General control: Microsoft has not confirmed it applies to the Event group or Planning group chat or to Teams Rooms on Android.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting policies › policy › Meeting engagement › Meeting chat <a href="https://learn.microsoft.com/microsoftteams/manage-meeting-chat" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity &lt;policy name&gt; -MeetingChatEnabledType Disabled</code> <a href="https://learn.microsoft.com/microsoftteams/manage-meeting-chat" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether participants in meetings and events can read and send chat (Meeting chat policy)</strong><br><small>User</small><br><small class="controls__note">General control: Microsoft has not confirmed it applies to the Event group or Planning group chat or to Teams Rooms on Android.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting policies › policy › Meeting engagement › Meeting chat <a href="https://learn.microsoft.com/microsoftteams/manage-meeting-chat" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity &lt;policy name&gt; -MeetingChatEnabledType Disabled -LobbyChat Disabled</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether a meeting or event uses a green room, which the notice says the chat tab depends on</strong><br><small class="controls__note">Learn's Plan for Teams meetings page lists admins as having no control; organisers choose per meeting.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -174,24 +184,19 @@ The notice says no Teams admin center or Teams Pro Management portal configurati
 ## Open questions
 
 - Does the Meeting chat policy, or any other admin setting, govern the Event group and Planning group chat on Teams Rooms on Android? Watch the Manage chat in Microsoft Teams meetings page on Microsoft Learn.
-- Can people in a Teams Rooms on Android room send messages in the private chat, or only read it, given Learn's Windows Pro room limitation? Watch the Teams Rooms release notes for the Android build that adds this feature.
+- Can people in a Teams Rooms on Android room joined as an organiser or co-organiser send messages in the private chat? Watch the Teams Rooms release notes for the Android build that adds this feature.
 - Will the feature be available in GCC, GCC High and DoD, which the roadmap lists, when Learn says attendee chat is not available on those clouds for events optimized for large audiences? Watch Message center and the Manage chat for Teams events page.
 - Which Teams Rooms on Android build first includes chat for webinars and structured meetings? Learn currently lists the town hall version only.
 
 <!-- rationale
-risk: Low. The roadmap item and Microsoft's notice describe a chat tab for room presenters in meetings that already have a green room; no new data access or agent behaviour is described, and the one related admin control is the existing Meeting chat policy.
-cost: Low. The roadmap item says the feature is available in Teams Rooms Pro-licensed rooms and no separate meter is documented at the time of writing (November 2026), so the cost is the Teams Rooms Pro licence on any Android room that lacks one.
-impact: Low. Only people in a Teams Rooms on Android Pro room who join a green-room-enabled webinar or structured meeting as organiser, co-organiser or presenter will notice the extra chat tab; attendees and admins see no change.
+risk: Low. The roadmap item and Microsoft's notice describe a chat tab for room presenters in meetings that already have a green room; no agent behaviour is described, and the one related admin control is the existing Meeting chat policy.
+cost: Low. The feature is included for Teams Rooms Pro-licensed Android rooms; the expected indirect cost is admin time to brief organisers and room users.
+impact: Low. Only people in a Teams Rooms on Android Pro room who join a green-room-enabled webinar or structured meeting as organiser, co-organiser or presenter will notice the extra chat tab.
 -->
 
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Data exposure / absence: Microsoft has not stated which screen shows the private chat. | Found: Chat privately with other event organizers, co-organizers, and presenters from an MTR console during an event in the event group chat. | Fix: Replace 'which screen shows this chat is not stated' with 'Microsoft Support documents event group chat on the MTR console' and cite https://support.microsoft.com/office/host-or-attend-an-event-from-a-microsoft-teams-room-mtr-d7ff15e0-6516-4ebc-ae03-a2bdf58a4478. Do not infer whether the private chat also appears on the front display. | Source: https://support.microsoft.com/office/host-or-attend-an-event-from-a-microsoft-teams-room-mtr-d7ff15e0-6516-4ebc-ae03-a2bdf58a4478
-- [contradicted, blocker] Risk assessment: Data exposure; Open questions / absence: Whether room users can send private-chat messages as well as read them is not stated. | Found: The event group chat is view-only for MTRs joined as presenters. | Fix: Replace the unqualified uncertainty in Data exposure with 'Microsoft Support says event group chat is view-only for MTRs joined as presenters' and cite https://support.microsoft.com/office/host-or-attend-an-event-from-a-microsoft-teams-room-mtr-d7ff15e0-6516-4ebc-ae03-a2bdf58a4478. Narrow the corresponding open question to sending from rooms joined as organisers or co-organisers. | Source: https://support.microsoft.com/office/host-or-attend-an-event-from-a-microsoft-teams-room-mtr-d7ff15e0-6516-4ebc-ae03-a2bdf58a4478
-- [unsupported, major] Scope: Who; rationale: impact / behaviour: Attendees, administrators and all other users see no change. | Found: Searched: 'Teams Rooms on Android' 'chat' '574107' attendees. Read roadmap, notice, Rooms release notes and Host or attend an event from an MTR. They name intended room users but do not state that every other user's experience is unchanged. | Fix: Remove 'Attendees and other users see no change' from Scope and 'attendees and admins see no change' from the impact rationale. Retain the positively documented room-user scope.
-- [contradicted, blocker] front matter: cost; rationale: cost / consistency: The cost rating is low even though its rationale identifies purchasing Teams Rooms Pro licences as the deciding cost. | Found: cost: 'low'; rationale: 'the cost is the Teams Rooms Pro licence on any Android room that lacks one.' The scale defines low as 'indirect cost only: admin time, communications, training.' | Fix: Keep cost low only by replacing its rationale with 'Low. The feature is included for Teams Rooms Pro-licensed Android rooms; the expected indirect cost is admin time to brief organisers and room users.' This rates the change for its documented Pro-room audience rather than treating licence purchases as indirect cost.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].api; Governance controls table / command: Set-CsTeamsMeetingPolicy -Identity <policy name> -MeetingChatEnabledType Disabled turns off meeting chat. | Found: To turn off meeting chat for users with this assigned policy, run the following command: Set-CsTeamsMeetingPolicy -Identity <policy name> -MeetingChatEnabledType Disabled | Fix: The cited guide prints this command, but https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps says setting MeetingChatEnabledType to Disabled also requires LobbyChat Disabled. Replace the call in both places with 'Set-CsTeamsMeetingPolicy -Identity <policy name> -MeetingChatEnabledType Disabled -LobbyChat Disabled', use that reference as api.docs, and cite it. | Source: https://learn.microsoft.com/microsoftteams/manage-meeting-chat
-- [contradicted, minor] rationale: risk / consistency: The risk rationale says no new data access is described, while the body describes new room access to backstage messages. | Found: rationale: 'no new data access or agent behaviour is described'; Why it matters: 'it puts a backstage channel on a shared room device, and the people who read it are whoever is in the room.' | Fix: Remove 'new data access or' from the risk rationale. The remaining statement about no agent behaviour being described does not deny the newly available backstage-chat access.
+- [supported, minor] summary; What's changing; Scope; rationale: impact / record: Android Rooms acting as organisers, co-organisers or presenters in structured meetings or webinars gain access to the private Event Group chat. | Found: When a Teams Rooms on Android device acts as an organizer, co-organizer, or presenter in a structured meeting or webinar, you have access to the private chat for event management known as the Event Group. | Fix: Add this qualification in What's changing: "Learn's Plan for Teams events page still says only Teams Rooms on Windows with a Pro licence are officially supported to join meetings and events as presenters or attendees, conflicting with the Android support described by the roadmap and Android release notes." Cite https://learn.microsoft.com/microsoftteams/plan-events#reference, whose footnote states: "Only Microsoft Teams Rooms on Windows with a Pro license are officially supported to join meetings and events as a presenter or as an attendee."
+- [supported, minor] Risk assessment: Change & support / applicability: The events-chat page discusses town halls, so its large-audience chat limitations may not apply to this change. | Found: Chat in events with up to 1,000 attendees, such as webinars, uses the same experience as chat in Teams meetings. ... In events optimized for large audiences, such as town halls, the chat experience differs depending on the event role. | Fix: Replace "That page is about town halls, so it may not apply here; confirm before telling government-cloud users to expect the tab" with "That restriction appears under attendee meeting chat for events optimized for large audiences, rather than a statement about this Android presenter-chat feature; confirm before telling government-cloud users to expect the tab." The cited page also covers webinars, not just town halls. | Source: https://learn.microsoft.com/microsoftteams/manage-event-chat
 -->

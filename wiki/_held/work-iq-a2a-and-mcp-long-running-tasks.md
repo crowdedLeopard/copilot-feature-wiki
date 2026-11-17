@@ -113,18 +113,21 @@ changes:
     note: "First briefing for this roadmap item; Learn documents A2A task methods and Work IQ billing and policy controls, but not the long-running feature itself."
   - date: "2026-11-16"
     note: "Added the Graph API for spending policies and a consumption-monitoring row, and reported the differing Work IQ MCP and Copilot Studio write-operation defaults."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 80 statements contradicted, 1 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-16"
+  status: "held"
+  date: "2026-11-17"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 80
-  confirmed: 79
-  unconfirmed: 0
+  confirmed: 78
+  unconfirmed: 1
   contradicted: 1
-  attempts: 0
+  attempts: 1
+  hash: "865a145408d1518b13fda46de7beb8ec"
 ---
 
 ## What's changing
@@ -228,9 +231,12 @@ cost: Variable. Work IQ API use consumes Copilot Credits shared with other servi
 impact: Low. Developers and agent owners who call Work IQ over A2A or MCP notice it; end users only meet it through agents that adopt it.
 -->
 
-<!-- verifier-findings (2026-11-16, verified-with-gaps; checked by gpt-6.1-sol)
-The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [supported, minor] controls[3].note; Scope / role: The enablement guide requires a Global Administrator for one-time Work IQ setup. | Found: A user with Global Administrator role for the one-time Work IQ setup | Fix: Keep the role requirement for manual setup, but add that the cited MCP overview says the service principal is created automatically on first use; manual provisioning is needed when it does not yet exist, for example before configuring policy. Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/overview. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq
-- [supported, minor] controls[1].api; Governance controls table / command: POST https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies creates a spending policy. | Found: For a group-scoped policy, follow the safe-create sequence: create the policy disabled, link its audience with Add assigned group, and let the service enable it once its requirements are satisfied. | Fix: Extend the note to explain that the printed create call alone does not attach a group: create disabled, then use the reference page's Add assigned group operation. If supplying nonempty assignedGroups during creation instead, also request CopilotCostManagement-Assignment.ReadWrite.All. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-create
-- [contradicted, minor] Governance guidance: At rollout; Governance controls table / consistency: The checklist's Auto-apply new services and email-alert controls lack explicit table coverage. | Found: Checklist: "Turn off Auto-apply new services" and "Set per-user and policy limits and alert recipients". The spending-policy row describes limits and service selection, but not automatic service inclusion or alerts. | Fix: Add explicit coverage for automatic inclusion of new services and spending-threshold email alerts, either as rows or by expanding the spending-policy row. Use the existing spending-policy management source and its Select agents and services and Set limits and alerts sections.
+<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [unsupported, blocker] summary; Why it matters; rationale: impact / default: Developers opt in, and nothing needs switching on for tenants that do not build against Work IQ. | Found: Searched: "Work IQ" "long-running" tasks progress retention cancellation pricing default enable; "Work IQ" "long-running" enable disable tenant switch API default prerequisites. Opened A2A, MCP and Work IQ overviews and enable-work-iq; none states this feature's opt-in or arrival behaviour. | Fix: Remove 'Developers opt in' from the summary. Replace 'Nothing needs switching on for tenants that do not build against Work IQ' with 'Microsoft has not stated what happens on arrival for this capability'. Replace the impact rationale with 'Low. The roadmap lists the Developer platform; Microsoft has not stated what happens on arrival.' Keep defaultState as unknown.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[1].api; Governance controls table / command: POST https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies creates a spending policy. | Found: For a group-scoped policy, follow the safe-create sequence: create the policy disabled, link its audience with Add assigned group, and let the service enable it once its requirements are satisfied. | Fix: Append to the spending-policy note: 'For a group-scoped policy, create it disabled, then link its audience using Add assigned group as described in the cited reference. Supplying nonempty assignedGroups during creation additionally requires CopilotCostManagement-Assignment.ReadWrite.All.' The printed create call alone does not attach a group. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-create
+- [supported, minor] controls[3].note; Scope / role: The enablement guide lists Global Administrator for the one-time Work IQ setup. | Found: A user with Global Administrator role for the one-time Work IQ setup | Fix: Qualify the setup note and Scope sentence with: 'For manual setup, the enablement guide lists Global Administrator. The MCP overview says the service principal is created automatically on first use; manual provisioning is available when it does not yet exist, for example before configuring policy.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/overview. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq
+- [contradicted, minor] Governance guidance: At rollout; Governance controls table / consistency: The checklist's Auto-apply new services and email-alert controls are represented in the controls table. | Found: Checklist: 'Turn off Auto-apply new services' and 'Set per-user and policy limits and alert recipients'. Table: 'Credit limits and which services, including Work IQ API, a group can spend on'; no automatic-service-inclusion or alert control is described. | Fix: Remove the checklist bullet 'Turn off Auto-apply new services on policies that should not take on new services automatically.' In the following bullet, remove 'and alert recipients so a runaway task raises an email before credits are exhausted', leaving 'Set per-user and policy limits.' These checklist controls otherwise lack table coverage.
 -->

@@ -7,7 +7,7 @@ products: ["Microsoft Teams"]
 summary: "Teams will ask phone (PSTN) participants in one-to-one calls to press 1 or 2 before recording or transcription includes them, using the existing calling policy setting. No new setting; prepare users."
 status: "in-development"
 releasePhase: ["General Availability"]
-clouds: ["Worldwide (Standard Multi-Tenant)"]
+clouds: ["Worldwide (Standard Multi-Tenant)","GCC","GCC High","DoD"]
 platforms: ["Android","iOS","Mobile"]
 targetDate: "December CY2026"
 previewDate: null
@@ -20,7 +20,7 @@ licensing:
   model: "unknown"
   notes: "Not yet published for this capability. Neither the roadmap item nor Microsoft's notice MC1530950 names a licence or meter."
 audiences: ["m365-admin","service-owner","compliance","change-adoption"]
-tags: ["teams","policy","privacy","transcripts","auditing","powershell","mobile"]
+tags: ["teams","policy","privacy","transcripts","auditing","powershell","mobile","gcc","gcc-high","dod"]
 sources:
   - title: "Microsoft 365 Roadmap 577543"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=577543"
@@ -104,7 +104,7 @@ controls:
 confidence: "medium"
 created: "2026-11-16"
 updated: "2026-11-17"
-roadmapModified: "2026-10-23T21:59:27"
+roadmapModified: "2026-11-17T18:36:41"
 changes:
   - date: "2026-11-16"
     note: "First briefing for this item, based on roadmap item 577543 and Message Center post MC1530950."
@@ -118,19 +118,23 @@ changes:
     note: "Corrected the default state to on (automatic extension of the existing consent policy), shortened the audit-search path, and noted that the audit activities reference places recorded or transcribed calls under MeetingParticipantDetail."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 52 statements confirmed"
-version: 4
+  - date: "2026-11-17"
+    note: "Roadmap now lists GCC, GCC High and DoD alongside Worldwide; the notice's rollout schedule still names only Worldwide, so scope and open questions say so. Controls and guidance re-checked against Learn."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 55 statements not yet confirmed"
+version: 5
 verification:
-  status: "verified"
+  status: "verified-with-gaps"
   date: "2026-11-17"
-  version: 4
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 52
-  confirmed: 52
+  claims: 55
+  confirmed: 55
   unconfirmed: 0
   contradicted: 0
   attempts: 0
-  hash: "8c7106aeda4d8628f21c64e2bfad9f63"
+  hash: "394cd52356c9b29f41ca2292e4349be4"
 ---
 
 ## What's changing
@@ -139,9 +143,9 @@ Teams will let a person on the public switched telephone network (PSTN) consent 
 
 Microsoft's notice MC1530950 adds detail: the participant presses 1 to consent or 2 to decline, and the PSTN participant's audio is not included in the recording or transcript before consent is given. The capability uses the existing explicit consent setting in Teams calling policies and, according to the notice, introduces no new admin policy setting. The notice says that setting is disabled by default, and that compliance recording and the consent experience for meetings and group calls do not change.
 
-The roadmap item is In development, targeted for December CY2026, for General Availability in Worldwide (Standard Multi-Tenant), with Android, iOS and Mobile listed as platforms. The notice says rollout begins in early December 2026, gives 30 June 2027 as Microsoft's end date and sets no act-by date.
+The roadmap item is In development, targeted for December CY2026, for General Availability. It lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD, with Android, iOS and Mobile as platforms. The notice's rollout schedule lists General Availability (Worldwide) beginning in early December 2026, gives 30 June 2027 as Microsoft's end date and sets no act-by date.
 
-Microsoft Learn does not describe the keypad prompt at the time of writing (November 2026). The Learn page on call recording describes a Yes or No prompt in the Teams client for call participants, and says the `-ExplicitRecordingConsent` parameter manages recording consent for Teams 1:1 VoIP and PSTN calls. The Learn page on meeting consent lists "PSTN endpoints in 1:1 calls" among endpoints that are auto consented, so the keypad behaviour above is the roadmap's and the notice's description of a planned change.
+Microsoft Learn does not describe the keypad prompt for one-to-one calls at the time of writing (November 2026). The Learn page on call recording describes a Yes or No prompt in the Teams client for call participants, and says the `-ExplicitRecordingConsent` parameter manages recording consent for Teams 1:1 VoIP and PSTN calls. The Learn page on meeting consent lists "PSTN endpoints in 1:1 calls" among endpoints that are auto consented, so the keypad behaviour above is the roadmap's and the notice's description of a planned change.
 
 ## Why it matters
 
@@ -180,7 +184,7 @@ The notice describes the feature as using the existing explicit consent setting 
 
 Applies to one-to-one Teams calls with a PSTN participant where the calling policy requires explicit consent. The notice states it does not change compliance recording or the existing consent experience for meetings and group calls; Learn says group calls and Audio Conferencing are managed by the Teams meeting policy instead.
 
-The roadmap record lists Worldwide (Standard Multi-Tenant) and the platforms Android, iOS and Mobile. Other clouds are not listed on the record, which is not a statement that they are excluded. Rollout starts in early December 2026 according to the notice. The notice says the existing setting is disabled by default, so tenants that never enabled it are not described as seeing a prompt.
+The roadmap record lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD, and the platforms Android, iOS and Mobile. The notice's rollout schedule names only General Availability (Worldwide), beginning in early December 2026, so the date for the other clouds is not stated. The notice says the existing setting is disabled by default, so tenants that never enabled it are not described as seeing a prompt.
 
 ## Governance guidance
 
@@ -226,6 +230,7 @@ Cloud recording for calling and Transcription are separate existing settings. Th
 
 - Which Teams admin roles can edit the calling policy setting? Watch the Learn page Configure call recording, transcription, and captions in Teams.
 - Does the keypad prompt behave the same on every Teams client, given that the roadmap lists Android, iOS and Mobile? Watch the roadmap item and Message center.
+- When will the change reach GCC, GCC High and DoD, which the roadmap record lists while the notice's rollout schedule names only Worldwide? Watch the roadmap item and Message center.
 - Is the PSTN keypad consent choice recorded in the Purview audit log under the same filter as other call consent data?
 - Does the call queue limitation on explicit consent apply to this capability?
 - Will any licence apply? Watch Message center and the Teams Phone licensing pages.
@@ -234,4 +239,10 @@ Cloud recording for calling and Transcription are separate existing settings. Th
 risk: Low. The existing explicit consent setting is disabled by default and Microsoft's notice says no new setting is added, so only tenants that already require consent see different behaviour on one-to-one PSTN calls.
 cost: Low. The only cost the sources show is admin and communication time; no licence or meter is named for this capability and its licensing is not yet published.
 impact: Low. Only PSTN participants in one-to-one calls, and the Teams users who call them, in tenants whose calling policy already requires explicit consent, notice the change.
+-->
+
+<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] summary / behaviour: Teams will ask PSTN participants in one-to-one calls to press 1 or 2 before including them in recording or transcription. | Found: PSTN participants in applicable one-to-one Teams calls where explicit consent for recording or transcription is required | Fix: Replace the summary with: "Where explicit consent is required, PSTN callers in one-to-one Teams calls will press 1 or 2 before recording or transcription includes them. No new setting; prepare users."
 -->

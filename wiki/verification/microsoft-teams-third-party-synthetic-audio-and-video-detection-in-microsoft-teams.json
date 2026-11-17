@@ -1,0 +1,697 @@
+{
+  "slug": "microsoft-teams-third-party-synthetic-audio-and-video-detection-in-microsoft-teams",
+  "roadmapId": 573451,
+  "title": "Microsoft Teams: third-party synthetic audio and video detection in meetings",
+  "status": "held",
+  "date": "2026-11-17",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-17",
+    "reasons": [
+      "3 blocking findings (claims 35, 37, 42)"
+    ]
+  },
+  "counts": {
+    "claims": 52,
+    "confirmed": 46,
+    "unconfirmed": 1,
+    "contradicted": 5,
+    "blocker": 3,
+    "major": 1,
+    "minor": 4
+  },
+  "summary": "Hold: the monitoring guidance omits the Defender for Office 365 Plan 2 qualification, and the cited PowerShell reference describes the proposed blocking command as unblocking. The statement that Microsoft documents no organiser actions also conflicts with the cited provider listing, which describes rescanning a participant or ending a meeting.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "Teams plans to surface synthetic audio and video detection signals from certified third-party providers in meetings.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Third-party detection solutions analyze meeting media for signs of synthetic or manipulated audio and video and send detection signals to Teams, enabling integrated in-meeting experiences and controls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing; Why it matters; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The provider performs detection while Teams supplies integration and experiences for surfacing and acting on its signals.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Synthetic media detection is performed by the third-party provider. Microsoft Teams provides the platform integration and experiences for surfacing and acting on detection signals from supported providers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is November CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"November CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phases are General Availability and Targeted Release.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists only Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platforms are Desktop, Mac and Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Mac\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap record supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 7 October 2026 at 23:01:35.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-07T23:01:35\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1509787 was updated on 17 November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1509787",
+      "quote": "Updated November 17, 2026: We have updated the timeline.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Risk assessment: Change & support; front matter: changes",
+      "type": "record",
+      "claim": "Targeted Release Worldwide is scheduled to begin in late November 2026 instead of mid-November.",
+      "status": "supported",
+      "source": "Message Center post MC1509787",
+      "quote": "Targeted Release (Worldwide): We will begin rolling out in late November 2026 (previously mid-November) and expect to complete by late November 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing: rollout paragraph",
+      "type": "record",
+      "claim": "Targeted Release completes in late November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1509787",
+      "quote": "expect to complete by late November 2026.",
+      "severity": "minor",
+      "fix": "Replace 'and completes in late November 2026' with 'and is expected to complete by late November 2026' to preserve the notice's qualification."
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Risk assessment: Change & support; Open questions",
+      "type": "record",
+      "claim": "The notice supplies no General Availability rollout date and says Microsoft will communicate through Message center.",
+      "status": "supported",
+      "source": "Message Center post MC1509787",
+      "quote": "General Availability (Worldwide): We will communicate via Message center when we are ready to proceed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The supplied notice sets no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1509787",
+      "quote": "Act by: none",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "summary; Why it matters; Scope: Prerequisites; Governance guidance",
+      "type": "record",
+      "claim": "Microsoft asks administrators to select a supported provider, deploy its app through Manage apps, grant permissions and configure meeting policies.",
+      "status": "supported",
+      "source": "Message Center post MC1509787",
+      "quote": "administrators should evaluate and select a supported detection provider, deploy the provider app through Manage apps in the Teams admin center, grant required permissions, and configure applicable Teams meeting policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout; rationale: risk",
+      "type": "record",
+      "claim": "Certified providers may analyse meeting audio and video, and Microsoft advises reviewing their terms, data handling and compliance documentation before enabling.",
+      "status": "supported",
+      "source": "Message Center post MC1509787",
+      "quote": "Certified third-party providers may analyze meeting audio/video signals for synthetic media detection. Review provider terms, data handling, and compliance documentation before enabling.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: defaultState; Why it matters; rationale: impact",
+      "type": "default",
+      "claim": "Third-party detection requires administrator configuration rather than selecting a third-party provider automatically.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+      "quote": "The default value, the zero GUID (00000000-0000-0000-0000-000000000000), selects no provider when Microsoft Detection is unavailable, or Microsoft Detection when it is available. It does not select a third-party provider.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[0].api; What's changing; Governance guidance: At rollout; Governance controls",
+      "type": "command",
+      "claim": "The MicrosoftTeams command Set-CsTeamsMeetingPolicy -Identity <policy-name> -SyntheticMediaDetection Enabled -SyntheticMediaDetectionAppId <supported-provider-app-id> configures a supported provider.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+      "quote": "Set-CsTeamsMeetingPolicy -Identity \"SyntheticDetectionPolicy\" -SyntheticMediaDetection Enabled -SyntheticMediaDetectionAppId \"<supported-provider-app-id>\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[0].note; Scope: Users and policies; Governance controls; rationale: impact",
+      "type": "applicability",
+      "claim": "The detection setting governs meetings organised by users assigned that meeting policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+      "quote": "Controls whether synthetic audio/video detection is permitted for meetings organized by users assigned this policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[0].note; Governance controls",
+      "type": "command",
+      "claim": "Setting -SyntheticMediaDetection Disabled disables detection regardless of the configured provider.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+      "quote": "Disabled: Disables synthetic media detection regardless of the configured provider or other detection property values.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Disabling detection leaves the configured provider App ID unchanged.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+      "quote": "In Example 5, the Set-CsTeamsMeetingPolicy cmdlet disables synthetic audio/video detection for meetings organized by users assigned this policy, regardless of the configured detection provider. The SyntheticMediaDetectionAppId value is unchanged.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Governance controls",
+      "type": "default",
+      "claim": "SyntheticMediaDetection defaults to Enabled and permits detection when a configured provider is available.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+      "quote": "Enabled: Permits synthetic media detection when a configured detection provider is available. This is the default value. To configure a third-party provider, also set the SyntheticMediaDetectionAppId parameter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Governance controls; Open questions",
+      "type": "default",
+      "claim": "The provider App ID defaults to the zero GUID, selecting no third-party provider and referring to Microsoft Detection when available.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+      "quote": "The default value, the zero GUID (00000000-0000-0000-0000-000000000000), selects no provider when Microsoft Detection is unavailable, or Microsoft Detection when it is available. It does not select a third-party provider.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Successfully saving the policy does not validate provider support, and an incorrect App ID can prevent the bot joining.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+      "quote": "Successfully saving the policy does not guarantee that the App ID identifies a supported provider or that the detection bot can join meetings. An incorrect or unsupported App ID can prevent the detection bot from joining eligible meetings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "A wrong provider App ID fails quietly.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Teams SyntheticMediaDetectionAppId invalid unsupported App ID error silent logging. Opened Set-CsTeamsMeetingPolicy: it warns about successful saves and join failures, but does not state that failures produce no notification or diagnostic.",
+      "severity": "major",
+      "fix": "Replace 'A wrong value fails quietly, so test it.' with 'A successful save is not proof that the bot can join, so test it.'"
+    },
+    {
+      "n": 26,
+      "where": "What's changing: Graph beta reference",
+      "type": "behaviour",
+      "claim": "The Graph beta reportSyntheticMedia action lets certified detection bots admitted to a meeting flag a participant's synthetic stream.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/participant-reportsyntheticmedia?view=graph-rest-beta",
+      "quote": "This action is intended for certified third-party audio and video synthetic media detection bots admitted to the meeting call. The detection bot calls this action to flag a participant whose stream it identifies as AI-generated or synthetic media.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing: Graph beta reference",
+      "type": "behaviour",
+      "claim": "The reported detection is propagated to all participants through roster updates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/participant-reportsyntheticmedia?view=graph-rest-beta",
+      "quote": "The detection result is propagated to all participants via roster updates.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Security & identity; Scope: Prerequisites; Governance controls",
+      "type": "role",
+      "claim": "Reporting requires the meeting tenant administrator to grant the app the Calls.ReportSyntheticMedia.All application permission.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/participant-reportsyntheticmedia?view=graph-rest-beta",
+      "quote": "Third-party bots can invoke this action only when the meeting tenant administrator grants the app the Calls.ReportSyntheticMedia.All application permission.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Reality Defender's listing declares Calls.AccessMedia.All application access for real-time audio and video analysis.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-app-certification/teams/reality-defender-realmeeting",
+      "quote": "Calls.AccessMedia.All | application | The app is a meeting-recording bot, so it needs Graph to join Teams meetings and access the real-time audio and video media in order to run authenticity and deepfake analysis.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The Reality Defender listing is a publisher self-assessment whose accuracy Microsoft does not guarantee.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-app-certification/teams/reality-defender-realmeeting",
+      "quote": "The information on this page is based on a self-assessment report provided by the app developer on the security, compliance, and data handling practices followed by this app. Microsoft makes no guarantees regarding the accuracy of the information.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing: provider certification pages",
+      "type": "behaviour",
+      "claim": "Pindrop Pulse has a Microsoft 365 App Certification listing, alongside the cited Reality Defender listing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-app-certification/teams/pindrop-security-inc-pulse",
+      "quote": "App name | Pindrop Pulse | ID | WA200009518 | Office 365 clients supported | Microsoft Teams | Partner company name | Pindrop Security, Inc.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/microsoft-365-app-certification/teams/pindrop-security-inc-pulse to sources, or remove 'and Pindrop Pulse' from the sentence."
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "SyntheticMediaDetectionEvents is a Defender advanced hunting table populated from Defender for Office 365 records.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/advanced-hunting-synthetic-media-detection-events",
+      "quote": "This advanced hunting table is populated by records from Microsoft Defender for Office 365.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "The table has data only for an approved engine, including GetReal, Pindrop, Reality Defender and Resemble AI.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/advanced-hunting-synthetic-media-detection-events",
+      "quote": "This table contains data only if you're using an approved detection engine: Microsoft or a third-party engine (GetReal, Pindrop, Reality Defender, or Resemble AI).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Detection records can identify the flagged user and the meeting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/advanced-hunting-synthetic-media-detection-events",
+      "quote": "DetectedUserDisplayName | string | Display name of the user flagged as using synthetic media | SourceContextName | string | Name of the source (for example, the meeting, file, or email name)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Governance guidance: After rollout",
+      "type": "licensing",
+      "claim": "Deploying Defender for Office 365 is the stated prerequisite for reviewing SyntheticMediaDetectionEvents.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/defender-office-365/mdo-support-teams-about",
+      "quote": "Microsoft 365 E5 and Defender for Office 365 Plan 2 extend Teams protection with a set of extra capabilities designed to disrupt the attack chain:",
+      "severity": "blocker",
+      "fix": "Replace the monitoring bullet with 'Review SyntheticMediaDetectionEvents in Defender advanced hunting if Microsoft Defender for Office 365 Plan 2 is licensed and deployed and an approved detection engine is in use.' Cite https://learn.microsoft.com/defender-office-365/mdo-support-teams-about. Its feature matrix assigns synthetic-media hunting to Plan 2, not Plan 1; this does not establish a licence requirement for enabling third-party detection itself."
+    },
+    {
+      "n": 36,
+      "where": "controls[1].ui; Governance guidance: At rollout and After rollout",
+      "type": "admin-path",
+      "claim": "Teams admin center > Teams apps > Manage apps is the documented page for allowing or blocking an app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "Sign in to the Teams admin center and access Teams apps > Manage apps. Select the app on the Manage apps page and select Allow or Block option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[1].api; Governance controls: rendered app row",
+      "type": "command",
+      "claim": "Update-M365TeamsApp -Id <app-id> -IsBlocked $true is a verified PowerShell equivalent for blocking an app.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+      "quote": "PS C:\\> Update-M365TeamsApp -Id 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b -IsBlocked $true\nUnblocks Bookings app (App ID 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b).",
+      "severity": "blocker",
+      "fix": "Do not present this call as a verified blocking operation. Replace the automation cell's blocking prescription with 'Update-M365TeamsApp is documented, but its reference describes -IsBlocked $true as unblocking. Use Teams apps > Manage apps > app > Block until Microsoft clarifies the reference.' Retain the reference link; do not claim that automation is undocumented or invert the Boolean based on inference."
+    },
+    {
+      "n": 38,
+      "where": "controls[1].note; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Some apps are Blocked by publisher until administrators complete publisher configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "Before an admin allows an agent or app, it shows as Blocked by publisher in the admin center. Before you allow it for users, follow the publisher's guidance to configure it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[1].note; Governance controls",
+      "type": "applicability",
+      "claim": "App blocking is a general app control, not a documented replacement for provider permissions and meeting policy configuration.",
+      "status": "supported",
+      "source": "Message Center post MC1509787",
+      "quote": "Admins manage provider app deployment, permissions, and Teams meeting policy configuration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[0].ui; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No Teams admin center UI setting for SyntheticMediaDetection or SyntheticMediaDetectionAppId was documented in the searches.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"SyntheticMediaDetection\" \"admin center\"; Teams synthetic media detection SyntheticMediaDetection Teams admin center meeting policies licensing price. Opened Set-CsTeamsMeetingPolicy and meeting-policies-overview; results provided no feature-specific UI setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "What's changing: feature overview",
+      "type": "absence",
+      "claim": "No dedicated Microsoft Learn feature overview was found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"synthetic media detection\" Teams overview organizer participant controls. Read results and opened reportSyntheticMedia, Set-CsTeamsMeetingPolicy, SyntheticMediaDetectionEvents and the Reality Defender listing; no dedicated feature overview was returned.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Autonomy & actions; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not documented what actions a participant or organiser can take on a detection.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365-app-certification/teams/reality-defender-realmeeting",
+      "quote": "Hosts can rescan a participant or end the meeting if manipulation is detected.",
+      "severity": "blocker",
+      "fix": "Replace the broad absence sentence with 'Microsoft has not documented a provider-independent Teams response workflow; Reality Defender's publisher-attested listing says hosts can rescan a participant or end the meeting if manipulation is detected.' Keep the advice not to assume automatic ejection or blocking. Narrow the corresponding Open questions item to provider-independent Teams actions."
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "A user can be assigned only one meeting policy at a time.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-overview",
+      "quote": "A user can be assigned only one meeting policy and one events policy at a time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Scope: Users and policies",
+      "type": "default",
+      "claim": "Users receive the global meeting policy unless a custom policy is created and assigned.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-overview",
+      "quote": "Users get the global policy unless you create and assign a custom policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "front matter: licensing.model and notes; summary; Cost and licensing; Scope; Open questions",
+      "type": "absence",
+      "claim": "A Teams licence requirement for enabling third-party synthetic media detection has not been published in the sources found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams synthetic media detection licensing billing Teams Premium Defender Office 365 third party provider. Opened Teams Premium licensing, the policy/API references and mdo-support-teams-about; only the separate hunting capability had an explicit licence qualification.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No Microsoft price for enabling this feature was published in the sources found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams synthetic media detection SyntheticMediaDetection Teams admin center meeting policies licensing price; \"synthetic media detection\" \"licensing\" \"third-party\". Opened Teams Premium licensing, purchase-third-party-apps and the feature references; no feature price found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No meter for this detection feature was documented in the sources found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams synthetic media detection licensing billing Teams Premium Defender Office 365 third party provider. Opened Teams Premium licensing, purchase-third-party-apps, reportSyntheticMedia and Set-CsTeamsMeetingPolicy; no feature meter found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The Microsoft sources read do not state the certified providers' fees.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams synthetic media detection licensing billing Teams Premium Defender Office 365 third party provider. Opened purchase-third-party-apps and Reality Defender's listing; read Pindrop listing excerpts. None stated provider fees.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance controls; Open questions: administrator role",
+      "type": "absence",
+      "claim": "The two cited cmdlet reference pages do not specify the administrator role required to run them.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched the fetched Set-CsTeamsMeetingPolicy reference for role; read Update-M365TeamsApp in full. Neither reference specifies a required administrator role. This is narrower than claiming no role is documented elsewhere.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "Providers are separate vendors with their own terms.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-app-certification/teams/reality-defender-realmeeting",
+      "quote": "Partner company name | Reality Defender | App's Terms of Use | https://www.realitydefender.com/t-c/general-terms-of-use",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "front matter: risk; rationale: risk",
+      "type": "consistency",
+      "claim": "Medium risk fits a change whose third-party data analysis starts only after administrators opt in.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "defaultState: \"admin-opt-in\"; risk: \"medium\"; rationale: 'A third-party detection bot analyses live meeting audio and video once an administrator enables it'.",
+      "severity": "minor",
+      "fix": "Use risk 'low' and the rationale 'Low. Third-party detection does not start until administrators configure a provider; review its media access and data handling before opting in.' The assessment scale defines low to include nothing happening until an admin opts in."
+    },
+    {
+      "n": 52,
+      "where": "Governance guidance; Governance controls",
+      "type": "consistency",
+      "claim": "Every control the governance checklist asks administrators to set or review appears in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: 'Grant only the permissions the provider needs'; 'assign it to pilot users'; 'Review SyntheticMediaDetectionEvents'. Table: detection policy parameters and provider app allow/block only.",
+      "severity": "minor",
+      "fix": "The checklist steps for granting application permissions, assigning the pilot meeting policy and reviewing detection events have no corresponding controls-table rows. Do not treat the two existing rows as documenting those operations."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-17T20:02:41.174Z",
+    "summary": {
+      "links": 9,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=573451",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1509787",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/participant-reportsyntheticmedia?view=graph-rest-beta",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/defender-xdr/advanced-hunting-synthetic-media-detection-events",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365-app-certification/teams/reality-defender-realmeeting",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/manage-apps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/meeting-policies-overview",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether detection is permitted and which provider a meeting policy uses",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+        "reachable": true,
+        "token": "Set-CsTeamsMeetingPolicy",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether the provider's Teams app is allowed or blocked in the tenant",
+        "docs": "https://learn.microsoft.com/microsoftteams/manage-apps",
+        "reachable": true,
+        "segments": [
+          "Teams apps",
+          "Manage apps"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether the provider's Teams app is allowed or blocked in the tenant",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+        "reachable": true,
+        "token": "Update-M365TeamsApp",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

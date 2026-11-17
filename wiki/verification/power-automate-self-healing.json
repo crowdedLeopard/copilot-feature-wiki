@@ -1,0 +1,846 @@
+{
+  "slug": "power-automate-self-healing",
+  "roadmapId": 579906,
+  "title": "Power Automate: self-healing repairs desktop flow selector failures with AI",
+  "status": "held",
+  "date": "2026-11-17",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-17",
+    "reasons": [
+      "1 blocking finding (claim 52)"
+    ]
+  },
+  "counts": {
+    "claims": 63,
+    "confirmed": 62,
+    "unconfirmed": 0,
+    "contradicted": 1,
+    "blocker": 1,
+    "major": 0,
+    "minor": 3
+  },
+  "summary": "Hold: the briefing incorrectly leaves the EU Data Boundary position unresolved, although Microsoft's provider guidance explicitly excludes Claude models deployed in Power Platform from those commitments. The roadmap facts, preview licensing and cited control paths are otherwise supported, with minor qualifications noted.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing; Governance guidance",
+      "type": "record",
+      "claim": "The general availability target is March CY2027.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"March CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is April CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"April CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Desktop.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The roadmap release phases are General Availability and Preview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "title; front matter: products",
+      "type": "record",
+      "claim": "This roadmap item concerns Power Automate self-healing.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"title\": \"Power Automate: Self-healing\", \"products\": [\"Power Automate\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-11-17T18:36:41.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-17T18:36:41\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "Self-healing is an agentic AI fallback that improves desktop flow resilience by identifying the intended UI element and generating an alternative selector when a UI or web selector fails.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "When an existing selector can no longer locate the intended UI element, Power Automate for desktop uses AI to identify the element and generate an alternative selector.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Risk assessment: Autonomy & actions; Open questions",
+      "type": "record",
+      "claim": "General availability is planned to add a flow-level opt-in that logs a working alternative selector without applying the fix at runtime.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "the GA phase will additionally include a flow-level opt-in option to only log the alternative, working selector in case of an error, without applying the fix during runtime.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Risk assessment: Autonomy & actions; front matter: changes",
+      "type": "absence",
+      "claim": "Learn documents the preview rather than the planned flow-level log-only option.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"self-healing\" \"log-only\"; Power Automate desktop self-healing general availability licensing meter credits limit flow level log only tenant switch EU Data Boundary. Opened learn.microsoft.com/power-automate/desktop-flows/self-healing; no flow-level log-only instructions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Risk assessment: Change & support; front matter: changes",
+      "type": "behaviour",
+      "claim": "Learn describes self-healing as preview and its documentation as prerelease.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/self-healing",
+      "quote": "[This topic is prerelease documentation and is subject to change.]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing: error-handling order",
+      "type": "behaviour",
+      "claim": "For a supported action's Element not found error, retry policy runs before self-healing, followed by Set variable / Run subflow rules and then Continue flow run / Throw error.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/self-healing",
+      "quote": "Retry policy → Self-healing (preview) → 'Set variable / Run subflow' rules → Continue flow run / Throw error",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "A successful repair uses the generated selector at runtime and the flow continues.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/self-healing",
+      "quote": "If the repair succeeds, the flow continues. ... the AI-generated selector that was used at runtime.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing: unsuccessful repair",
+      "type": "behaviour",
+      "claim": "Normal error handling resumes when a self-healing repair fails.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/self-healing",
+      "quote": "If it fails, normal error handling resumes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing: runtime-only",
+      "type": "behaviour",
+      "claim": "Self-healing is a runtime-only capability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/self-healing",
+      "quote": "Self-healing is a runtime-only capability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing: run types",
+      "type": "behaviour",
+      "claim": "Self-healing applies to console runs and attended and unattended cloud runs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/self-healing",
+      "quote": "It applies to console and cloud (attended and unattended) runs",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing: designer runs",
+      "type": "behaviour",
+      "claim": "Self-healing has no effect during designer runs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/self-healing",
+      "quote": "has no effect during designer runs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Scope; controls[5].note",
+      "type": "behaviour",
+      "claim": "Only specific UI and browser automation actions interacting with a single UI element support self-healing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/self-healing",
+      "quote": "Is available only for specific UI and browser automation actions that interact with a single UI element (for example, clicking a button or selecting a checkbox).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing: supported errors",
+      "type": "behaviour",
+      "claim": "Self-healing covers Element not found and Window not found errors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/self-healing",
+      "quote": "Applies only to Element not found and Window not found errors. Element not found errors are captured in both primary and secondary screens, while Window not found errors are only captured when the window is found in the main screen.",
+      "severity": "minor",
+      "fix": "Add to the supported-errors sentence: 'Element not found errors are captured on primary and secondary screens; Window not found errors are captured only when the window is found on the main screen.'"
+    },
+    {
+      "n": 21,
+      "where": "Scope: excluded actions",
+      "type": "behaviour",
+      "claim": "Window or screen handling and multi-element actions such as Drag and drop UI element in window are excluded.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/self-healing",
+      "quote": "Doesn't apply to window or screen handling actions, or actions that interact with multiple elements like 'Drag and drop UI element in window'.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Scope; Governance guidance; controls[5].note",
+      "type": "availability",
+      "claim": "Self-healing requires Power Automate for desktop version 2.66 or higher.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/self-healing",
+      "quote": "You need version 2.66 or higher for Power Automate for desktop.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "Self-healing is not currently available in GCC, GCC High, DoD or sovereign clouds.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/self-healing",
+      "quote": "Self-healing in Power Automate for desktop isn't currently available for use in government clouds (GCC, GCC High, DoD) or sovereign clouds.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "front matter: licensing.model and notes; Cost and licensing; Scope; rationale: cost",
+      "type": "licensing",
+      "claim": "The preview is included for organization premium accounts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/self-healing",
+      "quote": "Self-healing in Power Automate for desktop is currently available for organization premium accounts at no extra cost.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "The preview carries no extra cost for those accounts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/self-healing",
+      "quote": "Self-healing in Power Automate for desktop is currently available for organization premium accounts at no extra cost.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "front matter: licensing.notes; Risk assessment; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Preview usage might be subject to service limits or changes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/self-healing",
+      "quote": "Usage might be subject to service limits or changes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Licensing for general availability has not yet been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Automate desktop self-healing general availability licensing meter credits limit flow level log only tenant switch EU Data Boundary; \"self-healing\" \"licensing\" \"credits\". Opened learn.microsoft.com/power-automate/desktop-flows/self-healing; only current preview terms.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Cost and licensing: meter, credit rate or cap",
+      "type": "absence",
+      "claim": "Learn publishes no self-healing-specific meter, credit rate or numerical cap.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Automate desktop self-healing general availability licensing meter credits limit flow level log only tenant switch EU Data Boundary; \"self-healing\" \"licensing\" \"credits\". Opened learn.microsoft.com/power-automate/desktop-flows/self-healing; no numerical meter, rate or cap.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Why it matters; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "Invoking self-healing captures a screenshot of the missing UI element.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/self-healing",
+      "quote": "Power Automate for desktop captures contextual information, including a screenshot of the missing UI element",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Why it matters; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "Invoking self-healing captures the parent window title.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/self-healing",
+      "quote": "the title of its parent window",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Why it matters; Risk assessment: Data exposure; Governance guidance; rationale: risk",
+      "type": "behaviour",
+      "claim": "Invoking self-healing captures the full desktop image.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/self-healing",
+      "quote": "and the full desktop image, so that it can identify the most likely intended element and recapture its selector.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Why it matters: models",
+      "type": "behaviour",
+      "claim": "GPT-4.1 mini and Claude Sonnet 4.5 currently power self-healing in combination.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/self-healing",
+      "quote": "Two large language models are currently used in combination to power self-healing, GPT‑4.1 mini and Claude Sonnet 4.5.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Why it matters: information sent to AI models",
+      "type": "behaviour",
+      "claim": "Self-healing uses information captured from the flow-running machine with generative AI to identify the intended element.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/self-healing",
+      "quote": "Power Automate for desktop captures contextual information, including a screenshot of the missing UI element, the title of its parent window, and the full desktop image, so that it can identify the most likely intended element and recapture its selector.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Why it matters; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The Power Automate portal does not currently show self-healing details in action-level run logs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/self-healing",
+      "quote": "The Power Automate portal doesn't currently surface self-healing details in the action-level logs of the flow runs where self-healing was invoked.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "The desktop flow run page shows a summary of that run's self-healing activity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/self-healing",
+      "quote": "In the desktop flow run page, you can find a summary of the self-healing activity that corresponds to that specific run",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The run-page summary includes details from up to three successful self-healing attempts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/self-healing",
+      "quote": "including details from up to three successful self-healing attempts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance; Governance controls: logs",
+      "type": "behaviour",
+      "claim": "Local action logs expose repair attempts and the runtime AI-generated selector through repairWithAIInfo.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/self-healing",
+      "quote": "In the action logs, a new property called `repairWithAIInfo` displays if a repair attempt was made, whether it was successful or failed, and the AI-generated selector that was used at runtime.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "behaviour",
+      "claim": "Self-healing can occasionally identify an unintended UI element.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/self-healing",
+      "quote": "Because self-healing uses generative AI, it might occasionally identify an unintended UI element.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[0].ui; Scope; Governance controls table",
+      "type": "admin-path",
+      "claim": "The self-healing prerequisite enables the tenant Anthropic subprocessor in Microsoft 365 admin center at Copilot > Settings > AI providers operating as Microsoft subprocessors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/self-healing",
+      "quote": "In Microsoft 365 admin center, go to Copilot > Settings, and then select AI providers operating as Microsoft subprocessors. Enable the Anthropic provider as a subprocessor for your organization.",
+      "severity": "minor",
+      "fix": "Keep the cited self-healing path, but add this note: 'The provider's own guidance also includes View all: Copilot > Settings > View all > AI providers operating as Microsoft subprocessors.' Cite https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor."
+    },
+    {
+      "n": 40,
+      "where": "controls[1].ui; Scope; Governance controls table",
+      "type": "admin-path",
+      "claim": "The self-healing prerequisite allows Anthropic at environment or environment-group level through Power Platform admin center > Copilot > Settings > Power Platform > External models.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/self-healing",
+      "quote": "In Power Platform admin center, go to Copilot > Settings, and then under the Power Platform section, expand External models and enable Anthropic as a subprocessor at environment or environment group level.",
+      "severity": "minor",
+      "fix": "Keep the self-healing path and add: 'The external models guidance also gives the environment path Manage > Environments > environment > Settings > Product > Features, where the model provider setting is turned On or Off.' Cite https://learn.microsoft.com/power-platform/admin/allow-llm-generative-responses."
+    },
+    {
+      "n": 41,
+      "where": "controls[2].ui; Governance guidance; Governance controls table",
+      "type": "admin-path",
+      "claim": "The environment-group Anthropic rule is at Power Platform admin center > Manage > Environment groups > environment group > Add rules > Power Platform Anthropic.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/allow-llm-generative-responses",
+      "quote": "In the Manage pane, select Environment groups, and then select the environment group. ... Select the Add rules tab. ... Select the checkbox for each rule that you want to add: Power Pages AI features, Power Platform Anthropic",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[3].ui; Scope; Governance guidance; Governance controls table",
+      "type": "admin-path",
+      "claim": "The self-healing data-movement prerequisite is at Power Platform admin center > Manage > Environments > environment > Generative AI features > Edit > Move data across regions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/self-healing",
+      "quote": "go to Manage > Environments. Select your environment so that you can see its details. In the Generative AI features card, select Edit. The Generative AI features pane is displayed. Review the terms of use and select the Move data across regions checkbox.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[4].ui; Scope; Governance guidance; Governance controls table",
+      "type": "admin-path",
+      "claim": "The required Copilot switch is at Power Platform admin center > Copilot > Settings > Power Automate > Copilot in Power Automate > On.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/self-healing",
+      "quote": "In Power Platform admin center, go to Copilot > Settings. Under the Power Automate section, select Copilot in Power Automate, then enable the On check box in the displayed pane.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[5].ui; Governance guidance; Governance controls table",
+      "type": "admin-path",
+      "claim": "Makers enable self-healing per supported action through action > Error handling > Self-healing (Preview) in Power Automate for desktop.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/self-healing",
+      "quote": "Enable self-healing per action: ... Select a supported UI or browser automation action in the flow designer. ... Open the Error handling settings. Turn on Self-healing (Preview).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[0].note; Scope; Governance controls",
+      "type": "role",
+      "claim": "A Microsoft 365 AI administrator enables the model provider.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/allow-llm-generative-responses",
+      "quote": "First, a Microsoft 365 AI administrator enables access to a model provider.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[1].note; Scope; Governance controls",
+      "type": "role",
+      "claim": "A Power Platform system admin allows the provider's models in an environment or environment group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/allow-llm-generative-responses",
+      "quote": "Then, a Power Platform system admin allows the provider's models in an environment or environment group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[2].note; Governance guidance; Governance controls",
+      "type": "licensing",
+      "claim": "Environments within an environment group must be managed environments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/allow-llm-generative-responses",
+      "quote": "Environments in an environment group must be managed environments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[2].note; Governance controls table",
+      "type": "admin-path",
+      "claim": "Apply changes publishes the configured rules to the group's environments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/allow-llm-generative-responses",
+      "quote": "To publish the rules to the environments in the group, select Apply changes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[3].note; Governance guidance; Governance controls table",
+      "type": "availability",
+      "claim": "The Move data across regions checkbox is not displayed or needed for US cloud regions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/self-healing",
+      "quote": "The Move data across regions checkbox isn't displayed or needed for US cloud regions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment: Security & identity; Governance guidance",
+      "type": "default",
+      "claim": "Microsoft enables Anthropic models by default for most commercial-cloud customers, excluding EU/EFTA and UK.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/self-healing",
+      "quote": "Microsoft enables Anthropic models by default for most customers in commercial cloud (excluding EU/EFTA and UK).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "The external models page excludes Anthropic models in Copilot Studio from EU Data Boundary commitments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/allow-llm-generative-responses",
+      "quote": "Anthropic models in Copilot Studio are currently excluded from EU Data Boundary commitments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not said whether the Anthropic EU Data Boundary exclusion applies to self-healing.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
+      "quote": "Claude models deployed in Microsoft offerings such as Microsoft Copilot, Researcher, Copilot Studio, Power Platform, and Copilot in Microsoft 365 apps are currently excluded from the EU Data Boundary, and when applicable, in-country processing commitments.",
+      "severity": "blocker",
+      "fix": "Replace 'Microsoft has not said whether that applies to self-healing' with 'Microsoft excludes Claude models deployed in Power Platform from the EU Data Boundary and, where applicable, in-country processing commitments; self-healing uses Claude Sonnet 4.5.' Cite https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor. In Before rollout, replace the EU Data Boundary applicability question with 'Review the documented EU Data Boundary exclusion for Claude models before enabling self-healing in regulated environments.' In Open questions, remove the EU Data Boundary applicability question and retain the question about what happens to captured screenshots."
+    },
+    {
+      "n": 53,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: impact",
+      "type": "default",
+      "claim": "Self-healing is user-opt-in: the preview requires makers to enable it action by action rather than changing existing actions automatically.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The preview phase includes an action-level opt-in option for automatically trying to recover from a selector error",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance controls: no self-healing-specific admin setting; Open questions",
+      "type": "absence",
+      "claim": "Microsoft documents no self-healing-specific tenant or environment switch beyond the general prerequisites and maker action toggle.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"self-healing\" \"tenant\" \"disable\"; Power Automate desktop self-healing general availability licensing meter credits limit flow level log only tenant switch EU Data Boundary. Opened Learn desktop-flows/self-healing and governance; no self-healing-specific admin switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[0].api; Governance controls: API absence",
+      "type": "absence",
+      "claim": "No API is documented for the Microsoft 365 Anthropic subprocessor setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Anthropic subprocessor enable provider API PowerShell self healing action configuration API. Opened Learn desktop-flows/self-healing, admin/allow-llm-generative-responses and copilot/implement/connect-to-ai-subprocessor; only UI configuration found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[1].api; Governance controls: API absence",
+      "type": "absence",
+      "claim": "No API is documented for allowing Anthropic models in an environment.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Platform Anthropic external models environment group settings API PowerShell enable; \"Anthropic\" \"API\" \"environment\" \"settings\" site:learn.microsoft.com/power-platform/admin. Opened Learn admin/allow-llm-generative-responses and desktop-flows/self-healing; no setting API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[2].api; Governance controls: API absence",
+      "type": "absence",
+      "claim": "No API is documented for the Power Platform Anthropic environment-group rule.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Platform Anthropic external models environment group settings API PowerShell enable. Opened Learn admin/allow-llm-generative-responses; searched results include generic environment-management CLI but no Anthropic rule payload or operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[3].api",
+      "type": "absence",
+      "claim": "No API is documented for the Move data across regions setting used by self-healing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Automate Copilot in Power Automate tenant setting API PowerShell Move data across regions API; \"Move data across regions\" \"PowerShell\"; \"power-platform\" \"generative AI\" \"cross\" \"API\" settings. Read Learn geographical-availability-copilot excerpts; no setting API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "controls[4].api; Governance controls: API absence",
+      "type": "absence",
+      "claim": "No API is documented as controlling the Copilot in Power Automate prerequisite for self-healing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Automate Copilot in Power Automate tenant setting API PowerShell Move data across regions API; \"Copilot\" \"Set-TenantSettings\" \"Power Automate\". Opened Learn admin/list-tenantsettings: disableCopilot is documented for cloud flows, not self-healing's prerequisite.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[5].api",
+      "type": "absence",
+      "claim": "No API is documented for the per-action Self-healing (Preview) toggle.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"self-healing\" \"Power Automate\" \"API\"; Microsoft 365 Anthropic subprocessor enable provider API PowerShell self healing action configuration API. Opened Learn desktop-flows/self-healing and governance; only the maker Error handling toggle is documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Governance controls: registry setting",
+      "type": "command",
+      "claim": "Local action-log cleanup is controlled by DisableRunFilesCleanup under HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Power Automate Desktop\\Global, set to 1.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/governance",
+      "quote": "| `HKEY_LOCAL_MACHINE` | `SOFTWARE\\Microsoft\\Power Automate Desktop\\Global` | `DisableRunFilesCleanup` | DWORD |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Governance controls: registry effect",
+      "type": "behaviour",
+      "claim": "Setting DisableRunFilesCleanup to 1 preserves Actions.log locally after the run.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/governance",
+      "quote": "1: Flow run action details stored in the Actions.log file aren't deleted from the local disk after the run is completed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Scope; Risk assessment: Data exposure; Governance controls; controls[4].note",
+      "type": "applicability",
+      "claim": "The Anthropic, external-model, cross-region and Copilot settings are general prerequisites that Microsoft explicitly requires for self-healing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/self-healing",
+      "quote": "Self-healing relies on generative AI models and requires all of the following settings to be enabled:",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-17T20:02:39.252Z",
+    "summary": {
+      "links": 4,
+      "unreachable": 0,
+      "uiPaths": 6,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=579906",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-automate/desktop-flows/self-healing",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/allow-llm-generative-responses",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-automate/desktop-flows/governance",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether the Anthropic provider is enabled as a subprocessor for the organisation",
+        "docs": "https://learn.microsoft.com/power-automate/desktop-flows/self-healing",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Settings",
+          "AI providers operating as Microsoft subprocessors"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether Anthropic models are allowed in an environment",
+        "docs": "https://learn.microsoft.com/power-automate/desktop-flows/self-healing",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Settings",
+          "Power Platform",
+          "External models"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Whether Anthropic models are allowed across an environment group",
+        "docs": "https://learn.microsoft.com/power-platform/admin/allow-llm-generative-responses",
+        "reachable": true,
+        "segments": [
+          "Manage",
+          "Environment groups",
+          "Add rules",
+          "Power Platform Anthropic"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Whether the environment allows data to move across regions for generative AI features",
+        "docs": "https://learn.microsoft.com/power-automate/desktop-flows/self-healing",
+        "reachable": true,
+        "segments": [
+          "Manage",
+          "Environments",
+          "Generative AI features",
+          "Edit",
+          "Move data across regions"
+        ],
+        "missing": []
+      },
+      {
+        "index": 4,
+        "side": "ui",
+        "governs": "Whether Copilot in Power Automate is on",
+        "docs": "https://learn.microsoft.com/power-automate/desktop-flows/self-healing",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Settings",
+          "Power Automate",
+          "Copilot in Power Automate"
+        ],
+        "missing": []
+      },
+      {
+        "index": 5,
+        "side": "ui",
+        "governs": "Whether self-healing is turned on for an individual action",
+        "docs": "https://learn.microsoft.com/power-automate/desktop-flows/self-healing",
+        "reachable": true,
+        "segments": [
+          "action",
+          "Error handling",
+          "Self-healing"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}
