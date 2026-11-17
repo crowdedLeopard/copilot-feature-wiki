@@ -2,37 +2,31 @@
   "slug": "power-apps-expand-model-access-and-maker-studio-availability-for-generative-pages-via-gith",
   "roadmapId": 576285,
   "title": "Power Apps: GitHub models and wider availability for the generative page agent in Maker Studio",
-  "status": "held",
+  "status": "verified",
   "date": "2026-11-17",
-  "version": 3,
+  "version": 4,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 2,
-  "verifierVerdict": "hold",
+  "attempts": 0,
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-16",
-    "reasons": [
-      "1 blocking finding (claim 36)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 36,
-    "confirmed": 35,
+    "claims": 38,
+    "confirmed": 38,
     "unconfirmed": 0,
-    "contradicted": 1,
-    "blocker": 1,
+    "contradicted": 0,
+    "blocker": 0,
     "major": 0,
-    "minor": 3
+    "minor": 0
   },
-  "summary": "The roadmap details and the two documented tenant-control paths are supported. However, the blanket statement that GitHub organisation policies are outside Microsoft's documentation is incorrect: Microsoft documents organisation-level access restrictions for Power Apps source-control integration. Remove that statement or narrow it to the undocumented applicability of those policies to this generative-page connection.",
+  "summary": "The briefing accurately reports the planned GitHub model access and credit consumption. Both tenant-control paths are documented, and the briefing correctly distinguishes those existing controls from the still-undocumented controls, billing details and processing boundaries of the planned generative-page integration.",
   "claims": [
     {
       "n": 1,
       "where": "front matter: status",
       "type": "record",
-      "claim": "The roadmap status is in development.",
+      "claim": "The roadmap status is In development.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
@@ -41,6 +35,17 @@
     },
     {
       "n": 2,
+      "where": "front matter: releasePhase; What's changing; controls[1].note",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
       "claim": "The roadmap lists November CY2026 for general availability.",
@@ -51,21 +56,21 @@
       "fix": null
     },
     {
-      "n": 3,
-      "where": "front matter: releasePhase; controls[1].note",
+      "n": 4,
+      "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The roadmap release phase is General Availability.",
+      "claim": "The roadmap gives no preview date.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "quote": "\"previewDate\": null",
       "severity": null,
       "fix": null
     },
     {
-      "n": 4,
+      "n": 5,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) only and does not list government clouds.",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only listed roadmap cloud; government clouds are not listed.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -73,7 +78,7 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 6,
       "where": "front matter: platforms",
       "type": "record",
       "claim": "The roadmap platform is Web.",
@@ -84,35 +89,24 @@
       "fix": null
     },
     {
-      "n": 6,
-      "where": "front matter: previewDate",
-      "type": "record",
-      "claim": "The roadmap supplies no preview date.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": null",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 7,
-      "where": "What's changing",
+      "where": "front matter: products; title",
       "type": "record",
-      "claim": "The roadmap specifies the weekly release channel.",
+      "claim": "The change belongs to Power Apps.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Release Channel\nWeekly",
+      "quote": "\"products\": [\"Power Apps\"]",
       "severity": null,
       "fix": null
     },
     {
       "n": 8,
-      "where": "What's changing",
+      "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "The roadmap specifies version 2611.1.",
+      "claim": "The roadmap modification timestamp is 2026-10-23T21:59:27.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Version\n2611.1",
+      "quote": "\"modified\": \"2026-10-23T21:59:27\"",
       "severity": null,
       "fix": null
     },
@@ -120,18 +114,18 @@
       "n": 9,
       "where": "summary; What's changing; Risk assessment: Security & identity",
       "type": "record",
-      "claim": "Makers can connect a GitHub account to access additional models for the built-in generative page coding agent in Maker Studio.",
+      "claim": "Microsoft plans additional model options for the built-in generative page coding agent in Maker Studio through a maker's GitHub account connection.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Connect your GitHub account to access additional model options for the built-in gen page coding agent directly in the generative page designer in Maker Studio.",
-      "severity": "minor",
-      "fix": "Attribute the planned capability explicitly: begin the summary and the opening What's changing paragraph with 'Microsoft plans to let makers connect a GitHub account to access additional models for the built-in generative page coding agent in Maker Studio.' The roadmap still says In development."
+      "severity": null,
+      "fix": null
     },
     {
       "n": 10,
       "where": "What's changing",
       "type": "record",
-      "claim": "Makers can use the agent to create and refine generative pages without leaving Power Apps.",
+      "claim": "Makers can use the planned integration to create and refine generative pages without leaving Power Apps.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Makers can use the agent to create and refine generative pages without leaving the Power Apps authoring experience.",
@@ -142,26 +136,15 @@
       "n": 11,
       "where": "summary; What's changing; Why it matters",
       "type": "record",
-      "claim": "The integration extends Maker Studio generative page authoring to regions without dedicated Power Apps GPU capacity.",
+      "claim": "The roadmap plans to extend Maker Studio generative page authoring to regions without dedicated Power Apps GPU capacity.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "This integration also brings Maker Studio generative page authoring to regions without dedicated Power Apps GPU capacity.",
-      "severity": "minor",
-      "fix": "Present this extension as planned wherever repeated: 'The roadmap also plans to extend Maker Studio generative page authoring to regions without dedicated Power Apps GPU capacity.' In the summary use 'with a planned extension to regions without Power Apps GPU capacity'."
-    },
-    {
-      "n": 12,
-      "where": "front matter: licensing.notes; What's changing; Why it matters; Cost and licensing; rationale: cost",
-      "type": "record",
-      "claim": "Requests through the GitHub connection consume the maker's GitHub credits.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "requests made through this connection consume the maker’s GitHub credits.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 13,
+      "n": 12,
       "where": "What's changing; Risk assessment: Change & support",
       "type": "record",
       "claim": "Model availability through GitHub may evolve over time.",
@@ -172,21 +155,54 @@
       "fix": null
     },
     {
-      "n": 14,
-      "where": "front matter: products; Scope; rationale: impact",
+      "n": 13,
+      "where": "front matter: licensing.notes; What's changing; Why it matters; Cost and licensing; rationale: cost",
       "type": "record",
-      "claim": "This is a Power Apps change for makers authoring generative pages in model-driven apps.",
+      "claim": "Requests through this connection consume the maker's GitHub credits.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"products\": [\"Power Apps\"]; Applies to\nModel-driven apps; Feature Scope\nAdmins or makers",
+      "quote": "requests made through this connection consume the maker’s GitHub credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap lists the Weekly release channel.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Release Channel\nWeekly",
       "severity": null,
       "fix": null
     },
     {
       "n": 15,
       "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap lists version 2611.1.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Version\n2611.1",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "Scope; rationale: impact",
+      "type": "record",
+      "claim": "The planned capability applies to makers authoring generative pages in model-driven apps.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Makers can use the agent to create and refine generative pages without leaving the Power Apps authoring experience.\n\nApplies to\nModel-driven apps",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "Learn currently identifies GPT-4.1 as the only model in the Power Apps maker experience for generative pages.",
+      "claim": "Learn currently identifies GPT-4.1 as the only available generative-page model in the Power Apps maker experience.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/generative-pages",
       "quote": "GPT-4.1 is currently the only available model in the Power Apps maker experience for generative pages.",
@@ -194,186 +210,10 @@
       "fix": null
     },
     {
-      "n": 16,
-      "where": "front matter: defaultState",
-      "type": "default",
-      "claim": "The planned GitHub connection is user-opt-in: a maker chooses to connect a GitHub account, and no integration-specific admin prerequisite is documented.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Connect your GitHub account to access additional model options. Searched: \"generative pages\" \"disable\" \"GitHub\"; opened generative-pages, tenant-settings, canvas-authoring-agent and list-tenantsettings; no admin switch confirmed for this connection.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "front matter: licensing.model",
-      "type": "licensing",
-      "claim": "The integration's known licensing model is consumption, through the maker's GitHub credits.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "requests made through this connection consume the maker’s GitHub credits.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 18,
-      "where": "front matter: cost; rationale: cost",
-      "type": "cost",
-      "claim": "The known direct cost is variable consumption of GitHub credits.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "requests made through this connection consume the maker’s GitHub credits.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "controls[0].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "The canvas authoring-agent GitHub control is under Power Platform admin center > Manage > Tenant settings > Agentic coauthoring in Power Apps using GitHub (preview).",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/canvas-authoring-agent#enable-github-account-connections",
-      "quote": "go to Manage > Tenant Settings.\n2. Locate the setting for Agentic Coauthoring in Power Apps using GitHub.\n3. Read the terms carefully. Enable the setting to indicate that you accept the terms for this feature.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "controls[0].api; Governance controls: property name and portal-only treatment",
-      "type": "absence",
-      "claim": "No setting-specific API, CLI call or PowerShell property is documented for the canvas authoring-agent GitHub tenant control.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Agentic coauthoring\" \"GitHub\" API PowerShell tenant; opened canvas-authoring-agent, tenant-settings, Set-TenantSettings, pac admin and list-tenantsettings. No GitHub authoring-agent property or equivalent call is documented.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "controls[0].note; Governance controls prose",
-      "type": "applicability",
-      "claim": "The GitHub tenant setting controls maker GitHub connections for the canvas studio authoring agent in preview.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/tenant-settings",
-      "quote": "Agentic coauthoring in Power Apps using GitHub (preview) | Controls whether makers can connect their GitHub accounts to use the authoring agent in Power Apps canvas studio.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "controls[0].note; Governance controls prose",
-      "type": "absence",
-      "claim": "Microsoft has not confirmed that the canvas authoring-agent GitHub toggle governs generative pages.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: generative pages GitHub models credits billing data processing tenant setting disable; \"generative pages\" \"disable\" \"GitHub\". Opened generative-pages, canvas-authoring-agent and tenant-settings; the documented toggle covers canvas studio, not generative pages.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "controls[1].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "The Copilot preview tenant control is under Power Platform admin center > Settings > Tenant settings > Copilot in Power Apps (preview).",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/ai-overview#enable-or-disable-copilot-features",
-      "quote": "In the navigation pane, select Settings to open the Tenant settings page.\n3. Select Copilot in Power Apps (preview), and then set the toggle to Off.",
-      "severity": "minor",
-      "fix": "Keep the cited path, but add: 'The tenant-settings reference gives a different route to the same page: Manage > Tenant settings (https://learn.microsoft.com/power-platform/admin/tenant-settings).'"
-    },
-    {
-      "n": 24,
-      "where": "controls[1].api; Governance controls table",
-      "type": "absence",
-      "claim": "No documented automation equivalent was found for the broad Copilot preview maker tenant toggle.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Copilot in Power Apps\" \"preview\" \"Set-TenantSettings\"; \"Copilot\" \"tenant\" \"powerPlatform\" \"disable\" settings API. Opened ai-overview, list-tenantsettings, Set-TenantSettings and pac admin; disableCopilot documents how-to answers, not this broad toggle.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "controls[1].note",
-      "type": "applicability",
-      "claim": "Copilot in Power Apps (preview) is a tenant-level control for makers' Copilot preview features.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/tenant-settings",
-      "quote": "The following settings are configured at the tenant level. ... Copilot in Power Apps (preview) | Enables Copilot preview features for users who make apps.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "controls[1].note",
-      "type": "absence",
-      "claim": "Microsoft has not confirmed that the Copilot preview toggle applies to this General Availability generative-page GitHub integration.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Apps tenant settings Copilot preview GitHub agentic coauthoring PowerShell Power Platform API property; \"generative pages\" \"disable\" \"GitHub\". Opened ai-overview, tenant-settings and generative-pages; none confirms this applicability.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
-      "where": "controls[2].ui; controls[2].api",
-      "type": "absence",
-      "claim": "No tenant UI or automation switch specific to generative pages or their GitHub-hosted models is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"generative pages\" \"disable\" \"GitHub\"; generative pages GitHub models credits billing data processing tenant setting disable. Opened generative-pages, tenant-settings, list-tenantsettings, Set-TenantSettings and pac admin; no integration-specific switch found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
-      "where": "Why it matters; Risk assessment: Data exposure",
-      "type": "absence",
-      "claim": "Microsoft has not documented the processing locations and boundaries of this generative-page GitHub connection.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"generative pages\" GitHub data residency processing prompts. Opened generative-pages and canvas-authoring-agent; the latter describes a different canvas feature and supplies no generative-page GitHub processing location.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 29,
-      "where": "Risk assessment: Data exposure",
-      "type": "absence",
-      "claim": "Microsoft has not documented which inputs the generative-page GitHub connection sends to GitHub.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"generative pages\" GitHub data residency processing prompts. Opened generative-pages and canvas-authoring-agent; the canvas notice about prompts and application context does not identify inputs for the generative-page integration.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "Detailed billing arrangements for the generative-page GitHub model connection are not yet published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"generative pages\" \"GitHub\" \"credits\"; \"generative pages\" licensing billing meter Power Apps. Opened generative-pages, canvas-authoring-agent and pay-as-you-go-meters; none specifies detailed billing for this planned connection.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
-      "where": "Cost and licensing",
-      "type": "absence",
-      "claim": "Microsoft has not published a Power Platform meter for this GitHub model-access path.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"generative pages\" licensing billing meter Power Apps. Opened generative-pages and pay-as-you-go-meters; the meter list and its scope do not name generative-page GitHub model requests.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "The generative page agent generates code that runs in model-driven apps.",
+      "claim": "The generative page agent generates code for pages that run in model-driven apps.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/generative-pages",
       "quote": "you create fully functional pages in your model-driven apps ... the system then processes your requirements and specifications and intelligently generates React code",
@@ -381,8 +221,184 @@
       "fix": null
     },
     {
+      "n": 19,
+      "where": "Why it matters; Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "Microsoft has not documented the processing locations and boundaries of the planned generative-page GitHub connection.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Apps generative pages GitHub credits billing licensing meter data processing residency prompts; \"generative pages\" \"GitHub\" \"data\" \"processed\". Opened generative-pages, canvas-authoring-agent and faq-generative-pages-model-driven; no boundaries for this planned connection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "Microsoft has not documented which inputs the planned generative-page connection sends to GitHub.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"generative pages\" \"GitHub\" \"data\" \"processed\". Opened generative-pages, faq-generative-pages-model-driven and canvas-authoring-agent. The latter documents prompts and application context for canvas authoring, not this planned generative-page connection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Detailed billing arrangements for the planned generative-page GitHub connection are not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Apps generative pages GitHub credits billing licensing meter; \"generative pages\" \"GitHub\" \"billing\" \"meter\". Opened generative-pages, canvas-authoring-agent, pricing-billing-skus and pay-as-you-go-meters; no detailed billing arrangements for the planned connection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "Microsoft has not published a Power Platform meter for this planned GitHub model-access path.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"generative pages\" \"licensing\" \"credits\"; \"generative pages\" \"GitHub\" \"billing\" \"meter\". Opened generative-pages, pricing-billing-skus and pay-as-you-go-meters. No meter for this authoring connection; general app-runtime meters do not establish one.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "front matter: defaultState",
+      "type": "default",
+      "claim": "The planned capability is user-opt-in: makers choose to connect GitHub, with no documented admin switch for this integration.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Apps generative pages GitHub models tenant setting disable admin API PowerShell user connect; \"generative pages\" \"GitHub\" \"disable\". Read roadmap: \"Connect your GitHub account\"; opened generative-pages, tenant-settings, canvas-authoring-agent and list-tenantsettings; no specific switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "Consumption is the licensing model for the planned GitHub connection's usage.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "requests made through this connection consume the maker’s GitHub credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "Variable cost is appropriate because requests consume GitHub credits.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "requests made through this connection consume the maker’s GitHub credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[0].ui; Governance controls: first table row",
+      "type": "admin-path",
+      "claim": "The canvas authoring agent's GitHub setting is in Power Platform admin center under Manage > Tenant settings > Agentic coauthoring in Power Apps using GitHub.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/canvas-authoring-agent#enable-github-account-connections",
+      "quote": "In the Power Platform Admin Center, go to Manage > Tenant Settings.\n2. Locate the setting for Agentic Coauthoring in Power Apps using GitHub.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[0].api; Governance controls: no property name and portal-only treatment",
+      "type": "absence",
+      "claim": "No automation property or equivalent call is documented for the canvas authoring agent's GitHub connection toggle.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Agentic coauthoring\" \"GitHub\" \"API\" \"tenant\"; Power Platform API tenant settings Copilot in Power Apps preview GitHub agentic coauthoring PowerShell property. Opened canvas-authoring-agent, list-tenantsettings, Set-TenantSettings and pac admin; no GitHub toggle property or call.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[0].scope and note; Governance controls",
+      "type": "applicability",
+      "claim": "The documented tenant setting governs GitHub connections for the preview authoring agent in Power Apps canvas studio.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/tenant-settings",
+      "quote": "Agentic coauthoring in Power Apps using GitHub (preview) ... Controls whether makers can connect their GitHub accounts to use the authoring agent in Power Apps canvas studio.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[0].note; Governance controls",
+      "type": "absence",
+      "claim": "Microsoft has not confirmed that the canvas authoring agent's GitHub tenant setting governs generative pages.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Apps generative pages GitHub models tenant setting disable admin API PowerShell user connect; \"generative pages\" \"GitHub\" \"disable\". Opened generative-pages, canvas-authoring-agent and tenant-settings; the documented GitHub setting names canvas studio, not generative pages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[1].ui; Governance controls: second table row",
+      "type": "admin-path",
+      "claim": "The cited Copilot overview gives Power Platform admin center > Settings > Tenant settings > Copilot in Power Apps (preview).",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/ai-overview#enable-or-disable-copilot-features",
+      "quote": "In the navigation pane, select Settings to open the Tenant settings page.\n3. Select Copilot in Power Apps (preview), and then set the toggle to Off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[1].api; Governance controls: second table row",
+      "type": "absence",
+      "claim": "An API or automation equivalent for the tenant-wide maker Copilot preview toggle is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Copilot in Power Apps\" \"Set-TenantSettings\"; Power Platform API tenant settings Copilot in Power Apps preview GitHub agentic coauthoring PowerShell property. Opened ai-overview, list-tenantsettings, Set-TenantSettings and pac admin; disableCopilot covers how-to answers, not this toggle.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[1].scope and note",
+      "type": "applicability",
+      "claim": "Copilot in Power Apps (preview) is a tenant-level control for maker Copilot preview features.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/ai-overview#enable-or-disable-copilot-features",
+      "quote": "Turn off Copilot preview features for your tenant ... Turning off Copilot for your tenant turns off Copilot for makers only.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 33,
-      "where": "Governance controls prose",
+      "where": "controls[1].note",
+      "type": "absence",
+      "claim": "Microsoft has not confirmed that the general maker Copilot preview control applies to the planned generative-page GitHub integration.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"generative pages\" \"GitHub\" \"disable\"; Power Apps generative pages GitHub models tenant setting disable admin API PowerShell user connect. Opened ai-overview, generative-pages and tenant-settings; no statement applies the preview toggle to this planned GA integration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[2].ui and api; Governance controls: third table row",
+      "type": "absence",
+      "claim": "Microsoft has not documented a tenant switch specific to generative pages or their planned GitHub-hosted model access on either the UI or automation surface.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Apps generative pages GitHub models tenant setting disable admin API PowerShell user connect; \"generative pages\" \"GitHub\" \"disable\". Opened generative-pages, tenant-settings, list-tenantsettings, Set-TenantSettings and pac admin; no feature-specific UI or automation switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Governance controls: prose after table",
       "type": "command",
       "claim": "Set-TenantSettings manages Power Platform tenant settings generally.",
       "status": "supported",
@@ -392,8 +408,8 @@
       "fix": null
     },
     {
-      "n": 34,
-      "where": "Governance controls prose",
+      "n": 36,
+      "where": "Governance controls: prose after table",
       "type": "command",
       "claim": "pac admin update-tenant-settings manages tenant settings generally.",
       "status": "supported",
@@ -403,8 +419,8 @@
       "fix": null
     },
     {
-      "n": 35,
-      "where": "Governance controls prose",
+      "n": 37,
+      "where": "Governance controls: prose after table",
       "type": "behaviour",
       "claim": "Generally available Copilot features in Power Apps can only be turned off through Microsoft Support.",
       "status": "supported",
@@ -414,19 +430,19 @@
       "fix": null
     },
     {
-      "n": 36,
+      "n": 38,
       "where": "Governance controls: final sentence",
-      "type": "absence",
-      "claim": "GitHub organisation policies on the developer side are outside Microsoft's documentation.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/power-platform/alm/git-integration/connecting-to-github#create-a-github-connection",
-      "quote": "If your GitHub organization has non-Microsoft application access restrictions enabled, an organization administrator must approve the OAuth app used by the Power Apps GitHub connector.",
-      "severity": "blocker",
-      "fix": "Remove 'GitHub organisation policies on the developer side are outside Microsoft's documentation.' Microsoft documents GitHub organisation access restrictions for a different Power Apps integration; this does not establish that those restrictions govern generative-page model access."
+      "type": "admin-path",
+      "claim": "The tenant-settings reference gives Manage > Tenant settings, unlike the Settings route in the cited Copilot overview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/tenant-settings",
+      "quote": "In the navigation pane, select Manage.\n3. In the Manage pane, select Tenant settings.",
+      "severity": null,
+      "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-17T00:01:32.336Z",
+    "at": "2026-11-17T02:05:04.030Z",
     "summary": {
       "links": 7,
       "unreachable": 0,
@@ -508,6 +524,12 @@
       "date": "2026-11-16",
       "status": "held",
       "version": 2,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-17",
+      "status": "held",
+      "version": 3,
       "model": "gpt-6.1-sol"
     }
   ]

@@ -43,6 +43,9 @@ sources:
   - title: "Power Apps licensing FAQs"
     url: "https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq"
     kind: "learn"
+  - title: "Data policies"
+    url: "https://learn.microsoft.com/power-platform/admin/wp-data-loss-prevention"
+    kind: "learn"
   - title: "Connector endpoint filtering (preview)"
     url: "https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering"
     kind: "learn"
@@ -66,9 +69,9 @@ controls:
       docs: "https://learn.microsoft.com/power-platform/admin/connector-action-control"
     api:
       kind: "powershell"
-      call: "New-DlpPolicy (Microsoft.PowerApps.Administration.PowerShell)"
+      call: "New-DlpPolicy -NewPolicy $NewPolicy"
       docs: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest"
-    note: "General control: Microsoft has not confirmed it applies to generative pages."
+    note: "Platform data policies can disable connections whose connectors are blocked; resources using inactive connections fail at runtime. The feature-specific enforcement sequence is not described."
   - governs: "Endpoint filtering for supported prebuilt connectors (preview)"
     scope: "environment"
     ui:
@@ -79,12 +82,12 @@ controls:
       kind: "powershell"
       call: "New-PowerAppDlpPolicyConnectorConfigurations -TenantId $TenantId -PolicyName $PolicyName -NewDlpPolicyConnectorConfigurations $ConnectorConfigurations"
       docs: "https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering#powershell-support-for-endpoint-filtering"
-    note: "Preview. Applies where Endpoint configurable is Yes. General control: Microsoft has not confirmed it applies to generative pages."
+    note: "Preview platform control for supported connectors and static endpoints selected at design time; rules do not apply to environment variables, custom inputs or dynamically bound runtime endpoints."
   - governs: "Connection reference the page uses"
     scope: "maker"
     ui:
       surface: "Power Apps (maker)"
-      path: "Solutions > Default Solution > New > More > Connection Reference"
+      path: "Solutions > solution > New > More > Connection Reference"
       docs: "https://learn.microsoft.com/power-apps/maker/data-platform/create-connection-reference"
     api:
       kind: "rest"
@@ -97,7 +100,7 @@ controls:
     api: null
 confidence: "high"
 created: "2026-11-14"
-updated: "2026-11-16"
+updated: "2026-11-17"
 roadmapModified: "2026-10-23T21:59:27"
 changes:
   - date: "2026-11-14"
@@ -110,19 +113,23 @@ changes:
     note: "Corrected after the check: licensing model, cost and default state restated; connection reference row now uses the documented path and Dataverse API; data-policy applicability marked unconfirmed."
   - date: "2026-11-16"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 45 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-17"
+    note: "Corrected after the check: New-DlpPolicy call and connection reference path now match Learn; data policy and endpoint filtering statements restated from Learn; open questions narrowed."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 56 statements confirmed"
+version: 4
 verification:
-  status: "held"
-  date: "2026-11-16"
-  version: 3
+  status: "verified"
+  date: "2026-11-17"
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 45
-  confirmed: 41
+  claims: 56
+  confirmed: 56
   unconfirmed: 0
-  contradicted: 4
-  attempts: 2
-  hash: "2839558ad70eb25c55a9ee88d9f70023"
+  contradicted: 0
+  attempts: 0
+  hash: "0693fd8a42992eb2518686f45ce21215"
 ---
 
 ## What's changing
@@ -151,7 +158,7 @@ Because code is AI-generated, review matters more when it calls external systems
 - Generated code may write through connector operations; the connector methods reference lists create, update and delete row methods. Review the plan before approving a build.
 
 **Change & support**
-- Connection failures can interrupt page operations; review generated error handling and test failed or unauthorised connections. The connector methods reference says calls reject the returned promise when, for example, the connection reference can't be resolved or the connection isn't authorised.
+- Connection failures can interrupt page operations; review generated error handling and test failed or unauthorised connections. The connector methods reference says calls reject the returned promise when, for example, the connection reference cannot be resolved, or the connection is not authorised and the user does not complete the consent prompt.
 
 ## Cost and licensing
 
@@ -166,7 +173,7 @@ Makers of model-driven apps. Clouds: Worldwide, GCC and GCC High. The roadmap gi
 ## Governance guidance
 
 ### Before rollout
-- Check data policies for the connectors makers are likely to use, once Microsoft confirms they apply to generative pages.
+- Check data policies for the connectors makers are likely to use.
 - Review who owns each connection reference in each environment.
 
 ### At rollout
@@ -184,14 +191,16 @@ Makers of model-driven apps. Clouds: Worldwide, GCC and GCC High. The roadmap gi
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which connectors may be used in an environment</strong><br><small>Environment</small><br><small class="controls__note">General control: Microsoft has not confirmed it applies to generative pages.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Data and privacy › Data policy › New Policy <a href="https://learn.microsoft.com/power-platform/admin/connector-action-control" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpPolicy (Microsoft.PowerApps.Administration.PowerShell)</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Endpoint filtering for supported prebuilt connectors (preview)</strong><br><small>Environment</small><br><small class="controls__note">Preview. Applies where Endpoint configurable is Yes. General control: Microsoft has not confirmed it applies to generative pages.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Data policy › policy › Prebuilt Connectors › connector › Configure connector › Connector endpoints <a href="https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-PowerAppDlpPolicyConnectorConfigurations -TenantId $TenantId -PolicyName $PolicyName -NewDlpPolicyConnectorConfigurations $ConnectorConfigurations</code> <a href="https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering#powershell-support-for-endpoint-filtering" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Connection reference the page uses</strong><br><small>Maker</small><br><small class="controls__note">Dataverse Web API entity set; the reference lists POST, GET, PATCH and DELETE as supported operations. Default Solution comes from the generative pages prerequisites.</small></td><td data-label="Admin UI"><strong>Power Apps (maker)</strong><br>Solutions › Default Solution › New › More › Connection Reference <a href="https://learn.microsoft.com/power-apps/maker/data-platform/create-connection-reference" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>GET [organization URI]/api/data/v9.2/connectionreferences</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/connectionreference?view=dataverse-latest" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which connectors may be used in an environment</strong><br><small>Environment</small><br><small class="controls__note">Platform data policies can disable connections whose connectors are blocked; resources using inactive connections fail at runtime. The feature-specific enforcement sequence is not described.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Data and privacy › Data policy › New Policy <a href="https://learn.microsoft.com/power-platform/admin/connector-action-control" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpPolicy -NewPolicy $NewPolicy</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Endpoint filtering for supported prebuilt connectors (preview)</strong><br><small>Environment</small><br><small class="controls__note">Preview platform control for supported connectors and static endpoints selected at design time; rules do not apply to environment variables, custom inputs or dynamically bound runtime endpoints.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Data policy › policy › Prebuilt Connectors › connector › Configure connector › Connector endpoints <a href="https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-PowerAppDlpPolicyConnectorConfigurations -TenantId $TenantId -PolicyName $PolicyName -NewDlpPolicyConnectorConfigurations $ConnectorConfigurations</code> <a href="https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering#powershell-support-for-endpoint-filtering" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Connection reference the page uses</strong><br><small>Maker</small><br><small class="controls__note">Dataverse Web API entity set; the reference lists POST, GET, PATCH and DELETE as supported operations. Default Solution comes from the generative pages prerequisites.</small></td><td data-label="Admin UI"><strong>Power Apps (maker)</strong><br>Solutions › solution › New › More › Connection Reference <a href="https://learn.microsoft.com/power-apps/maker/data-platform/create-connection-reference" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>GET [organization URI]/api/data/v9.2/connectionreferences</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/connectionreference?view=dataverse-latest" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Switch specific to connectors in generative pages</strong><br><small>Environment</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-The data policy and endpoint filtering rows are general platform controls. Microsoft Learn pages checked at the time of writing (November 2026) do not confirm that they apply to generative pages. Connector action control, on the same data policy page, narrows which actions a permitted connector exposes. Endpoint filtering is a preview control for the supported prebuilt connectors only.
+The data policy row is a platform control: Microsoft's data policies page says that when a policy blocks a whole connector, its connections are set to a disabled state, and that resources attempting to use an inactive connection fail at runtime. The feature-specific enforcement sequence is not described. Connector action control, on the same data policy page, narrows which actions a permitted connector exposes.
+
+Endpoint filtering is a preview platform control for supported connectors and static endpoints selected at design time; rules do not apply to environment variables, custom inputs or dynamically bound runtime endpoints.
 
 A connection reference is a solution component that points to a connection; during solution import into a target environment, a connection is provided for each connection reference.
 
@@ -199,22 +208,11 @@ A connection reference is a solution component that points to a connection; duri
 
 - Are all connectors supported at general availability?
 - How are per-user connections handled when users open the page?
-- Will the AI plugin respect the same data policies?
-- How is data-policy blocking enforced for generative pages created in the designer and through the AI plugin, and do the data policy and endpoint filtering controls apply to them?
+- What is the enforcement sequence for data-policy blocking of generative pages created in the designer and through the AI plugin?
+- How are connector endpoints evaluated in the generative page designer and AI plugin?
 
 <!-- rationale
-risk: Medium. Generated pages will read external data through connections, so connection identity and permissions decide what users can see. Whether data policies apply to these pages is unconfirmed.
+risk: Medium. Generated pages will read external data through connections, so connection identity and permissions decide what users can see. How data policy enforcement works for these pages is not described.
 cost: Low. The only cost the sources show is maker and admin time for review and piloting. Licensing specific to this feature is not yet published; model-driven apps already need a licence with Power Apps premium use rights.
 impact: Medium. Makers gain new data sources and app users see data from outside Dataverse.
--->
-
-<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].api; Governance controls table / command: New-DlpPolicy (Microsoft.PowerApps.Administration.PowerShell) is a runnable policy-creation call. | Found: New-DlpPolicy -NewPolicy <Object> [-ApiVersion <String>] [<CommonParameters>] | Fix: Replace controls[0].api.call and the rendered command with 'New-DlpPolicy -NewPolicy $NewPolicy'. The module name is metadata, not a parenthesised argument; $NewPolicy is the policy-definition object placeholder documented by the reference. | Source: https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest
-- [contradicted, blocker] controls[2].ui; Governance controls table / admin-path: The cited connection-reference page documents Solutions > Default Solution > New > More > Connection Reference. | Found: 3. Create a new or open an existing solution. 4. On the command bar, select **New** > **More** > **Connection Reference**. | Fix: Change controls[2].ui.path and the rendered path to 'Solutions > solution > New > More > Connection Reference'. Keep the separate note attributing Default Solution to the generative-pages prerequisites: that requirement is supported there, but not on this row's linked page. | Source: https://learn.microsoft.com/power-apps/maker/data-platform/create-connection-reference
-- [contradicted, blocker] controls[0].note; Governance guidance: Before rollout; Governance controls; rationale: risk / absence: Microsoft has not confirmed that data policies apply to generative-page connector use, so checking them should wait for confirmation. | Found: Scan connections. If the policy blocks the whole connector, set the connection to a *disabled* state so that it can't operate. 7. Any resources that are running and attempting to use an inactive connection, action, trigger, or MCP server that is blocked, fail at runtime. | Fix: Replace the unconfirmed-data-policy statements with: 'Platform data policies can disable connections whose connectors are blocked; resources using inactive connections fail at runtime. The feature-specific enforcement sequence is not described.' Cite https://learn.microsoft.com/power-platform/admin/wp-data-loss-prevention. Change the Before rollout bullet to 'Check data policies for the connectors makers are likely to use.' Remove the open question asking whether data policies apply; retain the narrower question about the designer and AI plugin enforcement sequence. | Source: https://learn.microsoft.com/power-platform/admin/wp-data-loss-prevention
-- [contradicted, blocker] controls[1].note; Governance controls; Open questions / absence: Microsoft has not confirmed whether endpoint-filtering controls apply to generative pages. | Found: Connector endpoint filtering lets admins control which specific endpoints makers can connect to when building apps, flows, or chatbots. It's configured within a data policy | Fix: Replace the unconfirmed endpoint-filtering statements with: 'Endpoint filtering is a preview platform control for supported connectors and static endpoints selected at design time; rules do not apply to environment variables, custom inputs or dynamically bound runtime endpoints.' Keep the existing cited endpoint-filtering URL. Narrow the open question to 'How are connector endpoints evaluated in the generative page designer and AI plugin?' | Source: https://learn.microsoft.com/power-platform/admin/connector-endpoint-filtering
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Change & support / behaviour: Connector calls reject their promises for unresolved connection references or unauthorised connections. | Found: when the connection reference can't be resolved, the connection isn't authorized and the user doesn't complete the consent prompt, or the connector returns an error status. | Fix: Replace the final sentence with: 'The connector methods reference says calls reject the returned promise when, for example, the connection reference cannot be resolved, or the connection is not authorised and the user does not complete the consent prompt.' | Source: https://learn.microsoft.com/power-apps/developer/model-driven-apps/generative-page/data-api/connector-methods
 -->

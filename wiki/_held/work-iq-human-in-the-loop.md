@@ -82,18 +82,20 @@ changes:
     note: "Corrected after a failed check: licensing is now consumption (Work IQ uses consumption billing with Copilot Credits), and the Copilot Studio tool-confirmation setting is described as applying to agents using the standard harness."
   - date: "2026-11-16"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 29 statements not yet confirmed"
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 30 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 4
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-16"
+  status: "held"
+  date: "2026-11-17"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 29
+  claims: 30
   confirmed: 29
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "3d894cc45c210cb7670454165b3d8763"
 ---
 
@@ -178,8 +180,8 @@ cost: Variable. Work IQ uses consumption billing with Copilot Credits; any addit
 impact: Medium. It changes how approvers and agent owners interact with agent runs.
 -->
 
-<!-- verifier-findings (2026-11-16, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: The per-tool confirmation setting is at Copilot Studio > Tools > tool > Details > Additional details > Ask the end user before running. | Found: Go to the Tools page for your agent, and select the tool from the list of tools. ... Details ... Additional details ... Ask the end user before running | Fix: Include the initial agent selection: 'Agents > agent > Tools > tool > Details > Additional details > Ask the end user before running', as documented at https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent. | Source: https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent#view-and-make-changes-to-your-tool-configuration
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[1].ui; Governance controls table / admin UI / admin-path: The tool-confirmation path is Tools > tool > Details > Additional details > Ask the end user before running in Copilot Studio. | Found: The configuration page has three sections: Details, Inputs, and Completion. ... Details ... Ask the end user before running | Asks the user to confirm before the tool runs. Set to No by default. | Fix: Replace controls[1].ui.path and the corresponding rendered table path with 'Agents > agent > Tools > tool > Details > Ask the end user before running'. The current cited page places the setting directly under Details; remove 'Additional details'. | Source: https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent#view-and-make-changes-to-your-tool-configuration
 -->

@@ -4,7 +4,7 @@ slug: "dataverse-agent-users-entra-agent-identity"
 roadmapId: 576843
 topic: "power-platform"
 products: ["Microsoft Copilot (Microsoft 365)","Microsoft Dataverse"]
-summary: "Dataverse administrators can add an agent with a Microsoft Entra agent identity to an environment as an agent user and give it its own security roles. Nothing changes until an admin adds one; the Learn page is still marked preview."
+summary: "Dataverse administrators can add an agent with a Microsoft Entra agent identity to an environment as an agent user and give it its own security roles. Microsoft has not stated what happens on arrival; the Learn page is still marked preview."
 status: "launched"
 releasePhase: ["General Availability","Preview"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -14,7 +14,7 @@ previewDate: "June CY2026"
 risk: "medium"
 cost: "low"
 impact: "low"
-defaultState: "admin-opt-in"
+defaultState: "unknown"
 action: "review"
 licensing:
   model: "unknown"
@@ -138,19 +138,23 @@ changes:
     note: "Corrected after verification: read-coverage guidance now carries the licensing and production-only limits of activity logging; Conditional Access licensing and the standard-harness scope note qualified; role and privilege sources added."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 68 statements contradicted, 3 unconfirmed; taken offline until corrected"
-version: 4
+  - date: "2026-11-17"
+    note: "Corrected after verification: default state is now Not stated; removed the manual-migration inference, the availability-control claim, the tenant-switch sentence and two checklist steps without a control row."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 68 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 5
 verification:
   status: "held"
   date: "2026-11-17"
-  version: 4
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 68
-  confirmed: 62
-  unconfirmed: 3
+  confirmed: 65
+  unconfirmed: 0
   contradicted: 3
-  attempts: 3
-  hash: "15942d9fefd96a04197dc2ae6153b9d6"
+  attempts: 4
+  hash: "454527c50798927c10ed866e56ff7d7d"
 ---
 
 ## What's changing
@@ -165,7 +169,7 @@ The roadmap item shows status Launched, with a General Availability and Preview 
 
 This gives Dataverse an agent-specific way to grant an agent data access: a named identity, with its own security role, added to a specific environment. Roles can then be sized per agent instead of reusing a person's access or an existing shared identity. If integrations do share an application user today, separating them can make ownership and role reviews clearer; that is the wiki's analysis, not a Microsoft claim.
 
-If nobody acts, nothing changes: the Learn procedure is an administrator-run step. The decision for a service owner is whether agents that need Dataverse data should be standardised on agent users, with a short list of reviewed roles and auditing switched on before the first one is added.
+Microsoft has not stated what happens on arrival: the roadmap says "Enabled for admins/makers/marketers automatically", while the Learn page documents an administrator-run procedure, and no source says existing behaviour changes. The decision for a service owner is whether agents that need Dataverse data should be standardised on agent users, with a short list of reviewed roles and auditing switched on before the first one is added.
 
 ## Risk assessment
 
@@ -181,7 +185,7 @@ If nobody acts, nothing changes: the Learn procedure is an administrator-run ste
 - The roadmap says agents can act autonomously or on behalf of users. An agent user with create, update or delete privileges can change records with no person present, so only grant those privileges where the agent's purpose needs them.
 
 **Change & support**
-- Microsoft has not documented migration from existing application users to agent users at the time of writing (November 2026), so any move is a manual piece of work to plan.
+- Microsoft has not documented migration from existing application users to agent users at the time of writing (November 2026).
 - Because the Learn pages are marked preview, behaviour and limits may change before the pages drop the label.
 
 ## Cost and licensing
@@ -204,7 +208,7 @@ Indirect costs: admin time to design and review roles, and audit-log storage if 
 
 ### Before rollout
 - Agree a short list of reviewed Dataverse security roles for agents, so that each agent user gets a role from that list rather than a bespoke or broad one.
-- Switch on Dataverse auditing for the environments agents will use, with a retention period. Before relying on Dataverse and model-driven apps activity logging for reads, review its licensing, Purview permissions and configuration prerequisites; it sends user activity to Purview for production environments only.
+- Switch on Dataverse auditing for the environments agents will use, with a retention period.
 - Ask the Microsoft Entra team to confirm who can create agent identities and whether a Conditional Access policy for agent identities is planned.
 
 ### At rollout
@@ -214,7 +218,6 @@ Indirect costs: admin time to design and review roles, and audit-log storage if 
 
 ### After rollout
 - Review each agent user's role against what the audit log shows it doing, and remove privileges it does not use.
-- Check agent identities' Microsoft Entra role assignments as part of the same review.
 - Recheck the Learn pages when they leave preview, as limits and licensing may change.
 
 ## Governance controls
@@ -235,8 +238,6 @@ Creating the agent user and assigning its role is a Power Platform admin center 
 
 The Conditional Access row governs token issuance to agent identities. Microsoft's article describes a separate policy for agents' user accounts; none of the pages says how either applies to a Dataverse agent user. Environment auditing and table/column auditing are separate steps: turn on the environment first, then the tables and columns.
 
-There is no tenant-wide switch documented that turns Dataverse agent users on or off; availability is controlled by who can reach the environment settings and by Entra's ability to create agent identities.
-
 ## Open questions
 
 - Does a Dataverse agent user need any licence, or consume request capacity, and where will Microsoft publish it (the Create users page on Learn)?
@@ -246,7 +247,7 @@ There is no tenant-wide switch documented that turns Dataverse agent users on or
 - The roadmap says "Enabled for admins/makers/marketers automatically"; does anything beyond the admin procedure appear automatically in environments?
 
 <!-- rationale
-risk: Medium. Nothing happens until an administrator adds an agent user, but one with write roles can change Dataverse records without a person present, so role choice and auditing decide the exposure.
+risk: Medium. Microsoft has not stated what happens on arrival, but an agent user with write roles can change Dataverse records without a person present, so role choice and auditing decide the exposure.
 cost: Low. The only cost the sources show is admin time for role design and auditing; Microsoft has not published any licence or meter specific to Dataverse agent users.
 impact: Low. Environment administrators and the owners of agents that need Dataverse data notice it; end users see nothing.
 -->
@@ -254,11 +255,9 @@ impact: Low. Environment administrators and the owners of agents that need Datav
 <!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] front matter: defaultState; summary; Why it matters; rationale: risk / default: The feature is admin-opt-in and nothing happens until an administrator adds an agent user. | Found: Searched: Dataverse agent users automatically default. Read create-users#create-an-agent-user-preview and admin/agent-users. They give a manual procedure, not an exclusive provisioning/default rule; the roadmap says enabled for admins/makers/marketers automatically. | Fix: Set defaultState to unknown. Replace the summary's 'Nothing changes until an admin adds one' with 'Microsoft has not stated what happens on arrival'. Replace the matching assertion in Why it matters and the risk rationale with the same qualification. Keep the documented administrator procedure, but do not infer an exclusive default from it.
-- [unsupported, major] Risk assessment: Change & support / behaviour: Any move from existing application users to agent users is a manual piece of work. | Found: Searched: Dataverse agent user migration application users. Read admin/agent-users and create-users. Neither gives a migration mechanism; absence of a documented migration does not establish that it is manual. | Fix: Remove 'so any move is a manual piece of work to plan'. Keep only 'Microsoft has not documented migration from existing application users to agent users at the time of writing (November 2026)'.
-- [unsupported, blocker] Governance controls / applicability: Dataverse agent-user availability is controlled by who can reach environment settings and by Entra's ability to create identities. | Found: Searched: Dataverse agent user required role; Dataverse agent users tenant switch. Read feature creation pages and Entra creation/disable guidance. No source defines reaching environment settings as the access control or establishes this complete availability mechanism. | Fix: Remove the clause 'availability is controlled by who can reach the environment settings and by Entra's ability to create agent identities'. The separate finding about the missing tenant-switch row calls for removing the rest of that sentence too.
+- [contradicted, blocker] controls[1].api / command: The printed PATCH entry is a complete call for changing environment auditing through isauditenabled. | Found: Change the column values in the organization table to change how auditing works for the environment. PATCH [Organization URI]/api/data/v9.2/organizations([Organization ID]) HTTP/1.1 Content-Type: application/json | Fix: Replace the explanatory tail with a concrete request body: PATCH [Organization URI]/api/data/v9.2/organizations([Organization ID]) with Content-Type: application/json and JSON body {"isauditenabled":true}. The existing method and endpoint are correct, but without a value-bearing body the entry cannot turn auditing on. Retain the current documentation URL. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/auditing/configure
+- [contradicted, blocker] controls[2].api / command: The printed POST endpoint alone is a complete call to create an Entra agent identity. | Found: POST https://graph.microsoft.com/beta/serviceprincipals/Microsoft.Graph.AgentIdentity OData-Version: 4.0 Content-Type: application/json Authorization: Bearer <token> {"displayName": "My Agent Identity","agentIdentityBlueprintId": "<my-agent-blueprint-id>","sponsors@odata.bind": | Fix: Keep the endpoint but supply the documented request details: POST https://graph.microsoft.com/beta/serviceprincipals/Microsoft.Graph.AgentIdentity with Authorization: Bearer <token>, OData-Version: 4.0, Content-Type: application/json and JSON body {"displayName":"<agent-name>","agentIdentityBlueprintId":"<blueprint-app-id>","sponsors@odata.bind":["https://graph.microsoft.com/v1.0/users/<sponsor-user-id>"]}. The endpoint and beta version are supported; the bodyless request is not sufficient. | Source: https://learn.microsoft.com/entra/agent-id/create-delete-agent-identities
+- [contradicted, blocker] controls[3].api / command: POSTing a Conditional Access policy with only conditions.clientApplications.includeAgentIdServicePrincipals set to All supplies a call that blocks token issuance. | Found: "grantControls": { "operator": "AND", "builtInControls": [ "block" ] }, "state": "enabledForReportingButNotEnforced" | Fix: Replace the API text with: POST https://graph.microsoft.com/beta/identity/conditionalAccess/policies with Content-Type: application/json and JSON body {"displayName":"Block all agent identities from accessing resources","conditions":{"clientApplications":{"includeAgentIdServicePrincipals":["All"],"excludeAgentIdServicePrincipals":[],"agentIdServicePrincipalFilter":null},"applications":{"includeApplications":["All"],"excludeApplications":[]}},"grantControls":{"operator":"AND","builtInControls":["block"]},"state":"enabledForReportingButNotEnforced"}. Add to the existing note: 'This creates a report-only policy; it does not block until enabled after reviewing its impact.' The cited article recommends report-only first. | Source: https://learn.microsoft.com/entra/agent-id/disable-agent-identities#create-conditional-access-policies-to-disable-agent-activities
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: Every control the checklist tells the reader to review has a controls-table row, including Dataverse activity logging. | Found: Before relying on Dataverse and model-driven apps activity logging for reads, review its licensing, Purview permissions and configuration prerequisites. ... The table contains environment auditing, not the distinct activity-logging configuration. | Fix: The Before rollout step reviewing Dataverse and model-driven apps activity logging has no matching control row. Remove that instruction from the checklist; keep the qualified explanatory paragraph and reference under Risk assessment.
-- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: Every control the checklist tells the reader to review has a controls-table row, including Entra role assignments. | Found: Check agent identities' Microsoft Entra role assignments as part of the same review. ... The four control rows do not include Microsoft Entra role assignments. | Fix: The After rollout instruction to check agent identities' Microsoft Entra role assignments has no matching control row. Remove that checklist bullet; the descriptive statement in Risk assessment can remain.
-- [contradicted, minor] Governance controls / consistency: The controls table represents the dedicated tenant-wide availability switch reported as undocumented in the prose. | Found: There is no tenant-wide switch documented that turns Dataverse agent users on or off ... The table has no corresponding row with both surfaces null. | Fix: Remove the standalone sentence about the undocumented tenant-wide switch, since that absence has no corresponding row. Do not add a control row as part of this correction.
+- [supported, minor] controls[3].ui / admin-path: The cited disabling-identities article gives Entra ID > Conditional Access > Policies > New policy > Assignments > Users, agents or workload identities > Include > All agent identities. | Found: Under Assignments, select Users, agents or workload identities. 1. Under Include, select All agent identities | Fix: Keep the path supported by the cited article, but add this qualification to the row note: 'The also-cited autonomous-agent Conditional Access walkthrough inserts What does this policy apply to? > Agents before Include > All agent identities.' Its source is https://learn.microsoft.com/entra/identity/conditional-access/policy-autonomous-agents. | Source: https://learn.microsoft.com/entra/agent-id/disable-agent-identities#create-conditional-access-policies-to-disable-agent-activities
 -->

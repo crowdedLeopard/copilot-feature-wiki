@@ -64,7 +64,7 @@ controls:
     scope: "environment"
     ui:
       surface: "Power Platform admin center"
-      path: "Licensing > Copilot Studio > Summary > Manage Copilot Credits"
+      path: "Licensing > Products > Copilot Studio > Summary > Manage Copilot Credits"
       docs: "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity"
     api:
       kind: "pac-cli"
@@ -75,7 +75,7 @@ controls:
     scope: "agent"
     ui:
       surface: "Power Platform admin center"
-      path: "Licensing > Copilot Studio > Summary > Manage Agents"
+      path: "Licensing > Products > Copilot Studio > Summary > Manage Agents"
       docs: "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity"
     api: null
     note: "Limits are not applied instantly. Learn documents notifications and a hard stop here; it does not say whether they apply to an agent covered by a Microsoft 365 policy."
@@ -105,19 +105,23 @@ changes:
     note: "Corrected the first pre-rollout checklist item: AI Administrator can edit but not create policies, per the setup page, so creation permissions need confirming before a pilot."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 81 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 4
+  - date: "2026-11-17"
+    note: "Corrected the Power Platform admin center paths for capacity allocation and per-agent limits (Products step added), removed an unsupported claim about previous environment-only governance, and narrowed the per-agent limit API statement."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 85 statements not yet confirmed"
+version: 5
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-17"
-  version: 4
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 81
-  confirmed: 78
-  unconfirmed: 1
+  claims: 85
+  confirmed: 83
+  unconfirmed: 0
   contradicted: 2
-  attempts: 3
-  hash: "62ba04c0ff4c046b4a29638b0ffee86f"
+  attempts: 0
+  hash: "8b92979718f0bd0901d69e838bcf4abd"
 ---
 
 ## What's changing
@@ -132,7 +136,7 @@ The roadmap record lists the item as In development, with a General Availability
 
 ## Why it matters
 
-Copilot Studio spend can now be governed from the same Cost Management dashboard that finance and licensing readers already use for other usage-based Copilot services, instead of only from environment-level settings in the Power Platform admin center. That suits a FinOps team that wants one budget view, but it moves the decision about who controls an environment's credits from Power Platform administrators to whoever holds the Microsoft 365 spending-policy roles.
+Copilot Studio spend can now be governed from the same Cost Management dashboard that finance and licensing readers already use for other usage-based Copilot services. That suits a FinOps team that wants one budget view, but it moves the decision about who controls an environment's credits from Power Platform administrators to whoever holds the Microsoft 365 spending-policy roles.
 
 If nobody acts, nothing changes: Learn says existing Power Platform configuration stays in effect until a policy covers it. The risk comes from acting without a plan. A policy set to All environments replaces the Power Platform spending controls for every environment, and AI Builder usage is not covered at all, so agree ownership and pilot on a few environments before anyone enables it.
 
@@ -197,15 +201,15 @@ Caps are the monthly policy limit and the optional per-agent limit in the policy
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Resource-based spending policies for Copilot Studio environments and agents (scope, limits, alerts, billing method)</strong><br><small>Environment</small><br><small class="controls__note">AI administrator and License administrator can edit but not create policies (setup page). Learn documents no Graph call for resource-based policies.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › Add spending policy <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Environment capacity allocation and overage source for Copilot Credits</strong><br><small>Environment</small><br><small class="controls__note">Preview CLI. Does not apply to an environment while a Microsoft 365 resource-based policy covers it.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Copilot Studio › Summary › Manage Copilot Credits <a href="https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform CLI</strong><br><code>pac licensing update-allocations-by-environment</code> <a href="https://learn.microsoft.com/power-platform/developer/cli/reference/licensing" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Monthly Copilot Credit limit for an individual agent</strong><br><small>Agent</small><br><small class="controls__note">Limits are not applied instantly. Learn documents notifications and a hard stop here; it does not say whether they apply to an agent covered by a Microsoft 365 policy.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Copilot Studio › Summary › Manage Agents <a href="https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Environment capacity allocation and overage source for Copilot Credits</strong><br><small>Environment</small><br><small class="controls__note">Preview CLI. Does not apply to an environment while a Microsoft 365 resource-based policy covers it.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Products › Copilot Studio › Summary › Manage Copilot Credits <a href="https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform CLI</strong><br><code>pac licensing update-allocations-by-environment</code> <a href="https://learn.microsoft.com/power-platform/developer/cli/reference/licensing" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Monthly Copilot Credit limit for an individual agent</strong><br><small>Agent</small><br><small class="controls__note">Limits are not applied instantly. Learn documents notifications and a hard stop here; it does not say whether they apply to an agent covered by a Microsoft 365 policy.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Products › Copilot Studio › Summary › Manage Agents <a href="https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Pay-as-you-go billing plan linking environments to an Azure subscription</strong><br><small>Environment</small><br><small class="controls__note">Preview CLI. Environment admin, Power Platform admin, Global admin or Dynamics 365 admin; plus Azure permissions. Does not apply to environments covered by a Microsoft 365 policy.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Pay-as-you-go plans › New billing plan › Azure subscription <a href="https://learn.microsoft.com/power-platform/admin/pay-as-you-go-set-up" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform CLI</strong><br><code>pac licensing create-billing-policy; pac licensing add-billing-policy-environment --billing-policy-id &lt;id&gt; --environment-ids &lt;JSON array&gt;</code> <a href="https://learn.microsoft.com/power-platform/developer/cli/reference/licensing" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
 The first row is the real control; the Power Platform rows are what a covered environment or agent stops using, and they stay in force for anything no policy covers. A resource-based policy cannot be created from an identity-based one: you create a new policy.
 
-Learn documents Microsoft Graph Cost Management API (beta) operations only for policies scoped to all users or to selected groups (allUsersSpendingPolicy and selectedGroupsSpendingPolicy), and warns that beta APIs are subject to change and not supported in production. At the time of writing (November 2026) no Graph call for resource-based policies is documented, nor an API for the Power Platform per-agent limit. The Power Platform CLI commands are marked Preview.
+Learn documents Microsoft Graph Cost Management API (beta) operations only for policies scoped to all users or to selected groups (allUsersSpendingPolicy and selectedGroupsSpendingPolicy), and warns that beta APIs are subject to change and not supported in production. At the time of writing (November 2026) no Graph call for resource-based policies is documented. No Copilot Studio-specific monthly per-agent limit API is documented in these references; Power Platform does document generic environment-resource threshold automation, in [pac licensing](https://learn.microsoft.com/power-platform/developer/cli/reference/licensing). The Power Platform CLI commands are marked Preview.
 
 Creating a pay-as-you-go billing plan needs permission to create resources and register resource providers in the Azure subscription, or help from someone who has it; Environment admins can edit and link only billing policies they created and environments they administer.
 
@@ -213,7 +217,7 @@ Creating a pay-as-you-go billing plan needs permission to create resources and r
 
 - When a resource-based policy limit is reached, what happens to the covered agent, and does the Power Platform per-agent hard stop still apply? Watch the Learn page for resource-based policies.
 - Which role creates resource-based policies? The Copilot Studio page recommends AI Administrator to manage policies, while the setup page says AI administrator can edit but not create them.
-- Will the Microsoft Graph Cost Management API gain a resource-based (environment or agent) policy type, and will the Power Platform per-agent limit get an API?
+- Will the Microsoft Graph Cost Management API gain a resource-based (environment or agent) policy type, and will Microsoft document a Copilot Studio-specific API for the monthly per-agent limit?
 - Where and in what form will cost data appear in the agent registry, which does not list it today?
 - When does the October CY2026 target apply to tenants, and will government clouds be added? Watch Message center and the roadmap item.
 
@@ -223,12 +227,9 @@ cost: Variable. The governed usage is metered in Copilot Credits, billed through
 impact: Low. Administrators and finance or licensing readers configure and read the policies; nothing reaches end users unless an administrator creates a policy.
 -->
 
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Why it matters: instead of only from environment-level settings / behaviour: Before this change, Copilot Studio spending could be governed only through environment-level Power Platform settings. | Found: Searched: "Copilot Studio" "cost management" "previously" "environment"; opened the feature and Power Platform capacity pages. No historical exclusivity statement was found; the capacity page also documents individual-agent limits. | Fix: Remove ', instead of only from environment-level settings in the Power Platform admin center' from the first sentence of Why it matters.
-- [contradicted, blocker] controls[1].ui; Governance controls, second row / admin-path: The documented capacity-allocation path is Licensing > Copilot Studio > Summary > Manage Copilot Credits. | Found: In the Licensing pane, under Products, select Copilot Studio. 4. Select the Summary tab. | Fix: In controls[1].ui.path and the corresponding rendered table cell, use 'Licensing > Products > Copilot Studio > Summary > Manage Copilot Credits'. The documented Products grouping is missing from the middle of the path. | Source: https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity
-- [contradicted, blocker] controls[2].ui; Governance controls, third row / admin-path: The documented agent-limit path is Licensing > Copilot Studio > Summary > Manage Agents. | Found: In the Licensing pane, under Products, select Copilot Studio. 4. On the Summary tab, select Manage Agents. | Fix: In controls[2].ui.path and the corresponding rendered table cell, use 'Licensing > Products > Copilot Studio > Summary > Manage Agents'. The documented Products grouping is missing from the middle of the path. | Source: https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[2].api; Governance controls: no API for the Power Platform per-agent limit; Open questions / absence: No API specifically documented for the Power Platform Copilot Studio monthly per-agent limit was found. | Found: Searched: Copilot Studio per-agent API threshold; Copilot Studio resource threshold entitlement. Read pac licensing and Resource Threshold - Upsert Resource Threshold: generic thresholds are documented, but no Copilot Studio entitlement or monthly-limit mapping is stated. | Fix: Keep controls[2].api null, but narrow the Governance controls sentence and matching Open question to 'No Copilot Studio-specific monthly per-agent limit API is documented in these references; Power Platform does document generic environment-resource threshold automation.' Cite the already listed https://learn.microsoft.com/power-platform/developer/cli/reference/licensing for the generic tooling. Do not present upsert-resource-threshold as a verified Copilot Studio monthly-limit command without its product-specific mapping.
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist's role-separation and role-assignment checks are represented by a controls-table row. | Found: Checklist: 'Separate policy creators, editors and consumption readers' and 'Agree who holds Global administrator or Billing administrator'. The four controls rows cover spending policies, capacity allocation, agent limits and billing plans, not role assignment. | Fix: Move the Before rollout advice about separating creators, editors and readers, and agreeing who holds Global administrator or Billing administrator, to Scope: Roles; the checklist has no corresponding role-assignment control row.
+- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The checklist's consumption-monitoring check is represented by a controls-table row. | Found: Checklist: 'Review consumption by environment and agent in Cost Management and compare it with the limits set.' The controls table has no consumption-monitoring row. | Fix: Move 'Review consumption by environment and agent in Cost Management and compare it with the limits set' from the After rollout checklist to the explanatory Governance controls prose; the checklist has no corresponding monitoring control row.
 -->

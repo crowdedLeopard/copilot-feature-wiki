@@ -4,7 +4,7 @@ slug: "power-apps-expand-model-access-and-maker-studio-availability-for-generati
 roadmapId: 576285
 topic: "power-platform"
 products: ["Power Apps"]
-summary: "Makers can connect a GitHub account to choose more models for the generative page agent, extending it to regions without Power Apps GPU capacity."
+summary: "Microsoft plans to let makers connect a GitHub account to choose more models for the generative page agent, with a planned extension to regions without Power Apps GPU capacity."
 status: "in-development"
 releasePhase: ["General Availability"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -68,7 +68,7 @@ controls:
     api: null
 confidence: "medium"
 created: "2026-11-14"
-updated: "2026-11-16"
+updated: "2026-11-17"
 roadmapModified: "2026-10-23T21:59:27"
 changes:
   - date: "2026-11-14"
@@ -81,32 +81,36 @@ changes:
     note: "Corrected unsupported statements on data flow, billing and account type; added notes that the two tenant controls are not confirmed for generative pages."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 36 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-17"
+    note: "Corrected: removed the unsupported statement about GitHub organisation policies, attributed the GitHub connection and regional extension to the roadmap's plans, and added the Manage > Tenant settings route."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 38 statements confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-17"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 36
-  confirmed: 35
+  claims: 38
+  confirmed: 38
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "4a16fcfeb6f69ad3cc9aaca79b6d7ea1"
+  contradicted: 0
+  attempts: 0
+  hash: "408c926152afe9fcee1fc9c578939721"
 ---
 
 ## What's changing
 
-Makers can connect a GitHub account to reach more model options for the built-in generative page coding agent in the generative page designer in Maker Studio. They can create and refine pages without leaving Power Apps.
+Microsoft plans to let makers connect a GitHub account to access additional models for the built-in generative page coding agent in Maker Studio. They can create and refine pages without leaving Power Apps.
 
-The integration also brings Maker Studio generative page authoring to regions without dedicated Power Apps GPU capacity. The roadmap says model availability through GitHub may evolve and that requests consume the maker's GitHub credits.
+The roadmap also plans to extend Maker Studio generative page authoring to regions without dedicated Power Apps GPU capacity. The roadmap says model availability through GitHub may evolve and that requests consume the maker's GitHub credits.
 
 General availability is listed for November CY2026 in the weekly channel, version 2611.1, Worldwide only. Learn currently says GPT-4.1 is the only model in the maker experience, so this adds choice.
 
 ## Why it matters
 
-The roadmap introduces a GitHub connection, but Microsoft has not documented this path's processing boundaries. Verify the data flow and residency before using sensitive data. For tenants with data residency commitments, this matters, especially as the feature extends to regions that lack local GPU capacity.
+The roadmap introduces a GitHub connection, but Microsoft has not documented this path's processing boundaries. Verify the data flow and residency before using sensitive data. For tenants with data residency commitments, this matters, especially as the roadmap plans to extend the feature to regions that lack local GPU capacity.
 
 The roadmap says requests consume the maker's GitHub credits. Agree who funds that usage.
 
@@ -159,7 +163,7 @@ Makers using Maker Studio generative pages in model-driven apps. Roadmap cloud: 
 </tbody>
 </table>
 
-The GitHub connection toggle is documented for the canvas studio authoring agent, and Microsoft has not confirmed that it governs generative pages. It is listed on the [tenant settings page](https://learn.microsoft.com/power-platform/admin/tenant-settings). `Set-TenantSettings` and `pac admin update-tenant-settings` manage tenant settings generally, but Learn gives no property name for this one, so it is treated as portal-only. Generally available Copilot features in Power Apps can only be turned off through Microsoft Support. GitHub organisation policies on the developer side are outside Microsoft's documentation.
+The GitHub connection toggle is documented for the canvas studio authoring agent, and Microsoft has not confirmed that it governs generative pages. It is listed on the [tenant settings page](https://learn.microsoft.com/power-platform/admin/tenant-settings). `Set-TenantSettings` and `pac admin update-tenant-settings` manage tenant settings generally, but Learn gives no property name for this one, so it is treated as portal-only. Generally available Copilot features in Power Apps can only be turned off through Microsoft Support. The tenant-settings reference gives a different route to the Tenant settings page from the one in the second row: Manage > Tenant settings ([Tenant settings](https://learn.microsoft.com/power-platform/admin/tenant-settings)).
 
 ## Open questions
 
@@ -173,14 +177,4 @@ The GitHub connection toggle is documented for the canvas studio authoring agent
 risk: Medium. The planned GitHub model-access path introduces data-flow and account-governance questions that should be resolved before makers use sensitive data.
 cost: Variable. The roadmap says requests consume the maker's GitHub credits; detailed billing arrangements for this path are not yet published.
 impact: Low. It affects makers in model-driven apps who author generative pages.
--->
-
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls: final sentence / absence: GitHub organisation policies on the developer side are outside Microsoft's documentation. | Found: If your GitHub organization has non-Microsoft application access restrictions enabled, an organization administrator must approve the OAuth app used by the Power Apps GitHub connector. | Fix: Remove 'GitHub organisation policies on the developer side are outside Microsoft's documentation.' Microsoft documents GitHub organisation access restrictions for a different Power Apps integration; this does not establish that those restrictions govern generative-page model access. | Source: https://learn.microsoft.com/power-platform/alm/git-integration/connecting-to-github#create-a-github-connection
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] summary; What's changing; Risk assessment: Security & identity / record: Makers can connect a GitHub account to access additional models for the built-in generative page coding agent in Maker Studio. | Found: Connect your GitHub account to access additional model options for the built-in gen page coding agent directly in the generative page designer in Maker Studio. | Fix: Attribute the planned capability explicitly: begin the summary and the opening What's changing paragraph with 'Microsoft plans to let makers connect a GitHub account to access additional models for the built-in generative page coding agent in Maker Studio.' The roadmap still says In development.
-- [supported, minor] summary; What's changing; Why it matters / record: The integration extends Maker Studio generative page authoring to regions without dedicated Power Apps GPU capacity. | Found: This integration also brings Maker Studio generative page authoring to regions without dedicated Power Apps GPU capacity. | Fix: Present this extension as planned wherever repeated: 'The roadmap also plans to extend Maker Studio generative page authoring to regions without dedicated Power Apps GPU capacity.' In the summary use 'with a planned extension to regions without Power Apps GPU capacity'.
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: The Copilot preview tenant control is under Power Platform admin center > Settings > Tenant settings > Copilot in Power Apps (preview). | Found: In the navigation pane, select Settings to open the Tenant settings page. 3. Select Copilot in Power Apps (preview), and then set the toggle to Off. | Fix: Keep the cited path, but add: 'The tenant-settings reference gives a different route to the same page: Manage > Tenant settings (https://learn.microsoft.com/power-platform/admin/tenant-settings).' | Source: https://learn.microsoft.com/power-apps/maker/canvas-apps/ai-overview#enable-or-disable-copilot-features
 -->

@@ -37,6 +37,9 @@ sources:
   - title: "Manage agent registry in Microsoft 365 admin center"
     url: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview"
     kind: "learn"
+  - title: "copilotPackage: block"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
+    kind: "learn"
   - title: "Manage Copilot personalization and memory"
     url: "https://learn.microsoft.com/copilot/manage/copilot-personalization-memory"
     kind: "learn"
@@ -47,7 +50,7 @@ sources:
     url: "https://learn.microsoft.com/microsoft-365/admin/activity-reports/planner-activity"
     kind: "learn"
 videos: []
-related: ["m365-copilot-agent-lifecycle-management-rules","planner-save-ai-generated-filters-in-planner-agent-chat"]
+related: ["planner-save-ai-generated-filters-in-planner-agent-chat"]
 controls:
   - governs: "Availability of Planner Agent in Microsoft Copilot (tenant-wide block)"
     scope: "tenant"
@@ -55,13 +58,16 @@ controls:
       surface: "Microsoft 365 admin center"
       path: "Agents > All agents > agent > Block"
       docs: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions"
-    api: null
-    note: "Learn gives this path for agents generally. The notice says Planner Agent availability is managed in the admin center; the Planner Agent entry is not shown on the Learn page."
+    api:
+      kind: "graph"
+      call: "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block"
+      docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
+    note: "General agent control; Planner Agent entry not shown on Learn. API is beta, unsupported for production, needs Agent 365 licence and delegated CopilotPackages.ReadWrite.All; Planner applicability not established."
   - governs: "Whether Planner Agent is pinned for users or groups"
     scope: "group"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Agents > All agents > ellipsis menu > Manage pinned agents"
+      path: "Agents > All agents > Registry > ellipsis menu > Manage pinned agents"
       docs: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview"
     api: null
     note: "AI Administrator role, per the notice. Up to three admin-pinned agents; can take up to six hours to appear. Visibility only, not an access control."
@@ -88,25 +94,30 @@ controls:
     note: "Not documented at the time of writing. Users manage their own catch-up schedules."
 confidence: "medium"
 created: "2026-11-16"
-updated: "2026-11-16"
+updated: "2026-11-17"
 roadmapModified: "2026-10-14T23:01:02"
 changes:
   - date: "2026-11-16"
     note: "New briefing: Microsoft's notice MC1539002 sets rollout for early December 2026 with an act-by date of 2026-12-04, later than the roadmap's October CY2026 target."
   - date: "2026-11-16"
     note: "Corrected after verification: risk and impact raised to High, pinning path now includes the ellipsis menu, and the unsupported 'not a charge' wording is removed."
-version: 2
+  - date: "2026-11-17"
+    note: "Corrected after verification: the Block control now cites the beta Microsoft Graph copilotPackage block call with its caveats, and the pinning path includes the Registry step."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 94 statements contradicted, 1 unconfirmed; taken offline until corrected"
+version: 3
 verification:
   status: "held"
-  date: "2026-11-16"
-  version: 2
+  date: "2026-11-17"
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 90
-  confirmed: 88
-  unconfirmed: 0
-  contradicted: 2
-  attempts: 2
+  claims: 94
+  confirmed: 92
+  unconfirmed: 1
+  contradicted: 1
+  attempts: 3
+  hash: "602367344f0e262cfcfbdfdee9cb6305"
 ---
 
 ## What's changing
@@ -176,7 +187,7 @@ No price, meter or Copilot Credits rate for task assignment, scheduled catch-up 
 
 ### At rollout
 
-- Pin Planner Agent if you want it visible: Agents > All agents > ellipsis menu > Manage pinned agents, as an AI Administrator (second controls row). Allow up to six hours for it to appear.
+- Pin Planner Agent if you want it visible: Agents > All agents > Registry > ellipsis menu > Manage pinned agents, as an AI Administrator (second controls row). Allow up to six hours for it to appear.
 - Watch Message center for changes to MC1539002 during early December 2026 and the end date of 2027-01-08.
 - Update internal documentation and training with the new assignment, catch-up and memory behaviour, as the notice recommends.
 
@@ -193,15 +204,17 @@ No price, meter or Copilot Credits rate for task assignment, scheduled catch-up 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Availability of Planner Agent in Microsoft Copilot (tenant-wide block)</strong><br><small>Tenant</small><br><small class="controls__note">Learn gives this path for agents generally. The notice says Planner Agent availability is managed in the admin center; the Planner Agent entry is not shown on the Learn page.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › agent › Block <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether Planner Agent is pinned for users or groups</strong><br><small>Group</small><br><small class="controls__note">AI Administrator role, per the notice. Up to three admin-pinned agents; can take up to six hours to appear. Visibility only, not an access control.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › ellipsis menu › Manage pinned agents <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Availability of Planner Agent in Microsoft Copilot (tenant-wide block)</strong><br><small>Tenant</small><br><small class="controls__note">General agent control; Planner Agent entry not shown on Learn. API is beta, unsupported for production, needs Agent 365 licence and delegated CopilotPackages.ReadWrite.All; Planner applicability not established.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › agent › Block <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether Planner Agent is pinned for users or groups</strong><br><small>Group</small><br><small class="controls__note">AI Administrator role, per the notice. Up to three admin-pinned agents; can take up to six hours to appear. Visibility only, not an access control.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › Registry › ellipsis menu › Manage pinned agents <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Copilot memory used by Planner Agent (Enhanced personalization)</strong><br><small>Tenant</small><br><small class="controls__note">Beta API; People Administrator is the least privileged role. General Copilot memory control, on by default; the memory Learn page is preview.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH https://graph.microsoft.com/beta/copilot/settings/people/enhancedpersonalization (isEnabledInOrganization, disabledForGroup)</code> <a href="https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-update?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Planner Agent access in Planner (not Copilot Chat)</strong><br><small>Tenant</small><br><small class="controls__note">Documented for Planner Agent in Planner; Microsoft has not confirmed it applies to Planner Agent in Copilot Chat. Changes can take up to 1 hour.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-PlannerConfiguration -AllowPlannerCopilot $true -PlannerCopilotAllowedGroupId &lt;security group id&gt;</code> <a href="https://learn.microsoft.com/planner/turn-off-planner-agent" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Switch for scheduled task catch-up or task assignment</strong><br><small>Tenant</small><br><small class="controls__note">Not documented at the time of writing. Users manage their own catch-up schedules.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-Availability and pinning share the Agents area of the Microsoft 365 admin center. Learn describes Block as an organisation-wide action for an agent, and the notice says administrators manage Planner Agent availability there. Learn does not show the Planner Agent entry itself, so check which actions it offers. No block or pin API is documented on the pages read at the time of writing.
+Availability and pinning share the Agents area of the Microsoft 365 admin center. Learn describes Block as an organisation-wide action for an agent, and the notice says administrators manage Planner Agent availability there. Learn does not show the Planner Agent entry itself, so check which actions it offers.
+
+Learn also documents a beta Microsoft Graph call that blocks a Copilot package (first controls row). It requires Microsoft Agent 365 licensing and the delegated CopilotPackages.ReadWrite.All permission, and is not supported for production applications. It is a general package control, and its applicability to Planner Agent has not been established.
 
 Set-PlannerConfiguration is documented for Planner Agent inside Planner. The same Learn page sends administrators to the Microsoft 365 admin center for Planner Agent in Microsoft Copilot, and Microsoft has not confirmed the cmdlet governs Copilot Chat, so do not rely on it for this change.
 
@@ -221,9 +234,9 @@ cost: Low. Microsoft's notice names an active Microsoft Copilot licence as the r
 impact: High. The additions change default behaviour for every user with a Microsoft Copilot licence and access to Planner Agent, and the notice says they are enabled by default; users notice new assignment, catch-up and memory behaviour in Copilot Chat.
 -->
 
-<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
-The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [contradicted, blocker] controls[0].api; Governance controls table; Governance controls, first paragraph / absence: No API for the general organisation-wide agent-blocking control is documented. | Found: Block a Copilot package to prevent its usage. ... Access to the Package Management API requires a Microsoft Agent 365 license. ... POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block | Fix: Replace the null API with the general beta Graph call POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block and cite this reference. State that it requires Microsoft Agent 365 licensing and delegated CopilotPackages.ReadWrite.All, is not supported for production applications, and is a general package control whose Planner-specific applicability has not been established. Remove the blanket no-block-API wording. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block
-- [supported, minor] controls[1].ui; Governance controls table; Governance guidance: At rollout / admin-path: Manage pinned agents is reached through Agents > All agents > ellipsis menu > Manage pinned agents. | Found: select Agents > All Agents > Registry. ... In the All agents page, select the ellipse on the right to display a dropdown menu. ... Select the Manage pinned agents. | Fix: Include the Registry tab in the structured and rendered paths: Agents > All agents > Registry > ellipsis menu > Manage pinned agents. The ellipsis step itself is supported; the automatic pre-check's missing-word result is cosmetic. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview
-- [contradicted, minor] Risk assessment: Change & support; Governance guidance: After rollout; Governance controls / consistency: The checklist tells administrators to review Planner Agent usage in the Copilot Agents report, but the controls table has no reporting row. | Found: Review Planner Agent use in the Microsoft 365 Copilot Agents report, because the Planner usage report does not cover it. | The controls table lists blocking, pinning, memory, Planner access and a missing feature switch, but no reporting control. | Fix: Add a Planner Agent usage-monitoring row. The cited https://learn.microsoft.com/microsoft-365/admin/activity-reports/planner-activity states: 'This report covers Planner Usage only for basic and premium plans. Planner Agent is included in the Microsoft Copilot Agents report.' Follow its linked Copilot Agents reporting documentation for the exact UI and any automation equivalent before populating that row.
+<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[2].api / command: The printed PATCH call with '(isEnabledInOrganization, disabledForGroup)' is a usable configuration call for Enhanced personalization. | Found: | isEnabledInOrganization | Boolean | If true, enables the enhanced personalization control and therefore related features as defined in control enhanced personalization privacy Required. | | Fix: Replace the call with 'PATCH https://graph.microsoft.com/beta/copilot/settings/people/enhancedpersonalization' and supply 'Content-Type: application/json' with the JSON body '{"isEnabledInOrganization": false}' to turn the control off tenant-wide. Remove the parenthesised property list. The cited reference requires a Boolean value in the request body, not bare property names. | Source: https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-update?view=graph-rest-beta
+- [unsupported, major] Risk assessment: Data exposure, first bullet / behaviour: A user can save a catch-up suggestion drawn from a private message into a shared plan. | Found: Searched: "Planner Agent" "shared" "email" "suggestions"; "Planner Agent" "catch-up" "assignment". Read MC1539002 and returned Learn excerpts. The notice says suggestions save to Planner, but does not state that catch-up offers shared-plan destinations. | Fix: Replace 'A user can still save a suggestion drawn from a private message into a shared plan' with the analytical caution 'Consider the risk of users moving information from private messages into shared plans'. Keep the supported statement that suggestions show their sources and remain drafts until saved.
 -->

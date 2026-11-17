@@ -3,36 +3,36 @@
   "roadmapId": 577869,
   "title": "Power Automate: AI-assisted UI automation repair in the desktop flow designer",
   "status": "held",
-  "date": "2026-11-16",
-  "version": 3,
+  "date": "2026-11-17",
+  "version": 4,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 2,
+  "attempts": 3,
   "verifierVerdict": "hold",
   "notes": [],
   "hold": {
     "reason": "failed",
     "since": "2026-11-16",
     "reasons": [
-      "4 blocking findings (claims 20, 38, 42, 43)"
+      "2 blocking findings (claims 22, 38)"
     ]
   },
   "counts": {
     "claims": 51,
-    "confirmed": 47,
-    "unconfirmed": 2,
+    "confirmed": 49,
+    "unconfirmed": 0,
     "contradicted": 2,
-    "blocker": 4,
+    "blocker": 2,
     "major": 0,
     "minor": 0
   },
-  "summary": "Hold: the governance checklist sends readers to solution history for selector changes, but Microsoft documents solution operations there, not selector comparisons. The feedback API entry is not a runnable command, and the proposed maker-group enablement is not documented. The feature description, roadmap dates and preview licensing are supported.",
+  "summary": "Hold: the table incorrectly says automation for the earlier runtime-repair control is undocumented; Microsoft publishes its writable Dataverse settings. The statement that Microsoft gives no initial state for shared Power Automate Copilot also overlooks the cited overview's on-by-default guidance.",
   "claims": [
     {
       "n": 1,
       "where": "front matter: status",
       "type": "record",
-      "claim": "The roadmap status is in development.",
+      "claim": "The roadmap status is In development.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
@@ -41,9 +41,20 @@
     },
     {
       "n": 2,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap lists Power Automate and Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Power Automate\", \"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
-      "claim": "The roadmap general availability target is March CY2027.",
+      "claim": "The roadmap lists general availability for March CY2027.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"targetDate\": \"March CY2027\"",
@@ -51,10 +62,10 @@
       "fix": null
     },
     {
-      "n": 3,
+      "n": 4,
       "where": "front matter: previewDate; What's changing",
       "type": "record",
-      "claim": "The roadmap preview date is July CY2026.",
+      "claim": "The roadmap lists a preview date of July CY2026.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": \"July CY2026\"",
@@ -62,10 +73,10 @@
       "fix": null
     },
     {
-      "n": 4,
+      "n": 5,
       "where": "front matter: releasePhase",
       "type": "record",
-      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "claim": "The roadmap release phases are General Availability and Preview.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
@@ -73,7 +84,7 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 6,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
       "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
@@ -84,24 +95,13 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 7,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap lists Web as the platform.",
+      "claim": "The roadmap platform is Web.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Web\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
-      "where": "front matter: products",
-      "type": "record",
-      "claim": "The roadmap associates this item with Power Automate and Microsoft Copilot (Microsoft 365).",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"products\": [\"Power Automate\", \"Microsoft Copilot (Microsoft 365)\"]",
       "severity": null,
       "fix": null
     },
@@ -118,17 +118,28 @@
     },
     {
       "n": 9,
-      "where": "summary; What's changing",
+      "where": "title; What's changing",
       "type": "record",
-      "claim": "A new agentic debug run opens a repair interface while the flow runs.",
+      "claim": "Microsoft plans an agentic debug run in the flow designer.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "A new agentic debug run feature will be available in the flow designer. The UI automation repair interface launches while the flow is running",
+      "quote": "A new agentic debug run feature will be available in the flow designer.",
       "severity": null,
       "fix": null
     },
     {
       "n": 10,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The UI automation repair interface opens while the flow runs.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The UI automation repair interface launches while the flow is running",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
       "where": "summary; What's changing",
       "type": "record",
       "claim": "The debug run validates each selector used in the flow.",
@@ -139,10 +150,21 @@
       "fix": null
     },
     {
-      "n": 11,
+      "n": 12,
+      "where": "summary; What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "An eligible selector failure prompts the maker to capture the intended UI element.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/ai-assisted-ui-automation-repair",
+      "quote": "When an eligible selector-related failure occurs, the system prompts you to capture the target element and its current selector.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
       "where": "summary; What's changing",
       "type": "record",
-      "claim": "When an existing selector fails, the interface proposes a replacement after the maker captures the element.",
+      "claim": "The system proposes a replacement selector after the user captures the element for reference.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "It then proposes a new selector in case an existing one does not work as expected, after the user captures the respective element for reference.",
@@ -150,21 +172,10 @@
       "fix": null
     },
     {
-      "n": 12,
-      "where": "title; What's changing; Scope; rationale: impact",
-      "type": "behaviour",
-      "claim": "This capability helps makers repair UI and browser automation in Power Automate for desktop.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/desktop-flows/ai-assisted-ui-automation-repair",
-      "quote": "AI-assisted UI automation repair (preview) in Power Automate for desktop is an AI-powered capability that helps makers repair UI and browser automation actions when selector-related failures occur during debugging.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
+      "n": 14,
       "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The maker starts debugging with Run with AI-assisted UI Automation Repair in the flow designer.",
+      "type": "admin-path",
+      "claim": "The designer option is named Run with AI-assisted UI Automation Repair.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/desktop-flows/ai-assisted-ui-automation-repair",
       "quote": "In the flow designer, select the option Run with AI-assisted UI Automation Repair to start debugging the flow with the AI system's assistance.",
@@ -172,10 +183,10 @@
       "fix": null
     },
     {
-      "n": 14,
-      "where": "What's changing",
+      "n": 15,
+      "where": "What's changing; Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "The maker can review, edit and test the proposed selector.",
+      "claim": "Makers can review, edit and test proposed selectors.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/desktop-flows/ai-assisted-ui-automation-repair",
       "quote": "Review, edit, and test the proposed selector.",
@@ -183,7 +194,7 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 16,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "The maker can accept the proposal, recapture the element or skip the suggestion.",
@@ -194,21 +205,21 @@
       "fix": null
     },
     {
-      "n": 16,
-      "where": "What's changing; Cost and licensing",
+      "n": 17,
+      "where": "What's changing; licensing.notes; Scope",
       "type": "availability",
-      "claim": "Learn documents AI-assisted UI automation repair as a preview feature.",
+      "claim": "Learn documents AI-assisted UI automation repair as a preview.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/desktop-flows/ai-assisted-ui-automation-repair",
-      "quote": "This is a preview feature.",
+      "quote": "AI-assisted UI automation repair (preview)\n[This topic is prerelease documentation and is subject to change.]",
       "severity": null,
       "fix": null
     },
     {
-      "n": 17,
+      "n": 18,
       "where": "What's changing; Scope",
       "type": "availability",
-      "claim": "Power Automate for desktop version 2.70 or later is required.",
+      "claim": "The feature requires Power Automate for desktop version 2.70 or later.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/desktop-flows/ai-assisted-ui-automation-repair",
       "quote": "You need version 2.70 or higher for Power Automate for desktop.",
@@ -216,54 +227,54 @@
       "fix": null
     },
     {
-      "n": 18,
+      "n": 19,
       "where": "Why it matters",
       "type": "behaviour",
-      "claim": "Application or web-page UI changes can cause selector failures and maintenance work.",
+      "claim": "UI or web-page changes and broken selectors commonly require UI automation maintenance.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/desktop-flows/ai-assisted-ui-automation-repair",
-      "quote": "Flows with UI and web automation actions often require maintenance when: Desktop applications or web pages change their UI structure. Existing selectors no longer uniquely identify the intended element.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "Why it matters; Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "The feature analyzes the failing selector and a newly captured selector of the intended UI element.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/desktop-flows/ai-assisted-ui-automation-repair",
-      "quote": "the feature analyzes the failing selector together with a newly captured selector of the same UI element and proposes a more resilient selector that makers can review, test, and apply.",
+      "quote": "Flows with UI and web automation actions often require maintenance when:\n- Desktop applications or web pages change their UI structure.\n- Existing selectors no longer uniquely identify the intended element.",
       "severity": null,
       "fix": null
     },
     {
       "n": 20,
-      "where": "Why it matters",
+      "where": "Why it matters; Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Repaired selectors change production-flow behavior once saved.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/power-automate/desktop-flows/version-control",
-      "quote": "Save draft: Save your latest changes without releasing them as the official version. ... Publish: Set a version as official so it runs from the console or cloud.",
-      "severity": "blocker",
-      "fix": "Replace 'Repaired selectors change the behaviour of production flows once saved.' with 'Selector changes are permanently saved when the maker saves the flow.' The repair article supports persistence, not the claim that saving alone updates production execution in environments with version control."
+      "claim": "The feature uses the failing selector and newly captured UI-element selector to generate a proposal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/ai-assisted-ui-automation-repair",
+      "quote": "the feature analyzes the failing selector together with a newly captured selector of the same UI element and proposes a more resilient selector",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 21,
-      "where": "Risk assessment: Change & support",
+      "where": "Why it matters; Governance guidance: After rollout",
       "type": "behaviour",
-      "claim": "Accepting a suggested selector updates the affected action.",
+      "claim": "Selector changes become permanently saved when the maker saves the flow.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/desktop-flows/ai-assisted-ui-automation-repair",
-      "quote": "If the maker accepts the suggested selector, it's added to the selectors list of the affected element, so that the action is updated accordingly and the flow can continue to run.",
+      "quote": "The changes are permanently saved when you save the flow, as is the case with any other edits in the flow.",
       "severity": null,
       "fix": null
     },
     {
       "n": 22,
-      "where": "Risk assessment: Security & identity; rationale: risk",
+      "where": "Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "Microsoft has not stated an initial state for the shared Copilot in Power Automate setting.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-automate/copilot-overview#enable-or-disable-copilot-in-power-automate",
+      "quote": "If a region has GPUs (UK, Australia, US, India), Microsoft turns on Copilot by default.",
+      "severity": "blocker",
+      "fix": "Replace the final sentence of Why it matters with: 'The repair article does not specify the initial state of its required setting; the broader Copilot in Power Automate overview says Copilot is on by default, but describes tenant-level rather than environment-level controls.' Replace 'Microsoft documents no initial state for it' in the risk rationale with 'the repair article does not specify its initial state'. Keep defaultState unknown for the designer feature rather than inferring its arrival behaviour from the broader overview."
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Security & identity; rationale: risk; rationale: impact",
       "type": "behaviour",
-      "claim": "AI-assisted UI automation repair runs only through the flow designer during debugging.",
+      "claim": "AI-assisted UI automation repair runs only through the flow designer during debugging, rather than ordinary attended or unattended runtime.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/desktop-flows/ai-assisted-ui-automation-repair",
       "quote": "AI-assisted UI automation repair is a debugging capability, available only through the flow designer. It doesn't automatically repair selectors during unattended or attended runtime execution.",
@@ -271,32 +282,32 @@
       "fix": null
     },
     {
-      "n": 23,
+      "n": 24,
       "where": "Risk assessment: Security & identity",
       "type": "absence",
-      "claim": "Microsoft describes no new identity or permission model for this repair feature.",
+      "claim": "Microsoft describes no new identity or permission model for this feature.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"AI-assisted UI automation repair\" \"identity\" \"languages\" \"general availability\". Opened the repair article, including prerequisites and required admin configuration; no new identity or permission model is specified.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "Risk assessment: Autonomy & actions; rationale: risk",
-      "type": "behaviour",
-      "claim": "Applying a repair requires maker capture and approval rather than autonomous modification.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/desktop-flows/ai-assisted-ui-automation-repair",
-      "quote": "The maker recaptures the intended UI element. ... Requires user review and approval before it applies selector changes. Doesn't automatically modify flows without user interaction.",
+      "quote": "Searched: 'AI-assisted UI automation repair' 'permission' 'identity' 'settings'; 'AI-assisted UI automation repair' 'roles' 'permissions'. Opened the repair article and desktop Copilot prerequisites; neither specifies a new identity or permission model.",
       "severity": null,
       "fix": null
     },
     {
       "n": 25,
+      "where": "Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "behaviour",
+      "claim": "Applying a repair requires human approval rather than autonomous flow modification.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/ai-assisted-ui-automation-repair",
+      "quote": "Requires user review and approval before it applies selector changes.\nDoesn't automatically modify flows without user interaction.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "Skipping a suggestion without error handling stops the debugging run.",
+      "claim": "Skipping a suggestion without error handling stops the AI-assisted debug run.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/desktop-flows/ai-assisted-ui-automation-repair",
       "quote": "If you skip the suggestion and no error handling is in place, the run throws an error and the AI-assisted debugging run stops.",
@@ -304,10 +315,21 @@
       "fix": null
     },
     {
-      "n": 26,
-      "where": "front matter: licensing.model; Cost and licensing; Scope; rationale: cost",
+      "n": 27,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Accepting a selector changes the affected action's behaviour.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/ai-assisted-ui-automation-repair",
+      "quote": "If the maker accepts the suggested selector, it's added to the selectors list of the affected element, so that the action is updated accordingly and the flow can continue to run.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "front matter: licensing.model",
       "type": "licensing",
-      "claim": "The preview is included for organization premium accounts at no extra cost.",
+      "claim": "The preview licensing model is included for the organization premium accounts specified in the notes.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/desktop-flows/ai-assisted-ui-automation-repair",
       "quote": "AI-assisted UI automation repair in Power Automate for desktop is currently available for organization premium accounts at no extra cost.",
@@ -315,9 +337,31 @@
       "fix": null
     },
     {
-      "n": 27,
-      "where": "front matter: licensing.notes; Cost and licensing",
+      "n": 29,
+      "where": "licensing.notes; Cost and licensing; Scope",
       "type": "licensing",
+      "claim": "The preview is available for organization premium accounts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/ai-assisted-ui-automation-repair",
+      "quote": "AI-assisted UI automation repair in Power Automate for desktop is currently available for organization premium accounts",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "licensing.notes; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "The preview has no extra cost for those organization premium accounts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/ai-assisted-ui-automation-repair",
+      "quote": "currently available for organization premium accounts at no extra cost",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "licensing.notes; Cost and licensing",
+      "type": "cost",
       "claim": "Usage might be subject to service limits or changes.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/desktop-flows/ai-assisted-ui-automation-repair",
@@ -326,54 +370,43 @@
       "fix": null
     },
     {
-      "n": 28,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost; Open questions",
+      "n": 32,
+      "where": "licensing.notes; Cost and licensing; Open questions; rationale: cost",
       "type": "absence",
-      "claim": "General availability pricing, licensing and any Copilot Credits requirement have not yet been published for this feature.",
+      "claim": "General-availability licensing and pricing for this repair feature are not yet published.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"AI-assisted UI automation repair\" pricing general availability credits admin disable. Opened the repair article and read licensing search results; only current preview no-extra-cost terms were found, not GA pricing or credit requirements.",
+      "quote": "Searched: 'AI-assisted UI automation repair' 'licensing' 'general availability'; 'AI-assisted UI automation repair' admin disable setting API licence general availability Copilot Credits. Opened repair preview and Types of Power Automate licenses; no GA-specific charge or licence found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 29,
+      "n": 33,
       "where": "Cost and licensing; Governance controls; rationale: risk",
       "type": "applicability",
       "claim": "AI-assisted repair requires the shared Copilot in Power Automate admin setting.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/desktop-flows/ai-assisted-ui-automation-repair",
-      "quote": "requires the same Copilot prerequisite as other AI-powered capabilities in Power Automate: ... Under the Power Automate section, select Copilot in Power Automate, and then enable the On check box",
+      "quote": "AI-assisted UI automation repair relies on generative AI models and requires the same Copilot prerequisite as other AI-powered capabilities in Power Automate",
       "severity": null,
       "fix": null
     },
     {
-      "n": 30,
-      "where": "front matter: defaultState; Why it matters; rationale: risk",
-      "type": "default",
-      "claim": "The feature-specific arrival default is unknown, including the initial state of its shared prerequisite for this preview.",
+      "n": 34,
+      "where": "front matter: defaultState",
+      "type": "absence",
+      "claim": "The arrival default of the designer repair feature itself is not stated.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"AI-assisted UI automation repair\" \"default\" \"setting\". Read the roadmap, repair article and Copilot overview. The feature article gives an enablement prerequisite, not its arrival default; the overview's broader defaults do not settle this preview's environment setting.",
+      "quote": "Searched: 'AI-assisted UI automation repair' 'default' 'enabled' 'environment'. Opened repair article, Copilot hub and Copilot overview. Repair article gives a prerequisite, not its initial state; overview's generic on-by-default guidance does not establish this designer feature's arrival state.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 31,
-      "where": "Scope",
-      "type": "availability",
-      "claim": "Other Copilot in Power Automate for desktop capabilities have regional and account-type restrictions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/desktop-flows/copilot-in-power-automate-for-desktop",
-      "quote": "Create flows using Copilot (preview) - United States ... Currently, Copilot in Power Automate for desktop is only available for users with a work or school account.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
+      "n": 35,
       "where": "controls[0].ui; Governance controls table",
       "type": "admin-path",
-      "claim": "The documented path is Power Platform admin center > Copilot > Settings > Power Automate > Copilot in Power Automate > On.",
+      "claim": "The repair article gives Power Platform admin center > Copilot > Settings > Power Automate > Copilot in Power Automate > On.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/desktop-flows/ai-assisted-ui-automation-repair#how-to-turn-on-and-use-the-feature",
       "quote": "In Power Platform admin center, go to Copilot > Settings. Under the Power Automate section, select Copilot in Power Automate, and then enable the On check box in the displayed pane.",
@@ -381,32 +414,43 @@
       "fix": null
     },
     {
-      "n": 33,
-      "where": "controls[0].api; Governance controls",
+      "n": 36,
+      "where": "controls[0].api; Governance controls table and prose",
       "type": "absence",
-      "claim": "An API equivalent for the environment-level Copilot in Power Automate prerequisite is not documented.",
+      "claim": "An API equivalent for the environment's shared Copilot in Power Automate setting is not documented.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Copilot in Power Automate\" \"Set-Environment\" API setting repair. Read repair, Copilot hub, overview and List tenant settings. The latter's disableCopilot explicitly governs cloud flows, not a documented API for this desktop-repair prerequisite.",
+      "quote": "Searched: 'Copilot in Power Automate' setting API PowerShell pac admin environment; site:learn.microsoft.com/rest/api/power-platform 'Copilot' 'settings' 'Power Automate'. Opened pac admin, Dataverse organization Web API reference and tenant settings; no equivalent setting identified.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 34,
+      "n": 37,
       "where": "controls[1].ui; Governance controls table",
       "type": "admin-path",
-      "claim": "Runtime repair configuration is under Manage > Environments > environment > Settings > Product > Features > Desktop flow repair at runtime configuration in Power Platform admin center.",
+      "claim": "The runtime configuration is at Manage > Environments > environment > Settings > Product > Features > Desktop flow repair at runtime configuration.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/settings-features#desktop-flow-repair-at-runtime-configuration-preview",
-      "quote": "select Manage. ... select Environments. ... select an environment. ... select Settings. ... Expand Product, and then select Features. ... Desktop flow repair at runtime configuration (preview)",
+      "quote": "select Manage. ... select Environments. ... select an environment. ... select Settings. ... Expand Product, and then select Features.\nDesktop flow repair at runtime configuration (preview)",
       "severity": null,
       "fix": null
     },
     {
-      "n": 35,
+      "n": 38,
+      "where": "controls[1].api; Governance controls table",
+      "type": "absence",
+      "claim": "API automation for Desktop flow repair at runtime is not yet documented.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/organization#writable-columns-attributes",
+      "quote": "Writable columns/attributes ... LogicalName | isdesktopflowruntimerepairattendedenabled ... LogicalName | isdesktopflowruntimerepairunattendedenabled",
+      "severity": "blocker",
+      "fix": "Remove the Desktop flow repair at runtime row from controls and the rendered table rather than reporting its automation as undocumented. Microsoft documents writable organization columns isdesktopflowruntimerepairattendedenabled and isdesktopflowruntimerepairunattendedenabled at https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/organization#writable-columns-attributes; the organization Web API reference documents GET and PATCH at https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/organization?view=dataverse-latest. The existing prose may continue distinguishing this earlier runtime capability from designer repair."
+    },
+    {
+      "n": 39,
       "where": "controls[1].note; Governance controls",
       "type": "applicability",
-      "claim": "The runtime configuration governs the separate preview Repair with Copilot capability.",
+      "claim": "The preview runtime-repair configuration governs the earlier Repair with Copilot capability.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/desktop-flows/repair-at-runtime",
       "quote": "Find the Repair at runtime setting for the desired run mode (attended and unattended) under the Desktop flow repair at runtime configuration setting in the Power Platform admin center.",
@@ -414,109 +458,21 @@
       "fix": null
     },
     {
-      "n": 36,
-      "where": "controls[1].api",
-      "type": "absence",
-      "claim": "An API equivalent for Desktop flow repair at runtime configuration is not documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Desktop flow repair at runtime\" API PowerShell setting. Opened Manage feature settings, Repair flow automation errors and search results; found UI configuration and feedback automation, not an API for the runtime-repair flag.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "controls[2].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Manage > Tenant settings opens the tenant settings page in Power Platform admin center.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/tenant-settings",
-      "quote": "In the navigation pane, select Manage. In the Manage pane, select Tenant settings.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "controls[2].api; Governance controls table",
-      "type": "command",
-      "claim": "The API column supplies 'disableSurveyFeedback governance setting for Power Automate for desktop' as the automation call.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: \"disableSurveyFeedback\" \"Set-TenantSettings\". Opened desktop governance, Set-TenantSettings and List tenant settings. disableSurveyFeedback exists, contrary to the pre-check lead, but this phrase specifies no executable operation, parameters or value.",
-      "severity": "blocker",
-      "fix": "Remove the feedback control row from the controls array and rendered table, retaining the existing prose about the documented disableSurveyFeedback tenant setting. The supplied phrase is not a call under the schema's runnable-call requirement; do not replace it with a claim that no automation exists, since governance links to Set-TenantSettings."
-    },
-    {
-      "n": 39,
-      "where": "controls[2].note; Governance controls",
-      "type": "applicability",
-      "claim": "The desktop Copilot page names a tenant-level Copilot feedback control for preventing feedback to Microsoft.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/desktop-flows/copilot-in-power-automate-for-desktop",
-      "quote": "As a Power Platform admin, you can prevent users from sending Copilot feedback to Microsoft by using the \"Copilot feedback\" tenant setting.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 40,
-      "where": "controls[2].note",
-      "type": "applicability",
-      "claim": "Additional Copilot feedback on the Tenant settings page is described specifically for Copilot in Power Apps.",
+      "where": "controls[2].ui and controls[2].api; Governance controls table; Open questions",
+      "type": "absence",
+      "claim": "No dedicated admin UI or API switch specific to designer debug-run repair is documented beyond the shared Copilot prerequisite.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/tenant-settings",
-      "quote": "Additional Copilot feedback | When using Copilot in Power Apps, allows users to share their prompts, questions, and requests with Microsoft.",
+      "source": null,
+      "quote": "Searched: 'AI-assisted UI automation repair' 'dedicated' 'admin' 'setting'; 'AI-assisted UI automation repair' 'disable' 'Dataverse' 'API'. Opened repair article, governance, tenant settings and organization API reference; found shared prerequisite, not a dedicated designer-repair switch.",
       "severity": null,
       "fix": null
     },
     {
       "n": 41,
-      "where": "controls[3]; Governance controls table; Open questions",
-      "type": "absence",
-      "claim": "No dedicated admin UI or API switch specific to designer AI-assisted repair is documented beyond the shared prerequisite.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"AI-assisted UI automation repair\" \"admin\" \"API\" \"disable\". Read the feature's full configuration section, desktop governance and search results; found the shared Copilot prerequisite and maker run option, not a dedicated admin switch.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "Governance guidance: At rollout",
+      "where": "controls[0].scope; Governance guidance: At rollout",
       "type": "applicability",
-      "claim": "The shared Copilot setting can be enabled specifically for a pilot group of makers.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: \"Copilot in Power Automate\" setting specific users security group. Opened the repair article and Copilot hub. Configuration is described for environments or environment groups, not a maker-group audience for this setting.",
-      "severity": "blocker",
-      "fix": "Replace 'Enable the setting for a pilot group of makers first.' with 'Pilot use with a small group of makers; the documented Copilot setting is environment-scoped, not a documented maker-group switch.'"
-    },
-    {
-      "n": 43,
-      "where": "Governance guidance: After rollout",
-      "type": "admin-path",
-      "claim": "Saved selector changes can be reviewed in solution history.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/solution-history",
-      "quote": "An operation can be a solution import, export, or uninstall. The solution history displays information such as solution version, solution publisher, type of operation, operation start and end time, and operation status.",
-      "severity": "blocker",
-      "fix": "Replace 'Review saved selector changes in solution history.' with 'Review saved selector changes before wider use.' Solution history records solution operations; it is not the desktop-flow version comparison surface."
-    },
-    {
-      "n": 44,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "Microsoft's desktop governance page directs admins to contact Microsoft Support to disable all Copilot capabilities.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/desktop-flows/governance#prevent-users-from-sending-copilot-related-feedback",
-      "quote": "To prevent your users from using any copilot capability contact Microsoft Customer Support to disable all copilot functionality in your tenant.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "The Copilot hub documents environment and environment-group settings.",
+      "claim": "The Copilot hub documents environment-scoped settings.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/copilot/copilot-hub#settings",
       "quote": "You can configure settings at the environment level, with most settings also configurable through environment groups and rules.",
@@ -524,10 +480,43 @@
       "fix": null
     },
     {
-      "n": 46,
+      "n": 42,
+      "where": "Governance guidance: At rollout",
+      "type": "absence",
+      "claim": "A maker-group switch for this repair capability is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'AI-assisted UI automation repair' 'maker' 'group' 'switch'. Opened repair article and Copilot hub. Hub's user inclusion/exclusion control is expressly for model-driven apps, not this desktop repair capability; no maker-group switch found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
       "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "The Copilot overview describes tenant-level disabling and says environment-level support is unavailable, unlike the Copilot hub guidance.",
+      "type": "applicability",
+      "claim": "The desktop governance page directs administrators to contact Microsoft Support to disable all Copilot capabilities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/governance",
+      "quote": "To prevent your users from using any copilot capability contact Microsoft Customer Support to disable all copilot functionality in your tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Governance controls: conflicting scope paragraph",
+      "type": "applicability",
+      "claim": "The Copilot hub says most settings also support environment groups and rules.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/copilot/copilot-hub#settings",
+      "quote": "You can configure settings at the environment level, with most settings also configurable through environment groups and rules.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Governance controls: conflicting scope paragraph",
+      "type": "applicability",
+      "claim": "The Power Automate Copilot overview instead describes tenant-level disabling and says environment-level support is unavailable.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/copilot-overview#enable-or-disable-copilot-in-power-automate",
       "quote": "an admin needs to contact support and they use a PowerShell script to turn it off only at tenant level. Environment level support isn't available.",
@@ -535,10 +524,21 @@
       "fix": null
     },
     {
+      "n": 46,
+      "where": "Governance controls: runtime repair paragraph",
+      "type": "applicability",
+      "claim": "Self-healing is a separately configured runtime capability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/self-healing#how-to-turn-on-the-feature",
+      "quote": "Enable self-healing per action:\nSelect a supported UI or browser automation action in the flow designer.\nOpen the Error handling settings.\nTurn on Self-healing (Preview).",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 47,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "The Copilot overview describes cross-geo data sharing as the control for Copilot in regions without GPUs.",
+      "where": "Governance controls: runtime repair paragraph",
+      "type": "applicability",
+      "claim": "The Copilot overview ties Copilot availability in regions without GPUs to cross-geo data sharing.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/copilot-overview#enable-or-disable-copilot-in-power-automate",
       "quote": "If a region doesn't have GPUs (everywhere else except sovereign clouds), Microsoft turns on Copilot by default by toggling on the cross-geo data sharing.",
@@ -547,20 +547,20 @@
     },
     {
       "n": 48,
-      "where": "Governance controls",
+      "where": "Governance controls: feedback paragraph",
       "type": "behaviour",
-      "claim": "Self-healing is a separately enabled runtime capability rather than designer AI-assisted repair.",
+      "claim": "The desktop Copilot page names a Copilot feedback tenant setting.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/desktop-flows/self-healing#how-to-turn-on-the-feature",
-      "quote": "Self-healing is a runtime-only capability. ... has no effect during designer runs. ... Enable self-healing per action: ... Open the Error handling settings. Turn on Self-healing (Preview).",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/copilot-in-power-automate-for-desktop",
+      "quote": "you can prevent users from sending Copilot feedback to Microsoft by using the \"Copilot feedback\" tenant setting.",
       "severity": null,
       "fix": null
     },
     {
       "n": 49,
-      "where": "Governance controls",
-      "type": "applicability",
-      "claim": "The desktop governance page identifies disableSurveyFeedback as a tenant setting for preventing Copilot-related feedback.",
+      "where": "Governance controls: feedback paragraph",
+      "type": "behaviour",
+      "claim": "The desktop governance page names disableSurveyFeedback for feedback control.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/desktop-flows/governance#prevent-users-from-sending-copilot-related-feedback",
       "quote": "As a Power Platform admin you can prevent users from sending feedback to Microsoft by disabling the disableSurveyFeedback tenant setting.",
@@ -569,36 +569,36 @@
     },
     {
       "n": 50,
-      "where": "Governance controls",
+      "where": "Governance controls: feedback paragraph",
       "type": "absence",
-      "claim": "Microsoft does not explicitly equate the desktop Copilot feedback UI setting with disableSurveyFeedback.",
+      "claim": "Microsoft does not explicitly identify Copilot feedback and disableSurveyFeedback as the same setting.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Copilot feedback\" \"disableSurveyFeedback\" \"desktop\". Read desktop Copilot, governance, Tenant settings and List tenant settings; the pages name controls but do not explicitly map that desktop UI label to disableSurveyFeedback.",
+      "quote": "Searched: 'disableSurveyFeedback' 'Copilot feedback'. Opened desktop Copilot, governance and tenant settings; read List tenant settings excerpt defining disableSurveyFeedback as NPS survey prompts. No explicit equivalence between the two names found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 51,
-      "where": "Open questions",
-      "type": "absence",
-      "claim": "The general availability region and language coverage for this feature remains unspecified.",
+      "where": "Scope",
+      "type": "availability",
+      "claim": "The surrounding desktop Copilot preview documentation describes region and account-type limits.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"AI-assisted UI automation repair\" \"identity\" \"languages\" \"general availability\". Opened the repair article and read search results; the article describes current preview cloud restrictions, not a GA region or language commitment.",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/copilot-in-power-automate-for-desktop",
+      "quote": "Create flows using Copilot (preview)\nUnited States\nAvailability by account type\nCurrently, Copilot in Power Automate for desktop is only available for users with a work or school account.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-16T22:41:16.201Z",
+    "at": "2026-11-17T02:05:11.078Z",
     "summary": {
       "links": 11,
       "unreachable": 0,
-      "uiPaths": 3,
+      "uiPaths": 2,
       "uiPathsWithMissingWords": 0,
-      "apiCalls": 1,
-      "apiCallsNotOnPage": 1,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -688,27 +688,6 @@
           "Desktop flow repair at runtime configuration"
         ],
         "missing": []
-      },
-      {
-        "index": 2,
-        "side": "ui",
-        "governs": "Copilot feedback from Power Automate for desktop",
-        "docs": "https://learn.microsoft.com/power-platform/admin/tenant-settings",
-        "reachable": true,
-        "segments": [
-          "Manage",
-          "Tenant settings"
-        ],
-        "missing": []
-      },
-      {
-        "index": 2,
-        "side": "api",
-        "governs": "Copilot feedback from Power Automate for desktop",
-        "docs": "https://learn.microsoft.com/power-automate/desktop-flows/governance#prevent-users-from-sending-copilot-related-feedback",
-        "reachable": true,
-        "token": "disableSurveyFeedback governance",
-        "found": false
       }
     ],
     "roadmapDrift": []
@@ -718,6 +697,12 @@
       "date": "2026-11-16",
       "status": "held",
       "version": 2,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-16",
+      "status": "held",
+      "version": 3,
       "model": "gpt-6.1-sol"
     }
   ]

@@ -101,7 +101,7 @@ controls:
       path: "Billing > Pay-as-you-go > Billing policies > Add a billing policy"
       docs: "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node"
     api: null
-    note: "General Microsoft 365 Backup control; not confirmed for the Entra extension."
+    note: "Billing-node instructions are for GCC and new Microsoft 365 Backup customers only; the cited page directs existing backup customers to the Setup node. General Microsoft 365 Backup control; not confirmed for the Entra extension."
 confidence: "medium"
 created: "2026-11-13"
 updated: "2026-11-17"
@@ -117,19 +117,23 @@ changes:
     note: "Corrected after verification: recovery is started from Backups > Recover backup (Recovery History only cancels), the AD DS-synced exception and the billing-row wording now match their sources, and the 30-day extension no longer assumes existing limits apply."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 72 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 4
+  - date: "2026-11-17"
+    note: "Corrected after verification: the billing-policy row and its notes now say the Billing-node steps are for GCC and new Microsoft 365 Backup customers only, with existing customers directed to the Setup node."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 77 statements not yet confirmed"
+version: 5
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-17"
-  version: 4
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 72
-  confirmed: 71
+  claims: 77
+  confirmed: 76
   unconfirmed: 0
   contradicted: 1
-  attempts: 3
-  hash: "6e75d0b9e123d5c93c29b8ad099f42c1"
+  attempts: 0
+  hash: "e64bfd1ae60d58a62ca95f216f0d7433"
 ---
 
 ## What's changing
@@ -209,13 +213,13 @@ The indirect cost is admin time to define restore procedures and to test them.
 <tr><td data-label="Control"><strong>Switch or setting for the 30-day extension</strong><br><small>Tenant</small><br><small class="controls__note">No setting, default or enablement procedure for the 30-day extension is documented at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Viewing existing Entra backups (snapshots)</strong><br><small>Tenant</small><br><small class="controls__note">Existing seven-day recovery, not the 30-day extension. Entra Backup Reader or Entra Backup Administrator; Entra ID P1 or P2 required.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Backup and recovery › Backups <a href="https://learn.microsoft.com/entra/backup/overview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>GET /v1.0/directory/recovery/snapshots</code> <a href="https://learn.microsoft.com/graph/api/entrarecoveryservices-recovery-list-snapshots?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Starting recovery jobs on existing Entra backups</strong><br><small>Tenant</small><br><small class="controls__note">Existing recovery. Entra Backup Administrator is the least privileged role for the API. Backup and recovery &gt; Recovery History is where an admin cancels a running job; it does not start restores.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Backup and recovery › Backups › backup › Recover backup <a href="https://learn.microsoft.com/entra/backup/recover-objects" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/directory/recovery/snapshots/{snapshot-id}/recoveryJobs</code> <a href="https://learn.microsoft.com/graph/api/entrarecoveryservices-snapshot-post-recoveryjobs?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Pay-as-you-go billing policy for Microsoft 365 Backup</strong><br><small>Tenant</small><br><small class="controls__note">General Microsoft 365 Backup control; not confirmed for the Entra extension.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Billing › Pay-as-you-go › Billing policies › Add a billing policy <a href="https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Pay-as-you-go billing policy for Microsoft 365 Backup</strong><br><small>Tenant</small><br><small class="controls__note">Billing-node instructions are for GCC and new Microsoft 365 Backup customers only; the cited page directs existing backup customers to the Setup node. General Microsoft 365 Backup control; not confirmed for the Entra extension.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Billing › Pay-as-you-go › Billing policies › Add a billing policy <a href="https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
 No setting for the 30-day extension is documented at the time of writing (November 2026), so the first row records that gap. The two Entra rows govern existing seven-day recovery. The billing row is general Microsoft 365 Backup context and is not documented as a control for existing Entra recovery or the planned extension. Microsoft states that no signed-in user or application, even with the highest admin privileges, can turn off, delete or modify the tenant's Entra backups, so the governance task is access to restore, not enablement.
 
-The Graph snapshot operation is documented at v1.0, while the Microsoft Graph backup overview labels the Entra recovery APIs as available on beta only. Confirm the version before scripting. The Microsoft 365 Backup billing controls (Billing > Pay-as-you-go) are general; the Learn pages describe OneDrive, SharePoint and Exchange policies, and Microsoft has not confirmed how they apply to Entra objects.
+The Graph snapshot operation is documented at v1.0, while the Microsoft Graph backup overview labels the Entra recovery APIs as available on beta only. Confirm the version before scripting. The Microsoft 365 Backup billing controls (Billing > Pay-as-you-go) are general; the Learn pages describe OneDrive, SharePoint and Exchange policies, and Microsoft has not confirmed how they apply to Entra objects. The Billing-node instructions are for GCC and new Microsoft 365 Backup customers only; the cited page directs existing backup customers to the Setup node.
 
 ## Open questions
 
@@ -231,10 +235,9 @@ cost: Low. The only cost the sources show is admin time for restore planning and
 impact: Low. Identity, security and Microsoft 365 administrators notice it; end users see nothing unless a restore changes their account or group membership.
 -->
 
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[3].ui; controls[3].note; Governance controls table and prose / admin-path: The general Microsoft 365 Backup billing-policy path is Billing > Pay-as-you-go > Billing policies > Add a billing policy, without a customer-cohort qualification. | Found: Government Community Cloud (GCC) and new Microsoft 365 Backup customers only: Existing backup customers must use the Setup node to set up pay-as-you-go billing. | Fix: Keep the path but qualify the row note and corresponding prose: 'Billing-node instructions are for GCC and new Microsoft 365 Backup customers only; the cited page directs existing backup customers to the Setup node. General Microsoft 365 Backup control; not confirmed for the Entra extension.' | Source: https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Change & support; Governance guidance: Before rollout / behaviour: Changes to on-premises synced objects, except group memberships, are excluded from recovery. | Found: Any changes made to on-premises synced objects (except group memberships) appear in difference reports, but are automatically excluded from recovery. | Fix: Keep the exception, but append: 'The recovery-model article instead says on-premises synchronized objects cannot be recovered, without stating the group-membership exception; confirm this scope before relying on it.' Cite https://learn.microsoft.com/entra/backup/backup-difference-report-recovery-model, which states: 'On-premises synchronized objects can't be recovered through Backup and Recovery'. | Source: https://learn.microsoft.com/entra/backup/scope-supported-objects-limitations
+- [supported, minor] controls[3].note; Governance controls table and prose / applicability: The cited Billing-node article limits its instructions to GCC and new Microsoft 365 Backup customers and directs existing customers to Setup. | Found: Government Community Cloud (GCC) and new Microsoft 365 Backup customers only: Existing backup customers must use the Setup node to set up pay-as-you-go billing. | Fix: Keep the attribution to the Billing-node article, but append: 'The separately cited Set up Microsoft 365 Backup page also documents an optional migration from Setup to the new Billing experience for existing customers.' Use https://learn.microsoft.com/microsoft-365/backup/backup-setup#1-set-up-pay-as-you-go-billing. | Source: https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: All controls the governance checklist tells readers to configure or check have corresponding controls-table rows. | Found: Checklist: 'assign Microsoft Entra Backup Reader ... and Microsoft Entra Backup Administrator' and 'require a reviewed difference report first'. Table: extension switch, viewing snapshots, starting recovery, and billing; no role-assignment or difference-report control row. | Fix: The Before rollout steps for assigning the two Entra Backup roles and requiring a reviewed difference report have no corresponding controls-table rows. Remove '(see the first two controls)' from the role-assignment step because those rows do not document assigning roles; no new rows are requested.
 -->

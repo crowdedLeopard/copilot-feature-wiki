@@ -64,7 +64,7 @@ controls:
       path: "Manage > Data export > App Insights > New data export"
       docs: "https://learn.microsoft.com/power-platform/admin/set-up-export-application-insights#create-an-export-package"
     api: null
-    note: "Preview for generative pages. Managed Environments only. Needs an Azure Application Insights resource, a tenant-level Power Platform or Dynamics 365 administrator role and an environment or system administrator role."
+    note: "Preview for generative pages. Managed Environments only. Needs Power Platform or Dynamics 365 administrator (tenant), environment or system administrator, and Contributor or Owner on the Application Insights resource."
   - governs: "Switch specific to custom APIs in generative pages"
     scope: "environment"
     ui: null
@@ -85,19 +85,23 @@ changes:
     note: "Correction: default state is now user opt-in, licensing model is not yet published, control notes added, and the claim that a page cannot exceed the user's permissions was removed."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 54 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-17"
+    note: "Correction: Application Insights row now notes the Contributor or Owner access requirement, and the first sentence of Why it matters no longer says pages previously only displayed data."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 52 statements not yet confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-17"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 54
+  claims: 52
   confirmed: 52
   unconfirmed: 0
-  contradicted: 2
-  attempts: 2
-  hash: "22d2404774531d63c5ccc7c2e08d67b7"
+  contradicted: 0
+  attempts: 0
+  hash: "528091da31a66e4f7e6db34a37fd4632"
 ---
 
 ## What's changing
@@ -110,7 +114,7 @@ The roadmap gives a preview from October 2026 and general availability in Decemb
 
 ## Why it matters
 
-This moves generative pages from displaying data to triggering business operations. Service owners should treat it as a path by which AI-generated front-end code reaches existing server-side logic, so the quality of the custom API and its security role checks matter more.
+This adds an explicit way for generative pages to invoke named server-side business operations. Service owners should treat it as a path by which AI-generated front-end code reaches existing server-side logic, so the quality of the custom API and its security role checks matter more.
 
 It also encourages teams to expose approval or pricing logic as custom APIs, which increases the number of callable operations in an environment.
 
@@ -160,7 +164,7 @@ Model-driven apps only. Worldwide, GCC and GCC High per the roadmap. In-browser 
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Copilot preview features in Power Apps</strong><br><small>Tenant</small><br><small class="controls__note">General maker Copilot preview control; Microsoft has not confirmed that it disables custom API use in generative pages or calls from published pages. Tenant settings is also reached via Manage &gt; Tenant settings.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Settings › Tenant settings › Copilot in Power Apps (preview) <a href="https://learn.microsoft.com/power-apps/maker/canvas-apps/ai-overview#enable-or-disable-copilot-features" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Application Insights telemetry for the pages</strong><br><small>Environment</small><br><small class="controls__note">Preview for generative pages. Managed Environments only. Needs an Azure Application Insights resource, a tenant-level Power Platform or Dynamics 365 administrator role and an environment or system administrator role.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Data export › App Insights › New data export <a href="https://learn.microsoft.com/power-platform/admin/set-up-export-application-insights#create-an-export-package" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Application Insights telemetry for the pages</strong><br><small>Environment</small><br><small class="controls__note">Preview for generative pages. Managed Environments only. Needs Power Platform or Dynamics 365 administrator (tenant), environment or system administrator, and Contributor or Owner on the Application Insights resource.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Data export › App Insights › New data export <a href="https://learn.microsoft.com/power-platform/admin/set-up-export-application-insights#create-an-export-package" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Switch specific to custom APIs in generative pages</strong><br><small>Environment</small><br><small class="controls__note">Custom APIs run in the context of the signed-in user and are subject to Dataverse security.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -175,15 +179,12 @@ Custom APIs run in the context of the signed-in user and are subject to Datavers
 
 <!-- rationale
 risk: Medium. A generated page can invoke server-side logic that changes data, although custom APIs run as the signed-in user and are subject to Dataverse security.
-cost: Low. Learn says the generative pages maker experience needs no extra AI or message credits; custom API plug-in development is the main effort.
+cost: Low. Learn says the generative pages maker experience needs no extra AI or message credits; custom API plug-in development is the main effort. Licensing specific to custom API calls from generative pages is not yet published.
 impact: Low. It affects makers and developers building model-driven apps; end users see only the resulting page.
 -->
 
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].note; Governance controls: second table row / role: The telemetry setup requirements name the resource and Power Platform/Dataverse roles without the required Azure-resource access qualification. | Found: Confirm that you have **Contributor** or **Owner** access to the Azure Application Insights resource you intend to use. | Fix: Append 'Also requires Contributor or Owner access to the Azure Application Insights resource.' to controls[1].note and the matching rendered table note, as required by step 8 at https://learn.microsoft.com/power-platform/admin/set-up-export-application-insights#create-an-export-package. | Source: https://learn.microsoft.com/power-platform/admin/set-up-export-application-insights#create-an-export-package
-- [contradicted, blocker] Why it matters: first sentence / behaviour: This moves generative pages from displaying data to triggering business operations. | Found: This capability is different from a plug-in that runs automatically when a Dataverse row is created, updated, or deleted. Those plug-ins already run when a generative page performs the corresponding data operation and don't need to be added to the page. | Fix: Replace the first sentence of Why it matters with 'This adds an explicit way for generative pages to invoke named server-side business operations.' The cited feature page distinguishes explicit custom API invocation from plug-ins already triggered by page data operations. | Source: https://learn.microsoft.com/power-apps/maker/model-driven-apps/generative-pages
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: cost; rationale: cost / cost: The low cost rating reflects known implementation effort and the maker experience's lack of additional AI or message credits. | Found: No, the maker experience for generative pages (and plans) don't require any additional AI or message credits. | Fix: Append 'Licensing specific to custom API calls from generative pages is not yet published.' to the cost rationale. The assessment scale requires this qualification when a low rating describes known indirect costs while feature-specific licensing remains unpublished. | Source: https://learn.microsoft.com/power-apps/maker/model-driven-apps/generative-pages
+- [supported, minor] front matter: targetDate; What's changing / record: The roadmap gives general availability in December 2026. | Found: "targetDate": "December CY2026"; "status": "In development" | Fix: Replace the rollout sentence with: 'The roadmap targets preview for October CY2026 and general availability for December CY2026 (generative page version 307), in model-driven apps in Worldwide, GCC and GCC High.'
 -->

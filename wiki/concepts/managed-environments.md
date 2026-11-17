@@ -5,7 +5,7 @@ slug: "managed-environments"
 summary: "Managed Environments is the premium Power Platform governance tier that unlocks sharing limits, usage insights, maker guidance and environment-group rules. Active usage in the environment then needs a qualifying licence or meter."
 created: "2026-11-13"
 updated: "2026-11-17"
-version: 3
+version: 4
 tags: ["managed-environments","environment-groups","sharing-limits","power-platform","copilot-studio","governance","licensing","maker-guidelines","power-platform-admin-center"]
 covers: ["environment-groups","sharing-limits"]
 sources:
@@ -43,6 +43,9 @@ sources:
     url: "https://learn.microsoft.com/power-platform/developer/cli/reference/environment-management"
     kind: "learn"
   - title: "pac admin"
+    url: "https://learn.microsoft.com/power-platform/developer/cli/reference/admin"
+    kind: "learn"
+  - title: "Weekly usage insights digest for the environment (Power Platform CLI)"
     url: "https://learn.microsoft.com/power-platform/developer/cli/reference/admin#pac-admin-set-governance-config"
     kind: "learn"
 related: ["power-platform-maker-guidelines-copilot-studio","data-policies","copilot-credits","agent-identity"]
@@ -68,7 +71,7 @@ controls:
       kind: "powershell"
       call: "Set-AdminPowerAppEnvironmentGovernanceConfiguration -EnvironmentName <EnvironmentId> -UpdatedGovernanceConfiguration $governanceConfiguration"
       docs: "https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits"
-    note: "Applies to agents that require authentication. The page's agent example sets 'bot-limitSharingMode' to \"ExcludeSharingToSecurityGroups\" in $governanceConfiguration first, and covers only that rule. Can also be group rules."
+    note: "Applies to agents that require authentication. The page's agent example sets 'bot-limitSharingMode' to \"ExcludeSharingToSecurityGroups\" and 'bot-maxLimitUserSharing' to \"20\" in $governanceConfiguration first. Can also be group rules."
   - governs: "Environment-group rules and membership"
     scope: "environment-group"
     ui:
@@ -84,7 +87,7 @@ controls:
     scope: "environment"
     ui:
       surface: "Power Platform admin center"
-      path: "Security > Threat detection > Sharing agent with embedded maker credentials > Environments or Environment groups > Set up > Save"
+      path: "Security > Threat detection > Sharing agent with embedded maker credentials > Environments or Environment groups > environment or environment group > Set up > Save"
       docs: "https://learn.microsoft.com/power-platform/admin/security/control-sharing-agents-with-embedded-maker-credentials"
     api: null
     note: "Preview. Affects connections that use maker-provided credentials."
@@ -108,7 +111,7 @@ controls:
       docs: "https://learn.microsoft.com/power-platform/developer/cli/reference/admin#pac-admin-set-governance-config"
     note: "Needs tenant-level analytics. The CLI example excludes this environment from the weekly digest."
 confidence: "medium"
-dependents: 4
+dependents: 5
 changes:
   - date: "2026-11-16"
     note: "Taken offline until a corrected version passes its check: a failed check no longer keeps a page online with a notice."
@@ -120,18 +123,22 @@ changes:
     note: "Corrected after the independent check: cloud flow licensing qualified, sharing-limits and environment-group rows state what their automation does and does not cover, the digest row now uses the CLI option that excludes one environment, and the new-group default is stated as documented."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 92 statements contradicted, 0 unconfirmed; taken offline until corrected"
+  - date: "2026-11-17"
+    note: "Corrected after the independent check: the sharing-limits row no longer says its agent example covers only one rule, the embedded-credentials path names the environment selection, and the digest-recipient checklist step is removed."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 94 statements confirmed"
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-17"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 92
-  confirmed: 90
+  claims: 94
+  confirmed: 94
   unconfirmed: 0
-  contradicted: 2
-  attempts: 3
-  hash: "b006e9821f3c020e059fa94d8fd6a730"
+  contradicted: 0
+  attempts: 0
+  hash: "a5112e830b3dbea957915d3b65b1c837"
 ---
 
 ## What it is
@@ -182,9 +189,9 @@ The Developer Plan is not an entitlement for users running their assets in a man
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether an environment is a Managed Environment</strong><br><small>Environment</small><br><small class="controls__note">Power Platform Administrator or Dynamics 365 Administrator role. protectionLevel &quot;Basic&quot; removes the property.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › ellipsis next to an environment › Enable Managed Environments (or Edit Managed Environments) › Enable or Save <a href="https://learn.microsoft.com/power-platform/admin/managed-environment-enable" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-AdminPowerAppEnvironmentGovernanceConfiguration -EnvironmentName &lt;EnvironmentID&gt; -UpdatedGovernanceConfiguration &lt;configuration with protectionLevel = &quot;Standard&quot;&gt;</code> <a href="https://learn.microsoft.com/power-platform/admin/managed-environment-enable" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Sharing limits for canvas apps, solution-aware cloud flows and agents</strong><br><small>Environment</small><br><small class="controls__note">Applies to agents that require authentication. The page's agent example sets 'bot-limitSharingMode' to &quot;ExcludeSharingToSecurityGroups&quot; in $governanceConfiguration first, and covers only that rule. Can also be group rules.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › managed environment › Edit Managed Environments › Manage sharing <a href="https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-AdminPowerAppEnvironmentGovernanceConfiguration -EnvironmentName &lt;EnvironmentId&gt; -UpdatedGovernanceConfiguration $governanceConfiguration</code> <a href="https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Sharing limits for canvas apps, solution-aware cloud flows and agents</strong><br><small>Environment</small><br><small class="controls__note">Applies to agents that require authentication. The page's agent example sets 'bot-limitSharingMode' to &quot;ExcludeSharingToSecurityGroups&quot; and 'bot-maxLimitUserSharing' to &quot;20&quot; in $governanceConfiguration first. Can also be group rules.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › managed environment › Edit Managed Environments › Manage sharing <a href="https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-AdminPowerAppEnvironmentGovernanceConfiguration -EnvironmentName &lt;EnvironmentId&gt; -UpdatedGovernanceConfiguration $governanceConfiguration</code> <a href="https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Environment-group rules and membership</strong><br><small>Environment group</small><br><small class="controls__note">Tenant administrator. The pac commands are in preview. Only published rules are enforced. The UI configures and publishes rules; the CLI example only adds an environment to the group and does not configure or publish rules.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environment groups › group › Rules › rule › Save › Publish rules <a href="https://learn.microsoft.com/power-platform/admin/environment-groups" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform CLI</strong><br><code>pac environment-management add-environment-to-group --group-id &lt;group-id&gt; --environment &lt;environment-id&gt;</code> <a href="https://learn.microsoft.com/power-platform/developer/cli/reference/environment-management" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Sharing agents with embedded maker credentials</strong><br><small>Environment</small><br><small class="controls__note">Preview. Affects connections that use maker-provided credentials.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Threat detection › Sharing agent with embedded maker credentials › Environments or Environment groups › Set up › Save <a href="https://learn.microsoft.com/power-platform/admin/security/control-sharing-agents-with-embedded-maker-credentials" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Sharing agents with embedded maker credentials</strong><br><small>Environment</small><br><small class="controls__note">Preview. Affects connections that use maker-provided credentials.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Threat detection › Sharing agent with embedded maker credentials › Environments or Environment groups › environment or environment group › Set up › Save <a href="https://learn.microsoft.com/power-platform/admin/security/control-sharing-agents-with-embedded-maker-credentials" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Maker guidelines message, link and contact in the Copilot Studio Review pane</strong><br><small>Environment</small><br><small class="controls__note">Preview; managed environments only. Also an environment group rule.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Copilot › Settings › Maker guidelines › Environments › environment › Edit setting <a href="https://learn.microsoft.com/power-platform/admin/maker-guidelines" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Weekly usage insights digest for the environment</strong><br><small>Environment</small><br><small class="controls__note">Needs tenant-level analytics. The CLI example excludes this environment from the weekly digest.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › managed environment › Edit Managed Environments › Usage insights › Include insights for this environment in the weekly email digest <a href="https://learn.microsoft.com/power-platform/admin/managed-environment-usage-insights" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform CLI</strong><br><code>pac admin set-governance-config --environment &lt;environment-id&gt; --protection-level Standard --exclude-analysis</code> <a href="https://learn.microsoft.com/power-platform/developer/cli/reference/admin#pac-admin-set-governance-config" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
@@ -204,7 +211,6 @@ Two more surfaces have no row above. To see an environment's data policies, edit
 - Confirm that agents you rely on sharing limits for require authentication.
 - Check the Sharing agents with embedded maker credentials setting (preview) per environment or group.
 - List your environment groups, review each published rule, and republish any rule marked as changed.
-- Check who receives the weekly digest.
 - Review maker guidelines (preview) for makers; see [the Copilot Studio briefing](/features/power-platform-maker-guidelines-copilot-studio/).
 
 ## Open questions
@@ -212,12 +218,3 @@ Two more surfaces have no row above. To see an environment's data policies, edit
 - Does Microsoft document a PowerShell, Graph or Power Platform API call for maker guidelines or for sharing agents with embedded maker credentials? Not yet documented.
 - Will per-environment exceptions to published group rules be supported? Microsoft says they are not currently supported.
 - Does the February 2027 block extend beyond opening apps to flows and agents? The licensing page describes apps.
-
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].note; Governance controls table / command: The cited page's agent example covers only the rule excluding sharing with security groups. | Found: Here's a PowerShell script that prevents agents from being shared with security groups and limits the number of viewers that can access an agent to 20. | Fix: Remove ', and covers only that rule' from controls[1].note and the rendered table note. The cited example also sets bot-maxLimitUserSharing to "20". | Source: https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[3].ui; Governance controls table / admin-path: The credential-sharing control is at Security > Threat detection > Sharing agent with embedded maker credentials > Environments or Environment groups > Set up > Save. | Found: Environments: In the Environments tab, select the environment for which you want to configure the setting. 5. Select Set up. | Fix: Include the target selection in controls[3].ui.path and the rendered path: 'Security > Threat detection > Sharing agent with embedded maker credentials > Environments or Environment groups > environment or environment group > Set up > Save'. | Source: https://learn.microsoft.com/power-platform/admin/security/control-sharing-agents-with-embedded-maker-credentials
-- [contradicted, minor] What to check: weekly digest recipients; controls[5] / consistency: The checklist asks the reader to check digest recipients, but the table has no recipient-setting control row. | Found: What to check: "Check who receives the weekly digest." Table row: "Weekly usage insights digest for the environment"; its UI includes the environment and its command excludes the environment, rather than setting recipients. | Fix: The 'Check who receives the weekly digest' checklist step has no matching recipient-control row; remove that checklist bullet.
--->

@@ -17,7 +17,7 @@ impact: "medium"
 defaultState: "admin-opt-in"
 action: "act-now"
 licensing:
-  model: "included"
+  model: "unknown"
   notes: "Learn's events licensing page lists attendance and engagement reports for events under the advanced event features licence category. A separate licence or meter for the new policy setting is not yet published."
 audiences: ["m365-admin","service-owner","change-adoption"]
 tags: ["teams","meeting-policy","teams-events","powershell","policy","admin-controls","gcc"]
@@ -43,6 +43,15 @@ sources:
   - title: "Teams events licensing overview"
     url: "https://learn.microsoft.com/microsoftteams/events-licensing"
     kind: "learn"
+  - title: "Use Microsoft Teams administrator roles to manage Teams"
+    url: "https://learn.microsoft.com/microsoftteams/using-admin-roles"
+    kind: "learn"
+  - title: "Get-CsUserPolicyAssignment"
+    url: "https://learn.microsoft.com/powershell/module/microsoftteams/get-csuserpolicyassignment?view=teams-ps"
+    kind: "learn"
+  - title: "Assign policies in Teams – getting started"
+    url: "https://learn.microsoft.com/microsoftteams/policy-assignment-overview"
+    kind: "learn"
 videos: []
 related: []
 controls:
@@ -51,9 +60,9 @@ controls:
     ui: null
     api:
       kind: "powershell"
-      call: "Set-CsTeamsEventsPolicy -Identity <policy name> -AllowEngagementReport Enabled | Disabled | ForceEnabled | ForceDisabled"
+      call: "Set-CsTeamsEventsPolicy -Identity <policy name> -AllowEngagementReport ForceDisabled"
       docs: "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy?view=teams-ps"
-    note: "Learn says the Teams events policy is still in preview. Enabled: On, but organizers can turn it off. Disabled: Off, but organizers can turn it on. ForceDisabled: Off."
+    note: "Example blocks reports; policy is in preview. Enabled: On, organizers can turn it off. Disabled: Off, organizers can turn it on. ForceEnabled: On, cannot be turned off. ForceDisabled: Off, no view or download."
   - governs: "Which events policy each organiser holds (create, edit and assign events policies)"
     scope: "user"
     ui:
@@ -78,25 +87,30 @@ controls:
     note: "Learn says it covers meetings and events today; per Microsoft's notice MC1455014 events will stop inheriting from it once the new events setting applies."
 confidence: "medium"
 created: "2026-11-16"
-updated: "2026-11-16"
+updated: "2026-11-17"
 roadmapModified: "2026-11-04T00:02:09"
 changes:
   - date: "2026-11-16"
     note: "First briefing for this item, reflecting MC1455014 as updated on 3 November 2026 (rollout from mid-December 2026) and the events policy cmdlet reference."
   - date: "2026-11-16"
     note: "Action raised to act-now (rollout from mid-December 2026); added the events licensing position, an events policy assignment row, the admin participant-details route, and corrected the meeting policy path and the GCC question."
-version: 2
+  - date: "2026-11-17"
+    note: "Corrected after verification: one example value in the events policy call with all four values in the note, licensing model set to unknown, Teams Administrator role stated, and Get-CsUserPolicyAssignment used to check a user's events policy."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 70 statements contradicted, 1 unconfirmed; taken offline until corrected"
+version: 3
 verification:
   status: "held"
-  date: "2026-11-16"
-  version: 2
+  date: "2026-11-17"
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 68
-  confirmed: 63
-  unconfirmed: 2
-  contradicted: 3
-  attempts: 2
+  claims: 70
+  confirmed: 69
+  unconfirmed: 1
+  contradicted: 0
+  attempts: 3
+  hash: "796f3c3d965bf6c4c99d8720b93f591b"
 ---
 
 ## What's changing
@@ -129,7 +143,7 @@ The rollout is about a month away on 16 November 2026, so the wiki rates this ac
 
 **Autonomy & actions**
 
-- No change: the setting governs whether a person can see a report and starts no automated action.
+- The announced change separates policy control over organisers' report access.
 
 **Change & support**
 
@@ -146,7 +160,7 @@ That page describes the reports, not the new policy setting; whether the setting
 
 The setting applies to Teams events organisers through the events policy assigned to them. Per the roadmap record, it is targeted for General Availability in Worldwide (Standard Multi-Tenant) and GCC on Desktop. Other clouds and platforms are not listed on the item; that is a record fact, not a statement that anything is unavailable elsewhere.
 
-Microsoft's notice says rollout begins in mid-December 2026 and completes by early January 2027, for both Worldwide and GCC; this does not promise activation in every tenant on the same day. Learn names no administrator role needed to edit the events policy, and at the time of writing (November 2026) documents no Teams admin center path for the new setting.
+Microsoft's notice says rollout begins in mid-December 2026 and is expected to complete by early January 2027, for both Worldwide and GCC; this does not promise activation in every tenant on the same day. The Teams Administrator role can manage the Teams admin center and its associated PowerShell controls. At the time of writing (November 2026) Learn documents no Teams admin center path for the new setting.
 
 ## Governance guidance
 
@@ -159,7 +173,7 @@ Microsoft's notice says rollout begins in mid-December 2026 and completes by ear
 ### At rollout
 
 - Set the attendance and engagement report value in each custom events policy with Set-CsTeamsEventsPolicy rather than relying on the default (see the controls table).
-- Check which events policy each event-organising user holds, using Teams admin center > Meetings > Events policies or Grant-CsTeamsEventsPolicy, because a user can be assigned only one events policy at a time.
+- Check which events policy each event-organising user holds, using Teams admin center > Meetings > Events policies or Get-CsUserPolicyAssignment -Identity <user>, because a user can be assigned only one events policy at a time.
 
 ### After rollout
 
@@ -173,13 +187,13 @@ Microsoft's notice says rollout begins in mid-December 2026 and completes by ear
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether event organisers can view and download attendance and engagement reports</strong><br><small>User</small><br><small class="controls__note">Learn says the Teams events policy is still in preview. Enabled: On, but organizers can turn it off. Disabled: Off, but organizers can turn it on. ForceDisabled: Off.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsEventsPolicy -Identity &lt;policy name&gt; -AllowEngagementReport Enabled | Disabled | ForceEnabled | ForceDisabled</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy?view=teams-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether event organisers can view and download attendance and engagement reports</strong><br><small>User</small><br><small class="controls__note">Example blocks reports; policy is in preview. Enabled: On, organizers can turn it off. Disabled: Off, organizers can turn it on. ForceEnabled: On, cannot be turned off. ForceDisabled: Off, no view or download.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsEventsPolicy -Identity &lt;policy name&gt; -AllowEngagementReport ForceDisabled</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy?view=teams-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which events policy each organiser holds (create, edit and assign events policies)</strong><br><small>User</small><br><small class="controls__note">General control for events policies; a user can be assigned only one events policy at a time. The Grant cmdlet is also marked preview.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Events policies › policy › Edit <a href="https://learn.microsoft.com/microsoftteams/meeting-policies-overview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Grant-CsTeamsEventsPolicy -Identity &lt;user&gt; -Policy &lt;policy name&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/grant-csteamseventspolicy?view=teams-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether meeting organisers can view and download attendance and engagement reports (current control)</strong><br><small>User</small><br><small class="controls__note">Learn says it covers meetings and events today; per Microsoft's notice MC1455014 events will stop inheriting from it once the new events setting applies.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting policies › policy › Meeting scheduling › Attendance and engagement report <a href="https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/meeting-attendance-report" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity &lt;policy name&gt; -AllowEngagementReport Disabled</code> <a href="https://learn.microsoft.com/microsoftteams/teams-analytics-and-reports/meeting-attendance-report" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-The events setting is documented only as a PowerShell parameter at the time of writing (November 2026); a search of Learn found no Teams admin center path for it, and the Set-CsTeamsEventsPolicy reference and Teams events policy are still marked preview. The events policy row covers editing a policy in the admin centre and assigning it with PowerShell; the policy assignment overview that the meeting policies page links to covers other assignment methods.
+The events setting is documented only as a PowerShell parameter at the time of writing (November 2026); a search of Learn found no Teams admin center path for it, and the Set-CsTeamsEventsPolicy reference and Teams events policy are still marked preview. The events policy row covers editing a policy in the admin centre and assigning it with PowerShell; the [policy assignment overview](https://learn.microsoft.com/microsoftteams/policy-assignment-overview) that the meeting policies page links to covers other assignment methods.
 
 The meeting policy row is the current alternative. Its Learn page says it covers meetings and events today, and the notice says events will stop inheriting from it, so do not treat it as the long-term control for events. Both controls apply per policy to the users assigned that policy.
 
@@ -196,15 +210,8 @@ cost: Low. The only cost shown is admin time to choose and communicate a value; 
 impact: Medium. Teams events organisers notice if reports appear or disappear; organisers of ordinary meetings are not affected by the new events setting, per Microsoft's notice MC1455014.
 -->
 
-<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
-The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [supported, minor] What's changing; Scope / record: MC1455014 expects rollout completion by early January 2027 for Worldwide and GCC. | Found: General Availability (Worldwide, GCC): Rollout will begin in mid-December 2026 (previously early November) and is expected to complete by early January 2027 | Fix: In Scope, replace 'completes by early January 2027' with 'is expected to complete by early January 2027', preserving the qualification already present in What's changing.
-- [contradicted, blocker] controls[0].api; Governance controls table / command: The events-setting call can use '-AllowEngagementReport Enabled | Disabled | ForceEnabled | ForceDisabled' as printed. | Found: [-AllowEngagementReport <String>]
-Controls whether attendance and engagement reports are allowed for events.
-Possible values are: | Fix: Print one value in the call, for example 'Set-CsTeamsEventsPolicy -Identity <policy name> -AllowEngagementReport ForceDisabled', and label it as the example that blocks reports. List Enabled, Disabled, ForceEnabled and ForceDisabled with their meanings in the note. The current pipes invoke additional commands rather than select a parameter value; the cmdlet and both parameter names themselves are documented. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy?view=teams-ps
-- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: The setting starts no automated action. | Found: Searched: "TeamsEventsPolicy" "AllowEngagementReport" "automatic". Opened Set-CsTeamsEventsPolicy and meeting-attendance-report and read MC1455014; they describe report access and generation, not an explicit guarantee that no automated action occurs. | Fix: Replace the bullet with 'The announced change separates policy control over organisers' report access.' Remove the unsupported categorical statement about automated actions.
-- [unsupported, blocker] front matter: licensing.model / licensing: The new policy setting's licensing model is included. | Found: Searched: Teams events attendance engagement report policy AllowEngagementReport licensing license meter price; "TeamsEventsPolicy" "AllowEngagementReport" "license". Opened events-licensing, meeting-attendance-report and Set-CsTeamsEventsPolicy. Report licensing does not state inclusion of the new  | Fix: Set licensing.model to 'unknown'. Keep the documented report-licensing background and the existing statement that a separate condition for the new setting is not yet published; those do not establish that the setting is included.
-- [contradicted, blocker] Scope / absence: Learn names no administrator role needed to edit the events policy. | Found: Teams Administrator | Manage the Teams service, and manage and create Microsoft 365 Groups. | Everything in the Microsoft Teams admin center and associated PowerShell controls | Fix: Replace the sentence with 'The Teams Administrator role can manage the Teams admin center and its associated PowerShell controls.' Cite https://learn.microsoft.com/microsoftteams/using-admin-roles. Do not assert this is the only or least-privileged eligible role. | Source: https://learn.microsoft.com/microsoftteams/using-admin-roles
-- [contradicted, blocker] Governance guidance: At rollout / command: Grant-CsTeamsEventsPolicy can be used to check which events policy a user currently holds. | Found: Assigns Teams Events policy to a user, group of users, or the entire tenant. | Fix: Replace 'or Grant-CsTeamsEventsPolicy' with 'or Get-CsUserPolicyAssignment -Identity <user>'. Cite https://learn.microsoft.com/powershell/module/microsoftteams/get-csuserpolicyassignment?view=teams-ps, which returns effective assignments and explains that a missing effective policy entry means the tenant or system global default. Retain Grant only for assigning a policy, not inspecting one. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/grant-csteamseventspolicy?view=teams-ps
-- [supported, minor] Governance controls: assignment overview / behaviour: The policy assignment overview linked by the meeting-policies page describes other policy assignment methods. | Found: Assign a policy directly to users, either individually or at scale through a batch assignment, or to a group that the users are members of. | Fix: Add https://learn.microsoft.com/microsoftteams/policy-assignment-overview to sources and link the existing mention of the policy assignment overview directly to it. | Source: https://learn.microsoft.com/microsoftteams/policy-assignment-overview
+<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [unsupported, blocker] Governance guidance: At rollout, second bullet / admin-path: Teams admin center > Meetings > Events policies is a documented route for checking which events policy each event-organising user holds. | Found: Searched: Teams admin center view users assigned events policy Meetings Events policies. Opened meeting-policies-overview, policy-assignment-overview and assign-policies-users-and-groups. The cited Events policies route documents editing policies, not viewing each user's effective assignment. | Fix: Replace the bullet with: "Check which events policy each event-organising user holds, using Get-CsUserPolicyAssignment -Identity <user>, because a user can be assigned only one events policy at a time." This retains the supported command and removes the undocumented UI shortcut.
 -->

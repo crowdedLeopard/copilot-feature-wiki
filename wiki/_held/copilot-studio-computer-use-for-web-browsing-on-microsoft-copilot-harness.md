@@ -58,6 +58,9 @@ sources:
   - title: "Allowed websites and HTTPS enforcement for the computer use tool (Copilot Studio (maker))"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/computer-use#configure-optional-settings"
     kind: "learn"
+  - title: "FAQ for agents powered by the Microsoft Copilot harness"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/faqs-copilot-harness"
+    kind: "learn"
 videos: []
 related: ["copilot-credits"]
 controls:
@@ -69,7 +72,7 @@ controls:
       docs: "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness"
     api:
       kind: "power-platform-api"
-      call: "PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01 (entitlementId MCSMessages, enforcement rule TenantPool)"
+      call: "PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01 body: scope.environmentId=<id>; entitlementId=MCSMessages; allocation.quantity=<n>; enforcementRules=[{ruleType:TenantPool, enabled:false}]"
       docs: "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations"
     note: "Role: Power Platform Administrator, Global Administrator or equivalent. Applies across Copilot Studio. Read-only if a published environment group rule governs it (API error TenantPoolLockedByPolicy)."
   - governs: "Monthly Copilot Credit limit for one agent, with a stop at the limit"
@@ -79,7 +82,7 @@ controls:
       path: "Licensing > Copilot Studio > Manage Agents > agent > Set limit"
       docs: "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness"
     api: null
-    note: "Turn on Stop usage to turn the agent off at the limit. Limits aren't applied instantly, so allow margin; agent flows the agent calls are checked separately. No programmatic call for agent limits was found at the time of writing."
+    note: "Turn on Stop usage to turn the agent off at the limit. Limits aren't applied instantly, so allow margin; agent flows the agent calls are checked separately. An agent must consume some credits before you can set limits."
   - governs: "Whether the standard-harness computer use tool is available in an environment"
     scope: "environment"
     ui:
@@ -135,19 +138,23 @@ changes:
     note: "Corrected: environment tenant-pool draw is read-only under a published environment group rule; added agent-limit margin and agent flow qualifications; reworded the preview open question as a target."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 90 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 4
+  - date: "2026-11-17"
+    note: "Corrected: the credit allocation API call now shows the full request; the governance note no longer says cost controls are the only levers; removed three checklist steps with no table row; added that an agent must consume credits before limits can be set."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 94 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 5
 verification:
   status: "held"
   date: "2026-11-17"
-  version: 4
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 90
-  confirmed: 87
+  claims: 94
+  confirmed: 93
   unconfirmed: 0
-  contradicted: 3
-  attempts: 3
-  hash: "9d301f9b72a61a66a0958636d708f97c"
+  contradicted: 1
+  attempts: 4
+  hash: "e44cc9068c23a87b54a7ef4d5eba9599"
 ---
 
 ## What's changing
@@ -200,16 +207,13 @@ The Microsoft Copilot harness has no maker-access setting of its own, so authori
 
 ### Before rollout
 - Allocate Copilot Credits to the environments that will host Microsoft Copilot harness agents and clear **Draw from the available capacity in my tenant**, so browsing agents cannot draw on the tenant pool. If a published environment group rule governs that setting, the environment setting is read-only and API updates fail with `TenantPoolLockedByPolicy`; change and republish the group rule, or remove the environment from the group, first.
-- Check who can build agents in those environments, because the harness has no maker-access setting of its own; use environment and security-role assignments.
 - Decide whether Global Secure Access for Agents is in scope for those environments, and confirm with Microsoft whether it covers this capability before relying on it.
 
 ### At rollout
 - Set an agent monthly limit with **Stop usage** on any agent given web browsing, with a notification threshold, and leave margin because limits are not applied instantly.
 - Pilot in a governed environment with a small group of makers, and compare the credits consumed per run against the allocation.
-- Record which agents use browsing, using the **Harness** column in the agent inventory to find Microsoft Copilot harness agents.
 
 ### After rollout
-- Review agent and environment credit consumption together in Licensing > Copilot Studio.
 - Re-read the Learn pages for the Microsoft Copilot harness when Microsoft documents browsing, and add any control that appears.
 
 ## Governance controls
@@ -219,8 +223,8 @@ The Microsoft Copilot harness has no maker-access setting of its own, so authori
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Prepaid Copilot Credits allocated to an environment, and whether it can draw from the tenant pool</strong><br><small>Environment</small><br><small class="controls__note">Role: Power Platform Administrator, Global Administrator or equivalent. Applies across Copilot Studio. Read-only if a published environment group rule governs it (API error TenantPoolLockedByPolicy).</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Products › Copilot Studio › Manage Copilot Credits › environment <a href="https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform API</strong><br><code>PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01 (entitlementId MCSMessages, enforcement rule TenantPool)</code> <a href="https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Monthly Copilot Credit limit for one agent, with a stop at the limit</strong><br><small>Agent</small><br><small class="controls__note">Turn on Stop usage to turn the agent off at the limit. Limits aren't applied instantly, so allow margin; agent flows the agent calls are checked separately. No programmatic call for agent limits was found at the time of writing.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Copilot Studio › Manage Agents › agent › Set limit <a href="https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Prepaid Copilot Credits allocated to an environment, and whether it can draw from the tenant pool</strong><br><small>Environment</small><br><small class="controls__note">Role: Power Platform Administrator, Global Administrator or equivalent. Applies across Copilot Studio. Read-only if a published environment group rule governs it (API error TenantPoolLockedByPolicy).</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Products › Copilot Studio › Manage Copilot Credits › environment <a href="https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform API</strong><br><code>PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01 body: scope.environmentId=&lt;id&gt;; entitlementId=MCSMessages; allocation.quantity=&lt;n&gt;; enforcementRules=[{ruleType:TenantPool, enabled:false}]</code> <a href="https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Monthly Copilot Credit limit for one agent, with a stop at the limit</strong><br><small>Agent</small><br><small class="controls__note">Turn on Stop usage to turn the agent off at the limit. Limits aren't applied instantly, so allow margin; agent flows the agent calls are checked separately. An agent must consume some credits before you can set limits.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Copilot Studio › Manage Agents › agent › Set limit <a href="https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether the standard-harness computer use tool is available in an environment</strong><br><small>Environment</small><br><small class="controls__note">Existing control for the computer use tool on the standard harness. Microsoft has not confirmed it applies to the new capability.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › Computer use <a href="https://learn.microsoft.com/microsoft-copilot-studio/administer-computer-use" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform CLI</strong><br><code>pac env update-settings --environment &lt;envid&gt; --name iscomputeruseinmcsenabled --value false</code> <a href="https://learn.microsoft.com/microsoft-copilot-studio/administer-computer-use" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Hosted browser for computer use (preview)</strong><br><small>Tenant</small><br><small class="controls__note">Existing control for the preview hosted browser of the standard-harness tool; Microsoft has not confirmed it applies to the new capability.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Tenant settings › Hosted browser in computer use <a href="https://learn.microsoft.com/microsoft-copilot-studio/administer-computer-use#disable-hosted-browser" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Allowed websites and HTTPS enforcement for the computer use tool</strong><br><small>Agent</small><br><small class="controls__note">Maker-side, per tool. Enforce HTTPS is a separate option on the same page. Not confirmed for the new capability.</small></td><td data-label="Admin UI"><strong>Copilot Studio (maker)</strong><br>Tools › Add tool › New tool › Computer use › Add and configure › Access control <a href="https://learn.microsoft.com/microsoft-copilot-studio/computer-use#configure-optional-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
@@ -229,7 +233,7 @@ The Microsoft Copilot harness has no maker-access setting of its own, so authori
 </tbody>
 </table>
 
-No setting specific to web browsing on the Microsoft Copilot harness is documented at the time of writing (November 2026), so the last row is empty. The cost controls are the only documented levers confirmed for this harness. They cap spend, not where an agent browses.
+No setting specific to web browsing on the Microsoft Copilot harness is documented at the time of writing (November 2026), so the last row is empty. The cost controls listed here limit consumption, not browsing destinations.
 
 The computer use rows are existing controls for the standard-harness tool. Learn does not say they apply to the new capability; treat them as today's alternatives. The environment toggle covers only the computer use tool, the hosted browser tenant setting covers only the preview hosted browser, and the **Access control** allow list is set by the maker per tool. Learn notes that it stops the model acting on sites outside the list but not opening them.
 
@@ -252,9 +256,5 @@ impact: Medium. Makers and owners of Microsoft Copilot harness agents would noti
 <!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].api; rendered Governance controls table / command: The printed PUT call with the parenthetical entitlementId and enforcement-rule names configures environment credits and tenant-pool draw. | Found: scope = @{ environmentId = $environmentId } allocatedEntitlements = @( @{ entitlementId    = "MCSMessages" allocation       = @{ quantity = 5000 } enforcementRules = @( @{ ruleType = "TenantPool"; enabled = $false } | Fix: The endpoint, PUT method and version exist, but replace the parenthetical pseudo-call with the complete request: PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01; Authorization: Bearer <access-token>; Content-Type: application/json; body {"scope":{"environmentId":"<environment-id>"},"allocatedEntitlements":[{"entitlementId":"MCSMessages","allocation":{"quantity":<credits>},"enforcementRules":[{"ruleType":"TenantPool","enabled":false}]}]}. Use the cited tutorial's authentication prerequisites. The current entry supplies neither the environment nor allocation quantity nor the required enabled value. | Source: https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations
-- [contradicted, blocker] Governance controls / applicability: Cost controls are the only documented levers confirmed for the Microsoft Copilot harness. | Found: Admins govern it with four kinds of control: who can build agents, how much an agent can spend, what data and connectors it can reach, and who it can be shared with. | Fix: Replace 'The cost controls are the only documented levers confirmed for this harness. They cap spend, not where an agent browses.' with 'The cost controls listed here limit consumption, not browsing destinations.' This removes the false exclusion of the harness's documented authoring, data-access and sharing controls without claiming those controls govern native browsing. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/faqs-copilot-harness
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout, At rollout and After rollout / consistency: Every control the governance checklist asks readers to review appears in the controls table. | Found: Checklist: 'use environment and security-role assignments'; 'using the Harness column in the agent inventory'; 'Review agent and environment credit consumption together'. Table: credit limits, computer use settings and forwarding; no authoring-access or monitoring rows. | Fix: The checklist steps about environment/security-role assignments, the Harness inventory column and reviewing agent/environment consumption have no corresponding controls-table rows. Do not add rows in this correction; remove these three checklist bullets to satisfy the checklist/table requirement while retaining the supported explanatory prose.
-- [supported, minor] Cost and licensing; controls[1].note; Governance guidance: At rollout / behaviour: Turning on Stop usage turns the agent off at its monthly limit, subject to the stated enforcement delay. | Found: Turn on Stop usage if the agent should be turned off when it reaches the limit. | Fix: The cited cost guide supports this, but https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/faqs-copilot-harness additionally says 'An agent must consume some credits before you can set limits.' Add that exact sentence to controls[1].note and cite the FAQ; do not imply a limit can be configured before any consumption. | Source: https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness
+- [contradicted, blocker] controls[0].api; Governance controls / command: PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01 accepts the printed body with scope.environmentId, entitlementId, allocation.quantity and enforcementRules at the shown levels. | Found: scope = @{ environmentId = $environmentId } allocatedEntitlements = @( @{ entitlementId    = "MCSMessages" allocation       = @{ quantity = 5000 } enforcementRules = @( | Fix: Replace the call in controls[0].api and its rendered table cell with: PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01; headers: Authorization: Bearer <token>, Content-Type: application/json; body: {"scope":{"environmentId":"<id>"},"allocatedEntitlements":[{"entitlementId":"MCSMessages","allocation":{"quantity":<n>},"enforcementRules":[{"ruleType":"TenantPool","enabled":false}]}]}. The endpoint and API version are documented; the missing allocatedEntitlements array is required to nest the entitlement, allocation and enforcement rules as shown in the cited tutorial. | Source: https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations
 -->

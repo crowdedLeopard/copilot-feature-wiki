@@ -12,13 +12,13 @@ platforms: ["Web"]
 targetDate: "November CY2026"
 previewDate: null
 risk: "medium"
-cost: "low"
+cost: "variable"
 impact: "medium"
 defaultState: "unknown"
 action: "review"
 licensing:
-  model: "per-user"
-  notes: "Learn: Power Apps premium for model-driven apps; Dynamics 365 enterprise or premium for Dynamics 365 apps. Government terms may differ."
+  model: "mixed"
+  notes: "Learn: Power Apps premium for model-driven apps; Dynamics 365 enterprise or premium for Dynamics 365 apps. Government terms may differ. Row summaries rely on AI Builder to execute summary prompts; AI Builder features in Power Apps consume AI Builder credits or Copilot Credits."
 audiences: ["power-platform-admin","compliance","maker","end-user"]
 tags: ["power-apps","model-driven-apps","row-summary","copilot","gcc","gcc-high"]
 sources:
@@ -45,6 +45,12 @@ sources:
     kind: "learn"
   - title: "FAQ for prompts"
     url: "https://learn.microsoft.com/ai-builder/faqs-text-generation"
+    kind: "learn"
+  - title: "Overview of licensing (AI Builder)"
+    url: "https://learn.microsoft.com/ai-builder/administer-licensing"
+    kind: "learn"
+  - title: "Power Apps US Government"
+    url: "https://learn.microsoft.com/power-platform/admin/powerapps-us-government"
     kind: "learn"
   - title: "Row summaries per environment (Power Platform admin center)"
     url: "https://learn.microsoft.com/power-apps/user/record-summaries#admin-control"
@@ -87,19 +93,23 @@ changes:
     note: "Corrected after the check: maker control scope and note, Managed Environments allow/exclude control, API and usage-report wording, AI insight cards removal wording, and default state now unknown."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 52 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-17"
+    note: "Corrected after the check: cost is now variable and licensing mixed, because row summaries run on AI Builder, which consumes AI Builder credits or Copilot Credits."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 57 statements not yet confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-17"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 52
-  confirmed: 50
+  claims: 57
+  confirmed: 57
   unconfirmed: 0
-  contradicted: 2
-  attempts: 2
-  hash: "df4d0842d5e69ce9fc29e67f2647a28b"
+  contradicted: 0
+  attempts: 0
+  hash: "00ac1ac70e1171d2202106a8260675d0"
 ---
 
 ## What's changing
@@ -132,7 +142,9 @@ Service owners should confirm that the compliance boundary Microsoft describes m
 
 ## Cost and licensing
 
-Learn states that users need a Power Apps premium licence for model-driven apps, or a Dynamics 365 enterprise or premium licence for Dynamics 365 apps, and that the feature is hidden without one. Microsoft says this licence enforcement rolls out gradually following general availability. Usage may be subject to service limits. Government-specific pricing is not yet published.
+Learn states that users need a Power Apps premium licence for model-driven apps, or a Dynamics 365 enterprise or premium licence for Dynamics 365 apps, and that the feature is hidden without one. Microsoft says this licence enforcement rolls out gradually following general availability. Usage may be subject to service limits.
+
+Row summaries rely on AI Builder to execute summary prompts; AI Builder features in Power Apps consume AI Builder credits or Copilot Credits ([FAQ about row summaries](https://learn.microsoft.com/power-apps/maker/common/faq-record-summaries), [AI Builder licensing](https://learn.microsoft.com/ai-builder/administer-licensing)). Government-specific pricing is not yet published.
 
 ## Scope
 
@@ -182,15 +194,13 @@ Makers decide the prompt and the tables that show a summary. They can hide custo
 
 <!-- rationale
 risk: Medium. It sends record data to a generative AI service in regulated clouds, so data boundary and compliance assessments need an update.
-cost: Low. Learn says users need a Power Apps premium or Dynamics 365 licence; the cost for most tenants is review and communication.
+cost: Variable. Row summaries rely on AI Builder to execute prompts; AI Builder features in Power Apps consume AI Builder credits or Copilot Credits.
 impact: Medium. Users of enabled model-driven apps in government environments see summaries on forms and views.
 -->
 
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.model / consistency: The licensing model is per-user rather than mixed user licensing and consumption. | Found: In Power Apps and Power Automate, AI Builder features consume either AI Builder credits (Licensing and AI Builder credits), or Copilot Credits (Licensing and Copilot Credits). | Fix: Set licensing.model to mixed. Retain the documented user-licence requirements and append: 'Row summaries rely on AI Builder to execute summary prompts; AI Builder features in Power Apps consume AI Builder credits or Copilot Credits.' Cite https://learn.microsoft.com/power-apps/maker/common/faq-record-summaries and https://learn.microsoft.com/ai-builder/administer-licensing. | Source: https://learn.microsoft.com/ai-builder/administer-licensing
-- [contradicted, blocker] front matter: cost; rationale: cost / consistency: The change's known cost is low, consisting of review and communication rather than metered consumption. | Found: AI Builder is licensed on a capacity basis. Building custom and testing models (including prompts) doesn't require AI Builder credits or Copilot Credits. Running them in agents, agent flows, apps, or flows consume these credits. | Fix: Set cost to variable and replace the cost rationale with: 'Variable. Row summaries rely on AI Builder to execute prompts; AI Builder features in Power Apps consume AI Builder credits or Copilot Credits.' Add the same consumption statement to Cost and licensing, citing https://learn.microsoft.com/power-apps/maker/common/faq-record-summaries and https://learn.microsoft.com/ai-builder/administer-licensing. Retain the narrower government-specific pricing gap; do not infer a government-specific token rate. | Source: https://learn.microsoft.com/ai-builder/administer-licensing
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.notes / licensing: Government licensing terms may differ from the general product guidance. | Found: Access to Power Apps US Government plans is restricted to the following offerings; each plan is offered as a monthly subscription | Fix: Add https://learn.microsoft.com/power-platform/admin/powerapps-us-government, titled 'Power Apps US Government', to sources for the government-licensing qualification. | Source: https://learn.microsoft.com/power-platform/admin/powerapps-us-government
+- [supported, minor] front matter: targetDate; summary; What's changing / record: General availability is listed for November CY2026. | Found: "targetDate": "November CY2026"; "status": "In development" | Fix: Replace the summary with: "Microsoft plans AI-generated row summaries for model-driven apps in GCC and GCC High, targeting November CY2026 in the weekly release channel from version 2611.1." Change "The roadmap lists general availability for November CY2026" to "The roadmap targets general availability for November CY2026".
+- [supported, minor] controls[1].note; Governance controls table; Governance controls prose / behaviour: The maker configuration applies to all main forms and views for the table. | Found: When you configure the row summary, it applies to all views and main forms for the table. | Fix: Add after the table-wide scope statement: "The configuration guide describes table-wide scope; the row-summary FAQ instead describes configuring and hiding summaries on specific forms (https://learn.microsoft.com/power-apps/maker/common/faq-record-summaries)." | Source: https://learn.microsoft.com/power-apps/maker/data-platform/configure-form-row-summary
 -->

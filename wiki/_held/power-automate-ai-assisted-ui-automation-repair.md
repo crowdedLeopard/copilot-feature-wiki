@@ -70,24 +70,13 @@ controls:
       docs: "https://learn.microsoft.com/power-platform/admin/settings-features#desktop-flow-repair-at-runtime-configuration-preview"
     api: null
     note: "Preview. Governs the earlier Repair with Copilot capability."
-  - governs: "Copilot feedback from Power Automate for desktop"
-    scope: "tenant"
-    ui:
-      surface: "Power Platform admin center"
-      path: "Manage > Tenant settings"
-      docs: "https://learn.microsoft.com/power-platform/admin/tenant-settings"
-    api:
-      kind: "other"
-      call: "disableSurveyFeedback governance setting for Power Automate for desktop"
-      docs: "https://learn.microsoft.com/power-automate/desktop-flows/governance#prevent-users-from-sending-copilot-related-feedback"
-    note: "The desktop Copilot page names a \"Copilot feedback\" tenant setting; the tenant settings page lists Additional Copilot feedback for Copilot in Power Apps. Confirm which applies to desktop flows."
   - governs: "Switch specific to AI-assisted repair in the designer debug run"
     scope: "environment"
     ui: null
     api: null
 confidence: "medium"
 created: "2026-11-14"
-updated: "2026-11-16"
+updated: "2026-11-17"
 roadmapModified: "2026-10-27T23:05:02"
 changes:
   - date: "2026-11-14"
@@ -100,19 +89,23 @@ changes:
     note: "Correction: licensing now reflects the preview's documented no-extra-cost availability; default state set to unknown; feedback tenant setting added; unsupported claims about hierarchy data, session identity and portal-only control removed."
   - date: "2026-11-16"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 51 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-17"
+    note: "Correction: saved-selector wording narrowed to what Learn states, pilot and review guidance reworded, and the feedback control row removed from the table (its prose is kept)."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 51 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 4
 verification:
   status: "held"
-  date: "2026-11-16"
-  version: 3
+  date: "2026-11-17"
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 51
-  confirmed: 47
-  unconfirmed: 2
+  confirmed: 49
+  unconfirmed: 0
   contradicted: 2
-  attempts: 2
-  hash: "a79907803e146abf4dbb8bc2e20d1cde"
+  attempts: 3
+  hash: "7414286efd4cdb5f326485631fcb7ac3"
 ---
 
 ## What's changing
@@ -127,7 +120,7 @@ The roadmap lists a preview from July CY2026 and general availability in March C
 
 Broken selectors are a common cause of failed UI automation after an application or web page changes. A guided repair loop at design time can reduce the support effort for maintaining desktop flows.
 
-For service owners the question is data handling and consistency: the feature analyses the failing selector and a newly captured selector, so confirm the data-handling implications before allowing sensitive captures. Repaired selectors change the behaviour of production flows once saved. Microsoft has not stated what happens on arrival for the shared Copilot in Power Automate setting that the feature requires.
+For service owners the question is data handling and consistency: the feature analyses the failing selector and a newly captured selector, so confirm the data-handling implications before allowing sensitive captures. Selector changes are permanently saved when the maker saves the flow. Microsoft has not stated what happens on arrival for the shared Copilot in Power Automate setting that the feature requires.
 
 ## Risk assessment
 
@@ -159,11 +152,11 @@ Makers building UI and browser automation in Power Automate for desktop, version
 - Identify desktop flows that touch sensitive applications.
 
 ### At rollout
-- Enable the setting for a pilot group of makers first.
+- Pilot use with a small group of makers; the documented Copilot setting is environment-scoped, not a documented maker-group switch.
 - Brief makers to review every proposed selector before accepting it.
 
 ### After rollout
-- Review saved selector changes in solution history.
+- Review saved selector changes before wider use.
 - Collect maker feedback on repair accuracy before wider use.
 
 ## Governance controls
@@ -175,7 +168,6 @@ Makers building UI and browser automation in Power Automate for desktop, version
 <tbody>
 <tr><td data-label="Control"><strong>Copilot in Power Automate for an environment</strong><br><small>Environment</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Copilot › Settings › Power Automate › Copilot in Power Automate › On <a href="https://learn.microsoft.com/power-automate/desktop-flows/ai-assisted-ui-automation-repair#how-to-turn-on-and-use-the-feature" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Desktop flow repair at runtime</strong><br><small>Environment</small><br><small class="controls__note">Preview. Governs the earlier Repair with Copilot capability.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › Desktop flow repair at runtime configuration <a href="https://learn.microsoft.com/power-platform/admin/settings-features#desktop-flow-repair-at-runtime-configuration-preview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Copilot feedback from Power Automate for desktop</strong><br><small>Tenant</small><br><small class="controls__note">The desktop Copilot page names a &quot;Copilot feedback&quot; tenant setting; the tenant settings page lists Additional Copilot feedback for Copilot in Power Apps. Confirm which applies to desktop flows.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Tenant settings <a href="https://learn.microsoft.com/power-platform/admin/tenant-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>disableSurveyFeedback governance setting for Power Automate for desktop</code> <a href="https://learn.microsoft.com/power-automate/desktop-flows/governance#prevent-users-from-sending-copilot-related-feedback" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Switch specific to AI-assisted repair in the designer debug run</strong><br><small>Environment</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -200,11 +192,9 @@ cost: Low. The preview is documented as available for organization premium accou
 impact: Low. It affects makers who build UI and browser automation in desktop flows, not end users or flow consumers.
 -->
 
-<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Why it matters / behaviour: Repaired selectors change production-flow behavior once saved. | Found: Save draft: Save your latest changes without releasing them as the official version. ... Publish: Set a version as official so it runs from the console or cloud. | Fix: Replace 'Repaired selectors change the behaviour of production flows once saved.' with 'Selector changes are permanently saved when the maker saves the flow.' The repair article supports persistence, not the claim that saving alone updates production execution in environments with version control. | Source: https://learn.microsoft.com/power-automate/desktop-flows/version-control
-- [unsupported, blocker] controls[2].api; Governance controls table / command: The API column supplies 'disableSurveyFeedback governance setting for Power Automate for desktop' as the automation call. | Found: Searched: "disableSurveyFeedback" "Set-TenantSettings". Opened desktop governance, Set-TenantSettings and List tenant settings. disableSurveyFeedback exists, contrary to the pre-check lead, but this phrase specifies no executable operation, parameters or value. | Fix: Remove the feedback control row from the controls array and rendered table, retaining the existing prose about the documented disableSurveyFeedback tenant setting. The supplied phrase is not a call under the schema's runnable-call requirement; do not replace it with a claim that no automation exists, since governance links to Set-TenantSettings.
-- [unsupported, blocker] Governance guidance: At rollout / applicability: The shared Copilot setting can be enabled specifically for a pilot group of makers. | Found: Searched: "Copilot in Power Automate" setting specific users security group. Opened the repair article and Copilot hub. Configuration is described for environments or environment groups, not a maker-group audience for this setting. | Fix: Replace 'Enable the setting for a pilot group of makers first.' with 'Pilot use with a small group of makers; the documented Copilot setting is environment-scoped, not a documented maker-group switch.'
-- [contradicted, blocker] Governance guidance: After rollout / admin-path: Saved selector changes can be reviewed in solution history. | Found: An operation can be a solution import, export, or uninstall. The solution history displays information such as solution version, solution publisher, type of operation, operation start and end time, and operation status. | Fix: Replace 'Review saved selector changes in solution history.' with 'Review saved selector changes before wider use.' Solution history records solution operations; it is not the desktop-flow version comparison surface. | Source: https://learn.microsoft.com/power-apps/maker/data-platform/solution-history
+- [contradicted, blocker] Why it matters; rationale: risk / default: Microsoft has not stated an initial state for the shared Copilot in Power Automate setting. | Found: If a region has GPUs (UK, Australia, US, India), Microsoft turns on Copilot by default. | Fix: Replace the final sentence of Why it matters with: 'The repair article does not specify the initial state of its required setting; the broader Copilot in Power Automate overview says Copilot is on by default, but describes tenant-level rather than environment-level controls.' Replace 'Microsoft documents no initial state for it' in the risk rationale with 'the repair article does not specify its initial state'. Keep defaultState unknown for the designer feature rather than inferring its arrival behaviour from the broader overview. | Source: https://learn.microsoft.com/power-automate/copilot-overview#enable-or-disable-copilot-in-power-automate
+- [contradicted, blocker] controls[1].api; Governance controls table / absence: API automation for Desktop flow repair at runtime is not yet documented. | Found: Writable columns/attributes ... LogicalName | isdesktopflowruntimerepairattendedenabled ... LogicalName | isdesktopflowruntimerepairunattendedenabled | Fix: Remove the Desktop flow repair at runtime row from controls and the rendered table rather than reporting its automation as undocumented. Microsoft documents writable organization columns isdesktopflowruntimerepairattendedenabled and isdesktopflowruntimerepairunattendedenabled at https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/organization#writable-columns-attributes; the organization Web API reference documents GET and PATCH at https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/organization?view=dataverse-latest. The existing prose may continue distinguishing this earlier runtime capability from designer repair. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/organization#writable-columns-attributes
 -->

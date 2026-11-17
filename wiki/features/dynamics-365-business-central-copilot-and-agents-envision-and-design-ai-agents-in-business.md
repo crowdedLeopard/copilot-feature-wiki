@@ -34,6 +34,12 @@ sources:
   - title: "Set up agent permissions and profiles (preview)"
     url: "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-permissions-profiles"
     kind: "learn"
+  - title: "Agent permissions (preview)"
+    url: "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-permissions"
+    kind: "learn"
+  - title: "Configure agents programmatically (preview)"
+    url: "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-agent-sdk-configuration"
+    kind: "learn"
   - title: "Export or import an agent configuration"
     url: "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-export-import"
     kind: "learn"
@@ -66,14 +72,6 @@ controls:
       docs: "https://learn.microsoft.com/dynamics365/business-central/enable-ai"
     api: null
     note: "Reached through Search (Alt+Q). Needs SUPER permission or a listed admin licence. Design capability sits under Production ready previews."
-  - governs: "What a designed agent can see and do (profile and permission sets)"
-    scope: "agent"
-    ui:
-      surface: "Business Central"
-      path: "Agent > Create > Create agent wizard > Permissions > Manage permissions"
-      docs: "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-agent-create"
-    api: null
-    note: "The wizard's Profile (role) step sets visible UI. A task initially runs with the intersection of the scheduling user's and the agent's permissions; after an intervention request, the responding user's permissions apply."
   - governs: "Cross-geography processing of Copilot and agent data"
     scope: "environment"
     ui:
@@ -108,19 +106,23 @@ changes:
     note: "Corrected the trigger wording, the Manage Capacity path and the allocation API call; noted the transparency note's Azure OpenAI cost wording and that a credit cap needs both overage options cleared."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 87 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-17"
+    note: "Correction: removed the claim that no automation exists for agent permissions and profiles (now described as restricted AL methods) and its table row; noted the transparency note's different permission wording; dropped two checklist steps that had no control row."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 97 statements not yet confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-17"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 87
-  confirmed: 85
-  unconfirmed: 1
-  contradicted: 1
-  attempts: 3
-  hash: "9505bfb06fdfebc516d7d723ed2902f4"
+  claims: 97
+  confirmed: 95
+  unconfirmed: 0
+  contradicted: 2
+  attempts: 0
+  hash: "947406c10a0bbbbf4defb215beabd8c5"
 ---
 
 ## What's changing
@@ -146,7 +148,7 @@ The Business Central capabilities page says Copilot and agent capabilities are a
 - Learn lists compliance or security evaluation as a case where the toolkit should not be used.
 
 **Security & identity**
-- An agent is a Business Central user with its own permission sets, and Learn says agents cannot have more permissions than their creating user. When a task is scheduled, it runs with the intersection of the user's and the agent's permissions.
+- An agent is a Business Central user with its own permission sets, and Learn says agents cannot have more permissions than their creating user. When a task is scheduled, it runs with the intersection of the user's and the agent's permissions. The toolkit [transparency note](https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/transparency-note-ai-development-toolkit#capabilities) instead describes intersection with the task approver, or the agent configurator if approval was not required.
 - If the agent raises a user intervention request, the task continues with the permissions of the user who responds, who may not be the task creator.
 
 **Autonomy & actions**
@@ -181,9 +183,8 @@ The record lists Worldwide (Standard Multi-Tenant) and the web client. Default s
 
 ### Before rollout
 - Decide whether the Custom Agent capability should be active in each environment, and check its status on the Copilot & agent capabilities page (first control row).
-- Identify which people hold the AGENT - ADMIN and AGENT - DIAGNOSTICS permission sets and remove them from anyone who does not need to design agents.
 - Confirm which sandboxes hold copies of production data, since agent runs there can read it within the agent's permissions.
-- Agree who pays: check prepaid Copilot Credit capacity or pay-as-you-go, and the Power Platform environment linked to each sandbox (fourth control row).
+- Agree who pays: check prepaid Copilot Credit capacity or pay-as-you-go, and the Power Platform environment linked to each sandbox (third control row).
 
 ### At rollout
 - Create custom profiles for agents and restrict page actions and insert or delete rights before assigning them in the Create agent wizard.
@@ -191,7 +192,6 @@ The record lists Worldwide (Standard Multi-Tenant) and the web client. Default s
 - Allocate a bounded amount of prepaid capacity to the Power Platform environment linked to the sandbox where agents are tested, and clear both Draw from the available capacity in my tenant and Bill to my pay-as-you-go billing plan so that the allocation is the cap.
 
 ### After rollout
-- Watch Copilot Credit consumption in the Power Platform admin center, and in Application Insights telemetry if it is set up for the environment.
 - Re-test agents after model changes announced for Business Central agents.
 - Export agent definitions for backup before changing instructions, and store them under version control as the roadmap recommends.
 
@@ -203,13 +203,14 @@ The record lists Worldwide (Standard Multi-Tenant) and the web client. Default s
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether the Custom Agent (agent design) capability is active in a Business Central environment</strong><br><small>Environment</small><br><small class="controls__note">Reached through Search (Alt+Q). Needs SUPER permission or a listed admin licence. Design capability sits under Production ready previews.</small></td><td data-label="Admin UI"><strong>Business Central</strong><br>Copilot &amp; agent capabilities › select the feature › Activate or Deactivate <a href="https://learn.microsoft.com/dynamics365/business-central/enable-ai" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>What a designed agent can see and do (profile and permission sets)</strong><br><small>Agent</small><br><small class="controls__note">The wizard's Profile (role) step sets visible UI. A task initially runs with the intersection of the scheduling user's and the agent's permissions; after an intervention request, the responding user's permissions apply.</small></td><td data-label="Admin UI"><strong>Business Central</strong><br>Agent › Create › Create agent wizard › Permissions › Manage permissions <a href="https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-agent-create" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Cross-geography processing of Copilot and agent data</strong><br><small>Environment</small><br><small class="controls__note">General control for Copilot and agent capabilities; appears only when relevant. Learn does not say it applies to Custom Agent.</small></td><td data-label="Admin UI"><strong>Business Central</strong><br>Copilot &amp; agent capabilities › Allow data movement toggle <a href="https://learn.microsoft.com/dynamics365/business-central/enable-ai" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Copilot Credit capacity available to the environment's agents</strong><br><small>Environment</small><br><small class="controls__note">Applies once the Business Central environment is linked to the Power Platform one (internal admins only). Not allocatable per feature. API: Power Platform Administrator or Global Administrator. Capped when no overage source is enabled.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Products › Copilot Studio › Summary › Prepaid capacity › Manage Capacity <a href="https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform API</strong><br><code>PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01 {&quot;scope&quot;:{&quot;environmentId&quot;:&quot;&lt;environment-id&gt;&quot;},&quot;allocatedEntitlements&quot;:[{&quot;entitlementId&quot;:&quot;MCSMessages&quot;,&quot;allocation&quot;:{&quot;quantity&quot;:&lt;credits&gt;}}]}</code> <a href="https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-The Copilot & agent capabilities page and the agent wizard are configured inside Business Central; Microsoft Learn documents no API for the Copilot & agent capabilities page at the time of writing (November 2026). Copilot Credit allocation can also be set through the Power Platform API (fourth row). Changing a capability can take time to reach users: some take effect immediately and others after users sign out and in.
+The Copilot & agent capabilities page is configured inside Business Central; Microsoft Learn documents no API for it at the time of writing (November 2026). Copilot Credit allocation can also be set through the Power Platform API (third row). Changing a capability can take time to reach users: some take effect immediately and others after users sign out and in.
+
+An agent's permission sets and profile are set in the Create agent wizard: select Agent > Create, then use Manage permissions under Permissions and Setup profile under Profile (role) ([Create and activate an agent](https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-agent-create)). Learn documents AL Agent.UpdateAccessControl for permission sets ([Agent permissions](https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-permissions)) and Agent.SetProfile for profiles; configuration across application boundaries is restricted, so these are not unrestricted administrator APIs for designer-created agents ([Configure agents programmatically](https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-agent-sdk-configuration#cross-agent-operations)).
 
 The Copilot & agent capabilities page needs SUPER permission or one of the listed administrator licences, and Learn says there are no granular permissions yet for only specific administrators to configure Copilot. Design rights come from the AGENT - ADMIN permission set; the page on [assigning permissions in Business Central](https://learn.microsoft.com/dynamics365/business-central/ui-define-granular-permissions) covers how to grant it.
 
@@ -230,11 +231,9 @@ cost: Variable. Business Central bills agent capabilities in Copilot Credits (pr
 impact: Low. Learn aims the designer at product owners, domain experts, consultants and developers working in sandboxes; most Business Central users will not see it in day-to-day work.
 -->
 
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] controls[1].api; Governance controls table / absence: Automation for assigning an agent's permission sets and profile is not yet documented. | Found: Searched: Business Central agent permission sets profile AL API; "Custom Agent" "UpdateAccessControl"; "Custom Agent" "SetProfile". Read toolkit permissions, Agent reference, SDK configuration and Tasks AL API. AL methods exist, but cross-app restrictions leave designer applicability unsettled. | Fix: Remove the blanket 'Not yet documented' assertion for this automation side. Describe it narrowly as 'Learn documents AL Agent.UpdateAccessControl for permission sets and Agent.SetProfile for profiles; configuration across application boundaries is restricted, so these are not unrestricted administrator APIs for designer-created agents.' Cite https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-permissions and https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-agent-sdk-configuration#cross-agent-operations. If the structured table cannot represent this qualified state without asserting a runnable call for designer-created agents, remove controls[1] and its rendered row and retain the verified wizard path and this qualification in the section prose instead.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Security & identity; controls[1].note; Governance guidance: At rollout / behaviour: A scheduled task initially runs with the intersection of the scheduling user's and the agent's permissions. | Found: When a user schedules a task for an agent, the task is executed with permissions from the intersection of the user's permissions and the agent's permissions. | Fix: Add to the existing permission explanation: 'The toolkit transparency note instead describes intersection with the task approver, or the agent configurator if approval was not required.' Cite https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/transparency-note-ai-development-toolkit#capabilities alongside the permissions page; both pages were read and differ on whose permissions are used. | Source: https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-permissions-profiles
-- [contradicted, minor] Governance guidance: Before rollout and After rollout / consistency: The checklist includes user design-permission management and consumption monitoring, but neither has a corresponding control row. | Found: Identify which people hold the AGENT - ADMIN and AGENT - DIAGNOSTICS permission sets ... Watch Copilot Credit consumption ... Controls rows instead cover capability activation, agent permissions, data movement and capacity allocation. | Fix: The checklist steps for reviewing users' AGENT - ADMIN/AGENT - DIAGNOSTICS assignments and monitoring Copilot Credit consumption have no matching control rows. Remove those two checklist bullets to satisfy the checklist/table agreement rule without adding control rows; retain their already documented explanatory facts in Scope and Cost and licensing.
+- [contradicted, minor] Governance guidance: At rollout, custom profiles checklist item / consistency: The checklist directs readers to create and restrict agent profiles, but the controls table has no profile-control row. | Found: Create custom profiles for agents and restrict page actions and insert or delete rights before assigning them in the Create agent wizard. | Table rows cover capability activation, data movement and credit capacity, not profiles. | Fix: Remove the checklist item beginning 'Create custom profiles for agents'. The documented profile behaviour and wizard path can remain in Risk assessment and Governance controls.
+- [contradicted, minor] Governance guidance: At rollout, permission sets checklist item / consistency: The checklist directs readers to grant agent permission sets, but the controls table has no agent-permissions row. | Found: Grant agents only the permission sets their task needs, remembering that each task runs with the intersection of the user's and the agent's permissions. | Table rows cover capability activation, data movement and credit capacity, not permission sets. | Fix: Remove the checklist item beginning 'Grant agents only the permission sets'. The verified permissions discussion and wizard path can remain elsewhere.
 -->

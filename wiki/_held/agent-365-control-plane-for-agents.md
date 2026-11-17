@@ -157,26 +157,30 @@ changes:
     note: "Corrected after verification: cost rationale now says E7 already includes Microsoft 365 E5 and Agent 365; added the optional delete-permission qualification, the Copilot Studio registry discrepancy, the FAQ prerequisite inconsistency and the observability collection setting on the connections row."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 96 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 4
+  - date: "2026-11-17"
+    note: "Corrected after verification: replaced the unsupported claim that agents keep running as today with the licensing FAQ's registry and premium-capability split, and noted the Copilot Studio page's different registry path."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 107 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 5
 verification:
   status: "held"
   date: "2026-11-17"
-  version: 4
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 96
-  confirmed: 95
-  unconfirmed: 1
-  contradicted: 0
-  attempts: 3
-  hash: "ea7adb3db8d4fd30ba13ebaed88eaf6d"
+  claims: 107
+  confirmed: 106
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 4
+  hash: "a6c3c85240bc31b84791b5115637c694"
 ---
 
 ## What's changing
 
 Microsoft Agent 365 is generally available. The roadmap item is Launched, targeted May CY2026, at General Availability for Worldwide (Standard Multi-Tenant) on the web. Microsoft's overview says it is generally available for the Commercial segment on a per user basis, and describes it as the observability platform for AI.
 
-The centre of it is the agent registry in the Microsoft 365 admin center (**Agents** > **All Agents** > **Registry**). It lists agents from Microsoft, from partners and from your own teams, with owner, usage and risk information. The registry is not a full census: Microsoft's registry page notes that, for a custom engine agent, publishing the agent in Copilot Studio alone might not make it visible in the admin center, while its Copilot Studio integration page says Copilot Studio agents register automatically when they are created. Confirm coverage in your tenant.
+The centre of it is the agent registry in the Microsoft 365 admin center (**Agents** > **All Agents** > **Registry**). The Copilot Studio integration page instead gives Microsoft 365 admin center > **Agent 365** > **Agent registry**; the path above follows the dedicated admin guide. It lists agents from Microsoft, from partners and from your own teams, with owner, usage and risk information. The registry is not a full census: Microsoft's registry page notes that, for a custom engine agent, publishing the agent in Copilot Studio alone might not make it visible in the admin center, while its Copilot Studio integration page says Copilot Studio agents register automatically when they are created. Confirm coverage in your tenant.
 
 Administrators can act on agents from the registry (block, activate, reassign owners) and, in **Agents** > **Settings**, set agent management rules, agent and plugin access, sharing, user access, feedback sharing and tags. Agents built on other platforms can be brought in through **Connected platforms**; Microsoft's supported-platforms table includes Amazon Bedrock. Identity for agents sits in Microsoft Entra, where Conditional Access and sign-in logs apply to agent identities.
 
@@ -184,7 +188,7 @@ Administrators can act on agents from the registry (block, activate, reassign ow
 
 Agents are created in several places (Copilot Studio, Agent Builder, SharePoint, partner catalogues, other clouds), and Agent 365 is where a service owner can see them with an owner attached and act on them. The practical gain is an inventory with accountable owners, bulk lifecycle rules and a block control, plus Entra identity controls for agents that have an agent identity.
 
-The decision is commercial as much as technical. Some capabilities are described as included with a Microsoft cloud subscription, and others need a per-user Agent 365 licence, but Microsoft's own pages disagree on where the line falls. If nobody acts, agents keep running as they do today and the free registry remains available; what you give up is the licensed policy, observability and security layers.
+The decision is commercial as much as technical. Some capabilities are described as included with a Microsoft cloud subscription, and others need a per-user Agent 365 licence, but Microsoft's own pages disagree on where the line falls. The licensing FAQ includes the registry with a Microsoft cloud subscription; premium governance, observability and security capabilities require Agent 365.
 
 ## Risk assessment
 
@@ -275,7 +279,5 @@ impact: Medium. Mainly administrators, security teams and agent owners notice it
 <!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Why it matters / default: If nobody acts, agents keep running as they do today. | Found: Searched: Agent 365 agents keep running license; Agent 365 if no license continue. Opened overview, connected-platforms, licensing FAQ and Defender's transition-agent-security-to-agent-365. None states this blanket no-action assurance about existing agents. | Fix: Replace the sentence beginning "If nobody acts" with: "The licensing FAQ includes the registry with a Microsoft cloud subscription; premium governance, observability and security capabilities require Agent 365." The enablement prerequisite does not establish that existing agents and their operation remain unchanged.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; What's changing; Governance guidance / admin-path: The registry is at Microsoft 365 admin center > Agents > All Agents > Registry. | Found: In the left navigation pane, select Agents > All Agents > Registry. | Fix: Keep the cited admin path. Add: "The Copilot Studio integration page instead gives Microsoft 365 admin center > Agent 365 > Agent registry; the path above follows the dedicated admin guide." The differing page is https://learn.microsoft.com/microsoft-agent-365/builder/agent-registry. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview
+- [contradicted, blocker] controls[4].api / command: The printed POST call with only conditions.clientApplications.includeAgentIdServicePrincipals set to All supplies the API equivalent of the stated agent block policy. | Found: A valid policy should contain at least one application rule - for example, 'includeApplications': 'none', one user rule - for example, 'includeUsers': 'none', and at least one grant/session control. | Fix: Replace the shorthand call in controls[4].api and its rendered table cell with POST /beta/identity/conditionalAccess/policies and the JSON body from Policy 1 at https://learn.microsoft.com/entra/agent-id/disable-agent-identities#create-conditional-access-policies-to-disable-agent-activities: {"displayName":"Block all agent identities from accessing resources","conditions":{"clientApplications":{"includeAgentIdServicePrincipals":["All"],"excludeAgentIdServicePrincipals":[],"agentIdServicePrincipalFilter":null},"applications":{"includeApplications":["All"],"excludeApplications":[]}},"grantControls":{"operator":"AND","builtInControls":["block"]},"state":"enabledForReportingButNotEnforced"}. Keep the existing docs link. The current text omits the required resource selection and grant control, provides no request body, and does not encode the promised report-only state. | Source: https://learn.microsoft.com/graph/api/conditionalaccessroot-post-policies?view=graph-rest-beta
 -->

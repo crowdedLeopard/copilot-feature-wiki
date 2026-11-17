@@ -40,6 +40,9 @@ sources:
   - title: "Alert policies in the Microsoft Defender portal"
     url: "https://learn.microsoft.com/defender-xdr/alert-policies"
     kind: "learn"
+  - title: "Manage messaging policies in Teams"
+    url: "https://learn.microsoft.com/microsoftteams/messaging-policies-in-teams"
+    kind: "learn"
   - title: "MC1466296: Microsoft Teams: Report security concerns in meetings"
     url: "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1466296"
     kind: "message-center"
@@ -68,9 +71,9 @@ controls:
       docs: "https://learn.microsoft.com/defender-office-365/submissions-teams"
     api:
       kind: "powershell"
-      call: "Set-ReportSubmissionPolicy -Identity DefaultReportSubmissionPolicy -ReportChatMessageEnabled -ReportChatMessageToCustomizedAddressEnabled -ReportChatMessageAddresses (Exchange Online PowerShell)"
+      call: "Set-ReportSubmissionPolicy -Identity DefaultReportSubmissionPolicy -ReportChatMessageEnabled $true -ReportChatMessageToCustomizedAddressEnabled $true -ReportChatMessageAddresses \"<reporting-mailbox>\""
       docs: "https://learn.microsoft.com/defender-office-365/submissions-teams"
-    note: "Reporting mailbox must be Exchange Online. Parameter names refer to chat messages; the SecOps guide says meeting reports follow the same Teams user reported settings."
+    note: "Call shown sends to Microsoft and the reporting mailbox (Exchange Online PowerShell). Parameters refer to chat messages; the SecOps guide says meeting reports follow the same Teams user reported settings."
   - governs: "Whether the Defender portal monitors reported Teams items"
     scope: "tenant"
     ui:
@@ -93,11 +96,8 @@ controls:
       surface: "Microsoft Defender portal"
       path: "Email & collaboration > Policies & rules > Alert policy"
       docs: "https://learn.microsoft.com/defender-xdr/alert-policies"
-    api:
-      kind: "powershell"
-      call: "New-ProtectionAlert (Security & Compliance PowerShell)"
-      docs: "https://learn.microsoft.com/defender-xdr/alert-policies"
-    note: "Meeting reports use the reported-call alert policies. Manage Alerts role creates and edits policies. The page documents creating policies; it does not say the built-in ones can be edited."
+    api: null
+    note: "Meeting reports use the reported-call alert policies. Manage Alerts is required to create and edit alert policies. Built-in policies can be turned off or on, given recipients and a daily notification limit; other settings can't be edited."
   - governs: "Where administrators review user reports in Teams"
     scope: "tenant"
     ui:
@@ -108,25 +108,30 @@ controls:
     note: "The Learn page lists Calling, Chats and channels, and User categories only; a meetings category is not documented at the time of writing (November 2026)."
 confidence: "high"
 created: "2026-11-16"
-updated: "2026-11-16"
+updated: "2026-11-17"
 roadmapModified: "2026-11-04T00:02:09"
 changes:
   - date: "2026-11-16"
     note: "First briefing: covers default-on meeting reporting, the Teams admin center and Defender settings, and gaps between the notice and the Preview Learn page."
   - date: "2026-11-16"
     note: "Corrected after verification: reports now qualified by destination and online-mailbox requirement; fixed the Defender path; added destination, ReportMeeting and alert policy controls."
-version: 2
+  - date: "2026-11-17"
+    note: "Corrected after verification: replaced the destination PowerShell call with the complete documented example, removed New-ProtectionAlert from the alert row, stated what built-in alert policies allow, and softened the manual-action claim."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 74 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 3
 verification:
   status: "held"
-  date: "2026-11-16"
-  version: 2
+  date: "2026-11-17"
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 76
-  confirmed: 72
-  unconfirmed: 1
-  contradicted: 3
-  attempts: 2
+  claims: 74
+  confirmed: 73
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 3
+  hash: "e40789c8f68015eba62439073009b97c"
 ---
 
 ## What's changing
@@ -137,7 +142,7 @@ Microsoft's notice MC1466296 (published 2026-09-02) says users will see a **Repo
 
 Learn words the entry points slightly differently. The Defender for Office 365 pages say **More (...) > Report a concern** during a meeting, **Report** on a participant tile or in the roster, and **Report a concern** from the post-meeting experience. The dedicated meeting page, still titled "(Preview)" at the time of writing (November 2026), says **Report a security concern**. Expect the label to vary between documents.
 
-The roadmap record gives status Launched and a target of September CY2026, with Targeted Release and General Availability phases in the Worldwide (Standard Multi-Tenant) cloud. The notice gives Targeted Release from late September 2026 and General Availability (Worldwide) from mid-October to late October 2026. The roadmap lists Android, Desktop, iOS and Mac; the notice names Windows, Mac and web. Learn marks the iOS and Android apps as "messages only" for Teams reporting, so mobile meeting reporting is unconfirmed.
+The roadmap record gives status Launched and a target of September CY2026, with Targeted Release and General Availability phases in the Worldwide (Standard Multi-Tenant) cloud. The notice gives Targeted Release beginning in late September 2026 and expected to complete by late September 2026, and General Availability (Worldwide) from mid-October to late October 2026. The roadmap lists Android, Desktop, iOS and Mac; the notice names Windows, Mac and web. Learn marks the iOS and Android apps as "messages only" for Teams reporting, so mobile meeting reporting is unconfirmed.
 
 ## Why it matters
 
@@ -160,7 +165,7 @@ If nobody acts, reports land in the Defender portal and Teams admin center with 
 
 **Autonomy & actions**
 
-- Microsoft's pages describe reports as signals for administrators to investigate; none describes an automatic action against a reported participant at the time of writing (November 2026). Any removal, block or follow-up is a manual step under your own process.
+- Microsoft's pages describe reports as signals for administrators to investigate; none describes an automatic action against a reported participant at the time of writing (November 2026). Plan who will investigate and decide any removal, blocking or follow-up under your incident response process.
 
 **Change & support**
 
@@ -214,10 +219,10 @@ Which licence a tenant needs to see meeting reports in the Teams admin center is
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether users can report meetings and meeting participants</strong><br><small class="controls__note">Role: Global Administrator or Teams Administrator. Learn does not say -ReportMeeting is the setting behind the admin centre toggle. The meeting page is marked Preview and gives no full path.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Policy or settings page that controls reporting for Teams meetings › Allow users to report meetings <a href="https://learn.microsoft.com/microsoftteams/end-user-reporting-teams-meeting" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingConfiguration -Identity Global -ReportMeeting Enabled|Disabled</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingconfiguration" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Where reported Teams items are sent (Microsoft, reporting mailbox or both)</strong><br><small>Tenant</small><br><small class="controls__note">Reporting mailbox must be Exchange Online. Parameter names refer to chat messages; the SecOps guide says meeting reports follow the same Teams user reported settings.</small></td><td data-label="Admin UI"><strong>Microsoft Defender portal</strong><br>Settings › Email &amp; collaboration › Teams user reported settings tab › Reported item destinations › Send the reported items to <a href="https://learn.microsoft.com/defender-office-365/submissions-teams" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-ReportSubmissionPolicy -Identity DefaultReportSubmissionPolicy -ReportChatMessageEnabled -ReportChatMessageToCustomizedAddressEnabled -ReportChatMessageAddresses (Exchange Online PowerShell)</code> <a href="https://learn.microsoft.com/defender-office-365/submissions-teams" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Where reported Teams items are sent (Microsoft, reporting mailbox or both)</strong><br><small>Tenant</small><br><small class="controls__note">Call shown sends to Microsoft and the reporting mailbox (Exchange Online PowerShell). Parameters refer to chat messages; the SecOps guide says meeting reports follow the same Teams user reported settings.</small></td><td data-label="Admin UI"><strong>Microsoft Defender portal</strong><br>Settings › Email &amp; collaboration › Teams user reported settings tab › Reported item destinations › Send the reported items to <a href="https://learn.microsoft.com/defender-office-365/submissions-teams" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-ReportSubmissionPolicy -Identity DefaultReportSubmissionPolicy -ReportChatMessageEnabled $true -ReportChatMessageToCustomizedAddressEnabled $true -ReportChatMessageAddresses &quot;&lt;reporting-mailbox&gt;&quot;</code> <a href="https://learn.microsoft.com/defender-office-365/submissions-teams" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether the Defender portal monitors reported Teams items</strong><br><small>Tenant</small><br><small class="controls__note">Role: Organization Management or Security Administrator. On by default for new tenants; existing tenants must enable it. Meaningful only if Teams reporting is on.</small></td><td data-label="Admin UI"><strong>Microsoft Defender portal</strong><br>Settings › Email &amp; collaboration › Teams user reported settings tab › Microsoft Teams › Monitor reported items in Microsoft Teams <a href="https://learn.microsoft.com/defender-office-365/submissions-teams" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Where administrators review reported meetings in Defender</strong><br><small>Tenant</small><br><small class="controls__note">Detailed submissions need Defender for Office 365 Plan 1 or Plan 2, or Defender XDR, per Microsoft's notice. Also reachable from View submission in the Defender XDR incident.</small></td><td data-label="Admin UI"><strong>Microsoft Defender portal</strong><br>Submissions › User reported tab <a href="https://learn.microsoft.com/defender-office-365/mdo-support-teams-sec-ops-guide" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Alerts raised by reported meetings and participants</strong><br><small>Tenant</small><br><small class="controls__note">Meeting reports use the reported-call alert policies. Manage Alerts role creates and edits policies. The page documents creating policies; it does not say the built-in ones can be edited.</small></td><td data-label="Admin UI"><strong>Microsoft Defender portal</strong><br>Email &amp; collaboration › Policies &amp; rules › Alert policy <a href="https://learn.microsoft.com/defender-xdr/alert-policies" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-ProtectionAlert (Security &amp; Compliance PowerShell)</code> <a href="https://learn.microsoft.com/defender-xdr/alert-policies" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Alerts raised by reported meetings and participants</strong><br><small>Tenant</small><br><small class="controls__note">Meeting reports use the reported-call alert policies. Manage Alerts is required to create and edit alert policies. Built-in policies can be turned off or on, given recipients and a daily notification limit; other settings can't be edited.</small></td><td data-label="Admin UI"><strong>Microsoft Defender portal</strong><br>Email &amp; collaboration › Policies &amp; rules › Alert policy <a href="https://learn.microsoft.com/defender-xdr/alert-policies" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Where administrators review user reports in Teams</strong><br><small>Tenant</small><br><small class="controls__note">The Learn page lists Calling, Chats and channels, and User categories only; a meetings category is not documented at the time of writing (November 2026).</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Analytics &amp; reports › Protection reports › View reports tab › User reported security submissions <a href="https://learn.microsoft.com/microsoftteams/end-user-reported-security-signal" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -226,7 +231,9 @@ Two layers must agree. The Teams side decides whether users can report at all; t
 
 The meeting page gives the setting name **Allow users to report meetings** but no full navigation path. Learn documents `-ReportMeeting` as the parameter that controls whether users get the meeting reporting options, but does not say it is the same setting as the admin centre toggle. Learn also documents a **Report a security concern** toggle in Messaging policies; that page describes messages and does not confirm it governs meetings.
 
-The Exchange Online PowerShell destination parameters are named for chat messages. Microsoft's Defender for Office 365 SecOps guide states that reported meetings and participants follow the Teams user reported settings. At the time of writing (November 2026), no Graph endpoint for meeting reports has been found in Learn.
+The Exchange Online PowerShell destination parameters are named for chat messages. Microsoft's Defender for Office 365 SecOps guide states that reported meetings and participants follow the Teams user reported settings. For **Microsoft only**, Learn gives `Set-ReportSubmissionPolicy -Identity DefaultReportSubmissionPolicy -ReportChatMessageEnabled $true -ReportChatMessageToCustomizedAddressEnabled $false -EnableUserEmailNotification $true`. At the time of writing (November 2026), no Graph endpoint for meeting reports has been found in Learn.
+
+No supported command for changing the built-in alert policies that reported meetings use was established, so that row has no API entry.
 
 ## Open questions
 
@@ -242,15 +249,8 @@ cost: Low. Microsoft's pages tie meeting reporting to Defender for Office 365 Pl
 impact: High. Microsoft's notice says the capability is enabled by default, so eligible users on supported clients see Report a concern in meetings without any admin action; reporting needs an online Teams mailbox.
 -->
 
-<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
-The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [supported, minor] What's changing: rollout paragraph / record: The notice gives Targeted Release from late September 2026. | Found: Targeted Release: Beginning in late September 2026 and expected to complete by late September 2026 | Fix: Give the complete notice window: 'Targeted Release beginning in late September 2026 and expected to complete by late September 2026.' The current wording omits its expected completion.
-- [unsupported, major] Risk assessment: Autonomy & actions, second sentence / behaviour: Any removal, block or follow-up is necessarily a manual step. | Found: Searched: Teams reported meeting participant security concern automatic remove block action. Opened end-user-reporting-teams-meeting, submissions-teams and mdo-support-teams-sec-ops-guide; no passage says all removal, blocking or follow-up must be manual. | Fix: Replace 'Any removal, block or follow-up is a manual step under your own process' with advice: 'Plan who will investigate and decide any removal, blocking or follow-up under your incident response process.' Keep the preceding, narrower documentation-gap statement.
-- [contradicted, blocker] controls[1].api; Governance controls table / command: The printed Set-ReportSubmissionPolicy call configures the reporting destination using three parameters without argument values. | Found: Set-ReportSubmissionPolicy -Identity DefaultReportSubmissionPolicy `
-    -ReportChatMessageEnabled $true `
-    -ReportChatMessageToCustomizedAddressEnabled $true `
-    -ReportChatMessageAddresses "securityadmin@contoso.com" | Fix: Replace the parameter-only call with a complete documented example, labelled 'Microsoft and reporting mailbox': Set-ReportSubmissionPolicy -Identity DefaultReportSubmissionPolicy -ReportChatMessageEnabled $true -ReportChatMessageToCustomizedAddressEnabled $true -ReportChatMessageAddresses "<reporting-mailbox>". Move '(Exchange Online PowerShell)' outside the code. For Microsoft-only, document the separate example including -EnableUserEmailNotification $true from https://learn.microsoft.com/defender-office-365/submissions-teams. | Source: https://learn.microsoft.com/defender-office-365/submissions-teams
-- [contradicted, blocker] controls[4].api / command: New-ProtectionAlert is the automation counterpart for governing the existing reported-meeting and reported-participant alert policies. | Found: Use the New-ProtectionAlert cmdlet to create alert policies in the Microsoft Purview compliance portal and the Microsoft Defender portal. | Fix: Remove New-ProtectionAlert from this row: it creates a new policy, not configuration of the existing reported-call policies used by meeting reports. Set controls[4].api to null and explain that no supported command for changing these built-in policies was established. Do not substitute Set-ProtectionAlert: https://learn.microsoft.com/powershell/module/exchangepowershell/set-protectionalert explicitly excludes default policies. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/new-protectionalert
-- [contradicted, blocker] controls[4].note / absence: The alert-policy page does not say built-in policies can be edited. | Found: You can turn off these policies (or back on again), set up a list of recipients to send email notifications to, and set a daily notification limit. The other settings for these policies can't be edited. | Fix: Replace the last two sentences of the note with: 'Manage Alerts is required to create and edit alert policies. For built-in policies, Microsoft permits enabling/disabling, changing notification recipients and setting a daily notification limit; other settings cannot be edited.' Keep the existing UI path and cite https://learn.microsoft.com/defender-xdr/alert-policies#default-alert-policies. | Source: https://learn.microsoft.com/defender-xdr/alert-policies
-- [supported, minor] Governance controls: Messaging policies paragraph / applicability: Learn documents Report a security concern in Messaging policies for messages, without confirming that it governs meeting reports. | Found: **Report a security concern** - When this is ON, users can report malicious messages in Microsoft Teams in organizations with Microsoft Defender for Office 365 Plan 2 or Microsoft Defender XDR. | Fix: Add https://learn.microsoft.com/microsoftteams/messaging-policies-in-teams to sources for this background claim. Its older message-reporting licensing text differs from submissions-teams, which includes Plan 1; keep this reference limited to the messaging policy and do not transfer its licensing to meeting reports. | Source: https://learn.microsoft.com/microsoftteams/messaging-policies-in-teams
+<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] front matter: licensing.model / licensing: The licensing model is unknown, meaning Microsoft has not yet published it. | Found: Microsoft Defender for Office 365 Plan 1 provides the following extra Teams protection features: Report Teams items: Users can report Teams messages, calls, meetings, or meeting participants as malicious or not malicious. | Fix: Set licensing.model to "included". Start licensing.notes with "Meeting and participant reporting is included in Microsoft Defender for Office 365 Plan 1 and Plan 2." Cite https://learn.microsoft.com/defender-office-365/mdo-support-teams-about, whose feature table lists user-reported meetings and participants in both plans. Retain the separately qualified uncertainty about Teams admin center access without Defender. | Source: https://learn.microsoft.com/defender-office-365/mdo-support-teams-about
 -->

@@ -14,7 +14,7 @@ previewDate: "June CY2026"
 risk: "medium"
 cost: "variable"
 impact: "medium"
-defaultState: "user-opt-in"
+defaultState: "admin-opt-in"
 action: "review"
 licensing:
   model: "mixed"
@@ -102,19 +102,23 @@ changes:
     note: "Corrected after the independent check: availability now depends on registration approval and Microsoft Entra consent, registry blocking is limited to supported experiences, and the Dataverse role checklist step was removed."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 79 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-17"
+    note: "Corrected after the independent check: default state is now admin-opt-in because a tenant admin must provision the gateway service principal, and the After rollout check now refers to the token's scp claim only."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 80 statements not yet confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-17"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 79
-  confirmed: 77
+  claims: 80
+  confirmed: 80
   unconfirmed: 0
-  contradicted: 2
-  attempts: 3
-  hash: "dcb43e0607f079a8c106266207f5051e"
+  contradicted: 0
+  attempts: 0
+  hash: "510a886d8d368604558a26cf77ac30b7"
 ---
 
 ## What's changing
@@ -186,7 +190,7 @@ Once registration is approved and required Microsoft Entra consent is granted, m
 
 ### After rollout
 
-- Look for 403 responses and missing tools, and check the user's security role privileges and the `scp` claim before widening access.
+- Look for 403 responses and check that the token's `scp` claim contains `McpServers.D365CustomerInsights.All` before widening access.
 - Re-read the roadmap item and the Learn pages when the preview and general availability targets pass, for licensing or meter changes.
 
 ## Governance controls
@@ -223,10 +227,8 @@ cost: Variable. Copilot Studio agent usage is metered in Copilot Credits, subjec
 impact: Medium. Makers who build agents and the sellers, marketers and service staff who use them notice it; most users and tenant defaults do not change.
 -->
 
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: defaultState / default: The feature's arrival state is user-opt-in rather than requiring administrator configuration first. | Found: Before a client app can request a token for it, the gateway service principal must exist in the customer tenant. As a tenant admin, run one of the following commands. | Fix: Set defaultState to "admin-opt-in" to reflect the documented tenant-admin provisioning prerequisite. Keep the existing statement that the roadmap says enabled automatically, and keep the distinction that makers choose whether to attach the server after registration approval and required consent. | Source: https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-agent365-tooling-gateway
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: After rollout / consistency: Every control that the governance checklist tells readers to check has a controls-table row. | Found: Checklist: "check the user's security role privileges and the `scp` claim". The controls table covers registry availability, per-agent tools, gateway provisioning and app consent, but not Dataverse security roles. | Fix: Replace the first After rollout bullet with: "Look for 403 responses and check that the token's `scp` claim contains `McpServers.D365CustomerInsights.All` before widening access." This removes the unmatched security-role checklist instruction without adding a control row.
+- [supported, minor] front matter: licensing.notes; Cost and licensing: Licence / licensing: Additional Customer Insights capacity can be purchased with add-on licences. | Found: Customer Insights - Data is licensed per tenant. You can purchase more capacity with add-on licenses. | Fix: Add https://learn.microsoft.com/dynamics365/customer-insights/data/overview to sources for the explicit add-on capacity wording. | Source: https://learn.microsoft.com/dynamics365/customer-insights/data/overview
 -->
