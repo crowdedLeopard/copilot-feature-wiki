@@ -10,6 +10,12 @@ daily by GitHub Actions.
 - `pipeline/prompts/compile-agent.md` is the writer's run procedure and output format; `pipeline/prompts/verify-agent.md`
   is the independent verifier's method and verdict format. `researchBrief` in `pipeline/lib/briefing.mjs` builds the
   per-item brief, which carries data only. Change wording in those three places, not in workflow files.
+- The brief for a new briefing or a refresh lists "Controls the independent check has already confirmed":
+  `pipeline/lib/confirmed-controls.mjs` collects every admin path and call on a live page whose check found no fault
+  with that side (`confirmedSides`; a Graph or REST call only when it is a method and a path alone, the form SCHEMA asks
+  for) and `confirmedForItem` picks the ones on pages about the same products, then on the topic's concept pages, then
+  on the rest of the topic (16 paths, 10 calls). They are leads: the writer opens the page and uses the wording as
+  given (SCHEMA, "Governance controls"). A correction's brief does not carry the list, because a correction adds no rows.
 - `raw/` is immutable source material. Do not edit by hand.
 - Message Center posts are the second source. `pipeline/ingest-message-center.mjs` reads one tenant's posts through
   Microsoft Graph (app permission `ServiceMessage.Read.All`; federated credential or `MC_CLIENT_SECRET`; skipped with a

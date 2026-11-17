@@ -526,7 +526,8 @@ standard. One row per control. Each row has:
     as printed, and a body given in part has held pages whose endpoint was right. Where the
     operation sets the control through a property of the request body, name that property in
     `note` as the reference names it ("The request body sets isauditenabled"), and give the
-    version whose reference documents it.
+    version whose reference documents it: a property found only under `/beta/` makes the call a
+    `/beta/` call.
   - **The operation is the one that makes the change the row describes.** That is often not the
     one that creates the policy or record holding the setting. For a control that configures
     something it is never one that only reads: a `GET` that lists records is not the automation

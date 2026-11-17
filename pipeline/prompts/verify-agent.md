@@ -169,10 +169,13 @@ How to judge each type:
     command, and so is a hashtable printed without a key the reference requires in it);
   - for Graph and REST, the HTTP method, the path and the version (`/v1.0/`, `/beta/` or
     `api-version=`) match the reference;
-  - a property the note or the prose names as the one to set is on that reference page under that
-    name, in the version the call gives;
   - the page says the operation makes the change the row describes. An operation that only reads,
-    or only creates the policy or record that will hold the setting, does not.
+    or only creates the policy or record that will hold the setting, does not;
+  - where the operation sets the control through a property of the request body, that property is
+    in the reference for the version the call gives. The row's note should name it; find it in
+    the reference either way. A property that is missing, named differently or documented only
+    for another version (`/beta/` where the call says `/v1.0/`) is a contradiction. A property
+    that is there but that the note does not name is supported, with a minor whose fix names it.
 
   A fault in any of these is a contradiction, or unsupported where no reference shows the
   operation at all. Otherwise check names, not example values: a `<placeholder>`, a sample name,
