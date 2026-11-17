@@ -214,8 +214,12 @@ How to judge each type:
   roadmap record.** Each needs a passage that states it for this feature.
 - **Applicability.** Where the briefing says a general control (data policies, sensitivity labels,
   Conditional Access, audit) governs this feature, a Microsoft page must say so for this feature or
-  for a class the page places it in. A general control that is itself documented, in a row whose
-  note says Microsoft has not confirmed it applies to this feature, is acceptable.
+  for a class the page places it in. A general control described only in the terms its own page
+  uses for its reach ("data policies apply to Copilot Studio agents in the environments in the
+  policy's scope"), with nothing further said about this feature, is supported by that page. A
+  statement that the control is not confirmed for this feature is an absence: contradicted where
+  the page's terms plainly include the feature's case, supported where they leave it out or in
+  doubt.
 - **Preview.** If the cited page marks the feature as preview and the briefing presents its limits,
   licensing or behaviour as final, that is a finding.
 - **Links.** A `docs` URL that does not open, or opens a page that shows neither the call nor the

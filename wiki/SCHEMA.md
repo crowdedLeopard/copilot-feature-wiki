@@ -121,18 +121,21 @@ absence is the last thing written and the narrowest:
 Rules that follow from this:
 
 - **Nothing carries across from a neighbouring feature.** A setting that governs Copilot Studio
-  agents does not govern Agent 365 because the two sound alike. A general platform control (data
-  policies, sensitivity labels, Conditional Access) may be described as general, but say whether a
-  Microsoft page confirms it applies to this feature, and say so when none does.
-- **A platform rule that covers the feature applies to it.** The opposite mistake costs as much.
-  Where a platform page states its own reach in terms that include this feature's case (a billing
-  page that meters every agent response, a data policy page that covers every connector an agent
-  uses), the rule applies: state it and cite that page. "Microsoft has not said whether" is for
-  what no page covers. It is checked like any other statement, and it fails when a page does say.
-  Before writing that billing, data policies, a default or a prerequisite is unconfirmed for this
-  feature, open the platform's own page for that rule and read what it says it covers. What stays
-  open is usually narrower, such as a rate specific to this feature, and the narrower gap is the
-  one to state.
+  agents does not govern Agent 365 because the two sound alike.
+- **A general control or rule is described by what its own page says it covers.** Data policies,
+  sensitivity labels, Conditional Access, capacity limits, billing meters and a product's licence
+  each have a page that states their reach: "these data policies apply to Copilot Studio agents in
+  the environments included in the policy's scope", "to use Copilot Studio, you need one of the
+  following", a meter that bills every agent response. Open that page, give the reach in its own
+  terms and cite it. Where the feature's case is plainly inside those terms (a new way to build a
+  Copilot Studio agent still builds a Copilot Studio agent, in an environment, under the licence
+  Copilot Studio needs), that is the whole statement. Do not add "Microsoft has not confirmed it
+  applies to this feature": there the sentence is false, and it is checked like any other
+  statement. Keep that caveat for a feature whose case the page's terms leave out or leave in
+  doubt, say which term is in doubt, and state only the narrower gap: a rate specific to this
+  feature, how the new screens show a policy's restriction. Before writing that billing, a data
+  policy, a default or a prerequisite is unconfirmed for this feature, open the platform's own
+  page for that rule and read what it says it covers.
 - **Roadmap text is a plan.** Write "the roadmap item states" or "Microsoft plans" for anything known
   only from the record. Do not turn "targeted for December CY2026" into "available in December".
   Give dates as the record gives them, with the month and year, and call them targets until the
@@ -290,9 +293,9 @@ understand it on first reading, without looking anything up?
   questions when it affects a decision. Where a feature is known only from the roadmap item, say so
   once in What's changing ("Microsoft Learn does not describe this feature yet, so what follows
   about its behaviour is the roadmap's description"), then attribute by paragraph, not by sentence.
-  The caveat that Microsoft has not confirmed a neighbouring control applies is made once, in that
-  control's note. This is about repetition only: every gap is still stated, and nothing is asserted
-  to fill one.
+  Where a general control's page leaves this feature's case in doubt (Evidence, above), that
+  caveat is made once, in the control's note. This is about repetition only: every gap is still
+  stated, and nothing is asserted to fill one.
 - **Write about the product, not about the research.** The reader does not need to know which
   pages were opened. Not "no setting was found in the pages read" or "the paths were not read for
   this briefing", but "Microsoft Learn documents no such setting at the time of writing (November
@@ -402,8 +405,13 @@ prerequisites section that names a licence, a billing page that meters every act
 Before choosing `unknown`, read the feature's page and the product's licensing or prerequisites
 page for those words. Where one of them covers the feature, the model is the one it describes
 (`included` where the feature comes with a licence the page names, `consumption` where the page
-meters it), and the notes name the licence and the page. An unpublished price or rate does not
-make the entitlement unknown: say what is published, then what is not.
+meters it), and the notes name the licence and the page. A licensing page that says what is needed
+to use the product ("To use Copilot Studio, you need one of the following") covers a new screen,
+view or option inside that product: the notes give that requirement in the page's words, then say
+that nothing specific to this feature is published. `unknown` is left for a feature whose product
+has no such page, or whose record says it will be licensed on its own without saying how. An
+unpublished price or rate does not make the entitlement unknown: say what is published, then what
+is not.
 
 **Confidence**: how much of the briefing rests on documentation.
 
@@ -573,8 +581,9 @@ standard. One row per control. Each row has:
 - `docs`, on either side: the page on which that call, or the control's own part of the path, can
   be read. Where one row would need two reference pages, split the row, or keep only what its
   page documents.
-- `note`: optional qualifier. Role required, preview status, "maker-side only", or "general control:
-  Microsoft has not confirmed it applies to this feature".
+- `note`: optional qualifier. Role required, preview status, "maker-side only", or what a general
+  control's own page says it covers ("applies to every agent in the environments in the policy's
+  scope").
 
 Rules.
 

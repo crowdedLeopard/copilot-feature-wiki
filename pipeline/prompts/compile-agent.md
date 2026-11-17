@@ -254,9 +254,11 @@ As the verifier:
 - Does each role, licence, limit and region keep the qualification its page gives for this
   feature's case? Is anything attributed to Microsoft that the page does not say?
 - Does any sentence present the roadmap's plan as shipped behaviour, a preview page as the final
-  design, or a neighbouring feature's control as this feature's? Check the governance checklist
-  too: a step that relies on a control the table marks as unconfirmed for this feature carries the
-  same condition ("once Microsoft confirms it applies").
+  design, or a neighbouring feature's control as this feature's? Is each general control (data
+  policies, labels, Conditional Access, capacity limits, the product's licence) described in the
+  terms its own page uses for what it covers, with no "not confirmed for this feature" where the
+  feature's case is plainly inside those terms? Where the caveat does stand, a governance
+  checklist step that relies on that control carries it too.
 - For every `null` control side and every "Not yet documented" or "Not yet published": did you run
   a search for that specific control or fact and find nothing? For an API side, was one of those
   searches in the reference for the platform that stores the setting, by name, and not only for
