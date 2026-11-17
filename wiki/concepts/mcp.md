@@ -5,7 +5,7 @@ slug: "mcp"
 summary: "MCP is a protocol that lets agents call external tools and read external data. Administrators use Microsoft's separate connector, registry and environment controls to decide which MCP servers and tools agents can reach."
 created: "2026-11-16"
 updated: "2026-11-17"
-version: 3
+version: 4
 tags: ["mcp","mcp-server","connectors","federated-connectors","data-policies","agent-governance","copilot-studio","m365-copilot","dataverse-mcp","work-iq"]
 covers: ["mcp-server"]
 sources:
@@ -129,10 +129,10 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Agents > Tools > Work IQ MCP > Policy"
+      path: "Agents > Tools > Registry > Work IQ MCP > Policy"
       docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp"
     api: null
-    note: "Tenant-level on or off in the initial release; up to 24 hours to apply."
+    note: "Tenant-level on or off in the initial release; up to 24 hours to apply. The Policy tab is used when it's available."
   - governs: "Which connectors and MCP servers makers' agents may use in an environment or environment group"
     scope: "environment-group"
     ui:
@@ -148,7 +148,7 @@ controls:
     scope: "environment"
     ui:
       surface: "Power Platform admin center"
-      path: "Security > Data and privacy > Data policy > New Policy"
+      path: "Security > Settings > Data and privacy > Data policy > + New Policy"
       docs: "https://learn.microsoft.com/power-platform/admin/prevent-data-loss"
     api:
       kind: "powershell"
@@ -167,7 +167,7 @@ controls:
       docs: "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/allowedmcpclient?view=dataverse-latest"
     note: "The API changes individual clients, not the environment-wide switch. The Copilot Studio client is enabled by default; other clients must be enabled."
 confidence: "medium"
-dependents: 11
+dependents: 12
 changes:
   - date: "2026-11-16"
     note: "First version of the MCP concept page: what the protocol is, where Microsoft governs it, and what it costs."
@@ -177,18 +177,22 @@ changes:
     note: "Corrected after the independent check: the advanced connector policy API row now shows the two calls (create the policy, then assign it); the Requests row and the federated write-tools paragraph note where Microsoft's pages disagree; the MCP server blocking bullet now follows Microsoft's wording."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 94 statements contradicted, 0 unconfirmed; taken offline until corrected"
+  - date: "2026-11-17"
+    note: "Corrected after the independent check: the data policy row now gives the full path (Security > Settings > Data and privacy > Data policy > + New Policy), and the Work IQ MCP policy path now includes Registry."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 110 statements confirmed"
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-17"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 94
-  confirmed: 93
+  claims: 110
+  confirmed: 110
   unconfirmed: 0
-  contradicted: 1
-  attempts: 3
-  hash: "b02bc0c2729489409a3ffadf118e24c1"
+  contradicted: 0
+  attempts: 0
+  hash: "d0cd32d4822acd475ba6d1b079549eef"
 ---
 
 ## What it is
@@ -247,9 +251,9 @@ No licence or meter for the protocol itself is documented at the time of writing
 <tr><td data-label="Control"><strong>Which publisher types of agents, plugins and connectors, including MCP servers, are allowed</strong><br><small>Tenant</small><br><small class="controls__note">Managing federated connectors needs Global Administrator or Search Administrator.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Settings › Agent and plugin access <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Which users can use any agent or plugin, including connectors and MCP servers</strong><br><small>Tenant</small><br><small class="controls__note">Options: All users (the default), No users, Specific users or groups.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Settings › User access <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether a federated Copilot connector is on, and for which users or groups</strong><br><small>Tenant</small><br><small class="controls__note">Staging cannot extend beyond User access.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Connectors › Your connections › connector › Enable / Disable; Staged rollout › Add staging <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Work IQ MCP tenant policy, including whether mutation operations are allowed</strong><br><small>Tenant</small><br><small class="controls__note">Tenant-level on or off in the initial release; up to 24 hours to apply.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Work IQ MCP › Policy <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Work IQ MCP tenant policy, including whether mutation operations are allowed</strong><br><small>Tenant</small><br><small class="controls__note">Tenant-level on or off in the initial release; up to 24 hours to apply. The Policy tab is used when it's available.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Registry › Work IQ MCP › Policy <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Which connectors and MCP servers makers' agents may use in an environment or environment group</strong><br><small>Environment group</small><br><small class="controls__note">Host api.powerplatform.com. Create body: name and ruleSets with id ConnectorManagement, version and inputs.AllowedConnectorList. One environment: assign at /environments/&lt;environmentId&gt;/assignments. Server-level blocking only.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Data and privacy › Advanced connector policies <a href="https://learn.microsoft.com/power-platform/admin/advanced-connector-policies" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform API</strong><br><code>POST /governance/ruleBasedPolicies?api-version=2024-10-01 creates an unassigned policy; POST /governance/ruleBasedPolicies/&lt;policyId&gt;/environmentGroups/&lt;environmentGroupId&gt;/assignments?api-version=2024-10-01 with {} assigns it</code> <a href="https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-advanced-connector-policies" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which Power Platform connectors, and so the MCP tools that rely on them, agents may use</strong><br><small>Environment</small><br><small class="controls__note">Blocking a connector also blocks tools in connected MCP servers that rely on it.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Data and privacy › Data policy › New Policy <a href="https://learn.microsoft.com/power-platform/admin/prevent-data-loss" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpPolicy -DisplayName &lt;name&gt; -EnvironmentType &lt;type&gt; [-Environments &lt;environments&gt;]</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which Power Platform connectors, and so the MCP tools that rely on them, agents may use</strong><br><small>Environment</small><br><small class="controls__note">Blocking a connector also blocks tools in connected MCP servers that rely on it.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Settings › Data and privacy › Data policy › + New Policy <a href="https://learn.microsoft.com/power-platform/admin/prevent-data-loss" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpPolicy -DisplayName &lt;name&gt; -EnvironmentType &lt;type&gt; [-Environments &lt;environments&gt;]</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether MCP clients can use the Dataverse MCP server in an environment, and which clients</strong><br><small>Environment</small><br><small class="controls__note">The API changes individual clients, not the environment-wide switch. The Copilot Studio client is enabled by default; other clients must be enabled.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › Dataverse Model Context Protocol › Advanced Settings <a href="https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-disable" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>PATCH &lt;organization URI&gt;/api/data/v9.2/allowedmcpclients(&lt;allowedmcpclientid&gt;) with {&quot;isenabled&quot;: false} to disable a client, true to enable it</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/allowedmcpclient?view=dataverse-latest" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
@@ -279,11 +283,3 @@ No licence or meter for the protocol itself is documented at the time of writing
 - Is there a PowerShell, Microsoft Graph or REST call for blocking an MCP server or a tool in the Microsoft 365 admin center? Not yet documented.
 - Are write operations through Work IQ MCP on or off by default? The Work IQ MCP policy page says mutation operations aren't allowed by default; the Copilot Studio what's-new page says Work IQ write operations are enabled by default in that product.
 - When will tool-level control cover bring-your-own MCP servers? Microsoft calls it a planned future release.
-
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[8].ui; Governance controls / admin-path: The data-policy creation path is Security > Data and privacy > Data policy > New Policy. | Found: Select Security in the navigation pane. ... In the Security pane, under Settings, select Data and privacy. ... In the Data protection and privacy screen, select the Data policy section. Select + New Policy. | Fix: Replace controls[8].ui.path and the corresponding rendered path with 'Security > Settings > Data and privacy > Data policy > + New Policy', retaining https://learn.microsoft.com/power-platform/admin/prevent-data-loss as the reference. | Source: https://learn.microsoft.com/power-platform/admin/prevent-data-loss
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[6].ui; Governance controls; What to check / admin-path: Work IQ MCP tenant policy is reached through Agents > Tools > Work IQ MCP > Policy. | Found: In the left navigation, select Agents > Tools. ... In the tools registry, select Work IQ MCP. ... On the Work IQ MCP details pane, select the Policy tab when it's available. | Fix: Include the tab that lists the servers: 'Agents > Tools > Registry > Work IQ MCP > Policy'. Keep the qualification that the Policy tab is available only where the tenant and administrator have access. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp
--->

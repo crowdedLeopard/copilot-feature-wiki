@@ -1,0 +1,917 @@
+{
+  "slug": "power-automate-process-mining-export-object-centric-process-mining-data-to-microsoft-fabri",
+  "roadmapId": 577826,
+  "title": "Power Automate process mining: export object-centric models to a Microsoft Fabric semantic model",
+  "status": "held",
+  "date": "2026-11-17",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-17",
+    "reasons": [
+      "4 blocking findings (claims 1, 41, 61, 70)"
+    ]
+  },
+  "counts": {
+    "claims": 71,
+    "confirmed": 65,
+    "unconfirmed": 1,
+    "contradicted": 5,
+    "blocker": 4,
+    "major": 1,
+    "minor": 5
+  },
+  "summary": "Hold: the export wizard path omits required inputs, and the briefing treats Fabric and Power BI licensing as unpublished even though platform licensing rules cover the items it creates. The low cost rating also overlooks documented Fabric capacity costs.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The wizard path is Process mining > Start here > Object-centric process mining > Continue > Choose where to export > Continue or Skip export.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-automate/object-centric-ingest-event-log",
+      "quote": "In the Process name field, enter a name for your process. Under the Data source heading, select Azure Data Lake or OneLake and select Continue.",
+      "severity": "blocker",
+      "fix": "Replace the path in front matter and the rendered table with 'Process mining > Start here > Object-centric process mining > Process name > Data source > Azure Data Lake or OneLake > Continue > Choose where to export > Continue or Skip export'. The final alternatives are documented; the missing process-name and data-source inputs are the problem."
+    },
+    {
+      "n": 2,
+      "where": "controls[0].api; controls[0].note",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no API for the OCPM Fabric export choice as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"object-centric\" \"export\" \"API\" \"process mining\"'; '\"process mining\" \"export\" \"Dataverse\" \"Web API\" \"Fabric\"'; '\"process mining\" \"Fabric\" \"Power Platform API\" \"pac\"'. Read ingest, OCPM semantic-model and custom-workspace pages; no export-choice operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "OneLake catalog exposes the external-apps setting under Govern > Configurations > Tenant settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/fabric/admin/service-admin-portal-onelake",
+      "quote": "OneLake tenant settings are configured in Configurations > Tenant settings in the Govern section of the OneLake catalog. ... Users can access data stored in OneLake with apps external to Fabric",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "controls[1].api; Governance controls",
+      "type": "command",
+      "claim": "GET https://api.fabric.microsoft.com/v1/admin/tenantsettings lists tenant settings rather than changing them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/rest/api/fabric/admin/tenants/list-tenant-settings",
+      "quote": "Returns a list of the tenant settings. ... GET https://api.fabric.microsoft.com/v1/admin/tenantsettings",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "controls[1].note; Governance controls",
+      "type": "role",
+      "claim": "The list-settings REST caller must be a Fabric administrator or authenticate using a service principal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/rest/api/fabric/admin/tenants/list-tenant-settings",
+      "quote": "The caller must be a Fabric administrator or authenticate using a service principal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: defaultState; summary; Why it matters; Scope",
+      "type": "default",
+      "claim": "Export is user-opt-in: a maker chooses to continue or skip, rather than existing processes being exported automatically.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/object-centric-ingest-event-log",
+      "quote": "In the Choose where to export step, select Continue to set up the export of OCPM semantic model in your Fabric workspace, or Skip export.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: licensing.model and licensing.notes",
+      "type": "licensing",
+      "claim": "The licensing mix comprises per-user Power Automate Premium and a Process Mining capacity add-on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
+      "quote": "The Power Automate Premium license is a per-user license ... The Process Mining add-on is a tenant-wide license that's available for the Power Automate Premium license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "title; summary; What's changing; rationale: risk",
+      "type": "behaviour",
+      "claim": "Power Automate Process Mining publishes object-centric process models into a Fabric workspace.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/object-centric-semantic-model",
+      "quote": "The new optimized DirectLake semantic model ... is now available also for object centric processes. ... When you publish a process to Fabric workspace, it creates a new DirectLake semantic model",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "summary; What's changing",
+      "type": "behaviour",
+      "claim": "Publishing creates a new Direct Lake semantic model.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/object-centric-semantic-model",
+      "quote": "When you publish a process to Fabric workspace, it creates a new DirectLake semantic model",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Publishing creates an empty Power BI report connected to the semantic model.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/object-centric-semantic-model",
+      "quote": "it creates a new DirectLake semantic model and an empty Power BI report connected to the semantic model.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The exported semantic model is built on Fabric Lakehouse delta tables containing the process data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/object-centric-semantic-model",
+      "quote": "The semantic model is created on top of Fabric Lakehouse delta tables.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Why it matters; Scope",
+      "type": "behaviour",
+      "claim": "The maker selects the destination Fabric workspace.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/object-centric-ingest-event-log",
+      "quote": "To set up the Fabric workspace: ... Select from the list of available Fabric workspaces.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "The maker selects a Lakehouse within the chosen workspace.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/object-centric-ingest-event-log",
+      "quote": "Select a Fabric Lakehouse in the workspace.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The maker chooses a name for the default report.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/object-centric-ingest-event-log",
+      "quote": "Select a name for the default report that will be created for the resulting semantic model.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The model contains object types, objects, events, their relationships and ingested attributes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/object-centric-semantic-model",
+      "quote": "Objects ... relevant object level attributes as additional columns (when ingested). ... Events ... ingested event level attributes as additional columns. ... EventObjectRelations ... all relationships between Events and Objects",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The model contains derived nodes and edges used for visualisation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/object-centric-semantic-model",
+      "quote": "Visuals data entities ... include items derived from the raw data by process mining algorithms and usually serve visualization purposes. ... Edges ... Nodes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Process execution entities identify interconnected process instances based on a leading object type.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/object-centric-semantic-model",
+      "quote": "Process execution data entities are calculated as process instances of interconnected objects based on a leading object type.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The published model includes predefined relationships.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/object-centric-semantic-model",
+      "quote": "The published data model includes predefined relationships that handle filtering and interconnectivity of visuals.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Some relationships are hidden because only one relationship between the same two tables can be active.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/object-centric-semantic-model",
+      "quote": "Some relationships are hidden in the model. This limitation exists because only one relationship between the same two tables can be active in semantic models.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing: column naming",
+      "type": "behaviour",
+      "claim": "Export sanitises column names to letters, digits and underscores.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/object-centric-semantic-model",
+      "quote": "All other characters are replaced with an underscore (_) as part of the sanitization process. ... Lakehouse delta table columns therefore use the sanitized column names, whereas semantic model columns use the original column names.",
+      "severity": "minor",
+      "fix": "Replace the naming clause with 'Lakehouse delta-table column names retain English letters, digits and underscores, with other characters replaced by underscores; semantic-model columns retain their original names.' This preserves the documented distinction between the two surfaces."
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Colliding sanitised names, such as Customer_Name and Customer Name, interrupt export and produce an error message.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/object-centric-semantic-model",
+      "quote": "two columns that result in identical names after sanitization ... Customer_Name and Customer Name. The export is interrupted and user is notified with the specific error message.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "default",
+      "claim": "Process Mining automatically keeps the published semantic model up to date by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/object-centric-semantic-model",
+      "quote": "By default, Power Automate Process Mining automatically keeps the semantic model up to date.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Governance controls; Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "The Keep your Direct Lake data up to date flag can be turned off in the semantic model's Settings screen.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/object-centric-semantic-model",
+      "quote": "turning off the Keep your Direct Lake data up to date flag in the Settings screen of the semantic model.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Governance controls; Governance guidance: After rollout",
+      "type": "role",
+      "claim": "Updating that Settings screen first requires taking ownership with Take over.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/object-centric-semantic-model",
+      "quote": "Before you update this screen, you need to take ownership of the semantic model by selecting Take over at the top of the Settings screen.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap describes configurable publishing schedules.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Data refresh synchronization: Configure publishing schedules to keep Fabric semantic models current with your process mining data updates.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap describes transferring KPI measures to Fabric.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Metric preservation: Transfer KPIs and metrics from your process analysis, making them available as measures within the Fabric semantic model.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing; Why it matters",
+      "type": "record",
+      "claim": "The roadmap describes combining process data with other Fabric sources.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Enterprise connectivity: Combine process intelligence data with other Fabric data sources, enabling unified analytics across operational, financial, and customer domains.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Learn documents a Power BI composite model on top of the exported model for additional data sources.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/object-centric-semantic-model",
+      "quote": "Use the Power BI composite model on top of the semantic model published by Power Automate Process Mining ... You need to create more data sources.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "The OCPM Learn pages do not document a publishing schedule setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"object-centric\" \"publishing\" \"schedule\"' and 'Power Automate object centric process mining Fabric export administrator enable disable API Dataverse Web API Power Platform CLI publishing schedule'. Read ingest, semantic-model and overview pages; no schedule setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is May CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"May CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target date is August CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"August CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "front matter: releasePhase; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap lists both General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) and does not list government clouds.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap says the feature is enabled for admins, makers and marketers automatically.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Enabled for admins/makers/marketers automatically",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What's changing; Risk assessment: Change & support; Open questions",
+      "type": "availability",
+      "claim": "The ingest page labels the export link as preview, unlike the roadmap's mixed release-phase listing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/object-centric-ingest-event-log",
+      "quote": "Learn more in Export OCPM semantic model into Fabric workspace (preview).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Why it matters; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "Mapped event and object attributes can include financial attributes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/object-centric-ingest-event-log",
+      "quote": "Event and Object level attributes (including financial) are optional but highly recommended for more detailed analysis",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Why it matters; Risk assessment: Data exposure; Governance controls",
+      "type": "applicability",
+      "claim": "The chosen Fabric workspace's access permissions govern access to the published semantic model.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-bi/connect-data/service-datasets-permissions",
+      "quote": "A user's role in a workspace implicitly grants them permissions on the semantic models in the workspace",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/power-bi/connect-data/service-datasets-permissions for the workspace-permissions statement. Narrow 'who can read it is decided by the Fabric workspace' to 'Workspace roles grant implicit permissions on the published semantic model.'"
+    },
+    {
+      "n": 40,
+      "where": "Why it matters; Open questions; rationale: risk",
+      "type": "absence",
+      "claim": "The OCPM export pages do not specify the initial permissions assigned to the generated semantic model and report.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"object-centric\" \"export\" \"permissions\" \"service principal\"'. Read OCPM ingest/export and Power BI semantic-model permissions pages; no OCPM-specific initial grants stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "The maker's choice of workspace is the only documented control over the exported data's exposure.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-bi/connect-data/service-datasets-permissions",
+      "quote": "A user with an Admin or Member role in the workspace can explicitly grant permissions to other users using the manage permissions page.",
+      "severity": "blocker",
+      "fix": "Remove 'The only control the pages describe is the maker's choice of workspace.' Fabric semantic-model access controls apply to this documented semantic-model output; absence of OCPM-specific grant details does not establish that no other exposure controls exist."
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The source file remains in Azure Data Lake Gen2 or OneLake after export.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: '\"process mining\" \"source\" \"file\" \"deleted\" \"Lakehouse\"' and '\"Power Automate\" \"object-centric\" \"export\" \"source file\"'. Read ingest/export pages and source-ingestion search excerpts; none states post-export source-file retention.",
+      "severity": "major",
+      "fix": "Replace the sentence with 'The ingest page requires the event log in Azure Data Lake Gen2 or OneLake; the export creates a semantic model on Fabric Lakehouse delta tables.' Do not promise that export preserves the source file."
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Security & identity; controls[1].note",
+      "type": "applicability",
+      "claim": "The custom-workspace report page requires the OneLake external-apps setting to be on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-fabric-workspace",
+      "quote": "Ensure that Users can access data stored in OneLake with apps external to the Fabric option is switched on in the OneLake tenant settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Security & identity; Governance controls",
+      "type": "role",
+      "claim": "The custom-workspace report page requires Process Insights Prod to have workspace admin access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-fabric-workspace",
+      "quote": "add Process Insights Prod. ... Assign it admin access. ... It's a requirement that the service principal gets added as an admin. If you skip this step, the feature doesn't work.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Security & identity; controls[1].note; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "The OCPM-specific pages do not explicitly confirm the OneLake and Process Insights Prod prerequisites described for custom-workspace reporting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"object-centric\" \"export\" \"permissions\" \"service principal\"' and '\"object-centric\" \"Fabric\" \"admin\" \"disable\"'. Read OCPM ingest/export and custom-workspace pages; the OCPM-specific pages do not identify these prerequisites or the publishing principal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "The custom-workspace report page requires at least Contributor access when using an existing workspace.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-fabric-workspace",
+      "quote": "Ensure that your account has at least Contributor access rights in that workspace and ensure you meet the other prerequisites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Refresh Data triggers full ingestion and creation of the process model.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/object-centric-process-overview",
+      "quote": "Refresh Data: Button to reload and refresh the displayed analytics with the most recent data (this action triggers the full ingestion and creation of the process model).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The custom-workspace page warns that an existing report name can overwrite another process's report.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-fabric-workspace",
+      "quote": "If you use a report name that already exists, the process mining capability overwrites the existing report of another process.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Change & support",
+      "type": "default",
+      "claim": "The model uses Direct Lake access mode with its option set to Automatic.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/object-centric-semantic-model",
+      "quote": "The semantic model uses DirectLake access mode, but its option is set to Automatic.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Nonoptimal DAX or an incorrectly configured composite model can cause DirectQuery fallback and lower performance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/object-centric-semantic-model",
+      "quote": "using nonoptimal DAX queries or incorrectly setting a composite model might result in fallback to DirectQuery mode. ... you might experience lower performance.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Process mining is licensed as part of Power Automate.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
+      "quote": "Process mining is licensed as part of Microsoft Power Automate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The overview says a Power BI licence is required for report customisation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
+      "quote": "a Power BI license is required for Power BI report customization. ... To customize your report, you need to link the process to your own Power BI workspace, and a Power BI Premium license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Each Power Automate Premium licence adds 50 MB of process-mining capacity to a tenant-wide pool.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
+      "quote": "Each Power Automate Premium license adds 50 MB of process mining capacity to a tenant-wide capacity pool",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The capacity accrued through Premium licences is capped at 100 GB.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
+      "quote": "a tenant-wide capacity pool up to a total of 100 GB.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Beyond that 100 GB, more data requires the Process Mining add-on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
+      "quote": "When you reach 100 GB, you need to purchase the Power Automate Process Mining add-on to process more data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The FAQ lists the Process Mining add-on at $5,000 USD for 100 GB of data stored per month.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
+      "quote": "List Price (USD): $5,000 for 100 GB of data stored/month",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Power Automate Premium is a prerequisite for the add-on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
+      "quote": "Required prerequisite: Power Automate Premium. Multiple add-ons can be applied to a single prerequisite.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Power BI licences are not included in Power Automate Process Mining.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
+      "quote": "Power BI licenses aren't included in Power Automate Process Mining.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The overview specifies Power BI Premium for customisation, whereas the FAQ lists Pro, per-user and Premium-capacity options.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
+      "quote": "you might want to acquire more Power BI Pro*, Power BI per user, or Power BI premium capacity licenses if you haven't already done so.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The OCPM ingest and semantic-model pages themselves name no licence or meter for export.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"object-centric\" \"export\" \"licensing\"' and 'Power Automate object centric semantic model Fabric capacity Power BI licensing permissions workspace source data export'. Read both OCPM pages in full; neither names a licence or export meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Cost and licensing; licensing.notes; Governance guidance: Before rollout; rationale: cost",
+      "type": "licensing",
+      "claim": "Fabric capacity and Power BI licensing terms for the exported items are not yet published.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/fabric/enterprise/licenses",
+      "quote": "To create or run non-Power BI Fabric items (for example, lakehouses, warehouses, notebooks) you still need an F capacity (or a Trial Fabric capacity). ... To create Power BI items in a workspace other than My workspace and share them, you need a Power BI Pro",
+      "severity": "blocker",
+      "fix": "Replace the blanket unpublished-terms statements with 'Fabric and Power BI platform licensing applies to the Lakehouse, semantic model and report. Fabric supports F capacities, trial capacities and eligible P capacities with Fabric enabled. Creating Power BI items outside My workspace and sharing them requires Power BI Pro, PPU or an individual trial. The OCPM pages do not name a separate export-specific licence or meter.' Cite https://learn.microsoft.com/fabric/enterprise/licenses. Keep any open question confined to an additional OCPM-specific charge, not the existence of platform terms."
+    },
+    {
+      "n": 62,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The custom-workspace guide instructs the maker to select a Fabric capacity when creating a workspace.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-fabric-workspace",
+      "quote": "In Advanced Options, select a Fabric capacity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Scope; Governance guidance: At rollout",
+      "type": "role",
+      "claim": "The Environment Maker role is required to create, share and contribute to processes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
+      "quote": "You need the Environment Maker role to create, share, and contribute to processes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Process mining requires a Power Platform environment with a Dataverse database.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
+      "quote": "A Microsoft Power Platform environment with a Microsoft Dataverse database.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "The object-centric event log must be stored as CSV in Azure Data Lake Gen2 or OneLake.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/object-centric-ingest-event-log",
+      "quote": "Then, store the resulting file in a CSV format in either Azure Data Lake Gen2 or OneLake.",
+      "severity": "minor",
+      "fix": "Replace the sentence with 'The ingest guide specifies CSV in Azure Data Lake Gen2 or OneLake; the event-log creation guide also lists a delta table in Fabric Lakehouse.' Cite https://learn.microsoft.com/power-automate/object-centric-create-event-log, which states 'CSV file stored in Azure Data Lake or OneLake or delta table stored in the Fabric Lakehouse'. The cited ingest guide supports the current wording, but the other Microsoft page broadens it."
+    },
+    {
+      "n": 66,
+      "where": "Governance controls; Why it matters",
+      "type": "absence",
+      "claim": "No administrator setting specifically for the OCPM export step is documented as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"object-centric\" \"Fabric\" \"admin\" \"disable\"'. Read OCPM ingest/export, OneLake tenant settings and About tenant settings; no export-specific administrator switch found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Fabric administrators have rights to change Fabric tenant settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/fabric/admin/roles",
+      "quote": "Power Platform administrator or Fabric administrator ... Enable and disable Fabric features ... These roles provide access to the admin experience in Govern and control over organization-wide Fabric settings",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/fabric/admin/roles for the tenant-setting administration role statement. The page also recognises Power Platform administrators; avoid interpreting the sentence as an exclusive-role requirement."
+    },
+    {
+      "n": 68,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Current and past Process Mining usage is available in the Power Platform admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
+      "quote": "customers can assess their highest monthly Process Mining usage to understand capacity needed. Current and past usage data are available in the Power Platform admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Governance guidance compared with Governance controls",
+      "type": "consistency",
+      "claim": "The checklist tells readers to check controls that have no corresponding controls-table rows.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: 'Review the access list'; 'Confirm who holds the Environment Maker role'; 'Check whether the Keep your Direct Lake data up to date flag has been changed'; 'Track process mining capacity use'. Table: export choice and OneLake external-apps setting only.",
+      "severity": "minor",
+      "fix": "The workspace access list, Environment Maker assignments, Direct Lake refresh flag and process-mining capacity usage checks lack table rows. Remove these checklist bullets from this briefing rather than adding unverified control rows; their verified background facts can remain in the body and control notes."
+    },
+    {
+      "n": 70,
+      "where": "front matter: cost; rationale: cost",
+      "type": "consistency",
+      "claim": "The export's known costs are indirect only, warranting a low cost rating.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/fabric/enterprise/licenses",
+      "quote": "Page: 'cost: low' and 'Fabric capacity and Power BI terms ... are not yet published'. Fabric licensing: 'You purchase F capacities through Azure, and Azure bills you per second with no commitment'.",
+      "severity": "blocker",
+      "fix": "Set cost to 'variable' and replace the cost rationale with 'Variable. The export uses Fabric capacity; F-capacity compute is billed through Azure per second, with reservation options. The OCPM pages do not identify a separate export-specific meter.' Cite https://learn.microsoft.com/fabric/enterprise/licenses and retain the distinction between platform capacity costs and any additional export charge."
+    },
+    {
+      "n": 71,
+      "where": "Why it matters",
+      "type": "record",
+      "claim": "The roadmap says published models follow Fabric's standard architecture and are compatible with existing governance and security controls.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The published semantic models follow Fabric's standard architecture, ensuring compatibility with existing governance policies, security controls, and data management practices within your Microsoft environment.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-17T03:37:46.835Z",
+    "summary": {
+      "links": 9,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 1,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=577826",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-automate/object-centric-ingest-event-log",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-automate/object-centric-semantic-model",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-automate/object-centric-process-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-automate/process-mining-fabric-workspace",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-automate/process-advisor-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/fabric/admin/service-admin-portal-onelake",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/rest/api/fabric/admin/tenants/list-tenant-settings",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether a process is exported to a Fabric workspace, and which workspace",
+        "docs": "https://learn.microsoft.com/power-automate/object-centric-ingest-event-log",
+        "reachable": true,
+        "segments": [
+          "Process mining",
+          "Start here",
+          "Object-centric process mining",
+          "Continue",
+          "Choose where to export",
+          "Continue or Skip export"
+        ],
+        "missing": [
+          "Continue or Skip export"
+        ]
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether apps external to Fabric can read data stored in OneLake",
+        "docs": "https://learn.microsoft.com/fabric/admin/service-admin-portal-onelake",
+        "reachable": true,
+        "segments": [
+          "Govern",
+          "Configurations",
+          "Tenant settings",
+          "Users can access data stored in OneLake with apps external to Fabric"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether apps external to Fabric can read data stored in OneLake",
+        "docs": "https://learn.microsoft.com/rest/api/fabric/admin/tenants/list-tenant-settings",
+        "reachable": true,
+        "token": "api.fabric.microsoft.com/v1/admin/tenantsettings",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

@@ -1,7 +1,7 @@
 ---
 title: "Copilot Studio: agent node runs an AI agent as a workflow step"
 slug: "microsoft-copilot-studio-invoke-agents-as-workflow-steps-with-the-agent-node"
-roadmapId: 562222
+roadmapId: 566998
 topic: "copilot-studio"
 products: ["Microsoft Copilot (Microsoft 365)","Microsoft Copilot Studio"]
 summary: "Makers can add an agent node to a Copilot Studio workflow so an AI agent decides and acts mid-flow. It uses Copilot Credits and no switch dedicated to the node is documented, so administrators should review credit and tool controls."
@@ -22,8 +22,8 @@ licensing:
 audiences: ["power-platform-admin","finops","maker","service-owner"]
 tags: ["copilot-studio","agents","automation","tools","mcp","knowledge-grounding","work-iq","human-in-the-loop","agent-evaluation","copilot-credits","usage-based-billing","copilot-harness"]
 sources:
-  - title: "Microsoft 365 Roadmap 562222"
-    url: "https://www.microsoft.com/microsoft-365/roadmap?id=562222"
+  - title: "Microsoft 365 Roadmap 566998"
+    url: "https://www.microsoft.com/microsoft-365/roadmap?id=566998"
     kind: "roadmap"
   - title: "Add an agent node to a workflow (Microsoft Copilot)"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-node-workflow"
@@ -58,6 +58,9 @@ sources:
   - title: "Advanced connector policies"
     url: "https://learn.microsoft.com/power-platform/admin/advanced-connector-policies"
     kind: "learn"
+  - title: "Entitlement Insight - Get Environment Resources"
+    url: "https://learn.microsoft.com/rest/api/power-platform/licensing/entitlement-insight/get-environment-resources"
+    kind: "learn"
 videos: []
 related: ["copilot-credits","work-iq-agent-policy-governance"]
 controls:
@@ -78,8 +81,11 @@ controls:
       surface: "Power Platform admin center"
       path: "Licensing > Copilot Studio"
       docs: "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/flows-overview"
-    api: null
-    note: "Review the Agent flow actions used by each workflow. Makers see a Credit usage (last 30 days) column on the Workflows page in Copilot Studio."
+    api:
+      kind: "power-platform-api"
+      call: "GET https://api.powerplatform.com/licensing/entitlements/MCSMessages/environments/<environment ID>/resources?fromDate=<start date>&toDate=<end date>&api-version=2024-10-01"
+      docs: "https://learn.microsoft.com/rest/api/power-platform/licensing/entitlement-insight/get-environment-resources"
+    note: "Review the Agent flow actions used by each workflow. The documented API is deprecated and returns environment resource consumption snapshots; the reference does not promise a workflow-level breakdown."
   - governs: "Escalation to a person when the agent is unsure"
     scope: "agent"
     ui:
@@ -96,7 +102,7 @@ controls:
 confidence: "medium"
 created: "2026-11-16"
 updated: "2026-11-17"
-roadmapModified: "2026-11-17T00:31:56"
+roadmapModified: "2026-10-26T23:15:50"
 changes:
   - date: "2026-11-16"
     note: "First briefing for this item: documents the agent node, its credit billing and the environment-level cost controls; no agent-node admin switch is documented."
@@ -114,19 +120,23 @@ changes:
     note: "Corrected after verification: the credit-allocation API call now gives the full PUT request body, the test and evaluate step reflects that evaluations cover only new inline agents, and the attachment-review step was removed."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 88 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 5
+  - date: "2026-11-17"
+    note: "Corrected after verification: the credit-consumption row now lists the documented, deprecated Power Platform API call for environment resource consumption snapshots."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 97 statements confirmed"
+version: 6
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-17"
-  version: 5
+  version: 6
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 88
-  confirmed: 87
+  claims: 97
+  confirmed: 97
   unconfirmed: 0
-  contradicted: 1
-  attempts: 4
-  hash: "fdf538e913e0852a2e24e140450c2284"
+  contradicted: 0
+  attempts: 0
+  hash: "cf032dde662a98555f36b6ebbc4f6ffe"
 ---
 
 ## What's changing
@@ -207,7 +217,7 @@ The existing-agent picker lists published agents; alternatively, makers can defi
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Prepaid Copilot Credits per environment and whether it can draw from the tenant pool</strong><br><small>Environment</small><br><small class="controls__note">Needs Power Platform Administrator or Global Administrator, or an equivalent role. Applies to all Copilot Studio workloads in the environment; does not stop pay-as-you-go billing.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Products › Copilot Studio › Manage Copilot Credits <a href="https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform API</strong><br><code>PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01 with the JSON body shown under the table (entitlementId MCSMessages, enforcementRules ruleType TenantPool, enabled false)</code> <a href="https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Credit consumption by workflow and environment</strong><br><small>Environment</small><br><small class="controls__note">Review the Agent flow actions used by each workflow. Makers see a Credit usage (last 30 days) column on the Workflows page in Copilot Studio.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Copilot Studio <a href="https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/flows-overview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Credit consumption by workflow and environment</strong><br><small>Environment</small><br><small class="controls__note">Review the Agent flow actions used by each workflow. The documented API is deprecated and returns environment resource consumption snapshots; the reference does not promise a workflow-level breakdown.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Copilot Studio <a href="https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/flows-overview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform API</strong><br><code>GET https://api.powerplatform.com/licensing/entitlements/MCSMessages/environments/&lt;environment ID&gt;/resources?fromDate=&lt;start date&gt;&amp;toDate=&lt;end date&gt;&amp;api-version=2024-10-01</code> <a href="https://learn.microsoft.com/rest/api/power-platform/licensing/entitlement-insight/get-environment-resources" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Escalation to a person when the agent is unsure</strong><br><small>Agent</small><br><small class="controls__note">Per-node maker setting. The agent emails the connection owner and waits for a reply. No central enforcement setting is documented as of November 2026.</small></td><td data-label="Admin UI"><strong>Copilot Studio (maker)</strong><br>Workflows › workflow › Build › Add panel › Agent › Request human assistance when unsure <a href="https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-node-workflow" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Switch dedicated to turning the agent node off</strong><br><small>Tenant</small><br><small class="controls__note">No setting dedicated to the agent node is documented at the time of writing (November 2026). Data policy and Work IQ MCP policy are described below the table.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
@@ -232,10 +242,4 @@ Three platform controls exist outside the table. Data policies govern Power Plat
 risk: Medium. The agent picks at run time which attached tools and connector actions to call, and Microsoft Learn documents no switch dedicated to the node itself.
 cost: Variable. Workflow actions and the agent node's use consume Copilot Credits, billed to the environment, and no rate specific to the agent node is published.
 impact: Medium. Makers who build workflows notice it first; the people who feed or receive the workflow's output see decisions made by an agent instead of a fixed rule.
--->
-
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].api; Governance controls table / absence: No API or automation surface is documented for the credit-consumption row covering workflows and environments. | Found: GET https://api.powerplatform.com/licensing/entitlements/{entitlementId}/environments/{environmentId}/resources?fromDate={fromDate}&toDate={toDate}&api-version=2024-10-01 ... metadata ... Additional metadata such as Feature, ProductName, and nonBillableConsumed for MCSMessages. | Fix: Replace controls[1].api with kind 'power-platform-api', call 'GET https://api.powerplatform.com/licensing/entitlements/MCSMessages/environments/<environment ID>/resources?fromDate=<start date>&toDate=<end date>&api-version=2024-10-01', and docs 'https://learn.microsoft.com/rest/api/power-platform/licensing/entitlement-insight/get-environment-resources'. Add to that row's note: 'The documented API is deprecated and returns environment resource consumption snapshots; the reference does not promise a workflow-level breakdown.' Make the same replacement in the rendered table. | Source: https://learn.microsoft.com/rest/api/power-platform/licensing/entitlement-insight/get-environment-resources
 -->

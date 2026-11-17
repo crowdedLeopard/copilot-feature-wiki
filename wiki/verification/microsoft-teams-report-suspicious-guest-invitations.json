@@ -2,37 +2,42 @@
   "slug": "microsoft-teams-report-suspicious-guest-invitations",
   "roadmapId": 571297,
   "title": "Microsoft Teams: report suspicious guest invitations to your admin",
-  "status": "held",
+  "status": "verified",
   "date": "2026-11-17",
-  "version": 3,
+  "version": 4,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 3,
-  "verifierVerdict": "hold",
+  "attempts": 0,
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-16",
-    "reasons": [
-      "1 blocking finding (claim 52)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 52,
-    "confirmed": 51,
+    "claims": 54,
+    "confirmed": 54,
     "unconfirmed": 0,
-    "contradicted": 1,
-    "blocker": 1,
+    "contradicted": 0,
+    "blocker": 0,
     "major": 0,
     "minor": 0
   },
-  "summary": "Hold: the briefing incorrectly says Microsoft Learn does not state a role that can view the security submissions report. Microsoft's Teams administrator role reference explicitly grants Teams Administrators access to all reports in the Teams admin center. The roadmap facts, notice, documented controls and qualified licensing gaps otherwise check out.",
+  "summary": "The briefing passes: its rollout facts, reporting controls, default setting and administrator roles are supported. It distinguishes the documented reporting settings from guest-invitation details and licensing that Microsoft has not yet published.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing; Scope; rationale: impact",
+      "where": "title; summary; What's changing",
       "type": "record",
-      "claim": "Microsoft plans to let Teams users report suspicious invitations to join another organisation as a guest to their IT admin.",
+      "claim": "Microsoft Teams plans to let users report suspicious guest invitations to their IT admin for review.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Teams will enable users to report suspicious guest invitations directly from Teams. When users receive an unexpected or potentially malicious guest invitation, they can report it to their IT admin for review",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The invitations concerned invite the recipient to join another organisation as a guest.",
       "status": "supported",
       "source": "Message Center post MC1530615",
       "quote": "When users receive an unexpected or potentially malicious invitation to join another organization as a guest, they can report it to their IT admin for review",
@@ -40,10 +45,10 @@
       "fix": null
     },
     {
-      "n": 2,
-      "where": "summary; What's changing; Governance guidance: At rollout; rationale: impact",
+      "n": 3,
+      "where": "summary; What's changing; Risk assessment; Governance guidance; rationales",
       "type": "record",
-      "claim": "Users can report suspicious guest invitations when declining them in Teams.",
+      "claim": "Users initiate a report when declining a suspicious guest invitation in Teams.",
       "status": "supported",
       "source": "Message Center post MC1530615",
       "quote": "Users can report suspicious guest invitations when declining them in Teams.",
@@ -51,10 +56,10 @@
       "fix": null
     },
     {
-      "n": 3,
-      "where": "What's changing; Risk assessment: Data exposure; rationale: risk",
+      "n": 4,
+      "where": "What's changing; Risk assessment; rationale: impact",
       "type": "record",
-      "claim": "Guest-invitation reports reach IT admins through the User reported security submissions report in the Teams admin center.",
+      "claim": "Guest-invitation reports reach the IT admin through the User reported security submissions report in the Teams admin center.",
       "status": "supported",
       "source": "Message Center post MC1530615",
       "quote": "Reports are shared with their IT admin through the User reported security submissions report in the Teams admin center",
@@ -62,8 +67,8 @@
       "fix": null
     },
     {
-      "n": 4,
-      "where": "What's changing; Risk assessment: Data exposure; rationale: risk",
+      "n": 5,
+      "where": "What's changing; Risk assessment; rationale: risk",
       "type": "record",
       "claim": "Guest-invitation reports are also shared with Microsoft for review.",
       "status": "supported",
@@ -73,10 +78,43 @@
       "fix": null
     },
     {
-      "n": 5,
-      "where": "summary; What's changing; controls[0].note; Governance controls; rationale: risk",
+      "n": 6,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet describe guest-invitation reporting itself.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams\" \"guest invitations\" \"report\". Opened Microsoft Learn end-user-reporting-security, end-user-reported-security-signal and defender-office-365/submissions-teams; none describes reporting invitations to join another organisation as a guest.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing; Risk assessment; Governance controls",
+      "type": "behaviour",
+      "claim": "Existing Teams security reporting supports chat and channel messages.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/end-user-reporting-security",
+      "quote": "Users can report messages in Teams from chats and channels for security concern and for incorrect detection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing; Risk assessment; Governance controls",
+      "type": "behaviour",
+      "claim": "Users can report suspicious external users while blocking them in Teams.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/end-user-reporting-security",
+      "quote": "User can report suspicious external users while blocking them in Teams, from external chat requests and user profile cards.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "summary; controls[0]; What's changing; Risk assessment; Scope; Governance controls",
       "type": "record",
-      "claim": "The notice names Report a security concern in the Teams messaging policy as the control governing guest-invitation reporting.",
+      "claim": "The existing Report a security concern messaging-policy setting governs guest-invitation reporting.",
       "status": "supported",
       "source": "Message Center post MC1530615",
       "quote": "The capability is controlled through the Teams messaging policy setting for Report a security concern.",
@@ -84,18 +122,18 @@
       "fix": null
     },
     {
-      "n": 6,
-      "where": "Scope; Why it matters",
-      "type": "record",
-      "claim": "The notice requires no action from organisations where Report a security concern is already enabled.",
+      "n": 10,
+      "where": "front matter: defaultState; What's changing; Why it matters; Open questions",
+      "type": "default",
+      "claim": "The governing Teams admin center setting is on by default, so the feature can arrive without new admin action.",
       "status": "supported",
-      "source": "Message Center post MC1530615",
-      "quote": "No action is required for organizations that already have Report a security concern enabled in their Teams messaging policy.",
+      "source": "https://learn.microsoft.com/microsoftteams/end-user-reporting-security",
+      "quote": "In the Teams admin center: 'On' by default and controls whether users are able to report messages and user from Teams.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 7,
+      "n": 11,
       "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap status is In development.",
@@ -106,18 +144,18 @@
       "fix": null
     },
     {
-      "n": 8,
-      "where": "front matter: targetDate; What's changing",
+      "n": 12,
+      "where": "front matter: targetDate, previewDate; What's changing",
       "type": "record",
-      "claim": "The roadmap target date is November CY2026.",
+      "claim": "The roadmap target is November CY2026 and it supplies no preview date.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"targetDate\": \"November CY2026\"",
+      "quote": "\"targetDate\": \"November CY2026\", \"previewDate\": null",
       "severity": null,
       "fix": null
     },
     {
-      "n": 9,
+      "n": 13,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
       "claim": "The roadmap lists General Availability and Targeted Release.",
@@ -128,10 +166,10 @@
       "fix": null
     },
     {
-      "n": 10,
+      "n": 14,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record, without an explicit exclusion of other clouds.",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -139,7 +177,7 @@
       "fix": null
     },
     {
-      "n": 11,
+      "n": 15,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap lists Desktop, Mac and Web.",
@@ -150,18 +188,7 @@
       "fix": null
     },
     {
-      "n": 12,
-      "where": "front matter: previewDate",
-      "type": "record",
-      "claim": "The roadmap supplies no preview date.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": null",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
+      "n": 16,
       "where": "front matter: roadmapModified",
       "type": "record",
       "claim": "The roadmap record was modified on 16 September 2026 at 22:57:03.",
@@ -172,10 +199,10 @@
       "fix": null
     },
     {
-      "n": 14,
-      "where": "What's changing; Governance guidance: At rollout",
+      "n": 17,
+      "where": "What's changing",
       "type": "record",
-      "claim": "MC1530615 was updated on 3 November 2026 with a revised timeline.",
+      "claim": "MC1530615 was updated on 3 November 2026.",
       "status": "supported",
       "source": "Message Center post MC1530615",
       "quote": "Updated November 3, 2026: We have updated the timeline.",
@@ -183,32 +210,43 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 18,
       "where": "What's changing",
       "type": "record",
-      "claim": "The notice targets the start of Worldwide general availability rollout for mid-November 2026, previously early November.",
+      "claim": "The notice says Worldwide General Availability rollout begins in mid-November 2026.",
       "status": "supported",
       "source": "Message Center post MC1530615",
-      "quote": "General Availability (Worldwide): We will begin rolling out in mid-November 2026 (previously early November)",
+      "quote": "General Availability (Worldwide): We will begin rolling out in mid-November 2026",
       "severity": null,
       "fix": null
     },
     {
-      "n": 16,
+      "n": 19,
       "where": "What's changing",
       "type": "record",
       "claim": "The notice expects rollout completion by mid-November 2026.",
       "status": "supported",
       "source": "Message Center post MC1530615",
-      "quote": "expect to complete by mid-November 2026.",
+      "quote": "and expect to complete by mid-November 2026.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 17,
+      "n": 20,
+      "where": "What's changing; Governance guidance",
+      "type": "record",
+      "claim": "The rollout start previously stated in the notice was early November.",
+      "status": "supported",
+      "source": "Message Center post MC1530615",
+      "quote": "mid-November 2026 (previously early November)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
       "where": "What's changing",
       "type": "record",
-      "claim": "The notice gives no act-by date.",
+      "claim": "The supplied notice sets no act-by date.",
       "status": "supported",
       "source": "Message Center post MC1530615",
       "quote": "Act by: none",
@@ -216,7 +254,7 @@
       "fix": null
     },
     {
-      "n": 18,
+      "n": 22,
       "where": "What's changing",
       "type": "record",
       "claim": "The notice's end date is 15 January 2027.",
@@ -227,10 +265,10 @@
       "fix": null
     },
     {
-      "n": 19,
+      "n": 23,
       "where": "Why it matters",
       "type": "record",
-      "claim": "The notice identifies phishing and other abuse through guest invitations as the problem addressed by reporting.",
+      "claim": "Microsoft identifies phishing and other abuse through guest invitations as the problem addressed.",
       "status": "supported",
       "source": "Message Center post MC1530615",
       "quote": "helping identify and mitigate phishing and other abuse through guest invitations.",
@@ -238,150 +276,18 @@
       "fix": null
     },
     {
-      "n": 20,
-      "where": "controls[0].ui; Governance controls table; Governance guidance: Before rollout",
-      "type": "admin-path",
-      "claim": "Teams admin center > Messaging policies > policy > Report a security concern is a documented path, with Settings & policies noted for the new experience.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/end-user-reporting-security",
-      "quote": "In the left navigation, select Messaging policies. ... Select a policy. ... Turn on the setting: Report a security concern. ... To access this policy in the new experience, go to Settings & policies.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "controls[0].api; Governance controls table",
-      "type": "command",
-      "claim": "The MicrosoftTeams module documents Set-CsTeamsMessagingPolicy -Identity <policy> -AllowSecurityEndUserReporting $true for enabling security-concern reporting, with guest-invitation applicability explicitly unconfirmed.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingpolicy",
-      "quote": "Set-CsTeamsMessagingPolicy ... [[-Identity] <XdsIdentity>] ... [-AllowSecurityEndUserReporting <Boolean>] ... This setting determines if users can report any security concern posted in message to their admin. Possible values: True, False",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "controls[0].note; Governance controls",
-      "type": "command",
-      "claim": "AllowSecurityEndUserReporting is Boolean and $false disables the setting.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingpolicy",
-      "quote": "This setting determines if users can report any security concern posted in message to their admin. Possible values: True, False ... Type: | Boolean",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "controls[1].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "The report is reached through Teams admin center > Analytics & reports > Protection reports > View reports > User reported security submissions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/end-user-reported-security-signal",
-      "quote": "In the left navigation of the Teams admin center, go to Analytics & reports > Protection reports. ... On the View reports tab, under Report, select User reported security submissions.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 24,
-      "where": "controls[1].api; controls[1].note; Governance controls table",
-      "type": "absence",
-      "claim": "No API for the Teams admin center User reported security submissions report is documented at the time of writing.",
+      "where": "Why it matters; Risk assessment; Governance controls",
+      "type": "applicability",
+      "claim": "Turning off the shared Report a security concern policy removes the reporting option for affected users.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams User reported security submissions report API Microsoft Graph permissions role view report; \"User reported security submissions\" permissions role API PowerShell. Opened the report page and submissions-teams; no API for this report found.",
+      "source": "Message Center post MC1530615",
+      "quote": "Admins can manage this capability through Teams admin center > Messaging policies > Report a security concern.",
       "severity": null,
       "fix": null
     },
     {
       "n": 25,
-      "where": "controls[2]; Governance controls table; Governance controls",
-      "type": "absence",
-      "claim": "No separate UI or automation switch for guest-invitation reporting is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams report suspicious guest invitations Report a security concern separate policy PowerShell guest invitation reporting; \"guest invitations\" \"report\" \"Set-CsTeamsMessagingPolicy\". Read end-user-reporting-security and the cmdlet reference; none found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "front matter: defaultState; What's changing; Why it matters; Open questions",
-      "type": "default",
-      "claim": "The governing Teams reporting setting is on by default, so guest-invitation reporting arrives without admin action where that setting remains enabled.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/end-user-reporting-security",
-      "quote": "In the Teams admin center: 'On' by default and controls whether users are able to report messages and user from Teams.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
-      "where": "front matter: licensing; Cost and licensing; Open questions",
-      "type": "absence",
-      "claim": "Licensing for reporting guest invitations is not yet published, and applicability of the neighbouring Defender licence conditions is unconfirmed.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams guest invitation reporting license pricing Defender requirements; \"guest invitations\" \"report\" Teams license. Read MC1530615, end-user-reporting-security, messaging-policies-in-teams, submissions-teams and the report prerequisites; no invitation requirement found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
-      "where": "Cost and licensing; front matter: licensing.notes; rationale: cost",
-      "type": "absence",
-      "claim": "No price or meter for guest-invitation reporting has been published in the checked Microsoft material.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams guest invitation reporting license pricing Defender requirements; \"guest invitations\" \"report\" Teams license. Read MC1530615, the Teams reporting and messaging policy pages and submissions-teams; no guest-reporting price or meter found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 29,
-      "where": "What's changing",
-      "type": "absence",
-      "claim": "Microsoft Learn does not yet describe guest-invitation reporting itself.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams report suspicious guest invitations Report a security concern separate policy PowerShell guest invitation reporting; \"guest invitations\" \"report\" Teams license. Opened end-user-reporting-security, end-user-reported-security-signal and submissions-teams; no feature text found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
-      "where": "What's changing; Risk assessment: Change & support; Governance controls",
-      "type": "behaviour",
-      "claim": "Existing Teams reporting lets users report chat and channel messages through Report a security concern.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/end-user-reporting-security",
-      "quote": "Users can report messages in Teams from chats and channels for security concern and for incorrect detection.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
-      "where": "What's changing; Risk assessment: Change & support; Governance controls",
-      "type": "behaviour",
-      "claim": "Existing Teams reporting lets users report suspicious external users while blocking them, governed by the same Teams reporting setting.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/end-user-reporting-security",
-      "quote": "User can report suspicious external users while blocking them in Teams, from external chat requests and user profile cards. ... 'Report a security concern' reporting of messages and users in Teams is made of two separate settings",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
-      "where": "Why it matters; Risk assessment: Change & support",
-      "type": "applicability",
-      "claim": "Turning off Report a security concern in a user's messaging policy also disables guest-invitation reporting for that user.",
-      "status": "supported",
-      "source": "Message Center post MC1530615",
-      "quote": "The capability is controlled through the Teams messaging policy setting for Report a security concern.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
       "claim": "The existing User report category includes the reporter's name.",
@@ -392,7 +298,7 @@
       "fix": null
     },
     {
-      "n": 34,
+      "n": 26,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
       "claim": "The existing User category's exported CSV includes the reporter's email address.",
@@ -403,7 +309,7 @@
       "fix": null
     },
     {
-      "n": 35,
+      "n": 27,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
       "claim": "The existing User category's exported CSV includes the reporter's tenant ID.",
@@ -414,7 +320,7 @@
       "fix": null
     },
     {
-      "n": 36,
+      "n": 28,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
       "claim": "The existing User category's exported CSV includes optional reporter comments.",
@@ -425,98 +331,98 @@
       "fix": null
     },
     {
-      "n": 37,
+      "n": 29,
       "where": "Risk assessment: Data exposure; Open questions",
       "type": "absence",
-      "claim": "The contents of a guest-invitation report are not documented.",
+      "claim": "Learn has not documented the contents of a guest-invitation report.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Teams reporting guest invitations report contents automatic remediation notifications reporter outcome; \"guest invitations\" \"report\" notifications remediation. Read end-user-reported-security-signal, end-user-reporting-security and submissions-teams; no invitation payload found.",
+      "quote": "Searched: \"Teams\" \"guest invitation\" reporting automatic action notification report contains outcome. Opened end-user-reported-security-signal, end-user-reporting-security and submissions-teams; none specifies guest-invitation report fields.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 38,
-      "where": "Risk assessment: Security & identity; Governance guidance: After rollout; Open questions",
+      "n": 30,
+      "where": "Risk assessment: Security & identity, Autonomy & actions; Governance guidance; Open questions",
       "type": "absence",
-      "claim": "Microsoft has not documented automatic remediation or an automatic action on a reported guest invitation.",
+      "claim": "Microsoft has not documented automatic invitation remediation triggered by reporting, and the notice describes no autonomous action.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Teams reporting guest invitations report contents automatic remediation notifications reporter outcome; \"guest invitations\" \"report\" notifications remediation. Read MC1530615 and the three reporting pages; none describes an automatic invitation action.",
+      "quote": "Searched: \"Teams\" \"guest invitation\" reporting notification automatic remediation. Read MC1530615, end-user-reporting-security, end-user-reported-security-signal and submissions-teams; no automatic action on a reported guest invitation is described.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 39,
+      "n": 31,
       "where": "Risk assessment: Security & identity; Open questions",
       "type": "absence",
       "claim": "The effect of reporting on an associated guest account in the inviting organisation is not documented.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Teams reporting guest invitations report contents automatic remediation notifications reporter outcome; \"guest invitations\" \"report\" notifications remediation. Read MC1530615 and the Teams and Defender reporting pages; no guest-account effect found.",
+      "quote": "Searched: Teams report suspicious guest invitations licensing price default notification automatic remediation guest account reporting. Read MC1530615 and the three cited reporting pages; none describes an effect on an associated guest account.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 40,
+      "n": 32,
       "where": "Risk assessment: Security & identity",
       "type": "absence",
       "claim": "Invitation-specific notification and alert behaviour is not documented.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Teams reporting guest invitations report contents automatic remediation notifications reporter outcome; \"guest invitations\" \"report\" notifications remediation. Read submissions-teams and the Teams reporting pages; alerts found concern messages, calls and meetings, not guest invitations.",
+      "quote": "Searched: \"Teams\" \"guest invitation\" reporting notification automatic remediation. Opened end-user-reporting-security, end-user-reported-security-signal and submissions-teams; no invitation-specific alert or notification behaviour is stated.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 41,
+      "n": 33,
       "where": "Risk assessment: Change & support; Open questions",
       "type": "absence",
-      "claim": "Microsoft has not documented the reporting outcome presented to the guest-invitation reporter.",
+      "claim": "Microsoft has not documented the outcome for the reporter or what Microsoft does after receiving a guest-invitation report.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Teams reporting guest invitations report contents automatic remediation notifications reporter outcome; \"guest invitations\" \"report\" notifications remediation. Read MC1530615, end-user-reporting-security and submissions-teams; no guest-invitation reporter outcome found.",
+      "quote": "Searched: \"Teams\" \"guest invitation\" reporting automatic action notification report contains outcome. Read MC1530615 and the cited reporting pages; no guest-invitation-specific follow-up or outcome for the reporter is described.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 42,
-      "where": "Risk assessment: Autonomy & actions; rationale: risk",
+      "n": 34,
+      "where": "front matter: licensing.model, licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "The guest-invitation reporting licensing model, price and meter are not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams\" \"guest invitation\" \"report\" \"licensing\"; \"Teams\" \"guest invitations\" report price meter licence. Read MC1530615, both Teams reporting pages, messaging-policies-in-teams and submissions-teams; none specifies guest-invitation licensing or charges.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "front matter: licensing.notes; Cost and licensing",
       "type": "record",
-      "claim": "The notice describes a user-initiated report and describes no autonomous action.",
+      "claim": "MC1530615 names no licence requirement or charge.",
       "status": "supported",
       "source": "Message Center post MC1530615",
-      "quote": "Users can report suspicious guest invitations when declining them in Teams. Reports are shared with their IT admin through the User reported security submissions report in the Teams admin center and with Microsoft for review.",
+      "quote": "No action is required for organizations that already have Report a security concern enabled in their Teams messaging policy. Admins can manage this capability through Teams admin center > Messaging policies > Report a security concern.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 43,
-      "where": "controls[1].note; Governance controls table; Open questions",
-      "type": "behaviour",
-      "claim": "The report documentation lists Calling, Chats and channels, and User categories, without a guest-invitation category.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/end-user-reported-security-signal",
-      "quote": "Under Report category, choose one of the following categories: Calling; Chats and channels; User",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
+      "n": 36,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "The report page lists reporting settings as prerequisites and names no licence in those prerequisites.",
+      "claim": "The User reported security submissions report page lists reporting settings as prerequisites and names no licence in them.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/end-user-reported-security-signal",
-      "quote": "Users can submit reports only when the required reporting settings are enabled in the Teams admin center. ... For chat and channel messages and external users, the Report a security concern setting must be turned on in the user's messaging policy.",
+      "quote": "Reported interactions appear in the User reported security submissions reports only after users submit reports. ... Users can submit reports only when the required reporting settings are enabled in the Teams admin center.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 45,
-      "where": "Cost and licensing; Open questions",
+      "n": 37,
+      "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "The Teams security-reporting and messaging-policy pages name Defender for Office 365 Plan 2 or Microsoft Defender XDR for malicious-message reporting.",
+      "claim": "The Teams security-reporting and messaging-policy pages specify Defender for Office 365 Plan 2 or Defender XDR for malicious-message reporting.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/messaging-policies-in-teams",
       "quote": "Report a security concern - When this is ON, users can report malicious messages in Microsoft Teams in organizations with Microsoft Defender for Office 365 Plan 2 or Microsoft Defender XDR.",
@@ -524,10 +430,10 @@
       "fix": null
     },
     {
-      "n": 46,
-      "where": "Cost and licensing; Open questions",
+      "n": 38,
+      "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "The Defender reporting page instead names Defender for Office 365 Plan 1 or Plan 2, or Microsoft Defender XDR.",
+      "claim": "The Defender reporting page specifies Defender for Office 365 Plan 1 or Plan 2, or Defender XDR, including for message reporting.",
       "status": "supported",
       "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
       "quote": "In organizations with Microsoft Defender for Office 365 Plan 1 or Plan 2, or Microsoft Defender XDR, admins can decide whether users can report messages, calls, meetings, or meeting participants in Microsoft Teams.",
@@ -535,10 +441,10 @@
       "fix": null
     },
     {
-      "n": 47,
-      "where": "Scope; controls[0].scope; Governance guidance: Before rollout",
-      "type": "behaviour",
-      "claim": "Custom messaging policies can be assigned to users, allowing the reporting setting to differ between users.",
+      "n": 39,
+      "where": "Scope; Governance guidance",
+      "type": "applicability",
+      "claim": "Custom messaging policies can be assigned to users, allowing reporting settings to differ by assigned policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/messaging-policies-in-teams",
       "quote": "Users in your organization will automatically get the global policy, unless you create and assign a custom policy. Edit the settings in the global policy or create and assign one or more custom policies to turn on or turn off the features that you want.",
@@ -546,19 +452,19 @@
       "fix": null
     },
     {
-      "n": 48,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "A second Defender portal setting must be on for user-reported messages to appear correctly on the Submissions page.",
+      "n": 40,
+      "where": "Scope; Why it matters",
+      "type": "record",
+      "claim": "The notice requires no action from organisations with Report a security concern already enabled.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/end-user-reporting-security",
-      "quote": "If \"Report a security concern\" is turned on in the Teams admin center, it also needs to be turned on in the Defender portal for user reported messages to show up correctly on the User reported tab on the Submissions page.",
+      "source": "Message Center post MC1530615",
+      "quote": "No action is required for organizations that already have Report a security concern enabled in their Teams messaging policy.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 49,
-      "where": "Governance guidance: Before rollout; Governance controls",
+      "n": 41,
+      "where": "Governance guidance; Governance controls",
       "type": "behaviour",
       "claim": "Learn says user reporting of external users is not yet supported in Microsoft Defender.",
       "status": "supported",
@@ -568,43 +474,153 @@
       "fix": null
     },
     {
-      "n": 50,
-      "where": "controls[0].note; Governance controls",
+      "n": 42,
+      "where": "Governance guidance; Governance controls; Open questions",
       "type": "absence",
-      "claim": "Learn has not confirmed that the documented PowerShell reporting parameter governs guest-invitation reporting.",
+      "claim": "Learn does not address whether guest-invitation reports are supported in Defender.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"guest invitations\" \"report\" \"Set-CsTeamsMessagingPolicy\". Read Set-CsTeamsMessagingPolicy, including AllowSecurityEndUserReporting, and end-user-reporting-security; the parameter describes security concerns posted in messages, without naming guest invitations.",
+      "quote": "Searched: \"Teams\" \"guest invitations\" \"report\" \"setting\". Opened end-user-reporting-security and defender-office-365/submissions-teams, including its reporting configuration; neither addresses guest-invitation reports in Defender.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "The cited page documents Teams admin center > Messaging policies > policy > Report a security concern.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/end-user-reporting-security",
+      "quote": "Sign in to the Teams Admin Center ... In the left navigation, select Messaging policies. ... Select a policy. ... Turn on the setting: Report a security concern.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "MicrosoftTeams PowerShell documents Set-CsTeamsMessagingPolicy -Identity <policy> -AllowSecurityEndUserReporting $true for the general reporting setting, with feature applicability explicitly caveated.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingpolicy",
+      "quote": "Set-CsTeamsMessagingPolicy ... [[-Identity] <XdsIdentity>] ... [-AllowSecurityEndUserReporting <Boolean>] ... This setting determines if users can report any security concern posted in message to their admin. Possible values: True, False",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[0].note",
+      "type": "admin-path",
+      "claim": "The Teams reporting page points to Settings & policies for the new admin experience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/end-user-reporting-security",
+      "quote": "To access this policy in the new experience, go to Settings & policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[0].note; Governance controls",
+      "type": "command",
+      "claim": "AllowSecurityEndUserReporting is Boolean and accepts False to disable reporting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingpolicy",
+      "quote": "This setting determines if users can report any security concern posted in message to their admin. Possible values: True, False ... Type: | Boolean",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "The report is under Teams admin center > Analytics & reports > Protection reports > View reports > User reported security submissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/end-user-reported-security-signal",
+      "quote": "In the left navigation of the Teams admin center, go to Analytics & reports > Protection reports. ... On the View reports tab, under Report, select User reported security submissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[1].note; Open questions",
+      "type": "behaviour",
+      "claim": "The documented report categories are Calling, Chats and channels, and User, with no guest-invitation category listed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/end-user-reported-security-signal",
+      "quote": "Under Report category, choose one of the following categories: ... Calling ... Chats and channels ... User",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[1].api",
+      "type": "absence",
+      "claim": "No API for the Teams admin center User reported security submissions report is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"User reported security submissions\" \"API\" \"PowerShell\"; \"User reported security submissions\" report API site:learn.microsoft.com/graph. Read the report page and Graph reportSubmission/userReport excerpts; none documents an API for this report.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[2]; Governance controls",
+      "type": "absence",
+      "claim": "No guest-invitation reporting switch separate from Report a security concern is documented on the UI or API surface.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams\" \"guest invitations\" \"report\" \"setting\"; \"guest invitations\" \"report\" site:learn.microsoft.com/powershell/module/microsoftteams. Read MC1530615 and Teams reporting and messaging-policy references; no separate switch is documented.",
       "severity": null,
       "fix": null
     },
     {
       "n": 51,
       "where": "Governance controls",
-      "type": "role",
-      "claim": "Microsoft names Teams Administrator or Global Administrator for configuring user reporting in the Teams admin center and advises least privilege.",
+      "type": "applicability",
+      "claim": "The Defender-side reporting setting must also be on for user-reported messages to appear on its Submissions page.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
-      "quote": "To view or configure user reporting in the Teams admin center, you need to be a member of the Global Administrator or Teams Administrator roles. ... Microsoft strongly advocates for the principle of least privilege.",
+      "source": "https://learn.microsoft.com/microsoftteams/end-user-reporting-security",
+      "quote": "If \"Report a security concern\" is turned on in the Teams admin center, it also needs to be turned on in the Defender portal for user reported messages to show up correctly on the User reported tab on the Submissions page.",
       "severity": null,
       "fix": null
     },
     {
       "n": 52,
-      "where": "Governance controls: final sentence",
+      "where": "controls[0].note; Governance controls",
       "type": "absence",
-      "claim": "Learn does not state the role needed to view the User reported security submissions report.",
-      "status": "contradicted",
+      "claim": "Learn has not explicitly confirmed that AllowSecurityEndUserReporting covers guest-invitation reporting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"guest invitations\" \"report\" site:learn.microsoft.com/powershell/module/microsoftteams. Opened Set-CsTeamsMessagingPolicy and read AllowSecurityEndUserReporting, Identity and syntax; its description covers concerns posted in messages, not guest invitations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Microsoft names Teams Administrator or Global Administrator for configuring user reporting in the Teams admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/submissions-teams",
+      "quote": "To view or configure user reporting in the Teams admin center, you need to be a member of the Global Administrator or Teams Administrator roles.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Microsoft documents that Teams Administrators can access all reports in the Teams admin center.",
+      "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/using-admin-roles",
-      "quote": "Teams Administrator ... Everything in the Microsoft Teams admin center and associated PowerShell controls, including: ... Access all reports in the Microsoft Teams admin center",
-      "severity": "blocker",
-      "fix": "Replace the final sentence with: 'Microsoft documents that Teams Administrators can access all reports in the Teams admin center.' Cite https://learn.microsoft.com/microsoftteams/using-admin-roles. This states a documented sufficient role without claiming it is the only role permitted."
+      "quote": "Teams Administrator ... Access all reports in the Microsoft Teams admin center",
+      "severity": null,
+      "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-17T02:05:04.943Z",
+    "at": "2026-11-17T03:37:50.928Z",
     "summary": {
-      "links": 7,
+      "links": 8,
       "unreachable": 0,
       "uiPaths": 2,
       "uiPathsWithMissingWords": 0,
@@ -645,6 +661,11 @@
       },
       {
         "url": "https://learn.microsoft.com/defender-office-365/submissions-teams",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/using-admin-roles",
         "ok": true,
         "status": 200
       }
@@ -705,6 +726,12 @@
       "date": "2026-11-16",
       "status": "held",
       "version": 2,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-17",
+      "status": "held",
+      "version": 3,
       "model": "gpt-6.1-sol"
     }
   ]

@@ -1,0 +1,871 @@
+{
+  "slug": "work-iq-custom-agents-3p-calls",
+  "roadmapId": 570853,
+  "title": "Work IQ: invoke custom agents and agents that call third-party tools",
+  "status": "held",
+  "date": "2026-11-17",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-17",
+    "reasons": [
+      "1 blocking finding (claim 35)"
+    ]
+  },
+  "counts": {
+    "claims": 63,
+    "confirmed": 62,
+    "unconfirmed": 0,
+    "contradicted": 1,
+    "blocker": 1,
+    "major": 0,
+    "minor": 1
+  },
+  "summary": "The roadmap facts and the documented control paths are supported. The billing discussion needs a narrower qualification: Microsoft already documents metered Work IQ API use, including actions and tools invoked through Work IQ; what remains unconfirmed is this capability's specific charging treatment, not whether Work IQ API use is metered.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "What's changing; title; summary",
+      "type": "record",
+      "claim": "Microsoft plans to enable Work IQ to invoke custom agents and agents that call supported third-party tools.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Enable Work IQ to invoke custom agents and agents that call supported third-party tools.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing; Why it matters",
+      "type": "record",
+      "claim": "The roadmap target is November CY2026, not a committed availability date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"November CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap preview target is October CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"October CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The record lists both General Availability and Preview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed, without an assertion excluding other clouds.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope; rationale: impact",
+      "type": "record",
+      "claim": "The record lists only the Web platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: products; Scope",
+      "type": "record",
+      "claim": "The roadmap products are Work IQ and Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Work IQ\", \"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 2026-09-29T23:05:21.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-09-29T23:05:21\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "The record does not explain which part is preview and which is generally available.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"description\": \"Enable Work IQ to invoke custom agents and agents that call supported third-party tools.\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary; What's changing; changes",
+      "type": "absence",
+      "claim": "No Microsoft Learn page found specifically describes roadmap item 570853.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"570853\"; \"Work IQ\" \"invoke custom agents\"; \"Work IQ\" \"third-party tools\" \"supported\". Read Work IQ API, MCP overview/tool-reference, A2A quickstart and Copilot Studio Work IQ pages; none identifies this roadmap extension.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "summary",
+      "type": "absence",
+      "claim": "No required administrator action is documented specifically for this roadmap extension.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ custom agents third party calls 570853 default licensing Copilot Credits; \"Work IQ\" \"third-party tools\" pricing default prerequisites. Read API/MCP overview, policy and Copilot Studio pages; no item-specific administrator requirement found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The ask tool routes a natural-language question to Microsoft 365 Copilot or to a specific agent when agentId is supplied.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/tool-reference",
+      "quote": "Asks Microsoft 365 Copilot (or a specific agent) a natural-language question about your data. When you provide an `agentId`, the request goes to that specific agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "command",
+      "claim": "Work IQ MCP provides list_agents to list agents usable with ask.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/tool-reference",
+      "quote": "Lists available agents that you can use with the `ask` tool. Returns a JSON array of available agents, and the built-in Microsoft 365 Copilot agent is always included.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Work IQ A2A supports agent collaboration and delegation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
+      "quote": "Use A2A for agent collaboration and delegation, where agents operate autonomously and exchange structured tasks instead of simple API calls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not identified whether this roadmap item extends ask, list_agents or the A2A endpoint.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"invoke custom agents\"; \"Work IQ\" \"custom agents\" \"invocation\". Read MCP tool-reference and A2A quickstart; both document agent selection, neither maps it to roadmap item 570853.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not defined which custom agents this roadmap extension includes.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"custom agents\" \"invoke\" \"third-party\"; \"Work IQ\" \"custom agents\" \"invocation\". Read MCP tool-reference, API overview and A2A quickstart; no item-specific custom-agent eligibility definition found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not listed the third-party tools supported by this roadmap extension.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"third-party tools\" \"supported\"; Work IQ invocation custom agents third party tools data identity supported roadmap 570853. Read API/MCP documentation and Agent 365 server options; no list for this extension found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Work IQ gives agents access to Microsoft 365 mail, files, meetings and chats.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
+      "quote": "Work IQ can reason over:\n- Email messages\n- Meetings and calendar data\n- Documents in OneDrive and SharePoint\n- Microsoft Teams messages",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Work IQ uses delegated Microsoft Entra authentication.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
+      "quote": "Work IQ uses Microsoft Entra ID delegated authentication.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Work IQ requests run in the signed-in user's context.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
+      "quote": "Requests run in the context of the signed-in user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Work IQ does not support application-only authentication.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
+      "quote": "Application-only authentication isn't supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The API overview says Microsoft 365 permissions are enforced automatically.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
+      "quote": "Microsoft 365 permissions, sensitivity labels, and compliance policies are enforced automatically.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The API overview says sensitivity labels are enforced automatically.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
+      "quote": "Microsoft 365 permissions, sensitivity labels, and compliance policies are enforced automatically.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The API overview says compliance policies are enforced automatically.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
+      "quote": "Microsoft 365 permissions, sensitivity labels, and compliance policies are enforced automatically.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Data exposure; Open questions; rationale: risk",
+      "type": "absence",
+      "claim": "The data passed by this extension to an invoked custom agent or third-party tool is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ invocation custom agents third party tools data identity supported roadmap 570853. Read API overview, MCP tool-reference, A2A quickstart and Foundry data-governance search excerpts; none describes this extension's outgoing payload.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Security & identity; Open questions; rationale: risk",
+      "type": "absence",
+      "claim": "The runtime identity of this extension's invoked custom-agent and third-party-tool calls is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ invocation custom agents third party tools data identity supported roadmap 570853. Read API authentication, MCP overview and A2A quickstart; delegated access into Work IQ is documented, but this extension's downstream identity is not.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "Microsoft has not stated where this extension's third-party tools process data.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ invocation custom agents third party tools data identity supported roadmap 570853. Read API overview and Foundry data-governance excerpts; no processing location for third-party tools invoked by this extension found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Work IQ MCP policy cannot grant access beyond the signed-in user's existing access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "Policy can't grant access beyond what the signed-in user is already allowed to access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance: At rollout",
+      "type": "default",
+      "claim": "The Work IQ MCP policy page says mutations, including sending email, are not allowed by default but supported scenarios can be enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "By default, mutation operations aren't allowed for safety. This restriction includes create, update, delete, and action requests that modify data, such as sending email.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "default",
+      "claim": "The Copilot Studio Work IQ page says write operations are on by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq",
+      "quote": "Write operations are on by default. Your organization's permissions and policies still apply.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Autonomy & actions; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not resolved how those write defaults apply to agents and tools invoked by this roadmap extension.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"custom agents\" \"third-party tools\" default invocation. Read MCP policy governance and Copilot Studio add-work-iq; their differing write defaults are stated, but neither addresses this roadmap extension.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "front matter: licensing.model and notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Work IQ API use follows a consumption model using Copilot Credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
+      "quote": "You pay for use of the Work IQ API through a usage-based model that uses Copilot Credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The Work IQ API is licensed under the customer's agreement governing Microsoft Online Services.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
+      "quote": "Work IQ API is licensed under your agreement governing use of Microsoft Online Services, including the Microsoft Product Terms.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft has not published whether invoking custom agents or third-party-tool agents is metered.",
+      "status": "contradicted",
+      "source": "https://www.microsoft.com/en-us/licensing/news/work-iq-general-availability",
+      "quote": "Work IQ API consumption consists of two parts: variable charge for query-style consumption (grounding, retrieval, and reasoning) and a static usage component for actions and tools invoked through Work IQ.",
+      "severity": "blocker",
+      "fix": "Replace the sentence beginning 'That page does not mention this roadmap item' with: 'Work IQ API use is metered through Copilot Credits; Microsoft documents variable query-style consumption and a static component for actions and tools invoked through Work IQ. Microsoft has not mapped this roadmap extension to a specific charge or stated whether invoking another agent adds a separate charge.' Cite https://www.microsoft.com/en-us/licensing/news/work-iq-general-availability. In the cost rationale, replace 'whether or at what rate invoking custom or third-party-tool agents is metered' with 'the specific charging treatment for invoking custom or third-party-tool agents'."
+    },
+    {
+      "n": 36,
+      "where": "front matter: licensing.notes; Cost and licensing; Governance guidance: After rollout",
+      "type": "absence",
+      "claim": "No specific rate or rate mapping has been published for this roadmap extension.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" pricing rate custom agents Copilot Credits licensing; \"Work IQ\" \"Copilot Credits\" \"per\" \"rate\". Read API overview, billing overview and Work IQ GA licensing announcement; generic rates exist, but no mapping to this roadmap extension was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "Microsoft has not published this extension's third-party-provider licensing or charges.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"third-party tools\" pricing default prerequisites; \"Work IQ\" pricing rate custom agents Copilot Credits licensing. Read API overview and Work IQ GA announcement, plus Plan licensing and cost excerpts; no extension-specific provider charges found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Cost and licensing; controls[3].note; Governance controls",
+      "type": "licensing",
+      "claim": "Access to the Package Management API used for blocking requires a Microsoft Agent 365 licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Access to the Package Management API requires a Microsoft Agent 365 license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The Agent 365 service description places tenant-wide tool-access control under Microsoft 365 E7 / G7 or Agent 365.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365",
+      "quote": "Requires Microsoft 365 E7 / G7 or Agent 365 | GCC Availability\nControl which tools (including Microsoft MCP servers) agents can access tenant-wide | Microsoft 365 Admin Center | No | Yes | Yes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "The MCP overview says the Work IQ service principal is automatically created on first use.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/overview",
+      "quote": "The Work IQ service principal is created automatically in the tenant when you use Work IQ for the first time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Scope",
+      "type": "role",
+      "claim": "The policy page asks for permission to manage tenant-level Work IQ or Copilot settings without naming a specific role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "Sign in with an account that has permission to manage tenant-level Work IQ or Copilot settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Additional prerequisites or licences specific to this roadmap extension have not been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"third-party tools\" pricing default prerequisites; \"Work IQ\" \"570853\". Read API/MCP overview, A2A quickstart and billing guidance; general setup and billing exist, but no prerequisites specific to this extension were found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "Work IQ MCP tenant policy is reached in Microsoft 365 admin center under Agents > Tools > Work IQ MCP > Policy, when that tab is available.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "In the left navigation, select Agents > Tools.\nIn the tools registry, select Work IQ MCP.\nOn the Work IQ MCP details pane, select the Policy tab when it's available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[0].api; Governance controls",
+      "type": "absence",
+      "claim": "No documented automation call was found for Work IQ MCP policy.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ MCP\" policy settings Microsoft Graph API Allowed Disallowed; \"Work IQ\" \"policy\" \"API\" \"PATCH\". Read policy-governance-mcp and API overview; policy metadata is described, but no administration endpoint or command was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Initial Work IQ MCP policy is tenant-level, without per-user, per-app or per-agent policy templates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "Tenant-level control applies across the tenant. Per-user, per-app, per-agent, or scenario-specific policy templates aren't part of the initial policy control surface.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[0].note; Risk assessment; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Work IQ MCP policy changes can take up to 24 hours to apply.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "After you save the setting, it can take up to 24 hours for the policy change to apply across your tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "The Business Applications preview page documents blocking Work IQ MCP at Microsoft 365 admin center > Agents > Tools > Work IQ MCP > Block.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access",
+      "quote": "Sign in to the Microsoft 365 admin center.\nSelect Agents > Tools.\nSelect Work IQ MCP.\nReview its current availability.\nTo block access to the server, select Block.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[1].api; Governance controls",
+      "type": "absence",
+      "claim": "No documented automation call was found to block the Work IQ MCP server.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ MCP\" block server Microsoft Graph API copilot admin tools; \"copilot/admin\" \"tools\" \"block\" MCP. Read Business Applications access controls and Agent 365 manage-plugins-skills-mcp-servers; no Work IQ MCP server-block endpoint found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[1].note",
+      "type": "behaviour",
+      "claim": "The server availability control applies to the whole Work IQ MCP server, independently of Copilot audience settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access",
+      "quote": "This control applies to the entire Work IQ MCP server, separate from Copilot audience settings or App Access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "Individual tool control is at Microsoft 365 admin center > Agents > Tools > Registry > server > Tools > tool toggle > Save.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "Select Agents > Tools, and then select the Registry tab.\nSelect an MCP server from the list to open its overview pane.\nSelect the Tools tab. The list shows every tool the server exposes, along with its description and an Enabled or Disabled toggle.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[2].api; Governance controls",
+      "type": "absence",
+      "claim": "No documented automation equivalent was found for the Agent 365 registry's individual-tool toggles.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Agent 365\" individual tools enabled disabled Microsoft Graph API tools policy; \"copilot/admin\" \"tools\" \"block\" MCP. Read manage-plugins-skills-mcp-servers and Azure API Management integration excerpts; no equivalent toggle API call found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[2].note; Risk assessment: Change & support; Governance controls",
+      "type": "behaviour",
+      "claim": "Individual-tool control is rolling out and supports only specific MCP server types registered with Agent 365.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "Tool-level granular control is rolling out to tenants and supports only specific types of MCP servers registered on Agent 365.",
+      "severity": "minor",
+      "fix": "Append to controls[2].note: 'Runtime enforcement applies to supported tools and experiences using the Agent 365 Tooling Gateway.' The same cited page states: 'The Agent 365 Tooling Gateway enforces the policy at runtime for supported tools and experiences that use the gateway.'"
+    },
+    {
+      "n": 53,
+      "where": "controls[2].note",
+      "type": "behaviour",
+      "claim": "In this registry experience, servers without tool discovery must be controlled as a whole rather than through individual-tool toggles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "If an MCP server doesn't support tool discovery, the Tools tab shows a message that the server doesn't support tool discovery, and individual tools aren't available to manage. In this case, use Block or allow an MCP server to control the entire server instead.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[3].ui",
+      "type": "admin-path",
+      "claim": "Microsoft documents the standard agent-block path at Microsoft 365 admin center > Agents > Registry > agent > Block, illustrated using the Microsoft 365 Admin agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-ai-admin-agent",
+      "quote": "Select to Agents > Registry.\nLocate Microsoft 365 Admin in the registry.\nUse the available agent actions to Block the agent or to scope deployment to specific users or groups instead of the entire organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[3].api",
+      "type": "command",
+      "claim": "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block blocks a Copilot package to prevent its usage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Block a Copilot package to prevent its usage.\nPOST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[3].note",
+      "type": "command",
+      "claim": "The package-block call requires CopilotPackages.ReadWrite.All.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Delegated (work or school account) | CopilotPackages.ReadWrite.All | Not available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[3].note; Governance controls",
+      "type": "command",
+      "claim": "The package-block API is beta.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "APIs under the `/beta` version are subject to change. Use of these APIs in production applications is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[0].note; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not confirmed that Work IQ MCP policy or server blocking governs this roadmap extension's outgoing custom-agent and third-party-tool calls.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"custom agents\" \"third-party tools\" default invocation; \"Work IQ MCP\" policy settings Microsoft Graph API Allowed Disallowed. Read policy governance and Business Applications access controls; neither identifies this extension's downstream enforcement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Governance controls; Governance guidance: At rollout; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not confirmed that this extension's third-party tools must use the Agent 365 registry and its blocking controls.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"third-party tools\" \"supported\"; \"Agent 365\" individual tools enabled disabled Microsoft Graph API tools policy. Read server options and tool-management pages; registry/gateway governance exists, but this extension is not placed within it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[3].note; Governance controls",
+      "type": "absence",
+      "claim": "Microsoft has not explicitly confirmed that agent blocking stops this roadmap extension from invoking the agent.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"custom agents\" \"invocation\"; \"Work IQ\" \"invoke custom agents\". Read Admin agent blocking, package-block reference, MCP tool-reference and A2A quickstart; none explicitly describes this extension's handling of blocked agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "front matter: defaultState; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "The arrival default of this roadmap extension is unknown, and no source found says it changes existing behaviour automatically.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ custom agents third party calls 570853 default licensing Copilot Credits; \"Work IQ\" \"custom agents\" \"third-party tools\" default invocation. Read roadmap, API/MCP overview, tool-reference and A2A quickstart; no arrival default for this extension found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "rationale: impact",
+      "type": "behaviour",
+      "claim": "Work IQ exposes A2A, MCP and REST protocols for developers building agentic applications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
+      "quote": "The Work IQ API enables developers to build agentic and AI-powered applications that securely reason over Microsoft 365 data while preserving existing permissions, compliance, and governance controls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "The variable cost rating reflects metered Work IQ API usage through Copilot Credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
+      "quote": "You pay for use of the Work IQ API through a usage-based model that uses Copilot Credits.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-17T03:37:48.136Z",
+    "summary": {
+      "links": 12,
+      "unreachable": 0,
+      "uiPaths": 4,
+      "uiPathsWithMissingWords": 1,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=570853",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/tool-reference",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/tooling-servers-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/manage/copilot-ai-admin-agent",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether Work IQ MCP tool requests are evaluated against tenant policy, including write operations",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "Tools",
+          "Work IQ MCP"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Availability of the whole Work IQ MCP server",
+        "docs": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "Tools",
+          "Work IQ MCP",
+          "Block"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Which tools on a registered MCP server agents can call",
+        "docs": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "Tools",
+          "Registry",
+          "server",
+          "Tools",
+          "tool toggle",
+          "Save"
+        ],
+        "missing": [
+          "tool toggle"
+        ]
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Whether a custom agent can be used in the tenant",
+        "docs": "https://learn.microsoft.com/copilot/manage/copilot-ai-admin-agent",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "Registry",
+          "Block"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Whether a custom agent can be used in the tenant",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "reachable": true,
+        "token": "/beta/copilot/admin",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

@@ -1,0 +1,842 @@
+{
+  "slug": "dynamics-365-finance-and-operations-cross-app-migrate-finance-and-operations-environments",
+  "roadmapId": 573244,
+  "title": "Dynamics 365 finance and operations: migrate environments from Lifecycle Services to Power Platform admin center",
+  "status": "held",
+  "date": "2026-11-17",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-17",
+    "reasons": [
+      "1 blocking finding (claim 41)"
+    ]
+  },
+  "counts": {
+    "claims": 65,
+    "confirmed": 64,
+    "unconfirmed": 1,
+    "contradicted": 0,
+    "blocker": 1,
+    "major": 0,
+    "minor": 0
+  },
+  "summary": "Hold: the cost section says Microsoft states there is no charge for migration, but the documentation does not publish a migration price. Replace that assurance with a statement that pricing is not yet published; the documented migration controls, prerequisites and preview restrictions are otherwise supported.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "The feature moves management of an existing finance and operations apps environment from Lifecycle Services to Power Platform admin center.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The self-service environment migration feature moves management of an existing finance and operations apps environment from Microsoft Dynamics Lifecycle Services to the Microsoft Power Platform admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap general availability target is December CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"December CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview target is September CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"September CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; Scope",
+      "type": "record",
+      "claim": "The roadmap release phases are General Availability and Preview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed on the roadmap record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: products; Why it matters",
+      "type": "record",
+      "claim": "The listed products match the roadmap, including Dynamics 365 Commerce.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"Dynamics 365 Finance\", \"Dynamics 365 Supply Chain Management\", \"Dynamics 365 Project Operations\", \"Dynamics 365 Commerce\", \"Microsoft Dataverse\", \"Dynamics 365 Finance and Operations cross-app\", \"Microsoft Power Platform governance and administration\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 2026-10-01T23:00:07.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-01T23:00:07\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "summary; What's changing; controls[0].note",
+      "type": "behaviour",
+      "claim": "Migration is performed separately for each environment in a Lifecycle Services project.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/migrate-lifecycle-services-environments-power-platform-admin-center",
+      "quote": "Migration is performed separately for each environment in a Lifecycle Services project.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Migration does not migrate the Lifecycle Services project itself.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/migrate-lifecycle-services-environments-power-platform-admin-center",
+      "quote": "It doesn't migrate the Lifecycle Services project itself.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Migration changes the control plane that manages the environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/migrate-lifecycle-services-environments-power-platform-admin-center",
+      "quote": "Migration changes the control plane that manages the environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Migration updates environment metadata across Microsoft services.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/migrate-lifecycle-services-environments-power-platform-admin-center",
+      "quote": "The process updates environment metadata across Microsoft services so that lifecycle operations are managed through the Power Platform admin center instead of Lifecycle Services.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The database is not moved during migration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/migrate-lifecycle-services-environments-power-platform-admin-center",
+      "quote": "The database isn't moved, and the environment infrastructure isn't materially changed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The environment infrastructure is not materially changed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/migrate-lifecycle-services-environments-power-platform-admin-center",
+      "quote": "The database isn't moved, and the environment infrastructure isn't materially changed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Governance controls; rationale: impact",
+      "type": "behaviour",
+      "claim": "After migration, Power Platform admin center manages copy, backup, restore, servicing, updates and monitoring.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/migrate-lifecycle-services-environments-power-platform-admin-center",
+      "quote": "The Power Platform admin center is the management experience for environment lifecycle operations such as copy, backup, restore, servicing, updates, and monitoring.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; rationale: impact",
+      "type": "behaviour",
+      "claim": "Microsoft directs administrators to use Azure Pipelines and Power Platform deployment capabilities for ALM and code deployment after migration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/migrate-lifecycle-services-environments-power-platform-admin-center",
+      "quote": "Use Azure Pipelines and Power Platform deployment capabilities for ALM and code deployment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "summary; What's changing; controls[0].note; rationale: risk",
+      "type": "behaviour",
+      "claim": "Migration is a one-way operation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/migrate-lifecycle-services-environments-power-platform-admin-center",
+      "quote": "Migration is a one-way operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The migrated environment's management experience becomes read-only in Lifecycle Services.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/migrate-lifecycle-services-environments-power-platform-admin-center",
+      "quote": "After an environment is migrated, its management experience is read-only in Lifecycle Services",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Risk assessment: Autonomy & actions; Governance guidance",
+      "type": "behaviour",
+      "claim": "A customer-initiated operation cannot return management to Lifecycle Services, including as a rollback.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/migrate-lifecycle-services-environments-power-platform-admin-center",
+      "quote": "Because migration is one-way, you can't return environment management to Lifecycle Services as a rollback action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "summary; What's changing; Governance guidance; rationale: impact",
+      "type": "behaviour",
+      "claim": "The environment is unavailable during part of the migration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/migrate-lifecycle-services-environments-power-platform-admin-center",
+      "quote": "The finance and operations apps environment is unavailable during part of the migration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Risk assessment; Governance guidance; rationale: risk",
+      "type": "behaviour",
+      "claim": "Microsoft advises planning approximately 15 minutes of downtime per Application Object Server instance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/migrate-lifecycle-services-environments-power-platform-admin-center",
+      "quote": "Plan for approximately 15 minutes of downtime for each Application Object Server (AOS) instance.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Environments with more AOS instances take longer to migrate.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/migrate-lifecycle-services-environments-power-platform-admin-center",
+      "quote": "Environments that have more AOS instances take longer.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; controls[0].note",
+      "type": "availability",
+      "claim": "The migration documentation is marked prerelease.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/migrate-lifecycle-services-environments-power-platform-admin-center",
+      "quote": "[This article is prerelease documentation and is subject to change.]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Scope; Governance guidance",
+      "type": "availability",
+      "claim": "Self-service sandbox environments are supported and Microsoft recommends migrating and validating them first.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/migrate-lifecycle-services-environments-power-platform-admin-center",
+      "quote": "| Self-service sandbox | Supported. Migrate and validate sandboxes before you plan a production migration. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Risk assessment; Scope; rationale: risk",
+      "type": "availability",
+      "claim": "Microsoft does not recommend using this migration feature for production environments during public preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/migrate-lifecycle-services-environments-power-platform-admin-center",
+      "quote": "This feature is in public preview. During public preview, Microsoft recommends that you migrate sandbox environments first and don't use the feature for production environments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "front matter: defaultState; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "Migration is admin-opt-in: an administrator must manually start it for the selected environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/migrate-lifecycle-services-environments-power-platform-admin-center",
+      "quote": "Ensure that the person who starts the migration is an administrator of the linked Power Platform environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Why it matters; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Starting migration requires selecting Migrate to Power Platform Admin Center and confirming by entering the exact environment name.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/migrate-lifecycle-services-environments-power-platform-admin-center",
+      "quote": "Enter the environment name exactly as shown, and then select **Start migration**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Lifecycle Services deployment and promotion workflows no longer manage a sandbox after it is migrated.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/migrate-lifecycle-services-environments-power-platform-admin-center",
+      "quote": "After a sandbox is migrated, Lifecycle Services deployment and promotion workflows no longer manage that environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Why it matters; Governance guidance: Before rollout; Cost and licensing",
+      "type": "behaviour",
+      "claim": "Preparation includes creating and testing Azure Pipelines producing Power Platform unified packages.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/migrate-lifecycle-services-environments-power-platform-admin-center",
+      "quote": "Create and test Azure Pipelines that produce Power Platform unified packages and deploy them to unified environments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Why it matters; Risk assessment; Scope",
+      "type": "availability",
+      "claim": "Environments using Dynamics 365 Commerce functionality are unsupported for migration during public preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/migrate-lifecycle-services-environments-power-platform-admin-center",
+      "quote": "Not supported during public preview. The migration prerequisite check doesn't currently detect Commerce usage. Don't migrate an environment that uses Commerce functionality.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Why it matters; Risk assessment; Governance guidance; Open questions",
+      "type": "behaviour",
+      "claim": "The prerequisite check does not detect Commerce usage, so passing the checks does not establish Commerce eligibility.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/migrate-lifecycle-services-environments-power-platform-admin-center",
+      "quote": "The migration prerequisite check doesn't currently detect Commerce usage. Don't migrate an environment that uses Commerce functionality.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Change & support; Scope",
+      "type": "availability",
+      "claim": "Cloud-hosted developer environments are not supported for migration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/migrate-lifecycle-services-environments-power-platform-admin-center",
+      "quote": "| Cloud-hosted developer environment | Not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Change & support; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Microsoft points to Unified Developer Environments or a downloadable VHD for development instead.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/migrate-lifecycle-services-environments-power-platform-admin-center",
+      "quote": "Not supported. Deploy a Unified Developer Environment or use a downloadable virtual hard disk (VHD) for local development.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Change & support; Scope",
+      "type": "availability",
+      "claim": "Self-service production environments may show the migration action.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/migrate-lifecycle-services-environments-power-platform-admin-center",
+      "quote": "The migration action might be available, but production migration isn't recommended during public preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "In the unified Power Platform experience, a backup stays in the cloud and is never downloaded as a SQL .bak or .bacpac file.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/unified-experience/finance-operations-apps-overview",
+      "quote": "In Power Platform, a backup is kept in the cloud and never downloaded as a SQL `.bak` or `.bacpac` file.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Security & identity; Scope; controls[0].note",
+      "type": "role",
+      "claim": "The person starting migration must be an administrator of the linked Power Platform environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/migrate-lifecycle-services-environments-power-platform-admin-center",
+      "quote": "Ensure that the person who starts the migration is an administrator of the linked Power Platform environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "The documented resolution for failing the administrator check is for an existing administrator to assign an appropriate environment admin role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/migrate-lifecycle-services-environments-power-platform-admin-center",
+      "quote": "Have an existing administrator assign you an appropriate environment admin role, and then refresh the Lifecycle Services page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Microsoft instructs administrators to keep the maintenance window open and not start other lifecycle operations during migration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/migrate-lifecycle-services-environments-power-platform-admin-center",
+      "quote": "Keep the maintenance window open while the migration runs. Don't start other lifecycle operations for the environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "front matter: licensing.model and licensing.notes; Cost and licensing; Open questions",
+      "type": "licensing",
+      "claim": "Migration-specific licensing is not yet published, and the migration page lists no licence among its prerequisites.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"migrate\" \"Lifecycle Services\" \"license\" \"charge\". Opened migration, unified admin overview, storage capacity and integration pages; none specifies a migration-specific licence. The migration prerequisites name no licence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing: first paragraph",
+      "type": "cost",
+      "claim": "The Learn migration page states there is no charge for the migration.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"migrate\" \"Lifecycle Services\" \"license\" \"charge\". Opened the cited migration page and its capacity and unified admin references. None states that migration is free; the migration page does not publish a price.",
+      "severity": "blocker",
+      "fix": "Replace the first sentence with: \"The Learn migration page lists no licence among its prerequisites and does not publish a migration price.\" Keep the following sentence treating the price and licence as not yet published."
+    },
+    {
+      "n": 42,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "After migration, the environment consumes capacity under the Power Platform capacity model.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/migrate-lifecycle-services-environments-power-platform-admin-center",
+      "quote": "The environment consumes capacity under the [Power Platform capacity model]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Cost and licensing; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Available database capacity is validated before migration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/migrate-lifecycle-services-environments-power-platform-admin-center",
+      "quote": "Available database capacity is validated before migration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Cost and licensing; Scope; controls[1].note",
+      "type": "cost",
+      "claim": "A Power Platform storage capacity deficit must be resolved before migration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/migrate-lifecycle-services-environments-power-platform-admin-center",
+      "quote": "free or purchase enough capacity to clear the deficit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The capacity page says a deficit can be addressed by deleting unneeded environments and data or buying more capacity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/finance-operations-storage-capacity",
+      "quote": "If your organization has a storage capacity deficit, you can delete unneeded environments and data or buy more capacity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "The cited finance and operations capacity page says exceeding storage entitlements currently does not affect service availability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/finance-operations-storage-capacity",
+      "quote": "Currently, exceeding storage entitlements doesn't affect the availability of the service.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Migration does not return the Lifecycle Services environment slot or make it available for another environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/migrate-lifecycle-services-environments-power-platform-admin-center",
+      "quote": "The Lifecycle Services environment slot isn't returned or made available for another environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Future environment provisioning is based on available Power Platform capacity instead of Lifecycle Services slots.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/migrate-lifecycle-services-environments-power-platform-admin-center",
+      "quote": "Future environment provisioning is based on available Power Platform capacity instead of Lifecycle Services environment slots.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Scope; Governance guidance: Before rollout; Governance controls",
+      "type": "behaviour",
+      "claim": "A healthy environment with Deployed status in Lifecycle Services is a migration prerequisite.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/migrate-lifecycle-services-environments-power-platform-admin-center",
+      "quote": "Ensure that the environment is healthy and has a status of **Deployed** in Lifecycle Services.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Scope; Governance guidance: Before rollout; controls[2]",
+      "type": "behaviour",
+      "claim": "The finance and operations environment must be linked to a Power Platform environment before migration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/migrate-lifecycle-services-environments-power-platform-admin-center",
+      "quote": "Link the environment to a Power Platform environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Dual-write need not be enabled to migrate an environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/migrate-lifecycle-services-environments-power-platform-admin-center",
+      "quote": "You don't have to enable dual-write to migrate an environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Scope; Open questions",
+      "type": "absence",
+      "claim": "The migration page does not name a required Lifecycle Services project role.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"migrate\" \"Lifecycle Services\" \"project\" \"role\" administrator. Read the migration page in full, including prerequisites, migration steps and failed-check resolutions; it names a linked Power Platform administrator, not an LCS project role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The migration action is at Lifecycle Services > project > Environments > environment > Full details > Power Platform migration (Preview) > Migrate to Power Platform Admin Center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/migrate-lifecycle-services-environments-power-platform-admin-center",
+      "quote": "In the **Environments** section, find the sandbox that you want to migrate, and then select **Full details**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[0].api; Governance controls",
+      "type": "absence",
+      "claim": "No API for starting this Lifecycle Services to Power Platform admin center migration is documented at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Lifecycle Services migration Power Platform API PowerShell pac admin; Lifecycle Services migration Power Platform API start. Read migration page and searched pac admin reference for migration/Lifecycle; results document UI, not a start API for this operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The Finance and Operations capacity report is at Power Platform admin center > Licensing > Capacity add-ons > Finance and Operations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/finance-operations-storage-capacity",
+      "quote": "In the navigation pane, select **Licensing**.\n3. In the **Licensing** pane, select **Capacity add-ons**.\n4. Select **Finance and Operations**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[1].api; Governance controls",
+      "type": "absence",
+      "claim": "An API equivalent for the finance and operations storage capacity report is not documented at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: finance operations storage capacity report API PowerShell pac admin; finance operations tenantCapacity storage API. Read capacity page and daily capacity report tutorial; searched pac admin. Generic Dataverse capacity automation did not document this F&O report.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[1].scope and controls[1].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "The finance and operations report compares storage usage with licence entitlement and covers the tenant's environments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/finance-operations-storage-capacity",
+      "quote": "Storage reporting covers usage at the tenant and environment level. All environments in all Lifecycle Services projects on the tenant are included in storage reporting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The linked-environment prerequisite check is under Lifecycle Services > project > Environments > environment > Full details > Power Platform migration (Preview) > Power Platform environment is linked.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/migrate-lifecycle-services-environments-power-platform-admin-center",
+      "quote": "On the environment details page, expand **Power Platform migration (Preview)**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "controls[2].api; Governance controls table",
+      "type": "command",
+      "claim": "GET [Organization URI]/api/data/v9.1/RetrieveFinanceAndOperationsIntegrationDetails is the documented Dataverse call for checking integration status.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/power-platform/enable-power-platform-integration",
+      "quote": "GET [Organization URI]/api/data/v9.1/RetrieveFinanceAndOperationsIntegrationDetails",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "When integrated, the Dataverse call returns Microsoft Entra tenant and environment details of the linked finance and operations environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/power-platform/enable-power-platform-integration",
+      "quote": "If the Power Platform environment is linked to a finance and operations apps environment through the Power Platform integration, the API returns the Microsoft Entra tenant and environment details of the finance and operations apps environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "controls[2].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The Dataverse call verifies integration status rather than starting migration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/power-platform/enable-power-platform-integration",
+      "quote": "The `RetrieveFinanceAndOperationsIntegrationDetails` API is available in Dataverse to validate the status of the Power Platform integration for the Power Platform environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "The cited integration page does not specify which role may call RetrieveFinanceAndOperationsIntegrationDetails.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: RetrieveFinanceAndOperationsIntegrationDetails permissions role. Read Enable Power Platform integration in full, including the runtime status API request, response and error; no caller role is specified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The migration section presents four green-check prerequisites for Deployed status, linkage, database capacity and linked-environment administrator status.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/migrate-lifecycle-services-environments-power-platform-admin-center",
+      "quote": "**Environment is in Deployed status**.\n    - **Power Platform environment is linked**.\n    - **Database storage capacity is available**.\n    - **You are an administrator of the linked Power Platform environment**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "The documented completion indicator is Migration status showing Migrated.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/migrate-lifecycle-services-environments-power-platform-admin-center",
+      "quote": "Wait until **Migration status** is **Migrated**, and then select **Open in Power Platform Admin Center**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "No new data location is documented for this control-plane migration.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: migrate-lifecycle-services-environments-power-platform-admin-center data region. Read migration page and unified admin overview; the migration page says the database is not moved and infrastructure is not materially changed, with no new data location specified.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-17T03:37:41.692Z",
+    "summary": {
+      "links": 5,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=573244",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/migrate-lifecycle-services-environments-power-platform-admin-center",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/unified-experience/finance-operations-apps-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/finance-operations-storage-capacity",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/power-platform/enable-power-platform-integration",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Starting the migration of a finance and operations environment to Power Platform admin center",
+        "docs": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/migrate-lifecycle-services-environments-power-platform-admin-center",
+        "reachable": true,
+        "segments": [
+          "project",
+          "Environments",
+          "Full details",
+          "Power Platform migration",
+          "Migrate to Power Platform Admin Center"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Finance and operations storage capacity that must be free before migration",
+        "docs": "https://learn.microsoft.com/power-platform/admin/finance-operations-storage-capacity",
+        "reachable": true,
+        "segments": [
+          "Licensing",
+          "Capacity add-ons",
+          "Finance and Operations"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Whether a Power Platform environment is linked to the finance and operations environment (migration prerequisite)",
+        "docs": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/migrate-lifecycle-services-environments-power-platform-admin-center",
+        "reachable": true,
+        "segments": [
+          "project",
+          "Environments",
+          "Full details",
+          "Power Platform migration",
+          "Power Platform environment is linked"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Whether a Power Platform environment is linked to the finance and operations environment (migration prerequisite)",
+        "docs": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/power-platform/enable-power-platform-integration",
+        "reachable": true,
+        "token": "GET [Organization",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

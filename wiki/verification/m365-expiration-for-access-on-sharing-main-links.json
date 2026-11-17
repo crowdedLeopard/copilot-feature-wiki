@@ -1,0 +1,644 @@
+{
+  "slug": "m365-expiration-for-access-on-sharing-main-links",
+  "roadmapId": 571399,
+  "title": "OneDrive and SharePoint: expiration for access on main sharing links",
+  "status": "verified-with-gaps",
+  "date": "2026-11-17",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 50,
+    "confirmed": 49,
+    "unconfirmed": 0,
+    "contradicted": 1,
+    "blocker": 0,
+    "major": 0,
+    "minor": 1
+  },
+  "summary": "The briefing accurately reports the roadmap and the documented general sharing controls, without presenting those controls as confirmed main-link policies. The only correction is minor: the governance checklist refers to sharing controls that have no corresponding table rows.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "summary; What's changing; Scope",
+      "type": "record",
+      "claim": "Microsoft plans expiration dates for Anyone and People in your organization access through main links to files and folders.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "People can set expiration dates for “Anyone” and “People in your organization” access on the main link to files and folders in OneDrive and SharePoint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "Administrator policies will be able to require expiration.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Administrators can set policies to require expiration",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "summary; What's changing; rationale: impact",
+      "type": "record",
+      "claim": "Administrator policies will enforce a maximum access duration.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "enforce a maximum access duration",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing; Scope; Governance guidance; Cost and licensing",
+      "type": "record",
+      "claim": "OneDrive and SharePoint will have separate administrator policy settings.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "with separate settings for OneDrive and SharePoint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The main link remains when access expires.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "When access expires, the main link remains",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "Permissions granted directly to individuals are preserved when access expires.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "permissions granted directly to individuals are preserved.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: targetDate; summary; What's changing; changes",
+      "type": "record",
+      "claim": "The roadmap target is February CY2027, not a committed release date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"February CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap specifies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platforms are Android, Desktop, iOS, Mac, Mobile and Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Mac\", \"Mobile\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: products; Scope",
+      "type": "record",
+      "claim": "The roadmap products are OneDrive, SharePoint and Microsoft 365.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"OneDrive\", \"SharePoint\", \"Microsoft 365\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Microsoft Learn refers to the hero link as the main link.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/shareable-links-anyone-specific-people-organization",
+      "quote": "In SharePoint PowerShell, set the default audience scope for the hero link, referred to as the main link, with DefaultMainLinkScope on a site.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Each OneDrive or SharePoint item has one hero link.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/shareable-links-anyone-specific-people-organization",
+      "quote": "In OneDrive and SharePoint, each item has one hero link.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Users can change a hero link's audience and permissions without creating a new URL.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/shareable-links-anyone-specific-people-organization",
+      "quote": "A hero link allows users to share a single link for an item, then change the audience and permissions for that link without needing to create a new URL.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Anyone links can be forwarded.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/shareable-links-anyone-specific-people-organization",
+      "quote": "Anyone can forward the link",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Anonymous use of Anyone links cannot be audited to a named user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/shareable-links-anyone-specific-people-organization",
+      "quote": "anonymous use can't be audited to a named user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Why it matters; Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "People in your organization links can be forwarded to other directory members.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/shareable-links-anyone-specific-people-organization",
+      "quote": "They can forward it to other members, but it doesn't work for guests or people outside the organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "People in your organization links work for people signing in as Microsoft 365 directory members.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/shareable-links-anyone-specific-people-organization",
+      "quote": "The link works for people who sign in as members of your Microsoft 365 directory.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Effective access reflects the highest permission from any source, so expiring main-link access does not remove independent grants.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/shareable-links-anyone-specific-people-organization",
+      "quote": "A user's effective access is the highest permission granted by any source: direct access, a group, the parent folder or site, the hero link, or another sharing link.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Extra sharing links appear under Other links.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/shareable-links-anyone-specific-people-organization",
+      "quote": "The sharing dialog lists them under Other links, along with links inherited from a parent folder.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[0].ui; What's changing; Governance controls",
+      "type": "admin-path",
+      "claim": "Policies > Sharing in the SharePoint admin center contains the general Anyone-link expiration control, under advanced settings for Anyone links.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/turn-external-sharing-on-or-off",
+      "quote": "In the SharePoint admin center, expand Policies, and then select Sharing. ... Advanced settings for \"Anyone\" links ... Link expiration - You can require all Anyone links to expire, and specify the maximum number of days allowed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[0].api; What's changing",
+      "type": "command",
+      "claim": "Set-SPOTenant in Microsoft.Online.SharePoint.PowerShell accepts CoreAnyoneSharingLinkMaxExpirationInDays and OneDriveAnyoneSharingLinkMaxExpirationInDays to set the respective tenant-wide Anyone-link maximum lifetimes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant",
+      "quote": "[-OneDriveAnyoneSharingLinkMaxExpirationInDays <Int32>] ... [-CoreAnyoneSharingLinkMaxExpirationInDays <Int32>] ... This is a tenant wide setting, and all geos will inherit the policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[1].api; What's changing",
+      "type": "command",
+      "claim": "Set-SPOTenant in Microsoft.Online.SharePoint.PowerShell accepts CoreOrganizationSharingLinkMaxExpirationInDays and OneDriveOrganizationSharingLinkMaxExpirationInDays to set the respective tenant-wide organisation-link maximum lifetimes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant",
+      "quote": "### -CoreOrganizationSharingLinkMaxExpirationInDays ... ### -OneDriveOrganizationSharingLinkMaxExpirationInDays ... This is a tenant wide setting, and all geos will inherit the policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[1].ui; controls[1].note; Governance controls",
+      "type": "absence",
+      "claim": "Microsoft Learn has not documented an admin-centre setting for organisation-link expiry as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint organization sharing links expiration SharePoint admin center CoreOrganizationSharingLinkMaxExpirationInDays main link policies. Opened Manage sharing settings and Set-SPOTenant; no organisation-expiry UI path found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "CoreAnyoneSharingLinkMaxExpirationInDays accepts 1 through 730 days for SharePoint sites excluding OneDrive.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant",
+      "quote": "Specifies the maximum number of days before Anyone (anonymous) sharing links expire for all SharePoint sites (not including OneDrive sites). ... The value can be from 1 to 730 days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "OneDriveAnyoneSharingLinkMaxExpirationInDays accepts 1 through 730 days for OneDrive sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant",
+      "quote": "Specifies the maximum number of days before Anyone (anonymous) sharing links expire for all OneDrive sites. ... The value can be from 1 to 730 days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "CoreOrganizationSharingLinkMaxExpirationInDays accepts 7 through 720 days for SharePoint sites excluding OneDrive.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant",
+      "quote": "Specifies the maximum number of days before organization sharing links expire for all SharePoint sites (not including OneDrive sites). ... The value can be from 7 to 720 days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "OneDriveOrganizationSharingLinkMaxExpirationInDays accepts 7 through 720 days for OneDrive sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant",
+      "quote": "Specifies the maximum number of days before organization sharing links expire for all OneDrive sites. ... The value can be from 7 to 720 days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[0].note; Scope",
+      "type": "role",
+      "claim": "A SharePoint Administrator can change organisation-level sharing settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/turn-external-sharing-on-or-off",
+      "quote": "As a SharePoint Administrator in Microsoft 365, you can change the organization-level sharing settings for SharePoint and OneDrive.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[1].note; Scope; Governance controls",
+      "type": "role",
+      "claim": "Set-SPOTenant requires the SharePoint Online administrator role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant",
+      "quote": "You must be a SharePoint Online administrator to run the cmdlet.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "The Anyone link option requires the external sharing setting to be Anyone.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/turn-external-sharing-on-or-off",
+      "quote": "Anyone with the link ... This option is available only if your external sharing setting is set to Anyone.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Change & support; Open questions",
+      "type": "behaviour",
+      "claim": "For the existing Anyone-link setting, a longer maximum preserves existing expiration times and a shorter maximum updates existing links.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/turn-external-sharing-on-or-off",
+      "quote": "If you change the expiration time, existing links keep their current expiration time if the new setting is longer, or update to the new setting if the new setting is shorter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "front matter: defaultState; Why it matters; Open questions; rationale: risk",
+      "type": "default",
+      "claim": "The default state of the planned main-link expiry control is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint OneDrive main hero link expiration administrator policy default existing links notification renewal roadmap 571399. Read roadmap, sharing settings, shareable-links and Set-SPOTenant; no arrival default stated for this change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "front matter: licensing; Cost and licensing; Open questions; rationale: cost",
+      "type": "licensing",
+      "claim": "Feature-specific licensing, additional plan requirements, prices and meters for main-link expiry have not been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint OneDrive main sharing link expiration licensing prerequisites price meter plan. Read roadmap, sharing settings, and SharePoint and OneDrive service descriptions; no feature-specific licence, price or meter found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What's changing; changes",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet describe the planned main-link expiration feature itself.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint OneDrive main hero link expiration administrator policy default existing links notification renewal roadmap 571399. Opened sharing settings, shareable-links and Set-SPOTenant; found general controls but no feature-specific account.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[0].note; controls[1].note; What's changing; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Learn does not explicitly identify the listed general controls as the new main-link policies described by this roadmap item.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint organization sharing links expiration SharePoint admin center CoreOrganizationSharingLinkMaxExpirationInDays main link policies. Read sharing settings, shareable-links and relevant Set-SPOTenant parameters; no explicit mapping found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Why it matters; rationale: risk",
+      "type": "absence",
+      "claim": "No source examined says that this change alters existing links on arrival.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint OneDrive \"main link\" \"expiration\" default notification renew existing policies. Read roadmap, sharing settings and shareable-links; no statement about automatic changes to existing main links on this rollout found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "Whether the planned main-link expiry policies also cover extra links is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"main link\" expiration \"OneDrive\" prerequisites rollout \"Other links\". Read roadmap, shareable-links, sharing settings and Set-SPOTenant; no statement about the new policies' application to extra links found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Autonomy & actions; Open questions",
+      "type": "absence",
+      "claim": "Owner warnings before main-link expiry are not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint OneDrive \"main link\" \"expiration\" default notification renew existing policies; \"hero link\" expiration policies notification renewal default. Read roadmap and shareable-links; no expiry-warning mechanism found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Autonomy & actions; Open questions",
+      "type": "absence",
+      "claim": "Owner renewal of expiring main-link access is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint OneDrive \"main link\" \"expiration\" default notification renew existing policies; \"hero link\" expiration policies notification renewal default. Read roadmap and shareable-links; no main-link renewal mechanism found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Change & support; Open questions",
+      "type": "absence",
+      "claim": "Whether changing a planned main-link policy shortens existing main-link expiry is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint OneDrive \"main link\" \"expiration\" default notification renew existing policies. Read roadmap, sharing settings and Set-SPOTenant; retroactivity is documented for general Anyone-link settings, not explicitly for this new policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Feature-specific rollout mechanics and prerequisites are not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"main link\" expiration \"OneDrive\" prerequisites rollout \"Other links\". Read roadmap, sharing settings, shareable-links and platform service descriptions; no feature-specific rollout mechanics or prerequisites found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "No new identity or sign-in mechanism is described for this change.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint OneDrive main hero link expiration administrator policy default existing links notification renewal roadmap 571399. Read roadmap and shareable-links; the roadmap describes expiration, not a new identity or authentication mechanism.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap describes no agent or automated action beyond access expiry.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Administrators can set policies to require expiration and enforce a maximum access duration, with separate settings for OneDrive and SharePoint. ... When access expires, the main link remains, and permissions granted directly to individuals are preserved.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "Setting any of the four listed maximum-expiration parameters to zero removes its expiration requirement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant",
+      "quote": "To remove the expiration requirement, set the value to zero (0).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "Set-SPOTenant also documents matching recommended-expiration parameters.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant",
+      "quote": "-CoreAnyoneSharingLinkRecommendedExpirationInDays; -OneDriveAnyoneSharingLinkRecommendedExpirationInDays; -CoreOrganizationSharingLinkRecommendedExpirationInDays; -OneDriveOrganizationSharingLinkRecommendedExpirationInDays",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Extra links have independent settings and changing the hero link does not change or remove them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/shareable-links-anyone-specific-people-organization",
+      "quote": "Each extra link has its own audience and permission settings. ... Changing the hero link doesn't change or remove extra links.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance guidance: Before rollout, first bullet",
+      "type": "consistency",
+      "claim": "The first controls-table row covers the recommended inventory of settings allowing Anyone links and default link types.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Inventory which of your tenant's sharing settings allow Anyone links and what link type your teams use by default ... (first row of the controls table). / Maximum lifetime of Anyone links, for SharePoint sites and OneDrive",
+      "severity": "minor",
+      "fix": "Remove the first Before rollout bullet: its external-sharing and default-link-type controls have no corresponding rows, and the first row covers expiration instead. Do not add control rows as part of this correction."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-17T03:37:43.322Z",
+    "summary": {
+      "links": 4,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/sharepoint/turn-external-sharing-on-or-off",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/shareable-links-anyone-specific-people-organization",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=571399",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Maximum lifetime of Anyone links, for SharePoint sites and OneDrive",
+        "docs": "https://learn.microsoft.com/sharepoint/turn-external-sharing-on-or-off",
+        "reachable": true,
+        "segments": [
+          "Policies",
+          "Sharing"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Maximum lifetime of Anyone links, for SharePoint sites and OneDrive",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant",
+        "reachable": true,
+        "token": "Set-SPOTenant",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Maximum lifetime of organisation sharing links, for SharePoint sites and OneDrive",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant",
+        "reachable": true,
+        "token": "Set-SPOTenant",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

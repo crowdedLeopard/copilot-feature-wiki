@@ -1,0 +1,755 @@
+{
+  "slug": "power-apps-control-information-density-in-model-driven-apps",
+  "roadmapId": 572682,
+  "title": "Power Apps: display density settings for model-driven apps",
+  "status": "held",
+  "date": "2026-11-17",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-17",
+    "reasons": [
+      "3 blocking findings (claims 32, 42, 55)"
+    ]
+  },
+  "counts": {
+    "claims": 57,
+    "confirmed": 53,
+    "unconfirmed": 3,
+    "contradicted": 1,
+    "blocker": 3,
+    "major": 0,
+    "minor": 5
+  },
+  "summary": "Hold: Microsoft does not substantiate the assurances that no new permission is needed or that no budget control applies. The instruction to find the setting's unique name in the Add existing setting definition dialog is also unverified. The roadmap details and the documented density behaviour are supported.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing; Governance guidance",
+      "type": "record",
+      "claim": "The roadmap target is November CY2026, presented as a target rather than a commitment.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"November CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is September CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"September CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC and GCC High.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "Web is the only platform listed in the roadmap record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The release phases listed are General Availability and Preview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "title; front matter: products; Scope",
+      "type": "record",
+      "claim": "This Power Apps change applies to model-driven apps.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Power Apps\"]; Applies to: Model-driven apps",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing; Scope: Rollout",
+      "type": "record",
+      "claim": "The roadmap availability table specifies the Weekly release channel.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Release channel\nWeekly",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Scope: Rollout",
+      "type": "record",
+      "claim": "The roadmap availability table specifies version 2609.1.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Version\n2609.1",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: defaultState; What's changing; Scope",
+      "type": "default",
+      "claim": "Display density is enabled by default for users of apps with the header and navigation refresh enabled.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Display density requires the Header and Navigation Refresh experience to be enabled, and will be enabled by default for apps that have Header and Navigation Refresh enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 2026-10-13T23:01:05.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-13T23:01:05\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "summary; What's changing",
+      "type": "behaviour",
+      "claim": "Display density offers Comfortable, Cozy and Compact levels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/appearance-settings",
+      "quote": "Comfortable | The default spacing that matches the modern, refreshed look.\nCozy | A moderate reduction in vertical and horizontal spacing\nCompact | The tightest spacing",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "Display density adjusts only spacing between elements.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/appearance-settings",
+      "quote": "Density adjusts only the spacing between elements.",
+      "severity": "minor",
+      "fix": "Add: 'The appearance guide describes spacing-only changes; the UserSettings reference instead describes DisplayDensity as affecting spacing, padding and font sizes.' Cite https://learn.microsoft.com/dynamics365/developer/reference/entities/usersettings, whose DisplayDensity description says 'This affects spacing, padding, and font sizes across the application.'"
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Density does not reduce the size of interactive controls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/appearance-settings",
+      "quote": "It doesn't reduce the size of interactive controls",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "All density levels continue to meet accessibility target-size requirements.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/appearance-settings",
+      "quote": "all density levels continue to meet accessibility requirements for target sizes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Why it matters; controls[0].note; Governance guidance",
+      "type": "behaviour",
+      "claim": "An admin can configure an environment density default applying to model-driven apps in that environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/appearance-settings",
+      "quote": "Environment default: An admin sets a default density value that applies to all model-driven apps in the environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Scope: Who configures it; Governance guidance",
+      "type": "behaviour",
+      "claim": "A maker can override the environment default for a specific app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/appearance-settings",
+      "quote": "App default: A maker can override the environment default for a specific app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Why it matters; Risk assessment: Autonomy & actions; Governance controls",
+      "type": "behaviour",
+      "claim": "A user's explicit preference overrides environment and app defaults unless display density is off for the app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/appearance-settings",
+      "quote": "Unless display density is turned off for an app, users can override the default with their personal preference.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Governance guidance: At rollout; Governance controls",
+      "type": "behaviour",
+      "claim": "Selecting Auto uses the app's configured default density.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/appearance-settings",
+      "quote": "If the user selects Auto, the app default is used.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Why it matters; rationale: risk and impact",
+      "type": "default",
+      "claim": "Comfortable is the setting's default value and represents standard spacing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/appearance-settings",
+      "quote": "The default value for the Display density setting is Comfortable.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap says makers can disable display density for their apps.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Makers can disable display density for their apps using the app setting if needed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "summary; What's changing; Scope: Prerequisite; Governance guidance",
+      "type": "applicability",
+      "claim": "Display density requires the header and navigation refresh, also called wave 2, to be enabled on the app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/appearance-settings",
+      "quote": "Appearance settings require the header and navigation refresh (wave 2) to be enabled on the app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Without the refresh, the Appearance tab is hidden and the app renders at its default appearance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/appearance-settings",
+      "quote": "If the header and navigation refresh isn't turned on, the Appearance tab isn't shown and the app renders at the default appearance.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "availability",
+      "claim": "Wave 2 is generally available beginning with build 2609.1.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/modern-fluent-design",
+      "quote": "General availability begins with build 2609.1.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Scope: Prerequisite; Open questions",
+      "type": "default",
+      "claim": "The header and navigation refresh is opt-in for existing apps other than those generated by the Plan designer.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/modern-fluent-design",
+      "quote": "The header and navigation refresh automatically applies to all apps generated by the Plan designer. For other existing apps, opt in by following these steps:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Scope: Prerequisite",
+      "type": "default",
+      "claim": "Apps generated by the Plan designer automatically receive the header and navigation refresh.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/modern-fluent-design",
+      "quote": "The header and navigation refresh automatically applies to all apps generated by the Plan designer.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing; Why it matters; Risk assessment: Change & support; Governance guidance",
+      "type": "applicability",
+      "claim": "Display density applies to controls using Fluent spacing tokens, including custom components adopting those tokens.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/component-framework/fluent-modern-theming",
+      "quote": "In model-driven apps, Power Apps adjusts supported Fluent spacing tokens to reflect the current display density. By consuming these tokens instead of using fixed styling values, components can respond",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; Why it matters; Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "First-party or third-party controls not yet using the tokens retain their current spacing, and this is expected.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/appearance-settings",
+      "quote": "some first-party and third-party controls might not yet use the tokens and will continue to render at their current spacing. This behavior is expected.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "availability",
+      "claim": "The appearance feature is documented as preview and its documentation is subject to change.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/appearance-settings",
+      "quote": "[This article is prerelease documentation and is subject to change.]\nThis feature is in preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Learn recommends denser displays for large-volume workflows such as high-velocity data entry, field service and manufacturing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/appearance-settings",
+      "quote": "If you process large volumes of data, such as in high-velocity data-entry, field service, or manufacturing scenarios, choose a denser display to see more information on screen at once.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "Microsoft's feature documentation describes no new data access, storage or sharing mechanism for display density.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Apps \"display density\" force user preference admin security storage budget cap. Opened appearance-settings, modern-fluent-design and fluent-modern-theming; no new business-data access, storage or sharing mechanism is described.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Security & identity; rationale: risk",
+      "type": "role",
+      "claim": "The setting needs no new permission and touches no permissions.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Display density\" permissions role Power Apps; Power Apps \"display density\" license licensing pricing meter permissions roles. Opened appearance-settings and create-edit-configure-settings; neither states that no new permission is needed.",
+      "severity": "blocker",
+      "fix": "Replace 'No change documented: the setting needs no new permission' with 'The appearance page does not specify the permissions needed to change display density.' Remove 'or permissions' from the risk rationale's 'touches no data or permissions'."
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Security & identity; Open questions",
+      "type": "absence",
+      "claim": "The appearance page does not specify security roles for editing environment or app density values.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Display density\" permissions role Power Apps. Opened appearance-settings and create-edit-configure-settings; appearance-settings names admins and makers but specifies no security role for density.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "The general settings page describes an environment administrator adding an environment value and an application author adding an app value.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/create-edit-configure-settings",
+      "quote": "an environment administrator in a customer's organization can add a setting environment value\nan application author in the same environment above, can add a setting app value",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[1].note; Risk assessment: Autonomy & actions; Governance guidance",
+      "type": "behaviour",
+      "claim": "Makers can suppress density for an app by setting Display density to Off, enum value 0.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/appearance-settings",
+      "quote": "Makers can suppress display density for an app by setting Display density to Off (enum value 0).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Setting display density to Off hides density options from users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/appearance-settings",
+      "quote": "When display density is off:\nThe app uses Comfortable density.\nThe display density options are hidden from users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance: At rollout; Governance controls",
+      "type": "behaviour",
+      "claim": "Stored user density preferences are ignored when display density is Off.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/appearance-settings",
+      "quote": "Any stored display density preference for the user is ignored.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Only spacingVerticalS, spacingVerticalM, spacingVerticalL and spacingHorizontalL currently receive density adjustments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/component-framework/fluent-modern-theming",
+      "quote": "spacingVerticalS\nspacingVerticalM\nspacingVerticalL\nspacingHorizontalL\nOnly these spacing tokens currently receive display-density adjustments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "front matter: licensing.model; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "Licensing specifically for the display-density change has not been published, so its licensing model is unknown.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Apps \"display density\" license licensing pricing meter permissions roles; Power Apps model driven apps licensing requirements Power Apps Premium Dynamics 365. Opened appearance-settings, pricing-billing-skus and powerapps-licensing-faq; no density-specific licence rule.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "The appearance page and roadmap name no density licence or meter; the appearance page's only stated prerequisite is wave 2.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Apps \"display density\" license licensing pricing meter permissions roles. Read the roadmap record and full appearance-settings page: neither names a licence or meter; the appearance note requires the header and navigation refresh (wave 2).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No meter specifically for display density is documented at the time of writing, November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Apps \"display density\" license licensing pricing meter permissions roles. Opened appearance-settings, pricing-billing-skus and powerapps-licensing-faq; read pay-as-you-go-meters search excerpts. No density-specific meter found; general Power Apps meters exist.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "No cap or budget control applies because no density meter is documented.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Power Apps \"display density\" force user preference admin security storage budget cap; Power Apps \"display density\" license licensing pricing meter permissions roles. Opened appearance-settings and pricing-billing-skus; no passage says no cap or budget control applies.",
+      "severity": "blocker",
+      "fix": "Delete ', so no cap or budget control applies'. Keep the narrower sentence: 'No meter is documented for this feature at the time of writing (November 2026).' Undocumented feature-specific billing does not establish that budget controls are inapplicable."
+    },
+    {
+      "n": 43,
+      "where": "Scope: Prerequisite; Governance controls",
+      "type": "admin-path",
+      "claim": "A maker enables the refresh in the app designer through Settings > Features > Header and navigation refresh.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/modern-fluent-design",
+      "quote": "1. In the app designer, select Settings on the command bar.\n2. Select Features, and then enable Header and navigation refresh.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Scope: Who configures it; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "The user setting is under the app-header Settings menu > Personal settings > Appearance > Display density.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/appearance-settings",
+      "quote": "1. In a model-driven app, open the Settings menu on the app header.\n2. Select Personal settings.\n3. Select the Appearance tab.\n4. Under Display density, select one of the following options:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Scope: Who configures it",
+      "type": "behaviour",
+      "claim": "A personal density preference applies across the user's model-driven apps with wave 2 enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/appearance-settings",
+      "quote": "This preference applies to every model-driven app that has the header and navigation refresh (wave 2) enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Scope: Rollout",
+      "type": "availability",
+      "claim": "Wave 2 availability may vary by region as build 2609.1 rolls out.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/modern-fluent-design",
+      "quote": "General availability begins with build 2609.1. Availability might vary by region as the build rolls out.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[0].ui; Governance controls: environment row",
+      "type": "admin-path",
+      "claim": "An existing setting can be added in Power Apps through Solutions > solution > Add existing > More > Setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/create-edit-configure-settings",
+      "quote": "In the navigation pane, select Solutions.\nFrom the list of solutions, open the solution you want to add the setting to.\nIn the command bar, select Add existing > More > Setting.",
+      "severity": "minor",
+      "fix": "Add to the environment row's note: 'The settings guide requires Solution preview on in the Solutions command bar for these steps.' The cited guide explicitly qualifies its solution instructions this way."
+    },
+    {
+      "n": 48,
+      "where": "controls[0].api; Governance controls: environment row",
+      "type": "command",
+      "claim": "SaveSettingValue accepts SettingName and Value and supports an organisation-level override without an AppUniqueName.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/savesettingvalue",
+      "quote": "Creates or updates app/organization level override.\nAppUniqueName | Edm.String | True | False | Model-driven app unique name (Optional).\nSettingName | Edm.String | False | False | Setting definition unique name (Required).\nValue | Edm.String | False | False",
+      "severity": "minor",
+      "fix": "Replace the prose description in api.call with 'POST <organization URI>/api/data/v9.2/SaveSettingValue; JSON body: {\"SettingName\":\"<setting definition unique name>\",\"Value\":\"<value>\"}'. Retain the warning that the density setting's unique name must be established before use. Cite https://learn.microsoft.com/power-apps/developer/data-platform/webapi/use-web-api-actions in sources for POST and the versioned unbound-action request format; the existing reference supplies the action and parameters."
+    },
+    {
+      "n": 49,
+      "where": "controls[1].ui; Governance controls: app row; controls[1].note",
+      "type": "admin-path",
+      "claim": "The app designer's Settings command opens the dialog used to configure the app's Display density setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/app-properties",
+      "quote": "In the app designer select Settings on the command bar.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[1].api; Governance controls: app row",
+      "type": "command",
+      "claim": "SaveSettingValue accepts AppUniqueName, SettingName and Value for an app-level override.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/savesettingvalue",
+      "quote": "Creates or updates app/organization level override.\nAppUniqueName | Edm.String | True | False | Model-driven app unique name (Optional).\nSettingName | Edm.String | False | False | Setting definition unique name (Required).\nValue | Edm.String | False | False",
+      "severity": "minor",
+      "fix": "Replace api.call with 'POST <organization URI>/api/data/v9.2/SaveSettingValue; JSON body: {\"AppUniqueName\":\"<app unique name>\",\"SettingName\":\"<setting definition unique name>\",\"Value\":\"<value>\"}'. Cite https://learn.microsoft.com/power-apps/developer/data-platform/webapi/use-web-api-actions in sources for the POST request format. The existing action reference confirms the parameters; this makes the currently descriptive text a versioned REST call."
+    },
+    {
+      "n": 51,
+      "where": "controls[1].note; Governance controls: app row",
+      "type": "behaviour",
+      "claim": "App-setting changes must be saved and published to take effect.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/app-properties",
+      "quote": "You must select Publish to activate an app settings change.\nSave and Publish the app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The general settings mechanism uses a definition default, an optional environment value and an optional app value, in increasing precedence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/create-edit-configure-settings",
+      "quote": "A setting environment value can be used to override the default value, as specified in the setting definition.\nA setting app value can be used to override the default value, as specified in the setting definition, and the setting environment value (if one exists).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Governance controls; controls[0].note",
+      "type": "absence",
+      "claim": "The appearance page names no density-specific API, and the generic SaveSettingValue reference does not name this setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Apps \"display density\" \"SaveSettingValue\" SettingName enforce permissions; \"SaveSettingValue\" \"POST\". Opened appearance-settings, savesettingvalue and get-update-setting-value-using-code. The feature page names no API; the generic reference names no density setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance controls; Open questions",
+      "type": "absence",
+      "claim": "The cited documentation does not supply the unique name of the Display density setting definition.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Display density\" \"unique name\" Power Apps; Power Apps \"display density\" \"SaveSettingValue\" SettingName enforce permissions. Opened appearance-settings, create-edit-configure-settings, app-properties and savesettingvalue; no density setting-definition unique name supplied.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance controls",
+      "type": "admin-path",
+      "claim": "The Add existing setting definition dialog lets the reader confirm the setting's unique name before scripting.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Display density\" \"unique name\" Power Apps. Opened create-edit-configure-settings and appearance-settings. The former documents selecting settings in Add existing setting definition, but does not state that this dialog exposes their unique names.",
+      "severity": "blocker",
+      "fix": "Remove ', so confirm it in the Add existing setting definition dialog before scripting'. End the sentence at 'the setting's unique name is not given on the pages read'. This retains the verified prerequisite without inventing where its value can be obtained."
+    },
+    {
+      "n": 56,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "Learn does not document forcing a specific density over an explicit personal selection, apart from disabling density.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Apps \"display density\" force user preference admin security storage budget cap. Opened appearance-settings and create-edit-configure-settings: personal choices override defaults; Off suppresses density. No other density enforcement found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Governance guidance: Before rollout; Governance controls",
+      "type": "consistency",
+      "claim": "Every control the governance checklist asks readers to take stock of appears in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: 'Ask makers which model-driven apps already have the header and navigation refresh enabled'. The table contains only environment display-density defaults and app display-density defaults/Off.",
+      "severity": "minor",
+      "fix": "The first Before rollout checklist step takes stock of the header and navigation refresh, which has no controls-table row. Remove that checklist bullet; retain the verified prerequisite and its app-designer path under Scope. Do not add a control row."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-17T03:37:44.743Z",
+    "summary": {
+      "links": 7,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=572682",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/user/appearance-settings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/user/modern-fluent-design",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/maker/data-platform/create-edit-configure-settings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/app-properties",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/savesettingvalue",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/developer/component-framework/fluent-modern-theming",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Environment default display density for all model-driven apps",
+        "docs": "https://learn.microsoft.com/power-apps/maker/data-platform/create-edit-configure-settings",
+        "reachable": true,
+        "segments": [
+          "Solutions",
+          "solution",
+          "Add existing",
+          "More"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Environment default display density for all model-driven apps",
+        "docs": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/savesettingvalue",
+        "reachable": true,
+        "token": "SaveSettingValue action",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "App default display density, and whether display density is off for an app",
+        "docs": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/app-properties",
+        "reachable": true,
+        "segments": [
+          "Settings"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "App default display density, and whether display density is off for an app",
+        "docs": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/savesettingvalue",
+        "reachable": true,
+        "token": "SaveSettingValue action",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

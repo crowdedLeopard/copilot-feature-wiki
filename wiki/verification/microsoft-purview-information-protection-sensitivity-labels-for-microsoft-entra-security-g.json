@@ -1,0 +1,919 @@
+{
+  "slug": "microsoft-purview-information-protection-sensitivity-labels-for-microsoft-entra-security-g",
+  "roadmapId": 568217,
+  "title": "Microsoft Entra: sensitivity labels for cloud security groups",
+  "status": "held",
+  "date": "2026-11-17",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-17",
+    "reasons": [
+      "1 blocking finding (claim 68)"
+    ]
+  },
+  "counts": {
+    "claims": 70,
+    "confirmed": 67,
+    "unconfirmed": 0,
+    "contradicted": 3,
+    "blocker": 1,
+    "major": 0,
+    "minor": 2
+  },
+  "summary": "The briefing incorrectly says tenant enablement is documented only through PowerShell: Microsoft also documents a Microsoft Graph beta REST operation for it. The rollout, licence prerequisite, assignment paths and preview limitations otherwise match the sources checked.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "Microsoft plans sensitivity labels for Microsoft Entra cloud security groups.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Apply sensitivity labels to Microsoft Entra cloud security groups to extend the classification and governance you already use for Microsoft 365 groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The same published groups-and-sites labels apply without separate label configuration.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The same labels you publish in the Microsoft Purview portal and configure for groups and sites apply automatically to cloud security groups, with no separate label configuration required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Label-based protection already exists for Microsoft 365 groups and SharePoint sites.",
+      "status": "supported",
+      "source": "Message Center post MC1508238",
+      "quote": "This capability extends label-based protection currently available for Microsoft 365 groups and SharePoint sites to cloud security groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "Labels enforce membership and guest access policies when groups are created or labelled.",
+      "status": "supported",
+      "source": "Message Center post MC1508238",
+      "quote": "organizations can apply published Microsoft Purview sensitivity labels directly to security groups and automatically enforce membership and guest access policies when groups are created or labeled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Labels can be assigned through the Microsoft Entra admin center, Azure portal, PowerShell or Microsoft Graph.",
+      "status": "supported",
+      "source": "Message Center post MC1508238",
+      "quote": "Labels can be assigned through the Microsoft Entra admin center, Azure portal, PowerShell, or Microsoft Graph.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Assignment is possible during group creation or afterwards.",
+      "status": "supported",
+      "source": "Message Center post MC1508238",
+      "quote": "Administrators will be able to apply published Microsoft Purview sensitivity labels to cloud security groups during group creation or after a group has been created.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Microsoft says no action is required to receive the change.",
+      "status": "supported",
+      "source": "Message Center post MC1508238",
+      "quote": "No action is required to receive this change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "record",
+      "claim": "Cloud security groups require tenant enablement independent of Microsoft 365 group label enablement.",
+      "status": "supported",
+      "source": "Message Center post MC1508238",
+      "quote": "If sensitivity labels are already enabled for Microsoft 365 groups, note that cloud security groups require a separate configuration setting and must be enabled independently.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Open questions",
+      "type": "behaviour",
+      "claim": "Learn marks the feature as preview and warns label mutability and high-privilege enforcement might change before GA.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/groups-sensitivity-labels",
+      "quote": "This feature is in preview. Certain behaviors, including the ability to change labels once they're set and enforcement for high-privilege roles, might change before general availability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "summary; What's changing; Why it matters; Risk assessment; controls[1].note; rationale: risk",
+      "type": "behaviour",
+      "claim": "During preview, a label cannot be changed or removed once assigned to a cloud security group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/groups-sensitivity-labels",
+      "quote": "During preview, you can't change sensitivity labels on cloud security groups. After you apply a label, you can't modify or remove it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "Microsoft promises support for changing assigned labels in a future update without giving a date.",
+      "status": "supported",
+      "source": "Message Center post MC1508238",
+      "quote": "Support for changing assigned labels will be introduced in a future update.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: targetDate; What's changing; Scope: Rollout",
+      "type": "record",
+      "claim": "The roadmap target is January CY2027.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"January CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: releasePhase; What's changing; Scope: Rollout",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: clouds; What's changing; Scope: Clouds and platforms",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: platforms; What's changing; Scope: Clouds and platforms",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "Scope: Clouds and platforms",
+      "type": "record",
+      "claim": "The roadmap record does not list US Government clouds.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview target date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The supplied Message Center post metadata gives 14 November 2026 as its last update.",
+      "status": "supported",
+      "source": "Message Center post MC1508238",
+      "quote": "Published 2026-10-14; last updated 2026-11-14; Microsoft's end date 2027-02-26",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Scope: Rollout; front matter: changes",
+      "type": "record",
+      "claim": "The notice schedules rollout to begin in mid-January 2027.",
+      "status": "supported",
+      "source": "Message Center post MC1508238",
+      "quote": "General Availability (Worldwide): Beginning in mid-January 2027 (previously mid-November 2026)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Scope: Rollout",
+      "type": "record",
+      "claim": "The notice expects rollout completion in mid-January 2027.",
+      "status": "supported",
+      "source": "Message Center post MC1508238",
+      "quote": "expected to complete in mid-January 2027 (previously late November 2026)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The previous rollout start was mid-November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1508238",
+      "quote": "Beginning in mid-January 2027 (previously mid-November 2026)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The previous rollout completion was late November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1508238",
+      "quote": "expected to complete in mid-January 2027 (previously late November 2026)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The supplied notice sets no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1508238",
+      "quote": "Act by: none",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "The feature requires admin opt-in and does not apply labels to security groups before tenant enablement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/groups-sensitivity-labels",
+      "quote": "To apply sensitivity labels to cloud security groups, you must enable the feature by creating or updating tenant-level directory settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Cloud security groups use Group.Security directory settings rather than the Group.Unified template used by Microsoft 365 groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/groups-sensitivity-labels",
+      "quote": "Cloud security groups use the Group.Security settings template, which is separate from the Group.Unified template used for Microsoft 365 groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "New-MgBetaDirectorySetting -BodyParameter $params creates the tenant setting using template d209f6fa-3839-4d70-b83f-60b1c64d0e8f with EnableMIPLabels=True.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/groups-sensitivity-labels",
+      "quote": "templateId = \"d209f6fa-3839-4d70-b83f-60b1c64d0e8f\"\n...\nname = \"EnableMIPLabels\"\nvalue = \"True\"\n...\nNew-MgBetaDirectorySetting -BodyParameter $params",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[0].note",
+      "type": "command",
+      "claim": "Existing Group.Security settings are updated using Update-MgBetaDirectorySetting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/groups-sensitivity-labels",
+      "quote": "Update-MgBetaDirectorySetting -DirectorySettingId $Setting.Id `\n    -BodyParameter $params",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[0].ui; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No admin-centre tenant-enable toggle is documented for cloud security group sensitivity labels.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"EnableMIPLabels\" \"Group.Security\" \"portal\"; Entra cloud security groups sensitivity labels EnableMIPLabels admin center enable toggle synchronize labels portal. Read groups-sensitivity-labels, Graph group-directory-settings excerpts and directorysetting-update; no UI toggle.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Existing groups are labelled in Microsoft Entra admin center at Microsoft Entra ID > Groups > All groups > group > Properties > Sensitivity label.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/groups-sensitivity-labels",
+      "quote": "Select Microsoft Entra ID.\nSelect Groups > All groups, and then select the group you want to label.\nOn the group's page, select Properties.\nSelect a sensitivity label from the Sensitivity label dropdown.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[1].note",
+      "type": "admin-path",
+      "claim": "The new-group route is Groups > All groups > New group in the Microsoft Entra admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/groups-sensitivity-labels",
+      "quote": "Select Microsoft Entra ID.\nSelect Groups > All groups > New group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "PATCH /v1.0/groups/{id} can first assign a sensitivity label through assignedLabels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/group-update",
+      "quote": "PATCH https://graph.microsoft.com/v1.0/groups/0d09007d-45b2-458c-b180-880dde3a302e\nassignedLabels: The list of sensitivity label pairs (label ID, label name) associated with a Microsoft 365 group or a cloud security group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[1].note",
+      "type": "role",
+      "claim": "Group.ManageProtection.All delegated permission is the least-privileged Graph permission for assigning labels to cloud security groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/group-update",
+      "quote": "Group.ManageProtection.All delegated permission is the least privileged permission to update the assignedLabels property for cloud security groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[1].note",
+      "type": "applicability",
+      "claim": "App-only Graph label assignment is not supported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/group-update",
+      "quote": "Application permissions are not supported when updating assignedLabels.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Scope: Roles; controls[1].note; Governance controls",
+      "type": "role",
+      "claim": "A group owner or at least a Groups Administrator can assign labels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/groups-sensitivity-labels",
+      "quote": "The current signed-in user has sufficient privileges to assign sensitivity labels (group owner or at least a Groups Administrator)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Scope: Roles; Governance controls",
+      "type": "applicability",
+      "claim": "The assigning user must be within the label publishing policy's scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/groups-sensitivity-labels",
+      "quote": "and is within the scope of the sensitivity label publishing policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[2].api; Scope: Prerequisites; Governance guidance: At rollout",
+      "type": "command",
+      "claim": "Execute-AzureADLabelSync synchronises sensitivity labels into Microsoft Entra ID.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/execute-azureadlabelsync",
+      "quote": "Use the Execute-AzureADLabelSync cmdlet to start the synchronization of sensitivity labels into Microsoft Entra ID.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[2].note; Scope: Prerequisites; Governance guidance: At rollout",
+      "type": "command",
+      "claim": "Execute-AzureADLabelSync runs only in Security & Compliance PowerShell, not the Microsoft Graph PowerShell SDK.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/groups-sensitivity-labels",
+      "quote": "The Execute-AzureADLabelSync cmdlet is available only in Security & Compliance PowerShell, not in the Microsoft Graph PowerShell SDK.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[2].note; Scope: Prerequisites; Governance guidance: At rollout",
+      "type": "date",
+      "claim": "Labels may take up to 24 hours after synchronisation to become available.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/groups-sensitivity-labels",
+      "quote": "Labels can take up to 24 hours after synchronization to become available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[2].ui",
+      "type": "absence",
+      "claim": "No admin UI operation to initiate label synchronisation to Entra is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"synchronize labels\" \"admin center\" \"security groups\". Read groups-sensitivity-labels, Execute-AzureADLabelSync and sensitivity-labels-teams-groups-sites synchronisation excerpt; all give the PowerShell operation, not a UI equivalent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[3].ui",
+      "type": "admin-path",
+      "claim": "Sensitivity label configuration is under Microsoft Purview portal > Solutions > Information Protection > Sensitivity labels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+      "quote": "Sign in to the Microsoft Purview portal > Solutions > Information Protection > Sensitivity labels",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[3].api; Governance controls",
+      "type": "command",
+      "claim": "Set-Label -Identity <label> -SiteAndGroupProtectionEnabled <$true|$false> is a general Purview operation enabling or disabling the label's Site and Group Protection action.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-label",
+      "quote": "[-Identity] <ComplianceRuleIdParameter>\n[-SiteAndGroupProtectionEnabled <System.Boolean>]\nThe SiteAndGroupProtectionEnabled parameter enables or disables the Site and Group Protection action for the label.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[3].note; What's changing; Scope: Prerequisites; Governance guidance",
+      "type": "applicability",
+      "claim": "Labels for cloud security groups must be published with the Groups & Sites scope enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/groups-sensitivity-labels",
+      "quote": "Sensitivity labels are published in the Microsoft Purview portal with the Groups & Sites scope enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[3].note; Governance controls",
+      "type": "absence",
+      "claim": "The feature documentation does not enumerate which individual Set-Label parameters apply specifically to cloud security groups.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"cloud security groups\" \"Set-Label\" \"SiteAndGroupProtectionEnabled\". Read groups-sensitivity-labels; searched Set-Label reference for security groups and SiteAndGroupProtectionEnabled. Same-label reuse is documented, but no feature-specific parameter mapping.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[4].ui; controls[4].api; Governance controls",
+      "type": "absence",
+      "claim": "No UI or API operation for changing or removing an assigned cloud security group label is documented during preview.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"cloud security groups\" \"sensitivity\" \"change or remove\"; Microsoft Entra security groups sensitivity labels pricing licensing meter audit change remove label Set-Label. Read groups-sensitivity-labels and Graph group-update: both explicitly say labels are immutable.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Change & support; controls[4].note",
+      "type": "behaviour",
+      "claim": "The documented workaround for a wrong label is a new security group with the correct label and re-added members.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/groups-sensitivity-labels",
+      "quote": "To change a label, create a new security group with the correct label, and then re-add the members to the new group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Security & identity; Governance controls; rationale: risk",
+      "type": "role",
+      "claim": "During preview, listed roles including Global Administrator, User Administrator and Groups Administrator can bypass label enforcement when adding members.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/groups-sensitivity-labels",
+      "quote": "The following admin roles and application permissions can bypass label policy enforcement when adding members. This behavior might change before general availability.\nAdmin roles: Global Administrator, User Administrator, Groups Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Security & identity; Governance controls; Governance guidance",
+      "type": "applicability",
+      "claim": "Apps with Group.ReadWrite.All, Directory.ReadWrite.All, Directory.ReadWriteAdvanced.All or GroupMember.ReadWrite.All can bypass label enforcement when adding members during preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/groups-sensitivity-labels",
+      "quote": "High-privilege bypass: The following admin roles and application permissions can bypass label policy enforcement when adding members.\nApplication permissions: Group.ReadWrite.All, Directory.ReadWrite.All, Directory.ReadWriteAdvanced.All, GroupMember.ReadWrite.All",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Security & identity; Scope: Who and what is covered",
+      "type": "availability",
+      "claim": "Supported cloud security groups have assigned rather than dynamic membership.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/groups-sensitivity-labels",
+      "quote": "The group is a Cloud Security group with assigned membership type (not dynamic).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Some edge cases allow labelling a dynamic group, but the associated policy is not enforced.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/groups-sensitivity-labels",
+      "quote": "While there are certain edge cases where you can apply a label to a dynamic group, the associated label policy isn't enforced.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risk assessment: Security & identity; Scope: Who and what is covered",
+      "type": "availability",
+      "claim": "Security groups synced from on-premises Active Directory are unsupported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/groups-sensitivity-labels",
+      "quote": "Security groups synced from on-premises Active Directory and Exchange-managed security groups aren't supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risk assessment: Security & identity; Scope: Who and what is covered",
+      "type": "availability",
+      "claim": "Exchange-managed security groups are unsupported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/groups-sensitivity-labels",
+      "quote": "Security groups synced from on-premises Active Directory and Exchange-managed security groups aren't supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Risk assessment: Security & identity; Scope: Who and what is covered",
+      "type": "availability",
+      "claim": "Mail-enabled security groups are unsupported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/groups-sensitivity-labels",
+      "quote": "Sensitivity labels for mail-enabled security groups and distribution lists aren't supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Scope: Who and what is covered",
+      "type": "availability",
+      "claim": "Distribution lists are unsupported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/groups-sensitivity-labels",
+      "quote": "Sensitivity labels for mail-enabled security groups and distribution lists aren't supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "Nested groups must be removed before labelling their parent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/groups-sensitivity-labels",
+      "quote": "You can't label a group that currently contains nested groups. To label a parent group, remove all nested (child) groups first, apply the label to the parent, and then add the child groups back.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "A child group added to a labelled parent must carry an equally or more restrictive label.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/groups-sensitivity-labels",
+      "quote": "When you add a child group back to a labeled parent, the child group's label must be at least as restrictive as the parent's label.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Risk assessment: Change & support",
+      "type": "availability",
+      "claim": "The Microsoft 365 admin center and My Groups portal do not support assigning sensitivity labels to security groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/groups-sensitivity-labels",
+      "quote": "Assigning sensitivity labels to security groups isn't supported in the Microsoft 365 admin center or in the My Groups portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Risk assessment: Data exposure; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Tightening a label's guest policy does not remove existing guests, who remain until an owner or administrator removes them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/groups-sensitivity-labels",
+      "quote": "Sensitivity label policy changes in Microsoft Purview apply immediately to new policy checks, but they don't alter existing group membership.\nguests already in those groups remain until an owner or admin removes them.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Risk assessment: Data exposure; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Microsoft advises against changing or deleting a label's policy once used on security groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/groups-sensitivity-labels",
+      "quote": "Avoid changing or deleting a label's policy after the label is in use on security groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Why it matters; Risk assessment: Data exposure; Open questions",
+      "type": "behaviour",
+      "claim": "Learn says current validation processes apply only at group creation or first label assignment and expansion is in progress.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/groups-sensitivity-labels",
+      "quote": "Current validation processes apply only on group creation or when a label is first assigned. Extending these validation processes for other scenarios is in progress.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Security groups are authorisation primitives used in Conditional Access scoping, application access and resource permissions, with enforcement dependent on Entra membership logic.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/groups-sensitivity-labels",
+      "quote": "Security groups are used directly in authorization decisions such as Conditional Access scoping, application access, and resource permissions.\nEnforcement depends on Microsoft Entra ID's membership resolution and validation logic, not on administrative governance practices alone.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "licensing.notes; Cost and licensing; Scope: Prerequisites; Governance guidance; rationale: cost",
+      "type": "licensing",
+      "claim": "Learn requires at least one active Entra ID P1 or P2 licence, or Microsoft 365 E3/E5, in the organisation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/groups-sensitivity-labels",
+      "quote": "Your organization has at least one active Microsoft Entra ID P1 or P2 license (or Microsoft 365 E3/E5).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The documented entitlement is part of the named Entra ID P1/P2 or Microsoft 365 E3/E5 licence rather than a separately named feature add-on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/groups-sensitivity-labels",
+      "quote": "To configure this feature, there must be at least one active Microsoft Entra ID P1 license in your Microsoft Entra organization.\nYour organization has at least one active Microsoft Entra ID P1 or P2 license (or Microsoft 365 E3/E5).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No separate feature meter or feature price is documented at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"cloud security groups\" \"sensitivity\" \"pricing\"; Microsoft Purview service description sensitivity labels groups sites licensing Entra security groups. Read feature prerequisites and searched Purview service description for groups, labels and meters; no feature-specific charge.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Cost and licensing",
+      "type": "record",
+      "claim": "The notice names Microsoft 365 E3/E5 as eligible licensing that includes Entra ID P1.",
+      "status": "supported",
+      "source": "Message Center post MC1508238",
+      "quote": "Confirm that your organization has eligible licensing, such as Microsoft 365 E3 or Microsoft 365 E5, which includes Microsoft Entra ID P1.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Applying a guest-blocking label to a group containing guests fails until the membership conflict is resolved.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/groups-sensitivity-labels",
+      "quote": "Applying a label that blocks guest access to a group that contains guest members. Resolution: Remove the guest members, then apply the label.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Open questions: audit events",
+      "type": "absence",
+      "claim": "A feature-specific audit event for assigning labels to cloud security groups is not documented in the checked guidance.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"cloud security groups\" \"sensitivity\" \"audit\". Read groups-sensitivity-labels; searched audit-log-activities for security groups, assignedLabels and sensitivity labels. Its specific group-label auditing guidance names Microsoft 365 groups, not cloud security groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Governance controls: first paragraph",
+      "type": "absence",
+      "claim": "Microsoft Learn documents the tenant setting only as PowerShell.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/graph/api/directorysetting-update?view=graph-rest-beta",
+      "quote": "Example 2: Enable sensitivity labels for all cloud security groups in the tenant\nPATCH https://graph.microsoft.com/beta/settings/{directorySettingId}\n\"name\": \"EnableMIPLabels\",\n\"value\": \"true\"",
+      "severity": "blocker",
+      "fix": "Replace the first sentence under the table with: 'The cited feature page documents the tenant setting using Microsoft Graph PowerShell directory settings; no admin centre toggle is documented at the time of writing (November 2026).' This removes the incorrect claim that Learn documents no other automation surface without adding another control."
+    },
+    {
+      "n": 69,
+      "where": "front matter: risk; rationale: risk",
+      "type": "consistency",
+      "claim": "Medium risk is justified by what could happen after an administrator enables this optional new control.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "risk: \"medium\"\nNothing changes until an administrator enables it, but once on, a label cannot be changed or removed from a group and certain admin roles can bypass label enforcement during preview.",
+      "severity": "minor",
+      "fix": "Set risk to 'low' and replace the risk rationale with: 'Low. This optional control changes nothing until an administrator enables it; leaving it unconfigured preserves existing security-group behaviour.' The scale rates a new control's default exposure, not its post-enablement configuration risk."
+    },
+    {
+      "n": 70,
+      "where": "Governance guidance: Before rollout; Governance controls",
+      "type": "consistency",
+      "claim": "Every control the checklist tells administrators to review is represented in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Review holders of the roles and application permissions that Learn lists as able to bypass label enforcement during preview.",
+      "severity": "minor",
+      "fix": "The Before rollout step about reviewing holders of bypass roles and application permissions has no corresponding control row. Remove that checklist bullet; retain the documented bypass warning in Risk assessment and Governance controls. Do not add a control row as part of this correction."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-17T03:37:48.960Z",
+    "summary": {
+      "links": 7,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 4,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=568217",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/users/groups-sensitivity-labels",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/group-update",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/execute-azureadlabelsync",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-label",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1508238",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether sensitivity labels can be used on cloud security groups in the tenant",
+        "docs": "https://learn.microsoft.com/entra/identity/users/groups-sensitivity-labels",
+        "reachable": true,
+        "token": "New-MgBetaDirectorySetting",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which sensitivity label a cloud security group carries",
+        "docs": "https://learn.microsoft.com/entra/identity/users/groups-sensitivity-labels",
+        "reachable": true,
+        "segments": [
+          "Microsoft Entra ID",
+          "Groups",
+          "All groups",
+          "Properties",
+          "Sensitivity label"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Which sensitivity label a cloud security group carries",
+        "docs": "https://learn.microsoft.com/graph/api/group-update",
+        "reachable": true,
+        "token": "/v1.0/groups",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Synchronising published labels to Microsoft Entra ID",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/execute-azureadlabelsync",
+        "reachable": true,
+        "token": "Execute-AzureADLabelSync",
+        "found": true
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Which labels are available to groups and the guest and membership policy they carry",
+        "docs": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+        "reachable": true,
+        "segments": [
+          "Solutions",
+          "Information Protection",
+          "Sensitivity labels"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Which labels are available to groups and the guest and membership policy they carry",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-label",
+        "reachable": true,
+        "token": "Set-Label",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

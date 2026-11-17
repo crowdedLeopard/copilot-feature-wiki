@@ -1,0 +1,803 @@
+{
+  "slug": "planner-planner-agent-chat-in-basic-plans",
+  "roadmapId": 567671,
+  "title": "Planner: Planner Agent chat in basic plans",
+  "status": "verified-with-gaps",
+  "date": "2026-11-17",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 62,
+    "confirmed": 61,
+    "unconfirmed": 0,
+    "contradicted": 1,
+    "blocker": 0,
+    "major": 0,
+    "minor": 2
+  },
+  "summary": "The briefing matches the roadmap and Microsoft's tenant notice, and the documented commands and blocking path are accurate. It appropriately qualifies the uncertain reach of the controls for basic-plan chat; minor corrections concern the licence-checking checklist's citation and table coverage.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The general agent-blocking path is Microsoft 365 admin center > Agents > All agents > agent > Block > Block agent > Save.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "Select Agents > All agents. ... select an agent from the list of agents. ... select Block or Unblock. ... select either Block agent or Unblock agent, and then select Save.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "The general Copilot-package blocking operation is POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block, with Planner applicability expressly unconfirmed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Block a Copilot package to prevent its usage. ... POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "controls[1].api; Governance controls table and prose",
+      "type": "command",
+      "claim": "Set-PlannerConfiguration -AllowPlannerCopilot $false disables Planner Agent and its chat for all users within the documented scope, with basic-plan chat applicability explicitly unconfirmed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/turn-off-planner-agent",
+      "quote": "To turn off Planner Agent and Planner Agent chat for all users: ... Set-PlannerConfiguration -AllowPlannerCopilot $false",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "controls[2].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-PlannerConfiguration -AllowPlannerCopilot $true -PlannerCopilotAllowedGroupId <security group id> restricts documented access to a security group, with basic-plan chat applicability explicitly unconfirmed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/turn-off-planner-agent",
+      "quote": "To turn on Planner Agent and Planner Agent chat for a specific security group: ... Set-PlannerConfiguration -AllowPlannerCopilot $true -PlannerCopilotAllowedGroupId <security group id>",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "absence",
+      "claim": "A Planner-specific admin UI equivalent of the AllowPlannerCopilot tenant setting is not documented at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Planner Agent\" \"AllowPlannerCopilot\" \"admin center\". Opened turn-off-planner-agent, manage-copilot-agents-integrated-apps and agent-actions; they document Planner PowerShell and general agent blocking, not a UI for this Planner setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "absence",
+      "claim": "A Planner-specific admin UI equivalent of PlannerCopilotAllowedGroupId is not documented at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Planner Agent\" \"security group\" \"admin center\" chat. Read turn-off-planner-agent and agent-management results; no UI for PlannerCopilotAllowedGroupId was documented. General agent audience settings and the Cowork plugin concern different controls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: defaultState; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "The feature reaches eligible licensed users without an administrator taking additional rollout action, supporting defaultState on.",
+      "status": "supported",
+      "source": "Message Center post MC1443514",
+      "quote": "Eligible users will be able to access Planner Agent chat directly within Planner while working in basic plans. ... No additional action is required before rollout.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is per-user.",
+      "status": "supported",
+      "source": "Message Center post MC1443514",
+      "quote": "Users with an active Microsoft 365 Copilot license",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: licensing.notes; Cost and licensing; Risk assessment",
+      "type": "licensing",
+      "claim": "The Planner Learn page requires a Microsoft Copilot licence for users accessing Planner Agent in Planner.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/turn-off-planner-agent",
+      "quote": "Users must have the following license to access Planner Agent in Planner: ... A Microsoft Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The pages read publish no separate price, credit rate or meter specifically for Planner Agent chat in basic plans.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Planner Agent chat\" \"pricing\" \"credits\"; Planner Agent chat basic plans price meter credits licensing. Read Planner licensing, agent-billing results and Copilot pay-as-you-go meters; none states a separate basic-plan-chat rate or price.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target date is September CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"September CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap release phases are General Availability and Targeted Release.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists only Worldwide (Standard Multi-Tenant), without establishing exclusion from other clouds.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platforms are Desktop and Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: products, roadmapId and roadmapModified",
+      "type": "record",
+      "claim": "Roadmap item 567671 concerns Planner and Microsoft Copilot (Microsoft 365), with modification timestamp 2026-11-06T23:04:41.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"id\": 567671, ... \"modified\": \"2026-11-06T23:04:41\", \"products\": [\"Planner\", \"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "title; summary; What's changing; Scope; rationale: impact",
+      "type": "record",
+      "claim": "Planner Agent chat is built into Planner basic plans.",
+      "status": "supported",
+      "source": "Message Center post MC1443514",
+      "quote": "Planner Agent chat is coming to Microsoft Planner basic plans. This feature brings Planner Agent directly into the Planner experience",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Users can ask natural-language questions about plan status, priorities and upcoming work.",
+      "status": "supported",
+      "source": "Message Center post MC1443514",
+      "quote": "Ask questions about plan status, priorities, and upcoming work. ... Use natural language prompts such as: \"Show me my recent high-priority tasks and what is due this week.\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap describes smart task discovery.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Introducing built-in Planner Agent chat with natural language Q&A, smart task discovery, and in-plan task management.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "Users can manage tasks without leaving the plan.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Introducing built-in Planner Agent chat with natural language Q&A, smart task discovery, and in-plan task management.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice says users can apply AI-generated filters.",
+      "status": "supported",
+      "source": "Message Center post MC1443514",
+      "quote": "Apply AI-generated filters to identify important work more quickly.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "Interactive task cards let users draft updates.",
+      "status": "supported",
+      "source": "Message Center post MC1443514",
+      "quote": "Use interactive task cards to draft updates, review tasks, and track progress.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "Interactive task cards let users review tasks.",
+      "status": "supported",
+      "source": "Message Center post MC1443514",
+      "quote": "Use interactive task cards to draft updates, review tasks, and track progress.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "Interactive task cards let users track progress.",
+      "status": "supported",
+      "source": "Message Center post MC1443514",
+      "quote": "Use interactive task cards to draft updates, review tasks, and track progress.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The chat gives insights on high-priority, upcoming and at-risk work.",
+      "status": "supported",
+      "source": "Message Center post MC1443514",
+      "quote": "Receive insights about high-priority work, upcoming deadlines, and at-risk tasks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Users can create plans organised by goals and buckets.",
+      "status": "supported",
+      "source": "Message Center post MC1443514",
+      "quote": "Create new Planner plans organized by goals and buckets.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
+      "type": "record",
+      "claim": "The chat can use Microsoft 365 emails, meetings and files as well as Planner data.",
+      "status": "supported",
+      "source": "Message Center post MC1443514",
+      "quote": "This feature introduces Planner Agent chat, an AI-powered experience that interacts with Planner data and can use existing Microsoft 365 resources, including emails, meetings, and files",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Data exposure and Security & identity",
+      "type": "record",
+      "claim": "The content the chat can access is content the user already has permission to access.",
+      "status": "supported",
+      "source": "Message Center post MC1443514",
+      "quote": "Planner Agent chat can access and process existing Planner data and Microsoft 365 content that users already have permission to access in order to generate responses, recommendations, and insights.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "summary; Why it matters; Cost and licensing; Scope; rationale: impact",
+      "type": "record",
+      "claim": "The notice identifies users with an active Microsoft 365 Copilot licence as the eligible audience.",
+      "status": "supported",
+      "source": "Message Center post MC1443514",
+      "quote": "Who is affected ... Users with an active Microsoft 365 Copilot license",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Why it matters; Scope",
+      "type": "record",
+      "claim": "Eligible organisations must allow access to Planner Agent.",
+      "status": "supported",
+      "source": "Message Center post MC1443514",
+      "quote": "Who is affected ... Organizations that allow access to Planner Agent",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The notice lists Web as its platform, separately from the roadmap's Desktop and Web list.",
+      "status": "supported",
+      "source": "Message Center post MC1443514",
+      "quote": "Platforms and services ... Microsoft Planner ... Microsoft 365 Copilot ... Web",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The supplied notice was last updated on 15 October 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1443514",
+      "quote": "last updated 2026-10-15 ... Updated October 15, 2026: We have updated the timeline.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice supplies no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1443514",
+      "quote": "Act by: none",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The notice's Targeted Release window begins in early September 2026 and is expected to complete by mid-September 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1443514",
+      "quote": "Targeted Release: Beginning in early September 2026 (previously late August) and expected to complete by mid-September 2026 (previously early September)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The notice's Worldwide General Availability window begins in mid-September 2026 and is expected to complete by the end of October 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1443514",
+      "quote": "General Availability (Worldwide): Beginning in mid-September 2026 (previously late August) and expected to complete by end of October 2026 (previously late September)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Change & support",
+      "type": "record",
+      "claim": "The October update moved the rollout window.",
+      "status": "supported",
+      "source": "Message Center post MC1443514",
+      "quote": "Updated October 15, 2026: We have updated the timeline. ... expected to complete by end of October 2026 (previously late September)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "summary; controls[0].note; Why it matters; Governance controls; rationale: risk",
+      "type": "record",
+      "claim": "Microsoft's notice says blocking Planner Agent removes access to this capability.",
+      "status": "supported",
+      "source": "Message Center post MC1443514",
+      "quote": "Administrators can control access to this capability through agent settings. Blocking the Planner Agent removes access to the feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Governance controls; Governance guidance",
+      "type": "record",
+      "claim": "Microsoft asks administrators to review Planner Agent access and settings in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "Message Center post MC1443514",
+      "quote": "Review whether your organization wants users to have access to Planner Agent. ... Review Planner Agent settings in the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing: Indirect cost; Governance guidance",
+      "type": "record",
+      "claim": "Microsoft recommends updating internal documentation and user guidance as appropriate.",
+      "status": "supported",
+      "source": "Message Center post MC1443514",
+      "quote": "Update internal documentation and user guidance as appropriate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Why it matters",
+      "type": "record",
+      "claim": "Microsoft says no additional action is required before rollout.",
+      "status": "supported",
+      "source": "Message Center post MC1443514",
+      "quote": "No additional action is required before rollout.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Learn has no feature page explicitly describing this chat in basic plans at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Planner Agent\" \"basic plans\" \"admin\" \"chat\". Read Planner's control page and Copilot release-note excerpts: they distinguish basic-plan task execution from premium chat; the chat release note does not identify a basic-plan scope.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Learn describes Planner Agent as built on Microsoft's security, compliance and privacy approach and links to Copilot's data, privacy and security documentation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/turn-off-planner-agent",
+      "quote": "Planner Agent and Planner Agent chat in premium plans are built on Microsoft’s comprehensive approach to security, compliance, and privacy. ... see Data, Privacy, and Security for Microsoft Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "The cited Planner Learn page does not describe basic-plan chat processing in detail.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Planner Agent chat\" \"basic\" \"identity\" \"processing\". Read turn-off-planner-agent in full; its security section discusses Planner Agent and premium-plan chat, without a basic-plan-chat processing description.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "The tenant notice does not describe a separate agent identity.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Planner Agent chat\" \"basic\" \"identity\" \"processing\". Read MC1443514 in full and the Planner control page; the notice specifies user permissions but no separate agent identity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Autonomy & actions; Open questions",
+      "type": "absence",
+      "claim": "The sources read do not establish whether a person confirms each basic-plan chat change.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Planner Agent chat\" \"basic\" \"confirm\". Read MC1443514, Planner controls and chat release-note passages; none specifies confirmation for each change. Approval text for the Planner Cowork plugin describes a different experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Scope: Related plans",
+      "type": "behaviour",
+      "claim": "Planner Agent chat in premium plans was previously called Copilot in Planner.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/turn-off-planner-agent",
+      "quote": "The Planner Agent chat in premium plans (previously \"Copilot in Planner\") offers an in-app natural language chat experience",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[1].note; controls[2].note; Governance controls; Open questions",
+      "type": "applicability",
+      "claim": "The Planner PowerShell page covers task execution and status reporting in basic and premium plans but chat in premium plans only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/turn-off-planner-agent",
+      "quote": "restrict access to the Planner Agent experience for task execution and status reporting in both basic and premium plans as well as the Planner Agent chat in premium plans only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[1].note; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Planner policy changes may take up to one hour to take effect.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/turn-off-planner-agent",
+      "quote": "Changes may take up to 1 hour to reflect across your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance controls: behavior matrix",
+      "type": "behaviour",
+      "claim": "AllowPlannerCopilot false turns documented access off for all users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/turn-off-planner-agent",
+      "quote": "| $false | Not applicable | 'OFF' for all users |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance controls: behavior matrix",
+      "type": "behaviour",
+      "claim": "AllowPlannerCopilot true with no restriction group turns documented access on for all users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/turn-off-planner-agent",
+      "quote": "| $true | $null (00000000-0000-0000-0000-000000000000) | 'ON' for all users |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Governance controls: behavior matrix",
+      "type": "behaviour",
+      "claim": "A valid restriction group grants documented access to group members, including nested members.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/turn-off-planner-agent",
+      "quote": "Users who are members of the specified security group, including those in nested groups, will have access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[2].note; Governance controls: behavior matrix",
+      "type": "behaviour",
+      "claim": "An invalid restriction-group ID denies documented access to all users even when AllowPlannerCopilot is true.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/turn-off-planner-agent",
+      "quote": "If the Security Group ID is invalid, no users will have access, even if AllowPlannerCopilot is set to $true.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Turning off Planner Agent also disables Facilitator's document authoring skill.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/turn-off-planner-agent",
+      "quote": "Turning off Planner Agent will also disable document authoring skill of Facilitator. All other Facilitator skills remain unaffected.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[0].note; Governance controls",
+      "type": "availability",
+      "claim": "The Graph package block operation is a beta API rather than a final production API.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "APIs under the /beta version are subject to change. Use of these APIs in production applications is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[0].note; Governance controls",
+      "type": "licensing",
+      "claim": "Access to the Graph Package Management API requires a Microsoft Agent 365 licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Access to the Package Management API requires a Microsoft Agent 365 license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[0].note; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "The package-block reference does not state that Planner Agent is a package addressable by this API.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Planner Agent\" \"package\" \"block\". Read copilotpackage-block in full and Planner control results; the reference documents a generic package operation without identifying Planner Agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Governance controls; Open questions",
+      "type": "absence",
+      "claim": "The general agent-blocking Learn page does not identify a Planner-specific entry or path.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Planner Agent\" \"basic plans\" \"admin\" \"chat\" and \"Planner Agent\" \"package\" \"block\". Read agent-actions and manage-copilot-agents-integrated-apps; neither identifies a Planner-specific registry entry.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Open questions: auditing",
+      "type": "behaviour",
+      "claim": "The Planner Learn page describes equivalent premium-plan auditing as a plan, not an already-shipped Planner Agent capability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/turn-off-planner-agent",
+      "quote": "Planner Agent plans to provide the same auditing capabilities as premium plans (previously Project for the Web projects).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Open questions: release notes",
+      "type": "date",
+      "claim": "The 23 September 2026 Copilot release notes list Planner Agent chat with the roadmap description under ID 560532 rather than 567671.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes#september-23,-2026",
+      "quote": "September 23, 2026 ... Planner Agent chat [Windows, Web] ... Introducing built-in Planner Agent chat with natural language Q&A, smart task discovery, and in-plan task management. ... Roadmap ID: 560532",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Governance guidance: Before rollout, licence-checking bullet",
+      "type": "admin-path",
+      "claim": "Administrators can check users' licence assignments in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users?view=o365-worldwide#use-the-active-users-page-to-assign-or-unassign-licenses",
+      "quote": "Assign or unassign licenses for users in the Microsoft 365 admin center",
+      "severity": "minor",
+      "fix": "If retaining the licence-checking bullet, add https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users to the sources."
+    },
+    {
+      "n": 62,
+      "where": "Governance guidance: Before rollout, licence-checking bullet",
+      "type": "consistency",
+      "claim": "The checklist instructs administrators to check licence assignments, but that control has no corresponding row in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Confirm which users hold a Microsoft 365 Copilot licence in the Microsoft 365 admin center ... Table rows cover agent blocking, AllowPlannerCopilot and PlannerCopilotAllowedGroupId, not licence assignment.",
+      "severity": "minor",
+      "fix": "Remove the first bullet under Governance guidance > Before rollout; the licence prerequisite is already stated in Cost and licensing and Scope."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-17T03:37:49.274Z",
+    "summary": {
+      "links": 7,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 3,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=567671",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1443514",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/planner/turn-off-planner-agent",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/manage/manage-copilot-agents-integrated-apps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether the Planner Agent is available to users in the organisation",
+        "docs": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "All agents",
+          "Block",
+          "Block agent",
+          "Save"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether the Planner Agent is available to users in the organisation",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "reachable": true,
+        "token": "/beta/copilot/admin",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether Planner Agent and its chat are on or off for all users",
+        "docs": "https://learn.microsoft.com/planner/turn-off-planner-agent",
+        "reachable": true,
+        "token": "Set-PlannerConfiguration",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Which security group can use Planner Agent and its chat",
+        "docs": "https://learn.microsoft.com/planner/turn-off-planner-agent",
+        "reachable": true,
+        "token": "Set-PlannerConfiguration",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

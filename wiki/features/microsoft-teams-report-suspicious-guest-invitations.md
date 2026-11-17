@@ -43,6 +43,9 @@ sources:
   - title: "User reported settings in Microsoft Teams"
     url: "https://learn.microsoft.com/defender-office-365/submissions-teams"
     kind: "learn"
+  - title: "Use Microsoft Teams administrator roles to manage Teams"
+    url: "https://learn.microsoft.com/microsoftteams/using-admin-roles"
+    kind: "learn"
 videos: []
 related: []
 controls:
@@ -83,19 +86,23 @@ changes:
     note: "Corrected after verification: the configuration roles for user reporting are now stated, and the risk rationale no longer claims no new access or no autonomous action."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 52 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-17"
+    note: "Corrected after verification: the final governance controls sentence now states that Microsoft documents Teams Administrators can access all reports in the Teams admin center."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 54 statements confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-17"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 52
-  confirmed: 51
+  claims: 54
+  confirmed: 54
   unconfirmed: 0
-  contradicted: 1
-  attempts: 3
-  hash: "0c7c5ed6cddec94b905516e8914f209d"
+  contradicted: 0
+  attempts: 0
+  hash: "4852eb3a0f3a3fb9d18f4c4ab3af89eb"
 ---
 
 ## What's changing
@@ -182,7 +189,7 @@ Report a security concern is the only control the notice names, and it is shared
 
 Learn describes a second setting in the Microsoft Defender portal that must be on for user-reported messages to show on the Submissions page. It also says user reporting of external users is not yet supported in Defender, and does not address guest invitations. The Learn page User reported settings in Microsoft Teams (defender-office-365/submissions-teams) covers the Defender side; this briefing gives no path for it.
 
-The Set-CsTeamsMessagingPolicy parameter is documented as a Boolean; $false turns the setting off. Learn has not confirmed it governs guest-invitation reporting. To configure user reporting in the Teams admin center, Microsoft names Teams Administrator or Global Administrator; use the least-privileged suitable role. Learn does not state the role needed to view the User reported security submissions report.
+The Set-CsTeamsMessagingPolicy parameter is documented as a Boolean; $false turns the setting off. Learn has not confirmed it governs guest-invitation reporting. To configure user reporting in the Teams admin center, Microsoft names Teams Administrator or Global Administrator; use the least-privileged suitable role. Microsoft documents that Teams Administrators can access all reports in the Teams admin center.
 
 ## Open questions
 
@@ -195,10 +202,4 @@ The Set-CsTeamsMessagingPolicy parameter is documented as a Boolean; $false turn
 risk: Low. Reporting is user-initiated, and the notice places it under the existing Report a security concern messaging-policy setting; reports are shared with admins and Microsoft.
 cost: Low. The only cost the sources show is admin time to triage reports and to brief users; no licence or meter is published for guest-invitation reporting.
 impact: Medium. Users who receive a guest invitation to another organisation may see the new option when declining, and whoever triages Teams reports will see new submissions.
--->
-
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls: final sentence / absence: Learn does not state the role needed to view the User reported security submissions report. | Found: Teams Administrator ... Everything in the Microsoft Teams admin center and associated PowerShell controls, including: ... Access all reports in the Microsoft Teams admin center | Fix: Replace the final sentence with: 'Microsoft documents that Teams Administrators can access all reports in the Teams admin center.' Cite https://learn.microsoft.com/microsoftteams/using-admin-roles. This states a documented sufficient role without claiming it is the only role permitted. | Source: https://learn.microsoft.com/microsoftteams/using-admin-roles
 -->
