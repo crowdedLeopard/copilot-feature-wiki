@@ -1,12 +1,13 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import Badge from './Badge.astro';
-import { TOPIC_BY_ID, topicUrl, featureUrl, noticeUrl, formatDate, daysUntil, relativeDays } from '../lib/site';
+import { TOPIC_BY_ID, topicUrl, featureUrl, formatDate, daysUntil, relativeDays } from '../lib/site';
 
 /**
  * One Message Center post in a list: its date in the margin (the act-by date when Microsoft gave
  * one, otherwise when the post was last revised), then the title, Microsoft's summary and the
- * facts a reader filters on. `briefings` are the wiki pages that cover the roadmap items it names.
+ * facts a reader filters on. The title opens the post in the reader's own Message Center (the site
+ * keeps no page per post). `briefings` are the wiki pages that cover the roadmap items it names.
  */
 interface Props {
   entry: CollectionEntry<'messages'>;
@@ -30,7 +31,7 @@ const revised = d.lastModified.slice(0, 10) !== d.published.slice(0, 10);
     )}
   </div>
   <div>
-    <h3 class="notice-row__title"><a href={noticeUrl(d.id)}>{d.title}</a></h3>
+    <h3 class="notice-row__title"><a href={d.url} rel="noopener" title={`Open ${d.id} in the Microsoft 365 admin center. Needs a Message Center role in your tenant.`}>{d.title} <span class="ext">↗</span></a></h3>
     {!compact && d.summary && <p class="notice-row__summary">{d.summary}</p>}
     <div class="notice-row__meta">
       <span class="mcid">{d.id}</span>

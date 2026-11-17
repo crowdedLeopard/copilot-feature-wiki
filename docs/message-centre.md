@@ -28,9 +28,11 @@ needs no code.
 - Gives the writer and the checker the posts for a roadmap item alongside its record, so briefings
   quote the rollout window and the act-by date, and queues a refresh of any briefing whose post is
   newer than the page.
-- Shows the posts on the site: `/message-centre/` (act-by dates first), one page per post, a
-  "Message Centre notices" section and an "Act by" fact on each matching briefing, an "Act by"
-  strip on the home page, and a section in the weekly digest.
+- Shows only the deadlines on the site: `/message-centre/` lists every post with an act-by date
+  still ahead, soonest first, linked to its briefing where there is one and otherwise to the post in
+  the reader's own Message Center. Matching briefings carry an "Act by" fact and a "Message Centre
+  notices" section, the home page shows the nearest dates, and the weekly digest lists the dates set
+  that week. There is no page per post and no general feed: the site does not reproduce Message Center.
 
 ## Which tenant
 
@@ -110,7 +112,7 @@ Ids are not secrets, but storing them as secrets is fine too; the workflow reads
 Run the **Daily curation and deploy** workflow from the Actions tab, or wait for the next scheduled
 run. The run summary shows a line such as `message-center: 148 posts read (federated credential),
 131 in scope and published, 131 new, 0 changed, 12 outside the topics, 5 withheld by the tenant
-screen (3 privacy-tag, 2 attachments); 131 in the ledger, 4 with an act-by date ahead`. The posts
+screen (3 privacy-tag, 2 attachments); 131 in the ledger, 4 with an act-by date ahead`. The deadlines
 appear on `/message-centre/` after the deploy.
 
 ## Checking it is safe

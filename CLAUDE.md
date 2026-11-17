@@ -19,9 +19,11 @@ daily by GitHub Actions.
   under `raw/message-center/` with the index `data/message-center.json`. The shared module files each post under a
   topic (linked roadmap item, then services, then title), gives the writer and verifier the posts for an item as
   record facts (`briefSection`), and `ingest.mjs` queues a `message-center` refresh when a post is newer than the
-  briefing. An act-by date within about 90 days makes a briefing `act-now` (SCHEMA). The site shows posts at
-  `/message-centre/`, on matching briefings, on the home page and in the digest; all of it hides until the source
-  is connected. Setup for the tenant owner: `docs/message-centre.md`.
+  briefing. An act-by date within about 90 days makes a briefing `act-now` (SCHEMA). The site shows deadlines only
+  (Chris, 17 Nov 2026: the page must not recreate the admin centre): `/message-centre/` is the act-by list, each
+  date linked to its briefing where one exists and otherwise to the post in the reader's own Message Center; matching
+  briefings, the home page and the digest show the same dates. There is no page per post and no general feed; all of
+  it hides until the source is connected. Setup for the tenant owner: `docs/message-centre.md`.
 - `wiki/features/*.md` are the briefings. Front matter is validated by `pipeline/lib/schema.mjs` and `src/content.config.ts`.
 - `pipeline/` holds the daily jobs: `ingest` (roadmap), `compile` (LLM writes briefings), `lint`, `index`, `digest`, `pdf`.
   Curation runs chain: `chain-next.mjs` records the run's AI credits in `data/spend.json` and, while the day stays under

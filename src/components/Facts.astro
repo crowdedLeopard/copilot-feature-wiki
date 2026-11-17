@@ -2,7 +2,7 @@
 import type { CollectionEntry } from 'astro:content';
 import Rating from './Rating.astro';
 import Badge from './Badge.astro';
-import { DEFAULT_STATE, LICENSING_MODEL, LICENSING_MODEL_HELP, AUDIENCES, href, shortRoadmapDate, formatDate, daysUntil, relativeDays, noticeUrl } from '../lib/site';
+import { DEFAULT_STATE, LICENSING_MODEL, LICENSING_MODEL_HELP, AUDIENCES, href, shortRoadmapDate, formatDate, daysUntil, relativeDays, MESSAGE_CENTER } from '../lib/site';
 import { cloudInfo } from '../lib/tags';
 
 interface Props {
@@ -27,7 +27,7 @@ const tip = (c: { label: string; description: string }) => (c.description ? `${c
 <div class="facts" role="table" aria-label="At a glance">
   <div class="fact"><div class="fact__k">Action</div><div class="fact__v"><Badge action={d.action} /></div></div>
   {actBy && (
-    <div class="fact fact--act"><div class="fact__k">Act by</div><div class="fact__v"><span title={`Microsoft gave tenant administrators this deadline in Message Center post ${actBy.id}.`}>{formatDate(actBy.date)}</span><small>{relativeDays(actDays)} · <a href={noticeUrl(actBy.id)}>{actBy.id}</a></small></div></div>
+    <div class="fact fact--act"><div class="fact__k">Act by</div><div class="fact__v"><span title={`Microsoft gave tenant administrators this deadline in Message Center post ${actBy.id}.`}>{formatDate(actBy.date)}</span><small>{relativeDays(actDays)} · <a href={MESSAGE_CENTER.url(actBy.id)} rel="noopener" title="Open this post in your own Message Center">{actBy.id}</a></small></div></div>
   )}
   <div class="fact"><div class="fact__k">Risk</div><div class="fact__v"><Rating kind="risk" value={d.risk} showLabel={false} /></div></div>
   <div class="fact"><div class="fact__k">Cost</div><div class="fact__v"><Rating kind="cost" value={d.cost} showLabel={false} /></div></div>
