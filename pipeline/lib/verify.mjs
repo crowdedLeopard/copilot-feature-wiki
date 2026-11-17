@@ -51,6 +51,14 @@ export function holdReason(report) {
   return reason === 'parked' && (report?.attempts || 0) < MAX_REVISIONS ? 'failed' : reason;
 }
 /**
+ * What a parked page waits for. At exactly MAX_REVISIONS failed checks it is written once more from scratch (a
+ * 'fresh-draft' task: the roadmap record and Microsoft's pages, none of the held text, see compile-tasks.mjs); a page
+ * whose fresh draft failed too (attempts beyond the cap) waits for a person.
+ */
+export function parkedNext(report) {
+  return (report?.attempts || 0) === MAX_REVISIONS ? 'fresh-draft' : 'person';
+}
+/**
  * Pages published before the check existed (created before this date) can get one grace: a first failure
  * leaves the page live with a "needs correction" notice and the findings listed, while the rewrite is
  * prepared. A failure after that rewrite holds the page like any other. VERIFY_GRACE_EXISTING=0 turns
@@ -547,7 +555,9 @@ export async function recordVerification(slug, rawVerdict, { model = 'unknown', 
   for (const n of notes) console.warn(`note: ${n}`);
 
   const previous = await readReport(slug);
-  const failedBefore = (previous?.status === 'held' && previous?.hold?.reason === 'failed') || previous?.status === 'needs-correction';
+  // A failure after an earlier hold counts on from the earlier failed checks, whether the page was held as failed or
+  // parked (its last round under a raised cap, or its fresh draft), so a parked page cannot start the rounds again.
+  const failedBefore = (previous?.status === 'held' && ['failed', 'parked'].includes(previous?.hold?.reason)) || previous?.status === 'needs-correction';
   // Grace for the back catalogue: a live page written before the check existed fails once in public, not into the hold.
   // (The four concept pages written by hand carry no created date; their updated date stands in for it.)
   const graced = status === 'held' && GRACE_EXISTING && loc.where !== 'held' && !previous && (data.created || (kind === 'concept' && data.updated) || '9999') < STANDARD_DATE;
@@ -674,6 +684,7 @@ export async function writeHeldIndex() {
     slug: h.slug, ...(h.kind === 'concept' ? { kind: h.kind } : {}), roadmapId: h.data.roadmapId ?? null, title: h.data.title, topic: h.data.topic,
     reason: holdReason(h.report), since: h.report?.hold?.since || h.report?.date || null,
     attempts: h.report?.attempts || 0, reasons: h.report?.hold?.reasons || [],
+    ...(holdReason(h.report) === 'parked' ? { next: parkedNext(h.report) } : {}),
   }));
   await writeJson(path.join(DATA_DIR, 'held.json'), { generated: new Date().toISOString(), count: items.length, items });
   return items;
