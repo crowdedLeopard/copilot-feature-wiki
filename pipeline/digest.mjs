@@ -22,10 +22,12 @@ async function main() {
   const slug = `${year}-w${String(week).padStart(2, '0')}`;
   const actNow = fresh.filter((p) => p.data.action === 'act-now');
   const highRisk = fresh.filter((p) => p.data.risk === 'high');
-  // Message Center: posts Microsoft published or revised this week, deadlines first.
+  // Message Center: the act-by dates Microsoft set or revised this week and that are still ahead, soonest first.
+  // Posts without a date are not reported; the site lists deadlines only, and the reader's own Message Center has the rest.
   const messages = await loadMessageIndex();
-  const notices = (messages.posts || []).filter((m) => new Date(m.lastModified).getTime() >= since)
-    .sort((a, b) => (a.actionRequiredBy ? 0 : 1) - (b.actionRequiredBy ? 0 : 1) || String(a.actionRequiredBy || '').localeCompare(String(b.actionRequiredBy || '')) || b.lastModified.localeCompare(a.lastModified));
+  const todayIso = today();
+  const notices = (messages.posts || []).filter((m) => m.actionRequiredBy && m.actionRequiredBy.slice(0, 10) >= todayIso && new Date(m.lastModified).getTime() >= since)
+    .sort((a, b) => a.actionRequiredBy.localeCompare(b.actionRequiredBy) || b.lastModified.localeCompare(a.lastModified));
   const briefedIds = new Map(pages.filter((p) => p.data.roadmapId).map((p) => [p.data.roadmapId, p]));
 
   const fm = {
@@ -60,11 +62,11 @@ async function main() {
     lines.push('');
   }
   if (notices.length) {
-    lines.push('## Message Center this week', '', `${notices.length} post${notices.length === 1 ? '' : 's'} Microsoft published or revised for tenant administrators this week${notices.some((m) => m.actionRequiredBy) ? ', those with an act-by date first' : ''}.`, '');
+    lines.push('## Deadlines set this week', '', `${notices.length} Message Center post${notices.length === 1 ? '' : 's'} published or revised this week ${notices.length === 1 ? 'carries' : 'carry'} a date by which administrators must have done something. Soonest first; the [Deadlines page](/message-centre/) has every date still ahead.`, '');
     for (const m of notices.slice(0, 25)) {
       const briefing = (m.roadmapIds || []).map((id) => briefedIds.get(id)).find(Boolean);
       const cat = MESSAGE_CENTER.category[m.category]?.label || m.category;
-      lines.push(`- ${m.actionRequiredBy ? `**Act by ${m.actionRequiredBy.slice(0, 10)}.** ` : ''}[${m.id}: ${m.title}](/message-centre/${m.id}/). ${cat}${m.isMajorChange ? ', major change' : ''}.${briefing ? ` Briefing: [${briefing.data.title}](/features/${briefing.slug}/).` : ''}`);
+      lines.push(`- **Act by ${m.actionRequiredBy.slice(0, 10)}.** ${briefing ? `[${m.title}](/features/${briefing.slug}/)` : `[${m.title}](/message-centre/#${m.id})`} (${m.id}). ${cat}${m.isMajorChange ? ', major change' : ''}.${briefing ? ` Briefing: [${briefing.data.title}](/features/${briefing.slug}/).` : ' No briefing yet.'}`);
     }
     lines.push('');
   }

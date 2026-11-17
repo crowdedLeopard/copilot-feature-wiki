@@ -6,7 +6,7 @@ import Badge from '../components/Badge.astro';
 import Legend from '../components/Legend.astro';
 import AtlasTeaser from '../components/AtlasTeaser.astro';
 import { allFeatures, allConcepts, allDigests, byTopic, briefedIds, recentCatalog, stats, catalog, briefingsFor, allNotices, actByNotices } from '../lib/data';
-import { SITE, TOPICS, TOPIC_BY_ID, href, featureUrl, topicUrl, conceptUrl, noticeUrl, formatDate, shortRoadmapDate, daysUntil, relativeDays } from '../lib/site';
+import { SITE, TOPICS, TOPIC_BY_ID, href, featureUrl, topicUrl, conceptUrl, formatDate, shortRoadmapDate, daysUntil, relativeDays } from '../lib/site';
 import { buildAtlas } from '../lib/graph';
 
 const features = await allFeatures();
@@ -60,7 +60,7 @@ const dueClass = (days: number | null) => (days === null ? '' : days <= 30 ? 'du
 
     {deadlines.length > 0 && (
       <>
-        <SectionHead title="Act by" more={{ href: href('/message-centre/'), label: 'All Message Centre posts' }} />
+        <SectionHead title="Act by" more={{ href: href('/message-centre/'), label: 'All deadlines' }} />
         <p class="muted small" style="margin:-0.4rem 0 0.6rem">Dates Microsoft has set in Message Center, by which administrators must have done something. Soonest first.</p>
         <table class="deadlines">
           <tbody>
@@ -71,8 +71,8 @@ const dueClass = (days: number | null) => (days === null ? '' : days <= 30 ? 'du
                 <tr>
                   <td class={`when ${dueClass(days)}`}><b>{formatDate(n.data.actionRequiredBy)}</b><span>{relativeDays(days)}</span></td>
                   <td class="what">
-                    <a href={noticeUrl(n.data.id)}>{n.data.title}</a>
-                    <div class="meta"><span class="mcid">{n.data.id}</span><span>{(TOPIC_BY_ID as Record<string, { label: string }>)[n.data.topic]?.label}</span>{b && <a href={featureUrl(b.data.slug)}>Read the briefing</a>}</div>
+                    {b ? <a href={featureUrl(b.data.slug)}>{n.data.title}</a> : <a href={n.data.url} rel="noopener" title={`Open ${n.data.id} in your own Message Center`}>{n.data.title} <span class="ext">↗</span></a>}
+                    <div class="meta"><a class="mcid" href={n.data.url} rel="noopener" title="Open this post in your own Message Center">{n.data.id}</a><span>{(TOPIC_BY_ID as Record<string, { label: string }>)[n.data.topic]?.label}</span>{b && <a href={featureUrl(b.data.slug)}>Read the briefing</a>}</div>
                   </td>
                 </tr>
               );
