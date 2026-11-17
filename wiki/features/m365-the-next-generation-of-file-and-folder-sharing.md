@@ -4,7 +4,7 @@ slug: "m365-the-next-generation-of-file-and-folder-sharing"
 roadmapId: 492622
 topic: "modern-work"
 products: ["Excel","Microsoft 365","OneDrive","PowerPoint","SharePoint","Word"]
-summary: "Microsoft is rolling out one 'hero link' per file or folder in OneDrive and SharePoint, set by default to Only people added to the file. No action is required; admins can set a site default with DefaultMainLinkScope."
+summary: "Microsoft is rolling out one 'hero link' per file or folder in OneDrive and SharePoint, set by default to Only people added to the file. No action is required; admins can set a site default with DefaultMainLinkScope, subject to documentation gaps below."
 status: "rolling-out"
 releasePhase: ["General Availability"]
 clouds: ["Worldwide (Standard Multi-Tenant)","GCC","GCC High","DoD"]
@@ -53,7 +53,7 @@ controls:
       kind: "powershell"
       call: "Set-SPOSite -Identity <site URL> -DefaultMainLinkScope <OnlyPeopleAdded|Organization|Anyone>"
       docs: "https://learn.microsoft.com/powershell/module/sharepoint-online/set-sposite"
-    note: "Needs SharePoint Online administrator and site collection administrator. Sets the default audience only, not a limit. OneDrive support is unconfirmed."
+    note: "Needs SharePoint Online admin and site collection admin. Default audience only. The Set-SPOSite reference omits DefaultMainLinkScope from its valid parameters for OneDrive and Groups site collections; support is unconfirmed."
   - governs: "Tenant-wide default audience of the hero link"
     scope: "tenant"
     ui: null
@@ -90,19 +90,23 @@ changes:
     note: "First briefing for this item: rolling out the hero link, with the per-site DefaultMainLinkScope control and no documented tenant-wide setting."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 67 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-17"
+    note: "Corrected after verification: DefaultMainLinkScope support for Groups site collections is now stated as unconfirmed, the rollout sentence follows the notice's schedule, and the legacy expiration checklist item is removed."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 74 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-17"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 67
-  confirmed: 65
+  claims: 74
+  confirmed: 74
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "c0a51ed11ab18d3d366c3e17a4856372"
+  contradicted: 0
+  attempts: 0
+  hash: "cafcd1a6124bc9a0f172f07ea4486463"
 ---
 
 ## What's changing
@@ -117,7 +121,7 @@ The roadmap item is Rolling out, General Availability, with a target of October 
 
 ## Why it matters
 
-Because the default state is on and the notice says rollout needs no administrator action, every user who shares files will meet the new dialog during the November 2026 window whether or not you prepare. The default audience is the narrowest option, so the change is mainly one of habit and support: people who used to create several links for one file now work with one link whose audience they edit.
+Microsoft's notice schedules the new dialog to roll out from early October through the end of November 2026 without administrator action, so prepare users even if you do not change any settings. The default audience is the narrowest option, so the change is mainly one of habit and support: people who used to create several links for one file now work with one link whose audience they edit.
 
 The point to plan for is that editing the hero link changes who can use links that were already sent. Microsoft Learn says narrowing the scope limits who can use those links, and the same logic runs the other way when a user broadens it. Your sharing policies still bound the choices, so check them now, decide whether any site needs a different default audience, and brief the service desk and regular cross-team collaborators before the dialog appears.
 
@@ -157,14 +161,14 @@ The cost the sources do show is indirect: time to review sharing guidance and en
 
 **Rollout.** Roadmap status is Rolling out with an October CY2026 target. MC1454378 gives early October through end of November 2026 for all four clouds.
 
-**Configuration.** The audience default is set per site with `DefaultMainLinkScope` in SharePoint PowerShell; the notice says there is currently no tenant-wide equivalent. Prerequisites for the cmdlet are the SharePoint Online administrator role and site collection administrator rights. Microsoft Learn says the available audience scopes depend on the organisation's sharing policies.
+**Configuration.** The audience default is set per site with `DefaultMainLinkScope` in SharePoint PowerShell; the notice says there is currently no tenant-wide equivalent. Prerequisites for the cmdlet are the SharePoint Online administrator role and site collection administrator rights. The Set-SPOSite reference lists `DefaultMainLinkScope` for neither OneDrive for Business nor Groups site collections in its valid-parameter lists, so support for those site types is unconfirmed. Microsoft Learn says the available audience scopes depend on the organisation's sharing policies.
 
 ## Governance guidance
 
 ### Before rollout
 
 - Review the organisation-level **External sharing** setting in the SharePoint admin center, because the hero link scopes users can choose depend on the organisation's sharing policies.
-- Identify sites that need a different starting audience than **Only people added to the file**, and have a site collection administrator who is also a SharePoint Online administrator set `DefaultMainLinkScope` where needed.
+- Identify sites that need a different starting audience than **Only people added to the file**, and have a site collection administrator who is also a SharePoint Online administrator set `DefaultMainLinkScope` where needed. Confirm first that the site is not a OneDrive or Groups site collection, because the Set-SPOSite reference does not list the parameter for those.
 - Update internal sharing guidance and end-user documentation for the single-link model, and tell regular cross-team and cross-organisation collaborators.
 
 ### At rollout
@@ -177,7 +181,7 @@ The cost the sources do show is indirect: time to review sharing guidance and en
 
 - Sample sites where users have broadened the hero link to people in the organisation or **Anyone with the link**, and compare the result with your sharing policies.
 - Check whether Microsoft documents a tenant-wide default or OneDrive support for `DefaultMainLinkScope` and, if so, revise the site-by-site approach.
-- Reconfirm what legacy default sharing link and expiration settings still cover, since the notice says they do not govern hero links.
+- Reconfirm what legacy default sharing link settings still cover, since the notice says they do not govern hero links.
 
 ## Governance controls
 
@@ -186,7 +190,7 @@ The cost the sources do show is indirect: time to review sharing guidance and en
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Default audience of the hero link for a site</strong><br><small>Site</small><br><small class="controls__note">Needs SharePoint Online administrator and site collection administrator. Sets the default audience only, not a limit. OneDrive support is unconfirmed.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOSite -Identity &lt;site URL&gt; -DefaultMainLinkScope &lt;OnlyPeopleAdded|Organization|Anyone&gt;</code> <a href="https://learn.microsoft.com/powershell/module/sharepoint-online/set-sposite" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Default audience of the hero link for a site</strong><br><small>Site</small><br><small class="controls__note">Needs SharePoint Online admin and site collection admin. Default audience only. The Set-SPOSite reference omits DefaultMainLinkScope from its valid parameters for OneDrive and Groups site collections; support is unconfirmed.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOSite -Identity &lt;site URL&gt; -DefaultMainLinkScope &lt;OnlyPeopleAdded|Organization|Anyone&gt;</code> <a href="https://learn.microsoft.com/powershell/module/sharepoint-online/set-sposite" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Tenant-wide default audience of the hero link</strong><br><small>Tenant</small><br><small class="controls__note">MC1454378 says there is currently no tenant-wide equivalent. The Set-SPOTenant reference lists no main link parameter at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Organisation-level external sharing level</strong><br><small>Tenant</small><br><small class="controls__note">General control: Learn says hero link scopes depend on sharing policies, but no page maps each setting to a hero link scope.</small></td><td data-label="Admin UI"><strong>SharePoint admin center</strong><br>Policies › Sharing <a href="https://learn.microsoft.com/sharepoint/turn-external-sharing-on-or-off" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOTenant -SharingCapability &lt;value&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Default sharing link type for a site (legacy links)</strong><br><small>Site</small><br><small class="controls__note">Existing control. MC1454378 says default sharing link settings apply to legacy links and do not govern hero links.</small></td><td data-label="Admin UI"><strong>SharePoint admin center</strong><br>Active sites › site › Sharing › Default sharing link type <a href="https://learn.microsoft.com/sharepoint/change-default-sharing-link" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOSite -Identity &lt;site URL&gt; -DefaultSharingLinkType &lt;value&gt;</code> <a href="https://learn.microsoft.com/powershell/module/sharepoint-online/set-sposite" rel="noopener" class="controls__docs">Learn</a></td></tr>
@@ -195,13 +199,13 @@ The cost the sources do show is indirect: time to review sharing guidance and en
 
 The site-level `DefaultMainLinkScope` default is the only control Microsoft documents for the hero link itself. It sets the default audience only; it is not a ceiling, and users can still broaden access where policy allows. Per MC1454378 the supported values are `OnlyPeopleAdded` (the default) and `Organization`, while the Set-SPOSite reference also lists `Anyone`, which falls back to the next most restrictive value if Anyone links are disabled for the site. The reference says the parameter applies to all items at the root of the document library.
 
-MC1454378 says the default can be set at the site collection or OneDrive level, but the Set-SPOSite reference's list of valid parameters for a OneDrive for Business site collection does not include `DefaultMainLinkScope`. Treat OneDrive support as unconfirmed until Microsoft clarifies.
+MC1454378 says the default can be set at the site collection or OneDrive level, but the Set-SPOSite reference's list of valid parameters for a OneDrive for Business site collection does not include `DefaultMainLinkScope`. The Set-SPOSite reference also omits `DefaultMainLinkScope` from its list of valid parameters for Groups site collections; support for those sites is unconfirmed. Treat OneDrive support as unconfirmed until Microsoft clarifies.
 
 The organisation-level sharing row is a general control: Learn says the available hero link scopes depend on sharing policies, and the Set-SPOSite reference says `Anyone` needs anonymous links allowed at tenant level, but no page lists which setting removes which hero link scope. Each site's sharing setting must be the same as or more restrictive than the organisation's. The legacy default sharing link type row is listed because administrators use it today; the notice says it does not govern hero links.
 
 ## Open questions
 
-- Does `DefaultMainLinkScope` work on OneDrive for Business sites? MC1454378 says OneDrive level, but the Set-SPOSite reference's valid-parameter list for OneDrive does not name it. Watch the Set-SPOSite page and Message center.
+- Does `DefaultMainLinkScope` work on OneDrive for Business sites or Groups site collections? MC1454378 says OneDrive level, but the Set-SPOSite reference's valid-parameter lists for OneDrive and Groups site collections do not name it. Watch the Set-SPOSite page and Message center.
 - Which values are supported? MC1454378 lists `OnlyPeopleAdded` and `Organization`, while the Set-SPOSite reference also lists `Anyone`. Which is current?
 - Will Microsoft add a tenant-wide setting for the default hero link audience? The notice says there is currently none.
 - Which audit events record a change to a hero link's audience or permission, and where do they appear?
@@ -211,13 +215,4 @@ The organisation-level sharing row is a general control: Learn says the availabl
 risk: Low. The hero link starts at Only people added to the file, which grants no access of its own, and the audiences users can pick depend on the organisation's existing sharing policies.
 cost: Low. The only cost the sources show is admin and communication time; Microsoft has not published a licence or meter for the hero link.
 impact: High. Microsoft's notice says all users who share or manage files and folders see the new dialog, which replaces how they copy, email and re-share links.
--->
-
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].api; summary; Scope: Configuration; Governance guidance; Governance controls / command: Set-SPOSite -Identity <site URL> -DefaultMainLinkScope <OnlyPeopleAdded|Organization|Anyone> is recommended for sites without a Groups-site qualification. | Found: For Groups site collection, the only valid parameters are Identity, AllowSelfServiceUpgrade, DefaultLinkPermission, DefaultSharingLinkType, DenyAddAndCustomizePages, DisableCompanyWideSharingLinks, DisableSharingForNonOwners, FileAnonymousLinkType, FolderAnonymousLinkType, LockState, Owner, Resource | Fix: Keep the documented command, but add to controls[0].note and the site-default guidance: 'The Set-SPOSite reference also omits DefaultMainLinkScope from its list of valid parameters for Groups site collections; support for those sites is unconfirmed.' Qualify the summary as 'admins can set a site default with DefaultMainLinkScope, subject to the site-type documentation gaps below.' Do not recommend it unconditionally for group-connected sites. Source: https://learn.microsoft.com/powershell/module/sharepoint-online/set-sposite. | Source: https://learn.microsoft.com/powershell/module/sharepoint-online/set-sposite
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Why it matters: first paragraph / date: Every user who shares files will encounter the dialog during the November 2026 window whether or not administrators prepare. | Found: General Availability (Worldwide, GCC, GCC High, DoD): Rolling out early October 2026 (previously mid-September) through end of November 2026 (previously late October) | Fix: Replace the first sentence with: 'Microsoft's notice schedules the new dialog to roll out from early October through the end of November 2026 without administrator action, so prepare users even if you do not change any settings.' This preserves the scheduled window rather than guaranteeing a November arrival for every user.
-- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: The checklist asks readers to take stock of legacy link expiration settings, but those settings have no controls-table row. | Found: Checklist: 'Reconfirm what legacy default sharing link and expiration settings still cover'. The table includes default sharing link type, but no link expiration control. | Fix: Narrow that checklist bullet to 'Reconfirm what legacy default sharing link settings still cover, since the notice says they do not govern hero links.' Do not add a control row as part of this correction.
 -->

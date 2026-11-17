@@ -12,12 +12,12 @@ platforms: ["Web"]
 targetDate: "January CY2027"
 previewDate: "November CY2026"
 risk: "medium"
-cost: "variable"
+cost: "low"
 impact: "medium"
 defaultState: "unknown"
 action: "review"
 licensing:
-  model: "consumption"
+  model: "unknown"
   notes: "Learn describes Work IQ API usage as billed by usage in Copilot Credits, independent of Microsoft 365 Copilot licensing. A licence or rate for the roadmap item itself is not yet published."
 audiences: ["m365-admin","service-owner","finops","security"]
 tags: ["work-iq","microsoft-iq","agents","knowledge-grounding","copilot-credits","usage-based-billing","mcp","m365-copilot"]
@@ -36,6 +36,12 @@ sources:
     kind: "learn"
   - title: "Policy governance for Work IQ MCP"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp"
+    kind: "learn"
+  - title: "Work IQ MCP overview"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/overview"
+    kind: "learn"
+  - title: "Work IQ in Copilot Studio (Microsoft Copilot)"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq"
     kind: "learn"
   - title: "Understand usage-based billing and cost management for Copilot Credits"
     url: "https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-overview-copilot-credits"
@@ -74,19 +80,23 @@ changes:
     note: "First briefing on the Work IQ: Microsoft IQ roadmap item, with the Work IQ policy and Copilot Credits controls Learn documents today and what Microsoft has not yet said."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 68 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-17"
+    note: "Corrected after the independent check: licensing model and cost rating now reflect that the release's licensing is not yet published; added the harness write-default note and service-principal auto-creation note; removed the service-principal setup step from the checklist."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 67 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-17"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 68
-  confirmed: 65
+  claims: 67
+  confirmed: 67
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "8f280ab4f7b17acbf79c4051359fe022"
+  contradicted: 0
+  attempts: 0
+  hash: "efff8de7d7d268732629c4db3d974a8e"
 ---
 
 ## What's changing
@@ -117,7 +127,7 @@ The practical value of the page is the gap it exposes: the roadmap promises a la
 
 **Autonomy & actions**
 
-- Learn says Work IQ MCP tools can create, update and delete as well as read, and that mutation operations are not allowed by default under the tenant policy. An administrator can enable supported mutation scenarios in the Microsoft 365 admin center, so check that setting before agents are expected to send mail or change data.
+- Learn says Work IQ MCP tools can create, update and delete as well as read, and that mutation operations are not allowed by default under the tenant policy. The Copilot Studio Microsoft Copilot harness guide separately says "Write operations are on by default"; verify the effective setting for your experience. An administrator can enable supported mutation scenarios in the Microsoft 365 admin center, so check that setting before agents are expected to send mail or change data.
 - Whether the roadmap item adds actions beyond those tools is not stated.
 
 **Change & support**
@@ -137,13 +147,13 @@ A rate for the new capability is not yet published. Do not carry over a Work IQ 
 
 The roadmap record lists Worldwide (Standard Multi-Tenant) and the Web platform, with General Availability and Preview release phases. It lists no US Government cloud; that is a record fact, not a statement that the capability is unavailable elsewhere.
 
-For Work IQ, Learn names a one-time setup by a user with the Global Administrator role to create the Work IQ service principal, and a usage-based billing plan as prerequisites. Whether the new capability needs the same setup, which users it reaches and how it rolls out are not stated.
+For Work IQ, Learn names a one-time setup by a user with the Global Administrator role to create the Work IQ service principal, and a usage-based billing plan as prerequisites. The MCP overview also says the service principal is created automatically on first use; manual provisioning can be needed to configure policy before that use. Whether the new capability needs the same setup, which users it reaches and how it rolls out are not stated.
 
 ## Governance guidance
 
 ### Before rollout
 
-- Inventory where Work IQ is already in use, and confirm whether the tenant has completed the one-time Work IQ service principal setup (a Global Administrator task).
+- Inventory where Work IQ is already in use.
 - Review spending policies under Copilot > Cost management, including whether Auto-apply new services should stay on, so that a new service does not inherit coverage unreviewed.
 - Check the Work IQ MCP policy state in the Microsoft 365 admin center and whether mutation operations have been enabled.
 - Review SharePoint and mailbox oversharing, since Work IQ requests run with the user's permissions.
@@ -182,17 +192,6 @@ Both rows are controls for Work IQ and Copilot Credits that Learn documents toda
 
 <!-- rationale
 risk: Medium. The roadmap describes agents discovering and using organisational knowledge, and the default state is not stated; the Work IQ controls Learn documents cover part of this, but none is confirmed for the new item.
-cost: Variable. Learn says Work IQ API usage consumes Copilot Credits; the roadmap item's own licence is not yet published, so budget on the Work IQ meter and watch for a separate rate.
+cost: Low. The known cost for this roadmap change is admin review time; licensing and metering for the release are not yet published. Existing Work IQ API usage separately consumes Copilot Credits.
 impact: Medium. Makers, developers and agent owners who build on Work IQ are most likely to notice; Microsoft has not said whether ordinary Microsoft 365 Copilot users see any change.
--->
-
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.model / consistency: The planned release's licensing model is consumption. | Found: model: "consumption"; "A licence or rate for the roadmap item itself is not yet published."; "Whether the roadmap item is that hub, a change to Work IQ, or something else is not stated" | Fix: Set licensing.model to "unknown". Retain the notes describing Work IQ API consumption billing as background, not established licensing for this roadmap release.
-- [contradicted, blocker] front matter: cost; rationale: cost / consistency: The release merits cost variable because administrators should budget on the Work IQ meter. | Found: cost: "variable"; "budget on the Work IQ meter"; "A rate for the new capability is not yet published. Do not carry over a Work IQ rate to it until Microsoft states one." | Fix: Set cost to "low" under the standard's unpublished-licensing rule. Replace the cost rationale with: "Low. The known cost for this roadmap change is admin review time; licensing and metering for the release are not yet published. Existing Work IQ API usage separately consumes Copilot Credits."
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Autonomy & actions / default: The Work IQ MCP tenant policy disallows mutation operations by default. | Found: By default, mutation operations aren't allowed for safety. This restriction includes create, update, delete, and action requests that modify data, such as sending email. | Fix: After this sentence add: "The Copilot Studio Microsoft Copilot harness guide separately says 'Write operations are on by default'; verify the effective setting for your experience." Cite https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq#work-iq-key-features as well. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp
-- [supported, minor] Scope; Governance guidance: Before rollout / behaviour: The documented one-time tenant setup creates the Work IQ service principal. | Found: This section creates the Work IQ service principal in your organization, which provisions the Work IQ resource so your applications can request tokens for it. | Fix: Add to the Scope setup sentence: "The MCP overview also says the service principal is created automatically on first use; manual provisioning can be needed to configure policy before that use." Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/overview#how-tools-work. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist's instruction to confirm Work IQ service-principal setup is represented in the controls table. | Found: "confirm whether the tenant has completed the one-time Work IQ service principal setup"; the controls table contains only "Work IQ MCP tenant policy" and "Spending policies and consumption for Work IQ API usage". | Fix: Remove the service-principal setup check from the Before rollout bullet, leaving "Inventory where Work IQ is already in use." Retain the sourced setup background in Scope; do not add a control row as part of this correction.
 -->

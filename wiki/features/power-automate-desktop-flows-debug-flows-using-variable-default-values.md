@@ -17,8 +17,8 @@ impact: "low"
 defaultState: "user-opt-in"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "Not yet published as a separate licence statement. The Learn page for this feature (Manage variables and the variables pane) names no licence or meter."
+  model: "included"
+  notes: "For local authoring and attended execution, Power Automate Free includes authoring and running desktop flows locally; connector usage is limited to standard connectors. Free users cannot share flows. The feature page names no separate licence or meter."
 audiences: ["maker","power-platform-admin","change-adoption"]
 tags: ["power-automate","desktop-flows","debugging","automation"]
 sources:
@@ -39,6 +39,12 @@ sources:
     kind: "learn"
   - title: "Secure your data"
     url: "https://learn.microsoft.com/power-automate/guidance/desktop-flow-coding-guidelines/secure-your-data"
+    kind: "learn"
+  - title: "Types of Power Automate licenses"
+    url: "https://learn.microsoft.com/power-platform/admin/power-automate-licensing/types"
+    kind: "learn"
+  - title: "Deep dive on specific licenses"
+    url: "https://learn.microsoft.com/power-platform/admin/power-automate-licensing/deep-dive-on-specific-license#power-automate-free-license"
     kind: "learn"
 videos: []
 related: ["power-automate-ai-assisted-ui-automation-repair"]
@@ -69,19 +75,23 @@ changes:
     note: "Correction: replaced the storage-absence statements with the documented v2 schema fact, removed unsupported security and write-access assurances, reworded the admin-control statements and dropped the masking checklist bullet."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 34 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-17"
+    note: "Correction: licensing now states the Power Automate Free entitlements for local desktop flow authoring and attended runs, replacing 'Not yet published'."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 43 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-17"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 34
-  confirmed: 33
+  claims: 43
+  confirmed: 43
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "682667a6b3afb10eaf9e99944be3ec75"
+  contradicted: 0
+  attempts: 0
+  hash: "44806ba5d181a120411d856aed9492b6"
 ---
 
 ## What's changing
@@ -118,7 +128,9 @@ The point for service owners is where the values end up. Learn says default valu
 
 ## Cost and licensing
 
-The Learn page for this feature, Manage variables and the variables pane, names no licence, meter or charge for it, and the roadmap item names none. Whether a separate licence applies is Not yet published.
+For local authoring and attended execution, Power Automate Free includes authoring and running desktop flows locally; connector usage is limited to standard connectors. Free users cannot share flows. Learn also says that when a Power Automate Free user tries to create a desktop flow in a non-default environment, they do not have entitlement for that operation and are prompted to start a Trial. Sources: [Types of Power Automate licenses](https://learn.microsoft.com/power-platform/admin/power-automate-licensing/types) and [Deep dive on specific licenses](https://learn.microsoft.com/power-platform/admin/power-automate-licensing/deep-dive-on-specific-license#power-automate-free-license).
+
+The Learn page for this feature, Manage variables and the variables pane, names no separate licence, meter or charge for it, and the roadmap item names none.
 
 The indirect cost is maker time to learn the commands and, where makers use sensitive values, a short rule on what may be used as a default.
 
@@ -170,10 +182,4 @@ Sensitive-variable masking is a separate maker setting on the same page and does
 risk: Low. It is a designer-side debugging aid for makers, and Microsoft Learn documents no new data access; the one exposure to watch is default values kept in the flow definition.
 cost: Low. The only cost the sources show is maker time and training; the Learn page for this feature names no licence or meter, and the roadmap item states none.
 impact: Low. Only makers who build and debug desktop flows in the designer notice it; production runs are described by the roadmap as unaffected.
--->
-
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.model and licensing.notes; Cost and licensing / licensing: The applicable licensing model is unknown and whether a separate licence applies is Not yet published. | Found: The Power Automate Free license includes creating and running cloud flows (without sharing), as well as authoring and running desktop flows locally (attended). Connector usage is limited to standard connectors only. | Fix: Set licensing.model to included. Replace the unpublished-licensing statements and notes with: 'For local authoring and attended execution, Power Automate Free includes authoring and running desktop flows locally; connector usage is limited to standard connectors. Free users cannot share flows.' Cite https://learn.microsoft.com/power-platform/admin/power-automate-licensing/types and https://learn.microsoft.com/power-platform/admin/power-automate-licensing/deep-dive-on-specific-license#power-automate-free-license. Keep the narrower observation that the feature page names no separate licence or meter; do not extend Free entitlements to sharing or premium connectors. | Source: https://learn.microsoft.com/power-platform/admin/power-automate-licensing/types
 -->

@@ -1,0 +1,832 @@
+{
+  "slug": "power-apps-new-canvas-controls-card-gallery-persona-avatar-group-and-metrics-card",
+  "roadmapId": 580456,
+  "title": "Power Apps: Card gallery, Persona, Avatar group and Metrics card canvas controls reach general availability",
+  "status": "held",
+  "date": "2026-11-17",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [
+    "claim 66: severity major on a rationale: risk rating lowered to minor; ratings are judgements and cannot hold a page"
+  ],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-17",
+    "reasons": [
+      "1 blocking finding (claim 52)"
+    ]
+  },
+  "counts": {
+    "claims": 66,
+    "confirmed": 63,
+    "unconfirmed": 3,
+    "contradicted": 0,
+    "blocker": 1,
+    "major": 0,
+    "minor": 4
+  },
+  "summary": "Hold: the checklist asks makers to review an OnChange formula on Persona, but Microsoft's Persona reference documents OnSelect, not OnChange. The roadmap facts and maker-side settings path are supported; the blanket assertion that the controls read no data on their own also needs narrowing.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap plans general availability for Card gallery, Persona, Avatar group and Metrics card canvas controls.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The following controls for canvas apps are reaching general availability:\n\n•\tCard gallery\n\n•\tPersona\n\n•\tAvatar group\n\n•\tMetrics card",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap describes reusable patterns for responsive record cards, individual and grouped identities, and key metrics.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "These controls provide reusable patterns for responsive record cards, individual and grouped identities, and key metrics.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Makers supply data, presence values and metric calculations through properties and Power Fx.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Makers supply data, presence values, and metric calculations through properties and Power Fx.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: targetDate; summary; What's changing; Governance guidance",
+      "type": "record",
+      "claim": "January CY2027 is the roadmap target, not a committed release date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"January CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: products; Scope",
+      "type": "record",
+      "claim": "The roadmap product is Power Apps.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Power Apps\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-11-17T19:05:12.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-17T19:05:12\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The record does not list US Government clouds or explicitly exclude them.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Card gallery displays records as responsive cards.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-card-gallery",
+      "quote": "Display records as responsive cards with optional grouping and selection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Card gallery supports optional grouping.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-card-gallery",
+      "quote": "You can organize cards into collapsible groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Card gallery supports selection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-card-gallery",
+      "quote": "The gallery adjusts its column count to the available width and supports single or multiple selection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Card gallery uses a predefined layout rather than a template of child controls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-card-gallery",
+      "quote": "Unlike a classic gallery, Card Gallery uses a predefined card layout rather than a template of child controls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Persona displays one person's avatar.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-persona",
+      "quote": "Use the Persona control to display one person or entity. The control combines an avatar with up to three text lines and an optional presence badge.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Persona displays up to three text lines.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-persona",
+      "quote": "The control combines an avatar with up to three text lines and an optional presence badge.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Persona has an optional presence badge.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-persona",
+      "quote": "The control combines an avatar with up to three text lines and an optional presence badge.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Avatar group displays several people as avatars.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-avatar-group",
+      "quote": "Display several people or entities as avatars, with an overflow list for items that don't fit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Avatar group has an overflow list.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-avatar-group",
+      "quote": "Display several people or entities as avatars, with an overflow list for items that don't fit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Why it matters; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Metrics card displays a formatted value supplied through DisplayText.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-metrics-card",
+      "quote": "DisplayText | Text displayed as the main metric. Format numbers or dates with Power Fx before displaying them",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Metrics card supports a title.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-metrics-card",
+      "quote": "Title | Heading that identifies the metric. A blank value hides the heading.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Metrics card supports a description.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-metrics-card",
+      "quote": "Description | Supporting text below the metric, such as a period and region. A blank value hides this section.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Metrics card supports an optional comparison.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-metrics-card",
+      "quote": "To show a metric without a comparison, set both TrendValue and TrendText to Blank().",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Risk assessment; Governance guidance; Open questions",
+      "type": "availability",
+      "claim": "Card gallery's Learn page describes a preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-card-gallery",
+      "quote": "This is a preview feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing; Risk assessment; Governance guidance; Open questions",
+      "type": "availability",
+      "claim": "Persona's Learn page describes a preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-persona",
+      "quote": "The Persona modern control is a preview feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; Risk assessment; Governance guidance; Open questions",
+      "type": "availability",
+      "claim": "Avatar group's Learn page describes a preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-avatar-group",
+      "quote": "This is a preview feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing; Risk assessment; Governance guidance; Open questions",
+      "type": "availability",
+      "claim": "Metrics card's Learn page describes a preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-metrics-card",
+      "quote": "This is a preview feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing",
+      "type": "availability",
+      "claim": "The modern controls reference labels Persona as preview but does not apply that label to the other three controls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-controls-reference",
+      "quote": "Avatar group - Display a group of people with avatars and overflow handling. Card gallery - Display records in a responsive layout of cards. Metrics card - Display a metric with supporting context. Persona (preview)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[0].ui; What's changing; Scope; Governance controls",
+      "type": "admin-path",
+      "claim": "A maker enables modern controls and themes per app at Settings > Updates > New > Modern controls and themes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/overview-modern-controls",
+      "quote": "With your canvas app open for editing: 1. On the command bar, select Settings > Updates. 2. Select the New tab and then turn on Modern controls and themes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[0].api",
+      "type": "absence",
+      "claim": "No API or automation equivalent for the per-app Modern controls and themes toggle is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Apps modern controls themes setting PowerShell Set-AdminPowerApp Power Platform API pac admin enable disable; Power Apps modern controls themes Power Platform API administration enable setting canvas app. Read overview, pac admin and Power Apps PowerShell search excerpts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: impact",
+      "type": "default",
+      "claim": "The capability is maker opt-in, using modern controls in the app designer rather than a documented administrator enablement switch.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/overview-modern-controls",
+      "quote": "Select the New tab and then turn on Modern controls and themes. The app refreshes with the new app authoring menu. Modern controls are part of existing categories.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "summary; Governance controls; Open questions; rationale: risk",
+      "type": "absence",
+      "claim": "No administrator action or administrator-level switch specific to these four controls is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Apps Card gallery Persona Avatar group Metrics card admin disable rollout default existing apps role; modern controls admin disable. Opened all four references and the modern controls overview; no specific admin switch or required admin action found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[0].note; Governance controls",
+      "type": "absence",
+      "claim": "Learn does not document individual governance of the four controls through the general Modern controls and themes toggle.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Apps Card gallery Persona Avatar group Metrics card admin disable rollout default existing apps role. Opened the overview and four control pages; overview documents general app enablement, not four individual governance switches.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Why it matters; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated whether rollout inserts the controls into existing apps.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Apps Card gallery Persona Avatar group Metrics card admin disable rollout default existing apps role. Opened all four control pages and the modern controls overview; none describes automatic insertion into existing apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "A rollout mechanism specific to the four controls is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Apps Card gallery Persona Avatar group Metrics card admin disable rollout default existing apps role. Read the roadmap, four control references and modern controls overview; no feature-specific rollout mechanism found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "The control references do not state a required role specific to these four controls.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Apps Card gallery Persona Avatar group Metrics card admin disable rollout default existing apps role. Opened the four control pages and overview; no control-specific role prerequisite found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Data exposure; Governance guidance; rationale: risk",
+      "type": "default",
+      "claim": "Persona's Name defaults to User().FullName.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-persona",
+      "quote": "Name – The primary text line and the name used to derive avatar initials. The default is User().FullName.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Data exposure; Governance guidance; rationale: risk",
+      "type": "default",
+      "claim": "Persona's Caption defaults to User().Email.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-persona",
+      "quote": "Caption – The secondary text line. The default is User().Email.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Data exposure; Governance guidance; rationale: risk",
+      "type": "default",
+      "claim": "Persona's Image defaults to User().Image.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-persona",
+      "quote": "Image – The image displayed in the avatar. The default is User().Image. When the image is blank or unavailable, the avatar displays initials derived from Name.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Why it matters; Risk assessment: Security & identity; Governance guidance",
+      "type": "behaviour",
+      "claim": "Persona uses formula-driven presence values rather than retrieving live Teams or Microsoft Graph presence itself.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-persona",
+      "quote": "Presence and OutOfOffice are formula-driven display values. The control doesn't retrieve live presence from Microsoft Teams or Microsoft Graph.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Why it matters; Risk assessment: Security & identity; Governance guidance",
+      "type": "behaviour",
+      "claim": "Avatar group displays app-supplied presence without establishing a live presence connection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-avatar-group",
+      "quote": "Presence reflects the values your app supplies; the control doesn't establish a live presence connection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Avatar group displays people from an Items table with formula-supplied names, images and status values.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-avatar-group",
+      "quote": "The control doesn't look up people or presence automatically. Supply the names, images, and status values through your formulas.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Why it matters; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Card gallery displays the table supplied to Items, which can be a data source, collection or inline table.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-card-gallery",
+      "quote": "Items | Table of records to display. Use a data source, collection, or inline Table() expression.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance",
+      "type": "behaviour",
+      "claim": "Persona runs maker-authored actions through OnSelect.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-persona",
+      "quote": "OnSelect – Actions to perform when the user selects the Persona.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance",
+      "type": "behaviour",
+      "claim": "Avatar group runs maker-authored actions through OnSelect.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-avatar-group",
+      "quote": "OnSelect | Optional actions to run when a user selects an avatar, including an item in the overflow list.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance",
+      "type": "behaviour",
+      "claim": "Card gallery runs maker-authored actions through OnSelect.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-card-gallery",
+      "quote": "OnSelect – Action that runs when a user activates a selectable card.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Metrics card runs maker-authored actions through OnSelect.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-metrics-card",
+      "quote": "OnSelect – Action that runs when a user activates the card. The card becomes an activation target when this property has a formula and DisplayMode is DisplayMode.Edit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance",
+      "type": "behaviour",
+      "claim": "Card gallery has an OnChange action formula.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-card-gallery",
+      "quote": "OnChange – Action that runs when a user interaction changes the selection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance",
+      "type": "behaviour",
+      "claim": "Avatar group has an OnChange action formula.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-avatar-group",
+      "quote": "OnChange | Actions to run when the control reports selection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Persona has an OnChange formula for makers to review alongside OnSelect.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Persona OnChange modern control. Opened the complete Persona reference, including Behavior and Limitations: it documents OnSelect and DisplayMode, not OnChange; search results document OnChange for Avatar group and Card gallery instead.",
+      "severity": "blocker",
+      "fix": "Replace the checklist bullet with: 'Review OnSelect formulas on Avatar group, Card gallery and Persona, and OnChange formulas on Avatar group and Card gallery, before apps are shared.' Persona's reference is https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-persona."
+    },
+    {
+      "n": 53,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The Learn examples for these controls demonstrate Navigate as well as Notify.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Persona Card Gallery Navigate OnSelect. Opened all four control pages: Persona and Avatar group examples use Notify, but none of the four examples uses Navigate. Search returned Navigate for other canvas-app controls.",
+      "severity": "minor",
+      "fix": "Replace 'such as Navigate or Notify in the Learn examples' with 'such as Notify in the Persona and Avatar group Learn examples'."
+    },
+    {
+      "n": 54,
+      "where": "Risk assessment: Change & support; Cost and licensing",
+      "type": "behaviour",
+      "claim": "Card gallery uses a fixed shared card height.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-card-gallery",
+      "quote": "All cards share CardHeight. Per-record automatic height isn't available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Card gallery exposes no built-in search property.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-card-gallery",
+      "quote": "The control doesn't expose built-in search and sorting properties.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Card gallery exposes no built-in sorting property.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-card-gallery",
+      "quote": "The control doesn't expose built-in search and sorting properties.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Why it matters; Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "Card gallery virtualization does not guarantee delegation or retrieval of every record.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-card-gallery",
+      "quote": "Virtualization reduces the number of rendered cards; it doesn't guarantee that a data-source formula delegates or retrieves every record. Check the delegation behavior of your data source and formulas.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Metrics card's main value is text rather than a numeric input.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-metrics-card",
+      "quote": "The main value is text, not a numeric input.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Why it matters; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Metrics card does not aggregate records; makers calculate the metric.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-metrics-card",
+      "quote": "The card displays the values you provide. It doesn't calculate an aggregate, compare periods, or infer whether a change is favorable. Use Power Fx formulas to calculate your metric and set its presentation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Studio offers no automatic upgrade action from another control to Persona.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-persona",
+      "quote": "Persona is a new control. Studio doesn't offer an upgrade action from another control.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The four control reference pages name no control-specific licence or meter.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Apps Card gallery Persona Avatar group Metrics card licensing premium price meter. Opened all four control references and the Power Platform licensing FAQ; the control pages contain no licence or meter section.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "front matter: licensing.model; summary; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "A licensing model specific to the four controls is not yet published, so the feature's model is unknown.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Apps Card gallery Persona Avatar group Metrics card licensing premium price meter. Read four control pages, Power Platform licensing FAQ, Power Apps licensing and pay-as-you-go excerpts; no separate model for these controls found. General app licensing remains documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The licensing FAQ says access to premium, on-premises and custom connectors requires a standalone Power Apps or Power Automate plan licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
+      "quote": "A standalone Power Apps or Power Automate plan license is required to access all Premium, on-premises, and custom connectors.",
+      "severity": "minor",
+      "fix": "The cited FAQ supports the quotation, but qualify its application to canvas apps. Replace the connector-licensing sentence in licensing.notes and the corresponding Cost and licensing paragraph with: 'Apps using premium connectors need an appropriate Power Apps entitlement; the Power Apps per-app pay-as-you-go meter also supports access without a standalone Power Apps licence.' Cite https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq#general and https://learn.microsoft.com/power-platform/admin/pay-as-you-go-meters#how-do-meters-work, which documents access to any type of app without a Power Apps licence. Do not present a Power Automate plan as interchangeable app licensing."
+    },
+    {
+      "n": 64,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Binding app content to premium connectors introduces the app's connector-related licensing requirements.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
+      "quote": "A standalone Power Apps or Power Automate plan license is required to access all Premium, on-premises, and custom connectors.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Existing app-sharing and data-connection permissions govern exposure of the data bound into these canvas apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/share-app-resources",
+      "quote": "Other connections require users to create their own connections and explictly grant security privileges (such as security roles for the Dataverse, OneDrive for Business, SQL Server with Microsoft Entra authentication).",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/power-apps/maker/canvas-apps/share-app-resources to sources for the general app-sharing and connection-permission claim; that page also documents connections implicitly shared with an app."
+    },
+    {
+      "n": 66,
+      "where": "rationale: risk",
+      "type": "behaviour",
+      "claim": "All four controls read no data on their own.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Card Gallery Metrics Card data connection; Power Apps Card gallery Persona Avatar group Metrics card admin disable rollout default existing apps role. Read four control references. They document supplied properties and specific presence limitations, not this blanket data-access guarantee.",
+      "severity": "minor",
+      "fix": "Replace 'The controls display values a maker supplies and read no data on their own' with 'Makers supply data, presence values and metric calculations through properties and Power Fx', matching the roadmap record. Retain the following Persona-defaults sentence."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-17T22:07:04.516Z",
+    "summary": {
+      "links": 8,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=580456",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-controls-reference",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-card-gallery",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-persona",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-avatar-group",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-metrics-card",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/overview-modern-controls",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether an app uses modern controls and themes",
+        "docs": "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/overview-modern-controls",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Updates",
+          "New",
+          "Modern controls and themes"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

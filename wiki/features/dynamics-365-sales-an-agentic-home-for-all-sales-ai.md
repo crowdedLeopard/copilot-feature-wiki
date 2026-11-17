@@ -12,12 +12,12 @@ platforms: ["Web"]
 targetDate: "January CY2027"
 previewDate: "December CY2026"
 risk: "medium"
-cost: "medium"
+cost: "low"
 impact: "medium"
 defaultState: "unknown"
 action: "prepare"
 licensing:
-  model: "mixed"
+  model: "unknown"
   notes: "Learn says Sales Enterprise, Sales Premium and Microsoft Relationship Sales include the basic features of Sales agent, and premium features need a Microsoft 365 Copilot licence. Nothing is yet published for this home itself."
 audiences: ["m365-admin","power-platform-admin","service-owner","change-adoption"]
 tags: ["sales-agent","dynamics-365","m365-copilot","agents","user-experience","admin-controls"]
@@ -87,19 +87,23 @@ changes:
     note: "New briefing: roadmap item 579978, Sales agent as the agentic home in Dynamics 365 Sales; Learn does not yet describe the home itself."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 64 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-17"
+    note: "Correction: softened the claim that the home replaces every seller's opening screen, set licensing to not yet published and cost to low, narrowed the risk rationale, and removed the Dataverse capacity step."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 68 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-17"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 64
-  confirmed: 59
-  unconfirmed: 2
-  contradicted: 3
-  attempts: 1
-  hash: "ec2da87e6777b85413a7127a5d1342e3"
+  claims: 68
+  confirmed: 68
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "84e6ddfb4532e0a29c963d9103a10fc7"
 ---
 
 ## What's changing
@@ -112,7 +116,7 @@ The roadmap record lists the item as In development, with a preview target of De
 
 ## Why it matters
 
-This is a change to the screen every seller in Dynamics 365 Sales opens first, and the roadmap describes it as replacing a traditional dashboard. Microsoft has not stated whether sellers get it automatically or an administrator turns it on, so plan on the possibility that it arrives without a switch being flipped and prepare communication for sellers and sales managers.
+The roadmap describes a home that sellers can land in instead of a traditional dashboard. Microsoft has not stated whether sellers get it automatically or an administrator turns it on, so plan on the possibility that it arrives without a switch being flipped and prepare communication for sellers and sales managers.
 
 For the service owner the questions are data and licences. Sales agent reads CRM tables and, with a Microsoft 365 Copilot licence, Microsoft Graph data such as email and meetings. The existing Sales agent access settings and Dataverse security roles are the controls Learn documents today; confirm with Microsoft that they govern the new home before relying on them.
 
@@ -167,7 +171,6 @@ Learn says access to Dynamics 365 Sales Enterprise or Premium can make a user el
 ### After rollout
 
 - Ask pilot sellers whether meeting preparation and past-meeting review appear in the home, since Learn's current preview page says meeting preparation is not accessible in Dynamics 365.
-- Review Dataverse capacity if Dataverse search is newly enabled.
 - Collect seller feedback on recommendations and record the questions for Microsoft.
 
 ## Governance controls
@@ -199,18 +202,7 @@ Microsoft Learn documents no API or PowerShell cmdlet for the Sales agent access
 - Will the home need a Microsoft 365 Copilot licence, or will Sales Enterprise or Premium be enough?
 
 <!-- rationale
-risk: Medium. The home surfaces agent recommendations and meeting context drawn from CRM and Microsoft 365 data, and Microsoft has not said whether it is on by default or whether a switch governs this landing page specifically.
-cost: Medium. Learn says Sales Enterprise and Premium licences include the basic features of Sales agent, while premium features need a Microsoft 365 Copilot licence; no price or meter is published for this home.
-impact: Medium. It changes what sellers see when they open Dynamics 365 Sales, so the sales organisation notices, but it is not aimed at the wider workforce.
--->
-
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Why it matters: first sentence; rationale: impact / availability: This changes the screen every Dynamics 365 Sales seller opens first. | Found: Searched: "Sales agent" "home" "landing" dashboard default; "Sales agent" "agentic home". Read roadmap, use-sales-chat and install-sales-app. The record says sellers "can land" in Sales agent, not that every seller's opening screen is replaced. | Fix: Replace the first sentence of Why it matters with "The roadmap describes a home that sellers can land in instead of a traditional dashboard." Replace the impact rationale with "Medium. The planned home is aimed at sellers in Dynamics 365 Sales, rather than the wider workforce; Microsoft has not stated whether it replaces the opening screen for every seller."
-- [contradicted, blocker] front matter: licensing.model / consistency: The licensing model for this change is mixed. | Found: model: "mixed"; licensing.notes: "Nothing is yet published for this home itself." Open questions: "Will the home need a Microsoft 365 Copilot licence, or will Sales Enterprise or Premium be enough?" | Fix: Set licensing.model to "unknown". Keep the existing licensing notes distinguishing documented general Sales agent licensing from the unpublished licensing for this home.
-- [contradicted, blocker] front matter: cost; rationale: cost / consistency: The new home has a medium cost because general Sales agent premium features need Microsoft 365 Copilot. | Found: cost: "medium"; licensing.notes: "Nothing is yet published for this home itself." Cost and licensing: "No price, meter or Copilot Credits rate is published for the agentic home itself" | Fix: Set cost to "low". Replace the cost rationale with "Low. Known costs are administrator time, seller communication and possible Dataverse search storage growth. Licensing for this home is not yet published." The standard requires rating the known cost of this change, not carrying over a general product add-on requirement.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [unsupported, minor] rationale: risk / behaviour: The new home surfaces meeting context drawn from both CRM and Microsoft 365 data. | Found: Searched: "Sales agent" "agentic home"; Dynamics 365 Sales "agentic home" default enable dashboard licensing price actions. Read use-sales-chat, set-up-sales-chat and roadmap. General chat has these data sources, but the home's grounding mechanism is not stated. | Fix: Replace the risk rationale with "Medium. The roadmap plans agent recommendations and customer-meeting preparation in a new landing experience, while its default and dedicated controls are not yet stated."
-- [contradicted, minor] Governance guidance: After rollout / consistency: The checklist's instruction to review Dataverse capacity has a corresponding governance control row. | Found: After rollout: "Review Dataverse capacity if Dataverse search is newly enabled." The controls table covers home selection, application access, environment Copilot enablement and the Sales Chat table list, but not capacity monitoring. | Fix: Remove "Review Dataverse capacity if Dataverse search is newly enabled" from the governance checklist; the capacity-monitoring step has no corresponding control row. Keep the documented storage-cost explanation.
+risk: Medium. The roadmap plans agent recommendations and customer-meeting preparation in a new landing experience, while its default and dedicated controls are not yet stated.
+cost: Low. Known costs are administrator time, seller communication and possible Dataverse search storage growth. Licensing for this home is not yet published.
+impact: Medium. The planned home is aimed at sellers in Dynamics 365 Sales, rather than the wider workforce; Microsoft has not stated whether it replaces the opening screen for every seller.
 -->

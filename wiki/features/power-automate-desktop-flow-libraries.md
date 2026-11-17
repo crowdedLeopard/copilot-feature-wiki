@@ -4,7 +4,7 @@ slug: "power-automate-desktop-flow-libraries"
 roadmapId: 579910
 topic: "power-platform"
 products: ["Power Automate"]
-summary: "Makers will be able to publish libraries of reusable subflows and use them across desktop flows. Preview is targeted for January CY2027. Licensing, controls and sharing rules are not yet published; no admin action is required."
+summary: "Makers will be able to publish libraries of reusable subflows and use them across desktop flows. Preview is targeted for January CY2027. Licensing, controls and sharing rules are not yet published; Microsoft has not stated whether admin enablement is required."
 status: "in-development"
 releasePhase: ["General Availability","Preview"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -34,6 +34,9 @@ sources:
   - title: "Manage feature settings"
     url: "https://learn.microsoft.com/power-platform/admin/settings-features"
     kind: "learn"
+  - title: "Introduction to desktop flows"
+    url: "https://learn.microsoft.com/power-automate/desktop-flows/introduction"
+    kind: "learn"
 videos: []
 related: ["power-automate-desktop-flows-configure-notifications-for-desktop-flow-checker-in-admin-por","power-automate-ai-assisted-ui-automation-repair","managed-environments"]
 controls:
@@ -51,19 +54,23 @@ changes:
     note: "First briefing: roadmap-only description of desktop flow libraries, with the template comparison and open questions on licensing, sharing and controls."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 44 statements contradicted, 3 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-17"
+    note: "Corrected after verification: removed the unsupported maker-access control claim, reworded the unattended-flows sentence and the summary's admin-action clause, and added the Introduction to desktop flows source."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 50 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-17"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 44
-  confirmed: 41
-  unconfirmed: 3
+  claims: 50
+  confirmed: 50
+  unconfirmed: 0
   contradicted: 0
-  attempts: 1
-  hash: "b21413956adb32219f874afb407cb472"
+  attempts: 0
+  hash: "85400180491a19a7e3977a5141ebf389"
 ---
 
 ## What's changing
@@ -94,7 +101,7 @@ Microsoft has not stated what happens on arrival or whether an administrator has
 
 **Autonomy & actions**
 
-- The roadmap item describes reusable building blocks inside desktop flows and no agent or autonomous behaviour. A flow that already runs unattended would only change if its maker adds a library to it.
+- The roadmap item describes reusable building blocks inside desktop flows and no agent or autonomous behaviour. The roadmap does not describe any change to existing unattended flows.
 
 **Change & support**
 
@@ -143,7 +150,7 @@ The roadmap item names Power Automate, the Desktop platform and the Worldwide (S
 </tbody>
 </table>
 
-No library-specific setting is documented, so the table has one row stating that gap. Existing environment-level controls for desktop flows, such as the Features page in Power Platform admin center, are documented for other desktop flow capabilities and Microsoft has not confirmed that they cover libraries. Until Microsoft says otherwise, control sits with who is given maker access to an environment.
+No library-specific setting is documented, so the table has one row stating that gap. Existing environment-level controls for desktop flows, such as the Features page in Power Platform admin center, are documented for other desktop flow capabilities and Microsoft has not confirmed that they cover libraries.
 
 ## Open questions
 
@@ -158,12 +165,10 @@ cost: Low. The only cost the sources show is admin and maker time to agree reuse
 impact: Medium. Makers who build desktop flows would notice it; the roadmap item names no end-user or admin-facing change.
 -->
 
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Governance controls: final sentence / applicability: Until library-specific documentation appears, control over libraries sits with who is given maker access to an environment. | Found: Searched: "desktop flow libraries" connections credentials sharing permissions version storage; Power Automate desktop flows libraries data policies environment maker access unattended existing flows. Read Manage security for Power Automate; it does not establish library access requirements. | Fix: Remove 'Until Microsoft says otherwise, control sits with who is given maker access to an environment.' The general Environment maker role documentation does not establish library permissions.
-- [unsupported, blocker] Risk assessment: Autonomy & actions / default: A flow that already runs unattended would only change if its maker adds a library to it. | Found: Searched: "desktop flow libraries" "unattended" "existing". Read roadmap and search excerpts from Manage desktop flows and Run unattended desktop flows; no passage guarantees existing flows change only when their maker adds a library. | Fix: Replace 'A flow that already runs unattended would only change if its maker adds a library to it.' with 'The roadmap does not describe any change to existing unattended flows.'
-- [unsupported, blocker] summary: final clause / default: No administrator action is required. | Found: Searched: "desktop flow libraries" "admin" "action"; "desktop flow libraries" enable disable tenant environment setting default rollout. Read roadmap and Manage feature settings; neither says no administrator action is required. | Fix: Replace '; no admin action is required' with '; Microsoft has not stated whether admin enablement is required'. Keep defaultState as unknown.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Data exposure / behaviour: Desktop automation actions in reusable subflows may interact with files and applications. | Found: It allows you to automate both legacy applications, such as terminal emulators, modern web and desktop applications, Excel files, and folders. | Fix: Add 'Introduction to desktop flows' (https://learn.microsoft.com/power-automate/desktop-flows/introduction) to sources for the general files-and-applications automation premise. | Source: https://learn.microsoft.com/power-automate/desktop-flows/introduction
+- [supported, minor] Risk assessment: Data exposure / behaviour: Desktop automation actions may use connectors. | Found: In desktop flows, you can utilize not only the standard set of actions available in the action library but also some of the most popular connectors. | Fix: Add https://learn.microsoft.com/power-automate/desktop-flows/how-to/use-connector-actions to sources for the general connector-action premise; retain the explicit uncertainty about library credentials. | Source: https://learn.microsoft.com/power-automate/desktop-flows/how-to/use-connector-actions
+- [supported, minor] Governance guidance: At rollout / behaviour: Flow checker rules exist for desktop flows generally, without asserting library applicability. | Found: Administrators can now configure static analysis rules for desktop flows from the Power Automate portal, including overriding rule severity, enabling or disabling individual rules | Fix: Add https://learn.microsoft.com/power-platform/released-versions/power-automate-desktop/2607 to sources for the existing Flow checker rules premise; retain the request to confirm library applicability. | Source: https://learn.microsoft.com/power-platform/released-versions/power-automate-desktop/2607#installer-version-27018426183---microsoft-store-version-1126071840-updates
+- [supported, minor] Governance guidance: At rollout / applicability: Data policies exist for desktop flows generally, without asserting library applicability. | Found: The following PowerShell script adds two specific desktop flow modules to the default data group of a DLP policy. | Fix: Add https://learn.microsoft.com/power-automate/prevent-data-loss to sources for the existing desktop-flow data-policy premise; retain the request to confirm library applicability. | Source: https://learn.microsoft.com/power-automate/prevent-data-loss#data-loss-prevention-for-desktop-flows
 -->

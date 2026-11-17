@@ -11,7 +11,7 @@ clouds: ["Worldwide (Standard Multi-Tenant)"]
 platforms: ["Desktop","Mac","Web"]
 targetDate: "November CY2026"
 previewDate: null
-risk: "medium"
+risk: "low"
 cost: "low"
 impact: "low"
 defaultState: "admin-opt-in"
@@ -39,6 +39,12 @@ sources:
     kind: "learn"
   - title: "Reality Defender RealMeeting (general)"
     url: "https://learn.microsoft.com/microsoft-365-app-certification/teams/reality-defender-realmeeting"
+    kind: "learn"
+  - title: "Pindrop Pulse (general)"
+    url: "https://learn.microsoft.com/microsoft-365-app-certification/teams/pindrop-security-inc-pulse"
+    kind: "learn"
+  - title: "Microsoft Defender for Office 365 support for Microsoft Teams"
+    url: "https://learn.microsoft.com/defender-office-365/mdo-support-teams-about"
     kind: "learn"
   - title: "Overview of agent and app management and governance in Teams admin center"
     url: "https://learn.microsoft.com/microsoftteams/manage-apps"
@@ -68,9 +74,9 @@ controls:
       docs: "https://learn.microsoft.com/microsoftteams/manage-apps"
     api:
       kind: "powershell"
-      call: "Update-M365TeamsApp -Id <app-id> -IsBlocked $true"
+      call: "Update-M365TeamsApp -Id <app-id> -IsBlocked <value>"
       docs: "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp"
-    note: "General app control: Microsoft has not confirmed it is the only gate for a detection provider app. Some apps show as Blocked by publisher until configured."
+    note: "General app control: not confirmed as the only gate. The reference describes -IsBlocked $true as unblocking; use Manage apps > app > Block until Microsoft clarifies. Some apps show as Blocked by publisher until configured."
 confidence: "medium"
 created: "2026-11-17"
 updated: "2026-11-17"
@@ -80,19 +86,23 @@ changes:
     note: "New briefing: documents the meeting policy parameters, provider app controls and permissions; Microsoft's notice moved Targeted Release to late November 2026."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 5 of 52 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-17"
+    note: "Corrected after verification: App ID wording, Defender for Office 365 Plan 2 for event hunting, app block command caveat, provider response actions, risk lowered to low."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 61 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-17"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 52
-  confirmed: 46
-  unconfirmed: 1
-  contradicted: 5
-  attempts: 1
-  hash: "dfe6cb418c4887fe1e8527f23f1f571f"
+  claims: 61
+  confirmed: 58
+  unconfirmed: 0
+  contradicted: 3
+  attempts: 0
+  hash: "778da215e5347862f1b0e77f6af75050"
 ---
 
 ## What's changing
@@ -101,7 +111,7 @@ Teams is adding a way for certified third-party providers to tell meeting partic
 
 Microsoft Learn documents the pieces administrators and providers touch. The Microsoft Graph beta reference for `participant: reportSyntheticMedia` says a certified detection bot admitted to the call reports a flagged participant, and that the result is propagated to all participants through roster updates. The `Set-CsTeamsMeetingPolicy` reference adds two parameters, `SyntheticMediaDetection` and `SyntheticMediaDetectionAppId`, that point a meeting policy at a provider's Teams App ID. Providers such as Reality Defender and Pindrop Pulse have Microsoft 365 App Certification pages. Learn has no overview page for the feature itself, so how the experience looks to participants is known only from the roadmap description and those provider pages.
 
-The roadmap item is In development, with a target of November CY2026, release phases General Availability and Targeted Release, and platforms Desktop, Mac and Web, for Worldwide (Standard Multi-Tenant) only. Microsoft's notice MC1509787, updated 17 November 2026, says Targeted Release (Worldwide) begins in late November 2026 (previously mid-November) and completes in late November 2026, and that Microsoft will announce General Availability through Message center. The notice gives no act-by date.
+The roadmap item is In development, with a target of November CY2026, release phases General Availability and Targeted Release, and platforms Desktop, Mac and Web, for Worldwide (Standard Multi-Tenant) only. Microsoft's notice MC1509787, updated 17 November 2026, says Targeted Release (Worldwide) begins in late November 2026 (previously mid-November) and is expected to complete by late November 2026, and that Microsoft will announce General Availability through Message center. The notice gives no act-by date.
 
 ## Why it matters
 
@@ -119,11 +129,11 @@ Microsoft's notice describes an opt-in route: administrators evaluate and select
 **Security & identity**
 
 - A third-party bot can report detections only when the tenant administrator grants the app the `Calls.ReportSyntheticMedia.All` application permission, per the Graph reference. Grant it only to the provider app you have assessed.
-- The `SyntheticMediaDetectionAppId` page warns that saving a policy does not confirm the App ID belongs to a supported provider, and an incorrect or unsupported App ID can stop the detection bot joining eligible meetings. A wrong value fails quietly, so test it.
+- The `SyntheticMediaDetectionAppId` page warns that saving a policy does not confirm the App ID belongs to a supported provider, and an incorrect or unsupported App ID can stop the detection bot joining eligible meetings. A successful save is not proof that the bot can join, so test it.
 
 **Autonomy & actions**
 
-- The roadmap describes in-meeting experiences and controls driven by the provider's signals. Microsoft has not documented what actions a participant or organiser can take on a detection, so do not rely on automatic ejection or blocking until it does.
+- The roadmap describes in-meeting experiences and controls driven by the provider's signals. Microsoft has not documented a provider-independent Teams response workflow; Reality Defender's publisher-attested listing says hosts can rescan a participant or end the meeting if manipulation is detected. Do not rely on automatic ejection or blocking until Microsoft documents it.
 - Detection is a provider's classification, not proof. Treat a flag as a prompt for verification and plan how people should respond.
 
 **Change & support**
@@ -163,7 +173,7 @@ Providers are separate vendors with their own terms, as the provider listings sh
 
 ### After rollout
 
-- Review `SyntheticMediaDetectionEvents` in Defender advanced hunting for detections and for gaps, if Defender for Office 365 is deployed.
+- Review `SyntheticMediaDetectionEvents` in Defender advanced hunting if Microsoft Defender for Office 365 Plan 2 is licensed and deployed and an approved detection engine is in use.
 - Watch Message center for the General Availability announcement and for any licensing notice.
 - Re-read the provider's terms when it changes them, and block the app in Manage apps if you no longer accept them.
 
@@ -175,38 +185,32 @@ Providers are separate vendors with their own terms, as the provider listings sh
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether detection is permitted and which provider a meeting policy uses</strong><br><small>User</small><br><small class="controls__note">Applies to meetings organised by users assigned the policy. Use -SyntheticMediaDetection Disabled to turn detection off for that policy.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity &lt;policy-name&gt; -SyntheticMediaDetection Enabled -SyntheticMediaDetectionAppId &lt;supported-provider-app-id&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether the provider's Teams app is allowed or blocked in the tenant</strong><br><small>App</small><br><small class="controls__note">General app control: Microsoft has not confirmed it is the only gate for a detection provider app. Some apps show as Blocked by publisher until configured.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Manage apps <a href="https://learn.microsoft.com/microsoftteams/manage-apps" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Update-M365TeamsApp -Id &lt;app-id&gt; -IsBlocked $true</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether the provider's Teams app is allowed or blocked in the tenant</strong><br><small>App</small><br><small class="controls__note">General app control: not confirmed as the only gate. The reference describes -IsBlocked $true as unblocking; use Manage apps &gt; app &gt; Block until Microsoft clarifies. Some apps show as Blocked by publisher until configured.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Manage apps <a href="https://learn.microsoft.com/microsoftteams/manage-apps" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Update-M365TeamsApp -Id &lt;app-id&gt; -IsBlocked &lt;value&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
 The meeting policy parameters decide whether detection is permitted and which provider is used. Setting `SyntheticMediaDetection` to Disabled turns detection off for meetings organised by users on that policy, regardless of the configured provider, and the App ID is left unchanged. The default for `SyntheticMediaDetection` is Enabled, which permits detection only when a configured provider is available; the zero GUID default for the App ID does not select a third-party provider.
 
-Microsoft Learn documents no Teams admin center setting for these two parameters at the time of writing (November 2026), although MC1509787 refers to configuring Teams meeting policies, so the table shows PowerShell only. The app allow or block control governs the provider app itself, not the meeting setting. Granting application permissions such as `Calls.ReportSyntheticMedia.All` is a tenant administrator action whose exact path was not read for this feature, so confirm it with the provider's deployment guide. The reference pages for these cmdlets do not state the admin role needed to run them.
+Microsoft Learn documents no Teams admin center setting for these two parameters at the time of writing (November 2026), although MC1509787 refers to configuring Teams meeting policies, so the table shows PowerShell only. The app allow or block control governs the provider app itself, not the meeting setting. `Update-M365TeamsApp` is documented, but its reference describes `-IsBlocked $true` as unblocking. Use Teams apps > Manage apps > app > Block until Microsoft clarifies the reference. Granting application permissions such as `Calls.ReportSyntheticMedia.All`, assigning the pilot meeting policy and reviewing detection events have no rows in the table; the two rows do not document those operations. Confirm the permission path with the provider's deployment guide. The reference pages for these cmdlets do not state the admin role needed to run them.
 
 ## Open questions
 
 - What licence, if any, does Teams require for third-party synthetic media detection, and what do providers charge? Watch Message center (MC1509787) and the Teams admin documentation.
-- What can an organiser or participant do when a participant is flagged, and which Teams admin center setting controls those in-meeting experiences?
+- Which provider-independent actions can an organiser or participant take when a participant is flagged, and which Teams admin center setting controls those in-meeting experiences?
 - The App ID parameter text refers to Microsoft Detection when it is available. Will Microsoft offer its own detection engine, and does it follow the same policy setting?
 - When will General Availability happen, and which cloud environments beyond Worldwide will be supported?
 - Is there a Teams admin center path for the meeting policy settings, and which admin role is needed to run `Set-CsTeamsMeetingPolicy`?
 
 <!-- rationale
-risk: Medium. A third-party detection bot analyses live meeting audio and video once an administrator enables it, so the provider's data handling and permissions need review before rollout.
+risk: Low. Third-party detection does not start until administrators configure a provider; review its media access and data handling before opting in.
 cost: Low. The only cost the sources show is administrator time; Microsoft has not published a Teams licence or meter for this feature, and any provider fees are not stated.
 impact: Low. Administrators choose and deploy the provider; meeting participants notice only in meetings organised by users whose policy points to a provider.
 -->
 
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Risk assessment: Security & identity / behaviour: A wrong provider App ID fails quietly. | Found: Searched: Teams SyntheticMediaDetectionAppId invalid unsupported App ID error silent logging. Opened Set-CsTeamsMeetingPolicy: it warns about successful saves and join failures, but does not state that failures produce no notification or diagnostic. | Fix: Replace 'A wrong value fails quietly, so test it.' with 'A successful save is not proof that the bot can join, so test it.'
-- [contradicted, blocker] Governance guidance: After rollout / licensing: Deploying Defender for Office 365 is the stated prerequisite for reviewing SyntheticMediaDetectionEvents. | Found: Microsoft 365 E5 and Defender for Office 365 Plan 2 extend Teams protection with a set of extra capabilities designed to disrupt the attack chain: | Fix: Replace the monitoring bullet with 'Review SyntheticMediaDetectionEvents in Defender advanced hunting if Microsoft Defender for Office 365 Plan 2 is licensed and deployed and an approved detection engine is in use.' Cite https://learn.microsoft.com/defender-office-365/mdo-support-teams-about. Its feature matrix assigns synthetic-media hunting to Plan 2, not Plan 1; this does not establish a licence requirement for enabling third-party detection itself. | Source: https://learn.microsoft.com/defender-office-365/mdo-support-teams-about
-- [contradicted, blocker] controls[1].api; Governance controls: rendered app row / command: Update-M365TeamsApp -Id <app-id> -IsBlocked $true is a verified PowerShell equivalent for blocking an app. | Found: PS C:\> Update-M365TeamsApp -Id 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b -IsBlocked $true Unblocks Bookings app (App ID 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b). | Fix: Do not present this call as a verified blocking operation. Replace the automation cell's blocking prescription with 'Update-M365TeamsApp is documented, but its reference describes -IsBlocked $true as unblocking. Use Teams apps > Manage apps > app > Block until Microsoft clarifies the reference.' Retain the reference link; do not claim that automation is undocumented or invert the Boolean based on inference. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp
-- [contradicted, blocker] Risk assessment: Autonomy & actions; Open questions / absence: Microsoft has not documented what actions a participant or organiser can take on a detection. | Found: Hosts can rescan a participant or end the meeting if manipulation is detected. | Fix: Replace the broad absence sentence with 'Microsoft has not documented a provider-independent Teams response workflow; Reality Defender's publisher-attested listing says hosts can rescan a participant or end the meeting if manipulation is detected.' Keep the advice not to assume automatic ejection or blocking. Narrow the corresponding Open questions item to provider-independent Teams actions. | Source: https://learn.microsoft.com/microsoft-365-app-certification/teams/reality-defender-realmeeting
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing: rollout paragraph / record: Targeted Release completes in late November 2026. | Found: expect to complete by late November 2026. | Fix: Replace 'and completes in late November 2026' with 'and is expected to complete by late November 2026' to preserve the notice's qualification.
-- [supported, minor] What's changing: provider certification pages / behaviour: Pindrop Pulse has a Microsoft 365 App Certification listing, alongside the cited Reality Defender listing. | Found: App name | Pindrop Pulse | ID | WA200009518 | Office 365 clients supported | Microsoft Teams | Partner company name | Pindrop Security, Inc. | Fix: Add https://learn.microsoft.com/microsoft-365-app-certification/teams/pindrop-security-inc-pulse to sources, or remove 'and Pindrop Pulse' from the sentence. | Source: https://learn.microsoft.com/microsoft-365-app-certification/teams/pindrop-security-inc-pulse
-- [contradicted, minor] front matter: risk; rationale: risk / consistency: Medium risk fits a change whose third-party data analysis starts only after administrators opt in. | Found: defaultState: "admin-opt-in"; risk: "medium"; rationale: 'A third-party detection bot analyses live meeting audio and video once an administrator enables it'. | Fix: Use risk 'low' and the rationale 'Low. Third-party detection does not start until administrators configure a provider; review its media access and data handling before opting in.' The assessment scale defines low to include nothing happening until an admin opts in.
-- [contradicted, minor] Governance guidance; Governance controls / consistency: Every control the governance checklist asks administrators to set or review appears in the controls table. | Found: Checklist: 'Grant only the permissions the provider needs'; 'assign it to pilot users'; 'Review SyntheticMediaDetectionEvents'. Table: detection policy parameters and provider app allow/block only. | Fix: The checklist steps for granting application permissions, assigning the pilot meeting policy and reviewing detection events have no corresponding controls-table rows. Do not treat the two existing rows as documenting those operations.
+- [contradicted, minor] Governance guidance: At rollout, permission-grant bullet / consistency: The checklist instructs readers to grant application permissions without a corresponding controls-table row. | Found: "Grant only the permissions the provider needs, including Calls.ReportSyntheticMedia.All if the provider requests it." versus "Granting application permissions such as Calls.ReportSyntheticMedia.All ... have no rows in the table". | Fix: Remove the At rollout bullet 'Grant only the permissions the provider needs, including `Calls.ReportSyntheticMedia.All` if the provider requests it.' The table has no permission-grant control row; retain the documented prerequisite in Scope.
+- [contradicted, minor] Governance guidance: At rollout, pilot-policy bullet / consistency: The checklist instructs readers to assign the pilot meeting policy without a corresponding controls-table row for assignment. | Found: "Set SyntheticMediaDetection and SyntheticMediaDetectionAppId on a pilot meeting policy ... and assign it to pilot users." versus "assigning the pilot meeting policy ... have no rows in the table". | Fix: Remove ', and assign it to pilot users' from the At rollout policy-setting bullet. The existing row documents updating a policy, not assigning one.
+- [contradicted, minor] Governance guidance: After rollout, detection-event review bullet / consistency: The checklist instructs readers to review detection events without a corresponding monitoring row in the controls table. | Found: "Review SyntheticMediaDetectionEvents in Defender advanced hunting if Microsoft Defender for Office 365 Plan 2 is licensed and deployed and an approved detection engine is in use." versus "reviewing detection events have no rows in the table". | Fix: Remove the After rollout bullet 'Review `SyntheticMediaDetectionEvents` in Defender advanced hunting if Microsoft Defender for Office 365 Plan 2 is licensed and deployed and an approved detection engine is in use.' The table does not document event review.
 -->

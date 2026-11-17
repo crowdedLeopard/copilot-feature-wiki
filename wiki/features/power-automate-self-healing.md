@@ -31,6 +31,9 @@ sources:
   - title: "Allow external language models for generative responses"
     url: "https://learn.microsoft.com/power-platform/admin/allow-llm-generative-responses"
     kind: "learn"
+  - title: "Claude models from Anthropic in Microsoft Online Services"
+    url: "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor"
+    kind: "learn"
   - title: "Governance in Power Automate for desktop"
     url: "https://learn.microsoft.com/power-automate/desktop-flows/governance"
     kind: "learn"
@@ -44,7 +47,7 @@ controls:
       path: "Copilot > Settings > AI providers operating as Microsoft subprocessors"
       docs: "https://learn.microsoft.com/power-automate/desktop-flows/self-healing"
     api: null
-    note: "A Microsoft 365 AI administrator enables the provider. Learn lists this as a requirement for self-healing."
+    note: "A Microsoft 365 AI administrator enables the provider. The provider's own guidance also includes View all: Copilot > Settings > View all > AI providers operating as Microsoft subprocessors."
   - governs: "Whether Anthropic models are allowed in an environment"
     scope: "environment"
     ui:
@@ -52,7 +55,7 @@ controls:
       path: "Copilot > Settings > Power Platform > External models"
       docs: "https://learn.microsoft.com/power-automate/desktop-flows/self-healing"
     api: null
-    note: "Set at environment or environment group level. A Power Platform system admin allows the provider's models."
+    note: "A Power Platform system admin allows the provider's models. The external models guidance also gives the environment path Manage > Environments > environment > Settings > Product > Features, where the setting is turned On or Off."
   - governs: "Whether Anthropic models are allowed across an environment group"
     scope: "environment-group"
     ui:
@@ -94,19 +97,23 @@ changes:
     note: "New briefing: self-healing for desktop flows is in preview on Learn; the roadmap plans a general availability log-only option that Learn does not yet describe."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 63 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-17"
+    note: "Corrected the EU Data Boundary statement to the documented exclusion for Claude models, and added the supported-error screen detail and the alternative admin paths."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 74 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-17"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 63
-  confirmed: 62
+  claims: 74
+  confirmed: 74
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "cd50c9290e6565b7209559c74a5d1e8b"
+  contradicted: 0
+  attempts: 0
+  hash: "e65a497963765905afb07ef8ad6a2178"
 ---
 
 ## What's changing
@@ -115,7 +122,7 @@ Self-healing is an AI fallback for desktop flows in Power Automate for desktop. 
 
 The roadmap item says the preview phase has an action-level opt-in for automatically trying to recover from a selector error. General availability is planned to add a flow-level opt-in that only logs the alternative, working selector when an error occurs, without applying the fix at runtime. Microsoft Learn documents only the preview behaviour at the time of writing (November 2026); it does not describe the flow-level log-only option.
 
-The Learn page, marked as prerelease documentation, says that when a supported action fails with an *Element not found* error, error handling runs in this order: retry policy, self-healing, 'Set variable / Run subflow' rules, then Continue flow run / Throw error. If the repair succeeds the flow continues; if it fails, normal error handling resumes. Learn says self-healing is runtime-only, applies to console and cloud (attended and unattended) runs and has no effect during designer runs. It covers specific actions that interact with a single UI element, and *Element not found* and *Window not found* errors.
+The Learn page, marked as prerelease documentation, says that when a supported action fails with an *Element not found* error, error handling runs in this order: retry policy, self-healing, 'Set variable / Run subflow' rules, then Continue flow run / Throw error. If the repair succeeds the flow continues; if it fails, normal error handling resumes. Learn says self-healing is runtime-only, applies to console and cloud (attended and unattended) runs and has no effect during designer runs. It covers specific actions that interact with a single UI element, and *Element not found* and *Window not found* errors. *Element not found* errors are captured on primary and secondary screens; *Window not found* errors are captured only when the window is found on the main screen.
 
 The roadmap record lists the item as In development, with a preview date of April CY2026 and a general availability target of March CY2027 for the Worldwide (Standard Multi-Tenant) cloud on the Desktop platform. The Learn page documents a preview that needs Power Automate for desktop version 2.66 or higher, and says self-healing isn't currently available in government clouds (GCC, GCC High, DoD) or sovereign clouds.
 
@@ -130,7 +137,7 @@ Nothing in the sources says existing flows change on arrival: Learn describes se
 **Data exposure**
 
 - Self-healing captures a screenshot of the missing element, the parent window title and the full desktop image, per the Learn page. Treat any machine that runs flows against sensitive applications as in scope for what a full desktop image can show.
-- Self-healing requires the Anthropic provider to be enabled as a subprocessor in the Microsoft 365 admin center and in Power Platform, and requires **Move data across regions** where that checkbox applies. The external models page states Anthropic models in Copilot Studio are currently excluded from EU Data Boundary commitments; Microsoft has not said whether that applies to self-healing.
+- Self-healing requires the Anthropic provider to be enabled as a subprocessor in the Microsoft 365 admin center and in Power Platform, and requires **Move data across regions** where that checkbox applies. Microsoft excludes Claude models deployed in Power Platform from the EU Data Boundary and, where applicable, in-country processing commitments; self-healing uses Claude Sonnet 4.5.
 
 **Security & identity**
 
@@ -166,7 +173,7 @@ Self-healing applies to supported UI and browser automation actions that interac
 
 - Decide which environments may use self-healing, then check whether the Anthropic provider is already enabled in the Microsoft 365 admin center, since Learn says Microsoft enables it by default for most commercial customers.
 - Review which desktops run flows against sensitive applications, because the full desktop image is captured when self-healing is invoked.
-- Confirm with Microsoft whether the data-movement and EU Data Boundary position of the models applies to self-healing before enabling it in regulated environments (see [Managed Environments](/concepts/managed-environments/) for the tier environment group rules require).
+- Review the documented EU Data Boundary exclusion for Claude models before enabling self-healing in regulated environments (see [Managed Environments](/concepts/managed-environments/) for the tier environment group rules require).
 
 ### At rollout
 
@@ -187,8 +194,8 @@ Self-healing applies to supported UI and browser automation actions that interac
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether the Anthropic provider is enabled as a subprocessor for the organisation</strong><br><small>Tenant</small><br><small class="controls__note">A Microsoft 365 AI administrator enables the provider. Learn lists this as a requirement for self-healing.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Settings › AI providers operating as Microsoft subprocessors <a href="https://learn.microsoft.com/power-automate/desktop-flows/self-healing" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether Anthropic models are allowed in an environment</strong><br><small>Environment</small><br><small class="controls__note">Set at environment or environment group level. A Power Platform system admin allows the provider's models.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Copilot › Settings › Power Platform › External models <a href="https://learn.microsoft.com/power-automate/desktop-flows/self-healing" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether the Anthropic provider is enabled as a subprocessor for the organisation</strong><br><small>Tenant</small><br><small class="controls__note">A Microsoft 365 AI administrator enables the provider. The provider's own guidance also includes View all: Copilot &gt; Settings &gt; View all &gt; AI providers operating as Microsoft subprocessors.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Settings › AI providers operating as Microsoft subprocessors <a href="https://learn.microsoft.com/power-automate/desktop-flows/self-healing" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether Anthropic models are allowed in an environment</strong><br><small>Environment</small><br><small class="controls__note">A Power Platform system admin allows the provider's models. The external models guidance also gives the environment path Manage &gt; Environments &gt; environment &gt; Settings &gt; Product &gt; Features, where the setting is turned On or Off.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Copilot › Settings › Power Platform › External models <a href="https://learn.microsoft.com/power-automate/desktop-flows/self-healing" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether Anthropic models are allowed across an environment group</strong><br><small>Environment group</small><br><small class="controls__note">Environments in an environment group must be managed environments. Select Apply changes to publish the rules.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environment groups › environment group › Add rules › Power Platform Anthropic <a href="https://learn.microsoft.com/power-platform/admin/allow-llm-generative-responses" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether the environment allows data to move across regions for generative AI features</strong><br><small>Environment</small><br><small class="controls__note">Learn says the checkbox isn't displayed or needed for US cloud regions.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Generative AI features › Edit › Move data across regions <a href="https://learn.microsoft.com/power-automate/desktop-flows/self-healing" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether Copilot in Power Automate is on</strong><br><small>Tenant</small><br><small class="controls__note">A general Copilot in Power Automate setting that Learn lists as required for self-healing; it is not specific to self-healing.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Copilot › Settings › Power Automate › Copilot in Power Automate › On <a href="https://learn.microsoft.com/power-automate/desktop-flows/self-healing" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
@@ -206,7 +213,7 @@ For logs, Learn points to a registry setting (`DisableRunFilesCleanup` under `HK
 
 - What does the general availability flow-level log-only option look like in the designer and the admin centre, and can administrators require it? Watch the Learn page and the roadmap item.
 - What licence and meter will apply at general availability, and will the preview's no-extra-cost position continue?
-- Do the EU Data Boundary and data-movement terms for Anthropic and OpenAI models apply to self-healing, and what happens to the captured screenshots?
+- What happens to the captured screenshots?
 - Will Microsoft add a self-healing-specific tenant or environment switch, and an API for the settings it depends on?
 
 <!-- rationale
@@ -215,12 +222,8 @@ cost: Low. The preview page says self-healing is available for organization prem
 impact: Low. Makers choose it action by action in the designer, so the people who notice are desktop flow makers and the administrators who set the AI model prerequisites.
 -->
 
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Data exposure; Governance guidance: Before rollout; Open questions / absence: Microsoft has not said whether the Anthropic EU Data Boundary exclusion applies to self-healing. | Found: Claude models deployed in Microsoft offerings such as Microsoft Copilot, Researcher, Copilot Studio, Power Platform, and Copilot in Microsoft 365 apps are currently excluded from the EU Data Boundary, and when applicable, in-country processing commitments. | Fix: Replace 'Microsoft has not said whether that applies to self-healing' with 'Microsoft excludes Claude models deployed in Power Platform from the EU Data Boundary and, where applicable, in-country processing commitments; self-healing uses Claude Sonnet 4.5.' Cite https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor. In Before rollout, replace the EU Data Boundary applicability question with 'Review the documented EU Data Boundary exclusion for Claude models before enabling self-healing in regulated environments.' In Open questions, remove the EU Data Boundary applicability question and retain the question about what happens to captured screenshots. | Source: https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing: supported errors / behaviour: Self-healing covers Element not found and Window not found errors. | Found: Applies only to Element not found and Window not found errors. Element not found errors are captured in both primary and secondary screens, while Window not found errors are only captured when the window is found in the main screen. | Fix: Add to the supported-errors sentence: 'Element not found errors are captured on primary and secondary screens; Window not found errors are captured only when the window is found on the main screen.' | Source: https://learn.microsoft.com/power-automate/desktop-flows/self-healing
-- [supported, minor] controls[0].ui; Scope; Governance controls table / admin-path: The self-healing prerequisite enables the tenant Anthropic subprocessor in Microsoft 365 admin center at Copilot > Settings > AI providers operating as Microsoft subprocessors. | Found: In Microsoft 365 admin center, go to Copilot > Settings, and then select AI providers operating as Microsoft subprocessors. Enable the Anthropic provider as a subprocessor for your organization. | Fix: Keep the cited self-healing path, but add this note: 'The provider's own guidance also includes View all: Copilot > Settings > View all > AI providers operating as Microsoft subprocessors.' Cite https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor. | Source: https://learn.microsoft.com/power-automate/desktop-flows/self-healing
-- [supported, minor] controls[1].ui; Scope; Governance controls table / admin-path: The self-healing prerequisite allows Anthropic at environment or environment-group level through Power Platform admin center > Copilot > Settings > Power Platform > External models. | Found: In Power Platform admin center, go to Copilot > Settings, and then under the Power Platform section, expand External models and enable Anthropic as a subprocessor at environment or environment group level. | Fix: Keep the self-healing path and add: 'The external models guidance also gives the environment path Manage > Environments > environment > Settings > Product > Features, where the model provider setting is turned On or Off.' Cite https://learn.microsoft.com/power-platform/admin/allow-llm-generative-responses. | Source: https://learn.microsoft.com/power-automate/desktop-flows/self-healing
+- [supported, minor] What's changing / applicability: The dedicated self-healing page lists Element not found and Window not found as supported errors. | Found: Applies only to Element not found and Window not found errors. | Fix: After the supported-error sentence, add: 'The general error-handling article still lists only Element not found errors, whereas the dedicated self-healing page lists both.' Cite https://learn.microsoft.com/power-automate/desktop-flows/errors#configure-error-handling-functionality, which says 'applies only to Element not found errors'. | Source: https://learn.microsoft.com/power-automate/desktop-flows/self-healing
 -->

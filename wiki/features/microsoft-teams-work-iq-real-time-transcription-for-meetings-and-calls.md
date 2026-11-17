@@ -28,6 +28,9 @@ sources:
   - title: "Manage transcript API access for Teams meetings"
     url: "https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access"
     kind: "learn"
+  - title: "Policy governance for Work IQ MCP"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp"
+    kind: "learn"
   - title: "Enable your tenant for Work IQ"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq"
     kind: "learn"
@@ -77,19 +80,23 @@ changes:
     note: "New briefing: Work IQ real-time transcripts for meetings and calls through MCP, with the documented Teams setting and consumption billing."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 60 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-17"
+    note: "Corrected the default and impact wording to reflect the 14 November 2026 Work IQ access date, replaced the claim that no separate MCP switch is documented, and removed three checklist steps with no controls-table row."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 68 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-17"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 60
-  confirmed: 57
+  claims: 68
+  confirmed: 68
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "b581d1f1e3d9eea46a0cdb04995816f6"
+  contradicted: 0
+  attempts: 0
+  hash: "8ddd900f8f89bddccb117eefbfba1693"
 ---
 
 ## What's changing
@@ -106,7 +113,7 @@ The same capability has its own briefing from an earlier roadmap item: [Work IQ:
 
 Live transcript access moves meeting speech to software while people are still talking, rather than after a transcript is saved. Learn says real-time transcripts received through Work IQ include speaker names, so an app or agent that receives one sees who said what.
 
-Learn documents Work IQ access as off by default, so no source says existing behaviour changes if nobody acts. The decision for a service owner is whether to turn the setting on, and for which apps to approve, before developers build on it. Because the organiser's organisation decides, the setting also applies to meetings your users organise even when the app belongs to another organisation.
+Work IQ access is off by default; Microsoft says organisations already receiving real-time transcripts through Work IQ needed to enable it before 14 November 2026 to keep those apps working. The decision for a service owner is whether to turn the setting on, and for which apps to approve, before developers build on it. Because the organiser's organisation decides, the setting also applies to meetings your users organise even when the app belongs to another organisation.
 
 ## Risk assessment
 
@@ -145,7 +152,6 @@ The Teams setting is a tenant-level setting in meeting settings. Learn does not 
 ### Before rollout
 - Confirm with the Teams admin whether **WorkIQ access** is currently on or off, using the first row of the controls table.
 - List the apps and agents that already request real-time transcripts; Learn says apps already receiving them through Work IQ needed the setting turned on by 14 November 2026 to keep working.
-- Confirm the usage-based billing plan and its owner before developers test, because Work IQ API use consumes Copilot Credits.
 - Check the meeting policy **Transcription** setting for the users whose meetings you want covered; it decides whether transcription can run at all.
 
 ### At rollout
@@ -154,9 +160,7 @@ The Teams setting is a tenant-level setting in meeting settings. Learn does not 
 - Tell meeting organisers that approved apps can receive live transcript text and speaker names once the setting is on.
 
 ### After rollout
-- Review which apps hold Entra permissions to read transcripts, and remove those no longer needed.
 - Allow time for changes to apply: turning access off does not end transcripts already being received.
-- Watch Copilot Credit consumption for Work IQ API use against the agreed plan.
 
 ## Governance controls
 
@@ -174,7 +178,7 @@ The **WorkIQ access** setting is the control Learn documents for this capability
 
 The meeting policy **Transcription** setting is an existing control that decides whether transcription can run. It does not control whether apps receive the transcript, and Learn's table says that when Allow AI in all meetings is off, no transcript is available whether Work IQ access is on or off.
 
-Per-app permissions in Microsoft Entra ID are a condition Learn gives for receiving a transcript, but that Learn page gives no path for them, so no row is listed. Learn does not say whether the setting applies to an MCP route specifically; the roadmap says transcripts arrive through MCP, and Learn lists a remote MCP server among the Work IQ API endpoints. Learn does not document a separate switch for the MCP route at the time of writing (November 2026).
+Per-app permissions in Microsoft Entra ID are a condition Learn gives for receiving a transcript, but that Learn page gives no path for them, so no row is listed. Learn does not say whether the setting applies to an MCP route specifically; the roadmap says transcripts arrive through MCP, and Learn lists a remote MCP server among the Work IQ API endpoints. Microsoft Learn documents tenant-level Work IQ MCP policy controls separately; it does not explicitly map those controls to this planned live-transcript capability. See [Policy governance for Work IQ MCP](https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp).
 
 ## Open questions
 
@@ -186,14 +190,11 @@ Per-app permissions in Microsoft Entra ID are a condition Learn gives for receiv
 <!-- rationale
 risk: Medium. Live speech and speaker names can reach apps and agents, but Learn documents Work IQ access to real-time transcripts as off by default, with a Teams admin center switch.
 cost: Variable. Learn says Work IQ API usage is billed in Copilot Credits; no rate specific to transcripts is published, so cost depends on how much the apps and agents consume.
-impact: Low. With the setting off by default, only organisations that turn it on and build or approve apps that read live transcripts will see any change.
+impact: Low. New use requires an administrator to enable access, but existing Work IQ transcript integrations needed the setting enabled before 14 November 2026 to keep working.
 -->
 
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Why it matters; rationale: impact / default: No source says existing behaviour changes if nobody acts, and only organisations choosing to turn access on will see any change. | Found: If apps in your organization already receive real-time transcripts through Work IQ, turn on Work IQ access before that date to keep them working. | Fix: Replace the first sentence of Why it matters' second paragraph with 'Work IQ access is off by default; Microsoft says organisations already receiving real-time transcripts through Work IQ needed to enable it before 14 November 2026 to keep those apps working.' Replace the impact rationale with 'Low. New use requires an administrator to enable access, but existing Work IQ transcript integrations needed the setting enabled before 14 November 2026 to keep working.' | Source: https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access
-- [contradicted, blocker] Governance controls: final sentence / absence: Learn does not document a separate switch for the MCP route. | Found: In the Microsoft 365 admin center, tenant administrators can turn Work IQ MCP policy on or off for the tenant. When you turn on the policy, it applies across the tenant and helps control MCP tool access at request time. | Fix: Replace the final sentence with 'Microsoft Learn documents tenant-level Work IQ MCP policy controls separately; it does not explicitly map those controls to this planned live-transcript capability.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp. Do not equate the policy toggle with disabling the entire MCP service. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance; Governance controls / consistency: Every control the governance checklist asks readers to check or monitor is represented in the controls table. | Found: Confirm the usage-based billing plan and its owner ... Review which apps hold Entra permissions ... Watch Copilot Credit consumption ... The table contains only WorkIQ access and meeting transcription. | Fix: The Before rollout billing-plan check and the After rollout Entra-permission review and Copilot Credit monitoring steps have no corresponding controls-table rows. Remove those checklist bullets if retaining the current two-row table; no new rows are requested.
+- [supported, minor] Scope: one-time organisation enablement; Cost and licensing: prerequisites / behaviour: Enabling Work IQ in an organisation is a one-time setup step performed by a Global Administrator. | Found: A user with Global Administrator role for the one-time Work IQ setup | Fix: Replace the final sentence of Scope's second paragraph with: "The Work IQ setup guide describes a one-time Global Administrator setup; the MCP overview says the service principal is created automatically on first use and manual provisioning may be needed before first use." Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/overview#how-tools-work, which states: "The Work IQ service principal is created automatically in the tenant when you use Work IQ for the first time." Keep the Cost and licensing prerequisites explicitly attributed to the setup guide. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq
 -->
