@@ -227,6 +227,17 @@ through these questions and stop when each is answered or shown to be unanswered
    - Microsoft Entra: the Microsoft Graph reference;
    - Microsoft Edge: the Edge policy reference, where each policy has its own page.
    This list says where to look. What goes on the page is still only what that reference states.
+   A new object in Power Automate, Power Apps, Copilot Studio or Dynamics 365 (a flow group, a
+   playbook, a rule set) is usually stored as a Dataverse table, whatever its own page says
+   about automation. Before writing that it has no API, search Learn for the object's name with
+   "table" or "entity reference" ("flow group table entity reference"). A table's reference page
+   lists the operations it supports, and a table that can be created or updated can be scripted
+   through the Dataverse Web API. Give the operation as that page prints it (`POST /flowgroups`)
+   for what it does, which is to create or change the record. What the table page does not show,
+   such as which column carries a licence or how members are added, stays an open question.
+   Use a table only when its reference page describes it as this object. A table reached from a
+   privilege name, or one whose name merely looks related, is a guess about where the setting is
+   stored, and a row built on it is an inferred call.
 6. **How is it watched?** Audit events, usage reports, alerts, and where they appear.
 7. **Is there an official video?** Only from Microsoft's own channels, and only if a search finds it.
 

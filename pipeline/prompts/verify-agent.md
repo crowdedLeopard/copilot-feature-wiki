@@ -170,7 +170,9 @@ How to judge each type:
     allows (`-ExchangeLocation <mailboxes>` where the reference accepts only `All` is a wrong
     command, and so is a hashtable printed without a key the reference requires in it);
   - for Graph and REST, the HTTP method, the path and the version (`/v1.0/`, `/beta/` or
-    `api-version=`) match the reference;
+    `api-version=`) match the reference. A Dataverse table operation written as the table's
+    reference page prints it (`POST /flowgroups`) matches: do not fail it for leaving off the
+    organisation URI and `/api/data/v9.2/`, which that page leaves off too;
   - the page says the operation makes the change the row describes. An operation that only reads,
     or only creates the policy or record that will hold the setting, does not;
   - where the operation sets the control through a property of the request body, that property is
