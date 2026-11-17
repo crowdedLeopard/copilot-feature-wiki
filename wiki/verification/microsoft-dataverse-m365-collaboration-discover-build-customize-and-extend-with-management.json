@@ -3,41 +3,39 @@
   "roadmapId": 576752,
   "title": "Microsoft Dataverse: management MCP server for building and governing MCP servers",
   "status": "held",
-  "date": "2026-11-16",
-  "version": 2,
+  "date": "2026-11-17",
+  "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 2,
   "verifierVerdict": "hold",
-  "notes": [
-    "2026-11-16: taken offline; the grace for pages published before the check existed is off"
-  ],
+  "notes": [],
   "hold": {
     "reason": "failed",
     "since": "2026-11-16",
     "reasons": [
-      "8 blocking findings (claims 8, 33, 34, 35, 41, 42, 43, 45)"
+      "2 blocking findings (claims 32, 52)"
     ]
   },
   "counts": {
-    "claims": 49,
-    "confirmed": 39,
-    "unconfirmed": 6,
-    "contradicted": 4,
-    "blocker": 8,
+    "claims": 65,
+    "confirmed": 60,
+    "unconfirmed": 2,
+    "contradicted": 3,
+    "blocker": 2,
     "major": 1,
-    "minor": 6
+    "minor": 5
   },
-  "summary": "Hold: Microsoft has not confirmed that the Dataverse environment switch or client allow list governs the separate management endpoint, so administrators cannot rely on the stated protection. The default contradicts the roadmap, an admin documentation link returns 404, and automation for the Dataverse client allow list is incorrectly reported as undocumented.",
+  "summary": "Hold: the preview reference does not say the management server is free, and the published DLP PowerShell example is not a runnable call. The cited administration paths are supported, but the connector-policy row needs a clearer consumption boundary and the action rating understates the approaching automatic rollout.",
   "claims": [
     {
       "n": 1,
       "where": "front matter: status",
       "type": "record",
-      "claim": "The roadmap status is in development.",
+      "claim": "The roadmap status is In development.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "quote": "\"status\": \"In development\"",
       "severity": null,
       "fix": null
     },
@@ -56,37 +54,15 @@
       "n": 3,
       "where": "front matter: previewDate; What's changing",
       "type": "record",
-      "claim": "The roadmap lists March CY2026 for preview.",
+      "claim": "The roadmap shows a preview from March 2026.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": \"March CY2026\"",
-      "severity": null,
-      "fix": null
+      "severity": "minor",
+      "fix": "Replace 'The roadmap shows a preview from March 2026' with 'The roadmap lists March CY2026 as the preview target'; the record supplies a target, not confirmation of when preview began."
     },
     {
       "n": 4,
-      "where": "front matter: products; title",
-      "type": "record",
-      "claim": "The roadmap assigns the feature to Microsoft Dataverse.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"products\": [\"Microsoft Dataverse\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "front matter: releasePhase",
-      "type": "record",
-      "claim": "The listed release phases are General Availability and Preview.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
@@ -97,7 +73,7 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 5,
       "where": "front matter: platforms",
       "type": "record",
       "claim": "The listed platform is Web.",
@@ -108,41 +84,52 @@
       "fix": null
     },
     {
-      "n": 8,
-      "where": "front matter: defaultState",
-      "type": "default",
-      "claim": "The feature's default state is unknown.",
-      "status": "contradicted",
+      "n": 6,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The release phases are General Availability and Preview.",
+      "status": "supported",
       "source": "roadmap record",
-      "quote": "Enabled for:\n\nEnabled for admins/makers/marketers automatically",
-      "severity": "blocker",
-      "fix": "Set defaultState to \"on\" and state that the roadmap describes automatic enablement for admins/makers/marketers. Do not infer this management server's default from the separate Dataverse data endpoint."
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: products; title",
+      "type": "record",
+      "claim": "This roadmap item concerns Microsoft Dataverse.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Dataverse\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-10-16T19:08:36.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-16T19:08:36\"",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 9,
-      "where": "front matter: licensing; Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "Microsoft has not published a licensing model or charge specifically for the management MCP server.",
+      "where": "front matter: defaultState; What's changing",
+      "type": "default",
+      "claim": "The capability is enabled automatically for its intended administrators and makers, supporting defaultState on.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"MCPManagement\" licensing credits management server; \"Dataverse\" \"management MCP server\" \"licensing\". Opened mcp-management; read Copilot Studio billing-licensing results. No management-server-specific charge or licence was stated.",
+      "source": "roadmap record",
+      "quote": "Enabled for admins/makers/marketers automatically",
       "severity": null,
       "fix": null
     },
     {
       "n": 10,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "behaviour",
-      "claim": "Microsoft Learn labels the management MCP reference as preview.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/mcp-management",
-      "quote": "This is a preview feature.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
-      "where": "title; What's changing; summary",
+      "where": "title; What's changing; Why it matters",
       "type": "record",
       "claim": "The management MCP server is a build surface and registry for agent-ready tools within an environment.",
       "status": "supported",
@@ -152,10 +139,21 @@
       "fix": null
     },
     {
-      "n": 12,
-      "where": "What's changing: first paragraph",
+      "n": 11,
+      "where": "summary; What's changing; Scope",
       "type": "record",
-      "claim": "Developers and agents can discover Microsoft-authored, hosted or certified MCP servers.",
+      "claim": "Developers and agents access the management surface through an environment-scoped URL.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Through a single environment scoped endpoint, teams can find Microsoft certified or internal MCP servers",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The planned discovery capabilities include Microsoft-authored or certified MCP servers.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Find MCP servers authored, hosted, or certified by Microsoft",
@@ -164,9 +162,9 @@
     },
     {
       "n": 13,
-      "where": "What's changing: first paragraph",
+      "where": "What's changing",
       "type": "record",
-      "claim": "The discovery catalogue includes more than 1,470 connectors and their individual actions.",
+      "claim": "The roadmap describes querying more than 1,470 connectors and their actions.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Query and explore over 1,470 connectors and their individual actions",
@@ -175,9 +173,9 @@
     },
     {
       "n": 14,
-      "where": "What's changing: first paragraph",
+      "where": "What's changing",
       "type": "record",
-      "claim": "The server can discover custom APIs.",
+      "claim": "The planned discovery capabilities include custom APIs.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Discover custom APIs available in your organization or from partner teams",
@@ -186,9 +184,9 @@
     },
     {
       "n": 15,
-      "where": "summary; What's changing: second paragraph; Why it matters",
+      "where": "summary; What's changing; Why it matters",
       "type": "record",
-      "claim": "Developers can build MCP servers from connector actions, APIs and reusable tools.",
+      "claim": "New MCP servers can be assembled from connector actions, APIs and reusable tools.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Build new MCP servers by selecting connector actions, APIs, and reusable tools",
@@ -197,9 +195,9 @@
     },
     {
       "n": 16,
-      "where": "What's changing: second paragraph",
+      "where": "What's changing",
       "type": "record",
-      "claim": "An existing MCP server such as Dataverse MCP can be cloned and have tools added or removed.",
+      "claim": "An existing server such as Dataverse MCP can be cloned and tailored by adding or removing tools.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Clone an existing MCP server, such as a Dataverse MCP, and tailor it by adding or removing tools to match your scenario",
@@ -208,20 +206,20 @@
     },
     {
       "n": 17,
-      "where": "summary; What's changing; Scope",
+      "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
       "type": "record",
-      "claim": "The management server exposes an environment-scoped URL.",
+      "claim": "Servers can be composed, published and maintained entirely through API calls without a UI.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Accessible as a simple environment scoped URL—no UI required",
+      "quote": "Accessible as a simple environment scoped URL—no UI required\n- Use in Visual Studio Code, Claude, or any agent or tool that supports HTTP\n- Compose, publish, and maintain MCP servers entirely through API calls",
       "severity": null,
       "fix": null
     },
     {
       "n": 18,
-      "where": "What's changing: last paragraph; Scope",
+      "where": "What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap describes use from Visual Studio Code, Claude and HTTP-capable agents or tools.",
+      "claim": "The roadmap names Visual Studio Code, Claude and other HTTP-capable agents or tools as clients.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Use in Visual Studio Code, Claude, or any agent or tool that supports HTTP",
@@ -230,20 +228,42 @@
     },
     {
       "n": 19,
-      "where": "What's changing; Why it matters; Risk assessment: Change & support; rationale: risk",
+      "where": "summary; Why it matters; controls[4].note; rationale: risk",
       "type": "record",
-      "claim": "MCP servers can be composed, published and maintained entirely through API calls without a UI.",
+      "claim": "The roadmap says DLP policies apply.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Compose, publish, and maintain MCP servers entirely through API calls",
+      "quote": "Enforce data loss prevention (DLP) policies",
       "severity": null,
       "fix": null
     },
     {
       "n": 20,
-      "where": "What's changing: second paragraph",
+      "where": "summary; Risk assessment; controls[4].note",
+      "type": "record",
+      "claim": "The roadmap says access controls apply at MCP server level.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Apply access controls at both the MCP server and individual tool level",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "summary; Why it matters; Risk assessment; controls[4].note; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap says access controls apply at individual tool level.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Apply access controls at both the MCP server and individual tool level",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "Learn documents an operation to create an MCP server.",
+      "claim": "The Learn reference lists a tool for creating an MCP server.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/mcp-management",
       "quote": "CreateMCPServer\n\nCreates a new MCP server instance in the current environment.",
@@ -251,10 +271,10 @@
       "fix": null
     },
     {
-      "n": 21,
-      "where": "What's changing: second paragraph",
+      "n": 23,
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "Learn documents an operation to update an MCP server.",
+      "claim": "The Learn reference lists a tool for updating an MCP server.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/mcp-management",
       "quote": "UpdateMCPServer\n\nUpdates an existing MCP server instance.",
@@ -262,10 +282,10 @@
       "fix": null
     },
     {
-      "n": 22,
-      "where": "What's changing: second paragraph",
+      "n": 24,
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "Learn documents an operation to publish an MCP server.",
+      "claim": "The Learn reference lists a tool for publishing an MCP server.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/mcp-management",
       "quote": "PublishMCPServer\n\nPublishes an environment-level MCP server to tenant scope.",
@@ -273,10 +293,10 @@
       "fix": null
     },
     {
-      "n": 23,
-      "where": "What's changing: second paragraph",
+      "n": 25,
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "Learn documents an operation to delete an MCP server.",
+      "claim": "The Learn reference lists a tool for deleting an MCP server.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/mcp-management",
       "quote": "DeleteMCPServer\n\nDeletes an MCP server instance.",
@@ -284,10 +304,21 @@
       "fix": null
     },
     {
-      "n": 24,
-      "where": "summary; What's changing: second paragraph",
+      "n": 26,
+      "where": "summary; What's changing",
       "type": "behaviour",
-      "claim": "Microsoft Graph API operations can be used as tools in an MCP server.",
+      "claim": "The management reference documents connector-backed tools.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/mcp-management",
+      "quote": "CreateToolWithConnector\n\nCreates a new tool with a connector in an MCP server.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "summary; What's changing",
+      "type": "behaviour",
+      "claim": "The management reference documents Microsoft Graph API-backed tools.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/mcp-management",
       "quote": "CreateToolWithGraph\n\nCreates a new tool with a Graph API operation in an MCP server.",
@@ -295,219 +326,307 @@
       "fix": null
     },
     {
-      "n": 25,
-      "where": "summary; What's changing: second paragraph",
+      "n": 28,
+      "where": "summary; What's changing",
       "type": "behaviour",
-      "claim": "Custom APIs can be associated with tools in an MCP server.",
+      "claim": "The management reference documents tools backed by custom APIs in the Dataverse environment.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/mcp-management",
-      "quote": "CreateToolWithCustomAPI\n\nCreates a new tool with a custom API in an MCP server.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "What's changing: second paragraph",
-      "type": "behaviour",
-      "claim": "The management reference specifically lists REST APIs as a source.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: \"management MCP server\" \"REST\"; \"management MCP server\" \"REST APIs\". Opened mcp-management: it documents CreateToolWithRemoteAPI, not REST APIs; search results about REST API exposure concerned Azure API Management.",
-      "severity": "major",
-      "fix": "Replace \"REST APIs\" with \"remote APIs\", matching CreateToolWithRemoteAPI at https://learn.microsoft.com/microsoft-copilot-studio/mcp-management."
-    },
-    {
-      "n": 27,
-      "where": "summary; Why it matters; controls[3].note; Governance controls; rationale: risk",
-      "type": "record",
-      "claim": "The management server supports enforcement of DLP policies.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Enterprise ready governance and control\n\n- Enforce data loss prevention (DLP) policies",
-      "severity": "minor",
-      "fix": "In controls[3].note and the rendered note, attribute the DLP and server/tool access-control statements to the roadmap, not to the Learn reference; the opened management reference lists tools but does not describe that governance model."
-    },
-    {
-      "n": 28,
-      "where": "Risk assessment: Security & identity; controls[3].note",
-      "type": "record",
-      "claim": "Access controls can be applied at MCP server level.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Apply access controls at both the MCP server and individual tool level",
+      "quote": "GetCustomAPIs\n\nGets all available custom APIs in the current environment.\n\nCreateToolWithCustomAPI\n\n- Creates a new tool with a custom API in an MCP server.",
       "severity": null,
       "fix": null
     },
     {
       "n": 29,
-      "where": "Why it matters; Risk assessment; Governance guidance; controls[3].note; rationale: risk",
-      "type": "record",
-      "claim": "Access controls can be applied at individual tool level.",
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The management reference documents remote API-backed tools.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "Apply access controls at both the MCP server and individual tool level",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/mcp-management",
+      "quote": "CreateToolWithRemoteAPI\n\nCreates a new tool with a remote API in an MCP server.",
       "severity": null,
       "fix": null
     },
     {
       "n": 30,
-      "where": "Why it matters: first paragraph; Governance guidance: After rollout",
-      "type": "behaviour",
-      "claim": "The management server provides a way to inventory MCP servers in an environment.",
+      "where": "front matter: licensing.model; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "A licensing model specific to the management server has not been published.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/mcp-management",
-      "quote": "GetMCPServers\n\nGets all MCP server instances in the current environment.",
+      "source": null,
+      "quote": "Searched: '\"MCPManagement\" licensing pricing management server'; '\"management MCP server\" \"licensing\"'. Opened management reference, Copilot Studio billing-licensing and Agent 365 tooling-servers-overview; none specifies a management-server licence.",
       "severity": null,
       "fix": null
     },
     {
       "n": 31,
-      "where": "Why it matters; Risk assessment: Autonomy & actions; rationale: impact",
-      "type": "behaviour",
-      "claim": "MCP servers can expose tools that write business data for agents to invoke.",
+      "where": "front matter: licensing.notes",
+      "type": "absence",
+      "claim": "The management preview reference does not publish a charge.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/mcp-dataverse#key-features",
-      "quote": "create_record and update_record – Allow copilots to log new actions or modify existing records as part of conversational workflows.",
-      "severity": "minor",
-      "fix": "Add https://learn.microsoft.com/microsoft-copilot-studio/mcp-dataverse to sources as the documented example of data-writing tools in a server the roadmap says can be cloned."
-    },
-    {
-      "n": 32,
-      "where": "controls[0].ui; Governance controls: first row",
-      "type": "admin-path",
-      "claim": "Dataverse MCP availability settings are under Power Platform admin center > Manage > Environments > environment > Settings > Product > Features > Dataverse Model Context Protocol.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-disable",
-      "quote": "Select the Environment Name where you want to turn on the Dataverse MCP server, and then select Settings. Under Settings, select Product > Features. Scroll down to locate Dataverse Model Context Protocol",
+      "source": null,
+      "quote": "Searched: '\"MCPManagement\" licensing pricing management server'; '\"management MCP server\" quota rate limits licensing'. Opened the complete mcp-management reference and billing-licensing; the reference contains no charge or pricing statement.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 33,
-      "where": "controls[0].ui; Governance controls: first row, allowed MCP clients",
-      "type": "admin-path",
-      "claim": "The first row's path also gives the complete location for configuring allowed MCP clients.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-disable",
-      "quote": "Select Advanced Settings.\nThe list of available clients is shown. Open the client record you want.\nOn the MCP client record, set Is Enabled to Yes.",
+      "n": 32,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The preview reference states that there is no charge.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: '\"MCPManagement\" licensing pricing management server'; '\"management MCP server\" \"licensing\"'. Opened mcp-management in full and billing-licensing. Neither states that the management server is free.",
       "severity": "blocker",
-      "fix": "Split availability and client configuration into separate rows. For clients, extend the current path with \"Advanced Settings > client > Is Enabled\"; for availability name \"Allow MCP clients to interact with Dataverse MCP server\". Keep both explicitly limited to the Dataverse data endpoint."
+      "fix": "Replace the first sentence with 'Licensing for the management server is not yet published, and the preview reference does not publish a charge.' Silence about pricing is not a no-charge commitment."
+    },
+    {
+      "n": 33,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Consuming Copilot Studio agents may use Copilot Credits under their existing billing model.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing",
+      "quote": "By using the pay-as-you-go meter, at the end of each month, your organization pays only for the actual number of Copilot Credits its agents use during the month.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 34,
-      "where": "controls[0].api; Governance controls: first row",
-      "type": "absence",
-      "claim": "No automation is documented for the first row's Dataverse MCP client allow list.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/cli/reference",
-      "quote": "Ensure that a Microsoft Entra application is in the Dataverse MCP allowed clients list for the current profile's environment. This command is an alternative to the manual admin step",
-      "severity": "blocker",
-      "fix": "For a separate Dataverse allowed-client row, document the preview CLI command \"dataverse mcp allow <appId>\" (kind \"other\"), citing https://learn.microsoft.com/power-apps/developer/data-platform/cli/reference. State that Dataverse admin permissions are required; do not extend its scope to MCPManagement."
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Premium connector licensing depends on the consuming product and licence rather than being established by the management reference.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing",
+      "quote": "The standalone Copilot Studio subscription lets you build agents on any supported channel and connect to any data using premium connectors.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 35,
-      "where": "controls[1].ui; Governance controls: second row; sources",
-      "type": "admin-path",
-      "claim": "The cited Microsoft 365 Copilot URL documents Agents > Tools > Registry > tool > Block for controlling MCP tools.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: \"MCP\" \"Agents\" \"Tools\" \"Registry\" \"Block\" Microsoft 365 admin. Cited /microsoft-365/copilot/manage-plugins-skills-mcp-servers returned HTTP 404; opened the replacement /microsoft-agent-365/admin/manage-plugins-skills-mcp-servers.",
-      "severity": "blocker",
-      "fix": "Replace the docs/source URL with https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers. Describe \"Agents > Tools > Registry > MCP server > Block\" as whole-server blocking for registered servers. Individual tools use \"MCP server > Tools > tool toggle\" only on supported server types through the Agent 365 Tooling Gateway; do not imply this governs every direct management-endpoint call."
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "Dataverse service protection API limits constrain underlying Dataverse API calls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/api-limits",
+      "quote": "To ensure consistent availability and performance for everyone, Dataverse applies limits to how APIs are used. These limits detect when client applications make extraordinary demands on server resources.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 36,
-      "where": "controls[1].api; Governance controls: second row",
+      "where": "Cost and licensing",
       "type": "absence",
-      "claim": "No equivalent command or API is documented for the Microsoft 365 admin center MCP blocking control.",
+      "claim": "The cited service protection limits are not a published management-server quota or pricing meter.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Microsoft 365\" \"MCP\" tools block PowerShell Graph API; \"Agent 365\" \"MCP\" \"block\" \"Graph API\". Opened the moved management page and develop-mcp reference; the latter says its block command was removed and directs admins to the admin center.",
+      "quote": "Searched: '\"management MCP server\" quota rate limits licensing'. Opened mcp-management, api-limits and billing-licensing; none describes Dataverse service protection limits as a management-server quota or pricing meter.",
       "severity": null,
       "fix": null
     },
     {
       "n": 37,
-      "where": "controls[2].ui; Governance controls: third row",
+      "where": "controls[0].ui; Governance controls table",
       "type": "admin-path",
-      "claim": "A data policy can be created through Power Platform admin center > Security > Data and privacy > Data policy > New Policy.",
+      "claim": "The Dataverse data-endpoint availability switch is under Manage > Environments > environment > Settings > Product > Features > Dataverse Model Context Protocol > Allow MCP clients to interact with Dataverse MCP server.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/connector-action-control",
-      "quote": "On the navigation pane, select Security, and then on the Security pane, select Data and privacy.\nOn the Data protection and privacy page, select Data policy.\nSelect an existing policy on the command bar and then select Edit policy, or select New Policy to create a new policy to configure.",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-disable",
+      "quote": "Select Manage > Environments.\nSelect the Environment Name ... select Settings. ... select Product > Features. ... locate Dataverse Model Context Protocol ... Allow MCP clients to interact with Dataverse MCP server",
       "severity": null,
       "fix": null
     },
     {
       "n": 38,
-      "where": "controls[2].api; Governance controls: third row",
-      "type": "command",
-      "claim": "New-DlpPolicy in Microsoft.PowerApps.Administration.PowerShell creates a DLP policy.",
+      "where": "controls[0].api; Governance controls table",
+      "type": "absence",
+      "claim": "An automation equivalent for the environment-wide Dataverse MCP availability switch is not documented.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest",
-      "quote": "Module: Microsoft.PowerApps.Administration.PowerShell Module\nCreates a new DLP policy in the tenant by using the NewPolicy DLPPolicyDefinition object.",
+      "source": null,
+      "quote": "Searched: Dataverse MCP organization Web API enable disable; '\"Allow MCP clients\" \"Power Platform API\" PowerShell pac'; Dataverse MCP PowerShell disable. Opened MCP configuration and CLI reference; results document client allow-list automation, not the global switch.",
       "severity": null,
       "fix": null
     },
     {
       "n": 39,
-      "where": "controls[2].scope",
-      "type": "applicability",
-      "claim": "DLP policies can target environments.",
+      "where": "controls[0].note; controls[1].note; Scope; Governance controls",
+      "type": "absence",
+      "claim": "Microsoft has not established that the Dataverse data-endpoint switches grant, revoke or govern access to the management endpoint.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest",
-      "quote": "-Environments\nComma separated string list used as input environments to either include or exclude, depending on the FilterType.",
+      "source": null,
+      "quote": "Searched: '\"management MCP\" disable admin DLP access control audit permissions'; '\"MCPManagement\" admin UI disable Power Platform API pac admin settings'. Opened mcp-management and Dataverse MCP configuration; neither establishes this relationship.",
       "severity": null,
       "fix": null
     },
     {
       "n": 40,
-      "where": "controls[3].ui; controls[3].api; Governance controls: fourth row; Open questions",
-      "type": "absence",
-      "claim": "A dedicated administrative UI or automation setting for controlling access to the management MCP server itself is not documented.",
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Dataverse MCP client permissions are edited under the environment's Features > Dataverse Model Context Protocol > Advanced Settings > client > Is Enabled.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"MCPManagement\" \"permissions\" \"admin\"; \"MCPManagement\" \"disable\"; \"management MCP server\" \"enabled\". Opened mcp-management, data-platform-mcp-disable and develop-mcp; no dedicated management-endpoint enable/disable control was documented.",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-disable",
+      "quote": "Select Advanced Settings.\nThe list of available clients is shown. Open the client record you want.\nOn the MCP client record, set Is Enabled to Yes.",
       "severity": null,
       "fix": null
     },
     {
       "n": 41,
-      "where": "Governance controls: paragraph after table",
-      "type": "applicability",
-      "claim": "The management MCP server inherits the Dataverse MCP server's environment switch.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: \"management MCP\" \"DLP\" \"Dataverse\" allowlist; \"management MCP server\" \"enabled\". Opened mcp-management and data-platform-mcp-disable: the former has an agent365.svc.cloud.microsoft endpoint; neither states that it inherits the Dataverse switch.",
-      "severity": "blocker",
-      "fix": "Remove the inheritance assertion. Say: \"Microsoft has not confirmed that the Dataverse MCP environment switch governs the management MCP endpoint.\" Add that qualification to the Dataverse control row."
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "dataverse mcp allow <appId> allows the application as a Dataverse MCP client in the current profile's environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/cli/reference",
+      "quote": "Ensure that a Microsoft Entra application is in the Dataverse MCP allowed clients list for the current profile's environment.\n\ndataverse mcp allow <appId> [options]",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 42,
-      "where": "Governance controls: paragraph after table",
-      "type": "applicability",
-      "claim": "The management MCP server inherits the Dataverse MCP client allow list.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: \"management MCP\" \"DLP\" \"Dataverse\" allowlist. Opened mcp-management and data-platform-mcp-disable. The latter limits MCP allow listing to /api/mcp; no passage applies that list to the distinct MCPManagement endpoint.",
-      "severity": "blocker",
-      "fix": "Remove the inheritance assertion. State that the cited Dataverse documentation limits client allow listing to the /api/mcp agent entrypoint and does not establish protection of the separate management endpoint."
+      "where": "controls[1].note",
+      "type": "behaviour",
+      "claim": "The Dataverse CLI reference describes a preview feature.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/cli/reference",
+      "quote": "Dataverse CLI reference (preview)\n\nThis is a preview feature.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 43,
-      "where": "Governance controls: last sentence",
-      "type": "applicability",
-      "claim": "A tenant permitting Dataverse MCP for one purpose also permits the management MCP server.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: \"management MCP server\" \"access\" \"control\"; \"management MCP server\" \"enabled\". Opened mcp-management, data-platform-mcp-disable and the moved admin management page. None establishes that Dataverse permission grants management-server access.",
-      "severity": "blocker",
-      "fix": "Delete this conclusion and the assertion that admin tooling makes no distinction. Replace them with: \"Do not assume that allowing or blocking the Dataverse data endpoint grants or revokes access to the management endpoint; Microsoft has not documented that relationship.\""
+      "where": "controls[1].note",
+      "type": "role",
+      "claim": "The mcp allow command requires Dataverse admin permissions on the target environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/cli/reference",
+      "quote": "The authenticated user must have Dataverse admin permissions on the target environment.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 44,
-      "where": "Governance controls: paragraph after table",
+      "where": "controls[0].note; controls[1].note; Governance controls",
       "type": "applicability",
-      "claim": "Advanced connector policies can block whole MCP servers.",
+      "claim": "Dataverse MCP client allow listing applies only to the /api/mcp agent entrypoint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-disable",
+      "quote": "MCP allow listing applies only to the /api/mcp agent entrypoint. MCP-named custom APIs are regular Dataverse APIs and aren't restricted by this setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Registered MCP servers are blocked in Microsoft 365 admin center at Agents > Tools > Registry > MCP server > Block.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "Select Agents > Tools, and then select the Registry tab.\nSelect an MCP server from the list to open its overview pane.\nSelect Block to restrict the server across your organization",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[2].note",
+      "type": "behaviour",
+      "claim": "Blocking a registered MCP server disables all the tools it exposes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "Blocking an MCP server disables all the tools it exposes. This action targets the server component, rather than a whole plugin package.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[2].note; Governance controls table",
+      "type": "admin-path",
+      "claim": "Individual tool toggles are on the selected MCP server's Tools tab.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "Select the Tools tab. The list shows every tool the server exposes, along with its description and an Enabled or Disabled toggle.\nTurn individual tools on or off as needed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[2].note",
+      "type": "applicability",
+      "claim": "Individual tool control is limited to supported registered server types and gateway-mediated experiences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "Tool-level granular control is rolling out to tenants and supports only specific types of MCP servers registered on Agent 365.\nThe Agent 365 Tooling Gateway enforces the policy at runtime for supported tools and experiences that use the gateway.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[2].note",
+      "type": "absence",
+      "claim": "The cited Agent 365 controls are not documented to govern direct calls to the management endpoint.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"MCPManagement\" \"access\" \"control\"'; Agent 365 block MCP server tools Microsoft Graph API registry. Opened management reference, Agent 365 management and tooling overview; none establishes direct-management-endpoint enforcement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[2].api; Governance controls table",
+      "type": "absence",
+      "claim": "An API equivalent for the registered-server Block control is not documented in the checked references.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Agent 365 block MCP server tools Microsoft Graph API registry; '\"MCP server\" \"Graph API\" \"block\" \"Tools\" registry beta'. Opened Agent 365 MCP management; results describe UI blocking, not a corresponding Microsoft Graph operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[3].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Classic data-policy creation is reached at Power Platform admin center > Security > Data and privacy > Data policy > New Policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/connector-action-control",
+      "quote": "select Security ... select Data and privacy.\nOn the Data protection and privacy page, select Data policy.\nSelect an existing policy ... or select New Policy to create a new policy to configure.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[3].api; Governance controls table",
+      "type": "command",
+      "claim": "New-DlpPolicy (Microsoft.PowerApps.Administration.PowerShell) is a runnable DLP policy-creation call.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest",
+      "quote": "New-DlpPolicy -NewPolicy <Object> [-ApiVersion <String>] [<CommonParameters>]\n\nNew-DlpPolicy -NewPolicy $NewPolicy\n\nCreates a new policy with the $NewPolicy object.",
+      "severity": "blocker",
+      "fix": "Replace controls[3].api.call and the rendered command with 'New-DlpPolicy -NewPolicy <policyDefinition>'. Move 'Module: Microsoft.PowerApps.Administration.PowerShell' to the row note rather than including it as an executable parenthesised expression."
+    },
+    {
+      "n": 53,
+      "where": "controls[3].governs; Governance controls table",
+      "type": "applicability",
+      "claim": "Connector data policies can cover MCP connector consumption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "To prevent agent makers from using Power Platform connectors as tools in Copilot Studio agents, configure a data policy with the connectors you want to block.\nBlocking Power Platform connectors also blocks access to tools in connected MCP servers",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention and rename this row 'Connector data policies for MCP tools consumed by Copilot Studio agents'. Add the note 'This does not establish that classic data policies govern direct calls to the management MCP endpoint.'"
+    },
+    {
+      "n": 54,
+      "where": "controls[4].ui; controls[4].api; controls[4].note; Open questions",
+      "type": "absence",
+      "claim": "Management-server-specific administrative UI and automation for DLP and server/tool access policy configuration are not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"MCPManagement\" \"DLP\"'; '\"management MCP\" disable admin DLP access control audit permissions'; '\"MCPManagement\" admin UI disable Power Platform API pac admin settings'. Opened mcp-management and Agent 365 developer experiences; no such configuration is described.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Advanced connector policies can block an entire listed MCP server.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/advanced-connector-policies",
       "quote": "Within advanced connector policies, administrators can see MCP servers listed alongside other connector types and can choose to block an entire MCP server.",
@@ -515,69 +634,124 @@
       "fix": null
     },
     {
-      "n": 45,
-      "where": "front matter: cost; Cost and licensing; rationale: cost",
-      "type": "cost",
-      "claim": "This management-server change has a confirmed metered cost, as asserted by the variable cost rating.",
+      "n": 56,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Advanced connector policies do not currently provide individual MCP tool control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/advanced-connector-policies",
+      "quote": "As of now, granular control over individual MCP tools (endpoints and actions) within an MCP server isn't available. Blocking the entire MCP server is supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "Advanced connector policies are not confirmed to govern the direct management endpoint.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"MCPManagement\" \"DLP\"'; '\"management MCP\" disable admin DLP access control audit permissions'. Opened advanced-connector-policies and mcp-management; neither names direct management-endpoint coverage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "New MCP servers can expose connector data to any client allowed to call them.",
       "status": "unsupported",
       "source": null,
-      "quote": "Searched: \"MCPManagement\" licensing credits management server; \"Dataverse\" \"management MCP server\" \"licensing\". Read mcp-management and Copilot Studio billing-licensing results. General agent billing is documented, but no meter for this management capability is stated.",
-      "severity": "blocker",
-      "fix": "Set cost to \"low\" for known administration effort and start the cost rationale \"Low. Administration effort; licensing for the management server is not yet published.\" Keep consuming-agent charges explicitly conditional and separate from any unconfirmed management-server meter."
+      "quote": "Searched: '\"management MCP server\" \"data\" \"client\"'; '\"MCPManagement\" \"access\" \"control\"'. Opened management reference and Agent 365 developer experiences; neither defines this universal client/data-access relationship.",
+      "severity": "major",
+      "fix": "Replace the bullet with 'New MCP servers can include tools backed by connectors and APIs; confirm the data permissions and client access before adoption.' The tool composition is documented at https://learn.microsoft.com/microsoft-copilot-studio/mcp-management; the access relationship is not."
     },
     {
-      "n": 46,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "cost",
-      "claim": "Consuming agents may incur Copilot Credits charges.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing#get-access-to-copilot-studio",
-      "quote": "By using the pay-as-you-go meter, at the end of each month, your organization pays only for the actual number of Copilot Credits its agents use during the month.",
-      "severity": "minor",
-      "fix": "Add this billing source and specify \"Copilot Studio consuming agents may use Copilot Credits under their existing billing model; this does not establish a charge for the management server.\""
-    },
-    {
-      "n": 47,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "Underlying premium connector use has licensing considerations.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing#get-access-to-copilot-studio",
-      "quote": "The standalone Copilot Studio subscription lets you build agents on any supported channel and connect to any data using premium connectors.",
-      "severity": "minor",
-      "fix": "Add this licensing source and keep the statement conditional on the consuming product and licence. Do not imply that a premium connector necessarily requires a separate add-on beyond the consuming product's existing rights."
-    },
-    {
-      "n": 48,
-      "where": "Cost and licensing; rationale: cost",
+      "n": 59,
+      "where": "Risk assessment: Autonomy & actions; Why it matters",
       "type": "behaviour",
-      "claim": "Underlying Dataverse API use can be subject to API limits.",
+      "claim": "Custom API-backed tools can include operations that change Dataverse data.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/api-limits#how-dataverse-enforces-service-protection-api-limits",
-      "quote": "Dataverse evaluates service protection API limits for each user. Each authenticated user has an independent limit.",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/custom-actions#compare-custom-process-action-and-custom-api",
+      "quote": "An Action is an operation that makes changes to data in the system. It's invoked using the Http POST method and parameters are passed in the body of the request.",
       "severity": "minor",
-      "fix": "Cite this API-limits page and describe the limits as constraints on underlying Dataverse calls, not as a published management-server quota or pricing meter."
+      "fix": "Add https://learn.microsoft.com/power-apps/developer/data-platform/custom-actions#compare-custom-process-action-and-custom-api to sources for the custom API write-operation premise; the cited management reference documents tool composition but not the action/function distinction."
     },
     {
-      "n": 49,
-      "where": "Governance guidance: Before rollout; Governance controls",
+      "n": 60,
+      "where": "Risk assessment: Autonomy & actions; Why it matters",
+      "type": "behaviour",
+      "claim": "Servers such as the reusable Dataverse server can supply data-writing tools that agents invoke.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/mcp-dataverse",
+      "quote": "create_record and update_record – Allow copilots to log new actions or modify existing records as part of conversational workflows.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "writer evidence: management server identity and endpoint",
+      "type": "behaviour",
+      "claim": "The management server has server ID MCPManagement and an environment-level agent365 endpoint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/mcp-management",
+      "quote": "MCPManagement | https://agent365.svc.cloud.microsoft/mcp/environments/{environmentId}/servers/MCPManagement | Microsoft management MCP server | McpServers.Management.All",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "writer evidence: Dataverse service protection limits",
+      "type": "behaviour",
+      "claim": "Dataverse evaluates service protection API limits independently for each authenticated user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/api-limits",
+      "quote": "Dataverse evaluates service protection API limits for each user. Each authenticated user has an independent limit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "front matter: action",
       "type": "consistency",
-      "claim": "The controls table covers the advanced connector policies the checklist tells administrators to review.",
+      "claim": "The prepare action rating fits an automatically enabled, high-risk change targeted for December 2026 on a 17 November 2026 run.",
       "status": "contradicted",
       "source": "page",
-      "quote": "Review current DLP and advanced connector policies for MCP use.\nConnector data policies that cover MCP connectors",
+      "quote": "action: \"prepare\"; defaultState: \"on\"; risk: \"high\"; targetDate: \"December CY2026\". The standard defines act-now for automatic arrival targeted within about 60 days when risk or cost is medium or higher and a decision is needed.",
       "severity": "minor",
-      "fix": "Add an advanced connector policy row using Power Platform admin center > Security > Data and privacy > Advanced connector policies, sourced to https://learn.microsoft.com/power-platform/admin/advanced-connector-policies. State that it blocks whole listed MCP servers, not individual MCP tools, and do not claim unconfirmed coverage of the direct management endpoint."
+      "fix": "Set action to 'act-now': the December month-only target is counted from 1 December, within 60 days of 17 November, and the briefing already identifies a pre-arrival decision about who may create and publish servers."
+    },
+    {
+      "n": 64,
+      "where": "Governance guidance: After rollout",
+      "type": "consistency",
+      "claim": "The governance table accounts for the tool-call monitoring that the checklist tells administrators to review.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "After rollout: 'Review tool calls that change data.' Open questions: 'What auditing exists for server changes?' The controls table has no tool-call audit or monitoring control.",
+      "severity": "minor",
+      "fix": "Remove 'Review tool calls that change data' from the checklist until a documented review surface is available; retain the open question rather than implying an operational monitoring control has been established."
+    },
+    {
+      "n": 65,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "behaviour",
+      "claim": "Microsoft Learn labels the management MCP server reference as preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/mcp-management",
+      "quote": "Microsoft MCP management MCP server reference (preview)\n\nThis is a preview feature.",
+      "severity": null,
+      "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-16T19:29:20.268Z",
+    "at": "2026-11-17T00:01:29.291Z",
     "summary": {
-      "links": 7,
-      "unreachable": 1,
-      "uiPaths": 3,
-      "uiPathsWithMissingWords": 1,
-      "apiCalls": 1,
+      "links": 11,
+      "unreachable": 0,
+      "uiPaths": 4,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
       "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
     },
@@ -593,14 +767,19 @@
         "status": 200
       },
       {
-        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=576752",
+        "url": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
         "ok": true,
         "status": 200
       },
       {
-        "url": "https://learn.microsoft.com/microsoft-365/copilot/manage-plugins-skills-mcp-servers",
-        "ok": false,
-        "status": 404
+        "url": "https://learn.microsoft.com/power-apps/developer/data-platform/cli/reference",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/advanced-connector-policies",
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/connector-action-control",
@@ -613,7 +792,22 @@
         "status": 200
       },
       {
-        "url": "https://learn.microsoft.com/power-platform/admin/advanced-connector-policies",
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/mcp-dataverse",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/developer/data-platform/api-limits",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=576752",
         "ok": true,
         "status": 200
       }
@@ -622,7 +816,7 @@
       {
         "index": 0,
         "side": "ui",
-        "governs": "Dataverse MCP server availability and allowed MCP clients",
+        "governs": "Dataverse MCP server availability (Dataverse data endpoint only)",
         "docs": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-disable",
         "reachable": true,
         "segments": [
@@ -631,31 +825,56 @@
           "Settings",
           "Product",
           "Features",
-          "Dataverse Model Context Protocol"
+          "Dataverse Model Context Protocol",
+          "Allow MCP clients to interact with Dataverse MCP server"
         ],
         "missing": []
       },
       {
         "index": 1,
         "side": "ui",
-        "governs": "Which MCP tools users reach in Microsoft 365 Copilot",
-        "docs": "https://learn.microsoft.com/microsoft-365/copilot/manage-plugins-skills-mcp-servers",
-        "reachable": false,
+        "governs": "Allowed MCP clients for the Dataverse data endpoint",
+        "docs": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-disable",
+        "reachable": true,
+        "segments": [
+          "Manage",
+          "Environments",
+          "Settings",
+          "Product",
+          "Features",
+          "Dataverse Model Context Protocol",
+          "Advanced Settings",
+          "client",
+          "Is Enabled"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Allowed MCP clients for the Dataverse data endpoint",
+        "docs": "https://learn.microsoft.com/power-apps/developer/data-platform/cli/reference",
+        "reachable": true,
+        "token": "dataverse mcp",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Which MCP servers and tools users reach in Microsoft 365 Copilot",
+        "docs": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+        "reachable": true,
         "segments": [
           "Agents",
           "Tools",
           "Registry",
+          "MCP server",
           "Block"
         ],
-        "missing": [
-          "Agents",
-          "Tools",
-          "Registry",
-          "Block"
-        ]
+        "missing": []
       },
       {
-        "index": 2,
+        "index": 3,
         "side": "ui",
         "governs": "Connector data policies that cover MCP connectors",
         "docs": "https://learn.microsoft.com/power-platform/admin/connector-action-control",
@@ -669,7 +888,7 @@
         "missing": []
       },
       {
-        "index": 2,
+        "index": 3,
         "side": "api",
         "governs": "Connector data policies that cover MCP connectors",
         "docs": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest",
@@ -680,5 +899,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-16",
+      "status": "held",
+      "version": 2,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

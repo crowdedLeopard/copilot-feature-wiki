@@ -4,7 +4,7 @@ slug: "microsoft-teams-new-sharing-panel-in-meetings-improved-content-discovery-
 roadmapId: 502520
 topic: "modern-work"
 products: ["Microsoft Teams"]
-summary: "Microsoft plans a redesigned panel for sharing windows and files in Teams meetings on desktop and Mac, targeted January CY2027. It is a user interface change; no admin action or new licence is documented."
+summary: "Microsoft is redesigning the sharing panel in Teams meetings. Notice MC1317197 says it is on by default for all work and school users, with no tenant-level off switch; no immediate action is required, but communication is recommended."
 status: "in-development"
 releasePhase: ["General Availability","Targeted Release"]
 clouds: ["Worldwide (Standard Multi-Tenant)","GCC","GCC High","DoD"]
@@ -14,7 +14,7 @@ previewDate: null
 risk: "low"
 cost: "low"
 impact: "high"
-defaultState: "unknown"
+defaultState: "on"
 action: "prepare"
 licensing:
   model: "unknown"
@@ -22,8 +22,14 @@ licensing:
 audiences: ["m365-admin","service-owner","change-adoption"]
 tags: ["teams","meeting-policy","sharing","user-experience","adoption","gcc","gcc-high","dod"]
 sources:
+  - title: "MC1317197: (Updated) Microsoft Teams: A refreshed in-meeting experience with simpler controls and a smarter share panel"
+    url: "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1317197"
+    kind: "message-center"
   - title: "Manage meeting policies for content sharing"
     url: "https://learn.microsoft.com/microsoftteams/meeting-policies-content-sharing"
+    kind: "learn"
+  - title: "Manage meeting and events policies in Microsoft Teams"
+    url: "https://learn.microsoft.com/microsoftteams/meeting-policies-overview"
     kind: "learn"
   - title: "Microsoft 365 Roadmap item 502520"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=502520"
@@ -35,52 +41,59 @@ controls:
     scope: "tenant"
     ui: null
     api: null
-    note: "No such setting found in Microsoft Learn at the time of writing (November 2026)."
+    note: "MC1317197 says the experience cannot be disabled at the tenant level. No such setting found in Microsoft Learn at the time of writing (November 2026)."
   - governs: "Whether a user can share an entire screen, a single application, or neither in meetings"
     scope: "user"
     ui:
       surface: "Teams admin center"
-      path: "Meetings > Meeting policies > Content sharing"
+      path: "Meetings > Meeting policies > policy > Content sharing"
       docs: "https://learn.microsoft.com/microsoftteams/meeting-policies-content-sharing"
     api:
       kind: "powershell"
       call: "Set-CsTeamsMeetingPolicy -ScreenSharingMode"
       docs: "https://learn.microsoft.com/microsoftteams/meeting-policies-content-sharing"
     note: "Existing control for screen sharing mode. Microsoft has not confirmed that it applies to the new sharing panel."
-confidence: "low"
+confidence: "medium"
 created: "2026-11-16"
 updated: "2026-11-16"
 roadmapModified: "2026-11-12T01:50:56"
 changes:
   - date: "2026-11-16"
     note: "First briefing for this item: a roadmap-only description, with existing content sharing meeting policy settings listed as the nearest documented controls."
-version: 1
+  - date: "2026-11-16"
+    note: "Corrected after verification: default is on per MC1317197 (no tenant-level off switch), scope widened to Windows, Mac and web, notice rollout windows added, and the content sharing path now includes the policy step."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 58 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
-  date: "2026-11-16"
-  version: 1
+  date: "2026-11-17"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 41
-  confirmed: 35
-  unconfirmed: 1
-  contradicted: 5
-  attempts: 1
+  claims: 58
+  confirmed: 57
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 2
+  hash: "5feb496a15c143a61c5d08a874593ed1"
 ---
 
 ## What's changing
 
 Microsoft plans a new sharing panel for Teams meetings. The roadmap item says the panel in today's meetings is the default place for content discoverability and sharing, and that the new interface is intended to modernise and simplify default tasks such as window sharing, and to make sharing options and file sharing easier to find.
 
-The roadmap record lists Desktop and Mac as the platforms, and Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD as the clouds. The release phases listed are General Availability and Targeted Release. The roadmap gives no further detail on what the panel looks like, which sharing options it offers, or whether users can keep the current layout.
+Microsoft's notice MC1317197, which is associated with roadmap items 560321 and 502520, says the redesigned share panel may include live previews of screens and windows, a tabbed layout and a two-step share confirmation to reduce accidental sharing. The notice labels its share panel screenshot "not final UI". It says the new experience is enabled by default and cannot be disabled at the tenant level. During rollout, users may opt in early and can temporarily return to the previous experience from Teams settings. That opt-out is controlled by individual users, cannot be managed at the tenant level, and Microsoft says it will be retired in a future release, with advance notice in a separate Message Center post.
 
-The status is In development and the target date is January CY2027. This is a Microsoft target, not a commitment, and no preview date is set. At the time of writing (November 2026), a search of Microsoft Learn found no page that describes the new panel.
+The roadmap record lists Desktop and Mac as the platforms, and Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD as the clouds. The release phases listed are General Availability and Targeted Release. MC1317197 says the change applies to Teams for Windows desktop, Teams for Mac desktop and Teams for the web, and lists Teams (consumer), iOS, Android, Teams Rooms and Linux as not in scope.
+
+The roadmap status is In development and its target date is January CY2027. This is a Microsoft target, not a commitment, and no preview date is set. MC1317197 (updated 23 September 2026) gives a different schedule: Targeted Release of the redesigned meeting controls from late July to mid-August 2026, with the redesigned sharing controls beginning in September 2026; General Availability in Worldwide from mid-October to late October 2026; in GCC and GCC High from late October to mid-December 2026; and in DoD from mid-December 2026 to early January 2027. These are Microsoft's announced windows, not verified completion dates. At the time of writing (November 2026), a search of Microsoft Learn found no page that describes the new panel.
 
 ## Why it matters
 
 This is a change to the screen everyone who presents in a meeting uses. If the roadmap's description holds, presenters will see a different layout for choosing a window or a file, and the help desk will get questions about where the old options went. Nothing in the sources suggests the change reaches new data or new people, so the main task is communication.
 
-If nobody acts, the change arrives as part of the Teams client with no documented admin switch to delay it. Use the time before the January CY2027 target to find out how it is delivered (Targeted Release first, as the record lists) and to update any internal meeting guides or training that include screenshots of the current panel.
+MC1317197 says the experience is enabled by default and cannot be disabled at the tenant level, and that no immediate action is required. By the notice's schedule, Targeted Release comes before General Availability, and the redesigned sharing controls began rolling out in September 2026, so as of 16 November 2026 rollout may already have reached your tenant. Check the current Teams client now and communicate now, rather than assuming rollout is still ahead; January CY2027 is the roadmap target only. Microsoft recommends communicating the redesigned controls and share panel to users, help desk and internal support teams, and updating internal documentation and training; its coordinated meeting controls notice also recommends reviewing meeting app pinning policies against the two-app limit.
 
 ## Risk assessment
 
@@ -95,7 +108,7 @@ If nobody acts, the change arrives as part of the Teams client with no documente
 - No change documented: the roadmap describes user-driven sharing only; no automated or agent behaviour is mentioned.
 
 **Change & support**
-- A different layout for the most used meeting action will prompt support questions. Because Microsoft has not documented an admin control for the panel, plan communications rather than a configuration change.
+- A different layout for sharing content in meetings will prompt support questions. Because MC1317197 says the experience cannot be disabled at the tenant level, plan communications rather than a configuration change.
 - Screen sharing mode, set per user in the meeting policy, decides whether a user can share an entire screen, a single application, or nothing. Check that your policy assignments match what you expect before the new panel makes those options more prominent.
 
 ## Cost and licensing
@@ -104,20 +117,20 @@ Not yet published. The roadmap record names no licence, plan or meter for the ne
 
 The Learn page on meeting policies for content sharing (Manage meeting policies for content sharing) describes content sharing settings and lists no licence requirement for them. That page does not describe the new panel, so it should not be read as a licensing statement for it.
 
-The cost the sources show is indirect: admin time to check meeting policies, and communications and training time before the January CY2027 target.
+The cost the sources show is indirect: admin time to check meeting policies, and communications and training time, which MC1317197 recommends.
 
 ## Scope
 
 The roadmap record lists Microsoft Teams on Desktop and Mac, in Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD. Release phases are General Availability and Targeted Release. The record does not list web or mobile platforms; that is a record fact, and not a statement that the panel is unavailable there.
 
-Microsoft has not published which users or licences are in scope, which roles configure it, or any prerequisites. The content sharing settings on the Learn page are per-user policy settings, but Microsoft has not confirmed that they apply to the new panel in any way beyond what they govern today.
+MC1317197 gives a wider scope: all Teams work and school users joining meetings, on Teams for Windows desktop, Teams for Mac desktop and Teams for the web. It lists Teams (consumer), iOS, Android, Teams Rooms and Linux as not in scope. Where a user is on Teams in a web browser and is assigned the **Single application** value of Screen sharing mode, Learn says that setting functions as **Not enabled**. Microsoft has not published a licence requirement, which roles configure the experience, or any prerequisites. The content sharing settings on the Learn page are per-user policy settings, but Microsoft has not confirmed that they apply to the new panel in any way beyond what they govern today.
 
 ## Governance guidance
 
 ### Before rollout
-- Ask the Teams service owner to track roadmap item 502520 and Message center for the rollout announcement, and to record the January CY2027 target as a target only.
-- Review the **Screen sharing mode** value on each meeting policy in the Teams admin center (Meetings > Meeting policies > Content sharing) so you know who can share a screen, a single application or nothing.
-- Draft a short note for presenters and help desk staff that says the sharing panel layout is changing, and hold any screenshots until the new panel is visible in a Targeted Release test group.
+- Ask the Teams service owner to track roadmap item 502520 and MC1317197 in Message center for updates, and to record the January CY2027 roadmap target as a target only.
+- Review the **Screen sharing mode** value on each meeting policy in the Teams admin center (Meetings > Meeting policies > policy > Content sharing) so you know who can share a screen, a single application or nothing.
+- Draft a short note for presenters and help desk staff that says the sharing panel layout is changing, and take any screenshots from a client where the new panel is visible.
 
 ### At rollout
 - Test the panel on Teams for desktop and Mac with a user assigned each Screen sharing mode value, and record what it shows for each.
@@ -134,37 +147,30 @@ Microsoft has not published which users or licences are in scope, which roles co
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>A tenant-wide switch for the new sharing panel</strong><br><small>Tenant</small><br><small class="controls__note">No such setting found in Microsoft Learn at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether a user can share an entire screen, a single application, or neither in meetings</strong><br><small>User</small><br><small class="controls__note">Existing control for screen sharing mode. Microsoft has not confirmed that it applies to the new sharing panel.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting policies › Content sharing <a href="https://learn.microsoft.com/microsoftteams/meeting-policies-content-sharing" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -ScreenSharingMode</code> <a href="https://learn.microsoft.com/microsoftteams/meeting-policies-content-sharing" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>A tenant-wide switch for the new sharing panel</strong><br><small>Tenant</small><br><small class="controls__note">MC1317197 says the experience cannot be disabled at the tenant level. No such setting found in Microsoft Learn at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether a user can share an entire screen, a single application, or neither in meetings</strong><br><small>User</small><br><small class="controls__note">Existing control for screen sharing mode. Microsoft has not confirmed that it applies to the new sharing panel.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting policies › policy › Content sharing <a href="https://learn.microsoft.com/microsoftteams/meeting-policies-content-sharing" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -ScreenSharingMode</code> <a href="https://learn.microsoft.com/microsoftteams/meeting-policies-content-sharing" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-No setting specific to the new sharing panel is documented at the time of writing (November 2026). The rows above are existing controls that govern content sharing in meetings today; Microsoft has not said how, or whether, they apply to the new panel.
+No setting specific to the new sharing panel is documented at the time of writing (November 2026). MC1317197 says the experience cannot be disabled at the tenant level; the temporary opt-out it describes is set by individual users in Teams settings and cannot be managed by administrators at the tenant level. The second row is an existing control that governs content sharing in meetings today; Microsoft has not said how, or whether, it applies to the new panel.
 
-Content sharing settings are per-user policy settings. A meeting policy must be assigned to users for its values to apply, and edits are made in the policy's Content sharing section.
+Content sharing settings are per-user policy settings. Users receive the global policy automatically unless a custom policy is created and assigned to them; edits are made by selecting the policy and going to its Content sharing section.
 
 ## Open questions
 
-- Can an administrator turn the new sharing panel off, delay it, or keep the current panel, and where? Watch the roadmap item and Message center.
+- When will Microsoft retire the temporary user-level toggle for returning to the previous experience? MC1317197 says advance notice will come in a separate Message Center post.
 - Which content sharing meeting policy settings (Screen sharing mode, PowerPoint Live, Whiteboard, Shared notes) will the new panel respect, and will it add any new setting?
 - What files does the panel list for file sharing, and does it draw on OneDrive or SharePoint content the presenter can reach?
-- Is a licence required, and will the panel be on by default for all users on Desktop and Mac when it reaches General Availability?
+- Is a licence required for the new panel? Watch the roadmap item and Message center.
 
 <!-- rationale
 risk: Low. The roadmap describes a redesign of how presenters pick what to share; Microsoft has not said it adds data access, and existing meeting policy settings for content sharing remain the documented controls.
 cost: Low. The only cost the sources show is admin and communications time; Microsoft has not published a licence or meter for the new panel.
-impact: High. The roadmap calls the sharing panel the default place for sharing in meetings, so presenters on Teams for desktop and Mac would see a changed layout; Microsoft has not said how it rolls out.
+impact: High. MC1317197 says the redesigned experience is enabled by default for all Teams work and school users joining meetings on Windows desktop, Mac desktop and the web, and cannot be disabled at the tenant level.
 -->
 
-<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
-The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [contradicted, blocker] front matter: defaultState; Open questions: final bullet / default: Microsoft has not stated whether the new panel is enabled by default. | Found: The new experience is enabled by default and cannot be disabled at the tenant level. | Fix: Set defaultState to "on". State that MC1317197 says the experience is enabled by default, cannot be disabled tenant-wide, and offers a temporary individual opt-out during rollout. Remove the corresponding default-state open question and cite the supplied notice.
-- [supported, minor] controls[1].ui; Governance guidance: Before rollout; Governance controls / admin-path: Screen sharing mode is configured in Teams admin center under Meetings > Meeting policies > Content sharing. | Found: In the left navigation of the Teams admin center, go to Meetings > Meeting policies. 2. Select the policy that you want to edit. 3. Go to the Content sharing section. | Fix: Include the policy-selection step in both the structured path and its rendered copies: Meetings > Meeting policies > policy > Content sharing. | Source: https://learn.microsoft.com/microsoftteams/meeting-policies-content-sharing
-- [supported, minor] Governance controls: final paragraph / behaviour: Meeting-policy values apply through the policy assigned to a user. | Found: You can edit the settings in the global policy or create and assign one or more custom policies. Users get the global policy unless you create and assign a custom policy. | Fix: Cite https://learn.microsoft.com/microsoftteams/meeting-policies-overview and clarify the assignment sentence: users receive the global policy automatically unless a custom policy is assigned; a separate manual assignment is not always necessary. | Source: https://learn.microsoft.com/microsoftteams/meeting-policies-overview
-- [contradicted, blocker] Scope: second paragraph; summary; rationale: impact / availability: Microsoft has not published which users are in scope for the new sharing-panel experience. | Found: Who is affected: - All Teams work and school users joining meetings ... Teams for Windows desktop ... Teams for Mac desktop ... Teams for the web | Fix: State that MC1317197 covers all Teams work and school users joining meetings on Windows desktop, Mac desktop and the web; it excludes Teams consumer, iOS, Android, Teams Rooms and Linux. Preserve the narrower roadmap platform list as a separately attributed record fact. When adding web coverage, include Learn's caveat that Single application behaves as Not enabled in a browser.
-- [contradicted, blocker] Why it matters; Governance guidance: Before rollout; rationale: impact / date: Microsoft has not said how the panel rolls out, so administrators should prepare ahead of the January CY2027 target. | Found: General Availability (Worldwide): We will begin rolling out in mid-October 2026 (previously late September) and expect to complete by late October 2026 (previously late September). | Fix: Retain January CY2027 only as the roadmap target and report the different supplied notice schedule. MC1317197 says Targeted Release meeting controls late July to mid-August 2026, sharing controls beginning September 2026; Worldwide GA mid-October to late October 2026; GCC/GCC High GA late October to mid-December 2026; DoD GA mid-December 2026 to early January 2027. These are Microsoft's announced windows, not verified completion dates. At the 16 November run date, advise checking current tenant rollout and communicating now rather than assuming rollout is entirely ahead. Cite MC1317197 at https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1317197.
-- [supported, minor] Why it matters: second paragraph / date: Targeted Release precedes General Availability for this update. | Found: Redesigned Sharing controls will begin rolling out in September 2026. ... General Availability (Worldwide): We will begin rolling out in mid-October 2026 | Fix: Attribute the release order to MC1317197 and add its source URL, rather than claiming that the roadmap's unordered phase list establishes the sequence.
-- [contradicted, blocker] Open questions: first bullet / absence: Whether an administrator can turn the new sharing panel off at tenant level is an unanswered question. | Found: The new experience is enabled by default and cannot be disabled at the tenant level. | Fix: Replace this open question with the notice's distinction: individual users can temporarily return to the previous experience through Teams settings during rollout, but administrators cannot manage that opt-out tenant-wide. Microsoft says the temporary toggle will be retired with advance notice in a separate Message Center post; do not imply permanent retention of the old layout.
-- [unsupported, major] Risk assessment: Change & support / behaviour: Sharing is the most used meeting action. | Found: Searched: Teams sharing most used meeting action screen share telemetry. Checked returned Learn result titles and the cited content-sharing article; read the roadmap and MC1317197. None establishes that sharing is the most used meeting action. | Fix: Replace "a different layout for the most used meeting action" with "a different layout for sharing content in meetings".
-- [contradicted, blocker] summary: no admin action documented / record: Microsoft has documented no administrator action for this update. | Found: No immediate action is required. We recommend that you: - Review existing Teams meeting app pinning policies and plan future policies around the two-app limit. | Fix: Distinguish no immediate required action from published recommendations. Say Microsoft recommends communicating the redesigned controls and share panel and updating internal documentation and training; its coordinated meeting-controls notice also recommends reviewing app pinning policies against the two-app limit. Cite MC1317197 rather than saying no admin action is documented.
+<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[1].api; Governance controls: API and automation / command: Set-CsTeamsMeetingPolicy -ScreenSharingMode is a usable automation call for screen sharing mode as printed. | Found: [-ScreenSharingMode <String>] Determines the mode in which a user can share a screen in calls or meetings. Set this to SingleApplication to allow the user to share an application at a given point in time. | Fix: Replace the call in controls[1].api and the rendered table with 'Set-CsTeamsMeetingPolicy -Identity <policy> -ScreenSharingMode <mode>'. Set its docs URL to https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps and cite that reference; mode must be SingleApplication, EntireScreen or Disabled. The current call omits the string argument required when -ScreenSharingMode is supplied. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps
 -->

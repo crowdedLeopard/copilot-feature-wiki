@@ -40,8 +40,17 @@ sources:
   - title: "Governance and lifecycle actions for agents available in Microsoft 365 admin center"
     url: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions"
     kind: "learn"
+  - title: "copilotPackage: block"
+    url: "https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/package/copilotpackage-block"
+    kind: "learn"
+  - title: "Configure data policies for agents"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention"
+    kind: "learn"
+  - title: "Preview Microsoft Agent 365 features through the Frontier program"
+    url: "https://learn.microsoft.com/microsoft-agent-365/frontier"
+    kind: "learn"
 videos: []
-related: ["agent-identity","dataverse-agent-users-entra-agent-identity","agent-365-control-plane-for-agents","copilot-credits","work-iq-memory-capabilities-expand-to-agents"]
+related: ["agent-identity","copilot-credits","work-iq-memory-capabilities-expand-to-agents","work-iq-agent-policy-governance"]
 controls:
   - governs: "Which users and groups can create agents with accounts (template activation)"
     scope: "tenant"
@@ -65,8 +74,11 @@ controls:
       surface: "Microsoft 365 admin center"
       path: "Agents > All agents > select an agent > Block"
       docs: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions"
-    api: null
-    note: "General control for agents in the admin centre; the page does not mention agent accounts specifically."
+    api:
+      kind: "graph"
+      call: "POST /beta/copilot/admin/catalog/packages/{id}/block"
+      docs: "https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/package/copilotpackage-block"
+    note: "General control; neither page mentions agent accounts specifically. API is beta: needs Agent 365 licence and delegated CopilotPackages.ReadWrite.All; not supported in production."
   - governs: "Shared memory of an agent with an account"
     scope: "agent"
     ui: null
@@ -79,18 +91,23 @@ roadmapModified: "2026-09-30T23:31:03"
 changes:
   - date: "2026-11-16"
     note: "First briefing: documents the Frontier preview of agent accounts, its two admin switches, per-agent licence and shared-memory behaviour."
-version: 1
+  - date: "2026-11-16"
+    note: "Corrected after verification: added the beta Graph block call to the agent-blocking row, replaced the claim that no tenant-level action control exists with the data policy scope, and added the Agent 365 Frontier prerequisites and licence pool."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 74 statements contradicted, 1 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
-  date: "2026-11-16"
-  version: 1
+  date: "2026-11-17"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 68
-  confirmed: 65
-  unconfirmed: 0
-  contradicted: 3
-  attempts: 1
+  claims: 74
+  confirmed: 72
+  unconfirmed: 1
+  contradicted: 1
+  attempts: 2
+  hash: "eeceeb8de42642da9d937022a0c9aab5"
 ---
 
 ## What's changing
@@ -122,7 +139,7 @@ Nothing happens until an admin activates the Copilot Studio (Frontier) template 
 
 **Autonomy & actions**
 
-- Agents with an account can be triggered and can send email and generate documents as themselves. Microsoft does not document, at the time of writing (November 2026), a tenant-level control that limits which actions an agent account may take, beyond the Agent accounts switch and agent blocking.
+- Agents with an account can be triggered and can send email and generate documents as themselves. Tenant-scoped Copilot Studio data policies can restrict connector tools and supported capabilities; this is not a universal per-account action allow-list. Learn says policies with a tenant scope apply to all agents in all environments across the tenant.
 
 **Change & support**
 
@@ -130,9 +147,9 @@ Nothing happens until an admin activates the Copilot Studio (Frontier) template 
 
 ## Cost and licensing
 
-Learn lists these requirements on "Give your agent an account (Frontier)": a maker licence of Microsoft 365 E5 with the Microsoft Agent 365 add-on, or Microsoft 365 E7 (which includes Agent 365); tenant enrolment in the Microsoft Frontier Program with the Agent 365 Terms of Service accepted; and Microsoft 365 Frontier for AI Teammates licences. Each licence is assigned per agent and used when the maker publishes. When none is free, publishing fails until an admin removes a licence from another agent or acquires more.
+Learn lists these requirements on "Give your agent an account (Frontier)": a maker licence of Microsoft 365 E5 with the Microsoft Agent 365 add-on, or Microsoft 365 E7 (which includes Agent 365); tenant enrolment in the Microsoft Frontier Program with the Agent 365 Terms of Service accepted; and Microsoft 365 Frontier for AI Teammates licences. The Agent 365 Frontier page adds a separate tenant prerequisite: at least one Microsoft E7 licence to access Agent 365 preview features. Each Frontier for AI Teammates licence is assigned per agent and used when the maker publishes. When none is free, publishing fails until an admin removes a licence from another agent or acquires more.
 
-Usage is charged separately. Learn says account licensing and usage-based service charges are separate, and that using, building, testing and evaluating agents on this harness might consume Copilot Credits (see /concepts/copilot-credits/). The pool size provisioned on enrolment, the price of the Frontier for AI Teammates licence, and the general-availability licensing are not published on the feature page; check the Copilot Credits Licensing Guide it links and Message center.
+Usage is charged separately. Learn says account licensing and usage-based service charges are separate, and that using, building, testing and evaluating agents on this harness might consume Copilot Credits (see /concepts/copilot-credits/). The feature page does not publish the price of the Frontier for AI Teammates licence. The Agent 365 Frontier page tells a global admin to confirm 25 active Microsoft 365 Frontier for AI Teammates licences at Billing > Licenses after enrolling. For general availability, that page says Agent 365 is licensed per user, and agents managed or owned by a licensed user do not need their own Agent 365 or Microsoft 365 E7 licence. The feature page does not say whether that rule is the general-availability licensing for agent accounts; check the Copilot Credits Licensing Guide it links and Message center.
 
 ## Scope
 
@@ -144,7 +161,7 @@ The roadmap lists the Worldwide (Standard Multi-Tenant) cloud and the web platfo
 
 ### Before rollout
 
-- Decide whether to pilot: read the Learn page, then confirm your tenant is enrolled in Frontier and has free Microsoft 365 Frontier for AI Teammates licences (Microsoft 365 admin center, global admin).
+- Decide whether to pilot: read the Learn page and the prerequisites under Cost and licensing, and note that a retired agent's licence can be removed to free the pool.
 - Name a small group of makers and a non-sensitive internal process for the first agent; only they will be selected at the template's Users step.
 - Brief colleagues that the agent's memory is shared across all users and that files and chats they share can appear in responses to others; ask the records and privacy owners to agree wording.
 - Agree an alias and job-title convention, because the email address cannot be changed after publishing.
@@ -157,9 +174,7 @@ The roadmap lists the Worldwide (Standard Multi-Tenant) cloud and the web platfo
 
 ### After rollout
 
-- Review the agents in the Microsoft 365 admin center agent list and block any that should not run, and remove a licence from retired agents to free the pool.
-- Check the agent's Entra Agent ID and sign-in state in the Microsoft Entra admin center when an agent stops responding in Teams; Learn says a disabled or blocked Agent ID can cause this.
-- Monitor Copilot Credits consumption for pilot agents against budget.
+- Review the agents in the Microsoft 365 admin center agent list and block any that should not run.
 
 ## Governance controls
 
@@ -170,16 +185,16 @@ The roadmap lists the Worldwide (Standard Multi-Tenant) cloud and the web platfo
 <tbody>
 <tr><td data-label="Control"><strong>Which users and groups can create agents with accounts (template activation)</strong><br><small>Tenant</small><br><small class="controls__note">Tenant admin. Preview (Frontier) documentation.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>All Agents › filter Agent template: Yes › Copilot Studio (Frontier) › Activate › Users step <a href="https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether agents in an environment can have accounts</strong><br><small>Environment</small><br><small class="controls__note">Turning it off hides the Agent account button. Also the only documented way to turn off shared memory. Preview.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Copilot › Settings › Copilot Studio › Agent accounts <a href="https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Blocking a specific agent that has an account</strong><br><small>Agent</small><br><small class="controls__note">General control for agents in the admin centre; the page does not mention agent accounts specifically.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › select an agent › Block <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Blocking a specific agent that has an account</strong><br><small>Agent</small><br><small class="controls__note">General control; neither page mentions agent accounts specifically. API is beta: needs Agent 365 licence and delegated CopilotPackages.ReadWrite.All; not supported in production.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › select an agent › Block <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Shared memory of an agent with an account</strong><br><small>Agent</small><br><small class="controls__note">FAQ: an admin cannot turn shared memory off independently of agent accounts; users cannot opt out.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-Switching Agent accounts off in an environment hides the **Agent account** button for agents there; the shared-memory feature cannot be disabled on its own, so turning off agent accounts is the only documented way to turn off shared memory. The two on-switches work together: a maker needs both the template activation (user or group selection) and the environment setting. Blocking an agent in the Microsoft 365 admin center uses the controls that work for any other app, and for Copilot Studio agents affects availability in Microsoft Copilot and in host products such as Outlook and Teams. At the time of writing (November 2026), Microsoft Learn documents no PowerShell, Graph or Power Platform API for the Agent accounts setting or the template activation. Microsoft Entra Agent IDs created by Copilot Studio are managed separately in the Microsoft Entra admin center.
+Switching Agent accounts off in an environment hides the **Agent account** button for agents there; the shared-memory feature cannot be disabled on its own, so turning off agent accounts is the only documented way to turn off shared memory. The two on-switches work together: a maker needs both the template activation (user or group selection) and the environment setting. Blocking an agent in the Microsoft 365 admin center uses the controls that work for any other app, and for Copilot Studio agents affects availability in Microsoft Copilot and in host products such as Outlook and Teams. The Graph block call is a beta API that requires a Microsoft Agent 365 licence. At the time of writing (November 2026), Microsoft Learn documents no PowerShell, Graph or Power Platform API for the Agent accounts setting or the template activation. Microsoft Entra Agent IDs created by Copilot Studio are managed separately in the Microsoft Entra admin center.
 
 ## Open questions
 
-- What will the Microsoft 365 Frontier for AI Teammates licence cost, and what licensing replaces it at general availability? Watch the Learn page and Message center.
+- What will the Microsoft 365 Frontier for AI Teammates licence cost, and will the general-availability Agent 365 per-user licensing described on the Agent 365 Frontier page apply to agent accounts? Watch the Learn page and Message center.
 - Will an admin be able to turn off shared memory, or restrict it by sensitivity or audience, independently of agent accounts?
 - Is there an API or PowerShell route to turn Agent accounts on and off, or to audit which agents have accounts?
 - Will the roadmap target of November CY2026 move general availability past the Frontier restrictions (early release environments, Frontier enrolment)?
@@ -191,14 +206,9 @@ cost: Variable. Each agent account uses one Microsoft 365 Frontier for AI Teamma
 impact: Medium. Only makers selected by an admin can create these agents, but colleagues will see the agent in Teams, email and the directory, and anyone who talks to it contributes to its shared memory.
 -->
 
-<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
-The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [contradicted, blocker] controls[2].api; Governance controls table / absence: The general agent-blocking control has no documented API or automation equivalent. | Found: Block a Copilot package to prevent its usage.
-POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block | Fix: Set controls[2].api to kind graph, call 'POST /beta/copilot/admin/catalog/packages/{id}/block', and docs https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/package/copilotpackage-block. State that this is a preview API, requires Microsoft Agent 365 licensing and delegated CopilotPackages.ReadWrite.All, and is not supported for production applications. Retain the row's general-control applicability caveat. | Source: https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/package/copilotpackage-block
-- [contradicted, blocker] Risk assessment: Autonomy & actions / absence: Microsoft documents no tenant-level control limiting agent-account actions beyond the Agent accounts switch and agent blocking. | Found: Policies with a tenant scope apply to all agents in all environments across the tenant.
-To prevent agent makers from using Power Platform connectors as tools in Copilot Studio agents, configure a data policy with the connectors you want to block. | Fix: Remove the broad absence claim. Replace it with: 'Tenant-scoped Copilot Studio data policies can restrict connector tools and supported capabilities; this is not a universal per-account action allow-list.' Cite https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention and describe only its documented scope. The already-cited govern-agents-identities-overview also states that advanced connector policies and data policies govern connector calls at execution time. | Source: https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention
-- [supported, minor] Cost and licensing; Governance guidance: Before rollout / licensing: Tenant enrolment in the Microsoft Frontier Program is required. | Found: Your tenant is enrolled in the Microsoft Frontier Program, with the Microsoft Agent 365 Terms of Service accepted | Fix: Keep the feature-page prerequisites, but also cite https://learn.microsoft.com/microsoft-agent-365/frontier and report its additional tenant prerequisite: at least one Microsoft E7 licence to access Agent 365 preview features. Distinguish that tenant requirement from the feature page's E5-plus-Agent-365 or E7 maker options. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account
-- [supported, minor] Cost and licensing / absence: The feature page does not publish the number of Frontier for AI Teammates licences provisioned on enrolment. | Found: Searched: "agent accounts" "Frontier" pricing licenses general availability pool. Read authoring-agent-account, which says 'enough' without a number; also read microsoft-agent-365/frontier, which specifies 25 active licences. | Fix: Avoid leaving the known pool size as an unresolved gap: cite https://learn.microsoft.com/microsoft-agent-365/frontier and say its enrolment instructions tell admins to confirm 25 active Microsoft 365 Frontier for AI Teammates licences at Billing > Licenses.
-- [supported, minor] Cost and licensing; Open questions / absence: The agent-account feature page does not publish its general-availability licensing. | Found: Searched: "agent accounts" "Frontier" pricing licenses general availability pool. Read authoring-agent-account and microsoft-agent-365/frontier; the feature page describes preview licensing, while Frontier's FAQ separately explains Agent 365 GA per-user licensing. | Fix: Keep the feature-specific GA question, but distinguish it from published Agent 365 GA licensing. Cite https://learn.microsoft.com/microsoft-agent-365/frontier: Agent 365 at GA is licensed per user and agents managed or owned by that licensed user do not need their own Agent 365 or E7 licence. Do not equate that general rule with an announced GA design for this roadmap feature.
-- [contradicted, minor] Governance guidance: Before rollout and After rollout; controls / consistency: Every control the governance checklist asks readers to check or manage appears in the controls table. | Found: confirm your tenant is enrolled in Frontier and has free Microsoft 365 Frontier for AI Teammates licences; Check the agent's Entra Agent ID and sign-in state; Monitor Copilot Credits consumption. The four table rows cover activation, Agent accounts, blocking and shared memory only. | Fix: Add rows for Frontier enrolment/licence-pool management, Entra Agent ID sign-in/risk inspection, and Copilot Credits consumption monitoring, with documented surfaces and separately researched automation sides. Alternatively remove checklist instructions for controls the table does not cover.
+<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[2].ui; Governance controls table / admin-path: The complete agent-blocking path ends at Agents > All agents > select an agent > Block. | Found: 5. In the Block agent or Unblock agent pane that opens, select either Block agent or Unblock agent, and then select Save. | Fix: Replace the path in controls[2].ui and the rendered table with 'Agents > All agents > select an agent > Block > Block agent > Save'. The cited page requires selecting Block agent in the confirmation pane after selecting Block. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions
+- [unsupported, major] What's changing: first paragraph / behaviour: Without this feature an agent was something that only ran behind a maker or a shared service connection. | Found: Searched: Copilot Studio agents accounts previously maker shared service connection identity. Read authoring-agent-account, admin-use-entra-agent-identities and govern-agents-identities-overview. None states this exclusive historical authentication model. | Fix: Remove 'rather than something that only runs behind a maker or a shared service connection' from the first paragraph of What's changing.
 -->

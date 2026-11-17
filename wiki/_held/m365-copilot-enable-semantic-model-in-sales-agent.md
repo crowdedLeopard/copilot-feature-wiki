@@ -18,15 +18,24 @@ defaultState: "unknown"
 action: "prepare"
 licensing:
   model: "unknown"
-  notes: "Sales agent is available to users with a Microsoft 365 Copilot licence. Microsoft has not published a licence or meter for the semantic model itself."
+  notes: "Sales agent is available to users with a Microsoft 365 Copilot licence; a Dynamics 365 Sales Enterprise or Premium licence without it gives CRM data only. Microsoft has not published a licence or meter for the semantic model itself."
 audiences: ["power-platform-admin","m365-admin","service-owner","maker"]
 tags: ["sales-agent","semantic-model","dynamics-365","dataverse","work-iq","glossary","power-apps","m365-copilot","power-platform-admin-center","m365-admin-center","knowledge-grounding"]
 sources:
   - title: "Microsoft 365 Roadmap 573294"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=573294"
     kind: "roadmap"
+  - title: "MC1540293"
+    url: "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1540293"
+    kind: "message-center"
   - title: "Set up Sales agent in Microsoft 365 Copilot"
     url: "https://learn.microsoft.com/microsoft-sales-copilot/set-up-sales-chat"
+    kind: "learn"
+  - title: "Use Sales agent in Microsoft 365 Copilot"
+    url: "https://learn.microsoft.com/microsoft-sales-copilot/use-sales-chat"
+    kind: "learn"
+  - title: "Data handling in Sales agent"
+    url: "https://learn.microsoft.com/microsoft-sales-copilot/data-handling"
     kind: "learn"
   - title: "Overview of Dataverse semantic model (preview)"
     url: "https://learn.microsoft.com/power-apps/maker/data-platform/semantic-model-overview"
@@ -40,6 +49,9 @@ sources:
   - title: "Set up glossary terms for Salesforce"
     url: "https://learn.microsoft.com/microsoft-sales-copilot/sf-glossary-support"
     kind: "learn"
+  - title: "copilotglossaryterm EntityType"
+    url: "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/copilotglossaryterm"
+    kind: "learn"
   - title: "Business Applications in Work IQ default settings (preview)"
     url: "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings"
     kind: "learn"
@@ -50,7 +62,7 @@ sources:
     url: "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/"
     kind: "learn"
 videos: []
-related: ["microsoft-dataverse-enable-semantic-data-understanding-for-agentic-use","m365-copilot-discover-and-act-on-recommended-lead-and-opportunity-actions-in-sales-agent"]
+related: []
 controls:
   - governs: "Whether Work IQ features, including semantic models, are on in an environment"
     scope: "environment"
@@ -104,18 +116,23 @@ roadmapModified: "2026-11-11T00:51:09"
 changes:
   - date: "2026-11-16"
     note: "First briefing for this roadmap item, written from the roadmap record and the preview Learn pages for Sales agent, the semantic model and Work IQ."
-version: 1
+  - date: "2026-11-16"
+    note: "Corrected after verification: added MC1540293's 17 November 2026 general availability date beside the roadmap target, the msdyn_viva Trial qualification, the Dataverse search storage wording, the CopilotGlossaryTerm Web API reference and the Dynamics 365 Sales licence qualification."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 82 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
-  date: "2026-11-16"
-  version: 1
+  date: "2026-11-17"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 78
-  confirmed: 73
-  unconfirmed: 1
-  contradicted: 4
-  attempts: 1
+  claims: 82
+  confirmed: 79
+  unconfirmed: 0
+  contradicted: 3
+  attempts: 2
+  hash: "c9109a5dc01d980fcc4bee6aa0558b9e"
 ---
 
 ## What's changing
@@ -126,7 +143,7 @@ For Dynamics 365, the roadmap says admins turn the model on in the Power Apps ma
 
 The model draws on metadata that already exists: table relationships, views, forms, column description summaries and, optionally, sample data rows. Sample data rows are off by default. The model regenerates every 12 hours, and an administrator can trigger a regeneration.
 
-The roadmap record lists the item as In development, with a preview in October CY2026 and general availability targeted for December CY2026 for Worldwide (Standard Multi-Tenant). Those dates are Microsoft's targets. The Learn pages for the semantic model, Work IQ and the Sales agent step are all marked preview at the time of writing (November 2026).
+The roadmap record lists the item as In development, with a preview in October CY2026 and general availability targeted for December CY2026 for Worldwide (Standard Multi-Tenant). Those dates are Microsoft's targets. Microsoft's notice MC1540293 (published 2026-11-05) gives a different date: it says this feature will reach general availability on November 17, 2026, and that the message is for awareness and no action is required. The roadmap target and the notice disagree; the notice is the later and more specific statement about rollout. The Learn pages for the semantic model, Work IQ and the Sales agent step are all marked preview at the time of writing (November 2026).
 
 ## Why it matters
 
@@ -143,7 +160,7 @@ The larger decision is upstream. Learn states that Microsoft turns Work IQ on by
 
 **Security & identity**
 - Managing the model needs System Administrator, or the Semantic Model and Environment Maker roles. Salesforce admins must also assign a security role in the msdyn_viva environment in Power Platform admin center.
-- Learn does not say whether the msdyn_viva environment is covered by the Work IQ default described below.
+- Learn documents the msdyn_viva environment as type Trial, and the Work IQ default-settings page lists trial environments among the nonproduction exceptions to the default. If msdyn_viva has been converted to Production, check the other exceptions on that page.
 
 **Autonomy & actions**
 - The pages read describe the model as signals and glossary terms used to interpret data. They describe no write capability for it.
@@ -156,15 +173,15 @@ The larger decision is upstream. Learn states that Microsoft turns Work IQ on by
 
 ## Cost and licensing
 
-Sales agent is available to users who have a Microsoft 365 Copilot licence (Set up Sales agent in Microsoft 365 Copilot). That page names no separate licence for the semantic model, and Microsoft has not published a price or meter for it.
+Sales agent is available to users who have a Microsoft 365 Copilot licence (Set up Sales agent in Microsoft 365 Copilot). The Use Sales agent page adds that a user with a Dynamics 365 Sales Enterprise or Premium licence but no access to Microsoft 365 Copilot can still use Sales agent with CRM data only; Graph-grounded data needs Microsoft 365 Copilot. Neither page names a separate licence for the semantic model, and Microsoft has not published a price or meter for it.
 
 The preview banner on the semantic model pages says that for consumption-based services, usage of underlying application services may continue to incur licence fees during the preview period. It does not say which services that covers for Sales agent.
 
-The documented indirect cost is storage. The Sales agent page says enabling Dataverse search can increase storage usage because indexes are created for searchable tables, and the Work IQ default-settings page says semantic modelling uses extra storage for search indexes. Removing tables from Sales agent reduces index storage, but those tables can then no longer be queried in Sales agent.
+The documented indirect cost is storage. The Sales agent page says enabling Dataverse search can increase storage usage because indexes are created for searchable tables, and the Work IQ default-settings page says semantic modelling uses extra storage for search indexes. For Dynamics 365, removing tables from Dataverse search can reduce index-related storage costs, but those tables can no longer be queried in Sales agent.
 
 ## Scope
 
-- **Users:** sellers with Sales agent installed in Outlook and Teams and a Microsoft 365 Copilot licence. Sales Chat must be turned on in Access settings.
+- **Users:** sellers with Sales agent installed in Outlook and Teams and a Microsoft 365 Copilot licence (a Dynamics 365 Sales Enterprise or Premium user without it can use Sales agent with CRM data only). Sales Chat must be turned on in Access settings.
 - **CRM:** Dynamics 365 Sales and Salesforce. For Salesforce, Learn directs admins to the msdyn_viva environment for the Work IQ setting.
 - **Roles:** System Administrator, or Semantic Model and Environment Maker, to manage the model; Power Platform Administrator for the Work IQ environment setting; a tenant administrator account for the Microsoft 365 admin center setting.
 - **Prerequisite:** to fine-tune the model, Dataverse version with Dynamics 365 apps enabled must be 9.2.26054.00125 or later.
@@ -210,28 +227,27 @@ Learn describes four control levels for a semantic model: environment, signal ty
 
 Changes to a semantic model apply to every app or agent that shares it, so tuning the model for Sales agent also changes Copilot in Dynamics 365 Sales. The Sales agent CRM entity list and the semantic model's table settings are separate screens, and Learn does not say that one limits the other.
 
-Glossary terms for Dynamics 365 are, per the Sales agent page, added in Copilot Studio; for Salesforce they are rows in the CopilotGlossaryTerms table in the msdyn_viva environment. The Semantic model page has its own Glossary, and the pages read do not say how the three relate. No scripted control for any of this is documented at the time of writing (November 2026).
+Glossary terms for Dynamics 365 are, per the Sales agent page, added in Copilot Studio; for Salesforce they are rows in the CopilotGlossaryTerms table in the msdyn_viva environment. The Semantic model page has its own Glossary, and the pages read do not say how the three relate. Microsoft documents Dataverse Web API operations (POST, GET, PATCH and DELETE) for the CopilotGlossaryTerm table, with term, description and skill properties, in the Dataverse Web API reference. Microsoft Learn documents no API for the Work IQ environment setting or for the Semantic model page's controls at the time of writing (November 2026).
 
 ## Open questions
 
 - Will the semantic model be switched on for Sales agent automatically when Work IQ is on by default, or only after an admin enables it? Watch the Sales agent setup page and the roadmap item.
-- Is the Salesforce msdyn_viva environment covered by the Work IQ default for existing environments from November 2026?
 - Which licence or meter, if any, applies to semantic model use, and is it part of the Microsoft 365 Copilot licence for Sales agent?
 - Which glossary does Sales agent read on Dynamics 365: the Copilot Studio glossary, the Semantic model page's Glossary, or both?
 - Will a PowerShell cmdlet or API for the Work IQ environment setting or the semantic model be published before general availability?
+- The roadmap targets general availability in December CY2026, while MC1540293 says November 17, 2026. Will the roadmap item be updated to match, and will the preview labels come off the Learn pages?
 
 <!-- rationale
 risk: Medium. The model reads CRM metadata and, if switched on, sample data rows, and the Work IQ setting behind it is documented as on by default for qualifying environments from November 2026, so it needs review.
-cost: Low. The only costs Learn shows are admin time and extra Dataverse storage for search indexes. Sales agent needs a Microsoft 365 Copilot licence; any charge specific to the semantic model is not yet published.
+cost: Low. The only costs Learn shows are admin time and extra Dataverse storage for search indexes. Sales agent needs a Microsoft 365 Copilot licence, or a Dynamics 365 Sales Enterprise or Premium licence for CRM data only; any charge specific to the semantic model is not yet published.
 impact: Medium. Sellers using Sales agent will notice changed answers; the admins and makers who manage the CRM environment do the configuring. Nobody else is affected.
 -->
 
-<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
-The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [contradicted, blocker] What's changing: rollout paragraph; sources / date: The briefing presents only the December roadmap target as the announced general availability timing. | Found: This feature will reach general availability on November 17, 2026. | Fix: Retain December CY2026 explicitly as the roadmap target, but add that Microsoft's notice MC1540293 announces general availability on November 17, 2026, and says no action is required. Cite https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1540293 and report the discrepancy rather than silently choosing the roadmap.
-- [supported, minor] front matter: licensing.notes; Cost and licensing; Scope; rationale: cost / licensing: Sales agent is available to Microsoft 365 Copilot licensees, and the briefing describes that licence as required. | Found: The Sales agent is available to users who have access to a Microsoft 365 Copilot license. | Fix: Retain the cited setup-page statement, but qualify the blanket requirement: https://learn.microsoft.com/microsoft-sales-copilot/use-sales-chat also says Dynamics 365 Sales Enterprise or Premium users without Microsoft 365 Copilot can use Sales agent with CRM data only. Name that discrepancy and add the source. | Source: https://learn.microsoft.com/microsoft-sales-copilot/set-up-sales-chat
-- [contradicted, blocker] Risk assessment: Security & identity; Open questions / absence: Microsoft has not said whether the Salesforce msdyn_viva environment falls under the Work IQ default. | Found: The msdyn_viva environment is of type Trial. If you need to convert the environment to Production, follow the steps in the Convert the sales environment from Trial to Production article. | Fix: Replace the unresolved question with the documented qualification: msdyn_viva is provisioned as Trial, and trial environments are excluded from Work IQ automatic enablement by https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings. If it has been converted to Production, check the other eligibility exceptions. Add the data-handling source. | Source: https://learn.microsoft.com/microsoft-sales-copilot/data-handling#sales-agent,-dataverse,-and-your-crm
-- [unsupported, blocker] Cost and licensing: final paragraph / cost: Removing tables from the Sales agent entity list reduces index storage. | Found: Searched: "Sales agent" "remove tables" "storage" "index". Opened Sales setup and read Free up storage space search passages. The documented storage action is removing tables from Dataverse search, not merely from the Sales agent entity list. | Fix: Replace with: 'For Dynamics 365, removing tables from Dataverse search can reduce index-related storage costs, but those tables can no longer be queried in Sales agent.' Cite https://learn.microsoft.com/microsoft-sales-copilot/set-up-sales-chat#step-1-configure-crm-entities-dynamics-365-tables-or-salesforce-objects. Do not equate the Sales agent entity list with the Dataverse search index configuration.
-- [contradicted, blocker] Governance controls: final sentence / absence: No scripted control for any of the glossary management just described is documented. | Found: Entity set path: [organization URI]/api/data/v9.2/copilotglossaryterms ... Operations supported: POSTGETPATCHDELETE | Fix: Remove 'No scripted control for any of this is documented'. Microsoft documents Dataverse CRUD for CopilotGlossaryTerm, including term, description and skill properties, at the cited reference. Restrict any remaining absence statement to the Work IQ switch and the specific Semantic model UI controls whose API mapping is not documented; do not imply Salesforce glossary rows have no automation surface. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/copilotglossaryterm
-- [contradicted, minor] Governance guidance: At rollout; After rollout; Governance controls / consistency: The governance checklist asks administrators to use controls that lack their own corresponding table rows. | Found: Switch off views or relationships ... leave Sample table rows off ... an admin can regenerate manually ... Turn Dataverse Intelligence off and on again | Fix: Add distinct rows for signal-type/sample-row configuration, individual view/relationship switches and manual regeneration. The existing controls[2] path only shows table inclusion. Also map the Dataverse Intelligence restart instruction explicitly to the environment control row, noting Microsoft's terminology, rather than leaving its relationship to Work IQ implicit.
+<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] front matter: defaultState; Open questions: automatic enablement / default: The feature's default is unknown, including whether Sales agent uses the semantic model automatically when Work IQ is on. | Found: The semantic model is automatically provisioned and consumed by the following Copilot and agent experiences when they are set up over Dataverse data: Sales Agent in Microsoft 365 | Fix: Set defaultState to on. Replace the first Open questions bullet with: 'For Sales agent set up over Dataverse data, the semantic model is automatically provisioned and consumed. Work IQ is enabled by default for qualifying new environments from 30 September 2026 and qualifying existing environments from November 2026; the documented EU/EFTA, government-related and nonproduction exceptions still apply.' The already-cited semantic-model overview and Work IQ default-settings pages support this; retain the msdyn_viva Trial qualification. | Source: https://learn.microsoft.com/power-apps/maker/data-platform/semantic-model-overview
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [contradicted, minor] front matter: action / consistency: Prepare is the appropriate action rating for this run. | Found: action: "prepare" Learn states that Microsoft turns Work IQ on by default for new environments from 30 September 2026 and for existing environments from November 2026 | Fix: Change action to act-now: on 17 November 2026, default enablement is current, the briefing rates risk medium, and its documented Work IQ and table-scope controls give administrators a decision to take now. Keep the accurate statement that MC1540293 itself requires no action.
+- [contradicted, minor] Governance guidance: Before rollout and After rollout / consistency: Every control the governance checklist asks administrators to set or use appears in the controls table. | Found: Assign System Administrator, or Semantic Model plus Environment Maker, to the people who will tune the model Review the model after schema changes: it regenerates every 12 hours, or an admin can regenerate manually. | Fix: The role-assignment instruction and manual-regeneration instruction have no corresponding controls-table rows. Do not add rows in this correction; change them to non-procedural checks: 'Confirm that the people tuning the model have the documented roles and that Dataverse meets the minimum version' and 'Review the model after schema changes; automatic regeneration runs every 12 hours.'
 -->

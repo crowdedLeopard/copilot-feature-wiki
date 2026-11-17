@@ -2,50 +2,33 @@
   "slug": "power-apps-monitor-generative-pages-with-out-of-the-box-application-insights-telemetry",
   "roadmapId": 576282,
   "title": "Power Apps: out-of-the-box Application Insights telemetry for generative pages",
-  "status": "held",
-  "date": "2026-11-16",
-  "version": 2,
+  "status": "verified-with-gaps",
+  "date": "2026-11-17",
+  "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
-  "verifierVerdict": "hold",
+  "attempts": 0,
+  "verifierVerdict": "pass",
   "notes": [
-    "2026-11-16: taken offline; the grace for pages published before the check existed is off"
+    "claim 41: severity major on a rationale: impact rating lowered to minor; ratings are judgements and cannot hold a page"
   ],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-16",
-    "reasons": [
-      "6 blocking findings (claims 28, 33, 34, 37, 38, 40)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 42,
-    "confirmed": 35,
-    "unconfirmed": 3,
-    "contradicted": 4,
-    "blocker": 6,
-    "major": 0,
-    "minor": 6
+    "claims": 44,
+    "confirmed": 41,
+    "unconfirmed": 2,
+    "contradicted": 1,
+    "blocker": 0,
+    "major": 1,
+    "minor": 2
   },
-  "summary": "Hold: the billing guidance names the Application Insights subscription, but Microsoft bills ingestion and retention through the associated Log Analytics workspace, which can be in another subscription. The required-role notes omit documented alternatives, and the categorical claims about portal-only configuration, no per-page switch and no extra telemetry credits exceed the available documentation.",
+  "summary": "The admin path, role requirements, telemetry signals and workspace billing are supported by Microsoft documentation, and the availability fields match the roadmap. The categorical assurances about autonomous actions and end-user impact need narrowing, and the governance checklist names controls missing from the table.",
   "claims": [
     {
       "n": 1,
-      "where": "title; front matter: products, roadmapId",
+      "where": "front matter: status",
       "type": "record",
-      "claim": "Roadmap item 576282 concerns out-of-the-box Application Insights telemetry for Power Apps generative pages.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"id\": 576282; \"title\": \"Power Apps: Monitor generative pages with out-of-the-box Application Insights telemetry\"; \"products\": [\"Power Apps\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 2,
-      "where": "front matter: status; changes",
-      "type": "record",
-      "claim": "The roadmap status is In development.",
+      "claim": "The roadmap status is in development.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
@@ -53,40 +36,7 @@
       "fix": null
     },
     {
-      "n": 3,
-      "where": "front matter: releasePhase",
-      "type": "record",
-      "claim": "The roadmap lists General Availability and Preview release phases.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
-      "where": "front matter: clouds; What's changing; Scope",
-      "type": "record",
-      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC and GCC High.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "front matter: platforms",
-      "type": "record",
-      "claim": "The roadmap platform is Web.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\"Web\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
+      "n": 2,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
       "claim": "General availability is targeted for December CY2026.",
@@ -97,13 +47,57 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 3,
       "where": "front matter: previewDate; What's changing",
       "type": "record",
-      "claim": "The roadmap preview date is September CY2026.",
+      "claim": "The roadmap gives September CY2026 for preview.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": \"September CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC and GCC High.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "title; front matter: products",
+      "type": "record",
+      "claim": "This is a Power Apps feature for out-of-the-box generative page telemetry.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"title\": \"Power Apps: Monitor generative pages with out-of-the-box Application Insights telemetry\"",
       "severity": null,
       "fix": null
     },
@@ -122,7 +116,7 @@
       "n": 9,
       "where": "Scope",
       "type": "record",
-      "claim": "The roadmap availability table specifies version 2608.5.",
+      "claim": "The listed version is 2608.5.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Version\n2608.5",
@@ -131,31 +125,20 @@
     },
     {
       "n": 10,
-      "where": "front matter: roadmapModified",
+      "where": "Scope",
       "type": "record",
-      "claim": "The roadmap record was modified on 2026-10-21T23:02:10.",
+      "claim": "The feature applies to model-driven apps.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"modified\": \"2026-10-21T23:02:10\"",
+      "quote": "Applies to\nModel-driven apps",
       "severity": null,
       "fix": null
     },
     {
       "n": 11,
-      "where": "front matter: defaultState; summary; rationale: risk",
-      "type": "default",
-      "claim": "Telemetry requires an administrator to configure environment-level Application Insights export.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/generative-pages",
-      "quote": "To export generative page telemetry to Azure Application Insights (preview), an administrator must set up Application Insights data export for the environment in the Power Platform admin center.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
-      "where": "summary; What's changing; Scope; Governance controls",
+      "where": "summary; What's changing; controls[1].note; Governance controls; rationale: risk",
       "type": "behaviour",
-      "claim": "After environment export is configured, Power Apps automatically exports telemetry for published generative pages in model-driven apps.",
+      "claim": "After environment Application Insights export is configured, Power Apps automatically exports telemetry for published generative pages.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/generative-pages",
       "quote": "When you configure Application Insights data export for the environment in the Power Platform admin center, Power Apps automatically exports telemetry for published generative pages.",
@@ -163,7 +146,7 @@
       "fix": null
     },
     {
-      "n": 13,
+      "n": 12,
       "where": "summary; What's changing; Why it matters; Governance controls",
       "type": "behaviour",
       "claim": "Makers do not need to add telemetry code.",
@@ -174,7 +157,7 @@
       "fix": null
     },
     {
-      "n": 14,
+      "n": 13,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "Makers do not need to install the Application Insights JavaScript SDK.",
@@ -185,10 +168,10 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 14,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Makers do not need to provide a connection string on the page.",
+      "claim": "Makers do not need to provide a connection string to the page.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/generative-pages",
       "quote": "You don't need to add telemetry code, install the Application Insights JavaScript SDK, or provide a connection string to the page.",
@@ -196,10 +179,10 @@
       "fix": null
     },
     {
-      "n": 16,
-      "where": "What's changing; Risk assessment: Data exposure; Governance controls; rationale: risk",
+      "n": 15,
+      "where": "What's changing; Risk assessment: Data exposure; rationale: risk",
       "type": "behaviour",
-      "claim": "Completed page loads are recorded in pageViews with page ID, page name, app, host type and load duration.",
+      "claim": "Completed page loads appear in pageViews with page ID, name, app, host type and load duration.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/generative-pages",
       "quote": "| Page load | `pageViews` | Records completed generative page loads with the page ID, page name, app, host type, load duration, and navigation origin. |",
@@ -207,10 +190,10 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 16,
       "where": "What's changing; Governance controls",
       "type": "behaviour",
-      "claim": "Unhandled page-rendering errors and unhandled promise rejections are recorded in exceptions.",
+      "claim": "Unhandled page-rendering errors and promise rejections appear in exceptions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/generative-pages",
       "quote": "| Unhandled error | `exceptions` | Records unhandled page-rendering errors and unhandled promise rejections attributed to the generative page. |",
@@ -218,10 +201,10 @@
       "fix": null
     },
     {
-      "n": 18,
-      "where": "What's changing; Risk assessment: Data exposure; Governance controls",
+      "n": 17,
+      "where": "What's changing; Risk assessment: Data exposure; rationale: risk",
       "type": "behaviour",
-      "claim": "Supported dataApi create, update, delete, retrieve and query operations report duration and result in dependencies.",
+      "claim": "Supported dataApi create, update, delete, retrieve and query operations appear in dependencies with duration and result.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/generative-pages",
       "quote": "| Data API operation | `dependencies` | Records the duration and result of supported `dataApi` operations, including create, update, delete, retrieve, and query operations. |",
@@ -229,10 +212,10 @@
       "fix": null
     },
     {
-      "n": 19,
+      "n": 18,
       "where": "What's changing; Governance controls",
       "type": "behaviour",
-      "claim": "Navigation initiated from a generative page is recorded in pageViews.",
+      "claim": "Navigation initiated from a generative page appears in pageViews.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/generative-pages",
       "quote": "| Navigation | `pageViews` | Records navigation initiated from a generative page, including the source and target page information. |",
@@ -240,7 +223,7 @@
       "fix": null
     },
     {
-      "n": 20,
+      "n": 19,
       "where": "Risk assessment: Change & support",
       "type": "availability",
       "claim": "Application Insights telemetry for generative pages is a preview feature.",
@@ -251,131 +234,142 @@
       "fix": null
     },
     {
-      "n": 21,
+      "n": 20,
       "where": "What's changing; Risk assessment: Change & support",
       "type": "availability",
-      "claim": "Availability and preview functionality can vary during rollout.",
+      "claim": "Availability can vary by environment during rollout, and preview functionality can differ.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/generative-pages",
-      "quote": "Availability might vary by environment while the feature is rolling out. ... Preview features aren't meant for production use and might have restricted functionality.",
+      "quote": "Availability might vary by environment while the feature is rolling out. [...] Preview features aren't meant for production use and might have restricted functionality.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Generative pages are AI-written code.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/generative-pages",
+      "quote": "After you describe the page, the system then processes your requirements and specifications and intelligently generates React code",
       "severity": null,
       "fix": null
     },
     {
       "n": 22,
-      "where": "Why it matters",
-      "type": "behaviour",
-      "claim": "Generative pages are AI-generated code.",
+      "where": "Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "Azure role-based access controls access to the exported Application Insights data.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/generative-pages",
-      "quote": "After you describe the page, the system then processes your requirements and specifications and intelligently generates React code that covers both the front-end user experience",
+      "source": "https://learn.microsoft.com/azure/azure-monitor/app/create-workspace-resource",
+      "quote": "This setup provides full access to Log Analytics features, consolidates logs in one location, and allows for unified Azure role-based access control",
       "severity": null,
       "fix": null
     },
     {
       "n": 23,
-      "where": "Risk assessment: Data exposure",
-      "type": "absence",
-      "claim": "The feature's Learn telemetry inventory does not list record content.",
-      "status": "supported",
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "There are no autonomous actions and the feature only observes activity.",
+      "status": "unsupported",
       "source": null,
-      "quote": "Searched: '\"generative pages\" \"Application Insights\" \"API\" \"configuration\"'; opened Generate a page using natural language, including the telemetry inventory of pageViews, exceptions and dependencies; record content is not listed.",
+      "quote": "Searched: \"generative pages\" \"Application Insights\" \"autonomous\" actions telemetry. Opened generative-pages and analyze-telemetry; they describe exported signals, not an explicit guarantee of no actions.",
+      "severity": "major",
+      "fix": "Replace 'None. The feature only observes activity.' with 'The documented capability exports page-load, error, data-operation and navigation telemetry.'"
+    },
+    {
+      "n": 24,
+      "where": "front matter: licensing.notes; Cost and licensing; Governance controls; rationale: cost",
+      "type": "cost",
+      "claim": "Application Insights data ingestion and retention are billed through the associated Log Analytics workspace.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/azure-monitor/app/create-workspace-resource",
+      "quote": "Data ingestion and retention for workspace-based Application Insights resources are billed through the Log Analytics workspace where the data is located.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 24,
-      "where": "Risk assessment: Security & identity",
-      "type": "applicability",
-      "claim": "Azure role-based access controls govern access to Application Insights telemetry.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/azure/azure-monitor/app/create-workspace-resource",
-      "quote": "This setup provides full access to Log Analytics features, consolidates logs in one location, and allows for unified Azure role-based access control",
-      "severity": "minor",
-      "fix": "Cite this Azure page and https://learn.microsoft.com/azure/azure-monitor/logs/manage-access. Say to review permissions on both the Application Insights resource and associated Log Analytics workspace, rather than describing only resource access."
-    },
-    {
       "n": 25,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "This telemetry capability observes activity rather than adding autonomous business actions.",
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "cost",
+      "claim": "Exact charges depend on workspace configuration and telemetry volume.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/generative-pages",
-      "quote": "When you configure Application Insights data export for the environment in the Power Platform admin center, Power Apps automatically exports telemetry for published generative pages.",
+      "source": "https://learn.microsoft.com/azure/azure-monitor/logs/cost-logs",
+      "quote": "The default pricing for Log Analytics is a pay-as-you-go model that's based on ingested data volume and data retention.",
       "severity": null,
       "fix": null
     },
     {
       "n": 26,
-      "where": "front matter: licensing.model, licensing.notes, cost; rationale: cost",
-      "type": "licensing",
-      "claim": "The telemetry destination has consumption-based Azure Monitor ingestion charges, dependent on workspace configuration.",
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "The Log Analytics workspace can be in a different subscription from the Application Insights resource.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/azure/azure-monitor/logs/cost-logs#application-insights-billing",
-      "quote": "the billing for data ingestion and retention is done by the workspace where the Application Insights data is located. For this reason, you can use all options of the Log Analytics pricing model, including commitment tiers, along with pay-as-you-go.",
-      "severity": "minor",
-      "fix": "Add https://learn.microsoft.com/azure/azure-monitor/logs/cost-logs#application-insights-billing to sources to substantiate licensing.model: consumption and cost: variable."
+      "source": "https://learn.microsoft.com/azure/azure-monitor/app/create-workspace-resource",
+      "quote": "When you create or update a workspace-based Application Insights resource and link it to a Log Analytics workspace in a different subscription",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 27,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "cost",
-      "claim": "Azure Monitor bills Application Insights data ingestion and retention.",
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Application Insights enablement is limited to customers with paid/premium Dataverse licences available for the tenant.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/azure/azure-monitor/app/create-workspace-resource",
-      "quote": "Data ingestion and retention for workspace-based Application Insights resources are billed through the Log Analytics workspace where the data is located.",
-      "severity": "minor",
-      "fix": "Cite https://learn.microsoft.com/azure/azure-monitor/app/create-workspace-resource for ingestion and retention billing, retaining the workspace qualification."
+      "source": "https://learn.microsoft.com/power-platform/admin/analyze-telemetry",
+      "quote": "Enablement of Application Insights is limited to customers with a paid/premium Dataverse licenses available for the tenant.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 28,
-      "where": "Cost and licensing; Governance controls: closing paragraph",
-      "type": "cost",
-      "claim": "Ingestion and retention charges land in the subscription owning the Application Insights resource.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/azure/azure-monitor/app/create-workspace-resource",
-      "quote": "Data ingestion and retention for workspace-based Application Insights resources are billed through the Log Analytics workspace where the data is located. ... link it to a Log Analytics workspace in a different subscription",
-      "severity": "blocker",
-      "fix": "Replace both subscription statements with: 'Ingestion and retention are billed through the associated Log Analytics workspace; confirm that workspace's subscription and budget owner, as it can differ from the Application Insights resource's subscription.' Cite this page."
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "A telemetry-specific Power Apps licence or credit requirement for generative pages is not published as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"generative pages\" \"Application Insights\" \"credits\" licensing pricing. Opened generative-pages, analyze-telemetry and cost-logs; found Dataverse prerequisites and Azure billing, not a telemetry-specific Power Apps requirement.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 29,
-      "where": "Cost and licensing: opening sentence",
+      "where": "Cost and licensing",
       "type": "absence",
-      "claim": "No extra Power Apps licence or credit requirement specifically for generative-page telemetry is stated.",
+      "claim": "Specific telemetry-volume costing guidance for generative pages is not published.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: '\"generative pages\" telemetry pricing license credits cost guidance'; opened Generate a page using natural language, Export data to Application Insights, and Analyze model-driven apps and Microsoft Dataverse telemetry with Application Insights. No telemetry-specific extra rate found.",
-      "severity": "minor",
-      "fix": "Qualify the absence as telemetry-specific and dated November 2026. Add the documented prerequisite that Application Insights enablement requires paid/premium Dataverse licences available for the tenant, citing https://learn.microsoft.com/power-platform/admin/analyze-telemetry."
+      "quote": "Searched: generative pages Application Insights telemetry disable per page switch Power Apps licence credits pricing; \"generative pages\" \"Application Insights\" \"credits\" licensing pricing. Opened generative-pages and cost-logs; no page-specific volume guidance found.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 30,
-      "where": "Cost and licensing",
-      "type": "absence",
-      "claim": "Generative-page-specific telemetry cost-estimation guidance is not yet published.",
+      "where": "controls[0].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "The Power Platform admin center path is Manage > Data export > App Insights > New data export.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: '\"generative pages\" telemetry pricing license credits cost guidance'; opened Generate a page using natural language and Export data to Application Insights; results supplied general Azure cost guidance, not a generative-page-specific volume or pricing guide.",
+      "source": "https://learn.microsoft.com/power-platform/admin/set-up-export-application-insights#create-an-export-package",
+      "quote": "In the navigation pane, select Manage. In the Manage pane, select Data export. On the Data export page, select the App Insights tab. Then select New data export.",
       "severity": null,
       "fix": null
     },
     {
       "n": 31,
-      "where": "controls[0].ui; Governance controls: first row",
-      "type": "admin-path",
-      "claim": "The export-creation UI is Power Platform admin center > Manage > Data export > App Insights > New data export.",
+      "where": "controls[0].api; Governance controls",
+      "type": "absence",
+      "claim": "An equivalent automation interface for configuring Power Platform Application Insights export is not documented as of November 2026.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/set-up-export-application-insights#create-an-export-package",
-      "quote": "In the navigation pane, select Manage. ... In the Manage pane, select Data export. ... On the Data export page, select the App Insights tab. Then select New data export.",
+      "source": null,
+      "quote": "Searched: Power Platform Application Insights data export configuration API PowerShell pac admin export telemetry; Power Platform API Application Insights data export; pac admin Insights; PowerApps PowerShell Application Insights export. Read export setup and reference excerpts; no equivalent found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 32,
-      "where": "controls[0].note; Scope; Governance controls: first row",
+      "where": "controls[0].note; Governance controls",
       "type": "applicability",
-      "claim": "Application Insights data export is supported for Managed Environments only.",
+      "claim": "The environment export feature is supported only for Managed Environments.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/set-up-export-application-insights",
       "quote": "This feature is turned on and supported for managed environments only.",
@@ -384,97 +378,86 @@
     },
     {
       "n": 33,
-      "where": "controls[0].note; Governance controls: first row",
+      "where": "controls[0].note; Governance controls",
       "type": "role",
-      "claim": "Configuring export needs the Power Platform administrator role.",
-      "status": "contradicted",
+      "claim": "Configuration requires the Power Platform administrator or Dynamics 365 administrator role at tenant level.",
+      "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/set-up-export-application-insights",
       "quote": "being assigned to the Power Platform administrator or Dynamics 365 administrator role at the tenant-level in Microsoft Entra ID",
-      "severity": "blocker",
-      "fix": "Replace 'Needs Power Platform admin' with 'Requires Power Platform administrator or Dynamics 365 administrator at tenant level', retaining the separate environment-role requirement. Apply to front matter and rendered table."
+      "severity": null,
+      "fix": null
     },
     {
       "n": 34,
-      "where": "controls[0].note; Governance controls: first row",
+      "where": "controls[0].note; Governance controls",
       "type": "role",
-      "claim": "Configuring export needs the System Administrator role in the environment.",
-      "status": "contradicted",
+      "claim": "Configuration additionally requires environment administrator or system administrator in the Dataverse environment.",
+      "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/set-up-export-application-insights",
       "quote": "and by being assigned to the environment administrator or system administrator role within the Dataverse environment. Without these permissions, the integration doesn't work.",
-      "severity": "blocker",
-      "fix": "Replace the environment-role clause with 'and environment administrator or system administrator within the Dataverse environment'. Apply to front matter and rendered table; retain both tenant and environment role requirements."
+      "severity": null,
+      "fix": null
     },
     {
       "n": 35,
-      "where": "controls[0].api; Governance controls: first row",
+      "where": "controls[1].ui and controls[1].api; controls[1].note; Open questions",
       "type": "absence",
-      "claim": "An API or automation equivalent for configuring this Power Platform environment export is not documented.",
+      "claim": "Microsoft has not documented a per-page telemetry switch through UI or API as of November 2026.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: 'Power Platform Application Insights data export API PowerShell export package portal only' and '\"Application Insights\" \"data export\" \"Power Platform\" \"PowerShell\" configure'; opened Export data to Application Insights. No equivalent found; Azure continuous export is a different operation.",
+      "quote": "Searched: \"generative pages\" \"telemetry\" \"disable\"; \"generative pages\" \"Application Insights\" \"per-page\" switch API. Read generative-pages and generative-page-external-tools excerpts; they describe environment export, not a per-page switch.",
       "severity": null,
       "fix": null
     },
     {
       "n": 36,
-      "where": "controls[1].ui and controls[1].api; Governance controls: second row",
-      "type": "absence",
-      "claim": "Microsoft does not document a UI or API telemetry switch for an individual generative page.",
+      "where": "front matter: defaultState",
+      "type": "default",
+      "claim": "The feature is admin-opt-in because an administrator must configure environment export.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: '\"generative pages\" \"telemetry\" \"disable\" \"page\"' and '\"generative pages\" \"Application Insights\" \"API\" \"configuration\"'; opened Generate a page using natural language and Export data to Application Insights. No per-page switch found.",
+      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/generative-pages",
+      "quote": "To export generative page telemetry to Azure Application Insights (preview), an administrator must set up Application Insights data export for the environment in the Power Platform admin center.",
       "severity": null,
       "fix": null
     },
     {
       "n": 37,
-      "where": "controls[1].note; Governance controls: second row; Open questions",
-      "type": "absence",
-      "claim": "There is no per-page telemetry setting.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: '\"generative pages\" \"telemetry\" \"disable\" \"page\"'; opened Generate a page using natural language and Export data to Application Insights. Neither states that a per-page setting does not exist.",
-      "severity": "blocker",
-      "fix": "Change the note to 'Telemetry follows the environment export; Microsoft has not documented a per-page UI or API switch as of November 2026.' Keep the open question about disabling individual pages; do not answer it categorically in the note."
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is consumption, reflecting Azure telemetry billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/azure-monitor/logs/cost-logs",
+      "quote": "Because workspace-based Application Insights resources store their data in a Log Analytics workspace, the billing for data ingestion and retention is done by the workspace where the Application Insights data is located.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 38,
-      "where": "Governance controls: closing paragraph",
-      "type": "command",
-      "claim": "The export is portal-only.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: 'Power Platform Application Insights data export API PowerShell export package portal only'; opened Export data to Application Insights. It documents the portal, not an exclusive portal-only restriction.",
-      "severity": "blocker",
-      "fix": "Replace 'The export is portal-only' with 'Microsoft documents portal configuration; an equivalent automation interface is not yet documented as of November 2026.'"
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Learn advises configuring daily caps for both Application Insights and Log Analytics.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/azure-monitor/logs/daily-cap#application-insights",
+      "quote": "You should configure the daily cap setting for both Application Insights and Log Analytics to limit the amount of telemetry data ingested by your service.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 39,
-      "where": "Governance controls: closing paragraph; Governance guidance",
-      "type": "applicability",
-      "claim": "Azure daily caps and retention settings are relevant cost controls for the exported Application Insights telemetry.",
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "For workspace-based Application Insights resources the effective daily cap is the minimum of the two settings.",
       "status": "supported",
       "source": "https://learn.microsoft.com/azure/azure-monitor/logs/daily-cap#application-insights",
-      "quote": "You should configure the daily cap setting for both Application Insights and Log Analytics to limit the amount of telemetry data ingested by your service. For workspace-based Application Insights resources, the effective daily cap is the minimum of the two settings.",
-      "severity": "minor",
-      "fix": "Cite this page and https://learn.microsoft.com/azure/azure-monitor/app/create-workspace-resource. Specify both Application Insights and workspace daily caps, with retention on the associated workspace; avoid implying a daily cap is a guaranteed spend ceiling."
+      "quote": "For workspace-based Application Insights resources, the effective daily cap is the minimum of the two settings.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 40,
-      "where": "rationale: cost",
-      "type": "cost",
-      "claim": "The generative pages feature itself needs no extra credits.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: '\"generative pages\" telemetry pricing license credits cost guidance'; opened Generate a page using natural language. FAQ: 'the maker experience for generative pages (and plans) don't require any additional AI or message credits'. No equivalent statement for telemetry runtime found.",
-      "severity": "blocker",
-      "fix": "Replace the final cost-rationale sentence with 'Microsoft has not published a telemetry-specific Power Apps credit requirement as of November 2026.' If retaining the FAQ, explicitly limit it to the maker experience."
-    },
-    {
-      "n": 41,
-      "where": "Why it matters; rationale: impact",
+      "where": "rationale: impact",
       "type": "record",
-      "claim": "Admins and developers can use Application Insights to monitor published generative pages.",
+      "claim": "Admins and developers can see generative page telemetry.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Admins and developers can monitor published generative pages with Application Insights.",
@@ -482,21 +465,54 @@
       "fix": null
     },
     {
+      "n": 41,
+      "where": "rationale: impact",
+      "type": "behaviour",
+      "claim": "End users notice nothing.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"generative pages\" \"telemetry\" \"performance\" \"users\". Opened generative-pages and analyze-telemetry; neither guarantees that telemetry causes no user-visible effects.",
+      "severity": "minor",
+      "fix": "Remove 'end users notice nothing' from the impact rationale; retain 'Low. Admins and developers see the telemetry.'"
+    },
+    {
       "n": 42,
-      "where": "Governance guidance: Before rollout, After rollout; Governance controls",
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "The generative page telemetry documentation does not list record content among the exported fields.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"generative pages\" \"telemetry\" \"record content\". Read generative-pages telemetry table: page metadata, errors, operation durations/results and navigation information are listed; record content is not listed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Governance guidance: Before rollout and After rollout; Governance controls",
       "type": "consistency",
-      "claim": "The governance checklist asks readers to set telemetry retention and access and build exception alerts, but the controls table has no corresponding rows.",
+      "claim": "The governance checklist names retention, access and exception-alert controls that have no corresponding controls-table rows.",
       "status": "contradicted",
       "source": "page",
-      "quote": "'Set retention and access for the telemetry'; 'Build alerts on exceptions for critical pages'. The table contains only environment export and an undocumented per-page telemetry switch.",
+      "quote": "Checklist: 'Set retention and access for the telemetry' and 'Build alerts on exceptions for critical pages.' The table contains only environment export and an individual-page telemetry switch.",
       "severity": "minor",
-      "fix": "Add sourced controls rows for workspace retention, telemetry access and exception alerts. Also represent the daily-cap control named in the closing paragraph, using Microsoft-documented UI paths or automation references."
+      "fix": "Remove the checklist bullets 'Set retention and access for the telemetry' and 'Build alerts on exceptions for critical pages'; these instructions name controls absent from the table."
+    },
+    {
+      "n": 44,
+      "where": "front matter: cost; rationale: cost; Why it matters",
+      "type": "cost",
+      "claim": "Cost is variable because the feature adds telemetry subject to Azure ingestion and retention billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/azure-monitor/logs/cost-logs",
+      "quote": "The default pricing for Log Analytics is a pay-as-you-go model that's based on ingested data volume and data retention.",
+      "severity": null,
+      "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-16T19:29:25.809Z",
+    "at": "2026-11-17T00:01:25.430Z",
     "summary": {
-      "links": 4,
+      "links": 8,
       "unreachable": 0,
       "uiPaths": 1,
       "uiPathsWithMissingWords": 0,
@@ -506,7 +522,7 @@
     },
     "linkChecks": [
       {
-        "url": "https://learn.microsoft.com/en-us/power-apps/maker/model-driven-apps/generative-pages",
+        "url": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/generative-pages",
         "ok": true,
         "status": 200
       },
@@ -517,6 +533,26 @@
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/set-up-export-application-insights#create-an-export-package",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/azure/azure-monitor/app/create-workspace-resource",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/azure/azure-monitor/logs/cost-logs#application-insights-billing",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/azure/azure-monitor/logs/daily-cap#application-insights",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/analyze-telemetry",
         "ok": true,
         "status": 200
       },
@@ -544,5 +580,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-16",
+      "status": "held",
+      "version": 2,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

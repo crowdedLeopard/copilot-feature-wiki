@@ -12,7 +12,7 @@ platforms: ["Web"]
 targetDate: "November CY2026"
 previewDate: null
 risk: "medium"
-cost: "variable"
+cost: "low"
 impact: "high"
 defaultState: "on"
 action: "act-now"
@@ -49,8 +49,14 @@ sources:
   - title: "Agents, Copilot, and AI capabilities in Dynamics 365 apps"
     url: "https://learn.microsoft.com/dynamics365/copilot/ai-get-started"
     kind: "learn"
+  - title: "Quick start guide: Connect a custom agent to Recommended Actions"
+    url: "https://learn.microsoft.com/dynamics365/sales/connect-custom-agent-recommended-actions"
+    kind: "learn"
+  - title: "Configure recommended actions for Sales Opportunity Agent"
+    url: "https://learn.microsoft.com/dynamics365/sales/configure-sales-opportunity-agent-connected-skills"
+    kind: "learn"
 videos: []
-related: ["copilot-credits","agent-365-control-plane-for-agents","m365-admin-center-agent-level-pay-as-you-go-controls"]
+related: ["copilot-credits"]
 controls:
   - governs: "Whether Sales agent can be used in Microsoft 365 Copilot, and by which groups"
     scope: "tenant"
@@ -75,18 +81,23 @@ roadmapModified: "2026-11-13T19:37:39"
 changes:
   - date: "2026-11-16"
     note: "First briefing for this item. Learn documents no Sales agent page for it yet, so cost, controls and behaviour rest on neighbouring Dynamics 365 Sales pages and are marked as background."
-version: 1
+  - date: "2026-11-16"
+    note: "Corrected after the independent check: cost rating changed to low, the unsupported 'without notice' wording replaced, and the Copilot credits wording and Sales Opportunity Agent preview toggle added."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 61 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
-  date: "2026-11-16"
-  version: 1
+  status: "verified-with-gaps"
+  date: "2026-11-17"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 67
-  confirmed: 64
-  unconfirmed: 1
-  contradicted: 2
-  attempts: 1
+  claims: 61
+  confirmed: 60
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 0
+  hash: "bb378295de954cc33a63ea8520f96082"
 ---
 
 ## What's changing
@@ -124,7 +135,7 @@ The larger gap is spend. Dynamics 365 Sales documentation says recommended actio
 
 **Change & support**
 
-- Default-on means sellers see a changed experience without notice. Plan communication and a support answer for "why is this lead ranked first".
+- The roadmap says recommended actions will be on by default, so plan seller communication before the target month. Plan a support answer for "why is this lead ranked first".
 - Learn documents thumbs up or thumbs down feedback on action cards in Dynamics 365 Sales; it does not say whether the same feedback exists here.
 
 ## Cost and licensing
@@ -133,7 +144,7 @@ Licensing for this roadmap item is not yet published.
 
 What Learn does say, as background. Sales agent in Microsoft 365 Copilot "is available to users who have access to a Microsoft 365 Copilot license" (Set up Sales agent in Microsoft 365 Copilot). Another page says access to either Dynamics 365 Sales Enterprise or Dynamics 365 Sales Premium can make a user eligible for Sales agent and automatic distribution, and that additional Microsoft 365 licences or entitlements might be required for Microsoft 365-grounded features.
 
-For the meter, the Dynamics 365 Sales recommended actions overview says the system "charges for recommended actions based on the number of actions the prioritization engine processes", and lists Sales Opportunity Agent and Sales Qualification Agent as charged. The billing page says these capabilities use Microsoft Copilot Studio messages, with prepaid capacity or pay-as-you-go, and that when quota is depleted "the AI capability is unavailable until more capacity is added". Microsoft has not stated that this applies to Sales agent in Microsoft 365 Copilot, and no rate for recommended actions is published on the pages read.
+For the meter, the Dynamics 365 Sales recommended actions overview says the system "charges for recommended actions based on the number of actions the prioritization engine processes", and lists Sales Opportunity Agent and Sales Qualification Agent as charged. The billing page says these capabilities use Microsoft Copilot Studio messages, with prepaid capacity or pay-as-you-go, and that when quota is depleted "the AI capability is unavailable until more capacity is added". The Dynamics 365 Sales page on connecting a custom agent to Recommended Actions instead says "Recommended Actions uses Copilot credits", so the two pages use different terms. Microsoft has not stated that either applies to Sales agent in Microsoft 365 Copilot, and no rate for recommended actions is published on the pages read.
 
 ## Scope
 
@@ -179,7 +190,7 @@ No documented control switches recommended actions in Sales agent in Microsoft 3
 
 The tenant access settings control whether Sales agent can be used in each application and by whom. They do not install apps, assign licences or grant CRM data access. The changes can take up to 15 minutes to take effect, and Entra group membership changes up to one hour.
 
-The Dynamics 365 toggle is documented for the Recommended Actions agent in Dynamics 365 Sales. Learn says disabling it keeps the source agent running but its insights no longer appear in the recommended actions interface. No PowerShell, Graph or other API was found for either control at the time of writing.
+The Dynamics 365 toggle is documented for the Recommended Actions agent in Dynamics 365 Sales. Learn says disabling it keeps the source agent running but its insights no longer appear in the recommended actions interface. A separate Learn page marks the Sales Opportunity Agent integration with recommended actions as a preview feature and places its toggle under Advanced > Connected skills > Recommended action. No PowerShell, Graph or other API was found for either control at the time of writing.
 
 ## Open questions
 
@@ -190,20 +201,12 @@ The Dynamics 365 toggle is documented for the Recommended Actions agent in Dynam
 
 <!-- rationale
 risk: Medium. The roadmap item says recommended actions will be on by default, and sellers act on CRM leads and opportunities, but the documented Sales agent access settings and CRM privileges still apply. No control for this feature itself is documented.
-cost: Variable. Dynamics 365 Sales documentation says recommended actions are charged by the number of actions processed, using Copilot Studio messages. Whether the same meter applies to this roadmap item is not yet published.
+cost: Low. The known cost is administrator preparation and seller communication; licensing and metering for this roadmap item are not yet published.
 impact: High. The roadmap item states the feature is on by default, so every seller who can use Sales agent would see a changed experience without an admin action.
 -->
 
-<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
-The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [unsupported, major] Risk assessment: Change & support / behaviour: Sellers see the changed experience without notice. | Found: Searched: Sales agent recommended actions notification rollout; read roadmap record, configure-recommended-actions, recommended-actions-overview and search results. Default-on is stated, but no source states that sellers receive no notice. | Fix: Replace 'Default-on means sellers see a changed experience without notice' with 'The roadmap says recommended actions will be on by default, so plan seller communication before the target month.'
-- [supported, minor] Cost and licensing; rationale: cost / cost: The cited Dynamics 365 billing page describes Microsoft Copilot Studio messages as the billing unit. | Found: These capabilities use Microsoft Copilot Studio messages for AI interactions and tasks, like retrieving information and responding to prompts. Messages are the billing units that measure usage. | Fix: Retain the attribution to the billing page, but report that https://learn.microsoft.com/dynamics365/sales/connect-custom-agent-recommended-actions instead says 'Recommended Actions uses Copilot credits.' Cite that page and flag the terminology discrepancy without assigning either meter to this roadmap feature. | Source: https://learn.microsoft.com/dynamics365/sales/copilot-consumption-based-billing
-- [supported, minor] controls[1].ui; Governance controls / admin-path: Sales Hub > Change area > App Settings > General settings > Dynamics 365 AI hub > Create and manage agents > agent > Connected skills > Recommended Actions is documented. | Found: Go to General settings > Dynamics 365 AI hub > Create and manage agents.
-Select the agent for which you want to configure recommended actions.
-From the agent configuration page, select Connected skills from the left pane.
-Turn on the toggle for Recommended Actions. | Fix: Keep the cited general path, but add that https://learn.microsoft.com/dynamics365/sales/configure-sales-opportunity-agent-connected-skills marks the Sales Opportunity Agent integration as preview and places its toggle under Advanced > Connected skills > Recommended action. Cite that page as additional guidance. | Source: https://learn.microsoft.com/dynamics365/sales/configure-recommended-actions
-- [contradicted, blocker] front matter: cost; rationale: cost / consistency: The cost rating is variable although the only established meter belongs to a neighbouring experience and this feature's billing is unknown. | Found: cost: "variable"
-Licensing for this roadmap item is not yet published.
-Whether the same meter applies to this roadmap item is not yet published. | Fix: Set cost to 'low' and replace the cost rationale with 'Low. The known cost is administrator preparation and seller communication; licensing and metering for this roadmap item are not yet published.' The assessment scale reserves variable for documented metering; retain Dynamics 365 charging only as qualified background.
-- [contradicted, minor] Governance controls / consistency: The prose identifies the absence of a feature-only off switch, but the controls table does not represent that gap. | Found: No documented control switches recommended actions in Sales agent in Microsoft 365 Copilot off while leaving Sales agent on. The two rows that exist govern neighbouring things. | Fix: Add a controls row governing 'Whether recommended actions in Sales agent in Microsoft 365 Copilot are enabled independently of Sales agent', with scope 'tenant', ui null and api null. Note that neither surface was documented in the November 2026 search, and mirror the row in the rendered table.
+<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: The checklist's capacity and pay-as-you-go monitoring control has no corresponding controls-table row. | Found: Checklist: 'Review Copilot Studio message capacity and pay-as-you-go usage'. The two table rows cover tenant Sales agent access and source-agent Recommended Actions integration, not capacity monitoring. | Fix: Remove the After rollout bullet beginning 'Review Copilot Studio message capacity and pay-as-you-go usage'; it names a control not represented in the existing controls table.
 -->

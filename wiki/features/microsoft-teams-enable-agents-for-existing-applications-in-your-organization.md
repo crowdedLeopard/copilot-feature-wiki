@@ -53,7 +53,7 @@ controls:
       docs: "https://learn.microsoft.com/microsoftteams/app-centric-management"
     api:
       kind: "powershell"
-      call: "Update-M365TeamsApp -Id <app ID> -AppAssignmentType Everyone; or -AppAssignmentType UsersAndGroups -OperationType Add -Users <users> -Groups <groups>"
+      call: "Update-M365TeamsApp -Id <app ID> -AppAssignmentType Everyone"
       docs: "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp"
     note: "General control: Microsoft has not confirmed the recommendations workflow uses it. Teams Administrator role. If not migrated to unified app management, also allow the app in Microsoft 365 admin center > Integrated apps."
   - governs: "Bulk availability of third-party agents and apps"
@@ -63,7 +63,7 @@ controls:
       path: "Teams apps > Manage apps > Actions > Org-wide app settings > Third-party apps"
       docs: "https://learn.microsoft.com/microsoftteams/manage-apps"
     api: null
-    note: "Existing control, not specific to this feature; Microsoft has not confirmed how it interacts with the recommendations."
+    note: "Existing control, not specific to this feature; not confirmed for the recommendations. Under app-centric management it does not override app-level configurations."
 confidence: "medium"
 created: "2026-11-16"
 updated: "2026-11-16"
@@ -73,18 +73,23 @@ changes:
     note: "First briefing for this item: covers the roadmap item and MC1481316, and records that no Learn page or enablement setting is documented yet."
   - date: "2026-11-16"
     note: "Corrected after verification: PowerShell examples now match the cmdlet reference, the unified app management prerequisite is stated, and the recommendations page is no longer placed on Manage apps."
-version: 2
+  - date: "2026-11-16"
+    note: "Corrected after verification: the PowerShell control line now shows one complete command, with the selected-users alternative given separately, and the Third-party apps toggle note states that it does not override app-level settings."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 60 statements confirmed"
+version: 3
 verification:
-  status: "held"
-  date: "2026-11-16"
-  version: 2
+  status: "verified"
+  date: "2026-11-17"
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 64
-  confirmed: 63
+  claims: 60
+  confirmed: 60
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
+  contradicted: 0
+  attempts: 0
+  hash: "afa7db45106bfd855d3ce5544784804a"
 ---
 
 ## What's changing
@@ -158,12 +163,16 @@ Learn says that using the Teams admin center requires a Teams Administrator role
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether the app and agent recommendations feature is enabled</strong><br><small>Tenant</small><br><small class="controls__note">MC1481316 says admins must enable the feature; no setting, path or command is documented at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Who can use a recommended agent or app (everyone, specific users and groups)</strong><br><small>App</small><br><small class="controls__note">General control: Microsoft has not confirmed the recommendations workflow uses it. Teams Administrator role. If not migrated to unified app management, also allow the app in Microsoft 365 admin center &gt; Integrated apps.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Manage apps › app › Users and groups › Availability › Edit availability <a href="https://learn.microsoft.com/microsoftteams/app-centric-management" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Update-M365TeamsApp -Id &lt;app ID&gt; -AppAssignmentType Everyone; or -AppAssignmentType UsersAndGroups -OperationType Add -Users &lt;users&gt; -Groups &lt;groups&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Bulk availability of third-party agents and apps</strong><br><small>Tenant</small><br><small class="controls__note">Existing control, not specific to this feature; Microsoft has not confirmed how it interacts with the recommendations.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Manage apps › Actions › Org-wide app settings › Third-party apps <a href="https://learn.microsoft.com/microsoftteams/manage-apps" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Who can use a recommended agent or app (everyone, specific users and groups)</strong><br><small>App</small><br><small class="controls__note">General control: Microsoft has not confirmed the recommendations workflow uses it. Teams Administrator role. If not migrated to unified app management, also allow the app in Microsoft 365 admin center &gt; Integrated apps.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Manage apps › app › Users and groups › Availability › Edit availability <a href="https://learn.microsoft.com/microsoftteams/app-centric-management" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Update-M365TeamsApp -Id &lt;app ID&gt; -AppAssignmentType Everyone</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Bulk availability of third-party agents and apps</strong><br><small>Tenant</small><br><small class="controls__note">Existing control, not specific to this feature; not confirmed for the recommendations. Under app-centric management it does not override app-level configurations.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Manage apps › Actions › Org-wide app settings › Third-party apps <a href="https://learn.microsoft.com/microsoftteams/manage-apps" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
 No setting for the recommendations feature itself is documented, and the notice says administrators must enable it, so that row shows the gap. Once a recommendation is acted on, the controls are the existing app-availability settings: per-app availability and the org-wide Third-party apps toggle.
+
+The per-app PowerShell line in the table sets availability to Everyone. To make an app available to specific users and groups instead, run this alternative and not the first: `Update-M365TeamsApp -Id <app ID> -AppAssignmentType UsersAndGroups -OperationType Add -Users <users> -Groups <groups>`.
+
+Learn states that under app-centric management the Org-wide app settings apply to new apps and to existing apps you did not actively manage, and that the Third-party apps control does not override app-level configurations. Do not expect changing it to alter the availability of an app you have already set individually.
 
 Learn states that a Teams Administrator role is needed to use the Teams admin center. If your organisation has not migrated to unified app management, allow the app or agent in both the Teams admin center and the Integrated apps page in the Microsoft 365 admin center; after migration, either centre is enough. At the time of writing (November 2026), Learn documents no PowerShell cmdlet for the org-wide Third-party apps toggle.
 
@@ -179,10 +188,4 @@ Learn states that a Teams Administrator role is needed to use the Teams admin ce
 risk: Low. Microsoft's notice MC1481316 says no Teams apps or agents are enabled automatically and existing availability settings do not change unless an administrator acts; the exposure is the choices an administrator makes.
 cost: Low. The only cost the sources show is administrator time to review recommendations and brief app-governance administrators; Microsoft has not published a licence or meter for the feature.
 impact: Low. Teams administrators see the recommendations; users notice only if an administrator makes a recommended agent or app available or installs it for them.
--->
-
-<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
-The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [contradicted, blocker] controls[1].api; Governance controls table / command: The printed PowerShell line provides working alternatives for assigning Everyone or selected users and groups. | Found: Update-M365TeamsApp -Id 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b -AppAssignmentType Everyone | Fix: Replace the single code string containing '; or' with two separately labelled, complete alternatives: 'Update-M365TeamsApp -Id <app ID> -AppAssignmentType Everyone' and 'Update-M365TeamsApp -Id <app ID> -AppAssignmentType UsersAndGroups -OperationType Add -Users <users> -Groups <groups>'. Keep the word 'or' outside executable code and tell readers to run only the intended alternative. The current line first sets Everyone and then starts a statement named 'or', not Update-M365TeamsApp, so it cannot perform the selected-users alternative as printed. Microsoft documents that semicolons delimit PowerShell statements at https://learn.microsoft.com/windows/terminal/command-line-arguments#command-line-argument-examples; the cmdlet reference documents both assignment types and the named parameters. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp
-- [supported, minor] controls[2].governs and note; Governance guidance: Before rollout; Governance controls / behaviour: The existing Third-party apps toggle manages bulk availability of third-party agents and apps. | Found: Under Third-party apps, a single control manages the bulk availability of both the new and existing third-party agents and apps. | Fix: Add the qualification from the already-cited https://learn.microsoft.com/microsoftteams/app-centric-management#default-settings-for-app-availability to controls[2].note and the surrounding explanation: 'Under app-centric management, org-wide defaults apply to new and unmanaged apps; they do not override saved per-app assignments to Specific users and groups, Everyone or No one, or blocked apps.' That page states: 'This control doesn't override app-level configurations.' Avoid implying that changing this default overrides the availability of an individually managed recommendation. | Source: https://learn.microsoft.com/microsoftteams/manage-apps
 -->

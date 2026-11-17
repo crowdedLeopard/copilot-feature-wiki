@@ -38,7 +38,7 @@ sources:
     url: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/faqs-copilot-harness"
     kind: "learn"
 videos: []
-related: ["managed-environments","copilot-credits","copilot-studio-block-maker-provided-credentials","copilot-studio-share-autonomous-agents-run-only"]
+related: ["copilot-credits"]
 controls:
   - governs: "Whether makers can share agents as Editor or Viewer, with security groups, and how many viewers"
     scope: "environment"
@@ -48,7 +48,7 @@ controls:
       docs: "https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits"
     api:
       kind: "powershell"
-      call: "Set-AdminPowerAppEnvironmentGovernanceConfiguration -EnvironmentName <EnvironmentId> -UpdatedGovernanceConfiguration $governanceConfiguration (extendedSettings 'bot-authoringSharingDisabled')"
+      call: "Set-AdminPowerAppEnvironmentGovernanceConfiguration -EnvironmentName <EnvironmentId> -UpdatedGovernanceConfiguration $governanceConfiguration"
       docs: "https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits"
     note: "Managed Environments only. Documented for Copilot Studio agents; Learn does not say in terms that it governs the Microsoft Copilot harness Share panel."
   - governs: "Tenant-wide switch that turns maker-to-maker agent sharing off"
@@ -63,18 +63,23 @@ roadmapModified: "2026-10-28T23:04:31"
 changes:
   - date: "2026-11-16"
     note: "First briefing: records the roadmap's Viewer and Editor sharing against Learn's narrower wording, and the Managed Environments sharing rules that limit it."
-version: 1
+  - date: "2026-11-16"
+    note: "Corrected the PowerShell example for Editor sharing limits, narrowed the viewer visibility statement and aligned the risk rationale on connection credentials."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 60 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
-  date: "2026-11-16"
-  version: 1
+  date: "2026-11-17"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 58
-  confirmed: 54
-  unconfirmed: 1
-  contradicted: 3
-  attempts: 1
+  claims: 60
+  confirmed: 56
+  unconfirmed: 0
+  contradicted: 4
+  attempts: 2
+  hash: "76b50383a113c5b540d1698074fdc05d"
 ---
 
 ## What's changing
@@ -96,7 +101,7 @@ If nobody acts, the controls that decide who may share are those already set in 
 ## Risk assessment
 
 **Data exposure**
-- Viewers can open the agent and view its details and test it, so anything in the agent's instructions or knowledge configuration is visible to them. Sharing to security groups widens this; the **Only share with individuals (no security groups)** rule restricts it where it applies.
+- Learn says viewers can open the agent to view details and test it; it does not specify which instructions or knowledge configuration details are visible. Sharing to security groups widens this; the **Only share with individuals (no security groups)** rule restricts it where it applies.
 - Learn warns that connections are tied to the identity of each individual agent user, so a shared agent might work for its maker and fail for others. That is a support effect rather than an exposure.
 
 **Security & identity**
@@ -148,12 +153,14 @@ It applies to agents built on the Microsoft Copilot harness. Learn says the clas
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether makers can share agents as Editor or Viewer, with security groups, and how many viewers</strong><br><small>Environment</small><br><small class="controls__note">Managed Environments only. Documented for Copilot Studio agents; Learn does not say in terms that it governs the Microsoft Copilot harness Share panel.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › managed environment › Edit Managed Environments › Manage sharing <a href="https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-AdminPowerAppEnvironmentGovernanceConfiguration -EnvironmentName &lt;EnvironmentId&gt; -UpdatedGovernanceConfiguration $governanceConfiguration (extendedSettings 'bot-authoringSharingDisabled')</code> <a href="https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether makers can share agents as Editor or Viewer, with security groups, and how many viewers</strong><br><small>Environment</small><br><small class="controls__note">Managed Environments only. Documented for Copilot Studio agents; Learn does not say in terms that it governs the Microsoft Copilot harness Share panel.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › managed environment › Edit Managed Environments › Manage sharing <a href="https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-AdminPowerAppEnvironmentGovernanceConfiguration -EnvironmentName &lt;EnvironmentId&gt; -UpdatedGovernanceConfiguration $governanceConfiguration</code> <a href="https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Tenant-wide switch that turns maker-to-maker agent sharing off</strong><br><small>Tenant</small><br><small class="controls__note">No tenant-wide setting found in the pages read; sharing is limited per environment.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
 The sharing rules are a Managed Environments control, so they need a managed environment; the Limit sharing page and the Copilot Studio page that describes them cover the Editor and Viewer model, and neither page says in terms that the rules govern the new harness's Share panel. The harness FAQ does list "Managed environment sharing controls and environment security groups" as the control for who agents are shared with, so the rules are likely to apply, but verify this with a test agent.
+
+The PowerShell call in the table is the last step of the Learn script that turns off sharing with individuals as Editors. Before it, the script retrieves the environment with `Get-AdminPowerAppEnvironment -EnvironmentName <EnvironmentId>`, assigns `$governanceConfiguration = $environment.Internal.properties.governanceConfiguration`, and adds `bot-authoringSharingDisabled` with value `True` using `$governanceConfiguration.settings.extendedSettings | Add-Member -MemberType NoteProperty -Name 'bot-authoringSharingDisabled' -Value True -Force`. That example disables Editor sharing only; the same Limit sharing page documents `bot-limitSharingMode` and `bot-maxLimitUserSharing` for the security group and viewer limits.
 
 The rules are enforced only when someone tries to share and apply only to agents that require authentication. They can be applied at scale through environment groups and rules.
 
@@ -168,15 +175,18 @@ Assigning editing rights through environment security roles is a separate route 
 - Will Microsoft publish how sharing changes on harness agents are logged and reported? Watch the Learn sharing page and Message center.
 
 <!-- rationale
-risk: Medium. An Editor can edit, configure, share and publish an agent per the roadmap, and viewers reach it through the owner's connections; the Managed Environments sharing rules cover this only if they apply to the new experience.
+risk: Medium. An Editor can edit, configure, share and publish an agent per the roadmap, and when tools use maker-provided credentials, shared-agent users can act with the maker's permissions; tools set to end-user credentials use each user's own connection.
 cost: Variable. Microsoft Learn says the Microsoft Copilot harness uses usage-based billing, so using, building, testing and evaluating shared agents might consume Copilot Credits; no separate charge for sharing is documented.
 impact: Medium. Makers and the people they share with notice it; end users who only chat with an agent do not need Editor or Viewer access.
 -->
 
-<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
-The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [contradicted, blocker] controls[0].api; Governance controls / command: The printed Set-AdminPowerAppEnvironmentGovernanceConfiguration call with trailing (extendedSettings 'bot-authoringSharingDisabled') configures agent sharing limits. | Found: $governanceConfiguration.settings.extendedSettings | Add-Member -MemberType NoteProperty -Name 'bot-authoringSharingDisabled' -Value True -Force | Fix: Remove the trailing parenthetical, which is not a cmdlet argument or a property assignment. Document the complete script: retrieve the environment with Get-AdminPowerAppEnvironment, assign $governanceConfiguration = $environment.Internal.properties.governanceConfiguration, add bot-authoringSharingDisabled with value True using the cited Add-Member statement, then run Set-AdminPowerAppEnvironmentGovernanceConfiguration -EnvironmentName <EnvironmentId> -UpdatedGovernanceConfiguration $governanceConfiguration. State that this example disables Editor sharing only; the same source documents bot-limitSharingMode and bot-maxLimitUserSharing for group and viewer limits. | Source: https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits
-- [unsupported, major] Risk assessment: Data exposure / behaviour: Anything in the agent's instructions or knowledge configuration is visible to viewers. | Found: Searched: Copilot Studio agent viewer view instructions knowledge configuration owner connections editor publishing approval sharing. Read authoring-share-agent and admin-share-bots excerpts; viewing agent details is stated, but visibility of all instructions and knowledge configuration is not. | Fix: Replace the inferred visibility statement with: 'Learn says viewers can open the agent to view details and test it; it does not specify which instructions or knowledge configuration details are visible.'
-- [contradicted, minor] rationale: risk / behaviour: Viewers reach the agent through the owner's connections. | Found: Connections configured to use end-user credentials aren't subject to this connection-sharing restriction because each user authenticates by using their own connection at runtime. | Fix: Replace the blanket owner-connection assertion with: 'When tools use maker-provided credentials, shared-agent users can act with the maker's permissions; tools configured for end-user credentials use each user's own connection.' Keep the risk rationale consistent with the body. | Source: https://learn.microsoft.com/microsoft-copilot-studio/admin-sharing-controls-limits
-- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The checklist directs readers to review credit use and remove access, but those controls have no rows in the controls table. | Found: Review credit use in the environments hosting shared agents using the cost controls ... Remove access ... through the Share panel's delete icon. The controls table lists only environment sharing limits and an absent tenant switch. | Fix: Add rows for credit-usage review and maker-side access removal. For usage, https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview gives Power Platform admin center > Licensing > Copilot Studio. For removal, the cited sharing page gives Agents > agent > Share > People who can use the agent > delete icon > Share. Search each automation surface before claiming it is undocumented.
+<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[0].note; Governance controls: first paragraph; Open questions / applicability: Whether Managed Environments sharing rules govern Microsoft Copilot harness sharing remains unconfirmed and only likely. | Found: Admins govern it with four kinds of control: who can build agents, how much an agent can spend, what data and connectors it can reach, and who it can be shared with. - Who agents are shared with: Managed environment sharing controls and environment security groups | Fix: Replace the unconfirmed-applicability wording in the control note and Governance controls with: 'The Microsoft Copilot harness FAQ identifies Managed environment sharing controls and environment security groups as controls over who agents are shared with.' Remove the Open questions bullet asking whether those controls apply. A recommendation to test enforcement can remain, but not a claim that Microsoft has not confirmed applicability. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/faqs-copilot-harness
+- [contradicted, blocker] Risk assessment: Security & identity / applicability: The restriction on granting Editor permissions to security groups is documented only for classic agents, leaving harness Editor access unstated. | Found: When you set sharing controls in the Power Platform admin center, you can enforce how makers share **Editor** or **Viewer** assignments with other individuals for their agents in Copilot Studio. | Fix: Replace that bullet with: 'Learn states that Editor permissions can only be given to individual users, not security groups.' Remove the unsupported classic-only qualification and the sentence saying the harness limit is not stated. The harness sharing page links to this control documentation for assigning editing rights. | Source: https://learn.microsoft.com/microsoft-copilot-studio/admin-sharing-controls-limits
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] What's changing: Share panel permission list / behaviour: The sharing page shows a Share panel with Can edit and Can view analytics options. | Found: Screenshot of the Share panel permission dropdown with Can use selected and highlighted, alongside Can edit, Can view analytics, and Remove access options. | Fix: Replace the screenshot sentence with: 'In its preview section on sharing autonomous agents for users to run, the same page shows a Share panel whose permission list includes Can edit and Can view analytics.' | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-share-agent
+- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: The checklist tells administrators to review credit use through Power Platform cost controls, but the controls table has no corresponding row. | Found: Review credit use in the environments hosting shared agents using the cost controls in the Power Platform admin center. | Table rows cover environment sharing rules and a tenant-wide sharing switch only. | Fix: Remove the After rollout checklist bullet directing readers to review credit use through cost controls; the cost-control references can remain in Cost and licensing. This resolves the unmatched checklist control without adding a row.
+- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: The checklist directs readers to remove access through Share, but the controls table has no access-removal row. | Found: Remove access that is no longer needed through the **Share** panel's delete icon. | Table rows cover environment sharing rules and a tenant-wide sharing switch only. | Fix: Remove the After rollout checklist bullet about the Share panel's delete icon to resolve the unmatched checklist control without adding a row.
 -->

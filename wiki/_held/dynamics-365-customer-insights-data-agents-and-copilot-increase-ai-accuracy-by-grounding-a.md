@@ -12,13 +12,13 @@ platforms: ["Web"]
 targetDate: "November CY2026"
 previewDate: "June CY2026"
 risk: "medium"
-cost: "low"
+cost: "variable"
 impact: "medium"
 defaultState: "user-opt-in"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "Microsoft Learn says Customer Insights is licensed per tenant, with add-on capacity. No separate licence or meter for the MCP server is published at the time of writing (November 2026)."
+  model: "mixed"
+  notes: "Microsoft Learn says Customer Insights is licensed per tenant, with add-on capacity. Copilot Studio agent usage is metered in Copilot Credits. No separate licence or charge for the MCP server is published at the time of writing (November 2026)."
 audiences: ["m365-admin","power-platform-admin","security","maker"]
 tags: ["mcp","mcp-server","copilot-studio","dynamics-365","customer-insights","agents","tools","knowledge-grounding","row-level-security","m365-admin-center"]
 sources:
@@ -43,8 +43,14 @@ sources:
   - title: "Purchase a license for Dynamics 365 Customer Insights"
     url: "https://learn.microsoft.com/dynamics365/customer-insights/data/paid-license"
     kind: "learn"
+  - title: "Billing rates and management"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management"
+    kind: "learn"
+  - title: "Overview of usage-based billing"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview"
+    kind: "learn"
 videos: []
-related: ["copilot-studio-mcp-tools-in-agents","agent-365-control-plane-for-agents","power-pages-power-pages-copilot-use-power-pages-mcp-server-capabilities","data-policies","agent-identity"]
+related: ["power-pages-power-pages-copilot-use-power-pages-mcp-server-capabilities","agent-identity","copilot-credits"]
 controls:
   - governs: "Whether agents can use the Customer Insights MCP server at all (tenant block or unblock)"
     scope: "tenant"
@@ -62,17 +68,25 @@ controls:
       docs: "https://learn.microsoft.com/microsoft-copilot-studio/mcp-add-components-to-agent"
     api: null
     note: "Maker-side only. Turn off Allow all, then toggle tools individually, then Save and Publish. Tools added to the server later stay off."
-  - governs: "Gateway service principal and consent for the McpServers.D365CustomerInsights.All permission"
+  - governs: "Provisioning the Agent 365 Tooling Gateway service principal in the tenant"
     scope: "tenant"
-    ui:
-      surface: "Microsoft Entra admin center"
-      path: "API permissions > Add a permission > APIs my organization uses > Grant admin consent"
-      docs: "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-agent365-tooling-gateway"
+    ui: null
     api:
       kind: "powershell"
       call: "New-MgServicePrincipal -AppId \"<ATG-app-id>\""
       docs: "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-agent365-tooling-gateway"
-    note: "Tenant admin. The path is on the client app you register for manual setup. The Learn page also gives az ad sp create --id <ATG-app-id>."
+    note: "Tenant admin. The Learn page gives commands for this step and also gives az ad sp create --id <ATG-app-id>. This does not grant the permission to a client app."
+  - governs: "Admin consent for the McpServers.D365CustomerInsights.All permission on a client app (manual or external-client setup)"
+    scope: "app"
+    ui:
+      surface: "Microsoft Entra admin center"
+      path: "API permissions > Add a permission > APIs my organization uses > Agent 365 Tooling Gateway (search by app ID) > McpServers.D365CustomerInsights.All (delegated permission) > Grant admin consent"
+      docs: "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-agent365-tooling-gateway"
+    api:
+      kind: "other"
+      call: "https://login.microsoftonline.com/<customer-tenant-id>/v2.0/adminconsent?client_id=<your-client-app-id>&scope=<ATG-app-id>/.default&redirect_uri=<redirect-uri-registered-on-your-app>"
+      docs: "https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-agent365-tooling-gateway"
+    note: "Tenant admin or delegated admin-consent permissions. The path is on your own client app, not the gateway app. The Learn page describes the URL as the v2.0 admin-consent endpoint pointed at your client app."
 confidence: "high"
 created: "2026-11-16"
 updated: "2026-11-16"
@@ -80,18 +94,23 @@ roadmapModified: "2026-10-22T23:45:47"
 changes:
   - date: "2026-11-16"
     note: "First briefing for this roadmap item, written from the Customer Insights MCP server pages on Microsoft Learn."
-version: 1
+  - date: "2026-11-16"
+    note: "Corrected after the independent check: Copilot Credit billing for agents now stated, the gateway row split into provisioning and consent, and the data policy statement and a profile prerequisite narrowed to what Learn says."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 78 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
-  date: "2026-11-16"
-  version: 1
+  date: "2026-11-17"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 73
-  confirmed: 66
+  claims: 78
+  confirmed: 75
   unconfirmed: 0
-  contradicted: 7
-  attempts: 1
+  contradicted: 3
+  attempts: 2
+  hash: "815204a74de95bb543d90216e422f4ad"
 ---
 
 ## What's changing
@@ -134,9 +153,11 @@ If nobody acts, the server is available wherever it is registered, and each make
 
 **Licence.** Microsoft Learn states that Customer Insights is licensed per tenant and that you can purchase more capacity. The feature's own page lists one prerequisite, that the user must have access to the Dataverse tables, and names no licence for the MCP server.
 
-**Meter.** No meter or charge for the Customer Insights MCP server is published at the time of writing (November 2026), and the Customer Insights pages do not say how Copilot Studio bills tool calls to it. This is not a statement that it is free. Treat Copilot Studio billing for agents that call it as a question for Microsoft's [Copilot Studio billing page](https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management) until Microsoft says otherwise.
+**Meter.** Copilot Studio measures agent usage in Copilot Credits. Microsoft's [Copilot Studio billing page](https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management) says employee-facing use of Copilot Studio agents, and the tools and features those agents invoke, is included in the Microsoft Copilot USL when the agent's user is licensed with Microsoft Copilot and the agent operates using that authenticated user's identity; it notes that agents incur charges for generative answer responses outside the exceptions it lists. That page describes agents powered by the standard harness. For agents powered by the Microsoft Copilot harness, Microsoft states that [Copilot Credits](https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview) are charged for tools, including knowledge and MCPs. Treat Copilot Credit consumption by agents that call this server as a cost to plan for, and see [Copilot Credits](/concepts/copilot-credits/).
 
-**Indirect cost.** Admin time to review the registry entry, grant gateway consent and brief makers; Customer Insights - Data profiles must already exist for the tools to return anything.
+**What is not published.** No separate charge or feature-specific rate for calls to the Customer Insights MCP server is published at the time of writing (November 2026).
+
+**Indirect cost.** Admin time to review the registry entry, grant gateway consent and brief makers. Profile lookups need unified Customer Insights - Data profiles; consent, journey and email tools have different prerequisites and do not need a unified customer ID.
 
 ## Scope
 
@@ -174,36 +195,37 @@ If nobody acts, the server is available wherever it is registered, and each make
 <tbody>
 <tr><td data-label="Control"><strong>Whether agents can use the Customer Insights MCP server at all (tenant block or unblock)</strong><br><small>Tenant</small><br><small class="controls__note">Registry actions are Block and Unblock. The Learn gateway page says the server may be absent from the catalogue if it is blocked or not registered.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Registry <a href="https://learn.microsoft.com/microsoft-365/admin/manage/agent-tools-overview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Which of the server's tools an individual agent may call</strong><br><small>Agent</small><br><small class="controls__note">Maker-side only. Turn off Allow all, then toggle tools individually, then Save and Publish. Tools added to the server later stay off.</small></td><td data-label="Admin UI"><strong>Copilot Studio (maker)</strong><br>Tools › select the MCP server › Allow all <a href="https://learn.microsoft.com/microsoft-copilot-studio/mcp-add-components-to-agent" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Gateway service principal and consent for the McpServers.D365CustomerInsights.All permission</strong><br><small>Tenant</small><br><small class="controls__note">Tenant admin. The path is on the client app you register for manual setup. The Learn page also gives az ad sp create --id &lt;ATG-app-id&gt;.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>API permissions › Add a permission › APIs my organization uses › Grant admin consent <a href="https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-agent365-tooling-gateway" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-MgServicePrincipal -AppId &quot;&lt;ATG-app-id&gt;&quot;</code> <a href="https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-agent365-tooling-gateway" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Provisioning the Agent 365 Tooling Gateway service principal in the tenant</strong><br><small>Tenant</small><br><small class="controls__note">Tenant admin. The Learn page gives commands for this step and also gives az ad sp create --id &lt;ATG-app-id&gt;. This does not grant the permission to a client app.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-MgServicePrincipal -AppId &quot;&lt;ATG-app-id&gt;&quot;</code> <a href="https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-agent365-tooling-gateway" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Admin consent for the McpServers.D365CustomerInsights.All permission on a client app (manual or external-client setup)</strong><br><small>App</small><br><small class="controls__note">Tenant admin or delegated admin-consent permissions. The path is on your own client app, not the gateway app. The Learn page describes the URL as the v2.0 admin-consent endpoint pointed at your client app.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>API permissions › Add a permission › APIs my organization uses › Agent 365 Tooling Gateway (search by app ID) › McpServers.D365CustomerInsights.All (delegated permission) › Grant admin consent <a href="https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-agent365-tooling-gateway" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>https://login.microsoftonline.com/&lt;customer-tenant-id&gt;/v2.0/adminconsent?client_id=&lt;your-client-app-id&gt;&amp;scope=&lt;ATG-app-id&gt;/.default&amp;redirect_uri=&lt;redirect-uri-registered-on-your-app&gt;</code> <a href="https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-agent365-tooling-gateway" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-Blocking in the registry is tenant-wide and stops agents using the server; the maker-side toggles only affect one agent. Neither limits which customers or fields a tool returns: that rests on Dataverse security roles and row-level security, which have no row here because the Customer Insights MCP pages give no path for them. The Copilot Studio page says that a data policy covering Power Platform connectors also regulates access to MCP servers; no Microsoft page confirms that this applies to the Customer Insights server reached through the gateway, so see [data policies](/concepts/data-policies/) as a general control only. Gateway provisioning needs a tenant admin; configuring the server needs System Administrator.
+Blocking in the registry is tenant-wide and stops agents using the server; the maker-side toggles only affect one agent. Neither limits which customers or fields a tool returns: that rests on Dataverse security roles and row-level security.
+
+The Copilot Studio page says that access to MCP servers in Copilot Studio relies on Power Platform connectors, so a data policy that regulates Power Platform connectors also regulates access to the MCP server and its tools for your agent, and that the process is the same for prebuilt Microsoft MCP connectors and for an MCP server you configured a connection to. That page is about adding servers in Copilot Studio, so the coverage is not extended here to external MCP clients such as Visual Studio Code. See [data policies](/concepts/data-policies/).
+
+Creating the gateway service principal and granting consent are separate actions. The service principal must exist before a client app can request a token for the gateway, and the Learn page says that granting admin consent on your own client app is what puts `McpServers.D365CustomerInsights.All` into the tokens that client requests. Gateway provisioning needs a tenant admin; configuring the server needs System Administrator.
 
 ## Open questions
 
-- Will Microsoft publish a licence or meter for the Customer Insights MCP server, and how will Copilot Studio bill agents that call it? Watch the Learn pages for Customer Insights and Copilot Studio billing.
+- Will Microsoft publish a separate charge or feature-specific Copilot Credit rate for calls to the Customer Insights MCP server? Watch the Learn pages for Customer Insights and Copilot Studio billing.
 - Does the roadmap status (In development) mean the server documented on Learn is a preview, and what will change at general availability in November CY2026?
 - Is there a way to limit which customer profiles, segments or attributes the tools return, beyond Dataverse security roles?
-- Does a Power Platform data policy govern the server when it is added from the Copilot Studio catalogue through Agent 365 Tooling Gateway?
+- Does a Power Platform data policy govern external MCP clients, such as Visual Studio Code, that call the server through Agent 365 Tooling Gateway?
 - Is there an audit log of tool calls to the server that an administrator can read?
 
 <!-- rationale
 risk: Medium. Agents that use the server can read unified customer profiles, including data from external sources, but the server applies the calling user's Dataverse privileges and can be blocked tenant-wide.
-cost: Low. The only cost the sources show is admin time and the existing per-tenant Customer Insights licence; no meter or charge for this server is published, and Copilot Studio billing for it is not documented.
+cost: Variable. Copilot Studio agent usage is metered in Copilot Credits, subject to Microsoft's Microsoft 365 Copilot inclusion conditions; Customer Insights is licensed per tenant, and no separate charge for this server is published.
 impact: Medium. Makers who build agents and the sellers, marketers and service staff who use them notice it; most users and tenant defaults do not change.
 -->
 
-<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
-The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [contradicted, blocker] Cost and licensing; rationale: cost; Open questions / absence: Copilot Studio billing for agents that call this server is not documented and remains entirely a question for Microsoft. | Found: Agents incur charges for generative answer responses unless the agent is created in Agent Builder in Microsoft 365 and the response doesn't leverage tenant graph grounding. | Fix: Separate unpublished server-specific execution pricing from published agent billing. State that Copilot Studio agent usage follows its published Copilot Credits billing and Microsoft 365 Copilot inclusion conditions at https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management. For the Microsoft Copilot harness, https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview explicitly includes MCP tools in consumption. Retain only the narrower open question about a separate Customer Insights server charge or feature-specific rate. | Source: https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management
-- [contradicted, blocker] front matter: cost; rationale: cost / consistency: The low cost rating means only indirect costs are known, with admin time and an existing Customer Insights licence the only supported costs. | Found: Low. The only cost the sources show is admin time and the existing per-tenant Customer Insights licence; / Copilot Credits are the unit that measures agent usage. | Fix: Account for Copilot Studio consumption rather than rating the whole briefing as indirect-cost-only. Set cost to variable for metered agent usage, name Copilot Credits, and explain the published Microsoft 365 Copilot inclusion conditions. Keep separate Customer Insights MCP execution pricing explicitly unknown; do not infer a feature-specific tool-call rate. | Source: https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management
-- [contradicted, blocker] Cost and licensing: Indirect cost / behaviour: Customer Insights - Data profiles must already exist for the tools to return anything. | Found: The consent service can run independently of a full Customer Insights installation, so these tools are available even in environments where only Dynamics 365 Sales or Contact Center is deployed. | Fix: Replace the sentence with: 'Profile lookups need unified Customer Insights - Data profiles; consent, journey and email tools have different prerequisites and do not need a unified customer ID.' The reference also documents list_data_sources, so do not claim every Data tool needs an existing profile. | Source: https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-tools-reference
-- [contradicted, blocker] controls[2].ui; Governance controls table / admin-path: Client-app consent follows API permissions > Add a permission > APIs my organization uses > Grant admin consent. | Found: 4. Select APIs my organization uses.
-5. Search for the Agent 365 Tooling Gateway app by using the app ID.
-6. Add the `McpServers.D365CustomerInsights.All` delegated permission.
-7. Select Grant admin consent. | Fix: On the client app, replace the path with 'API permissions > Add a permission > APIs my organization uses > Agent 365 Tooling Gateway (search by app ID) > McpServers.D365CustomerInsights.All (delegated permission) > Grant admin consent'. Include the missing app-selection and permission-addition steps from the cited gateway page; granting consent is a subsequent action, not the next step from the API search page. | Source: https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-agent365-tooling-gateway
-- [contradicted, blocker] controls[2].governs; controls[2].ui; controls[2].api; Governance controls table lead / consistency: The consent UI and New-MgServicePrincipal are equivalent surfaces for the combined gateway-provisioning and permission-consent control. | Found: Run the commands in this section instead. If you set the server up manually, grant admin consent on your own client app, as described later in this article. | Fix: Split the combined row into gateway service-principal provisioning and client-app delegated-permission consent. Keep New-MgServicePrincipal on the provisioning row and the corrected API permissions path on the consent row. State explicitly that creating the gateway service principal does not grant McpServers.D365CustomerInsights.All to a client; do not label the two actions as equivalents. | Source: https://learn.microsoft.com/dynamics365/customer-insights/data/mcp-server-agent365-tooling-gateway
-- [contradicted, blocker] Governance controls; Open questions / absence: Microsoft has not confirmed that Power Platform data policies apply when Customer Insights is connected to a Copilot Studio agent through the gateway. | Found: The process is the same, whether you're adding prebuilt Microsoft MCP connectors or an MCP server to which you configured a connection. | Fix: Remove the unsupported exception for the Copilot Studio gateway connection. State that the cited Copilot Studio MCP documentation applies connector data policies to both prebuilt and configured MCP connections, which includes the documented Customer Insights Copilot Studio connection. Do not extend that coverage to external MCP clients; any remaining open question should be confined to those clients or to a particular policy configuration. | Source: https://learn.microsoft.com/microsoft-copilot-studio/mcp-add-components-to-agent
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist tells administrators to review Dataverse security-role privileges, but that control has no table row. | Found: Review security role privileges on the Dataverse tables behind the tools for the intended users / Dataverse security roles and row-level security, which have no row here | Fix: Add a controls row for Dataverse security-role privileges, which the checklist instructs readers to review. The schema allows naming an existing control without inventing a feature-specific path; obtain the role-management path from Dataverse documentation, and do not describe an unresearched surface as nonexistent.
+<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] Why it matters: If nobody acts; Scope: Rollout / availability: Registration alone makes the server available wherever it is registered if nobody acts. | Found: For MCP servers, registration approval and required Microsoft Entra consent are separate steps. The server becomes available to agent-building surfaces only after consent is granted. | Fix: Replace 'If nobody acts, the server is available wherever it is registered, and each maker decides whether to attach it' with 'Once registration is approved and required Microsoft Entra consent is granted, makers can choose whether to attach the available server to an agent.' Replace the final Scope rollout sentence with 'Catalogue availability requires registration approval and the required Microsoft Entra consent.' Cite https://learn.microsoft.com/microsoft-365/admin/manage/agent-tools-overview. | Source: https://learn.microsoft.com/microsoft-365/admin/manage/agent-tools-overview
+- [contradicted, blocker] controls[0].governs; Governance guidance: Before rollout; Governance controls; rationale: risk / applicability: Registry blocking is an unconditional tenant-wide gate that stops agents using this server across the described clients and prevents makers adding it. | Found: Microsoft Agent 365 provides administrative controls for supported tools. Copilot Studio and Power Platform can have separate controls for their components. An approval or block doesn't necessarily apply across all products or connected components. | Fix: Change controls[0].governs to 'Availability of the registered Customer Insights MCP server in supported Agent 365 experiences'. Add to its note: 'Copilot Studio and Power Platform can have separate controls; do not assume a registry block applies across all products or connected components.' Replace 'block it if you want a gate before makers can add it' with 'review the documented effect of blocking for the clients and connections you use'. Replace 'Blocking in the registry is tenant-wide and stops agents using the server' with 'Registry blocking restricts the selected server in supported experiences; Microsoft warns that it does not necessarily apply across all products or connected components.' Qualify the risk rationale's 'can be blocked tenant-wide' as 'has registry blocking for supported experiences'. Cite https://learn.microsoft.com/microsoft-365/admin/manage/agent-tools-overview. | Source: https://learn.microsoft.com/microsoft-365/admin/manage/agent-tools-overview
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Cost and licensing: Meter / licensing: Employee-facing agent usage and invoked tools are included in the Microsoft Copilot USL when the licensed user runs the agent under that authenticated identity. | Found: are included in the Microsoft Copilot USL when the user of the agent is licensed with Microsoft Copilot, and the agent operates using the authenticated Microsoft Copilot USL user's identity. | Fix: Add 'Usage is limited to fair usage limits' to the sentence describing Microsoft Copilot USL inclusion, as stated at https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management. | Source: https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: The governance checklist asks readers to review Dataverse security role privileges, but the controls table has no corresponding row. | Found: Checklist: 'Review security role privileges on the Dataverse tables behind the tools for the intended users'. Table: registry blocking, per-agent tool selection, gateway provisioning and client-app consent; no Dataverse security role row. | Fix: The Before rollout step about reviewing Dataverse security role privileges has no corresponding controls-table row. Remove that checklist bullet; the documented authorization behaviour can remain in Risk assessment and Governance controls.
 -->

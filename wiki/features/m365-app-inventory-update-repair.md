@@ -14,11 +14,11 @@ previewDate: "October CY2026"
 risk: "medium"
 cost: "low"
 impact: "low"
-defaultState: "admin-opt-in"
+defaultState: "unknown"
 action: "review"
 licensing:
-  model: "included"
-  notes: "The Inventory page says the signed-in user must hold one of its listed plans (for example Microsoft 365 E3 or E5). The Update Repair page lists prerequisites but names no additional licence or meter."
+  model: "unknown"
+  notes: "The Inventory page says the signed-in user must hold one of its listed plans (for example Microsoft 365 E3 or E5). The Update Repair page lists prerequisites but names no additional licence or meter, and does not state which licence covers it."
 audiences: ["m365-admin","change-adoption"]
 tags: ["admin-center","monitoring","microsoft-365-apps","inventory"]
 sources:
@@ -76,18 +76,23 @@ roadmapModified: "2026-11-12T01:50:56"
 changes:
   - date: "2026-11-16"
     note: "First briefing for this item, written after Microsoft's notice MC1518032 and the Update Repair Learn page, which still says preview."
-version: 1
+  - date: "2026-11-16"
+    note: "Corrected after verification: default state and licensing model set to unknown, Repair role claim narrowed to what Inventory lists, pending-action claim removed, and General Availability rollout worded as the notice plans it."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 71 statements confirmed"
+version: 2
 verification:
-  status: "held"
-  date: "2026-11-16"
-  version: 1
+  status: "verified"
+  date: "2026-11-17"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 60
-  confirmed: 56
-  unconfirmed: 4
+  claims: 71
+  confirmed: 71
+  unconfirmed: 0
   contradicted: 0
-  attempts: 1
+  attempts: 0
+  hash: "60dbcd0a1c83cdd4fd68729934945480"
 ---
 
 ## What's changing
@@ -98,13 +103,13 @@ The report builds on Inventory data: the installed version and build, the target
 
 The **Repair** action triggers Click-to-Run Online Repair. It closes any open Microsoft 365 Apps and reinstalls them by downloading the latest available build for the device's configured update channel from the Microsoft Content Delivery Network (CDN). The device receives the action at its next Inventory check-in, not immediately.
 
-The roadmap record shows the item as Launched, with a preview date of October CY2026 and a target date of November CY2026, for Worldwide (Standard Multi-Tenant) on Desktop and Web. Microsoft's notice MC1518032 (published 2026-10-20, no act-by date) says Public Preview rollout began in mid-October 2026 and General Availability rollout starts in mid-November 2026, finishing by late November 2026. The Learn page still describes Update Repair as currently available as a preview at the time of writing (November 2026).
+The roadmap record shows the item as Launched, with a preview date of October CY2026 and a target date of November CY2026, for Worldwide (Standard Multi-Tenant) on Desktop and Web. Microsoft's notice MC1518032 (published 2026-10-20, no act-by date) says Public Preview rollout began in mid-October 2026 and is expected to complete by late October 2026. It says General Availability rollout will begin in mid-November 2026 and is expected to complete by late November 2026. The Learn page still describes Update Repair as currently available as a preview at the time of writing (November 2026).
 
 ## Why it matters
 
 This gives admins a tenant-wide list of devices that have fallen behind on Microsoft 365 Apps updates, with a remote fix, which removes some hands-on desk-side work. The same button is also the main risk: it closes Office apps on the selected devices without the user choosing the moment.
 
-Nothing happens if nobody acts: no device is repaired and no setting changes. The practical decision is who may use Repair, when, and how users are warned. Plan that before the first batch, because Microsoft's own warning is that Repair interrupts users.
+Microsoft has not stated what happens on arrival, and no source says existing behaviour changes. Each remote repair requires an admin to select devices and confirm Repair. The practical decision is who may use Repair, when, and how users are warned. Plan that before the first batch, because Microsoft's own warning is that Repair interrupts users.
 
 ## Risk assessment
 
@@ -112,7 +117,7 @@ Nothing happens if nobody acts: no device is repaired and no setting changes. Th
 - No new data collection is described: the report reads data already sent to Inventory. Repair downloads the latest build from the Microsoft CDN, so devices need to reach it.
 
 **Security & identity**
-- Repair is performed through the Microsoft 365 Apps admin center, where the Inventory page lists Office Apps Administrator (recommended), Security Administrator and Global Administrator as the supported built-in roles. Any holder can select devices and start a repair; keep that group small.
+- Repair is started from the Microsoft 365 Apps admin center. Inventory lists Office Apps Administrator (recommended), Security Administrator and Global Administrator as the supported built-in roles; the Update Repair page does not specify which roles can start Repair. As the wiki's advice, keep the group that uses the admin centre small.
 - Repair reinstalls the latest build for the device's update channel, so it also moves a repaired device to the current build of that channel.
 
 **Autonomy & actions**
@@ -121,7 +126,7 @@ Nothing happens if nobody acts: no device is repaired and no setting changes. Th
 
 **Change & support**
 - Repair closes open Microsoft 365 Apps. Users with unsaved work are exposed to data loss, so notify them first and ask them to save and close their Office apps.
-- A device that is powered off, signed out or offline simply keeps the action pending until it checks in.
+- Keep devices powered on, signed in and connected so they can receive the action at their next Inventory check-in.
 - Successfully repaired devices can stay in the table for up to 28 days, which can confuse a follow-up review.
 
 ## Cost and licensing
@@ -138,13 +143,13 @@ Indirect costs are admin time, user downtime during a repair, and a download of 
 - **Repair eligibility:** build 16.0.20326.20000 or later. Earlier builds show as **Needs attention** and need manual Online Repair.
 - **Admins:** the Inventory page lists Office Apps Administrator (recommended), Security Administrator and Global Administrator. The Update Repair page itself does not list roles.
 - **Cloud:** the roadmap record lists Worldwide (Standard Multi-Tenant) only. The Inventory page also lists the GCC, GCC High and DoD plans as unsupported.
-- **Rollout:** Public Preview began in mid-October 2026 and General Availability began rolling out in mid-November 2026 (MC1518032). The Learn page still says preview.
+- **Rollout:** MC1518032 says Public Preview rollout began in mid-October 2026, and that General Availability rollout will begin in mid-November 2026 and is expected to complete by late November 2026. The Learn page still says preview.
 - **Prerequisite:** Inventory must be enabled; a new tenant completes a one-step setup, after which devices appear as users launch Office apps.
 
 ## Governance guidance
 
 ### Before rollout
-- Confirm Inventory is set up in the Microsoft 365 Apps admin center and that your admins hold one of the roles the Inventory page lists; give Repair only to Office Apps Administrators.
+- Confirm Inventory is set up in the Microsoft 365 Apps admin center and that your admins hold one of the roles the Inventory page lists; keep the group that starts Repair small, for example Office Apps Administrators, the role the Inventory page recommends.
 - Check which devices run a build earlier than 16.0.20326.20000; they cannot use Repair and need manual Online Repair.
 - Agree a notice with the service desk telling affected users to save work and close Office apps before a repair.
 
@@ -172,7 +177,7 @@ Indirect costs are admin time, user downtime during a repair, and a download of 
 </tbody>
 </table>
 
-Repair and the report share one surface, and the only gate on Repair that Microsoft documents is the admin role needed for the Microsoft 365 Apps admin center. No setting is documented that restricts Repair to a subset of devices, schedules it or turns it off separately; Inventory is the only on/off dependency Microsoft names. Manual Online Repair is the alternative for devices Repair excludes; it runs on the device and is not governed from the admin centre.
+Repair and the report share one surface. Inventory lists Office Apps Administrator, Security Administrator and Global Administrator for the Microsoft 365 Apps admin center; the Update Repair page does not specify which roles can start Repair. No setting is documented that restricts Repair to a subset of devices, schedules it or turns it off separately; Inventory is the only on/off dependency Microsoft names. Manual Online Repair is the alternative for devices Repair excludes; it runs on the device and is not governed from the admin centre.
 
 ## Open questions
 
@@ -185,13 +190,4 @@ Repair and the report share one surface, and the only gate on Repair that Micros
 risk: Medium. A Repair action closes open Microsoft 365 Apps on the selected devices and reinstalls them, so users can lose unsaved work unless admins warn them first; it reads no new data and starts only when an admin selects it.
 cost: Low. The Update Repair page names no separate licence or meter; the costs shown are admin time, user disruption and a CDN download per repaired device. Inventory itself requires one of the plans its Learn page lists.
 impact: Low. Admins use the report; users notice only on devices an admin repairs, where Office apps close and reinstall.
--->
-
-<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
-The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [unsupported, blocker] front matter: defaultState / default: Update Repair has an admin-opt-in default state. | Found: Searched: "Update Repair" "default" "enable"; opened Update Repair and Inventory Learn pages. They document Inventory setup and confirmation of each Repair action, not a separate Update Repair enablement default. | Fix: Set defaultState to unknown. Retain the supported, narrower statement that each remote repair requires an administrator to select devices and confirm Repair; do not equate invoking an action with enabling the feature.
-- [unsupported, blocker] front matter: licensing.model / licensing: Update Repair is included in the licences the product already requires. | Found: Searched: "Update Repair" "license" "price" and site:learn.microsoft.com/microsoft-365-apps/ "Update Repair" "license" "included"; opened Update Repair and Inventory. Neither states Update Repair is included. | Fix: Set licensing.model to unknown. Keep the notes distinguishing Inventory's published plan requirements from the Update Repair page's silence about a feature-specific licence; silence does not establish inclusion.
-- [supported, minor] What's changing; Scope: Rollout / record: MC1518032 gives a mid-November 2026 start and late-November 2026 completion window for Worldwide General Availability. | Found: General Availability (Worldwide): Rollout will begin in mid-November 2026 and is expected to complete by late November 2026. | Fix: Preserve the notice's planned wording in both sections: 'MC1518032 says General Availability rollout will begin in mid-November 2026 and is expected to complete by late November 2026.' Replace 'finishing by' and 'began rolling out'; the notice itself does not confirm actual commencement or guarantee completion.
-- [unsupported, blocker] Risk assessment: Security & identity; Governance controls / role: Any holder of the listed Inventory roles can start Repair, and admin-center role membership is the documented authorization gate for Repair. | Found: Searched: "Update Repair" "Microsoft 365 Apps" "role" and site:learn.microsoft.com/microsoft-365-apps/admin-center/ "Update Repair" "permissions"; opened Inventory and Update Repair. Inventory roles are listed, but Repair authorization is not specified. | Fix: Remove 'Any holder can select devices and start a repair' and the assertion that the admin-center role is the only documented Repair authorization gate. Say: 'Inventory lists these access roles; the Update Repair page does not specify which roles can start Repair.' Keep limiting operators as organizational advice, not a documented Repair-specific permission.
-- [unsupported, major] Risk assessment: Change & support / behaviour: A powered-off, signed-out or offline device simply keeps the Repair action pending until it checks in. | Found: Searched: site:learn.microsoft.com/microsoft-365-apps/ "Update Repair" "pending" "signed out"; opened Update Repair. It specifies next-check-in delivery and connectivity advice, not pending-action persistence or expiry for unavailable devices. | Fix: Replace with: 'Keep devices powered on, signed in and connected so they can receive the action at their next Inventory check-in.' Do not promise that an action remains pending for an unavailable device.
 -->

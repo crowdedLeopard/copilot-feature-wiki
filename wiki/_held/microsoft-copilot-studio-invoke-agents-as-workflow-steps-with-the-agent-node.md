@@ -4,7 +4,7 @@ slug: "microsoft-copilot-studio-invoke-agents-as-workflow-steps-with-the-agent-n
 roadmapId: 566998
 topic: "copilot-studio"
 products: ["Microsoft Copilot (Microsoft 365)","Microsoft Copilot Studio"]
-summary: "Makers can add an agent node to a Copilot Studio workflow so an AI agent decides and acts mid-flow. It uses Copilot Credits and no admin switch is documented, so administrators should review credit and tool controls."
+summary: "Makers can add an agent node to a Copilot Studio workflow so an AI agent decides and acts mid-flow. It uses Copilot Credits and no switch dedicated to the node is documented, so administrators should review credit and tool controls."
 status: "launched"
 releasePhase: ["General Availability","Preview"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -31,6 +31,18 @@ sources:
   - title: "Workflows overview (Microsoft Copilot)"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/flows-overview"
     kind: "learn"
+  - title: "Edit and manage your workflow in the designer (Microsoft Copilot)"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/flow-designer"
+    kind: "learn"
+  - title: "Review agent readiness and status in Microsoft Copilot Studio (Microsoft Copilot)"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-status"
+    kind: "learn"
+  - title: "Work IQ in Copilot Studio (Microsoft Copilot)"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq"
+    kind: "learn"
+  - title: "Policy governance for Work IQ MCP"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp"
+    kind: "learn"
   - title: "Overview of usage-based billing"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview"
     kind: "learn"
@@ -41,7 +53,7 @@ sources:
     url: "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations"
     kind: "learn"
 videos: []
-related: ["copilot-credits","copilot-studio-mcp-tools-in-agents","work-iq-human-in-the-loop","copilot-studio-require-human-approval-for-tool-calls"]
+related: ["copilot-credits","work-iq-human-in-the-loop","work-iq-agent-policy-governance"]
 controls:
   - governs: "Prepaid Copilot Credits per environment and whether it can draw from the tenant pool"
     scope: "environment"
@@ -69,12 +81,12 @@ controls:
       path: "Workflows > workflow > Build > Agent > Request human assistance when unsure"
       docs: "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-node-workflow"
     api: null
-    note: "Maker-side, per node. The agent emails the connection owner and waits for a reply. Administrators cannot enforce it."
-  - governs: "Tenant or environment switch to turn the agent node, its tools or Work IQ off"
+    note: "Per-node maker setting. The agent emails the connection owner and waits for a reply. No central enforcement setting is documented as of November 2026."
+  - governs: "Switch dedicated to turning the agent node off"
     scope: "tenant"
     ui: null
     api: null
-    note: "No such setting is documented at the time of writing (November 2026)."
+    note: "No setting dedicated to the agent node is documented at the time of writing (November 2026). Data policy and Work IQ MCP policy are described below the table."
 confidence: "medium"
 created: "2026-11-16"
 updated: "2026-11-16"
@@ -82,23 +94,28 @@ roadmapModified: "2026-10-26T23:15:50"
 changes:
   - date: "2026-11-16"
     note: "First briefing for this item: documents the agent node, its credit billing and the environment-level cost controls; no agent-node admin switch is documented."
-version: 1
+  - date: "2026-11-16"
+    note: "Corrected after verification: removed three unsupported claims (no admin enforcement, published agents only, human assistance the only brake); narrowed the absence row to a switch dedicated to the node and added data policy and Work IQ MCP policy."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 6 of 78 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
-  date: "2026-11-16"
-  version: 1
+  date: "2026-11-17"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 72
-  confirmed: 65
-  unconfirmed: 2
-  contradicted: 5
-  attempts: 1
+  claims: 78
+  confirmed: 72
+  unconfirmed: 0
+  contradicted: 6
+  attempts: 2
+  hash: "dbb5b2dccdbec1e71fe8c7b2235682f6"
 ---
 
 ## What's changing
 
-The agent node lets a maker hand one step of a Copilot Studio workflow to an AI agent that can reason, call tools and read knowledge sources before returning a result. The result becomes dynamic content that later steps can use. A maker adds it in Copilot Studio by opening **Workflows**, opening or creating a workflow and selecting the **Agent** icon on the Add panel.
+The agent node lets a maker hand one step of a Copilot Studio workflow to an AI agent that can reason, call tools and read knowledge sources before returning a result. The result becomes dynamic content that later steps can use. A maker adds it in Copilot Studio by opening **Workflows**, opening or creating a workflow (for an existing workflow, the **Build** tab) and selecting the **Agent** icon on the Add panel.
 
 The node takes one of two forms. **An existing agent** is a published agent that runs with the instructions, tools and knowledge it already has. **New agent for this workflow** is an inline agent defined inside the node: its instructions, optional tools (Model Context Protocol (MCP) servers and any Power Platform connector action), optional knowledge (public websites or SharePoint) and its output shape travel with the workflow, and it cannot be reused outside that workflow. The agent chooses at run time which attached tools to call, in what order and with what arguments. Two optional settings widen its reach: **Work IQ**, which lets the agent use the running user's recent work activity (mail, Teams, calendar, OneDrive and SharePoint context), and **Request human assistance when unsure**, which makes the agent email the connection owner and wait for a reply before continuing.
 
@@ -106,7 +123,7 @@ The roadmap item shows status Launched, with a target date of September CY2026 a
 
 ## Why it matters
 
-A workflow used to follow fixed branches; with an agent node, one step can interpret an email or a document and then act through attached connectors. That moves decisions, and sometimes write actions, into flows that makers build and publish without an administrator review step in the designer. Microsoft Learn documents no tenant switch for the node, so the controls that remain are the ones around it: credit allocation per environment, who can build in the environment, and what the maker attaches.
+The agent node puts AI reasoning inside an otherwise defined sequence of workflow actions: one step can interpret an email or a document and then act through attached connectors. That moves decisions, and sometimes write actions, into flows that makers build and publish; the designer's documented publish procedure has no administrator review step. Microsoft Learn documents no tenant switch dedicated to the node, so the controls that remain are the ones around it: credit allocation per environment, data policies and Advanced Connector Policies for tools, who can build in the environment, and what the maker attaches.
 
 The cost effect arrives without a purchase order. Credits are charged to the environment that runs the workflow, and testing and evaluating an agent node can consume credits as well. A tenant that lets makers build workflows in an environment that can draw from the tenant credit pool can therefore spend shared prepaid capacity before anyone has agreed a budget.
 
@@ -114,17 +131,18 @@ The cost effect arrives without a purchase order. Credits are charged to the env
 
 **Data exposure**
 
-- The inline agent can be grounded in SharePoint sites and public websites, and the **Work IQ** setting lets it use the running user's mail, Teams, calendar, OneDrive and SharePoint context. Anything the agent reads can end up in its output and in later steps such as emails, Teams messages or Dataverse rows. Microsoft Learn documents no tenant switch for these node settings.
+- The inline agent can be grounded in SharePoint sites and public websites, and the **Work IQ** setting lets it use the running user's mail, Teams, calendar, OneDrive and SharePoint context. Anything the agent reads can end up in its output and in later steps such as emails, Teams messages or Dataverse rows. Microsoft Learn documents no switch dedicated to the node for these settings. Work IQ MCP has its own tenant-level policy in the Microsoft 365 admin center, and Learn says the ability to allow or disallow tooling and MCP servers there might not be available in your region yet; whether it covers the Work IQ option on an inline node is not stated.
 - A structured output passes agent-written fields to downstream actions, so review what a workflow writes and to where.
 
 **Security & identity**
 
 - Tools can be any Power Platform connector action or an MCP server. Microsoft Learn does not describe, on the agent node page, whose credentials a connector action in the node uses, so confirm this per workflow before relying on it.
+- Learn documents that a data policy or Advanced Connector Policy can block a tool, connector, AI model or skill for agents built with the Microsoft Copilot harness, so that it appears disabled in the tool list. Whether this applies to the tool picker inside an inline agent node is not stated.
 - With **Request human assistance when unsure** on, the agent emails the connection owner, which puts an approval step in the hands of whoever owns that connection.
 
 **Autonomy & actions**
 
-- Tools let the agent act: the page says that without tools it can only read and reason, and with tools it can also act. Because the agent decides which tool to call and with which arguments, a wrong judgment becomes a real action. The human-assistance setting is the only documented brake, and it is chosen per node by the maker.
+- Tools let the agent act: the page says that without tools it can only read and reason, and with tools it can also act. Because the agent decides which tool to call and with which arguments, a wrong judgment becomes a real action. The node page documents an optional, maker-selected escalation when the agent is unsure; it is not a mandatory approval before every action. For Work IQ MCP, Learn documents a separate tenant policy that can allow or deny specific MCP tool requests.
 - Results can vary run to run when actions use AI, which the Workflows overview notes for AI actions.
 
 **Change & support**
@@ -144,7 +162,7 @@ Credits are charged to the environment where the work runs, from prepaid capacit
 
 The roadmap item lists Worldwide (Standard Multi-Tenant) as the only cloud and Web as the only platform; it does not list the US Government clouds, so the page makes no claim about them. Makers use the node from the **Workflows** area of Copilot Studio. Capacity and credit controls are managed by a user with the Power Platform Administrator or Global Administrator role, or an equivalent role that can manage licensing and capacity.
 
-Which agents the node can call is limited to published agents. Learn states that inline agents are scoped to their workflow and cannot be reused elsewhere. The Learn page names no licence among its prerequisites for adding the node; the billing position is covered above.
+The existing-agent picker lists published agents; alternatively, makers can define a new inline agent inside the node. Learn states that inline agents are scoped to their workflow and cannot be reused elsewhere. The Learn page names no licence among its prerequisites for adding the node; the billing position is covered above.
 
 ## Governance guidance
 
@@ -176,39 +194,39 @@ Which agents the node can call is limited to published agents. Learn states that
 <tbody>
 <tr><td data-label="Control"><strong>Prepaid Copilot Credits per environment and whether it can draw from the tenant pool</strong><br><small>Environment</small><br><small class="controls__note">Needs Power Platform Administrator or Global Administrator, or an equivalent role. Applies to all Copilot Studio workloads in the environment; does not stop pay-as-you-go billing.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Copilot Studio › Manage Copilot Credits <a href="https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform API</strong><br><code>PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01 (entitlement MCSMessages, enforcement rule TenantPool)</code> <a href="https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Credit consumption by workflow and environment</strong><br><small>Environment</small><br><small class="controls__note">Review the Agent flow actions used by each workflow. Makers see a Credit usage (last 30 days) column on the Workflows page in Copilot Studio.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Copilot Studio <a href="https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/flows-overview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Escalation to a person when the agent is unsure</strong><br><small>Agent</small><br><small class="controls__note">Maker-side, per node. The agent emails the connection owner and waits for a reply. Administrators cannot enforce it.</small></td><td data-label="Admin UI"><strong>Copilot Studio (maker)</strong><br>Workflows › workflow › Build › Agent › Request human assistance when unsure <a href="https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-node-workflow" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Tenant or environment switch to turn the agent node, its tools or Work IQ off</strong><br><small>Tenant</small><br><small class="controls__note">No such setting is documented at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Escalation to a person when the agent is unsure</strong><br><small>Agent</small><br><small class="controls__note">Per-node maker setting. The agent emails the connection owner and waits for a reply. No central enforcement setting is documented as of November 2026.</small></td><td data-label="Admin UI"><strong>Copilot Studio (maker)</strong><br>Workflows › workflow › Build › Agent › Request human assistance when unsure <a href="https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-node-workflow" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Switch dedicated to turning the agent node off</strong><br><small>Tenant</small><br><small class="controls__note">No setting dedicated to the agent node is documented at the time of writing (November 2026). Data policy and Work IQ MCP policy are described below the table.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
 The environment allocation settings govern every Copilot Studio workload in the environment, not only workflows with agent nodes, so changing them affects agents, flows and prompts in the same environment. If an environment group rule governs the tenant-draw setting, the environment-level setting becomes read-only and programmatic requests cannot override it.
 
-Microsoft Learn documents monthly limits that an administrator sets on an individual agent under **Licensing** > **Copilot Studio** > **Manage Agents**. At the time of writing (November 2026), the pages read do not say that these limits cap the credits an agent node consumes inside a workflow, so the table does not list them as a control for this feature. The **Request human assistance when unsure** setting is maker-side and per node, so an administrator cannot enforce it.
+Microsoft Learn documents monthly limits that an administrator sets on an individual agent under **Licensing** > **Copilot Studio** > **Manage Agents**. At the time of writing (November 2026), the pages read do not say that these limits cap the credits an agent node consumes inside a workflow, so the table does not list them as a control for this feature. The **Request human assistance when unsure** setting is documented by Microsoft as a per-node maker setting; no central enforcement setting is documented as of November 2026.
+
+Two platform controls exist outside the table. Data policies and Advanced Connector Policies can disable tools, connectors, AI models and skills in the pickers of agents built with the Microsoft Copilot harness ([Review agent readiness and status](https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-status)). Work IQ MCP has a tenant-level policy in the Microsoft 365 admin center under **Agents** > **Tools** > **Work IQ MCP** > **Policy**, when available ([Policy governance for Work IQ MCP](https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp)). Learn does not confirm that either governs the agent node's inline tools or its Work IQ option specifically, so the table lists only the absence of a switch dedicated to the node.
 
 ## Open questions
 
 - Which identity does an agent node use when its attached connector actions or SharePoint knowledge run, the running user, the connection owner or the workflow owner? Watch the agent node page on Microsoft Learn.
 - What does a workflow run with an agent node cost in Copilot Credits, and does the Microsoft 365 Copilot exemption apply to workflows that contain an agent node? Watch the billing pages for the Microsoft Copilot harness.
-- Will Microsoft add a tenant or environment setting to turn the agent node, its Work IQ option or its tool types off? Watch Message center and the Workflows overview.
+- Will Microsoft add a setting dedicated to the agent node, or confirm that data policies, Advanced Connector Policies and Work IQ MCP policy govern the node's tools and Work IQ option? Watch Message center and the Workflows overview.
 - Which parts of the feature are still in preview, given the roadmap lists both General Availability and Preview as release phases? Watch the roadmap item.
 
 <!-- rationale
-risk: Medium. The agent picks at run time which attached tools and connector actions to call, and Microsoft Learn documents no admin switch for the node itself.
+risk: Medium. The agent picks at run time which attached tools and connector actions to call, and Microsoft Learn documents no switch dedicated to the node itself.
 cost: Variable. Workflow actions and the agent node's use consume Copilot Credits, billed to the environment, and no rate specific to the agent node is published.
 impact: Medium. Makers who build workflows notice it first; the people who feed or receive the workflow's output see decisions made by an agent instead of a fixed rule.
 -->
 
-<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
-The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [supported, minor] What's changing: adding the node / admin-path: A maker adds the node by opening Workflows, opening or creating a workflow and selecting Agent on the Add panel. | Found: Existing workflow: Open the workflow and go to the Build tab.
-2. Select the Agent icon on the Add panel. The configuration panel opens for the agent node. | Fix: For an existing workflow, include the Build tab: Workflows > workflow > Build > Agent on the Add panel. | Source: https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-node-workflow
-- [unsupported, major] Why it matters: A workflow used to follow fixed branches / behaviour: Before this change, workflows followed fixed branches rather than using AI reasoning. | Found: Searched: workflows previously fixed Copilot Studio; opened flows-overview and flow-designer; read the faq-workflows search excerpt. These describe current rule-based branches and AI actions, not the claimed historical restriction. | Fix: Replace the historical assertion with: 'The agent node puts AI reasoning inside an otherwise defined sequence of workflow actions.' Do not imply workflows previously could not use AI without a historical Microsoft source.
-- [supported, minor] Why it matters: publishing without an administrator review step in the designer / behaviour: The workflow designer's documented publish procedure has no administrator review step. | Found: If your workflow has no errors, you can publish it. On the menu at the top of the canvas, select Publish. | Fix: Add https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/flow-designer to sources. Keep the claim limited to the documented designer procedure, not an exemption from organisational policies. | Source: https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/flow-designer
-- [unsupported, blocker] controls[2].note; Governance controls: final sentence / applicability: Administrators cannot enforce the human-assistance setting. | Found: Searched: Copilot Studio Request human assistance enforce; Copilot Studio agent node human assistance administrator API. Read agent-node-workflow and flow-designer. They document a maker setting, but do not state that administrator enforcement is impossible. | Fix: Replace 'Administrators cannot enforce it' and 'an administrator cannot enforce it' with 'Microsoft documents this as a per-node maker setting; no central enforcement setting is documented as of November 2026.'
-- [contradicted, blocker] controls[3]: ui and api, tools; Risk assessment: Data exposure; Open questions / absence: Microsoft documents no tenant or environment control to block the tools available to these agents. | Found: When a data policy or Advanced Connector Policy blocks a tool, connector, AI model, or skill, that item appears disabled wherever you'd normally select it, such as the tools list, model list, or skills list. | Fix: Narrow the both-null row to a dedicated agent-node switch. Remove the blanket tools-governance absence and describe documented data-policy and Advanced Connector Policy restrictions for Microsoft Copilot harness agents, citing this page; qualify any unconfirmed inline-node-specific coverage instead of declaring the platform controls absent. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-status
-- [contradicted, blocker] controls[3]: ui and api, Work IQ; Risk assessment: Data exposure; Open questions / absence: No tenant setting governing Work IQ is documented. | Found: Centralized governance: Admins manage Work IQ MCP in the Microsoft 365 admin center.
-The ability to allow or disallow tooling and MCP servers in the Microsoft 365 admin center might not be available in your region yet. | Fix: Remove Work IQ from the blanket absence row and acknowledge its documented central governance. Cite this page and https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp, which gives Microsoft 365 admin center > Agents > Tools > Work IQ MCP > Policy when available. Preserve the regional/tenant availability caveat and distinguish this general control from a dedicated inline-node toggle. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq
-- [contradicted, blocker] Risk assessment: Autonomy & actions / applicability: Human assistance is the only documented brake on agent actions. | Found: For Work IQ MCP, policy governance doesn't replace Microsoft Entra authentication, OAuth permissions, or the signed-in user's existing Microsoft 365 permissions. It adds a request-time governance layer that can allow or deny specific MCP tool requests based on tenant policy. | Fix: Replace 'The human-assistance setting is the only documented brake' with 'The node page documents an optional, maker-selected escalation when the agent is unsure; it is not a mandatory approval before every action.' Acknowledge the separately documented tool-policy and Work IQ governance controls rather than implying escalation is the sole guardrail. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp
-- [contradicted, blocker] Scope: Which agents the node can call is limited to published agents / behaviour: The node can call only published agents. | Found: You can either pick an existing published agent or build a brand-new agent directly inside the node without leaving the workflow designer. | Fix: Replace the sentence with 'The existing-agent picker lists published agents; alternatively, makers can define a new inline agent inside the node.' This also reconciles Scope with What's changing. | Source: https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-node-workflow
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist asks administrators to check environment pay-as-you-go billing-plan links, but the controls table has no corresponding row. | Found: Checklist: 'Check which environments are linked to a pay-as-you-go billing plan'. The table lists prepaid allocation, consumption reporting, human assistance and a missing node/tools/Work IQ switch, but no pay-as-you-go billing-plan control. | Fix: Add a general platform row for environment pay-as-you-go billing-plan association with UI 'Power Platform admin center > Licensing > Pay-as-you-go plans', citing https://learn.microsoft.com/power-platform/admin/pay-as-you-go-set-up. That page documents the Billing plans page and selecting environments when creating a plan. Do not invent an API equivalent.
+<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[0].ui; Governance controls: first table row / admin-path: The credit allocation path is Power Platform admin center > Licensing > Copilot Studio > Manage Copilot Credits. | Found: 2. In the navigation pane, select Licensing. 3. Under Products, select Copilot Studio. 4. Select Manage Copilot Credits. | Fix: Replace controls[0].ui.path and the corresponding rendered path with 'Licensing > Products > Copilot Studio > Manage Copilot Credits'; the source explicitly includes the Products group heading. | Source: https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness
+- [contradicted, blocker] Cost and licensing: exemption uncertainty; Open questions: licensing / licensing: Whether a workflow containing an agent node is exempt when run in other ways is not spelled out. | Found: | Workflows | Yes, when run inside a standard harness agent by a licensed user | Billed in all other cases. | | Fix: Remove 'Whether a workflow that contains an agent node falls under that exemption when run in other ways is not spelled out for the node'. The preceding sentence already states that all other workflow cases are billed. In Open questions, retain only the question about the agent node's credit cost, not uncertainty about exemption for other workflow execution modes. | Source: https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness
+- [contradicted, blocker] controls[2].ui; Governance controls: third table row / admin-path: The human-assistance setting path is Workflows > workflow > Build > Agent > Request human assistance when unsure. | Found: Select the Agent icon on the Add panel. The configuration panel opens for the agent node. | Fix: Replace controls[2].ui.path and its rendered counterpart with 'Workflows > workflow > Build > Add panel > Agent > Request human assistance when unsure', retaining the documented Add panel section before its Agent icon. | Source: https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-node-workflow
+- [contradicted, blocker] Risk assessment: Security & identity; Governance controls: inline data-policy caveat; Open questions / absence: Microsoft has not confirmed that data policies govern the inline node's connector tools. | Found: Policies with a tenant scope apply to all agents in all environments across the tenant. | Fix: Replace the data-policy part of the inline-applicability caveat with: 'Data policies govern Power Platform connector tools in Copilot Studio agents, including inline agents; blocking a connector also blocks connected MCP tools that rely on it.' Cite https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention. Remove the corresponding data-policy uncertainty from Open questions; retain the narrower Work IQ-option question. | Source: https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention
+- [contradicted, blocker] Risk assessment: Security & identity; Governance controls: inline ACP caveat; Open questions / absence: Whether Advanced Connector Policies govern connector tools inside the inline node is not stated. | Found: At runtime, when a connector operation is invoked, it queries the effective policy for the current hosting environment. | Fix: Replace the ACP part of the inline-applicability caveat with: 'Advanced Connector Policies govern supported certified connectors and MCP servers through the hosting environment's policy; custom and HTTP connectors still require classic data policies. Copilot Studio design-time enforcement is rolling out.' Cite https://learn.microsoft.com/power-platform/admin/advanced-connector-policies and remove the corresponding ACP-applicability uncertainty from Open questions. | Source: https://learn.microsoft.com/power-platform/admin/advanced-connector-policies
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Risk assessment: Security & identity; Governance controls: platform controls / applicability: Data policies or Advanced Connector Policies can disable tools, connectors, models or skills in the pickers of Microsoft Copilot harness agents. | Found: When a data policy or Advanced Connector Policy blocks a tool, connector, AI model, or skill, that item appears disabled wherever you'd normally select it, such as the tools list, model list, or skills list. | Fix: Qualify the ACP picker statement with: 'The Advanced connector policies documentation says Copilot Studio design-time enforcement is rolling out; until available, enforcement is runtime-only.' Cite https://learn.microsoft.com/power-platform/admin/advanced-connector-policies alongside the existing authoring-status source, which describes disabled picker items. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-status
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist asks readers to check pay-as-you-go billing-plan links, but the controls table has no row for that control. | Found: Checklist: 'Check which environments are linked to a pay-as-you-go billing plan'. The table covers prepaid allocation, consumption reporting, human assistance and a dedicated node switch, but not billing-plan linkage. | Fix: Remove the checklist bullet beginning 'Check which environments are linked to a pay-as-you-go billing plan'; retain the existing explanatory pay-as-you-go caveat in Cost and licensing.
 -->
