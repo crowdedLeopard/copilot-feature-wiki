@@ -17,13 +17,16 @@ impact: "low"
 defaultState: "admin-opt-in"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "Not yet published. The Learn page lists no licence for this control and points to Microsoft 365 Enterprise Plans and the Microsoft 365 service descriptions licensing guidance."
+  model: "per-user"
+  notes: "Per the Microsoft Purview service description, DLP that restricts Copilot from processing files and emails is included with Microsoft 365 E5/A5, Office 365 E5/A5 and the listed Purview suite plans, not with the listed Business or E3 plans. The external-email article names no separate SKU."
 audiences: ["security","compliance","m365-admin","service-owner"]
 tags: ["dlp","purview","m365-copilot","copilot-chat","exchange","outlook","data-governance","guardrails","real-time"]
 sources:
   - title: "Learn about using Microsoft Purview Data Loss Prevention to protect interactions with Microsoft 365 Copilot, Copilot Chat, and Cowork"
     url: "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about"
+    kind: "learn"
+  - title: "Microsoft Purview service description"
+    url: "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-purview-data-loss-prevention-dlp-for-microsoft-copilot"
     kind: "learn"
   - title: "New-DlpCompliancePolicy"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy"
@@ -41,13 +44,10 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Data Loss Prevention > Policies > + Create policy > Custom > Custom policy > Locations > Microsoft Copilot, Copilot Chat, and Copilot Cowork > Email is received from > External users"
+      path: "Data Loss Prevention > Policies > + Create policy > Custom > Custom policy > Locations > Microsoft Copilot, Copilot Chat, and Copilot Cowork"
       docs: "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about"
-    api:
-      kind: "powershell"
-      call: "New-DlpCompliancePolicy -Name \"<policy name>\" -Locations $loc -EnforcementPlanes @(\"CopilotExperiences\")"
-      docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy"
-    note: "Preview. Create-policy steps are from the page's web search section; the external email section names the location, condition and action. The cmdlet page's example uses a label rule, not this condition."
+    api: null
+    note: "Preview. After selecting the location, add a rule with Email is received from > External users and the action Prevent Copilot from processing content; these are rule settings, not navigation beneath the location."
 confidence: "medium"
 created: "2026-11-17"
 updated: "2026-11-17"
@@ -57,19 +57,23 @@ changes:
     note: "First briefing: Learn documents the external email condition as a preview; Message Center moved general availability to June 2027."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 68 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-17"
+    note: "Corrected after verification: licensing now cites the Purview service description (per-user), the policy path stops at the Copilot location, the PowerShell side is marked not documented, and unsupported checklist steps were removed."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 71 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-17"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 68
-  confirmed: 64
+  claims: 71
+  confirmed: 69
   unconfirmed: 0
-  contradicted: 4
-  attempts: 1
-  hash: "eaf21f07a3f0e4cbb1e24c2f6b9f5ec3"
+  contradicted: 2
+  attempts: 0
+  hash: "48d2fbdd32e12d40257f8f2b069c8430"
 ---
 
 ## What's changing
@@ -109,9 +113,9 @@ Microsoft's notice says the control is off by default and that there is no chang
 
 ## Cost and licensing
 
-Microsoft has not published a licence requirement for this control. The Learn page's Licensing section points to Microsoft 365 Enterprise Plans and the Microsoft 365 service descriptions licensing guidance and names no licence itself. Microsoft's notice says organisations using Microsoft 365 Copilot (Premium) or Copilot Chat are affected, and that behaviour is subject to existing licensing and policy.
+Microsoft publishes licensing for DLP that restricts Copilot processing of files and emails: it is included with Microsoft 365 E5/A5, Office 365 E5/A5 and the Purview suite and Information Protection and Governance plans listed in the [Microsoft Purview service description](https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-purview-data-loss-prevention-dlp-for-microsoft-copilot), but not with the listed Business or E3 plans. The external-email preview article names no separate SKU. Microsoft's notice says organisations using Microsoft 365 Copilot (Premium) or Copilot Chat are affected, and that behaviour is subject to existing licensing and policy.
 
-No meter or price is documented for this control at the time of writing (November 2026). The cost the sources show is admin time to create, test and communicate the policy. Licensing is not yet published; check the two licensing pages above before budgeting.
+No meter or price is documented for this control at the time of writing (November 2026). Check whether existing licences cover the published DLP entitlement; policy creation, testing and communication also take admin time.
 
 ## Scope
 
@@ -135,12 +139,10 @@ No meter or price is documented for this control at the time of writing (Novembe
 ### At rollout
 
 - Create the DLP policy with the Copilot location in the Custom template, as in the controls table, using the **Email is received from** > **External users** condition.
-- Test with policy simulation mode before enforcing, then turn the policy on for a pilot group using administrative units if they are available to you (preview).
 - Allow up to four hours after a change for it to reach Copilot before judging the result.
 
 ### After rollout
 
-- Check DLP alerts and notifications for the policy, which Learn says are supported.
 - Watch Message Center post MC1301714 and the Learn page for the move from preview to general availability, which Microsoft currently gives as June 2027.
 
 ## Governance controls
@@ -150,17 +152,17 @@ No meter or price is documented for this control at the time of writing (Novembe
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether Copilot excludes external senders' emails from grounding</strong><br><small>Tenant</small><br><small class="controls__note">Preview. Create-policy steps are from the page's web search section; the external email section names the location, condition and action. The cmdlet page's example uses a label rule, not this condition.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data Loss Prevention › Policies › + Create policy › Custom › Custom policy › Locations › Microsoft Copilot, Copilot Chat, and Copilot Cowork › Email is received from › External users <a href="https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpCompliancePolicy -Name &quot;&lt;policy name&gt;&quot; -Locations $loc -EnforcementPlanes @(&quot;CopilotExperiences&quot;)</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether Copilot excludes external senders' emails from grounding</strong><br><small>Tenant</small><br><small class="controls__note">Preview. After selecting the location, add a rule with Email is received from &gt; External users and the action Prevent Copilot from processing content; these are rule settings, not navigation beneath the location.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data Loss Prevention › Policies › + Create policy › Custom › Custom policy › Locations › Microsoft Copilot, Copilot Chat, and Copilot Cowork <a href="https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
 The control is a condition inside a DLP policy rather than a standalone switch. Microsoft Learn documents no separate tenant-wide toggle for it at the time of writing (November 2026); Microsoft's notice says it is off by default and changes nothing until an admin configures it in Microsoft Purview.
 
-The PowerShell example on the cmdlet page builds a Copilot policy with a sensitivity-label rule. The syntax for the external-sender condition is not shown there, so confirm it before scripting this rule.
+The policy-creation cmdlet is documented, but the external-email rule's PowerShell syntax is not documented in the references checked in November 2026.
 
 ## Open questions
 
-- What licence, if any, does this control need beyond those that grant Microsoft 365 Copilot or Copilot Chat? Watch the Learn page and the Microsoft 365 service descriptions.
+- Does the published DLP entitlement for restricting Copilot from processing files and emails also cover the external-email condition, or will Microsoft name a separate licence? Watch the Microsoft Purview service description and the Learn page.
 - Which general availability date applies: the roadmap's June CY2027 target, or something earlier for tenants already in preview? Watch Message Center post MC1301714.
 - How does the rule treat mail from partner, subsidiary or other domains an organisation considers trusted, given that the notice speaks of "untrusted" domains while Learn describes a comparison with accepted domains?
 - What PowerShell syntax creates the external-sender condition and its action in a DLP rule? Watch the New-DlpComplianceRule reference.
@@ -168,16 +170,13 @@ The PowerShell example on the cmdlet page builds a Copilot policy with a sensiti
 
 <!-- rationale
 risk: Low. Microsoft's notice says the control is off by default and changes nothing until an admin enables it, so today's Copilot behaviour continues if it is left alone; the control narrows what Copilot reads.
-cost: Low. The only cost the sources show is admin time to build and test a DLP policy; Microsoft Learn names no licence or meter for this control, and licensing is not yet published for it.
+cost: Low. The Purview service description lists DLP that restricts Copilot processing of files and emails as included with Microsoft 365 E5/A5 and Office 365 E5/A5, not with the listed Business or E3 plans; the other cost is admin time.
 impact: Low. Admins configure it, and users notice only if an admin enables it, when Copilot answers without external emails and shows a message that content was excluded by an organisational policy.
 -->
 
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing; Cost and licensing; Open questions; rationale: cost / licensing: The licensing model is unknown because Microsoft has not published a licence requirement for this control. | Found: | Purview Data Loss Prevention (DLP) to restrict Copilot from processing files and emails | Not included | Not included | Not included | Included | Included | | Fix: Set licensing.model to per-user. Replace the blanket unpublished-licensing statements, including the cost rationale and licensing open question, with: 'Microsoft publishes licensing for DLP that restricts Copilot processing of files and emails: it is included with Microsoft 365 E5/A5, Office 365 E5/A5 and the Purview suite and Information Protection and Governance plans listed in the service description, but not with the listed Business or E3 plans. The external-email preview article names no separate SKU.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-purview-data-loss-prevention-dlp-for-microsoft-copilot. Replace 'The only cost the sources show is admin time' with 'Check whether existing licences cover the published DLP entitlement; policy creation, testing and communication also take admin time.' | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-purview-data-loss-prevention-dlp-for-microsoft-copilot
-- [contradicted, blocker] controls[0].ui; Governance controls table / admin-path: The condition follows directly after selecting the Copilot location in the displayed policy-creation path. | Found: On the **Locations** page, set the **Microsoft Copilot, Copilot Chat, and Copilot Cowork** location to on. 5. Add a rule with the **Content contains** > **Sensitive information types** condition and choose the SITs you want to detect. | Fix: Do not present the condition as a child of the location. Narrow controls[0].ui.path and the rendered table to the documented wizard path: 'Data Loss Prevention > Policies > + Create policy > Custom > Custom policy > Locations > Microsoft Copilot, Copilot Chat, and Copilot Cowork'. Replace the row note's UI qualification with: 'Preview. After selecting the location, add a rule with Email is received from > External users and the action Prevent Copilot from processing content; these are rule settings, not navigation beneath the location.' This path and these rule settings are documented at https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about. | Source: https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about
-- [contradicted, blocker] controls[0].api; Governance controls table / command: New-DlpCompliancePolicy -Name "<policy name>" -Locations $loc -EnforcementPlanes @("CopilotExperiences") implements the external-email exclusion. | Found: The fourth command creates the DLP policy using the `$loc` variable for the value of the Locations parameter, and "Copilot Policy" as the name of the policy (use any unique name). | Fix: Set controls[0].api to null and render that side as Not yet documented. The named cmdlet and parameters exist, but this call only creates a policy container and does not add the external-sender condition or blocking action. Replace the automation note with: 'The policy-creation cmdlet is documented, but the external-email rule's PowerShell syntax is not documented in the references checked in November 2026.' Searches for Copilot external email PowerShell and New-DlpComplianceRule external email sender returned no documented Copilot rule call; New-DlpComplianceRule documents FromScope only for policies scoped to Exchange. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance; Governance controls table / consistency: The checklist's controls are represented in the controls table. | Found: Test with policy simulation mode before enforcing ... using administrative units ... Check DLP alerts and notifications for the policy | Fix: The instructions to use simulation mode, scope with administrative units and check DLP alerts and notifications have no corresponding controls-table rows. Remove those checklist instructions if keeping the existing single-row table; no additional rows are requested by this correction.
+- [contradicted, minor] Governance guidance: Before rollout / consistency: The checklist tells administrators to review accepted domains, but the controls table has no accepted-domains row. | Found: Review your tenant's accepted domains, because the rule compares each sender's domain with them. / The table's only row is Whether Copilot excludes external senders' emails from grounding. | Fix: Remove the checklist bullet 'Review your tenant's accepted domains, because the rule compares each sender's domain with them.' It names a separate control without a table row; retain the documented comparison mechanism in What's changing.
+- [contradicted, minor] Governance guidance: Before rollout / consistency: The checklist tells administrators to assign a policy-author role, but the controls table has no role-assignment row. | Found: Assign the policy author one of the roles listed under Scope, preferably the narrowest. / The table's only row is Whether Copilot excludes external senders' emails from grounding. | Fix: Remove the checklist bullet 'Assign the policy author one of the roles listed under Scope, preferably the narrowest.' It names role assignment without a table row; retain the verified role prerequisites in Scope.
 -->

@@ -34,7 +34,10 @@ sources:
   - title: "Connect to the Agent Dashboard (preview)"
     url: "https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard"
     kind: "learn"
-  - title: "MC1288531"
+  - title: "Identification in Copilot Analytics"
+    url: "https://learn.microsoft.com/viva/insights/identification-copilot-analytics"
+    kind: "learn"
+  - title: "MC1288531: (Updated) Microsoft Viva - Copilot Analytics: Export agent data from the Agent Dashboard"
     url: "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1288531"
     kind: "message-center"
   - title: "Whether the Agent Metrics Export feature is on, and for whom (Microsoft 365 admin center)"
@@ -77,19 +80,23 @@ changes:
     note: "New briefing: agent metrics export from the Viva Insights Agent Dashboard, on by default with a VFAM switch; Learn documents the Agent 365 view only."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 80 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-17"
+    note: "Corrected VFAM policy precedence and the feature ID note, replaced an unsupported claim about controls over downloaded files, noted the Private Preview listing, and removed two checklist items that had no controls-table row."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 97 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-17"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 80
-  confirmed: 76
-  unconfirmed: 1
-  contradicted: 3
-  attempts: 1
-  hash: "801bae495afa1cfd1049092425d08d3f"
+  claims: 97
+  confirmed: 97
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "573758ef331655ff4203f9ed7ac5bb03"
 ---
 
 ## What's changing
@@ -112,9 +119,9 @@ The notice says user identifiers are removed. Learn describes the de-identified 
 
 **Data exposure**
 
-- The export contains user-level rows by agent and week, with agent name, creator type, publishing source and people metadata such as organisation and function type (MC1288531). Files leave the dashboard once downloaded, so the controls that apply are the ones on who can export, not on what happens to the file.
+- The export contains user-level rows by agent and week, with agent name, creator type, publishing source and people metadata such as organisation and function type (MC1288531). Files leave the dashboard once downloaded; agree with your privacy owner how they may be stored and shared.
 - Learn says de-identified output replaces direct user identifiers with protected identifiers and that exports honour applicable admin exclusion policies, so excluded agents or users do not appear in the output. Confirm your exclusion list before rollout.
-- Learn describes a separate identifiable export, controlled by the "IdentifiableExport" VFAM setting and off by default; that setting is documented for the Agent 365 view and is in preview. Keep it off unless you have approved the use.
+- Learn describes a separate identifiable export, controlled by the "IdentifiableExport" VFAM setting and off by default; that setting is documented for the Agent 365 view and is in preview. Microsoft's identification overview instead lists Agent Dashboard data export identification as Private Preview (https://learn.microsoft.com/viva/insights/identification-copilot-analytics). Keep it off unless you have approved the use.
 
 **Security & identity**
 
@@ -143,13 +150,12 @@ The notice says the export includes Copilot agent credit usage, so the data may 
 
 **Prerequisites.** At least 50 Microsoft 365 Copilot licenses (the notice). For the Agent 365 view, Learn also lists at least one Agent 365 license and at least one active agent.
 
-**Rollout.** On by default for eligible users. Public preview rollout began in late May 2026 and general availability rollout is planned from mid-November 2026 to the end of November 2026, per MC1288531.
+**Rollout.** On by default for eligible users. Microsoft targeted public preview rollout from late May 2026 to early June 2026, and general availability rollout is planned from mid-November 2026 to the end of November 2026, per MC1288531.
 
 ## Governance guidance
 
 ### Before rollout
 
-- Review who holds full company-level access to the Agent Dashboard, including senior leaders from Microsoft Entra ID, admin-assigned company-level users and delegates, because MC1288531 asks administrators to do this.
 - Decide whether the export should be on for everyone eligible, for specific groups only, or off, and record who owns the decision.
 - Check that the Viva Feature Access Management policy options in the controls table are available to your admins; Learn lists Global admin for Agent Metrics Export, and the Agent 365 export page also names AI admins.
 - Agree with your privacy owner how exported files may be stored and shared.
@@ -163,7 +169,6 @@ The notice says the export includes Copilot agent credit usage, so the data may 
 ### After rollout
 
 - Test with an eligible account and a group manager account to confirm the group manager cannot export, as the notice states.
-- Check the VFAM change logs in Microsoft Purview for policy creations, updates and deletions.
 - Compare an export with the dashboard before analysts rely on it, because Learn says week-level exports and the dashboard can cover different time ranges.
 
 ## Governance controls
@@ -178,9 +183,9 @@ The notice says the export includes Copilot agent credit usage, so the data may 
 </tbody>
 </table>
 
-Both rows use Viva Feature Access Management (VFAM). Learn says policy changes can take up to 24 hours to take effect, that a tenant can have up to 10 policies per feature assigned to users and groups with up to 20 users or groups each, and that the most restrictive policy applies where several cover a user.
+Both rows use Viva Feature Access Management (VFAM). Learn says policy changes can take up to 24 hours to take effect, that a tenant can have up to 10 policies per feature assigned to users and groups with up to 20 users or groups each, and that user or group policies take precedence over the tenant policy, with the most restrictive enablement policy applying within the same scope level.
 
-The notice says admins can manage or disable the feature at tenant or group level. Learn's Agent 365 export page says global admins and AI admins can enable or disable export for the tenant, groups or individual users, while the VFAM feature table lists Global admin for Agent Metrics Export; the two pages differ on the role, so confirm in your tenant. The IdentifiableExport setting is documented on the Agent 365 export page only. The Learn pages do not give a feature ID for Agent Metrics Export, so look it up with Get-VivaModuleFeature -ModuleId VivaInsights before running the cmdlet.
+The notice says admins can manage or disable the feature at tenant or group level. Learn's Agent 365 export page says global admins and AI admins can enable or disable export for the tenant, groups or individual users, while the VFAM feature table lists Global admin for Agent Metrics Export; the two pages differ on the role, so confirm in your tenant. The IdentifiableExport setting is documented on the Agent 365 export page only. The export page names the VFAM control AgentMetricsExport; confirm the feature ID returned in your tenant with Get-VivaModuleFeature -ModuleId VivaInsights before running the cmdlet.
 
 The VFAM change logs in Microsoft Purview record policy creation, updates and deletions; they are a record of policy changes, not of export downloads.
 
@@ -198,14 +203,10 @@ cost: Low. No separate price for the export is published; the notice requires at
 impact: Low. Only users with full company-level Agent Dashboard access can export; Microsoft says group managers limited to their own teams will not have access.
 -->
 
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls / behaviour: The most restrictive policy applies whenever several policies cover a user. | Found: The most restrictive Policy Scope Level takes precedence first. Then within a single Policy Scope Level, the most restrictive Enablement Policy takes precedence. | Fix: Replace 'the most restrictive policy applies where several cover a user' with 'user or group policies take precedence over the tenant policy; the most restrictive enablement policy applies within the same scope level'. Keep the existing citation. A tenant-wide disable does not override an explicit user/group enable. | Source: https://learn.microsoft.com/viva/feature-access-management
-- [contradicted, blocker] Governance controls / absence: The Learn pages do not give a feature ID for Agent Metrics Export. | Found: The "AgentMetricsExport" VFAM control also governs Agent 365 export. | Fix: Replace 'The Learn pages do not give a feature ID for Agent Metrics Export, so look it up with Get-VivaModuleFeature -ModuleId VivaInsights before running the cmdlet' with 'The export page names the VFAM control AgentMetricsExport; confirm the feature ID returned in your tenant with Get-VivaModuleFeature -ModuleId VivaInsights before running the cmdlet'. | Source: https://learn.microsoft.com/viva/insights/org-team-insights/export-agent-data
-- [unsupported, blocker] Risk assessment: Data exposure / applicability: Once files are downloaded, the controls that apply govern who can export, not what happens to the file. | Found: Searched: Viva Insights Agent Dashboard exported CSV files protection controls after download. Opened export-agent-data and read privacy-guide search excerpts; no statement rules out controls over downloaded files. | Fix: Replace 'Files leave the dashboard once downloaded, so the controls that apply are the ones on who can export, not on what happens to the file' with 'Files leave the dashboard once downloaded; agree with your privacy owner how they may be stored and shared'.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; Scope: Rollout / record: The notice gives a public preview rollout from late May 2026 to early June 2026, described in Scope as having begun. | Found: Public Preview: We will begin rolling out in late May 2026 and expect to complete rollout by early June 2026. | Fix: In Scope, replace 'Public preview rollout began in late May 2026' with 'Microsoft targeted public preview rollout from late May 2026 to early June 2026'. The supplied notice states targets, not confirmation that rollout began.
-- [supported, minor] controls[1].note; What's changing; Risk assessment: Data exposure / availability: The export page marks identifiable export as a preview feature. | Found: Identifiable export is for public preview customers only. Features in preview might not be complete and could undergo changes before becoming available in the broader release. | Fix: After the identifiable-export preview statement, add: 'Microsoft's identification overview instead lists Agent Dashboard data export identification as Private Preview (https://learn.microsoft.com/viva/insights/identification-copilot-analytics).' Cite that page in sources. | Source: https://learn.microsoft.com/viva/insights/org-team-insights/export-agent-data
-- [contradicted, minor] Governance guidance: Before rollout; After rollout; Governance controls / consistency: The governance checklist asks readers to review company-level dashboard access and check VFAM change logs, but neither control appears in the controls table. | Found: Review who holds full company-level access ... Check the VFAM change logs in Microsoft Purview ... Table rows: Whether the Agent Metrics Export feature is on, and for whom; Whether the export may include user identifiers (Agent 365 view). | Fix: Remove the two checklist bullets beginning 'Review who holds full company-level access' and 'Check the VFAM change logs'. Their supporting facts can remain in the body; these checklist controls have no corresponding table rows. Do not add rows in this correction.
+- [supported, minor] What's changing: Learn export description / behaviour: The documented Agent 365 week-level export provides up to six months of data. | Found: Up to the past six months, subject to Agent 365 data availability | Fix: Qualify the Learn week-level history as 'up to six months, subject to Agent 365 data availability'. Do not change the separately attributed notice's six-month statement. | Source: https://learn.microsoft.com/viva/insights/org-team-insights/export-agent-data
+- [supported, minor] What's changing: Learn export description / behaviour: The documented Agent 365 day-level export provides up to 28 days of data. | Found: Up to the past 28 days of data, subject to Agent 365 data availability | Fix: Qualify the Learn day-level history as 'up to 28 days, subject to Agent 365 data availability'. | Source: https://learn.microsoft.com/viva/insights/org-team-insights/export-agent-data
+- [supported, minor] controls[1].ui / admin-path: The identification policy row uses the generic documented Viva > Settings > Manage feature access > Create a policy > app and feature > Access setting > Apply access settings to route. | Found: select Viva from the settings menu. ... Select the Settings tab and select Manage feature access. ... Select Create a policy. ... select the app and feature ... Select the Access setting ... under Apply access settings to. | Fix: Add to this row's note: 'Microsoft's identification overview gives different navigation: Settings > Viva > Feature access management, and its methods table instead gives Settings > Org settings > Viva feature access (https://learn.microsoft.com/viva/insights/identification-copilot-analytics).' Keep the route supported by the cited generic policy guide. | Source: https://learn.microsoft.com/viva/control-access-admin-center
 -->

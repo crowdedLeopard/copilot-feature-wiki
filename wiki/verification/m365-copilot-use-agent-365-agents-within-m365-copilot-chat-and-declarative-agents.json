@@ -1,0 +1,882 @@
+{
+  "slug": "m365-copilot-use-agent-365-agents-within-m365-copilot-chat-and-declarative-agents",
+  "roadmapId": 567670,
+  "title": "Microsoft 365 Copilot: Agent 365 agents as connected agents in declarative agents",
+  "status": "held",
+  "date": "2026-11-17",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-17",
+    "reasons": [
+      "2 blocking findings (claims 38, 39)"
+    ]
+  },
+  "counts": {
+    "claims": 66,
+    "confirmed": 64,
+    "unconfirmed": 0,
+    "contradicted": 2,
+    "blocker": 2,
+    "major": 0,
+    "minor": 0
+  },
+  "summary": "Hold: the installation path skips the consent window between permissions review and finishing deployment. The table also reports installation automation as undocumented, although Microsoft documents a package update API for deploying agents to users and groups. The rollout dates and administrator-controlled availability match Microsoft's notice.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "summary; What's changing; title",
+      "type": "record",
+      "claim": "Agent2Agent-enabled Microsoft Agent 365 agents can be connected agents in declarative agents built with Microsoft 365 Agents Toolkit.",
+      "status": "supported",
+      "source": "Message Center post MC1478975",
+      "quote": "Microsoft is introducing support for Microsoft Agent 365 agents that implement the Agent2Agent (A2A) protocol, allowing them to be used as connected agents in declarative agents built with Microsoft 365 Agents Toolkit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing; controls[0].note; Governance controls",
+      "type": "record",
+      "claim": "Administrators install Agent2Agent-enabled Agent 365 agents from All agents in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "Message Center post MC1478975",
+      "quote": "Administrators can install Microsoft Agent 365 agents that support the Agent2Agent protocol from the All agents page in the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing; Why it matters; Governance controls",
+      "type": "record",
+      "claim": "Users cannot install Agent2Agent-enabled Agent 365 agents themselves.",
+      "status": "supported",
+      "source": "Message Center post MC1478975",
+      "quote": "Users cannot install Agent2Agent-enabled Microsoft Agent 365 agents themselves.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "record",
+      "claim": "Administrators can review Agent2Agent connections on a declarative agent's Connected agents tab before approving their use.",
+      "status": "supported",
+      "source": "Message Center post MC1478975",
+      "quote": "Administrators can review Agent2Agent-connected agents from the Connected agents tab in the declarative agent details page before approving their use.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Agent2Agent support joins existing OpenAPI and MCP server connections.",
+      "status": "supported",
+      "source": "Message Center post MC1478975",
+      "quote": "Agent2Agent support is added alongside existing support for OpenAPI and MCP server connections.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap names using Agent 365 agents within Microsoft 365 Copilot Chat and declarative agents.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Copilot (Microsoft 365): Use Agent 365 agents within Microsoft 365 Copilot Chat and Declarative Agents",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap description names Agent Builder and Copilot Studio as builders of agents that can use A2A connected agents.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "If the agent implements the Agent2Agent protocol, it can be used as a connected agent for the agents that users build in Agent Builder or Copilot Studio.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: status; summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Rolling out.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Rolling out\", \"statusKey\": \"rolling-out\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is August CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"August CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) only, without listing GCC, GCC High or DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platforms are Android, Desktop, iOS and Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 27 October 2026 at 23:05:02.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-27T23:05:02\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1478975 was updated on 9 November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1478975",
+      "quote": "Updated November 9, 2026: We have updated the timeline.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The notice says rollout began in late August 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1478975",
+      "quote": "General Availability (Worldwide): Began in late August 2026 and is expected to complete by end of December 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Scope; Governance guidance: After rollout; changes",
+      "type": "record",
+      "claim": "The notice expects rollout to complete by the end of December 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1478975",
+      "quote": "General Availability (Worldwide): Began in late August 2026 and is expected to complete by end of December 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1478975 sets no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1478975",
+      "quote": "Act by: none",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Scope; rationale: impact",
+      "type": "record",
+      "claim": "The notice identifies agent administrators, developers using Microsoft 365 Agents Toolkit and users assigned approved Agent 365 agents as affected groups.",
+      "status": "supported",
+      "source": "Message Center post MC1478975",
+      "quote": "Microsoft 365 administrators who manage agents in the Microsoft 365 admin center- Developers building declarative agents with Microsoft 365 Agents Toolkit- Users who are assigned access to approved Microsoft Agent 365 agents",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "Microsoft recommends reviewing available agents, deciding which A2A agents to make available, reviewing connections and updating governance processes.",
+      "status": "supported",
+      "source": "Message Center post MC1478975",
+      "quote": "Review Microsoft Agent 365 agents available in the All agents page of the Microsoft 365 admin center.- Determine which Agent2Agent-enabled agents should be made available to users in your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Governance guidance: At rollout",
+      "type": "record",
+      "claim": "Microsoft suggests notifying administrators and developers about availability and the review and approval process.",
+      "status": "supported",
+      "source": "Message Center post MC1478975",
+      "quote": "Consider notifying administrators and developers in your organization about the availability of Agent2Agent-connected agents and the associated review and approval process.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "Developers declare connected agents by title ID in the manifest's worker_agents property.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/declarative-agent-connected-agent",
+      "quote": "You declare these connections in the agent manifest by listing agent title IDs in the worker_agents property.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Copilot selects a connected agent using the task, name, description and example prompts without requiring the user to select it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/declarative-agent-connected-agent",
+      "quote": "Microsoft 365 Copilot evaluates the connected agents declared in the manifest and selects one based on the current task and the connected agent's name, description, and example prompts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Copilot sends the selected connected agent a text request.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/declarative-agent-connected-agent",
+      "quote": "Copilot sends a text request to the selected connected agent",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Copilot incorporates the connected agent's text response into the declarative agent's ongoing conversation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/declarative-agent-connected-agent",
+      "quote": "receives a text response, and incorporates that response into the declarative agent's ongoing interaction with the user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "Connected agents must be registered in the Microsoft Agent 365 agent registry.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/declarative-agent-connected-agent",
+      "quote": "You must register connected agents in the Microsoft Agent 365 agent registry.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "An A2A connected agent requires a registered Agent2Agent agent card.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/declarative-agent-connected-agent",
+      "quote": "The other agent must be a declarative agent or have a registered Agent2Agent agent card.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The active agent sends text only to connected agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/declarative-agent-connected-agent",
+      "quote": "The active agent sends text only to a connected agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "A2A agents can return text, Base64 image binaries and Base64 file binaries.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/declarative-agent-connected-agent",
+      "quote": "Agents with Agent2Agent agent cards return text, Base64 image binaries, and Base64 file binaries.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "An external Agent 365 registration declares authentication through an authorization object referencing an existing authentication registration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/declarative-agent-connected-agent",
+      "quote": "Instead of embedding authentication configuration directly in the agent registration, the registration references an existing authentication registration through the authorization object in the agentRegistration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Data exposure; Governance guidance; rationale: risk",
+      "type": "behaviour",
+      "claim": "The primary agent can include its context in prompts sent to an external connected agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-connected-agents",
+      "quote": "If a connected agent is external to your organization, the primary agent can include information from its context in the prompt it sends to the connected agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The primary agent determines what information the connected agent needs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-connected-agents",
+      "quote": "The primary agent determines what information is needed for the connected agent to respond accurately.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Microsoft advises reviewing an external connected agent and organisational data policies before making it available.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-connected-agents",
+      "quote": "Review the connected agent and your organization's data policies before making it available to users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "An agent can connect to up to 10 other agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-connected-agents",
+      "quote": "An agent can connect to up to 10 other agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Both the primary agent and every connected agent must be acquired for the user before the primary agent can invoke them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-connected-agents",
+      "quote": "Both the primary agent and its connected agents must be acquired for a user before the primary agent can invoke them.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Administrators can add connected agents to Researcher and Sales.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-connected-agents",
+      "quote": "You can also add connected agents to Researcher and Sales.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[1].note; Risk assessment: Change & support; Governance controls",
+      "type": "behaviour",
+      "claim": "For other primary agents, administrators can view developer-configured connections but cannot add or remove them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-connected-agents",
+      "quote": "For other agents, you can view the connections configured by the agent developer, but you can't add or remove them.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[0].ui; Governance controls: installation row",
+      "type": "admin-path",
+      "claim": "The installation path goes from Deploy agent to selected users through Review permissions directly to Review & finish.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "In the Permissions requested window, select Accept to grant the permissions to the agent, and then select Next.",
+      "severity": "blocker",
+      "fix": "Replace controls[0].ui.path and its rendered table path with 'Agents > All agents > Registry > Status > Available > agent > Install > Deploy agent to selected users > Next > Review permissions > Grant admin consent > Permissions requested > Accept > Next > Review & finish > Finish deployment'. The cited page documents the intervening consent window; do not jump directly from Review permissions to Review & finish."
+    },
+    {
+      "n": 39,
+      "where": "controls[0].api; Governance controls: installation row",
+      "type": "absence",
+      "claim": "No API or automation is documented for deploying agents to selected users or groups.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update",
+      "quote": "acquireUsersAndGroups | packageAccessEntity collection | Users/groups for whom the package is deployed. | deployedTo | packageAcquireStatus | Enum value indicating the deployment scope of the package. Required if updating acquireUsersAndGroups.",
+      "severity": "blocker",
+      "fix": "Replace controls[0].api null with kind 'graph', call 'PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id} with Content-Type: application/json and body {\"acquireUsersAndGroups\":[{\"resourceType\":\"group\",\"resourceId\":\"<group-id>\"}],\"deployedTo\":\"acquiredForSome\"}', and docs 'https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update'. Update the rendered API cell to match. Add to this row's note: 'General package-deployment API; Microsoft does not separately describe A2A registration applicability. The API is in preview, requires an Agent 365 licence and the CopilotPackages.ReadWrite.All delegated permission.'"
+    },
+    {
+      "n": 40,
+      "where": "controls[1].ui; Governance guidance; Governance controls",
+      "type": "admin-path",
+      "claim": "Connected agents can be reviewed at Microsoft 365 admin center > Agents > All agents > agent > Connected Agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-connected-agents",
+      "quote": "In the Microsoft 365 admin center, go to Agents > All agents. Select Researcher or Sales, and then select the Connected Agents tab. On an agent's Connected Agents tab, you can view agents that provide information and answers when users interact with the primary agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[1].api; Governance controls: connected-agent review row",
+      "type": "absence",
+      "claim": "No API equivalent of the Connected Agents review tab is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Graph declarative agent connected agents worker_agents list API admin; workerAgents copilot package. Opened manage-connected-agents, Package Management API overview, Get Copilot package details and copilotPackageDetail resource; no explicit connected-agent review API found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[2].ui; Governance controls: blocking row; Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "The general blocking path is Microsoft 365 admin center > Agents > All agents > agent > Block > Block agent > Save.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "Select Agents > All agents. In the All agents page, select an agent from the list of agents. In the agent details pane that opens, immediately under the agent's name, select Block or Unblock.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[2].api; Governance controls: blocking row",
+      "type": "command",
+      "claim": "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block blocks a Copilot package.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Block a Copilot package to prevent its usage. POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[2].governs; Risk assessment: Autonomy & actions; Governance controls",
+      "type": "behaviour",
+      "claim": "The general Block action restricts an agent across the organisation and is separate from installation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "Block and unblock | Restrict access to an agent across the organization, preventing any user from using it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[2].note; Risk assessment: Autonomy & actions; Open questions",
+      "type": "absence",
+      "claim": "Microsoft does not explicitly explain how the general Block action or package-block API applies to A2A agent registrations.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Agent2Agent Copilot block registration. Opened agent-actions, copilotpackage-block, Agent Registration API overview and agent-settings; no A2A-registration-specific block explanation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[2].note; Governance controls",
+      "type": "availability",
+      "claim": "The package block API is a preview API.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "APIs under the /beta version are subject to change. Use of these APIs in production applications is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[2].note; Governance controls: blocking row",
+      "type": "command",
+      "claim": "The package block API uses the CopilotPackages.ReadWrite.All delegated permission.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Delegated (work or school account) | CopilotPackages.ReadWrite.All | Not available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "licensing.notes; controls[2].note; Cost and licensing; Governance controls",
+      "type": "licensing",
+      "claim": "Access to the Package Management API requires an Agent 365 licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Access to the Package Management API requires a Microsoft Agent 365 license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[0].note; Cost and licensing; Scope; Governance guidance",
+      "type": "role",
+      "claim": "AI Admin and Global Admin are documented roles for configuring, managing and deploying agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/agent-essentials/agent-prerequisites",
+      "quote": "To configure, manage, and deploy agents, you must have the following required user roles and permissions: AI Admin; Global Admin; Global Reader (view-only, no edit)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Cost and licensing; Scope",
+      "type": "role",
+      "claim": "Global Reader is view-only and cannot edit agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/agent-essentials/agent-prerequisites",
+      "quote": "Global Reader (view-only, no edit)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "front matter: defaultState; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "This capability is admin-opt-in because an administrator must install and approve A2A agents before users can use them.",
+      "status": "supported",
+      "source": "Message Center post MC1478975",
+      "quote": "Administrators can install, review, and approve Agent2Agent-enabled Microsoft Agent 365 agents through the Microsoft 365 admin center before they are available for use.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The licence specific to using an A2A agent as a declarative agent's connected agent is not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Agent2Agent license connected declarative. Opened connected-agent docs, Agent 365 overview and service description, agent-prerequisites and extensibility prerequisites; no A2A-connection-specific licence found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "A separate A2A connected-agent charge or Copilot Credits meter is not published for this feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Agent2Agent connected agents declarative agents licensing Copilot Credits billing. Opened feature docs, Agent 365 overview/service description and extensibility prerequisites; Copilot Studio harness results did not establish this feature's meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Microsoft Agent 365 is licensed per user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/overview",
+      "quote": "Microsoft Agent 365 is licensed on a per-user basis.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "At least one user must have a qualifying Microsoft Agent 365 licence to enable Agent 365.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/overview",
+      "quote": "At least one user must be licensed with a qualifying Microsoft Agent 365 license to enable Agent 365.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 E7 includes Microsoft 365 E5, Microsoft Copilot, Microsoft Agent 365 and Microsoft Entra Suite.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-365-overview",
+      "quote": "Microsoft 365 (E7) includes Microsoft 365 E5, Microsoft Copilot, Microsoft Agent 365, and Microsoft Entra Suite.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The cited admin prerequisites page does not name a licence specifically for approving agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/agent-essentials/agent-prerequisites",
+      "quote": "To configure, manage, and deploy agents, you must have the following required user roles and permissions: AI Admin; Global Admin; Global Reader (view-only, no edit)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Governance controls",
+      "type": "availability",
+      "claim": "The Agent Registration API is in preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/agent-registration/overview",
+      "quote": "Agent Registration API overview (preview). APIs under the /beta version are subject to change. Use of these APIs in production applications is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Developers and administrators can register agents and retrieve their registrations using the Agent Registration API.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/agent-registration/overview",
+      "quote": "The Agent Registration API enables developers and administrators to programmatically register and manage agents within their Microsoft 365 environment. An administrator retrieves the details of an existing agent registration to review its configuration and agent card.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The Agent Registration API supports updating registrations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/agent-registration/overview",
+      "quote": "Update specific properties of an existing agent registration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Administrators can delete agent registrations using the Agent Registration API.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/agent-registration/overview",
+      "quote": "An administrator deletes an outdated agent registration that is no longer in use.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "No admin-centre setting specifically disabling only declarative agents' connected-agent capability is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 admin disable block connected agents capability Agent2Agent agent registrations block. Opened manage-connected-agents, agent-actions and agent-settings; documented controls cover agent access, installation, blocking and connections, not a connected-capability-only switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Risk assessment: Security & identity; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Agent installation includes permissions review and granting administrator consent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "In the Review permissions pane, review the requested permissions for the agent. If the permissions are acceptable, select Grant admin consent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "The cited sources do not reconcile the roadmap's Agent Builder and Copilot Studio wording with the notice's Toolkit declarative-agent scope.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Agent 365 connected agents Agent Builder declarative. Read roadmap, MC1478975 and cited connected-agent pages; search identified Agent Builder as a declarative-agent authoring tool but no explicit reconciliation of the A2A authoring scope.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "controls[0].governs; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The installation wizard can deploy an agent to all users or specific users and groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "In the Deploy agent to selected users pane, decide whether to install the agent to all users or to specific users or groups, and then select Next.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Cost and licensing",
+      "type": "record",
+      "claim": "The roadmap record names no licence or meter for this feature.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Agents that are published to Agents 365 are already managed in the Microsoft 365 Admin Center. If the agent implements the Agent2Agent protocol, it can be used as a connected agent for the agents that users build in Agent Builder or Copilot Studio.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-17T04:20:05.280Z",
+    "summary": {
+      "links": 10,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=567670",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1478975",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/declarative-agent-connected-agent",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-connected-agents",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-365-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/agent-essentials/agent-prerequisites",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/agent-registration/overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether an Agent2Agent agent is installed for users or groups",
+        "docs": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "All agents",
+          "Registry",
+          "Status",
+          "Available",
+          "Install",
+          "Deploy agent to selected users",
+          "Review permissions",
+          "Review & finish"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Review of the agents a declarative agent connects to",
+        "docs": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-connected-agents",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "All agents",
+          "Connected Agents"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Blocking an agent for the organisation",
+        "docs": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "All agents",
+          "Block",
+          "Block agent",
+          "Save"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Blocking an agent for the organisation",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "reachable": true,
+        "token": "/beta/copilot/admin",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

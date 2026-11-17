@@ -1,0 +1,761 @@
+{
+  "slug": "m365-admin-center-usage-reports-m365-copilot-connectors",
+  "roadmapId": 519571,
+  "title": "Microsoft 365 admin center: Copilot connectors usage report",
+  "status": "verified-with-gaps",
+  "date": "2026-11-17",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 59,
+    "confirmed": 57,
+    "unconfirmed": 1,
+    "contradicted": 1,
+    "blocker": 0,
+    "major": 1,
+    "minor": 3
+  },
+  "summary": "The report's controls, default state, licence requirement and rollout targets are supported. Remove the unsupported assurance about indexing, acknowledge the different navigation labels in Microsoft's notice, and keep the recommendation to appoint an owner separate from Microsoft's advice.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Rolling out.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Rolling out\", \"statusKey\": \"rolling-out\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target is November CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"November CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is June CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"June CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The release phases are General Availability and Preview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; Scope",
+      "type": "record",
+      "claim": "The roadmap platforms are Android, Desktop, iOS, Mac and Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Mac\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap products are Microsoft Copilot (Microsoft 365) and Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\", \"Microsoft 365 admin center\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 5 November 2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-05T00:00:11\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "title; What's changing",
+      "type": "record",
+      "claim": "Microsoft plans an admin-center report of connector activity, response patterns over time and user-level adoption.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This report provides insights into overall connector activity, and connector powered response patterns over time, along with detailed user-level connectors adoption data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "controls[0].ui; summary; Governance guidance",
+      "type": "admin-path",
+      "claim": "The report is at Microsoft 365 admin center > Reports > Usage > Microsoft Copilot > Connectors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-connectors-usage",
+      "quote": "In the navigation menu, select Reports. If you don't see Reports, select Show all, and then select Reports. ... Select Usage. ... under Reports, select Microsoft Copilot, and then select Connectors.",
+      "severity": "minor",
+      "fix": "Keep the Learn-based path. Add: 'MC1404326 instead labels the path Reporting > Usage > Microsoft 365 Copilot > Connectors.'"
+    },
+    {
+      "n": 11,
+      "where": "controls[0].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No Microsoft Graph call or export route for this Connectors report is documented at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot connectors usage report Microsoft Graph beta API export report settings disable. Opened the report page and copilotReportRoot reference; results describe general Copilot user-detail exports, not a Connectors-report API or export.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "controls[1].ui; Risk assessment",
+      "type": "admin-path",
+      "claim": "The concealment setting is at Settings > Org Settings > Services > Reports > Conceal user, group, and site names in all reports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+      "quote": "Select Org Settings. ... On the Services tab, select Reports. ... In the Reports panel, uncheck the checkbox next to Conceal user, group, and site names in all reports.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "PATCH https://graph.microsoft.com/v1.0/admin/reportSettings with body {\"displayConcealedNames\": false} shows identifiable report information.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/adminreportsettings-update",
+      "quote": "PATCH https://graph.microsoft.com/v1.0/admin/reportSettings ... displayConcealedNames ... If set to true, all reports conceal user information such as usernames, groups, and sites. If false, all reports show identifiable information.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "controls[1].note; Risk assessment; Governance controls",
+      "type": "applicability",
+      "claim": "The report privacy setting is tenant-wide and also affects other usage reports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+      "quote": "By default, all reports hide user information such as usernames, display names, groups, and sites ... This setting also applies to the Microsoft 365 usage reports in Microsoft Graph and Power BI and to the usage reports in Microsoft Teams Admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "controls[1].note; Governance controls",
+      "type": "role",
+      "claim": "Global administrators can change the report privacy setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+      "quote": "Global administrators can update the settings to display concealed information if your organization's privacy practices allow it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "controls[1].note; Risk assessment",
+      "type": "behaviour",
+      "claim": "Showing identifiable user information is logged in the Microsoft Purview portal audit log.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+      "quote": "Showing identifiable user information is a logged event in the Microsoft Purview portal audit log.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters",
+      "type": "default",
+      "claim": "The report is enabled by default without administrator action.",
+      "status": "supported",
+      "source": "Message Center post MC1404326",
+      "quote": "The report is enabled by default and respects existing permissions. ... No action is required before rollout.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: licensing; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The per-user licensing model reflects the notice's requirement for a Microsoft 365 Copilot (Premium) licence to use the feature.",
+      "status": "supported",
+      "source": "Message Center post MC1404326",
+      "quote": "A Microsoft 365 Copilot (Premium) license is required to use this feature",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; licensing notes; Risk assessment; Cost and licensing; Scope",
+      "type": "licensing",
+      "claim": "Active Connector users counts licensed Microsoft Copilot users who received connector-grounded responses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-connectors-usage",
+      "quote": "Active Connector users shows the total number of users with a Microsoft Copilot license in your organization who received a Copilot-generated response that was grounded on content from Copilot Connectors.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "Connector responses counts responses in Copilot Chat, Copilot Search or agents grounded on connector content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-connectors-usage",
+      "quote": "Connector responses shows the total number of responses generated by Copilot Chat, Copilot Search, or in agents that were grounded on content from Copilot Connectors.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Connections used by Copilot counts connections used for grounded responses in Chat and Search.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-connectors-usage",
+      "quote": "Connections used by Copilot shows the total number of active Copilot Connector connections that were used when Copilot Chat or Copilot Search generated a response to a user's query that was grounded on content from a Copilot connector.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Connections used by Agents counts connections used for grounded responses by declarative and custom engine agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-connectors-usage",
+      "quote": "Connections used by Agents shows the total number of active Copilot Connector connections that were used when a declarative agent or custom engine agent generated a response to a user's query that was grounded on content from a Copilot Connector.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Governance guidance",
+      "type": "behaviour",
+      "claim": "The report supports the last 7 or 30 days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-connectors-usage",
+      "quote": "You can view the Microsoft 365 Copilot Connectors report over the last 7 or 30 days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Report data refreshes within one hour of user activity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-connectors-usage",
+      "quote": "Data that refreshes within one hour of user activity",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Why it matters; Risk assessment",
+      "type": "behaviour",
+      "claim": "Active usage requires a connector-grounded cited response, rather than merely opening Chat, Search or an agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-connectors-usage",
+      "quote": "The user receives a Copilot response that includes grounding (citations) from one or more connectors configured for the organization. ... Simply opening Copilot Chat, Copilot Search, or an agent without submitting a prompt or receiving a connector-grounded response doesn't count as active usage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "Connector usage within Cowork is not yet supported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-connectors-usage",
+      "quote": "Connector usage within Cowork is not yet supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment; Cost and licensing",
+      "type": "licensing",
+      "claim": "The user table covers users licensed for Microsoft Copilot at any point in the past 180 days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-connectors-usage",
+      "quote": "The user-level table in the report shows all users licensed for Microsoft Copilot at any point over the past 180 days, even if the user later removed the license or never had any Copilot active usage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment",
+      "type": "behaviour",
+      "claim": "The user table includes the number of distinct connections used.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-connectors-usage",
+      "quote": "Connections used | Total number of distinct connector connections that were used to generate responses grounded on connector content and delivered to users",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment",
+      "type": "behaviour",
+      "claim": "The user table includes responses received.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-connectors-usage",
+      "quote": "Responses Received | The total number of responses delivered to users in Copilot Chat, Copilot Search, or agents that were grounded on content from one or more Copilot connectors.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment",
+      "type": "behaviour",
+      "claim": "The user table includes the last activity date.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-connectors-usage",
+      "quote": "Last activity date (UTC) | Last date on which the user received a Copilot-generated response that was grounded on content from a Copilot connector.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "The connector table identifies connectors by Connection ID rather than by a name.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-connectors-usage",
+      "quote": "Connector activity table ... Connection ID | The connector's unique ID ... Active users ... Responses Provided ... Last activity date (UTC)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment; rationale: risk",
+      "type": "default",
+      "claim": "Usernames, display names, groups and sites are hidden by default in usage reports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-connectors-usage",
+      "quote": "By default, user-specific information like usernames, display names, groups, and sites is hidden in usage reports.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[0].note; Cost and licensing; Scope",
+      "type": "role",
+      "claim": "Viewing follows the overview's nine listed administrator and reporting roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+      "quote": "Global Administrator; Exchange Administrator; SharePoint Administrator; Usage Summary Reports Reader; Reports Reader; Teams Administrator; Teams Communications Administrator; User Experience Success Manager; AI Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment; Governance guidance",
+      "type": "role",
+      "claim": "Usage Summary Reports Reader and User Experience Success Manager are listed with no user details.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+      "quote": "Usage Summary Reports Reader (with no user details). ... User Experience Success Manager (with no user details)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[0].note; What's changing; Risk assessment; Open questions",
+      "type": "availability",
+      "claim": "The report's Learn page is marked public preview and warns that functionality may change.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-connectors-usage",
+      "quote": "The Copilot Connectors usage report is currently in public preview. Deployment processes and functionality might change before the product becomes generally available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "summary; What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "The report covers Chat, Search and agents at organisation, connector and user level.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-connectors-usage",
+      "quote": "track adoption and engagement trends across Copilot Chat, Agents, and Copilot Search ... The report provides insights at the organization, connector, and user level",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "Measured active usage includes desktop, web and mobile.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-connectors-usage",
+      "quote": "Copilot connectors active usage includes intentional user interactions in Copilot Chat, Copilot Search, or agents across desktop, web, and mobile platforms",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1404326 was published on 25 June 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1404326",
+      "quote": "Published 2026-06-25",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1404326 was updated on 16 October 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1404326",
+      "quote": "Updated October 16, 2026: We have updated the timeline.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The notice gives late June 2026 as the public preview rollout start.",
+      "status": "supported",
+      "source": "Message Center post MC1404326",
+      "quote": "Public Preview (Worldwide): We will begin rolling out late June 2026",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice expected public preview rollout to complete by early July 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1404326",
+      "quote": "expect to complete by early July 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "What's changing; Risk assessment; Scope; changes",
+      "type": "record",
+      "claim": "The general availability rollout is planned to start in November 2026, previously late September.",
+      "status": "supported",
+      "source": "Message Center post MC1404326",
+      "quote": "General Availability (Worldwide): We will begin rolling out November 2026 (previously late September)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "General availability rollout is expected to finish in November 2026, previously the end of September.",
+      "status": "supported",
+      "source": "Message Center post MC1404326",
+      "quote": "expect to complete November 2026 (previously end of September).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment; Why it matters; rationale: risk",
+      "type": "record",
+      "claim": "The report respects existing permissions.",
+      "status": "supported",
+      "source": "Message Center post MC1404326",
+      "quote": "The report is enabled by default and respects existing permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "Microsoft says no action is required before rollout.",
+      "status": "supported",
+      "source": "Message Center post MC1404326",
+      "quote": "No action is required before rollout.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "rationale: impact",
+      "type": "record",
+      "claim": "Microsoft says there is no impact to user workflows.",
+      "status": "supported",
+      "source": "Message Center post MC1404326",
+      "quote": "There is no impact to user workflows.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Governance guidance; Cost and licensing",
+      "type": "record",
+      "claim": "Microsoft suggests informing relevant administrators and analytics stakeholders about the report.",
+      "status": "supported",
+      "source": "Message Center post MC1404326",
+      "quote": "Inform relevant administrators and analytics stakeholders about the new report.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Cost and licensing; Governance guidance",
+      "type": "record",
+      "claim": "Microsoft suggests reviewing the report after rollout.",
+      "status": "supported",
+      "source": "Message Center post MC1404326",
+      "quote": "Review the report after rollout to assess Copilot connector adoption and usage trends.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance guidance",
+      "type": "record",
+      "claim": "Microsoft advises updating internal documentation if it references Copilot reporting.",
+      "status": "supported",
+      "source": "Message Center post MC1404326",
+      "quote": "Update internal documentation if Copilot reporting is referenced.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not clarified whether this report counts both synced and federated connectors or Power Platform and Copilot Studio connectors.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot connectors usage report synced federated Power Platform Copilot Studio connectors counts. Read the report, connector overviews and plugin-capabilities excerpts; none specifies these report inclusion boundaries.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "The notice does not specify a separate licence requirement for the administrator viewing the report.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Copilot connectors\" \"usage report\" \"administrator\" \"license\". Read MC1404326, the report and usage-report overview; the notice gives a feature licence requirement without identifying the viewer's licence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "front matter: licensing notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No separate report price, meter or credit rate is documented as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot connectors usage report licensing administrator license price billing meter premium. Opened report, usage overview, Copilot license options and pay-as-you-go meters; none states a meter, separate price or credit rate for viewing this report.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no setting specific to this report at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Copilot connectors\" \"usage report\" \"disable\"; Copilot connectors usage report Microsoft Graph beta API export report settings disable. Opened report and usage overview; only viewing roles and general report concealment are documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The cited copilotReportRoot reference lists user-count and user-detail methods, not a connector report method.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/reports/resources/copilotreportroot",
+      "quote": "getMicrosoft365CopilotUserCountSummary; getMicrosoft365CopilotUserCountTrend; getMicrosoft365CopilotUsageUserDetail; getMicrosoft365CopilotUsageUserDetailByDate",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "The report does not change what connectors index.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Copilot connectors usage report changes indexing permissions read only report. Read the report and connector-overview excerpts; neither states whether this report changes indexing. MC1404326 confirms existing permissions, not indexing behaviour.",
+      "severity": "major",
+      "fix": "Replace 'The report does not change what connectors index or who can see it' with 'Microsoft says the report respects existing permissions.'"
+    },
+    {
+      "n": 56,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "The Learn report page describes usage counts and no actions taken on connectors, agents or users.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot connectors usage report changes indexing permissions read only report. Read the complete report page, including its metric tables and FAQ; it describes viewing activity, not actions on connectors, agents or users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Scope; Open questions",
+      "type": "availability",
+      "claim": "The usage overview marks this report N/A for GCC, GCC High and DoD, with release planned in the future.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+      "quote": "Microsoft 365 Copilot Connectors usage | Yes | N/A^1^ | N/A^1^ | N/A^1^ | N/A^2^ ... N/A^1^: The report will be released in the future.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Governance guidance: Before rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist asks readers to review role assignments, but the controls table does not represent that assignment control.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "List which administrators hold a role that can view usage reports ... controls: Where administrators view the Copilot connectors usage report; Whether usage reports show user, group and site names",
+      "severity": "minor",
+      "fix": "The role-assignment review step has no corresponding control row. Remove that checklist bullet; retain the documented viewer roles in Scope."
+    },
+    {
+      "n": 59,
+      "where": "Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "The recommendation to name a report owner and inform stakeholders is attributed to Microsoft's notice.",
+      "status": "supported",
+      "source": "Message Center post MC1404326",
+      "quote": "Inform relevant administrators and analytics stakeholders about the new report.",
+      "severity": "minor",
+      "fix": "Replace the first Before rollout bullet with 'Name an owner for the Connectors report. Inform relevant administrators and analytics stakeholders about the new report, as Microsoft’s notice suggests.' The owner recommendation is the wiki's advice, not part of the notice."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-17T04:20:04.685Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=519571",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-connectors-usage",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/adminreportsettings-update",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/reports/resources/copilotreportroot",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1404326",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Where administrators view the Copilot connectors usage report",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-connectors-usage",
+        "reachable": true,
+        "segments": [
+          "Reports",
+          "Usage",
+          "Microsoft Copilot",
+          "Connectors"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether usage reports show user, group and site names",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Org Settings",
+          "Services",
+          "Reports",
+          "Conceal user, group, and site names in all reports"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether usage reports show user, group and site names",
+        "docs": "https://learn.microsoft.com/graph/api/adminreportsettings-update",
+        "reachable": true,
+        "token": "/v1.0/admin/reportSettings",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

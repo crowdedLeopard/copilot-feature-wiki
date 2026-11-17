@@ -40,6 +40,9 @@ sources:
   - title: "copilotPackage: block"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
     kind: "learn"
+  - title: "Overview of Copilot Pages and Copilot Notebooks permissions"
+    url: "https://learn.microsoft.com/microsoft-365/loop/cpcn-permission"
+    kind: "learn"
 videos: []
 related: ["planner-planner-agent-in-copilot-v2-improvements","planner-save-ai-generated-filters-in-planner-agent-chat"]
 controls:
@@ -47,7 +50,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Agents > All agents > agent > Block"
+      path: "Agents > All agents > agent > Block > Block agent > Save"
       docs: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions"
     api:
       kind: "graph"
@@ -71,19 +74,23 @@ changes:
     note: "New briefing: Microsoft's notice MC1506735 puts general availability from late October to mid-November 2026, with no act-by date."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 73 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-17"
+    note: "Corrected the Block path in the Microsoft 365 admin center to include Block agent and Save; removed two checklist items with no matching controls row."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 70 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-17"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 73
-  confirmed: 70
+  claims: 70
+  confirmed: 69
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "64c20d42ffa1638c1fb7784b0da571b8"
+  contradicted: 1
+  attempts: 2
+  hash: "0e2089ad5fe0933ff64f2bb6d5bcc364"
 ---
 
 ## What's changing
@@ -145,9 +152,7 @@ Neither source names a separate price, meter or Copilot Credits rate for status 
 
 ### Before rollout
 
-- Confirm which users hold an active Microsoft 365 Copilot licence, since the notice says a licence is required to generate reports and recommends this check.
 - Decide whether Planner Agent should stay available to everyone, using the Block action in the Microsoft 365 admin center or the Planner PowerShell setting (first two controls rows).
-- Check that Loop is enabled for the tenant, because Microsoft Learn says reports fail to open or generate when it is disabled.
 - Tell support teams and users that reports are reached from Planner Agent in Copilot or the Reports tab in Planner, as the notice recommends.
 
 ### At rollout
@@ -169,7 +174,7 @@ Neither source names a separate price, meter or Copilot Credits rate for status 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Tenant-wide availability of Planner Agent (block)</strong><br><small>Tenant</small><br><small class="controls__note">General agent control; the notice says the agent can be blocked tenant-wide. Learn does not name Planner Agent. Graph call is beta, needs a Microsoft Agent 365 licence and CopilotPackages.ReadWrite.All.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › agent › Block <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Tenant-wide availability of Planner Agent (block)</strong><br><small>Tenant</small><br><small class="controls__note">General agent control; the notice says the agent can be blocked tenant-wide. Learn does not name Planner Agent. Graph call is beta, needs a Microsoft Agent 365 licence and CopilotPackages.ReadWrite.All.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › agent › Block › Block agent › Save <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Who can use Planner Agent in Planner, all users or one security group</strong><br><small>Tenant</small><br><small class="controls__note">Documented for Planner Agent in Planner, including status reporting; Microsoft has not confirmed it governs the new AI-generated reports. Changes can take up to 1 hour.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-PlannerConfiguration -AllowPlannerCopilot $true -PlannerCopilotAllowedGroupId &lt;security group id&gt;</code> <a href="https://learn.microsoft.com/planner/turn-off-planner-agent" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
@@ -197,9 +202,5 @@ impact: Medium. Licensed Planner Agent users and the project managers who report
 <!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].ui; Governance controls table / admin-path: The complete blocking path is Microsoft 365 admin center > Agents > All agents > agent > Block. | Found: In the Block agent or Unblock agent pane that opens, select either Block agent or Unblock agent, and then select Save. | Fix: Replace controls[0].ui.path and its rendered table path with 'Agents > All agents > agent > Block > Block agent > Save'. The cited page requires selecting Block agent in the pane after selecting Block; the current path omits that selection, not just the final Save. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Why it matters; Risk assessment: Data exposure; Governance guidance: At rollout / behaviour: Exporting plan information to a Copilot Page creates shareable output whose access can be granted separately from plan membership. | Found: Page Sharing: Grants access to a specific page (not the whole notebook) with options for edit or read-only access. The user can choose to use a company share link or people-specific share link, based on your organizational sharing settings. | Fix: Add 'Overview of Copilot Pages and Copilot Notebooks permissions' at https://learn.microsoft.com/microsoft-365/loop/cpcn-permission to sources for the statement about exported page permissions. | Source: https://learn.microsoft.com/microsoft-365/loop/cpcn-permission?view=o365-worldwide#content-permissions-mechanism
-- [contradicted, minor] Governance guidance: Before rollout; controls / consistency: The checklist's instruction to check users' Copilot licences has a corresponding controls row. | Found: Checklist: 'Confirm which users hold an active Microsoft 365 Copilot licence'. The only controls rows are tenant-wide agent blocking and Planner Agent access by security group. | Fix: Remove the 'Confirm which users hold an active Microsoft 365 Copilot licence' checklist bullet; the licence prerequisite remains documented in Cost and licensing and Scope.
-- [contradicted, minor] Governance guidance: Before rollout; controls / consistency: The checklist's instruction to check tenant Loop enablement has a corresponding controls row. | Found: Checklist: 'Check that Loop is enabled for the tenant'. The controls table has only agent blocking and Planner Agent security-group access, with no Loop configuration row. | Fix: Remove the 'Check that Loop is enabled for the tenant' checklist bullet; retain the documented Loop prerequisite and failure behaviour in Scope and Risk assessment.
+- [contradicted, blocker] Open questions: auditing / absence: Whether generating a report is audited or reported on, and where this appears, is undocumented. | Found: The system automatically generates audit logs when a user interacts with Copilot, Cowork, or an AI application. ... Access Copilot audit logs by using the Microsoft Purview portal and selecting Audit. | Fix: Replace the auditing bullet with: 'When auditing is enabled, Copilot user interactions are logged in Microsoft Purview Audit. Does status report generation have a distinct report-specific event?' Cite https://learn.microsoft.com/purview/audit-copilot. This states the documented platform coverage without asserting a report-specific event. | Source: https://learn.microsoft.com/purview/audit-copilot
 -->

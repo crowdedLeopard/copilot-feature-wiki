@@ -59,7 +59,7 @@ controls:
     scope: "maker"
     ui:
       surface: "Power Automate (maker)"
-      path: "Process mining > + Start from blank > Case ID process mining > Normalized schema (preview)"
+      path: "environment > Process mining > + Start from blank > Case ID process mining > Normalized schema (preview)"
       docs: "https://learn.microsoft.com/power-automate/process-mining-normalized-import-ux-guide"
     api: null
     note: "Maker-side entry point, not an admin restriction. Needs a rights-to-create role such as Environment maker; preview label on Learn."
@@ -88,26 +88,30 @@ changes:
     note: "First briefing: star-schema (normalised) import for Power Automate Process Mining, which Learn still labels preview while the roadmap shows Launched."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 60 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-17"
+    note: "Corrected after verification: removed the unsupported claim about the Process Insight Prod prerequisite, added the environment step to the maker path and trimmed checklist steps that have no controls row."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 69 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-17"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 60
-  confirmed: 58
+  claims: 69
+  confirmed: 68
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "c8ef70d8ad8fc3315b4992160b03ba60"
+  contradicted: 1
+  attempts: 0
+  hash: "53fccc8ad11215721bf2ec76fbe3d59b"
 ---
 
 ## What's changing
 
 Power Automate Process Mining can now ingest event data that is not stored as a single wide table. Instead of flattening everything into one CSV, a maker points Process Mining at a star schema: a thin event table plus optional case and lookup tables, linked by foreign keys. Learn lists OneLake (Fabric lakehouse) and Azure Data Lake Storage Gen2 as the supported sources, in CSV, Parquet or Delta-Parquet.
 
-The import is driven by a JSON configuration file that describes the tables, the storage backend and how columns map to Process Mining attributes. Learn states that normalised import is JSON-only today, with no in-product editor. A maker starts it at make.powerautomate.com by choosing **Process mining** > **+ Start from blank**, selecting **Case ID process mining** as the process type and **Normalized schema (preview)** as the data source, then browsing to the JSON file. The service validates the file, opens a Mapping screen to review and adjust, and the maker selects **Save and analyze**. Learn says the resulting model is identical whichever import path fed it.
+The import is driven by a JSON configuration file that describes the tables, the storage backend and how columns map to Process Mining attributes. Learn states that normalised import is JSON-only today, with no in-product editor. A maker starts it at make.powerautomate.com by choosing their environment from the environment picker, then **Process mining** > **+ Start from blank**, selecting **Case ID process mining** as the process type and **Normalized schema (preview)** as the data source, then browsing to the JSON file. The service validates the file, opens a Mapping screen to review and adjust, and the maker selects **Save and analyze**. Learn says the resulting model is identical whichever import path fed it.
 
 Status and dates come from the roadmap record: the item is Launched, with a preview date of June CY2026 and a target date of August CY2026, release phases General Availability and Preview, for Worldwide (Standard Multi-Tenant) on the web. Microsoft Learn still labels the data source **Normalized schema (preview)**, so the two sources do not settle whether the capability is generally available; treat the Learn label as the current description of the product.
 
@@ -158,10 +162,9 @@ Sources are OneLake / Microsoft Fabric (managed Delta tables, or loose Parquet o
 
 ### Before rollout
 
-- Check with the Power Platform admin team that Process Mining is enabled in the environments where makers will try normalised import, and confirm who holds the Environment maker role there.
-- Confirm with the Fabric administrator whether the OneLake tenant setting and the workspace Admin sharing described on the OneLake page are already in place, using the Fabric tenant settings row in the table.
+- Check with the Power Platform admin team that Process Mining is enabled in the environments where makers will try normalised import.
+- Confirm with the Fabric administrator whether the OneLake tenant setting described on the OneLake page is already in place, using the Fabric tenant settings row in the table.
 - Ask makers who plan to use the feature which storage location and tables their JSON config will name, so reviewers can see the data in scope.
-- Check Power Automate Premium and Process Mining add-on capacity against expected volumes, using the usage view in the Power Platform admin center.
 
 ### At rollout
 
@@ -170,8 +173,6 @@ Sources are OneLake / Microsoft Fabric (managed Delta tables, or loose Parquet o
 
 ### After rollout
 
-- Review capacity use after the first imports and compare with the flat-import equivalent where one exists.
-- Revisit the Fabric workspace Admin list for the Process Insight Prod service principal when makers stop using a lakehouse.
 - Re-open the Learn pages when Microsoft removes the preview label or documents an admin control.
 
 ## Governance controls
@@ -181,7 +182,7 @@ Sources are OneLake / Microsoft Fabric (managed Delta tables, or loose Parquet o
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Where a maker starts a normalized-schema import</strong><br><small>Maker</small><br><small class="controls__note">Maker-side entry point, not an admin restriction. Needs a rights-to-create role such as Environment maker; preview label on Learn.</small></td><td data-label="Admin UI"><strong>Power Automate (maker)</strong><br>Process mining › + Start from blank › Case ID process mining › Normalized schema (preview) <a href="https://learn.microsoft.com/power-automate/process-mining-normalized-import-ux-guide" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Where a maker starts a normalized-schema import</strong><br><small>Maker</small><br><small class="controls__note">Maker-side entry point, not an admin restriction. Needs a rights-to-create role such as Environment maker; preview label on Learn.</small></td><td data-label="Admin UI"><strong>Power Automate (maker)</strong><br>environment › Process mining › + Start from blank › Case ID process mining › Normalized schema (preview) <a href="https://learn.microsoft.com/power-automate/process-mining-normalized-import-ux-guide" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Admin switch to turn normalized-schema import off</strong><br><small>Tenant</small><br><small class="controls__note">Not documented on the normalized schema articles at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>OneLake access for apps external to Fabric, which a OneLake source depends on</strong><br><small>Tenant</small><br><small class="controls__note">General control: the OneLake page lists it as a prerequisite. Lists settings (read); caller must be a Fabric administrator or a service principal.</small></td><td data-label="Admin UI"><strong>Microsoft Fabric (OneLake catalog, Govern section)</strong><br>Configurations › Tenant settings › Users can access data stored in OneLake with apps external to Fabric <a href="https://learn.microsoft.com/fabric/admin/service-admin-portal-onelake" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>GET https://api.fabric.microsoft.com/v1/admin/tenantsettings</code> <a href="https://learn.microsoft.com/rest/api/fabric/admin/tenants/list-tenant-settings" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
@@ -189,13 +190,12 @@ Sources are OneLake / Microsoft Fabric (managed Delta tables, or loose Parquet o
 
 No administrator switch for this data source is documented on the pages that describe it at the time of writing (November 2026), so the first two rows separate the maker entry point from the missing admin control. Access is shaped by existing controls instead: Dataverse security roles (Environment maker can create processes, Process Mining User can only view reports) and the storage-side prerequisites.
 
-The Fabric row is a general control that a OneLake source depends on according to the OneLake page; the listed call reads tenant settings and lets you check the setting's state, and the Learn reference states that the caller must be a Fabric administrator or a service principal. Microsoft has not said that the Process Insight Prod service principal arrangement is identical for normalised import.
+The Fabric row is a general control that a OneLake source depends on according to the OneLake page; the listed call reads tenant settings and lets you check the setting's state, and the Learn reference states that the caller must be a Fabric administrator or a service principal.
 
 ## Open questions
 
 - Is normalised schema import generally available? The roadmap record shows Launched with General Availability and Preview phases, while Learn labels the data source Normalized schema (preview). Watch the Create a process from normalized schema article.
 - Will Microsoft document an administrator setting or API to restrict normalised import? None is documented at the time of writing (November 2026).
-- Which identity reads ADLS Gen2 and OneLake data for a normalised import, and do the OneLake service principal prerequisites apply unchanged? The normalised schema articles refer to the existing pages without restating them.
 - How is normalised data counted against the process mining capacity pool and Dataverse file capacity? Watch the Overview of process mining and task mining article.
 - Can a normalised process use scheduled or incremental refresh? The two normalised schema articles do not say.
 
@@ -205,11 +205,8 @@ cost: Low. Learn names no separate licence or meter for normalised import; proce
 impact: Low. Makers and analysts who build process mining models from lakehouse data notice it; other users and administrators see no change.
 -->
 
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls: final sentence; Open questions: identity and OneLake prerequisites / absence: Microsoft has not confirmed that the Process Insight Prod service principal prerequisite applies unchanged to normalized import. | Found: Prerequisites ... Respective prerequisites are met: ... OneLake: Learn more in Ingest data from Fabric OneLake | Fix: Remove 'Microsoft has not said that the Process Insight Prod service principal arrangement is identical for normalised import.' Remove the Open questions bullet beginning 'Which identity reads ADLS Gen2 and OneLake data'. The normalized-import guide explicitly requires the linked prerequisites; the OneLake page requires Process Insight Prod workspace Admin sharing, and the linked network-isolated ADLS guide documents a managed identity. | Source: https://learn.microsoft.com/power-automate/process-mining-normalized-import-ux-guide
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; What's changing; Governance controls table / admin-path: The maker entry point is Process mining > + Start from blank > Case ID process mining > Normalized schema (preview). | Found: Choose your environment from the environment picker (top right). ... In the left navigation, select Process mining. ... select + Start from blank. ... Process type: Select Case ID process mining. ... Data source: Select Normalized schema (preview). | Fix: Include the omitted environment selection: 'environment > Process mining > + Start from blank > Case ID process mining > Normalized schema (preview)'. In What's changing, say to choose the environment at make.powerautomate.com before selecting Process mining. | Source: https://learn.microsoft.com/power-automate/process-mining-normalized-import-ux-guide
-- [contradicted, minor] Governance guidance; Governance controls table / consistency: Several controls the governance checklist asks administrators to check have no corresponding controls-table row. | Found: confirm who holds the Environment maker role ... workspace Admin sharing ... Check Power Automate Premium and Process Mining add-on capacity ... Where a maker starts a normalized-schema import ... Admin switch to turn normalized-schema import off ... OneLake access for apps external to Fabric | Fix: The checklist steps for Environment maker role assignment, Fabric workspace Admin sharing and capacity usage have no controls-table rows. Remove those checklist instructions if the table is to remain unchanged; do not add unverified rows as part of this correction.
+- [contradicted, minor] Governance guidance: Before rollout, first bullet / consistency: The checklist asks administrators to check that Process Mining is enabled, but the controls table has no corresponding environment-level control row. | Found: Check with the Power Platform admin team that Process Mining is enabled in the environments where makers will try normalised import. Table rows cover maker import entry, the missing normalized-import switch, and OneLake external-app access, not this environment check. | Fix: Remove the first Before rollout bullet, 'Check with the Power Platform admin team that Process Mining is enabled in the environments where makers will try normalised import.' Keep the documented environment prerequisite in Scope.
 -->

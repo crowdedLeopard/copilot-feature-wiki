@@ -64,13 +64,13 @@ controls:
     scope: "environment"
     ui:
       surface: "Power Platform admin center"
-      path: "Licensing > Copilot Studio > Manage Copilot Credits > environment > Capacity overages > Draw from the available capacity in my tenant"
+      path: "Licensing > Products > Copilot Studio > Manage Copilot Credits > environment > Capacity overages > Draw from the available capacity in my tenant"
       docs: "https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness"
     api:
       kind: "power-platform-api"
-      call: "PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01 with entitlementId MCSMessages and a TenantPool enforcement rule"
+      call: "PUT /licensing/allocationsV2?api-version=2024-10-01 {\"scope\":{\"environmentId\":\"<id>\"},\"allocatedEntitlements\":[{\"entitlementId\":\"MCSMessages\",\"allocation\":{\"quantity\":<n>},\"enforcementRules\":[{\"ruleType\":\"TenantPool\",\"enabled\":false}]}]}"
       docs: "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations"
-    note: "Needs Power Platform Administrator, Global Administrator or an equivalent licensing and capacity role. Shared across Copilot Studio, not specific to evaluations."
+    note: "Needs Power Platform Administrator, Global Administrator or an equivalent role. A published environment-group rule makes the setting read-only; API updates are rejected with TenantPoolLockedByPolicy. Base URL https://api.powerplatform.com."
   - governs: "Monthly Copilot Credit limit and Stop usage for one agent"
     scope: "agent"
     ui:
@@ -88,19 +88,23 @@ changes:
     note: "First briefing: roadmap plan for credit cost visibility in evaluations, compared with the Learn preview that already shows estimated credits in Evaluate."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 5 of 60 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-17"
+    note: "Corrected after verification: added the Products step to the environment path, replaced the allocation call with the full request and its group-rule lock, qualified the spending caps and moved the Monitor page to Copilot Studio."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 73 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-17"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 60
-  confirmed: 55
+  claims: 73
+  confirmed: 71
   unconfirmed: 0
-  contradicted: 5
-  attempts: 1
-  hash: "cf363e8580e208ff8b52091c27267c2a"
+  contradicted: 2
+  attempts: 2
+  hash: "3d499a5c70ca15372cef13a920350816"
 ---
 
 ## What's changing
@@ -129,7 +133,7 @@ Microsoft has not stated whether the display arrives on by default or needs any 
 
 **Autonomy & actions**
 
-- Running an evaluation sends test conversations to the agent and has the responses scored, and the Learn preview page reports the credits for both steps. The display informs; the controls that stop usage are the agent monthly limit with **Stop usage** and the environment allocation in the Power Platform admin center (see the controls table).
+- Running an evaluation sends test conversations to the agent and has the responses scored, and the Learn preview page reports the credits for both steps. The display informs; the controls that stop usage are the agent monthly limit with **Stop usage** and, for prepaid consumption with no enabled overage source, the environment allocation in the Power Platform admin center (see the controls table).
 
 **Change & support**
 
@@ -142,7 +146,7 @@ Microsoft has not stated whether the display arrives on by default or needs any 
 
 **Meter.** The meter is Copilot Credits. The overview of usage-based billing lists generating and creating agent evaluations among the experiences that consume credits. Credits are charged to the environment where the agent runs, from prepaid capacity or through the environment's pay-as-you-go billing plan.
 
-**Caps.** An environment allocation, the **Draw from the available capacity in my tenant** option and an agent monthly limit all bound the spend (see the controls table). Learn says limits are not applied instantly, so leave a margin.
+**Caps.** An allocation with **Draw from the available capacity in my tenant** cleared bounds prepaid consumption, but usage can continue through a linked pay-as-you-go billing plan. An agent monthly limit with **Stop usage** stops the agent, not the agent flows it calls; those are billed and checked separately. Learn says limits are not applied instantly, so leave a margin.
 
 **Not yet published.** A credit rate for evaluation generation, test runs or grading is not yet published on the pages read, and the roadmap states no separate charge or licence for the cost display. Learn's standard-harness evaluation pages do not state whether evaluation runs consume credits at the time of writing (November 2026).
 
@@ -156,8 +160,8 @@ The Learn preview describes evaluations for agents created and saved with the Mi
 
 ### Before rollout
 
-- Identify which environments host Microsoft Copilot harness agents and who owns their capacity, using the **Harness** column in the Power Platform admin center agent inventory.
-- Set an allocation and decide whether to clear **Draw from the available capacity in my tenant** for makers' development environments, so evaluation credits are bounded.
+- Identify which environments host Microsoft Copilot harness agents and who owns their capacity.
+- Set an allocation and decide whether to clear **Draw from the available capacity in my tenant** for makers' development environments, to bound prepaid consumption; this does not stop usage through a linked pay-as-you-go billing plan.
 - Set a monthly limit and notification threshold on agents that makers evaluate often, and decide whether **Stop usage** should apply.
 
 ### At rollout
@@ -178,7 +182,7 @@ The Learn preview describes evaluations for agents created and saved with the Mi
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Estimated Copilot Credits shown for an evaluation run and each test case</strong><br><small>Agent</small><br><small class="controls__note">Maker-side display of estimates, not a control. Preview page for Microsoft Copilot harness agents; not confirmed as the roadmap item.</small></td><td data-label="Admin UI"><strong>Copilot Studio (maker)</strong><br>agent › Evaluate › recent results › evaluation <a href="https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/analytics-agent-evaluation-view" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Credits allocated to an environment, and whether it draws from tenant capacity</strong><br><small>Environment</small><br><small class="controls__note">Needs Power Platform Administrator, Global Administrator or an equivalent licensing and capacity role. Shared across Copilot Studio, not specific to evaluations.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Copilot Studio › Manage Copilot Credits › environment › Capacity overages › Draw from the available capacity in my tenant <a href="https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform API</strong><br><code>PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01 with entitlementId MCSMessages and a TenantPool enforcement rule</code> <a href="https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Credits allocated to an environment, and whether it draws from tenant capacity</strong><br><small>Environment</small><br><small class="controls__note">Needs Power Platform Administrator, Global Administrator or an equivalent role. A published environment-group rule makes the setting read-only; API updates are rejected with TenantPoolLockedByPolicy. Base URL https://api.powerplatform.com.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Products › Copilot Studio › Manage Copilot Credits › environment › Capacity overages › Draw from the available capacity in my tenant <a href="https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform API</strong><br><code>PUT /licensing/allocationsV2?api-version=2024-10-01 {&quot;scope&quot;:{&quot;environmentId&quot;:&quot;&lt;id&gt;&quot;},&quot;allocatedEntitlements&quot;:[{&quot;entitlementId&quot;:&quot;MCSMessages&quot;,&quot;allocation&quot;:{&quot;quantity&quot;:&lt;n&gt;},&quot;enforcementRules&quot;:[{&quot;ruleType&quot;:&quot;TenantPool&quot;,&quot;enabled&quot;:false}]}]}</code> <a href="https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Monthly Copilot Credit limit and Stop usage for one agent</strong><br><small>Agent</small><br><small class="controls__note">Limits are not applied instantly, so an agent can keep responding for some time after reaching one.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Copilot Studio › Manage Agents › agent › Set limit <a href="https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -187,7 +191,7 @@ The table keeps the maker-side display separate from the admin controls. The dis
 
 These controls are shared across Copilot Studio: Learn says changes to shared capacity can affect other agents, workflows and features in the same environment. Microsoft has not said whether any control applies to evaluation usage separately from other agent usage, and none is described for hiding the cost display.
 
-The Power Platform admin center also offers consumption reports and the agent's Monitor page, which Learn describes at [Manage Copilot Credits and capacity for Copilot Studio](https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity). Whether the reports separate evaluation usage is not stated.
+The Power Platform admin center offers consumption reports, while the agent's Monitor page is in Copilot Studio, as Learn describes at [Manage Copilot Credits and capacity for Copilot Studio](https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity). Whether the reports separate evaluation usage is not stated.
 
 ## Open questions
 
@@ -206,10 +210,7 @@ impact: Medium. Makers who run evaluations see the figures; owners of environmen
 <!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].ui; Governance controls table / admin-path: The environment-control path is Licensing > Copilot Studio > Manage Copilot Credits > environment > Capacity overages > Draw from the available capacity in my tenant. | Found: In the navigation pane, select Licensing. Under Products, select Copilot Studio. Select Manage Copilot Credits. | Fix: Insert the documented Products section: 'Licensing > Products > Copilot Studio > Manage Copilot Credits > environment > Capacity overages > Draw from the available capacity in my tenant', in front matter and the table. Qualify the row: 'A published environment-group rule makes this setting read-only; change the group rule or remove the environment from the group to manage it independently.' | Source: https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness
-- [contradicted, blocker] controls[1].api; Governance controls table / command: The printed PUT request with entitlementId MCSMessages and a TenantPool enforcement rule is a complete allocation call. | Found: scope = @{ environmentId = $environmentId } allocatedEntitlements = @( @{ entitlementId    = "MCSMessages" allocation       = @{ quantity = 5000 } | Fix: The endpoint, PUT method and API version are real; the pre-check's literal-URL miss is not evidence otherwise. Replace the incomplete call in both places with 'PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01; Content-Type: application/json; body: {"scope":{"environmentId":"<environment ID>"},"allocatedEntitlements":[{"entitlementId":"MCSMessages","allocation":{"quantity":<credits>},"enforcementRules":[{"ruleType":"TenantPool","enabled":false}]}]}'. Use an authenticated Power Platform API request. Add to the row note: 'A published environment-group rule prevents individual TenantPool updates; requests are rejected with TenantPoolLockedByPolicy.' | Source: https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations
-- [contradicted, blocker] Cost and licensing: Caps; Governance guidance: Before rollout; Risk assessment: Autonomy & actions / cost: An allocation, the tenant-capacity draw option and an agent monthly limit bound evaluation spending without further qualification. | Found: An allocation isn't a boundary if the environment can continue drawing from tenant capacity or pay-as-you-go billing. This setting doesn't prevent consumption through a pay-as-you-go billing plan linked to the environment. | Fix: Replace the Caps opening with: 'An allocation with Draw from the available capacity in my tenant cleared bounds prepaid consumption, but usage can continue through a linked pay-as-you-go billing plan. An agent monthly limit with Stop usage stops the agent, not the agent flows it calls; those are billed and checked separately.' In Before rollout, replace 'so evaluation credits are bounded' with 'to bound prepaid consumption; this does not stop usage through a linked pay-as-you-go billing plan'. In Autonomy & actions, replace 'and the environment allocation' with 'and, for prepaid consumption with no enabled overage source, the environment allocation'. The agent-flow qualification is stated at https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity. | Source: https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness
-- [contradicted, blocker] Governance controls: final paragraph / admin-path: The Power Platform admin center offers the agent's Monitor page. | Found: The agent's Monitor page in Copilot Studio shows the agent's billed credits over time. | Fix: Replace 'The Power Platform admin center also offers consumption reports and the agent's Monitor page' with 'The Power Platform admin center offers consumption reports, while the agent's Monitor page is in Copilot Studio'. Retain the existing Learn link. | Source: https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity
+- [contradicted, blocker] Scope: final sentence / absence: Any prerequisite beyond the Microsoft Copilot harness is not stated. | Found: Evaluations only support agents set to use No authentication or Authenticate with Microsoft. Agents set to Authenticate manually aren't supported. | Fix: Narrow the final Scope sentence to 'The roadmap record does not state rollout mechanics or prerequisites.' The broader claim about prerequisites is false for the cited Learn preview, which documents authentication restrictions. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/analytics-agent-evaluation-intro
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist's instruction to use the Harness inventory column has a corresponding controls-table row. | Found: Checklist: 'using the Harness column in the Power Platform admin center agent inventory'. The table covers evaluation estimates, environment allocation and agent limits, but not the inventory. | Fix: Remove ', using the Harness column in the Power Platform admin center agent inventory' from the first Before rollout checklist item, retaining the advice to identify environments and their capacity owners. Do not add a control row.
+- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: Every monitoring control the governance checklist asks the reader to check is represented in the controls table. | Found: Review environment and agent consumption together in the Power Platform admin center under Licensing > Copilot Studio. The table contains the evaluation display, environment allocation and agent limit rows, but no consumption-reporting row. | Fix: The first After rollout bullet, asking readers to review environment and agent consumption in Power Platform admin center, has no matching reporting row in the controls table.
 -->

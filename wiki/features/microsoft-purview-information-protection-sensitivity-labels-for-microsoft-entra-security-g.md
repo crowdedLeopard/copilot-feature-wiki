@@ -11,7 +11,7 @@ clouds: ["Worldwide (Standard Multi-Tenant)"]
 platforms: ["Web"]
 targetDate: "January CY2027"
 previewDate: null
-risk: "medium"
+risk: "low"
 cost: "low"
 impact: "low"
 defaultState: "admin-opt-in"
@@ -98,19 +98,23 @@ changes:
     note: "New briefing: labels for cloud security groups, with the separate tenant setting, immutability and preview bypass limits; rollout moved to mid-January 2027."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 70 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-17"
+    note: "Corrected after verification: the note under the controls table now says the feature page documents the tenant setting via Graph PowerShell; risk set to low; removed a checklist step with no control row."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 75 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-17"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 70
-  confirmed: 67
+  claims: 75
+  confirmed: 75
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "62a84ed8fc40fd5097533c8e9f47d518"
+  contradicted: 0
+  attempts: 0
+  hash: "dfca106620be155615c2671e90199dec"
 ---
 
 ## What's changing
@@ -170,7 +174,6 @@ Meter: Learn documents no meter or separate charge for the feature at the time o
 ### Before rollout
 - Inventory security groups that contain guests, nested groups, dynamic membership or on-premises sync, since labels cannot be applied cleanly to them (see the nesting and guest conflicts in the Learn troubleshooting section).
 - Review the labels published with the Groups & Sites scope and decide which are acceptable for security groups, given that a label cannot be changed once applied.
-- Review holders of the roles and application permissions that Learn lists as able to bypass label enforcement during preview.
 - Confirm the organisation holds an active Microsoft Entra ID P1 or P2 licence, or Microsoft 365 E3/E5.
 
 ### At rollout
@@ -199,7 +202,7 @@ Meter: Learn documents no meter or separate charge for the feature at the time o
 </tbody>
 </table>
 
-Learn documents the tenant setting only as PowerShell (Microsoft Graph PowerShell directory settings) at the time of writing (November 2026); no admin centre toggle is documented. The setting for cloud security groups is separate from the Microsoft 365 groups setting.
+The cited feature page documents the tenant setting using Microsoft Graph PowerShell directory settings; no admin centre toggle is documented at the time of writing (November 2026). The setting for cloud security groups is separate from the Microsoft 365 groups setting.
 
 Assigning labels needs the group owner or at least a Groups Administrator, within the scope of the label's publishing policy. During preview, the roles and application permissions Learn lists can bypass label enforcement when adding members, so the label policy is not an absolute barrier for them.
 
@@ -214,16 +217,13 @@ Learn documents no way to change or remove a label after it is applied during pr
 - Will audit events for label assignment on security groups be documented? Watch the Learn page and Message center.
 
 <!-- rationale
-risk: Medium. Nothing changes until an administrator enables it, but once on, a label cannot be changed or removed from a group and certain admin roles can bypass label enforcement during preview.
+risk: Low. This optional control changes nothing until an administrator enables it; leaving it unconfigured preserves existing security-group behaviour.
 cost: Low. Learn names an active Microsoft Entra ID P1 or P2 licence (or Microsoft 365 E3/E5) as a prerequisite and documents no meter; the known cost is admin time to enable and test.
 impact: Low. Administrators and group owners who create or label security groups notice it; users are affected only where a label blocks guest members.
 -->
 
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls: first paragraph / absence: Microsoft Learn documents the tenant setting only as PowerShell. | Found: Example 2: Enable sensitivity labels for all cloud security groups in the tenant PATCH https://graph.microsoft.com/beta/settings/{directorySettingId} "name": "EnableMIPLabels", "value": "true" | Fix: Replace the first sentence under the table with: 'The cited feature page documents the tenant setting using Microsoft Graph PowerShell directory settings; no admin centre toggle is documented at the time of writing (November 2026).' This removes the incorrect claim that Learn documents no other automation surface without adding another control. | Source: https://learn.microsoft.com/graph/api/directorysetting-update?view=graph-rest-beta
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] front matter: risk; rationale: risk / consistency: Medium risk is justified by what could happen after an administrator enables this optional new control. | Found: risk: "medium" Nothing changes until an administrator enables it, but once on, a label cannot be changed or removed from a group and certain admin roles can bypass label enforcement during preview. | Fix: Set risk to 'low' and replace the risk rationale with: 'Low. This optional control changes nothing until an administrator enables it; leaving it unconfigured preserves existing security-group behaviour.' The scale rates a new control's default exposure, not its post-enablement configuration risk.
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: Every control the checklist tells administrators to review is represented in the controls table. | Found: Review holders of the roles and application permissions that Learn lists as able to bypass label enforcement during preview. | Fix: The Before rollout step about reviewing holders of bypass roles and application permissions has no corresponding control row. Remove that checklist bullet; retain the documented bypass warning in Risk assessment and Governance controls. Do not add a control row as part of this correction.
+- [supported, minor] front matter: licensing.model / licensing: The licensing model is included in eligible existing subscriptions rather than a separately named feature add-on. | Found: Feature | Microsoft 365 E5/A5/G5/E3/A3/G3/F1/F3/Business Premium Manual Sensitivity Labeling | Included | Fix: Add https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-purview-information-protection-sensitivity-labeling to sources for the explicit inclusion statement; retain the feature page's specific prerequisites. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-purview-information-protection-sensitivity-labeling
 -->

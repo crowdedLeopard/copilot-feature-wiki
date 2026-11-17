@@ -1,7 +1,7 @@
 ---
 title: "Copilot Studio: agent node runs an AI agent as a workflow step"
 slug: "microsoft-copilot-studio-invoke-agents-as-workflow-steps-with-the-agent-node"
-roadmapId: 566998
+roadmapId: 562222
 topic: "copilot-studio"
 products: ["Microsoft Copilot (Microsoft 365)","Microsoft Copilot Studio"]
 summary: "Makers can add an agent node to a Copilot Studio workflow so an AI agent decides and acts mid-flow. It uses Copilot Credits and no switch dedicated to the node is documented, so administrators should review credit and tool controls."
@@ -22,8 +22,8 @@ licensing:
 audiences: ["power-platform-admin","finops","maker","service-owner"]
 tags: ["copilot-studio","agents","automation","tools","mcp","knowledge-grounding","work-iq","human-in-the-loop","agent-evaluation","copilot-credits","usage-based-billing","copilot-harness"]
 sources:
-  - title: "Microsoft 365 Roadmap 566998"
-    url: "https://www.microsoft.com/microsoft-365/roadmap?id=566998"
+  - title: "Microsoft 365 Roadmap 562222"
+    url: "https://www.microsoft.com/microsoft-365/roadmap?id=562222"
     kind: "roadmap"
   - title: "Add an agent node to a workflow (Microsoft Copilot)"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-node-workflow"
@@ -36,9 +36,6 @@ sources:
     kind: "learn"
   - title: "Review agent readiness and status in Microsoft Copilot Studio (Microsoft Copilot)"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-status"
-    kind: "learn"
-  - title: "Work IQ in Copilot Studio (Microsoft Copilot)"
-    url: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq"
     kind: "learn"
   - title: "Policy governance for Work IQ MCP"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp"
@@ -62,7 +59,7 @@ sources:
     url: "https://learn.microsoft.com/rest/api/power-platform/licensing/entitlement-insight/get-environment-resources"
     kind: "learn"
 videos: []
-related: ["copilot-credits","work-iq-agent-policy-governance"]
+related: ["copilot-credits","data-policies","mcp","work-iq","work-iq-agent-policy-governance"]
 controls:
   - governs: "Prepaid Copilot Credits per environment and whether it can draw from the tenant pool"
     scope: "environment"
@@ -102,7 +99,7 @@ controls:
 confidence: "medium"
 created: "2026-11-16"
 updated: "2026-11-17"
-roadmapModified: "2026-10-26T23:15:50"
+roadmapModified: "2026-11-17T00:31:56"
 changes:
   - date: "2026-11-16"
     note: "First briefing for this item: documents the agent node, its credit billing and the environment-level cost controls; no agent-node admin switch is documented."
@@ -124,19 +121,23 @@ changes:
     note: "Corrected after verification: the credit-consumption row now lists the documented, deprecated Power Platform API call for environment resource consumption snapshots."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 97 statements confirmed"
-version: 6
+  - date: "2026-11-17"
+    note: "Re-checked against Microsoft Learn for roadmap item 562222; the agent node, credit billing and cost controls are unchanged, and the Work IQ MCP policy wording now follows the page."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 85 statements confirmed"
+version: 7
 verification:
   status: "verified"
   date: "2026-11-17"
-  version: 6
+  version: 7
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 97
-  confirmed: 97
+  claims: 85
+  confirmed: 85
   unconfirmed: 0
   contradicted: 0
   attempts: 0
-  hash: "cf032dde662a98555f36b6ebbc4f6ffe"
+  hash: "509f3ea5f6489537b9b7637fdd981870"
 ---
 
 ## What's changing
@@ -157,14 +158,14 @@ The cost effect arrives without a purchase order. Credits are charged to the env
 
 **Data exposure**
 
-- The inline agent can be grounded in SharePoint sites and public websites, and the **Work IQ** setting lets it use the running user's mail, Teams, calendar, OneDrive and SharePoint context. Anything the agent reads can end up in its output and in later steps such as emails, Teams messages or Dataverse rows. Microsoft Learn documents no switch dedicated to the node for these settings. Work IQ MCP has its own tenant-level policy in the Microsoft 365 admin center, and Learn says the ability to allow or disallow tooling and MCP servers there might not be available in your region yet; whether it covers the Work IQ option on an inline node is not stated.
+- The inline agent can be grounded in SharePoint sites and public websites, and the **Work IQ** setting lets it use the running user's mail, Teams, calendar, OneDrive and SharePoint context. Anything the agent reads can end up in its output and in later steps such as emails, Teams messages or Dataverse rows. Microsoft Learn documents no switch dedicated to the node for these settings. Work IQ MCP has its own tenant-level policy in the Microsoft 365 admin center, shown on its **Policy** tab "when it's available"; whether it covers the Work IQ option on an inline node is not stated.
 - A structured output passes agent-written fields to downstream actions, so review what a workflow writes and to where.
 
 **Security & identity**
 
 - Tools can be any Power Platform connector action or an MCP server. Microsoft Learn does not describe, on the agent node page, whose credentials a connector action in the node uses, so confirm this per workflow before relying on it.
-- Data policies govern Power Platform connector tools in Copilot Studio agents, including inline agents; blocking a connector also blocks connected MCP tools that rely on it. Advanced Connector Policies govern supported certified connectors and MCP servers through the hosting environment's policy; custom and HTTP connectors still require classic data policies. Copilot Studio design-time enforcement is rolling out; until available, enforcement is runtime-only. Learn also documents that when a data policy or Advanced Connector Policy blocks a tool, connector, AI model or skill for agents built with the Microsoft Copilot harness, it appears disabled in the tool list.
-- With **Request human assistance when unsure** on, the agent emails the connection owner, which puts an approval step in the hands of whoever owns that connection.
+- Data policies govern Power Platform connector tools in Copilot Studio agents; blocking a connector also blocks connected MCP tools that rely on it. Advanced Connector Policies govern certified connectors and MCP servers through the hosting environment's policy; custom and HTTP connectors still require classic data policies. Copilot Studio design-time enforcement is rolling out; until available, enforcement is runtime-only. Learn also documents that when a data policy or Advanced Connector Policy blocks a tool, connector, AI model or skill for agents built with the Microsoft Copilot harness, it appears disabled in the tool list.
+- With **Request human assistance when unsure** on, the agent emails the connection owner for input and waits for a reply. Confirm that the connection owner is the right person to be asked for each workflow.
 
 **Autonomy & actions**
 
@@ -207,7 +208,7 @@ The existing-agent picker lists published agents; alternatively, makers can defi
 
 - Review the **Credit usage (last 30 days)** column on the Workflows page and the **Agent flow actions** line in the Power Platform admin center each month.
 - Compare each environment's consumption with its allocation, and check whether any workflow runs were blocked by exhausted capacity.
-- Reconfirm environment allocations after a new environment is created, since environments can appear with tenant draw selected.
+- Reconfirm environment allocations after a new environment is created, since Learn says the draw-from-tenant option is selected by default for eligible environments with no allocation configuration.
 
 ## Governance controls
 
@@ -227,9 +228,9 @@ The environment allocation settings govern every Copilot Studio workload in the 
 
 The allocation call needs authenticated authorisation and `Content-Type: application/json`. The tutorial's example body, in which 5000 is an example allocation, is `{"scope":{"environmentId":"<environment ID>"},"allocatedEntitlements":[{"entitlementId":"MCSMessages","allocation":{"quantity":5000},"enforcementRules":[{"ruleType":"TenantPool","enabled":false}]}]}`; it sets the environment's allocation and turns tenant-pool draw off ([Tutorial: Manage Copilot Credits allocations programmatically](https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations)).
 
-Microsoft Learn documents monthly limits that an administrator sets on an individual agent under **Licensing** > **Copilot Studio** > **Manage Agents**. At the time of writing (November 2026), the pages read do not say that these limits cap the credits an agent node consumes inside a workflow, so the table does not list them as a control for this feature. The **Request human assistance when unsure** setting is documented by Microsoft as a per-node maker setting; no central enforcement setting is documented as of November 2026.
+Microsoft Learn documents monthly limits that an administrator sets on an individual agent under **Licensing** > **Copilot Studio** > **Manage Agents**. At the time of writing (November 2026), Learn does not state that these limits cap the credits an agent node consumes inside a workflow, so the table does not list them as a control for this feature. The **Request human assistance when unsure** setting is documented by Microsoft as a per-node maker setting; no central enforcement setting is documented as of November 2026.
 
-Three platform controls exist outside the table. Data policies govern Power Platform connector tools in Copilot Studio agents, including inline agents; blocking a connector also blocks connected MCP tools that rely on it ([Configure data policies for agents](https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention)). Advanced Connector Policies govern supported certified connectors and MCP servers through the hosting environment's policy; custom and HTTP connectors still require classic data policies. Copilot Studio design-time enforcement is rolling out; until available, enforcement is runtime-only ([Advanced connector policies](https://learn.microsoft.com/power-platform/admin/advanced-connector-policies)). Blocked tools, connectors, AI models and skills appear disabled in the pickers of agents built with the Microsoft Copilot harness ([Review agent readiness and status](https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-status)). Work IQ MCP has a tenant-level policy in the Microsoft 365 admin center under **Agents** > **Tools** > **Work IQ MCP** > **Policy**, when available ([Policy governance for Work IQ MCP](https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp)). Learn does not confirm that Work IQ MCP policy governs the agent node's Work IQ option, so the table lists only the absence of a switch dedicated to the node.
+Three platform controls exist outside the table. Data policies govern Power Platform connector tools in Copilot Studio agents; blocking a connector also blocks tools in connected MCP servers, which rely on Power Platform connectors for connectivity ([Configure data policies for agents](https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention)). Advanced Connector Policies govern certified connectors and MCP servers through the hosting environment's policy; custom and HTTP connectors still require classic data policies. Copilot Studio design-time enforcement is rolling out; until available, enforcement is runtime-only ([Advanced connector policies](https://learn.microsoft.com/power-platform/admin/advanced-connector-policies)). Blocked tools, connectors, AI models and skills appear disabled in the pickers of agents built with the Microsoft Copilot harness ([Review agent readiness and status](https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-status)). Work IQ MCP has a tenant-level policy in the Microsoft 365 admin center under **Agents** > **Tools** > **Work IQ MCP** > **Policy**, when available ([Policy governance for Work IQ MCP](https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp)). Learn does not confirm that Work IQ MCP policy governs the agent node's Work IQ option, so the table lists only the absence of a switch dedicated to the node.
 
 ## Open questions
 

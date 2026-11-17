@@ -4,35 +4,46 @@
   "title": "Planner: AI-generated status reports in Planner Agent",
   "status": "held",
   "date": "2026-11-17",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 2,
   "verifierVerdict": "hold",
   "notes": [],
   "hold": {
     "reason": "failed",
     "since": "2026-11-17",
     "reasons": [
-      "1 blocking finding (claim 50)"
+      "1 blocking finding (claim 67)"
     ]
   },
   "counts": {
-    "claims": 73,
-    "confirmed": 70,
+    "claims": 70,
+    "confirmed": 69,
     "unconfirmed": 0,
-    "contradicted": 3,
+    "contradicted": 1,
     "blocker": 1,
     "major": 0,
-    "minor": 3
+    "minor": 0
   },
-  "summary": "The rollout, licensing and report behaviour agree with Microsoft's notice and the cited documentation. The blocking path stops before the documented Block agent selection, so it needs completing before administrators rely on it. The checklist also names licence and Loop checks absent from the controls table.",
+  "summary": "The rollout, licensing and control instructions are supported. The auditing question is too broad: Microsoft documents auditing for Copilot user interactions, including the Copilot conversation in which these reports are generated; uncertainty should be limited to report-specific events.",
   "claims": [
     {
       "n": 1,
+      "where": "title; summary; What's changing; rationale: risk",
+      "type": "record",
+      "claim": "Planner Agent generates a narrative status report from plan data covering status, progress, risks and next steps.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Just ask Planner Agent for a status report and it pulls your task data and transforms it into a clear narrative covering overall status, progress, risks, and what's next.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
       "where": "front matter: status; What's changing",
       "type": "record",
-      "claim": "The roadmap item is Rolling out.",
+      "claim": "The roadmap status is Rolling out.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"status\": \"Rolling out\", \"statusKey\": \"rolling-out\"",
@@ -40,10 +51,10 @@
       "fix": null
     },
     {
-      "n": 2,
+      "n": 3,
       "where": "front matter: targetDate; What's changing; Scope",
       "type": "record",
-      "claim": "The General Availability roadmap target is October CY2026.",
+      "claim": "The roadmap General Availability target is October CY2026.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"targetDate\": \"October CY2026\"",
@@ -51,7 +62,7 @@
       "fix": null
     },
     {
-      "n": 3,
+      "n": 4,
       "where": "front matter: previewDate; What's changing",
       "type": "record",
       "claim": "The roadmap preview date is August CY2026.",
@@ -62,7 +73,7 @@
       "fix": null
     },
     {
-      "n": 4,
+      "n": 5,
       "where": "front matter: releasePhase",
       "type": "record",
       "claim": "The roadmap lists General Availability and Preview release phases.",
@@ -73,10 +84,10 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 6,
       "where": "front matter: clouds; Scope",
       "type": "record",
-      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed on the roadmap item.",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed on this roadmap item.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -84,10 +95,10 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 7,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "Desktop and Web are the platforms listed on the roadmap item.",
+      "claim": "Desktop and Web are the only platforms listed on the roadmap item.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Desktop\", \"Web\"]",
@@ -95,21 +106,10 @@
       "fix": null
     },
     {
-      "n": 7,
-      "where": "front matter: products",
-      "type": "record",
-      "claim": "The roadmap products are Planner and Microsoft Copilot (Microsoft 365).",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"products\": [\"Planner\", \"Microsoft Copilot (Microsoft 365)\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 8,
       "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "The roadmap record was modified at 2026-11-06T23:04:41.",
+      "claim": "The roadmap item was modified at 2026-11-06T23:04:41.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"modified\": \"2026-11-06T23:04:41\"",
@@ -118,50 +118,17 @@
     },
     {
       "n": 9,
-      "where": "title; summary; What's changing; Risk assessment",
+      "where": "What's changing",
       "type": "record",
-      "claim": "Planner Agent drafts a narrative status report from plan data covering overall status, progress, risks and next steps.",
+      "claim": "Users can customise audience, tone, length, reporting period and sections before reviewing and refining the report.",
       "status": "supported",
       "source": "Message Center post MC1506735",
-      "quote": "This feature uses Planner plan data to generate a status report that summarizes overall status, progress, risks, and next steps.",
+      "quote": "Users can customize reports by reporting period, sections, tone, length, audience, and additional instructions before reviewing and refining the generated content.",
       "severity": null,
       "fix": null
     },
     {
       "n": 10,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "A user can request a status report by asking Planner Agent.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Just ask Planner Agent for a status report and it pulls your task data and transforms it into a clear narrative",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "Users can customise the report's audience, tone, length, reporting period and sections.",
-      "status": "supported",
-      "source": "Message Center post MC1506735",
-      "quote": "Users can customize reports by specifying items such as audience, tone, length, reporting period, and report sections",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
-      "where": "What's changing; Risk assessment: Autonomy & actions",
-      "type": "record",
-      "claim": "Users review and refine the generated report content.",
-      "status": "supported",
-      "source": "Message Center post MC1506735",
-      "quote": "before reviewing and refining the generated content.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
       "where": "What's changing",
       "type": "record",
       "claim": "Reports draw on tasks, owners, due dates, status, buckets and recent activity.",
@@ -172,40 +139,40 @@
       "fix": null
     },
     {
+      "n": 11,
+      "where": "What's changing; Scope; Governance guidance",
+      "type": "record",
+      "claim": "Reports can be requested through Planner Agent in Copilot.",
+      "status": "supported",
+      "source": "Message Center post MC1506735",
+      "quote": "the new status report generating capability, which can be accessed via the Planner Agent in Copilot or the Reports tab in Planner.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Scope; Governance guidance",
+      "type": "record",
+      "claim": "Reports can be accessed through the Reports tab in Planner.",
+      "status": "supported",
+      "source": "Message Center post MC1506735",
+      "quote": "the new status report generating capability, which can be accessed via the Planner Agent in Copilot or the Reports tab in Planner.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Risk assessment: Data exposure; Security & identity; rationale: risk",
+      "type": "record",
+      "claim": "Report generation uses only Planner content the requesting user already has permission to access.",
+      "status": "supported",
+      "source": "Message Center post MC1506735",
+      "quote": "Reports will be generated only from Planner content that users already have permission to access.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 14,
-      "where": "What's changing; Scope; Governance guidance",
-      "type": "record",
-      "claim": "The capability is accessible through Planner Agent in Copilot.",
-      "status": "supported",
-      "source": "Message Center post MC1506735",
-      "quote": "which can be accessed via the Planner Agent in Copilot or the Reports tab in Planner.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "What's changing; Scope; Governance guidance",
-      "type": "record",
-      "claim": "The capability is accessible through the Reports tab in Planner.",
-      "status": "supported",
-      "source": "Message Center post MC1506735",
-      "quote": "which can be accessed via the Planner Agent in Copilot or the Reports tab in Planner.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "What's changing; Risk assessment: Data exposure, Security & identity; rationale: risk",
-      "type": "record",
-      "claim": "Reports use only Planner content the requesting user can already access and do not grant access to inaccessible plans.",
-      "status": "supported",
-      "source": "Message Center post MC1506735",
-      "quote": "It does not grant the agent access to plans the requesting user cannot access.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
       "where": "What's changing; Governance controls",
       "type": "record",
       "claim": "Existing Planner sharing permissions continue to apply.",
@@ -216,7 +183,7 @@
       "fix": null
     },
     {
-      "n": 18,
+      "n": 15,
       "where": "What's changing; Governance controls",
       "type": "record",
       "claim": "Existing Copilot policies continue to apply.",
@@ -227,7 +194,7 @@
       "fix": null
     },
     {
-      "n": 19,
+      "n": 16,
       "where": "What's changing; Governance controls",
       "type": "record",
       "claim": "Existing agent controls continue to apply.",
@@ -238,8 +205,8 @@
       "fix": null
     },
     {
-      "n": 20,
-      "where": "What's changing; Why it matters; Risk assessment; Scope; Governance guidance",
+      "n": 17,
+      "where": "What's changing; Risk assessment: Change & support; Scope; Governance guidance",
       "type": "record",
       "claim": "Report generation requires a plan shared with a Microsoft 365 Group.",
       "status": "supported",
@@ -249,8 +216,8 @@
       "fix": null
     },
     {
-      "n": 21,
-      "where": "What's changing; Why it matters; Risk assessment; Scope; Governance guidance",
+      "n": 18,
+      "where": "What's changing; Risk assessment: Change & support; Scope; Governance guidance",
       "type": "record",
       "claim": "Report generation requires sufficient task data in the plan.",
       "status": "supported",
@@ -260,7 +227,7 @@
       "fix": null
     },
     {
-      "n": 22,
+      "n": 19,
       "where": "What's changing; rationale: risk",
       "type": "record",
       "claim": "The generated report appears in the Microsoft 365 Copilot conversation.",
@@ -271,7 +238,7 @@
       "fix": null
     },
     {
-      "n": 23,
+      "n": 20,
       "where": "What's changing; Why it matters; Risk assessment; Governance guidance; rationale: risk",
       "type": "record",
       "claim": "Users can export the report to a Copilot Page.",
@@ -282,43 +249,43 @@
       "fix": null
     },
     {
+      "n": 21,
+      "where": "What's changing; Why it matters; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "A report exported to a Copilot Page can be shared by link.",
+      "status": "supported",
+      "source": "Message Center post MC1506735",
+      "quote": "Reports can be exported to a Copilot Page and shared by link or exported to Word and PDF.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Why it matters; Risk assessment; Governance guidance; rationale: risk",
+      "type": "record",
+      "claim": "Users can export the report to Word.",
+      "status": "supported",
+      "source": "Message Center post MC1506735",
+      "quote": "Reports can be exported to a Copilot Page and shared by link or exported to Word and PDF.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Why it matters; Risk assessment; Governance guidance; rationale: risk",
+      "type": "record",
+      "claim": "Users can export the report to PDF.",
+      "status": "supported",
+      "source": "Message Center post MC1506735",
+      "quote": "Reports can be exported to a Copilot Page and shared by link or exported to Word and PDF.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 24,
-      "where": "What's changing; Why it matters; Risk assessment",
-      "type": "record",
-      "claim": "Users can share the exported Copilot Page by link.",
-      "status": "supported",
-      "source": "Message Center post MC1506735",
-      "quote": "Reports can be exported to a Copilot Page and shared by link",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "What's changing; Why it matters; Risk assessment; Governance guidance; rationale: risk",
-      "type": "record",
-      "claim": "Users can export reports to Word.",
-      "status": "supported",
-      "source": "Message Center post MC1506735",
-      "quote": "Reports can be exported to a Copilot Page and shared by link or exported to Word and PDF.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "What's changing; Why it matters; Risk assessment; Governance guidance; rationale: risk",
-      "type": "record",
-      "claim": "Users can export reports to PDF.",
-      "status": "supported",
-      "source": "Message Center post MC1506735",
-      "quote": "Reports can be exported to a Copilot Page and shared by link or exported to Word and PDF.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
       "where": "What's changing; Risk assessment: Autonomy & actions",
       "type": "record",
-      "claim": "Generating a report does not edit the source plan or its tasks.",
+      "claim": "Generating the report does not edit the source plan or its tasks.",
       "status": "supported",
       "source": "Message Center post MC1506735",
       "quote": "This change does not edit the source plan or its tasks.",
@@ -326,10 +293,10 @@
       "fix": null
     },
     {
-      "n": 28,
+      "n": 25,
       "where": "What's changing; Risk assessment: Data exposure",
       "type": "record",
-      "claim": "A user can attach a file as a template, and that file is used for the request.",
+      "claim": "A user can attach a template file, which is also used for the request.",
       "status": "supported",
       "source": "Message Center post MC1506735",
       "quote": "If the user attaches a file as a template, that file will also be used for the request.",
@@ -337,10 +304,10 @@
       "fix": null
     },
     {
-      "n": 29,
+      "n": 26,
       "where": "What's changing; Risk assessment: Data exposure; Open questions",
       "type": "behaviour",
-      "claim": "The Loop documentation says Planner Agent status reports open in Loop.",
+      "claim": "Microsoft Learn says Planner Agent status reports open in Loop.",
       "status": "supported",
       "source": "https://learn.microsoft.com/planner/understand-how-disabling-loop-affects-planner",
       "quote": "Planner Agent status reports open in Loop and are stored in the plan's SharePoint folder.",
@@ -348,10 +315,10 @@
       "fix": null
     },
     {
-      "n": 30,
+      "n": 27,
       "where": "What's changing; Risk assessment: Data exposure; Open questions",
       "type": "behaviour",
-      "claim": "The Loop documentation says Planner Agent status reports are stored in the plan's SharePoint folder.",
+      "claim": "Microsoft Learn says Planner Agent status reports are stored in the plan's SharePoint folder, unlike the destinations described in the notice.",
       "status": "supported",
       "source": "https://learn.microsoft.com/planner/understand-how-disabling-loop-affects-planner",
       "quote": "Planner Agent status reports open in Loop and are stored in the plan's SharePoint folder.",
@@ -359,7 +326,7 @@
       "fix": null
     },
     {
-      "n": 31,
+      "n": 28,
       "where": "What's changing; Scope",
       "type": "record",
       "claim": "The notice says Worldwide public preview rollout has completed.",
@@ -370,29 +337,29 @@
       "fix": null
     },
     {
-      "n": 32,
+      "n": 29,
       "where": "What's changing; Scope; front matter: changes",
       "type": "record",
       "claim": "The notice says Worldwide general availability rollout begins in late October 2026.",
       "status": "supported",
       "source": "Message Center post MC1506735",
-      "quote": "General Availability (Worldwide): Rollout begins in late October 2026",
+      "quote": "General Availability (Worldwide): Rollout begins in late October 2026 and is expected to complete by mid-November 2026.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 33,
+      "n": 30,
       "where": "What's changing; Why it matters; Scope; front matter: changes",
       "type": "record",
       "claim": "The notice expects general availability rollout to finish by mid-November 2026.",
       "status": "supported",
       "source": "Message Center post MC1506735",
-      "quote": "and is expected to complete by mid-November 2026.",
+      "quote": "General Availability (Worldwide): Rollout begins in late October 2026 and is expected to complete by mid-November 2026.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 34,
+      "n": 31,
       "where": "What's changing; Governance guidance: At rollout",
       "type": "record",
       "claim": "Microsoft's end date for the notice is 2026-12-15.",
@@ -403,10 +370,10 @@
       "fix": null
     },
     {
-      "n": 35,
+      "n": 32,
       "where": "What's changing; front matter: changes",
       "type": "record",
-      "claim": "The notice sets no act-by date.",
+      "claim": "The supplied notice sets no act-by date.",
       "status": "supported",
       "source": "Message Center post MC1506735",
       "quote": "Act by: none",
@@ -414,156 +381,189 @@
       "fix": null
     },
     {
-      "n": 36,
-      "where": "front matter: defaultState; summary; Why it matters; rationale: risk",
-      "type": "default",
-      "claim": "The feature arrives without additional administrator action for licensed Planner Agent users in organisations with Planner agent already enabled.",
+      "n": 33,
+      "where": "Why it matters; Scope",
+      "type": "record",
+      "claim": "The affected organisations have Planner agent enabled as part of the Microsoft 365 Copilot app.",
       "status": "supported",
       "source": "Message Center post MC1506735",
-      "quote": "Organizations who have Planner agent enabled as part of the Microsoft 365 Copilot app.- Within those organizations, users with an active Microsoft 365 Copilot license who use Planner Agent.",
+      "quote": "Organizations who have Planner agent enabled as part of the Microsoft 365 Copilot app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "front matter: licensing.model; licensing.notes; summary; Cost and licensing; Scope; rationales",
+      "type": "licensing",
+      "claim": "The licensing model is per-user: generating reports requires an active Microsoft 365 Copilot licence.",
+      "status": "supported",
+      "source": "Message Center post MC1506735",
+      "quote": "Within those organizations, users with an active Microsoft 365 Copilot license who use Planner Agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "front matter: licensing.notes; Risk assessment; Cost and licensing; Scope; rationale: impact",
+      "type": "licensing",
+      "claim": "Viewing reports does not require a Microsoft 365 Copilot licence.",
+      "status": "supported",
+      "source": "Message Center post MC1506735",
+      "quote": "Users who view or edit reports do not require a Microsoft 365 Copilot license; a Copilot license is required only to generate reports.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "front matter: licensing.notes; Risk assessment; Cost and licensing; Scope; rationale: impact",
+      "type": "licensing",
+      "claim": "Editing reports does not require a Microsoft 365 Copilot licence.",
+      "status": "supported",
+      "source": "Message Center post MC1506735",
+      "quote": "Users who view or edit reports do not require a Microsoft 365 Copilot license; a Copilot license is required only to generate reports.",
       "severity": null,
       "fix": null
     },
     {
       "n": 37,
-      "where": "front matter: licensing.model, licensing.notes; summary; Cost and licensing; Scope; rationales",
-      "type": "licensing",
-      "claim": "Generating a report requires an active Microsoft 365 Copilot per-user licence.",
+      "where": "front matter: defaultState; summary; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "The default state is on for the affected organisations, with no administrator action required for the capability to arrive.",
       "status": "supported",
       "source": "Message Center post MC1506735",
-      "quote": "users with an active Microsoft 365 Copilot license who use Planner Agent.- Note: Users who view or edit reports do not require a Microsoft 365 Copilot license; a Copilot license is required only to generate reports.",
+      "quote": "Organizations who have Planner agent enabled as part of the Microsoft 365 Copilot app. ... No action is required.",
       "severity": null,
       "fix": null
     },
     {
       "n": 38,
-      "where": "front matter: licensing.notes; Risk assessment; Cost and licensing; Scope; rationale: impact",
-      "type": "licensing",
-      "claim": "Viewing a report does not require a Microsoft 365 Copilot licence.",
+      "where": "Why it matters; Risk assessment: Data exposure; Governance guidance",
+      "type": "behaviour",
+      "claim": "Exporting and sharing a Copilot Page allows redistribution of report content under page permissions rather than merely the source plan's membership.",
       "status": "supported",
-      "source": "Message Center post MC1506735",
-      "quote": "Users who view or edit reports do not require a Microsoft 365 Copilot license",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-permission",
+      "quote": "Grants access to a specific page (not the whole notebook) with options for edit or read-only access. The user can choose to use a company share link or people-specific share link, based on your organizational sharing settings.",
       "severity": null,
       "fix": null
     },
     {
       "n": 39,
-      "where": "front matter: licensing.notes; Risk assessment; Cost and licensing; Scope; rationale: impact",
-      "type": "licensing",
-      "claim": "Editing a report does not require a Microsoft 365 Copilot licence.",
+      "where": "Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "This feature does not grant the agent access to plans the requesting user cannot access.",
       "status": "supported",
       "source": "Message Center post MC1506735",
-      "quote": "Users who view or edit reports do not require a Microsoft 365 Copilot license",
+      "quote": "It does not grant the agent access to plans the requesting user cannot access.",
       "severity": null,
       "fix": null
     },
     {
       "n": 40,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "The Planner Agent access documentation lists a Microsoft Copilot licence as a prerequisite.",
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "Microsoft has not specified a different execution identity for creating these reports.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/planner/turn-off-planner-agent",
-      "quote": "Users must have the following license to access Planner Agent in Planner:\n- A Microsoft Copilot license.",
+      "source": null,
+      "quote": "Searched: Planner Agent status reports audit logging identity report generation; \"Planner\" \"status reports\" \"identity\". Opened turn-off-planner-agent, understand-how-disabling-loop-affects-planner and audit-copilot; read MC1506735. No report-creation identity specified.",
       "severity": null,
       "fix": null
     },
     {
       "n": 41,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "The notice and Planner Agent access page name no separate status-report price.",
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The notice describes user-reviewed drafting and does not describe autonomous sending of reports.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Planner Agent AI generated status reports pricing Copilot Credits billing license. Read MC1506735 and learn.microsoft.com/planner/turn-off-planner-agent in full; neither names a separate report price. Also opened learn.microsoft.com/microsoft-365/copilot/pay-as-you-go/meters.",
+      "source": "Message Center post MC1506735",
+      "quote": "Users can customize reports by reporting period, sections, tone, length, audience, and additional instructions before reviewing and refining the generated content.",
       "severity": null,
       "fix": null
     },
     {
       "n": 42,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost; Open questions",
-      "type": "absence",
-      "claim": "The notice and Planner Agent access page name no separate status-report meter or Copilot Credits rate.",
+      "where": "Risk assessment: Change & support; Cost and licensing; Scope",
+      "type": "applicability",
+      "claim": "Loop must be enabled for the tenant for the documented Planner Agent report experience.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Planner Agent AI generated status reports pricing Copilot Credits billing license. Read MC1506735, planner/turn-off-planner-agent and microsoft-365/copilot/pay-as-you-go/meters; billing-licensing search excerpts cover general agents, not a distinct status-report rate.",
+      "source": "https://learn.microsoft.com/planner/understand-how-disabling-loop-affects-planner",
+      "quote": "For Planner Agent experiences, Planner checks for Loop access as part of a user's Microsoft 365 Copilot license. Loop must also be enabled for the tenant.",
       "severity": null,
       "fix": null
     },
     {
       "n": 43,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "Planner checks Loop access as part of a user's Microsoft 365 Copilot licence.",
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The Reports tab remains visible when Loop is disabled.",
       "status": "supported",
       "source": "https://learn.microsoft.com/planner/understand-how-disabling-loop-affects-planner",
-      "quote": "For Planner Agent experiences, Planner checks for Loop access as part of a user's Microsoft 365 Copilot license.",
+      "quote": "When Loop is disabled, the Reports tab remains visible to your users, but reports fail to open or generate.",
       "severity": null,
       "fix": null
     },
     {
       "n": 44,
-      "where": "Risk assessment: Change & support; Cost and licensing; Scope; Governance guidance",
-      "type": "applicability",
-      "claim": "Loop must also be enabled for the tenant for the documented Planner Agent report experience.",
+      "where": "Risk assessment: Change & support; Governance controls",
+      "type": "behaviour",
+      "claim": "Disabling Loop prevents the documented Planner Agent reports from opening.",
       "status": "supported",
       "source": "https://learn.microsoft.com/planner/understand-how-disabling-loop-affects-planner",
-      "quote": "Loop must also be enabled for the tenant.",
+      "quote": "When Loop is disabled, the Reports tab remains visible to your users, but reports fail to open or generate.",
       "severity": null,
       "fix": null
     },
     {
       "n": 45,
-      "where": "Risk assessment: Change & support",
+      "where": "Risk assessment: Change & support; Governance controls",
       "type": "behaviour",
-      "claim": "When Loop is disabled, the Reports tab remains visible.",
+      "claim": "Disabling Loop prevents the documented Planner Agent reports from generating.",
       "status": "supported",
       "source": "https://learn.microsoft.com/planner/understand-how-disabling-loop-affects-planner",
-      "quote": "When Loop is disabled, the Reports tab remains visible to your users",
+      "quote": "When Loop is disabled, the Reports tab remains visible to your users, but reports fail to open or generate.",
       "severity": null,
       "fix": null
     },
     {
       "n": 46,
-      "where": "Risk assessment: Change & support; Governance guidance; Governance controls",
-      "type": "behaviour",
-      "claim": "Disabling Loop causes reports to fail to open.",
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The Planner Agent access page lists a Microsoft Copilot licence as a prerequisite for Planner Agent in Planner.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/planner/understand-how-disabling-loop-affects-planner",
-      "quote": "When Loop is disabled, the Reports tab remains visible to your users, but reports fail to open or generate.",
+      "source": "https://learn.microsoft.com/planner/turn-off-planner-agent",
+      "quote": "Users must have the following license to access Planner Agent in Planner: - A Microsoft Copilot license.",
       "severity": null,
       "fix": null
     },
     {
       "n": 47,
-      "where": "Risk assessment: Change & support; Governance guidance; Governance controls",
-      "type": "behaviour",
-      "claim": "Disabling Loop causes reports to fail to generate.",
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Neither the notice nor the Planner Agent access page names a separate price for status reports.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/planner/understand-how-disabling-loop-affects-planner",
-      "quote": "When Loop is disabled, the Reports tab remains visible to your users, but reports fail to open or generate.",
+      "source": null,
+      "quote": "Searched: Planner Agent AI status reports pricing billing Copilot Credits Microsoft 365 Copilot license. Read MC1506735 and turn-off-planner-agent; opened billing-licensing and Copilot pay-as-you-go overview/meters. No separate status-report price in the two cited sources.",
       "severity": null,
       "fix": null
     },
     {
       "n": 48,
-      "where": "Risk assessment: Security & identity",
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "absence",
-      "claim": "Microsoft has not specified a different identity under which this report is created.",
+      "claim": "Neither the notice nor the Planner Agent access page names a separate meter or Copilot Credits rate for status reports.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Planner Agent\" \"status reports\" \"identity\". Read MC1506735 and planner/turn-off-planner-agent; identity search returned generic Agent 365 execution modes, not a report-creation identity for this feature.",
+      "quote": "Searched: Planner Agent AI status reports pricing billing Copilot Credits Microsoft 365 Copilot license. Read MC1506735, turn-off-planner-agent, billing-licensing and Copilot pay-as-you-go overview/meters; no status-report meter or rate in the two cited sources.",
       "severity": null,
       "fix": null
     },
     {
       "n": 49,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "record",
-      "claim": "The notice does not describe the agent autonomously sending a report.",
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Planner checks Loop access as part of the user's Microsoft 365 Copilot licence rather than documenting a separate Loop charge here.",
       "status": "supported",
-      "source": "Message Center post MC1506735",
-      "quote": "When an authorized user requests a report, Planner Agent uses information from a plan they can access to create a status report.",
+      "source": "https://learn.microsoft.com/planner/understand-how-disabling-loop-affects-planner",
+      "quote": "For Planner Agent experiences, Planner checks for Loop access as part of a user's Microsoft 365 Copilot license. Loop must also be enabled for the tenant.",
       "severity": null,
       "fix": null
     },
@@ -571,73 +571,40 @@
       "n": 50,
       "where": "controls[0].ui; Governance controls table",
       "type": "admin-path",
-      "claim": "The complete blocking path is Microsoft 365 admin center > Agents > All agents > agent > Block.",
-      "status": "contradicted",
+      "claim": "The general organisation-wide Block path is Microsoft 365 admin center > Agents > All agents > agent > Block > Block agent > Save.",
+      "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
-      "quote": "In the Block agent or Unblock agent pane that opens, select either Block agent or Unblock agent, and then select Save.",
-      "severity": "blocker",
-      "fix": "Replace controls[0].ui.path and its rendered table path with 'Agents > All agents > agent > Block > Block agent > Save'. The cited page requires selecting Block agent in the pane after selecting Block; the current path omits that selection, not just the final Save."
+      "quote": "Select Agents > All agents. ... select an agent from the list of agents. ... select Block or Unblock. ... select either Block agent or Unblock agent, and then select Save.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 51,
       "where": "controls[0].api; Governance controls table",
       "type": "command",
-      "claim": "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block blocks a Copilot package.",
+      "claim": "The documented general package-blocking call is POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
-      "quote": "Block a Copilot package to prevent its usage.\nPOST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block",
+      "quote": "Block a Copilot package to prevent its usage. ... POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block",
       "severity": null,
       "fix": null
     },
     {
       "n": 52,
-      "where": "controls[0].governs, note; Governance controls; Governance guidance",
-      "type": "applicability",
-      "claim": "Blocking an agent restricts its use across the organisation, and the notice permits blocking Planner Agent tenant-wide.",
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The Graph call is beta and unsupported for production applications.",
       "status": "supported",
-      "source": "Message Center post MC1506735",
-      "quote": "Review Planner Agent and Copilot agent availability and settings in the Microsoft 365 admin center. If needed, the agent can be blocked tenant-wide.",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "APIs under the /beta version are subject to change. Use of these APIs in production applications is not supported.",
       "severity": null,
       "fix": null
     },
     {
       "n": 53,
       "where": "controls[0].note; Governance controls",
-      "type": "absence",
-      "claim": "Neither the agent actions page nor the package-block reference names Planner Agent specifically.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Planner Agent restrict access admin center UI AllowPlannerCopilot security group status reports. Opened microsoft-agent-365/admin/agent-actions and microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block in full; neither contains Planner Agent.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 54,
-      "where": "controls[0].note; Governance controls",
-      "type": "behaviour",
-      "claim": "The Graph package-block call is a beta API.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
-      "quote": "APIs under the /beta version are subject to change.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 55,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "The beta Graph call is unsupported for production use.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
-      "quote": "Use of these APIs in production applications is not supported.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 56,
-      "where": "controls[0].note; Governance controls",
       "type": "licensing",
-      "claim": "The Package Management API requires a Microsoft Agent 365 licence.",
+      "claim": "Access to the package-management Graph API requires a Microsoft Agent 365 licence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
       "quote": "Access to the Package Management API requires a Microsoft Agent 365 license.",
@@ -645,76 +612,87 @@
       "fix": null
     },
     {
-      "n": 57,
+      "n": 54,
       "where": "controls[0].note",
       "type": "command",
-      "claim": "The Graph block call requires CopilotPackages.ReadWrite.All permission.",
+      "claim": "The Graph package-blocking API requires CopilotPackages.ReadWrite.All.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
-      "quote": "Delegated (work or school account) | CopilotPackages.ReadWrite.All | Not available.",
+      "quote": "| Delegated (work or school account) | CopilotPackages.ReadWrite.All | Not available. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[0].note; Governance controls",
+      "type": "absence",
+      "claim": "Neither the agent actions page nor the package-block reference explicitly names Planner Agent.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Planner and Block in the fetched agent-actions page; read copilotpackage-block in full. Neither page names Planner Agent; MC1506735 independently confirms tenant-wide blocking.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "absence",
+      "claim": "No admin UI equivalent is documented for the Planner-specific all-users or security-group PowerShell setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Planner Agent AI generated status reports disable separately admin UI AllowPlannerCopilot security group settings; \"PlannerCopilotAllowedGroupId\" \"admin center\". Read turn-off-planner-agent; results document PowerShell, not a UI for this Planner policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[1].api; Governance controls table; Governance guidance",
+      "type": "command",
+      "claim": "Set-PlannerConfiguration -AllowPlannerCopilot $true -PlannerCopilotAllowedGroupId <security group id> restricts Planner Agent in Planner to the specified security group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/turn-off-planner-agent",
+      "quote": "To turn on Planner Agent and Planner Agent chat for a specific security group: ... Set-PlannerConfiguration -AllowPlannerCopilot $true -PlannerCopilotAllowedGroupId <security group id>",
       "severity": null,
       "fix": null
     },
     {
       "n": 58,
-      "where": "controls[1].api; Governance controls table",
-      "type": "command",
-      "claim": "Set-PlannerConfiguration -AllowPlannerCopilot $true -PlannerCopilotAllowedGroupId <security group id> enables Planner Agent in Planner for a security group.",
+      "where": "controls[1].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "Planner policy changes can take up to one hour to take effect.",
       "status": "supported",
       "source": "https://learn.microsoft.com/planner/turn-off-planner-agent",
-      "quote": "To turn on Planner Agent and Planner Agent chat for a specific security group:\nSet-PlannerConfiguration -AllowPlannerCopilot $true -PlannerCopilotAllowedGroupId <security group id>",
+      "quote": "The policy changes may require up to an hour to become effective.",
       "severity": null,
       "fix": null
     },
     {
       "n": 59,
-      "where": "controls[1].ui; Governance controls table",
-      "type": "absence",
-      "claim": "No admin UI equivalent is documented for the Planner-specific AllowPlannerCopilot and PlannerCopilotAllowedGroupId setting.",
+      "where": "controls[1].note; Governance controls",
+      "type": "applicability",
+      "claim": "The Planner PowerShell documentation covers Planner Agent task execution and status reporting in Planner.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Planner\" \"AllowPlannerCopilot\" \"admin center\" \"settings\"; Planner Agent restrict access admin center UI AllowPlannerCopilot security group status reports. Read planner/turn-off-planner-agent and manage-copilot-agents-integrated-apps; no UI for these Planner configuration fields.",
+      "source": "https://learn.microsoft.com/planner/turn-off-planner-agent",
+      "quote": "restrict access to the Planner Agent experience for task execution and status reporting in both basic and premium plans as well as the Planner Agent chat in premium plans only.",
       "severity": null,
       "fix": null
     },
     {
       "n": 60,
-      "where": "controls[1].note; Governance controls",
-      "type": "applicability",
-      "claim": "The Planner PowerShell access documentation covers task execution and status reporting in basic and premium plans.",
+      "where": "controls[1].note; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not explicitly confirmed that the Planner PowerShell setting governs this new Copilot-app report capability.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/planner/turn-off-planner-agent",
-      "quote": "restrict access to the Planner Agent experience for task execution and status reporting in both basic and premium plans",
+      "source": null,
+      "quote": "Searched: Planner Agent AI generated status reports disable separately admin UI AllowPlannerCopilot security group settings; \"PlannerCopilotAllowedGroupId\" \"admin center\". Read turn-off-planner-agent and MC1506735; neither ties this setting to the new Copilot-app reports.",
       "severity": null,
       "fix": null
     },
     {
       "n": 61,
-      "where": "controls[1].note; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "The cited documentation does not establish that the Planner PowerShell setting governs the new reports in Planner Agent in the Microsoft 365 Copilot app.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Planner Agent restrict access admin center UI AllowPlannerCopilot security group status reports. Read planner/turn-off-planner-agent and manage-copilot-agents-integrated-apps; the former separates Planner from Microsoft Copilot management and does not identify roadmap 567886.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 62,
-      "where": "controls[1].note; Governance controls table",
-      "type": "behaviour",
-      "claim": "Planner configuration changes may take up to one hour to take effect.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/planner/turn-off-planner-agent",
-      "quote": "Changes may take up to 1 hour to reflect across your organization.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 63,
       "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "The Planner access page directs readers to Microsoft 365 admin center documentation for managing Planner Agent in Microsoft Copilot.",
+      "type": "applicability",
+      "claim": "The Planner PowerShell article directs administrators to the Microsoft 365 admin center guidance for Planner Agent in Microsoft Copilot.",
       "status": "supported",
       "source": "https://learn.microsoft.com/planner/turn-off-planner-agent",
       "quote": "For information on how to manage the Planner Agent in Microsoft Copilot, please see Manage agents in the Microsoft 365 admin center.",
@@ -722,40 +700,29 @@
       "fix": null
     },
     {
-      "n": 64,
+      "n": 62,
       "where": "Governance controls",
       "type": "behaviour",
-      "claim": "Disabling Loop affects other Planner and Loop experiences, not just reports.",
+      "claim": "Disabling Loop affects other Planner and Loop experiences, so it is not a report-only control.",
       "status": "supported",
       "source": "https://learn.microsoft.com/planner/understand-how-disabling-loop-affects-planner",
-      "quote": "When Loop is disabled, users cannot create Loop task lists, so no tasks sync into Planner from them.",
+      "quote": "When Loop is disabled, users cannot create Loop task lists, so no tasks sync into Planner from them. Tasks users create directly in Planner are not affected.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 65,
-      "where": "Open questions",
-      "type": "absence",
-      "claim": "The cited sources do not specify an audit event or report for generating a status report.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Planner Agent\" \"status\" \"audit\" \"generate\"; Planner Agent status report generation audit logs identity user permissions separate sharing exported reports. Read cited pages and Purview Planner activities search excerpts; no status-report-generation event or dedicated report identified.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 66,
-      "where": "summary; Why it matters; Governance guidance: Before rollout",
+      "n": 63,
+      "where": "summary; Cost and licensing; Governance guidance",
       "type": "record",
-      "claim": "The notice requires no action but recommends confirming intended users' active Copilot licences.",
+      "claim": "The notice recommends confirming that intended users have active Microsoft 365 Copilot licences.",
       "status": "supported",
       "source": "Message Center post MC1506735",
-      "quote": "No action is required. We recommend that you:\n- Confirm that intended users have an active Microsoft 365 Copilot license.",
+      "quote": "Confirm that intended users have an active Microsoft 365 Copilot license.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 67,
+      "n": 64,
       "where": "Governance guidance: At rollout",
       "type": "record",
       "claim": "The notice recommends reviewing Planner Agent and Copilot agent availability settings in the Microsoft 365 admin center.",
@@ -766,10 +733,10 @@
       "fix": null
     },
     {
-      "n": 68,
+      "n": 65,
       "where": "Governance guidance: Before rollout",
       "type": "record",
-      "claim": "The notice recommends informing support teams and users about the report capability and its entry points.",
+      "claim": "The notice recommends informing support teams and users about the capability and its entry points.",
       "status": "supported",
       "source": "Message Center post MC1506735",
       "quote": "Inform support teams and users about the new status report generating capability, which can be accessed via the Planner Agent in Copilot or the Reports tab in Planner.",
@@ -777,7 +744,7 @@
       "fix": null
     },
     {
-      "n": 69,
+      "n": 66,
       "where": "Governance guidance: After rollout",
       "type": "record",
       "claim": "The notice recommends updating documentation, training and change management materials.",
@@ -788,54 +755,54 @@
       "fix": null
     },
     {
-      "n": 70,
-      "where": "Why it matters; Risk assessment: Data exposure; Governance guidance: At rollout",
-      "type": "behaviour",
-      "claim": "Exporting plan information to a Copilot Page creates shareable output whose access can be granted separately from plan membership.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-permission?view=o365-worldwide#content-permissions-mechanism",
-      "quote": "Page Sharing: Grants access to a specific page (not the whole notebook) with options for edit or read-only access. The user can choose to use a company share link or people-specific share link, based on your organizational sharing settings.",
-      "severity": "minor",
-      "fix": "Add 'Overview of Copilot Pages and Copilot Notebooks permissions' at https://learn.microsoft.com/microsoft-365/loop/cpcn-permission to sources for the statement about exported page permissions."
+      "n": 67,
+      "where": "Open questions: auditing",
+      "type": "absence",
+      "claim": "Whether generating a report is audited or reported on, and where this appears, is undocumented.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/audit-copilot",
+      "quote": "The system automatically generates audit logs when a user interacts with Copilot, Cowork, or an AI application. ... Access Copilot audit logs by using the Microsoft Purview portal and selecting Audit.",
+      "severity": "blocker",
+      "fix": "Replace the auditing bullet with: 'When auditing is enabled, Copilot user interactions are logged in Microsoft Purview Audit. Does status report generation have a distinct report-specific event?' Cite https://learn.microsoft.com/purview/audit-copilot. This states the documented platform coverage without asserting a report-specific event."
     },
     {
-      "n": 71,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "The Loop access prerequisite is checked within the existing Microsoft 365 Copilot licence rather than described as a separate report charge.",
+      "n": 68,
+      "where": "front matter: cost; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "For the already licensed audience identified by the notice, the known incremental cost is indirect administration, communications and training rather than a separately published report charge.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/planner/understand-how-disabling-loop-affects-planner",
-      "quote": "For Planner Agent experiences, Planner checks for Loop access as part of a user's Microsoft 365 Copilot license. Loop must also be enabled for the tenant.",
+      "source": "Message Center post MC1506735",
+      "quote": "Within those organizations, users with an active Microsoft 365 Copilot license who use Planner Agent. ... Update internal documentation, training, and change management materials as appropriate.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 72,
-      "where": "Governance guidance: Before rollout; controls",
-      "type": "consistency",
-      "claim": "The checklist's instruction to check users' Copilot licences has a corresponding controls row.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Checklist: 'Confirm which users hold an active Microsoft 365 Copilot licence'. The only controls rows are tenant-wide agent blocking and Planner Agent access by security group.",
-      "severity": "minor",
-      "fix": "Remove the 'Confirm which users hold an active Microsoft 365 Copilot licence' checklist bullet; the licence prerequisite remains documented in Cost and licensing and Scope."
+      "n": 69,
+      "where": "controls[0].note; Governance guidance; Governance controls",
+      "type": "record",
+      "claim": "The notice says Planner Agent can be blocked tenant-wide.",
+      "status": "supported",
+      "source": "Message Center post MC1506735",
+      "quote": "If needed, the agent can be blocked tenant-wide.",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 73,
-      "where": "Governance guidance: Before rollout; controls",
-      "type": "consistency",
-      "claim": "The checklist's instruction to check tenant Loop enablement has a corresponding controls row.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Checklist: 'Check that Loop is enabled for the tenant'. The controls table has only agent blocking and Planner Agent security-group access, with no Loop configuration row.",
-      "severity": "minor",
-      "fix": "Remove the 'Check that Loop is enabled for the tenant' checklist bullet; retain the documented Loop prerequisite and failure behaviour in Scope and Risk assessment."
+      "n": 70,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap products are Planner and Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Planner\", \"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-17T03:37:47.528Z",
+    "at": "2026-11-17T04:20:13.092Z",
     "summary": {
-      "links": 6,
+      "links": 7,
       "unreachable": 0,
       "uiPaths": 1,
       "uiPathsWithMissingWords": 0,
@@ -873,6 +840,11 @@
         "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
         "ok": true,
         "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/loop/cpcn-permission",
+        "ok": true,
+        "status": 200
       }
     ],
     "controlChecks": [
@@ -885,7 +857,9 @@
         "segments": [
           "Agents",
           "All agents",
-          "Block"
+          "Block",
+          "Block agent",
+          "Save"
         ],
         "missing": []
       },
@@ -910,5 +884,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-17",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

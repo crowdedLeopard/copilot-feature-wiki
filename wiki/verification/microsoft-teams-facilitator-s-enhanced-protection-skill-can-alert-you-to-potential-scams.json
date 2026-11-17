@@ -4,37 +4,35 @@
   "title": "Microsoft Teams: Facilitator Protection skill warns of suspected social engineering",
   "status": "held",
   "date": "2026-11-17",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 2,
   "verifierVerdict": "hold",
-  "notes": [
-    "claim 44: severity blocker on a rationale: impact rating lowered to minor; ratings are judgements and cannot hold a page"
-  ],
+  "notes": [],
   "hold": {
     "reason": "failed",
     "since": "2026-11-17",
     "reasons": [
-      "3 blocking findings (claims 24, 32, 43)"
+      "1 blocking finding (claim 44)"
     ]
   },
   "counts": {
-    "claims": 45,
-    "confirmed": 40,
+    "claims": 49,
+    "confirmed": 48,
     "unconfirmed": 0,
-    "contradicted": 5,
-    "blocker": 3,
+    "contradicted": 1,
+    "blocker": 1,
     "major": 0,
-    "minor": 3
+    "minor": 0
   },
-  "summary": "Hold: the PowerShell reference describes the printed call as unblocking an app, so it does not establish a safe blocking command. The briefing also treats published Facilitator prerequisites as unconfirmed and turns conditional warnings into a compulsory choice in its impact rationale.",
+  "summary": "Hold: the controls table says automation is not documented, although Microsoft publishes a PowerShell reference for managing Teams app state. That reference has conflicting blocking examples, which justifies withholding a blocking command but not reporting that documentation does not exist. The briefing otherwise accurately distinguishes the tenant notice's rollout window from the roadmap target and qualifies the Protection-specific unknowns.",
   "claims": [
     {
       "n": 1,
       "where": "summary; What's changing; Risk assessment; rationale: risk",
       "type": "record",
-      "claim": "The Protection skill uses AI to check the meeting transcript.",
+      "claim": "The Protection skill uses AI to check the meeting transcript for signs of social engineering.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "When Facilitator is in your meeting, its Protection skill uses AI to check the meeting transcript for signs of possible social engineering.",
@@ -43,9 +41,9 @@
     },
     {
       "n": 2,
-      "where": "title; summary; What's changing; Risk assessment",
+      "where": "title; summary; What's changing; Why it matters; Scope",
       "type": "record",
-      "claim": "The skill looks for suspected social engineering by outsiders trying to obtain sensitive information.",
+      "claim": "The feature targets suspected attempts by people outside the organisation to trick meeting participants into sharing sensitive information.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Facilitator can help you spot suspected attempts by people outside your organization to trick you into sharing sensitive information during a meeting.",
@@ -54,18 +52,18 @@
     },
     {
       "n": 3,
-      "where": "What's changing; Risk assessment",
+      "where": "title; summary; What's changing; Risk assessment; rationale: impact",
       "type": "record",
-      "claim": "Users see a warning in the meeting if a suspected attempt is detected.",
+      "claim": "Users see a warning in the meeting if the skill detects a suspected attempt.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "If it detects a suspected attempt, you'll see a warning in the meeting, with options to end or to temporarily restrict information sharing.",
+      "quote": "If it detects a suspected attempt, you'll see a warning in the meeting",
       "severity": null,
       "fix": null
     },
     {
       "n": 4,
-      "where": "What's changing; Risk assessment; Governance guidance",
+      "where": "What's changing; Risk assessment; rationale: impact",
       "type": "record",
       "claim": "The warning offers users an option to end the meeting.",
       "status": "supported",
@@ -76,12 +74,12 @@
     },
     {
       "n": 5,
-      "where": "What's changing; Risk assessment; Governance guidance",
+      "where": "What's changing; Risk assessment; rationale: impact",
       "type": "record",
       "claim": "The warning offers users an option to temporarily restrict information sharing.",
       "status": "supported",
-      "source": "Message Center post MC1536056",
-      "quote": "Users will have options to end the meeting or temporarily restrict information sharing.",
+      "source": "roadmap record",
+      "quote": "with options to end or to temporarily restrict information sharing.",
       "severity": null,
       "fix": null
     },
@@ -89,7 +87,7 @@
       "n": 6,
       "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
       "type": "record",
-      "claim": "The skill is invoked automatically when Facilitator is present in a meeting with outside participants.",
+      "claim": "The Protection skill is invoked automatically when Facilitator is present in a meeting with participants outside the organisation.",
       "status": "supported",
       "source": "Message Center post MC1536056",
       "quote": "When Facilitator is present in a meeting with participants outside your organization, the Protection skill is invoked automatically.",
@@ -100,7 +98,7 @@
       "n": 7,
       "where": "front matter: defaultState; summary; What's changing; Why it matters",
       "type": "default",
-      "claim": "The Protection skill is on without an administrator taking action to enable it.",
+      "claim": "The Protection skill's default state is on for its intended meetings, with no administrator action required to enable it.",
       "status": "supported",
       "source": "Message Center post MC1536056",
       "quote": "No action is required to enable the Protection skill.",
@@ -109,39 +107,6 @@
     },
     {
       "n": 8,
-      "where": "Scope: Users; Why it matters",
-      "type": "record",
-      "claim": "The affected users are those using Facilitator in meetings with participants outside their organisation.",
-      "status": "supported",
-      "source": "Message Center post MC1536056",
-      "quote": "Users who use Facilitator in meetings with participants outside their organization",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
-      "where": "Why it matters",
-      "type": "record",
-      "claim": "Microsoft's compliance notice describes an AI capability interacting with customer data.",
-      "status": "supported",
-      "source": "Message Center post MC1536056",
-      "quote": "This change introduces an AI capability that interacts with customer data.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
-      "where": "Risk assessment: Change & support; Governance guidance",
-      "type": "record",
-      "claim": "Microsoft recommends informing users about warnings and helping them understand the available options.",
-      "status": "supported",
-      "source": "Message Center post MC1536056",
-      "quote": "Inform users that they may receive warnings about suspected social-engineering attempts during meetings with external participants.- Help users understand the available options if a warning appears.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
       "where": "front matter: status; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap status is Rolling out.",
@@ -152,7 +117,7 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 9,
       "where": "front matter: targetDate; What's changing; Scope; Governance guidance; Open questions",
       "type": "record",
       "claim": "The roadmap target is November CY2027.",
@@ -163,10 +128,10 @@
       "fix": null
     },
     {
-      "n": 13,
+      "n": 10,
       "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap release phases are General Availability and Targeted Release.",
+      "claim": "General Availability is a release phase listed in the roadmap record.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
@@ -174,10 +139,21 @@
       "fix": null
     },
     {
-      "n": 14,
+      "n": 11,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "Targeted Release is a release phase listed in the roadmap record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap lists only Worldwide (Standard Multi-Tenant).",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -185,10 +161,10 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 13,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap platforms are Desktop and Mac.",
+      "claim": "Desktop is a platform listed in the roadmap record.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Desktop\", \"Mac\"]",
@@ -196,21 +172,43 @@
       "fix": null
     },
     {
-      "n": 16,
-      "where": "front matter: previewDate",
+      "n": 14,
+      "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap supplies no preview date.",
+      "claim": "Mac is a platform listed in the roadmap record.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"previewDate\": null",
+      "quote": "\"platforms\": [\"Desktop\", \"Mac\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Scope; Governance guidance; Open questions",
+      "type": "record",
+      "claim": "The notice says rollout begins in late January 2027, rather than the roadmap's November CY2027 target.",
+      "status": "supported",
+      "source": "Message Center post MC1536056",
+      "quote": "General Availability (Worldwide): Beginning in late January 2027 and expected to complete by mid-February 2027",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Scope; Governance guidance; Open questions",
+      "type": "record",
+      "claim": "The notice expects rollout to complete by mid-February 2027.",
+      "status": "supported",
+      "source": "Message Center post MC1536056",
+      "quote": "Beginning in late January 2027 and expected to complete by mid-February 2027",
       "severity": null,
       "fix": null
     },
     {
       "n": 17,
-      "where": "What's changing; Scope; Governance guidance; Open questions",
+      "where": "What's changing; Scope",
       "type": "record",
-      "claim": "The notice targets General Availability Worldwide beginning in late January 2027.",
+      "claim": "The notice's rollout window is for General Availability in Worldwide.",
       "status": "supported",
       "source": "Message Center post MC1536056",
       "quote": "General Availability (Worldwide): Beginning in late January 2027 and expected to complete by mid-February 2027",
@@ -219,20 +217,9 @@
     },
     {
       "n": 18,
-      "where": "What's changing; Scope; Governance guidance; Open questions",
-      "type": "record",
-      "claim": "The notice expects rollout completion by mid-February 2027.",
-      "status": "supported",
-      "source": "Message Center post MC1536056",
-      "quote": "General Availability (Worldwide): Beginning in late January 2027 and expected to complete by mid-February 2027",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
       "where": "What's changing",
       "type": "record",
-      "claim": "The notice sets no act-by date.",
+      "claim": "The supplied notice sets no act-by date.",
       "status": "supported",
       "source": "Message Center post MC1536056",
       "quote": "Act by: none",
@@ -240,18 +227,62 @@
       "fix": null
     },
     {
-      "n": 20,
-      "where": "What's changing",
-      "type": "absence",
-      "claim": "Microsoft Learn does not yet describe the Protection skill specifically.",
+      "n": 19,
+      "where": "Why it matters",
+      "type": "record",
+      "claim": "The notice identifies this as a new AI capability that interacts with customer data.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Facilitator\" \"Protection\" skill settings license pricing; \"Facilitator\" \"Protection skill\" \"restrict\". Opened learn.microsoft.com/microsoftteams/facilitator-teams and purview/ai-teams-facilitator; neither describes this skill.",
+      "source": "Message Center post MC1536056",
+      "quote": "This change introduces an AI capability that interacts with customer data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Risk assessment: Change & support",
+      "type": "record",
+      "claim": "Microsoft recommends informing users that warnings may appear during meetings with external participants.",
+      "status": "supported",
+      "source": "Message Center post MC1536056",
+      "quote": "Inform users that they may receive warnings about suspected social-engineering attempts during meetings with external participants.",
       "severity": null,
       "fix": null
     },
     {
       "n": 21,
+      "where": "Risk assessment: Change & support",
+      "type": "record",
+      "claim": "Microsoft recommends helping users understand the available options when a warning appears.",
+      "status": "supported",
+      "source": "Message Center post MC1536056",
+      "quote": "Help users understand the available options if a warning appears.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Change & support; Governance controls; rationale: risk",
+      "type": "record",
+      "claim": "Neither the roadmap record nor the supplied notice names an administrator setting for the Protection skill.",
+      "status": "supported",
+      "source": "Message Center post MC1536056",
+      "quote": "No action is required to enable the Protection skill.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet describe the Protection skill itself.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Facilitator\" \"Protection\"; \"Facilitator\" \"Protection skill\" \"restrict\". Opened Set up Facilitator in Microsoft Teams and Use Microsoft Purview to manage data security & compliance for Microsoft Facilitator; neither describes this skill.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
       "where": "What's changing; Scope; Open questions",
       "type": "availability",
       "claim": "Learn currently lists Facilitator as unsupported in external chats and meetings.",
@@ -262,10 +293,54 @@
       "fix": null
     },
     {
-      "n": 22,
-      "where": "Risk assessment: Autonomy & actions; Governance guidance",
+      "n": 25,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not specified where the Protection skill's transcript analysis runs.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Facilitator\" \"Protection skill\" retention processing license prerequisites. Opened Facilitator setup, Purview for Facilitator, and Data, Privacy, and Security for Microsoft Copilot; no Protection-specific processing location was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not specified whether Protection skill warnings are retained.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Facilitator Protection skill licensing charges prerequisites warnings transcript processing retention restrict information sharing. Opened Facilitator setup and Purview for Facilitator; prompt/response retention is documented, but retention of these warnings is not.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "Microsoft has not described which meeting capabilities the Protection warning's temporary information-sharing restriction changes.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Facilitator\" \"Protection skill\" \"restrict\". Read the roadmap, MC1536056 and Facilitator setup; the record and notice name the option without describing the capabilities it changes, and Learn supplies no further explanation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "The roadmap describes detection and user options rather than an automatic information-sharing block.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "If it detects a suspected attempt, you'll see a warning in the meeting, with options to end or to temporarily restrict information sharing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance: Before rollout",
       "type": "default",
-      "claim": "Facilitator is allowed by default.",
+      "claim": "Learn says the Facilitator app is allowed by default.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
       "quote": "Facilitator is allowed by default. However, if all apps are blocked for your organization, Facilitator is also blocked.",
@@ -273,65 +348,32 @@
       "fix": null
     },
     {
-      "n": 23,
-      "where": "controls[0].ui; Governance guidance; Governance controls",
-      "type": "admin-path",
-      "claim": "Facilitator can be allowed or blocked through Teams admin center > Teams apps > Manage apps > Facilitator > Allow or Block.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
-      "quote": "In the left rail navigation, select Teams apps > Manage apps.\nIn the apps list's search box, search for Facilitator.\nSelect Facilitator from the app list.\nIn the actions menu, select Allow or Block.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "controls[0].api; Governance controls table",
-      "type": "command",
-      "claim": "Update-M365TeamsApp -Id <FacilitatorAppId> -IsBlocked $true is the automation equivalent of blocking Facilitator.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
-      "quote": "Update-M365TeamsApp -Id 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b -IsBlocked $true\nUnblocks Bookings app (App ID 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b).",
-      "severity": "blocker",
-      "fix": "Remove the runnable blocking call and set controls[0].api to null. Add to its note: 'The Update-M365TeamsApp reference describes its -IsBlocked $true example as unblocking an app; a reliable blocking call is not established by that reference.' Keep the verified admin UI path."
-    },
-    {
-      "n": 25,
-      "where": "controls[0].governs; controls[0].scope; Governance controls",
-      "type": "applicability",
-      "claim": "The app availability control governs Facilitator at organisational scope.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
-      "quote": "As an admin, you control whether Facilitator is available to your entire organization or to a certain group of users.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "controls[0].note; Risk assessment; Governance controls; Open questions; rationale: risk",
+      "n": 30,
+      "where": "Risk assessment: Change & support; Open questions",
       "type": "absence",
-      "claim": "No Protection-skill-specific setting is documented.",
+      "claim": "A setting for the Protection skill separately from Facilitator is not documented.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Facilitator Protection skill Teams Set-CsTeamsMeetingPolicy MicrosoftTeams PowerShell enable disable. Opened Facilitator setup and Update-M365TeamsApp; read Set-CsTeamsMeetingPolicy search excerpts. No Protection-skill-specific UI or PowerShell setting found.",
+      "quote": "Searched: Facilitator Protection skill social engineering settings PowerShell disable block Update-M365TeamsApp; \"Facilitator\" \"Protection skill\" settings disable Graph. Opened Facilitator setup and Update-M365TeamsApp; neither documents a separate Protection control.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 27,
-      "where": "controls[0].note; Risk assessment; Governance guidance; Governance controls; Open questions",
+      "n": 31,
+      "where": "Risk assessment; Governance guidance; Governance controls; Open questions",
       "type": "absence",
-      "claim": "Microsoft has not explicitly documented whether blocking Facilitator stops the Protection skill.",
+      "claim": "Microsoft has not explicitly documented the effect of blocking the Facilitator app on the Protection skill.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Facilitator\" \"Protection\" skill settings license pricing; Facilitator Protection skill Teams Set-CsTeamsMeetingPolicy MicrosoftTeams PowerShell enable disable. Opened learn.microsoft.com/microsoftteams/facilitator-teams; it does not name Protection or its blocking behaviour.",
+      "quote": "Searched: Facilitator Protection skill social engineering settings PowerShell disable block Update-M365TeamsApp; \"Facilitator\" \"block\" \"PowerShell\". Opened Facilitator setup and Update-M365TeamsApp; app blocking is documented, but the Protection-specific effect is not.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 28,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "n": 32,
+      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
       "type": "licensing",
-      "claim": "Facilitator is included with a Microsoft Copilot license, subject to available capacity.",
+      "claim": "Facilitator features in Teams meetings are included with a Microsoft Copilot licence, supporting the included licensing model.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
       "quote": "Facilitator is included with a Microsoft Copilot license and subject to available capacity.",
@@ -339,21 +381,32 @@
       "fix": null
     },
     {
-      "n": 29,
-      "where": "Cost and licensing",
+      "n": 33,
+      "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
-      "claim": "The Facilitator requirements include an eligible Microsoft 365 base licence.",
+      "claim": "Facilitator's inclusion with a Microsoft Copilot licence is subject to available capacity.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
-      "quote": "Users must meet all of the following requirements:\nLicensing requirements\nAn eligible Microsoft 365 base license.",
+      "quote": "Facilitator is included with a Microsoft Copilot license and subject to available capacity.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 30,
+      "n": 34,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "The Facilitator requirements include an eligible Microsoft Teams licence.",
+      "claim": "Facilitator's listed prerequisites include an eligible Microsoft 365 base licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "An eligible Microsoft 365 base license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Facilitator's listed prerequisites include an eligible Microsoft Teams licence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
       "quote": "Have an eligible Microsoft Teams license.",
@@ -361,10 +414,10 @@
       "fix": null
     },
     {
-      "n": 31,
+      "n": 36,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "The Facilitator requirements include a Microsoft Copilot licence.",
+      "claim": "Facilitator's listed prerequisites include a Microsoft Copilot licence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
       "quote": "Have a Microsoft Copilot license.",
@@ -372,51 +425,40 @@
       "fix": null
     },
     {
-      "n": 32,
-      "where": "front matter: licensing.model and notes; Cost and licensing; Open questions; rationale: cost",
-      "type": "licensing",
-      "claim": "The licensing model is unknown because Microsoft has not said whether the Facilitator licensing rule covers this skill.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
-      "quote": "Facilitator is included with a Microsoft Copilot license and subject to available capacity. The following list contains the prerequisites for users to be able to access Facilitator features in Teams meetings.",
-      "severity": "blocker",
-      "fix": "Set licensing.model to 'included'. Replace statements that the general Facilitator rule is unconfirmed with: 'Microsoft documents Facilitator features in Teams meetings as included with a Microsoft Copilot license, subject to available capacity. Protection-specific additional charges and which participants need licences to receive its warnings are not yet published.' Retain the published base, Teams and Copilot licence requirements."
-    },
-    {
-      "n": 33,
-      "where": "Cost and licensing",
+      "n": 37,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
       "type": "absence",
-      "claim": "Neither the roadmap record nor MC1536056 names a licence or meter for the Protection skill.",
+      "claim": "Additional charges specific to the Protection skill are not published.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Facilitator\" \"Protection\" skill settings license pricing. Read the complete supplied roadmap record and MC1536056; neither contains a licence requirement or a billing meter. Opened Facilitator setup for the separately documented general licensing rule.",
+      "quote": "Searched: Facilitator Protection skill licensing charges prerequisites warnings transcript processing retention restrict information sharing. Opened Facilitator setup and License options for Microsoft Copilot; the former states inclusion, and neither names a Protection-specific charge.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 34,
-      "where": "Cost and licensing; rationale: cost",
+      "n": 38,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
       "type": "absence",
-      "claim": "No separate Protection-skill price, meter or credit rate is published.",
+      "claim": "Microsoft has not published which participants need licences specifically to receive Protection skill warnings.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Facilitator\" \"Protection\" skill settings license pricing. Opened learn.microsoft.com/microsoftteams/facilitator-teams and microsoft-365/copilot/microsoft-365-copilot-licensing; neither publishes a Protection-specific meter, price or credit rate.",
+      "quote": "Searched: \"Facilitator\" \"Protection skill\" retention processing license prerequisites. Opened Facilitator setup and Copilot licensing; the former documents unlicensed users seeing prompts, responses and notes, but does not identify Protection warning recipients' licence requirements.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 35,
+      "n": 39,
       "where": "Scope: Users",
       "type": "licensing",
       "claim": "Only licensed users can initiate Facilitator.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
-      "quote": "Only licensed userscan initiate Facilitator.",
+      "quote": "Only licensed users can initiate Facilitator.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 36,
+      "n": 40,
       "where": "Scope: Prerequisites",
       "type": "behaviour",
       "claim": "Loop experiences in Teams must be turned on for Facilitator in meetings.",
@@ -427,113 +469,113 @@
       "fix": null
     },
     {
-      "n": 37,
+      "n": 41,
       "where": "Scope: Prerequisites",
       "type": "absence",
-      "claim": "The Protection skill's prerequisites are not stated.",
+      "claim": "Additional prerequisites specific to the Protection skill are not published.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Facilitator\" \"Protection\" skill settings license pricing. Opened learn.microsoft.com/microsoftteams/facilitator-teams; general Facilitator prerequisites are stated, but no additional Protection-specific prerequisite is described.",
-      "severity": "minor",
-      "fix": "Narrow the sentence to: 'Additional prerequisites specific to the Protection skill are not yet published.' Keep the existing sentence about the published Loop requirement."
-    },
-    {
-      "n": 38,
-      "where": "Governance guidance: Before rollout; Governance controls",
-      "type": "applicability",
-      "claim": "App permission policies and app-centric management can scope Facilitator availability to groups of users.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
-      "quote": "To allow Facilitator for users, a new app policy needs to be created and then assigned to users.\nYou can then assign the policy to your entire tenant or to a select group of users.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "Governance controls",
-      "type": "role",
-      "claim": "The documented Facilitator app management steps use Teams admin credentials.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
-      "quote": "Sign in to the Teams admin center with your Teams admin credentials.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "Risk assessment: Data exposure; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not described where the Protection skill's transcript analysis specifically runs.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Facilitator\" \"Protection skill\" \"data\" \"stored\". Opened Facilitator setup, Purview's Facilitator page, and Copilot privacy; checked processing and geography passages. General commitments exist, but no Protection-specific analysis location is stated.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "Risk assessment: Data exposure; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not specifically documented whether Protection warnings or detections are stored, retained or audited.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Facilitator\" \"Protection\" \"PowerShell\" transcript retention restrict information sharing; \"Facilitator\" \"Protection skill\" \"data\" \"stored\". Opened purview/ai-teams-facilitator and Facilitator setup; no passage identifies Protection warnings or detections.",
+      "quote": "Searched: \"Facilitator\" \"Protection skill\" retention processing license prerequisites. Opened Facilitator setup and read the complete roadmap and MC1536056; none lists additional Protection-specific prerequisites beyond the stated meeting context.",
       "severity": null,
       "fix": null
     },
     {
       "n": 42,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "absence",
-      "claim": "Microsoft has not explained what the Protection option to restrict information sharing changes.",
+      "where": "controls[0].ui; Governance controls; Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "Facilitator can be allowed or blocked in Teams admin center under Teams apps > Manage apps > Facilitator > Allow or Block.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Facilitator\" \"Protection skill\" \"restrict\". Opened Facilitator setup and Purview's Facilitator page; read the roadmap record and MC1536056. The records name the option without describing its mechanics.",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "In the left rail navigation, select Teams apps > Manage apps. ... Select Facilitator from the app list. ... In the actions menu, select Allow or Block.",
       "severity": null,
       "fix": null
     },
     {
       "n": 43,
-      "where": "Governance controls",
+      "where": "controls[0].governs and scope; Governance controls",
       "type": "applicability",
-      "claim": "The only documented Facilitator control is the app's Allow or Block action.",
-      "status": "contradicted",
+      "claim": "The Facilitator app availability control can govern availability for the entire organisation.",
+      "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
-      "quote": "You can also use app centric management to allow and block, create policies, and assign users.\nYou can manage this control using the IsCollabMeetingNotesFluidEnabled setting in PowerShell.",
-      "severity": "blocker",
-      "fix": "Replace 'The only documented control is the Facilitator app’s Allow or Block action, which governs Facilitator as a whole' with 'The table lists the Facilitator app’s Allow or Block action, which governs Facilitator as a whole.' Do not imply that other Facilitator controls are undocumented."
+      "quote": "As an admin, you control whether Facilitator is available to your entire organization or to a certain group of users.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 44,
-      "where": "rationale: impact",
-      "type": "record",
-      "claim": "Users in Facilitator meetings with outsiders will see warnings and must choose to end the meeting or restrict information sharing.",
+      "where": "controls[0].api; Governance controls: API and automation cell",
+      "type": "absence",
+      "claim": "An automation surface for controlling the Facilitator app's availability and state is not yet documented.",
       "status": "contradicted",
-      "source": "Message Center post MC1536056",
-      "quote": "If a suspected attempt is detected, users will receive a warning.- Users will have options to end the meeting or temporarily restrict information sharing.",
-      "severity": "minor",
-      "fix": "Replace the impact rationale with: 'Medium. Users in Facilitator meetings with outside participants may see a warning if a suspected attempt is detected, with options to end the meeting or temporarily restrict information sharing.'"
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+      "quote": "This cmdlet allows administrators to modify app state, availability and installation status by adding or removing users and groups or changing assignment type or installation status.",
+      "severity": "blocker",
+      "fix": "Do not render the automation cell as 'Not yet documented'. Replace that cell's absence statement with 'Microsoft documents Update-M365TeamsApp for app-state management, but its examples describe both -IsBlocked $true and -IsBlocked $false as unblocking. Use the documented admin UI; no blocking command is provided here.' Link it to https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp and retain the existing caution rather than inventing a Boolean mapping."
     },
     {
       "n": 45,
-      "where": "Governance guidance: Before rollout; Governance controls table",
-      "type": "consistency",
-      "claim": "The checklist's instruction to decide whether Facilitator is available to everyone or a group is represented in the controls table.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Decide, with your security owner, whether to keep Facilitator available to everyone or to a group; blocking Facilitator is the documented switch\nTeams apps > Manage apps > Facilitator > Allow or Block",
-      "severity": "minor",
-      "fix": "The everyone-versus-group availability decision has no corresponding control row. Narrow that checklist bullet to: 'Decide, with your security owner, whether to allow or block Facilitator; Microsoft has not said whether blocking it also stops the Protection skill, so confirm that in a pilot once the skill arrives.'"
+      "where": "controls[0].note; Governance controls: control note",
+      "type": "command",
+      "claim": "The Update-M365TeamsApp reference describes its -IsBlocked $true example as unblocking an app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+      "quote": "Update-M365TeamsApp -Id 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b -IsBlocked $true\nUnblocks Bookings app (App ID 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[0].note; Governance controls: control note",
+      "type": "behaviour",
+      "claim": "The cited reference does not establish a reliable blocking call because its examples conflict on the meaning of -IsBlocked.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+      "quote": "Example 3: -IsBlocked $true ... Unblocks Bookings app. Example 4: -IsBlocked $false ... Unblocks 1Page App",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Governance controls: closing paragraph",
+      "type": "behaviour",
+      "claim": "Learn describes app permission policies for allowing Facilitator to a group of users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "Follow the instructions at Use app permission policies to control user access to apps to create a new app policy for Facilitator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Governance controls: closing paragraph",
+      "type": "behaviour",
+      "claim": "Learn describes app-centric management for allowing, blocking and assigning Facilitator to users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "You can also use app centric management to allow and block, create policies, and assign users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance controls: closing paragraph",
+      "type": "role",
+      "claim": "The documented Facilitator app setting steps require signing in with Teams admin credentials.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "Sign in to the Teams admin center with your Teams admin credentials.",
+      "severity": null,
+      "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-17T03:37:45.857Z",
+    "at": "2026-11-17T04:20:07.784Z",
     "summary": {
       "links": 4,
       "unreachable": 0,
       "uiPaths": 1,
       "uiPathsWithMissingWords": 0,
-      "apiCalls": 1,
+      "apiCalls": 0,
       "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
     },
@@ -573,18 +615,16 @@
           "Allow or Block"
         ],
         "missing": []
-      },
-      {
-        "index": 0,
-        "side": "api",
-        "governs": "Whether the Facilitator app is available to users",
-        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
-        "reachable": true,
-        "token": "Update-M365TeamsApp",
-        "found": true
       }
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-17",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

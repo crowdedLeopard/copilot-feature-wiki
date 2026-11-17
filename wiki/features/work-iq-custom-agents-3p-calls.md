@@ -58,6 +58,9 @@ sources:
   - title: "Microsoft Agent 365"
     url: "https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365"
     kind: "learn"
+  - title: "Work IQ GA June 16, 2026"
+    url: "https://www.microsoft.com/en-us/licensing/news/work-iq-general-availability"
+    kind: "docs"
 videos: []
 related: ["work-iq-agent-policy-governance","work-iq-a2a-and-mcp-long-running-tasks","work-iq-federated-connectors","work-iq-a2a-and-mcp-elicitation","copilot-credits"]
 controls:
@@ -105,19 +108,23 @@ changes:
     note: "New briefing: roadmap item for Work IQ invoking custom agents and third-party-tool agents; Learn does not yet describe it, so controls shown are today's Work IQ MCP, Tools registry and agent controls."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 63 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-17"
+    note: "Correction: the cost section and cost rationale now cite Microsoft's Work IQ GA licensing notice for the variable and static Copilot Credits components."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 70 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-17"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 63
-  confirmed: 62
+  claims: 70
+  confirmed: 70
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "26700e708fe15c2180f3503f6868c495"
+  contradicted: 0
+  attempts: 0
+  hash: "cd2964a946f65d63488c4558cd025757"
 ---
 
 ## What's changing
@@ -155,7 +162,7 @@ Microsoft has not stated what happens on arrival, so no source says existing beh
 
 ## Cost and licensing
 
-The Work IQ API page says the API is licensed under your Microsoft Online Services agreement and that you pay for its use through a usage-based model that uses Copilot Credits. That page does not mention this roadmap item, so whether invoking custom agents or third-party-tool agents is metered, and at what rate, is not yet published. See /concepts/copilot-credits/ for the shared meter.
+The Work IQ API page says the API is licensed under your Microsoft Online Services agreement and that you pay for its use through a usage-based model that uses Copilot Credits. Work IQ API use is metered through Copilot Credits; Microsoft documents variable query-style consumption and a static component for actions and tools invoked through Work IQ. Microsoft has not mapped this roadmap extension to a specific charge or stated whether invoking another agent adds a separate charge. See /concepts/copilot-credits/ for the shared meter.
 
 Agent 365 licensing applies to some of the controls: the Package Management API used to block agents requires a Microsoft Agent 365 licence, and the Agent 365 service description lists control of which tools agents can access tenant-wide as requiring Microsoft 365 E7 / G7 or Agent 365. Charges from third-party tool providers are not described by Microsoft for this feature. Indirect cost is admin time for reviewing agents and tool servers.
 
@@ -214,14 +221,6 @@ Work IQ MCP policy is tenant-level only in the initial release: per-user, per-ap
 
 <!-- rationale
 risk: Medium. Work IQ would hand work to custom agents and third-party tool calls, and Microsoft has not said what identity or data they use, though Work IQ MCP policy, tool blocking and agent blocking are documented. The default on arrival is not stated.
-cost: Variable. The Work IQ API page says use is paid through Copilot Credits; Microsoft has not published whether or at what rate invoking custom or third-party-tool agents is metered.
+cost: Variable. The Work IQ API page says use is paid through Copilot Credits; Microsoft has not published the specific charging treatment for invoking custom or third-party-tool agents.
 impact: Low. Work IQ's A2A, MCP and REST protocols are aimed at developers building agents, so users notice it only through agents built on it. The roadmap lists the Web platform only.
--->
-
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Cost and licensing; rationale: cost / absence: Microsoft has not published whether invoking custom agents or third-party-tool agents is metered. | Found: Work IQ API consumption consists of two parts: variable charge for query-style consumption (grounding, retrieval, and reasoning) and a static usage component for actions and tools invoked through Work IQ. | Fix: Replace the sentence beginning 'That page does not mention this roadmap item' with: 'Work IQ API use is metered through Copilot Credits; Microsoft documents variable query-style consumption and a static component for actions and tools invoked through Work IQ. Microsoft has not mapped this roadmap extension to a specific charge or stated whether invoking another agent adds a separate charge.' Cite https://www.microsoft.com/en-us/licensing/news/work-iq-general-availability. In the cost rationale, replace 'whether or at what rate invoking custom or third-party-tool agents is metered' with 'the specific charging treatment for invoking custom or third-party-tool agents'. | Source: https://www.microsoft.com/en-us/licensing/news/work-iq-general-availability
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[2].note; Risk assessment: Change & support; Governance controls / behaviour: Individual-tool control is rolling out and supports only specific MCP server types registered with Agent 365. | Found: Tool-level granular control is rolling out to tenants and supports only specific types of MCP servers registered on Agent 365. | Fix: Append to controls[2].note: 'Runtime enforcement applies to supported tools and experiences using the Agent 365 Tooling Gateway.' The same cited page states: 'The Agent 365 Tooling Gateway enforces the policy at runtime for supported tools and experiences that use the gateway.' | Source: https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers
 -->

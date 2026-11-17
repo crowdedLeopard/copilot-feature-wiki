@@ -1,0 +1,655 @@
+{
+  "slug": "microsoft-teams-multi-line-call-history-tabs-in-the-calls-app",
+  "roadmapId": 570962,
+  "title": "Microsoft Teams: call history, voicemail and recordings in separate tabs per phone line",
+  "status": "verified",
+  "date": "2026-11-17",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 52,
+    "confirmed": 52,
+    "unconfirmed": 0,
+    "contradicted": 0,
+    "blocker": 0,
+    "major": 0,
+    "minor": 0
+  },
+  "summary": "The briefing accurately reports the automatic rollout, affected users and published schedule. The administrator path and PowerShell command are documented, and the briefing explicitly reports the differing descriptions of history and voicemail in Microsoft's notice and Learn documentation.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "summary; What's changing; Scope; rationale: impact",
+      "type": "record",
+      "claim": "The redesign affects Teams Phone users with multi-line calling enabled and multiple phone numbers assigned.",
+      "status": "supported",
+      "source": "Message Center post MC1484013",
+      "quote": "Teams Phone users with multi-line calling enabled and multiple phone numbers assigned",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "title; summary; What's changing; Risk assessment",
+      "type": "record",
+      "claim": "A dedicated Calls app tab is created for each assigned phone line.",
+      "status": "supported",
+      "source": "Message Center post MC1484013",
+      "quote": "A dedicated tab will be created in the Calls app for each assigned phone line.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "title; What's changing; Why it matters",
+      "type": "record",
+      "claim": "Call history is displayed under the phone line associated with the activity.",
+      "status": "supported",
+      "source": "Message Center post MC1484013",
+      "quote": "Call history will be displayed under the phone line associated with the activity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "title; What's changing; Why it matters",
+      "type": "record",
+      "claim": "Voicemails appear under the phone line where they were received.",
+      "status": "supported",
+      "source": "Message Center post MC1484013",
+      "quote": "Voicemails will appear under the phone line where they were received.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "title; What's changing; Why it matters",
+      "type": "record",
+      "claim": "Call recordings appear under the phone line associated with the call.",
+      "status": "supported",
+      "source": "Message Center post MC1484013",
+      "quote": "Call recordings will appear under the phone line associated with the call.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What's changing, first paragraph",
+      "type": "record",
+      "claim": "The roadmap describes organising history, voicemails and recordings into dedicated tabs by phone line.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Call activity is organized into dedicated tabs for each line, so history, voicemails, and recordings appear under the line they belong to",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; controls[0].note",
+      "type": "default",
+      "claim": "The feature is on automatically for eligible users with multi-line calling configured.",
+      "status": "supported",
+      "source": "Message Center post MC1484013",
+      "quote": "The feature will be enabled automatically for eligible users with multi-line calling configured.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing; Scope; rationale: impact",
+      "type": "record",
+      "claim": "Users without multi-line calling enabled are not affected.",
+      "status": "supported",
+      "source": "Message Center post MC1484013",
+      "quote": "Users without multi-line calling enabled are not affected",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "summary; Why it matters",
+      "type": "record",
+      "claim": "Microsoft's notice says no action is required.",
+      "status": "supported",
+      "source": "Message Center post MC1484013",
+      "quote": "No action is required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Scope: Platforms",
+      "type": "record",
+      "claim": "The notice lists Teams desktop for Windows, Teams desktop for Mac, Teams on the web and Teams Phone.",
+      "status": "supported",
+      "source": "Message Center post MC1484013",
+      "quote": "Microsoft Teams desktop for Windows- Microsoft Teams desktop for Mac- Microsoft Teams on the web- Teams Phone",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Rolling out.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Rolling out\", \"statusKey\": \"rolling-out\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is November CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"November CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Targeted Release.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [ \"General Availability\", \"Targeted Release\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: clouds; What's changing; Scope: Clouds",
+      "type": "record",
+      "claim": "The roadmap clouds are Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [ \"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: platforms; Scope: Platforms",
+      "type": "record",
+      "claim": "The roadmap platforms are Desktop, Mac and Web, with mobile not listed.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [ \"Desktop\", \"Mac\", \"Web\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap provides no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-11-03T00:14:11.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-03T00:14:11\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing, final paragraph",
+      "type": "record",
+      "claim": "MC1484013 was updated on 6 October 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1484013",
+      "quote": "Updated October 6, 2026: We have updated the timeline.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Scope: Rollout",
+      "type": "record",
+      "claim": "Targeted Release begins in early November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1484013",
+      "quote": "Targeted Release: Beginning in early November 2026 (previously early October)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing, final paragraph",
+      "type": "record",
+      "claim": "Targeted Release is expected to complete by early November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1484013",
+      "quote": "expected to complete by early November 2026 (previously early October)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Scope: Rollout",
+      "type": "record",
+      "claim": "General Availability for Worldwide, GCC, GCC High and DoD begins in early November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1484013",
+      "quote": "General Availability (Worldwide, GCC, GCC High, DoD): Beginning in early November 2026",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing, final paragraph",
+      "type": "record",
+      "claim": "General Availability is expected to complete by end of November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1484013",
+      "quote": "expected to complete by end of November 2026 (previously mid-November)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing, final paragraph",
+      "type": "record",
+      "claim": "The notice lists no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1484013",
+      "quote": "Act by: none; No action is required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Why it matters; Governance guidance: Before rollout; Cost and licensing",
+      "type": "record",
+      "claim": "Microsoft recommends notifying help desk and support teams.",
+      "status": "supported",
+      "source": "Message Center post MC1484013",
+      "quote": "Notify your help desk and support teams about the updated Calls app experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Why it matters; Governance guidance: At rollout",
+      "type": "record",
+      "claim": "Microsoft recommends informing affected users who manage multiple phone lines.",
+      "status": "supported",
+      "source": "Message Center post MC1484013",
+      "quote": "Inform affected users who manage multiple phone lines.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Why it matters; Cost and licensing; rationale: cost",
+      "type": "record",
+      "claim": "Microsoft recommends updating documentation, training materials and support content referencing Calls app history, voicemail or recordings.",
+      "status": "supported",
+      "source": "Message Center post MC1484013",
+      "quote": "Update internal documentation, training materials, and support content that references call history, voicemail, or recordings in the Teams Calls app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "The notice identifies no compliance considerations and says to review as appropriate for the organisation.",
+      "status": "supported",
+      "source": "Message Center post MC1484013",
+      "quote": "No compliance considerations identified. Review as appropriate for your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing, third paragraph",
+      "type": "behaviour",
+      "claim": "The multi-line Learn page says each alternate number appears as a separate Calls app tab.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/multi-line",
+      "quote": "Each alternate number appears as a separate tab in the Calls app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing; Why it matters; Risk assessment; Open questions",
+      "type": "behaviour",
+      "claim": "The Learn page describes unified history with identifiers showing which number was used, unlike the per-line history in the roadmap and notice.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/multi-line",
+      "quote": "All calls from all lines appear in a single call history with identifiers showing which number was used.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing; Why it matters; Risk assessment; Open questions",
+      "type": "behaviour",
+      "claim": "The Learn page says all lines share one voicemail box, unlike the notice's description of displaying voicemail by line.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/multi-line",
+      "quote": "All lines share one voicemail box. Notifications don't indicate which number the caller dialed. No separate voicemail per line.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "front matter: licensing.model; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "A licence or charge specific to the per-line tabs has not been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams multi-line call history tabs licensing price charge Teams Phone; Teams per-line call history license. Read roadmap, MC1484013, Configure Multi-line in Microsoft Teams and Microsoft Teams add-on licenses; no tabs-specific charge or licence found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Cost and licensing, first paragraph",
+      "type": "absence",
+      "claim": "Neither the roadmap nor MC1484013 names a licence, meter or price for this feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams multi-line call history tabs licensing price charge Teams Phone. Read the supplied roadmap record and MC1484013 in full; neither names a licence, meter or price for the tabs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Alternate lines have the same licensing requirements as the user's primary phone number.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/multi-line",
+      "quote": "Alternate lines have the same licensing requirements as the user’s primary phone number.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Cost and licensing, second paragraph",
+      "type": "licensing",
+      "claim": "The multi-line page lists Teams Phone and Teams Phone with Calling Plan as supported licence combinations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/multi-line",
+      "quote": "| Teams Phone | Direct Routing, Operator Connect, Teams Phone Mobile |\n| Teams Phone with Calling Plan | Direct Routing, Operator Connect, Teams Phone Mobile, Calling Plan |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Cost and licensing, second paragraph",
+      "type": "behaviour",
+      "claim": "Call forwarding for alternate lines follows the same rules as the primary line.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/multi-line",
+      "quote": "Call forwarding for alternate lines follows the same rules as primary line.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing, second paragraph",
+      "type": "cost",
+      "claim": "Forwarding alternate-line calls may result in extra cost depending on licensing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/multi-line",
+      "quote": "Depending on licensing, this action may result in extra cost.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Scope: Platforms",
+      "type": "availability",
+      "claim": "The multi-line page describes mobile support for alternate lines as coming soon.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/multi-line",
+      "quote": "Coming soon. Mobile app support for alternate lines is planned for a future update.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Scope: Multi-line prerequisites",
+      "type": "behaviour",
+      "claim": "Users can be assigned one primary line and up to nine alternate lines.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/multi-line",
+      "quote": "Users can be assigned one primary line and up to nine more alternate lines.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Scope: Multi-line prerequisites",
+      "type": "behaviour",
+      "claim": "A user must have a primary line assigned before an alternate line can be assigned.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/multi-line",
+      "quote": "Users must have a primary line assigned from their usage location before an alternate line can be assigned.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Scope: Multi-line prerequisites",
+      "type": "behaviour",
+      "claim": "Users must be voice enabled for alternate lines.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/multi-line",
+      "quote": "Users must be \"voice enabled\" for alternate lines.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Scope: Multi-line prerequisites",
+      "type": "availability",
+      "claim": "Multi-line is not supported for users located in India.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/multi-line",
+      "quote": "User should not be located in India. We currently do not support multi-line in India.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[0]; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No administrator UI setting or automation command is documented to turn the per-line tabs on or off.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams multi-line call history tabs enable disable policy PowerShell setting; Teams multi-line tabs disable. Read MC1484013 and Learn multi-line; searched Set-CsTeamsCallingPolicy reference for multi-line, alternate, tabs and history. No tab visibility control found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[1].ui; Governance guidance: Before rollout; Governance controls table",
+      "type": "admin-path",
+      "claim": "Alternate phone numbers are assigned at Teams admin center > Users > Manage users > user > Account > Assigned phone number > Assign alternate phone number.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/multi-line",
+      "quote": "From the Teams admin center, go to Users > Manage users.\nSelect a user.\nFrom the user's Account tab, under Assigned phone number, select Assign alternate phone number.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "The printed Set-CsPhoneNumberAssignment command assigns a Calling Plan number as an alternate line.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/multi-line",
+      "quote": "Set-CsPhoneNumberAssignment -Identity user1@contoso.com -PhoneNumber '+14255551234' -PhoneNumberType CallingPlan -AssignmentCategory Alternate",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[1].note; Governance controls",
+      "type": "role",
+      "claim": "Multi-line administration requires Teams Administrator, Teams Communications Administrator or Teams Telephony Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/multi-line",
+      "quote": "Admin role: You must have one of the following roles:\nTeams Administrator\nTeams Communications Administrator\nTeams Telephony Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Governance controls, second paragraph",
+      "type": "command",
+      "claim": "Teams PowerShell Module version 7.6.0 or later is required for the updated Set-CsPhoneNumberAssignment cmdlets.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/multi-line",
+      "quote": "You must have Teams PowerShell Module version 7.6.0 or later to use the updated Set-CsPhoneNumberAssignment cmdlets.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Governance controls, final paragraph",
+      "type": "behaviour",
+      "claim": "Removal of the primary line also removes alternate lines, including through provisioning events such as licence removal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/multi-line",
+      "quote": "Removal of primary line also removes all alternate lines from the user. The primary line can be removed from the user by a system provisioning event such as license removal",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "Users can view and manage activity separately for each phone line.",
+      "status": "supported",
+      "source": "Message Center post MC1484013",
+      "quote": "Users will be able to view and manage activity separately for each phone line.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "absence",
+      "claim": "The notice describes no new data source, data access or sharing introduced by the display redesign.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams multi-line call history tabs recordings voicemail access permissions identity data sources automated actions. Read supplied MC1484013 in full and Configure Multi-line in Microsoft Teams; the notice describes grouping existing call activity, not new data sources or sharing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "No change to sign-in, roles or permissions is described for the tabs.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams multi-line call history tabs recordings voicemail access permissions identity data sources automated actions. Read MC1484013 and Configure Multi-line in Microsoft Teams; no tab-specific change to sign-in, roles or permissions found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "The notice describes no automated actions beyond presenting the reorganised activity to users.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams multi-line call history tabs recordings voicemail access permissions identity data sources automated actions. Read MC1484013 in full; automatic enablement and tab creation are described, but no autonomous call or data-management actions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risk assessment: Security & identity; Open questions, final bullet",
+      "type": "absence",
+      "claim": "The notice does not state whether recording and voicemail access rules change under the per-line layout.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams multi-line call history tabs recordings voicemail access permissions identity data sources automated actions. Read MC1484013 and Configure Multi-line in Microsoft Teams; neither specifies access-rule changes for the new tabs.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-17T04:20:13.342Z",
+    "summary": {
+      "links": 3,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=570962",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1484013",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/multi-line",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which users have alternate phone lines (and so can see per-line tabs)",
+        "docs": "https://learn.microsoft.com/microsoftteams/multi-line",
+        "reachable": true,
+        "segments": [
+          "Users",
+          "Manage users",
+          "Account",
+          "Assigned phone number",
+          "Assign alternate phone number"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Which users have alternate phone lines (and so can see per-line tabs)",
+        "docs": "https://learn.microsoft.com/microsoftteams/multi-line",
+        "reachable": true,
+        "token": "Set-CsPhoneNumberAssignment",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

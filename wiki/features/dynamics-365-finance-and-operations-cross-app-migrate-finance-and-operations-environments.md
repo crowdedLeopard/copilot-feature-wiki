@@ -18,7 +18,7 @@ defaultState: "admin-opt-in"
 action: "review"
 licensing:
   model: "unknown"
-  notes: "Not yet published: the Learn page names no licence and no charge for the migration. After migration the environment consumes capacity under the Power Platform capacity model."
+  notes: "Not yet published: the Learn page names no licence and publishes no migration price. After migration the environment consumes capacity under the Power Platform capacity model."
 audiences: ["power-platform-admin","service-owner","change-adoption"]
 tags: ["dynamics-365","finance-and-operations","lifecycle-services","migration","power-platform-admin-center","power-platform"]
 sources:
@@ -76,19 +76,23 @@ changes:
     note: "New briefing: documents the Lifecycle Services to Power Platform admin center environment migration, its one-way and downtime effects, preview limits and prerequisites."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 65 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-17"
+    note: "Corrected the cost statement: the Learn migration page lists no licence and publishes no migration price, rather than stating there is no charge."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 65 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-17"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 65
-  confirmed: 64
-  unconfirmed: 1
+  confirmed: 65
+  unconfirmed: 0
   contradicted: 0
-  attempts: 1
-  hash: "1f6dab5825b858b336cabe77fdae1432"
+  attempts: 0
+  hash: "a06afeaf0616e14f75a0fa7aa2021b11"
 ---
 
 ## What's changing
@@ -130,7 +134,7 @@ The cost of getting the order wrong falls on the team that runs deployments. Aft
 
 ## Cost and licensing
 
-The Learn migration page lists no licence among its prerequisites and states no charge for the migration. Treat the migration price and licence as not yet published, and rely on the documented capacity effects below.
+The Learn migration page lists no licence among its prerequisites and does not publish a migration price. Treat the migration price and licence as not yet published, and rely on the documented capacity effects below.
 
 After migration the environment consumes capacity under the Power Platform capacity model, and available database capacity is validated before migration, so a Power Platform storage capacity deficit has to be resolved first. The capacity page says to delete unneeded environments and data or buy more capacity if you have a deficit, and that exceeding storage entitlements currently does not affect the availability of the service. The migration page also says the Lifecycle Services environment slot is not returned or made available for another environment, and that future provisioning is based on available Power Platform capacity instead of Lifecycle Services slots.
 
@@ -189,12 +193,6 @@ Microsoft Learn documents no API for starting the migration or for the finance a
 
 <!-- rationale
 risk: Medium. Migration starts only when an administrator chooses it, but it is one-way, takes the environment offline for about 15 minutes per AOS instance, and Learn does not recommend production use during public preview.
-cost: Low. The Learn page lists no licence and no charge for the migration itself; the known costs are admin time, downtime and capacity, because the migrated environment consumes capacity under the Power Platform capacity model.
+cost: Low. The Learn page lists no licence and publishes no migration price; the known costs are admin time, downtime and capacity, because the migrated environment consumes capacity under the Power Platform capacity model.
 impact: Medium. Environment administrators and developers change from Lifecycle Services to Power Platform admin center and Azure Pipelines, and users of a migrated environment notice the downtime window.
--->
-
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Cost and licensing: first paragraph / cost: The Learn migration page states there is no charge for the migration. | Found: Searched: "migrate" "Lifecycle Services" "license" "charge". Opened the cited migration page and its capacity and unified admin references. None states that migration is free; the migration page does not publish a price. | Fix: Replace the first sentence with: "The Learn migration page lists no licence among its prerequisites and does not publish a migration price." Keep the following sentence treating the price and licence as not yet published.
 -->
