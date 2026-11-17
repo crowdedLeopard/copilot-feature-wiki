@@ -11,7 +11,7 @@ import { allFeatures, allFeaturesIncludingArchived, allConcepts, lifecycle, revi
 import { CHECK_LABEL } from '../../lib/check';
 import { buildAtlas } from '../../lib/graph';
 import '../../styles/briefing.css';
-import { SITE, TOPIC_BY_ID, SOURCE_KIND, LIFECYCLE, VERIFICATION, href, topicUrl, tagUrl, featureUrl, conceptUrl, noticeUrl, formatDate, roadmapUrl, extractRationale, youtubeSearchUrl, learnSearchUrl } from '../../lib/site';
+import { SITE, TOPIC_BY_ID, SOURCE_KIND, LIFECYCLE, VERIFICATION, MESSAGE_CENTER, href, topicUrl, tagUrl, featureUrl, conceptUrl, formatDate, roadmapUrl, extractRationale, youtubeSearchUrl, learnSearchUrl } from '../../lib/site';
 import { tagLabel } from '../../lib/tags';
 
 export async function getStaticPaths() {
@@ -122,7 +122,7 @@ const needsCorrection = v?.status === 'needs-correction';
         {notices.length > 0 && (
           <>
             <SectionHead title="Message Centre notices" id="message-centre" />
-            <p class="muted small" style="margin:-0.4rem 0 0.4rem;max-width:72ch">What Microsoft has told tenant administrators about this change, with any date by which something must be done. The briefing above was written with these posts in hand; open a post for Microsoft's full text.</p>
+            <p class="muted small" style="margin:-0.4rem 0 0.4rem;max-width:72ch">What Microsoft has told tenant administrators about this change, with any date by which something must be done. The briefing above was written with these posts in hand; a post opens in your own Message Center, where Microsoft's full text and any detail specific to your tenant live.</p>
             <ul class="notices">{notices.map((n) => <NoticeRow entry={n} showTopic={false} />)}</ul>
           </>
         )}
@@ -203,7 +203,7 @@ const needsCorrection = v?.status === 'needs-correction';
           <div class="panel">
             <h3>Message Centre</h3>
             <ul class="surfaces">
-              {notices.map((n) => <li><a href={noticeUrl(n.data.id)} title={n.data.title}>{n.data.id}</a><span class="n">{n.data.actionRequiredBy ? `Act by ${formatDate(n.data.actionRequiredBy)}` : formatDate(n.data.lastModified)}</span></li>)}
+              {notices.map((n) => <li><a href={MESSAGE_CENTER.url(n.data.id)} rel="noopener" title={n.data.title}>{n.data.id}</a><span class="n">{n.data.actionRequiredBy ? `Act by ${formatDate(n.data.actionRequiredBy)}` : formatDate(n.data.lastModified)}</span></li>)}
             </ul>
             <p class="surfaces__foot">Microsoft's notices to tenant administrators about this item.</p>
           </div>

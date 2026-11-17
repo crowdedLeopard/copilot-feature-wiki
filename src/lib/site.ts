@@ -17,8 +17,6 @@ export function featureUrl(slug: string) { return href(`/features/${slug}/`); }
 export function conceptUrl(slug: string) { return href(`/concepts/${slug}/`); }
 export function topicUrl(topic: string) { return href(`/topics/${topic}/`); }
 export function tagUrl(tag: string) { return href(`/tags/${tag}/`); }
-/** A Message Center post's page on this site (its own Microsoft 365 admin center address is `MESSAGE_CENTER.url(id)`). */
-export function noticeUrl(id: string) { return href(`/message-centre/${id}/`); }
 
 /** Whole days from today (UTC) to a date; negative when it has passed. */
 export function daysUntil(iso: string | null | undefined, now = Date.now()): number | null {

@@ -1,127 +1,87 @@
 ---
 import Base from '../../layouts/Base.astro';
 import SectionHead from '../../components/SectionHead.astro';
-import NoticeRow from '../../components/NoticeRow.astro';
-import Badge from '../../components/Badge.astro';
 import { allNotices, allFeatures, actByNotices, briefedIds, messageIndex } from '../../lib/data';
-import { TOPICS, TOPIC_BY_ID, MESSAGE_CENTER, href, featureUrl, noticeUrl, topicUrl, formatDate, daysUntil, relativeDays } from '../../lib/site';
+import { TOPIC_BY_ID, MESSAGE_CENTER, href, featureUrl, topicUrl, roadmapUrl, formatDate, daysUntil, relativeDays } from '../../lib/site';
 
+/**
+ * The deadlines page: every Message Center post with an act-by date still ahead (or passed within
+ * the week), soonest first, each linked to its briefing where the ledger has one. Nothing else from
+ * Message Center is listed here: the general feed lives in the reader's own admin centre.
+ */
 const notices = await allNotices();
 const features = await allFeatures();
 const briefed = briefedIds(features);
-const briefingsFor = (n: (typeof notices)[number]) => n.data.roadmapIds.map((id) => briefed.get(id)).filter(Boolean).map((f) => ({ slug: f!.data.slug, title: f!.data.title }));
 const deadlines = actByNotices(notices);
-const major = notices.filter((n) => n.data.isMajorChange && !deadlines.includes(n));
-const linked = notices.filter((n) => briefingsFor(n).length).length;
-const byTopic = new Map<string, number>();
-for (const n of notices) byTopic.set(n.data.topic, (byTopic.get(n.data.topic) ?? 0) + 1);
-const screen = messageIndex.screen;
-const withheld = screen?.withheld ?? 0;
-const dueClass = (days: number | null) => (days === null ? '' : days < 0 ? 'due--past' : days <= 30 ? 'due--soon' : days <= 90 ? 'due--near' : '');
+const briefingFor = (n: (typeof notices)[number]) => n.data.roadmapIds.map((id) => briefed.get(id)).find(Boolean) ?? null;
 const connected = notices.length > 0 || Boolean(messageIndex.generated);
+const withBriefing = deadlines.filter((n) => briefingFor(n)).length;
+const noRoadmap = deadlines.filter((n) => n.data.roadmapIds.length === 0).length;
+const dueClass = (days: number | null) => (days === null ? '' : days < 0 ? 'due--past' : days <= 30 ? 'due--soon' : days <= 90 ? 'due--near' : '');
+// Rows are grouped by horizon so a reader sees this month's work before next year's; dates that passed this week close the list.
+const horizon = (days: number | null) => (days === null ? 'later' : days < 0 ? 'passed' : days <= 30 ? 'soon' : days <= 90 ? 'near' : 'later');
+const GROUPS: Record<string, string> = { passed: 'Passed this week', soon: 'Next 30 days', near: '31 to 90 days', later: 'Later' };
+const groups = ['soon', 'near', 'later', 'passed'].map((k) => ({ key: k, label: GROUPS[k], rows: deadlines.filter((n) => horizon(daysUntil(n.data.actionRequiredBy)) === k) })).filter((g) => g.rows.length);
+const topicLabel = (id: string) => (TOPIC_BY_ID as Record<string, { label: string }>)[id]?.label ?? id;
 ---
 
-<Base title="Message Centre" description="Microsoft 365 Message Center posts: the notices Microsoft sends tenant administrators about changes, retirements and deadlines, matched to the briefings." current="message-centre">
+<Base title="Deadlines" description="The dates Microsoft has set in Message Center by which Microsoft 365 administrators must have done something, soonest first, each linked to its briefing." current="message-centre">
   <div class="wrap">
     <div class="article-head" style="padding-bottom:1rem">
       <div class="eyebrow"><span>Message Centre</span>{messageIndex.generated && <><span class="sep"></span><span>Snapshot {formatDate(messageIndex.generated)}</span></>}</div>
-      <h1 class="display">Message Centre</h1>
-      <p class="standfirst">The notices Microsoft sends to tenant administrators about changes, retirements and the dates by which something must be done. Each post is matched to the roadmap items it names and to their briefings, and the <strong>act-by</strong> dates are listed first, because Microsoft rarely sets one.</p>
-      <p class="screen-note">Posts are read from one tenant's Message Center and republished only where the text is the one Microsoft sends to every tenant. Data privacy posts, posts with attachments and anything worded for a single organisation are kept back by an automatic screen. <a href={href('/about/#message-centre')}>How this works</a>.</p>
-      {connected && (
-        <div class="stats" style="margin-top:1.5rem">
-          <div class="stat"><b>{notices.length}</b><span>posts</span></div>
-          <div class="stat"><b>{deadlines.length}</b><span>act-by dates ahead</span></div>
-          <div class="stat"><b>{notices.filter((n) => n.data.isMajorChange).length}</b><span>major changes</span></div>
-          <div class="stat"><b>{linked}</b><span>matched to briefings</span></div>
-          <div class="stat"><b>{withheld}</b><span>kept back by the screen</span></div>
-        </div>
-      )}
+      <h1 class="display">Deadlines</h1>
+      <p class="standfirst">The dates Microsoft has set in Message Center by which an administrator must have done something. Soonest first, with the briefing for each change where the ledger has one. Everything else Microsoft posts stays in your own Message Center.</p>
+      <p class="screen-note">Dates come from one tenant's Message Center and are republished only where the post is the one Microsoft sends to every tenant. <a href={href('/about/#message-centre')}>How this works</a>.</p>
     </div>
 
     {!connected && (
-      <p class="empty">No Message Centre posts have been published yet. The daily run adds them once the ledger is connected to a tenant's Message Center.</p>
+      <p class="empty">No Message Centre posts have been read yet. The daily run adds them once the ledger is connected to a tenant's Message Center.</p>
+    )}
+
+    {connected && deadlines.length === 0 && (
+      <p class="empty">Microsoft has set no act-by dates that are still ahead.</p>
     )}
 
     {deadlines.length > 0 && (
       <>
         <SectionHead title="Act by" />
-        <p class="muted small" style="margin:-0.4rem 0 0.6rem">Deadlines Microsoft has set. Soonest first; a date within 30 days is shown in red.</p>
-        <table class="deadlines">
-          <tbody>
-            {deadlines.map((n) => {
-              const days = daysUntil(n.data.actionRequiredBy);
-              const b = briefingsFor(n);
-              return (
-                <tr>
-                  <td class={`when ${dueClass(days)}`}><b>{formatDate(n.data.actionRequiredBy)}</b><span>{relativeDays(days)}</span></td>
-                  <td class="what">
-                    <a href={noticeUrl(n.data.id)}>{n.data.title}</a>
-                    <div class="meta">
-                      <span class="mcid">{n.data.id}</span>
-                      <Badge category={n.data.category} />
-                      <a href={topicUrl(n.data.topic)} style="color:var(--ink-3);text-decoration:none">{(TOPIC_BY_ID as Record<string, { label: string }>)[n.data.topic]?.label}</a>
-                      {b.map((x) => <a href={featureUrl(x.slug)}>Briefing: {x.title}</a>)}
-                      {!b.length && n.data.roadmapIds.length > 0 && <span>Roadmap {n.data.roadmapIds.join(', ')} · not yet briefed</span>}
-                    </div>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
+        <p class="muted small" style="margin:-0.4rem 0 0.6rem">{deadlines.length} deadline{deadlines.length === 1 ? '' : 's'}. A date within 30 days is shown in red, within 90 in amber. Open a title to read the briefing, or the post in your own Message Center where there is no briefing yet.</p>
+        <table class="deadlines deadlines--grouped">
+          {groups.map((g) => (
+            <tbody>
+              <tr class="group"><th colspan="2" scope="rowgroup">{g.label}</th></tr>
+              {g.rows.map((n) => {
+                const d = n.data;
+                const days = daysUntil(d.actionRequiredBy);
+                const b = briefingFor(n);
+                return (
+                  <tr id={d.id}>
+                    <td class={`when ${dueClass(days)}`}><b>{formatDate(d.actionRequiredBy)}</b><span>{relativeDays(days)}</span></td>
+                    <td class="what">
+                      {b ? (
+                        <a href={featureUrl(b.data.slug)}>{d.title}</a>
+                      ) : (
+                        <a href={d.url} rel="noopener" title={`Open ${d.id} in the Microsoft 365 admin center. Needs a Message Center role in your tenant.`}>{d.title} <span class="ext">↗</span></a>
+                      )}
+                      {d.summary && <p class="summary">{d.summary}</p>}
+                      <div class="meta">
+                        <a class="mcid" href={d.url} rel="noopener" title="Open this post in your own Message Center">{d.id}</a>
+                        <a href={topicUrl(d.topic)} style="color:var(--ink-3);text-decoration:none">{topicLabel(d.topic)}</a>
+                        {b && <a href={featureUrl(b.data.slug)}>Briefing: {b.data.title}</a>}
+                        {!b && d.roadmapIds.length > 0 && <span>Roadmap {d.roadmapIds.map((id, i) => <>{i > 0 && ', '}<a href={roadmapUrl(id)!} rel="noopener" style="color:inherit">{id}</a></>)} · not yet briefed</span>}
+                        {!b && d.roadmapIds.length === 0 && <span>Not on the roadmap, so no briefing</span>}
+                      </div>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          ))}
         </table>
-      </>
-    )}
-
-    {major.length > 0 && (
-      <>
-        <SectionHead title="Major changes" />
-        <p class="muted small" style="margin:-0.4rem 0 0.6rem">Changes Microsoft announces at least 30 days ahead: new defaults, retirements, and anything most users will notice.</p>
-        <ul class="notices">
-          {major.slice(0, 12).map((n) => <NoticeRow entry={n} briefings={briefingsFor(n)} compact />)}
-        </ul>
-      </>
-    )}
-
-    {notices.length > 0 && (
-      <>
-        <SectionHead title="All posts" />
-        <div class="topic-chips" id="topic-chips">
-          <a class="chip" href="?" data-topic="" aria-current="true">All <span class="n">{notices.length}</span></a>
-          {TOPICS.map((t) => <a class="chip" href={`?topic=${t.id}`} data-topic={t.id}>{t.short} <span class="n">{byTopic.get(t.id) ?? 0}</span></a>)}
-        </div>
-        <ul class="notices" id="all-posts">
-          {notices.map((n) => <NoticeRow entry={n} briefings={briefingsFor(n)} />)}
-        </ul>
-        <p class="empty" id="no-posts" hidden>No posts under this topic yet.</p>
-      </>
-    )}
-
-    {withheld > 0 && screen && (
-      <>
-        <SectionHead title="Kept back" />
-        <p class="muted small" style="max-width:72ch">{withheld} post{withheld === 1 ? '' : 's'} in the tenant's Message Center {withheld === 1 ? 'was' : 'were'} not published because the screen found something that could be specific to that tenant: {Object.entries(screen.byReason).map(([r, n]) => `${n} ${screen.reasons[r] ?? r}`).join('; ')}. Their text is not stored anywhere in this project. Administrators find them in their own Message Center.</p>
+        <p class="muted small" style="margin-top:1.2rem;max-width:72ch">
+          {withBriefing} of these {deadlines.length} changes {withBriefing === 1 ? 'has' : 'have'} a briefing. Briefings are written from Microsoft 365 Roadmap items, and {noRoadmap === deadlines.length ? 'none of these posts names one' : `${noRoadmap} of these posts name none`}, so for those the link opens Microsoft's post in your own Message Center. Microsoft sets an act-by date on a small share of its posts; the rest, including everything marked "stay informed", are not listed here.
+        </p>
       </>
     )}
   </div>
 </Base>
-
-<script>
-  // Topic chips narrow the list without a round trip; the choice lives in the URL so it can be shared.
-  const chips = document.querySelectorAll<HTMLAnchorElement>('#topic-chips a');
-  const rows = document.querySelectorAll<HTMLElement>('#all-posts > li');
-  const empty = document.getElementById('no-posts');
-  function apply(topic: string) {
-    let shown = 0;
-    rows.forEach((r) => { const on = !topic || r.dataset.topic === topic; r.hidden = !on; if (on) shown++; });
-    chips.forEach((c) => c.setAttribute('aria-current', String((c.dataset.topic ?? '') === topic)));
-    if (empty) empty.hidden = shown > 0;
-  }
-  chips.forEach((c) => c.addEventListener('click', (e) => {
-    e.preventDefault();
-    const topic = c.dataset.topic ?? '';
-    history.replaceState(null, '', topic ? `?topic=${topic}` : location.pathname);
-    apply(topic);
-  }));
-  apply(new URLSearchParams(location.search).get('topic') ?? '');
-</script>

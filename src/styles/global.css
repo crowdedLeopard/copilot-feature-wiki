@@ -292,8 +292,13 @@ dialog.search::backdrop { background: rgba(20, 20, 24, 0.45); backdrop-filter: b
 .deadlines .what a:hover { text-decoration: underline; text-decoration-color: var(--accent); }
 .deadlines .meta { display: flex; flex-wrap: wrap; gap: 0.3rem 0.9rem; align-items: center; margin-top: 0.3rem; font-size: 0.78rem; color: var(--ink-3); }
 .deadlines .meta a { color: var(--accent); }
-.deadlines .mcid { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.04em; color: var(--ink-3); }
-@media (max-width: 640px) { .deadlines .when { width: auto; } .deadlines tr { display: grid; grid-template-columns: 1fr; } .deadlines td { border-bottom: 0; padding: 0.2rem 0; } .deadlines tr { border-bottom: 1px solid var(--rule-2); padding: 0.6rem 0; } }
+.deadlines .mcid, .deadlines .meta a.mcid { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.04em; color: var(--ink-3); text-decoration: none; }
+.deadlines .meta a.mcid:hover { color: var(--ink); text-decoration: underline; }
+.deadlines .what .ext { font-family: var(--font-mono); font-size: 0.72rem; color: var(--ink-3); letter-spacing: 0.08em; }
+.deadlines .summary { margin: 0.3rem 0 0; color: var(--ink-2); font-size: 0.93rem; line-height: 1.5; max-width: 72ch; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.deadlines tr.group th { text-align: left; padding: 1.6rem 0 0.45rem; font-family: var(--font-mono); font-size: 0.66rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); border-bottom: 1px solid var(--rule); }
+.deadlines tbody:first-child tr.group th { padding-top: 0.2rem; }
+@media (max-width: 640px) { .deadlines .when { width: auto; } .deadlines tr { display: grid; grid-template-columns: 1fr; } .deadlines td { border-bottom: 0; padding: 0.2rem 0; } .deadlines tr { border-bottom: 1px solid var(--rule-2); padding: 0.6rem 0; } .deadlines tr.group { border-bottom: 0; padding: 0; } }
 /* Rows of posts: like ledger rows, with the post's date in the margin where a briefing shows its action. */
 .notices { list-style: none; margin: 0; padding: 0; }
 .notice-row { display: grid; grid-template-columns: 8.5rem 1fr; gap: 0 1.25rem; padding: 0.9rem 0; border-bottom: 1px solid var(--rule-2); align-items: start; }
@@ -311,16 +316,8 @@ dialog.search::backdrop { background: rgba(20, 20, 24, 0.45); backdrop-filter: b
 .notice-row--compact .notice-row__title { font-size: 1.02rem; }
 @media (max-width: 640px) { .notice-row { grid-template-columns: 1fr; } .notice-row__date { padding-bottom: 0.3rem; } }
 /* Microsoft's own text on a post page: set apart from the wiki's voice by a rule and a smaller serif. */
-.mc-text { border-left: 3px solid var(--rule); padding: 0.2rem 0 0.2rem 1.4rem; margin: 0.6rem 0 1.6rem; }
-.mc-text .prose { font-size: 1.04rem; line-height: 1.6; }
-.mc-text .prose p { margin: 0 0 0.85rem; }
-.mc-text .prose b, .mc-text .prose strong { font-weight: 600; }
-.mc-text .prose table { font-size: 0.86rem; }
-.mc-text__note { font-size: 0.8rem; color: var(--ink-3); margin: 0 0 0.6rem; }
 .fact--act .fact__v { color: var(--risk-high); font-weight: 600; }
 .fact--act .fact__v small { display: block; color: var(--ink-3); font-weight: 400; font-size: 0.78rem; }
-.topic-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.6rem 0 0; }
-.topic-chips a.chip[aria-current='true'] { background: var(--ink); border-color: var(--ink); color: var(--paper); }
 .screen-note { font-size: 0.85rem; color: var(--ink-3); max-width: 72ch; margin: 0.6rem 0 0; }
 
 /* ----- Footer ----- */
