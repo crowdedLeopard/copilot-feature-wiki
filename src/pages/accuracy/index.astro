@@ -43,7 +43,7 @@ const rows: Row[] = features.map((f) => {
 const order: Record<string, number> = { 'needs-correction': 0, none: 1, 'verified-with-gaps': 2, verified: 3 };
 rows.sort((a, b) => (order[a.state] ?? 9) - (order[b.state] ?? 9) || a.title.localeCompare(b.title));
 const dueNow = rows.filter((r) => r.nextClass === 'due' && r.state !== 'none').length;
-const heldReason: Record<string, string> = { failed: 'Failed its check; a corrected version is being written', unverified: 'New; waiting for its first check', parked: 'Failed its last correction round; waiting for a person' };
+const heldReason: Record<string, string> = { failed: 'Failed its check; a corrected version is being written', unverified: 'New; waiting for its first check', parked: 'Failed its last correction round; waiting for a person', 'fresh-draft': 'Failed its last correction round; being written again from scratch' };
 const heldRows = [...held.items].sort((a, b) => (a.reason > b.reason ? 1 : a.reason < b.reason ? -1 : a.title.localeCompare(b.title)));
 const watched = Object.entries(sources.sources);
 const recentlyChanged = watched.filter(([, s]) => s.changedAt).sort((a, b) => (b[1].changedAt! > a[1].changedAt! ? 1 : -1)).slice(0, 25);
@@ -100,7 +100,7 @@ const conceptRows = concepts.map((c) => ({ slug: c.data.slug, title: c.data.titl
               <tr>
                 <td>{h.title}</td>
                 <td class="muted">{topicLabel(h.topic)}</td>
-                <td>{heldReason[h.reason] ?? h.reason}{h.reasons?.length ? <span class="muted"> · {h.reasons[0]}</span> : null}</td>
+                <td>{heldReason[h.reason === 'parked' && h.next === 'fresh-draft' ? 'fresh-draft' : h.reason] ?? h.reason}{h.reasons?.length ? <span class="muted"> · {h.reasons[0]}</span> : null}</td>
                 <td class="mono">{formatDate(h.since)}</td>
                 <td class="mono">{h.reason === 'unverified' ? '—' : h.attempts ?? 1}</td>
               </tr>
