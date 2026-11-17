@@ -11,6 +11,7 @@
  * refresh, see pipeline/lib/concepts.mjs). They come out of COMPILE_LIMIT, not on top of it, and a
  * run narrowed with COMPILE_ONLY or COMPILE_TOPIC, or smaller than CONCEPTS.minRunLimit, has none.
  *
+ * A queue entry with reason 'fresh-draft' is briefed without its existing page (a parked page written again).
  * Env: COMPILE_LIMIT (default 12), COMPILE_ONLY (comma-separated roadmap ids), COMPILE_TOPIC (one topic id,
  * to spend a whole run on one topic's backlog), COMPILE_CONCEPTS (concept pages this run; default
  * CONCEPTS.perRun, 0 for none), COMPILE_CONCEPTS_ONLY (comma-separated concept slugs to write, for a test run).
@@ -47,7 +48,10 @@ for (const q of items) {
   const item = await loadRawItem(q.id);
   if (!item) { console.warn(`no raw record for ${q.id}`); continue; }
   const slug = q.slug || (await existingSlugForRoadmapId(item.id)) || slugify(item.title);
-  const { existing } = await loadExisting(slug);
+  // A page parked after its corrections failed can be queued once more as a fresh draft (reason 'fresh-draft',
+  // set by requeue-held.mjs): the writer gets the roadmap record and Microsoft's pages, not the held text, while
+  // write-briefing.mjs keeps the slug, created date, version and change log and removes the held copy.
+  const { existing } = q.reason === 'fresh-draft' ? { existing: null } : await loadExisting(slug);
   const posts = await postsForBrief(item.id);
   const briefFile = path.join(TASK_DIR, `${q.id}.md`);
   await fs.writeFile(briefFile, researchBrief(item, existing, indexSlugs, glossary, posts));
