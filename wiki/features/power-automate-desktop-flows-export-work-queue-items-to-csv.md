@@ -15,7 +15,7 @@ risk: "medium"
 cost: "low"
 impact: "medium"
 defaultState: "on"
-action: "prepare"
+action: "act-now"
 licensing:
   model: "unknown"
   notes: "Not yet published for the export itself. Microsoft Learn says work queue data in the automation center requires a Power Automate Premium licence, and lists a Premium licence as a prerequisite for work queues."
@@ -42,6 +42,9 @@ sources:
     kind: "learn"
   - title: "Which users can read work queue items (Dataverse security roles) (REST API)"
     url: "https://learn.microsoft.com/power-apps/developer/data-platform/aad-group-team"
+    kind: "learn"
+  - title: "Requests limits and allocations"
+    url: "https://learn.microsoft.com/power-platform/admin/api-request-limits-allocations"
     kind: "learn"
 videos: []
 related: []
@@ -71,19 +74,23 @@ changes:
     note: "First briefing for this item: documents the roadmap's CSV export for work queue items and the Dataverse security roles that govern access to the data."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 44 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-17"
+    note: "Correction: removed an unsupported claim about Dataverse controls after download, stated that Dataverse request limits cover read operations, and changed action to act-now."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 47 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-17"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 44
-  confirmed: 41
-  unconfirmed: 1
-  contradicted: 2
-  attempts: 1
-  hash: "bb7a4641b07ad82828b71382d0415c0b"
+  claims: 47
+  confirmed: 47
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "8fb1da596c13df3a204b5f3a56792d7e"
 ---
 
 ## What's changing
@@ -103,7 +110,7 @@ The wiki's view is that the useful decision is who should be able to read work q
 ## Risk assessment
 
 **Data exposure**
-- The New work queue item panel on Microsoft Learn includes an **Input** value and **Processing notes**, so items can carry business data. Microsoft has not said which columns the CSV contains. Once downloaded, the file is a copy outside the environment, so Dataverse controls do not follow it.
+- The New work queue item panel on Microsoft Learn includes an **Input** value and **Processing notes**, so items can carry business data. Microsoft has not said which columns the CSV contains. Agree where downloaded CSV files should be stored and who should be allowed to receive them.
 
 **Security & identity**
 - The automation center page says its underlying data is secured through role-based access control, and that in standard Dataverse environments the necessary privileges are included in the default environment maker role. In the Default environment with a Dataverse database, all users automatically become environment makers. Microsoft has not confirmed that the export applies these privileges, so confirm this before relying on security roles to limit what can be downloaded.
@@ -118,7 +125,7 @@ The wiki's view is that the useful decision is who should be able to read work q
 
 No licence or meter is published for the export itself. Microsoft Learn says data under the automation center **Work queues** tab is a premium feature that requires a Power Automate Premium licence, and the Work queues overview lists a Premium Power Automate licence and the Environment maker role (or other roles that include access to work queue tables) as prerequisites.
 
-The roadmap item states no licence for the export. The indirect costs are administrator time to review who has access and the effort of handling exported files. Whether the export counts towards any Dataverse API limit is not documented; the known limitations page says work queues are based on Dataverse, so the same service protection and API limits apply to work queues in general.
+The roadmap item states no licence for the export. The indirect costs are administrator time to review who has access and the effort of handling exported files. Dataverse request limits cover read operations, including user-driven and internal requests from any client; Microsoft has not published the request count for a CSV download. The known limitations page says work queues are based on Dataverse, so the same service protection and API limits apply to work queues in general.
 
 ## Scope
 
@@ -168,13 +175,4 @@ The second row states a gap: Microsoft Learn documents no setting that turns the
 risk: Medium. Work queue items can hold business data in free-text fields, and the export puts a copy in a file outside Dataverse; Microsoft has not said whether the export follows the Dataverse security roles that protect the data.
 cost: Low. No separate licence or meter for the export is published; work queue data in the automation center already requires a Power Automate Premium licence, so the visible cost is admin time.
 impact: Medium. Makers, operators and analysts who use work queues in the automation center will see the new option; administrators who do not use work queues will not notice it.
--->
-
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Risk assessment: Data exposure / applicability: Dataverse controls do not follow the downloaded CSV file. | Found: Searched: Dataverse exported CSV file security roles access after export; "Dataverse" "exported" "security" "file" access control; "export" "security" "static worksheet". Read automation-center-overview and work-queues-manage; Excel export guidance describes a different export. | Fix: Replace 'Once downloaded, the file is a copy outside the environment, so Dataverse controls do not follow it.' with the advice 'Agree where downloaded CSV files should be stored and who should be allowed to receive them.' No source read establishes the post-download protection behaviour of this export.
-- [contradicted, blocker] Cost and licensing / absence: Whether the export counts towards any Dataverse API limit is not documented. | Found: All create, read, update, and delete (CRUD), assign, and share operations including user-driven and internal system requests required to complete CRUD transactions, and special operations like share or assign. These operations can be from any client or application | Fix: Replace 'Whether the export counts towards any Dataverse API limit is not documented' with 'Dataverse request limits cover read operations, including user-driven and internal requests from any client; Microsoft has not published the request count for a CSV download.' Cite https://learn.microsoft.com/power-platform/admin/api-request-limits-allocations. Retain the following statement about general work queue limits. | Source: https://learn.microsoft.com/power-platform/admin/api-request-limits-allocations
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] front matter: action / consistency: The prepare action rating fits the briefing's description of a launched, automatically enabled change with medium risk and an access-control decision. | Found: status: "launched"; risk: "medium"; defaultState: "on"; action: "prepare". The body says an administrator who does nothing should expect users to start downloading and recommends reviewing access. | Fix: Change action from 'prepare' to 'act-now': the change is already launched, reaches its audience automatically and requires the access and file-handling decisions described in the briefing.
 -->

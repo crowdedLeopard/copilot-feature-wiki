@@ -52,6 +52,9 @@ sources:
   - title: "Understand usage-based billing and cost management for Copilot Credits"
     url: "https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits"
     kind: "learn"
+  - title: "Review agent activity in Copilot Studio"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-review-activity"
+    kind: "learn"
 videos: []
 related: ["copilot-credits","copilot-studio-cost-management-m365-admin-center"]
 controls:
@@ -71,9 +74,9 @@ controls:
       docs: "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity"
     api:
       kind: "power-platform-api"
-      call: "PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01 with entitlementId MCSMessages, allocation quantity and a TenantPool enforcement rule"
+      call: "PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01 {\"scope\":{\"environmentId\":\"<env-id>\"},\"allocatedEntitlements\":[{\"entitlementId\":\"MCSMessages\",\"allocation\":{\"quantity\":<n>},\"enforcementRules\":[<rule>]}]}"
       docs: "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations"
-    note: "Needs the Power Platform Administrator or Global Administrator role, or an equivalent role. Applies to all Copilot Studio workloads in the environment."
+    note: "<rule> is {\"ruleType\":\"TenantPool\",\"enabled\":<true-or-false>}. Needs the Power Platform Administrator or Global Administrator role, or an equivalent role."
 confidence: "medium"
 created: "2026-11-17"
 updated: "2026-11-17"
@@ -87,19 +90,23 @@ changes:
     note: "Correction: removed the claim that Monitor is the first place makers see cost, qualified what the agent limit and environment allocation can stop, and gave the full admin paths including Products."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 73 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-17"
+    note: "Corrected the allocation API call in the second controls row to the request and body the Learn tutorial gives; added the Monitor navigation page to sources."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 75 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 3
 verification:
   status: "held"
   date: "2026-11-17"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 73
-  confirmed: 72
+  claims: 75
+  confirmed: 74
   unconfirmed: 0
   contradicted: 1
-  attempts: 2
-  hash: "4d0cb18f2af4c0fb1ca384a87d282fe6"
+  attempts: 3
+  hash: "df6c46f05d88b35f157358cf7aacdae8"
 ---
 
 ## What's changing
@@ -175,7 +182,7 @@ The audience is makers, who open Monitor from an agent in Copilot Studio. Learn 
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Monthly Copilot Credit limit, notifications and hard stop for each agent</strong><br><small>Agent</small><br><small class="controls__note">Learn's governance article describes applying agent limits through a recurring or automated process and names no API operation for it. Limits are not applied instantly.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Products › Copilot Studio › Summary › Manage Agents <a href="https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Credits allocated to an environment and whether it can draw on tenant capacity</strong><br><small>Environment</small><br><small class="controls__note">Needs the Power Platform Administrator or Global Administrator role, or an equivalent role. Applies to all Copilot Studio workloads in the environment.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Products › Copilot Studio › Summary › Copilot Studio › Manage Copilot Credits <a href="https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform API</strong><br><code>PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01 with entitlementId MCSMessages, allocation quantity and a TenantPool enforcement rule</code> <a href="https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Credits allocated to an environment and whether it can draw on tenant capacity</strong><br><small>Environment</small><br><small class="controls__note">&lt;rule&gt; is {&quot;ruleType&quot;:&quot;TenantPool&quot;,&quot;enabled&quot;:&lt;true-or-false&gt;}. Needs the Power Platform Administrator or Global Administrator role, or an equivalent role.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Products › Copilot Studio › Summary › Copilot Studio › Manage Copilot Credits <a href="https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform API</strong><br><code>PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01 {&quot;scope&quot;:{&quot;environmentId&quot;:&quot;&lt;env-id&gt;&quot;},&quot;allocatedEntitlements&quot;:[{&quot;entitlementId&quot;:&quot;MCSMessages&quot;,&quot;allocation&quot;:{&quot;quantity&quot;:&lt;n&gt;},&quot;enforcementRules&quot;:[&lt;rule&gt;]}]}</code> <a href="https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -204,7 +211,7 @@ impact: Medium. Makers notice it: it puts credit figures beside their agents, an
 <!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].api; Governance controls: second table row / command: The printed PUT allocationsV2 line with prose about entitlementId, quantity and a TenantPool rule is a usable allocation call once placeholders are filled. | Found: scope = @{ environmentId = $environmentId } allocatedEntitlements = @( @{ entitlementId = "MCSMessages" allocation = @{ quantity = 5000 } enforcementRules = @( @{ ruleType = "TenantPool"; enabled = $false } ) } ) | Fix: Replace controls[1].api.call and the matching rendered call with: PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01; Authorization: Bearer <access-token>; Content-Type: application/json; body {"scope":{"environmentId":"<environment-id>"},"allocatedEntitlements":[{"entitlementId":"MCSMessages","allocation":{"quantity":<quantity>},"enforcementRules":[{"ruleType":"TenantPool","enabled":<true-or-false>}]}]}. The endpoint and version are documented through variables in the cited tutorial; the pre-check's literal-string miss is not evidence that the endpoint is absent. | Source: https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations
+- [contradicted, blocker] controls[1].note; Governance controls / applicability: The environment allocation control and displayed request can change tenant-capacity draw without a qualification for published environment-group rules. | Found: If a published environment group rule governs Draw from the available capacity in my tenant, you can't override the setting for an individual environment. Updates through the Power Platform admin center, Power Platform API, or administration SDKs are rejected with the TenantPoolLockedByPolicy error. | Fix: Keep the allocation request unchanged. Add to controls[1].note and its rendered note: 'If a published environment-group rule governs tenant-capacity draw, neither this UI nor this API can override it for an individual environment; API updates are rejected with TenantPoolLockedByPolicy. Change and republish the group rule, or remove the environment from the group before managing that setting independently.' Cite https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations. | Source: https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Scope / admin-path: Makers open Monitor from an agent in Copilot Studio. | Found: Open Monitor 1. Open your agent in Copilot Studio. 2. Select Monitor. | Fix: Add https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-review-activity to sources to support the maker navigation stated in Scope. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-review-activity
+- [supported, minor] What's changing / behaviour: The standard-harness Monitor Overview panel shows total billed Copilot Credits. | Found: the Overview panel shows your agent's total billed Copilot Credits for the selected time period. ... If your organization uses an older subscription plan that uses billed sessions instead of Copilot Credits, the Monitor page shows the number of billed sessions. | Fix: Qualify the sentence as: 'For agents powered by the standard harness whose billing is based on Copilot Credits consumption, the Monitor page shows billed Copilot Credits in an Overview panel, with a Billing trend chart and a Cost distribution chart of the kinds of activity that count towards credits.' The cited page also documents legacy session-based billing. | Source: https://learn.microsoft.com/microsoft-copilot-studio/analytics-consumption
 -->

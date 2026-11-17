@@ -46,11 +46,14 @@ sources:
   - title: "Agent Registration API overview (preview)"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/agent-registration/overview"
     kind: "learn"
-  - title: "Whether an Agent2Agent agent is installed for users or groups (Microsoft 365 admin center)"
+  - title: "Governance and lifecycle actions for agents available in Microsoft 365 admin center"
     url: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions"
     kind: "learn"
   - title: "Blocking an agent for the organisation (Microsoft Graph)"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
+    kind: "learn"
+  - title: "Update Copilot package"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update"
     kind: "learn"
 videos: []
 related: ["work-iq-a2a-and-mcp-long-running-tasks","m365-copilot-agent-lifecycle-management-rules","work-iq-agent-policy-governance","agent-identity","mcp"]
@@ -59,10 +62,13 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Agents > All agents > Registry > Status > Available > agent > Install > Deploy agent to selected users > Review permissions > Review & finish"
+      path: "Agents > All agents > Registry > Status > Available > agent > Install > Deploy agent to selected users > Next > Review permissions > Grant admin consent > Permissions requested > Accept > Next > Review & finish > Finish deployment"
       docs: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions"
-    api: null
-    note: "Role: AI Admin or Global Admin. The page describes installing agents generally; MC1478975 says administrators install Agent2Agent agents from the All agents page."
+    api:
+      kind: "graph"
+      call: "PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id} with Content-Type: application/json and body {\"acquireUsersAndGroups\":[{\"resourceType\":\"group\",\"resourceId\":\"<group-id>\"}],\"deployedTo\":\"acquiredForSome\"}"
+      docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update"
+    note: "Role: AI Admin or Global Admin. General package-deployment API; Microsoft does not separately describe A2A registration applicability. The API is in preview, requires an Agent 365 licence and CopilotPackages.ReadWrite.All (delegated)."
   - governs: "Review of the agents a declarative agent connects to"
     scope: "agent"
     ui:
@@ -91,19 +97,23 @@ changes:
     note: "New briefing: Agent2Agent agents registered in Agent 365 can be used as connected agents in declarative agents; rollout expected to complete by end of December 2026."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 66 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-17"
+    note: "Corrected the install row: full admin-centre path including the Permissions requested consent step, and the documented Graph PATCH call for deploying a package to users or groups."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 82 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-17"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 66
-  confirmed: 64
+  claims: 82
+  confirmed: 82
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "e240a9e22f2275d8dd21478e76b8452a"
+  contradicted: 0
+  attempts: 0
+  hash: "43c8db9232e2746913da49a3913570bf"
 ---
 
 ## What's changing
@@ -182,7 +192,7 @@ Rollout began in late August 2026 and is expected to complete by the end of Dece
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether an Agent2Agent agent is installed for users or groups</strong><br><small>Tenant</small><br><small class="controls__note">Role: AI Admin or Global Admin. The page describes installing agents generally; MC1478975 says administrators install Agent2Agent agents from the All agents page.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › Registry › Status › Available › agent › Install › Deploy agent to selected users › Review permissions › Review &amp; finish <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether an Agent2Agent agent is installed for users or groups</strong><br><small>Tenant</small><br><small class="controls__note">Role: AI Admin or Global Admin. General package-deployment API; Microsoft does not separately describe A2A registration applicability. The API is in preview, requires an Agent 365 licence and CopilotPackages.ReadWrite.All (delegated).</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › Registry › Status › Available › agent › Install › Deploy agent to selected users › Next › Review permissions › Grant admin consent › Permissions requested › Accept › Next › Review &amp; finish › Finish deployment <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id} with Content-Type: application/json and body {&quot;acquireUsersAndGroups&quot;:[{&quot;resourceType&quot;:&quot;group&quot;,&quot;resourceId&quot;:&quot;&lt;group-id&gt;&quot;}],&quot;deployedTo&quot;:&quot;acquiredForSome&quot;}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Review of the agents a declarative agent connects to</strong><br><small>Agent</small><br><small class="controls__note">Learn says administrators can add connected agents to Researcher and Sales; for other agents they can view developer-configured connections but cannot add or remove them.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › agent › Connected Agents <a href="https://learn.microsoft.com/microsoft-agent-365/admin/manage-connected-agents" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Blocking an agent for the organisation</strong><br><small>Tenant</small><br><small class="controls__note">General control: Microsoft has not confirmed it applies to Agent2Agent agents. The API is in preview, uses the CopilotPackages.ReadWrite.All delegated permission and requires an Agent 365 licence.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › agent › Block › Block agent › Save <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
@@ -205,9 +215,11 @@ cost: Low. The only cost the sources show is admin time; the licence this featur
 impact: Medium. Administrators and developers who build declarative agents notice first, then users who are given an approved Agent2Agent agent and a declarative agent that connects to it.
 -->
 
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].ui; Governance controls: installation row / admin-path: The installation path goes from Deploy agent to selected users through Review permissions directly to Review & finish. | Found: In the Permissions requested window, select Accept to grant the permissions to the agent, and then select Next. | Fix: Replace controls[0].ui.path and its rendered table path with 'Agents > All agents > Registry > Status > Available > agent > Install > Deploy agent to selected users > Next > Review permissions > Grant admin consent > Permissions requested > Accept > Next > Review & finish > Finish deployment'. The cited page documents the intervening consent window; do not jump directly from Review permissions to Review & finish. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions
-- [contradicted, blocker] controls[0].api; Governance controls: installation row / absence: No API or automation is documented for deploying agents to selected users or groups. | Found: acquireUsersAndGroups | packageAccessEntity collection | Users/groups for whom the package is deployed. | deployedTo | packageAcquireStatus | Enum value indicating the deployment scope of the package. Required if updating acquireUsersAndGroups. | Fix: Replace controls[0].api null with kind 'graph', call 'PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id} with Content-Type: application/json and body {"acquireUsersAndGroups":[{"resourceType":"group","resourceId":"<group-id>"}],"deployedTo":"acquiredForSome"}', and docs 'https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update'. Update the rendered API cell to match. Add to this row's note: 'General package-deployment API; Microsoft does not separately describe A2A registration applicability. The API is in preview, requires an Agent 365 licence and the CopilotPackages.ReadWrite.All delegated permission.' | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Risk assessment: Security & identity / behaviour: The agent registration references an existing authentication registration through an authorization object. | Found: the registration references an existing authentication registration through the authorization object in the agentRegistration. | Fix: Add: 'The agentRegistration reference instead names the optional property a2aAuthorization as the configuration used to invoke an Agent2Agent server; the two Microsoft pages use different property names.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/agent-registration/resources/agentregistration. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/declarative-agent-connected-agent
+- [supported, minor] Risk assessment: Autonomy & actions / behaviour: An agent can connect to up to 10 other agents. | Found: Limit - An agent can connect to up to 10 other agents. | Fix: Replace the sentence with: 'The managing-connected-agents page states a limit of 10 connected agents, while the agent-details page says that the 10 excludes connections added by the maker.' Cite https://learn.microsoft.com/microsoft-agent-365/admin/agent-details#connected-agents alongside the existing source. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/manage-connected-agents
+- [supported, minor] controls[1].note; Risk assessment: Change & support; Governance controls / behaviour: Administrators cannot remove developer-configured connections. | Found: You can't remove connected agents configured by the agent developer. | Fix: Add after the restriction in Governance controls: 'The agent-details page qualifies removal differently: depending on how the maker connected the agents, administrators might be able to remove them.' Cite https://learn.microsoft.com/microsoft-agent-365/admin/agent-details#connected-agents. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/manage-connected-agents
+- [supported, minor] Governance controls: final sentence / absence: Microsoft Learn documents no admin-centre setting that blocks only the connected-agent capability for declarative agents. | Found: Searched: Microsoft 365 declarative agents disable connected agents tenant admin setting Agent2Agent block agentRegistration package. Read agent-settings, manage-connected-agents and agent-actions; found general agent access/blocking controls, not this capability-only switch. | Fix: Remove the final sentence beginning 'Microsoft Learn documents no admin-centre setting'. The standard requires an explicitly asserted missing control to appear as a controls row, but this page has no such row; removing the sentence resolves the mismatch without adding a control.
 -->

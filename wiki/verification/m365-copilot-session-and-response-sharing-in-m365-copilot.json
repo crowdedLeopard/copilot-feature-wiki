@@ -1,0 +1,705 @@
+{
+  "slug": "m365-copilot-session-and-response-sharing-in-m365-copilot",
+  "roadmapId": 562353,
+  "title": "Microsoft 365 Copilot: share a chat session or a single response by link",
+  "status": "verified-with-gaps",
+  "date": "2026-11-17",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 56,
+    "confirmed": 55,
+    "unconfirmed": 0,
+    "contradicted": 1,
+    "blocker": 0,
+    "major": 0,
+    "minor": 2
+  },
+  "summary": "Pass: Microsoft's documentation and tenant notice support the default-on sharing behaviour, tenant-wide switch, administrator roles and rollout details. Minor corrections concern the product's current name and checklist controls that are missing from the controls table.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "Microsoft 365 Copilot users can share chat content through a link.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Session and Response Sharing let Microsoft 365 Copilot users share Copilot chat content through a link.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing; Risk assessment",
+      "type": "behaviour",
+      "claim": "Session sharing includes the entire conversation's prompts and responses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/microsoft-copilot-manage-content-sharing",
+      "quote": "Session sharing lets users share an entire Copilot conversation, including all prompts and responses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Response sharing includes one response and the prompt that generated it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/microsoft-copilot-manage-content-sharing",
+      "quote": "Response sharing lets users share a single Copilot response along with the prompt that generated it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "Shared content opens in a read-only view.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The shared content opens as a read-only view, and recipients can continue from it in their own Copilot chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Recipients can continue from shared content in their own Copilot chat.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The shared content opens as a read-only view, and recipients can continue from it in their own Copilot chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Shared content is a snapshot of the content at sharing time.",
+      "status": "supported",
+      "source": "https://support.microsoft.com/microsoft-365-copilot/share-conversations-responses-in-microsoft-copilot",
+      "quote": "Shared conversations and responses are snapshots. People who open your link can't change your original conversation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Continuing from shared content creates a separate copy in the recipient's chat history.",
+      "status": "supported",
+      "source": "https://support.microsoft.com/microsoft-365-copilot/share-conversations-responses-in-microsoft-copilot",
+      "quote": "If they continue from shared content, Copilot creates a separate copy in their own chat history.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Later changes to the original and the recipient's copy are not visible in each other's conversations.",
+      "status": "supported",
+      "source": "https://support.microsoft.com/microsoft-365-copilot/share-conversations-responses-in-microsoft-copilot",
+      "quote": "Updates from the original sharer don't appear in your copy. Your changes don't appear in the original conversation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Risk assessment; Scope: Recipients",
+      "type": "availability",
+      "claim": "Anyone in the organisation with a work or school sharing link can open it by signing in with their work or school account.",
+      "status": "supported",
+      "source": "https://support.microsoft.com/microsoft-365-copilot/share-conversations-responses-in-microsoft-copilot",
+      "quote": "Work or school account: Anyone in your organization who has the link can open it by signing in with their work or school account.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1461700 says messages added after sharing remain private and are not included in the shared session.",
+      "status": "supported",
+      "source": "Message Center post MC1461700",
+      "quote": "Messages added after sharing remain private and are not included in the shared session.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "Sharing does not give recipients access to referenced files, emails, chats, meetings or other Microsoft 365 content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/microsoft-copilot-manage-content-sharing",
+      "quote": "Sharing a Copilot session or response doesn't give recipients access to files, emails, chats, meetings, or other Microsoft 365 content referenced in the conversation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Why it matters; Risk assessment; Governance guidance",
+      "type": "applicability",
+      "claim": "Existing Microsoft 365 permissions govern recipients' ability to open referenced content.",
+      "status": "supported",
+      "source": "https://support.microsoft.com/microsoft-365-copilot/share-conversations-responses-in-microsoft-copilot",
+      "quote": "People can open referenced files, emails, meetings, or chats only if they already have permission to access them.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: targetDate, previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is August CY2026, with no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"August CY2026\", \"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) only and does not list US Government clouds.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platforms are Android, Desktop, Mac, Teams and Surface Devices, and Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Android\", \"Desktop\", \"Mac\", \"Teams and Surface Devices\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1461700 was last updated on 8 September 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1461700",
+      "quote": "Updated September 8, 2026: We have updated the timeline.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Scope: Rollout",
+      "type": "record",
+      "claim": "MC1461700 scheduled rollout to begin in late August 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1461700",
+      "quote": "General Availability (Worldwide): Rollout will begin in late August 2026",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Scope: Rollout",
+      "type": "record",
+      "claim": "MC1461700 expected rollout completion by late September 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1461700",
+      "quote": "is expected to complete by late September 2026 (previously early September).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The previously expected completion was early September.",
+      "status": "supported",
+      "source": "Message Center post MC1461700",
+      "quote": "late September 2026 (previously early September)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; controls[0].note; rationales",
+      "type": "default",
+      "claim": "Sharing is on by default without administrator action.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/microsoft-copilot-manage-content-sharing",
+      "quote": "Copilot sharing is turned on by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[1].ui and controls[1].api; summary; Why it matters; Governance controls",
+      "type": "record",
+      "claim": "The sharing switch applies tenant-wide and cannot be scoped to specific users, groups or Entra ID groups.",
+      "status": "supported",
+      "source": "Message Center post MC1461700",
+      "quote": "An administrative control is available to enable or disable the feature across the tenant. The control cannot be scoped through Entra ID groups or other user/group-based targeting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[0].ui; Governance guidance; Governance controls table",
+      "type": "admin-path",
+      "claim": "The switch is at Microsoft 365 admin center > Copilot > Settings > Copilot sharing > Allow users to share Copilot responses > Save.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/microsoft-copilot-manage-content-sharing",
+      "quote": "In the Microsoft 365 admin center, expand Copilot, and then select Settings. Select Copilot sharing. Select or clear Allow users to share Copilot responses. Select Save.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[0].api; Governance controls",
+      "type": "absence",
+      "claim": "No API or automation for the sharing switch is documented at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot sharing Graph PowerShell; Allow users to share Copilot responses API Graph PowerShell. Opened manage-content-sharing and copilotPolicySetting reference: UI steps only; supported Graph IDs contain no sharing setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[0].note; Cost and licensing; Scope: Roles; Governance guidance",
+      "type": "role",
+      "claim": "AI Reader can view the sharing settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/microsoft-copilot-manage-content-sharing",
+      "quote": "View sharing settings: AI Reader",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[0].note; Cost and licensing; Scope: Roles; Governance guidance",
+      "type": "role",
+      "claim": "AI Admin can edit the sharing settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/microsoft-copilot-manage-content-sharing",
+      "quote": "Edit sharing settings: AI Admin",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Scope: Roles; front matter: licensing.notes",
+      "type": "role",
+      "claim": "Managing the setting requires access to the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/microsoft-copilot-manage-content-sharing",
+      "quote": "To access and manage Copilot sharing settings, you need access to the Microsoft 365 admin center and one of the following administrator roles:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Data exposure; Governance guidance; Open questions",
+      "type": "applicability",
+      "claim": "The switch also controls sharing of content with lower-sensitivity labels such as General or Public, or no sensitivity label.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/microsoft-copilot-manage-content-sharing",
+      "quote": "This setting also controls whether users can share content with lower-sensitivity labels, such as General or Public, or no sensitivity label.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Sharing policies or sensitivity label protections can make some conversations or responses unavailable to share.",
+      "status": "supported",
+      "source": "https://support.microsoft.com/microsoft-365-copilot/share-conversations-responses-in-microsoft-copilot",
+      "quote": "Some conversations or responses might not be available to share because of your organization's sharing policies or sensitivity label protections.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "Microsoft's sharing documentation does not identify which policies and labels block sharing or their interaction with the tenant switch.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot response sharing sensitivity policy. Opened sharing admin and user pages; read Purview DLP search passages. Sharing pages name no blocking labels; DLP passages concern grounding and prompt processing, not shared-link restrictions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Security & identity",
+      "type": "availability",
+      "claim": "For personal-account links, anyone the link is shared with can open it by signing in with their Microsoft account.",
+      "status": "supported",
+      "source": "https://support.microsoft.com/microsoft-365-copilot/share-conversations-responses-in-microsoft-copilot",
+      "quote": "Personal Microsoft account: Anyone you share the link with can open it by signing in with their Microsoft account.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Recipients must sign in before viewing shared content.",
+      "status": "supported",
+      "source": "https://support.microsoft.com/microsoft-365-copilot/share-conversations-responses-in-microsoft-copilot",
+      "quote": "In either case, recipients must sign in before they can view the shared content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Why it matters; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "Anyone opening the link can read its included prompts and responses, including source text already quoted in those responses.",
+      "status": "supported",
+      "source": "https://support.microsoft.com/microsoft-365-copilot/share-conversations-responses-in-microsoft-copilot",
+      "quote": "You see the conversation or response exactly as it appeared when it was shared. You can review the included prompts and responses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Security & identity; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "Users can stop sharing links in Copilot > Settings > Data controls > Shared links.",
+      "status": "supported",
+      "source": "https://support.microsoft.com/microsoft-365-copilot/share-conversations-responses-in-microsoft-copilot",
+      "quote": "Open Copilot. Go to Settings. Select Data controls. Select Shared links, where you can: ... Stop sharing an existing link. To stop sharing a link, find the link you want to remove and select Stop sharing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Deleting the original conversation stops its sharing links from working.",
+      "status": "supported",
+      "source": "https://support.microsoft.com/microsoft-365-copilot/share-conversations-responses-in-microsoft-copilot",
+      "quote": "If you delete the original conversation, any sharing links for that conversation also stop working.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "The documented sharing experience is user-initiated, with no automatic sharing documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot session sharing automatic. Opened sharing admin and user pages: users select Share or Share response and Copy link. No automatic session or response link sharing described; unrelated Cowork scheduling results do not describe this feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Change & support; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "Turning sharing off prevents new links and removes Share, including from the More options menu for a meeting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/microsoft-copilot-manage-content-sharing",
+      "quote": "Users can't create new session or response sharing links. The Share option doesn't appear in Copilot or Microsoft 365 apps, including the More options menu for a meeting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Changed settings apply to new sharing attempts after Save.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/microsoft-copilot-manage-content-sharing",
+      "quote": "New settings apply to new sharing attempts after you select Save.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Existing recipient copies are unaffected by sharing setting changes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/microsoft-copilot-manage-content-sharing",
+      "quote": "Changes apply to new sharing attempts after you save the settings. Existing recipient copies aren't affected.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Administrators should allow time for settings changes to take effect.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/microsoft-copilot-manage-content-sharing",
+      "quote": "Allow some time for a settings change to take effect across your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "front matter: licensing.model; Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "Licensing specific to this sharing feature is not published, so the feature's licensing model is unknown.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot sharing license session. Opened sharing admin/user pages, Microsoft Copilot requirements, license options and pay-as-you-go overview. Product licence requirements are stated; no distinct session/response sharing licensing terms are stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The sharing page's prerequisites name administrator roles and admin center access, but no licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/microsoft-copilot-manage-content-sharing",
+      "quote": "To access and manage Copilot sharing settings, you need access to the Microsoft 365 admin center and one of the following administrator roles: View sharing settings: AI Reader; Edit sharing settings: AI Admin",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "No Copilot Credits or other sharing-specific meter is documented as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot sharing Copilot Credits; Copilot session response sharing license billing Copilot Credits. Opened sharing admin/user pages, requirements, license options and pay-as-you-go overview; no sharing-specific meter stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Cost and licensing",
+      "type": "record",
+      "claim": "MC1461700 does not mention a charge.",
+      "status": "supported",
+      "source": "Message Center post MC1461700",
+      "quote": "No action is required if you want users in your organization to use this feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The Microsoft Copilot requirements page documents general licence requirements but does not mention sharing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements",
+      "quote": "Users need a Microsoft Copilot license and a qualifying prerequisite license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Scope: Who is affected",
+      "type": "applicability",
+      "claim": "The settings apply in the Microsoft Copilot app and Microsoft 365 apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/microsoft-copilot-manage-content-sharing",
+      "quote": "These settings apply to Copilot sharing in the Microsoft Copilot app and Microsoft 365 apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope; rationale: impact",
+      "type": "record",
+      "claim": "MC1461700 identifies all Microsoft 365 Copilot users as affected.",
+      "status": "supported",
+      "source": "Message Center post MC1461700",
+      "quote": "Who is affected - All Microsoft 365 Copilot users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Scope: Rollout",
+      "type": "record",
+      "claim": "MC1461700 sets no administrator act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1461700",
+      "quote": "Act by: none",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[0].note; Risk assessment: Change & support; Governance controls; Open questions",
+      "type": "record",
+      "claim": "MC1461700 uses Copilot session and response sharing and Allow users to share Copilot sessions and responses, unlike Learn's shorter labels.",
+      "status": "supported",
+      "source": "Message Center post MC1461700",
+      "quote": "Microsoft 365 admin center > Copilot > Settings > Copilot session and response sharing - Clear the Allow users to share Copilot sessions and responses setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance controls: API discussion",
+      "type": "behaviour",
+      "claim": "The copilotPolicySetting reference lists five supported settings and none is sharing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/resources/copilotpolicysetting",
+      "quote": "Pin Microsoft 365 Copilot Chat; Block Copilot Access to Open Content; Control access to Designer Image Generation; Allow web search in Copilot; Control Admin Copilot availability in Microsoft 365 Admin Center",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Governance guidance: After rollout; Governance controls; Open questions",
+      "type": "applicability",
+      "claim": "Microsoft Purview records sharing events, link access and blocked sharing attempts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/microsoft-copilot-manage-content-sharing",
+      "quote": "Microsoft Purview records Copilot sharing activity, including sharing events, link access, and blocked sharing attempts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Governance controls: final paragraph; Open questions",
+      "type": "absence",
+      "claim": "The sharing management page gives neither audit operation names nor an audit portal path.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot sharing audit operation. Opened sharing management page in full: activity descriptions and a Security Copilot audit link, but no operation names or portal steps. General Copilot audit search results give a portal path, not sharing operation names.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance controls: first paragraph",
+      "type": "absence",
+      "claim": "The tenant-wide sharing switch is the only documented administrator control specifically for this feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot session sharing groups; Copilot sharing Graph PowerShell; Copilot response sharing sensitivity policy. Opened sharing admin/user pages and copilotPolicySetting reference: one primary switch; no additional feature-specific admin control found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance guidance: Before rollout, At rollout and After rollout",
+      "type": "consistency",
+      "claim": "The checklist names sensitivity label review, user shared-link management and Purview audit review without corresponding controls-table rows.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: 'ask whether your sensitivity label setup is relevant'; 'Shared links lets them stop sharing a link'; 'Review Microsoft Purview audit records'. Table: tenant sharing switch and user/group scoping only.",
+      "severity": "minor",
+      "fix": "Remove the Before rollout bullet beginning 'Check which teams handle material', remove the After rollout audit-review bullet, and remove ', and that Copilot > Settings > Data controls > Shared links lets them stop sharing a link' from the At rollout communication bullet. The verified explanatory body can remain."
+    },
+    {
+      "n": 56,
+      "where": "title; What's changing; running prose",
+      "type": "behaviour",
+      "claim": "The briefing calls the product Microsoft 365 Copilot, its former name.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements",
+      "quote": "Microsoft 365 Copilot is now named Microsoft Copilot, and Microsoft 365 Copilot Chat is now named Microsoft Copilot Chat.",
+      "severity": "minor",
+      "fix": "Use 'Microsoft Copilot' in the title and unattributed running prose. Retain the original product name when reporting the roadmap record or quoting MC1461700."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-17T05:06:28.529Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=562353",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/manage/microsoft-copilot-manage-content-sharing",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://support.microsoft.com/microsoft-365-copilot/share-conversations-responses-in-microsoft-copilot",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/resources/copilotpolicysetting",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1461700",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether users can share Copilot sessions and responses",
+        "docs": "https://learn.microsoft.com/copilot/manage/microsoft-copilot-manage-content-sharing",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Settings",
+          "Copilot sharing",
+          "Allow users to share Copilot responses",
+          "Save"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

@@ -43,6 +43,9 @@ sources:
   - title: "Overview of Copilot Pages and Copilot Notebooks permissions"
     url: "https://learn.microsoft.com/microsoft-365/loop/cpcn-permission"
     kind: "learn"
+  - title: "Audit logs for Copilot and AI applications"
+    url: "https://learn.microsoft.com/purview/audit-copilot"
+    kind: "learn"
 videos: []
 related: ["planner-planner-agent-in-copilot-v2-improvements","planner-save-ai-generated-filters-in-planner-agent-chat"]
 controls:
@@ -78,19 +81,23 @@ changes:
     note: "Corrected the Block path in the Microsoft 365 admin center to include Block agent and Save; removed two checklist items with no matching controls row."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 70 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-17"
+    note: "Corrected the auditing open question: Copilot user interactions are logged in Microsoft Purview Audit when auditing is enabled; a report-specific event remains unconfirmed."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 72 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-17"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 70
-  confirmed: 69
+  claims: 72
+  confirmed: 72
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "0e2089ad5fe0933ff64f2bb6d5bcc364"
+  contradicted: 0
+  attempts: 0
+  hash: "6700d2a1d66911eb2c6737baae1a6d37"
 ---
 
 ## What's changing
@@ -190,17 +197,11 @@ Disabling Loop is not a targeted control: Microsoft Learn describes it as stoppi
 - Can status reports be turned off separately from Planner Agent, or is blocking the agent the only switch? Watch MC1506735 and the Planner Learn pages.
 - Does `Set-PlannerConfiguration -AllowPlannerCopilot` govern AI-generated status reports in the Reports tab and in Copilot, or only the earlier Planner Agent experience?
 - Where is an exported report stored, given that the notice names Copilot Pages, Word and PDF and Microsoft Learn names Loop and the plan's SharePoint folder?
-- Is generating a report audited or reported on, and where would it appear? The sources read do not say.
+- When auditing is enabled, Copilot user interactions are logged in Microsoft Purview Audit. Does status report generation have a distinct report-specific event?
 - Is any price or Copilot Credits meter planned for status reports beyond the Microsoft 365 Copilot licence?
 
 <!-- rationale
 risk: Medium. The agent reads plan data users can already open and writes new report content to Copilot conversations, Copilot Pages or Word and PDF files, and Microsoft's notice says no admin action is needed for it to arrive.
 cost: Low. Microsoft's notice says only users generating reports need a Microsoft 365 Copilot licence and names no separate price or meter, so the known cost is admin time, communications and training.
 impact: Medium. Licensed Planner Agent users and the project managers who report on plans notice it first; people who only view or edit reports need no Copilot licence, per the notice.
--->
-
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Open questions: auditing / absence: Whether generating a report is audited or reported on, and where this appears, is undocumented. | Found: The system automatically generates audit logs when a user interacts with Copilot, Cowork, or an AI application. ... Access Copilot audit logs by using the Microsoft Purview portal and selecting Audit. | Fix: Replace the auditing bullet with: 'When auditing is enabled, Copilot user interactions are logged in Microsoft Purview Audit. Does status report generation have a distinct report-specific event?' Cite https://learn.microsoft.com/purview/audit-copilot. This states the documented platform coverage without asserting a report-specific event. | Source: https://learn.microsoft.com/purview/audit-copilot
 -->

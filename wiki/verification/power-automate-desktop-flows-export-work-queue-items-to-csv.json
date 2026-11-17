@@ -2,56 +2,61 @@
   "slug": "power-automate-desktop-flows-export-work-queue-items-to-csv",
   "roadmapId": 577791,
   "title": "Power Automate: export work queue items to CSV from the automation center",
-  "status": "held",
+  "status": "verified",
   "date": "2026-11-17",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
-  "verifierVerdict": "hold",
+  "attempts": 0,
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-17",
-    "reasons": [
-      "2 blocking findings (claims 17, 29)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 44,
-    "confirmed": 41,
-    "unconfirmed": 1,
-    "contradicted": 2,
-    "blocker": 2,
+    "claims": 47,
+    "confirmed": 47,
+    "unconfirmed": 0,
+    "contradicted": 0,
+    "blocker": 0,
     "major": 0,
-    "minor": 1
+    "minor": 0
   },
-  "summary": "Hold: the briefing treats Dataverse request accounting as undocumented even though Microsoft's platform rule covers reads from any client, including user-driven operations. Its categorical statement that Dataverse controls do not follow the downloaded CSV also lacks evidence for this export; the roadmap facts and both documented control paths check out.",
+  "summary": "The briefing accurately reports the launched CSV download and its automatic availability. The documented security-role controls and Premium prerequisites check out, while export-specific settings, licensing and behaviour are appropriately identified as documentation gaps.",
   "claims": [
     {
       "n": 1,
-      "where": "title; front matter: products",
+      "where": "title; summary; What's changing; Governance guidance: At rollout",
       "type": "record",
-      "claim": "This is a Power Automate feature for exporting work queue items to CSV.",
+      "claim": "The automation center's work queues experience offers a download of work queue items as a CSV file.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"title\": \"Power Automate: Desktop flows - Export work queue items to CSV\"",
+      "quote": "You can now export work queue items directly from the Automation Center portal. A new option available in the Work Queues experience lets you download items as a CSV file.",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
-      "where": "front matter: status; summary; What's changing",
+      "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap status is Launched.",
+      "claim": "The roadmap describes portable data for analysis, reporting or integration without external APIs or custom solutions.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"status\": \"Launched\"",
+      "quote": "This capability allows you to access work queue data in a portable format for further analysis, reporting, or integration with other tools, without needing to rely on external APIs or custom solutions.",
       "severity": null,
       "fix": null
     },
     {
       "n": 3,
+      "where": "front matter: status; summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
       "claim": "The roadmap target date is July CY2026.",
@@ -62,40 +67,7 @@
       "fix": null
     },
     {
-      "n": 4,
-      "where": "front matter: releasePhase; What's changing",
-      "type": "record",
-      "claim": "The release phase is General Availability.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"releasePhase\": [\n    \"General Availability\"\n  ]",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 5,
-      "where": "front matter: clouds; What's changing; Scope",
-      "type": "record",
-      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\n    \"Worldwide (Standard Multi-Tenant)\",\n    \"GCC\",\n    \"GCC High\",\n    \"DoD\"\n  ]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
-      "where": "front matter: platforms; What's changing; Scope",
-      "type": "record",
-      "claim": "The roadmap platform is Web.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\n    \"Web\"\n  ]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
       "where": "front matter: previewDate",
       "type": "record",
       "claim": "The roadmap supplies no preview date.",
@@ -106,43 +78,76 @@
       "fix": null
     },
     {
-      "n": 8,
-      "where": "front matter: roadmapModified",
+      "n": 6,
+      "where": "front matter: releasePhase; What's changing",
       "type": "record",
-      "claim": "The roadmap modification timestamp is 2026-10-22T23:45:44.",
+      "claim": "The release phase is General Availability.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"modified\": \"2026-10-22T23:45:44\"",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Web as the platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
       "severity": null,
       "fix": null
     },
     {
       "n": 9,
-      "where": "summary; What's changing; Why it matters; rationale: risk",
+      "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "A new option in the automation center Work Queues experience downloads work queue items as a portable CSV file.",
+      "claim": "The roadmap lists GCC.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "You can now export work queue items directly from the Automation Center portal. A new option available in the Work Queues experience lets you download items as a CSV file.",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
       "severity": null,
       "fix": null
     },
     {
       "n": 10,
-      "where": "What's changing",
+      "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap describes analysis, reporting and integration with other tools without external APIs or custom solutions.",
+      "claim": "The roadmap lists GCC High.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "This capability allows you to access work queue data in a portable format for further analysis, reporting, or integration with other tools, without needing to rely on external APIs or custom solutions.",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
       "severity": null,
       "fix": null
     },
     {
       "n": 11,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
       "where": "front matter: defaultState; summary; What's changing; Why it matters; Scope",
       "type": "default",
-      "claim": "The feature is on automatically for admins and makers without administrator enablement.",
+      "claim": "The feature is on automatically for admins and makers, supporting defaultState on.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Enabled for admins/makers/marketers automatically",
@@ -150,21 +155,21 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 13,
       "where": "What's changing",
       "type": "absence",
-      "claim": "Microsoft Learn does not describe this CSV export, including on the automation center and Manage work queues pages.",
+      "claim": "Microsoft Learn does not yet describe this automation-center CSV export, including on the two named feature-area pages.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"power-automate\" \"work queue\" \"export\" \"CSV\"; \"work queue\" \"CSV\" \"export\" \"automation center\" switch scheduled columns. Opened automation-center-overview and desktop-flows/work-queues-manage; neither describes this export.",
+      "quote": "Searched: \"work queue\" \"CSV\" \"export\" \"automation center\". Opened automation-center-overview and work-queues-manage in full; neither describes this export. Results concerned bulk import, processing and other products.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 13,
+      "n": 14,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The Items tab lists individual items with status, priority, enqueue date, completion date and assigned processors.",
+      "claim": "The automation center Items tab displays individual work queue item status.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/automation-center-overview",
       "quote": "The Items tab displays individual work queue items with detailed information about their status, priority, enqueue date, completion date, and assigned processors.",
@@ -172,51 +177,73 @@
       "fix": null
     },
     {
-      "n": 14,
-      "where": "Why it matters",
-      "type": "behaviour",
-      "claim": "Work queues hold process-relevant data processed by automations and people.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/desktop-flows/work-queues",
-      "quote": "Work queues in Power Automate can be used to store process-relevant data",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 15,
-      "where": "Risk assessment: Data exposure; rationale: risk",
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "The New work queue item panel includes an Input field that accepts alphanumeric values.",
+      "claim": "The Items tab displays work queue item priority.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/desktop-flows/work-queues-manage",
-      "quote": "Enter the actual alphanumeric Input value of the work queue item.",
+      "source": "https://learn.microsoft.com/power-automate/automation-center-overview",
+      "quote": "The Items tab displays individual work queue items with detailed information about their status, priority, enqueue date, completion date, and assigned processors.",
       "severity": null,
       "fix": null
     },
     {
       "n": 16,
-      "where": "Risk assessment: Data exposure; rationale: risk",
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "The New work queue item panel includes optional Processing notes.",
+      "claim": "The Items tab displays work queue item enqueue date.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/desktop-flows/work-queues-manage",
-      "quote": "(Optional) Enter Processing notes relevant to this work queue item.",
+      "source": "https://learn.microsoft.com/power-automate/automation-center-overview",
+      "quote": "The Items tab displays individual work queue items with detailed information about their status, priority, enqueue date, completion date, and assigned processors.",
       "severity": null,
       "fix": null
     },
     {
       "n": 17,
-      "where": "Risk assessment: Data exposure",
-      "type": "applicability",
-      "claim": "Dataverse controls do not follow the downloaded CSV file.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: Dataverse exported CSV file security roles access after export; \"Dataverse\" \"exported\" \"security\" \"file\" access control; \"export\" \"security\" \"static worksheet\". Read automation-center-overview and work-queues-manage; Excel export guidance describes a different export.",
-      "severity": "blocker",
-      "fix": "Replace 'Once downloaded, the file is a copy outside the environment, so Dataverse controls do not follow it.' with the advice 'Agree where downloaded CSV files should be stored and who should be allowed to receive them.' No source read establishes the post-download protection behaviour of this export."
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The Items tab displays work queue item completion date.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/automation-center-overview",
+      "quote": "The Items tab displays individual work queue items with detailed information about their status, priority, enqueue date, completion date, and assigned processors.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 18,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The Items tab displays assigned processors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/automation-center-overview",
+      "quote": "The Items tab displays individual work queue items with detailed information about their status, priority, enqueue date, completion date, and assigned processors.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "A work queue stores process-relevant operational data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/work-queues",
+      "quote": "Work queues in Power Automate can be used to store process-relevant data and provide a way to decouple complex processes and automations, allowing them to communicate asynchronously.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Work queue items can be processed by automations or people.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/work-queues",
+      "quote": "the highest-priority items being completed first, regardless of whether they've been processed by digital workers, human workers, or through integrations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
       "where": "Why it matters; Risk assessment: Security & identity; Governance controls",
       "type": "applicability",
       "claim": "Dataverse role-based access control secures the automation center's underlying data.",
@@ -227,10 +254,10 @@
       "fix": null
     },
     {
-      "n": 19,
+      "n": 22,
       "where": "Risk assessment: Security & identity",
       "type": "role",
-      "claim": "In standard Dataverse environments the necessary privileges are included in the default environment maker role.",
+      "claim": "In standard Dataverse environments, necessary automation-center privileges are included in the default environment maker role.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/automation-center-overview",
       "quote": "In standard Dataverse environments (production, trial, sandbox, and developer), necessary privileges are included in the default environment maker role.",
@@ -238,10 +265,10 @@
       "fix": null
     },
     {
-      "n": 20,
+      "n": 23,
       "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
       "type": "role",
-      "claim": "All users automatically become environment makers in Default environments with a provisioned Dataverse database.",
+      "claim": "In Default environments with a provisioned Dataverse database, all users automatically become environment makers.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/automation-center-overview",
       "quote": "In Default environments with a provisioned Dataverse database, all users automatically become environment makers.",
@@ -249,29 +276,62 @@
       "fix": null
     },
     {
-      "n": 21,
-      "where": "controls[0].note; Risk assessment: Security & identity; Governance controls; rationale: risk",
-      "type": "absence",
-      "claim": "Microsoft has not specifically confirmed how this CSV export applies the downloading user's Dataverse security roles.",
+      "n": 24,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "The New work queue item panel includes an alphanumeric Input value.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"work queue\" \"export\" \"security roles\" \"CSV\"; Power Automate automation center export work queue items CSV disable setting API security roles columns scheduled export. Opened automation-center-overview, work-queues-manage and work-queues-known-limitations.",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/work-queues-manage",
+      "quote": "Enter the actual alphanumeric Input value of the work queue item.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 22,
+      "n": 25,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "The New work queue item panel includes optional Processing notes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/work-queues-manage",
+      "quote": "(Optional) Enter Processing notes relevant to this work queue item.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not documented which columns or how many rows this CSV download contains.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Automate work queue CSV download export license pricing meter request count limit columns audit scheduled. Opened automation-center-overview, work-queues-manage and work-queues-known-limitations; no CSV column list or row limit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[0].note; Risk assessment; Governance guidance; Governance controls; rationale: risk; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not specifically described whether the CSV export applies the downloader's Dataverse privileges.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"automation center\" \"work queues\" \"export\" \"security\". Opened automation-center-overview and work-queues-known-limitations: general data RBAC is documented, but no export-specific security behaviour is described.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
       "where": "Risk assessment: Autonomy & actions",
       "type": "absence",
-      "claim": "No automated or scheduled mode of the new automation center CSV export is documented.",
+      "claim": "No automated or scheduled mode is documented for this automation-center download option.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"work queue\" \"CSV\" \"export\" \"automation center\" switch scheduled columns; Power Automate automation center export work queue items CSV disable setting API security roles columns scheduled export. Opened automation-center-overview and work-queues-manage.",
+      "quote": "Searched: \"work queue\" \"CSV\" \"export\" \"rollout\" \"scheduled\". Opened automation-center-overview and work-queues-manage; no scheduled download. Search results describe unrelated exports and work queue processing.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 23,
+      "n": 29,
       "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "licensing",
       "claim": "Data under the automation center Work queues tab requires a Power Automate Premium licence.",
@@ -282,21 +342,21 @@
       "fix": null
     },
     {
-      "n": 24,
+      "n": 30,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
       "claim": "The Work queues overview lists a Premium Power Automate licence as a prerequisite.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/desktop-flows/work-queues",
-      "quote": "To use work queues in Power Automate the following are required:\n\n- Premium Power Automate license",
+      "quote": "To use work queues in Power Automate the following are required: Premium Power Automate license",
       "severity": null,
       "fix": null
     },
     {
-      "n": 25,
+      "n": 31,
       "where": "Cost and licensing; Scope",
       "type": "role",
-      "claim": "Work queues require the Environment maker role or another role that includes access to work queue tables.",
+      "claim": "Work queue prerequisites include the Environment maker role or other roles with access to work queue tables.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/desktop-flows/work-queues",
       "quote": "Environment maker role (or other roles that include access to work queue tables)",
@@ -304,54 +364,65 @@
       "fix": null
     },
     {
-      "n": 26,
-      "where": "front matter: licensing.model; licensing.notes; Cost and licensing",
+      "n": 32,
+      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost; Open questions",
       "type": "absence",
-      "claim": "An export-specific licensing model has not been published, distinct from the documented Premium prerequisites.",
+      "claim": "Export-specific licensing is not yet published, without negating the documented Premium prerequisites.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Power Automate licensing work queues automation center premium CSV export; Power Automate work queue CSV export license pricing meter API limits audit rollout. Opened automation-center-overview, work-queues and power-platform/admin/power-automate-licensing/types.",
+      "quote": "Searched: Power Automate work queue CSV download export license pricing meter. Opened automation-center-overview, work-queues and power-automate-licensing/types; Premium access is documented but no separate export-specific licensing rule.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 27,
+      "n": 33,
       "where": "Cost and licensing; rationale: cost",
       "type": "absence",
-      "claim": "No separate meter for this CSV export is published.",
+      "claim": "No separate meter is published for this CSV download.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Power Automate work queue CSV export license pricing meter API limits audit rollout; Power Automate licensing work queues automation center premium CSV export. Opened automation-center-overview and power-platform/admin/power-automate-licensing/types.",
+      "quote": "Searched: Power Automate work queue CSV download export license pricing meter request count. Opened power-automate-licensing/types, api-request-limits-allocations and automation-center-overview; no separate CSV export meter.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 28,
+      "n": 34,
       "where": "Cost and licensing",
       "type": "record",
       "claim": "The roadmap item states no licence requirement for the export.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Enabled for:\n\nEnabled for admins/makers/marketers automatically",
+      "quote": "This capability allows you to access work queue data in a portable format for further analysis, reporting, or integration with other tools, without needing to rely on external APIs or custom solutions.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 29,
-      "where": "Cost and licensing",
-      "type": "absence",
-      "claim": "Whether the export counts towards any Dataverse API limit is not documented.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/power-platform/admin/api-request-limits-allocations",
-      "quote": "All create, read, update, and delete (CRUD), assign, and share operations including user-driven and internal system requests required to complete CRUD transactions, and special operations like share or assign. These operations can be from any client or application",
-      "severity": "blocker",
-      "fix": "Replace 'Whether the export counts towards any Dataverse API limit is not documented' with 'Dataverse request limits cover read operations, including user-driven and internal requests from any client; Microsoft has not published the request count for a CSV download.' Cite https://learn.microsoft.com/power-platform/admin/api-request-limits-allocations. Retain the following statement about general work queue limits."
-    },
-    {
-      "n": 30,
+      "n": 35,
       "where": "Cost and licensing",
       "type": "applicability",
-      "claim": "Work queues are based on Dataverse and the same service protection and API limits apply to them generally.",
+      "claim": "Dataverse request limits cover read operations, including user-driven and internal requests from any client.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/api-request-limits-allocations",
+      "quote": "All create, read, update, and delete (CRUD), assign, and share operations including user-driven and internal system requests required to complete CRUD transactions, and special operations like share or assign. These operations can be from any client or application",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "Microsoft has not published the request count for a CSV download.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Automate work queue CSV download export license pricing meter request count limit columns audit scheduled. Opened api-request-limits-allocations, automation-center-overview and work-queues-known-limitations; no per-download request count.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing",
+      "type": "applicability",
+      "claim": "Work queues are based on Dataverse and the same service protection and API limits apply.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/desktop-flows/work-queues-known-limitations",
       "quote": "Work queues are based on Dataverse technologies, hence the same service protection and API limits apply.",
@@ -359,10 +430,10 @@
       "fix": null
     },
     {
-      "n": 31,
+      "n": 38,
       "where": "Scope",
       "type": "availability",
-      "claim": "The Work Queue tab is unavailable in Dataverse for Teams environments, so this automation center experience is unavailable there.",
+      "claim": "The Work Queue tab is unavailable in Dataverse for Teams environments, so this tab's export is not accessible there.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/automation-center-overview",
       "quote": "The Work Queue tab isn't available in Dataverse for Teams environments.",
@@ -370,54 +441,32 @@
       "fix": null
     },
     {
-      "n": 32,
+      "n": 39,
       "where": "Scope",
       "type": "absence",
-      "claim": "Rollout mechanics beyond the roadmap target date are not documented.",
+      "claim": "Further rollout mechanics for this export are not documented.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Power Automate work queue CSV export license pricing meter API limits audit rollout; \"power-automate\" \"work queue\" \"export\" \"CSV\". Opened automation-center-overview, work-queues and work-queues-manage; read roadmap record.",
+      "quote": "Searched: \"work queue\" \"CSV\" \"export\" \"rollout\" \"scheduled\" and \"work queue\" \"CSV\" \"export\" \"automation center\". Opened automation-center-overview and work-queues-manage; no export rollout mechanics beyond the supplied record.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 33,
-      "where": "Governance guidance: Before rollout",
-      "type": "behaviour",
-      "claim": "Work Queue is one of the Dataverse tables used by the automation center.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/automation-center-overview",
-      "quote": "| Work Queue | `prvReadworkqueue` | Stores work queue data. |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
-      "where": "Governance guidance: Before rollout",
-      "type": "behaviour",
-      "claim": "Work Queue Item is a Dataverse table storing items belonging to a particular work queue.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/automation-center-overview",
-      "quote": "| Work Queue Item | `prvReadworkqueueitem` | Stores work queue item data belonging to a particular work queue. |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
-      "where": "controls[0].ui; Governance controls: first table row",
+      "n": 40,
+      "where": "controls[0].ui; Governance controls table",
       "type": "admin-path",
-      "claim": "Direct user security roles are managed in Power Platform admin center under Manage > Environments > environment > Settings > Users + permissions > Users > user > Manage security roles.",
+      "claim": "Security roles are managed in Power Platform admin center through Manage > Environments > environment > Settings > Users + permissions > Users > user > Manage security roles.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/assign-security-roles",
-      "quote": "In the Manage pane, select Environments, and then select an environment from the list.\n4. Select Settings.\n5. Select Users + permissions, and then select Users.\n6. On the Users page select a user, and then select Manage security roles.",
+      "quote": "select Manage. ... select Environments, and then select an environment from the list. ... Select Settings. ... Select Users + permissions, and then select Users. ... On the Users page select a user, and then select Manage security roles.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 36,
-      "where": "controls[0].api; Governance controls: first table row",
+      "n": 41,
+      "where": "controls[0].api; controls[0].note; Governance controls table",
       "type": "command",
-      "claim": "The documented role-assignment call is POST [Organization URI]/api/data/v9.0/systemusers(azureactivedirectoryobjectid=<user object ID>)/systemuserroles_association/$ref with the roles reference in @odata.id.",
+      "claim": "The cited Dataverse reference documents the printed POST and @odata.id body for assigning a security role to a Microsoft Entra ID group user.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/developer/data-platform/aad-group-team",
       "quote": "POST [Organization URI]/api/data/v9.0/systemusers(azureactivedirectoryobjectid=<user object ID>)/systemuserroles_association/$ref\nAccept: application/json\n\n{ \n  \"@odata.id\":\"[Organization URI]/api/data/v9.0/roles(<role ID>)\"\n}",
@@ -425,29 +474,18 @@
       "fix": null
     },
     {
-      "n": 37,
-      "where": "controls[0].note; Governance controls: first table row",
-      "type": "behaviour",
-      "claim": "The API source describes assigning a security role to a Microsoft Entra ID group user.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/aad-group-team",
-      "quote": "An administrator can assign a security role to a Microsoft Entra ID group user. If the user doesn't exist in Dataverse, the system automatically adds the user when you assign the role directly to the user.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "controls[1]; summary; Risk assessment: Change & support; Governance controls",
+      "n": 42,
+      "where": "controls[1].ui and api; summary; Why it matters; Risk assessment; Governance controls",
       "type": "absence",
-      "claim": "No tenant or environment switch to turn this CSV export on or off is documented in either the UI or an API.",
+      "claim": "No tenant or environment switch to enable or disable this CSV export is documented on the UI or automation surfaces.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"work queue\" \"CSV\" \"disable\" \"Power Platform admin center\"; \"work queue\" \"export\" \"pac\" \"Power Platform API\" setting; \"work queue\" \"export\" \"PowerShell\" \"setting\". Opened automation-center-overview, work-queues-manage and work-queues-known-limitations.",
+      "quote": "Searched: Power Automate work queue CSV export disable enable setting Power Platform admin center PowerShell pac admin API; \"work queue\" \"CSV export\" \"Power Platform API\" \"Dataverse\" \"pac admin\". Read feature pages and returned PowerShell/reference excerpts; no switch.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 39,
+      "n": 43,
       "where": "Governance controls",
       "type": "role",
       "claim": "Assigning security roles requires at least Read and Assign privileges on the Security Role table.",
@@ -458,10 +496,10 @@
       "fix": null
     },
     {
-      "n": 40,
+      "n": 44,
       "where": "Governance controls",
       "type": "role",
-      "claim": "System Administrator has the required security-role assignment privileges by default.",
+      "claim": "The System Administrator role has the required security-role assignment privileges by default.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/assign-security-roles",
       "quote": "By default, the System Administrator security role has all the required privileges to assign security roles to any user, including assigning the System Administrator security role.",
@@ -469,7 +507,7 @@
       "fix": null
     },
     {
-      "n": 41,
+      "n": 45,
       "where": "Governance controls",
       "type": "applicability",
       "claim": "Microsoft documents Dataverse RBAC for limiting work queue use in API-based scenarios.",
@@ -480,43 +518,32 @@
       "fix": null
     },
     {
-      "n": 42,
-      "where": "Governance controls: final paragraph",
+      "n": 46,
+      "where": "Governance controls; Risk assessment: Change & support; Governance guidance",
       "type": "applicability",
-      "claim": "Restricting access to work queue tables limits which work queue data users can see in the automation center.",
+      "claim": "Controlling read access to Work Queue and Work Queue Item tables is a documented way to limit visibility of their data in the automation center.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/automation-center-overview",
-      "quote": "Additionally, administrators can create custom security roles with row-level privileges to control the data users can view and interact with.",
+      "quote": "administrators can create custom security roles with row-level privileges to control the data users can view and interact with. ... Work Queue | prvReadworkqueue ... Work Queue Item | prvReadworkqueueitem",
       "severity": null,
       "fix": null
     },
     {
-      "n": 43,
-      "where": "front matter: action",
-      "type": "consistency",
-      "claim": "The prepare action rating fits the briefing's description of a launched, automatically enabled change with medium risk and an access-control decision.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "status: \"launched\"; risk: \"medium\"; defaultState: \"on\"; action: \"prepare\". The body says an administrator who does nothing should expect users to start downloading and recommends reviewing access.",
-      "severity": "minor",
-      "fix": "Change action from 'prepare' to 'act-now': the change is already launched, reaches its audience automatically and requires the access and file-handling decisions described in the briefing."
-    },
-    {
-      "n": 44,
-      "where": "Risk assessment: Data exposure; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not published the CSV's column list or row count, including whether Input and Processing notes are exported.",
+      "n": 47,
+      "where": "Why it matters; rationale: risk",
+      "type": "record",
+      "claim": "The feature produces a portable downloaded file rather than leaving the exported data solely in Dataverse.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"work queue\" \"CSV\" \"export\" \"automation center\" switch scheduled columns; \"power-automate\" \"work queue\" \"export\" \"CSV\". Opened automation-center-overview, work-queues-manage and work-queues-known-limitations; no CSV column list or row count appears.",
+      "source": "roadmap record",
+      "quote": "A new option available in the Work Queues experience lets you download items as a CSV file. ... This capability allows you to access work queue data in a portable format",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-17T04:20:08.969Z",
+    "at": "2026-11-17T05:06:36.739Z",
     "summary": {
-      "links": 7,
+      "links": 8,
       "unreachable": 0,
       "uiPaths": 1,
       "uiPathsWithMissingWords": 0,
@@ -559,6 +586,11 @@
         "url": "https://learn.microsoft.com/power-apps/developer/data-platform/aad-group-team",
         "ok": true,
         "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/api-request-limits-allocations",
+        "ok": true,
+        "status": 200
       }
     ],
     "controlChecks": [
@@ -590,5 +622,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-17",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

@@ -56,13 +56,13 @@ controls:
     scope: "environment"
     ui:
       surface: "Power Apps (maker)"
-      path: "Solutions > solution > Add existing > More > Setting"
+      path: "Solutions > solution > Display density > Edit setting value > Setting environment value > New value"
       docs: "https://learn.microsoft.com/power-apps/maker/data-platform/create-edit-configure-settings"
     api:
       kind: "rest"
       call: "POST <organization URI>/api/data/v9.2/SaveSettingValue; JSON body: {\"SettingName\":\"<setting definition unique name>\",\"Value\":\"<value>\"}"
       docs: "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/savesettingvalue"
-    note: "The appearance page says an admin sets the environment default by adding the Display density setting to a solution (the settings guide needs Solution preview on). The generic SaveSettingValue page does not name this setting."
+    note: "If Display density is not yet in the solution, first add it: Add existing > More > Setting. Then enter the value and select Save. The generic SaveSettingValue page does not name this setting."
   - governs: "App default display density, and whether display density is off for an app"
     scope: "app"
     ui:
@@ -87,19 +87,23 @@ changes:
     note: "Corrected after verification: removed unsupported claims on permissions, budget controls and the setting-definition dialog; SaveSettingValue rows now show the POST call; noted the UserSettings description of density."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 60 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-17"
+    note: "Corrected the environment default control path to the Edit setting value steps in the settings guide; the Add existing step is kept in the note."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 60 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-17"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 60
-  confirmed: 59
+  confirmed: 60
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "78d97f3e8748dba7a74133703024bae3"
+  contradicted: 0
+  attempts: 0
+  hash: "dd8e687e6dbc968ebe8b8c5b2d414561"
 ---
 
 ## What's changing
@@ -179,7 +183,7 @@ No meter is documented for this feature at the time of writing (November 2026).
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Environment default display density for all model-driven apps</strong><br><small>Environment</small><br><small class="controls__note">The appearance page says an admin sets the environment default by adding the Display density setting to a solution (the settings guide needs Solution preview on). The generic SaveSettingValue page does not name this setting.</small></td><td data-label="Admin UI"><strong>Power Apps (maker)</strong><br>Solutions › solution › Add existing › More › Setting <a href="https://learn.microsoft.com/power-apps/maker/data-platform/create-edit-configure-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>POST &lt;organization URI&gt;/api/data/v9.2/SaveSettingValue; JSON body: {&quot;SettingName&quot;:&quot;&lt;setting definition unique name&gt;&quot;,&quot;Value&quot;:&quot;&lt;value&gt;&quot;}</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/savesettingvalue" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Environment default display density for all model-driven apps</strong><br><small>Environment</small><br><small class="controls__note">If Display density is not yet in the solution, first add it: Add existing &gt; More &gt; Setting. Then enter the value and select Save. The generic SaveSettingValue page does not name this setting.</small></td><td data-label="Admin UI"><strong>Power Apps (maker)</strong><br>Solutions › solution › Display density › Edit setting value › Setting environment value › New value <a href="https://learn.microsoft.com/power-apps/maker/data-platform/create-edit-configure-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>POST &lt;organization URI&gt;/api/data/v9.2/SaveSettingValue; JSON body: {&quot;SettingName&quot;:&quot;&lt;setting definition unique name&gt;&quot;,&quot;Value&quot;:&quot;&lt;value&gt;&quot;}</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/savesettingvalue" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>App default display density, and whether display density is off for an app</strong><br><small>App</small><br><small class="controls__note">Maker-side. Learn says Display density is configured in the Settings dialog in the app designer; Off is enum value 0. Save and publish the app for the change to apply.</small></td><td data-label="Admin UI"><strong>Power Apps (maker)</strong><br>Settings <a href="https://learn.microsoft.com/power-apps/maker/model-driven-apps/app-properties" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>POST &lt;organization URI&gt;/api/data/v9.2/SaveSettingValue; JSON body: {&quot;AppUniqueName&quot;:&quot;&lt;app unique name&gt;&quot;,&quot;SettingName&quot;:&quot;&lt;setting definition unique name&gt;&quot;,&quot;Value&quot;:&quot;&lt;value&gt;&quot;}</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/savesettingvalue" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
@@ -201,8 +205,9 @@ cost: Low. The Learn page and the roadmap item name no licence or meter for disp
 impact: Low. The documented default is Comfortable, so most users see a difference only if an environment or app default is changed or they pick Cozy or Compact themselves in Personal settings.
 -->
 
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].ui; Governance controls: environment row / admin-path: Solutions > solution > Add existing > More > Setting is the UI path for changing the environment default display density. | Found: If the setting definition is available in the solution: 1. Select the setting definition. 2. In the Edit setting value dialog, in the Setting environment value section, select New value. 3. Provide the value, and then select Save. | Fix: The printed path only opens the add-existing-setting picker. Retain it in the note as the preliminary step for adding Display density to the solution. For the environment-value control, replace ui.path with 'Solutions > solution > Display density > Edit setting value > Setting environment value > New value'; the note should say to enter the desired value and select Save. This follows the cited guide's 'Adding a new setting environment value' procedure once the setting definition is in the solution. | Source: https://learn.microsoft.com/power-apps/maker/data-platform/create-edit-configure-settings
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] front matter: licensing.model; Cost and licensing; rationale: cost / absence: Licensing specific to display density is not yet published, so the feature's licensing model is unknown. | Found: Searched: Power Apps display density licensing pricing meter model-driven apps license; "display density" "licens" Power Apps. Read appearance-settings, pricing-billing-skus, powerapps-licensing-faq and pay-as-you-go-meters; no density-specific licensing found. | Fix: Narrow 'Licensing is not yet published' to 'Any additional licensing specific to display density is not yet published' in Cost and licensing and the cost rationale, and make the same qualification in licensing.notes. Existing model-driven app licensing is documented at https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq; the unknown here is density-specific licensing, not the underlying app's use rights.
+- [supported, minor] controls[0].ui; Governance controls: environment row / admin-path: With the Display density definition in the solution, its environment value is set through Solutions > solution > Display density > Edit setting value > Setting environment value > New value. | Found: Select the setting definition. In the Edit setting value dialog, in the Setting environment value section, select New value. Provide the value, and then select Save. | Fix: Keep the corrected environment path. Add to controls[0].note and the matching rendered note: 'The settings guide requires Solution preview on in the Solutions area before following these steps.' The cited guide explicitly states this prerequisite; the appearance page separately confirms that Display density can be added to a solution. | Source: https://learn.microsoft.com/power-apps/maker/data-platform/create-edit-configure-settings
 -->

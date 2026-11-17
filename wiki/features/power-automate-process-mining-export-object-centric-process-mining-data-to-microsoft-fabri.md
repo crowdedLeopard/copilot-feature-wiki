@@ -96,19 +96,23 @@ changes:
     note: "Corrected after the independent check: full wizard path, Fabric and Power BI platform licensing now stated with cost set to variable, workspace roles noted as granting semantic-model permissions, and unsupported claims removed."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 86 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-17"
+    note: "Corrected after the independent check: the risk rationale and permissions wording now reflect that workspace roles grant implicit semantic-model permissions, and the workspace-access-list item is removed from the checklist."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 86 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-17"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 86
-  confirmed: 84
+  confirmed: 86
   unconfirmed: 0
-  contradicted: 2
-  attempts: 2
-  hash: "853dbd40ff34d6368dbaae62d2ac1f6d"
+  contradicted: 0
+  attempts: 0
+  hash: "891e24d662591740a87e00aa6b72b841"
 ---
 
 ## What's changing
@@ -123,7 +127,7 @@ The roadmap record gives status Launched, a preview date of May CY2026, a target
 
 ## Why it matters
 
-This puts a copy of process data into Fabric. The data is object-centric event data: objects, events and attributes that can include financial values, because the ingest page lets makers map financial attributes. Once published, workspace roles grant implicit permissions on the published semantic model ([semantic model permissions](https://learn.microsoft.com/power-bi/connect-data/service-datasets-permissions)). The roadmap says published models follow Fabric's standard architecture and existing governance, but the Learn pages read do not say what permissions the published semantic model or report carries, so treat that as something to confirm.
+This puts a copy of process data into Fabric. The data is object-centric event data: objects, events and attributes that can include financial values, because the ingest page lets makers map financial attributes. Once published, workspace roles grant implicit permissions on the published semantic model ([semantic model permissions](https://learn.microsoft.com/power-bi/connect-data/service-datasets-permissions)). The roadmap says published models follow Fabric's standard architecture and existing governance, but the OCPM pages do not specify additional explicit permission grants or default report sharing.
 
 The default state is user-opt-in: the export is a step each maker chooses or skips in the wizard, and no source read says existing processes are exported automatically. If nobody acts, nothing is exported until a maker takes the step, but the target workspace is then the maker's choice. Settle which Fabric workspaces are acceptable, and who needs the licences, before makers start.
 
@@ -159,7 +163,7 @@ The roadmap lists the Worldwide (Standard Multi-Tenant) cloud and the Web platfo
 ## Governance guidance
 
 ### Before rollout
-- Decide which Fabric workspaces makers may export to, and who has access to them, using the Fabric workspace access list (workspace owners do this).
+- Decide which Fabric workspaces makers may export to.
 - Check the OneLake setting **Users can access data stored in OneLake with apps external to Fabric** in the Fabric tenant settings, and confirm with Microsoft whether it applies to the OCPM export.
 - Confirm that the workspace a maker picks runs on a Fabric capacity, and that people who create and share Power BI items there hold Power BI Pro, PPU or an individual trial, as the Fabric licensing page sets out.
 
@@ -188,23 +192,20 @@ Controls that sit on the published model include the **Keep your Direct Lake dat
 
 ## Open questions
 
-- Which permissions does the published semantic model and default report carry, and can they be set from Power Automate? Watch the OCPM export page on Microsoft Learn.
+- Does the OCPM export grant any explicit permissions on the published semantic model or share the default report, and can that be set from Power Automate? Watch the OCPM export page on Microsoft Learn.
 - Is the export generally available or in preview? The roadmap lists both phases and the ingest page links to the export as "(preview)".
 - Does the export carry an additional OCPM-specific charge or meter beyond Fabric and Power BI platform licensing? Watch the Power Platform licensing FAQ.
 - Does the roadmap's configurable publishing schedule exist, or is the default automatic refresh the only mechanism described?
 - Do the custom-workspace prerequisites (OneLake setting, Process Insights Prod as workspace admin) apply to the OCPM export?
 
 <!-- rationale
-risk: Medium. The export copies process data (the ingest page allows financial attributes) into a Fabric workspace the maker picks, and the Learn pages read do not describe who can read the published model.
+risk: Medium. The export copies process data, including mapped financial attributes, into a maker-selected Fabric workspace whose roles grant implicit semantic-model permissions.
 cost: Variable. The export uses Fabric capacity; F-capacity compute is billed through Azure per second, with reservation options. The OCPM pages do not identify a separate export-specific meter.
 impact: Medium. Makers who own object-centric processes and analysts who build Power BI reports on the model notice it; other users do not.
 -->
 
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] rationale: risk; Why it matters: permissions uncertainty / absence: The Learn pages read do not describe who can read the published model. | Found: A user's role in a workspace implicitly grants them permissions on the semantic models in the workspace ... When RLS isn't defined on the semantic model, users with write, read, or build permission on the semantic model can read data from the semantic model. | Fix: Replace the risk rationale with: 'Medium. The export copies process data, including mapped financial attributes, into a maker-selected Fabric workspace whose roles grant implicit semantic-model permissions.' Narrow the permissions uncertainty in Why it matters to: 'The OCPM pages do not specify additional explicit permission grants or default report sharing.' Keep the existing statement and citation about workspace-role permissions; do not describe all reader access as undocumented. | Source: https://learn.microsoft.com/power-bi/connect-data/service-datasets-permissions
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance guidance: Before rollout, workspace access / role: Workspace owners can manage who has access to the workspace. | Found: After you create a workspace in Microsoft Fabric, or if you have an Admin or Member role in a workspace, you can give others access to it by adding them to the different roles. Workspace creators are automatically admins. | Fix: Cite https://learn.microsoft.com/fabric/fundamentals/give-access-workspaces for the existing workspace-access recommendation; the supporting page is not currently in sources. | Source: https://learn.microsoft.com/fabric/fundamentals/give-access-workspaces
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: The governance checklist asks readers to review workspace access, but the controls table has no workspace-access row. | Found: using the Fabric workspace access list (workspace owners do this) ... Whether a process is exported to a Fabric workspace, and which workspace ... Whether apps external to Fabric can read data stored in OneLake | Fix: The instruction to review the Fabric workspace access list has no corresponding controls-table row. For the smallest correction without adding a control, remove ', and who has access to them, using the Fabric workspace access list (workspace owners do this)' from that checklist bullet.
+- [supported, minor] Cost and licensing; rationale: cost / cost: F capacities are purchased through Azure and billed per second. | Found: You purchase F capacities through Azure, and Azure bills you per second with no commitment ... Pricing is regional, and Azure bills per second with a one-minute minimum. | Fix: Add 'with a one-minute minimum' after 'per second' in Cost and licensing and the cost rationale, as stated at https://learn.microsoft.com/fabric/enterprise/licenses. | Source: https://learn.microsoft.com/fabric/enterprise/licenses
 -->

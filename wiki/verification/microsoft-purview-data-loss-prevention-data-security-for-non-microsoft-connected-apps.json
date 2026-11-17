@@ -1,0 +1,1116 @@
+{
+  "slug": "microsoft-purview-data-loss-prevention-data-security-for-non-microsoft-connected-apps",
+  "roadmapId": 568075,
+  "title": "Microsoft Purview: DLP and auto-labeling policies for non-Microsoft connected apps",
+  "status": "held",
+  "date": "2026-11-17",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-17",
+    "reasons": [
+      "2 blocking findings (claims 51, 62)"
+    ]
+  },
+  "counts": {
+    "claims": 84,
+    "confirmed": 80,
+    "unconfirmed": 1,
+    "contradicted": 3,
+    "blocker": 2,
+    "major": 1,
+    "minor": 7
+  },
+  "summary": "Hold: the auto-labeling creation path skips the required label-selection pages, and the statement that no budget control is documented overlooks Azure Cost Management budgets. The rollout, application coverage and pay-as-you-go meter are supported, but Microsoft's conflicting cut-over instructions should also be disclosed.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap's General Availability target is December CY2026, not a shipped date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"December CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is October CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"October CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists only Worldwide (Standard Multi-Tenant), without listing government clouds.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap says supported conditions and actions vary by application.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The conditions and actions supported for each of these applications vary.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1449180 was updated on 30 October 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1449180",
+      "quote": "Updated October 30, 2026: We have updated the timeline.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "MC1449180 gives Worldwide General Availability beginning in late December 2026, previously late October.",
+      "status": "supported",
+      "source": "Message Center post MC1449180",
+      "quote": "General Availability (Worldwide): Beginning in late December 2026 (previously late October) and expected to complete in late December 2026 (previously late October)",
+      "severity": "minor",
+      "fix": "Complete the rollout sentence in What's changing: 'MC1449180 was updated on 30 October 2026 and gives General Availability for Worldwide beginning in late December 2026 and expected to complete in late December 2026 (both previously late October).'"
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1449180 sets no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1449180",
+      "quote": "Act by: none",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Microsoft says no action is required before rollout.",
+      "status": "supported",
+      "source": "Message Center post MC1449180",
+      "quote": "No action is required before rollout.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "Purview is adding dedicated application locations for creating and managing DLP and auto-labeling policies.",
+      "status": "supported",
+      "source": "Message Center post MC1449180",
+      "quote": "After rollout, dedicated application locations will be available in Microsoft Purview for supported non-Microsoft applications.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "summary; What's changing; Risk assessment; Scope; controls[2].note",
+      "type": "record",
+      "claim": "The capabilities use Defender for Cloud Apps connectors to connect the applications to Purview.",
+      "status": "supported",
+      "source": "Message Center post MC1449180",
+      "quote": "These capabilities use Microsoft Defender for Cloud Apps connectors to connect supported non-Microsoft applications to Microsoft Purview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "DLP supports Google Workspace, Box, Dropbox, Salesforce, ServiceNow, AWS and Cisco Webex.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-non-microsoft-connected-applications",
+      "quote": "Microsoft Purview supports DLP policies for the following non-Microsoft apps:\n- Box\n- Dropbox\n- Google Workspace\n- Salesforce\n- AWS\n- Cisco Webex\n- ServiceNow",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Scope; controls[1].note",
+      "type": "availability",
+      "claim": "Auto-labeling supports Box and Google Workspace.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-protection-non-microsoft-connected-apps",
+      "quote": "Microsoft Purview supports auto-labeling policies for the following non-Microsoft apps:\n- Box\n- Google Workspace",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "These DLP policies detect, monitor and protect sensitive data at rest in non-Microsoft applications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-non-microsoft-connected-applications",
+      "quote": "allowing you to detect, monitor, and protect sensitive data at rest in non-Microsoft SaaS applications.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Scope; controls[0].note",
+      "type": "availability",
+      "claim": "Learn marks DLP for these connected applications as preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-non-microsoft-connected-applications",
+      "quote": "This feature is currently in preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Scope; controls[1].note",
+      "type": "availability",
+      "claim": "Learn marks auto-labeling for these connected applications as preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-protection-non-microsoft-connected-apps",
+      "quote": "This feature is currently in preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "availability",
+      "claim": "DLP applications roll out in phases and may not all be available in the same tenant simultaneously.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-non-microsoft-connected-applications",
+      "quote": "These apps are rolling out in phases. Not all apps may be available in your tenant at the same time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "availability",
+      "claim": "Auto-labeling applications roll out in phases and may not all be available in the same tenant simultaneously.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-protection-non-microsoft-connected-apps",
+      "quote": "These apps are rolling out in phases. Not all apps may be available in your tenant at the same time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Why it matters; controls[3].note; Open questions",
+      "type": "date",
+      "claim": "Defender for Cloud Apps file policies retire on 6 January 2027 and need replacement before that date.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-cloud-apps/migrate-file-policies-to-purview",
+      "quote": "File policies in Defender for Cloud Apps are retiring on January 6, 2027. Recreate your file policies as Microsoft Purview data loss prevention (DLP) or auto-labeling policies before this date.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Governance guidance: After rollout; controls[4].note",
+      "type": "date",
+      "claim": "The Instances location retires on 6 January 2027 and policies using it must be recreated with dedicated locations before then.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-use-policies-non-microsoft-cloud-apps",
+      "quote": "The Instances policy location in Microsoft Purview Data Loss Prevention (DLP) and policy creation experiences are being retired on January 6th, 2027",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "Equivalent Purview and Defender for Cloud Apps file policies cannot coexist without enforcement conflicts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-cloud-apps/migrate-file-policies-to-purview",
+      "quote": "Policies in Defender for Cloud Apps and Purview can't coexist. Running equivalent policies in both products at the same time creates enforcement conflicts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Why it matters; Governance guidance; controls[3].note; Governance controls",
+      "type": "record",
+      "claim": "Microsoft instructs administrators to turn off or delete overlapping file policies before creating the Purview policy.",
+      "status": "supported",
+      "source": "Message Center post MC1449180",
+      "quote": "Before you create Microsoft Purview policy for any of these non-Microsoft applications, turn off or delete any Microsoft Defender for Cloud Apps file policies for the same non-Microsoft locations.",
+      "severity": "minor",
+      "fix": "Keep the notice's instruction but add: 'Microsoft's sources disagree on sequencing: MC1449180 says to turn off or delete overlapping file policies before creating the Purview policy, while Learn's migration page says to disable them only after validating and turning on Purview policies. Resolve this conflict with Microsoft before cut-over.' Cite https://learn.microsoft.com/defender-cloud-apps/migrate-file-policies-to-purview, which says 'Disable Defender for Cloud Apps policies only after you validate and turn on the Purview policies.'"
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "Purview will scan, evaluate and apply policy actions to data stored in connected services.",
+      "status": "supported",
+      "source": "Message Center post MC1449180",
+      "quote": "enabling Microsoft Purview to scan, evaluate, and apply policy actions to data stored in those connected services.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Data exposure",
+      "type": "default",
+      "claim": "A policy applies to all instances of the selected application by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-non-microsoft-connected-applications",
+      "quote": "By default, the policy applies to all instances of the selected app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Data exposure; Governance guidance: At rollout",
+      "type": "applicability",
+      "claim": "Exclude instances and Specific instances let administrators narrow a connected-application policy's scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-non-microsoft-connected-applications",
+      "quote": "To exclude instances, in All instances, select Exclude instances > + Exclude instance. ... To apply the policy to specific instances, select Specific instances > + Include instance.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Encrypted files in these applications are not currently supported for classification.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-non-microsoft-connected-applications",
+      "quote": "Encrypted files stored in non-Microsoft apps aren't currently supported for classification.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "PDF files in these applications are not currently supported for classification.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-non-microsoft-connected-applications",
+      "quote": "PDF files stored in non-Microsoft apps aren't currently supported for classification.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Data exposure; Governance controls",
+      "type": "applicability",
+      "claim": "Content explorer does not support browsing or inspecting content in these applications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-non-microsoft-connected-applications",
+      "quote": "Content explorer isn't supported for non-Microsoft connected apps. You can't browse or inspect content stored in these apps through Content explorer.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Security & identity; Scope; Governance guidance; controls[0].note",
+      "type": "role",
+      "claim": "Policy creation requires membership in Compliance administrator, Compliance data administrator, Information Protection, Information Protection Admin or Security administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-non-microsoft-connected-applications",
+      "quote": "The account you use to create and deploy policies must be a member of one of these role groups:\n- Compliance administrator\n- Compliance data administrator\n- Information Protection\n- Information Protection Admin\n- Security administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Microsoft recommends using roles with the fewest permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-non-microsoft-connected-applications",
+      "quote": "Microsoft recommends that you use roles with the fewest permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "Beyond application-specific connector guides, Microsoft does not identify a particular account used by these connectors.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Defender Cloud Apps connectors account identity per app connector permissions authentication. Opened both Purview feature pages and Connect apps; the general page describes system admin privileges and delegates authentication details to app-specific guides.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "record",
+      "claim": "Available actions vary by application and may include notifications, quarantine and access controls.",
+      "status": "supported",
+      "source": "Message Center post MC1449180",
+      "quote": "Available policy conditions and actions vary by application and may include content inspection, sensitivity labeling, notifications, quarantine actions, and access controls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment; Governance guidance; controls[0].note; rationale: risk",
+      "type": "behaviour",
+      "claim": "Simulation mode is not supported for non-Microsoft connected-application policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-non-microsoft-connected-applications",
+      "quote": "Simulation mode isn't supported for non-Microsoft connected app policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance",
+      "type": "behaviour",
+      "claim": "DLP policy creation offers immediate activation or leaving the policy turned off.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-non-microsoft-connected-applications",
+      "quote": "On Policy mode, choose either Turn the policy on immediately or Leave the policy turned off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance",
+      "type": "behaviour",
+      "claim": "Auto-labeling policy creation offers turning on the policy or leaving it turned off rather than simulation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-protection-non-microsoft-connected-apps",
+      "quote": "On Decide if you want to test out the policy now or later, choose either Turn on policy or Leave policy turned off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Autonomy & actions; rationale: impact",
+      "type": "behaviour",
+      "claim": "Policy tips are not supported for these DLP policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-non-microsoft-connected-applications",
+      "quote": "Policy tips aren't supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Autonomy & actions; rationale: impact",
+      "type": "behaviour",
+      "claim": "User overrides are not supported for these DLP policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-non-microsoft-connected-applications",
+      "quote": "User overrides aren't supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "People receive no in-app warning from these policies.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Purview non-Microsoft connected apps DLP in-app warning notifications policy tips users. Opened the DLP feature page: it rules out policy tips and user overrides but does not state that every form of in-app warning is absent.",
+      "severity": "major",
+      "fix": "Remove 'so people get no in-app warning from these policies'; keep the documented statement that policy tips and user overrides are not supported."
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "For Box and Google Workspace, another auto-labeling policy cannot replace an automatically applied label with a higher-priority one.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-protection-non-microsoft-connected-apps",
+      "quote": "for Box and Google Workspace, if a label has already been applied to a file by an auto-labeling policy, it cannot be replaced by a higher-priority label from another auto-labeling policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "record",
+      "claim": "MC1449180 requires Enterprise tier Microsoft Purview licensing.",
+      "status": "supported",
+      "source": "Message Center post MC1449180",
+      "quote": "Ensure your organization has the required Enterprise tier Microsoft Purview licensing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
+      "type": "licensing",
+      "claim": "The two feature pages link to Enterprise Plans and security/compliance licensing guidance without specifying a required plan.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-protection-non-microsoft-connected-apps",
+      "quote": "For information on licensing, see\n- Microsoft 365 Enterprise Plans\n- Microsoft 365 Service Descriptions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "The migration page lists Microsoft 365 E5, Microsoft 365 E5 Compliance or an equivalent standalone Microsoft Purview DLP licence as a prerequisite.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-cloud-apps/migrate-file-policies-to-purview",
+      "quote": "A Microsoft 365 E5 or Microsoft 365 E5 Compliance license (or an equivalent standalone Microsoft Purview DLP license).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "summary; front matter: licensing.notes; Why it matters; Cost and licensing; rationale: cost",
+      "type": "record",
+      "claim": "Usage is billed through the Microsoft Purview At Rest Protection pay-as-you-go meter.",
+      "status": "supported",
+      "source": "Message Center post MC1449180",
+      "quote": "Usage is billed through the Microsoft Purview At Rest Protection pay-as-you-go meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Cost and licensing: Meter; rationale: cost",
+      "type": "record",
+      "claim": "At-rest files in non-Microsoft applications are counted at 1,000 files per data asset.",
+      "status": "supported",
+      "source": "Message Center post MC1449180",
+      "quote": "The unit of measure for at-rest files in non-Microsoft applications is calculated at a rate of 1,000 files = 1 data asset.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Cost and licensing: Meter; Governance guidance",
+      "type": "record",
+      "claim": "Microsoft asks administrators to review At Rest Protection pricing and billing before enabling the capabilities.",
+      "status": "supported",
+      "source": "Message Center post MC1449180",
+      "quote": "Review Microsoft Purview At Rest Protection pricing and billing implications before enabling these capabilities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Cost and licensing: Meter; Governance guidance",
+      "type": "cost",
+      "claim": "Purview pay-as-you-go is Azure based and requires linking the Microsoft 365 tenant to an active Azure subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-models",
+      "quote": "The billing mechanisms are Azure based, so you must associate your Microsoft 365 tenant with an active Azure subscription.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Cost and licensing: Meter; Governance guidance",
+      "type": "cost",
+      "claim": "An Azure bill is generated at the end of the month for pay-as-you-go charges.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-models",
+      "quote": "An Azure bill is generated at the end of the month for the total number of pay-as-you-go charges across all Microsoft solutions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "front matter: licensing.notes; Cost and licensing: Not yet published; Open questions",
+      "type": "absence",
+      "claim": "The feature and billing-model pages read do not publish a numeric per-data-asset price for this meter.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview At Rest Protection non-Microsoft applications pricing data asset budget cap; Purview At Rest price non-Microsoft. Opened both feature pages, billing models and Azure Purview pricing; the pricing fetch shows '$- per asset per day', not a numeric rate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Cost and licensing: Not yet published; Open questions",
+      "type": "absence",
+      "claim": "No cap or budget control is documented for this Azure-billed meter.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/azure/cost-management-billing/costs/tutorial-acm-create-budgets",
+      "quote": "You can configure alerts based on your actual cost or forecasted cost to ensure that your spending is within your organizational spending limit. Notifications are triggered when the budget thresholds are exceeded. Resources aren't affected, and your consumption isn't stopped.",
+      "severity": "blocker",
+      "fix": "Replace the budget-control absence with: 'A feature-specific hard cap is not documented. Azure Cost Management supports budgets and alerts for the associated Azure subscription or resource group; these monitor spending but do not stop consumption.' Cite https://learn.microsoft.com/azure/cost-management-billing/costs/tutorial-acm-create-budgets and https://learn.microsoft.com/purview/purview-payg-subscription-based-enablement. Narrow the corresponding Open questions item to the feature-specific hard cap."
+    },
+    {
+      "n": 52,
+      "where": "Scope: Apps",
+      "type": "behaviour",
+      "claim": "Created date is unavailable for Dropbox DLP rules.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-non-microsoft-connected-applications",
+      "quote": "| Created date | The date the item was created. | Not available in Dropbox |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Scope: Apps",
+      "type": "behaviour",
+      "claim": "Created date is unavailable for these auto-labeling rules.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-protection-non-microsoft-connected-apps",
+      "quote": "| Created date | The date the item was created. | Not available |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Scope: Apps",
+      "type": "behaviour",
+      "claim": "Collaborators is unavailable for these auto-labeling rules.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-protection-non-microsoft-connected-apps",
+      "quote": "| Collaborators | The users the item is shared with, including their roles. | Not available |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Scope: Prerequisites; Governance guidance; controls[1].note",
+      "type": "behaviour",
+      "claim": "Sensitivity labels must be published before they can be selected in these auto-labeling policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/information-protection-non-microsoft-connected-apps",
+      "quote": "To select sensitivity labels when setting up auto-labeling policies, the labels must first be published.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Scope: Policy rules; Governance guidance; controls[0].note",
+      "type": "behaviour",
+      "claim": "Non-Microsoft connected-application policies support only the Custom policy template.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-non-microsoft-connected-applications",
+      "quote": "Non-Microsoft connected app policies are only supported with the Custom policy template.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Scope: Policy rules; Governance guidance; controls[0].note",
+      "type": "behaviour",
+      "claim": "Only advanced DLP rules are supported for these connected applications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-non-microsoft-connected-applications",
+      "quote": "Only advanced DLP rules are supported for non-Microsoft connected apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Scope: Policy rules; controls[].scope",
+      "type": "applicability",
+      "claim": "The dedicated policies use Full directory scope rather than administrative-unit scoping.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-non-microsoft-connected-applications",
+      "quote": "On Assign admin units, the scope is set to Full directory. Administrative units aren't supported for non-Microsoft app locations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Scope: Policy rules",
+      "type": "behaviour",
+      "claim": "Non-Microsoft app locations cannot share a DLP policy with SharePoint, OneDrive, Exchange, Fabric or Devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-non-microsoft-connected-applications",
+      "quote": "Non-Microsoft app locations can be selected together, but they can't be combined with other locations like SharePoint, OneDrive, Exchange, Fabric, or Devices in the same policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The DLP creation path runs from Solutions through Enterprise applications & devices and Custom policy to Choose where to apply the policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-non-microsoft-connected-applications",
+      "quote": "Go to Solutions > Data Loss Prevention > Policies > + Create policy.",
+      "severity": "minor",
+      "fix": "Include the intervening scope page: 'Solutions > Data Loss Prevention > Policies > + Create policy > Enterprise applications & devices > Custom > Custom policy > Assign admin units > Full directory > Choose where to apply the policy'. Enter the policy name and description after Custom policy, as the cited procedure instructs."
+    },
+    {
+      "n": 61,
+      "where": "controls[0].api; Governance controls; Governance guidance: At rollout",
+      "type": "absence",
+      "claim": "No automation route is documented specifically for the new dedicated DLP application locations.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview non-Microsoft connected apps dedicated locations New-DlpCompliancePolicy PowerShell API; non-Microsoft connected PowerShell DLP API. Opened DLP feature page and New-DlpCompliancePolicy; ThirdPartyAppDlpLocation links to Instances, not dedicated locations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "After Custom policy, the auto-labeling path proceeds directly to Choose locations where you want to apply the label.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/information-protection-non-microsoft-connected-apps",
+      "quote": "On Choose a label to auto-apply, choose Choose a label. On Choose a sensitivity label, select all labels to include in the policy, and then select Add > Next.",
+      "severity": "blocker",
+      "fix": "Replace controls[1].ui.path and the rendered path with 'Solutions > Information protection > Policies > Auto-labeling policies > + Create auto-labeling policy > Automatically apply labels only > Custom > Custom policy > Choose a label to auto-apply > Choose a label > Choose a sensitivity label > label > Add > Assign admin units > Full directory > Choose locations where you want to apply the label'. Enter the policy name and description after Custom policy, as the cited procedure instructs."
+    },
+    {
+      "n": 63,
+      "where": "controls[1].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No automation route is documented specifically for these dedicated auto-labeling application locations.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview non-Microsoft connected apps New-AutoSensitivityLabelPolicy PowerShell API; non-Microsoft auto-labeling New-AutoSensitivityLabelPolicy. Opened auto-labeling feature page and cmdlet reference; no app-specific location usage is documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "controls[2].ui; Governance guidance: Before rollout; Governance controls table",
+      "type": "admin-path",
+      "claim": "The connector path is Settings > Cloud Apps > Connected Apps > App Connectors > + Connect an app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-cloud-apps/get-started",
+      "quote": "In the Microsoft Defender Portal, select Settings. Then choose Cloud Apps.\n2. Under Connected Apps, select App Connectors.\n3. Select the +Connect an app to add an app and then select an app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "controls[2].api; Governance controls",
+      "type": "absence",
+      "claim": "Microsoft does not document an API for managing Defender for Cloud Apps app connectors.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Defender for Cloud Apps API connectors manage; app connectors file policies management API create delete policy connectors. Opened REST API introduction, Connect apps and discovered-apps Graph API; no connector-management operation is documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "controls[3].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The migration page opens the policy list at Cloud apps > Policies > Policy management > All policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-cloud-apps/migrate-file-policies-to-purview",
+      "quote": "In the Microsoft Defender portal, go to Cloud apps > Policies > Policy management.\n2. Select the All policies tab.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "controls[3].api; Governance controls",
+      "type": "absence",
+      "claim": "Microsoft does not document an API for managing Defender for Cloud Apps file policies.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Defender for Cloud Apps file policies REST; app connectors file policies management API create delete policy connectors. Opened REST API introduction, migration page and discovered-apps Graph API; no file-policy management operation is documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "controls[4].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The retiring Instances path runs through Data loss prevention > Policies > + Create policy > Custom > Custom policy > Locations > Instances > Edit > Specific instances > + Include instances.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-use-policies-non-microsoft-cloud-apps",
+      "quote": "To select a specific app or instance, select Edit > Specific instances > + Include instances and then the instances (cloud apps) you want to include.",
+      "severity": "minor",
+      "fix": "Include the omitted scope step: 'Data loss prevention > Policies > + Create policy > Custom > Custom policy > Admin units > Locations > Instances > Edit > Specific instances > + Include instances'. Name the policy and add a description after Custom policy, as the cited procedure instructs."
+    },
+    {
+      "n": 69,
+      "where": "controls[4].api; Governance controls table",
+      "type": "command",
+      "claim": "Security & Compliance PowerShell supports New-DlpCompliancePolicy -Name <policy name> -ThirdPartyAppDlpLocation All for all connected non-Microsoft cloud apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy?view=exchange-ps",
+      "quote": "The ThirdPartyAppDlpLocation parameter specifies the non-Microsoft cloud apps to include in the DLP policy. You can use the value All to include all connected apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "controls[4].note; Governance controls table",
+      "type": "role",
+      "claim": "The ThirdPartyAppDlpLocation parameter requires Compliance Administrator or Compliance Data Administrator in Microsoft Entra ID.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy?view=exchange-ps",
+      "quote": "This parameter requires membership in the Compliance Administrator or Compliance Data Administrator roles in Microsoft Entra ID.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Governance controls; controls[4].note",
+      "type": "applicability",
+      "claim": "ThirdPartyAppDlpLocation's reference links to the retiring Instances documentation rather than establishing applicability to dedicated locations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy?view=exchange-ps",
+      "quote": "For more information about DLP for non-Microsoft cloud apps, see [Use data loss prevention policies for non-Microsoft cloud apps](/en-us/purview/dlp-use-policies-non-microsoft-cloud-apps).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "The New-AutoSensitivityLabelPolicy reference documents no location parameter specifically for these apps.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: non-Microsoft auto-labeling New-AutoSensitivityLabelPolicy. Opened and searched the full cmdlet reference for non-Microsoft, ThirdParty, Box, Google and location parameters; Locations has only a placeholder description, not app-specific documentation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Creating a replacement Purview policy does not itself remove the original Defender file policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-cloud-apps/migrate-file-policies-to-purview",
+      "quote": "Does migrating remove my original file policies?\nNo. Migration creates new equivalent policies in Purview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The Defender for Cloud Apps Microsoft Graph documentation covers discovered applications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-cloud-apps/discovered-apps-api-graph",
+      "quote": "Microsoft Defender for Cloud Apps supports a Microsoft Graph API that you can use to work with discovered cloud apps, to customize and automate the Discovered apps page functionality in the Microsoft Defender portal.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/defender-cloud-apps/discovered-apps-api-graph to sources for the Graph documentation statement."
+    },
+    {
+      "n": 75,
+      "where": "Governance guidance: After rollout; Governance controls",
+      "type": "applicability",
+      "claim": "Activity explorer supports monitoring these connected-application policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-non-microsoft-connected-applications",
+      "quote": "Activity explorer supports non-Microsoft connected app policies. You can monitor DLP policy activity for your non-Microsoft apps in the same way you monitor Microsoft 365 locations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "Governance guidance: After rollout; Governance controls",
+      "type": "applicability",
+      "claim": "The DLP alerts dashboard supports alerts from these DLP policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-non-microsoft-connected-applications",
+      "quote": "DLP alerts are supported for non-Microsoft connected app policies. Alerts appear in the DLP alerts dashboard alongside alerts from other locations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "Governance guidance: After rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The checklist's instruction to review Activity explorer and the DLP alerts dashboard has corresponding controls-table rows.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Review activity in Activity explorer and the DLP alerts dashboard ... Table rows: DLP policy; Auto-labeling policy; app connectors; overlapping file policies; retiring Instances location.",
+      "severity": "minor",
+      "fix": "The 'Review activity in Activity explorer and the DLP alerts dashboard' checklist step has no corresponding row in the controls table. Remove that checklist bullet; the documented monitoring capabilities can remain in Governance controls prose."
+    },
+    {
+      "n": 78,
+      "where": "front matter: licensing.model; rationale: cost",
+      "type": "licensing",
+      "claim": "The licensing model is mixed, combining Enterprise tier Purview licensing with metered consumption.",
+      "status": "supported",
+      "source": "Message Center post MC1449180",
+      "quote": "Ensure your organization has the required Enterprise tier Microsoft Purview licensing. ... Usage is billed through the Microsoft Purview At Rest Protection pay-as-you-go meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 79,
+      "where": "front matter: defaultState; summary",
+      "type": "default",
+      "claim": "Using these new policies requires administrator opt-in through connector setup and policy creation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-non-microsoft-connected-applications",
+      "quote": "Before you can apply DLP policies to a non-Microsoft app, you must connect that app to Microsoft Defender for Cloud Apps using an app connector.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 80,
+      "where": "front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "Variable cost is appropriate because the named At Rest Protection meter charges for usage.",
+      "status": "supported",
+      "source": "Message Center post MC1449180",
+      "quote": "Usage is billed through the Microsoft Purview At Rest Protection pay-as-you-go meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 81,
+      "where": "Why it matters; rationale: impact",
+      "type": "absence",
+      "claim": "The sources do not describe an automatic change to existing behaviour in tenants that create no new policy.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview non-Microsoft connected apps default enabled policies automatic rollout existing tenants. Read roadmap, MC1449180 and both feature pages; new policies require creation and activation, with no stated automatic deployment to existing tenants.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 82,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "These policies use the same classification engine and policy framework as Microsoft 365 locations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-non-microsoft-connected-applications",
+      "quote": "You can create DLP policies that apply to data stored in these non-Microsoft apps, using the same classification engine and policy framework available for Microsoft 365 locations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 83,
+      "where": "Cost and licensing: Not yet published",
+      "type": "absence",
+      "claim": "The billing-models page does not mention the At Rest Protection meter by name.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview At Rest Protection non-Microsoft applications pricing data asset budget cap; Purview At Rest price non-Microsoft. Read the full Learn about Microsoft Purview billing models page; it describes asset-based billing but does not name At Rest Protection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 84,
+      "where": "controls[2].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "Each app has its own connector guide.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-cloud-apps/enable-instant-visibility-protection-and-governance-actions-for-your-apps",
+      "quote": "To enable an app connector for the first time, configure an API connection for the specific cloud app you want to connect. For detailed instructions, see the app connector guides for each app.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/defender-cloud-apps/enable-instant-visibility-protection-and-governance-actions-for-your-apps to sources for the app-specific connector-guide statement."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-17T05:06:27.774Z",
+    "summary": {
+      "links": 9,
+      "unreachable": 0,
+      "uiPaths": 5,
+      "uiPathsWithMissingWords": 1,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=568075",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1449180",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-non-microsoft-connected-applications",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/information-protection-non-microsoft-connected-apps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/defender-cloud-apps/migrate-file-policies-to-purview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-use-policies-non-microsoft-cloud-apps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/purview-billing-models",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/defender-cloud-apps/get-started",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy?view=exchange-ps",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "DLP policy for non-Microsoft connected apps",
+        "docs": "https://learn.microsoft.com/purview/dlp-non-microsoft-connected-applications",
+        "reachable": true,
+        "segments": [
+          "Solutions",
+          "Data Loss Prevention",
+          "Policies",
+          "+ Create policy",
+          "Enterprise applications & devices",
+          "Custom",
+          "Custom policy",
+          "Choose where to apply the policy"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Auto-labeling policy for non-Microsoft connected apps",
+        "docs": "https://learn.microsoft.com/purview/information-protection-non-microsoft-connected-apps",
+        "reachable": true,
+        "segments": [
+          "Solutions",
+          "Information protection",
+          "Policies",
+          "Auto-labeling policies",
+          "+ Create auto-labeling policy",
+          "Automatically apply labels only",
+          "Custom",
+          "Custom policy",
+          "Choose locations where you want to apply the label"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Defender for Cloud Apps app connectors that Purview relies on",
+        "docs": "https://learn.microsoft.com/defender-cloud-apps/get-started",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Cloud Apps",
+          "Connected Apps",
+          "App Connectors",
+          "+ Connect an app"
+        ],
+        "missing": [
+          "+ Connect an app"
+        ]
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Defender for Cloud Apps file policies that overlap the Purview policies",
+        "docs": "https://learn.microsoft.com/defender-cloud-apps/migrate-file-policies-to-purview",
+        "reachable": true,
+        "segments": [
+          "Cloud apps",
+          "Policies",
+          "Policy management",
+          "All policies"
+        ],
+        "missing": []
+      },
+      {
+        "index": 4,
+        "side": "ui",
+        "governs": "Instances DLP location for non-Microsoft cloud apps (retiring)",
+        "docs": "https://learn.microsoft.com/purview/dlp-use-policies-non-microsoft-cloud-apps",
+        "reachable": true,
+        "segments": [
+          "Data loss prevention",
+          "Policies",
+          "+ Create policy",
+          "Custom",
+          "Custom policy",
+          "Locations",
+          "Instances",
+          "Edit",
+          "Specific instances",
+          "+ Include instances"
+        ],
+        "missing": []
+      },
+      {
+        "index": 4,
+        "side": "api",
+        "governs": "Instances DLP location for non-Microsoft cloud apps (retiring)",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy?view=exchange-ps",
+        "reachable": true,
+        "token": "New-DlpCompliancePolicy",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

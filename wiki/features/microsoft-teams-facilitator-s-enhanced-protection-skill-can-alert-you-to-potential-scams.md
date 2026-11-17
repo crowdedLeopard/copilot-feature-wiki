@@ -43,8 +43,11 @@ controls:
       surface: "Teams admin center"
       path: "Teams apps > Manage apps > Facilitator > Allow or Block"
       docs: "https://learn.microsoft.com/microsoftteams/facilitator-teams"
-    api: null
-    note: "Governs Facilitator as an app. The Update-M365TeamsApp reference describes its -IsBlocked $true example as unblocking an app; a reliable blocking call is not established by that reference."
+    api:
+      kind: "powershell"
+      call: "Update-M365TeamsApp -Id <app-id> -AppAssignmentType Everyone"
+      docs: "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp"
+    note: "Microsoft documents Update-M365TeamsApp for app-state management, but its examples describe both -IsBlocked $true and -IsBlocked $false as unblocking. Use the admin UI to block; no blocking command is provided here."
 confidence: "medium"
 created: "2026-11-17"
 updated: "2026-11-17"
@@ -58,19 +61,23 @@ changes:
     note: "Corrected after the independent check: licensing is now stated as included with a Microsoft Copilot licence, the unreliable blocking command is removed, and the controls wording is narrowed."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 49 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-17"
+    note: "Corrected after the independent check: the automation cell now cites Update-M365TeamsApp instead of saying no automation is documented, and keeps the caution that its -IsBlocked examples both describe unblocking."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 52 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-17"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 49
-  confirmed: 48
+  claims: 52
+  confirmed: 52
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "dabbc8ae13406a0760467fed99cefb57"
+  contradicted: 0
+  attempts: 0
+  hash: "fd259138ec33311963e242c7c74b4bf3"
 ---
 
 ## What's changing
@@ -151,7 +158,7 @@ The indirect cost is admin time to brief users, update support scripts and decid
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether the Facilitator app is available to users</strong><br><small>Tenant</small><br><small class="controls__note">Governs Facilitator as an app. The Update-M365TeamsApp reference describes its -IsBlocked $true example as unblocking an app; a reliable blocking call is not established by that reference.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Manage apps › Facilitator › Allow or Block <a href="https://learn.microsoft.com/microsoftteams/facilitator-teams" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether the Facilitator app is available to users</strong><br><small>Tenant</small><br><small class="controls__note">Microsoft documents Update-M365TeamsApp for app-state management, but its examples describe both -IsBlocked $true and -IsBlocked $false as unblocking. Use the admin UI to block; no blocking command is provided here.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Manage apps › Facilitator › Allow or Block <a href="https://learn.microsoft.com/microsoftteams/facilitator-teams" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Update-M365TeamsApp -Id &lt;app-id&gt; -AppAssignmentType Everyone</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -171,10 +178,4 @@ Learn also describes app permission policies and app-centric management for allo
 risk: Medium. An AI skill reads meeting transcripts and is invoked automatically in meetings with external participants, and Microsoft's notice names no admin setting for the skill itself.
 cost: Low. The only cost the sources show is admin time and user communication; Facilitator is included with a Microsoft Copilot licence, and no separate charge for the Protection skill is published.
 impact: Medium. Users in Facilitator meetings with outside participants may see a warning if a suspected attempt is detected, with options to end the meeting or temporarily restrict information sharing.
--->
-
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].api; Governance controls: API and automation cell / absence: An automation surface for controlling the Facilitator app's availability and state is not yet documented. | Found: This cmdlet allows administrators to modify app state, availability and installation status by adding or removing users and groups or changing assignment type or installation status. | Fix: Do not render the automation cell as 'Not yet documented'. Replace that cell's absence statement with 'Microsoft documents Update-M365TeamsApp for app-state management, but its examples describe both -IsBlocked $true and -IsBlocked $false as unblocking. Use the documented admin UI; no blocking command is provided here.' Link it to https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp and retain the existing caution rather than inventing a Boolean mapping. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp
 -->

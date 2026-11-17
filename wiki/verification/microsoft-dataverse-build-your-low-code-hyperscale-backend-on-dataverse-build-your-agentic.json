@@ -1,0 +1,1015 @@
+{
+  "slug": "microsoft-dataverse-build-your-low-code-hyperscale-backend-on-dataverse-build-your-agentic",
+  "roadmapId": 576876,
+  "title": "Microsoft Dataverse: Python SDK for scripting and agent workflows",
+  "status": "held",
+  "date": "2026-11-17",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-17",
+    "reasons": [
+      "3 blocking findings (claims 41, 60, 71)"
+    ]
+  },
+  "counts": {
+    "claims": 76,
+    "confirmed": 69,
+    "unconfirmed": 2,
+    "contradicted": 5,
+    "blocker": 3,
+    "major": 2,
+    "minor": 5
+  },
+  "summary": "Hold: enabling environment auditing alone does not ensure scripted changes are recorded; table and column auditing must also be enabled. The briefing also overstates gaps in documentation for application identity and app-access automation, and makes unsupported assumptions about credential storage and rollout.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap item is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The listed release phases are General Availability and Preview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is November CY2025.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"November CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target date is June CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"June CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists the Web platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The roadmap does not list US Government clouds, without establishing their exclusion.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap says Enabled for admins/makers/marketers automatically.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Enabled for admins/makers/marketers automatically",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap describes autonomous data agents as a capability that can be included.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Key capabilities can include:\n\n- Autonomous data agents that can query, update, and evaluate data quality",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap names form prediction and autofill as possible capabilities.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "- Form prediction and autofill",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap names Model Context Protocol support as a possible capability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "- Support for agentic primitives like Model Context Protocol (MCP) and Agent-to-Agent (A2A) collaboration",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap names Agent-to-Agent collaboration as a possible capability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "- Support for agentic primitives like Model Context Protocol (MCP) and Agent-to-Agent (A2A) collaboration",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "title; What's changing",
+      "type": "behaviour",
+      "claim": "The SDK lets Python developers interact with Dataverse without .NET knowledge.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/sdk-python/overview",
+      "quote": "You can easily access, manage, and manipulate data stored in Dataverse by using familiar Python syntax. You don't need any .NET knowledge.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "The SDK supports create, retrieve, update and delete operations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/sdk-python/overview",
+      "quote": "Support for create, retrieve, update, and delete data operations by using a single request.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "behaviour",
+      "claim": "Bulk operations can operate on multiple rows in one call using CreateMultiple, UpdateMultiple, UpsertMultiple and BulkDelete.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/sdk-python/overview",
+      "quote": "Specify multiple operations in a single web service call. This feature uses Dataverse's native CreateMultiple, UpdateMultiple, UpsertMultiple, and BulkDelete Web API operations",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The overview documents read-only direct SQL SELECT queries.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/sdk-python/overview",
+      "quote": "Supports simple read-only \"SELECT\" statements with paging.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The SDK provides pandas DataFrame wrappers and supports extracting table data into DataFrames.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/sdk-python/work-data",
+      "quote": "The SDK provides pandas wrappers for all CRUD operations through the `client.dataframe` namespace. These wrappers use pandas' DataFrame and Series APIs for input and output.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The SDK supports uploading files into file columns.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/sdk-python/overview",
+      "quote": "Upload files to a Dataverse file column with automatic chunking for large files.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The SDK supports batch requests.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/sdk-python/overview",
+      "quote": "Send multiple CRUD, table metadata, and SQL query operations in a single HTTP request with optional transactional changesets.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Why it matters; Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "behaviour",
+      "claim": "The SDK supports creating, updating and deleting custom tables and columns.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/sdk-python/overview",
+      "quote": "The SDK supports create, update, and delete (CUD) of custom tables and columns, optional solution association, plus retrieve and list table definitions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The SDK has structured error handling.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/sdk-python/overview",
+      "quote": "Error handling: structured exception hierarchy with detailed error context and retry guidance.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "default",
+      "claim": "HTTP diagnostics logging is opt-in and file-based.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/sdk-python/overview",
+      "quote": "HTTP diagnostics logging: opt-in file-based logging of all HTTP requests and responses",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Enabled HTTP diagnostics logging records all HTTP requests and responses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/sdk-python/overview",
+      "quote": "HTTP diagnostics logging: opt-in file-based logging of all HTTP requests and responses with automatic redaction of sensitive headers, such as authorization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "HTTP diagnostics logging automatically redacts sensitive headers such as authorization.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/sdk-python/overview",
+      "quote": "with automatic redaction of sensitive headers, such as authorization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Cost and licensing",
+      "type": "behaviour",
+      "claim": "The SDK internally calls the Dataverse Web API.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/sdk-python/quick-guide-dataverse",
+      "quote": "The SDK provides a Python programming interface that internally calls the Dataverse Web API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Scope; summary",
+      "type": "behaviour",
+      "claim": "Authentication uses a caller-supplied Azure Identity credential.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/sdk-python/get-started",
+      "quote": "The SDK client requires any Azure Identity TokenCredential implementation for OAuth authentication with Dataverse.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing; summary",
+      "type": "command",
+      "claim": "Developers install the stable SDK from PyPI using pip install PowerPlatform-Dataverse-Client.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/sdk-python/get-started",
+      "quote": "This command installs the latest stable release of the SDK from a pypi.org package.\n\n```bash\npip install PowerPlatform-Dataverse-Client",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The getting-started page specifies Python 3.10+.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/sdk-python/get-started",
+      "quote": "An activated Python 3.10+ environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The reference-architecture page instead specifies Python 3.13 or later.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/architecture/reference-architectures/dataverse-sdk-for-python",
+      "quote": "Python 3.13 or later",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "The overview feature list does not name autonomous data agents, form prediction, autofill, MCP or A2A.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: read the full SDK overview feature list for autonomous data agents, form prediction, autofill, MCP and A2A at learn.microsoft.com/power-apps/developer/data-platform/sdk-python/overview; none is named in that list.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "summary; Why it matters; Scope; rationale: risk",
+      "type": "applicability",
+      "claim": "SDK data operations remain subject to existing Dataverse security roles rather than a separate SDK permission model.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/architecture/reference-architectures/dataverse-sdk-for-python",
+      "quote": "Role-based access control: Enforces Dataverse security roles and policies for all data operations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Data extracted into a notebook or file is outside the Dataverse security boundary.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/create-edit-security-role#privacy-notices",
+      "quote": "However, after the data has been extracted it is no longer protected by the security boundary provided by Dynamics 365 (online) and is instead controlled directly by the customer.",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/power-platform/admin/create-edit-security-role#privacy-notices for the extracted-data security-boundary statement."
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The getting-started example lists InteractiveBrowserCredential and AzureCliCredential as development options.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/sdk-python/get-started",
+      "quote": "# Development options\ncredential = InteractiveBrowserCredential()  # Browser authentication\n# credential = AzureCliCredential()          # If logged in via 'az login'",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The getting-started example labels ClientSecretCredential and CertificateCredential as production options.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/sdk-python/get-started",
+      "quote": "# Production options  \n# credential = ClientSecretCredential(tenant_id, client_id, client_secret)\n# credential = CertificateCredential(tenant_id, client_id, cert_path)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Secrets and certificates for production authentication live with the developer.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Dataverse exported data files security roles no longer apply Python ClientSecretCredential secret certificate developer storage; read SDK get-started and Azure Python authentication search excerpts. No source specifies developer custody of production credentials.",
+      "severity": "major",
+      "fix": "Replace 'Secrets and certificates for the production options live with the developer, so know which app registrations exist' with 'Confirm who manages the production credentials and which app registrations use them.'"
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Security & identity; controls[0] governs",
+      "type": "applicability",
+      "claim": "General app access control validates client app IDs against environment allow and block lists.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/control-app-access-environment",
+      "quote": "Dataverse authentication validates the client app ID in the user's token against a list of allowed and blocked apps configured for the environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[0].note; Risk assessment; Governance guidance; Governance controls",
+      "type": "applicability",
+      "claim": "App access control requires a managed environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/control-app-access-environment",
+      "quote": "Your environment must be a managed environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[0].note; Governance controls",
+      "type": "role",
+      "claim": "App access control documentation names Power Platform admin and Dynamics 365 admin roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/control-app-access-environment",
+      "quote": "There are two Power Platform related service admin roles you can assign to provide a high level of admin management:\n\n- Power Platform admin\n- Dynamics 365 admin",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[0].note; Risk assessment; Governance controls",
+      "type": "applicability",
+      "claim": "Partner apps making service-to-service calls are excluded from app access control and can instead be made inactive or deleted.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/control-app-access-environment",
+      "quote": "Partner apps with service-to-service calls\n\n    To block these apps, make them inactive or delete them from the environment in the Power Platform admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Security & identity; controls[1] governs",
+      "type": "applicability",
+      "claim": "An application user gives a registered application access to an environment's data with assigned security roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-application-users",
+      "quote": "This application user is given access to your environment's data on behalf of the user who's using your application.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Security & identity; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not said which application ID the SDK presents.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/python/api/azure-identity/azure.identity.interactivebrowsercredential?view=azure-python",
+      "quote": "Client ID of the Microsoft Entra application that users will sign into. ... If not specified, users will authenticate to an Azure development application, which is not recommended for production scenarios.",
+      "severity": "blocker",
+      "fix": "Replace the documentation-gap assertions with 'Application identity depends on the Azure Identity credential supplied to the SDK; InteractiveBrowserCredential accepts a client_id and otherwise uses an Azure development application. Confirm the credential and app registration before testing a block list.' Cite https://learn.microsoft.com/python/api/azure-identity/azure.identity.interactivebrowsercredential?view=azure-python. Replace the first Open question with 'Which credential and app registration do our SDK callers use, and does app access control cover that authentication context?'"
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance",
+      "type": "behaviour",
+      "claim": "client.files.upload automatically creates a missing file column.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/sdk-python/work-data",
+      "quote": "If the file column doesn't exist, the SDK creates it automatically.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance",
+      "type": "behaviour",
+      "claim": "An automatically created file column is a permanent schema change.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/sdk-python/work-data",
+      "quote": "the new column becomes a permanent part of your environment's schema.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Scope; Risk assessment: Autonomy & actions",
+      "type": "role",
+      "claim": "Table customization privileges are needed for schema changes such as automatic file-column creation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/sdk-python/work-data",
+      "quote": "Creating a column is a metadata change: you need privileges to customize the table",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance",
+      "type": "behaviour",
+      "claim": "Microsoft advises creating file columns in advance in production environments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/sdk-python/work-data",
+      "quote": "In production environments, create file columns in advance rather than relying on automatic creation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Change & support",
+      "type": "command",
+      "claim": "dataverse-install-claude-skill is the optional skill-installation command after installing the SDK package.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/sdk-python/get-started",
+      "quote": "pip install PowerPlatform-Dataverse-Client && dataverse-install-claude-skill",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The optional installation adds two Claude skills with definitions on the development computer.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/sdk-python/get-started",
+      "quote": "Once installed, you can find skill definitions in the `.claude/skills/dataverse-sdk-use/SKILL.md` and `.claude/skills/dataverse-sdk-dev/SKILL.md` files on your development computer.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The SDK automatically retries temporary failures such as API throttling.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/sdk-python/overview",
+      "quote": "Automatic retries | Handle networking problems that might occur for operations that fail due to temporary problems, such as API throttling or service unavailability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Change & support",
+      "type": "applicability",
+      "claim": "Dataverse service protection limits apply to external web service requests, including SDK traffic.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/api-limits-overview",
+      "quote": "Service protection limits apply to all external web service requests, not only the CRUD operations on tables counted against entitlement limits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Service protection includes per-user-account connection limits, creating contention for callers sharing an account.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/api-limits-overview",
+      "quote": "We limit the number of concurrent connections per user account, the number of API requests per connection, and the amount of execution time that can be used for each connection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "summary; licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The SDK is published under open-source licensing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/sdk-python/overview",
+      "quote": "The SDK for Python is published under open-source licensing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Getting-started prerequisites name read/write access, OAuth, Python and PyPI connectivity but no Microsoft licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/sdk-python/get-started",
+      "quote": "Read/write access to a Dataverse environment. ... OAuth authentication configured for your application. ... An activated Python 3.10+ environment. ... Pandas version 2.0.0+. ... Network access to https://pypi.org to obtain the SDK packages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The SDK pages do not publish a caller-specific Microsoft licence requirement, so the briefing marks that licensing model unknown.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Dataverse Python licens; Dataverse API access user licensing Power Apps license application user unlicensed. Opened SDK overview, get-started, quick-guide and architecture; read platform licensing excerpts. SDK pages specify no caller-specific Microsoft licence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Cost and licensing",
+      "type": "applicability",
+      "claim": "Dataverse CRUD, assign and share operations count toward request limits from any client and endpoint, including this Web API client.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/api-request-limits-allocations",
+      "quote": "All create, read, update, and delete (CRUD), assign, and share operations ... These operations can be from any client or application (including Dynamics 365) and use any endpoint (SOAP or REST).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Application, non-interactive, administrative and system users use pooled tenant-level request limits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/api-request-limits-allocations",
+      "quote": "These limits are defined and pooled at the tenant level. ... These identities include:\n\n- Application users\n- Non-interactive users\n- Administrative users\n- SYSTEM user",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No SDK-specific meter or charge is documented at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Dataverse Python meter; Dataverse Python SDK tenant environment enable disable admin switch licensing charge meter client ID credential secrets certificates. Read SDK overview/get-started, request allocations and platform licensing excerpts; no SDK-specific meter found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Writing large volumes of rows or files can consume Dataverse storage capacity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/capacity-storage#dataverse-page-in-licenses",
+      "quote": "Dataverse - Database capacity: Tracks structured data stored directly in Dataverse, including table rows, metadata, and relational data",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/power-platform/admin/capacity-storage#dataverse-page-in-licenses for the storage-capacity premise. The admin-time estimate is analysis and needs no correction."
+    },
+    {
+      "n": 58,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Rollout is not through an environment or release channel.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Dataverse Python release channel. Opened SDK get-started and overview, and read package-reference results. Installation from PyPI or source is documented; these sources do not establish that backend availability is independent of environments or release channels.",
+      "severity": "major",
+      "fix": "Replace 'Rollout is through the PyPI package and the open-source repository, not through an environment or release channel' with 'Learn documents installing the SDK from PyPI or from its GitHub source repository.'"
+    },
+    {
+      "n": 59,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "App access control is at Security > Identity and access > App access control > environment > Set up app access control > Access control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/control-app-access-environment",
+      "quote": "select Security. ... select Identity and access. ... select App access control ... Select the environment ... Select the Set up app access control button. ... Access control dropdown list.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[0].api; Governance controls table",
+      "type": "absence",
+      "claim": "No API or automation surface is documented for environment app access control.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/organization#writable-columns-attributes",
+      "quote": "ApplicationBasedAccessControlMode ... LogicalName | applicationbasedaccesscontrolmode ... AllowedApplicationsForDVAccess ... BlockedApplicationsForDVAccess",
+      "severity": "blocker",
+      "fix": "Replace controls[0].api null with kind 'pac-cli', call 'pac env list-settings --environment <environment-url> --filter application', docs 'https://learn.microsoft.com/power-platform/developer/cli/reference/env#pac-env-list-settings'. Add to its note: 'This call reads application-related organization settings; it does not change access control. A writable column is not, by itself, documentation that direct updates are supported.' The command reference documents both parameters and returning organization-table columns; https://learn.microsoft.com/power-apps/developer/data-platform/organization-table explains the direct-update restriction."
+    },
+    {
+      "n": 61,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Application-user creation begins at Manage > Environments > environment > Settings > Users + permissions > Application users > + New app user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-application-users",
+      "quote": "Select Manage ... select Environments. Then select an environment. ... Select Settings. ... Select Users + permissions, and then select Application users. ... Select + New app user",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "POST to the addAppUser endpoint at api-version=2020-10-01 with servicePrincipalAppId creates an environment application user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/create-dataverseapplicationuser",
+      "quote": "POST https://api.bap.microsoft.com/providers/Microsoft.BusinessAppPlatform/scopes/admin/environments/{environmentIdGuid}/addAppUser?api-version=2020-10-01\n... \"servicePrincipalAppId\": \"AzureAD_App_Registration_ClientID\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "controls[1].note; Governance controls table",
+      "type": "availability",
+      "claim": "The application-user creation API documentation is marked preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/create-dataverseapplicationuser",
+      "quote": "# Create a Dataverse application user (preview)\n\n[This article is pre-release documentation and is subject to change.]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "controls[1].note; Governance controls table",
+      "type": "role",
+      "claim": "The addAppUser operation always grants System Administrator initially.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/create-dataverseapplicationuser",
+      "quote": "This always adds the application user as a System Administrator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Environment auditing is enabled at Security > Compliance > Auditing > environment > Set up auditing > Turn on auditing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-dataverse-auditing",
+      "quote": "select Security > Compliance. ... Select the Auditing tile. ... Select the environment ... Select Set up auditing. In the Auditing pane, select Turn on auditing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "controls[2].api; Governance controls table",
+      "type": "command",
+      "claim": "The printed v9.2 organizations GET query reads the four named auditing properties.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/auditing/configure",
+      "quote": "GET [Organization URI]/api/data/v9.2/organizations?$select=\nauditsettings,\nisauditenabled,\nauditretentionperiodv2,\nisuseraccessauditenabled,\nuseraccessauditinginterval HTTP/1.1",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "controls[2].note; Governance controls table",
+      "type": "role",
+      "claim": "Changing auditing settings requires System Administrator or System Customizer privileges.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/auditing/configure",
+      "quote": "Anyone can view the configuration, but you must have the System Administrator or System Customizer role to change the settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "controls[2].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "Auditing can be configured by changing the documented organization-table column values.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/auditing/configure",
+      "quote": "Change the column values in the organization table to change how auditing works for the environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "controls[3]; summary; Why it matters; Governance controls; rationale: risk",
+      "type": "absence",
+      "claim": "No tenant or environment switch specific to allowing or blocking the Python SDK itself is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Dataverse Python SDK disable enable admin setting Power Platform API PowerShell pac admin; SDK tenant environment enable disable admin switch. Opened overview, get-started, app access control and organization-settings guidance; read pac admin results. No SDK-specific switch found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "front matter: defaultState; What's changing; rationale: impact",
+      "type": "default",
+      "claim": "Use is developer-selected through installation and authentication, represented as user-opt-in, despite the roadmap's automatic-enablement wording.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/sdk-python/get-started",
+      "quote": "From a terminal window, run the following command. This command installs the latest stable release of the SDK from a pypi.org package.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Governance guidance: Before rollout; controls[2] governs and note",
+      "type": "applicability",
+      "claim": "Turning on environment auditing as shown ensures scripted changes are recorded.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-dataverse-auditing",
+      "quote": "First, turn on auditing at the environment level. To log data changes in a table, turn on auditing for the table and for the column.",
+      "severity": "blocker",
+      "fix": "Replace the checklist bullet with 'Turn on environment auditing (row 3), and confirm auditing is enabled for the tables and columns whose scripted changes must be recorded.' Add to controls[2].note: 'Recording data changes also requires table and column auditing. User-access logging requires Log access; environment auditing alone does not enable it.' The cited auditing page documents these qualifications."
+    },
+    {
+      "n": 72,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Microsoft documents auditing app usage before enabling app-access enforcement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/control-app-access-environment",
+      "quote": "We recommend that you turn on audit mode, for at least one week, to get the list of apps that your users are running in an environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "ApplicationBasedAccessDenied and ApplicationBasedAccessAllowed are the documented app-access audit events.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/control-app-access-environment",
+      "quote": "Select the dropdown arrow near the Event heading, then find and select ApplicationBasedAccessDenied and ApplicationBasedAccessAllowed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Governance controls: final paragraph",
+      "type": "admin-path",
+      "claim": "People's Dataverse security roles are managed under an environment's Users + permissions settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/security-roles-privileges",
+      "quote": "Select Settings on the command bar. The Settings page for that environment is displayed. ... Select Users + Permissions > Security roles.",
+      "severity": "minor",
+      "fix": "Replace the Quick guide to Dataverse link offered 'for the steps' with https://learn.microsoft.com/power-platform/admin/security-roles-privileges and title 'Security roles and privileges for Dataverse'; the Quick guide explains security but does not give these assignment steps."
+    },
+    {
+      "n": 75,
+      "where": "Governance guidance; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist's controls are all represented in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: 'identify the people ... with the security roles each holds'; 'Watch Power Platform request consumption'. Table: app access, application users, environment auditing and SDK switch only.",
+      "severity": "minor",
+      "fix": "The Before rollout step taking stock of human callers' security-role assignments and the After rollout step monitoring request consumption have no corresponding control rows. Remove those checklist instructions if the table remains unchanged; do not add unverified rows."
+    },
+    {
+      "n": 76,
+      "where": "Open questions: licensing and request limits",
+      "type": "consistency",
+      "claim": "Whether SDK calls use the same request limits as other Dataverse clients remains an open question.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Cost and licensing: 'scripted traffic counts like other API traffic.' Open questions: 'do they use the same request limits as other Dataverse clients?'",
+      "severity": "minor",
+      "fix": "Remove 'and do they use the same request limits as other Dataverse clients' from that question; applicability of the general request limits is already established in Cost and licensing."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-17T05:06:27.154Z",
+    "summary": {
+      "links": 13,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=576876",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/developer/data-platform/sdk-python/overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/developer/data-platform/sdk-python/get-started",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/developer/data-platform/sdk-python/quick-guide-dataverse",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/developer/data-platform/sdk-python/work-data",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/architecture/reference-architectures/dataverse-sdk-for-python",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/api-request-limits-allocations",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/maker/data-platform/api-limits-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/control-app-access-environment",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/manage-application-users",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/create-dataverseapplicationuser",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/manage-dataverse-auditing",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/developer/data-platform/auditing/configure",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which client apps may call the Dataverse API in an environment",
+        "docs": "https://learn.microsoft.com/power-platform/admin/control-app-access-environment",
+        "reachable": true,
+        "segments": [
+          "Security",
+          "Identity and access",
+          "App access control",
+          "Set up app access control",
+          "Access control"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which Microsoft Entra app registrations have an application user and security roles in an environment",
+        "docs": "https://learn.microsoft.com/power-platform/admin/manage-application-users",
+        "reachable": true,
+        "segments": [
+          "Manage",
+          "Environments",
+          "Settings",
+          "Users + permissions",
+          "Application users",
+          "+ New app user"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Which Microsoft Entra app registrations have an application user and security roles in an environment",
+        "docs": "https://learn.microsoft.com/power-platform/admin/create-dataverseapplicationuser",
+        "reachable": true,
+        "token": "api.bap.microsoft.com/providers/Microsoft.BusinessAppPlatform/scopes/admin/environments/{environmentIdGuid}/addAppUser",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Whether Dataverse records scripted data changes and access",
+        "docs": "https://learn.microsoft.com/power-platform/admin/manage-dataverse-auditing",
+        "reachable": true,
+        "segments": [
+          "Security",
+          "Compliance",
+          "Auditing",
+          "Set up auditing",
+          "Turn on auditing"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Whether Dataverse records scripted data changes and access",
+        "docs": "https://learn.microsoft.com/power-apps/developer/data-platform/auditing/configure",
+        "reachable": true,
+        "token": "GET [Organization",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

@@ -92,19 +92,23 @@ changes:
     note: "Corrected after verification: added the Products step to the environment path, replaced the allocation call with the full request and its group-rule lock, qualified the spending caps and moved the Monitor page to Copilot Studio."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 73 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-17"
+    note: "Corrected after verification: the Scope section now says only that the roadmap record does not state rollout mechanics or prerequisites."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 79 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-17"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 73
-  confirmed: 71
+  claims: 79
+  confirmed: 78
   unconfirmed: 0
-  contradicted: 2
-  attempts: 2
-  hash: "3d499a5c70ca15372cef13a920350816"
+  contradicted: 1
+  attempts: 0
+  hash: "37b81703df481641e83cdaadf27e471e"
 ---
 
 ## What's changing
@@ -154,7 +158,7 @@ Microsoft has not stated whether the display arrives on by default or needs any 
 
 The roadmap lists Microsoft Copilot Studio, Worldwide (Standard Multi-Tenant), the web platform and General Availability. It lists no other clouds; that is a record fact and not a statement about availability elsewhere.
 
-The Learn preview describes evaluations for agents created and saved with the Microsoft Copilot harness and notes that a test set holds up to 20 conversations. Which harness the roadmap item covers is not stated. Rollout mechanics and any prerequisite beyond that harness are not stated.
+The Learn preview describes evaluations for agents created and saved with the Microsoft Copilot harness and notes that a test set holds up to 20 conversations. Which harness the roadmap item covers is not stated. The roadmap record does not state rollout mechanics or prerequisites.
 
 ## Governance guidance
 
@@ -207,10 +211,8 @@ cost: Variable. The display is not described as a charge, but the evaluation act
 impact: Medium. Makers who run evaluations see the figures; owners of environments and capacity are affected through the credits those evaluations draw.
 -->
 
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Scope: final sentence / absence: Any prerequisite beyond the Microsoft Copilot harness is not stated. | Found: Evaluations only support agents set to use No authentication or Authenticate with Microsoft. Agents set to Authenticate manually aren't supported. | Fix: Narrow the final Scope sentence to 'The roadmap record does not state rollout mechanics or prerequisites.' The broader claim about prerequisites is false for the cited Learn preview, which documents authentication restrictions. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/analytics-agent-evaluation-intro
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: Every monitoring control the governance checklist asks the reader to check is represented in the controls table. | Found: Review environment and agent consumption together in the Power Platform admin center under Licensing > Copilot Studio. The table contains the evaluation display, environment allocation and agent limit rows, but no consumption-reporting row. | Fix: The first After rollout bullet, asking readers to review environment and agent consumption in Power Platform admin center, has no matching reporting row in the controls table.
+- [contradicted, minor] Governance guidance: After rollout; controls / consistency: The checklist tells readers to review consumption reports and limit status, but the controls table contains no consumption-monitoring row. | Found: Checklist: 'Review environment and agent consumption together'. Table: 'Estimated Copilot Credits shown for an evaluation run and each test case'; 'Credits allocated to an environment, and whether it draws from tenant capacity'; 'Monthly Copilot Credit limit and Stop usage for one agent'. | Fix: The After rollout checklist's consumption-monitoring step has no corresponding table row. Remove its first bullet, 'Review environment and agent consumption together in the Power Platform admin center under Licensing > Copilot Studio, as Learn advises.' Keep the documented monitoring explanation in Governance controls.
 -->

@@ -87,19 +87,23 @@ changes:
     note: "Correction: removed the Purview source control row and two unsupported statements, stated that the E5 and E7 inclusion rule covers all Purview agentic scenarios, and removed the usage-dashboard checklist step."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 75 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 4
+  - date: "2026-11-17"
+    note: "Correction: the cost section now says only the skill-specific SCU rate is unpublished, the Purview source is described as a general prerequisite for Purview embedded experiences, and the checklist no longer asks admins to check the source."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 75 statements confirmed"
+version: 5
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-17"
-  version: 4
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 75
-  confirmed: 72
+  confirmed: 75
   unconfirmed: 0
-  contradicted: 3
-  attempts: 2
-  hash: "547157fc4176a197f83de2a0a50d1d03"
+  contradicted: 0
+  attempts: 0
+  hash: "e1e88edcd07403b29101e05fb196cc07"
 ---
 
 ## What's changing
@@ -137,7 +141,7 @@ The cost and licensing side deserves more attention than the risk side. The noti
 
 ## Cost and licensing
 
-Microsoft has not published a price or licence for this skill. Microsoft's notice says the feature requires Security Copilot capabilities to be available in the tenant, and its preparation steps include confirming that Security Compute Units are provisioned to support AI experiences. The SCU is the meter, and the rate this skill consumes is not yet published.
+Microsoft has not published a skill-specific SCU consumption rate. Microsoft's notice says the feature requires Security Copilot capabilities to be available in the tenant, and its preparation steps include confirming that Security Compute Units are provisioned to support AI experiences. The SCU is the meter, and the rate this skill consumes is not yet published.
 
 Learn's Security Copilot inclusion page says customers with Microsoft 365 E5 and E7 have 400 SCUs each month for every 1,000 paid user licences, up to 10,000 SCUs each month, at no additional cost, and that customers without those licences can continue to use the existing Security Copilot pricing model. It lists the core experiences as all chat, promptbook and agentic scenarios across Microsoft Purview, among others. The roadmap item calls this an AI agent skill; the inclusion rule covers all Microsoft Purview agentic scenarios, and the skill's SCU consumption rate is not yet published.
 
@@ -152,8 +156,7 @@ Microsoft's notice names admins managing Endpoint DLP policies in Microsoft Purv
 ## Governance guidance
 
 ### Before rollout
-- Confirm with the Security Copilot owner whether Security Copilot is enabled and SCUs are provisioned, as Microsoft's notice advises, and agree who funds extra capacity if the tenant is not covered by Microsoft 365 E5 or E7 inclusion.
-- Check that the Purview source is on in Security Copilot, because Learn says Security Copilot in Purview must be enabled for its embedded experiences.
+- Agree with the Security Copilot owner who funds extra capacity if the tenant is not covered by Microsoft 365 E5 or E7 inclusion.
 - Record how many devices show **Not updated** or **Not available** for Policy sync status in the Devices list, so the skill's output can be judged against a baseline.
 - Assign Compliance Administrator or Security Administrator to the people who will triage device health, the least-privileged roles Learn names for the device health reports dashboard.
 
@@ -179,7 +182,7 @@ Microsoft's notice names admins managing Endpoint DLP policies in Microsoft Purv
 </tbody>
 </table>
 
-Microsoft Learn documents no tenant switch, role or API specific to this skill at the time of writing (November 2026), so the first row states that gap. The Purview source in Security Copilot is a general control; Microsoft has not confirmed that it governs this skill.
+Microsoft Learn documents no tenant switch, role or API specific to this skill at the time of writing (November 2026), so the first row states that gap. The Purview source is a general prerequisite for Security Copilot embedded experiences in Purview, which includes the experience described in MC1381121; it is not a switch specific to this skill.
 
 The last two rows are today's manual tools for the same problem and do not govern the skill. Reaching the device health reports dashboard needs Compliance Administrator, Security Administrator or Global Administrator. Learn says status in the Devices list can take up to 2 hours to update, so a freshly fixed device may still show **Not updated**.
 
@@ -195,13 +198,4 @@ The last two rows are today's manual tools for the same problem and do not gover
 risk: Low. The roadmap and Microsoft's notice describe diagnostics on policy sync and device health, not a change to what Endpoint DLP enforces. The default state is not stated, so this rates today's behaviour continuing.
 cost: Variable. Microsoft's notice says the feature requires Security Copilot and asks admins to confirm Security Compute Units (SCUs) are provisioned. SCUs are the meter; the rate for this skill is not yet published.
 impact: Low. The notice names admins who manage Endpoint DLP policies in the Microsoft Purview portal as the people affected. End users are not described as noticing it.
--->
-
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Cost and licensing: opening sentence / licensing: Microsoft has not published a licence for this skill. | Found: Core Experiences: All chat, promptbook, and agentic scenarios across Microsoft Entra, Microsoft Intune, Microsoft Purview, Microsoft Defender, and the standalone Security Copilot portal. | Fix: Replace 'Microsoft has not published a price or licence for this skill.' with 'Microsoft has not published a skill-specific SCU consumption rate.' Keep the following published Security Copilot prerequisite and E5/E7 inclusion explanation. | Source: https://learn.microsoft.com/copilot/security/security-copilot-inclusion
-- [contradicted, blocker] Governance controls: Purview source qualification / applicability: Microsoft has not confirmed that the Purview source in Security Copilot governs this skill. | Found: Security Copilot in Purview must be enabled for both the standalone and embedded experiences to work. | Fix: Replace 'The Purview source in Security Copilot is a general control; Microsoft has not confirmed that it governs this skill.' with 'The Purview source is a general prerequisite for Security Copilot embedded experiences in Purview, which includes the experience described in MC1381121; it is not a switch specific to this skill.' Cite https://learn.microsoft.com/purview/copilot-in-purview-overview. | Source: https://learn.microsoft.com/purview/copilot-in-purview-overview
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: The checklist instructs readers to check Security Copilot enablement, SCU provisioning and the Purview source, but these controls have no rows. | Found: Checklist: 'Confirm ... whether Security Copilot is enabled and SCUs are provisioned' and 'Check that the Purview source is on'. Table: skill-specific tenant switch, per-device status and device readiness only. | Fix: Remove the checklist bullet beginning 'Check that the Purview source is on'. Replace the first Before rollout bullet with 'Agree with the Security Copilot owner who funds extra capacity if the tenant is not covered by Microsoft 365 E5 or E7 inclusion.' The prerequisite facts can remain in the prose.
 -->
