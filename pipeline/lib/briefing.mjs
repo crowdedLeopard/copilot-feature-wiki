@@ -13,6 +13,7 @@ import { HELD_DIR, withCurrentFindingsComment } from './verify.mjs';
 import { TOPIC_IDS, TOPIC_BY_ID, topicForProducts } from '../../config/taxonomy.mjs';
 import { loadGlossary, saveGlossary, glossaryLines, normaliseTags, defineTags } from './tags.mjs';
 import { briefSection as messageCenterSection } from './message-center.mjs';
+import { confirmedSection } from './confirmed-controls.mjs';
 
 /** "slug | title" lines for every briefing and concept page, the set a new page may link to in `related`. */
 export async function loadIndexSlugs() {
@@ -175,10 +176,12 @@ export function linkCandidates(item, indexSlugs, max = 60) {
  * roadmap item (pipeline/lib/message-center.mjs, postsForBrief): Microsoft's notices to tenant
  * administrators, carried as source text with their act-by dates.
  */
-export function researchBrief(item, existing, indexSlugs, glossary = { tags: {}, aliases: {} }, posts = []) {
+export function researchBrief(item, existing, indexSlugs, glossary = { tags: {}, aliases: {} }, posts = [], confirmed = []) {
   const topic = TOPIC_BY_ID[item.topic];
   const ownSlug = existing?.match(/^slug:\s*"([^"]+)"/m)?.[1];
   const links = linkCandidates(item, indexSlugs.filter((l) => !ownSlug || !l.startsWith(`${ownSlug} |`)));
+  // A correction carries the checked page over and adds no rows, so it is not shown other pages' controls.
+  const isCorrection = Boolean(existing && /<!-- verifier-findings/.test(existing));
   const record = {
     id: item.id, title: item.title, status: item.status, targetDate: item.targetDate, previewDate: item.previewDate,
     products: item.products, clouds: item.clouds, releasePhase: item.releasePhase, platforms: item.platforms,
@@ -208,7 +211,7 @@ ${posts.length ? messageCenterSection(posts) : ''}## Topic
 
 ${topic ? `${topic.label}: ${topic.blurb}` : item.topic}
 
-${existing ? (/<!-- verifier-findings/.test(existing) ? `## Existing briefing, held by the independent check
+${existing ? (isCorrection ? `## Existing briefing, held by the independent check
 
 This task is a correction. The independent check read this page and found fault only with the statements listed in the verifier-findings comment at its end. Carry the rest over word for word and change only what the findings name, as "Correcting a held briefing" in pipeline/prompts/compile-agent.md sets out. A correction adds no control rows and does no new research beyond reading what a finding cites. Say in changeNote what was corrected.
 
@@ -224,7 +227,7 @@ This page is already published. Compare its status and dates with the record abo
 ${existing.trim()}
 </existing_briefing>
 
-`) : ''}## Pages you may link in relatedSlugs (slug | title)
+`) : ''}${isCorrection ? '' : confirmedSection({ ...item, slug: ownSlug }, confirmed)}## Pages you may link in relatedSlugs (slug | title)
 
 ${links.join('\n') || '(none yet)'}
 

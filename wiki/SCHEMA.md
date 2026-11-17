@@ -136,7 +136,16 @@ Rules that follow from this:
   something about the product and needs a page that states it. What a search can establish is
   narrower: that Microsoft documents none. Write that ("no meter is documented for this feature at
   the time of writing") or "Not yet published", and never "none" or "not metered" on the strength
-  of silence.
+  of silence. Make Microsoft or its page the subject of such a sentence: "the flow groups page
+  publishes no separate price or meter". "Learn documents no charge for flow groups" can be read
+  as Learn saying there is none, and is checked as that.
+- **A limit is described by what it stops.** "Cap", "limit", "block", "stop" and "prevent" tell
+  the reader that use or spending ends there. Write one only where the page says it ends. Where
+  the page says use carries on by another route, give the setting in the page's words and say
+  what carries on. Credits allocated to an environment are a cap only if the page says
+  consumption stops when they run out; if it says the environment can then draw on the tenant's
+  capacity or bill a pay-as-you-go plan, the allocation is not a cap, and the briefing says which
+  setting closes each route.
 - **Absence is not prohibition.** "Not listed for GCC on the roadmap item" is a record fact. "Not
   available in GCC" is a different claim and needs a page that says so.
 - **"Only", "cannot" and "all" are claims too.** Words that claim completeness (only, all, every,
@@ -348,9 +357,20 @@ behaviour changes", never on "nothing changes". Before settling on `unknown`, re
 description and each supplied Message Center post for the words that decide it: "by default",
 "automatically", "no action is required", "administrators must enable".
 
-**Licensing model**: `included` (part of a licence the product already needs; name it), `per-user`,
+**Licensing model**: how someone comes to be entitled to the feature, which is a different question
+from what it costs. `included` (part of a licence the product already needs; name it), `per-user`,
 `consumption` (metered), `add-on`, `mixed`, or `unknown` when Microsoft has not published it. The
 site prints `unknown` as "Not yet published".
+
+`unknown` says that no Microsoft page states which licence covers the feature, and it is checked
+as that statement. A feature usually takes the licence of the product it belongs to, and a page
+usually says so: "available with Teams Rooms Pro", a plan table that lists the feature, a
+prerequisites section that names a licence, a billing page that meters every action of its kind.
+Before choosing `unknown`, read the feature's page and the product's licensing or prerequisites
+page for those words. Where one of them covers the feature, the model is the one it describes
+(`included` where the feature comes with a licence the page names, `consumption` where the page
+meters it), and the notes name the licence and the page. An unpublished price or rate does not
+make the entitlement unknown: say what is published, then what is not.
 
 **Confidence**: how much of the briefing rests on documentation.
 
@@ -469,24 +489,56 @@ standard. One row per control. Each row has:
 - `scope`: tenant, environment, environment-group, site, group, user, agent, app, maker or other.
 - `ui`: the admin centre by its current name ("Power Platform admin center", "Microsoft 365 admin
   center", "Microsoft Purview portal", "Teams admin center", "Microsoft Entra admin center"), the
-  navigation path, and the Learn page that gives it. Write the path as the page gives it, with
-  " > " between steps, starting after the admin centre's name, and using the page's own labels. Use
-  a plain lower-case word for a step the admin chooses ("environment", "policy", "agent"), and
-  leave no step out: the tab or the item the admin picks on the way is part of the path. Where the
-  page gives numbered steps, follow them in order, one label per step, including the group headings
-  it names on the way ("Manage", "Assignments"). Maker-side
-  settings count, with surface "Copilot Studio (maker)" or "Power Apps (maker)" and scope maker or
-  agent.
+  navigation path, and the Learn page that gives it. The surface is the portal or app the page
+  says the path is in; read it on the page like any label. The path is the route to the control,
+  with " > " between steps, in the page's own labels, starting after the admin centre's name.
+  - **It starts at the admin centre's navigation, never part-way in.** Where the page that
+    documents the setting begins inside an item ("in the policy, under Assignments"), read the way
+    to that item on the page that gives it, and list that page in `sources`.
+  - **It follows the page's steps in order, one label per step, and leaves none out**: the tab,
+    the item the admin picks, and each heading the page names on the way ("under Products, select
+    Copilot Studio" is "Products > Copilot Studio"). Use a plain lower-case word for a step the
+    admin chooses ("environment", "policy", "agent").
+  - **It ends at the control**: the setting, option or button that makes the change. What comes
+    after it is not part of the path: the confirmation pane, "Save", "Next", "Finish".
+  - **It is a route, not a procedure.** Names typed and fields filled in on the way are not steps.
+    Where the control sits inside a wizard, give the way into the wizard, each choice the page
+    says decides what comes next (the template, the policy type) and the wizard page that holds
+    the control. If the page does not take the route that far, end the path where the page ends
+    and say in `note` what is set there.
+
+  Maker-side settings count, with surface "Copilot Studio (maker)" or "Power Apps (maker)" and
+  scope maker or agent.
 - `api`: the kind (powershell, graph, power-platform-api, pac-cli, azure-cli, rest, other), the
-  one-line call, and the Learn reference page. For PowerShell, the cmdlet and the parameters that
-  matter, as the reference page names them. For Graph and REST, the HTTP method and the path
-  including the version (`/v1.0/` or `/beta/`). For a CLI, the command and its key arguments.
-  A call is something an administrator could run once the placeholders are filled in: a parameter
-  comes with its value or a placeholder for it, and a product, module or API family name is not a
-  call. If only the family is known, the operation has not been read yet: open the reference and
-  find it. An empty side prints "Not yet documented", which is false when a reference exists.
-- `docs`, on either side: the page on which that exact path or call can be read. Where one row
-  would need two reference pages, split the row, or keep only what its page documents.
+  one-line call, and the Learn reference page. The call names one operation and what in it sets
+  this control, so that an administrator can find it in the reference and script it. It is not a
+  script: the reference page carries the full syntax, and the link beside the call takes the
+  reader there.
+  - **PowerShell and CLIs**: the cmdlet or command, the parameter that sets this control with its
+    value or a placeholder, and the parameter that identifies the target where there is one, all
+    as the reference names them. A value written out is one the reference allows, and a
+    placeholder is named for what the reference says the parameter takes: `-ExchangeLocation All`,
+    not `-ExchangeLocation <mailboxes>`, where the reference accepts only `All`. Parameters that
+    do not bear on the control are left to the reference.
+  - **Microsoft Graph, the Power Platform API, the Dataverse Web API and other REST**: the HTTP
+    method and the path with its version (`/v1.0/`, `/beta/` or `api-version=`), and nothing after
+    it: no request body, no headers, no description of either. Whatever is printed is checked
+    as printed, and a body given in part has held pages whose endpoint was right. Where the
+    operation sets the control through a property of the request body, name that property in
+    `note` as the reference names it ("The request body sets isauditenabled"), and give the
+    version whose reference documents it.
+  - **The operation is the one that makes the change the row describes.** That is often not the
+    one that creates the policy or record holding the setting. For a control that configures
+    something it is never one that only reads: a `GET` that lists records is not the automation
+    for the setting that changes them. If the reference documents no operation that sets the
+    control, the side is null.
+
+  A product, module or API family name is not a call. If only the family is known, the operation
+  has not been read yet: open the reference and find it. An empty side prints "Not yet
+  documented", which is false when a reference exists.
+- `docs`, on either side: the page on which that call, or the control's own part of the path, can
+  be read. Where one row would need two reference pages, split the row, or keep only what its
+  page documents.
 - `note`: optional qualifier. Role required, preview status, "maker-side only", or "general control:
   Microsoft has not confirmed it applies to this feature".
 
@@ -507,6 +559,13 @@ Rules.
   PowerShell (`Set-Label`), not through the Teams module. If research showed that the control
   exists but you have not read its path or command, do not set it to null: read it, or leave the
   row out and name the control in the notes without a path.
+- The task brief may list admin paths and calls that the independent check has already confirmed
+  on other pages ("Controls the independent check has already confirmed"). They save a search and
+  give the labels in full. When one of them is a control this briefing needs, open its page, see
+  that it still reads that way, and write the path or call as the brief gives it rather than
+  composing your own. It still needs its `evidence` entry, and whether the control governs this
+  feature is still this briefing's own claim, with its own source. A control that is not on the
+  list is researched as usual; the list is not a reason to add a row.
 - Existing controls that an administrator uses today in place of a missing one are worth a row.
   Say in the note what they do and do not cover, so nobody mistakes them for a control over the new
   feature.

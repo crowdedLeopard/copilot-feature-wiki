@@ -132,32 +132,77 @@ supported by the page it cites, with a minor whose fix names the other page and 
 
 How to judge each type:
 
-- **Admin path** (`controls[].ui`, and any path in the prose). The page names this admin centre and
-  gives these steps in this order with these labels. A step that is added, renamed or in a
-  different place on the cited page is a contradiction, and so is a menu, page, section or setting
-  missing from the middle: the reader would not find the next step. No path on the page is
-  unsupported. Do not fail a path for cosmetic differences: bold type, the word "Select", the arrow
-  style (the rendered table prints "›" where the front matter has ">"), a lower-case placeholder
-  for something the admin picks ("environment", "policy"), or a final "Save" left off. A path that
-  leaves out only the step where the admin picks what the setting applies to (the environment, the
-  site, the policy, or the tab that lists them) is supported, with a minor whose fix gives the
-  full path.
-- **Command** (`controls[].api`, and any command in the prose). The cmdlet, endpoint or command
-  exists on its reference page; for PowerShell, each parameter named in the call is a real
-  parameter of that cmdlet and the module is right; for Microsoft Graph and REST, the HTTP method,
-  the path and the version (`/v1.0/` or `/beta/`) match; and the page says the call does what the
-  briefing says it does. Check names, not example values: a `<placeholder>`, a sample name, number
-  or URL is not a claim. The exception is a literal the call cannot work without. A hashtable or
-  JSON body printed with a key missing that the reference shows the setting needs (for example
-  `setting=` without its `value=`) is a wrong command, because a reader will copy it as printed.
+- **Admin path** (`controls[].ui`, and any path in the prose). The test is whether an
+  administrator who follows the path label by label, in the admin centre or app it names, arrives
+  at the control. Read the steps on the cited page and compare.
+  - **Contradicted** when the path would send the reader somewhere else or leave them unable to
+    find the next step: a step that is added, renamed, in a different place or out of order; the
+    wrong admin centre or app; a page, tab, menu item or option the reader has to select that is
+    missing from the middle, including a choice in a wizard that decides what comes next (the
+    template, the policy type); or a path that starts part-way in, at a tab or section of an item
+    it does not say how to reach. A path that no page gives is unsupported.
+  - **Supported, with a minor whose fix gives the full path,** when every step it prints is on
+    the page in that order and all it leaves out is something the reader passes without choosing:
+    a heading the page says the next step is "under" or "in" without telling the reader to select
+    it ("under Products, select Copilot Studio"); the heading of the section the setting sits in
+    on its page; an unlabelled icon or "more options" button; names typed and fields filled in on
+    the pages of a wizard, and its "Next" and "Continue"; or the step where the admin picks what
+    the setting applies to (the environment, the site, the policy, or the tab that lists them).
+  - **Supported, with no finding,** whatever it leaves off after the control: the confirmation
+    pane and the button in it, "Save", "Finish". The standard ends a path at the control.
+  - Do not fail a path for cosmetic differences: bold type, the word "Select", the arrow style
+    (the rendered table prints "›" where the front matter has ">"), or a lower-case placeholder
+    for something the admin picks ("environment", "policy").
+  - The way to an item and the setting inside it are often on two Microsoft pages. A path is
+    supported when you have read both parts, whichever page `docs` gives; a second page the
+    briefing does not cite is a minor whose fix names it.
+- **Command** (`controls[].api`, and any command in the prose). The standard asks for a call that
+  names one operation and what in it sets the control, and leaves the rest to the reference. For
+  PowerShell and CLIs that is the command with the parameter that sets the control. For Microsoft
+  Graph and REST, the Power Platform API and the Dataverse Web API included, it is the HTTP method
+  and the versioned path and nothing more, with any request-body property that sets the control
+  named in the row's note. Check what is printed:
+  - the cmdlet, endpoint or command exists on its reference page, and the module is right;
+  - for PowerShell and CLIs, each parameter named is a real parameter of that command, and a
+    value written out, or what a placeholder says the parameter takes, is something the reference
+    allows (`-ExchangeLocation <mailboxes>` where the reference accepts only `All` is a wrong
+    command, and so is a hashtable printed without a key the reference requires in it);
+  - for Graph and REST, the HTTP method, the path and the version (`/v1.0/`, `/beta/` or
+    `api-version=`) match the reference;
+  - a property the note or the prose names as the one to set is on that reference page under that
+    name, in the version the call gives;
+  - the page says the operation makes the change the row describes. An operation that only reads,
+    or only creates the policy or record that will hold the setting, does not.
+
+  A fault in any of these is a contradiction, or unsupported where no reference shows the
+  operation at all. Otherwise check names, not example values: a `<placeholder>`, a sample name,
+  number or URL is not a claim.
+
+  Do not fail a call for what it leaves to the reference: a request body, headers,
+  authentication, or parameters the command needs that do not bear on this control (a name, a
+  condition, a scope). A method and a path is a complete REST call under the standard, and a
+  cmdlet with the deciding parameter is a complete PowerShell call. A page written before this
+  rule may print part of a request body after the path. Check each key it prints: a key that is
+  wrong, misspelt or at the wrong level is a contradiction, and keys that are right but not the
+  whole body are supported, with a minor. The fix is the same for both and needs no research:
+  the call as the method and path alone, with the deciding property named in the note.
 - **Licensing and cost.** Licence, plan and SKU names exactly as the page gives them; what is
   included and what is an add-on; the meter and its unit; where the charge appears. Any price,
   credit rate, quota or limit must match the page to the digit and the unit. "No additional licence
   is required", "included in", "not metered" and "no charge" are claims like any other and need a
   stating passage; silence on a page about cost does not support them. "No meter is documented"
-  is the narrower claim that Microsoft has not said, and is checked as an absence in step 4. A narrower
+  is the narrower claim that Microsoft has not said, and is checked as an absence in step 4. Read
+  such a sentence for which of the two it claims. "Microsoft publishes no price for it", "the page
+  names no meter" and "Learn documents no charge for it" say Microsoft has not said, and are
+  absences. "There is no charge", "it is free" and "the page states there is no charge" say
+  Microsoft has said so, and need the passage. A narrower
   statement, that the feature's page lists its prerequisites and names no licence among them, is
-  supported when you have read those prerequisites and that is what they show.
+  supported when you have read those prerequisites and that is what they show. A licensing model
+  of `unknown` is an absence too: it says no Microsoft page states which licence covers the
+  feature, and it is contradicted when the feature's page or its product's licensing page does.
+  "Cap", "limit" and "stop", said of spending or use, claim that it ends there: where the page
+  says use carries on by another route (the tenant's capacity, a pay-as-you-go plan), the claim
+  is contradicted.
 - **Default state, roles, limits, retention periods, audit events, and dates that are not in the
   roadmap record.** Each needs a passage that states it for this feature.
 - **Applicability.** Where the briefing says a general control (data policies, sensitivity labels,
@@ -166,9 +211,10 @@ How to judge each type:
   note says Microsoft has not confirmed it applies to this feature, is acceptable.
 - **Preview.** If the cited page marks the feature as preview and the briefing presents its limits,
   licensing or behaviour as final, that is a finding.
-- **Links.** A `docs` URL that does not open, or opens a page that does not contain the path or
-  call, is a finding against that control side, even if the path turns out to be right elsewhere.
-  A link that works is part of that side's claim, not a claim of its own.
+- **Links.** A `docs` URL that does not open, or opens a page that shows neither the call nor the
+  control's own part of the path (its last steps), is a finding against that control side, even
+  if the path turns out to be right elsewhere. A link that works is part of that side's claim,
+  not a claim of its own.
 
 **4. Check what the page says is absent.** "Not yet documented" (a control side set to `null`),
 "Not yet published" and a default state of `unknown` are claims that Microsoft has not said. The
@@ -247,16 +293,20 @@ Give every claim that needs a correction a severity.
   an admin path or setting label, a command or any part of one, a licence requirement, a price,
   rate, quota or limit (or a statement that there is none), a date, a default state, a role, cloud
   availability, a retention period, an audit event, or a statement that a control applies to this
-  feature. It also covers a control or fact reported as absent that Microsoft
-  documents, a `docs` link that does not show the path or call, and a factual field (default state,
-  licensing model, cost) that conflicts with a verified fact.
+  feature. It also covers a control or fact reported as absent that Microsoft documents, a `docs`
+  link that shows neither the call nor the control's part of the path, and a factual field
+  (default state, licensing model, cost) that conflicts with a verified fact. A path or call that
+  is right in everything it prints, and leaves out only what "How to judge each type" says it
+  may, is not unsupported and is not a blocker.
 - **major**: an unsupported statement about how the feature behaves that would not by itself change
   what an administrator does.
 - **minor**: true but misleading in form, or a matter of judgement: a target date worded as firm, a
   preview not flagged, an out-of-date product name, a source that supports the claim but is not
   cited, a second Microsoft page that disagrees, advice attributed to Microsoft beyond what the
   page says, a checklist control with no row in the table, a risk, impact or action rating that
-  does not fit its definition. A minor can sit on a supported claim.
+  does not fit its definition, an admin path that leaves out a heading or a step the reader passes
+  without choosing, a call that prints part of a request body correctly. A minor can sit on a
+  supported claim.
 
 The verdict follows mechanically:
 

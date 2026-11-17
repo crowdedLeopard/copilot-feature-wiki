@@ -24,6 +24,7 @@ import { WIKI_DIR, DATA_DIR, readJson, writeJson, appendLog, today, slugify } fr
 import { loadIndexSlugs, selectQueue, topicSplit, loadRawItem, loadExisting, researchBrief, writeBriefingPage, existingSlugForRoadmapId } from './lib/briefing.mjs';
 import { loadGlossary } from './lib/tags.mjs';
 import { postsForBrief } from './lib/message-center.mjs';
+import { loadConfirmedControls } from './lib/confirmed-controls.mjs';
 
 const LIMIT = Number(process.env.COMPILE_LIMIT || 12);
 const MODEL = process.env.COMPILE_MODEL || 'claude-opus-5-5';
@@ -51,10 +52,10 @@ function buildTools() {
   return { tools, mcp };
 }
 
-async function compileOne(client, item, existing, indexSlugs, schemaDoc, glossary) {
+async function compileOne(client, item, existing, indexSlugs, schemaDoc, glossary, confirmed) {
   const { tools, mcp } = buildTools();
   const posts = await postsForBrief(item.id);
-  const messages = [{ role: 'user', content: researchBrief(item, existing, indexSlugs, glossary, posts) }];
+  const messages = [{ role: 'user', content: researchBrief(item, existing, indexSlugs, glossary, posts, confirmed) }];
   let response;
   for (let turn = 0; turn < 6; turn++) {
     const stream = client.beta.messages.stream({
@@ -92,6 +93,7 @@ async function main() {
   const client = new Anthropic({ maxRetries: 3, timeout: 15 * 60 * 1000 });
   const schemaDoc = await fs.readFile(path.join(WIKI_DIR, 'SCHEMA.md'), 'utf8');
   const indexSlugs = await loadIndexSlugs();
+  const confirmed = await loadConfirmedControls();
 
   let written = 0, failed = 0, inTok = 0, outTok = 0;
   for (const q of items) {
@@ -102,7 +104,7 @@ async function main() {
     try {
       console.log(`compiling ${q.id} ${item.title} (${q.reason})`);
       // The glossary is re-read per item: writeBriefingPage may have added tags for the previous one.
-      const { out, usage } = await compileOne(client, item, existing, indexSlugs, schemaDoc, await loadGlossary());
+      const { out, usage } = await compileOne(client, item, existing, indexSlugs, schemaDoc, await loadGlossary(), confirmed);
       inTok += usage.input_tokens + (usage.cache_read_input_tokens || 0) + (usage.cache_creation_input_tokens || 0);
       outTok += usage.output_tokens;
       const { title } = await writeBriefingPage(item, out, { slug, existingFm, indexSlugs });
