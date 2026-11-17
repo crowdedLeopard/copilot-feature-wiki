@@ -5,12 +5,12 @@
  * A page the independent check held for failing comes back as a "revise" task at the front of
  * the queue (it keeps its slug; the held copy, with the verifier's findings appended, is the
  * existing page the rewrite starts from). A page held as "unverified" is waiting for the
- * verifier, not the writer, so it is taken out of the queue. A page parked after two failed
- * rewrites is left for a person and taken out of the queue too.
+ * verifier, not the writer, so it is taken out of the queue. A page parked after its last
+ * correction round (MAX_REVISIONS failed checks) is left for a person and taken out of the queue too.
  */
 import path from 'node:path';
 import { DATA_DIR, readJson, writeJson } from './lib/util.mjs';
-import { GRACE_EXISTING, holdNeedingCorrection, listHeld, listNeedingCorrection, MAX_REVISIONS, writeHeldIndex } from './lib/verify.mjs';
+import { GRACE_EXISTING, holdNeedingCorrection, holdReason, listHeld, listNeedingCorrection, MAX_REVISIONS, writeHeldIndex } from './lib/verify.mjs';
 
 const file = path.join(DATA_DIR, 'queue.json');
 const queue = await readJson(file, { items: [] });
@@ -27,7 +27,8 @@ for (const h of held) {
   const before = queue.items.length;
   queue.items = queue.items.filter((q) => q.id !== id);
   removed += before - queue.items.length;
-  const reason = h.report?.hold?.reason || 'unverified';
+  // holdReason gives a page parked under an earlier, lower cap its remaining round.
+  const reason = holdReason(h.report);
   const attempts = h.report?.attempts || 0;
   if (reason === 'failed' && attempts < MAX_REVISIONS && id) {
     revisions.push({ id, title: h.data.title, topic: h.data.topic, reason: 'revise', priority: 100, modified: h.data.roadmapModified || h.data.updated, slug: h.slug, attempts, since: h.report?.hold?.since || '' });

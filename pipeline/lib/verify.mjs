@@ -36,12 +36,20 @@ export const REPORT_DIR = path.join(WIKI_DIR, 'verification');
 export const VERIFY_TASK_DIR = path.join(DATA_DIR, 'verify-tasks');
 export const VERIFY_RESULTS = path.join(DATA_DIR, 'verify-results.json');
 /**
- * Failed checks before the page is parked for a person: 4 means three correction rounds. Raised from 3 on 16 Nov 2026:
- * 38 held pages were at their second failure with findings written before the correction rules of PR 29, and corrections
- * from such findings passed 8 of 30, against 18 of 18 from findings written after; one more round lets them clear rather
- * than park. Set VERIFY_MAX_REVISIONS=3 (or change this default) once those pages have gone through.
+ * Failed checks before the page is parked for a person: 4 means three correction rounds. Raised from 3 on 16 Nov 2026 so
+ * that 38 pages whose findings predated the correction rules of PR 29 got one more round, and kept on 17 Nov once they had
+ * cleared: a further correction and check cost about 85 AI credits, a parked page waits for a person, and every version
+ * must still pass the full check before it is published.
  */
 export const MAX_REVISIONS = Number(process.env.VERIFY_MAX_REVISIONS || 4);
+/**
+ * Why a held page is held, as the next run should treat it. A page parked under an earlier, lower cap (the report says
+ * "parked" with fewer failed checks than the cap allows) still has a correction round left, so it counts as failed.
+ */
+export function holdReason(report) {
+  const reason = report?.hold?.reason || 'unverified';
+  return reason === 'parked' && (report?.attempts || 0) < MAX_REVISIONS ? 'failed' : reason;
+}
 /**
  * Pages published before the check existed (created before this date) can get one grace: a first failure
  * leaves the page live with a "needs correction" notice and the findings listed, while the rewrite is
@@ -664,7 +672,7 @@ export async function writeHeldIndex() {
   const held = await listHeld();
   const items = held.map((h) => ({
     slug: h.slug, ...(h.kind === 'concept' ? { kind: h.kind } : {}), roadmapId: h.data.roadmapId ?? null, title: h.data.title, topic: h.data.topic,
-    reason: h.report?.hold?.reason || 'unverified', since: h.report?.hold?.since || h.report?.date || null,
+    reason: holdReason(h.report), since: h.report?.hold?.since || h.report?.date || null,
     attempts: h.report?.attempts || 0, reasons: h.report?.hold?.reasons || [],
   }));
   await writeJson(path.join(DATA_DIR, 'held.json'), { generated: new Date().toISOString(), count: items.length, items });
