@@ -39,7 +39,9 @@ This is the rule your whole verdict rests on, and it binds you as much as the wr
 - **The writer's quote is a pointer, not proof.** Where the writer supplied an evidence list, each
   entry gives a claim, a URL and a quote. Open the URL and find the passage yourself. Small
   differences in whitespace or formatting do not matter; what matters is that the page says it and
-  that it means what the briefing says it means.
+  that it means what the briefing says it means. An entry whose quote begins "Searched:" is the
+  writer's record of the search behind an absence. It tells you where the writer looked. It is
+  not evidence that nothing is there: run your own search in step 4.
 - **Contradicted** means a source you read says something different: another path to the same
   setting, another licence, another default, another date. It needs the contradicting text.
 - **Unsupported** means you looked where the briefing pointed, then searched, and found no text

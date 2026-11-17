@@ -211,6 +211,14 @@ Notes on particular fields:
   date that did not come from the roadmap record, and each statement that a control governs this
   feature. An existing control described as today's alternative needs entries for its own path and
   command, not for applying to the new feature. Facts taken from the roadmap record need no entry.
+  An absence has an entry too. For every `null` side, every "Not yet documented", "Not yet
+  published" and "Not stated", and every sentence that says Microsoft has not said, documented,
+  published or confirmed something (including "not confirmed to apply to this feature"), add an
+  entry whose `claim` is the absence, whose `url` is the page where the fact would be if it
+  existed (the product's meters, licensing, roles or reference page, opened in this task), and
+  whose `quote` begins "Searched:" and gives the queries you ran and, in a few words, what that
+  page does say on the subject. If it says something that covers this feature, the briefing
+  states that instead, and the absence shrinks to what is left.
   For an admin path, the quote is the page's own steps for the end of the path, in its words
   ("Under Products, select Copilot Studio. On the Summary tab, select Manage Agents"), so that
   each label in `path` can be found in it; use a second entry where the steps do not fit one
@@ -256,6 +264,10 @@ As the verifier:
   exists but did not read it, it is not "not documented". The page then gives the result, not the
   search: "Microsoft Learn documents no API for this policy at the time of writing (November
   2026)", never "a search found none".
+- Count the absences on the page, the `null` sides and "not confirmed" notes included. Does each
+  have its "Searched:" entry in `evidence`, naming the page where the fact would be? Is each
+  about the narrowest thing still open, with the general fact (the meter's rate, the role, the
+  platform rule) stated beside it? Take out any that no reader would act on.
 - For every "Microsoft has not said", "has not confirmed" and "is not documented" about billing,
   data policies, a default or a prerequisite: did you open the platform's own page for that rule?
   If that page covers this feature's case, state the rule and cite it, and keep only the narrower

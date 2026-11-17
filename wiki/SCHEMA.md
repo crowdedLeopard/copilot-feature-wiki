@@ -96,6 +96,28 @@ Each of these is itself a claim. It tells the reader that someone looked and Mic
 Make it only after a search that ran and returned nothing relevant, never because a search was
 skipped or a tool failed. If the gap affects a decision, repeat it in Open questions.
 
+Of everything on a page, these are the statements most often found wrong. The verifier tests each
+one with a search of its own, and more than half of the first drafts it held in November 2026 were
+held for saying Microsoft had not documented, published or confirmed something that a Microsoft
+page states: a price per credit that is on the meters page, an API that is in a table reference, a
+role that is on the portal's permissions page, a data policy rule that covers every agent. So an
+absence is the last thing written and the narrowest:
+
+- **Look where the fact would be if it existed.** That is rarely the feature's own page, which is
+  new and thin. It is the product's page for that kind of fact: its pricing or meters page, its
+  licensing page, its roles and permissions page, the API or table reference of the platform that
+  stores the setting.
+- **If that page covers this feature's case, that is the fact, and the briefing states it**: the
+  meter's published rate, the role that manages every setting of this kind, the table's create
+  operation, the policy that applies to every agent in the environment. What stays open is the
+  narrower thing: a rate specific to this feature, a parameter for this one setting.
+- **State the absence about the narrowest thing that is still open.** "A credit rate for this
+  feature is not yet published", not "the price per credit is not yet published". "Not confirmed
+  to apply to this feature" is an absence too, and is wrong where the platform's page says the
+  control covers every case of this kind.
+- **Do not volunteer absences.** One that no reader would act on is a risk to the page with no
+  benefit to the reader. Leave it out.
+
 Rules that follow from this:
 
 - **Nothing carries across from a neighbouring feature.** A setting that governs Copilot Studio
