@@ -293,6 +293,11 @@ As the verifier:
 - If `licensingModel` is `unknown`: did you read the feature's page and the product's licensing
   or prerequisites page for "available with", "included", "requires" and "licence"? If either
   says which licence covers the feature, the model is not `unknown`.
+- Read `defaultState` and `licensingModel` once more beside the body. The front matter must not
+  say more than the body, or less. A value other than `unknown` needs a sentence in the body that
+  states it for this feature, with its source; a body that says the default or the licence is not
+  stated goes with `unknown`. A procedure an administrator can follow today does not make a
+  planned feature `admin-opt-in`.
 - Find every "cap", "limit", "block", "stop" and "prevent" said of spending or use. Does the page
   say use ends there? If it says use carries on by another route (the tenant's capacity, a
   pay-as-you-go plan), say what the setting does and what carries on.
