@@ -71,7 +71,7 @@ controls:
       kind: "graph"
       call: "POST /v1.0/users/{id | userPrincipalName}/assignLicense"
       docs: "https://learn.microsoft.com/graph/api/user-assignlicense"
-    note: "General licence assignment. The Graph call needs a supported Microsoft Entra role such as License Administrator or User Administrator."
+    note: "General licence assignment. Delegated Graph requests need a Microsoft Entra role such as License Administrator or User Administrator, or microsoft.directory/users/assignLicense. Application: LicenseAssignment.ReadWrite.All."
   - governs: "Which call queues record calls, and who can access the recordings"
     scope: "other"
     ui:
@@ -109,25 +109,30 @@ controls:
     note: "No such control is documented at the time of writing (November 2026)."
 confidence: "medium"
 created: "2026-11-16"
-updated: "2026-11-16"
+updated: "2026-11-17"
 roadmapModified: "2026-11-04T00:02:09"
 changes:
   - date: "2026-11-16"
     note: "First briefing for roadmap item 578859, using Message Center post MC1552391 and the Queues app, call queue recording and Copilot in Teams calls pages on Microsoft Learn."
   - date: "2026-11-16"
     note: "Corrected the recording PowerShell row (private-preview limit), replaced the audit and retention gaps with Microsoft's general Copilot documentation, added a licence assignment row and moved action to act-now."
-version: 2
+  - date: "2026-11-17"
+    note: "Corrected the Graph licence-assignment role note (delegated role or custom role; application permission) and reworded the first licensing checklist bullet to separate Microsoft's recommendation to review from the advice to assign."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 71 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 3
 verification:
   status: "held"
-  date: "2026-11-16"
-  version: 2
+  date: "2026-11-17"
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 63
-  confirmed: 62
+  claims: 71
+  confirmed: 67
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
+  contradicted: 4
+  attempts: 3
+  hash: "4a9505d78138f6b6f427d5b086591ccd"
 ---
 
 ## What's changing
@@ -183,7 +188,7 @@ No price, meter or Copilot Credits charge is stated for this feature in the road
 
 ### Before rollout
 
-- Assign Microsoft 365 Copilot and Teams Premium to the agents and leads who should use the feature, as Microsoft's notice recommends, and confirm they also hold Teams Phone (licence assignment row).
+- Review Microsoft 365 Copilot and Teams Premium licence assignments for intended users, as Microsoft's notice recommends. Assign missing licences where appropriate and confirm users also hold Teams Phone (licence assignment row).
 - Confirm that automatic recording is turned on for the call queues where users should use Copilot, as the notice recommends (Teams admin center > Voice > Call queue; automatic recording row).
 - Review who the automatic recording template lets representatives access, because that choice cannot be modified once the template is created.
 - Tell queue teams that Copilot works only on recorded calls.
@@ -205,7 +210,7 @@ No price, meter or Copilot Credits charge is stated for this feature in the road
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which users hold the Teams Premium, Teams Phone and Microsoft 365 Copilot licences the feature needs</strong><br><small>User</small><br><small class="controls__note">General licence assignment. The Graph call needs a supported Microsoft Entra role such as License Administrator or User Administrator.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Billing › Licenses › product › Assign licenses <a href="https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/users/{id | userPrincipalName}/assignLicense</code> <a href="https://learn.microsoft.com/graph/api/user-assignlicense" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which users hold the Teams Premium, Teams Phone and Microsoft 365 Copilot licences the feature needs</strong><br><small>User</small><br><small class="controls__note">General licence assignment. Delegated Graph requests need a Microsoft Entra role such as License Administrator or User Administrator, or microsoft.directory/users/assignLicense. Application: LicenseAssignment.ReadWrite.All.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Billing › Licenses › product › Assign licenses <a href="https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/users/{id | userPrincipalName}/assignLicense</code> <a href="https://learn.microsoft.com/graph/api/user-assignlicense" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which call queues record calls, and who can access the recordings</strong><br><small class="controls__note">Existing control, not specific to Copilot. Template created under Voice &gt; Templates and resources. The cmdlet page limits the parameter to Voice applications private preview customers; see notes below.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Voice › Call queue › call queue › Templates › Automatic recording template <a href="https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsCallQueue -Identity &lt;Guid&gt; -AutoRecordingTemplateId &lt;String&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-cscallqueue" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether Copilot can be used in Teams calls (documented for one-to-one and group calls)</strong><br><small>User</small><br><small class="controls__note">General control: its page covers 1:1 and PSTN calls; Microsoft has not confirmed it applies to Copilot in the Queues app.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Voice › Calling policies › policy › Copilot <a href="https://learn.microsoft.com/microsoftteams/copilot-teams-calling-transcription" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsCallingPolicy -Identity &lt;policy name&gt; -Copilot Disabled</code> <a href="https://learn.microsoft.com/microsoftteams/copilot-teams-calling-transcription" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether the Queues app is available in the Teams client</strong><br><small>Tenant</small><br><small class="controls__note">Set to Off, this also turns off Insights and Tasks. It removes the whole Queues app, not Copilot alone.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Manage apps › Actions › Org-wide app settings › Microsoft apps <a href="https://learn.microsoft.com/microsoftteams/manage-queues-app" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
@@ -230,8 +235,11 @@ cost: Medium. Users need a Teams Premium licence for the Queues app and a Micros
 impact: Low. Only calling reps and supervisor leads in call queues, with the right licences and recorded calls, will see it; most Teams users are unaffected.
 -->
 
-<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
-The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [contradicted, blocker] controls[0].note; Governance controls table / role: The Graph call needs a supported Microsoft Entra role such as License Administrator or User Administrator. | Found: In delegated scenarios with work or school accounts, the signed-in user must be assigned a supported Microsoft Entra role or a custom role with the microsoft.directory/users/assignLicense role permission. | Fix: Replace the note's second sentence with: 'For delegated Graph requests, the signed-in user needs a supported Microsoft Entra role such as License Administrator or User Administrator, or a custom role with microsoft.directory/users/assignLicense. Application requests use application permissions; LicenseAssignment.ReadWrite.All is the least privileged.' Keep https://learn.microsoft.com/graph/api/user-assignlicense as the source. | Source: https://learn.microsoft.com/graph/api/user-assignlicense
-- [supported, minor] Governance guidance: Before rollout / licensing: The notice recommends aligning Microsoft 365 Copilot and Teams Premium assignments for intended users, expressed here as an instruction to assign them. | Found: Review Microsoft 365 Copilot and Teams Premium license assignments for the users who will use the feature. | Fix: Replace the first checklist bullet with: 'Review Microsoft 365 Copilot and Teams Premium licence assignments for intended users, as Microsoft's notice recommends. Assign missing licences where appropriate and confirm users also hold Teams Phone (licence assignment row).' This separates Microsoft's recommendation to review from the wiki's advice to assign.
+<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] Cost and licensing; rationale: cost / licensing: Every agent or supervisor needs both Teams Premium and Copilot as separately purchased add-ons. | Found: Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible commercial, US Government, and education subscription plans. | Fix: Replace 'Budget for the two add-on licences per user' with 'Budget for any missing Teams Premium and Microsoft 365 Copilot entitlements per user'. In the cost rationale replace 'needs both add-ons' with 'needs both entitlements'. Do not imply that users already entitled through a suite must buy a separate Copilot add-on. | Source: https://learn.microsoft.com/copilot/plan/copilot-license-options
+- [contradicted, blocker] Risk assessment: Data exposure; Open questions / absence: Microsoft has not said whether the general Copilot auditing rules cover Queues mobile Copilot interactions. | Found: The system automatically generates audit logs when a user interacts with Copilot, Cowork, or an AI application. | Fix: Replace the auditing part of the uncertainty statement with 'The general Copilot audit rules cover these interactions when auditing is enabled.' Remove the question of whether general auditing applies from Open questions; a narrower question about the feature's specific audit identifiers may remain. | Source: https://learn.microsoft.com/purview/audit-copilot
+- [contradicted, blocker] Risk assessment: Data exposure; Open questions / absence: Microsoft has not said whether the general Microsoft 365 Copilot retention rules cover Queues mobile Copilot prompts and responses. | Found: Retention policies for AI apps include user prompts and responses for Microsoft 365 Copilot and Copilot Studio | Fix: Replace the retention part of the uncertainty statement with 'Microsoft 365 Copilot retention policies cover its prompts and responses, including this experience.' Remove the question of whether general retention applies from Open questions. | Source: https://learn.microsoft.com/purview/retention-policies-copilot
+- [contradicted, blocker] Risk assessment: Data exposure / consistency: Anyone who can already open a recording can query it with Copilot on mobile. | Found: Anyone who can already open a recording there can now query it on mobile ... Users need a Teams Premium licence to use the Queues app and a Microsoft 365 Copilot licence to use Copilot. | Fix: Replace 'Anyone who can already open a recording there can now query it on mobile' with 'Users with the required Copilot licence who can already open a recording there can query it on mobile as rollout reaches them'.
 -->

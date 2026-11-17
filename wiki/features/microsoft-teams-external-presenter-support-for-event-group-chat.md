@@ -46,6 +46,9 @@ sources:
   - title: "Set-CsTenantFederationConfiguration"
     url: "https://learn.microsoft.com/powershell/module/microsoftteams/set-cstenantfederationconfiguration"
     kind: "learn"
+  - title: "Learn about retention for Microsoft Teams"
+    url: "https://learn.microsoft.com/purview/retention-policies-teams"
+    kind: "learn"
 videos: []
 related: []
 controls:
@@ -64,18 +67,18 @@ controls:
     scope: "user"
     ui:
       surface: "Teams admin center"
-      path: "Users > External access > Policies"
+      path: "Users > External access > Policies > policy"
       docs: "https://learn.microsoft.com/microsoftteams/manage-external-access"
     api:
       kind: "powershell"
       call: "Set-CsExternalAccessPolicy -EnableFederationAccess $true"
       docs: "https://learn.microsoft.com/microsoftteams/manage-external-access"
-    note: "Existing policy. Learn says organisation settings can override it. Microsoft has not confirmed it applies to this feature."
+    note: "Existing policy; the default policy is Org-wide default settings. Learn says organisation settings can override it. Microsoft has not confirmed it applies to this feature."
   - governs: "Whether external presenters must verify their identity before joining an event"
     scope: "user"
     ui:
       surface: "Teams admin center"
-      path: "Meetings > Events policies"
+      path: "Meetings > Events policies > policy > Verify external presenters before joining an event"
       docs: "https://learn.microsoft.com/microsoftteams/events-external-presenter-join-verification"
     api:
       kind: "powershell"
@@ -89,25 +92,30 @@ controls:
     note: "Learn's events planning page lists \"No control\" for admins over event group chat."
 confidence: "medium"
 created: "2026-11-16"
-updated: "2026-11-16"
+updated: "2026-11-17"
 roadmapModified: "2026-10-29T23:01:00"
 changes:
   - date: "2026-11-16"
     note: "First briefing for this item, based on roadmap item 573706 and Message Center post MC1528011 as updated on 29 October 2026."
   - date: "2026-11-16"
     note: "Corrected the two external access PowerShell calls to valid syntax, explained how the notice's External collaboration label relates to Users > External access, and added Learn's statement that admins have no control over event group chat."
-version: 2
+  - date: "2026-11-17"
+    note: "Corrected the audit and retention open question to cite Learn's Teams retention page, completed two admin paths, and noted that a custom external access policy's domain setting takes precedence over organisation settings."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 58 statements confirmed"
+version: 3
 verification:
-  status: "held"
-  date: "2026-11-16"
-  version: 2
+  status: "verified"
+  date: "2026-11-17"
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 56
-  confirmed: 55
+  claims: 58
+  confirmed: 58
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
+  contradicted: 0
+  attempts: 0
+  hash: "e5e98f899abf042712278c65aef3fd1b"
 ---
 
 ## What's changing
@@ -167,7 +175,7 @@ The cost that is known is indirect: administrator time to check external access 
 ### Before rollout
 
 - Check that the organisation setting under Users > External access allows the partner organisations that supply your external presenters, and whether you have restricted it to an allow or block list of domains.
-- Review the external access policy assigned to your event organisers, because Learn says the organisation setting can override it.
+- Review the external access policy assigned to your event organisers as well as the organisation setting: Learn says organisation settings can override policies, and that a custom policy's Allow or block external domains value takes precedence over organisation settings.
 - Decide whether external presenters should be verified before they join, using the events policy setting for join verification.
 - Tell organisers that external presenters may see earlier messages in the event group chat, and agree what is posted there.
 
@@ -190,15 +198,15 @@ The cost that is known is indirect: administrator time to check external access 
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Which external organisations your users can chat and meet with</strong><br><small>Tenant</small><br><small class="controls__note">Existing setting. MC1528011 names external user collaboration as a prerequisite and labels it External collaboration; Learn places the External access page inside that section.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Users › External access <a href="https://learn.microsoft.com/microsoftteams/manage-external-access" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTenantFederationConfiguration -AllowFederatedUsers $true</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-cstenantfederationconfiguration" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which users may chat and meet with people outside the organisation</strong><br><small>User</small><br><small class="controls__note">Existing policy. Learn says organisation settings can override it. Microsoft has not confirmed it applies to this feature.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Users › External access › Policies <a href="https://learn.microsoft.com/microsoftteams/manage-external-access" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsExternalAccessPolicy -EnableFederationAccess $true</code> <a href="https://learn.microsoft.com/microsoftteams/manage-external-access" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether external presenters must verify their identity before joining an event</strong><br><small>User</small><br><small class="controls__note">Existing events setting. Microsoft has not confirmed it governs access to the event group chat.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Events policies <a href="https://learn.microsoft.com/microsoftteams/events-external-presenter-join-verification" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsEventsPolicy -Identity &lt;policy name&gt; -ExternalPresenterJoinVerification EOTP</code> <a href="https://learn.microsoft.com/microsoftteams/events-external-presenter-join-verification" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which users may chat and meet with people outside the organisation</strong><br><small>User</small><br><small class="controls__note">Existing policy; the default policy is Org-wide default settings. Learn says organisation settings can override it. Microsoft has not confirmed it applies to this feature.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Users › External access › Policies › policy <a href="https://learn.microsoft.com/microsoftteams/manage-external-access" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsExternalAccessPolicy -EnableFederationAccess $true</code> <a href="https://learn.microsoft.com/microsoftteams/manage-external-access" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether external presenters must verify their identity before joining an event</strong><br><small>User</small><br><small class="controls__note">Existing events setting. Microsoft has not confirmed it governs access to the event group chat.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Events policies › policy › Verify external presenters before joining an event <a href="https://learn.microsoft.com/microsoftteams/events-external-presenter-join-verification" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsEventsPolicy -Identity &lt;policy name&gt; -ExternalPresenterJoinVerification EOTP</code> <a href="https://learn.microsoft.com/microsoftteams/events-external-presenter-join-verification" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Switch for external presenters in event group chat</strong><br><small>Tenant</small><br><small class="controls__note">Learn's events planning page lists &quot;No control&quot; for admins over event group chat.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
 The notice names external user collaboration as the prerequisite and points to Teams admin center > External collaboration. Learn describes External Collaboration as a section in the Teams admin center left rail that contains the existing External access page, so the first two rows use the Users > External access path given on the external access page.
 
-The organisation setting and a user policy must both allow external access, and the organisation setting can override the policy. Both tenants must allow external access per the notice. The PowerShell calls are separate operations: the -AllowedDomains and -BlockedDomains parameters take domain lists and are set in their own commands, as the cmdlet reference describes.
+The organisation setting and a user policy must both allow external access, and the organisation setting can override the policy. A custom policy's Allow or block external domains value takes precedence over the organisation settings. Both tenants must allow external access per the notice. The PowerShell calls are separate operations: the -AllowedDomains and -BlockedDomains parameters take domain lists and are set in their own commands, as the cmdlet reference describes.
 
 Learn's events planning page lists "No control" for admins over event group chat, and also over the green room. The join-verification setting is documented for external presenters joining events; Microsoft has not confirmed that it governs access to the group chat.
 
@@ -207,21 +215,11 @@ Learn's events planning page lists "No control" for admins over event group chat
 - Does a Teams admin setting exist, or will one be added, to stop external presenters joining the event group chat while keeping external access on? Watch Message center and the Teams events Learn pages.
 - Can the thread show history to a presenter who joins late, and what decides that? Watch MC1528011 and the manage chat for Teams events page.
 - Which licence, if any, do external presenters or organisers need for this? Microsoft has not published licensing.
-- How do audit and retention records treat external presenters' messages in this chat, given the tenantId change the notice describes? Learn's event chat storage description excludes the event group chat, so where those messages are held is not stated.
+- What effect does the tenantId correction the notice describes have on audit or retention records for external presenters' messages in this chat? MC1528011 says their messages fall under existing federated-chat handling; Learn's general Teams retention page says an external user from another Microsoft 365 organisation has their messages stored in that user's mailbox in another tenant.
 - Does the join-verification setting for external presenters apply to the group chat, or only to joining the event?
 
 <!-- rationale
 risk: Medium. Federated external presenters will be able to read and post in the event group chat, including earlier messages if the thread shows history, and Learn lists no admin control for that chat itself.
 cost: Low. Neither the roadmap record nor Message Center post MC1528011 names a licence or meter and licensing is not yet published; the only known cost is admin time to check settings and brief organisers.
 impact: Medium. Organisers, co-organisers and presenters in Teams events and structured meetings with the green room enabled will notice; attendees do not use this chat.
--->
-
-<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
-The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [supported, minor] controls[1].ui / admin-path: External access policies are reached through Teams admin center > Users > External access > Policies. | Found: Select the **Policies** tab.
-3. In the list of policies, select the **Org-wide default settings**. | Fix: Include the policy-selection step: Users > External access > Policies > policy. For the default policy, name Org-wide default settings, as the cited article does. | Source: https://learn.microsoft.com/microsoftteams/manage-external-access
-- [supported, minor] controls[2].ui / admin-path: External-presenter join verification is configured under Teams admin center > Meetings > Events policies. | Found: Select an existing policy or create a new one.
-3. In the **Verify external presenters before joining an event** dropdown list, select **Yes verify accounts** or **No verification needed**. | Fix: Complete the path as Meetings > Events policies > policy > Verify external presenters before joining an event, retaining the note that applicability to event group-chat access is unconfirmed. | Source: https://learn.microsoft.com/microsoftteams/events-external-presenter-join-verification
-- [supported, minor] controls[1].note; Governance guidance: Before rollout; Governance controls / applicability: Organisation external-access settings can override user external-access policies. | Found: Your organization's external access settings can override external access policies. | Fix: Clarify the distinction in the cited article: the tenant federation master switch overrides policies, but a custom policy's Allow or block external domains setting takes precedence over organisation domain lists. Ask admins to check the effective assigned policy as well as the tenant setting. | Source: https://learn.microsoft.com/microsoftteams/manage-external-access
-- [contradicted, blocker] Open questions: audit, retention and storage / absence: Where event group-chat messages are held is not stated by Microsoft. | Found: Teams uses an Azure-powered chat service as its primary storage for all messages (chats and channel messages). | Fix: Remove the blanket conclusion 'so where those messages are held is not stated'. Cite https://learn.microsoft.com/purview/retention-policies-teams for general Teams storage: primary Azure-powered chat storage and compliance copies in participant mailboxes; external users from another Microsoft 365 organisation have their copies in their own tenant. MC1528011 explicitly says existing federated-chat handling applies. Keep only the narrower open question about the tenantId correction's specific audit or retention effects; do not apply the attendee-chat 30-day rule to event group chat. | Source: https://learn.microsoft.com/purview/retention-policies-teams
 -->

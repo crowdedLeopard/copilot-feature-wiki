@@ -61,7 +61,7 @@ controls:
       kind: "graph"
       call: "POST /v1.0/roleManagement/directory/roleAssignments"
       docs: "https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments"
-    note: "General control for admin roles; the role list for the insights comes from MC1523077. Privileged Role Administrator is the role the Learn pages name for assigning."
+    note: "General control for admin roles; the role list for the insights comes from MC1523077. Graph: Privileged Role Administrator is the least privileged supported role; a custom role is also supported."
   - governs: "Existing location view for network best practices (not the new insights)"
     scope: "tenant"
     ui:
@@ -72,25 +72,30 @@ controls:
     note: "Separate dashboard that highlights locations not following recommended practices, evaluated over seven days; it does not control the insights."
 confidence: "medium"
 created: "2026-11-16"
-updated: "2026-11-16"
+updated: "2026-11-17"
 roadmapModified: "2026-10-15T22:47:30"
 changes:
   - date: "2026-11-16"
     note: "New briefing: Teams admin center AI insights for meeting quality, rolling out from mid-November 2026 per MC1523077."
   - date: "2026-11-16"
     note: "Corrected the verifier findings: removed claims that thresholds cannot be tuned, that the feature is read-only and that no budget control applies; added the peer-to-peer exception and the Graph reference."
-version: 2
+  - date: "2026-11-17"
+    note: "Corrected the Graph role requirement: Privileged Role Administrator is the least privileged supported role, a custom role is also supported, and RoleManagement.ReadWrite.Directory is required."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 64 statements confirmed"
+version: 3
 verification:
-  status: "held"
-  date: "2026-11-16"
-  version: 2
+  status: "verified"
+  date: "2026-11-17"
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 75
-  confirmed: 74
+  claims: 64
+  confirmed: 64
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
+  contradicted: 0
+  attempts: 0
+  hash: "1a5dc4ae69b0103e192681c6f86fcca8"
 ---
 
 ## What's changing
@@ -166,12 +171,12 @@ No meter, spending cap or budget control is documented for these insights at the
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether the meeting-quality insights are available in the tenant</strong><br><small>Tenant</small><br><small class="controls__note">No switch documented at the time of writing (November 2026); MC1523077 says no configuration is required.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which administrators can view the insights (Microsoft Entra role assignment)</strong><br><small>User</small><br><small class="controls__note">General control for admin roles; the role list for the insights comes from MC1523077. Privileged Role Administrator is the role the Learn pages name for assigning.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Entra ID › Users › select the user › Assigned roles › Add assignments <a href="https://learn.microsoft.com/entra/fundamentals/users-assign-role-azure-portal" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/roleManagement/directory/roleAssignments</code> <a href="https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which administrators can view the insights (Microsoft Entra role assignment)</strong><br><small>User</small><br><small class="controls__note">General control for admin roles; the role list for the insights comes from MC1523077. Graph: Privileged Role Administrator is the least privileged supported role; a custom role is also supported.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Entra ID › Users › select the user › Assigned roles › Add assignments <a href="https://learn.microsoft.com/entra/fundamentals/users-assign-role-azure-portal" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/roleManagement/directory/roleAssignments</code> <a href="https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Existing location view for network best practices (not the new insights)</strong><br><small>Tenant</small><br><small class="controls__note">Separate dashboard that highlights locations not following recommended practices, evaluated over seven days; it does not control the insights.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Best practice configurations <a href="https://learn.microsoft.com/microsoftteams/best-practice-dashboard" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-At the time of writing (November 2026), searches of Microsoft Learn found no tenant switch, policy or PowerShell setting for the insights, which is consistent with the notice saying no configuration is required. The only documented lever is who holds the admin roles, assigned in Microsoft Entra ID; the role-assignment steps are general and not specific to this feature. Role assignment through the Entra admin center and through Graph needs the Privileged Role Administrator role, as the Learn pages state.
+At the time of writing (November 2026), searches of Microsoft Learn found no tenant switch, policy or PowerShell setting for the insights, which is consistent with the notice saying no configuration is required. The only documented lever is who holds the admin roles, assigned in Microsoft Entra ID; the role-assignment steps are general and not specific to this feature. The Entra admin center steps on Learn are written for a signed-in Privileged Role Administrator. For delegated Graph access, Privileged Role Administrator is the least-privileged supported built-in role; a custom role granting the required permissions is also supported. The API requires RoleManagement.ReadWrite.Directory for delegated or application access.
 
 Learn says Teams admin roles can be scoped to selected users or groups with administrative units, and that for the existing troubleshooting experience the assignment determines which users' meetings an administrator can access. It does not say whether the insights follow that scoping. The best practice configurations dashboard is a separate, existing location-based view and does not control the insights.
 
@@ -187,9 +192,4 @@ Learn says Teams admin roles can be scoped to selected users or groups with admi
 risk: Low. Microsoft's notice MC1523077 says the insights analyse historical meeting-quality data and does not say they change how customer data is stored or processed; only admins in listed roles see them.
 cost: Low. No licence or meter is published for the insights, so the only known cost is admin and network-team time; licensing is not yet published.
 impact: Low. Only administrators in the roles listed in MC1523077 see the insights; end users notice only if admins act on them, for example by changing network settings.
--->
-
-<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
-The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [contradicted, blocker] Governance controls; controls[1].note / role: Role assignment through Graph needs the Privileged Role Administrator role. | Found: For delegated access using work or school accounts, the signed-in user must be assigned a supported Microsoft Entra role or a custom role that grants the permissions required for this operation. Privileged Role Administrator is the least privileged role supported for this operation. | Fix: Replace the unconditional Graph requirement with: 'For delegated Graph access, Privileged Role Administrator is the least-privileged supported built-in role; a custom role granting the required permissions is also supported. The API requires RoleManagement.ReadWrite.Directory for delegated or application access.' Keep the Entra UI instruction separate. Use https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments. | Source: https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments
 -->

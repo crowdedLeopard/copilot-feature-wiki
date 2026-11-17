@@ -55,6 +55,12 @@ sources:
   - title: "Get-PlacesSettings"
     url: "https://learn.microsoft.com/microsoft-365/places/powershell/get-placessettings"
     kind: "learn"
+  - title: "Configure buildings and floors"
+    url: "https://learn.microsoft.com/microsoft-365/places/get-started/quick-setup-buildings-floors"
+    kind: "learn"
+  - title: "user: assignLicense"
+    url: "https://learn.microsoft.com/graph/api/user-assignlicense?view=graph-rest-1.0"
+    kind: "learn"
 videos: []
 related: []
 controls:
@@ -66,7 +72,7 @@ controls:
       docs: "https://learn.microsoft.com/microsoft-365/places/what-is-places/buy-set-up-teams-shared-space-licenses-desks"
     api:
       kind: "powershell"
-      call: "Connect-Graph -Scopes User.ReadWrite.All, Organization.Read.All; Set-MgUserLicense -UserId $user -AddLicenses ..."
+      call: "Connect-Graph -Scopes User.ReadWrite.All, Organization.Read.All; Set-MgUserLicense -UserId $user -AddLicenses $addLicenses -RemoveLicenses @()"
       docs: "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/assign-teams-add-on-licenses"
     note: "MCA: buy under Marketplace (billing account administrator or billing profile contributor). EA: Volume Licensing Center. The PowerShell page covers Teams add-on licences generally and does not name Shared Space."
   - governs: "Whether peripheral data is ingested for BYOD rooms and desks"
@@ -109,8 +115,8 @@ controls:
     ui: null
     api:
       kind: "powershell"
-      call: "Get-PlacesSettings -ReadFromPrimary (check); Set-PlacesSettings -EnableBuildings (change)"
-      docs: "https://learn.microsoft.com/microsoft-365/places/powershell/set-placessettings"
+      call: "Get-PlacesSettings -ReadFromPrimary (check); Set-PlacesSettings -EnableBuildings 'Default:true' (change)"
+      docs: "https://learn.microsoft.com/microsoft-365/places/powershell/get-placessettings"
     note: "Set needs the Exchange MailRecipients and Places TenantPlacesManagement roles; Get needs Exchange Admin or Places TenantPlacesManagement. The setting is OFF by default for tenants onboarded before 1 August 2026."
   - governs: "Dedicated switch to turn the new desk analytics on or off"
     scope: "tenant"
@@ -119,25 +125,30 @@ controls:
     note: "No such control is documented at the time of writing (November 2026); the rows above are the nearest existing controls."
 confidence: "medium"
 created: "2026-11-16"
-updated: "2026-11-16"
+updated: "2026-11-17"
 roadmapModified: "2026-10-28T23:04:31"
 changes:
   - date: "2026-11-16"
     note: "First briefing for this roadmap item: rollout now targeted early December 2026 to mid-January 2027 per MC1490906."
   - date: "2026-11-16"
     note: "Corrected licence purchase routes (MCA and EA) and portal role requirements, added the portal's BYOD Rooms and Desk management setting and the enableBuildings check, and added a PowerShell route for licence assignment. Rollout dates are unchanged."
-version: 2
+  - date: "2026-11-17"
+    note: "Corrected two command lines in the controls table: the licence assignment call now includes -RemoveLicenses @(), and the enableBuildings change now uses -EnableBuildings 'Default:true'."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 80 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 3
 verification:
   status: "held"
-  date: "2026-11-16"
-  version: 2
+  date: "2026-11-17"
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 88
-  confirmed: 86
+  claims: 80
+  confirmed: 76
   unconfirmed: 0
-  contradicted: 2
-  attempts: 2
+  contradicted: 4
+  attempts: 3
+  hash: "2850efc0d3848cae3255be2f3ee64774"
 ---
 
 ## What's changing
@@ -221,12 +232,12 @@ Portal roles and licence purchase need the permissions listed in the controls ta
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which desks are licensed to produce analytics</strong><br><small class="controls__note">MCA: buy under Marketplace (billing account administrator or billing profile contributor). EA: Volume Licensing Center. The PowerShell page covers Teams add-on licences generally and does not name Shared Space.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Users › Active users › desk account › Assign licenses <a href="https://learn.microsoft.com/microsoft-365/places/what-is-places/buy-set-up-teams-shared-space-licenses-desks" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Connect-Graph -Scopes User.ReadWrite.All, Organization.Read.All; Set-MgUserLicense -UserId $user -AddLicenses ...</code> <a href="https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/assign-teams-add-on-licenses" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which desks are licensed to produce analytics</strong><br><small class="controls__note">MCA: buy under Marketplace (billing account administrator or billing profile contributor). EA: Volume Licensing Center. The PowerShell page covers Teams add-on licences generally and does not name Shared Space.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Users › Active users › desk account › Assign licenses <a href="https://learn.microsoft.com/microsoft-365/places/what-is-places/buy-set-up-teams-shared-space-licenses-desks" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Connect-Graph -Scopes User.ReadWrite.All, Organization.Read.All; Set-MgUserLicense -UserId $user -AddLicenses $addLicenses -RemoveLicenses @()</code> <a href="https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/assign-teams-add-on-licenses" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether peripheral data is ingested for BYOD rooms and desks</strong><br><small>Tenant</small><br><small class="controls__note">Enabled by default per Learn. Disabling stops BYOD room and desk reports and hides inventory devices. General control: Microsoft has not confirmed it governs the new analytics.</small></td><td data-label="Admin UI"><strong>Teams Rooms Pro Management portal</strong><br>General › BYOD Rooms and Desk management <a href="https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Who can view portal reports and manage inventory</strong><br><small>Tenant</small><br><small class="controls__note">Create or edit roles: Global Administrator, Teams Administrator or Teams Rooms Pro Manager. Assign roles: those, or a custom role with role management permissions. Administrative-unit-scoped Teams admins cannot open the portal.</small></td><td data-label="Admin UI"><strong>Teams Rooms Pro Management portal</strong><br>Settings › Roles <a href="https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Which peripherals are linked to each desk</strong><br><small class="controls__note">Auto-association is for individual desks only; its signal threshold is under Settings &gt; General, minimum two unique signals.</small></td><td data-label="Admin UI"><strong>Teams Rooms Pro Management portal</strong><br>Planning › Inventory › Devices › Import <a href="https://learn.microsoft.com/microsoftteams/rooms/get-peripheral-information" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Get-TeamsBYODSpaceDevices.ps1 (downloaded script) exports a PERIPHERALS file for import</code> <a href="https://learn.microsoft.com/microsoftteams/rooms/get-peripheral-information" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether Teams clients send peripheral and desk usage data</strong><br><small>User</small><br><small class="controls__note">Needs MicrosoftTeams module 6.5.0 or later. General control: Microsoft has not confirmed it governs the new analytics. Off by default in government clouds.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CSTeamsBYODAndDesksPolicy -Identity &lt;name&gt; -DeviceDataCollection Enabled; Grant-CSTeamsBYODAndDesksPolicy -PolicyName &lt;name&gt; -Identity &lt;user&gt;</code> <a href="https://learn.microsoft.com/microsoftteams/rooms/bookable-desks" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether individual desks appear in the portal (enableBuildings)</strong><br><small>Tenant</small><br><small class="controls__note">Set needs the Exchange MailRecipients and Places TenantPlacesManagement roles; Get needs Exchange Admin or Places TenantPlacesManagement. The setting is OFF by default for tenants onboarded before 1 August 2026.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Get-PlacesSettings -ReadFromPrimary (check); Set-PlacesSettings -EnableBuildings (change)</code> <a href="https://learn.microsoft.com/microsoft-365/places/powershell/set-placessettings" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether individual desks appear in the portal (enableBuildings)</strong><br><small>Tenant</small><br><small class="controls__note">Set needs the Exchange MailRecipients and Places TenantPlacesManagement roles; Get needs Exchange Admin or Places TenantPlacesManagement. The setting is OFF by default for tenants onboarded before 1 August 2026.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Get-PlacesSettings -ReadFromPrimary (check); Set-PlacesSettings -EnableBuildings 'Default:true' (change)</code> <a href="https://learn.microsoft.com/microsoft-365/places/powershell/get-placessettings" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Dedicated switch to turn the new desk analytics on or off</strong><br><small>Tenant</small><br><small class="controls__note">No such control is documented at the time of writing (November 2026); the rows above are the nearest existing controls.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -251,10 +262,11 @@ cost: Medium. The roadmap item says each desk needs a Microsoft Teams Shared Spa
 impact: Low. Administrators and portal role holders see the analytics; the roadmap item and Microsoft's notice describe no change for people who book desks.
 -->
 
-<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
-The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [contradicted, blocker] controls[0].api; Governance controls table / command: The printed Connect-Graph and Set-MgUserLicense call assigns a licence with only UserId and AddLicenses supplied to Set-MgUserLicense. | Found: removeLicenses | Guid collection | A collection of skuIds that identify the licenses to remove. Required. Can be an empty collection. | Fix: Append -RemoveLicenses @() to Set-MgUserLicense in the front matter and rendered table. Keep the licence collection as a placeholder or use the cited assignment page's $addLicenses example, which supplies the empty removal collection. The scopes and cmdlet names are documented; the missing required collection is the defect. | Source: https://learn.microsoft.com/graph/api/user-assignlicense?view=graph-rest-1.0
-- [contradicted, blocker] controls[5].api; Governance controls table / command: Get-PlacesSettings -ReadFromPrimary and the printed bare Set-PlacesSettings -EnableBuildings provide the check/change operation, both documented by the linked Set-PlacesSettings page. | Found: You can enable building visibility in PowerShell:
-
-Set-PlacesSettings -EnableBuildings 'Default:true' | Fix: Supply the required scope/value: Set-PlacesSettings -EnableBuildings 'Default:true' to enable buildings, or 'Default:false' to disable them. Keep Get-PlacesSettings -ReadFromPrimary as the check, but link it to https://learn.microsoft.com/microsoft-365/places/powershell/get-placessettings; the current Set-PlacesSettings docs URL contains no Get-PlacesSettings command. Update both front matter and rendered table. | Source: https://learn.microsoft.com/microsoft-365/places/get-started/quick-setup-buildings-floors
+<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[3].api / command: The printed automation field is a runnable invocation of the downloaded peripheral collection script. | Found: Run the script by executing the following command in the PowerShell window: \Get-TeamsBYODSpaceDevices.ps1 | Fix: Set controls[3].api.call to '.\Get-TeamsBYODSpaceDevices.ps1'. Move '(downloaded script) exports a PERIPHERALS file for import' out of the code field into the note, and state there that it runs from the downloaded script's directory. Preserve the existing docs URL. | Source: https://learn.microsoft.com/microsoftteams/rooms/get-peripheral-information
+- [contradicted, blocker] controls[5].api / command: The linked Get-PlacesSettings reference documents both the printed check and the Set-PlacesSettings change call. | Found: Get-PlacesSettings [-ReadFromPrimary] | Fix: Keep only 'Get-PlacesSettings -ReadFromPrimary' in controls[5].api.call with the existing docs URL; this removes the non-code '(check)' and the change command not documented at that URL. The change syntax is verified separately at the already-cited Configure buildings and floors page. | Source: https://learn.microsoft.com/microsoft-365/places/powershell/get-placessettings
+- [contradicted, blocker] controls[1].note; Risk assessment: Change & support; Governance controls; Open questions / applicability: Microsoft has not said whether the portal cloud-data setting governs the new desk analytics. | Found: controls if peripheral data is ingested into the cloud service ... Disabling this setting will stop showing any reports for BYOD rooms or Desks | Fix: Replace this caveat wherever repeated with: 'The portal setting controls peripheral-data ingestion; Microsoft says disabling it stops any BYOD room or desk reports.' Remove the corresponding applicability question. This is a general control whose documented scope includes desk reports, not a dedicated analytics switch. | Source: https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device
+- [contradicted, blocker] controls[4].note; Risk assessment: Change & support; Governance controls / applicability: Microsoft has not said whether DeviceDataCollection governs the new desk analytics. | Found: Disabling this setting for certain users will cause BYOD and desk information to cease flowing to the service. The Teams BYOD and Desk solution requires peripheral data sent from users ... to ... generate reports for BYOD peripherals, BYOD rooms, and Bookable Desks. | Fix: Replace this caveat wherever repeated with: 'DeviceDataCollection controls the peripheral-data feed that Microsoft says is required to generate Bookable Desks reports.' Retain that this is a general collection control, not a dedicated analytics switch. | Source: https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device
 -->

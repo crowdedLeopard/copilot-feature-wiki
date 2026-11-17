@@ -52,6 +52,12 @@ sources:
   - title: "Tutorial: Manage Copilot Credits allocations programmatically"
     url: "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations"
     kind: "learn"
+  - title: "Configure data policies for agents"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention"
+    kind: "learn"
+  - title: "Advanced connector policies"
+    url: "https://learn.microsoft.com/power-platform/admin/advanced-connector-policies"
+    kind: "learn"
 videos: []
 related: ["copilot-credits","work-iq-human-in-the-loop","work-iq-agent-policy-governance"]
 controls:
@@ -59,7 +65,7 @@ controls:
     scope: "environment"
     ui:
       surface: "Power Platform admin center"
-      path: "Licensing > Copilot Studio > Manage Copilot Credits"
+      path: "Licensing > Products > Copilot Studio > Manage Copilot Credits"
       docs: "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness"
     api:
       kind: "power-platform-api"
@@ -78,7 +84,7 @@ controls:
     scope: "agent"
     ui:
       surface: "Copilot Studio (maker)"
-      path: "Workflows > workflow > Build > Agent > Request human assistance when unsure"
+      path: "Workflows > workflow > Build > Add panel > Agent > Request human assistance when unsure"
       docs: "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-node-workflow"
     api: null
     note: "Per-node maker setting. The agent emails the connection owner and waits for a reply. No central enforcement setting is documented as of November 2026."
@@ -89,7 +95,7 @@ controls:
     note: "No setting dedicated to the agent node is documented at the time of writing (November 2026). Data policy and Work IQ MCP policy are described below the table."
 confidence: "medium"
 created: "2026-11-16"
-updated: "2026-11-16"
+updated: "2026-11-17"
 roadmapModified: "2026-10-26T23:15:50"
 changes:
   - date: "2026-11-16"
@@ -98,19 +104,23 @@ changes:
     note: "Corrected after verification: removed three unsupported claims (no admin enforcement, published agents only, human assistance the only brake); narrowed the absence row to a switch dedicated to the node and added data policy and Work IQ MCP policy."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 6 of 78 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-17"
+    note: "Corrected after verification: fixed the credit-allocation and human-assistance paths, removed the exemption uncertainty and the pay-as-you-go checklist item, and replaced the data-policy and Advanced Connector Policy uncertainty with what Learn documents."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 79 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 3
 verification:
   status: "held"
   date: "2026-11-17"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 78
-  confirmed: 72
+  claims: 79
+  confirmed: 76
   unconfirmed: 0
-  contradicted: 6
-  attempts: 2
-  hash: "dbb5b2dccdbec1e71fe8c7b2235682f6"
+  contradicted: 3
+  attempts: 3
+  hash: "bde4461c2c2a8b4e4c3b89f88110543b"
 ---
 
 ## What's changing
@@ -137,7 +147,7 @@ The cost effect arrives without a purchase order. Credits are charged to the env
 **Security & identity**
 
 - Tools can be any Power Platform connector action or an MCP server. Microsoft Learn does not describe, on the agent node page, whose credentials a connector action in the node uses, so confirm this per workflow before relying on it.
-- Learn documents that a data policy or Advanced Connector Policy can block a tool, connector, AI model or skill for agents built with the Microsoft Copilot harness, so that it appears disabled in the tool list. Whether this applies to the tool picker inside an inline agent node is not stated.
+- Data policies govern Power Platform connector tools in Copilot Studio agents, including inline agents; blocking a connector also blocks connected MCP tools that rely on it. Advanced Connector Policies govern supported certified connectors and MCP servers through the hosting environment's policy; custom and HTTP connectors still require classic data policies. Copilot Studio design-time enforcement is rolling out; until available, enforcement is runtime-only. Learn also documents that when a data policy or Advanced Connector Policy blocks a tool, connector, AI model or skill for agents built with the Microsoft Copilot harness, it appears disabled in the tool list.
 - With **Request human assistance when unsure** on, the agent emails the connection owner, which puts an approval step in the hands of whoever owns that connection.
 
 **Autonomy & actions**
@@ -154,7 +164,7 @@ The cost effect arrives without a purchase order. Credits are charged to the env
 
 Copilot Studio bills the agent node's usage in Copilot Credits. Microsoft Learn says that for experiences powered by the Microsoft Copilot harness, credits are charged for LLM tokens, tools (including knowledge and MCPs) and the harness itself, and that billing starts when makers start building, so testing and evaluating consume credits. The Workflows overview adds that workflows consume Copilot Studio capacity for each action they execute.
 
-The Learn cost table for Copilot Studio states that workflows are covered by a Microsoft 365 Copilot licence when run inside a standard harness agent by a licensed user, and billed in all other cases. Whether a workflow that contains an agent node falls under that exemption when run in other ways is not spelled out for the node, and no rate specific to the agent node is published at the time of writing (November 2026).
+The Learn cost table for Copilot Studio states that workflows are covered by a Microsoft 365 Copilot licence when run inside a standard harness agent by a licensed user, and billed in all other cases. No rate specific to the agent node is published at the time of writing (November 2026).
 
 Credits are charged to the environment where the work runs, from prepaid capacity or through the environment's pay-as-you-go billing plan, not to individual makers. The caps are environment-level: allocate credits and turn off **Draw from the available capacity in my tenant** (first control below). That setting does not stop spending through a linked pay-as-you-go billing plan, and Azure budgets send alerts without stopping usage. Changes to shared capacity affect every other Copilot Studio workload in the environment.
 
@@ -170,7 +180,6 @@ The existing-agent picker lists published agents; alternatively, makers can defi
 
 - Decide which environments may host workflows with agent nodes, and allocate a defined number of Copilot Credits to each (Power Platform admin center, owner: Power Platform administrator).
 - Clear **Draw from the available capacity in my tenant** in environments where makers experiment, so a runaway agent node cannot spend unallocated tenant capacity.
-- Check which environments are linked to a pay-as-you-go billing plan, because clearing the tenant-draw setting does not stop that route, and name a cost owner for each plan.
 - Brief makers that tools on an agent node can write to systems, and ask them to turn on **Request human assistance when unsure** for high-stakes decisions.
 
 ### At rollout
@@ -192,9 +201,9 @@ The existing-agent picker lists published agents; alternatively, makers can defi
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Prepaid Copilot Credits per environment and whether it can draw from the tenant pool</strong><br><small>Environment</small><br><small class="controls__note">Needs Power Platform Administrator or Global Administrator, or an equivalent role. Applies to all Copilot Studio workloads in the environment; does not stop pay-as-you-go billing.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Copilot Studio › Manage Copilot Credits <a href="https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform API</strong><br><code>PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01 (entitlement MCSMessages, enforcement rule TenantPool)</code> <a href="https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Prepaid Copilot Credits per environment and whether it can draw from the tenant pool</strong><br><small>Environment</small><br><small class="controls__note">Needs Power Platform Administrator or Global Administrator, or an equivalent role. Applies to all Copilot Studio workloads in the environment; does not stop pay-as-you-go billing.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Products › Copilot Studio › Manage Copilot Credits <a href="https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform API</strong><br><code>PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01 (entitlement MCSMessages, enforcement rule TenantPool)</code> <a href="https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Credit consumption by workflow and environment</strong><br><small>Environment</small><br><small class="controls__note">Review the Agent flow actions used by each workflow. Makers see a Credit usage (last 30 days) column on the Workflows page in Copilot Studio.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Copilot Studio <a href="https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/flows-overview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Escalation to a person when the agent is unsure</strong><br><small>Agent</small><br><small class="controls__note">Per-node maker setting. The agent emails the connection owner and waits for a reply. No central enforcement setting is documented as of November 2026.</small></td><td data-label="Admin UI"><strong>Copilot Studio (maker)</strong><br>Workflows › workflow › Build › Agent › Request human assistance when unsure <a href="https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-node-workflow" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Escalation to a person when the agent is unsure</strong><br><small>Agent</small><br><small class="controls__note">Per-node maker setting. The agent emails the connection owner and waits for a reply. No central enforcement setting is documented as of November 2026.</small></td><td data-label="Admin UI"><strong>Copilot Studio (maker)</strong><br>Workflows › workflow › Build › Add panel › Agent › Request human assistance when unsure <a href="https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-node-workflow" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Switch dedicated to turning the agent node off</strong><br><small>Tenant</small><br><small class="controls__note">No setting dedicated to the agent node is documented at the time of writing (November 2026). Data policy and Work IQ MCP policy are described below the table.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -203,13 +212,13 @@ The environment allocation settings govern every Copilot Studio workload in the 
 
 Microsoft Learn documents monthly limits that an administrator sets on an individual agent under **Licensing** > **Copilot Studio** > **Manage Agents**. At the time of writing (November 2026), the pages read do not say that these limits cap the credits an agent node consumes inside a workflow, so the table does not list them as a control for this feature. The **Request human assistance when unsure** setting is documented by Microsoft as a per-node maker setting; no central enforcement setting is documented as of November 2026.
 
-Two platform controls exist outside the table. Data policies and Advanced Connector Policies can disable tools, connectors, AI models and skills in the pickers of agents built with the Microsoft Copilot harness ([Review agent readiness and status](https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-status)). Work IQ MCP has a tenant-level policy in the Microsoft 365 admin center under **Agents** > **Tools** > **Work IQ MCP** > **Policy**, when available ([Policy governance for Work IQ MCP](https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp)). Learn does not confirm that either governs the agent node's inline tools or its Work IQ option specifically, so the table lists only the absence of a switch dedicated to the node.
+Three platform controls exist outside the table. Data policies govern Power Platform connector tools in Copilot Studio agents, including inline agents; blocking a connector also blocks connected MCP tools that rely on it ([Configure data policies for agents](https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention)). Advanced Connector Policies govern supported certified connectors and MCP servers through the hosting environment's policy; custom and HTTP connectors still require classic data policies. Copilot Studio design-time enforcement is rolling out; until available, enforcement is runtime-only ([Advanced connector policies](https://learn.microsoft.com/power-platform/admin/advanced-connector-policies)). Blocked tools, connectors, AI models and skills appear disabled in the pickers of agents built with the Microsoft Copilot harness ([Review agent readiness and status](https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-status)). Work IQ MCP has a tenant-level policy in the Microsoft 365 admin center under **Agents** > **Tools** > **Work IQ MCP** > **Policy**, when available ([Policy governance for Work IQ MCP](https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp)). Learn does not confirm that Work IQ MCP policy governs the agent node's Work IQ option, so the table lists only the absence of a switch dedicated to the node.
 
 ## Open questions
 
 - Which identity does an agent node use when its attached connector actions or SharePoint knowledge run, the running user, the connection owner or the workflow owner? Watch the agent node page on Microsoft Learn.
-- What does a workflow run with an agent node cost in Copilot Credits, and does the Microsoft 365 Copilot exemption apply to workflows that contain an agent node? Watch the billing pages for the Microsoft Copilot harness.
-- Will Microsoft add a setting dedicated to the agent node, or confirm that data policies, Advanced Connector Policies and Work IQ MCP policy govern the node's tools and Work IQ option? Watch Message center and the Workflows overview.
+- What does a workflow run with an agent node cost in Copilot Credits? Watch the billing pages for the Microsoft Copilot harness.
+- Will Microsoft add a setting dedicated to the agent node, or confirm that Work IQ MCP policy governs the node's Work IQ option? Watch Message center and the Workflows overview.
 - Which parts of the feature are still in preview, given the roadmap lists both General Availability and Preview as release phases? Watch the roadmap item.
 
 <!-- rationale
@@ -221,12 +230,8 @@ impact: Medium. Makers who build workflows notice it first; the people who feed 
 <!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].ui; Governance controls: first table row / admin-path: The credit allocation path is Power Platform admin center > Licensing > Copilot Studio > Manage Copilot Credits. | Found: 2. In the navigation pane, select Licensing. 3. Under Products, select Copilot Studio. 4. Select Manage Copilot Credits. | Fix: Replace controls[0].ui.path and the corresponding rendered path with 'Licensing > Products > Copilot Studio > Manage Copilot Credits'; the source explicitly includes the Products group heading. | Source: https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness
-- [contradicted, blocker] Cost and licensing: exemption uncertainty; Open questions: licensing / licensing: Whether a workflow containing an agent node is exempt when run in other ways is not spelled out. | Found: | Workflows | Yes, when run inside a standard harness agent by a licensed user | Billed in all other cases. | | Fix: Remove 'Whether a workflow that contains an agent node falls under that exemption when run in other ways is not spelled out for the node'. The preceding sentence already states that all other workflow cases are billed. In Open questions, retain only the question about the agent node's credit cost, not uncertainty about exemption for other workflow execution modes. | Source: https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness
-- [contradicted, blocker] controls[2].ui; Governance controls: third table row / admin-path: The human-assistance setting path is Workflows > workflow > Build > Agent > Request human assistance when unsure. | Found: Select the Agent icon on the Add panel. The configuration panel opens for the agent node. | Fix: Replace controls[2].ui.path and its rendered counterpart with 'Workflows > workflow > Build > Add panel > Agent > Request human assistance when unsure', retaining the documented Add panel section before its Agent icon. | Source: https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-node-workflow
-- [contradicted, blocker] Risk assessment: Security & identity; Governance controls: inline data-policy caveat; Open questions / absence: Microsoft has not confirmed that data policies govern the inline node's connector tools. | Found: Policies with a tenant scope apply to all agents in all environments across the tenant. | Fix: Replace the data-policy part of the inline-applicability caveat with: 'Data policies govern Power Platform connector tools in Copilot Studio agents, including inline agents; blocking a connector also blocks connected MCP tools that rely on it.' Cite https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention. Remove the corresponding data-policy uncertainty from Open questions; retain the narrower Work IQ-option question. | Source: https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention
-- [contradicted, blocker] Risk assessment: Security & identity; Governance controls: inline ACP caveat; Open questions / absence: Whether Advanced Connector Policies govern connector tools inside the inline node is not stated. | Found: At runtime, when a connector operation is invoked, it queries the effective policy for the current hosting environment. | Fix: Replace the ACP part of the inline-applicability caveat with: 'Advanced Connector Policies govern supported certified connectors and MCP servers through the hosting environment's policy; custom and HTTP connectors still require classic data policies. Copilot Studio design-time enforcement is rolling out.' Cite https://learn.microsoft.com/power-platform/admin/advanced-connector-policies and remove the corresponding ACP-applicability uncertainty from Open questions. | Source: https://learn.microsoft.com/power-platform/admin/advanced-connector-policies
+- [contradicted, blocker] controls[0].api; Governance controls table / command: The printed PUT URL with parenthetical entitlement and enforcement-rule names is a sufficient call to configure allocation and tenant-pool draw. | Found: scope = @{ environmentId = $environmentId } entitlementId = "MCSMessages" allocation = @{ quantity = 5000 } @{ ruleType = "TenantPool"; enabled = $false } -Headers $headers -ContentType "application/json" -Body $allocationBody | Fix: Keep PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01, but replace the parenthetical text with the required JSON body: {"scope":{"environmentId":"<environment ID>"},"allocatedEntitlements":[{"entitlementId":"MCSMessages","allocation":{"quantity":5000},"enforcementRules":[{"ruleType":"TenantPool","enabled":false}]}]}. Identify 5000 as an example allocation and require authenticated authorization and Content-Type: application/json, as documented at https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations. | Source: https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations
+- [contradicted, blocker] Governance guidance: At rollout versus Risk assessment: Change & support / consistency: The instruction to evaluate each node is compatible with the page's stated evaluation limitation. | Found: Ask makers to run a test and an evaluation on each node before publishing versus Evaluations are limited to new agents created in workflows | Fix: Replace the checklist item with: 'Ask makers to test each agent node before publishing using the Test tab, and evaluate new inline agents using Evaluate; both can consume credits.' The node documentation explicitly limits evaluations to new agents created in workflows.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Security & identity; Governance controls: platform controls / applicability: Data policies or Advanced Connector Policies can disable tools, connectors, models or skills in the pickers of Microsoft Copilot harness agents. | Found: When a data policy or Advanced Connector Policy blocks a tool, connector, AI model, or skill, that item appears disabled wherever you'd normally select it, such as the tools list, model list, or skills list. | Fix: Qualify the ACP picker statement with: 'The Advanced connector policies documentation says Copilot Studio design-time enforcement is rolling out; until available, enforcement is runtime-only.' Cite https://learn.microsoft.com/power-platform/admin/advanced-connector-policies alongside the existing authoring-status source, which describes disabled picker items. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-status
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist asks readers to check pay-as-you-go billing-plan links, but the controls table has no row for that control. | Found: Checklist: 'Check which environments are linked to a pay-as-you-go billing plan'. The table covers prepaid allocation, consumption reporting, human assistance and a dedicated node switch, but not billing-plan linkage. | Fix: Remove the checklist bullet beginning 'Check which environments are linked to a pay-as-you-go billing plan'; retain the existing explanatory pay-as-you-go caveat in Cost and licensing.
+- [contradicted, minor] Governance guidance: At rollout; Governance controls table / consistency: The checklist's instruction to inventory and review attached connectors, MCP servers and knowledge sources has a corresponding control row. | Found: Ask makers to list, per workflow, the connectors, MCP servers and knowledge sources attached to each agent node, and review any that write data or reach SharePoint. Table rows cover credits, usage, human assistance and a dedicated disable switch. | Fix: Remove that At rollout checklist bullet: the attachment-inventory and review step has no corresponding control row. Keep the existing descriptions of attachments in What's changing and Risk assessment.
 -->

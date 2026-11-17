@@ -3,278 +3,47 @@
   "roadmapId": 577815,
   "title": "Dataverse: build solutions with coding agents using the Dataverse plugin and Work IQ",
   "status": "held",
-  "date": "2026-11-16",
-  "version": 2,
+  "date": "2026-11-17",
+  "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 2,
+  "attempts": 3,
   "verifierVerdict": "hold",
   "notes": [],
   "hold": {
     "reason": "failed",
     "since": "2026-11-16",
     "reasons": [
-      "7 blocking findings (claims 9, 10, 37, 43, 48, 52, 53)"
+      "2 blocking findings (claims 54, 69)"
     ]
   },
   "counts": {
-    "claims": 56,
-    "confirmed": 47,
+    "claims": 73,
+    "confirmed": 70,
     "unconfirmed": 0,
-    "contradicted": 9,
-    "blocker": 7,
+    "contradicted": 3,
+    "blocker": 2,
     "major": 0,
-    "minor": 10
+    "minor": 1
   },
-  "summary": "Hold: the briefing understates published consumption charges and incorrectly treats administrator opt-in as a universal requirement for the coding plugin. It also overlooks the allowed-client configuration API and overstates what the Copilot tenant setting blocks.",
+  "summary": "Hold: the governance notes recommend a server control for directly authenticated tools that it does not govern. The environment participation path also adds a step absent from its cited instructions; the allowed-client REST operation and published billing statements are supported.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing",
-      "type": "behaviour",
-      "claim": "The Dataverse plugin helps coding agents build Dataverse solutions from natural-language requests.",
+      "where": "summary; What's changing; title",
+      "type": "record",
+      "claim": "Microsoft plans natural-language solution building with coding agents and Dataverse skills.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/agents-plugin/",
-      "quote": "The Microsoft Dataverse plugin for AI agents helps you develop and manage Dataverse solutions with an AI coding agent. You describe an outcome in natural language, and the agent selects skills and tools to help you achieve it.",
+      "source": "roadmap record",
+      "quote": "Build Dataverse solutions by using coding agents with natural language prompts.",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
-      "where": "front matter: status",
+      "where": "What's changing: recruiting example",
       "type": "record",
-      "claim": "The roadmap status is In development.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 3,
-      "where": "front matter: releasePhase",
-      "type": "record",
-      "claim": "The record lists General Availability and Preview release phases.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
-      "where": "front matter: products",
-      "type": "record",
-      "claim": "The roadmap products are Microsoft Copilot (Microsoft 365) and Microsoft Dataverse.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\", \"Microsoft Dataverse\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "front matter: clouds; What's changing; Scope",
-      "type": "record",
-      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
-      "where": "front matter: platforms",
-      "type": "record",
-      "claim": "The roadmap platform is Web.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\"Web\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
-      "where": "front matter: targetDate; What's changing",
-      "type": "record",
-      "claim": "The roadmap lists general availability in February CY2027.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"targetDate\": \"February CY2027\"",
-      "severity": "minor",
-      "fix": "In What's changing, write 'The roadmap targets general availability for February CY2027'; retain the in-development status rather than implying committed availability."
-    },
-    {
-      "n": 8,
-      "where": "front matter: previewDate; What's changing",
-      "type": "record",
-      "claim": "The roadmap lists preview from June CY2026.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": \"June CY2026\"",
-      "severity": "minor",
-      "fix": "Replace 'preview from June CY2026' with 'a preview target of June CY2026'; the record supplies a target, not confirmation of rollout."
-    },
-    {
-      "n": 9,
-      "where": "front matter: defaultState",
-      "type": "default",
-      "claim": "The coding-agent capability is admin-opt-in, so nobody can use it until an administrator enables it.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/agents-plugin/security-governance",
-      "quote": "Other tools used by the plugin, such as the Dataverse SDK for Python and Power Platform CLI, authenticate directly and aren't subject to these MCP-specific controls. Their requests still require Dataverse authorization.",
-      "severity": "blocker",
-      "fix": "Set defaultState to user-opt-in for the locally installed coding plugin. Explain existing environment and privilege prerequisites, and limit tenant consent and environment client allowlisting to Dataverse MCP. Separately describe Work IQ's production defaults and exceptions from https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings."
-    },
-    {
-      "n": 10,
-      "where": "front matter: licensing.model; Cost and licensing; Open questions",
-      "type": "licensing",
-      "claim": "The licensing model for the described plugin, MCP and Work IQ workflows is not yet published.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
-      "quote": "You pay for use of the Work IQ API through a usage-based model that uses Copilot Credits.",
-      "severity": "blocker",
-      "fix": "Set licensing.model to mixed. State the applicable Power Apps, Dynamics 365 or Power Platform environment plan from the plugin coding-agents prerequisites, separate coding-agent charges, and Copilot Credit consumption for Dataverse MCP and direct Work IQ API connections. Replace the wholly unanswered licensing question with any specific remaining entitlement uncertainty."
-    },
-    {
-      "n": 11,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "absence",
-      "claim": "No separate price for the Dataverse coding plugin itself is published in its preview documentation.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: '\"Dataverse plugin\" \"charge\" licensing price'; opened agents-plugin/, coding-agents and security-governance. No plugin-specific price found; underlying MCP and Work IQ consumption are separately documented.",
-      "severity": "minor",
-      "fix": "Narrow 'No separate charge is published in the preview documentation' to 'The Dataverse plugin preview pages publish no plugin-specific price as of November 2026; underlying services and coding-agent charges still apply.' Explain the published consumption meters separately."
-    },
-    {
-      "n": 12,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "Learn references Work IQ licensing and the requirements of the connected Copilot or agent experience.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills",
-      "quote": "To use skills through Business Applications in Work IQ, you need access to a supported Copilot experience or connected agent.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The preview plugin has guidance for connecting and authenticating.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/agents-plugin/",
-      "quote": "Set up a workspace and authenticate | dv-connect",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "What's changing; Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "The preview plugin supports querying records.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/agents-plugin/",
-      "quote": "Query and analyze records | dv-query",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "summary; What's changing; Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "The preview plugin supports creating, importing, updating and seeding records.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/agents-plugin/",
-      "quote": "Create, import, update, and seed records | dv-data",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "summary; What's changing; Why it matters; Risk assessment: Autonomy & actions; rationale: risk",
-      "type": "behaviour",
-      "claim": "The preview plugin supports creating and evolving Dataverse tables and relationships.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/agents-plugin/",
-      "quote": "Create and evolve tables, columns, relationships, forms, and views | dv-metadata",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "What's changing; Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "The preview plugin supports packaging and deploying solutions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/agents-plugin/",
-      "quote": "Package and deploy solutions | dv-solution",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "What's changing; Why it matters; Risk assessment: Security & identity; rationale: risk",
-      "type": "behaviour",
-      "claim": "The preview plugin includes security guidance for assigning access and verifying role changes.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/agents-plugin/",
-      "quote": "Assign access and verify role changes | dv-security",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The preview plugin includes guidance for administration tasks.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/agents-plugin/",
-      "quote": "Manage supported environment settings and data lifecycle operations | dv-admin",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "What's changing",
-      "type": "availability",
-      "claim": "Business skills are documented as a preview feature.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills",
-      "quote": "This is a preview feature.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Business skills are stored in Dataverse.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skill-overview",
-      "quote": "Business skills are stored in Dataverse and follow Dataverse security patterns.",
-      "severity": "minor",
-      "fix": "Add Business skills overview to sources for the explicit storage statement."
-    },
-    {
-      "n": 22,
-      "where": "What's changing; Why it matters",
-      "type": "behaviour",
-      "claim": "Business Applications in Work IQ lets Copilot and connected agents reuse business-process instructions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills",
-      "quote": "After you create and activate business skills in your environment, Copilot Chat, Copilot Cowork, and connected agents can discover and use the skills you have access to and follow your organization's processes.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "What's changing: roadmap example",
-      "type": "record",
-      "claim": "The roadmap example says the agent discovers the Dataverse environment and configures MCP.",
+      "claim": "The example agent discovers the Dataverse environment.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Discovers your Dataverse environment and configures MCP.",
@@ -282,10 +51,21 @@
       "fix": null
     },
     {
-      "n": 24,
-      "where": "What's changing: roadmap example",
+      "n": 3,
+      "where": "What's changing: recruiting example; summary",
       "type": "record",
-      "claim": "The roadmap example says the agent creates the solution with the Power Platform CLI.",
+      "claim": "The example agent configures MCP.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Discovers your Dataverse environment and configures MCP.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing: recruiting example",
+      "type": "record",
+      "claim": "The example agent creates a solution using Power Platform CLI.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Creates the solution by using the Microsoft Power Platform CLI.",
@@ -293,10 +73,10 @@
       "fix": null
     },
     {
-      "n": 25,
-      "where": "What's changing: roadmap example",
+      "n": 5,
+      "where": "What's changing: recruiting example; summary",
       "type": "record",
-      "claim": "The roadmap example includes creating tables with lookup columns.",
+      "claim": "The example agent builds tables with lookups and a many-to-many relationship.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Builds five tables with choice columns, lookups, and a many-to-many relationship.",
@@ -304,21 +84,10 @@
       "fix": null
     },
     {
-      "n": 26,
-      "where": "What's changing: roadmap example",
+      "n": 6,
+      "where": "What's changing: recruiting example; Risk assessment: Data exposure",
       "type": "record",
-      "claim": "The roadmap example includes creating a many-to-many relationship.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Builds five tables with choice columns, lookups, and a many-to-many relationship.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
-      "where": "What's changing: roadmap example; Risk assessment: Autonomy & actions",
-      "type": "record",
-      "claim": "The roadmap example says the agent generates and runs a Python script to load sample data.",
+      "claim": "The example agent generates and runs a Python script to bulk-load sample records.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Generates and runs a Python script to bulk-load realistic sample data.",
@@ -326,10 +95,10 @@
       "fix": null
     },
     {
-      "n": 28,
-      "where": "What's changing: roadmap example",
+      "n": 7,
+      "where": "What's changing: recruiting example; Risk assessment: Data exposure",
       "type": "record",
-      "claim": "The roadmap example says the agent queries across tables to answer a business question.",
+      "claim": "The example agent queries across tables to answer a business question.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Queries across tables to answer your business question.",
@@ -337,76 +106,428 @@
       "fix": null
     },
     {
-      "n": 29,
-      "where": "Risk assessment: Data exposure",
+      "n": 8,
+      "where": "What's changing: plugin description",
       "type": "behaviour",
-      "claim": "Dataverse enforces security on every request.",
+      "claim": "The preview Dataverse plugin provides connection, query, data, metadata, solution, security and administration skills.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/developer/data-platform/agents-plugin/",
-      "quote": "Dataverse enforces security on every request.",
+      "quote": "Microsoft Dataverse plugin for AI agents (preview)\nSet up a workspace and authenticate\nQuery and analyze records\nCreate, import, update, and seed records\nPackage and deploy solutions\nAssign access and verify role changes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing: business skills",
+      "type": "behaviour",
+      "claim": "Business skills are a preview capability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skill-overview",
+      "quote": "Business skills overview (preview)\nThis is a preview feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing: business skills",
+      "type": "behaviour",
+      "claim": "Business skills are stored in Dataverse.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skill-overview",
+      "quote": "Business skills are stored in Dataverse and follow Dataverse security patterns.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Why it matters: shared processes",
+      "type": "behaviour",
+      "claim": "Business Applications in Work IQ lets multiple agents discover and follow shared business-process instructions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skill-overview",
+      "quote": "Through Business Applications in Work IQ, Copilot and connected agents can discover and use active business skills they have access to, completing tasks according to your organization's processes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview target is June CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"June CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap general availability target is February CY2027.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"February CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) as its sole cloud.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\n    \"Worldwide (Standard Multi-Tenant)\"\n  ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: platforms",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\n    \"Web\"\n  ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\n    \"General Availability\",\n    \"Preview\"\n  ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Dataverse enforces security on every agent request.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/agents-plugin/security-governance",
+      "quote": "Dataverse enforces table privileges, field-level security, ownership and sharing, and administrator permissions on every request.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Risk assessment: Security & identity; controls[4].note; Governance controls; rationale: risk",
+      "type": "applicability",
+      "claim": "Interactive coding-agent access is limited by the signed-in developer's Dataverse permissions and security roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/agents-plugin/security-governance",
+      "quote": "An agent can't exceed the permissions of the signed-in identity. If that identity lacks a required privilege, the operation fails.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The plugin supports service-principal authentication.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/agents-plugin/security-governance",
+      "quote": "Service-principal authentication is available for unattended scenarios.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Why it matters; Risk assessment: Security & identity; rationale: risk",
+      "type": "behaviour",
+      "claim": "The plugin includes a skill for assigning security roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/agents-plugin/",
+      "quote": "Assign access and verify role changes | dv-security",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The agent confirms the target environment before changes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/agents-plugin/security-governance",
+      "quote": "The agent confirms the environment before changes and previews or requests approval for stateful actions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The agent previews stateful actions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/agents-plugin/security-governance",
+      "quote": "Preview security changes, environment-setting changes, bulk operations, and other stateful actions before execution.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Why it matters; Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "behaviour",
+      "claim": "Coding agents can create and modify Dataverse schema.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/agents-plugin/",
+      "quote": "Create and evolve tables, columns, relationships, forms, and views",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Coding agents can use scripts for schema and bulk-data operations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/agents-plugin/coding-agents",
+      "quote": "Dataverse SDK for Python | Scripted schema operations, bulk data operations, paging, transformations, and analytics",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Coding agents can package Dataverse solutions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/agents-plugin/",
+      "quote": "Package and deploy solutions | dv-solution",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Cost and licensing: Licence; Scope",
+      "type": "licensing",
+      "claim": "Plugin prerequisites specify a Dataverse environment through Power Apps, Dynamics 365 or another applicable Power Platform plan.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/agents-plugin/coding-agents",
+      "quote": "A Dataverse environment available through Power Apps, Dynamics 365, or another applicable Power Platform plan.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "front matter: licensing.notes; Cost and licensing: Licence; rationale: cost",
+      "type": "absence",
+      "claim": "The plugin preview pages publish no plugin-specific price as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Dataverse plugin\" pricing cost price license; \"Dataverse plugin\" coding agents admin disable enable policy pricing license. Opened agents-plugin/, coding-agents and security-governance; no plugin-specific price stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "front matter: licensing.notes; Cost and licensing: Licence",
+      "type": "cost",
+      "claim": "Using the preview does not waive underlying application-service charges.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/agents-plugin/coding-agents",
+      "quote": "For consumption-based services, usage of underlying application services may continue to incur license fees during the preview period.",
       "severity": null,
       "fix": null
     },
     {
       "n": 30,
-      "where": "Risk assessment: Security & identity; controls[4].note; Governance controls; rationale: risk",
-      "type": "role",
-      "claim": "With interactive sign-in, plugin operations cannot exceed the signed-in developer's Dataverse permissions.",
+      "where": "Cost and licensing: Meters; licensing.notes; rationale: cost",
+      "type": "cost",
+      "claim": "The coding agent's own subscription or consumption charges are separate.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/agents-plugin/",
-      "quote": "By using interactive authentication, the agent signs in as you and can't exceed your permissions.",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/understand-costs",
+      "quote": "The coding agent's own subscription or consumption charges are separate.",
       "severity": null,
       "fix": null
     },
     {
       "n": 31,
-      "where": "Risk assessment: Security & identity",
-      "type": "behaviour",
-      "claim": "The plugin also supports service-principal authentication.",
+      "where": "Cost and licensing: Dataverse MCP meter; licensing.notes; rationale: cost",
+      "type": "cost",
+      "claim": "Dataverse MCP search_data uses usage-based Copilot Credit billing attributed to the calling service.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/agents-plugin/security-governance",
-      "quote": "Service-principal authentication is available for unattended scenarios.",
-      "severity": "minor",
-      "fix": "Add the Security and governance page to sources for service-principal authentication and its permission boundary."
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp",
+      "quote": "The search_data tool uses usage-based Copilot Credit billing rather than a fixed charge per tool call. Consumption is attributed to the calling service and calculated according to its applicable usage-based rate card.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 32,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "The agent confirms the target environment before changes.",
+      "where": "Cost and licensing: Dataverse MCP meter; rationale: cost",
+      "type": "cost",
+      "claim": "Other Dataverse MCP tools, including metadata search, use the basic text and generative AI tools Copilot Credit rate per 10 responses.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/agents-plugin/",
-      "quote": "The agent confirms the target environment before making changes.",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp",
+      "quote": "All other tools, including the metadata search tool, follow the text and generative AI tools (basic) Copilot Credit rate per 10 responses.",
       "severity": null,
       "fix": null
     },
     {
       "n": 33,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "Stateful actions are previewed or approved before execution.",
+      "where": "Cost and licensing: Work IQ meter",
+      "type": "cost",
+      "claim": "Direct Work IQ consumption by coding agents or custom integrations is reported under Work IQ API.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/agents-plugin/",
-      "quote": "You preview or approve stateful actions before execution.",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/understand-costs",
+      "quote": "Coding agents or custom integrations that call Work IQ directly: Consumption through that connection appears under Work IQ API.",
       "severity": null,
       "fix": null
     },
     {
       "n": 34,
-      "where": "Scope; rationale: impact",
-      "type": "behaviour",
-      "claim": "Developers and makers can access Dataverse through coding clients including GitHub Copilot CLI.",
+      "where": "Cost and licensing: Work IQ meter; licensing.notes; rationale: cost; front matter: cost",
+      "type": "cost",
+      "claim": "Work IQ API uses usage-based billing in Copilot Credits, supporting the variable cost rating.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp",
-      "quote": "various MCP clients like Copilot Studio agents, Visual Studio (VS) Code GitHub Copilot, GitHub Copilot CLI, Claude desktop, Claude Code, and many others.",
-      "severity": "minor",
-      "fix": "Add Connect to Dataverse with Model Context Protocol to sources for the explicitly named CLI client and the applicable MCP billing."
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
+      "quote": "You pay for use of the Work IQ API through a usage-based model that uses Copilot Credits.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 35,
-      "where": "Scope",
+      "where": "Cost and licensing: Storage",
+      "type": "cost",
+      "claim": "Dataverse database capacity includes table rows, including sample records loaded by an agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/capacity-storage#dataverse-page-in-licenses",
+      "quote": "Dataverse - Database capacity: Tracks structured data stored directly in Dataverse, including table rows, metadata, and relational data",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing: Storage",
+      "type": "cost",
+      "claim": "Work IQ search indexes use extra storage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+      "quote": "Some features use extra storage for search indexes. These features include semantic modeling and access to Power Apps and Dynamics 365 data through Microsoft 365 Copilot Chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing: Not yet published",
       "type": "applicability",
-      "claim": "Business skills require Work IQ to be enabled in the Dataverse environment.",
+      "claim": "Business Applications in Work IQ spending policies are configured for the consuming experience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/understand-costs",
+      "quote": "Configure the policy for the consuming experience rather than looking for a separate business applications spending policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Cost and licensing: Not yet published",
+      "type": "absence",
+      "claim": "Microsoft does not describe a separate Business Applications spending policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/understand-costs",
+      "quote": "For Business Applications in Work IQ, you track cost by the experiences people use rather than by a dedicated business applications category.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Scope: prerequisites",
+      "type": "role",
+      "claim": "The developer or maker needs a user account with access to the Dataverse environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/agents-plugin/coding-agents",
+      "quote": "A user account with access to the environment and the privileges required for the operations you request.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Scope: supported agents",
+      "type": "availability",
+      "claim": "Supported agents include GitHub Copilot, Claude Code, Cursor, OpenAI Codex and ChatGPT, Gemini CLI and Google Antigravity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/agents-plugin/coding-agents",
+      "quote": "A supported agent: GitHub Copilot, Claude Code, Cursor, OpenAI Codex and ChatGPT, Gemini CLI, or Google Antigravity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Scope: installation example",
+      "type": "command",
+      "claim": "GitHub Copilot installs the plugin with /plugin install dataverse@awesome-copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/agents-plugin/coding-agents",
+      "quote": "GitHub Copilot\n/plugin install dataverse@awesome-copilot",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Scope: Dataverse MCP authorization",
+      "type": "role",
+      "claim": "Dataverse MCP access requires tenant administrator consent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/agents-plugin/security-governance",
+      "quote": "A tenant administrator grants consent to the MCP client application.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Scope: Dataverse MCP authorization",
+      "type": "applicability",
+      "claim": "Dataverse MCP access requires per-environment client allowlisting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/agents-plugin/security-governance",
+      "quote": "An environment administrator allows the client application in each target environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Scope: direct tools; Governance controls",
+      "type": "applicability",
+      "claim": "The Dataverse SDK for Python and Power Platform CLI authenticate directly and are outside the MCP-specific controls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/agents-plugin/security-governance",
+      "quote": "Other tools used by the plugin, such as the Dataverse SDK for Python and Power Platform CLI, authenticate directly and aren't subject to these MCP-specific controls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Scope: direct tools",
+      "type": "applicability",
+      "claim": "Directly authenticated plugin-tool requests still require Dataverse authorization.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/agents-plugin/security-governance",
+      "quote": "Their requests still require Dataverse authorization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Scope: business skills prerequisite",
+      "type": "applicability",
+      "claim": "Business skills require Work IQ to be enabled in the environment.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills",
       "quote": "A Dataverse environment with Work IQ enabled by a Power Platform administrator.",
@@ -414,164 +535,241 @@
       "fix": null
     },
     {
-      "n": 36,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "cost",
-      "claim": "Loading sample records consumes Dataverse storage capacity.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/capacity-storage",
-      "quote": "Dataverse - Database capacity: Tracks structured data stored directly in Dataverse, including table rows, metadata, and relational data",
-      "severity": "minor",
-      "fix": "Add Dataverse capacity-based storage details to sources to substantiate the storage consequence of loading sample records."
-    },
-    {
-      "n": 37,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "cost",
-      "claim": "Coding-agent subscriptions or consumption charges are only indirect costs.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/understand-costs",
-      "quote": "Coding agents or custom integrations that call Work IQ directly: Consumption through that connection appears under Work IQ API. The coding agent's own subscription or consumption charges are separate.",
-      "severity": "blocker",
-      "fix": "Describe coding-agent subscription or consumption charges as separate direct charges, not staff-time overhead. Also name direct Work IQ API consumption and Dataverse MCP Copilot Credit billing."
-    },
-    {
-      "n": 38,
-      "where": "controls[0].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Environment Work IQ participation is configured in the Power Platform admin center under Manage, the selected environment, Settings > Product > Features > Work IQ.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-participation#environment-features-for-work-iq",
-      "quote": "Select Manage, and select the environment. Select Settings > Product > Features. Locate Work IQ.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "controls[0].api; Governance controls table",
-      "type": "absence",
-      "claim": "No automation equivalent for the environment Work IQ participation setting is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Work IQ environment participation tenant setting API PowerShell enable disable business applications; \"Work IQ\" \"environment\" \"PowerShell\" enable. Opened manage-participation and default-settings; no matching API or cmdlet found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "controls[1].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "The tenant audience setting is at Microsoft 365 admin center > Copilot > Settings > View all > Business Applications data in Work IQ available to Copilot.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings#cascading-control-settings",
-      "quote": "In the left navigation pane, select Copilot > Settings. In Copilot settings, select View all > Business Applications data in Work IQ available to Copilot.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "controls[1].api; Governance controls table",
-      "type": "absence",
-      "claim": "No automation equivalent for the tenant Copilot business-applications audience setting is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Business Applications data in Work IQ available to Copilot\" \"API\" PowerShell; \"Work IQ\" \"tenant\" \"PowerShell\" \"setting\". Opened default-settings and manage-ai-experience-access; no equivalent call found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "controls[2].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Dataverse MCP configuration is under Power Platform admin center > Manage > Environments > environment > Settings > Product > Features > Dataverse Model Context Protocol.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-disable",
-      "quote": "Select Manage > Environments. Select the Environment Name ... select Settings. Under Settings, select Product > Features. Scroll down to locate Dataverse Model Context Protocol",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "controls[2].api; Governance controls table; Governance controls: 'None of the switches'",
-      "type": "absence",
-      "claim": "No API is documented for configuring allowed Dataverse MCP clients.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/allowedmcpclient",
-      "quote": "Entity set path: [organization URI]/api/data/v9.2/allowedmcpclients ... Operations supported: POST GET PATCH DELETE ... isenabled | Edm.Boolean | Display name: Is Enabled",
-      "severity": "blocker",
-      "fix": "Document the allowed-client REST side: PATCH [organization URI]/api/data/v9.2/allowedmcpclients(<allowedmcpclientid>) with body {\"isenabled\": false} to disable a client, or true to enable it. Cite this Web API reference and the allowedmcpclient table reference. Remove 'None of the switches has a documented API'; keep any server-wide API gap separate."
-    },
-    {
-      "n": 44,
-      "where": "controls[2].note; Governance controls table",
-      "type": "admin-path",
-      "claim": "Allowed MCP client records are available through Advanced Settings.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-disable",
-      "quote": "Select Advanced Settings. The list of available clients is shown. Open the client record you want.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "controls[3].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Work IQ MCP can be blocked at Microsoft 365 admin center > Agents > Tools > Work IQ MCP > Block.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access#work-iq-mcp-server-access-control",
-      "quote": "Select Agents > Tools. Select Work IQ MCP. Review its current availability. To block access to the server, select Block.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "controls[3].api; Governance controls table",
-      "type": "absence",
-      "claim": "No equivalent API for the Work IQ MCP server's Microsoft 365 Block action is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Work IQ MCP server block access API PowerShell admin tools. Opened manage-ai-experience-access; searched results for Agent 365 server management and Work IQ policy. No equivalent Work IQ server Block call found.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 47,
-      "where": "controls[4].ui; controls[4].api; controls[4].note; Governance controls table",
-      "type": "absence",
-      "claim": "There is no separately documented plugin-wide switch deciding who can use the locally installed coding plugin.",
+      "where": "Scope: Work IQ default rollout",
+      "type": "date",
+      "claim": "Microsoft turns on Business Applications in Work IQ for qualifying new public production environments starting September 30, 2026.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Dataverse plugin coding agents security governance admin switch licensing service principal. Opened agents-plugin/, coding-agents and security-governance; documented gates are identity privileges and tool-specific MCP controls, not a plugin-wide switch.",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+      "quote": "Starting September 30, 2026, Microsoft turns on these capabilities by default for all new environments that aren't listed as exceptions in this article.",
       "severity": null,
       "fix": null
     },
     {
       "n": 48,
-      "where": "Governance controls: paragraph after table",
-      "type": "applicability",
-      "claim": "Turning off the Microsoft 365 tenant setting overrides every environment's features.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access",
-      "quote": "This control applies to the entire Work IQ MCP server, separate from Copilot audience settings or App Access. ... Work IQ participation settings serve a different purpose and don't prevent agentic access.",
-      "severity": "blocker",
-      "fix": "Limit the cascade statement to the documented Microsoft 365 Copilot Chat/Dataverse data-sharing connection. Explicitly say it is not a universal block on agentic environment access, the separate Work IQ MCP server, or directly authenticated plugin tools; use the corresponding server, App Access and identity controls."
+      "where": "Scope: Work IQ default rollout",
+      "type": "date",
+      "claim": "The default Work IQ rollout for qualifying existing public production environments starts in November 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+      "quote": "Starting in November 2026, Microsoft turns on Business Applications in Work IQ for existing environments that aren't listed as exceptions.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 49,
-      "where": "Governance controls: App Access Control path",
-      "type": "admin-path",
-      "claim": "App Access Control is under Power Platform admin center > Security > Identity & access.",
+      "where": "Scope: Work IQ rollout exceptions",
+      "type": "availability",
+      "claim": "EU and EFTA environments are exceptions to the Work IQ default during public preview.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access",
-      "quote": "Sign in to the Power Platform admin center. Select Security > Identity & access. Select App Access Control.",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+      "quote": "Microsoft plans to enable environments provisioned in the European Union (EU) and European Free Trade Association (EFTA) environments when the feature becomes generally available.",
       "severity": null,
       "fix": null
     },
     {
       "n": 50,
-      "where": "Governance controls: App Access Control applicability",
+      "where": "Scope: Work IQ rollout exceptions",
+      "type": "availability",
+      "claim": "Government-related environments are exceptions to the Work IQ default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+      "quote": "Government-related environments: This exception applies to environments provisioned by customers with current or previous government cloud deployments that are likely to depend on FedRAMP security controls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Scope: Work IQ rollout exceptions",
+      "type": "availability",
+      "claim": "Trial, sandbox and developer environments are exceptions to the Work IQ default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+      "quote": "Nonproduction environments: This exception applies to trial, sandbox, and developer environments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "front matter: defaultState; Scope: optional plugin",
+      "type": "default",
+      "claim": "The coding-agent plugin is user-opt-in, distinct from the automatic Business Applications in Work IQ rollout.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/agents-plugin/coding-agents",
+      "quote": "Install the plugin for your coding agent.\nAfter installation, ask your coding agent:\nConnect to my Dataverse environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is mixed: prerequisite Power Platform access and separately metered service consumption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/agents-plugin/coding-agents",
+      "quote": "A Dataverse environment available through Power Apps, Dynamics 365, or another applicable Power Platform plan.\nFor consumption-based services, usage of underlying application services may continue to incur license fees during the preview period.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "The cited Work IQ participation instructions give Manage > Environments > environment > Settings > Product > Features > Work IQ.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-participation#environment-features-for-work-iq",
+      "quote": "Select Manage, and select the environment.\nSelect Settings > Product > Features.\nLocate Work IQ.",
+      "severity": "blocker",
+      "fix": "Replace the path in controls[0].ui and its rendered row with 'Manage > environment > Settings > Product > Features > Work IQ' in the Power Platform admin center. The cited participation instructions do not include an 'Environments' step."
+    },
+    {
+      "n": 55,
+      "where": "controls[0].api",
+      "type": "absence",
+      "claim": "No automation equivalent is documented for environment Work IQ participation.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Business Applications Work IQ environment setting API PowerShell Power Platform API pac admin enable disable; Work IQ environment organization Web API enable disable. Read participation/default-settings pages and pac admin search excerpt; no matching operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "The tenant control is in Microsoft 365 admin center > Copilot > Settings > View all > Business Applications data in Work IQ available to Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings#cascading-control-settings",
+      "quote": "In the left navigation pane, select Copilot > Settings.\nIn Copilot settings, select View all > Business Applications data in Work IQ available to Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[1].api",
+      "type": "absence",
+      "claim": "No automation equivalent is documented for the Business Applications data in Work IQ available to Copilot tenant setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Business Applications data in Work IQ available to Copilot\" Microsoft Graph PowerShell API. Read default-settings and manage-ai-experience-access; search returned no API or cmdlet for this audience setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "The Dataverse MCP section is in Power Platform admin center > Manage > Environments > environment > Settings > Product > Features > Dataverse Model Context Protocol.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-disable",
+      "quote": "Select Manage > Environments.\nSelect the Environment Name ... select Settings. Under Settings, select Product > Features. Scroll down to locate Dataverse Model Context Protocol",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "controls[2].api",
+      "type": "command",
+      "claim": "PATCH [organization URI]/api/data/v9.2/allowedmcpclients(<allowedmcpclientid>) can set isenabled to false or true.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/allowedmcpclient",
+      "quote": "Entity set path: [organization URI]/api/data/v9.2/allowedmcpclients\nPrimary key: allowedmcpclientid\nOperations supported: POSTGETPATCHDELETE\nisenabled | Edm.Boolean | Display name: Is Enabled",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[2].note",
+      "type": "admin-path",
+      "claim": "Allowed MCP client records are listed under Advanced Settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-disable",
+      "quote": "Select Advanced Settings.\nThe list of available clients is shown. Open the client record you want.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "controls[3].ui",
+      "type": "admin-path",
+      "claim": "Work IQ MCP can be blocked in Microsoft 365 admin center > Agents > Tools > Work IQ MCP > Block.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access#work-iq-mcp-server-access-control",
+      "quote": "Select Agents > Tools.\nSelect Work IQ MCP.\nReview its current availability.\nTo block access to the server, select Block.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "controls[3].api",
+      "type": "absence",
+      "claim": "No automation equivalent is documented for the Work IQ MCP server Block control.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ MCP\" \"Block\" Microsoft Graph API PowerShell; site:learn.microsoft.com/graph \"Work IQ\" \"block\" \"tools\". Read manage-ai-experience-access and returned tool/policy reference excerpts; no server Block API documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "controls[4].ui; controls[4].api; controls[4].note",
+      "type": "absence",
+      "claim": "No separate coding-agent Dataverse plugin availability switch is documented on the admin UI or automation surface.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Dataverse plugin\" coding agents admin disable enable policy pricing license; \"Dataverse plugin\" \"separate\" \"switch\" coding agents. Read plugin overview, coding-agents and security-governance; Cowork admin installation results concern a different host.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Governance controls: tenant cascade",
       "type": "applicability",
-      "claim": "App Access can narrow which applications access data in an environment.",
+      "claim": "Turning off the tenant setting prevents Copilot Chat and Dataverse sharing even when an app is configured to share.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+      "quote": "If you turn off this setting, data isn't shared between Microsoft 365 Copilot Chat and Dataverse, even if an app is configured to share data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Governance controls: participation limitations",
+      "type": "applicability",
+      "claim": "Work IQ participation settings are not a universal block on agentic access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access",
+      "quote": "Work IQ participation settings serve a different purpose and don't prevent agentic access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Governance controls: server control",
+      "type": "applicability",
+      "claim": "The Work IQ MCP Block control governs the entire Work IQ MCP server separately from Copilot audience settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access",
+      "quote": "This control applies to the entire Work IQ MCP server, separate from Copilot audience settings or App Access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Governance controls: App Access Control path",
+      "type": "admin-path",
+      "claim": "App Access Control is under Security > Identity & access > App Access Control in the Power Platform admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access",
+      "quote": "Sign in to the Power Platform admin center.\nSelect Security > Identity & access.\nSelect App Access Control.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Governance controls: App Access applicability",
+      "type": "applicability",
+      "claim": "App Access controls which applications can access underlying environment data.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access",
       "quote": "App Access is the mechanism used to choose which applications, including agentic applications such as Copilot Cowork, are allowed to access data in a particular environment.",
@@ -579,81 +777,70 @@
       "fix": null
     },
     {
-      "n": 51,
-      "where": "Governance controls: final sentence",
+      "n": 69,
+      "where": "Governance controls: 'For those, use the server control'",
+      "type": "applicability",
+      "claim": "The Work IQ MCP server control is a governance lever for the plugin's directly authenticated tools.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/agents-plugin/security-governance",
+      "quote": "Other tools used by the plugin, such as the Dataverse SDK for Python and Power Platform CLI, authenticate directly and aren't subject to these MCP-specific controls. Their requests still require Dataverse authorization.",
+      "severity": "blocker",
+      "fix": "Replace 'For those, use the server control, App Access Control (Security > Identity & access > App Access Control in the Power Platform admin center) and the developer's Dataverse security roles.' with 'For directly authenticated plugin tools, Dataverse authorization and the authenticated identity's permissions still apply.' Keep the preceding statement about the separate Work IQ MCP server Block control."
+    },
+    {
+      "n": 70,
+      "where": "Governance controls: allowed-client REST scope",
+      "type": "applicability",
+      "claim": "The allowed-client REST call updates one client record rather than the server-wide setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/allowedmcpclient",
+      "quote": "An MCP client that is allowed to talk to MCP endpoint\nPrimary key: allowedmcpclientid\nisenabled | Edm.Boolean | Display name: Is Enabled",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Governance controls: business skill sharing",
+      "type": "behaviour",
+      "claim": "Business skills support general access, security-role access and direct access sharing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills",
+      "quote": "Skills are user-owned by default. You can provide access to a business skill in three ways:\nGeneral access\nSecurity role access\nDirect access",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Governance controls: role-based business skill sharing",
       "type": "role",
-      "claim": "Business-skill access uses Dataverse security roles including Skill Sharing Role.",
+      "claim": "Role-based skill access requires both Skill Sharing Role and the security role with which the skill is shared.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills",
       "quote": "An administrator must assign users the Skill Sharing Role, either directly or through a team. Users must also have the security role that the skill is shared with.",
-      "severity": "minor",
-      "fix": "Point this sentence to Create and use business skills > Share a business skill, not the Sales agent enablement page, which does not mention Skill Sharing Role. Clarify that role-based sharing requires both Skill Sharing Role and the role receiving the shared skill."
-    },
-    {
-      "n": 52,
-      "where": "rationale: cost",
-      "type": "cost",
-      "claim": "No Dataverse charge is published for the described coding-agent workflow.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp",
-      "quote": "The search_data tool uses usage-based Copilot Credit billing rather than a fixed charge per tool call. ... All other tools, including the metadata search tool, follow the text and generative AI tools (basic) Copilot Credit rate per 10 responses.",
-      "severity": "blocker",
-      "fix": "Replace 'No Dataverse charge is published' with the published Dataverse MCP Copilot Credit treatment. Distinguish the plugin's lack of a separately published price from charges for the tools it orchestrates."
-    },
-    {
-      "n": 53,
-      "where": "front matter: cost; rationale: cost",
-      "type": "consistency",
-      "claim": "The low, indirect-cost-only rating fits the described MCP and Work IQ workflows.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/understand-costs",
-      "quote": "cost: low; rationale: 'Low. No Dataverse charge is published' versus 'Coding agents or custom integrations that call Work IQ directly: Consumption through that connection appears under Work IQ API.'",
-      "severity": "blocker",
-      "fix": "Set cost to variable and name Copilot Credits in the rationale. Explain Dataverse MCP billing, direct Work IQ API consumption, separate coding-agent charges and storage implications; the schema reserves low for indirect costs only."
-    },
-    {
-      "n": 54,
-      "where": "front matter: action",
-      "type": "consistency",
-      "claim": "Prepare is the appropriate action rating for this optional coding-agent capability.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "action: prepare; Scope: 'Developers and makers with Dataverse environments, using coding agents'; Governance guidance: 'Start in developer environments with interactive sign-in.'",
-      "severity": "minor",
-      "fix": "Set action to review for the optional coding plugin: it requires a maker to install and use it. Treat the separate automatic Work IQ environment rollout distinctly rather than implying automatic coding-plugin execution."
-    },
-    {
-      "n": 55,
-      "where": "Governance guidance: After rollout; Governance controls table",
-      "type": "consistency",
-      "claim": "The checklist directs readers to audit business-skill use and ownership, but the controls table has no matching monitoring or ownership-review row.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "After rollout: 'Audit use of business skills and who owns them.' The table contains participation, tenant audience, Dataverse MCP, Work IQ MCP and plugin-user controls, but no skill ownership or activity-review control.",
-      "severity": "minor",
-      "fix": "Add a business-skill access/ownership-review row using the documented Business skills > skill > Share > Manage access workflow. Explain that the Business skills page does not currently show per-skill runtime usage or feedback, and direct usage review to the connected agent's available logs or traces rather than implying a built-in skill-usage report."
-    },
-    {
-      "n": 56,
-      "where": "summary; What's changing",
-      "type": "behaviour",
-      "claim": "The Dataverse plugin orchestrates existing tools including the Dataverse MCP server.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/agents-plugin/",
-      "quote": "It guides the agent's use of the Dataverse MCP server, Dataverse CLI, Python SDK, Power Platform CLI, and Web API.",
       "severity": null,
       "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Governance guidance: After rollout",
+      "type": "consistency",
+      "claim": "The checklist's instruction to audit business-skill use and ownership has a corresponding governance-control row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Audit use of business skills and who owns them.\nThe controls table lists environment participation, tenant Copilot availability, Dataverse MCP, Work IQ MCP, and coding-plugin access; it has no business-skill audit or ownership control.",
+      "severity": "minor",
+      "fix": "Remove the checklist bullet 'Audit use of business skills and who owns them.' It names a control not represented in the table; do not add an unverified control row."
     }
   ],
   "precheck": {
-    "at": "2026-11-16T19:29:44.259Z",
+    "at": "2026-11-17T01:27:10.808Z",
     "summary": {
-      "links": 9,
+      "links": 19,
       "unreachable": 0,
       "uiPaths": 4,
       "uiPathsWithMissingWords": 0,
-      "apiCalls": 0,
-      "apiCallsNotOnPage": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 1,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -668,7 +855,62 @@
         "status": 200
       },
       {
+        "url": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skill-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
         "url": "https://learn.microsoft.com/power-apps/developer/data-platform/agents-plugin/",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/developer/data-platform/agents-plugin/coding-agents",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/developer/data-platform/agents-plugin/security-governance",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/understand-costs",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-disable",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/allowedmcpclient",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/capacity-storage#dataverse-page-in-licenses",
         "ok": true,
         "status": 200
       },
@@ -683,11 +925,6 @@
         "status": 200
       },
       {
-        "url": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-disable",
-        "ok": true,
-        "status": 200
-      },
-      {
         "url": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access#work-iq-mcp-server-access-control",
         "ok": true,
         "status": 200
@@ -698,7 +935,7 @@
         "status": 200
       },
       {
-        "url": "https://learn.microsoft.com/microsoft-sales-copilot/business-skills-dataverse#enable-business-skills-in-dataverse",
+        "url": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills#share-a-business-skill",
         "ok": true,
         "status": 200
       }
@@ -751,6 +988,15 @@
         "missing": []
       },
       {
+        "index": 2,
+        "side": "api",
+        "governs": "Dataverse MCP server and allowed MCP clients",
+        "docs": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/allowedmcpclient",
+        "reachable": true,
+        "token": "PATCH [organization",
+        "found": false
+      },
+      {
         "index": 3,
         "side": "ui",
         "governs": "Work IQ MCP server access in Microsoft 365",
@@ -771,6 +1017,12 @@
     {
       "date": "2026-11-16",
       "status": "needs-correction",
+      "version": 2,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-16",
+      "status": "held",
       "version": 2,
       "model": "gpt-6.1-sol"
     }

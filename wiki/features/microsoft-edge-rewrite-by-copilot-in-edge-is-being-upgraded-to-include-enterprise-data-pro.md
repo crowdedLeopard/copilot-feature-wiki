@@ -40,9 +40,6 @@ sources:
   - title: "Pages where DLP stops the writing features working (Endpoint DLP sensitive service domain groups) (Microsoft Purview portal)"
     url: "https://learn.microsoft.com/purview/endpoint-dlp-create-policy-unauthorized-cloud-apps-services"
     kind: "learn"
-  - title: "Pages where DLP stops the writing features working (Endpoint DLP sensitive service domain groups) (PowerShell)"
-    url: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy"
-    kind: "learn"
 videos: []
 related: ["purview-dlp-block-sensitive-data-in-copilot-web-search"]
 controls:
@@ -76,32 +73,34 @@ controls:
       surface: "Microsoft Purview portal"
       path: "Data loss prevention > Settings > Data Loss Prevention > Endpoint DLP settings > Browser and domain restrictions to sensitive data > Sensitive service domain groups"
       docs: "https://learn.microsoft.com/purview/endpoint-dlp-create-policy-unauthorized-cloud-apps-services"
-    api:
-      kind: "powershell"
-      call: "New-DlpCompliancePolicy -Name <name> -EndpointDlpLocation <locations> (Security & Compliance PowerShell)"
-      docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy"
+    api: null
     note: "General control. The blocking settings are listed for Copilot Chat in the Edge sidepane; Microsoft has not confirmed they cover Writing Assistance."
 confidence: "medium"
 created: "2026-11-16"
-updated: "2026-11-16"
+updated: "2026-11-17"
 roadmapModified: "2026-11-11T00:53:22"
 changes:
   - date: "2026-11-16"
     note: "First briefing for this item; records the March 20, 2026 pause and the Edge policy that governs Rewrite."
   - date: "2026-11-16"
     note: "Added Microsoft's notice MC1146821: default now on, rollout late January 2027, and its InlineComposeEnabled policy name; added a DLP control row and corrected unsupported claims."
-version: 2
+  - date: "2026-11-17"
+    note: "Corrected: removed the New-DlpCompliancePolicy call from the DLP row, replaced the claim that any page not covered by DLP or Edge policy is open to the feature, softened the late January 2027 timing and dropped Intune MAM from the checklist."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 63 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
-  date: "2026-11-16"
-  version: 2
+  status: "verified-with-gaps"
+  date: "2026-11-17"
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 60
-  confirmed: 57
-  unconfirmed: 1
-  contradicted: 2
-  attempts: 2
+  claims: 63
+  confirmed: 63
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "c77bb57c1b99c2e0f0f8549e345d6fb3"
 ---
 
 ## What's changing
@@ -118,7 +117,7 @@ The notice and Microsoft Learn also differ on the policy name. The notice says I
 
 This puts a generative AI writing option in front of Edge for Business users by default, which means text typed into web editing fields can be sent to Microsoft 365 Copilot Chat when a user invokes it. Enterprise data protection is the commitment the roadmap says will cover that use for Microsoft Entra ID users; decide whether you are content to rely on it for the sites your staff type into.
 
-If nobody acts, users will find the option in the right-click menu in late January 2027 with no guidance from you, and any page not covered by a DLP rule or Edge policy is open to it. Decide before then whether to allow it, and brief users and the service desk.
+If nobody acts, Microsoft currently expects eligible users to receive the right-click option during the late January 2027 rollout with no guidance from you, and eligible users can use the writing features in supported web editing fields, subject to feature availability and other applicable policies ([ComposeInlineEnabled](https://learn.microsoft.com/deployedge/microsoft-edge-policies/composeinlineenabled)). Decide before then whether to allow it, and brief users and the service desk.
 
 ## Risk assessment
 
@@ -160,7 +159,7 @@ Rollout: MC1146821 says Worldwide rollout begins and completes in late January 2
 
 - Decide whether to allow Writing Assistance, then plan to set the ComposeInlineEnabled policy (Commercial Writing in Group Policy) to match.
 - Ask your Edge administrator whether InlineComposeEnabled, the name used in MC1146821, appears in your Edge policy templates, and test which policy actually switches the feature off.
-- Review Purview Endpoint DLP and Intune MAM rules that block copy, print, download or upload on sensitive sites, because the notice says Writing Assistance does not work where DLP restricts Copilot access to page content.
+- Review Purview Endpoint DLP rules that block copy, print, download or upload on sensitive sites, because the notice says Writing Assistance does not work where DLP restricts Copilot access to page content.
 - Confirm devices run Edge 115 or later on Windows or macOS.
 
 ### At rollout
@@ -183,7 +182,7 @@ Rollout: MC1146821 says Worldwide rollout begins and completes in late January 2
 <tr><td data-label="Control"><strong>Whether users can use the Commercial Writing features (Rewrite) in Edge</strong><br><small>User</small><br><small class="controls__note">GP name: Commercial Writing. Per profile; Entra accounts only. MC1146821 names InlineComposeEnabled instead; the mapping is unconfirmed.</small></td><td data-label="Admin UI"><strong>Group Policy (Microsoft Edge ADMX)</strong><br>Administrative Templates › Microsoft Edge <a href="https://learn.microsoft.com/deployedge/microsoft-edge-policies/composeinlineenabled" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Registry: SOFTWARE\Policies\Microsoft\Edge, value ComposeInlineEnabled (REG_DWORD; 0x00000000 = disabled); macOS preference key ComposeInlineEnabled</code> <a href="https://learn.microsoft.com/deployedge/microsoft-edge-policies/composeinlineenabled" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>The InlineComposeEnabled policy named in MC1146821</strong><br><small class="controls__note">Named in Microsoft's notice only; no Learn page documents it at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Edge management service setting for AI-generated text and editing</strong><br><small class="controls__note">The page does not name Rewrite, Writing Assistance or either policy. Assigned through a new or existing configuration policy.</small></td><td data-label="Admin UI"><strong>Microsoft Edge management service</strong><br>Copilot › AI-generated text and editing <a href="https://learn.microsoft.com/deployedge/microsoft-edge-management-service-copilot-features" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Pages where DLP stops the writing features working (Endpoint DLP sensitive service domain groups)</strong><br><small>Tenant</small><br><small class="controls__note">General control. The blocking settings are listed for Copilot Chat in the Edge sidepane; Microsoft has not confirmed they cover Writing Assistance.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Settings › Data Loss Prevention › Endpoint DLP settings › Browser and domain restrictions to sensitive data › Sensitive service domain groups <a href="https://learn.microsoft.com/purview/endpoint-dlp-create-policy-unauthorized-cloud-apps-services" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpCompliancePolicy -Name &lt;name&gt; -EndpointDlpLocation &lt;locations&gt; (Security &amp; Compliance PowerShell)</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Pages where DLP stops the writing features working (Endpoint DLP sensitive service domain groups)</strong><br><small>Tenant</small><br><small class="controls__note">General control. The blocking settings are listed for Copilot Chat in the Edge sidepane; Microsoft has not confirmed they cover Writing Assistance.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Settings › Data Loss Prevention › Endpoint DLP settings › Browser and domain restrictions to sensitive data › Sensitive service domain groups <a href="https://learn.microsoft.com/purview/endpoint-dlp-create-policy-unauthorized-cloud-apps-services" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
@@ -191,7 +190,7 @@ The ComposeInlineEnabled page gives three outcomes: enabled, eligible users can 
 
 Microsoft's notice names InlineComposeEnabled, which no Learn page documents at the time of writing (November 2026), and Learn documents ComposeInlineEnabled. The table therefore records both and does not treat them as one setting.
 
-The Edge management service page lists AI-generated text and editing but does not name Rewrite, Writing Assistance or either policy. No API or PowerShell surface for it appears in Microsoft Learn at the time of writing. The DLP row is a general control: the policy page says the features are unavailable where DLP blocks access, but the listed blocking settings are documented for Copilot Chat in the Edge sidepane.
+The Edge management service page lists AI-generated text and editing but does not name Rewrite, Writing Assistance or either policy. No API or PowerShell surface for it appears in Microsoft Learn at the time of writing. The DLP row is a general control: the policy page says the features are unavailable where DLP blocks access, but the listed blocking settings are documented for Copilot Chat in the Edge sidepane. Microsoft Learn documents no PowerShell equivalent for configuring sensitive service domain groups at the time of writing (November 2026).
 
 ## Open questions
 
@@ -206,10 +205,8 @@ cost: Low. The only cost the sources show is admin time to set policy and tell u
 impact: High. Microsoft's notice says Writing Assistance is enabled by default for Edge for Business users, so eligible users will see a new option in the right-click menu on editable text.
 -->
 
-<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
-The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [contradicted, blocker] controls[3].api; Governance controls table / command: New-DlpCompliancePolicy -Name <name> -EndpointDlpLocation <locations> is the automation counterpart for configuring the sensitive service domain groups and restrictions in this row. | Found: Use the New-DlpCompliancePolicy cmdlet to create data loss prevention (DLP) policies in the Microsoft Purview compliance portal. DLP policies contain DLP rules that identify, monitor, and protect sensitive information. | Fix: Set controls[3].api to null: no equivalent automation for sensitive service domain groups was found in searches for 'sensitive service domain groups PowerShell' and 'sensitive service domain Set- DLP PowerShell'. Remove this call from the rendered row. If retained in prose, label it only as creating an Endpoint DLP policy container, not configuring domains or blocking rules; -EndpointDlpLocation selects user accounts and requires Compliance Administrator or Compliance Data Administrator membership. Retain the documented Purview UI procedure for domain-group configuration. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy
-- [unsupported, blocker] Why it matters / availability: Any page not covered by a DLP rule or Edge policy is open to Writing Assistance. | Found: Searched: "Writing Assistance" "Edge" supported text fields availability restrictions; "Writing Assistance" "DLP" policies Edge. Read ComposeInlineEnabled and MC1146821; neither guarantees every otherwise-unblocked page, and the policy reference qualifies use by feature availability. | Fix: Replace 'any page not covered by a DLP rule or Edge policy is open to it' with 'eligible users can use the writing features in supported web editing fields, subject to feature availability and other applicable policies'. Cite https://learn.microsoft.com/deployedge/microsoft-edge-policies/composeinlineenabled. Do not present DLP and Edge policy coverage as an exhaustive list of availability conditions.
-- [supported, minor] Why it matters / date: Users will find the right-click option in late January 2027. | Found: We will begin rolling late January 2027 (previously end of October 2026) and expect to complete rollout by late January 2027 (previously late October). | Fix: Change 'users will find the option in the right-click menu in late January 2027' to 'Microsoft currently expects eligible users to receive the right-click option during the late January 2027 rollout'. Preserve the distinction between an expected rollout and guaranteed availability.
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist asks administrators to review Intune MAM rules, but the controls table contains no Intune MAM row. | Found: Review Purview Endpoint DLP and Intune MAM rules that block copy, print, download or upload on sensitive sites; table: Pages where DLP stops the writing features working (Endpoint DLP sensitive service domain groups). | Fix: Remove 'and Intune MAM' from the actionable Before rollout checklist unless a separately evidenced Intune MAM control row is added. The general discussion can still identify Intune MAM as a documented sidepane control whose exact applicability to Writing Assistance is unconfirmed.
+<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Cost and licensing / licensing: Users licensed for Microsoft 365 Copilot (Premium) can also use WorkIQ grounding when available. | Found: Users licensed for Microsoft 365 Copilot (Premium) can also use WorkIQ grounding when available, subject to content permissions and tenant controls. | Fix: Replace the WorkIQ clause with 'users licensed for Microsoft 365 Copilot (Premium) can also use WorkIQ grounding when available, subject to content permissions and tenant controls.' | Source: https://learn.microsoft.com/deployedge/microsoft-edge-policies/composeinlineenabled
 -->

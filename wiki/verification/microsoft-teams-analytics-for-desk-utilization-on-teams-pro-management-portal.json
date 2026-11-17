@@ -3,47 +3,58 @@
   "roadmapId": 570648,
   "title": "Microsoft Teams: desk utilisation analytics in the Teams Rooms Pro Management portal",
   "status": "held",
-  "date": "2026-11-16",
-  "version": 2,
+  "date": "2026-11-17",
+  "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 2,
+  "attempts": 3,
   "verifierVerdict": "hold",
   "notes": [],
   "hold": {
     "reason": "failed",
     "since": "2026-11-16",
     "reasons": [
-      "2 blocking findings (claims 65, 80)"
+      "4 blocking findings (claims 53, 61, 66, 67)"
     ]
   },
   "counts": {
-    "claims": 88,
-    "confirmed": 86,
+    "claims": 80,
+    "confirmed": 76,
     "unconfirmed": 0,
-    "contradicted": 2,
-    "blocker": 2,
+    "contradicted": 4,
+    "blocker": 4,
     "major": 0,
     "minor": 0
   },
-  "summary": "Hold for corrections to the automation instructions. The licence assignment call omits the required empty removal collection, and the building-enablement call omits the value that enables buildings; its documentation link also does not document the accompanying check command. The rollout dates and published desk licensing figures are supported.",
+  "summary": "Hold for corrections to the automation and governance guidance. The building-setting row links to a reference that documents only the read command, the peripheral-script field includes prose rather than a runnable call, and the briefing understates Microsoft's documented coverage of the controls that stop desk reporting.",
   "claims": [
     {
       "n": 1,
       "where": "summary; What's changing; rationale: risk",
       "type": "record",
-      "claim": "Microsoft plans bookable-desk utilisation analytics for Teams admins in the Teams Pro Management portal, analogous to its meeting-room analytics.",
+      "claim": "Microsoft plans bookable-desk utilization analytics in the Teams Pro Management portal.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Teams admins can access utilization analytics for Teams bookable desks on Teams Pro Management portal, similar to analytics provided for meeting rooms on the portal today.",
+      "quote": "Teams admins can access utilization analytics for Teams bookable desks on Teams Pro Management portal",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The portal already provides meeting-room analytics.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "similar to analytics provided for meeting rooms on the portal today",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
       "where": "summary; What's changing; Why it matters",
       "type": "record",
-      "claim": "A desk needs at least one associated peripheral device for the planned analytics to be enabled.",
+      "claim": "Desk analytics require at least one associated peripheral device.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "For utilization analytics to be enabled, a desk needs to have one or more peripheral device associated",
@@ -51,40 +62,62 @@
       "fix": null
     },
     {
-      "n": 3,
-      "where": "front matter: licensing.notes; What's changing; Cost and licensing; rationale: cost",
+      "n": 4,
+      "where": "licensing.notes; What's changing; Cost and licensing; rationale: cost",
       "type": "record",
-      "claim": "The planned analytics require a Teams Shared Space or Teams Shared Space - Single Space licence on the desk.",
+      "claim": "Analytics require the desk to have a Teams Shared Space or Teams Shared Space - Single Space license.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "the desk needs to be licensed with Teams Shared Space license or Teams Shared Space - Single Space license.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
-      "where": "front matter: defaultState; summary; Open questions",
-      "type": "default",
-      "claim": "Microsoft has not stated the arrival default for the new analytics, so defaultState is unknown.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 570648 desk utilization analytics default enabled switch disable licensing meter Teams Pro Management; \"desk utilization\" \"analytics\" \"default\" \"Teams\". Read roadmap, MC1490906, Bookable Desks, BYOD Rooms and Shared Space licensing; none states the new release's default.",
+      "quote": "the desk needs to be licensed with Teams Shared Space license or Teams Shared Space - Single Space license",
       "severity": null,
       "fix": null
     },
     {
       "n": 5,
-      "where": "front matter: licensing.model; cost; rationale: cost",
-      "type": "licensing",
-      "claim": "The add-on licensing model and medium cost rating describe the paid desk licensing requirement.",
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1490906 names utilization, reservations, occupancy and peak usage patterns as insights.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/places/what-is-places/buy-set-up-teams-shared-space-licenses-desks",
-      "quote": "You purchase one paid Microsoft Teams Shared Space (MTSS) license, and that purchase entitles you to three Microsoft Teams Shared Space Single Space (MTSSS) licenses priced at zero.",
+      "source": "Message Center post MC1490906",
+      "quote": "with insights into desk utilization, reservations, occupancy, and peak usage patterns",
       "severity": null,
       "fix": null
     },
     {
       "n": 6,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1490906 names location and desk mode as desk-specific filters.",
+      "status": "supported",
+      "source": "Message Center post MC1490906",
+      "quote": "Desk-specific filters, including location and desk mode",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice's action section requires associated peripherals and a qualifying desk license, with no other action listed.",
+      "status": "supported",
+      "source": "Message Center post MC1490906",
+      "quote": "To enable utilization analytics, a desk must have one or more associated peripheral devices and be licensed with a Microsoft Teams Shared Space or Microsoft Teams Shared Space - Single Space license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The supplied notice sets no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1490906",
+      "quote": "Act by: none",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
       "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap status is In development.",
@@ -95,10 +128,10 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 10,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
-      "claim": "The roadmap target is December CY2026, presented as a target rather than a commitment.",
+      "claim": "The roadmap target is December CY2026.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"targetDate\": \"December CY2026\"",
@@ -106,40 +139,51 @@
       "fix": null
     },
     {
-      "n": 8,
+      "n": 11,
       "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap release phase is General Availability.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"releasePhase\": [\n    \"General Availability\"\n  ]",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
       "severity": null,
       "fix": null
     },
     {
-      "n": 9,
+      "n": 12,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"clouds\": [\n    \"Worldwide (Standard Multi-Tenant)\"\n  ]",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
       "severity": null,
       "fix": null
     },
     {
-      "n": 10,
+      "n": 13,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap platform is Web.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"platforms\": [\n    \"Web\"\n  ]",
+      "quote": "\"platforms\": [\"Web\"]",
       "severity": null,
       "fix": null
     },
     {
-      "n": 11,
+      "n": 14,
+      "where": "front matter: products; Scope",
+      "type": "record",
+      "claim": "The roadmap product is Microsoft Teams.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Teams\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
       "where": "front matter: previewDate",
       "type": "record",
       "claim": "The roadmap publishes no preview date.",
@@ -150,95 +194,7 @@
       "fix": null
     },
     {
-      "n": 12,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "MC1490906 describes desk utilisation insights.",
-      "status": "supported",
-      "source": "Message Center post MC1490906",
-      "quote": "with insights into desk utilization, reservations, occupancy, and peak usage patterns.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "MC1490906 describes reservation insights.",
-      "status": "supported",
-      "source": "Message Center post MC1490906",
-      "quote": "with insights into desk utilization, reservations, occupancy, and peak usage patterns.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "MC1490906 describes occupancy insights.",
-      "status": "supported",
-      "source": "Message Center post MC1490906",
-      "quote": "with insights into desk utilization, reservations, occupancy, and peak usage patterns.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "MC1490906 describes peak usage patterns.",
-      "status": "supported",
-      "source": "Message Center post MC1490906",
-      "quote": "with insights into desk utilization, reservations, occupancy, and peak usage patterns.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 16,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "MC1490906 names location as a desk-specific filter.",
-      "status": "supported",
-      "source": "Message Center post MC1490906",
-      "quote": "Desk-specific filters, including location and desk mode, will help admins analyze usage across their workplace",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "MC1490906 names desk mode as a desk-specific filter.",
-      "status": "supported",
-      "source": "Message Center post MC1490906",
-      "quote": "Desk-specific filters, including location and desk mode, will help admins analyze usage across their workplace",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The notice's action section names the peripheral association and desk licence requirements, and no additional action.",
-      "status": "supported",
-      "source": "Message Center post MC1490906",
-      "quote": "To enable utilization analytics, a desk must have one or more associated peripheral devices and be licensed with a Microsoft Teams Shared Space or Microsoft Teams Shared Space - Single Space license.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "MC1490906 sets no act-by date.",
-      "status": "supported",
-      "source": "Message Center post MC1490906",
-      "quote": "Act by: none",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
       "where": "What's changing",
       "type": "record",
       "claim": "MC1490906 was updated on 28 October 2026.",
@@ -249,10 +205,10 @@
       "fix": null
     },
     {
-      "n": 21,
-      "where": "What's changing; Scope; changes",
+      "n": 17,
+      "where": "What's changing; Scope; Why it matters; changes",
       "type": "record",
-      "claim": "The notice targets rollout to begin in early December 2026, previously early November.",
+      "claim": "Rollout is scheduled to begin in early December 2026, previously early November.",
       "status": "supported",
       "source": "Message Center post MC1490906",
       "quote": "We will begin rolling out on early December 2026 (previously early November)",
@@ -260,21 +216,21 @@
       "fix": null
     },
     {
-      "n": 22,
-      "where": "What's changing; Scope; changes",
+      "n": 18,
+      "where": "What's changing; Scope; Why it matters; changes",
       "type": "record",
-      "claim": "The notice expects completion by mid-January 2027, previously mid-December 2026.",
+      "claim": "Rollout is expected to complete by mid-January 2027, previously mid-December 2026.",
       "status": "supported",
       "source": "Message Center post MC1490906",
-      "quote": "expect to complete by mid-January 2027 (previously mid-December 2026).",
+      "quote": "expect to complete by mid-January 2027 (previously mid-December 2026)",
       "severity": null,
       "fix": null
     },
     {
-      "n": 23,
-      "where": "title; What's changing; controls",
+      "n": 19,
+      "where": "title; What's changing",
       "type": "behaviour",
-      "claim": "Microsoft Learn calls the surface the Teams Rooms Pro Management portal.",
+      "claim": "Microsoft Learn calls the portal the Teams Rooms Pro Management portal.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/bookable-desks",
       "quote": "Desk usage reports are located in the Teams Rooms Pro Management portal",
@@ -282,54 +238,43 @@
       "fix": null
     },
     {
-      "n": 24,
+      "n": 20,
       "where": "What's changing; Governance guidance: After rollout",
       "type": "behaviour",
       "claim": "Learn already documents a Desks usage report in the portal.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/bookable-desks",
-      "quote": "Desk usage reports are located in the Teams Rooms Pro Management portal > Analytics & Reports > Reports > Desks usage.",
+      "quote": "Teams Rooms Pro Management portal > Analytics & Reports > Reports > Desks usage",
       "severity": null,
       "fix": null
     },
     {
-      "n": 25,
+      "n": 21,
       "where": "What's changing; Cost and licensing; Open questions",
       "type": "availability",
-      "claim": "Learn describes the existing desk usage reports as currently in preview.",
+      "claim": "The documented desk usage reports are currently in preview.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/bookable-desks",
-      "quote": "These reports are currently in preview and don't require a license to access.",
+      "quote": "These reports are currently in preview",
       "severity": null,
       "fix": null
     },
     {
-      "n": 26,
-      "where": "Cost and licensing; Open questions",
-      "type": "licensing",
-      "claim": "Learn says accessing those preview reports does not require a licence.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/bookable-desks",
-      "quote": "These reports are currently in preview and don't require a license to access.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
-      "where": "What's changing; Cost and licensing; Open questions",
+      "n": 22,
+      "where": "What's changing; Open questions",
       "type": "absence",
-      "claim": "Microsoft has not explained how the planned analytics relate to the documented preview report or reconciled the licensing statements.",
+      "claim": "Microsoft has not explicitly explained how the planned release relates to the existing preview Desks usage report.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: 570648 desk utilization analytics default enabled switch disable licensing meter Teams Pro Management. Read roadmap, MC1490906, Bookable Desks and both Shared Space licensing pages; none explicitly reconciles the preview report with this roadmap release.",
+      "quote": "Searched: Teams desk utilization analytics new preview report roadmap 570648 December 2026. Read bookable-desks, teams-shared-device-license, the roadmap and MC1490906; none explicitly maps this release to the preview report.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 28,
+      "n": 23,
       "where": "What's changing; Governance guidance: After rollout",
       "type": "behaviour",
-      "claim": "The documented desk usage metrics measure only 8:00 AM to 5:00 PM on weekdays.",
+      "claim": "The documented report metrics measure only 8:00 AM to 5:00 PM on weekdays.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/bookable-desks",
       "quote": "Metrics only measure usage between 8:00 AM to 5:00 PM on weekdays.",
@@ -337,230 +282,43 @@
       "fix": null
     },
     {
-      "n": 29,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "The documented reports use desk reservation information.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/bookable-desks",
-      "quote": "Utilization | The percentage of time that the individual desk or desk pool was reserved by users in the specified date range.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
-      "where": "Risk assessment: Data exposure; rationale: risk",
-      "type": "behaviour",
-      "claim": "Bookable-desk discovery and usage reporting use peripheral signals from users' Teams desktop clients.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/bookable-desks",
-      "quote": "Bookable desks in Microsoft Teams use peripheral data crowdsourced from the Teams desktop client running on the users' laptops to discover peripherals. This data also helps you understand when those associated desk pools or individual desks are used.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "The bookable desks documentation says no personally identifiable data is collected.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/bookable-desks",
-      "quote": "No personally identifiable data is collected.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
-      "where": "Risk assessment: Data exposure; Security & identity",
-      "type": "role",
-      "claim": "Portal access is role-based and report permissions determine whether a role holder can view reports.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac",
-      "quote": "Each role has a set of permissions that determines what users with that role can access and change within your organization.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
-      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
-      "type": "role",
-      "claim": "Site Lead has access to reports.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac",
-      "quote": "Site Lead: Organizes rooms, has access to reports and can manage tickets.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
-      "where": "Risk assessment: Security & identity",
-      "type": "role",
-      "claim": "The Microsoft Entra Global Administrator role grants portal access.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac",
-      "quote": "Global Administrator: Has full access to the Microsoft Teams Rooms Pro Management portal.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
-      "where": "Risk assessment: Security & identity",
-      "type": "role",
-      "claim": "The Microsoft Entra Teams Administrator role is listed with portal access.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac",
-      "quote": "You can assign the below MIcrosoft Entra built-in roles to groups or users to provide access to Microsoft Teams Rooms Pro management portal",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "Risk assessment: Security & identity",
-      "type": "role",
-      "claim": "The Microsoft Entra Teams Devices Administrator role is listed with portal access.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac",
-      "quote": "| Features | Permissions | Global Administrator | Teams Administrator | Teams Devices Administrator | Global Reader |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "Risk assessment: Security & identity",
-      "type": "role",
-      "claim": "Global Reader has read-only portal access.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac",
-      "quote": "Global Reader: Read-only access to the Microsoft Teams Rooms Pro Management portal",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "controls[2].note; Risk assessment: Security & identity",
-      "type": "role",
-      "claim": "Teams Administrator and Teams Devices Administrator assignments scoped to an administrative unit cannot access the portal.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac",
-      "quote": "Teams Administrator or Teams Devices Administrator assigned to an Administrative Unit (AU), can't access the Teams Rooms Pro Management portal, as AUs aren't currently supported.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "Risk assessment: Autonomy & actions; rationale: risk; rationale: impact",
+      "n": 24,
+      "where": "front matter: defaultState; summary; Open questions",
       "type": "absence",
-      "claim": "No source documents the analytics release itself releasing, reassigning or changing desks or changing the booking user's experience.",
+      "claim": "The default state of the planned analytics release is not stated.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Teams Pro Management\" \"analytics\" \"desk\" \"release\" \"reassign\". Read roadmap, MC1490906, Bookable Desks and Shared Space licensing; reporting is described, but no desk-changing action is attributed to the analytics release.",
+      "quote": "Searched: Teams desk analytics default 570648; Teams desk utilization analytics disable. Read the roadmap, MC1490906, bookable-desks and bring-your-own-device. The sources give prerequisites and existing collection defaults, not this release's arrival default.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 40,
-      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
-      "type": "behaviour",
-      "claim": "A peripheral is unsupported when its serial number cannot be collected, is not unique or contains special characters.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/bookable-desks",
-      "quote": "A peripheral device is not supported if its serial number cannot be collected, is not unique, or contains special characters.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "Risk assessment: Change & support; Scope; Governance guidance: Before rollout; controls[5]",
-      "type": "applicability",
-      "claim": "Individual desks do not appear in the portal unless enableBuildings is enabled for the tenant.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/bookable-desks",
-      "quote": "also make sure that enableBuildings is enabled for your tenant. If it isn't enabled, the desks don't show in the Pro Management portal.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "controls[1].note; Risk assessment: Change & support",
-      "type": "behaviour",
-      "claim": "Disabling BYOD Rooms and Desk management stops peripheral ingestion and reports and hides inventory devices.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device",
-      "quote": "Disabling this setting will stop showing any reports for BYOD rooms or Desks, and also remove the display of any devices in the Inventory section, though those devices will continue to exist in the database.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "Risk assessment: Change & support; Governance guidance: At rollout; controls[4]",
-      "type": "behaviour",
-      "claim": "Disabling DeviceDataCollection for users stops their BYOD and desk information flowing to the service.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device",
-      "quote": "Disabling this setting for certain users will cause BYOD and desk information to cease flowing to the service.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "Cost and licensing; Governance guidance: At rollout",
+      "n": 25,
+      "where": "front matter: licensing.model",
       "type": "licensing",
-      "claim": "The Places licensing page says each desk needs exactly one licence.",
+      "claim": "The licensing model is add-on.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/places/what-is-places/buy-set-up-teams-shared-space-licenses-desks",
-      "quote": "Both plans are assigned the same way, and each desk needs exactly one license to unlock three capabilities: reservation, auto-release/check-in, and analytics.",
+      "quote": "You purchase one paid Microsoft Teams Shared Space (MTSS) license, and that purchase entitles you to three Microsoft Teams Shared Space Single Space (MTSSS) licenses priced at zero.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 45,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "The desk licence unlocks reservation.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/places/what-is-places/buy-set-up-teams-shared-space-licenses-desks",
-      "quote": "each desk needs exactly one license to unlock three capabilities: reservation, auto-release/check-in, and analytics.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "The desk licence unlocks auto-release/check-in.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/places/what-is-places/buy-set-up-teams-shared-space-licenses-desks",
-      "quote": "each desk needs exactly one license to unlock three capabilities: reservation, auto-release/check-in, and analytics.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "n": 26,
+      "where": "licensing.notes; Cost and licensing; rationale: cost",
       "type": "cost",
-      "claim": "The Places page lists the paid Shared Space licence at $8 per desk per month.",
+      "claim": "The Places licensing page lists the paid license at $8 per desk per month.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/places/what-is-places/buy-set-up-teams-shared-space-licenses-desks",
-      "quote": "| Microsoft Teams Shared Space (MTSS) | $8 per desk per month* |",
+      "quote": "Microsoft Teams Shared Space (MTSS) | $8 per desk per month",
       "severity": null,
       "fix": null
     },
     {
-      "n": 48,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "cost",
-      "claim": "The Single Space licences are priced at $0.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/places/what-is-places/buy-set-up-teams-shared-space-licenses-desks",
-      "quote": "| Microsoft Teams Shared Space Single Space (MTSSS) | $0 |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 49,
-      "where": "Cost and licensing; Governance guidance: Before rollout; rationale: cost",
+      "n": 27,
+      "where": "licensing.notes; Cost and licensing; Governance guidance; rationale: cost",
       "type": "licensing",
-      "claim": "Each qualifying paid Shared Space licence entitles the organisation to three Single Space licences.",
+      "claim": "Each paid license entitles the organization to three $0 Single Space licenses.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/places/what-is-places/buy-set-up-teams-shared-space-licenses-desks",
       "quote": "The entitlement ratio is fixed at one paid license to three single-space licenses.",
@@ -568,21 +326,21 @@
       "fix": null
     },
     {
-      "n": 50,
+      "n": 28,
       "where": "Cost and licensing",
       "type": "cost",
-      "claim": "The published effective desk rate is about $2 per desk per month.",
+      "claim": "The page gives an effective desk rate of about $2 per desk per month.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/places/what-is-places/buy-set-up-teams-shared-space-licenses-desks",
-      "quote": "| Effective desk rate | About $2 per desk per month* |",
+      "quote": "Effective desk rate | About $2 per desk per month",
       "severity": null,
       "fix": null
     },
     {
-      "n": 51,
+      "n": 29,
       "where": "Cost and licensing",
       "type": "cost",
-      "claim": "The listed licence costs exclude taxes, fees and other charges.",
+      "claim": "The listed costs exclude taxes, fees and other charges.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/places/what-is-places/buy-set-up-teams-shared-space-licenses-desks",
       "quote": "License costs shown do not include applicable taxes, fees, or other charges, which may vary by region and billing terms.",
@@ -590,10 +348,10 @@
       "fix": null
     },
     {
-      "n": 52,
+      "n": 30,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "Single Space licences are not provisioned automatically and must be actively acquired.",
+      "claim": "The single-space licenses must be actively acquired rather than being provisioned automatically.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/places/what-is-places/buy-set-up-teams-shared-space-licenses-desks",
       "quote": "The three single-space licenses are not generated or provisioned automatically. Purchasing the paid license creates the entitlement; you must then actively acquire the single-space licenses yourself.",
@@ -601,10 +359,10 @@
       "fix": null
     },
     {
-      "n": 53,
+      "n": 31,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "The Places page restricts single-space desk licences to desks, not Teams devices.",
+      "claim": "Single-space desk licenses cannot be assigned to Teams devices.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/places/what-is-places/buy-set-up-teams-shared-space-licenses-desks",
       "quote": "Single-space desk licenses are intended only for desks and should not be assigned to Teams devices such as panels or common area phones.",
@@ -612,10 +370,21 @@
       "fix": null
     },
     {
-      "n": 54,
-      "where": "Cost and licensing; controls[0].note",
+      "n": 32,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Each desk needs exactly one license to unlock reservation, auto-release/check-in and analytics.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/what-is-places/buy-set-up-teams-shared-space-licenses-desks",
+      "quote": "each desk needs exactly one license to unlock three capabilities: reservation, auto-release/check-in, and analytics",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[0].note; Cost and licensing",
       "type": "admin-path",
-      "claim": "The Places page documents Marketplace in the Microsoft 365 admin center as the MCA purchase route.",
+      "claim": "The Places page directs MCA purchases to Marketplace in the Microsoft 365 admin center.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/places/what-is-places/buy-set-up-teams-shared-space-licenses-desks",
       "quote": "This purchase path applies to organizations with a Microsoft Customer Agreement (MCA). Both licenses are available from the Microsoft Teams Shared Space listing in Marketplace.",
@@ -623,10 +392,10 @@
       "fix": null
     },
     {
-      "n": 55,
-      "where": "Cost and licensing; controls[0].note",
+      "n": 34,
+      "where": "controls[0].note; Cost and licensing; Governance guidance",
       "type": "role",
-      "claim": "The documented Marketplace purchase flow requires billing account administrator or billing profile contributor permissions.",
+      "claim": "The Marketplace purchase route requires billing account administrator or billing profile contributor permissions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/places/what-is-places/buy-set-up-teams-shared-space-licenses-desks",
       "quote": "Billing account administrator or billing profile contributor permissions. Without them the Marketplace section of the Microsoft 365 admin center will not appear at all, and no order can be placed.",
@@ -634,10 +403,10 @@
       "fix": null
     },
     {
-      "n": 56,
-      "where": "Cost and licensing; controls[0].note",
+      "n": 35,
+      "where": "controls[0].note; Cost and licensing",
       "type": "admin-path",
-      "claim": "The Places page directs EA organisations to the Volume Licensing Center rather than Marketplace.",
+      "claim": "The Places page directs EA purchases to the Volume Licensing Center instead of Marketplace.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/places/what-is-places/buy-set-up-teams-shared-space-licenses-desks",
       "quote": "If your organization has an Enterprise Agreement (EA), use the Volume Licensing Center instead of the Marketplace purchase flow.",
@@ -645,73 +414,128 @@
       "fix": null
     },
     {
-      "n": 57,
+      "n": 36,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "The separate Teams licensing page says the Single Space licence is only purchasable with an MCA billing account.",
+      "claim": "The separate Teams Shared Space licensing page says the Single Space license is available for purchase only with an MCA billing account.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/teams-shared-device-license",
-      "quote": "the Single Space license is only available for purchase with an MCA billing account.",
+      "quote": "the Single Space license is only available for purchase with an MCA billing account",
       "severity": null,
       "fix": null
     },
     {
-      "n": 58,
+      "n": 37,
+      "where": "Cost and licensing; Open questions",
+      "type": "licensing",
+      "claim": "Learn says accessing the preview desk usage reports does not require a license.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/bookable-desks",
+      "quote": "Question: What do I need to access usage reports? Answer: These reports are currently in preview and don't require a license to access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
       "where": "Cost and licensing",
       "type": "absence",
-      "claim": "No separate analytics meter is documented as of November 2026.",
+      "claim": "No separate analytics meter is documented.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"desk\" \"analytics\" \"meter\" \"Shared Space\"; 570648 desk utilization analytics default enabled switch disable licensing meter Teams Pro Management. Read both Shared Space licensing pages and Bookable Desks; no separate analytics meter was documented.",
+      "quote": "Searched: Teams desk analytics meter. Opened bookable-desks, teams-shared-device-license and buy-set-up-teams-shared-space-licenses-desks; read the roadmap and MC1490906. These give license conditions and prices but no separate analytics meter.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 59,
-      "where": "Scope",
-      "type": "behaviour",
-      "claim": "Microsoft Learn describes both individual desks and desk pools.",
+      "n": 39,
+      "where": "controls[0].ui; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "Desk licenses are assigned in Microsoft 365 admin center under Users > Active users > desk account > Assign licenses.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/bookable-desks",
-      "quote": "Step 2 - Create Desk Pool or Individual Desk Accounts",
+      "source": "https://learn.microsoft.com/microsoft-365/places/what-is-places/buy-set-up-teams-shared-space-licenses-desks",
+      "quote": "expand Users and select Active users. Search for the desk account you want to license and select it to open its details. Choose Assign licenses",
       "severity": null,
       "fix": null
     },
     {
-      "n": 60,
-      "where": "Scope",
-      "type": "behaviour",
-      "claim": "Microsoft recommends individual desks for more detailed utilisation analytics.",
+      "n": 40,
+      "where": "controls[0].api; controls[0].note",
+      "type": "command",
+      "claim": "The cited general Teams add-on licensing page documents the printed Connect-Graph scopes and Set-MgUserLicense call including -RemoveLicenses @().",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/bookable-desks",
-      "quote": "Microsoft recommends setting up individual desks over desk pools for a better bookable desk user experience, more detailed utilization analytics, and more management capabilities.",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/assign-teams-add-on-licenses",
+      "quote": "Connect-Graph -Scopes User.ReadWrite.All, Organization.Read.All\nSet-MgUserLicense -UserId $user -AddLicenses $addLicenses -RemoveLicenses @()",
       "severity": null,
       "fix": null
     },
     {
-      "n": 61,
-      "where": "Scope; controls[3].note; Governance guidance: At rollout",
-      "type": "behaviour",
-      "claim": "Automatic peripheral association for desks is supported only for individual desks.",
+      "n": 41,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "BYOD Rooms and Desk management is under General in the Teams Pro Management portal.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/bookable-desks",
-      "quote": "This approach is only supported for individual desks at this time.",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device",
+      "quote": "BYOD Rooms and Desk management\nThis setting option is located under the General tab in Teams Pro Management portal",
       "severity": null,
       "fix": null
     },
     {
-      "n": 62,
+      "n": 42,
+      "where": "controls[1].note",
+      "type": "default",
+      "claim": "The BYOD Rooms and Desk management setting is enabled by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device",
+      "quote": "This feature is currently enabled by default, but admins have the option to disable it with this function.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[1].note; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Disabling BYOD Rooms and Desk management stops peripheral ingestion and desk/BYOD reports and hides inventory devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device",
+      "quote": "controls if peripheral data is ingested into the cloud service ... Disabling this setting will stop showing any reports for BYOD rooms or Desks, and also remove the display of any devices in the Inventory section",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[1].api",
+      "type": "absence",
+      "claim": "No API for the portal's BYOD Rooms and Desk management setting is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams Rooms Pro BYOD Rooms and Desk management PowerShell API. Opened bring-your-own-device and bookable-desks. Results document the portal toggle and a separate client policy, not an API for this portal toggle.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[2].ui; Governance guidance",
+      "type": "admin-path",
+      "claim": "Portal role management is under Settings > Roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac",
+      "quote": "In the left navigation of the Microsoft Teams Rooms Pro Management portal, go to Settings > Roles.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
       "where": "controls[2].note; Governance controls",
       "type": "role",
       "claim": "Creating or editing portal roles requires Global Administrator, Teams Administrator or Teams Rooms Pro Manager.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac",
-      "quote": "To create, edit, or assign roles, your account must have one of the following permissions:\n\n- Global Administrator or Teams Administrator through Microsoft Entra ID.\n- Teams Rooms Pro Manager through the Microsoft Teams Rooms Pro Management portal.",
+      "quote": "To create, edit, or assign roles ... Global Administrator or Teams Administrator through Microsoft Entra ID. Teams Rooms Pro Manager through the Microsoft Teams Rooms Pro Management portal.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 63,
+      "n": 47,
       "where": "controls[2].note; Governance controls",
       "type": "role",
       "claim": "Role assignment additionally permits a custom role with role management permissions.",
@@ -722,142 +546,109 @@
       "fix": null
     },
     {
-      "n": 64,
-      "where": "controls[0].ui; Governance guidance: At rollout; Governance controls table",
-      "type": "admin-path",
-      "claim": "Desk licences are assigned through Microsoft 365 admin center > Users > Active users > desk account > Assign licenses.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/places/what-is-places/buy-set-up-teams-shared-space-licenses-desks",
-      "quote": "In the left navigation, expand Users and select Active users.\n- Search for the desk account you want to license and select it to open its details.\n- Choose Assign licenses, select Microsoft Teams Shared Space, and save.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 65,
-      "where": "controls[0].api; Governance controls table",
-      "type": "command",
-      "claim": "The printed Connect-Graph and Set-MgUserLicense call assigns a licence with only UserId and AddLicenses supplied to Set-MgUserLicense.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/graph/api/user-assignlicense?view=graph-rest-1.0",
-      "quote": "removeLicenses | Guid collection | A collection of skuIds that identify the licenses to remove. Required. Can be an empty collection.",
-      "severity": "blocker",
-      "fix": "Append -RemoveLicenses @() to Set-MgUserLicense in the front matter and rendered table. Keep the licence collection as a placeholder or use the cited assignment page's $addLicenses example, which supplies the empty removal collection. The scopes and cmdlet names are documented; the missing required collection is the defect."
-    },
-    {
-      "n": 66,
-      "where": "controls[1].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "The portal's General tab contains BYOD Rooms and Desk management, which controls peripheral ingestion.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device",
-      "quote": "BYOD Rooms and Desk management\n\nThis setting option is located under the General tab in Teams Pro Management portal and controls if peripheral data is ingested into the cloud service.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 67,
-      "where": "controls[1].api",
-      "type": "absence",
-      "claim": "No automation equivalent is documented for the portal's BYOD Rooms and Desk management cloud-ingestion setting.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams Pro Management portal \"BYOD Rooms and Desk management\" PowerShell API. Opened Bring Your Own Device Rooms and Bookable Desks. They document the portal toggle and a separate client policy, not an API for this cloud-ingestion setting.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 68,
-      "where": "controls[1].note",
-      "type": "default",
-      "claim": "The existing BYOD Rooms and Desk management setting is enabled by default.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device",
-      "quote": "This feature is currently enabled by default, but admins have the option to disable it with this function.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 69,
-      "where": "controls[2].ui; Governance guidance: Before rollout; Governance controls table",
-      "type": "admin-path",
-      "claim": "Portal roles can be created or assigned under Settings > Roles.",
+      "n": 48,
+      "where": "controls[2].note; Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Administrative-unit-scoped Teams Administrators and Teams Devices Administrators cannot access the portal.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac",
-      "quote": "In the left navigation of the Microsoft Teams Rooms Pro Management portal, go to Settings > Roles.",
+      "quote": "Teams Administrator or Teams Devices Administrator assigned to an Administrative Unit (AU), can't access the Teams Rooms Pro Management portal, as AUs aren't currently supported.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 70,
+      "n": 49,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "The listed Entra roles Global Administrator, Teams Administrator, Teams Devices Administrator and Global Reader provide portal access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac",
+      "quote": "You can assign the below MIcrosoft Entra built-in roles to groups or users to provide access to Microsoft Teams Rooms Pro management portal",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment: Data exposure; Security & identity; rationale: impact",
+      "type": "role",
+      "claim": "Portal permissions govern report access, and Site Lead includes report access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac",
+      "quote": "Each role has a set of permissions that determines what users with that role can access and change ... Site Lead: Organizes rooms, has access to reports and can manage tickets.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
       "where": "controls[2].api",
       "type": "absence",
-      "claim": "An API for the portal-native role creation and assignment surface is not documented.",
+      "claim": "No automation for the portal's own role definitions and assignments is documented.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Teams Rooms Pro Management portal roles assignments PowerShell Graph API; \"Teams Rooms Pro Management\" \"role\" \"API\" \"custom\". Read Rooms Pro RBAC. Results document portal-native roles through Settings > Roles; Entra role APIs are a separate role-management surface.",
+      "quote": "Searched: Teams Rooms Pro Management roles API assign; Teams Pro Management portal role assignment REST API RBAC. Opened rooms-pro-rbac: portal workflows, no API for its own roles. Generic Entra role APIs are a different surface.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 71,
-      "where": "controls[3].ui; Governance controls table",
+      "n": 52,
+      "where": "controls[3].ui; Governance guidance: At rollout",
       "type": "admin-path",
-      "claim": "Peripheral associations can be imported at Planning > Inventory > Devices > Import in the portal.",
+      "claim": "Peripheral associations can be imported under Planning > Inventory > Devices > Import.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/get-peripheral-information",
-      "quote": "on the Planning > Inventory > Devices page, select Import to add the device inventory to upload the file you modified.",
+      "quote": "on the Planning > Inventory > Devices page, select Import to add the device inventory to upload the file you modified",
       "severity": null,
       "fix": null
     },
     {
-      "n": 72,
-      "where": "controls[3].api; Governance controls table; Governance guidance: At rollout",
+      "n": 53,
+      "where": "controls[3].api",
       "type": "command",
-      "claim": "The downloadable Get-TeamsBYODSpaceDevices.ps1 script exports peripheral information in a PERIPHERALS file for import.",
-      "status": "supported",
+      "claim": "The printed automation field is a runnable invocation of the downloaded peripheral collection script.",
+      "status": "contradicted",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/get-peripheral-information",
-      "quote": "Go here to download the Get-TeamsBYODSpaceDevices.ps1 PowerShell script.",
-      "severity": null,
-      "fix": null
+      "quote": "Run the script by executing the following command in the PowerShell window: \\Get-TeamsBYODSpaceDevices.ps1",
+      "severity": "blocker",
+      "fix": "Set controls[3].api.call to '.\\Get-TeamsBYODSpaceDevices.ps1'. Move '(downloaded script) exports a PERIPHERALS file for import' out of the code field into the note, and state there that it runs from the downloaded script's directory. Preserve the existing docs URL."
     },
     {
-      "n": 73,
-      "where": "controls[3].note",
-      "type": "admin-path",
-      "claim": "The desk auto-association signal threshold is configured under Settings > General in the portal.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/bookable-desks",
-      "quote": "The threshold for how many signals it requires before associating is configurable on Teams Rooms Pro Management portal at Settings > General.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 74,
-      "where": "controls[3].note",
+      "n": 54,
+      "where": "controls[3].note; Scope; Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "The desk auto-association threshold has a minimum of two unique signals.",
+      "claim": "Automatic peripheral association is supported for individual desks only.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/bookable-desks",
-      "quote": "with a minimum of two unique signals and no maximum.",
+      "quote": "wait for Teams Rooms Pro Management portal to associate the peripheral automatically ... This approach is only supported for individual desks at this time.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 75,
-      "where": "controls[4].ui",
-      "type": "absence",
-      "claim": "Microsoft does not document an admin UI for configuring the DeviceDataCollection policy.",
+      "n": 55,
+      "where": "controls[3].note",
+      "type": "admin-path",
+      "claim": "The desk auto-association signal threshold is configured under Settings > General.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: TeamsBYODAndDesksPolicy DeviceDataCollection Teams admin center user interface. Read Bookable Desks and Bring Your Own Device Rooms; they document PowerShell, not an admin UI for this policy.",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/bookable-desks",
+      "quote": "configurable on Teams Rooms Pro Management portal at Settings > General ... with a minimum of two unique signals and no maximum",
       "severity": null,
       "fix": null
     },
     {
-      "n": 76,
-      "where": "controls[4].api; Governance controls table",
+      "n": 56,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Peripherals are unsupported if their serial numbers cannot be collected, are not unique or contain special characters.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/bookable-desks",
+      "quote": "A peripheral device is not supported if its serial number cannot be collected, is not unique, or contains special characters.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[4].api",
       "type": "command",
-      "claim": "Set-CSTeamsBYODAndDesksPolicy with Identity and DeviceDataCollection Enabled, followed by Grant-CSTeamsBYODAndDesksPolicy with PolicyName and Identity, configures and assigns the client policy.",
+      "claim": "Set-CSTeamsBYODAndDesksPolicy configures DeviceDataCollection and Grant-CSTeamsBYODAndDesksPolicy assigns the named policy to a user.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/bookable-desks",
       "quote": "Set-CSTeamsBYODAndDesksPolicy -Identity Test -DeviceDataCollection Enabled\nGrant-CSTeamsBYODAndDesksPolicy -PolicyName Test -Identity testuser@test.onmicrosoft.com",
@@ -865,10 +656,10 @@
       "fix": null
     },
     {
-      "n": 77,
+      "n": 58,
       "where": "controls[4].note; Governance controls",
       "type": "behaviour",
-      "claim": "The bookable desks policy instructions require MicrosoftTeams module version 6.5.0 or later.",
+      "claim": "The documented client policy requires MicrosoftTeams module version 6.5.0 or later.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/bookable-desks",
       "quote": "First, ensure that your Microsoft Teams module is on version 6.5.0 or higher.",
@@ -876,7 +667,7 @@
       "fix": null
     },
     {
-      "n": 78,
+      "n": 59,
       "where": "controls[4].note; Governance controls",
       "type": "default",
       "claim": "The client data collection policy is off by default in government clouds.",
@@ -887,32 +678,32 @@
       "fix": null
     },
     {
-      "n": 79,
-      "where": "controls[5].ui",
+      "n": 60,
+      "where": "controls[4].ui",
       "type": "absence",
-      "claim": "No admin UI is documented for changing the enableBuildings tenant setting.",
+      "claim": "No admin UI for DeviceDataCollection is documented.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Microsoft Places enableBuildings admin center UI enable buildings setting. Read Get-PlacesSettings, Set-PlacesSettings and Configure buildings and floors; the setting is changed with PowerShell, distinct from creating buildings through the management UI.",
+      "quote": "Searched: DeviceDataCollection admin center; CsTeamsBYODAndDesksPolicy DeviceDataCollection configuration Teams admin center policy. Read bookable-desks and bring-your-own-device: PowerShell, no UI for this policy.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 80,
-      "where": "controls[5].api; Governance controls table",
+      "n": 61,
+      "where": "controls[5].api",
       "type": "command",
-      "claim": "Get-PlacesSettings -ReadFromPrimary and the printed bare Set-PlacesSettings -EnableBuildings provide the check/change operation, both documented by the linked Set-PlacesSettings page.",
+      "claim": "The linked Get-PlacesSettings reference documents both the printed check and the Set-PlacesSettings change call.",
       "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoft-365/places/get-started/quick-setup-buildings-floors",
-      "quote": "You can enable building visibility in PowerShell:\n\nSet-PlacesSettings -EnableBuildings 'Default:true'",
+      "source": "https://learn.microsoft.com/microsoft-365/places/powershell/get-placessettings",
+      "quote": "Get-PlacesSettings\n [-ReadFromPrimary]",
       "severity": "blocker",
-      "fix": "Supply the required scope/value: Set-PlacesSettings -EnableBuildings 'Default:true' to enable buildings, or 'Default:false' to disable them. Keep Get-PlacesSettings -ReadFromPrimary as the check, but link it to https://learn.microsoft.com/microsoft-365/places/powershell/get-placessettings; the current Set-PlacesSettings docs URL contains no Get-PlacesSettings command. Update both front matter and rendered table."
+      "fix": "Keep only 'Get-PlacesSettings -ReadFromPrimary' in controls[5].api.call with the existing docs URL; this removes the non-code '(check)' and the change command not documented at that URL. The change syntax is verified separately at the already-cited Configure buildings and floors page."
     },
     {
-      "n": 81,
+      "n": 62,
       "where": "controls[5].note; Governance controls",
       "type": "role",
-      "claim": "Set-PlacesSettings requires both Exchange MailRecipients and Places TenantPlacesManagement roles.",
+      "claim": "Set-PlacesSettings requires both Exchange MailRecipients and Places TenantPlacesManagement.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/places/powershell/set-placessettings",
       "quote": "You must have both the Exchange MailRecipients role and the Places TenantPlacesManagement role.",
@@ -920,18 +711,7 @@
       "fix": null
     },
     {
-      "n": 82,
-      "where": "controls[5].note; Governance controls",
-      "type": "role",
-      "claim": "Get-PlacesSettings requires Exchange Admin or Places TenantPlacesManagement.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/places/powershell/get-placessettings",
-      "quote": "You must have either the Exchange Admin role or the Places TenantPlacesManagement role.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 83,
+      "n": 63,
       "where": "controls[5].note",
       "type": "default",
       "claim": "EnableBuildings is off by default for tenants onboarded before 1 August 2026.",
@@ -942,43 +722,131 @@
       "fix": null
     },
     {
-      "n": 84,
-      "where": "controls[6].ui; controls[6].api; Governance controls; Open questions",
+      "n": 64,
+      "where": "controls[5].ui",
       "type": "absence",
-      "claim": "A dedicated UI switch or API specifically enabling or disabling the new desk analytics is not documented as of November 2026.",
+      "claim": "No UI for the tenant EnableBuildings switch is documented.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: 570648 desk utilization analytics default enabled switch disable licensing meter Teams Pro Management; \"desk utilization\" \"analytics\" \"disable\". Read Bookable Desks, BYOD Rooms and both licensing pages; only the existing client and ingestion controls were documented.",
+      "quote": "Searched: enableBuildings admin center settings; EnableBuildings building visibility PowerShell Microsoft Places setting. Read get-placessettings, set-placessettings and quick-setup-buildings-floors: PowerShell visibility control, no UI switch.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 85,
-      "where": "controls[1].note; Governance controls; Open questions",
+      "n": 65,
+      "where": "controls[6]; Governance controls; Open questions",
       "type": "absence",
-      "claim": "Microsoft has not explicitly confirmed the cloud-ingestion setting's applicability to this particular forthcoming analytics release.",
+      "claim": "No switch dedicated specifically to the new desk analytics release is documented.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Teams Pro Management portal \"BYOD Rooms and Desk management\" PowerShell API; 570648 desk utilization analytics default enabled switch disable licensing meter Teams Pro Management. Read BYOD Rooms, Bookable Desks and MC1490906; no release-specific linkage is stated.",
+      "quote": "Searched: Teams desk utilization analytics disable; Teams desk analytics default 570648. Read bookable-desks, bring-your-own-device, set-placessettings and MC1490906: general collection and distinct Places controls, no dedicated release switch.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 86,
+      "n": 66,
+      "where": "controls[1].note; Risk assessment: Change & support; Governance controls; Open questions",
+      "type": "applicability",
+      "claim": "Microsoft has not said whether the portal cloud-data setting governs the new desk analytics.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device",
+      "quote": "controls if peripheral data is ingested into the cloud service ... Disabling this setting will stop showing any reports for BYOD rooms or Desks",
+      "severity": "blocker",
+      "fix": "Replace this caveat wherever repeated with: 'The portal setting controls peripheral-data ingestion; Microsoft says disabling it stops any BYOD room or desk reports.' Remove the corresponding applicability question. This is a general control whose documented scope includes desk reports, not a dedicated analytics switch."
+    },
+    {
+      "n": 67,
       "where": "controls[4].note; Risk assessment: Change & support; Governance controls",
-      "type": "absence",
-      "claim": "Microsoft has not explicitly confirmed DeviceDataCollection's applicability to this particular forthcoming analytics release.",
+      "type": "applicability",
+      "claim": "Microsoft has not said whether DeviceDataCollection governs the new desk analytics.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device",
+      "quote": "Disabling this setting for certain users will cause BYOD and desk information to cease flowing to the service. The Teams BYOD and Desk solution requires peripheral data sent from users ... to ... generate reports for BYOD peripherals, BYOD rooms, and Bookable Desks.",
+      "severity": "blocker",
+      "fix": "Replace this caveat wherever repeated with: 'DeviceDataCollection controls the peripheral-data feed that Microsoft says is required to generate Bookable Desks reports.' Retain that this is a general collection control, not a dedicated analytics switch."
+    },
+    {
+      "n": 68,
+      "where": "Risk assessment: Change & support; Scope; Governance guidance",
+      "type": "behaviour",
+      "claim": "Individual desks do not appear in the Pro Management portal unless EnableBuildings is enabled.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: TeamsBYODAndDesksPolicy DeviceDataCollection Teams admin center user interface; 570648 desk utilization analytics default enabled switch disable licensing meter Teams Pro Management. Read Bookable Desks, BYOD Rooms and MC1490906; no release-specific linkage is stated.",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/bookable-desks",
+      "quote": "also make sure that enableBuildings is enabled for your tenant. If it isn't enabled, the desks don't show in the Pro Management portal.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 87,
+      "n": 69,
+      "where": "controls[5].note; Governance controls",
+      "type": "role",
+      "claim": "Get-PlacesSettings requires Exchange Admin or Places TenantPlacesManagement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/powershell/get-placessettings",
+      "quote": "You must have either the Exchange Admin role or the Places TenantPlacesManagement role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "Bookable Desks uses peripheral signals crowdsourced from users' Teams desktop clients.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/bookable-desks",
+      "quote": "Bookable desks in Microsoft Teams use peripheral data crowdsourced from the Teams desktop client running on the users' laptops to discover peripherals.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The documented desk usage metrics include desk reservation data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/bookable-desks",
+      "quote": "Reservations | The number of reservations for the individual desk or desk pool during the specified date range.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The bookable desks page says no personally identifiable data is collected.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/bookable-desks",
+      "quote": "No personally identifiable data is collected.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Learn documents both individual desks and desk pools.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/bookable-desks",
+      "quote": "Desk pool accounts, known as 'workspaces' in Exchange ... individual desks, known as 'desk' in Exchange, represents a specific seat in the office.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Microsoft recommends individual desks for more detailed utilization analytics.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/bookable-desks",
+      "quote": "Microsoft recommends setting up individual desks over desk pools for a better bookable desk user experience, more detailed utilization analytics, and more management capabilities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
       "where": "Open questions",
       "type": "behaviour",
-      "claim": "Learn documents CSV export for the existing Desks usage report.",
+      "claim": "The existing Desks usage report supports CSV export.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/bookable-desks",
       "quote": "Export desk usage details metrics as a csv file.",
@@ -986,26 +854,70 @@
       "fix": null
     },
     {
-      "n": 88,
-      "where": "controls[2]; Governance guidance: Before rollout",
-      "type": "applicability",
-      "claim": "Portal role permissions govern viewing and managing peripheral inventory and desk associations.",
+      "n": 76,
+      "where": "Risk assessment: Autonomy & actions; rationale: risk; rationale: impact",
+      "type": "absence",
+      "claim": "The sources describe reporting, not autonomous desk release, reassignment or other changes to desks or their users by the analytics release.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams desk utilization analytics new preview report roadmap 570648 December 2026. Read roadmap, MC1490906, bookable-desks and Shared Space licensing pages: analytics is reporting; auto-release is a separate capability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "Microsoft has not reconciled the roadmap's desk licensing condition with Learn's preview-report access statement.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams desk utilization analytics new preview report roadmap 570648 December 2026. Read roadmap, MC1490906, bookable-desks and both Shared Space licensing pages: no explicit reconciliation of preview access with this release's desk-license condition.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "controls[3].api; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The downloaded peripheral collection script exports PERIPHERALS data that can be imported to establish desk associations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/get-peripheral-information",
+      "quote": "Provide the Account information so as to properly associate the peripheral with the right room or desk account. ... Provide the folder path where the PERIPHERALS.csv file will be saved when prompted.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 79,
+      "where": "controls[3].note",
+      "type": "behaviour",
+      "claim": "Desk auto-association requires a minimum of two unique signals.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/bookable-desks",
-      "quote": "You can create roles under Settings > Roles in Teams Room Pro Management portal and grant permissions to access inventory and associate peripherals to desks.",
+      "quote": "with a minimum of two unique signals and no maximum",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 80,
+      "where": "controls[5].api",
+      "type": "command",
+      "claim": "The actual EnableBuildings change syntax is Set-PlacesSettings -EnableBuildings 'Default:true'.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/places/get-started/quick-setup-buildings-floors",
+      "quote": "Set-PlacesSettings -EnableBuildings 'Default:true'",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-16T18:26:21.475Z",
+    "at": "2026-11-17T01:27:13.582Z",
     "summary": {
-      "links": 11,
-      "unreachable": 0,
+      "links": 13,
+      "unreachable": 11,
       "uiPaths": 4,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 4,
       "apiCalls": 4,
-      "apiCallsNotOnPage": 1,
+      "apiCallsNotOnPage": 4,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -1021,48 +933,58 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/rooms/bookable-desks",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/teams-shared-device-license",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/places/what-is-places/buy-set-up-teams-shared-space-licenses-desks",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/rooms/get-peripheral-information",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/assign-teams-add-on-licenses",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/places/powershell/set-placessettings",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/places/powershell/get-placessettings",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/places/get-started/quick-setup-buildings-floors",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/user-assignlicense?view=graph-rest-1.0",
+        "ok": false,
+        "status": 429
       }
     ],
     "controlChecks": [
@@ -1071,86 +993,102 @@
         "side": "ui",
         "governs": "Which desks are licensed to produce analytics",
         "docs": "https://learn.microsoft.com/microsoft-365/places/what-is-places/buy-set-up-teams-shared-space-licenses-desks",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Users",
           "Active users",
           "desk account",
           "Assign licenses"
         ],
-        "missing": []
+        "missing": [
+          "Users",
+          "Active users",
+          "desk account",
+          "Assign licenses"
+        ]
       },
       {
         "index": 0,
         "side": "api",
         "governs": "Which desks are licensed to produce analytics",
         "docs": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/assign-teams-add-on-licenses",
-        "reachable": true,
+        "reachable": false,
         "token": "Connect-Graph",
-        "found": true
+        "found": false
       },
       {
         "index": 1,
         "side": "ui",
         "governs": "Whether peripheral data is ingested for BYOD rooms and desks",
         "docs": "https://learn.microsoft.com/microsoftteams/rooms/bring-your-own-device",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "General",
           "BYOD Rooms and Desk management"
         ],
-        "missing": []
+        "missing": [
+          "General",
+          "BYOD Rooms and Desk management"
+        ]
       },
       {
         "index": 2,
         "side": "ui",
         "governs": "Who can view portal reports and manage inventory",
         "docs": "https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Settings",
           "Roles"
         ],
-        "missing": []
+        "missing": [
+          "Settings",
+          "Roles"
+        ]
       },
       {
         "index": 3,
         "side": "ui",
         "governs": "Which peripherals are linked to each desk",
         "docs": "https://learn.microsoft.com/microsoftteams/rooms/get-peripheral-information",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Planning",
           "Inventory",
           "Devices",
           "Import"
         ],
-        "missing": []
+        "missing": [
+          "Planning",
+          "Inventory",
+          "Devices",
+          "Import"
+        ]
       },
       {
         "index": 3,
         "side": "api",
         "governs": "Which peripherals are linked to each desk",
         "docs": "https://learn.microsoft.com/microsoftteams/rooms/get-peripheral-information",
-        "reachable": true,
+        "reachable": false,
         "token": "Get-TeamsBYODSpaceDevices",
-        "found": true
+        "found": false
       },
       {
         "index": 4,
         "side": "api",
         "governs": "Whether Teams clients send peripheral and desk usage data",
         "docs": "https://learn.microsoft.com/microsoftteams/rooms/bookable-desks",
-        "reachable": true,
+        "reachable": false,
         "token": "Set-CSTeamsBYODAndDesksPolicy",
-        "found": true
+        "found": false
       },
       {
         "index": 5,
         "side": "api",
         "governs": "Whether individual desks appear in the portal (enableBuildings)",
-        "docs": "https://learn.microsoft.com/microsoft-365/places/powershell/set-placessettings",
-        "reachable": true,
+        "docs": "https://learn.microsoft.com/microsoft-365/places/powershell/get-placessettings",
+        "reachable": false,
         "token": "Get-PlacesSettings",
         "found": false
       }
@@ -1168,6 +1106,12 @@
       "date": "2026-11-16",
       "status": "held",
       "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-16",
+      "status": "held",
+      "version": 2,
       "model": "gpt-6.1-sol"
     }
   ]

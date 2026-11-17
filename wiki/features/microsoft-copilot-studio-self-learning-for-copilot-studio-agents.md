@@ -58,7 +58,7 @@ controls:
     note: "General spend control, not specific to this feature. Hard stop is optional (Stop usage). Not applied instantly and does not stop agent flows the agent calls."
 confidence: "medium"
 created: "2026-11-16"
-updated: "2026-11-16"
+updated: "2026-11-17"
 roadmapModified: "2026-09-30T23:31:03"
 changes:
   - date: "2026-11-16"
@@ -67,19 +67,23 @@ changes:
     note: "Corrected the testing-cost statement: test-chat charges depend on the harness, and this feature's harness is not stated. Removed an uncited harness-page attribution and an environment-controls reference with no table row."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 54 statements contradicted, 5 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-17"
+    note: "Corrected five unsupported statements: removed the claim that workflows are agent flows, the second-agent-definition and identical-error claims, the only-lever wording and the no-administrator-asked claim."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 54 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-17"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 54
-  confirmed: 49
-  unconfirmed: 5
+  confirmed: 54
+  unconfirmed: 0
   contradicted: 0
-  attempts: 2
-  hash: "feff6a28a1d5182008c67affb0e9d2a8"
+  attempts: 0
+  hash: "0c183e94f21cddbccd8d06cf5e90129b"
 ---
 
 ## What's changing
@@ -94,7 +98,7 @@ The record lists the status as In development, with a preview date of September 
 
 ## Why it matters
 
-This is a maker-side feature that could change how production agents behave and what they cost, without an administrator being asked. A refined copy of an agent is a published change: it can alter instructions and swap model-driven tool calls for workflows, so the agent's behaviour and its credit use can both move after a maker accepts a recommendation.
+This is a maker-side feature that could change how production agents behave and what they cost. A refined copy of an agent is a published change: it can alter instructions and swap model-driven tool calls for workflows, so the agent's behaviour and its credit use can both move after a maker accepts a recommendation.
 
 The cost promise is also a governance question. If the feature works as described, agents that today reason their way through the same tool sequence on every run could consume fewer Copilot Credits. Nothing in the sources lets a tenant forecast that saving or confirms the feature is free to use, so plan to watch consumption on the agents whose makers adopt it rather than budget for a saving.
 
@@ -114,14 +118,14 @@ The cost promise is also a governance question. If the feature works as describe
 
 **Change & support**
 
-- Publishing a refined copy of an agent produces a second agent definition. Whether it replaces the original, runs alongside it or inherits its sharing, channels and monthly credit limit is not stated, and support teams should expect questions about which version users are talking to.
-- Fewer model-judged steps should make runs more repeatable, which is the roadmap's stated aim. It also means errors in a generated workflow repeat identically on every run.
+- The roadmap says makers publish a refined copy of the agent. Whether it replaces the original, runs alongside it or inherits its sharing, channels and monthly credit limit is not stated, and support teams should expect questions about which version users are talking to.
+- Fewer model-judged steps should make runs more repeatable, which is the roadmap's stated aim.
 
 ## Cost and licensing
 
 The roadmap item names no licence for the feature, and no price or meter is yet published for it. Do not assume it is included in the licences you hold.
 
-Agents in Copilot Studio are measured in Copilot Credits, and the Billing rates and management page describes agent flows as predefined sequences of flow actions that run repetitive tasks "without requiring agent reasoning and orchestration at each step". That is the mechanism the roadmap item points to for lower cost, but the page does not describe this feature. The same page states that a reasoning model adds a premium charge of 10 Copilot Credits per 1,000 tokens, and that agent flow actions are billed separately from the agent that calls them.
+Agents in Copilot Studio are measured in Copilot Credits, and the Billing rates and management page describes agent flows as predefined sequences of flow actions that run repetitive tasks "without requiring agent reasoning and orchestration at each step". This is general agent-flow billing background; the roadmap does not identify the type of workflow the feature will propose. The same page states that a reasoning model adds a premium charge of 10 Copilot Credits per 1,000 tokens, and that agent flow actions are billed separately from the agent that calls them.
 
 Maker review, testing and publishing take time. Testing may also consume credits, depending on the harness and tools. The FAQ for Copilot Studio billing and licensing says that testing an agent in the test chat does not consume Copilot Credits for the agent's own activity, on a page that describes agents powered by the standard harness. The Microsoft Copilot harness cost page says that building, testing, evaluating and running agents on that harness can consume Copilot Credits. This feature's harness and testing charges are not stated. A per-agent monthly limit exists (see the controls table) but Microsoft's page says it does not stop agent flows the agent calls.
 
@@ -162,7 +166,7 @@ The record does not say which makers or agents get the feature, whether it needs
 </tbody>
 </table>
 
-No tenant, environment or agent-level switch for self-learning recommendations is documented on Microsoft Learn at the time of writing (November 2026), so the only lever is communication with makers and the maker-side review the roadmap describes.
+No tenant, environment or agent-level switch for self-learning recommendations is documented on Microsoft Learn at the time of writing (November 2026), so plan communications around the maker-side review the roadmap describes.
 
 The monthly limit is a general Copilot Credit control, not a control over this feature. It is set per agent, so Microsoft has not said whether a refined copy keeps the original's limit. The limit page notes that limits are not applied instantly, and that an agent's limit does not stop the agent flows it calls. The path is documented on the page for agents on the Microsoft Copilot harness, and the roadmap does not say which harness applies. At the time of writing, no API for setting the limit appeared in the Learn pages searched.
 
@@ -180,12 +184,8 @@ cost: Low. The only cost the sources show is maker and admin time; the roadmap s
 impact: Medium. Makers see the recommendations and publish the refined copies; end users notice only if a refined agent behaves differently from the original.
 -->
 
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Cost and licensing: That is the mechanism the roadmap item points to for lower cost / applicability: The roadmap's proposed workflows use the agent-flow mechanism described on the billing page. | Found: Searched: "Copilot Studio" "self-learning" "workflow" "copy"; "self-learning" "Copilot Studio". Read the roadmap, Billing rates and management and returned copy/workflow excerpts; no source identifies the proposed workflows as agent flows. | Fix: Replace 'That is the mechanism the roadmap item points to for lower cost, but the page does not describe this feature.' with 'This is general agent-flow billing background; the roadmap does not identify the type of workflow the feature will propose.'
-- [unsupported, major] Risk assessment: Change & support / behaviour: Publishing a refined copy produces a second agent definition. | Found: Searched: "Copilot Studio" "refined copy" recommendations run data identity licensing prerequisites; "Copilot Studio" "self-learning" "workflow" "copy". Read roadmap and returned Agent Builder copy excerpts; separate-object behaviour is documented only for another copying feature. | Fix: Replace 'Publishing a refined copy of an agent produces a second agent definition.' with 'The roadmap says makers publish a refined copy of the agent.' Keep the following sentence about the replacement and inheritance details being unstated.
-- [unsupported, major] Risk assessment: Change & support / behaviour: Errors in a generated workflow repeat identically on every run. | Found: Searched: "Copilot Studio" "workflow" "deterministic" errors. Read roadmap and returned workflow-designer, troubleshooting and reliable-agentic-loop excerpts; none states that workflow errors repeat identically on every run. | Fix: Remove 'It also means errors in a generated workflow repeat identically on every run.'
-- [unsupported, blocker] Governance controls: first paragraph / applicability: Communication with makers and maker-side review are the only governance levers. | Found: Searched: Copilot Studio self-learning recommendations tenant environment settings API Power Platform Dataverse bot configuration. Read harness cost controls and security/governance excerpts; no source says communication and maker review are the only levers. | Fix: Replace 'so the only lever is communication with makers and the maker-side review the roadmap describes' with 'so plan communications around the maker-side review the roadmap describes'. Absence of a dedicated switch does not establish that no other administrative governance is possible.
-- [unsupported, blocker] Why it matters: first sentence / role: This feature can change production agents without an administrator being asked. | Found: Searched: Copilot Studio self-learning completed runs recommendations refined copy agents enable disable default licensing; self-learning recommendations tenant environment settings API. Read roadmap and cited admin pages; no source states an administrator's approval is unnecessary. | Fix: Remove ', without an administrator being asked' from the first sentence of Why it matters. The roadmap describes maker actions but does not state whether administrative approval or prerequisites apply.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Cost and licensing / cost: The cited billing page states a reasoning-model premium rate of 10 Copilot Credits per 1,000 tokens. | Found: It's billed as Text and generative AI tools (premium) per 1000 tokens, at 10 Copilot Credits. | Fix: Replace the reasoning-model rate sentence with: 'For billable standard-harness reasoning-model usage, the page lists an additional 10 Copilot Credits per 1,000 billed tokens; eligible authenticated Microsoft 365 Copilot employee-facing usage is included in that licence, subject to fair usage limits and exclusions.' This is background pricing, not a verified rate for self-learning. Source: https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management. | Source: https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management
 -->

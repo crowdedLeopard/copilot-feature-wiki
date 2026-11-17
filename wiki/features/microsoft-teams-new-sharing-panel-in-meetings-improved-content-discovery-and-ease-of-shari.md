@@ -28,6 +28,9 @@ sources:
   - title: "Manage meeting policies for content sharing"
     url: "https://learn.microsoft.com/microsoftteams/meeting-policies-content-sharing"
     kind: "learn"
+  - title: "Set-CsTeamsMeetingPolicy"
+    url: "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps"
+    kind: "learn"
   - title: "Manage meeting and events policies in Microsoft Teams"
     url: "https://learn.microsoft.com/microsoftteams/meeting-policies-overview"
     kind: "learn"
@@ -50,12 +53,12 @@ controls:
       docs: "https://learn.microsoft.com/microsoftteams/meeting-policies-content-sharing"
     api:
       kind: "powershell"
-      call: "Set-CsTeamsMeetingPolicy -ScreenSharingMode"
-      docs: "https://learn.microsoft.com/microsoftteams/meeting-policies-content-sharing"
+      call: "Set-CsTeamsMeetingPolicy -Identity <policy> -ScreenSharingMode <mode>"
+      docs: "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps"
     note: "Existing control for screen sharing mode. Microsoft has not confirmed that it applies to the new sharing panel."
 confidence: "medium"
 created: "2026-11-16"
-updated: "2026-11-16"
+updated: "2026-11-17"
 roadmapModified: "2026-11-12T01:50:56"
 changes:
   - date: "2026-11-16"
@@ -64,19 +67,23 @@ changes:
     note: "Corrected after verification: default is on per MC1317197 (no tenant-level off switch), scope widened to Windows, Mac and web, notice rollout windows added, and the content sharing path now includes the policy step."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 58 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-17"
+    note: "Corrected the Screen sharing mode PowerShell call to Set-CsTeamsMeetingPolicy -Identity <policy> -ScreenSharingMode <mode>, linked to the cmdlet reference."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 61 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-17"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 58
-  confirmed: 57
+  claims: 61
+  confirmed: 61
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "5feb496a15c143a61c5d08a874593ed1"
+  contradicted: 0
+  attempts: 0
+  hash: "d64949395d7caf4e7bac67147bf1a026"
 ---
 
 ## What's changing
@@ -148,7 +155,7 @@ MC1317197 gives a wider scope: all Teams work and school users joining meetings,
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>A tenant-wide switch for the new sharing panel</strong><br><small>Tenant</small><br><small class="controls__note">MC1317197 says the experience cannot be disabled at the tenant level. No such setting found in Microsoft Learn at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether a user can share an entire screen, a single application, or neither in meetings</strong><br><small>User</small><br><small class="controls__note">Existing control for screen sharing mode. Microsoft has not confirmed that it applies to the new sharing panel.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting policies › policy › Content sharing <a href="https://learn.microsoft.com/microsoftteams/meeting-policies-content-sharing" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -ScreenSharingMode</code> <a href="https://learn.microsoft.com/microsoftteams/meeting-policies-content-sharing" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether a user can share an entire screen, a single application, or neither in meetings</strong><br><small>User</small><br><small class="controls__note">Existing control for screen sharing mode. Microsoft has not confirmed that it applies to the new sharing panel.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting policies › policy › Content sharing <a href="https://learn.microsoft.com/microsoftteams/meeting-policies-content-sharing" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity &lt;policy&gt; -ScreenSharingMode &lt;mode&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -167,10 +174,4 @@ Content sharing settings are per-user policy settings. Users receive the global 
 risk: Low. The roadmap describes a redesign of how presenters pick what to share; Microsoft has not said it adds data access, and existing meeting policy settings for content sharing remain the documented controls.
 cost: Low. The only cost the sources show is admin and communications time; Microsoft has not published a licence or meter for the new panel.
 impact: High. MC1317197 says the redesigned experience is enabled by default for all Teams work and school users joining meetings on Windows desktop, Mac desktop and the web, and cannot be disabled at the tenant level.
--->
-
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].api; Governance controls: API and automation / command: Set-CsTeamsMeetingPolicy -ScreenSharingMode is a usable automation call for screen sharing mode as printed. | Found: [-ScreenSharingMode <String>] Determines the mode in which a user can share a screen in calls or meetings. Set this to SingleApplication to allow the user to share an application at a given point in time. | Fix: Replace the call in controls[1].api and the rendered table with 'Set-CsTeamsMeetingPolicy -Identity <policy> -ScreenSharingMode <mode>'. Set its docs URL to https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps and cite that reference; mode must be SingleApplication, EntireScreen or Disabled. The current call omits the string argument required when -ScreenSharingMode is supplied. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps
 -->

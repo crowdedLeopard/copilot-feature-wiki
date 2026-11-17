@@ -72,7 +72,7 @@ controls:
     scope: "agent"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Agents > All agents > select an agent > Block"
+      path: "Agents > All agents > select an agent > Block > Block agent > Save"
       docs: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions"
     api:
       kind: "graph"
@@ -86,7 +86,7 @@ controls:
     note: "FAQ: an admin cannot turn shared memory off independently of agent accounts; users cannot opt out."
 confidence: "high"
 created: "2026-11-16"
-updated: "2026-11-16"
+updated: "2026-11-17"
 roadmapModified: "2026-09-30T23:31:03"
 changes:
   - date: "2026-11-16"
@@ -95,24 +95,28 @@ changes:
     note: "Corrected after verification: added the beta Graph block call to the agent-blocking row, replaced the claim that no tenant-level action control exists with the data policy scope, and added the Agent 365 Frontier prerequisites and licence pool."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 74 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-17"
+    note: "Corrected after verification: the agent-blocking path now ends at Block > Block agent > Save, and the unsupported statement about how agents ran before agent accounts was removed."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 85 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-17"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 74
-  confirmed: 72
-  unconfirmed: 1
-  contradicted: 1
-  attempts: 2
-  hash: "eeceeb8de42642da9d937022a0c9aab5"
+  claims: 85
+  confirmed: 85
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "7cc5da1638384c85f46988670475c4b2"
 ---
 
 ## What's changing
 
-Makers will be able to give a Copilot Studio agent its own account, so the agent becomes a named identity in Microsoft 365 rather than something that only runs behind a maker or a shared service connection. Microsoft Learn describes the account as giving the agent "its own Microsoft Entra ID, mailbox, and presence across Microsoft 365".
+Makers will be able to give a Copilot Studio agent its own account, so the agent becomes a named identity in Microsoft 365. Microsoft Learn describes the account as giving the agent "its own Microsoft Entra ID, mailbox, and presence across Microsoft 365".
 
 Once the agent is published, it has its own mailbox (it can send and receive email and be added to distribution lists), appears in Microsoft Teams and the organisation's directory, and can be @mentioned by colleagues. Supported tools can use the agent's own scoped access, and tools set to end-user authentication use the agent's identity and consent. Learn lists current limits: the agent does not respond to anyone outside its tenant, replies in email only with up to 250 people, cannot co-author existing documents, and cannot read documents protected by sensitivity labels such as Confidential or Internal Only.
 
@@ -185,7 +189,7 @@ The roadmap lists the Worldwide (Standard Multi-Tenant) cloud and the web platfo
 <tbody>
 <tr><td data-label="Control"><strong>Which users and groups can create agents with accounts (template activation)</strong><br><small>Tenant</small><br><small class="controls__note">Tenant admin. Preview (Frontier) documentation.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>All Agents › filter Agent template: Yes › Copilot Studio (Frontier) › Activate › Users step <a href="https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether agents in an environment can have accounts</strong><br><small>Environment</small><br><small class="controls__note">Turning it off hides the Agent account button. Also the only documented way to turn off shared memory. Preview.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Copilot › Settings › Copilot Studio › Agent accounts <a href="https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-account" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Blocking a specific agent that has an account</strong><br><small>Agent</small><br><small class="controls__note">General control; neither page mentions agent accounts specifically. API is beta: needs Agent 365 licence and delegated CopilotPackages.ReadWrite.All; not supported in production.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › select an agent › Block <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Blocking a specific agent that has an account</strong><br><small>Agent</small><br><small class="controls__note">General control; neither page mentions agent accounts specifically. API is beta: needs Agent 365 licence and delegated CopilotPackages.ReadWrite.All; not supported in production.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › select an agent › Block › Block agent › Save <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Shared memory of an agent with an account</strong><br><small>Agent</small><br><small class="controls__note">FAQ: an admin cannot turn shared memory off independently of agent accounts; users cannot opt out.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -204,11 +208,4 @@ Switching Agent accounts off in an environment hides the **Agent account** butto
 risk: High. An agent with an account keeps one shared memory across everyone it works with, Microsoft says it can surface content to users who lack access to the source, and an admin cannot turn that memory off separately from agent accounts.
 cost: Variable. Each agent account uses one Microsoft 365 Frontier for AI Teammates licence, makers need Microsoft 365 E5 with the Agent 365 add-on or Microsoft 365 E7, and usage may consume Copilot Credits.
 impact: Medium. Only makers selected by an admin can create these agents, but colleagues will see the agent in Teams, email and the directory, and anyone who talks to it contributes to its shared memory.
--->
-
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[2].ui; Governance controls table / admin-path: The complete agent-blocking path ends at Agents > All agents > select an agent > Block. | Found: 5. In the Block agent or Unblock agent pane that opens, select either Block agent or Unblock agent, and then select Save. | Fix: Replace the path in controls[2].ui and the rendered table with 'Agents > All agents > select an agent > Block > Block agent > Save'. The cited page requires selecting Block agent in the confirmation pane after selecting Block. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions
-- [unsupported, major] What's changing: first paragraph / behaviour: Without this feature an agent was something that only ran behind a maker or a shared service connection. | Found: Searched: Copilot Studio agents accounts previously maker shared service connection identity. Read authoring-agent-account, admin-use-entra-agent-identities and govern-agents-identities-overview. None states this exclusive historical authentication model. | Fix: Remove 'rather than something that only runs behind a maker or a shared service connection' from the first paragraph of What's changing.
 -->

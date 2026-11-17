@@ -40,6 +40,15 @@ sources:
   - title: "Manage participant agreement for recording and transcription"
     url: "https://learn.microsoft.com/microsoftteams/participant-agreement-recording-transcription"
     kind: "learn"
+  - title: "Search the audit log"
+    url: "https://learn.microsoft.com/purview/audit-search"
+    kind: "learn"
+  - title: "Audit log activities"
+    url: "https://learn.microsoft.com/purview/audit-log-activities#teams-activities"
+    kind: "learn"
+  - title: "Search-UnifiedAuditLog"
+    url: "https://learn.microsoft.com/powershell/module/exchangepowershell/search-unifiedauditlog"
+    kind: "learn"
 videos: []
 related: ["microsoft-teams-automatic-recording-indicator-for-call-queue-calls-on-mobile"]
 controls:
@@ -85,31 +94,39 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Teams calling audit logs > Added information about call participants filter"
-      docs: "https://learn.microsoft.com/microsoftteams/call-recording-transcription-captions"
-    api: null
-    note: "Learn gives the filter name only. Whether PSTN keypad choices are logged under it is not stated."
+      path: "Audit > Search > Activities - friendly names > Added information about call participants"
+      docs: "https://learn.microsoft.com/purview/audit-search"
+    api:
+      kind: "powershell"
+      call: "Search-UnifiedAuditLog -StartDate <start date> -EndDate <end date> -Operations CallParticipantDetail"
+      docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/search-unifiedauditlog"
+    note: "Run the cmdlet in Exchange Online PowerShell. Whether PSTN keypad choices are logged under this activity is not stated."
 confidence: "medium"
 created: "2026-11-16"
-updated: "2026-11-16"
+updated: "2026-11-17"
 roadmapModified: "2026-10-23T21:59:27"
 changes:
   - date: "2026-11-16"
     note: "First briefing for this item, based on roadmap item 577543 and Message Center post MC1530950."
   - date: "2026-11-16"
     note: "Corrected the consent setting's admin path (adds Edit), noted the cmdlet reference's not-yet-released banner, removed unsupported claims and added a consent audit row."
-version: 2
+  - date: "2026-11-17"
+    note: "Corrected the audit-log control: added the Purview Audit > Search path and the Search-UnifiedAuditLog call with the CallParticipantDetail operation, and dropped the unrelated policy-assignment checklist step."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 51 statements contradicted, 1 unconfirmed; taken offline until corrected"
+version: 3
 verification:
   status: "held"
-  date: "2026-11-16"
-  version: 2
+  date: "2026-11-17"
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 48
-  confirmed: 45
-  unconfirmed: 0
-  contradicted: 3
-  attempts: 2
+  claims: 51
+  confirmed: 49
+  unconfirmed: 1
+  contradicted: 1
+  attempts: 3
+  hash: "eb2958cfa7a25f1146104351f849567c"
 ---
 
 ## What's changing
@@ -167,7 +184,6 @@ The roadmap record lists Worldwide (Standard Multi-Tenant) and the platforms And
 
 - Review every Teams calling policy in the Teams admin center under Voice > Calling policies and note which have Require participant agreement for recording and transcription turned on.
 - Decide whether one-to-one PSTN calls for your staff should require consent, and enable the setting only in the policies that need it.
-- Check that those policies are assigned to the intended users, especially staff who take external phone calls.
 - Draft guidance for users and the help desk: PSTN callers press 1 to consent or 2 to decline, and declining callers stay muted.
 
 ### At rollout
@@ -178,7 +194,7 @@ The roadmap record lists Worldwide (Standard Multi-Tenant) and the platforms And
 ### After rollout
 
 - Place test calls from an external phone and confirm that the prompt plays and that a declining caller stays muted.
-- Use the Added information about call participants filter in the Teams calling audit logs in Purview to review consent data, and check whether keypad choices appear.
+- Review consent data in the Microsoft Purview portal: go to Audit > Search, set a date range, select Added information about call participants under Activities - friendly names, then select Search. Check whether keypad choices appear.
 - Revisit the policy settings if declined consent leaves gaps in records you need.
 
 ## Governance controls
@@ -192,7 +208,7 @@ The roadmap record lists Worldwide (Standard Multi-Tenant) and the platforms And
 <tr><td data-label="Control"><strong>A PSTN-only or keypad-only consent switch</strong><br><small class="controls__note">Microsoft's notice says no new admin policy setting is introduced.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether users can record 1:1 and PSTN calls at all</strong><br><small>User</small><br><small class="controls__note">Existing control over recording; it does not manage consent.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Voice › Calling policies › policy › Cloud recording for calling <a href="https://learn.microsoft.com/microsoftteams/call-recording-transcription-captions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsCallingPolicy -Identity Global -AllowCloudRecordingForCalls $true</code> <a href="https://learn.microsoft.com/microsoftteams/call-recording-transcription-captions" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether users can transcribe 1:1 and PSTN calls at all</strong><br><small>User</small><br><small class="controls__note">Existing control over transcription; it does not manage consent.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Voice › Calling policies › policy › Transcription <a href="https://learn.microsoft.com/microsoftteams/call-recording-transcription-captions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsCallingPolicy -Identity Global -AllowTranscriptionForCalling $true</code> <a href="https://learn.microsoft.com/microsoftteams/call-recording-transcription-captions" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Reviewing call consent data in the audit log</strong><br><small>Tenant</small><br><small class="controls__note">Learn gives the filter name only. Whether PSTN keypad choices are logged under it is not stated.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Teams calling audit logs › Added information about call participants filter <a href="https://learn.microsoft.com/microsoftteams/call-recording-transcription-captions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Reviewing call consent data in the audit log</strong><br><small>Tenant</small><br><small class="controls__note">Run the cmdlet in Exchange Online PowerShell. Whether PSTN keypad choices are logged under this activity is not stated.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Audit › Search › Activities - friendly names › Added information about call participants <a href="https://learn.microsoft.com/purview/audit-search" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Search-UnifiedAuditLog -StartDate &lt;start date&gt; -EndDate &lt;end date&gt; -Operations CallParticipantDetail</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/search-unifiedauditlog" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -200,7 +216,7 @@ The notice says no new policy setting is introduced, so the only switch is the e
 
 The Set-CsTeamsCallingPolicy reference marks -ExplicitRecordingConsent with the note "This feature has not been released yet and will have no changes if it is enabled or disabled" at the time of writing (November 2026), while the call recording page and MC1530950 describe it as an existing setting. Check the reference again after rollout.
 
-Cloud recording for calling and Transcription are separate existing settings. They decide whether a user can record or transcribe at all; they do not control consent. Consent data is viewed in the Teams calling audit logs in Purview, where Learn gives the filter name but no navigation path or API.
+Cloud recording for calling and Transcription are separate existing settings. They decide whether a user can record or transcribe at all; they do not control consent. Consent data can be searched in the Purview audit log under the Added information about call participants activity (operation CallParticipantDetail), in the Microsoft Purview portal or with Search-UnifiedAuditLog in Exchange Online PowerShell. Whether PSTN keypad choices are logged under that activity is not stated.
 
 ## Open questions
 
@@ -216,9 +232,11 @@ cost: Low. The only cost the sources show is admin and communication time; no li
 impact: Low. Only PSTN participants in one-to-one calls, and the Teams users who call them, in tenants whose calling policy already requires explicit consent, notice the change.
 -->
 
-<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
-The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [contradicted, blocker] controls[4].api; Governance controls table and closing prose / absence: Automation for reviewing call consent audit data is not yet documented. | Found: The underlying cmdlet used to search the audit log is an Exchange Online cmdlet, which is Search-UnifiedAuditLog. That means you can use this cmdlet to search the audit log instead of using the search tool on the Audit page in the Microsoft Purview portal. | Fix: Populate controls[4].api with Exchange Online PowerShell: Search-UnifiedAuditLog -StartDate <start date> -EndDate <end date> -Operations CallParticipantDetail; docs https://learn.microsoft.com/powershell/module/exchangepowershell/search-unifiedauditlog. Cite https://learn.microsoft.com/purview/audit-log-activities#teams-activities for the mapping from Added information about call participants to CallParticipantDetail. Replace the broad no-API statement; retain the caveat that PSTN keypad consent logging is unconfirmed. | Source: https://learn.microsoft.com/purview/audit-search
-- [contradicted, blocker] controls[4].ui; Governance controls table; Governance guidance: After rollout / admin-path: Microsoft Purview portal > Teams calling audit logs > Added information about call participants filter is the admin navigation path. | Found: Select the Audit solution card. ... On the Search page, configure the following search criteria as applicable: ... Activities - friendly names: Select the drop-down list to display the friendly names for audited activities that you can search for. | Fix: Replace the descriptive pseudo-path with Microsoft Purview portal > Audit > Search > Activities - friendly names > Added information about call participants. Use https://learn.microsoft.com/purview/audit-search as the navigation reference and also cite https://learn.microsoft.com/purview/audit-log-activities#teams-activities for the activity name. Keep the existing call-recording citation for consent applicability, and instruct readers to set a date range and select Search. | Source: https://learn.microsoft.com/purview/audit-search
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: The checklist tells readers to check which users receive a calling policy, but the controls table has no policy-assignment row. | Found: Check that those policies are assigned to the intended users, especially staff who take external phone calls. ... Whether participants must agree to recording and transcription in 1:1 calls, including PSTN ... Reviewing call consent data in the audit log | Fix: Add a controls row for which users receive each Teams calling policy, documenting policy assignment, or remove the separate checklist instruction to check assignments. The existing cited https://learn.microsoft.com/microsoftteams/teams-calling-policy describes assignment options and links to assignment instructions.
+<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] front matter: defaultState / consistency: The new keypad experience has default state admin-opt-in. | Found: No new policy configuration is required if your existing explicit consent configuration meets your organization's requirements. [...] If explicit consent is already enabled, prepare users and support teams for the new PSTN keypad consent experience. | Fix: Set defaultState to "on": this is an automatic extension for calls already covered by the existing consent policy, not a new opt-in control. Retain the existing qualification that the underlying consent policy is disabled by default and that only calls requiring consent get the new prompt.
+- [unsupported, blocker] controls[4].ui; Governance controls table / admin-path: The cited audit-search page documents Audit > Search > Activities - friendly names > Added information about call participants. | Found: Searched: opened audit-search in full for Added information about call participants; it documents Audit, Search and Activities - friendly names, but not that final activity. The activity is stated on call-recording-transcription-captions and audit-log-activities instead. | Fix: Shorten controls[4].ui.path and its rendered table path to "Audit > Search > Activities - friendly names", retaining the audit-search docs URL. The named activity can remain in the explanatory prose supported by the already cited call-recording and audit-activities pages, with the source disagreement noted separately.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Governance guidance: After rollout; Governance controls / behaviour: The call-recording page directs administrators to the Added information about call participants filter for consent data. | Found: You can view consent data using the Added information about call participants filter in the Teams calling audit logs in Purview. | Fix: Append this qualification to the audit guidance and controls[4].note: "The call-recording page directs admins to Added information about call participants, but the audit activities reference says calls that are recorded or transcribed are included in MeetingParticipantDetail." Cite https://learn.microsoft.com/purview/audit-log-activities for that qualification; do not present CallParticipantDetail as an undisputed filter for recorded calls. | Source: https://learn.microsoft.com/microsoftteams/call-recording-transcription-captions
 -->

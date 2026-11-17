@@ -40,6 +40,9 @@ sources:
   - title: "Manage transcript API access for Teams meetings"
     url: "https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access"
     kind: "learn"
+  - title: "Use Microsoft Teams administrator roles to manage Teams"
+    url: "https://learn.microsoft.com/microsoftteams/using-admin-roles"
+    kind: "learn"
 videos: []
 related: ["teams-intelligent-recap-without-saving-transcript","work-iq-real-time-transcripts","teams-ai-generated-meeting-memory"]
 controls:
@@ -102,25 +105,30 @@ controls:
     note: "Adjacent control. Learn says AI must be allowed in the meeting for an app to receive a transcript; Work IQ access is off by default."
 confidence: "medium"
 created: "2026-11-16"
-updated: "2026-11-16"
+updated: "2026-11-17"
 roadmapModified: "2026-11-04T00:02:09"
 changes:
   - date: "2026-11-16"
     note: "First briefing: Microsoft's notice MC1532253 replaces the Copilot meeting policy with MeetingAI and TranscriptionWithMeetingAI; rollout moved to December 2026 and January 2027."
   - date: "2026-11-16"
     note: "Corrected after verification: default state is now on (existing values are mapped; Learn gives parameter defaults), added the -AllowIntelligentRecap control and the Learn disagreements, and removed an unsupported claim about attendees."
-version: 2
+  - date: "2026-11-17"
+    note: "Corrected after verification: the page now states that Learn documents Teams Administrator and Teams Communications Administrator as able to manage meeting policies, replacing the claim that no role was named."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 69 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 3
 verification:
   status: "held"
-  date: "2026-11-16"
-  version: 2
+  date: "2026-11-17"
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 70
-  confirmed: 69
+  claims: 69
+  confirmed: 67
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
+  contradicted: 2
+  attempts: 3
+  hash: "7e23c22538d213d1995cdf61abea403d"
 ---
 
 ## What's changing
@@ -148,7 +156,7 @@ The change also makes AI governance in meetings more precise. This page's view: 
 
 **Security & identity**
 
-- No change to identity, permissions or roles is described in the notice or on Learn. Microsoft has not said which admin role can edit the new policies.
+- No change to identity, permissions or roles is described in the notice. Microsoft documents Teams Administrator and Teams Communications Administrator as able to manage meeting policies through Teams admin center and PowerShell; no separate role requirement is stated for these new parameters.
 
 **Autonomy & actions**
 
@@ -217,7 +225,6 @@ Intelligent Recap has its own policy parameter. Learn says turning it off disabl
 
 - What is the Teams admin center path and the exact setting labels for MeetingAI and TranscriptionWithMeetingAI once documented on Learn? Watch the Set-CsTeamsMeetingPolicy reference and the Manage Teams meeting transcription page.
 - How will a tenant know the new controls have been enabled, and is the Copilot policy retired per tenant or per policy? Watch MC1532253.
-- Which admin roles can edit MeetingAI and TranscriptionWithMeetingAI? Microsoft has not said.
 - How does -AllowIntelligentRecap interact with MeetingAI, and will administrators get controls over Who can use AI? Microsoft has not said; watch the Learn pages and MC1532253.
 - Does the roadmap target of December CY2026 or the notice's General Availability window of early to mid-January 2027 apply to each tenant? Watch the roadmap item and MC1532253.
 
@@ -227,7 +234,9 @@ cost: Low. The only cost the sources show is admin time to update scripts and ru
 impact: Medium. Teams administrators see two settings where there was one, and organisers get new AI options in their meeting options; Microsoft says the one-time mapping preserves each policy's current effective behaviour.
 -->
 
-<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
-The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [contradicted, blocker] Risk assessment: Security & identity; Open questions / absence: Microsoft has not said which administrator role can edit the new meeting policies. | Found: Teams Communications Administrator | Manage calling and meetings features within the Teams service. | Manage meetings, including meeting policies, configurations, and conference bridges. | Fix: Replace the unqualified role-absence statement and matching open question with: 'Microsoft documents Teams Administrator and Teams Communications Administrator as able to manage meeting policies through Teams admin center and PowerShell; no separate role requirement is stated for these new parameters.' Cite https://learn.microsoft.com/microsoftteams/using-admin-roles. | Source: https://learn.microsoft.com/microsoftteams/using-admin-roles
+<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[0].ui; rendered table; Governance controls / absence: The MeetingAI admin UI control is Not yet documented because Learn supplies no complete navigation path. | Found: The new settings will appear in the Teams admin center meeting policy under Recording and transcription and Copilot and other AI. | Fix: Remove the MeetingAI table row, including its rendered copy, rather than representing its known planned UI as an absent control. Retain the already verified command and planned-UI description in Governance controls prose. State: 'MC1532253 documents the planned admin UI, but Microsoft Learn does not yet give its complete navigation path (November 2026).' The standard permits describing a known control in notes without a path; it does not permit a null UI solely because its full path has not been published.
+- [contradicted, blocker] controls[1].ui; rendered table; Governance controls / absence: The TranscriptionWithMeetingAI admin UI control is Not yet documented because Learn supplies no complete navigation path. | Found: Start Transcription with AI - lets organizers choose whether transcription starts with AI. Administrators can also control this option through Teams admin center. | Fix: Remove the TranscriptionWithMeetingAI table row, including its rendered copy, rather than representing its known planned UI as an absent control. Retain the already verified command and planned-UI description in Governance controls prose. Use the same qualification as for MeetingAI: 'MC1532253 documents the planned admin UI, but Microsoft Learn does not yet give its complete navigation path (November 2026).' Do not invent a complete path by combining separate sources.
 -->

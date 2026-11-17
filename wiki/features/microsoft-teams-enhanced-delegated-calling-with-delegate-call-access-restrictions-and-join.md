@@ -69,25 +69,30 @@ controls:
     note: "No admin setting is documented at the time of writing (November 2026); the lock and tone are set by the delegator."
 confidence: "medium"
 created: "2026-11-16"
-updated: "2026-11-16"
+updated: "2026-11-17"
 roadmapModified: "2026-11-04T00:02:09"
 changes:
   - date: "2026-11-16"
     note: "First briefing for this item: lock and delegate join tone, with the existing delegation controls and the gap in admin controls."
   - date: "2026-11-16"
     note: "Corrected the delegate-permissions row: Set-CsUserCallingDelegate documents -JoinActiveCalls and -PickUpHeldCalls, with Boolean values; added the policy step to the calling policy path."
-version: 2
+  - date: "2026-11-17"
+    note: "Corrected the calling policy statement: it no longer says turning delegation off removes the lock and tone; it now states the Learn cleanup requirement. Clarified that delegation is inspected per user."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 58 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
-  date: "2026-11-16"
-  version: 2
+  status: "verified-with-gaps"
+  date: "2026-11-17"
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 68
-  confirmed: 67
-  unconfirmed: 1
+  claims: 58
+  confirmed: 58
+  unconfirmed: 0
   contradicted: 0
-  attempts: 2
+  attempts: 0
+  hash: "3b84c4eed0a1e466d7eb28799d8f1e89"
 ---
 
 ## What's changing
@@ -149,7 +154,7 @@ If nobody acts, nothing breaks: delegation keeps working as before. The practica
 
 ### Before rollout
 
-- List users who have call delegation configured, using the Teams admin center Users > Manage users > Voice tab or `Get-CsUserCallingSettings`, so you know who to brief.
+- Identify users who have call delegation configured by checking each user in the Teams admin center (Users > Manage users > user > Voice tab) or with `Get-CsUserCallingSettings -Identity <user>`, so you know who to brief.
 - Tell executives and assistants how locking works and that a locked call cannot be joined or resumed by the delegate until it is unlocked.
 - Decide whether to recommend the warning tone to users who handle confidential calls, as the notice suggests.
 
@@ -179,7 +184,7 @@ If nobody acts, nothing breaks: delegation keeps working as before. The practica
 
 The lock and the warning tone are user settings. Microsoft Learn documents no admin centre setting, policy parameter or API for either at the time of writing (November 2026), so the table shows that gap.
 
-The two documented rows govern call delegation in general. Turning delegation off in the calling policy removes the ability to configure delegation, and with it any use of the new controls, but it is not a way to govern the lock or tone on their own. The delegate permissions `-JoinActiveCalls` and `-PickUpHeldCalls` are per-delegate rights; Learn does not say how they relate to the per-call lock. Learn recommends giving delegates and delegators the same calling policy, because a delegate is bound to their own calling policy.
+The two documented rows govern call delegation in general. The calling policy controls delegation generally, not the lock or tone individually. When turning delegation off, Microsoft also requires cleanup of the user's delegation relationships in Teams admin center to avoid incorrect call routing ([Configure call forwarding and delegation settings](https://learn.microsoft.com/microsoftteams/user-call-settings)). The delegate permissions `-JoinActiveCalls` and `-PickUpHeldCalls` are per-delegate rights; Learn does not say how they relate to the per-call lock. Learn recommends giving delegates and delegators the same calling policy, because a delegate is bound to their own calling policy.
 
 ## Open questions
 
@@ -195,9 +200,8 @@ cost: Low. The only cost the sources show is admin and support time for communic
 impact: Medium. Only users with call delegation configured notice it: executives, assistants, managers and support staff. Everyone else on their calls may hear the new tone.
 -->
 
-<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
-The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [supported, minor] Governance guidance: Before rollout, first bullet / admin-path: Delegation can be inspected through Teams admin center Users > Manage users > Voice tab. | Found: go to **Users** > **Manage users** and select a licensed user.
-6. On the user details page, go to the **Voice** tab. | Fix: Include the user-selection step in this bullet, matching controls[1].ui: 'Users > Manage users > user > Voice'. The cmdlet likewise inspects individual users rather than enumerating all users by itself. | Source: https://learn.microsoft.com/microsoftteams/user-call-settings
-- [unsupported, blocker] Governance controls: paragraph beginning 'The two documented rows' / applicability: Turning delegation off in the calling policy removes any use of the new lock and warning tone controls. | Found: Searched: Teams AllowDelegation false existing delegates join active calls disabled policy lock. Read user-call-settings, Set-CsTeamsCallingPolicy and teams-calling-policy. None states this effect on the new controls; user-call-settings separately requires cleanup of existing relationships. | Fix: Remove 'and with it any use of the new controls'. Replace the sentence with: 'The calling policy controls delegation generally, not the lock or tone individually. When turning delegation off, Microsoft also requires cleanup of the user's delegation relationships in Teams admin center to avoid incorrect call routing.' Cite https://learn.microsoft.com/microsoftteams/user-call-settings.
+<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] front matter: licensing.notes; Cost and licensing; Scope / licensing: The delegation guide says both delegator and delegate need a Teams Phone licence. | Found: In the example where a manager is delegating calls to an administrative assistant, the manager and administrative assistant must each have a Teams Phone license. | Fix: Add after the licence paragraph: 'Microsoft's Teams Calling features comparison separately lists "Member of call group or call delegation" as available with a Microsoft Teams Enterprise licence alone, whereas the delegation guide says both parties need Teams Phone (https://learn.microsoft.com/microsoftteams/here-s-what-you-get-with-phone-system#teams-calling-features).' Add that comparison URL to sources. | Source: https://learn.microsoft.com/microsoftteams/user-call-settings
 -->
