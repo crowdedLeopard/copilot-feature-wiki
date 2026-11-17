@@ -17,8 +17,8 @@ impact: "low"
 defaultState: "admin-opt-in"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "The roadmap item and Microsoft's release notes say the setting is available with Teams Rooms Pro and Teams Shared Space licences. How those licences are bought or priced is not yet published in the pages read."
+  model: "included"
+  notes: "The roadmap item and Microsoft's release notes say the setting is available with Teams Rooms Pro and Teams Shared Space licences. A separate price for this setting is not published."
 audiences: ["m365-admin","service-owner"]
 tags: ["teams","teams-rooms","privacy","admin-controls","user-experience"]
 sources:
@@ -68,19 +68,23 @@ changes:
     note: "First briefing for this item: the Show organizer name setting for Teams panels, with portal paths from Microsoft Learn."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 53 statements contradicted, 5 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-17"
+    note: "Corrected after verification: licensing model set to included; removed unsupported claims about scope, data access, identity, autonomy and the meeting itself; removed the licence-pricing question and the Settings Job History step."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 49 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-17"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 53
-  confirmed: 46
-  unconfirmed: 5
-  contradicted: 2
-  attempts: 1
-  hash: "9685b34c34a7d02b9ad5f11c7cfacc97"
+  claims: 49
+  confirmed: 49
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "832e410fe8a9538eb751aad2f20bc757"
 ---
 
 ## What's changing
@@ -93,20 +97,20 @@ The roadmap item is Rolling out, with a target of October CY2026, for Worldwide 
 
 ## Why it matters
 
-Panels sit outside meeting spaces, so what they show is visible to anyone who walks past. Organiser names are personal information that some organisations treat as sensitive, for example for executive or HR meetings. This setting gives admins a documented way to remove that one detail from Calendar View without changing the meeting itself.
+Panels sit outside meeting spaces, so what they show is visible to anyone who walks past. Organiser names are personal information that some organisations treat as sensitive, for example for executive or HR meetings. This setting gives admins a documented way to remove the organiser's name from Calendar View.
 
 If nobody acts, MC1484010 says organiser names continue to be displayed in Calendar View, so existing behaviour does not change. The decision is whether your room privacy requirements justify turning it off, and on which panels.
 
 ## Risk assessment
 
 **Data exposure**
-- Organiser names remain visible in Calendar View on panels unless an admin turns the setting off; this is the default, per MC1484010. The setting controls Calendar View only. The Learn page on using Teams panels describes the Home screen meeting tile as showing the organiser's name too, and Microsoft has not said whether this setting affects that tile.
+- Organiser names remain visible in Calendar View on panels unless an admin turns the setting off; this is the default, per MC1484010. Microsoft documents the setting's effect on Calendar View. The Learn page on using Teams panels describes the Home screen meeting tile as showing the organiser's name too, and Microsoft has not said whether this setting affects that tile.
 
 **Security & identity**
-- The setting adds no new data access or identity behaviour. In the Pro Management portal, changing device settings needs the role-based access control permissions for Rooms Management, so check who holds them.
+- In the Pro Management portal, changing device settings needs the role-based access control permissions for Rooms Management, so check who holds them.
 
 **Autonomy & actions**
-- No autonomous behaviour: the setting is a display toggle that an admin sets per device.
+- Admins choose whether to display organiser names using the Show organizer name setting in the portal or on a panel device.
 
 **Change & support**
 - A setting changed from the portal is applied as a job. **Apply Now** queues the job and restarts the device as soon as possible; **Schedule Later** uses the nightly maintenance window. Jobs can fail with the reason DEVICE IN MEETING, or if the device is disconnected.
@@ -116,7 +120,7 @@ If nobody acts, MC1484010 says organiser names continue to be displayed in Calen
 
 The roadmap item and Microsoft's October 2026 Teams devices release notes say the setting is available with Teams Rooms Pro and Teams Shared Space licences. MC1484010 words it as Teams Rooms Pro and Teams Shared Spaces licences.
 
-No meter, price or separate charge for this setting is stated in the pages read. The cost shown is admin time to decide, set and verify the setting on each panel. How the two licences are bought or priced is not yet published in those pages.
+No meter, price or separate charge for this setting is stated in the pages read. The cost shown is admin time to decide, set and verify the setting on each panel. A separate price for this setting is not published.
 
 ## Scope
 
@@ -137,7 +141,6 @@ The Learn release notes list the change under October 2026 for Teams app version
 - Brief room owners and reception staff that organiser names will no longer appear in Calendar View on those panels.
 
 ### After rollout
-- Check the Settings Job History under the Activity tab of each room to confirm the change completed.
 - Walk past a changed panel and check Calendar View, and the Home screen tile, for the organiser name.
 - Revisit the Learn release notes and Message center for any change to where the setting applies.
 
@@ -162,24 +165,9 @@ The release notes and MC1484010 also say the setting can be changed on the panel
 - Does **Show organizer name** also hide the organiser's name on the Home screen meeting tile, or only in Calendar View? Watch the Teams panels pages on Microsoft Learn.
 - Where is the setting in the device Settings tab of the Pro Management portal and on the panel itself, and can it be set through device setting jobs or templates?
 - Is there a PowerShell, Graph or other API to set it at scale? Microsoft Learn documents none at the time of writing (November 2026).
-- How are Teams Rooms Pro and Teams Shared Space licences priced for this setting? Watch the Teams Rooms licensing pages.
 
 <!-- rationale
 risk: Low. The setting only removes a detail from the panel display, and Microsoft's notice MC1484010 says organiser names continue to be displayed by default, so leaving it alone keeps today's behaviour.
 cost: Low. The roadmap says the setting is available with Teams Rooms Pro and Teams Shared Space licences; the only cost shown is admin time, and no separate price is published for this setting.
 impact: Low. Room admins notice the new setting; people reading a panel notice a change only on devices where an admin turns the setting off.
--->
-
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.model / licensing: The licensing model is unknown, meaning Microsoft has not published it. | Found: This feature is available with Teams Rooms Pro and Teams Shared Space licenses. | Fix: Set licensing.model to "included". The feature is available with Teams Rooms Pro and Teams Shared Space licences, which license the panels themselves; unknown pricing does not make that entitlement unknown. Retain the named licences in licensing.notes. | Source: https://learn.microsoft.com/microsoftteams/devices/devices-release-notes
-- [unsupported, major] Risk assessment: Data exposure / behaviour: The setting controls Calendar View only. | Found: Searched: Teams panels Show organizer name settings Calendar View Home screen. Opened devices release notes and How to use Microsoft Teams panels; the setting is described for Calendar View, but no text rules out effects on other display elements. | Fix: Replace "The setting controls Calendar View only" with "Microsoft documents the setting's effect on Calendar View." Keep the following uncertainty about the Home screen tile; do not state an exclusive scope that the sources do not establish.
-- [unsupported, major] Risk assessment: Security & identity / behaviour: The setting adds no new data access. | Found: Searched: Teams panels organizer data access; Show organizer name Teams panels permissions identity autonomous meeting changes. Opened panels overview and devices release notes; they describe display behaviour, not whether data access changes. | Fix: Remove "The setting adds no new data access or identity behaviour." Retain the documented Rooms Management permissions sentence.
-- [unsupported, major] Risk assessment: Security & identity / behaviour: The setting adds no new identity behaviour. | Found: Searched: Show organizer name Teams panels permissions identity autonomous meeting changes. Opened devices release notes, panels overview and Managing settings for Teams devices; no passage states that identity behaviour is unchanged. | Fix: Remove "The setting adds no new data access or identity behaviour." Retain the documented Rooms Management permissions sentence.
-- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: The feature has no autonomous behaviour. | Found: Searched: Show organizer name Teams panels permissions identity autonomous meeting changes. Opened devices release notes and Managing settings for Teams devices; Microsoft describes an administrator-controlled display setting, not a blanket absence of autonomous behaviour. | Fix: Replace "No autonomous behaviour: the setting is a display toggle that an admin sets per device" with "Admins choose whether to display organiser names using the Show organizer name setting in the portal or on a panel device."
-- [unsupported, major] Why it matters / behaviour: Hiding the organiser name does not change the meeting itself. | Found: Searched: Show organizer name Teams panels permissions identity autonomous meeting changes. Opened devices release notes and How to use Microsoft Teams panels; Microsoft describes hiding the name in Calendar View but does not state that the meeting itself is unchanged. | Fix: Remove "without changing the meeting itself" from the sentence. Keep the supported statement that the setting removes the organiser's name from Calendar View.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.notes; Cost and licensing; Open questions / absence: The pages read for the briefing do not publish how the qualifying licences are bought or priced. | Found: Searched: Teams Rooms Pro Teams Shared Space license purchase pricing panels. Opened all four cited Learn pages: none supplies licence prices or a purchasing procedure. The separate Teams Rooms licenses and Teams Shared Space licensing pages do document purchasing. | Fix: Replace the narrow "in the pages read" purchasing gap in licensing.notes and Cost and licensing with "A separate price for this setting is not published." Remove the licence-pricing open question rather than suggesting that licence purchasing is undocumented. Purchasing guidance exists at https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/teams-shared-device-license and https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing.
-- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The governance checklist's Settings Job History monitoring step is represented in the controls table. | Found: Check the Settings Job History under the Activity tab of each room to confirm the change completed. The table contains only the organiser-name setting and bulk device settings jobs. | Fix: The After rollout step "Check the Settings Job History under the Activity tab of each room to confirm the change completed" names a monitoring control that has no corresponding row in the controls table.
 -->

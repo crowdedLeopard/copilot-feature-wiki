@@ -50,13 +50,13 @@ controls:
     scope: "user"
     ui:
       surface: "Microsoft Intune admin center"
-      path: "Devices > Configuration > Create > Configuration settings > Add settings > OneDrive"
+      path: "Devices > Configuration > Create > Windows 10 and later > Settings catalog > Create > Basics > Next > Configuration settings > Add settings > OneDrive"
       docs: "https://learn.microsoft.com/sharepoint/configure-sync-intune"
     api:
       kind: "other"
       call: "Registry value [HKCU\\SOFTWARE\\Policies\\Microsoft\\OneDrive] \"DisablePersonalSync\"=dword:00000001"
       docs: "https://learn.microsoft.com/sharepoint/use-group-policy"
-    note: "Create a Windows 10 and later, Settings catalog profile first. MC1518030 says this policy prevents personal OneDrive account sign-in in Photos; the Learn page describes it for the sync app."
+    note: "In Basics, enter a Name before selecting Next. MC1518030 says this policy prevents personal OneDrive account sign-in in Photos; the Learn page describes it for the sync app."
   - governs: "Whether Microsoft Store apps, including the updated Photos, can launch and update (DisableStoreApps)"
     scope: "other"
     ui:
@@ -77,19 +77,23 @@ changes:
     note: "First briefing: updated Photos app on Windows 11 and the existing policies Microsoft says govern personal account sign-in and app blocking."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 58 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-17"
+    note: "Corrected the Intune path for DisablePersonalSync, removed the claim that DisableStoreApps devices keep the previous Photos app, and removed the AppLocker step from the Before rollout checklist."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 60 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-17"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 58
-  confirmed: 55
-  unconfirmed: 1
-  contradicted: 2
-  attempts: 1
-  hash: "61422ada9bfbb0536c940526416207b1"
+  claims: 60
+  confirmed: 60
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "2e720067f6fb1942314c03989207218c"
 ---
 
 ## What's changing
@@ -127,7 +131,7 @@ Microsoft has not stated what Photos does by default about personal account sign
 **Change & support**
 
 - A rule that blocks Microsoft Photos by AppLocker packaged-app rule may stop working after the update unless it includes the package Microsoft.OneDrive.Photos (MC1518030).
-- If DisableStoreApps is set, the notice says the update will not be installed on affected devices, so those devices keep the previous Photos app.
+- If DisableStoreApps is set, the notice says the update will not be installed on affected devices.
 - Help desk staff will see a different Photos layout, viewer and editor; the notice recommends sharing the change with them.
 
 ## Cost and licensing
@@ -148,7 +152,6 @@ The policy statements in MC1518030 concern devices that receive the update. Disa
 
 - Identify devices where DisableStoreApps is set, because the notice says the update will not be installed on them.
 - Decide whether personal Microsoft accounts may sign in to Photos on managed devices, and record who owns that decision.
-- Review any AppLocker packaged-app rule that blocks Microsoft Photos and add the package Microsoft.OneDrive.Photos if the block should stay.
 
 ### At rollout
 
@@ -167,7 +170,7 @@ The policy statements in MC1518030 concern devices that receive the update. Disa
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether users can sign in to OneDrive with a personal Microsoft account (DisablePersonalSync)</strong><br><small>User</small><br><small class="controls__note">Create a Windows 10 and later, Settings catalog profile first. MC1518030 says this policy prevents personal OneDrive account sign-in in Photos; the Learn page describes it for the sync app.</small></td><td data-label="Admin UI"><strong>Microsoft Intune admin center</strong><br>Devices › Configuration › Create › Configuration settings › Add settings › OneDrive <a href="https://learn.microsoft.com/sharepoint/configure-sync-intune" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Registry value [HKCU\SOFTWARE\Policies\Microsoft\OneDrive] &quot;DisablePersonalSync&quot;=dword:00000001</code> <a href="https://learn.microsoft.com/sharepoint/use-group-policy" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether users can sign in to OneDrive with a personal Microsoft account (DisablePersonalSync)</strong><br><small>User</small><br><small class="controls__note">In Basics, enter a Name before selecting Next. MC1518030 says this policy prevents personal OneDrive account sign-in in Photos; the Learn page describes it for the sync app.</small></td><td data-label="Admin UI"><strong>Microsoft Intune admin center</strong><br>Devices › Configuration › Create › Windows 10 and later › Settings catalog › Create › Basics › Next › Configuration settings › Add settings › OneDrive <a href="https://learn.microsoft.com/sharepoint/configure-sync-intune" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Registry value [HKCU\SOFTWARE\Policies\Microsoft\OneDrive] &quot;DisablePersonalSync&quot;=dword:00000001</code> <a href="https://learn.microsoft.com/sharepoint/use-group-policy" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether Microsoft Store apps, including the updated Photos, can launch and update (DisableStoreApps)</strong><br><small class="controls__note">Computer Configuration. Learn says it applies only to Enterprise and Education editions and turns off all Store apps, not just Photos. MC1518030 says the Photos update is not installed on affected devices.</small></td><td data-label="Admin UI"><strong>Group Policy</strong><br>Windows Components › Store <a href="https://learn.microsoft.com/windows/client-management/mdm/policy-csp-applicationmanagement" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>OMA-URI ./Device/Vendor/MSFT/Policy/Config/ApplicationManagement/DisableStoreOriginatedApps, value 1</code> <a href="https://learn.microsoft.com/windows/client-management/mdm/policy-csp-applicationmanagement" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
@@ -189,13 +192,4 @@ AppLocker packaged-app rules are the third control the notice names; the package
 risk: Medium. An updated Photos app is rolling out to commercial devices, and Microsoft has not stated whether personal Microsoft account sign-in is allowed in it unless a policy such as DisablePersonalSync is set.
 cost: Low. The only cost the sources show is admin and help desk time; Microsoft has not published a licence or meter for the updated Photos experience.
 impact: High. The updated Photos app replaces the Photos experience users already find in Start on Windows 11 devices, so most users on those devices will notice it.
--->
-
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Risk assessment: Change & support / behaviour: Devices excluded from the update by DisableStoreApps keep the previous Photos app. | Found: Searched: "Photos" "DisableStoreApps" "previous". Opened MC1518030 and https://learn.microsoft.com/windows/client-management/mdm/policy-csp-applicationmanagement; neither guarantees retention of the old app, and the notice also covers removed apps. | Fix: Remove ', so those devices keep the previous Photos app'. Retain only: 'If DisableStoreApps is set, the notice says the update will not be installed on affected devices.'
-- [contradicted, blocker] controls[0].ui; Governance controls table / admin-path: The Intune creation path is Devices > Configuration > Create > Configuration settings > Add settings > OneDrive. | Found: 4. Select Create. 5. In Basics, enter the following properties: ... 6. Select Next. 7. In Configuration settings, select Add settings. | Fix: Replace the path in front matter and the rendered table with 'Devices > Configuration > Create > Windows 10 and later > Settings catalog > Create > Basics > Next > Configuration settings > Add settings > OneDrive'. In the note say 'In Basics, enter a Name before selecting Next.' These are the intervening steps documented at https://learn.microsoft.com/sharepoint/configure-sync-intune; the existing note about creating a profile first does not match a path that starts by creating one. | Source: https://learn.microsoft.com/sharepoint/configure-sync-intune
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: The governance checklist tells readers to update AppLocker rules, but the controls table has no AppLocker row. | Found: Review any AppLocker packaged-app rule that blocks Microsoft Photos and add the package Microsoft.OneDrive.Photos if the block should stay. The table contains only DisablePersonalSync and DisableStoreApps. | Fix: Remove the AppLocker configuration instruction from the Before rollout checklist; retain the existing explanation of Microsoft's AppLocker recommendation in Why it matters and Governance controls. Do not add a control row as part of this correction.
 -->

@@ -1,0 +1,649 @@
+{
+  "slug": "microsoft-purview-endpoint-data-loss-prevention-ability-to-protect-files-stored-in-the-exc",
+  "roadmapId": 562992,
+  "title": "Microsoft Purview Endpoint DLP: protect files in excluded Windows folders",
+  "status": "held",
+  "date": "2026-11-17",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-17",
+    "reasons": [
+      "2 blocking findings (claims 35, 44)"
+    ]
+  },
+  "counts": {
+    "claims": 50,
+    "confirmed": 47,
+    "unconfirmed": 1,
+    "contradicted": 2,
+    "blocker": 2,
+    "major": 0,
+    "minor": 2
+  },
+  "summary": "The rollout dates, prerequisite client version and existing exclusion controls are supported. However, the briefing treats licensing as unpublished despite Microsoft's published licensing rule for Windows endpoint protections, and labels the new control tenant-wide without evidence of its configuration scope.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Why it matters",
+      "type": "record",
+      "claim": "Microsoft plans Endpoint DLP protection for files in commonly excluded Windows folders, including Temp and AppData.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Endpoint DLP now extends protection to files stored in commonly excluded Windows folders, including Temp and AppData.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is February CY2027.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"February CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) and does not list other clouds.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap provides no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 28 October 2026 at 23:04:31.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-28T23:04:31\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1384420 was last updated on 28 October 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1384420",
+      "quote": "Updated October 28, 2026: We have updated the timeline.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Scope; Governance guidance; front matter: changes",
+      "type": "record",
+      "claim": "MC1384420 targets the beginning of Worldwide general availability rollout for late February 2027.",
+      "status": "supported",
+      "source": "Message Center post MC1384420",
+      "quote": "General Availability (Worldwide): We will begin rolling out in late February 2027 (previously mid-December)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "MC1384420 expects rollout to complete by mid-March 2027.",
+      "status": "supported",
+      "source": "Message Center post MC1384420",
+      "quote": "expect to complete by mid-March 2027 (previously end of December).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "record",
+      "claim": "The notice previously targeted the rollout start for mid-December.",
+      "status": "supported",
+      "source": "Message Center post MC1384420",
+      "quote": "late February 2027 (previously mid-December)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice previously targeted rollout completion for the end of December.",
+      "status": "supported",
+      "source": "Message Center post MC1384420",
+      "quote": "mid-March 2027 (previously end of December)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice sets no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1384420",
+      "quote": "Act by: none",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "summary; What's changing; Risk assessment; rationale: risk",
+      "type": "record",
+      "claim": "Policy checks on protected excluded files apply during copying.",
+      "status": "supported",
+      "source": "Message Center post MC1384420",
+      "quote": "policy checks will apply during key egress actions, including copying",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "summary; What's changing; Risk assessment; rationale: risk",
+      "type": "record",
+      "claim": "Policy checks on protected excluded files apply during printing.",
+      "status": "supported",
+      "source": "Message Center post MC1384420",
+      "quote": "policy checks will apply during key egress actions, including copying, printing",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Risk assessment; Governance guidance; rationale: risk",
+      "type": "record",
+      "claim": "Policy checks on protected excluded files apply during saving to network shares.",
+      "status": "supported",
+      "source": "Message Center post MC1384420",
+      "quote": "policy checks will apply during key egress actions, including copying, printing, saving to network shares",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "summary; What's changing; Risk assessment; rationale: risk",
+      "type": "record",
+      "claim": "Policy checks on protected excluded files apply during uploading to cloud services.",
+      "status": "supported",
+      "source": "Message Center post MC1384420",
+      "quote": "policy checks will apply during key egress actions, including copying, printing, saving to network shares, and uploading to cloud services",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Users in audit mode can continue their actions.",
+      "status": "supported",
+      "source": "Message Center post MC1384420",
+      "quote": "Users in audit mode can continue their actions, which will be logged for review.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Risk assessment: Data exposure; Governance guidance: After rollout",
+      "type": "record",
+      "claim": "Audit mode logs user actions involving sensitive files in protected excluded paths.",
+      "status": "supported",
+      "source": "Message Center post MC1384420",
+      "quote": "Audit mode logging will capture user actions involving sensitive files in protected excluded paths for review and analysis.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Risk assessment; rationale: risk",
+      "type": "record",
+      "claim": "Block mode prevents restricted actions, including copying to removable media, cloud uploads and printing.",
+      "status": "supported",
+      "source": "Message Center post MC1384420",
+      "quote": "Users in block mode will be prevented from performing restricted actions (for example, copying to removable media, uploading to cloud services, or printing)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Risk assessment: Autonomy & actions; Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "Block takes precedence when both audit and block policies apply to a user.",
+      "status": "supported",
+      "source": "Message Center post MC1384420",
+      "quote": "If both audit and block policies apply to a user, block takes precedence",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "Microsoft asks administrators to review excluded paths and identify paths to add to the protected exclusion paths list.",
+      "status": "supported",
+      "source": "Message Center post MC1384420",
+      "quote": "Identify which excluded paths (such as AppData and temporary directories) contain or could contain sensitive files and should be added to the protected exclusion paths list.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Governance guidance; Cost and licensing",
+      "type": "record",
+      "claim": "Administrators must update Endpoint DLP policies to enable protection for excluded folders.",
+      "status": "supported",
+      "source": "Message Center post MC1384420",
+      "quote": "Admins must review excluded Windows folder paths and update Endpoint DLP policies to enable protection for files stored in excluded folders.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: impact",
+      "type": "default",
+      "claim": "The new protection requires administrator opt-in rather than automatically changing existing enforcement on arrival.",
+      "status": "supported",
+      "source": "Message Center post MC1384420",
+      "quote": "Admins must review excluded Windows folder paths and update Endpoint DLP policies to enable protection for files stored in excluded folders.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Scope; What's changing",
+      "type": "record",
+      "claim": "The notice identifies affected administrators and users as organisations using Endpoint DLP on Windows devices.",
+      "status": "supported",
+      "source": "Message Center post MC1384420",
+      "quote": "Who is affected: Admins and users in organizations that use Microsoft Purview Endpoint Data Loss Prevention (DLP) on Windows devices",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Security & identity; Scope; Governance guidance; Cost and licensing",
+      "type": "record",
+      "claim": "Devices require Microsoft Defender anti-malware client 4.18.26051 or later before enabling the feature.",
+      "status": "supported",
+      "source": "Message Center post MC1384420",
+      "quote": "Microsoft Defender anti-malware client version 4.18.26051 or later required\nBefore enabling this feature, you must first deploy anti-malware Client version 4.18.26051 or later",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "record",
+      "claim": "Microsoft recommends an audit-mode pilot before enabling enforcement.",
+      "status": "supported",
+      "source": "Message Center post MC1384420",
+      "quote": "Stage your rollout: Start with an audit-mode pilot to assess impact before enabling enforcement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Why it matters; Governance controls",
+      "type": "behaviour",
+      "claim": "The current settings documentation says files in excluded locations are not audited.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-configure-endpoint-settings",
+      "quote": "Files in excluded locations aren't audited.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Why it matters; Risk assessment: Data exposure; Governance controls",
+      "type": "behaviour",
+      "claim": "Existing exclusions leave files created or modified in those locations outside Endpoint DLP policy enforcement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-configure-endpoint-settings",
+      "quote": "Any files that you create or modify in those locations aren't subject to DLP policy enforcement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Why it matters; Governance guidance: Before rollout",
+      "type": "default",
+      "claim": "Learn lists two AppData paths as excluded by default on Windows.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-configure-endpoint-settings",
+      "quote": "Windows file paths excluded by default\n- `%SystemDrive%\\\\Users\\\\*(1)\\\\AppData\\\\Roaming`\n- `%SystemDrive%\\\\Users\\\\*(1)\\\\AppData\\\\Local`",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Applications write files to app-data and temporary folders.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows/apps/develop/data/store-and-retrieve-app-data#storing-app-data-in-the-app-data-stores",
+      "quote": "Within its app data store, each app has system-defined root directories: one for local files, one for roaming files, and one for temporary files. Your app can add new files and new containers to each of these root directories.",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/windows/apps/develop/data/store-and-retrieve-app-data#storing-app-data-in-the-app-data-stores for the application-storage premise."
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "The supplied notice describes no change to identity or permissions.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: read MC1384420 in full, including Platforms, Action Required / Recommendations and Compliance considerations; it describes no identity or permission change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[0]; What's changing; Governance controls; Governance guidance: At rollout",
+      "type": "absence",
+      "claim": "A UI path and automation call for enabling protection of excluded folders are not yet documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Endpoint DLP protected excluded folders Windows AppData protection licensing roles enable Set-PolicyConfig'; 'Endpoint DLP protected exclusion paths Set-PolicyConfig'. Opened Configure endpoint DLP settings and Set-PolicyConfig; neither documents this new protection switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "front matter: licensing.model and notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Licensing is unknown because Microsoft has not published whether existing Endpoint DLP licences cover this extension.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/purview-billing-models",
+      "quote": "This licensing model enables you to apply Microsoft Purview controls and protections to Microsoft 365 and Windows/macOS endpoint-based assets. It's described in the Microsoft Purview service description.",
+      "severity": "blocker",
+      "fix": "Set licensing.model to 'included'. Replace the licensing notes and 'Whether this change follows the same licensing is not yet published' with: 'Existing Endpoint DLP licensing applies to Windows endpoint protections; the eligible suites are listed in the Microsoft Purview service description. No change-specific additional licence has been published as of November 2026.' Cite https://learn.microsoft.com/purview/purview-billing-models alongside the existing service-description source. Keep uncertainty limited to any additional change-specific requirement."
+    },
+    {
+      "n": 36,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The service description includes Endpoint DLP in the suites named in the briefing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW, Microsoft 365 E5/A5/F5/G5 Information Protection & Governance\nEndpoint Data Loss Prevention (DLP) | Included",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No additional licence specific to this change is published as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Endpoint DLP excluded folders license'; read the roadmap record, MC1384420, Purview service description and Purview billing models. Found existing Endpoint DLP licensing, but no additional licence specific to excluded-folder protection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No meter is documented specifically for this change.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Endpoint DLP excluded folders meter'; opened the Purview service description and Purview billing models. The billing page places Windows/macOS endpoint assets under per-user licensing and documents no meter for excluded-folder protection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Microsoft has not published the administrator roles for configuring the new setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Endpoint DLP excluded folders role'; 'Endpoint DLP excluded folders licensing roles PowerShell'. Read MC1384420, Configure endpoint DLP settings and Set-PolicyConfig; no role is named for the new protection setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[1].ui; Governance controls; Scope",
+      "type": "admin-path",
+      "claim": "Existing Windows exclusions are configured at Microsoft Purview portal > Data loss prevention > Overview > Data loss prevention settings > Endpoint settings > File path exclusions for Windows.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-configure-endpoint-settings",
+      "quote": "go to Microsoft Purview portal > Data loss prevention > Overview > Data loss prevention settings > Endpoint settings > File path exclusions for Windows.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[1].api; Governance controls",
+      "type": "command",
+      "claim": "Set-PolicyConfig -EndpointDlpGlobalSettings @(@{\"Setting\"=\"PathExclusion\"; \"Value\"=\"<path>\"}) configures an existing path exclusion.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-policyconfig?view=exchange-ps",
+      "quote": "The EndpointDlpGlobalSettings parameter specifies the global endpoints.\nExample values:\n- `@{\"Setting\"=\"PathExclusion\"; \"Value\"=\"C:\\Windows\";}`\n- `@{\"Setting\"=\"PathExclusion\"; \"Value\"=\"%AppData%\\Mozilla\";}`",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[1].note; Scope",
+      "type": "command",
+      "claim": "Set-PolicyConfig is available only in Security & Compliance PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-policyconfig?view=exchange-ps",
+      "quote": "This cmdlet is available only in Security & Compliance PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[1].scope",
+      "type": "applicability",
+      "claim": "The existing Windows folder exclusion setting has tenant scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-configure-endpoint-settings",
+      "quote": "Centrally configured settings control many aspects of endpoint data loss prevention (DLP) behavior. These settings apply to all DLP policies for devices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[0].scope; Governance controls: first row",
+      "type": "applicability",
+      "claim": "The new excluded-folder protection control has tenant-wide configuration scope.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: 'Endpoint DLP protected exclusion paths tenant'. Read MC1384420, Configure endpoint DLP settings and Set-PolicyConfig. The notice requires policy updates but does not state the new control's scope; Learn documents only the existing exclusions.",
+      "severity": "blocker",
+      "fix": "Set controls[0].scope to 'other' and add 'Configuration scope not yet published' to its note; mirror these changes in the rendered first row. Keep the existing open question about per-path, per-policy or tenant-wide configuration."
+    },
+    {
+      "n": 45,
+      "where": "Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated how editing the existing exclusion list interacts with the new protected exclusion paths list.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Endpoint DLP protected excluded folders Windows AppData protection licensing roles enable Set-PolicyConfig'; 'Endpoint DLP protected exclusion paths tenant'. Read MC1384420 and the settings and cmdlet references; none explains the interaction.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Governance controls",
+      "type": "record",
+      "claim": "MC1384420 refers to a protected exclusion paths list and an Endpoint DLP settings screenshot but supplies no navigation path or command.",
+      "status": "supported",
+      "source": "Message Center post MC1384420",
+      "quote": "Screenshot: Endpoint DLP settings for excluded Windows folders and file egress activities:\n\n[Action Required / Recommendations:]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Governance controls; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The change extends existing Endpoint DLP policies and their audit or block actions to protected excluded folders.",
+      "status": "supported",
+      "source": "Message Center post MC1384420",
+      "quote": "Update DLP policies: Extend existing Endpoint DLP policies to cover protected excluded folders where applicable.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "rationale: impact",
+      "type": "applicability",
+      "claim": "The users affected by enforcement are those covered by the Endpoint DLP policy scope, rather than automatically every user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Endpoint DLP policies can be scoped to users logging into onboarded devices. Policies are evaluated when a scoped user logs onto an onboarded device.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "front matter: cost; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "The documented change-related work supports a low indirect-cost rating for policy review, device updates, piloting and communication.",
+      "status": "supported",
+      "source": "Message Center post MC1384420",
+      "quote": "Before enabling this feature, you must first deploy anti-malware Client version 4.18.26051 or later",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance guidance: Before rollout and After rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The governance checklist asks readers to review and change Endpoint DLP policy action modes, but the controls table has no row for that control.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Move policies to block mode in stages\n\nControls: Protection of files in excluded Windows folders; Which Windows folders Endpoint DLP excludes today.",
+      "severity": "minor",
+      "fix": "The checklist steps 'Identify the Endpoint DLP policies you would extend, and which of them are in block mode' and 'Move policies to block mode in stages' have no corresponding policy-action control row. Remove these checklist bullets; retain the independently supported explanation of audit and block behaviour."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-17T09:44:36.455Z",
+    "summary": {
+      "links": 5,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=562992",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1384420",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-configure-endpoint-settings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-policyconfig?view=exchange-ps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which Windows folders Endpoint DLP excludes today",
+        "docs": "https://learn.microsoft.com/purview/dlp-configure-endpoint-settings",
+        "reachable": true,
+        "segments": [
+          "Data loss prevention",
+          "Overview",
+          "Data loss prevention settings",
+          "Endpoint settings",
+          "File path exclusions for Windows"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Which Windows folders Endpoint DLP excludes today",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-policyconfig?view=exchange-ps",
+        "reachable": true,
+        "token": "Set-PolicyConfig",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

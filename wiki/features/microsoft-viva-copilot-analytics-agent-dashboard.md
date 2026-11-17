@@ -17,8 +17,8 @@ impact: "medium"
 defaultState: "on"
 action: "prepare"
 licensing:
-  model: "unknown"
-  notes: "Learn requires at least 50 Microsoft Copilot licences assigned plus agent activity; the Agent 365 view also needs Agent 365 licensing. No separate price or licence for the dashboard is published on that page."
+  model: "included"
+  notes: "Microsoft's Copilot Dashboard licensing table lists Agent Dashboard as included with at least 50 Copilot licences or at least 50 Viva Insights licences; the Agent Dashboard page specifies at least 50 Copilot licences and agent activity. The Agent 365 view also needs Agent 365 licensing."
 audiences: ["m365-admin","finops","compliance","change-adoption"]
 tags: ["viva-insights","adoption","analytics","agents","m365-copilot","copilot-credits","viva-feature-access-management","privacy","copilot-control-system"]
 sources:
@@ -39,6 +39,12 @@ sources:
     kind: "learn"
   - title: "Delegate access to the Copilot Dashboard, Agent Dashboard, and Copilot insights"
     url: "https://learn.microsoft.com/viva/insights/org-team-insights/delegate-access"
+    kind: "learn"
+  - title: "Connect to the Microsoft Copilot Dashboard for Microsoft 365 customers"
+    url: "https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard"
+    kind: "learn"
+  - title: "Control access to features in Microsoft 365"
+    url: "https://learn.microsoft.com/viva/feature-access-management"
     kind: "learn"
 videos: []
 related: ["microsoft-viva-copilot-analytics-export-metrics-from-agent-dashboard","copilot-credits","m365-admin-center-copilot-credits-usage-report"]
@@ -78,19 +84,23 @@ changes:
     note: "Corrected: Copilot Credit metrics now carry Learn's conditions (Copilot Chat filter, Pay-As-You-Go, not in the Agent 365 view); removed the checklist bullet that had no controls row; clarified the VFAM wording."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 88 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-17"
+    note: "Corrected: policy precedence now states that user or group policies outrank a tenant-wide policy; licensing is now included per Microsoft's Copilot Dashboard licensing table; roles note added."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 90 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-17"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 88
-  confirmed: 86
+  claims: 90
+  confirmed: 90
   unconfirmed: 0
-  contradicted: 2
-  attempts: 2
-  hash: "44a01d7281cdc16f3ef1f87c98c96ec2"
+  contradicted: 0
+  attempts: 0
+  hash: "756af128c82fcc9001070f66c27bb6ab"
 ---
 
 ## What's changing
@@ -128,7 +138,9 @@ In the Copilot Agent Dashboard view, and under the conditions set out in Cost an
 
 Licence: the Learn page states that the Copilot Agent Dashboard needs at least 50 Microsoft Copilot licences assigned and agent activity. The Agent 365 view needs the same, plus Agent 365 licensing, and the **All agents** toggle does not appear without it. Notice MC1166852 likewise says tenants with at least 50 Microsoft 365 Copilot licences are affected.
 
-Meter: in the Copilot Agent Dashboard view, Copilot Credits and Active users using Copilot Credits are visible only with License set to Copilot Chat, a filter that appears only when the tenant has Copilot Chat reporting enabled, and when the organisation has enabled Pay-As-You-Go and used Copilot Credits; neither metric appears in the Agent 365 Dashboard view (see [Copilot Credits](/concepts/copilot-credits/)). Learn does not describe the dashboard itself as a meter, and no separate price for it is published on the page. The licence and price for the dashboard beyond those requirements are Not yet published.
+Microsoft's Copilot Dashboard licensing table lists Agent Dashboard as included for tenants with at least 50 Copilot licences or at least 50 Viva Insights licences; the Agent Dashboard page instead specifies at least 50 Copilot licences and agent activity. The Agent 365 view additionally requires Agent 365 licensing (Copilot Dashboard page, feature availability based on licenses).
+
+Meter: in the Copilot Agent Dashboard view, Copilot Credits and Active users using Copilot Credits are visible only with License set to Copilot Chat, a filter that appears only when the tenant has Copilot Chat reporting enabled, and when the organisation has enabled Pay-As-You-Go and used Copilot Credits; neither metric appears in the Agent 365 Dashboard view (see [Copilot Credits](/concepts/copilot-credits/)). Learn does not describe the dashboard itself as a meter, and the Agent Dashboard page gives no separate price for it.
 
 Indirect costs: admin time to set access policies and the minimum group size, and communications to leaders, delegates and any works council.
 
@@ -138,7 +150,7 @@ Indirect costs: admin time to set access policies and the minimum group size, an
 
 **Audience.** Leaders, delegates, adoption specialists and administrators using Viva Insights, in tenants with at least 50 Microsoft 365 Copilot licences (MC1166852). Learn lists the automatic-access rules: senior leaders in qualifying tenants, Global administrators, Viva Insights analysts with global partition access, users with delegate access and enabled managers, scoped to the teams they can view.
 
-**Roles.** Learn marks the access settings as applying to the AI Administrator and says Microsoft 365 Global Administrators can also manage all of them.
+**Roles.** Learn marks the access settings as applying to the AI Administrator and says Microsoft 365 Global Administrators can also manage all of them. The general VFAM feature table lists Global admin as who can manage the Viva Insights web app control, whereas the settings page allows the AI Administrator; Microsoft documents both.
 
 **Rollout.** Learn says the dashboard is on by default as part of the Viva Insights web app, and that both the web app control and the Agent Dashboard control must be enabled for access. Roadmap and notice dates differ, as set out above.
 
@@ -171,7 +183,7 @@ Indirect costs: admin time to set access policies and the minimum group size, an
 </tbody>
 </table>
 
-Both PowerShell calls create Viva Feature Access Management (VFAM) policies; the second row's UI instead manages individual and group access assignments. The settings page says the AI admin can apply the Agent Dashboard control at tenant, group or user level. The Add-VivaModuleFeaturePolicy reference says you can assign up to 10 policies per feature plus one for the entire tenant, and that the most restrictive policy applies where a user has several. The cmdlet requires the Global Administrators role or roles assigned at the feature level.
+Both PowerShell calls create Viva Feature Access Management (VFAM) policies; the second row's UI instead manages individual and group access assignments. The settings page says the AI admin can apply the Agent Dashboard control at tenant, group or user level. The Add-VivaModuleFeaturePolicy reference says you can assign up to 10 policies per feature plus one for the entire tenant, and that user or group policies take priority over a tenant-wide policy; where multiple user or group policies apply, the most restrictive applies. The cmdlet requires the Global Administrators role or roles assigned at the feature level.
 
 To reach the dashboard a user needs both controls enabled. Turning off the Viva Insights web app disables the whole app, including the Copilot Dashboard, so use the Agent Dashboard control to restrict this feature alone.
 
@@ -181,21 +193,10 @@ Other settings documented on the same Learn page, with no row because only part 
 
 - Which dates apply: the roadmap's February CY2027 target or MC1166852's February 2026 rollout window? Watch the roadmap item and Message center for a reconciled date.
 - Will the on-by-default behaviour and access rules on the preview Learn page stay the same at general availability? Watch the Learn page, which is marked preview.
-- Is any licence or charge for the dashboard beyond the 50 Microsoft Copilot licences requirement planned? Learn states no price for it.
 - Does the Agent Dashboard come to national or regional clouds? Learn says it is not currently available there; watch the roadmap item for added clouds.
 
 <!-- rationale
 risk: Medium. Microsoft Learn says the Agent Dashboard is on by default as part of the Viva Insights web app and reports agent activity by agent and by group, so leaders see usage data unless an admin sets a policy.
 cost: Low. The Learn page lists at least 50 Microsoft Copilot licences as the requirement and states no price for the dashboard itself; the known cost is admin and communication time. The dashboard reports Copilot Credit usage but is not itself described as a meter.
 impact: Medium. Leaders, delegates, analysts and Global administrators are the audience, and people with agent activity are counted in the group and agent figures they see.
--->
-
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls / behaviour: Where a user has several policies, the most restrictive policy applies, without a policy-scope qualification. | Found: The most restrictive Policy Scope Level takes precedence first. Then within a single Policy Scope Level, the most restrictive Enablement Policy takes precedence. | Fix: Replace 'the most restrictive policy applies where a user has several' with 'user or group policies take priority over a tenant-wide policy; where multiple user or group policies apply, the most restrictive applies'. This qualification is also stated in the cited Add-VivaModuleFeaturePolicy reference. | Source: https://learn.microsoft.com/viva/feature-access-management
-- [contradicted, blocker] front matter: licensing.model; Cost and licensing: Not yet published; Open questions / licensing: The dashboard licensing model is unknown or not yet published beyond the listed prerequisites. | Found: 50 or more | N/A | All features included: - Readiness page<br>- Adoption and Impact page with tenant-level and group-level metrics and HR filters<br>- Microsoft Copilot and Copilot Chat insights<br>- Agent-related insights including Agent Dashboard | Fix: Set licensing.model to 'included'. Replace the sentence claiming unpublished licensing with: 'Microsoft's Copilot Dashboard licensing table lists Agent Dashboard as included for tenants with at least 50 Copilot licences or at least 50 Viva Insights licences; the Agent Dashboard page instead specifies at least 50 Copilot licences and agent activity. The Agent 365 view additionally requires Agent 365 licensing.' Cite https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard#feature-availability-based-on-licenses and retain the Agent Dashboard citation. Remove the Open questions bullet asking whether licensing beyond the stated prerequisite is published; retain only the narrower statement that the Agent Dashboard page gives no separate dashboard price. | Source: https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard#feature-availability-based-on-licenses
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.notes; Cost and licensing; Governance guidance; rationale: cost / licensing: The Agent Dashboard Learn page requires at least 50 assigned Microsoft Copilot licences. | Found: Copilot Agent Dashboard: Your organization must have at least 50 Microsoft Copilot licenses assigned and have agent activity. | Fix: After this requirement add: 'Microsoft's Copilot Dashboard licensing table also lists Agent Dashboard as included with at least 50 Viva Insights licences, regardless of Copilot licence count; that differs from the Agent Dashboard page's stated prerequisite.' Cite https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard#feature-availability-based-on-licenses. | Source: https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard
-- [supported, minor] controls[0].note; Scope: Roles; Governance controls / role: The settings page allows AI Administrators to manage the documented dashboard and web app access controls. | Found: Applies to: AI Administrator | Fix: Add to Scope: Roles: 'The general VFAM feature table lists only Global admin for the Viva Insights web app control, whereas this settings page allows the AI Administrator; Microsoft documents both.' Cite https://learn.microsoft.com/viva/feature-access-management#viva-features-management. | Source: https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard
 -->

@@ -43,6 +43,9 @@ sources:
   - title: "Get-DlpSensitiveInformationType"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/get-dlpsensitiveinformationtype?view=exchange-ps"
     kind: "learn"
+  - title: "Add-RoleGroupMember"
+    url: "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember?view=exchange-ps"
+    kind: "learn"
 videos: []
 related: ["microsoft-purview-dspm-copilot-readiness-and-data-explorer"]
 controls:
@@ -52,8 +55,11 @@ controls:
       surface: "Microsoft Purview portal"
       path: "Settings > Roles and scopes > Role groups > role group > Edit > Choose users"
       docs: "https://learn.microsoft.com/purview/purview-permissions"
-    api: null
-    note: "Entra roles listed on the overview page also grant access. The Role management role is needed to change role groups."
+    api:
+      kind: "powershell"
+      call: "Add-RoleGroupMember -Identity \"<role-group>\" -Member \"<user-UPN>\""
+      docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember?view=exchange-ps"
+    note: "Entra roles listed on the overview page also grant access. The Role management role is needed to change role groups. Security & Compliance PowerShell; manages Purview role-group membership, not Microsoft Entra role assignments."
   - governs: "Review and baseline of sensitive information types"
     scope: "tenant"
     ui:
@@ -79,19 +85,23 @@ changes:
     note: "First briefing: Learn documents a preview Classifiers page; MC1486289 and the roadmap record give different general availability timing."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 59 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-17"
+    note: "Correction: the role-group access control now lists the Add-RoleGroupMember cmdlet as its automation, replacing the claim that none is documented."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 64 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-17"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 59
-  confirmed: 58
+  claims: 64
+  confirmed: 64
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "714519ec0da50e7fac61f2f312ae15c1"
+  contradicted: 0
+  attempts: 0
+  hash: "6609319c2ef7763c18ae9f1ee48bc5c9"
 ---
 
 ## What's changing
@@ -174,7 +184,7 @@ The cost the sources show is indirect: admin time to learn the page and to check
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which admins and role groups can open the Classifiers page</strong><br><small>Tenant</small><br><small class="controls__note">Entra roles listed on the overview page also grant access. The Role management role is needed to change role groups.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and scopes › Role groups › role group › Edit › Choose users <a href="https://learn.microsoft.com/purview/purview-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which admins and role groups can open the Classifiers page</strong><br><small>Tenant</small><br><small class="controls__note">Entra roles listed on the overview page also grant access. The Role management role is needed to change role groups. Security &amp; Compliance PowerShell; manages Purview role-group membership, not Microsoft Entra role assignments.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and scopes › Role groups › role group › Edit › Choose users <a href="https://learn.microsoft.com/purview/purview-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-RoleGroupMember -Identity &quot;&lt;role-group&gt;&quot; -Member &quot;&lt;user-UPN&gt;&quot;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember?view=exchange-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Review and baseline of sensitive information types</strong><br><small>Tenant</small><br><small class="controls__note">Security &amp; Compliance PowerShell; lists sensitive information types only. An existing control, not a switch for the new experience.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Information Protection › Classifiers <a href="https://learn.microsoft.com/purview/data-classification-overview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Get-DlpSensitiveInformationType -IncludeDetails</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/get-dlpsensitiveinformationtype?view=exchange-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Tenant-wide switch to turn the new Classifiers experience on or off</strong><br><small>Tenant</small><br><small class="controls__note">Microsoft Learn documents no such switch at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
@@ -196,10 +206,4 @@ Access to the page is decided by the roles in the first row. The SIT listing cmd
 risk: Low. Learn describes a page for managing classifiers that already exist, available alongside the existing experiences; the exposure is an edit to a classifier that policies depend on.
 cost: Low. Licensing for the new experience is not yet published and the Learn page names no licence; the cost the sources show is admin time to learn the page and check classifier changes.
 impact: Low. The audience is administrators with access to the Classifiers page through the Microsoft Entra roles or Microsoft Purview role groups that Learn lists.
--->
-
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].api; Governance controls: first row / absence: Microsoft has not documented automation for the role-group membership that grants Classifiers access. | Found: Use the Add-RoleGroupMember cmdlet to add members to a management role group. ... When you add a member to a role group, the member is given the effective permissions provided by the management roles assigned to the role group. | Fix: Replace controls[0].api null with kind powershell, call Add-RoleGroupMember -Identity "<role-group>" -Member "<user-UPN>", and docs https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember?view=exchange-ps. Update the rendered API cell to match. Add to the note: 'Security & Compliance PowerShell; manages Purview role-group membership, not Microsoft Entra role assignments.' | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember?view=exchange-ps
 -->
