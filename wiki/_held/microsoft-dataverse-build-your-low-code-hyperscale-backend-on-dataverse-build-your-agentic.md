@@ -46,17 +46,35 @@ sources:
   - title: "Microsoft Dataverse API limits overview"
     url: "https://learn.microsoft.com/power-apps/maker/data-platform/api-limits-overview"
     kind: "learn"
+  - title: "InteractiveBrowserCredential Class"
+    url: "https://learn.microsoft.com/python/api/azure-identity/azure.identity.interactivebrowsercredential?view=azure-python"
+    kind: "learn"
+  - title: "pac env"
+    url: "https://learn.microsoft.com/power-platform/developer/cli/reference/env"
+    kind: "learn"
+  - title: "Security roles and privileges for Dataverse"
+    url: "https://learn.microsoft.com/power-platform/admin/security-roles-privileges"
+    kind: "learn"
+  - title: "Create and edit security roles (privacy notices)"
+    url: "https://learn.microsoft.com/power-platform/admin/create-edit-security-role#privacy-notices"
+    kind: "learn"
+  - title: "Capacity and storage (Dataverse page in licenses)"
+    url: "https://learn.microsoft.com/power-platform/admin/capacity-storage#dataverse-page-in-licenses"
+    kind: "learn"
+  - title: "Manage Dataverse auditing"
+    url: "https://learn.microsoft.com/power-platform/admin/manage-dataverse-auditing"
+    kind: "learn"
   - title: "Which client apps may call the Dataverse API in an environment (Power Platform admin center)"
     url: "https://learn.microsoft.com/power-platform/admin/control-app-access-environment"
+    kind: "learn"
+  - title: "Which client apps may call the Dataverse API in an environment (Power Platform CLI)"
+    url: "https://learn.microsoft.com/power-platform/developer/cli/reference/env#pac-env-list-settings"
     kind: "learn"
   - title: "Which Microsoft Entra app registrations have an application user and security roles in an environment (Power Platform admin center)"
     url: "https://learn.microsoft.com/power-platform/admin/manage-application-users"
     kind: "learn"
   - title: "Which Microsoft Entra app registrations have an application user and security roles in an environment (Power Platform API)"
     url: "https://learn.microsoft.com/power-platform/admin/create-dataverseapplicationuser"
-    kind: "learn"
-  - title: "Whether Dataverse records scripted data changes and access (Power Platform admin center)"
-    url: "https://learn.microsoft.com/power-platform/admin/manage-dataverse-auditing"
     kind: "learn"
   - title: "Whether Dataverse records scripted data changes and access (REST API)"
     url: "https://learn.microsoft.com/power-apps/developer/data-platform/auditing/configure"
@@ -70,8 +88,11 @@ controls:
       surface: "Power Platform admin center"
       path: "Security > Identity and access > App access control > environment > Set up app access control > Access control"
       docs: "https://learn.microsoft.com/power-platform/admin/control-app-access-environment"
-    api: null
-    note: "General control, not SDK-specific. Requires a managed environment and the Power Platform admin or Dynamics 365 admin role. Not applied to partner apps making service-to-service calls."
+    api:
+      kind: "pac-cli"
+      call: "pac env list-settings --environment <environment-url> --filter application"
+      docs: "https://learn.microsoft.com/power-platform/developer/cli/reference/env#pac-env-list-settings"
+    note: "General control, not SDK-specific. Needs a managed environment and the Power Platform admin or Dynamics 365 admin role. Not applied to partner apps making service-to-service calls. The call reads settings; it does not change access control."
   - governs: "Which Microsoft Entra app registrations have an application user and security roles in an environment"
     scope: "environment"
     ui:
@@ -93,7 +114,7 @@ controls:
       kind: "rest"
       call: "GET [Organization URI]/api/data/v9.2/organizations?$select=isauditenabled,auditretentionperiodv2,isuseraccessauditenabled,useraccessauditinginterval"
       docs: "https://learn.microsoft.com/power-apps/developer/data-platform/auditing/configure"
-    note: "Needs the System Administrator or System Customizer role. The call reads the settings; the page says to change the same organization table columns to change them. General control, not SDK-specific."
+    note: "Needs the System Administrator or System Customizer role. The call reads the settings. Recording data changes also requires table and column auditing. User-access logging requires Log access; environment auditing alone does not enable it."
   - governs: "A switch that allows or blocks the Dataverse SDK for Python itself"
     scope: "tenant"
     ui: null
@@ -108,19 +129,23 @@ changes:
     note: "First briefing for the Dataverse SDK for Python: Learn documents install, operations and prerequisites; no SDK-specific admin switch, so general Dataverse controls apply."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 5 of 76 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-17"
+    note: "Corrected after verification: SDK application identity now follows the credential used, app access control gains a pac CLI read call, auditing guidance notes table and column auditing, and unsupported rollout and credential statements were removed."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 80 statements contradicted, 1 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-17"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 76
-  confirmed: 69
-  unconfirmed: 2
-  contradicted: 5
-  attempts: 1
-  hash: "fc9a093eed947a3507bbc57be004eb32"
+  claims: 80
+  confirmed: 79
+  unconfirmed: 1
+  contradicted: 0
+  attempts: 2
+  hash: "2735d21d84b9f854d58471edbc9d6c07"
 ---
 
 ## What's changing
@@ -148,8 +173,8 @@ Expect the first signs to come from developers and data scientists, not from a s
 
 **Security & identity**
 
-- The getting-started page shows development options (InteractiveBrowserCredential, AzureCliCredential) and production options (ClientSecretCredential, CertificateCredential). Secrets and certificates for the production options live with the developer, so know which app registrations exist.
-- Application users give a registered app access to an environment; app access control can allow or block apps by ID, but it needs a managed environment and does not cover partner apps making service-to-service calls. Microsoft's pages do not say which application ID the SDK's tokens carry, so confirm that before relying on a block list.
+- The getting-started page shows development options (InteractiveBrowserCredential, AzureCliCredential) and production options (ClientSecretCredential, CertificateCredential). Confirm who manages the production credentials and which app registrations use them.
+- Application users give a registered app access to an environment; app access control can allow or block apps by ID, but it needs a managed environment and does not cover partner apps making service-to-service calls. Application identity depends on the Azure Identity credential supplied to the SDK; InteractiveBrowserCredential accepts a client_id and otherwise uses an Azure development application. Confirm the credential and app registration before testing a block list.
 
 **Autonomy & actions**
 
@@ -173,15 +198,15 @@ Indirect costs are admin time for app registrations and security roles, and stor
 
 The roadmap record lists Worldwide (Standard Multi-Tenant) and the Web platform. It does not list the US Government clouds; that is a record fact, not a statement that the SDK is unavailable there.
 
-A caller needs access to a Dataverse environment with the security roles that the operation requires, and for custom table or column changes, privileges to customise the table. Authentication uses an Azure Identity credential. Rollout is through the PyPI package and the open-source repository, not through an environment or release channel; the roadmap's "enabled automatically" wording is not reflected on the Learn pages read.
+A caller needs access to a Dataverse environment with the security roles that the operation requires, and for custom table or column changes, privileges to customise the table. Authentication uses an Azure Identity credential. Learn documents installing the SDK from PyPI or from its GitHub source repository; the roadmap's "enabled automatically" wording is not reflected on the Learn pages read.
 
 ## Governance guidance
 
 ### Before rollout
 
-- Decide which environments developers may script against and identify the people and application users who will run SDK code, with the security roles each holds.
+- Decide which environments developers may script against and identify the application users who will run SDK code, with the security roles each holds (row 2).
 - Check whether the target environments are managed environments, because app access control requires one (row 1 of the table).
-- Turn on auditing in the environments in scope (row 3), so scripted changes are recorded.
+- Turn on environment auditing (row 3), and confirm auditing is enabled for the tables and columns whose scripted changes must be recorded.
 
 ### At rollout
 
@@ -192,7 +217,6 @@ A caller needs access to a Dataverse environment with the security roles that th
 ### After rollout
 
 - Review the audit log for the ApplicationBasedAccessDenied and ApplicationBasedAccessAllowed events to see which apps reach the environment.
-- Watch Power Platform request consumption and service protection errors for scripted callers.
 - Re-read the Learn page for an SDK-specific control before relying on the general ones.
 
 ## Governance controls
@@ -202,22 +226,24 @@ A caller needs access to a Dataverse environment with the security roles that th
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which client apps may call the Dataverse API in an environment</strong><br><small>Environment</small><br><small class="controls__note">General control, not SDK-specific. Requires a managed environment and the Power Platform admin or Dynamics 365 admin role. Not applied to partner apps making service-to-service calls.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Identity and access › App access control › environment › Set up app access control › Access control <a href="https://learn.microsoft.com/power-platform/admin/control-app-access-environment" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which client apps may call the Dataverse API in an environment</strong><br><small>Environment</small><br><small class="controls__note">General control, not SDK-specific. Needs a managed environment and the Power Platform admin or Dynamics 365 admin role. Not applied to partner apps making service-to-service calls. The call reads settings; it does not change access control.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Identity and access › App access control › environment › Set up app access control › Access control <a href="https://learn.microsoft.com/power-platform/admin/control-app-access-environment" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform CLI</strong><br><code>pac env list-settings --environment &lt;environment-url&gt; --filter application</code> <a href="https://learn.microsoft.com/power-platform/developer/cli/reference/env#pac-env-list-settings" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which Microsoft Entra app registrations have an application user and security roles in an environment</strong><br><small>Environment</small><br><small class="controls__note">The API page is marked preview and says it always adds the application user as a System Administrator, so reduce the roles afterwards. General control, not SDK-specific.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Users + permissions › Application users › + New app user <a href="https://learn.microsoft.com/power-platform/admin/manage-application-users" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform API</strong><br><code>POST https://api.bap.microsoft.com/providers/Microsoft.BusinessAppPlatform/scopes/admin/environments/{environmentIdGuid}/addAppUser?api-version=2020-10-01 with body {&quot;servicePrincipalAppId&quot;: &quot;{clientId}&quot;}</code> <a href="https://learn.microsoft.com/power-platform/admin/create-dataverseapplicationuser" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether Dataverse records scripted data changes and access</strong><br><small>Environment</small><br><small class="controls__note">Needs the System Administrator or System Customizer role. The call reads the settings; the page says to change the same organization table columns to change them. General control, not SDK-specific.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Compliance › Auditing › environment › Set up auditing › Turn on auditing <a href="https://learn.microsoft.com/power-platform/admin/manage-dataverse-auditing" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>GET [Organization URI]/api/data/v9.2/organizations?$select=isauditenabled,auditretentionperiodv2,isuseraccessauditenabled,useraccessauditinginterval</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/auditing/configure" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether Dataverse records scripted data changes and access</strong><br><small>Environment</small><br><small class="controls__note">Needs the System Administrator or System Customizer role. The call reads the settings. Recording data changes also requires table and column auditing. User-access logging requires Log access; environment auditing alone does not enable it.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Compliance › Auditing › environment › Set up auditing › Turn on auditing <a href="https://learn.microsoft.com/power-platform/admin/manage-dataverse-auditing" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>GET [Organization URI]/api/data/v9.2/organizations?$select=isauditenabled,auditretentionperiodv2,isuseraccessauditenabled,useraccessauditinginterval</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/auditing/configure" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>A switch that allows or blocks the Dataverse SDK for Python itself</strong><br><small>Tenant</small><br><small class="controls__note">Microsoft Learn documents no setting specific to the SDK at the time of writing (November 2026). The general controls above are the nearest alternatives.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-These are general Dataverse and Power Platform controls. No Microsoft page read for this briefing says they are specific to the Python SDK, and Microsoft has not said which app ID the SDK presents, so test a block list in a non-production environment before relying on it.
+These are general Dataverse and Power Platform controls. No Microsoft page read for this briefing says they are specific to the Python SDK. The application identity depends on the credential supplied to the SDK (see Risk assessment), so test a block list in a non-production environment before relying on it.
 
-App access control needs a Power Platform admin or Dynamics 365 admin role and a managed environment, and its page says it does not validate partner apps making service-to-service calls; for those, the page points to deactivating or deleting the application user. Security roles for people who run SDK code are assigned under the environment's Users + permissions settings; see the Learn page on security roles for the steps: [Security and data access in the Quick guide to Dataverse](https://learn.microsoft.com/power-apps/developer/data-platform/sdk-python/quick-guide-dataverse).
+The pac call in row 1 reads application-related organization settings; it does not change access control. A writable column is not, by itself, documentation that direct updates are supported. Row 3 reads the auditing settings; recording data changes also needs table and column auditing, and user-access logging needs Log access, which environment auditing alone does not enable.
+
+App access control needs a Power Platform admin or Dynamics 365 admin role and a managed environment, and its page says it does not validate partner apps making service-to-service calls; for those, the page points to deactivating or deleting the application user. Security roles for people who run SDK code are assigned under the environment's Users + permissions settings; see the Learn page on security roles for the steps: [Security roles and privileges for Dataverse](https://learn.microsoft.com/power-platform/admin/security-roles-privileges).
 
 ## Open questions
 
-- Which application ID do tokens from the SDK carry, and does app access control treat it as a user-context app or a service-to-service caller?
+- Which credential and app registration do our SDK callers use, and does app access control cover that authentication context?
 - Will Microsoft document an SDK-specific admin switch, or confirm that none is planned? Watch the Learn SDK pages and Message center.
-- Which licence or entitlement does a user or application need for SDK calls, and do they use the same request limits as other Dataverse clients?
+- Which licence or entitlement does a user or application need for SDK calls?
 - Will Learn document the MCP, A2A, form prediction and autofill capabilities named on the roadmap item, and in which release phase?
 - Does the roadmap's "enabled automatically" wording describe anything beyond the package being available on PyPI?
 
@@ -230,15 +256,5 @@ impact: Low. Developers, data scientists and makers who choose to install the pa
 <!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Risk assessment: Security & identity / behaviour: Secrets and certificates for production authentication live with the developer. | Found: Searched: Dataverse exported data files security roles no longer apply Python ClientSecretCredential secret certificate developer storage; read SDK get-started and Azure Python authentication search excerpts. No source specifies developer custody of production credentials. | Fix: Replace 'Secrets and certificates for the production options live with the developer, so know which app registrations exist' with 'Confirm who manages the production credentials and which app registrations use them.'
-- [contradicted, blocker] Risk assessment: Security & identity; Governance controls; Open questions / absence: Microsoft has not said which application ID the SDK presents. | Found: Client ID of the Microsoft Entra application that users will sign into. ... If not specified, users will authenticate to an Azure development application, which is not recommended for production scenarios. | Fix: Replace the documentation-gap assertions with 'Application identity depends on the Azure Identity credential supplied to the SDK; InteractiveBrowserCredential accepts a client_id and otherwise uses an Azure development application. Confirm the credential and app registration before testing a block list.' Cite https://learn.microsoft.com/python/api/azure-identity/azure.identity.interactivebrowsercredential?view=azure-python. Replace the first Open question with 'Which credential and app registration do our SDK callers use, and does app access control cover that authentication context?' | Source: https://learn.microsoft.com/python/api/azure-identity/azure.identity.interactivebrowsercredential?view=azure-python
-- [unsupported, major] Scope / behaviour: Rollout is not through an environment or release channel. | Found: Searched: Dataverse Python release channel. Opened SDK get-started and overview, and read package-reference results. Installation from PyPI or source is documented; these sources do not establish that backend availability is independent of environments or release channels. | Fix: Replace 'Rollout is through the PyPI package and the open-source repository, not through an environment or release channel' with 'Learn documents installing the SDK from PyPI or from its GitHub source repository.'
-- [contradicted, blocker] controls[0].api; Governance controls table / absence: No API or automation surface is documented for environment app access control. | Found: ApplicationBasedAccessControlMode ... LogicalName | applicationbasedaccesscontrolmode ... AllowedApplicationsForDVAccess ... BlockedApplicationsForDVAccess | Fix: Replace controls[0].api null with kind 'pac-cli', call 'pac env list-settings --environment <environment-url> --filter application', docs 'https://learn.microsoft.com/power-platform/developer/cli/reference/env#pac-env-list-settings'. Add to its note: 'This call reads application-related organization settings; it does not change access control. A writable column is not, by itself, documentation that direct updates are supported.' The command reference documents both parameters and returning organization-table columns; https://learn.microsoft.com/power-apps/developer/data-platform/organization-table explains the direct-update restriction. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/organization#writable-columns-attributes
-- [contradicted, blocker] Governance guidance: Before rollout; controls[2] governs and note / applicability: Turning on environment auditing as shown ensures scripted changes are recorded. | Found: First, turn on auditing at the environment level. To log data changes in a table, turn on auditing for the table and for the column. | Fix: Replace the checklist bullet with 'Turn on environment auditing (row 3), and confirm auditing is enabled for the tables and columns whose scripted changes must be recorded.' Add to controls[2].note: 'Recording data changes also requires table and column auditing. User-access logging requires Log access; environment auditing alone does not enable it.' The cited auditing page documents these qualifications. | Source: https://learn.microsoft.com/power-platform/admin/manage-dataverse-auditing
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Data exposure / applicability: Data extracted into a notebook or file is outside the Dataverse security boundary. | Found: However, after the data has been extracted it is no longer protected by the security boundary provided by Dynamics 365 (online) and is instead controlled directly by the customer. | Fix: Cite https://learn.microsoft.com/power-platform/admin/create-edit-security-role#privacy-notices for the extracted-data security-boundary statement. | Source: https://learn.microsoft.com/power-platform/admin/create-edit-security-role#privacy-notices
-- [supported, minor] Cost and licensing / cost: Writing large volumes of rows or files can consume Dataverse storage capacity. | Found: Dataverse - Database capacity: Tracks structured data stored directly in Dataverse, including table rows, metadata, and relational data | Fix: Cite https://learn.microsoft.com/power-platform/admin/capacity-storage#dataverse-page-in-licenses for the storage-capacity premise. The admin-time estimate is analysis and needs no correction. | Source: https://learn.microsoft.com/power-platform/admin/capacity-storage#dataverse-page-in-licenses
-- [supported, minor] Governance controls: final paragraph / admin-path: People's Dataverse security roles are managed under an environment's Users + permissions settings. | Found: Select Settings on the command bar. The Settings page for that environment is displayed. ... Select Users + Permissions > Security roles. | Fix: Replace the Quick guide to Dataverse link offered 'for the steps' with https://learn.microsoft.com/power-platform/admin/security-roles-privileges and title 'Security roles and privileges for Dataverse'; the Quick guide explains security but does not give these assignment steps. | Source: https://learn.microsoft.com/power-platform/admin/security-roles-privileges
-- [contradicted, minor] Governance guidance; Governance controls / consistency: The checklist's controls are all represented in the controls table. | Found: Checklist: 'identify the people ... with the security roles each holds'; 'Watch Power Platform request consumption'. Table: app access, application users, environment auditing and SDK switch only. | Fix: The Before rollout step taking stock of human callers' security-role assignments and the After rollout step monitoring request consumption have no corresponding control rows. Remove those checklist instructions if the table remains unchanged; do not add unverified rows.
-- [contradicted, minor] Open questions: licensing and request limits / consistency: Whether SDK calls use the same request limits as other Dataverse clients remains an open question. | Found: Cost and licensing: 'scripted traffic counts like other API traffic.' Open questions: 'do they use the same request limits as other Dataverse clients?' | Fix: Remove 'and do they use the same request limits as other Dataverse clients' from that question; applicability of the general request limits is already established in Cost and licensing.
+- [unsupported, blocker] summary / absence: There is no SDK switch in the admin centres. | Found: Searched: "Dataverse SDK for Python" "switch"; "Dataverse SDK for Python" "admin" "enable"; SDK tenant environment setting Power Platform API PowerShell pac. Read SDK overview/get-started and app access control. No source states that no SDK switch exists. | Fix: Replace 'there is no SDK switch in the admin centres' with 'Microsoft Learn documents no SDK-specific switch at the time of writing (November 2026)'. The search supports an undocumented control, not a categorical assertion that none exists.
 -->

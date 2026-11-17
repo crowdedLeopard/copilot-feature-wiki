@@ -108,15 +108,17 @@ changes:
     note: "Corrected after the independent check: the Work IQ environment path now matches the Learn page (no separate Environments step), and two checklist steps without a controls-table row were removed."
   - date: "2026-11-16"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 64 statements confirmed"
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 68 statements confirmed"
 version: 4
 verification:
   status: "verified"
-  date: "2026-11-16"
+  date: "2026-11-17"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 64
-  confirmed: 64
+  claims: 68
+  confirmed: 68
   unconfirmed: 0
   contradicted: 0
   attempts: 0

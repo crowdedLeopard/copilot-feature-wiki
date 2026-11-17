@@ -37,6 +37,9 @@ sources:
   - title: "Set-OrganizationConfig"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/set-organizationconfig"
     kind: "learn"
+  - title: "Microsoft Purview service description"
+    url: "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description"
+    kind: "learn"
 videos: []
 related: []
 controls:
@@ -76,19 +79,23 @@ changes:
     note: "First briefing for this roadmap item."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 48 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-17"
+    note: "Corrected the new Outlook timeout behaviour (1 to 9998 seconds allows override, 9999 blocks send until evaluation completes) and added the Purview service description licences."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 60 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-17"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 48
-  confirmed: 47
+  claims: 60
+  confirmed: 60
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "4a8840e4e6f0cc86968805ee2cba3e70"
+  contradicted: 0
+  attempts: 0
+  hash: "d9633740ebdf9a35fde9dde829859a11"
 ---
 
 ## What's changing
@@ -97,7 +104,7 @@ Outlook for iOS and Android is planned to support Microsoft Purview Data Loss Pr
 
 Microsoft Learn does not describe the mobile behaviour yet, so what follows about it is the roadmap's description. The Learn page for Outlook for Android, iOS and macOS DLP policy tips says that Outlook for Android and iOS "doesn't yet support" DLP Wait-to-Send and points to the Microsoft 365 Roadmap for announcements, which agrees with the roadmap status.
 
-For comparison, the Learn page for new Outlook for Windows documents the same capability as controlled through two Exchange organisation parameters: `DLPWaitOnSendEnabled` (default false) and `DLPWaitOnSendTimeout` (range 0–10,000 seconds, default 9999), which sets how long Outlook waits for evaluation before offering an override. That page describes new Outlook, not the mobile apps; Microsoft has not said that the mobile apps will read the same settings or behave the same way.
+For comparison, the Learn page for new Outlook for Windows documents the same capability as controlled through two Exchange organisation parameters: `DLPWaitOnSendEnabled` (default false) and `DLPWaitOnSendTimeout` (range 0–10,000 seconds on that page, default 9999), which sets how long Outlook waits for evaluation before offering an override. The Set-OrganizationConfig reference instead gives a valid range of 0 to 9999 seconds. For new Outlook, a timeout of 1 to 9998 seconds permits an override after that wait; 0 shows Send Anyway immediately; 9999 prevents sending until evaluation completes. That page describes new Outlook, not the mobile apps; Microsoft has not said that the mobile apps will read the same settings or behave the same way.
 
 The roadmap item is In development, with a target of November CY2026 for General Availability on Android and iOS, in Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD. The date is Microsoft's target, not a commitment.
 
@@ -111,7 +118,7 @@ Microsoft has not stated what happens on arrival, so plan on no source saying ex
 
 **Data exposure**
 - Until the feature ships, Microsoft documents that Outlook for Android and iOS does not yet support DLP Wait-to-Send, so a message sent from mobile is not documented as being held for DLP evaluation first. Any DLP rule that relies on evaluation before send is therefore not a guarantee for mobile senders.
-- If a timeout is configured on other clients, the page for new Outlook describes an override ("Send Anyway") once the timeout passes. Whether the mobile apps offer an override, and what a timeout of 0 or 9999 or more does there, is not documented.
+- For new Outlook, a timeout of 1 to 9998 seconds permits an override after that wait; 0 shows Send Anyway immediately; 9999 prevents sending until evaluation completes. Whether the mobile apps offer an override, and how any timeout value behaves there, is not documented.
 
 **Security & identity**
 - No change to identity or sign-in is described. Policy creation sits with the Purview roles; confirm who in your organisation holds them before changing DLP rules that mobile users will see.
@@ -127,7 +134,7 @@ Microsoft has not stated what happens on arrival, so plan on no source saying ex
 
 Microsoft has not published a licence or meter for DLP wait-on-send in Outlook for iOS and Android. The roadmap item names none.
 
-Two related pages give partial guidance. The Learn page for Outlook for Android, iOS and macOS DLP policy tips says the oversharing dialog is available "when used with the necessary licenses and configuration", and its licensing section names no licence. The page on oversharing pop-ups in Outlook says they require a Microsoft 365 E5 subscription along with a version of Outlook that supports them; that page's example is Outlook for Microsoft 365, so confirm whether the same condition applies to the mobile wait-on-send feature.
+Two related pages give partial guidance. The Learn page for Outlook for Android, iOS and macOS DLP policy tips says the oversharing dialog is available "when used with the necessary licenses and configuration", and its licensing section names no licence. The page on oversharing pop-ups in Outlook says they require a Microsoft 365 E5 subscription along with a version of Outlook that supports them; that page's example is Outlook for Microsoft 365, so confirm whether the same condition applies to the mobile wait-on-send feature. The Microsoft Purview service description lists additional qualifying licences for advanced Outlook for Microsoft 365 policy tips, including the oversharing dialog: Microsoft 365 E5/A5/G5; Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW; and Microsoft 365 E5/A5/F5/G5 Information Protection & Governance.
 
 The cost the sources show is indirect: admin time to configure the DLP rule and the wait, and communication to users.
 
@@ -183,13 +190,4 @@ The Microsoft 365 Apps admin center policy governs whether DLP policy tips show 
 risk: Medium. Learn says Outlook for Android and iOS does not yet support DLP wait-on-send, so mobile sends are not held for evaluation today; the default for the new support is not stated.
 cost: Low. The only cost the sources show is admin time to configure and communicate the wait; Microsoft has not published a licence or meter for the mobile feature.
 impact: Medium. Users who send mail from Outlook for iOS and Android under a DLP policy would notice a wait or override prompt if the feature is enabled; Microsoft has not said whether it starts enabled.
--->
-
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] What's changing; Risk assessment: Data exposure / behaviour: A configured new Outlook timeout offers an override once it passes, without a qualification for 9999 or higher. | Found: When DLPWaitOnSendTimeout >= 9999, user will never be allowed to send the email without DLP evaluation getting completed. | Fix: Replace the override explanation in What's changing and the corresponding Data exposure sentence with: 'For new Outlook, a timeout of 1 to 9998 seconds permits an override after that wait; 0 shows Send Anyway immediately; 9999 prevents sending until evaluation completes.' The parameter reference states these cases at https://learn.microsoft.com/powershell/module/exchangepowershell/set-organizationconfig#-dlpwaitonsendtimeout. Keep the existing statement that mobile behaviour is not documented. | Source: https://learn.microsoft.com/purview/dlp-policy-reference-new-outlook
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing / behaviour: The new Outlook page gives a DLPWaitOnSendTimeout range of 0 to 10,000 seconds. | Found: **DLPWaitOnSendTimeout***Integer*: range 0–10,000 seconds. | Fix: After the range, add: 'The Set-OrganizationConfig reference instead gives a valid range of 0 to 9999 seconds.' Cite https://learn.microsoft.com/powershell/module/exchangepowershell/set-organizationconfig#-dlpwaitonsendtimeout. | Source: https://learn.microsoft.com/purview/dlp-policy-reference-new-outlook
-- [supported, minor] front matter: licensing.notes; Cost and licensing; Open questions / licensing: The oversharing pop-ups guide requires Microsoft 365 E5 and a supporting Outlook version. | Found: Oversharing pop-ups require a Microsoft 365 **E5 subscription**, along with a version of Outlook that supports oversharing pop-ups. | Fix: After reporting that guide's requirement, add: 'The Microsoft Purview service description lists additional qualifying licences for advanced Outlook for Microsoft 365 policy tips, including the oversharing dialog: Microsoft 365 E5/A5/G5; Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW; and Microsoft 365 E5/A5/F5/G5 Information Protection & Governance.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description. Retain the uncertainty specific to planned mobile wait-on-send. | Source: https://learn.microsoft.com/purview/dlp-osp-get-started
 -->

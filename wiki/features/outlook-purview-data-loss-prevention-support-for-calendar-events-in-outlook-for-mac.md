@@ -37,7 +37,7 @@ sources:
   - title: "Which mailboxes a DLP policy covers, and whether it simulates or enforces (Microsoft Purview portal)"
     url: "https://learn.microsoft.com/purview/dlp-non-microsoft-connected-applications"
     kind: "learn"
-  - title: "Which mailboxes a DLP policy covers, and whether it simulates or enforces (PowerShell)"
+  - title: "New-DlpCompliancePolicy"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy"
     kind: "learn"
 videos: []
@@ -59,9 +59,9 @@ controls:
       docs: "https://learn.microsoft.com/purview/dlp-non-microsoft-connected-applications"
     api:
       kind: "powershell"
-      call: "New-DlpCompliancePolicy -Name <policy name> -ExchangeLocation <mailboxes> -Mode <PolicyMode>"
+      call: "New-DlpCompliancePolicy -Name <policy name> -ExchangeLocation All -Mode <PolicyMode>"
       docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy"
-    note: "General control. The UI page documents the path for another location type; the cmdlet runs in Security & Compliance PowerShell. Microsoft has not confirmed Exchange location covers calendar events."
+    note: "General control; the UI page documents another location type. Runs in Security & Compliance PowerShell. This call includes email for all users; -ExchangeLocation does not accept a mailbox list. Not confirmed for calendar events."
 confidence: "medium"
 created: "2026-11-17"
 updated: "2026-11-17"
@@ -71,19 +71,23 @@ changes:
     note: "New briefing: Purview DLP for calendar events in Outlook for Mac, In development with a November CY2026 target; default and licence not yet stated."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 44 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-17"
+    note: "Corrected the New-DlpCompliancePolicy call (-ExchangeLocation accepts only All), reworded the Block action statement as general DLP behaviour, and removed the Activity explorer checklist bullet."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 47 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-17"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 44
-  confirmed: 41
-  unconfirmed: 1
-  contradicted: 2
-  attempts: 1
-  hash: "f0b96f33572862034ae3f95e24018592"
+  claims: 47
+  confirmed: 47
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "156fc4dde747f4ee16e53c48cd22af56"
 ---
 
 ## What's changing
@@ -110,7 +114,7 @@ Microsoft has not stated what happens on arrival: whether existing Exchange-scop
 - No change to sign-in or permissions is described. DLP policy creation needs membership of one of the role groups listed on the Learn page "Create and deploy data loss prevention policies", so keep that group small.
 
 **Autonomy & actions**
-- The roadmap item mentions "policy enforcement" without detail. If a rule uses Block with override or Block, users can be stopped from sending an invite; Learn describes those actions generally, not for calendar events.
+- The roadmap item mentions "policy enforcement" without detail. Learn documents Block with override and Block as general DLP actions; Microsoft has not yet documented which actions apply to calendar events in Outlook for Mac.
 
 **Change & support**
 - Policy tips for Outlook for Android, iOS and macOS email are off by default, so an invite-specific tip may also be off until an admin enables it. Microsoft has not confirmed this for calendar events.
@@ -141,7 +145,6 @@ Existing Learn guidance for DLP policy tips in Outlook for Android, iOS and macO
 - Test with a sample invite containing a sensitive information type on Outlook for Mac, once the feature is available in your tenant, and confirm what the user sees.
 
 ### After rollout
-- Review DLP alerts and Activity explorer for events from calendar items once Microsoft confirms they are reported there.
 - Tune rules that produce false positives on meeting text before moving a policy from simulation to full enforcement.
 
 ## Governance controls
@@ -152,7 +155,7 @@ Existing Learn guidance for DLP policy tips in Outlook for Android, iOS and macO
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether Outlook shows Purview DLP policy tips (documented for email in Outlook for macOS)</strong><br><small>Tenant</small><br><small class="controls__note">General control: documented for email policy tips in Outlook for Android, iOS and macOS; Microsoft has not confirmed it applies to calendar events. Can be targeted to individuals or groups.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › Enable Purview Data Loss Prevention (DLP) policy tips in Outlook <a href="https://learn.microsoft.com/purview/dlp-outlook-mobile-policy-tip-ref" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which mailboxes a DLP policy covers, and whether it simulates or enforces</strong><br><small>Tenant</small><br><small class="controls__note">General control. The UI page documents the path for another location type; the cmdlet runs in Security &amp; Compliance PowerShell. Microsoft has not confirmed Exchange location covers calendar events.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Data Loss Prevention › Policies › + Create policy <a href="https://learn.microsoft.com/purview/dlp-non-microsoft-connected-applications" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpCompliancePolicy -Name &lt;policy name&gt; -ExchangeLocation &lt;mailboxes&gt; -Mode &lt;PolicyMode&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which mailboxes a DLP policy covers, and whether it simulates or enforces</strong><br><small>Tenant</small><br><small class="controls__note">General control; the UI page documents another location type. Runs in Security &amp; Compliance PowerShell. This call includes email for all users; -ExchangeLocation does not accept a mailbox list. Not confirmed for calendar events.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Data Loss Prevention › Policies › + Create policy <a href="https://learn.microsoft.com/purview/dlp-non-microsoft-connected-applications" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpCompliancePolicy -Name &lt;policy name&gt; -ExchangeLocation All -Mode &lt;PolicyMode&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -174,12 +177,8 @@ cost: Low. The only cost the sources show is admin and communication time; Micro
 impact: Medium. Users of Outlook for Mac who write meeting invites in the scope of a DLP policy would notice policy tips and any enforcement; users on other platforms are not named by the roadmap item.
 -->
 
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].api; Governance controls table / command: New-DlpCompliancePolicy -Name <policy name> -ExchangeLocation <mailboxes> -Mode <PolicyMode> selects the mailboxes covered by a DLP policy and its mode. | Found: The ExchangeLocation parameter specifies whether to include email messages in the DLP policy. The valid value for this parameter is All. | Fix: Replace the call in the front matter and rendered table with 'New-DlpCompliancePolicy -Name <policy name> -ExchangeLocation All -Mode <PolicyMode>'. Add to the row note: 'This call includes email for all users; -ExchangeLocation does not accept a mailbox list.' | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy
-- [unsupported, blocker] Risk assessment: Autonomy & actions / applicability: If a rule uses Block with override or Block, users can be stopped from sending a calendar invite. | Found: Searched: "Outlook" "calendar" "DLP" "policy tips" default permissions alerts Activity explorer. Read dlp-create-deploy-policy and the mobile/macOS and Outlook for Microsoft 365 references; none confirms these actions for this planned calendar capability. | Fix: Replace the sentence beginning 'If a rule uses Block with override or Block' with: 'Learn documents Block with override and Block as general DLP actions; Microsoft has not yet documented which actions apply to calendar events in Outlook for Mac.'
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; Why it matters; controls[0].note / behaviour: Microsoft Learn documents DLP policy tips for email in Outlook for Android, iOS and macOS. | Found: Outlook for Android, iOS, and macOS now supports data loss prevention (DLP) policy tips with commonly used predicates and exceptions, advanced classifiers, and override capabilities. | Fix: After the email-support statement, add: 'Microsoft's troubleshooting article still says policy tips are not supported for Outlook for Mac iOS clients, conflicting with this platform-specific reference (https://learn.microsoft.com/troubleshoot/microsoft-365/data-loss-prevention/data-loss-prevention-policy-tips#client-doesn%27t-support-mailtips).' Keep the platform-specific reference as the source for the documented email control. | Source: https://learn.microsoft.com/purview/dlp-outlook-mobile-policy-tip-ref
-- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The checklist names DLP alerts and Activity explorer as monitoring controls without corresponding controls-table rows. | Found: Review DLP alerts and Activity explorer for events from calendar items once Microsoft confirms they are reported there. | The table contains only the Outlook policy-tip switch and DLP policy creation. | Fix: Remove the checklist bullet beginning 'Review DLP alerts and Activity explorer'. Retain the existing Open questions item about whether calendar-event detections appear there; do not add unverified control rows.
+- [supported, minor] What's changing; Why it matters; controls[0].note; Governance controls / behaviour: Learn documents DLP policy tips for email in Outlook for Android, iOS and macOS. | Found: Outlook for Android, iOS, and macOS now supports data loss prevention (DLP) policy tips with commonly used predicates and exceptions, advanced classifiers, and override capabilities. | Fix: Add: 'Microsoft's troubleshooting article still says policy tips are not supported for Outlook for Mac iOS clients, conflicting with the dedicated Android, iOS and macOS reference cited here.' Cite https://learn.microsoft.com/troubleshoot/microsoft-365/purview/data-loss-prevention/data-loss-prevention-policy-tips#client-doesn't-support-mailtips. | Source: https://learn.microsoft.com/purview/dlp-outlook-mobile-policy-tip-ref
 -->

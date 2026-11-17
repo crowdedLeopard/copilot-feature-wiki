@@ -4,7 +4,7 @@ slug: "microsoft-copilot-studio-cost-visibility-in-preview-chat-and-history"
 roadmapId: 571194
 topic: "copilot-studio"
 products: ["Microsoft Copilot Studio"]
-summary: "Makers will see Copilot Credit costs in the Preview tab and agent history while testing. It is a display change for makers; administrators decide who may build and how many credits each environment can spend."
+summary: "Makers will see Copilot Credit costs in the Preview tab and agent history while testing. It is a display change for makers; administrators decide who may build and each environment's prepaid credit allocation."
 status: "in-development"
 releasePhase: ["General Availability"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -50,13 +50,13 @@ controls:
     scope: "environment"
     ui:
       surface: "Power Platform admin center"
-      path: "Licensing > Copilot Studio > Manage Copilot Credits > environment"
+      path: "Licensing > Products > Copilot Studio > Manage Copilot Credits > environment"
       docs: "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations"
     api:
       kind: "power-platform-api"
-      call: "PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01 with entitlementId MCSMessages and a TenantPool enforcement rule"
+      call: "PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01 -H \"Authorization: Bearer <access-token>\" -H \"Content-Type: application/json\" -d <body below>"
       docs: "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations"
-    note: "Power Platform Administrator, Global Administrator or an equivalent licensing role. General control: it caps credit spend, not the display."
+    note: "Needs Power Platform Administrator, Global Administrator or an equivalent licensing role. Governs prepaid capacity; clear tenant draw to contain it. Linked pay-as-you-go usage can continue. Not a display setting."
 confidence: "medium"
 created: "2026-11-17"
 updated: "2026-11-17"
@@ -66,19 +66,23 @@ changes:
     note: "First briefing: roadmap item for cost visibility in Preview chat and History, alongside the Learn pages that describe credit estimates for Microsoft Copilot harness agents."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 47 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-17"
+    note: "Corrected: environment credit allocations now described as governing prepaid capacity (linked pay-as-you-go usage can continue), admin path and allocation API request completed, Monitor qualified, inventory step reworded."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 60 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-17"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 47
-  confirmed: 43
+  claims: 60
+  confirmed: 60
   unconfirmed: 0
-  contradicted: 4
-  attempts: 1
-  hash: "b44176fc93ad039725dfb681e1572b6e"
+  contradicted: 0
+  attempts: 0
+  hash: "96f4c06d5249e225e9498326ec4bf41a"
 ---
 
 ## What's changing
@@ -87,13 +91,13 @@ The roadmap item says makers will see their consumption costs inside the Preview
 
 Microsoft Learn already describes something close for agents powered by the Microsoft Copilot harness. The Preview chat shows a running total of estimated Copilot Credits used during the current test session, and the History view in the Preview tab has a **Credits used** column for past conversations. Learn does not say whether these pages are the shipped form of this roadmap item, so treat the roadmap text as the plan and the Learn pages as the documented behaviour for that harness.
 
-The figures are estimates. Learn says the Preview and Evaluate estimates are near-real-time approximations, and that the Monitor page, updated a few times a day, shows the accurate number of credits consumed. Learn describes Monitor as the final figure and the one that reflects what is billed for the period.
+The figures are estimates. Learn says the Preview and Evaluate estimates are near-real-time approximations, and that the Monitor page, updated a few times a day, shows the accurate number of credits consumed. Learn describes Monitor as the final figure and the one that reflects what is billed for the period. Monitor becomes authoritative for the selected period once all its activities have been processed; before then it might not reflect the entire bill.
 
 ## Why it matters
 
 Cost becomes visible at build time, which matters most for agents powered by the Microsoft Copilot harness. Learn says that harness charges Copilot Credits from the moment someone starts building, and that previewing and testing consume credits. Makers can now compare how prompts, knowledge sources and tools change consumption before publishing, and service owners can expect questions about why a test session used credits.
 
-Microsoft has not stated whether this display is on for every maker or can be switched off, so plan on makers in affected environments seeing it. The display does not cap anything: the environment's credit allocation does that, and when an environment has no credits available, experiences that need them can stop working for makers and end users alike.
+Microsoft has not stated whether this display is on for every maker or can be switched off, so plan on makers in affected environments seeing it. The display does not cap anything. Environment allocations govern prepaid capacity: to contain prepaid consumption, clear **Draw from the available capacity in my tenant**; usage can still continue through a linked pay-as-you-go billing plan. When an environment has no credits available, experiences that need them can stop working for makers and end users alike.
 
 ## Risk assessment
 
@@ -131,9 +135,9 @@ The Learn pages for the Preview credit display and the History **Credits used** 
 
 ### Before rollout
 
-- Identify which environments host agents powered by the Microsoft Copilot harness, using the **Harness** column in the Power Platform admin center agent inventory (Manage > Copilot Studio), and who builds in them.
-- Review the credit allocation and the **Draw from the available capacity in my tenant** setting for those environments (first row of the controls table).
-- Brief makers that Preview and History figures are estimates and that the Monitor page in Copilot Studio shows the final credit figure.
+- Identify who builds Microsoft Copilot harness agents in each affected environment.
+- Review the credit allocation and the **Draw from the available capacity in my tenant** setting for those environments (Licensing > Products > Copilot Studio > Manage Copilot Credits > environment > Capacity overages > Draw from the available capacity in my tenant; first row of the controls table).
+- Brief makers that Preview and History figures are estimates and that the Monitor page in Copilot Studio becomes authoritative for a period once all its activities have been processed.
 
 ### At rollout
 
@@ -152,11 +156,11 @@ The Learn pages for the Preview credit display and the History **Credits used** 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Prepaid Copilot Credits allocated to an environment, and whether it can draw on tenant capacity</strong><br><small>Environment</small><br><small class="controls__note">Power Platform Administrator, Global Administrator or an equivalent licensing role. General control: it caps credit spend, not the display.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Copilot Studio › Manage Copilot Credits › environment <a href="https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform API</strong><br><code>PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01 with entitlementId MCSMessages and a TenantPool enforcement rule</code> <a href="https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Prepaid Copilot Credits allocated to an environment, and whether it can draw on tenant capacity</strong><br><small>Environment</small><br><small class="controls__note">Needs Power Platform Administrator, Global Administrator or an equivalent licensing role. Governs prepaid capacity; clear tenant draw to contain it. Linked pay-as-you-go usage can continue. Not a display setting.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Products › Copilot Studio › Manage Copilot Credits › environment <a href="https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform API</strong><br><code>PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01 -H &quot;Authorization: Bearer &lt;access-token&gt;&quot; -H &quot;Content-Type: application/json&quot; -d &lt;body below&gt;</code> <a href="https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-No admin setting for the cost display itself is documented at the time of writing (November 2026). The row above governs the spend that the display reveals. It does not hide or show the figures.
+No admin setting for the cost display itself is documented at the time of writing (November 2026). The row above governs prepaid capacity for the spend that the display reveals. It does not hide or show the figures. The request below allocates prepaid credits and disables tenant-pool draw; it does not stop consumption through a linked pay-as-you-go billing plan. Its JSON body is `{"scope":{"environmentId":"<environment-id>"},"allocatedEntitlements":[{"entitlementId":"MCSMessages","allocation":{"quantity":<credit-quantity>},"enforcementRules":[{"ruleType":"TenantPool","enabled":false}]}]}`.
 
 The Power Platform admin center also offers an agent-level monthly limit with a notification threshold and a **Stop usage** option: go to Licensing > Copilot Studio, select **Manage Agents**, select the agent, then **Set limit**. Learn describes this on the [cost management page](https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness). If an environment group rule governs the draw setting, updates made through the admin center or the API are rejected with the `TenantPoolLockedByPolicy` error.
 
@@ -168,18 +172,13 @@ The Power Platform admin center also offers an agent-level monthly limit with a 
 - Will the Preview and History estimates move closer to the Monitor figures at general availability, and what delay should makers expect?
 
 <!-- rationale
-risk: Low. The roadmap item describes cost visibility for makers, not new data access or new actions; the spend it reveals is governed by existing credit allocations.
+risk: Low. The roadmap item describes cost visibility for makers, not new data access or new actions; the prepaid capacity behind the spend it reveals is governed by existing environment credit allocations.
 cost: Variable. Testing agents powered by the Microsoft Copilot harness consumes Copilot Credits, a metered charge billed to the environment; Learn describes no separate charge for the display.
 impact: Medium. Makers who test agents in Copilot Studio are the people who see the figures; end users and most administrators do not notice it.
 -->
 
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] summary; Why it matters; controls[0].note; rationale: risk / cost: Environment credit allocations cap credit spending. | Found: An allocation isn't a boundary if the environment can continue drawing from tenant capacity or pay-as-you-go billing. ... This setting doesn't prevent consumption through a pay-as-you-go billing plan linked to the environment. | Fix: Replace the cap claim and row note with: 'Environment allocations govern prepaid capacity. To contain prepaid consumption, clear Draw from the available capacity in my tenant; usage can still continue through a linked pay-as-you-go billing plan.' In the summary replace 'how many credits each environment can spend' with 'each environment's prepaid credit allocation'. Keep this qualification wherever allocations are described as controlling spend. | Source: https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness
-- [contradicted, blocker] controls[0].ui; Governance controls table / admin-path: The cited allocation UI path is Licensing > Copilot Studio > Manage Copilot Credits > environment. | Found: In the navigation pane, select Licensing. Under Products, select Copilot Studio, and then select Manage Copilot Credits. ... Under Allocate capacity ... Under Capacity overages, select or clear Draw from the available capacity in my tenant | Fix: Replace the structured and rendered path with 'Licensing > Products > Copilot Studio > Manage Copilot Credits > environment'. The cited page explicitly names the Products heading. When giving the draw-setting location, use 'Licensing > Products > Copilot Studio > Manage Copilot Credits > environment > Capacity overages > Draw from the available capacity in my tenant'. | Source: https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations
-- [contradicted, blocker] controls[0].api; Governance controls table / command: The printed PUT call with prose about MCSMessages and a TenantPool rule is a complete allocation operation. | Found: scope = @{ environmentId = $environmentId } ... entitlementId = "MCSMessages" ... allocation = @{ quantity = 5000 } ... @{ ruleType = "TenantPool"; enabled = $false } ... -Headers $headers -ContentType "application/json" -Body $allocationBody | Fix: The endpoint and version exist; the pre-check's literal-string warning is not an endpoint error. Replace the prose call with 'PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01' and explicitly include Authorization: Bearer <access-token>, Content-Type: application/json, and body {"scope":{"environmentId":"<environment-id>"},"allocatedEntitlements":[{"entitlementId":"MCSMessages","allocation":{"quantity":<credit-quantity>},"enforcementRules":[{"ruleType":"TenantPool","enabled":false}]}]}. Identify this as allocating prepaid credits and disabling tenant-pool draw, not stopping linked pay-as-you-go consumption. Use the same complete request in the rendered table. | Source: https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; Risk assessment: Autonomy & actions; Governance guidance: Before rollout / behaviour: Monitor is the final billed-credit figure and source of truth for the period. | Found: the number might not reflect the entire bill until all activities for the selected period are processed. Once processing is complete, these values are the authoritative measure of credits consumed. | Fix: Qualify the final-figure statement with: 'Monitor becomes authoritative for the selected period once all its activities have been processed; before then it might not reflect the entire bill.' | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-understand-display
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist's instruction to take stock of agents through the Harness inventory has a corresponding controls-table row. | Found: Identify which environments host agents powered by the Microsoft Copilot harness, using the Harness column ... (Manage > Copilot Studio) ... Table contains only 'Prepaid Copilot Credits allocated to an environment, and whether it can draw on tenant capacity'. | Fix: The Before rollout inventory step has no table row. To correct without adding a control row, replace that bullet with 'Identify who builds Microsoft Copilot harness agents in each affected environment.'
+- [supported, minor] summary; controls[0].note; Why it matters; Governance controls; rationale: risk / applicability: Environment credit allocations govern the prepaid consumption described in the briefing. | Found: To contain prepaid consumption, allocate a defined amount of Copilot Credits to the environment and turn off **Draw from the available capacity in my tenant**. | Fix: Qualify the allocation guidance and row note with: 'These Power Platform controls apply while spending remains managed in the Power Platform admin center. If a Microsoft 365 admin center resource-based spending policy covers the environment, its spending policy takes precedence and the Power Platform capacity allocations and linked billing plans do not apply.' Cite https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs, which documents this exception to the cited Power Platform guidance. | Source: https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness
 -->

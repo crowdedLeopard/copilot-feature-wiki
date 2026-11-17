@@ -82,10 +82,12 @@ changes:
     note: "Corrected after the check: added Monitor's documented admin roles, seven-day log and 28-day metric retention, and the tenant-level analytics prerequisite."
   - date: "2026-11-16"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 45 statements not yet confirmed"
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 45 statements not yet confirmed"
 version: 4
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-16"
+  date: "2026-11-17"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
@@ -176,8 +178,8 @@ cost: Low. Licensing is not yet published; the only known cost is admin time to 
 impact: Low. The roadmap describes an admin-center reporting capability for site owners, makers and administrators.
 -->
 
-<!-- verifier-findings (2026-11-16, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Cost and licensing; Open questions / behaviour: General Monitor documentation states that metrics are available for up to 28 days. | Found: Metrics are available for only up to 28 days. | Fix: After the retention sentence, add: 'Microsoft's draft export documentation instead describes a 30-day window; its API contract still requires final release validation (https://learn.microsoft.com/power-platform/admin/monitoring/monitor-data-export).' | Source: https://learn.microsoft.com/power-platform/admin/monitoring/monitoring-overview
+- [supported, minor] Cost and licensing; Open questions / behaviour: General Monitor documentation states that metrics are available for up to 28 days. | Found: Metrics are available for only up to 28 days. | Fix: After the retention sentence, add: "Microsoft's prerelease Monitor metrics export documentation instead states that Monitor retains daily metric aggregates for 30 days (https://learn.microsoft.com/power-platform/admin/monitoring/monitor-data-export)." Keep the existing attribution of 28 days to the Monitor overview. | Source: https://learn.microsoft.com/power-platform/admin/monitoring/monitoring-overview
 -->

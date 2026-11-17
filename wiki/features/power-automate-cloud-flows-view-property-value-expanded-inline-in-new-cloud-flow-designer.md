@@ -17,8 +17,8 @@ impact: "low"
 defaultState: "user-opt-in"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "Not yet published for this feature. The Learn page that describes the cloud flows designer lists no licence for it, and the roadmap item names none."
+  model: "included"
+  notes: "Power Automate Premium includes the full set of cloud automation capabilities. No separate licence or meter for this inline view is stated in the reviewed documentation."
 audiences: ["maker","power-platform-admin","change-adoption"]
 tags: ["power-automate","user-experience","debugging"]
 sources:
@@ -28,6 +28,9 @@ sources:
   - title: "Explore the cloud flows designer"
     url: "https://learn.microsoft.com/power-automate/flows-designer"
     kind: "learn"
+  - title: "Types of Power Automate licenses"
+    url: "https://learn.microsoft.com/power-platform/admin/power-automate-licensing/types"
+    kind: "learn"
 videos: []
 related: []
 controls:
@@ -35,7 +38,7 @@ controls:
     scope: "maker"
     ui:
       surface: "Power Automate (maker)"
-      path: "Cloud flow designer > Layout"
+      path: "Cloud flows designer > Collapse (configuration pane) > Layout"
       docs: "https://learn.microsoft.com/power-automate/flows-designer"
     api: null
     note: "Maker-side. The Learn page does not say this is the control for the roadmap's property-value view; confirm."
@@ -53,19 +56,23 @@ changes:
     note: "New briefing for the inline property value view in the new cloud flow designer, launched per the roadmap."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 40 statements contradicted, 4 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-17"
+    note: "Corrected the Layout button path, the licensing model (Power Automate Premium includes cloud automation capabilities) and removed unsupported statements about access, flow behaviour and secure outputs testing."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 32 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-17"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 40
-  confirmed: 33
-  unconfirmed: 4
-  contradicted: 3
-  attempts: 1
-  hash: "c7ded27f5e7bfad1046dde7039efaf94"
+  claims: 32
+  confirmed: 32
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "db2e0d32646de8aa94a1271d5e1296e0"
 ---
 
 ## What's changing
@@ -80,9 +87,9 @@ The roadmap record gives the status as Launched, with a target of June CY2026, f
 
 ## Why it matters
 
-This is an authoring and debugging convenience for makers. It does not change what data a flow reads, who can open a flow or what a flow does, so most administrators need only know it exists when makers ask about it.
+This is an authoring and debugging convenience for makers, so most administrators need only know it exists when makers ask about it.
 
-If nobody acts, the roadmap says the side pane experience remains the default, so nothing changes for a maker until they switch. The one point worth a view is that run output values, which may include business data, can appear on the canvas of several cards at once. That affects screen sharing and screenshots, not access.
+If nobody acts, the roadmap says the side pane experience remains the default, so nothing changes for a maker until they switch. The one point worth a view is that run output values, which may include business data, can appear on the canvas of several cards at once. Consider screen sharing and screenshots when several cards display values.
 
 ## Risk assessment
 
@@ -93,14 +100,14 @@ If nobody acts, the roadmap says the side pane experience remains the default, s
 - No change is described: the roadmap item gives no new permission, connection or identity, and the view is part of the designer a maker already uses.
 
 **Autonomy & actions**
-- No change: the feature displays values and does not run or alter flows.
+- The roadmap describes displaying property and runtime output values on cards.
 
 **Change & support**
 - Makers who switch views may ask where values went; the roadmap says they can switch back at any time. Expect questions from makers who find the Layout button and expect it to behave as the roadmap describes.
 
 ## Cost and licensing
 
-No licence or meter is stated for this feature. The roadmap record names none, and the Learn page on the cloud flows designer lists none for it, so the licensing is not yet published for this specific view.
+Power Automate Premium includes the full set of cloud automation capabilities. No separate licence or meter for this inline view is stated in the reviewed documentation.
 
 The indirect cost is maker time to learn the view. Cost is rated low on that basis only.
 
@@ -118,7 +125,6 @@ The roadmap item refers to the new cloud flow designer and gives no prerequisite
 
 ### At rollout
 - Confirm in a test tenant that the inline view appears for a maker and that the side pane experience is unchanged until they switch.
-- Test an action with secure outputs turned on and note whether its value appears on the card, before telling makers it is safe to share screenshots.
 
 ### After rollout
 - Ask makers whether the inline view helped debugging, and collect questions on where to find the switch.
@@ -131,7 +137,7 @@ The roadmap item refers to the new cloud flow designer and gives no prerequisite
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which layout a maker uses for action properties in the designer</strong><br><small>Maker</small><br><small class="controls__note">Maker-side. The Learn page does not say this is the control for the roadmap's property-value view; confirm.</small></td><td data-label="Admin UI"><strong>Power Automate (maker)</strong><br>Cloud flow designer › Layout <a href="https://learn.microsoft.com/power-automate/flows-designer" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which layout a maker uses for action properties in the designer</strong><br><small>Maker</small><br><small class="controls__note">Maker-side. The Learn page does not say this is the control for the roadmap's property-value view; confirm.</small></td><td data-label="Admin UI"><strong>Power Automate (maker)</strong><br>Cloud flows designer › Collapse (configuration pane) › Layout <a href="https://learn.microsoft.com/power-automate/flows-designer" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Tenant or environment switch for the inline property value view</strong><br><small>Tenant</small><br><small class="controls__note">No administrator setting is documented at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -153,15 +159,8 @@ cost: Low. The only cost the sources show is maker time to learn the view; no li
 impact: Low. Only makers who author or debug cloud flows in the new designer will notice it, and only if they switch the view on.
 -->
 
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].ui; Governance controls table / admin-path: The documented maker path is Cloud flow designer > Layout. | Found: The buttons appear at the bottom-left corner of the canvas when the configuration pane is closed. | Fix: Replace the path in controls[0].ui and its rendered row with 'Cloud flows designer > Collapse (configuration pane) > Layout'. The cited article labels Collapse as the button that hides the pane; Layout appears at the bottom-left when that pane is closed. 'Cloud flow designer' itself is a descriptive location, not evidence of an invented menu. | Source: https://learn.microsoft.com/power-automate/flows-designer
-- [contradicted, blocker] front matter: licensing.model and notes; Cost and licensing / licensing: The licensing model is unknown because licensing for this designer capability has not been published. | Found: With a Power Automate Premium user license, users gain the full set of capabilities for cloud and desktop automation | Fix: Set licensing.model to 'included' and replace the licensing notes and the sentence concluding that licensing is unpublished with: 'Power Automate Premium includes the full set of cloud automation capabilities. No separate licence or meter for this inline view is stated in the reviewed documentation.' Cite https://learn.microsoft.com/power-platform/admin/power-automate-licensing/types. This does not assert that Premium is the minimum required licence. | Source: https://learn.microsoft.com/power-platform/admin/power-automate-licensing/types
-- [unsupported, major] Why it matters / behaviour: The feature does not change what data a flow reads. | Found: Searched: '"Power Automate" "inline" "view" permissions access flows' and '"Power Automate" "inline view" "does not"'. Read flows-designer and the roadmap; neither explicitly establishes unchanged flow data reads. | Fix: Remove 'It does not change what data a flow reads' from Why it matters; retain the sourced description of displaying values.
-- [unsupported, major] Why it matters / behaviour: The feature does not change who can open a flow or affect access. | Found: Searched: '"Power Automate" "inline" "view" permissions access flows'. Read flows-designer and sharing-permissions search excerpts; they describe existing permissions, not whether this feature changes them. | Fix: Remove 'who can open a flow' and replace 'That affects screen sharing and screenshots, not access' with 'Consider screen sharing and screenshots when several cards display values.'
-- [unsupported, major] Why it matters; Risk assessment: Autonomy & actions / behaviour: The feature does not change what a flow does or alter flows. | Found: Searched: '"Power Automate" "inline view" "does not"'. Read the roadmap and flows-designer; they describe displaying and configuring properties, without an explicit assurance that this feature cannot alter flows. | Fix: Remove 'or what a flow does' from Why it matters. Replace the Autonomy & actions bullet with 'The roadmap describes displaying property and runtime output values on cards.'
-- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: The feature does not run flows. | Found: Searched: '"Power Automate" "inline view" "does not"'. Read the roadmap and flows-designer, including Test button; neither states that switching to or using the inline property-value view cannot run a flow. | Fix: Remove 'does not run' as part of replacing the Autonomy & actions bullet with 'The roadmap describes displaying property and runtime output values on cards.'
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: At rollout; Governance controls table / consistency: Every control the governance checklist asks readers to test appears in the controls table. | Found: Test an action with secure outputs turned on ... | Table rows: Which layout a maker uses for action properties in the designer; Tenant or environment switch for the inline property value view. | Fix: Remove the checklist bullet 'Test an action with secure outputs turned on and note whether its value appears on the card, before telling makers it is safe to share screenshots.' The Secure outputs control it asks readers to test has no table row; retain the existing Open question rather than adding a row.
+- [supported, minor] front matter: defaultState; summary; What's changing; Why it matters; Governance guidance; rationales / default: The side pane remains the default and the inline view is a maker choice, represented as user-opt-in. | Found: You can choose which experience you prefer. The current side pane experience remains the default. You can switch to the inline view whenever you want and switch back at any time. | Fix: Keep user-opt-in and the current roadmap default. Add to What's changing: "An older release-plan entry indexed by Microsoft Learn describes inline display as the default and gives February 2026 as its general-availability target; this briefing follows the current roadmap record's side-pane default and June CY2026 target." Cite https://learn.microsoft.com/power-platform/release-plan/2025wave2/power-automate/view-property-value-expanded-inline-new-cloud-designer. The indexed excerpt says "The feature shows all that information inline by default" and "Feb 2026"; opening that URL now leads to the archived release-wave overview.
 -->

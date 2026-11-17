@@ -67,9 +67,9 @@ controls:
       docs: "https://learn.microsoft.com/purview/dlp-osp-get-started"
     api:
       kind: "powershell"
-      call: "New-DlpComplianceRule -Name <DLP Rule Name> -Policy <DLP Policy Name> -NotifyUser Owner -NotifyPolicyTipDisplayOption \"Dialog\""
+      call: "New-DlpComplianceRule -Name <name> -Policy <policy> -NotifyPolicyTipDisplayOption \"Dialog\" -ContentContainsSensitiveInformation @(@{operator=\"And\";groups=@(@{operator=\"Or\";name=\"Default\";labels=@(@{name=<GUID>;type=\"Sensitivity\"})})})"
       docs: "https://learn.microsoft.com/purview/dlp-osp-get-started"
-    note: "Existing Exchange-location DLP rules. Learn describes the dialog option for Outlook for Microsoft 365; Mac support is not confirmed."
+    note: "Existing Exchange-location DLP rules. Learn describes the dialog option for Outlook for Microsoft 365; Mac support is not confirmed. Learn's example also sets -NotifyUser Owner."
 confidence: "medium"
 created: "2026-11-17"
 updated: "2026-11-17"
@@ -79,19 +79,23 @@ changes:
     note: "First briefing: roadmap plan for Outlook for Mac wait on send, with the related settings Learn documents for other clients."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 46 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-17"
+    note: "Corrected the wait-on-send timeout and Send anyway description for Outlook for Microsoft 365, and replaced the incomplete New-DlpComplianceRule example with the full warn-rule example from Learn."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 55 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-17"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 46
-  confirmed: 44
+  claims: 55
+  confirmed: 54
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "af38dc665ec61b9816830cdb43df26fc"
+  contradicted: 1
+  attempts: 2
+  hash: "692051f1b47a858a57144bc8dbe7a2f3"
 ---
 
 ## What's changing
@@ -117,7 +121,7 @@ Microsoft has not stated what happens on arrival, so do not assume either that n
 
 **Security & identity**
 
-- On other clients, a timeout lets the user bypass the check: for Outlook for Microsoft 365, if evaluation does not finish in time a **Send anyway** button appears. For new Outlook for Windows, a timeout of 0 shows **Send Anyway** immediately. Whether Mac offers the same bypass, and how the timeout is set, is not yet documented.
+- On other clients, some timeout configurations allow a bypass. For Outlook for Microsoft 365, a configured wait of 0 to 9999 seconds offers **Send anyway** if evaluation has not completed; values above 9999 are replaced with 10000 and hold the message until evaluation completes without an override. For new Outlook for Windows, a timeout of 0 shows **Send Anyway** immediately. Whether Mac offers the same bypass, and how the timeout is set, is not yet documented.
 - DLP rules that block still apply: Learn says that if the block rules in the policy are met, the message is blocked regardless of how **Policy tips** is configured.
 
 **Autonomy & actions**
@@ -174,7 +178,7 @@ A wait-on-send check relies on a DLP policy scoped to the Exchange location. For
 <tbody>
 <tr><td data-label="Control"><strong>Wait-on-send switch and timeout (Exchange Online organisation setting)</strong><br><small>Tenant</small><br><small class="controls__note">Documented for new Outlook for Windows. General control: Microsoft has not confirmed it applies to Outlook for Mac.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-OrganizationConfig -DLPWaitOnSendEnabled $true -DLPWaitOnSendTimeout &lt;seconds&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/set-organizationconfig" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether DLP policy tips appear in Outlook for Mac</strong><br><small>User</small><br><small class="controls__note">Policy 'Enable Purview Data Loss Prevention (DLP) policy tips in Outlook'; can be targeted to individuals or groups. It governs policy tips, not wait on send.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management <a href="https://learn.microsoft.com/purview/dlp-outlook-mobile-policy-tip-ref" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which messages a DLP rule evaluates and the pre-send dialog</strong><br><small>Tenant</small><br><small class="controls__note">Existing Exchange-location DLP rules. Learn describes the dialog option for Outlook for Microsoft 365; Mac support is not confirmed.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Policies <a href="https://learn.microsoft.com/purview/dlp-osp-get-started" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpComplianceRule -Name &lt;DLP Rule Name&gt; -Policy &lt;DLP Policy Name&gt; -NotifyUser Owner -NotifyPolicyTipDisplayOption &quot;Dialog&quot;</code> <a href="https://learn.microsoft.com/purview/dlp-osp-get-started" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which messages a DLP rule evaluates and the pre-send dialog</strong><br><small>Tenant</small><br><small class="controls__note">Existing Exchange-location DLP rules. Learn describes the dialog option for Outlook for Microsoft 365; Mac support is not confirmed. Learn's example also sets -NotifyUser Owner.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Policies <a href="https://learn.microsoft.com/purview/dlp-osp-get-started" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpComplianceRule -Name &lt;name&gt; -Policy &lt;policy&gt; -NotifyPolicyTipDisplayOption &quot;Dialog&quot; -ContentContainsSensitiveInformation @(@{operator=&quot;And&quot;;groups=@(@{operator=&quot;Or&quot;;name=&quot;Default&quot;;labels=@(@{name=&lt;GUID&gt;;type=&quot;Sensitivity&quot;})})})</code> <a href="https://learn.microsoft.com/purview/dlp-osp-get-started" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -200,8 +204,7 @@ impact: Medium. Users of Outlook for Mac in scope of a DLP policy would notice a
 <!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Security & identity / behaviour: For Outlook for Microsoft 365, an unfinished evaluation after the timeout presents Send anyway, without stating the no-override configuration. | Found: If the **T** value is greater than 9999, it's replaced with 10000 and the **Send Anyway** button doesn't appear. This holds the message until the policy evaluation completes and doesn't provide the user with an *override* option. | Fix: Replace the opening and Outlook for Microsoft 365 clauses with: 'On other clients, some timeout configurations allow a bypass. For Outlook for Microsoft 365, a configured wait of 0 to 9999 seconds offers Send anyway if evaluation has not completed; values above 9999 are replaced with 10000 and hold the message until evaluation completes without an override.' Retain the separate new Outlook timeout-of-0 example. Source: https://learn.microsoft.com/purview/dlp-osp-get-started. | Source: https://learn.microsoft.com/purview/dlp-osp-get-started
-- [contradicted, blocker] controls[2].api / command: New-DlpComplianceRule -Name <DLP Rule Name> -Policy <DLP Policy Name> -NotifyUser Owner -NotifyPolicyTipDisplayOption "Dialog" is a runnable rule-creation call. | Found: Each new rule must contain one condition filter or test, and one associated action. | Fix: The call has no condition. Replace it with the complete warn-rule example from the existing cited source: New-DlpComplianceRule -Name <DLP Rule Name> -Policy <DLP Policy Name> -NotifyUser Owner -NotifyPolicyTipDisplayOption "Dialog" -ContentContainsSensitiveInformation @(@{operator = "And"; groups = @(@{operator="Or";name="Default";labels=@(@{name=<Label GUID>;type="Sensitivity"})})}) -ExceptIfRecipientDomainIs @("contoso.com","microsoft.com"). Keep docs as https://learn.microsoft.com/purview/dlp-osp-get-started and retain the Mac-applicability qualification. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule
+- [contradicted, blocker] controls[2].api; Governance controls: DLP rule API cell / command: The printed New-DlpComplianceRule call is a complete documented call for creating the pre-send dialog rule. | Found: Set the User notifications toggle to On. New-DlpComplianceRule -Name <DLP Rule Name> -Policy <DLP Policy Name> -NotifyUser Owner -NotifyPolicyTipDisplayOption "Dialog" | Fix: Replace the call in both front matter and the rendered table with the full documented warn-rule example: New-DlpComplianceRule -Name <name> -Policy <policy> -NotifyUser Owner -NotifyPolicyTipDisplayOption "Dialog" -ContentContainsSensitiveInformation @(@{operator="And";groups=@(@{operator="Or";name="Default";labels=@(@{name=<GUID>;type="Sensitivity"})})}) -ExceptIfRecipientDomainIs @("contoso.com","microsoft.com"). The current call omits the notification action and the example's trusted-domain exception; mentioning -NotifyUser Owner in a note does not put it in the runnable call. Keep the existing caveat that Mac dialog support is unconfirmed. Source: https://learn.microsoft.com/purview/dlp-osp-get-started. | Source: https://learn.microsoft.com/purview/dlp-osp-get-started
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.notes; Cost and licensing; Open questions / licensing: The oversharing setup page says oversharing pop-ups require a Microsoft 365 E5 subscription. | Found: Oversharing pop-ups require a Microsoft 365 **E5 subscription**, along with a version of Outlook that supports oversharing pop-ups. | Fix: After the comparison add: 'The Microsoft Purview service description also lists alternative licences for advanced Outlook policy tips, including oversharing dialogs; this does not establish Mac wait-on-send licensing.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description, which lists Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW, and Microsoft 365 E5/A5/F5/G5 Information Protection & Governance. | Source: https://learn.microsoft.com/purview/dlp-osp-get-started
+- [supported, minor] front matter: licensing.notes; Cost and licensing; Open questions / licensing: The cited oversharing pop-ups guide says the capability requires a Microsoft 365 E5 subscription. | Found: Oversharing pop-ups require a Microsoft 365 E5 subscription, along with a version of Outlook that supports oversharing pop-ups. | Fix: Keep the attribution to the oversharing guide, but add: 'The Microsoft Purview service description also lists Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW, and Microsoft 365 E5/A5/F5/G5 Information Protection & Governance for advanced Outlook policy tips, including oversharing dialogs.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description. Retain the caveat that Mac wait-on-send licensing is unconfirmed. | Source: https://learn.microsoft.com/purview/dlp-osp-get-started
 -->

@@ -1,0 +1,769 @@
+{
+  "slug": "onedrive-manage-access-to-the-onedrive-photos-desktop-experience",
+  "roadmapId": 568931,
+  "title": "OneDrive Photos on Windows: policies for personal account sign-in and app blocking",
+  "status": "held",
+  "date": "2026-11-17",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-17",
+    "reasons": [
+      "1 blocking finding (claim 44)"
+    ]
+  },
+  "counts": {
+    "claims": 58,
+    "confirmed": 55,
+    "unconfirmed": 1,
+    "contradicted": 2,
+    "blocker": 1,
+    "major": 1,
+    "minor": 1
+  },
+  "summary": "Hold: the Intune navigation skips required profile-creation and Basics steps before Configuration settings. The rollout and named policy effects are supported, but Microsoft does not establish that devices excluded from the update necessarily retain the previous Photos app.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap describes new administrative controls for the Windows Photos experience, including management of personal Microsoft account sign-in.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "OneDrive is adding administrative controls for the Photos experience on Windows. Organizations can manage whether users sign in with personal Microsoft accounts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Rolling out.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Rolling out\", \"statusKey\": \"rolling-out\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is August CY2026, earlier than the notice's rollout start.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"August CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The listed cloud is Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The listed platform is Desktop, with Windows identified in the description.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\"]; \"OneDrive is adding administrative controls for the Photos experience on Windows.\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: products; Scope",
+      "type": "record",
+      "claim": "The roadmap product is OneDrive.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"OneDrive\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-10-27T23:05:02.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-27T23:05:02\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "summary; What's changing; rationale: impact",
+      "type": "record",
+      "claim": "Windows 11 is receiving an updated Photos experience for browsing photos and videos across the PC and OneDrive.",
+      "status": "supported",
+      "source": "Message Center post MC1518030",
+      "quote": "We're introducing an updated Photos experience on Windows 11 to help people browse, organize, and find photos and videos across their PC and OneDrive.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1518030 was published on 2026-10-20.",
+      "status": "supported",
+      "source": "Message Center post MC1518030",
+      "quote": "Published 2026-10-20",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1518030 was last updated on 2026-10-23.",
+      "status": "supported",
+      "source": "Message Center post MC1518030",
+      "quote": "last updated 2026-10-23",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "record",
+      "claim": "The updated experience includes a refreshed photo library.",
+      "status": "supported",
+      "source": "Message Center post MC1518030",
+      "quote": "The updated experience includes a refreshed photo library",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "record",
+      "claim": "The update includes a native Photo Viewer for images opened from File Explorer or elsewhere in Windows.",
+      "status": "supported",
+      "source": "Message Center post MC1518030",
+      "quote": "a native Photo Viewer for images opened from File Explorer or elsewhere in Windows",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "record",
+      "claim": "The update includes an updated native photo editor.",
+      "status": "supported",
+      "source": "Message Center post MC1518030",
+      "quote": "an updated native photo editor",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; rationale: impact",
+      "type": "record",
+      "claim": "Users continue to find Photos in Start.",
+      "status": "supported",
+      "source": "Message Center post MC1518030",
+      "quote": "Users will continue to find Photos in Start.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "People can use Photos with local content without signing in to OneDrive.",
+      "status": "supported",
+      "source": "Message Center post MC1518030",
+      "quote": "People can use Photos with local content without signing in to OneDrive.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Risk assessment: Data exposure; Cost and licensing",
+      "type": "record",
+      "claim": "Users signing in with a work or school account can see their OneDrive photos alongside local content.",
+      "status": "supported",
+      "source": "Message Center post MC1518030",
+      "quote": "Users who sign in with a work or school account can see their OneDrive photos alongside local content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Scope; rationale: risk",
+      "type": "record",
+      "claim": "The updated experience is coming to consumer and commercial Windows 11 devices.",
+      "status": "supported",
+      "source": "Message Center post MC1518030",
+      "quote": "The experience is coming to consumer and commercial devices",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "summary; What's changing; Governance controls",
+      "type": "record",
+      "claim": "Existing controls for app installation, updates and OneDrive access continue to apply to the updated Photos experience.",
+      "status": "supported",
+      "source": "Message Center post MC1518030",
+      "quote": "will continue to respect existing controls for app installation, updates, and OneDrive access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice gives mid-October 2026 as the rollout start.",
+      "status": "supported",
+      "source": "Message Center post MC1518030",
+      "quote": "General Availability (Worldwide): We will begin rolling out mid-October 2026",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Scope; Governance guidance: After rollout",
+      "type": "record",
+      "claim": "The notice expects rollout completion by mid-December 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1518030",
+      "quote": "expect to complete by mid-December 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice dates the expected Windows Insider rollout from October 15, 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1518030",
+      "quote": "Starting October 15, 2026, the updated experience is expected to roll out to Windows Insiders over the next few days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice expects expansion to Windows 11 Retail users to start on October 26, 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1518030",
+      "quote": "We expect to start expanding to Windows 11 Retail users on October 26.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice sets no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1518030",
+      "quote": "Act by: none",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The Insider release notes describe a Gallery showing photos and videos from the PC, OneDrive and iCloud in one timeline.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows-insider/release-notes/apps/photos",
+      "quote": "Redesigned Gallery: Browse photos and videos from your PC, OneDrive, and iCloud in one timeline.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Accessing the iCloud collection requires Apple's iCloud for Windows app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows-insider/release-notes/apps/photos",
+      "quote": "Accessing your iCloud collection requires setting up Photos in Apple's iCloud for Windows app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "Microsoft Learn describes no new Photos-specific administrative setting at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Photos\" \"administrative controls\" OneDrive DisablePersonalSync Windows. Opened https://learn.microsoft.com/sharepoint/use-group-policy and https://learn.microsoft.com/windows-insider/release-notes/apps/photos; no new Photos-specific setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "summary; Why it matters",
+      "type": "record",
+      "claim": "Microsoft says most organisations need no new or immediate configuration.",
+      "status": "supported",
+      "source": "Message Center post MC1518030",
+      "quote": "For most organizations, no new or immediate configuration is required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "front matter: defaultState; Why it matters",
+      "type": "default",
+      "claim": "The updated Photos experience reaches its intended users without an administrator enabling it.",
+      "status": "supported",
+      "source": "Message Center post MC1518030",
+      "quote": "We will begin rolling out mid-October 2026 and expect to complete by mid-December 2026. For most organizations, no new or immediate configuration is required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Why it matters; Risk assessment: Security & identity; Open questions; rationale: risk",
+      "type": "absence",
+      "claim": "Microsoft has not stated the personal-account sign-in default in the updated Photos app on managed devices.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Photos\" \"personal\" \"default\" \"sign\" Windows OneDrive. Opened MC1518030, Photos release notes and https://learn.microsoft.com/sharepoint/use-group-policy; its stated default concerns sync relationships, not Photos sign-in.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Why it matters; Risk assessment: Change & support; Governance guidance; Governance controls",
+      "type": "record",
+      "claim": "Microsoft says AppLocker packaged-app rules blocking Photos must include Microsoft.OneDrive.Photos to keep blocking the updated app.",
+      "status": "supported",
+      "source": "Message Center post MC1518030",
+      "quote": "If you use AppLocker packaged-app rules to block Microsoft Photos, update those rules to include the package Microsoft.OneDrive.Photos if you intend to keep blocking it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Data exposure; Governance controls; Open questions",
+      "type": "record",
+      "claim": "The notice says DisableNucleusSync prevents use of any OneDrive account in Photos.",
+      "status": "supported",
+      "source": "Message Center post MC1518030",
+      "quote": "DisableNucleusSync prevents the use of any OneDrive account in Photos.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[0].note; Risk assessment: Security & identity; Governance guidance",
+      "type": "record",
+      "claim": "The notice says DisablePersonalSync prevents personal OneDrive account sign-in in Photos.",
+      "status": "supported",
+      "source": "Message Center post MC1518030",
+      "quote": "DisablePersonalSync prevents personal OneDrive account sign-in in Photos.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "The OneDrive policies named in the notice do not prevent using Photos with local content.",
+      "status": "supported",
+      "source": "Message Center post MC1518030",
+      "quote": "These policies restrict OneDrive functionality in Photos; they do not prevent people from using the app with local content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[1].note; Risk assessment: Change & support; Governance guidance",
+      "type": "record",
+      "claim": "The notice says the update is not installed on affected devices when the organisation disables or removes Store-originated apps using DisableStoreApps.",
+      "status": "supported",
+      "source": "Message Center post MC1518030",
+      "quote": "If your organization disables or removes Store-originated apps using DisableStoreApps, the update will not be installed on affected devices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Devices excluded from the update by DisableStoreApps keep the previous Photos app.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Photos\" \"DisableStoreApps\" \"previous\". Opened MC1518030 and https://learn.microsoft.com/windows/client-management/mdm/policy-csp-applicationmanagement; neither guarantees retention of the old app, and the notice also covers removed apps.",
+      "severity": "major",
+      "fix": "Remove ', so those devices keep the previous Photos app'. Retain only: 'If DisableStoreApps is set, the notice says the update will not be installed on affected devices.'"
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Change & support; Governance guidance",
+      "type": "record",
+      "claim": "Microsoft recommends sharing the change with the help desk if users may have questions.",
+      "status": "supported",
+      "source": "Message Center post MC1518030",
+      "quote": "Share this change with your help desk if users may have questions about the updated experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "Microsoft Learn describes no autonomous or agent behaviour for the updated Photos app.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Photos\" \"autonomous\" \"agent\" Windows app. Opened https://learn.microsoft.com/windows-insider/release-notes/apps/photos; no autonomous or agent behaviour is described.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "front matter: licensing.model and notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "A licence requirement specific to the updated Photos experience is not published, including in the roadmap, supplied notice and Photos release notes.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Windows Photos updated experience OneDrive licensing pricing subscription meter autonomous agent. Read roadmap, MC1518030, Photos release notes and OneDrive service description; no updated-Photos-specific licence requirement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No meter for the updated Photos experience is published in the checked Microsoft sources.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: OneDrive service description Photos Windows licensing storage subscription requirements. Read Photos release notes, OneDrive service description, roadmap and MC1518030; no Photos meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "The OneDrive photos shown in Photos are stored in OneDrive.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows-insider/release-notes/apps/photos",
+      "quote": "Moments: For photos saved in OneDrive, revisit memories with",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The notice does not specify the roles required to configure each policy.",
+      "status": "supported",
+      "source": "Message Center post MC1518030",
+      "quote": "Searched: required administrator roles throughout the full supplied MC1518030 notice. It names existing management controls and recommendations but specifies no administrator role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The Intune creation path is Devices > Configuration > Create > Configuration settings > Add settings > OneDrive.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/sharepoint/configure-sync-intune",
+      "quote": "4. Select Create. 5. In Basics, enter the following properties: ... 6. Select Next. 7. In Configuration settings, select Add settings.",
+      "severity": "blocker",
+      "fix": "Replace the path in front matter and the rendered table with 'Devices > Configuration > Create > Windows 10 and later > Settings catalog > Create > Basics > Next > Configuration settings > Add settings > OneDrive'. In the note say 'In Basics, enter a Name before selecting Next.' These are the intervening steps documented at https://learn.microsoft.com/sharepoint/configure-sync-intune; the existing note about creating a profile first does not match a path that starts by creating one."
+    },
+    {
+      "n": 45,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "DisablePersonalSync is enabled by setting the HKCU\\SOFTWARE\\Policies\\Microsoft\\OneDrive registry DWORD DisablePersonalSync to 1.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
+      "quote": "Enabling this policy sets the following registry key value to 1: [HKCU\\SOFTWARE\\Policies\\Microsoft\\OneDrive]\"DisablePersonalSync\"=dword:00000001",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[0].note; Governance guidance: At rollout",
+      "type": "applicability",
+      "claim": "DisablePersonalSync can be configured through Group Policy or Intune.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
+      "quote": "Prevent users from syncing personal OneDrive accounts; Applies to: Group Policy, Intune",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[0].scope; Governance controls",
+      "type": "applicability",
+      "claim": "DisablePersonalSync is a user-scope registry value.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
+      "quote": "User Configuration policies; [HKCU\\SOFTWARE\\Policies\\Microsoft\\OneDrive]\"DisablePersonalSync\"=dword:00000001",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The Group Policy location for DisableStoreApps is Windows Components > Store under Computer Configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows/client-management/mdm/policy-csp-applicationmanagement",
+      "quote": "Name | DisableStoreApps; Friendly Name | Disable all apps from Microsoft Store; Location | Computer Configuration; Path | Windows Components > Store",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "The device OMA-URI ./Device/Vendor/MSFT/Policy/Config/ApplicationManagement/DisableStoreOriginatedApps with integer value 1 disables Store app launch.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows/client-management/mdm/policy-csp-applicationmanagement",
+      "quote": "./Device/Vendor/MSFT/Policy/Config/ApplicationManagement/DisableStoreOriginatedApps; Format | int; 1 | Disable launch of apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[1].governs and note; Governance controls table",
+      "type": "behaviour",
+      "claim": "DisableStoreApps turns off launch of all preinstalled or downloaded Microsoft Store apps, not just Photos.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows/client-management/mdm/policy-csp-applicationmanagement",
+      "quote": "Disable turns off the launch of all apps from the Microsoft Store that came pre-installed or were downloaded.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[1].governs; Governance controls table",
+      "type": "behaviour",
+      "claim": "DisableStoreApps also stops Microsoft Store apps from being updated.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows/client-management/mdm/policy-csp-applicationmanagement",
+      "quote": "Apps won't be updated. Your Store will also be disabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[1].note; Scope",
+      "type": "availability",
+      "claim": "The cited Learn description says this Store policy applies only to Enterprise and Education editions of Windows.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows/client-management/mdm/policy-csp-applicationmanagement",
+      "quote": "This setting applies only to Enterprise and Education editions of Windows.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[1].note; Governance controls",
+      "type": "applicability",
+      "claim": "DisableStoreApps is a computer-scope policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/windows/client-management/mdm/policy-csp-applicationmanagement",
+      "quote": "Location | Computer Configuration",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "The Lists policy Prevent Lists sync from running on this device has policy name DisableListSync but registry value name DisableNucleusSync.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/lists-sync-policies",
+      "quote": "(DisableListSync) Prevent Lists sync from running on this device; This policy's registry value name DisableNucleusSync differs from the policy name DisableListSync.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The documented DisableNucleusSync setting affects Lists sync on the device.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/lists-sync-policies",
+      "quote": "If you enable this policy, Lists sync will be blocked from running on the device.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Governance controls; Open questions",
+      "type": "absence",
+      "claim": "The Lists sync policy page does not mention Photos.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Photos in the full fetched text of https://learn.microsoft.com/sharepoint/lists-sync-policies. The page documents Lists sync and DisableNucleusSync, with no mention of Photos.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Governance guidance: Before rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The governance checklist tells readers to update AppLocker rules, but the controls table has no AppLocker row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Review any AppLocker packaged-app rule that blocks Microsoft Photos and add the package Microsoft.OneDrive.Photos if the block should stay. The table contains only DisablePersonalSync and DisableStoreApps.",
+      "severity": "minor",
+      "fix": "Remove the AppLocker configuration instruction from the Before rollout checklist; retain the existing explanation of Microsoft's AppLocker recommendation in Why it matters and Governance controls. Do not add a control row as part of this correction."
+    },
+    {
+      "n": 58,
+      "where": "controls[0].note; Governance controls table",
+      "type": "admin-path",
+      "claim": "The Intune OneDrive settings procedure uses a Windows 10 and later Settings catalog profile.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/configure-sync-intune",
+      "quote": "Platform: Select Windows 10 and later. Profile type: Select Settings catalog.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-17T08:14:06.963Z",
+    "summary": {
+      "links": 7,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 1,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=568931",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1518030",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/use-group-policy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/configure-sync-intune",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/windows/client-management/mdm/policy-csp-applicationmanagement",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/lists-sync-policies",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/windows-insider/release-notes/apps/photos",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether users can sign in to OneDrive with a personal Microsoft account (DisablePersonalSync)",
+        "docs": "https://learn.microsoft.com/sharepoint/configure-sync-intune",
+        "reachable": true,
+        "segments": [
+          "Devices",
+          "Configuration",
+          "Create",
+          "Configuration settings",
+          "Add settings",
+          "OneDrive"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether users can sign in to OneDrive with a personal Microsoft account (DisablePersonalSync)",
+        "docs": "https://learn.microsoft.com/sharepoint/use-group-policy",
+        "reachable": true,
+        "token": "Registry value",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether Microsoft Store apps, including the updated Photos, can launch and update (DisableStoreApps)",
+        "docs": "https://learn.microsoft.com/windows/client-management/mdm/policy-csp-applicationmanagement",
+        "reachable": true,
+        "segments": [
+          "Windows Components",
+          "Store"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether Microsoft Store apps, including the updated Photos, can launch and update (DisableStoreApps)",
+        "docs": "https://learn.microsoft.com/windows/client-management/mdm/policy-csp-applicationmanagement",
+        "reachable": true,
+        "token": "OMA-URI",
+        "found": false
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

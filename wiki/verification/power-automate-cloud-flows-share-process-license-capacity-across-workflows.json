@@ -1,0 +1,759 @@
+{
+  "slug": "power-automate-cloud-flows-share-process-license-capacity-across-workflows",
+  "roadmapId": 576824,
+  "title": "Power Automate: share Process license capacity across cloud flows with flow groups",
+  "status": "held",
+  "date": "2026-11-17",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [
+    "claim 59: severity major on a rationale: impact rating lowered to minor; ratings are judgements and cannot hold a page"
+  ],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-17",
+    "reasons": [
+      "2 blocking findings (claims 43, 45)"
+    ]
+  },
+  "counts": {
+    "claims": 60,
+    "confirmed": 56,
+    "unconfirmed": 2,
+    "contradicted": 2,
+    "blocker": 2,
+    "major": 0,
+    "minor": 3
+  },
+  "summary": "The core capacity limits, prerequisites and rollout facts are supported. Hold the briefing because the cost rationale implies a documented absence of charges where the sources only omit pricing, and the automation entry omits the Dataverse API version and overstates what its create/query operations accomplish.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap item is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is July CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"July CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The record provides no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) and no other clouds.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists the Web platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-10-16T19:09:32.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-16T19:09:32\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "title; summary; What's changing; Scope",
+      "type": "behaviour",
+      "claim": "Power Automate flow groups share Process license capacity across up to 25 solution-aware cloud flows.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/flow-groups",
+      "quote": "A flow group lets you share the capacity of a Power Automate Process license across multiple cloud flows, instead of dedicating a license to each flow separately. A group can contain up to 25 solution-aware cloud flows.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Cost and licensing; Governance guidance",
+      "type": "licensing",
+      "claim": "Each flow group takes one Process license.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/flow-groups",
+      "quote": "| Process licenses per group | 1 (250,000 actions per day). Stacking isn't available for flow groups. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: licensing.notes; What's changing; Cost and licensing",
+      "type": "licensing",
+      "claim": "A Process license provides up to 250,000 actions per day.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/power-automate-licensing/types",
+      "quote": "Each Process license includes up to 250,000 actions per day (shown as Power Platform Requests in admin center reports).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Why it matters; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Members share the same 250,000-action daily pool and consumption is measured against the group total rather than each flow.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/flow-groups",
+      "quote": "When you assign it to a flow group, all flows in the group share that 250,000-action daily pool. Consumption is measured against the group total, not per individual flow.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "Adding a parent does not add its children, and a child must be explicitly added to use the group's capacity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/flow-groups",
+      "quote": "If a group member calls a child flow, add the child flow to the same group separately if you want it to use the shared capacity. The child flow doesn't inherit the group's Process capacity from its parent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Governance guidance",
+      "type": "behaviour",
+      "claim": "Each parent or child counts separately toward the 25-flow membership limit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/flow-groups",
+      "quote": "| Flows per group | 25 total flow members. Each parent or child flow you add to the group counts separately. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Cost and licensing",
+      "type": "licensing",
+      "claim": "Process license stacking is unavailable for flow groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/flow-groups",
+      "quote": "License stacking (assigning multiple Process licenses for higher capacity) isn't available for flow groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "A flow needing more than 250,000 actions daily should receive Process licenses directly rather than rely on group stacking.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/flow-groups",
+      "quote": "If a flow needs more than 250,000 actions per day, assign Process licenses directly to that individual flow instead.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Scope; controls[0].scope; Governance guidance",
+      "type": "behaviour",
+      "claim": "A flow group is confined to a single environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/flow-groups",
+      "quote": "| Scope | Single environment |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Governance guidance",
+      "type": "behaviour",
+      "claim": "A flow can belong to only one group at a time.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/flow-groups",
+      "quote": "| Group membership | A flow can belong to only one group at a time |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Scope; Governance guidance",
+      "type": "availability",
+      "claim": "Cloud flows outside a solution are ineligible.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/flow-groups",
+      "quote": "| Eligible | Not eligible |\n| Solution-aware parent and child cloud flows that you explicitly add to the group | Cloud flows not in a solution |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "Desktop flows (RPA) are ineligible.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/flow-groups",
+      "quote": "Not eligible: Desktop flows (RPA)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "Business process flows are ineligible.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/flow-groups",
+      "quote": "Not eligible: Business process flows",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Cost and licensing; Scope",
+      "type": "licensing",
+      "claim": "Flows already covered by a per-user Power Automate plan are ineligible.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/flow-groups",
+      "quote": "Not eligible: Flows already covered by a per-user Power Automate plan",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Cost and licensing; Scope; Governance guidance",
+      "type": "licensing",
+      "claim": "Creating a group requires a Process license with available capacity in the environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/flow-groups",
+      "quote": "A Power Automate Process license with available capacity in the environment. (You must have available Process capacity to assign when you create the group in Power Automate.)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Cost and licensing; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Group creation fails if the environment has no available Process capacity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/create-flow-group",
+      "quote": "If you see \"Failed to create flow group: PowerAutomatePerProcess capacity … is 0,\" the environment has no available Process license capacity. Add Process licenses to the environment first.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Security & identity; Scope; Open questions",
+      "type": "role",
+      "claim": "The feature's prerequisites name Power Automate maker permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/flow-groups",
+      "quote": "Prerequisites: A Power Automate Process license with available capacity in the environment. Cloud flows stored in a solution (solution-aware). Power Automate maker permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Scope",
+      "type": "date",
+      "claim": "Learn says flow groups start rolling out in July 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/create-flow-group",
+      "quote": "Flow groups start rolling out in July 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; controls[1].note; Governance controls",
+      "type": "default",
+      "claim": "The feature becomes available automatically without admin action to enable it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/create-flow-group",
+      "quote": "The feature becomes available automatically; no admin action is required to enable it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "A missing Flow groups option means rollout has not reached that environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/create-flow-group",
+      "quote": "If you don't see the Flow groups option yet, it didn't reach your environment. Check back as the rollout continues across regions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Open questions: rollout completion",
+      "type": "absence",
+      "claim": "The flow group documentation gives no date for completion across regions.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Automate flow groups disable restrict creation admin switch API roles capacity exhausted pricing. Opened flow-groups and create-flow-group; the latter says rollout continues across regions but supplies no completion date.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "front matter: defaultState; summary; Why it matters",
+      "type": "default",
+      "claim": "The capability is user-opt-in: makers must create groups and explicitly add flows to use shared capacity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/flow-groups",
+      "quote": "Only flows that you explicitly add to the group use its shared Process capacity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Why it matters",
+      "type": "absence",
+      "claim": "Microsoft has not stated that existing flows change merely because flow groups arrive.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"flow groups\" \"new data\" \"existing\" permissions. Opened flow-groups and create-flow-group; both describe explicit creation and membership, not automatic changes to existing flows.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Why it matters",
+      "type": "cost",
+      "claim": "Sharing one license instead of buying a license for each flow can reduce costs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/flow-groups",
+      "quote": "Reduce cost: Share one Process license across up to 25 flows instead of buying one per flow.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Why it matters; Risk assessment: Change & support; rationale: risk",
+      "type": "behaviour",
+      "claim": "Removing a flow's Process license or switching its plan removes that flow from its group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/create-flow-group",
+      "quote": "Removing a flow's Process license or switching it to a different plan removes the flow from its group and breaks any associations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Why it matters; Risk assessment: Change & support; Governance guidance; rationale: risk",
+      "type": "behaviour",
+      "claim": "Flows dependent on the group's Process capacity are suspended until relicensed after that license change.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/create-flow-group",
+      "quote": "Flows that depended on the group's Process capacity are suspended until relicensed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Group membership and Process license assignments are environment-specific.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/create-flow-group",
+      "quote": "Flow group membership and Process license assignments are environment-specific.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Deploying flows through managed solutions or pipelines does not carry over group membership and license assignments automatically.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/create-flow-group",
+      "quote": "They don't transfer automatically when you deploy flows through managed solutions or pipelines.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Change & support; Cost and licensing",
+      "type": "behaviour",
+      "claim": "Each target environment needs a group recreated and the flows re-added.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/create-flow-group",
+      "quote": "After deploying flows to a target environment: 1. Create (or verify) the flow group in the target environment. 2. Add each deployed parent and child flow to the group",
+      "severity": "minor",
+      "fix": "Replace 'so each target environment needs the group recreated and each flow re-added' with 'so create or verify the group in each target environment and add each deployed flow'. Replace 're-create them per environment' with 'create or verify them per environment'."
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "The flow group documentation describes no new data access.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"flow groups\" \"new data\" \"existing\" permissions. Opened flow-groups and create-flow-group; they document license capacity, membership and deployment, not new data-access permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Security & identity; Open questions",
+      "type": "absence",
+      "claim": "The flow group pages specify no additional role or approval step beyond the maker-permissions prerequisite.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"flow groups\" disable tenant environment Power Platform API pac admin PowerShell role security. Opened flow-groups, create-flow-group and flowgroup entity reference; no additional feature-specific role or approval requirement is stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Autonomy & actions; Open questions",
+      "type": "absence",
+      "claim": "The flow group pages do not state what happens to other members when the shared pool is exhausted.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"flow groups\" capacity exceeded price meter existing flows permissions. Opened flow-groups and create-flow-group; both describe the shared pool but neither specifies effects on other members after exhaustion.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "The flow group pages publish no separate flow group license, price or meter.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"flow groups\" \"price\" \"Process\"; \"flow groups\" capacity exceeded price meter existing flows permissions. Opened flow-groups, create-flow-group and licensing/types; none names a separate flow group license, price or meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "The flow group pages do not state a price for the Process license itself.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"flow groups\" \"price\" \"Process\". Opened flow-groups and create-flow-group in full; both require Process capacity but neither quotes a Process license price.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "front matter: licensing.model and licensing.notes",
+      "type": "licensing",
+      "claim": "The add-on licensing model denotes a paid Power Automate Process capacity license distinct from user licenses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/power-automate-licensing/types",
+      "quote": "In addition to user licenses, organizations can upgrade their automation scenarios with capacity licenses ... Power Automate Process ... License type: Capacity license (paid)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "rationale: cost",
+      "type": "cost",
+      "claim": "Learn documents no charge for flow groups themselves.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"flow groups\" \"price\" \"Process\"; \"flow groups\" capacity exceeded price meter existing flows permissions. Opened flow-groups, create-flow-group and licensing/types; no passage explicitly states that flow groups have no charge.",
+      "severity": "blocker",
+      "fix": "Replace 'Learn documents no charge for flow groups themselves' with 'The flow group pages publish no separate price or meter for flow groups'. Absence of published pricing must not be presented as a documented zero charge."
+    },
+    {
+      "n": 44,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The maker entry path is environment > More > Flow groups > New flow group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/create-flow-group",
+      "quote": "Select the environment that contains your Process licenses and solution flows. On the left navigation, select More > Flow groups. ... Select New flow group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "POST /flowgroups and GET /flowgroups are the runnable REST counterpart for group creation, Process license assignment and membership.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/create-entity-web-api",
+      "quote": "Send a POST request to the Web API entityset resource to create a table row (entity record) in Microsoft Dataverse. ... POST [Organization URI]/api/data/v9.2/accounts",
+      "severity": "blocker",
+      "fix": "Narrow this row's governs value to 'Flow group creation' and replace api.call with 'POST <organization-uri>/api/data/v9.2/flowgroups'. Qualify the note: 'The API creates a Dataverse group row; this call does not document assigning Process capacity or adding flows. Use the maker UI for those operations.' The versioned Dataverse service path is documented at https://learn.microsoft.com/power-apps/developer/data-platform/webapi/create-entity-web-api; retain the flowgroup table reference for the entity-set operation."
+    },
+    {
+      "n": 46,
+      "where": "controls[0].note; Governance controls table; Governance guidance",
+      "type": "admin-path",
+      "claim": "Membership can be changed through Add flow on the selected group's page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/create-flow-group",
+      "quote": "Open the Flow groups page (More > Flow groups in the left navigation). Select the flow group you want to manage. Select Add flow.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[0].note; Governance controls table",
+      "type": "admin-path",
+      "claim": "A flow's licensing section offers Shared Process license (flow group) for adding it to a group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/create-flow-group",
+      "quote": "Open the cloud flow's details page. In the licensing section, choose Shared Process license (flow group). Select a flow group from the list, then save.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[1].ui and controls[1].api; Governance controls",
+      "type": "absence",
+      "claim": "No tenant or environment UI switch or API to disable flow groups is documented as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"flow groups\" disable tenant environment Power Platform API pac admin PowerShell role security. Read flow-groups, create-flow-group, flowgroup reference and pac admin, Power Apps PowerShell, tenant-settings excerpts; no flow-group disable switch found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[0].note; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "The flowgroup table reference does not identify which roles may call its operations.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"flow groups\" disable tenant environment Power Platform API pac admin PowerShell role security. Opened flowgroup reference and searched its text for role and privilege; it documents operations and ownership, not a caller-role requirement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No flow-group-specific admin setting restricting creation beyond maker permissions is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"flow groups\" disable tenant environment Power Platform API pac admin PowerShell role security. Read flow-groups, create-flow-group, flowgroup reference and pac admin/tenant-settings excerpts; no additional flow-group-specific creation setting found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "A flow's Analytics page shows its daily action usage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/create-flow-group",
+      "quote": "Open the cloud flow in Power Automate. Select Analytics on the flow's detail page. Review the Actions chart for the flow's average daily action count over the last 28 days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Learn recommends flows with predictable, moderate usage as grouping candidates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/create-flow-group",
+      "quote": "Good candidates for grouping have predictable, moderate usage (for example, 5,000–50,000 actions per day each).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Learn mentions flows regularly exceeding 100,000 actions daily as candidates for dedicated Process licenses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/create-flow-group",
+      "quote": "If a flow regularly exceeds 100,000 actions per day, it might be better served by a dedicated Process license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Learn recommends reviewing group consumption and giving a dominant flow a dedicated Process license.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/create-flow-group",
+      "quote": "Review consumption regularly. If one flow consistently dominates the group's capacity, move it out and assign a dedicated Process license to that flow.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "The Dataverse flowgroup table supports create, update, delete and retrieve operations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/flowgroup",
+      "quote": "Create: POST /flowgroups; Delete: DELETE /flowgroups(flowgroupid); Retrieve: GET /flowgroups(flowgroupid); RetrieveMultiple: GET /flowgroups; Update: PATCH /flowgroups(flowgroupid)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Learn recommends a Power Automate usage report in Power Platform admin center to help decide which flows need dedicated capacity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/create-flow-group",
+      "quote": "Admins can use Power Platform admin center > Licensing > Power Automate > Usage to display which users and flows are approaching or exceeding capacity limits. The report helps you decide which flows need dedicated capacity and which can share a group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The cited usage-report operation displays consumption rather than configuring a capacity limit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/create-flow-group",
+      "quote": "Admins can use Power Platform admin center > Licensing > Power Automate > Usage to display which users and flows are approaching or exceeding capacity limits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "rationale: impact",
+      "type": "behaviour",
+      "claim": "Makers and flow owners using Process capacity have a Flow groups page and a flow-group licensing option.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/create-flow-group",
+      "quote": "On the left navigation, select More > Flow groups. ... Open the cloud flow's details page. In the licensing section, choose Shared Process license (flow group).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "rationale: impact",
+      "type": "behaviour",
+      "claim": "Other users are not affected by flow groups.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"flow groups\" \"new data\" \"existing\" permissions; \"flow groups\" capacity exceeded price meter existing flows permissions. Opened flow-groups and create-flow-group; neither states that all users other than makers and owners are unaffected.",
+      "severity": "minor",
+      "fix": "Remove '; other users are not affected' from the impact rationale. Retain the supported statement about makers and flow owners seeing the new page and licensing option."
+    },
+    {
+      "n": 60,
+      "where": "Governance guidance: Before rollout and After rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The governance checklist's usage-monitoring controls are represented in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: 'Identify candidate flows by their daily action count' and 'Review group consumption regularly'. Table rows: 'Flow group creation, Process license assignment and membership' and 'Tenant or environment switch to turn flow groups off'.",
+      "severity": "minor",
+      "fix": "The Analytics usage check and regular group-consumption review in Governance guidance have no monitoring row in the controls table. Record this coverage gap; do not add a control row as part of this correction."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-17T08:14:05.330Z",
+    "summary": {
+      "links": 5,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=576824",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-automate/flow-groups",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-automate/create-flow-group",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/power-automate-licensing/types",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/flowgroup",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Flow group creation, Process license assignment and membership",
+        "docs": "https://learn.microsoft.com/power-automate/create-flow-group",
+        "reachable": true,
+        "segments": [
+          "More",
+          "Flow groups",
+          "New flow group"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Flow group creation, Process license assignment and membership",
+        "docs": "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/flowgroup",
+        "reachable": true,
+        "token": "POST /flowgroups",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}
