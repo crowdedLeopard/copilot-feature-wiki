@@ -14,7 +14,7 @@ previewDate: null
 risk: "low"
 cost: "low"
 impact: "medium"
-defaultState: "user-opt-in"
+defaultState: "unknown"
 action: "review"
 licensing:
   model: "unknown"
@@ -41,7 +41,7 @@ sources:
     url: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest"
     kind: "learn"
 videos: []
-related: ["work-iq-human-in-the-loop","data-policies","copilot-studio-mcp-tools-in-agents","copilot-credits","copilot-studio-share-autonomous-agents-run-only"]
+related: ["work-iq-human-in-the-loop","copilot-credits"]
 controls:
   - governs: "The per-tool, per-agent approval toggle described on the roadmap"
     scope: "agent"
@@ -73,7 +73,7 @@ controls:
     note: "General control: blocks a connector rather than pausing it for approval. Requires tenant admin or Environment Admin."
 confidence: "medium"
 created: "2026-11-13"
-updated: "2026-11-16"
+updated: "2026-11-17"
 roadmapModified: "2026-09-01T22:59:38"
 changes:
   - date: "2026-11-13"
@@ -82,18 +82,23 @@ changes:
     note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
   - date: "2026-11-16"
     note: "Corrected after verification: removed unsupported claims on approver, parameters, audit and licensing; default now maker opt-in; licensing marked not yet published."
-version: 3
+  - date: "2026-11-17"
+    note: "Corrected after verification: default state is now unknown, and the Approve for the session and authentication/input-collection statements are narrowed to what the roadmap says."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 52 statements not yet confirmed"
+version: 4
 verification:
-  status: "held"
-  date: "2026-11-16"
-  version: 3
+  status: "verified-with-gaps"
+  date: "2026-11-17"
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 45
-  confirmed: 42
-  unconfirmed: 2
-  contradicted: 1
-  attempts: 2
+  claims: 52
+  confirmed: 51
+  unconfirmed: 1
+  contradicted: 0
+  attempts: 0
+  hash: "b89d9fa679cdda0d6d507ffffda19930"
 ---
 
 ## What's changing
@@ -119,10 +124,10 @@ The catch is that, as described, makers set it. Plan for it to protect only the 
 
 **Security & identity**
 - Microsoft has not documented who receives the request for an autonomous run with no person in the conversation. Pilot the supported behaviour before treating approval as a control for those agents.
-- **Approve for the session** means one decision can cover repeated calls to the same tool for the rest of that session, as the roadmap describes it. Reserve it for low-consequence tools.
+- The roadmap lists an **Approve for the session** option but does not define which later calls it covers. Test its scope before relying on it, and reserve broader approvals for low-consequence tools.
 
 **Autonomy & actions**
-- The gate adds an explicit approval boundary for the tools a maker selects. Existing authentication, input collection and data policy restrictions still apply, and ungated tools are unaffected.
+- The gate adds an explicit approval boundary for the tools a maker selects. The roadmap describes approval for selected tools; test its interaction with existing authentication and input collection during the pilot. Existing data policy restrictions still apply.
 - A reviewer who approves reflexively defeats the gate. Gate few tools, and only consequential ones.
 
 **Change & support**
@@ -194,9 +199,9 @@ cost: Low. The only cost known is maker and admin time to decide which tools to 
 impact: Medium. Makers must adopt it tool by tool, and users of gated agents in Microsoft Teams and Microsoft 365 Copilot will see approval requests.
 -->
 
-<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
-The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [contradicted, blocker] front matter: defaultState; rationale: risk / consistency: The new control has a known maker-opt-in default, although the risk rationale says its default is not stated. | Found: defaultState: "user-opt-in" ... risk: Low. The feature adds a control and no new data access; its default is not stated | Fix: Set defaultState to "unknown" to agree with the rationale. For a new control the standard requires its initial enforcement state, which the roadmap does not state; the existing standard-harness setting's No default does not establish this toggle's default. Keep the maker-configuration fact separately.
-- [unsupported, major] Risk assessment: Security & identity / behaviour: Approve for the session covers repeated calls to the same tool for the rest of that session. | Found: Searched: "Copilot Studio" "approve for the session"; site:learn.microsoft.com/microsoft-copilot-studio "approval" "tool" "session". Read roadmap and cited tool pages. The roadmap names the option but does not define its scope; Cowork examples describe a different feature. | Fix: Replace the explanation with: "The roadmap lists an Approve for the session option but does not define which later calls it covers. Test its scope before relying on it." Keep the recommendation to reserve broader approvals for low-consequence tools as analysis.
-- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: The new toggle leaves existing authentication and input collection unchanged and has no effect on ungated tools. | Found: Searched: "Copilot Studio" tool approval authentication input collection restrictions. Opened both cited add-tools-custom-agent pages. They document existing authentication and input collection, but neither states how these interact with the roadmap toggle or promises unchanged ungated behavior. | Fix: Replace the unchanged-behaviour assurance with: "The roadmap describes approval for selected tools; test its interaction with existing authentication and input collection during the pilot." The separately documented general data-policy restrictions can remain.
+<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Why it matters / behaviour: A prompt instruction asking for confirmation is not a substitute for system-enforced behaviour. | Found: Use agent instructions for summarization and conversational flow, not for system-level behaviors. | Fix: Add https://learn.microsoft.com/microsoft-copilot-studio/guidance/generative-mode-guidance to sources for the instructions-versus-enforcement distinction in Why it matters. | Source: https://learn.microsoft.com/microsoft-copilot-studio/guidance/generative-mode-guidance#agent-instructions-and-behavior
+- [unsupported, minor] rationale: risk / behaviour: The feature adds no new data access. | Found: Searched: Copilot Studio human approval data access. Read the roadmap and both harnesses' tool pages; reviewed Application Card safety and limitations excerpts. None states the new approval feature's data-access implications. | Fix: Remove 'and no new data access' from the risk rationale. The roadmap establishes that this is a guardrail, but does not specify its data-access implications.
 -->

@@ -2,37 +2,31 @@
   "slug": "m365-copilot-copilot-people-connectors-introduces-people-data-ingestions-with-differentiat",
   "roadmapId": 561326,
   "title": "Microsoft 365 Copilot connectors: people data with source-system access controls",
-  "status": "held",
+  "status": "verified",
   "date": "2026-11-17",
-  "version": 2,
+  "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 2,
-  "verifierVerdict": "hold",
+  "attempts": 0,
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-16",
-    "reasons": [
-      "2 blocking findings (claims 43, 59)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 61,
-    "confirmed": 58,
-    "unconfirmed": 1,
-    "contradicted": 2,
-    "blocker": 2,
-    "major": 1,
-    "minor": 1
+    "claims": 65,
+    "confirmed": 65,
+    "unconfirmed": 0,
+    "contradicted": 0,
+    "blocker": 0,
+    "major": 0,
+    "minor": 0
   },
-  "summary": "Hold: the briefing's statement that no ingestion cap is documented overlooks the connection and tenant quotas documented for the Graph connections it uses. It also treats the Permissions view as unconfirmed for people connectors even though the cited guidance covers each Copilot connector, and extrapolates future storage behaviour beyond the published plan.",
+  "summary": "The briefing accurately separates the planned people-data access controls from today's documented everyone-access requirement. The roadmap details and existing connector controls are supported; the new capability's default, licensing and migration process remain unpublished.",
   "claims": [
     {
       "n": 1,
-      "where": "summary; What's changing",
+      "where": "summary; What's changing; rationale: risk",
       "type": "record",
-      "claim": "Microsoft plans to import external people data together with associated access control lists.",
+      "claim": "Microsoft plans to support importing people data together with source-system ACLs.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "This release enables organizations to bring people data from external systems into Microsoft 365 along with associated access control lists (ACLs)",
@@ -41,20 +35,9 @@
     },
     {
       "n": 2,
-      "where": "summary; What's changing",
+      "where": "What's changing; Why it matters",
       "type": "record",
-      "claim": "The planned imported people data can be scoped to specific individuals and groups.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "The imported data can be scoped to specific individuals and groups",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 3,
-      "where": "What's changing; Why it matters; rationale: risk",
-      "type": "record",
-      "claim": "The planned capability lets Copilot reason over people data while respecting source-system permissions.",
+      "claim": "The planned capability makes Copilot respect permissions defined in source systems.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "ensuring Copilot respects existing permissions defined in source systems.",
@@ -62,7 +45,29 @@
       "fix": null
     },
     {
+      "n": 3,
+      "where": "summary; What's changing; controls[0]",
+      "type": "record",
+      "claim": "Imported people data can be scoped to specific individuals and groups in the planned capability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The imported data can be scoped to specific individuals and groups",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 4,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Copilot will be able to reason over imported people data while honouring access restrictions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "allowing Copilot to reason over people data while honoring access restrictions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
       "where": "front matter: status; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap status is In development, not Launched.",
@@ -73,21 +78,10 @@
       "fix": null
     },
     {
-      "n": 5,
-      "where": "front matter: releasePhase; What's changing",
-      "type": "record",
-      "claim": "The release phase is General Availability.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 6,
-      "where": "front matter: targetDate; What's changing; Scope",
+      "where": "front matter: targetDate; summary; What's changing; Scope",
       "type": "record",
-      "claim": "The General Availability target is June CY2027.",
+      "claim": "The roadmap target is June CY2027.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"targetDate\": \"June CY2027\"",
@@ -96,6 +90,17 @@
     },
     {
       "n": 7,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The listed release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
@@ -106,10 +111,10 @@
       "fix": null
     },
     {
-      "n": 8,
+      "n": 9,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap lists the Developer platform.",
+      "claim": "The listed platform is Developer.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Developer\"]",
@@ -117,7 +122,7 @@
       "fix": null
     },
     {
-      "n": 9,
+      "n": 10,
       "where": "front matter: previewDate; What's changing",
       "type": "record",
       "claim": "The roadmap gives no preview date.",
@@ -128,7 +133,7 @@
       "fix": null
     },
     {
-      "n": 10,
+      "n": 11,
       "where": "What's changing",
       "type": "record",
       "claim": "The roadmap gives no more-info link.",
@@ -139,43 +144,10 @@
       "fix": null
     },
     {
-      "n": 11,
-      "where": "Scope: Clouds and platform",
-      "type": "record",
-      "claim": "The roadmap record lists no US Government cloud.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 12,
-      "where": "front matter: products",
-      "type": "record",
-      "claim": "The roadmap product is Microsoft Copilot (Microsoft 365).",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
-      "where": "front matter: roadmapModified",
-      "type": "record",
-      "claim": "The roadmap modification timestamp is 2026-11-11T00:53:22.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"modified\": \"2026-11-11T00:53:22\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "summary; What's changing; Risk assessment: Data exposure; rationale: risk",
-      "type": "behaviour",
-      "claim": "Today's documented people connector data is visible to all users in the tenant by default.",
+      "where": "summary; What's changing; Risk assessment: Data exposure; controls[0].note; rationale: risk",
+      "type": "default",
+      "claim": "Today's people-connector documentation says imported people data is visible to all tenant users by default.",
       "status": "supported",
       "source": "https://learn.microsoft.com/graph/peopleconnectors",
       "quote": "By default, people data provided via a Copilot connector is visible to all users in the tenant.",
@@ -183,10 +155,10 @@
       "fix": null
     },
     {
-      "n": 15,
-      "where": "What's changing; Why it matters; Risk assessment; controls[0].note",
+      "n": 13,
+      "where": "What's changing; Why it matters; Risk assessment: Data exposure; controls[0].note",
       "type": "behaviour",
-      "claim": "The current build guide requires everyone access on ingested item ACLs.",
+      "claim": "Today's people-connector build guide requires ingested items to grant everyone access in their ACL.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/build-connectors-with-people-data",
       "quote": "You must set the access control list (ACL) on items ingested by the connector to grant access to everyone.",
@@ -194,18 +166,18 @@
       "fix": null
     },
     {
-      "n": 16,
-      "where": "What's changing; Risk assessment: Data exposure",
+      "n": 14,
+      "where": "What's changing",
       "type": "absence",
-      "claim": "The people connector pages do not document differentiated access, and no Learn page for the planned feature was found.",
+      "claim": "Learn does not yet describe the roadmap's differentiated people-data ACL capability.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: people data connectors differentiated access control ACL individuals groups default migration rollout 561326. Opened graph/peopleconnectors and microsoft-365/copilot/extensibility/build-connectors-with-people-data; both describe everyone visibility.",
+      "quote": "Searched: people connectors differentiated access control ACL individuals groups default existing connections migration 561326. Opened graph/peopleconnectors and extensibility/build-connectors-with-people-data; both still describe everyone-visible data.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 17,
+      "n": 15,
       "where": "What's changing; Cost and licensing; rationale: cost",
       "type": "behaviour",
       "claim": "Custom people connectors are built using Microsoft Graph external connections APIs.",
@@ -216,10 +188,10 @@
       "fix": null
     },
     {
-      "n": 18,
+      "n": 16,
       "where": "What's changing; controls[3].api",
-      "type": "behaviour",
-      "claim": "A people connection must set contentCategory to people.",
+      "type": "command",
+      "claim": "A people-data connection must set contentCategory to people.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/build-connectors-with-people-data",
       "quote": "Copilot connectors that contain people data must have the value `people` in the `contentCategory` property of the `externalConnections` API.",
@@ -227,10 +199,10 @@
       "fix": null
     },
     {
-      "n": 19,
+      "n": 17,
       "where": "What's changing; Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Current people connector data is stored in the user's Microsoft 365 profile.",
+      "claim": "Imported people-connector data is stored in the user's Microsoft 365 profile.",
       "status": "supported",
       "source": "https://learn.microsoft.com/graph/peopleconnectors",
       "quote": "This connector data is stored in the user's Microsoft 365 profile.",
@@ -238,10 +210,10 @@
       "fix": null
     },
     {
-      "n": 20,
+      "n": 18,
       "where": "What's changing; Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Uploaded people data attributes are stored in the user's Exchange Online mailbox.",
+      "claim": "Uploaded people-data attributes are stored in the user's Exchange Online mailbox.",
       "status": "supported",
       "source": "https://learn.microsoft.com/graph/peopleconnectors",
       "quote": "When you upload people data, each user's data attributes are scoped to their Microsoft 365 user profile and stored in the user's Exchange Online mailbox.",
@@ -249,43 +221,32 @@
       "fix": null
     },
     {
-      "n": 21,
+      "n": 19,
       "where": "front matter: defaultState; Why it matters",
-      "type": "default",
-      "claim": "Microsoft has not stated the new differentiated-access control's default state.",
+      "type": "absence",
+      "claim": "Microsoft has not stated the new ACL capability's default state.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: people data connectors differentiated access control ACL individuals groups default migration rollout 561326. Read roadmap description and opened graph/peopleconnectors and build-connectors-with-people-data; no arrival default for the new control.",
+      "quote": "Searched: people connectors differentiated access control ACL individuals groups default existing connections migration 561326. Read the roadmap, graph/peopleconnectors and the people-data build guide; none specifies the new ACL control's default.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 22,
+      "n": 20,
       "where": "Why it matters; Cost and licensing; Governance guidance; Open questions",
       "type": "absence",
-      "claim": "Migration of existing everyone-ACL people connections, including whether they change automatically, is not documented.",
+      "claim": "Microsoft has not documented migration of existing everyone-ACL people connections, including whether they change automatically.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: people data connectors differentiated access control ACL individuals groups default migration rollout 561326. Opened graph/peopleconnectors, build-connectors-with-people-data and connectors/manage-access-permissions; no people ACL migration procedure.",
+      "quote": "Searched: people connectors differentiated access control ACL individuals groups default existing connections migration 561326; people connectors access control default migration. Opened peopleconnectors, the people-data build guide and manage-access-permissions; no people-ACL migration is described.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 23,
-      "where": "controls[0].ui; controls[0].api; Governance controls",
-      "type": "absence",
-      "claim": "No admin UI, PowerShell cmdlet or API is documented for the planned differentiated scoping of people connector data.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: people connectors ACL information barriers profile cards Org Explorer migration default PowerShell permissions individuals groups. Opened peopleconnectors, build-connectors-with-people-data and Graph externalConnection v1.0/beta; people items still require everyone ACLs.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
+      "n": 21,
       "where": "Why it matters; controls[1].note; Governance controls; Open questions",
       "type": "behaviour",
-      "claim": "General connector access permissions cannot currently be updated after connection creation.",
+      "claim": "The general connector permissions page says updating access permissions after connection creation is not supported.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-access-permissions",
       "quote": "Updating access permissions after you create the connection isn't currently supported.",
@@ -293,32 +254,54 @@
       "fix": null
     },
     {
-      "n": 25,
+      "n": 22,
       "where": "Why it matters; Governance guidance: At rollout; Governance controls",
       "type": "behaviour",
-      "claim": "The general permissions guidance describes deleting and recreating a connection whose configured visibility does not match the intended model.",
+      "claim": "The general permissions guidance describes deleting the connection and recreating it with Custom setup to change its visibility model.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-access-permissions",
-      "quote": "In the connector pane, choose Delete to delete the existing connection. Recreate the connection using the Custom setup flow and explicitly configure access permissions.",
+      "quote": "In the connector pane, choose Delete to delete the existing connection.\nRecreate the connection using the Custom setup flow and explicitly configure access permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Ingested people data can be surfaced by Copilot and people search.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/build-connectors-with-people-data",
+      "quote": "Adding people data to Microsoft Graph makes it available to Microsoft 365 Copilot and people experiences such as the profile card and people search.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[0].ui; controls[0].api; Risk assessment; Governance controls; rationale: risk",
+      "type": "absence",
+      "claim": "No admin UI, PowerShell cmdlet or Graph API is yet documented for the planned differentiated people-data ACL control.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: people connectors differentiated access control ACL individuals groups default existing connections migration 561326; people connectors ACL PowerShell. Opened peopleconnectors, the build guide and Graph externalConnection v1.0/beta references; people items still require everyone ACLs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not documented how differentiated people-data ACLs will affect profile cards, Org Explorer and search.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: people connectors ACL PowerShell Graph differentiated access profile cards Org Explorer information barriers migration. Opened peopleconnectors and the people-data build guide; existing surfaces are described, but not future ACL enforcement across them.",
       "severity": null,
       "fix": null
     },
     {
       "n": 26,
-      "where": "Risk assessment: Data exposure, second bullet",
-      "type": "behaviour",
-      "claim": "Future ACL-scoped people data would still sit with the Microsoft 365 profile.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: \"people data\" \"scoped\" \"profile\" \"ACL\". Opened peopleconnectors and build-connectors-with-people-data; storage is described for today's everyone-visible data, not for the planned differentiated-access design.",
-      "severity": "major",
-      "fix": "Remove 'so scoped data would still sit with the profile,' and retain the current-storage fact followed by 'How scoping applies to profile cards, Org Explorer and search is not yet documented.'"
-    },
-    {
-      "n": 27,
       "where": "Risk assessment: Security & identity",
       "type": "applicability",
-      "claim": "People connectors respect Microsoft Purview Information Barriers.",
+      "claim": "People connectors comply with Microsoft Purview Information Barriers.",
       "status": "supported",
       "source": "https://learn.microsoft.com/graph/peopleconnectors",
       "quote": "Microsoft 365 Copilot connectors for people data comply with information barriers (IB) to ensure compliance across various platforms.",
@@ -326,21 +309,21 @@
       "fix": null
     },
     {
-      "n": 28,
-      "where": "Risk assessment: Security & identity; Open questions",
+      "n": 27,
+      "where": "Risk assessment: Security & identity",
       "type": "absence",
-      "claim": "How the new ACL scoping interacts with Information Barriers and non-Copilot people experiences is not documented.",
+      "claim": "Microsoft has not explained how Information Barriers interact with the planned per-person ACLs.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: people connectors ACL information barriers profile cards Org Explorer migration default PowerShell permissions individuals groups; \"people data\" \"scoped\" \"profile\" \"ACL\". Opened peopleconnectors and build-connectors-with-people-data; no new ACL interaction described.",
+      "quote": "Searched: people connectors ACL PowerShell Graph differentiated access profile cards Org Explorer information barriers migration. Opened peopleconnectors and the build guide; neither explains interactions between IB and the planned differentiated ACLs.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 29,
+      "n": 28,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "Nonmatched user identifiers are ignored, so mismatched source identifiers can cause people data to be omitted.",
+      "claim": "People-data ingestion ignores accounts whose identifiers do not match a user.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/build-connectors-with-people-data",
       "quote": "Nonmatched user accounts (`userPrincipalName` or `externalDirectoryObjectId`) are ignored.",
@@ -348,7 +331,7 @@
       "fix": null
     },
     {
-      "n": 30,
+      "n": 29,
       "where": "Risk assessment: Security & identity; Scope: Prerequisites",
       "type": "behaviour",
       "claim": "Microsoft Graph ignores accounts without an Exchange Online mailbox.",
@@ -359,21 +342,21 @@
       "fix": null
     },
     {
-      "n": 31,
+      "n": 30,
       "where": "Risk assessment: Autonomy & actions",
       "type": "absence",
-      "claim": "The supplied feature sources describe ingestion and grounding rather than a change introducing write actions.",
+      "claim": "The sources describe ingestion and grounding rather than a new source-system write-action capability.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: people data connectors differentiated access control ACL individuals groups default migration rollout 561326. Read roadmap description, peopleconnectors and build-connectors-with-people-data; these describe ingestion and reasoning, not new source-system write actions.",
+      "quote": "Searched: people connectors differentiated access control ACL individuals groups default existing connections migration 561326. Read the roadmap, peopleconnectors and the people-data build guide; these describe importing data and using it for reasoning, not new source-system write actions.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 32,
+      "n": 31,
       "where": "Risk assessment: Change & support; Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "People data connections do not support staged connections.",
+      "claim": "Connections carrying people data do not support staged connections.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/build-connectors-with-people-data",
       "quote": "Connections with people data don't support staged connections.",
@@ -381,10 +364,10 @@
       "fix": null
     },
     {
-      "n": 33,
-      "where": "Risk assessment: Change & support",
+      "n": 32,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "Microsoft separately advises piloting people connectors with a limited audience.",
+      "claim": "Microsoft separately recommends piloting people connectors with a limited audience.",
       "status": "supported",
       "source": "https://learn.microsoft.com/graph/peopleconnectors",
       "quote": "Before rollout, confirm governance, privacy, and admin requirements for your connector and pilot with a limited audience.",
@@ -392,7 +375,7 @@
       "fix": null
     },
     {
-      "n": 34,
+      "n": 33,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
       "claim": "Connector-ingested people properties are read-only to users.",
@@ -403,10 +386,10 @@
       "fix": null
     },
     {
-      "n": 35,
+      "n": 34,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Microsoft recommends disabling user editing of overlapping properties to avoid edits not appearing on profile cards.",
+      "claim": "Microsoft recommends disabling user edits of overlapping properties to avoid edits not appearing on profile cards.",
       "status": "supported",
       "source": "https://learn.microsoft.com/graph/peopleconnectors",
       "quote": "We recommend that you disable user editing of any properties that are also ingested via people connectors to avoid scenarios where user edits aren't displayed on the profile card due to the precedence model.",
@@ -414,65 +397,54 @@
       "fix": null
     },
     {
-      "n": 36,
-      "where": "front matter: licensing.model; Cost and licensing; Scope; rationale: cost",
-      "type": "licensing",
-      "claim": "Licensing specific to the planned differentiated-access capability has not been published.",
+      "n": 35,
+      "where": "front matter: licensing.model; Cost and licensing; Scope; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "Licensing specific to the planned differentiated people-data ACL capability has not been published.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"people\" \"connectors\" \"licensing\" \"ACL\"; people data connectors licensing pricing ingestion meter quota limits Microsoft 365. Read roadmap and opened peopleconnectors, build-connectors-with-people-data and connectors/prerequisites; no ACL-specific licensing terms.",
+      "quote": "Searched: people data connectors differentiated ACL licensing pricing meter spending cap. Opened peopleconnectors, the people-data build guide and connectors/prerequisites; no licensing specific to the future ACL capability is stated. The roadmap names no licence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "A price specific to the planned ACL capability has not been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: people data connectors differentiated ACL licensing pricing meter spending cap. Opened peopleconnectors, the build guide and connectors/prerequisites; none publishes a price specific to this planned ACL capability.",
       "severity": null,
       "fix": null
     },
     {
       "n": 37,
-      "where": "Cost and licensing",
-      "type": "absence",
-      "claim": "No price specific to the planned ACL capability is published or named in the roadmap record.",
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The general prerequisites page lists Microsoft 365 plus the Microsoft 365 Copilot add-on, or Microsoft 365 E7, for synced-connector Copilot grounding and agents.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: people data connectors licensing pricing ingestion meter quota limits Microsoft 365; \"people\" \"connectors\" \"licensing\" \"ACL\". Read roadmap and opened peopleconnectors, build-connectors-with-people-data and connectors/prerequisites; no ACL price.",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "Microsoft 365 + Microsoft 365 Copilot add-on | ✅ | ✅ | ✅\nMicrosoft 365 E7 | ✅ | ✅ | ✅",
       "severity": null,
       "fix": null
     },
     {
       "n": 38,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "The general prerequisites support synced-connector Copilot grounding and agents with Microsoft 365 plus the Microsoft 365 Copilot add-on.",
+      "claim": "In the general connector eligibility table, Microsoft 365 alone supports synced-connector Microsoft Search but not Copilot grounding and agents.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
-      "quote": "| Microsoft 365 + Microsoft 365 Copilot add-on | ✅ | ✅ | ✅ |",
+      "quote": "License | Synced connectors - Microsoft Search | Synced connectors - Copilot grounding and agents | Federated connectors\nMicrosoft 365 (any plan) | ✅ | ❌ | ❌",
       "severity": null,
       "fix": null
     },
     {
       "n": 39,
       "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "The general prerequisites also support synced-connector Copilot grounding and agents with Microsoft 365 E7.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
-      "quote": "| Microsoft 365 E7 | ✅ | ✅ | ✅ |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "The general prerequisites list Microsoft Search, but not Copilot grounding and agents, for Microsoft 365 alone.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
-      "quote": "| Microsoft 365 (any plan) | ✅ | ❌ | ❌ |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "front matter: licensing.notes; Cost and licensing",
       "type": "cost",
-      "claim": "The general prerequisites say indexing synced connector data incurs no extra cost for tenants with Microsoft 365 licences.",
+      "claim": "The prerequisites page states that synced-connector indexing costs nothing extra for tenants with Microsoft 365 licences.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
       "quote": "Indexing of synced connector data incurs no extra cost for tenants with Microsoft 365 licenses.",
@@ -480,32 +452,54 @@
       "fix": null
     },
     {
-      "n": 42,
-      "where": "Cost and licensing; Open questions",
+      "n": 40,
+      "where": "Cost and licensing",
       "type": "absence",
-      "claim": "No people-data-ingestion-specific meter or credit rate was found.",
+      "claim": "The general connector prerequisites page does not specifically mention people connectors.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: people data connectors licensing pricing ingestion meter quota limits Microsoft 365; \"people\" \"connectors\" \"licensing\" \"ACL\". Opened peopleconnectors, build-connectors-with-people-data and connectors/prerequisites; no people-ingestion meter or credit rate.",
+      "quote": "Searched: people data connectors differentiated ACL licensing pricing meter spending cap. Read connectors/prerequisites in full; it covers synced and federated connector prerequisites and licensing, without specifically naming people connectors.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "No meter specific to the planned ACL capability is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: people data connectors differentiated ACL licensing pricing meter spending cap. Opened peopleconnectors, the build guide and connectors/prerequisites; no meter specific to the future ACL capability is documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No credit rate specific to the planned ACL capability is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: people data connectors differentiated ACL licensing pricing meter spending cap. Opened peopleconnectors, the build guide and connectors/prerequisites; none specifies a credit rate for the planned ACL capability.",
       "severity": null,
       "fix": null
     },
     {
       "n": 43,
-      "where": "Cost and licensing: third paragraph",
+      "where": "Cost and licensing",
       "type": "absence",
-      "claim": "No cap is documented for people data ingestion.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/graph/connecting-external-content-manage-connections",
-      "quote": "If you reach the maximum limit of a single connection or the tenant level quota across all connections, you can't add more items until you exit the state.",
-      "severity": "blocker",
-      "fix": "Replace 'No meter, credit rate or cap is documented for people data ingestion at the time of writing' with 'No meter, credit rate or spending cap specific to the planned ACL capability was found at the time of writing.' This removes the broader ingestion-limit absence claim; the Graph connections documentation describes connection and tenant item quotas."
+      "claim": "No spending cap specific to the planned ACL capability is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: people data connectors differentiated ACL licensing pricing meter spending cap. Opened peopleconnectors, the build guide, connectors/prerequisites and Graph connection management; none documents an ACL-specific spending cap.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 44,
       "where": "Scope: Users and licences",
       "type": "behaviour",
-      "claim": "People data persists while the user is active and has a valid Microsoft 365 licence, subject to deletion.",
+      "claim": "People data persists while the user is active and holds a valid Microsoft 365 licence, subject to the deletion behaviour described elsewhere on the page.",
       "status": "supported",
       "source": "https://learn.microsoft.com/graph/peopleconnectors",
       "quote": "People data is stored as long as the end user is active and has a valid Microsoft 365 license, provided no deletion request was made by the admin.",
@@ -514,9 +508,9 @@
     },
     {
       "n": 45,
-      "where": "Scope: Roles; controls[3].note; Governance controls",
+      "where": "Scope: Roles; controls[3].note; Governance controls; Open questions",
       "type": "role",
-      "claim": "The people connectors page names Global Administrator and Copilot Administrator roles for configuration.",
+      "claim": "The people-connectors page names Global Administrator and Copilot Administrator roles for configuring people connectors.",
       "status": "supported",
       "source": "https://learn.microsoft.com/graph/peopleconnectors",
       "quote": "Only users with Global Administrator and Copilot Administrator roles can configure people connectors.",
@@ -525,9 +519,9 @@
     },
     {
       "n": 46,
-      "where": "Scope: Roles; controls[2].note; Governance controls",
+      "where": "Scope: Roles; controls[2].note; Governance controls; Open questions",
       "type": "role",
-      "claim": "The general connector management page requires an AI administrator, differing from the role wording on the people connectors page.",
+      "claim": "The connector-management page requires the AI administrator role, differing from the roles named on the people-connectors page.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
       "quote": "To access and manage your Microsoft 365 Copilot connectors, you must be an AI administrator for your organization.",
@@ -536,7 +530,7 @@
     },
     {
       "n": 47,
-      "where": "Scope: Prerequisites documented today",
+      "where": "Scope: Prerequisites",
       "type": "behaviour",
       "claim": "OAuth 2.0 authentication is required to set up people connectors.",
       "status": "supported",
@@ -547,119 +541,163 @@
     },
     {
       "n": 48,
-      "where": "Scope: Rollout",
-      "type": "absence",
-      "claim": "No feature-specific release channel or rollout mechanics are published.",
+      "where": "Scope: Clouds and platform",
+      "type": "record",
+      "claim": "The roadmap record lists no US Government cloud.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"people connectors\" \"rollout\" \"June\" \"2027\"; people data connectors differentiated access control ACL individuals groups default migration rollout 561326. Read roadmap, peopleconnectors and build-connectors-with-people-data; no ACL rollout channel or mechanics.",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
       "severity": null,
       "fix": null
     },
     {
       "n": 49,
-      "where": "Governance guidance: Before rollout",
-      "type": "behaviour",
-      "claim": "People connector mappings include skills, positions, addresses and phones.",
+      "where": "Scope: Rollout",
+      "type": "absence",
+      "claim": "No release channel or detailed rollout mechanics are published for this planned capability.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/build-connectors-with-people-data",
-      "quote": "`personCurrentPosition`; `personAddresses`; `personPhones`; `personSkills`",
+      "source": null,
+      "quote": "Searched: people connectors differentiated access control ACL individuals groups default existing connections migration 561326. Read the roadmap, peopleconnectors and the build guide; none supplies a release channel or rollout process for differentiated ACLs.",
       "severity": null,
       "fix": null
     },
     {
       "n": 50,
-      "where": "controls[1].ui; Governance controls; Governance guidance: After rollout",
+      "where": "Governance guidance: Before rollout",
       "type": "admin-path",
-      "claim": "The general Permissions view is at Microsoft 365 admin center > Copilot > Connectors > Your Connections > select the connector > Permissions.",
+      "claim": "Existing connectors can be inventoried in Microsoft 365 admin center under Copilot > Connectors > Your Connections.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-access-permissions",
-      "quote": "go to Copilot > Connectors > Your Connections. Select the connector you want to review to open the details pane. Under Permissions, you can view the permissions set for the connector.",
+      "quote": "In the Microsoft 365 Admin Center, go to Copilot > Connectors > Your Connections.",
       "severity": null,
       "fix": null
     },
     {
       "n": 51,
-      "where": "controls[1].api",
-      "type": "absence",
-      "claim": "No API equivalent of the connection-level Permissions model view is documented.",
+      "where": "Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "The Graph connection-management article uses the alternative navigation label Copilot > Agents and connectors.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Microsoft Graph externalConnection Permissions view API permission model everyone source ACL configuration. Opened manage-access-permissions and externalConnection resource v1.0/beta; no equivalent connection Permissions model property. Item ACL APIs are a different surface.",
+      "source": "https://learn.microsoft.com/graph/connecting-external-content-manage-connections",
+      "quote": "A search admin can view and manage all the connections in the tenant via the Copilot > Agents and connectors section of the Microsoft 365 admin center.",
       "severity": null,
       "fix": null
     },
     {
       "n": 52,
-      "where": "controls[2].ui; Governance controls",
-      "type": "admin-path",
-      "claim": "The partner-connector Copilot Visibility toggle is at Copilot > Connectors > Your Connections > select the connection > Copilot Visibility and controls inclusion in Copilot Search and Chat.",
+      "where": "Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Supported people attributes include skills, positions, addresses and phones.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
-      "quote": "Go to Copilot > Connectors > Your Connections. Select the connection that you want to modify. Under Copilot Visibility, select the toggle to turn the connector on or off, and choose Save.",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/build-connectors-with-people-data",
+      "quote": "`personCurrentPosition` | `string` | workPosition\n`personAddresses` | `stringCollection` | itemAddress\n`personPhones` | `stringCollection` | itemPhone\n`personSkills` | `stringCollection` | skillProficiency",
       "severity": null,
       "fix": null
     },
     {
       "n": 53,
-      "where": "controls[2].api",
-      "type": "absence",
-      "claim": "No documented API equivalent of the Copilot Visibility toggle was found.",
+      "where": "controls[1].ui; Governance guidance: After rollout; Governance controls",
+      "type": "admin-path",
+      "claim": "The documented Permissions path is Microsoft 365 admin center > Copilot > Connectors > Your Connections > select the connector > Permissions.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: site:learn.microsoft.com/graph \"Copilot Visibility\" API beta. Opened manage-connector, externalConnection v1.0/beta and connecting-external-content-manage-connections; enabledContentExperiences documents search, not equivalence to the Copilot Search/Chat toggle.",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-access-permissions",
+      "quote": "go to Copilot > Connectors > Your Connections.\nSelect the connector you want to review to open the details pane.\nUnder Permissions, you can view the permissions set for the connector.",
       "severity": null,
       "fix": null
     },
     {
       "n": 54,
-      "where": "controls[3].ui",
+      "where": "controls[1].api",
       "type": "absence",
-      "claim": "An admin UI for creating custom people data connections is not documented.",
+      "claim": "No API is documented for the connector-level Permissions view's source-ACL-versus-everyone model.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: custom people data connector create connection Microsoft 365 admin center user interface. Opened peopleconnectors and build-connectors-with-people-data; the custom route uses Graph. Search results describe prebuilt deployment and custom federated setup, not custom people ingestion UI.",
+      "quote": "Searched: Microsoft Graph connectors view connection Permissions source ACL everyone API PowerShell. Opened manage-access-permissions and externalConnection v1.0/beta references; found item ACL APIs but no API for this connector-level Permissions view/model.",
       "severity": null,
       "fix": null
     },
     {
       "n": 55,
-      "where": "controls[3].api",
-      "type": "command",
-      "claim": "POST https://graph.microsoft.com/v1.0/external/connections creates the connection, with people content categorisation required for people data.",
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "Partner-connector visibility is controlled at Copilot > Connectors > Your Connections > select the connection > Copilot Visibility in Microsoft 365 admin center.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/externalconnectors-external-post-connections",
-      "quote": "Create a new externalConnection object. POST https://graph.microsoft.com/v1.0/external/connections",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "Go to Copilot > Connectors > Your Connections.\nSelect the connection that you want to modify.\nUnder Copilot Visibility, select the toggle to turn the connector on or off, and choose Save.",
       "severity": null,
       "fix": null
     },
     {
       "n": 56,
-      "where": "controls[4].ui",
-      "type": "admin-path",
-      "claim": "A people connector can be deleted in the Microsoft 365 admin center under Connectors > Your Connections > select the connector > Delete.",
+      "where": "controls[2].api",
+      "type": "absence",
+      "claim": "No API equivalent of the documented Copilot Visibility toggle is published.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/graph/peopleconnectors",
-      "quote": "Go to the Microsoft 365 admin center and navigate to the connectors section. On the Your Connections tab, select the connector you want to delete. Select the Delete option.",
+      "source": null,
+      "quote": "Searched: Microsoft Graph connector Copilot Visibility toggle API enabledContentExperiences update externalConnection; Copilot Visibility Graph beta. Opened manage-connector, externalConnection v1.0/beta and Update externalConnection; none documents this toggle's API equivalent.",
       "severity": null,
       "fix": null
     },
     {
       "n": 57,
-      "where": "controls[4].api",
-      "type": "command",
-      "claim": "DELETE https://graph.microsoft.com/v1.0/external/connections/{connectionId} deletes an external connection.",
+      "where": "controls[2].note; Governance controls",
+      "type": "absence",
+      "claim": "The management page describes Copilot Visibility for partner connectors without confirming applicability to people connectors.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-delete",
-      "quote": "Deletes an externalConnection object. DELETE https://graph.microsoft.com/v1.0/external/connections/contosohr",
+      "source": null,
+      "quote": "Searched: Microsoft Graph connector Copilot Visibility toggle API enabledContentExperiences update externalConnection. Read manage-connector and peopleconnectors; the toggle is described for partner connectors, with no confirmation for people connectors.",
       "severity": null,
       "fix": null
     },
     {
       "n": 58,
+      "where": "controls[3].ui; controls[3].note",
+      "type": "absence",
+      "claim": "Admin UI creation of custom people-data connectors is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: custom people data connector create Microsoft 365 admin center user interface. Opened peopleconnectors, the build guide and manage-connector; Microsoft-built people connectors have UI setup, while custom people-data connectors use Graph APIs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "controls[3].api",
+      "type": "command",
+      "claim": "POST https://graph.microsoft.com/v1.0/external/connections creates the external connection used for people data, with its people contentCategory requirement checked separately.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/externalconnectors-external-post-connections",
+      "quote": "Create a new externalConnection object.\nPOST https://graph.microsoft.com/v1.0/external/connections\nIn the request body, supply a JSON representation of the externalConnection object.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[4].ui",
+      "type": "admin-path",
+      "claim": "A people connector can be deleted in Microsoft 365 admin center from Connectors > Your Connections > select the connector > Delete.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/peopleconnectors",
+      "quote": "Go to the Microsoft 365 admin center and navigate to the connectors section.\nOn the Your Connections tab, select the connector you want to delete.\nSelect the Delete option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "controls[4].api",
+      "type": "command",
+      "claim": "DELETE https://graph.microsoft.com/v1.0/external/connections/{connectionId} deletes an external connection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-delete",
+      "quote": "Deletes an externalConnection object.\nDELETE /external/connections/{connectionsId}\nDELETE https://graph.microsoft.com/v1.0/external/connections/contosohr",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
       "where": "controls[4].note",
       "type": "behaviour",
-      "claim": "Deleting a people connector removes it from all instances, but delays can occur.",
+      "claim": "Deleting a people connector removes it from all instances, but delays can be expected.",
       "status": "supported",
       "source": "https://learn.microsoft.com/graph/peopleconnectors",
       "quote": "If a connector is deleted, it's removed from all instances, but delays can be expected.",
@@ -667,48 +705,48 @@
       "fix": null
     },
     {
-      "n": 59,
+      "n": 63,
       "where": "controls[1].note; Governance controls",
       "type": "applicability",
-      "claim": "Learn does not confirm that the Permissions view covers people connectors.",
-      "status": "contradicted",
+      "claim": "Microsoft documents the Permissions view for each Microsoft 365 Copilot connector.",
+      "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-access-permissions",
       "quote": "You can review and validate access permissions for each Microsoft 365 Copilot connector from the connection details pane in the Microsoft 365 admin center.",
-      "severity": "blocker",
-      "fix": "Replace the Permissions-specific applicability disclaimer in controls[1].note and Governance controls with 'The Permissions view is documented for each Microsoft 365 Copilot connector; this does not document configuration of the planned differentiated people ACLs.' Retain the separate qualification on Copilot Visibility, which is documented for partner connectors."
-    },
-    {
-      "n": 60,
-      "where": "controls[2].note; Governance controls",
-      "type": "absence",
-      "claim": "The Copilot Visibility documentation describes partner connectors without confirming coverage of people connectors.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Microsoft Graph connector Permissions Copilot Visibility toggle API externalConnection enabledContentExperiences access permissions update. Opened manage-connector and peopleconnectors; the visibility section specifies partner connectors and gives no people-connector applicability statement.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 61,
-      "where": "Governance guidance: Before rollout, first bullet",
-      "type": "admin-path",
-      "claim": "Existing connectors can be reviewed at Microsoft 365 admin center > Copilot > Connectors > Your Connections.",
+      "n": 64,
+      "where": "controls[1].governs",
+      "type": "behaviour",
+      "claim": "The Permissions view distinguishes respecting source-system ACLs from granting visibility to everyone.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-access-permissions",
-      "quote": "In the Microsoft 365 Admin Center, go to Copilot > Connectors > Your Connections.",
-      "severity": "minor",
-      "fix": "Keep the cited path, but add: 'The Graph connection-management article uses the alternative navigation label Copilot > Agents and connectors.' Cite https://learn.microsoft.com/graph/connecting-external-content-manage-connections, which says a search admin can manage all tenant connections there."
+      "quote": "Only people with access to this data source: The connector respects source system access control lists (ACLs).\nVisible to everyone: The connector grants access to all users in the organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "controls[2].governs",
+      "type": "behaviour",
+      "claim": "Turning off the documented partner-connector visibility control excludes that connector from Copilot Search and Copilot Chat results and responses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
+      "quote": "When the visibility is off, the connector is excluded from all Copilot Search and Copilot Chat results and responses.",
+      "severity": null,
+      "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-17T00:01:28.232Z",
+    "at": "2026-11-17T00:44:04.396Z",
     "summary": {
-      "links": 8,
-      "unreachable": 0,
+      "links": 9,
+      "unreachable": 8,
       "uiPaths": 3,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 3,
       "apiCalls": 2,
-      "apiCallsNotOnPage": 0,
+      "apiCallsNotOnPage": 2,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -719,38 +757,43 @@
       },
       {
         "url": "https://learn.microsoft.com/graph/peopleconnectors",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/build-connectors-with-people-data",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-access-permissions",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/graph/api/externalconnectors-external-post-connections",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-delete",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/connecting-external-content-manage-connections",
+        "ok": false,
+        "status": 429
       }
     ],
     "controlChecks": [
@@ -759,7 +802,7 @@
         "side": "ui",
         "governs": "Permission model shown for a connector (source ACLs or visible to everyone)",
         "docs": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-access-permissions",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Copilot",
           "Connectors",
@@ -767,14 +810,20 @@
           "select the connector",
           "Permissions"
         ],
-        "missing": []
+        "missing": [
+          "Copilot",
+          "Connectors",
+          "Your Connections",
+          "select the connector",
+          "Permissions"
+        ]
       },
       {
         "index": 2,
         "side": "ui",
         "governs": "Whether a connector's data is visible in Copilot Search and Copilot Chat",
         "docs": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Copilot",
           "Connectors",
@@ -782,39 +831,50 @@
           "select the connection",
           "Copilot Visibility"
         ],
-        "missing": []
+        "missing": [
+          "Copilot",
+          "Connectors",
+          "Your Connections",
+          "select the connection",
+          "Copilot Visibility"
+        ]
       },
       {
         "index": 3,
         "side": "api",
         "governs": "Creating a connection that carries people data",
         "docs": "https://learn.microsoft.com/graph/api/externalconnectors-external-post-connections",
-        "reachable": true,
+        "reachable": false,
         "token": "/v1.0/external/connections",
-        "found": true
+        "found": false
       },
       {
         "index": 4,
         "side": "ui",
         "governs": "Removing a people connector and its data from Microsoft 365",
         "docs": "https://learn.microsoft.com/graph/peopleconnectors",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Connectors",
           "Your Connections",
           "select the connector",
           "Delete"
         ],
-        "missing": []
+        "missing": [
+          "Connectors",
+          "Your Connections",
+          "select the connector",
+          "Delete"
+        ]
       },
       {
         "index": 4,
         "side": "api",
         "governs": "Removing a people connector and its data from Microsoft 365",
         "docs": "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-delete",
-        "reachable": true,
+        "reachable": false,
         "token": "/v1.0/external/connections",
-        "found": true
+        "found": false
       }
     ],
     "roadmapDrift": []
@@ -824,6 +884,12 @@
       "date": "2026-11-16",
       "status": "held",
       "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-17",
+      "status": "held",
+      "version": 2,
       "model": "gpt-6.1-sol"
     }
   ]

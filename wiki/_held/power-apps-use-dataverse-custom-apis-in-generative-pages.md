@@ -14,28 +14,40 @@ previewDate: "October CY2026"
 risk: "medium"
 cost: "low"
 impact: "low"
-defaultState: "admin-opt-in"
+defaultState: "user-opt-in"
 action: "review"
 licensing:
-  model: "included"
-  notes: "Learn states no additional AI or message credits are needed for the generative pages maker experience. Standard Power Apps and Dataverse licensing applies."
+  model: "unknown"
+  notes: "Learn states the generative pages maker experience needs no additional AI or message credits. Users running a model-driven app need a licence providing Power Apps premium use rights. Licensing specific to custom API calls from generative pages is not yet published."
 audiences: ["maker","power-platform-admin","service-owner"]
 tags: ["power-apps","generative-pages","dataverse","custom-api","model-driven-apps","plug-ins","gcc","gcc-high"]
 sources:
   - title: "Generate a page using natural language"
-    url: "https://learn.microsoft.com/en-us/power-apps/maker/model-driven-apps/generative-pages"
+    url: "https://learn.microsoft.com/power-apps/maker/model-driven-apps/generative-pages"
     kind: "learn"
   - title: "Microsoft 365 Roadmap item 576284"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=576284"
     kind: "roadmap"
-  - title: "Copilot preview features in Power Apps (Power Platform admin center)"
+  - title: "Copilot in Power Apps overview"
     url: "https://learn.microsoft.com/power-apps/maker/canvas-apps/ai-overview#enable-or-disable-copilot-features"
     kind: "learn"
-  - title: "Application Insights telemetry for the pages (Power Platform admin center)"
+  - title: "Export data to Application Insights"
     url: "https://learn.microsoft.com/power-platform/admin/set-up-export-application-insights#create-an-export-package"
     kind: "learn"
+  - title: "Power Apps licensing FAQs"
+    url: "https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq#licensing-compliance-for-power-apps"
+    kind: "learn"
+  - title: "Requests limits and allocations"
+    url: "https://learn.microsoft.com/power-platform/admin/api-request-limits-allocations"
+    kind: "learn"
+  - title: "Tenant settings"
+    url: "https://learn.microsoft.com/power-platform/admin/tenant-settings"
+    kind: "learn"
+  - title: "Impersonate a user"
+    url: "https://learn.microsoft.com/power-apps/developer/data-platform/impersonate-a-user"
+    kind: "learn"
 videos: []
-related: ["power-apps-use-power-platform-connectors-in-generative-pages","power-apps-expand-model-access-and-maker-studio-availability-for-generative-pages-via-gith"]
+related: []
 controls:
   - governs: "Copilot preview features in Power Apps"
     scope: "tenant"
@@ -44,6 +56,7 @@ controls:
       path: "Settings > Tenant settings > Copilot in Power Apps (preview)"
       docs: "https://learn.microsoft.com/power-apps/maker/canvas-apps/ai-overview#enable-or-disable-copilot-features"
     api: null
+    note: "General maker Copilot preview control; Microsoft has not confirmed that it disables custom API use in generative pages or calls from published pages. Tenant settings is also reached via Manage > Tenant settings."
   - governs: "Application Insights telemetry for the pages"
     scope: "environment"
     ui:
@@ -51,14 +64,15 @@ controls:
       path: "Manage > Data export > App Insights > New data export"
       docs: "https://learn.microsoft.com/power-platform/admin/set-up-export-application-insights#create-an-export-package"
     api: null
+    note: "Preview for generative pages. Managed Environments only. Needs an Azure Application Insights resource, a tenant-level Power Platform or Dynamics 365 administrator role and an environment or system administrator role."
   - governs: "Switch specific to custom APIs in generative pages"
     scope: "environment"
     ui: null
     api: null
-    note: "Custom APIs run as the signed-in user and are governed by Dataverse security roles."
+    note: "Custom APIs run in the context of the signed-in user and are subject to Dataverse security."
 confidence: "high"
 created: "2026-11-15"
-updated: "2026-11-16"
+updated: "2026-11-17"
 roadmapModified: "2026-10-21T23:02:10"
 changes:
   - date: "2026-11-15"
@@ -67,18 +81,23 @@ changes:
     note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
   - date: "2026-11-16"
     note: "Taken offline until a corrected version passes its check: a failed check no longer keeps a page online with a notice."
-version: 2
+  - date: "2026-11-17"
+    note: "Correction: default state is now user opt-in, licensing model is not yet published, control notes added, and the claim that a page cannot exceed the user's permissions was removed."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 54 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 3
 verification:
   status: "held"
-  date: "2026-11-16"
-  version: 2
+  date: "2026-11-17"
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 43
-  confirmed: 37
-  unconfirmed: 3
-  contradicted: 3
-  attempts: 1
+  claims: 54
+  confirmed: 52
+  unconfirmed: 0
+  contradicted: 2
+  attempts: 2
+  hash: "22d2404774531d63c5ccc7c2e08d67b7"
 ---
 
 ## What's changing
@@ -111,7 +130,9 @@ It also encourages teams to expose approval or pricing logic as custom APIs, whi
 
 ## Cost and licensing
 
-Learn states that the generative pages maker experience does not need additional AI or message credits. Plug-in development, testing and any Dataverse API request consumption follow existing licensing. Anything specific to custom API calls from generative pages is not yet published.
+Learn states that the generative pages maker experience does not need additional AI or message credits. Separately, users running a model-driven app need a licence that provides Power Apps premium use rights, per the [Power Apps licensing FAQ](https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq#licensing-compliance-for-power-apps). Neither statement establishes licensing for custom API calls from generative pages, which is not yet published.
+
+Microsoft's [requests limits and allocations](https://learn.microsoft.com/power-platform/admin/api-request-limits-allocations) page counts all Power Apps API requests to Dataverse as Power Platform requests. Plug-in development and testing are implementation effort.
 
 ## Scope
 
@@ -120,17 +141,16 @@ Model-driven apps only. Worldwide, GCC and GCC High per the roadmap. In-browser 
 ## Governance guidance
 
 ### Before rollout
-- [ ] Inventory custom APIs and confirm each enforces its own authorisation checks.
-- [ ] Restrict who may create custom APIs and plug-ins in production.
-- [ ] Decide whether generative pages that call custom APIs need a code review step.
+- Inventory custom APIs and confirm each enforces its own authorisation checks.
+- Decide whether generative pages that call custom APIs need a code review step.
 
 ### At rollout
-- [ ] Test pages in a development environment with representative security roles.
-- [ ] Review generated code before publishing.
+- Test pages in a development environment with representative security roles.
+- Review generated code before publishing.
 
 ### After rollout
-- [ ] Monitor custom API usage and failures.
-- [ ] Review pages that call state-changing APIs when the API changes.
+- Monitor custom API usage and failures.
+- Review pages that call state-changing APIs when the API changes.
 
 ## Governance controls
 
@@ -139,13 +159,13 @@ Model-driven apps only. Worldwide, GCC and GCC High per the roadmap. In-browser 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Copilot preview features in Power Apps</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Settings › Tenant settings › Copilot in Power Apps (preview) <a href="https://learn.microsoft.com/power-apps/maker/canvas-apps/ai-overview#enable-or-disable-copilot-features" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Application Insights telemetry for the pages</strong><br><small>Environment</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Data export › App Insights › New data export <a href="https://learn.microsoft.com/power-platform/admin/set-up-export-application-insights#create-an-export-package" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Switch specific to custom APIs in generative pages</strong><br><small>Environment</small><br><small class="controls__note">Custom APIs run as the signed-in user and are governed by Dataverse security roles.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Copilot preview features in Power Apps</strong><br><small>Tenant</small><br><small class="controls__note">General maker Copilot preview control; Microsoft has not confirmed that it disables custom API use in generative pages or calls from published pages. Tenant settings is also reached via Manage &gt; Tenant settings.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Settings › Tenant settings › Copilot in Power Apps (preview) <a href="https://learn.microsoft.com/power-apps/maker/canvas-apps/ai-overview#enable-or-disable-copilot-features" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Application Insights telemetry for the pages</strong><br><small>Environment</small><br><small class="controls__note">Preview for generative pages. Managed Environments only. Needs an Azure Application Insights resource, a tenant-level Power Platform or Dynamics 365 administrator role and an environment or system administrator role.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Data export › App Insights › New data export <a href="https://learn.microsoft.com/power-platform/admin/set-up-export-application-insights#create-an-export-package" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Switch specific to custom APIs in generative pages</strong><br><small>Environment</small><br><small class="controls__note">Custom APIs run in the context of the signed-in user and are subject to Dataverse security.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-Governance sits in Dataverse security: who may create plug-ins and custom APIs, and which roles can execute them. The [prerequisites](https://learn.microsoft.com/power-apps/maker/model-driven-apps/generative-pages#prerequisites) note that custom APIs are subject to Dataverse security and run in the user's context, so a page cannot escalate beyond what the user already holds. Generative pages are solution-aware, so the usual ALM review applies before promotion.
+Custom APIs run in the context of the signed-in user and are subject to Dataverse security, per the [prerequisites](https://learn.microsoft.com/power-apps/maker/model-driven-apps/generative-pages#prerequisites) on the feature page. Administrators should still review each custom API plug-in's execution identity and authorisation checks, because Learn documents that plug-in code can run as another user ([impersonate a user](https://learn.microsoft.com/power-apps/developer/data-platform/impersonate-a-user)). Generative pages are solution-aware, so the usual ALM review applies before promotion.
 
 ## Open questions
 
@@ -159,16 +179,11 @@ cost: Low. Learn says the generative pages maker experience needs no extra AI or
 impact: Low. It affects makers and developers building model-driven apps; end users see only the resulting page.
 -->
 
-<!-- verifier-findings (2026-11-16, needs-correction; checked by gpt-6.1-sol)
-The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [supported, minor] front matter: licensing.notes; Cost and licensing / licensing: Existing Power Apps and Dataverse licensing requirements apply to the model-driven app. | Found: Model-driven apps use Dataverse and are premium apps by default. Every user who runs a model-driven app needs a license that provides Power Apps premium use rights. | Fix: Cite this licensing FAQ and replace the vague reference to standard licensing with: 'Users running the model-driven app need a licence providing Power Apps premium use rights.' Keep this separate from the maker-experience credit statement. | Source: https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq#licensing-compliance-for-power-apps
-- [unsupported, blocker] front matter: licensing.model / licensing: The custom API capability's licensing model is included. | Found: Searched: generative pages custom API licensing Power Apps Dataverse API requests AI message credits; "generative pages" "licensing" "custom APIs". Opened generative-pages and read Power Apps licensing FAQ excerpts; no feature-specific inclusion statement. | Fix: Set licensing.model to 'unknown'. Retain the documented no-additional-AI-or-message-credits statement specifically for the maker experience and the separate baseline model-driven app licence requirement; neither establishes custom API runtime licensing.
-- [supported, minor] Cost and licensing / licensing: Dataverse API request consumption remains subject to existing request entitlements. | Found: **Power Apps**: All API requests to connectors and Microsoft Dataverse. | Fix: Add https://learn.microsoft.com/power-platform/admin/api-request-limits-allocations to sources and cite it for request entitlements. Describe plug-in development and testing separately as implementation effort, not as a distinct published licensing rule. | Source: https://learn.microsoft.com/power-platform/admin/api-request-limits-allocations
-- [unsupported, blocker] front matter: defaultState / default: Nobody can use this capability until an administrator enables or configures it. | Found: Searched: "generative pages" "disable" "custom API"; "generative pages" "Copilot" "disable" admin. Opened generative-pages, ai-overview and list-tenantsettings; no feature-specific administrator opt-in prerequisite is stated. | Fix: Replace defaultState 'admin-opt-in' with 'user-opt-in': the feature documentation describes makers choosing Add > Custom API, and targeted searches found no separate administrator enablement switch. Do not treat preparing the API as an administrator availability gate.
-- [supported, minor] controls[0].ui; Governance controls: first table row / admin-path: The cited Copilot overview gives Power Platform admin center > Settings > Tenant settings > Copilot in Power Apps (preview). | Found: In the navigation pane, select **Settings** to open the **Tenant settings** page.
-3. Select **Copilot in Power Apps (preview)**, and then set the toggle to **Off**. | Fix: Acknowledge the navigation difference in https://learn.microsoft.com/power-platform/admin/tenant-settings, which gives Manage > Tenant settings, or Settings gear > Power Platform settings. Cite both and provide the newer documented route to the same setting. | Source: https://learn.microsoft.com/power-apps/maker/canvas-apps/ai-overview#enable-or-disable-copilot-features
-- [unsupported, blocker] controls[0]; Governance controls: first table row / applicability: The Copilot preview-features tenant switch is a confirmed governance control for custom API use in generative pages. | Found: Searched: generative pages custom API enable disable admin setting Copilot preview PowerShell tenant settings; "generative pages" "Copilot" "disable" admin. Opened generative-pages and ai-overview; neither explicitly maps this switch to custom API support. | Fix: Add controls[0].note and the matching table note: 'General maker Copilot preview control; Microsoft has not confirmed that it disables custom API use in generative pages or calls from published pages.' Do not present it as a feature-specific execution control.
-- [contradicted, blocker] controls[1]; Governance controls: second table row / applicability: Application Insights telemetry is presented as an environment control without a Managed Environments prerequisite. | Found: This feature is turned on and supported for managed environments only. | Fix: Add a row note stating that generative-page telemetry is preview and requires a Managed Environment meeting Application Insights export prerequisites. Mention the Azure Application Insights resource and the required tenant-level and environment-level administrator permissions from the cited prerequisites. | Source: https://learn.microsoft.com/power-platform/admin/set-up-export-application-insights#create-an-export-package
-- [contradicted, blocker] Governance controls: closing paragraph / role: Calling custom APIs as the signed-in user guarantees that a page cannot cause operations beyond the permissions the user already holds. | Found: You can also provide the [SystemUser.SystemUserId](reference/entities/systemuser#BKMK_SystemUserId) from any valid user account. This will work as long as that user has the permissions to perform the operations in the plug-in. | Fix: Remove 'so a page cannot escalate beyond what the user already holds'. Retain the feature page's exact statement about signed-in context and Dataverse security, and add that administrators must review the custom API plug-in's execution identity and authorisation checks because plug-in code can impersonate another user. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/impersonate-a-user
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist calls for restricting API and plug-in creation and checking authorisation, but the controls table contains no corresponding access-control row. | Found: Restrict who may create custom APIs and plug-ins in production. | Table rows: Copilot preview features in Power Apps; Application Insights telemetry for the pages; Switch specific to custom APIs in generative pages. | Fix: Add a Dataverse custom API authorisation and creation-permissions row. Cite https://learn.microsoft.com/power-apps/developer/data-platform/custom-api for ExecutePrivilegeName and identify creation permissions only after verifying their role documentation; do not substitute the missing feature switch for these controls.
+<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[1].note; Governance controls: second table row / role: The telemetry setup requirements name the resource and Power Platform/Dataverse roles without the required Azure-resource access qualification. | Found: Confirm that you have **Contributor** or **Owner** access to the Azure Application Insights resource you intend to use. | Fix: Append 'Also requires Contributor or Owner access to the Azure Application Insights resource.' to controls[1].note and the matching rendered table note, as required by step 8 at https://learn.microsoft.com/power-platform/admin/set-up-export-application-insights#create-an-export-package. | Source: https://learn.microsoft.com/power-platform/admin/set-up-export-application-insights#create-an-export-package
+- [contradicted, blocker] Why it matters: first sentence / behaviour: This moves generative pages from displaying data to triggering business operations. | Found: This capability is different from a plug-in that runs automatically when a Dataverse row is created, updated, or deleted. Those plug-ins already run when a generative page performs the corresponding data operation and don't need to be added to the page. | Fix: Replace the first sentence of Why it matters with 'This adds an explicit way for generative pages to invoke named server-side business operations.' The cited feature page distinguishes explicit custom API invocation from plug-ins already triggered by page data operations. | Source: https://learn.microsoft.com/power-apps/maker/model-driven-apps/generative-pages
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] front matter: cost; rationale: cost / cost: The low cost rating reflects known implementation effort and the maker experience's lack of additional AI or message credits. | Found: No, the maker experience for generative pages (and plans) don't require any additional AI or message credits. | Fix: Append 'Licensing specific to custom API calls from generative pages is not yet published.' to the cost rationale. The assessment scale requires this qualification when a low rating describes known indirect costs while feature-specific licensing remains unpublished. | Source: https://learn.microsoft.com/power-apps/maker/model-driven-apps/generative-pages
 -->

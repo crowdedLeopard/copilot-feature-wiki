@@ -46,6 +46,9 @@ sources:
   - title: "Delete externalConnection"
     url: "https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-delete"
     kind: "learn"
+  - title: "Create, update, and delete connections in Microsoft Graph"
+    url: "https://learn.microsoft.com/graph/connecting-external-content-manage-connections"
+    kind: "learn"
 videos: []
 related: ["work-iq-federated-connectors"]
 controls:
@@ -61,7 +64,7 @@ controls:
       path: "Copilot > Connectors > Your Connections > select the connector > Permissions"
       docs: "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-access-permissions"
     api: null
-    note: "General connector control: Learn does not confirm it covers people connectors. Updating permissions after creation is not currently supported."
+    note: "The Permissions view is documented for each Microsoft 365 Copilot connector; this does not document configuration of the planned differentiated people ACLs. Updating permissions after creation is not currently supported."
   - governs: "Whether a connector's data is visible in Copilot Search and Copilot Chat"
     scope: "other"
     ui:
@@ -91,7 +94,7 @@ controls:
     note: "Learn says deletion removes the connector from all instances but delays can be expected."
 confidence: "medium"
 created: "2026-11-16"
-updated: "2026-11-16"
+updated: "2026-11-17"
 roadmapModified: "2026-11-11T00:53:22"
 changes:
   - date: "2026-11-16"
@@ -100,19 +103,23 @@ changes:
     note: "Correction: default state is now Not stated; migration of existing people connections is described as undocumented; Permissions path completed; Graph delete call added to the removal row; two checklist items without table rows removed."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 61 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-17"
+    note: "Correction: removed the claim about where scoped data would sit, narrowed the cost-cap statement to the planned ACL capability, and stated that the Permissions view is documented for each connector."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 65 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-17"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 61
-  confirmed: 58
-  unconfirmed: 1
-  contradicted: 2
-  attempts: 2
-  hash: "2ba59f591359b8a8498bae650d802541"
+  claims: 65
+  confirmed: 65
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "bf9bb4b9d4c979129314e50b9efbbf43"
 ---
 
 ## What's changing
@@ -136,7 +143,7 @@ Microsoft has not stated the new ACL control's default or whether existing conne
 **Data exposure**
 
 - Today, people connector data is visible to all users in the tenant and the ACL must grant everyone. Any sensitive attribute you map into a profile is therefore tenant-wide, and Copilot and people search can surface it. The planned ACL support is the only change the sources describe that would narrow this; its mechanics are not yet documented.
-- Learn says data is stored in the user's Microsoft 365 profile and in the Exchange Online mailbox, so scoped data would still sit with the profile, and how scoping applies to profile cards, Org Explorer and search is not yet documented.
+- Learn says data is stored in the user's Microsoft 365 profile and in the Exchange Online mailbox. How scoping applies to profile cards, Org Explorer and search is not yet documented.
 
 **Security & identity**
 
@@ -158,7 +165,7 @@ No licence or price is published for the planned ACL capability, and the roadmap
 
 The general connectors prerequisites page (Prerequisites for deploying connectors) says synced connectors support Copilot grounding and agents with Microsoft 365 plus the Microsoft 365 Copilot add-on or with Microsoft 365 E7, and that a Microsoft 365 licence alone supports Microsoft Search only. It also says that indexing of synced connector data incurs no extra cost for tenants with Microsoft 365 licenses. That page is about connectors in general; it does not mention people connectors, so treat it as background.
 
-No meter, credit rate or cap is documented for people data ingestion at the time of writing. Indirect cost is admin and developer time: custom people connectors are built against the Graph external connections APIs. Microsoft has not documented a migration process for existing people connections, so the effort of moving to ACLs is not yet known.
+No meter, credit rate or spending cap specific to the planned ACL capability was found at the time of writing. Indirect cost is admin and developer time: custom people connectors are built against the Graph external connections APIs. Microsoft has not documented a migration process for existing people connections, so the effort of moving to ACLs is not yet known.
 
 ## Scope
 
@@ -172,7 +179,7 @@ No meter, credit rate or cap is documented for people data ingestion at the time
 
 ### Before rollout
 
-- Inventory existing Copilot connectors in the Microsoft 365 admin center (Copilot > Connectors > Your Connections) and flag any that carry people data with an everyone ACL.
+- Inventory existing Copilot connectors in the Microsoft 365 admin center (Copilot > Connectors > Your Connections) and flag any that carry people data with an everyone ACL. The Graph connection-management article uses the alternative navigation label Copilot > Agents and connectors.
 - List the people attributes you would map (for example skills, positions, addresses, phones) and decide which should stay tenant-wide and which need restricting once ACLs are available.
 - Check which roles can configure people connectors in your tenant, given that two Learn pages name different roles.
 
@@ -195,14 +202,14 @@ No meter, credit rate or cap is documented for people data ingestion at the time
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Scoping imported people data to specific individuals and groups</strong><br><small class="controls__note">Not yet documented. Learn currently says people connector data is visible to all users and the ACL must grant everyone.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Permission model shown for a connector (source ACLs or visible to everyone)</strong><br><small class="controls__note">General connector control: Learn does not confirm it covers people connectors. Updating permissions after creation is not currently supported.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Connectors › Your Connections › select the connector › Permissions <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-access-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Permission model shown for a connector (source ACLs or visible to everyone)</strong><br><small class="controls__note">The Permissions view is documented for each Microsoft 365 Copilot connector; this does not document configuration of the planned differentiated people ACLs. Updating permissions after creation is not currently supported.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Connectors › Your Connections › select the connector › Permissions <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-access-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether a connector's data is visible in Copilot Search and Copilot Chat</strong><br><small class="controls__note">Learn describes this for partner connectors; not confirmed for people connectors. AI administrator role.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Connectors › Your Connections › select the connection › Copilot Visibility <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Creating a connection that carries people data</strong><br><small>Tenant</small><br><small class="controls__note">Admin UI creation for custom people connectors is not documented on the pages read. Roles per the people connectors page: Global Administrator and Copilot Administrator.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/v1.0/external/connections (set contentCategory to people)</code> <a href="https://learn.microsoft.com/graph/api/externalconnectors-external-post-connections" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Removing a people connector and its data from Microsoft 365</strong><br><small>Tenant</small><br><small class="controls__note">Learn says deletion removes the connector from all instances but delays can be expected.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Connectors › Your Connections › select the connector › Delete <a href="https://learn.microsoft.com/graph/peopleconnectors" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>DELETE https://graph.microsoft.com/v1.0/external/connections/{connectionId}</code> <a href="https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-delete" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-No Microsoft page documents an admin setting, PowerShell cmdlet or API for scoping people data to individuals and groups, so the first row is empty on both surfaces. The rows beneath it are existing connector controls: the Learn pages read for this briefing do not confirm that the Copilot Visibility toggle or the Permissions view apply to people connectors, so treat them as general controls.
+No Microsoft page documents an admin setting, PowerShell cmdlet or API for scoping people data to individuals and groups, so the first row is empty on both surfaces. The rows beneath it are existing connector controls. The Permissions view is documented for each Microsoft 365 Copilot connector; this does not document configuration of the planned differentiated people ACLs. The pages read for this briefing do not confirm that the Copilot Visibility toggle, which Learn describes for partner connectors, applies to people connectors, so treat it as a general control.
 
 The Permissions view and the Copilot Visibility toggle are documented on the connector management pages, which name the AI administrator role. The people connectors page names Global Administrator and Copilot Administrator for configuring people connectors. Learn states that updating access permissions after creation is not currently supported and describes deleting and recreating the connection. That is today's general connector guidance, not a documented migration route for future people ACLs.
 
@@ -218,14 +225,4 @@ The Permissions view and the Copilot Visibility toggle are documented on the con
 risk: Medium. Today Microsoft Learn says people connector data is visible to all users in the tenant; the planned ACL support narrows that, but how it is configured and enforced is not yet documented.
 cost: Low. The only cost the sources show is admin and developer time to build or change a connector; licensing for the new ACL capability is not yet published, and Copilot grounding on connector data needs a Copilot licence.
 impact: Low. Only admins and developers who build or run people connectors are affected directly; users would notice only when Copilot answers people questions with different data.
--->
-
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Risk assessment: Data exposure, second bullet / behaviour: Future ACL-scoped people data would still sit with the Microsoft 365 profile. | Found: Searched: "people data" "scoped" "profile" "ACL". Opened peopleconnectors and build-connectors-with-people-data; storage is described for today's everyone-visible data, not for the planned differentiated-access design. | Fix: Remove 'so scoped data would still sit with the profile,' and retain the current-storage fact followed by 'How scoping applies to profile cards, Org Explorer and search is not yet documented.'
-- [contradicted, blocker] Cost and licensing: third paragraph / absence: No cap is documented for people data ingestion. | Found: If you reach the maximum limit of a single connection or the tenant level quota across all connections, you can't add more items until you exit the state. | Fix: Replace 'No meter, credit rate or cap is documented for people data ingestion at the time of writing' with 'No meter, credit rate or spending cap specific to the planned ACL capability was found at the time of writing.' This removes the broader ingestion-limit absence claim; the Graph connections documentation describes connection and tenant item quotas. | Source: https://learn.microsoft.com/graph/connecting-external-content-manage-connections
-- [contradicted, blocker] controls[1].note; Governance controls / applicability: Learn does not confirm that the Permissions view covers people connectors. | Found: You can review and validate access permissions for each Microsoft 365 Copilot connector from the connection details pane in the Microsoft 365 admin center. | Fix: Replace the Permissions-specific applicability disclaimer in controls[1].note and Governance controls with 'The Permissions view is documented for each Microsoft 365 Copilot connector; this does not document configuration of the planned differentiated people ACLs.' Retain the separate qualification on Copilot Visibility, which is documented for partner connectors. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-access-permissions
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance guidance: Before rollout, first bullet / admin-path: Existing connectors can be reviewed at Microsoft 365 admin center > Copilot > Connectors > Your Connections. | Found: In the Microsoft 365 Admin Center, go to Copilot > Connectors > Your Connections. | Fix: Keep the cited path, but add: 'The Graph connection-management article uses the alternative navigation label Copilot > Agents and connectors.' Cite https://learn.microsoft.com/graph/connecting-external-content-manage-connections, which says a search admin can manage all tenant connections there. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-access-permissions
 -->

@@ -47,7 +47,7 @@ sources:
     url: "https://learn.microsoft.com/power-platform/admin/managed-environment-licensing"
     kind: "learn"
 videos: []
-related: ["managed-environments","copilot-studio-share-autonomous-agents-run-only","agent-identity","power-platform-maker-guidelines-copilot-studio","data-policies"]
+related: ["agent-identity","power-platform-maker-guidelines-copilot-studio"]
 controls:
   - governs: "Sharing agents with embedded maker credentials, per environment"
     scope: "environment"
@@ -61,10 +61,10 @@ controls:
     scope: "environment-group"
     ui:
       surface: "Power Platform admin center"
-      path: "Security > Threat detection > Sharing agent with embedded maker credentials > Environment groups or Environments > Set up"
+      path: "Security > Threat detection > Sharing agent with embedded maker credentials > Environment groups > environment group > Set up"
       docs: "https://learn.microsoft.com/power-platform/admin/security/control-sharing-agents-with-embedded-maker-credentials"
     api: null
-    note: "Preview article. Offers Don't let makers share agents with their own credentials embedded (recommended) and Let makers share agents with their own credentials embedded."
+    note: "Preview article. The Environments tab selects an environment instead. Offers Don't let makers share agents with their own credentials embedded (recommended) and Let makers share agents with their own credentials embedded."
   - governs: "Who an agent can be shared with (existing Managed Environments control, not credential-aware)"
     scope: "environment"
     ui:
@@ -73,12 +73,12 @@ controls:
       docs: "https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits"
     api:
       kind: "powershell"
-      call: "Set-AdminPowerAppEnvironmentGovernanceConfiguration -EnvironmentName <EnvironmentId> -UpdatedGovernanceConfiguration $governanceConfiguration (set bot-limitSharingMode, bot-maxLimitUserSharing or bot-authoringSharingDisabled)"
+      call: "Set-AdminPowerAppEnvironmentGovernanceConfiguration -EnvironmentName <EnvironmentId> -UpdatedGovernanceConfiguration $governanceConfiguration"
       docs: "https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits"
-    note: "Limits editors, viewers and security groups on agents. Does not evaluate connection credentials."
+    note: "Limits editors, viewers and security groups; not credential-aware. Retrieve governanceConfiguration first, then update settings.extendedSettings (bot-limitSharingMode, bot-maxLimitUserSharing, bot-authoringSharingDisabled)."
 confidence: "high"
 created: "2026-11-13"
-updated: "2026-11-16"
+updated: "2026-11-17"
 roadmapModified: "2026-07-01T23:03:18"
 changes:
   - date: "2026-11-13"
@@ -87,18 +87,23 @@ changes:
     note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
   - date: "2026-11-16"
     note: "Corrected after verification: default state now follows the settings reference (On, preview), licensing is marked not yet published, paths and the sharing-limits PowerShell call were re-read, and unsupported role and environment-group claims were removed."
-version: 3
+  - date: "2026-11-17"
+    note: "Corrected after verification: publish behaviour now distinguishes unshared and already-shared agents, the sharing-limits PowerShell call is shown as documented, and the scope note no longer excludes already-shared agents."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 57 statements confirmed"
+version: 4
 verification:
-  status: "held"
-  date: "2026-11-16"
-  version: 3
+  status: "verified"
+  date: "2026-11-17"
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 56
-  confirmed: 53
+  claims: 57
+  confirmed: 57
   unconfirmed: 0
-  contradicted: 3
-  attempts: 2
+  contradicted: 0
+  attempts: 0
+  hash: "75dcb3f99e57f530449bdf30410d0588"
 ---
 
 ## What's changing
@@ -107,7 +112,7 @@ Copilot Studio evaluates an agent's connections before the agent is shared or pu
 
 An agent counts as unsafe for sharing when it uses at least one connection that does not allow credential sharing and that connection uses credentials supplied at design time instead of asking each user to sign in. Copilot Studio can also follow dependencies: as dependency-based enforcement becomes available, a flow or agent that uses a non-shareable connection can make the calling agent unsafe too. Connections set to end-user credentials are not subject to the restriction.
 
-The configuration article describes two modes. **All sharing allowed** detects unsafe credential use and informs makers without blocking. **Safe sharing enforced** blocks the applicable publish and share paths. Makers can still edit and save an unsafe agent, but cannot newly share it, and cannot share it with everyone in the organisation. Publishing is disabled while enforcement is active if the agent uses the maker's credentials at runtime, and can also be blocked for an agent that is already shared. Agents that use an approved system identity (a service principal, API key or managed identity) can be published when the connection supports the scenario. The control does not unshare existing agents and does not block an agent while it is running.
+The configuration article describes two modes. **All sharing allowed** detects unsafe credential use and informs makers without blocking. **Safe sharing enforced** blocks the applicable publish and share paths. Makers can still edit and save an unsafe agent, but cannot newly share it, and cannot share it with everyone in the organisation. For channels where publishing distributes the agent without a separate Share action, maker user credentials can disable publishing. For authenticated agents, an unshared agent can publish successfully; an already-shared violating agent is blocked. Agents that use an approved system identity (a service principal, API key or managed identity) can be published when the connection supports the scenario. The control does not unshare existing agents and does not block an agent while it is running.
 
 The settings reference (a preview section, marked as prerelease documentation) lists the blocking option as On by default; the configuration article does not state which mode is the default. The roadmap item is In development, with a preview target of July CY2026 and a general availability target of September CY2026. Both dates have passed at the time of writing (November 2026) while the item is still listed as In development.
 
@@ -132,7 +137,7 @@ If nobody reviews it, the exposure is in the agents that are already shared: the
 - The control governs sharing and publishing only. It does not stop an agent while it is running, and it is not a runtime restriction on what an already-shared agent can do.
 
 **Change & support**
-- In enforced mode, makers see tools marked **Blocked** with a **Sharing policy violation** message, the **Publish** option is unavailable, and sharing with a viewer, an end user or everyone in the organisation is refused. Expect help desk questions unless makers have guidance on end-user authentication.
+- In enforced mode, makers see tools marked **Blocked** with a **Sharing policy violation** message (if a tool is also restricted by a data policy, Copilot Studio displays **Data policy violation** instead), the **Publish** option is unavailable, and sharing with a viewer, an end user or everyone in the organisation is refused. Expect help desk questions unless makers have guidance on end-user authentication.
 - Dependency-based enforcement can expand over time, so an agent that published cleanly can be blocked on a later publish because of a flow or agent it calls.
 
 ## Cost and licensing
@@ -147,7 +152,7 @@ If nobody reviews it, the exposure is in the agents that are already shared: the
 - **Roles:** Permission to manage settings for the target environment; the settings reference asks for the System Administrator security role or equivalent permissions.
 - **Clouds and platforms:** The roadmap record lists Worldwide (Standard Multi-Tenant) and Web.
 - **Rollout:** The roadmap record lists Preview and General Availability phases, with targets of July CY2026 and September CY2026 and the status In development. The Learn pages describe the feature as preview.
-- **Not covered:** Agents that use end-user credentials, and agents that are already shared.
+- **Not restricted:** connections using end-user credentials. Existing sharing and running agents are not retroactively disabled, but later publishing of an already-shared unsafe agent can be blocked.
 
 ## Governance guidance
 
@@ -174,8 +179,8 @@ If nobody reviews it, the exposure is in the agents that are already shared: the
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Sharing agents with embedded maker credentials, per environment</strong><br><small>Environment</small><br><small class="controls__note">Modes: All sharing allowed, Safe sharing enforced. The settings reference reaches Features via Settings &gt; Product. Preview documentation.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Features › Sharing agents with embedded maker credentials <a href="https://learn.microsoft.com/microsoft-copilot-studio/configure-sharing-agents-embedded-maker-credentials" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>The same setting for an environment group or an environment</strong><br><small>Environment group</small><br><small class="controls__note">Preview article. Offers Don't let makers share agents with their own credentials embedded (recommended) and Let makers share agents with their own credentials embedded.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Threat detection › Sharing agent with embedded maker credentials › Environment groups or Environments › Set up <a href="https://learn.microsoft.com/power-platform/admin/security/control-sharing-agents-with-embedded-maker-credentials" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Who an agent can be shared with (existing Managed Environments control, not credential-aware)</strong><br><small>Environment</small><br><small class="controls__note">Limits editors, viewers and security groups on agents. Does not evaluate connection credentials.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Edit Managed Environments › Manage sharing <a href="https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-AdminPowerAppEnvironmentGovernanceConfiguration -EnvironmentName &lt;EnvironmentId&gt; -UpdatedGovernanceConfiguration $governanceConfiguration (set bot-limitSharingMode, bot-maxLimitUserSharing or bot-authoringSharingDisabled)</code> <a href="https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>The same setting for an environment group or an environment</strong><br><small>Environment group</small><br><small class="controls__note">Preview article. The Environments tab selects an environment instead. Offers Don't let makers share agents with their own credentials embedded (recommended) and Let makers share agents with their own credentials embedded.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Threat detection › Sharing agent with embedded maker credentials › Environment groups › environment group › Set up <a href="https://learn.microsoft.com/power-platform/admin/security/control-sharing-agents-with-embedded-maker-credentials" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Who an agent can be shared with (existing Managed Environments control, not credential-aware)</strong><br><small>Environment</small><br><small class="controls__note">Limits editors, viewers and security groups; not credential-aware. Retrieve governanceConfiguration first, then update settings.extendedSettings (bot-limitSharingMode, bot-maxLimitUserSharing, bot-authoringSharingDisabled).</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Edit Managed Environments › Manage sharing <a href="https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-AdminPowerAppEnvironmentGovernanceConfiguration -EnvironmentName &lt;EnvironmentId&gt; -UpdatedGovernanceConfiguration $governanceConfiguration</code> <a href="https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -193,15 +198,4 @@ The two admin centre routes to this setting are documented in different articles
 risk: Medium. The Learn settings reference lists blocking as On by default, but the control does not unshare agents that are already shared, and the Learn pages describe it as preview.
 cost: Low. The only cost the sources show is admin and maker time; no feature-specific licence or Copilot Credit charge is published, and environment groups can only hold Managed Environments.
 impact: Medium. Makers meet blocked Share and Publish actions and must rework connections; end users are not asked to do anything.
--->
-
-<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
-The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [contradicted, blocker] What's changing: Publishing is disabled while enforcement is active / behaviour: Publishing is disabled whenever enforcement is active and an agent uses the maker's credentials at runtime. | Found: For authenticated agents, an agent that you didn't share can publish successfully, while an agent you already shared with another user is blocked from publishing when enforcement applies. | Fix: Qualify the sentence: 'For channels where publishing distributes the agent without a separate Share action, maker user credentials can disable publishing. For authenticated agents, an unshared agent can publish successfully; an already-shared violating agent is blocked.' Cite https://learn.microsoft.com/microsoft-copilot-studio/admin-sharing-controls-limits alongside the configuration article. | Source: https://learn.microsoft.com/microsoft-copilot-studio/admin-sharing-controls-limits
-- [supported, minor] controls[1].ui; Governance controls row 2 / admin-path: The group route is Power Platform admin center > Security > Threat detection > Sharing agent with embedded maker credentials > Environment groups or Environments > Set up. | Found: Environment groups: In the Environment groups tab, select the environment group for which you want to configure the setting.
-Environments: In the Environments tab, select the environment for which you want to configure the setting.
-Select Set up. | Fix: The pre-check's combined label is a choice between two real tabs, not an invented menu. Add the omitted target-selection step: 'Security > Threat detection > Sharing agent with embedded maker credentials > Environment groups > environment group > Set up', or the 'Environments > environment' alternative. | Source: https://learn.microsoft.com/power-platform/admin/security/control-sharing-agents-with-embedded-maker-credentials
-- [contradicted, blocker] controls[2].api; Governance controls row 3 / command: The printed Set-AdminPowerAppEnvironmentGovernanceConfiguration call, including '(set bot-limitSharingMode, bot-maxLimitUserSharing or bot-authoringSharingDisabled)', is a sharing-limits PowerShell command. | Found: Set-AdminPowerAppEnvironmentGovernanceConfiguration -EnvironmentName <EnvironmentId> -UpdatedGovernanceConfiguration $governanceConfiguration | Fix: Set controls[2].api.call to 'Set-AdminPowerAppEnvironmentGovernanceConfiguration -EnvironmentName <EnvironmentId> -UpdatedGovernanceConfiguration $governanceConfiguration' and update the rendered table. Move the parenthetical out of code into the note: first retrieve the environment's governanceConfiguration, then update settings.extendedSettings using the cited Add-Member examples. For example, bot-limitSharingMode='ExcludeSharingToSecurityGroups' and bot-maxLimitUserSharing='20' restrict viewer sharing; bot-authoringSharingDisabled=True disables Editor sharing. The current '(set ... or ...)' is prose, not documented executable syntax. | Source: https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits
-- [supported, minor] Risk assessment: Change & support / behaviour: Affected tools are marked Blocked with a Sharing policy violation message. | Found: These tools are marked as Blocked with a Sharing policy violation message explaining that a connection violates the administrator's connection-sharing policy. | Fix: Add the documented display qualification: 'If a tool is also restricted by a data policy, Copilot Studio displays Data policy violation instead.' The qualification changes the diagnostic label, not the remediation advice. | Source: https://learn.microsoft.com/microsoft-copilot-studio/admin-sharing-controls-limits
-- [contradicted, blocker] Scope: Not covered / applicability: Agents that are already shared are not covered by the control. | Found: A later publish of an already-shared agent can be blocked if the agent still contains unsafe embedded maker credentials. | Fix: Replace 'Not covered: Agents that use end-user credentials, and agents that are already shared' with 'Not restricted: connections using end-user credentials. Existing sharing and running agents are not retroactively disabled, but later publishing of an already-shared unsafe agent can be blocked.' This also resolves the conflict with What's changing and Why it matters. | Source: https://learn.microsoft.com/microsoft-copilot-studio/configure-sharing-agents-embedded-maker-credentials
 -->

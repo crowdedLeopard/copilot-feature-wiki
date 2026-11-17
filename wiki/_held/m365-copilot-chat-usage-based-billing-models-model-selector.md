@@ -4,7 +4,7 @@ slug: "m365-copilot-chat-usage-based-billing-models-model-selector"
 roadmapId: 571400
 topic: "m365-copilot"
 products: ["Microsoft Copilot (Microsoft 365)"]
-summary: "Users will be able to pick models that bill in Copilot Credits from the model selector in Copilot Chat. Admins must allocate credits through spending policies first, and users can request more when they run out."
+summary: "Licensed users will be able to pick Copilot Credit-billed models in the Copilot Chat model selector. Admins must enable usage-based billing, provide credits and set spending limits; in-product credit requests are planned for later."
 status: "in-development"
 releasePhase: ["General Availability","Preview"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -13,56 +13,73 @@ targetDate: "December CY2026"
 previewDate: "November CY2026"
 risk: "medium"
 cost: "variable"
-impact: "high"
+impact: "medium"
 defaultState: "admin-opt-in"
 action: "prepare"
 licensing:
   model: "consumption"
-  notes: "Copilot Credits via pay-as-you-go, Copilot Credit Pre-purchase Plan (P3) or prepaid capacity packs, governed by identity-based spending policies in the Microsoft 365 admin center. Credit rates per model not yet published."
+  notes: "Needs a Microsoft 365 Copilot user subscription licence (USL) plus usage-based billing enabled and credits provided. Credits come from pay-as-you-go, a Copilot Credit Pre-purchase Plan (P3) or prepaid capacity packs; spending policies set limits. Per-model credit rates not yet published."
 audiences: ["m365-admin","finops","service-owner","end-user","change-adoption"]
 tags: ["m365-copilot","copilot-chat","model-selector","usage-based-billing","copilot-credits","spending-policies","credit-requests","frontier-models"]
 sources:
   - title: "Microsoft 365 Roadmap 571400"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=571400"
     kind: "roadmap"
-  - title: "Understand usage-based billing and cost management for Copilot Credits"
-    url: "https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits"
+  - title: "MC1519122"
+    url: "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1519122"
+    kind: "message-center"
+  - title: "Understanding the user subscription license (USL) and usage-based billing (UBB)"
+    url: "https://learn.microsoft.com/copilot/plan/user-subscription-license-usage-based-billing"
+    kind: "learn"
+  - title: "Managing AI experiences enabled by usage-based billing"
+    url: "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits"
     kind: "learn"
   - title: "Set up usage-based billing for Copilot Credits"
     url: "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup"
     kind: "learn"
-  - title: "Usage-based billing: what you see in the Microsoft 365 admin center vs. your Azure bill"
+  - title: "Monitor Copilot Credit spending"
+    url: "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending"
+    kind: "learn"
+  - title: "Usage-based billing: What you see in the Microsoft 365 admin center vs. your Azure bill"
     url: "https://learn.microsoft.com/copilot/implement/usage-based-billing-compare-dashboard-views"
     kind: "learn"
-  - title: "Usage-based billing, spending policies, limits and alerts (Microsoft Graph)"
-    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview"
+  - title: "Access requests to usage-based billing experiences"
+    url: "https://learn.microsoft.com/copilot/implement/request-access-usage-based-billing-experiences"
+    kind: "learn"
+  - title: "Discovery setting for AI experiences enabled by usage-based billing"
+    url: "https://learn.microsoft.com/copilot/implement/discovery-setting-ai-experiences"
+    kind: "learn"
+  - title: "Claude models from Anthropic in Microsoft Online Services"
+    url: "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor"
+    kind: "learn"
+  - title: "List spendingPolicies"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-list"
     kind: "learn"
   - title: "Which users may use Anthropic (Claude) models (Microsoft 365 admin center)"
     url: "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor#opt-in-to-use-claude-models"
     kind: "learn"
-  - title: "Pay-as-you-go billing policy for Copilot services (Microsoft 365 admin center)"
-    url: "https://learn.microsoft.com/copilot/implement/copilot-capacity-packs#step-2-set-up-your-billing-configuration"
-    kind: "learn"
 videos: []
-related: ["copilot-studio-cost-management-m365-admin-center","m365-admin-center-agent-level-pay-as-you-go-controls","m365-admin-center-copilot-credits-usage-report","copilot-credits"]
+related: ["copilot-credits"]
 controls:
   - governs: "Usage-based billing, spending policies, limits and alerts"
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
       path: "Copilot > Cost Management > Configuration"
-      docs: "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup"
+      docs: "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits"
     api:
       kind: "graph"
-      call: "/beta/copilot/costManagement (Cost Management API)"
-      docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview"
-  - governs: "Who can see the usage-based billing experiences"
+      call: "GET /beta/copilot/costManagement/spendingPolicies"
+      docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-list"
+    note: "The Graph call lists policies; it does not set limits or alerts. Beta APIs can change and are unsupported in production."
+  - governs: "Who can request access to usage-based billing experiences"
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
       path: "Copilot > Settings > All Settings > Access to usage-based billing experiences"
-      docs: "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup"
+      docs: "https://learn.microsoft.com/copilot/implement/request-access-usage-based-billing-experiences"
     api: null
+    note: "Needs the Global administrator role. Changes can take up to 24 hours to apply. It does not complete usage-based billing setup by itself."
   - governs: "Which users may use Anthropic (Claude) models"
     scope: "user"
     ui:
@@ -70,94 +87,97 @@ controls:
       path: "Copilot > Settings > View all > AI providers operating as Microsoft subprocessors > Anthropic > Choose which users"
       docs: "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor#opt-in-to-use-claude-models"
     api: null
-  - governs: "Pay-as-you-go billing policy for Copilot services"
-    scope: "tenant"
-    ui:
-      surface: "Microsoft 365 admin center"
-      path: "Copilot > Billing & usage > Pay-as-you-go services"
-      docs: "https://learn.microsoft.com/copilot/implement/copilot-capacity-packs#step-2-set-up-your-billing-configuration"
-    api: null
+    note: "Needs the AI Administrator or Global Administrator role. Applies to Anthropic models, not to GPT-6 Astra."
 confidence: "medium"
 created: "2026-11-13"
-updated: "2026-11-16"
+updated: "2026-11-17"
 roadmapModified: "2026-11-04T23:59:50"
 changes:
   - date: "2026-11-13"
     note: "Initial briefing"
   - date: "2026-11-16"
     note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
-version: 2
+  - date: "2026-11-17"
+    note: "Corrected after verification: separated access from planned credit requests, added the USL requirement, replaced allocation wording with spending limits, qualified model data terms, named the announced models, fixed control paths and the Graph call, and dropped the pay-as-you-go row."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 87 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 3
 verification:
   status: "held"
-  date: "2026-11-16"
-  version: 2
+  date: "2026-11-17"
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 59
-  confirmed: 43
-  unconfirmed: 4
-  contradicted: 12
-  attempts: 2
+  claims: 87
+  confirmed: 83
+  unconfirmed: 0
+  contradicted: 4
+  attempts: 3
+  hash: "ba81034fcb43380ccd4f3ab09581eafe"
 ---
 
 ## What's changing
 
-Copilot Chat's model selector will offer models that are not covered by the per-user Copilot licence and instead bill in **Copilot Credits** under usage-based billing (UBB). Users can only see and use these models if a tenant administrator has allocated credits to them through a spending policy. When a user exhausts their allocation they can submit a **credit request** to their administrators from within the experience; administrators handle requests in the Cost Management dashboard and can route them with request-routing policies.
+Copilot Chat's model selector will offer models that bill in **Copilot Credits** under usage-based billing (UBB). Microsoft describes UBB as covering advanced AI and frontier models, extending beyond the everyday AI included in the Microsoft 365 Copilot user subscription licence (USL). The roadmap item says tenant admins will need to provide credits so that users can interact with these models. Notice MC1519122 names **GPT-6 Astra** and **Claude Fable 5.1** as generally available UBB models with this rollout, says the previously communicated eligibility requirements for these models apply, and says users will not have access to UBB models unless UBB is enabled. The notice also covers Copilot in Word, Excel and PowerPoint, and says users will be able to set the reasoning effort level when using a UBB model in Chat.
 
-Public preview is listed for November 2026 and General Availability for December 2026. The roadmap does not name the models or their credit rates.
+The roadmap item says users who consume their credits will be able to request more from their tenant admins. MC1519122 says Microsoft plans to roll out that ability after the initial rollout and gives no date. Microsoft Learn already documents a **Credit requests** page for administrators (Microsoft 365 admin center > Copilot > Cost Management > Overview > View requests); whether requests made from the model selector reach it is not stated.
 
-The admin side already exists: **Copilot** > **Cost Management** in the Microsoft 365 admin center provides identity-based spending policies (which users and groups can consume credits, with policy and per-user limits and alerts), a choice of billing method (pay-as-you-go to an Azure subscription, a Copilot Credit Pre-purchase Plan, or existing prepaid capacity packs) and consumption reporting by policy, user, group, agent and service. This feature adds a new consumer of those policies.
+The admin side already exists: **Copilot** > **Cost Management** in the Microsoft 365 admin center provides identity-based spending policies. Microsoft's documentation describes spending policies as limit-based controls that define access and spending limits; they don't reserve or allocate Copilot Credits to users or groups. Credits are billed through the billing method you choose: pay-as-you-go to an Azure subscription, a Copilot Credit Pre-purchase Plan (P3) or existing prepaid capacity packs. Microsoft says admins must set up a billing policy before a user can use AI experiences that require UBB.
+
+The roadmap record lists the item as In development, with preview targeted for November CY2026 and General Availability targeted for December CY2026, for Worldwide (Standard Multi-Tenant), on desktop and web. MC1519122, updated 4 November 2026, gives the rollout windows: Frontier (Public) beginning early November 2026 and expected to complete by mid-November 2026; General Availability (Worldwide) beginning in early December 2026 (previously early November) and expected to complete by mid-December 2026.
 
 ## Why it matters
 
-Until now a Microsoft 365 Copilot licence was a fixed cost and the model behind it was Microsoft's choice. Metered models in the selector introduce a per-interaction cost that depends on which model a user picks and how heavily they use it. The experience is designed so nothing is spent without an admin-created policy, which is the right default, but once a policy exists the cost signal is largely in the hands of users choosing a dropdown.
+Microsoft describes the USL as the fixed-price foundation for everyday AI and UBB as the way to pay for advanced AI and frontier models. This change adds usage-based frontier models alongside the existing subscription-covered model choices, which introduces a per-interaction cost that varies with usage. Microsoft says admins must set up a billing policy before a user can use AI experiences that require UBB, and MC1519122 says users will not have access to UBB models unless UBB is enabled. Once it is enabled for a group, the cost signal is largely in the hands of users choosing from a dropdown.
 
-Service owners should treat this as a budget feature first: decide who gets credits, how many, and what happens when they ask for more, before the preview reaches your tenant. It is also a communication task, because the model selector will show options that most users cannot use until a policy covers them.
+Service owners should treat this as a budget feature first: decide who gets UBB and credits, what limits to set, and how users ask for more, before the preview reaches your tenant. It is also a communication task: users without UBB enabled and credits cannot use these models, and how Chat presents the models to them is not established.
 
 ## Risk assessment
 
 **Data exposure**
-- Model choice does not change the Microsoft 365 data boundary; prompts and Graph data remain under the Copilot commitments. Confirm in the updated Learn documentation whether any metered model has different data residency or processing terms.
+- Terms differ by model. Claude models in Microsoft Copilot are currently excluded from the EU Data Boundary and, when applicable, in-country processing commitments. Where Anthropic acts as a Microsoft subprocessor, Microsoft's Product Terms and Data Protection Addendum apply; models labelled 'Anthropic models with Data Retention' are off by default, need a separate tenant opt-in and fall under Anthropic's own terms. Some Fable-class models may have different terms, so do not assume Claude Fable 5.1 and other Fable-class models share them. Assess the processing terms of each selectable model before enablement, and confirm GPT-6 Astra's terms with your account team, as the Anthropic subprocessor page covers Claude models.
 
 **Security & identity**
-- Spending policies are identity-based; group membership drives who can spend. Groups used for credit allocation become cost-bearing and need membership governance.
+- Spending policies are identity-based: they scope by users or groups, and a user who moves between Microsoft Entra ID groups takes on the new group's policy while keeping their consumption history. Groups used in spending policies become cost-bearing and need membership governance.
 
 **Autonomy & actions**
 - Not applicable.
 
 **Change & support**
-- Credit requests create a new queue for administrators. Without routing policies they land on the default admin audience.
-- Users may interpret a greyed-out model as a fault. Expect help desk contacts during preview.
+- In-product credit requests are planned for after the initial rollout (MC1519122), so users who hit a limit need an interim route. Microsoft Learn describes requests that do not match a custom request policy as continuing through the Microsoft credit request service, where they can be resolved in the Microsoft 365 admin center.
+- Users without UBB enabled and credits cannot use these models, and how the selector presents them is not established. Expect help desk contacts during preview.
 - Dashboard totals are point-in-time and expressed in credits, not currency; finance needs a translation to spend.
 
 ## Cost and licensing
 
-- **Variable.** Each interaction with a UBB model consumes Copilot Credits at a rate Microsoft has not yet published for this feature.
-- Credits are paid through **pay-as-you-go** (Azure subscription), a **Copilot Credit Pre-purchase Plan (P3)** (annual commitment, discounted, overage to pay-as-you-go) or **prepaid capacity packs**.
-- Policy-level and user-level limits cap exposure; alerts warn before limits are hit.
-- Indirect: FinOps time to design allocations, handle requests and reconcile the admin center view with Azure Cost Management.
+- **Licence.** Users need a Microsoft 365 Copilot USL: MC1519122 lists users with a USL and UBB enabled as affected, and the Learn page on the USL and UBB says UBB experiences consume Copilot Credits and require a USL for access. Enabled UBB and credits are additional requirements, not an alternative to the USL.
+- **Variable.** Each interaction with a UBB model consumes Copilot Credits. Microsoft Learn documents no per-model credit rate for GPT-6 Astra or Claude Fable 5.1 at the time of writing (November 2026).
+- Credits are paid through **pay-as-you-go** (Azure subscription), a **Copilot Credit Pre-purchase Plan (P3)** (discounted commit units over a one-year term, with usage beyond them billed as pay-as-you-go if that is enabled) or **prepaid capacity packs**.
+- Policy-level and per-user monthly limits cap exposure; alerts warn at the thresholds you set. When users hit the limit they lose access to agents and services for the rest of the month.
+- Indirect: FinOps time to design limits, handle requests and reconcile the admin center view with Azure Cost Management.
 
 ## Scope
 
-- Copilot Chat users (desktop and web) in tenants that have enabled usage-based billing and created spending policies covering them.
+- Users with a Microsoft 365 Copilot USL and UBB enabled (MC1519122), in tenants where an admin has enabled UBB and provided credits. Enabled UBB and credits are additional to the USL, not a replacement. The roadmap lists Chat on desktop and web.
 - Worldwide (standard multi-tenant). Government cloud dates not published.
-- Roles: Global Administrator and Billing Administrator for billing methods; AI Administrator and License Administrator for policy limits and alerts; reader roles for consumption.
+- Roles: Global administrator and Billing administrator add, select and change billing methods. AI administrator and License administrator can edit spending policies and manage limits and alerts, but can't create spending policies. Reader roles view consumption.
 
 ## Governance guidance
 
-**Before rollout**
-- Decide the allocation model: pilot group with a modest per-user limit, or no policy (which hides the models) until value is demonstrated.
+### Before rollout
+- Decide who gets access first: a pilot group with a modest per-user limit, or UBB enabled for nobody until value is demonstrated (users cannot use UBB models unless UBB is enabled).
+- Verify that pilot users hold a Microsoft 365 Copilot USL.
 - Choose the billing method and set up the Azure subscription or P3 plan in Cost Management.
-- Design credit request routing so requests reach a team that can judge them.
+- Agree an interim process for users to ask for more credits, because in-product requests are planned after the initial rollout.
 
-**At rollout**
+### At rollout
 - Create an identity-based spending policy for the pilot group with per-user limits and alerts; enable the policy to apply automatically to future supported services only if you want that default.
 - Tell pilot users which models are metered, what a credit is, and how to request more.
 
-**After rollout**
+### After rollout
 - Review the Consumption tab weekly during preview; identify high-intensity users and whether the model choice correlates with output quality.
 - Set a decision date for widening or withdrawing the allocation.
-- Watch Message center for published credit rates per model and for government cloud availability.
+- Watch Message center for published credit rates per model, the date in-product credit requests arrive and government cloud availability.
 
 ## Governance controls
 
@@ -166,49 +186,41 @@ Service owners should treat this as a budget feature first: decide who gets cred
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Usage-based billing, spending policies, limits and alerts</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>/beta/copilot/costManagement (Cost Management API)</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Who can see the usage-based billing experiences</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Settings › All Settings › Access to usage-based billing experiences <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which users may use Anthropic (Claude) models</strong><br><small>User</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Settings › View all › AI providers operating as Microsoft subprocessors › Anthropic › Choose which users <a href="https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor#opt-in-to-use-claude-models" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Pay-as-you-go billing policy for Copilot services</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Billing &amp; usage › Pay-as-you-go services <a href="https://learn.microsoft.com/copilot/implement/copilot-capacity-packs#step-2-set-up-your-billing-configuration" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Usage-based billing, spending policies, limits and alerts</strong><br><small>Tenant</small><br><small class="controls__note">The Graph call lists policies; it does not set limits or alerts. Beta APIs can change and are unsupported in production.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>GET /beta/copilot/costManagement/spendingPolicies</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-list" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Who can request access to usage-based billing experiences</strong><br><small>Tenant</small><br><small class="controls__note">Needs the Global administrator role. Changes can take up to 24 hours to apply. It does not complete usage-based billing setup by itself.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Settings › All Settings › Access to usage-based billing experiences <a href="https://learn.microsoft.com/copilot/implement/request-access-usage-based-billing-experiences" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which users may use Anthropic (Claude) models</strong><br><small>User</small><br><small class="controls__note">Needs the AI Administrator or Global Administrator role. Applies to Anthropic models, not to GPT-6 Astra.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Settings › View all › AI providers operating as Microsoft subprocessors › Anthropic › Choose which users <a href="https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor#opt-in-to-use-claude-models" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-The model selector itself has no switch: which models appear follows the subprocessor opt-in and the billing configuration. Credit requests from users are approved under Copilot > Cost Management > Credit requests, described in [Manage Copilot Credits](https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits). The Anthropic opt-in is portal-only and is also covered in [Copilot and Anthropic apps](https://learn.microsoft.com/copilot/implement/copilot-anthropic-apps#manage-the-setting-in-the-microsoft-365-admin-center). Billed amounts appear in Azure Cost Management.
+Spending policies set access and limits; they don't allocate credits, which come from the billing method. Microsoft documents a separate discovery setting, **AI experiences enabled by usage-based billing**, as deprecated: it controlled visibility, while Cost Management controls access and spending. The access-request setting in the second row controls who can request a spending policy and does not complete UBB setup by itself, so choosing **No users** is not a way to hide or block the models.
+
+The Graph call in the first row lists spending policies only; it does not configure limits or alerts. The `/beta` APIs are subject to change and are unsupported in production. The Anthropic opt-in applies to Claude models and is also covered in [Copilot and Anthropic apps](https://learn.microsoft.com/copilot/implement/copilot-anthropic-apps#manage-the-setting-in-the-microsoft-365-admin-center).
+
+Administrators work through credit requests under Microsoft 365 admin center > Copilot > Cost Management > Overview > View requests, which opens the Credit requests page, described in [Monitor Copilot Credit spending](https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending#viewing-and-managing-credit-requests). MC1519122 says in-product requests are planned for after the initial rollout.
+
+Azure Cost Management shows pay-as-you-go charges and P3 purchase or amortized cost for the linked Azure subscription. It doesn't show consumption against prepaid capacity packs, which is monitored in the Microsoft 365 or Power Platform admin center.
 
 ## Open questions
 
-- Which models will be metered and at what credit rate.
-- Whether administrators can hide the metered options from the selector for users without a policy, rather than showing them disabled.
+- What credit rate applies to GPT-6 Astra and Claude Fable 5.1? Watch Message center and the Learn pages on usage-based billing.
+- When will in-product credit requests arrive, and will they appear on the Credit requests page? MC1519122 gives no date.
+- Can administrators hide the metered options from the selector for users without UBB and credits, rather than showing them disabled?
 - Whether per-model limits (as opposed to per-user) will be supported.
 
 <!-- rationale
-risk: Medium. No new data boundary, but a new user-driven spend path and a request queue; exposure depends on policy design.
-cost: Variable. Copilot Credits per interaction; rates unpublished.
-impact: High. Visible to every Copilot Chat user through the model selector once rolled out.
+risk: Medium. This adds a user-driven spend path, and the terms differ by model: Claude models are excluded from the EU Data Boundary and some are covered by Anthropic's own terms. Exposure depends on who has usage-based billing enabled.
+cost: Variable. The meter is Copilot Credits, consumed per interaction under usage-based billing on top of the Microsoft 365 Copilot user subscription licence. Per-model credit rates are not yet published.
+impact: Medium. Licensed users with usage-based billing enabled and credits gain extra model choices. Microsoft says users have no access to these models unless it is enabled; how the selector appears to other users is not established.
 -->
 
-<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
-The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [supported, minor] front matter: targetDate; What's changing / record: The roadmap lists December CY2026 for General Availability. | Found: "targetDate": "December CY2026" | Fix: Keep December CY2026 as a roadmap target, and add the supplied notice's more specific window: MC1519122, updated November 4, expects Worldwide GA to begin early December 2026 and complete by mid-December 2026. Cite https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1519122 as a message-center source.
-- [supported, minor] front matter: previewDate; What's changing / record: Preview is listed for November CY2026. | Found: "previewDate": "November CY2026" | Fix: Retain the roadmap target and add MC1519122's Frontier (Public) rollout window: beginning early November 2026 and expected to complete by mid-November 2026. Cite the supplied notice rather than reporting only the month.
-- [contradicted, blocker] summary; What's changing; Governance guidance / record: In-product requests for additional credits are part of the initial model-selector rollout. | Found: After the initial rollout, we plan to roll out the ability for users to request additional credits from their tenant admin. | Fix: Separate model access from credit requests in the summary, body and rollout guidance. Say that MC1519122 plans in-product additional-credit requests after the initial rollout, without a date; communicate the organisation's interim request process.
-- [supported, minor] front matter: licensing.model; What's changing; Cost and licensing; rationale: cost / licensing: UBB frontier-model usage consumes Copilot Credits beyond the everyday AI covered by the per-user subscription. | Found: UBB is used for advanced AI and frontier models, extending beyond the everyday AI included in the USL. | Fix: Add https://learn.microsoft.com/copilot/plan/user-subscription-license-usage-based-billing to sources for the USL/UBB distinction. Retain the consumption licensing model and variable cost rating. | Source: https://learn.microsoft.com/copilot/plan/user-subscription-license-usage-based-billing
-- [contradicted, blocker] Scope; front matter: licensing.notes / licensing: Enabled UBB and a covering spending policy are sufficient prerequisites for Copilot Chat users to access the models. | Found: Users with a Microsoft 365 Copilot user subscription license (USL) with UBB enabled | Fix: Add the Microsoft 365 Copilot user subscription licence requirement to Scope and licensing.notes. State that enabled UBB and credits are additional requirements, not an alternative to the USL. Cite MC1519122 and https://learn.microsoft.com/copilot/plan/user-subscription-license-usage-based-billing.
-- [contradicted, blocker] summary; What's changing; front matter: licensing.notes / behaviour: Spending policies allocate credits to users. | Found: Spending policies are limit-based controls and don't reserve or allocate Copilot Credits to users or groups. | Fix: Replace 'allocate credits through spending policies' with 'enable UBB, provide credits, and configure access and spending limits through spending policies'. Preserve the roadmap's credit-provision requirement without describing limits as reserved allocations. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits
-- [contradicted, blocker] What's changing; Why it matters; Governance guidance: Before rollout / behaviour: Having no spending policy hides the metered models from users. | Found: In short, this setting controls visibility, while Cost Management under the Copilot node in the Microsoft 365 admin center controls access and spending. | Fix: Replace the hiding guarantee with 'Without enabled UBB and credits, users cannot use these models.' Explain that discovery and requests are distinct from spending access; the discovery setting is deprecated. Leave Chat-specific hidden-versus-disabled appearance as an open question. | Source: https://learn.microsoft.com/copilot/implement/discovery-setting-ai-experiences
-- [unsupported, blocker] controls[0].api; Governance controls: first row / command: /beta/copilot/costManagement (Cost Management API) is an actionable Graph call for spending policies, limits and alerts. | Found: Searched: Copilot pay-as-you-go billing policies Graph API PowerShell create billing policy. Opened Cost Management API overview and List spendingPolicies; the root namespace is described, but no HTTP operation matching the printed methodless call is documented. | Fix: Use a real operation with its specific purpose, such as 'GET /beta/copilot/costManagement/spendingPolicies' to list policies. Link https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-list. State that beta APIs can change and are unsupported in production; GET does not configure limits or alerts.
-- [contradicted, blocker] controls[1].ui; Governance controls: second row / admin-path: The cited setup page documents Copilot > Settings > All Settings > Access to usage-based billing experiences as a visibility control. | Found: Your selection controls who can request access. It does not complete the usage-based billing setup by itself. | Fix: The path exists, but not on its cited setup page and not for the stated purpose. Rename governs to 'Who can request access to usage-based billing experiences', retain the path, and set docs to https://learn.microsoft.com/copilot/implement/request-access-usage-based-billing-experiences. Do not equate denying requests with hiding models. | Source: https://learn.microsoft.com/copilot/implement/request-access-usage-based-billing-experiences
-- [unsupported, blocker] controls[3]; Governance controls: fourth row / applicability: The older Copilot Chat pay-as-you-go billing-policy surface governs this UBB frontier-model selector feature. | Found: Searched: "Copilot" "UBB models" "billing policy"; Copilot pay-as-you-go billing policies Graph API PowerShell create billing policy. Opened capacity-packs, UBB overview, setup and USL/UBB guidance; none maps the older Copilot Chat billing-policy surface to these frontier models. | Fix: Remove this row from the feature-specific controls, or add a note: 'General Copilot Chat billing control; Microsoft has not confirmed that this surface configures UBB frontier-model access.' Direct feature deployment to the UBB Cost Management setup identified by MC1519122.
-- [supported, minor] Governance controls: model-selector prose / absence: No separate administrative switch for the Chat UBB model selector is documented. | Found: Searched: "Copilot Chat" "model selector" "admin" "hide"; Copilot Chat model selector admin hide models no policy default credit request routing administrators. Opened setup, discovery and access-request settings; no separate Chat UBB selector switch found. | Fix: Replace the absolute statement with 'A separate Chat UBB model-selector switch was not found in the Microsoft documentation reviewed in November 2026.' Add a both-null control row for that documented gap, without applying Cowork-only model templates to Chat.
-- [contradicted, blocker] What's changing; Governance controls: credit-request path / admin-path: Copilot > Cost Management > Credit requests is the documented direct approval path on Manage Copilot Credits. | Found: From the Top Actions section, you can View requests and Manage spending policies | Fix: Give the full documented route: Microsoft 365 admin center > Copilot > Cost Management > Overview > View requests, opening Credit requests. Replace the manage-copilot-credits link with https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending#viewing-and-managing-credit-requests. Qualify feature-specific availability using MC1519122. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending
-- [unsupported, blocker] Risk assessment: Change & support / role: Without routing policies credit requests land on a default administrator audience. | Found: Searched: "Copilot" "credit requests" "default" "administrators"; Copilot Chat model selector admin hide models no policy default credit request routing administrators. Opened UBB overview, setup and Monitor Copilot Credit spending; no default recipient audience is specified. | Fix: Replace with 'Requests that do not match a custom request policy continue through the Microsoft credit request service and can be resolved in the Microsoft 365 admin center.' Cite https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending.
-- [supported, minor] Why it matters / licensing: The Microsoft 365 Copilot user subscription supplies a fixed-price foundation for everyday AI. | Found: The USL covers everyday AI work, providing a fixed-price AI foundation for your workforce. | Fix: Cite https://learn.microsoft.com/copilot/plan/user-subscription-license-usage-based-billing. Describe the ongoing USL/UBB distinction, not a claim that all Copilot work was exclusively fixed-price until this release. | Source: https://learn.microsoft.com/copilot/plan/user-subscription-license-usage-based-billing
-- [contradicted, blocker] Why it matters / behaviour: Until this release users could not choose the model behind Microsoft 365 Copilot. | Found: Users can now select Claude as a model option in Copilot Chat for complex analysis, document understanding, and structured content generation. | Fix: Remove 'the model behind it was Microsoft's choice'. Say 'This change adds usage-based frontier models alongside existing subscription-covered model choices.' The cited June 16, 2026 release notes already document user model choice. | Source: https://learn.microsoft.com/microsoft-365/copilot/release-notes#june-16,-2026
-- [contradicted, blocker] Risk assessment: Data exposure; rationale: risk / applicability: Model choice introduces no change to the Microsoft 365 data boundary. | Found: Claude models deployed in Microsoft offerings such as Microsoft Copilot, Researcher, Copilot Studio, Power Platform, and Copilot in Microsoft 365 apps are currently excluded from the EU Data Boundary | Fix: Remove the blanket assurance from the data-exposure bullet and risk rationale. State that Claude models are excluded from the EU Data Boundary and applicable in-country processing commitments; assess the selected model's processing terms before enablement. | Source: https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor
-- [contradicted, blocker] Risk assessment: Data exposure / applicability: All selectable models keep prompts and Graph data under the same Copilot contractual commitments. | Found: This means data is stored by Anthropic and not subject to your Microsoft Customer Agreement including commitments in the Product Terms and DPA. | Fix: Qualify the assurance by model and tenant eligibility. Claude models supplied with Anthropic as a Microsoft subprocessor use Microsoft's applicable terms; separately enabled models labelled 'Anthropic models with Data Retention' use Anthropic's separate terms. Do not assume all Fable-class models have identical terms. | Source: https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor
-- [contradicted, blocker] Open questions: models / availability: Which models will be metered in this rollout is still an unanswered question. | Found: GPT-6 Astra and Claude Fable 5.1 will be generally available as UBB models with this rollout. Previously communicated eligibility requirements for these models apply. | Fix: Name GPT-6 Astra and Claude Fable 5.1 as the models announced in MC1519122, retaining the notice's eligibility qualification. Keep only the unpublished credit rates as an open question.
-- [supported, minor] Governance controls: billed amounts / cost: Billed amounts appear in Azure Cost Management. | Found: Azure Cost Management shows pay-as-you-go charges and purchase or amortized cost information for Copilot Credit pre-purchase plans (P3) | Fix: Qualify this as Azure-subscription pay-as-you-go charges and P3 purchase/amortized costs. Add that Azure Cost Management does not show consumption against prepaid capacity packs, which is monitored in the applicable Microsoft 365 or Power Platform admin center. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-compare-dashboard-views
-- [unsupported, minor] rationale: impact / behaviour: The new model options will be visible to every Copilot Chat user after rollout. | Found: Searched: "Copilot Chat" "model selector" "admin" "hide"; Copilot Chat model selector admin hide models no policy default credit request routing administrators. Read MC1519122, discovery and access-request settings; none guarantees visibility to every Chat user. | Fix: Remove 'Visible to every Copilot Chat user'. Say that eligible, licensed users with UBB enabled and credits gain additional model choices; the hidden-versus-disabled experience for other users is not established. Reassess the impact rationale without a universal-visibility premise.
-- [contradicted, minor] Governance guidance: request routing; Governance controls / consistency: The checklist directs administrators to configure credit-request routing, but the controls table has no routing row. | Found: Design credit request routing so requests reach a team that can judge them. | The controls table lists spending policies, UBB experiences, Anthropic access and pay-as-you-go billing, but not routing. | Fix: Add a credit-request routing row: Microsoft 365 admin center > Copilot > Cost Management > Overview > View requests > Request policies > Add request policy. Cite https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending#configure-custom-request-policies and qualify availability for this rollout.
-- [contradicted, blocker] What's changing; Why it matters; Open questions / consistency: The page treats policyless model visibility both as hidden and as visible but unusable. | Found: Users can only see and use these models if a tenant administrator has allocated credits | the model selector will show options that most users cannot use until a policy covers them | Whether administrators can hide the metered options | Fix: Use one consistent statement: enabled UBB and credits govern use; the appearance for users without access is not established. Remove both the guaranteed hiding and guaranteed visibility claims, and retain the Chat-specific appearance question.
+<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] summary: must set spending limits / cost: Administrators must set spending limits to enable the models. | Found: Don't limit monthly spending - Allows the policy to use credits against the organization's billing method without restrictions. | Fix: Replace the summary's second sentence with: 'Admins must enable usage-based billing and provide credits; they can configure spending limits, and in-product credit requests are planned for later.' The documented setup permits unlimited monthly spending and makes per-user limits optional. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup
+- [contradicted, blocker] controls[2].ui; Governance controls: third row / admin-path: The cited Anthropic path ends AI providers operating as Microsoft subprocessors > Anthropic > Choose which users. | Found: under Available subprocessors for your organization, select Anthropic, and Save. / Under Choose who can access Anthropic models for Copilot and generative AI experiences, select your users or groups and Save. | Fix: Replace controls[2].ui.path and the rendered path with 'Copilot > Settings > View all > AI providers operating as Microsoft subprocessors > Available subprocessors for your organization > Anthropic > Choose who can access Anthropic models for Copilot and generative AI experiences'. The cited page includes the Available subprocessors section and uses the full final label above, not 'Choose which users'. | Source: https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor#opt-in-to-use-claude-models
+- [contradicted, blocker] What's changing: Credit requests path; Governance controls: credit-request path / admin-path: The full Credit requests path is Copilot > Cost Management > Overview > View requests. | Found: From the Top Actions section, you can View requests and Manage spending policies | Fix: Replace both credit-request paths with 'Microsoft 365 admin center > Copilot > Cost Management > Overview > Top Actions > View requests'. The documentation places View requests in the Top Actions section, which the current paths omit. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Cost and licensing: access after hitting a limit / behaviour: Users hitting the limit lose access to agents and services for the rest of the month. | Found: When users hit the limit, they lose access to agents and services for the rest of the month until credits reset on the first of the month. | Fix: Keep the cited rule but append: 'The monitoring documentation separately says a running task can complete without interruption after exceeding a per-user limit in a group spending policy.' Cite https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending#consumption-tab, which states: 'If a running task exceeds the per-user limit, it can complete without interruption.' | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits
+- [supported, minor] Scope: AI administrator and License administrator / role: AI administrator and License administrator can edit policies and manage limits and alerts. | Found: AI administrator and License administrator roles can edit spending policies, manage limits and alerts, and billing methods. | Fix: Append to the role sentence: 'The same Learn page also includes License Administrator among the roles it describes as read-only, so its guidance on that role is inconsistent.' The later paragraph names 'AI Reader, Global Reader, License Administrator' and says these roles do not allow changes to policies, limits or alerts. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup
+- [contradicted, minor] Governance guidance: After rollout versus Governance controls / consistency: The checklist tells administrators to review consumption, but no controls row covers consumption monitoring. | Found: Review the Consumption tab weekly during preview / Rows cover spending policies, access requests and Anthropic eligibility, not consumption monitoring. | Fix: The checklist step 'Review the Consumption tab weekly during preview' has no corresponding consumption-monitoring row. Remove this checklist bullet to align it with the existing table without adding rows.
 -->

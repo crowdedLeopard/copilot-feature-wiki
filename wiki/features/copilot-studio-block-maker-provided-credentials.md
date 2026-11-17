@@ -44,7 +44,7 @@ sources:
     url: "https://learn.microsoft.com/power-platform/admin/managed-environment-licensing"
     kind: "learn"
 videos: []
-related: ["copilot-studio-safe-sharing-credential-oversharing","copilot-studio-share-autonomous-agents-run-only","managed-environments","agent-identity"]
+related: ["agent-identity"]
 controls:
   - governs: "Which credential types makers may choose for agent tools"
     scope: "environment"
@@ -66,7 +66,7 @@ controls:
     scope: "environment-group"
     ui:
       surface: "Power Platform admin center"
-      path: "Security > Threat detection > Sharing agent with embedded maker credentials > Set up"
+      path: "Security > Threat detection > Sharing agent with embedded maker credentials > Environment groups (or Environments) > environment group (or environment) > Set up"
       docs: "https://learn.microsoft.com/power-platform/admin/security/control-sharing-agents-with-embedded-maker-credentials"
     api: null
     note: "Preview: the Learn page is prerelease documentation and subject to change. Configurable per environment or per environment group."
@@ -80,7 +80,7 @@ controls:
     note: "Maker-side. Learn says By default, user authentication applies."
 confidence: "high"
 created: "2026-11-13"
-updated: "2026-11-16"
+updated: "2026-11-17"
 roadmapModified: "2026-07-02T23:12:48"
 changes:
   - date: "2026-11-13"
@@ -89,18 +89,23 @@ changes:
     note: "Added governance controls: admin UI paths and API equivalents, sourced to Microsoft Learn"
   - date: "2026-11-16"
     note: "Corrected after verification: default state is now admin-opt-in and action is prepare; licensing claims narrowed to what Learn states; added the environment-level sharing control; removed unsupported claims about audit, service identities and knowledge sources."
-version: 3
+  - date: "2026-11-17"
+    note: "Corrected after verification: the Threat detection sharing control path now includes the Environment groups or Environments tab and target before Set up; sign-in prompts are qualified with 'if needed'."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 57 statements not yet confirmed"
+version: 4
 verification:
-  status: "held"
-  date: "2026-11-16"
-  version: 3
+  status: "verified-with-gaps"
+  date: "2026-11-17"
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 59
-  confirmed: 58
+  claims: 57
+  confirmed: 57
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
+  contradicted: 0
+  attempts: 0
+  hash: "3570122f47997e26d475517a9beb7e14"
 ---
 
 ## What's changing
@@ -109,7 +114,7 @@ Copilot Studio gets an administrator setting, **Control maker credential options
 
 The Learn page states that, by default, both **End-user** and **Maker-provided** credentials are enabled, so nothing is restricted until an administrator changes the setting. It is configured in the Power Platform admin center for an environment or an environment group.
 
-The effect of restricting it is immediate. Learn warns that the feature turns off the maker's ability to select their credentials at once, that all tools for all agents in the affected environments change to require end-user credentials at run time, and that new conversations with those agents prompt the user to sign in to the connected service.
+The effect of restricting it is immediate. Learn warns that the feature turns off the maker's ability to select their credentials at once, that all tools for all agents in the affected environments change to require end-user credentials at run time, and that new conversations with those agents prompt the user to sign in to the connected service if needed.
 
 The roadmap item (target August CY2026, preview September CY2025, status In development) lists the release phases General Availability and Preview for the Worldwide cloud. The target month has passed and the status has not moved, while Microsoft Learn already documents the setting and its steps.
 
@@ -133,7 +138,7 @@ It is also a change that lands on users the moment it is saved, so treat it as a
 - When maker-provided credentials are prevented, each tool call needs a live user sign-in. Learn states that agents triggered by scheduled or autonomous events, or that run in the background, fail due to missing credentials, and that all agent triggers must involve an active user.
 
 **Change & support**
-- All existing and new agents in scope change at once. Expect sign-in prompts for users and questions from makers who previously saved a tool with their own credentials, who might be prompted to change it before publishing.
+- All existing and new agents in scope change at once. Expect sign-in prompts for users where a sign-in is needed, and questions from makers who previously saved a tool with their own credentials, who might be prompted to change it before publishing.
 - Flows used as tools are covered in the same way: each user signs in for the connections the flow uses.
 
 ## Cost and licensing
@@ -158,7 +163,7 @@ The known indirect costs are maker time to reconfigure tools and help desk time 
 - Find agents with scheduled, autonomous or background triggers in each environment, because Learn says they fail once maker-provided credentials are blocked.
 - Choose the environments to restrict first, starting with a development environment, and decide whether to set the group or individual environments.
 - List tools makers have configured under **Authentication** in Copilot Studio and ask the owners to confirm the credential each needs.
-- Tell makers and users that new conversations with affected agents will ask for sign-in to the connected service.
+- Tell makers and users that new conversations with affected agents will ask for sign-in to the connected service where needed.
 
 ### At rollout
 - Set **Control maker credential options** in the Power Platform admin center, in the group if the environment belongs to one.
@@ -179,7 +184,7 @@ The known indirect costs are maker time to reconfigure tools and help desk time 
 <tbody>
 <tr><td data-label="Control"><strong>Which credential types makers may choose for agent tools</strong><br><small>Environment</small><br><small class="controls__note">Environment Admin for one environment; Power Platform Administrator or Global Admin for environment groups. Takes effect immediately for all tools in scope.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments (or Environment groups) › environment › Settings › Product › Features › Copilot Studio agents › Control maker credential options <a href="https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Sharing of agents that embed maker credentials (environment)</strong><br><small>Environment</small><br><small class="controls__note">General control: governs sharing and publishing only, not run time, and does not unshare existing agents. Modes: All sharing allowed, Safe sharing enforced.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Features › Sharing agents with embedded maker credentials <a href="https://learn.microsoft.com/microsoft-copilot-studio/configure-sharing-agents-embedded-maker-credentials" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Sharing of agents that embed maker credentials (environment or group)</strong><br><small>Environment group</small><br><small class="controls__note">Preview: the Learn page is prerelease documentation and subject to change. Configurable per environment or per environment group.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Threat detection › Sharing agent with embedded maker credentials › Set up <a href="https://learn.microsoft.com/power-platform/admin/security/control-sharing-agents-with-embedded-maker-credentials" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Sharing of agents that embed maker credentials (environment or group)</strong><br><small>Environment group</small><br><small class="controls__note">Preview: the Learn page is prerelease documentation and subject to change. Configurable per environment or per environment group.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Threat detection › Sharing agent with embedded maker credentials › Environment groups (or Environments) › environment group (or environment) › Set up <a href="https://learn.microsoft.com/power-platform/admin/security/control-sharing-agents-with-embedded-maker-credentials" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Which credential a given tool uses</strong><br><small>Agent</small><br><small class="controls__note">Maker-side. Learn says By default, user authentication applies.</small></td><td data-label="Admin UI"><strong>Copilot Studio (maker)</strong><br>Tools › tool › Details › Additional details › Authentication <a href="https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -198,12 +203,11 @@ The sharing control governs publishing and sharing, not run time, and does not r
 <!-- rationale
 risk: High. The default allows both End-user and Maker-provided credentials, so agents can keep acting with a maker's access for every user until an admin restricts it.
 cost: Low. The setting's prerequisites name admin permissions and no licence; environment groups need Managed Environments, whose licensing is published. Admin and maker time is the known cost.
-impact: Medium. Makers lose an option, and users of affected agents are asked to sign in to connected services; autonomous and scheduled agents fail.
+impact: Medium. Makers lose an option, and users of affected agents are asked to sign in to connected services where needed; autonomous and scheduled agents fail.
 -->
 
-<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
-The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [supported, minor] summary; What's changing; Risk assessment: Change & support; Governance guidance: Before rollout; rationale: impact / behaviour: New conversations with affected agents prompt users to sign in to the connected service. | Found: Enforcing the use of end-user credentials prompts the end user to sign in (to the relevant service or connector) when needed. ... the agent might use that existing authentication session. | Fix: Qualify the sign-in descriptions with 'if needed'; the same Learn page says existing authorized sessions can be reused, so not every new conversation necessarily presents a fresh sign-in prompt. | Source: https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication
-- [contradicted, blocker] controls[2].ui; Governance controls table / admin-path: The complete Threat detection path is Security > Threat detection > Sharing agent with embedded maker credentials > Set up. | Found: In the Environment groups tab, select the environment group for which you want to configure the setting. ... In the Environments tab, select the environment for which you want to configure the setting. ... Select Set up. | Fix: Replace the path in controls[2].ui and the rendered table with 'Security > Threat detection > Sharing agent with embedded maker credentials > Environment groups (or Environments) > environment group (or environment) > Set up'. The cited page requires choosing the tab and target before Set up. | Source: https://learn.microsoft.com/power-platform/admin/security/control-sharing-agents-with-embedded-maker-credentials
-- [supported, minor] controls[3].ui; Governance controls table; Governance controls; Governance guidance: Before rollout / admin-path: The maker chooses tool credentials under Tools > tool > Details > Additional details > Authentication. | Found: Go to the Tools page for your agent, and select the tool from the list of tools. ... Details ... Additional details ... Authentication: Select whether to use the user's (End user) or maker's (Maker-provided) credentials for the tool. | Fix: Keep the cited path, but add that https://learn.microsoft.com/microsoft-copilot-studio/advanced-connectors calls the connector field 'Credentials to use' under Overview > Details > Additional details, whereas the general tools page calls it 'Authentication'. Cite both rather than implying identical labels in every tool experience. | Source: https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent
+<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[3].ui; Governance guidance: Before rollout; Governance controls / admin-path: A maker selects a tool's credentials at Copilot Studio > Tools > tool > Details > Additional details > Authentication. | Found: Go to the Tools page for your agent, and select the tool from the list of tools. ... Details ... Additional details ... Authentication: Select whether to use the user's (End user) or maker's (Maker-provided) credentials for the tool. | Fix: Append to controls[3].note and the rendered note: 'The connector-specific instructions instead call this field Credentials to use under Details > Additional details on the tool Overview page.' Cite https://learn.microsoft.com/microsoft-copilot-studio/advanced-connectors#use-connectors-with-maker-provided-credentials, whose search excerpt gives that alternative label and location. | Source: https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent
 -->
