@@ -17,8 +17,8 @@ impact: "medium"
 defaultState: "admin-opt-in"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "Microsoft has not published a licence for this change. The Microsoft Purview service description lists Endpoint DLP as included in Microsoft 365 E5/A5/G5 and the other suites it names."
+  model: "included"
+  notes: "Existing Endpoint DLP licensing applies to Windows endpoint protections; the eligible suites are listed in the Microsoft Purview service description. No change-specific additional licence has been published as of November 2026."
 audiences: ["security","compliance","m365-admin","change-adoption"]
 tags: ["endpoint-dlp","dlp","purview","data-governance","policy","auditing"]
 sources:
@@ -37,14 +37,17 @@ sources:
   - title: "Microsoft Purview service description"
     url: "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description"
     kind: "learn"
+  - title: "Learn about Microsoft Purview billing models"
+    url: "https://learn.microsoft.com/purview/purview-billing-models"
+    kind: "learn"
 videos: []
 related: ["microsoft-purview-endpoint-data-loss-prevention-policy-sync-and-device-health-ai-powered-i","microsoft-purview-endpoint-data-loss-prevention-view-only-access-to-device-onboarding-with"]
 controls:
   - governs: "Protection of files in excluded Windows folders"
-    scope: "tenant"
+    scope: "other"
     ui: null
     api: null
-    note: "Described in MC1384420 but not yet documented on Learn, in the portal or in the Set-PolicyConfig reference at the time of writing (November 2026)."
+    note: "Described in MC1384420 but not yet documented on Learn, in the portal or in the Set-PolicyConfig reference at the time of writing (November 2026). Configuration scope not yet published."
   - governs: "Which Windows folders Endpoint DLP excludes today"
     scope: "tenant"
     ui:
@@ -65,19 +68,23 @@ changes:
     note: "New briefing: planned Endpoint DLP protection for files in excluded Windows folders, rollout now late February 2027 per MC1384420."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 50 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-17"
+    note: "Corrected after verification: licensing model set to included with the billing-models source; first control row scope changed to other; two policy-mode checklist bullets removed."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 50 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-17"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 50
-  confirmed: 47
-  unconfirmed: 1
-  contradicted: 2
-  attempts: 1
-  hash: "a7033cf9a639d3016abc8838074f0b05"
+  confirmed: 50
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "eb0e3c8095f13f124ff699428b18e123"
 ---
 
 ## What's changing
@@ -114,7 +121,7 @@ Because the notice describes admins enabling the protection, nothing in the sour
 
 No licence specific to this change is published at the time of writing (November 2026). The roadmap item and MC1384420 name none, and no meter is documented for it.
 
-The Microsoft Purview service description lists Endpoint Data Loss Prevention (DLP) as included in Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW, and Microsoft 365 E5/A5/F5/G5 Information Protection & Governance. Whether this change follows the same licensing is not yet published.
+The Microsoft Purview service description lists Endpoint Data Loss Prevention (DLP) as included in Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW, and Microsoft 365 E5/A5/F5/G5 Information Protection & Governance. Existing Endpoint DLP licensing applies to Windows endpoint protections; the eligible suites are listed in the Microsoft Purview service description. No change-specific additional licence has been published as of November 2026. The Microsoft Purview billing models page describes per-user licensing as the model that applies Purview controls and protections to Microsoft 365 and Windows/macOS endpoint-based assets.
 
 Indirect costs are admin time to review excluded paths and extend policies, rolling out the anti-malware client update the notice requires, a pilot in audit mode, and user and service desk communication.
 
@@ -129,7 +136,6 @@ The notice requires Microsoft Defender anti-malware client version 4.18.26051 or
 ### Before rollout
 - Inventory devices by Microsoft Defender anti-malware client version and update any below 4.18.26051, which the notice requires before enabling the feature.
 - Review the current list in the File path exclusions for Windows row of the controls table, including the two AppData paths Learn lists as excluded by default, and decide which paths could hold sensitive files.
-- Identify the Endpoint DLP policies you would extend, and which of them are in block mode, since block takes precedence over audit.
 - Brief the service desk and affected users on possible blocked copy, print, network-share and upload actions.
 
 ### At rollout
@@ -139,7 +145,6 @@ The notice requires Microsoft Defender anti-malware client version 4.18.26051 or
 
 ### After rollout
 - Review audit-mode events for files in the newly covered paths and check for noise from applications that write to those folders.
-- Move policies to block mode in stages, and record which paths remain excluded and why.
 
 ## Governance controls
 
@@ -148,7 +153,7 @@ The notice requires Microsoft Defender anti-malware client version 4.18.26051 or
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Protection of files in excluded Windows folders</strong><br><small>Tenant</small><br><small class="controls__note">Described in MC1384420 but not yet documented on Learn, in the portal or in the Set-PolicyConfig reference at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Protection of files in excluded Windows folders</strong><br><small class="controls__note">Described in MC1384420 but not yet documented on Learn, in the portal or in the Set-PolicyConfig reference at the time of writing (November 2026). Configuration scope not yet published.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Which Windows folders Endpoint DLP excludes today</strong><br><small>Tenant</small><br><small class="controls__note">Existing control for exclusions, not for the new feature. The cmdlet is available only in Security &amp; Compliance PowerShell.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Overview › Data loss prevention settings › Endpoint settings › File path exclusions for Windows <a href="https://learn.microsoft.com/purview/dlp-configure-endpoint-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-PolicyConfig -EndpointDlpGlobalSettings @(@{&quot;Setting&quot;=&quot;PathExclusion&quot;; &quot;Value&quot;=&quot;&lt;path&gt;&quot;})</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/set-policyconfig?view=exchange-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
@@ -171,12 +176,8 @@ cost: Low. The only costs the sources show are admin time, device updates and us
 impact: Medium. Users on Windows devices covered by Endpoint DLP policies notice it only if an admin extends enforcement to excluded folders; the affected group is that policy scope, not every user.
 -->
 
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.model and notes; Cost and licensing / licensing: Licensing is unknown because Microsoft has not published whether existing Endpoint DLP licences cover this extension. | Found: This licensing model enables you to apply Microsoft Purview controls and protections to Microsoft 365 and Windows/macOS endpoint-based assets. It's described in the Microsoft Purview service description. | Fix: Set licensing.model to 'included'. Replace the licensing notes and 'Whether this change follows the same licensing is not yet published' with: 'Existing Endpoint DLP licensing applies to Windows endpoint protections; the eligible suites are listed in the Microsoft Purview service description. No change-specific additional licence has been published as of November 2026.' Cite https://learn.microsoft.com/purview/purview-billing-models alongside the existing service-description source. Keep uncertainty limited to any additional change-specific requirement. | Source: https://learn.microsoft.com/purview/purview-billing-models
-- [unsupported, blocker] controls[0].scope; Governance controls: first row / applicability: The new excluded-folder protection control has tenant-wide configuration scope. | Found: Searched: 'Endpoint DLP protected exclusion paths tenant'. Read MC1384420, Configure endpoint DLP settings and Set-PolicyConfig. The notice requires policy updates but does not state the new control's scope; Learn documents only the existing exclusions. | Fix: Set controls[0].scope to 'other' and add 'Configuration scope not yet published' to its note; mirror these changes in the rendered first row. Keep the existing open question about per-path, per-policy or tenant-wide configuration.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Why it matters / behaviour: Applications write files to app-data and temporary folders. | Found: Within its app data store, each app has system-defined root directories: one for local files, one for roaming files, and one for temporary files. Your app can add new files and new containers to each of these root directories. | Fix: Cite https://learn.microsoft.com/windows/apps/develop/data/store-and-retrieve-app-data#storing-app-data-in-the-app-data-stores for the application-storage premise. | Source: https://learn.microsoft.com/windows/apps/develop/data/store-and-retrieve-app-data#storing-app-data-in-the-app-data-stores
-- [contradicted, minor] Governance guidance: Before rollout and After rollout; Governance controls / consistency: The governance checklist asks readers to review and change Endpoint DLP policy action modes, but the controls table has no row for that control. | Found: Move policies to block mode in stages Controls: Protection of files in excluded Windows folders; Which Windows folders Endpoint DLP excludes today. | Fix: The checklist steps 'Identify the Endpoint DLP policies you would extend, and which of them are in block mode' and 'Move policies to block mode in stages' have no corresponding policy-action control row. Remove these checklist bullets; retain the independently supported explanation of audit and block behaviour.
+- [supported, minor] Why it matters / behaviour: Applications write data in application-data and temporary folders. | Found: The folders where your app can store data. These folders (local, roaming and temporary) are created when your app is installed. | Fix: Add https://learn.microsoft.com/windows/apps/develop/files/file-access-permissions to sources to support the application-storage premise in 'Users and applications write to AppData and temporary folders'. | Source: https://learn.microsoft.com/windows/apps/develop/files/file-access-permissions
 -->

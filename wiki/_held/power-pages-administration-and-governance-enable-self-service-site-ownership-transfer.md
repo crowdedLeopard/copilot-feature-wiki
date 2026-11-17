@@ -49,6 +49,9 @@ sources:
   - title: "Add an owner to an application using Microsoft Graph"
     url: "https://learn.microsoft.com/troubleshoot/entra/entra-id/users-groups-entra-apis/add-owner-for-application-microsoft-graph"
     kind: "learn"
+  - title: "Add owner"
+    url: "https://learn.microsoft.com/graph/api/application-post-owners?view=graph-rest-1.0"
+    kind: "learn"
   - title: "Power Platform licensing FAQs"
     url: "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq"
     kind: "learn"
@@ -93,8 +96,8 @@ controls:
       docs: "https://learn.microsoft.com/power-pages/admin/admin-roles"
     api:
       kind: "graph"
-      call: "POST https://graph.microsoft.com/v1.0/applications/{application-object-id}/owners/$ref"
-      docs: "https://learn.microsoft.com/troubleshoot/entra/entra-id/users-groups-entra-apis/add-owner-for-application-microsoft-graph"
+      call: "POST https://graph.microsoft.com/v1.0/applications/{id}/owners/$ref with body {\"@odata.id\":\"https://graph.microsoft.com/v1.0/directoryObjects/{new-owner-user-object-id}\"}"
+      docs: "https://learn.microsoft.com/graph/api/application-post-owners?view=graph-rest-1.0"
     note: "Prerequisite, not a control over the feature. The website app is named Portals-<website name>. The Graph page is a general application-owner example, not Power Pages specific."
   - governs: "Finding Power Pages sites and their owners"
     scope: "tenant"
@@ -119,7 +122,7 @@ controls:
     note: "Learn documents no separate approval step at the time of writing (November 2026)."
 confidence: "medium"
 created: "2026-11-16"
-updated: "2026-11-16"
+updated: "2026-11-17"
 roadmapModified: "2026-10-22T23:45:49"
 changes:
   - date: "2026-11-16"
@@ -128,18 +131,23 @@ changes:
     note: "Corrected after verification: app ownership is not required for managed identity sites, fixed the Azure portal path and audit API call, and added rows for auditing setup, inventory and the approval gap."
   - date: "2026-11-16"
     note: "Corrected after verification: added the Power Platform API call for the SAS logging setting, the SAS domain allow-list prerequisite, and softened the ownership-concept wording in open questions."
-version: 3
+  - date: "2026-11-17"
+    note: "Corrected after verification: the website app owner Graph call now includes the required @odata.id request body, with the Graph Add owner reference as its source."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 69 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 4
 verification:
   status: "held"
-  date: "2026-11-16"
-  version: 3
+  date: "2026-11-17"
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 68
-  confirmed: 66
+  claims: 69
+  confirmed: 67
   unconfirmed: 0
   contradicted: 2
-  attempts: 3
+  attempts: 4
+  hash: "09aa8e068c7195553936a8cdabeb9078"
 ---
 
 ## What's changing
@@ -227,7 +235,7 @@ Power Pages sites themselves are licensed by capacity (authenticated users and a
 <tr><td data-label="Control"><strong>Transferring a Power Pages site to a new owner</strong><br><small>Site</small><br><small class="controls__note">Needs a System administrator, Dynamics 365 administrator or Power Platform administrator role, plus website app owner unless the site uses the managed identity model. No API found.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Power Pages › site › Site Details › Edit › Owner <a href="https://learn.microsoft.com/power-pages/admin/transfer-ownership" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Audit trail of site ownership transfers</strong><br><small>Tenant</small><br><small class="controls__note">Reading needs the Audit Logs or View-Only Audit Logs role. API lists content for an active subscription; Learn does not state which content type holds Power Pages events.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Audit <a href="https://learn.microsoft.com/power-platform/admin/activity-logging-auditing/activity-logs-power-pages" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>GET {root}/subscriptions/content?contentType={ContentType}&amp;startTime={0}&amp;endTime={1}</code> <a href="https://learn.microsoft.com/office/office-365-management-api/office-365-management-activity-api-reference" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether Power Platform activity is sent to Purview for an environment</strong><br><small>Environment</small><br><small class="controls__note">Production environments only; steps say sign in as a system admin. Allow-list https://*.api.powerplatformusercontent.com first or most SAS functionality fails. API tutorial is preview.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Privacy and Security › Storage Shared Access Signature (SAS) Security Settings › Enable SAS Logging in Purview <a href="https://learn.microsoft.com/power-platform/admin/activity-logging-auditing/activity-logs-overview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform API</strong><br><code>PATCH https://api.powerplatform.com/environmentmanagement/environments/{environmentId}/settings/?api-version=2022-03-01-preview with body {&quot;LoggingEnabledForIpBasedStorageAccessSignature&quot;: true}</code> <a href="https://learn.microsoft.com/power-platform/admin/programmability-tutorial-environmentmanagement-settings" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Who is the website app owner for a site</strong><br><small>Site</small><br><small class="controls__note">Prerequisite, not a control over the feature. The website app is named Portals-&lt;website name&gt;. The Graph page is a general application-owner example, not Power Pages specific.</small></td><td data-label="Admin UI"><strong>Azure portal</strong><br>Microsoft Entra ID › Manage › App registrations › website app › Manage › Owners › Add owners <a href="https://learn.microsoft.com/power-pages/admin/admin-roles" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/v1.0/applications/{application-object-id}/owners/$ref</code> <a href="https://learn.microsoft.com/troubleshoot/entra/entra-id/users-groups-entra-apis/add-owner-for-application-microsoft-graph" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Who is the website app owner for a site</strong><br><small>Site</small><br><small class="controls__note">Prerequisite, not a control over the feature. The website app is named Portals-&lt;website name&gt;. The Graph page is a general application-owner example, not Power Pages specific.</small></td><td data-label="Admin UI"><strong>Azure portal</strong><br>Microsoft Entra ID › Manage › App registrations › website app › Manage › Owners › Add owners <a href="https://learn.microsoft.com/power-pages/admin/admin-roles" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/v1.0/applications/{id}/owners/$ref with body {&quot;@odata.id&quot;:&quot;https://graph.microsoft.com/v1.0/directoryObjects/{new-owner-user-object-id}&quot;}</code> <a href="https://learn.microsoft.com/graph/api/application-post-owners?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Finding Power Pages sites and their owners</strong><br><small>Tenant</small><br><small class="controls__note">Preview, rolling out gradually. Needs Global administrator, Power Platform administrator or Dynamics 365 administrator. Shows owner IDs, not a list of ownerless sites.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Inventory › Item type, filtered to sites <a href="https://learn.microsoft.com/power-pages/admin/power-pages-inventory" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Azure Resource Graph (KQL): PowerPlatformResources | where type =~ &quot;microsoft.powerpages/sites&quot;</code> <a href="https://learn.microsoft.com/power-pages/admin/power-pages-inventory" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Tenant-wide switch to disable site ownership transfer</strong><br><small>Tenant</small><br><small class="controls__note">No such switch found at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Approval workflow for a site ownership transfer</strong><br><small>Site</small><br><small class="controls__note">Learn documents no separate approval step at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
@@ -254,13 +262,10 @@ cost: Low. The only cost the sources show is admin time. The Learn page lists ro
 impact: Low. The documented workflow is run by administrators and affects the previous and new owners of a site. No tenant-wide user change is described.
 -->
 
-<!-- verifier-findings (2026-11-16, held; checked by gpt-6.1-sol)
-The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [contradicted, blocker] controls[3].api / command: The printed POST https://graph.microsoft.com/v1.0/applications/{application-object-id}/owners/$ref call adds the selected website app owner. | Found: In the request body, supply the identifier of the directory object to be assigned as owner.
-{
-    "@odata.id": "https://graph.microsoft.com/v1.0/directoryObjects/{id}"
-} | Fix: Keep the documented endpoint but append: with body {"@odata.id":"https://graph.microsoft.com/v1.0/directoryObjects/{new-owner-user-object-id}"}. The current call omits the required owner reference entirely. The existing cited troubleshooting page shows this body, and https://learn.microsoft.com/graph/api/application-post-owners?view=graph-rest-1.0 confirms individual users are valid owners. Keep the note that this is a general app-ownership API, not the site-transfer API. | Source: https://learn.microsoft.com/graph/api/application-post-owners?view=graph-rest-1.0
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: Every setup control the governance checklist tells readers to configure or check has a controls-table row. | Found: confirm each holds System administrator, Dynamics 365 administrator or Power Platform administrator directly
-turn on auditing and Enable SAS Logging in Purview
-Give your compliance team the Audit Logs or View-Only Audit Logs role | Fix: Add table coverage for transfer administrator-role assignment, enabling environment auditing separately from SAS logging, and assigning Purview audit-reader permissions. The current rows cover app ownership and SAS logging, not these three checklist controls. Retain the eight-row schema limit by consolidating related auditing rows or shortening the checklist to the controls the table documents.
+<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[1].note; Governance controls table: Audit trail of site ownership transfers / absence: Learn does not state which content type holds Power Pages events. | Found: - Audit.AzureActiveDirectory - Audit.Exchange - Audit.SharePoint - Audit.General (includes all other workloads not included in the previous content types) | Fix: Replace 'Learn does not state which content type holds Power Pages events' in controls[1].note and the rendered table with 'Audit.General covers workloads other than Microsoft Entra, Exchange and SharePoint'. The cited API reference states this catch-all scope; Power Pages is outside those three workloads. Keep the existing content-listing call and its placeholders. | Source: https://learn.microsoft.com/office/office-365-management-api/office-365-management-activity-api-reference
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist names baseline auditing and domain allow-list configuration without corresponding controls-table rows. | Found: Add `https://*.api.powerplatformusercontent.com` to your domain allow list, then turn on auditing and **Enable SAS Logging in Purview** | Fix: Remove the domain allow-list and baseline-auditing setup instructions from the checklist, leaving 'Turn on Enable SAS Logging in Purview for the production environments that host Power Pages sites.' Keep the verified prerequisite warning in controls[2].note; its row documents only SAS logging, not the other two configuration steps.
 -->

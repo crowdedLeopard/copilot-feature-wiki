@@ -4,7 +4,7 @@ slug: "power-automate-desktop-flows-encrypt-and-decrypt-data-with-pgp"
 roadmapId: 576786
 topic: "power-platform"
 products: ["Power Automate"]
-summary: "Desktop flows gain PGP actions that encrypt a file with a public key and decrypt it with a private key and passphrase. Nothing runs until a maker adds them to a flow; admins can govern them through data policies."
+summary: "Desktop flows gain PGP actions to encrypt files with a public key and decrypt them with a private key. Nothing runs until a maker adds them; admins should review general desktop-flow data policies, whose PGP module mapping Microsoft has not confirmed."
 status: "launched"
 releasePhase: ["General Availability"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -17,8 +17,8 @@ impact: "low"
 defaultState: "user-opt-in"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "The PGP Cryptography actions page lists no licence, prerequisite or meter. Not yet published for these actions."
+  model: "included"
+  notes: "Power Automate Premium includes the full set of desktop automation capabilities. For unattended desktop flows, Microsoft documents Power Automate Process licensing or pay-as-you-go. The PGP reference does not state a separate PGP licence."
 audiences: ["power-platform-admin","security","maker","compliance"]
 tags: ["power-automate","desktop-flows","encryption","data-policies","dlp","automation"]
 sources:
@@ -30,6 +30,12 @@ sources:
     kind: "learn"
   - title: "Data loss prevention (DLP) policy creation"
     url: "https://learn.microsoft.com/power-automate/prevent-data-loss"
+    kind: "learn"
+  - title: "Types of Power Automate licenses"
+    url: "https://learn.microsoft.com/power-platform/admin/power-automate-licensing/types"
+    kind: "learn"
+  - title: "Pay-as-you-go meters"
+    url: "https://learn.microsoft.com/power-platform/admin/pay-as-you-go-meters"
     kind: "learn"
   - title: "Manage variables and the variables pane"
     url: "https://learn.microsoft.com/power-automate/desktop-flows/manage-variables"
@@ -51,7 +57,7 @@ controls:
       docs: "https://learn.microsoft.com/power-automate/prevent-data-loss"
     api:
       kind: "powershell"
-      call: "$modules = Get-DesktopFlowModules; Add-ConnectorsToPolicy -Connectors $modulesToAdd -PolicyName <policy name> -Classification Blocked"
+      call: "$m = Get-DesktopFlowModules; $a = @(); foreach ($x in $m) { $a += [pscustomobject]@{ id=$x.id; name=$x.Properties.displayName; type=$x.type } }; Add-ConnectorsToPolicy -Connectors $a -PolicyName '<policy GUID>' -Classification Blocked"
       docs: "https://learn.microsoft.com/power-automate/prevent-data-loss"
     note: "General control for desktop flow modules: Microsoft has not confirmed that PGP actions are covered by the Cryptography module."
   - governs: "Whether makers mark a variable as sensitive so its value is masked and kept out of run logs"
@@ -71,19 +77,23 @@ changes:
     note: "First briefing for this roadmap item, now Launched with a July CY2026 target; covers the PGP actions, the data policy gap and the unpublished licensing."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 66 statements contradicted, 3 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-17"
+    note: "Corrected the data policy PowerShell example, the licensing (Power Automate Premium includes desktop automation; pay-as-you-go flow-run billing can apply) and the public key advice."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 71 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-17"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 66
-  confirmed: 60
-  unconfirmed: 3
-  contradicted: 3
-  attempts: 1
-  hash: "3c61da24f7ce504bd3eaed85943e7417"
+  claims: 71
+  confirmed: 71
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "bdf5144b853783cae9db60a8330a1613"
 ---
 
 ## What's changing
@@ -111,7 +121,7 @@ The feature is not a risk to leave alone, but it is worth deciding how your tena
 **Security & identity**
 
 - The passphrase field accepts "Direct encrypted input" or a text value. Microsoft documents that direct inputs are encrypted with the local machine's Data Protection API and cannot be decrypted on another machine, so confirm how a direct encrypted passphrase behaves when the flow runs on a different machine before you rely on it.
-- A public key supplied by a maker decides who can read the output. A wrong or outdated key produces a file the partner cannot decrypt; the Invalid PGP key exception covers keys that cannot be parsed, not keys that belong to the wrong recipient.
+- A public key supplied by a maker decides who can read the output. Verify the partner's public key before encryption. Microsoft describes the Invalid PGP key exception as indicating that the specified key is not valid or could not be parsed.
 
 **Autonomy & actions**
 
@@ -124,9 +134,9 @@ The feature is not a risk to leave alone, but it is worth deciding how your tena
 
 ## Cost and licensing
 
-The PGP Cryptography actions page names no licence, prerequisite or meter, so the licensing for these actions is not yet published. Do not assume either that a licence is required or that none is: confirm with the licence you already hold for the desktop flows that will use them.
+Power Automate Premium includes the full set of desktop automation capabilities. For unattended desktop flows, Microsoft documents Power Automate Process licensing or pay-as-you-go (Types of Power Automate licenses). The PGP reference does not state a separate PGP licence, and the PGP Cryptography actions page itself lists no licence, prerequisite or meter.
 
-The costs the sources show are indirect: maker time to build and test flows, admin time to set data policy rules, and the work of managing keys and passphrases outside the flow. No Copilot Credit or other usage meter is documented for these actions at the time of writing (November 2026).
+The PGP action reference lists no PGP-specific usage meter. Desktop-flow runs can be billed under the Power Automate flow runs (preview) meter when pay-as-you-go applies (Pay-as-you-go meters). Incremental implementation costs include maker time, admin time and key management; existing desktop-flow licensing and applicable flow-run billing still apply.
 
 ## Scope
 
@@ -152,7 +162,7 @@ The roadmap's "Enabled for" line says admins and makers, and the description say
 
 - Review which flows use the PGP actions and which machines run them.
 - Watch for suspended desktop flows after any data policy change that touches desktop flow modules.
-- Re-read the PGP Cryptography actions page after licensing is published and update your budget notes.
+- Re-read the PGP Cryptography actions page for any PGP-specific licence or meter and update your budget notes.
 
 ## Governance controls
 
@@ -161,7 +171,7 @@ The roadmap's "Enabled for" line says admins and makers, and the description say
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether desktop flow modules can be classified in a data policy, including the module the PGP actions fall under</strong><br><small>Tenant</small><br><small class="controls__note">General control for desktop flow modules: Microsoft has not confirmed that PGP actions are covered by the Cryptography module.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Settings › Tenant settings › Desktop flow actions in DLP › Show desktop flow actions in DLP policies <a href="https://learn.microsoft.com/power-automate/prevent-data-loss" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>$modules = Get-DesktopFlowModules; Add-ConnectorsToPolicy -Connectors $modulesToAdd -PolicyName &lt;policy name&gt; -Classification Blocked</code> <a href="https://learn.microsoft.com/power-automate/prevent-data-loss" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether desktop flow modules can be classified in a data policy, including the module the PGP actions fall under</strong><br><small>Tenant</small><br><small class="controls__note">General control for desktop flow modules: Microsoft has not confirmed that PGP actions are covered by the Cryptography module.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Settings › Tenant settings › Desktop flow actions in DLP › Show desktop flow actions in DLP policies <a href="https://learn.microsoft.com/power-automate/prevent-data-loss" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>$m = Get-DesktopFlowModules; $a = @(); foreach ($x in $m) { $a += [pscustomobject]@{ id=$x.id; name=$x.Properties.displayName; type=$x.type } }; Add-ConnectorsToPolicy -Connectors $a -PolicyName '&lt;policy GUID&gt;' -Classification Blocked</code> <a href="https://learn.microsoft.com/power-automate/prevent-data-loss" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether makers mark a variable as sensitive so its value is masked and kept out of run logs</strong><br><small>Maker</small><br><small class="controls__note">Maker-side. Per-variable, not tenant-wide; a general control that Microsoft has not confirmed applies automatically to PGP key and passphrase inputs.</small></td><td data-label="Admin UI"><strong>Power Automate for desktop (maker)</strong><br>Variables pane › right-click the variable › Mark as sensitive <a href="https://learn.microsoft.com/power-automate/desktop-flows/manage-variables" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -174,26 +184,19 @@ The sensitive-variable setting is made by the maker in the flow designer. It mas
 
 ## Open questions
 
-- Which licence do makers and the run machines need for the PGP actions? Watch the PGP Cryptography actions page and the Power Automate licensing pages.
+- Will the PGP Cryptography actions page state a PGP-specific licence or usage meter? It states neither at the time of writing (November 2026); the platform licensing above still applies. Watch that page and the Power Automate licensing pages.
 - Do the PGP actions sit under the **Cryptography** module in data policies, or as a separate module? Watch the desktop flow data policy page.
 - Are the private key and passphrase inputs masked in desktop flow action logs without marking variables as sensitive?
 - The roadmap lists platform Web for a desktop flows feature; which platforms and Power Automate for desktop versions support the actions, and are there file size limits? Watch the Learn page.
 
 <!-- rationale
 risk: Medium. Nothing happens until a maker adds the actions, but a flow then handles private keys and passphrases, and Microsoft documents no PGP-specific admin switch.
-cost: Low. The PGP actions page names no licence or meter, so licensing is not yet published; the cost the sources show is maker and admin time.
+cost: Low. The PGP reference lists no PGP-specific licence or meter; existing desktop-flow licensing and any flow-run billing still apply, so low covers only the added maker and admin time.
 impact: Low. Only makers who add a PGP action to a desktop flow notice it; the roadmap says the actions appear in the action picker with no other UI change.
 -->
 
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Risk assessment: Security & identity / behaviour: A wrong or outdated public key produces a file the partner cannot decrypt. | Found: Searched: "PGP" "Invalid PGP key" recipient expired. Opened PGP Cryptography actions. It requires the corresponding private key, but does not state that an outdated key necessarily prevents a partner from decrypting. | Fix: Replace 'A wrong or outdated key produces a file the partner cannot decrypt' with advice: 'Verify the partner's public key before encryption.'
-- [unsupported, major] Risk assessment: Security & identity / behaviour: Invalid PGP key covers unparseable keys but not keys belonging to a different recipient. | Found: Searched: "PGP" "Invalid PGP key" recipient expired. Opened both PGP action exception tables; they say the key 'isn't valid or couldn't be parsed' and do not define recipient-validation behavior. | Fix: Replace the clause with: 'Microsoft describes the Invalid PGP key exception as indicating that the specified key is not valid or could not be parsed.'
-- [contradicted, blocker] controls[0].api; Governance controls table / command: The printed Get-DesktopFlowModules and Add-ConnectorsToPolicy sequence supplies desktop-flow modules to the policy's Blocked group. | Found: # Step #3: Convert the list of Power Automate for desktop flow modules to a format that can be added to the policy | Fix: The sequence assigns $modules but passes an uninitialized $modulesToAdd, omitting the documented connector-object conversion. Replace both printed copies with: $modules = Get-DesktopFlowModules; $modulesToAdd = @(); foreach ($module in $modules) { $modulesToAdd += [pscustomobject]@{ id = $module.id; name = $module.Properties.displayName; type = $module.type } }; Add-ConnectorsToPolicy -Connectors $modulesToAdd -PolicyName '<policy GUID>' -Classification Blocked. Keep the existing docs URL, whose complete example prepares these id/name/type objects before the call. | Source: https://learn.microsoft.com/power-automate/prevent-data-loss
-- [unsupported, blocker] summary / applicability: Admins can govern the PGP actions through data policies. | Found: Searched: Power Automate PGP Cryptography DLP module tenant disable switch sensitive passphrase automatically. Opened PGP Cryptography actions and prevent-data-loss; neither identifies PGP's DLP module or expressly confirms coverage, as the body itself acknowledges. | Fix: Replace the summary's 'admins can govern them through data policies' with 'admins should review general desktop-flow data policies, whose PGP module mapping Microsoft has not confirmed'. Retain the qualified general-control row and its existing note.
-- [contradicted, blocker] front matter: licensing.model and notes; Cost and licensing; Open questions; rationale: cost / licensing: Licensing for these desktop-flow actions is unpublished, so the licensing model is unknown. | Found: With a Power Automate Premium user license, users gain the full set of capabilities for cloud and desktop automation | Fix: Set licensing.model to 'included'. Replace the broad unpublished-licensing statements, including the cost rationale and the first Open questions bullet, with: 'Power Automate Premium includes the full set of desktop automation capabilities. For unattended desktop flows, Microsoft documents Power Automate Process licensing or pay-as-you-go. The PGP reference does not state a separate PGP licence.' Cite https://learn.microsoft.com/power-platform/admin/power-automate-licensing/types. Retain the narrow observation that the PGP action page itself lists no licence; do not infer unpublished platform licensing from that omission. | Source: https://learn.microsoft.com/power-platform/admin/power-automate-licensing/types
-- [contradicted, blocker] Cost and licensing / cost: No Copilot Credit or other usage meter is documented for running these actions. | Found: Desktop flow runs in a pay-as-you-go environment are charged as follows: | Fix: Replace the blanket no-meter sentence with: 'The PGP action reference lists no PGP-specific usage meter. Desktop-flow runs can be billed under the Power Automate flow runs (preview) meter when pay-as-you-go applies.' Cite https://learn.microsoft.com/power-platform/admin/pay-as-you-go-meters. Qualify 'The costs the sources show are indirect' as 'Incremental implementation costs include maker time, admin time and key management; existing desktop-flow licensing and applicable flow-run billing still apply.' A low rating can describe incremental implementation work, not an exemption from platform billing. | Source: https://learn.microsoft.com/power-platform/admin/pay-as-you-go-meters
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].governs; Risk assessment: Data exposure; Governance controls / behaviour: Microsoft documents that sensitive-variable values are not stored in run logs. | Found: The flow designer masks the values of sensitive variables during debugging, and it doesn't store them in flow run logs. | Fix: Qualify the log-protection statement and row note: 'For portal run history, the variables reference specifies sign-in with an organization premium account. Microsoft's security-update notice documents an exception in versions 2.62 through 2.66 when global sensitive variables are used in local subflows.' Cite https://learn.microsoft.com/power-automate/desktop-flows/manage-variables#sensitive-variables and add https://learn.microsoft.com/troubleshoot/power-platform/power-automate/desktop-flows/sensitive-variables-security-update to sources. These pages qualify the unconditional statement on Secure your data. | Source: https://learn.microsoft.com/power-automate/guidance/desktop-flow-coding-guidelines/secure-your-data
+- [supported, minor] controls[1].governs; Risk assessment: Data exposure; Governance controls / behaviour: Microsoft documents that sensitive variable values are not stored in flow run logs. | Found: The flow designer masks the values of sensitive variables during debugging, and it doesn't store them in flow run logs. | Fix: Qualify the logging assurance with: 'Microsoft also documents a sensitive-variable logging issue in Power Automate for desktop versions 2.62 through 2.66 when global sensitive variables are used in local subflows; release 2.67.143.26090 and later includes the fix, and Microsoft lists patched earlier releases.' Cite https://learn.microsoft.com/troubleshoot/power-platform/power-automate/desktop-flows/sensitive-variables-security-update. The cited variables reference additionally qualifies omission from portal Run history with 'if you've logged in with an organization premium account'; preserve that qualification when describing portal Run history. | Source: https://learn.microsoft.com/power-automate/guidance/desktop-flow-coding-guidelines/secure-your-data
 -->

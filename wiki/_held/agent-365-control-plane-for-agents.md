@@ -1,10 +1,10 @@
 ---
-title: "Microsoft Agent 365: the control plane for agents"
+title: "Microsoft Agent 365: the control plane for agents in the admin centre"
 slug: "agent-365-control-plane-for-agents"
 roadmapId: 558448
 topic: "copilot-studio"
 products: ["Microsoft Agent 365"]
-summary: "Agent 365 is a per-user licensed service that gives IT and security one registry, one set of governance actions and observability for agents from Microsoft, partners and connected platforms. Review fit and licensing."
+summary: "Agent 365 is generally available as a per-user licensed control plane that inventories, governs and secures agents from the Microsoft 365 admin centre. Admins decide whether to license and configure it."
 status: "launched"
 releasePhase: ["General Availability"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -12,77 +12,53 @@ platforms: ["Web"]
 targetDate: "May CY2026"
 previewDate: null
 risk: "medium"
-cost: "high"
-impact: "medium"
-defaultState: "admin-opt-in"
+cost: "medium"
+impact: "low"
+defaultState: "unknown"
 action: "review"
 licensing:
   model: "per-user"
-  notes: "Per-user: stand-alone (list price $15/user/mo) or included in Microsoft 365 E7 (list price $99/user/mo). Prerequisite licences apply, and Microsoft's pages disagree on which capabilities need the licence; confirm with the licensing FAQ."
+  notes: "Microsoft Learn says Agent 365 is licensed per user and is included in Microsoft 365 E7; at least one user must hold a qualifying licence to enable it. Some governance actions are listed as included with Microsoft 365 plans."
 audiences: ["m365-admin","security","service-owner","finops"]
-tags: ["agent-365","agent-registry","control-plane","entra-agent-id","agent-identity","governance","licensing","e7","ownerless-agents","m365-admin-center"]
+tags: ["agent-365","control-plane","agent-registry","agent-governance","agents","m365-admin-center","e7","ownerless-agents","agent-and-plugin-access","mcp","policy","licensing"]
 sources:
-  - title: "Microsoft 365 Roadmap 558448"
+  - title: "Microsoft 365 Roadmap item 558448"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=558448"
     kind: "roadmap"
   - title: "Overview of Microsoft Agent 365"
     url: "https://learn.microsoft.com/microsoft-agent-365/overview"
     kind: "learn"
+  - title: "Agent management in Microsoft 365 admin center"
+    url: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-365-overview"
+    kind: "learn"
   - title: "Manage agent registry in Microsoft 365 admin center"
     url: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview"
-    kind: "learn"
-  - title: "Agent registry integration for Copilot Studio"
-    url: "https://learn.microsoft.com/microsoft-agent-365/builder/agent-registry"
     kind: "learn"
   - title: "Governance and lifecycle actions for agents available in Microsoft 365 admin center"
     url: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions"
     kind: "learn"
-  - title: "Agent settings in Microsoft 365 admin center"
-    url: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings"
+  - title: "Policy templates"
+    url: "https://learn.microsoft.com/microsoft-agent-365/admin/policy-template"
     kind: "learn"
-  - title: "Connected platforms in Microsoft Agent 365"
-    url: "https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms"
+  - title: "Manage plugins, skills, and MCP servers"
+    url: "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers"
     kind: "learn"
-  - title: "Graph API for agent registry and agent details"
-    url: "https://learn.microsoft.com/microsoft-agent-365/admin/graph-api"
+  - title: "Agent management roles and permissions in Microsoft 365 admin center"
+    url: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-roles-perms"
     kind: "learn"
   - title: "Microsoft Agent 365 service description"
     url: "https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365"
     kind: "learn"
-  - title: "Microsoft Licensing FAQs: Microsoft Agent 365"
-    url: "https://www.microsoft.com/licensing/faqs/122"
-    kind: "docs"
   - title: "copilotPackage: block"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
     kind: "learn"
-  - title: "List packages"
-    url: "https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/package/copilotpackages-list"
-    kind: "learn"
-  - title: "Disable agent identities in your tenant"
-    url: "https://learn.microsoft.com/entra/agent-id/disable-agent-identities"
-    kind: "learn"
-  - title: "Manage agent identities in your organization"
-    url: "https://learn.microsoft.com/entra/agent-id/manage-agent-identities-admin"
-    kind: "learn"
-  - title: "Whether an agent is blocked for the whole organisation (Microsoft 365 admin center)"
-    url: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions#block-or-unblock-agents"
-    kind: "learn"
-  - title: "Connections that synchronise agents from external platforms, including per-connection observability data collection (Microsoft 365 admin center)"
-    url: "https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms#create-a-platform-connection"
-    kind: "learn"
-  - title: "Whether agent identities can request tokens for resources (Microsoft Entra admin center)"
-    url: "https://learn.microsoft.com/entra/agent-id/disable-agent-identities#create-conditional-access-policies-to-disable-agent-activities"
-    kind: "learn"
-  - title: "Agent identity inventory and sign-in monitoring (Microsoft Entra admin center)"
-    url: "https://learn.microsoft.com/entra/agent-id/manage-agent-identities-admin#view-agent-identities"
-    kind: "learn"
-  - title: "Agent identity inventory and sign-in monitoring (Microsoft Graph)"
-    url: "https://learn.microsoft.com/entra/agent-id/manage-agent-identities-admin#monitor-agent-activity"
-    kind: "learn"
+  - title: "Microsoft Agent 365"
+    url: "https://www.microsoft.com/en-us/microsoft-agent-365"
+    kind: "docs"
 videos: []
-related: ["agent-identity"]
+related: ["m365-copilot-agent-lifecycle-management-rules","work-iq-agent-policy-governance","mcp","copilot-credits","m365-admin-center-agent-level-pay-as-you-go-controls"]
 controls:
-  - governs: "Agent inventory in the registry"
+  - governs: "Which agents are visible in the tenant-wide agent inventory"
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
@@ -90,58 +66,36 @@ controls:
       docs: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview"
     api:
       kind: "graph"
-      call: "GET /v1.0/copilot/admin/catalog/packages"
-      docs: "https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/package/copilotpackages-list"
-    note: "The registry Graph APIs require the AI admin or Global admin role."
+      call: "GET https://graph.microsoft.com/v1.0/copilot/admin/catalog/packages (scope CopilotPackages.Read.All)"
+      docs: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview"
+    note: "Read-only inventory. Learn labels the Graph API as preview and says it works with the AI Admin role; the service description lists the Graph API as requiring E7 / G7 or Agent 365."
   - governs: "Whether an agent is blocked for the whole organisation"
     scope: "agent"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Agents > All agents > select an agent > Block or Unblock"
-      docs: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions#block-or-unblock-agents"
+      path: "Agents > All agents > agent > Block > Block agent > Save"
+      docs: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions"
     api:
       kind: "graph"
-      call: "POST /beta/copilot/admin/catalog/packages/{id}/block"
+      call: "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block"
       docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
-    note: "Beta API, not supported in production. Needs an Agent 365 licence. Not available in US Government clouds per the API page."
-  - governs: "Agent management rules, agent and plugin access, sharing, user access, feedback sharing and tags"
+    note: "API is beta; requires an Agent 365 licence and the delegated CopilotPackages.ReadWrite.All permission. SharePoint and Foundry agents are blocked only in Microsoft Copilot Chat."
+  - governs: "Which policy template is applied to agents when they are activated"
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Agents > Settings"
-      docs: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings"
+      path: "Agents > Settings > Templates > Add a New Template"
+      docs: "https://learn.microsoft.com/microsoft-agent-365/admin/policy-template"
     api: null
-    note: "Sharing and the ownerless reassignment rule apply to Agent Builder agents only."
-  - governs: "Connections that synchronise agents from external platforms, including per-connection observability data collection"
+    note: "Applies to new activations only. Custom Entra policies need an Agent 365 licence; Conditional Access and custom security attribute policies need roles beyond AI Administrator."
+  - governs: "Which MCP servers agents can use across the organisation"
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Agents > All Agents > Connected platforms > Manage > Connect a platform"
-      docs: "https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms#create-a-platform-connection"
+      path: "Agents > Tools > Registry > MCP server > Block"
+      docs: "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers"
     api: null
-    note: "Created by the Agent 365 AI administrator; sync is manual. Create or edit a connection and select or clear Collect agent observability data (Frontier preview, on by default for new connections; provider query charges may apply)."
-  - governs: "Whether agent identities can request tokens for resources"
-    scope: "tenant"
-    ui:
-      surface: "Microsoft Entra admin center"
-      path: "Entra ID > Conditional Access > Policies > New policy > Assignments > Users, agents or workload identities > Include > All agent identities"
-      docs: "https://learn.microsoft.com/entra/agent-id/disable-agent-identities#create-conditional-access-policies-to-disable-agent-activities"
-    api:
-      kind: "graph"
-      call: "POST /beta/identity/conditionalAccess/policies with conditions.clientApplications.includeAgentIdServicePrincipals set to All"
-      docs: "https://learn.microsoft.com/entra/agent-id/disable-agent-identities#create-conditional-access-policies-to-disable-agent-activities"
-    note: "Set Target resources to All resources and Grant to Block. Needs Conditional Access Administrator and Microsoft Entra ID P1. Start in Report-only."
-  - governs: "Agent identity inventory and sign-in monitoring"
-    scope: "tenant"
-    ui:
-      surface: "Microsoft Entra admin center"
-      path: "Entra ID > Agents > Agent identities"
-      docs: "https://learn.microsoft.com/entra/agent-id/manage-agent-identities-admin#view-agent-identities"
-    api:
-      kind: "graph"
-      call: "GET /beta/auditLogs/signIns?$filter=signInEventTypes/any(t: t eq 'servicePrincipal') and agent/agentType eq 'AgentIdentity'"
-      docs: "https://learn.microsoft.com/entra/agent-id/manage-agent-identities-admin#monitor-agent-activity"
-    note: "Sign-in logs need at least the Reports Reader role. Beta endpoint."
+    note: "Blocking disables all tools on the server. Approving MCP requests needs AI Administrator or Global Administrator and tenant-wide consent."
 confidence: "high"
 created: "2026-11-13"
 updated: "2026-11-17"
@@ -161,87 +115,94 @@ changes:
     note: "Corrected after verification: replaced the unsupported claim that agents keep running as today with the licensing FAQ's registry and premium-capability split, and noted the Copilot Studio page's different registry path."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 107 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 5
+  - date: "2026-11-17"
+    note: "First briefing for this item: Agent 365 is launched; covers per-user licensing, the registry, block, policy template and MCP controls, and their Graph APIs."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 102 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 6
 verification:
   status: "held"
   date: "2026-11-17"
-  version: 5
+  version: 6
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 107
-  confirmed: 106
+  claims: 102
+  confirmed: 98
   unconfirmed: 0
-  contradicted: 1
-  attempts: 4
-  hash: "a6c3c85240bc31b84791b5115637c694"
+  contradicted: 4
+  attempts: 5
+  hash: "0c6f06a73c26c650c2466ceea0841741"
 ---
 
 ## What's changing
 
-Microsoft Agent 365 is generally available. The roadmap item is Launched, targeted May CY2026, at General Availability for Worldwide (Standard Multi-Tenant) on the web. Microsoft's overview says it is generally available for the Commercial segment on a per user basis, and describes it as the observability platform for AI.
+Agent 365 is Microsoft's control plane for AI agents: one place in the Microsoft 365 admin centre to see, govern and secure agents from Microsoft, partners and your own teams. Microsoft Learn describes four pillars: management, governance, security and business value. The roadmap item describes it as helping IT and security administrators "observe, govern, and secure agents across Microsoft 365 and connected platforms at scale".
 
-The centre of it is the agent registry in the Microsoft 365 admin center (**Agents** > **All Agents** > **Registry**). The Copilot Studio integration page instead gives Microsoft 365 admin center > **Agent 365** > **Agent registry**; the path above follows the dedicated admin guide. It lists agents from Microsoft, from partners and from your own teams, with owner, usage and risk information. The registry is not a full census: Microsoft's registry page notes that, for a custom engine agent, publishing the agent in Copilot Studio alone might not make it visible in the admin center, while its Copilot Studio integration page says Copilot Studio agents register automatically when they are created. Confirm coverage in your tenant.
+In the admin centre, the registry (**Agents** > **All agents** > **Registry**) lists agents and shows who owns each one, with risk signals from Microsoft Defender, Microsoft Entra and Microsoft Purview. Admins can block agents, approve activation requests, reassign owners, apply policy templates, and block MCP servers or individual MCP tools under **Agents** > **Tools**. Several of these controls are only listed against E7 or Agent 365 licences (see Cost and licensing).
 
-Administrators can act on agents from the registry (block, activate, reassign owners) and, in **Agents** > **Settings**, set agent management rules, agent and plugin access, sharing, user access, feedback sharing and tags. Agents built on other platforms can be brought in through **Connected platforms**; Microsoft's supported-platforms table includes Amazon Bedrock. Identity for agents sits in Microsoft Entra, where Conditional Access and sign-in logs apply to agent identities.
+The roadmap record shows status Launched, release phase General Availability, target date May CY2026 and Worldwide (Standard Multi-Tenant) as the only cloud. Microsoft Learn says Agent 365 "is generally available for the Commercial segment on a per user basis". The service description's feature table has a GCC availability column that lists some capabilities as available in GCC, which the roadmap record does not show; the two sources differ and this page does not pick one. The roadmap description adds no other detail, and no Message Center post was supplied for this item.
 
 ## Why it matters
 
-Agents are created in several places (Copilot Studio, Agent Builder, SharePoint, partner catalogues, other clouds), and Agent 365 is where a service owner can see them with an owner attached and act on them. The practical gain is an inventory with accountable owners, bulk lifecycle rules and a block control, plus Entra identity controls for agents that have an agent identity.
+For a service owner, Agent 365 is where agent inventory, ownership and blocking decisions are made across Copilot Studio, Agent Builder, SharePoint, Foundry and connected non-Microsoft platforms. The registry also counts **Unmanaged agents**, which Learn defines as agents "created or managed outside of Agent 365, without its risk protection and observability", so leaving it unlicensed or unconfigured leaves that exposure in place.
 
-The decision is commercial as much as technical. Some capabilities are described as included with a Microsoft cloud subscription, and others need a per-user Agent 365 licence, but Microsoft's own pages disagree on where the line falls. The licensing FAQ includes the registry with a Microsoft cloud subscription; premium governance, observability and security capabilities require Agent 365.
+Microsoft has not stated what happens in a tenant on arrival if nobody acts, so this page does not assume that anything is switched on or enforced for you. The decision is yours: whether to license it, for whom, and which controls to configure first. The roadmap item and Learn pages give no admin deadline.
 
 ## Risk assessment
 
 **Data exposure**
-- Connected platforms are read-only by design. An explicit administrator removal can delete a synchronised agent at source if the connection has the separate optional delete permission; that permission can be withheld. The connection stores key-based credentials as encrypted data within Microsoft 365. **Collect agent observability data** is on by default for new connections and is part of the Frontier preview; the provider can bill data access or query charges for the telemetry it retrieves.
-- The registry can under-report: for custom engine agents, Copilot Studio publishing alone might not make an agent visible (Microsoft's Copilot Studio integration page says Copilot Studio agents register automatically, so confirm coverage in your tenant), synchronisation is manual, and agents deleted at the source are not guaranteed to leave the registry.
+- The registry shows risk signals from Defender, Entra and Purview in one place, and viewing them requires an E7 or A365 licence. Links into the source portals depend on the viewer's roles: for Purview IRM alerts, Learn names the IRM Analyst or IRM Investigator role.
+- The default policy template covers Purview audit, sensitive-information detection and SharePoint site controls, but the SharePoint items need further steps in the SharePoint admin centre and a Microsoft 365 Copilot licence on the tenant.
 
 **Security & identity**
-- Not every inventoried agent has a Microsoft Entra agent identity. Where it is missing, experiences can fall back to standard service principals that lack agent-specific tracking and controls, so Conditional Access for agent identities will not cover them.
-- A tenant-wide Conditional Access block stops existing and new agent identities from authenticating, and Microsoft cautions that it can make existing agents fail. Use Report-only first.
+- Learn warns that Microsoft Entra policies on a template might not be enforced at runtime if the agent does not authenticate with its Entra identity. Confirm this with agent developers before relying on Conditional Access or access packages for agents.
+- A template that is applied to an agent only takes effect at activation: templates support only new agent activation and cannot be applied to approved agents.
+- An AI Administrator cannot configure Conditional Access or access package policies; those need a more privileged role.
 
 **Autonomy & actions**
-- Agent 365 does not run connected agents: Microsoft states it never invokes, executes or interacts with agents in the source platform. The autonomy risk stays with the agents.
-- Agent management rules act in bulk, and Apply template is a one-time bulk operation, so review the affected list before running a rule.
+- Blocking an agent restricts it organisation-wide. For agents built in SharePoint or Microsoft Foundry, Learn says blocking affects only availability in Microsoft Copilot Chat, so blocking is not a complete stop for every agent type.
+- Blocking an MCP server disables all its tools; tool-level on/off toggles are rolling out and cover only specific MCP server types registered on Agent 365. See /concepts/mcp/ for how agents reach tools.
 
 **Change & support**
-- Blocking an agent has a platform-dependent effect: a block on a SharePoint or Foundry agent only affects its availability in Microsoft Copilot Chat.
-- The **Sharing** setting applies only to agents built with Agent Builder, and the **User access** setting defaults to **All users**.
+- Activation requests need AI admin approval, so agent makers can wait on an administrator; plan who approves.
+- The same Copilot Studio agent can appear in the registry as more than one entry with different publisher types; Learn says this is by design, so expect it when counting agents.
 
 ## Cost and licensing
 
-Agent 365 is licensed per user, as part of Microsoft 365 E7 or as a stand-alone offering. Microsoft's licensing FAQ gives list prices of $99/user/mo for E7 and $15/user/mo for the stand-alone licence. Agents themselves are not licensed; the licence attaches to users who delegate their access to agents, or who own, sponsor or manage agents with their own access.
+**Licence.** Microsoft Learn says Agent 365 is licensed per user, that it is available as a stand-alone subscription for use with eligible Microsoft 365 subscriptions, and that Microsoft 365 E7 includes it. At least one user must hold a qualifying Agent 365 licence to enable it. Learn also says it works best with Microsoft E5 as a prerequisite.
 
-Prerequisites matter. For enterprise customers the FAQ requires Microsoft 365 E5, or Microsoft 365 E3 (or Office 365 E3 + EMS E3) plus both Defender Suite and Purview Suite. The FAQ's mixed-licence answer appears inconsistent with the E3-plus-suites route: it says information workers must have Microsoft 365 E5 and that users who lack the prerequisites are not eligible for Agent 365. Ask Microsoft to confirm the E3-plus-suites route in writing. The overview says at least one user must hold a qualifying licence to enable Agent 365, but the FAQ says a licence is required for users of agents that use premium capabilities, so licensing only a governance team does not cover everyone who benefits.
+**Price.** Microsoft's US product page lists Agent 365 at $15.00 user/month, paid yearly (annual commitment), and Microsoft 365 E7 at $99.00 user/month on the same terms. Prices elsewhere or under other agreements are not published in the pages read.
 
-What needs the licence is not settled across pages. The FAQ lists agent identity, registry, basic usage insights and admin governance actions (publish, deploy, block, delete, approve, reassign, pin) as included with a Microsoft cloud subscription. It lists registry sync, lifecycle automation, policy templates and tool controls as needing Agent 365. The service description lists external registry sync and lifecycle rules as included in base plans, and policy templates, observability and tool controls as requiring E7/G7 or Agent 365. Confirm entitlement for registry sync and lifecycle rules before budgeting.
+**What each licence unlocks.** The service description's feature table lists the agent registry inventory, basic governance actions, lifecycle rules and external-platform sync as included with Microsoft 365 plans. Policy templates, observability, tenant-wide tool control and the Graph API are listed as requiring Microsoft 365 E7 / G7 or Agent 365. How many users must be licensed for these to work across the tenant is not stated in the pages read.
 
-The FAQ states there are no consumption-based costs for Agent 365 yet. The Package Management Graph API requires an Agent 365 licence. Indirect costs: provider-side charges for telemetry queries on connected platforms, third-party terms and charges for partner tools, and admin time for connections and manual synchronisation. How agents on other platforms are billed by those platforms is outside these pages.
+**Meter and cap.** Learn says Agent 365 cost management shows Copilot Credits by user, group, agent and service, and that you can set spending limits for groups and users. No separate Agent 365 usage meter is described in the pages read; see /concepts/copilot-credits/ for the shared meter.
 
 ## Scope
 
-- **Cloud and platform:** the roadmap lists Worldwide (Standard Multi-Tenant) and Web. The service description's GCC column shows registry, basic governance actions, lifecycle rules, registry sync, policy templates and observability as available in GCC, and the Graph API as not; the roadmap record does not list GCC, so confirm before relying on either.
-- **Roles:** the Agent 365 AI administrator manages platform connections; the package Graph APIs require the AI admin or Global admin role; Conditional Access policies need the Conditional Access Administrator role.
-- **Agents covered:** Microsoft, partner, organisation-published and shared agents in the registry, plus synchronised agents from supported external platforms. Sharing controls cover Agent Builder agents only; the ownerless reassignment rule covers Agent Builder agents only.
-- **Prerequisites:** at least one user with a qualifying Agent 365 licence; the licence prerequisites above.
+**Users and licences.** Per user; see Cost and licensing. Admin roles come from Microsoft Entra: Global Administrator and AI Administrator can install, modify, approve and manage agent configurations; Security Administrator, Security Reader, Reports Reader and User Experience Success Manager can view registry information but not manage; Global Reader and AI Reader can view it with read-only access to tools and settings.
+
+**Clouds and platforms.** The roadmap lists Worldwide (Standard Multi-Tenant) and the Web platform. The service description lists some capabilities as available in GCC and others not; check the table before planning for a US Government tenant.
+
+**Rollout.** The roadmap shows Launched, General Availability, target May CY2026. The Graph API for the registry and package management is described as preview in places, and some features, such as AI teammates and the Requests tab for MCP servers, are marked preview or Frontier-only.
 
 ## Governance guidance
 
 ### Before rollout
-- Confirm the licence route (E7 or stand-alone) and the prerequisite licences with your licensing team, using the Microsoft Licensing FAQ, and ask Microsoft to settle the registry sync and lifecycle rules entitlement in writing.
-- Open **Agents** > **All Agents** > **Registry** and select the **Agents without owners** card to size the ownerless problem before buying.
-- Check **Agents** > **Settings** > **User access** (default **All users**) and **Agent and plugin access** against your policy for external publishers.
-- Ask each external platform's administrator to prepare the credentials and permissions for the connection.
+- Confirm which licences you hold (Agent 365, Microsoft 365 E7) at **Billing** > **Licenses** > **Subscriptions** in the Microsoft 365 admin centre, and decide which users need which capability.
+- Assign agent governance to the AI Administrator role rather than Global Administrator where you can, using the roles table.
+- Open the agent registry and read the **Unmanaged agents** and **Agents without owners** counts to see where agents sit outside Agent 365.
+- Check with your agent developers that agents authenticate with their Entra identity before you rely on Entra-based template policies.
 
 ### At rollout
-- Assign Agent 365 licences to users who delegate their access to agents and to owners, sponsors or managers of agents with their own access.
-- Create each platform connection under **Connected platforms**, run **Sync agents**, and decide per connection whether **Collect agent observability data** stays on.
-- Create the Conditional Access policy for **All agent identities** in Report-only mode and review its effect before enforcing.
+- Review the default policy template and decide whether to add a custom template under **Agents** > **Settings** > **Templates**.
+- Decide who approves activation requests and how you scope the audience when you activate an agent.
+- Review the MCP servers listed under **Agents** > **Tools** > **Registry**, and block servers you do not intend agents to use.
 
 ### After rollout
-- Re-run **Sync agents** after source-platform changes and remove stale registry entries by hand.
-- Review agent sign-in logs in Entra for unexpected agent identities.
-- Review the affected list of each agent management rule before you run it.
+- Triage the risk column in the registry and share details with your security team.
+- Reassign or block agents without owners, for example after a maker leaves.
+- Review Copilot Credits spend by agent and group, and the spending limits you have set.
+- Re-check the service description's feature table for changes to what each licence includes.
 
 ## Governance controls
 
@@ -250,34 +211,45 @@ The FAQ states there are no consumption-based costs for Agent 365 yet. The Packa
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Agent inventory in the registry</strong><br><small>Tenant</small><br><small class="controls__note">The registry Graph APIs require the AI admin or Global admin role.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All Agents › Registry <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>GET /v1.0/copilot/admin/catalog/packages</code> <a href="https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/package/copilotpackages-list" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether an agent is blocked for the whole organisation</strong><br><small>Agent</small><br><small class="controls__note">Beta API, not supported in production. Needs an Agent 365 licence. Not available in US Government clouds per the API page.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › select an agent › Block or Unblock <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions#block-or-unblock-agents" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Agent management rules, agent and plugin access, sharing, user access, feedback sharing and tags</strong><br><small>Tenant</small><br><small class="controls__note">Sharing and the ownerless reassignment rule apply to Agent Builder agents only.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Settings <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Connections that synchronise agents from external platforms, including per-connection observability data collection</strong><br><small>Tenant</small><br><small class="controls__note">Created by the Agent 365 AI administrator; sync is manual. Create or edit a connection and select or clear Collect agent observability data (Frontier preview, on by default for new connections; provider query charges may apply).</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All Agents › Connected platforms › Manage › Connect a platform <a href="https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms#create-a-platform-connection" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether agent identities can request tokens for resources</strong><br><small>Tenant</small><br><small class="controls__note">Set Target resources to All resources and Grant to Block. Needs Conditional Access Administrator and Microsoft Entra ID P1. Start in Report-only.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Entra ID › Conditional Access › Policies › New policy › Assignments › Users, agents or workload identities › Include › All agent identities <a href="https://learn.microsoft.com/entra/agent-id/disable-agent-identities#create-conditional-access-policies-to-disable-agent-activities" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/identity/conditionalAccess/policies with conditions.clientApplications.includeAgentIdServicePrincipals set to All</code> <a href="https://learn.microsoft.com/entra/agent-id/disable-agent-identities#create-conditional-access-policies-to-disable-agent-activities" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Agent identity inventory and sign-in monitoring</strong><br><small>Tenant</small><br><small class="controls__note">Sign-in logs need at least the Reports Reader role. Beta endpoint.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Entra ID › Agents › Agent identities <a href="https://learn.microsoft.com/entra/agent-id/manage-agent-identities-admin#view-agent-identities" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>GET /beta/auditLogs/signIns?$filter=signInEventTypes/any(t: t eq 'servicePrincipal') and agent/agentType eq 'AgentIdentity'</code> <a href="https://learn.microsoft.com/entra/agent-id/manage-agent-identities-admin#monitor-agent-activity" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which agents are visible in the tenant-wide agent inventory</strong><br><small>Tenant</small><br><small class="controls__note">Read-only inventory. Learn labels the Graph API as preview and says it works with the AI Admin role; the service description lists the Graph API as requiring E7 / G7 or Agent 365.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All Agents › Registry <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>GET https://graph.microsoft.com/v1.0/copilot/admin/catalog/packages (scope CopilotPackages.Read.All)</code> <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether an agent is blocked for the whole organisation</strong><br><small>Agent</small><br><small class="controls__note">API is beta; requires an Agent 365 licence and the delegated CopilotPackages.ReadWrite.All permission. SharePoint and Foundry agents are blocked only in Microsoft Copilot Chat.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › agent › Block › Block agent › Save <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which policy template is applied to agents when they are activated</strong><br><small>Tenant</small><br><small class="controls__note">Applies to new activations only. Custom Entra policies need an Agent 365 licence; Conditional Access and custom security attribute policies need roles beyond AI Administrator.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Settings › Templates › Add a New Template <a href="https://learn.microsoft.com/microsoft-agent-365/admin/policy-template" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which MCP servers agents can use across the organisation</strong><br><small>Tenant</small><br><small class="controls__note">Blocking disables all tools on the server. Approving MCP requests needs AI Administrator or Global Administrator and tenant-wide consent.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Registry › MCP server › Block <a href="https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-Controls are split across the Microsoft 365 admin center (registry, actions, settings, connections) and the Microsoft Entra admin center (identity). The block action and the registry listing have Graph APIs under Package Management; the tenant settings and platform connections have no documented API at the time of writing (November 2026). The Package Management APIs need an Agent 365 licence and the beta ones are not supported in production applications.
+These controls are all in the Microsoft 365 admin centre. The registry inventory, block and tool controls are separate: blocking an agent does not necessarily grant or revoke connected-service permissions or credentials, and package approval or blocking is not a separate control for each included skill or MCP server. Learn says agent approval or blocking does not necessarily change the permissions of connected services, which Copilot Studio and Power Platform manage with their own controls.
 
-The Conditional Access policy governs agent identities that exist in Entra, not every registry entry, and the Entra roles above are separate from the Agent 365 AI administrator role.
+The Graph package API requires a Microsoft Agent 365 licence, and the block and unblock operations are in beta. The service description's Graph API row has "No" in its GCC column. Policy templates apply only to new activations, and built-in default policies appear locked. Microsoft Learn documents no API for policy templates or for blocking an MCP server at the time of writing (November 2026).
 
 ## Open questions
 
-- Which capabilities (registry sync, lifecycle rules, audit) are included with a Microsoft cloud subscription, and which need Agent 365? The licensing FAQ and the service description disagree; watch the service description.
-- Will Agent 365 be available in the US Government clouds? The roadmap lists Worldwide only, while the service description's GCC column lists several capabilities as available.
-- Will registry synchronisation run on a schedule, and will deletions at the source be reconciled? The connected platforms page lists both as current limitations.
-- Will the block action get a v1.0 Graph API, and will any API cover the tenant agent settings or platform connections? Watch the Package Management API overview.
+- Which users must be licensed with Agent 365 or E7 for tenant-wide controls such as policy templates and tool control to work for all agents, rather than only for licensed users? Watch the service description and the licensing FAQ.
+- What happens in a tenant on arrival if no admin configures Agent 365, and which default policies are enforced without activation? Watch the Learn policy templates page.
+- Does the GCC availability shown in the service description match the roadmap's Worldwide-only cloud listing, and what is the date for US Government clouds? Watch the roadmap item.
+- Will Microsoft Learn document an API for policy templates and for MCP-server blocking, and will the preview package block API move to v1.0?
 
 <!-- rationale
-risk: Medium. Agent 365 adds control rather than autonomy, but the registry is not a complete census, synchronisation is manual and a tenant-wide block can break agents; each needs configuration or communication.
-cost: High. Premium capabilities need broad per-user licensing: Agent 365 is a $15/user/mo stand-alone add-on to qualifying prerequisite licences, or is included in Microsoft 365 E7 at $99/user/mo. E7 already includes Microsoft 365 E5 and Agent 365; its price is not an extra charge on top of separately purchased prerequisite licences.
-impact: Medium. Mainly administrators, security teams and agent owners notice it; users see its effects only through blocked agents, access settings or approval flows.
+risk: Medium. Agent 365 is itself a control, but agents created or managed outside it have no Agent 365 risk protection or observability, and several controls rely on other admin centres and licences.
+cost: Medium. Microsoft's US pricing page lists Agent 365 at $15.00 per user per month, paid yearly, and Microsoft 365 E7 includes it; which users must hold the licence for each capability is not published in the pages read.
+impact: Low. Administrators and security teams use it; end users notice only when an admin blocks, restricts or changes the availability of an agent or tool.
 -->
 
 <!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[4].api / command: The printed POST call with only conditions.clientApplications.includeAgentIdServicePrincipals set to All supplies the API equivalent of the stated agent block policy. | Found: A valid policy should contain at least one application rule - for example, 'includeApplications': 'none', one user rule - for example, 'includeUsers': 'none', and at least one grant/session control. | Fix: Replace the shorthand call in controls[4].api and its rendered table cell with POST /beta/identity/conditionalAccess/policies and the JSON body from Policy 1 at https://learn.microsoft.com/entra/agent-id/disable-agent-identities#create-conditional-access-policies-to-disable-agent-activities: {"displayName":"Block all agent identities from accessing resources","conditions":{"clientApplications":{"includeAgentIdServicePrincipals":["All"],"excludeAgentIdServicePrincipals":[],"agentIdServicePrincipalFilter":null},"applications":{"includeApplications":["All"],"excludeApplications":[]}},"grantControls":{"operator":"AND","builtInControls":["block"]},"state":"enabledForReportingButNotEnforced"}. Keep the existing docs link. The current text omits the required resource selection and grant control, provides no request body, and does not encode the promised report-only state. | Source: https://learn.microsoft.com/graph/api/conditionalaccessroot-post-policies?view=graph-rest-beta
+- [contradicted, blocker] controls[3].api; Governance controls; Open questions / absence: Microsoft documents no API for blocking an MCP server. | Found: A package represents an agent or a tool, such as a plugin, MCP server, or skill, in the organization catalog. ... Block, unblock, and reassign ownership of packages. | Fix: Remove the blanket no-API claim and its open question. Replace the row's automation gap with the documented package-level call 'POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block', using the block reference already cited. Qualify the note: 'For an MCP server represented as a catalog package, the beta API blocks that package; this is not evidence that package blocking reproduces every server-component or gateway control.' Cite https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/package/overview for MCP package applicability. | Source: https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/package/overview
+- [contradicted, blocker] What's changing; Why it matters; Governance guidance: After rollout / behaviour: Administrators can reassign agent owners without an agent-type qualification. | Found: You can only reassign ownership of shared agents for Agent Builder and Copilot Studio agents. You can't reassign ownership of first-party agents, such as system agents or pre-built agents by Microsoft. | Fix: Qualify each ownership-reassignment statement with 'for shared Agent Builder and Copilot Studio agents'. Replace the After rollout bullet with: 'Reassign ownerless shared Agent Builder and Copilot Studio agents, or block affected agents, for example after a maker leaves.' | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions
+- [contradicted, blocker] Cost and licensing; Open questions; rationale: cost / absence: Microsoft has not published which users need licences for tenant-wide premium Agent 365 capabilities. | Found: Users who delegate their access to agents (i.e., OBO agents) will need to be licensed with A365 ... The owner, sponsor or the manager of agents with own access ... will need to be licensed with A365 | Fix: Replace the unpublished-user-licensing statements and the first open question with: 'The licensing FAQ requires Agent 365 for users who delegate access to agents, and for the owner, sponsor or manager of agents operating with their own access. It says licences are required for users who interact with, manage or sponsor agents using premium capabilities; foundational capabilities do not require additional licensing.' In the cost rationale, replace the unpublished clause with 'licensing needs depend on delegated-access users and the owners, sponsors or managers of own-access agents using premium capabilities'. Cite https://www.microsoft.com/licensing/faqs/122. | Source: https://www.microsoft.com/licensing/faqs/122
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[0].note; Scope: Rollout / availability: The registry article describes its Graph API as preview. | Found: Microsoft Graph API for Agent Registry and Agent Details (preview) | Fix: Retain the attribution to the registry article, but add: 'The Package Management API overview lists List packages and Get package details without preview labels, while update, block, unblock and reassign are marked preview.' Cite https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/package/overview. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview
+- [supported, minor] controls[2].ui; Governance guidance: At rollout; Governance controls table / admin-path: Templates are created at Agents > Settings > Templates > Add a New Template in Microsoft 365 admin center. | Found: In the navigation pane, expand Agents. Select Settings > Templates > Add a New Template. | Fix: Add the qualification from the same procedure: 'Scenarios for AI templates are in preview and available only for Frontier tenants. Custom policies aren't yet supported.' Do not imply that this preview note changes Agent 365's overall GA status. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/policy-template
+- [supported, minor] controls[2].note; Risk assessment: Security & identity; Governance controls / behaviour: Policy templates support only new activation and cannot be applied to already approved agents. | Found: Agent 365 policy templates support only new agent activation. You can't apply the policy to approved agents. | Fix: Replace the unqualified limitation wherever repeated with: 'The Policy templates FAQ says templates support only new activations; the Agent settings page separately documents a one-time Apply template bulk action for existing agent instances with an agent identity, excluding blueprints and AI teammates.' Add https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#agent-management-rules to sources. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/policy-template
+- [supported, minor] Risk assessment: Security & identity / role: AI Administrators cannot configure Conditional Access or Entra access package policies. | Found: AI Administrators aren't authorized to configure Conditional Access policies or Microsoft Entra access package policies. | Fix: Keep the limitation attributed to Agent actions and add: 'The Policy templates page disagrees for access packages: it says the AI admin can create and apply access packages, while lacking privileges for Conditional Access and custom security attributes.' Both pages are already cited. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions
+- [supported, minor] front matter: defaultState; Why it matters; Open questions / absence: Microsoft does not state a single overall arrival or enforcement default for the Agent 365 control plane. | Found: Searched: "Agent 365" "default" "automatically" enable license. Read overview, policy-template, agent-settings and licensing FAQ; component defaults exist, but no single control-plane arrival/enforcement default is stated. | Fix: Keep defaultState unknown, but narrow the Why it matters sentence to: 'Microsoft does not state a single overall arrival default for Agent 365. The Policy templates page says some default policies are automatically enabled and others need configuration; it does not identify a complete enforced baseline for an untouched tenant.'
+- [supported, minor] Cost and licensing: Licence / licensing: The overview says Agent 365 works best with Microsoft E5 as a prerequisite. | Found: Microsoft Agent 365 works best when using Microsoft E5 as a pre-requisite. | Fix: After the attributed overview statement, add: 'The licensing FAQ gives formal prerequisites instead: for enterprise customers, Microsoft 365 E5 or Microsoft 365 E3 (or Office 365 E3 plus EMS E3) with both Defender Suite and Purview Suite. Its mixed-license answer is narrower, saying information workers must have E5; these FAQ answers differ. E7 already includes E5 and Agent 365.' Cite https://www.microsoft.com/licensing/faqs/122. | Source: https://learn.microsoft.com/microsoft-agent-365/overview
+- [supported, minor] Cost and licensing: What each licence unlocks / licensing: The service description lists lifecycle rules as included with Microsoft 365 plans. | Found: Automate agent lifecycle actions using conditions-based rules | Microsoft 365 Admin Center | Yes | Yes | Yes | Fix: Add: 'The licensing FAQ instead puts Automate agent lifecycle actions in the list requiring Agent 365; Microsoft's pages disagree.' Cite https://www.microsoft.com/licensing/faqs/122. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365
+- [supported, minor] Cost and licensing: What each licence unlocks / licensing: The service description lists external-platform registry sync as included with Microsoft 365 plans. | Found: Synchronize agents and agent metadata from external platforms that aren’t managed by Agent 365 into the registry | Microsoft 365 Admin Center | Yes | Yes | Yes | Fix: Add: 'The licensing FAQ instead lists Registry sync as requiring Agent 365; Microsoft's pages disagree.' Cite https://www.microsoft.com/licensing/faqs/122. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365
+- [contradicted, minor] Governance guidance; Governance controls table / consistency: The checklist recommends activation audience, ownership reassignment and spending-limit controls with no corresponding table rows. | Found: decide who approves activation requests and how you scope the audience ... Reassign or block agents without owners ... spending limits you have set. Table rows: inventory, agent block, policy templates, MCP server block. | Fix: The activation-audience, ownership-reassignment and spending-limit checklist steps have no corresponding controls-table rows. Do not add rows as part of this correction.
+- [supported, minor] Governance controls / availability: The package unblock operation is beta. | Found: APIs under the /beta version are subject to change. POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/unblock | Fix: Add the supporting unblock reference to sources: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-unblock. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-unblock
 -->

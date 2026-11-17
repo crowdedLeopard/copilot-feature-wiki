@@ -1,10 +1,10 @@
 ---
-title: "Copilot Studio: web browsing for agents on the Microsoft Copilot harness"
+title: "Copilot Studio: computer use for web browsing on the Microsoft Copilot harness"
 slug: "copilot-studio-computer-use-for-web-browsing-on-microsoft-copilot-harness"
 roadmapId: 576272
 topic: "copilot-studio"
 products: ["Microsoft Copilot Studio"]
-summary: "Roadmap item: Copilot Studio agents on the Microsoft Copilot harness will browse websites and download files. No browsing-specific control or rate is documented yet; harness agents already bill Copilot Credits."
+summary: "Planned: Copilot Studio agents on the Microsoft Copilot harness will browse websites, extract data and download files. Usage is billed in Copilot Credits; Learn does not yet document the controls for this harness."
 status: "in-development"
 releasePhase: ["General Availability","Preview"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -18,15 +18,15 @@ defaultState: "unknown"
 action: "review"
 licensing:
   model: "consumption"
-  notes: "Agents on the Microsoft Copilot harness consume Copilot Credits for all usage, and Microsoft says this usage isn't included with a Microsoft 365 Copilot licence. A rate for web browsing is not yet published."
+  notes: "Microsoft Copilot harness usage is billed in Copilot Credits and is not included in a Microsoft 365 Copilot licence. A credit rate for browsing on this harness is not yet published."
 audiences: ["power-platform-admin","security","finops","maker"]
-tags: ["copilot-studio","copilot-harness","web-browsing","computer-use","agents","copilot-credits","cost-management"]
+tags: ["copilot-studio","copilot-harness","computer-use","web-browsing","agents","copilot-credits","usage-based-billing","power-platform-admin-center"]
 sources:
   - title: "Microsoft 365 Roadmap 576272"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=576272"
     kind: "roadmap"
-  - title: "Harnesses in Copilot Studio"
-    url: "https://learn.microsoft.com/microsoft-copilot-studio/harnesses-overview"
+  - title: "About agents powered by the Microsoft Copilot harness"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/overview"
     kind: "learn"
   - title: "Overview of usage-based billing"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview"
@@ -34,56 +34,22 @@ sources:
   - title: "Manage costs for agents powered by the Microsoft Copilot harness"
     url: "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness"
     kind: "learn"
-  - title: "Tutorial: Manage Copilot Credits allocations programmatically"
-    url: "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations"
-    kind: "learn"
-  - title: "Manage Copilot Credits and capacity for Copilot Studio"
-    url: "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity#manage-monthly-consumption-limits-for-copilot-studio-agents"
-    kind: "learn"
   - title: "Automate web and desktop apps with computer use"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/computer-use"
     kind: "learn"
   - title: "Administer computer use"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/administer-computer-use"
     kind: "learn"
-  - title: "Configure where computer use runs"
-    url: "https://learn.microsoft.com/microsoft-copilot-studio/configure-where-computer-use-runs"
+  - title: "FAQ for the computer use tool"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/faqs-computer-use"
     kind: "learn"
-  - title: "Configure Global Secure Access, the Secure Web, and AI Gateway for agents"
-    url: "https://learn.microsoft.com/power-platform/admin/security/secure-web-ai-gateway-agents"
-    kind: "learn"
-  - title: "Hosted browser for computer use (preview) (Power Platform admin center)"
-    url: "https://learn.microsoft.com/microsoft-copilot-studio/administer-computer-use#disable-hosted-browser"
-    kind: "learn"
-  - title: "Allowed websites and HTTPS enforcement for the computer use tool (Copilot Studio (maker))"
-    url: "https://learn.microsoft.com/microsoft-copilot-studio/computer-use#configure-optional-settings"
-    kind: "learn"
-  - title: "FAQ for agents powered by the Microsoft Copilot harness"
-    url: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/faqs-copilot-harness"
+  - title: "Tutorial: Manage Copilot Credits allocations programmatically"
+    url: "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations"
     kind: "learn"
 videos: []
-related: ["copilot-credits"]
+related: ["copilot-credits","data-policies","microsoft-copilot-studio-agent-sharing-amongst-makers","copilot-studio-block-maker-provided-credentials","copilot-studio-require-human-approval-for-tool-calls"]
 controls:
-  - governs: "Prepaid Copilot Credits allocated to an environment, and whether it can draw from the tenant pool"
-    scope: "environment"
-    ui:
-      surface: "Power Platform admin center"
-      path: "Licensing > Products > Copilot Studio > Manage Copilot Credits > environment"
-      docs: "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness"
-    api:
-      kind: "power-platform-api"
-      call: "PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01 body: scope.environmentId=<id>; entitlementId=MCSMessages; allocation.quantity=<n>; enforcementRules=[{ruleType:TenantPool, enabled:false}]"
-      docs: "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations"
-    note: "Role: Power Platform Administrator, Global Administrator or equivalent. Applies across Copilot Studio. Read-only if a published environment group rule governs it (API error TenantPoolLockedByPolicy)."
-  - governs: "Monthly Copilot Credit limit for one agent, with a stop at the limit"
-    scope: "agent"
-    ui:
-      surface: "Power Platform admin center"
-      path: "Licensing > Copilot Studio > Manage Agents > agent > Set limit"
-      docs: "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness"
-    api: null
-    note: "Turn on Stop usage to turn the agent off at the limit. Limits aren't applied instantly, so allow margin; agent flows the agent calls are checked separately. An agent must consume some credits before you can set limits."
-  - governs: "Whether the standard-harness computer use tool is available in an environment"
+  - governs: "Whether computer use can be added to agents in an environment (documented for the standard harness)"
     scope: "environment"
     ui:
       surface: "Power Platform admin center"
@@ -93,36 +59,18 @@ controls:
       kind: "pac-cli"
       call: "pac env update-settings --environment <envid> --name iscomputeruseinmcsenabled --value false"
       docs: "https://learn.microsoft.com/microsoft-copilot-studio/administer-computer-use"
-    note: "Existing control for the computer use tool on the standard harness. Microsoft has not confirmed it applies to the new capability."
-  - governs: "Hosted browser for computer use (preview)"
-    scope: "tenant"
-    ui:
-      surface: "Power Platform admin center"
-      path: "Manage > Tenant settings > Hosted browser in computer use"
-      docs: "https://learn.microsoft.com/microsoft-copilot-studio/administer-computer-use#disable-hosted-browser"
-    api: null
-    note: "Existing control for the preview hosted browser of the standard-harness tool; Microsoft has not confirmed it applies to the new capability."
-  - governs: "Allowed websites and HTTPS enforcement for the computer use tool"
-    scope: "agent"
-    ui:
-      surface: "Copilot Studio (maker)"
-      path: "Tools > Add tool > New tool > Computer use > Add and configure > Access control"
-      docs: "https://learn.microsoft.com/microsoft-copilot-studio/computer-use#configure-optional-settings"
-    api: null
-    note: "Maker-side, per tool. Enforce HTTPS is a separate option on the same page. Not confirmed for the new capability."
-  - governs: "Forwarding agent traffic to Global Secure Access for web content, threat and file filtering"
+    note: "The page is written for the standard harness. Microsoft has not confirmed it governs browsing on the Microsoft Copilot harness."
+  - governs: "Copilot Credits allocated to an environment and whether it can draw on tenant capacity"
     scope: "environment"
     ui:
       surface: "Power Platform admin center"
-      path: "Security > Identity & access > Global Secure Access for Agents > environment > Set up"
-      docs: "https://learn.microsoft.com/power-platform/admin/security/secure-web-ai-gateway-agents"
-    api: null
-    note: "General control: needs Global Secure Access onboarding and Power Platform Administrator. Microsoft has not confirmed it covers browsing on this harness."
-  - governs: "Switch or site allow list specific to web browsing on the Microsoft Copilot harness"
-    scope: "tenant"
-    ui: null
-    api: null
-    note: "Searched for at the time of writing (November 2026); the roadmap item names no control of its own."
+      path: "Licensing > Products > Copilot Studio > Manage Copilot Credits > environment > Capacity overages > Draw from the available capacity in my tenant"
+      docs: "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness"
+    api:
+      kind: "power-platform-api"
+      call: "PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01 with entitlementId MCSMessages and an enforcementRules entry of ruleType TenantPool, enabled false"
+      docs: "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations"
+    note: "Needs Power Platform Administrator or Global Administrator. A pay-as-you-go plan linked to the environment can still allow usage."
 confidence: "medium"
 created: "2026-11-14"
 updated: "2026-11-17"
@@ -142,79 +90,94 @@ changes:
     note: "Corrected: the credit allocation API call now shows the full request; the governance note no longer says cost controls are the only levers; removed three checklist steps with no table row; added that an agent must consume credits before limits can be set."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 94 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 5
+  - date: "2026-11-17"
+    note: "New briefing: roadmap plans browsing for Copilot Studio agents on the Microsoft Copilot harness; Learn lists computer use as Planned there, so controls and credit rate are not yet documented."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 82 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 6
 verification:
   status: "held"
   date: "2026-11-17"
-  version: 5
+  version: 6
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 94
-  confirmed: 93
+  claims: 82
+  confirmed: 79
   unconfirmed: 0
-  contradicted: 1
-  attempts: 4
-  hash: "e44cc9068c23a87b54a7ef4d5eba9599"
+  contradicted: 3
+  attempts: 5
+  hash: "f1ca0750601eb80e53746c087b3c058a"
 ---
 
 ## What's changing
 
-Microsoft's roadmap item 576272 describes web browsing as a native capability for Copilot Studio agents powered by the Microsoft Copilot harness. Using natural-language instructions, agents can navigate web pages, extract information and download files, then use them with other tools in end-to-end workflows, beyond configured knowledge sources and API-based integrations.
+The roadmap item states that Microsoft Copilot Studio agents powered by the Microsoft Copilot harness will be able to browse and interact with websites as a native capability. Using natural-language instructions, agents can navigate web pages, extract information and download files, then use that information and those files with other tools to complete end-to-end workflows, beyond configured knowledge sources and API-based integrations.
 
-Microsoft Learn does not describe this capability yet, so what is known about its behaviour is the roadmap's description. Learn describes the Microsoft Copilot harness as the runtime for "reasoning-heavy, multi-step work". It does not list a browsing tool for it at the time of writing (November 2026).
+Microsoft Learn does not describe this capability for the Microsoft Copilot harness yet. Its feature comparison for the harness lists computer use as supported on the standard harness and "Planned" on the Microsoft Copilot harness. What follows about behaviour is therefore the roadmap's description, with the existing computer use tool (documented for the standard harness) as background only. The roadmap does not say whether browsing on this harness is that same tool, or which browser or machine it runs on.
 
-Do not confuse it with the existing computer use tool. That page says it describes features of agents powered by the standard harness, and it runs on a Windows machine: a hosted browser (preview), a Cloud PC pool (preview) or a bring-your-own machine. Whether the new capability shares its settings is not documented.
+For the standard harness, Learn describes computer use as a tool that works with websites and desktop apps by selecting buttons, choosing menus and entering text, through a virtual mouse and keyboard on a computer you set up.
 
-The roadmap record gives the status as In development, with a preview target of November CY2026 and a target of January CY2027. It lists General Availability and Preview as release phases, Worldwide (Standard Multi-Tenant) as the cloud and Web as the platform. The record does not say whether the capability is on by default.
+The roadmap record shows status In development, with a preview date of November CY2026 and a target date of January CY2027, for Worldwide (Standard Multi-Tenant) and the web platform. Its release phases are General Availability and Preview. These are Microsoft's targets, not commitments.
 
 ## Why it matters
 
-This would let agents reach websites no administrator has connected, which is a different exposure from a governed connector or knowledge source. Pages and downloaded files can hold content that steers or misleads an agent, and nothing documented says which sites an administrator can exclude for this capability.
+This moves agents from reading configured knowledge and calling APIs to acting through web pages, which changes both spend and exposure. Every activity on the Microsoft Copilot harness bills in Copilot Credits, and browsing tasks that take many steps are the kind of workload that can drain an environment's allocation. Web content is also untrusted input to an agent that can click and type.
 
-If nobody acts, nothing in the sources says existing agents change. The decisions that can be taken now are cost and authoring: the Microsoft Copilot harness bills Copilot Credits for all usage, so credit limits and who can build agents are the levers available today. Treat network and site restrictions as open until Microsoft documents them.
+Microsoft has not stated what happens on arrival, so the default is unknown and no source says existing agents change. Plan on the basis that a maker can try it once preview begins: decide before then which environments host Microsoft Copilot harness agents, how many credits they may draw, and whether the standard-harness computer use switch is expected to apply.
 
 ## Risk assessment
 
 **Data exposure**
-- The roadmap says agents can extract information from pages and download files into workflows. Learn documents no restriction on which sites or file types apply to this capability. The Global Secure Access for Agents control can filter web content and file uploads and downloads for supported agent traffic, but its page does not say browsing on the Microsoft Copilot harness is covered.
+- The roadmap says agents use extracted information and downloaded files alongside other tools, so data read on a site can feed whatever else the agent can call. The standard-harness guidance gives the example of extracting client data and then emailing it with an email tool.
+- On the standard harness, computer use can operate on any website or application by default, and an access control allow-list is optional. Microsoft has not said whether this harness has an equivalent.
+- The harness comparison lists DLP and governance controls as supported on the Microsoft Copilot harness. Microsoft has not said which data policy rules cover browsing (see [data policies](/concepts/data-policies/)).
 
 **Security & identity**
-- Learn documents no identity model for browsing on this harness, including whether agents sign in to sites and with whose credentials. For the standard-harness computer use tool, maker-provided credentials are the default and sharing the agent lets anyone act with the author's access; do not assume the new capability behaves the same way.
+- Microsoft's FAQ for the computer use tool warns that computer-use agents might encounter prompt injection attacks, where hidden commands in web pages or screenshots try to influence actions, and advises trusted, isolated environments. Whether the same applies on this harness is not documented.
+- On the standard harness the credentials option defaults to the maker's credentials, and a shared agent with that setting lets anyone using it act with the original author's access on the configured machine. How identity works for browsing on this harness is not yet documented.
 
 **Autonomy & actions**
-- Agents on this harness plan steps and adjust on their own, and the roadmap adds website interaction to that. No approval step specific to browsing is documented.
+- Standard-harness sample instructions tell the tool to submit forms without asking for permission, and the FAQ says the tool is not intended for financial transactions. An agent following instructions can therefore change data in third-party sites with no approval step unless the maker adds one.
+- On the standard harness, human supervision pauses a run for a reviewer, but the FAQ says not to rely on it as a safety fail-safe. Whether it exists for this harness is not documented.
 
 **Change & support**
-- Dates are targets and the capability is not yet launched. Credit use for the Microsoft Copilot harness starts when someone starts building, so test runs of browsing agents would consume credits.
+- Preview is targeted for November CY2026 and general availability for January CY2027, so behaviour and controls may move between the two.
+- The FAQ lists known limitations including repeated actions and getting stuck; on a credit-billed harness, a stuck run costs credits. When an environment has no available credits, experiences that need them can stop for makers and end users.
 
 ## Cost and licensing
 
-Agents on the Microsoft Copilot harness use consumption-based billing. Learn says this usage isn't included with a user's Microsoft 365 Copilot licence, and that for the harness, Copilot Credits are charged for LLM tokens, tools (including knowledge and MCPs) and the harness itself. Credits are charged from the moment someone starts building, including previews and tests. Sources: billing overview and the Power Platform admin centre cost guide for the harness.
+**Licence.** Microsoft's cost-management page for the Microsoft Copilot harness says these agents use consumption-based billing and that this usage isn't included with a user's Microsoft 365 Copilot licence. Microsoft's billing overview says credits are charged for large language model tokens, tools and the harness itself, from the moment a maker starts building.
 
-A browsing-specific credit rate is not yet published. For comparison only, the standard-harness computer use tool states 5 Copilot Credits per step, or 15 with a premium model. Do not use that as an estimate for this capability.
+**Meter.** Copilot Credits, charged to the environment where the agent runs (see [Copilot Credits](/concepts/copilot-credits/)). The credit rate for browsing on the Microsoft Copilot harness is not yet published. For comparison only, the standard-harness computer use tool charges 5 Copilot Credits per step, or 15 with a premium model.
 
-Credits are charged to the environment where the agent runs, not to individual makers. Cap them with an environment allocation with **Draw from the available capacity in my tenant** cleared, and an agent monthly limit with **Stop usage**. If a published environment group rule governs **Draw from the available capacity in my tenant**, the environment setting can't be overridden: updates are rejected with the `TenantPoolLockedByPolicy` error until the rule is changed and republished, or the environment is removed from the group. Agent limits are not applied instantly, so leave margin, and an agent limit doesn't stop the agent flows the agent calls, which are billed and checked for capacity separately. Usage can still continue through a linked pay-as-you-go plan, and Azure budgets and alerts notify but do not stop consumption. Both controls are in the controls table.
+**Caps.** An environment can be given an allocation with drawing from tenant capacity turned off, and an agent can be given a monthly limit with **Stop usage**. Pay-as-you-go budgets and alerts in Azure notify but do not stop consumption, according to the same page. The environment allocation is the second row of the table below.
+
+**Indirect cost.** Admin and maker time to set limits. Any machine or browser cost for this harness is not yet published.
 
 ## Scope
 
-The roadmap lists Microsoft Copilot Studio, the Worldwide (Standard Multi-Tenant) cloud and the Web platform. Other clouds are not listed on the record.
+The roadmap lists Microsoft Copilot Studio, the web platform and Worldwide (Standard Multi-Tenant). The record does not list US Government clouds; it does not say whether the feature is available there.
 
-The capability is aimed at Copilot Studio agents on the Microsoft Copilot harness. Licence prerequisites, roles and rollout mechanics for it are not yet published. For cost controls, Learn requires the Power Platform Administrator or Global Administrator role, or an equivalent role that can manage licensing and capacity.
+The Microsoft Copilot harness has no maker-access setting of its own, and Microsoft points administrators to existing Copilot Studio and environment permissions for who can build. Managing Copilot Studio capacity needs the Power Platform Administrator or Global Administrator role, or an equivalent role that can manage licensing and capacity.
 
-The Microsoft Copilot harness has no maker-access setting of its own, so authoring is controlled by existing Copilot Studio and environment permissions.
+Rollout mechanics, prerequisites and who sees the capability first are not yet published.
 
 ## Governance guidance
 
 ### Before rollout
-- Allocate Copilot Credits to the environments that will host Microsoft Copilot harness agents and clear **Draw from the available capacity in my tenant**, so browsing agents cannot draw on the tenant pool. If a published environment group rule governs that setting, the environment setting is read-only and API updates fail with `TenantPoolLockedByPolicy`; change and republish the group rule, or remove the environment from the group, first.
-- Decide whether Global Secure Access for Agents is in scope for those environments, and confirm with Microsoft whether it covers this capability before relying on it.
+- Decide which environments may host Microsoft Copilot harness agents, and allocate Copilot Credits to them with **Draw from the available capacity in my tenant** cleared (second table row). A Power Platform Administrator or Global Administrator does this.
+- Record whether the **Computer use** environment setting is on in those environments (first table row). Learn documents it for the standard harness; wait for Microsoft to confirm it governs browsing on this harness.
+- Ask your data policy owners which connectors and tools an agent could combine with browsing; see [data policies](/concepts/data-policies/).
 
 ### At rollout
-- Set an agent monthly limit with **Stop usage** on any agent given web browsing, with a notification threshold, and leave margin because limits are not applied instantly.
-- Pilot in a governed environment with a small group of makers, and compare the credits consumed per run against the allocation.
+- Try the capability in a non-production environment with a small credit allocation and watch the agent's credits on its **Monitor** page.
+- Limit who can author in environments with large allocations, using environment permissions, because the harness has no maker-access setting of its own.
+- Tell makers to name exact sites in their instructions and to keep sensitive systems out of scope until Microsoft documents access controls for this harness.
 
 ### After rollout
-- Re-read the Learn pages for the Microsoft Copilot harness when Microsoft documents browsing, and add any control that appears.
+- Review month-to-date billed credits per agent under **Licensing** > **Copilot Studio** in the Power Platform admin center, and set an agent monthly limit with **Stop usage** where a workload needs a hard stop.
+- Use the **Harness** column in the agent inventory to list agents on the Microsoft Copilot harness.
+- Watch Message center and the Learn page on the Microsoft Copilot harness for browsing documentation, then re-check each control.
 
 ## Governance controls
 
@@ -223,38 +186,38 @@ The Microsoft Copilot harness has no maker-access setting of its own, so authori
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Prepaid Copilot Credits allocated to an environment, and whether it can draw from the tenant pool</strong><br><small>Environment</small><br><small class="controls__note">Role: Power Platform Administrator, Global Administrator or equivalent. Applies across Copilot Studio. Read-only if a published environment group rule governs it (API error TenantPoolLockedByPolicy).</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Products › Copilot Studio › Manage Copilot Credits › environment <a href="https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform API</strong><br><code>PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01 body: scope.environmentId=&lt;id&gt;; entitlementId=MCSMessages; allocation.quantity=&lt;n&gt;; enforcementRules=[{ruleType:TenantPool, enabled:false}]</code> <a href="https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Monthly Copilot Credit limit for one agent, with a stop at the limit</strong><br><small>Agent</small><br><small class="controls__note">Turn on Stop usage to turn the agent off at the limit. Limits aren't applied instantly, so allow margin; agent flows the agent calls are checked separately. An agent must consume some credits before you can set limits.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Copilot Studio › Manage Agents › agent › Set limit <a href="https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether the standard-harness computer use tool is available in an environment</strong><br><small>Environment</small><br><small class="controls__note">Existing control for the computer use tool on the standard harness. Microsoft has not confirmed it applies to the new capability.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › Computer use <a href="https://learn.microsoft.com/microsoft-copilot-studio/administer-computer-use" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform CLI</strong><br><code>pac env update-settings --environment &lt;envid&gt; --name iscomputeruseinmcsenabled --value false</code> <a href="https://learn.microsoft.com/microsoft-copilot-studio/administer-computer-use" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Hosted browser for computer use (preview)</strong><br><small>Tenant</small><br><small class="controls__note">Existing control for the preview hosted browser of the standard-harness tool; Microsoft has not confirmed it applies to the new capability.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Tenant settings › Hosted browser in computer use <a href="https://learn.microsoft.com/microsoft-copilot-studio/administer-computer-use#disable-hosted-browser" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Allowed websites and HTTPS enforcement for the computer use tool</strong><br><small>Agent</small><br><small class="controls__note">Maker-side, per tool. Enforce HTTPS is a separate option on the same page. Not confirmed for the new capability.</small></td><td data-label="Admin UI"><strong>Copilot Studio (maker)</strong><br>Tools › Add tool › New tool › Computer use › Add and configure › Access control <a href="https://learn.microsoft.com/microsoft-copilot-studio/computer-use#configure-optional-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Forwarding agent traffic to Global Secure Access for web content, threat and file filtering</strong><br><small>Environment</small><br><small class="controls__note">General control: needs Global Secure Access onboarding and Power Platform Administrator. Microsoft has not confirmed it covers browsing on this harness.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Identity &amp; access › Global Secure Access for Agents › environment › Set up <a href="https://learn.microsoft.com/power-platform/admin/security/secure-web-ai-gateway-agents" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Switch or site allow list specific to web browsing on the Microsoft Copilot harness</strong><br><small>Tenant</small><br><small class="controls__note">Searched for at the time of writing (November 2026); the roadmap item names no control of its own.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether computer use can be added to agents in an environment (documented for the standard harness)</strong><br><small>Environment</small><br><small class="controls__note">The page is written for the standard harness. Microsoft has not confirmed it governs browsing on the Microsoft Copilot harness.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › Computer use <a href="https://learn.microsoft.com/microsoft-copilot-studio/administer-computer-use" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform CLI</strong><br><code>pac env update-settings --environment &lt;envid&gt; --name iscomputeruseinmcsenabled --value false</code> <a href="https://learn.microsoft.com/microsoft-copilot-studio/administer-computer-use" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Copilot Credits allocated to an environment and whether it can draw on tenant capacity</strong><br><small>Environment</small><br><small class="controls__note">Needs Power Platform Administrator or Global Administrator. A pay-as-you-go plan linked to the environment can still allow usage.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Products › Copilot Studio › Manage Copilot Credits › environment › Capacity overages › Draw from the available capacity in my tenant <a href="https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform API</strong><br><code>PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01 with entitlementId MCSMessages and an enforcementRules entry of ruleType TenantPool, enabled false</code> <a href="https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-No setting specific to web browsing on the Microsoft Copilot harness is documented at the time of writing (November 2026), so the last row is empty. The cost controls listed here limit consumption, not browsing destinations.
+Both rows are controls that exist today, and neither is confirmed by Microsoft to govern browsing on the Microsoft Copilot harness. The first is documented for the standard harness only. The second caps spend for the whole environment, shared with other Copilot Studio agents and features.
 
-The computer use rows are existing controls for the standard-harness tool. Learn does not say they apply to the new capability; treat them as today's alternatives. The environment toggle covers only the computer use tool, the hosted browser tenant setting covers only the preview hosted browser, and the **Access control** allow list is set by the maker per tool. Learn notes that it stops the model acting on sites outside the list but not opening them.
+Other standard-harness controls on the computer use pages are not rows because their paths or APIs are tied to that harness: a tenant setting, **Hosted browser in computer use** (Manage > Tenant settings), the tool's optional **Access control** allow-list and **Enforce HTTPS** option, and human supervision. Agent monthly limits are set under **Manage Agents** in the same Licensing area as row two.
 
-Global Secure Access for Agents is a general control: it needs the tenant onboarded to Global Secure Access, and its page lists HTTP node, connector, MCP and custom-tool traffic and states that Copilot Studio Bing search transactions are not supported. Learn does not say whether browsing traffic from this harness is forwarded.
+When a published environment group rule governs **Draw from the available capacity in my tenant**, the environment-level setting becomes read-only and programmatic requests can't override it.
 
 ## Open questions
 
-- Which admin settings will govern web browsing on the Microsoft Copilot harness, and will the computer use environment toggle or tenant settings apply? Watch the Learn pages on administering computer use and the harness.
-- What Copilot Credit rate applies to a browsing step or download, and will it differ by model? Watch the billing overview for the harness.
-- Can administrators restrict which sites an agent may visit, at tenant or environment level, and does Global Secure Access for Agents see this traffic?
-- How will browsing handle sign-in to websites, and are downloaded files scanned or labelled before an agent passes them to other tools?
-- Is the capability on by default for existing Microsoft Copilot harness agents if it reaches preview at the roadmap's November CY2026 target? Watch Message center.
+- Is browsing on the Microsoft Copilot harness the existing computer use tool, and does the **Computer use** environment setting or the **Hosted browser in computer use** tenant setting govern it? Watch the harness comparison page and the computer use pages on Learn.
+- What does it cost? The Copilot Credit rate for browsing on this harness is not yet published; watch the billing overview and Message center.
+- Is it on, off or opt-in when preview starts, and does it reach existing agents? Microsoft has not stated a default.
+- Which browser or machine does it run on, and whose identity does it use for signed-in sites? Not yet documented.
+- Which data policy rules and site allow-lists apply to browsing, and is there an audit trail for the pages an agent visits? Not yet documented.
 
 <!-- rationale
-risk: High. Agents would navigate websites and download files on their own, and Microsoft documents no control specific to this capability, so exposure rests on general limits.
-cost: Variable. The meter is Copilot Credits: agents on the Microsoft Copilot harness bill for all usage, outside a Microsoft 365 Copilot licence, and no browsing-specific rate is yet published.
-impact: Medium. Makers and owners of Microsoft Copilot harness agents would notice first; end users only if an agent they use is given browsing.
+risk: High. An agent that acts on websites can be steered by hostile page content, and Microsoft's own FAQ for the existing computer use tool warns of prompt injection and unintended actions; controls for this harness are not yet documented.
+cost: Variable. Agents on the Microsoft Copilot harness are billed in Copilot Credits for all usage; the rate for browsing on this harness is not yet published (the standard-harness tool charges 5 credits per step).
+impact: Medium. Makers on the Microsoft Copilot harness gain the capability, and anyone using their agents is affected; Microsoft has not said it is switched on for anyone by default.
 -->
 
 <!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].api; Governance controls / command: PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01 accepts the printed body with scope.environmentId, entitlementId, allocation.quantity and enforcementRules at the shown levels. | Found: scope = @{ environmentId = $environmentId } allocatedEntitlements = @( @{ entitlementId    = "MCSMessages" allocation       = @{ quantity = 5000 } enforcementRules = @( | Fix: Replace the call in controls[0].api and its rendered table cell with: PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01; headers: Authorization: Bearer <token>, Content-Type: application/json; body: {"scope":{"environmentId":"<id>"},"allocatedEntitlements":[{"entitlementId":"MCSMessages","allocation":{"quantity":<n>},"enforcementRules":[{"ruleType":"TenantPool","enabled":false}]}]}. The endpoint and API version are documented; the missing allocatedEntitlements array is required to nest the entitlement, allocation and enforcement rules as shown in the cited tutorial. | Source: https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations
+- [contradicted, blocker] controls[1].api; Governance controls table / command: The printed PUT instruction with entitlementId MCSMessages and a TenantPool enforcementRules entry is a complete operation to allocate environment credits and disable tenant-pool draw. | Found: scope = @{ environmentId = $environmentId } ... allocatedEntitlements = @( ... entitlementId = "MCSMessages" ... allocation = @{ quantity = 5000 } ... enforcementRules = @( ... @{ ruleType = "TenantPool"; enabled = $false } | Fix: Replace controls[1].api.call and the rendered call with: PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01 with Authorization: Bearer <access-token>, Content-Type: application/json, and body {"scope":{"environmentId":"<environment-id>"},"allocatedEntitlements":[{"entitlementId":"MCSMessages","allocation":{"quantity":<credits>},"enforcementRules":[{"ruleType":"TenantPool","enabled":false}]}]}. The cited tutorial supplies the method, base URL, version and body; its use of variables explains the pre-check's literal-URL miss, but the omitted scope and allocation remain a real defect. | Source: https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations
+- [contradicted, blocker] Governance controls: paragraph beginning Both rows / applicability: Neither table row is confirmed by Microsoft to govern browsing on the Microsoft Copilot harness, including the environment cost-control row. | Found: The capacity and consumption controls in the Power Platform admin center apply across Copilot Studio. They aren't exclusive to the Microsoft Copilot harness. | Fix: Replace the paragraph with: 'Both rows are controls that exist today. Microsoft has not confirmed that the first, documented for the standard harness, governs browsing on the Microsoft Copilot harness. The second governs prepaid capacity for the whole environment across Copilot Studio, including Microsoft Copilot harness agents; a linked pay-as-you-go plan can still allow usage.' In the summary and risk rationale, narrow 'controls for this harness are not yet documented' to 'browsing-specific access and identity controls are not yet documented', so the gap does not obscure documented platform-wide cost controls. | Source: https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Cost and licensing: Caps; Governance guidance: After rollout / cost: An agent can be given a monthly Copilot Credit limit with Stop usage. | Found: Enter the monthly Copilot Credit limit. ... Turn on **Stop usage** if the agent should be turned off when it reaches the limit. | Fix: Qualify the monthly-limit instruction with 'An agent must consume some credits before you can set limits', and cite https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/faqs-copilot-harness#how-can-i-control-how-much-an-agent-powered-by-the-microsoft-copilot-harness-spends. | Source: https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness
+- [contradicted, minor] Governance guidance; Governance controls table / consistency: All controls that the governance checklist tells readers to configure or inspect are represented in the controls table. | Found: Checklist: 'Limit who can author ... using environment permissions'; 'set an agent monthly limit with Stop usage'; 'Use the Harness column'. Table: Computer use environment setting and environment credit allocation only. | Fix: The checklist steps for authoring permissions, agent monthly limits and Harness-column inventory inspection have no corresponding controls-table rows. This finding identifies the mismatch only; it does not request additional rows or unverified control details.
+- [supported, minor] Governance guidance: After rollout; Cost and licensing: Caps / cost: An agent monthly limit with Stop usage provides a workload stopping point. | Found: To create a workload-level stopping point, also configure an agent limit with **Stop usage**. | Fix: Qualify the 'hard stop' guidance with: 'Limits are not applied instantly, so allow a margin in limits and notification thresholds. An agent monthly limit does not stop agent flows it calls; those are checked separately against environment capacity.' Cite https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity#manage-monthly-consumption-limits-for-copilot-studio-agents, which explicitly gives both qualifications. | Source: https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness
 -->

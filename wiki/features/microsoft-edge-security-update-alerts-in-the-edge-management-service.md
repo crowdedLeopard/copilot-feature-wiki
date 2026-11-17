@@ -31,6 +31,9 @@ sources:
   - title: "Get started with configuration policies"
     url: "https://learn.microsoft.com/deployedge/microsoft-edge-management-service"
     kind: "learn"
+  - title: "Microsoft Edge management enabled policy"
+    url: "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgemanagementenabled"
+    kind: "learn"
   - title: "MC1458480: (Updated) Microsoft Edge: Security Update Alerts in the Edge management service"
     url: "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1458480"
     kind: "message-center"
@@ -52,12 +55,15 @@ controls:
     note: "Needs the Microsoft Edge Administrator role. GDAP roles are not fully supported. Gives access to the service, not a setting for alerts."
   - governs: "Whether browsers check in with the Edge management service"
     scope: "tenant"
-    ui: null
+    ui:
+      surface: "Group Policy (ADMX)"
+      path: "Administrative Templates > Microsoft Edge > Manageability > Microsoft Edge management enabled"
+      docs: "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgemanagementenabled"
     api:
       kind: "other"
       call: "Set the Edge policy EdgeManagementEnabled to 0 (disabled)"
       docs: "https://learn.microsoft.com/deployedge/microsoft-edge-management-service"
-    note: "General control: Microsoft has not confirmed it affects security update alerts. Learn describes it as disabling the check for configuration policies."
+    note: "General control: Microsoft has not confirmed it affects security update alerts. The Group Policy path is Windows-only; the policy page lists macOS, Android and iOS as not supported."
 confidence: "medium"
 created: "2026-11-17"
 updated: "2026-11-17"
@@ -67,19 +73,23 @@ changes:
     note: "New briefing on Edge security update alerts with a configurable severity threshold, now Launched; the threshold setting's location is not yet documented."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 59 statements contradicted, 3 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-17"
+    note: "Corrected after verification: added the Windows-only Group Policy path for the browser check-in row, narrowed the threshold and data-exposure statements, and trimmed two checklist items that had no controls-table row."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 62 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-17"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 59
-  confirmed: 53
-  unconfirmed: 3
-  contradicted: 3
-  attempts: 1
-  hash: "3c6d62dcf7caf62ec204bd8a6aef9272"
+  claims: 62
+  confirmed: 60
+  unconfirmed: 1
+  contradicted: 1
+  attempts: 0
+  hash: "46f548852bc074c88b6a63aa32be3b7b"
 ---
 
 ## What's changing
@@ -94,7 +104,7 @@ The Learn page says monitoring data is currently available only for Windows devi
 
 ## Why it matters
 
-Edge is a browser that handles untrusted content on every managed device, so the gap between a security fix shipping and devices running it is an exposure. The threshold lets a service owner tune the signal: a low threshold keeps the volume of the current all-updates experience, and a higher one narrows alerts to the more serious fixes, including zero-day fixes. That is a decision about how much attention the security team gives to Edge releases, and the wiki's view is that it should be made deliberately rather than left to a default.
+Edge is a browser that handles untrusted content on every managed device, so the gap between a security fix shipping and devices running it is an exposure. The threshold lets a service owner tune the signal: a configured threshold limits alerts to updates containing security fixes that meet or exceed that severity level, including zero-day fixes. That is a decision about how much attention the security team gives to Edge releases, and the wiki's view is that it should be made deliberately rather than left to a default.
 
 If nobody acts, MC1458480 says the existing experience of notifying admins of all new Edge updates remains. Nothing in the sources says devices are updated or restarted automatically because of an alert, so the alert informs the decision and the update still has to be acted on.
 
@@ -102,7 +112,7 @@ If nobody acts, MC1458480 says the existing experience of notifying admins of al
 
 **Data exposure**
 
-- The monitoring dashboard needs the **Enable version monitoring** toggle turned on, and Learn calls this a mandatory step so Microsoft Edge receives diagnostic data. The two options either send optional diagnostic data without URL data or with URL data, so the choice made there decides what browsing data leaves the device. Alerts depend on that choice rather than adding to it, but the Learn page does not say that alerts specifically require this toggle, so confirm it.
+- The monitoring dashboard needs the **Enable version monitoring** toggle turned on, and Learn calls this a mandatory step so Microsoft Edge receives diagnostic data. The two options either send optional diagnostic data without URL data or with URL data, so the choice made there decides what browsing data leaves the device. The Learn page does not say that alerts specifically require this toggle, so confirm it.
 - Device update information is deleted from the Edge management service if a device has not sent data for 30 days, so devices that are offline for longer drop out of the affected-device counts.
 
 **Security & identity**
@@ -137,7 +147,6 @@ To use the service you need Microsoft Edge 115.0.1901.7 or greater and the Micro
 
 - Confirm who in your organisation holds the Microsoft Edge Administrator role, and note that Learn says GDAP roles are currently not fully supported.
 - Decide which severity level should generate an alert, and who is responsible for acting on alerts, before changing anything from the default.
-- Check whether the **Enable version monitoring** toggle on the monitoring dashboard is on and which diagnostic data option your privacy team has approved.
 
 ### At rollout
 
@@ -147,7 +156,7 @@ To use the service you need Microsoft Edge 115.0.1901.7 or greater and the Micro
 ### After rollout
 
 - Check the first alerts you receive against the severity you chose, to confirm the threshold surfaces the fixes you expect.
-- Review affected devices by channel in each alert and decide whether to use **Recommend restart** or **Force auto restart when device is idle** for devices that are out of date.
+- Review affected devices by channel in each alert.
 - Revisit the threshold after any Edge release that you judged to have been missed or over-reported.
 
 ## Governance controls
@@ -159,13 +168,13 @@ To use the service you need Microsoft Edge 115.0.1901.7 or greater and the Micro
 <tbody>
 <tr><td data-label="Control"><strong>Minimum severity threshold for security update alerts</strong><br><small>Tenant</small><br><small class="controls__note">The Monitoring dashboard page says a threshold can be configured but gives no path or API. Requires access to the Edge management service.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Access to the Edge management service in the admin centre</strong><br><small>Tenant</small><br><small class="controls__note">Needs the Microsoft Edge Administrator role. GDAP roles are not fully supported. Gives access to the service, not a setting for alerts.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Microsoft Edge <a href="https://learn.microsoft.com/deployedge/microsoft-edge-management-service" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether browsers check in with the Edge management service</strong><br><small>Tenant</small><br><small class="controls__note">General control: Microsoft has not confirmed it affects security update alerts. Learn describes it as disabling the check for configuration policies.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>API</strong><br><code>Set the Edge policy EdgeManagementEnabled to 0 (disabled)</code> <a href="https://learn.microsoft.com/deployedge/microsoft-edge-management-service" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether browsers check in with the Edge management service</strong><br><small>Tenant</small><br><small class="controls__note">General control: Microsoft has not confirmed it affects security update alerts. The Group Policy path is Windows-only; the policy page lists macOS, Android and iOS as not supported.</small></td><td data-label="Admin UI"><strong>Group Policy (ADMX)</strong><br>Administrative Templates › Microsoft Edge › Manageability › Microsoft Edge management enabled <a href="https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgemanagementenabled" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Set the Edge policy EdgeManagementEnabled to 0 (disabled)</code> <a href="https://learn.microsoft.com/deployedge/microsoft-edge-management-service" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
 Microsoft Learn says an administrator can configure a minimum severity threshold, but at the time of writing (November 2026) it documents neither the admin centre path for it nor an API for it, so the first row records that gap. The Edge management service is reached from the Microsoft 365 admin center under **Settings** > **Microsoft Edge**, and the Microsoft Edge Administrator role is needed to access it.
 
-The EdgeManagementEnabled policy controls whether signed-in Edge browsers check in with the Edge management service for their policies. Microsoft has not said whether it affects monitoring data or alerts, so treat it as a general control and test before relying on it. The **Enable version monitoring** toggle on the monitoring dashboard is the documented prerequisite for seeing device insights on that page.
+The EdgeManagementEnabled policy controls whether signed-in Edge browsers check in with the Edge management service for their policies. Its Group Policy setting is Windows-only: the policy page lists macOS, Android and iOS as not supported. Microsoft has not said whether it affects monitoring data or alerts, so treat it as a general control and test before relying on it. The **Enable version monitoring** toggle on the monitoring dashboard is the documented prerequisite for seeing device insights on that page.
 
 ## Open questions
 
@@ -175,19 +184,16 @@ The EdgeManagementEnabled policy controls whether signed-in Edge browsers check 
 - Is a licence required for security update alerts, and will the monitoring dashboard extend beyond Windows devices?
 
 <!-- rationale
-risk: Low. This is a new alerting control that reads nothing new by itself, and Microsoft's notice MC1458480 says the existing experience that notifies admins of all new Edge updates remains by default.
+risk: Low. This is a new alerting control, and Microsoft's notice MC1458480 says the existing experience that notifies admins of all new Edge updates remains by default.
 cost: Low. The only cost the sources show is admin time to choose a threshold; Microsoft Learn lists an admin role, not a licence, as the access prerequisite, and no meter is documented for this feature at the time of writing (November 2026).
 impact: Low. Only administrators who use the Edge management service see the alerts; end users are not mentioned in the roadmap item, the Message Center post or the Learn page.
 -->
 
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[2].ui; Governance controls: browser check-in row / absence: The EdgeManagementEnabled browser check-in control has no documented admin UI. | Found: GP name: Microsoft Edge management enabled; GP path (Mandatory): Administrative Templates/Microsoft Edge/Manageability; GP ADMX file name: MSEdge.admx | Fix: Replace controls[2].ui null and the matching table gap with surface 'Group Policy (ADMX)', path 'Administrative Templates > Microsoft Edge > Manageability > Microsoft Edge management enabled', and docs https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgemanagementenabled. Qualify this UI as Windows-only. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgemanagementenabled
-- [unsupported, blocker] Risk assessment: Data exposure, first bullet / applicability: Security update alerts depend on the version-monitoring diagnostic-data choice rather than adding to it. | Found: Searched: "Microsoft Edge" "monitoring" "alerts" "diagnostic"; "Edge management service" "security update alerts" "data collection". Opened Monitoring dashboard and configuration policies; no text states this alert-specific dependency or data boundary. | Fix: Remove 'Alerts depend on that choice rather than adding to it, but' and start the remaining clause 'The Learn page does not say that alerts specifically require this toggle, so confirm it.' The current assertion also conflicts with the uncertainty stated in Open questions.
-- [unsupported, major] Why it matters, first paragraph / behaviour: A low severity threshold preserves the notification volume of the existing all-updates experience. | Found: Searched: "security update alerts" "all updates" threshold Edge. Opened Monitoring dashboard; read the Stable release-note passage and MC1458480. Sources describe security-fix filtering but do not say a low threshold reproduces all-update notifications. | Fix: Replace 'a low threshold keeps the volume of the current all-updates experience, and a higher one narrows alerts to the more serious fixes, including zero-day fixes' with 'a configured threshold limits alerts to updates containing security fixes that meet or exceed that severity level, including zero-day fixes'.
+- [unsupported, major] Why it matters: first sentence / behaviour: Edge handles untrusted content on every managed device. | Found: Searched: Microsoft Edge browser untrusted web content installed every managed device security updates risk. Read Monitoring dashboard and Microsoft Edge security for your business excerpts; neither establishes that Edge handles content on every managed device. | Fix: Replace the first sentence with: 'Browser sessions without the latest security updates might be at risk.' This is stated on the already-cited Monitoring dashboard page.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [unsupported, minor] rationale: risk / behaviour: The new alerting control reads nothing new by itself. | Found: Searched: "Edge management service" "security update alerts" "data collection"; "Microsoft Edge" "monitoring" "alerts" "diagnostic". Opened Monitoring dashboard and configuration policies; neither establishes that alerts introduce no additional data reads. | Fix: Remove 'that reads nothing new by itself' from the risk rationale. Keep the supported statement that MC1458480 preserves the existing all-updates notification experience by default.
-- [contradicted, minor] Governance guidance: Before rollout, third bullet / consistency: The checklist tells administrators to check Enable version monitoring and its diagnostic-data option, but the controls table has no corresponding row. | Found: Check whether the Enable version monitoring toggle on the monitoring dashboard is on and which diagnostic data option your privacy team has approved. The table covers only the severity threshold, service access and browser check-in. | Fix: The Before rollout step about Enable version monitoring and diagnostic-data selection has no controls-table row. Remove that checklist bullet; retain the documented explanation in Risk assessment.
-- [contradicted, minor] Governance guidance: After rollout, second bullet / consistency: The checklist asks administrators to consider Recommend restart and Force auto restart when device is idle, but neither control appears in the controls table. | Found: Review affected devices by channel in each alert and decide whether to use Recommend restart or Force auto restart when device is idle for devices that are out of date. Neither action has a controls-table row. | Fix: The After rollout step naming the restart actions has no corresponding controls-table rows. Narrow that bullet to 'Review affected devices by channel in each alert.'
+- [supported, minor] controls[2].api / command: Setting EdgeManagementEnabled to 0 or disabled stops browsers checking in with the Edge management service. | Found: To disable the checking in with the Edge management service you can set the EdgeManagementEnabled policy to 0 or disabled. | Fix: Remove controls[2] and its rendered table row, retaining the supported EdgeManagementEnabled explanation already in the Governance controls prose. The policy instruction is true, but it is not a runnable API or automation call as the table and standard require; do not replace it with a false undocumented-automation claim. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-management-service
+- [contradicted, minor] rationale: impact / absence: End users are not mentioned in the roadmap item, the Message Center post or the Learn page. | Found: Recommend restart: This action sends a notification to the user to restart their browser to apply the latest update. No action will be taken on their behalf, and users may choose whether to act upon the notification. | Fix: Replace the impact rationale with: 'Low. Microsoft describes security update alerts as an administrator capability displayed in the monitoring dashboard.' The Learn page does mention end users for separate restart actions; this does not establish that alerts automatically trigger those actions. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-management-service-monitoring-dashboard
 -->

@@ -22,7 +22,7 @@ licensing:
 audiences: ["m365-admin","service-owner","change-adoption"]
 tags: ["copilot-studio","m365-copilot","copilot-chat","agents","user-experience","speech"]
 sources:
-  - title: "Microsoft 365 Roadmap: Microsoft Copilot Studio: Streamlining experiences from Copilot Studio Agents in Microsoft 365 Copilot"
+  - title: "Microsoft 365 Roadmap 570435"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=570435"
     kind: "roadmap"
   - title: "Licensing for agents powered by the standard harness"
@@ -65,19 +65,23 @@ changes:
     note: "New briefing: roadmap-only description of the Copilot Studio agent response experience in Microsoft 365 Copilot; no Learn page, rollout or admin setting yet."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 51 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-17"
+    note: "Correction: reworded the claim that blocking is the only documented control, and removed two review steps that had no controls-table row."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 53 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-17"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 51
-  confirmed: 49
+  claims: 53
+  confirmed: 53
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "1e3493b6a7a90601799b6896c5f08113"
+  contradicted: 0
+  attempts: 0
+  hash: "0fb5509d27b5fd92387d17719468f716"
 ---
 
 ## What's changing
@@ -103,7 +107,7 @@ Microsoft has not stated what happens on arrival or whether anyone has to act, s
 
 **Security & identity**
 
-- No change is documented to which identity an agent runs under or which data it can reach; the roadmap describes presentation and interaction behaviour only. Existing agent sharing and authentication settings continue to be the controls to review.
+- No change is documented to which identity an agent runs under or which data it can reach; the roadmap describes presentation and interaction behaviour only.
 
 **Autonomy & actions**
 
@@ -112,7 +116,7 @@ Microsoft has not stated what happens on arrival or whether anyone has to act, s
 **Change & support**
 
 - Users will see agent answers formatted and streamed differently, with a compressed chain of thought. Prepare short guidance and update any screenshots or training that show agent replies.
-- No tenant switch for this change is documented at the time of writing (November 2026). The only documented control found is blocking an agent altogether, which removes the agent rather than the new presentation.
+- No tenant switch for this change is documented at the time of writing (November 2026). One documented general control is blocking an agent altogether, which prevents use of the whole agent rather than just changing its presentation.
 
 ## Cost and licensing
 
@@ -145,7 +149,6 @@ The audience is people who chat with Copilot Studio agents in Microsoft 365 Copi
 ### After rollout
 
 - Collect user and helpdesk reports on citations that do not open, retries that repeat actions and streaming problems.
-- Review the Copilot Credits consumption reports for any change in the usage recorded for agents in Copilot Chat.
 
 ## Governance controls
 
@@ -174,13 +177,4 @@ The Graph block call is in beta, which Microsoft says is subject to change, and 
 risk: Medium. The roadmap says agent replies will show tool execution traces and a compressed chain of thought; Microsoft has not published what those display or whether an admin can limit them.
 cost: Low. The only cost the sources show is admin and communication time; licensing for this change is not yet published, and existing Copilot Studio billing rules are described under Cost and licensing.
 impact: Medium. People who use Copilot Studio agents inside Microsoft 365 Copilot would notice new formatting, streaming and citations, and makers and support teams would see changed behaviour.
--->
-
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Change & support / absence: Blocking an agent altogether is the only documented control found. | Found: If you don't select Make agent available in Microsoft Copilot, your agent is only available in Teams. Only users who can access the agent can use the link to install the agent. You can share the agent to give users access to the agent. | Fix: Replace 'The only documented control found is blocking an agent altogether, which removes the agent rather than the new presentation.' with 'One documented general control is blocking an agent altogether, which prevents use of the whole agent rather than just changing its presentation.' | Source: https://learn.microsoft.com/microsoft-copilot-studio/publication-add-bot-to-microsoft-teams
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Cost and licensing / licensing: For Microsoft 365 Copilot licence holders, agent use for classic answers, generative answers or tenant grounding in Copilot Chat, Teams or SharePoint is not charged when the agent uses the user's authenticated identity. | Found: If you have a Microsoft 365 Copilot license, using agents in Copilot Chat, Microsoft Teams, or SharePoint for classic answers, generative answers, or Microsoft Graph tenant grounding isn't charged when the agent runs with your authenticated identity. | Fix: Append 'This inclusion is subject to fair usage limits.' Cite https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management#copilot-credits-billing-rates, whose footnote 1 states 'Usage is limited to fair usage limits.' | Source: https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing
-- [contradicted, minor] Risk assessment: Security & identity; Governance guidance: After rollout; Governance controls table / consistency: Every control that readers are told to review or check is represented in the controls table. | Found: 'Existing agent sharing and authentication settings continue to be the controls to review' and 'Review the Copilot Credits consumption reports' name controls absent from the table, which contains only the missing experience switch and whole-agent blocking. | Fix: Remove 'Existing agent sharing and authentication settings continue to be the controls to review.' and the After rollout bullet 'Review the Copilot Credits consumption reports for any change in the usage recorded for agents in Copilot Chat.' These review steps have no controls-table rows.
 -->
