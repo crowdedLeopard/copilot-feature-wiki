@@ -4,7 +4,9 @@
  * record which ones changed. verify-tasks.mjs then queues the briefings that cite a changed page for a re-check
  * (reason "source-changed"), ahead of the routine re-checks. State: data/sources.json. See pipeline/lib/sources.mjs.
  *
- * Env: SOURCE_WATCH on (default) | off; SOURCE_WATCH_CONCURRENCY (4); SOURCE_WATCH_LIMIT (800 pages a run).
+ * Env: SOURCE_WATCH on (default) | off; SOURCE_WATCH_CONCURRENCY (2); SOURCE_WATCH_LIMIT (800 pages a run);
+ * SOURCE_WATCH_PAUSE_MS (150 between requests in each worker). Each page is read once a day across the day's runs,
+ * and the run stops on sustained HTTP 429 from Learn, leaving the rest for the next run (see watch in lib/sources.mjs).
  */
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -36,17 +38,20 @@ for (const p of pages) {
 const store = await loadSources();
 const started = Date.now();
 const result = await watch(store, cited, {
-  concurrency: Math.max(1, Number(process.env.SOURCE_WATCH_CONCURRENCY || 4)),
+  concurrency: Math.max(1, Number(process.env.SOURCE_WATCH_CONCURRENCY || 2)),
   limit: Math.max(1, Number(process.env.SOURCE_WATCH_LIMIT || 800)),
+  pauseMs: Math.max(0, Number(process.env.SOURCE_WATCH_PAUSE_MS || 150)),
   date: today(),
 });
 await writeJson(SOURCES_FILE, store);
 
 const seconds = Math.round((Date.now() - started) / 1000);
-const line = `- ${today()} source watch: ${result.fetched} Microsoft pages cited by ${pages.length} live pages re-read in ${seconds}s` +
+const line = `- ${today()} source watch: ${result.fetched} of ${result.cited} Microsoft pages cited by ${pages.length} live pages re-read in ${seconds}s` +
+  `${result.readToday ? ` (${result.readToday} read earlier today)` : ''}` +
   `${result.baselines ? `, ${result.baselines} read for the first time` : ''}` +
   `, ${result.changed.length} changed${result.affected.length ? ` (${result.affected.length} briefing${result.affected.length === 1 ? '' : 's'} queued for a re-check)` : ''}` +
-  `${result.unreachable.length ? `, ${result.unreachable.length} unreachable` : ''}${result.skipped ? `, ${result.skipped} not reached (SOURCE_WATCH_LIMIT)` : ''}`;
+  `${result.unreachable.length ? `, ${result.unreachable.length} unreachable${result.rateLimited ? ` (${result.rateLimited} rate limited by Learn)` : ''}` : ''}` +
+  `${result.stopped ? `, stopped after ${result.rateLimited} rate-limit answers with ${result.left} left for the next run` : ''}${result.skipped ? `, ${result.skipped} not reached (SOURCE_WATCH_LIMIT)` : ''}`;
 await appendLog(line.slice(2));
 await summary(line.slice(2));
 for (const url of result.changed) console.log(`  changed: ${url} (now ${store.sources[url].msDate || 'no ms.date'}, was ${store.sources[url].previous?.msDate || 'no ms.date'}) → ${store.sources[url].pages.join(', ')}`);
