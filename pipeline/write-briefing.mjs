@@ -48,7 +48,9 @@ const { existingFm } = await loadExisting(slug);
 const indexSlugs = await loadIndexSlugs();
 try {
   const { file, title, tags } = await writeBriefingPage(item, raw, { slug, existingFm, indexSlugs });
-  await record({ ok: true, slug, title, file: path.relative(process.cwd(), file), newTags: tags.added, stubTags: tags.stubs });
+  // The task's reason (no-briefing, revise, fresh-draft, forced, ...) lets a reader of the run's results tell a first
+  // draft from a correction or a parked page written again, which the page's version number cannot.
+  await record({ ok: true, slug, title, reason: task?.reason, file: path.relative(process.cwd(), file), newTags: tags.added, stubTags: tags.stubs });
   console.log(`OK wrote ${path.relative(process.cwd(), file)}\n   ${title}`);
   if (tags.added.length || tags.filled.length) console.log(`   glossary: defined ${[...tags.added, ...tags.filled].join(', ')}`);
   if (tags.stubs.length) console.log(`   glossary: ${tags.stubs.join(', ')} still need a description (add them to newTags)`);

@@ -100,8 +100,9 @@ manual and the system prompt, and an append-only log records every run.
    hands it the leads. `pipeline/lib/verify.mjs` applies the rule: any blocking finding (a path,
    command, licence, price, date, default or role that is contradicted or unsupported), or three
    majors, holds the page. Held pages move to `wiki/_held/` and are not built; the next run's
-   writer gets them first, with the findings appended, for up to three correction rounds, after which
-   the page is parked for a person. Pages that pass are stamped (`verification` in the front
+   writer gets them first, with the findings appended, for up to three correction rounds. After that
+   the page is written once more from scratch, from the roadmap record and Microsoft's pages with none
+   of the held text, and if that draft fails its check too the page is parked for a person. Pages that pass are stamped (`verification` in the front
    matter) and show the full report on the site. A failed check takes the page offline whether or
    not it was published before the check existed (Chris, 16 Nov 2026: hide failures once checked;
    `VERIFY_GRACE_EXISTING=1` would instead keep such a page live with a notice on its first

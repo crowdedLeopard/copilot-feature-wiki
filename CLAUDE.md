@@ -46,7 +46,9 @@ daily by GitHub Actions.
   `record-verification.mjs` / `pipeline/lib/verify.mjs` apply it: the verdict schema is `pipeline/lib/verify-schema.mjs`,
   severity alone decides (any blocker, or three majors, holds), a held page moves to `wiki/_held/` (not built) and
   `requeue-held.mjs` puts it at the front of the next writer run with the findings appended, up to `VERIFY_MAX_REVISIONS`
-  (4 failed checks, three correction rounds; raised from 3 on 16 Nov 2026 for the pages whose findings predated PR 29 and kept once they cleared, since a further round costs about 85 AI credits and a parked page waits for a person; `holdReason` gives a page parked under the old cap its remaining round) before it is parked. A correction is a repair, not a rewrite: `findingsComment` lists the faults to
+  (4 failed checks, three correction rounds; raised from 3 on 16 Nov 2026 for the pages whose findings predated PR 29 and kept once they cleared, since a further round costs about 85 AI credits and a parked page waits for a person; `holdReason` gives a page parked under the old cap its remaining round). A page at the cap is queued once more as a
+  `fresh-draft` task (`parkedNext`; `compile-tasks.mjs` briefs it without the held text, `write-briefing.mjs` keeps its slug and
+  history), and only a page whose fresh draft failed too is parked for a person. A correction is a repair, not a rewrite: `findingsComment` lists the faults to
   correct and the minor findings separately, and the writer carries the rest of the page over word for word and adds no
   control rows ("Correcting a held briefing" in `compile-agent.md`; pages that failed a second check failed on text the
   correction had added). Passing pages carry `verification` in their front matter; the full report is
