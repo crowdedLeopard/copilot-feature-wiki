@@ -4,7 +4,7 @@ slug: "microsoft-dataverse-build-your-low-code-hyperscale-backend-on-dataverse-b
 roadmapId: 576876
 topic: "power-platform"
 products: ["Microsoft Dataverse"]
-summary: "Microsoft has launched an open-source Python SDK for Dataverse. Developers install it themselves and run it under their own or an app's permissions; there is no SDK switch in the admin centres, so existing Dataverse controls apply."
+summary: "Microsoft has launched an open-source Python SDK for Dataverse. Developers install it and run it under their own or an app's permissions; Microsoft Learn documents no SDK-specific switch at the time of writing (November 2026)."
 status: "launched"
 releasePhase: ["General Availability","Preview"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -67,9 +67,6 @@ sources:
   - title: "Which client apps may call the Dataverse API in an environment (Power Platform admin center)"
     url: "https://learn.microsoft.com/power-platform/admin/control-app-access-environment"
     kind: "learn"
-  - title: "Which client apps may call the Dataverse API in an environment (Power Platform CLI)"
-    url: "https://learn.microsoft.com/power-platform/developer/cli/reference/env#pac-env-list-settings"
-    kind: "learn"
   - title: "Which Microsoft Entra app registrations have an application user and security roles in an environment (Power Platform admin center)"
     url: "https://learn.microsoft.com/power-platform/admin/manage-application-users"
     kind: "learn"
@@ -78,6 +75,9 @@ sources:
     kind: "learn"
   - title: "Whether Dataverse records scripted data changes and access (REST API)"
     url: "https://learn.microsoft.com/power-apps/developer/data-platform/auditing/configure"
+    kind: "learn"
+  - title: "Which client apps may call the Dataverse API in an environment (Power Platform CLI)"
+    url: "https://learn.microsoft.com/power-platform/developer/cli/reference/env#pac-env-list-settings"
     kind: "learn"
 videos: []
 related: ["managed-environments","microsoft-dataverse-m365-collaboration-discover-build-customize-and-extend-with-management","mcp","microsoft-dataverse-enable-semantic-data-understanding-for-agentic-use"]
@@ -133,19 +133,23 @@ changes:
     note: "Corrected after verification: SDK application identity now follows the credential used, app access control gains a pac CLI read call, auditing guidance notes table and column auditing, and unsupported rollout and credential statements were removed."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 80 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-17"
+    note: "Corrected the summary: it now says Microsoft Learn documents no SDK-specific switch at the time of writing (November 2026), instead of asserting that none exists."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 83 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-17"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 80
-  confirmed: 79
-  unconfirmed: 1
+  claims: 83
+  confirmed: 83
+  unconfirmed: 0
   contradicted: 0
-  attempts: 2
-  hash: "2735d21d84b9f854d58471edbc9d6c07"
+  attempts: 0
+  hash: "552390d7b493493c61cf5f717a40ff6a"
 ---
 
 ## What's changing
@@ -251,10 +255,4 @@ App access control needs a Power Platform admin or Dynamics 365 admin role and a
 risk: Medium. The SDK adds a scripted route for bulk writes, bulk deletes and table changes, but the Learn pages say it works within Dataverse security roles, and Learn documents no SDK-specific switch at the time of writing (November 2026).
 cost: Low. The SDK is open source and its Learn pages name no Microsoft licence for it; the cost we can see is admin time and Dataverse request consumption, and what a caller's licence must cover is not stated on the SDK pages.
 impact: Low. Developers, data scientists and makers who choose to install the package notice it; most users and administrators see no change unless a script runs against their environment.
--->
-
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] summary / absence: There is no SDK switch in the admin centres. | Found: Searched: "Dataverse SDK for Python" "switch"; "Dataverse SDK for Python" "admin" "enable"; SDK tenant environment setting Power Platform API PowerShell pac. Read SDK overview/get-started and app access control. No source states that no SDK switch exists. | Fix: Replace 'there is no SDK switch in the admin centres' with 'Microsoft Learn documents no SDK-specific switch at the time of writing (November 2026)'. The search supports an undocumented control, not a categorical assertion that none exists.
 -->

@@ -1,0 +1,796 @@
+{
+  "slug": "microsoft-edge-security-update-alerts-in-the-edge-management-service",
+  "roadmapId": 558435,
+  "title": "Microsoft Edge: security update alerts with a severity threshold in the Edge management service",
+  "status": "verified-with-gaps",
+  "date": "2026-11-17",
+  "version": 2,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "verifierVerdict": "hold",
+  "notes": [
+    "claim 62: severity blocker on a rationale: impact rating lowered to minor; ratings are judgements and cannot hold a page",
+    "the verifier wrote \"hold\" but listed no blocker and fewer than three majors; the claims decide, so the page is not held"
+  ],
+  "hold": null,
+  "counts": {
+    "claims": 62,
+    "confirmed": 60,
+    "unconfirmed": 1,
+    "contradicted": 1,
+    "blocker": 0,
+    "major": 1,
+    "minor": 2
+  },
+  "summary": "The briefing is held because its impact rationale says the Learn page does not mention end users, although that page describes user-facing restart actions. The rollout, unchanged notification default and access paths are supported; the rationale needs to distinguish security update alerts from the dashboard's separate update actions.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; front matter: products, roadmapId",
+      "type": "record",
+      "claim": "Roadmap item 558435 concerns Microsoft Edge security update alerts in the Edge management service.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"id\": 558435; \"title\": \"Microsoft Edge: Security Update Alerts in the Edge management service\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing; Why it matters; Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Administrators can configure a minimum severity threshold, and new Edge updates generate alerts when their security fixes meet or exceed it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service-monitoring-dashboard",
+      "quote": "You can configure a minimum severity threshold for security update alerts. Alerts are generated when a newly released Microsoft Edge update includes security fixes that meet or exceed the configured severity level, including zero-day vulnerability fixes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "The security fixes covered by the alerts include zero-day vulnerability fixes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service-monitoring-dashboard",
+      "quote": "Alerts are generated when a newly released Microsoft Edge update includes security fixes that meet or exceed the configured severity level, including zero-day vulnerability fixes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing: first paragraph",
+      "type": "record",
+      "claim": "The roadmap describes the aim as identifying updates needing attention while avoiding unnecessary notifications for routine releases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This helps organizations quickly identify updates that may require attention, while avoiding unnecessary notifications for routine releases.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: status; What's changing; changes",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The General Availability target is October CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"October CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is April CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"April CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: releasePhase; Scope",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview as release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: clouds; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Web as the platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-10-13T23:01:05.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-13T23:01:05\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "summary; What's changing; Why it matters; rationale: risk",
+      "type": "record",
+      "claim": "The existing experience notifying administrators of all new Edge updates remains by default.",
+      "status": "supported",
+      "source": "Message Center post MC1458480",
+      "quote": "By default, the existing experience that notifies admins of all new Edge updates will remain.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "summary",
+      "type": "record",
+      "claim": "No administrator action is required before the automatic rollout.",
+      "status": "supported",
+      "source": "Message Center post MC1458480",
+      "quote": "This rollout will happen automatically by the specified date with no admin action required before the rollout.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing: third paragraph",
+      "type": "record",
+      "claim": "Microsoft's notice says no action will be taken on behalf of the administrator.",
+      "status": "supported",
+      "source": "Message Center post MC1458480",
+      "quote": "No action will be taken on behalf of the administrator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "MC1458480 says rollout begins mid-October 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1458480",
+      "quote": "General Availability (Worldwide): We will begin rolling out mid-October 2026 (previously mid-September)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing: third paragraph",
+      "type": "record",
+      "claim": "The previously announced rollout start was mid-September.",
+      "status": "supported",
+      "source": "Message Center post MC1458480",
+      "quote": "We will begin rolling out mid-October 2026 (previously mid-September)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "MC1458480 expects rollout to complete by end of October 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1458480",
+      "quote": "expect to complete by end of October 2026 (previously end of September).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing: third paragraph",
+      "type": "record",
+      "claim": "The previously announced rollout completion was end of September.",
+      "status": "supported",
+      "source": "Message Center post MC1458480",
+      "quote": "expect to complete by end of October 2026 (previously end of September).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "front matter: defaultState; Governance guidance: Before rollout",
+      "type": "default",
+      "claim": "The new threshold control is admin-opt-in: notifications remain unchanged unless an administrator chooses to restrict them.",
+      "status": "supported",
+      "source": "Message Center post MC1458480",
+      "quote": "By default, the existing experience that notifies admins of all new Edge updates will remain. Admins can now choose to specify when they would like to receive new update notifications.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "summary; What's changing; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Security update alerts appear in the monitoring dashboard.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service-monitoring-dashboard",
+      "quote": "When a new security update becomes available, an alert is displayed in the monitoring dashboard",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing: alert contents",
+      "type": "behaviour",
+      "claim": "An alert shows the Edge version containing the security update.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service-monitoring-dashboard",
+      "quote": "Edge version released - The Microsoft Edge version containing the security update and the date the update was released.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing: alert contents",
+      "type": "behaviour",
+      "claim": "An alert shows the update release date.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service-monitoring-dashboard",
+      "quote": "Edge version released - The Microsoft Edge version containing the security update and the date the update was released.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing: alert contents",
+      "type": "behaviour",
+      "claim": "An alert shows the highest security severity among vulnerabilities addressed in the release.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service-monitoring-dashboard",
+      "quote": "Severity level - The highest security severity associated with vulnerabilities addressed in the release.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing: alert contents",
+      "type": "behaviour",
+      "claim": "An alert shows the Common Vulnerabilities and Exposures addressed by the release.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service-monitoring-dashboard",
+      "quote": "CVEs addressed - The Common Vulnerabilities and Exposures (CVEs) addressed by the release, helping you understand the security issues resolved by the update.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "An alert shows the number of affected managed devices by Edge channel.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service-monitoring-dashboard",
+      "quote": "Affected devices by channel - The number of managed devices in each Microsoft Edge channel that may require updating.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing: alert contents",
+      "type": "behaviour",
+      "claim": "An alert shows the latest available version by channel, including Stable, Extended Stable, Beta, Dev and Canary.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service-monitoring-dashboard",
+      "quote": "Latest available version by channel - The current version available for each Microsoft Edge channel, including Stable, Extended Stable, Beta, Dev, and Canary.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "From an alert, an administrator can review update details and take action to help bring managed devices to the latest secure Edge version.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service-monitoring-dashboard",
+      "quote": "From the alert, you can review the update details, understand which CVEs were addressed, identify affected devices across channels, and take action to help ensure managed devices are running the latest secure version of Microsoft Edge.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; Risk assessment: Change & support; Scope",
+      "type": "availability",
+      "claim": "Monitoring data is currently available only for Windows devices, not macOS, iOS or Android devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service-monitoring-dashboard",
+      "quote": "Monitoring data is currently only available for Windows devices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[0]; What's changing; Governance guidance; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft documents a configurable threshold but publishes neither its precise admin UI path nor an API or policy for configuring it.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Edge management service security update alerts severity threshold settings API; Edge security update alerts severity policy; Microsoft Graph Edge management service minimum severity threshold. Read Monitoring dashboard, service guide and Edge API overview; no path or call found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing; Risk assessment: Security & identity; Open questions",
+      "type": "absence",
+      "claim": "The available severity levels for this threshold are not listed in Microsoft Learn.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Edge management service security update alerts severity threshold; Edge security update alerts severity policy. Read Monitoring dashboard and relevant Edge release-note excerpts; neither enumerates selectable threshold levels.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[1].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "Access the Edge management service in Microsoft 365 admin center at Settings > Microsoft Edge.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service",
+      "quote": "Go to the Microsoft 365 admin center and sign in. ... In the main left navigation bar, go to Settings > Microsoft Edge.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[1].api",
+      "type": "absence",
+      "claim": "No API equivalent of opening the Edge management service admin-centre experience is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Edge management service access API; Microsoft Graph Edge management service access API. Read Get started with configuration policies and Edge API overview; Graph documentation returned IE-mode site-list management, not an equivalent of accessing this admin-centre experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[0].note; controls[1].note; Risk assessment; Scope; Governance guidance; Governance controls",
+      "type": "role",
+      "claim": "Access to the Edge management service requires the Microsoft Edge Administrator role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service",
+      "quote": "You must be a Microsoft Edge Administrator to access the experience in Microsoft 365 Admin Center",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[1].note; Risk assessment; Governance guidance",
+      "type": "role",
+      "claim": "GDAP roles are currently not fully supported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service",
+      "quote": "Note: GDAP roles are currently not fully supported",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Cost and licensing; Scope",
+      "type": "behaviour",
+      "claim": "The service prerequisites require Microsoft Edge 115.0.1901.7 or greater.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service",
+      "quote": "You must have Microsoft Edge 115.0.1901.7 or greater installed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing; Scope",
+      "type": "availability",
+      "claim": "The service requires a supported operating system, listed as Windows, macOS, iOS or Android.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service",
+      "quote": "You must be using one of the following supported operating systems: Windows, macOS, iOS, or Android. See Microsoft Edge Supported Operating Systems for specifics.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "The Edge management service is currently unavailable to customers with GCC plans.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service",
+      "quote": "The Microsoft Edge management service is currently not available to customers with GCC plans.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Data exposure; Governance controls",
+      "type": "applicability",
+      "claim": "Enable version monitoring must be turned on to view device insights on the monitoring dashboard and receive the necessary diagnostic data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service-monitoring-dashboard",
+      "quote": "To view device insights on this page, you must first turn on the toggle to Enable version monitoring. This is a mandatory step to ensure that Microsoft Edge receives the necessary diagnostic data",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "One version-monitoring option sends optional diagnostic data without page URL and per-page usage data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service-monitoring-dashboard",
+      "quote": "Send optional diagnostic data without URL data: ... It also disables the UrlDiagnosticDataEnabled policy to not send data about page URLs and per-page usage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The other version-monitoring option sends optional diagnostic data including page URL and per-page usage data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service-monitoring-dashboard",
+      "quote": "Send optional diagnostic data with URL data: ... It also enables the UrlDiagnosticDataEnabled policy to send data about page URLs and per-page usage",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "Learn does not separately specify whether generating security update alerts themselves requires Enable version monitoring.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Edge management service security update alerts Enable version monitoring. Read the full Monitoring dashboard page: the toggle is mandatory for device insights; Security update alerts does not separately state a prerequisite for generating the release alert itself.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Device update information is deleted from the Edge management service after the device has not sent data for 30 days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service-monitoring-dashboard",
+      "quote": "If a device has not sent data for 30 days, then the update information for that device will be deleted from the Edge management service.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The monitoring page documents Force auto restart when device is idle as an administrator-selected update action.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service-monitoring-dashboard",
+      "quote": "For devices that are out of date, you can choose one of the following actions ... Force auto restart when device is idle: This action automatically restarts the users' browsers to apply the latest update when their device is detected as idle.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Force auto restart when device is idle can cause loss of content input.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service-monitoring-dashboard",
+      "quote": "Force auto restart when device is idle: ... Note: This may cause loss of content input.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Recommend restart is another documented update action on the monitoring page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service-monitoring-dashboard",
+      "quote": "Recommend restart: This action sends a notification to the user to restart their browser to apply the latest update.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Why it matters; Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "The sources do not document an alert automatically updating devices or triggering either restart action.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Edge security update alerts monitoring automatically email. Read Monitoring dashboard, including Edge update status and Security update alerts, plus MC1458480. Actions are described as administrator choices, not automatic consequences of generating an alert.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Change & support; Open questions",
+      "type": "absence",
+      "claim": "Learn does not document email, another delivery channel, or recipient selection for these security update alerts.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Edge management service security update alerts email notifications recipients; security update alerts monitoring automatically email. Read Monitoring dashboard and Edge release-note excerpts; email results concerned extension requests or other products, not these alerts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "A licence requirement for security update alerts is not published, so the licensing model is unknown.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Edge management service security update alerts licensing pricing billing meter license monitoring dashboard; Edge management service license monitoring. Read Monitoring dashboard and Get started with configuration policies; no alerts licence requirement found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "Microsoft Learn does not state a charge for security update alerts.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Edge management service security update alerts licensing pricing billing meter license monitoring dashboard. Read Monitoring dashboard and Get started with configuration policies; neither states an alerts charge, and search returned no relevant billing rule.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "The monitoring dashboard page names no licence requirement for security update alerts.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Edge management service security update alerts licensing pricing billing meter license monitoring dashboard. Read the entire Monitoring dashboard page, including Enabling version monitoring and Security update alerts; it states no alerts licence requirement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The service prerequisite list names an Edge version, the Microsoft Edge Administrator role and supported operating systems, but no service licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service",
+      "quote": "You must have Microsoft Edge 115.0.1901.7 or greater installed. ... You must be a Microsoft Edge Administrator ... You must be using one of the following supported operating systems: Windows, macOS, iOS, or Android.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Creating an Intune-type configuration policy, a distinct operation from alert configuration, requires an Intune licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service",
+      "quote": "Choose whether you would like to create an Intune type policy or Cloud (you must have an Intune license to be able to create an Intune policy).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No meter is documented for security update alerts at the time of writing in November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Edge management service security update alerts licensing pricing billing meter license monitoring dashboard. Read Monitoring dashboard and Get started with configuration policies; found no alerts meter or platform billing rule covering these alerts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[2].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "The Windows Group Policy setting is Administrative Templates > Microsoft Edge > Manageability > Microsoft Edge management enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgemanagementenabled",
+      "quote": "GP name: Microsoft Edge management enabled; GP path (Mandatory): Administrative Templates/Microsoft Edge/Manageability",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[2].api",
+      "type": "command",
+      "claim": "Setting EdgeManagementEnabled to 0 or disabled stops browsers checking in with the Edge management service.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service",
+      "quote": "To disable the checking in with the Edge management service you can set the EdgeManagementEnabled policy to 0 or disabled.",
+      "severity": "minor",
+      "fix": "Remove controls[2] and its rendered table row, retaining the supported EdgeManagementEnabled explanation already in the Governance controls prose. The policy instruction is true, but it is not a runnable API or automation call as the table and standard require; do not replace it with a false undocumented-automation claim."
+    },
+    {
+      "n": 56,
+      "where": "controls[2].governs; Governance controls",
+      "type": "behaviour",
+      "claim": "EdgeManagementEnabled controls browser connections to the management service to download and apply assigned policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgemanagementenabled",
+      "quote": "If you enable or don't configure this policy, Microsoft Edge attempts to connect to the Microsoft Edge management service to download and apply policy assigned to the Azure AD account of the user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[2].note; Governance controls",
+      "type": "availability",
+      "claim": "EdgeManagementEnabled is supported on Windows, while its policy page lists macOS, Android and iOS as not supported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgemanagementenabled",
+      "quote": "Windows: ≥ 115; macOS: Not supported; Android: Not supported; iOS: Not supported",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[2].note; Governance controls",
+      "type": "absence",
+      "claim": "Microsoft has not confirmed whether EdgeManagementEnabled governs monitoring data or security update alerts.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: EdgeManagementEnabled monitoring alerts; Microsoft Graph Edge management service access API security update alerts EdgeManagementEnabled monitoring. Read EdgeManagementEnabled, Monitoring dashboard and service guide; none connects this policy to alert generation or monitoring collection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Microsoft Learn does not state a user licence requirement for a device to be counted in monitoring.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Edge management service license monitoring; Microsoft Edge management service security update alerts licensing pricing billing meter license monitoring dashboard. Read Monitoring dashboard and the service prerequisites; no user licence requirement for device counting found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Why it matters: first sentence",
+      "type": "behaviour",
+      "claim": "Edge handles untrusted content on every managed device.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Microsoft Edge browser untrusted web content installed every managed device security updates risk. Read Monitoring dashboard and Microsoft Edge security for your business excerpts; neither establishes that Edge handles content on every managed device.",
+      "severity": "major",
+      "fix": "Replace the first sentence with: 'Browser sessions without the latest security updates might be at risk.' This is stated on the already-cited Monitoring dashboard page."
+    },
+    {
+      "n": 61,
+      "where": "rationale: impact",
+      "type": "behaviour",
+      "claim": "The alerts described in the briefing are presented to administrators using the Edge management service.",
+      "status": "supported",
+      "source": "Message Center post MC1458480",
+      "quote": "Administrators can now choose a severity threshold and receive alerts when a new Edge update includes security fixes that meet or exceed that threshold, including zero-day fixes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "rationale: impact",
+      "type": "absence",
+      "claim": "End users are not mentioned in the roadmap item, the Message Center post or the Learn page.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service-monitoring-dashboard",
+      "quote": "Recommend restart: This action sends a notification to the user to restart their browser to apply the latest update. No action will be taken on their behalf, and users may choose whether to act upon the notification.",
+      "severity": "minor",
+      "fix": "Replace the impact rationale with: 'Low. Microsoft describes security update alerts as an administrator capability displayed in the monitoring dashboard.' The Learn page does mention end users for separate restart actions; this does not establish that alerts automatically trigger those actions."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-17T14:05:52.969Z",
+    "summary": {
+      "links": 5,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=558435",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service-monitoring-dashboard",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgemanagementenabled",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1458480",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Access to the Edge management service in the admin centre",
+        "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Microsoft Edge"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Whether browsers check in with the Edge management service",
+        "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgemanagementenabled",
+        "reachable": true,
+        "segments": [
+          "Administrative Templates",
+          "Microsoft Edge",
+          "Manageability",
+          "Microsoft Edge management enabled"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Whether browsers check in with the Edge management service",
+        "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service",
+        "reachable": true,
+        "token": "Set the",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": [
+    {
+      "date": "2026-11-17",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
+}

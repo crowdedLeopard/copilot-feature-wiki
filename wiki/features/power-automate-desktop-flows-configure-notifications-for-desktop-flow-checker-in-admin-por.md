@@ -13,12 +13,12 @@ targetDate: "July CY2026"
 previewDate: null
 risk: "low"
 cost: "low"
-impact: "low"
+impact: "medium"
 defaultState: "unknown"
 action: "review"
 licensing:
   model: "unknown"
-  notes: "Not yet published for this feature. The Flow checker page lists availability only in Managed Environments under known limitations and names no licence or meter."
+  notes: "The documented rule configuration requires Managed Environments, and the published Managed Environments licensing requirements apply to it. Notification-specific licensing is not yet published."
 audiences: ["power-platform-admin","service-owner","maker"]
 tags: ["power-automate","desktop-flows","managed-environments","quality-assurance","governance","monitoring","power-platform-admin-center"]
 sources:
@@ -27,6 +27,9 @@ sources:
     kind: "learn"
   - title: "Solution checker enforcement in managed environments"
     url: "https://learn.microsoft.com/power-platform/admin/managed-environment-solution-checker"
+    kind: "learn"
+  - title: "Licensing requirements for managed environments"
+    url: "https://learn.microsoft.com/power-platform/admin/managed-environment-licensing"
     kind: "learn"
   - title: "Analysis Override (msdyn_analysisoverride) table/entity reference (Microsoft Dataverse)"
     url: "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/msdyn_analysisoverride"
@@ -73,19 +76,23 @@ changes:
     note: "New briefing: the roadmap lists Flow checker notifications as launched, while Learn documents rule configuration and no notification settings."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 58 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-17"
+    note: "Corrected after verification: licensing now cites the Managed Environments requirements, impact raised to medium, an unsupported severity claim and a privilege-assignment checklist step removed."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 60 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-17"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 58
-  confirmed: 54
-  unconfirmed: 1
-  contradicted: 3
-  attempts: 1
-  hash: "29142b517e62e0b3267f1e44d40da1e6"
+  claims: 60
+  confirmed: 60
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "62f12c7cd02d9e91017a3d093185b8bb"
 ---
 
 ## What's changing
@@ -111,7 +118,7 @@ If nobody acts, Microsoft has not stated what happens: the sources do not say wh
 
 **Security & identity**
 - Access is governed by Dataverse privileges. The Learn page tells Power Platform administrators to assign Analysis Override privileges to roles that need the feature: Read to view the configuration, Write to modify severity, parameter values and rule enablement, and Create to create new rule overrides. A role with Write can change what every maker in the environment is told about their flows.
-- One of the rules shipped on the page, "Unsafe password security", is a security rule with Warning as its listed severity. Disabling it or lowering its severity in an environment removes that signal for every desktop flow there.
+- One of the rules shipped on the page, "Unsafe password security", is a security rule with Warning as its listed severity. Disabling it in an environment removes that signal for every desktop flow there.
 
 **Autonomy & actions**
 - No change documented: Learn describes the analysis as reporting violations, and it documents no step where the checker edits or stops a flow. The Learn page does not say whether a violation can block a flow from running.
@@ -123,7 +130,7 @@ If nobody acts, Microsoft has not stated what happens: the sources do not say wh
 
 ## Cost and licensing
 
-Microsoft Learn names no licence and no meter for the Flow checker configuration, and none for notifications. Under known limitations the Flow checker page states: "Available only in Managed Environments." The wiki's page on [Managed Environments](/concepts/managed-environments/) covers that tier and its licensing condition; the Flow checker page does not restate it.
+The documented rule configuration requires Managed Environments. Microsoft publishes licensing requirements for that tier: all active usage requires a qualifying standalone licence or meter. Notification-specific licensing or charges are not yet published. Under known limitations the Flow checker page states: "Available only in Managed Environments." The wiki's page on [Managed Environments](/concepts/managed-environments/) covers that tier and its licensing condition; the Flow checker page does not restate it.
 
 The cost this briefing can support is admin time: deciding which rules to enable, which severity each gets and which parameter values to use, then telling makers. Pricing or a separate licence for notifications is not yet published.
 
@@ -141,7 +148,6 @@ The cost this briefing can support is admin time: deciding which rules to enable
 
 ### Before rollout
 - Confirm that the environments you care about are Managed Environments, as the Flow checker page lists that as a limitation.
-- Decide which roles may read, change or create Analysis Override records, and assign the matching privileges (read, write, create) to those roles only.
 - Record the current rule settings in the **Flow checker configuration** pane, including severity and parameter values, so you can compare after any change.
 - Check whether Solution checker enforcement is set for the environment in the Power Platform admin center, because it takes precedence and locks rules in the portal.
 
@@ -181,16 +187,13 @@ The Dataverse row is included because the Flow checker page names Analysis Overr
 
 <!-- rationale
 risk: Low. The Flow checker analyses desktop flows against rules and reports violations; Learn describes no step that changes a flow or its data, and the configuration is an admin choice per environment.
-cost: Low. The only cost the sources show is admin time to set rules; Learn lists Managed Environments as a limitation and names no meter, and licensing for this feature is not yet published.
-impact: Low. Admins and makers who use desktop flows notice it: makers see violations in the designer, and admins set rules for an environment.
+cost: Low. Admin time is the known incremental cost for environments already entitled to Managed Environments; notification-specific charges are not yet published.
+impact: Medium. Desktop-flow makers see violations in the designer, and admins set rules for an environment.
 -->
 
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Risk assessment: Security & identity / behaviour: Lowering the severity of Unsafe password security removes its signal for every desktop flow in the environment. | Found: Searched: "desktop" "Flow checker" "Unsafe password security" "severity" "disable"; opened Flow checker. It distinguishes enabling/disabling a rule from changing its severity and does not say that lowering severity removes its diagnostic. | Fix: Remove 'or lowering its severity' from 'Disabling it or lowering its severity in an environment removes that signal for every desktop flow there.'
-- [contradicted, blocker] Cost and licensing: first sentence; front matter: licensing.notes; rationale: cost / licensing: Microsoft Learn names no licence for Flow checker rule configuration, leaving admin time as the only known cost. | Found: When you activate managed environments in an environment, all active usage requires one of these standalone licenses or pay-as-you-go meters. | Fix: Replace the broad no-licence assertion with: 'The documented rule configuration requires Managed Environments. Microsoft publishes licensing requirements for that tier: all active usage requires a qualifying standalone licence or meter. Notification-specific licensing or charges are not yet published.' Cite https://learn.microsoft.com/power-platform/admin/managed-environment-licensing. In licensing.notes retain unknown only for notification-specific licensing and state that the published Managed Environments requirements apply to the documented controls. Narrow the cost rationale to: 'Low. Admin time is the known incremental cost for environments already entitled to Managed Environments; notification-specific charges are not yet published.' | Source: https://learn.microsoft.com/power-platform/admin/managed-environment-licensing
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] front matter: impact; rationale: impact / consistency: Impact is low although the rationale identifies desktop-flow makers as an affected role rather than an admin-only or small opt-in audience. | Found: impact: "low" Low. Admins and makers who use desktop flows notice it: makers see violations in the designer, and admins set rules for an environment. | Fix: Set impact to medium and change the impact rationale to: 'Medium. Desktop-flow makers see violations in the designer, and admins set rules for an environment.' The scale assigns medium to specific roles such as makers.
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist directs administrators to assign Analysis Override privileges, but no controls row governs role privilege assignment. | Found: assign the matching privileges (read, write, create) to those roles only. Flow checker rule enablement Solution checker enforcement and rule exclusions Flow checker notification types, thresholds, recurrence and scope | Fix: The 'Before rollout' privilege-assignment step has no corresponding controls row. Remove that checklist bullet; retain the verified privilege requirements in Security & identity and Scope.
+- [supported, minor] Risk assessment: Security & identity / behaviour: The Flow checker page lists Warning as the severity of Unsafe password security. | Found: Unsafe password security - Severity: Warning | Fix: After the sentence add: 'The solution checker rule list instead labels desktopflow-avoid-unsafe-password as High severity.' Cite https://learn.microsoft.com/power-apps/maker/data-platform/use-powerapps-checker#best-practice-rules-used-by-solution-checker, whose desktop-flow row lists that rule as High. | Source: https://learn.microsoft.com/power-automate/desktop-flows/static-analysis
+- [supported, minor] Scope: Prerequisite, final sentence / absence: The roadmap's notification-specific thresholds, recurrence and scope are not described by Learn as notification controls. | Found: Searched: Flow checker notification thresholds; Flow checker notification recurrence. Read static-analysis: rule thresholds and environment scope are documented, but notification thresholds, recurrence and scope are not. | Fix: Replace 'the roadmap’s thresholds, recurrence and scope are described only on the roadmap' with 'Learn documents rule thresholds and environment scope, but not notification-specific thresholds, recurrence or scope.' This keeps the notification qualification explicit and avoids implying that rule thresholds are undocumented.
 -->

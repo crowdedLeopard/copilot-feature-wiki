@@ -4,8 +4,8 @@ title: "Agent identity: whose permissions does an agent use?"
 slug: "agent-identity"
 summary: "The identity patterns an agent can run under (end user, maker, service identity, Entra agent identity), what each exposes, and the Power Platform and Microsoft Entra controls that steer makers toward the right one."
 created: "2026-11-13"
-updated: "2026-11-16"
-version: 3
+updated: "2026-11-17"
+version: 4
 tags: ["agent-identity","entra-agent-id","end-user-authentication","maker-credentials","service-principal","least-privilege","auditing"]
 covers: ["entra-agent-id","end-user-authentication","maker-credentials"]
 sources:
@@ -36,7 +36,7 @@ sources:
   - title: "Use Power Platform connectors as tools in Copilot Studio agents"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/advanced-connectors"
     kind: "learn"
-  - title: "Agent identities in Microsoft Entra Agent ID"
+  - title: "Overview of agent identities in Microsoft Entra"
     url: "https://learn.microsoft.com/entra/agent-id/agent-identities"
     kind: "learn"
   - title: "Manage agent identities in your organization"
@@ -123,9 +123,9 @@ controls:
       kind: "graph"
       call: "GET https://graph.microsoft.com/beta/auditLogs/signIns?$filter=signInEventTypes/any(t: t eq 'servicePrincipal') and agent/agentType eq 'AgentIdentity'"
       docs: "https://learn.microsoft.com/entra/agent-id/sign-in-audit-logs-agents"
-    note: "At least Reports Reader. Filter by Agent type or Is Agent."
+    note: "At least Reports Reader. Filter by Agent type or Is Agent. This Graph query returns only service-principal sign-in events for agent identities, not every agent-related sign-in type."
 confidence: "medium"
-dependents: 3
+dependents: 14
 changes:
   - date: "2026-11-16"
     note: "Taken offline until a corrected version passes its check: a failed check no longer keeps a page online with a notice."
@@ -137,18 +137,24 @@ changes:
     note: "Corrected after the independent check: directory quota qualified for self-service tenants, agent identity owners added to the management roles, a Graph example added for Conditional Access, and the runtime-check wording fixed."
   - date: "2026-11-16"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 93 statements not yet confirmed"
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 93 statements contradicted, 0 unconfirmed; taken offline until corrected"
+  - date: "2026-11-17"
+    note: "Corrected how an Entra agent identity's credentials and tokens work (credentials sit on the blueprint), and noted that the sign-in query returns only service-principal events."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 96 statements not yet confirmed"
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-16"
-  version: 3
+  date: "2026-11-17"
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 93
-  confirmed: 93
+  claims: 96
+  confirmed: 96
   unconfirmed: 0
   contradicted: 0
   attempts: 0
-  hash: "167eb6ab9906c2275932542ad9c5635a"
+  hash: "40662cc04131cf983a6aa9dacfd2d069"
 ---
 
 ## What it is
@@ -166,7 +172,7 @@ The credentials setting sits on each connector tool, so check every tool rather 
 
 ### Entra agent identity
 
-An agent identity is a special service principal in Microsoft Entra ID. It has no credentials of its own; its blueprint acquires tokens on its behalf. Copilot Studio provisions Entra Agent IDs for new agents automatically, while agents created before May 2026 continue to use traditional app registrations. No one in your tenant, including tenant administrators, can generate tokens by using a Copilot Studio agent identity.
+An agent identity is a special service principal in Microsoft Entra ID. Credentials are configured on its blueprint, not on the agent identity. In multi-instance mode, the blueprint impersonates its child agent identities; in single-instance mode, the Agent ID requests tokens directly. Copilot Studio provisions Entra Agent IDs for new agents automatically, while agents created before May 2026 continue to use traditional app registrations. No one in your tenant, including tenant administrators, can generate tokens by using a Copilot Studio agent identity.
 
 An agent identity and an agent's user account are different objects. The user account is optional, has its own id and is linked one-to-one to the identity, for systems that require a Microsoft Entra user account. Dataverse can hold these as agent users (preview): an administrator adds the agent to an environment and assigns it a security role.
 
@@ -216,15 +222,13 @@ Usage billing for agents is covered in [Copilot Credits](/concepts/copilot-credi
 <tr><td data-label="Control"><strong>Dataverse access for an agent user linked to an Entra agent identity</strong><br><small>Environment</small><br><small class="controls__note">Preview. Choose the agent user, then select a security role for it.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Users + permissions › Agents › + Add agent <a href="https://learn.microsoft.com/power-platform/admin/create-users" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Viewing, disabling and updating individual agent identities</strong><br><small>Agent</small><br><small class="controls__note">Agent ID Administrator or Cloud Application Administrator; agent identity owners can manage their own agents without these roles. The API page lists AgentIdentity.EnableDisable.All as the least-privileged permission.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Entra ID › Agents › Agent identities <a href="https://learn.microsoft.com/entra/agent-id/manage-agent-identities-admin" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH https://graph.microsoft.com/v1.0/servicePrincipals/{id}/microsoft.graph.agentIdentity</code> <a href="https://learn.microsoft.com/graph/api/agentidentity-update?view=graph-rest-1.0" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Conditional Access for agent identities and agent users</strong><br><small>Tenant</small><br><small class="controls__note">Needs licences listed under Cost. Copilot Studio enforcement for connector calls currently applies only in Microsoft Teams. The documented Graph example is report-only and targets agent identities.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Assignments › Users, agents, or workload identities › Agents <a href="https://learn.microsoft.com/entra/identity/conditional-access/agent-id" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/identity/conditionalAccess/policies with a policy JSON body; the documented example blocks all agent identities in report-only state</code> <a href="https://learn.microsoft.com/entra/agent-id/disable-agent-identities" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Sign-in records for agent identities</strong><br><small>Tenant</small><br><small class="controls__note">At least Reports Reader. Filter by Agent type or Is Agent.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Entra ID › Monitoring &amp; health › Sign-in logs <a href="https://learn.microsoft.com/entra/agent-id/sign-in-audit-logs-agents" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>GET https://graph.microsoft.com/beta/auditLogs/signIns?$filter=signInEventTypes/any(t: t eq 'servicePrincipal') and agent/agentType eq 'AgentIdentity'</code> <a href="https://learn.microsoft.com/entra/agent-id/sign-in-audit-logs-agents" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Sign-in records for agent identities</strong><br><small>Tenant</small><br><small class="controls__note">At least Reports Reader. Filter by Agent type or Is Agent. This Graph query returns only service-principal sign-in events for agent identities, not every agent-related sign-in type.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Entra ID › Monitoring &amp; health › Sign-in logs <a href="https://learn.microsoft.com/entra/agent-id/sign-in-audit-logs-agents" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>GET https://graph.microsoft.com/beta/auditLogs/signIns?$filter=signInEventTypes/any(t: t eq 'servicePrincipal') and agent/agentType eq 'AgentIdentity'</code> <a href="https://learn.microsoft.com/entra/agent-id/sign-in-audit-logs-agents" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
 Environment Admin can configure the maker-credential option for a single environment; Power Platform Administrator or Global Admin is needed for environment groups, and the group's settings override any environment setting. In Entra, managing agent identities needs Agent ID Administrator or Cloud Application Administrator, although agent identity owners can manage their own agents without these roles. Conditional Access policies need Conditional Access Administrator, and sign-in logs need at least Reports Reader.
 
 The embedded-credentials setting is documented on two Learn pages with different paths (one under Security > Threat detection, one under the environment's Features); the row follows the configuration page. The security scan has no setting: it warns makers automatically.
-
-The embedded-credentials sharing control acts at share and publish time, but enforcing end-user credentials changes authentication requirements at runtime for all tools in affected environments.
 
 ## What to check
 
@@ -242,8 +246,8 @@ The embedded-credentials sharing control acts at share and publish time, but enf
 - Will the embedded-maker-credentials control leave preview, and will dependency-based enforcement change which agents are blocked?
 - Does Microsoft document an API for the Copilot Studio maker-credential option or for adding Dataverse agent users? None was found at the time of writing (November 2026).
 
-<!-- verifier-findings (2026-11-16, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Cost and licensing: Conditional Access / licensing: The alternative licence requirement is Microsoft Agent 365 paired with at least Microsoft Entra P1 or Microsoft 365 E3. | Found: **Microsoft Agent 365** license paired with at least Microsoft Entra P1 or Microsoft 365 E3. | Fix: After the Conditional Access licence bullet, add: "Microsoft's agent-management and disable-agent guides instead state Microsoft Entra ID P1 for configuring these policies; those pages do not repeat the Agent 365 requirement (https://learn.microsoft.com/entra/agent-id/manage-agent-identities-admin and https://learn.microsoft.com/entra/agent-id/disable-agent-identities)." Keep the dedicated Conditional Access page's stated requirement. | Source: https://learn.microsoft.com/entra/identity/conditional-access/agent-id
+- [supported, minor] Cost and licensing: Conditional Access / licensing: Microsoft 365 E7 is one qualifying licence plan for Conditional Access for agents. | Found: Microsoft Entra ID Conditional Access for agents requires one of the following license plans: ... Microsoft 365 E7, which includes Agent 365 and Microsoft Entra Suite. | Fix: After the Conditional Access licensing bullet, add: "Microsoft's agent-management and disable-agent-identities pages instead state that Conditional Access requires Entra ID P1; this differs from the dedicated Conditional Access for agents licensing section." Cite https://learn.microsoft.com/entra/agent-id/manage-agent-identities-admin and https://learn.microsoft.com/entra/agent-id/disable-agent-identities, both already in sources. | Source: https://learn.microsoft.com/entra/identity/conditional-access/agent-id
 -->

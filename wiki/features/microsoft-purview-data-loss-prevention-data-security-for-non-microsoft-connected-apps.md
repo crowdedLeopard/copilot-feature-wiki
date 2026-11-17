@@ -61,6 +61,9 @@ sources:
   - title: "New-DlpCompliancePolicy"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy?view=exchange-ps"
     kind: "learn"
+  - title: "New-AutoSensitivityLabelPolicy"
+    url: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-autosensitivitylabelpolicy?view=exchange-ps"
+    kind: "learn"
 videos: []
 related: ["purview-dlp-block-sensitive-data-in-copilot-web-search"]
 controls:
@@ -76,10 +79,10 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Solutions > Information protection > Policies > Auto-labeling policies > + Create auto-labeling policy > Automatically apply labels only > Custom > Custom policy > Choose a label > Add > Full directory > Choose locations"
+      path: "Solutions > Information protection > Policies > Auto-labeling policies > + Create auto-labeling policy > Automatically apply labels only > Custom > Custom policy > Choose a label to auto-apply > Choose a label"
       docs: "https://learn.microsoft.com/purview/information-protection-non-microsoft-connected-apps"
     api: null
-    note: "Preview page. Box and Google Workspace only. Labels must be published first."
+    note: "Path continues: Choose a sensitivity label > Add > Assign admin units > Full directory > Choose locations where you want to apply the label. Preview page. Box and Google Workspace only. Labels must be published first."
   - governs: "Defender for Cloud Apps app connectors that Purview relies on"
     scope: "tenant"
     ui:
@@ -87,7 +90,7 @@ controls:
       path: "Settings > Cloud Apps > Connected Apps > App Connectors > + Connect an app"
       docs: "https://learn.microsoft.com/defender-cloud-apps/get-started"
     api: null
-    note: "Prerequisite for any policy on these apps. Each app has its own connector guide."
+    note: "Prerequisite for any policy on these apps. Each app has its own connector guide. The connector overview also gives Cloud Apps > Connected apps > Connect an app or Add a new connector."
   - governs: "Defender for Cloud Apps file policies that overlap the Purview policies"
     scope: "tenant"
     ui:
@@ -120,19 +123,23 @@ changes:
     note: "Correction: removed the claim that people get no in-app warning; replaced the no-budget-control statement with Azure Cost Management budgets and alerts; completed the DLP, auto-labeling and Instances paths; noted the sequencing conflict on file policies; dropped the Activity explorer checklist step."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 88 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-17"
+    note: "Correction: replaced the auto-labeling path with the full wizard path from the Learn page, and added the alternative connector route to the connectors row note."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 99 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-17"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 88
-  confirmed: 87
+  claims: 99
+  confirmed: 98
   unconfirmed: 0
   contradicted: 1
-  attempts: 2
-  hash: "b64ca5855a65489625f42719cb85563c"
+  attempts: 0
+  hash: "4d666d878cc95d75555f7d1b0e97e9dd"
 ---
 
 ## What's changing
@@ -220,8 +227,8 @@ Nothing in the sources says existing behaviour changes for tenants that create n
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>DLP policy for non-Microsoft connected apps</strong><br><small>Tenant</small><br><small class="controls__note">Preview page. Custom template and advanced rules only; no simulation mode. Role groups listed under Scope.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Data Loss Prevention › Policies › + Create policy › Enterprise applications &amp; devices › Custom › Custom policy › Assign admin units › Full directory › Choose where to apply the policy <a href="https://learn.microsoft.com/purview/dlp-non-microsoft-connected-applications" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Auto-labeling policy for non-Microsoft connected apps</strong><br><small>Tenant</small><br><small class="controls__note">Preview page. Box and Google Workspace only. Labels must be published first.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Information protection › Policies › Auto-labeling policies › + Create auto-labeling policy › Automatically apply labels only › Custom › Custom policy › Choose a label › Add › Full directory › Choose locations <a href="https://learn.microsoft.com/purview/information-protection-non-microsoft-connected-apps" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Defender for Cloud Apps app connectors that Purview relies on</strong><br><small>Tenant</small><br><small class="controls__note">Prerequisite for any policy on these apps. Each app has its own connector guide.</small></td><td data-label="Admin UI"><strong>Microsoft Defender portal</strong><br>Settings › Cloud Apps › Connected Apps › App Connectors › + Connect an app <a href="https://learn.microsoft.com/defender-cloud-apps/get-started" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Auto-labeling policy for non-Microsoft connected apps</strong><br><small>Tenant</small><br><small class="controls__note">Path continues: Choose a sensitivity label &gt; Add &gt; Assign admin units &gt; Full directory &gt; Choose locations where you want to apply the label. Preview page. Box and Google Workspace only. Labels must be published first.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Information protection › Policies › Auto-labeling policies › + Create auto-labeling policy › Automatically apply labels only › Custom › Custom policy › Choose a label to auto-apply › Choose a label <a href="https://learn.microsoft.com/purview/information-protection-non-microsoft-connected-apps" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Defender for Cloud Apps app connectors that Purview relies on</strong><br><small>Tenant</small><br><small class="controls__note">Prerequisite for any policy on these apps. Each app has its own connector guide. The connector overview also gives Cloud Apps &gt; Connected apps &gt; Connect an app or Add a new connector.</small></td><td data-label="Admin UI"><strong>Microsoft Defender portal</strong><br>Settings › Cloud Apps › Connected Apps › App Connectors › + Connect an app <a href="https://learn.microsoft.com/defender-cloud-apps/get-started" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Defender for Cloud Apps file policies that overlap the Purview policies</strong><br><small>Tenant</small><br><small class="controls__note">Where the migration page opens the file policy list. Retiring 6 January 2027. MC1449180 says to turn off or delete overlapping file policies first; the migration page says to disable them only after validating Purview policies.</small></td><td data-label="Admin UI"><strong>Microsoft Defender portal</strong><br>Cloud apps › Policies › Policy management › All policies <a href="https://learn.microsoft.com/defender-cloud-apps/migrate-file-policies-to-purview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Instances DLP location for non-Microsoft cloud apps (retiring)</strong><br><small>Tenant</small><br><small class="controls__note">Today's alternative, not a control over the new dedicated locations. Learn says this location retires on 6 January 2027. Cmdlet needs Compliance Administrator or Compliance Data Administrator.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Policies › + Create policy › Custom › Custom policy › Admin units › Locations › Instances › Edit › Specific instances › + Include instances <a href="https://learn.microsoft.com/purview/dlp-use-policies-non-microsoft-cloud-apps" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpCompliancePolicy -Name &lt;policy name&gt; -ThirdPartyAppDlpLocation All</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy?view=exchange-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
@@ -247,11 +254,8 @@ cost: Variable. Microsoft's notice MC1449180 says usage is billed through the Mi
 impact: Low. Administrators who create and run the policies notice it first; the roadmap and notice name no end-user experience, and Learn says policy tips and user overrides are not supported for these apps.
 -->
 
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].ui; Governance controls: Auto-labeling policy row / admin-path: The auto-labeling path continues from Custom policy through Choose a label, Add, Full directory and Choose locations without the intervening wizard headings. | Found: On **Assign admin units**, the scope is set to **Full directory**. Administrative units aren't supported for non-Microsoft app locations. | Fix: Replace the auto-labeling path in controls[1].ui and the rendered table with 'Solutions > Information protection > Policies > Auto-labeling policies > + Create auto-labeling policy > Automatically apply labels only > Custom > Custom policy > Choose a label to auto-apply > Choose a label > Choose a sensitivity label > Add > Assign admin units > Full directory > Choose locations where you want to apply the label', as documented at https://learn.microsoft.com/purview/information-protection-non-microsoft-connected-apps. The current path omits the label-dialog and admin-unit headings and renames the final heading. | Source: https://learn.microsoft.com/purview/information-protection-non-microsoft-connected-apps
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].api; Governance controls; Open questions / absence: A dedicated non-Microsoft auto-labeling automation route is not documented, and New-AutoSensitivityLabelPolicy documents no parameter for these application locations. | Found: Searched: Purview non-Microsoft connected apps dedicated DLP auto-labeling PowerShell New-DlpCompliancePolicy New-AutoSensitivityLabelPolicy locations. Opened the auto-labeling feature page and New-AutoSensitivityLabelPolicy reference; its Locations description is an unfilled placeholder. | Fix: Add https://learn.microsoft.com/powershell/module/exchangepowershell/new-autosensitivitylabelpolicy?view=exchange-ps to sources for the reference-page absence asserted in Governance controls.
-- [supported, minor] controls[2].ui; Governance guidance: Before rollout; Governance controls: App connectors row / admin-path: The cited get-started page documents Settings > Cloud Apps > Connected Apps > App Connectors > + Connect an app in the Microsoft Defender portal. | Found: Under **Connected Apps**, select **App Connectors**. 3. Select the **+Connect an app** to add an app and then select an app. | Fix: Keep the path: '+Connect an app' and '+ Connect an app' differ only cosmetically. Add to the connector note: 'The connector overview also gives Cloud Apps > Connected apps > Connect an app or Add a new connector.' That alternative appears at https://learn.microsoft.com/defender-cloud-apps/enable-instant-visibility-protection-and-governance-actions-for-your-apps. | Source: https://learn.microsoft.com/defender-cloud-apps/get-started
+- [contradicted, minor] Governance guidance: Before rollout / consistency: The checklist asks readers to confirm the Azure subscription association, but no controls-table row covers that check. | Found: Ask finance to review Purview pay-as-you-go pricing and confirm the tenant is linked to an Azure subscription | Fix: Narrow that checklist bullet to: "Ask finance to review Purview pay-as-you-go pricing, then agree who owns the At Rest Protection charge." Keep the documented Azure subscription prerequisite in Cost and licensing.
 -->

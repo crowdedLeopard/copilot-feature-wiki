@@ -59,7 +59,7 @@ sources:
     url: "https://learn.microsoft.com/rest/api/power-platform/licensing/entitlement-insight/get-environment-resources"
     kind: "learn"
 videos: []
-related: ["copilot-credits","data-policies","mcp","work-iq","work-iq-agent-policy-governance"]
+related: ["copilot-credits","data-policies","mcp","work-iq"]
 controls:
   - governs: "Prepaid Copilot Credits per environment and whether it can draw from the tenant pool"
     scope: "environment"
@@ -133,11 +133,15 @@ changes:
     note: "Re-checked against Microsoft Learn on 17 November 2026: status, dates, credit billing, controls and default state are unchanged."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 98 statements confirmed"
-version: 9
+  - date: "2026-11-17"
+    note: "Re-read the Learn pages on 17 November 2026: status, dates, credit billing, controls and default state are unchanged."
+  - date: "2026-11-17"
+    note: "Re-read the Learn pages on 17 November 2026 for roadmap item 562222: status, dates, credit billing, controls and default state are unchanged."
+version: 11
 verification:
   status: "verified"
   date: "2026-11-17"
-  version: 9
+  version: 11
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 98
@@ -145,7 +149,7 @@ verification:
   unconfirmed: 0
   contradicted: 0
   attempts: 0
-  hash: "509f3ea5f6489537b9b7637fdd981870"
+  hash: "dec0fac52fba4e93101563cf01fdf3d9"
 ---
 
 ## What's changing

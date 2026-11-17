@@ -1,71 +1,126 @@
 {
   "slug": "dataverse-agent-users-entra-agent-identity",
   "roadmapId": 576843,
-  "title": "Dataverse: create agent users with Microsoft Entra agent identity",
+  "title": "Microsoft Dataverse: agent users backed by Microsoft Entra agent identities",
   "status": "held",
   "date": "2026-11-17",
-  "version": 5,
+  "version": 6,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 4,
+  "attempts": 5,
   "verifierVerdict": "hold",
   "notes": [],
   "hold": {
     "reason": "parked",
     "since": "2026-11-16",
     "reasons": [
-      "3 blocking findings (claims 59, 61, 64)"
+      "3 blocking findings (claims 20, 23, 36)"
     ]
   },
   "counts": {
-    "claims": 68,
-    "confirmed": 65,
-    "unconfirmed": 0,
+    "claims": 48,
+    "confirmed": 43,
+    "unconfirmed": 2,
     "contradicted": 3,
     "blocker": 3,
-    "major": 0,
-    "minor": 1
+    "major": 1,
+    "minor": 2
   },
-  "summary": "Hold: the API entries omit information required to perform the operations they advertise. In particular, selecting all agent identities is not sufficient to create a blocking Conditional Access policy; the request also needs target resources, a block grant and a policy state. The roadmap facts and the distinction between launched status and preview documentation are supported.",
+  "summary": "Hold: the briefing infers an admin-opt-in arrival default from a manual provisioning procedure, rather than a statement of the default. Copying a person's security role does not necessarily give an agent access to the same records, and Microsoft documents identity-creation authorization routes that do not require an Entra administrator role.",
   "claims": [
     {
       "n": 1,
-      "where": "front matter: status; What's changing",
-      "type": "record",
-      "claim": "The roadmap status is Launched.",
+      "where": "summary; What's changing; Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Dataverse agent users have agent identities in Microsoft Entra Agent ID and are added to an environment for data access.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"status\": \"Launched\"",
+      "source": "https://learn.microsoft.com/power-platform/admin/create-users",
+      "quote": "These users have agent identities in Microsoft Entra Agent ID and are added into the Dataverse environment to get data access.",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
-      "where": "front matter: targetDate; What's changing; Open questions",
-      "type": "record",
-      "claim": "The roadmap target is August CY2026.",
+      "where": "summary; What's changing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The documented admin-center procedure adds an agent to a chosen environment and assigns it a security role.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"targetDate\": \"August CY2026\"",
+      "source": "https://learn.microsoft.com/power-platform/admin/create-users",
+      "quote": "Choose the agent user from the search list, and then select Add to add the agent.\n9. On the Manage security roles page, select a security role for your agent.\n10. Select Save to apply the changes.",
       "severity": null,
       "fix": null
     },
     {
       "n": 3,
-      "where": "front matter: previewDate; What's changing",
-      "type": "record",
-      "claim": "The roadmap preview date is June CY2026.",
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "An agent needing Dataverse data requires an Entra agent user associated with its agent identity so security roles can enable access to environment APIs and data.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": \"June CY2026\"",
+      "source": "https://learn.microsoft.com/power-platform/admin/agent-users",
+      "quote": "For agents that require data access to a Dataverse environment, an Entra agent user must be created and associated with the agent identity so that appropriate security roles can be assigned to enable access to Dataverse APIs and data within the environment.",
       "severity": null,
       "fix": null
     },
     {
       "n": 4,
-      "where": "front matter: releasePhase; What's changing",
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Copilot Studio agents can automatically receive an Entra agent identity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/agent-users",
+      "quote": "agents created in Copilot Studio can automatically receive an Entra agent identity that can be viewed and managed in the Microsoft Entra admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "availability",
+      "claim": "Support for creating Entra Agent Application Users from agent identities is not available yet.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/agent-users",
+      "quote": "Support for creating Entra Agent Application Users from agent identities isn't available yet.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "summary; What's changing; controls[0].note; rationale: risk",
+      "type": "availability",
+      "claim": "Learn still marks Dataverse agent users as preview and prerelease documentation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/agent-users",
+      "quote": "# Create Entra agent users (preview)\n\n[This article is prerelease documentation and is subject to change.]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
+      "type": "availability",
+      "claim": "Learn says preview features are not meant for production use and might have restricted functionality.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/create-users",
+      "quote": "Preview features aren’t meant for production use and might have restricted functionality.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: status; What's changing",
       "type": "record",
-      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: releasePhase; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview as release phases.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
@@ -73,10 +128,32 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 10,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview target is June CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"June CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: targetDate; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap general availability target is August CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"August CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only listed roadmap cloud; GCC, GCC High and DoD are not listed.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -84,10 +161,10 @@
       "fix": null
     },
     {
-      "n": 6,
-      "where": "front matter: platforms; Scope",
+      "n": 13,
+      "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "Web is the platform listed in the roadmap record.",
+      "claim": "The roadmap lists the Web platform.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Web\"]",
@@ -95,7 +172,7 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 14,
       "where": "front matter: products",
       "type": "record",
       "claim": "The roadmap products are Microsoft Copilot (Microsoft 365) and Microsoft Dataverse.",
@@ -106,30 +183,30 @@
       "fix": null
     },
     {
-      "n": 8,
-      "where": "What's changing",
+      "n": 15,
+      "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "The roadmap describes dedicated, least-privileged security roles based on each agent's intended capabilities.",
+      "claim": "The roadmap modification timestamp is 2026-10-16T19:09:45.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "This feature enables agents to be provisioned as Dataverse agent users with dedicated, least-privileged security roles based on their intended capabilities.",
+      "quote": "\"modified\": \"2026-10-16T19:09:45\"",
       "severity": null,
       "fix": null
     },
     {
-      "n": 9,
-      "where": "What's changing",
+      "n": 16,
+      "where": "Why it matters; Scope",
       "type": "record",
-      "claim": "The roadmap describes auditing of agent-driven actions.",
+      "claim": "The roadmap describes the feature as enabled for admins, makers and marketers automatically.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "By using identity-based role assignment and full auditing of agent-driven actions",
+      "quote": "Enabled for admins/makers/marketers automatically",
       "severity": null,
       "fix": null
     },
     {
-      "n": 10,
-      "where": "Risk assessment: Autonomy & actions",
+      "n": 17,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
       "type": "record",
       "claim": "The roadmap says agents can perform tasks autonomously or on behalf of users.",
       "status": "supported",
@@ -139,21 +216,43 @@
       "fix": null
     },
     {
-      "n": 11,
-      "where": "Why it matters; Open questions",
+      "n": 18,
+      "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap says Enabled for admins/makers/marketers automatically.",
+      "claim": "The roadmap describes dedicated least-privileged security roles and identity-based role assignment.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Enabled for admins/makers/marketers automatically",
+      "quote": "This feature enables agents to be provisioned as Dataverse agent users with dedicated, least‑privileged security roles based on their intended capabilities.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 12,
-      "where": "title; summary; What's changing; Why it matters; Scope",
+      "n": 19,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "The roadmap claims full auditing of agent-driven actions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "By using identity‑based role assignment and full auditing of agent‑driven actions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "front matter: defaultState; summary; Why it matters; Risk assessment: Change & support; rationale: impact",
+      "type": "default",
+      "claim": "The feature is admin-opt-in, nothing is added until an administrator acts, and agent-user creation is necessarily manual for every agent and environment.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Entra agent users\" \"default\" \"Dataverse\"; \"Dataverse\" \"agent users\" \"automatically\". Read Create users and Create Entra agent users. They document a manual route, not an exclusive route or the arrival behavior of existing agents.",
+      "severity": "blocker",
+      "fix": "Set defaultState to \"unknown\". Remove \"Nothing is added until an admin does it\" from the summary. Replace the second Why it matters paragraph with: \"The roadmap says enabled for admins/makers/marketers automatically. Learn documents an administrator adding an agent and assigning its security role, but does not state whether existing agents gain Dataverse access automatically.\" Replace the manual-step sentence under Change & support with: \"Learn documents a per-environment procedure for adding an agent and assigning its security role.\" Remove \"end users see nothing until an agent they use is given Dataverse access\" from the impact rationale."
+    },
+    {
+      "n": 21,
+      "where": "Why it matters",
       "type": "behaviour",
-      "claim": "Dataverse agent users have Microsoft Entra agent identities and are added to an environment to obtain data access.",
+      "claim": "This capability gives an agent its own identity in Dataverse rather than requiring it to use a person's account.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/create-users",
       "quote": "These users have agent identities in Microsoft Entra Agent ID and are added into the Dataverse environment to get data access.",
@@ -161,392 +260,106 @@
       "fix": null
     },
     {
-      "n": 13,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Microsoft Entra Agent ID provides a purpose-built identity type for AI agents.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/agent-id/what-are-agent-identities",
-      "quote": "Agent identities are identity accounts within Microsoft Entra ID that provide unique identification and authentication capabilities for AI agents.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "summary; What's changing; Why it matters",
-      "type": "behaviour",
-      "claim": "An Entra agent user must be created and associated with the agent identity so security roles can enable access to Dataverse APIs and data.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/agent-users",
-      "quote": "For agents that require data access to a Dataverse environment, an Entra agent user must be created and associated with the agent identity so that appropriate security roles can be assigned to enable access to Dataverse APIs and data within the environment.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Agent users are a documented user type alongside regular users and application users.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/create-users",
-      "quote": "## User types\n\n### Regular users\n\nThese users are the regular synchronized users from Microsoft Entra ID.\n\n### Agent users (preview)",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "controls[0].ui; Governance controls; Scope",
-      "type": "admin-path",
-      "claim": "The Add agent interface is at Power Platform admin center > Manage > Environments > environment > Settings > Users + permissions > Agents > + Add agent.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/create-users#create-an-agent-user-preview",
-      "quote": "In the command bar, select Settings.\n6. Expand Users + permissions, and then select Agents.\n7. Select + Add agent from the command bar. The Add agent pane appears.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The administrator chooses the agent user from a search list and selects Add.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/create-users#create-an-agent-user-preview",
-      "quote": "Choose the agent user from the search list, and then select Add to add the agent.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "What's changing; Governance guidance: At rollout",
-      "type": "admin-path",
-      "claim": "The administrator selects the agent's security role on the Manage security roles page.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/create-users#create-an-agent-user-preview",
-      "quote": "On the Manage security roles page, select a security role for your agent.\n10. Select Save to apply the changes.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "summary; What's changing; Risk assessment; controls[0].note",
-      "type": "availability",
-      "claim": "Both Learn pages describing Dataverse agent users still label the feature preview.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/agent-users",
-      "quote": "Create Entra agent users (preview)\n\n[This article is prerelease documentation and is subject to change.]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "What's changing; Risk assessment: Change & support",
-      "type": "availability",
-      "claim": "The Learn preview warning says the feature is not meant for production use and its documentation is subject to change.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/agent-users",
-      "quote": "[This article is prerelease documentation and is subject to change.]\n\nPreview features aren't meant for production use and might have restricted functionality.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "What's changing; Scope: Not yet supported",
-      "type": "behaviour",
-      "claim": "Creating Entra Agent Application Users from agent identities is not supported yet.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/agent-users",
-      "quote": "Support for creating Entra Agent Application Users from agent identities isn't available yet.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 22,
-      "where": "front matter: defaultState; summary; Why it matters; rationale: risk; Open questions",
-      "type": "absence",
-      "claim": "The sources do not resolve what this Dataverse access control does on arrival or state that existing behaviour changes, so its default is unknown.",
+      "where": "What's changing; Why it matters; Risk assessment: Data exposure; rationale: risk",
+      "type": "applicability",
+      "claim": "Dataverse security roles govern an agent user's access to environment data.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Dataverse agent users automatically enabled default admin opt in. Read roadmap, create-users, agent-users and admin-use-entra-agent-identities; automatic availability is stated, but default provisioning or changes to existing Dataverse access are not.",
+      "source": "https://learn.microsoft.com/power-platform/admin/agent-users",
+      "quote": "appropriate security roles can be assigned to enable access to Dataverse APIs and data within the environment.",
       "severity": null,
       "fix": null
     },
     {
       "n": 23,
-      "where": "controls[0].api; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "No documented automation procedure was found for adding this Dataverse agent user and assigning its role.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Dataverse agent users create assign security roles API systemuser agentidentity Power Platform API pac admin PowerShell; Dataverse agent user API create. Read create-users, agent-users, systemuser Web API and CLI/PowerShell results; no agent provisioning procedure.",
-      "severity": null,
-      "fix": null
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "A role copied from a human user gives the agent that user's reach.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-platform/admin/security-roles-privileges",
+      "quote": "Users can access records they own, objects that are shared with the organization, objects that are shared with them, and objects that are shared with a team that they're a member of.",
+      "severity": "blocker",
+      "fix": "Replace \"A role copied from a human user gives the agent that user's reach\" with \"A copied role carries privileges, but access to particular records also depends on access levels, ownership and sharing.\" Cite https://learn.microsoft.com/power-platform/admin/security-roles-privileges."
     },
     {
       "n": 24,
-      "where": "controls[0].note; Scope: Roles; Open questions",
-      "type": "absence",
-      "claim": "The Create an agent user section does not name a required administrator role.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/create-users#create-an-agent-user-preview",
-      "quote": "1. Sign in to the Power Platform admin center.\n2. In the navigation pane, select Manage.",
-      "severity": null,
-      "fix": null
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "An agent user with a broad role acts with no person approving each action.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Dataverse\" \"agent user\" \"approval\". Read Create users and Create Entra agent users. The roadmap permits autonomous tasks, but neither feature page establishes the approval behavior of every agent using this identity.",
+      "severity": "major",
+      "fix": "Remove \", with no person approving each action\". Retain the separately attributed roadmap statement that agents can act autonomously or on behalf of users."
     },
     {
       "n": 25,
-      "where": "Risk assessment: Data exposure and Autonomy & actions; rationale: risk",
+      "where": "Risk assessment: Security & identity; Governance guidance: After rollout",
       "type": "applicability",
-      "claim": "The Dataverse security roles assigned to an agent user govern its read, create, update and delete privileges.",
+      "claim": "Microsoft Entra audit logs include operations initiated or performed by agent identities and agent user accounts.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/security-roles-privileges",
-      "quote": "Table privileges define which tasks a user with access to a table record can do, such as Read, Create, Delete, Write, Assign, Share, Append, and Append To.",
+      "source": "https://learn.microsoft.com/entra/agent-id/sign-in-audit-logs-agents",
+      "quote": "Audit logs for when an agent identity or agent's user account is either the initiator or performer of an operation in my tenant",
       "severity": null,
       "fix": null
     },
     {
       "n": 26,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Which records a privilege applies to depends on its access level in the security role.",
+      "where": "Risk assessment: Security & identity; Governance guidance: After rollout",
+      "type": "applicability",
+      "claim": "Microsoft Entra sign-in logs cover agents and agent-related traffic, including user-delegated and app-only sign-ins.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/security-roles-privileges",
-      "quote": "In all cases, which records a privilege applies to depends on the access level of the permission defined in the security role.",
+      "source": "https://learn.microsoft.com/entra/agent-id/sign-in-audit-logs-agents",
+      "quote": "Because agents can sign in with either user-delegated or app-only permissions, their sign-ins might appear across each of the four sign-in log types.",
       "severity": null,
       "fix": null
     },
     {
       "n": 27,
-      "where": "Risk assessment: Data exposure",
-      "type": "role",
-      "claim": "Microsoft describes System Administrator as able to view all data in the system.",
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "The cited Dataverse agent-user pages do not explain how agent-driven actions are represented in Dataverse audit records.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/privileges-required-customization",
-      "quote": "System administrator ... Can view all data in the system.",
+      "source": null,
+      "quote": "Searched: \"Dataverse\" \"agent user\" \"audit\". Read Create users and Create Entra agent users; searched results include general Manage Dataverse auditing, but the feature pages do not describe agent-specific audit representation.",
       "severity": null,
       "fix": null
     },
     {
       "n": 28,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Dataverse auditing records changes to customer records.",
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "The cited Learn pages do not describe a per-action approval mechanism for Dataverse agent users.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/manage-dataverse-auditing",
-      "quote": "Dataverse auditing logs changes that you make to customer records in an environment with a Dataverse database.",
+      "source": null,
+      "quote": "Searched: \"Dataverse\" \"agent user\" \"approval\". Read Create users and Create Entra agent users. Results describe approvals for other agents and coding plugins, not an agent-user approval control.",
       "severity": null,
       "fix": null
     },
     {
       "n": 29,
-      "where": "Risk assessment: Data exposure; controls[1].note",
-      "type": "behaviour",
-      "claim": "Dataverse auditing does not support retrieve operations.",
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "The Dataverse agent-user sections of Create users and Create Entra agent users name no license or meter for agent users.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/manage-dataverse-auditing",
-      "quote": "Furthermore, auditing doesn't support retrieve operations or export operations.",
+      "source": null,
+      "quote": "Searched: \"Dataverse\" \"agent users\" \"license\". Read both agent-user sections in Create users and the complete Create Entra agent users article; neither specifies an agent-user license or meter.",
       "severity": null,
       "fix": null
     },
     {
       "n": 30,
-      "where": "Risk assessment: Data exposure; controls[1].note",
-      "type": "behaviour",
-      "claim": "Dataverse auditing does not support export operations.",
+      "where": "front matter: licensing.model; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "A Dataverse-agent-user-specific licensing model or meter is not yet published, so the model is unknown rather than free or included.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/manage-dataverse-auditing",
-      "quote": "Furthermore, auditing doesn't support retrieve operations or export operations.",
+      "source": null,
+      "quote": "Searched: Dataverse Entra agent users licensing license meter Copilot Credits default automatically admin enable; \"Dataverse\" \"agent users\" \"license\". Read agent-user pages, Entra licensing and Power Platform licensing FAQ excerpts; no agent-user-specific terms found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 31,
-      "where": "Risk assessment: Data exposure",
-      "type": "applicability",
-      "claim": "Microsoft points to Dataverse and model-driven apps activity logging to log retrieve operations.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/manage-dataverse-auditing",
-      "quote": "In addition to Dataverse auditing, you can turn on Dataverse and model-driven apps activity logging to log data retrieve operations and export operations.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
-      "where": "Risk assessment: Data exposure",
-      "type": "applicability",
-      "claim": "Microsoft points to Dataverse and model-driven apps activity logging to log export operations.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/manage-dataverse-auditing",
-      "quote": "In addition to Dataverse auditing, you can turn on Dataverse and model-driven apps activity logging to log data retrieve operations and export operations.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
-      "where": "Risk assessment: Data exposure",
-      "type": "licensing",
-      "claim": "The option to turn on activity logging requires qualifying Office licensing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/activity-logging-auditing/activity-logs-overview",
-      "quote": "The option to turn on audit logging is only visible when the minimum Office licensing requirements are met.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
-      "where": "Risk assessment: Data exposure",
-      "type": "availability",
-      "claim": "Microsoft Purview captures these user activity logs only for production environments.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/activity-logging-auditing/activity-logs-overview",
-      "quote": "Microsoft Purview auditing solutions capture user activity logs only for production environments.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "The linked activity-logging overview documents licensing review, Purview permissions and additional configuration prerequisites.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/activity-logging-auditing/activity-logs-overview",
-      "quote": "Review licensing and manage permissions.\n- Configure and turn on auditing for each Power Platform environment.\n- Manage auditing in Microsoft Purview.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "Risk assessment: Security & identity; Governance controls",
-      "type": "applicability",
-      "claim": "Conditional Access can block authentication and token issuance to existing and new agent identities across the tenant.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/agent-id/disable-agent-identities",
-      "quote": "Conditional Access policies can block authentication and token issuance of agent identities. Applying the policies prevents existing and new agent identities from authenticating",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "Risk assessment: Security & identity; Cost and licensing; controls[3].note",
-      "type": "licensing",
-      "claim": "The disabling-agent-identities article says applying Conditional Access policies requires Microsoft Entra ID P1.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/agent-id/disable-agent-identities",
-      "quote": "Applying Conditional Access policies in your tenant requires the Microsoft Entra ID P1 license.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "Risk assessment: Security & identity; Cost and licensing; controls[3].note",
-      "type": "licensing",
-      "claim": "The autonomous-agent Conditional Access article lists Microsoft 365 E7 as one qualifying license plan.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/identity/conditional-access/policy-autonomous-agents",
-      "quote": "Microsoft 365 E7, which includes Agent 365 and Microsoft Entra Suite, to protect access for both users and agents.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "Risk assessment: Security & identity; Cost and licensing; controls[3].note",
-      "type": "licensing",
-      "claim": "The autonomous-agent Conditional Access article alternatively lists Microsoft Agent 365 paired with Microsoft Entra ID P1 or Microsoft 365 E3.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/identity/conditional-access/policy-autonomous-agents",
-      "quote": "Microsoft Agent 365, paired with:\n- Microsoft Entra ID P1 or Microsoft 365 E3 for Conditional Access.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "controls[3].note",
-      "type": "role",
-      "claim": "Creating the documented Conditional Access policy requires at least Conditional Access Administrator.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/agent-id/disable-agent-identities",
-      "quote": "Sign in to the Microsoft Entra admin center as at least a Conditional Access Administrator.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "Risk assessment: Security & identity; controls[3].note; Governance controls",
-      "type": "absence",
-      "claim": "The pages do not specifically identify which Conditional Access policy covers a Dataverse agent user.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Dataverse agent user Conditional Access policies agent identities supported; Dataverse agent user Conditional Access. Read agent-users, create-users, disable-agent-identities and policy-autonomous-agents; general agent policies do not identify the Dataverse token subject.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "Risk assessment: Security & identity",
-      "type": "role",
-      "claim": "Agent identities can receive certain Microsoft Entra role assignments.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/id-governance/agent-id-governance-overview",
-      "quote": "With access packages, you're able to assign agent identities access to the following resources:\n- Security Group memberships\n- OAuth API permissions ...\n- Microsoft Entra roles",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "Risk assessment: Change & support; Open questions",
-      "type": "absence",
-      "claim": "No migration procedure from existing Dataverse application users to Dataverse agent users was found.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Dataverse agent users migrate application users migration; Dataverse agent users migration. Read agent-users, create-users and admin-use-entra-agent-identities; Copilot Studio identity migration is documented, not conversion of Dataverse application users.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost; Open questions",
-      "type": "absence",
-      "claim": "The Dataverse-agent-user-specific licensing model has not been published in the sources found, so it remains unknown.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Dataverse agent users license licensing capacity requests entitlements pricing; Dataverse agent users license. Read agent-users, create-users agent sections, Entra licensing, Power Platform licensing FAQs and request allocations; no specific agent-user SKU found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "absence",
-      "claim": "The agent-user-specific Learn article and creation section list no agent-user license requirement.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Dataverse agent users license. Read all of power-platform/admin/agent-users and Create an agent user (preview) in create-users; neither agent-specific passage specifies a license.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "No meter specific to creating or having a Dataverse agent user was found.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Dataverse agent users license licensing capacity requests entitlements pricing. Read agent-users, create-users agent section, Power Platform licensing FAQ and request-allocation guidance; general workload charges exist, but no agent-user-specific meter was found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
-      "where": "Cost and licensing; Open questions",
-      "type": "absence",
-      "claim": "No capacity or request entitlement specifically allocated to a Dataverse agent user was found.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Dataverse agent users license licensing capacity requests entitlements pricing. Read agent-users, create-users agent section, licensing FAQ and api-request-limits-allocations; the latter covers general Dataverse operations but gives no agent-user-specific allocation.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 48,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
       "claim": "Microsoft Entra Agent ID is available for all Microsoft Entra customers.",
@@ -557,8 +370,8 @@
       "fix": null
     },
     {
-      "n": 49,
-      "where": "front matter: licensing.notes; Cost and licensing",
+      "n": 32,
+      "where": "Cost and licensing",
       "type": "licensing",
       "claim": "Extending Microsoft Entra security features to agents requires Microsoft Agent 365.",
       "status": "supported",
@@ -568,223 +381,190 @@
       "fix": null
     },
     {
-      "n": 50,
+      "n": 33,
       "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "Microsoft Agent 365 is included with Microsoft 365 E7.",
+      "type": "absence",
+      "claim": "The cited licensing material does not state a Dataverse-agent-user-specific application of the Agent 365 licensing requirement.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/entra/fundamentals/licensing",
-      "quote": "Agent 365 is included with Microsoft 365 E7",
+      "source": null,
+      "quote": "Searched: \"Dataverse\" \"agent users\" \"Agent 365\" licensing. Read Entra licensing and feature pages; Agent 365 search results discuss Entra security and Microsoft 365 participation, not a prerequisite for adding an agent user to Dataverse.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 51,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "Microsoft Agent 365 is available as an add-on to Microsoft E5/A5/Business Premium.",
+      "n": 34,
+      "where": "Scope; controls[0].note; Open questions",
+      "type": "absence",
+      "claim": "The Learn agent-user procedure does not name the administrative role required to add an agent in Power Platform admin center.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/entra/fundamentals/licensing",
-      "quote": "is available as an add-on to Microsoft E5/A5/Business Premium (or Microsoft Defender Suite + Microsoft Purview Suite).",
+      "source": null,
+      "quote": "Searched: \"Dataverse\" \"agent users\" \"administrator role\". Read Create users: Create an agent user and Create Entra agent users. Neither specifies the role for that procedure; general Dataverse and unrelated agent roles do not establish it.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 52,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "Using Microsoft Entra ID Governance for agent identities requires Microsoft 365 E7 or Microsoft Agent 365 paired with at least Microsoft Entra P1 or Microsoft 365 E3.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/id-governance/agent-id-governance-overview",
-      "quote": "Using Microsoft Entra ID Governance for agent identities requires one of the following license plans:\n- Microsoft 365 E7 ...\n- Microsoft Agent 365 license paired with at least Microsoft Entra P1 or Microsoft 365 E3.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 53,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "The stated Conditional Access and ID Governance license prerequisites are for the Entra-side controls rather than a published Dataverse agent-user creation SKU.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/id-governance/agent-id-governance-overview",
-      "quote": "Using Microsoft Entra ID Governance for agent identities requires one of the following license plans",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 54,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "Turning on Dataverse auditing consumes audit-log storage capacity.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/manage-dataverse-auditing",
-      "quote": "Dataverse stores audit logs and they consume log storage capacity.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 55,
-      "where": "Scope: Who",
-      "type": "date",
-      "claim": "For standard-harness agents, Copilot Studio automatically creates an Entra Agent ID for each new agent created after May 2026.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-use-entra-agent-identities",
-      "quote": "This article describes features used in agents or agent flows powered by the standard harness.\n\nAfter May 2026, Copilot Studio automatically creates a Microsoft Entra Agent ID for each new agent.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 56,
-      "where": "Scope: Who",
-      "type": "behaviour",
-      "claim": "Existing Copilot Studio agents using app registrations continue to use them until migration.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-use-entra-agent-identities",
-      "quote": "Existing agents that you created before Entra Agent ID rolled out in May 2026 continue to use app registrations.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 57,
-      "where": "Scope: Roles; controls[1].note",
+      "n": 35,
+      "where": "Scope",
       "type": "role",
-      "claim": "Turning Dataverse auditing on or off requires System Administrator, System Customizer or equivalent permissions.",
+      "claim": "For user-operated identity creation through Entra admin center, Graph or PowerShell/CLI, the creation-channels page lists Agent ID Developer, Agent ID Administrator or AI Administrator.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/manage-dataverse-auditing",
-      "quote": "You must have a system administrator or system customizer role or equivalent permissions to turn auditing on or off.",
+      "source": "https://learn.microsoft.com/entra/agent-id/agent-id-creation-channels",
+      "quote": "User creates agent identity via Microsoft Entra admin center, Microsoft Graph, or PowerShell/CLI | User must be assigned Agent ID Developer, Agent ID Administrator, or AI Administrator role.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 58,
-      "where": "controls[1].ui",
-      "type": "admin-path",
-      "claim": "The environment Audit settings page is at Power Platform admin center > Manage > Environments > environment > Settings > Audit and logs > Audit settings.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/manage-dataverse-auditing#start-or-stop-auditing-for-an-environment",
-      "quote": "Select Manage in the navigation pane.\n3. In the Manage pane, select Environments, and then select an environment.\n4. Select Settings.\n5. Expand Audit and logs and then select Audit settings.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 59,
-      "where": "controls[1].api",
-      "type": "command",
-      "claim": "The printed PATCH entry is a complete call for changing environment auditing through isauditenabled.",
+      "n": 36,
+      "where": "controls[1].note; Governance controls: final paragraph",
+      "type": "role",
+      "claim": "Creating the Entra agent identity necessarily needs an Entra role, rather than another authorization route.",
       "status": "contradicted",
-      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/auditing/configure",
-      "quote": "Change the column values in the organization table to change how auditing works for the environment.\n\nPATCH [Organization URI]/api/data/v9.2/organizations([Organization ID]) HTTP/1.1\nContent-Type: application/json",
+      "source": "https://learn.microsoft.com/entra/agent-id/agent-id-creation-channels",
+      "quote": "User must be an owner of the agent identity blueprint or agent identity blueprint principal (owners added at any time have this permission).",
       "severity": "blocker",
-      "fix": "Replace the explanatory tail with a concrete request body: PATCH [Organization URI]/api/data/v9.2/organizations([Organization ID]) with Content-Type: application/json and JSON body {\"isauditenabled\":true}. The existing method and endpoint are correct, but without a value-bearing body the entry cannot turn auditing on. Retain the current documentation URL."
+      "fix": "Replace controls[1].note with \"Entra-side control, not a Dataverse setting. Requires an agent identity blueprint; authorization depends on the creation method.\" Make the same replacement in the rendered table. In the final Governance controls paragraph, remove \"and needs Entra roles, not a Dataverse role\". The cited creation-channels page also documents owner-based delegated creation with no Agent ID role and application-permission creation."
     },
     {
-      "n": 60,
-      "where": "controls[2].ui",
-      "type": "admin-path",
-      "claim": "Agent identity creation is at Microsoft Entra admin center > Entra ID > Agents > Agent identities > New agent identity (Preview).",
+      "n": 37,
+      "where": "controls[1].note; Cost and licensing; Governance controls",
+      "type": "behaviour",
+      "claim": "Creating an Entra agent identity requires an agent identity blueprint.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/entra/agent-id/create-delete-agent-identities#use-the-microsoft-entra-admin-center",
+      "source": "https://learn.microsoft.com/entra/agent-id/create-delete-agent-identities",
+      "quote": "To create agent identities, you need:\n\n- An agent identity blueprint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[0].ui; Governance controls table; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "The Power Platform admin-center procedure follows Manage > Environments > environment > Settings > Users + permissions > Agents > + Add agent > agent user > Add, then selects a security role and saves.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/create-users",
+      "quote": "Expand Users + permissions, and then select Agents.\n7. Select + Add agent from the command bar. The Add agent pane appears.\n8. Choose the agent user from the search list, and then select Add to add the agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[0].api; Governance controls table and prose; Open questions",
+      "type": "absence",
+      "claim": "No feature-specific API or command is documented for adding an agent user to a Dataverse environment.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Dataverse agent users API create provision pac admin assign-user Add-AdminPowerAppsSyncUser; \"Dataverse\" \"agent users\" \"API\" \"create\". Read feature pages and both command references; Graph agentUser creation establishes an Entra account, not Dataverse membership.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[1].ui; Governance controls table; Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "The Entra admin-center entry point for creating an agent identity is Entra ID > Agents > Agent identities > New agent identity (Preview).",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/agent-id/create-delete-agent-identities",
       "quote": "Browse to Entra ID > Agents > Agent identities.\n3. Select New agent identity (Preview).",
       "severity": null,
       "fix": null
     },
     {
-      "n": 61,
-      "where": "controls[2].api",
+      "n": 41,
+      "where": "controls[1].api; Governance controls table",
       "type": "command",
-      "claim": "The printed POST endpoint alone is a complete call to create an Entra agent identity.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/entra/agent-id/create-delete-agent-identities",
-      "quote": "POST https://graph.microsoft.com/beta/serviceprincipals/Microsoft.Graph.AgentIdentity\nOData-Version: 4.0\nContent-Type: application/json\nAuthorization: Bearer <token>\n{\"displayName\": \"My Agent Identity\",\"agentIdentityBlueprintId\": \"<my-agent-blueprint-id>\",\"sponsors@odata.bind\":",
-      "severity": "blocker",
-      "fix": "Keep the endpoint but supply the documented request details: POST https://graph.microsoft.com/beta/serviceprincipals/Microsoft.Graph.AgentIdentity with Authorization: Bearer <token>, OData-Version: 4.0, Content-Type: application/json and JSON body {\"displayName\":\"<agent-name>\",\"agentIdentityBlueprintId\":\"<blueprint-app-id>\",\"sponsors@odata.bind\":[\"https://graph.microsoft.com/v1.0/users/<sponsor-user-id>\"]}. The endpoint and beta version are supported; the bodyless request is not sufficient."
-    },
-    {
-      "n": 62,
-      "where": "controls[2].note; Governance controls",
-      "type": "behaviour",
-      "claim": "Creating the Entra agent identity requires an existing agent identity blueprint.",
+      "claim": "Microsoft Graph beta creates an agent identity with POST /servicePrincipals/microsoft.graph.agentIdentity and a body containing displayName, agentIdentityBlueprintId and sponsors@odata.bind.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/entra/agent-id/create-delete-agent-identities",
-      "quote": "To create agent identities, you need:\n- An agent identity blueprint. Record the agent identity blueprint app ID from the creation process.",
+      "source": "https://learn.microsoft.com/entra/agent-id/create-single-instance-agent",
+      "quote": "POST https://graph.microsoft.com/beta/servicePrincipals/microsoft.graph.agentIdentity\nOData-Version: 4.0\nContent-Type: application/json\n\n{\n  \"displayName\": \"Contoso Operations Agent\",\n  \"agentIdentityBlueprintId\": \"<blueprint-object-id>\",\n  \"sponsors@odata.bind\": [",
       "severity": null,
       "fix": null
     },
     {
-      "n": 63,
-      "where": "controls[3].ui",
-      "type": "admin-path",
-      "claim": "The cited disabling-identities article gives Entra ID > Conditional Access > Policies > New policy > Assignments > Users, agents or workload identities > Include > All agent identities.",
+      "n": 42,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "pac admin assign-user exists and assigns a user to a Dataverse environment with a security role.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/entra/agent-id/disable-agent-identities#create-conditional-access-policies-to-disable-agent-activities",
-      "quote": "Under Assignments, select Users, agents or workload identities.\n1. Under Include, select All agent identities",
+      "source": "https://learn.microsoft.com/power-platform/developer/cli/reference/admin",
+      "quote": "## pac admin assign-user\n\nAssign a user to a target Dataverse environment with specified security role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "Add-AdminPowerAppsSyncUser exists in Microsoft.PowerApps.Administration.PowerShell and adds a user to Dataverse.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-adminpowerappssyncuser",
+      "quote": "Add-AdminPowerAppsSyncUser cmdlet adds a user to Dataverse.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[0].note; Governance controls",
+      "type": "absence",
+      "claim": "The cited general user-command references do not explicitly confirm that those commands apply to Dataverse agent users.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Dataverse agent users API create provision pac admin assign-user Add-AdminPowerAppsSyncUser. Read both references and searched pac admin for agent/Agent: no matches. Neither reference identifies agent users as supported inputs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Governance controls: final paragraph",
+      "type": "absence",
+      "claim": "The Learn procedure for adding an agent user describes security-role assignment but no additional access-limiting step.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Dataverse agent users security roles copied human user access privileges business unit per action approval auditing. Read all ten steps of Create an agent user and Create Entra agent users; no additional access-limit step is given in that procedure.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Creating the Entra agent identity is separate from adding its agent user to a Dataverse environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/create-users",
+      "quote": "For step-by-step information about creating a Microsoft Entra agent identity, see Create agent identities in agent identity platform.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Why it matters; Governance guidance: After rollout",
+      "type": "applicability",
+      "claim": "Administrators can review and remove a user's Dataverse security-role assignments to manage its access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/security-roles-privileges",
+      "quote": "The Remove from role? window appears, asking you to confirm that you want privileges associated with that role removed for the selected user.",
       "severity": "minor",
-      "fix": "Keep the path supported by the cited article, but add this qualification to the row note: 'The also-cited autonomous-agent Conditional Access walkthrough inserts What does this policy apply to? > Agents before Include > All agent identities.' Its source is https://learn.microsoft.com/entra/identity/conditional-access/policy-autonomous-agents."
+      "fix": "Add https://learn.microsoft.com/power-platform/admin/security-roles-privileges to sources for the statements about reviewing and removing security-role access."
     },
     {
-      "n": 64,
-      "where": "controls[3].api",
-      "type": "command",
-      "claim": "POSTing a Conditional Access policy with only conditions.clientApplications.includeAgentIdServicePrincipals set to All supplies a call that blocks token issuance.",
+      "n": 48,
+      "where": "Governance guidance: Before rollout and After rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The governance checklist asks readers to create a security role and check Entra audit and sign-in logs, but neither control is represented by the two table rows.",
       "status": "contradicted",
-      "source": "https://learn.microsoft.com/entra/agent-id/disable-agent-identities#create-conditional-access-policies-to-disable-agent-activities",
-      "quote": "\"grantControls\": {\n        \"operator\": \"AND\",\n        \"builtInControls\": [\n            \"block\"\n        ]\n    },\n    \"state\": \"enabledForReportingButNotEnforced\"",
-      "severity": "blocker",
-      "fix": "Replace the API text with: POST https://graph.microsoft.com/beta/identity/conditionalAccess/policies with Content-Type: application/json and JSON body {\"displayName\":\"Block all agent identities from accessing resources\",\"conditions\":{\"clientApplications\":{\"includeAgentIdServicePrincipals\":[\"All\"],\"excludeAgentIdServicePrincipals\":[],\"agentIdServicePrincipalFilter\":null},\"applications\":{\"includeApplications\":[\"All\"],\"excludeApplications\":[]}},\"grantControls\":{\"operator\":\"AND\",\"builtInControls\":[\"block\"]},\"state\":\"enabledForReportingButNotEnforced\"}. Add to the existing note: 'This creates a report-only policy; it does not block until enabled after reviewing its impact.' The cited article recommends report-only first."
-    },
-    {
-      "n": 65,
-      "where": "Governance guidance: At rollout",
-      "type": "behaviour",
-      "claim": "Microsoft's policy-creation steps start the Conditional Access policy in report-only mode.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/agent-id/disable-agent-identities",
-      "quote": "Confirm your settings and set Enable policy to Report-only.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 66,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "Microsoft documents a separate Conditional Access policy for agents' user accounts.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/agent-id/disable-agent-identities",
-      "quote": "Policy 2: Block agent's user account authentication\n\nThe following steps help create a Conditional Access policy to block issuance of access tokens requested using agents' user accounts.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 67,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "Auditing must be enabled at environment level before table and column auditing can log data changes.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/manage-dataverse-auditing",
-      "quote": "First, turn on auditing at the environment level. To log data changes in a table, turn on auditing for the table and for the column.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 68,
-      "where": "Governance guidance: Before rollout",
-      "type": "behaviour",
-      "claim": "Administrators can configure a retention period for environment audit logs.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/manage-dataverse-auditing",
-      "quote": "Set a retention period for how long audit logs are kept in an environment. Under Retain these logs for, choose the period of time to retain the logs.",
-      "severity": null,
-      "fix": null
+      "source": "page",
+      "quote": "\"create or choose that role before you add the agent\"; \"Check Microsoft Entra audit and sign-in logs\"; table rows cover adding an agent with a role and creating an Entra agent identity.",
+      "severity": "minor",
+      "fix": "Replace the Before rollout role bullet with \"Decide, per agent, the least-privileged Dataverse security role to select when adding the agent.\" Remove the After rollout bullet that directs readers to check Entra audit and sign-in logs. Keep the separately documented log behavior in Risk assessment and the Dataverse auditing open question; do not add control rows."
     }
   ],
   "precheck": {
-    "at": "2026-11-17T02:05:00.732Z",
+    "at": "2026-11-17T14:05:51.664Z",
     "summary": {
-      "links": 19,
+      "links": 10,
       "unreachable": 0,
-      "uiPaths": 4,
+      "uiPaths": 2,
       "uiPathsWithMissingWords": 0,
-      "apiCalls": 3,
+      "apiCalls": 1,
       "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
     },
@@ -805,27 +585,17 @@
         "status": 200
       },
       {
-        "url": "https://learn.microsoft.com/power-platform/admin/manage-dataverse-auditing",
-        "ok": true,
-        "status": 200
-      },
-      {
-        "url": "https://learn.microsoft.com/power-apps/developer/data-platform/auditing/configure",
-        "ok": true,
-        "status": 200
-      },
-      {
         "url": "https://learn.microsoft.com/entra/agent-id/create-delete-agent-identities",
         "ok": true,
         "status": 200
       },
       {
-        "url": "https://learn.microsoft.com/entra/agent-id/disable-agent-identities",
+        "url": "https://learn.microsoft.com/entra/agent-id/create-single-instance-agent",
         "ok": true,
         "status": 200
       },
       {
-        "url": "https://learn.microsoft.com/microsoft-copilot-studio/admin-use-entra-agent-identities",
+        "url": "https://learn.microsoft.com/entra/agent-id/agent-id-creation-channels",
         "ok": true,
         "status": 200
       },
@@ -835,52 +605,17 @@
         "status": 200
       },
       {
-        "url": "https://learn.microsoft.com/entra/id-governance/agent-id-governance-overview",
+        "url": "https://learn.microsoft.com/entra/agent-id/sign-in-audit-logs-agents",
         "ok": true,
         "status": 200
       },
       {
-        "url": "https://learn.microsoft.com/entra/agent-id/what-are-agent-identities",
+        "url": "https://learn.microsoft.com/power-platform/developer/cli/reference/admin",
         "ok": true,
         "status": 200
       },
       {
-        "url": "https://learn.microsoft.com/power-platform/admin/activity-logging-auditing/activity-logs-overview",
-        "ok": true,
-        "status": 200
-      },
-      {
-        "url": "https://learn.microsoft.com/power-platform/admin/security-roles-privileges",
-        "ok": true,
-        "status": 200
-      },
-      {
-        "url": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/privileges-required-customization",
-        "ok": true,
-        "status": 200
-      },
-      {
-        "url": "https://learn.microsoft.com/entra/identity/conditional-access/policy-autonomous-agents",
-        "ok": true,
-        "status": 200
-      },
-      {
-        "url": "https://learn.microsoft.com/power-platform/admin/create-users#create-an-agent-user-preview",
-        "ok": true,
-        "status": 200
-      },
-      {
-        "url": "https://learn.microsoft.com/power-platform/admin/manage-dataverse-auditing#start-or-stop-auditing-for-an-environment",
-        "ok": true,
-        "status": 200
-      },
-      {
-        "url": "https://learn.microsoft.com/entra/agent-id/create-delete-agent-identities#use-the-microsoft-entra-admin-center",
-        "ok": true,
-        "status": 200
-      },
-      {
-        "url": "https://learn.microsoft.com/entra/agent-id/disable-agent-identities#create-conditional-access-policies-to-disable-agent-activities",
+        "url": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-adminpowerappssyncuser",
         "ok": true,
         "status": 200
       }
@@ -889,8 +624,8 @@
       {
         "index": 0,
         "side": "ui",
-        "governs": "Adding an agent user to an environment and assigning its security role",
-        "docs": "https://learn.microsoft.com/power-platform/admin/create-users#create-an-agent-user-preview",
+        "governs": "Adding an agent as a Dataverse user and assigning its security role",
+        "docs": "https://learn.microsoft.com/power-platform/admin/create-users",
         "reachable": true,
         "segments": [
           "Manage",
@@ -898,39 +633,19 @@
           "Settings",
           "Users + permissions",
           "Agents",
-          "+ Add agent"
+          "+ Add agent",
+          "agent user",
+          "Add",
+          "security role",
+          "Save"
         ],
         "missing": []
       },
       {
         "index": 1,
         "side": "ui",
-        "governs": "Dataverse auditing for the environment",
-        "docs": "https://learn.microsoft.com/power-platform/admin/manage-dataverse-auditing#start-or-stop-auditing-for-an-environment",
-        "reachable": true,
-        "segments": [
-          "Manage",
-          "Environments",
-          "Settings",
-          "Audit and logs",
-          "Audit settings"
-        ],
-        "missing": []
-      },
-      {
-        "index": 1,
-        "side": "api",
-        "governs": "Dataverse auditing for the environment",
-        "docs": "https://learn.microsoft.com/power-apps/developer/data-platform/auditing/configure",
-        "reachable": true,
-        "token": "PATCH [Organization",
-        "found": true
-      },
-      {
-        "index": 2,
-        "side": "ui",
-        "governs": "Creating the Microsoft Entra agent identity behind the agent user",
-        "docs": "https://learn.microsoft.com/entra/agent-id/create-delete-agent-identities#use-the-microsoft-entra-admin-center",
+        "governs": "Creating the Microsoft Entra agent identity an agent user relies on",
+        "docs": "https://learn.microsoft.com/entra/agent-id/create-delete-agent-identities",
         "reachable": true,
         "segments": [
           "Entra ID",
@@ -941,39 +656,12 @@
         "missing": []
       },
       {
-        "index": 2,
+        "index": 1,
         "side": "api",
-        "governs": "Creating the Microsoft Entra agent identity behind the agent user",
-        "docs": "https://learn.microsoft.com/entra/agent-id/create-delete-agent-identities",
+        "governs": "Creating the Microsoft Entra agent identity an agent user relies on",
+        "docs": "https://learn.microsoft.com/entra/agent-id/create-single-instance-agent",
         "reachable": true,
-        "token": "/beta/serviceprincipals/Microsoft.Graph.AgentIdentity",
-        "found": true
-      },
-      {
-        "index": 3,
-        "side": "ui",
-        "governs": "Blocking token issuance to agent identities",
-        "docs": "https://learn.microsoft.com/entra/agent-id/disable-agent-identities#create-conditional-access-policies-to-disable-agent-activities",
-        "reachable": true,
-        "segments": [
-          "Entra ID",
-          "Conditional Access",
-          "Policies",
-          "New policy",
-          "Assignments",
-          "Users, agents or workload identities",
-          "Include",
-          "All agent identities"
-        ],
-        "missing": []
-      },
-      {
-        "index": 3,
-        "side": "api",
-        "governs": "Blocking token issuance to agent identities",
-        "docs": "https://learn.microsoft.com/entra/agent-id/disable-agent-identities#create-conditional-access-policies-to-disable-agent-activities",
-        "reachable": true,
-        "token": "/beta/identity/conditionalAccess",
+        "token": "/beta/servicePrincipals/microsoft.graph.agentIdentity",
         "found": true
       }
     ],
@@ -996,6 +684,12 @@
       "date": "2026-11-17",
       "status": "held",
       "version": 4,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-17",
+      "status": "held",
+      "version": 5,
       "model": "gpt-6.1-sol"
     }
   ]

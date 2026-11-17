@@ -34,6 +34,12 @@ sources:
   - title: "CC User Prompt (msdyn_ccuserprompt) table/entity reference"
     url: "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_ccuserprompt"
     kind: "learn"
+  - title: "Manage overflow of work items in queues"
+    url: "https://learn.microsoft.com/dynamics365/customer-service/administer/manage-overflow"
+    kind: "learn"
+  - title: "Responsible AI FAQ for conversation orchestration"
+    url: "https://learn.microsoft.com/dynamics365/contact-center/implement/conversation-orchestration-rai-faq"
+    kind: "learn"
   - title: "MC1536059: Microsoft 365 Copilot: Conversation orchestration expands routing and overflow capabilities"
     url: "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1536059"
     kind: "message-center"
@@ -44,12 +50,9 @@ controls:
     scope: "environment"
     ui:
       surface: "Copilot Service admin center"
-      path: "Customer support > Conversation Orchestration > Prompt gallery > playbook template > Queues > Edit"
+      path: "Customer support > Conversation Orchestration > Prompt gallery > scenario category > playbook template > Queues > Edit"
       docs: "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration"
-    api:
-      kind: "rest"
-      call: "GET [Organization URI]/api/data/v9.2/msdyn_ccuserprompts"
-      docs: "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_ccuserprompt"
+    api: null
     note: "Needs System administrator or Omnichannel administrator. The Learn page names the CC User Prompt table for solution migration only; it does not describe the Web API as a way to publish."
 confidence: "high"
 created: "2026-11-17"
@@ -60,19 +63,23 @@ changes:
     note: "New briefing: conversation orchestration playbooks in Dynamics 365 Contact Center, with the Copilot credit charge on publish and the Copilot Service admin center path."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 76 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-17"
+    note: "Corrected after verification: removed the Dataverse GET as the control's automation, added the scenario-category step to the path, the feature toggle named in the Responsible AI FAQ and the planned credit exemption."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 89 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-17"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 76
-  confirmed: 73
+  claims: 89
+  confirmed: 88
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "b231b87c19dfdeb74cc6ea91381dc1b7"
+  contradicted: 1
+  attempts: 0
+  hash: "efc172284f668edb22a718dfb5b902a5"
 ---
 
 ## What's changing
@@ -113,7 +120,9 @@ Microsoft's notice describes enabling the feature as a step for new customers an
 
 **Licence.** The Learn page's prerequisites say that specific licensing requirements apply to configure and use conversation orchestration in Dynamics 365 Contact Center and point to the Dynamics 365 Licensing Guide. The licence itself is not named on the page.
 
-**Meter.** Conversation orchestration consumes Copilot credits only when a playbook is published. After that, the playbook can process any number of customer conversations without consuming extra Copilot credits. Saving a draft or enabling conversation orchestration does not consume credits. Microsoft's notice MC1536059 says the same. Re-publishing an active playbook after an edit (**Save & publish**) is a publish, so expect credits to be consumed again. Learn does not state this, so confirm it.
+**Meter.** The Learn page says conversation orchestration consumes Copilot credits only when a playbook is published. After that, the playbook can process any number of customer conversations without consuming extra Copilot credits. Saving a draft or enabling conversation orchestration does not consume credits. Microsoft's notice MC1536059 says the same. Re-publishing an active playbook after an edit (**Save & publish**) is a publish, so expect credits to be consumed again. Learn does not state this, so confirm it.
+
+**Planned exemption.** The overflow documentation describes a planned credit exemption: upgrading a single queue or multiple queues from legacy in-queue overflow does not use Copilot credits, and upgraded and newly created playbooks do not use credits when they have only one branch, that branch contains only the wait time in queue exceeds condition, and they use no context variables. The same page says playbooks with other conditions, multiple branches or any context variables use credits, and that publishing fails if the required credits are not available. See [Manage overflow of work items in queues](https://learn.microsoft.com/dynamics365/customer-service/administer/manage-overflow#upgrade-legacy-in-queue-overflow-to-a-conversation-orchestration-playbook).
 
 **Billing set-up.** The prerequisites require consumption-based billing. If you use the Power Platform pay-as-you-go plan, you need an Azure subscription. For pay-as-you-go, Dynamics 365 documents Microsoft Cost Management in the Azure portal for viewing usage and adjusting budgets. See [Copilot Credits](/concepts/copilot-credits/) for the shared meter.
 
@@ -132,7 +141,7 @@ Per MC1536059, General Availability began in late October 2026 and is expected t
 ### Before rollout
 
 - Confirm the licensing requirements in the Dynamics 365 Licensing Guide for your Contact Center tenancy before anyone publishes a playbook.
-- Set up consumption-based billing and agree who owns the Copilot credit spend, using the billing page in the controls table.
+- Set up consumption-based billing and agree who owns the Copilot credit spend, using the [Dynamics 365 consumption-based billing documentation](https://learn.microsoft.com/dynamics365/customer-service/administer/setup-pay-as-you-go).
 - Limit the System administrator and Omnichannel administrator roles to people who will own routing logic.
 - Decide which of the four scenarios you want first, and list queues that have custom prioritisation rules, because dynamic prioritisation does not apply to them.
 
@@ -155,13 +164,13 @@ Per MC1536059, General Availability began in late October 2026 and is expected t
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which queues and channels a playbook applies to, and whether it is published</strong><br><small>Environment</small><br><small class="controls__note">Needs System administrator or Omnichannel administrator. The Learn page names the CC User Prompt table for solution migration only; it does not describe the Web API as a way to publish.</small></td><td data-label="Admin UI"><strong>Copilot Service admin center</strong><br>Customer support › Conversation Orchestration › Prompt gallery › playbook template › Queues › Edit <a href="https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>GET [Organization URI]/api/data/v9.2/msdyn_ccuserprompts</code> <a href="https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_ccuserprompt" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which queues and channels a playbook applies to, and whether it is published</strong><br><small>Environment</small><br><small class="controls__note">Needs System administrator or Omnichannel administrator. The Learn page names the CC User Prompt table for solution migration only; it does not describe the Web API as a way to publish.</small></td><td data-label="Admin UI"><strong>Copilot Service admin center</strong><br>Customer support › Conversation Orchestration › Prompt gallery › scenario category › playbook template › Queues › Edit <a href="https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-The playbook is the control: no tenant-wide switch for conversation orchestration is documented on the Learn page at the time of writing (November 2026), although the notice tells new customers to enable it. Queue scope, the active or draft status, and deletion are managed per playbook. Learn says the Save button is disabled for active playbooks, so changes go through Save & publish, and cancelling reverts to the last published version.
+The configuration page does not give a feature-toggle path. The [Responsible AI FAQ](https://learn.microsoft.com/dynamics365/contact-center/implement/conversation-orchestration-rai-faq) says administrators can disable the feature toggle to turn off conversation orchestration. Queue scope, the active or draft status, and deletion are managed per playbook. Learn says the Save button is disabled for active playbooks, so changes go through Save & publish, and cancelling reverts to the last published version.
 
-The Dataverse row shows where playbooks are stored for solution migration, per the Learn page's instruction to add the CC User Prompt table to a solution. It is not documented as a way to publish or enable a playbook. Use solutions to move playbooks between environments, after creating the queues and context variables they reference in the destination.
+The Learn page tells administrators to add the CC User Prompt table to a solution to move playbooks between environments. The CC User Prompt table reference lists a Web API request that retrieves records from the table (GET /msdyn_ccuserprompts); that request lists records and is not documented as a way to set queue scope, publish or enable a playbook. Create the queues and context variables a playbook references in the destination environment before migrating it.
 
 Credit spend is governed outside this page: the Dynamics 365 billing page documents Microsoft Cost Management in the Azure portal for pay-as-you-go budgets.
 
@@ -170,7 +179,7 @@ Credit spend is governed outside this page: the Dynamics 365 billing page docume
 - Which Dynamics 365 Contact Center licence is required, and does it include any credits? Watch the Dynamics 365 Licensing Guide that the Learn page links.
 - How many Copilot credits does one publish consume, and does Save & publish on an active playbook consume them again? Watch the Learn page and the Copilot Credits documentation.
 - What data does the language model receive when it converts a playbook, and where is it processed? Watch the Conversation orchestration Responsible AI FAQ linked from the Learn page.
-- Is there a tenant or environment setting to turn conversation orchestration off, and is there a documented automation for publishing or deactivating playbooks? Watch the Learn page and the Dataverse table reference.
+- Where is the feature toggle that the Responsible AI FAQ says administrators can disable, and what does it cover (tenant, environment or queue)? Is there a documented automation for publishing or deactivating playbooks? Watch the Learn page and the Dataverse table reference.
 
 <!-- rationale
 risk: Medium. A language model converts each playbook into runtime logic that can transfer or end conversations, and Microsoft says deviations from the intended logic may show only at runtime.
@@ -178,14 +187,8 @@ cost: Variable. Publishing a playbook consumes Copilot credits (the Dynamics 365
 impact: Medium. Contact centre administrators configure it, but customers in queues and the representatives who receive their conversations feel the routing changes.
 -->
 
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].api; Governance controls table / command: GET [Organization URI]/api/data/v9.2/msdyn_ccuserprompts is the API counterpart for configuring queue/channel scope and whether a playbook is published. | Found: RetrieveMultiple ... GET /msdyn_ccuserprompts ... Query data | Fix: Set controls[0].api to null for this configuration/publishing control and remove the GET request from its rendered automation cell. Retain the qualifier that a publication procedure is not documented. The GET operation exists, but only lists CC User Prompt records; it does not change scope or publish. If the read-only request remains in prose, describe it explicitly as listing records, not as the automation equivalent of the control. | Source: https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_ccuserprompt
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] summary; licensing.notes; Why it matters; Cost and licensing; rationale: cost / cost: Copilot credits are consumed when a playbook is published. | Found: Conversation orchestration consumes Copilot credits only when you publish a playbook, which makes the configured orchestration logic active for use. | Fix: Add: 'The overflow documentation also describes a planned credit exemption for upgrades and for playbooks with one branch containing only the wait-time-in-queue-exceeds condition and no context variables.' Cite https://learn.microsoft.com/dynamics365/customer-service/administer/manage-overflow#upgrade-legacy-in-queue-overflow-to-a-conversation-orchestration-playbook. That page says: 'Under the planned credit exemption, upgrading a single queue or multiple queues doesn't use Copilot credits.' It also exempts qualifying upgraded and newly created playbooks. Keep the general feature-page statement attributed rather than implying every publish necessarily incurs a charge. | Source: https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: The creation path is Copilot Service admin center > Customer support > Conversation Orchestration > Prompt gallery > playbook template > Queues > Edit. | Found: In the drop-down field, select a scenario category, and then select a playbook template. ... Select Queues > Edit to open the queues pane. | Fix: Include the omitted scenario selection: 'Customer support > Conversation Orchestration > Prompt gallery > scenario category > playbook template > Queues > Edit'. The other navigation labels and their order are documented on the cited configuration page. | Source: https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration
-- [supported, minor] Governance controls; Open questions / absence: The configuration page does not document a tenant-wide conversation orchestration switch. | Found: Searched: "conversation orchestration" "enable" "disable" settings. Opened the configuration page and Responsible AI FAQ. The configuration page gives no switch path; the FAQ explicitly says administrators can disable the feature toggle. | Fix: Replace 'The playbook is the control: no tenant-wide switch ... although the notice tells new customers to enable it' with 'The configuration page does not give a feature-toggle path. The Responsible AI FAQ says administrators can disable the feature toggle to turn off conversation orchestration.' Cite https://learn.microsoft.com/dynamics365/contact-center/implement/conversation-orchestration-rai-faq. Change the final open question to ask for the toggle's documented location and scope, not whether an off switch exists. The FAQ states: 'disable the feature toggle to turn off the feature'.
-- [contradicted, minor] Governance guidance; Governance controls table / consistency: The governance checklist's controls are represented in the controls table. | Found: Set up consumption-based billing ... Limit the System administrator and Omnichannel administrator roles ... Monitor playbook behaviour with the diagnostics custom query | Fix: The billing set-up/spend, role-assignment and diagnostics checklist steps have no corresponding control rows; the sole row concerns playbook queue/channel scope and publishing. Do not describe the table as covering those checklist controls or add unverified paths or commands.
-- [contradicted, minor] Governance guidance: Before rollout / consistency: The controls table contains the billing page. | Found: using the billing page in the controls table. / The only control row links the conversation-orchestration configuration page and the CC User Prompt reference. | Fix: Replace 'using the billing page in the controls table' with 'using the Dynamics 365 consumption-based billing documentation' and link https://learn.microsoft.com/dynamics365/customer-service/administer/setup-pay-as-you-go.
+- [contradicted, minor] Governance guidance; Governance controls table / consistency: The governance checklist's controls are all represented in the controls table. | Found: Checklist: 'Set up consumption-based billing'; 'Limit the System administrator and Omnichannel administrator roles'; 'Monitor playbook behaviour with the diagnostics custom query'. Table: 'Which queues and channels a playbook applies to, and whether it is published'. | Fix: The checklist steps for billing set-up, administrator-role restriction, inventorying custom queue prioritisation, and diagnostics monitoring have no corresponding controls-table rows. Record this as a table-coverage gap; do not add unverified paths or automation.
 -->
