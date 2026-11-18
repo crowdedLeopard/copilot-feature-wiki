@@ -168,7 +168,7 @@ Otherwise:
       "governs": "What the control decides, as a noun phrase, 3 to 120 characters",
       "scope": "tenant | environment | environment-group | site | group | user | agent | app | maker | other",
       "ui": { "surface": "Admin centre by its current name", "path": "Step > Step > Step, as the Learn page gives it, up to 240 characters", "docs": "URL of the page where the path can be read" },
-      "api": { "kind": "powershell | graph | power-platform-api | pac-cli | azure-cli | rest | other", "call": "One line, up to 240 characters: the cmdlet and key parameters, the HTTP method and versioned path, or the CLI command", "docs": "URL of the reference page" },
+      "api": { "kind": "powershell | graph | power-platform-api | pac-cli | azure-cli | rest | other", "call": "One line, up to 240 characters: the cmdlet or command with the parameter that sets this control, or the HTTP method and versioned path with nothing after it", "docs": "URL of the reference page" },
       "note": "Optional, up to 240 characters: role required, preview status, maker-side only"
     }
   ],
@@ -188,9 +188,11 @@ Notes on particular fields:
   or govern it, the most decisive first. Set `ui` or `api` to `null` when Microsoft has not
   documented that surface, after a search for it; never leave a guess in its place. Every side
   that is not `null` needs a `docs` URL on a Microsoft domain; those pages are added to `sources`
-  for you. A long command is shortened to the cmdlet and the parameters that matter, with a
-  `<placeholder>` in place of a whole value. Never shorten by cutting part of a literal value: half
-  of a hashtable or a JSON body is a wrong command, and the verifier will hold the page for it. A
+  for you. A path starts at the admin centre's navigation and ends at the control. A command is
+  the cmdlet with the parameter that sets the control, with a `<placeholder>` in place of a whole
+  value; a Graph or REST call is the HTTP method and the versioned path with nothing after it,
+  and a request-body property that sets the control is named in `note`. Never print part of a
+  hashtable or a JSON body: the verifier checks whatever is printed. A
   report or an audit event with no documented path or command is not a row: say where it appears
   in the notes under the table.
 - **evidence.** Up to 120 entries. One entry for every documented fact a reader could act on: each control side that

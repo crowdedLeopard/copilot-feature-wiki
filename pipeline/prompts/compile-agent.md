@@ -166,7 +166,7 @@ it. Section text is Markdown inside JSON strings, so escape double quotes and wr
       "governs": "What the control decides, as a noun phrase, 3 to 120 characters",
       "scope": "tenant | environment | environment-group | site | group | user | agent | app | maker | other",
       "ui": { "surface": "Admin centre by its current name", "path": "Step > Step > Step, as the Learn page gives it", "docs": "URL of the page where the path can be read" },
-      "api": { "kind": "powershell | graph | power-platform-api | pac-cli | azure-cli | rest | other", "call": "One line: the cmdlet and key parameters, the HTTP method and versioned path, or the CLI command", "docs": "URL of the reference page" },
+      "api": { "kind": "powershell | graph | power-platform-api | pac-cli | azure-cli | rest | other", "call": "One line: the cmdlet or command with the parameter that sets this control, or the HTTP method and versioned path with nothing after it", "docs": "URL of the reference page" },
       "note": "Optional, up to 240 characters: role required, preview status, maker-side only"
     }
   ],
@@ -193,17 +193,37 @@ Notes on particular fields:
   table reference, Microsoft Graph, a workload's PowerShell module, the Edge policy reference), so
   search that reference by name before writing `null`. The standard lists which applies, under
   Research, question 5.
-  `path` follows the page's numbered steps in order, one label per step, with no tab or group
-  heading left out. `call` is something an administrator could run once the placeholders are filled
-  in: a parameter with its value, an HTTP method with a versioned path. A product, module or API
-  family name is not a call. `docs` is the page on which that exact path or call can be read; if
-  a row would need two reference pages, split it.
+  `path` starts at the admin centre's navigation, follows the page's steps in order with one
+  label per step and no tab or heading left out, and ends at the control: no "Save", no
+  confirmation pane, nothing typed on the way. `call` names one operation and what in it sets the
+  control. For PowerShell and CLIs that is the command with the deciding parameter and a value the
+  reference allows. For Graph and every REST API it is the HTTP method and the versioned path and
+  nothing after it; a request-body property that sets the control is named in `note`. A product,
+  module or API family name is not a call. `docs` is the page on which the call, or the control's
+  own part of the path, can be read; if a row would need two reference pages, split it. The
+  standard gives each of these rules in full under "Governance controls".
+  Where the brief lists "Controls the independent check has already confirmed" and one of them is
+  a control this briefing needs, open its page, see that it still reads that way, and use the
+  path or call as the brief gives it.
 - **evidence.** One entry for every documented fact a reader could act on: each control side that
-  is not `null` (the quote is the text that gives the path, cmdlet or endpoint), the default state
+  is not `null`, the default state
   unless it is `unknown`, every licensing and cost statement, every role, limit and number, every
   date that did not come from the roadmap record, and each statement that a control governs this
   feature. An existing control described as today's alternative needs entries for its own path and
   command, not for applying to the new feature. Facts taken from the roadmap record need no entry.
+  An absence has an entry too. For every `null` side, every "Not yet documented", "Not yet
+  published" and "Not stated", and every sentence that says Microsoft has not said, documented,
+  published or confirmed something (including "not confirmed to apply to this feature"), add an
+  entry whose `claim` is the absence, whose `url` is the page where the fact would be if it
+  existed (the product's meters, licensing, roles or reference page, opened in this task), and
+  whose `quote` begins "Searched:" and gives the queries you ran and, in a few words, what that
+  page does say on the subject. If it says something that covers this feature, the briefing
+  states that instead, and the absence shrinks to what is left.
+  For an admin path, the quote is the page's own steps for the end of the path, in its words
+  ("Under Products, select Copilot Studio. On the Summary tab, select Manage Agents"), so that
+  each label in `path` can be found in it; use a second entry where the steps do not fit one
+  quote or the way in is on another page. For a call, the quote is the syntax line or the request
+  line as the reference prints it.
   The quote must be text you read on that page in this task, written as it reads on the page
   (plain characters: ">" not "&gt;", and without the `**`, backticks or link syntax a fetch tool
   adds); if you cannot produce it, the claim does not belong in the briefing. The verifier starts from this list, so a complete one gets a
@@ -234,9 +254,11 @@ As the verifier:
 - Does each role, licence, limit and region keep the qualification its page gives for this
   feature's case? Is anything attributed to Microsoft that the page does not say?
 - Does any sentence present the roadmap's plan as shipped behaviour, a preview page as the final
-  design, or a neighbouring feature's control as this feature's? Check the governance checklist
-  too: a step that relies on a control the table marks as unconfirmed for this feature carries the
-  same condition ("once Microsoft confirms it applies").
+  design, or a neighbouring feature's control as this feature's? Is each general control (data
+  policies, labels, Conditional Access, capacity limits, the product's licence) described in the
+  terms its own page uses for what it covers, with no "not confirmed for this feature" where the
+  feature's case is plainly inside those terms? Where the caveat does stand, a governance
+  checklist step that relies on that control carries it too.
 - For every `null` control side and every "Not yet documented" or "Not yet published": did you run
   a search for that specific control or fact and find nothing? For an API side, was one of those
   searches in the reference for the platform that stores the setting, by name, and not only for
@@ -244,6 +266,10 @@ As the verifier:
   exists but did not read it, it is not "not documented". The page then gives the result, not the
   search: "Microsoft Learn documents no API for this policy at the time of writing (November
   2026)", never "a search found none".
+- Count the absences on the page, the `null` sides and "not confirmed" notes included. Does each
+  have its "Searched:" entry in `evidence`, naming the page where the fact would be? Is each
+  about the narrowest thing still open, with the general fact (the meter's rate, the role, the
+  platform rule) stated beside it? Take out any that no reader would act on.
 - For every "Microsoft has not said", "has not confirmed" and "is not documented" about billing,
   data policies, a default or a prerequisite: did you open the platform's own page for that rule?
   If that page covers this feature's case, state the rule and cite it, and keep only the narrower
@@ -256,8 +282,25 @@ As the verifier:
 - Does any sentence state how the feature works where Microsoft has not described it: what
   connects to what, which account it uses, who approves? Turn it into something to confirm, or
   remove it.
-- Compare each `ui.path` with the steps on its page, label by label, and run each `call` in your
-  head: would it work as written, and is it on the `docs` page?
+- Put each `ui.path` beside the steps quoted in its `evidence` entry. Does it start at the admin
+  centre's navigation and not part-way in? Is every label the page gives on the way there, in
+  order, including a heading the next step is "under"? Does it end at the control, with no "Save"
+  or confirmation after it? Is the surface the portal or app the page names?
+- Read each `call` against its reference. Is the cmdlet, or the method and path, there exactly as
+  written? After a REST path, is there nothing: no body, no "with", no braces? Is each value or
+  placeholder one the reference allows for that parameter? Does the operation make the change
+  the row describes, and not merely read it or create the policy that will hold it?
+- If `licensingModel` is `unknown`: did you read the feature's page and the product's licensing
+  or prerequisites page for "available with", "included", "requires" and "licence"? If either
+  says which licence covers the feature, the model is not `unknown`.
+- Read `defaultState` and `licensingModel` once more beside the body. The front matter must not
+  say more than the body, or less. A value other than `unknown` needs a sentence in the body that
+  states it for this feature, with its source; a body that says the default or the licence is not
+  stated goes with `unknown`. A procedure an administrator can follow today does not make a
+  planned feature `admin-opt-in`.
+- Find every "cap", "limit", "block", "stop" and "prevent" said of spending or use. Does the page
+  say use ends there? If it says use carries on by another route (the tenant's capacity, a
+  pay-as-you-go plan), say what the setting does and what carries on.
 
 As the administrator:
 

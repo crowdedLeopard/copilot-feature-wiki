@@ -24,6 +24,7 @@ import { loadGlossary } from './lib/tags.mjs';
 import { CONCEPTS } from '../config/taxonomy.mjs';
 import { CONCEPT_STATE, selectConceptTasks, conceptBrief, conceptTaskId, liveBriefings, allConceptPages, loadExistingConcept } from './lib/concepts.mjs';
 import { postsForBrief } from './lib/message-center.mjs';
+import { loadConfirmedControls } from './lib/confirmed-controls.mjs';
 
 const LIMIT = Number(process.env.COMPILE_LIMIT || 12);
 const ONLY = (process.env.COMPILE_ONLY || '').split(',').map((s) => s.trim()).filter(Boolean).map(Number);
@@ -39,6 +40,7 @@ const conceptPicks = await selectConceptTasks({ limit: conceptSlots, only: CONCE
 const items = CONCEPTS_ONLY.length ? [] : await selectQueue({ limit: LIMIT - conceptPicks.length, only: ONLY, topic: TOPIC });
 const indexSlugs = await loadIndexSlugs();
 const glossary = await loadGlossary();
+const confirmed = items.length ? await loadConfirmedControls() : [];
 await fs.rm(TASK_DIR, { recursive: true, force: true });
 await fs.mkdir(TASK_DIR, { recursive: true });
 await fs.rm(path.join(DATA_DIR, 'compile-results.json'), { force: true });
@@ -54,7 +56,7 @@ for (const q of items) {
   const { existing } = q.reason === 'fresh-draft' ? { existing: null } : await loadExisting(slug);
   const posts = await postsForBrief(item.id);
   const briefFile = path.join(TASK_DIR, `${q.id}.md`);
-  await fs.writeFile(briefFile, researchBrief(item, existing, indexSlugs, glossary, posts));
+  await fs.writeFile(briefFile, researchBrief(item, existing, indexSlugs, glossary, posts, confirmed));
   tasks.push({
     id: q.id, reason: q.reason, slug, title: item.title, status: item.status, topic: item.topic,
     exists: Boolean(existing), messageCenter: posts.map((p) => p.id), brief: path.relative(process.cwd(), briefFile),
