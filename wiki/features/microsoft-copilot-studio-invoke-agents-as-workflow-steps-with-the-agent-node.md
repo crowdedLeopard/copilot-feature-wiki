@@ -1,7 +1,7 @@
 ---
 title: "Copilot Studio: agent node runs an AI agent as a workflow step"
 slug: "microsoft-copilot-studio-invoke-agents-as-workflow-steps-with-the-agent-node"
-roadmapId: 562222
+roadmapId: 566998
 topic: "copilot-studio"
 products: ["Microsoft Copilot (Microsoft 365)","Microsoft Copilot Studio"]
 summary: "Makers can add an agent node to a Copilot Studio workflow so an AI agent decides and acts mid-flow. It uses Copilot Credits and no switch dedicated to the node is documented, so administrators should review credit and tool controls."
@@ -22,8 +22,8 @@ licensing:
 audiences: ["power-platform-admin","finops","maker","service-owner"]
 tags: ["copilot-studio","agents","automation","tools","mcp","knowledge-grounding","work-iq","human-in-the-loop","agent-evaluation","copilot-credits","usage-based-billing","copilot-harness"]
 sources:
-  - title: "Microsoft 365 Roadmap 562222"
-    url: "https://www.microsoft.com/microsoft-365/roadmap?id=562222"
+  - title: "Microsoft 365 Roadmap 566998"
+    url: "https://www.microsoft.com/microsoft-365/roadmap?id=566998"
     kind: "roadmap"
   - title: "Add an agent node to a workflow (Microsoft Copilot)"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-node-workflow"
@@ -99,7 +99,7 @@ controls:
 confidence: "medium"
 created: "2026-11-16"
 updated: "2026-11-18"
-roadmapModified: "2026-11-17T00:31:56"
+roadmapModified: "2026-10-26T23:15:50"
 changes:
   - date: "2026-11-16"
     note: "First briefing for this item: documents the agent node, its credit billing and the environment-level cost controls; no agent-node admin switch is documented."
@@ -185,19 +185,23 @@ changes:
     note: "Re-read the Learn pages on 18 November 2026: status, dates, credit billing, controls and default state are unchanged."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 99 statements confirmed"
-version: 24
+  - date: "2026-11-18"
+    note: "Re-read the Learn pages on 18 November 2026: status, dates, credit billing, controls and default state are unchanged."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 103 statements confirmed"
+version: 25
 verification:
   status: "verified"
   date: "2026-11-18"
-  version: 24
+  version: 25
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 99
-  confirmed: 99
+  claims: 103
+  confirmed: 103
   unconfirmed: 0
   contradicted: 0
   attempts: 0
-  hash: "c22e679cbc1453f6b4bc2860efff7d5f"
+  hash: "c88a25f430e80544731a6b21dd9c0101"
 ---
 
 ## What's changing

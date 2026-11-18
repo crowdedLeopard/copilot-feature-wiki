@@ -43,6 +43,9 @@ sources:
   - title: "Overview of licensing"
     url: "https://learn.microsoft.com/ai-builder/administer-licensing"
     kind: "learn"
+  - title: "organization EntityType"
+    url: "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/organization?view=dataverse-latest"
+    kind: "learn"
 videos: []
 related: ["copilot-credits"]
 controls:
@@ -52,8 +55,11 @@ controls:
       surface: "Power Platform admin center"
       path: "Manage > Environments > environment > Settings > Product > Features > AI Builder > AI prompts"
       docs: "https://learn.microsoft.com/ai-builder/administer"
-    api: null
-    note: "System Administrator role or equivalent. An environment group rule named AI prompts sets the same control for a group; once published it locks the environment setting."
+    api:
+      kind: "rest"
+      call: "PATCH /api/data/v9.2/organizations(<organizationid>)"
+      docs: "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/organization?view=dataverse-latest"
+    note: "System Administrator role or equivalent. An environment group rule named AI prompts sets the same control for a group; once published it locks the environment setting. The request body sets aipromptsenabled to true or false."
   - governs: "Whether a single prompt column runs AI generation"
     scope: "other"
     ui:
@@ -75,19 +81,23 @@ changes:
     note: "Correction: cost now says prompt-run cost depends on input tokens, output tokens and model version; credit wording clarified; Edit column added to the column path; monitoring steps moved out of the checklist."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 60 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-18"
+    note: "Correction: the environment AI prompts setting now lists its Dataverse Web API call (PATCH on the organization table, aipromptsenabled); the API open question now covers only the column-level setting."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 69 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-18"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 60
-  confirmed: 59
+  claims: 69
+  confirmed: 69
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "9418b91105ee0a4c16f689097ff4c33a"
+  contradicted: 0
+  attempts: 0
+  hash: "485534b55294a3ecaf00a98b65eb6730"
 ---
 
 ## What's changing
@@ -155,7 +165,7 @@ Prerequisites come from the prompt columns page: the Copilot and AI Prompts feat
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether AI prompts, and so prompt columns, can run in an environment</strong><br><small>Environment</small><br><small class="controls__note">System Administrator role or equivalent. An environment group rule named AI prompts sets the same control for a group; once published it locks the environment setting.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › AI Builder › AI prompts <a href="https://learn.microsoft.com/ai-builder/administer" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether AI prompts, and so prompt columns, can run in an environment</strong><br><small>Environment</small><br><small class="controls__note">System Administrator role or equivalent. An environment group rule named AI prompts sets the same control for a group; once published it locks the environment setting. The request body sets aipromptsenabled to true or false.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › AI Builder › AI prompts <a href="https://learn.microsoft.com/ai-builder/administer" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>PATCH /api/data/v9.2/organizations(&lt;organizationid&gt;)</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/organization?view=dataverse-latest" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether a single prompt column runs AI generation</strong><br><small class="controls__note">Maker-side, per column. Enabled by default per Learn; when cleared, AI analysis isn't performed for that column.</small></td><td data-label="Admin UI"><strong>Power Apps (maker)</strong><br>Tables › table › Columns › column › Edit column › Allow prompt column execution <a href="https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -171,16 +181,10 @@ For monitoring, add the Status and Details columns for each prompt column to a v
 - How is multi-line output chosen for a prompt column, and does it change existing prompt columns? Watch the prompt columns page on Learn and Message center.
 - Is there a length limit on stored multi-line output?
 - What happens on arrival: is multi-line output on by default or chosen by makers? The default is not stated.
-- Will Microsoft document an API or command for the AI prompts setting and the Allow prompt column execution setting?
+- Will Microsoft document an API or command for the Allow prompt column execution setting?
 
 <!-- rationale
 risk: Low. The roadmap item describes only a change to the text a prompt column can hold, and the existing AI prompts and column settings still govern prompt columns; Learn says prompt columns aren't audited.
 cost: Variable. Prompt columns support AI Builder credits and Copilot Credits each time a prompt runs; prompt-run cost depends on input tokens, output tokens and the model version.
 impact: Low. Only makers who define prompt columns and people who read the tables that hold them are in scope; the roadmap item lists the web platform only.
--->
-
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].api; Governance controls: first row; Open questions / absence: Microsoft has not documented an API or command for the environment AI prompts setting. | Found: Entity set path: [organization URI]/api/data/v9.2/organizations. Operations supported: GET PATCH. aipromptsenabled | Edm.Boolean | Indicates whether AI Prompts feature is enabled. Display name: Enable AI Prompts. | Fix: Replace controls[0].api null with kind 'rest', call 'PATCH /api/data/v9.2/organizations(<organizationid>)', and docs 'https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/organization?view=dataverse-latest'. Add to that row's note: 'The request body sets aipromptsenabled to true or false.' Update the rendered API cell to match and remove only the AI prompts setting from the API open question, leaving the column-level setting open. The Organization entity/table references document this Boolean as writable; the Web API update procedure at https://learn.microsoft.com/power-apps/developer/data-platform/webapi/update-delete-table-rows documents PATCH with the properties to update. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/organization?view=dataverse-latest
 -->

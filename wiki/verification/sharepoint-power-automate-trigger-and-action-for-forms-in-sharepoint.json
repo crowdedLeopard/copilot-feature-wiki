@@ -1,0 +1,577 @@
+{
+  "slug": "sharepoint-power-automate-trigger-and-action-for-forms-in-sharepoint",
+  "roadmapId": 561025,
+  "title": "SharePoint forms: Power Automate trigger \"When a form is submitted\" and action \"Get form metadata\"",
+  "status": "held",
+  "date": "2026-11-18",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "cd5b21ff3a5b",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-18",
+    "reasons": [
+      "2 blocking findings (claims 35, 39)"
+    ]
+  },
+  "counts": {
+    "claims": 42,
+    "confirmed": 39,
+    "unconfirmed": 0,
+    "contradicted": 3,
+    "blocker": 2,
+    "major": 0,
+    "minor": 1
+  },
+  "summary": "Hold: the data-policy navigation stops at the policy list rather than the connector classification control. The permissions guidance also omits the System Administrator role required for environment-level policies in environments with Dataverse. The feature description and roadmap targets are supported.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing; Open questions",
+      "type": "record",
+      "claim": "The general availability target is June CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"June CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate; What's changing; Open questions",
+      "type": "record",
+      "claim": "The preview target is May CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"May CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists Worldwide (Standard Multi-Tenant), without listing US Government clouds.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The record lists General Availability and Preview without assigning each operation or form type to a phase.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing; Open questions",
+      "type": "date",
+      "claim": "Both roadmap targets precede the November 2026 run while the supplied record still says In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"targetDate\": \"June CY2026\", \"previewDate\": \"May CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: products, roadmapModified",
+      "type": "record",
+      "claim": "The record names Microsoft 365, Power Automate and SharePoint and was modified on April 29, 2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft 365\", \"Power Automate\", \"SharePoint\"], \"modified\": \"2026-04-29T23:15:48\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "title; summary; What's changing",
+      "type": "behaviour",
+      "claim": "The SharePoint connector documents the trigger When a form is submitted and the action Get form metadata.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/dev/business-apps/power-automate/sharepoint-connector-actions-triggers",
+      "quote": "### When a form is submitted\nTriggers a flow when a form in SharePoint is submitted.\n### Get form metadata\nGets info about the form.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "summary; What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The submission trigger supports list, file upload and document generation forms.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/dev/business-apps/power-automate/sharepoint-connector-actions-triggers",
+      "quote": "Supported form types include list forms, file upload forms, and document generation forms.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Why it matters; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "A submission can automatically start downstream approvals, notifications or routing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/dev/business-apps/power-automate/sharepoint-connector-actions-triggers",
+      "quote": "This enables automation of downstream processes such as approvals, notifications, routing, or document workflows based on submitted responses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Get form metadata returns the form identifier, title, link, type, output format and questions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/dev/business-apps/power-automate/sharepoint-connector-actions-triggers",
+      "quote": "The returned metadata includes information such as the form identifier, title, link, form type, defined output format, and the questions used to collect responses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Flows can evaluate the form structure before downstream automation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/dev/business-apps/power-automate/sharepoint-connector-actions-triggers",
+      "quote": "Use this action to obtain the metadata and schema definition of a selected form before executing downstream automation logic in a flow.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "The trigger supplies the form ID, responder information, submission time and responses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/dev/business-apps/power-automate/sharepoint-connector-actions-triggers",
+      "quote": "The trigger provides submission-level details, including the form ID, responder information, submission time, and responses to form questions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Why it matters; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "For applicable file upload or document generation forms, the trigger includes uploaded or generated document metadata.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/dev/business-apps/power-automate/sharepoint-connector-actions-triggers",
+      "quote": "For forms that support file uploads or document generation, the trigger also includes metadata about uploaded or generated documents, where applicable.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The separate Generate a document from a form action supports only document generation forms.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/dev/business-apps/power-automate/sharepoint-connector-actions-triggers",
+      "quote": "This action is supported only for document generation (DocGen) forms.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Risk assessment: Change & support; Open questions",
+      "type": "availability",
+      "claim": "The document generation page labels the submission trigger, metadata action and document generation action Preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-structured-document-generation",
+      "quote": "Form submitted (Preview) triggers a flow when a form is submitted\nGet form metadata (Preview) retrieves the form structure\nGenerate document from form (Preview) creates documents",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Risk assessment: Change & support; Scope; Governance guidance",
+      "type": "availability",
+      "claim": "Document generation forms are in AI in SharePoint Public Preview and access may be limited to enrolled customers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/dev/business-apps/power-automate/sharepoint-connector-actions-triggers",
+      "quote": "Document generation forms are part of AI in SharePoint Public Preview. Access to document generation capabilities may be limited to customers enrolled in the preview program.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "List forms and file upload forms are not part of the AI in SharePoint preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/dev/business-apps/power-automate/sharepoint-connector-actions-triggers",
+      "quote": "List forms and file upload forms aren't part of the AI in SharePoint preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Why it matters; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Power Automate workflows can send document details to other systems.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-structured-document-generation",
+      "quote": "Integrate with other systems - Use Power Automate to send document details to external systems, CRM tools, or reporting dashboards.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Document generation form submitters need only the form link.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-structured-document-generation",
+      "quote": "Form submitters need only the form link (Read access to the template is granted automatically).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Security & identity; Scope",
+      "type": "role",
+      "claim": "Creating a document generation form requires Edit permission on its document library.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-structured-document-generation",
+      "quote": "To create a form, users must have Edit permissions on the document library.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "front matter: licensing.notes; Risk assessment; Cost and licensing; Scope; Governance guidance",
+      "type": "licensing",
+      "claim": "Users creating and configuring document generation forms need an assigned Microsoft Copilot licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-structured-document-generation",
+      "quote": "Content managers, or users who create and configure forms, must have a Microsoft Copilot license assigned.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Power Automate document generation does not apply the form's conditional visibility, so a hidden required field remains visible in the document.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-structured-document-generation",
+      "quote": "Power Automate doesn't apply conditional visibility: if you generate documents through a Power Automate flow, the flow doesn't hide or show fields the way the form does, so a required field that your form hides will still be visible in the document.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Microsoft recommends making normally hidden fields optional when using a form with Power Automate.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-structured-document-generation",
+      "quote": "When you use a form with Power Automate, make any field you'd normally hide an optional field so it doesn't block the intended flow.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "SharePoint is listed among Standard tier connectors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/connectors/connector-reference/connector-reference-standard-connectors",
+      "quote": "Only Standard tier connectors are shown. ... SharePoint",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "A Standard connectors entitlement is needed to add a standard connector to a cloud flow and trigger it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/power-automate-licensing/types",
+      "quote": "The standard connectors entitlement is needed to add a standard connector to a cloud flow and trigger it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The mixed licensing model reflects standard-connector entitlements alongside the Copilot requirement for document generation form creators.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-structured-document-generation",
+      "quote": "Content managers, or users who create and configure forms, must have a Microsoft Copilot license assigned.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "No separate operation-specific licence or rate is published for the submission trigger or metadata action.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint \"When a form is submitted\" licensing; SharePoint \"Get form metadata\" price meter license. Read connector article, current connector reference, Standard connector list, licensing/types and document generation prerequisites; no separate operation-specific licence or rate found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The document generation page states its Copilot requirement for creating forms, not specifically for using these operations in flows.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint \"When a form is submitted\" licensing; SharePoint \"Get form metadata\" price meter license. Read document generation prerequisites and Power Automate section, connector article and current connector operation reference; no flow-specific Copilot requirement was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "front matter: defaultState; Why it matters",
+      "type": "absence",
+      "claim": "The rollout default, including whether the operations appear for all makers at once, is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"SharePoint\" \"When a form is submitted\" \"default\"; SharePoint forms Power Automate trigger admin disable default rollout. Read roadmap, connector article, current connector reference and document generation page; no rollout default or all-maker deployment statement found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Why it matters; rationale: impact",
+      "type": "absence",
+      "claim": "The roadmap and Learn do not describe this integration changing existing forms or flows without maker action.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"SharePoint\" \"forms\" \"Power Automate\" \"existing\" rollout. Read roadmap description, connector article, current connector reference and document generation Power Automate section; found no automatic alteration of existing forms or flows.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "summary; Open questions",
+      "type": "absence",
+      "claim": "No feature-specific administrator action or switch limiting these two operations is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"SharePoint\" \"form\" \"Power Automate\" \"admin switch\"; SharePoint forms Power Automate trigger admin disable default rollout. Read connector article, current reference, document generation page and action-control page; no separate switch or required rollout action found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Scope; Open questions",
+      "type": "absence",
+      "claim": "The connector article does not state the permissions needed to use these operations on someone else's form.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint \"Get form metadata\" permissions; SharePoint \"When a form is submitted\" \"Get form metadata\" license admin disable default permissions. Read connector article and current operation parameters; no owner-versus-other-user form permissions were stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[0].ui; Governance guidance: Before rollout; Governance controls table",
+      "type": "admin-path",
+      "claim": "Security > Settings > Data and privacy > Data policy reaches the control deciding connector combinations.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-platform/admin/prevent-data-loss",
+      "quote": "From the list of data policies, select a policy, and then select Edit Policy. ... Select one or more pre-built connectors. ... select the Salesforce and SharePoint connectors, and then select Move to Business from the top menu bar.",
+      "severity": "blocker",
+      "fix": "Replace the path in front matter, rendered table and checklist with 'Security > Settings > Data and privacy > Data policy > policy > Edit Policy > Prebuilt connectors > SharePoint > Move to Business'. The cited page documents selecting and editing a policy and classifying SharePoint; stopping at Data policy only reaches the list."
+    },
+    {
+      "n": 36,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "Add-ConnectorsToPolicy -PolicyName <policy GUID> -Classification Confidential -Connectors <connector objects> moves connectors into the Business group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy",
+      "quote": "Allowed values are 'General', 'Confidential', and 'Blocked' (for Non-business, Business, and Blocked, respectively). ... -Connectors ... Object[] ... -PolicyName ... The policy name (GUID).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[0].governs, scope; Risk assessment; Governance controls; rationale: risk",
+      "type": "applicability",
+      "claim": "Existing data policies govern which connectors flows can combine with SharePoint in their scoped environments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/prevent-data-loss",
+      "quote": "By moving the Salesforce and SharePoint connectors to the Business data group, you're preventing users from creating flows and apps that combine these two connectors with any of the connectors in the Non-business or Blocked groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[0].note; Governance controls; rationale: risk",
+      "type": "applicability",
+      "claim": "SharePoint is not blockable in a data policy, so the Block action is unavailable.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/prevent-data-loss",
+      "quote": "For connectors like SharePoint that aren't blockable, the Block action isn't available and a warning appears.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[0].note; Governance controls",
+      "type": "role",
+      "claim": "Environment Admin or Power Platform admin permissions suffice to create or edit the data policy.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-platform/admin/prevent-data-loss",
+      "quote": "For environments with a Dataverse database, you need to be assigned the System Administrator role instead. ... Environment admins can't edit policies created by the tenant admin.",
+      "severity": "blocker",
+      "fix": "Replace the permissions sentence in the control note and Governance controls with: 'Tenant-level policies require the Power Platform Administrator role. Environment-level policies require Environment Admin permissions, or the System Administrator role for environments with a Dataverse database. Environment admins cannot edit policies created by the tenant admin.'"
+    },
+    {
+      "n": 40,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Connector action control allows or blocks individual operations but cannot be configured for unblockable connectors such as SharePoint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/dlp-granular-controls",
+      "quote": "You can use connector action control to allow or block individual actions or triggers within a given connector. ... You can configure connector actions for all blockable connectors, but not for unblockable connectors and custom connectors.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Environment-level data policies cannot override tenant-wide data policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/prevent-data-loss",
+      "quote": "Environment-level data policies can't override tenant-wide data policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Governance guidance: At rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist's instruction to make hidden fields optional has no corresponding control row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Ask makers to make fields that a form hides optional before generating documents through a flow. ... The controls table contains only the connector-combination data-policy control.",
+      "severity": "minor",
+      "fix": "Remove the At rollout checklist bullet asking makers to make hidden fields optional; that field-requiredness setting has no row in the controls table. The sourced advice can remain in Risk assessment."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-18T21:59:09.772Z",
+    "summary": {
+      "links": 8,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=561025",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/dev/business-apps/power-automate/sharepoint-connector-actions-triggers",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-structured-document-generation",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/prevent-data-loss",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/dlp-granular-controls",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/power-automate-licensing/types",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/connectors/connector-reference/connector-reference-standard-connectors",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which connectors flows using the SharePoint connector may combine with",
+        "docs": "https://learn.microsoft.com/power-platform/admin/prevent-data-loss",
+        "reachable": true,
+        "segments": [
+          "Security",
+          "Settings",
+          "Data and privacy",
+          "Data policy"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Which connectors flows using the SharePoint connector may combine with",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy",
+        "reachable": true,
+        "token": "Add-ConnectorsToPolicy",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

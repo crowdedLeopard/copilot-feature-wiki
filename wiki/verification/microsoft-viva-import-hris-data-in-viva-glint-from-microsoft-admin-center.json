@@ -1,0 +1,951 @@
+{
+  "slug": "microsoft-viva-import-hris-data-in-viva-glint-from-microsoft-admin-center",
+  "roadmapId": 410396,
+  "title": "Viva Glint: import HRIS data through Microsoft 365 Organizational Data Service",
+  "status": "held",
+  "date": "2026-11-18",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "cd5b21ff3a5b",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-18",
+    "reasons": [
+      "2 blocking findings (claims 58, 61)"
+    ]
+  },
+  "counts": {
+    "claims": 72,
+    "confirmed": 69,
+    "unconfirmed": 0,
+    "contradicted": 3,
+    "blocker": 2,
+    "major": 0,
+    "minor": 5
+  },
+  "summary": "Hold: the attribute-access and staging paths omit the required wizard choice of destination apps, and present a CSV example as a generic connector route. The roadmap facts and licensing are supported. Several smaller corrections should clarify navigation and differences between Microsoft's pages.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap plans HRIS connector imports into Viva Glint from Microsoft Admin Center.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Customers will be able to use various connectors to HRIS tools to import HRIS data into Viva Glint from Microsoft Admin Center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Rolling out.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Rolling out\", \"statusKey\": \"rolling-out\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: targetDate; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap target is November CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"November CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap record supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-11-06T23:04:41.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-06T23:04:41\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; summary",
+      "type": "behaviour",
+      "claim": "Organizational Data Service centrally imports and manages employee data for Microsoft 365 and Viva, including Glint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/modis-data-import",
+      "quote": "provides a centralized way to import and manage employee data for Microsoft 365 and Microsoft Viva experiences, including Viva Glint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "summary; What's changing",
+      "type": "behaviour",
+      "claim": "The Glint import documentation lists Workday, SuccessFactors, APIs, ADLS and file-based imports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/modis-data-import",
+      "quote": "Flexible employee data ingestion through multiple import methods, including Workday and SuccessFactors connectors, APIs, Azure Data Lake Storage (ADLS), and file-based imports.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Connection setup selects a connector and Viva Glint, maps attributes, chooses attribute access and begins validation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/modis-data-import",
+      "quote": "Review the connection configuration, including the selected applications and services, reserved attribute mappings, custom attributes, and attribute access settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Imports support full and incremental types.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/modis-data-import",
+      "quote": "Microsoft 365 Organizational Data Service supports two import types:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "default",
+      "claim": "CSV defaults to incremental imports and lets the administrator select full imports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/modis-data-import",
+      "quote": "Incremental imports are selected by default, but administrators can choose a full import instead.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Files up to 2 GB are supported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/modis-data-import",
+      "quote": "Connectors support imports up to 2 GB.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Learn says overall ingestion takes a few minutes to up to three hours.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/modis-data-import",
+      "quote": "Overall ingestion can take from a few minutes to up to three hours.",
+      "severity": "minor",
+      "fix": "Replace the timing sentence with: \"The Glint import page says overall ingestion can take a few minutes to three hours; the CSV service guide allows up to 24 hours for processing, or 72 hours for the first upload, and up to three days for profile-store availability.\" Cite https://learn.microsoft.com/microsoft-365-apps/org-data-service/import/import-orgdata, whose timing differs."
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "default",
+      "claim": "The Viva Glint integration is enabled by default for new customers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/modis-data-consumption",
+      "quote": "For new customers, Microsoft 365 Organizational Data Service is enabled by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Scope; Governance guidance",
+      "type": "behaviour",
+      "claim": "Existing customers with employee data must complete one-time attribute-mapping onboarding before importing from the service.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/modis-data-consumption",
+      "quote": "Existing customers with employee data already configured in Viva Glint must complete a one-time onboarding process to map Organizational data attributes to Viva Glint attributes before Viva Glint can import employee data from Microsoft 365 Organizational Data Service.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Open questions",
+      "type": "availability",
+      "claim": "The feature is released in phases and the onboarding banner may not yet be available.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/modis-data-consumption",
+      "quote": "Organizational data in Microsoft 365 is being released in phases. If you don't see the onboarding banner, the feature isn't available yet in your tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Open questions",
+      "type": "availability",
+      "claim": "The get-started page labels the API connector Public Preview, unlike its other connector entries.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/get-started",
+      "quote": "API-based Connector (Public Preview)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Open questions",
+      "type": "behaviour",
+      "claim": "The get-started page names an Azure Blob Storage Connector whereas the Glint page names ADLS.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/get-started",
+      "quote": "Azure Blob Storage Connector | Microsoft pulls your .csv file from Azure Blob using a Blob container URL you provide.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "summary; Scope; Governance guidance; controls[1]",
+      "type": "role",
+      "claim": "The Glint import page requires Organizational Data Source Administrator to create and manage imports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/modis-data-import",
+      "quote": "To create and manage employee data imports in Microsoft 365 Organizational Data Service, you must be assigned the Organizational Data Source Administrator role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Scope; Governance guidance",
+      "type": "role",
+      "claim": "A Global Administrator assigns the Organizational Data Source Administrator role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/modis-data-import",
+      "quote": "The Organizational Data Source Administrator role is assigned by a Global Administrator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Scope",
+      "type": "role",
+      "claim": "Viva Glint service administrators can also be assigned the data-source role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/modis-data-import",
+      "quote": "Viva Glint service administrators can also be assigned this role when they need to configure employee data imports through Microsoft 365 Organizational Data Service.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Why it matters",
+      "type": "role",
+      "claim": "The get-started page says only Global Administrators and Organizational Data Source Administrators can upload data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/get-started",
+      "quote": "Only Global Administrators and Organizational Data Source Administrators can upload data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "The data-source role can upload, update and delete organizational data for specified applications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/get-started",
+      "quote": "Data upload and management: Permissions to upload, update, and delete organizational data for the specified applications",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "The data-source administrator can connect HRIS systems.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/get-started",
+      "quote": "This admin can also connect to human capital management (HCM) systems such as Workday and SAP SuccessFactors",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Workday and SAP SuccessFactors connectors pull data using supplied source-system credentials.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/get-started",
+      "quote": "Microsoft pulls data directly from SAP SuccessFactors's public APIs using SAP SuccessFactors credentials that you provide.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Security & identity; Governance guidance",
+      "type": "behaviour",
+      "claim": "Microsoft advises confirming approval for direct connections to Workday and SAP SuccessFactors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/get-started",
+      "quote": "Your organization has approved a direct connection between Microsoft 365 and Workday.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Why it matters; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "Public reserved attributes are shared with Profile and experiences including Microsoft 365, Copilot, People card, Viva Amplify and Viva Engage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/modis-data-consumption",
+      "quote": "Public reserved attributes are shared with Profile and used by other Microsoft 365 experiences that consume Profile data, including Microsoft 365, Copilot, People card, Viva Amplify, and Viva Engage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Non-public reserved attribute sharing depends on the data-source administrator's access choices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/modis-data-consumption",
+      "quote": "Non-public reserved attributes can be shared with supported apps and Microsoft experiences based on the access chosen by the Organizational data source admin during connector setup.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Glint imports only attributes shared with it through connection attribute access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/modis-data-import",
+      "quote": "Viva Glint imports only the Organizational data attributes that are shared with Viva Glint through the attribute access configuration for this connection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "A full import replaces the imported employee population.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/modis-data-import",
+      "quote": "Use full imports to replace the imported employee population with the contents of the current import.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance",
+      "type": "behaviour",
+      "claim": "Employees absent from a full import may become inactive depending on configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/modis-data-import",
+      "quote": "Employees that previously existed in Viva Glint but aren't included in a full import may become inactive, depending on your configuration and import behavior.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Workday connector refreshes are full imports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/modis-data-import",
+      "quote": "Workday: Every refresh is a full import and sends a full-import signal to Viva Glint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Workday and SAP SuccessFactors schema changes automatically trigger a full import.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/modis-data-import",
+      "quote": "Any schema change for the Workday or SAP SuccessFactors connector automatically triggers a full import.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Other connectors require administrators to resend all employees after schema updates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/modis-data-import",
+      "quote": "For all other connector types, after a schema update, administrators must manually send data for all employees through a new incremental or full import.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Multiple connector instances or types turn off automatic full imports to Glint through Workday and SAP SuccessFactors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/modis-data-import",
+      "quote": "If your organization has multiple instances of the same connector, or multiple different connectors, automatic full imports to Viva Glint through the Workday and SAP SuccessFactors connectors are turned off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Change & support; Scope",
+      "type": "behaviour",
+      "claim": "Each connector can send data to only one Viva Glint instance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/modis-data-import",
+      "quote": "If your tenant has multiple Viva Glint instances, each connector can send data to only one Viva Glint instance.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Multiple connectors can import data into Viva Glint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/modis-data-import",
+      "quote": "You can set up multiple connectors to import data into Viva Glint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "A hierarchy derived from an attribute mapped to Microsoft_ManagerEmail mirrors Profile, so avoiding that mapping preserves a distinct hierarchy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/modis-data-import",
+      "quote": "If the Viva Glint manager hierarchy is derived from a Viva Glint attribute that's mapped to Microsoft_ManagerEmail, the Viva Glint manager hierarchy mirrors the Profile hierarchy.",
+      "severity": "minor",
+      "fix": "Retain the observation about Microsoft_ManagerEmail but remove \"do not map that attribute if you want them to differ.\" Append: \"The consumption page instead names Microsoft_ManagerID in its advice for keeping the hierarchies distinct.\" Both source pages are already cited."
+    },
+    {
+      "n": 41,
+      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The import is covered by a Viva Glint license or a Microsoft 365 license that includes Viva Glint, supporting the included model.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/get-started",
+      "quote": "Viva Glint | A Microsoft Viva Glint license, or a Microsoft 365 license that includes Viva Glint",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The get-started page lists per-app licenses but no price or meter for the import itself.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Organizational Data Service Viva Glint import pricing licensing meter. Opened get-started and import-orgdata; read the licensing table and connector guidance. No import price or meter stated there.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "front matter: defaultState; summary; Why it matters",
+      "type": "default",
+      "claim": "This import capability is admin-opt-in because an administrator must configure an import connection before it imports data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/modis-data-import",
+      "quote": "The following steps describe how to create a data connection in Microsoft 365 Organizational Data Service, configure access for Viva Glint, and import employee data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[0].note; Governance guidance",
+      "type": "default",
+      "claim": "Completing onboarding automatically sets Organizational data imports to Yes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/modis-data-consumption",
+      "quote": "After the onboarding process is completed, Viva Glint is configured to import employee data from Microsoft 365 Organizational Data Service. The Organizational data imports setting is automatically set to Yes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Disabling Organizational data imports stops imports and yields ORG_UPLOAD_SWITCHED_OFF.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/modis-data-consumption",
+      "quote": "When imports are disabled, Viva Glint stops importing employee data from Microsoft 365 Organizational Data Service, and uploads return the ORG_UPLOAD_SWITCHED_OFF advisory.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[0].note; Scope",
+      "type": "behaviour",
+      "claim": "Organizational data imports must be Yes for Glint to appear as a destination in the admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/modis-data-consumption",
+      "quote": "This toggle must be Yes for Viva Glint to appear as an optional end point for your connection in the Microsoft Admin Center",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Scope",
+      "type": "role",
+      "claim": "A Viva Glint administrator completes schema mapping and enables Organizational Data Imports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/get-started",
+      "quote": "Complete Viva Glint schema mapping. Ensure imported attributes are mapped to the correct Viva Glint attributes. After configuration, enable Organizational Data Imports in General Settings > Technical Configuration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Scope; Governance guidance",
+      "type": "behaviour",
+      "claim": "The five required Glint attributes are Email Address, First Name, Last Name, Status and Employee ID.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/modis-data-import",
+      "quote": "including the five required attributes: Email Address, First Name, Last Name, Status, and Employee ID.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Scope; Governance guidance",
+      "type": "behaviour",
+      "claim": "Custom attributes require a pre-existing Glint attribute with an exact, case-sensitive name match.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/modis-data-import",
+      "quote": "Viva Glint imports custom Organizational data attributes only when a corresponding Viva Glint attribute already exists and the attribute names match exactly, including letter casing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Unmatched custom attributes are ignored.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/modis-data-consumption",
+      "quote": "If Viva Glint receives a custom Organizational data attribute that doesn't match an existing Viva Glint attribute, the attribute is ignored",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Data connections exposes validation and import status, ingestion summaries and advisories.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/modis-data-import",
+      "quote": "Each data import is assigned a unique ingestion ID, and the validation page provides an ingestion summary and advisory details.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Import email notifications support up to 10 Viva Glint admins.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/modis-data-consumption",
+      "quote": "You can also configure email notifications for imports from Microsoft 365 Organizational Data Service. Up to 10 Viva Glint admins can receive these notifications.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The Glint switch is at General settings > Technical configuration > Organizational data imports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/modis-data-consumption",
+      "quote": "You can enable or disable imports from Microsoft 365 Organizational Data Service at any time from General settings > Technical configuration.",
+      "severity": "minor",
+      "fix": "Use \"Configuration > Service Configuration > General Settings > Technical configuration > Organizational data imports\" in controls[0].ui and the table. Cite https://learn.microsoft.com/viva/glint/setup/manage-general-settings, which gives the initial Configuration symbol and Service Configuration heading. The omitted symbol and heading are navigational omissions, not wrong printed steps."
+    },
+    {
+      "n": 54,
+      "where": "controls[0].api; Governance controls",
+      "type": "absence",
+      "claim": "No API for the Glint Organizational data imports switch is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Glint \"Organizational data imports\" API PowerShell enable disable; site:learn.microsoft.com/powershell \"Glint\" \"Organizational\" imports. Opened modis-data-consumption and manage-general-settings; results document UI, not a switch API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Tenant role assignment is at Microsoft Entra admin center > Identity > Roles & admins > role > Add assignments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal",
+      "quote": "Browse to Identity > Roles & admins. ... Select a role name to open the role. ... Select Add assignments",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[1].api; controls[1].note; Governance controls",
+      "type": "command",
+      "claim": "POST /v1.0/roleManagement/directory/roleAssignments assigns a role using principalId and roleDefinitionId.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal",
+      "quote": "POST https://graph.microsoft.com/v1.0/roleManagement/directory/roleAssignments\n{\n    \"@odata.type\": \"#microsoft.graph.unifiedRoleAssignment\",\n    \"principalId\": \"<Object ID of user or group>\",\n    \"roleDefinitionId\": \"<ID of role definition>\",\n    \"directoryScopeId\": \"/\"\n}",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[1].note",
+      "type": "role",
+      "claim": "The Entra portal steps require at least Privileged Role Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal",
+      "quote": "Sign in to the Microsoft Entra admin center as at least a Privileged Role Administrator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "After entering the service through Settings > Viva > Data management, the attribute-access path goes from Data connections > + New import > connector type directly to Choose attribute access.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/viva/glint/setup/modis-data-import",
+      "quote": "Select a connector type. The following example uses CSV import. ... Choose apps & services ... Select the Viva Glint.",
+      "severity": "blocker",
+      "fix": "Replace controls[2].ui.path and its table path with \"Settings > Viva > Data management > Microsoft 365 Organizational Data Service > Data connections > + New import > CSV import > Choose apps & services > Viva Glint > Choose attribute access\". State in the note that this is the documented CSV example. The required destination choice cannot be omitted from the path; describing it only in the note does not supply the route. The Settings entry is supported by the already-cited get-started page, so the pre-check's missing Data management text is not itself an error."
+    },
+    {
+      "n": 59,
+      "where": "controls[2].note; Governance controls; Governance guidance",
+      "type": "behaviour",
+      "claim": "Attribute access is configured per connection, per destination and per attribute, separately for reserved and custom attributes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/modis-data-import",
+      "quote": "Attribute access is configured separately for reserved attributes and custom attributes. For each attribute, select the applications and services that should receive the attribute data.",
+      "severity": "minor",
+      "fix": "Qualify the attribute-choice guidance and controls[2].note with: \"These choices govern application-specific and custom attributes; the service's applications guide says public global attributes are automatically available to Profile and downstream apps.\" Cite https://learn.microsoft.com/microsoft-365-apps/org-data-service/distribute/applications, which distinguishes public global attributes from the configurable ones."
+    },
+    {
+      "n": 60,
+      "where": "controls[2].api; Governance controls",
+      "type": "absence",
+      "claim": "No API for configuring connection attribute access is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Graph Organizational Data Service \"attribute access\" \"staging\" API; site:learn.microsoft.com/graph \"Organizational Data Service\" \"attribute\" API. Opened modis-data-import and import-org-data-api-call; results give UI editing, not an attribute-access operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "controls[3].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The staging route goes from connector type directly to File upload, import method, and data staging > Data staging.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/viva/glint/setup/modis-data-import",
+      "quote": "Select a connector type. The following example uses CSV import. ... Choose apps & services ... Select the Viva Glint.",
+      "severity": "blocker",
+      "fix": "Replace controls[3].ui.path and its table path with \"Settings > Viva > Data management > Microsoft 365 Organizational Data Service > Data connections > + New import > CSV import > Choose apps & services > Viva Glint > File upload, import method, and data staging > Data staging\". State in the note that this route is the documented CSV example. The mandatory destination choice is missing; the service entry through Data management is independently supported by the cited get-started page."
+    },
+    {
+      "n": 62,
+      "where": "controls[3].note; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "When staging is enabled, an Organizational Data Source Administrator must explicitly approve the upload before it reaches Glint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/modis-data-import",
+      "quote": "When the data staging option is turned on, the uploaded file doesn't flow to Viva Glint until an Organizational Data Source Administrator explicitly approves it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "controls[3].note",
+      "type": "availability",
+      "claim": "Data staging is available for all connectors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/modis-data-import",
+      "quote": "Data staging is available for all connectors, so administrators can review the actual data before it flows to downstream applications and services.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "Learn does not state that the staging option is on by default.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Organizational Data Service\" \"data staging\" \"default\". Opened modis-data-import and import-orgdata; both describe turning staging on, neither says it is enabled by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "controls[3].api; Governance controls",
+      "type": "absence",
+      "claim": "No API for configuring data staging is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Graph Organizational Data Service \"attribute access\" \"staging\" API; site:learn.microsoft.com/graph \"organizational data\" \"staging\" API approve. Opened modis-data-import and import-org-data-api-call; Graph results concern unrelated approval systems.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Scope: Where to find it; controls[2].ui; controls[3].ui",
+      "type": "admin-path",
+      "claim": "The service entry is Settings > Viva > Data management > Microsoft 365 Organizational Data Service.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/get-started",
+      "quote": "On the left, under Settings, select Viva. Under Data management, select Microsoft 365 Organizational Data Service.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Scope: Where to find it",
+      "type": "admin-path",
+      "claim": "The Glint consumption page also gives Setup > Migration and imports > Organizational data in Microsoft 365.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/modis-data-consumption",
+      "quote": "in the Microsoft Admin Center at Setup > Migration and imports > Organizational data in Microsoft 365.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Governance guidance: After rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The checklist tells administrators to configure import email notifications, but that control has no table row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Set the Viva Glint email notifications for imports; Learn says up to 10 Viva Glint admins can receive them. | The table covers the import switch, role assignment, attribute access and data staging, not notifications.",
+      "severity": "minor",
+      "fix": "Remove the checklist bullet \"Set the Viva Glint email notifications for imports; Learn says up to 10 Viva Glint admins can receive them.\" It is a configuration step without a controls-table row; do not add a new row as part of this correction."
+    },
+    {
+      "n": 69,
+      "where": "Scope: Clouds and platforms",
+      "type": "availability",
+      "claim": "The Glint consumption page says the integration is available to all customers, including GCC Moderate.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/modis-data-consumption",
+      "quote": "The Viva Glint integration with Microsoft 365 Organizational Data Service is available to all customers, including customers with multiple Viva Glint instances, customers in GCC Moderate (GCC-M) environments",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "Employee attributes available for import include manager relationships, hire dates and company office locations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/glint/setup/modis-data-consumption",
+      "quote": "Microsoft_ManagerEmail | Unique identifier for an employee's manager. ... Microsoft_CompanyOfficeLocation | An employee's company office location. ... Microsoft_HireDate | The date an employee began employment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap product is Microsoft Viva.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Viva\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Licensing requirements vary by the consuming Microsoft 365 or Viva application.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/get-started",
+      "quote": "Licensing requirements vary based on the Microsoft 365 or Viva app that will consume organizational data from Microsoft 365 Organizational Data Service.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-18T21:59:05.460Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 4,
+      "uiPathsWithMissingWords": 2,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=410396",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/glint/setup/modis-data-import",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/glint/setup/modis-data-consumption",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/get-started",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/import/import-org-data-api-call",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether Viva Glint accepts imports from Organizational Data Service",
+        "docs": "https://learn.microsoft.com/viva/glint/setup/modis-data-consumption",
+        "reachable": true,
+        "segments": [
+          "General settings",
+          "Technical configuration",
+          "Organizational data imports"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Who can create and manage employee data imports (Organizational Data Source Administrator role)",
+        "docs": "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal",
+        "reachable": true,
+        "segments": [
+          "Identity",
+          "Roles & admins",
+          "role",
+          "Add assignments"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Who can create and manage employee data imports (Organizational Data Source Administrator role)",
+        "docs": "https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal",
+        "reachable": true,
+        "token": "/v1.0/roleManagement/directory",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Which attributes a connection shares with Viva Glint",
+        "docs": "https://learn.microsoft.com/viva/glint/setup/modis-data-import",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Viva",
+          "Data management",
+          "Microsoft 365 Organizational Data Service",
+          "Data connections",
+          "+ New import",
+          "connector type",
+          "Choose attribute access"
+        ],
+        "missing": [
+          "Data management"
+        ]
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Whether uploaded data waits for approval before reaching Viva Glint",
+        "docs": "https://learn.microsoft.com/viva/glint/setup/modis-data-import",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Viva",
+          "Data management",
+          "Microsoft 365 Organizational Data Service",
+          "Data connections",
+          "+ New import",
+          "connector type",
+          "File upload, import method, and data staging",
+          "Data staging"
+        ],
+        "missing": [
+          "Data management"
+        ]
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

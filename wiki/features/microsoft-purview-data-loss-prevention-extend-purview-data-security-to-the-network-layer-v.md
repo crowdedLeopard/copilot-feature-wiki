@@ -37,11 +37,26 @@ sources:
   - title: "Create content policies for network content filtering"
     url: "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering"
     kind: "learn"
+  - title: "Tutorial: Configure content policies"
+    url: "https://learn.microsoft.com/entra/global-secure-access/tutorial-internet-access-content-policies"
+    kind: "learn"
   - title: "New-DlpCompliancePolicy"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy"
     kind: "learn"
-  - title: "Create conditionalAccessPolicy"
-    url: "https://learn.microsoft.com/graph/api/conditionalaccessroot-post-policies"
+  - title: "Create conditionalAccessPolicy (beta)"
+    url: "https://learn.microsoft.com/graph/api/conditionalaccessroot-post-policies?view=graph-rest-beta"
+    kind: "learn"
+  - title: "conditionalAccessSessionControls resource type (beta)"
+    url: "https://learn.microsoft.com/graph/api/resources/conditionalaccesssessioncontrols?view=graph-rest-beta"
+    kind: "learn"
+  - title: "globalSecureAccessFilteringProfileSessionControl resource type (beta)"
+    url: "https://learn.microsoft.com/graph/api/resources/globalsecureaccessfilteringprofilesessioncontrol?view=graph-rest-beta"
+    kind: "learn"
+  - title: "conditionalAccessUsers resource type (beta)"
+    url: "https://learn.microsoft.com/graph/api/resources/conditionalaccessusers?view=graph-rest-beta"
+    kind: "learn"
+  - title: "Microsoft 365 and Office 365 platform service description"
+    url: "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/office-365-platform-service-description"
     kind: "learn"
 videos: []
 related: ["microsoft-purview-data-loss-prevention-unmanaged-cloud-app-discovery-and-protection-with-m","microsoft-purview-data-loss-prevention-data-security-for-non-microsoft-connected-apps","microsoft-edge-expanded-enforcement-controls-for-data-loss-prevention-connectors"]
@@ -50,7 +65,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Data loss prevention > Policies > + Create policy > Inline web traffic > Custom > Custom policy > Network and non-Microsoft secure browsers"
+      path: "Data loss prevention > Policies > + Create policy > Inline web traffic > Custom > Custom policy > Choose where to enforce the policy > Network and non-Microsoft secure browsers"
       docs: "https://learn.microsoft.com/purview/dlp-create-policy-ai-network-data-security"
     api:
       kind: "powershell"
@@ -61,7 +76,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Entra admin center"
-      path: "Global Secure Access > Secure > Content policies > + Create Policy > Rules > Action > Scan with Purview"
+      path: "Global Secure Access > Secure > Content policies > + Create Policy > Rules > Add rule > Action > Scan with Purview"
       docs: "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering"
     api: null
     note: "Requires the Global Secure Access Administrator role. The policy is then linked to a security profile."
@@ -73,9 +88,9 @@ controls:
       docs: "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering"
     api:
       kind: "graph"
-      call: "POST /v1.0/identity/conditionalAccess/policies"
-      docs: "https://learn.microsoft.com/graph/api/conditionalaccessroot-post-policies"
-    note: "Requires the Conditional Access Administrator role. Target resources is All internet resources with Global Secure Access."
+      call: "POST /beta/identity/conditionalAccess/policies"
+      docs: "https://learn.microsoft.com/graph/api/conditionalaccessroot-post-policies?view=graph-rest-beta"
+    note: "Graph beta: conditions.users.includeGroups sets the groups; sessionControls.globalSecureAccessFilteringProfile sets isEnabled and profileId. Beta APIs are subject to change and not supported for production use."
 confidence: "high"
 created: "2026-11-18"
 updated: "2026-11-18"
@@ -85,19 +100,23 @@ changes:
     note: "New briefing: Purview network data security through Entra Internet Access, now Launched, with licences, limits and the three controls to set."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 5 of 80 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-18"
+    note: "Correction: fixed the Scan with Purview and security-profile link paths, moved the Conditional Access Graph call to beta, narrowed the coverage statements and replaced the pricing pointer."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 88 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-18"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 80
-  confirmed: 74
-  unconfirmed: 1
-  contradicted: 5
-  attempts: 1
-  hash: "faaf1524c5f042a176bef6d625cf240f"
+  claims: 88
+  confirmed: 87
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 0
+  hash: "d2f9a1b5cd2b4722a97a8c592c64cf32"
 ---
 
 ## What's changing
@@ -128,7 +147,7 @@ Microsoft's notice says nothing is enforced until policies are created and deplo
 
 - Scan with Purview applies only to traffic associated with an Entra user identity, and Purview network data security policies do not apply to B2B guest users.
 - Policies that target an unmanaged app can capture both consumer and enterprise versions when the app's URL is shared, so a block can hit sanctioned enterprise use.
-- Who is inspected depends on a Conditional Access policy that applies the security profile, so a gap in that assignment is a gap in coverage.
+- For the Conditional Access deployment described here, review the security-profile assignment when checking pilot coverage.
 
 **Autonomy & actions**
 
@@ -146,11 +165,11 @@ Learn's network data security page says that Microsoft Entra Global Secure Acces
 
 The same Learn page says pay-as-you-go is not required for the Entra integration. For non-Microsoft SASE and secure browser integrations it requires Purview E5 (or equivalent) plus pay-as-you-go, billed per request, where a request is each network call from a device or browser to a website or API. MC1419797 nevertheless lists reviewing pay-as-you-go billing as a preparation step.
 
-Indirect costs are admin time across Entra and Purview, TLS inspection and client deployment, and support load from blocked uploads. Prices are on the licensing pages Learn links from the network data security page.
+Indirect costs are admin time across Entra and Purview, TLS inspection and client deployment, and support load from blocked uploads. For enterprise plan pricing, see [Compare Microsoft 365 Enterprise plans](https://www.microsoft.com/microsoft-365/compare-microsoft-365-enterprise-plans).
 
 ## Scope
 
-**Who is covered:** users whose traffic is routed through Global Secure Access Internet Access and who are targeted by the Conditional Access policy and security profile. Learn lists Windows and macOS for the GSA client, and devices must be Entra ID joined or hybrid joined. B2B guests and traffic that cannot be mapped to an Entra user are not inspected.
+**Who is covered:** the deployment described here targets users whose traffic is routed through Global Secure Access Internet Access and whose Conditional Access policy applies the configured security profile. Learn lists Windows and macOS for the GSA client, and devices must be Entra ID joined or hybrid joined. B2B guests and traffic that cannot be mapped to an Entra user are not inspected.
 
 **Roles:** Global Secure Access Administrator configures GSA settings and Conditional Access Administrator configures Conditional Access. In Purview, Learn names roles such as DLP Compliance Management or Information Protection Admin for seeing Data loss prevention.
 
@@ -185,15 +204,15 @@ Indirect costs are admin time across Entra and Purview, TLS inspection and clien
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Purview DLP policy that enforces on network traffic</strong><br><small>Tenant</small><br><small class="controls__note">Wizard: cloud apps and scope are chosen before the enforcement page. PowerShell creates the policy only, in Security &amp; Compliance PowerShell.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Policies › + Create policy › Inline web traffic › Custom › Custom policy › Network and non-Microsoft secure browsers <a href="https://learn.microsoft.com/purview/dlp-create-policy-ai-network-data-security" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpCompliancePolicy -Name &lt;policy name&gt; -EnforcementPlanes @(&quot;Network&quot;)</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Entra content policy rule that sends content to Purview for inspection</strong><br><small>Tenant</small><br><small class="controls__note">Requires the Global Secure Access Administrator role. The policy is then linked to a security profile.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Global Secure Access › Secure › Content policies › + Create Policy › Rules › Action › Scan with Purview <a href="https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which users the Global Secure Access security profile applies to</strong><br><small>Group</small><br><small class="controls__note">Requires the Conditional Access Administrator role. Target resources is All internet resources with Global Secure Access.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Identity › Protection › Conditional Access › + Create new policy › Session › Use Global Secure Access Security Profile <a href="https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/identity/conditionalAccess/policies</code> <a href="https://learn.microsoft.com/graph/api/conditionalaccessroot-post-policies" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Purview DLP policy that enforces on network traffic</strong><br><small>Tenant</small><br><small class="controls__note">Wizard: cloud apps and scope are chosen before the enforcement page. PowerShell creates the policy only, in Security &amp; Compliance PowerShell.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Policies › + Create policy › Inline web traffic › Custom › Custom policy › Choose where to enforce the policy › Network and non-Microsoft secure browsers <a href="https://learn.microsoft.com/purview/dlp-create-policy-ai-network-data-security" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpCompliancePolicy -Name &lt;policy name&gt; -EnforcementPlanes @(&quot;Network&quot;)</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Entra content policy rule that sends content to Purview for inspection</strong><br><small>Tenant</small><br><small class="controls__note">Requires the Global Secure Access Administrator role. The policy is then linked to a security profile.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Global Secure Access › Secure › Content policies › + Create Policy › Rules › Add rule › Action › Scan with Purview <a href="https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which users the Global Secure Access security profile applies to</strong><br><small>Group</small><br><small class="controls__note">Graph beta: conditions.users.includeGroups sets the groups; sessionControls.globalSecureAccessFilteringProfile sets isEnabled and profileId. Beta APIs are subject to change and not supported for production use.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Identity › Protection › Conditional Access › + Create new policy › Session › Use Global Secure Access Security Profile <a href="https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/identity/conditionalAccess/policies</code> <a href="https://learn.microsoft.com/graph/api/conditionalaccessroot-post-policies?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-Scan with Purview needs both halves: Learn says that without a matching Purview DLP policy targeting inline web traffic, the content policy cannot inspect content or enforce audit or block decisions. Purview alerts and Activity explorer apply only when Scan with Purview is used; for basic Allow or Block content rules, Learn points to the Global Secure Access traffic logs. The content policy is linked to a security profile (Global Secure Access > Secure > Security profiles > the profile > Link policies), and the Conditional Access policy applies that profile. Learn's network data security page also describes collection policies, which collect network data for discovery without enforcement.
+Scan with Purview needs both halves: Learn says that without a matching Purview DLP policy targeting inline web traffic, the content policy cannot inspect content or enforce audit or block decisions. Purview alerts and Activity explorer apply only when Scan with Purview is used; for basic Allow or Block content rules, Learn points to the Global Secure Access traffic logs. The content policy is linked to a security profile (Global Secure Access > Secure > Security profiles > profile > Link policies > + Link a policy > Existing Content policy > Policy name > content policy), and the Conditional Access policy applies that profile. Learn's network data security page also describes collection policies, which collect network data for discovery without enforcement.
 
-Row 3 lists the Graph call that creates a Conditional Access policy; the security profile is chosen under its Session controls in the portal.
+Graph beta: conditions.users.includeGroups supplies the group IDs; sessionControls.globalSecureAccessFilteringProfile sets isEnabled to true and profileId to the security profile ID. Beta APIs are subject to change and not supported for production use.
 
 ## Open questions
 
@@ -205,18 +224,16 @@ Row 3 lists the Graph call that creates a Conditional Access policy; the securit
 <!-- rationale
 risk: Low. Microsoft's notice says the capability is administrator-configured and not enforced until policies are created and deployed, so exposure is unchanged by default. Residual risks are blocking rules that catch normal traffic and inspection that fails open.
 cost: Medium. Learn requires Microsoft 365 E7, or Purview E5 (or equivalent) plus Entra Internet Access (or equivalent), per seat, for the users covered. Pay-as-you-go is not required for the Entra integration.
-impact: Medium. Only users assigned the Global Secure Access security profile through Conditional Access have traffic inspected, but they can see uploads and prompts to AI and cloud apps blocked.
+impact: Medium. Users in the configured pilot group can see uploads and prompts to AI and cloud apps blocked.
 -->
 
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].ui; Governance controls: row 2 / admin-path: Rules leads directly to Action in Global Secure Access > Secure > Content policies > + Create Policy > Rules > Action > Scan with Purview. | Found: Select Add rule. Enter the following information: - Rule name: Enter Block uploads to ChatGPT and Gmail. - Description: Enter a description (optional). - Priority: Select 120. - Status: Select Enabled. - Action: Select Block. | Fix: Replace the path in front matter and the table with Global Secure Access > Secure > Content policies > + Create Policy > Rules > Add rule > Action > Scan with Purview. The cited how-to requires adding a new rule before choosing Action; cite https://learn.microsoft.com/entra/global-secure-access/tutorial-internet-access-content-policies as the source for the Add rule button label. | Source: https://learn.microsoft.com/entra/global-secure-access/tutorial-internet-access-content-policies
-- [contradicted, blocker] controls[2].api; controls[2].note; Governance controls: row 3 and final paragraph / command: POST /v1.0/identity/conditionalAccess/policies is the automation equivalent for assigning a Global Secure Access security profile to groups. | Found: globalSecureAccessFilteringProfile | globalSecureAccessFilteringProfileSessionControl | Session control to link to Global Secure Access security profiles or filtering profiles. | Fix: Use POST /beta/identity/conditionalAccess/policies and docs https://learn.microsoft.com/graph/api/conditionalaccessroot-post-policies?view=graph-rest-beta. Replace the row note and the final paragraph's portal-only qualification with: 'Graph beta: conditions.users.includeGroups supplies the group IDs; sessionControls.globalSecureAccessFilteringProfile sets isEnabled to true and profileId to the security profile ID. Beta APIs are subject to change and not supported for production use.' Cite https://learn.microsoft.com/graph/api/resources/conditionalaccesssessioncontrols?view=graph-rest-beta, https://learn.microsoft.com/graph/api/resources/globalsecureaccessfilteringprofilesessioncontrol?view=graph-rest-beta and https://learn.microsoft.com/graph/api/resources/conditionalaccessusers?view=graph-rest-beta. The v1.0 sessionControls reference has no globalSecureAccessFilteringProfile property. | Source: https://learn.microsoft.com/graph/api/resources/conditionalaccesssessioncontrols?view=graph-rest-beta
-- [contradicted, blocker] Risk assessment: Security & identity; Scope: Who is covered; rationale: impact / applicability: Only users assigned a security profile through Conditional Access can have traffic inspected. | Found: The baseline security profile applies to all traffic even without linking it to a Conditional Access policy. It enforces policy at the lowest priority in the policy stack, applying to all Internet Access traffic routed through the service as a 'catch-all' policy. | Fix: Narrow these statements to the documented Conditional Access deployment rather than claiming exclusivity. Replace the risk bullet with 'For the Conditional Access deployment described here, review the security-profile assignment when checking pilot coverage.' Replace Scope's opening sentence with 'The deployment described here targets users whose traffic is routed through Global Secure Access Internet Access and whose Conditional Access policy applies the configured security profile.' Replace the impact rationale with 'Medium. Users in the configured pilot group can see uploads and prompts to AI and cloud apps blocked.' Remove 'Only users assigned ... have traffic inspected'; the general security-profile documentation also describes a baseline profile without a Conditional Access link. | Source: https://learn.microsoft.com/entra/global-secure-access/concept-internet-access
-- [unsupported, major] Cost and licensing: final sentence / behaviour: Prices are on the licensing pages linked from the network data security article. | Found: Searched: "aka.ms/M365EnterprisePlans" "price"; "Microsoft 365 Enterprise Plans" "prices". Read the linked Security service description and platform pricing excerpts; no passage verifies prices on those specific links. | Fix: Replace 'Prices are on the licensing pages Learn links from the network data security page' with 'For enterprise plan pricing, see Compare Microsoft 365 Enterprise plans: https://www.microsoft.com/microsoft-365/compare-microsoft-365-enterprise-plans.' Cite https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/office-365-platform-service-description#microsoft-365-and-office-365-plans, which explicitly directs readers there for pricing.
-- [contradicted, blocker] Governance controls: security-profile linking path / admin-path: The path that links a content policy to a security profile ends at Global Secure Access > Secure > Security profiles > the profile > Link policies. | Found: Switch to the Link policies view. Configure the link content policy: 1. Select + Link a policy > Existing Content policy. 2. From the Policy name menu, select the content policy you created. | Fix: Replace the parenthetical route with 'Global Secure Access > Secure > Security profiles > profile > Link policies > + Link a policy > Existing Content policy > Policy name > content policy'. The original stops at a view before the selections that choose a content-policy link. | Source: https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls: row 1 / admin-path: The Purview route is Data loss prevention > Policies > + Create policy > Inline web traffic > Custom > Custom policy > Network and non-Microsoft secure browsers. | Found: On the Choose where to enforce the policy page, ensure Network and non-Microsoft secure browsers is On, then select Next. | Fix: Include the wizard page heading: Data loss prevention > Policies > + Create policy > Inline web traffic > Custom > Custom policy > Choose where to enforce the policy > Network and non-Microsoft secure browsers. Keep the note that cloud apps and scope are chosen first. | Source: https://learn.microsoft.com/purview/dlp-create-policy-ai-network-data-security
-- [contradicted, minor] Governance guidance versus Governance controls / consistency: The governance checklist names controls and monitoring surfaces that have no corresponding controls-table rows. | Found: Check ... the Internet Access forwarding profile, a TLS inspection policy ... Review Data loss prevention > Alerts and Activity explorer ... Query GSA traffic logs ... The table has only DLP policy, content policy, and Conditional Access rows. | Fix: Checklist steps for checking the Internet Access forwarding profile and TLS inspection, linking a content policy to a security profile, reviewing DLP Alerts and Activity explorer, and querying GSA traffic logs have no corresponding table rows. This finding identifies the mismatch only; it does not request additional rows.
+- [supported, minor] title; What's changing, first paragraph / behaviour: Entra Internet Access is part of Global Secure Access. | Found: Global Secure Access is the unifying term used for both Microsoft Entra Internet Access and Microsoft Entra Private Access. | Fix: Add https://learn.microsoft.com/entra/global-secure-access/overview-what-is-global-secure-access to sources for the relationship between Internet Access and Global Secure Access. | Source: https://learn.microsoft.com/entra/global-secure-access/overview-what-is-global-secure-access#overview
+- [supported, minor] Risk assessment: Change & support; Scope: Who is covered; Governance guidance: Before rollout / applicability: The GSA client requires an Entra ID joined or hybrid joined device. | Found: The Global Secure Access client requires a device (or virtual machine) that is either Microsoft Entra ID joined or Microsoft Entra ID Hybrid joined. | Fix: Add after the device prerequisite: 'The GSA content-filtering page permits Entra ID joined or hybrid joined devices; the Purview scenario instead says the device must be Entra ID joined.' Both pages are already cited: https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering and https://learn.microsoft.com/purview/dlp-create-policy-ai-network-data-security. | Source: https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering
+- [supported, minor] controls[0].ui; Governance controls: first row / admin-path: The printed Purview wizard path reaches Network and non-Microsoft secure browsers. | Found: Select Custom from the Categories list and then select Custom policy from the Regulations list. | Fix: Retain the existing path but include its omitted headings: 'Data loss prevention > Policies > + Create policy > Inline web traffic > Categories > Custom > Regulations > Custom policy > Choose where to enforce the policy > Network and non-Microsoft secure browsers'. Its omission of app and user scope selections is permissible, and the row already explains those wizard steps. | Source: https://learn.microsoft.com/purview/dlp-create-policy-ai-network-data-security
+- [supported, minor] controls[1].ui; Governance controls: second row / admin-path: The Entra path through Content policies, Create Policy, Rules, Add rule and Action reaches Scan with Purview. | Found: On the Rules tab: Add a new rule. ... Select the appropriate option for the Action menu: ... To use data policies configured in Microsoft Purview, select Scan with Purview. | Fix: Include the omitted Basics heading: 'Global Secure Access > Secure > Content policies > + Create Policy > Basics > Rules > Add rule > Action > Scan with Purview'. The pre-check's missing 'Add rule' is not an error: the already-cited tutorial https://learn.microsoft.com/entra/global-secure-access/tutorial-internet-access-content-policies explicitly says 'Select Add rule.' | Source: https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering
+- [supported, minor] controls[2].ui; Governance controls: third row / admin-path: The printed Conditional Access path reaches Use Global Secure Access Security Profile. | Found: Set the Target resources to All internet resources with Global Secure Access. ... Under Session, select Use Global Secure Access Security Profile and select the security profile you created. | Fix: Include the omitted resource-scope selection before Session: 'Identity > Protection > Conditional Access > + Create new policy > Target resources > All internet resources with Global Secure Access > Session > Use Global Secure Access Security Profile'. The omission is a scope-selection abbreviation, not an invented path. The related web-content-filtering page uses the alternative navigation 'Entra ID > Conditional Access > Policies > New policy'; acknowledge that navigation difference if retaining both guides. | Source: https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering
+- [contradicted, minor] Governance guidance compared with Governance controls / consistency: The governance checklist has a corresponding table row for every control it asks administrators to check, configure or monitor. | Found: Check ... the Internet Access forwarding profile, a TLS inspection policy ... Review Data loss prevention > Alerts and Activity explorer ... Query GSA traffic logs ... Table: Purview DLP policy; Entra content policy rule; security-profile user assignment. | Fix: Checklist/table coverage mismatch: Before rollout asks administrators to check the Internet Access forwarding profile and TLS inspection policy; At rollout asks them to link the content policy to a security profile; After rollout asks them to review Purview alerts/Activity explorer and GSA logs. None of those controls has its own table row. Do not add rows as part of this correction.
 -->

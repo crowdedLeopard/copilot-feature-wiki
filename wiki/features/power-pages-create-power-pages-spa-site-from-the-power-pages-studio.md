@@ -83,19 +83,23 @@ changes:
     note: "New briefing: the roadmap's studio SPA site creation (target November CY2026), with what Learn documents for SPA sites, their licensing basis and the controls that apply."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 60 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-18"
+    note: "Corrected: Power Pages use rights for Power Apps per app, per user and Dynamics 365 enterprise licences now carry their environment and recognition conditions; three checklist steps with no controls-table row were removed."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 71 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-18"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 60
-  confirmed: 56
+  claims: 71
+  confirmed: 71
   unconfirmed: 0
-  contradicted: 4
-  attempts: 1
-  hash: "e661e44061413eac246f5f0012e4d650"
+  contradicted: 0
+  attempts: 0
+  hash: "928e848d9c36e5e86f730bc4e8e78bf8"
 ---
 
 ## What's changing
@@ -134,7 +138,7 @@ For a service owner the questions are the ones that apply to any Power Pages sit
 
 The Power Platform licensing FAQ says Power Pages licensing is capacity based, with two capacity types: **Authenticated users per website/month** and **Anonymous users per website/month**. Each has a subscription capacity licence and a pay-as-you-go meter; the authenticated meter measures unique authenticated users per website per month. Capacity must be allocated to a Power Platform environment by an administrator, and the Power Platform admin center capacity page lets administrators download Power Pages authenticated and anonymous reports.
 
-The FAQ also says authenticated users licensed with Power Apps or Dynamics 365 enterprise licences have use rights for Power Pages: Power Apps per app users get one website and per user licences get unlimited websites. Dynamics 365 websites must map to the licensed application context and the same environment.
+The FAQ also says authenticated users licensed with Power Apps or Dynamics 365 enterprise licences have use rights for Power Pages. Power Apps per app users can access one Power Pages website in the environment to which Power Apps per app capacity licences are assigned, and Power Apps per user licences give unlimited websites. Dynamics 365 enterprise licences give unlimited websites, which must map to the licensed Dynamics 365 application context and the same environment. For Power Apps per-user/premium licences and Dynamics 365 enterprise licences to be recognised, users must access the site using their Entra ID through the out-of-the-box Azure AD provider and have the licence assigned in the same tenant as the site.
 
 Learn describes an SPA site as a Power Pages site, so these rules are the starting point for budgeting. The SPA page lists its prerequisites without naming a licence, and a licence or meter specific to SPA sites is not yet published. Indirect cost includes maker and developer time to build and review the site code.
 
@@ -151,16 +155,13 @@ For the CLI route, the SPA page lists as prerequisites Power Platform CLI versio
 ### Before rollout
 - Decide which environments may host SPA sites and tell makers not to create sites in the default environment, as the site-creation page advises.
 - Decide whether site creation stays with all makers or moves to administrators, using the tenant setting in the controls table.
-- Identify who allocates Power Pages capacity to environments, since capacity must be allocated to an environment by an administrator.
 
 ### At rollout
 - Watch the Message center and the roadmap item for the studio option and its default, since neither is stated yet.
 - Hold off removing `js` from an environment's blocked file extensions until a team needs it, and record which environment you change.
-- Tell makers that Web API calls from SPA code depend on the table permissions and web roles configured for the site, as the SPA page states.
 
 ### After rollout
 - Re-check the blocked file extensions in each environment that allows `js` uploads, and revert it where the need has ended.
-- Download the Power Pages authenticated and anonymous reports from the Power Platform admin center to see usage against allocated capacity.
 
 ## Governance controls
 
@@ -191,14 +192,4 @@ No setting that switches the studio's SPA option on or off is documented yet. Ta
 risk: Medium. SPA sites read and write Dataverse through Power Pages Web APIs under the same table permissions and web roles as other sites, and Learn's setup asks environments to allow .js uploads. No default is stated, so this is rated on today's behaviour continuing.
 cost: Variable. Power Pages is licensed by authenticated and anonymous user capacity per website, with a pay-as-you-go meter for each. A licence or meter specific to SPA sites is not yet published.
 impact: Low. Makers and administrators who create sites notice it first; site visitors are affected only by sites that someone builds.
--->
-
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Cost and licensing: second paragraph / licensing: Power Apps per app users get one Power Pages website, without stating the environment allocation condition. | Found: Power Apps per app: Users can access one Power Pages website that should be part of the environment to which Power Apps per app capacity licenses are assigned. | Fix: Replace 'Power Apps per app users get one website' with 'Power Apps per app users can access one Power Pages website in the environment to which Power Apps per app capacity licences are assigned', as stated at https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq#power-pages. | Source: https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq
-- [contradicted, blocker] Cost and licensing: second paragraph / licensing: Power Apps per user licences give unlimited Power Pages websites, without stating the conditions for licence recognition. | Found: Users should access the Power Pages site using their Entra ID and utilizing the out of the box Azure AD provider. Users need a license assigned in the same tenant as the Power Pages site. If the user's license is assigned in a different tenant, it's not recognized. | Fix: Qualify the per-user use-rights sentence with: 'For Power Apps per-user/premium licences to be recognised, users must access the site using their Entra ID through the out-of-the-box Azure AD provider and have the licence assigned in the same tenant as the site.' Source: https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq#power-pages. | Source: https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq
-- [contradicted, blocker] Cost and licensing: second paragraph / licensing: Dynamics 365 enterprise licences provide Power Pages use rights subject to application context and environment, without stating the additional licence recognition conditions. | Found: In order for Power Apps per users/premium and Dynamics 365 enterprise licenses to be recognized: ... Users need a license assigned in the same tenant as the Power Pages site. If the user's license is assigned in a different tenant, it's not recognized. | Fix: Retain the licensed application context and same-environment qualification, and append: 'For Dynamics 365 enterprise licences to be recognised, users must access the site using their Entra ID through the out-of-the-box Azure AD provider and have the licence assigned in the same tenant as the site.' Source: https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq#power-pages. | Source: https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance; Governance controls / consistency: The governance checklist directs readers to take stock of capacity allocation, site table permissions and web roles, and usage reports, but none has a controls-table row. | Found: Identify who allocates Power Pages capacity ... Tell makers that Web API calls ... depend on the table permissions and web roles ... Download the Power Pages authenticated and anonymous reports ... [The table covers only tenant site creation and blocked file extensions.] | Fix: The Before rollout capacity-allocation step, At rollout table-permissions/web-roles step, and After rollout usage-report step have no corresponding controls-table rows. Remove these checklist bullets to align the checklist with the existing table without adding controls.
 -->

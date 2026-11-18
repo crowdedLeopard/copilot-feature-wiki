@@ -14,11 +14,11 @@ previewDate: null
 risk: "low"
 cost: "low"
 impact: "low"
-defaultState: "off"
+defaultState: "unknown"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "Not yet published. The roadmap record names no licence for this change, and the Learn page on Outlook on the web in Exchange Online names none either."
+  model: "included"
+  notes: "Outlook on the web is included in Exchange Online plans, including Plan 1 and Plan 2. New Outlook for Windows needs a plan that includes the desktop Microsoft 365 apps, such as Business Standard or Business Premium; secondary accounts such as Business Basic or E1 can then be added. No licence or meter specific to this update is documented."
 audiences: ["m365-admin","security","end-user"]
 tags: ["outlook","exchange","privacy"]
 sources:
@@ -40,14 +40,20 @@ sources:
   - title: "Configure junk email settings on Exchange Online mailboxes"
     url: "https://learn.microsoft.com/defender-office-365/configure-junk-email-settings-on-exo-mailboxes"
     kind: "learn"
+  - title: "Exchange Online service description"
+    url: "https://learn.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-service-description"
+    kind: "learn"
+  - title: "Understand licensing in new Outlook for Windows"
+    url: "https://learn.microsoft.com/microsoft-365-apps/outlook/get-started/licensing-options"
+    kind: "learn"
 videos: []
 related: []
 controls:
   - governs: "Admin allowance for users to load all external content by default"
-    scope: "tenant"
+    scope: "other"
     ui: null
     api: null
-    note: "The roadmap says load-all is available only if the customer admin allows it. No Microsoft Learn page documents where this is set at the time of writing."
+    note: "The roadmap says load-all is available only if the customer admin allows it. No Microsoft Learn page documents where this is set at the time of writing. The scope of the admin allowance is not yet documented."
 confidence: "medium"
 created: "2026-11-18"
 updated: "2026-11-18"
@@ -57,19 +63,23 @@ changes:
     note: "First briefing for this item: roadmap-described settings to block or load external images; no Learn page or admin control documented yet."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 42 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-18"
+    note: "Corrected after the independent check: default state now Not stated, licensing now included with the Exchange Online and new Outlook for Windows licence statements, and the admin allowance scope shown as Other."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 44 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-18"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 42
-  confirmed: 39
-  unconfirmed: 2
-  contradicted: 1
-  attempts: 1
-  hash: "4f78d7194af7844d7b01fcecb8579024"
+  claims: 44
+  confirmed: 44
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "b4ab85a8d3d9412d314f8852e71c3301"
 ---
 
 ## What's changing
@@ -105,7 +115,9 @@ If nobody acts, the roadmap says the existing default (load external content onl
 
 ## Cost and licensing
 
-The roadmap record names no licence, meter or price for this change. The Learn page on Outlook on the web in Exchange Online describes the product and its policies and names no licence. A licence or meter specific to this feature is not yet published.
+Outlook on the web is included in Exchange Online plans, including Plan 1 and Plan 2, according to the [Exchange Online service description](https://learn.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-service-description). New Outlook for Windows requires a plan that includes the desktop versions of the Microsoft 365 apps, such as Business Standard or Business Premium; once an account has a qualifying licence, secondary accounts such as Business Basic or E1 can be added ([licensing in new Outlook for Windows](https://learn.microsoft.com/microsoft-365-apps/outlook/get-started/licensing-options)).
+
+The roadmap record names no licence, meter or price for this settings update, and no licence or meter specific to it is documented at the time of writing (November 2026).
 
 The only cost the sources show is indirect: admin time to decide the stance and help desk time for users who see blocked images.
 
@@ -139,7 +151,7 @@ The only cost the sources show is indirect: admin time to decide the stance and 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Admin allowance for users to load all external content by default</strong><br><small>Tenant</small><br><small class="controls__note">The roadmap says load-all is available only if the customer admin allows it. No Microsoft Learn page documents where this is set at the time of writing.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Admin allowance for users to load all external content by default</strong><br><small class="controls__note">The roadmap says load-all is available only if the customer admin allows it. No Microsoft Learn page documents where this is set at the time of writing. The scope of the admin allowance is not yet documented.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
@@ -152,19 +164,11 @@ Safe senders are managed separately. The Learn page on junk email settings says 
 - Where will administrators find the setting that allows loading all external content, and which admin role and PowerShell parameter, if any, controls it? Watch the Exchange Online and new Outlook policy pages on Microsoft Learn.
 - Is the block-all setting chosen by each user, set by an admin, or both?
 - Is a new setting off until someone chooses it, and does the admin allowance start as allowed or not allowed? The roadmap says only that existing default behaviour is not changed.
-- Which licences cover this change? A licence or meter for this feature is not yet published.
+- Is any licence or meter specific to this settings update published? The pages on licences for Outlook on the web and new Outlook for Windows name none for it.
 - Does the roadmap's Web platform entry mean the settings reach the new Outlook for Windows at the same time as Outlook on the web?
 
 <!-- rationale
 risk: Low. The roadmap says existing default behaviour is not changed, and loading all content by default is available only if the customer admin allows it; Microsoft Learn documents no admin switch for it yet.
 cost: Low. The only cost the sources show is admin and help desk time; no licence or meter for this feature is published, and the roadmap record names none.
 impact: Low. The roadmap says existing default behaviour is unchanged, so most users see no difference until a new setting is chosen; who chooses it is not stated.
--->
-
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] front matter: defaultState / default: The new control is off by default. | Found: Searched: Outlook external images off by default web; Outlook external content settings default. Read roadmap, Set-OwaMailboxPolicy, Set-MailboxMessageConfiguration and new Outlook Policy Management; none states the new control or admin allowance starts off. | Fix: Set defaultState to 'unknown'. Retain the roadmap's statement that existing safe-senders-only behavior is unchanged, and retain the open question about the initial state of the admin allowance; neither establishes that the new control itself is off.
-- [contradicted, blocker] front matter: licensing.model and notes; Cost and licensing; Open questions / licensing: Which licence covers this change is not yet published, so the licensing model is unknown. | Found: To use the Outlook for Windows desktop app (either the classic or new version) with a Microsoft 365 organizational email address, you need to purchase a plan that includes the desktop versions of the Microsoft 365 apps. | Fix: Set licensing.model to 'included'. Replace the broad licensing-unknown wording with: 'Outlook on the web is included in Exchange Online plans, including Plan 1 and Plan 2. New Outlook for Windows requires a qualifying desktop-app licence, such as Microsoft 365 Business Standard or Business Premium; once an account has a qualifying licence, secondary accounts such as Business Basic or E1 can be added. No licence or meter specific to this settings update was found.' Cite https://learn.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-service-description and https://learn.microsoft.com/microsoft-365-apps/outlook/get-started/licensing-options. Narrow the licensing open question to any entitlement specific to the update. | Source: https://learn.microsoft.com/microsoft-365-apps/outlook/get-started/licensing-options
-- [unsupported, blocker] controls[0].scope; Governance controls: Tenant / applicability: The admin allowance has tenant scope. | Found: Searched: Outlook external images admin tenant. Read roadmap, Set-OwaMailboxPolicy, EAC mailbox-policy creation and new Outlook Policy Management. The roadmap names customer-admin allowance but no scope; no reference states its scope is tenant-wide. | Fix: Set controls[0].scope to 'other', replace the rendered 'Tenant' scope with 'Other', and append to the row note: 'The scope of the admin allowance is not yet documented.' Do not infer tenant-wide enforcement from the words 'customer admin'.
 -->
