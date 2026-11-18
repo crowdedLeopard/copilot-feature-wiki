@@ -38,9 +38,14 @@ const held = await writeHeldIndex();
 const verified = results.filter((r) => r.ok && r.status === 'verified').length;
 const gaps = results.filter((r) => r.ok && r.status === 'verified-with-gaps').length;
 const heldFailed = results.filter((r) => r.ok && r.status === 'held').length;
+// Live pages the run did not write that failed a routine re-check (text changed, a cited Microsoft page changed, the
+// check expired, or asked for): the number to watch when the writing standard changes, since a stricter check can take
+// pages offline for wording an earlier standard asked for.
+const RECHECK = ['changed-since-check', 'source-changed', 'check-expired', 'requested'];
+const heldOnRecheck = tasks.filter((t) => outcome.get(t.slug)?.status === 'held' && !t.writtenNow && t.where !== 'held' && RECHECK.includes(t.reason)).map((t) => ({ slug: t.slug, reason: t.reason, reasons: outcome.get(t.slug).reasons || [] }));
 const unreached = tasks.length - outcome.size;
 const models = [...new Set(run.tasks?.filter((t) => t.ok).map((t) => t.model) || [])].join(', ') || 'none';
-const line = `- ${today()} verify: ${tasks.length} checked (${verified} verified, ${gaps} verified with gaps, ${heldFailed} held, ${unreached} not reached${heldNow.length ? `, ${heldNow.length} held as unverified` : ''}${keptLive.length ? `, ${keptLive.length} rewritten page(s) kept live unchecked` : ''}) on ${run.engine || 'none'} ${models}${run.stoppedBecause ? `; stopped early: ${run.stoppedBecause}` : ''}; ${held.length} page(s) held in total`;
+const line = `- ${today()} verify: ${tasks.length} checked (${verified} verified, ${gaps} verified with gaps, ${heldFailed} held, ${unreached} not reached${heldNow.length ? `, ${heldNow.length} held as unverified` : ''}${keptLive.length ? `, ${keptLive.length} rewritten page(s) kept live unchecked` : ''}${heldOnRecheck.length ? `, ${heldOnRecheck.length} live page(s) held on re-check` : ''}) on ${run.engine || 'none'} ${models}${run.stoppedBecause ? `; stopped early: ${run.stoppedBecause}` : ''}; ${held.length} page(s) held in total`;
 if (tasks.length || ran) await appendLog(line);
 console.log(line.slice(2));
 
@@ -52,6 +57,10 @@ if (process.env.GITHUB_STEP_SUMMARY) {
     const mark = r.status === 'verified' ? '✓' : r.status === 'verified-with-gaps' ? '◐' : '✗';
     out.push(`- ${mark} ${t.slug}: ${r.status}, ${r.counts.confirmed}/${r.counts.claims} confirmed${r.counts.contradicted ? `, ${r.counts.contradicted} contradicted` : ''}${r.reasons?.length ? ` (${r.reasons.join('; ')})` : ''}`);
   }
+  if (heldOnRecheck.length) {
+    out.push('', `Live pages held on re-check (${heldOnRecheck.length}):`);
+    for (const h of heldOnRecheck) out.push(`- ${h.slug} (${h.reason}): ${h.reasons.join('; ')}`);
+  }
   if (held.length) {
     out.push('', `Held, not published (${held.length}):`);
     for (const h of held) out.push(`- ${h.slug}: ${h.reason}${h.attempts ? `, ${h.attempts} failed rewrite(s)` : ''}${h.reason === 'parked' ? ' — needs a person' : ''}`);
@@ -61,7 +70,7 @@ if (process.env.GITHUB_STEP_SUMMARY) {
 
 await writeJson(path.join(DATA_DIR, 'last-verify.json'), {
   date: today(), engine: run.engine || 'none', models, attempted: tasks.length, verified, verifiedWithGaps: gaps, held: heldFailed, unreached, heldUnverified: heldNow.length, keptLive: keptLive.length, stoppedBecause: run.stoppedBecause || null,
-  heldTotal: held.length, cost: run.tasks?.reduce((s, t) => s + (t.cost || 0), 0) ?? 0,
+  heldTotal: held.length, heldOnRecheck: heldOnRecheck.map((h) => h.slug), cost: run.tasks?.reduce((s, t) => s + (t.cost || 0), 0) ?? 0,
 });
 await fs.rm(VERIFY_TASK_DIR, { recursive: true, force: true });
 await fs.rm(path.join(DATA_DIR, 'verify-tasks.json'), { force: true });
