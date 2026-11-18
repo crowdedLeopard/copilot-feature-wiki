@@ -17,8 +17,8 @@ impact: "medium"
 defaultState: "unknown"
 action: "prepare"
 licensing:
-  model: "unknown"
-  notes: "Not yet published for this feature. The Learn pages for agents on the Microsoft Copilot harness say that using, building, testing and evaluating agents might consume Copilot Credits."
+  model: "mixed"
+  notes: "Copilot Studio documents access through a Copilot Studio user license (needs a tenant prepaid Copilot Credit pack subscription), the Copilot Studio authors role for applicable pay-as-you-go scenarios, a Microsoft 365 Copilot license, or a trial that cannot publish. No separate entitlement for this connection experience is published."
 audiences: ["power-platform-admin","maker","end-user","change-adoption"]
 tags: ["copilot-studio","connectors","authentication","end-user-authentication","data-policies","tools","user-experience"]
 sources:
@@ -31,11 +31,20 @@ sources:
   - title: "Add a tool to an agent (Microsoft Copilot)"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-tools-custom-agent"
     kind: "learn"
+  - title: "Manage and delete tools in an agent (Microsoft Copilot)"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/tools-manage"
+    kind: "learn"
   - title: "Configure data policies for agents"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention"
     kind: "learn"
   - title: "Add-ConnectorsToPolicy"
     url: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy"
+    kind: "learn"
+  - title: "Licensing for agents powered by the standard harness"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing"
+    kind: "learn"
+  - title: "Use service admin roles to manage your tenant"
+    url: "https://learn.microsoft.com/power-platform/admin/use-service-admin-role-manage-tenant"
     kind: "learn"
 videos: []
 related: ["data-policies","copilot-credits","copilot-studio-block-maker-provided-credentials","copilot-studio-require-human-approval-for-tool-calls","mcp"]
@@ -44,7 +53,7 @@ controls:
     scope: "environment"
     ui:
       surface: "Power Platform admin center"
-      path: "Security > Data and privacy > Data policy > New Policy > Next > Next > connector > three dots > Block"
+      path: "Security > Data and privacy > Data policy > New Policy > Next > Add an environment > Available > environment > Add to policy > Next > Assign connectors > connector > three dots > Block"
       docs: "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention"
     api:
       kind: "powershell"
@@ -64,19 +73,23 @@ changes:
     note: "Corrected the data policy path to include the connector's three-dots menu before Block, and stated that -Classification Blocked puts connectors in the Blocked group."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 48 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-18"
+    note: "Correction: licensing set to mixed with the Copilot Studio access routes from the licensing page; data policy path gained the environment steps; added sources for the tools list and admin role."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 60 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 3
 verification:
   status: "held"
   date: "2026-11-18"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 48
-  confirmed: 47
+  claims: 60
+  confirmed: 59
   unconfirmed: 0
   contradicted: 1
-  attempts: 2
-  hash: "7b52495d5cc5c34d64dac32e5eecfd2f"
+  attempts: 3
+  hash: "4a252f5e5d9598b6fafbf5f3361d2de0"
 ---
 
 ## What's changing
@@ -117,9 +130,9 @@ The practical question for a service owner is whether your connector governance 
 
 ## Cost and licensing
 
-No licence and no price are published for this feature: the roadmap item names none, and the Learn page on end-user connections lists none. Not yet published.
+Copilot Studio documents access through a Copilot Studio user license requiring a tenant prepaid Copilot Credit pack subscription, the Copilot Studio authors role for applicable pay-as-you-go scenarios, a Microsoft 365 Copilot license, or a trial. The trial permits testing but not publishing. No separate entitlement for this connection experience is published. Source: [Licensing for agents powered by the standard harness](https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing).
 
-The Learn pages on setting up connections and on adding tools for agents on the Microsoft Copilot harness both carry a note that the harness uses usage-based billing and that using, building, testing and evaluating agents might consume Copilot Credits. Whether the connection step itself consumes credits is not stated. See [Copilot Credits](/concepts/copilot-credits/) for the meter and [Spending policies](/concepts/spending-policies/) for caps.
+The Learn pages on setting up connections and on adding tools for agents on the Microsoft Copilot harness both carry a note that the harness uses usage-based billing and that using, building, testing and evaluating agents might consume Copilot Credits. A charge for the connection step itself is not stated. See [Copilot Credits](/concepts/copilot-credits/) for the meter and [Spending policies](/concepts/spending-policies/) for caps.
 
 Indirect cost is admin and support time for the new sign-in step, and for reconnecting after an agent changes.
 
@@ -154,7 +167,7 @@ The Learn page on end-user connections is written for agents on the Microsoft Co
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which connectors agent makers can use as tools</strong><br><small>Environment</small><br><small class="controls__note">General control: Microsoft has not confirmed how it applies to the in-chat sign-in. The path is for a new policy; use Edit Policy for an existing one. Requires admin rights over the scope.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Data and privacy › Data policy › New Policy › Next › Next › connector › three dots › Block <a href="https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-ConnectorsToPolicy -PolicyName &lt;policy-id&gt; -Classification &lt;group&gt; -Connectors &lt;connector-list&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which connectors agent makers can use as tools</strong><br><small>Environment</small><br><small class="controls__note">General control: Microsoft has not confirmed how it applies to the in-chat sign-in. The path is for a new policy; use Edit Policy for an existing one. Requires admin rights over the scope.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Data and privacy › Data policy › New Policy › Next › Add an environment › Available › environment › Add to policy › Next › Assign connectors › connector › three dots › Block <a href="https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-ConnectorsToPolicy -PolicyName &lt;policy-id&gt; -Classification &lt;group&gt; -Connectors &lt;connector-list&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -173,16 +186,12 @@ Users manage their own connections on the **Manage your connections** page; that
 
 <!-- rationale
 risk: Low. The roadmap item describes a simpler sign-in step, not new data access, and the Learn pages show connectors still sit under data policies; no source says the in-chat step changes that.
-cost: Low. No licence or meter is published for this feature; the cost shown is admin and support time. The Learn page for the Microsoft Copilot harness notes that using agents might consume Copilot Credits.
+cost: Low. Copilot Studio documents several access routes, and no separate entitlement or charge for this connection experience is published; the cost shown is admin and support time. The Learn page for the Microsoft Copilot harness notes that using agents might consume Copilot Credits.
 impact: Medium. Makers and the people chatting with agents see the new sign-in step, because the roadmap item says it replaces a full settings experience. Admins see nothing unless they receive tickets.
 -->
 
 <!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.model and notes; Cost and licensing; rationale: cost / licensing: The licensing model is unknown because no licence is published for this feature. | Found: To use Copilot Studio, you need one of the following configurations: - Copilot Studio user license (free). - Copilot Studio authors role in Power Platform admin center. - Microsoft 365 Copilot license - Copilot Studio trial license. | Fix: Set licensing.model to mixed and cite https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing. Replace the blanket licensing absence in the notes, Cost and licensing, and cost rationale with: 'Copilot Studio documents access through a Copilot Studio user license requiring a tenant prepaid Copilot Credit pack subscription, the Copilot Studio authors role for applicable pay-as-you-go scenarios, a Microsoft 365 Copilot license, or a trial. The trial permits testing but not publishing. No separate entitlement for this connection experience is published.' Retain the distinct statement that a charge for the connection step itself is not stated. | Source: https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance guidance: Before rollout / behaviour: An agent has a tools list that makers can review. | Found: In the agent navigation bar, select the Build tab. 3. The tools list appears in the components panel on the right, below the Tools button. | Fix: Add https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/tools-manage to sources for the advice to review each agent's tools list. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/tools-manage
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: Power Platform admin center > Security > Data and privacy > Data policy > New Policy > Next > Next > connector > three dots > Block reaches connector blocking. | Found: Select Next. The Add an environment page appears. - To add an environment to your data policy, select the environment in the Available tab, and then select Add to policy. Select Next. The Assign connectors page appears. | Fix: Include the omitted environment selection and wizard headings in both copies of the path: 'Security > Data and privacy > Data policy > New Policy > Next > Add an environment > Available > environment > Add to policy > Next > Assign connectors > connector > three dots > Block'. The cited page also confirms the final three-dots > Block steps; this is not a nonexistent-path finding. | Source: https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention
-- [supported, minor] Governance controls / role: A Power Platform administrator can configure the data-policy control. | Found: | Data policies | | | | | | View and manage tenant policies | Yes | Yes | Yes | No | | View and manage environment policies | Yes | Yes | Yes | No | | Fix: Add https://learn.microsoft.com/power-platform/admin/use-service-admin-role-manage-tenant to sources; its permission matrix confirms Power Platform administrators can manage tenant and environment data policies. | Source: https://learn.microsoft.com/power-platform/admin/use-service-admin-role-manage-tenant
+- [contradicted, blocker] Open questions: data policies and blocking maker-provided credentials / absence: Whether blocking maker-provided credentials applies when a user connects in chat remains an open applicability question. | Found: All tools for all agents in the impacted environments instantly change to require end-user credentials at runtime. ... When an end user interacts with an agent ... and triggers a tool action, the agent prompts that user to sign in if they haven't already. | Fix: Replace the Open questions bullet 'Do data policies and the blocking of maker-provided credentials apply when a user connects in chat? Watch the Learn data policy page.' with 'Are data policies evaluated again at the in-chat connection step? Watch the Learn data policy page.' General credential-control applicability is documented at https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication. | Source: https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication
 -->

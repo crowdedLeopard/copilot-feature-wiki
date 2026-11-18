@@ -17,7 +17,7 @@ impact: "medium"
 defaultState: "user-opt-in"
 action: "review"
 licensing:
-  model: "unknown"
+  model: "included"
   notes: "Model-driven app use requires a licence providing Power Apps premium use rights. Microsoft has not published an additional licence requirement specific to the header and navigation refresh."
 audiences: ["power-platform-admin","maker","service-owner","change-adoption"]
 tags: ["power-apps","model-driven-apps","user-experience","app-designer"]
@@ -30,6 +30,9 @@ sources:
     kind: "learn"
   - title: "Power Apps licensing FAQs"
     url: "https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq"
+    kind: "learn"
+  - title: "Create a model-driven app using the classic app designer"
+    url: "https://learn.microsoft.com/power-apps/maker/model-driven-apps/create-edit-app"
     kind: "learn"
   - title: "Manage model-driven app settings in the app designer"
     url: "https://learn.microsoft.com/power-apps/maker/model-driven-apps/app-properties"
@@ -47,7 +50,7 @@ controls:
     scope: "app"
     ui:
       surface: "Power Apps (maker)"
-      path: "App designer > Settings > Features > Header and navigation refresh"
+      path: "Solutions > solution > Apps > app > Edit > Settings > Features > Header and navigation refresh"
       docs: "https://learn.microsoft.com/power-apps/user/modern-fluent-design"
     api: null
     note: "Maker-side. Save and publish the app."
@@ -64,19 +67,23 @@ changes:
     note: "Corrected after verification: added the Power Apps premium licence requirement for model-driven apps, removed the unconfirmed SaveSettingValue call from the controls table, and narrowed the no-new-data-access wording."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 74 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-18"
+    note: "Corrected after verification: licensing model set to included (Power Apps premium use rights for model-driven apps) and the maker path now starts at Solutions and Edit."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 77 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-18"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 74
-  confirmed: 72
+  claims: 77
+  confirmed: 77
   unconfirmed: 0
-  contradicted: 2
-  attempts: 2
-  hash: "c67e4088473f757b9286736dc20e98f5"
+  contradicted: 0
+  attempts: 0
+  hash: "b28e73ccb0b44a9967a5922240f18164"
 ---
 
 ## What's changing
@@ -146,7 +153,7 @@ The cost the sources do show is indirect: maker time to test each app with the r
 
 ### At rollout
 
-- Have makers enable the setting one app at a time in the app designer (**Settings** > **Features**), then save and publish the app, starting with a pilot group.
+- Have makers enable the setting one app at a time: in Power Apps, select **Solutions**, choose the solution, select **Apps**, select the app, select **Edit**, then in the app designer select **Settings** > **Features**. Then save and publish the app, starting with a pilot group.
 - Send users of each switched app a short note on the sticky condensed header and the moved commands.
 - Decide whether to apply the roadmap's **Auto / Yes / No** values or the Learn page's **Features** toggle, and confirm which one your tenant shows before giving makers instructions.
 
@@ -162,7 +169,7 @@ The cost the sources do show is indirect: maker time to test each app with the r
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether an existing model-driven app uses the header and navigation refresh</strong><br><small>App</small><br><small class="controls__note">Maker-side. Save and publish the app.</small></td><td data-label="Admin UI"><strong>Power Apps (maker)</strong><br>App designer › Settings › Features › Header and navigation refresh <a href="https://learn.microsoft.com/power-apps/user/modern-fluent-design" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether an existing model-driven app uses the header and navigation refresh</strong><br><small>App</small><br><small class="controls__note">Maker-side. Save and publish the app.</small></td><td data-label="Admin UI"><strong>Power Apps (maker)</strong><br>Solutions › solution › Apps › app › Edit › Settings › Features › Header and navigation refresh <a href="https://learn.microsoft.com/power-apps/user/modern-fluent-design" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
@@ -185,9 +192,8 @@ cost: Low. The only cost the sources show is maker and admin time for testing an
 impact: Medium. Makers decide per app, but once an app is switched, every user of that app sees a new header, sitemap, form scrolling behaviour and command order.
 -->
 
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.model / licensing: The licensing model is unknown: entitlement to the refresh is not yet published. | Found: Model-driven apps use Dataverse and are premium apps by default. Every user who runs a model-driven app needs a license that provides Power Apps premium use rights. | Fix: Set licensing.model to included. Retain the notes stating that model-driven app use requires a licence providing Power Apps premium use rights and that an additional requirement specific to the refresh is not published. The product-level entitlement is documented at https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq; an unpublished refresh-specific requirement does not make that entitlement unknown. | Source: https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq
-- [contradicted, blocker] controls[0].ui; Governance controls; Governance guidance: At rollout / admin-path: Power Apps (maker) > App designer > Settings > Features > Header and navigation refresh is the complete route to the app control. | Found: Select Solutions. ... Choose the solution that contains the model-driven app where editing is required. ... On the left navigation pane select Apps, select a model-driven app, and then on the toolbar select Edit. | Fix: Replace the path in controls[0].ui and the rendered table with 'Solutions > solution > Apps > app > Edit > Settings > Features > Header and navigation refresh'. Add https://learn.microsoft.com/power-apps/maker/model-driven-apps/create-edit-app to sources for the entry route; retain https://learn.microsoft.com/power-apps/user/modern-fluent-design as docs for the control's final steps. The current path starts inside an app without the navigation and Edit operation needed to reach its designer. | Source: https://learn.microsoft.com/power-apps/maker/model-driven-apps/create-edit-app
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[0].ui; Governance guidance: At rollout; Governance controls / admin-path: The maker path is Solutions > solution > Apps > app > Edit > Settings > Features > Header and navigation refresh. | Found: In the app designer, select Settings on the command bar. Select Features, and then enable Header and navigation refresh. | Fix: Include environment selection: 'environment > Solutions > solution > Apps > app > Edit > Settings > Features > Header and navigation refresh'. The cited create-edit-app page's 'Edit an app' section says to choose the environment before selecting Solutions; its remaining entry steps and the feature page's final steps match the printed path. | Source: https://learn.microsoft.com/power-apps/user/modern-fluent-design
 -->

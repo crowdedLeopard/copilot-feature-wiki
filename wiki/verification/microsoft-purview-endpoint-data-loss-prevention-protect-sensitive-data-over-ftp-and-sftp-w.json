@@ -1,0 +1,856 @@
+{
+  "slug": "microsoft-purview-endpoint-data-loss-prevention-protect-sensitive-data-over-ftp-and-sftp-w",
+  "roadmapId": 565868,
+  "title": "Microsoft Purview Endpoint DLP: protect files sent over FTP and SFTP",
+  "status": "held",
+  "date": "2026-11-18",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "cd5b21ff3a5b",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-18",
+    "reasons": [
+      "1 blocking finding (claim 41)"
+    ]
+  },
+  "counts": {
+    "claims": 59,
+    "confirmed": 56,
+    "unconfirmed": 1,
+    "contradicted": 2,
+    "blocker": 1,
+    "major": 1,
+    "minor": 1
+  },
+  "summary": "Held because the cost section classifies potentially billed evidence storage as an indirect-only cost. The rollout, default, licensing and documented controls are supported; the transfer-route count and a checklist-to-table omission also need correction.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing; changes",
+      "type": "record",
+      "claim": "The roadmap item is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap general availability target is October CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"October CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview target is September CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"September CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap lists the platform as Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The roadmap release phases are General Availability and Preview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "title; front matter: products, roadmapId",
+      "type": "record",
+      "claim": "Roadmap item 565868 concerns Microsoft Purview Endpoint DLP protection over FTP and SFTP.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"id\": 565868, \"title\": \"Microsoft Purview: Endpoint Data Loss Prevention - Protect sensitive data over FTP and SFTP with Endpoint DLP\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 2026-11-06T23:04:41.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-06T23:04:41\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "summary; What's changing; Scope; rationale: impact",
+      "type": "behaviour",
+      "claim": "Endpoint DLP can monitor and protect sensitive files transferred over FTP and SFTP from managed Windows devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-ftp-sftp-short",
+      "quote": "Endpoint data loss prevention (DLP) in Microsoft Purview can monitor and protect sensitive data transferred over FTP and SFTP from managed Windows devices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Endpoint DLP evaluates FTP and SFTP transfers against policy rules as it does USB copying and network-share copying.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-ftp-sftp-short",
+      "quote": "Endpoint DLP evaluates these transfers against your policy rules, just as it does other device activities such as copying to USB devices or network shares.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "Resulting FTP and SFTP events appear in Activity explorer.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-ftp-sftp-short",
+      "quote": "You can review the resulting events in Activity explorer.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; Risk assessment; rationale: risk",
+      "type": "default",
+      "claim": "FTP and SFTP protection is admin-opt-in, not enabled by default, and requires configuration in Endpoint DLP policies.",
+      "status": "supported",
+      "source": "Message Center post MC1404319",
+      "quote": "FTP and SFTP protection is not enabled by default. Administrators must configure FTP/SFTP transfer activities in Endpoint DLP policies to apply protection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The FTP and SFTP control is reached through Data loss prevention > Policies > Create policy > Locations > Devices > rule > Actions > Audit or restrict activities on devices > File activities for all apps > Apply restrictions to specific activity > FTP and SFTP transfers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-ftp-sftp-short",
+      "quote": "Under Actions, select Audit or restrict activities on devices.\n5. In File activities for all apps, select Apply restrictions to specific activity.\n6. Select the FTP and SFTP transfers checkbox, and then choose an action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "controls[0].note; What's changing; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "The FTP and SFTP transfers activity supports Audit only, Block, Block with override and Allow.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-ftp-sftp-short",
+      "quote": "Select the FTP and SFTP transfers checkbox, and then choose an action. Supported actions are Audit only, Block, Block with override, and Allow.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "controls[0].note; Scope; Governance controls",
+      "type": "role",
+      "claim": "Administrators need permissions to create and deploy DLP policies and to view Activity explorer.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-ftp-sftp-short",
+      "quote": "Permissions to create and deploy DLP policies and view Activity explorer. Use the least-privileged roles needed for these tasks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "controls[0].scope; Scope; Governance guidance",
+      "type": "applicability",
+      "claim": "On the Locations page, the Devices policy can be scoped to chosen users or device groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-ftp-sftp-short",
+      "quote": "On the Locations page, select Devices, and then scope the policy to the users or device groups you want.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Risk assessment: Data exposure; Governance guidance",
+      "type": "applicability",
+      "claim": "FTP and SFTP activities are evaluated using configured conditions, scope and actions, including conditions such as sensitive information types or sensitivity labels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-ftp-sftp-short",
+      "quote": "Create a rule, and add the conditions you want to detect, such as sensitive information types or sensitivity labels.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1404319 was updated on 11 August 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1404319",
+      "quote": "Updated August 11, 2026: We have updated the timeline. Thank you for your patience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1404319 gives public preview as beginning early September 2026 and expected to complete by the end of September 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1404319",
+      "quote": "Public Preview: Beginning early September 2026 (previously late July) and expected to complete by end of September 2026 (previously early August)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "MC1404319 gives general availability in Worldwide, GCC, GCC High and DoD as beginning and completing in October 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1404319",
+      "quote": "General Availability (Worldwide, GCC, GCC High, and DoD): Beginning and completing October 2026 (previously mid-August)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1404319 sets no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1404319",
+      "quote": "Act by: none\nNo immediate action is required before rollout.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Scope; rationale: impact",
+      "type": "record",
+      "claim": "MC1404319 identifies admins managing Endpoint DLP and users on managed Windows devices as affected.",
+      "status": "supported",
+      "source": "Message Center post MC1404319",
+      "quote": "Who is affected\n\n- Admins managing Microsoft Purview Endpoint DLP- Users on managed Windows devices",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Governance guidance: Before rollout; After rollout",
+      "type": "record",
+      "claim": "MC1404319 recommends reviewing existing device policies, identifying where protection should apply, starting with audit, monitoring events and refining policies.",
+      "status": "supported",
+      "source": "Message Center post MC1404319",
+      "quote": "Review your existing Endpoint DLP policies for devices.- Identify where FTP and SFTP transfer protection should be applied.- Start with audit only mode before enabling blocking actions.- Use Activity Explorer to monitor FTP and SFTP events after rollout.- Refine policies based on observed activity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Why it matters; Risk assessment: Autonomy & actions; Governance guidance",
+      "type": "behaviour",
+      "claim": "Microsoft recommends starting with a small pilot group and Audit only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-ftp-sftp-short",
+      "quote": "We recommend starting with a small pilot group and setting the action to Audit only. Review Activity explorer to understand how users transfer files over FTP/SFTP before you deploy the policy broadly.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "FTP and SFTP transfers support full file evidence collection that can save a complete copy of a matched file.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-ftp-sftp-short",
+      "quote": "FTP and SFTP transfers support full file evidence (FFE) collection. Enable evidence collection in Endpoint DLP settings and configure it in your DLP policy. When a user attempts to transfer a matched file, a complete copy can be saved.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Previewing evidence needs the Data Classification Content Viewer role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-copy-matched-items-get-started",
+      "quote": "When you want to preview or download the evidence, the account used needs to be in these roles:\n\n- Preview the evidence: Data Classification Content Viewer",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Downloading evidence needs the Data Classification Content Download role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-copy-matched-items-get-started",
+      "quote": "Download the evidence: Data Classification Content Download",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Activity explorer requires an explicitly assigned listed role or role group, including Information Protection Analyst or Information Protection Investigator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-activity-explorer",
+      "quote": "An account must be explicitly assigned membership in any one of these role groups, or must be explicitly granted the role.\n\n#### Microsoft Purview roles\n\n- Information Protection Admin\n- Information Protection Analyst\n- Information Protection Investigator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Security & identity; Scope",
+      "type": "applicability",
+      "claim": "Devices must be onboarded to Microsoft Purview to use this feature.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-ftp-sftp-short",
+      "quote": "## Prerequisites\n\n- Devices onboarded to Microsoft Purview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Blocking acts on the FTP transfer and Learn shows an end-user notification for a blocked transfer.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-ftp-sftp-short",
+      "quote": "Example of an end-user notification for a blocked FTP transfer:\n\n[![Screenshot of a data loss prevention notification informing a user that an FTP file transfer is not allowed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Activity explorer is not a real-time view.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-activity-explorer",
+      "quote": "Activity explorer isn't a real-time view. Because its data comes from the Microsoft 365 unified audit log, activities appear on the same schedule as audit records — not the moment they occur.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Activity explorer reports on up to 30 days of data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-activity-explorer",
+      "quote": "Activity explorer reports on up to 30 days worth of data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Devices report endpoint activities only while online.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-activity-explorer",
+      "quote": "Devices report endpoint activities only while they're online. An offline device backfills its activities after it reconnects.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Change & support; controls[3].note",
+      "type": "behaviour",
+      "claim": "A device does not enforce a policy update it has not received, and policy sync status indicates whether it received the latest version.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "The Policy sync status shows you if the device received the latest policy version, or if the corresponding policies synced successfully to the device.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Devices must be online to receive policy updates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "Devices must be online for the policy update to happen. If the status isn't updating, check the last time the device was seen.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "front matter: licensing; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Endpoint DLP is included in Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW, Microsoft Defender + Purview Suite FLW and Microsoft 365 E5/A5/F5/G5 Information Protection & Governance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "| Feature | Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW, Microsoft 365 E5/A5/F5/G5 Information Protection & Governance |\n| --- | --- |\n| Endpoint Data Loss Prevention (DLP) | Included |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "The FTP and SFTP feature page lists onboarded devices and permissions as prerequisites but no separate licence, price or meter.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Endpoint DLP FTP SFTP licensing price meter. Opened endpoint-dlp-ftp-sftp-short and the Microsoft Purview service description; the feature page's full text lists only onboarding and permissions as prerequisites and no separate licence, price or meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Learn tells admins configuring customer-managed evidence storage to consider Azure storage access tiers and pricing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-configure-endpoint-settings",
+      "quote": "Consider configuring Azure storage account access tiers and Azure storage account pricing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "The evidence configuration supports customer-managed or Microsoft-managed storage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-copy-matched-items-get-started",
+      "quote": "Select a storage type (Customer managed store or Microsoft managed store) and then select + Add storage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "Administrators can view Microsoft-managed storage usage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-copy-matched-items-get-started",
+      "quote": "You can view and export the daily usage for past 6 months for Microsoft Managed storage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "front matter: cost; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "The cost is low, meaning indirect costs only, with evidence storage classified alongside admin time as an indirect cost.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/dlp-copy-matched-items-learn",
+      "quote": "| Charges | Storage costs are charged in addition to the cost of your Entra subscription. | Storage cost today is included in E5.",
+      "severity": "blocker",
+      "fix": "Set cost to variable to cover the optional Azure storage consumption the briefing includes. Replace the indirect-cost sentence with 'Admin time is an indirect cost. Customer-managed evidence storage has additional Azure storage charges; Microsoft-managed evidence storage is currently included in E5.' Replace the cost rationale with 'Variable. Endpoint DLP is included in the listed licences, but choosing customer-managed evidence collection adds Azure storage consumption charges; Microsoft-managed evidence storage is currently included in E5.' Cite https://learn.microsoft.com/purview/dlp-copy-matched-items-learn for this distinction."
+    },
+    {
+      "n": 42,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Activity explorer is reached through Microsoft Purview portal > Data loss prevention > Activity explorer.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-copy-matched-items-get-started",
+      "quote": "Sign in to the Microsoft Purview portal > Data loss prevention > Activity explorer.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[1].api; controls[1].note; Governance controls table",
+      "type": "command",
+      "claim": "Export-ActivityExplorerData -StartTime <DateTime> -EndTime <DateTime> -OutputFormat Json exports Activity explorer records in Security & Compliance PowerShell without changing policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/export-activityexplorerdata",
+      "quote": "This cmdlet is available only in Security & Compliance PowerShell.\nExport-ActivityExplorerData -StartTime \"07/08/2022 07:15 AM\" -EndTime \"07/08/2022 11:08 AM\" -OutputFormat Json\nThis example exports up to 100 records for the specified date range in Json format.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[1].note; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "The Export-ActivityExplorerData reference lists no FTP or SFTP activity filter value.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Export-ActivityExplorerData\" \"FTP\" \"SFTP\". Opened the complete Export-ActivityExplorerData reference and checked its Valid activity filters list; it contains no FTP or SFTP activity value.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Evidence storage configuration is at Microsoft Purview portal > Settings > Data Loss Prevention > Endpoint DLP settings > Setup evidence collection for file activities on devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-copy-matched-items-get-started",
+      "quote": "Sign in to the Microsoft Purview portal > Settings gear in the menu bar.\n2. Choose Data Loss Prevention.\n3. Select Endpoint DLP settings.\n4. Expand Setup evidence collection for file activities on devices and set the toggle to On.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[2].note; Governance controls table",
+      "type": "applicability",
+      "claim": "The rule must select Collect original file as evidence for all selected file activities on Endpoint and select FTP and SFTP transfers for evidence collection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-copy-matched-items-get-started",
+      "quote": "In Incident reports, select Collect original file as evidence for all selected file activities on Endpoint.\n- Select the storage account you want.\n- Select the activities for which you want to copy matched items to Azure storage, such as:\n...\n- FTP and SFTP transfers",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[2].api; Governance controls table",
+      "type": "absence",
+      "claim": "Microsoft has not documented automation for configuring this evidence storage control.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Endpoint DLP evidence collection Set-PolicyConfig PowerShell EvidenceCollection storage. Opened Set-PolicyConfig, New-DlpComplianceRule, dlp-configure-endpoint-settings and dlp-copy-matched-items-get-started; none documents a call setting evidence storage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[3].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Device configuration and policy sync status are reached at Microsoft Purview portal > Settings > Device onboarding > Devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "Sign in to the Microsoft Purview portal > Settings (gear icon in the upper right corner) > Device onboarding > Devices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[3].api; controls[3].note; Governance controls table",
+      "type": "command",
+      "claim": "DeviceInfo | where DlpInfo != \"\" is a read-only advanced hunting query in Microsoft Defender for Endpoint DLP device configuration and sync details.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "Go to the Microsoft Defender portal\n2. Navigate to Investigation & response > Hunting > Advanced hunting\n3. Query the DeviceInfo table\n4. Expand the DlpInfo column to view Endpoint DLP device details\n\nSample query:\n\nDeviceInfo\n| where DlpInfo != \"\"\n| project DlpInfo",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[0].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not documented an automation setting for the FTP and SFTP policy action.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Endpoint DLP FTP SFTP transfers PowerShell EndpointDlpRestrictions setting. Opened endpoint-dlp-ftp-sftp-short and New-DlpComplianceRule; searched FTP/SFTP throughout the reference and read EndpointDlpRestrictions. No setting name for this action was documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "The New-DlpComplianceRule reference gives Print, NetworkShare and RemovableMedia as EndpointDlpRestrictions example settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule?view=exchange-ps",
+      "quote": "- `@{\"Setting\"=\"Print\"; \"Value\"=\"Block\"}`\n- `@{\"Setting\"=\"RemovableMedia\"; \"Value\"=\"Block\";}`\n- `@{\"Setting\"=\"NetworkShare\"; \"Value\"=\"Block\";}`",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Scope: Permissions",
+      "type": "role",
+      "claim": "The feature page tells admins to use the least-privileged roles needed for policy administration and Activity explorer.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-ftp-sftp-short",
+      "quote": "Permissions to create and deploy DLP policies and view Activity explorer. Use the least-privileged roles needed for these tasks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "Policy tips can be enabled under User notifications in the rule.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-ftp-sftp-short",
+      "quote": "(Optional) Turn on policy tips under User notifications.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance guidance: After rollout; Why it matters",
+      "type": "behaviour",
+      "claim": "Activity explorer can filter Activity to File transfer by FTP/SFTP and show the user, device, file, matched policy and action.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-ftp-sftp-short",
+      "quote": "Filter Activity to File transfer by FTP/SFTP. Review the user, device, file, matched policy, and action for each transfer.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "FTP and SFTP add a third transfer route to Endpoint DLP.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Endpoint DLP \"third\" \"FTP\" transfer route. Read endpoint-dlp-ftp-sftp-short and MC1404319; neither numbers transfer routes or calls FTP/SFTP the third route. Learn describes USB and network shares as examples, not an exhaustive prior list.",
+      "severity": "major",
+      "fix": "Replace 'This adds a third transfer route, FTP and SFTP, to the device activities Endpoint DLP already covers' with 'This adds FTP and SFTP transfers to the device activities Endpoint DLP covers'."
+    },
+    {
+      "n": 56,
+      "where": "Why it matters",
+      "type": "record",
+      "claim": "Microsoft's notice describes the capability as closing a gap in protection across common transfer methods.",
+      "status": "supported",
+      "source": "Message Center post MC1404319",
+      "quote": "It prevents unauthorized data exfiltration while maintaining visibility and control and closes a gap in protection across common transfer methods.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Open questions: clients and transfer directions",
+      "type": "absence",
+      "claim": "The feature documentation does not resolve which FTP/SFTP clients and transfer directions are evaluated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Endpoint DLP FTP SFTP supported clients transfer directions macOS. Read endpoint-dlp-ftp-sftp-short and the returned Endpoint DLP support excerpts; no feature-specific client list or transfer-direction matrix was provided.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Open questions: other platforms",
+      "type": "absence",
+      "claim": "Feature-specific documentation describes managed Windows devices without confirming other platforms for FTP/SFTP protection.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Endpoint DLP FTP SFTP supported clients transfer directions macOS. Opened endpoint-dlp-ftp-sftp-short and read Endpoint DLP support search excerpts; general Endpoint DLP supports macOS, but the FTP/SFTP page identifies managed Windows devices only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Governance guidance: At rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The checklist tells readers to enable policy tips, but no controls-table row represents that control.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: 'Turn on policy tips under User notifications only once you are ready for users to see them.' The table's four rows cover transfer actions, event review, evidence storage and device status, not policy tips.",
+      "severity": "minor",
+      "fix": "Remove the 'Turn on policy tips under User notifications only once you are ready for users to see them' checklist bullet; the policy-tips step has no row in the controls table."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-18T14:04:52.892Z",
+    "summary": {
+      "links": 11,
+      "unreachable": 8,
+      "uiPaths": 4,
+      "uiPathsWithMissingWords": 4,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 2,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=565868",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1404319",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/endpoint-dlp-ftp-sftp-short",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-copy-matched-items-get-started",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/data-classification-activity-explorer",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-configure-endpoint-settings",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/export-activityexplorerdata",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule?view=exchange-ps",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-policyconfig?view=exchange-ps",
+        "ok": false,
+        "status": 429
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether Endpoint DLP audits or restricts FTP and SFTP transfers",
+        "docs": "https://learn.microsoft.com/purview/endpoint-dlp-ftp-sftp-short",
+        "reachable": false,
+        "segments": [
+          "Data loss prevention",
+          "Policies",
+          "Create policy",
+          "Locations",
+          "Devices",
+          "Actions",
+          "Audit or restrict activities on devices",
+          "File activities for all apps",
+          "Apply restrictions to specific activity",
+          "FTP and SFTP transfers"
+        ],
+        "missing": [
+          "Data loss prevention",
+          "Policies",
+          "Create policy",
+          "Locations",
+          "Devices",
+          "Actions",
+          "Audit or restrict activities on devices",
+          "File activities for all apps",
+          "Apply restrictions to specific activity",
+          "FTP and SFTP transfers"
+        ]
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Where FTP and SFTP events are reviewed",
+        "docs": "https://learn.microsoft.com/purview/dlp-copy-matched-items-get-started",
+        "reachable": false,
+        "segments": [
+          "Data loss prevention",
+          "Activity explorer"
+        ],
+        "missing": [
+          "Data loss prevention",
+          "Activity explorer"
+        ]
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Where FTP and SFTP events are reviewed",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/export-activityexplorerdata",
+        "reachable": false,
+        "token": "Export-ActivityExplorerData",
+        "found": false
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Whether matched FTP and SFTP files are saved as evidence, and where",
+        "docs": "https://learn.microsoft.com/purview/dlp-copy-matched-items-get-started",
+        "reachable": false,
+        "segments": [
+          "Settings",
+          "Data Loss Prevention",
+          "Endpoint DLP settings",
+          "Setup evidence collection for file activities on devices"
+        ],
+        "missing": [
+          "Settings",
+          "Data Loss Prevention",
+          "Endpoint DLP settings",
+          "Setup evidence collection for file activities on devices"
+        ]
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Per-device configuration and policy sync status",
+        "docs": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+        "reachable": false,
+        "segments": [
+          "Settings",
+          "Device onboarding",
+          "Devices"
+        ],
+        "missing": [
+          "Settings",
+          "Device onboarding",
+          "Devices"
+        ]
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Per-device configuration and policy sync status",
+        "docs": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+        "reachable": false,
+        "token": "DeviceInfo |",
+        "found": false
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

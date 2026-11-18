@@ -40,8 +40,8 @@ sources:
   - title: "Manage data policies"
     url: "https://learn.microsoft.com/power-platform/admin/create-dlp-policy"
     kind: "learn"
-  - title: "New-DlpPolicy"
-    url: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy"
+  - title: "Add-ConnectorsToPolicy"
+    url: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy"
     kind: "learn"
   - title: "Manage Permission Scopes in SharePoint"
     url: "https://learn.microsoft.com/sharepoint/manage-permission-scope"
@@ -53,12 +53,12 @@ controls:
     scope: "environment"
     ui:
       surface: "Power Platform admin center"
-      path: "Security > Settings > Data and privacy > Data policy"
+      path: "Security > Settings > Data and privacy > Data policy > + New Policy > Pre-built connectors > SharePoint > Move to Business"
       docs: "https://learn.microsoft.com/power-platform/admin/create-dlp-policy"
     api:
       kind: "powershell"
-      call: "New-DlpPolicy -DisplayName <policy name> -EnvironmentType <environment type>"
-      docs: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy"
+      call: "Add-ConnectorsToPolicy -PolicyName <policy GUID> -Classification Confidential -Connectors <connector objects>"
+      docs: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy"
     note: "Data policies govern which connectors a flow can combine with the SharePoint connector; this action is listed under that connector."
 confidence: "medium"
 created: "2026-11-18"
@@ -73,19 +73,23 @@ changes:
     note: "Corrected after verification: removed the no-admin-action claim, narrowed library read access, stated the action is under the Standard SharePoint connector, and fixed the data policy path and applicability."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 5 of 54 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-18"
+    note: "Corrected after verification: the data policy row now gives the full path to moving SharePoint to the Business group and the Add-ConnectorsToPolicy command, the data policy roles are stated as the page gives them, and the unpublished storage-figure claim is removed."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 57 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-18"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 54
-  confirmed: 49
+  claims: 57
+  confirmed: 56
   unconfirmed: 0
-  contradicted: 5
-  attempts: 2
-  hash: "e88a41868009b51a2a299aaff11c7708"
+  contradicted: 1
+  attempts: 0
+  hash: "f75e8de19af7b8ea1704cc185ad8b197"
 ---
 
 ## What's changing
@@ -129,7 +133,7 @@ Learn's prerequisites for structured document generation list a Microsoft Copilo
 
 For the flow side, the SharePoint connector reference lists the connector as Standard class in Power Automate, and Generate a document from a form (preview) is listed as an operation of the Standard SharePoint connector. The Power Automate licence page says the standard connectors entitlement is needed to add a standard connector to a cloud flow and trigger it, and that the Free licence includes creating and running cloud flows (without sharing) with connector use limited to standard connectors. The action belongs to the Standard SharePoint connector, so standard-connector entitlements apply. Microsoft has not published an additional action-specific licence requirement, a meter or a credit rate for this action.
 
-Indirect costs are maker time to map fields and SharePoint library storage for the generated files. Microsoft has not published a figure for either.
+Indirect costs are maker time to map fields and SharePoint library storage for the generated files.
 
 ## Scope
 
@@ -166,11 +170,11 @@ Indirect costs are maker time to map fields and SharePoint library storage for t
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which connectors flows in an environment may combine with the SharePoint connector</strong><br><small>Environment</small><br><small class="controls__note">Data policies govern which connectors a flow can combine with the SharePoint connector; this action is listed under that connector.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Settings › Data and privacy › Data policy <a href="https://learn.microsoft.com/power-platform/admin/create-dlp-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpPolicy -DisplayName &lt;policy name&gt; -EnvironmentType &lt;environment type&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which connectors flows in an environment may combine with the SharePoint connector</strong><br><small>Environment</small><br><small class="controls__note">Data policies govern which connectors a flow can combine with the SharePoint connector; this action is listed under that connector.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Settings › Data and privacy › Data policy › + New Policy › Pre-built connectors › SharePoint › Move to Business <a href="https://learn.microsoft.com/power-platform/admin/create-dlp-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-ConnectorsToPolicy -PolicyName &lt;policy GUID&gt; -Classification Confidential -Connectors &lt;connector objects&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-The data policy row is a general Power Platform control. Data policies govern which connectors a flow can combine with the SharePoint connector; this action is listed under that connector. The data policy page says the Block action is not available for connectors like SharePoint, so a policy can place the connector in a data group but, on that page's wording, not block it. Creating, editing or deleting data policies needs the Environment Admin or Power Platform admin role; for environments with a Dataverse database, the System Administrator role instead.
+The data policy row is a general Power Platform control. Data policies govern which connectors a flow can combine with the SharePoint connector; this action is listed under that connector. The data policy page says the Block action is not available for connectors like SharePoint, so a policy can place the connector in a data group but, on that page's wording, not block it. Tenant-level data policies require the Power Platform Administrator role. Environment-level data policies require Power Apps Environment Admin permissions, or the System Administrator role for environments with a Dataverse database.
 
 Access to create a form is set by SharePoint library permissions (Edit), not by a Power Automate setting. Microsoft Learn describes no tenant switch for document generation forms or for the three Power Automate items at the time of writing (November 2026); see Open questions.
 
@@ -187,13 +191,8 @@ cost: Medium. Users who create and configure the forms need a Microsoft Copilot 
 impact: Medium. Makers building flows and content managers who own templates notice it; people who submit forms need only the form link, and nothing is documented that changes what other users see.
 -->
 
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Cost and licensing: indirect costs / absence: Microsoft has not published a figure for SharePoint library storage costs for generated files. | Found: | Microsoft 365 SharePoint Storage | The number of gigabytes (GB) of data that exceeds the SharePoint tenant quota. | $0.20/GB/month (shows on invoice as $0.00667/GB/day) | | Fix: Remove 'Microsoft has not published a figure for either.' Keep the preceding sentence about maker time and SharePoint library storage; it does not claim that general storage pricing is unpublished. | Source: https://learn.microsoft.com/microsoft-365/documentprocessing/syntex-pay-as-you-go-services?view=o365-worldwide#storage-services
-- [contradicted, blocker] controls[0].ui; Governance controls: table / admin-path: Security > Settings > Data and privacy > Data policy reaches the control that sets which connectors a flow may combine with SharePoint. | Found: Select the Data policy section. Select + New Policy. In the Pre-built connectors page, review the various attributes and settings you can make on the Assign connectors screen. Select the Salesforce and SharePoint connectors, and then select Move to Business from the top menu bar. | Fix: The printed labels are present, as the pre-check found, but the path ends at the policy list rather than connector classification. Replace the path with 'Security > Settings > Data and privacy > Data policy > + New Policy > Pre-built connectors > SharePoint > Move to Business'. The cited page documents this route for putting SharePoint in the Business group; its later environment scope and confirmation steps remain in the reference. | Source: https://learn.microsoft.com/power-platform/admin/create-dlp-policy
-- [contradicted, blocker] controls[0].api; Governance controls: table / command: New-DlpPolicy -DisplayName <policy name> -EnvironmentType <environment type> sets which connectors may be combined with SharePoint. | Found: The New-DlpPolicy cmdlet creates a new DLP policy for the logged in admin's tenant. -DisplayName: Creates the policy with the input display name. -EnvironmentType: The type of the environment: trial, production, sandbox, default. | Fix: The command and its printed parameters exist, but this invocation only creates the policy and supplies no connector classification. Replace controls[0].api.call with 'Add-ConnectorsToPolicy -PolicyName <policy GUID> -Classification Confidential -Connectors <connector objects>' and its docs URL with 'https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy'. Add that URL to sources. The reference says this operation adds or moves the supplied connectors to the Business group; each connector object requires id, type and name. | Source: https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy
-- [contradicted, blocker] Governance controls: roles / role: For environments with a Dataverse database, System Administrator replaces the preceding Environment Admin or Power Platform admin role requirement. | Found: Tenant-level policies: sign in as a user with the Power Platform Administrator role. Environment-level policies: you need to have Power Apps Environment Admin permissions. For environments with a Dataverse database, you need to be assigned the System Administrator role instead. | Fix: Replace the role sentence with 'Tenant-level data policies require the Power Platform Administrator role. Environment-level data policies require Power Apps Environment Admin permissions, or the System Administrator role for environments with a Dataverse database.' The Dataverse exception replaces Environment Admin for environment-level policies, not Power Platform Administrator for tenant-level policies. | Source: https://learn.microsoft.com/power-platform/admin/create-dlp-policy
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance; Governance controls: table / consistency: The checklist tells readers to check library permissions and assigned Copilot licences, but the controls table contains only a data policy row. | Found: Review Edit permissions on the libraries; Check which Microsoft Copilot licences are assigned; Review the destination libraries for who can open the generated documents. The sole controls row governs which connectors flows may combine with SharePoint. | Fix: The Before rollout checks of library Edit permissions and assigned Copilot licences, and the After rollout check of document access permissions, have no corresponding controls-table rows. The tenant-switch absence stated in Governance controls is also not represented in the table.
+- [contradicted, minor] Governance guidance: Before rollout and After rollout / consistency: The controls table covers every control the governance checklist asks administrators to review. | Found: Review Edit permissions on the libraries ... Check which Microsoft Copilot licences are assigned ... Review the destination libraries for who can open the generated documents. The sole table row concerns connector combinations. | Fix: The Before rollout steps to review library Edit permissions and Copilot licence assignments, and the After rollout step to review generated-document access, have no corresponding controls-table rows.
 -->

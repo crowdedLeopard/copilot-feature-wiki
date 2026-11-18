@@ -4,7 +4,7 @@ slug: "microsoft-teams-express-face-enrollment"
 roadmapId: 570846
 topic: "modern-work"
 products: ["Microsoft Teams"]
-summary: "Users will be able to create a face profile from their camera in eligible Teams meetings, after opting in, so Teams Rooms can recognise them. Microsoft has not yet documented the admin setting, default or licence for this feature."
+summary: "Users will be able to create a face profile from their camera in eligible Teams meetings, after opting in, so Teams Rooms can recognise them. Microsoft has not yet documented the admin setting, the default or a licence specific to this feature."
 status: "in-development"
 releasePhase: ["General Availability","Targeted Release"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -17,8 +17,8 @@ impact: "low"
 defaultState: "unknown"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "Not yet published for express face enrollment. Learn's People Recognition page states that the feature is exclusive to Teams Rooms devices with a Teams Rooms Pro licence; its enrollment page names no licence."
+  model: "included"
+  notes: "Teams use requires a Teams licence for each user, except for joining meetings anonymously (Learn, Manage Teams licenses). No licensing requirement or price specific to express face enrollment is published. Room recognition needs Teams Rooms Pro per Learn."
 audiences: ["m365-admin","security","compliance","change-adoption"]
 tags: ["teams","teams-rooms","voice-and-face-recognition","privacy","pro-management-portal","powershell"]
 sources:
@@ -36,6 +36,9 @@ sources:
     kind: "learn"
   - title: "Enable People Recognition on Teams Rooms"
     url: "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition"
+    kind: "learn"
+  - title: "Manage Teams licenses"
+    url: "https://learn.microsoft.com/microsoftteams/user-access"
     kind: "learn"
 videos: []
 related: ["microsoft-teams-intelliframe-people-labels-in-teams-rooms-on-windows","meeting-policy","microsoft-teams-one-stop-admin-portal-for-teams-devices-with-teams-rooms-pro-management"]
@@ -77,19 +80,23 @@ changes:
     note: "Corrected the first Before rollout step to inspect policies with Get-CsTeamsAIPolicy instead of the disable command, and added the PassiveVoiceEnrollment qualification from the Set-CsTeamsAIPolicy reference."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 67 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-18"
+    note: "Corrected the licensing model to included: Teams use needs a Teams licence per Learn, with no licence or price specific to express face enrollment published."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 68 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-18"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 67
-  confirmed: 66
+  claims: 68
+  confirmed: 68
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "3fbe745184d36230464c7404cd8bea36"
+  contradicted: 0
+  attempts: 0
+  hash: "c2aea25569137d0ea23ae7e0382a70c6"
 ---
 
 ## What's changing
@@ -129,7 +136,7 @@ Microsoft has not stated what happens on arrival, because no page describes the 
 
 ## Cost and licensing
 
-Microsoft has not published a licence or price for express face enrollment. Learn's voice and face enrollment page names no licence, and at the time of writing (November 2026) it documents no meter for the feature.
+Teams use requires a Teams licence for each user, except for joining meetings anonymously, according to Learn's Manage Teams licenses page. Microsoft has not published any licensing requirement or price specific to express face enrollment, and at the time of writing (November 2026) Learn documents no meter for the feature.
 
 On the Teams Rooms side, Learn's page on People Recognition states: "This feature is exclusive to Microsoft Teams Rooms devices with a Teams Rooms Pro license." That page covers recognition in rooms, not express enrollment. Indirect costs are admin time to set policy and room settings, and user communications.
 
@@ -183,17 +190,11 @@ Room recognition is separate from enrollment. Learn recommends device settings, 
 
 - Which Teams AI policy setting will govern express face enrollment, and is it on or off by default? Watch the Set-CsTeamsAIPolicy reference and Message center.
 - Will an express face setting be available in the Teams admin center, or only in PowerShell as Learn says for the Teams AI policy today?
-- Will express face enrollment need any licence beyond those already held? Not yet published; the Teams Rooms Pro licence requirement is stated for Teams Rooms recognition.
+- Will express face enrollment need any licence beyond the Teams licence? No licensing requirement specific to it is published; the Teams Rooms Pro licence requirement is stated for Teams Rooms recognition.
 - Which meetings count as eligible, and does turning the setting off remove profiles that already exist or only stop new enrollment?
 
 <!-- rationale
 risk: Medium. It creates a face profile (biometric data) from meeting video, but the roadmap says users opt in, and Learn documents related enrollment and Teams Rooms controls; no express-face setting is documented yet.
-cost: Low. Licensing for this feature is not yet published; the only documented cost is admin and communication time, plus a Teams Rooms Pro licence that Learn states is required for People Recognition on Teams Rooms devices.
+cost: Low. Teams use needs a Teams licence; no licensing requirement or price specific to this feature is published, so the known cost is admin and communication time, plus the Teams Rooms Pro licence Learn states for room recognition.
 impact: Low. The roadmap says users create the profile after they opt in, so those who notice are opt-in users, room admins and privacy teams; Microsoft has not said who is prompted or when.
--->
-
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.model; summary; Cost and licensing; Open questions; rationale: cost / licensing: The licensing model is unknown because Microsoft has not published a licence for express face enrollment. | Found: Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams. | Fix: Set licensing.model to included under the standard's rule for a new option inside a licensed product. Replace the unqualified unpublished-licence statements with: 'Teams use requires a Teams licence for each user, except for joining meetings anonymously. Microsoft has not published any licensing requirement or price specific to express face enrollment.' Cite https://learn.microsoft.com/microsoftteams/user-access and https://learn.microsoft.com/office365/servicedescriptions/teams-service-description. Retain the separately stated Teams Rooms Pro requirement for room recognition, and narrow the summary, licensing notes and cost rationale to say that feature-specific licensing is not yet published rather than that the underlying entitlement is unknown. | Source: https://learn.microsoft.com/microsoftteams/user-access
 -->

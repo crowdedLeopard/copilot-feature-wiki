@@ -17,8 +17,8 @@ impact: "high"
 defaultState: "on"
 action: "prepare"
 licensing:
-  model: "unknown"
-  notes: "Not yet published. Neither the roadmap record nor MC1528014 names a licence or meter for this feature, and Microsoft Learn documents none at the time of writing (November 2026)."
+  model: "included"
+  notes: "Microsoft documents Teams licensing: except for joining meetings anonymously, each user in the organisation needs a Teams license to use Teams. The Teams service description includes meetings and screen sharing across Teams plans. No requirement specific to simultaneous sharing is published at the time of writing (November 2026)."
 audiences: ["m365-admin","change-adoption","end-user"]
 tags: ["teams","meeting-policy","sharing","adoption"]
 sources:
@@ -33,6 +33,12 @@ sources:
     kind: "learn"
   - title: "Manage meeting policies for content sharing"
     url: "https://learn.microsoft.com/microsoftteams/meeting-policies-content-sharing"
+    kind: "learn"
+  - title: "Manage Teams licenses"
+    url: "https://learn.microsoft.com/microsoftteams/user-access"
+    kind: "learn"
+  - title: "Microsoft Teams service description"
+    url: "https://learn.microsoft.com/office365/servicedescriptions/teams-service-description"
     kind: "learn"
 videos: []
 related: ["meeting-policy","microsoft-teams-new-sharing-panel-in-meetings-improved-content-discovery-and-ease-of-shari","microsoft-teams-pinch-to-zoom-in-on-shared-screens","microsoft-teams-specify-who-has-control-of-production-tools-in-teams-meetings-and-events"]
@@ -55,7 +61,7 @@ controls:
       kind: "powershell"
       call: "Set-CsTeamsMeetingPolicy -Identity <policy name> -ScreenSharingMode <value>"
       docs: "https://learn.microsoft.com/microsoftteams/meeting-policies-content-sharing"
-    note: "General control: Microsoft has not confirmed it applies to simultaneous sharing. It governs whether a user can share at all, not how many presenters share."
+    note: "General control: governs whether a user can share a desktop or window in a Teams meeting. It does not determine how many presenters share at once."
 confidence: "medium"
 created: "2026-11-18"
 updated: "2026-11-18"
@@ -69,19 +75,23 @@ changes:
     note: "Corrected after verification: removed an unsupported claim about caps, named the organiser role for the per-meeting option, described the Multiple VBSS meeting options, and raised impact to high."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 46 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-18"
+    note: "Corrected after verification: Screen sharing mode note now states what Learn says it governs; licensing is now Teams licensing (included), with only a simultaneous-sharing requirement unpublished; removed an organiser-option check with no controls row."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 46 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-18"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 46
-  confirmed: 43
+  confirmed: 46
   unconfirmed: 0
-  contradicted: 3
-  attempts: 2
-  hash: "15e7c430b2899c8892cf749a1e425629"
+  contradicted: 0
+  attempts: 0
+  hash: "b345ff83750935b732079b2f4f5a4252"
 ---
 
 ## What's changing
@@ -101,7 +111,7 @@ The practical decision is whether that default suits each part of the organisati
 ## Risk assessment
 
 **Data exposure**
-- Two presenters' content can be on screen for participants at the same time, so a second presenter can show material while the first presenter is still sharing. The notice says the second presenter does not need the first to stop. Existing sharing limits, such as the **Screen sharing mode** meeting policy setting, still decide who can share at all; Microsoft has not said how they interact with this feature.
+- Two presenters' content can be on screen for participants at the same time, so a second presenter can show material while the first presenter is still sharing. The notice says the second presenter does not need the first to stop. Existing sharing limits, such as the **Screen sharing mode** meeting policy setting, still decide who can share at all, though that setting does not determine how many presenters share at once.
 - MC1528014 states: "No compliance considerations identified." It does not describe any new data being stored or processed.
 
 **Security & identity**
@@ -116,7 +126,7 @@ The practical decision is whether that default suits each part of the organisati
 
 ## Cost and licensing
 
-Microsoft has not published a licence requirement or a meter for this feature. The roadmap record and MC1528014 name no licence, and Microsoft Learn documents none for it at the time of writing (November 2026). Do not budget for an additional licence on the strength of that silence, and do not assume none is needed either.
+Microsoft documents Teams licensing: except for joining meetings anonymously, each user in the organisation needs a Teams license to use Teams (Manage Teams licenses). The Teams service description includes meetings and screen sharing across Teams plans. No requirement specific to simultaneous sharing is published at the time of writing (November 2026).
 
 The known cost is indirect: admin time to review sharing settings and communication for users and support teams, as the notice recommends.
 
@@ -140,7 +150,6 @@ The known cost is indirect: admin time to review sharing settings and communicat
 - Check, once Microsoft confirms that AllowMultipleScreenshare is the tenant-level control for this feature, that your policies hold the value you intend before the feature reaches your tenant.
 
 ### After rollout
-- Ask organisers whether the per-meeting option for multiple presenters is visible and behaves as the notice describes.
 - Collect support tickets about simultaneous sharing and adjust the guidance you gave users.
 
 ## Governance controls
@@ -151,7 +160,7 @@ The known cost is indirect: admin time to review sharing settings and communicat
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether multiple screenshare is available to users with a meeting policy</strong><br><small>User</small><br><small class="controls__note">Learn does not say this is the control MC1528014 describes, and says the setting has no effect until the feature is fully released.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity &lt;policy name&gt; -AllowMultipleScreenshare $false</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether a user can share a desktop and window in a meeting (existing control)</strong><br><small>User</small><br><small class="controls__note">General control: Microsoft has not confirmed it applies to simultaneous sharing. It governs whether a user can share at all, not how many presenters share.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting policies › policy › Content sharing <a href="https://learn.microsoft.com/microsoftteams/meeting-policies-content-sharing" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity &lt;policy name&gt; -ScreenSharingMode &lt;value&gt;</code> <a href="https://learn.microsoft.com/microsoftteams/meeting-policies-content-sharing" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether a user can share a desktop and window in a meeting (existing control)</strong><br><small>User</small><br><small class="controls__note">General control: governs whether a user can share a desktop or window in a Teams meeting. It does not determine how many presenters share at once.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting policies › policy › Content sharing <a href="https://learn.microsoft.com/microsoftteams/meeting-policies-content-sharing" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity &lt;policy name&gt; -ScreenSharingMode &lt;value&gt;</code> <a href="https://learn.microsoft.com/microsoftteams/meeting-policies-content-sharing" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -166,20 +175,11 @@ The Screen sharing mode row is today's alternative. It decides whether a user ca
 - Which setting is the tenant-level control that MC1528014 describes, and is it the AllowMultipleScreenshare parameter in the meeting policy? Watch Message center and the Set-CsTeamsMeetingPolicy page.
 - Where will the control appear in the Teams admin center, and which role can change it?
 - If the tenant-level control is off, can an organiser's meeting option still allow simultaneous sharing, or does the tenant setting win?
-- Which licence, if any, is required? Microsoft has not published it.
+- Is any licence requirement specific to simultaneous sharing published? Microsoft has not published one yet.
 - Will the feature reach Teams on mobile and Teams Rooms devices, given the roadmap lists Desktop and Web only?
 
 <!-- rationale
 risk: Low. It adds a second simultaneous shared stream in meetings; Microsoft's notice MC1528014 identifies no compliance considerations and describes a tenant-level admin control and an organiser meeting option.
-cost: Low. No licence or meter is documented for this feature at the time of writing (November 2026), so the known cost is admin time and user communication. Licensing is not yet published.
+cost: Low. Teams licensing is documented and no meter is documented for this feature at the time of writing (November 2026), so the known cost is admin time and user communication. A requirement specific to simultaneous sharing is not yet published.
 impact: High. Microsoft's notice says the capability is enabled for all meetings by default, changing default screen-sharing behaviour.
--->
-
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].note; Governance controls table / applicability: Microsoft has not confirmed that the general Screen sharing mode control applies to simultaneous sharing. | Found: The setting controls whether a user can share a desktop and window in a Teams meeting. | Fix: Replace the first sentence of controls[1].note and its rendered counterpart with 'General control: governs whether a user can share a desktop or window in a Teams meeting.' The documented reach includes these presenters' screen and window sharing; retain the narrower statement that it does not determine the number of simultaneous presenters. | Source: https://learn.microsoft.com/microsoftteams/meeting-policies-content-sharing
-- [contradicted, blocker] front matter: licensing; Cost and licensing; Open questions; rationale: cost / licensing: The licensing model is unknown because Microsoft has not published a licence requirement. | Found: Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams. | Fix: Set licensing.model to 'included'. Replace licensing.notes and the first Cost and licensing paragraph with 'Microsoft documents Teams licensing: except for joining meetings anonymously, each user in the organisation needs a Teams license to use Teams. The Teams service description includes meetings and screen sharing across Teams plans. No requirement specific to simultaneous sharing is published at the time of writing (November 2026).' Cite https://learn.microsoft.com/microsoftteams/user-access and https://learn.microsoft.com/office365/servicedescriptions/teams-service-description. In the cost rationale and licensing open question, narrow 'licensing is not yet published' to 'a requirement specific to simultaneous sharing is not yet published'. | Source: https://learn.microsoft.com/microsoftteams/user-access
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: After rollout / consistency: The checklist asks readers to check an organiser meeting option that has no corresponding controls-table row. | Found: Ask organisers whether the per-meeting option for multiple presenters is visible and behaves as the notice describes. | Controls rows: multiple-screenshare meeting policy; existing Screen sharing mode policy. | Fix: Remove the After rollout bullet 'Ask organisers whether the per-meeting option for multiple presenters is visible and behaves as the notice describes.' It instructs a check of a control not represented in the table.
 -->

@@ -55,6 +55,12 @@ sources:
   - title: "Application table/entity reference (Microsoft Dataverse)"
     url: "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/application"
     kind: "learn"
+  - title: "application EntityType"
+    url: "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/application"
+    kind: "learn"
+  - title: "Business Skill (Skill) table/entity reference (Microsoft Dataverse)"
+    url: "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/skill"
+    kind: "learn"
   - title: "Business Applications in Work IQ"
     url: "https://learn.microsoft.com/power-apps/maker/data-platform/business-applications-work-iq"
     kind: "learn"
@@ -72,6 +78,9 @@ sources:
     kind: "learn"
   - title: "How much Cowork can consume in Copilot Credits (Microsoft Graph)"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview"
+    kind: "learn"
+  - title: "Update spendingPolicy"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update"
     kind: "learn"
 videos: []
 related: ["work-iq","work-iq-business-skills-to-manage-your-business-processes-in-work-iq-mcp","power-apps-model-driven-applications-in-business-apps-in-work-iq","spending-policies","mcp"]
@@ -122,9 +131,9 @@ controls:
       docs: "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup"
     api:
       kind: "graph"
-      call: "GET https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies"
-      docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview"
-    note: "Policies cover selected services and users; per-policy and per-user limits apply. Beta API."
+      call: "PATCH https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/{id}"
+      docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update"
+    note: "Policies cover selected services and users; per-policy and per-user limits apply. Beta API. The request body sets periodLimit and perUserLimit."
   - governs: "Whether a business skill is active for agents to discover"
     scope: "environment"
     ui:
@@ -132,10 +141,10 @@ controls:
       path: "environment > More > Business skills > skill > Deactivate"
       docs: "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills"
     api:
-      kind: "other"
-      call: "Dataverse MCP server tool delete_skill (deletes a business skill from the environment)"
-      docs: "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills"
-    note: "The tool deletes a skill; the page lists no tool that deactivates one. Sharing is set with Share on the same page."
+      kind: "rest"
+      call: "PATCH /skills(<skillid>)"
+      docs: "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/skill"
+    note: "The request body sets statecode to 1 (Inactive) and statuscode to 2 (Inactive) to deactivate the skill without deleting it. Sharing is set with Share on the same page."
 confidence: "high"
 created: "2026-11-18"
 updated: "2026-11-18"
@@ -149,19 +158,23 @@ changes:
     note: "Correction: added the Dataverse application table call for blocking apps, removed the claim that turning off Work IQ blocks Cowork's data access, and trimmed role-review checklist items and a Copilot Studio availability claim."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 86 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-18"
+    note: "Correction: the spending row now points to the spending policy update call, the skill row to the skill table's PATCH that deactivates without deleting, and the unsupported sharing-review checklist item was removed."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 89 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 3
 verification:
   status: "held"
   date: "2026-11-18"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 86
-  confirmed: 83
+  claims: 89
+  confirmed: 87
   unconfirmed: 0
-  contradicted: 3
-  attempts: 2
-  hash: "3a5f7bd5a5ab42db00320727a66a33cb"
+  contradicted: 2
+  attempts: 3
+  hash: "ef801603afffd022a4dd69340bfdf516"
 ---
 
 ## What's changing
@@ -228,7 +241,6 @@ To cap spend, Learn's cost guidance says to include Cowork in a spending policy 
 
 ### After rollout
 - Watch Cowork consumption against the spending policy and adjust limits.
-- Review which skills are shared with everyone in an environment.
 - Re-check Learn and Message center for the December CY2026 target and any change from preview.
 
 ## Governance controls
@@ -242,8 +254,8 @@ To cap spend, Learn's cost guidance says to include Cowork in a spending policy 
 <tr><td data-label="Control"><strong>Which users can use business applications through Microsoft 365 Copilot</strong><br><small>Tenant</small><br><small class="controls__note">Options: All users (default), Specific groups, No users. The quickstart page words the setting label slightly differently. AI Administrator role.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Settings › View all › Business Applications data in Work IQ available to Copilot <a href="https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Which environments have Work IQ turned on</strong><br><small>Environment</small><br><small class="controls__note">Power Platform Administrator role. Does not prevent agentic access to environment data.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › environment › Settings › Product › Features › Work IQ <a href="https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-participation" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Which applications, including Copilot Cowork, can access an environment's Dataverse data</strong><br><small>Environment</small><br><small class="controls__note">Power Platform Administrator role. The request body sets access (0 Allowed, 1 Blocked); this changes an app's status, so set environment-level enforcement separately. General App Access docs require a managed environment.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Identity &amp; access › App Access Control › environment › Enable <a href="https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>PATCH https://&lt;organization&gt;/api/data/v9.2/applications(&lt;applicationid&gt;)</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/application" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>How much Cowork can consume in Copilot Credits</strong><br><small>Tenant</small><br><small class="controls__note">Policies cover selected services and users; per-policy and per-user limits apply. Beta API.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>GET https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether a business skill is active for agents to discover</strong><br><small>Environment</small><br><small class="controls__note">The tool deletes a skill; the page lists no tool that deactivates one. Sharing is set with Share on the same page.</small></td><td data-label="Admin UI"><strong>Power Apps (maker)</strong><br>environment › More › Business skills › skill › Deactivate <a href="https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Dataverse MCP server tool delete_skill (deletes a business skill from the environment)</code> <a href="https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>How much Cowork can consume in Copilot Credits</strong><br><small>Tenant</small><br><small class="controls__note">Policies cover selected services and users; per-policy and per-user limits apply. Beta API. The request body sets periodLimit and perUserLimit.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/{id}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether a business skill is active for agents to discover</strong><br><small>Environment</small><br><small class="controls__note">The request body sets statecode to 1 (Inactive) and statuscode to 2 (Inactive) to deactivate the skill without deleting it. Sharing is set with Share on the same page.</small></td><td data-label="Admin UI"><strong>Power Apps (maker)</strong><br>environment › More › Business skills › skill › Deactivate <a href="https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>PATCH /skills(&lt;skillid&gt;)</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/skill" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -267,11 +279,8 @@ impact: Medium. Users who already hold access to model-driven apps or Dataverse 
 <!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[4].api; Governance controls table / command: GET https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies is automation for setting how much Cowork can consume. | Found: List spendingPolicies | GET /copilot/costManagement/spendingPolicies | Get a list of spending policies. ... Update spendingPolicy | PATCH /copilot/costManagement/spendingPolicies/{id} | Update a spending policy. | Fix: Replace the call with 'PATCH https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/{id}' and docs with https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update. Add to the note: 'The request body sets periodLimit and perUserLimit.' This reference explicitly lists both as updatable properties. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview
-- [contradicted, blocker] controls[5].api; Governance controls table / command: Dataverse MCP delete_skill is the automation counterpart of the row's skill activation control. | Found: Deactivating a skill preserves its content and version history. ... Deleting a skill is permanent and can't be undone. | Fix: Replace the API with kind 'rest', call 'PATCH /skills(<skillid>)', and docs https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/skill. Replace the deletion note with: 'The request body sets statecode to 1 (Inactive) and statuscode to 2 (Inactive) to deactivate the skill without deleting it.' The table reference documents SetState through PATCH and these exact state/status values. | Source: https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills
+- [contradicted, blocker] controls[0].api; Governance controls table / command: POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block is the automation counterpart of whether the plugin is installed for users. | Found: Block a Copilot package to prevent its usage. | Fix: Set controls[0].api to null and remove the call from the rendered installation row: blocking usage does not install or uninstall a plugin. Replace the API clause in its note with 'Installation automation is not yet documented.' The general blocking operation may remain described separately in the governance prose. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block
+- [contradicted, blocker] controls[4].ui; Governance controls table / admin-path: Copilot > Cost Management is the complete path to the control setting how much Cowork can consume. | Found: Select the Configuration tab. ... Select the spending policy you want to edit. ... The spending policy details fly-out opens, where you can modify its settings. This includes: ... Spending limits | Fix: Replace controls[4].ui.path and its rendered path with 'Copilot > Cost Management > Configuration > policy > Spending limits' and set its docs URL to https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits#edit-spending-policy. Add that page to sources. The current path stops at the dashboard and omits the Configuration tab and the actual limits control. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Why it matters; Scope / default: Business Applications in Work IQ is on by default for new public production environments, subject to exceptions. | Found: Business Applications in Work IQ is on by default for new public production environments created for new or existing tenants. The following environments are exceptions: | Fix: Add: 'The general feature-settings reference still lists the Dataverse intelligence (Work IQ) settings as Off by default: https://learn.microsoft.com/power-platform/admin/settings-features#dataverse-intelligence-preview.' Retain the newer, specific default-settings guidance. | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings
-- [supported, minor] controls[3].ui; Governance controls table / admin-path: The feature-specific App Access setup path is Security > Identity & access > App Access Control > environment > Enable. | Found: Select Security > Identity & access. Select App Access Control. Select the environment in which you want to enable app access. Select Enable, and then select Save. | Fix: Add to the row note: 'The general App Access reference gives different labels: Security > Identity and access > App access control > environment > Set up app access control > Access control > Enabled; select an application and Block. See https://learn.microsoft.com/power-platform/admin/control-app-access-environment#turn-on-enabled-mode.' | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access
-- [supported, minor] controls[3].api; Governance controls table / command: PATCH https://<organization>/api/data/v9.2/applications(<applicationid>) updates an Application record's access setting. | Found: Update ... PATCH /applications(applicationid) ... Writable columns/attributes ... Access ... LogicalName ... access | Fix: Add https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/application to sources: it explicitly documents the /api/data/v9.2/applications entity-set path used in the call. The cited table reference already supports PATCH and the access property. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/application
-- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The checklist's instruction to review skills shared with everyone has a corresponding sharing control row. | Found: Review which skills are shared with everyone in an environment. ... Whether a business skill is active for agents to discover | Fix: Remove the checklist bullet 'Review which skills are shared with everyone in an environment.' The existing skills row governs activation, not sharing; its brief Share note does not make it a sharing row. Do not add a control row as part of this correction.
+- [supported, minor] controls[3].ui; Governance controls table / admin-path: App Access is enabled through Security > Identity & access > App Access Control > environment > Enable. | Found: Select Security > Identity & access. ... Select App Access Control. ... Select the environment in which you want to enable app access. ... Select Enable, and then select Save. | Fix: Keep the feature-specific path, but add to the existing note: 'After saving, return to the environment and select the applications to block. The general App Access guide instead describes Set up app access control > Access control > Enabled, then selecting an application and Block: https://learn.microsoft.com/power-platform/admin/control-app-access-environment.' | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access
 -->

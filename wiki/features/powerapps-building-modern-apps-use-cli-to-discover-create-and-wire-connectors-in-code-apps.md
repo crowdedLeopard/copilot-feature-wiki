@@ -52,8 +52,8 @@ sources:
   - title: "Manage data policies"
     url: "https://learn.microsoft.com/power-platform/admin/create-dlp-policy"
     kind: "learn"
-  - title: "New-DlpPolicy"
-    url: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest"
+  - title: "Add-ConnectorsToPolicy"
+    url: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy?view=pa-ps-latest"
     kind: "learn"
   - title: "Manage connections in canvas apps"
     url: "https://learn.microsoft.com/power-apps/maker/canvas-apps/add-manage-connections"
@@ -73,13 +73,13 @@ controls:
     scope: "environment"
     ui:
       surface: "Power Platform admin center"
-      path: "Security > Settings > Data and privacy > Data policy"
+      path: "Security > Settings > Data and privacy > Data policy > policy > Edit Policy > Prebuilt connectors > connector > Block"
       docs: "https://learn.microsoft.com/power-platform/admin/create-dlp-policy"
     api:
       kind: "powershell"
-      call: "New-DlpPolicy -DisplayName <name> -EnvironmentType <type>"
-      docs: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest"
-    note: "General control: the code apps overview lists data loss policy enforcement during app launch for code apps. Not confirmed to apply to the CLI commands themselves."
+      call: "Add-ConnectorsToPolicy -PolicyName <policy-guid> -Connectors <connector-objects> -Classification <General|Confidential|Blocked>"
+      docs: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy?view=pa-ps-latest"
+    note: "Not confirmed for the CLI commands. The UI path blocks a blockable connector in an existing policy. Classification: Non-business (General), Business (Confidential) or Blocked; each connector object needs id, type, name."
 confidence: "medium"
 created: "2026-11-18"
 updated: "2026-11-18"
@@ -97,19 +97,23 @@ changes:
     note: "Corrected after verification: cost rationale now says no CLI-specific licence or meter is documented, and the connection-review checklist step without a controls-table row was removed."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 66 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-18"
+    note: "Corrected the data policy control row: the admin path now reaches the Block action in an existing policy, and the PowerShell call is Add-ConnectorsToPolicy."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 70 statements confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-18"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 66
-  confirmed: 64
+  claims: 70
+  confirmed: 70
   unconfirmed: 0
-  contradicted: 2
-  attempts: 3
-  hash: "58d07071eb05c2d03d1d6b417efb1817"
+  contradicted: 0
+  attempts: 0
+  hash: "0e463ba147e72d2bb621d18ed2a10d73"
 ---
 
 ## What's changing
@@ -182,7 +186,7 @@ Release phases on the record are General Availability and Preview. Microsoft Lea
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether code apps run in an environment</strong><br><small>Environment</small><br><small class="controls__note">Power Platform admins and environment admins can set it; configurable for several environments through environment groups and rules. Learn lists the default as Off.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › Power Apps code apps › Enable code apps <a href="https://learn.microsoft.com/power-apps/developer/code-apps/overview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which connectors code apps may use or combine</strong><br><small>Environment</small><br><small class="controls__note">General control: the code apps overview lists data loss policy enforcement during app launch for code apps. Not confirmed to apply to the CLI commands themselves.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Settings › Data and privacy › Data policy <a href="https://learn.microsoft.com/power-platform/admin/create-dlp-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpPolicy -DisplayName &lt;name&gt; -EnvironmentType &lt;type&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which connectors code apps may use or combine</strong><br><small>Environment</small><br><small class="controls__note">Not confirmed for the CLI commands. The UI path blocks a blockable connector in an existing policy. Classification: Non-business (General), Business (Confidential) or Blocked; each connector object needs id, type, name.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Settings › Data and privacy › Data policy › policy › Edit Policy › Prebuilt connectors › connector › Block <a href="https://learn.microsoft.com/power-platform/admin/create-dlp-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-ConnectorsToPolicy -PolicyName &lt;policy-guid&gt; -Connectors &lt;connector-objects&gt; -Classification &lt;General|Confidential|Blocked&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy?view=pa-ps-latest" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -203,11 +207,4 @@ Tenant-level policies require the Power Platform Administrator role. Environment
 risk: Medium. Connections for code apps can now be created from a terminal, or by a coding agent running the CLI, without the maker portal; existing controls (the environment's code apps toggle and data policies) apply but need checking.
 cost: Low. No CLI-specific licence or meter is documented at the time of writing (November 2026); the known incremental cost is developer and admin time. Existing code-app licensing requirements still apply.
 impact: Low. Developers and makers who build code apps notice it; the code apps setting on an environment is documented as off by default, so most users see no change.
--->
-
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].ui; Governance controls table / admin-path: Security > Settings > Data and privacy > Data policy is the complete path to the control deciding which connectors may be used or combined. | Found: From the list of data policies, select a policy, and then select Edit Policy. Select the Prebuilt connectors step in the Edit Policy process. | Fix: Replace the path with 'Security > Settings > Data and privacy > Data policy > policy > Edit Policy > Prebuilt connectors > connector > Block' and add to the existing note: 'The UI path blocks a blockable connector in an existing policy.' The cited page documents the Block action and explains that it is unavailable for unblockable connectors. | Source: https://learn.microsoft.com/power-platform/admin/create-dlp-policy
-- [contradicted, blocker] controls[1].api; Governance controls table / command: New-DlpPolicy -DisplayName <name> -EnvironmentType <type> sets which connectors code apps may use or combine. | Found: The New-DlpPolicy cmdlet creates a new DLP policy for the logged in admin's tenant. | Fix: Replace the call with 'Add-ConnectorsToPolicy -PolicyName <policy-guid> -Connectors <connector-objects> -Classification <General|Confidential|Blocked>' and docs with 'https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy?view=pa-ps-latest'. Add to the existing note: 'Classification assigns connectors to Non-business (General), Business (Confidential), or Blocked; each connector object requires id, type, and name.' That reference explicitly documents moving connectors between groups; the current call only creates a policy. | Source: https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest
 -->

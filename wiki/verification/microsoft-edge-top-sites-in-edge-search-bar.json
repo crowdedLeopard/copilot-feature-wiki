@@ -1,0 +1,761 @@
+{
+  "slug": "microsoft-edge-top-sites-in-edge-search-bar",
+  "roadmapId": 579193,
+  "title": "Microsoft Edge: top sites in the Edge search bar",
+  "status": "held",
+  "date": "2026-11-18",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "cd5b21ff3a5b",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-18",
+    "reasons": [
+      "1 blocking finding (claim 19)"
+    ]
+  },
+  "counts": {
+    "claims": 58,
+    "confirmed": 57,
+    "unconfirmed": 0,
+    "contradicted": 1,
+    "blocker": 1,
+    "major": 0,
+    "minor": 0
+  },
+  "summary": "The roadmap facts, policy paths and registry references check out. However, the briefing states that the visibility policy applies to Microsoft account profiles without acknowledging that the same Microsoft reference explicitly marks those profiles unsupported; administrators should not rely on that applicability claim until the documentation conflict is resolved.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "summary; What's changing; Scope; rationale: impact",
+      "type": "record",
+      "claim": "Microsoft plans easy access to top sites in the Edge search bar on desktop.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Adding easy access to top sites in Edge search bar on desktop.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing; Governance guidance; rationale: impact",
+      "type": "record",
+      "claim": "Users can add, edit, remove or hide top sites.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Users can add, edit, remove, or hide top sites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "summary; What's changing; Governance controls",
+      "type": "record",
+      "claim": "Administrators can control feature availability using NewTabPageManagedQuickLinks and NewTabPageQuickLinksEnabled.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Admins can control available to this feature using the NewTabPageManagedQuickLinks and NewTabPageQuickLinksEnabled policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: targetDate; summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is January CY2027, not a committed release date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"January CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The listed release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The cloud listed is Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The platform listed is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 2026-11-12T01:35:00.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-12T01:35:00\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary",
+      "type": "record",
+      "claim": "The supplied roadmap record imposes no administrator action requirement.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Adding easy access to top sites in Edge search bar on desktop. Users can add, edit, remove, or hide top sites. Admins can control available to this feature using the NewTabPageManagedQuickLinks and NewTabPageQuickLinksEnabled policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "The Group Policy path is Administrative Templates > Microsoft Edge > Startup, home page and new tab page > Allow quick links on the new tab page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/newtabpagequicklinksenabled",
+      "quote": "GP name: Allow quick links on the new tab page\nGP path (Mandatory): Administrative Templates/Microsoft Edge/Startup, home page and new tab page",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "The mandatory registry value is SOFTWARE\\Policies\\Microsoft\\Edge\\NewTabPageQuickLinksEnabled, type REG_DWORD, and the macOS preference key is NewTabPageQuickLinksEnabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/newtabpagequicklinksenabled",
+      "quote": "Path (Mandatory): SOFTWARE\\Policies\\Microsoft\\Edge\nValue name: NewTabPageQuickLinksEnabled\nValue type: REG\\_DWORD\nPreference Key name: NewTabPageQuickLinksEnabled",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "The mandatory Group Policy path is Administrative Templates > Microsoft Edge > Startup, home page and new tab page > Set new tab page quick links.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/newtabpagemanagedquicklinks",
+      "quote": "GP name: Set new tab page quick links\nGP path (Mandatory): Administrative Templates/Microsoft Edge/Startup, home page and new tab page",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "The mandatory registry value is SOFTWARE\\Policies\\Microsoft\\Edge\\NewTabPageManagedQuickLinks, type REG_SZ, and the macOS preference key is NewTabPageManagedQuickLinks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/newtabpagemanagedquicklinks",
+      "quote": "Path (Mandatory): SOFTWARE\\Policies\\Microsoft\\Edge\nValue name: NewTabPageManagedQuickLinks\nValue type: REG\\_SZ\nPreference Key name: NewTabPageManagedQuickLinks",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "controls[0].note; Why it matters",
+      "type": "behaviour",
+      "claim": "Disabling NewTabPageQuickLinksEnabled hides new tab page quick links.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/newtabpagequicklinksenabled",
+      "quote": "If you disable this policy, Microsoft Edge hides quick links on the new tab page and disables the quick links control in the NTP settings flyout.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[0].governs; What's changing; Governance guidance; Governance controls",
+      "type": "applicability",
+      "claim": "Disabling NewTabPageQuickLinksEnabled also hides Top Sites in the Edge search bar.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/newtabpagequicklinksenabled",
+      "quote": "Disabling this policy also hides Top Sites in the Microsoft Edge search bar.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[0].note; Risk assessment: Change & support; Scope",
+      "type": "applicability",
+      "claim": "NewTabPageQuickLinksEnabled applies to local user profiles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/newtabpagequicklinksenabled",
+      "quote": "This policy only applies for Microsoft Edge local user profiles, profiles signed in using a Microsoft Account, and profiles signed in using Active Directory.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[0].note; Risk assessment: Change & support; Scope; Governance controls table",
+      "type": "applicability",
+      "claim": "NewTabPageQuickLinksEnabled applies to profiles signed in using a Microsoft account.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/newtabpagequicklinksenabled",
+      "quote": "This policy only applies for Microsoft Edge local user profiles, profiles signed in using a Microsoft Account, and profiles signed in using Active Directory.\nApplies to a profile that is signed in with a Microsoft account: No",
+      "severity": "blocker",
+      "fix": "Replace the unqualified Microsoft-account applicability assertion in controls[0].note, its rendered table note, Risk assessment and Scope with: 'The policy description lists Microsoft account profiles, but the same page marks Microsoft-account applicability as No; applicability to those profiles is unclear.' Retain https://learn.microsoft.com/deployedge/microsoft-edge-policies/newtabpagequicklinksenabled as the source."
+    },
+    {
+      "n": 20,
+      "where": "controls[0].note; Risk assessment: Change & support; Scope",
+      "type": "applicability",
+      "claim": "NewTabPageQuickLinksEnabled applies to profiles signed in using Active Directory.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/newtabpagequicklinksenabled",
+      "quote": "This policy only applies for Microsoft Edge local user profiles, profiles signed in using a Microsoft Account, and profiles signed in using Active Directory.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[0].note; Risk assessment: Change & support; Scope; Governance guidance",
+      "type": "applicability",
+      "claim": "The policy page directs administrators to the M365 admin portal for the Enterprise new tab page on Entra ID profiles, using the older Azure Active Directory name.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/newtabpagequicklinksenabled",
+      "quote": "To configure the Enterprise new tab page for profiles signed in using Azure Active Directory, use the M365 admin portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "NewTabPageManagedQuickLinks can configure up to three quick link tiles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/newtabpagemanagedquicklinks",
+      "quote": "With this policy, you can configure up to three quick link tiles on the new tab page, expressed as a JSON object:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Setting NewTabPageManagedQuickLinks as mandatory pins all its tiles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/newtabpagemanagedquicklinks",
+      "quote": "If you set this policy as mandatory, the 'pinned' field is ignored and all tiles are pinned.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[1].note; Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "Users cannot delete tiles configured by mandatory NewTabPageManagedQuickLinks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/newtabpagemanagedquicklinks",
+      "quote": "If you set this policy as mandatory, the 'pinned' field is ignored and all tiles are pinned. The tiles can't be deleted by the user and always appear at the front of the quick links list.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Users can edit pinned tiles when NewTabPageManagedQuickLinks is recommended.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/newtabpagemanagedquicklinks",
+      "quote": "If you set this policy as recommended, pinned tiles remain in the list but the user has the ability to edit and delete them.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Users can delete pinned tiles when NewTabPageManagedQuickLinks is recommended.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/newtabpagemanagedquicklinks",
+      "quote": "If you set this policy as recommended, pinned tiles remain in the list but the user has the ability to edit and delete them.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "NewTabPageManagedQuickLinks requires a browser restart to take effect.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/newtabpagemanagedquicklinks",
+      "quote": "Dynamic Policy Refresh: No - Requires browser restart",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[0].scope; Governance controls table",
+      "type": "applicability",
+      "claim": "The visibility policy has user/profile scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/newtabpagequicklinksenabled",
+      "quote": "Per Profile: Yes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[1].scope; Governance controls table",
+      "type": "applicability",
+      "claim": "The managed quick links policy has user/profile scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/newtabpagemanagedquicklinks",
+      "quote": "Per Profile: Yes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "NewTabPageQuickLinksEnabled supports mandatory configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/newtabpagequicklinksenabled",
+      "quote": "Can be mandatory: Yes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "NewTabPageQuickLinksEnabled does not support recommended configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/newtabpagequicklinksenabled",
+      "quote": "Can be recommended: No",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "NewTabPageManagedQuickLinks supports recommended configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/newtabpagemanagedquicklinks",
+      "quote": "Can be recommended: Yes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "NewTabPageQuickLinksEnabled supports dynamic policy refresh.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/newtabpagequicklinksenabled",
+      "quote": "Dynamic Policy Refresh: Yes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "NewTabPageQuickLinksEnabled supports Windows from Edge version 91.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/newtabpagequicklinksenabled",
+      "quote": "Windows: ≥ 91",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "NewTabPageQuickLinksEnabled supports macOS from Edge version 91.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/newtabpagequicklinksenabled",
+      "quote": "macOS: ≥ 91",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "NewTabPageQuickLinksEnabled does not support Android.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/newtabpagequicklinksenabled",
+      "quote": "Android: Not supported",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "NewTabPageQuickLinksEnabled does not support iOS.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/newtabpagequicklinksenabled",
+      "quote": "iOS: Not supported",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "NewTabPageManagedQuickLinks supports Windows from Edge version 79.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/newtabpagemanagedquicklinks",
+      "quote": "Windows: ≥ 79",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "NewTabPageManagedQuickLinks supports macOS from Edge version 79.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/newtabpagemanagedquicklinks",
+      "quote": "macOS: ≥ 79",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "NewTabPageManagedQuickLinks does not support Android.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/newtabpagemanagedquicklinks",
+      "quote": "Android: Not supported",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "NewTabPageManagedQuickLinks does not support iOS.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/newtabpagemanagedquicklinks",
+      "quote": "iOS: Not supported",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Default new tab page quick links come from user-added shortcuts and top sites based on browsing history.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/newtabpagemanagedquicklinks",
+      "quote": "By default, Microsoft Edge displays quick links on the new tab page from user-added shortcuts and top sites based on browsing history.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "No dedicated Microsoft Learn feature page for search bar Top Sites was found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Top Sites\" \"search bar\" Microsoft Edge'; opened both quick links policy references and searched the Edge policy index. Results describe the policies, mobile ManagedTopSites, other surfaces and unrelated release notes, not a dedicated desktop feature page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "front matter: defaultState; Why it matters; Open questions",
+      "type": "absence",
+      "claim": "The default state of search bar Top Sites is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Edge search bar Top Sites default enabled license price rollout version hide sites policy'; read both quick links references and SearchbarAllowed. The NTP quick links default and search bar availability do not state the arrival default of this new list.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "front matter: licensing; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "No licence or entitlement requirement for this feature was found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Microsoft Edge for Business\" licensing requirements top sites' and '\"Edge\" \"search bar\" \"top sites\" license pricing'; read Edge for Business and both quick links references. Results name licences for sync and security services, not this feature or basic browser use.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No consumption meter for this feature is published in the material found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Edge search bar Top Sites default enabled license price rollout version hide sites policy' and '\"Edge\" \"search bar\" \"top sites\" license pricing'; read both quick links policies and Edge for Business. No feature meter was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No price for this feature is published in the material found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Edge\" \"search bar\" \"top sites\" license pricing'; read both quick links policies and Edge for Business. Neither the record nor those pages names a feature price; search results concerned unrelated pricing and software terms.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The cited sources describe no spending cap for this feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Edge search bar Top Sites spending cap budget control storage cost'; read both quick links policies, Edge for Business, the record and relevant Edge policy-index entries. None describes a feature spending cap.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The cited sources describe no budget control for this feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Edge search bar Top Sites spending cap budget control storage cost'; read both quick links references, Edge for Business and the record, and searched relevant policy-index entries. These sources describe no feature budget control.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The cited sources describe no storage cost for this feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Edge search bar Top Sites spending cap budget control storage cost'; read both quick links references, Edge for Business and the roadmap record. None describes a feature storage cost.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "The material found does not state whether search bar Top Sites derives its own list from browsing history.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Edge \"top sites\" \"search bar\" \"browsing history\"'; read NewTabPageManagedQuickLinks. It describes the history-based NTP list and managed tiles included in search bar Top Sites, not the source of the latter's other entries.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Scope; Open questions",
+      "type": "absence",
+      "claim": "The sources do not identify the Edge version or first release channel for search bar Top Sites.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Edge\" \"Top Sites\" \"search bar\" default version rollout history hide policy'; read both quick links references and returned release-note excerpts. The policy support versions do not identify the introduction version of search bar Top Sites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Scope; Open questions; rationale: impact",
+      "type": "absence",
+      "claim": "The sources do not describe rollout staging for this feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Edge\" \"Top Sites\" \"search bar\" default version rollout history hide policy'; read both quick links references, the record and returned release-note excerpts. No staging by tenant, profile or channel for this feature was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "Neither quick links reference describes a setting that governs only the search bar Top Sites list.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Edge \"top sites\" \"search bar\" \"hide\" policy users'; read both quick links references and SearchbarAllowed, and searched the policy index. Quick links controls also affect NTP; SearchbarAllowed controls the entire search bar, not only its Top Sites list.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "The pages do not document a control preventing users from hiding individual search bar sites.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Edge \"top sites\" \"search bar\" \"hide\" policy users'; read both quick links references and SearchbarAllowed. Mandatory managed tiles cannot be deleted, but no text states that users cannot hide individual search bar sites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "The roadmap description specifies no new data-access, sign-in or permission requirement.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Adding easy access to top sites in Edge search bar on desktop. Users can add, edit, remove, or hide top sites. Admins can control available to this feature using the NewTabPageManagedQuickLinks and NewTabPageQuickLinksEnabled policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap describes user-controlled list actions, not autonomous action on a user's behalf.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Users can add, edit, remove, or hide top sites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[1].governs; What's changing; Why it matters; Risk assessment; Governance controls",
+      "type": "applicability",
+      "claim": "Quick links configured by NewTabPageManagedQuickLinks also appear in Top Sites in the Edge search bar.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/newtabpagemanagedquicklinks",
+      "quote": "Quick links configured by this policy are also included in Top Sites in the Microsoft Edge search bar.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-18T14:04:50.458Z",
+    "summary": {
+      "links": 5,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 2,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=579193",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/newtabpagequicklinksenabled",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/newtabpagemanagedquicklinks",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/deployedge/microsoft-edge-for-business",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/deployedge/microsoft-edge-policies",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether quick links and Top Sites in the search bar are shown",
+        "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/newtabpagequicklinksenabled",
+        "reachable": true,
+        "segments": [
+          "Administrative Templates",
+          "Microsoft Edge",
+          "Startup, home page and new tab page",
+          "Allow quick links on the new tab page"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether quick links and Top Sites in the search bar are shown",
+        "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/newtabpagequicklinksenabled",
+        "reachable": true,
+        "token": "Registry: SOFTWARE\\Policies\\Microsoft\\Edge,",
+        "found": false
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which managed tiles appear in quick links and Top Sites in the search bar",
+        "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/newtabpagemanagedquicklinks",
+        "reachable": true,
+        "segments": [
+          "Administrative Templates",
+          "Microsoft Edge",
+          "Startup, home page and new tab page",
+          "Set new tab page quick links"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Which managed tiles appear in quick links and Top Sites in the search bar",
+        "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/newtabpagemanagedquicklinks",
+        "reachable": true,
+        "token": "Registry: SOFTWARE\\Policies\\Microsoft\\Edge,",
+        "found": false
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

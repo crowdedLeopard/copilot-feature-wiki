@@ -5,7 +5,7 @@ slug: "retention"
 summary: "Retention policies and retention labels in Microsoft Purview decide how long Microsoft 365 content, including Copilot interactions, is kept and when it is permanently deleted. Covers licensing, limits and where each control lives."
 created: "2026-11-18"
 updated: "2026-11-18"
-version: 3
+version: 4
 tags: ["retention","purview","data-lifecycle-management","adaptive-scopes","priority-cleanup","m365-copilot","ediscovery","meeting-transcripts"]
 covers: []
 sources:
@@ -48,6 +48,9 @@ sources:
   - title: "New-RetentionCompliancePolicy"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy?view=exchange-ps"
     kind: "learn"
+  - title: "New-RetentionComplianceRule"
+    url: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancerule?view=exchange-ps"
+    kind: "learn"
   - title: "New-ComplianceTag"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-compliancetag?view=exchange-ps"
     kind: "learn"
@@ -71,7 +74,7 @@ sources:
     kind: "learn"
 related: ["auditing","microsoft-purview-data-lifecycle-management-legacy-teams-retention-policies-covering-copil","microsoft-purview-archive-sharepoint-files-under-retention-policies","microsoft-purview-data-lifecycle-management-hard-delete-capability-for-onedrive-and-sharep","purview-retention-last-accessed-sharepoint-onedrive","microsoft-purview-adaptive-scope-evaluation-control-with-recipient-and-site-owner-lifecycl","teams-ai-generated-meeting-memory","teams-intelligent-recap-without-saving-transcript"]
 controls:
-  - governs: "Which locations a retention policy covers and whether it retains, deletes or both"
+  - governs: "Which locations a retention policy covers"
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
@@ -104,7 +107,7 @@ controls:
       call: "New-ComplianceTag -Name <label name> -RetentionAction Keep -RetentionDuration <days> -RetentionType ModificationAgeInDays"
       docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-compliancetag?view=exchange-ps"
     note: "The label name cannot be changed after it is saved."
-  - governs: "Publishing or auto-applying retention labels to locations"
+  - governs: "Publishing retention labels to locations"
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
@@ -112,9 +115,9 @@ controls:
       docs: "https://learn.microsoft.com/purview/create-apply-retention-labels"
     api:
       kind: "powershell"
-      call: "New-RetentionCompliancePolicy -Name <policy name> -SharePointLocation <site-url>"
-      docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy?view=exchange-ps"
-    note: "The same cmdlet creates label policies. A label is then added to the policy with New-RetentionComplianceRule."
+      call: "New-RetentionComplianceRule -Policy \"<policy name>\" -PublishComplianceTag \"<label name>\""
+      docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancerule?view=exchange-ps"
+    note: "Publishes an existing label through an existing policy scoped to the required locations."
   - governs: "Adaptive scopes that target policies by query"
     scope: "tenant"
     ui:
@@ -160,18 +163,22 @@ changes:
     note: "Corrected the adaptive-scope licensing sentence to match the Purview service description, and noted that the Set-AppRetentionCompliancePolicy reference differs from the policy guide for Copilot."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 120 statements contradicted, 0 unconfirmed; taken offline until corrected"
+  - date: "2026-11-18"
+    note: "Corrected two control rows: policy creation now governs locations only, and label publishing uses New-RetentionComplianceRule with PublishComplianceTag."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 116 statements contradicted, 0 unconfirmed; taken offline until corrected"
 verification:
   status: "held"
   date: "2026-11-18"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 120
-  confirmed: 118
+  claims: 116
+  confirmed: 112
   unconfirmed: 0
-  contradicted: 2
-  attempts: 3
-  hash: "d46cf21bf17207b4a1d1c3520e8858cd"
+  contradicted: 4
+  attempts: 4
+  hash: "014aa525528bfea2f35ba1d81582c7c7"
 ---
 
 ## What it is
@@ -230,10 +237,10 @@ A feature built on retention may add its own charge; follow the link from its br
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which locations a retention policy covers and whether it retains, deletes or both</strong><br><small>Tenant</small><br><small class="controls__note">Security &amp; Compliance PowerShell only. A policy is not valid until a rule is added with New-RetentionComplianceRule.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Data Lifecycle Management › Policies › Retention policies › New retention policy <a href="https://learn.microsoft.com/purview/create-retention-policies" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-RetentionCompliancePolicy -Name &lt;policy name&gt; -ExchangeLocation &lt;mailbox&gt; -SharePointLocation &lt;site-url&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy?view=exchange-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which locations a retention policy covers</strong><br><small>Tenant</small><br><small class="controls__note">Security &amp; Compliance PowerShell only. A policy is not valid until a rule is added with New-RetentionComplianceRule.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Data Lifecycle Management › Policies › Retention policies › New retention policy <a href="https://learn.microsoft.com/purview/create-retention-policies" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-RetentionCompliancePolicy -Name &lt;policy name&gt; -ExchangeLocation &lt;mailbox&gt; -SharePointLocation &lt;site-url&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy?view=exchange-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Retention of Microsoft 365 Copilot interactions</strong><br><small>Tenant</small><br><small class="controls__note">UI: select the Microsoft Copilot experiences location. The command adds Copilot to an existing policy for newer locations. Pay-as-you-go billing applies to AI app locations.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Data Lifecycle Management › Policies › Retention policies › New retention policy <a href="https://learn.microsoft.com/purview/create-retention-policies" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-AppRetentionCompliancePolicy -Identity &quot;&lt;policy name&gt;&quot; -Applications &quot;User:M365Copilot&quot;</code> <a href="https://learn.microsoft.com/purview/create-retention-policies" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Retention labels for item-level exceptions</strong><br><small>Tenant</small><br><small class="controls__note">The label name cannot be changed after it is saved.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Data Lifecycle Management › Retention labels › Create a label <a href="https://learn.microsoft.com/purview/create-retention-labels-data-lifecycle-management" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-ComplianceTag -Name &lt;label name&gt; -RetentionAction Keep -RetentionDuration &lt;days&gt; -RetentionType ModificationAgeInDays</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-compliancetag?view=exchange-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Publishing or auto-applying retention labels to locations</strong><br><small>Tenant</small><br><small class="controls__note">The same cmdlet creates label policies. A label is then added to the policy with New-RetentionComplianceRule.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Data Lifecycle Management › Policies › Label policies › Publish labels <a href="https://learn.microsoft.com/purview/create-apply-retention-labels" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-RetentionCompliancePolicy -Name &lt;policy name&gt; -SharePointLocation &lt;site-url&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy?view=exchange-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Publishing retention labels to locations</strong><br><small>Tenant</small><br><small class="controls__note">Publishes an existing label through an existing policy scoped to the required locations.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Data Lifecycle Management › Policies › Label policies › Publish labels <a href="https://learn.microsoft.com/purview/create-apply-retention-labels" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-RetentionComplianceRule -Policy &quot;&lt;policy name&gt;&quot; -PublishComplianceTag &quot;&lt;label name&gt;&quot;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancerule?view=exchange-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Adaptive scopes that target policies by query</strong><br><small>Tenant</small><br><small class="controls__note">Requires the Scope Manager role. Query changes can take up to five days to take effect.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and scopes › Adaptive scopes › + Create scope <a href="https://learn.microsoft.com/purview/purview-adaptive-scopes" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-AdaptiveScope -Name &lt;name&gt; -LocationType User -RawQuery &lt;query&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-adaptivescope?view=exchange-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Preservation Lock on a retention policy</strong><br><small>Tenant</small><br><small class="controls__note">Irreversible. The Preservation Lock guide says enabling the lock is not available in the UI; the Get-RegulatoryComplianceUI reference describes a preservation-lock checkbox. Microsoft documentation is inconsistent.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-RetentionCompliancePolicy -Identity &quot;&lt;Name of Policy&gt;&quot; -RestrictiveRetention $true</code> <a href="https://learn.microsoft.com/purview/retention-preservation-lock" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which retention policies exist and their distribution status</strong><br><small>Tenant</small><br><small class="controls__note">Read-only check; RestrictiveRetention shows whether Preservation Lock is set. Without -DistributionDetail, DistributionStatus and location values are inaccurate.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Data Lifecycle Management › Policies › Retention policies › policy <a href="https://learn.microsoft.com/purview/create-retention-policies" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Get-RetentionCompliancePolicy -Identity &quot;&lt;Name of Policy&gt;&quot; -DistributionDetail | Format-List</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/get-retentioncompliancepolicy?view=exchange-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
@@ -265,6 +272,8 @@ A feature built on retention may add its own charge; follow the link from its br
 <!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].api / command: New-RetentionCompliancePolicy with ExchangeLocation and SharePointLocation configures both policy locations and whether the policy retains, deletes or both. | Found: Policies are not valid until a rule is added (for retention policies) or a label is added (for retention label policies). | Fix: Narrow controls[0].governs, and the corresponding rendered row, to 'Which locations a retention policy covers'. Keep its current call and its note that New-RetentionComplianceRule is required. The printed call sets locations, not the retention action. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy?view=exchange-ps
-- [contradicted, blocker] controls[3].api / command: New-RetentionCompliancePolicy -Name <policy name> -SharePointLocation <site-url> publishes or auto-applies retention labels. | Found: Policies are not valid until a rule is added (for retention policies) or a label is added (for retention label policies). | Fix: Set controls[3].governs to 'Publishing retention labels to locations' and replace its call with 'New-RetentionComplianceRule -Policy "<policy name>" -PublishComplianceTag "<label name>"'. Set its docs to https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancerule?view=exchange-ps. Replace its note with 'Publishes an existing label through an existing policy scoped to the required locations.' Update the rendered row identically. The reference states that PublishComplianceTag specifies the published label and makes it visible in apps. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy?view=exchange-ps
+- [contradicted, blocker] controls[0].ui / admin-path: The printed path ending at New retention policy reaches the control that selects policy locations. | Found: For the Choose the type of retention policy to create page, select Adaptive or Static ... If you chose Static: On the Choose locations page, toggle on or off any of the locations except the locations for Teams and Viva Engage. | Fix: For the static-policy route matching this row's Exchange/SharePoint example, replace the path with 'Solutions > Data Lifecycle Management > Policies > Retention policies > New retention policy > Choose the type of retention policy to create > Static > Choose locations'. Add 'UI shows the static-policy route' to the note. Source: https://learn.microsoft.com/purview/create-retention-policies. | Source: https://learn.microsoft.com/purview/create-retention-policies
+- [contradicted, blocker] controls[1].ui / admin-path: The printed path ending at New retention policy reaches the Microsoft Copilot experiences retention-location selector. | Found: If you chose Static: On the Choose locations to apply the policy page, select one or more locations: | Fix: Replace the path with 'Solutions > Data Lifecycle Management > Policies > Retention policies > New retention policy > Choose the type of retention policy to create > Static > Choose locations to apply the policy > Microsoft Copilot experiences'. Add 'UI shows the static-policy route' to the note. This includes the documented policy-type choice rather than stopping at the wizard entrance. Source: https://learn.microsoft.com/purview/create-retention-policies. | Source: https://learn.microsoft.com/purview/create-retention-policies
+- [contradicted, blocker] controls[3].ui / admin-path: The printed path ending at Publish labels reaches the control for publishing retention labels to locations. | Found: For the Choose the type of retention policy to create page, select Adaptive or Static ... If you chose Static: On the Choose locations page, toggle on or off any of the locations. | Fix: For a static publication-policy route, replace the path with 'Solutions > Data Lifecycle Management > Policies > Label policies > Publish labels > Choose the type of retention policy to create > Static > Choose locations'. Add 'UI shows the static-policy route; select the labels to publish in the wizard' to the note. Source: https://learn.microsoft.com/purview/create-apply-retention-labels. | Source: https://learn.microsoft.com/purview/create-apply-retention-labels
+- [contradicted, blocker] Open questions: AI-app retention meter / absence: The price charged by the Purview retention meter for AI-app locations remains an unanswered question. | Found: Billing is calculated based on the number of managed text messages in storage, equivalent to $6 per one million text messages per month. | Fix: Remove the first Open questions bullet. Replace 'This page does not state a rate for the meter' in Cost and licensing with 'Microsoft publishes an indicative Data Lifecycle Management rate equivalent to $6 per one million managed text messages per month; each non-Microsoft 365 generative AI prompt and response counts as a separate text message. Actual pricing can vary by agreement, purchase date and currency.' Cite and add https://azure.microsoft.com/pricing/details/purview/ to sources. Retain the existing Microsoft 365 Copilot no-charge qualification. | Source: https://azure.microsoft.com/pricing/details/purview/
 -->

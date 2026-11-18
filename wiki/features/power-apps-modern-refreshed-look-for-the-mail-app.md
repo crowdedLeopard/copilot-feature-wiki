@@ -17,8 +17,8 @@ impact: "medium"
 defaultState: "on"
 action: "prepare"
 licensing:
-  model: "unknown"
-  notes: "Not yet published. The Microsoft Learn page for the modern, refreshed look names no licence, meter or price for it, and the roadmap item names none either."
+  model: "included"
+  notes: "Model-driven app users need a licence providing Power Apps premium use rights, per Learn's Power Apps licensing FAQs. Microsoft names no licence, price or meter specific to this visual refresh."
 audiences: ["power-platform-admin","service-owner","change-adoption","end-user"]
 tags: ["power-apps","model-driven-apps","user-experience","release-channels","power-platform-admin-center","gcc","gcc-high"]
 sources:
@@ -27,6 +27,9 @@ sources:
     kind: "roadmap"
   - title: "Modern, refreshed look for model-driven apps"
     url: "https://learn.microsoft.com/power-apps/user/modern-fluent-design"
+    kind: "learn"
+  - title: "Power Apps licensing FAQs"
+    url: "https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq"
     kind: "learn"
   - title: "Release channels for your model-driven app"
     url: "https://learn.microsoft.com/power-apps/maker/model-driven-apps/channel-overview"
@@ -69,17 +72,6 @@ controls:
       call: "PATCH [Organization URI]/api/data/v9.2/organizations(<organizationid>)"
       docs: "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/organization"
     note: "System Administrator role or equivalent. Semi-annual example body: {\"releasechannel\":3}, with Content-Type: application/json and If-Match: *. A configured user channel override takes precedence over app and environment channels."
-  - governs: "Whether an app uses the New Look (the New look for model driven apps setting)"
-    scope: "app"
-    ui:
-      surface: "Power Apps (maker)"
-      path: "Solutions > solution > Add Existing > More > Setting > New look for model driven apps"
-      docs: "https://learn.microsoft.com/power-apps/user/modern-fluent-design"
-    api:
-      kind: "other"
-      call: "Xrm.Utility.getGlobalContext().saveSettingValue(\"<setting-unique-name>\", false, {overrideScope: 2}).then(successCallback, errorCallback)"
-      docs: "https://learn.microsoft.com/power-apps/developer/model-driven-apps/clientapi/get-update-setting-value-using-code"
-    note: "Learn pages conflict on whether this setting still works; no source says it covers the mail app. The call is generic app-setting automation; its effect on the mail app is not confirmed."
 confidence: "high"
 created: "2026-11-18"
 updated: "2026-11-18"
@@ -93,19 +85,23 @@ changes:
     note: "Corrected after verification: release channel wording, precedence of channel settings, the Update call for the environment channel, the New look setting's API and the spend-control statement."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 45 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-18"
+    note: "Corrected after verification: licensing now states the Power Apps premium use rights that model-driven apps need, and the unconfirmed New look setting row is removed from the controls table."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 48 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-18"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 45
-  confirmed: 43
+  claims: 48
+  confirmed: 47
   unconfirmed: 0
-  contradicted: 2
-  attempts: 2
-  hash: "21360c1e0c8e81f6c3c74b41a942c9c5"
+  contradicted: 1
+  attempts: 0
+  hash: "d16815fbac7d552a366f09de9979ffb4"
 ---
 
 ## What's changing
@@ -140,7 +136,7 @@ The semi-annual channel is the one Microsoft recommends for users who need more 
 
 ## Cost and licensing
 
-No licence, meter or price for the modern, refreshed look is named on the roadmap item or on its Learn page (Modern, refreshed look for model-driven apps) at the time of writing (November 2026), so the licence position is not yet published. The cost this change visibly carries is admin and training time.
+Model-driven app users need a licence providing Power Apps premium use rights, per Learn's Power Apps licensing FAQs (Model-driven apps: "Every user who runs a model-driven app needs a license that provides Power Apps premium use rights"). Microsoft names no licence, price or meter specific to this visual refresh. The cost this change visibly carries is admin and training time.
 
 No spend control specific to this visual refresh is documented at the time of writing (November 2026), and no row in the controls table concerns cost.
 
@@ -163,7 +159,7 @@ Environments on the monthly channel already had the mail app look from the Febru
 
 ### After rollout
 - Collect user feedback on the mail app from semi-annual-channel environments and record it against this change.
-- Review the New look app setting (row 2) before telling users that the classic look can be restored, given the conflicting Learn pages.
+- Review the New look app setting before telling users that the classic look can be restored, given the conflicting Learn pages.
 
 ## Governance controls
 
@@ -173,7 +169,6 @@ Environments on the monthly channel already had the mail app look from the Febru
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>When the mail app look arrives: the model-driven app release channel for an environment</strong><br><small>Environment</small><br><small class="controls__note">System Administrator role or equivalent. Semi-annual example body: {&quot;releasechannel&quot;:3}, with Content-Type: application/json and If-Match: *. A configured user channel override takes precedence over app and environment channels.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Behavior <a href="https://learn.microsoft.com/power-platform/admin/settings-behavior" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>PATCH [Organization URI]/api/data/v9.2/organizations(&lt;organizationid&gt;)</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/organization" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether an app uses the New Look (the New look for model driven apps setting)</strong><br><small>App</small><br><small class="controls__note">Learn pages conflict on whether this setting still works; no source says it covers the mail app. The call is generic app-setting automation; its effect on the mail app is not confirmed.</small></td><td data-label="Admin UI"><strong>Power Apps (maker)</strong><br>Solutions › solution › Add Existing › More › Setting › New look for model driven apps <a href="https://learn.microsoft.com/power-apps/user/modern-fluent-design" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Xrm.Utility.getGlobalContext().saveSettingValue(&quot;&lt;setting-unique-name&gt;&quot;, false, {overrideScope: 2}).then(successCallback, errorCallback)</code> <a href="https://learn.microsoft.com/power-apps/developer/model-driven-apps/clientapi/get-update-setting-value-using-code" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -181,24 +176,24 @@ The release channel controls feature availability, not the database, platform or
 
 The environment setting needs the System Administrator security role or equivalent permissions, per Learn's behaviour settings page. Learn's [User channel override](https://learn.microsoft.com/power-platform/admin/user-channel-override) page documents the per-user override under Users in the environment, and Learn documents the per-user ReleaseChannel column on the UserSettings table.
 
-Row 2 is the New look setting. Learn's page on the modern look says admins can turn the New Look off with it, but Learn's page on app settings says the setting is hidden and ignored once the new look becomes mandatory, and Learn's list of important changes says the admin settings for the classic look will be removed. Neither page says whether the setting covers the mail app. Learn documents generic app-setting automation; its effect on the mail app is not confirmed.
+The New look for model driven apps app setting is not a row in the table. Learn's page on the modern look says admins can turn the New Look off with it, but Learn's page on app settings says the setting is hidden and ignored once the new look becomes mandatory, and Learn's list of important changes says the admin settings for the classic look will be removed. Neither page says whether the setting covers the mail app. Learn documents generic app-setting automation; its effect on the mail app is not confirmed.
 
 ## Open questions
 
 - Can an administrator still switch the New Look off, as the modern look page says, or is the setting hidden and ignored, as the app settings page says? Neither says whether it affects the mail app. Watch the Modern, refreshed look for model-driven apps page.
 - Which clients does "the mail app" cover? The roadmap lists the platform as Web, while Learn places the mail app under "Modern, refreshed look outside of browser".
-- What licence does the mail app require, and does this change alter it? Microsoft has not published a licence for the look.
 - Does the monthly-channel remark that the new look is "on by default" for the mail app mean semi-annual environments have the same default, or does the roadmap's "always enabled" supersede it? Watch the roadmap item and the Learn page.
 
 <!-- rationale
 risk: Low. This is a visual change to the mail app: styling, controls and spacing. The roadmap item describes no new data access, permission or automated action.
-cost: Low. The only cost the sources show is admin and training time. Microsoft Learn's page for the look names no licence or meter, and the licence position is not yet published.
+cost: Low. The only cost specific to this change is admin and training time. Model-driven app users need a licence providing Power Apps premium use rights, and Microsoft names no licence, price or meter specific to this visual refresh.
 impact: Medium. Users of the mail app in semi-annual-channel environments see a different look without choosing it; the roadmap lists the feature scope as users, always enabled.
 -->
 
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.model; Cost and licensing; Open questions; rationale: cost / licensing: The licensing model is unknown because Microsoft has not published the licence position for the look. | Found: Model-driven apps use Dataverse and are premium apps by default. Every user who runs a model-driven app needs a license that provides Power Apps premium use rights. | Fix: Set licensing.model to included. Replace the broad unpublished-licensing statements in the notes, body, open question and cost rationale with: 'Model-driven app users need a licence providing Power Apps premium use rights. Microsoft names no licence, price or meter specific to this visual refresh.' Cite https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq. Keep cost low for the refresh's indirect communication and training cost. | Source: https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq
-- [contradicted, blocker] controls[1].ui; Governance controls: second row / admin-path: Solutions > solution > Add Existing > More > Setting > New look for model driven apps reaches the app's editable New Look control. | Found: 6. Select Add to add it to the solution. 7. Select New look for model driven apps from the solution explorer. 8. Update Setting Environment Value to No. 9. Add the apps to the solution for which you want to turn off new look. 10. Update the value of the apps to No. | Fix: Remove the second control row and its rendered table row, and remove '(row 2)' from the checklist. The printed path reaches the setting picker, not an editable app value; the same cited page also says makers can no longer switch to the classic look. Retain the existing prose about conflicting documentation and unconfirmed applicability to the mail app rather than presenting this incomplete route as an operational control. | Source: https://learn.microsoft.com/power-apps/user/modern-fluent-design
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[0].ui / admin-path: The environment channel is reached in Power Platform admin center through Manage > Environments > environment > Settings > Product > Behavior. | Found: In the command bar, select Settings. 6. Expand Product, and then select Behavior. ## Release channel | Settings | Description | Default value | | --- | --- | --- | | Model-driven app release channel | Fix: Complete controls[0].ui.path as 'Manage > Environments > environment > Settings > Product > Behavior > Release channel > Model-driven app release channel', using the section and setting labels at https://learn.microsoft.com/power-platform/admin/settings-behavior. | Source: https://learn.microsoft.com/power-platform/admin/settings-behavior
+- [supported, minor] controls[0].governs; Governance guidance: Before rollout; Scope / applicability: The environment release channel governs availability of this model-driven app refresh, subject to app and user channel settings. | Found: If you set this setting to Semi-annual channel, users in the organization use features from the current semi-annual release | Fix: Append to the release-channel controls note: 'Learn also says model-driven apps in Power Platform environments use Monthly when the app channel is Auto regardless of the environment channel; check the app channel as well.' Cite https://learn.microsoft.com/power-apps/maker/model-driven-apps/channel-change#keep-semi-annual-release-channel, which qualifies the general environment-channel guidance. | Source: https://learn.microsoft.com/power-platform/admin/settings-behavior
+- [contradicted, minor] Governance guidance: After rollout / consistency: Every control the governance checklist asks readers to review appears in the controls table. | Found: Review the New look app setting before telling users that the classic look can be restored The New look for model driven apps app setting is not a row in the table. | Fix: Remove the After rollout checklist bullet 'Review the New look app setting before telling users that the classic look can be restored, given the conflicting Learn pages.' Keep the existing explanatory controls note and Open questions; do not add a control row.
 -->

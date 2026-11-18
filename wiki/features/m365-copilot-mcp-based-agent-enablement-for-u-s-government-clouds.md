@@ -17,8 +17,8 @@ impact: "medium"
 defaultState: "unknown"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "Not yet published for MCP-based agents in GCC, GCC High or DoD. Learn describes agent access by licence type and says usage-based billing is not supported in GCC and GCCH."
+  model: "included"
+  notes: "Learn's general agent licensing table includes custom actions in Copilot Chat without usage-based billing and in licensed Microsoft 365 Copilot. Government-cloud support remains subject to the conflicting availability statements described above; MCP-specific government licensing terms are not separately published."
 audiences: ["m365-admin","service-owner","security"]
 tags: ["mcp","m365-copilot","agents","declarative-agents","extensibility","plugins","admin-controls","gcc","gcc-high","dod"]
 sources:
@@ -88,19 +88,23 @@ changes:
     note: "Corrected after the independent check: reworded the MCP tool-access claim, stated that Learn's authenticated custom actions restriction covers MCP actions, and narrowed the block control note to the selected agent."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 57 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-18"
+    note: "Corrected after the independent check: the licensing model is now included, from Learn's agent licensing table that lists custom actions, and the cost rationale and licence question are narrowed to match."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 61 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-18"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 57
-  confirmed: 56
+  claims: 61
+  confirmed: 61
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "8c64c8904bcf8311e643d0e6d9b2953d"
+  contradicted: 0
+  attempts: 0
+  hash: "24ee4053f5b9c6521b98895d84de7c7e"
 ---
 
 ## What's changing
@@ -138,7 +142,7 @@ The unresolved differences between the roadmap, the service description and the 
 
 ## Cost and licensing
 
-Licence: the roadmap item and Learn do not state a licence for MCP-based agents in US Government clouds. Learn's agent prerequisites page describes agent access by licence type (a Microsoft 365 Copilot add-on licence, Microsoft 365 Copilot Business, Microsoft 365 E7 and usage-based billing) and does not single out MCP agents for government clouds. Not yet published for this feature.
+Licence: Learn's general agent licensing table includes custom actions in Copilot Chat without usage-based billing and in licensed Microsoft 365 Copilot. Government-cloud support remains subject to the conflicting availability statements described above; MCP-specific government licensing terms are not separately published.
 
 Meter: the same page says usage-based billing (Copilot Credits) is not supported in GCCH and GCC, and the known-issues page lists usage billing for extensibility features as not supported in Microsoft 365 Government tenants. The page does not mention DoD for usage-based billing.
 
@@ -189,18 +193,12 @@ Microsoft Learn documents no MCP-specific tenant switch or allow list of MCP ser
 
 - Which of the three clouds actually support MCP-based agents today, given that the service description lists declarative agents as not currently available in DoD and limited in GCC High? Watch the service description and the roadmap item.
 - How is the roadmap launch reconciled with Learn's restriction on authenticated custom actions?
-- Which licence or meter does an MCP-based agent need in GCC, GCC High and DoD, given that usage-based billing is not supported in GCC and GCCH?
+- Are there any MCP-specific government licensing terms beyond the general agent entitlements?
 - Can an administrator limit which MCP servers agents may call, and do the Agent 365 tool-management controls apply in US Government clouds?
 - What is the default state on arrival? Microsoft has not stated it.
 
 <!-- rationale
 risk: Medium. An MCP plugin lets an agent call a separately hosted server that can create, update and delete data, and Learn lists government-cloud limits for agents that the roadmap item does not mention.
-cost: Low. The only cost the sources show is admin and developer time; the licence for MCP-based agents in US Government clouds is not yet published, and Learn says usage-based billing is not supported in GCC or GCCH.
+cost: Low. The only cost the sources show is admin and developer time; Learn documents general agent entitlements but no separate MCP-specific government licensing terms, and says usage-based billing is not supported in GCC or GCCH.
 impact: Medium. Developers who build the agents and the users they share them with notice it; nothing in the sources says other users see a change.
--->
-
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.model and notes; Cost and licensing; Open questions; rationale: cost / licensing: The licensing model is unknown because Microsoft has not published which entitlement covers these MCP-based agents. | Found: | Custom actions | ✅ | ✅ | ✅ | | Fix: Set licensing.model to "included". Replace the licensing notes and the Licence paragraph with: "Learn's general agent licensing table includes custom actions in Copilot Chat without usage-based billing and in licensed Microsoft 365 Copilot. Government-cloud support remains subject to the conflicting availability statements described above; MCP-specific government licensing terms are not separately published." In Open questions, replace the licence-or-meter question with "Are there any MCP-specific government licensing terms beyond the general agent entitlements?" In the cost rationale, replace "the licence for MCP-based agents in US Government clouds is not yet published" with "Learn documents general agent entitlements but no separate MCP-specific government licensing terms". The cited prerequisites table expressly covers custom actions, the class that includes MCP plugins. | Source: https://learn.microsoft.com/plugins/prerequisites
 -->

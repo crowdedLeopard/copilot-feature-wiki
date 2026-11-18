@@ -4,10 +4,10 @@
   "title": "Copilot Studio: conversational set-up of connector connections with in-chat sign-in",
   "status": "held",
   "date": "2026-11-18",
-  "version": 2,
+  "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 2,
+  "attempts": 3,
   "standard": "cd5b21ff3a5b",
   "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "hold",
@@ -16,25 +16,25 @@
     "reason": "failed",
     "since": "2026-11-18",
     "reasons": [
-      "1 blocking finding (claim 34)"
+      "1 blocking finding (claim 58)"
     ]
   },
   "counts": {
-    "claims": 48,
-    "confirmed": 47,
+    "claims": 60,
+    "confirmed": 59,
     "unconfirmed": 0,
     "contradicted": 1,
     "blocker": 1,
     "major": 0,
-    "minor": 3
+    "minor": 0
   },
-  "summary": "Hold: the briefing describes licensing as unpublished even though Microsoft documents the product's access and licensing options. Distinguish those existing requirements from the narrower uncertainty about a separate charge for connection setup. The roadmap facts and the documented connection experience are supported.",
+  "summary": "The briefing leaves the applicability of blocking maker-provided credentials open, although Microsoft documents that this control requires end-user credentials at runtime for all tools in affected environments. The roadmap facts, connector-blocking navigation path and PowerShell command are supported.",
   "claims": [
     {
       "n": 1,
       "where": "title; summary; What's changing; rationale: impact",
       "type": "record",
-      "claim": "The planned change configures connectors through an in-chat sign-in instead of a full settings experience.",
+      "claim": "Microsoft plans conversational configuration of the connectors an agent needs through simple in-chat sign-in instead of a full settings experience.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Configure the connectors your agent needs, with a simple in-chat sign-in instead of a full settings experience.",
@@ -56,7 +56,7 @@
       "n": 3,
       "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
-      "claim": "The release phase is General Availability.",
+      "claim": "The roadmap release phase is General Availability.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\"]",
@@ -65,31 +65,9 @@
     },
     {
       "n": 4,
-      "where": "front matter: clouds; What's changing; Scope",
-      "type": "record",
-      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the record, without an assertion that other clouds are unavailable.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "front matter: platforms; What's changing; Scope",
-      "type": "record",
-      "claim": "The listed platforms are Desktop, Mac and Web.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\"Desktop\", \"Mac\", \"Web\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
-      "claim": "The record targets September CY2026, which has passed by the run date, and supplies no later target.",
+      "claim": "The roadmap target is September CY2026, already past on the run date, and the record supplies no revised target.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"targetDate\": \"September CY2026\"",
@@ -97,10 +75,10 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 5,
       "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The record supplies no preview date.",
+      "claim": "The roadmap record supplies no preview date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": null",
@@ -108,7 +86,40 @@
       "fix": null
     },
     {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record; the record does not explicitly exclude other clouds.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platforms are Desktop, Mac and Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Mac\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 8,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap product is Microsoft Copilot Studio.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Copilot Studio\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
       "where": "front matter: roadmapModified",
       "type": "record",
       "claim": "The roadmap modification timestamp is 2026-10-09T22:04:35.",
@@ -119,24 +130,13 @@
       "fix": null
     },
     {
-      "n": 9,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The roadmap record has no more-info link.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"moreInfoLink\": null",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 10,
       "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap description provides no implementation detail beyond conversational connector configuration with in-chat sign-in.",
+      "claim": "The roadmap record gives no further feature detail or more-info link.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Configure the connectors your agent needs, with a simple in-chat sign-in instead of a full settings experience.",
+      "quote": "\"description\": \"Configure the connectors your agent needs, with a simple in-chat sign-in instead of a full settings experience.\", \"moreInfoLink\": null",
       "severity": null,
       "fix": null
     },
@@ -144,40 +144,51 @@
       "n": 11,
       "where": "summary",
       "type": "absence",
-      "claim": "No administrator action specific to this rollout is stated.",
+      "claim": "No administrator action specific to this roadmap change is stated in the supplied record or the researched documentation.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Copilot Studio conversational configuration connectors in chat sign in 569930 default disable tenant environment setting. Read record, end-user-connections, add-tools-custom-agent and admin-data-loss-prevention; no rollout-specific admin action.",
+      "quote": "Searched: Copilot Studio 569930 conversational configuration connectors in-chat sign-in default disable setting data policy connection required; opened the supplied record, end-user-connections, add-tools-custom-agent and admin-data-loss-prevention.",
       "severity": null,
       "fix": null
     },
     {
       "n": 12,
-      "where": "What's changing; front matter: changes",
-      "type": "absence",
-      "claim": "The related Learn documentation does not identify itself as documentation for this roadmap item.",
+      "where": "front matter: defaultState; Why it matters",
+      "type": "default",
+      "claim": "The arrival default of this roadmap change is not stated, so defaultState is unknown.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"569930\" \"conversational\"; \"Copilot Studio\" \"conversational configuration\". Read end-user-connections and add-tools-custom-agent; neither identifies roadmap item 569930.",
+      "quote": "Searched: Copilot Studio 569930 conversational configuration connectors in-chat sign-in default disable setting; Copilot Studio end-user connections disable admin default. Read the record and end-user-connections; neither states the rollout default for this change.",
       "severity": null,
       "fix": null
     },
     {
       "n": 13,
-      "where": "What's changing; Scope",
-      "type": "applicability",
-      "claim": "The related tools and connection guidance concerns agents built with the Microsoft Copilot harness.",
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "A Microsoft Learn page explicitly identifying this roadmap item and equating it with the documented Connection Required experience was not found.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-tools-custom-agent",
-      "quote": "An agent created with the Microsoft Copilot harness.",
+      "source": null,
+      "quote": "Searched: 569930; Copilot Studio conversational configuration connectors. Opened end-user-connections and add-tools-custom-agent; neither identifies this roadmap item or explicitly maps the documented experience to it.",
       "severity": null,
       "fix": null
     },
     {
       "n": 14,
+      "where": "What's changing; Scope",
+      "type": "applicability",
+      "claim": "The related end-user connection experience is documented in the Microsoft Copilot harness tool documentation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-tools-custom-agent",
+      "quote": "An agent created with the Microsoft Copilot harness. ... When a tool signs in with each user's own account, users set up their connection the first time the agent needs it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
       "where": "What's changing; Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "An agent needing an unset connection pauses and displays a Connection Required card.",
+      "claim": "An agent that needs a connection the user has not set up pauses and displays a Connection Required card.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/end-user-connections",
       "quote": "When the agent needs a connection you haven't set up, it pauses and shows a Connection Required card.",
@@ -185,10 +196,21 @@
       "fix": null
     },
     {
-      "n": 15,
-      "where": "What's changing; Governance guidance",
+      "n": 16,
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "The card's Set up connection button opens Manage your connections for the agent.",
+      "claim": "The Connection Required card has Set up connection, Retry and Deny buttons.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/end-user-connections",
+      "quote": "The card has the following buttons: ... Set up connection ... Retry ... Deny",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Set up connection opens the agent's Manage your connections page.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/end-user-connections",
       "quote": "Set up connection | Opens the Manage your connections page for the agent.",
@@ -196,43 +218,21 @@
       "fix": null
     },
     {
-      "n": 16,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The card has a Retry button that tells the agent to try the action again after connection setup.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/end-user-connections",
-      "quote": "Retry | Tells the agent that you set up the connection, so it tries the action again.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "What's changing; Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "Deny cancels the action and the agent does not retry it.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/end-user-connections",
-      "quote": "Deny | Cancels the action. The agent doesn't try the action again and tells you that it was canceled.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 18,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Users connect each item required by the action on Manage your connections and return to chat.",
+      "claim": "The documented setup procedure connects each item the action needs and then returns the user to the chat.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/end-user-connections",
-      "quote": "On the Manage your connections page, connect each item that the action needs. Learn more in Connect an item.\n3. Return to the chat.",
+      "quote": "On the Manage your connections page, connect each item that the action needs. ... Return to the chat.",
       "severity": null,
       "fix": null
     },
     {
       "n": 19,
-      "where": "What's changing",
+      "where": "What's changing; Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Manage your connections lists tools, flows and AI models using the user's own account.",
+      "claim": "Manage your connections lists tools, flows and AI models in the agent that use the user's own account.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/end-user-connections",
       "quote": "The Manage your connections page lists the tools, flows, and AI models in the agent that use your own account.",
@@ -241,6 +241,17 @@
     },
     {
       "n": 20,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "For these tools, the agent acts using the user's own connection rather than a shared account.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/end-user-connections",
+      "quote": "Some tools in a Microsoft Copilot Studio agent sign in with each user's own account instead of one shared account. Before the agent can use one of these tools for you, you need to connect your account.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
       "where": "What's changing; Risk assessment: Security & identity",
       "type": "behaviour",
       "claim": "Connections are saved separately for each agent.",
@@ -251,10 +262,10 @@
       "fix": null
     },
     {
-      "n": 21,
-      "where": "What's changing; Risk assessment: Security & identity; Change & support",
+      "n": 22,
+      "where": "What's changing; Risk assessment: Security & identity; Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Connections are saved separately for each channel, requiring setup in each channel used.",
+      "claim": "Connections are channel-specific, so users of the same agent in several channels set them up in each channel.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/end-user-connections",
       "quote": "Connections are saved for each agent and each channel. If you chat with the same agent in more than one channel, set up your connections in each channel.",
@@ -262,10 +273,10 @@
       "fix": null
     },
     {
-      "n": 22,
+      "n": 23,
       "where": "What's changing; Scope",
       "type": "behaviour",
-      "claim": "In Microsoft Teams, the agent retries automatically after the user connects.",
+      "claim": "In Microsoft Teams, the agent automatically retries the action after the user connects.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/end-user-connections",
       "quote": "In Microsoft Teams, the agent retries the action automatically after you connect. If it doesn't, or if you closed the dialog without connecting, select Retry on the card.",
@@ -273,65 +284,10 @@
       "fix": null
     },
     {
-      "n": 23,
-      "where": "front matter: defaultState; Why it matters",
-      "type": "default",
-      "claim": "Microsoft has not stated the roadmap feature's default state on arrival.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Copilot Studio\" \"connection\" \"in-chat\" \"disable\". Read record, end-user-connections and add-tools-custom-agent; no stated rollout default or dedicated switch.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 24,
-      "where": "Why it matters; Risk assessment: Data exposure; summary; rationale: risk",
-      "type": "applicability",
-      "claim": "Data policies can prevent makers from selecting blocked tools and connectors.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-tools-custom-agent",
-      "quote": "When a data policy blocks a tool, the tool appears unavailable in the Add a tool panel and you can't select it.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "Why it matters",
-      "type": "behaviour",
-      "claim": "Publishing or running an agent using a policy-blocked tool can fail.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-tools-custom-agent",
-      "quote": "The message explains that your organization's data policy blocks the tool, so the tool can't be used, even by an agent, and publishing or running an agent that uses it can fail.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "Why it matters; controls[0].note; Risk assessment: Data exposure; Governance controls",
-      "type": "absence",
-      "claim": "The documentation does not describe a separate data-policy reevaluation specifically at the in-chat connection setup step.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Copilot Studio\" \"in-chat\" \"data policies\". Read admin-data-loss-prevention, add-tools-custom-agent and end-user-connections; general real-time enforcement is documented, not a separate sign-in-step check.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
-      "where": "Risk assessment: Data exposure; Governance controls",
-      "type": "behaviour",
-      "claim": "Tools configured for each user's account act through that user's connection, which the user manages.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/end-user-connections",
-      "quote": "Some tools in a Microsoft Copilot Studio agent sign in with each user's own account instead of one shared account. Before the agent can use one of these tools for you, you need to connect your account.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Create or pick connections lets the user select an existing connection or create one for each required service.",
+      "claim": "Create or pick connections lets the user select an existing connection or create a new one for each service.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/end-user-connections",
       "quote": "In the Create or pick connections dialog, for each service under Name, select an existing connection under Connection, or create a new one.",
@@ -339,30 +295,30 @@
       "fix": null
     },
     {
-      "n": 29,
-      "where": "Risk assessment: Security & identity; Governance controls",
-      "type": "behaviour",
-      "claim": "Users can remove their connections with Disconnect on Manage your connections.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/end-user-connections",
-      "quote": "On the Manage your connections page, select the checkbox for each item you want to disconnect.\n2. Above the list, select Disconnect.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
+      "n": 25,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "Disconnect cannot be undone.",
+      "claim": "Users can remove their connections from the agent with Disconnect.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/end-user-connections",
-      "quote": "The connections are removed for this agent in the channel where you chat with it, such as Microsoft Teams. You can't undo this action.",
+      "quote": "Above the list, select Disconnect. ... The connections are removed for this agent in the channel where you chat with it, such as Microsoft Teams.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 31,
-      "where": "Risk assessment: Security & identity; Governance guidance",
+      "n": 26,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Disconnecting cannot be undone.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/end-user-connections",
+      "quote": "You can't undo this action. The next time the agent needs one of these connections, it asks you to set it up again.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Security & identity",
       "type": "behaviour",
       "claim": "Expired means the connection sign-in expired or was revoked.",
       "status": "supported",
@@ -372,10 +328,10 @@
       "fix": null
     },
     {
-      "n": 32,
-      "where": "Risk assessment: Security & identity; Governance guidance",
+      "n": 28,
+      "where": "Risk assessment: Security & identity; Cost and licensing",
       "type": "behaviour",
-      "claim": "Stale means the agent changed after connection setup and the connection needs review.",
+      "claim": "Stale means the agent changed after the user connected and the connection needs review.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/end-user-connections",
       "quote": "Stale | The agent changed after you connected, so the connection needs to be reviewed. When you open the page, it tries once to restore the connection automatically.",
@@ -383,109 +339,87 @@
       "fix": null
     },
     {
-      "n": 33,
+      "n": 29,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Deny cancels the action.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/end-user-connections",
+      "quote": "Deny | Cancels the action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "After Deny, the agent does not try the action again.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/end-user-connections",
+      "quote": "The agent doesn't try the action again and tells you that it was canceled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
       "where": "Risk assessment: Autonomy & actions",
       "type": "absence",
-      "claim": "The end-user connection article does not explain an unmet in-chat connection request when nobody is present to respond.",
+      "claim": "The response to an unattended Connection Required card, specifically, is not documented in the researched Learn material.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Copilot Studio\" \"Connection Required\" \"no user\". Read end-user-connections and excerpts from end-user-manage-shared-agent and authoring-share-agent; autonomous preconnection is documented, not this unattended-card case.",
+      "quote": "Searched: Copilot Studio Connection Required unattended autonomous. Opened end-user-connections, end-user-manage-shared-agent and configure-no-maker-authentication; none specifies the unattended handling or timeout of that chat card.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Why it matters; summary",
+      "type": "applicability",
+      "claim": "A tool blocked by a data policy cannot be selected in the Microsoft Copilot harness tool-adding experience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-tools-custom-agent",
+      "quote": "When a data policy blocks a tool, the tool appears unavailable in the Add a tool panel and you can't select it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Publishing an agent using a policy-blocked tool can fail.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-tools-custom-agent",
+      "quote": "The message explains that your organization's data policy blocks the tool, so the tool can't be used, even by an agent, and publishing or running an agent that uses it can fail.",
       "severity": null,
       "fix": null
     },
     {
       "n": 34,
-      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "The licensing model is unknown because no licence is published for this feature.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing",
-      "quote": "To use Copilot Studio, you need one of the following configurations:\n- Copilot Studio user license (free).\n- Copilot Studio authors role in Power Platform admin center.\n- Microsoft 365 Copilot license\n- Copilot Studio trial license.",
-      "severity": "blocker",
-      "fix": "Set licensing.model to mixed and cite https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing. Replace the blanket licensing absence in the notes, Cost and licensing, and cost rationale with: 'Copilot Studio documents access through a Copilot Studio user license requiring a tenant prepaid Copilot Credit pack subscription, the Copilot Studio authors role for applicable pay-as-you-go scenarios, a Microsoft 365 Copilot license, or a trial. The trial permits testing but not publishing. No separate entitlement for this connection experience is published.' Retain the distinct statement that a charge for the connection step itself is not stated."
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Running an agent using a policy-blocked tool can fail.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-tools-custom-agent",
+      "quote": "The message explains that your organization's data policy blocks the tool, so the tool can't be used, even by an agent, and publishing or running an agent that uses it can fail.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 35,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "A separate price or meter specifically for the connection setup experience is not published.",
+      "where": "controls[0].governs; summary; Risk assessment: Data exposure; Governance controls; rationale: risk",
+      "type": "applicability",
+      "claim": "Power Platform data policies can prevent agent makers from using specified Power Platform connectors as tools in Copilot Studio agents.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Copilot Studio\" \"connection\" \"sign-in\" \"credits\" charge. Read end-user-connections, billing-licensing and agents-experience/billing-credit-overview; no separate setup price found.",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "To prevent agent makers from using Power Platform connectors as tools in Copilot Studio agents, configure a data policy with the connectors you want to block.",
       "severity": null,
       "fix": null
     },
     {
       "n": 36,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "Both related Learn articles state that the harness uses usage-based billing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/end-user-connections",
-      "quote": "The harness used to build this agent uses usage-based billing.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "cost",
-      "claim": "The related Learn articles warn that using, building, testing and evaluating agents might consume Copilot Credits.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-tools-custom-agent",
-      "quote": "Using, building, testing, and evaluating agents might consume Copilot Credits.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "Cost and licensing; Open questions",
-      "type": "absence",
-      "claim": "Whether connection setup itself consumes credits, and at which rate, is not stated.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Copilot Studio\" \"connection\" \"sign-in\" \"credits\" charge. Read end-user-connections, add-tools-custom-agent and agents-experience/billing-credit-overview; no connection-setup operation or rate identified.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "Scope; Open questions",
-      "type": "record",
-      "claim": "The roadmap description does not identify particular harnesses or conversation channels.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Configure the connectors your agent needs, with a simple in-chat sign-in instead of a full settings experience.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "Scope",
-      "type": "licensing",
-      "claim": "The adding-tools article's prerequisites list an agent created with the Microsoft Copilot harness and do not list a licence.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-tools-custom-agent",
-      "quote": "## Prerequisites\n- An agent created with the Microsoft Copilot harness. Learn more in Create an agent.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "Governance guidance: Before rollout",
-      "type": "behaviour",
-      "claim": "An agent has a tools list that makers can review.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/tools-manage",
-      "quote": "In the agent navigation bar, select the Build tab.\n3. The tools list appears in the components panel on the right, below the Tools button.",
-      "severity": "minor",
-      "fix": "Add https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/tools-manage to sources for the advice to review each agent's tools list."
-    },
-    {
-      "n": 42,
       "where": "controls[0].scope; Governance guidance: Before rollout",
       "type": "applicability",
-      "claim": "Data policies govern Copilot Studio agents in the environments included in the policy scope.",
+      "claim": "Data policies govern agents in the environments included in the policy scope.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
       "quote": "These data policies apply to Copilot Studio agents in the environments included in the policy's scope.",
@@ -493,32 +427,54 @@
       "fix": null
     },
     {
-      "n": 43,
-      "where": "controls[0].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Power Platform admin center > Security > Data and privacy > Data policy > New Policy > Next > Next > connector > three dots > Block reaches connector blocking.",
+      "n": 37,
+      "where": "Why it matters; controls[0].note; Risk assessment: Data exposure; Governance controls",
+      "type": "absence",
+      "claim": "Whether data policies are evaluated again at the precise in-chat sign-in step is not stated.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
-      "quote": "Select Next. The Add an environment page appears.\n- To add an environment to your data policy, select the environment in the Available tab, and then select Add to policy.\nSelect Next. The Assign connectors page appears.",
-      "severity": "minor",
-      "fix": "Include the omitted environment selection and wizard headings in both copies of the path: 'Security > Data and privacy > Data policy > New Policy > Next > Add an environment > Available > environment > Add to policy > Next > Assign connectors > connector > three dots > Block'. The cited page also confirms the final three-dots > Block steps; this is not a nonexistent-path finding."
-    },
-    {
-      "n": 44,
-      "where": "controls[0].api; Governance controls table",
-      "type": "command",
-      "claim": "Add-ConnectorsToPolicy -PolicyName <policy-id> -Classification <group> -Connectors <connector-list> classifies connectors in a data policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy",
-      "quote": "Add-ConnectorsToPolicy\n    [-PolicyName] <String>\n    [-Classification] <String>\n    [-Connectors] <Object[]>\n    [[-ApiVersion] <String>]\n    [<CommonParameters>]",
+      "source": null,
+      "quote": "Searched: Copilot Studio in-chat data policy connections. Opened admin-data-loss-prevention, add-tools-custom-agent and end-user-connections; they document general scope, real-time enforcement and blocked tools, not a separate policy evaluation at this sign-in step.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 45,
+      "n": 38,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The printed Power Platform admin center path reaches connector blocking in a new data policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "select Security, and then select Data and privacy. ... Select Data policy. ... select New Policy ... select the environment in the Available tab, and then select Add to policy. ... The Assign connectors page appears. ... Select the three dots ... select Block.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "Add-ConnectorsToPolicy accepts PolicyName, Classification and Connectors and assigns or moves the specified connectors to the policy group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy",
+      "quote": "Add-ConnectorsToPolicy [-PolicyName] <String> [-Classification] <String> [-Connectors] <Object[]> ... If any of the connectors are already classified in a different group, they are moved to the specified group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "Classification Blocked puts connectors in the Blocked data-policy group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy",
+      "quote": "Allowed values are 'General', 'Confidential', and 'Blocked' (for Non-business, Business, and Blocked, respectively).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
       "where": "controls[0].note; Governance controls table",
       "type": "admin-path",
-      "claim": "An existing data policy is modified by selecting the policy and Edit Policy.",
+      "claim": "Existing data policies can be changed using Edit Policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
       "quote": "To edit an existing data policy, select the data policy and select Edit Policy.",
@@ -526,10 +482,10 @@
       "fix": null
     },
     {
-      "n": 46,
+      "n": 42,
       "where": "controls[0].note; Governance controls table",
       "type": "role",
-      "claim": "Configuring data policies requires administrative rights over the applicable scope.",
+      "claim": "Configuring the data policy requires administrative rights over the applicable scope.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
       "quote": "Be a tenant admin or have the Environment Admin role.",
@@ -537,32 +493,208 @@
       "fix": null
     },
     {
-      "n": 47,
+      "n": 43,
       "where": "Governance controls",
       "type": "role",
-      "claim": "A Power Platform administrator can configure the data-policy control.",
+      "claim": "A Power Platform administrator can configure the data policy control.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/use-service-admin-role-manage-tenant",
-      "quote": "| Data policies | | | | |\n| View and manage tenant policies | Yes | Yes | Yes | No |\n| View and manage environment policies | Yes | Yes | Yes | No |",
-      "severity": "minor",
-      "fix": "Add https://learn.microsoft.com/power-platform/admin/use-service-admin-role-manage-tenant to sources; its permission matrix confirms Power Platform administrators can manage tenant and environment data policies."
+      "quote": "Power Platform admin ... Data policies ... View and manage tenant policies | Yes ... View and manage environment policies | Yes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Copilot Studio has mixed documented entitlement routes, including user licensing and applicable pay-as-you-go author access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing",
+      "quote": "To use Copilot Studio, you need one of the following configurations: ... Copilot Studio user license (free). ... Copilot Studio authors role in Power Platform admin center. ... Microsoft 365 Copilot license ... Copilot Studio trial license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "A Copilot Studio user license is one documented access route.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing",
+      "quote": "Copilot Studio user license (free). The admin assigns this license to the maker in the Microsoft Admin Center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Obtaining the Copilot Studio user license requires a tenant prepaid Copilot Credit pack subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing",
+      "quote": "You need a Copilot Studio tenant prepaid Copilot Credit pack subscription before you can get this user license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The Copilot Studio authors setting grants access for applicable pay-as-you-go scenarios.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing",
+      "quote": "The Copilot Studio authors setting grants access for applicable pay-as-you-go scenarios.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 48,
-      "where": "Governance controls; front matter: changes",
-      "type": "command",
-      "claim": "Using -Classification Blocked puts connectors in the Blocked group.",
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "A Microsoft 365 Copilot license provides access to build Microsoft Copilot harness agents in Copilot Studio.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy",
-      "quote": "The name of the group to which the connectors should be added. Allowed values are 'General', 'Confidential', and 'Blocked' (for Non-business, Business, and Blocked, respectively).",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing",
+      "quote": "A Microsoft 365 Copilot license lets you use Copilot Studio to build agents for the Microsoft Copilot harness.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The Copilot Studio trial permits creating and testing agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing",
+      "quote": "The trial license gives you access to Copilot Studio to create agents. You can test your agents using the test chat panel.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The trial does not permit publishing the agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing",
+      "quote": "However, you can't publish the agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No separate entitlement for this connection experience was found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio end user connections connection setup Copilot Credits charge licensing autonomous unattended. Read billing-licensing, end-user-connections, add-tools-custom-agent and billing-credit-overview; none names a separate connection-experience entitlement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The connection and tool-adding pages state that their harness uses usage-based billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/end-user-connections",
+      "quote": "The harness used to build this agent uses usage-based billing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "The cited connection and tool-adding pages warn that using, building, testing and evaluating agents might consume Copilot Credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-tools-custom-agent",
+      "quote": "Using, building, testing, and evaluating agents might consume Copilot Credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "A charge or credit rate specifically for the connection setup step is not published in the researched material.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio connection Copilot Credits sign-in. Read billing-licensing, end-user-connections and billing-credit-overview; the general harness billing description supplies no distinct connection setup charge or rate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Scope; Open questions",
+      "type": "absence",
+      "claim": "The roadmap item's specific harness and channel coverage is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio conversational configuration connectors; 569930. Read the roadmap record, end-user-connections and add-tools-custom-agent; no explicit mapping establishes which harnesses or channels this roadmap change covers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "The tool-adding article's prerequisites list an agent created with the Microsoft Copilot harness and do not list a licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-tools-custom-agent",
+      "quote": "Prerequisites: An agent created with the Microsoft Copilot harness.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Makers can review the agent's tools list to inspect its tools.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/tools-manage",
+      "quote": "The tools list appears in the components panel on the right, below the Tools button. ... Select a tool to view its details, including a description and the actions it provides.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Open questions: data policies and blocking maker-provided credentials",
+      "type": "absence",
+      "claim": "Whether blocking maker-provided credentials applies when a user connects in chat remains an open applicability question.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication",
+      "quote": "All tools for all agents in the impacted environments instantly change to require end-user credentials at runtime. ... When an end user interacts with an agent ... and triggers a tool action, the agent prompts that user to sign in if they haven't already.",
+      "severity": "blocker",
+      "fix": "Replace the Open questions bullet 'Do data policies and the blocking of maker-provided credentials apply when a user connects in chat? Watch the Learn data policy page.' with 'Are data policies evaluated again at the in-chat connection step? Watch the Learn data policy page.' General credential-control applicability is documented at https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication."
+    },
+    {
+      "n": 59,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Manage your connections is a user-side experience for managing the user's own connections.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/end-user-connections",
+      "quote": "This article is for people who chat with an agent. ... You set up the connection on the Manage your connections page, and then return to the chat so the agent can continue.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Open questions: tenant or environment switch; Governance guidance: After rollout",
+      "type": "absence",
+      "claim": "A tenant or environment switch specifically disabling this in-chat connection experience was not found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio in-chat sign-in end-user connections disable tenant environment setting Power Platform API. Read end-user-connections and configure-no-maker-authentication; search returned general tenant settings, not a dedicated switch for this experience.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-18T09:02:10.009Z",
+    "at": "2026-11-18T14:04:50.909Z",
     "summary": {
-      "links": 5,
+      "links": 8,
       "unreachable": 0,
       "uiPaths": 1,
       "uiPathsWithMissingWords": 0,
@@ -587,12 +719,27 @@
         "status": 200
       },
       {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/tools-manage",
+        "ok": true,
+        "status": 200
+      },
+      {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
         "ok": true,
         "status": 200
       },
       {
         "url": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/use-service-admin-role-manage-tenant",
         "ok": true,
         "status": 200
       }
@@ -610,7 +757,11 @@
           "Data policy",
           "New Policy",
           "Next",
+          "Add an environment",
+          "Available",
+          "Add to policy",
           "Next",
+          "Assign connectors",
           "three dots",
           "Block"
         ],
@@ -633,6 +784,12 @@
       "date": "2026-11-18",
       "status": "held",
       "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-18",
+      "status": "held",
+      "version": 2,
       "model": "gpt-6.1-sol"
     }
   ]
