@@ -51,7 +51,10 @@ daily by GitHub Actions.
   (4 failed checks, three correction rounds; raised from 3 on 16 Nov 2026 for the pages whose findings predated PR 29 and kept once they cleared, since a further round costs about 85 AI credits and a parked page waits for a person; `holdReason` gives a page parked under the old cap its remaining round). A page at the cap is queued once more as a
   `fresh-draft` task (`parkedNext`; `compile-tasks.mjs` briefs it without the held text, `write-briefing.mjs` keeps its slug and
   history), and only a page whose fresh draft failed too is parked for a person. Each report records `standard` (`STANDARD_HASH`:
-  a hash of SCHEMA.md and the two prompts), and when that changes a parked page gets one more fresh draft under the new rules. A correction is a repair, not a rewrite: `findingsComment` lists the faults to
+  a hash of SCHEMA.md and the two prompts) and `writerStandard` (`WRITER_STANDARD_HASH`: SCHEMA.md and compile-agent.md
+  alone), and when the writer's part changes a parked page gets one more fresh draft under the new rules; a change to
+  verify-agent.md alone does not send it for another draft, because the writer would produce the same text (the six pages
+  parked on 18 Nov 2026 failed on faults in the text, not on the check's wording). A correction is a repair, not a rewrite: `findingsComment` lists the faults to
   correct and the minor findings separately, and the writer carries the rest of the page over word for word and adds no
   control rows ("Correcting a held briefing" in `compile-agent.md`; pages that failed a second check failed on text the
   correction had added). Passing pages carry `verification` in their front matter; the full report is
@@ -74,7 +77,9 @@ daily by GitHub Actions.
   and stopping on sustained HTTP 429 (Learn rate-limited 581 of 743 pages on 17 Nov 2026 when every run re-read them all), into `data/sources.json`,
   `pipeline/lib/sources.mjs`, change = Microsoft's `ms.date` moved) or whose check is older than `recheckDays` (7). Each
   check writes a line into the page's `changes` log (`checkNote`). `VERIFY_LIMIT` (24) is the number of such pages a run
-  checks on top of everything it wrote. The site's `/accuracy/` page shows every page's state and next check.
+  checks on top of everything it wrote. The verify log line and `data/last-verify.json` (`heldOnRecheck`) count the live
+  pages a run held on such a re-check: the number to watch after the writing standard changes, since a stricter check can
+  take pages offline for wording an earlier standard asked for. The site's `/accuracy/` page shows every page's state and next check.
 - Each compile run is shared equally across the topics by `selectQueue` in `pipeline/lib/briefing.mjs` (refreshes first,
   then one item per topic in turn). `priorityFor` in `pipeline/ingest.mjs` orders items within a topic by admin relevance,
   recency and lead time. It must not weight topics against each other: that is how Modern Work went unbriefed until

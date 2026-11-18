@@ -53,26 +53,33 @@ export function holdReason(report) {
 }
 /**
  * The writing standard the writer follows and the verifier checks against: the editorial standard and the two prompts.
- * Each report records the hash of the three as `standard`, so a later run can tell a page checked under earlier rules.
+ * Each report records the hash of the three as `standard`, so a later run can tell a page checked under earlier rules,
+ * and the hash of the writer's part alone (SCHEMA.md and compile-agent.md) as `writerStandard`: the rules a fresh
+ * draft would be written under. A change to verify-agent.md alone changes what the check faults, not what the writer
+ * produces, so it is not a reason to write a parked page again.
  */
-export const STANDARD_FILES = ['wiki/SCHEMA.md', 'pipeline/prompts/compile-agent.md', 'pipeline/prompts/verify-agent.md'];
-export function standardHash(root = ROOT) {
+export const WRITER_STANDARD_FILES = ['wiki/SCHEMA.md', 'pipeline/prompts/compile-agent.md'];
+export const STANDARD_FILES = [...WRITER_STANDARD_FILES, 'pipeline/prompts/verify-agent.md'];
+export function standardHash(root = ROOT, files = STANDARD_FILES) {
   const h = createHash('sha256');
-  for (const f of STANDARD_FILES) { try { h.update(readFileSync(path.join(root, f))); } catch { h.update('missing'); } h.update('\n'); }
+  for (const f of files) { try { h.update(readFileSync(path.join(root, f))); } catch { h.update('missing'); } h.update('\n'); }
   return h.digest('hex').slice(0, 12);
 }
 export const STANDARD_HASH = standardHash();
+export const WRITER_STANDARD_HASH = standardHash(ROOT, WRITER_STANDARD_FILES);
 /**
  * What a parked page waits for. At exactly MAX_REVISIONS failed checks it is written once more from scratch (a
  * 'fresh-draft' task: the roadmap record and Microsoft's pages, none of the held text, see compile-tasks.mjs). A page
- * whose fresh draft failed too (attempts beyond the cap) waits for a person, until the writing standard changes
- * (its report's `standard` is not the current one, or predates the field): then it gets one more fresh draft under
- * the new rules, and a person is only needed for pages that failed under the rules as they stand.
+ * whose fresh draft failed too (attempts beyond the cap) waits for a person, until the writer's rules change
+ * (its report's `writerStandard` is not the current one, or predates the field): then it gets one more fresh draft under
+ * the new rules, and a person is only needed for pages that failed under the rules as they stand. The prompts thread
+ * read the six pages parked on 18 Nov 2026: their blockers were faults in the text, not the check's wording, so a new
+ * verifier prompt alone would spend about 500 credits on drafts that fail the same way.
  */
 export function parkedNext(report) {
   const attempts = report?.attempts || 0;
   if (attempts === MAX_REVISIONS) return 'fresh-draft';
-  if (attempts > MAX_REVISIONS && report?.standard !== STANDARD_HASH) return 'fresh-draft';
+  if (attempts > MAX_REVISIONS && report?.writerStandard !== WRITER_STANDARD_HASH) return 'fresh-draft';
   return 'person';
 }
 /**
@@ -584,7 +591,7 @@ export async function recordVerification(slug, rawVerdict, { model = 'unknown', 
   const date = today();
   const report = {
     slug, ...(kind === 'concept' ? { kind } : {}), roadmapId: data.roadmapId ?? null, title: data.title, status, date, version: data.version || 1, model, engine, attempts,
-    standard: STANDARD_HASH, verifierVerdict: verdict.verdict, notes,
+    standard: STANDARD_HASH, writerStandard: WRITER_STANDARD_HASH, verifierVerdict: verdict.verdict, notes,
     hold: status === 'held' ? { reason: parked ? 'parked' : 'failed', since: failedBefore ? (previous.hold?.since || previous.date || date) : date, reasons } : status === 'needs-correction' ? { reason: 'grace', since: date, reasons } : null,
     counts, summary: verdict.summary, claims,
     precheck: pc ? { at: pc.at, summary: pc.summary, linkChecks: pc.linkChecks, controlChecks: pc.controlChecks, roadmapDrift: pc.roadmapDrift } : null,

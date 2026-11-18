@@ -160,7 +160,7 @@ for (const c of picked) {
   tasks.push({
     slug: c.slug, ...(c.kind === 'concept' ? { kind: 'concept' } : {}), title: c.data.title, roadmapId: c.data.roadmapId ?? null, topic: c.data.topic, version: c.data.version || 1,
     reason: c.reason, where: c.where, page: rel(c.file), brief: rel(briefFile), writerOutput,
-    raw: c.data.roadmapId ? `raw/roadmap/items/${c.data.roadmapId}.json` : null, messageCenter: posts.map((p) => p.id), writtenThisRun: Boolean(c.writtenThisRun),
+    raw: c.data.roadmapId ? `raw/roadmap/items/${c.data.roadmapId}.json` : null, messageCenter: posts.map((p) => p.id), writtenThisRun: Boolean(c.writtenThisRun), writtenNow: Boolean(c.today),
     verdict: rel(path.join(VERIFY_TASK_DIR, `${c.slug}.verdict.json`)), precheck: pc.summary,
   });
   console.log(`  ${c.slug} (${c.reason}): ${pc.summary.unreachable} dead link(s), ${pc.summary.uiPathsWithMissingWords} path(s) with missing words, ${pc.summary.apiCallsNotOnPage} call(s) not on page, ${pc.summary.roadmapDrift} roadmap drift`);

@@ -310,3 +310,4 @@ Append-only record of ingests, compiles and lint passes. One line per event.
 - 2026-11-18 lint: 243 briefings ok, 0 errors (0 quarantined), 17 warnings, 264 notes; 252 checked, 0 awaiting correction, 17 held
 - 2026-11-18 index: 243 briefings, 0 archived, 9 concepts indexed
 - 2026-11-18 digest: 2026-w47 written (243 updated briefings)
+- 2026-11-18 lint: 243 briefings ok, 0 errors (0 quarantined), 17 warnings, 264 notes; 252 checked, 0 awaiting correction, 17 held

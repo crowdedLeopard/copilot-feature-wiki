@@ -1,6 +1,6 @@
 # Lint report
 
-Generated 2026-11-18T09:28:10.946Z. 243 briefings, 9 concepts, 0 quarantined.
+Generated 2026-11-18T10:43:08.994Z. 243 briefings, 9 concepts, 0 quarantined.
 Independent check: 104 verified, 148 verified with gaps, 0 awaiting correction (live under grace), 0 not yet checked, 0 stale; 17 held and not published.
 
 ## Errors (0)
