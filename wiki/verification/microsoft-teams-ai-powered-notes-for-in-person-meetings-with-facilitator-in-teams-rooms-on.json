@@ -2,31 +2,25 @@
   "slug": "microsoft-teams-ai-powered-notes-for-in-person-meetings-with-facilitator-in-teams-rooms-on",
   "roadmapId": 560318,
   "title": "Microsoft Teams Rooms on Windows: Facilitator AI notes for in-person meetings",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-18",
-  "version": 2,
+  "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 2,
-  "verifierVerdict": "hold",
+  "attempts": 0,
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-18",
-    "reasons": [
-      "2 blocking findings (claims 66, 79)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 83,
-    "confirmed": 81,
-    "unconfirmed": 1,
+    "claims": 89,
+    "confirmed": 88,
+    "unconfirmed": 0,
     "contradicted": 1,
-    "blocker": 2,
+    "blocker": 0,
     "major": 0,
     "minor": 2
   },
-  "summary": "The page incorrectly labels Facilitator app automation as undocumented, despite identifying its documented cmdlet. Its categorical claim that there is no single tenant switch is also unsupported; the sources describe tenant-wide prerequisite controls. The rollout, licensing and listed configuration paths are supported.",
+  "summary": "The briefing's licensing, automatic availability, rollout dates and documented controls are supported. Two minor corrections remain: acknowledge conflicting Android release documentation, and reconcile the Facilitator-app checklist instruction with its absence from the controls table.",
   "claims": [
     {
       "n": 1,
@@ -41,6 +35,17 @@
     },
     {
       "n": 2,
+      "where": "front matter: releasePhase; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
       "claim": "The roadmap target is October CY2026.",
@@ -51,7 +56,7 @@
       "fix": null
     },
     {
-      "n": 3,
+      "n": 4,
       "where": "front matter: previewDate",
       "type": "record",
       "claim": "The roadmap supplies no preview date.",
@@ -62,7 +67,7 @@
       "fix": null
     },
     {
-      "n": 4,
+      "n": 5,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) and GCC.",
@@ -73,24 +78,13 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 6,
       "where": "front matter: platforms; Scope",
       "type": "record",
       "claim": "The roadmap platform is Teams and Surface Devices.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Teams and Surface Devices\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
-      "where": "front matter: releasePhase; What's changing",
-      "type": "record",
-      "claim": "The roadmap release phase is General Availability.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\"]",
       "severity": null,
       "fix": null
     },
@@ -109,7 +103,7 @@
       "n": 8,
       "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "The roadmap record was modified on 21 October 2026 at 23:02:10.",
+      "claim": "The roadmap modification timestamp is 2026-10-21T23:02:10.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"modified\": \"2026-10-21T23:02:10\"",
@@ -118,18 +112,7 @@
     },
     {
       "n": 9,
-      "where": "title; summary; What's changing; Scope",
-      "type": "behaviour",
-      "claim": "Facilitator takes notes for unscheduled in-person discussions in Teams Rooms on Windows.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/facilitator-teams-rooms",
-      "quote": "Facilitator in Teams Rooms: Used for unscheduled in-person discussions with a Teams Room device available in the meeting room.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
-      "where": "What's changing",
+      "where": "What's changing: opening sentence",
       "type": "behaviour",
       "claim": "Facilitator already takes notes in scheduled Teams meetings.",
       "status": "supported",
@@ -139,10 +122,21 @@
       "fix": null
     },
     {
-      "n": 11,
-      "where": "summary; What's changing; Risk assessment: Autonomy; rationale: impact",
+      "n": 10,
+      "where": "summary; What's changing; Scope; rationale: impact",
       "type": "behaviour",
-      "claim": "Participants start in-person notes by tapping Take notes on the console or touch board.",
+      "claim": "Facilitator in Teams Rooms supports unscheduled in-person discussions on Teams Rooms on Windows.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/facilitator-teams-rooms",
+      "quote": "Used for unscheduled in-person discussions with a Teams Room device available in the meeting room. Facilitator can serve as the note taker by capturing discussion points and action items for these meetings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary; What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Someone starts in-person notes by tapping Take notes on the console or touch board home screen.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/facilitator-teams-rooms",
       "quote": "Facilitator in Teams Rooms can be initiated by tapping on the “Take notes” button on the home screen of the console or touch board.",
@@ -151,12 +145,12 @@
     },
     {
       "n": 12,
-      "where": "What's changing; Risk assessment",
+      "where": "What's changing: first paragraph",
       "type": "record",
-      "claim": "Facilitator captures notes, decisions and action items from in-person meetings.",
+      "claim": "The roadmap describes Facilitator capturing notes, decisions and action items for in-person meetings.",
       "status": "supported",
-      "source": "Message Center post MC1307512",
-      "quote": "This enhancement allows teams meeting in a physical room to capture real-time notes, decisions, and action items—without requiring a scheduled or hybrid meeting.",
+      "source": "roadmap record",
+      "quote": "the Facilitator agent assists you with notes, decisions and actions for in-person meetings in Teams Rooms on Windows.",
       "severity": null,
       "fix": null
     },
@@ -164,7 +158,7 @@
       "n": 13,
       "where": "What's changing; Risk assessment: Data exposure; rationale: impact",
       "type": "behaviour",
-      "claim": "Notes appear on the front-of-room display as participants speak.",
+      "claim": "Generated notes appear on the front-of-room display as participants speak.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/facilitator-teams-rooms",
       "quote": "Notes can take a few minutes to generate and appear on the front-of-room display as participants speak.",
@@ -175,15 +169,26 @@
       "n": 14,
       "where": "What's changing: roadmap description",
       "type": "record",
-      "claim": "The roadmap describes notes on the room display or touch board and access through meeting recap when shared.",
+      "claim": "The roadmap describes notes appearing on the room display or touch board.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Meeting notes appear on the front of room display or touch board, are available via meeting recap when shared",
+      "quote": "Meeting notes appear on the front of room display or touch board",
       "severity": null,
       "fix": null
     },
     {
       "n": 15,
+      "where": "What's changing: roadmap description",
+      "type": "record",
+      "claim": "The roadmap says shared notes are available through meeting recap.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "are available via meeting recap when shared",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
       "where": "What's changing: roadmap description",
       "type": "record",
       "claim": "The roadmap says notes are deleted if no one is selected.",
@@ -194,18 +199,29 @@
       "fix": null
     },
     {
-      "n": 16,
-      "where": "What's changing; Risk assessment: Security; Governance guidance",
+      "n": 17,
+      "where": "What's changing: second paragraph; Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "Learn instructs participants to select Save notes and add participants' names at the end so they can access the notes later.",
+      "claim": "Learn documents selecting Save notes at the end of the session.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/facilitator-teams-rooms",
-      "quote": "At the end of the session, select Save notes and ensure participants’ names are added in the dialog pop-up so they can access the notes and transcript later on their personal devices.",
+      "quote": "At the end of the session, select Save notes",
       "severity": null,
       "fix": null
     },
     {
-      "n": 17,
+      "n": 18,
+      "where": "What's changing; Risk assessment: Security & identity; Governance guidance",
+      "type": "behaviour",
+      "claim": "Adding participant names when saving enables their later access to notes and transcript.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/facilitator-teams-rooms",
+      "quote": "ensure participants’ names are added in the dialog pop-up so they can access the notes and transcript later on their personal devices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
       "where": "What's changing; Governance guidance: After rollout",
       "type": "behaviour",
       "claim": "Unsaved notes are deleted after the session ends.",
@@ -216,8 +232,8 @@
       "fix": null
     },
     {
-      "n": 18,
-      "where": "What's changing",
+      "n": 20,
+      "where": "What's changing: second paragraph",
       "type": "behaviour",
       "claim": "Facilitator turns on transcription during the meeting.",
       "status": "supported",
@@ -227,8 +243,8 @@
       "fix": null
     },
     {
-      "n": 19,
-      "where": "What's changing",
+      "n": 21,
+      "where": "What's changing: second paragraph",
       "type": "behaviour",
       "claim": "Facilitator does not record the meeting.",
       "status": "supported",
@@ -238,30 +254,19 @@
       "fix": null
     },
     {
-      "n": 20,
-      "where": "What's changing; Risk assessment: Change & support",
-      "type": "record",
-      "claim": "MC1307512 names an Access notes button rather than Learn's Save notes button.",
-      "status": "supported",
-      "source": "Message Center post MC1307512",
-      "quote": "Access to notes requires adding your work account using the Access notes button on the Teams Rooms console",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "What's changing; Risk assessment: Security",
-      "type": "record",
-      "claim": "MC1307512 requires adding a work account for access to notes.",
-      "status": "supported",
-      "source": "Message Center post MC1307512",
-      "quote": "Access to notes requires adding your work account using the Access notes button on the Teams Rooms console",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 22,
-      "where": "What's changing",
+      "where": "What's changing; Risk assessment: Security & identity and Change & support",
+      "type": "record",
+      "claim": "MC1307512 describes adding a work account through Access notes on the console.",
+      "status": "supported",
+      "source": "Message Center post MC1307512",
+      "quote": "Access to notes requires adding your work account using the Access notes button on the Teams Rooms console",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing: second paragraph",
       "type": "behaviour",
       "claim": "The meeting chat is titled Meeting with [conference room name].",
       "status": "supported",
@@ -271,10 +276,10 @@
       "fix": null
     },
     {
-      "n": 23,
-      "where": "What's changing; Governance guidance",
+      "n": 24,
+      "where": "What's changing; Scope; Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "The chat's Recap tab provides access to AI-generated notes and the transcript.",
+      "claim": "The meeting chat Recap tab contains access to the AI notes and transcript.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/facilitator-teams-rooms",
       "quote": "At the top of the meeting chat, select the Recap tab, and then select Notes to find the AI-generated notes and transcript.",
@@ -282,10 +287,10 @@
       "fix": null
     },
     {
-      "n": 24,
-      "where": "What's changing; Scope",
+      "n": 25,
+      "where": "What's changing; Scope; Governance guidance: At rollout",
       "type": "record",
-      "claim": "Participants with access can view notes after the meeting in recap on the Teams desktop client.",
+      "claim": "Participants with access can use the Teams desktop client to view and edit notes through meeting recap.",
       "status": "supported",
       "source": "Message Center post MC1307512",
       "quote": "After the meeting, notes can be viewed and edited by participants with access via the meeting recap in the meeting chat on the Teams desktop client.",
@@ -293,8 +298,8 @@
       "fix": null
     },
     {
-      "n": 25,
-      "where": "What's changing",
+      "n": 26,
+      "where": "What's changing: third paragraph",
       "type": "record",
       "claim": "MC1307512 was updated on 27 August 2026.",
       "status": "supported",
@@ -304,10 +309,10 @@
       "fix": null
     },
     {
-      "n": 26,
-      "where": "What's changing; Scope",
+      "n": 27,
+      "where": "What's changing; Scope: Clouds and rollout",
       "type": "record",
-      "claim": "MC1307512 gives a Worldwide and GCC rollout beginning in late October 2026.",
+      "claim": "MC1307512 gives a Worldwide and GCC rollout starting in late October 2026.",
       "status": "supported",
       "source": "Message Center post MC1307512",
       "quote": "Worldwide and GCC: We will begin rolling out in late October 2026",
@@ -315,21 +320,21 @@
       "fix": null
     },
     {
-      "n": 27,
-      "where": "What's changing; Scope",
+      "n": 28,
+      "where": "What's changing; Scope: Clouds and rollout",
       "type": "record",
       "claim": "MC1307512 expects rollout completion by mid-November 2026.",
       "status": "supported",
       "source": "Message Center post MC1307512",
-      "quote": "and expect to complete by mid-November 2026",
+      "quote": "and expect to complete by mid-November 2026 (previously late September).",
       "severity": null,
       "fix": null
     },
     {
-      "n": 28,
-      "where": "What's changing",
+      "n": 29,
+      "where": "What's changing: third paragraph",
       "type": "record",
-      "claim": "The previous rollout start was early September 2026.",
+      "claim": "MC1307512 previously gave early September as the rollout start.",
       "status": "supported",
       "source": "Message Center post MC1307512",
       "quote": "late October 2026 (previously early September)",
@@ -337,32 +342,32 @@
       "fix": null
     },
     {
-      "n": 29,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The previous expected completion was late September 2026.",
-      "status": "supported",
-      "source": "Message Center post MC1307512",
-      "quote": "mid-November 2026 (previously late September)",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 30,
-      "where": "Scope",
+      "where": "What's changing: third paragraph",
       "type": "record",
-      "claim": "MC1307512 sets no act-by date.",
+      "claim": "MC1307512 previously gave late September as the expected completion.",
       "status": "supported",
       "source": "Message Center post MC1307512",
-      "quote": "Act by: none; No immediate action is required if your organization already meets the prerequisites.",
+      "quote": "mid-November 2026 (previously late September).",
       "severity": null,
       "fix": null
     },
     {
       "n": 31,
-      "where": "What's changing; Risk assessment; Open questions",
+      "where": "Risk assessment: Change & support; Open questions",
+      "type": "record",
+      "claim": "MC1307512 describes the rollout as General Availability.",
+      "status": "supported",
+      "source": "Message Center post MC1307512",
+      "quote": "[When this will happen]\n\nGeneral Availability",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing; Risk assessment: Change & support; Open questions",
       "type": "availability",
-      "claim": "Learn still marks in-person room note-taking as preview, unlike the roadmap and Message Center GA status.",
+      "claim": "The feature's Learn page still calls in-person note-taking preview.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/facilitator-teams-rooms",
       "quote": "Facilitator in Teams Rooms for in-person note-taking is in preview and is currently included with Teams Rooms Pro.",
@@ -370,21 +375,21 @@
       "fix": null
     },
     {
-      "n": 32,
+      "n": 33,
       "where": "What's changing; Governance guidance: At rollout",
       "type": "availability",
-      "claim": "The Windows release notes list in-person Facilitator notes under 5.7.112.0.",
+      "claim": "The Windows release notes list the feature under version 5.7.112.0.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note",
-      "quote": "5.7.112.0 (9/28/2026) ... AI-powered notes for in-person meetings with Facilitator",
+      "quote": "### 5.7.112.0 (9/28/2026)\n...\nAI-powered notes for in-person meetings with Facilitator: Facilitator captures real-time notes and meeting outcomes during in-person meetings.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 33,
+      "n": 34,
       "where": "front matter: defaultState; Why it matters; rationale: risk",
       "type": "default",
-      "claim": "The feature is on in the sense that it becomes available automatically once licensing and prerequisite configurations are met.",
+      "claim": "The feature becomes available automatically once licensing and prerequisite configurations are met.",
       "status": "supported",
       "source": "Message Center post MC1307512",
       "quote": "The feature is available automatically once licensing and prerequisite configurations are met.",
@@ -392,7 +397,7 @@
       "fix": null
     },
     {
-      "n": 34,
+      "n": 35,
       "where": "summary; Why it matters",
       "type": "record",
       "claim": "Microsoft says no additional admin enablement is required beyond existing settings.",
@@ -403,7 +408,7 @@
       "fix": null
     },
     {
-      "n": 35,
+      "n": 36,
       "where": "Risk assessment: Data exposure; rationale: risk",
       "type": "record",
       "claim": "Meeting audio and transcription data are processed to generate summaries, decisions and action items.",
@@ -414,32 +419,32 @@
       "fix": null
     },
     {
-      "n": 36,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Facilitator stores the room's AI-generated notes as a Loop file.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/facilitator-teams-rooms",
-      "quote": "Facilitator stores AI-generated notes as a Loop file in SharePoint Embedded storage that belongs to the tenant",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 37,
-      "where": "Risk assessment: Data exposure; rationale: risk",
+      "where": "Risk assessment: Data exposure; Cost and licensing; rationale: risk",
       "type": "behaviour",
-      "claim": "The room notes are stored in tenant-owned SharePoint Embedded storage.",
+      "claim": "Facilitator's room notes are stored as a Loop file in SharePoint Embedded storage.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/facilitator-teams-rooms",
-      "quote": "Facilitator stores AI-generated notes as a Loop file in SharePoint Embedded storage that belongs to the tenant",
+      "quote": "Facilitator stores AI-generated notes as a Loop file in SharePoint Embedded storage",
       "severity": null,
       "fix": null
     },
     {
       "n": 38,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "The SharePoint Embedded storage belongs to the tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/facilitator-teams-rooms",
+      "quote": "SharePoint Embedded storage that belongs to the tenant and users who saved the notes can access it later.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "The notes data is treated as meeting transcript data.",
+      "claim": "Learn says the room-note data is treated as meeting transcript data.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/facilitator-teams-rooms",
       "quote": "The data is treated as meeting transcript data.",
@@ -447,10 +452,10 @@
       "fix": null
     },
     {
-      "n": 39,
+      "n": 40,
       "where": "Risk assessment: Data exposure",
       "type": "record",
-      "claim": "No meeting data remains stored or cached on the room device after the meeting ends.",
+      "claim": "MC1307512 says no meeting data remains stored or cached on the room device after the meeting.",
       "status": "supported",
       "source": "Message Center post MC1307512",
       "quote": "No meeting data is stored or cached on the Teams Rooms device after the meeting ends.",
@@ -458,21 +463,21 @@
       "fix": null
     },
     {
-      "n": 40,
+      "n": 41,
       "where": "Risk assessment: Data exposure; Open questions",
       "type": "absence",
-      "claim": "The reviewed pages do not describe an announcement telling in-room participants that transcription has started.",
+      "claim": "The reviewed documentation does not describe an announcement telling in-room participants that transcription is running.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Teams Rooms\" \"Facilitator\" \"notification\". Read rooms/facilitator-teams-rooms, facilitator-teams, meeting-transcription-captions and MC1307512; no room announcement stated.",
+      "quote": "Searched: \"Facilitator\" \"in-person\" \"announcement\". Opened learn.microsoft.com/microsoftteams/rooms/facilitator-teams-rooms and /microsoftteams/facilitator-teams; neither describes an in-person room transcription announcement.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 41,
-      "where": "Risk assessment: Data exposure",
+      "n": 42,
+      "where": "Risk assessment: Data exposure; Open questions",
       "type": "behaviour",
-      "claim": "The general Facilitator meeting limitations say notes do not inherit the meeting's sensitivity label.",
+      "claim": "The Facilitator-for-meetings documentation says AI notes do not inherit the meeting sensitivity label.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
       "quote": "AI-generated notes for meetings don't inherit the meeting's sensitivity label; however, a sensitivity label can be applied to the notes' Loop component in the Loop app or OneDrive.",
@@ -480,21 +485,10 @@
       "fix": null
     },
     {
-      "n": 42,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "The general Facilitator meeting limitations say Prevent copy and paste is not applied to the notes.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
-      "quote": "Meeting settings like Prevent copy and paste and Watermarks aren't applied to Facilitator's responses or AI-generated notes in meetings.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 43,
-      "where": "Risk assessment: Data exposure; Open questions",
-      "type": "behaviour",
-      "claim": "The general Facilitator meeting limitations say Watermarks are not applied to notes.",
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "The Facilitator-for-meetings documentation says Prevent copy and paste is not applied to AI notes.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
       "quote": "Meeting settings like Prevent copy and paste and Watermarks aren't applied to Facilitator's responses or AI-generated notes in meetings.",
@@ -503,9 +497,20 @@
     },
     {
       "n": 44,
-      "where": "Risk assessment: Data exposure; Open questions",
+      "where": "Risk assessment: Data exposure; Governance guidance; Open questions",
+      "type": "applicability",
+      "claim": "The Facilitator-for-meetings documentation says Watermarks are not applied to AI notes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "Meeting settings like Prevent copy and paste and Watermarks aren't applied to Facilitator's responses or AI-generated notes in meetings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Data exposure; Governance guidance; Open questions",
       "type": "behaviour",
-      "claim": "The general Facilitator meeting limitations say notes are not automatically collected as eDiscovery cloud attachments.",
+      "claim": "The Facilitator-for-meetings documentation says AI notes are not automatically collected as eDiscovery cloud attachments.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
       "quote": "Facilitator's AI-generated notes for meetings aren't automatically collected as cloud attachments in Microsoft Purview eDiscovery because it isn't currently supported.",
@@ -513,19 +518,19 @@
       "fix": null
     },
     {
-      "n": 45,
+      "n": 46,
       "where": "Risk assessment: Data exposure; Open questions",
       "type": "absence",
-      "claim": "The documentation does not explicitly settle whether these meeting-note limitations apply to the distinct in-person room-note experience.",
+      "claim": "Learn does not specifically resolve whether those meeting-label, watermark and cloud-attachment limitations apply to in-person room notes.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Facilitator\" \"in-person\" \"sensitivity\" \"cloud attachments\". Read facilitator-teams, rooms/facilitator-teams-rooms and purview/ai-teams-facilitator; none maps the listed limitations specifically to room notes in tenant-owned SharePoint Embedded.",
+      "quote": "Searched: \"Facilitator\" \"in-person\" \"sensitivity\" \"eDiscovery\". Opened learn.microsoft.com/microsoftteams/rooms/facilitator-teams-rooms, /microsoftteams/facilitator-teams and /purview/ai-teams-facilitator; none resolves these limitations specifically for room notes.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 46,
-      "where": "Risk assessment: Security; Scope; Governance guidance",
+      "n": 47,
+      "where": "Risk assessment: Security & identity; Scope; Governance guidance; Governance controls",
       "type": "applicability",
       "claim": "The Facilitator app must be enabled for the room resource account.",
       "status": "supported",
@@ -535,43 +540,43 @@
       "fix": null
     },
     {
-      "n": 47,
-      "where": "Risk assessment: Security; controls[1].note; Governance guidance",
-      "type": "applicability",
-      "claim": "App availability scoped to People and Groups must include the Teams Rooms resource account.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/facilitator-teams-rooms",
-      "quote": "If app availability is set to Everyone, the room account is included. If availability is scoped to People and Groups, include the Teams Rooms resource account.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 48,
-      "where": "Risk assessment: Security; Scope; Governance guidance; Governance controls",
+      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
       "type": "applicability",
-      "claim": "Meeting transcription is a prerequisite for in-person room notes.",
+      "claim": "A Facilitator availability scope of People and Groups must include the room resource account.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/facilitator-teams-rooms",
-      "quote": "Step 2: Turn on transcription for meetings",
+      "quote": "If availability is scoped to People and Groups, include the Teams Rooms resource account.",
       "severity": null,
       "fix": null
     },
     {
       "n": 49,
-      "where": "Risk assessment: Security; Scope; Governance controls",
+      "where": "Risk assessment: Security & identity; Scope; Governance guidance; Governance controls",
       "type": "applicability",
-      "claim": "Loop experiences must be enabled for the room account.",
+      "claim": "Meeting transcription must be enabled for the room-note scenario.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/facilitator-teams-rooms",
-      "quote": "Step 3: Turn on Loop experiences ... To enable Loop for the room account, see Manage Loop components in your organization.",
+      "quote": "Step 2: Turn on transcription for meetings\n\nFor more information, see Manage transcription for meetings.",
       "severity": null,
       "fix": null
     },
     {
       "n": 50,
-      "where": "Risk assessment: Security",
+      "where": "Risk assessment: Security & identity; Scope; Governance controls",
+      "type": "applicability",
+      "claim": "Loop experiences must be enabled for the room account.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/facilitator-teams-rooms",
+      "quote": "Step 3: Turn on Loop experiences\n\nTo enable Loop for the room account, see Manage Loop components in your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "Only participants who add their names at the beginning and have enrolled profiles are identified and attributed.",
+      "claim": "Participants must add their names at the beginning of the session to be identified and attributed in notes and transcription.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/facilitator-teams-rooms",
       "quote": "Currently, only participants who add their names at the beginning of the meeting session will be identified and attributed, provided that they have enrolled their profiles.",
@@ -579,8 +584,30 @@
       "fix": null
     },
     {
-      "n": 51,
-      "where": "Risk assessment: Autonomy",
+      "n": 52,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Participant identification and attribution also require enrolled profiles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/facilitator-teams-rooms",
+      "quote": "only participants who add their names at the beginning of the meeting session will be identified and attributed, provided that they have enrolled their profiles.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "The reviewed pages document no in-person trigger other than tapping Take notes.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams Rooms Facilitator Take notes home screen PowerShell XML ShowTakeNotes notification transcription missing prerequisites. Opened learn.microsoft.com/microsoftteams/rooms/facilitator-teams-rooms; its in-person instructions describe tapping Take notes, not an automatic trigger.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
       "claim": "Muting the room microphone prevents Facilitator or transcription from capturing content.",
       "status": "supported",
@@ -590,8 +617,8 @@
       "fix": null
     },
     {
-      "n": 52,
-      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost",
+      "n": 55,
+      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
       "type": "licensing",
       "claim": "In-person note-taking is currently included with Teams Rooms Pro.",
       "status": "supported",
@@ -601,10 +628,10 @@
       "fix": null
     },
     {
-      "n": 53,
+      "n": 56,
       "where": "front matter: licensing.notes; Cost and licensing; Scope; rationale: cost",
       "type": "licensing",
-      "claim": "A Teams Rooms Pro licence must be assigned to each Teams Rooms resource account used for the experience.",
+      "claim": "Each resource account used for the Teams Rooms devices requires a Teams Rooms Pro licence for this scenario.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/facilitator-teams-rooms",
       "quote": "Pre-requisite: Assign a Teams Rooms Pro license to each resource account you have for your Teams Rooms devices",
@@ -612,10 +639,10 @@
       "fix": null
     },
     {
-      "n": 54,
-      "where": "front matter: licensing.notes; Cost and licensing; Risk assessment",
+      "n": 57,
+      "where": "front matter: licensing.notes; Risk assessment: Change & support; Cost and licensing; Open questions",
       "type": "licensing",
-      "claim": "Learn warns that the experience and licensing model may change before final release.",
+      "claim": "Learn warns that the preview experience and licensing model may change before final release.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/facilitator-teams-rooms",
       "quote": "Preview features might not be complete, and the experience and licensing model may change before final release.",
@@ -623,62 +650,106 @@
       "fix": null
     },
     {
-      "n": 55,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "The release notes mark the feature as Pro-only, so the cited Pro statements do not cover Teams Rooms Basic.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note",
-      "quote": "Features with the [mtr-pro-icon.png] icon are available only with Teams Rooms Pro license. ... AI-powered notes for in-person meetings with Facilitator [mtr-pro-icon.png]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 56,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "The in-person room setup steps do not list a Microsoft 365 Copilot licence.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/facilitator-teams-rooms",
-      "quote": "Pre-requisite: Assign a Teams Rooms Pro license ... Step 1: Turn on Facilitator ... Step 2: Turn on transcription ... Step 3: Turn on Loop experiences ... Step 4: Turn on note-taking for Teams Rooms",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 57,
-      "where": "Cost and licensing: Meter",
-      "type": "absence",
-      "claim": "The reviewed feature pages state no meter, credit rate or usage charge for in-person room notes.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Teams Rooms\" \"Facilitator\" \"meter\" \"pricing\". Read rooms/facilitator-teams-rooms, facilitator-teams, rooms/rooms-release-note, loop/loop-components-configuration and MC1307512; no feature-specific meter, credit rate or usage charge stated.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 58,
-      "where": "Cost and licensing: Meter; Open questions",
-      "type": "absence",
-      "claim": "The cited pages do not publish a Teams Rooms Pro price or specify a future change to this feature's licensing model.",
+      "where": "Cost and licensing: Licence",
+      "type": "record",
+      "claim": "The roadmap says the feature is available with Teams Rooms Pro.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Teams Rooms\" \"Facilitator\" \"meter\" \"pricing\". Read rooms/facilitator-teams-rooms and the other cited pages; they give no Pro price or defined future licensing change. The room page only warns that the licensing model may change.",
+      "source": "roadmap record",
+      "quote": "Available with Teams Rooms Pro.",
       "severity": null,
       "fix": null
     },
     {
       "n": 59,
-      "where": "Cost and licensing: Indirect costs",
-      "type": "cost",
-      "claim": "Storage consumed by the saved Loop notes counts against the organisation's SharePoint quota.",
+      "where": "Cost and licensing: Licence; Scope: Who",
+      "type": "record",
+      "claim": "MC1307512 identifies Teams Rooms on Windows rooms licensed with Teams Rooms Pro as affected.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/loop-components-configuration",
-      "quote": "Loop components and their integrations are powered by .loop files ... stored in OneDrive, SharePoint, or SharePoint Embedded. Storage counts against your organization's SharePoint quota.",
+      "source": "Message Center post MC1307512",
+      "quote": "Who is affected\n\n- Organizations using Teams Rooms on Windows- Rooms licensed with Teams Rooms Pro",
       "severity": null,
       "fix": null
     },
     {
       "n": 60,
+      "where": "Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "The release notes mark AI-powered in-person notes as Teams Rooms Pro only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note",
+      "quote": "Features with the ![](../media/mtr-pro-icon.png) icon are available only with Teams Rooms Pro license.\n\nAI-powered notes for in-person meetings with Facilitator ![](../media/mtr-pro-icon.png)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Cost and licensing: Licence",
+      "type": "absence",
+      "claim": "The Learn setup steps for in-person room notes name no Microsoft 365 Copilot licence.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Facilitator\" \"Teams Rooms\" \"credits\". Opened learn.microsoft.com/microsoftteams/rooms/facilitator-teams-rooms and /microsoftteams/rooms/rooms-licensing; the in-person setup lists Teams Rooms Pro, not Microsoft 365 Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Cost and licensing: Meter",
+      "type": "absence",
+      "claim": "The reviewed feature and licensing pages document no meter, credit rate or usage charge for in-person room notes.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Facilitator\" \"Teams Rooms\" \"credits\". Opened learn.microsoft.com/microsoftteams/rooms/facilitator-teams-rooms and /microsoftteams/rooms/rooms-licensing; neither states a room-note meter, credit rate or usage charge.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Cost and licensing: Meter",
+      "type": "licensing",
+      "claim": "Teams Rooms Basic is not covered by the cited Pro-only feature entitlement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note",
+      "quote": "Features with the ![](../media/mtr-pro-icon.png) icon are available only with Teams Rooms Pro license.\n\nAI-powered notes for in-person meetings with Facilitator ![](../media/mtr-pro-icon.png)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Cost and licensing: Meter; rationale: cost",
+      "type": "absence",
+      "claim": "The cited pages do not publish a Teams Rooms Pro price.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams Rooms Pro\" \"Facilitator\" \"price\". Opened learn.microsoft.com/microsoftteams/rooms/facilitator-teams-rooms and /microsoftteams/rooms/rooms-licensing; neither gives a Pro price. The other cited control and release pages give no Pro price either.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Cost and licensing: Meter; Open questions",
+      "type": "absence",
+      "claim": "The cited pages do not publish what a changed licensing model before final release would be.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams Rooms Pro\" \"Facilitator\" \"price\". Opened learn.microsoft.com/microsoftteams/rooms/facilitator-teams-rooms and /microsoftteams/rooms/rooms-licensing; the feature page warns the model may change but supplies no replacement model or future price.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Cost and licensing: Indirect costs",
+      "type": "cost",
+      "claim": "Loop-file storage, including SharePoint Embedded storage, counts against the organisation's SharePoint quota.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/loop-components-configuration",
+      "quote": "Loop components and their integrations are powered by .loop files (earlier releases created .fluid files), stored in OneDrive, SharePoint, or SharePoint Embedded. Storage counts against your organization's SharePoint quota.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
       "where": "Scope: Who",
       "type": "availability",
       "claim": "Learn says Windows is available and Android is projected for a future release.",
@@ -686,13 +757,46 @@
       "source": "https://learn.microsoft.com/microsoftteams/rooms/facilitator-teams-rooms",
       "quote": "Facilitator is available on Teams Rooms on Windows and is projected to release on Teams Rooms on Android in a future release.",
       "severity": "minor",
-      "fix": "Append: 'The Teams Rooms release notes separately list a preview of Facilitator note-taking for offline/ad hoc discussions under the Android May 2025 release, so Microsoft's pages disagree on Android availability.' Cite https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note#teams-rooms-on-android-feature-introduction-and-issue-resolution."
+      "fix": "Replace the sentence with 'Learn says the feature is available on Teams Rooms on Windows.' The cited release-notes page also lists 'Preview of Facilitator agent note taking in Rooms for offline/ad hoc discussions' under Android 1449/1.0.96.2025126202 (May 2025), so the Android statements disagree."
     },
     {
-      "n": 61,
-      "where": "controls[0].ui; Governance controls table",
+      "n": 68,
+      "where": "Scope: Clouds and rollout",
+      "type": "record",
+      "claim": "MC1307512 sets no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1307512",
+      "quote": "Act by: none\n\nNo immediate action is required if your organization already meets the prerequisites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Scope; controls[2].note; Governance controls",
+      "type": "record",
+      "claim": "MC1307512 requires the Loop setting IsLoopEnabled.",
+      "status": "supported",
+      "source": "Message Center post MC1307512",
+      "quote": "Verify Loop components are enabled:- IsLoopEnabled- IsCollabMeetingNotesFluidEnabled",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Scope; controls[2].note; Governance guidance; Governance controls",
+      "type": "record",
+      "claim": "MC1307512 requires the Loop setting IsCollabMeetingNotesFluidEnabled.",
+      "status": "supported",
+      "source": "Message Center post MC1307512",
+      "quote": "Verify Loop components are enabled:- IsLoopEnabled- IsCollabMeetingNotesFluidEnabled",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "controls[0].ui; Governance controls: first row",
       "type": "admin-path",
-      "claim": "The room button is configured in Pro Management portal at Rooms > room > Settings > Device > Show Take notes button on the home screen.",
+      "claim": "The per-room button setting is at Teams Rooms Pro Management portal > Rooms > room > Settings > Device > Show Take notes button on the home screen.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/facilitator-teams-rooms",
       "quote": "In Pro Management portal, select Rooms from the left navigation > select your desired room > Settings > Device > Show Take notes button on the home screen.",
@@ -700,19 +804,19 @@
       "fix": null
     },
     {
-      "n": 62,
-      "where": "controls[0].api; Governance controls table",
+      "n": 72,
+      "where": "controls[0].api; Governance controls: first row",
       "type": "absence",
-      "claim": "No API or automation control is documented for the room's Take notes home-screen button.",
+      "claim": "No API or automation equivalent is documented for the room's Show Take notes button setting.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Teams Rooms\" \"Take notes\" \"XML\"; site:learn.microsoft.com/microsoftteams/rooms/xml-config-file \"notes\" \"Facilitator\". Read room feature, Pro settings and XML reference; no button automation setting found.",
+      "quote": "Searched: \"Teams Rooms\" \"Facilitator\" \"PowerShell\" \"button\"; \"Teams Rooms\" \"Take notes\" \"XML\". Opened learn.microsoft.com/microsoftteams/rooms/xml-config-file, /pro-portal-settings and /facilitator-teams-rooms; no script or API for this setting.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 63,
-      "where": "controls[0].note; Risk assessment: Change & support",
+      "n": 73,
+      "where": "controls[0].note; Risk assessment: Change & support; Governance guidance",
       "type": "default",
       "claim": "Show Take notes button on the home screen is enabled by default.",
       "status": "supported",
@@ -722,76 +826,32 @@
       "fix": null
     },
     {
-      "n": 64,
-      "where": "controls[0].note; Governance controls",
+      "n": 74,
+      "where": "controls[0].note; Governance controls: final paragraph",
       "type": "role",
-      "claim": "Changing Pro Management portal device settings requires Rooms Management RBAC permissions.",
+      "claim": "Pro Management portal device configuration requires Rooms Management RBAC permissions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/pro-portal-settings",
-      "quote": "you can configure settings for Microsoft Teams devices ... provided you have the necessary role-based access control permissions for Rooms Management.",
+      "quote": "you can configure settings for Microsoft Teams devices (Teams Rooms on Windows, Teams Rooms on Android, Teams Panels and Teams Phones), provided you have the necessary role-based access control permissions for Rooms Management.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 65,
-      "where": "controls[1].ui; Governance controls table",
+      "n": 75,
+      "where": "controls[1].ui; Governance controls: second row",
       "type": "admin-path",
-      "claim": "Facilitator is allowed or blocked in Teams admin center at Teams apps > Manage apps > Facilitator > Actions menu > Allow or Block.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
-      "quote": "select Teams apps > Manage apps. ... Select Facilitator from the app list. ... In the actions menu, select Allow or Block.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 66,
-      "where": "controls[1].api; Governance controls table",
-      "type": "absence",
-      "claim": "The Facilitator app's API and automation control is Not yet documented.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp?view=teams-ps",
-      "quote": "This cmdlet updates app state and app available values for the Microsoft Teams app. ... Update-M365TeamsApp -Id 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b -IsBlocked $true",
-      "severity": "blocker",
-      "fix": "Remove the Facilitator app row from controls and the rendered controls table rather than printing 'Not yet documented' for a documented cmdlet with inconsistent syntax and examples. Retain the existing prose about the Teams admin center steps and the reference inconsistency; do not reintroduce an unverified runnable blocking command."
-    },
-    {
-      "n": 67,
-      "where": "controls[1].note",
-      "type": "default",
-      "claim": "Facilitator is allowed by default.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
-      "quote": "Facilitator is allowed by default. However, if all apps are blocked for your organization, Facilitator is also blocked.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 68,
-      "where": "controls[1].note; Governance controls table",
-      "type": "behaviour",
-      "claim": "The Update-M365TeamsApp reference is internally inconsistent about its example and required parameters.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp?view=teams-ps",
-      "quote": "Syntax: -AppAssignmentType <String> -OperationType <String> ... Example 3: Update-M365TeamsApp -Id 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b -IsBlocked $true. Unblocks Bookings app",
-      "severity": "minor",
-      "fix": "Cite https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp?view=teams-ps for the statement about inconsistent syntax and examples."
-    },
-    {
-      "n": 69,
-      "where": "controls[2].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Meeting transcription is configured in Teams admin center at Meetings > Meeting policies > policy > Transcription.",
+      "claim": "The general meeting transcription setting is at Teams admin center > Meetings > Meeting policies > policy > Transcription.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
-      "quote": "go to Meetings > Meeting policies. ... Select the policy that you want to edit or create a new one. ... Toggle Transcription On or Off.",
+      "quote": "go to Meetings > Meeting policies.\nSelect the policy that you want to edit or create a new one.\nToggle Transcription On or Off.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 70,
-      "where": "controls[2].api; Governance controls table",
+      "n": 76,
+      "where": "controls[1].api; Governance controls: second row",
       "type": "command",
-      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -AllowTranscription $true enables transcription in the specified meeting policy.",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -AllowTranscription $true enables transcription in a meeting policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
       "quote": "Set-CsTeamsMeetingPolicy -Identity \"Your Policy Name\" -AllowTranscription $true",
@@ -799,76 +859,98 @@
       "fix": null
     },
     {
-      "n": 71,
-      "where": "controls[2].note; Governance controls; Open questions",
+      "n": 77,
+      "where": "controls[1].note; Governance controls; Open questions",
       "type": "absence",
-      "claim": "The room setup documentation does not name which meeting policy the room account's in-person notes use.",
+      "claim": "The room-note setup links the general transcription policy documentation without identifying a specific effective room-account policy.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Teams Rooms\" \"Facilitator\" \"policy\" \"in-person\". Read rooms/facilitator-teams-rooms, meeting-transcription-captions and MC1307512. They require transcription and link general meeting policies but do not identify a specific in-person room policy.",
+      "quote": "Searched: \"Facilitator\" \"Teams Rooms\" \"policy\" \"transcription\". Opened learn.microsoft.com/microsoftteams/rooms/facilitator-teams-rooms and /microsoftteams/meeting-transcription-captions; setup links the general policy and does not specify the effective policy for unscheduled room notes.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 72,
-      "where": "controls[3].ui; Governance controls table",
+      "n": 78,
+      "where": "controls[2].ui; Governance controls: third row",
       "type": "admin-path",
-      "claim": "The general Loop Cloud Policy path is Customization > Policy Management > policy > Choose the scope > Configure Settings > Create and view Loop files in Microsoft apps that support Loop.",
+      "claim": "The qualified general Cloud Policy control is at config.office.com > Customization > Policy Management > policy > Choose the scope > Configure Settings > Create and view Loop files in Microsoft apps that support Loop.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/loop/loop-components-configuration",
-      "quote": "Select Customization ... Select Policy Management. ... Create a new policy configuration or edit an existing one. ... Choose the scope ... Configure Settings ... Create and view Loop files in Microsoft apps that support Loop",
+      "quote": "Select Customization from the left pane.\nSelect Policy Management.\nCreate a new policy configuration or edit an existing one.\nFrom the Choose the scope dropdown list\nIn Configure Settings\nCreate and view Loop files in Microsoft apps that support Loop",
       "severity": null,
       "fix": null
     },
     {
-      "n": 73,
-      "where": "controls[3].api; Governance controls table",
+      "n": 79,
+      "where": "controls[2].api; Governance controls: third row",
       "type": "command",
-      "claim": "Set-SPOTenant -IsCollabMeetingNotesFluidEnabled $true is a documented SharePoint PowerShell control for collaborative meeting notes.",
+      "claim": "SharePoint Online PowerShell Set-SPOTenant -IsCollabMeetingNotesFluidEnabled $true enables collaborative meeting notes.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/loop/loop-components-configuration",
-      "quote": "Teams channel meeting (Teams In Meeting experience and Teams Classic Calendar) | SharePoint property Set-SPOTenant -IsCollabMeetingNotesFluidEnabled $true",
+      "quote": "Collaborative meeting notes in Teams | SharePoint PowerShell | Set-SPOTenant -IsCollabMeetingNotesFluidEnabled\nSharePoint property Set-SPOTenant -IsCollabMeetingNotesFluidEnabled $true",
       "severity": null,
       "fix": null
     },
     {
-      "n": 74,
-      "where": "Scope; controls[3].note; Governance controls",
-      "type": "record",
-      "claim": "MC1307512 explicitly requires IsLoopEnabled to be enabled.",
-      "status": "supported",
-      "source": "Message Center post MC1307512",
-      "quote": "Verify Loop components are enabled:- IsLoopEnabled- IsCollabMeetingNotesFluidEnabled",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 75,
-      "where": "Scope; controls[3].note; Governance guidance; Governance controls",
-      "type": "record",
-      "claim": "MC1307512 explicitly requires IsCollabMeetingNotesFluidEnabled to be enabled.",
-      "status": "supported",
-      "source": "Message Center post MC1307512",
-      "quote": "Verify Loop components are enabled:- IsLoopEnabled- IsCollabMeetingNotesFluidEnabled",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 76,
-      "where": "controls[3].scope; Governance controls",
+      "n": 80,
+      "where": "controls[2].scope; Governance controls: penultimate paragraph",
       "type": "applicability",
-      "claim": "The Loop collaborative meeting notes property applies tenant-wide and cannot be configured per user.",
+      "claim": "The IsCollabMeetingNotesFluidEnabled control applies tenant-wide and cannot be configured per user.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/loop/loop-components-configuration",
-      "quote": "IsCollabMeetingNotesFluidEnabled ... This property controls the collaborative meeting notes creation and integration in Microsoft Teams. It applies to the entire tenant and can't be configured at the user level.",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "You can manage this control using the IsCollabMeetingNotesFluidEnabled setting in PowerShell. This setting applies to your entire tenant and can't be configured at the user level.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 77,
-      "where": "Governance controls",
+      "n": 81,
+      "where": "Governance controls: paragraph immediately after table",
+      "type": "absence",
+      "claim": "Microsoft does not describe the button's behaviour when one of the prerequisites is missing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Facilitator\" \"Take notes\" \"prerequisites\" \"missing\". Opened learn.microsoft.com/microsoftteams/rooms/facilitator-teams-rooms and /microsoftteams/facilitator-teams; the room page explains the entry point after prerequisites are met, not failure behaviour.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 82,
+      "where": "Governance controls: Facilitator app paragraph",
+      "type": "admin-path",
+      "claim": "Facilitator can be allowed or blocked at Teams admin center > Teams apps > Manage apps > Facilitator > Actions menu > Allow or Block.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "In the left rail navigation, select Teams apps > Manage apps.\nIn the apps list's search box, search for Facilitator.\nSelect Facilitator from the app list.\nIn the actions menu, select Allow or Block.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 83,
+      "where": "Governance controls: Facilitator app paragraph",
+      "type": "default",
+      "claim": "Facilitator is allowed by default, subject to the briefing's prerequisite configuration caveat.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "Facilitator is allowed by default. However, if all apps are blocked for your organization, Facilitator is also blocked.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 84,
+      "where": "Governance controls: Update-M365TeamsApp caveat",
+      "type": "behaviour",
+      "claim": "The Update-M365TeamsApp reference is internally inconsistent between required syntax and its examples.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp?view=teams-ps",
+      "quote": "Syntax: -AppAssignmentType <String> -OperationType <String>\nExample 3: Update-M365TeamsApp -Id 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b -IsBlocked $true\nUnblocks Bookings app",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 85,
+      "where": "controls[2].note; Governance controls: Loop explanation",
       "type": "applicability",
-      "claim": "The SharePoint collaborative meeting notes property does not apply to Teams New Calendar notes.",
+      "claim": "IsCollabMeetingNotesFluidEnabled does not apply to collaborative meeting notes in Teams New Calendar, where Cloud Policy applies instead.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/loop/loop-components-configuration",
       "quote": "The SharePoint organization property doesn't apply to collaborative meeting notes in Teams New Calendar, see Settings management in Cloud Policy.",
@@ -876,40 +958,18 @@
       "fix": null
     },
     {
-      "n": 78,
-      "where": "controls[3].note; Governance controls",
+      "n": 86,
+      "where": "controls[2].note; Governance controls: Loop explanation",
       "type": "applicability",
-      "claim": "Cloud Policy is documented for Teams New Calendar rather than as a replacement for the room prerequisites named by MC1307512.",
+      "claim": "The Cloud Policy control is documented for Teams New Calendar, not as a substitute for the room prerequisites.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/loop/loop-components-configuration",
-      "quote": "Create and view Loop files in Microsoft apps that support Loop ... This setting applies to: Outlook; Teams New Calendar; OneNote; Whiteboard ... This setting does NOT apply to: ... Teams integration",
+      "quote": "This setting applies to:\nOutlook\nTeams New Calendar\nOneNote\nWhiteboard\nThis setting does NOT apply to:\nLoop workspaces\nTeams integration (see Settings management for Loop components in Teams)",
       "severity": null,
       "fix": null
     },
     {
-      "n": 79,
-      "where": "Governance controls: opening paragraph after table",
-      "type": "absence",
-      "claim": "There is no single tenant switch for in-person notes.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: \"Teams Rooms\" \"Facilitator\" \"policy\" \"in-person\". Read room setup, facilitator-teams, Loop policies and MC1307512. No categorical absence stated; Facilitator documents a tenant-wide IsCollabMeetingNotesFluidEnabled control.",
-      "severity": "blocker",
-      "fix": "Replace 'There is no single tenant switch for in-person notes: availability is the combination of' with 'Availability depends on'. Retain the existing prerequisite list; do not imply that disabling one tenant-wide prerequisite cannot prevent availability."
-    },
-    {
-      "n": 80,
-      "where": "Governance controls: opening paragraph after table",
-      "type": "absence",
-      "claim": "Microsoft has not described the Take notes button's behaviour when a prerequisite is missing.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Teams Rooms\" \"Facilitator\" \"prerequisites\" \"button\" disabled. Read room setup, general Facilitator setup and MC1307512. The room page states the entry point appears after prerequisites are met, not what the button does when one is missing.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 81,
+      "n": 87,
       "where": "Governance controls: final paragraph",
       "type": "behaviour",
       "claim": "Pro Management portal settings changes can be applied now.",
@@ -920,7 +980,7 @@
       "fix": null
     },
     {
-      "n": 82,
+      "n": 88,
       "where": "Governance controls: final paragraph",
       "type": "behaviour",
       "claim": "Pro Management portal settings changes can be scheduled for the nightly maintenance window.",
@@ -931,23 +991,23 @@
       "fix": null
     },
     {
-      "n": 83,
-      "where": "Risk assessment: Autonomy",
-      "type": "absence",
-      "claim": "The reviewed pages describe no trigger for in-person room notes other than tapping Take notes.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams Rooms Facilitator Show Take notes button XML PowerShell API notification transcription prerequisites missing. Read rooms/facilitator-teams-rooms, facilitator-teams and MC1307512; the in-person initiation described is tapping Take notes.",
-      "severity": null,
-      "fix": null
+      "n": 89,
+      "where": "Governance guidance: Before rollout, first bullet; controls",
+      "type": "consistency",
+      "claim": "The checklist tells administrators to check Facilitator app availability, but that control has no row in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Confirm in the Teams admin center that the Facilitator app is allowed for the room resource accounts, including any People and Groups scope.\nControls table: Take notes button; Meeting transcription; Loop collaborative meeting notes.",
+      "severity": "minor",
+      "fix": "Remove the first Before rollout checklist bullet about checking Facilitator app availability, which has no corresponding controls-table row; retain the documented app steps in the Governance controls notes."
     }
   ],
   "precheck": {
-    "at": "2026-11-18T04:23:53.555Z",
+    "at": "2026-11-18T05:16:43.232Z",
     "summary": {
-      "links": 8,
+      "links": 9,
       "unreachable": 0,
-      "uiPaths": 4,
+      "uiPaths": 3,
       "uiPathsWithMissingWords": 0,
       "apiCalls": 2,
       "apiCallsNotOnPage": 0,
@@ -990,6 +1050,11 @@
         "status": 200
       },
       {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp?view=teams-ps",
+        "ok": true,
+        "status": 200
+      },
+      {
         "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1307512",
         "ok": true,
         "status": 200
@@ -1014,21 +1079,6 @@
       {
         "index": 1,
         "side": "ui",
-        "governs": "Whether the Facilitator app is allowed or blocked",
-        "docs": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
-        "reachable": true,
-        "segments": [
-          "Teams apps",
-          "Manage apps",
-          "Facilitator",
-          "Actions menu",
-          "Allow or Block"
-        ],
-        "missing": []
-      },
-      {
-        "index": 2,
-        "side": "ui",
         "governs": "Meeting transcription for users and room accounts",
         "docs": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
         "reachable": true,
@@ -1040,7 +1090,7 @@
         "missing": []
       },
       {
-        "index": 2,
+        "index": 1,
         "side": "api",
         "governs": "Meeting transcription for users and room accounts",
         "docs": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
@@ -1049,7 +1099,7 @@
         "found": true
       },
       {
-        "index": 3,
+        "index": 2,
         "side": "ui",
         "governs": "Loop collaborative meeting notes in Teams",
         "docs": "https://learn.microsoft.com/microsoft-365/loop/loop-components-configuration",
@@ -1064,7 +1114,7 @@
         "missing": []
       },
       {
-        "index": 3,
+        "index": 2,
         "side": "api",
         "governs": "Loop collaborative meeting notes in Teams",
         "docs": "https://learn.microsoft.com/microsoft-365/loop/loop-components-configuration",
@@ -1080,6 +1130,12 @@
       "date": "2026-11-18",
       "status": "held",
       "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-18",
+      "status": "held",
+      "version": 2,
       "model": "gpt-6.1-sol"
     }
   ]

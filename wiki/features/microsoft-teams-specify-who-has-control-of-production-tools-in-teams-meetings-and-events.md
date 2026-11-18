@@ -18,7 +18,7 @@ defaultState: "on"
 action: "prepare"
 licensing:
   model: "unknown"
-  notes: "Not yet published. The roadmap record, Message Center post MC1443520 and the Microsoft Support page on production tools name no licence or meter for this option."
+  notes: "Microsoft publishes licensing for the event capabilities this option controls: Manage what attendees see is an advanced event feature, available with licences including Office 365 E1, E3 and E5 and Microsoft 365 E3, E5 and E7. Separate licensing or a meter for the new dropdown is not specified."
 audiences: ["m365-admin","service-owner","change-adoption"]
 tags: ["teams","teams-events","meeting-policy","adoption","gcc","gcc-high","dod"]
 sources:
@@ -36,6 +36,12 @@ sources:
     kind: "learn"
   - title: "Set-CsTeamsEventsPolicy"
     url: "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy"
+    kind: "learn"
+  - title: "Teams events licensing overview"
+    url: "https://learn.microsoft.com/microsoftteams/events-licensing"
+    kind: "learn"
+  - title: "Meetings and events feature and capacity comparison"
+    url: "https://learn.microsoft.com/microsoftteams/meetings-events-feature-comparison"
     kind: "learn"
 videos: []
 related: ["meeting-policy","microsoft-teams-chat-for-organizers-and-presenters-in-structured-meetings-and-webinars-on","microsoft-teams-external-presenter-support-for-event-group-chat"]
@@ -62,26 +68,30 @@ changes:
     note: "First briefing for roadmap item 567305, based on the roadmap record, MC1443520 and the town hall documentation."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 48 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-18"
+    note: "Corrected licensing: Microsoft publishes licences for the advanced event features this option controls; noted Learn's feature comparison differs from the notice; Targeted Release wording now says it was scheduled."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 2 of 60 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-18"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 48
-  confirmed: 47
-  unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "dd9be4564a986774858e656617c4fc25"
+  claims: 60
+  confirmed: 58
+  unconfirmed: 2
+  contradicted: 0
+  attempts: 0
+  hash: "20d64a577d21f2c33fb3397c297c48b0"
 ---
 
 ## What's changing
 
 Teams adds a meeting option called **Who has control of production tools** for meetings with presenters and webinars. The roadmap item says organisers use it to designate who has access to the controls in Manage what attendees see and to the Green Room during the event.
 
-Message Center post MC1443520 says the option is enabled by default for eligible meetings with presenters and webinars, and that organisers can separate production responsibilities from presenter responsibilities. It names the Teams desktop app and the Teams web app as the platforms; the roadmap record lists Desktop, Mac and Web. The post does not say which people hold production control before an organiser changes the option.
+Message Center post MC1443520 says the option is enabled by default for eligible meetings with presenters and webinars, and that organisers can separate production responsibilities from presenter responsibilities. It names the Teams desktop app and the Teams web app as the platforms; the roadmap record lists Desktop, Mac and Web. The post does not say which people hold production control before an organiser changes the option. Microsoft Learn currently differs from the notice: its feature comparison marks this option unavailable for meetings and events up to 1,000 attendees, and available for events optimized for large audiences.
 
 Microsoft's Support page on production tools describes the same option for town halls. It lets an organiser pick **Organizer and co-organizers**, **Organizer, co-organizers, and presenters**, or **Specific people**, and says people with control can start the event, manage what attendees see and end the event. That page does not mention webinars or meetings with presenters, so treat it as the closest documentation of the behaviour, not a description of this item.
 
@@ -110,7 +120,7 @@ The wiki's view is that service owners should expect questions from event teams 
 
 ## Cost and licensing
 
-No licence, meter or price is named for this option in the roadmap record, MC1443520 or the Microsoft Support page on production tools, and Microsoft Learn documents none at the time of writing (November 2026). Licensing is not yet published.
+Microsoft publishes licensing for the event capabilities this option controls: Manage what attendees see is an advanced event feature, available with licences including Office 365 E1, E3 and E5 and Microsoft 365 E3, E5 and E7 ([Teams events licensing overview](https://learn.microsoft.com/microsoftteams/events-licensing)). Separate licensing or a meter for the new production-control dropdown is not specified in the roadmap record, MC1443520 or the Microsoft Support page on production tools.
 
 The only cost the sources show is indirect: MC1443520 recommends informing organisers, updating internal training or event-production documentation and reviewing live event workflows.
 
@@ -119,7 +129,7 @@ The only cost the sources show is indirect: MC1443520 recommends informing organ
 - **Who sees it:** per MC1443520, organisers of meetings with presenters and webinars, and the designated production staff who support live events.
 - **Clouds:** the roadmap record lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.
 - **Platforms:** the roadmap record lists Desktop, Mac and Web; MC1443520 names the Teams desktop app and the Teams web app.
-- **Rollout:** Targeted Release began mid-August 2026; General Availability was due to begin late August 2026 and complete by end of October 2026 (MC1443520, updated 2026-09-22). The roadmap record still shows status Rolling out.
+- **Rollout:** Targeted Release was scheduled to begin in mid-August 2026; General Availability was due to begin late August 2026 and complete by end of October 2026 (MC1443520, updated 2026-09-22). The roadmap record still shows status Rolling out.
 - **Prerequisites:** none are listed in the roadmap record or MC1443520. The town hall Support page says **Specific people** must already be added to the event.
 
 ## Governance guidance
@@ -158,19 +168,17 @@ The organiser setting is set per event, before or during the event. The path in 
 - Who holds production control in a meeting with presenters or a webinar before the organiser changes the option, and what does "enabled by default" mean for the dropdown? Watch MC1443520 and the Teams events documentation.
 - Will Microsoft add a tenant policy to restrict or set a default for who can control production tools? The town hall comparison lists admins as having no control.
 - Do the town hall choices (**Organizer and co-organizers**, **Organizer, co-organizers, and presenters**, **Specific people**) apply unchanged to webinars and meetings with presenters?
-- Does the option need a licence or have a licence-dependent feature, such as Teams Premium? None is named at the time of writing (November 2026).
+- Does the new production-control dropdown carry separate licensing or a meter? None is specified at the time of writing (November 2026).
 
 <!-- rationale
 risk: Low. The option only changes which people in an event already hold production controls, and Microsoft's notice says it is enabled by default; what the default setting of the dropdown is has not been stated.
-cost: Low. The only cost the sources show is admin and organiser time for communication and training; no licence or meter is named, and licensing is not yet published.
+cost: Low. The cost the sources show is admin and organiser time for communication and training. Separate licensing or a meter for the new dropdown is not specified; the event features it controls are licensed as advanced event features.
 impact: Medium. Organisers of meetings with presenters and webinars, and the production staff they designate, will see a new option in meeting options; other users will not.
 -->
 
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.model and notes; Cost and licensing; Open questions; rationale: cost / licensing: Licensing is not yet published, and Microsoft Learn documents no licensing for the option's capabilities. | Found: Advanced event features: These licenses provide the full Teams events feature set. They include the foundational capabilities plus advanced features such as event workflows, customization, production controls, monitoring, insights, and higher engagement event capacity. | Fix: Retain licensing.model 'unknown' only for separate licensing of the new dropdown. Replace the unqualified unpublished-licensing statements in licensing.notes, Cost and licensing, Open questions and the cost rationale with: 'Microsoft publishes licensing for the event capabilities this option controls: Manage what attendees see is an advanced event feature, available with licences including Office 365 E1, E3 and E5 and Microsoft 365 E3, E5 and E7. Separate licensing or a meter for the new production-control dropdown is not specified.' Cite https://learn.microsoft.com/microsoftteams/events-licensing. Retain the low cost rating for the documented communication and training work. | Source: https://learn.microsoft.com/microsoftteams/events-licensing
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] title; What's changing; Scope / record: Microsoft is introducing Who has control of production tools for meetings with presenters and webinars. | Found: Microsoft Teams is introducing a new meeting option for meetings with presenters and webinars that allows organizers to specify who has control of production tools during an event. | Fix: Add: 'Microsoft Learn currently differs from the notice: its feature comparison marks this option unavailable for meetings and events up to 1,000 attendees, and available for events optimized for large audiences.' Cite https://learn.microsoft.com/microsoftteams/meetings-events-feature-comparison.
-- [supported, minor] What's changing; Scope: Rollout / record: Targeted Release began in mid-August 2026. | Found: Targeted Release: Beginning in mid-August 2026 and expect to complete by late August 2026 | Fix: Replace 'Targeted Release began mid-August 2026' in Scope with 'Targeted Release was scheduled to begin in mid-August 2026'; the notice gives a schedule, not confirmation of the actual start.
+- [unsupported, minor] rationale: impact / behaviour: Designated production staff will see the new option in meeting options. | Found: Searched: Teams production tools organizer control default setting meeting options policy; Teams webinar production tools control organizer licensing. Read MC1443520 and town hall Support article: staff are affected, but only organisers are explicitly said to see the new option. | Fix: Replace the impact rationale with: 'Medium. Organisers of meetings with presenters and webinars will see a new option in meeting options; Microsoft's notice also identifies designated production staff as affected.'
+- [unsupported, minor] rationale: impact / behaviour: Users other than organisers and designated production staff will not see the new option. | Found: Searched: Teams production tools organizer control default setting meeting options policy; Teams production tools Specific people webinar default production control. MC1443520 identifies affected groups; neither it nor the town hall article establishes an exhaustive dropdown visibility rule. | Fix: Remove 'other users will not' from the impact rationale.
 -->

@@ -12,7 +12,7 @@ platforms: ["Desktop"]
 targetDate: "March CY2027"
 previewDate: "January CY2027"
 risk: "medium"
-cost: "low"
+cost: "variable"
 impact: "medium"
 defaultState: "unknown"
 action: "review"
@@ -25,6 +25,12 @@ sources:
   - title: "Microsoft 365 Roadmap 579975"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=579975"
     kind: "roadmap"
+  - title: "Types of Power Automate licenses"
+    url: "https://learn.microsoft.com/power-platform/admin/power-automate-licensing/types"
+    kind: "learn"
+  - title: "Pay-as-you-go meters"
+    url: "https://learn.microsoft.com/power-platform/admin/pay-as-you-go-meters"
+    kind: "learn"
   - title: "Trigger desktop flows from cloud flows"
     url: "https://learn.microsoft.com/power-automate/desktop-flows/trigger-desktop-flows"
     kind: "learn"
@@ -40,14 +46,8 @@ sources:
   - title: "New-DlpPolicy"
     url: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy"
     kind: "learn"
-  - title: "Pay-as-you-go meters"
-    url: "https://learn.microsoft.com/power-platform/admin/pay-as-you-go-meters"
-    kind: "learn"
   - title: "Run desktop flows via URL or desktop shortcuts"
     url: "https://learn.microsoft.com/power-automate/desktop-flows/run-desktop-flows-url-shortcuts"
-    kind: "learn"
-  - title: "Types of Power Automate licenses"
-    url: "https://learn.microsoft.com/power-platform/admin/power-automate-licensing/types"
     kind: "learn"
 videos: []
 related: ["data-policies","power-automate-cloud-flows-share-process-license-capacity-across-workflows"]
@@ -81,19 +81,23 @@ changes:
     note: "Correction: data policy admin path now includes Settings; data policy caveat narrowed; absence of a meter replaced with the documented pay-as-you-go desktop flow meter; cloud-flow route no longer described as the only one; licensing qualified."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 56 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-18"
+    note: "Correction: cost rated variable with the pay-as-you-go flow-run meter named; the unattended licensing rule is stated as general, with direct-trigger licensing not yet published."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 65 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-18"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 56
-  confirmed: 54
+  claims: 65
+  confirmed: 65
   unconfirmed: 0
-  contradicted: 2
-  attempts: 2
-  hash: "bb298ef804731b9e95d44d9d5405fea5"
+  contradicted: 0
+  attempts: 0
+  hash: "50e86df68417c2840e3797ce01a509de"
 ---
 
 ## What's changing
@@ -133,7 +137,7 @@ Microsoft has not stated what happens on arrival, so no source says existing flo
 
 Licensing for direct triggers is not yet published, and the roadmap item names no licence or meter.
 
-For desktop flows started from a cloud flow, the Learn page "Trigger desktop flows from cloud flows" lists a prerequisite of the appropriate licence for attended runs, or an unattended add-on for unattended runs, held by the creator of the connection. The licensing overview instead says to subscribe to Power Automate Process licenses or enable pay-as-you-go for unattended desktop flows. Whether the same rule applies when no cloud flow is involved is not yet published.
+For desktop flows started from a cloud flow, the Learn page "Trigger desktop flows from cloud flows" lists a prerequisite of the appropriate licence for attended runs, or an unattended add-on for unattended runs, held by the creator of the connection. The licensing overview instead says to subscribe to Power Automate Process licenses or enable pay-as-you-go for unattended desktop flows. The overview states this rule for unattended desktop flows generally, not just cloud-triggered runs; direct-trigger-specific licensing changes have not been published.
 
 Microsoft documents the Power Automate flow-run meter in preview for desktop flows in pay-as-you-go environments; attended charges depend on licence entitlements and unattended runs are charged per run (Learn page "Pay-as-you-go meters"). No direct-trigger-specific rate or exception is published. Indirect cost is admin and maker time to review the feature once it is documented.
 
@@ -186,13 +190,6 @@ Learn says tenant-level data policies need the Power Platform Administrator role
 
 <!-- rationale
 risk: Medium. The roadmap describes events starting desktop flows with no cloud flow in between, and Microsoft Learn documents no control for it yet, so how existing controls apply to it is unconfirmed.
-cost: Low. Direct-trigger-specific pricing is not published; existing desktop-flow licensing and pay-as-you-go rules are documented. The cloud-triggering page names a licence or unattended add-on; the licensing overview names Process licenses or pay-as-you-go.
+cost: Variable. The preview Power Automate flow-run meter charges desktop flows in pay-as-you-go environments; attended charges depend on licence entitlements and unattended runs are charged per run. No direct-trigger-specific rate or exception is published.
 impact: Medium. Makers and RPA developers who build desktop flows are the people affected; the roadmap names no change for other users.
--->
-
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Cost and licensing: Whether the same rule applies when no cloud flow is involved / licensing: Whether the preceding unattended desktop-flow licensing rule applies without a cloud flow is not yet published. | Found: For additional capacity, running desktop flows unattended, or licensing flows on their own without use licenses, subscribe to Power Automate Process licenses or enable pay-as-you-go. | Fix: Replace 'Whether the same rule applies when no cloud flow is involved is not yet published.' with 'The overview states this rule for unattended desktop flows generally, not just cloud-triggered runs; direct-trigger-specific licensing changes have not been published.' | Source: https://learn.microsoft.com/power-platform/admin/power-automate-licensing/types
-- [contradicted, blocker] front matter: cost; rationale: cost / consistency: Cost is low, meaning indirect cost only, although general desktop-flow licensing and pay-as-you-go rules are documented. | Found: Desktop flow runs in a pay-as-you-go environment are charged as follows: ... Unattended runs are charged at $3.00 per run regardless of any capacity assigned to the environment. | Fix: Set cost to 'variable'. Replace the cost rationale with 'Variable. The preview Power Automate flow-run meter charges desktop flows in pay-as-you-go environments; attended charges depend on licence entitlements and unattended runs are charged per run. No direct-trigger-specific rate or exception is published.' Keep licensing.model as 'unknown' for feature-specific licensing. | Source: https://learn.microsoft.com/power-platform/admin/pay-as-you-go-meters
 -->

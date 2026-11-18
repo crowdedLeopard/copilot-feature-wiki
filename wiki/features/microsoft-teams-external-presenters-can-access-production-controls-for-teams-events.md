@@ -43,6 +43,9 @@ sources:
   - title: "Teams events licensing overview"
     url: "https://learn.microsoft.com/microsoftteams/events-licensing"
     kind: "learn"
+  - title: "Meetings and events feature and capacity comparison"
+    url: "https://learn.microsoft.com/microsoftteams/meetings-events-feature-comparison"
+    kind: "learn"
 videos: []
 related: ["microsoft-teams-external-presenter-support-for-event-group-chat","meeting-policy","microsoft-teams-teams-events-attendance-and-engagement-report-policy"]
 controls:
@@ -85,19 +88,23 @@ changes:
     note: "New briefing: organisers can give federated and guest users production control; no admin control for it is documented, so existing events policy settings are listed as fallbacks."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 58 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-18"
+    note: "Corrected the licensing statement (event capabilities depend on the organiser's licence) and the event-type statement (the feature comparison lists the setting for events optimised for large audiences); updated open questions to match."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 65 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-18"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 58
-  confirmed: 56
+  claims: 65
+  confirmed: 65
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "c4f73f0181c54189f9f76ec32727d383"
+  contradicted: 0
+  attempts: 0
+  hash: "44f51da67c341d882133172ade153d32"
 ---
 
 ## What's changing
@@ -136,7 +143,7 @@ The decision sits with each organiser. The Teams events planning page lists "Who
 
 Microsoft has not published a licence requirement or price specific to external presenters holding production control (Not yet published). The roadmap record and MC1443517 name no licence and no meter.
 
-The Teams events licensing overview groups licences into Foundational and Advanced event features. It says Advanced event features include "production controls", and that to access the full set of Teams events features users must have a licence from the Advanced category. It lists Office 365 E1, E3, E5 and Microsoft 365 E3, E5, E7 for Enterprise. Whether that condition applies to the organiser, to the external presenter, or to both for this feature is not stated.
+The Teams events licensing overview groups licences into Foundational and Advanced event features. It says Advanced event features include "production controls", and that to access the full set of Teams events features users must have a licence from the Advanced category. It lists Office 365 E1, E3, E5 and Microsoft 365 E3, E5, E7 for Enterprise. Event capabilities depend on the organiser's licence; production controls are Advanced event features. Microsoft has not published a licence requirement specific to the external presenter holding production control.
 
 The indirect cost is admin and organiser time: briefing organisers, agreeing which vendors may be trusted and updating training. No meter is documented for this feature at the time of writing (November 2026).
 
@@ -144,7 +151,7 @@ The indirect cost is admin and organiser time: briefing organisers, agreeing whi
 
 The roadmap record lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD, on Desktop, Mac and Web, in Targeted Release and General Availability. MC1443517 gives the rollout windows quoted above.
 
-The notice says affected people are organisations that use Teams events, event organisers who work with external presenters, and federated (B2B) and guest users invited to events. It says organisers can grant production control to those users. Learn's production tools page describes town halls; whether the setting applies to every Teams event type is not stated.
+The notice says affected people are organisations that use Teams events, event organisers who work with external presenters, and federated (B2B) and guest users invited to events. It says organisers can grant production control to those users. Learn's production tools page describes town halls. Microsoft's feature comparison lists Who has control of production tools for events optimised for large audiences, not for the Events up to 1,000 attendees category.
 
 An external presenter must still be added to the event first: the Learn page says that for the **Specific people** option people must already be added to the town hall to appear in the search field.
 
@@ -186,8 +193,7 @@ The two events policy rows are existing controls an admin can use today. Join ve
 ## Open questions
 
 - Does Microsoft plan an admin setting or policy parameter to restrict external production control? Watch Message center MC1443517 and the Teams events planning page.
-- Which licence must the organiser, and the external presenter, hold for this feature? Watch the Teams events licensing overview.
-- Does the setting apply to events with up to 1,000 attendees as well as events optimised for large audiences? The Learn page describes town halls only.
+- Which licence, if any, must the external presenter hold to receive production control? Watch the Teams events licensing overview.
 - Does join verification apply to federated and guest users given production control, or only to unverified external presenters? Watch the join verification page.
 - Will the General Availability window finish by late November 2026 as MC1443517 now states, given it has moved before?
 
@@ -197,9 +203,9 @@ cost: Low. The only cost the sources show is admin and organiser time; licensing
 impact: Low. Only organisers who work with external producers and the presenters they pick notice it, and Microsoft's notice says existing events and configurations are not changed automatically.
 -->
 
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Cost and licensing: organiser applicability; Open questions: licensing / licensing: Whether the Advanced event features licensing condition applies to the organiser is not stated. | Found: Event capabilities and attendee capacity vary based on the organizer's license. ... Organizers with a license in the Advanced event features category have all foundational event capabilities plus the following advanced event features. | Fix: Replace 'Whether that condition applies to the organiser, to the external presenter, or to both for this feature is not stated' with 'Event capabilities depend on the organiser's licence; production controls are Advanced event features. Microsoft has not published a licence requirement specific to the external presenter holding production control.' In Open questions, replace the licensing question with 'Which licence, if any, must the external presenter hold to receive production control?' Keep the external-presenter uncertainty, not uncertainty about the organiser. Source: https://learn.microsoft.com/microsoftteams/events-licensing. | Source: https://learn.microsoft.com/microsoftteams/events-licensing
-- [contradicted, blocker] Scope: event-type uncertainty; Open questions: events up to 1,000 attendees / absence: Microsoft has not stated whether the production-tools setting applies to events up to 1,000 attendees as well as events optimised for large audiences. | Found: Feature | Meetings | Events up to 1,000 attendees | Events optimized for large audiences ... Who has control of production tools | [x for no.] | [x for no.] | [checkmark for yes.] | Fix: Replace the event-type uncertainty in Scope with 'Microsoft's feature comparison lists Who has control of production tools for events optimised for large audiences, not for the Events up to 1,000 attendees category.' Remove the corresponding Open questions bullet. Add https://learn.microsoft.com/microsoftteams/meetings-events-feature-comparison to sources. Do not equate the event category with a prohibition on smaller town halls. | Source: https://learn.microsoft.com/microsoftteams/meetings-events-feature-comparison
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Risk assessment: Data exposure / behaviour: Production controllers can bring shared content onto the live stage. | Found: Only participants with control of production tools can bring the shared window on screen afterwards | Fix: Add https://support.microsoft.com/office/manage-what-attendees-see-in-teams-meetings-19bfd690-8122-49f4-bc04-c2c5f69b4e16 to sources for the statement about putting shared content on the live stage. | Source: https://support.microsoft.com/office/manage-what-attendees-see-in-teams-meetings-19bfd690-8122-49f4-bc04-c2c5f69b4e16
+- [supported, minor] controls[1].api; Governance controls table / command: Set-CsTeamsEventsPolicy -Identity <policy name> -ExternalPresenterJoinVerification EOTP requires external-presenter verification. | Found: To require external presenters to verify their identity before joining events created by organizers with this policy ... Set-CsTeamsEventsPolicy -Identity <policy name> -ExternalPresenterJoinVerification EOTP | Fix: Append to the join-verification row note: 'The join-verification guide documents this command; the Set-CsTeamsEventsPolicy reference still labels the policy preview and does not list -ExternalPresenterJoinVerification (November 2026).' Cite https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy for that discrepancy. | Source: https://learn.microsoft.com/microsoftteams/events-external-presenter-join-verification
 -->

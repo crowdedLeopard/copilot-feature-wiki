@@ -1,7 +1,7 @@
 ---
 title: "Copilot Studio: agent node runs an AI agent as a workflow step"
 slug: "microsoft-copilot-studio-invoke-agents-as-workflow-steps-with-the-agent-node"
-roadmapId: 566998
+roadmapId: 562222
 topic: "copilot-studio"
 products: ["Microsoft Copilot (Microsoft 365)","Microsoft Copilot Studio"]
 summary: "Makers can add an agent node to a Copilot Studio workflow so an AI agent decides and acts mid-flow. It uses Copilot Credits and no switch dedicated to the node is documented, so administrators should review credit and tool controls."
@@ -18,27 +18,18 @@ defaultState: "user-opt-in"
 action: "review"
 licensing:
   model: "consumption"
-  notes: "Copilot Studio bills workflow and agent usage in Copilot Credits. Microsoft Learn states that Microsoft 365 Copilot covers workflows only when run inside a standard harness agent by a licensed user. No agent-node rate is published at the time of writing (November 2026)."
+  notes: "Copilot Studio bills workflow and agent usage in Copilot Credits. Microsoft Learn states that a Microsoft 365 Copilot licence covers workflows run inside a standard harness agent by a licensed user, and that they are billed in all other cases. No agent-node rate is published at the time of writing (November 2026)."
 audiences: ["power-platform-admin","finops","maker","service-owner"]
 tags: ["copilot-studio","agents","automation","tools","mcp","knowledge-grounding","work-iq","human-in-the-loop","agent-evaluation","copilot-credits","usage-based-billing","copilot-harness"]
 sources:
-  - title: "Microsoft 365 Roadmap 566998"
-    url: "https://www.microsoft.com/microsoft-365/roadmap?id=566998"
+  - title: "Microsoft 365 Roadmap 562222"
+    url: "https://www.microsoft.com/microsoft-365/roadmap?id=562222"
     kind: "roadmap"
   - title: "Add an agent node to a workflow (Microsoft Copilot)"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-node-workflow"
     kind: "learn"
   - title: "Workflows overview (Microsoft Copilot)"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/flows-overview"
-    kind: "learn"
-  - title: "Edit and manage your workflow in the designer (Microsoft Copilot)"
-    url: "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/flow-designer"
-    kind: "learn"
-  - title: "Review agent readiness and status in Microsoft Copilot Studio (Microsoft Copilot)"
-    url: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-status"
-    kind: "learn"
-  - title: "Policy governance for Work IQ MCP"
-    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp"
     kind: "learn"
   - title: "Overview of usage-based billing"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview"
@@ -49,14 +40,20 @@ sources:
   - title: "Tutorial: Manage Copilot Credits allocations programmatically"
     url: "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations"
     kind: "learn"
+  - title: "Entitlement Insight - Get Environment Resources"
+    url: "https://learn.microsoft.com/rest/api/power-platform/licensing/entitlement-insight/get-environment-resources"
+    kind: "learn"
   - title: "Configure data policies for agents"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention"
     kind: "learn"
   - title: "Advanced connector policies"
     url: "https://learn.microsoft.com/power-platform/admin/advanced-connector-policies"
     kind: "learn"
-  - title: "Entitlement Insight - Get Environment Resources"
-    url: "https://learn.microsoft.com/rest/api/power-platform/licensing/entitlement-insight/get-environment-resources"
+  - title: "Review agent readiness and status in Microsoft Copilot Studio (Microsoft Copilot)"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-status"
+    kind: "learn"
+  - title: "Policy governance for Work IQ MCP"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp"
     kind: "learn"
 videos: []
 related: ["copilot-credits","data-policies","mcp","work-iq"]
@@ -99,7 +96,7 @@ controls:
 confidence: "medium"
 created: "2026-11-16"
 updated: "2026-11-18"
-roadmapModified: "2026-10-26T23:15:50"
+roadmapModified: "2026-11-17T00:31:56"
 changes:
   - date: "2026-11-16"
     note: "First briefing for this item: documents the agent node, its credit billing and the environment-level cost controls; no agent-node admin switch is documented."
@@ -157,32 +154,34 @@ changes:
     note: "Corrected after verification: removed the At rollout checklist step on testing and evaluating, which has no controls-table row."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 85 statements confirmed"
-version: 16
+  - date: "2026-11-18"
+    note: "Re-read the Learn pages on 18 November 2026: status, dates, credit billing, controls and default state are unchanged; removed a remark about the designer's publish procedure that was not re-confirmed."
+version: 17
 verification:
   status: "verified"
   date: "2026-11-18"
-  version: 16
+  version: 17
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 85
-  confirmed: 85
+  claims: 96
+  confirmed: 96
   unconfirmed: 0
   contradicted: 0
   attempts: 0
-  hash: "e8906c947cf99658709ac0acecbc67bf"
+  hash: "5d65c0f94e2a989664f06bb587e9b4dd"
 ---
 
 ## What's changing
 
 The agent node lets a maker hand one step of a Copilot Studio workflow to an AI agent that can reason, call tools and read knowledge sources before returning a result. The result becomes dynamic content that later steps can use. A maker adds it in Copilot Studio by opening **Workflows**, opening or creating a workflow (for an existing workflow, the **Build** tab) and selecting the **Agent** icon on the Add panel.
 
-The node takes one of two forms. **An existing agent** is a published agent that runs with the instructions, tools and knowledge it already has. **New agent for this workflow** is an inline agent defined inside the node: its instructions, optional tools (Model Context Protocol (MCP) servers and any Power Platform connector action), optional knowledge (public websites or SharePoint) and its output shape travel with the workflow, and it cannot be reused outside that workflow. The agent chooses at run time which attached tools to call, in what order and with what arguments. Two optional settings widen its reach: **Work IQ**, which lets the agent use the running user's recent work activity (mail, Teams, calendar, OneDrive and SharePoint context), and **Request human assistance when unsure**, which makes the agent email the connection owner and wait for a reply before continuing.
+The node takes one of two forms. **An existing agent** is a published agent that runs with the instructions, tools and knowledge it already has. **New agent for this workflow** is an inline agent defined inside the node: its instructions, optional tools (Model Context Protocol (MCP) servers and any Power Platform connector action), optional knowledge (public websites or SharePoint) and its output shape travel with the workflow, and it cannot be reused outside that workflow. The agent decides at run time which attached tools to call, in what order and with what arguments. Two optional settings widen its reach: **Work IQ**, which lets the agent use the running user's recent work activity (mail, Teams, calendar, OneDrive and SharePoint context), and **Request human assistance when unsure**, which makes the agent email the connection owner and wait for a reply before continuing.
 
 The roadmap item shows status Launched, with a target date of September CY2026 and a preview date of April CY2026. It lists General Availability and Preview as release phases, Worldwide (Standard Multi-Tenant) as the cloud and Web as the platform. The Learn page for the node does not say which part of the feature is still in preview, so the extent of each phase is unclear.
 
 ## Why it matters
 
-The agent node puts AI reasoning inside an otherwise defined sequence of workflow actions: one step can interpret an email or a document and then act through attached connectors. That moves decisions, and sometimes write actions, into flows that makers build and publish; the designer's documented publish procedure has no administrator review step. Microsoft Learn documents no tenant switch dedicated to the node, so the controls that remain are the ones around it: credit allocation per environment, data policies and Advanced Connector Policies for tools, who can build in the environment, and what the maker attaches.
+The agent node puts AI reasoning inside an otherwise defined sequence of workflow actions: one step can interpret an email or a document and then act through attached connectors. That moves decisions, and sometimes write actions, into flows that makers build. Microsoft Learn documents no tenant switch dedicated to the node, so the controls that remain are the ones around it: credit allocation per environment, data policies and Advanced Connector Policies for tools, who can build in the environment, and what the maker attaches.
 
 The cost effect arrives without a purchase order. Credits are charged to the environment that runs the workflow, and testing and evaluating an agent node can consume credits as well. A tenant that lets makers build workflows in an environment that can draw from the tenant credit pool can therefore spend shared prepaid capacity before anyone has agreed a budget.
 

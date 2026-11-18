@@ -12,7 +12,7 @@ platforms: ["Web"]
 targetDate: "March CY2027"
 previewDate: "January CY2027"
 risk: "medium"
-cost: "variable"
+cost: "low"
 impact: "low"
 defaultState: "unknown"
 action: "review"
@@ -57,9 +57,9 @@ controls:
       docs: "https://learn.microsoft.com/power-pages/configure/configure-site-settings"
     api:
       kind: "rest"
-      call: "POST [organization URI]/api/data/v9.2/mspp_sitesettings (mspp_name: Webapi/<table-name>/enabled, mspp_value: true, mspp_websiteid@odata.bind: website)"
+      call: "POST [organization URI]/api/data/v9.2/mspp_sitesettings with body {\"mspp_name\":\"Webapi/<table-name>/enabled\",\"mspp_value\":\"true\",\"mspp_websiteid@odata.bind\":\"<website-entity-reference>\"}"
       docs: "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/mspp_sitesetting"
-    note: "General control: Microsoft has not confirmed it applies to the SDK. Documented default for Webapi/<table-name>/enabled is False."
+    note: "General control: Microsoft has not confirmed it applies to the SDK. Creates the enabled setting only, not a complete Web API configuration. Documented default for Webapi/<table-name>/enabled is False."
   - governs: "Which records and privileges web roles get on each table"
     scope: "site"
     ui:
@@ -68,9 +68,9 @@ controls:
       docs: "https://learn.microsoft.com/power-pages/security/table-permissions"
     api:
       kind: "rest"
-      call: "POST [organization URI]/api/data/v9.2/powerpagecomponents (powerpagecomponenttype: 18, the Table Permission type)"
+      call: "GET [organization URI]/api/data/v9.2/powerpagecomponents"
       docs: "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/powerpagecomponent"
-    note: "General control: Microsoft has not confirmed it applies to the SDK. A table permission takes effect only when associated with a web role."
+    note: "General control: Microsoft has not confirmed it applies to the SDK. A table permission takes effect only when associated with a web role. API: read-only inventory; type 18 = Table Permission. Not a permission-setting call."
   - governs: "Whether the SDK can be switched off for a site or tenant"
     scope: "tenant"
     ui: null
@@ -85,19 +85,23 @@ changes:
     note: "First briefing for this roadmap item. Microsoft Learn has no SDK page yet, so the page rests on the roadmap text and existing Power Pages documentation."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 53 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-18"
+    note: "Corrected after the independent check: fixed the site-setting request body, replaced the table-permission API call with a read-only inventory call, set cost to low, and removed an unsupported monitoring step."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 53 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-18"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 53
-  confirmed: 49
+  confirmed: 53
   unconfirmed: 0
-  contradicted: 4
-  attempts: 1
-  hash: "7657caf33f98c7c0c4946b6dd5425059"
+  contradicted: 0
+  attempts: 0
+  hash: "6283cf641bdaebe31abd928ce8e0530f"
 ---
 
 ## What's changing
@@ -114,7 +118,7 @@ For context, Learn already documents turning a Power Pages site into a progressi
 
 Today a Power Pages site is a website. An SDK for native apps and kiosks would let teams put a Power Pages backend behind software that is installed on phones or shared devices, outside the browser your site-level controls were designed around. Microsoft has not stated whether the SDK is on or off by default, so plan on the basis that no source says existing sites change, and that makers or developers decide to adopt it.
 
-The decisions that fall to an administrator are the same ones that apply to any Power Pages data access: which Dataverse tables are exposed, which web roles can read or write them, and whose licence counts when a native app signs in. Settle who owns those decisions before the first preview app appears in January CY2027.
+The decisions that fall to an administrator are the same ones that apply to any Power Pages data access: which Dataverse tables are exposed, which web roles can read or write them, and whose licence counts when a native app signs in. Settle who owns those decisions before the January CY2027 preview target.
 
 ## Risk assessment
 
@@ -130,7 +134,7 @@ The decisions that fall to an administrator are the same ones that apply to any 
 - The roadmap item says nothing about agents or automatic actions. No change is described here beyond apps being able to call the backend the SDK exposes.
 
 **Change & support**
-- The release phase is listed as both Preview and General Availability. Treat preview behaviour, limits and licensing as provisional when it appears, as Microsoft's documentation for preview features describes the preview only.
+- The release phase is listed as both Preview and General Availability. Treat preview behaviour, limits and licensing as provisional when it appears.
 - Native apps installed on devices are a new support surface for a team that currently supports sites. Decide who supports them, and whether they are distributed through app stores or managed devices, before makers commit.
 
 ## Cost and licensing
@@ -162,7 +166,6 @@ Whether native app users are counted the same way is not yet published. Indirect
 
 ### After rollout
 - Compare site settings and table permissions on sites used by SDK apps with what makers intended, and remove any Web API exposure that is not needed.
-- Watch Power Pages capacity or pay-as-you-go usage once SDK apps are live, against what the licensing page says counts.
 
 ## Governance controls
 
@@ -171,8 +174,8 @@ Whether native app users are counted the same way is not yet published. Indirect
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which Dataverse tables a site exposes through the portals Web API</strong><br><small>Site</small><br><small class="controls__note">General control: Microsoft has not confirmed it applies to the SDK. Documented default for Webapi/&lt;table-name&gt;/enabled is False.</small></td><td data-label="Admin UI"><strong>Portal Management app</strong><br>Website › Site settings <a href="https://learn.microsoft.com/power-pages/configure/configure-site-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>POST [organization URI]/api/data/v9.2/mspp_sitesettings (mspp_name: Webapi/&lt;table-name&gt;/enabled, mspp_value: true, mspp_websiteid@odata.bind: website)</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/mspp_sitesetting" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which records and privileges web roles get on each table</strong><br><small>Site</small><br><small class="controls__note">General control: Microsoft has not confirmed it applies to the SDK. A table permission takes effect only when associated with a web role.</small></td><td data-label="Admin UI"><strong>Power Pages design studio</strong><br>Security › Protect › Table permissions <a href="https://learn.microsoft.com/power-pages/security/table-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>POST [organization URI]/api/data/v9.2/powerpagecomponents (powerpagecomponenttype: 18, the Table Permission type)</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/powerpagecomponent" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which Dataverse tables a site exposes through the portals Web API</strong><br><small>Site</small><br><small class="controls__note">General control: Microsoft has not confirmed it applies to the SDK. Creates the enabled setting only, not a complete Web API configuration. Documented default for Webapi/&lt;table-name&gt;/enabled is False.</small></td><td data-label="Admin UI"><strong>Portal Management app</strong><br>Website › Site settings <a href="https://learn.microsoft.com/power-pages/configure/configure-site-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>POST [organization URI]/api/data/v9.2/mspp_sitesettings with body {&quot;mspp_name&quot;:&quot;Webapi/&lt;table-name&gt;/enabled&quot;,&quot;mspp_value&quot;:&quot;true&quot;,&quot;mspp_websiteid@odata.bind&quot;:&quot;&lt;website-entity-reference&gt;&quot;}</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/mspp_sitesetting" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which records and privileges web roles get on each table</strong><br><small>Site</small><br><small class="controls__note">General control: Microsoft has not confirmed it applies to the SDK. A table permission takes effect only when associated with a web role. API: read-only inventory; type 18 = Table Permission. Not a permission-setting call.</small></td><td data-label="Admin UI"><strong>Power Pages design studio</strong><br>Security › Protect › Table permissions <a href="https://learn.microsoft.com/power-pages/security/table-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>GET [organization URI]/api/data/v9.2/powerpagecomponents</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/powerpagecomponent" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether the SDK can be switched off for a site or tenant</strong><br><small>Tenant</small><br><small class="controls__note">Learn documents no such control at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -186,23 +189,11 @@ The Web API reference says table permissions follow the user's web role, and tha
 - Which licence does an SDK-built app user need, and do native app users count towards authenticated or anonymous user capacity? Watch the Power Platform licensing FAQs and Message center.
 - Does the SDK call the portals Web API and honour site settings, table permissions and web roles, or does it use a different data path?
 - Which identity providers and sign-in flows does the SDK support, and how does an unattended kiosk authenticate?
-- Is there an administrator switch for the SDK, and is it on or off by default? Watch the Preview documentation due around January CY2027.
+- Is there an administrator switch for the SDK, and is it on or off by default? Watch for Preview documentation as the January CY2027 preview target approaches.
 - Which platforms and device types are supported, given the roadmap lists Web as the platform?
 
 <!-- rationale
 risk: Medium. The SDK would put a new kind of client in front of Dataverse data held behind a Power Pages site, and Microsoft has not yet said which existing site controls it relies on.
-cost: Variable. Power Pages is licensed by authenticated and anonymous user capacity or pay-as-you-go meters, but how SDK-built apps are counted is not yet published.
+cost: Low. The known costs are developer, maker and support time; SDK licensing and whether website user meters apply are not yet published.
 impact: Low. The roadmap item describes a developer capability, so makers and developers notice first; end users meet it only if a team ships a native app or kiosk built on it.
--->
-
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].api; Governance controls table / command: The printed POST to mspp_sitesettings with mspp_value: true is a usable Web API site-setting request. | Found: Entity set path: [organization URI]/api/data/v9.2/mspp_sitesettings; Operations supported: POSTGETPATCHDELETE; mspp_value | Edm.String | Fix: Keep the endpoint and cited reference, but replace the parenthesised pseudo-body with JSON containing a string value: POST [organization URI]/api/data/v9.2/mspp_sitesettings with body {"mspp_name":"Webapi/<table-name>/enabled","mspp_value":"true","mspp_websiteid@odata.bind":"<website-entity-reference>"}. State that this creates the enabled setting, not a complete Web API configuration. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/mspp_sitesetting
-- [contradicted, blocker] controls[1].api; Governance controls table / command: POST powerpagecomponents with only powerpagecomponenttype: 18 configures which records and privileges a site's web roles receive. | Found: name: RequiredLevel | ApplicationRequired; powerpagesiteid: RequiredLevel | ApplicationRequired | Fix: Replace the incomplete permission-setting POST with 'GET [organization URI]/api/data/v9.2/powerpagecomponents', keeping the existing Web API reference URL, and qualify the automation side: 'Read-only inventory of site components; component type 18 denotes Table Permission. This is not a permission-setting call.' The current body specifies neither a site nor a permission's records, privileges or roles. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/powerpagecomponent
-- [contradicted, blocker] front matter: cost; rationale: cost / consistency: The feature's cost rating is variable because general Power Pages pay-as-you-go meters exist. | Found: cost: "variable"; licensing.model: "unknown"; Whether native app users are counted the same way is not yet published. | Fix: Set cost to 'low' under the standard's rule for unpublished feature licensing and known indirect costs. Replace the cost rationale with 'Low. The known costs are developer, maker and support time; SDK licensing and whether website user meters apply are not yet published.' Keep the general Power Pages licensing background explicitly separate.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: previewDate; What's changing; Why it matters; Scope; Open questions / record: Preview is targeted for January CY2027. | Found: "previewDate": "January CY2027" | Fix: Keep January CY2027 as a target throughout. Replace 'before the first preview app appears in January CY2027' with 'before the January CY2027 preview target'. Replace 'Watch the Preview documentation due around January CY2027' with 'Watch for Preview documentation as the January CY2027 preview target approaches'; the record does not set a documentation publication date.
-- [supported, minor] Risk assessment: Change & support / behaviour: Microsoft's preview documentation is provisional rather than a statement of the final design. | Found: [This topic is prerelease documentation and is subject to change.] | Fix: Remove the attribution clause 'as Microsoft's documentation for preview features describes the preview only', leaving the recommendation 'Treat preview behaviour, limits and licensing as provisional when it appears.' This avoids relying on an uncited page about a different preview. | Source: https://learn.microsoft.com/power-pages/admin/new-admin-overview
-- [contradicted, minor] Governance guidance: After rollout / consistency: The checklist tells administrators to watch capacity or pay-as-you-go usage, but no controls row covers that monitoring. | Found: Watch Power Pages capacity or pay-as-you-go usage once SDK apps are live, against what the licensing page says counts. Controls cover Web API exposure, table permissions and an SDK switch only. | Fix: Remove the checklist bullet beginning 'Watch Power Pages capacity or pay-as-you-go usage once SDK apps are live'; it names a monitoring control that has no row. Retain the licensing-confirmation advice elsewhere.
 -->

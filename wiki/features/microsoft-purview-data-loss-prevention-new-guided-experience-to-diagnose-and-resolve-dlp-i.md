@@ -12,7 +12,7 @@ platforms: ["Web"]
 targetDate: "October CY2026"
 previewDate: "September CY2026"
 risk: "low"
-cost: "low"
+cost: "variable"
 impact: "low"
 defaultState: "on"
 action: "prepare"
@@ -49,6 +49,12 @@ sources:
   - title: "Configure Copilot settings with the owner role"
     url: "https://learn.microsoft.com/copilot/security/owner-settings"
     kind: "learn"
+  - title: "Microsoft Security Copilot Security Compute Units and capacity"
+    url: "https://learn.microsoft.com/copilot/security/security-compute-units-capacity"
+    kind: "learn"
+  - title: "Use plugins in Microsoft Security Copilot"
+    url: "https://learn.microsoft.com/copilot/security/use-plugins"
+    kind: "learn"
 videos: []
 related: ["microsoft-purview-endpoint-data-loss-prevention-policy-sync-and-device-health-ai-powered-i","microsoft-purview-ediscovery-in-product-diagnostics-to-troubleshoot-common-challenges"]
 controls:
@@ -64,15 +70,15 @@ controls:
       path: "Settings > Owner settings"
       docs: "https://learn.microsoft.com/copilot/security/privacy-data-security"
     api: null
-    note: "General Security Copilot control; Microsoft has not confirmed it governs the DLP insights. Needs the Security Copilot owner role. Default is ON where auto-provisioned for E5 or E7."
+    note: "Disabling it prevents the organisation from using Copilot with Purview (Learn). Needs the Security Copilot owner role. Default is ON where auto-provisioned for E5 or E7."
   - governs: "Whether the Microsoft Purview source is enabled in Security Copilot"
-    scope: "tenant"
+    scope: "user"
     ui:
       surface: "Security Copilot portal"
       path: "Sources > Manage plugins > Purview"
       docs: "https://learn.microsoft.com/purview/copilot-in-purview-overview"
     api: null
-    note: "General Security Copilot control; Microsoft has not confirmed it governs the DLP insights. Learn says Security Copilot in Purview is enabled by default."
+    note: "Learn says the Purview source must be enabled for embedded and standalone experiences; on by default. The toggle personalises the user's active plugins; it is not the organisation-wide plugin availability restriction."
 confidence: "medium"
 created: "2026-11-18"
 updated: "2026-11-18"
@@ -82,19 +88,23 @@ changes:
     note: "First briefing for this item: the launched DLP guided diagnostics, the E5 Security Copilot insights, and the Security Copilot settings that may govern them."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 6 of 74 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-18"
+    note: "Corrected after the independent check: cost now variable (SCU metering), Security Copilot data-sharing, Owner settings and Purview source statements aligned with Learn, and the Purview source toggle re-scoped to user."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 74 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-18"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 74
-  confirmed: 68
+  confirmed: 74
   unconfirmed: 0
-  contradicted: 6
-  attempts: 1
-  hash: "04b771161f799b8194709054889b18a1"
+  contradicted: 0
+  attempts: 0
+  hash: "796716bf1a4f06073987a3adb5b43a40"
 ---
 
 ## What's changing
@@ -118,12 +128,12 @@ Microsoft's notice says no action is required and that the experience appears fo
 **Data exposure**
 
 - The diagnostics describe, per document, which policies and conditions matched. The notice makes them available to all users who can view DLP policies, so expect those users to see how your rules are written. Microsoft has not said what document detail is shown. No control that limits who sees the diagnostics is documented (controls table, row 1).
-- Microsoft Learn says Security Copilot may copy, process and store relevant Customer Data to provide responses. Microsoft has not said whether that applies to the DLP insights; the notice says the insights add no new customer content sources.
+- Microsoft Learn says Security Copilot may copy, process and store relevant Customer Data to provide responses. Data shared with Security Copilot is governed by Security Copilot product terms, data protection commitments and documentation; the notice identifies existing DLP configuration data and diagnostic metadata as inputs and says the insights add no new customer content sources.
 
 **Security & identity**
 
 - Who counts as having permission to view DLP policies is not defined in the notice. Confirm which roles hold it in your tenant before relying on it.
-- The Copilot-powered insights run on Security Copilot. Its Microsoft 365 data access setting defaults to ON where Security Copilot is auto-provisioned through E5 or E7; whether switching it off removes the insights is unconfirmed (rows 2 and 3).
+- The Copilot-powered insights run on Security Copilot. Its Microsoft 365 data access setting defaults to ON where Security Copilot is auto-provisioned through E5 or E7. The Microsoft 365 services data access setting governs Security Copilot integration with Purview; disabling it prevents the organisation from using Copilot with Purview (row 2). Microsoft documents the Purview source as required for both standalone and embedded Security Copilot experiences in Purview (row 3).
 
 **Autonomy & actions**
 
@@ -138,7 +148,7 @@ Microsoft's notice says no action is required and that the experience appears fo
 
 **Licence.** Neither the roadmap item nor notice MC1293479 names a licence for the base diagnostics beyond permission to view DLP policies; the licence for it is not yet published. The Copilot-powered insights are for Microsoft 365 E5 customers; the notice says they are available only to customers with eligible Microsoft 365 E5 and Copilot licensing.
 
-**Meter.** Security Copilot is measured in Security Compute Units (SCUs). Microsoft Learn says Microsoft 365 E5 and E7 customers have 400 SCUs each month for every 1,000 paid user licences, up to 10,000 SCUs each month, at no additional cost, and that usage beyond that will be throttled at a future date, when customers can scale at $6 USD per SCU on a pay-as-you-go basis. Customers without E5 or E7 licences can continue to use Security Copilot under its existing pricing model. Whether the DLP insights consume SCUs, and at what rate, is not yet published. SCU use can be tracked in the usage dashboard in the Security Copilot standalone portal.
+**Meter.** Security Copilot is measured in Security Compute Units (SCUs). Microsoft Learn says Microsoft 365 E5 and E7 customers have 400 SCUs each month for every 1,000 paid user licences, up to 10,000 SCUs each month, at no additional cost, and that usage beyond that will be throttled at a future date, when customers can scale at $6 USD per SCU on a pay-as-you-go basis. Customers without E5 or E7 licences can continue to use Security Copilot under its existing pricing model. The Security Copilot-powered insights consume SCUs under the platform's embedded-experience capacity model ([Microsoft Security Copilot Security Compute Units and capacity](https://learn.microsoft.com/copilot/security/security-compute-units-capacity)); a rate specific to these diagnostics is not yet published. SCU use can be tracked in the usage dashboard in the Security Copilot standalone portal.
 
 **Indirect costs.** Admin time to brief the DLP owners and update runbooks. Sources: [Learn about Security Copilot for Microsoft 365 E5 and E7 included customers](https://learn.microsoft.com/copilot/security/security-copilot-inclusion).
 
@@ -156,7 +166,7 @@ Microsoft's notice says no action is required and that the experience appears fo
 
 - Ask the DLP owners which roles in your tenant can view DLP policies, because the notice makes the diagnostics available to everyone with that permission (row 1).
 - Check whether your tenant has eligible Microsoft 365 E5 and Copilot licensing, so you know whether the Copilot-powered insights should appear.
-- Note the current state of the Security Copilot Purview source and Microsoft 365 data access settings (rows 2 and 3), so any change in the insights can be traced to them if Microsoft confirms they apply.
+- Note the current state of the Security Copilot Purview source and Microsoft 365 data access settings (rows 2 and 3), so any change in the insights can be traced to them.
 - Update internal DLP troubleshooting runbooks to mention the new diagnostics, as the notice suggests.
 
 ### At rollout
@@ -178,12 +188,12 @@ Microsoft's notice says no action is required and that the experience appears fo
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Availability of the guided diagnostics experience, and who can see it</strong><br><small>Tenant</small><br><small class="controls__note">Notice MC1293479 says it is available to all users who have permission to view DLP policies. No tenant switch is documented at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether Security Copilot can query Microsoft 365 services such as Microsoft Purview for data</strong><br><small>Tenant</small><br><small class="controls__note">General Security Copilot control; Microsoft has not confirmed it governs the DLP insights. Needs the Security Copilot owner role. Default is ON where auto-provisioned for E5 or E7.</small></td><td data-label="Admin UI"><strong>Security Copilot portal</strong><br>Settings › Owner settings <a href="https://learn.microsoft.com/copilot/security/privacy-data-security" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether the Microsoft Purview source is enabled in Security Copilot</strong><br><small>Tenant</small><br><small class="controls__note">General Security Copilot control; Microsoft has not confirmed it governs the DLP insights. Learn says Security Copilot in Purview is enabled by default.</small></td><td data-label="Admin UI"><strong>Security Copilot portal</strong><br>Sources › Manage plugins › Purview <a href="https://learn.microsoft.com/purview/copilot-in-purview-overview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether Security Copilot can query Microsoft 365 services such as Microsoft Purview for data</strong><br><small>Tenant</small><br><small class="controls__note">Disabling it prevents the organisation from using Copilot with Purview (Learn). Needs the Security Copilot owner role. Default is ON where auto-provisioned for E5 or E7.</small></td><td data-label="Admin UI"><strong>Security Copilot portal</strong><br>Settings › Owner settings <a href="https://learn.microsoft.com/copilot/security/privacy-data-security" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether the Microsoft Purview source is enabled in Security Copilot</strong><br><small>User</small><br><small class="controls__note">Learn says the Purview source must be enabled for embedded and standalone experiences; on by default. The toggle personalises the user's active plugins; it is not the organisation-wide plugin availability restriction.</small></td><td data-label="Admin UI"><strong>Security Copilot portal</strong><br>Sources › Manage plugins › Purview <a href="https://learn.microsoft.com/purview/copilot-in-purview-overview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-No setting that turns the guided diagnostics on or off, or restricts who sees them, is documented at the time of writing (November 2026), so row 1 is empty on both sides. Rows 2 and 3 are Security Copilot controls; changing Owner settings needs the Security Copilot owner role. Microsoft has not said whether either one governs the DLP insights.
+No setting that turns the guided diagnostics on or off, or restricts who sees them, is documented at the time of writing (November 2026), so row 1 is empty on both sides. Rows 2 and 3 are Security Copilot controls; changing Owner settings needs the Security Copilot owner role. Microsoft Learn says disabling the Microsoft 365 services data access setting prevents the organisation from using Copilot with Purview (row 2), and that Security Copilot in Purview must be enabled for both the standalone and embedded experiences to work (row 3). Row 3 is a per-user source toggle; it is not the organisation-wide plugin availability restriction.
 
 Test-DlpPolicies is an existing alternative, not a control over the new experience. Learn describes it as showing which DLP policies scoped to SharePoint and OneDrive match an individual item there, and it does not work with complex, grouped or nested conditions. It emails its report to the SMTP address given in -SendReportTo.
 
@@ -191,24 +201,16 @@ Test-DlpPolicies is an existing alternative, not a control over the new experien
 
 - Which DLP locations (Exchange, SharePoint, OneDrive, Teams, endpoints) and condition types do the guided diagnostics cover? Watch the Microsoft Learn page the notice says will follow.
 - Can an administrator restrict who sees the diagnostics, and which roles hold the permission to view DLP policies that the notice relies on?
-- Does the base diagnostics experience need any licence, and do the Copilot-powered insights consume Security Compute Units from the E5 inclusion, at what rate?
-- Does turning off the Security Copilot Purview source or its Microsoft 365 data access setting remove the insights?
+- Does the base diagnostics experience need any licence, and what SCU rate do the Copilot-powered insights use?
 
 <!-- rationale
 risk: Low. Microsoft's notice says existing DLP policies and enforcement are not changed and no new customer content sources are introduced; the experience explains DLP decisions rather than making them.
-cost: Low. Admin time is the only certain cost. No licence is published for the base diagnostics, and whether the E5 Copilot-powered insights draw on Security Compute Units is not yet published.
+cost: Variable. Security Copilot-powered insights consume Security Compute Units, including allocated E5 capacity; a rate specific to these diagnostics is not yet published. Admin time is an additional indirect cost, and no licence specific to the base diagnostics is published.
 impact: Low. It is aimed at administrators and compliance staff who troubleshoot DLP; Microsoft's notice says there is no impact to user workflows.
 -->
 
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Data exposure / applicability: Microsoft has not said whether Security Copilot's documented data processing applies to the DLP insights. | Found: Microsoft Security products purchased by you may share data, including Customer Data, as described in the product documentation. Customer Data shared with Security Copilot is governed by the Product Terms, Data Protection Addendum, and documentation applicable to Security Copilot. | Fix: Replace the uncertainty sentence with: 'Data shared with Security Copilot is governed by Security Copilot product terms, data protection commitments and documentation; the notice identifies existing DLP configuration data and diagnostic metadata as inputs.' Keep the narrower statement that the notice introduces no new customer content sources. | Source: https://learn.microsoft.com/copilot/security/privacy-data-security
-- [contradicted, blocker] controls[1].note; Risk assessment: Security & identity; Governance controls; Open questions / applicability: Microsoft has not confirmed whether disabling Microsoft 365 data access governs the DLP Security Copilot insights. | Found: Customers can choose not to share their Microsoft 365 service data with Copilot in the Owner settings page. However, the organization won't be able to use Copilot with Microsoft 365 products such as like Microsoft Purview. | Fix: Replace the unconfirmed-applicability statements for row 2 with: 'The Microsoft 365 services data access setting governs Security Copilot integration with Purview; disabling it prevents the organisation from using Copilot with Purview.' Cite the already-listed Security Copilot inclusion page. Remove the corresponding open question about whether this setting removes the insights. | Source: https://learn.microsoft.com/copilot/security/security-copilot-inclusion
-- [contradicted, blocker] controls[2].note; Governance guidance; Governance controls; Open questions / applicability: Microsoft has not confirmed whether the Purview source toggle governs the DLP Security Copilot insights. | Found: Security Copilot in Purview must be enabled for both the standalone and embedded experiences to work. | Fix: Replace the unconfirmed-applicability statements for row 3 with: 'Microsoft documents the Purview source as required for both standalone and embedded Security Copilot experiences in Purview.' Remove the corresponding open question and the condition 'if Microsoft confirms they apply' from the checklist. | Source: https://learn.microsoft.com/purview/copilot-in-purview-overview
-- [contradicted, blocker] controls[2].scope; Governance controls: row 3 / applicability: The Sources > Manage plugins > Purview toggle is a tenant-wide control. | Found: To personalize the way Security Copilot interacts with you ... Turn any plugin on or off ... Select which plugins Security Copilot uses as a data source by turning service toggles on or off. | Fix: Change controls[2].scope and the rendered scope from tenant to user. Add to its note: 'This source toggle personalises the user's active plugins; it is not the organisation-wide plugin availability restriction.' Cite https://learn.microsoft.com/copilot/security/use-plugins for the distinction. | Source: https://learn.microsoft.com/copilot/security/use-plugins
-- [contradicted, blocker] Cost and licensing: Meter; Open questions; rationale: cost / cost: Whether the DLP Security Copilot insights consume SCUs is not yet published. | Found: You consume SCUs in the following scenarios: ... Running embedded Security Copilot experiences ... Running other Security Copilot features and capabilities | Fix: Replace the consumption uncertainty with: 'The Security Copilot-powered insights consume SCUs under the platform's embedded-experience capacity model; a rate specific to these diagnostics is not yet published.' Cite https://learn.microsoft.com/copilot/security/security-compute-units-capacity. Retain only the feature-specific rate question. | Source: https://learn.microsoft.com/copilot/security/security-compute-units-capacity
-- [contradicted, blocker] front matter: cost; rationale: cost / consistency: Cost is low because admin time is the only certain cost and SCU consumption is unconfirmed. | Found: Briefing: 'Admin time is the only certain cost' and 'whether ... insights draw on Security Compute Units is not yet published.' Source: 'You consume SCUs ... Running embedded Security Copilot experiences'. The standard defines variable as metered. | Fix: Set cost to 'variable'. Replace the cost rationale with: 'Variable. Security Copilot-powered insights consume Security Compute Units, including allocated E5 capacity; a rate specific to these diagnostics is not yet published. Admin time is an additional indirect cost, and no licence specific to the base diagnostics is published.' Cite https://learn.microsoft.com/copilot/security/security-compute-units-capacity. | Source: https://learn.microsoft.com/copilot/security/security-compute-units-capacity
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui / admin-path: Microsoft 365 services data access is configured in the Security Copilot portal under Settings > Owner settings. | Found: Configuring Microsoft 365 services data access ... In Security Copilot, go to Settings > Owner settings. | Fix: Keep the cited path, but add: 'Microsoft documentation also describes Owner > Owner settings in the home menu; see https://learn.microsoft.com/copilot/security/navigating-security-copilot#use-the-home-menu.' That page lists Owner settings under Owner and describes Settings as theme, time zone and language preferences. | Source: https://learn.microsoft.com/copilot/security/privacy-data-security
+- [supported, minor] controls[2].note; Governance controls / behaviour: The per-user source toggle is distinct from the organisation-wide plugin availability restriction. | Found: As an administrator, you have full control over which plugins are available across your organization. You can choose to make specific plugins accessible to everyone or restrict them to owners only. | Fix: Add https://learn.microsoft.com/copilot/security/manage-plugins to sources to substantiate the distinction between the per-user source toggle and organisation-wide plugin availability restrictions. | Source: https://learn.microsoft.com/copilot/security/manage-plugins
 -->

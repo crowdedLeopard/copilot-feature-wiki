@@ -66,7 +66,7 @@ controls:
       docs: "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers"
     api:
       kind: "graph"
-      call: "PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id} with availableTo and allowedUsersAndGroups in the body"
+      call: "PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id} {\"availableTo\":\"allowedForSome\",\"allowedUsersAndGroups\":[{\"resourceType\":\"user\",\"resourceId\":\"<user-id>\"},{\"resourceType\":\"group\",\"resourceId\":\"<group-id>\"}]}"
       docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update"
     note: "General control: Microsoft has not confirmed it applies to the Copilot Studio skills catalog. API is preview and needs a Microsoft Agent 365 licence."
   - governs: "Blocking a skill package across the organisation"
@@ -108,19 +108,23 @@ changes:
     note: "First briefing for this roadmap item; Microsoft Learn documents a preview Browse skills flow, but not the catalog itself."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 63 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-18"
+    note: "Corrected after the independent check: the user-availability Graph request now shows the full body, the unsupported data-reach statement was replaced, the credit-rate sentence was reworded and an unmatched credit-monitoring checklist item was removed."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 65 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-18"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 63
-  confirmed: 60
-  unconfirmed: 1
-  contradicted: 2
-  attempts: 1
-  hash: "4f6f5dc84462eba6d4a6808f965d0077"
+  claims: 65
+  confirmed: 65
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "a61ead355c9d545ecbd2b79ac71b12ea"
 ---
 
 ## What's changing
@@ -144,7 +148,7 @@ Microsoft has not stated what happens on arrival or which admin setting governs 
 **Data exposure**
 
 - A shared skill is instructions, and its package can include supporting files such as scripts, templates and reference documents. Anyone a skill is shared with can add it to their agents, so review what a shared skill contains before it is shared widely.
-- The Learn page does not say what data a catalog skill can reach. Treat reach as set by the agent that adds the skill, and confirm this once Microsoft documents the catalog.
+- The Learn page does not say what data a catalog skill can reach. Confirm the skill's data-access boundaries before using it with organisational data.
 
 **Security & identity**
 
@@ -165,7 +169,7 @@ Microsoft has not stated what happens on arrival or which admin setting governs 
 
 No licence specific to the skills catalog is published at the time of writing (November 2026). The Learn page for adding shared skills carries a note that the Microsoft Copilot harness uses usage-based billing and that using, building, testing and evaluating agents might consume Copilot Credits. Microsoft's billing overview adds that on this harness credits are charged from the moment a maker starts building. See [Copilot Credits](/concepts/copilot-credits/).
 
-No rate for browsing, adding or sharing a skill is published. The credit cost of an agent that uses an added skill is not stated either.
+No rate for browsing, adding or sharing a skill is published. No catalog-specific credit rate is published; agents using shared skills remain subject to their documented harness billing.
 
 If you automate skill governance through the Package Management API in Microsoft Graph, Microsoft's reference says access requires a Microsoft Agent 365 licence. Admin time for reviewing and owning shared skills is the other cost.
 
@@ -194,7 +198,6 @@ Roles for the catalog are not documented. The Learn page for managing plugins an
 ### After rollout
 
 - Review who shared which skills and re-review a skill whenever its owner reshares an edited version.
-- Track Copilot Credit consumption for agents that use added skills in the Monitor page, per [Copilot Credits](/concepts/copilot-credits/).
 - Reassess the risk rating once Microsoft documents the catalog's controls.
 
 ## Governance controls
@@ -204,7 +207,7 @@ Roles for the catalog are not documented. The Learn page for managing plugins an
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which users and groups can use a skill package</strong><br><small>Tenant</small><br><small class="controls__note">General control: Microsoft has not confirmed it applies to the Copilot Studio skills catalog. API is preview and needs a Microsoft Agent 365 licence.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Plugins › plugin or skill › Users <a href="https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id} with availableTo and allowedUsersAndGroups in the body</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which users and groups can use a skill package</strong><br><small>Tenant</small><br><small class="controls__note">General control: Microsoft has not confirmed it applies to the Copilot Studio skills catalog. API is preview and needs a Microsoft Agent 365 licence.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Plugins › plugin or skill › Users <a href="https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id} {&quot;availableTo&quot;:&quot;allowedForSome&quot;,&quot;allowedUsersAndGroups&quot;:[{&quot;resourceType&quot;:&quot;user&quot;,&quot;resourceId&quot;:&quot;&lt;user-id&gt;&quot;},{&quot;resourceType&quot;:&quot;group&quot;,&quot;resourceId&quot;:&quot;&lt;group-id&gt;&quot;}]}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Blocking a skill package across the organisation</strong><br><small>Tenant</small><br><small class="controls__note">General control: not confirmed for the Copilot Studio catalog. Applies to standalone skill packages; a bundled skill has no block of its own. API is preview.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Plugins › skill › Block › Block <a href="https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Inventory of skill packages in the tenant</strong><br><small>Tenant</small><br><small class="controls__note">General control: not confirmed to list Copilot Studio catalog skills. API needs a Microsoft Agent 365 licence.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Registry <a href="https://learn.microsoft.com/plugins/administrator-guide" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>GET https://graph.microsoft.com/v1.0/copilot/admin/catalog/packages?$filter=elementTypes/any(e:e eq 'AgentSkills')</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackages-list" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Who a maker shares a skill with</strong><br><small>Maker</small><br><small class="controls__note">Maker-side only; preview. Options are Only you, or specific users or groups. Microsoft Learn documents no API for it at the time of writing (November 2026).</small></td><td data-label="Admin UI"><strong>Copilot Studio (maker)</strong><br>Build › skill › … › Share › Share <a href="https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/skills-manage" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
@@ -227,14 +230,4 @@ A bundled skill has no blocking control of its own; blocking applies to the pack
 risk: Medium. A shared skill is instructions that steer an agent, and the documented flow has a maker select Add; existing package controls in the Microsoft 365 admin centre may cover it, but Microsoft has not confirmed that.
 cost: Variable. Agents on the Microsoft Copilot harness are billed in Copilot Credits; no charge specific to the skills catalog is published, and the Package Management API needs a Microsoft Agent 365 licence.
 impact: Medium. Makers who build agents in Copilot Studio see the catalog and the people they share skills with are affected; end users notice only through changed agent behaviour.
--->
-
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Risk assessment: Data exposure / behaviour: Readers can treat a catalog skill's data reach as determined by the agent that adds it. | Found: Searched: "Copilot Studio" "skill" "data access" "instructions"; Copilot Studio "Browse skills" harness admin sharing policy permissions data access. Read skills-overview and skills-manage: neither establishes this data-access mechanism for catalog skills. | Fix: Replace 'Treat reach as set by the agent that adds the skill, and confirm this once Microsoft documents the catalog.' with 'Confirm the skill's data-access boundaries before using it with organisational data.'
-- [contradicted, blocker] controls[0].api / command: The printed PATCH entry supplies a usable request for setting package availability to selected users and groups. | Found: In the request body, supply a JSON representation of a copilotPackageDetail object. "allowedUsersAndGroups": [ { "resourceType": "user", "resourceId": "5d9fa31e-626e-45fb-b6e7-d8f1f11933a9" } | Fix: Replace controls[0].api.call and its rendered copy with: PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id} with JSON body {"availableTo":"allowedForSome","allowedUsersAndGroups":[{"resourceType":"user","resourceId":"<user-id>"},{"resourceType":"group","resourceId":"<group-id>"}]}. The endpoint and property names are correct, but merely naming body properties gives neither the required availability value nor the access-entity structure. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Cost and licensing / cost: The credit cost of an agent using an added skill is not stated. | Found: The number of Copilot Credits these experiences consume depends on how they are designed, how often they run, and the features they use. | Fix: Replace 'The credit cost of an agent that uses an added skill is not stated either.' with 'No catalog-specific credit rate is published; agents using shared skills remain subject to their documented harness billing.' The current wording obscures the general billing rule already stated on the page. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview
-- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The checklist's instruction to monitor Copilot Credit consumption has no corresponding controls-table row. | Found: Track Copilot Credit consumption for agents that use added skills in the Monitor page ... The controls table contains only user availability, package blocking, package inventory and maker sharing. | Fix: Remove the checklist bullet beginning 'Track Copilot Credit consumption' so the checklist names only controls represented in the existing table.
 -->

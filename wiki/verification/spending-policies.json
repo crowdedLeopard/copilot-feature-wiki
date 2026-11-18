@@ -1,0 +1,1090 @@
+{
+  "slug": "spending-policies",
+  "kind": "concept",
+  "roadmapId": null,
+  "title": "Spending policies: who and what can consume Copilot Credits, and up to how much",
+  "status": "held",
+  "date": "2026-11-18",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-18",
+    "reasons": [
+      "2 blocking findings (claims 10, 34)"
+    ]
+  },
+  "counts": {
+    "claims": 80,
+    "confirmed": 77,
+    "unconfirmed": 0,
+    "contradicted": 3,
+    "blocker": 2,
+    "major": 0,
+    "minor": 3
+  },
+  "summary": "Hold: the overlapping-policy rule omits how policies without a per-user limit are compared, which can change which policy governs a user. The policy-update API also does not change scope, services and alerts as its table row implies. The alert and delete endpoints flagged by the pre-check are documented.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "Default-policy activation starts in Microsoft 365 admin center > Copilot > Cost Management > Get Started.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
+      "quote": "In the Microsoft 365 admin center, go to **Copilot** and then the **Cost Management** node.\nTo unlock AI experiences enabled by usage-based billing, select **Get Started**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "controls[0].api",
+      "type": "absence",
+      "claim": "No documented API equates creating an allUsersSpendingPolicy with activating the initial default spending policy.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"activate\" \"default spending policy\" \"Graph\". Opened the cited setup, Cost Management API overview and spendingpolicy-create pages; none identifies initial default-policy activation as an API operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Identity policy creation is under Microsoft 365 admin center > Copilot > Cost Management > Configuration > + Add spending policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "In the Microsoft 365 admin center, go to **Copilot > Cost Management**.\nSelect the **Configuration** tab and then select **+ Add spending policy**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "POST https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies creates a policy with concrete @odata.type, displayName, periodLimit, perUserLimit and serviceSettings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-create",
+      "quote": "POST https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies\nRequired properties are `displayName`, `periodLimit`, `perUserLimit`, and `serviceSettings`.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "controls[1].note",
+      "type": "default",
+      "claim": "A policy newly created through Graph is disabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-create",
+      "quote": "A new policy is created `disabled`.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "controls[1].note; Risks and limits: The API is beta",
+      "type": "availability",
+      "claim": "The spending-policy management API supports delegated work or school permissions, not application permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-create",
+      "quote": "| Delegated (work or school account) | CopilotCostManagement-Policy.ReadWrite.All | Not supported. |\n| Application | Not supported. | Not supported. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "controls[1].note; Governance controls: Roles",
+      "type": "role",
+      "claim": "Graph policy creation requires Billing Administrator or Global Administrator at runtime.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-create",
+      "quote": "At runtime, creating a policy also requires the Billing Administrator or Global Administrator directory role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "An identity policy's scope, services, billing method, limits and alerts are edited under Copilot > Cost Management > Configuration > policy > Save changes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "Select the spending policy you want to edit.\nThe spending policy details fly-out opens, where you can modify its settings.\nAfter making the necessary changes, select **Save changes** to apply the updates to the spending policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "controls[2].api",
+      "type": "command",
+      "claim": "PATCH https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/{id} updates displayName, periodLimit, perUserLimit or billingMethods and requires If-Match.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+      "quote": "| `If-Match` | The ETag of the spending policy. Required. |\nThe following properties can be updated: `displayName`, `periodLimit`, `perUserLimit`, and `billingMethods`.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "controls[2].governs; Governance controls: third table row",
+      "type": "applicability",
+      "claim": "The policy PATCH shown in the third row performs the same scope, service and alert changes as the UI.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+      "quote": "The following properties can be updated: `displayName`, `periodLimit`, `perUserLimit`, and `billingMethods`.",
+      "severity": "blocker",
+      "fix": "Keep the endpoint, but append to controls[2].note and the rendered row: 'The Graph call shown updates only the name, limits and billing method; it does not update scope, services or alerts.'"
+    },
+    {
+      "n": 11,
+      "where": "controls[2].note; Governance controls: Roles",
+      "type": "role",
+      "claim": "AI administrators and License administrators can edit policies, limits, alerts and billing methods but cannot create policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
+      "quote": "AI administrator and License administrator roles can edit spending policies, manage limits and alerts, and billing methods. However, they can't create spending policies.",
+      "severity": "minor",
+      "fix": "Add after the Roles paragraph: 'Microsoft's setup page is inconsistent about License Administrator: it also lists that role among roles with read-only consumption access and no policy-editing permissions.'"
+    },
+    {
+      "n": 12,
+      "where": "controls[3].ui",
+      "type": "admin-path",
+      "claim": "Policy alert settings are in the details fly-out under Copilot > Cost Management > Configuration > policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "Select the **Configuration** tab.\nSelect the spending policy you want to edit.\nThe spending policy details fly-out opens, where you can modify its settings.\n**Alerts, and Email alert settings**",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "controls[3].api",
+      "type": "command",
+      "claim": "The beta PATCH /copilot/costManagement/spendingPolicies/{id}/emailThresholdSettings endpoint creates or updates policy alerts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview",
+      "quote": "APIs under the `/beta` version are subject to change.\nPATCH `/copilot/costManagement/spendingPolicies/{id}/emailThresholdSettings` | Create or update the alert configuration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "controls[3].note; Governance controls: Interaction",
+      "type": "behaviour",
+      "claim": "Alerts notify rather than stop consumption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview",
+      "quote": "Configure notify-only threshold alerts and manage their recipients.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "controls[4].ui",
+      "type": "admin-path",
+      "claim": "Resource policies are created under Microsoft 365 admin center > Copilot > Cost Management > Configuration > Add spending policy, choosing Resources.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs",
+      "quote": "In the Microsoft 365 admin center, go to **Copilot > Cost Management**.\nSelect **Configuration**, and then select **Add spending policy**.\nEnter a name for the policy, then select **Resources** as its scope.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "controls[4].api; Governance controls: Watching; Open questions",
+      "type": "absence",
+      "claim": "No Graph call for resource-based Copilot Studio spending policies is documented in the pages read.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"resource-based\" \"spendingPolicies\" API; \"spending policies\" \"PowerShell\" resource based Graph. Opened Studio cost management, Graph overview and create reference; Graph documents allUsersSpendingPolicy and selectedGroupsSpendingPolicy, not resource policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[5].ui",
+      "type": "admin-path",
+      "claim": "Policy deletion is under Copilot > Cost Management > Configuration > More actions beside the policy > Delete.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "Select the **Configuration** tab.\nFrom the list of spending policies, locate the spending policy that you want to delete.\nSelect the More actions menu (⋮) next to the spending policy.\nSelect **Delete**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[5].api",
+      "type": "command",
+      "claim": "The beta DELETE /copilot/costManagement/spendingPolicies/{id} endpoint deletes a spending policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview",
+      "quote": "APIs under the `/beta` version are subject to change.\nDELETE `/copilot/costManagement/spendingPolicies/{id}` | Delete a spending policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "summary; What it is: definition",
+      "type": "behaviour",
+      "claim": "Spending policies control access and Copilot Credit spending for usage-based-billing AI experiences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "Use spending policies in the Cost Management dashboard to control access and Copilot Credit spending for AI experiences enabled by usage-based billing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What it is: definition; Cost and licensing",
+      "type": "behaviour",
+      "claim": "Policies are limits rather than credit purchases or reservations and do not allocate credits to users or groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "Spending policies are limit-based controls and don't reserve or allocate Copilot Credits to users or groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What it is: Two kinds of policy",
+      "type": "applicability",
+      "claim": "Identity-based policies follow people using selected services, such as a group using Cowork.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "Use this option when you want a policy to apply to the people who use selected agents and services. For example, a group using Cowork.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What it is: policy kinds table, Identity-based",
+      "type": "behaviour",
+      "claim": "Identity policy scopes include all users or specific groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "By default, **All users** is selected. To target this rule to a subset of users, switch to **Specific groups** and select the directory group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What it is: Two kinds of policy",
+      "type": "applicability",
+      "claim": "Resource policies for Copilot Studio follow the agent or environment rather than the person.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs",
+      "quote": "Use this option when you want usage to follow an agent or environment rather than the identity of the person using it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What it is: policy kinds table, Resource-based",
+      "type": "behaviour",
+      "claim": "Resource policy scopes include particular agents, specific environments and all environments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs",
+      "quote": "**Specific resources**: Choose Specific resources when particular agents need their own policy or billing method.\n**Specific environments**: Choose Specific environments when you want to move and manage a limited set of environments first.\n**All environments**",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What it is: policy kinds table; controls[4].governs",
+      "type": "behaviour",
+      "claim": "Resource policies support per-agent limits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs",
+      "quote": "You can also set a per-agent limit so that no single agent covered by the policy uses more than the amount you specify.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What it is: Two kinds of policy",
+      "type": "behaviour",
+      "claim": "An identity-based policy cannot be converted into a resource-based policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "You can't convert an existing identity-based policy into a resource-based policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What it is: How it works; Why it matters",
+      "type": "behaviour",
+      "claim": "Initial setup activates the default policy and unlocks AI experiences gated by usage-based billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
+      "quote": "This section covers the initial setup steps to guide administrators through enabling usage-based billing and creating the first spending policy. This process activates AI experiences, like Cowork, that are gated by usage-based billing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What it is: How it works",
+      "type": "default",
+      "claim": "The default setup targets the entire organisation and all users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
+      "quote": "The default setup targets your entire organization and all users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What it is: How it works",
+      "type": "behaviour",
+      "claim": "Additional policies have independent limits and do not inherit the tenant-level limit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
+      "quote": "Each additional spending policy that you create has its own independent limit and doesn't inherit the tenant-level limit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "summary; What it is: How it works",
+      "type": "behaviour",
+      "claim": "A policy selects services, a monthly policy limit, alerts and a billing method.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "Select agents and services\nSet limits and alerts\nSelect a billing method\nSelect the monthly spending limit for this policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What it is: How it works; policy kinds table",
+      "type": "behaviour",
+      "claim": "Identity policies support an optional monthly per-user limit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "Select monthly budget limits for users (optional). Use the toggle to select this option and to set a monthly limit for users to prevent a single person from spending all available credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What it is: How it works; Risks and limits: Auto-apply",
+      "type": "default",
+      "claim": "Auto-apply new services is on by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "By default, the **Auto-apply new services** toggle is selected for spending policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What it is: How it works; Risks and limits: Auto-apply widens a policy silently",
+      "type": "behaviour",
+      "claim": "Auto-apply automatically widens the policy to newly supported services and agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "When the setting is on, newly supported Microsoft Copilot services and agents are automatically added to the policy.",
+      "severity": "minor",
+      "fix": "Change the risk heading from 'Auto-apply widens a policy silently' to 'Auto-apply widens a policy automatically'. Automatic inclusion does not establish absence of notice; the cited billing overview says Microsoft will provide notifications as services become available."
+    },
+    {
+      "n": 34,
+      "where": "What it is: How it works, overlap bullet; What to check",
+      "type": "behaviour",
+      "claim": "Overlapping policies are selected by highest per-user limit, then overall limit, then creation date, without specifying how an unset per-user limit is compared.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "If a policy doesn't have a per-user limit set, the system uses its overall policy limit as the per-user value for this comparison.",
+      "severity": "blocker",
+      "fix": "After the ordering rule, add: 'If a policy has no per-user limit, its overall policy limit is used as the per-user value for this comparison.'"
+    },
+    {
+      "n": 35,
+      "where": "What it is: How it works; Risks and limits: Overlapping policies",
+      "type": "behaviour",
+      "claim": "The selected policy applies in full and policies' limits and settings are not combined.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "The chosen policy applies in full and settings from other policies aren't combined.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "What it is: How it works, Copilot Studio",
+      "type": "applicability",
+      "claim": "A Microsoft 365 admin center policy covering Copilot Studio usage takes precedence over Power Platform admin center controls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs",
+      "quote": "If a spending policy in the Microsoft 365 admin center covers the environment or agent, its controls take precedence over the Power Platform admin center controls for that usage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What it is: How it works, Copilot Studio",
+      "type": "behaviour",
+      "claim": "For Copilot Studio a resource policy takes precedence over an identity policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs",
+      "quote": "Within the Microsoft 365 admin center, a policy for the agent or its environment takes precedence over a policy for the person using the agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Why it matters; What to check: default policy",
+      "type": "behaviour",
+      "claim": "Microsoft asks administrators to set the optional per-user limit to prevent runaway spending by one person.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
+      "quote": "Although this selection is optional, review and set this option for your organization to prevent runaway spending of Copilot Credits by one individual user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Why it matters: unlimited policy",
+      "type": "cost",
+      "claim": "The Don't limit monthly spending option places no spending restriction on the policy's use of its billing method.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
+      "quote": "**Don't limit monthly spending** - Allows the policy to use credits against the organization's billing method without restrictions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Why it matters; controls[4].note",
+      "type": "default",
+      "claim": "Copilot Studio resource-policy management is opt-in and existing Power Platform configuration remains until a resource policy covers the scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs",
+      "quote": "To opt in, create a Microsoft 365 admin center resource-based spending policy. Until then, your existing Power Platform admin center configuration remains in effect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Why it matters; controls[4].note; Risks and limits",
+      "type": "behaviour",
+      "claim": "For covered resources, Microsoft 365 admin center management replaces Power Platform capacity allocations and linked billing plans.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs",
+      "quote": "For resources covered by the spending policy, Copilot Credit management moves to the Microsoft 365 admin center, replacing their Power Platform admin center capacity allocations and linked billing plans.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing: billing method",
+      "type": "cost",
+      "claim": "Consumed credits are billed to the subscription selected in the billing method.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
+      "quote": "Copilot credits are billed to the subscription that you select in the billing method.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Cost and licensing: credit exhaustion",
+      "type": "cost",
+      "claim": "When subscription credits run out, usage automatically continues as pay-as-you-go.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
+      "quote": "When credits run out for that subscription, usage automatically continues on a pay-as-you-go basis.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Cost and licensing: billing order",
+      "type": "cost",
+      "claim": "When both prepaid capacity packs and a subscription with P3 are selected, the order is capacity packs, P3, then pay-as-you-go.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
+      "quote": "If you select both Prepaid Capacity packs and an Azure subscription with Copilot Credit Pre-purchase plan (P3), billing is applied in the following order to keep spending predictable:\n- Prepaid Capacity packs\n- Copilot Credit Pre-purchase plan (P3)\n- Pay-as-you-go billing",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Cost and licensing; Governance controls: Roles; controls[0].note",
+      "type": "role",
+      "claim": "Global administrators and Billing administrators can set billing methods in policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
+      "quote": "Global administrator and Billing administrator roles can add, select, and change billing methods, and set billing methods in policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Cost and licensing: departmental billing",
+      "type": "cost",
+      "claim": "Global or Billing administrators can override billing methods per policy for departmental billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "If you're a Global administrator or a Billing administrator, you can override this selection and select how this policy should be billed. This feature enables you to do departmental billing and vary billing methods for each group, department, or set of users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Cost and licensing: Cowork",
+      "type": "licensing",
+      "claim": "Service licensing varies and Microsoft lists Cowork as requiring a Copilot licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits",
+      "quote": "Depending on the service, organizations can use fixed licensing, the Copilot Credit Pre-purchase Plan (P3), pay-as-you-go billing, prepaid capacity packs, or supported combinations of these billing methods.\nCowork (Copilot license required)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Cost and licensing; Open questions: credit rates",
+      "type": "absence",
+      "claim": "The cited spending-policy pages do not state service credit rates and refer readers to a licensing guide.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot spending policies credit rates pricing usage based billing. Read cited setup, management, Studio, monitoring and billing overview pages: no per-service rates stated; overview links the Copilot Credits Guide for licensing details.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Cost and licensing: Consumption estimate",
+      "type": "cost",
+      "claim": "Consumption shows an estimated cost that might not match the bill.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending",
+      "quote": "**Cost**: The estimated cost of your AI usage in local currency, including negotiated rates. It includes usage paid for with prepaid credits and with pay-as-you-go, so it might not match your bill.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risks and limits: Hitting a limit; Governance controls: Interaction",
+      "type": "behaviour",
+      "claim": "Users hitting the limit lose access for the rest of the month until credits reset on the first.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "When users hit the limit, they lose access to agents and services for the rest of the month until credits reset on the first of the month.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risks and limits: Hitting a limit; Governance controls: Watching",
+      "type": "behaviour",
+      "claim": "Users can request first-time access or increased credit limits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending",
+      "quote": "End users in your organization can submit credit requests for first-time use or limit increases.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risks and limits: Hitting a limit",
+      "type": "behaviour",
+      "claim": "Users reaching the selected policy's limit do not fall back to another policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "When users reach their limit within a policy, they can request more credits but they don't default to other policies. The system keeps the user on the assigned policy and doesn't reevaluate the user against other policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Risks and limits: A per-user overrun",
+      "type": "behaviour",
+      "claim": "A running task exceeding the per-user limit can complete.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending",
+      "quote": "If a running task exceeds the per-user limit, it can complete without interruption.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Risks and limits: A per-user overrun",
+      "type": "behaviour",
+      "claim": "Excess per-user task usage does not count toward the policy limit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending",
+      "quote": "The excess usage doesn't count toward the policy limit",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Risks and limits: A per-user overrun; Open questions",
+      "type": "cost",
+      "claim": "Microsoft says excess per-user task usage is not billed, at Microsoft's sole discretion.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending",
+      "quote": "isn't billed (at Microsoft's sole discretion)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Risks and limits: A per-user overrun",
+      "type": "behaviour",
+      "claim": "Excess per-user task usage does not appear as consumed credits in Cost Management dashboards.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending",
+      "quote": "doesn't appear as consumed credits in the Cost Management dashboards",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Risks and limits: All environments; What to check",
+      "type": "applicability",
+      "claim": "All environments applies the resource policy tenant-wide and replaces existing Power Platform spending controls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs",
+      "quote": "Selecting **All environments** applies the resource-based spending policy to every environment and replaces their existing Power Platform admin center spending controls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Risks and limits: All environments; Open questions",
+      "type": "behaviour",
+      "claim": "A resource policy can take up to 12 minutes to apply after an environment is linked.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs",
+      "quote": "When you create a policy: After you link an environment to a Microsoft 365 spending policy, allow up to 12 minutes for the new policy to apply.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Risks and limits: All environments",
+      "type": "behaviour",
+      "claim": "Removing an environment or deleting its resource policy automatically restores the applicable Power Platform policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs",
+      "quote": "If you remove an environment from a spending policy or delete the resource-based spending policy, the applicable Power Platform admin center policy resumes for that environment automatically.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Risks and limits: AI Builder",
+      "type": "applicability",
+      "claim": "Resource policies do not cover AI Builder features or their credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs",
+      "quote": "Resource-based policies created in the Microsoft 365 admin center don't apply to AI Builder features or the credits they consume.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Risks and limits: AI Builder",
+      "type": "behaviour",
+      "claim": "Microsoft advises against moving resources using AI Builder to resource policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs",
+      "quote": "Don't move resources, agents, workflows or environments that use AI Builder to these policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Risks and limits: Moving groups",
+      "type": "behaviour",
+      "claim": "Previous consumption carries forward when a user moves groups or policies and counts against the new policy's limit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "Credits consumed under the previous spending policy remain part of the user's consumption history and are accounted for when enforcing the spending limit under the new policy. Moving a user between groups or spending policies doesn't reset the user's consumption.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Risks and limits: Moving groups",
+      "type": "behaviour",
+      "claim": "After a group move, Consumption displays only current-policy usage at user level.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending",
+      "quote": "Only the current usage against the current spending policy is displayed at a user level in the Consumption tab view.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Risks and limits: Coverage is by service list",
+      "type": "applicability",
+      "claim": "Spending policies cover the services listed as managed by the usage-based-billing experience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "For a list of services managed by usage-based billing method, see [Services managed by usage-based billing](../plan/usage-based-billing-overview-copilot-credits#services-managed-by-usage-based-billing).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Risks and limits: Coverage is by service list",
+      "type": "behaviour",
+      "claim": "Microsoft says it will add more services and agents to this experience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits",
+      "quote": "Microsoft will add more agents and services over time and provide notifications and updated content as they become available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Risks and limits: Coverage is by service list",
+      "type": "behaviour",
+      "claim": "Microsoft points to separate pay-as-you-go documentation for Copilot Chat, SharePoint agents and the Retrieval API.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits",
+      "quote": "For Copilot Chat, SharePoint Agents, or Microsoft Copilot Retrieval API (Preview), see [Microsoft Copilot pay-as-you-go service overview](pay-as-you-go-overview).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Risks and limits: The API is beta; controls notes",
+      "type": "availability",
+      "claim": "The API is beta, subject to change and unsupported in production applications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview",
+      "quote": "APIs under the `/beta` version are subject to change. Use of these APIs in production applications is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Governance controls: Roles",
+      "type": "role",
+      "claim": "AI Reader, Global Reader and supported reader roles can view consumption but cannot change configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
+      "quote": "These roles provide read-only access to consumption information and don't allow administrators to create or change spending policies, limits, alerts, request policies, or billing methods.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Governance controls: Roles",
+      "type": "role",
+      "claim": "A Power Platform role does not itself become a Microsoft 365 role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs",
+      "quote": "The recommendations are role assignments to consider; an existing Power Platform role does not itself become a Microsoft 365 role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Governance controls: Interaction",
+      "type": "behaviour",
+      "claim": "Threshold emails begin at the threshold and repeat daily until monthly reset or policy adjustment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
+      "quote": "Alert emails begin when usage reaches the specified threshold and continue daily until the monthly usage period resets or you adjust the spending policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "controls[5].note; Governance controls: Interaction",
+      "type": "behaviour",
+      "claim": "Deleting a policy does not remove, reallocate or reset credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "Deleting a spending policy doesn't remove, reallocate, or reset Copilot Credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Governance controls: Interaction",
+      "type": "behaviour",
+      "claim": "After deletion, users continue under another applicable group-membership policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "If another spending policy applies to a user through group membership, the user continues to consume Copilot Credits under the applicable policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Governance controls: Watching",
+      "type": "behaviour",
+      "claim": "Cost Management's Overview tab refreshes every four hours.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending",
+      "quote": "The **Overview** tab refreshes every 4 hours.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Governance controls: Watching",
+      "type": "behaviour",
+      "claim": "The Consumption tab refreshes every two hours.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending",
+      "quote": "The **Consumption** tab refreshes every 2 hours.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "Governance controls: Watching",
+      "type": "behaviour",
+      "claim": "Consumption reports credit usage by policy, user, group, agent and service.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending",
+      "quote": "The **Consumption** tab provides reporting experiences for copilot credit usage by:\n- Spending policy\n- User\n- Group\n- Agent\n- Service",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "Governance controls: Watching; What to check: limit utilisation",
+      "type": "behaviour",
+      "claim": "Consumption includes policy limit utilisation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending",
+      "quote": "**Limit utilization**: Credit usage divided by the current spending limit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "Governance controls: Watching",
+      "type": "admin-path",
+      "claim": "Administrators review submitted credit requests on the Credit requests page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending",
+      "quote": "To view and approve credit requests from end users, select **View requests**. The **Credit requests** page displays all pending and approved requests.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "Governance controls: Watching; Open questions",
+      "type": "absence",
+      "claim": "No PowerShell cmdlet for spending policies is documented in the pages read.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"spending policies\" \"PowerShell\" resource based Graph; Copilot spending policies Microsoft Graph PowerShell cmdlet New-Mg spending policy cost management. Read cited Graph overview/create/update and Studio management pages; no spending-policy cmdlet documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 79,
+      "where": "Open questions: identity-based limit-change timing",
+      "type": "absence",
+      "claim": "The cited pages do not give a propagation interval for identity-policy limit changes.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"spending policy\" \"limit change\" \"apply\" identity. Read policy management's Edit spending policy section and setup page; no update-propagation interval. Studio documentation's 12-minute interval concerns linking an environment to a resource policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 80,
+      "where": "What to check: Consumption tab limit utilisation",
+      "type": "consistency",
+      "claim": "The Consumption monitoring control recommended by the checklist has no controls-table row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Use the Consumption tab's limit utilisation to find policies close to their limit before users are blocked.\nThe controls table covers activation, creation, editing, alerts, resource policies and deletion, but not Consumption monitoring.",
+      "severity": "minor",
+      "fix": "Remove the final What to check bullet beginning 'Use the Consumption tab'. Keep the supported monitoring description under Governance controls: Watching."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-18T05:16:41.882Z",
+    "summary": {
+      "links": 8,
+      "unreachable": 0,
+      "uiPaths": 6,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 4,
+      "apiCallsNotOnPage": 2,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-create",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Activating the default spending policy for the whole organisation",
+        "docs": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Cost Management",
+          "Get Started"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Creating identity-based policies for users or groups, with services, limits and billing method",
+        "docs": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Cost Management",
+          "Configuration",
+          "+ Add spending policy"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Creating identity-based policies for users or groups, with services, limits and billing method",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-create",
+        "reachable": true,
+        "token": "/beta/copilot/costManagement",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Changing a policy's scope, services, billing method, limits and alerts",
+        "docs": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Cost Management",
+          "Configuration",
+          "Save changes"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Changing a policy's scope, services, billing method, limits and alerts",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+        "reachable": true,
+        "token": "If-Match",
+        "found": true
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Alert thresholds on a policy",
+        "docs": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Cost Management",
+          "Configuration"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Alert thresholds on a policy",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview",
+        "reachable": true,
+        "token": "/beta/copilot/costManagement",
+        "found": false
+      },
+      {
+        "index": 4,
+        "side": "ui",
+        "governs": "Resource-based policies for Copilot Studio agents and environments, with per-agent limits",
+        "docs": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Cost Management",
+          "Configuration",
+          "Add spending policy"
+        ],
+        "missing": []
+      },
+      {
+        "index": 5,
+        "side": "ui",
+        "governs": "Removing a policy and its limits",
+        "docs": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Cost Management",
+          "Configuration",
+          "More actions",
+          "Delete"
+        ],
+        "missing": []
+      },
+      {
+        "index": 5,
+        "side": "api",
+        "governs": "Removing a policy and its limits",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview",
+        "reachable": true,
+        "token": "/beta/copilot/costManagement",
+        "found": false
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

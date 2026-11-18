@@ -4,7 +4,7 @@ slug: "microsoft-copilot-studio-discover-and-use-shared-plugins-in-copilot-studi
 roadmapId: 570669
 topic: "copilot-studio"
 products: ["Microsoft Copilot Studio"]
-summary: "The roadmap says Copilot Studio will connect to Microsoft's shared plugin registry so makers can find and use plugins. Learn does not yet describe the feature, its default or its cost; admins should plan who approves plugins."
+summary: "The roadmap says Copilot Studio will connect to Microsoft's shared plugin registry so makers can find and use plugins. Learn does not yet describe the feature, its default or any registry-specific charge; admins should plan who approves plugins."
 status: "in-development"
 releasePhase: ["General Availability","Preview"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -18,7 +18,7 @@ defaultState: "unknown"
 action: "review"
 licensing:
   model: "unknown"
-  notes: "Not yet published. The roadmap item and the Learn pages read for this briefing name no licence or meter for discovering or using plugins from Copilot Studio."
+  notes: "Any additional charge specific to registry discovery or adding a plugin is not yet published. Copilot Studio agent usage is measured in Copilot Credits under the applicable harness billing rules and licensing inclusions."
 audiences: ["m365-admin","power-platform-admin","maker","security"]
 tags: ["copilot-studio","plugins","tools","agent-and-plugin-access","data-policies","agent-governance","extensibility"]
 sources:
@@ -51,6 +51,15 @@ sources:
     kind: "learn"
   - title: "Which connectors and tools makers can use in Copilot Studio agents (PowerShell)"
     url: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/get-dlppolicy"
+    kind: "learn"
+  - title: "Licensing for agents powered by the standard harness"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing"
+    kind: "learn"
+  - title: "Billing rates and management"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management"
+    kind: "learn"
+  - title: "Overview of usage-based billing"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview"
     kind: "learn"
 videos: []
 related: ["data-policies","mcp","copilot-studio-require-human-approval-for-tool-calls","copilot-credits","copilot-studio-block-maker-provided-credentials"]
@@ -95,19 +104,23 @@ changes:
     note: "Correction: data policy path now includes Edit Policy and both Next steps; connector wording narrowed to Power Platform connectors; plugin approval flow no longer asserted for this integration."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 66 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-18"
+    note: "Correction: cost statements now limit the unpublished charge to registry-specific costs and state that Copilot Studio agent usage is measured in Copilot Credits."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 74 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-18"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 66
-  confirmed: 65
+  claims: 74
+  confirmed: 74
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "56f721fcf0ea4c316d407f41dee61e89"
+  contradicted: 0
+  attempts: 0
+  hash: "e1d8226b11d31e3a5550e61af026d365"
 ---
 
 ## What's changing
@@ -142,9 +155,11 @@ Microsoft has not stated what happens on arrival, including whether the registry
 
 ## Cost and licensing
 
-Licensing for this feature is not yet published. The roadmap item names no licence or meter, and the Learn page on adding tools to custom agents describes the tool types makers can add without stating a licence for plugins.
+No licence or meter specific to this feature is named by the roadmap item, and the Learn page on adding tools to custom agents describes the tool types makers can add without stating a licence for plugins. Any additional charge specific to registry discovery or adding a plugin is not yet published.
 
-The Microsoft Graph Package Management API, which can list and block plugin packages, requires a Microsoft Agent 365 licence according to its reference page; that is a statement about the API, not about makers using plugins in Copilot Studio. Whether plugin use from Copilot Studio is billed in Copilot Credits is not yet published; the meter is explained in /concepts/copilot-credits/. Until then the known cost is admin time for approving plugins and maker time for evaluating them.
+Copilot Studio agent usage is measured in Copilot Credits under the applicable harness billing rules and licensing inclusions. Learn describes Copilot Credits as the common currency across Copilot Studio capabilities, and the meter is explained in /concepts/copilot-credits/.
+
+The Microsoft Graph Package Management API, which can list and block plugin packages, requires a Microsoft Agent 365 licence according to its reference page; that is a statement about the API, not about makers using plugins in Copilot Studio. Until Microsoft publishes anything registry-specific, the known incremental cost of this change is admin time for approving plugins and maker time for evaluating them.
 
 ## Scope
 
@@ -191,16 +206,10 @@ No Copilot Studio switch for the registry connection is documented at the time o
 - Is the registry connection on for all makers on arrival, or must an admin enable it? Watch the Learn page for Copilot Studio tools and Message center.
 - Do the Microsoft 365 admin center plugin controls (block, user availability, publisher category) decide what a maker sees in Copilot Studio?
 - Do Power Platform data policies evaluate plugins from the registry, and under which connector or data group?
-- Which licence or meter, if any, applies when a maker adds a plugin to an agent, and does it use Copilot Credits?
+- Which additional licence or meter, if any, applies specifically to discovering or adding a plugin from the registry, beyond the Copilot Credits that measure agent usage? Watch the Learn billing pages and Message center.
 
 <!-- rationale
 risk: Medium. Plugins can bundle tools that reach apps and data, and makers would be able to find them from Copilot Studio; existing plugin and data policy controls exist, but Microsoft has not confirmed they cover this registry connection.
-cost: Low. The only cost the sources show is admin and maker time; no licence or meter for this feature is yet published, so the rating may change once Microsoft publishes licensing.
+cost: Low. The only incremental cost the sources show for registry discovery is admin and maker time; any additional charge specific to discovering or adding a plugin is not yet published, so the rating may change once Microsoft publishes it.
 impact: Medium. Makers in Copilot Studio are the people who would notice, because the roadmap says discovery of plugins and connectors becomes easier for them; end users are not named.
--->
-
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Cost and licensing; summary; front matter: licensing.notes; rationale: cost; Open questions / cost: Whether plugin use from Copilot Studio is billed in Copilot Credits is not yet published. | Found: Copilot Credits are the common currency across Copilot Studio capabilities. | Fix: Replace the billing uncertainty with: 'Any additional charge specific to registry discovery or adding a plugin is not yet published. Copilot Studio agent usage is measured in Copilot Credits under the applicable harness billing rules and licensing inclusions.' Cite https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing, https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management and https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview. In the summary, licensing notes, cost rationale and final open question, limit the unpublished-cost claim to additional registry-specific charges; do not describe ordinary runtime billing as unknown. The low rating can remain for the incremental discovery change, rather than representing the cost of running agents. | Source: https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing
 -->

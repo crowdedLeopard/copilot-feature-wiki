@@ -2,50 +2,53 @@
   "slug": "power-automate-process-mining-analyze-processes-using-object-centric-process-mining",
   "roadmapId": 576870,
   "title": "Power Automate Process Mining: analyse processes with object-centric process mining",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-18",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
-  "verifierVerdict": "hold",
-  "notes": [
-    "claim 64: severity major on a rationale: impact rating lowered to minor; ratings are judgements and cannot hold a page"
-  ],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-18",
-    "reasons": [
-      "5 blocking findings (claims 37, 53, 54, 55, 57)"
-    ]
-  },
+  "attempts": 0,
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
   "counts": {
-    "claims": 69,
-    "confirmed": 61,
-    "unconfirmed": 2,
-    "contradicted": 6,
-    "blocker": 5,
-    "major": 1,
-    "minor": 5
+    "claims": 72,
+    "confirmed": 72,
+    "unconfirmed": 0,
+    "contradicted": 0,
+    "blocker": 0,
+    "major": 0,
+    "minor": 1
   },
-  "summary": "Hold: the briefing treats published platform capacity and Fabric billing rules as unanswered questions. Its capacity allocation path omits the Add-ons section, and the current API reference explicitly lists ProcessMiningDataStorage, contrary to the control's applicability warning.",
+  "summary": "The briefing's roadmap facts, ingestion requirements, licensing figures and capacity allocation references are supported. The capacity API is present in the cited tutorial despite the automatic pre-check warning; the Fabric administrator role statement needs an additional citation.",
   "claims": [
     {
       "n": 1,
-      "where": "summary; What's changing; Scope",
+      "where": "summary; What's changing; Why it matters",
       "type": "behaviour",
-      "claim": "OCPM in Power Automate Process Mining follows multiple objects and object types rather than assigning every event to a single case ID.",
+      "claim": "OCPM analyzes interacting business objects such as orders, deliveries and invoices rather than forcing each event into one case ID.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/object-centric-overview",
-      "quote": "Object-centric process mining (OCPM) analyzes processes by following the real objects that interact—such as orders, deliveries, invoices, and payments—rather than forcing every event into a single case ID.",
+      "quote": "Object-centric process mining (OCPM) analyzes processes by following the real objects that interact",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
-      "where": "summary; What's changing; Risk assessment; rationale: risk",
+      "where": "summary; What's changing",
       "type": "behaviour",
-      "claim": "An object-centric event log can be ingested from a CSV file stored in Azure Data Lake Gen2 or OneLake.",
+      "claim": "OCPM records events related to multiple objects and object types in one process.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/object-centric-overview",
+      "quote": "OCPM models that reality by recording events that relate to many objects and object types in one process, preserving their relationships end-to-end.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "summary; What's changing; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "The ingestion page directs makers to store the object-centric event log as a CSV in Azure Data Lake Gen2 or OneLake.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/object-centric-ingest-event-log",
       "quote": "Then, store the resulting file in a CSV format in either Azure Data Lake Gen2 or OneLake.",
@@ -53,10 +56,10 @@
       "fix": null
     },
     {
-      "n": 3,
+      "n": 4,
       "where": "What's changing",
       "type": "admin-path",
-      "claim": "A maker starts creation with Process mining > Start here, then Object-centric process mining.",
+      "claim": "The maker selects Process mining > Start here, then Object-centric process mining.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/object-centric-ingest-event-log",
       "quote": "On the navigation pane to the left, select Process mining > Start here.\n2. Select Object-centric process mining.",
@@ -64,7 +67,7 @@
       "fix": null
     },
     {
-      "n": 4,
+      "n": 5,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "Mapping requires one Activity attribute.",
@@ -75,7 +78,7 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 6,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "Mapping requires one Start event attribute.",
@@ -86,7 +89,7 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 7,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "Mapping requires at least two Object type attributes.",
@@ -97,21 +100,10 @@
       "fix": null
     },
     {
-      "n": 7,
-      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
-      "type": "behaviour",
-      "claim": "Event and object-level attributes, including financial attributes, are optional but highly recommended.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/object-centric-ingest-event-log",
-      "quote": "Event and Object level attributes (including financial) are optional but highly recommended for more detailed analysis",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 8,
       "where": "What's changing; Why it matters; Governance guidance: At rollout; rationale: risk",
       "type": "behaviour",
-      "claim": "Choose where to export offers optional OCPM semantic model export to Fabric or Skip export.",
+      "claim": "Choose where to export offers optional export of the OCPM semantic model to Fabric, or Skip export.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/object-centric-ingest-event-log",
       "quote": "In the Choose where to export step, select Continue to set up the export of OCPM semantic model in your Fabric workspace, or Skip export.",
@@ -122,7 +114,7 @@
       "n": 9,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "The maker selects a Fabric workspace and a lakehouse for the optional export.",
+      "claim": "The maker selects the destination Fabric workspace and lakehouse for export.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/object-centric-ingest-event-log",
       "quote": "Select from the list of available Fabric workspaces.\n2. Select a Fabric Lakehouse in the workspace.",
@@ -131,9 +123,9 @@
     },
     {
       "n": 10,
-      "where": "What's changing; rationale: impact",
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "After ingestion finishes, the maker lands on the Process overview tab.",
+      "claim": "After ingestion, the maker lands on the Process overview tab.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/object-centric-ingest-event-log",
       "quote": "After the ingestion finishes, you're navigated to the process intelligence experience for OCPM with the Process overview tab active.",
@@ -166,26 +158,37 @@
       "n": 13,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Process overview includes process analysis and filtering.",
+      "claim": "Process overview includes a process analysis widget.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/object-centric-process-overview",
-      "quote": "All visuals in the Process overview react to the selected filter criteria.\n\nProcess analysis provides detailed statistical analysis based on the leading object and an optional path",
+      "quote": "Process analysis provides detailed statistical analysis based on the leading object and an optional path",
       "severity": null,
       "fix": null
     },
     {
       "n": 14,
-      "where": "front matter: status; What's changing",
-      "type": "record",
-      "claim": "The roadmap status is Launched.",
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Process overview visuals respond to filters.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "source": "https://learn.microsoft.com/power-automate/object-centric-process-overview",
+      "quote": "All visuals in the Process overview react to the selected filter criteria.",
       "severity": null,
       "fix": null
     },
     {
       "n": 15,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
       "claim": "The roadmap target date is June CY2026.",
@@ -196,7 +199,7 @@
       "fix": null
     },
     {
-      "n": 16,
+      "n": 17,
       "where": "front matter: previewDate; What's changing",
       "type": "record",
       "claim": "The roadmap preview date is November CY2025.",
@@ -207,43 +210,43 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 18,
       "where": "front matter: releasePhase; What's changing; Risk assessment; Open questions",
       "type": "record",
       "claim": "The roadmap lists both General Availability and Preview.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "front matter: clouds; What's changing; Scope",
-      "type": "record",
-      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) only, not GCC, GCC High or DoD.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "quote": "\"releasePhase\": [\n    \"General Availability\",\n    \"Preview\"\n  ]",
       "severity": null,
       "fix": null
     },
     {
       "n": 19,
-      "where": "front matter: platforms; What's changing; Scope",
+      "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap platform is Web.",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only listed cloud; GCC, GCC High and DoD are not listed.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"platforms\": [\"Web\"]",
+      "quote": "\"clouds\": [\n    \"Worldwide (Standard Multi-Tenant)\"\n  ]",
       "severity": null,
       "fix": null
     },
     {
       "n": 20,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\n    \"Web\"\n  ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
       "where": "front matter: defaultState; What's changing; Why it matters; Governance guidance; rationale: impact",
       "type": "default",
-      "claim": "The feature is automatically enabled for admins, makers and marketers, supporting defaultState on.",
+      "claim": "The feature is on without an administrator enabling it, automatically enabled for admins, makers and marketers.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "This premium feature is automatically enabled for all Power Automate Process Mining customers.\n\nEnabled for admins/makers/marketers automatically",
@@ -251,43 +254,65 @@
       "fix": null
     },
     {
-      "n": 21,
-      "where": "Why it matters",
-      "type": "behaviour",
-      "claim": "OCPM does not change what existing processes or flows do.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: \"object-centric\" \"autonomous\" \"existing processes\"; opened object-centric-overview, object-centric-ingest-event-log and object-centric-process-overview. They describe the new analysis workflow, not a guarantee about all existing processes or flows.",
-      "severity": "major",
-      "fix": "Remove 'and it does not change what existing processes or flows do'."
-    },
-    {
       "n": 22,
-      "where": "Why it matters",
-      "type": "default",
-      "claim": "Administrators do not need an activation step for the feature.",
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance; Open questions",
+      "type": "availability",
+      "claim": "Learn still labels the Process overview tab Preview.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "This premium feature is automatically enabled for all Power Automate Process Mining customers.",
+      "source": "https://learn.microsoft.com/power-automate/object-centric-process-overview",
+      "quote": "Process Overview (Preview): Denotes that the current tab is showing the overview of the process.",
       "severity": null,
       "fix": null
     },
     {
       "n": 23,
-      "where": "controls[1].note; Risk assessment: Security & identity; Governance controls",
-      "type": "applicability",
-      "claim": "Environment security and Dataverse security roles govern access to process mining.",
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Only the Process overview tab is available in the documented preview.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/process-advisor-security",
-      "quote": "The process mining capability relies on environment security and Microsoft Dataverse security roles and privileges to grant access to its features in Power Automate.",
+      "source": "https://learn.microsoft.com/power-automate/object-centric-process-overview",
+      "quote": "In the preview of this feature, only the Process overview tab is available.",
       "severity": null,
       "fix": null
     },
     {
       "n": 24,
-      "where": "Why it matters; Risk assessment; Scope; Governance guidance; Governance controls",
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Only the Default view is available in the documented preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/object-centric-process-overview",
+      "quote": "In the preview of this feature, only the Default view is available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[1]; Why it matters; Risk assessment: Change & support; Governance controls; rationale: risk",
+      "type": "absence",
+      "claim": "No OCPM-specific admin UI or API on/off switch is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: object-centric process mining disable enable tenant setting API; object-centric settings disable; object-centric production-ready. Opened OCPM overview, ingest, process overview, Power Platform tenant-settings and settings-features; no OCPM-specific switch found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Why it matters",
+      "type": "absence",
+      "claim": "No change is documented for users who do not build process mining models.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Automate object centric process mining existing processes users automatic changes. Opened OCPM overview, ingest, process overview and semantic model; no change for non-builders documented. The ingestion workflow starts with explicitly creating a process.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Why it matters; Risk assessment: Security & identity; Scope; Governance controls",
       "type": "role",
-      "claim": "Environment maker can create, share and contribute to process mining processes.",
+      "claim": "Environment makers can create, share and contribute to processes.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/process-advisor-security",
       "quote": "The Environment maker role can use the process mining capabilities to create, share, and contribute to processes.",
@@ -295,120 +320,43 @@
       "fix": null
     },
     {
-      "n": 25,
-      "where": "Risk assessment: Security & identity; Governance controls",
-      "type": "role",
-      "claim": "Administrators and system customizers can access all processes in the environment.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/process-advisor-security",
-      "quote": "Administrators and system customizers can access all processes created in the environment.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "Risk assessment: Security & identity; Governance guidance: At rollout; Governance controls",
-      "type": "role",
-      "claim": "Process Mining User can only view created process reports.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/process-advisor-security",
-      "quote": "The Process Mining User security role can only view created process reports.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
-      "where": "Governance controls",
-      "type": "role",
-      "claim": "Microsoft says not to assign the internal Process Mining Application role to users.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/process-advisor-security",
-      "quote": "The Process Mining Application is an internal security role that process mining uses. (Process mining was formerly named process advisor). Don't assign this security role to users.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 28,
-      "where": "Governance controls",
-      "type": "role",
-      "claim": "Microsoft says not to modify privileges in Process Mining User or Process Mining Application.",
+      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Object-centric event logs carry object IDs.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/process-advisor-security",
-      "quote": "Don't modify the set of privileges in the Process Mining User or Process Mining Application security roles.",
+      "source": "https://learn.microsoft.com/power-automate/object-centric-overview",
+      "quote": "each row is an event (with activity and timestamp) and has one or more columns listing the object IDs per object type that the event touched",
       "severity": null,
       "fix": null
     },
     {
       "n": 29,
-      "where": "Scope; Governance guidance: Before rollout",
-      "type": "applicability",
-      "claim": "OneLake ingestion requires Users can access data stored in OneLake with apps external to Fabric to be switched on.",
+      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Event and object attributes, including financial attributes, are optional but highly recommended.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/process-mining-files-fabric-onelake",
-      "quote": "Ensure that Users can access data stored in OneLake with apps external to the Fabric option is switched on in the OneLake tenant settings.",
+      "source": "https://learn.microsoft.com/power-automate/object-centric-ingest-event-log",
+      "quote": "Event and Object level attributes (including financial) are optional but highly recommended for more detailed analysis",
       "severity": null,
       "fix": null
     },
     {
       "n": 30,
-      "where": "Scope",
-      "type": "behaviour",
-      "claim": "OneLake ingestion needs a Fabric workspace other than My workspace.",
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Access to the exported Fabric model and lakehouse copy is governed by Fabric permissions rather than Power Automate process permissions.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/process-mining-files-fabric-onelake",
-      "quote": "A Fabric workspace that's different from the default My workspace.",
+      "source": "https://learn.microsoft.com/fabric/security/permission-model",
+      "quote": "Workspace roles are used to control access to workspaces and the content within them.",
       "severity": null,
       "fix": null
     },
     {
       "n": 31,
-      "where": "Risk assessment: Security & identity",
-      "type": "role",
-      "claim": "The user performing initial Fabric workspace setup for the environment needs Admin.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/process-mining-files-fabric-onelake",
-      "quote": "The Admin role must be attributed to the user performing the initial workspace setup for the environment for the other users in the same environment.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
-      "where": "Risk assessment: Security & identity; Scope; Governance guidance: After rollout",
-      "type": "role",
-      "claim": "The Fabric workspace must be shared with the Process Insight Prod service principal as Admin.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/process-mining-files-fabric-onelake",
-      "quote": "The Fabric workspace needs to be shared to the Process Insight Prod service principal with an Admin role.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
-      "where": "Scope",
-      "type": "behaviour",
-      "claim": "Data must be in final event log format before OneLake ingestion.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/process-mining-files-fabric-onelake",
-      "quote": "All data must be in final event log format and meet the requirements listed in Data requirements. Data should be ready to be mapped to the process mining schema.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
-      "where": "Scope",
-      "type": "behaviour",
-      "claim": "No data transformation is available after OneLake ingestion.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/process-mining-files-fabric-onelake",
-      "quote": "No data transformation is available post ingestion.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
       "where": "Risk assessment: Data exposure",
       "type": "cost",
-      "claim": "Stored process data consumes Dataverse storage, mostly file capacity.",
+      "claim": "Stored process data consumes capacity, mostly file capacity.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
       "quote": "Depending on the size of the process data you import, you might run out of Dataverse storage capacity. ... The process data we store uses mostly file capacity.",
@@ -416,32 +364,87 @@
       "fix": null
     },
     {
-      "n": 36,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "absence",
-      "claim": "No autonomous actions are described for OCPM.",
+      "n": 32,
+      "where": "controls[1].note; Risk assessment: Security & identity; Governance controls",
+      "type": "applicability",
+      "claim": "Process mining access relies on environment security and Dataverse security roles.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"object-centric\" \"autonomous\" \"existing processes\". Opened object-centric-overview, object-centric-ingest-event-log, object-centric-process-overview and object-centric-semantic-model; no autonomous business actions were described.",
+      "source": "https://learn.microsoft.com/power-automate/process-advisor-security",
+      "quote": "The process mining capability relies on environment security and Microsoft Dataverse security roles and privileges to grant access to its features in Power Automate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Security & identity; Governance controls",
+      "type": "role",
+      "claim": "Administrators and system customizers can access every process in the environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-advisor-security",
+      "quote": "Administrators and system customizers can access all processes created in the environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Security & identity; Governance controls",
+      "type": "role",
+      "claim": "The Process Mining User security role can only view created process reports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-advisor-security",
+      "quote": "The Process Mining User security role can only view created process reports.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Security & identity; Scope",
+      "type": "role",
+      "claim": "OneLake ingestion requires sharing the Fabric workspace with the Process Insight Prod service principal as Admin.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-files-fabric-onelake",
+      "quote": "The Fabric workspace needs to be shared to the Process Insight Prod service principal with an Admin role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "The user performing initial Fabric workspace setup for the environment needs the Admin role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-files-fabric-onelake",
+      "quote": "The Admin role must be attributed to the user performing the initial workspace setup for the environment for the other users in the same environment.",
       "severity": null,
       "fix": null
     },
     {
       "n": 37,
       "where": "Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "No write actions are described for OCPM.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/power-automate/object-centric-semantic-model",
-      "quote": "When you publish a process to Fabric workspace, it creates a new DirectLake semantic model and an empty Power BI report connected to the semantic model.",
-      "severity": "blocker",
-      "fix": "Replace 'No autonomous or write actions are described for OCPM' with 'No autonomous business actions are described for OCPM; optional export creates a semantic model and report in Fabric.' Cite https://learn.microsoft.com/power-automate/object-centric-semantic-model."
+      "type": "absence",
+      "claim": "No autonomous business actions are described for OCPM.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: object-centric process mining autonomous. Opened object-centric-overview, object-centric-ingest-event-log, object-centric-process-overview and object-centric-semantic-model; documented operations are ingestion, analysis, refresh and optional export, not autonomous business actions.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 38,
+      "where": "Risk assessment: Autonomy & actions; writer evidence",
+      "type": "behaviour",
+      "claim": "Publishing to Fabric creates a DirectLake semantic model and an empty Power BI report connected to it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/object-centric-semantic-model",
+      "quote": "When you publish a process to Fabric workspace, it creates a new DirectLake semantic model and an empty Power BI report connected to the semantic model.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "Refresh Data in the analytics overview triggers full ingestion and process model creation.",
+      "claim": "Refresh Data in the analytics overview triggers full ingestion and creation of the process model.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/object-centric-process-overview",
       "quote": "Refresh Data: Button to reload and refresh the displayed analytics with the most recent data (this action triggers the full ingestion and creation of the process model).",
@@ -449,7 +452,7 @@
       "fix": null
     },
     {
-      "n": 39,
+      "n": 40,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
       "claim": "Process mining is licensed as part of Microsoft Power Automate.",
@@ -460,32 +463,43 @@
       "fix": null
     },
     {
-      "n": 40,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "Each Power Automate Premium licence adds 50 MB of process mining capacity to a tenant-wide pool.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
-      "quote": "Each Power Automate Premium license adds 50 MB of process mining capacity to a tenant-wide capacity pool up to a total of 100 GB.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 41,
-      "where": "Cost and licensing; rationale: cost",
+      "where": "front matter: licensing.model",
       "type": "licensing",
-      "claim": "The pooled capacity contributed by Premium licences is capped at 100 GB.",
+      "claim": "The licensing model is mixed, combining per-user Power Automate Premium capacity and a tenant-wide Process Mining add-on.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
-      "quote": "Each Power Automate Premium license adds 50 MB of process mining capacity to a tenant-wide capacity pool up to a total of 100 GB.",
+      "quote": "The Power Automate Premium license is a per-user license ... The Process Mining add-on is a tenant-wide license that's available for the Power Automate Premium license.",
       "severity": null,
       "fix": null
     },
     {
       "n": 42,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Each Power Automate Premium licence adds 50 MB to a tenant-wide process mining capacity pool.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
+      "quote": "Each Power Automate Premium license adds 50 MB of process mining capacity to a tenant-wide capacity pool up to a total of 100 GB.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
       "where": "Cost and licensing; rationale: cost",
       "type": "licensing",
-      "claim": "The Process Mining add-on is needed to process more data once the 100 GB pooled capacity is reached.",
+      "claim": "The process mining capacity accumulated from Premium licences is capped at 100 GB per tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
+      "quote": "Each Power Automate Premium license adds 50 MB of process mining capacity to a tenant-wide capacity pool up to a total of 100 GB.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "At the 100 GB threshold, additional process mining capacity requires the Process Mining add-on.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
       "quote": "When you reach 100 GB, you need to purchase the Power Automate Process Mining add-on to process more data.",
@@ -493,7 +507,7 @@
       "fix": null
     },
     {
-      "n": 43,
+      "n": 45,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
       "claim": "The Process Mining add-on is a tenant-wide licence available for Power Automate Premium.",
@@ -504,10 +518,10 @@
       "fix": null
     },
     {
-      "n": 44,
+      "n": 46,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "The add-on adds 100 GB of process mining capacity.",
+      "claim": "The Process Mining add-on adds 100 GB to the process mining capacity pool.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
       "quote": "An extra 100 GB of process mining capacity to the capacity pool, which users with the Power Automate Premium license can use.",
@@ -515,7 +529,7 @@
       "fix": null
     },
     {
-      "n": 45,
+      "n": 47,
       "where": "Cost and licensing",
       "type": "licensing",
       "claim": "The add-on adds 2 GB of Dataverse database capacity.",
@@ -526,7 +540,7 @@
       "fix": null
     },
     {
-      "n": 46,
+      "n": 48,
       "where": "Cost and licensing",
       "type": "licensing",
       "claim": "The add-on adds 1 TB of Dataverse file capacity.",
@@ -537,10 +551,10 @@
       "fix": null
     },
     {
-      "n": 47,
+      "n": 49,
       "where": "Cost and licensing; rationale: cost",
       "type": "cost",
-      "claim": "The licensing FAQ lists the Process Mining add-on at $5,000 USD for 100 GB of data stored per month.",
+      "claim": "The FAQ lists the Process Mining add-on at $5,000 for 100 GB of data stored per month.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
       "quote": "List Price (USD): $5,000 for 100 GB of data stored/month",
@@ -548,10 +562,10 @@
       "fix": null
     },
     {
-      "n": 48,
+      "n": 50,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "Power Automate Premium is a required prerequisite for the add-on.",
+      "claim": "Power Automate Premium is a required prerequisite for the Process Mining add-on.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
       "quote": "Required prerequisite: Power Automate Premium. Multiple add-ons can be applied to a single prerequisite.",
@@ -559,10 +573,10 @@
       "fix": null
     },
     {
-      "n": 49,
+      "n": 51,
       "where": "Cost and licensing",
       "type": "cost",
-      "claim": "Capacity should be purchased for peak utilisation over a 12-month contract period.",
+      "claim": "The FAQ says to purchase capacity for peak utilization over a 12-month contract period.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
       "quote": "Capacity should be purchased for the peak utilization over a 12-month contract period.",
@@ -570,10 +584,10 @@
       "fix": null
     },
     {
-      "n": 50,
+      "n": 52,
       "where": "Cost and licensing; Governance guidance: After rollout",
-      "type": "cost",
-      "claim": "Customers can assess highest monthly process mining usage in the Power Platform admin center.",
+      "type": "behaviour",
+      "claim": "Customers can assess their highest monthly process mining usage in the Power Platform admin center.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
       "quote": "Yes, customers can assess their highest monthly Process Mining usage to understand capacity needed. Current and past usage data are available in the Power Platform admin center.",
@@ -581,7 +595,7 @@
       "fix": null
     },
     {
-      "n": 51,
+      "n": 53,
       "where": "Cost and licensing",
       "type": "licensing",
       "claim": "Power BI licences are not included in Power Automate Process Mining.",
@@ -592,197 +606,208 @@
       "fix": null
     },
     {
-      "n": 52,
+      "n": 54,
       "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
       "type": "absence",
-      "claim": "The OCPM pages do not name a separate OCPM licence or meter.",
+      "claim": "The OCPM pages name no separate licence or meter, and no separate OCPM meter is published.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"object-centric\" \"licensing\" \"capacity\"; \"object-centric\" \"Fabric\" \"cost\". Opened object-centric-overview, object-centric-ingest-event-log, object-centric-process-overview, object-centric-semantic-model and process-advisor-overview; no separate OCPM licence or meter stated.",
+      "quote": "Searched: object-centric process mining licensing meter price; object-centric process mining license premium. Opened OCPM overview, ingest, process overview, semantic model, process-advisor-overview and Power Platform licensing FAQ; no separate OCPM licence or meter found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 53,
-      "where": "Cost and licensing; Open questions",
-      "type": "licensing",
-      "claim": "Whether OCPM data draws on the existing process mining capacity pool is not yet published.",
-      "status": "contradicted",
+      "n": 55,
+      "where": "summary; Cost and licensing",
+      "type": "applicability",
+      "claim": "OCPM is a Power Automate Process Mining capability subject to its process mining capacity pool.",
+      "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
       "quote": "Each Power Automate Premium license adds 50 MB of process mining capacity to a tenant-wide capacity pool up to a total of 100 GB.",
-      "severity": "blocker",
-      "fix": "Replace the capacity-pool uncertainty with 'OCPM is part of Power Automate Process Mining and is subject to its published process mining capacity pool.' Remove the matching capacity-pool question from Open questions; retain only the narrower question about a separate OCPM-specific meter."
-    },
-    {
-      "n": 54,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "What the optional Fabric export costs on the Fabric side is not yet published.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/fabric/onelake/onelake-consumption",
-      "quote": "OneLake storage is billed at a pay-as-you-go rate per GB of data used and doesn't consume Fabric Capacity Units (CUs). Fabric items like lakehouses and warehouses consume OneLake storage.",
-      "severity": "blocker",
-      "fix": "Replace the Fabric-cost uncertainty with 'Fabric export creates a semantic model on Fabric Lakehouse delta tables. OneLake lakehouse storage is billed pay-as-you-go per GB, and OneLake read and write requests consume Fabric Capacity Units.' Cite https://learn.microsoft.com/power-automate/object-centric-semantic-model and https://learn.microsoft.com/fabric/onelake/onelake-consumption."
-    },
-    {
-      "n": 55,
-      "where": "controls[0].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "The allocation path is Power Platform admin center > Licensing > Capacity add-ons > Summary > Manage.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/power-platform/admin/capacity-add-on",
-      "quote": "On the Capacity page, select the Summary tab.\n\nOn the Summary tab, do one of the following steps to open the Manage add-ons screen:\n\n- Scroll down to the Add-ons section, and select Manage.",
-      "severity": "blocker",
-      "fix": "Replace the path in controls[0].ui and the rendered table with 'Licensing > Capacity add-ons > Summary > Add-ons > Manage'; the existing path omits the Add-ons section."
+      "severity": null,
+      "fix": null
     },
     {
       "n": 56,
-      "where": "controls[0].api; Governance controls table",
-      "type": "command",
-      "claim": "The cited tutorial documents PATCH https://api.powerplatform.com/licensing/environments/{environmentId}/allocations?api-version=2022-03-01-preview for allocating add-ons.",
+      "where": "Cost and licensing; writer evidence",
+      "type": "behaviour",
+      "claim": "The exported semantic model is created on Fabric Lakehouse delta tables.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-allocate-capacity-addons",
-      "quote": "Invoke-RestMethod -Method Patch -Uri \"https://api.powerplatform.com/licensing/environments/$EnvironmentId/allocations?api-version=2022-03-01-preview\"",
-      "severity": "minor",
-      "fix": "Keep the tutorial-backed endpoint, but add to its note: 'The tutorial uses API version 2022-03-01-preview; the current Currency Allocation reference documents 2024-10-01.' Cite https://learn.microsoft.com/rest/api/power-platform/licensing/currency-allocation/patch-currency-allocation-by-environment. The pre-check's missing-endpoint warning is not confirmed."
+      "source": "https://learn.microsoft.com/power-automate/object-centric-semantic-model",
+      "quote": "The semantic model is created on top of Fabric Lakehouse delta tables.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 57,
-      "where": "controls[0].note; Governance controls table and prose",
-      "type": "absence",
-      "claim": "Microsoft has not confirmed that the allocation API applies to Process Mining capacity or published its currency type.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/rest/api/power-platform/licensing/currency-allocation/patch-currency-allocation-by-environment",
-      "quote": "Allocate and deallocate the currencies for the environment.\n\nExternalCurrencyType\n\nThe available currency type that can be allocated to an environment.\n\nProcessMiningDataStorage",
-      "severity": "blocker",
-      "fix": "Replace the API applicability warning in the control note and Governance controls prose with 'The current Currency Allocation API reference lists ProcessMiningDataStorage as an allocatable currency type; the generic UI page does not explicitly identify the Process Mining add-on.' Cite https://learn.microsoft.com/rest/api/power-platform/licensing/currency-allocation/patch-currency-allocation-by-environment."
+      "where": "Cost and licensing; writer evidence",
+      "type": "cost",
+      "claim": "OneLake lakehouse storage is billed pay-as-you-go per GB.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/fabric/onelake/onelake-consumption",
+      "quote": "OneLake storage is billed at a pay-as-you-go rate per GB of data used and doesn't consume Fabric Capacity Units (CUs). Fabric items like lakehouses and warehouses consume OneLake storage.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 58,
-      "where": "controls[1].ui and .api; Risk assessment; Governance controls; Open questions; rationale: risk",
-      "type": "absence",
-      "claim": "No OCPM-specific on/off switch is documented in the admin UI or API as of November 2026.",
+      "where": "Cost and licensing; writer evidence",
+      "type": "cost",
+      "claim": "OneLake reading and writing requests consume Fabric Capacity Units.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"object-centric\" \"disable\" \"process mining\"; \"object-centric\" \"Power Platform API\" \"settings\". Opened OCPM overview, ingest, process overview and process-advisor-security. No OCPM switch found; Automation Center Insights has a different, expressly scoped preview switch.",
+      "source": "https://learn.microsoft.com/fabric/onelake/onelake-consumption",
+      "quote": "Requests to OneLake, such as reading or writing data, consume Fabric Capacity Units.",
       "severity": null,
       "fix": null
     },
     {
       "n": 59,
-      "where": "Open questions",
-      "type": "absence",
-      "claim": "No OCPM-specific audit events for process creation, ingestion or sharing are documented as of November 2026.",
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Process mining requires a Power Platform environment with a Dataverse database.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"object-centric\" \"audit\" \"process mining\"; object-centric process mining turn off disable tenant environment setting Power Platform API audit logging. Opened process-advisor-security and OCPM overview, ingestion and process overview; no named OCPM audit events found.",
+      "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
+      "quote": "A Microsoft Power Platform environment with a Microsoft Dataverse database.",
       "severity": null,
       "fix": null
     },
     {
       "n": 60,
-      "where": "Risk assessment: Data exposure",
-      "type": "applicability",
-      "claim": "Access to the exported Fabric copy is governed by Fabric permissions rather than Power Automate permissions.",
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "OneLake ingestion requires a Fabric workspace other than My workspace.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/fabric/security/permission-model",
-      "quote": "Workspace roles define access permissions for workspaces. ... Item permissions are used to control access to individual Fabric items within a workspace.",
-      "severity": "minor",
-      "fix": "Add https://learn.microsoft.com/fabric/security/permission-model to sources for the Fabric access-control statement."
+      "source": "https://learn.microsoft.com/power-automate/process-mining-files-fabric-onelake",
+      "quote": "A Fabric workspace that's different from the default My workspace.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 61,
-      "where": "Governance guidance: Before rollout; Governance controls",
-      "type": "admin-path",
-      "claim": "The OneLake external-app tenant setting is configured in Fabric, outside Power Platform.",
+      "where": "Scope",
+      "type": "applicability",
+      "claim": "OneLake ingestion requires Users can access data stored in OneLake with apps external to Fabric to be switched on.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/fabric/admin/service-admin-portal-onelake",
-      "quote": "OneLake tenant settings are configured in Configurations > Tenant settings in the Govern section of the OneLake catalog.",
-      "severity": "minor",
-      "fix": "Add https://learn.microsoft.com/fabric/admin/service-admin-portal-onelake to sources for where the OneLake tenant setting is configured."
+      "source": "https://learn.microsoft.com/power-automate/process-mining-files-fabric-onelake",
+      "quote": "Ensure that Users can access data stored in OneLake with apps external to the Fabric option is switched on in the OneLake tenant settings.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 62,
-      "where": "front matter: licensing.model; summary; Cost and licensing",
-      "type": "licensing",
-      "claim": "The mixed licensing model reflects per-user Premium capacity and a tenant-wide Process Mining add-on.",
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "OneLake event logs must already be in final event-log format because post-ingestion transformation is unavailable.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
-      "quote": "The Power Automate Premium license is a per-user license ... The Process Mining add-on is a tenant-wide license that's available for the Power Automate Premium license.",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-files-fabric-onelake",
+      "quote": "All data must be in final event log format ... Data should be ready to be mapped to the process mining schema. No data transformation is available post ingestion.",
       "severity": null,
       "fix": null
     },
     {
       "n": 63,
-      "where": "Governance guidance; Governance controls",
-      "type": "consistency",
-      "claim": "The governance checklist asks readers to check or assign controls that have no matching controls-table row.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Confirm ... who holds the Environment maker role; Ask ... whether the OneLake tenant setting ... is switched on; Give ... the Process Mining User role; Review who is Admin on the Fabric workspace. The table contains only capacity allocation and an OCPM switch.",
-      "severity": "minor",
-      "fix": "The Environment maker and Process Mining User assignments, OneLake external-app tenant setting, and Fabric workspace Admin review have no matching table row. Remove those checklist instructions to resolve the mismatch without adding unverified control rows."
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The generic capacity allocation UI path is Power Platform admin center > Licensing > Capacity add-ons > Summary > Add-ons > Manage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/capacity-add-on",
+      "quote": "On the navigation pane, select Licensing. ... select Capacity add-ons. ... select the Summary tab. ... Scroll down to the Add-ons section, and select Manage.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 64,
-      "where": "rationale: impact",
-      "type": "behaviour",
-      "claim": "Nothing appears for other users until a maker ingests an object-centric event log.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: \"object-centric\" \"autonomous\" \"existing processes\". Opened OCPM overview, ingestion and process overview. They establish when the generated overview appears, not that no other interface change appears to any other user.",
-      "severity": "minor",
-      "fix": "Remove 'but nothing appears for other users until a maker ingests an object-centric event log' from the impact rationale."
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "The tutorial documents PATCH https://api.powerplatform.com/licensing/environments/{environmentId}/allocations?api-version=2022-03-01-preview for allocating add-ons.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-allocate-capacity-addons",
+      "quote": "Invoke-RestMethod -Method Patch -Uri \"https://api.powerplatform.com/licensing/environments/$EnvironmentId/allocations?api-version=2022-03-01-preview\"",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 65,
-      "where": "What's changing; Risk assessment: Change & support; Governance guidance; Open questions",
-      "type": "availability",
-      "claim": "Learn labels Process overview as Preview and says it is the only available tab in that preview.",
+      "where": "controls[0].note; Governance controls; writer evidence",
+      "type": "applicability",
+      "claim": "The current Currency Allocation reference lists ProcessMiningDataStorage as an allocatable environment currency.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/object-centric-process-overview",
-      "quote": "Process Overview (Preview): Denotes that the current tab is showing the overview of the process.\n\nIn the preview of this feature, only the Process overview tab is available.",
+      "source": "https://learn.microsoft.com/rest/api/power-platform/licensing/currency-allocation/patch-currency-allocation-by-environment",
+      "quote": "ExternalCurrencyType ... The available currency type that can be allocated to an environment. ... ProcessMiningDataStorage",
       "severity": null,
       "fix": null
     },
     {
       "n": 66,
-      "where": "What's changing",
-      "type": "availability",
-      "claim": "Only the Default view is available in the documented preview.",
+      "where": "controls[0].note; Governance controls",
+      "type": "absence",
+      "claim": "The generic capacity allocation UI page does not explicitly identify the Process Mining add-on.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/object-centric-process-overview",
-      "quote": "In the preview of this feature, only the Default view is available.",
+      "source": null,
+      "quote": "Searched: Process Mining and process mining in the full capacity-add-on page; read its allocation procedure and examples. Also opened programmability-tutorial-allocate-capacity-addons and the Currency Allocation reference; the UI page does not name Process Mining.",
       "severity": null,
       "fix": null
     },
     {
       "n": 67,
-      "where": "Scope; Governance guidance: Before rollout",
-      "type": "behaviour",
-      "claim": "Process mining requires a Power Platform environment with a Dataverse database.",
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "The internal Process Mining Application role must not be assigned to users.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
-      "quote": "Before you start using the process mining capability, ensure you have the following prerequisites: ... A Microsoft Power Platform environment with a Microsoft Dataverse database.",
+      "source": "https://learn.microsoft.com/power-automate/process-advisor-security",
+      "quote": "The Process Mining Application is an internal security role that process mining uses. ... Don't assign this security role to users.",
       "severity": null,
       "fix": null
     },
     {
       "n": 68,
-      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
-      "type": "behaviour",
-      "claim": "Object-centric event logs contain object IDs.",
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Microsoft says not to modify privileges in the Process Mining User or Process Mining Application roles.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/object-centric-overview",
-      "quote": "In OCPM, you work with object-centric event data where each row is an event (with activity and timestamp) and has one or more columns listing the object IDs per object type that the event touched",
+      "source": "https://learn.microsoft.com/power-automate/process-advisor-security",
+      "quote": "Don't modify the set of privileges in the Process Mining User or Process Mining Application security roles.",
       "severity": null,
       "fix": null
     },
     {
       "n": 69,
-      "where": "Cost and licensing; Open questions",
+      "where": "Governance controls; writer evidence",
+      "type": "command",
+      "claim": "The current Currency Allocation reference documents API version 2024-10-01, unlike the tutorial's 2022-03-01-preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/rest/api/power-platform/licensing/currency-allocation/patch-currency-allocation-by-environment",
+      "quote": "PATCH https://api.powerplatform.com/licensing/environments/{environmentId}/allocations?api-version=2024-10-01",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "A Fabric administrator configures the OneLake tenant setting in Fabric.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/fabric/admin/roles",
+      "quote": "These roles provide access to the admin experience in Govern and control over organization-wide Fabric settings, usage metrics, and admin features, except for licensing.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/fabric/admin/roles to sources for the Fabric administrator role statement; keep the existing OneLake tenant-settings citation."
+    },
+    {
+      "n": 71,
+      "where": "Open questions",
+      "type": "absence",
+      "claim": "No OCPM-specific audit or activity events for creation, ingestion and sharing are documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: object-centric process mining audit activity log creation ingestion sharing; Power Automate Process Mining audit logging process create share ingestion Purview. Opened OCPM documentation and activity-logs-power-automate; no OCPM creation, ingestion or sharing events found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Open questions",
       "type": "availability",
-      "claim": "The ingestion documentation identifies Fabric semantic model export as preview.",
+      "claim": "Microsoft's OCPM ingestion page labels the linked Fabric semantic model export documentation as preview.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/object-centric-ingest-event-log",
       "quote": "Export OCPM semantic model into Fabric workspace (preview)",
@@ -791,9 +816,9 @@
     }
   ],
   "precheck": {
-    "at": "2026-11-18T04:23:57.463Z",
+    "at": "2026-11-18T05:16:42.396Z",
     "summary": {
-      "links": 11,
+      "links": 16,
       "unreachable": 0,
       "uiPaths": 1,
       "uiPathsWithMissingWords": 0,
@@ -819,6 +844,11 @@
       },
       {
         "url": "https://learn.microsoft.com/power-automate/object-centric-process-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-automate/object-centric-semantic-model",
         "ok": true,
         "status": 200
       },
@@ -856,6 +886,26 @@
         "url": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-allocate-capacity-addons",
         "ok": true,
         "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/rest/api/power-platform/licensing/currency-allocation/patch-currency-allocation-by-environment",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/fabric/onelake/onelake-consumption",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/fabric/security/permission-model",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/fabric/admin/service-admin-portal-onelake",
+        "ok": true,
+        "status": 200
       }
     ],
     "controlChecks": [
@@ -869,6 +919,7 @@
           "Licensing",
           "Capacity add-ons",
           "Summary",
+          "Add-ons",
           "Manage"
         ],
         "missing": []
@@ -885,5 +936,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-18",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

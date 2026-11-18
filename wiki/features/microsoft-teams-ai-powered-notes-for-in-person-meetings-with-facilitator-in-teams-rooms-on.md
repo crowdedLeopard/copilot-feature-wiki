@@ -43,6 +43,9 @@ sources:
   - title: "Release notes for Microsoft Teams Rooms"
     url: "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note"
     kind: "learn"
+  - title: "Update-M365TeamsApp"
+    url: "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp?view=teams-ps"
+    kind: "learn"
   - title: "MC1307512: (Updated) Microsoft Teams: AI-powered notes for in-person meetings with Facilitator in Teams Rooms on Windows"
     url: "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1307512"
     kind: "message-center"
@@ -57,14 +60,6 @@ controls:
       docs: "https://learn.microsoft.com/microsoftteams/rooms/facilitator-teams-rooms"
     api: null
     note: "Learn says the default setting is enabled. Per-room setting; requires Rooms Management permissions."
-  - governs: "Whether the Facilitator app is allowed or blocked"
-    scope: "tenant"
-    ui:
-      surface: "Teams admin center"
-      path: "Teams apps > Manage apps > Facilitator > Actions menu > Allow or Block"
-      docs: "https://learn.microsoft.com/microsoftteams/facilitator-teams"
-    api: null
-    note: "Allowed by default per Learn; scoped availability must include the room account. The Update-M365TeamsApp reference is internally inconsistent about the example and required parameters, so no blocking call is provided here."
   - governs: "Meeting transcription for users and room accounts"
     scope: "user"
     ui:
@@ -100,19 +95,23 @@ changes:
     note: "Corrected after verification: removed the Update-M365TeamsApp blocking command, aligned the Loop prerequisites with MC1307512, stated the SharePoint quota for Loop notes and trimmed the checklist and impact rationale."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 83 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-18"
+    note: "Corrected after verification: removed the Facilitator app row from the controls table, kept its Teams admin center steps and the Update-M365TeamsApp caveat in the notes, and reworded the tenant-switch sentence."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 89 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-18"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 83
-  confirmed: 81
-  unconfirmed: 1
+  claims: 89
+  confirmed: 88
+  unconfirmed: 0
   contradicted: 1
-  attempts: 2
-  hash: "ceb3c4e492e1e14282a720683c865bc6"
+  attempts: 0
+  hash: "9fb8a4ce919005e53197425e001d8f0c"
 ---
 
 ## What's changing
@@ -196,15 +195,14 @@ Prerequisites on the room resource account, per Learn: Teams Rooms Pro licence, 
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Take notes button on the room console home screen</strong><br><small class="controls__note">Learn says the default setting is enabled. Per-room setting; requires Rooms Management permissions.</small></td><td data-label="Admin UI"><strong>Teams Rooms Pro Management portal</strong><br>Rooms › room › Settings › Device › Show Take notes button on the home screen <a href="https://learn.microsoft.com/microsoftteams/rooms/facilitator-teams-rooms" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether the Facilitator app is allowed or blocked</strong><br><small>Tenant</small><br><small class="controls__note">Allowed by default per Learn; scoped availability must include the room account. The Update-M365TeamsApp reference is internally inconsistent about the example and required parameters, so no blocking call is provided here.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Manage apps › Facilitator › Actions menu › Allow or Block <a href="https://learn.microsoft.com/microsoftteams/facilitator-teams" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Meeting transcription for users and room accounts</strong><br><small>User</small><br><small class="controls__note">General meeting policy that Learn's setup steps point to; Microsoft has not confirmed which policy the room account's in-person notes use.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting policies › policy › Transcription <a href="https://learn.microsoft.com/microsoftteams/meeting-transcription-captions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity &lt;policy name&gt; -AllowTranscription $true</code> <a href="https://learn.microsoft.com/microsoftteams/meeting-transcription-captions" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Loop collaborative meeting notes in Teams</strong><br><small>Tenant</small><br><small class="controls__note">MC1307512 explicitly requires IsLoopEnabled and IsCollabMeetingNotesFluidEnabled for in-person room notes. Cloud Policy is documented for Teams New Calendar, not as a substitute for those room prerequisites.</small></td><td data-label="Admin UI"><strong>Cloud Policy service (config.office.com)</strong><br>Customization › Policy Management › policy › Choose the scope › Configure Settings › Create and view Loop files in Microsoft apps that support Loop <a href="https://learn.microsoft.com/microsoft-365/loop/loop-components-configuration" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOTenant -IsCollabMeetingNotesFluidEnabled $true</code> <a href="https://learn.microsoft.com/microsoft-365/loop/loop-components-configuration" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-There is no single tenant switch for in-person notes: availability is the combination of the room's Teams Rooms Pro licence, the Facilitator app, transcription, Loop and the room-level portal setting. Microsoft has not described what the Take notes button does when one of those prerequisites is missing.
+Availability depends on the room's Teams Rooms Pro licence, the Facilitator app, transcription, Loop and the room-level portal setting. Microsoft has not described what the Take notes button does when one of those prerequisites is missing.
 
-The Facilitator app row gives only the Teams admin center steps from the Facilitator page. The transcription row is the general meeting policy; the Learn setup step points to it without naming a policy for room accounts. For the Loop row, the SharePoint property is documented for Teams meetings, while the page says the property does not apply to collaborative meeting notes in Teams New Calendar, where the Cloud Policy settings apply instead. MC1307512 explicitly requires IsLoopEnabled and IsCollabMeetingNotesFluidEnabled for in-person room notes; Cloud Policy is documented for Teams New Calendar, not as a substitute for those room prerequisites. The Facilitator page states that the Loop meeting notes setting applies to the whole tenant and cannot be set per user.
+The Teams admin center steps to allow or block the Facilitator app (Teams apps > Manage apps > Facilitator > Actions menu > Allow or Block) are on the [Facilitator page](https://learn.microsoft.com/microsoftteams/facilitator-teams), which says Facilitator is allowed by default. The [Update-M365TeamsApp reference](https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp?view=teams-ps) is internally inconsistent about its syntax and examples, so no blocking command is given here. The transcription row is the general meeting policy; the Learn setup step points to it without naming a policy for room accounts. For the Loop row, the SharePoint property is documented for Teams meetings, while the page says the property does not apply to collaborative meeting notes in Teams New Calendar, where the Cloud Policy settings apply instead. MC1307512 explicitly requires IsLoopEnabled and IsCollabMeetingNotesFluidEnabled for in-person room notes; Cloud Policy is documented for Teams New Calendar, not as a substitute for those room prerequisites. The Facilitator page states that the Loop meeting notes setting applies to the whole tenant and cannot be set per user.
 
 Pro Management portal settings changes need role-based access control permissions for Rooms Management, and can be applied now or scheduled to the nightly maintenance window.
 
@@ -222,12 +220,9 @@ cost: Low. Microsoft's Learn page says the feature is currently included with Te
 impact: Medium. People who meet in Pro-licensed rooms see a new Take notes entry point and a notes panel on the front-of-room display.
 -->
 
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].api; Governance controls table / absence: The Facilitator app's API and automation control is Not yet documented. | Found: This cmdlet updates app state and app available values for the Microsoft Teams app. ... Update-M365TeamsApp -Id 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b -IsBlocked $true | Fix: Remove the Facilitator app row from controls and the rendered controls table rather than printing 'Not yet documented' for a documented cmdlet with inconsistent syntax and examples. Retain the existing prose about the Teams admin center steps and the reference inconsistency; do not reintroduce an unverified runnable blocking command. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp?view=teams-ps
-- [unsupported, blocker] Governance controls: opening paragraph after table / absence: There is no single tenant switch for in-person notes. | Found: Searched: "Teams Rooms" "Facilitator" "policy" "in-person". Read room setup, facilitator-teams, Loop policies and MC1307512. No categorical absence stated; Facilitator documents a tenant-wide IsCollabMeetingNotesFluidEnabled control. | Fix: Replace 'There is no single tenant switch for in-person notes: availability is the combination of' with 'Availability depends on'. Retain the existing prerequisite list; do not imply that disabling one tenant-wide prerequisite cannot prevent availability.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Scope: Who / availability: Learn says Windows is available and Android is projected for a future release. | Found: Facilitator is available on Teams Rooms on Windows and is projected to release on Teams Rooms on Android in a future release. | Fix: Append: 'The Teams Rooms release notes separately list a preview of Facilitator note-taking for offline/ad hoc discussions under the Android May 2025 release, so Microsoft's pages disagree on Android availability.' Cite https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note#teams-rooms-on-android-feature-introduction-and-issue-resolution. | Source: https://learn.microsoft.com/microsoftteams/rooms/facilitator-teams-rooms
-- [supported, minor] controls[1].note; Governance controls table / behaviour: The Update-M365TeamsApp reference is internally inconsistent about its example and required parameters. | Found: Syntax: -AppAssignmentType <String> -OperationType <String> ... Example 3: Update-M365TeamsApp -Id 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b -IsBlocked $true. Unblocks Bookings app | Fix: Cite https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp?view=teams-ps for the statement about inconsistent syntax and examples. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp?view=teams-ps
+- [supported, minor] Scope: Who / availability: Learn says Windows is available and Android is projected for a future release. | Found: Facilitator is available on Teams Rooms on Windows and is projected to release on Teams Rooms on Android in a future release. | Fix: Replace the sentence with 'Learn says the feature is available on Teams Rooms on Windows.' The cited release-notes page also lists 'Preview of Facilitator agent note taking in Rooms for offline/ad hoc discussions' under Android 1449/1.0.96.2025126202 (May 2025), so the Android statements disagree. | Source: https://learn.microsoft.com/microsoftteams/rooms/facilitator-teams-rooms
+- [contradicted, minor] Governance guidance: Before rollout, first bullet; controls / consistency: The checklist tells administrators to check Facilitator app availability, but that control has no row in the controls table. | Found: Confirm in the Teams admin center that the Facilitator app is allowed for the room resource accounts, including any People and Groups scope. Controls table: Take notes button; Meeting transcription; Loop collaborative meeting notes. | Fix: Remove the first Before rollout checklist bullet about checking Facilitator app availability, which has no corresponding controls-table row; retain the documented app steps in the Governance controls notes.
 -->
