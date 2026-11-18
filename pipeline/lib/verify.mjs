@@ -22,6 +22,7 @@
  * licensing model, so those rows are not asked of it. Everything else is the same rule.
  */
 import fs from 'node:fs/promises';
+import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
@@ -51,12 +52,28 @@ export function holdReason(report) {
   return reason === 'parked' && (report?.attempts || 0) < MAX_REVISIONS ? 'failed' : reason;
 }
 /**
+ * The writing standard the writer follows and the verifier checks against: the editorial standard and the two prompts.
+ * Each report records the hash of the three as `standard`, so a later run can tell a page checked under earlier rules.
+ */
+export const STANDARD_FILES = ['wiki/SCHEMA.md', 'pipeline/prompts/compile-agent.md', 'pipeline/prompts/verify-agent.md'];
+export function standardHash(root = ROOT) {
+  const h = createHash('sha256');
+  for (const f of STANDARD_FILES) { try { h.update(readFileSync(path.join(root, f))); } catch { h.update('missing'); } h.update('\n'); }
+  return h.digest('hex').slice(0, 12);
+}
+export const STANDARD_HASH = standardHash();
+/**
  * What a parked page waits for. At exactly MAX_REVISIONS failed checks it is written once more from scratch (a
- * 'fresh-draft' task: the roadmap record and Microsoft's pages, none of the held text, see compile-tasks.mjs); a page
- * whose fresh draft failed too (attempts beyond the cap) waits for a person.
+ * 'fresh-draft' task: the roadmap record and Microsoft's pages, none of the held text, see compile-tasks.mjs). A page
+ * whose fresh draft failed too (attempts beyond the cap) waits for a person, until the writing standard changes
+ * (its report's `standard` is not the current one, or predates the field): then it gets one more fresh draft under
+ * the new rules, and a person is only needed for pages that failed under the rules as they stand.
  */
 export function parkedNext(report) {
-  return (report?.attempts || 0) === MAX_REVISIONS ? 'fresh-draft' : 'person';
+  const attempts = report?.attempts || 0;
+  if (attempts === MAX_REVISIONS) return 'fresh-draft';
+  if (attempts > MAX_REVISIONS && report?.standard !== STANDARD_HASH) return 'fresh-draft';
+  return 'person';
 }
 /**
  * Pages published before the check existed (created before this date) can get one grace: a first failure
@@ -567,7 +584,7 @@ export async function recordVerification(slug, rawVerdict, { model = 'unknown', 
   const date = today();
   const report = {
     slug, ...(kind === 'concept' ? { kind } : {}), roadmapId: data.roadmapId ?? null, title: data.title, status, date, version: data.version || 1, model, engine, attempts,
-    verifierVerdict: verdict.verdict, notes,
+    standard: STANDARD_HASH, verifierVerdict: verdict.verdict, notes,
     hold: status === 'held' ? { reason: parked ? 'parked' : 'failed', since: failedBefore ? (previous.hold?.since || previous.date || date) : date, reasons } : status === 'needs-correction' ? { reason: 'grace', since: date, reasons } : null,
     counts, summary: verdict.summary, claims,
     precheck: pc ? { at: pc.at, summary: pc.summary, linkChecks: pc.linkChecks, controlChecks: pc.controlChecks, roadmapDrift: pc.roadmapDrift } : null,

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { pageHash, verificationDue, checkNote, MAX_AGE_DAYS } from './verify.mjs';
+import { pageHash, verificationDue, checkNote, MAX_AGE_DAYS, parkedNext, MAX_REVISIONS, STANDARD_HASH } from './verify.mjs';
 
 const data = { title: 'A briefing', version: 2, updated: '2026-11-16', changes: [{ date: '2026-11-16', note: 'x' }], controls: [{ governs: 'a' }], tags: ['b', 'a'] };
 const body = 'Hello  world\n\n<!-- verifier-findings\nold findings\n-->\n';
@@ -32,4 +32,13 @@ test('checkNote reads as a change-log line', () => {
   assert.equal(checkNote('verified', { ...c, confirmed: 60, unconfirmed: 0 }, 'gpt-6.1-sol'), 'Checked against Microsoft Learn by gpt-6.1-sol: passed: all 60 statements confirmed');
   assert.match(checkNote('held', { ...c, contradicted: 2 }, 'gpt-6.1-sol'), /held: 2 of 60 statements contradicted, 3 unconfirmed; taken offline until corrected$/);
   assert.ok(checkNote('needs-correction', c, 'm').length <= 300);
+});
+
+test('parkedNext: a fresh draft at the cap, another when the writing standard changed, otherwise a person', () => {
+  assert.match(STANDARD_HASH, /^[0-9a-f]{12}$/);
+  assert.equal(parkedNext({ attempts: MAX_REVISIONS }), 'fresh-draft');
+  assert.equal(parkedNext({ attempts: MAX_REVISIONS + 1, standard: STANDARD_HASH }), 'person', 'the fresh draft failed under the rules as they stand');
+  assert.equal(parkedNext({ attempts: MAX_REVISIONS + 1, standard: 'a1b2c3d4e5f6' }), 'fresh-draft', 'the rules changed since');
+  assert.equal(parkedNext({ attempts: MAX_REVISIONS + 1 }), 'fresh-draft', 'a report without the field predates it');
+  assert.equal(parkedNext({ attempts: MAX_REVISIONS + 2, standard: STANDARD_HASH }), 'person');
 });

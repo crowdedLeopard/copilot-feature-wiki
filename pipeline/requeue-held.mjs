@@ -8,7 +8,9 @@
  * verifier, not the writer, so it is taken out of the queue. A page parked after its last
  * correction round (MAX_REVISIONS failed checks) is queued once more as a "fresh-draft" task: the writer
  * gets the roadmap record and Microsoft's pages, none of the held text (compile-tasks.mjs), and the page
- * keeps its slug and history. If that draft fails its check too, the page is left for a person.
+ * keeps its slug and history. If that draft fails its check too, the page is left for a person until the
+ * writing standard (wiki/SCHEMA.md or the two prompts, `standard` in each report) changes, when it gets one
+ * more fresh draft under the new rules (parkedNext in lib/verify.mjs).
  */
 import path from 'node:path';
 import { DATA_DIR, readJson, writeJson } from './lib/util.mjs';
