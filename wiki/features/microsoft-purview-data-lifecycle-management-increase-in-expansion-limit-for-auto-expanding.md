@@ -55,7 +55,7 @@ controls:
       kind: "powershell"
       call: "Enable-Mailbox <user mailbox> -AutoExpandingArchive"
       docs: "https://learn.microsoft.com/purview/enable-autoexpanding-archiving"
-    note: "The user's archive mailbox must already be enabled. A role group with the Mail Recipients role is enough for specific users. Cannot be turned off once on."
+    note: "Archive mailbox must be enabled first; Mail Recipients role suffices. Can't be turned off. Needs cloud primary and archive mailboxes; for an on-premises primary with a cloud archive, use Set-OrganizationConfig -AutoExpandingArchive."
 confidence: "high"
 created: "2026-11-18"
 updated: "2026-11-18"
@@ -65,19 +65,23 @@ changes:
     note: "First briefing for this item: archive ceiling rises from 1.5 TB to 3 TB for eligible licences; roadmap status Launched, rollout October 2026."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 67 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-18"
+    note: "Corrected: the per-user enablement command needs cloud primary and archive mailboxes (hybrid users with an on-premises primary need the organisation-wide command); removed the Records Management checklist bullet."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 81 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-18"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 67
-  confirmed: 65
+  claims: 81
+  confirmed: 80
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "e14ecea9278dc1da191f9ec0a22f1242"
+  contradicted: 1
+  attempts: 0
+  hash: "31de0bf9baf4a53ad76cb593d195620d"
 ---
 
 ## What's changing
@@ -125,8 +129,7 @@ The change applies to Exchange Online archive mailboxes that have auto-expanding
 
 ### Before rollout
 - Identify users with large archive mailboxes and check which licence each holds against the eligible list in Cost and licensing; Microsoft's notice recommends this review.
-- Verify that Records Management is selected and enabled in the licence settings of E5 users, as Learn instructs.
-- Decide whether auto-expanding archiving should be on for the whole organisation or only for specific users, using the two controls in the table below, and note that both are irreversible once applied.
+- Decide whether auto-expanding archiving should be on for the whole organisation or only for specific users, using the two controls in the table below, and note that both are irreversible once applied. The per-user command requires both the primary and archive mailboxes to be cloud-based; for an on-premises primary mailbox with a cloud-based archive, Learn says to use the organisation-wide command.
 
 ### At rollout
 - Confirm that mailboxes that should benefit already have auto-expanding archiving enabled; Microsoft's notice says no action is needed for those that do.
@@ -144,7 +147,7 @@ The change applies to Exchange Online archive mailboxes that have auto-expanding
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Auto-expanding archiving for the whole organisation</strong><br><small>Tenant</small><br><small class="controls__note">Exchange Online PowerShell. Needs global administrator or Organization Management. Cannot be turned off once on. Learn says the Exchange admin center and Purview portal cannot enable it.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-OrganizationConfig -AutoExpandingArchive</code> <a href="https://learn.microsoft.com/purview/enable-autoexpanding-archiving" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Auto-expanding archiving for specific users</strong><br><small>User</small><br><small class="controls__note">The user's archive mailbox must already be enabled. A role group with the Mail Recipients role is enough for specific users. Cannot be turned off once on.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Enable-Mailbox &lt;user mailbox&gt; -AutoExpandingArchive</code> <a href="https://learn.microsoft.com/purview/enable-autoexpanding-archiving" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Auto-expanding archiving for specific users</strong><br><small>User</small><br><small class="controls__note">Archive mailbox must be enabled first; Mail Recipients role suffices. Can't be turned off. Needs cloud primary and archive mailboxes; for an on-premises primary with a cloud archive, use Set-OrganizationConfig -AutoExpandingArchive.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Enable-Mailbox &lt;user mailbox&gt; -AutoExpandingArchive</code> <a href="https://learn.microsoft.com/purview/enable-autoexpanding-archiving" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -165,10 +168,8 @@ cost: Low. Microsoft's notice says no per-GB consumption charge is introduced; t
 impact: Low. Administrators and the users with the largest archives notice it; no change to what users see is described, and mailboxes without an eligible licence are unaffected.
 -->
 
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].api; controls[1].note; Governance controls table; Governance guidance: Before rollout / command: Enable-Mailbox <user mailbox> -AutoExpandingArchive is presented as the per-user enablement option without the hybrid restriction. | Found: In an Exchange hybrid deployment, you can't use the Enable-Mailbox -AutoExpandingArchive command to enable auto-expanding archiving for a specific user whose primary mailbox is on-premises and whose archive mailbox is cloud-based. | Fix: Keep the call, but append to controls[1].note and the corresponding rendered note: 'This per-user command requires both the primary and archive mailboxes to be cloud-based. For an on-premises primary mailbox with a cloud-based archive, use Set-OrganizationConfig -AutoExpandingArchive in Exchange Online PowerShell to enable auto-expanding archiving for the entire organisation.' Qualify the Before rollout choice of organisation-wide or per-user enablement with the same restriction. | Source: https://learn.microsoft.com/purview/enable-autoexpanding-archiving
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: The checklist asks administrators to check Records Management in licence settings, but neither controls-table row covers that setting. | Found: Verify that Records Management is selected and enabled in the licence settings of E5 users, as Learn instructs. / Auto-expanding archiving for the whole organisation / Auto-expanding archiving for specific users | Fix: Remove the Records Management verification bullet from the Before rollout checklist; retain the verified licensing prerequisite under Risk assessment. This removes the checklist/table mismatch without adding an unverified control path.
+- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The checklist's instruction to monitor archive mailbox growth has no corresponding control row in the table. | Found: Checklist: "Monitor archive mailbox growth with Exchange Online PowerShell". Table rows: "Auto-expanding archiving for the whole organisation" and "Auto-expanding archiving for specific users". | Fix: The After rollout monitoring step has no control row. Remove that checklist bullet; this correction does not require adding a row or an unverified monitoring command.
 -->

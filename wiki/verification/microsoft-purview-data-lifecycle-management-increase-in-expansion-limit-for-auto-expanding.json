@@ -2,37 +2,31 @@
   "slug": "microsoft-purview-data-lifecycle-management-increase-in-expansion-limit-for-auto-expanding",
   "roadmapId": 560820,
   "title": "Microsoft Purview: auto-expanding archive limit rises from 1.5 TB to 3 TB for eligible mailboxes",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-18",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
-  "verifierVerdict": "hold",
+  "attempts": 0,
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-18",
-    "reasons": [
-      "1 blocking finding (claim 53)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 67,
-    "confirmed": 65,
+    "claims": 81,
+    "confirmed": 80,
     "unconfirmed": 0,
-    "contradicted": 2,
-    "blocker": 1,
+    "contradicted": 1,
+    "blocker": 0,
     "major": 0,
     "minor": 1
   },
-  "summary": "Hold: the per-user enablement command omits a documented hybrid restriction. Administrators with an on-premises primary mailbox and a cloud archive must enable auto-expanding archiving organisation-wide instead; the capacity increase, eligible licences and automatic arrival are supported.",
+  "summary": "The increased archive ceiling, eligible licensing, automatic arrival and PowerShell controls are supported by Microsoft's notice and documentation. The corrected per-user command now carries the required cloud-mailbox qualification. A minor checklist-to-table gap remains for monitoring archive growth.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing; Cost and licensing; Scope",
-      "type": "licensing",
-      "claim": "Eligible Exchange Online archive mailboxes with auto-expanding archiving enabled can grow from 1.5 TB to 3 TB.",
+      "where": "title; summary; What's changing; Cost and licensing; Governance guidance",
+      "type": "record",
+      "claim": "Eligible Exchange Online archive mailboxes with auto-expanding archiving enabled can grow from the former 1.5 TB ceiling to a maximum of 3 TB per mailbox.",
       "status": "supported",
       "source": "Message Center post MC1472592",
       "quote": "Eligible archive mailboxes with auto-expanding archiving enabled can automatically expand beyond the current 1.5 TB limit up to a maximum of 3 TB per mailbox.",
@@ -43,18 +37,18 @@
       "n": 2,
       "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap describes previous expansion support as limited to 1.5 TB, after which mailboxes would become inoperative.",
+      "claim": "The roadmap describes previous archive expansion as limited to 1.5 TB, after which mailboxes would become inoperative.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Previously, auto expanding archive mailbox expansion was supported only up to 1.5 TB, after which mailboxes would become inoperative.",
+      "quote": "Previously, auto expanding archive mailbox expansion was supported only up to 1.5 TB, after which mailboxes would become inoperative.",
       "severity": null,
       "fix": null
     },
     {
       "n": 3,
-      "where": "What's changing; summary",
+      "where": "summary; What's changing",
       "type": "record",
-      "claim": "The roadmap makes expansion beyond 1.5 TB available to customers with eligible E5 licences.",
+      "claim": "The roadmap attributes expansion beyond 1.5 TB to customers with eligible E5 licences.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "This capability to expand archive beyond 1.5 TB will be available to customers with eligible E5 licenses.",
@@ -63,29 +57,7 @@
     },
     {
       "n": 4,
-      "where": "front matter: defaultState; summary; What's changing; Why it matters; Governance guidance",
-      "type": "default",
-      "claim": "The increased ceiling arrives on automatically for eligible mailboxes that already have auto-expanding archiving enabled.",
-      "status": "supported",
-      "source": "Message Center post MC1472592",
-      "quote": "No action is required if eligible mailboxes already have auto-expanding archiving enabled.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "front matter: licensing.model and licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "The capacity increase is included for mailboxes assigned an eligible licence, including Office 365 E5 or Microsoft 365 E5.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/enable-autoexpanding-archiving",
-      "quote": "The increase applies to mailboxes assigned the following eligible licenses:\n- Office 365 E5, A5, or G5\n- Microsoft 365 E5, A5, or G5",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
-      "where": "front matter: status; What's changing; changes",
+      "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap status is Launched.",
       "status": "supported",
@@ -95,7 +67,7 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 5,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
       "claim": "The roadmap release phase is General Availability.",
@@ -106,10 +78,10 @@
       "fix": null
     },
     {
-      "n": 8,
+      "n": 6,
       "where": "front matter: clouds; What's changing; Scope; Open questions",
       "type": "record",
-      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) and no other cloud.",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -117,7 +89,7 @@
       "fix": null
     },
     {
-      "n": 9,
+      "n": 7,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap lists the Web platform.",
@@ -128,7 +100,7 @@
       "fix": null
     },
     {
-      "n": 10,
+      "n": 8,
       "where": "front matter: targetDate; What's changing; changes",
       "type": "record",
       "claim": "The roadmap target is October CY2026.",
@@ -139,10 +111,10 @@
       "fix": null
     },
     {
-      "n": 11,
+      "n": 9,
       "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The roadmap supplies no preview date.",
+      "claim": "The roadmap gives no preview date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": null",
@@ -150,10 +122,10 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 10,
       "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "The roadmap modification timestamp is 2026-11-11T00:53:22.",
+      "claim": "The roadmap record was modified on 11 November 2026 at 00:53:22.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"modified\": \"2026-11-11T00:53:22\"",
@@ -161,10 +133,10 @@
       "fix": null
     },
     {
-      "n": 13,
+      "n": 11,
       "where": "What's changing",
       "type": "record",
-      "claim": "Message Center notice MC1472592 was updated on 28 September 2026.",
+      "claim": "Microsoft's notice MC1472592 was updated on 28 September 2026.",
       "status": "supported",
       "source": "Message Center post MC1472592",
       "quote": "Updated September 28, 2026: We have updated the content.",
@@ -172,18 +144,29 @@
       "fix": null
     },
     {
-      "n": 14,
+      "n": 12,
       "where": "What's changing",
       "type": "record",
-      "claim": "The notice gives a rollout beginning in mid-October 2026 and expected to complete by late October 2026.",
+      "claim": "The notice gives a Worldwide General Availability rollout beginning in mid-October 2026.",
       "status": "supported",
       "source": "Message Center post MC1472592",
-      "quote": "General Availability (Worldwide): Beginning in mid-October 2026 and expected to complete by late October 2026",
+      "quote": "General Availability (Worldwide): Beginning in mid-October 2026",
       "severity": null,
       "fix": null
     },
     {
-      "n": 15,
+      "n": 13,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice expects rollout completion by late October 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1472592",
+      "quote": "expected to complete by late October 2026",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
       "where": "What's changing",
       "type": "record",
       "claim": "The supplied notice sets no act-by date.",
@@ -194,13 +177,24 @@
       "fix": null
     },
     {
-      "n": 16,
-      "where": "What's changing; Risk assessment: Data exposure; rationale: risk",
+      "n": 15,
+      "where": "summary; What's changing; Why it matters; Governance guidance",
       "type": "record",
-      "claim": "The increase leaves existing archive content unchanged.",
+      "claim": "Eligible mailboxes that already have auto-expanding archiving enabled require no additional configuration or administrator action for the increase.",
       "status": "supported",
       "source": "Message Center post MC1472592",
-      "quote": "Existing archive content, retention configurations, policies, and holds are unchanged.",
+      "quote": "No action is required if eligible mailboxes already have auto-expanding archiving enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: licensing.notes; What's changing; Cost and licensing; rationale: cost",
+      "type": "record",
+      "claim": "The increase introduces no per-GB consumption charge.",
+      "status": "supported",
+      "source": "Message Center post MC1472592",
+      "quote": "No per-GB consumption charge is introduced as part of this change.",
       "severity": null,
       "fix": null
     },
@@ -208,7 +202,7 @@
       "n": 17,
       "where": "What's changing; Risk assessment: Data exposure; rationale: risk",
       "type": "record",
-      "claim": "The increase leaves existing retention configurations and policies unchanged.",
+      "claim": "Existing archive content is unchanged by the increase.",
       "status": "supported",
       "source": "Message Center post MC1472592",
       "quote": "Existing archive content, retention configurations, policies, and holds are unchanged.",
@@ -217,9 +211,9 @@
     },
     {
       "n": 18,
-      "where": "What's changing; Risk assessment: Data exposure; rationale: risk",
+      "where": "What's changing",
       "type": "record",
-      "claim": "The increase leaves existing holds unchanged.",
+      "claim": "Existing retention configurations are unchanged.",
       "status": "supported",
       "source": "Message Center post MC1472592",
       "quote": "Existing archive content, retention configurations, policies, and holds are unchanged.",
@@ -228,20 +222,31 @@
     },
     {
       "n": 19,
-      "where": "What's changing; rationale: risk",
+      "where": "What's changing; Risk assessment: Data exposure; rationale: risk",
       "type": "record",
-      "claim": "The increase introduces no new administrator workflow.",
+      "claim": "Existing retention policies are unchanged.",
       "status": "supported",
       "source": "Message Center post MC1472592",
-      "quote": "No new administrator workflow, user experience, or user interface is introduced.",
+      "quote": "Existing archive content, retention configurations, policies, and holds are unchanged.",
       "severity": null,
       "fix": null
     },
     {
       "n": 20,
-      "where": "What's changing; rationale: risk and impact",
+      "where": "What's changing; Risk assessment: Data exposure; rationale: risk",
       "type": "record",
-      "claim": "The increase introduces no new user experience or user interface.",
+      "claim": "Existing holds are unchanged.",
+      "status": "supported",
+      "source": "Message Center post MC1472592",
+      "quote": "Existing archive content, retention configurations, policies, and holds are unchanged.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; rationale: risk",
+      "type": "record",
+      "claim": "The change introduces no new administrator workflow.",
       "status": "supported",
       "source": "Message Center post MC1472592",
       "quote": "No new administrator workflow, user experience, or user interface is introduced.",
@@ -249,54 +254,109 @@
       "fix": null
     },
     {
-      "n": 21,
-      "where": "What's changing; Why it matters; Cost and licensing; Governance guidance; rationales",
-      "type": "licensing",
-      "claim": "Mailboxes without an eligible licence remain limited to 1.5 TB.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/enable-autoexpanding-archiving",
-      "quote": "For all other licenses, the existing 1.5 TB limit remains unchanged.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 22,
-      "where": "front matter: licensing.notes; What's changing; Cost and licensing; rationale: cost",
-      "type": "cost",
-      "claim": "The change introduces no per-GB consumption charge.",
+      "where": "rationale: impact",
+      "type": "record",
+      "claim": "The notice describes no new user experience.",
       "status": "supported",
       "source": "Message Center post MC1472592",
-      "quote": "No per-GB consumption charge is introduced as part of this change.",
+      "quote": "No new administrator workflow, user experience, or user interface is introduced.",
       "severity": null,
       "fix": null
     },
     {
       "n": 23,
-      "where": "Why it matters",
+      "where": "What's changing; rationale: risk",
       "type": "record",
-      "claim": "Eligible archive users gain capacity without a support request.",
+      "claim": "The change introduces no new user interface.",
       "status": "supported",
       "source": "Message Center post MC1472592",
-      "quote": "This enhancement helps organizations retain and manage larger volumes of archived email content without requiring manual archive expansion processes or support requests.",
+      "quote": "No new administrator workflow, user experience, or user interface is introduced.",
       "severity": null,
       "fix": null
     },
     {
       "n": 24,
-      "where": "Why it matters",
-      "type": "behaviour",
-      "claim": "Auto-expanding archiving supports a mailbox growth rate that does not exceed 1 GB per day.",
+      "where": "What's changing; Why it matters; Cost and licensing; Governance guidance; rationale: cost",
+      "type": "record",
+      "claim": "Mailboxes without an eligible licence retain the existing 1.5 TB ceiling.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/enable-autoexpanding-archiving",
-      "quote": "Auto-expanding archiving is supported only for mailboxes used by individual users or for shared mailboxes with a growth rate that doesn't exceed 1 GB per day.",
+      "source": "Message Center post MC1472592",
+      "quote": "Mailboxes that do not have an eligible license will continue to be limited to 1.5 TB.",
       "severity": null,
       "fix": null
     },
     {
       "n": 25,
-      "where": "Risk assessment: Data exposure",
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "eDiscovery tools such as Content Search search the additional storage areas of auto-expanded archives.",
+      "claim": "Microsoft Learn's cited archive pages also carry the notice of the increase to 3 TB.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/archive-mailboxes",
+      "quote": "Microsoft is increasing the maximum auto-expanding archive capacity for eligible Exchange Online mailboxes from 1.5 TB to 3 TB.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Open questions",
+      "type": "behaviour",
+      "claim": "The body of Learn about auto-expanding archiving still describes a 1.5 TB maximum, alongside the newer notice.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/autoexpanding-archiving",
+      "quote": "This archiving feature in Microsoft Purview (called auto-expanding archiving) provides up to 1.5 TB of additional storage in archive mailboxes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Why it matters",
+      "type": "record",
+      "claim": "Eligible users gain archive headroom without a support request.",
+      "status": "supported",
+      "source": "Message Center post MC1472592",
+      "quote": "retain and manage larger volumes of archived email content without requiring manual archive expansion processes or support requests.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Why it matters; Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "Microsoft recommends reviewing licence assignments for users with large archive mailboxes.",
+      "status": "supported",
+      "source": "Message Center post MC1472592",
+      "quote": "Review license assignments for users with large archive mailboxes to confirm eligibility.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Why it matters; Governance guidance: At rollout",
+      "type": "record",
+      "claim": "Microsoft recommends updating internal documentation, retention guidance and help desk materials.",
+      "status": "supported",
+      "source": "Message Center post MC1472592",
+      "quote": "Update internal documentation, retention guidance, and help desk materials to reflect the new 3 TB limit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Learn continues to document a supported growth rate not exceeding 1 GB per day for auto-expanding archiving.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/autoexpanding-archiving",
+      "quote": "Auto-expanding archiving is supported only for mailboxes used for individual users (or shared mailboxes) with a growth rate that doesn't exceed 1 GB per day.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "eDiscovery tools such as Content Search search the additional storage areas of an auto-expanded archive.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/autoexpanding-archiving",
       "quote": "When you use an eDiscovery tool, such as Content Search, the additional storage areas in an auto-expanded archive are also searched.",
@@ -304,10 +364,10 @@
       "fix": null
     },
     {
-      "n": 26,
+      "n": 32,
       "where": "Risk assessment: Data exposure",
       "type": "applicability",
-      "claim": "Mailbox holds also cover content in auto-expanded archive storage.",
+      "claim": "Mailbox holds also cover content in an auto-expanded archive.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/autoexpanding-archiving",
       "quote": "When you put a mailbox on hold by using methods such as Microsoft 365 retention, eDiscovery case holds, and Litigation Hold in Exchange Online, content located in an auto-expanded archive is also placed on hold.",
@@ -315,21 +375,21 @@
       "fix": null
     },
     {
-      "n": 27,
+      "n": 33,
       "where": "Risk assessment: Security & identity",
       "type": "absence",
-      "claim": "Microsoft describes no new permission or identity for the capacity increase.",
+      "claim": "The change does not describe a new permission or identity.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"auto-expanding\" \"3 TB\" permissions identity configuration charge. Opened Learn: Enable auto-expanding archiving, Learn about auto-expanding archiving, Learn about archive mailboxes; read MC1472592. No new permission or identity described.",
+      "quote": "Searched: auto-expanding 3 TB permissions. Read MC1472592 and https://learn.microsoft.com/purview/enable-autoexpanding-archiving; existing enablement roles are documented, but no new identity or permission for the capacity increase.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 28,
+      "n": 34,
       "where": "controls[0].note; Risk assessment: Security & identity; Governance controls",
       "type": "role",
-      "claim": "A global administrator or member of Organization Management can enable auto-expanding archiving.",
+      "claim": "A global administrator can enable auto-expanding archiving.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/enable-autoexpanding-archiving",
       "quote": "To enable auto-expanding archiving, you must be a global administrator in your organization or a member of the Organization Management role group in your Exchange Online organization.",
@@ -337,10 +397,21 @@
       "fix": null
     },
     {
-      "n": 29,
+      "n": 35,
+      "where": "controls[0].note; Risk assessment: Security & identity; Governance controls",
+      "type": "role",
+      "claim": "Membership in the Exchange Online Organization Management role group also permits enablement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/enable-autoexpanding-archiving",
+      "quote": "To enable auto-expanding archiving, you must be a global administrator in your organization or a member of the Organization Management role group in your Exchange Online organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
       "where": "controls[1].note; Risk assessment: Security & identity; Governance controls",
       "type": "role",
-      "claim": "Membership in a role group containing Mail Recipients is sufficient for enabling auto-expanding archiving for specific users.",
+      "claim": "For specific-user enablement, membership in a role group including Mail Recipients suffices.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/enable-autoexpanding-archiving",
       "quote": "Alternately, to enable auto-expanding archiving for specific users, you must be a member of a role group that includes the Mail Recipients role.",
@@ -348,21 +419,21 @@
       "fix": null
     },
     {
-      "n": 30,
-      "where": "controls[0].note; controls[1].note; Risk assessment: Autonomy & actions; Governance guidance",
+      "n": 37,
+      "where": "Risk assessment: Autonomy & actions; Why it matters",
       "type": "behaviour",
-      "claim": "Auto-expanding archiving cannot be turned off after it is enabled for an organisation or a user.",
+      "claim": "Once enabled, auto-expanding archiving adds extra storage automatically as needed.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/enable-autoexpanding-archiving",
-      "quote": "After you turn on auto-expanding archiving for your organization or for a specific user, it can't be turned off.",
+      "source": "https://learn.microsoft.com/purview/autoexpanding-archiving",
+      "quote": "The additional storage creation happens automatically, which means administrators don't have to request additional archive storage or manage auto-expanding archiving.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 31,
+      "n": 38,
       "where": "Risk assessment: Autonomy & actions; Governance controls",
       "type": "behaviour",
-      "claim": "Administrators cannot adjust the storage quota for auto-expanding archiving.",
+      "claim": "Administrators cannot adjust the storage quota; the enablement controls do not select a 1.5 TB or 3 TB ceiling.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/enable-autoexpanding-archiving",
       "quote": "Administrators can't adjust the storage quota for auto-expanding archiving.",
@@ -370,10 +441,32 @@
       "fix": null
     },
     {
-      "n": 32,
-      "where": "Risk assessment: Change & support; Governance guidance: Before rollout",
+      "n": 39,
+      "where": "controls[0].note; Risk assessment: Autonomy & actions; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "Organisation-wide auto-expanding archiving cannot be turned off after enablement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/enable-autoexpanding-archiving",
+      "quote": "After you turn on auto-expanding archiving for your organization or for a specific user, it can't be turned off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[1].note; Risk assessment: Autonomy & actions; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "Specific-user auto-expanding archiving cannot be turned off after enablement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/enable-autoexpanding-archiving",
+      "quote": "After you turn on auto-expanding archiving for your organization or for a specific user, it can't be turned off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Change & support",
       "type": "licensing",
-      "claim": "Microsoft instructs administrators to verify that Records Management remains selected and enabled for E5 licences.",
+      "claim": "For E5 licences, Learn says to verify that Records Management is selected and remains enabled in the user's licence settings.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/enable-autoexpanding-archiving",
       "quote": "For E5 licenses, verify that Records Management is selected and remains enabled in the user's license settings.",
@@ -381,10 +474,10 @@
       "fix": null
     },
     {
-      "n": 33,
+      "n": 42,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Once an archive has an auto-expanded storage area, users cannot delete folders from that archive.",
+      "claim": "Learn documents inability to delete archive folders once at least one auto-expanded storage area exists.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/autoexpanding-archiving",
       "quote": "If an archive mailbox has at least one auto-expanded storage area, users can't delete a folder from the archive mailbox or from the auxiliary archive.",
@@ -392,10 +485,10 @@
       "fix": null
     },
     {
-      "n": 34,
+      "n": 43,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Enabling auto-expanding archiving prevents recovering or restoring an inactive mailbox.",
+      "claim": "Auto-expanding archiving prevents recovery of an inactive mailbox.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/enable-autoexpanding-archiving",
       "quote": "Auto-expanding archiving prevents you from recovering or restoring an inactive mailbox.",
@@ -403,10 +496,32 @@
       "fix": null
     },
     {
-      "n": 35,
+      "n": 44,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Auto-expanding archiving prevents restoration of an inactive mailbox.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/enable-autoexpanding-archiving",
+      "quote": "Auto-expanding archiving prevents you from recovering or restoring an inactive mailbox.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Office 365 E5 is an eligible licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/enable-autoexpanding-archiving",
+      "quote": "The increase applies to mailboxes assigned the following eligible licenses: Office 365 E5, A5, or G5",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "Office 365 E5, A5 and G5 are eligible licences.",
+      "claim": "Office 365 A5 is an eligible licence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/enable-autoexpanding-archiving",
       "quote": "Office 365 E5, A5, or G5",
@@ -414,10 +529,21 @@
       "fix": null
     },
     {
-      "n": 36,
-      "where": "Cost and licensing",
+      "n": 47,
+      "where": "Cost and licensing; Scope; Open questions",
       "type": "licensing",
-      "claim": "Microsoft 365 E5, A5 and G5 are eligible licences.",
+      "claim": "Office 365 G5 is listed as an eligible licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/enable-autoexpanding-archiving",
+      "quote": "Office 365 E5, A5, or G5",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 E5 is an eligible licence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/enable-autoexpanding-archiving",
       "quote": "Microsoft 365 E5, A5, or G5",
@@ -425,10 +551,32 @@
       "fix": null
     },
     {
-      "n": 37,
+      "n": 49,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "Microsoft 365 Purview Suite is an eligible licence.",
+      "claim": "Microsoft 365 A5 is an eligible licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/enable-autoexpanding-archiving",
+      "quote": "Microsoft 365 E5, A5, or G5",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Cost and licensing; Scope; Open questions",
+      "type": "licensing",
+      "claim": "Microsoft 365 G5 is listed as an eligible licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/enable-autoexpanding-archiving",
+      "quote": "Microsoft 365 E5, A5, or G5",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 Purview Suite is eligible.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/enable-autoexpanding-archiving",
       "quote": "Microsoft 365 Purview Suite",
@@ -436,10 +584,10 @@
       "fix": null
     },
     {
-      "n": 38,
+      "n": 52,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "Microsoft 365 Purview Suite FLW, EDU and GOV are eligible licences.",
+      "claim": "Microsoft 365 Purview Suite FLW is eligible.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/enable-autoexpanding-archiving",
       "quote": "Microsoft 365 Purview Suite FLW, EDU, or GOV",
@@ -447,10 +595,32 @@
       "fix": null
     },
     {
-      "n": 39,
+      "n": 53,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "Microsoft Defender + Purview Suite FLW is an eligible licence.",
+      "claim": "Microsoft 365 Purview Suite EDU is eligible.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/enable-autoexpanding-archiving",
+      "quote": "Microsoft 365 Purview Suite FLW, EDU, or GOV",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Cost and licensing; Scope; Open questions",
+      "type": "licensing",
+      "claim": "Microsoft 365 Purview Suite GOV is listed as eligible.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/enable-autoexpanding-archiving",
+      "quote": "Microsoft 365 Purview Suite FLW, EDU, or GOV",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft Defender + Purview Suite FLW is eligible.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/enable-autoexpanding-archiving",
       "quote": "Microsoft Defender + Purview Suite FLW",
@@ -458,10 +628,10 @@
       "fix": null
     },
     {
-      "n": 40,
+      "n": 56,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "Microsoft 365 F5 Compliance is an eligible licence.",
+      "claim": "Microsoft 365 F5 Compliance is eligible.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/enable-autoexpanding-archiving",
       "quote": "Microsoft 365 F5 Compliance",
@@ -469,10 +639,10 @@
       "fix": null
     },
     {
-      "n": 41,
+      "n": 57,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "Microsoft 365 F5 Security + Compliance is an eligible licence.",
+      "claim": "Microsoft 365 F5 Security + Compliance is eligible.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/enable-autoexpanding-archiving",
       "quote": "Microsoft 365 F5 Security + Compliance",
@@ -480,10 +650,10 @@
       "fix": null
     },
     {
-      "n": 42,
+      "n": 58,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "The combination of eDiscovery & Audit, Insider Risk Management and Information Protection & Governance mini suites qualifies.",
+      "claim": "The combination of the eDiscovery & Audit, Insider Risk Management and Information Protection & Governance mini suites is eligible.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/enable-autoexpanding-archiving",
       "quote": "The combination of the eDiscovery & Audit, Insider Risk Management, and Information Protection & Governance mini suites",
@@ -491,10 +661,10 @@
       "fix": null
     },
     {
-      "n": 43,
+      "n": 59,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "Qualifying offerings containing Microsoft Purview E5 capabilities, such as E7, also support the increase.",
+      "claim": "Qualifying offerings including Purview E5 capabilities, such as E7, also support the increase.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/enable-autoexpanding-archiving",
       "quote": "Qualifying offerings that include Microsoft Purview E5 capabilities, such as E7, also support the increase.",
@@ -502,20 +672,31 @@
       "fix": null
     },
     {
-      "n": 44,
-      "where": "Cost and licensing",
-      "type": "absence",
-      "claim": "The cited Learn archive pages state no price for upgrading a user to an eligible licence.",
+      "n": 60,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The capacity increase is included for mailboxes already assigned an eligible licence rather than separately metered.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: site:learn.microsoft.com/purview/ \"auto-expanding\" \"3 TB\" price license upgrade. Opened Learn: Enable auto-expanding archiving, Learn about auto-expanding archiving, Learn about archive mailboxes. These pages list eligibility and no per-GB charge, not upgrade prices.",
+      "source": "https://learn.microsoft.com/purview/enable-autoexpanding-archiving",
+      "quote": "The increase applies to mailboxes assigned the following eligible licenses: ... If auto-expanding archiving is already enabled, no additional configuration or per-GB charge applies.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 45,
+      "n": 61,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The cited Learn pages give no price for moving a user to an eligible licence.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: auto-expanding 3 TB price. Opened https://learn.microsoft.com/purview/enable-autoexpanding-archiving, https://learn.microsoft.com/purview/autoexpanding-archiving and https://learn.microsoft.com/purview/archive-mailboxes; none gives a licence-upgrade price.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
       "where": "Scope; Open questions",
-      "type": "availability",
+      "type": "applicability",
       "claim": "Auto-expanding archiving supports shared mailboxes.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/enable-autoexpanding-archiving",
@@ -524,7 +705,7 @@
       "fix": null
     },
     {
-      "n": 46,
+      "n": 63,
       "where": "controls[1].note; Scope; Governance controls",
       "type": "behaviour",
       "claim": "The user's archive mailbox must already be enabled before enabling auto-expanding archiving.",
@@ -535,10 +716,10 @@
       "fix": null
     },
     {
-      "n": 47,
+      "n": 64,
       "where": "Scope",
-      "type": "availability",
-      "claim": "Auto-expanding archiving supports cloud-based archive mailboxes in Exchange hybrid deployments.",
+      "type": "applicability",
+      "claim": "Cloud-based archive mailboxes in an Exchange hybrid deployment are supported.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/enable-autoexpanding-archiving",
       "quote": "Auto-expanding archiving is supported for cloud-based archive mailboxes in an Exchange hybrid deployment for users who have an on-premises primary mailbox.",
@@ -546,9 +727,9 @@
       "fix": null
     },
     {
-      "n": 48,
+      "n": 65,
       "where": "Scope",
-      "type": "availability",
+      "type": "applicability",
       "claim": "Auto-expanding archiving is not supported for on-premises mailboxes.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/enable-autoexpanding-archiving",
@@ -557,87 +738,98 @@
       "fix": null
     },
     {
-      "n": 49,
-      "where": "controls[0].note; Scope; Governance controls",
-      "type": "behaviour",
-      "claim": "Enabling auto-expanding archiving requires Exchange Online PowerShell rather than the Exchange admin center or Purview portal.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/enable-autoexpanding-archiving",
-      "quote": "You can't use the Exchange admin center or the Microsoft Purview portal to enable auto-expanding archiving. You must use Exchange Online PowerShell.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 50,
-      "where": "controls[0].ui; Governance controls table",
+      "n": 66,
+      "where": "controls[0].ui; controls[0].note; Scope; Governance controls",
       "type": "absence",
-      "claim": "There is no documented admin UI path for organisation-wide auto-expanding archiving enablement.",
+      "claim": "There is no documented admin-centre UI for organisation-wide auto-expanding enablement; Learn requires Exchange Online PowerShell.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: auto-expanding archiving enable Exchange admin center Purview portal PowerShell hybrid Enable-Mailbox AutoExpandingArchive. Opened Enable auto-expanding archiving: it explicitly rules out both portals and requires Exchange Online PowerShell.",
+      "quote": "Searched: auto-expanding archive enable admin center portal PowerShell Set-OrganizationConfig. Read https://learn.microsoft.com/purview/enable-autoexpanding-archiving: \"You can't use the Exchange admin center or the Microsoft Purview portal to enable auto-expanding archiving.\"",
       "severity": null,
       "fix": null
     },
     {
-      "n": 51,
-      "where": "controls[1].ui; Governance controls table",
+      "n": 67,
+      "where": "controls[0].api; Governance controls",
+      "type": "command",
+      "claim": "Set-OrganizationConfig -AutoExpandingArchive in Exchange Online PowerShell enables auto-expanding archiving for the whole organisation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/enable-autoexpanding-archiving",
+      "quote": "To enable auto-expanding archiving for your entire organization, run the following command: Set-OrganizationConfig -AutoExpandingArchive",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "controls[1].ui; Scope; Governance controls",
       "type": "absence",
-      "claim": "There is no documented admin UI path for per-user auto-expanding archiving enablement.",
+      "claim": "There is no documented admin-centre UI for specific-user auto-expanding enablement; Learn requires Exchange Online PowerShell.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: auto-expanding archiving enable Exchange admin center Purview portal PowerShell hybrid Enable-Mailbox AutoExpandingArchive. Opened Enable auto-expanding archiving: it explicitly rules out both portals and documents per-user enablement in PowerShell.",
+      "quote": "Searched: auto-expanding archive enable admin center portal PowerShell Enable-Mailbox. Read https://learn.microsoft.com/purview/enable-autoexpanding-archiving: \"You can't use the Exchange admin center or the Microsoft Purview portal to enable auto-expanding archiving.\"",
       "severity": null,
       "fix": null
     },
     {
-      "n": 52,
-      "where": "controls[0].api; Governance controls table; Governance guidance: Before rollout",
+      "n": 69,
+      "where": "controls[1].api; Governance controls",
       "type": "command",
-      "claim": "Set-OrganizationConfig -AutoExpandingArchive enables auto-expanding archiving organisation-wide in Exchange Online PowerShell.",
+      "claim": "Enable-Mailbox <user mailbox> -AutoExpandingArchive in Exchange Online PowerShell enables auto-expanding archiving for a specific eligible cloud user.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/enable-autoexpanding-archiving",
-      "quote": "To enable auto-expanding archiving for your entire organization, run the following command:\nSet-OrganizationConfig -AutoExpandingArchive",
+      "quote": "To enable auto-expanding archiving for a specific user, run the following command. ... Enable-Mailbox <user mailbox> -AutoExpandingArchive",
       "severity": null,
       "fix": null
     },
     {
-      "n": 53,
-      "where": "controls[1].api; controls[1].note; Governance controls table; Governance guidance: Before rollout",
-      "type": "command",
-      "claim": "Enable-Mailbox <user mailbox> -AutoExpandingArchive is presented as the per-user enablement option without the hybrid restriction.",
-      "status": "contradicted",
+      "n": 70,
+      "where": "controls[1].note; Governance guidance: Before rollout; Governance controls",
+      "type": "applicability",
+      "claim": "The per-user command requires both primary and archive mailboxes to be cloud-based.",
+      "status": "supported",
       "source": "https://learn.microsoft.com/purview/enable-autoexpanding-archiving",
-      "quote": "In an Exchange hybrid deployment, you can't use the Enable-Mailbox -AutoExpandingArchive command to enable auto-expanding archiving for a specific user whose primary mailbox is on-premises and whose archive mailbox is cloud-based.",
-      "severity": "blocker",
-      "fix": "Keep the call, but append to controls[1].note and the corresponding rendered note: 'This per-user command requires both the primary and archive mailboxes to be cloud-based. For an on-premises primary mailbox with a cloud-based archive, use Set-OrganizationConfig -AutoExpandingArchive in Exchange Online PowerShell to enable auto-expanding archiving for the entire organisation.' Qualify the Before rollout choice of organisation-wide or per-user enablement with the same restriction."
+      "quote": "If a user's primary and archive mailboxes are both cloud-based, then you can use the Enable-Mailbox -AutoExpandingArchive command to enable auto-expanding archiving for that specific user.",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 54,
+      "n": 71,
+      "where": "controls[1].note; Governance guidance: Before rollout; Governance controls",
+      "type": "command",
+      "claim": "For an on-premises primary mailbox with a cloud archive in a hybrid deployment, the organisation-wide Set-OrganizationConfig -AutoExpandingArchive command must be used instead.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/enable-autoexpanding-archiving",
+      "quote": "To enable auto-expanding archiving for cloud-based archive mailboxes in an Exchange hybrid deployment, you have to run the Set-OrganizationConfig -AutoExpandingArchive command in Exchange Online PowerShell to enable auto-expanding archiving for the entire organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
       "where": "Governance controls",
       "type": "command",
-      "claim": "Get-OrganizationConfig | FL AutoExpandingArchiveEnabled checks organisation-wide auto-expanding archiving state.",
+      "claim": "Get-OrganizationConfig | FL AutoExpandingArchiveEnabled checks organisation-level enablement.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/enable-autoexpanding-archiving",
-      "quote": "To verify that auto-expanding archiving is enabled for your organization, run the following command in Exchange Online PowerShell.\nGet-OrganizationConfig | FL AutoExpandingArchiveEnabled",
+      "quote": "To verify that auto-expanding archiving is enabled for your organization, run the following command in Exchange Online PowerShell. Get-OrganizationConfig | FL AutoExpandingArchiveEnabled",
       "severity": null,
       "fix": null
     },
     {
-      "n": 55,
+      "n": 73,
       "where": "Governance controls",
       "type": "command",
-      "claim": "Get-Mailbox <user mailbox> | FL AutoExpandingArchiveEnabled checks a user's auto-expanding archiving property.",
+      "claim": "Get-Mailbox <user mailbox> | FL AutoExpandingArchiveEnabled checks specific-user enablement.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/enable-autoexpanding-archiving",
-      "quote": "To verify that auto-expanding archiving is enabled for a specific user, run the following command in Exchange Online PowerShell.\nGet-Mailbox <user mailbox> | FL AutoExpandingArchiveEnabled",
+      "quote": "To verify that auto-expanding archiving is enabled for a specific user, run the following command in Exchange Online PowerShell. Get-Mailbox <user mailbox> | FL AutoExpandingArchiveEnabled",
       "severity": null,
       "fix": null
     },
     {
-      "n": 56,
+      "n": 74,
       "where": "Governance controls",
       "type": "behaviour",
-      "claim": "Organisation-wide enablement does not set AutoExpandingArchiveEnabled on individual user mailboxes to True.",
+      "claim": "Organisation-wide enablement does not change AutoExpandingArchiveEnabled on individual user mailboxes to True.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/enable-autoexpanding-archiving",
       "quote": "Running the Set-OrganizationConfig cmdlet to enable auto-expanding archiving for your organization doesn't change the AutoExpandingArchiveEnabled property on user mailboxes to True.",
@@ -645,136 +837,92 @@
       "fix": null
     },
     {
-      "n": 57,
+      "n": 75,
       "where": "Governance controls",
       "type": "behaviour",
-      "claim": "Per-user enablement for a mailbox on hold or assigned a retention policy increases its primary archive quota by 10 GB.",
+      "claim": "Specific-user enablement for a mailbox on hold or assigned a retention policy adds 10 GB to the primary archive mailbox quota.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/enable-autoexpanding-archiving",
-      "quote": "When you enable auto-expanding archiving for a specific user and the user's mailbox in on hold or assigned to a retention policy, the following two configurations changes are made:\n- The storage quota for the user's primary archive mailbox is increased by 10 GB (from 100 GB to 110 GB).",
+      "quote": "When you enable auto-expanding archiving for a specific user and the user's mailbox in on hold or assigned to a retention policy ... The storage quota for the user's primary archive mailbox is increased by 10 GB (from 100 GB to 110 GB).",
       "severity": null,
       "fix": null
     },
     {
-      "n": 58,
-      "where": "What's changing; Open questions",
-      "type": "behaviour",
-      "claim": "The Learn overview body still describes a 1.5 TB maximum despite its notice of the increase.",
+      "n": 76,
+      "where": "Scope; Open questions",
+      "type": "absence",
+      "claim": "The documentation does not settle the 3 TB rollout's applicability or timing for additional clouds despite listing G5 and GOV licences.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/autoexpanding-archiving",
-      "quote": "This archiving feature in Microsoft Purview (called auto-expanding archiving) provides up to 1.5 TB of additional storage in archive mailboxes.",
+      "source": null,
+      "quote": "Searched: auto-expanding archiving 3 TB GCC government availability; auto-expanding archiving 3 TB government clouds rollout. Read MC1472592 and https://learn.microsoft.com/purview/enable-autoexpanding-archiving; Worldwide rollout and G5/GOV eligibility, no separate cloud schedule.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 59,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Microsoft Learn's archive pages carry the capacity-increase notice.",
+      "n": 77,
+      "where": "Open questions",
+      "type": "absence",
+      "claim": "The pages for this change do not state what happens to an archive exceeding 1.5 TB after the eligible licence is removed.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/archive-mailboxes",
-      "quote": "Microsoft is increasing the maximum auto-expanding archive capacity for eligible Exchange Online mailboxes from 1.5 TB to 3 TB. Rollout begins in mid-October 2026 and is expected to complete by late October.",
+      "source": null,
+      "quote": "Searched: auto-expanding archiving 3 TB shared mailbox license removed downgrade 1.5 TB; \"auto-expanding\" \"3 TB\" \"license removed\". Read MC1472592 and the three cited Purview Learn pages; no treatment of an already-expanded archive after licence removal.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 60,
-      "where": "Why it matters; Governance guidance: Before rollout",
-      "type": "record",
-      "claim": "Microsoft recommends reviewing licence assignments for users with large archives.",
+      "n": 78,
+      "where": "front matter: defaultState",
+      "type": "default",
+      "claim": "The capacity increase is on for its intended eligible, already-enabled mailboxes without administrator action.",
       "status": "supported",
       "source": "Message Center post MC1472592",
-      "quote": "Review license assignments for users with large archive mailboxes to confirm eligibility.",
+      "quote": "No additional configuration is required for eligible mailboxes that already have auto-expanding archiving enabled.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 61,
+      "n": 79,
+      "where": "Governance guidance: After rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist's instruction to monitor archive mailbox growth has no corresponding control row in the table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: \"Monitor archive mailbox growth with Exchange Online PowerShell\". Table rows: \"Auto-expanding archiving for the whole organisation\" and \"Auto-expanding archiving for specific users\".",
+      "severity": "minor",
+      "fix": "The After rollout monitoring step has no control row. Remove that checklist bullet; this correction does not require adding a row or an unverified monitoring command."
+    },
+    {
+      "n": 80,
       "where": "Governance guidance: After rollout",
       "type": "record",
-      "claim": "Microsoft recommends monitoring archive growth using Exchange Online PowerShell.",
+      "claim": "Microsoft recommends monitoring archive growth with Exchange Online PowerShell and identifying mailboxes approaching their applicable limits.",
       "status": "supported",
       "source": "Message Center post MC1472592",
-      "quote": "Monitor archive mailbox growth using Exchange Online PowerShell.",
+      "quote": "Monitor archive mailbox growth using Exchange Online PowerShell.- Identify mailboxes approaching their applicable archive capacity limits.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 62,
-      "where": "Why it matters; Governance guidance: At rollout",
-      "type": "record",
-      "claim": "Microsoft recommends updating documentation, retention guidance and help desk materials for the new limit.",
-      "status": "supported",
-      "source": "Message Center post MC1472592",
-      "quote": "Update internal documentation, retention guidance, and help desk materials to reflect the new 3 TB limit.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 63,
+      "n": 81,
       "where": "Why it matters; Governance guidance: After rollout",
       "type": "record",
-      "claim": "Microsoft recommends reviewing licensing and retention strategies for users ineligible for expanded capacity.",
+      "claim": "Microsoft recommends reviewing licensing and retention strategies for users whose archives are ineligible for expanded capacity.",
       "status": "supported",
       "source": "Message Center post MC1472592",
       "quote": "Review licensing and retention strategies for users whose archive mailboxes are not eligible for the expanded capacity.",
       "severity": null,
       "fix": null
-    },
-    {
-      "n": 64,
-      "where": "Governance guidance: After rollout",
-      "type": "record",
-      "claim": "Microsoft recommends identifying mailboxes approaching their applicable capacity limit.",
-      "status": "supported",
-      "source": "Message Center post MC1472592",
-      "quote": "Identify mailboxes approaching their applicable archive capacity limits.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 65,
-      "where": "Scope; Open questions",
-      "type": "absence",
-      "claim": "The sources for this change do not establish rollout timing for other clouds despite listing G5 and GOV licences.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"auto-expanding\" \"3 TB\" GCC government rollout. Read roadmap, MC1472592 and the three cited Learn archive pages. Worldwide timing and G5/GOV eligibility are stated; separate rollout timing for other clouds is not.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 66,
-      "where": "Open questions",
-      "type": "absence",
-      "claim": "The pages for this change do not state what happens to an archive exceeding 1.5 TB if its eligible licence is removed.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"auto-expanding\" \"3 TB\" \"removed\" license; auto expanding archive 3 TB shared mailbox eligible license removed downgrade 1.5 TB. Opened all three cited Learn archive pages and read MC1472592; no treatment of an already-over-limit archive after licence removal is stated.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 67,
-      "where": "Governance guidance: Before rollout; Governance controls table",
-      "type": "consistency",
-      "claim": "The checklist asks administrators to check Records Management in licence settings, but neither controls-table row covers that setting.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Verify that Records Management is selected and enabled in the licence settings of E5 users, as Learn instructs. / Auto-expanding archiving for the whole organisation / Auto-expanding archiving for specific users",
-      "severity": "minor",
-      "fix": "Remove the Records Management verification bullet from the Before rollout checklist; retain the verified licensing prerequisite under Risk assessment. This removes the checklist/table mismatch without adding an unverified control path."
     }
   ],
   "precheck": {
-    "at": "2026-11-18T05:16:41.252Z",
+    "at": "2026-11-18T06:03:23.830Z",
     "summary": {
       "links": 5,
-      "unreachable": 0,
+      "unreachable": 3,
       "uiPaths": 0,
       "uiPathsWithMissingWords": 0,
       "apiCalls": 2,
-      "apiCallsNotOnPage": 0,
+      "apiCallsNotOnPage": 2,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -785,18 +933,18 @@
       },
       {
         "url": "https://learn.microsoft.com/purview/enable-autoexpanding-archiving",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/purview/autoexpanding-archiving",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/purview/archive-mailboxes",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://www.microsoft.com/microsoft-365/roadmap?id=560820",
@@ -810,21 +958,28 @@
         "side": "api",
         "governs": "Auto-expanding archiving for the whole organisation",
         "docs": "https://learn.microsoft.com/purview/enable-autoexpanding-archiving",
-        "reachable": true,
+        "reachable": false,
         "token": "Set-OrganizationConfig",
-        "found": true
+        "found": false
       },
       {
         "index": 1,
         "side": "api",
         "governs": "Auto-expanding archiving for specific users",
         "docs": "https://learn.microsoft.com/purview/enable-autoexpanding-archiving",
-        "reachable": true,
+        "reachable": false,
         "token": "Enable-Mailbox",
-        "found": true
+        "found": false
       }
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-18",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

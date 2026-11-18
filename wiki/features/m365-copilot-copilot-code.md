@@ -14,7 +14,7 @@ previewDate: "October CY2026"
 risk: "medium"
 cost: "variable"
 impact: "medium"
-defaultState: "admin-opt-in"
+defaultState: "unknown"
 action: "review"
 licensing:
   model: "mixed"
@@ -52,6 +52,15 @@ sources:
   - title: "Create spendingPolicy"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-create"
     kind: "learn"
+  - title: "Managing AI experiences enabled by usage-based billing"
+    url: "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits"
+    kind: "learn"
+  - title: "Usage-Based Billing and Cost Management for Copilot Credits"
+    url: "https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits"
+    kind: "learn"
+  - title: "What is Microsoft Copilot?"
+    url: "https://learn.microsoft.com/copilot/plan/copilot-overview"
+    kind: "learn"
 videos: []
 related: ["copilot-credits","work-iq","managed-environments","mcp","copilot-studio-cost-management-m365-admin-center"]
 controls:
@@ -86,19 +95,23 @@ changes:
     note: "New briefing: Copilot Code, documented on Learn as a Frontier preview that needs a spending policy, with the roadmap's In development status and December CY2026 target."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 83 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-18"
+    note: "Corrected after verification: default state is now Not stated, because spending policies auto-apply new services by default; added the Premium licence statement and trimmed checklist steps that had no controls-table row."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 108 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-18"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 83
-  confirmed: 81
+  claims: 108
+  confirmed: 108
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "0ede28c99c488340151b00213d8a7fa9"
+  contradicted: 0
+  attempts: 0
+  hash: "7b43554a49e91cb74f8d493701a8bf5c"
 ---
 
 ## What's changing
@@ -113,7 +126,7 @@ The roadmap item is "In development", with a preview target of October CY2026 an
 
 Copilot Code puts a coding agent in the hands of people who do not usually build software, and it can reach Microsoft 365 content, the local file system, the network and GitHub. The spend is also new: Learn states that Copilot Code is a usage-based billing feature that requires a spending policy, so the first decision is who goes in that policy and with what limit.
 
-Microsoft Learn says the feature needs a Microsoft Copilot licence with the Code tab enabled by the organisation, and a spending policy. On that basis this briefing rates the default as admin opt-in; Microsoft has not stated whether the Code tab itself is on or off in a new tenant. If nobody sets up a spending policy, Learn says only users included in one can build apps, so the practical exposure is created by the policy you write, not by waiting.
+Microsoft Learn says the feature needs a Microsoft Copilot licence with the Code tab enabled by the organisation, and a spending policy. A spending policy is required, but that does not necessarily mean a new Copilot Code opt-in: existing spending policies have Auto-apply new services selected by default and can automatically include Code. Review existing policy coverage before assuming users cannot build. Microsoft has not stated whether the Code tab itself is on or off in a new tenant.
 
 ## Risk assessment
 
@@ -138,7 +151,7 @@ Microsoft Learn says the feature needs a Microsoft Copilot licence with the Code
 
 ## Cost and licensing
 
-**Licence.** For a work account, Microsoft Learn lists a Microsoft Copilot licence and the Code tab enabled by your organisation as the requirement ([Copilot Code requirements](https://learn.microsoft.com/copilot/code/code-requirements)). The Copilot Managed Runtime licensing page says the licence does not include Cowork or Code usage, which is billed in Copilot Credits.
+**Licence.** For a work account, Microsoft Learn lists a Microsoft Copilot licence and the Code tab enabled by your organisation as the requirement ([Copilot Code requirements](https://learn.microsoft.com/copilot/code/code-requirements)). The Copilot Managed Runtime licensing page says the licence does not include Cowork or Code usage, which is billed in Copilot Credits. The [Copilot overview](https://learn.microsoft.com/copilot/plan/copilot-overview#copilot-features-in-microsoft-365-apps) is more specific, stating that usage-based billing capabilities require a Microsoft 365 Copilot (Premium) licence.
 
 **Meter.** Copilot Code is a usage-based billing feature and requires a spending policy. You create it in the Microsoft 365 admin center under Copilot > Cost management, select Copilot Code, and can set a per-user limit. Spending policies are limits, not purchases: a policy does not reserve credits, and you pay for what is consumed. See [Copilot Credits](/concepts/copilot-credits/). The same page says building is the most credit-intensive part of the app lifecycle and advises sizing build limits separately from run limits.
 
@@ -161,20 +174,16 @@ Microsoft Learn says the feature needs a Microsoft Copilot licence with the Code
 ### Before rollout
 
 - Create a spending policy for Copilot Code that covers only a pilot group and sets a per-user limit (controls table, row 1); Learn says only users included in one can build apps.
-- Decide whether to allow GitHub, and which GitHub services and accounts, before anyone connects. Learn names the GitHub policy settings but not where to set them (see the notes under the controls table).
-- Add Copilot Code to the Copilot allow list and make Microsoft 365 services reachable, as the Learn admin page lists.
 
 ### At rollout
 
-- Decide whether local sessions are allowed, and set the sandbox policies on Windows through the Copilot policy templates or on macOS through the com.microsoft.Copilot domain (controls table, row 2).
+- Set the sandbox policies on Windows through the Copilot policy templates or on macOS through the com.microsoft.Copilot domain (controls table, row 2).
 - Tell pilot makers that publishing is a separate step and that each person running a shared app needs Power Apps Premium or Managed Runtime spending policy coverage.
 - Brief makers on the permission prompts and on **Always allow**, which stays on until disabled.
 
 ### After rollout
 
 - Review consumption against the per-user limit in Copilot > Cost management and size build limits separately from run limits.
-- Review the audit logs Learn says IT administrators can access for generated code, commands run and files read or written.
-- Review the apps published to Copilot Managed Runtime, which appear in the Microsoft 365 admin center. For the related Power Platform governance tier, see [Managed Environments](/concepts/managed-environments/).
 
 ## Governance controls
 
@@ -206,13 +215,4 @@ Copilot Code is a Frontier preview feature, so the Copilot Frontier setting (Cop
 risk: Medium. Copilot Code can run commands, use Microsoft 365 content as context and push to GitHub, but Microsoft Learn documents consent prompts, a sandbox for local sessions and admin policies over each.
 cost: Variable. Usage is metered in Copilot Credits through a spending policy, on top of the Microsoft Copilot licence; a credit rate for building with Copilot Code is not yet published.
 impact: Medium. Makers and developers who are included notice it; Microsoft Learn says only users in a spending policy for Copilot Code can build apps, so other users are not reached until included.
--->
-
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: defaultState; Why it matters / default: Copilot Code is admin-opt-in because its exposure is created by a policy the administrator writes, not by waiting. | Found: When a spending policy has Auto-apply new services turned on, newly supported Microsoft Copilot services and agents are automatically added to the policy as they become available. | Fix: Set defaultState to unknown. Replace the last three sentences of Why it matters with: 'A spending policy is required, but that does not necessarily mean a new Copilot Code opt-in: existing spending policies have Auto-apply new services selected by default and can automatically include Code. Review existing policy coverage before assuming users cannot build. Microsoft has not stated whether the Code tab itself is on or off in a new tenant.' Cite https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits and https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Cost and licensing: Licence; Why it matters; Scope; licensing.notes / licensing: The feature requirements page requires a Microsoft Copilot licence for a work account. | Found: Work (organization) account | A Microsoft Copilot license, and the Code tab in Microsoft Copilot enabled by your organization. | Fix: Append to the Licence paragraph: 'The Copilot overview is more specific, stating that usage-based billing capabilities require a Microsoft 365 Copilot (Premium) licence.' Cite https://learn.microsoft.com/copilot/plan/copilot-overview#copilot-features-in-microsoft-365-apps, which states: 'To use usage-based billing capabilities, you must have a Microsoft 365 Copilot (Premium) license.' | Source: https://learn.microsoft.com/copilot/code/code-requirements
-- [contradicted, minor] Governance guidance; Governance controls table / consistency: Every control the governance checklist asks the reader to set or review appears in the controls table. | Found: Checklist: decide whether to allow GitHub; add Copilot Code to the allow list; decide whether local sessions are allowed; review audit logs; review published apps. Table: spending policy and local sandbox only. | Fix: The GitHub, network allow-list, execution-location, audit-review and app-inventory checklist steps have no corresponding controls-table rows. Remove the Before rollout GitHub and network bullets, the clause 'Decide whether local sessions are allowed, and' from At rollout, and the After rollout audit-log and published-app review bullets; do not add unverified control rows.
 -->

@@ -1,0 +1,834 @@
+{
+  "slug": "microsoft-copilot-studio-enable-express-mode-for-flows-invoked-by-an-agent-or-app",
+  "roadmapId": 566999,
+  "title": "Copilot Studio: express mode speeds up flows called by an agent or app",
+  "status": "held",
+  "date": "2026-11-18",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-18",
+    "reasons": [
+      "1 blocking finding (claim 62)"
+    ]
+  },
+  "counts": {
+    "claims": 65,
+    "confirmed": 63,
+    "unconfirmed": 1,
+    "contradicted": 1,
+    "blocker": 1,
+    "major": 1,
+    "minor": 2
+  },
+  "summary": "The cost rating says none even though flow actions remain metered; no express-mode surcharge is not the same as no consumption cost. The documented controls, prerequisites and roadmap dates check out, but the assurance that express mode leaves flow actions unchanged is not documented.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; What's changing; rationale: impact",
+      "type": "behaviour",
+      "claim": "Express mode can speed up agent flows.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agent-flow-express-mode",
+      "quote": "When you use express mode, your flow can achieve faster execution times.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap lists Microsoft Copilot (Microsoft 365) and Microsoft Copilot Studio as products.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\", \"Microsoft Copilot Studio\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap target is November CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"November CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is November CY2025.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"November CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Web as the platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: releasePhase; Scope",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview as release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap describes faster run times and fewer timeout failures as improving responses to agents and apps.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Express mode ensures agents and apps receive timely and reliable responses by dramatically accelerating flow run times. This reduces flow failures, improves user experience, and eliminates costly interruptions caused by timeout issues.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "summary; What's changing; controls[0].note; Open questions",
+      "type": "availability",
+      "claim": "Microsoft Learn describes express mode as preview and its documentation as subject to change.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agent-flow-express-mode",
+      "quote": "This article contains Microsoft Copilot Studio preview documentation and is subject to change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "Express mode requires the When an agent calls a flow or When an app calls a flow trigger.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agent-flow-express-mode",
+      "quote": "The flow must have either the When an agent calls a flow or the When an app calls a flow trigger.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Scope; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The flow must have a Response action, Respond to agent or Respond to app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agent-flow-express-mode",
+      "quote": "The flow must have a Response action, either Respond to agent or Respond to app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "licensing.notes; What's changing; Cost and licensing; Scope",
+      "type": "licensing",
+      "claim": "Express mode is available only for flows with a Copilot Studio plan associated.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agent-flow-express-mode",
+      "quote": "The flow must have a Copilot Studio plan associated with it. ... Express mode is available only for flows under the Copilot Studio plan.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "licensing.notes; Cost and licensing; Governance guidance; rationale: cost",
+      "type": "cost",
+      "claim": "Running flows in express mode has no added express-mode cost.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agent-flow-express-mode",
+      "quote": "There's no added cost to running your flows in this mode.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "licensing.notes; Cost and licensing; Governance guidance; rationale: cost",
+      "type": "cost",
+      "claim": "Flow actions remain billed by action count under Copilot Studio metering.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agent-flow-express-mode",
+      "quote": "You're still billed for the number of actions used under Copilot Studio metering.",
+      "severity": "minor",
+      "fix": "Qualify the billing statement with: 'The billing reference exempts test runs and qualifying agent-triggered runs for authenticated Microsoft 365 Copilot licensed users; autonomous-agent runs are not exempt. AI tools inside flows are metered separately.' Cite https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management#overage-enforcement, which gives these exceptions to the express-mode page's general billing statement."
+    },
+    {
+      "n": 16,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "Express mode itself is included in the Copilot Studio plan rather than requiring a separate express-mode add-on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agent-flow-express-mode",
+      "quote": "Express mode is available only for flows under the Copilot Studio plan. There's no added cost to running your flows in this mode.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "The feature's prerequisites name no separate express-mode licence.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: express mode Copilot Studio billing rate budget cap actions. Opened agent-flow-express-mode, including all prerequisites and Licensing, and requirements-messages-management; no separate express-mode licence is named.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The maker path is Flows > flow > Overview > Details > Edit > Express mode.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agent-flow-express-mode",
+      "quote": "Select Flows, and then select the flow for which you want to turn on express mode. ... In the Details section of the Overview page, select Edit. ... Turn on Express mode. The toggle is at the bottom of the panel.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[0].note; What's changing; Governance controls",
+      "type": "admin-path",
+      "claim": "Makers can also turn on express mode on the trigger card in the designer.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agent-flow-express-mode",
+      "quote": "You can also turn on express mode from the When an agent calls a flow or the When an app calls a flow trigger itself while you're building the flow in the designer on the trigger card.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[0].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No API for the express-mode toggle is documented at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: express mode Dataverse workflow Power Platform API pac admin PowerShell enable toggle; Power Platform express mode API settings; Dataverse workflow express. Read feature page, pac admin and Power Platform API excerpts; no toggle API found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[1]; summary; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft documents no express-mode-specific tenant or environment administrator switch on either UI or automation surfaces.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: express mode default tenant environment Copilot Studio admin switch; express mode Dataverse workflow Power Platform API pac admin PowerShell enable toggle. Read feature page and Tenant settings, pac admin and Power Platform API excerpts; no express-mode administrator switch found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "front matter: defaultState; Why it matters",
+      "type": "default",
+      "claim": "The feature is user-opt-in in the schema's sense: makers choose it per flow.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agent-flow-express-mode",
+      "quote": "Select Flows, and then select the flow for which you want to turn on express mode. ... Turn on Express mode. The toggle is at the bottom of the panel.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Why it matters; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not explicitly stated the toggle's initial on/off default.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: express mode default Copilot Studio flow toggle; express mode default tenant environment Copilot Studio admin switch. Opened agent-flow-express-mode and advanced-flow-create; neither specifies an initial on/off toggle value.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Why it matters",
+      "type": "absence",
+      "claim": "No source examined says that express mode automatically changes existing flows' behaviour.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: express mode default Copilot Studio flow toggle. Read roadmap record and agent-flow-express-mode; the latter describes turning on a per-flow toggle and automatic infrastructure upgrades, not automatically enabling express mode on existing flows.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Risk assessment: Change & support; Scope",
+      "type": "availability",
+      "claim": "Express mode requires a Power Automate environment on the new infrastructure.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agent-flow-express-mode",
+      "quote": "The Power Automate environment must be on new infrastructure. See Availability for more information.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "Microsoft is upgrading environments to support express mode.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agent-flow-express-mode",
+      "quote": "Microsoft is in the process of upgrading environments to support express mode. You don't need to take any action to upgrade your environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Scope; Risk assessment: Change & support; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Microsoft's availability test is to look for the express-mode toggle on a supported flow's trigger card.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agent-flow-express-mode",
+      "quote": "Check for the express mode toggle in the designer on the trigger card. ... If express mode doesn't appear, your environment doesn't support this feature yet.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Scope: Rollout",
+      "type": "availability",
+      "claim": "The required new architecture is SelfHost Multitenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/environment-architecture",
+      "quote": "To access faster runtimes and new features like express mode, your environment needs to be on SelfHost Multitenant architecture.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Scope: Rollout; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Some flows might block an environment upgrade.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/environment-architecture",
+      "quote": "Some flows might block environment upgrades.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Scope: Rollout",
+      "type": "behaviour",
+      "claim": "Microsoft documents checking environmentFlowHostingType to identify the environment architecture.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/environment-architecture",
+      "quote": "Press Ctrl + Alt + A to view environment debug info and search for environmentFlowHostingType. ... If the value is SelfHostMultiTenant, your environment is already on the new SelfHost Multitenant architecture",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Microsoft recommends updating flows that block environment upgrades.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/environment-architecture",
+      "quote": "We strongly recommend you update these flows, which unblock environment upgrades.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "By default, an agent- or app-initiated flow fails if it takes longer than two minutes to respond.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agent-flow-express-mode",
+      "quote": "By default, an agent or app initiates an agent flow that fails if it takes longer than two minutes to respond to the calling agent or app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "summary; What's changing",
+      "type": "behaviour",
+      "claim": "Express mode increases the likelihood that a flow responds inside the two-minute window.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agent-flow-express-mode",
+      "quote": "This feature increases the likelihood that agent flows can complete within the two-minute window and provide a response in time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing; Open questions",
+      "type": "behaviour",
+      "claim": "Express-mode flows must still complete in two minutes and time out if they take longer.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agent-flow-express-mode",
+      "quote": "When you turn on express mode, flows must complete in two minutes. Flows that take longer time out.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What's changing; Open questions",
+      "type": "behaviour",
+      "claim": "The separate standard-harness agent-flow tool page states a 100-second action limit and links to the express-mode page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/advanced-flow-create",
+      "quote": "Respond to the agent within the 100-second action limit. ... Learn more in Speed up agent flow execution with express mode.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Why it matters; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Flow response failures affect the calling agent or app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agent-flow-express-mode",
+      "quote": "This failure affects the functionality and usability of the agent or app that calls the flow.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "absence",
+      "claim": "The express-mode page describes no new data access.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: express mode flow actions unchanged identity connections data access. Read agent-flow-express-mode in full; it documents performance, prerequisites and limits, not new data access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "The express-mode page describes no change to flow connections or execution identity.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: express mode flow actions unchanged identity connections data access. Read agent-flow-express-mode in full; it states no express-mode-specific connection or execution-identity changes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Autonomy & actions; rationale: impact",
+      "type": "behaviour",
+      "claim": "Express mode changes only response speed or failure, not what the flow does, and leaves its actions unchanged.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: express mode flow actions unchanged identity connections data access. Opened agent-flow-express-mode; it describes faster execution and action restrictions but does not state unchanged action semantics or exhaustively limit user-visible effects.",
+      "severity": "major",
+      "fix": "Replace the Autonomy & actions bullet with 'Express mode can help an agent flow respond faster and avoid a timeout failure.' In the impact rationale, replace 'an agent's users see only faster or failed responses' with 'flow response failures can affect the calling agent or app'."
+    },
+    {
+      "n": 40,
+      "where": "Why it matters; Risk assessment: Autonomy & actions; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Delay and webhook actions are unsupported when express mode is on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agent-flow-express-mode",
+      "quote": "Delay and webhook actions in the flow aren't supported when express mode is turned on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Unsupported Delay or webhook actions produce errors when the flow is saved.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agent-flow-express-mode",
+      "quote": "Delay and webhook actions in the flow aren't supported when express mode is turned on. Errors appear when saving the flow.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout; Open questions",
+      "type": "behaviour",
+      "claim": "Microsoft advises no more than 100 actions in an express-mode flow run.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agent-flow-express-mode",
+      "quote": "Don't include more than 100 actions in a flow run. ... 100 actions is a safe limit for flow size. In practice, you might be able to include more than 100 actions, depending on how large the flow is, and on how much data processing the flow does.",
+      "severity": "minor",
+      "fix": "Describe 100 actions as Microsoft's recommended safe limit rather than an absolute maximum. Add to its first occurrence: 'Microsoft calls 100 actions a safe limit; more may work depending on flow size and data processing.' Use 'recommended safe limit of 100 actions per run' in the rollout checklist."
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Loop iterations count as one action each toward the flow action count.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agent-flow-express-mode",
+      "quote": "The actions count includes loops, which count as one action for each loop iteration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "An Apply to each loop is limited to 100 array items.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agent-flow-express-mode",
+      "quote": "Apply to each loop on an array: max 100 items",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "A Do until loop is limited to 100 iterations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agent-flow-express-mode",
+      "quote": "Do until loop: max 100 iterations",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Data exposure; Change & support; Governance guidance; Open questions",
+      "type": "behaviour",
+      "claim": "Variable content is limited to 1,024 characters.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agent-flow-express-mode",
+      "quote": "Variable content limit: 1,024 characters.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Data exposure; Change & support; Governance guidance; Open questions",
+      "type": "behaviour",
+      "claim": "Data passed in an individual action, a connector response, is limited to 64 KB.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agent-flow-express-mode",
+      "quote": "The message size limit for data passed in an individual action (connector response) is 64 KB.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Why it matters; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Data-heavy flows can fail at runtime because connector responses exceed express-mode memory limits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agent-flow-express-mode",
+      "quote": "Your agent flow doesn't return large amounts data from connector responses (Large data amounts exceed the memory limit of express mode). ... If you encounter a flow runtime error mentioning a data limitation, turn off express mode",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Automatic flow testing does not work in the flow designer.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agent-flow-express-mode",
+      "quote": "Test your flow automatically doesn't work in the flow designer. Testing automatically uses flow resubmit, and flow resubmit can't be used with agent-triggered or app-triggered flows.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Loop iterations may be absent from Run details when a connector response exceeds the memory limit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agent-flow-express-mode",
+      "quote": "Loop iterations don't appear in the Run details view when a connector response exceeds the memory limit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Live activity does not display while an express-mode flow runs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agent-flow-express-mode",
+      "quote": "In Express mode, live activity doesn't display while the flow is running.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Runtime error messages explain failures caused by documented runtime limits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agent-flow-express-mode",
+      "quote": "The runtime error messaging details why the flow failed if it's due to any of the previously mentioned runtime limitations. ... If you encounter a flow runtime error mentioning a data limitation, turn off express mode",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Variable-size or memory-limit failures in tests are likely to recur in production.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agent-flow-express-mode",
+      "quote": "Express mode fails during test due to a variable size limit or memory limit. If the flow fails during a test, you're likely to hit these issues when the flow is deployed and run in production.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Microsoft recommends testing in a development environment before production publication.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agent-flow-express-mode",
+      "quote": "Test your flow in a development environment, and then turn on express mode for debugging before you publish to production.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The Power Platform admin center path to disable a flow is Manage > Environments > environment > Resources > Flows > flow > Disable.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-power-automate",
+      "quote": "select Manage. ... select Environments. ... select an environment. ... In the Resources web part, select Flows. ... select the flow you want to manage. ... Disable or Enable | Disable or enable the flow.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[2].api; Governance controls table",
+      "type": "command",
+      "claim": "Microsoft.PowerApps.Administration.PowerShell provides Disable-AdminFlow -EnvironmentName <environment name> -FlowName <flow name> to stop the specified flow.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/disable-adminflow",
+      "quote": "Module: Microsoft.PowerApps.Administration.PowerShell Module ... Disable-AdminFlow -EnvironmentName <String> -FlowName <String> ... The Disable-AdminFlow cmdlet stops the specified flow.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[2].note; Governance controls",
+      "type": "role",
+      "claim": "Environment Admin, Global admin and Power Platform admin are the documented roles for managing flows.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-power-automate",
+      "quote": "If you're an Environment Admin, Global admin, or Power Platform admin, you can manage the flows created in your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[2].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Disable or Enable acts on the whole flow, not on its express-mode toggle.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-power-automate",
+      "quote": "Disable or Enable | Disable or enable the flow.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Scope: Who and what",
+      "type": "absence",
+      "claim": "The express-mode Learn page names no administrator role required to set the maker toggle.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: express mode default tenant environment Copilot Studio admin switch. Read agent-flow-express-mode prerequisites and enablement steps in full; no administrator role is named.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No separate express-mode-specific rate is published on the feature page.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: express mode Copilot Studio billing rate budget cap actions; Copilot Studio agent flows billing actions Copilot Credits express mode rate. Opened agent-flow-express-mode and requirements-messages-management; standard flow-action rates exist, but no separate express-mode rate is named.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No cap or budget control specific to express mode is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: express mode Copilot Studio billing rate budget cap actions. Opened agent-flow-express-mode and requirements-messages-management; environment allocation and billing controls exist for agent flows generally, but no express-mode-specific budget control is documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "front matter: cost; rationale: cost",
+      "type": "consistency",
+      "claim": "The cost rating is none despite the page documenting continuing action-based metering.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "cost: \"none\" ... Actions are still billed under Copilot Studio metering. ... The meter is therefore the one Copilot Studio flows already use, counted per action.",
+      "severity": "blocker",
+      "fix": "Set cost to 'variable' under the schema's metered-cost definition. Replace the cost rationale with 'Variable. Express mode adds no surcharge, but flow actions remain subject to Copilot Studio metering and its documented exemptions.' Retain the accurate statement that enabling express mode itself adds no cost."
+    },
+    {
+      "n": 63,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Microsoft advises turning express mode off for data-limit runtime failures.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agent-flow-express-mode",
+      "quote": "If you encounter a flow runtime error mentioning a data limitation, turn off express mode, and try it with other flows instead.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Scope; Risk assessment: Change & support",
+      "type": "availability",
+      "claim": "If the toggle is absent from a qualifying flow's trigger card, the environment does not support express mode yet.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agent-flow-express-mode",
+      "quote": "If express mode doesn't appear, your environment doesn't support this feature yet.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Microsoft says no action is needed to upgrade the environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agent-flow-express-mode",
+      "quote": "You don't need to take any action to upgrade your environment.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-18T06:03:21.105Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/agent-flow-express-mode",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-automate/environment-architecture",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/advanced-flow-create",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/manage-power-automate",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/disable-adminflow",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=566999",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether express mode is turned on for an individual agent flow",
+        "docs": "https://learn.microsoft.com/microsoft-copilot-studio/agent-flow-express-mode",
+        "reachable": true,
+        "segments": [
+          "Flows",
+          "Overview",
+          "Details",
+          "Edit",
+          "Express mode"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Whether a flow runs at all (existing control, not specific to express mode)",
+        "docs": "https://learn.microsoft.com/power-platform/admin/manage-power-automate",
+        "reachable": true,
+        "segments": [
+          "Manage",
+          "Environments",
+          "Resources",
+          "Flows",
+          "Disable"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Whether a flow runs at all (existing control, not specific to express mode)",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/disable-adminflow",
+        "reachable": true,
+        "token": "Disable-AdminFlow",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

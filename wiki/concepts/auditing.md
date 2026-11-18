@@ -5,7 +5,7 @@ slug: "auditing"
 summary: "Microsoft Purview Audit records user, admin and Copilot activity in one searchable log. Administrators use it to confirm logging is on, set retention, search records and see what Copilot or an agent touched."
 created: "2026-11-18"
 updated: "2026-11-18"
-version: 2
+version: 3
 tags: ["auditing","purview","retention","dataverse","agents","powershell","admin-controls"]
 covers: []
 sources:
@@ -104,9 +104,9 @@ controls:
       kind: "rest"
       call: "GET [Organization URI]/api/data/v9.2/organizations?$select=auditsettings,isauditenabled,auditretentionperiodv2,isuseraccessauditenabled,useraccessauditinginterval"
       docs: "https://learn.microsoft.com/power-apps/developer/data-platform/auditing/configure"
-    note: "Needs System Administrator or System Customizer. Table and column auditing are set separately. Dataverse logs consume log storage capacity. The REST call is read-only; it does not enable auditing or change retention."
+    note: "Changing these settings needs System Administrator or System Customizer; anyone can view the configuration. Table and column auditing are set separately. Dataverse logs consume log storage capacity. The REST call is read-only."
 confidence: "medium"
-dependents: 11
+dependents: 12
 changes:
   - date: "2026-11-18"
     note: "New concept page on Microsoft Purview Audit, with Dataverse auditing as the second sense of the tag."
@@ -116,18 +116,22 @@ changes:
     note: "Corrected after the independent check: the Dataverse REST row is now described as read-only, licensing and search-job limits are narrowed to what Microsoft documents, and unsupported statements and two checklist items without a control row are removed."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 105 statements contradicted, 0 unconfirmed; taken offline until corrected"
+  - date: "2026-11-18"
+    note: "Corrected the Dataverse row: anyone can view the audit configuration, but changing it needs System Administrator or System Customizer."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 108 statements confirmed"
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-18"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 105
-  confirmed: 104
+  claims: 108
+  confirmed: 108
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "3de573b1c68652ab971f0268e0186100"
+  contradicted: 0
+  attempts: 0
+  hash: "5b176bde3a39634b0f9dc241502a38b7"
 ---
 
 ## What it is
@@ -177,7 +181,7 @@ Licensing for Audit (Standard) and Audit (Premium) needs the appropriate organis
 <tr><td data-label="Control"><strong>Searching and exporting audit records</strong><br><small>Tenant</small><br><small class="controls__note">Needs the Audit Logs or View-Only Audit Logs role. A restricted admin sees only logs within their administrative units.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Audit › Search <a href="https://learn.microsoft.com/purview/audit-search" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Search-UnifiedAuditLog -StartDate &lt;start&gt; -EndDate &lt;end&gt; -UserIds &lt;users&gt; -Operations &lt;operations&gt; -ResultSize &lt;n&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/search-unifiedauditlog" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Programmatic audit search through Microsoft Graph</strong><br><small>Tenant</small><br><small class="controls__note">Needs an AuditLogsQuery permission, for example AuditLogsQuery.Read.All.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Audit › Search <a href="https://learn.microsoft.com/purview/audit-search" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/security/auditLog/queries</code> <a href="https://learn.microsoft.com/graph/api/security-auditcoreroot-post-auditlogqueries" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>How long audit records are retained (Audit (Premium) retention policies)</strong><br><small>Tenant</small><br><small class="controls__note">Security &amp; Compliance PowerShell. Needs the Organization Configuration role. Up to 50 policies; the default policy cannot be modified.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Audit › Create audit retention policy <a href="https://learn.microsoft.com/purview/audit-log-retention-policies" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-UnifiedAuditLogRetentionPolicy -Name &quot;&lt;name&gt;&quot; -RecordTypes &lt;record type&gt; -RetentionDuration &lt;duration&gt; -Priority &lt;priority&gt;</code> <a href="https://learn.microsoft.com/purview/audit-log-retention-policies" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Inspecting Dataverse environment audit settings and retention</strong><br><small>Environment</small><br><small class="controls__note">Needs System Administrator or System Customizer. Table and column auditing are set separately. Dataverse logs consume log storage capacity. The REST call is read-only; it does not enable auditing or change retention.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Compliance › Auditing › environment › Set up auditing › Turn on auditing <a href="https://learn.microsoft.com/power-platform/admin/manage-dataverse-auditing" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>GET [Organization URI]/api/data/v9.2/organizations?$select=auditsettings,isauditenabled,auditretentionperiodv2,isuseraccessauditenabled,useraccessauditinginterval</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/auditing/configure" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Inspecting Dataverse environment audit settings and retention</strong><br><small>Environment</small><br><small class="controls__note">Changing these settings needs System Administrator or System Customizer; anyone can view the configuration. Table and column auditing are set separately. Dataverse logs consume log storage capacity. The REST call is read-only.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Compliance › Auditing › environment › Set up auditing › Turn on auditing <a href="https://learn.microsoft.com/power-platform/admin/manage-dataverse-auditing" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>GET [Organization URI]/api/data/v9.2/organizations?$select=auditsettings,isauditenabled,auditretentionperiodv2,isuseraccessauditenabled,useraccessauditinginterval</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/auditing/configure" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -197,9 +201,3 @@ Licensing for Audit (Standard) and Audit (Premium) needs the appropriate organis
 - Which Copilot Studio and Security Copilot interactions need pay-as-you-go: the Copilot audit page says they are included in Audit (Standard), while Get started lists them under non-Microsoft 365 AI data.
 - What is the per-record rate for pay-as-you-go audit? The Copilot audit page names the unit but states no rate.
 - What is the default Dataverse audit retention? The Power Platform admin guide says Forever; the developer reference for the organization table says 30 days.
-
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[4].note; Governance controls: Dataverse row / role: Inspecting Dataverse environment audit settings and retention needs System Administrator or System Customizer. | Found: Anyone can view the configuration, but you must have the System Administrator or System Customizer role to change the settings. | Fix: In controls[4].note and the rendered Dataverse row, replace 'Needs System Administrator or System Customizer.' with 'Changing these settings needs System Administrator or System Customizer; anyone can view the configuration.' Keep the existing read-only REST qualification. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/auditing/configure
--->

@@ -4,37 +4,35 @@
   "title": "Power Automate process mining: custom KPIs in the process intelligence experience",
   "status": "held",
   "date": "2026-11-18",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 2,
   "verifierVerdict": "hold",
-  "notes": [
-    "claim 52: severity blocker on a rationale: impact rating lowered to minor; ratings are judgements and cannot hold a page"
-  ],
+  "notes": [],
   "hold": {
     "reason": "failed",
     "since": "2026-11-18",
     "reasons": [
-      "3 blocking findings (claims 45, 51, 56)"
+      "1 blocking finding (claim 52)"
     ]
   },
   "counts": {
-    "claims": 56,
-    "confirmed": 49,
-    "unconfirmed": 2,
-    "contradicted": 5,
-    "blocker": 3,
-    "major": 2,
-    "minor": 3
+    "claims": 60,
+    "confirmed": 59,
+    "unconfirmed": 0,
+    "contradicted": 1,
+    "blocker": 1,
+    "major": 0,
+    "minor": 0
   },
-  "summary": "Hold: the briefing incorrectly treats process mining's documented security boundary as unconfirmed and suggests that users can hold the tenant-wide add-on instead of Power Automate Premium. The ownership navigation and the claim that other users are unaffected also need correction.",
+  "summary": "Hold: the ownership API entry is an incomplete request, omitting the versioned Dataverse route and the body that identifies the new owner. The roadmap facts, ownership UI path and platform licensing statements are supported; the cited Learn pages opened successfully despite the pre-check's rate-limit responses.",
   "claims": [
     {
       "n": 1,
-      "where": "summary; What's changing; Governance guidance",
+      "where": "title; summary; What's changing; Governance guidance: Before rollout",
       "type": "record",
-      "claim": "The feature enables custom formula-based KPIs in the process intelligence experience.",
+      "claim": "The feature lets makers define custom KPIs in the Power Automate process intelligence experience.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "This feature enables you to define custom KPIs and metrics tailored to specific business requirements within the process intelligence experience.",
@@ -43,20 +41,64 @@
     },
     {
       "n": 2,
-      "where": "What's changing; Risk assessment: Data exposure",
-      "type": "record",
-      "claim": "The formula editor supports case attributes, event data, timestamps, existing metrics and mathematical operations.",
+      "where": "What's changing: first paragraph",
+      "type": "behaviour",
+      "claim": "The process intelligence experience provides a card-based dashboard.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "Build new KPIs using an intuitive formula editor that supports calculations based on case attributes, event data, timestamps, and existing metrics.",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-studio-overview",
+      "quote": "A flexible, card-based dashboard system that adapts to your analysis needs",
       "severity": null,
       "fix": null
     },
     {
       "n": 3,
-      "where": "What's changing",
+      "where": "What's changing: first paragraph",
+      "type": "behaviour",
+      "claim": "The process intelligence experience enhances the previous process overview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-studio-overview",
+      "quote": "The new experience enhances the previous process overview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing; rationale: impact",
       "type": "record",
-      "claim": "Custom metrics can be modified or deleted.",
+      "claim": "Makers build custom metrics with a formula editor.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Build new KPIs using an intuitive formula editor",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "Custom metric formulas can use case attributes, event data, timestamps and existing metrics.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "supports calculations based on case attributes, event data, timestamps, and existing metrics.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What's changing: first paragraph",
+      "type": "record",
+      "claim": "Custom metric formulas can incorporate mathematical operations.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "You can create custom metrics using configurable formulas that can incorporate existing process data, standard KPIs, and mathematical operations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing: first paragraph",
+      "type": "record",
+      "claim": "Custom metrics can be edited.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Modify, refine, or delete custom metrics as business needs evolve",
@@ -64,21 +106,32 @@
       "fix": null
     },
     {
-      "n": 4,
-      "where": "What's changing; Risk assessment: Change & support; Governance guidance",
+      "n": 8,
+      "where": "What's changing: first paragraph",
       "type": "record",
-      "claim": "Metric edits automatically propagate to every visualization using the metric.",
+      "claim": "Custom metrics can be deleted.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "with changes automatically reflected across all visualizations using those metrics.",
+      "quote": "Modify, refine, or delete custom metrics as business needs evolve",
       "severity": null,
       "fix": null
     },
     {
-      "n": 5,
-      "where": "What's changing",
+      "n": 9,
+      "where": "What's changing; rationale: impact",
       "type": "record",
-      "claim": "Custom KPIs can be reused in visualization components and filters.",
+      "claim": "Custom KPIs can be displayed in the experience's visualisation cards.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Integrate custom KPIs seamlessly into all process intelligence experience tiles and components.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing: first paragraph",
+      "type": "record",
+      "claim": "Custom KPIs can be reused in filters.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Reuse custom KPIs throughout the process intelligence experience, applying them to filters and analysis scenarios.",
@@ -86,32 +139,54 @@
       "fix": null
     },
     {
-      "n": 6,
-      "where": "What's changing; Cost and licensing",
+      "n": 11,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance: Before rollout",
       "type": "record",
-      "claim": "Custom metrics are evaluated against process data and stay current with each data refresh.",
+      "claim": "Metric edits are automatically reflected in all visualisations using that metric.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Custom metrics are evaluated dynamically against your process data, ensuring calculations remain current with each data refresh",
+      "quote": "with changes automatically reflected across all visualizations using those metrics.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 7,
-      "where": "Why it matters",
+      "n": 12,
+      "where": "What's changing; Cost and licensing: Meter; rationale: risk",
       "type": "record",
-      "claim": "Custom metrics support business-specific ratios, scores and cost calculations alongside standard metrics.",
+      "claim": "Custom metrics are evaluated dynamically against existing process data.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Define metrics that reflect your unique business context, such as weighted performance scores, custom cost calculations, compliance rates, or domain-specific efficiency ratios.",
+      "quote": "Custom metrics are evaluated dynamically against your process data",
       "severity": null,
       "fix": null
     },
     {
-      "n": 8,
-      "where": "What's changing; Scope: Audience; Why it matters",
+      "n": 13,
+      "where": "What's changing: second paragraph",
       "type": "record",
-      "claim": "The roadmap lists admins, makers and marketers as enabled automatically.",
+      "claim": "Custom metric calculations stay current with each data refresh.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "ensuring calculations remain current with each data refresh",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "Why it matters: first paragraph",
+      "type": "record",
+      "claim": "Custom KPIs support business-specific ratios, scores and cost calculations alongside standard metrics.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "such as weighted performance scores, custom cost calculations, compliance rates, or domain-specific efficiency ratios.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Why it matters; Scope: Audience; summary",
+      "type": "record",
+      "claim": "The roadmap describes the audience as admins, makers and marketers, enabled automatically.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Enabled for admins/makers/marketers automatically",
@@ -119,18 +194,7 @@
       "fix": null
     },
     {
-      "n": 9,
-      "where": "front matter: defaultState; summary; Why it matters",
-      "type": "default",
-      "claim": "The capability reaches its intended audience automatically without an administrator enabling it.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Enabled for admins/makers/marketers automatically",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
+      "n": 16,
       "where": "front matter: status; What's changing; Scope; changes",
       "type": "record",
       "claim": "The roadmap status is Launched.",
@@ -141,10 +205,10 @@
       "fix": null
     },
     {
-      "n": 11,
+      "n": 17,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
-      "claim": "The release phase is General Availability.",
+      "claim": "The roadmap release phase is General Availability.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\"]",
@@ -152,10 +216,10 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 18,
       "where": "front matter: targetDate; What's changing; Scope; changes",
       "type": "record",
-      "claim": "The roadmap target is July CY2026.",
+      "claim": "The roadmap target date is July CY2026.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"targetDate\": \"July CY2026\"",
@@ -163,18 +227,7 @@
       "fix": null
     },
     {
-      "n": 13,
-      "where": "front matter: previewDate",
-      "type": "record",
-      "claim": "The record provides no preview date.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": null",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
+      "n": 19,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
       "claim": "Web is the only platform listed in the roadmap record.",
@@ -185,7 +238,7 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 20,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
       "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed, without establishing exclusion of other clouds.",
@@ -196,43 +249,43 @@
       "fix": null
     },
     {
-      "n": 16,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The process intelligence experience is a card-based dashboard.",
+      "n": 21,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap record supplies no preview date.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/process-mining-studio-overview",
-      "quote": "A flexible, card-based dashboard system that adapts to your analysis needs",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
       "severity": null,
       "fix": null
     },
     {
-      "n": 17,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The process intelligence experience replaces the earlier process overview.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: \"process intelligence\" \"replaces\" \"overview\". Opened process-mining-studio-overview; it says the experience enhances the previous overview, not that it replaces it.",
-      "severity": "major",
-      "fix": "Replace 'the card-based dashboard that replaces the earlier process overview' with 'a card-based dashboard that enhances the previous process overview'."
-    },
-    {
-      "n": 18,
-      "where": "What's changing; Risk assessment: Change & support; changes; Open questions",
-      "type": "absence",
-      "claim": "Learn does not yet provide a guide to creating custom KPIs specifically in this experience.",
+      "n": 22,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-10-16T19:09:59.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"process intelligence experience\" \"custom\" \"KPI\" formula metrics; \"process intelligence\" \"custom KPIs\". Opened studio KPI card, overview and tab-management pages; results describe standard cards or desktop custom metrics, not this feature.",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-16T19:09:59\"",
       "severity": null,
       "fix": null
     },
     {
-      "n": 19,
-      "where": "What's changing",
+      "n": 23,
+      "where": "front matter: defaultState; summary; Why it matters",
+      "type": "default",
+      "claim": "The feature is on automatically for its intended audience without administrator enablement.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Enabled for admins/makers/marketers automatically",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing: third paragraph",
       "type": "behaviour",
-      "claim": "The KPI card page lists Frequency, Performance, Rework and Finance as example metric types.",
+      "claim": "The KPI card page lists Frequency, Performance, Rework and Finance as metric-type examples.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/process-mining-studio-kpi-card",
       "quote": "Select the metric type to display (for example, Frequency, Performance, Rework, or Finance).",
@@ -240,8 +293,30 @@
       "fix": null
     },
     {
-      "n": 20,
-      "where": "What's changing",
+      "n": 25,
+      "where": "What's changing: third paragraph",
+      "type": "absence",
+      "claim": "The roadmap-linked KPI card page does not mention custom metrics.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"process intelligence\" \"custom\" \"KPI\" formula metrics'; opened and read the complete KPI card page, which describes choosing primary and secondary metrics but no custom metrics.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Risk assessment: Change & support; Open questions; changes",
+      "type": "absence",
+      "claim": "No separate Learn guide for custom KPIs in this experience was found as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"process intelligence\" \"custom\" \"KPI\" formula metrics'; opened KPI cards, process intelligence overview, tab management and Custom metrics overview; results document dashboard cards or desktop metrics, not this new editor.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing: third paragraph; Open questions",
       "type": "behaviour",
       "claim": "Learn documents custom metrics for the Process Mining desktop app.",
       "status": "supported",
@@ -251,43 +326,32 @@
       "fix": null
     },
     {
-      "n": 21,
-      "where": "What's changing; Open questions",
+      "n": 28,
+      "where": "What's changing: third paragraph; Open questions",
       "type": "absence",
-      "claim": "Microsoft has not documented that desktop custom-metric rules also describe this experience's custom KPIs.",
+      "claim": "Microsoft has not established that the desktop custom-metric pages describe this experience's custom KPI editor.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"process intelligence experience\" \"custom\" \"KPI\" formula metrics. Opened desktop Basic examples, studio overview and KPI card pages; no passage connects the desktop formula rules to this feature.",
+      "quote": "Searched: '\"process intelligence\" \"custom\" \"KPI\" formula metrics'; opened Custom metrics overview, Basic examples, experience overview and KPI cards; none links the desktop formula rules to this experience's custom KPI editor.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 22,
-      "where": "summary; Why it matters; Governance controls",
+      "n": 29,
+      "where": "Risk assessment: Security & identity",
       "type": "absence",
-      "claim": "No feature-specific admin enable/disable switch or required admin action is documented.",
+      "claim": "No new identity or security role is described specifically for custom KPIs.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Power Automate process intelligence custom KPI enable disable admin restrict security roles Dataverse API; \"process intelligence\" custom KPIs \"admin\" \"pac\" PowerShell. Opened studio overview, KPI card and security pages; no feature-specific switch found.",
+      "quote": "Searched: '\"process mining\" \"custom KPIs\" admin switch permissions security roles Power Platform API'; read the roadmap record, Security and privacy, experience overview and KPI cards; no new custom-KPI identity or role is described.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 23,
+      "n": 30,
       "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Custom KPIs do not add a data source.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: \"process intelligence\" \"custom metrics\" security roles admin switch data source. Opened studio overview and KPI card pages; neither states that custom KPIs cannot add a source. The record describes existing process data, not an exhaustive source restriction.",
-      "severity": "major",
-      "fix": "Replace 'It does not add a data source, but a formula can surface an attribute' with 'The roadmap describes calculations over existing process data; a formula could surface an attribute'. Keep the wider-sharing scenario explicitly as risk analysis."
-    },
-    {
-      "n": 24,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Process sharing is with individual users, not Microsoft Entra groups.",
+      "type": "availability",
+      "claim": "Process mining currently does not support sharing to Microsoft Entra groups.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/process-mining-share",
       "quote": "Process mining currently doesn't support sharing for Microsoft Entra groups.",
@@ -295,54 +359,54 @@
       "fix": null
     },
     {
-      "n": 25,
-      "where": "Risk assessment: Data exposure; Governance guidance: At rollout",
-      "type": "behaviour",
-      "claim": "Make public shares a tab with other users.",
+      "n": 31,
+      "where": "Risk assessment: Data exposure; Governance controls",
+      "type": "role",
+      "claim": "Process sharing selects individual users with co-owner or viewer access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-share",
+      "quote": "The share panel is where you select users in your Microsoft Entra (which might include external users) and share your process with them. For process mining, only the co-owner and viewer roles are available for sharing with others.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Data exposure",
+      "type": "admin-path",
+      "claim": "The tab context menu offers Make public to share the tab with other users.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/process-mining-studio-tab-management",
-      "quote": "Make public: Share the tab with other users (indicated by person icon with lock).",
+      "quote": "Each tab in the list has an ellipsis (...) that opens a context menu with the following options: ... Make public: Share the tab with other users (indicated by person icon with lock).",
       "severity": null,
       "fix": null
     },
     {
-      "n": 26,
-      "where": "Risk assessment: Data exposure; Governance guidance: At rollout; Open questions",
+      "n": 33,
+      "where": "Risk assessment: Data exposure; Governance controls; Open questions",
       "type": "absence",
-      "claim": "Learn does not describe custom-KPI-specific behavior when a tab is public or a process is shared.",
+      "claim": "Learn does not describe custom-KPI-specific behaviour on shared processes or public tabs.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Power Automate process intelligence custom KPIs public tabs permissions rollout. Opened tab-management, sharing and KPI card pages; they document general sharing but no custom-KPI-specific behavior.",
+      "quote": "Searched: '\"process intelligence experience\" custom KPIs role permission shared public tab'; opened tab management, experience overview, KPI cards and Share process mining processes; no custom-KPI sharing rules found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 27,
-      "where": "Risk assessment: Security & identity",
-      "type": "record",
-      "claim": "The roadmap describes no new identity, permission or role.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Custom metric creation: Build new KPIs using an intuitive formula editor",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
+      "n": 34,
       "where": "Risk assessment: Security & identity; Scope: Audience",
       "type": "role",
       "claim": "Environment Maker can create, share and contribute to processes.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
-      "quote": "You need the Environment Maker role to create, share, and contribute to processes.",
+      "source": "https://learn.microsoft.com/power-automate/process-advisor-security",
+      "quote": "The Environment maker role can use the process mining capabilities to create, share, and contribute to processes.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 29,
+      "n": 35,
       "where": "Risk assessment: Security & identity; Scope: Audience",
       "type": "role",
-      "claim": "Process Mining User can only view created process reports.",
+      "claim": "The Process Mining User security role can only view created process reports.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/process-advisor-security",
       "quote": "The Process Mining User security role can only view created process reports.",
@@ -350,18 +414,29 @@
       "fix": null
     },
     {
-      "n": 30,
-      "where": "Risk assessment: Security & identity; Scope: Audience; Open questions",
+      "n": 36,
+      "where": "Risk assessment: Security & identity; Scope; Governance controls; Open questions",
       "type": "absence",
-      "claim": "Microsoft does not name a role specifically for defining custom KPIs.",
+      "claim": "Microsoft does not document a custom-KPI-specific creation or editing permission or its role mapping.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"process intelligence\" \"custom KPI\" \"role\"; Power Automate process intelligence custom KPI enable disable admin restrict security roles Dataverse API. Opened security, overview and KPI card pages; no custom-KPI authoring role specified.",
+      "quote": "Searched: '\"process mining\" \"custom KPIs\" admin switch permissions security roles Power Platform API'; opened Security and privacy, KPI cards and experience overview; the general process roles are documented, but no KPI-specific privilege or role mapping is given.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 31,
+      "n": 37,
+      "where": "Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "absence",
+      "claim": "The roadmap describes metric definition, management and display, not autonomous actions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Custom metric creation ... Editing and management ... Native visualization support ... Business-specific measurements ... Reusability",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
       "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "licensing",
       "claim": "Process mining is licensed as part of Microsoft Power Automate.",
@@ -372,19 +447,19 @@
       "fix": null
     },
     {
-      "n": 32,
-      "where": "Cost and licensing",
+      "n": 39,
+      "where": "Cost and licensing: Licence",
       "type": "licensing",
-      "claim": "The overview describes a Power Automate trial licence for process mining.",
+      "claim": "The overview documents a Power Automate trial licence for process mining.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
-      "quote": "For a limited time of 90 days, the Power Automate trial license offers:",
+      "quote": "Power Automate trial license ... Process mining capabilities: Enable you to create a process, connect to an event log using data flows, analyze a process from data, view the analytics report on the web",
       "severity": null,
       "fix": null
     },
     {
-      "n": 33,
-      "where": "front matter: licensing.notes; Cost and licensing",
+      "n": 40,
+      "where": "front matter: licensing.notes; Cost and licensing: Licence",
       "type": "licensing",
       "claim": "Power Automate Premium is a per-user licence.",
       "status": "supported",
@@ -394,10 +469,10 @@
       "fix": null
     },
     {
-      "n": 34,
-      "where": "front matter: licensing.notes; Cost and licensing",
+      "n": 41,
+      "where": "front matter: licensing.notes; Cost and licensing: Licence",
       "type": "licensing",
-      "claim": "The Process Mining add-on is tenant-wide and available for Power Automate Premium.",
+      "claim": "The Process Mining add-on is tenant-wide and available for the Power Automate Premium licence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
       "quote": "The Process Mining add-on is a tenant-wide license that's available for the Power Automate Premium license.",
@@ -405,53 +480,31 @@
       "fix": null
     },
     {
-      "n": 35,
-      "where": "front matter: licensing.model",
+      "n": 42,
+      "where": "front matter: licensing.notes; Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "Each Power Automate Premium licence contributes 50 MB of process mining capacity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
+      "quote": "Each Power Automate Premium license adds 50 MB of process mining capacity",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "Premium licence capacity contributions go into a tenant-wide pool up to a total of 100 GB.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
+      "quote": "to a tenant-wide capacity pool up to a total of 100 GB.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "front matter: licensing.notes; Cost and licensing: Meter",
       "type": "licensing",
-      "claim": "The surrounding product has a mixed licensing model combining per-user licensing and a capacity add-on.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
-      "quote": "The Process Mining add-on is a tenant-wide license that's available for the Power Automate Premium license.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
-      "type": "absence",
-      "claim": "No licence specific to custom KPIs is published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Automate process intelligence custom KPIs licensing capacity meter billing. Opened process-advisor-overview licensing and KPI card pages; read licensing types search excerpt. No custom-KPI-specific licence found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "Each Power Automate Premium licence adds 50 MB of process mining capacity to the tenant pool.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
-      "quote": "Each Power Automate Premium license adds 50 MB of process mining capacity to a tenant-wide capacity pool up to a total of 100 GB.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "Capacity accumulated from Premium licences is capped at 100 GB.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
-      "quote": "When you reach 100 GB, you need to purchase the Power Automate Process Mining add-on to process more data.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "cost",
       "claim": "The Process Mining add-on extends the process mining capacity pool.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
@@ -460,98 +513,98 @@
       "fix": null
     },
     {
-      "n": 40,
-      "where": "Cost and licensing; rationale: cost; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not published a separate custom-KPI price, meter or rule for capacity consumed by creating or evaluating one.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Automate process intelligence custom KPIs licensing capacity meter billing. Opened overview licensing and KPI card pages; read pay-as-you-go meters search excerpts. No custom-KPI charge or evaluation-capacity rule found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "Cost and licensing; Scope: Prerequisites",
-      "type": "behaviour",
-      "claim": "Process mining requires a Power Platform environment with a Dataverse database and the applicable licences or trials.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
-      "quote": "The required licenses or trials depending on the capabilities you want access to. A Microsoft Power Platform environment with a Microsoft Dataverse database.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "Dataverse storage is a related process mining cost consideration.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
-      "quote": "Depending on the size of the process data you import, you might run out of Dataverse storage capacity. If this happens, ask your admin about purchasing more storage capacity",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "Scope: Prerequisites",
-      "type": "absence",
-      "claim": "Feature-specific rollout mechanics beyond the roadmap target and status are not published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Automate process intelligence custom KPIs public tabs permissions rollout; \"process intelligence\" \"custom KPIs\". Opened studio overview and KPI card pages; no feature-specific rollout mechanism or window found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "Governance guidance: At rollout",
-      "type": "behaviour",
-      "claim": "Duplicate tab copies the tab with all its cards and layout.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/process-mining-studio-tab-management",
-      "quote": "Duplicate tab: Create a copy of the tab with all its cards and layout.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 45,
-      "where": "controls[0].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "The cited sharing page gives Environments > environment > Settings > Users + permissions > Users > user > Reassign records.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/power-automate/process-mining-share",
-      "quote": "Sign in to Power Platform admin center. Select the environment where the process is located. On the command bar, select Settings. Under Users + permissions, select Users.",
-      "severity": "blocker",
-      "fix": "Replace the path in front matter and the table with 'environment > Settings > Users + permissions > Users > user > Reassign records'. The cited page starts at the linked admin center environment list and does not specify an Environments navigation step."
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The described platform licensing model is mixed, combining per-user Premium licensing and a tenant-wide capacity add-on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
+      "quote": "The Power Automate Premium license is a per-user license ... The Process Mining add-on is a tenant-wide license that's available for the Power Automate Premium license.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 46,
-      "where": "controls[0].api; Governance controls table and prose; Governance guidance: After rollout",
-      "type": "command",
-      "claim": "The PM Inferred Task reference documents Assign through PATCH /msdyn_pminferredtasks(<msdyn_pminferredtaskid>) updating ownerid.",
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "No licence or separate price specific to custom KPIs in this experience is published.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/msdyn_pminferredtask",
-      "quote": "Assign ... PATCH /msdyn_pminferredtasks(msdyn_pminferredtaskid) Update the ownerid property.",
+      "source": null,
+      "quote": "Searched: '\"process intelligence\" \"custom metrics\" licensing capacity billing public tabs' and '\"custom metrics\" \"process mining\" \"license\" \"capacity\"'; read process mining overview licensing, licensing FAQ excerpts and KPI cards; no KPI-specific licence or price found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 47,
-      "where": "controls[0].note; Governance controls table",
-      "type": "role",
-      "claim": "A reassignment recipient needs appropriate privileges on the entities associated with the transferred records.",
+      "where": "Cost and licensing: Meter; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "No published rule was found saying that creating or evaluating this experience's custom KPI consumes capacity or a separate meter.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/process-mining-share",
-      "quote": "The target user should have the appropriate privileges on the different entities associated with the transferred records.",
+      "source": null,
+      "quote": "Searched: 'Power Automate process mining capacity consumption calculation custom metrics data size'; read overview licensing, licensing FAQ excerpts and KPI cards. Stored-data capacity is documented, but no custom-KPI creation or evaluation charge or capacity effect is stated.",
       "severity": null,
       "fix": null
     },
     {
       "n": 48,
+      "where": "Cost and licensing: Indirect costs; Scope: Prerequisites",
+      "type": "behaviour",
+      "claim": "Process mining requires a Power Platform environment with a Dataverse database.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
+      "quote": "A Microsoft Power Platform environment with a Microsoft Dataverse database.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Cost and licensing: Indirect costs",
+      "type": "cost",
+      "claim": "Dataverse storage is a related process mining cost consideration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
+      "quote": "Depending on the size of the process data you import, you might run out of Dataverse storage capacity. If this happens, ask your admin about purchasing more storage capacity, or delete existing processes to free up storage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Scope: Prerequisites",
+      "type": "absence",
+      "claim": "No additional rollout mechanics specific to custom KPIs were found beyond the roadmap status and target.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"process mining\" \"custom KPI\" availability rollout release' and '\"process intelligence experience\" rollout availability custom metrics license'; opened experience overview and KPI cards; no custom-KPI rollout steps, version or release channel found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Ownership reassignment is reached in Power Platform admin center through environment > Settings > Users + permissions > Users > user > Reassign records.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-share",
+      "quote": "Select the environment where the process is located. ... select Settings. Under Users + permissions, select Users. Select the leaving user. On the command bar, select Reassign records.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[0].api; Governance controls table; Governance guidance: After rollout",
+      "type": "command",
+      "claim": "PATCH /msdyn_pminferredtasks(<msdyn_pminferredtaskid>) to update the ownerid property is the ownership reassignment call an administrator can use as printed.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/update-delete-entities-using-web-api",
+      "quote": "Update operations use the HTTP PATCH verb. Pass a JSON object containing the properties you want to update to the URI that represents the record. ... PATCH [Organization URI]/api/data/v9.2/accounts(00000000-0000-0000-0000-000000000001) HTTP/1.1",
+      "severity": "blocker",
+      "fix": "Replace the incomplete call, including its rendered table copy, with 'PATCH <organization-uri>/api/data/v9.2/msdyn_pminferredtasks(<msdyn_pminferredtaskid>)' and specify Content-Type: application/json and the request body {\"ownerid@odata.bind\":\"systemusers(<new-owner-systemuserid>)\"}. The versioned entity path and ownerid navigation property are documented at https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/msdyn_pminferredtask; binding syntax is documented at https://learn.microsoft.com/power-apps/developer/data-platform/webapi/associate-disassociate-entities-using-web-api. Cite these alongside the existing table reference. Remove 'to update the ownerid property' from the executable call and retain it only as explanation."
+    },
+    {
+      "n": 53,
       "where": "controls[0].note; Governance controls table and prose",
       "type": "role",
-      "claim": "Environment Maker is sufficient for the target user of a reassigned process mining process.",
+      "claim": "Environment Maker is sufficient for the target user when reassigning a process mining process.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/process-mining-share",
       "quote": "For process mining process, giving the Environment Maker role is sufficient.",
@@ -559,99 +612,88 @@
       "fix": null
     },
     {
-      "n": 49,
-      "where": "Governance controls",
-      "type": "applicability",
-      "claim": "Process mining access follows environment security and Dataverse security roles.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/process-advisor-security",
-      "quote": "The process mining capability relies on environment security and Microsoft Dataverse security roles and privileges to grant access to its features in Power Automate.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 50,
-      "where": "Governance controls; Open questions",
-      "type": "absence",
-      "claim": "No separate control specifically restricting who defines custom KPIs is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Automate process intelligence custom KPI enable disable admin restrict security roles Dataverse API; \"process intelligence\" custom KPIs \"admin\" \"pac\" PowerShell. Opened security and KPI pages; no separate KPI-authoring restriction found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 51,
-      "where": "Governance controls: final paragraph",
-      "type": "applicability",
-      "claim": "Because security and sharing pages do not mention custom KPIs, Microsoft has not confirmed that these controls apply to them.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/power-automate/process-advisor-security",
-      "quote": "The process mining capability relies on environment security and Microsoft Dataverse security roles and privileges to grant access to its features in Power Automate.",
-      "severity": "blocker",
-      "fix": "Replace the final sentence with 'Process mining access is governed by environment security and Dataverse roles and privileges; Microsoft has not documented a permission specifically for creating or editing custom KPIs.' Keep the narrower uncertainty about custom-KPI behavior on shared tabs."
-    },
-    {
-      "n": 52,
-      "where": "rationale: impact",
-      "type": "consistency",
-      "claim": "Other users are unaffected even though metric edits can alter figures those users rely on.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "impact: ... other users are unaffected. / Change & support: ... one maker's change can alter figures other people rely on.",
-      "severity": "minor",
-      "fix": "Remove '; other users are unaffected' from the impact rationale. Keep the medium impact rating and the supported description of makers and analysts seeing the editor and metrics."
-    },
-    {
-      "n": 53,
-      "where": "controls[0].note; Governance guidance: After rollout",
-      "type": "admin-path",
-      "claim": "Reassign records can be used to transfer ownership after an employee leaves.",
+      "n": 54,
+      "where": "controls[0].note; Governance controls table",
+      "type": "role",
+      "claim": "The reassignment target must have appropriate privileges on the entities associated with the transferred records.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/process-mining-share",
-      "quote": "In the Assign to field, use the dropdown menu to assign all the records to either the administrator or another user.",
-      "severity": "minor",
-      "fix": "Append to the control note and the After rollout reassignment instruction: 'Reassign records transfers all of the selected user's records, not just one process.' The current wording omits this important scope qualification."
-    },
-    {
-      "n": 54,
-      "where": "Risk assessment: Autonomy & actions; rationale: risk",
-      "type": "record",
-      "claim": "The roadmap describes defining, editing and displaying metrics, without describing a new connector or autonomous action.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Custom metric creation ... Editing and management ... Native visualization support ... Business-specific measurements ... Reusability",
+      "quote": "The target user should have the appropriate privileges on the different entities associated with the transferred records.",
       "severity": null,
       "fix": null
     },
     {
       "n": 55,
-      "where": "Governance guidance: At rollout; Governance controls",
-      "type": "consistency",
-      "claim": "The checklist tells readers to check Make public, but that control has no row in the controls table.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Check how Make public treats a tab that holds a custom KPI before using it / The controls table contains only Which user owns a process mining process.",
-      "severity": "minor",
-      "fix": "The At rollout step 'Check how Make public treats a tab that holds a custom KPI before using it' has no corresponding control row. Remove this duplicate checklist bullet; the same test advice already appears under Risk assessment: Data exposure."
+      "where": "controls[0].note; Governance guidance: After rollout; Governance controls table",
+      "type": "behaviour",
+      "claim": "Reassign records transfers all records of the selected user rather than just one process.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-share",
+      "quote": "In the Assign to field, use the dropdown menu to assign all the records to either the administrator or another user.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 56,
-      "where": "Governance guidance: Before rollout",
-      "type": "licensing",
-      "claim": "Process mining users can hold either Power Automate Premium or the Process Mining add-on.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
-      "quote": "The Process Mining add-on is a tenant-wide license that's available for the Power Automate Premium license. ... An extra 100 GB of process mining capacity to the capacity pool, which users with the Power Automate Premium license can use.",
-      "severity": "blocker",
-      "fix": "Replace the licence-check bullet with 'Confirm which users hold Power Automate Premium and whether the tenant has the Process Mining add-on so that any capacity effect can be traced later.' The add-on is tenant-wide additional capacity, not an alternative user licence."
+      "where": "Governance controls: final paragraph",
+      "type": "applicability",
+      "claim": "Process mining access relies on environment security and Dataverse security roles and privileges.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-advisor-security",
+      "quote": "The process mining capability relies on environment security and Microsoft Dataverse security roles and privileges to grant access to its features in Power Automate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "The tab context menu's Duplicate tab option copies the tab with all its cards and layout.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-studio-tab-management",
+      "quote": "Each tab in the list has an ellipsis (...) that opens a context menu ... Duplicate tab: Create a copy of the tab with all its cards and layout.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "summary; Why it matters; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No custom-KPI enablement switch or required administrator enablement action is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"process mining\" \"custom KPIs\" admin switch permissions security roles Power Platform API' and '\"custom KPI\" \"Power Platform\" \"API\" \"PowerShell\" \"pac\"'; opened Security and privacy, experience overview and KPI cards; no custom-KPI switch found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Governance controls: final paragraph; Open questions",
+      "type": "absence",
+      "claim": "No separate control restricting who defines custom KPIs is documented beyond the general process access controls.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"process mining\" \"custom KPIs\" admin switch permissions security roles Power Platform API'; opened Security and privacy, Share process mining processes and KPI cards; found general access controls but no custom-KPI-specific restriction.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "rationale: risk",
+      "type": "absence",
+      "claim": "The roadmap describes calculations on existing process data without describing a new data source or connector.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "You can create custom metrics using configurable formulas that can incorporate existing process data, standard KPIs, and mathematical operations.",
+      "severity": null,
+      "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-18T05:16:45.355Z",
+    "at": "2026-11-18T06:03:23.641Z",
     "summary": {
       "links": 9,
-      "unreachable": 0,
+      "unreachable": 8,
       "uiPaths": 1,
       "uiPathsWithMissingWords": 1,
       "apiCalls": 1,
@@ -666,43 +708,43 @@
       },
       {
         "url": "https://learn.microsoft.com/power-automate/process-mining-studio-kpi-card",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-automate/process-mining-studio-overview",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-automate/process-mining-studio-tab-management",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-automate/process-advisor-overview",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-automate/process-advisor-security",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-automate/process-mining-share",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-automate/minit/custom-metrics-beginner-examples",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/msdyn_pminferredtask",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       }
     ],
     "controlChecks": [
@@ -711,16 +753,18 @@
         "side": "ui",
         "governs": "Which user owns a process mining process",
         "docs": "https://learn.microsoft.com/power-automate/process-mining-share",
-        "reachable": true,
+        "reachable": false,
         "segments": [
-          "Environments",
           "Settings",
           "Users + permissions",
           "Users",
           "Reassign records"
         ],
         "missing": [
-          "Environments"
+          "Settings",
+          "Users + permissions",
+          "Users",
+          "Reassign records"
         ]
       },
       {
@@ -728,12 +772,19 @@
         "side": "api",
         "governs": "Which user owns a process mining process",
         "docs": "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/msdyn_pminferredtask",
-        "reachable": true,
+        "reachable": false,
         "token": "PATCH /msdyn_pminferredtasks(<msdyn_pminferredtaskid>)",
         "found": false
       }
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-18",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

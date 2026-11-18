@@ -43,9 +43,6 @@ sources:
   - title: "Share process mining processes"
     url: "https://learn.microsoft.com/power-automate/process-mining-share"
     kind: "learn"
-  - title: "Owner of a departed user's process mining records (REST API)"
-    url: "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/msdyn_pmprocessversion"
-    kind: "learn"
 videos: []
 related: ["power-automate-process-mining-enable-process-intelligence-studio-in-object-centric-process","power-automate-process-mining-export-object-centric-process-mining-data-to-microsoft-fabri","power-automate-process-mining-get-support-for-normalized-schema-import-for-data-ingestion"]
 controls:
@@ -58,13 +55,10 @@ controls:
     scope: "environment"
     ui:
       surface: "Power Platform admin center"
-      path: "Environments > environment > Settings > Users + permissions > Users > user > Reassign records"
+      path: "environment > Settings > Users + permissions > Users > user > Reassign records"
       docs: "https://learn.microsoft.com/power-automate/process-mining-share"
-    api:
-      kind: "rest"
-      call: "PATCH /msdyn_pmprocessversions(msdyn_pmprocessversionid) with the ownerid property (Assign message)"
-      docs: "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/msdyn_pmprocessversion"
-    note: "The Learn page says a co-owner does not automatically become the process owner. It does not say the process owner is held in the table named in the API call; confirm before scripting."
+    api: null
+    note: "The Learn page says a co-owner does not automatically become the process owner when the owner's account is disabled."
 confidence: "high"
 created: "2026-11-18"
 updated: "2026-11-18"
@@ -74,19 +68,23 @@ changes:
     note: "First briefing for roadmap item 576869: tabs and customisable card layouts in the process mining process intelligence experience."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 75 statements contradicted, 3 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-18"
+    note: "Corrected after verification: reassign-records path now matches the Learn page, the unsupported API call and tab-ownership claim were removed, and the desktop-app wording was narrowed."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 82 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-18"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 75
-  confirmed: 70
-  unconfirmed: 3
+  claims: 82
+  confirmed: 80
+  unconfirmed: 0
   contradicted: 2
-  attempts: 1
-  hash: "28d95468d901f3d47ac2f2a6de34f7e1"
+  attempts: 2
+  hash: "ef32515fa4d4d172c77cbb19bae64263"
 ---
 
 ## What's changing
@@ -122,7 +120,7 @@ Because the roadmap says it is enabled automatically, waiting does not stop it a
 **Change & support**
 
 - Existing users move to a different layout from the previous process overview, so help-desk and training material that shows the old screen needs updating.
-- A tab owner who leaves does not hand tabs over automatically: Microsoft Learn says a co-owner does not automatically become the process owner when the owner's account is disabled. Plan record reassignment (see the controls table).
+- When a process owner's account is disabled, a process co-owner does not automatically become the process owner. Plan record reassignment (see the controls table).
 
 ## Cost and licensing
 
@@ -136,14 +134,14 @@ Sources: Overview of process mining and task mining in Power Automate (Licensing
 
 The roadmap item lists Power Automate on the web for Worldwide (Standard Multi-Tenant); no other cloud is listed, which is a record fact and not a statement that it is unavailable elsewhere. It is described as enabled for admins, makers and marketers automatically.
 
-Prerequisites on Microsoft Learn for process mining are the licences or trials, a Power Platform environment with a Dataverse database, and suitable roles: the Environment Maker role to create, share and contribute to processes. Administrators and system customizers can access all processes created in the environment. The Power Automate Process Mining desktop app is needed to define process views, which the new interface then uses.
+Prerequisites on Microsoft Learn for process mining are the licences or trials, a Power Platform environment with a Dataverse database, and suitable roles: the Environment Maker role to create, share and contribute to processes. Administrators and system customizers can access all processes created in the environment. Process views can be defined in the Process Mining desktop application; a default view is provided automatically after process creation.
 
 ## Governance guidance
 
 ### Before rollout
 
 - Tell process owners and analysts that the process overview is moving to tabs and cards, and point them at the Learn pages on tabs and layouts.
-- List who holds the Environment maker, Process Mining User and administrator roles in each environment that holds process mining data, using the roles control in the table.
+- List who holds the Environment maker, Process Mining User and administrator roles in each environment that holds process mining data.
 - Check that any Conditional Access policy for Power Automate also covers Power Apps in its Cloud apps, as Microsoft Learn requires.
 - Agree a naming convention for tabs and when a tab may be made public.
 
@@ -155,7 +153,7 @@ Prerequisites on Microsoft Learn for process mining are the licences or trials, 
 ### After rollout
 
 - Review public tabs on key processes periodically and ask owners to remove those no longer needed.
-- Reassign the records of departing process owners using Settings > Users + permissions > Users > Reassign records, because a co-owner does not take over automatically.
+- Reassign the records of departing process owners using Power Platform admin center > environment > Settings > Users + permissions > Users > user > Reassign records, because a co-owner does not take over automatically.
 - Watch Dataverse file capacity as processes grow, using the licensing page for the capacity pool figures.
 
 ## Governance controls
@@ -166,13 +164,13 @@ Prerequisites on Microsoft Learn for process mining are the licences or trials, 
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Switch to turn the process intelligence experience on or off, or to limit tab sharing</strong><br><small>Environment</small><br><small class="controls__note">Microsoft Learn documents no such control at the time of writing (November 2026). Access follows Dataverse security roles (Environment maker, Process Mining User) per the Security and privacy page.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Owner of a departed user's process mining records</strong><br><small>Environment</small><br><small class="controls__note">The Learn page says a co-owner does not automatically become the process owner. It does not say the process owner is held in the table named in the API call; confirm before scripting.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Environments › environment › Settings › Users + permissions › Users › user › Reassign records <a href="https://learn.microsoft.com/power-automate/process-mining-share" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>PATCH /msdyn_pmprocessversions(msdyn_pmprocessversionid) with the ownerid property (Assign message)</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/msdyn_pmprocessversion" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Owner of a departed user's process mining records</strong><br><small>Environment</small><br><small class="controls__note">The Learn page says a co-owner does not automatically become the process owner when the owner's account is disabled.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>environment › Settings › Users + permissions › Users › user › Reassign records <a href="https://learn.microsoft.com/power-automate/process-mining-share" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
 No admin setting for switching the process intelligence experience on or off, or for restricting tab sharing, is documented at the time of writing (November 2026). Access is governed by the Dataverse security roles that already apply to process mining, so the roles, not this feature, are the lever. The Learn security page notes some privileges are set by default in Dataverse so that built-in roles can use process mining without further action.
 
-The reassign-records path and the Dataverse update message in the table are the documented route for changing the owner of a departed user's process mining records. The Learn pages do not state that the process owner is held in the table named, so confirm with a test record before scripting it. Required role for the admin steps: the Learn page does not state one for this path.
+The reassign-records path in the table is the documented route for assigning a new owner to a leaving employee's Dataverse records for a process mining process. Required role for the admin steps: the Learn page does not state one for this path.
 
 ## Open questions
 
@@ -190,12 +188,9 @@ impact: Medium. The roadmap says it is enabled automatically for admins and make
 <!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].ui; Governance controls / admin-path: The cited sharing page gives Environments > environment > Settings > Users + permissions > Users > user > Reassign records. | Found: 1. Sign in to Power Platform admin center. 2. Select the environment where the process is located. 3. On the command bar, select Settings. 4. Under Users + permissions, select Users. 5. Select the leaving user. 6. On the command bar, select Reassign records. | Fix: Use the path the cited page actually gives: 'environment > Settings > Users + permissions > Users > user > Reassign records'. Remove the added 'Environments' step from the front matter and rendered table. | Source: https://learn.microsoft.com/power-automate/process-mining-share
-- [unsupported, blocker] controls[1].api; Governance controls / command: PATCH /msdyn_pmprocessversions(msdyn_pmprocessversionid) with ownerid is the automation equivalent of reassigning a departed user's process ownership. | Found: Searched: process mining owner msdyn_pmprocessversion API reassign. Opened the PM Process Version reference and process-mining-share. Assign/PATCH and ownerid exist for version rows; neither page establishes this single-row operation as process-owner reassignment. | Fix: Remove the API call from this ownership control and remove the prose calling it a documented process-owner reassignment route. Retain the verified UI procedure; the cited API reference establishes only assignment of PM Process Version rows, not equivalent reassignment of a process and its associated records.
-- [unsupported, major] Change & support / behaviour: A departing tab owner does not hand tabs over automatically. | Found: Searched: process mining tabs owner leaves. Opened process-mining-share, tab management and experience overview. The handover statement concerns a process owner's disabled account; none describes tab ownership succession. | Fix: Replace 'A tab owner who leaves does not hand tabs over automatically' with 'When a process owner's account is disabled, a process co-owner does not automatically become the process owner.' Do not extend process-record reassignment to tab ownership.
-- [unsupported, major] Scope / behaviour: The desktop app is needed to define process views. | Found: Searched: process intelligence experience views desktop. Opened experience overview and read desktop process-hub excerpts. Microsoft says views can be defined in the desktop app and a default view is automatic; it does not state the mandatory prerequisite as written. | Fix: Replace with 'Process views can be defined in the Process Mining desktop application; a default view is provided automatically after process creation.' This is the wording supported by https://learn.microsoft.com/power-automate/process-mining-studio-overview.
+- [contradicted, blocker] controls[1].api; Governance controls: API and automation cell / absence: Automation for reassigning a departed user's Dataverse records is not yet documented. | Found: Reassigns all records that are owned by a specified user to another security principal (user, team, or organization). | Fix: Remove controls[1] and its generated table row rather than printing an incorrect API absence; retain the verified UI reassignment instructions in prose. In Governance controls add: 'Microsoft also documents the Dataverse ReassignObjectsSystemUser action for reassigning all records owned by a specified user.' Cite https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/reassignobjectssystemuser. This is a general Dataverse operation, not a process-only transfer. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/reassignobjectssystemuser
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Cost and licensing / licensing: The process-mining overview names Power BI Premium for report customisation in the user's own Power BI workspace. | Found: To customize your report, you need to link the process to your own Power BI workspace, and a Power BI Premium license. | Fix: Keep the attribution to the overview, but add: 'The Power Platform licensing FAQ also lists Power BI Pro, Power BI per user or Power BI premium capacity for further customisation and analysis: https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq#power-automate.' | Source: https://learn.microsoft.com/power-automate/process-advisor-overview
-- [contradicted, minor] Governance guidance: Before rollout and After rollout / consistency: The checklist refers to a roles control in the table and asks readers to check Conditional Access and capacity, but those controls have no rows. | Found: 'using the roles control in the table'; 'Check that any Conditional Access policy'; 'Watch Dataverse file capacity'. The table contains only an experience/sharing-switch gap and departed-user record ownership. | Fix: Remove 'using the roles control in the table'. The role-inventory, Conditional Access and capacity-monitoring checklist steps have no corresponding controls-table rows; do not describe the existing table as providing those controls.
-- [supported, minor] Governance guidance: After rollout / admin-path: The abbreviated reassignment path is Settings > Users + permissions > Users > Reassign records. | Found: Select the environment where the process is located. ... select Settings. ... select Users. Select the leaving user. On the command bar, select Reassign records. | Fix: Give the full cited path: 'Power Platform admin center > environment > Settings > Users + permissions > Users > user > Reassign records'. The omitted environment and user selections are the subject-selection steps. | Source: https://learn.microsoft.com/power-automate/process-mining-share
+- [supported, minor] Cost and licensing: trial duration / licensing: The cited overview describes a 90-day Power Automate trial. | Found: For a limited time of 90 days, the Power Automate trial license offers: | Fix: Replace 'A 90-day trial gives limited capacity of 100 MB per process' with 'The process mining overview describes a 90-day Power Automate trial with 100 MB per process; the Power Platform licensing FAQ instead describes a free 30-day Process Mining trial included in the Power Automate trial.' Cite https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq#power-automate for the second statement. | Source: https://learn.microsoft.com/power-automate/process-advisor-overview
+- [supported, minor] Cost and licensing: Power BI / licensing: The overview names Power BI Premium for report customization in the user's own Power BI workspace. | Found: To customize your report, you need to link the process to your own Power BI workspace, and a **Power BI Premium** license. | Fix: After this sentence add: 'The Power Platform licensing FAQ instead says further customization and analysis may require Power BI Pro, Power BI per user or Power BI premium capacity licences, and that Power BI licences are not included in Power Automate Process Mining.' Cite https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq#power-automate. | Source: https://learn.microsoft.com/power-automate/process-advisor-overview
+- [contradicted, minor] Governance guidance compared with Governance controls / consistency: The checklist names security-role review, Conditional Access, public-tab management and capacity monitoring without corresponding control rows. | Found: Checklist: 'List who holds the Environment maker, Process Mining User and administrator roles'; 'Check that any Conditional Access policy'; 'Review public tabs'; 'Watch Dataverse file capacity'. Table: only a missing feature switch and departed-owner reassignment. | Fix: The role-inventory, Conditional Access, public-tab review and Dataverse-capacity checklist steps have no corresponding controls-table rows. Remove these checklist bullets to restore table/checklist parity without adding unverified control rows; their documented factual background can remain in the body.
 -->
