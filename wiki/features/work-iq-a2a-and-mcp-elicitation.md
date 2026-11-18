@@ -109,15 +109,17 @@ changes:
     note: "Corrected the Graph spending-policy call so PATCH and DELETE use the policy ID path, and added the Copilot Studio page's statement on write operations next to the MCP policy default."
   - date: "2026-11-16"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 2 of 80 statements not yet confirmed"
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 2 of 85 statements not yet confirmed"
 version: 3
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-16"
+  date: "2026-11-18"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 80
-  confirmed: 78
+  claims: 85
+  confirmed: 83
   unconfirmed: 2
   contradicted: 0
   attempts: 0
@@ -228,12 +230,13 @@ cost: Variable. Work IQ API usage consumes Copilot Credits under usage-based bil
 impact: Low. The roadmap item is aimed at A2A and MCP callers, so those who notice are developers, agent owners and the users their agents prompt; administrators see nothing unless they govern Work IQ access.
 -->
 
-<!-- verifier-findings (2026-11-16, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Risk assessment: Change & support / behaviour: Pause-and-resume is a new task state. | Found: Searched: "Work IQ" "elicitation" configuration default authorization pause resume timeout; "Work IQ" "elicitation" "timeout" "input". Opened A2A overview and MCP overview; neither documents a new task state or its history. | Fix: Replace 'Pause-and-resume is a new task state for agent builders and support teams.' with 'Plan support for tasks that request information or authorisation and then resume.' The roadmap supports the planned capability, not a new protocol task state.
+- [unsupported, major] Risk assessment: Change & support / behaviour: Pause-and-resume is a new task state for agent builders and support teams. | Found: Searched: Work IQ elicitation authorization consent answers resume task state rollout prerequisites administrator; Work IQ elicitation resume timeout. Opened A2A overview and MCP overview. Neither establishes a new protocol task state or its history. | Fix: Replace 'Pause-and-resume is a new task state for agent builders and support teams.' with 'Plan support for tasks that request information or authorisation and then resume.'
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Cost and licensing: opening sentence / licensing: Work IQ API is not licensed per user. | Found: There's no separate Work IQ API subscription, SKU, or per-user license. | Fix: Add https://learn.microsoft.com/partner-center/announcements/2026-june#work-iq-api-and-consumptive-pricing-update to sources for the explicit statement that there is no separate Work IQ API per-user licence. | Source: https://learn.microsoft.com/partner-center/announcements/2026-june#work-iq-api-and-consumptive-pricing-update
-- [supported, minor] controls[1].governs; Cost and licensing; Governance guidance / applicability: Spending policies govern user and group access and credit spending for Work IQ API. | Found: Services managed by usage-based billing in the Microsoft admin center now include: Work IQ API for custom apps and agents Control which users and groups can access supported services using identity-based policies. | Fix: Add https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits to sources: it explicitly lists Work IQ API among the services governed by these spending controls. | Source: https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits
-- [unsupported, minor] rationale: risk / applicability: The existing Work IQ MCP tenant policy covers MCP tool requests only. | Found: Searched: "Work IQ" "A2A" "policy governance"; "Work IQ" "elicitation" "enable" "policy". Opened policy-governance-mcp and Work IQ overview; the article's MCP focus does not establish that the policy cannot cover other Work IQ experiences. | Fix: Replace 'the existing Work IQ MCP tenant policy covers MCP tool requests only' with 'the existing Work IQ MCP tenant policy is documented for MCP tool requests, without confirming coverage of A2A tasks or elicitation'. The source says the policy layer 'can apply across Work IQ experiences': https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp.
+- [supported, minor] controls[1].governs; Cost and licensing; Governance guidance / applicability: Spending policies govern user and group access and credit spending for Work IQ API. | Found: Services managed by usage-based billing in the Microsoft admin center now include: Work IQ API for custom apps and agents. Control which users and groups can access supported services using identity-based policies. | Fix: Add https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits to sources for the explicit applicability of spending policies to Work IQ API. | Source: https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits
+- [supported, minor] Cost and licensing: spending-limit effect / behaviour: Users who hit a spending limit lose access to agents and services for the rest of the month. | Found: When users hit the limit, they lose access to agents and services for the rest of the month until credits reset on the first of the month. | Fix: After the sentence about losing access, add: 'The monitoring guidance qualifies per-user limits: if a running task exceeds the per-user limit, it can complete without interruption.' Cite https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits
+- [unsupported, minor] rationale: risk / applicability: The existing Work IQ MCP tenant policy covers MCP tool requests only. | Found: Searched: Work IQ A2A policy governance; Work IQ policy Microsoft Graph API tenant settings MCP. Opened policy-governance-mcp and Work IQ overview. The former says the policy layer can apply across Work IQ experiences, without establishing MCP-exclusive applicability. | Fix: Replace 'the existing Work IQ MCP tenant policy covers MCP tool requests only' with 'the existing Work IQ MCP tenant policy is documented for MCP tool requests, without confirming coverage of A2A tasks or elicitation'. The source is https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp.
+- [supported, minor] Cost and licensing: opening sentence / licensing: There is no separate Work IQ API per-user licence. | Found: There's no separate Work IQ API subscription, SKU, or per-user license. | Fix: Add https://learn.microsoft.com/partner-center/announcements/2026-june#work-iq-api-and-consumptive-pricing-update to sources for the explicit statement that Work IQ API has no separate per-user licence. | Source: https://learn.microsoft.com/partner-center/announcements/2026-june#work-iq-api-and-consumptive-pricing-update
 -->

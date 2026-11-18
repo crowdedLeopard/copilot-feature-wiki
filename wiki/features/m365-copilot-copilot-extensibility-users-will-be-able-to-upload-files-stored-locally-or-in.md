@@ -94,15 +94,17 @@ changes:
     note: "Corrected after verification: qualified what blocking an agent covers, replaced the unsupported licence statements, set licensing to unknown and action to review, and narrowed the no-upload-setting statements."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 67 statements not yet confirmed"
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 72 statements not yet confirmed"
 version: 3
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-17"
+  date: "2026-11-18"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 67
-  confirmed: 67
+  claims: 72
+  confirmed: 72
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -205,8 +207,9 @@ cost: Variable. The Agents admin guide documents metered consumption for agents 
 impact: Medium. Only people who use custom engine agents on the web would notice, but those users would start sending documents to agents that their tenant, or a vendor, built and hosts.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Cost and licensing; rationale: cost / cost: The Agents admin guide says agents accessing shared tenant data such as SharePoint or Graph Connector content are billed on metered consumption. | Found: Agents that access shared tenant data, such as SharePoint or Graph Connector content, are billed based on metered consumption. | Fix: After this general billing statement add: 'The Copilot Studio licensing page separately says classic answers, generative answers and Microsoft Graph tenant grounding are not charged for Microsoft 365 Copilot licence holders when the agent runs with their authenticated identity in Copilot Chat, Teams or SharePoint.' Cite https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing. | Source: https://learn.microsoft.com/microsoft-365/copilot/agent-essentials/m365-agents-admin-guide
+- [supported, minor] Cost and licensing; rationale: cost / cost: The Agents admin guide says agents accessing shared tenant data such as SharePoint or Graph Connector content are billed on metered consumption. | Found: Agents that access shared tenant data, such as SharePoint or Graph Connector content, are billed based on metered consumption. | Fix: The guide's search excerpt supports this statement, but newer guidance qualifies it. Replace it with: 'For Copilot Chat (Basic) and Microsoft 365 (Basic) licences, agents accessing shared tenant data are billed on metered consumption. The Copilot Studio licensing page says classic answers, generative answers and Microsoft Graph tenant grounding are not charged for Microsoft 365 Copilot licence holders when the agent runs with their authenticated identity in Copilot Chat, Teams or SharePoint.' Cite https://learn.microsoft.com/copilot/manage/manage-agents-copilot-chat and the already-cited https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing. In the cost rationale, qualify 'agents that access shared tenant data' with 'for Copilot Chat (Basic) and Microsoft 365 (Basic) licences'. | Source: https://learn.microsoft.com/microsoft-365/copilot/agent-essentials/m365-agents-admin-guide#identify-your-copilot-licensing-scenario
+- [supported, minor] Cost and licensing / default: The Agents admin guide says agents using metered consumption are off by default for users in Microsoft Copilot Chat. | Found: Agents utilizing metered consumption are off by default for users in Microsoft Copilot Chat. | Fix: The cited guide excerpt supports the statement, but the newer purchase guide distinguishes licences. Replace it with: 'Pay-as-you-go agents are off by default for Copilot Chat (Basic) and Microsoft 365 Copilot (Basic) users; the purchase guide says no action is needed to enable agents for Microsoft 365 Copilot (Premium).' Cite https://learn.microsoft.com/copilot/manage/manage-agents-copilot-chat. | Source: https://learn.microsoft.com/microsoft-365/copilot/agent-essentials/m365-agents-admin-guide#identify-your-copilot-licensing-scenario
 -->

@@ -69,7 +69,8 @@ daily by GitHub Actions.
   `VERIFICATION` in `config/taxonomy.mjs`. The stamp carries `hash` (`pageHash`: front matter minus the stamp, log and
   dates, plus the body minus the findings comment), so `verificationDue` queues a page whose text changed at all
   (`changed-since-check`), whose cited Microsoft page changed (`source-changed`, from `pipeline/watch-sources.mjs`:
-  a daily no-model step that re-reads every learn.microsoft.com page the live pages cite into `data/sources.json`,
+  a no-model step in every curation run that re-reads each learn.microsoft.com page the live pages cite once a day, paced
+  and stopping on sustained HTTP 429 (Learn rate-limited 581 of 743 pages on 17 Nov 2026 when every run re-read them all), into `data/sources.json`,
   `pipeline/lib/sources.mjs`, change = Microsoft's `ms.date` moved) or whose check is older than `recheckDays` (7). Each
   check writes a line into the page's `changes` log (`checkNote`). `VERIFY_LIMIT` (24) is the number of such pages a run
   checks on top of everything it wrote. The site's `/accuracy/` page shows every page's state and next check.

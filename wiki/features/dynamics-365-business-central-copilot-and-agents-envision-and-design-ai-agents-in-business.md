@@ -110,15 +110,17 @@ changes:
     note: "Correction: removed the claim that no automation exists for agent permissions and profiles (now described as restricted AL methods) and its table row; noted the transparency note's different permission wording; dropped two checklist steps that had no control row."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 97 statements not yet confirmed"
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 101 statements not yet confirmed"
 version: 4
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-17"
+  date: "2026-11-18"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 97
-  confirmed: 95
+  claims: 101
+  confirmed: 99
   unconfirmed: 0
   contradicted: 2
   attempts: 0
@@ -231,9 +233,9 @@ cost: Variable. Business Central bills agent capabilities in Copilot Credits (pr
 impact: Low. Learn aims the designer at product owners, domain experts, consultants and developers working in sandboxes; most Business Central users will not see it in day-to-day work.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: At rollout, custom profiles checklist item / consistency: The checklist directs readers to create and restrict agent profiles, but the controls table has no profile-control row. | Found: Create custom profiles for agents and restrict page actions and insert or delete rights before assigning them in the Create agent wizard. | Table rows cover capability activation, data movement and credit capacity, not profiles. | Fix: Remove the checklist item beginning 'Create custom profiles for agents'. The documented profile behaviour and wizard path can remain in Risk assessment and Governance controls.
-- [contradicted, minor] Governance guidance: At rollout, permission sets checklist item / consistency: The checklist directs readers to grant agent permission sets, but the controls table has no agent-permissions row. | Found: Grant agents only the permission sets their task needs, remembering that each task runs with the intersection of the user's and the agent's permissions. | Table rows cover capability activation, data movement and credit capacity, not permission sets. | Fix: Remove the checklist item beginning 'Grant agents only the permission sets'. The verified permissions discussion and wizard path can remain elsewhere.
+- [contradicted, minor] Governance guidance: At rollout, custom profiles / consistency: The checklist directs readers to configure agent profiles, but the controls table has no corresponding profile-control row. | Found: Create custom profiles for agents and restrict page actions and insert or delete rights before assigning them in the Create agent wizard. | The table covers capability activation, data movement and credit capacity, not agent profiles. | Fix: Remove the checklist item beginning 'Create custom profiles for agents'. Keep the documented profile behaviour and wizard path elsewhere; do not add a control row.
+- [contradicted, minor] Governance guidance: At rollout, permission sets / consistency: The checklist directs readers to grant agent permission sets, but the controls table has no corresponding agent-permissions row. | Found: Grant agents only the permission sets their task needs, remembering that each task runs with the intersection of the user's and the agent's permissions. | The table covers capability activation, data movement and credit capacity, not agent permission sets. | Fix: Remove the checklist item beginning 'Grant agents only the permission sets'. Keep the verified permissions discussion and wizard path elsewhere; do not add a control row.
 -->

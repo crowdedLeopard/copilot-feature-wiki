@@ -1,0 +1,898 @@
+{
+  "slug": "microsoft-purview-purview-sdk-embedded-in-agent-framework-sdk",
+  "roadmapId": 534609,
+  "title": "Microsoft Purview: Purview SDK built into Microsoft Agent Framework for custom agents",
+  "status": "verified-with-gaps",
+  "date": "2026-11-18",
+  "version": 2,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 70,
+    "confirmed": 69,
+    "unconfirmed": 0,
+    "contradicted": 1,
+    "blocker": 0,
+    "major": 0,
+    "minor": 1
+  },
+  "summary": "The briefing passes: the control commands, portal path, licensing requirements and rollout pause are supported by the checked sources. One billing-setup instruction in the checklist has no corresponding controls-table row.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; What's changing; summary",
+      "type": "record",
+      "claim": "Microsoft plans to embed the Purview SDK in the Microsoft Agent Framework SDK for custom agents.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Purview SDK embedded in Agent Framework SDK enables developers to seamlessly integrate enterprise-grade security, compliance, and governance into the AI agents they build.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing; summary; Why it matters",
+      "type": "behaviour",
+      "claim": "Developers can attach Purview policy middleware that intercepts prompts and responses and checks configured Purview policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/agent-framework/integrations/by-component/middleware/purview",
+      "quote": "In your agent's workflow middleware pipeline, you can add Microsoft Purview policy middleware to intercept prompts and responses to determine if they meet the policies set up in Microsoft Purview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing",
+      "type": "availability",
+      "claim": "Learn documents a Python version of the integration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/agent-framework/integrations/by-component/middleware/purview",
+      "quote": "from agent_framework.microsoft import PurviewPolicyMiddleware, PurviewSettings",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing",
+      "type": "availability",
+      "claim": "Learn documents a .NET version of the integration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/agent-framework/integrations/by-component/middleware/purview",
+      "quote": ".WithPurview(browserCredential, new PurviewSettings(\"My Secure Agent\"))",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What's changing",
+      "type": "applicability",
+      "claim": "The integration supports inline blocking of sensitive content using DLP policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/agent-framework/integrations/by-component/middleware/purview",
+      "quote": "Prevent sensitive data leaks: Inline blocking of sensitive content based on Data Loss Prevention (DLP) policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "applicability",
+      "claim": "AI interaction logging through the integration supports Purview Audit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/agent-framework/integrations/by-component/middleware/purview",
+      "quote": "Log AI interactions in Purview for Audit, Communication Compliance, Insider Risk Management, eDiscovery, and Data Lifecycle Management.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "applicability",
+      "claim": "AI interaction logging through the integration supports Communication Compliance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/agent-framework/integrations/by-component/middleware/purview",
+      "quote": "Log AI interactions in Purview for Audit, Communication Compliance, Insider Risk Management, eDiscovery, and Data Lifecycle Management.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "applicability",
+      "claim": "AI interaction logging through the integration supports Insider Risk Management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/agent-framework/integrations/by-component/middleware/purview",
+      "quote": "Log AI interactions in Purview for Audit, Communication Compliance, Insider Risk Management, eDiscovery, and Data Lifecycle Management.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "applicability",
+      "claim": "AI interaction logging through the integration supports eDiscovery.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/agent-framework/integrations/by-component/middleware/purview",
+      "quote": "Log AI interactions in Purview for Audit, Communication Compliance, Insider Risk Management, eDiscovery, and Data Lifecycle Management.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Governance controls",
+      "type": "applicability",
+      "claim": "AI interaction logging through the integration supports Data Lifecycle Management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/agent-framework/integrations/by-component/middleware/purview",
+      "quote": "Log AI interactions in Purview for Audit, Communication Compliance, Insider Risk Management, eDiscovery, and Data Lifecycle Management.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters",
+      "type": "default",
+      "claim": "The integration is off rather than enabled automatically.",
+      "status": "supported",
+      "source": "Message Center post MC1302905",
+      "quote": "The integration is not enabled automatically; it requires developer implementation within custom agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; rationale: impact",
+      "type": "record",
+      "claim": "Microsoft says user experiences in Microsoft 365 services do not change.",
+      "status": "supported",
+      "source": "Message Center post MC1302905",
+      "quote": "There is no change to user experiences in Microsoft 365 services.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Existing Purview policies and configurations remain unchanged unless explicitly used by the agent.",
+      "status": "supported",
+      "source": "Message Center post MC1302905",
+      "quote": "Existing Microsoft Purview policies and configurations remain unchanged unless explicitly used by the agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Why it matters; Risk assessment; Governance guidance; rationale: risk",
+      "type": "record",
+      "claim": "Using this integration requires developer implementation within each covered custom agent.",
+      "status": "supported",
+      "source": "Message Center post MC1302905",
+      "quote": "The integration is not enabled automatically; it requires developer implementation within custom agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Scope; Risk assessment; changes; Open questions",
+      "type": "record",
+      "claim": "Microsoft paused rollout in its 19 October 2026 Message Center update.",
+      "status": "supported",
+      "source": "Message Center post MC1302905",
+      "quote": "Updated October 19, 2026: We have paused rollout at this time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Governance guidance: After rollout; Open questions",
+      "type": "record",
+      "claim": "Microsoft will announce through Message Center when it is ready to proceed.",
+      "status": "supported",
+      "source": "Message Center post MC1302905",
+      "quote": "We will announce via Message center when we are ready to proceed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The supplied Message Center post sets no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1302905",
+      "quote": "Act by: none",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "front matter: targetDate; What's changing; Risk assessment; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap target is March CY2027.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"March CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is November CY2025.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"November CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed on the roadmap.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "front matter: platforms; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "front matter: products; Scope",
+      "type": "record",
+      "claim": "The roadmap product is Microsoft Purview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Purview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Risk assessment",
+      "type": "availability",
+      "claim": "Learn already publishes integration instructions despite the roadmap's In development status.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/agent-framework/integrations/by-component/middleware/purview",
+      "quote": "The following code sample demonstrates how to add the Microsoft Purview policy middleware to your agent code.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Why it matters; Open questions",
+      "type": "absence",
+      "claim": "The cited Learn guidance documents no tenant-wide switch to require or enable this middleware across custom agents.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Agent Framework middleware tenant enable disable switch admin configuration coverage. Read the middleware, ai-entra-registered, configurepurview and use-the-api pages; search also returned configuretenant. No tenant-wide middleware switch was documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Why it matters; Cost and licensing; Scope; front matter: licensing",
+      "type": "licensing",
+      "claim": "Managing Entra-registered AI interactions with Purview requires pay-as-you-go billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-entra-registered",
+      "quote": "Managing these AI interactions with Microsoft Purview requires you to enable pay-as-you-go billing in your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "Integrated applications send prompts and responses to Purview for policy evaluation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/developer/use-the-api",
+      "quote": "Process content: Your app sends a content activity for policy evaluation and returns policy actions your app must enforce (such as blocking or detecting policy modifications).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Data exposure",
+      "type": "role",
+      "claim": "Members of the Microsoft Purview Content Explorer Content Viewer role group can display captured prompts and responses in activity explorer.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-entra-registered",
+      "quote": "Drill down to each activity to view details that include displaying the prompts and response when you're a member of the Microsoft Purview Content Explorer Content Viewer role group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Python policy evaluation fails closed if the middleware cannot resolve a user ID, tenant or application location.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/agent-framework/integrations/by-component/middleware/purview",
+      "quote": "Policy evaluation fails closed when the middleware can't resolve a user ID, tenant, or application location.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Security & identity; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The Python ignore_exceptions setting bypasses enforcement for every error.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/agent-framework/integrations/by-component/middleware/purview",
+      "quote": "Set ignore_exceptions only when you deliberately prefer availability over enforcement; this setting bypasses enforcement for every error.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The Python documentation advises deriving identity from a validated server-side token rather than caller-controlled message fields.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/agent-framework/integrations/by-component/middleware/purview",
+      "quote": "Derive identity from a validated server-side token rather than caller-controlled message fields.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Agent middleware evaluates the caller's input and final response once per agent run.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/agent-framework/integrations/by-component/middleware/purview",
+      "quote": "Evaluates the caller's input and final response once per agent run.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Agent middleware does not evaluate a model tool call before the tool runs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/agent-framework/integrations/by-component/middleware/purview",
+      "quote": "Doesn't evaluate context-provider output or a model tool call before the tool runs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Chat middleware evaluates model tool calls before execution.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/agent-framework/integrations/by-component/middleware/purview",
+      "quote": "Evaluates context-provider output, replayed history, and model tool calls before execution. Tool results are evaluated on the next model call.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "applicability",
+      "claim": "Chat middleware is the documented choice when policy must cover the complete model request.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/agent-framework/integrations/by-component/middleware/purview",
+      "quote": "Use PurviewChatPolicyMiddleware for data loss prevention when policy must cover the complete model request.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Both Python middleware types buffer a streamed response fully before releasing any update.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/agent-framework/integrations/by-component/middleware/purview",
+      "quote": "Both middleware types buffer a streamed response in full and evaluate it before releasing any update. Streaming therefore doesn't deliver content incrementally while Purview middleware is attached.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[0].ui; controls[0].note; Risk assessment; Governance guidance; Governance controls; rationale: risk",
+      "type": "absence",
+      "claim": "The Purview portal does not currently support creating DLP policies for Entra-registered apps; PowerShell is required.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/developer/use-the-api",
+      "quote": "To create a DLP policy that applies to your Entra-registered app, you must use the New-DlpComplianceRule PowerShell cmdlet. The Microsoft Purview portal doesn't currently support creating DLP policies for Entra-registered applications.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Governance controls; controls[0].governs",
+      "type": "applicability",
+      "claim": "Documented DLP support for these apps blocks prompts based on sensitive information types and is app-scoped.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-entra-registered",
+      "quote": "Support today is only available for a DLP policy that blocks prompts based on sensitive information types. This requires the configuration of a PowerShell cmdlet that's scoped to a specific Entra-registered AI app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing; Scope",
+      "type": "licensing",
+      "claim": "The Agent Framework integration lists an Azure subscription with Microsoft Purview configured as a prerequisite.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/agent-framework/integrations/by-component/middleware/purview",
+      "quote": "Microsoft Azure subscription with Microsoft Purview configured.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope; rationale: cost",
+      "type": "licensing",
+      "claim": "The integration prerequisites include a Microsoft 365 subscription with an E5 licence and pay-as-you-go billing setup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/agent-framework/integrations/by-component/middleware/purview",
+      "quote": "Microsoft 365 subscription with an E5 license and pay-as-you-go billing setup.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is mixed, combining an E5 subscription prerequisite and consumption billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/agent-framework/integrations/by-component/middleware/purview",
+      "quote": "Microsoft 365 subscription with an E5 license and pay-as-you-go billing setup.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Scope: Prerequisites",
+      "type": "command",
+      "claim": "Learn lists the Agent Framework SDK as a prerequisite and gives pip install agent-framework for Python.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/agent-framework/integrations/by-component/middleware/purview",
+      "quote": "Agent Framework SDK: To install the Agent Framework SDK: Python: Run pip install agent-framework.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Scope: Prerequisites",
+      "type": "behaviour",
+      "claim": "Learn directs .NET developers to install the Agent Framework SDK from NuGet.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/agent-framework/integrations/by-component/middleware/purview",
+      "quote": ".NET: Install from NuGet.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Cost and licensing; Governance guidance: Before rollout; rationale: cost",
+      "type": "cost",
+      "claim": "Pay-as-you-go billing is associated with an Azure subscription and charges appear on an Azure bill generated at month end.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-models",
+      "quote": "The billing mechanisms are Azure based, so you must associate your Microsoft 365 tenant with an active Azure subscription. An Azure bill is generated at the end of the month for the total number of pay-as-you-go charges across all Microsoft solutions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "front matter: cost; Cost and licensing; Open questions; rationale: cost",
+      "type": "cost",
+      "claim": "Classification and protection of non-Microsoft 365 custom-agent interactions are metered under Data Security for Gen AI Applications, supporting the variable cost rating.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-models",
+      "quote": "Data Security for Gen AI Applications | Applies to classification and protection of sensitive content for non-M365 AI interactions (prompts/responses)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The Data Security for Gen AI Applications meter uses requests or messages for non-Microsoft 365 prompts or responses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-models",
+      "quote": "Number of requests or messages for non-Microsoft 365 AI interactions (prompts or responses)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "The cited Learn pages quote no rate for this integration and the billing page points readers to Azure pricing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Agent Framework SDK spending cap billing limit. Read all seven cited Learn pages, including the billing models table and Cost estimator tools links to Azure pricing and calculator; no integration rate is quoted in those pages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Cost and licensing: Indirect costs",
+      "type": "absence",
+      "claim": "The cited pages state no spending cap for this integration.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Agent Framework SDK spending cap billing limit. Read the cited middleware, billing models, Entra AI apps, developer configuration, API tutorial and cmdlet pages; no spending cap for this integration was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "The printed New-DlpComplianceRule call can create a sensitive-information rule blocking UploadText under an existing app policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule",
+      "quote": "New-DlpComplianceRule -Name \"Test Entra Rule\" -Policy \"Test Entra DLP\" -ContentContainsSensitiveInformation @{Name = \"credit card number\"}  -GenerateAlert $true -GenerateIncidentReport @(\"siteadmin\") -NotifyUser @(\"admin@contonso.onmicrosoft.com\") -RestrictAccess @(@{setting=\"UploadText\";value=\"Block\"})",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[0].note; Governance controls table; changes",
+      "type": "command",
+      "claim": "Example 4 in the linked New-DlpComplianceRule reference shows creation of the prerequisite policy before its rule.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule",
+      "quote": "New-DlpCompliancePolicy -Name \"Test Entra DLP\" -Mode Enable -Locations $locations -EnforcementPlanes @(\"Application\")",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[1].ui; Governance controls table; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "The capture recommendation is in Microsoft Purview portal > Solutions > DSPM for AI (classic) > Recommendations > Secure interactions from enterprise apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-entra-registered",
+      "quote": "Sign in to the Microsoft Purview portal > Solutions > DSPM for AI (classic). From DSPM for AI (classic) > Recommendations page, locate and select Secure interactions from enterprise apps",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[1].api; controls[1].note; Governance controls table",
+      "type": "command",
+      "claim": "The printed Set-FeatureConfiguration call sets ingestion off for the named existing collection policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/developer/configurepurview",
+      "quote": "Set-FeatureConfiguration \"DSPM for AI - Collection policy for enterprise AI apps\" -ScenarioConfig '{\"Activities\": [\"UploadText\", \"DownloadText\"], \"EnforcementPlanes\": [\"Application\"], \"SensitiveTypeIds\": [\"All\"], \"IsIngestionEnabled\": false}'",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[1].note; Governance controls table",
+      "type": "command",
+      "claim": "New-FeatureConfiguration creates the collection policy rather than modifying an existing one.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/developer/configurepurview",
+      "quote": "New-FeatureConfiguration -FeatureScenario KnowYourData -Name \"DSPM for AI - Collection policy for enterprise AI apps\" -Mode Enable",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[1].note; Governance controls table",
+      "type": "role",
+      "claim": "Learn gives membership of the Microsoft Entra Compliance Administrator group role as an example of a suitable account.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-entra-registered",
+      "quote": "For example, an account that's a member of the Microsoft Entra Compliance Administrator group role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Governance controls: policy-name warning",
+      "type": "behaviour",
+      "claim": "The one-click policy is named DSPM for AI - Capture interactions for enterprise AI apps, unlike the Collection policy name in the cited PowerShell example.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-entra-registered",
+      "quote": "DSPM for AI - Capture interactions for enterprise AI apps from the recommendation or remediation action Secure interactions from enterprise apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Governance controls; changes",
+      "type": "availability",
+      "claim": "Set-FeatureConfiguration is in Public Preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchange/set-featureconfiguration",
+      "quote": "This cmdlet is currently available in Public Preview, isn't available in all organizations, and is subject to change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Governance controls",
+      "type": "availability",
+      "claim": "Set-FeatureConfiguration is not available in all organisations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchange/set-featureconfiguration",
+      "quote": "This cmdlet is currently available in Public Preview, isn't available in all organizations, and is subject to change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Set-FeatureConfiguration is subject to change.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchange/set-featureconfiguration",
+      "quote": "This cmdlet is currently available in Public Preview, isn't available in all organizations, and is subject to change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Governance controls: retention paragraph",
+      "type": "admin-path",
+      "claim": "Retention policies are configured in Microsoft Purview portal > Data Lifecycle Management > Policies > Retention Policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-entra-registered",
+      "quote": "In the Microsoft Purview portal, navigate to Data Lifecycle Management > Policies > Retention Policies and create a retention policy",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Governance controls: retention paragraph",
+      "type": "applicability",
+      "claim": "Selecting the Enterprise AI apps retention location allows retention of Entra-registered AI app interactions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-entra-registered",
+      "quote": "create a retention policy to retain interactions with Entra-registered AI apps by selecting the location Enterprise AI apps and specify the required retention period.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Governance controls: final sentence; controls[0].scope; controls[1].scope",
+      "type": "applicability",
+      "claim": "DLP and collection policies are tenant-administered Purview settings, with the DLP rule scoped to an app rather than middleware configuration in code.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/developer/use-the-api",
+      "quote": "Have your tenant admin configure Microsoft Purview policies and settings. Your administrator must use the New-DlpComplianceRule PowerShell cmdlet to create DLP policies for your Entra-registered apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Scope; rationale: impact",
+      "type": "record",
+      "claim": "Affected organisations build or plan Agent Framework agents, and affected roles include their security, compliance and governance administrators and developers.",
+      "status": "supported",
+      "source": "Message Center post MC1302905",
+      "quote": "Organizations building or planning to build AI agents using the Microsoft Agent Framework SDK- Admins and developers responsible for security, compliance, and governance of custom AI agents",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Scope",
+      "type": "record",
+      "claim": "MC1302905 also lists tenants with Purview licences that enable SDK usage as affected.",
+      "status": "supported",
+      "source": "Message Center post MC1302905",
+      "quote": "Tenants with Microsoft Purview licenses that enable SDK usage",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "controls[1].governs; Governance guidance: At rollout; Governance controls",
+      "type": "applicability",
+      "claim": "A collection policy captures prompts and responses for use by downstream Purview compliance solutions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-entra-registered",
+      "quote": "For prompts and responses, requires a collection policy such as DSPM for AI - Capture interactions for enterprise AI apps from the DSPM for AI recommendation Secure interactions from enterprise apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "DSPM for AI reports provide the Enterprise AI apps category for reviewing these interactions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-entra-registered",
+      "quote": "navigate to the Reports page to view the results of your policy. Select the AI app category of Enterprise AI apps",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Learn instructs administrators to wait at least a day for report data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-entra-registered",
+      "quote": "Wait at least a day for data, and then navigate to the Reports page to view the results of your policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Open questions: permissions",
+      "type": "absence",
+      "claim": "The Agent Framework integration page shows a client ID but does not describe the production Graph permissions needed by the middleware.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Agent Framework middleware production Graph permissions app registration consent. Read the integration page's prerequisites and both language examples. It supplies a client ID but no Graph permissions; the API tutorial's permission examples are explicitly for experimentation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The supplied roadmap record was modified on 19 October 2026 at 23:15:15.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-19T23:15:15\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Governance guidance: Before rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "Every control the governance checklist asks readers to check has a corresponding controls-table row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: \"Confirm pay-as-you-go billing is set up and budgeted against an Azure subscription before the middleware is deployed.\" The table contains only a DLP rule and a collection policy, with no billing-enablement row.",
+      "severity": "minor",
+      "fix": "Replace that Before rollout bullet with: \"Review expected pay-as-you-go consumption with FinOps before the middleware is deployed.\" This retains the budgeting advice without directing readers to check an unlisted configuration control."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-18T03:37:04.297Z",
+    "summary": {
+      "links": 9,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=534609",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/agent-framework/integrations/by-component/middleware/purview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/ai-entra-registered",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/developer/configurepurview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/developer/use-the-api",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/purview-billing-models",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchange/set-featureconfiguration",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1302905",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether DLP blocks sensitive prompts for a custom Entra-registered agent",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule",
+        "reachable": true,
+        "token": "New-DlpComplianceRule",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether prompts and responses from custom agents are captured and stored in Purview",
+        "docs": "https://learn.microsoft.com/purview/ai-entra-registered",
+        "reachable": true,
+        "segments": [
+          "Solutions",
+          "DSPM for AI",
+          "Recommendations",
+          "Secure interactions from enterprise apps"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether prompts and responses from custom agents are captured and stored in Purview",
+        "docs": "https://learn.microsoft.com/purview/developer/configurepurview",
+        "reachable": true,
+        "token": "Set-FeatureConfiguration",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": [
+    {
+      "date": "2026-11-18",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
+}

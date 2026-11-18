@@ -100,10 +100,12 @@ changes:
     note: "Correction: licensing set to not yet published and cost to low, MC1069563 window and default added, Graph and Cost Management API rows and links fixed, unsupported claims narrowed."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 64 statements not yet confirmed"
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 64 statements not yet confirmed"
 version: 3
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-17"
+  date: "2026-11-18"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
@@ -201,8 +203,8 @@ cost: Low. The Credits report page states no separate price for the report, so t
 impact: Low. Administrators and finance teams who manage pay-as-you-go for Copilot Chat notice it; end users do not.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing: rollout completion / record: The notice's rollout window completes by the end of May 2027, previously the end of January. | Found: and expect to complete by end of May 2027 (previously end of January). | Fix: Replace 'and completes by the end of May 2027 (previously end of January)' with 'and is expected to complete by the end of May 2027 (previously end of January)'.
+- [supported, minor] What's changing: rollout completion / record: The notice's rollout completes by the end of May 2027, previously the end of January. | Found: and expect to complete by end of May 2027 (previously end of January). | Fix: Replace 'and completes by the end of May 2027 (previously end of January)' with 'and is expected to complete by the end of May 2027 (previously end of January)'.
 -->

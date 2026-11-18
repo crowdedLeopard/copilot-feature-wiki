@@ -1,0 +1,952 @@
+{
+  "slug": "m365-the-next-generation-of-file-and-folder-sharing",
+  "roadmapId": 492622,
+  "title": "OneDrive and SharePoint: single hero link for file and folder sharing",
+  "status": "verified",
+  "date": "2026-11-17",
+  "version": 2,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 74,
+    "confirmed": 74,
+    "unconfirmed": 0,
+    "contradicted": 0,
+    "blocker": 0,
+    "major": 0,
+    "minor": 0
+  },
+  "summary": "The briefing matches the roadmap and Microsoft's supplied rollout notice. The documented sharing behaviour, administrative paths and PowerShell commands are supported, and the briefing explicitly preserves the documentation disagreements over OneDrive support and supported audience values.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is Rolling out.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Rolling out\", \"statusKey\": \"rolling-out\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target is October CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"October CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Android, Desktop, iOS, Mac and Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Mac\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: products; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap products are Excel, Microsoft 365, OneDrive, PowerPoint, SharePoint and Word.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Excel\", \"Microsoft 365\", \"OneDrive\", \"PowerPoint\", \"SharePoint\", \"Word\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "title; summary; What's changing",
+      "type": "behaviour",
+      "claim": "Each OneDrive and SharePoint file or folder has one hero link.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/shareable-links-anyone-specific-people-organization",
+      "quote": "In OneDrive and SharePoint, each item has one **hero link**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; rationale: impact",
+      "type": "record",
+      "claim": "Microsoft is introducing a replacement sharing dialog centred on the hero link.",
+      "status": "supported",
+      "source": "Message Center post MC1454378",
+      "quote": "Every file and folder will have a single primary sharing link, called the hero link, displayed in the sharing dialog.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Microsoft calls this the third-generation Microsoft 365 sharing experience.",
+      "status": "supported",
+      "source": "Message Center post MC1454378",
+      "quote": "We're introducing the third-generation Microsoft 365 sharing experience to make collaboration simpler, smarter, and more secure by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; rationale: impact",
+      "type": "record",
+      "claim": "The consistent sharing experience covers copied links, email sharing and the browser URL.",
+      "status": "supported",
+      "source": "Message Center post MC1454378",
+      "quote": "Users will see one consistent sharing experience whether they copy a link, share through email, or use the browser URL.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "Users can change the hero link's audience without creating a new URL.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/shareable-links-anyone-specific-people-organization",
+      "quote": "A hero link allows users to share a single link for an item, then change the audience and permissions for that link without needing to create a new URL.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Users can change the hero link's permissions without creating a new URL.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/shareable-links-anyone-specific-people-organization",
+      "quote": "Changing the scope or permission doesn't create a new URL.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Add people remains a separate sharing method that grants direct access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/shareable-links-anyone-specific-people-organization",
+      "quote": "Users can share an item with specific people or security groups through **Add people**. This action grants direct access to the item.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "summary; What's changing; Why it matters; Governance guidance; rationale: risk",
+      "type": "default",
+      "claim": "The hero link starts at Only people added to the file by default.",
+      "status": "supported",
+      "source": "Message Center post MC1454378",
+      "quote": "By default, the hero link is set to Only people added to the file, meaning the link itself does not grant access to anyone.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "Only people added to the file grants no additional access through the link itself.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/shareable-links-anyone-specific-people-organization",
+      "quote": "At this scope, the link works for people who already have access, such as through a direct permission, a group, or the parent folder or site. It grants no additional access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Risk assessment; Governance guidance",
+      "type": "record",
+      "claim": "Users can broaden the hero link audience to people in the organisation with the link.",
+      "status": "supported",
+      "source": "Message Center post MC1454378",
+      "quote": "Users can broaden access to people in the organization with the link or, where permitted by organizational policy, to anyone with the link.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Risk assessment; Governance guidance",
+      "type": "record",
+      "claim": "Users can broaden the hero link audience to anyone with the link where organisational policy permits.",
+      "status": "supported",
+      "source": "Message Center post MC1454378",
+      "quote": "Users can broaden access to people in the organization with the link or, where permitted by organizational policy, to anyone with the link.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Users can give hero link recipients view permission.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/shareable-links-anyone-specific-people-organization",
+      "quote": "For a link with organization or anyone scope, users can choose **Can edit**, **Can view**, **Can't download**, or **Can review** (for supported file types).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Users can give hero link recipients edit permission.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/shareable-links-anyone-specific-people-organization",
+      "quote": "For a link with organization or anyone scope, users can choose **Can edit**, **Can view**, **Can't download**, or **Can review** (for supported file types).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Users can choose view without downloading, depending on available permissions.",
+      "status": "supported",
+      "source": "Message Center post MC1454378",
+      "quote": "Users can choose whether recipients can view, edit, or view without downloading, depending on available permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "Sharing links created before the hero link experience continue working.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/shareable-links-anyone-specific-people-organization",
+      "quote": "Links created before the hero link sharing experience continue to work and appear under **Other links**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "Pre-existing sharing links appear under Other links.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/shareable-links-anyone-specific-people-organization",
+      "quote": "Links created before the hero link sharing experience continue to work and appear under **Other links**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "record",
+      "claim": "Users see a tutorial when they first open the new sharing dialog.",
+      "status": "supported",
+      "source": "Message Center post MC1454378",
+      "quote": "Users will see a tutorial experience upon opening the new share dialog for the first time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "default",
+      "claim": "Can view is the default when users first allow access through the hero link.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/shareable-links-anyone-specific-people-organization",
+      "quote": "**Can view** is the default when a user first allows access to an item through the hero link.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "default",
+      "claim": "Administrators cannot configure a different default permission for the hero link.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/shareable-links-anyone-specific-people-organization",
+      "quote": "Administrators can't configure a different default permission for the hero link.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing; Why it matters; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Hero link scope and permission changes apply to links already sent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/shareable-links-anyone-specific-people-organization",
+      "quote": "Changing the scope or permission doesn't create a new URL. The change applies to links already sent, so narrowing the scope limits who can use those links.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "A file inherits its folder's hero link settings until its own hero link is explicitly set or changed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/shareable-links-anyone-specific-people-organization",
+      "quote": "A file inherits its folder's hero link settings until the file's own hero link is explicitly set or changed. After that, the file's hero link settings are independent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1454378 was updated on 7 October 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1454378",
+      "quote": "Updated October 7, 2026: We have updated the timeline.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing; Why it matters; Scope; Governance guidance",
+      "type": "record",
+      "claim": "The notice schedules rollout for Worldwide, GCC, GCC High and DoD from early October through end of November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1454378",
+      "quote": "General Availability (Worldwide, GCC, GCC High, DoD): Rolling out early October 2026 (previously mid-September) through end of November 2026 (previously late October)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The previous rollout schedule was mid-September through late October.",
+      "status": "supported",
+      "source": "Message Center post MC1454378",
+      "quote": "Rolling out early October 2026 (previously mid-September) through end of November 2026 (previously late October)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The supplied notice sets no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1454378",
+      "quote": "Act by: none",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "summary; What's changing; Why it matters",
+      "type": "record",
+      "claim": "Microsoft says no action is required before rollout.",
+      "status": "supported",
+      "source": "Message Center post MC1454378",
+      "quote": "No action is required before rollout.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Scope: Who is affected; rationale: impact",
+      "type": "record",
+      "claim": "The notice identifies all users who share or manage files and folders in Microsoft 365 as affected.",
+      "status": "supported",
+      "source": "Message Center post MC1454378",
+      "quote": "Who is affected: All users who share or manage files and folders in Microsoft 365.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Scope: Who is affected",
+      "type": "record",
+      "claim": "The notice covers SharePoint, OneDrive and Microsoft 365 file-sharing experiences.",
+      "status": "supported",
+      "source": "Message Center post MC1454378",
+      "quote": "Platforms and services: SharePoint, OneDrive, and Microsoft 365 file-sharing experiences.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment; Scope; Governance guidance; controls[2].note; rationale: risk",
+      "type": "applicability",
+      "claim": "Available hero link audience scopes depend on the organisation's sharing policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/shareable-links-anyone-specific-people-organization",
+      "quote": "The audience *scope* determines who can use the hero link. Available scopes depend on the organization's sharing policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Anyone with the link permits access without signing in.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/shareable-links-anyone-specific-people-organization",
+      "quote": "Anyone who receives the link can use it without signing in, including people outside the organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Anonymous link use cannot be audited to a named user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/shareable-links-anyone-specific-people-organization",
+      "quote": "Anyone can forward the link, and anonymous use can't be audited to a named user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Selecting an audience scope does not itself make the item searchable or accessible through Copilot for everyone.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/shareable-links-anyone-specific-people-organization",
+      "quote": "Selecting this scope doesn't grant organization-wide access or make the item available in search or Copilot for everyone in the organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "A recipient must receive and redeem the link to establish link-based access and searchability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/shareable-links-anyone-specific-people-organization",
+      "quote": "A person must receive and redeem the link by selecting it before the shared content becomes searchable for them.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Items shared through Add people can appear in search results for selected users and security group members, subject to permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/shareable-links-anyone-specific-people-organization",
+      "quote": "The item can appear in search results and is accessible through Copilot for selected users and security group members, subject to their permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Items shared through Add people are accessible through Copilot for selected users and security group members, subject to permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/shareable-links-anyone-specific-people-organization",
+      "quote": "The item can appear in search results and is accessible through Copilot for selected users and security group members, subject to their permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Security & identity; Governance guidance",
+      "type": "behaviour",
+      "claim": "Effective access is the highest permission granted by direct access, groups, parent folders or sites, the hero link or other sharing links.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/shareable-links-anyone-specific-people-organization",
+      "quote": "A user's effective access is the highest permission granted by any source: direct access, a group, the parent folder or site, the hero link, or another sharing link.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Restricting the hero link does not remove access from other sources, which must each be changed to reduce effective access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/shareable-links-anyone-specific-people-organization",
+      "quote": "Reducing access requires changing each source that grants a higher permission.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment; Governance guidance; controls[3].note; Governance controls",
+      "type": "record",
+      "claim": "Existing default sharing link settings govern legacy links rather than hero links.",
+      "status": "supported",
+      "source": "Message Center post MC1454378",
+      "quote": "Existing default sharing link settings and link expiration policies continue to apply to legacy links and do not govern hero links.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "Existing link expiration policies govern legacy links rather than hero links.",
+      "status": "supported",
+      "source": "Message Center post MC1454378",
+      "quote": "Existing default sharing link settings and link expiration policies continue to apply to legacy links and do not govern hero links.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "The supplied feature sources describe user-initiated sharing, not autonomous or agent behaviour.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint hero link audience permission audit events DefaultMainLinkScope. Read roadmap, MC1454378 and shareable-links-anyone-specific-people-organization; these describe user sharing and no autonomous agent actions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "front matter: licensing.model and notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "licensing",
+      "claim": "Licensing is unknown because no hero-link-specific licence requirement is published in the named feature sources.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint OneDrive \"hero link\" \"license\". Read roadmap, MC1454378, shareable-links and SharePoint service description; base SharePoint licensing is documented, but no distinct hero-link licence requirement was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "No hero-link-specific pay-as-you-go or credit meter is documented at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint OneDrive hero link licensing license pricing meter pay as you go. Read feature sources and Learn excerpts for Microsoft 365 pay-as-you-go services and pricing; no hero link meter found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Cost and licensing; Governance guidance; rationale: cost",
+      "type": "record",
+      "claim": "Microsoft recommends reviewing internal sharing guidance and end-user documentation for the new model.",
+      "status": "supported",
+      "source": "Message Center post MC1454378",
+      "quote": "Review internal sharing guidance and end-user documentation to reflect the new single-link sharing model.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Cost and licensing; Scope; Governance guidance; controls[0].note",
+      "type": "role",
+      "claim": "Set-SPOSite requires both SharePoint Online administrator and site collection administrator rights.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/sharepoint-online/set-sposite",
+      "quote": "You must be a SharePoint Online administrator and be a site collection administrator to run the cmdlet.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[0].api; summary; Scope; Governance guidance; Governance controls",
+      "type": "command",
+      "claim": "Set-SPOSite -Identity <site URL> -DefaultMainLinkScope <OnlyPeopleAdded|Organization|Anyone> sets the site's default hero link audience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/sharepoint-online/set-sposite",
+      "quote": "The default audience for main links used in sharing. Applies to all items at the root of the document library. Only audience scope is set by this parameter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[0].ui; Governance controls",
+      "type": "absence",
+      "claim": "No administrative UI for setting the site's default hero link audience is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint hero link DefaultMainLinkScope admin center default audience tenant UI; \"DefaultMainLinkScope\" \"admin center\" \"tenant\". Read shareable-links, Set-SPOSite and change-default-sharing-link; only PowerShell documents the hero default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[1].ui and controls[1].api; Scope; Governance guidance; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No tenant-wide default hero link audience setting is currently documented on either administrative surface.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint hero link DefaultMainLinkScope admin center default audience tenant UI; \"DefaultMainLinkScope\" \"admin center\" \"tenant\". Read MC1454378, shareable-links and Set-SPOTenant; the notice explicitly says there is no tenant-wide equivalent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[1].note",
+      "type": "absence",
+      "claim": "The Set-SPOTenant reference lists no main link parameter at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"DefaultMainLinkScope\" \"admin center\" \"tenant\". Opened the complete Set-SPOTenant reference and searched its text for MainLink, main link and hero; no matches.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[2].ui; Governance guidance",
+      "type": "admin-path",
+      "claim": "Organisation-level external sharing is configured in SharePoint admin center > Policies > Sharing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/turn-external-sharing-on-or-off",
+      "quote": "In the SharePoint admin center, expand **Policies**, and then select **Sharing**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[2].api",
+      "type": "command",
+      "claim": "Set-SPOTenant -SharingCapability <value> controls the organisation's sharing capability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant",
+      "quote": "### -SharingCapability\n\nDetermines what level of sharing is available for OneDrive and SharePoint sites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[3].ui",
+      "type": "admin-path",
+      "claim": "The site's default sharing link type is under SharePoint admin center > Active sites > site > Sharing > Default sharing link type.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/change-default-sharing-link",
+      "quote": "In the left column, select a site.\n3. Select **Sharing** on the command bar.\n4. Under **Default sharing link type**, clear the **Same as organization-level setting** checkbox.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "controls[3].api",
+      "type": "command",
+      "claim": "Set-SPOSite -Identity <site URL> -DefaultSharingLinkType <value> sets the site's legacy default sharing link type.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/sharepoint-online/set-sposite",
+      "quote": "### -DefaultSharingLinkType\n\nThe default link type for the site collection. To be replaced by DefaultShareLinkScope.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "The site-level default audience is the only documented administrative control specific to the hero link itself.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint hero link DefaultMainLinkScope admin center default audience tenant UI. Read MC1454378, shareable-links, Set-SPOSite and Set-SPOTenant; no other hero-specific administrative setting found; default permission is not configurable.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Risk assessment: Data exposure; controls[0].note; Governance controls",
+      "type": "record",
+      "claim": "DefaultMainLinkScope sets only the starting audience and does not prevent users broadening access where policy permits.",
+      "status": "supported",
+      "source": "Message Center post MC1454378",
+      "quote": "DefaultMainLinkScope controls only the default audience and does not prevent users from broadening access when allowed by policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Governance controls; Open questions",
+      "type": "record",
+      "claim": "MC1454378 lists OnlyPeopleAdded as the default and Organization as the other supported DefaultMainLinkScope value.",
+      "status": "supported",
+      "source": "Message Center post MC1454378",
+      "quote": "Supported values are:- OnlyPeopleAdded (default)- Organization",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "controls[0].api; Governance controls; Open questions",
+      "type": "command",
+      "claim": "The Set-SPOSite reference additionally permits Anyone and documents fallback when Anyone links are disabled for the site.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/sharepoint-online/set-sposite",
+      "quote": "The valid values are:\n\n- OnlyPeopleAdded\n- Organization\n- Anyone\n\n`Anyone` is only available if anonymous links are allowed at the tenant level. If `Anyone` is selected but the site has Anyone links disabled, the effective default falls back to the next most restrictive value.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "DefaultMainLinkScope applies to all items at the root of the document library.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/sharepoint-online/set-sposite",
+      "quote": "Applies to all items at the root of the document library.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "controls[0].note; Scope; Governance guidance; Governance controls; Open questions",
+      "type": "applicability",
+      "claim": "The Set-SPOSite reference omits DefaultMainLinkScope from its valid-parameter list for OneDrive for Business site collections.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/sharepoint-online/set-sposite",
+      "quote": "For OneDrive for Business site collection, the only valid parameters are Identity, AllowDownloadingNonWebViewableFiles, AllowEditing, ConditionalAccessPolicy, DefaultLinkPermission, DefaultSharingLinkType, DisableCompanyWideSharingLinks,",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "controls[0].note; Scope; Governance guidance; Governance controls; Open questions",
+      "type": "applicability",
+      "claim": "The Set-SPOSite reference omits DefaultMainLinkScope from its valid-parameter list for Groups site collections, leaving support unconfirmed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/sharepoint-online/set-sposite",
+      "quote": "For Groups site collection, the only valid parameters are Identity, AllowSelfServiceUpgrade, DefaultLinkPermission, DefaultSharingLinkType, DenyAddAndCustomizePages, DisableCompanyWideSharingLinks, DisableSharingForNonOwners,",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Governance controls; Open questions",
+      "type": "record",
+      "claim": "In contrast to the cmdlet's valid-parameter list, MC1454378 explicitly describes configuring the default at OneDrive level.",
+      "status": "supported",
+      "source": "Message Center post MC1454378",
+      "quote": "Administrators can configure the default audience for the hero link at the SharePoint site collection or OneDrive level by using the DefaultMainLinkScope parameter in SharePoint PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "A site's external sharing setting must be the same as or more restrictive than the organisation's.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/turn-external-sharing-on-or-off",
+      "quote": "Each site has its own sharing setting that you can set independently, though it must be at the same or more restrictive setting as the organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "front matter: defaultState",
+      "type": "default",
+      "claim": "The new sharing experience arrives on by default rather than requiring administrator opt-in.",
+      "status": "supported",
+      "source": "Message Center post MC1454378",
+      "quote": "Who is affected: All users who share or manage files and folders in Microsoft 365.\n\nNo action is required before rollout.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "What's changing; Governance guidance",
+      "type": "record",
+      "claim": "A sender can expand access on the same hero link when recipients cannot open a previously shared file.",
+      "status": "supported",
+      "source": "Message Center post MC1454378",
+      "quote": "If recipients cannot open a previously shared file, the sender can expand access on the same hero link without redistributing a new URL.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "controls[2].note; Governance controls",
+      "type": "absence",
+      "claim": "Microsoft does not document a complete mapping of individual sharing policy settings to available hero link scopes.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint hero link DefaultMainLinkScope admin center default audience tenant UI. Read shareable-links, turn-external-sharing-on-or-off and Set-SPOSite: policy dependency and the Anyone prerequisite are stated, but no complete hero-scope mapping was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "DefaultMainLinkScope's Anyone value requires anonymous links to be allowed at tenant level.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/sharepoint-online/set-sposite",
+      "quote": "`Anyone` is only available if anonymous links are allowed at the tenant level.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Cost and licensing; Governance guidance",
+      "type": "record",
+      "claim": "Microsoft recommends communicating the updated sharing experience to regular cross-team and cross-organisation collaborators.",
+      "status": "supported",
+      "source": "Message Center post MC1454378",
+      "quote": "Communicate the updated sharing experience to users who regularly collaborate across teams and organizations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Cost and licensing; Governance guidance",
+      "type": "record",
+      "claim": "Microsoft recommends evaluating site-level default sharing settings where different sharing behaviours are required.",
+      "status": "supported",
+      "source": "Message Center post MC1454378",
+      "quote": "Evaluate site-level default sharing settings where different sharing behaviors are required.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-17T22:07:01.621Z",
+    "summary": {
+      "links": 7,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 3,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/sharepoint/shareable-links-anyone-specific-people-organization",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/sharepoint-online/set-sposite",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/turn-external-sharing-on-or-off",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/change-default-sharing-link",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1454378",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=492622",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Default audience of the hero link for a site",
+        "docs": "https://learn.microsoft.com/powershell/module/sharepoint-online/set-sposite",
+        "reachable": true,
+        "token": "Set-SPOSite",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Organisation-level external sharing level",
+        "docs": "https://learn.microsoft.com/sharepoint/turn-external-sharing-on-or-off",
+        "reachable": true,
+        "segments": [
+          "Policies",
+          "Sharing"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Organisation-level external sharing level",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant",
+        "reachable": true,
+        "token": "Set-SPOTenant",
+        "found": true
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Default sharing link type for a site (legacy links)",
+        "docs": "https://learn.microsoft.com/sharepoint/change-default-sharing-link",
+        "reachable": true,
+        "segments": [
+          "Active sites",
+          "Sharing",
+          "Default sharing link type"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Default sharing link type for a site (legacy links)",
+        "docs": "https://learn.microsoft.com/powershell/module/sharepoint-online/set-sposite",
+        "reachable": true,
+        "token": "Set-SPOSite",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": [
+    {
+      "date": "2026-11-17",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
+}

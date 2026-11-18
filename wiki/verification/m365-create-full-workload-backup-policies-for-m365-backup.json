@@ -1,0 +1,1265 @@
+{
+  "slug": "m365-create-full-workload-backup-policies-for-m365-backup",
+  "roadmapId": 464990,
+  "title": "Microsoft 365 Backup: Full Workload Backup policies for SharePoint, OneDrive and Exchange",
+  "status": "verified",
+  "date": "2026-11-18",
+  "version": 3,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 96,
+    "confirmed": 96,
+    "unconfirmed": 0,
+    "contradicted": 0,
+    "blocker": 0,
+    "major": 0,
+    "minor": 0
+  },
+  "summary": "The briefing passes: its configuration paths, automation, pricing and policy behaviour are supported by Microsoft documentation. It accurately distinguishes the roadmap targets, the tenant notice's rollout windows and Learn's continuing preview designation.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap general availability target is September CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"September CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview target is July CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"July CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists only Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: releasePhase; Scope",
+      "type": "record",
+      "claim": "The roadmap release phases are General Availability and Preview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 2026-07-08T23:11:07.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-07-08T23:11:07\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap product is Microsoft 365.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft 365\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "title; summary; What's changing",
+      "type": "behaviour",
+      "claim": "Full Workload Backup can protect an entire SharePoint, OneDrive or Exchange workload with a single policy.",
+      "status": "supported",
+      "source": "Message Center post MC1387526",
+      "quote": "a new capability that allows admins to quickly protect an entire workload (SharePoint, OneDrive, or Exchange) with a single policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "Full Workload Backup can be enabled independently for each workload.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+      "quote": "You can enable Full Workload Backup independently for SharePoint, OneDrive, and Exchange.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Full Workload Backup automatically protects eligible units not already included in custom backup policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+      "quote": "Full Workload Backup automatically protects all eligible protection units that aren't already included in a custom backup policy",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Risk assessment: Data exposure; Why it matters",
+      "type": "behaviour",
+      "claim": "Units on the exclusion list are outside Full Workload Backup protection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+      "quote": "The exclusion list allows you to exclude specific protection units from Full Workload Backup protection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Units in the process of permanent deletion from Microsoft 365 Backup are outside Full Workload Backup protection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+      "quote": "aren't already included in a custom backup policy, added to the exclusion list, or in the process of being permanently deleted from Microsoft 365 Backup.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "summary; What's changing; Why it matters; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The notice says newly created items join backup coverage automatically on subsequent runs.",
+      "status": "supported",
+      "source": "Message Center post MC1387526",
+      "quote": "Newly created artifacts will be included in backup coverage automatically on subsequent runs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; rationale: risk",
+      "type": "behaviour",
+      "claim": "Existing custom backup policies continue unchanged.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+      "quote": "Other “custom” backup policies continue to work without changes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Custom policies take precedence even when paused, excluding their units from Full Workload Backup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+      "quote": "A protection unit that's already included in a custom backup policy (in an active or paused state) will not be protected by the Full Workload Backup policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Adding a Full Workload Backup unit to a custom policy moves it automatically to that custom policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+      "quote": "If you attempt to add a protection unit that is already protected by Full Workload Backup to a custom backup policy, the protection unit will be moved to that custom policy automatically",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Moving a unit from Full Workload Backup to a custom policy causes no gap in recovery point coverage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+      "quote": "the protection unit will be moved to that custom policy automatically, with no gap in its recovery point coverage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The service checks for newly created sites, accounts and mailboxes every 24 hours.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+      "quote": "Microsoft 365 Backup checks for newly created SharePoint sites, OneDrive accounts, and Exchange mailboxes every 24 hours.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The exclusion list is populated by uploading a CSV file.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+      "quote": "Upload a CSV file containing the protection units that you want to exclude.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Risk assessment: Change & support; controls[0].note",
+      "type": "availability",
+      "claim": "Microsoft Learn still marks Full Workload Backup as preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+      "quote": "The full workload backup feature is in preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1387526 was published on 2026-06-11.",
+      "status": "supported",
+      "source": "Message Center post MC1387526",
+      "quote": "Published 2026-06-11",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1387526 was last updated on 2026-10-12.",
+      "status": "supported",
+      "source": "Message Center post MC1387526",
+      "quote": "last updated 2026-10-12",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The notice gives a Worldwide public preview rollout from early July to mid-July 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1387526",
+      "quote": "Public Preview (Worldwide): We will begin rolling out in early July 2026 and expect to complete by mid-July 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice gives general availability rollout from mid-September to mid-October 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1387526",
+      "quote": "General Availability: We will begin rolling out in mid-September 2026 and expect to complete by mid-October 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The supplied notice has no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1387526",
+      "quote": "Act by: none",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "Full Workload Backup requires administrator configuration before it protects anything.",
+      "status": "supported",
+      "source": "Message Center post MC1387526",
+      "quote": "The feature is available by default but requires admin configuration to enable.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Why it matters",
+      "type": "record",
+      "claim": "Microsoft asks for no immediate action before rollout.",
+      "status": "supported",
+      "source": "Message Center post MC1387526",
+      "quote": "No immediate action is required before rollout.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Why it matters",
+      "type": "record",
+      "claim": "Microsoft recommends reviewing current policies and coverage after rollout.",
+      "status": "supported",
+      "source": "Message Center post MC1387526",
+      "quote": "After rollout, we recommend that you: - Review your current Microsoft 365 Backup policies and coverage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Governance guidance: After rollout",
+      "type": "record",
+      "claim": "Microsoft recommends updating internal backup procedure documentation.",
+      "status": "supported",
+      "source": "Message Center post MC1387526",
+      "quote": "Update internal documentation if you manage backup procedures.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "rationale: impact",
+      "type": "record",
+      "claim": "The notice identifies administrators managing Microsoft 365 Backup policies as an affected group.",
+      "status": "supported",
+      "source": "Message Center post MC1387526",
+      "quote": "Who is affected: - Admins managing Microsoft 365 Backup policies",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Only tenant-level administrators can create and manage Microsoft 365 backups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-setup",
+      "quote": "Only tenant-level admins can create and manage backups using Microsoft 365 Backup for their users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Security & identity; Scope",
+      "type": "role",
+      "claim": "The administrator's role determines which workloads they can manage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-setup",
+      "quote": "your admin role determines which products you can manage with Microsoft 365 Backup.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Security & identity; Scope; controls[0].note; Governance controls",
+      "type": "role",
+      "claim": "The Microsoft 365 Backup Administrator role can manage all three workloads and the entire tool.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-setup",
+      "quote": "the Microsoft 365 Backup Administrator, that can control the entire tool.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[0].note; Governance controls",
+      "type": "role",
+      "claim": "SharePoint Administrators can manage SharePoint and OneDrive backups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-setup",
+      "quote": "| Admin role | OneDrive | SharePoint | Exchange | ... | SharePoint Administrator | ✓ | ✓ |  |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[0].note; Governance controls",
+      "type": "role",
+      "claim": "Exchange Administrators manage Exchange backups, not the SharePoint example.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-setup",
+      "quote": "| Admin role | OneDrive | SharePoint | Exchange | ... | Exchange Administrator |  |  | ✓ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[0].note; Governance controls",
+      "type": "role",
+      "claim": "Global Administrators can manage all three workloads.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-setup",
+      "quote": "| Admin role | OneDrive | SharePoint | Exchange | ... | Global Administrator | ✓ | ✓ | ✓ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Existing backups of removed or excluded protected units remain available according to retention settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+      "quote": "Regardless, existing backups for that protection unit will remain for its defined retention period.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Removing a unit from Full Workload Backup adds it to the exclusion list.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+      "quote": "When you remove a protection unit from the Full Workload Backup policy, it's added to the policy's exclusion list.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Removing a unit from Full Workload Backup stops new backups for that unit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+      "quote": "This keeps Full Workload Backup from automatically re-protecting it again, and no new backups are taken for it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Turning off Full Workload Backup removes its policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+      "quote": "After Full Workload Backup is turned off: - The Full Workload Backup policy is removed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Turning off the policy moves units protected only by it to Removed items.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+      "quote": "Protection units associated only with the Full Workload Backup policy move to the Removed items tab.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "After shutdown, new backups stop until affected units join a custom policy or Full Workload Backup is re-enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+      "quote": "New backups will not be taken, unless and until the protection unit(s) are added to a custom policy or the Full Workload Backup policy is re-enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Removing protection units from backup policies is listed as a potentially harmful notification event.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-setup",
+      "quote": "Potentially harmful events ... Removing protection units from backup policies",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Security & identity; controls[2].note; Governance guidance; Governance controls",
+      "type": "applicability",
+      "claim": "The general Microsoft 365 Backup email notification control treats creating or modifying policies as routine events.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-setup",
+      "quote": "Routine events - Creating or modifying backup policies",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Security & identity; controls[2].note; Governance controls",
+      "type": "default",
+      "claim": "Routine notification events require opt-in.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-setup",
+      "quote": "By default, recipients are notified only about potentially harmful events, but you can also opt in to receive notifications for routine events.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Governance guidance: Before rollout; Governance controls",
+      "type": "behaviour",
+      "claim": "Jobs configured with a 10-minute RPO are excluded from notification events.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-setup",
+      "quote": "Jobs configured with a 10-minute RPO are not included in notification events.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Governance guidance: Before rollout; Governance controls",
+      "type": "behaviour",
+      "claim": "Notification events trigger upon completion of the overall policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-setup",
+      "quote": "Notification events are triggered upon completion of the overall policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[2].note; Governance controls",
+      "type": "role",
+      "claim": "Global and Microsoft 365 Backup administrators can enable notifications and update the notification list.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-setup",
+      "quote": "Global admins and Microsoft 365 Backup admins can turn on this feature and update the notification list at any time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Administrators can add another administrator as a recipient in the Backup Notification List.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-setup",
+      "quote": "Add users, distribution lists, or security groups (only email enabled) to the Backup Notification List.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "A checkbox opts into routine notification events.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-setup",
+      "quote": "(Optional) Select the checkbox to also receive routine event notifications.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "front matter: licensing.model and cost; summary; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Microsoft 365 Backup uses consumption-based pay-as-you-go billing, supporting the consumption model and variable cost rating.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-pricing",
+      "quote": "The Microsoft 365 Backup service, offered through the Microsoft 365 admin center, is a pay-as-you-go consumption-based service.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "The list price is $0.15/GiB/month of protected content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-pricing",
+      "quote": "The list price is $0.15/GiB/month of protected content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope",
+      "type": "licensing",
+      "claim": "Service setup starts by linking an Azure subscription for pay-as-you-go billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-setup",
+      "quote": "As a first step, you should link an Azure subscription in pay-as-you-go, if you haven't already done so.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Why it matters; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "The charge is based on the size of content added to backup protection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-pricing",
+      "quote": "Microsoft 365 Backup charges you based on the size of the following content once it's added to backup protection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The billable content includes deleted SharePoint and OneDrive content in the second-stage recycle bin.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-pricing",
+      "quote": "Deleted content in SharePoint sites' and OneDrive accounts' second-stage recycle bin (also known as site collection recycle bin).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The billable mailbox size includes associated online archives.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-pricing",
+      "quote": "Size of the live user or shared mailbox plus their associated online archives if those are being used.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Deleted and versioned items in protected mailboxes count towards the charge.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-pricing",
+      "quote": "Deleted and versioned items in the protected mailboxes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "The pricing page names no separate Full Workload Backup meter or charge.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Backup Full Workload Backup separate pricing meter license requirement. Read backup-pricing, backup-overview and backup-view-edit-policies; none names a separate Full Workload Backup meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The pricing page does not name a Microsoft 365 licence for the service.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Backup Full Workload Backup separate pricing meter license requirement. Read the entire backup-pricing page: no Microsoft 365 licence is named there. This is not a claim that billing setup has no licensing prerequisites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Cost and licensing; Governance guidance: Before rollout and After rollout",
+      "type": "cost",
+      "claim": "The linked Microsoft 365 Backup pricing calculator estimates protected storage and costs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-pricing",
+      "quote": "The Microsoft 365 Backup pricing calculator is a tool that helps you estimate the amount of backup storage and the costs that you incur to protect and back up your Microsoft 365 data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Cost and licensing; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Usage reports or PowerShell can supply storage-size inputs for the calculator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-pricing",
+      "quote": "You can get the live data plus the archives and recycle bin deleted content sizes using either PowerShell commands or the Microsoft 365 usage reports.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "The newer billing experience offers budget alerts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-setup",
+      "quote": "We recommend customers migrate their billing management for Microsoft 365 Backup to the new billing experience to leverage some of the new Pay-as-you-go features like Budget alerts",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Reaching 100% of a billing-policy budget does not stop service or billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node",
+      "quote": "Reaching 100% of your budget doesn't stop the service or billing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Customers using an ISV solution on Microsoft 365 Backup Storage are charged solely by the partner for its application.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-pricing",
+      "quote": "If you're using a partner (ISV) solution built on the Microsoft 365 Backup Storage platform, you'll be charged solely by them for their application.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "Microsoft 365 Backup supports user mailboxes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-faq",
+      "quote": "Microsoft 365 Backup supports both user mailboxes and shared mailboxes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "Microsoft 365 Backup supports shared mailboxes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-faq",
+      "quote": "Microsoft 365 Backup supports both user mailboxes and shared mailboxes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "Microsoft 365 Backup does not support room mailboxes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-faq",
+      "quote": "Other Exchange recipient types, including room mailboxes and group mailboxes, aren't supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "Microsoft 365 Backup does not support group mailboxes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-faq",
+      "quote": "Other Exchange recipient types, including room mailboxes and group mailboxes, aren't supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "Some legacy SharePoint site templates are unsupported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-faq",
+      "quote": "While most SharePoint templates are supported, there are a handful of legacy template types which are not.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Microsoft publishes a scale limit of 1,000,000 items per workload.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-overview",
+      "quote": "Items per workload: up to 1,000,000 items per workload.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Microsoft publishes a scale limit of 100 backup policies per workload.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-overview",
+      "quote": "Policies per workload: up to 100 backup policies per workload.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Microsoft publishes a scale limit of 100,000 items per backup policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-overview",
+      "quote": "Items per policy: up to 100,000 items per backup policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Microsoft directs organisations needing higher scale to contact Microsoft.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-overview",
+      "quote": "If your organization needs to protect data beyond these limits, contact Microsoft to discuss options for a higher scale.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The SharePoint enable entry point is Microsoft 365 Backup > Back up sites > All sites in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+      "quote": "On Microsoft 365 Backup dashboard, select Back up sites, and then choose All sites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "controls[0].api; Governance controls table and prose",
+      "type": "command",
+      "claim": "Microsoft.Graph.Beta.BackupRestore documents New-MgBetaSolutionBackupRestoreSharePointProtectionPolicy with -DisplayName and -ProtectionMode.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.graph.beta.backuprestore/new-mgbetasolutionbackuprestoresharepointprotectionpolicy?view=graph-powershell-beta",
+      "quote": "Module: Microsoft.Graph.Beta.BackupRestore Module; New-MgBetaSolutionBackupRestoreSharePointProtectionPolicy ... [-DisplayName <string>] ... [-ProtectionMode <string>]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The SharePoint creation cmdlet creates an inactive policy rather than activating protection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.graph.beta.backuprestore/new-mgbetasolutionbackuprestoresharepointprotectionpolicy?view=graph-powershell-beta",
+      "quote": "Create a protection policy for a M365 service SharePoint. Policy will be created in inactive state.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "controls[0].api; Governance controls",
+      "type": "command",
+      "claim": "fullServiceBackup is the protectionMode value for backing up an entire workload.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/sharepointprotectionpolicy?view=graph-rest-beta",
+      "quote": "When set to fullServiceBackup, the entire workload is backed up and specific sites can be excluded using exclusion units.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 79,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The REST create reference does not list protectionMode, unlike the beta PowerShell surface.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/backuprestoreroot-post-sharepointprotectionpolicies?view=graph-rest-beta",
+      "quote": "You can specify the following properties when creating a sharePointProtectionPolicy object. ... displayName ... retentionSettings ... siteProtectionUnits",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 80,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Learn says the setup experience is the same for SharePoint, OneDrive and Exchange, using SharePoint as its example.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+      "quote": "The setup experience is the same for SharePoint, OneDrive, and Exchange. The following example uses SharePoint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 81,
+      "where": "controls[1].ui; Governance controls table; Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "Exclusions are managed through Microsoft 365 Backup > Backup policies > Full Workload Backup policy > View details > Excluded > Exclude more > CSV upload > Save.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+      "quote": "select Backup policies tab. ... Select the Full Workload Backup policy ... select View details. ... Open the Excluded tab. ... Select Exclude more. ... Upload a CSV file containing the protection units that you want to exclude. ... Select Save.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 82,
+      "where": "controls[1].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "An exclusion operation can exclude up to 10,000 protection units.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+      "quote": "You can exclude up to 10,000 protection units in a single operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 83,
+      "where": "controls[1].api; Governance controls table and prose",
+      "type": "command",
+      "claim": "The beta SharePoint exclusion call uses POST /solutions/backupRestore/sharePointProtectionPolicies/{sharePointProtectionPolicyId}/siteExclusionUnitsBulkAdditionJobs with displayName and siteWebUrls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/sharepointprotectionpolicy-post-siteexclusionunitsbulkadditionjobs?view=graph-rest-beta",
+      "quote": "POST /solutions/backupRestore/sharePointProtectionPolicies/{sharePointProtectionPolicyId}/siteExclusionUnitsBulkAdditionJobs ... displayName ... Required. ... siteWebUrls ... Required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 84,
+      "where": "controls[1].note",
+      "type": "role",
+      "claim": "The SharePoint exclusion API requires BackupRestore-Configuration.ReadWrite.All.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/sharepointprotectionpolicy-post-siteexclusionunitsbulkadditionjobs?view=graph-rest-beta",
+      "quote": "Delegated (work or school account) | BackupRestore-Configuration.ReadWrite.All ... Application | BackupRestore-Configuration.ReadWrite.All",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 85,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "Microsoft documents a beta API for creating OneDrive exclusion bulk-addition jobs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/onedriveforbusinessprotectionpolicy-post-driveexclusionunitsbulkadditionjobs?view=graph-rest-beta",
+      "quote": "Create a drive exclusion units bulk addition job for a OneDrive for work or school protection policy. ... APIs under the /beta version in Microsoft Graph are subject to change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 86,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "Microsoft documents a beta API for creating Exchange mailbox exclusion bulk-addition jobs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/exchangeprotectionpolicy-post-mailboxexclusionunitsbulkadditionjobs?view=graph-rest-beta",
+      "quote": "Create a mailbox exclusion units bulk addition job for an Exchange protection policy. ... APIs under the /beta version in Microsoft Graph are subject to change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 87,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The notification control is Microsoft 365 Backup > Email notifications in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-setup",
+      "quote": "Go to the Email notifications option on the Microsoft 365 Backup home page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 88,
+      "where": "controls[2].api; Governance controls table",
+      "type": "command",
+      "claim": "Update-MgSolutionBackupRestoreEmailNotificationSetting accepts -IsEnabled, -AdditionalEvents restoreAndPolicyUpdates and -Recipients with custom-role email recipients.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.graph.backuprestore/update-mgsolutionbackuprestoreemailnotificationsetting?view=graph-powershell-1.0",
+      "quote": "[-AdditionalEvents <string>] ... [-IsEnabled] ... [-Recipients <IMicrosoftGraphNotificationRecipients>] ... [CustomRecipients <IMicrosoftGraphEmailIdentity[]>] ... Only specify this property when role is set to custom. ... [Email <String>]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 89,
+      "where": "Risk assessment: Security & identity; Open questions",
+      "type": "absence",
+      "claim": "The documentation does not explicitly state whether Full Workload Backup exclusion-list edits send email notifications.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Backup Full Workload Backup turn off exclusion list edits email notifications. Read backup-setup and backup-view-edit-policies; general policy-change events are listed, but exclusion-list edits are not specifically addressed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 90,
+      "where": "Risk assessment: Security & identity; Open questions",
+      "type": "absence",
+      "claim": "The documentation does not explicitly state whether turning off Full Workload Backup sends an email notification.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Backup Full Workload Backup turn off exclusion list edits email notifications. Read backup-setup and backup-view-edit-policies; disabling Microsoft 365 Backup is listed, but turning off only Full Workload Backup is not specified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 91,
+      "where": "Open questions",
+      "type": "absence",
+      "claim": "The Exchange-specific policy creation steps on Learn do not list a back-up-all option.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Backup Exchange Full Workload Backup admin center back up all mailboxes. Read backup-view-edit-policies: Exchange creation lists CSV, dynamic rules and filters; the separate Full Workload section says its setup experience applies to Exchange.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 92,
+      "where": "Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "Uploading an exclusion CSV during policy creation is optional and occurs on the Exclude sites page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+      "quote": "On the Exclude sites page, select No if you want to protect all SharePoint sites. ... (Optional) Upload a CSV file to exclude specific sites from Full Workload Backup protection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 93,
+      "where": "Governance guidance: At rollout",
+      "type": "record",
+      "claim": "Microsoft's notice instructs administrators to review the coverage summary and confirm policy creation.",
+      "status": "supported",
+      "source": "Message Center post MC1387526",
+      "quote": "Review the coverage summary and confirm to create the Full Workload Backup policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 94,
+      "where": "Governance controls; Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "The policy can be turned off from Backup policies by selecting the Full Workload Backup policy and choosing Turn off Full Workload Backup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+      "quote": "On the Backup policies page, select the Full Workload Backup policy for the workload. ... Select Turn off Full Workload Backup either from the command bar or the policy details pane.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 95,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "When Full Workload Backup is active, removing a unit from a custom policy offers adding it to the exclusion list or moving it to Full Workload Backup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+      "quote": "When Full Workload Backup is active and you remove a protection unit from a custom backup policy, choose one of the following options: - Add to exclusion list ... - Move to Full Workload Backup",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 96,
+      "where": "controls[2].api",
+      "type": "command",
+      "claim": "The notification update supports the restoreAndPolicyUpdates event value and custom-role recipients containing email addresses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/emailnotificationssetting-update?view=graph-rest-1.0",
+      "quote": "\"isEnabled\": true, \"additionalEvents\": \"restoreAndPolicyUpdates\", \"recipients\": { \"role\": \"custom\", \"customRecipients\": [ { \"email\": \"amala@contoso.com\" }",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-18T06:52:43.306Z",
+    "summary": {
+      "links": 16,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 1,
+      "apiCalls": 3,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/backup/backup-pricing",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/backup/backup-setup",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-billing-node",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/backup/backup-faq",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/backup/backup-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoft.graph.beta.backuprestore/new-mgbetasolutionbackuprestoresharepointprotectionpolicy?view=graph-powershell-beta",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/resources/sharepointprotectionpolicy?view=graph-rest-beta",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/backuprestoreroot-post-sharepointprotectionpolicies?view=graph-rest-beta",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/sharepointprotectionpolicy-post-siteexclusionunitsbulkadditionjobs?view=graph-rest-beta",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/onedriveforbusinessprotectionpolicy-post-driveexclusionunitsbulkadditionjobs?view=graph-rest-beta",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/exchangeprotectionpolicy-post-mailboxexclusionunitsbulkadditionjobs?view=graph-rest-beta",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoft.graph.backuprestore/update-mgsolutionbackuprestoreemailnotificationsetting?view=graph-powershell-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/emailnotificationssetting-update?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1387526",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=464990",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether a workload is protected by a Full Workload Backup policy",
+        "docs": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+        "reachable": true,
+        "segments": [
+          "Microsoft 365 Backup",
+          "Back up sites",
+          "All sites"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether a workload is protected by a Full Workload Backup policy",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoft.graph.beta.backuprestore/new-mgbetasolutionbackuprestoresharepointprotectionpolicy?view=graph-powershell-beta",
+        "reachable": true,
+        "token": "New-MgBetaSolutionBackupRestoreSharePointProtectionPolicy",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which sites, accounts or mailboxes are excluded from Full Workload Backup",
+        "docs": "https://learn.microsoft.com/microsoft-365/backup/backup-view-edit-policies",
+        "reachable": true,
+        "segments": [
+          "Microsoft 365 Backup",
+          "Backup policies",
+          "Full Workload Backup policy",
+          "View details",
+          "Excluded",
+          "Exclude more",
+          "Upload a CSV file containing the protection units to exclude",
+          "Save"
+        ],
+        "missing": [
+          "Upload a CSV file containing the protection units to exclude"
+        ]
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Which sites, accounts or mailboxes are excluded from Full Workload Backup",
+        "docs": "https://learn.microsoft.com/graph/api/sharepointprotectionpolicy-post-siteexclusionunitsbulkadditionjobs?view=graph-rest-beta",
+        "reachable": true,
+        "token": "/beta/solutions/backupRestore",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Who is told when backup policies change",
+        "docs": "https://learn.microsoft.com/microsoft-365/backup/backup-setup",
+        "reachable": true,
+        "segments": [
+          "Microsoft 365 Backup",
+          "Email notifications"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Who is told when backup policies change",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoft.graph.backuprestore/update-mgsolutionbackuprestoreemailnotificationsetting?view=graph-powershell-1.0",
+        "reachable": true,
+        "token": "Update-MgSolutionBackupRestoreEmailNotificationSetting",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": [
+    {
+      "date": "2026-11-18",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-18",
+      "status": "held",
+      "version": 2,
+      "model": "gpt-6.1-sol"
+    }
+  ]
+}

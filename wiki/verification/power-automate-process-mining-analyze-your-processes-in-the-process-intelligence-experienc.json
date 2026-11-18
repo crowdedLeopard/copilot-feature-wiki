@@ -1,0 +1,1031 @@
+{
+  "slug": "power-automate-process-mining-analyze-your-processes-in-the-process-intelligence-experienc",
+  "roadmapId": 576869,
+  "title": "Power Automate process mining: tabs and customisable layouts in the process intelligence experience",
+  "status": "held",
+  "date": "2026-11-18",
+  "version": 3,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 3,
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-18",
+    "reasons": [
+      "1 blocking finding (claim 78)"
+    ]
+  },
+  "counts": {
+    "claims": 84,
+    "confirmed": 81,
+    "unconfirmed": 0,
+    "contradicted": 3,
+    "blocker": 1,
+    "major": 0,
+    "minor": 2
+  },
+  "summary": "The roadmap details, tab and layout behaviour, licensing statements and documented control gaps are supported. The ownership-transfer guidance omits Microsoft's requirement that the receiving user have appropriate privileges; Environment Maker is sufficient for a process mining process. The governance checklist also names controls missing from the controls table.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: defaultState; summary; What's changing; Scope; rationale: impact",
+      "type": "default",
+      "claim": "The experience is enabled automatically for admins and makers, with marketers also named in the roadmap.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Enabled for admins/makers/marketers automatically",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The mixed licensing model reflects per-user Power Automate Premium licensing and a tenant-wide Process Mining add-on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
+      "quote": "The **Process Mining add-on** is a tenant-wide license that's available for the Power Automate Premium license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Process mining is licensed as part of Microsoft Power Automate.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
+      "quote": "Process mining is licensed as part of Microsoft Power Automate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Power Automate Premium is a per-user licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
+      "quote": "The **Power Automate Premium** license is a per-user license",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Each Power Automate Premium licence adds 50 MB of process mining capacity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
+      "quote": "Each **Power Automate Premium** license adds 50 MB of process mining capacity to a tenant-wide capacity pool up to a total of 100 GB.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The Premium-contributed tenant-wide process mining capacity pool is capped at 100 GB before an add-on is needed for more data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
+      "quote": "When you reach 100 GB, you need to purchase the **Power Automate Process Mining add-on** to process more data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The Process Mining add-on is tenant-wide.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
+      "quote": "The **Process Mining add-on** is a tenant-wide license that's available for the Power Automate Premium license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The Process Mining add-on adds another 100 GB of process mining capacity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
+      "quote": "An extra 100 GB of process mining capacity to the capacity pool, which users with the Power Automate Premium license can use.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "No separate licence specific to the process intelligence experience is published, and its overview, tabs and layout pages name no licence.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"process intelligence experience\" license pricing capacity storage; \"process intelligence experience\" pricing separate license storage cards tabs. Opened studio overview, tab management, dynamic layout, process-advisor-overview and Power Platform licensing FAQs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "title; What's changing",
+      "type": "behaviour",
+      "claim": "The process intelligence experience is the new process analysis interface in Power Automate Process Mining.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-studio-overview",
+      "quote": "The new *process intelligence experience* is the next-generation interface for process analysis in Power Automate Process Mining.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary; What's changing; Why it matters; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The previous single fixed process overview gives way to configurable analytical workspaces.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-studio-overview",
+      "quote": "**Flexibility**: Create multiple tabs with different card configurations instead of a single fixed view.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Each process view can have its own set of analytical tabs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-studio-overview",
+      "quote": "You can have an independent set of analytical tabs per view.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Each tab has its own collection of cards and visualisations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-studio-tab-management",
+      "quote": "Each tab maintains its own collection of cards, visualizations, and layout configuration",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "title; summary; What's changing",
+      "type": "behaviour",
+      "claim": "Users can arrange cards in customisable layouts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-studio-overview",
+      "quote": "Customizable layouts where you can arrange, resize, and configure cards",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Users can resize cards.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-studio-overview",
+      "quote": "Customizable layouts where you can arrange, resize, and configure cards",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Users can configure cards.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-studio-overview",
+      "quote": "Customizable layouts where you can arrange, resize, and configure cards",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "admin-path",
+      "claim": "A tab can be created with the (+) button.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-studio-tab-management",
+      "quote": "At the end of the tab bar, select (**+**).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "admin-path",
+      "claim": "A tab can also be added through the Edit tabs menu.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-studio-tab-management",
+      "quote": "**Add tab button**: **+ Add tab** option at the bottom.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Tabs can be renamed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-studio-tab-management",
+      "quote": "**Rename tab**: Change the tab's name.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Tabs can be duplicated.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-studio-tab-management",
+      "quote": "**Duplicate tab**: Create a copy of the tab with all its cards and layout.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Tabs can be deleted.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-studio-tab-management",
+      "quote": "**Delete tab**: Remove the tab from the dashboard.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Tabs can be moved.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-studio-tab-management",
+      "quote": "**Move up**: Shift the tab one position to the left in the tab bar.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "Make public is a per-tab choice that shares the tab with other users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-studio-tab-management",
+      "quote": "**Make public**: Share the tab with other users (indicated by person icon with lock).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "admin-path",
+      "claim": "Edit layout opens layout customisation mode.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-studio-dynamic-layout",
+      "quote": "To begin to customize your layout, select **Edit layout** in the top-right corner of the interface.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing",
+      "type": "admin-path",
+      "claim": "Cards are added from the Add card panel in edit layout mode.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-studio-dynamic-layout",
+      "quote": "In edit layout mode, the **Add card** panel appears on the right side of the interface.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "KPI is an available card type.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-studio-dynamic-layout",
+      "quote": "**KPI**: Display key performance indicators with large numeric values",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Donut chart is an available card type.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-studio-dynamic-layout",
+      "quote": "**Donut chart**: Show proportional data in a circular, segmented format.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Process map is an available card type.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-studio-dynamic-layout",
+      "quote": "**Process map**: Visualize the process flow with activities and connections.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Vertical bar chart is an available card type.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-studio-dynamic-layout",
+      "quote": "**Vertical bar chart**: Compare values across categories using vertical bars.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Horizontal bar chart is an available card type.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-studio-dynamic-layout",
+      "quote": "**Horizontal bar chart**: Compare values using horizontal bars.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Line chart is an available card type.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-studio-dynamic-layout",
+      "quote": "**Line chart**: Display trends and changes over time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Statistical grid is an available card type.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-studio-dynamic-layout",
+      "quote": "**Statistical grid**: Present detailed data in a tabular format.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Variant DNA is an available card type.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-studio-dynamic-layout",
+      "quote": "**Variant DNA**: Analyze process variant patterns and characteristics",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Cards move within a grid-based layout.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-studio-dynamic-layout",
+      "quote": "The layout system uses a grid-based arrangement, which allows cards to snap to alignment positions as you move them.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Filters on a tab apply to all its cards.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-studio-overview",
+      "quote": "Filters apply to all cards and visualizations on the current tab.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Persistent filters are saved with the tab layout.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-studio-dynamic-layout",
+      "quote": "**Add persistent filters**: Button to create filters that apply across all cards. They're saved with the tab layout and can't be removed when viewing the tab.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "Process views can be defined in the Process Mining desktop application.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-studio-overview",
+      "quote": "Process views can be defined in the Process Mining desktop application.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "front matter: releasePhase; What's changing; Open questions",
+      "type": "record",
+      "claim": "The record lists both General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is March CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"March CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target date is June CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"June CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed, without implying other clouds are unavailable.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "Web is the listed platform for this Power Automate feature.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Power Automate\"], \"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "What's changing; Open questions",
+      "type": "behaviour",
+      "claim": "The tab management page labels its layout link as preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-studio-tab-management",
+      "quote": "Customize layouts in process intelligence studio (preview)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "Microsoft does not identify which specific cards or functions remain preview in this experience.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"process intelligence experience\" preview cards functions. Opened studio overview, tab management, dynamic layout and visualization cards overview; the tab link says preview but no remaining-preview inventory is given.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[0]; summary; Why it matters; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No dedicated admin UI or API switch to turn this experience on or off or restrict its tab sharing is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"process intelligence experience\" disable admin setting sharing public tabs; \"process intelligence experience\" \"Power Platform API\" disable. Opened studio overview, tabs, layout, security and Limit sharing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Microsoft describes sharing tabs or whole dashboard configurations with team members.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-studio-overview",
+      "quote": "**Collaboration**: Share specific tabs or entire dashboard configurations with team members.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "The public-tab documentation does not specify the audience beyond other users or explain access for someone without access to the underlying process.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"process intelligence experience\" \"public\" access process; Dataverse Web API \"process intelligence\" tabs sharing settings. Opened tab management, studio overview, filtering overview and Share process mining processes; no public-tab access semantics are stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Data exposure; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Persistent filters cannot be removed while viewing the tab.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-studio-dynamic-layout",
+      "quote": "They're saved with the tab layout and can't be removed when viewing the tab.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[0].note; Why it matters; Risk assessment: Security & identity; Governance controls",
+      "type": "applicability",
+      "claim": "Process mining access follows environment security and Dataverse security roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-advisor-security",
+      "quote": "The process mining capability relies on environment security and Microsoft Dataverse security roles and privileges to grant access to its features in Power Automate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risk assessment: Security & identity; Scope",
+      "type": "role",
+      "claim": "Environment Maker can create processes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-advisor-security",
+      "quote": "The **Environment maker** role can use the process mining capabilities to create, share, and contribute to processes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risk assessment: Security & identity; Scope",
+      "type": "role",
+      "claim": "Environment Maker can share processes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-advisor-security",
+      "quote": "The **Environment maker** role can use the process mining capabilities to create, share, and contribute to processes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Risk assessment: Security & identity; Scope",
+      "type": "role",
+      "claim": "Environment Maker can contribute to processes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-advisor-security",
+      "quote": "The **Environment maker** role can use the process mining capabilities to create, share, and contribute to processes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Risk assessment: Security & identity; Governance guidance: At rollout",
+      "type": "role",
+      "claim": "The Process Mining User security role can only view created process reports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-advisor-security",
+      "quote": "The **Process Mining User** security role can only view created process reports.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Process Mining Application is an internal role that should not be assigned to users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-advisor-security",
+      "quote": "The **Process Mining Application** is an *internal security role* that process mining uses. (Process mining was formerly named *process advisor*). Don't assign this security role to users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "The Process Mining User role's privileges should not be changed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-advisor-security",
+      "quote": "Don't modify the set of privileges in the **Process Mining User** or **Process Mining Application** security roles.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "The Process Mining Application role's privileges should not be changed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-advisor-security",
+      "quote": "Don't modify the set of privileges in the **Process Mining User** or **Process Mining Application** security roles.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "Conditional Access policies limiting Power Automate and its features must include both Power Apps and Power Automate under Cloud apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-advisor-security",
+      "quote": "If you’re using Conditional Access polices to limit access to Power Automate and its features, the following apps must be included in **Cloud apps** policy application:\n\n- Power Apps\n- Power Automate",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "Conditional Access targeting only Power Automate is insufficient.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-advisor-security",
+      "quote": "Currently, having conditional access to only Power Automate isn't enough.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "The experience's documentation describes analysis and visualisation, not autonomous actions on tenant data.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"process intelligence experience\" \"actions\" data sources. Opened studio overview, tab management, dynamic layout and visualization cards overview; these describe analysis, filtering and dashboard configuration, not autonomous actions on tenant data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Disabling a process owner's account does not automatically make a co-owner the owner.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-share",
+      "quote": "When a process owner's account is disabled, the co-owner of the process doesn't automatically become a new process owner.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The process mining overview describes a 90-day Power Automate trial.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
+      "quote": "For a limited time of 90 days, the Power Automate trial license offers:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The overview gives the trial 100 MB of process mining capacity per process.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
+      "quote": "The trial offers limited process mining capacity of 100 MB per process.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The licensing FAQ instead describes a free 30-day Process Mining trial included in the Power Automate trial.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
+      "quote": "Yes, Process Mining offers a free 30-day trial giving access to many of the key features of Process Mining. The free Process Mining trial is included in the Power Automate trial.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The process mining overview names Power BI Premium for report customisation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
+      "quote": "To customize your report, you need to link the process to your own Power BI workspace, and a **Power BI Premium** license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "The overview says report customisation requires linking the process to the user's own Power BI workspace.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
+      "quote": "To customize your report, you need to link the process to your own Power BI workspace",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The FAQ instead lists Power BI Pro, Power BI per user or Power BI premium capacity licences for further customisation and analysis.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
+      "quote": "In order to customize and analyze your process mining results further, you might want to acquire more Power BI Pro\\*, Power BI per user, or Power BI premium capacity licenses if you haven't already done so.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Power BI licences are not included in Power Automate Process Mining.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
+      "quote": "Power BI licenses aren't included in Power Automate Process Mining.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Cost and licensing; front matter: cost; rationale: cost",
+      "type": "absence",
+      "claim": "No meter or price specific to this interface is published; the low cost rating does not assert that process mining itself is free.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"process intelligence experience\" license pricing capacity storage; \"process intelligence experience\" pricing separate license storage cards tabs. Opened process-advisor-overview, licensing FAQ and studio overview, tabs and layout; no interface-specific charge is stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "Stored process data mostly uses Dataverse file capacity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
+      "quote": "The process data we store uses mostly file capacity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Importing process data can exhaust Dataverse storage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
+      "quote": "Depending on the size of the process data you import, you might run out of Dataverse storage capacity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "The documentation does not describe the capacity consumption of adding cards and tabs.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"process intelligence experience\" pricing separate license storage cards tabs. Opened studio overview, tabs, dynamic layout, visualization cards overview, process-advisor-overview and licensing FAQ; none states a card/tab capacity charge.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Scope",
+      "type": "licensing",
+      "claim": "Process mining prerequisites include the licences or trials required for the capabilities used.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
+      "quote": "The required licenses or trials depending on the capabilities you want access to.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Process mining requires a Power Platform environment with a Dataverse database.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-advisor-overview",
+      "quote": "A Microsoft Power Platform environment with a Microsoft Dataverse database.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "Scope",
+      "type": "role",
+      "claim": "Administrators and system customizers can access all processes created in the environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-advisor-security",
+      "quote": "Administrators and system customizers can access all processes created in the environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "A default process view is provided automatically after process creation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-studio-overview",
+      "quote": "Default view is provided automatically after the creation of the process.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Edit layout changes can be saved to the tab layout.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-studio-dynamic-layout",
+      "quote": "Save changes made in edit layout mode by selecting **Save** when exiting edit mode.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "Governance guidance: After rollout; Governance controls",
+      "type": "admin-path",
+      "claim": "Departing owners' records can be reassigned through Power Platform admin center > environment > Settings > Users + permissions > Users > user > Reassign records, without stating the receiving user's privilege requirement.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-share",
+      "quote": "Reassignment requirement: The target user should have the appropriate privileges on the different entities associated with the transferred records. For process mining process, giving the **Environment Maker** role is sufficient.",
+      "severity": "blocker",
+      "fix": "Keep the navigation path, which matches the cited page. Add to the reassignment guidance: 'The receiving user must have appropriate privileges on the entities associated with the transferred records; for a process mining process, the Environment Maker role is sufficient.'"
+    },
+    {
+      "n": 79,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "The share-process page does not name a specific required security role for the administrator performing its reassignment steps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/process-mining-share",
+      "quote": "The administrator should perform the following steps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 80,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "Microsoft documents the Dataverse ReassignObjectsSystemUser action for reassigning a specified user's records.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/reassignobjectssystemuser",
+      "quote": "# ReassignObjectsSystemUser Action\n\n- Namespace:\n    - Microsoft.Dynamics.CRM\n\nReassigns all records that are owned by a specified user to another security principal (user, team, or organization).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 81,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "ReassignObjectsSystemUser is a general record reassignment operation, not a process-only transfer.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/reassignobjectssystemuser",
+      "quote": "Reassigns all records that are owned by a specified user to another security principal (user, team, or organization).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 82,
+      "where": "rationale: risk",
+      "type": "absence",
+      "claim": "Microsoft documents no new data source introduced by this analysis interface.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"process intelligence experience\" \"actions\" data sources. Opened studio overview, tabs, dynamic layout and visualization cards overview; these describe views and visualisations of process data, not a new data source.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 83,
+      "where": "Governance guidance: At rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The rollout checklist asks readers to set a persistent filter and make a tab public, but neither maker-side control appears in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "set a persistent filter, mark a tab public ... | The table's only row is 'Switch to turn the process intelligence experience on or off, or to limit tab sharing'.",
+      "severity": "minor",
+      "fix": "Narrow the pilot bullet to: 'Test with a pilot process owner: create a tab, add cards, and confirm what a second user with the Process Mining User role can see.'"
+    },
+    {
+      "n": 84,
+      "where": "Governance guidance: After rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The checklist instructs administrators to reassign departing owners' records, but reassignment has no controls-table row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Reassign the records of departing process owners ... | The table's only row is 'Switch to turn the process intelligence experience on or off, or to limit tab sharing'.",
+      "severity": "minor",
+      "fix": "Remove the 'After rollout' checklist bullet and its now-empty heading. Keep the documented reassignment path and API explanation in Governance controls prose, with the receiving-user qualification."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-18T06:52:46.698Z",
+    "summary": {
+      "links": 9,
+      "unreachable": 8,
+      "uiPaths": 0,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=576869",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-automate/process-mining-studio-tab-management",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/power-automate/process-mining-studio-overview",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/power-automate/process-mining-studio-dynamic-layout",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/power-automate/process-advisor-overview",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/power-automate/process-advisor-security",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/power-automate/process-mining-share",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/reassignobjectssystemuser",
+        "ok": false,
+        "status": 429
+      }
+    ],
+    "controlChecks": [],
+    "roadmapDrift": []
+  },
+  "history": [
+    {
+      "date": "2026-11-18",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-18",
+      "status": "held",
+      "version": 2,
+      "model": "gpt-6.1-sol"
+    }
+  ]
+}

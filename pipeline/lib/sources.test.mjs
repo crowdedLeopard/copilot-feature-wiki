@@ -53,3 +53,28 @@ test('watch baselines first, reports changes with the pages affected, drops unci
   assert.equal(changedSourcesFor(store, 'p2', '2026-11-16').length, 1);
   assert.equal(changedSourcesFor(store, 'p2', '2026-11-17').length, 0, 'a check on the change day already saw it');
 });
+
+test('watch reads a page once a day and stops on sustained 429, leaving the rest for the next run', async () => {
+  const calls = [];
+  const fetchImpl = async (url) => { calls.push(url); return url.endsWith('/ok') ? { ok: true, status: 200, text: async () => page('01/01/2025', 'fine') } : { ok: false, status: 429, text: async () => '' }; };
+  const cited = new Map([['https://learn.microsoft.com/read-today', new Set(['p1'])], ['https://learn.microsoft.com/ok', new Set(['p1'])]]);
+  for (let i = 0; i < 10; i++) cited.set(`https://learn.microsoft.com/limited-${i}`, new Set(['p2']));
+  const store = { sources: { 'https://learn.microsoft.com/read-today': { checkedAt: '2026-11-17', hash: 'h', msDate: '01/01/2025', pages: ['p1'] }, 'https://learn.microsoft.com/limited-0': { checkedAt: '2026-11-15', hash: 'h0', msDate: '01/01/2025', pages: ['p2'] } } };
+  const result = await watch(store, cited, { fetchImpl, date: '2026-11-17', concurrency: 1, pauseMs: 0, stopAfterRateLimited: 3 });
+  assert.equal(result.readToday, 1, 'the page read earlier today is not read again');
+  assert.ok(!calls.includes('https://learn.microsoft.com/read-today'));
+  assert.equal(calls[0], 'https://learn.microsoft.com/limited-1', 'never-read pages go first, then the one read longest ago');
+  assert.equal(result.stopped, true); assert.equal(result.rateLimited, 3); assert.equal(result.fetched, 3);
+  assert.equal(result.left, cited.size - 1 - 3, 'the rest wait for the next run');
+  assert.equal(store.sources['https://learn.microsoft.com/limited-1'].error, 'HTTP 429');
+  assert.equal(store.sources['https://learn.microsoft.com/limited-1'].failedAt, '2026-11-17');
+  assert.equal(store.sources['https://learn.microsoft.com/limited-1'].checkedAt, undefined, 'a failed read is not a check');
+  assert.equal(store.sources['https://learn.microsoft.com/limited-0'].checkedAt, '2026-11-15', 'a page not reached keeps its earlier checkedAt');
+  assert.equal(store.sources['https://learn.microsoft.com/limited-0'].hash, 'h0', 'and its baseline');
+  assert.equal(store.sources['https://learn.microsoft.com/ok'], undefined, 'not reached this run');
+  const next = await watch(store, cited, { fetchImpl: async (url) => ({ ok: true, status: 200, text: async () => page('01/01/2025', 'fine') }), date: '2026-11-17', concurrency: 2, pauseMs: 0 });
+  assert.equal(next.readToday, 1); assert.equal(next.fetched, cited.size - 1); assert.equal(next.stopped, false);
+  assert.equal(store.sources['https://learn.microsoft.com/limited-1'].error, undefined);
+  assert.equal(store.sources['https://learn.microsoft.com/limited-1'].failedAt, undefined);
+  assert.equal(store.sources['https://learn.microsoft.com/limited-0'].checkedAt, '2026-11-17');
+});

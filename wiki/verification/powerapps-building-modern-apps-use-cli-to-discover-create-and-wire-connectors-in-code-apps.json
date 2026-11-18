@@ -1,0 +1,715 @@
+{
+  "slug": "powerapps-building-modern-apps-use-cli-to-discover-create-and-wire-connectors-in-code-apps",
+  "roadmapId": 576782,
+  "title": "Power Apps: Power Apps CLI commands to find connectors and create connections for code apps",
+  "status": "held",
+  "date": "2026-11-18",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-18",
+    "reasons": [
+      "5 blocking findings (claims 21, 28, 42, 47, 50)"
+    ]
+  },
+  "counts": {
+    "claims": 50,
+    "confirmed": 44,
+    "unconfirmed": 3,
+    "contradicted": 3,
+    "blocker": 5,
+    "major": 1,
+    "minor": 2
+  },
+  "summary": "Hold: the data-policy navigation omits a documented Settings heading, and the environment automation entry describes an SDK property rather than a runnable update operation. The data-policy role guidance also extends an environment-level Dataverse qualification to tenant administrators. The roadmap details and the connector commands are supported; all cited Learn pages opened successfully in this check.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing, first paragraph",
+      "type": "record",
+      "claim": "The change adds CLI commands for developers to discover connectors and create connections for code apps.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The Power Apps CLI adds new commands that let developers discover available connectors and create connections directly from the command line.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing; Risk assessment: Change & support; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap describes wiring connectors without switching tools or manually configuring connections in the maker portal.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This enables developers to wire connectors into code apps as part of their normal development workflow, without switching tools or manually configuring connections in the maker portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing, first paragraph",
+      "type": "record",
+      "claim": "The roadmap includes new agent.md files and how-to documentation for coding agents discovering connectors and creating connections.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "New code app agent.md files and code app how-to documentation show how coding agents can handle connector discovery and connection creation as part of end-to-end prompt-to-app workflows.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is June CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"June CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target date is July CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"July CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview as release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed on the record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing, last paragraph",
+      "type": "record",
+      "claim": "The roadmap says the change is enabled for admins, makers and marketers automatically.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Enabled for admins/makers/marketers automatically",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing, second paragraph; Governance guidance",
+      "type": "command",
+      "claim": "pa connector list lists connectors available in the environment configured for the code app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/code-apps/how-to/create-connection",
+      "quote": "Use `pa connector list` command to find the connectors available in the Power Platform environment configured for your code app:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing, second paragraph",
+      "type": "command",
+      "claim": "pa connector list supports --search and --json.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/code-apps/reference/cli",
+      "quote": "pa connector list [--search <term>] [--json]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Why it matters; Governance guidance: At rollout",
+      "type": "command",
+      "claim": "pa connection create --connector <connector-id> creates a connection in the environment configured for the code app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/code-apps/how-to/create-connection",
+      "quote": "Use `pa connection create` to create a connection in the environment configured for the code app:\npa connection create --connector <connector-id> [--display-name <name>] [--json]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing, second paragraph; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Successful connection creation returns the connection ID.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/code-apps/reference/cli",
+      "quote": "When the command succeeds, it returns the connection ID.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The returned connection ID is used to add the connector as an app data source.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/code-apps/reference/cli",
+      "quote": "Use the connection ID when you add the connector as a data source to the code app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing, second paragraph; Scope",
+      "type": "behaviour",
+      "claim": "Connector discovery and connection creation run from an initialised code app project.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/code-apps/how-to/create-connection",
+      "quote": "Prerequisites\nAn initialized Power Apps code app.\nStep 1: List available connectors\nRun the commands in this article from the root of your code app project.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "summary; What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The GitHub Copilot CLI code apps plugin runs the CLI to scaffold, initialise, add connectors and implement the app after plan approval.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/code-apps/how-to/quickstart-github-copilot",
+      "quote": "When you approve the plan, the agent runs the code apps CLI to:\n- Scaffold the project files\n- Initialize the app\n- Add connectors\n- Implement functionality and UI, using the connectors",
+      "severity": "minor",
+      "fix": "Call this the 'code apps preview plugin' in its first mention: the quickstart says 'Then install the code apps preview plugin'. This qualification concerns the agent plugin, not the release status of every connector command."
+    },
+    {
+      "n": 18,
+      "where": "What's changing, last paragraph; Open questions; Governance guidance: After rollout",
+      "type": "absence",
+      "claim": "Learn does not yet describe the roadmap's agent.md files.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Apps code apps CLI agent.md files coding agents guidance. Opened code apps overview, CLI quickstart, connection how-to, connect-to-data and GitHub Copilot quickstart; no description of the roadmap's agent.md files found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Why it matters; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Adding the connection means the app can read or write whatever data that connector reaches.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Power Apps code apps data permissions connection. Opened connect-to-data and overview. They document adding data sources and calling generated services, not unrestricted access to whatever data a connector can reach.",
+      "severity": "major",
+      "fix": "Replace both versions of the broad access assertion with 'After adding a connection as a data source, the app can call the generated services for that data source.' See https://learn.microsoft.com/power-apps/developer/code-apps/how-to/connect-to-data."
+    },
+    {
+      "n": 20,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The Enable code apps path is Manage > Environments > environment > Settings > Product > Features > Power Apps code apps > Enable code apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/code-apps/overview",
+      "quote": "Go to Manage > Environments > select the environment where you use code apps. Go to Settings > Expand the Product subsection > Select Features. Go to the feature Power Apps code apps and use the Enable code apps toggle to turn it on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "Setting a bool PowerAppsAllowCodeApps property on an EnvironmentManagementSetting object is the documented automation operation for enabling code apps.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: PowerAppsAllowCodeApps update environment settings Power Platform API PowerShell CLI. Opened the cited property reference, environment-management API create/update references and tutorial; the property page shows bool? get/set, not a setting-update operation.",
+      "severity": "blocker",
+      "fix": "Remove the non-runnable automation entry and its rendered call. Preserve only this informational note: 'The .NET SDK exposes nullable Boolean PowerAppsAllowCodeApps on EnvironmentManagementSetting; the property reference does not give a runnable update operation.' Do not describe the property assignment as persisting an environment setting or infer a request body from its name."
+    },
+    {
+      "n": 22,
+      "where": "controls[0].note; Scope; Governance controls",
+      "type": "role",
+      "claim": "Power Platform admins and environment admins can set the environment option for code apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/code-apps/overview",
+      "quote": "Admins can enable code apps by setting an environment option. Power Platform admins and environment admins can set this option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[0].note; Governance guidance: At rollout; Governance controls",
+      "type": "behaviour",
+      "claim": "Environment groups and rules can configure the code apps setting for multiple environments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/code-apps/overview",
+      "quote": "For management at scale, you can configure this setting for multiple environments at once by using environment groups and rules.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[0].note; Why it matters; rationale: impact",
+      "type": "default",
+      "claim": "Enable code apps has a documented default of Off.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/settings-features#power-apps-code-apps",
+      "quote": "| Setting | Description | Default value |\n| Enable code apps | Allow users to bring apps they created outside of Power Apps and run them in Power Apps. If this setting is turned off, those apps don't run. | Off |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Why it matters; Governance controls",
+      "type": "behaviour",
+      "claim": "Code apps do not run in an environment when Enable code apps is turned off.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/settings-features#power-apps-code-apps",
+      "quote": "If this setting is turned off, those apps don't run.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "summary; Why it matters; Governance controls",
+      "type": "absence",
+      "claim": "There is no documented separate admin switch or new mandatory admin action specific to these connector CLI commands.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Apps code apps CLI connector commands admin disable switch data policy connection create blocked connector. Opened overview, feature settings, connection how-to and CLI reference; no separate command switch or mandatory new admin action found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "front matter: defaultState",
+      "type": "default",
+      "claim": "The new optional CLI capability is user-opt-in, rather than a change that runs without a maker choosing to use it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/code-apps/how-to/create-connection",
+      "quote": "Use the Power Apps CLI to find connectors and create a connection without leaving your terminal or opening Power Apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The documented data-policy path is Security > Data and privacy > Data policy.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-platform/admin/create-dlp-policy",
+      "quote": "Select Security in the navigation pane. In the Security pane, under Settings, select Data and privacy. In the Data protection and privacy screen, select the Data policy section.",
+      "severity": "blocker",
+      "fix": "Replace the path in front matter and the rendered table with 'Security > Settings > Data and privacy > Data policy'. The cited page explicitly includes the Settings group heading."
+    },
+    {
+      "n": 29,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "New-DlpPolicy -DisplayName <name> -EnvironmentType <type> creates a data policy through Microsoft.PowerApps.Administration.PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest",
+      "quote": "Module: Microsoft.PowerApps.Administration.PowerShell Module\nNew-DlpPolicy -DisplayName <String> -EnvironmentType <String>\nThe New-DlpPolicy cmdlet creates a new DLP policy for the logged in admin's tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[1].note; Risk assessment: Data exposure; Governance controls; rationale: risk",
+      "type": "applicability",
+      "claim": "Data loss policies are supported for code apps and enforced during app launch.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/code-apps/overview",
+      "quote": "This table lists Power Platform management capabilities that work for code apps.\nData Loss policy enforcement during app launch",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[1].note; Risk assessment: Data exposure; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not documented whether data policy blocks pa connection create itself or connector discovery.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Apps code apps CLI connector commands admin disable switch data policy connection create blocked connector; pa connection create policy. Opened CLI reference, create-connection, overview and create-dlp-policy; no pa-command enforcement statement found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The code apps overview lists an end-user consent dialog for connector permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/code-apps/overview",
+      "quote": "End-users see consent dialog for connector permissions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The coding-agent quickstart says the agent confirms authentication against the right tenant before building.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/code-apps/how-to/quickstart-github-copilot",
+      "quote": "Before doing anything else, the agent validates needed prerequisites by checking dependencies, installing anything missing, and confirming you're authenticated against the right tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Security & identity",
+      "type": "availability",
+      "claim": "Excel Online (Business) and Excel Online (OneDrive) are not yet supported for code apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/code-apps/how-to/connect-to-data",
+      "quote": "Connectors that aren't yet supported\n- Excel Online (Business)\n- Excel Online (OneDrive)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Security & identity",
+      "type": "availability",
+      "claim": "The connect-to-data page describes all other connectors as officially supported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/code-apps/how-to/connect-to-data",
+      "quote": "All connectors are officially supported except the ones listed in the following section.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "The coding-agent walkthrough does not describe an administrator approval step for its build workflow.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Apps code apps CLI connector connection commands preview generally available admin approval; code apps admin approval. Opened GitHub Copilot quickstart, overview and create-connection. The walkthrough describes plan and deployment approval, not a separate admin build approval.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No separate licence or meter for the connector CLI commands is documented as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Apps code apps CLI licensing connector commands pricing limits premium connectors; code apps licensing Premium. Opened roadmap record, CLI reference, connection how-to, overview and Power Apps licensing FAQs; no command-specific licence or meter found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Code-app end users need Power Apps Premium, pay-as-you-go enabled, an App Pass or auto-claim enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/code-apps/overview",
+      "quote": "End users that run code apps need one of the following:\n- Power Apps Premium license\n- Pay-as-you-go enabled\n- An App Pass\n- Auto-claim enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Auto-claim automatically assigns an available tenant premium licence to the user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/code-apps/overview",
+      "quote": "Auto-claim enabled. This option automatically assigns a premium license to the user if one is available in the tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is mixed, reflecting the documented code-app licence and pay-as-you-go alternatives.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/code-apps/overview",
+      "quote": "End users that run code apps need one of the following:\n- Power Apps Premium license\n- Pay-as-you-go enabled\n- An App Pass\n- Auto-claim enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing, last paragraph",
+      "type": "licensing",
+      "claim": "The data-policy page's Class attribute identifies whether a connector requires Premium licensing or is included in Built-in/Standard licensing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/create-dlp-policy",
+      "quote": "Class | Indicates whether connector usage requires a Premium license or is it included in the Built-in/Standard license for Power Platform.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing, last paragraph",
+      "type": "licensing",
+      "claim": "Which connectors are wired into a code app therefore affects its end-user licensing requirements.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Power Apps code apps CLI licensing connector commands pricing limits premium connectors; code apps licensing Premium. Opened overview, create-dlp-policy and licensing FAQs; none states a connector-dependent change to the code-app licensing routes already listed.",
+      "severity": "blocker",
+      "fix": "Remove 'Which connectors developers wire in therefore affects licensing'. Keep the documented Class attribute and the code-app licensing routes as separate facts; do not infer an additional or different code-app licence from connector class."
+    },
+    {
+      "n": 43,
+      "where": "licensing.notes; Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "A connector-class licensing rule specific to this CLI feature has not been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Apps code apps CLI licensing connector commands pricing limits premium connectors; code apps licensing Premium. Opened overview, connection how-to, CLI reference and licensing FAQs; general app licensing is documented, but no additional rule specific to these CLI commands was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Cost and licensing, last paragraph",
+      "type": "absence",
+      "claim": "Microsoft has not published a rate or limit specific to this connector-command feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Apps code apps CLI connector commands pricing limits; code apps licensing Premium. Opened CLI reference, create-connection, overview, code apps system configuration and licensing FAQs; no rate or limit specific to these connector commands found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Scope; What's changing",
+      "type": "behaviour",
+      "claim": "The documented development prerequisites include an enabled code-app environment, Node.js LTS, Git and the Power Apps CLI.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/code-apps/overview",
+      "quote": "Code apps require an IDE, Node.js, npm, Git, and the Power Apps CLI.\nNode.js (LTS version)\nEnable code apps on a Power Platform environment",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Scope, last paragraph; Open questions",
+      "type": "absence",
+      "claim": "Learn does not assign individual connector CLI commands to preview versus general availability.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Apps code apps CLI connector connection commands preview generally available admin approval; code apps preview connection. Read CLI connector/connection reference sections, create-connection and connect-to-data; no per-command release-phase assignment found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "Connectors administrators do not want used can be placed in the Blocked data-policy group.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-platform/admin/create-dlp-policy",
+      "quote": "For connectors like SharePoint that aren't blockable, the Block action isn't available and a warning appears.",
+      "severity": "blocker",
+      "fix": "Replace the checklist bullet with 'Review the data policies that cover those environments, and confirm unwanted blockable connectors are in the Blocked group.' The qualification is necessary because not every connector can be blocked."
+    },
+    {
+      "n": 48,
+      "where": "Governance guidance: After rollout",
+      "type": "command",
+      "claim": "pa connection list lists connections in the current environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/code-apps/reference/cli",
+      "quote": "pa connection list\nLists connections in the current environment.\npa connection list [--search <term>] [--json]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Connections can also be reviewed and deleted in the maker portal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/add-manage-connections",
+      "quote": "In powerapps.com, create a connection to one or more data sources, delete a connection, or update its credentials.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/power-apps/maker/canvas-apps/add-manage-connections to sources for the maker-portal connection-management statement."
+    },
+    {
+      "n": 50,
+      "where": "Governance controls, last paragraph",
+      "type": "role",
+      "claim": "Creating, editing or deleting data policies requires Environment Admin or Power Platform admin permissions, replaced by System Administrator for any environment with Dataverse.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-platform/admin/create-dlp-policy",
+      "quote": "Environment-level policies\nTo follow the steps for environment-level policies, you need to have Power Apps Environment Admin permissions. For environments with a Dataverse database, you need to be assigned the System Administrator role instead.",
+      "severity": "blocker",
+      "fix": "Replace the role sentence with 'Tenant-level policies require the Power Platform Administrator role. Environment-level policies require Power Apps Environment Admin permissions, or the System Administrator role for environments with a Dataverse database.'"
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-18T06:52:47.371Z",
+    "summary": {
+      "links": 11,
+      "unreachable": 10,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 2,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 2,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=576782",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/developer/code-apps/how-to/npm-quickstart",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/developer/code-apps/how-to/create-connection",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/developer/code-apps/reference/cli",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/developer/code-apps/how-to/connect-to-data",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/developer/code-apps/how-to/quickstart-github-copilot",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/developer/code-apps/overview",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/settings-features#power-apps-code-apps",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/dotnet/api/microsoft.powerplatform.management.models.environmentmanagementsetting.powerappsallowcodeapps?view=power-platform-latest",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/create-dlp-policy",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest",
+        "ok": false,
+        "status": 429
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether code apps run in an environment",
+        "docs": "https://learn.microsoft.com/power-apps/developer/code-apps/overview",
+        "reachable": false,
+        "segments": [
+          "Manage",
+          "Environments",
+          "Settings",
+          "Product",
+          "Features",
+          "Power Apps code apps",
+          "Enable code apps"
+        ],
+        "missing": [
+          "Manage",
+          "Environments",
+          "Settings",
+          "Product",
+          "Features",
+          "Power Apps code apps",
+          "Enable code apps"
+        ]
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether code apps run in an environment",
+        "docs": "https://learn.microsoft.com/dotnet/api/microsoft.powerplatform.management.models.environmentmanagementsetting.powerappsallowcodeapps?view=power-platform-latest",
+        "reachable": false,
+        "token": "Set the",
+        "found": false
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which connectors code apps may use or combine",
+        "docs": "https://learn.microsoft.com/power-platform/admin/create-dlp-policy",
+        "reachable": false,
+        "segments": [
+          "Security",
+          "Data and privacy",
+          "Data policy"
+        ],
+        "missing": [
+          "Security",
+          "Data and privacy",
+          "Data policy"
+        ]
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Which connectors code apps may use or combine",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest",
+        "reachable": false,
+        "token": "New-DlpPolicy",
+        "found": false
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

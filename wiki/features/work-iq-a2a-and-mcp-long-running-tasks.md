@@ -4,7 +4,7 @@ slug: "work-iq-a2a-and-mcp-long-running-tasks"
 roadmapId: 570851
 topic: "copilot-studio"
 products: ["Work IQ","Microsoft Copilot (Microsoft 365)"]
-summary: "Microsoft plans durable Work IQ tasks over A2A and MCP that report progress, return results later and can be cancelled. Developers opt in; administrators should check spend and policy controls."
+summary: "Microsoft plans durable Work IQ tasks over A2A and MCP that report progress, return results later and can be cancelled. Administrators should check spend and policy controls."
 status: "in-development"
 releasePhase: ["General Availability","Preview"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -59,7 +59,7 @@ sources:
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/costmanagementserviceusagerecord-list"
     kind: "learn"
 videos: []
-related: ["work-iq-agent-policy-governance","copilot-credits","copilot-studio-cost-management-m365-admin-center","copilot-studio-mcp-tools-in-agents","agent-identity"]
+related: ["work-iq-agent-policy-governance","copilot-credits","copilot-studio-cost-management-m365-admin-center","work-iq","agent-identity"]
 controls:
   - governs: "Whether Work IQ MCP tool requests, including write operations, are allowed"
     scope: "tenant"
@@ -79,7 +79,7 @@ controls:
       kind: "graph"
       call: "POST https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies"
       docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-create"
-    note: "Beta API; delegated CopilotCostManagement-Policy.ReadWrite.All; Billing or Global Administrator. Required body: @odata.type, displayName, periodLimit, perUserLimit, serviceSettings. Policy is created disabled. Does not reserve credits."
+    note: "Beta API; CopilotCostManagement-Policy.ReadWrite.All; Billing or Global Admin. Created disabled; link a group via Add assigned group. Nonempty assignedGroups at creation also needs CopilotCostManagement-Assignment.ReadWrite.All."
   - governs: "Review of Work IQ API credit consumption against spending limits"
     scope: "tenant"
     ui:
@@ -98,7 +98,7 @@ controls:
       kind: "azure-cli"
       call: "az ad sp create --id fdcc1f02-fc51-4226-8753-f668596af7f7"
       docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq"
-    note: "One-time enablement by a Global Administrator. It provisions Work IQ; it is not a per-feature switch."
+    note: "Manual setup lists Global Administrator. MCP overview: created automatically on first use; manual provisioning is for when it does not yet exist. Not a per-feature switch."
   - governs: "Tenant switch for Work IQ A2A and MCP long-running tasks"
     scope: "tenant"
     ui: null
@@ -106,25 +106,32 @@ controls:
     note: "No setting specific to A2A or to long-running tasks is documented at the time of writing (November 2026)."
 confidence: "medium"
 created: "2026-11-16"
-updated: "2026-11-16"
+updated: "2026-11-17"
 roadmapModified: "2026-10-13T23:01:05"
 changes:
   - date: "2026-11-16"
     note: "First briefing for this roadmap item; Learn documents A2A task methods and Work IQ billing and policy controls, but not the long-running feature itself."
   - date: "2026-11-16"
     note: "Added the Graph API for spending policies and a consumption-monitoring row, and reported the differing Work IQ MCP and Copilot Studio write-operation defaults."
-version: 2
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 80 statements contradicted, 1 unconfirmed; taken offline until corrected"
+  - date: "2026-11-17"
+    note: "Corrected after verification: removed the unsupported opt-in statement, qualified spending-policy creation and Work IQ service principal setup, and removed two checklist items the controls table does not cover."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 98 statements confirmed"
+version: 3
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-16"
-  version: 2
+  status: "verified"
+  date: "2026-11-17"
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 80
-  confirmed: 79
+  claims: 98
+  confirmed: 98
   unconfirmed: 0
-  contradicted: 1
+  contradicted: 0
   attempts: 0
+  hash: "749c34f36587b7936eb45590684163bf"
 ---
 
 ## What's changing
@@ -139,7 +146,7 @@ Learn already documents related building blocks for A2A. The Work IQ A2A overvie
 
 A task that survives the request that started it means an agent can start work, disconnect and collect results later, so the actions it takes and the data it gathers outlast the moment a person or developer was watching.
 
-For administrators the effect is mainly on spend and oversight. Work IQ API use consumes Copilot Credits from a pool shared with other services, so longer-running agent jobs can draw on that pool without a person present. Nothing needs switching on for tenants that do not build against Work IQ, but service owners who do should settle spending limits and the Work IQ MCP policy before developers adopt the feature.
+For administrators the effect is mainly on spend and oversight. Work IQ API use consumes Copilot Credits from a pool shared with other services, so longer-running agent jobs can draw on that pool without a person present. Microsoft has not stated what happens on arrival for this capability, so service owners who build against Work IQ should settle spending limits and the Work IQ MCP policy before developers adopt the feature.
 
 ## Risk assessment
 
@@ -174,7 +181,7 @@ Spending policies set limits but do not reserve or allocate credits. The cost co
 
 The roadmap item lists the Developer platform and the Worldwide (Standard Multi-Tenant) cloud only. It lists Work IQ and Microsoft Copilot (Microsoft 365) as products.
 
-Work IQ requests run as a signed-in user, so the feature reaches only what that user can access. The enablement guide lists a usage-based billing plan, a user assigned to that plan and a Global Administrator for the one-time Work IQ setup. Whether tasks need any further prerequisite is not yet documented.
+Work IQ requests run as a signed-in user, so the feature reaches only what that user can access. The enablement guide lists a usage-based billing plan, a user assigned to that plan and a Global Administrator for the one-time Work IQ setup. For manual setup, the enablement guide lists Global Administrator. The MCP overview says the service principal is created automatically on first use; manual provisioning is available when it does not yet exist, for example before configuring policy. Whether tasks need any further prerequisite is not yet documented.
 
 ## Governance guidance
 
@@ -186,8 +193,7 @@ Work IQ requests run as a signed-in user, so the feature reaches only what that 
 
 ### At rollout
 
-- Turn off Auto-apply new services on policies that should not take on new services automatically.
-- Set per-user and policy limits and alert recipients so a runaway task raises an email before credits are exhausted.
+- Set per-user and policy limits.
 - Allow up to 24 hours for a change to the Work IQ MCP policy to apply across the tenant.
 
 ### After rollout
@@ -203,16 +209,16 @@ Work IQ requests run as a signed-in user, so the feature reaches only what that 
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether Work IQ MCP tool requests, including write operations, are allowed</strong><br><small>Tenant</small><br><small class="controls__note">Tenant-level on/off only. Changes can take up to 24 hours. Applies to Work IQ MCP; not confirmed for A2A or for long-running tasks.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Work IQ MCP › Policy <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Credit limits and which services, including Work IQ API, a group can spend on</strong><br><small>Group</small><br><small class="controls__note">Beta API; delegated CopilotCostManagement-Policy.ReadWrite.All; Billing or Global Administrator. Required body: @odata.type, displayName, periodLimit, perUserLimit, serviceSettings. Policy is created disabled. Does not reserve credits.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › + Add spending policy <a href="https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-manage-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-create" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Credit limits and which services, including Work IQ API, a group can spend on</strong><br><small>Group</small><br><small class="controls__note">Beta API; CopilotCostManagement-Policy.ReadWrite.All; Billing or Global Admin. Created disabled; link a group via Add assigned group. Nonempty assignedGroups at creation also needs CopilotCostManagement-Assignment.ReadWrite.All.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › + Add spending policy <a href="https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-manage-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-create" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Review of Work IQ API credit consumption against spending limits</strong><br><small>Tenant</small><br><small class="controls__note">UI has Policies and Agents and services views. API is beta and reports one completed UTC day per call; it is not specific to long-running tasks.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Consumption <a href="https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-copilot-credits-monitor-spending" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>GET https://graph.microsoft.com/beta/copilot/costManagement/usageReports/serviceUsageRecords?startDate={startDate}&amp;endDate={endDate}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/costmanagementserviceusagerecord-list" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether the Work IQ service principal exists in the tenant</strong><br><small>Tenant</small><br><small class="controls__note">One-time enablement by a Global Administrator. It provisions Work IQ; it is not a per-feature switch.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>Azure CLI</strong><br><code>az ad sp create --id fdcc1f02-fc51-4226-8753-f668596af7f7</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether the Work IQ service principal exists in the tenant</strong><br><small>Tenant</small><br><small class="controls__note">Manual setup lists Global Administrator. MCP overview: created automatically on first use; manual provisioning is for when it does not yet exist. Not a per-feature switch.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>Azure CLI</strong><br><code>az ad sp create --id fdcc1f02-fc51-4226-8753-f668596af7f7</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Tenant switch for Work IQ A2A and MCP long-running tasks</strong><br><small>Tenant</small><br><small class="controls__note">No setting specific to A2A or to long-running tasks is documented at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
 No control specific to long-running tasks is documented at the time of writing (November 2026). The rows above are existing Work IQ and billing controls. The MCP policy is tenant-wide only; Learn says per-user, per-app and per-agent policy is not part of the initial control surface. Learn does not confirm that either the MCP policy or a spending policy is applied when a task is resumed.
 
-The Cost Management Graph APIs are in beta, and Microsoft says APIs under /beta are subject to change and not supported in production applications. Creating a spending policy also requires the Billing Administrator or Global Administrator role. Spending policies limit credits but do not reserve them.
+The Cost Management Graph APIs are in beta, and Microsoft says APIs under /beta are subject to change and not supported in production applications. Creating a spending policy also requires the Billing Administrator or Global Administrator role. The create call's required body properties are @odata.type, displayName, periodLimit, perUserLimit and serviceSettings. Spending policies limit credits but do not reserve them.
 
 ## Open questions
 
@@ -225,12 +231,5 @@ The Cost Management Graph APIs are in beta, and Microsoft says APIs under /beta 
 <!-- rationale
 risk: Medium. Tasks that run beyond a single request extend how long an agent acts on Microsoft 365 data, and Learn does not yet say how identity, result storage or audit apply to them.
 cost: Variable. Work IQ API use consumes Copilot Credits shared with other services; Microsoft has not published whether long-running tasks are priced differently.
-impact: Low. Developers and agent owners who call Work IQ over A2A or MCP notice it; end users only meet it through agents that adopt it.
--->
-
-<!-- verifier-findings (2026-11-16, verified-with-gaps; checked by gpt-6.1-sol)
-The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [supported, minor] controls[3].note; Scope / role: The enablement guide requires a Global Administrator for one-time Work IQ setup. | Found: A user with Global Administrator role for the one-time Work IQ setup | Fix: Keep the role requirement for manual setup, but add that the cited MCP overview says the service principal is created automatically on first use; manual provisioning is needed when it does not yet exist, for example before configuring policy. Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/overview. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq
-- [supported, minor] controls[1].api; Governance controls table / command: POST https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies creates a spending policy. | Found: For a group-scoped policy, follow the safe-create sequence: create the policy disabled, link its audience with Add assigned group, and let the service enable it once its requirements are satisfied. | Fix: Extend the note to explain that the printed create call alone does not attach a group: create disabled, then use the reference page's Add assigned group operation. If supplying nonempty assignedGroups during creation instead, also request CopilotCostManagement-Assignment.ReadWrite.All. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-create
-- [contradicted, minor] Governance guidance: At rollout; Governance controls table / consistency: The checklist's Auto-apply new services and email-alert controls lack explicit table coverage. | Found: Checklist: "Turn off Auto-apply new services" and "Set per-user and policy limits and alert recipients". The spending-policy row describes limits and service selection, but not automatic service inclusion or alerts. | Fix: Add explicit coverage for automatic inclusion of new services and spending-threshold email alerts, either as rows or by expanding the spending-policy row. Use the existing spending-policy management source and its Select agents and services and Set limits and alerts sections.
+impact: Low. The roadmap lists the Developer platform; Microsoft has not stated what happens on arrival.
 -->

@@ -1,0 +1,884 @@
+{
+  "slug": "microsoft-teams-work-iq-real-time-transcription-for-meetings-and-calls",
+  "roadmapId": 572674,
+  "title": "Work IQ: real-time Teams meeting and call transcripts through MCP",
+  "status": "verified-with-gaps",
+  "date": "2026-11-17",
+  "version": 2,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 68,
+    "confirmed": 68,
+    "unconfirmed": 0,
+    "contradicted": 0,
+    "blocker": 0,
+    "major": 0,
+    "minor": 1
+  },
+  "summary": "The control paths, PowerShell calls, default state and consumption licensing are supported. The briefing correctly reports the difference between the roadmap targets and the documented access-setting date. One minor qualification is needed because Microsoft's setup guide and MCP overview describe tenant provisioning differently.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: defaultState; summary; Why it matters; rationales",
+      "type": "default",
+      "claim": "Work IQ real-time transcript access is off by default and requires administrator enablement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access",
+      "quote": "Work IQ access is also off by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: licensing.model; summary; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Work IQ API uses consumption billing in Copilot Credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
+      "quote": "You pay for use of the Work IQ API through a usage-based model that uses Copilot Credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "There is no separate Work IQ API subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/partner-center/announcements/2026-june#work-iq-api-and-consumptive-pricing-update",
+      "quote": "There's no separate Work IQ API subscription, SKU, or per-user license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "There is no separate Work IQ API SKU.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/partner-center/announcements/2026-june#work-iq-api-and-consumptive-pricing-update",
+      "quote": "There's no separate Work IQ API subscription, SKU, or per-user license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "There is no separate Work IQ API per-user licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/partner-center/announcements/2026-june#work-iq-api-and-consumptive-pricing-update",
+      "quote": "There's no separate Work IQ API subscription, SKU, or per-user license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "No rate specific to live transcript access is published as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"transcript\" \"rate\"; \"Work IQ\" \"live transcript\" pricing. Read Teams transcript API access, Work IQ overview/API overview, Partner Center June announcements and Work IQ GA licensing news. General Tool API pricing exists; no live-transcript rate or billing mapping was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "WorkIQ access is at Teams admin center > Meetings > Meeting settings > Transcript API access > WorkIQ access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access",
+      "quote": "In the Teams admin center, go to Meetings > Meeting settings. Under Transcript API access, turn the WorkIQ access toggle On.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingConfiguration -EnableWorkIQTranscriptAccess $true -Identity Global enables Work IQ real-time transcript access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access",
+      "quote": "Set-CsTeamsMeetingConfiguration -EnableWorkIQTranscriptAccess $true -Identity Global",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "controls[1].ui; Governance guidance; Governance controls table",
+      "type": "admin-path",
+      "claim": "The meeting transcription control is at Teams admin center > Meetings > Meeting policies > policy > Transcription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+      "quote": "In the left navigation of the Teams admin center, go to Meetings > Meeting policies.\nSelect the policy that you want to edit or create a new one.\nToggle Transcription On or Off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -AllowTranscription $true allows meeting transcription under that policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+      "quote": "Set-CsTeamsMeetingPolicy -Identity \"Your Policy Name\" -AllowTranscription $true",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "title; summary; What's changing; Why it matters",
+      "type": "record",
+      "claim": "The roadmap plans live transcript access for authorised apps and agents during supported Teams meetings and calls.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Work IQ enables authorized applications and AI agents to access transcript content from supported Microsoft Teams meetings and calls as conversations unfold.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "title; summary; What's changing; Governance controls; Open questions",
+      "type": "record",
+      "claim": "The roadmap describes delivery through Model Context Protocol (MCP).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Through Model Context Protocol (MCP), developers can combine live conversation context with business data",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Developers could combine live conversation context with business data.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "developers can combine live conversation context with business data",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap names contextual recommendations as a use.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "experiences such as contextual recommendations",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap names customer-support assistance as a use.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "customer-support assistance",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap names action-item capture as a use.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "action-item capture",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap names workflow automation as a use.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "workflow automation",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The capability uses an active Teams transcript feed.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The capability uses an active Teams transcript feed",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap requires applicable permissions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "requires applicable permissions and consent",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap requires applicable consent.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "requires applicable permissions and consent",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Scope; Governance guidance",
+      "type": "record",
+      "claim": "The capability does not automatically start transcription.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "it does not automatically start transcription.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "front matter: previewDate; What's changing; Open questions",
+      "type": "record",
+      "claim": "Preview is targeted for December CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"December CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "front matter: targetDate; What's changing; Open questions",
+      "type": "record",
+      "claim": "General availability is targeted for January CY2027.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"January CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists only Worldwide (Standard Multi-Tenant), not US Government clouds.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platforms are Desktop and Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "front matter: products; Scope",
+      "type": "record",
+      "claim": "The roadmap products are Microsoft Teams and Work IQ.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Teams\", \"Work IQ\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The roadmap release phases are General Availability and Preview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing; controls[0].note",
+      "type": "absence",
+      "claim": "Microsoft Learn does not mention this specific roadmap item as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"real-time\" \"MCP\" transcript tool 572674. Opened Teams transcript API access, Work IQ overview, API overview, MCP policy governance and MCP tool reference; none identifies roadmap item 572674.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing; controls[0].note",
+      "type": "absence",
+      "claim": "Learn does not document an MCP live-transcript tool or identify MCP on the Teams transcript access page.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"real-time\" \"MCP\" transcript tool 572674; \"Work IQ\" \"real-time transcripts\" permissions MCP. Read the Teams transcript API page and full MCP tool reference; no live-transcript tool or MCP-specific transcript route was documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "summary; What's changing; controls[0].governs; Governance controls",
+      "type": "applicability",
+      "claim": "The documented WorkIQ access setting governs real-time Teams meeting and call transcripts received by apps and agents through Work IQ.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access",
+      "quote": "Work IQ lets agents and apps, including ones your organization builds, receive the transcript of a Teams meeting or call while it's in progress. The Work IQ access setting controls whether they can.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing; Open questions",
+      "type": "date",
+      "claim": "Learn says Work IQ access takes effect on 14 November 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access",
+      "quote": "Work IQ access takes effect on November 14, 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What's changing: related briefing",
+      "type": "record",
+      "claim": "An earlier roadmap item also describes Work IQ real-time Teams meeting transcripts for apps and agents.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "570651: \"Enable applications and agents to access Microsoft Teams meeting transcripts in real time for assistance and insights.\" Created: 2026-10-19T23:15:15.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Why it matters; Risk assessment: Data exposure; Governance guidance; rationale: risk",
+      "type": "behaviour",
+      "claim": "Real-time transcripts delivered through Work IQ include speaker names.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access",
+      "quote": "Real-time transcripts that apps receive through Work IQ include speaker names.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Include speaker attribution applies only to Microsoft Graph, not the Work IQ route.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access",
+      "quote": "The Include speaker attribution setting applies only to Microsoft Graph.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Why it matters; Governance guidance; rationale: impact",
+      "type": "date",
+      "claim": "Organisations already receiving real-time Work IQ transcripts needed to enable access before 14 November 2026 to keep their apps working.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access",
+      "quote": "Work IQ access takes effect on November 14, 2026. If apps in your organization already receive real-time transcripts through Work IQ, turn on Work IQ access before that date to keep them working.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Why it matters; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The meeting organiser's organisation determines the access setting, not the app's organisation or the represented user's organisation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access",
+      "quote": "Work IQ uses the setting of the organization that organized the meeting, not the setting of the app's organization or of the user the app acts for.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Security & identity; Scope",
+      "type": "behaviour",
+      "claim": "An app must act on behalf of a signed-in user to receive a real-time transcript.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access",
+      "quote": "The app acts on behalf of a signed-in user and has the permissions it needs in Microsoft Entra ID.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Security & identity; Scope; Governance controls",
+      "type": "behaviour",
+      "claim": "The app needs the required Microsoft Entra ID permissions to receive transcripts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access",
+      "quote": "The app acts on behalf of a signed-in user and has the permissions it needs in Microsoft Entra ID.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Work IQ API uses delegated authentication.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
+      "quote": "Work IQ uses Microsoft Entra ID delegated authentication.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Work IQ API does not support application-only authentication.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
+      "quote": "Application-only authentication isn't supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Turning off access does not stop transcripts already being received; these continue until the meeting or call ends.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access",
+      "quote": "Turning off Work IQ access doesn't stop transcripts that apps are already receiving. They continue until the meeting or call ends. New requests are denied.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Access-setting changes can take time to apply to new requests.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access",
+      "quote": "It can take some time before a change applies to new requests.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "When Allow AI in all meetings is on and Work IQ access is off, Work IQ requests are denied.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access",
+      "quote": "| On | Off | Work IQ requests are denied. Other AI experiences work as configured. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Turning Work IQ access off leaves other AI experiences working as configured.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access",
+      "quote": "Microsoft AI experiences in Teams, such as Microsoft 365 Copilot, Facilitator, and intelligent recap, keep working as configured.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Work IQ API access is independent of Microsoft 365 Copilot licensing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
+      "quote": "Work IQ API access is independent of Microsoft 365 Copilot licensing and available through usage-based billing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Work IQ API consumes Copilot Credits shared with other eligible services.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
+      "quote": "Work IQ API usage consumes Copilot Credits shared with other eligible services.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Cost and licensing: prerequisites",
+      "type": "licensing",
+      "claim": "The enabling guide lists a Copilot Studio usage-based billing plan with an Azure subscription and resource group assigned as a prerequisite.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq",
+      "quote": "A usage-based billing plan set up in Copilot Studio with an Azure subscription and resource group assigned.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Cost and licensing: prerequisites",
+      "type": "licensing",
+      "claim": "The enabling guide lists assignment of the user to the billing plan as a prerequisite.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq",
+      "quote": "The user assigned to the billing plan",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Cost and licensing: prerequisites; Scope",
+      "type": "role",
+      "claim": "The enabling guide specifies a Global Administrator for Work IQ setup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq",
+      "quote": "A user with Global Administrator role for the one-time Work IQ setup",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "Work IQ cost can be managed in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
+      "quote": "Work IQ cost is variable based on usage and can be managed in the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The Work IQ overview itself supplies no navigation path for cost management.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ MCP real-time live meeting transcript Copilot Credits pricing rate transcript tool permissions policy. Read the full Work IQ overview: it links to the Microsoft 365 admin center and licensing, but gives no cost-management navigation steps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Work IQ must be enabled for the represented user's organisation to receive a real-time transcript.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access",
+      "quote": "Work IQ is enabled for that user's organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[0].scope; Scope; Governance controls table",
+      "type": "applicability",
+      "claim": "The Teams Work IQ access setting is tenant-level.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access",
+      "quote": "Work IQ uses the setting of the organization that organized the meeting",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Learn does not describe a per-user or per-meeting Work IQ access switch.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"transcript\" \"per-user\" \"per-meeting\". Read Teams transcript API access and Work IQ MCP policy governance. Work IQ access is an organisation setting; no per-user or per-meeting version of that switch was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[1]; Governance guidance; Governance controls",
+      "type": "applicability",
+      "claim": "The existing user-scoped Transcription meeting policy controls whether transcription can run, rather than granting apps transcript access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+      "quote": "Transcription is both a per-organizer and per-user policy setting. For meetings and events to include transcripts, the organizer must have this setting turned on. The user who starts the recording or transcript must also have this setting turned on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Scope; Governance controls",
+      "type": "behaviour",
+      "claim": "AI must be allowed in the meeting; when Allow AI in all meetings is off, no transcript is available regardless of Work IQ access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access",
+      "quote": "| Off | Off or On | No transcript is available. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Work IQ access is independent of the Microsoft Graph access toggle.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access",
+      "quote": "It's independent of Microsoft Graph access, and it's off by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "controls[0].note; Governance controls",
+      "type": "command",
+      "claim": "EnableWorkIQTranscriptAccess requires the latest Teams PowerShell module.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access",
+      "quote": "This parameter requires the latest version of the Teams PowerShell module.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "The cited Teams transcript access page gives no full navigation path for per-app Entra permissions.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"real-time transcripts\" permissions MCP. Read the full Teams transcript API access page: it says to use a link to the Microsoft Entra admin center to manage each app's API permissions, without an Entra navigation path.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Governance controls: final paragraph",
+      "type": "behaviour",
+      "claim": "Learn separately documents tenant-level policy controls for Work IQ MCP.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "In the initial release, Work IQ MCP provides tenant-level policy control. In the Microsoft 365 admin center, tenant administrators can turn Work IQ MCP policy on or off for the tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Governance controls; Open questions",
+      "type": "absence",
+      "claim": "The documentation does not explicitly map the Teams access setting or MCP policy controls to this planned MCP live-transcript route.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"real-time transcripts\" permissions MCP; \"Work IQ\" \"real-time\" \"MCP\" transcript tool 572674. Read Teams transcript API access, MCP policy governance and MCP tool reference; no explicit mapping to the planned live-transcript MCP route was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Open questions: permissions and consent",
+      "type": "absence",
+      "claim": "The roadmap names no specific permission or consent procedure for live transcript access through MCP, and that specific mapping remains undocumented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"real-time transcripts\" permissions MCP. Read roadmap 572674, Teams transcript API access and Work IQ API permissions reference. General Work IQ scopes are documented, but no live-transcript MCP scope mapping or consent procedure was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "Microsoft has not described actions automatically triggered by the transcript feed itself.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"real-time transcript\" \"actions\" trigger workflow MCP. Read roadmap 572674, Teams transcript API access and MCP tool reference. They describe transcript delivery and separate agent tools, not automatic actions triggered by this feed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Scope: one-time organisation enablement; Cost and licensing: prerequisites",
+      "type": "behaviour",
+      "claim": "Enabling Work IQ in an organisation is a one-time setup step performed by a Global Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq",
+      "quote": "A user with Global Administrator role for the one-time Work IQ setup",
+      "severity": "minor",
+      "fix": "Replace the final sentence of Scope's second paragraph with: \"The Work IQ setup guide describes a one-time Global Administrator setup; the MCP overview says the service principal is created automatically on first use and manual provisioning may be needed before first use.\" Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/overview#how-tools-work, which states: \"The Work IQ service principal is created automatically in the tenant when you use Work IQ for the first time.\" Keep the Cost and licensing prerequisites explicitly attributed to the setup guide."
+    },
+    {
+      "n": 66,
+      "where": "front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "The variable cost rating reflects metered Work IQ API usage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
+      "quote": "Work IQ cost is variable based on usage",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Governance controls: final paragraph",
+      "type": "behaviour",
+      "claim": "Learn lists a remote MCP server among Work IQ API endpoints.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
+      "quote": "Work IQ API endpoints include A2A, a remote MCP server, and a REST API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "What's changing: MCP explanation",
+      "type": "behaviour",
+      "claim": "MCP provides tool-based access for AI assistants.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
+      "quote": "An AI assistant needs to invoke Work IQ as a tool for the user",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-17T22:07:00.209Z",
+    "summary": {
+      "links": 8,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=572674",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/partner-center/announcements/2026-june#work-iq-api-and-consumptive-pricing-update",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether Work IQ can deliver real-time transcripts to apps and agents",
+        "docs": "https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access",
+        "reachable": true,
+        "segments": [
+          "Meetings",
+          "Meeting settings",
+          "Transcript API access",
+          "WorkIQ access"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether Work IQ can deliver real-time transcripts to apps and agents",
+        "docs": "https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access",
+        "reachable": true,
+        "token": "Set-CsTeamsMeetingConfiguration",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether transcription can run in meetings (existing control, not specific to Work IQ)",
+        "docs": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+        "reachable": true,
+        "segments": [
+          "Meetings",
+          "Meeting policies",
+          "Transcription"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether transcription can run in meetings (existing control, not specific to Work IQ)",
+        "docs": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+        "reachable": true,
+        "token": "Set-CsTeamsMeetingPolicy",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": [
+    {
+      "date": "2026-11-17",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
+}

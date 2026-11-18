@@ -3,8 +3,8 @@
   "roadmapId": 562222,
   "title": "Copilot Studio: agent node runs an AI agent as a workflow step",
   "status": "verified",
-  "date": "2026-11-17",
-  "version": 11,
+  "date": "2026-11-18",
+  "version": 19,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
   "attempts": 0,
@@ -12,24 +12,24 @@
   "notes": [],
   "hold": null,
   "counts": {
-    "claims": 98,
-    "confirmed": 98,
+    "claims": 88,
+    "confirmed": 88,
     "unconfirmed": 0,
     "contradicted": 0,
     "blocker": 0,
     "major": 0,
     "minor": 0
   },
-  "summary": "The briefing passes: its roadmap facts, credit billing, governance statements and documented controls are supported. Both API calls flagged by the pre-check are documented, including the allocation request body and the deprecated consumption endpoint.",
+  "summary": "The briefing passes: its roadmap facts, licensing statements, credit controls and maker settings are supported by Microsoft's documentation. Targeted searches found no documented switch dedicated to the agent node or automation for its human-assistance setting.",
   "claims": [
     {
       "n": 1,
-      "where": "title; front matter: roadmapId",
+      "where": "title; summary; What's changing",
       "type": "record",
-      "claim": "Roadmap item 562222 concerns invoking agents as workflow steps with an agent node in Microsoft Copilot Studio.",
+      "claim": "This roadmap item concerns invoking an agent as a workflow step in Copilot Studio.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"id\": 562222, \"title\": \"Microsoft Copilot Studio: Invoke agents as workflow steps with the agent node\"",
+      "quote": "Microsoft Copilot Studio: Invoke agents as workflow steps with the agent node",
       "severity": null,
       "fix": null
     },
@@ -37,7 +37,7 @@
       "n": 2,
       "where": "front matter: products",
       "type": "record",
-      "claim": "The record lists Microsoft Copilot (Microsoft 365) and Microsoft Copilot Studio as products.",
+      "claim": "The record lists Microsoft Copilot (Microsoft 365) and Microsoft Copilot Studio.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\", \"Microsoft Copilot Studio\"]",
@@ -51,45 +51,12 @@
       "claim": "The roadmap status is Launched.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "quote": "\"status\": \"Launched\"",
       "severity": null,
       "fix": null
     },
     {
       "n": 4,
-      "where": "front matter: releasePhase; What's changing; Open questions",
-      "type": "record",
-      "claim": "The roadmap lists both General Availability and Preview as release phases.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "front matter: clouds; What's changing; Scope",
-      "type": "record",
-      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed; US Government clouds are not listed.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
-      "where": "front matter: platforms; What's changing; Scope",
-      "type": "record",
-      "claim": "Web is the only platform listed.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\"Web\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
       "claim": "The roadmap target date is September CY2026.",
@@ -100,7 +67,7 @@
       "fix": null
     },
     {
-      "n": 8,
+      "n": 5,
       "where": "front matter: previewDate; What's changing",
       "type": "record",
       "claim": "The roadmap preview date is April CY2026.",
@@ -111,13 +78,46 @@
       "fix": null
     },
     {
-      "n": 9,
-      "where": "front matter: roadmapModified",
+      "n": 6,
+      "where": "front matter: releasePhase; What's changing; Open questions",
       "type": "record",
-      "claim": "The roadmap record was modified at 2026-11-17T00:31:56.",
+      "claim": "The roadmap lists General Availability and Preview as release phases.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"modified\": \"2026-11-17T00:31:56\"",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "Web is the only platform listed.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The record does not list US Government clouds.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
       "severity": null,
       "fix": null
     },
@@ -125,7 +125,7 @@
       "n": 10,
       "where": "summary; What's changing; Why it matters",
       "type": "behaviour",
-      "claim": "An agent node hands a workflow step to an AI agent that can reason before returning a result.",
+      "claim": "An agent node hands a workflow step to an AI agent for reasoning.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-node-workflow",
       "quote": "The agent node lets a flow hand a step over to an AI agent that can reason, call tools, and pull from knowledge sources before returning a result.",
@@ -134,20 +134,20 @@
     },
     {
       "n": 11,
-      "where": "What's changing; Risk assessment: Security & identity",
+      "where": "summary; What's changing; Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "An agent node can call tools.",
+      "claim": "Attached tools let the agent perform actions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-node-workflow",
-      "quote": "Equip the agent with tools (Model Context Protocol (MCP) servers and connectors) so it can take action.",
+      "quote": "Tools give the agent the ability to do actions such as send a message, query a record, run a search, or call an API.",
       "severity": null,
       "fix": null
     },
     {
       "n": 12,
-      "where": "What's changing; Risk assessment: Data exposure",
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "An agent node can read attached knowledge sources to ground its response.",
+      "claim": "The agent can read attached knowledge sources before returning a result.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-node-workflow",
       "quote": "Knowledge gives the agent something to read. When you ask the agent a question, it can ground its answer in the sources you attach instead of relying only on what the model already knows.",
@@ -156,9 +156,9 @@
     },
     {
       "n": 13,
-      "where": "What's changing; Risk assessment: Data exposure",
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "The agent response becomes dynamic content available to subsequent workflow steps.",
+      "claim": "The agent response becomes dynamic content for subsequent workflow steps.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-node-workflow",
       "quote": "The agent response then becomes available as dynamic content that you can use in any subsequent step.",
@@ -169,7 +169,7 @@
       "n": 14,
       "where": "What's changing; Scope",
       "type": "admin-path",
-      "claim": "Makers add a node through Copilot Studio > Workflows > workflow > Build for an existing workflow > Agent on the Add panel.",
+      "claim": "Makers add the node through Workflows, an existing workflow's Build tab, and the Agent icon on the Add panel.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-node-workflow",
       "quote": "In Copilot Studio, go to Workflows and open an existing workflow, or create a new one. ... Existing workflow: Open the workflow and go to the Build tab. ... Select the Agent icon on the Add panel.",
@@ -180,7 +180,7 @@
       "n": 15,
       "where": "What's changing; Scope",
       "type": "behaviour",
-      "claim": "An existing agent selects a published agent from a list.",
+      "claim": "An existing agent is selected from a list of published agents.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-node-workflow",
       "quote": "An existing agent: Select a published agent from a list.",
@@ -191,7 +191,7 @@
       "n": 16,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "An existing agent runs with its already configured instructions, tools and knowledge.",
+      "claim": "An existing agent runs with its already-configured instructions, tools and knowledge.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-node-workflow",
       "quote": "The agent runs with whatever instructions, tools, and knowledge it was already configured with.",
@@ -202,7 +202,7 @@
       "n": 17,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "New agent for this workflow defines an inline agent in the node, with configuration that travels with the workflow.",
+      "claim": "New agent for this workflow configures an inline agent's instructions, tools, knowledge and output shape inside the node, travelling with the workflow.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-node-workflow",
       "quote": "New agent for this workflow: Build an inline agent scoped to this workflow. The agent's instructions, tools, knowledge, and output shape are configured in the node itself and travel with the workflow.",
@@ -224,10 +224,10 @@
       "n": 19,
       "where": "What's changing; Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "MCP servers are an attachable tool type.",
+      "claim": "Makers can optionally attach MCP servers as tools.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-node-workflow",
-      "quote": "Model Context Protocol (MCP) servers: Prebuilt servers that expose a curated set of capabilities.",
+      "quote": "Give the node an instruction, optionally attach tools and knowledge, and you're done. ... Model Context Protocol (MCP) servers: Prebuilt servers that expose a curated set of capabilities.",
       "severity": null,
       "fix": null
     },
@@ -235,7 +235,7 @@
       "n": 20,
       "where": "What's changing; Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "Any Power Platform connector action can be attached as a connector tool.",
+      "claim": "Tools can be any Power Platform connector action.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-node-workflow",
       "quote": "Connectors: Any Power Platform connector action.",
@@ -246,7 +246,7 @@
       "n": 21,
       "where": "What's changing; Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Public websites are a supported knowledge source for the inline agent.",
+      "claim": "Inline agents can optionally use public websites as knowledge sources.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-node-workflow",
       "quote": "Public websites: Index one or more public URLs so the agent can cite content from those sites.",
@@ -257,7 +257,7 @@
       "n": 22,
       "where": "What's changing; Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "SharePoint is a supported knowledge source for the inline agent.",
+      "claim": "Inline agents can optionally use SharePoint knowledge.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-node-workflow",
       "quote": "SharePoint: Connect to a SharePoint site, library, or specific document so the agent can answer from internal content.",
@@ -279,7 +279,7 @@
       "n": 24,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The agent decides the order of its tool calls.",
+      "claim": "The agent decides the order of tool calls at runtime.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-node-workflow",
       "quote": "The agent decides at run time which of its attached tools to call, in what order, and with what arguments.",
@@ -290,7 +290,7 @@
       "n": 25,
       "where": "What's changing; Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "The agent decides the arguments for its tool calls.",
+      "claim": "The agent decides the arguments for tool calls at runtime.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-node-workflow",
       "quote": "The agent decides at run time which of its attached tools to call, in what order, and with what arguments.",
@@ -301,10 +301,10 @@
       "n": 26,
       "where": "What's changing; Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Turning on Work IQ lets the agent ground responses in the running user's recent work activity.",
+      "claim": "Work IQ is a setting a maker can turn on for the inline agent.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-node-workflow",
-      "quote": "Turn on Work IQ to let the agent use the running user's recent work activity, including mail, Teams, calendar, OneDrive, and SharePoint context, to ground its responses.",
+      "quote": "Turn on Work IQ to let the agent use the running user's recent work activity",
       "severity": null,
       "fix": null
     },
@@ -312,18 +312,18 @@
       "n": 27,
       "where": "What's changing; Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "That Work IQ context includes mail, Teams, calendar, OneDrive and SharePoint.",
+      "claim": "Work IQ grounds responses in the running user's recent mail, Teams, calendar, OneDrive and SharePoint context.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-node-workflow",
-      "quote": "including mail, Teams, calendar, OneDrive, and SharePoint context",
+      "quote": "Turn on Work IQ to let the agent use the running user's recent work activity, including mail, Teams, calendar, OneDrive, and SharePoint context, to ground its responses.",
       "severity": null,
       "fix": null
     },
     {
       "n": 28,
-      "where": "What's changing; Risk assessment: Autonomy & actions; controls[2].note",
+      "where": "What's changing; Risk assessment: Autonomy & actions; controls[2].note; Governance controls",
       "type": "behaviour",
-      "claim": "Request human assistance when unsure is a maker-selected node option for escalation when the agent is not confident, not mandatory approval for every action.",
+      "claim": "Request human assistance when unsure is a per-node, maker-selected escalation when confidence is insufficient, not mandatory approval for every action.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-node-workflow",
       "quote": "Turn on Request human assistance when unsure to let the agent escalate when it isn't confident enough to act on its own.",
@@ -334,7 +334,7 @@
       "n": 29,
       "where": "What's changing; Risk assessment: Security & identity; controls[2].note",
       "type": "behaviour",
-      "claim": "Human assistance emails the connection owner for input.",
+      "claim": "Human-assistance escalation emails the connection owner for input.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-node-workflow",
       "quote": "The agent emails the connection owner for input and waits for a reply before continuing.",
@@ -345,7 +345,7 @@
       "n": 30,
       "where": "What's changing; Risk assessment: Security & identity; controls[2].note",
       "type": "behaviour",
-      "claim": "The agent waits for the human-assistance reply before continuing.",
+      "claim": "An escalated agent waits for a reply before continuing.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-node-workflow",
       "quote": "The agent emails the connection owner for input and waits for a reply before continuing.",
@@ -354,28 +354,6 @@
     },
     {
       "n": 31,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Structured output exposes individual agent-written fields as dynamic-content tokens for downstream actions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-node-workflow",
-      "quote": "When you pick a structured output, each field becomes its own dynamic-content token that downstream actions can reference directly.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
-      "where": "Why it matters; Risk assessment: Autonomy & actions; Governance guidance",
-      "type": "behaviour",
-      "claim": "Attached tools can take actions, including sending messages and calling APIs.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-node-workflow",
-      "quote": "Tools give the agent the ability to do actions such as send a message, query a record, run a search, or call an API.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
       "claim": "Without tools the agent can only read and reason.",
@@ -386,10 +364,21 @@
       "fix": null
     },
     {
-      "n": 34,
+      "n": 32,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Agent output can feed emails, Teams messages and Dataverse writes in later workflow steps.",
+      "claim": "Structured output exposes individual agent-written fields to downstream actions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-node-workflow",
+      "quote": "When you pick a structured output, each field becomes its own dynamic-content token that downstream actions can reference directly.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Workflow steps can put agent output into emails, Teams messages and Dataverse rows.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-node-workflow",
       "quote": "Insert a text response into an email body, Teams message, or document. ... Write structured fields to Dataverse, Excel, or a SharePoint list.",
@@ -397,18 +386,7 @@
       "fix": null
     },
     {
-      "n": 35,
-      "where": "Why it matters",
-      "type": "behaviour",
-      "claim": "Workflows otherwise follow a defined sequence of actions and rule-based branches.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/flows-overview",
-      "quote": "Workflows follow a defined sequence of actions and rule-based branches, making process execution predictable.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
+      "n": 34,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
       "claim": "Workflow results can vary when actions use AI.",
@@ -419,30 +397,8 @@
       "fix": null
     },
     {
-      "n": 37,
-      "where": "Why it matters",
-      "type": "absence",
-      "claim": "The designer's documented publish procedure contains no administrator review step.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: publish procedure in Edit and manage your workflow in the designer; read the full article. Publish your workflow says: If your workflow has no errors, you can publish it. On the menu at the top of the canvas, select Publish. No administrator review step is listed.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "Why it matters; Governance guidance: At rollout; Cost and licensing",
-      "type": "cost",
-      "claim": "Using, building, testing and evaluating an agent node can consume Copilot Credits.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-node-workflow",
-      "quote": "The harness used to build this agent uses usage-based billing. Using, building, testing, and evaluating agents might consume Copilot Credits.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
+      "n": 35,
+      "where": "Risk assessment: Change & support",
       "type": "behaviour",
       "claim": "Evaluations are available only for new agents created in workflows.",
       "status": "supported",
@@ -452,10 +408,10 @@
       "fix": null
     },
     {
-      "n": 40,
+      "n": 36,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "The limit is 20 evaluations per agent node per day.",
+      "claim": "The evaluation limit is 20 evaluations per agent node per day.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-node-workflow",
       "quote": "You can run up to 20 evaluations per agent node per day.",
@@ -463,32 +419,10 @@
       "fix": null
     },
     {
-      "n": 41,
-      "where": "Governance guidance: At rollout",
-      "type": "admin-path",
-      "claim": "Makers test a configured agent node from its side panel's Test tab before publishing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-node-workflow",
-      "quote": "Select the agent node to open its property side panel. ... Select the Test tab. ... Enter inputs manually, or use inputs from a previous workflow run. ... Select Run test.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "Governance guidance: At rollout",
-      "type": "admin-path",
-      "claim": "Makers use Evaluate after a test run to evaluate a new inline agent's response.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-node-workflow",
-      "quote": "To evaluate a test result: ... Run a test for the agent node. ... Select Evaluate. ... Create a grader or select an existing grader. ... Select Run evaluation.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
+      "n": 37,
       "where": "Risk assessment: Change & support; Governance guidance",
       "type": "behaviour",
-      "claim": "The Workflows overview says new workflow runs are blocked after the environment's prepaid capacity is fully consumed until capacity is available.",
+      "claim": "Exhausting the environment's prepaid capacity blocks new workflow runs until capacity is available.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/flows-overview",
       "quote": "Once you fully consume your environment's prepaid Copilot Studio capacity, new workflow runs are blocked until capacity is available.",
@@ -496,10 +430,10 @@
       "fix": null
     },
     {
-      "n": 44,
+      "n": 38,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Already running workflows complete normally when prepaid capacity is exhausted.",
+      "claim": "Already-running workflows complete normally when prepaid capacity is exhausted.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/flows-overview",
       "quote": "Running workflows complete normally.",
@@ -507,32 +441,21 @@
       "fix": null
     },
     {
-      "n": 45,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "cost",
-      "claim": "Workflows consume Copilot Studio capacity for each action executed.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/flows-overview",
-      "quote": "Workflows consume Copilot Studio capacity for each action they execute.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "front matter: licensing.model, licensing.notes, cost; summary; Cost and licensing; rationale: cost",
+      "n": 39,
+      "where": "summary; front matter: licensing.model, cost; Cost and licensing; rationale: cost",
       "type": "licensing",
-      "claim": "The workflow and agent-node experience uses consumption-based billing measured in Copilot Credits, supporting consumption licensing and variable cost.",
+      "claim": "The node uses consumption billing measured in Copilot Credits, supporting consumption licensing and variable cost.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview",
-      "quote": "Usage is billed based on consumption and measured in Copilot Credits. Creating and using agents, workflows, and apps consumes credits based on usage and rate of consumption.",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-node-workflow",
+      "quote": "The harness used to build this agent uses usage-based billing. Using, building, testing, and evaluating agents might consume Copilot Credits.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 47,
+      "n": 40,
       "where": "Cost and licensing",
       "type": "cost",
-      "claim": "Microsoft Copilot harness billing charges credits for LLM tokens.",
+      "claim": "Microsoft Copilot harness experiences charge Copilot Credits for LLM tokens.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview",
       "quote": "For experiences powered by the Microsoft Copilot harness, Copilot Credits are charged for large language model (LLM) tokens, tools (including knowledge and MCPs), and the harness itself.",
@@ -540,109 +463,131 @@
       "fix": null
     },
     {
-      "n": 48,
+      "n": 41,
       "where": "Cost and licensing",
       "type": "cost",
-      "claim": "Microsoft Copilot harness billing charges credits for tools, including knowledge and MCPs.",
+      "claim": "Microsoft Copilot harness experiences charge credits for tools, including knowledge and MCPs.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview",
       "quote": "Copilot Credits are charged for large language model (LLM) tokens, tools (including knowledge and MCPs), and the harness itself.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The Microsoft Copilot harness itself consumes credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview",
+      "quote": "Copilot Credits are charged for large language model (LLM) tokens, tools (including knowledge and MCPs), and the harness itself.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Microsoft Copilot harness billing starts when makers start building.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview",
+      "quote": "the Microsoft Copilot harness charges credits from the moment you start building.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Why it matters; Cost and licensing",
+      "type": "cost",
+      "claim": "Testing an agent can consume credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview",
+      "quote": "Experiences such as creating an automated solution with natural language, previewing and testing an agent, and generating and creating agent evaluations all consume credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Why it matters; Cost and licensing",
+      "type": "cost",
+      "claim": "Evaluating an agent can consume credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview",
+      "quote": "Experiences such as creating an automated solution with natural language, previewing and testing an agent, and generating and creating agent evaluations all consume credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Workflows consume Copilot Studio capacity for each executed action.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/flows-overview",
+      "quote": "Workflows consume Copilot Studio capacity for each action they execute.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "A Microsoft 365 Copilot licence covers workflows run inside a standard harness agent by a licensed user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness",
+      "quote": "| Workflows | Yes, when run inside a standard harness agent by a licensed user | Billed in all other cases. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Workflows are billed in all other cases.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness",
+      "quote": "| Workflows | Yes, when run inside a standard harness agent by a licensed user | Billed in all other cases. |",
       "severity": null,
       "fix": null
     },
     {
       "n": 49,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "Microsoft Copilot harness billing charges credits for the harness itself.",
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "No agent-node-specific credit rate is published at the time of writing.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview",
-      "quote": "Copilot Credits are charged for large language model (LLM) tokens, tools (including knowledge and MCPs), and the harness itself.",
+      "source": null,
+      "quote": "Searched: \"agent node\" \"rate\" \"credits\". Read agent-node-workflow, agents-experience/billing-credit-overview and manage-usage-github-copilot-harness; search also returned requirements-messages-management, explicitly scoped to the standard harness. No node-specific rate found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 50,
-      "where": "Cost and licensing",
+      "where": "Why it matters; Cost and licensing; rationale: cost",
       "type": "cost",
-      "claim": "Microsoft Copilot harness billing starts when makers start building rather than only after publishing.",
+      "claim": "Credits are charged to the environment where the work runs, rather than individual makers.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview",
-      "quote": "Unlike the standard harness, which starts billing after publish, the Microsoft Copilot harness charges credits from the moment you start building.",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness",
+      "quote": "Copilot Credits are charged to the environment where the agent runs, from prepaid capacity or through the environment's pay-as-you-go billing plan, and not to the individual makers or users who run agents.",
       "severity": null,
       "fix": null
     },
     {
       "n": 51,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "The Copilot Studio cost table says a Microsoft 365 Copilot licence covers workflows run inside a standard harness agent by a licensed user.",
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Consumption uses prepaid capacity or the environment's pay-as-you-go billing plan.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness",
-      "quote": "| Workflows | Yes, when run inside a standard harness agent by a licensed user | Billed in all other cases. |",
+      "quote": "Copilot Credits are charged to the environment where the agent runs, from prepaid capacity or through the environment's pay-as-you-go billing plan",
       "severity": null,
       "fix": null
     },
     {
       "n": 52,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "That cost table says workflows are billed in all other cases.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness",
-      "quote": "| Workflows | Yes, when run inside a standard harness agent by a licensed user | Billed in all other cases. |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 53,
-      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
-      "type": "absence",
-      "claim": "No rate specific to the agent node is published at the time of writing in November 2026.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"agent node\" \"rate\" \"credits\". Opened Add an agent node to a workflow, Overview of usage-based billing and Manage costs for agents powered by the Microsoft Copilot harness; read standard-harness Billing rates and management search excerpts. No node-specific rate stated.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 54,
-      "where": "Why it matters; Cost and licensing; rationale: cost",
-      "type": "cost",
-      "claim": "Credits are charged to the environment where the work runs.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness",
-      "quote": "Copilot Credits are charged to the environment where the agent runs, from prepaid capacity or through the environment's pay-as-you-go billing plan",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 55,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "Environment consumption can use prepaid capacity or the environment's pay-as-you-go billing plan.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness",
-      "quote": "Copilot Credits are charged to the environment where the agent runs, from prepaid capacity or through the environment's pay-as-you-go billing plan",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 56,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "The charge is not assigned to individual makers or users who run agents.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness",
-      "quote": "and not to the individual makers or users who run agents.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 57,
-      "where": "Scope; controls[0].note; Governance guidance: Before rollout",
+      "where": "controls[0].note; Scope",
       "type": "role",
-      "claim": "Managing Copilot Studio capacity requires Power Platform Administrator, Global Administrator or an equivalent role that can manage licensing and capacity.",
+      "claim": "Capacity management requires Power Platform Administrator, Global Administrator or an equivalent role managing licensing and capacity.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness",
       "quote": "To manage Copilot Studio capacity, you need the Power Platform Administrator or Global Administrator role, or an equivalent role that can manage licensing and capacity.",
@@ -650,31 +595,31 @@
       "fix": null
     },
     {
-      "n": 58,
-      "where": "Cost and licensing; controls[0].note; Governance controls",
-      "type": "applicability",
-      "claim": "Shared environment capacity controls apply across Copilot Studio workloads, so changing them can affect other agents, workflows and features.",
+      "n": 53,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Environment credit allocation is under Power Platform admin center > Licensing > Products > Copilot Studio > Manage Copilot Credits.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness",
-      "quote": "The capacity and consumption controls in the Power Platform admin center apply across Copilot Studio. They aren't exclusive to the Microsoft Copilot harness. Configure controls with the other Copilot Studio agents, workflows, and features in mind for each environment.",
+      "quote": "In the navigation pane, select Licensing. ... Under Products, select Copilot Studio. ... Select Manage Copilot Credits.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 59,
+      "n": 54,
       "where": "Cost and licensing; Governance guidance: Before rollout",
       "type": "behaviour",
-      "claim": "Allocating credits and clearing Draw from the available capacity in my tenant prevents the environment drawing unallocated tenant prepaid capacity after its allocation is exhausted.",
+      "claim": "Allocating credits and clearing Draw from the available capacity in my tenant contains prepaid consumption at environment level.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness",
-      "quote": "When you clear this option, the environment doesn't draw from unallocated prepaid capacity in the tenant after it consumes its allocation.",
+      "quote": "To contain prepaid consumption, allocate a defined amount of Copilot Credits to the environment and turn off Draw from the available capacity in my tenant.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 60,
-      "where": "Cost and licensing; controls[0].note",
-      "type": "cost",
+      "n": 55,
+      "where": "controls[0].note; Cost and licensing",
+      "type": "behaviour",
       "claim": "Disabling tenant-pool draw does not stop consumption through a linked pay-as-you-go billing plan.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness",
@@ -683,10 +628,10 @@
       "fix": null
     },
     {
-      "n": 61,
+      "n": 56,
       "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "Azure budgets send notifications rather than stopping Copilot Studio consumption.",
+      "type": "behaviour",
+      "claim": "Azure budgets send notifications without stopping Copilot Studio consumption.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness",
       "quote": "Azure budgets and alerts send notifications but don't stop Copilot Studio consumption.",
@@ -694,10 +639,32 @@
       "fix": null
     },
     {
-      "n": 62,
+      "n": 57,
+      "where": "controls[0].note; Cost and licensing; Governance controls",
+      "type": "applicability",
+      "claim": "Environment capacity controls apply across Copilot Studio workloads, not only agent nodes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness",
+      "quote": "The capacity and consumption controls in the Power Platform admin center apply across Copilot Studio. They aren't exclusive to the Microsoft Copilot harness.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Cost and licensing; Governance controls",
+      "type": "behaviour",
+      "claim": "Changing shared capacity can affect other agents, workflows and features in the same environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness",
+      "quote": "Changes to shared capacity can affect other Copilot Studio agents, workflows, and features in the same environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
       "where": "Governance guidance: After rollout",
       "type": "default",
-      "claim": "Eligible Copilot Studio environments without allocation configuration have Draw from the available capacity in my tenant selected by default.",
+      "claim": "Eligible Copilot Studio environments with no allocation configuration default to drawing from tenant capacity.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness",
       "quote": "For eligible Copilot Studio environments, Draw from the available capacity in my tenant is selected by default when no allocation configuration exists.",
@@ -705,87 +672,54 @@
       "fix": null
     },
     {
-      "n": 63,
+      "n": 60,
       "where": "Governance controls",
       "type": "behaviour",
-      "claim": "A published environment-group rule governing tenant draw makes the environment-level setting read-only.",
+      "claim": "A published environment-group rule makes the tenant-draw setting read-only at environment level.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness",
-      "quote": "When you publish a rule, it governs every environment in the group. The environment-level setting becomes read-only in the Power Platform admin center",
+      "quote": "When you publish a rule, it governs every environment in the group. The environment-level setting becomes read-only in the Power Platform admin center, and programmatic requests can't override it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Programmatic updates cannot override a published environment-group tenant-draw rule.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations",
+      "quote": "Updates through the Power Platform admin center, Power Platform API, or administration SDKs are rejected with the TenantPoolLockedByPolicy error.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "controls[0].api; Governance controls table and allocation body",
+      "type": "command",
+      "claim": "PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01 with the supplied scope and allocatedEntitlements body sets MCSMessages allocation and disables TenantPool draw.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations",
+      "quote": "Invoke-RestMethod -Method Put ... -Uri \"$apiBaseUrl/licensing/allocationsV2?api-version=$apiVersion\" ... scope = @{ environmentId = $environmentId } ... entitlementId = \"MCSMessages\" ... allocation = @{ quantity = 5000 } ... @{ ruleType = \"TenantPool\"; enabled = $false }",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Governance controls: allocation call",
+      "type": "command",
+      "claim": "The allocation request requires authenticated authorisation and application/json content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations",
+      "quote": "$headers = @{ Authorization = \"Bearer $($auth.AccessToken)\" } ... -Headers $headers -ContentType \"application/json\" -Body $allocationBody",
       "severity": null,
       "fix": null
     },
     {
       "n": 64,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "Programmatic allocation requests cannot override a published environment-group tenant-draw rule.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations",
-      "quote": "you can't override the setting for an individual environment. Updates through the Power Platform admin center, Power Platform API, or administration SDKs are rejected with the TenantPoolLockedByPolicy error.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 65,
-      "where": "controls[0].ui; Governance controls table",
+      "where": "controls[1].ui; Governance controls table; Governance guidance: After rollout",
       "type": "admin-path",
-      "claim": "Environment prepaid credit management is reached through Power Platform admin center > Licensing > Products > Copilot Studio > Manage Copilot Credits.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness",
-      "quote": "In the navigation pane, select Licensing. ... Under Products, select Copilot Studio. ... Select Manage Copilot Credits.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 66,
-      "where": "controls[0].api; Governance controls table and allocation paragraph",
-      "type": "command",
-      "claim": "PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01 sets the environment allocation and TenantPool rule using the supplied body.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations",
-      "quote": "$apiBaseUrl = \"https://api.powerplatform.com\"; $apiVersion = \"2024-10-01\" ... Invoke-RestMethod -Method Put ... -Uri \"$apiBaseUrl/licensing/allocationsV2?api-version=$apiVersion\" ... -Headers $headers -ContentType \"application/json\" -Body $allocationBody",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 67,
-      "where": "Governance controls: allocation request body; controls[0].api",
-      "type": "command",
-      "claim": "The allocation body uses scope.environmentId and allocatedEntitlements with entitlementId MCSMessages, allocation.quantity and enforcementRules containing ruleType TenantPool and enabled false.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations",
-      "quote": "scope = @{ environmentId = $environmentId } ... allocatedEntitlements = @( ... entitlementId = \"MCSMessages\" ... allocation = @{ quantity = 5000 } ... enforcementRules = @( ... @{ ruleType = \"TenantPool\"; enabled = $false }",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 68,
-      "where": "Governance controls: allocation request",
-      "type": "command",
-      "claim": "The allocation request requires authenticated authorisation.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations",
-      "quote": "$auth = Get-MsalToken -ClientId $clientId -TenantId $tenantId -Scope \"https://api.powerplatform.com/.default\" -Interactive ... $headers = @{ Authorization = \"Bearer $($auth.AccessToken)\" }",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 69,
-      "where": "Governance controls: allocation request",
-      "type": "command",
-      "claim": "The allocation request uses Content-Type: application/json.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations",
-      "quote": "-Headers $headers -ContentType \"application/json\" -Body $allocationBody",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 70,
-      "where": "controls[1].ui; Governance guidance: After rollout; Governance controls table",
-      "type": "admin-path",
-      "claim": "Power Platform admin center > Licensing > Copilot Studio is the documented location for reviewing Agent flow actions used by each workflow.",
+      "claim": "Power Platform admin center > Licensing > Copilot Studio shows Agent flow actions used by each workflow.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/flows-overview",
       "quote": "In the Power Platform admin center > Licensing > Copilot Studio, review the Agent flow actions used by each workflow.",
@@ -793,21 +727,21 @@
       "fix": null
     },
     {
-      "n": 71,
+      "n": 65,
       "where": "controls[1].api; Governance controls table",
       "type": "command",
-      "claim": "The documented GET environment-resources request accepts entitlementId MCSMessages, environment ID, fromDate, toDate and api-version 2024-10-01 for entitlement consumption snapshots.",
+      "claim": "The documented GET resources call returns environment resource consumption snapshots for the MCSMessages entitlement.",
       "status": "supported",
       "source": "https://learn.microsoft.com/rest/api/power-platform/licensing/entitlement-insight/get-environment-resources",
-      "quote": "GET https://api.powerplatform.com/licensing/entitlements/{entitlementId}/environments/{environmentId}/resources?fromDate={fromDate}&toDate={toDate}&api-version=2024-10-01 ... metadata ... nonBillableConsumed for MCSMessages.",
+      "quote": "GET https://api.powerplatform.com/licensing/entitlements/{entitlementId}/environments/{environmentId}/resources?fromDate={fromDate}&toDate={toDate}&api-version=2024-10-01",
       "severity": null,
       "fix": null
     },
     {
-      "n": 72,
-      "where": "controls[1].note; Governance controls table",
-      "type": "command",
-      "claim": "The environment-resources consumption API is deprecated.",
+      "n": 66,
+      "where": "controls[1].note",
+      "type": "behaviour",
+      "claim": "The environment resource entitlement snapshot operation is deprecated.",
       "status": "supported",
       "source": "https://learn.microsoft.com/rest/api/power-platform/licensing/entitlement-insight/get-environment-resources",
       "quote": "Get environment resource entitlement snapshots for an entitlement (deprecated).",
@@ -815,21 +749,21 @@
       "fix": null
     },
     {
-      "n": 73,
-      "where": "controls[1].note; Governance controls table",
+      "n": 67,
+      "where": "controls[1].note",
       "type": "absence",
-      "claim": "The cited environment-resources API reference does not promise a workflow-level consumption breakdown.",
+      "claim": "The resource snapshot API reference does not promise a workflow-level breakdown.",
       "status": "supported",
       "source": null,
-      "quote": "Searched the full Entitlement Insight - Get Environment Resources reference for workflow breakdowns. It documents resourceId, consumed, lastRefreshedDate, metadata and unit; no workflow-level breakdown is promised.",
+      "quote": "Searched: \"agent node\" \"monthly\" \"limits\"; read Get Environment Resources in full. Its response documents consumed, lastRefreshedDate, metadata, resourceId and unit, but no workflow-specific breakdown contract.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 74,
+      "n": 68,
       "where": "Governance guidance: After rollout",
       "type": "admin-path",
-      "claim": "The Workflows page has a Credit usage (last 30 days) column showing credits consumed by each workflow.",
+      "claim": "The Workflows page has a Credit usage (last 30 days) column showing consumption by workflow.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/flows-overview",
       "quote": "The Credit usage (last 30 days) column shows the credits that a workflow consumed during the last 30 days.",
@@ -837,54 +771,54 @@
       "fix": null
     },
     {
-      "n": 75,
+      "n": 69,
       "where": "controls[2].ui; Governance controls table",
       "type": "admin-path",
-      "claim": "The maker path to human assistance is Workflows > workflow > Build > Add panel > Agent > Request human assistance when unsure.",
+      "claim": "Copilot Studio makers reach Request human assistance when unsure from Workflows > workflow > Build > Add panel > Agent.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-node-workflow",
-      "quote": "In Copilot Studio, go to Workflows ... Existing workflow: Open the workflow and go to the Build tab. ... Select the Agent icon on the Add panel. ... Turn on Request human assistance when unsure",
+      "quote": "Existing workflow: Open the workflow and go to the Build tab. ... Select the Agent icon on the Add panel. ... Turn on Request human assistance when unsure to let the agent escalate when it isn't confident enough to act on its own.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 76,
-      "where": "controls[2].api; Governance controls table",
+      "n": 70,
+      "where": "controls[2].api",
       "type": "absence",
-      "claim": "No API or automation call for the node's human-assistance option is documented.",
+      "claim": "No automation for the node's Request human assistance when unsure setting is documented.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Request human assistance when unsure\" \"API\" \"workflow\"; \"agent node\" \"human assistance\" API Dataverse central enforcement; Dataverse workflow entity reference agent assistance. Opened the node article and read matching results; no setting API found.",
+      "quote": "Searched: \"Request human assistance when unsure\" API Dataverse Power Platform enforce policy; \"agent node\" Dataverse \"human assistance\". Read node documentation and returned Power Platform API reference excerpt; no matching API operation or Dataverse property found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 77,
+      "n": 71,
       "where": "controls[2].note; Governance controls",
       "type": "absence",
-      "claim": "No central enforcement setting for Request human assistance when unsure is documented as of November 2026.",
+      "claim": "No central enforcement setting for node human assistance is documented as of November 2026.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"agent node\" \"Request human assistance\" \"enforce\" admin; \"agent node\" \"human assistance\" API Dataverse central enforcement. Opened Add an agent node to a workflow and platform governance pages; found the per-node maker option, not central enforcement.",
+      "quote": "Searched: \"Request human assistance when unsure\" API Dataverse Power Platform enforce policy; \"agent node\" Dataverse \"human assistance\". Read agent-node-workflow and search excerpts for human review and Power Platform API; no central enforcement setting found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 78,
-      "where": "controls[3].ui; controls[3].api; summary; Why it matters; Risk assessment; rationale: risk",
+      "n": 72,
+      "where": "controls[3]; summary; Why it matters; Risk assessment; Open questions; rationale: risk",
       "type": "absence",
-      "claim": "No tenant UI or API switch dedicated to disabling the agent node or its node-specific options is documented as of November 2026.",
+      "claim": "Microsoft documents no tenant switch dedicated to disabling the agent node, including its inline knowledge and Work IQ settings.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"agent node\" \"disable\" \"Copilot Studio\"; \"agent node\" \"Power Platform API\" disable; \"agent node\" \"Dataverse\" \"workflow\" disable setting. Opened node, cost, data-policy and ACP articles; results document broader controls, not a dedicated node switch.",
+      "quote": "Searched: \"agent node\" disable tenant Copilot Studio admin switch; Copilot Studio workflow agent node tenant setting disable Power Platform API Dataverse bot workflow. Read node, cost, data-policy, ACP and Work IQ policy pages; no node-specific switch found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 79,
+      "n": 73,
       "where": "front matter: defaultState",
       "type": "default",
-      "claim": "The node is user-opt-in: a maker chooses to add it in the designer, with no documented dedicated admin enablement switch.",
+      "claim": "User-opt-in describes the node: a maker chooses to add it in the designer, with no dedicated admin switch found.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-node-workflow",
       "quote": "In Copilot Studio, go to Workflows and open an existing workflow, or create a new one. ... Select the Agent icon on the Add panel. The configuration panel opens for the agent node.",
@@ -892,43 +826,54 @@
       "fix": null
     },
     {
-      "n": 80,
+      "n": 74,
       "where": "Scope",
       "type": "absence",
-      "claim": "The agent-node Learn article names no licence prerequisite for adding the node.",
+      "claim": "The node's Learn page names no licence prerequisite for adding the node.",
       "status": "supported",
       "source": null,
-      "quote": "Searched the full Add an agent node to a workflow article for licence, license and prerequisites. It gives the maker procedure and a usage-based billing notice but names no licence prerequisite.",
+      "quote": "Searched: \"agent node\" preview prerequisites license. Read workflows-experience/agent-node-workflow in full, including Add an agent node; it names no licence prerequisite and links usage-based billing.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 81,
+      "n": 75,
       "where": "What's changing; Open questions",
       "type": "absence",
-      "claim": "The agent-node Learn article does not identify which part of the feature remains in preview.",
+      "claim": "The node's Learn page does not identify which part of this roadmap feature remains in preview.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"agent node\" \"preview\" \"Copilot Studio\". Read Add an agent node to a workflow in full; it does not divide node functionality into Preview and General Availability, although the roadmap lists both phases.",
+      "quote": "Searched: \"agent node\" preview prerequisites license. Read workflows-experience/agent-node-workflow in full; it contains no division of the node into preview and generally available components.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 82,
+      "n": 76,
+      "where": "Risk assessment: Security & identity; Open questions",
+      "type": "absence",
+      "claim": "The node page does not document the identity used by attached connector actions or SharePoint knowledge.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"agent node\" credentials SharePoint. Read workflows-experience/agent-node-workflow in full; it specifies the Work IQ running user and human-assistance connection owner but not connector-action or SharePoint-knowledge execution identity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
       "where": "Risk assessment: Security & identity; Governance controls",
       "type": "applicability",
-      "claim": "Data policies govern Power Platform connector tools in Copilot Studio agents within the policy's environment scope.",
+      "claim": "Data policies govern Power Platform connector tools in Copilot Studio agents.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
-      "quote": "These data policies apply to Copilot Studio agents in the environments included in the policy's scope. ... To prevent agent makers from using Power Platform connectors as tools in Copilot Studio agents, configure a data policy with the connectors you want to block.",
+      "quote": "To prevent agent makers from using Power Platform connectors as tools in Copilot Studio agents, configure a data policy with the connectors you want to block.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 83,
+      "n": 78,
       "where": "Risk assessment: Security & identity; Governance controls",
       "type": "applicability",
-      "claim": "Blocking a Power Platform connector also blocks connected MCP tools that depend on that connector.",
+      "claim": "Blocking Power Platform connectors also blocks tools in connected MCP servers relying on those connectors.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
       "quote": "Blocking Power Platform connectors also blocks access to tools in connected MCP servers, which rely on Power Platform connectors for connectivity.",
@@ -936,76 +881,43 @@
       "fix": null
     },
     {
-      "n": 84,
+      "n": 79,
       "where": "Risk assessment: Security & identity; Governance controls",
       "type": "applicability",
-      "claim": "Advanced Connector Policies govern certified connectors.",
+      "claim": "Advanced Connector Policies govern certified connectors and MCP servers through the hosting environment's policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/advanced-connector-policies",
-      "quote": "Advanced connector policies currently apply to certified connectors only.",
+      "quote": "ACP offers a modern, flexible approach to managing certified connectors. ... administrators ... can choose to block an entire MCP server. ... At runtime, when a connector operation is invoked, it queries the effective policy for the current hosting environment.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 85,
+      "n": 80,
       "where": "Risk assessment: Security & identity; Governance controls",
       "type": "applicability",
-      "claim": "Advanced Connector Policies support MCP server-level blocking.",
+      "claim": "Custom and HTTP connectors are not supported by ACP and still need classic data policies.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/advanced-connector-policies",
-      "quote": "| MCP connectors | Supported | MCP server-level blocking is available. See MCP server management. |",
+      "quote": "Custom connectors and HTTP connectors aren't yet supported. ... For governing custom connectors and HTTP connectors today, continue using classic data policies.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 86,
-      "where": "Risk assessment: Security & identity; Governance controls",
-      "type": "applicability",
-      "claim": "Custom and HTTP connectors still require classic data policies because ACP does not yet support them.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/advanced-connector-policies",
-      "quote": "Custom connectors and HTTP connectors aren't yet supported. They're planned as a separate rule type in the future. For governing custom connectors and HTTP connectors today, continue using classic data policies.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 87,
-      "where": "Risk assessment: Security & identity; Governance controls",
-      "type": "applicability",
-      "claim": "Connector runtime policy enforcement uses the effective policy of the hosting environment.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/advanced-connector-policies",
-      "quote": "At runtime, when a connector operation is invoked, it queries the effective policy for the current hosting environment.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 88,
+      "n": 81,
       "where": "Risk assessment: Security & identity; Governance controls",
       "type": "behaviour",
-      "claim": "ACP design-time enforcement is rolling out to Copilot Studio after Power Automate.",
+      "claim": "ACP design-time enforcement is rolling out to Copilot Studio; until available there, enforcement is runtime-only.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/advanced-connector-policies",
-      "quote": "Design-time enforcement is rolling out across maker portals in the following order: ... Power Automate maker portal ... Copilot Studio ... Power Apps maker portal",
+      "quote": "Design-time enforcement is rolling out across maker portals in the following order: ... Copilot Studio — following Power Automate ... Until design-time support is available in a given maker portal, ACP operates as a runtime-only enforcement for that workload.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 89,
+      "n": 82,
       "where": "Risk assessment: Security & identity; Governance controls",
       "type": "behaviour",
-      "claim": "ACP enforcement is runtime-only for a workload until design-time support becomes available in its maker portal.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/advanced-connector-policies",
-      "quote": "Until design-time support is available in a given maker portal, ACP operates as a runtime-only enforcement for that workload.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 90,
-      "where": "Risk assessment: Security & identity; Governance controls",
-      "type": "behaviour",
-      "claim": "For Microsoft Copilot harness agents, tools, connectors, models and skills blocked by data policy or ACP appear disabled in their selection lists.",
+      "claim": "Tools, connectors, models and skills blocked by data policies or ACP appear disabled in harness-agent selection lists.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-status",
       "quote": "When a data policy or Advanced Connector Policy blocks a tool, connector, AI model, or skill, that item appears disabled wherever you'd normally select it, such as the tools list, model list, or skills list.",
@@ -1013,21 +925,10 @@
       "fix": null
     },
     {
-      "n": 91,
-      "where": "Risk assessment: Data exposure; Governance controls",
-      "type": "applicability",
-      "claim": "Work IQ MCP has a tenant-level policy control in the Microsoft 365 admin center.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
-      "quote": "In the initial release, Work IQ MCP provides tenant-level policy control. In the Microsoft 365 admin center, tenant administrators can turn Work IQ MCP policy on or off for the tenant.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 92,
-      "where": "Governance controls; Risk assessment: Data exposure",
+      "n": 83,
+      "where": "Risk assessment: Data exposure, Autonomy & actions; Governance controls",
       "type": "admin-path",
-      "claim": "The Work IQ MCP policy path is Microsoft 365 admin center > Agents > Tools > Work IQ MCP > Policy, when that tab is available.",
+      "claim": "Work IQ MCP policy settings are at Microsoft 365 admin center > Agents > Tools > Work IQ MCP > Policy when available.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
       "quote": "In the left navigation, select Agents > Tools. ... In the tools registry, select Work IQ MCP. ... On the Work IQ MCP details pane, select the Policy tab when it's available.",
@@ -1035,9 +936,42 @@
       "fix": null
     },
     {
-      "n": 93,
+      "n": 84,
+      "where": "Risk assessment: Data exposure; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Learn does not explicitly confirm that the Work IQ MCP tenant policy governs the inline agent node's Work IQ option.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"agent node\" \"Work IQ\" \"policy\". Read node page, Work IQ MCP policy governance and agents-experience/add-work-iq. They describe the node toggle and general Work IQ governance but do not explicitly map that inline-node option to the MCP policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 85,
+      "where": "Governance controls: agent monthly limits",
+      "type": "admin-path",
+      "claim": "Monthly agent limits are documented at Power Platform admin center > Licensing > Copilot Studio > Manage Agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness",
+      "quote": "In the Power Platform admin center, go to Licensing > Copilot Studio. ... Select Manage Agents. ... Select the agent, and then select Set limit. ... Enter the monthly Copilot Credit limit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 86,
+      "where": "Risk assessment: Data exposure; Governance controls",
+      "type": "behaviour",
+      "claim": "Work IQ MCP's initial policy control is tenant-level.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "In the initial release, Work IQ MCP provides tenant-level policy control. In the Microsoft 365 admin center, tenant administrators can turn Work IQ MCP policy on or off for the tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 87,
       "where": "Risk assessment: Autonomy & actions",
-      "type": "applicability",
+      "type": "behaviour",
       "claim": "Work IQ MCP policy can allow or deny specific MCP tool requests.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
@@ -1046,68 +980,24 @@
       "fix": null
     },
     {
-      "n": 94,
-      "where": "Risk assessment: Data exposure; Governance controls; Open questions",
+      "n": 88,
+      "where": "Governance controls: agent monthly limits",
       "type": "absence",
-      "claim": "Microsoft Learn does not explicitly establish that Work IQ MCP policy governs the inline agent node's Work IQ option.",
+      "claim": "Learn does not state that individual-agent monthly limits cap agent-node credit consumption inside a workflow.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"agent node\" \"Work IQ\" \"policy\". Opened the node article, Policy governance for Work IQ MCP and Work IQ in Copilot Studio. These describe the node option and general MCP governance but do not explicitly map that inline-node option to the MCP policy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 95,
-      "where": "Governance controls: monthly agent limits",
-      "type": "admin-path",
-      "claim": "Administrators can set monthly limits for individual agents under Power Platform admin center > Licensing > Copilot Studio > Manage Agents.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness",
-      "quote": "In the Power Platform admin center, go to Licensing > Copilot Studio. ... Select Manage Agents. ... Select the agent, and then select Set limit. ... Enter the monthly Copilot Credit limit.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 96,
-      "where": "Governance controls: monthly agent limits",
-      "type": "absence",
-      "claim": "Learn does not state that individual-agent monthly limits cap an agent node's consumption inside a workflow.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"agent node\" \"monthly\" \"limit\". Opened Manage costs for agents powered by the Microsoft Copilot harness and the node article; read Manage Copilot Credits and capacity search excerpts. No passage specifies a cap on inline-node consumption inside workflows.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 97,
-      "where": "Risk assessment: Security & identity; Open questions",
-      "type": "absence",
-      "claim": "The agent-node article does not specify whose credentials connector actions or attached SharePoint knowledge use.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"agent node\" workflow connector credentials SharePoint identity preview prerequisites. Read the full node article: it specifies the running user for Work IQ and connection owner for assistance emails, but not connector-action or attached-SharePoint execution credentials.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 98,
-      "where": "Why it matters",
-      "type": "applicability",
-      "claim": "Existing Copilot Studio and environment permissions control who can create agents, separately from spending controls.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness",
-      "quote": "Maker permissions and spending controls do different jobs, so you need both. ... To control who can create agents, use your existing Copilot Studio and environment permissions.",
+      "quote": "Searched: \"agent node\" monthly limits. Read manage-usage-github-copilot-harness and node page; search returned agent-limit guidance, not a node-specific cap. The separate standard-harness flow guidance does not establish a cap for this workflow node.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-17T14:05:58.287Z",
+    "at": "2026-11-18T06:52:46.590Z",
     "summary": {
-      "links": 12,
-      "unreachable": 0,
+      "links": 11,
+      "unreachable": 8,
       "uiPaths": 3,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 3,
       "apiCalls": 2,
       "apiCallsNotOnPage": 2,
       "roadmapDrift": 0
@@ -1120,28 +1010,13 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-node-workflow",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/flows-overview",
-        "ok": true,
-        "status": 200
-      },
-      {
-        "url": "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/flow-designer",
-        "ok": true,
-        "status": 200
-      },
-      {
-        "url": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-status",
-        "ok": true,
-        "status": 200
-      },
-      {
-        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview",
@@ -1150,13 +1025,18 @@
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/rest/api/power-platform/licensing/entitlement-insight/get-environment-resources",
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
@@ -1165,13 +1045,18 @@
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/advanced-connector-policies",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
-        "url": "https://learn.microsoft.com/rest/api/power-platform/licensing/entitlement-insight/get-environment-resources",
-        "ok": true,
-        "status": 200
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-status",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+        "ok": false,
+        "status": 429
       }
     ],
     "controlChecks": [
@@ -1180,21 +1065,26 @@
         "side": "ui",
         "governs": "Prepaid Copilot Credits per environment and whether it can draw from the tenant pool",
         "docs": "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Licensing",
           "Products",
           "Copilot Studio",
           "Manage Copilot Credits"
         ],
-        "missing": []
+        "missing": [
+          "Licensing",
+          "Products",
+          "Copilot Studio",
+          "Manage Copilot Credits"
+        ]
       },
       {
         "index": 0,
         "side": "api",
         "governs": "Prepaid Copilot Credits per environment and whether it can draw from the tenant pool",
         "docs": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations",
-        "reachable": true,
+        "reachable": false,
         "token": "api.powerplatform.com/licensing/allocationsV2",
         "found": false
       },
@@ -1203,19 +1093,22 @@
         "side": "ui",
         "governs": "Credit consumption by workflow and environment",
         "docs": "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/flows-overview",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Licensing",
           "Copilot Studio"
         ],
-        "missing": []
+        "missing": [
+          "Licensing",
+          "Copilot Studio"
+        ]
       },
       {
         "index": 1,
         "side": "api",
         "governs": "Credit consumption by workflow and environment",
         "docs": "https://learn.microsoft.com/rest/api/power-platform/licensing/entitlement-insight/get-environment-resources",
-        "reachable": true,
+        "reachable": false,
         "token": "api.powerplatform.com/licensing/entitlements/MCSMessages/environments/<environment",
         "found": false
       },
@@ -1224,7 +1117,7 @@
         "side": "ui",
         "governs": "Escalation to a person when the agent is unsure",
         "docs": "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-node-workflow",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Workflows",
           "workflow",
@@ -1232,48 +1125,18 @@
           "Add panel",
           "Request human assistance when unsure"
         ],
-        "missing": []
+        "missing": [
+          "Workflows",
+          "workflow",
+          "Build",
+          "Add panel",
+          "Request human assistance when unsure"
+        ]
       }
     ],
     "roadmapDrift": []
   },
   "history": [
-    {
-      "date": "2026-11-16",
-      "status": "held",
-      "version": 1,
-      "model": "none"
-    },
-    {
-      "date": "2026-11-16",
-      "status": "held",
-      "version": 1,
-      "model": "gpt-6.1-sol"
-    },
-    {
-      "date": "2026-11-17",
-      "status": "held",
-      "version": 2,
-      "model": "gpt-6.1-sol"
-    },
-    {
-      "date": "2026-11-17",
-      "status": "held",
-      "version": 3,
-      "model": "gpt-6.1-sol"
-    },
-    {
-      "date": "2026-11-17",
-      "status": "held",
-      "version": 5,
-      "model": "gpt-6.1-sol"
-    },
-    {
-      "date": "2026-11-17",
-      "status": "verified",
-      "version": 6,
-      "model": "gpt-6.1-sol"
-    },
     {
       "date": "2026-11-17",
       "status": "verified",
@@ -1296,6 +1159,54 @@
       "date": "2026-11-17",
       "status": "verified",
       "version": 10,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-17",
+      "status": "verified",
+      "version": 11,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-17",
+      "status": "verified",
+      "version": 12,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-18",
+      "status": "verified",
+      "version": 13,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-18",
+      "status": "verified",
+      "version": 14,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-18",
+      "status": "verified-with-gaps",
+      "version": 15,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-18",
+      "status": "verified",
+      "version": 16,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-18",
+      "status": "verified",
+      "version": 17,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-18",
+      "status": "verified",
+      "version": 18,
       "model": "gpt-6.1-sol"
     }
   ]

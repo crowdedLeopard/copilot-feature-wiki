@@ -2,38 +2,31 @@
   "slug": "power-automate-desktop-flows-debug-flows-using-variable-default-values",
   "roadmapId": 576784,
   "title": "Power Automate: debug desktop flows using variable default values",
-  "status": "held",
+  "status": "verified",
   "date": "2026-11-17",
-  "version": 1,
+  "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
-  "verifierVerdict": "hold",
+  "attempts": 0,
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-17",
-    "reasons": [
-      "4 blocking findings (claims 22, 27, 35, 41)",
-      "3 major findings"
-    ]
-  },
+  "hold": null,
   "counts": {
     "claims": 43,
-    "confirmed": 35,
-    "unconfirmed": 4,
-    "contradicted": 4,
-    "blocker": 4,
-    "major": 3,
-    "minor": 2
+    "confirmed": 43,
+    "unconfirmed": 0,
+    "contradicted": 0,
+    "blocker": 0,
+    "major": 0,
+    "minor": 0
   },
-  "summary": "The designer steps and roadmap details are supported, but the briefing overstates the absence of administrative controls and makes an unsupported assurance about permissions. Microsoft also documents variable default values contributing to the flow definition stored in Dataverse, so the storage question needs narrowing.",
+  "summary": "The briefing passes: its maker controls, local desktop-flow licensing and roadmap details are supported. Microsoft documents the warning about sensitive input defaults and their storage, while searches found no dedicated administrator switch or default-value API.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing; Scope; rationale: impact",
+      "where": "summary; What's changing; Scope; rationale: impact",
       "type": "behaviour",
-      "claim": "Makers can assign variable defaults in the desktop flow designer and start execution from a selected action using them.",
+      "claim": "Makers can define flow-variable defaults in the desktop flow designer and start execution at a selected action using them.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/desktop-flows/manage-variables",
       "quote": "Start execution from a selected action using the variables' default values (Run from here with default values).",
@@ -42,9 +35,9 @@
     },
     {
       "n": 2,
-      "where": "What's changing; Risk assessment: Change & support",
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "These capabilities help test scenarios without modifying actions or restarting the flow from the beginning.",
+      "claim": "Learn describes testing different scenarios without modifying actions or restarting the flow from the beginning.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/desktop-flows/manage-variables",
       "quote": "These capabilities help you test different scenarios without modifying actions or restarting the flow from the beginning.",
@@ -53,12 +46,12 @@
     },
     {
       "n": 3,
-      "where": "controls[0].ui; What's changing; Governance controls table",
+      "where": "controls[0].ui; What's changing; Governance controls",
       "type": "admin-path",
-      "claim": "The maker path is Power Automate for desktop > Variables pane > flow variable > Edit flow variable > Default value.",
+      "claim": "The maker path is Power Automate for desktop: Variables pane > flow variable > Edit flow variable > Default value.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/desktop-flows/manage-variables",
-      "quote": "Double-click a flow variable (or use its menu) to open **Edit flow variable**. [...] **Default value**: The value applied when running the flow with default values.",
+      "quote": "Double-click a flow variable (or use its menu) to open **Edit flow variable**.\n**Default value**: The value applied when running the flow with default values.",
       "severity": null,
       "fix": null
     },
@@ -75,9 +68,9 @@
     },
     {
       "n": 5,
-      "where": "What's changing; Governance guidance: At rollout; changes",
+      "where": "What's changing; Governance guidance: At rollout",
       "type": "admin-path",
-      "claim": "Right-clicking an action exposes Run from here with default values.",
+      "claim": "Right-clicking an action offers Run from here with default values, with shortcut Alt+F5.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/desktop-flows/manage-variables",
       "quote": "Right-click the action you want to start from.\n- Select **Run from here with default values** (Alt+F5).",
@@ -86,20 +79,9 @@
     },
     {
       "n": 6,
-      "where": "What's changing; Governance guidance: At rollout",
-      "type": "behaviour",
-      "claim": "Alt+F5 is the shortcut for Run from here with default values.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/desktop-flows/manage-variables",
-      "quote": "Select **Run from here with default values** (Alt+F5).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The separately documented Run from here command starts at the selected action and ignores previous actions.",
+      "claim": "The separate Run from here command starts at the selected action and ignores previous actions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/desktop-flows/debugging-flow",
       "quote": "To run the flow starting from a specific action, right-click the action and select **Run from here**. This ignores all previous actions and runs the flow from the selected action onwards.",
@@ -107,21 +89,21 @@
       "fix": null
     },
     {
-      "n": 8,
-      "where": "What's changing; Scope; summary",
+      "n": 7,
+      "where": "What's changing; Scope: Who",
       "type": "record",
-      "claim": "The roadmap says the feature is enabled automatically for admins, makers and marketers without an administrator enabling it.",
+      "claim": "The roadmap says the feature is enabled automatically for admins, makers and marketers.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "The feature is enabled automatically. [...] Enabled for admins/makers/marketers automatically",
+      "quote": "Enabled for admins/makers/marketers automatically",
       "severity": null,
       "fix": null
     },
     {
-      "n": 9,
-      "where": "What's changing; Risk assessment: Change & support; Governance guidance: Before rollout",
+      "n": 8,
+      "where": "What's changing; Risk assessment: Change & support",
       "type": "record",
-      "claim": "The roadmap says these defaults apply only during debug runs.",
+      "claim": "The roadmap says the default value is applied only during debug runs.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "The value is applied only during debug runs and does not affect production executions.",
@@ -129,7 +111,7 @@
       "fix": null
     },
     {
-      "n": 10,
+      "n": 9,
       "where": "What's changing; rationale: impact",
       "type": "record",
       "claim": "The roadmap says production executions are unaffected.",
@@ -140,10 +122,10 @@
       "fix": null
     },
     {
-      "n": 11,
+      "n": 10,
       "where": "controls[0].note; What's changing; Governance controls",
       "type": "record",
-      "claim": "Clearing a variable's default value disables the behaviour and restores standard handling.",
+      "claim": "The roadmap says clearing a default disables the behaviour and restores standard variable handling.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "You can disable the behavior at any time by clearing the default value, restoring standard variable handling.",
@@ -151,7 +133,7 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 11,
       "where": "front matter: status; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap status is Launched.",
@@ -162,10 +144,10 @@
       "fix": null
     },
     {
-      "n": 13,
+      "n": 12,
       "where": "front matter: targetDate; What's changing; Scope",
       "type": "record",
-      "claim": "The target is June CY2026.",
+      "claim": "The roadmap target date is June CY2026.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"targetDate\": \"June CY2026\"",
@@ -173,318 +155,43 @@
       "fix": null
     },
     {
-      "n": 14,
+      "n": 13,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
-      "claim": "The release phase is General Availability.",
+      "claim": "The roadmap release phase is General Availability.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"releasePhase\": [ \"General Availability\" ]",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
       "severity": null,
       "fix": null
     },
     {
       "n": 15,
-      "where": "front matter: clouds; What's changing; Scope",
+      "where": "front matter: platforms; What's changing; Scope; Open questions",
       "type": "record",
-      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed on this roadmap item.",
+      "claim": "The roadmap platform label is Web.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"clouds\": [ \"Worldwide (Standard Multi-Tenant)\" ]",
+      "quote": "\"platforms\": [\"Web\"]",
       "severity": null,
       "fix": null
     },
     {
       "n": 16,
-      "where": "front matter: platforms; What's changing; Scope; Open questions",
-      "type": "record",
-      "claim": "The roadmap platform label is Web, although the documented feature is in the desktop designer.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [ \"Web\" ]; assign default values to variables directly within the desktop flow designer.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "What's changing; Scope; Governance guidance: At rollout; Open questions",
-      "type": "absence",
-      "claim": "Microsoft Learn does not give a minimum version specifically for Run from here with default values.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Run from here with default values\" \"version\"; \"Run from here with default values\" \"prerequisites\". Opened Manage variables and the variables pane and Debug a desktop flow; neither states this command's minimum version.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "front matter: defaultState; Why it matters",
-      "type": "default",
-      "claim": "The user-opt-in classification describes makers choosing a default and choosing the run-with-defaults command.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "The feature is enabled automatically. To use it, edit a variable in the designer and define a default value for debugging.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "controls[1].ui and api; summary; Why it matters; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "No dedicated tenant or environment UI switch or API for this debugging feature is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Automate desktop variable default values Power Platform admin policy disable registry; Power Automate desktop flow variable default values API Dataverse workflow clientdata pac powershell. Opened manage-variables, governance, and developer/desktop-flow-public-apis.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "controls[0].api; Governance controls table",
-      "type": "absence",
-      "claim": "No API equivalent for configuring a flow variable's debug default value is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Automate desktop flow variable default values API Dataverse workflow clientdata pac powershell; Power Automate desktop \"default values\" \"pac\" \"PowerShell\". Opened manage-variables and developer/desktop-flow-public-apis; no debug-default setter documented.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "Why it matters; Risk assessment: Data exposure; Governance controls",
-      "type": "behaviour",
-      "claim": "Sensitive input variable default values are not protected in action modals or the flow definition in Dataverse.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/desktop-flows/manage-variables",
-      "quote": "The default values aren't protected in the action modals and the flow definition in Dataverse.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "Why it matters; Risk assessment: Data exposure; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not stated whether flow-variable defaults are stored with the flow definition in Dataverse.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/power-automate/desktop-flows/schema",
-      "quote": "The limit applies to the definition of the desktop flow saved in Dataverse, which can't exceed 16M characters. The issue can occur with a large desktop flow, such as when actions have large property values or variables have large default values.",
-      "severity": "blocker",
-      "fix": "Replace the storage-absence statements with: 'For desktop flows saved in Dataverse using v2 schema, Microsoft documents variable default values as contributing to the stored flow definition.' Cite https://learn.microsoft.com/power-automate/desktop-flows/schema. Narrow the open question to protection of flow-variable debug defaults when marked sensitive."
-    },
-    {
-      "n": 23,
-      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout; Governance controls",
-      "type": "admin-path",
-      "claim": "Mark as sensitive in Edit flow variable masks the variable value in the designer UI.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/desktop-flows/manage-variables",
-      "quote": "**Mark as sensitive**: Masks the variable value in the UI.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Masking during debugging provides basic protection against someone looking at the screen.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/desktop-flows/manage-variables",
-      "quote": "Masking sensitive variables during debugging provides only a basic form of protection to developers from third parties looking at their screens.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "Risk assessment: Security & identity",
-      "type": "behaviour",
-      "claim": "The feature does not add a connection.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: \"Run from here with default values\" license permission connection storage. Opened manage-variables, debugging-flow and developer/desktop-flow-public-apis; none explicitly states this connection assurance.",
-      "severity": "major",
-      "fix": "Remove 'connection' from the assurance, or replace the whole sentence with 'The roadmap describes a designer-side debugging capability.'"
-    },
-    {
-      "n": 26,
-      "where": "Risk assessment: Security & identity",
-      "type": "behaviour",
-      "claim": "The feature does not add an identity.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: \"Run from here with default values\" license permission connection storage. Opened manage-variables, debugging-flow and developer/desktop-flow-public-apis; no passage specifies an unchanged identity model for this feature.",
-      "severity": "major",
-      "fix": "Remove 'identity' from the assurance, or replace the whole sentence with 'The roadmap describes a designer-side debugging capability.'"
-    },
-    {
-      "n": 27,
-      "where": "Risk assessment: Security & identity",
-      "type": "role",
-      "claim": "The feature does not add a permission.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: \"Run from here with default values\" license permission connection storage. Opened manage-variables, governance and developer/desktop-flow-public-apis; no passage states this feature needs no additional permissions.",
-      "severity": "blocker",
-      "fix": "Remove the assurance about permissions; replace the whole sentence with 'The roadmap describes a designer-side debugging capability.'"
-    },
-    {
-      "n": 28,
-      "where": "Risk assessment: Security & identity",
-      "type": "applicability",
-      "claim": "Existing desktop-flow access controls govern who can open and edit a flow.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/guidance/desktop-flow-coding-guidelines/secure-your-data",
-      "quote": "To enable other makers to manage your flow and collaborate on it, share it with them with **Co-owner access**.",
-      "severity": "minor",
-      "fix": "Add https://learn.microsoft.com/power-automate/guidance/desktop-flow-coding-guidelines/secure-your-data to sources for the existing flow-access claim."
-    },
-    {
-      "n": 29,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "Run from here with default values executes the flow from the selected action in the designer.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/desktop-flows/manage-variables",
-      "quote": "The flow runs from that action using the configured defaults.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "The actions after the chosen step still run against real systems and can write to them.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: Power Automate desktop debug run actions real data test environment updates production; \"Power Automate\" \"debugging\" \"production\" \"data\". Opened manage-variables and debugging-flow; neither explicitly describes target-system writes for this command.",
-      "severity": "major",
-      "fix": "Replace the sentence with advice: 'Before testing mid-flow, confirm which systems the remaining actions target and whether those actions can write data.'"
-    },
-    {
-      "n": 31,
-      "where": "Risk assessment: Change & support",
-      "type": "behaviour",
-      "claim": "A separate Microsoft Learn walkthrough instructs makers to delete default values before leaving the authoring experience.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/guidance/rpa-sap-playbook/getting-ready-to-debug",
-      "quote": "Delete all default values before you leave the desktop flow authoring experience in Power Automate Desktop.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
-      "where": "Risk assessment: Change & support",
-      "type": "behaviour",
-      "claim": "The cited page lists one known issue: flows built or edited with version 2.14 or above cannot be opened or run with older versions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/desktop-flows/manage-variables",
-      "quote": "Flows built or edited with Power Automate for desktop version 2.14 or above are incompatible with older versions of Power Automate for desktop. You can't use older versions of Power Automate for desktop to open or run these flows.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "The feature's Manage variables page and the roadmap record name no licence, meter or charge for this feature.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Automate desktop local attended debugging designer licensing free premium requirements; \"Run from here with default values\" license permission connection storage. Read the full Manage variables page and roadmap record; neither names feature-specific licensing or billing.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
-      "where": "front matter: licensing.model; Cost and licensing",
-      "type": "absence",
-      "claim": "A separate licensing statement for this debugging feature is not published, so its feature-specific licensing model is unknown.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Automate desktop local attended debugging designer licensing free premium requirements. Read Manage variables and Learn excerpts from licensing/faqs, licensing/types, desktop-flows/requirements and premium-features; no separate debug-default licence stated.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
-      "where": "Governance controls",
-      "type": "consistency",
-      "claim": "Both controls rows are maker-side.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Both rows are maker-side. / governs: \"Tenant or environment switch for variable default values in debug runs\"; scope: \"tenant\"",
-      "severity": "blocker",
-      "fix": "Replace 'Both rows are maker-side.' with 'The documented default-value setting is maker-side; the second row records the absence of a dedicated tenant or environment switch.'"
-    },
-    {
-      "n": 36,
-      "where": "rationale: risk",
-      "type": "absence",
-      "claim": "Microsoft Learn documents no new data access introduced by this designer capability.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Run from here with default values\" license permission connection storage; Power Automate desktop debug run actions real data test environment updates production. Opened manage-variables and debugging-flow; neither documents new data-access permissions for this feature.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "Risk assessment: Data exposure; rationale: risk",
-      "type": "behaviour",
-      "claim": "A default value may remain in the saved flow definition.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/desktop-flows/manage-variables",
-      "quote": "The default values aren't protected in the action modals and the flow definition in Dataverse.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "Governance guidance: Before rollout; controls",
-      "type": "consistency",
-      "claim": "The checklist tells readers to check sensitive-variable masking, but the controls table has no masking row.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Check that makers know to mark variables holding secrets as sensitive in the **Edit flow variable** dialog. / Controls rows cover variable defaults and an undocumented tenant or environment switch.",
-      "severity": "minor",
-      "fix": "Remove the checklist bullet 'Check that makers know to mark variables holding secrets as sensitive in the **Edit flow variable** dialog.' The risk assessment can retain its documented masking explanation."
-    },
-    {
-      "n": 39,
-      "where": "Open questions; Risk assessment: Data exposure",
-      "type": "absence",
-      "claim": "Protection of this feature's flow-variable debug defaults when marked sensitive is not specifically documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Run from here with default values\" license permission connection storage; Power Automate desktop flow variable default values API Dataverse workflow clientdata pac powershell. Read manage-variables and schema; explicit default-value protection warning concerns input variables.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "Scope: Rollout and prerequisites",
-      "type": "absence",
-      "claim": "No other prerequisite specific to this debugging feature is named on Microsoft Learn.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Run from here with default values\" \"prerequisites\". Read manage-variables and debugging-flow; neither gives feature-specific prerequisites. General desktop-flow and schema requirements are distinct from a prerequisite specific to this command.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "Governance controls; Why it matters",
-      "type": "applicability",
-      "claim": "The maker's choice is the only brake and there is nothing for an administrator to approve or block.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/power-automate/desktop-flows/governance",
-      "quote": "To restrict access to Power Automate for desktop on a workstation with Windows 10 or Windows 11, use AppLocker.",
-      "severity": "blocker",
-      "fix": "Replace 'so there is nothing for an administrator to approve or block' with 'so no feature-specific administrator enablement is documented'. Replace 'so the only brake is the maker's own choice to set a default value' with 'the documented feature-specific choice is the maker setting a default value'."
-    },
-    {
-      "n": 42,
       "where": "front matter: previewDate",
       "type": "record",
-      "claim": "No preview date is supplied.",
+      "claim": "The roadmap supplies no preview date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": null",
@@ -492,21 +199,307 @@
       "fix": null
     },
     {
-      "n": 43,
-      "where": "front matter: roadmapModified",
+      "n": 17,
+      "where": "What's changing; Scope; Governance guidance: At rollout; Open questions",
+      "type": "absence",
+      "claim": "Learn does not identify a minimum desktop version specifically for Run from here with default values.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Automate \"Run from here with default values\" version prerequisites. Opened https://learn.microsoft.com/power-automate/desktop-flows/manage-variables and /desktop-flows/schema; neither identifies this feature's minimum version.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Scope: Rollout and prerequisites",
+      "type": "absence",
+      "claim": "Learn names no other prerequisite specific to this default-value debugging feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Automate \"Run from here with default values\" version prerequisites. Opened https://learn.microsoft.com/power-automate/desktop-flows/manage-variables; no feature-specific prerequisites are listed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "front matter: defaultState",
+      "type": "default",
+      "claim": "The user-opt-in classification fits a designer capability each maker chooses to use.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/manage-variables",
+      "quote": "Right-click the action you want to start from.\n- Select **Run from here with default values** (Alt+F5).\n\nThe flow runs from that action using the configured defaults.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[0].api; Governance controls table",
+      "type": "absence",
+      "claim": "No API or automation equivalent for setting flow-variable debug defaults is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Dataverse Web API workflow desktopflowbinary variable default value edit desktop flow; \"desktop flows\" \"default values\" \"pac\". Opened https://learn.microsoft.com/power-automate/developer/desktop-flow-public-apis and manage-variables; no matching write operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[1]; summary; Why it matters; Governance guidance; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "As of November 2026, no dedicated tenant or environment switch or API for this debugging feature is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Platform admin center disable desktop flow debugging variable default values tenant setting PowerShell API. Opened https://learn.microsoft.com/power-platform/admin/tenant-settings and https://learn.microsoft.com/power-platform/admin/settings-features; no dedicated switch found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "summary; Why it matters",
       "type": "record",
-      "claim": "The roadmap modification timestamp is 2026-10-16T19:09:02.",
+      "claim": "No feature-specific administrator enablement action is needed.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"modified\": \"2026-10-16T19:09:02\"",
+      "quote": "The feature is enabled automatically. To use it, edit a variable in the designer and define a default value for debugging.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Why it matters",
+      "type": "default",
+      "claim": "Using the new default-value debugging behaviour requires a maker's choice rather than an automatic run.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/manage-variables",
+      "quote": "Right-click the action you want to start from.\n- Select **Run from here with default values** (Alt+F5).\n\nThe flow runs from that action using the configured defaults.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Why it matters; Risk assessment: Data exposure; Open questions; Governance controls",
+      "type": "behaviour",
+      "claim": "Defaults of sensitive input variables are not protected in action modals or the flow definition in Dataverse.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/manage-variables",
+      "quote": "The default values aren't protected in the action modals and the flow definition in Dataverse.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Why it matters; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "For desktop flows saved using v2 schema, variable default values contribute to the stored Dataverse flow definition.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/schema",
+      "quote": "The limit applies to the definition of the desktop flow saved in Dataverse, which can't exceed 16M characters. The issue can occur with a large desktop flow, such as when actions have large property values or variables have large default values.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Data exposure; Governance controls",
+      "type": "behaviour",
+      "claim": "Marking a flow variable as sensitive is a separate maker setting that masks its value in the designer UI.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/manage-variables",
+      "quote": "**Mark as sensitive**: Masks the variable value in the UI.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Learn describes sensitive-variable masking during debugging as basic protection against screen observers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/manage-variables",
+      "quote": "Masking sensitive variables during debugging provides only a basic form of protection to developers from third parties looking at their screens.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "Existing desktop-flow sharing governs collaborators' ability to open and edit a flow.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/guidance/desktop-flow-coding-guidelines/secure-your-data",
+      "quote": "To enable other makers to manage your flow and collaborate on it, share it with them with **Co-owner access**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "A Learn debugging walkthrough tells makers to delete default values before leaving the authoring experience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/guidance/rpa-sap-playbook/getting-ready-to-debug",
+      "quote": "Delete all default values before you leave the desktop flow authoring experience in Power Automate Desktop.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The feature page lists a known issue that flows built or edited with version 2.14 or later cannot be opened or run with older versions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/manage-variables",
+      "quote": "Flows built or edited with Power Automate for desktop version 2.14 or above are incompatible with older versions of Power Automate for desktop. You can't use older versions of Power Automate for desktop to open or run these flows.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Power Automate Free includes local desktop-flow authoring.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/power-automate-licensing/types",
+      "quote": "The Power Automate Free license includes creating and running cloud flows (without sharing), as well as authoring and running desktop flows locally (attended).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Power Automate Free includes running desktop flows locally in attended mode.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/power-automate-licensing/types",
+      "quote": "The Power Automate Free license includes creating and running cloud flows (without sharing), as well as authoring and running desktop flows locally (attended).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Power Automate Free connector usage is limited to standard connectors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/power-automate-licensing/types",
+      "quote": "Connector usage is limited to standard connectors only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Users cannot share flows using the Free licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/power-automate-licensing/deep-dive-on-specific-license",
+      "quote": "You can't share flows when you use the Free license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "A Free user lacks entitlement to create a desktop flow in a non-default environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/power-automate-licensing/deep-dive-on-specific-license",
+      "quote": "when a Power Automate Free user tries to create a desktop flow in a non-default environment (which operation they don't have entitlement for)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "A Free user attempting desktop-flow creation in a non-default environment is prompted to start a Trial.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/power-automate-licensing/deep-dive-on-specific-license",
+      "quote": "when a Power Automate Free user tries to create a desktop flow in a non-default environment (which operation they don't have entitlement for), the user is prompted to start a Trial",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The included licensing model is supported for the local authoring and attended execution scope stated in the notes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/power-automate-licensing/types",
+      "quote": "The Power Automate Free license includes creating and running cloud flows (without sharing), as well as authoring and running desktop flows locally (attended).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The feature's Manage variables page names no separate feature licence.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Run from here with default values\" license data access. Read https://learn.microsoft.com/power-automate/desktop-flows/manage-variables and licensing/types; the feature page names no separate licence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The feature's Manage variables page names no separate meter or charge.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Run from here with default values\" license data access. Read https://learn.microsoft.com/power-automate/desktop-flows/manage-variables and https://learn.microsoft.com/power-platform/admin/power-automate-licensing/types; no feature-specific meter or charge stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The roadmap description names no licence requirement.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: licence, license, licensing in the supplied roadmap record. Read its complete description; it discusses debugging, automatic enablement and maker benefits, without naming a licence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The roadmap description names no meter or charge.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: meter, charge, price, cost in the supplied roadmap record. Read its complete description; no billing meter or charge is stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "rationale: risk",
+      "type": "absence",
+      "claim": "Learn documents no new data access introduced by this debugging capability.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Run from here with default values\" license data access. Read https://learn.microsoft.com/power-automate/desktop-flows/manage-variables and guidance/desktop-flow-coding-guidelines/secure-your-data; no new feature-specific data access is described.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "front matter: cost; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Low cost is consistent with the documented free local authoring and attended execution entitlement and the stated indirect training work.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/power-automate-licensing/types",
+      "quote": "Using basic Power Automate capabilities is included at no cost for work or school accounts in a Microsoft Entra tenant.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-17T14:05:55.974Z",
+    "at": "2026-11-17T22:07:06.333Z",
     "summary": {
-      "links": 4,
+      "links": 8,
       "unreachable": 0,
       "uiPaths": 1,
       "uiPathsWithMissingWords": 0,
@@ -534,6 +527,26 @@
         "url": "https://learn.microsoft.com/power-automate/guidance/rpa-sap-playbook/getting-ready-to-debug",
         "ok": true,
         "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-automate/desktop-flows/schema",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-automate/guidance/desktop-flow-coding-guidelines/secure-your-data",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/power-automate-licensing/types",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/power-automate-licensing/deep-dive-on-specific-license#power-automate-free-license",
+        "ok": true,
+        "status": 200
       }
     ],
     "controlChecks": [
@@ -554,5 +567,18 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-17",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-17",
+      "status": "held",
+      "version": 2,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

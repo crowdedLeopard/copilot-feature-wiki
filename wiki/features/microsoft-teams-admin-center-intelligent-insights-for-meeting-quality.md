@@ -5,7 +5,7 @@ roadmapId: 574108
 topic: "modern-work"
 products: ["Microsoft Teams"]
 summary: "The Teams admin center gains daily AI insights that flag locations and public IPs with unusual meeting quality, with likely causes and actions. Nothing to configure; the listed admin roles see it."
-status: "in-development"
+status: "rolling-out"
 releasePhase: ["General Availability","Targeted Release"]
 clouds: ["Worldwide (Standard Multi-Tenant)","GCC"]
 platforms: ["Web"]
@@ -25,14 +25,11 @@ sources:
   - title: "Microsoft 365 Roadmap 574108"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=574108"
     kind: "roadmap"
-  - title: "MC1523077: Teams admin center - Intelligent insights for meeting quality"
-    url: "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1523077"
-    kind: "message-center"
   - title: "Monitor and troubleshoot Teams meetings and calls from the Teams admin center"
     url: "https://learn.microsoft.com/microsoftteams/monitor-troubleshoot-teams-meetings-calls"
     kind: "learn"
-  - title: "Use Microsoft Teams administrator roles to manage Teams"
-    url: "https://learn.microsoft.com/microsoftteams/using-admin-roles"
+  - title: "Best practice configurations dashboard for Microsoft Teams meetings"
+    url: "https://learn.microsoft.com/microsoftteams/best-practice-dashboard"
     kind: "learn"
   - title: "Assign user roles with Microsoft Entra ID"
     url: "https://learn.microsoft.com/entra/fundamentals/users-assign-role-azure-portal"
@@ -40,9 +37,9 @@ sources:
   - title: "Create unifiedRoleAssignment"
     url: "https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments"
     kind: "learn"
-  - title: "Best practice configurations dashboard for Microsoft Teams meetings"
-    url: "https://learn.microsoft.com/microsoftteams/best-practice-dashboard"
-    kind: "learn"
+  - title: "MC1523077: Teams admin center - Intelligent insights for meeting quality"
+    url: "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1523077"
+    kind: "message-center"
 videos: []
 related: []
 controls:
@@ -73,7 +70,7 @@ controls:
 confidence: "medium"
 created: "2026-11-16"
 updated: "2026-11-17"
-roadmapModified: "2026-10-15T22:47:30"
+roadmapModified: "2026-11-17T18:36:41"
 changes:
   - date: "2026-11-16"
     note: "New briefing: Teams admin center AI insights for meeting quality, rolling out from mid-November 2026 per MC1523077."
@@ -83,19 +80,23 @@ changes:
     note: "Corrected the Graph role requirement: Privileged Role Administrator is the least privileged supported role, a custom role is also supported, and RoleManagement.ReadWrite.Directory is required."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 64 statements confirmed"
-version: 3
+  - date: "2026-11-17"
+    note: "Roadmap status is now Rolling out (previously In development); the page is otherwise unchanged and a claim about the Teams Communications Support Specialist role was removed."
+  - date: "2026-11-17"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 74 statements confirmed"
+version: 4
 verification:
   status: "verified"
   date: "2026-11-17"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 64
-  confirmed: 64
+  claims: 74
+  confirmed: 74
   unconfirmed: 0
   contradicted: 0
   attempts: 0
-  hash: "1a5dc4ae69b0103e192681c6f86fcca8"
+  hash: "c00220a711d6fabe281ef779daacdd41"
 ---
 
 ## What's changing
@@ -104,7 +105,7 @@ Microsoft is adding AI-powered meeting-quality insights to the Teams admin cente
 
 Microsoft's notice MC1523077 (published 2026-10-23) says administrators find the insights at Teams admin center > Meetings > Meetings, as enhancements to the meeting and call troubleshooting flow. Insights are refreshed daily and use machine learning to evaluate what counts as anomalous, so administrators do not need to configure thresholds. Likely causes are grouped as network (bandwidth, Wi-Fi, VPN, proxy), compute (CPU, memory, client) and devices (microphones, cameras, speakers), and administrators can review the affected users and supporting evidence. The notice says the insights use meeting data across the tenant and supported clients and platforms, and do not include telemetry from SIP phones or from PSTN and peer-to-peer calls.
 
-The roadmap item (status In development, target November CY2026, General Availability and Targeted Release, Worldwide and GCC, Web) is a plan. The notice gives the rollout window: Worldwide from mid-November 2026, expected to complete by early December 2026; GCC from mid-November 2026, expected to complete by mid-December 2026. At the time of writing (November 2026) Microsoft Learn has no page for these insights. The Learn page on the existing meeting troubleshooting experience is background only, not a description of this feature.
+The roadmap item (status Rolling out, target November CY2026, General Availability and Targeted Release, Worldwide and GCC, Web) gives the target as a plan. The notice gives the rollout window: Worldwide from mid-November 2026, expected to complete by early December 2026; GCC from mid-November 2026, expected to complete by mid-December 2026. At the time of writing (November 2026) Microsoft Learn has no page for these insights. The Learn page on the existing meeting troubleshooting experience is background only, not a description of this feature.
 
 ## Why it matters
 
@@ -119,7 +120,7 @@ Nothing has to be done for it to appear, and the notice says no configuration is
 - For the existing troubleshooting experience, Learn says identifiable information for federated and external participants is obfuscated, except for peer-to-peer calls, where relevant identifiable information is not obfuscated. The notice excludes peer-to-peer telemetry from the insights; Learn does not say how the insights treat external participants.
 
 **Security & identity**
-- Access follows admin roles: the notice lists Global Administrators, Teams Administrators, Teams Communications Administrators, Teams Communications Support Engineers and Teams Communications Support Specialists. Teams Reader is not listed. Learn describes Teams Communications Support Specialist as a basic-tools role that can only view user information for the specific user being searched for, so check what that role sees in the new view.
+- Access follows admin roles: the notice lists Global Administrators, Teams Administrators, Teams Communications Administrators, Teams Communications Support Engineers and Teams Communications Support Specialists. Teams Reader is not listed.
 - No new identity, permission or consent is described.
 
 **Autonomy & actions**
@@ -176,17 +177,17 @@ No meter, spending cap or budget control is documented for these insights at the
 </tbody>
 </table>
 
-At the time of writing (November 2026), searches of Microsoft Learn found no tenant switch, policy or PowerShell setting for the insights, which is consistent with the notice saying no configuration is required. The only documented lever is who holds the admin roles, assigned in Microsoft Entra ID; the role-assignment steps are general and not specific to this feature. The Entra admin center steps on Learn are written for a signed-in Privileged Role Administrator. For delegated Graph access, Privileged Role Administrator is the least-privileged supported built-in role; a custom role granting the required permissions is also supported. The API requires RoleManagement.ReadWrite.Directory for delegated or application access.
+Microsoft Learn documents no tenant switch, policy or PowerShell setting for the insights at the time of writing (November 2026), which is consistent with the notice saying no configuration is required. The only documented lever is who holds the admin roles, assigned in Microsoft Entra ID; the role-assignment steps are general and not specific to this feature. The Entra admin center steps on Learn are written for a signed-in Privileged Role Administrator. For delegated Graph access, Privileged Role Administrator is the least privileged supported role; a custom role granting the required permissions is also supported. The API requires RoleManagement.ReadWrite.Directory for delegated or application access.
 
-Learn says Teams admin roles can be scoped to selected users or groups with administrative units, and that for the existing troubleshooting experience the assignment determines which users' meetings an administrator can access. It does not say whether the insights follow that scoping. The best practice configurations dashboard is a separate, existing location-based view and does not control the insights.
+Learn says that for the existing troubleshooting experience an administrator's Administrative Unit assignment determines which users' meetings they can access. It does not say whether the insights follow that scoping. The best practice configurations dashboard is a separate, existing location-based view and does not control the insights.
 
 ## Open questions
 
 - Which licence, if any, do the insights need, and is any data depth or retention tied to Teams Premium or Teams Rooms Pro as it is for the existing troubleshooting data? Watch Message center and the Teams admin center pages on Learn.
 - Is there a tenant or role-level switch to turn the insights off? None is documented at the time of writing.
-- Do administrative unit scopes limit which locations, public IPs and affected users an administrator sees in the insights?
+- Do Administrative Unit scopes limit which locations, public IPs and affected users an administrator sees in the insights?
 - Does Teams Reader, which the notice does not list, see the insights?
-- The roadmap record still shows In development while MC1523077 gives a rollout starting mid-November 2026; when does the record move to Rolling out?
+- MC1523077 gives a rollout window ending early December 2026 (Worldwide) and mid-December 2026 (GCC); when does your tenant receive it, and will Microsoft publish a Learn page for the insights?
 
 <!-- rationale
 risk: Low. Microsoft's notice MC1523077 says the insights analyse historical meeting-quality data and does not say they change how customer data is stored or processed; only admins in listed roles see them.

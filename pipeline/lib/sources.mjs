@@ -87,26 +87,40 @@ export async function fetchSource(url, { fetchImpl = fetch, timeoutMs = 20_000 }
   } finally { clearTimeout(timer); }
 }
 
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
 /**
  * Re-read the cited pages and update the store in place. `cited` is Map url → Set of slugs. Entries for URLs no page
  * cites any more are dropped. The first reading of a URL is a baseline, not a change. Returns the run's summary.
+ *
+ * The step runs with every curation run (ten or more a day), and Microsoft Learn answers HTTP 429 to a client that
+ * re-reads hundreds of pages several times a day (17 Nov 2026: 581 of 743 pages). So a page read successfully today
+ * is not read again today, requests are paced (`pauseMs` between them in each worker), and after
+ * `stopAfterRateLimited` 429 answers in a row the run stops and leaves the rest for the next run; a page that could
+ * not be read keeps its earlier `checkedAt`, so it comes first next time.
  */
-export async function watch(store, cited, { fetchImpl = fetch, concurrency = 4, limit = 800, date = new Date().toISOString().slice(0, 10), timeoutMs } = {}) {
+export async function watch(store, cited, { fetchImpl = fetch, concurrency = 4, limit = 800, date = new Date().toISOString().slice(0, 10), timeoutMs, pauseMs = 150, stopAfterRateLimited = 8 } = {}) {
   store.sources ||= {};
   for (const url of Object.keys(store.sources)) if (!cited.has(url)) delete store.sources[url];
+  for (const [url, slugs] of cited) if (store.sources[url]) store.sources[url].pages = [...slugs].sort();
+  const due = [...cited.keys()].filter((url) => { const s = store.sources[url]; return !(s?.checkedAt === date && s.hash && !s.error); });
+  const readToday = cited.size - due.length;
   // Never-read pages first, then the ones read longest ago, so a cap still moves the whole set along.
-  const order = [...cited.keys()].sort((a, b) => (store.sources[a]?.checkedAt || '').localeCompare(store.sources[b]?.checkedAt || '') || a.localeCompare(b)).slice(0, Math.max(0, limit));
+  const order = due.sort((a, b) => (store.sources[a]?.checkedAt || '').localeCompare(store.sources[b]?.checkedAt || '') || a.localeCompare(b)).slice(0, Math.max(0, limit));
   const changed = [], unreachable = [], affected = new Set();
-  let index = 0, fetched = 0, baselines = 0;
+  let index = 0, fetched = 0, baselines = 0, rateLimited = 0, inARow = 0, stopped = false;
   async function worker() {
-    while (index < order.length) {
+    while (!stopped && index < order.length) {
       const url = order[index++];
       const entry = store.sources[url] || { firstSeen: date, pages: [] };
       entry.pages = [...cited.get(url)].sort();
       const state = await fetchSource(url, { fetchImpl, timeoutMs });
       fetched++;
+      if (state.status === 429) { rateLimited++; if (++inARow >= stopAfterRateLimited) stopped = true; } else inARow = 0;
+      if (pauseMs) await sleep(pauseMs);
+      if (!state.hash) { entry.status = state.status; entry.error = state.error || `HTTP ${state.status}`; entry.failedAt = date; unreachable.push(url); store.sources[url] = entry; continue; }
       entry.checkedAt = date;
-      if (!state.hash) { entry.status = state.status; entry.error = state.error || `HTTP ${state.status}`; unreachable.push(url); store.sources[url] = entry; continue; }
+      delete entry.failedAt;
       if (!entry.hash) baselines++;
       else if (hasChanged(entry, state)) {
         entry.previous = { msDate: entry.msDate, hash: entry.hash, seenAt: entry.changedAt || entry.firstSeen };
@@ -121,5 +135,6 @@ export async function watch(store, cited, { fetchImpl = fetch, concurrency = 4, 
   }
   await Promise.all(Array.from({ length: Math.max(1, Math.min(concurrency, order.length)) }, worker));
   store.generated = new Date().toISOString();
-  return { cited: cited.size, fetched, baselines, changed, unreachable, affected: [...affected].sort(), skipped: Math.max(0, cited.size - order.length) };
+  const left = stopped ? order.length - index : 0;
+  return { cited: cited.size, fetched, baselines, changed, unreachable, affected: [...affected].sort(), skipped: Math.max(0, due.length - order.length), readToday, rateLimited, stopped, left };
 }

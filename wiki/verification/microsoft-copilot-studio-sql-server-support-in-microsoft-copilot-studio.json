@@ -1,0 +1,906 @@
+{
+  "slug": "microsoft-copilot-studio-sql-server-support-in-microsoft-copilot-studio",
+  "roadmapId": 568930,
+  "title": "Copilot Studio: Azure SQL tables and views as an agent knowledge source",
+  "status": "held",
+  "date": "2026-11-18",
+  "version": 2,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 2,
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-18",
+    "reasons": [
+      "2 blocking findings (claims 57, 58)"
+    ]
+  },
+  "counts": {
+    "claims": 67,
+    "confirmed": 64,
+    "unconfirmed": 0,
+    "contradicted": 3,
+    "blocker": 2,
+    "major": 0,
+    "minor": 2
+  },
+  "summary": "The roadmap facts, Azure SQL setup instructions and consumption-based licensing are supported. The credit-control instructions omit Microsoft's warning that an environment group rule can lock the tenant-capacity setting: neither the environment UI nor the API can override it. The cited pages opened successfully; the pre-check's HTTP 429 responses did not establish missing documentation.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "What's changing; summary",
+      "type": "record",
+      "claim": "The roadmap describes Azure SQL knowledge as a way for makers to bring business data into Copilot Studio agents.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This enables organizations to bring business-critical information stored in Azure SQL into their agent experiences using the same knowledge-centric approach that customers already use across other supported knowledge sources.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap title says SQL server Support while the description refers to Azure SQL knowledge.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"title\": \"Microsoft Copilot Studio: SQL server Support in Microsoft Copilot Studio\"; \"description\": \"The Azure SQL Knowledge Source capability extends the range of enterprise data sources that makers can leverage when building agents in Copilot Studio.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap status remains In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap preview target is August CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"August CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: targetDate; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap general availability target is September CY2026, already past on the run date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"September CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists the Web platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap release phases are Current Channel, General Availability and Preview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"Current Channel\", \"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-08-07T21:45:15.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-08-07T21:45:15\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "title; summary; What's changing",
+      "type": "behaviour",
+      "claim": "Makers can add Azure SQL tables and views as agent knowledge sources.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-add-azure-sql-tables",
+      "quote": "You can add Azure SQL tables and views as a knowledge source in Copilot Studio.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "Learn documents this setup in the Microsoft Copilot agent experience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-add-azure-sql-tables",
+      "quote": "# Add Azure SQL tables and views as a knowledge source (Microsoft Copilot)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "admin-path",
+      "claim": "The maker opens Build > Knowledge, selects Azure SQL or SQL Server in Add knowledge, creates or selects a connection, selects tables or views and chooses Add to agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-add-azure-sql-tables",
+      "quote": "Select the **Build** tab.\n3. In the components panel, select **Knowledge**.\n4. In the **Add knowledge** dialog, select **Azure SQL** (or **SQL Server**, depending on the label shown in your environment).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "The agent answers questions by reading structured database data through the configured connection and database permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-add-azure-sql-tables",
+      "quote": "Your agent can answer questions by reading structured data from your [Azure SQL database](/en-us/azure/azure-sql/database), using the configured connection and database permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The agent must be published for the knowledge source to be available in the published experience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-add-azure-sql-tables",
+      "quote": "Publish the agent so the knowledge source is available in the published experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "The Azure SQL setup page gives no release date or lifecycle status.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Azure SQL tables views knowledge-add-azure-sql-tables; opened and read the complete Azure SQL setup article. It provides setup instructions, not a release date or lifecycle status.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "Risk assessment: Security & identity; Scope; Why it matters",
+      "type": "role",
+      "claim": "The SQL connection identity must be able to access the database and list and read selected tables and views.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-add-azure-sql-tables",
+      "quote": "The identity you use to authenticate the SQL connection must have permission to access the database and list and read the selected tables and views.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "Why it matters; Governance guidance: Before rollout; Governance controls",
+      "type": "behaviour",
+      "claim": "Azure SQL knowledge uses the Power Platform SQL connection the maker creates or selects.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-add-azure-sql-tables",
+      "quote": "Azure SQL knowledge uses the Power Platform SQL connection you create or select during setup.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Risk assessment: Data exposure; Why it matters; rationale: risk",
+      "type": "behaviour",
+      "claim": "Users' answers are bounded by data the maker can access through the maker's configured connection and database permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-add-azure-sql-tables",
+      "quote": "Users only receive answers based on data the maker can access through the maker's configured connection and database permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Views appear in the same selection list as tables.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-add-azure-sql-tables",
+      "quote": "Views appear in the same selection list as tables. You don't need a separate knowledge source type to add a view.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "At runtime the agent relies on the agent user's Microsoft authentication and access granted through the connection path.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-add-azure-sql-tables",
+      "quote": "At runtime, the agent relies on the agent user's Microsoft authentication and the access granted through that connection path.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Risk assessment: Security & identity; Open questions",
+      "type": "absence",
+      "claim": "Microsoft does not precisely identify which database identity executes each end user's query for this source.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: site:learn.microsoft.com/microsoft-copilot-studio \"Azure SQL\" \"knowledge\" \"runtime\" identity. Read SQL Permissions and authentication and the connector comparison; the former leaves the database principal unspecified, and the latter is scoped to the standard harness.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "SQL Server authentication is supported and uses permissions of the SQL user specified when creating the connection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-add-azure-sql-tables",
+      "quote": "For SQL Server authentication, permissions apply to the SQL user you specify when you create the connection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "The Azure SQL knowledge page documents reading structured data, not a write action for the knowledge source.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: site:learn.microsoft.com/microsoft-copilot-studio/agents-experience \"Azure SQL\" \"write\". Read the full SQL knowledge page and connector comparison; no source-specific knowledge write operation was documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The knowledge name and description help the agent determine when to select this source.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-add-azure-sql-tables",
+      "quote": "Clear names and descriptions help the agent determine when and how to use your Azure SQL data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Insufficient permissions can prevent servers, databases, tables or views from appearing during setup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-add-azure-sql-tables",
+      "quote": "Missing or insufficient permissions can prevent servers, databases, tables, or views from appearing during setup.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Change & support; Cost and licensing; Scope; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Power Platform needs network access to the Azure SQL server, such as firewall rules allowing Azure services or private connectivity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-add-azure-sql-tables",
+      "quote": "Network access configured so Power Platform can reach your Azure SQL server. For example, use firewall rules that allow Azure services, or private connectivity as required by your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The preparation instructions require a primary key for each table.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-add-azure-sql-tables",
+      "quote": "Define a primary key for each table. The agent uses primary keys to identify rows and return results.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Microsoft recommends clear, descriptive column names.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-add-azure-sql-tables",
+      "quote": "Use clear, descriptive column names in tables and views to help the agent understand the data. Avoid cryptic abbreviations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "cost",
+      "claim": "Building and testing Microsoft Copilot harness agents can consume Copilot Credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness",
+      "quote": "Building, testing, evaluating, and running these agents can consume Copilot Credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Cost and licensing: Licence; Scope",
+      "type": "availability",
+      "claim": "The source's prerequisites name Azure SQL Database or Azure SQL Managed Instance reachable from Power Platform.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-add-azure-sql-tables",
+      "quote": "An Azure SQL Database or Azure SQL Managed Instance that your organization can reach from Power Platform.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Cost and licensing: Licence; Scope; Why it matters",
+      "type": "role",
+      "claim": "Setup requires access to Copilot Studio and permission to edit the agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-add-azure-sql-tables",
+      "quote": "Access to Copilot Studio and permission to edit the agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "front matter: licensing.notes; Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "The Azure SQL page's prerequisites name no licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-add-azure-sql-tables",
+      "quote": "Access to Copilot Studio and permission to edit the agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "front matter: licensing.model; Cost and licensing: Meter",
+      "type": "licensing",
+      "claim": "The licensing model for the documented Microsoft Copilot harness experience is consumption-based, measured in Copilot Credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness",
+      "quote": "Agents powered by the Microsoft Copilot harness use consumption-based billing. Building, testing, evaluating, and running these agents can consume Copilot Credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "front matter: licensing.notes; Cost and licensing: Meter",
+      "type": "licensing",
+      "claim": "Microsoft Copilot harness usage is not included with a user's Microsoft 365 Copilot licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness",
+      "quote": "This usage isn't included with a user's Microsoft 365 Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "Microsoft Copilot harness LLM tokens consume Copilot Credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview",
+      "quote": "For experiences powered by the Microsoft Copilot harness, Copilot Credits are charged for large language model (LLM) tokens, tools (including knowledge and MCPs), and the harness itself.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing: Meter; rationale: cost",
+      "type": "cost",
+      "claim": "Microsoft Copilot harness tool usage, including knowledge and MCPs, consumes Copilot Credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview",
+      "quote": "For experiences powered by the Microsoft Copilot harness, Copilot Credits are charged for large language model (LLM) tokens, tools (including knowledge and MCPs), and the harness itself.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "The Microsoft Copilot harness itself is part of the Copilot Credits charge.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview",
+      "quote": "For experiences powered by the Microsoft Copilot harness, Copilot Credits are charged for large language model (LLM) tokens, tools (including knowledge and MCPs), and the harness itself.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "Charging on the Microsoft Copilot harness starts when building starts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview",
+      "quote": "Unlike the standard harness, which starts billing after publish, the Microsoft Copilot harness charges credits from the moment you start building.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "The knowledge sources overview for this experience also states that the harness uses usage-based billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-sources-overview",
+      "quote": "The harness used to build this agent uses usage-based billing. Using, building, testing, and evaluating agents might consume Copilot Credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "Copilot Credits are charged to the environment where the agent runs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness",
+      "quote": "Copilot Credits are charged to the environment where the agent runs, from prepaid capacity or through the environment's pay-as-you-go billing plan, and not to the individual makers or users who run agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "Environment consumption can be funded from prepaid capacity or a linked pay-as-you-go billing plan.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness",
+      "quote": "Copilot Credits are charged to the environment where the agent runs, from prepaid capacity or through the environment's pay-as-you-go billing plan, and not to the individual makers or users who run agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing: Controls and gaps",
+      "type": "cost",
+      "claim": "The cost-management page documents per-agent monthly limits in Power Platform admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness",
+      "quote": "Select the agent, and then select **Set limit**.\n4. Enter the monthly Copilot Credit limit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Cost and licensing: Controls and gaps",
+      "type": "cost",
+      "claim": "Azure budgets and alerts notify administrators but do not stop Copilot Studio consumption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness",
+      "quote": "Azure budgets and alerts send notifications but don't stop Copilot Studio consumption.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "A Copilot Credit rate specific to Azure SQL knowledge is not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Azure SQL\" \"knowledge\" \"Copilot\" \"credits\" rate pricing. Read Azure SQL setup, usage-based billing, cost management and billing-rate search excerpts; none gives an Azure SQL knowledge-specific rate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Cost and licensing: Controls and gaps",
+      "type": "licensing",
+      "claim": "The standard-harness connector comparison says availability might depend on standard versus premium connectors and the Copilot Studio plan.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-graph-vs-power-platform-connectors",
+      "quote": "**Power Platform connectors**: Availability might depend on **standard vs. premium** connectors and Copilot Studio plan; governed via **Power Platform DLP**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Cost and licensing: Controls and gaps",
+      "type": "absence",
+      "claim": "The cited standard-harness plan qualification is not explicitly documented for this Microsoft Copilot harness source.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Azure SQL\" \"knowledge\" \"Copilot\" \"credits\" rate pricing. Read SQL prerequisites, Microsoft Copilot harness billing and the connector comparison, which explicitly scopes itself to the standard harness; no matching source-specific plan qualification found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "The Azure SQL setup page does not specify whether this source also appears for other harnesses.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Azure SQL\" \"knowledge\" \"Copilot Studio\" \"SQL Server\" on-premises standard harness. Read the complete Microsoft Copilot Azure SQL setup page; it does not describe availability across other harnesses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "The preparation section says Copilot Studio agents support Azure SQL databases or SQL Server.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-add-azure-sql-tables",
+      "quote": "Copilot Studio agents support Azure SQL databases or SQL Server.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Scope; Open questions",
+      "type": "absence",
+      "claim": "On-premises deployment support for this particular Azure SQL knowledge source remains unspecified.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Azure SQL\" \"knowledge\" \"Copilot Studio\" \"SQL Server\" on-premises standard harness. SQL setup and What's new say SQL Server without on-premises details; indexed Microsoft 365 SQL Copilot connectors are a different mechanism.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Why it matters",
+      "type": "absence",
+      "claim": "The sources read do not state a source-specific rollout default or a dedicated admin enablement switch for Azure SQL knowledge.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Azure SQL\" \"knowledge\" \"Copilot\" \"admin\" enable default; \"Knowledge sources for agents\" \"Azure SQL\". Read SQL setup, knowledge-add-existing-copilot and knowledge-sources-for-agents-rule; the latter's settings cover websites, SharePoint/OneDrive and documents, not SQL.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: impact",
+      "type": "default",
+      "claim": "User-opt-in describes the documented maker choice to add the source, rather than automatic grounding of existing agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-add-azure-sql-tables",
+      "quote": "Locate one or more tables or views to add. Tables and views appear in the same selection list. Use the search field to narrow the list, and then select the tables and views you want the agent to use.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "summary; Why it matters",
+      "type": "absence",
+      "claim": "No examined source says existing agents automatically gain this source or otherwise change behaviour on rollout.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Azure SQL\" \"knowledge\" \"Copilot\" \"admin\" enable default. Read roadmap, Azure SQL setup and knowledge-source overview; all describe sources a maker adds, not automatic changes to existing agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "The Microsoft Copilot harness has no separate maker-access setting; existing Copilot Studio and environment permissions govern authoring.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness",
+      "quote": "The Microsoft Copilot harness doesn't have its own maker-access setting. To control who can create agents, use your existing Copilot Studio and environment permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance guidance: Before rollout; Governance controls; rationale: risk",
+      "type": "applicability",
+      "claim": "Power Platform data policies govern connector access, the class of connection used by Azure SQL knowledge.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/wp-data-loss-prevention",
+      "quote": "Power Platform admin center data policies allow administrators to control access to these connectors in various ways to help reduce risk in your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The general connector-blocking UI is Power Platform admin center > Security > Data and privacy > Data policy > New Policy > Next > Next > connector menu > Block.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "To add an environment to your data policy, select the environment in the **Available** tab, and then select **Add to policy**.",
+      "severity": "minor",
+      "fix": "The path omits the environment and connector pickers. Use 'Security > Data and privacy > Data policy > New Policy > Next > Available > environment > Add to policy > Next > connector > ⋮ > Block' for the create-policy route; retain the general-control applicability caveat."
+    },
+    {
+      "n": 56,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "Add-ConnectorsToPolicy supports PolicyName, Connectors and Classification to classify connectors in a DLP policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy",
+      "quote": "Add-ConnectorsToPolicy\n    [-PolicyName] <String>\n    [-Classification] <String>\n    [-Connectors] <Object[]>",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[1].ui; Governance controls table; Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "An administrator can change tenant-capacity draw for an environment through the printed Licensing > Products > Copilot Studio > Manage Copilot Credits path without an environment-group qualification.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations",
+      "quote": "If a published [environment group rule](environment-groups#rules) governs **Draw from the available capacity in my tenant**, you can't override the setting for an individual environment.",
+      "severity": "blocker",
+      "fix": "Keep the documented UI path, but add to controls[1].note and the corresponding governance prose: 'If a published environment group rule governs Draw from the available capacity in my tenant, the environment setting cannot be overridden. Change and republish the group rule, or remove the environment from the group before managing it independently.' Cite https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations."
+    },
+    {
+      "n": 58,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "PUT licensing/allocationsV2 using version 2024-10-01 and the printed MCSMessages/TenantPool body can change environment tenant-capacity draw without an environment-group qualification.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations",
+      "quote": "Updates through the Power Platform admin center, Power Platform API, or administration SDKs are rejected with the `TenantPoolLockedByPolicy` error.",
+      "severity": "blocker",
+      "fix": "Retain the documented endpoint, version and body fields. Add to controls[1].note: 'If an environment group rule governs tenant-capacity draw, API updates cannot override it and fail with TenantPoolLockedByPolicy. Change and republish the group rule, or remove the environment from the group before managing this setting independently.' Use the existing API docs URL."
+    },
+    {
+      "n": 59,
+      "where": "controls[1].note; Governance controls",
+      "type": "role",
+      "claim": "Managing Copilot Studio capacity requires Power Platform Administrator, Global Administrator or an equivalent licensing-and-capacity role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations",
+      "quote": "Sign in as a user with the **Power Platform Administrator** or **Global Administrator** role, or an equivalent role that can manage licensing and capacity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "The cited Copilot Studio data-policy page requires a tenant admin or Environment Admin.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "Be a [tenant admin](/en-us/power-platform/admin/use-service-admin-role-manage-tenant) or have the [Environment Admin](/en-us/power-platform/admin/environments-overview#environment-permissions) role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "controls[1].note; Governance controls table",
+      "type": "applicability",
+      "claim": "The capacity controls apply across Copilot Studio workloads in the environment rather than exclusively to Azure SQL knowledge.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness",
+      "quote": "The capacity and consumption controls in the Power Platform admin center apply across Copilot Studio. They aren't exclusive to the Microsoft Copilot harness.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Governance controls",
+      "type": "cost",
+      "claim": "An allocation is not a spending boundary if the environment can continue drawing tenant capacity or pay-as-you-go billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness",
+      "quote": "An allocation isn't a boundary if the environment can continue drawing from tenant capacity or pay-as-you-go billing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Governance controls; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The connection's database permissions and SQL network access are database-side controls rather than Copilot credit settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-add-azure-sql-tables",
+      "quote": "Credentials that can connect to the database and list and read the tables and views you plan to add.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Microsoft suggests testing with a diagnostic SQL view containing a small known dataset before production data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-add-azure-sql-tables",
+      "quote": "Create a diagnostic view in Azure SQL that returns a small, known dataset. Confirm that the connection identity can list and read the view, then select it as a knowledge source. Test questions about that dataset before using production data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Governance guidance; Governance controls table",
+      "type": "consistency",
+      "claim": "Several checklist controls do not appear in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: 'which makers can edit agents'; 'create a dedicated identity and views'; 'confirm the firewall or private connectivity route'. The table contains only connector data-policy classification and environment credit allocation.",
+      "severity": "minor",
+      "fix": "The maker-authoring permissions, SQL identity/view permissions, SQL network configuration and agent knowledge configuration checklist steps have no corresponding table rows. With the current table retained, narrow those checklist imperatives to non-procedural considerations rather than presenting them as tabulated controls; do not add unverified rows."
+    },
+    {
+      "n": 66,
+      "where": "controls[0].note; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not specified the precise data-policy connector classification that governs this source in the Microsoft Copilot experience.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: site:learn.microsoft.com/microsoft-copilot-studio \"Azure SQL\" \"knowledge\" \"SQL Server\" \"data policy\". Read SQL setup, data policies, agent DLP, connector comparison and knowledge-source policy settings; no precise Microsoft Copilot SQL classification mapping found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "Variable cost matches the documented Copilot Credits consumption meter.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview",
+      "quote": "Usage is billed based on consumption and measured in Copilot Credits.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-18T06:52:46.969Z",
+    "summary": {
+      "links": 10,
+      "unreachable": 7,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 1,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 2,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=568930",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-add-azure-sql-tables",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-sources-overview",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-graph-vs-power-platform-connectors",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/wp-data-loss-prevention",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations",
+        "ok": false,
+        "status": 429
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether makers can use the SQL connector behind Azure SQL knowledge",
+        "docs": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+        "reachable": true,
+        "segments": [
+          "Security",
+          "Data and privacy",
+          "Data policy",
+          "New Policy",
+          "Next",
+          "Next",
+          "Block"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether makers can use the SQL connector behind Azure SQL knowledge",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy",
+        "reachable": false,
+        "token": "Add-ConnectorsToPolicy",
+        "found": false
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Copilot Credits allocated to an environment and whether it can draw from tenant capacity",
+        "docs": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations",
+        "reachable": false,
+        "segments": [
+          "Licensing",
+          "Products",
+          "Copilot Studio",
+          "Manage Copilot Credits",
+          "Allocate capacity",
+          "Capacity overages",
+          "Draw from the available capacity in my tenant",
+          "Save"
+        ],
+        "missing": [
+          "Licensing",
+          "Products",
+          "Copilot Studio",
+          "Manage Copilot Credits",
+          "Allocate capacity",
+          "Capacity overages",
+          "Draw from the available capacity in my tenant",
+          "Save"
+        ]
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Copilot Credits allocated to an environment and whether it can draw from tenant capacity",
+        "docs": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations",
+        "reachable": false,
+        "token": "api.powerplatform.com/licensing/allocationsV2",
+        "found": false
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": [
+    {
+      "date": "2026-11-18",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
+}
