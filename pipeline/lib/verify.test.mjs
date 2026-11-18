@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { pageHash, verificationDue, checkNote, MAX_AGE_DAYS, parkedNext, MAX_REVISIONS, STANDARD_HASH } from './verify.mjs';
+import { pageHash, verificationDue, checkNote, MAX_AGE_DAYS, parkedNext, MAX_REVISIONS, STANDARD_HASH, WRITER_STANDARD_HASH } from './verify.mjs';
 
 const data = { title: 'A briefing', version: 2, updated: '2026-11-16', changes: [{ date: '2026-11-16', note: 'x' }], controls: [{ governs: 'a' }], tags: ['b', 'a'] };
 const body = 'Hello  world\n\n<!-- verifier-findings\nold findings\n-->\n';
@@ -34,11 +34,14 @@ test('checkNote reads as a change-log line', () => {
   assert.ok(checkNote('needs-correction', c, 'm').length <= 300);
 });
 
-test('parkedNext: a fresh draft at the cap, another when the writing standard changed, otherwise a person', () => {
+test('parkedNext: a fresh draft at the cap, another when the writer\'s rules changed, otherwise a person', () => {
   assert.match(STANDARD_HASH, /^[0-9a-f]{12}$/);
+  assert.match(WRITER_STANDARD_HASH, /^[0-9a-f]{12}$/);
+  assert.notEqual(WRITER_STANDARD_HASH, STANDARD_HASH);
   assert.equal(parkedNext({ attempts: MAX_REVISIONS }), 'fresh-draft');
-  assert.equal(parkedNext({ attempts: MAX_REVISIONS + 1, standard: STANDARD_HASH }), 'person', 'the fresh draft failed under the rules as they stand');
-  assert.equal(parkedNext({ attempts: MAX_REVISIONS + 1, standard: 'a1b2c3d4e5f6' }), 'fresh-draft', 'the rules changed since');
+  assert.equal(parkedNext({ attempts: MAX_REVISIONS + 1, standard: STANDARD_HASH, writerStandard: WRITER_STANDARD_HASH }), 'person', 'the fresh draft failed under the rules as they stand');
+  assert.equal(parkedNext({ attempts: MAX_REVISIONS + 1, standard: 'a1b2c3d4e5f6', writerStandard: WRITER_STANDARD_HASH }), 'person', 'only the verifier prompt changed: the writer would produce the same text');
+  assert.equal(parkedNext({ attempts: MAX_REVISIONS + 1, standard: 'a1b2c3d4e5f6', writerStandard: 'a1b2c3d4e5f6' }), 'fresh-draft', 'the writer\'s rules changed since');
   assert.equal(parkedNext({ attempts: MAX_REVISIONS + 1 }), 'fresh-draft', 'a report without the field predates it');
-  assert.equal(parkedNext({ attempts: MAX_REVISIONS + 2, standard: STANDARD_HASH }), 'person');
+  assert.equal(parkedNext({ attempts: MAX_REVISIONS + 2, standard: STANDARD_HASH, writerStandard: WRITER_STANDARD_HASH }), 'person');
 });
