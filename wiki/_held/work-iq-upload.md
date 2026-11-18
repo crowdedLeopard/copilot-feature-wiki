@@ -37,6 +37,12 @@ sources:
   - title: "Work IQ API permissions reference"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/permissions"
     kind: "learn"
+  - title: "Work IQ MCP overview"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/overview"
+    kind: "learn"
+  - title: "Work IQ in Microsoft Copilot Studio"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq"
+    kind: "learn"
   - title: "Microsoft 365 Roadmap: Work IQ: Upload"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=570850"
     kind: "roadmap"
@@ -60,19 +66,23 @@ changes:
     note: "New briefing: roadmap-only item, with background from the Work IQ overview, SharePoint Tools and MCP policy pages."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 54 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-18"
+    note: "Correction: aligned the user-scope, WorkIQ.Act and overwrite statements with Learn, added the Copilot Studio write-default note and the setup wording, and removed checklist items without control rows."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 69 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-18"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 54
-  confirmed: 50
-  unconfirmed: 1
-  contradicted: 3
-  attempts: 1
-  hash: "c9f72b32faf620159817972e78a464b1"
+  claims: 69
+  confirmed: 68
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 2
+  hash: "5dd1b37132f751cf33c6677fa8d76dc8"
 ---
 
 ## What's changing
@@ -89,20 +99,20 @@ The roadmap record shows status In development, with a target date and a preview
 
 Upload is a write action: an agent would put content into Microsoft 365 rather than read from it. That moves the question from what an agent can see to what it can leave behind, and where.
 
-Microsoft has not stated what happens on arrival, so this page does not assume that existing behaviour changes. Microsoft's documented Work IQ MCP policy blocks mutation operations by default, but no page says whether uploads count as mutation operations, so confirm that before relying on the default.
+Microsoft has not stated what happens on arrival, so this page does not assume that existing behaviour changes. Microsoft's documented Work IQ MCP policy blocks mutation operations by default, but no page says whether uploads count as mutation operations, so confirm that before relying on the default. The Work IQ in Copilot Studio page separately says write operations are on by default, subject to organisational permissions and policies; Microsoft does not reconcile these descriptions.
 
 ## Risk assessment
 
 **Data exposure**
 - The roadmap says content goes to "supported Microsoft 365 destinations" and Learn names none. Until Microsoft lists them, you cannot tell which sites, libraries or OneDrive locations an agent could write to.
-- Microsoft's Work IQ pages state that requests run in the context of the signed-in user and that OAuth scopes "don't grant access beyond the signed-in user's existing SharePoint permissions" for SharePoint Tools. Whether the same limit applies to this upload capability is not stated.
+- Microsoft's Work IQ pages state that requests run in the context of the signed-in user and that OAuth scopes "don't grant access beyond the signed-in user's existing SharePoint permissions" for SharePoint Tools. The Work IQ overview states that every request runs in a user's context and only accesses what that user is allowed to see or do.
 
 **Security & identity**
-- Apps need the `WorkIQ.Act` scope to change Microsoft 365 data through Work IQ, and Microsoft documents admin consent as required for it. Review which apps already hold it.
+- For SharePoint Tools, Microsoft documents `WorkIQ.Act` for actions that change SharePoint content or configuration, and documents admin consent as required for it.
 - Microsoft Learn does not say whether sensitivity labels or other protections are applied to files an agent uploads. Confirm this before piloting.
 
 **Autonomy & actions**
-- An agent that can upload can create or replace files without a person opening them. Microsoft has not said whether upload needs user approval; the Work IQ human-in-the-loop item is a separate roadmap entry and is not confirmed to apply here.
+- The roadmap says agents will upload files and content; it does not describe overwrite behaviour. Microsoft has not said whether upload needs user approval; the Work IQ human-in-the-loop item is a separate roadmap entry and is not confirmed to apply here.
 
 **Change & support**
 - Microsoft documents that an MCP request can fail on tenant policy even when the user and app are authorised. Expect support questions that look like permission errors but come from policy.
@@ -121,14 +131,12 @@ Not yet published: a credit rate or limit for upload, and any storage charge for
 - **Product and platform:** Work IQ, platform Web, per the roadmap record.
 - **Cloud:** Worldwide (Standard Multi-Tenant) only, as the record lists it. Other clouds are not listed on the item; that is a record fact, not a statement that the feature is unavailable elsewhere.
 - **Rollout:** In development, with a target date and preview date of October CY2026 (targets only). Microsoft has not stated a rollout mechanism or default.
-- **Prerequisites documented for Work IQ:** a Global Administrator performs a one-time setup, and a usage-based billing plan is required. Applications need `WorkIQ.Read` or `WorkIQ.Act` before SharePoint Tools paths are discoverable.
+- **Prerequisites documented for Work IQ:** the enablement guide lists a Global Administrator for manual one-time setup; the MCP overview also says the service principal is created automatically on first use. A usage-based billing plan is required. Applications need `WorkIQ.Read` or `WorkIQ.Act` before SharePoint Tools paths are discoverable.
 - **Destinations:** Not yet published.
 
 ## Governance guidance
 
 ### Before rollout
-- Ask your Work IQ owners whether any agent already holds `WorkIQ.Act` consent, and record which apps they are.
-- Confirm that a usage-based billing plan is set up, because Microsoft lists it as a prerequisite for Work IQ.
 - Read the Work IQ MCP policy state now so you know whether write requests are blocked in your tenant (see the policy row below).
 
 ### At rollout
@@ -138,7 +146,6 @@ Not yet published: a credit rate or limit for upload, and any storage charge for
 
 ### After rollout
 - Review where agent-created files land, and who can open them, in the destinations Microsoft lists.
-- Watch Copilot Credits consumption from Work IQ against your billing plan.
 
 ## Governance controls
 
@@ -174,11 +181,5 @@ impact: Low. The roadmap item is for agents and the people building them; no sou
 <!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Data exposure / applicability: Whether the signed-in-user permission boundary applies to Work IQ upload is not stated. | Found: Actions are user scoped, meaning every request runs in the context of a specific user and only accesses what that user is allowed to see or do. | Fix: Replace 'Whether the same limit applies to this upload capability is not stated.' with 'The Work IQ overview states that every request runs in a user's context and only accesses what that user is allowed to see or do.' The platform-wide boundary already covers Work IQ requests; retain the separate uncertainty about supported destinations. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/
-- [contradicted, blocker] Risk assessment: Security & identity / applicability: Apps need WorkIQ.Act to change Microsoft 365 data through Work IQ. | Found: Allows the app to ask Work IQ agents questions and receive responses on behalf of the signed-in user. This includes read and write access to Microsoft 365 resources that are accessible to Work IQ agents and scoped to the signed-in user. | Fix: Replace 'Apps need the `WorkIQ.Act` scope to change Microsoft 365 data through Work IQ' with 'For SharePoint Tools, Microsoft documents `WorkIQ.Act` for actions that change SharePoint content or configuration'. Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/sharepoint-iq. Keep the existing statement that WorkIQ.Act requires admin consent; do not imply it is the only Work IQ permission permitting writes. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/permissions
-- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: The planned upload capability can replace files without a person opening them. | Found: Searched: "Work IQ" "upload" "replace". Read the roadmap record and SharePoint Tools transfer scenario; neither documents overwrite semantics or the claimed interaction model for this item. | Fix: Replace 'An agent that can upload can create or replace files without a person opening them.' with 'The roadmap says agents will upload files and content; it does not describe overwrite behaviour.'
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Why it matters; Open questions / default: The Work IQ MCP policy documentation says mutation operations are blocked by default. | Found: By default, mutation operations aren't allowed for safety. This restriction includes create, update, delete, and action requests that modify data, such as sending email. | Fix: After this statement add: 'The Work IQ in Copilot Studio page separately says write operations are on by default, subject to organisational permissions and policies; Microsoft does not reconcile these descriptions.' Cite https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp
-- [supported, minor] Scope: Prerequisites documented for Work IQ / role: A Global Administrator performs a one-time Work IQ setup. | Found: A user with Global Administrator role for the one-time Work IQ setup | Fix: Replace 'a Global Administrator performs a one-time setup' with 'the enablement guide lists a Global Administrator for manual one-time setup; the MCP overview also says the service principal is created automatically on first use'. Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/overview as well as the existing enablement page. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq
-- [contradicted, minor] Governance guidance: Before rollout and After rollout / consistency: The consent-inventory, billing-plan and consumption-monitoring checks have corresponding controls-table rows. | Found: Ask your Work IQ owners whether any agent already holds `WorkIQ.Act` consent [...] Confirm that a usage-based billing plan is set up [...] Watch Copilot Credits consumption [...] The controls table contains only the Work IQ MCP policy row. | Fix: Remove the checklist bullets directing readers to inventory WorkIQ.Act consent, confirm the billing plan and watch Copilot Credits consumption. Their documented background can remain in Cost and licensing and Governance controls; do not add unverified control rows.
+- [contradicted, blocker] Governance controls: first paragraph / absence: The tenant-level MCP policy is the only documented control that plausibly gates agent writes through Work IQ MCP. | Found: Work IQ filters the /sharepoint paths exposed during discovery according to the scopes in the access token. A read-only token doesn't expose paths for actions that change data. | Fix: Replace the first sentence of Governance controls with: 'Microsoft Learn documents the tenant-level Work IQ MCP policy as a control over MCP tool requests.' Remove 'only': the cited SharePoint Tools page also documents OAuth scopes gating access to write paths. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/sharepoint-iq
 -->

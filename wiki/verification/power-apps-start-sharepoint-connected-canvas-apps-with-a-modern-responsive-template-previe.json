@@ -2,35 +2,29 @@
   "slug": "power-apps-start-sharepoint-connected-canvas-apps-with-a-modern-responsive-template-previe",
   "roadmapId": 580458,
   "title": "Power Apps: modern responsive template for canvas apps created from SharePoint lists",
-  "status": "held",
+  "status": "verified",
   "date": "2026-11-18",
-  "version": 2,
+  "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 2,
-  "verifierVerdict": "hold",
+  "attempts": 0,
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-18",
-    "reasons": [
-      "2 blocking findings (claims 74, 75)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 76,
-    "confirmed": 74,
+    "claims": 77,
+    "confirmed": 77,
     "unconfirmed": 0,
-    "contradicted": 2,
-    "blocker": 2,
+    "contradicted": 0,
+    "blocker": 0,
     "major": 0,
     "minor": 0
   },
-  "summary": "Hold: the licensing and cost fields disagree with the published Power Apps rules described in the briefing itself. Generated canvas apps have documented licensing options and can incur the Power Apps per-app pay-as-you-go charge, so showing licensing as unpublished and cost as indirect only is misleading.",
+  "summary": "The briefing passes: its roadmap dates, template behaviour, data policy controls and general Power Apps licensing are supported. The cited documentation opened successfully, and targeted searches found no template-specific administrator switch, licensing terms or meter.",
   "claims": [
     {
       "n": 1,
-      "where": "summary; What's changing",
+      "where": "summary; What's changing; Scope",
       "type": "record",
       "claim": "Microsoft plans an updated app-from-data experience for SharePoint and Microsoft Lists canvas apps.",
       "status": "supported",
@@ -63,9 +57,9 @@
     },
     {
       "n": 4,
-      "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
+      "where": "What's changing; Why it matters; Risk assessment: Change & support; rationale: risk",
       "type": "record",
-      "claim": "The generated app is a standalone canvas app rather than an embedded SharePoint customised form.",
+      "claim": "The template creates a standalone canvas app rather than an embedded SharePoint customised form.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "It creates a standalone canvas app, not an embedded SharePoint customized form.",
@@ -98,10 +92,10 @@
       "n": 7,
       "where": "front matter: targetDate; What's changing; Open questions",
       "type": "record",
-      "claim": "The roadmap target is February CY2027, presented as a target rather than a commitment.",
+      "claim": "The roadmap general availability target is February CY2027, not a committed release date.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"targetDate\": \"February CY2027\"",
+      "quote": "\"targetDate\": \"February CY2027\", \"status\": \"In development\"",
       "severity": null,
       "fix": null
     },
@@ -109,7 +103,7 @@
       "n": 8,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) and no other clouds.",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) as the cloud.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -120,7 +114,7 @@
       "n": 9,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap platform is Web.",
+      "claim": "The roadmap lists Web as the platform.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Web\"]",
@@ -131,7 +125,7 @@
       "n": 10,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
-      "claim": "The roadmap lists General Availability and Preview as release phases.",
+      "claim": "The roadmap lists both General Availability and Preview as release phases.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
@@ -151,28 +145,6 @@
     },
     {
       "n": 12,
-      "where": "Why it matters; Governance guidance; rationale: risk",
-      "type": "record",
-      "claim": "Connector and formula delegation limits still apply.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Connector and formula delegation limits still apply.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
-      "where": "Cost and licensing",
-      "type": "record",
-      "claim": "The roadmap record states no licensing terms.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "It creates a standalone canvas app, not an embedded SharePoint customized form. Connector and formula delegation limits still apply.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
       "where": "front matter: products; Scope",
       "type": "record",
       "claim": "The roadmap product is Power Apps.",
@@ -183,13 +155,35 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 13,
+      "where": "Scope",
+      "type": "record",
+      "claim": "No other clouds are listed in the roadmap record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "The updated template uses responsive containers.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/app-from-sharepoint",
-      "quote": "The updated template uses responsive containers",
+      "quote": "The updated template uses responsive containers, a modern Data Grid, and modern forms.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The updated template uses a modern Data Grid.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/app-from-sharepoint",
+      "quote": "The updated template uses responsive containers, a modern Data Grid, and modern forms.",
       "severity": null,
       "fix": null
     },
@@ -197,29 +191,18 @@
       "n": 16,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The updated template uses a modern Data Grid.",
+      "claim": "The updated template uses modern forms.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/app-from-sharepoint",
-      "quote": "a modern Data Grid",
+      "quote": "The updated template uses responsive containers, a modern Data Grid, and modern forms.",
       "severity": null,
       "fix": null
     },
     {
       "n": 17,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The updated template uses modern forms.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/app-from-sharepoint",
-      "quote": "and modern forms.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
       "where": "What's changing; Scope",
       "type": "behaviour",
-      "claim": "The layout depends on the template available in the maker's environment.",
+      "claim": "The generated app layout depends on the template available in the maker's environment.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/app-from-sharepoint",
       "quote": "The layout depends on the template available in your environment.",
@@ -227,10 +210,10 @@
       "fix": null
     },
     {
-      "n": 19,
+      "n": 18,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The responsive single-screen template combines browsing and record editing on one screen.",
+      "claim": "Learn also describes a responsive single-screen template combining browsing and editing.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/app-from-sharepoint",
       "quote": "The responsive single-screen template combines browsing and record editing on one screen.",
@@ -238,43 +221,21 @@
       "fix": null
     },
     {
-      "n": 20,
-      "where": "front matter: defaultState; What's changing; Open questions",
+      "n": 19,
+      "where": "front matter: defaultState; What's changing; Why it matters; Open questions",
       "type": "default",
-      "claim": "Microsoft has not stated which template a particular environment receives by default or when.",
+      "claim": "Microsoft has not stated which template an environment receives by default or its arrival behaviour.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Power Apps SharePoint list app responsive modern template admin switch default template licensing Power Platform; \"app-from-sharepoint\" \"default\" \"template\". Opened app-from-sharepoint; it says layout depends on the environment, without a default assignment or rollout schedule.",
+      "quote": "Searched: SharePoint canvas app updated modern responsive template admin enable disable default environment rollout existing apps identity permissions. Opened app-from-sharepoint; read roadmap. Neither specifies the default template assignment or automatic arrival behaviour.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 21,
-      "where": "controls[1]; summary; Governance controls",
-      "type": "absence",
-      "claim": "No tenant or environment UI switch or automation command for availability of this updated template is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: SharePoint updated modern controls app-from-data template admin setting enable disable default rollout existing apps Power Platform API pac admin PowerShell; \"SharePoint\" \"template\" \"Set-AdminPowerApp\". Read app-from-sharepoint and pac admin/PowerShell excerpts; no template switch found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "Scope; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not stated how or when environments beyond the early-release preview receive the updated template.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: SharePoint updated modern controls app-from-data template admin setting enable disable default rollout existing apps Power Platform API pac admin PowerShell; \"app-from-sharepoint\" \"default\" \"template\". Opened app-from-sharepoint and read the roadmap; no wider rollout mechanics given.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
+      "n": 20,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The records screen has a view switch for grid and list views.",
+      "claim": "A view switch on the records screen selects grid or list view.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/app-from-sharepoint",
       "quote": "Use the view switch on the records screen to choose a grid or a list",
@@ -282,18 +243,18 @@
       "fix": null
     },
     {
-      "n": 24,
+      "n": 21,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Grid view displays records in columns.",
+      "claim": "Grid view presents records in columns.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/app-from-sharepoint",
-      "quote": "Review records in columns and select rows.",
+      "quote": "Grid | Review records in columns and select rows.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 25,
+      "n": 22,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "The grid edit action appears when exactly one row is selected.",
@@ -304,21 +265,21 @@
       "fix": null
     },
     {
-      "n": 26,
+      "n": 23,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "List view provides a compact list whose items open their details.",
+      "claim": "List view presents a compact list whose items open their details.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/app-from-sharepoint",
-      "quote": "Review a compact list and open an item to view its details.",
+      "quote": "List | Review a compact list and open an item to view its details.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 27,
+      "n": 24,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The new-record form uses one column below an app width of 768.",
+      "claim": "The new-record form uses one column below app width 768.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/app-from-sharepoint",
       "quote": "The new-record form uses one column below an app width of `768`",
@@ -326,43 +287,43 @@
       "fix": null
     },
     {
-      "n": 28,
+      "n": 25,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "The new-record form uses two columns at app widths of 768 or greater.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/app-from-sharepoint",
-      "quote": "and two columns at widths of `768` or greater.",
+      "quote": "two columns at widths of `768` or greater.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 29,
+      "n": 26,
       "where": "What's changing",
       "type": "absence",
-      "claim": "The Learn article does not mark itself as preview.",
+      "claim": "The app-from-list Learn page does not mark itself as preview.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: preview in the complete fetched Create a canvas app with data from a list article. Opened https://learn.microsoft.com/power-apps/maker/canvas-apps/app-from-sharepoint; no preview designation appears.",
+      "quote": "Searched: app-from-sharepoint responsive template Data Grid modern forms. Opened app-from-sharepoint in full: title is 'Create a canvas app with data from a list'; no preview designation or prerelease banner appears.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 30,
-      "where": "Why it matters; Risk assessment: Data exposure",
+      "n": 27,
+      "where": "Why it matters; Risk assessment: Data exposure; rationale: risk",
       "type": "behaviour",
-      "claim": "The generated app is connected to the list the maker selects.",
+      "claim": "The generated app connects to the list the maker selects.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/app-from-sharepoint",
-      "quote": "Select a list or select the sample list you created earlier, and then select Create app.",
+      "quote": "Select a list or select the sample list you created earlier, and then select Create app. ... When you create the app, Power Apps Studio opens with a generated app connected to your list.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 31,
+      "n": 28,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Adding or editing information in the app updates the source list.",
+      "claim": "Adding or editing information in the app updates the SharePoint or Lists source.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/app-from-sharepoint",
       "quote": "When you add or edit information in the app, the information in SharePoint or Lists also updates.",
@@ -370,8 +331,63 @@
       "fix": null
     },
     {
+      "n": 29,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Data access depends on source permissions and connections rather than the generated visual template.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/share-app",
+      "quote": "you must also manage permissions for the data source or sources on which the app is based ... You might also need to share other resources on which the app depends, such as flows, gateways, or connections.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Data exposure; Governance guidance",
+      "type": "behaviour",
+      "claim": "Grid view filters a generated collection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/app-from-sharepoint",
+      "quote": "Grid view filters a generated collection, while list view filters the connected data source.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Data exposure; Governance guidance",
+      "type": "behaviour",
+      "claim": "List view filters the connected data source.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/app-from-sharepoint",
+      "quote": "Grid view filters a generated collection, while list view filters the connected data source.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 32,
-      "where": "Why it matters; Governance guidance",
+      "where": "Risk assessment: Data exposure; Governance guidance",
+      "type": "behaviour",
+      "claim": "Grid and list filters can produce different records on a large list.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/app-from-sharepoint",
+      "quote": "Grid view filters a generated collection, while list view filters the connected data source. Check the same filter in both views after you connect your list. Generated counts and collection-backed results don't guarantee that every record in a large list is loaded.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Data exposure; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Microsoft asks makers to check the same filter in both views.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/app-from-sharepoint",
+      "quote": "Check the same filter in both views after you connect your list. ... Apply a filter and check that both views show the expected records.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Why it matters; Governance guidance: After rollout",
       "type": "behaviour",
       "claim": "Generated counts and collection-backed results do not guarantee all records in a large list are loaded.",
       "status": "supported",
@@ -381,65 +397,32 @@
       "fix": null
     },
     {
-      "n": 33,
-      "where": "Risk assessment: Data exposure; Governance guidance",
-      "type": "behaviour",
-      "claim": "Grid view filters a generated collection.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/app-from-sharepoint",
-      "quote": "Grid view filters a generated collection",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
-      "where": "Risk assessment: Data exposure; Governance guidance",
-      "type": "behaviour",
-      "claim": "List view filters the connected data source.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/app-from-sharepoint",
-      "quote": "while list view filters the connected data source.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 35,
-      "where": "Risk assessment: Data exposure; Governance guidance",
-      "type": "behaviour",
-      "claim": "Microsoft advises checking the same filter in both views.",
+      "where": "Why it matters; Governance guidance; rationale: risk",
+      "type": "record",
+      "claim": "Connector and formula delegation limits still apply.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/app-from-sharepoint",
-      "quote": "Check the same filter in both views after you connect your list.",
+      "source": "roadmap record",
+      "quote": "Connector and formula delegation limits still apply.",
       "severity": null,
       "fix": null
     },
     {
       "n": 36,
-      "where": "Risk assessment: Data exposure",
-      "type": "applicability",
-      "claim": "Access to list data depends on the underlying data-source permissions and connection rather than a new template permission grant.",
+      "where": "Risk assessment: Security & identity; rationale: risk",
+      "type": "absence",
+      "claim": "Microsoft describes no new identity, permission or data-access model for this template.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/share-app",
-      "quote": "For a shared app to function as you expect, you must also manage permissions for the data source or sources on which the app is based",
+      "source": null,
+      "quote": "Searched: \"app-from-sharepoint\" \"template\" \"identity\" \"autonomous\". Opened app-from-sharepoint and share-app; read roadmap. No new identity, permission or data-access model is described.",
       "severity": null,
       "fix": null
     },
     {
       "n": 37,
       "where": "Risk assessment: Security & identity",
-      "type": "absence",
-      "claim": "No new identity or permission model is described for this template.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"SharePoint\" \"canvas\" \"template\" identity permissions autonomous agent \"data policies\"; SharePoint canvas app list permissions connection user read write data source permissions. Opened app-from-sharepoint and share-app; read connector excerpts; no new template identity model found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "Risk assessment: Security & identity",
-      "type": "applicability",
-      "claim": "Normal canvas-app sharing applies to the generated canvas app.",
+      "type": "behaviour",
+      "claim": "The generated standalone canvas app uses normal Power Apps sharing.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/share-app",
       "quote": "When you create a canvas app, you can define which users in your organization can use the app, modify it, and even re-share it.",
@@ -447,10 +430,10 @@
       "fix": null
     },
     {
-      "n": 39,
+      "n": 38,
       "where": "Why it matters; controls[0].governs; Governance controls",
       "type": "applicability",
-      "claim": "General data policies govern connector combinations for SharePoint-connected canvas apps in covered environments.",
+      "claim": "General Power Apps data policies govern connector combinations for apps in their environment scope, including SharePoint.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/prevent-data-loss",
       "quote": "After this policy is saved, any Power Apps or Power Automate maker, who is part of the data policy's environment, can create an app or a flow that shares data between SharePoint or Salesforce.",
@@ -458,10 +441,10 @@
       "fix": null
     },
     {
-      "n": 40,
+      "n": 39,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "Assigning SharePoint to Business prevents combining it with connectors in Non-business or Blocked groups.",
+      "claim": "The walkthrough's Business assignment prevents combining SharePoint with Non-business or Blocked connectors.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/prevent-data-loss",
       "quote": "By moving the Salesforce and SharePoint connectors to the Business data group, you're preventing users from creating flows and apps that combine these two connectors with any of the connectors in the Non-business or Blocked groups.",
@@ -469,32 +452,32 @@
       "fix": null
     },
     {
-      "n": 41,
-      "where": "controls[0].note; Risk assessment; Governance controls",
+      "n": 40,
+      "where": "controls[0].note; Risk assessment: Security & identity; Governance controls",
       "type": "absence",
-      "claim": "Microsoft has not documented template-specific data-policy treatment beyond the general connector control.",
+      "claim": "Microsoft documents no template-specific variation of the general connector data policy rules.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"SharePoint\" \"canvas\" \"template\" identity permissions autonomous agent \"data policies\". Opened app-from-sharepoint and prevent-data-loss; the general rule covers these apps, but neither page gives template-specific treatment.",
+      "quote": "Searched: SharePoint canvas app updated modern responsive template admin enable disable default environment rollout existing apps identity permissions. Opened app-from-sharepoint and prevent-data-loss. General app rules cover this class; neither names a special rule for the updated template.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "No autonomous or agent behaviour is described for the template.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"app-from-sharepoint\" \"template\" \"identity\" \"autonomous\". Opened app-from-sharepoint in full and read roadmap; the documented actions are browsing and user-operated record forms, with no autonomous or agent behaviour described.",
       "severity": null,
       "fix": null
     },
     {
       "n": 42,
       "where": "Risk assessment: Autonomy & actions",
-      "type": "absence",
-      "claim": "No autonomous or agent behaviour is described for the template.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"SharePoint\" \"canvas\" \"template\" identity permissions autonomous agent \"data policies\". Opened app-from-sharepoint and read the roadmap description; both describe user-driven browsing and form actions, not autonomous execution.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "A person opens form screens to create or edit records.",
+      "claim": "People use form screens to create or edit records.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/app-from-sharepoint",
       "quote": "Use the new-record action to open the form screen for a new item. Use a list item or the grid's edit action to open an existing record.",
@@ -502,10 +485,10 @@
       "fix": null
     },
     {
-      "n": 44,
+      "n": 43,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "The generated form's save action calls SubmitForm.",
+      "claim": "The save action calls SubmitForm on the generated form.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/app-from-sharepoint",
       "quote": "Its save action calls `SubmitForm` on the generated form.",
@@ -513,10 +496,10 @@
       "fix": null
     },
     {
-      "n": 45,
+      "n": 44,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "The generated form's OnFailure action shows an error notification.",
+      "claim": "The form's OnFailure action shows an error notification.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/app-from-sharepoint",
       "quote": "Its OnFailure action shows an error notification.",
@@ -524,10 +507,21 @@
       "fix": null
     },
     {
-      "n": 46,
-      "where": "Risk assessment: Change & support; Governance guidance",
+      "n": 45,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "Microsoft advises preserving the generated DataSource unless intentionally replacing its behaviour.",
+      "claim": "Microsoft advises preserving the generated DataSource unless its behaviour is intentionally replaced.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/app-from-sharepoint",
+      "quote": "preserve the generated DataSource, Item, navigation formulas, and form success and failure actions unless you intentionally replace their behavior.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Microsoft advises preserving the generated Item unless its behaviour is intentionally replaced.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/app-from-sharepoint",
       "quote": "preserve the generated DataSource, Item, navigation formulas, and form success and failure actions unless you intentionally replace their behavior.",
@@ -536,9 +530,9 @@
     },
     {
       "n": 47,
-      "where": "Risk assessment: Change & support; Governance guidance",
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "Microsoft advises preserving the generated Item unless intentionally replacing its behaviour.",
+      "claim": "Microsoft advises preserving generated navigation formulas unless their behaviour is intentionally replaced.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/app-from-sharepoint",
       "quote": "preserve the generated DataSource, Item, navigation formulas, and form success and failure actions unless you intentionally replace their behavior.",
@@ -547,9 +541,9 @@
     },
     {
       "n": 48,
-      "where": "Risk assessment: Change & support; Governance guidance",
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "Microsoft advises preserving generated navigation formulas unless intentionally replacing their behaviour.",
+      "claim": "Microsoft advises preserving form success and failure actions unless their behaviour is intentionally replaced.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/app-from-sharepoint",
       "quote": "preserve the generated DataSource, Item, navigation formulas, and form success and failure actions unless you intentionally replace their behavior.",
@@ -558,20 +552,9 @@
     },
     {
       "n": 49,
-      "where": "Risk assessment: Change & support; Governance guidance",
-      "type": "behaviour",
-      "claim": "Microsoft advises preserving generated form success and failure actions unless intentionally replacing their behaviour.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/app-from-sharepoint",
-      "quote": "preserve the generated DataSource, Item, navigation formulas, and form success and failure actions unless you intentionally replace their behavior.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 50,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Generated control and screen names can differ from those in older tutorials.",
+      "claim": "Generated control and screen names can vary, so older tutorial names may not match.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/app-from-sharepoint",
       "quote": "The generated control and screen names can vary, so use the names in your app rather than names from an older tutorial.",
@@ -579,65 +562,32 @@
       "fix": null
     },
     {
+      "n": 50,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "Microsoft has not published template-specific licensing terms.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint modern responsive canvas app template licensing pricing meter template-specific. Opened app-from-sharepoint, powerapps-licensing-faq and pricing-billing-skus. General Power Apps terms are published; no separate terms for this template were found.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 51,
-      "where": "Risk assessment: Change & support",
-      "type": "behaviour",
-      "claim": "The template article links separate guidance for customised SharePoint list forms.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/app-from-sharepoint",
-      "quote": "It isn't the same as a customized list form hosted inside SharePoint. For that experience, see Understand SharePoint forms integration.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 52,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "The feature article's prerequisite is SharePoint and Power Apps with a subscription to Microsoft 365 and Microsoft Power Platform.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/app-from-sharepoint",
-      "quote": "Use SharePoint and Power Apps with a subscription to Microsoft 365 and Microsoft Power Platform.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 53,
-      "where": "Cost and licensing",
-      "type": "absence",
-      "claim": "The feature article's prerequisites name no specific subscription plan.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: SharePoint updated responsive canvas app template licensing pricing meter. Opened app-from-sharepoint and read its complete Prerequisites section: it names Microsoft 365 and Microsoft Power Platform subscriptions, not a specific plan.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 54,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "Microsoft has not published licensing terms specific to this template, distinct from general canvas-app licensing.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: SharePoint updated responsive canvas app template licensing pricing meter. Opened app-from-sharepoint, powerapps-licensing-faq and pricing-billing-skus; no separate template licence terms found. General canvas-app rules are published.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 55,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
       "claim": "Building canvas apps does not require a licence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq",
-      "quote": "You don't need a license to build canvas apps.",
+      "quote": "You don't need a license to build canvas apps. You need a license to build model-driven apps.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 56,
+      "n": 52,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
-      "claim": "Running apps requires appropriate entitlements.",
+      "claim": "Running apps requires appropriate Power Apps entitlements.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq",
       "quote": "Power Apps requires users to have an appropriate license to run apps",
@@ -645,10 +595,10 @@
       "fix": null
     },
     {
-      "n": 57,
+      "n": 53,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "Some Microsoft 365 licences include limited use rights for Microsoft 365 data and standard connectors.",
+      "claim": "Some Microsoft 365 licences include Power Apps use rights for Microsoft 365 data and standard connectors.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/pricing-billing-skus",
       "quote": "Some Microsoft 365 licenses include limited Power Apps and Power Automate use rights. These use rights are intended for scenarios that use Microsoft 365 data and standard connectors.",
@@ -656,54 +606,65 @@
       "fix": null
     },
     {
-      "n": 58,
+      "n": 54,
       "where": "Cost and licensing",
       "type": "licensing",
       "claim": "Premium capabilities can require additional entitlements.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq",
-      "quote": "End users need an entitlement to access a premium app.",
+      "quote": "Some examples of features that require premium entitlements include: premium connectors, Dataverse entities, on-premises data gateways, custom APIs, etc.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Managed Environments can require additional qualifying entitlements, including for standard apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq",
+      "quote": "When you activate managed environments in an environment, all active usage requires a qualifying license ... This requirement includes users who run standard apps",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The app-from-list page's prerequisite is SharePoint and Power Apps with a Microsoft 365 and Microsoft Power Platform subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/app-from-sharepoint",
+      "quote": "Use SharePoint and Power Apps with a subscription to Microsoft 365 and Microsoft Power Platform.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Those feature-page prerequisites name no specific plan.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/app-from-sharepoint",
+      "quote": "Prerequisites: Use SharePoint and Power Apps with a subscription to Microsoft 365 and Microsoft Power Platform.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft documents no separate template-specific meter.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint modern responsive canvas app template licensing pricing meter template-specific. Opened app-from-sharepoint, pricing-billing-skus and pay-as-you-go-meters. The meter table and Power Apps subsection describe the general per-app meter, not a template-specific meter.",
       "severity": null,
       "fix": null
     },
     {
       "n": 59,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "Managed Environments can require additional qualifying entitlements.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq",
-      "quote": "When you activate managed environments in an environment, all active usage requires a qualifying license as detailed in managed environments licensing.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 60,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "Microsoft documents no separate meter specific to this template.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: SharePoint updated responsive canvas app template licensing pricing meter. Opened app-from-sharepoint, pricing-billing-skus and pay-as-you-go-meters; no separate template meter found. The general Power Apps per-app meter covers canvas apps.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 61,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "Enabling Power Apps pay-as-you-go through an environment billing plan bills eligible usage to the linked Azure subscription.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/pay-as-you-go-meters",
-      "quote": "When you choose to use pay-as-you-go, Azure meters bill your Azure subscription for your usage of Power Platform services.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 62,
       "where": "Cost and licensing; rationale: cost",
       "type": "applicability",
-      "claim": "The general Power Apps per-app meter can cover the generated canvas app.",
+      "claim": "The general Power Apps per-app pay-as-you-go meter can apply to generated canvas apps where Power Apps pay-as-you-go is enabled.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/pay-as-you-go-meters",
       "quote": "The Power Apps per-app meter provides access to both canvas, and model-driven apps for authenticated users.",
@@ -711,20 +672,31 @@
       "fix": null
     },
     {
-      "n": 63,
-      "where": "Cost and licensing; rationale: cost",
+      "n": 60,
+      "where": "Cost and licensing",
       "type": "cost",
-      "claim": "The Power Apps per-app pay-as-you-go rate is $10 per active user/app/month.",
+      "claim": "Pay-as-you-go charges are billed through the linked Azure subscription.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/pay-as-you-go-meters",
-      "quote": "$10 per active user/app/month",
+      "quote": "When you choose to use pay-as-you-go, Azure meters bill your Azure subscription for your usage of Power Platform services.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 64,
-      "where": "Cost and licensing",
-      "type": "licensing",
+      "n": 61,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "The published Power Apps per-app meter rate is $10 per active user/app/month.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/pay-as-you-go-meters",
+      "quote": "Power Apps per-app ... $10 per active user/app/month",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "cost",
       "claim": "Users with Power Apps per-user licences are not counted in the per-app meter.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/pay-as-you-go-meters",
@@ -733,10 +705,10 @@
       "fix": null
     },
     {
-      "n": 65,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "Users with Microsoft 365 Power Apps rights running standard-connector apps are not counted in the per-app meter.",
+      "n": 63,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Users with qualifying Microsoft 365 Power Apps rights using standard-connector apps are not counted in the meter.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/pay-as-you-go-meters",
       "quote": "If a user has a Microsoft 365 license, which provides access to Power Apps and is using an app with standard connectors, the user is also not counted in the meter.",
@@ -744,54 +716,54 @@
       "fix": null
     },
     {
-      "n": 66,
-      "where": "Scope",
-      "type": "admin-path",
-      "claim": "A maker can start the app from Power Apps using Start with data > SharePoint.",
+      "n": 64,
+      "where": "Cost and licensing",
+      "type": "record",
+      "claim": "The roadmap record states no licensing terms.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/app-from-sharepoint",
-      "quote": "From the home screen, select Start with data. On the Create an app page, select SharePoint.",
+      "source": "roadmap record",
+      "quote": "Description ends: 'Connector and formula delegation limits still apply.' The supplied record contains no licensing or pricing field or statement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "controls[0].ui; Governance controls table and prose",
+      "type": "admin-path",
+      "claim": "Data policy is under Power Platform admin center > Security > Settings > Data and privacy > Data policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/prevent-data-loss",
+      "quote": "Select Security in the navigation pane. ... In the Security pane, under Settings, select Data and privacy. ... In the Data protection and privacy screen, select the Data policy section.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "controls[0].api; Governance controls table and prose",
+      "type": "command",
+      "claim": "New-DlpPolicy -NewPolicy $NewPolicy in Microsoft.PowerApps.Administration.PowerShell creates a policy from a policy object.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy",
+      "quote": "Module: Microsoft.PowerApps.Administration.PowerShell Module. ... New-DlpPolicy -NewPolicy $NewPolicy ... Creates a new policy with the `$NewPolicy` object.",
       "severity": null,
       "fix": null
     },
     {
       "n": 67,
-      "where": "Scope",
-      "type": "admin-path",
-      "claim": "A maker can start the app from the list using Integrate > Power Apps > Create an app.",
+      "where": "controls[1].ui and controls[1].api; summary; Governance controls",
+      "type": "absence",
+      "claim": "No template-specific tenant or environment enable/disable control is documented on the admin UI or automation surfaces.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/app-from-sharepoint",
-      "quote": "Select Integrate > Power Apps > Create an app.",
+      "source": null,
+      "quote": "Searched: SharePoint app-from-data modern template Power Platform API CLI pac admin PowerShell enable disable template. Opened app-from-sharepoint; read pac admin search excerpts and the UI/default search results. No template-specific switch found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 68,
-      "where": "controls[0].ui; Governance controls",
-      "type": "admin-path",
-      "claim": "The Power Platform admin center data-policy path is Security > Settings > Data and privacy > Data policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/prevent-data-loss",
-      "quote": "Select Security in the navigation pane. In the Security pane, under Settings, select Data and privacy. In the Data protection and privacy screen, select the Data policy section.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 69,
-      "where": "controls[0].api; Governance controls",
-      "type": "command",
-      "claim": "New-DlpPolicy -NewPolicy $NewPolicy creates a data policy from a policy object using Microsoft.PowerApps.Administration.PowerShell.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy",
-      "quote": "Module: Microsoft.PowerApps.Administration.PowerShell Module. New-DlpPolicy -NewPolicy $NewPolicy. Creates a new policy with the $NewPolicy object.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 70,
       "where": "Governance controls",
       "type": "command",
-      "claim": "Get-DlpPolicy retrieves existing data-policy objects.",
+      "claim": "Get-DlpPolicy retrieves existing data policy objects.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/get-dlppolicy",
       "quote": "The Get-DlpPolicy cmdlet retrieves policy objects for the logged in admin's tenant.",
@@ -799,8 +771,52 @@
       "fix": null
     },
     {
+      "n": 69,
+      "where": "Scope",
+      "type": "admin-path",
+      "claim": "Makers can start the app in Power Apps using Start with data > SharePoint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/app-from-sharepoint",
+      "quote": "From the home screen, select Start with data. ... On the Create an app page, select SharePoint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Scope",
+      "type": "admin-path",
+      "claim": "Makers can start the app from a SharePoint or Lists list using Integrate > Power Apps > Create an app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/app-from-sharepoint",
+      "quote": "Open a list in either SharePoint or Lists. ... Select Integrate > Power Apps > Create an app.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 71,
-      "where": "Governance guidance: At rollout",
+      "where": "Scope; What's changing; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated the detailed assignment or rollout mechanics for other environments.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"app-from-sharepoint\" \"template\" \"existing\" \"rollout\". Opened app-from-sharepoint; read roadmap and the environment/default search results. No assignment schedule or rollout mechanics beyond the roadmap's early-release preview were found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Why it matters; Open questions",
+      "type": "absence",
+      "claim": "No source examined says that this template update changes existing generated apps.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"app-from-sharepoint\" \"template\" \"existing\" \"rollout\". Opened app-from-sharepoint; read roadmap. Neither specifies migration or conversion of existing generated apps. Results about existing customised SharePoint forms concern a different feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Cost and licensing; Governance guidance: At rollout",
       "type": "behaviour",
       "claim": "Microsoft's pre-sharing checks include previewing both views at narrow and wide widths.",
       "status": "supported",
@@ -810,70 +826,59 @@
       "fix": null
     },
     {
-      "n": 72,
-      "where": "Governance guidance: At rollout; Cost and licensing",
+      "n": 74,
+      "where": "Cost and licensing; Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "Microsoft's pre-sharing checks include creating and editing a test record and checking the source list.",
+      "claim": "Microsoft's pre-sharing checks include creating and saving a test record and checking it in the source list.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/app-from-sharepoint",
-      "quote": "Create a test record, save it, and confirm the values in the source list. Open that record, edit it, and confirm the changes in the source list.",
+      "quote": "Create a test record, save it, and confirm the values in the source list.",
       "severity": null,
       "fix": null
-    },
-    {
-      "n": 73,
-      "where": "rationale: impact; Why it matters; Open questions",
-      "type": "absence",
-      "claim": "No source states that arrival of this template automatically changes apps already generated from a list.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"SharePoint\" \"updated template\" \"existing apps\"; SharePoint updated modern controls app-from-data template admin setting enable disable default rollout existing apps Power Platform API pac admin PowerShell. Read roadmap, app-from-sharepoint and share-app; no automatic conversion stated.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 74,
-      "where": "front matter: licensing.model",
-      "type": "consistency",
-      "claim": "The licensing model is unknown, meaning licensing has not yet been published.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/power-platform/admin/pricing-billing-skus",
-      "quote": "Microsoft Power Platform capabilities can be licensed through standalone licenses, use rights included with other Microsoft products, capacity add-ons, or pay-as-you-go meters.",
-      "severity": "blocker",
-      "fix": "Set licensing.model to \"mixed\". Retain the existing notes explaining general canvas-app entitlements and the absence of separate template-specific terms; published general licensing applies to these canvas apps. Source: https://learn.microsoft.com/power-platform/admin/pricing-billing-skus."
     },
     {
       "n": 75,
-      "where": "front matter: cost; rationale: cost",
-      "type": "consistency",
-      "claim": "The cost rating is low, which the standard defines as indirect cost only.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "cost: \"low\"; \"the general Power Apps per-app pay-as-you-go meter ($10 per active user/app/month) can apply where enabled.\"",
-      "severity": "blocker",
-      "fix": "Set cost to \"variable\" and replace the cost rationale with: \"Variable. The general Power Apps per-app pay-as-you-go meter can apply where enabled at $10 per active user/app/month; qualifying licensed users are excluded. Microsoft documents no separate template-specific meter.\" Source: https://learn.microsoft.com/power-platform/admin/pay-as-you-go-meters."
+      "where": "Cost and licensing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Microsoft's pre-sharing checks include editing the test record and checking the changes in the source list.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/app-from-sharepoint",
+      "quote": "Open that record, edit it, and confirm the changes in the source list.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 76,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is mixed, reflecting general included use rights, standalone licences and pay-as-you-go options.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/pricing-billing-skus",
+      "quote": "Microsoft Power Platform capabilities can be licensed through standalone licenses, use rights included with other Microsoft products, capacity add-ons, or pay-as-you-go meters.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
       "where": "rationale: impact",
       "type": "behaviour",
-      "claim": "A maker must publish an app or its changes before other users see them.",
+      "claim": "Other users see the maker's generated app changes after the maker publishes them.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/share-app",
-      "quote": "Before you share an app, you must save it (not locally) and then publish it. Whenever you make changes, you must save and publish the app again if you want others to see those changes.",
+      "quote": "Whenever you make changes, you must save and publish the app again if you want others to see those changes.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-18T02:53:00.640Z",
+    "at": "2026-11-18T03:37:06.202Z",
     "summary": {
       "links": 9,
-      "unreachable": 0,
+      "unreachable": 7,
       "uiPaths": 1,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 1,
       "apiCalls": 1,
-      "apiCallsNotOnPage": 0,
+      "apiCallsNotOnPage": 1,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -884,18 +889,18 @@
       },
       {
         "url": "https://learn.microsoft.com/power-apps/maker/canvas-apps/app-from-sharepoint",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/prevent-data-loss",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/get-dlppolicy",
@@ -904,23 +909,23 @@
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/pricing-billing-skus",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/pay-as-you-go-meters",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-apps/maker/canvas-apps/share-app",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       }
     ],
     "controlChecks": [
@@ -929,23 +934,28 @@
         "side": "ui",
         "governs": "Which connectors, including SharePoint, apps in an environment may combine",
         "docs": "https://learn.microsoft.com/power-platform/admin/prevent-data-loss",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Security",
           "Settings",
           "Data and privacy",
           "Data policy"
         ],
-        "missing": []
+        "missing": [
+          "Security",
+          "Settings",
+          "Data and privacy",
+          "Data policy"
+        ]
       },
       {
         "index": 0,
         "side": "api",
         "governs": "Which connectors, including SharePoint, apps in an environment may combine",
         "docs": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy",
-        "reachable": true,
+        "reachable": false,
         "token": "New-DlpPolicy",
-        "found": true
+        "found": false
       }
     ],
     "roadmapDrift": []
@@ -955,6 +965,12 @@
       "date": "2026-11-18",
       "status": "held",
       "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-18",
+      "status": "held",
+      "version": 2,
       "model": "gpt-6.1-sol"
     }
   ]

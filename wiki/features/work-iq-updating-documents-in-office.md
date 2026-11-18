@@ -17,7 +17,7 @@ impact: "low"
 defaultState: "unknown"
 action: "review"
 licensing:
-  model: "mixed"
+  model: "unknown"
   notes: "Learn says Work IQ API access is independent of Microsoft 365 Copilot licensing and is billed by usage. Microsoft 365 Copilot licensed users get Work IQ in Copilot experiences and agents, with usage billing for custom and third-party agents. Nothing is published for this feature."
 audiences: ["m365-admin","service-owner","security","finops"]
 tags: ["work-iq","agents","mcp","document-generation","microsoft-365-apps","write-actions","usage-based-billing","copilot-credits"]
@@ -58,7 +58,7 @@ controls:
     scope: "agent"
     ui:
       surface: "Copilot Studio (maker)"
-      path: "Build > Tools > Work IQ > Edit tool > Sources"
+      path: "agent > Build > Tools > Work IQ > Edit tool > Sources"
       docs: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq"
     api: null
     note: "Maker-side only. Whole workloads only, and it does not override organisational permissions or policies. Not confirmed as governing this feature."
@@ -71,19 +71,23 @@ changes:
     note: "First briefing on Work IQ document creation and editing: the roadmap plan, the Work IQ MCP write policy that may govern it, and what Microsoft has not yet published."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 60 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-18"
+    note: "Correction: reworded the data-exposure and oversharing statements to match the Learn pages, set the licensing model to not yet published, added the agent step to the Sources path and removed an unsupported credits-review checklist item."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 68 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-18"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 60
-  confirmed: 57
+  claims: 68
+  confirmed: 68
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "1269e3e90868efc1885c415ef86e28e9"
+  contradicted: 0
+  attempts: 0
+  hash: "03c01fd48d76fc1a707ffc545ce21f09"
 ---
 
 ## What's changing
@@ -105,7 +109,7 @@ Microsoft has not stated what happens on arrival, so plan on no source saying ex
 ## Risk assessment
 
 **Data exposure**
-- Learn says Work IQ actions are user scoped: every request runs in the context of a specific user and only accesses what that user is allowed to see or do. An agent drafting a document from organisational context can therefore draw on anything its user can reach, so oversharing already present in SharePoint or OneDrive carries into generated content.
+- Learn says Work IQ actions are user scoped: every request runs in the context of a specific user and only accesses what that user is allowed to see or do. Overshared content may therefore be a risk, within the workloads and paths permitted by the agent configuration and tenant policies.
 - The Work IQ MCP tool reference says tool access to Microsoft Graph paths uses the signed-in user's Microsoft 365 permissions. Where generated content is stored is not documented for this feature.
 
 **Security & identity**
@@ -135,7 +139,7 @@ The Work IQ MCP pages say requests are checked against the signed-in user's Micr
 ## Governance guidance
 
 ### Before rollout
-- Review who can reach sensitive SharePoint and OneDrive content, because Work IQ requests run as the signed-in user and generated content can draw on whatever that user can read.
+- Review who can reach sensitive SharePoint and OneDrive content, because Work IQ requests run as the signed-in user and the user permission boundary does not by itself correct oversharing.
 - Check the Work IQ MCP tenant policy state in the Microsoft 365 admin center and record whether mutation operations are currently allowed (first row of the table).
 - Ask your Microsoft account team or watch Message center for the preview scope, since no Learn page describes this feature yet.
 
@@ -145,7 +149,6 @@ The Work IQ MCP pages say requests are checked against the signed-in user's Micr
 - Test edits on non-production documents and compare the result with the source file.
 
 ### After rollout
-- Review Copilot Credits consumption for the pilot agents in the Microsoft 365 admin center before widening use.
 - Re-read the Learn pages for Work IQ MCP policy once Microsoft publishes a page for this feature, and update the checklist.
 
 ## Governance controls
@@ -156,7 +159,7 @@ The Work IQ MCP pages say requests are checked against the signed-in user's Micr
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether Work IQ MCP tools may create, update or delete data (tenant policy)</strong><br><small>Tenant</small><br><small class="controls__note">General control: Microsoft has not confirmed it governs this feature. The Policy tab appears when it is available; changes can take up to 24 hours to apply.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Work IQ MCP › Policy <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which Microsoft 365 workloads a Copilot Studio agent's Work IQ tool can use</strong><br><small>Agent</small><br><small class="controls__note">Maker-side only. Whole workloads only, and it does not override organisational permissions or policies. Not confirmed as governing this feature.</small></td><td data-label="Admin UI"><strong>Copilot Studio (maker)</strong><br>Build › Tools › Work IQ › Edit tool › Sources <a href="https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which Microsoft 365 workloads a Copilot Studio agent's Work IQ tool can use</strong><br><small>Agent</small><br><small class="controls__note">Maker-side only. Whole workloads only, and it does not override organisational permissions or policies. Not confirmed as governing this feature.</small></td><td data-label="Admin UI"><strong>Copilot Studio (maker)</strong><br>agent › Build › Tools › Work IQ › Edit tool › Sources <a href="https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
@@ -178,14 +181,4 @@ The Tools page in the Microsoft 365 admin center also lists a Block action that 
 risk: Medium. The roadmap says agents will edit documents, which is a write action; Learn says Work IQ MCP blocks mutation operations by default but also says Copilot Studio write operations are on by default, and neither page covers this feature.
 cost: Variable. Learn says Work IQ usage is billed through usage-based billing and consumes Copilot Credits; no rate for document creation or editing is yet published.
 impact: Low. The roadmap lists the Developer platform, so builders of agents and the admins who govern Work IQ notice first; no user-facing rollout is stated.
--->
-
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Data exposure; Governance guidance: Before rollout / behaviour: Generated content can draw on anything or whatever its user can read. | Found: The agent no longer uses the workloads you remove through Work IQ. | Fix: Replace the Data exposure inference with 'Overshared content may therefore be a risk, within the workloads and paths permitted by the agent configuration and tenant policies.' In Before rollout, replace 'generated content can draw on whatever that user can read' with 'the user permission boundary does not by itself correct oversharing'. The cited page documents workload exclusions, and https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp documents policy restrictions even when user access exists. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq
-- [contradicted, blocker] front matter: licensing.model / consistency: The feature's licensing model is mixed. | Found: model: "mixed" notes: "... Nothing is published for this feature." Cost and licensing: "No licence or price is published for this feature." | Fix: Set licensing.model to 'unknown'. Keep the supported Work IQ platform billing information in licensing.notes and Cost and licensing, but do not classify this undocumented feature's licence model from surrounding experiences whose relationship to it the briefing explicitly leaves unconfirmed.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: Workload selection is reached in Copilot Studio through Build > Tools > Work IQ > Edit tool > Sources. | Found: Sign in to Copilot Studio and open your agent. On the Build tab, under Tools, select Work IQ. In the Edit tool dialog, review the Connection. Under Sources, select the workloads to use | Fix: Include the initial agent selection in controls[1].ui.path and the rendered table: 'agent > Build > Tools > Work IQ > Edit tool > Sources'. The cited instructions begin by opening the agent; the remaining navigation labels are supported. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq
-- [contradicted, minor] Governance guidance: After rollout / consistency: The checklist's instruction to review pilot-agent Copilot Credits consumption has a corresponding controls-table row. | Found: Checklist: 'Review Copilot Credits consumption for the pilot agents in the Microsoft 365 admin center before widening use.' The table contains only the MCP mutation policy and Copilot Studio workload Sources controls. | Fix: Remove the checklist bullet 'Review Copilot Credits consumption for the pilot agents in the Microsoft 365 admin center before widening use.' It names a monitoring control with no corresponding table row; do not add a new row as part of this correction.
 -->

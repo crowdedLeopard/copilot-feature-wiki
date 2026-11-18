@@ -55,6 +55,9 @@ sources:
   - title: "organization table/entity reference (Dataverse Web API)"
     url: "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/organization"
     kind: "learn"
+  - title: "Set-PowerPlatformGenerativeAiSettings"
+    url: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/set-powerplatformgenerativeaisettings?view=pa-ps-latest"
+    kind: "learn"
 videos: []
 related: ["copilot-credits","dynamics-365-customer-insights-data-agents-and-copilot-increase-ai-accuracy-by-grounding-a","microsoft-copilot-studio-introducing-an-app-and-intent-first-agent-creation-experience"]
 controls:
@@ -107,7 +110,10 @@ controls:
       surface: "Power Platform admin center"
       path: "Manage > Environments > environment > Generative AI features > Edit > Move data across regions"
       docs: "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub-prerequisites"
-    api: null
+    api:
+      kind: "powershell"
+      call: "Set-PowerPlatformGenerativeAiSettings -EnvironmentName <environment-id> -CrossGeoDataMovement $true"
+      docs: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/set-powerplatformgenerativeaisettings?view=pa-ps-latest"
     note: "AI Hub prerequisite; if it is no longer accepted, enabled agents are automatically disabled. The platform data-movement page says this checkbox is not displayed for environments in U.S. or government cloud regions."
   - governs: "Whether AI prompts are available in the environment"
     scope: "environment"
@@ -137,19 +143,23 @@ changes:
     note: "Corrected: AI prompts row now lists the Dataverse Web API setting; added the licence statement from the responsible AI FAQ, the pay-as-you-go overage option and the data-movement checkbox exception."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 91 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-18"
+    note: "Corrected: the Move data across regions row now lists Set-PowerPlatformGenerativeAiSettings (Microsoft.PowerApps.Administration.PowerShell), and the closing automation sentence no longer says none is documented for it."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 93 statements not yet confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-18"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 91
-  confirmed: 90
+  claims: 93
+  confirmed: 93
   unconfirmed: 0
-  contradicted: 1
-  attempts: 3
-  hash: "fb814e769e6a2fbaf331b921a61bc6e1"
+  contradicted: 0
+  attempts: 0
+  hash: "4c4b7aec9c0206969f19b01f03b642ea"
 ---
 
 ## What's changing
@@ -228,14 +238,14 @@ Prerequisites on Learn: AI Hub enablement, tenant-level **Use AI agents** set to
 <tr><td data-label="Control"><strong>Copilot credits allocated to the environment and whether it can draw on tenant capacity</strong><br><small>Environment</small><br><small class="controls__note">Power Platform Administrator or Global Administrator. General Copilot Studio credits control; Learn does not confirm it caps this agent beyond the link from the agent page.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Products › Copilot Studio › Manage Copilot Credits › environment <a href="https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform API</strong><br><code>PUT /licensing/allocationsV2?api-version=2024-10-01 {&quot;scope&quot;:{&quot;environmentId&quot;:&quot;&lt;env&gt;&quot;},&quot;allocatedEntitlements&quot;:[{&quot;entitlementId&quot;:&quot;MCSMessages&quot;,&quot;allocation&quot;:{&quot;quantity&quot;:&lt;n&gt;},&quot;enforcementRules&quot;:[{&quot;ruleType&quot;:&quot;TenantPool&quot;,&quot;enabled&quot;:false}]}]}</code> <a href="https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether Anthropic models are available to the tenant and to which users</strong><br><small>Tenant</small><br><small class="controls__note">AI Administrator or Global Administrator. The same page lets you choose users or groups who can access Anthropic models.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Settings › View all › AI providers operating as Microsoft subprocessors › Available subprocessors for your organization › Anthropic <a href="https://learn.microsoft.com/microsoft-365/copilot/connect-to-ai-subprocessor" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether Anthropic models are allowed in a Power Platform environment</strong><br><small>Environment</small><br><small class="controls__note">Needs the provider enabled in Microsoft 365 first. Environment groups use the Power Platform Anthropic rule.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features <a href="https://learn.microsoft.com/power-platform/admin/allow-llm-generative-responses" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether data may move across regions for AI agents</strong><br><small>Environment</small><br><small class="controls__note">AI Hub prerequisite; if it is no longer accepted, enabled agents are automatically disabled. The platform data-movement page says this checkbox is not displayed for environments in U.S. or government cloud regions.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Generative AI features › Edit › Move data across regions <a href="https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub-prerequisites" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether data may move across regions for AI agents</strong><br><small>Environment</small><br><small class="controls__note">AI Hub prerequisite; if it is no longer accepted, enabled agents are automatically disabled. The platform data-movement page says this checkbox is not displayed for environments in U.S. or government cloud regions.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Generative AI features › Edit › Move data across regions <a href="https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub-prerequisites" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-PowerPlatformGenerativeAiSettings -EnvironmentName &lt;environment-id&gt; -CrossGeoDataMovement $true</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/set-powerplatformgenerativeaisettings?view=pa-ps-latest" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether AI prompts are available in the environment</strong><br><small>Environment</small><br><small class="controls__note">AI Hub prerequisite; an environment group rule can also govern it.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Environments › environment › Settings › Product › Features › AI Builder › AI prompts <a href="https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub-prerequisites" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>PATCH &lt;organization-uri&gt;/api/data/v9.2/organizations(&lt;organization-id&gt;) {&quot;aipromptsenabled&quot;:true}</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/organization" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
 Disabling AI agents at tenant level in the Power Platform admin center immediately disables all active agents and stops new ones being created; unaccepting a mandatory prerequisite also disables enabled agents until it is accepted again. An individual agent can be set to **Disabled** in AI Hub.
 
-The Anthropic controls sit in two places: the Microsoft 365 admin center (AI Administrator or Global Administrator) and the Power Platform environment or environment group rule, which a Power Platform system admin sets. Learn says enabling a provider in Microsoft 365 does not automatically allow its models in Power Platform. Microsoft documents a Dataverse Web API setting for AI prompts as well as the Power Platform API for credit allocation; Microsoft Learn documents no automation operation for the other settings at the time of writing (November 2026).
+The Anthropic controls sit in two places: the Microsoft 365 admin center (AI Administrator or Global Administrator) and the Power Platform environment or environment group rule, which a Power Platform system admin sets. Learn says enabling a provider in Microsoft 365 does not automatically allow its models in Power Platform. Microsoft documents a Dataverse Web API setting for AI prompts, the Power Platform API for credit allocation, and Set-PowerPlatformGenerativeAiSettings in Microsoft.PowerApps.Administration.PowerShell for cross-region data movement; Microsoft Learn documents no automation operation for the remaining settings at the time of writing (November 2026).
 
 ## Open questions
 
@@ -250,8 +260,8 @@ cost: Variable. Microsoft Learn says Journey Creation Agent uses Copilot credits
 impact: Low. Administrators configure it and users with the Marketing Manager or Marketing Professional role (or equivalent permissions) build journeys with it.
 -->
 
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[5].api; Governance controls table and closing prose / absence: Microsoft has not documented automation for the Move data across regions control. | Found: Set-PowerPlatformGenerativeAiSettings -EnvironmentName <String> [-CrossGeoDataMovement <Boolean>] -CrossGeoDataMovement Enables or disables cross-geo data movement. | Fix: Replace controls[5].api null with kind "powershell", call "Set-PowerPlatformGenerativeAiSettings -EnvironmentName <environment-id> -CrossGeoDataMovement $true", and docs "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/set-powerplatformgenerativeaisettings?view=pa-ps-latest". Identify its module as Microsoft.PowerApps.Administration.PowerShell. Mirror the change in the rendered table. Replace the closing sentence about automation with: "Microsoft documents a Dataverse Web API setting for AI prompts, the Power Platform API for credit allocation, and Set-PowerPlatformGenerativeAiSettings in Microsoft.PowerApps.Administration.PowerShell for cross-region data movement; no automation operation was found for the remaining settings at the time of writing (November 2026)." | Source: https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/set-powerplatformgenerativeaisettings?view=pa-ps-latest
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] What's changing; Risk assessment: Change & support / admin-path: Review and refine opens the proposal in the standard journey designer. | Found: When the proposed structure looks right, select **Review and refine** in the agent panel. The journey opens on the standard journey canvas with all proposed steps, conditions, and content assignments populated. | Fix: After the existing Review and refine sentence, add: "The feature page calls this action Review and refine; the responsible AI FAQ calls its review option Review and publish." The differing wording is at https://learn.microsoft.com/dynamics365/customer-insights/journeys/faqs-journey-creation-agent, under Human review is required before publishing: "Use the \"Review and publish\" option". | Source: https://learn.microsoft.com/dynamics365/customer-insights/journeys/journey-creation-agent
 -->

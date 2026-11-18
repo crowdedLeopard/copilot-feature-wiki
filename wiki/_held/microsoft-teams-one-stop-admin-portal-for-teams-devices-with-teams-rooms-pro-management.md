@@ -13,7 +13,7 @@ targetDate: "June CY2026"
 previewDate: null
 risk: "medium"
 cost: "low"
-impact: "medium"
+impact: "low"
 defaultState: "on"
 action: "act-now"
 licensing:
@@ -33,6 +33,9 @@ sources:
     kind: "learn"
   - title: "Manage updates for Teams Android devices in Pro Management Portal (PMP)"
     url: "https://learn.microsoft.com/microsoftteams/rooms/androidupdatemanagementinpmp"
+    kind: "learn"
+  - title: "Microsoft Teams Rooms Pro Management Portal device update management"
+    url: "https://learn.microsoft.com/microsoftteams/rooms/update-management"
     kind: "learn"
   - title: "Role-based access control in the Microsoft Teams Rooms Pro Management Portal"
     url: "https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac"
@@ -87,19 +90,23 @@ changes:
     note: "New briefing: Teams Android device management moves from the Teams admin center to the Pro Management portal, with TAC retirement dates from mid-November 2026."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 5 of 101 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-18"
+    note: "Correction: licence-tier statement now follows the update-management guide, minimum Admin Agent version is stated per cloud (AA 830 public, AA 856 government), role-assignment permissions corrected, checklist steps without table rows removed, impact lowered to low."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 118 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-18"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 101
-  confirmed: 96
+  claims: 118
+  confirmed: 117
   unconfirmed: 0
-  contradicted: 5
-  attempts: 1
-  hash: "5911e4165e9da8a0791b99231a043491"
+  contradicted: 1
+  attempts: 2
+  hash: "20eec54ef13409c5a965dac8bce9dc23"
 ---
 
 ## What's changing
@@ -146,7 +153,7 @@ Expect the change to land through help desks and device owners, not end users. R
 
 The transition guide sets licence conditions for PMP access: the organisation needs at least one Teams Rooms Pro, Teams Rooms Basic or Teams Rooms Standard licence, or at least one Teams Shared Space licence (formerly Shared devices), or at least one Teams device already enrolled in PMP. The last route is described as mainly for customers who manage only Teams phones and hold none of the other licences. Existing phones enrolled in TAC enrol automatically after updating to Admin Agent AA 830 or later; new customers must sign in to at least one Teams phone so the tenant is provisioned into PMP.
 
-The pages read name no price, meter, credit rate or usage charge for the transition, and no separate PMP licence beyond those conditions; whether any PMP feature needs a particular licence tier for Android devices is not stated on the transition page. Microsoft's licence page says Teams Rooms Basic is provided at no additional cost, and its comparison table lists Teams Rooms Pro Management as part of Teams Rooms Pro, not Basic. Confirm what each licence tier unlocks for Android devices before you quote it in a budget request.
+The pages read name no price, meter, credit rate or usage charge for the transition, and no separate PMP licence beyond those conditions. For Teams Rooms on Android, the update-management guide says Teams Rooms Pro licences support PMP update-ring orchestration; Basic or legacy-licensed Teams Rooms receive updates automatically through the device nightly maintenance window. The Android guide describes ring adoption generally, so confirm any remaining licensing differences for phones and panels. Microsoft's licence page says Teams Rooms Basic is provided at no additional cost, and its comparison table lists Teams Rooms Pro Management as part of Teams Rooms Pro, not Basic.
 
 Indirect costs are admin time: building roles and device groups, importing profiles and tags, adopting update rings, updating documentation, and manual firmware updates through the OEM portal for devices that cannot self-update.
 
@@ -158,7 +165,7 @@ Indirect costs are admin time: building roles and device groups, importing profi
 
 **Who can open the portal:** an Entra role (Global Administrator, Teams Administrator, Teams Device Administrator, Global Reader), a PMP built-in role or a PMP custom role. Administrative-unit-scoped administrators cannot access it.
 
-**Prerequisites:** a qualifying licence or an enrolled device (see Cost and licensing), network access to the URLs on the Teams Devices network security page, no unsupported conditional access policies on the resource accounts, and the minimum Admin Agent version: AA 830 (1.0.0.202606082157.product) or higher. For government clouds Microsoft says devices will soon be auto-updated to AA 856.
+**Prerequisites:** a qualifying licence or an enrolled device (see Cost and licensing), network access to the URLs on the Teams Devices network security page, no unsupported conditional access policies on the resource accounts, and the minimum Admin Agent version for your cloud: AA 830 (1.0.0.202606082157.product) or higher for the public cloud, or AA 856 (1.0.0.202607160723) or higher for GCC, GCC High and DoD, whichever is eligible for the device. For government clouds Microsoft says devices will soon be auto-updated to AA 856.
 
 **Rollout:** PMP GA and the TAC retirement dates are in What's changing.
 
@@ -166,22 +173,20 @@ Indirect costs are admin time: building roles and device groups, importing profi
 
 ### Before rollout
 
-- Inventory your Teams Android devices and check each one against the minimum Admin Agent version AA 830; list the devices that are offline, signed out, end of life or earlier than version 794, since those need manual steps.
+- Inventory your Teams Android devices and check each one against the minimum Admin Agent version for your cloud (AA 830 for the public cloud; AA 856 for GCC, GCC High and DoD, whichever is eligible for the device); list the devices that are offline, signed out, end of life or earlier than version 794, since those need manual steps.
 - Confirm that you hold a qualifying licence or an already enrolled device so that your administrators can open PMP, and that no administrator who needs access is scoped to an administrative unit.
 - Create the PMP roles you need (Settings > Roles) so that site leads and technicians do not need Global Administrator.
-- Check network allow lists for the URLs on the Teams Devices network security page and review conditional access policies assigned to Teams resource accounts.
 - Update help desk runbooks and documentation to point to PMP, as Microsoft's notice asks.
 
 ### At rollout
 
-- Import TAC tags as PMP Groups (Settings > Groups > Import from Teams admin center) and import TAC configuration profiles as Settings Templates.
+- Import TAC tags as PMP Groups (Settings > Groups > Import from Teams admin center).
 - Decide when to confirm PMP update rings, knowing the confirmation is irreversible, and review the default ring durations first because PMP rolls out faster than TAC phases.
 - Use the tenant-level pause in PMP (Updates > Update management > Android updates) if you need to hold automatic updates, and remember it lasts 2 weeks and does not stop the minimum Admin Agent updates Microsoft describes as not pausable.
 
 ### After rollout
 
 - Check each device group in PMP for devices showing Device is not connected to IoT Hub and fix the network, Admin Agent version or conditional access cause.
-- Review PMP audit logs for update pauses (recorded as TenantUpdatesPaused) and for who changed roles.
 - Re-check this page and the Learn transition guide against the TAC retirement dates for your cloud and device type.
 
 ## Governance controls
@@ -200,11 +205,11 @@ Indirect costs are admin time: building roles and device groups, importing profi
 
 None of the controls below has a documented API on the pages read: a search of Microsoft Learn for Pro Management portal APIs, Microsoft Graph and Teams PowerShell found no operation for these settings at the time of writing (November 2026).
 
-Creating or assigning custom PMP roles needs Global Administrator, Teams Administrator or the Teams Rooms Pro Manager role. The tenant-level pause needs a role with the Global - Grant all permission, which Global Administrator and Teams Administrator have by default. Until TAC device administration is retired for your device type, TAC remains the older surface; Microsoft says tenant-level pause actions configured in TAC will no longer affect automatic updates managed through PMP update rings.
+Creating a custom PMP role needs Global Administrator, Teams Administrator or Teams Rooms Pro Manager. Assigning roles also permits a custom role with role management permissions. The tenant-level pause needs a role with the Global - Grant all permission, which Global Administrator and Teams Administrator have by default. Until TAC device administration is retired for your device type, TAC remains the older surface; Microsoft says tenant-level pause actions configured in TAC will no longer affect automatic updates managed through PMP update rings.
 
 ## Open questions
 
-- Does the licence condition for PMP access apply unchanged to every Android device type and every cloud, and does any PMP feature for Android devices need Teams Rooms Pro specifically? Watch the Learn transition guide.
+- Does any licensing difference apply to Teams phones and panels in PMP, beyond the update-ring rule the update-management guide gives for Teams Rooms (Teams Rooms Pro licences support update-ring orchestration; Basic or legacy-licensed Teams Rooms update through the nightly maintenance window)? Watch the Learn transition guide.
 - Which TAC retirement dates apply to a GCC tenant now that the post says the GCC rollout runs to late November 2026, while the Android update guide still refers to TAC deprecation starting in September? Watch MC1227622.
 - Is Teams Rooms Pro Management available in DoD for every device type, given that the general Pro Management page excludes DoD, the transition guide lists a DoD portal address and SIP features show NA for DoD?
 - Will Microsoft publish an API or PowerShell route for PMP roles, groups, update rings and the tenant-level pause?
@@ -213,17 +218,11 @@ Creating or assigning custom PMP roles needs Global Administrator, Teams Adminis
 <!-- rationale
 risk: Medium. Devices must reach a minimum Admin Agent version, and Microsoft says those updates are not pausable; devices that miss it may stop being manageable once TAC administration is retired.
 cost: Low. The transition page ties portal access to Teams Rooms or Teams Shared Space licences, or an already enrolled device, and states no price or meter; the visible cost is admin time to migrate settings and roles.
-impact: Medium. Teams device administrators and help desks change portals, while room and phone users are not described as affected; the TAC retirement dates apply whether or not anyone acts.
+impact: Low. Teams device administrators and help desks change portals, while room and phone users are not described as affected; the TAC retirement dates apply whether or not anyone acts.
 -->
 
 <!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Cost and licensing: licence-tier uncertainty; Open questions: first bullet / absence: Whether any Android PMP capability needs a particular licence tier remains unconfirmed. | Found: Teams Rooms with Teams Rooms Pro licenses can orchestrate their updates through Teams Rooms Pro Management update rings. For Teams Rooms devices that have a Teams Rooms Basic or legacy Teams Rooms license, their updates are managed through the device's nightly maintenance window automatically. | Fix: Replace the tier-uncertainty sentence and narrow the first open question: 'For Teams Rooms on Android, the update-management guide says Teams Rooms Pro licences support PMP update-ring orchestration; Basic or legacy-licensed Teams Rooms receive updates automatically through the device nightly maintenance window. The Android guide describes ring adoption generally, so confirm any remaining licensing differences for phones and panels.' Cite https://learn.microsoft.com/microsoftteams/rooms/update-management. Do not equate tenant portal access with entitlement to every management capability. | Source: https://learn.microsoft.com/microsoftteams/rooms/update-management
-- [contradicted, blocker] Scope: Prerequisites; Governance guidance: Before rollout, first bullet / behaviour: AA 830 (1.0.0.202606082157.product) is the minimum against which all scoped Android devices should be checked. | Found: This guidance applies to GCC, GCC-High, and DoD cloud customers. ... Make sure your devices are updated to the minimum Admin Agent version 856 (1.0.0.202607160723) or higher | Fix: Qualify the Scope prerequisite and the first Before rollout checklist bullet: 'Check the minimum Admin Agent version for your cloud: AA 830 (1.0.0.202606082157.product) or higher for public cloud; AA 856 (1.0.0.202607160723) or higher for GCC, GCC High and DoD, whichever is eligible for the device.' Cite the government-cloud guidance at https://learn.microsoft.com/microsoftteams/rooms/androidupdatemanagementinpmp. Retain the statement about planned government-cloud auto-updates, but do not present AA 830 as sufficient for those clouds. | Source: https://learn.microsoft.com/microsoftteams/rooms/androidupdatemanagementinpmp
-- [contradicted, blocker] Governance controls: paragraph beginning Creating or assigning / role: Assigning custom PMP roles requires Global Administrator, Teams Administrator or Teams Rooms Pro Manager. | Found: To assign roles, you must be a Global Administrator/ Teams Administrator or Teams Rooms Pro Manager role or have a custom role with role management permissions. | Fix: Replace the sentence with: 'Creating a custom PMP role needs Global Administrator, Teams Administrator or Teams Rooms Pro Manager. Assigning roles also permits a custom role with role management permissions.' Keep https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac as the source. | Source: https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-rbac
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance guidance: After rollout / behaviour: PMP audit logs can identify who changed roles. | Found: activity.category ... User, Assignment, PartnerInvitation, Role ... activity.operation ... Create, Update, Delete ... user.userId | The user who performed the action that resulted in the record being logged. | Fix: Add https://learn.microsoft.com/microsoftteams/rooms/multi-tenant-auditing to sources for the role-change auditing claim. | Source: https://learn.microsoft.com/microsoftteams/rooms/multi-tenant-auditing
-- [contradicted, minor] Governance guidance versus Governance controls / consistency: Several checklist controls have no corresponding controls-table row. | Found: Checklist: 'Check network allow lists'; 'review conditional access policies'; 'import TAC configuration profiles as Settings Templates'; 'Review PMP audit logs'. Table: custom roles, tenant update pause, ring adoption and tag import only. | Fix: The network allow-list, Conditional Access, Settings Templates import and audit-log checklist steps have no corresponding table rows. Remove those checklist steps if correcting without adding controls; their existing discussion elsewhere can remain.
-- [contradicted, minor] front matter: impact; rationale: impact / consistency: The medium impact rating conflicts with its admins-and-help-desks-only rationale. | Found: impact: medium. Rationale: 'Teams device administrators and help desks change portals, while room and phone users are not described as affected'. The standard defines low as 'admins only' and medium as 'makers, analysts or one business unit'. | Fix: Change impact to low and begin the impact rationale with 'Low.'; the stated administrator/support audience otherwise fits the low definition.
+- [contradicted, blocker] What's changing: final paragraph / availability: The general Teams Rooms Pro Management page lists supported clouds as all Microsoft clouds except DoD. | Found: | **Supported clouds** | All Microsoft clouds except DoD and Office 365 operated by 21Vianet. | | Fix: Replace 'lists supported clouds as all Microsoft clouds except DoD' with 'lists supported clouds as all Microsoft clouds except DoD and Office 365 operated by 21Vianet', following https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-management. | Source: https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-management
 -->

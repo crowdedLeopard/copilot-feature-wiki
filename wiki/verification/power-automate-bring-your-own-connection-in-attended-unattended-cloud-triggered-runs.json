@@ -2,48 +2,53 @@
   "slug": "power-automate-bring-your-own-connection-in-attended-unattended-cloud-triggered-runs",
   "roadmapId": 579907,
   "title": "Power Automate: bring your own connection in attended and unattended cloud-triggered desktop flow runs",
-  "status": "held",
+  "status": "verified",
   "date": "2026-11-18",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
-  "verifierVerdict": "hold",
+  "attempts": 0,
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-18",
-    "reasons": [
-      "3 blocking findings (claims 40, 41, 44)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 46,
-    "confirmed": 42,
+    "claims": 52,
+    "confirmed": 52,
     "unconfirmed": 0,
-    "contradicted": 4,
-    "blocker": 3,
+    "contradicted": 0,
+    "blocker": 0,
     "major": 0,
-    "minor": 3
+    "minor": 0
   },
-  "summary": "The roadmap details and maker-side embedding instructions are supported. Hold because the briefing understates documented platform controls and says the future embedding requirement is unknown even though the roadmap explicitly plans to remove it.",
+  "summary": "The briefing accurately separates the planned cloud-run capability from today's documented embedding requirements. The maker control, ownership restrictions and data-policy behaviour are supported; searches found no published feature-specific switch, default or licensing terms. All four Learn pages flagged by the pre-check opened successfully.",
   "claims": [
     {
       "n": 1,
-      "where": "summary; What's changing; Scope",
+      "where": "front matter: products; Scope",
       "type": "record",
-      "claim": "Microsoft plans bring your own connections for shared desktop flows containing connector operations in attended and unattended cloud-triggered runs.",
+      "claim": "The roadmap item concerns Power Automate.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "This functionality allows you to bring your own connections in shared desktop flows that include connector operations and need to run in attended or unattended mode",
+      "quote": "\"products\": [\"Power Automate\"]",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
-      "where": "summary; What's changing",
+      "where": "title; summary; What's changing; Scope",
       "type": "record",
-      "claim": "The planned capability eliminates the need for embedded connection references in cloud runs.",
+      "claim": "Microsoft plans bring your own connections for shared desktop flows containing connector operations in attended and unattended cloud-triggered runs.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This functionality allows you to bring your own connections in shared desktop flows that include connector operations and need to run in attended or unattended mode, eliminating the need for embedded connection references in cloud runs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "summary; What's changing; Why it matters; Scope; rationale: risk",
+      "type": "record",
+      "claim": "The planned capability removes the need for embedded connection references in cloud runs.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "eliminating the need for embedded connection references in cloud runs.",
@@ -51,7 +56,7 @@
       "fix": null
     },
     {
-      "n": 3,
+      "n": 4,
       "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap status is In development.",
@@ -62,10 +67,10 @@
       "fix": null
     },
     {
-      "n": 4,
+      "n": 5,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
-      "claim": "March CY2027 is the roadmap target, not a committed release date.",
+      "claim": "The roadmap target is March CY2027, presented as a target rather than a commitment.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"targetDate\": \"March CY2027\"",
@@ -73,21 +78,10 @@
       "fix": null
     },
     {
-      "n": 5,
-      "where": "front matter: previewDate; What's changing",
-      "type": "record",
-      "claim": "The roadmap supplies no preview date.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": null",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 6,
       "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
-      "claim": "The listed release phase is General Availability.",
+      "claim": "The roadmap release phase is General Availability.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\"]",
@@ -96,20 +90,9 @@
     },
     {
       "n": 7,
-      "where": "front matter: clouds; What's changing; Scope",
-      "type": "record",
-      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed, without an assertion that other clouds are unavailable.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap platform is Desktop.",
+      "claim": "The roadmap lists Desktop as the platform.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Desktop\"]",
@@ -117,13 +100,24 @@
       "fix": null
     },
     {
-      "n": 9,
-      "where": "front matter: products; Scope",
+      "n": 8,
+      "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap product is Power Automate.",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record, without asserting exclusion elsewhere.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"products\": [\"Power Automate\"]",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap record supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
       "severity": null,
       "fix": null
     },
@@ -131,7 +125,7 @@
       "n": 10,
       "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "The roadmap record was modified on 2026-11-17T18:36:41.",
+      "claim": "The recorded roadmap modification timestamp is 2026-11-17T18:36:41.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"modified\": \"2026-11-17T18:36:41\"",
@@ -141,22 +135,22 @@
     {
       "n": 11,
       "where": "front matter: defaultState; Why it matters",
-      "type": "default",
-      "claim": "Microsoft has not stated the new capability's default state or what happens on arrival.",
+      "type": "absence",
+      "claim": "The feature's default state and what happens automatically on arrival are not stated.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Power Automate bring your own connection attended unattended cloud triggered desktop flows licensing default tenant environment setting. Read roadmap, cloudconnectors, sharing and use-connector-actions; none states the cloud BYOC default.",
+      "quote": "Searched: \"Power Automate\" \"bring your own connection\" \"cloud\" \"default\"; opened cloudconnectors and Share desktop flows that contain connector actions; read roadmap description. None specifies the planned cloud capability's arrival default.",
       "severity": null,
       "fix": null
     },
     {
       "n": 12,
-      "where": "front matter: licensing.model; summary; Cost and licensing; rationale: cost",
+      "where": "front matter: licensing.model and notes; summary; Cost and licensing; rationale: cost",
       "type": "absence",
-      "claim": "A licensing model, extra licence, price or meter specific to this new BYOC capability is not yet published.",
+      "claim": "Feature-specific licensing terms for bring your own connection in cloud runs are not yet published.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Power Automate bring your own connection attended unattended cloud triggered desktop flows licensing default tenant environment setting. Read cloudconnectors and Power Automate licensing/types; neither publishes a cloud BYOC-specific licence, price or meter.",
+      "quote": "Searched: Power Automate bring your own connection attended unattended cloud triggered runs licensing premium Process license; read cloudconnectors and licensing/types excerpts. They describe existing RPA entitlements, not separate terms for this planned capability.",
       "severity": null,
       "fix": null
     },
@@ -164,18 +158,18 @@
       "n": 13,
       "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
       "type": "licensing",
-      "claim": "The cloud-connectors Learn page says premium connectors require an Attended RPA licence.",
+      "claim": "The cited cloud-connectors page says premium connectors require an Attended RPA licence, as background rather than feature-specific licensing.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/desktop-flows/actions-reference/cloudconnectors",
       "quote": "To use premium connectors, you need an Attended RPA license.",
-      "severity": "minor",
-      "fix": "Retain the attribution, but add: 'The current licence-types page names the user plan Power Automate Premium and documents Process licensing or pay-as-you-go for unattended desktop flows.' Cite https://learn.microsoft.com/power-platform/admin/power-automate-licensing/types."
+      "severity": null,
+      "fix": null
     },
     {
       "n": 14,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
-      "claim": "The cloud-connectors page says a free work or school account can access standard connectors.",
+      "claim": "The cited cloud-connectors page says a free work or school account can access standard connectors.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/desktop-flows/actions-reference/cloudconnectors",
       "quote": "If you have a free work or school account, you can access standard connectors.",
@@ -184,42 +178,86 @@
     },
     {
       "n": 15,
-      "where": "controls[0].ui; Governance guidance: Before rollout; Governance controls table",
-      "type": "admin-path",
-      "claim": "Embedding is configured in Power Automate through desktop flow > Details > Connection references > Manage > Embedded in desktop flow.",
+      "where": "Cost and licensing",
+      "type": "record",
+      "claim": "The roadmap item names no licence.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/desktop-flows/actions-reference/cloudconnectors",
-      "quote": "Select the desktop flow in Power Automate (make.powerautomate.com), and then select Details. ... In the Connection references section, select Manage. ... Set the Embedded in desktop flow option to Yes to enable it.",
+      "source": "roadmap record",
+      "quote": "This functionality allows you to bring your own connections in shared desktop flows that include connector operations and need to run in attended or unattended mode, eliminating the need for embedded connection references in cloud runs.",
       "severity": null,
       "fix": null
     },
     {
       "n": 16,
-      "where": "controls[0].api; controls[0].note; Governance controls",
-      "type": "absence",
-      "claim": "No API for the desktop-flow connection-reference embedding setting is documented.",
+      "where": "Cost and licensing",
+      "type": "record",
+      "claim": "The roadmap item names no meter.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"desktop flow\" \"embedded\" \"connection\" API workflow clientdata; \"desktop flow\" \"embedded\" \"connection references\" \"Web API\". Read cloudconnectors, desktop-flow-public-apis and Dataverse connectionreference Web API reference; none documents the embedding operation.",
+      "source": "roadmap record",
+      "quote": "This functionality allows you to bring your own connections in shared desktop flows that include connector operations and need to run in attended or unattended mode, eliminating the need for embedded connection references in cloud runs.",
       "severity": null,
       "fix": null
     },
     {
       "n": 17,
-      "where": "controls[1].ui; controls[1].api; summary; Risk assessment; Governance controls",
-      "type": "absence",
-      "claim": "No tenant or environment switch for cloud-run BYOC is documented on the UI or automation surface.",
+      "where": "Cost and licensing",
+      "type": "record",
+      "claim": "The roadmap item names no price.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"desktop flows\" \"bring your own\" \"tenant\"; \"bring your own connection\" \"cloud\" \"admin\" Power Platform API pac PowerShell. Read cloudconnectors and desktop-flow-public-apis; results include pac admin and PowerShell overview but no cloud BYOC switch.",
+      "source": "roadmap record",
+      "quote": "This functionality allows you to bring your own connections in shared desktop flows that include connector operations and need to run in attended or unattended mode, eliminating the need for embedded connection references in cloud runs.",
       "severity": null,
       "fix": null
     },
     {
       "n": 18,
-      "where": "controls[0].note",
+      "where": "What's changing; Governance guidance: At rollout; front matter: changes",
+      "type": "absence",
+      "claim": "Learn does not yet describe the planned cloud-run BYOC feature, as distinct from today's console-run BYOC.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: site:learn.microsoft.com/power-automate/desktop-flows bring your own connection cloud initiated runs embedded connection references; opened cloudconnectors, sharing and use-connector-actions. BYOC is described for console runs; cloud runs still require embedding.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[0].ui; Governance guidance; Governance controls table",
+      "type": "admin-path",
+      "claim": "The embedding control is in Power Automate (maker) at desktop flow > Details > Connection references > Manage > Embedded in desktop flow.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/actions-reference/cloudconnectors",
+      "quote": "Select the desktop flow in Power Automate (make.powerautomate.com), and then select **Details**. ... In the **Connection references** section, select **Manage**. ... Set the **Embedded in desktop flow** option to **Yes** to enable it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[0].api; controls[0].note; Governance controls",
+      "type": "absence",
+      "claim": "No API for changing the desktop-flow connection-reference embedding setting was found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Automate desktop flow embedded connection references API Dataverse workflow clientdata; \"desktopflowconnectionreference\" \"embed\". Opened cloudconnectors, desktop-flow-public-apis and Dataverse connectionreference reference; no embedding operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[1]; summary; Risk assessment: Security & identity; Governance controls; rationale: risk",
+      "type": "absence",
+      "claim": "No tenant or environment UI switch or API for cloud-run BYOC is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Power Automate\" \"bring your own connection\" \"tenant\" \"environment\"; \"bring your own connection\" \"cloud\" \"admin\" \"Power Platform\" API PowerShell CLI. Read cloudconnectors and sharing; results exposed no feature-specific switch or automation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[0].note; Governance controls",
       "type": "role",
-      "claim": "The documented embedding procedure is available to owners and co-owners.",
+      "claim": "The embedding procedure is available to desktop-flow owners and co-owners.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/desktop-flows/actions-reference/cloudconnectors",
       "quote": "To embed a connection reference to a flow that you can access as an owner or co-owner:",
@@ -227,10 +265,10 @@
       "fix": null
     },
     {
-      "n": 19,
-      "where": "controls[0].note; Governance controls; Governance guidance: After rollout",
+      "n": 23,
+      "where": "controls[0].note; Governance guidance: After rollout; Governance controls",
       "type": "role",
-      "claim": "You can embed or remove a connection reference only when you own its underlying connection.",
+      "claim": "Embedding or removing a reference requires ownership of the underlying connection.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/desktop-flows/how-to/share-desktop-flows-that-contain-connector-actions",
       "quote": "You can only embed or remove connection references from a desktop flow if you own the underlying connection.",
@@ -238,10 +276,10 @@
       "fix": null
     },
     {
-      "n": 20,
-      "where": "Governance controls",
+      "n": 24,
+      "where": "controls[0].note; Governance controls",
       "type": "role",
-      "claim": "Other co-owners can manage only connection references they added.",
+      "claim": "Other co-owners can manage only the connection references they added.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/desktop-flows/actions-reference/cloudconnectors",
       "quote": "Other co-owners can only manage connection references they add.",
@@ -249,43 +287,10 @@
       "fix": null
     },
     {
-      "n": 21,
-      "where": "What's changing; Scope; Governance guidance: Before rollout",
-      "type": "behaviour",
-      "claim": "Current documentation requires the Power Automate v2 schema to invoke a desktop flow containing connector actions from a cloud flow.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/desktop-flows/how-to/share-desktop-flows-that-contain-connector-actions",
-      "quote": "To successfully invoke a desktop flow containing connector actions from a cloud flow, it must meet the following two requirements: ... The desktop flow must use the Power Automate v2 schema.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "What's changing; Scope; Why it matters",
-      "type": "behaviour",
-      "claim": "Current documentation requires all connection references to be embedded for a co-owner's cloud-initiated run.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/desktop-flows/how-to/share-desktop-flows-that-contain-connector-actions",
-      "quote": "If you're a co-owner of the flow, all of its connection references must be marked as embedded.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "What's changing; Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Embedding permits other co-owners to access the underlying connection's data while modifying or running the shared desktop flow.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/desktop-flows/how-to/share-desktop-flows-that-contain-connector-actions",
-      "quote": "By embedding a connection reference to a desktop flow, you allow other co-owners to have access to the underlying data provided by it, for both modifying as well as running the desktop flow.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
+      "n": 25,
       "where": "What's changing; Governance controls",
       "type": "behaviour",
-      "claim": "Embedded connection references are available to other co-owners only within the shared desktop flow's scope.",
+      "claim": "Embedded connection references are available to other co-owners only within the respective shared desktop flow.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/desktop-flows/how-to/share-desktop-flows-that-contain-connector-actions",
       "quote": "Embedded connection references are only available to other co-owners in the scope of the shared desktop flow.",
@@ -293,19 +298,63 @@
       "fix": null
     },
     {
-      "n": 25,
-      "where": "What's changing",
+      "n": 26,
+      "where": "What's changing; Why it matters; Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Current documentation limits run-only users of these shared flows to console-initiated runs with their own connections.",
+      "claim": "Embedding gives other co-owners access to the underlying connection's data for modifying and running the flow.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/desktop-flows/actions-reference/cloudconnectors",
-      "quote": "Users (run-only) can run flows shared with them only via Power Automate for desktop's console using their own connections.",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/how-to/share-desktop-flows-that-contain-connector-actions",
+      "quote": "By embedding a connection reference to a desktop flow, you allow other co-owners to have access to the underlying data provided by it, for both modifying as well as running the desktop flow.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 26,
-      "where": "Why it matters; Risk assessment: Security & identity",
+      "n": 27,
+      "where": "What's changing; Scope; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Today's documented cloud invocation of desktop flows containing connector actions requires the Power Automate v2 schema.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/how-to/share-desktop-flows-that-contain-connector-actions",
+      "quote": "To successfully invoke a desktop flow containing connector actions from a cloud flow, it must meet the following two requirements: ... The desktop flow must use the Power Automate v2 schema.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; Why it matters; Scope; controls[0]",
+      "type": "behaviour",
+      "claim": "For co-owners, today's cloud-initiated runs require all connection references to be embedded.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/how-to/share-desktop-flows-that-contain-connector-actions",
+      "quote": "If you're a co-owner of the flow, all of its connection references must be marked as embedded.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing",
+      "type": "role",
+      "claim": "Run-only users can currently run these shared flows only through attended desktop-console runs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/how-to/share-desktop-flows-that-contain-connector-actions",
+      "quote": "Makers with user access on a shared desktop flow must always bring their own connections when they run the flow. They can only perform attended console initiated runs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Run-only users must supply their own connections when running the shared flow.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/how-to/share-desktop-flows-that-contain-connector-actions",
+      "quote": "Makers with user access on a shared desktop flow must always bring their own connections when they run the flow.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Why it matters; Risk assessment: Security & identity; Governance guidance",
       "type": "behaviour",
       "claim": "Each connection is specific to a user.",
       "status": "supported",
@@ -315,7 +364,7 @@
       "fix": null
     },
     {
-      "n": 27,
+      "n": 32,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
       "claim": "Connections require authentication, typically OAuth, API keys or another service-provided method.",
@@ -326,10 +375,10 @@
       "fix": null
     },
     {
-      "n": 28,
+      "n": 33,
       "where": "Why it matters",
       "type": "behaviour",
-      "claim": "Sharing a desktop flow does not automatically grant access to its underlying connections.",
+      "claim": "Sharing a desktop flow does not automatically give access to its underlying connections.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/desktop-flows/how-to/share-desktop-flows-that-contain-connector-actions",
       "quote": "Sharing a desktop flow does not automatically provide access to the underlying connections utilized.",
@@ -337,21 +386,65 @@
       "fix": null
     },
     {
-      "n": 29,
-      "where": "Risk assessment: Data exposure; Risk assessment: Autonomy & actions",
+      "n": 34,
+      "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Connector actions access data and perform actions through the authenticated connection and its account.",
+      "claim": "Connector actions can access and act on data reachable through the underlying authenticated connection.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/desktop-flows/how-to/use-connector-actions",
-      "quote": "This connection allows Power Automate to access and perform actions on data from various services, such as Microsoft 365, SharePoint, SQL Server, and many others. Each connection is specific to a user",
+      "quote": "This connection allows Power Automate to access and perform actions on data from various services, such as Microsoft 365, SharePoint, SQL Server, and many others.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 30,
+      "n": 35,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Connector actions use a connection, represented by a connection reference, to act under its authenticated identity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/how-to/use-connector-actions",
+      "quote": "In Power Automate, a connection reference is an abstraction layer that points to a specific connection used by actions within your flows.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Why it matters; Risk assessment; Governance guidance; Open questions; rationale: risk",
+      "type": "absence",
+      "claim": "Microsoft has not described which user's connector connection the planned cloud-run BYOC capability selects or who chooses it.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"bring your own connection\" \"cloud\" \"connector\" \"unattended\" account credentials; opened cloudconnectors and sharing. Their selection and prompt descriptions cover console runs, not planned cloud-run BYOC.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "Storage of a supplied connection under the planned unattended cloud-run BYOC capability is not described.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"bring your own connection\" \"cloud\" \"connector\" \"unattended\" account credentials; opened cloudconnectors, sharing and use-connector-actions. None describes connection storage for planned cloud-run BYOC.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "Prompting for a supplied connection during planned unattended cloud-run BYOC is not described.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"bring your own connection\" \"cloud\" \"connector\" \"unattended\" account credentials; opened cloudconnectors and sharing. The documented BYOC prompt and suppression conditions are for console-initiated runs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Importing a desktop flow with embedded references in a solution does not automatically include the required connection references.",
+      "claim": "Importing a solution containing a desktop flow with embedded connection references does not automatically include the required references.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/desktop-flows/how-to/share-desktop-flows-that-contain-connector-actions",
       "quote": "When importing a desktop flow with embedded connection references in a solution, the required connection references aren't automatically included.",
@@ -359,10 +452,10 @@
       "fix": null
     },
     {
-      "n": 31,
+      "n": 40,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Microsoft's documented workaround is to include the required connection references explicitly in the solution.",
+      "claim": "The documented workaround is to explicitly include the required references in the solution alongside the desktop flow.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/desktop-flows/how-to/share-desktop-flows-that-contain-connector-actions",
       "quote": "To work around this current limitation, explicitly include the required connection references in the solution alongside the desktop flow.",
@@ -370,10 +463,32 @@
       "fix": null
     },
     {
-      "n": 32,
+      "n": 41,
+      "where": "Risk assessment: Change & support",
+      "type": "absence",
+      "claim": "Microsoft has not stated whether planned cloud-run BYOC changes this solution-import limitation.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: site:learn.microsoft.com/power-automate/desktop-flows bring your own connection cloud initiated runs embedded connection references; opened sharing and cloudconnectors; read roadmap. None addresses the future capability's solution-import behaviour.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Scope; Open questions",
+      "type": "absence",
+      "claim": "Whether the v2 schema prerequisite remains for the planned cloud-run BYOC feature is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"bring your own connection\" \"cloud\" \"unattended\" \"schema\"; opened cloudconnectors and sharing; read roadmap. Current v2 requirements are documented, but no text addresses their future status for cloud-run BYOC.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
       "where": "Scope",
       "type": "behaviour",
-      "claim": "Default desktop-flow connectors include Microsoft Dataverse, SharePoint, Office 365 Outlook and Microsoft Teams.",
+      "claim": "Default desktop-flow cloud connectors include Microsoft Dataverse, SharePoint, Office 365 Outlook and Microsoft Teams.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/desktop-flows/actions-reference/cloudconnectors",
       "quote": "Power Automate for desktop adds these cloud connectors to desktop flows by default. You always see them in the actions pane: ... Microsoft Dataverse ... SharePoint ... Microsoft Teams ... Office 365 Outlook",
@@ -381,10 +496,10 @@
       "fix": null
     },
     {
-      "n": 33,
+      "n": 44,
       "where": "Scope",
       "type": "behaviour",
-      "claim": "Other non-custom Power Automate cloud connectors can be added through the Assets library.",
+      "claim": "Other non-custom Power Automate cloud connectors can be added to desktop flows through the Assets library.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/desktop-flows/actions-reference/cloudconnectors",
       "quote": "To add other non-custom Power Automate cloud connectors to a desktop flow, use the Assets library.",
@@ -392,156 +507,101 @@
       "fix": null
     },
     {
-      "n": 34,
-      "where": "What's changing; Governance guidance: At rollout; front matter: changes",
-      "type": "absence",
-      "claim": "Learn does not yet document the newly planned cloud-triggered BYOC capability.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"desktop flows\" \"bring your own connection\" \"cloud-initiated\"; Power Automate bring your own connection attended unattended cloud triggered desktop flows licensing default tenant environment setting. Read cloudconnectors and sharing; both document console BYOC instead.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
-      "where": "Why it matters; Risk assessment; Open questions; rationale: risk",
-      "type": "absence",
-      "claim": "Microsoft has not described which user's connector connection a new cloud BYOC run selects or who chooses it.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"desktop flows\" \"bring your own connection\" \"cloud-initiated\". Read roadmap, cloudconnectors, sharing, use-connector-actions and desktop-flow-public-apis; none explains selection of connector connections for the new capability.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "Risk assessment: Security & identity",
-      "type": "absence",
-      "claim": "Storage and prompting mechanics for connector connections in unattended cloud BYOC runs are not described.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Automate bring your own connection attended unattended cloud triggered desktop flows licensing default tenant environment setting; \"desktop flows\" \"bring your own connection\" \"cloud-initiated\". Read cloudconnectors and sharing; prompting is documented for console runs only.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "Why it matters",
-      "type": "absence",
-      "claim": "No source states that existing flows automatically change behaviour on arrival.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Automate bring your own connection attended unattended cloud triggered desktop flows licensing default tenant environment setting. Read roadmap, cloudconnectors and sharing; no automatic migration or change to existing flows is specified.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "Cost and licensing",
-      "type": "record",
-      "claim": "The roadmap item names no licence, meter or price.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "This functionality allows you to bring your own connections in shared desktop flows that include connector operations and need to run in attended or unattended mode, eliminating the need for embedded connection references in cloud runs.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "Governance controls",
-      "type": "applicability",
-      "claim": "Data policies exist for desktop flows.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/desktop-flows/data-loss-prevention",
-      "quote": "Power Automate offers administrators the option to create and enforce policies that classify desktop flows action groups as business or non-business and mark actions or action groups as blocked.",
-      "severity": "minor",
-      "fix": "Cite https://learn.microsoft.com/power-automate/desktop-flows/data-loss-prevention for the existing desktop-flow data-policy statement."
-    },
-    {
-      "n": 40,
-      "where": "Governance controls; Governance guidance: After rollout",
-      "type": "applicability",
-      "claim": "Microsoft has not confirmed how general data policies apply to desktop flows using the new capability.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/power-automate/desktop-flows/data-loss-prevention",
-      "quote": "For cases that a desktop flow is suspended, it won't be able to run it. Similarly, a cloud flow using a suspend desktop flow won't be able to run either.",
-      "severity": "blocker",
-      "fix": "Replace the final sentence of Governance controls with: 'Existing desktop-flow data policies classify or block action groups; a desktop flow suspended for a policy violation cannot run, including through a cloud flow.' Cite https://learn.microsoft.com/power-automate/desktop-flows/data-loss-prevention."
-    },
-    {
-      "n": 41,
-      "where": "Risk assessment: Security & identity; Governance controls",
-      "type": "absence",
-      "claim": "Maker-side embedding is the only related control documented today.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/power-automate/desktop-flows/governance#prevent-power-automate-for-desktop-from-running-flows-containing-cloud-connectors",
-      "quote": "You can use the following registry entry to disable the execution of flows containing cloud connectors. ... DisableCloudConnectors ... 1: The machine can't run desktop flows containing cloud connectors.",
-      "severity": "blocker",
-      "fix": "In Risk assessment, remove ', so the maker-side embedding setting is the only related control documented'. In Governance controls, change 'The one related control documented today is maker-side' to 'The embedding control is maker-side'. This removes the false exclusivity without adding a control row."
-    },
-    {
-      "n": 42,
+      "n": 45,
       "where": "Scope",
       "type": "absence",
-      "claim": "The new capability's connector coverage is not specified.",
+      "claim": "Microsoft has not specified the connector coverage of the planned cloud-run BYOC capability.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"desktop flows\" \"bring your own connection\" \"cloud-initiated\". Read roadmap and cloudconnectors; the roadmap says connector operations without a coverage list, and Learn lists current desktop-flow connectors rather than coverage for the new feature.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "Scope; Open questions",
-      "type": "absence",
-      "claim": "Whether the Power Automate v2 schema requirement remains for the new capability is not stated.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"desktop flows\" \"bring your own connection\" \"cloud-initiated\". Read roadmap, cloudconnectors and sharing; the v2 requirement is documented for current cloud runs, but no source discusses its future under cloud BYOC.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "Scope: 'Whether those prerequisites stay is not stated'",
-      "type": "record",
-      "claim": "Whether embedded connection references remain a prerequisite under cloud BYOC is not stated.",
-      "status": "contradicted",
-      "source": "roadmap record",
-      "quote": "eliminating the need for embedded connection references in cloud runs.",
-      "severity": "blocker",
-      "fix": "Replace 'Whether those prerequisites stay is not stated' with: 'The roadmap plans to remove the embedded-reference requirement; whether the Power Automate v2 schema requirement remains is not stated.'"
-    },
-    {
-      "n": 45,
-      "where": "Risk assessment: Change & support",
-      "type": "absence",
-      "claim": "Microsoft has not stated whether cloud BYOC changes the solution-import limitation.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"desktop flows\" \"bring your own connection\" \"cloud-initiated\"; \"desktop flow\" \"embedded\" \"connection references\" \"Web API\". Read roadmap and sharing; the import limitation is documented without any discussion of the planned capability.",
+      "quote": "Searched: \"bring your own connection\" \"cloud\" \"connector\" \"unattended\" account credentials; opened cloudconnectors and use-connector-actions; read roadmap. General connector availability is described, but no feature-specific coverage list was found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 46,
-      "where": "Governance guidance: After rollout; controls",
-      "type": "consistency",
-      "claim": "The governance checklist asks readers to review data policies, but the controls table has no data-policy row.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Re-check how data policies apply to connector actions in desktop flows once Microsoft documents the feature. ... controls: connection-reference embedding; tenant or environment BYOC switch.",
-      "severity": "minor",
-      "fix": "The After rollout data-policy checklist step has no matching controls-table row. Remove that checklist bullet; do not add a control row as part of this correction."
+      "where": "Why it matters",
+      "type": "absence",
+      "claim": "No source states an automatic change to existing flows on arrival, rather than the availability of the planned alternative to embedding.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Power Automate\" \"bring your own connection\" \"cloud\" \"default\"; opened cloudconnectors and sharing; read roadmap. The record plans removal of the need to embed but says nothing about automatic migration or changed defaults for existing flows.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "What's changing; controls[0]; Governance controls",
+      "type": "behaviour",
+      "claim": "Embedding is a current per-reference setting on the selected shared desktop flow, not a documented switch for the future BYOC capability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/actions-reference/cloudconnectors",
+      "quote": "In the Connection references screen, view all of the connection references used in the flow. ... Set the Embedded in desktop flow option to Yes to enable it. ... After you confirm your selection, the connection reference is embedded in the desktop flow.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Existing desktop-flow data policies classify action groups as business or non-business.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/data-loss-prevention",
+      "quote": "Power Automate offers administrators the option to create and enforce policies that classify desktop flows action groups as business or non-business and mark actions or action groups as blocked.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Existing desktop-flow data policies can block actions or action groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/data-loss-prevention",
+      "quote": "Apart from marking action groups as business and non-business, the administrator can mark action groups or particular actions as blocked. In this case, these actions can't be used at all in the flow.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "A desktop flow suspended for a data-policy violation cannot run.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/data-loss-prevention",
+      "quote": "A desktop flow that violates a data loss prevention (DLP) policy will be marked as suspended and the run option will be disabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "A cloud flow using a suspended desktop flow cannot run it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/data-loss-prevention",
+      "quote": "For cases that a desktop flow is suspended, it won't be able to run it. Similarly, a cloud flow using a suspend desktop flow won't be able to run either.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "rationale: cost; Cost and licensing",
+      "type": "absence",
+      "claim": "No incremental feature-specific meter or price was found, leaving review time as the identified incremental cost rather than asserting free licensing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Automate bring your own connection attended unattended cloud triggered runs licensing premium Process license; read cloudconnectors, licensing/types and licensing FAQ excerpts. General RPA costs are published; no additional BYOC-specific charge was found.",
+      "severity": null,
+      "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-18T02:53:02.540Z",
+    "at": "2026-11-18T03:37:06.714Z",
     "summary": {
-      "links": 4,
-      "unreachable": 0,
+      "links": 5,
+      "unreachable": 4,
       "uiPaths": 1,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 1,
       "apiCalls": 0,
       "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
@@ -554,18 +614,23 @@
       },
       {
         "url": "https://learn.microsoft.com/power-automate/desktop-flows/actions-reference/cloudconnectors",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-automate/desktop-flows/how-to/share-desktop-flows-that-contain-connector-actions",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-automate/desktop-flows/how-to/use-connector-actions",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/power-automate/desktop-flows/data-loss-prevention",
+        "ok": false,
+        "status": 429
       }
     ],
     "controlChecks": [
@@ -574,7 +639,7 @@
         "side": "ui",
         "governs": "Which connection references are embedded in a shared desktop flow for cloud-initiated runs",
         "docs": "https://learn.microsoft.com/power-automate/desktop-flows/actions-reference/cloudconnectors",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "desktop flow",
           "Details",
@@ -582,10 +647,23 @@
           "Manage",
           "Embedded in desktop flow"
         ],
-        "missing": []
+        "missing": [
+          "desktop flow",
+          "Details",
+          "Connection references",
+          "Manage",
+          "Embedded in desktop flow"
+        ]
       }
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-18",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

@@ -28,6 +28,9 @@ sources:
   - title: "MC1193415: (Updated) Microsoft Teams: Find SharePoint agents in Teams chats and Teams Store"
     url: "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1193415"
     kind: "message-center"
+  - title: "Share an agent from SharePoint in Teams"
+    url: "https://support.microsoft.com/office/share-an-agent-from-sharepoint-in-teams-6dcbf7b5-8c13-44e5-a68a-dbd71fb76ad3"
+    kind: "docs"
   - title: "Manage access to agents in SharePoint"
     url: "https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint"
     kind: "learn"
@@ -73,19 +76,23 @@ changes:
     note: "Corrected after verification: pay-as-you-go billing now states the $0.01 per message price and that the billing resource applies to users without a Copilot licence; the blocking call is no longer shown as verified."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 55 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-18"
+    note: "Corrected after verification: the shared-chat permissions uncertainty is replaced with what Microsoft Support says, and checklist steps without controls table rows are removed."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 61 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-18"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 55
-  confirmed: 53
+  claims: 61
+  confirmed: 61
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "e53efa850e7776e7c7b4dd54442a7117"
+  contradicted: 0
+  attempts: 0
+  hash: "22a81553a47fc4db6586e6166372c945"
 ---
 
 ## What's changing
@@ -107,7 +114,7 @@ The decision for a service owner is who pays. Access depends on a Microsoft 365 
 ## Risk assessment
 
 **Data exposure**
-- Agents in SharePoint answer according to each user's permissions on the agent's data sources, so a user without access to a site does not get its content in responses (Learn, Manage access to agents in SharePoint). Whether that holds the same way when an agent is added to a shared chat is not described for this feature; see Open questions.
+- Agents in SharePoint answer according to each user's permissions on the agent's data sources, so a user without access to a site does not get its content in responses (Learn, Manage access to agents in SharePoint). In Teams, if the user who asks the question has permission to see the answer but some members of the chat group do not, the user sees a message explaining that the answer can't be automatically added to the chat (Microsoft Support, Share an agent from SharePoint in Teams).
 - Site-level exclusion exists: a site flagged with restricted content discovery hides the Agent icon on the site and stops its content being added to other agents.
 
 **Security & identity**
@@ -137,14 +144,11 @@ The record lists General Availability and Targeted Release. The notice gives the
 ## Governance guidance
 
 ### Before rollout
-- Confirm which users hold a Microsoft 365 Copilot licence and whether pay-as-you-go billing for SharePoint agents is connected, using Microsoft 365 admin center > Copilot > Billing and usage. Microsoft's linked setup guide instead directs administrators to Copilot > Cost management > Classic Billing & usage.
-- Review the permissions on important .agent files and on the sites those agents use, since Learn says file permissions determine who can access or edit an agent.
-- Decide whether any sensitive sites should be flagged with restricted content discovery, which removes the Agent icon and keeps their content out of other agents.
+- Confirm that intended users have E3 or E5 (with Teams) licensing and either a Microsoft 365 Copilot licence or pay-as-you-go set up separately for SharePoint agents on Mac, as Microsoft's notice asks.
 
 ### At rollout
 - Brief the helpdesk on the Add Agents and Bots option in the chat roster dropdown and on who is licensed to use agents, as Microsoft's notice suggests.
 - Check whether SharePoint agents appear in the Teams admin center Manage apps list, and once Microsoft confirms it applies, use Allow or Block there to control them.
-- If pay-as-you-go is used, create a budget in Microsoft Cost Management before usage grows.
 
 ### After rollout
 - Review pay-as-you-go consumption by Copilot Studio meter and SharePoint agents in Microsoft Cost Management.
@@ -165,12 +169,9 @@ Microsoft's notice says no changes to admin controls are needed and that existin
 
 Other controls come from the SharePoint agents pages. Learn says admins can turn 'Microsoft Copilot for SharePoint' on or off per user under the service plans of the Copilot licence, but this also disables Copilot in OneDrive and SharePoint page authoring for that user. Under pay-as-you-go, only users in the security group assigned to the billing policy have access to agents. Restricted content discovery turns agent features off per site. Blocking an agent in the Microsoft 365 admin center currently covers Copilot Chat only.
 
-The checklist steps on .agent file permissions, restricted content discovery, the billing connection and budgets are background guidance from those pages; they have no rows in this table.
-
 ## Open questions
 
 - Does the Teams admin center Manage apps page, or app-centric management, control SharePoint agents added from the in-context store, and is there a Teams policy that hides **Add Agents and Bots**? Watch the Teams admin center documentation and MC1193415.
-- How are responses handled when an agent is added to a chat whose members have different access to the agent's data sources? Microsoft has not described this for the feature.
 - Does the feature reach channels, as the roadmap description says, or only chats, as the notice says?
 - The roadmap title mentions adaptive card link unfurling while the description and notice describe SharePoint agents: which does Microsoft intend this item to cover?
 
@@ -178,12 +179,4 @@ The checklist steps on .agent file permissions, restricted content discovery, th
 risk: Medium. The feature is on by default for Teams users on Desktop and Mac and puts agents into shared chats, while Microsoft's notice says no admin control changes are needed and existing policies are respected.
 cost: Variable. Users need a Microsoft 365 Copilot licence or tenant pay-as-you-go billing for SharePoint agents, which Microsoft documents as 12 messages per interaction on the Copilot Studio meter.
 impact: High. Microsoft's notice MC1193415 says all Teams users on Desktop and Mac are affected, and the feature is enabled by default.
--->
-
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Data exposure; Open questions: differing data-source permissions / absence: Microsoft has not described how SharePoint-agent responses are handled in a Teams chat whose members have different source permissions. | Found: If the user who asks the question has permission to see the answer, but some members in the chat group don't, the user sees a message explaining that the answer can't be automatically added to the chat. | Fix: Replace the shared-chat uncertainty in Data exposure and remove the corresponding Open question. Write: "In Teams, the agent checks the requesting user's permissions. If other chat members lack access, the answer is not posted automatically: the requester can select View response, review it, and decide whether to share it with the group." Cite and add to sources https://support.microsoft.com/office/share-an-agent-from-sharepoint-in-teams-6dcbf7b5-8c13-44e5-a68a-dbd71fb76ad3. | Source: https://support.microsoft.com/office/share-an-agent-from-sharepoint-in-teams-6dcbf7b5-8c13-44e5-a68a-dbd71fb76ad3
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance; Governance controls: final paragraph / consistency: The checklist names .agent permissions, restricted content discovery, the billing connection and budgets, but the controls table has no corresponding rows. | Found: The checklist steps on .agent file permissions, restricted content discovery, the billing connection and budgets are background guidance from those pages; they have no rows in this table. | Fix: Remove the checklist bullets that tell readers to review .agent/site permissions, set restricted content discovery, check the billing connection, or create budgets, and remove the final paragraph acknowledging their missing rows. Keep the verified background explanations in the risk and cost sections; do not add control rows as part of this correction.
 -->

@@ -119,19 +119,23 @@ changes:
     note: "Corrected the connected-agents review row to give its documented Graph call, replaced the roles and licence sentences with the pages that state them, and removed an unsupported absence statement."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 76 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-18"
+    note: "Corrected the preview statement: only the package-update and blocking APIs are in preview; the package-details API also has a v1.0 endpoint."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 80 statements not yet confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-18"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 76
-  confirmed: 75
+  claims: 80
+  confirmed: 80
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "848a5305f8499a498043858f1f0c55cf"
+  contradicted: 0
+  attempts: 0
+  hash: "a24905e716392bfd7a7882d3b3dbaa83"
 ---
 
 ## What's changing
@@ -218,7 +222,7 @@ Rollout began in late August 2026 and is expected to complete by the end of Dece
 
 Installing an agent and blocking an agent are separate actions on the same **All agents** page; the notice describes installation as the step that makes an A2A agent available, and users cannot install these agents themselves. The connected-agents page says administrators can view developer-configured connections for most agents but not add or remove them, so the tab is a review point, not an editing control.
 
-The Package Management API is in preview and requires an Agent 365 licence. Developers register A2A agents with the Agent Registration API (preview), which Microsoft's overview says also lets administrators retrieve, update and delete registrations.
+The package-update and blocking APIs are in preview; the package-details API also has a v1.0 endpoint. Access to the Package Management API requires an Agent 365 licence. Developers register A2A agents with the Agent Registration API (preview), which Microsoft's overview says also lets administrators retrieve, update and delete registrations.
 
 ## Open questions
 
@@ -233,8 +237,8 @@ cost: Low. The only cost the sources show is admin time; the licence this featur
 impact: Medium. Administrators and developers who build declarative agents notice first, then users who are given an approved Agent2Agent agent and a declarative agent that connects to it.
 -->
 
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls: paragraph after table / availability: The Package Management API is described collectively as being in preview. | Found: ::: zone pivot="graph-v1" ... GET https://graph.microsoft.com/v1.0/copilot/admin/catalog/packages/{id} ... ::: zone pivot="graph-preview" ... GET https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id} | Fix: Replace 'The Package Management API is in preview and requires an Agent 365 licence.' with 'The package-update and blocking APIs are in preview; the package-details API also has a v1.0 endpoint. Access to the Package Management API requires an Agent 365 licence.' | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-get
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Risk assessment: Security & identity / behaviour: The registration references an existing authentication registration through an authorization object. | Found: the registration references an existing authentication registration through the authorization object in the agentRegistration. | Fix: Add: 'The declarative-agent guide calls this object `authorization`; the registration API update reference instead names `a2aAuthorization`.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/agent-registration/agentregistration-update, whose request-body table describes a2aAuthorization as 'Authorization configuration used to invoke an Agent2Agent server.' | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/declarative-agent-connected-agent
 -->

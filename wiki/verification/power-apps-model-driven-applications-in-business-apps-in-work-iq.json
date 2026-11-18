@@ -4,10 +4,10 @@
   "title": "Power Apps: model-driven apps as Business Applications in Work IQ",
   "status": "held",
   "date": "2026-11-18",
-  "version": 2,
+  "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 2,
+  "attempts": 3,
   "verifierVerdict": "hold",
   "notes": [],
   "hold": {
@@ -18,106 +18,62 @@
     ]
   },
   "counts": {
-    "claims": 90,
-    "confirmed": 88,
+    "claims": 96,
+    "confirmed": 94,
     "unconfirmed": 0,
     "contradicted": 2,
     "blocker": 1,
     "major": 0,
-    "minor": 4
+    "minor": 3
   },
-  "summary": "Hold: the claim that none of these settings can be scripted overlooks the documented Dataverse API for app-setting overrides. The roadmap facts, feature limitations and cited control paths are supported, although other Microsoft pages give conflicting control labels and setup steps.",
+  "summary": "Hold: the page incorrectly reports App Access automation as undocumented, although Dataverse documents an API for allowing or blocking applications. The roadmap facts and the other listed controls are supported; minor corrections concern conflicting documentation and a checklist control missing from the table.",
   "claims": [
     {
       "n": 1,
       "where": "title; What's changing",
-      "type": "behaviour",
+      "type": "record",
       "claim": "Power Apps model-driven apps are available as Business Applications in Work IQ.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/user/use-business-apps-work-iq",
-      "quote": "Power Apps model-driven apps are available as Business Applications in Work IQ.",
+      "source": "roadmap record",
+      "quote": "Power Apps model-driven apps are now available as Business Apps in Work IQ.",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
-      "where": "summary; What's changing",
-      "type": "behaviour",
-      "claim": "Users can list model-driven app records with natural-language prompts without opening the app.",
+      "where": "summary; What's changing; Risk assessment; rationale: risk",
+      "type": "record",
+      "claim": "Natural-language prompts let users list, read, create, update and delete model-driven app records.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/user/use-business-apps-work-iq",
-      "quote": "You can use natural-language prompts to find and work with business data without opening the model-driven app.",
+      "source": "roadmap record",
+      "quote": "In either experience, natural-language prompts let users list and read records or create, update, and delete them.",
       "severity": null,
       "fix": null
     },
     {
       "n": 3,
-      "where": "summary; What's changing",
-      "type": "behaviour",
-      "claim": "Users can read records through Work IQ.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/user/use-business-apps-work-iq",
-      "quote": "Read, create, and update records by using the default main form, or name another main form in your prompt.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
-      "where": "summary; What's changing; Risk assessment; rationale: risk",
-      "type": "behaviour",
-      "claim": "Users can create records through Work IQ.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/user/use-business-apps-work-iq",
-      "quote": "For example, ask Work IQ to list records from an app view, show the details of a record, create a record with the values in your prompt, or update an existing record.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "summary; What's changing; Risk assessment; rationale: risk",
-      "type": "behaviour",
-      "claim": "Users can update records through Work IQ.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/user/use-business-apps-work-iq",
-      "quote": "For example, ask Work IQ to list records from an app view, show the details of a record, create a record with the values in your prompt, or update an existing record.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
-      "where": "summary; What's changing; Risk assessment; rationale: risk",
-      "type": "behaviour",
-      "claim": "Users can delete records through Work IQ.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/user/use-business-apps-work-iq",
-      "quote": "Before deleting a record, Work IQ presents the record's fields so you can verify that you selected the correct record.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
       "where": "What's changing",
       "type": "record",
       "claim": "The roadmap names the Work IQ (Preview) tool in Copilot Studio as an entry point.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "They can be accessed through the Work IQ (Preview) tool in Copilot Studio or through a natural-language chat experience powered by Work IQ MCP.",
+      "quote": "They can be accessed through the Work IQ (Preview) tool in Copilot Studio",
       "severity": null,
       "fix": null
     },
     {
-      "n": 8,
+      "n": 4,
       "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap names a natural-language chat experience powered by Work IQ MCP as an entry point.",
+      "claim": "The roadmap also names a natural-language chat experience powered by Work IQ MCP.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "They can be accessed through the Work IQ (Preview) tool in Copilot Studio or through a natural-language chat experience powered by Work IQ MCP.",
+      "quote": "or through a natural-language chat experience powered by Work IQ MCP.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 9,
+      "n": 5,
       "where": "What's changing",
       "type": "record",
       "claim": "For create and update, Work IQ maps supplied values to app fields.",
@@ -128,18 +84,18 @@
       "fix": null
     },
     {
-      "n": 10,
+      "n": 6,
       "where": "summary; What's changing; Risk assessment; rationale: risk",
-      "type": "behaviour",
-      "claim": "Data-changing operations require explicit confirmation before submission.",
+      "type": "record",
+      "claim": "Proposed create and update values require explicit user confirmation before submission.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/user/use-business-apps-work-iq",
-      "quote": "For an operation that changes data, review the proposed values, make any needed changes, and explicitly confirm the operation before it's submitted.",
+      "source": "roadmap record",
+      "quote": "Before a change is submitted, the proposed values require explicit user confirmation.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 11,
+      "n": 7,
       "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap status is In development.",
@@ -150,10 +106,10 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 8,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
-      "claim": "The roadmap target is November CY2026, described as a target rather than a commitment.",
+      "claim": "The roadmap target is November CY2026, presented as a target rather than a commitment.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"targetDate\": \"November CY2026\"",
@@ -161,7 +117,7 @@
       "fix": null
     },
     {
-      "n": 13,
+      "n": 9,
       "where": "front matter: previewDate; What's changing",
       "type": "record",
       "claim": "The roadmap preview target is September CY2026.",
@@ -172,10 +128,10 @@
       "fix": null
     },
     {
-      "n": 14,
+      "n": 10,
       "where": "front matter: releasePhase; What's changing; Open questions",
       "type": "record",
-      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "claim": "The roadmap release phases are General Availability and Preview.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
@@ -183,10 +139,10 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 11,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -194,10 +150,10 @@
       "fix": null
     },
     {
-      "n": 16,
+      "n": 12,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "Web is the only platform listed in the roadmap record.",
+      "claim": "Web is the platform listed by the roadmap.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Web\"]",
@@ -205,32 +161,32 @@
       "fix": null
     },
     {
-      "n": 17,
-      "where": "What's changing; Scope",
-      "type": "behaviour",
-      "claim": "The user selects an environment from those their permissions allow.",
+      "n": 13,
+      "where": "front matter: products, roadmapModified",
+      "type": "record",
+      "claim": "This Power Apps roadmap item was modified on 2026-10-12T23:01:05.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/user/use-business-apps-work-iq",
-      "quote": "Select a Power Platform environment from the environments available to you.",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Power Apps\"], \"modified\": \"2026-10-12T23:01:05\"",
       "severity": null,
       "fix": null
     },
     {
-      "n": 18,
-      "where": "What's changing; Scope",
-      "type": "behaviour",
-      "claim": "The user selects a model-driven app permitted by their access.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/user/use-business-apps-work-iq",
-      "quote": "You can only select environments and applications, view data, and perform actions that your permissions allow.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
+      "n": 14,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Work IQ uses the app's views, forms and tables to complete requests.",
+      "claim": "Users select a Power Platform environment and a model-driven app in the conversation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/use-business-apps-work-iq",
+      "quote": "Start a conversation, select an environment and app when prompted, and then describe the information or action you need.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Work IQ uses the app's views, forms and tables.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/user/use-business-apps-work-iq",
       "quote": "Work IQ uses the app's views, forms, and tables to complete the request.",
@@ -238,7 +194,7 @@
       "fix": null
     },
     {
-      "n": 20,
+      "n": 16,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "Record lists use the default system view unless another system view is named.",
@@ -249,7 +205,7 @@
       "fix": null
     },
     {
-      "n": 21,
+      "n": 17,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "Create and update use the default main form.",
@@ -260,7 +216,7 @@
       "fix": null
     },
     {
-      "n": 22,
+      "n": 18,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "Work IQ uses fields on the selected form's first tab.",
@@ -271,7 +227,7 @@
       "fix": null
     },
     {
-      "n": 23,
+      "n": 19,
       "where": "What's changing; Risk assessment",
       "type": "behaviour",
       "claim": "Form-scoped business rules are enforced.",
@@ -282,7 +238,7 @@
       "fix": null
     },
     {
-      "n": 24,
+      "n": 20,
       "where": "What's changing; Risk assessment",
       "type": "behaviour",
       "claim": "Table-scoped business rules are enforced.",
@@ -293,10 +249,10 @@
       "fix": null
     },
     {
-      "n": 25,
-      "where": "What's changing; Risk assessment",
+      "n": 21,
+      "where": "summary; What's changing; Risk assessment; Governance guidance; rationale: risk",
       "type": "behaviour",
-      "claim": "Delete operations also require explicit confirmation.",
+      "claim": "Delete operations also require explicit user confirmation.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/user/use-business-apps-work-iq",
       "quote": "Delete operations also require explicit confirmation.",
@@ -304,10 +260,10 @@
       "fix": null
     },
     {
-      "n": 26,
+      "n": 22,
       "where": "What's changing; Why it matters; Risk assessment",
       "type": "applicability",
-      "claim": "Table security, Dataverse roles and record access limit what a user can read or change through Work IQ.",
+      "claim": "Table security governs what users can read, access or change through Work IQ.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/user/use-business-apps-work-iq",
       "quote": "Table security determines whether you can change, read, or access the data.",
@@ -315,10 +271,10 @@
       "fix": null
     },
     {
-      "n": 27,
+      "n": 23,
       "where": "What's changing; Risk assessment; Governance guidance",
       "type": "behaviour",
-      "claim": "Create and update are unavailable for a selected form with JavaScript OnLoad, OnChange or OnSave handlers.",
+      "claim": "Create and update are unavailable when the selected form has JavaScript OnLoad, OnChange or OnSave handlers.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/user/use-business-apps-work-iq",
       "quote": "You can't create or update a record when the selected form has JavaScript `OnLoad`, `OnChange`, or `OnSave` event handlers.",
@@ -326,7 +282,7 @@
       "fix": null
     },
     {
-      "n": 28,
+      "n": 24,
       "where": "What's changing; Governance guidance",
       "type": "behaviour",
       "claim": "Custom controls are not supported.",
@@ -337,7 +293,7 @@
       "fix": null
     },
     {
-      "n": 29,
+      "n": 25,
       "where": "What's changing; Governance guidance",
       "type": "behaviour",
       "claim": "Subgrids are not supported.",
@@ -348,10 +304,10 @@
       "fix": null
     },
     {
-      "n": 30,
+      "n": 26,
       "where": "What's changing; Open questions",
       "type": "availability",
-      "claim": "Learn says access to Business Applications through Work IQ MCP is generally available.",
+      "claim": "The user Learn page describes access through Work IQ MCP as generally available.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/user/use-business-apps-work-iq",
       "quote": "Access to Business Applications through Work IQ Model Context Protocol (MCP) and Microsoft Copilot Studio is generally available.",
@@ -359,18 +315,18 @@
       "fix": null
     },
     {
-      "n": 31,
+      "n": 27,
       "where": "What's changing; Open questions",
       "type": "availability",
-      "claim": "Learn says access through Copilot Studio is generally available, while its Business apps workload remains labelled preview.",
+      "claim": "The user Learn page describes access through Copilot Studio as generally available, unlike the roadmap status.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/user/use-business-apps-work-iq",
       "quote": "Access to Business Applications through Work IQ Model Context Protocol (MCP) and Microsoft Copilot Studio is generally available.",
-      "severity": "minor",
-      "fix": "Also cite https://learn.microsoft.com/microsoft-agent-365/tooling-servers-overview#compare-work-iq-mcp-and-work-iq-in-copilot-studio and append: 'The Agent 365 server overview separately describes the Copilot Studio integration as preview.' That page states 'the Copilot Studio integration is in preview'."
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 32,
+      "n": 28,
       "where": "What's changing",
       "type": "availability",
       "claim": "Access through Cowork is in public preview.",
@@ -381,10 +337,10 @@
       "fix": null
     },
     {
-      "n": 33,
-      "where": "What's changing; Scope; controls[5].note",
-      "type": "default",
-      "claim": "Business apps (preview) requires Enable preview workloads to be turned on in the agent settings.",
+      "n": 29,
+      "where": "What's changing; Scope; Open questions; controls[5].note",
+      "type": "availability",
+      "claim": "The Copilot Studio article labels Business apps as preview and requires enabling preview workloads.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq",
       "quote": "Some workloads, such as **Business apps (preview)**, are available in preview and require you to turn on preview workloads in the agent's settings.",
@@ -392,21 +348,32 @@
       "fix": null
     },
     {
-      "n": 34,
-      "where": "front matter: defaultState; What's changing; Why it matters; Scope; rationale: impact",
-      "type": "default",
-      "claim": "The feature is on by default for qualifying new public production environments.",
+      "n": 30,
+      "where": "What's changing",
+      "type": "availability",
+      "claim": "The Agent 365 server overview separately calls the Copilot Studio integration preview.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
-      "quote": "Business Applications in Work IQ is on by default for new public production environments created for new or existing tenants.",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/tooling-servers-overview",
+      "quote": "uses the same underlying Work IQ capability, but the Copilot Studio integration is in preview.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 35,
+      "n": 31,
+      "where": "front matter: defaultState; What's changing; Why it matters; Scope; rationale: impact",
+      "type": "default",
+      "claim": "Business Applications in Work IQ is on by default for qualifying new public production environments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+      "quote": "Business Applications in Work IQ is on by default for new public production environments created for new or existing tenants.",
+      "severity": "minor",
+      "fix": "Retain the feature-specific default and exclusions, but add: 'The general Manage feature settings page still lists Turn on Dataverse intelligence (Work IQ) for agents and AI experiences as Off; this briefing follows the feature-specific default-settings page.' Cite https://learn.microsoft.com/power-platform/admin/settings-features#copilot-studio-agents."
+    },
+    {
+      "n": 32,
       "where": "What's changing; Scope; Governance guidance",
       "type": "default",
-      "claim": "Environments provisioned in the EU and EFTA macro region geography are excepted from default enablement.",
+      "claim": "EU and EFTA environments are exceptions to default enablement.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
       "quote": "**European Union (EU) and European Free Trade Association (EFTA) environments**: This exception applies to environments provisioned in the EU and EFTA macro region geography.",
@@ -414,10 +381,10 @@
       "fix": null
     },
     {
-      "n": 36,
+      "n": 33,
       "where": "What's changing; Risk assessment; Scope; Governance guidance",
       "type": "default",
-      "claim": "Government-related environments are excepted from default enablement.",
+      "claim": "Government-related environments are exceptions to default enablement.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
       "quote": "**Government-related environments**: This exception applies to environments provisioned by customers with current or previous government cloud deployments that are likely to depend on FedRAMP security controls.",
@@ -425,10 +392,10 @@
       "fix": null
     },
     {
-      "n": 37,
+      "n": 34,
       "where": "What's changing; Scope; Governance guidance",
       "type": "default",
-      "claim": "Nonproduction environments, including trial, sandbox and developer environments, are excepted from default enablement.",
+      "claim": "Nonproduction trial, sandbox and developer environments are exceptions to default enablement.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
       "quote": "**Nonproduction environments**: This exception applies to trial, sandbox, and developer environments.",
@@ -436,10 +403,10 @@
       "fix": null
     },
     {
-      "n": 38,
+      "n": 35,
       "where": "What's changing; Why it matters; Scope; Open questions; rationale: impact",
       "type": "date",
-      "claim": "Enablement for existing environments has been deferred from the previously documented November 2026 schedule.",
+      "claim": "The previously documented November 2026 enablement schedule for existing environments has been deferred.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
       "quote": "The plan to turn on Business Applications in Work IQ for existing environments that aren't listed as exceptionshas been deferred from the previously documented November 2026 schedule.",
@@ -447,32 +414,32 @@
       "fix": null
     },
     {
-      "n": 39,
+      "n": 36,
       "where": "What's changing; Why it matters; Open questions",
       "type": "absence",
-      "claim": "No replacement date is published for enabling existing environments.",
+      "claim": "No replacement enablement date for existing environments is published.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Work IQ existing environments deferred November 2026 replacement enablement date. Opened default-settings and manage-participation; default-settings defers the November schedule and says to check for updates, without a replacement date.",
+      "quote": "Searched: Business Applications Work IQ default settings manage participation costs. Opened default-settings and manage-participation; default-settings defers November 2026 and says to check for updates, without a replacement date.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 40,
+      "n": 37,
       "where": "Why it matters; Risk assessment; Governance guidance; rationale: risk",
       "type": "applicability",
-      "claim": "Work IQ respects existing permissions and does not grant extra business-data access.",
+      "claim": "Work IQ respects existing Power Platform permissions and grants no additional business-data access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/user/use-business-apps-work-iq",
-      "quote": "If the app appears but data is missing, confirm your Dataverse security roles and record access. Work IQ doesn't grant additional access to business data.",
+      "quote": "Work IQ respects your existing Power Platform security permissions. You can only select environments and applications, view data, and perform actions that your permissions allow.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 41,
+      "n": 38,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Enabling Work IQ can send data from a FedRAMP-accredited environment to Microsoft 365 outside the applicable authorisation boundary.",
+      "claim": "Enabling Work IQ can send data from a FedRAMP-accredited environment to Microsoft 365 outside its FedRAMP boundary.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
       "quote": "Enabling Work IQ might cause data to flow from the tenant's FedRAMP-accredited environment to Microsoft 365, which is outside the applicable FedRAMP authorization boundary.",
@@ -480,10 +447,32 @@
       "fix": null
     },
     {
-      "n": 42,
+      "n": 39,
+      "where": "Risk assessment; controls[3].note; Governance guidance; Governance controls",
+      "type": "applicability",
+      "claim": "Work IQ participation settings do not prevent agentic access to environment data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-participation",
+      "quote": "These participation settings don't prevent agentic access to environment data. Use App Access controls to manage that access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment; controls[2].note; Governance controls",
+      "type": "applicability",
+      "claim": "The Work IQ MCP availability control covers the whole server and is separate from the audience setting and App Access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access",
+      "quote": "This control applies to the entire Work IQ MCP server, separate from Copilot audience settings or App Access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "Create and update enforce writable, required and read-only form-control metadata.",
+      "claim": "Create and update enforce required, writable and read-only form-control metadata.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/user/use-business-apps-work-iq",
       "quote": "Create and update operations enforce form control metadata, including whether a field is writable, required, or read-only.",
@@ -491,13 +480,24 @@
       "fix": null
     },
     {
-      "n": 43,
-      "where": "Risk assessment: Change & support; controls[4].note",
+      "n": 42,
+      "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Microsoft's troubleshooting guidance checks environment enablement, the app's On or Default setting, publication and data access.",
+      "claim": "Microsoft's troubleshooting guidance says to check that Work IQ is enabled for a missing environment.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/user/use-business-apps-work-iq",
-      "quote": "Ask the app maker whether **Enable Microsoft 365 Copilot in model-driven apps** is set to **On** or **Default** and the app is published.",
+      "quote": "Ask your administrator whether Work IQ is enabled for the environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment; Scope; controls[4].note",
+      "type": "behaviour",
+      "claim": "The app's Copilot setting must be Default or On.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/use-business-apps-work-iq",
+      "quote": "For the model-driven app, the **Enable M365 Copilot in model-driven apps** setting (`m365copilotmodelappenabled`) must be set to **Default** or **On**.",
       "severity": null,
       "fix": null
     },
@@ -505,7 +505,29 @@
       "n": 44,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Create and update responses provide a link to the record in the model-driven app.",
+      "claim": "Microsoft's troubleshooting guidance says to check that the app is published.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/use-business-apps-work-iq",
+      "quote": "Ask the app maker whether **Enable Microsoft 365 Copilot in model-driven apps** is set to **On** or **Default** and the app is published.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Microsoft recommends checking Dataverse security roles and record access when app data is missing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/use-business-apps-work-iq",
+      "quote": "If the app appears but data is missing, confirm your Dataverse security roles and record access. Work IQ doesn't grant additional access to business data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Create and update responses contain a link to open the record in the model-driven app.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/user/use-business-apps-work-iq",
       "quote": "After a create or update operation, use the record link in the response to open the record in the model-driven app.",
@@ -513,54 +535,43 @@
       "fix": null
     },
     {
-      "n": 45,
-      "where": "front matter: licensing.model and notes; summary; Cost and licensing",
-      "type": "licensing",
-      "claim": "Consumption billing applies through the experience used, rather than a separate feature licence being identified.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/understand-costs",
-      "quote": "For Business Applications in Work IQ, you track cost by the experiences people use rather than by a dedicated business applications category.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "Cost and licensing; Governance guidance",
-      "type": "cost",
-      "claim": "Cost is tracked by consuming experience, not by a dedicated Business Applications category.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/understand-costs",
-      "quote": "For Business Applications in Work IQ, you track cost by the experiences people use rather than by a dedicated business applications category.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 47,
-      "where": "Cost and licensing",
-      "type": "behaviour",
-      "claim": "Work IQ in Copilot Studio is powered by the Microsoft Copilot harness.",
+      "where": "summary; licensing.notes; Cost and licensing; Governance guidance; rationale: cost",
+      "type": "cost",
+      "claim": "Business Applications cost is tracked by consuming experience rather than a dedicated Business Applications category.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq",
-      "quote": "Work IQ in Copilot Studio is powered by the Microsoft Copilot harness, which uses Copilot Credits for usage-based billing.",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/understand-costs",
+      "quote": "For Business Applications in Work IQ, you track cost by the experiences people use rather than by a dedicated business applications category.",
       "severity": null,
       "fix": null
     },
     {
       "n": 48,
-      "where": "front matter: licensing.notes; Cost and licensing; Governance guidance; rationale: cost",
-      "type": "cost",
-      "claim": "The Microsoft Copilot harness used by Work IQ in Copilot Studio bills usage in Copilot Credits.",
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "Work IQ in Copilot Studio is powered by the Microsoft Copilot harness.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq",
-      "quote": "Work IQ in Copilot Studio is powered by the Microsoft Copilot harness, which uses Copilot Credits for usage-based billing.",
+      "quote": "Work IQ in Copilot Studio is powered by the Microsoft Copilot harness",
       "severity": null,
       "fix": null
     },
     {
       "n": 49,
+      "where": "front matter: licensing.model, cost; Cost and licensing; Governance guidance; rationale: cost",
+      "type": "licensing",
+      "claim": "Copilot Studio Work IQ usage is consumption-billed in Copilot Credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq",
+      "quote": "The experiences also use different runtime and billing models. Work IQ uses the Microsoft Copilot harness and Copilot Credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
       "where": "Cost and licensing",
       "type": "cost",
-      "claim": "A separate Work IQ spending policy is not required in the Copilot Studio experience.",
+      "claim": "A separate spending policy is not required for Work IQ in Copilot Studio.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq",
       "quote": "Work IQ uses consumption billing. A separate spending policy isn't required for Work IQ.",
@@ -568,8 +579,8 @@
       "fix": null
     },
     {
-      "n": 50,
-      "where": "front matter: licensing.notes; Cost and licensing; Governance guidance; rationale: cost",
+      "n": 51,
+      "where": "licensing.notes; Cost and licensing; Governance guidance; rationale: cost",
       "type": "cost",
       "claim": "Work IQ consumption supporting a Cowork task is attributed to Cowork.",
       "status": "supported",
@@ -579,10 +590,10 @@
       "fix": null
     },
     {
-      "n": 51,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "n": 52,
+      "where": "licensing.notes; Cost and licensing; Governance guidance; rationale: cost",
       "type": "cost",
-      "claim": "Direct Work IQ calls from coding agents or custom integrations are reported under Work IQ API.",
+      "claim": "Direct Work IQ calls by coding agents or custom integrations are reported under Work IQ API.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/understand-costs",
       "quote": "**Coding agents or custom integrations that call Work IQ directly**: Consumption through that connection appears under Work IQ API.",
@@ -590,10 +601,10 @@
       "fix": null
     },
     {
-      "n": 52,
+      "n": 53,
       "where": "Cost and licensing",
       "type": "cost",
-      "claim": "Work IQ API consumption can combine Microsoft 365 and business applications context rather than isolating Business Applications cost.",
+      "claim": "Work IQ API totals can mix Microsoft 365 and business-applications consumption.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/understand-costs",
       "quote": "Work IQ API consumption can include both Microsoft 365 productivity context and business applications context. Its total is not a Business Applications-only cost breakdown.",
@@ -601,10 +612,10 @@
       "fix": null
     },
     {
-      "n": 53,
+      "n": 54,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "For Microsoft 365 Copilot Chat, the applicable entitlement includes business-data grounding in the licensed chat scenario.",
+      "claim": "The applicable Microsoft 365 Copilot Chat entitlement includes business-data grounding in the licensed chat scenario.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/understand-costs",
       "quote": "**Microsoft 365 Copilot Chat**: The applicable entitlement includes business-data grounding in the licensed chat scenario. You don't pay extra for it as a Work IQ API interaction.",
@@ -612,10 +623,10 @@
       "fix": null
     },
     {
-      "n": 54,
+      "n": 55,
       "where": "Cost and licensing",
       "type": "cost",
-      "claim": "One request can involve multiple tool calls and reasoning steps, so prompt cost varies.",
+      "claim": "One request can involve several tool calls and reasoning steps, making prompt cost variable.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/understand-costs",
       "quote": "One user request can involve multiple tool calls and reasoning steps. Work IQ includes deterministic operations and variable-cost contextual reasoning, so a prompt isn't necessarily a single fixed-price operation.",
@@ -623,43 +634,21 @@
       "fix": null
     },
     {
-      "n": 55,
-      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
-      "type": "absence",
-      "claim": "The pages read publish no credit rate specific to Business Applications operations.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Work IQ\" \"Business Applications\" \"credit rate\"; Business Applications Work IQ operation credit rate licensing Copilot Studio unattended user confirmation. Opened understand-costs, Work IQ overview and add-work-iq; none gives a Business Applications operation rate.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 56,
-      "where": "front matter: licensing.notes; Cost and licensing",
+      "where": "licensing.notes; Cost and licensing; Open questions; rationale: cost",
       "type": "absence",
-      "claim": "The feature user page's prerequisites name no licence or extra feature licence.",
+      "claim": "The cited pages publish no per-operation credit rate specific to Business Applications operations.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Business Applications Work IQ operation credit rate licensing Copilot Studio unattended user confirmation. Opened use-business-apps-work-iq: prerequisites list experience access, enabled environment, app setting and permissions, not a licence.",
+      "quote": "Searched: Business Applications Work IQ operation credit rate licensing create update delete Copilot Credits. Opened understand-costs, Work IQ overview and Copilot Studio add-work-iq; none gives a Business Applications per-operation rate.",
       "severity": null,
       "fix": null
     },
     {
       "n": 57,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "Work IQ API consumes Copilot Credits shared with other eligible services.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
-      "quote": "Work IQ API usage consumes Copilot Credits shared with other eligible services.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 58,
-      "where": "Cost and licensing; Scope",
-      "type": "availability",
-      "claim": "Users require access to the Work IQ experience they use.",
+      "where": "licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The user page lists experience access, environment enablement, the app setting and data permissions as prerequisites, but names no licence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/user/use-business-apps-work-iq",
       "quote": "You need access to the Work IQ experience where you want to use Business Applications.",
@@ -667,8 +656,30 @@
       "fix": null
     },
     {
+      "n": 58,
+      "where": "Cost and licensing; Governance guidance",
+      "type": "cost",
+      "claim": "Work IQ API uses Copilot Credits shared with other eligible services.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
+      "quote": "Work IQ API usage consumes Copilot Credits shared with other eligible services.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 59,
-      "where": "Cost and licensing; Scope",
+      "where": "Scope: Who",
+      "type": "behaviour",
+      "claim": "Users can select only environments and apps their permissions allow.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/use-business-apps-work-iq",
+      "quote": "You can only select environments and applications, view data, and perform actions that your permissions allow.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Scope: Prerequisites",
       "type": "role",
       "claim": "The user page requires a Power Platform administrator to enable Work IQ for the environment.",
       "status": "supported",
@@ -678,29 +689,51 @@
       "fix": null
     },
     {
-      "n": 60,
-      "where": "Scope; controls[4].note",
-      "type": "default",
-      "claim": "The app's Enable M365 Copilot in model-driven apps setting, m365copilotmodelappenabled, must be Default or On.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/user/use-business-apps-work-iq",
-      "quote": "For the model-driven app, the **Enable M365 Copilot in model-driven apps** setting (`m365copilotmodelappenabled`) must be set to **Default** or **On**.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 61,
-      "where": "Cost and licensing; Scope",
-      "type": "availability",
-      "claim": "Users require permission to the environment, model-driven app and business data.",
+      "where": "Scope: Prerequisites; controls[4].api",
+      "type": "behaviour",
+      "claim": "The app setting's unique name is m365copilotmodelappenabled.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/user/use-business-apps-work-iq",
-      "quote": "You need permission to access the Power Platform environment, model-driven app, and business data involved in your request.",
+      "quote": "the **Enable M365 Copilot in model-driven apps** setting (`m365copilotmodelappenabled`)",
       "severity": null,
       "fix": null
     },
     {
       "n": 62,
+      "where": "Scope: Roles; controls[2].note",
+      "type": "role",
+      "claim": "The AI Administrator role manages the documented Microsoft 365 admin center connection controls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access",
+      "quote": "**AI Administrator** role to work with settings in the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Scope: Roles; controls[3].note",
+      "type": "role",
+      "claim": "Power Platform Administrator manages participation and application-access settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-participation",
+      "quote": "**Power Platform Administrator** role to manage settings and assign other roles.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Scope: Roles",
+      "type": "role",
+      "claim": "Environment Maker or System Customizer can configure app-level participation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-participation",
+      "quote": "**Environment Maker** or **System Customizer** role to configure application-level participation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
       "where": "Scope: Clouds and platforms",
       "type": "availability",
       "claim": "Business Applications in Work IQ is not currently available in sovereign or government clouds, including DoD, GCC and GCC High.",
@@ -711,32 +744,32 @@
       "fix": null
     },
     {
-      "n": 63,
-      "where": "Scope: Roles; controls[2].note",
-      "type": "role",
-      "claim": "AI Administrator manages the Microsoft 365 admin center settings described.",
+      "n": 66,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The environment feature switch is at Power Platform admin center > Manage > environment > Settings > Product > Features > Work IQ.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access",
-      "quote": "**AI Administrator** role to work with settings in the Microsoft 365 admin center.",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-participation",
+      "quote": "Select **Manage**, and select the environment.\n3. Select **Settings** > **Product** > **Features**.\n4. Locate **Work IQ**.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 64,
-      "where": "Scope: Roles; controls[3].note",
-      "type": "role",
-      "claim": "Power Platform Administrator manages App Access settings.",
+      "n": 67,
+      "where": "controls[0].api; Governance controls closing paragraph",
+      "type": "absence",
+      "claim": "No automation equivalent for the environment Work IQ feature switch is documented.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access",
-      "quote": "**Power Platform Administrator** role to work with application-access settings in the Power Platform admin center.",
+      "source": null,
+      "quote": "Searched: Work IQ environment Features enable disable API Power Platform API pac admin PowerShell organization setting; Work IQ environment Set-AdminPowerApp. Read manage-participation, default-settings and pac admin search excerpts; no equivalent operation identified.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 65,
-      "where": "controls[0].note",
+      "n": 68,
+      "where": "controls[0].note; Governance controls table",
       "type": "role",
-      "claim": "An environment administrator can manage the environment Work IQ setting.",
+      "claim": "An environment administrator manages the environment-level Work IQ setting.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
       "quote": "Use the environment-level setting to manage business skills, semantic modeling, and access to Dataverse data through Microsoft 365 Copilot Chat, Research, and Agent Builder. You need an environment administrator account.",
@@ -744,76 +777,98 @@
       "fix": null
     },
     {
-      "n": 66,
-      "where": "Scope: Roles; controls[4].note",
-      "type": "role",
-      "claim": "Environment Maker or System Customizer configures application-level participation.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-participation",
-      "quote": "**Environment Maker** or **System Customizer** role to configure application-level participation.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 67,
-      "where": "controls[0].ui; Governance controls",
-      "type": "admin-path",
-      "claim": "The environment feature switch is at Power Platform admin center > Manage > environment > Settings > Product > Features > Work IQ, separate from data participation.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-participation",
-      "quote": "Select **Manage**, and select the environment.\n3. Select **Settings** > **Product** > **Features**.\n4. Locate **Work IQ**.\n5. Turn on **Work IQ** if it's currently off.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 68,
-      "where": "controls[1].ui; Governance controls",
-      "type": "admin-path",
-      "claim": "The tenant audience setting is at Microsoft 365 admin center > Copilot > Settings > View all > Business Applications data in Work IQ available to Copilot.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
-      "quote": "In the left navigation pane, select **Copilot** > **Settings**.\n3. In **Copilot settings**, select **View all** > **Business Applications data in Work IQ available to Copilot**.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 69,
-      "where": "controls[1].note; Governance guidance",
-      "type": "default",
-      "claim": "Tenant administrators can choose All users, Specific groups or No users, with All users the default.",
+      "where": "controls[0].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "Enabling environment features is separate from permitting Work IQ to reason over environment data.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
-      "quote": "To turn off access for everyone, select **No users**.\n- To turn on access for everyone, select **All users**. This option is the default.\n- To provide access to a limited audience, select **Specific groups**, and then add or remove groups.",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-participation",
+      "quote": "Enabling these features in an environment is a separate decision from allowing Work IQ to reason over that environment's data.",
       "severity": null,
       "fix": null
     },
     {
       "n": 70,
-      "where": "controls[2].ui; Risk assessment",
+      "where": "controls[1].ui; Governance controls table",
       "type": "admin-path",
-      "claim": "The Work IQ MCP server can be blocked at Microsoft 365 admin center > Agents > Tools > Work IQ MCP > Block.",
+      "claim": "The tenant audience setting is at Microsoft 365 admin center > Copilot > Settings > View all > Business Applications data in Work IQ available to Copilot.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access",
-      "quote": "Select **Agents** > **Tools**.\n3. Select **Work IQ MCP**.\n4. Review its current availability.\n\nTo block access to the server, select **Block**.",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+      "quote": "select **Copilot** > **Settings**.\n3. In **Copilot settings**, select **View all** > **Business Applications data in Work IQ available to Copilot**.",
       "severity": null,
       "fix": null
     },
     {
       "n": 71,
-      "where": "controls[2].note; Risk assessment; Governance controls",
-      "type": "applicability",
-      "claim": "MCP availability applies to the whole server and is separate from the Copilot audience and App Access controls.",
+      "where": "controls[1].api; Governance controls closing paragraph",
+      "type": "absence",
+      "claim": "No automation equivalent for the tenant Business Applications audience setting is documented.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access",
-      "quote": "This control applies to the entire Work IQ MCP server, separate from Copilot audience settings or App Access.",
+      "source": null,
+      "quote": "Searched: Business Applications data Work IQ Graph settings Copilot Studio tenant; Business Applications data in Work IQ PowerShell OR API OR Graph. Read default-settings, manage-ai-experience-access and returned Dataverse intelligence excerpts; no equivalent call found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 72,
-      "where": "controls[2].note",
+      "where": "controls[1].note; Governance guidance; Governance controls table",
+      "type": "default",
+      "claim": "Tenant audience options are No users, Specific groups and All users, with All users the default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+      "quote": "To turn off access for everyone, select **No users**.\n- To turn on access for everyone, select **All users**. This option is the default.\n- To provide access to a limited audience, select **Specific groups**",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "controls[1].note; Governance controls table",
+      "type": "role",
+      "claim": "The default-settings page requires a tenant administrator account for the tenant audience setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+      "quote": "You need a tenant administrator account.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "controls[1].note; Governance controls table",
+      "type": "absence",
+      "claim": "The cited audience guidance does not establish whether the audience setting governs the Copilot Studio tool.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Business Applications data Work IQ Graph settings Copilot Studio tenant. Opened default-settings, manage-ai-experience-access and Copilot Studio add-work-iq; audience instructions name Microsoft 365 Copilot/Chat, not the Studio tool.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The Work IQ MCP server can be blocked at Microsoft 365 admin center > Agents > Tools > Work IQ MCP > Block.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access",
+      "quote": "Select **Agents** > **Tools**.\n3. Select **Work IQ MCP**.\n4. Review its current availability.\n\nTo block access to the server, select **Block**.",
+      "severity": "minor",
+      "fix": "Add to the row note: 'The general Agent 365 management article includes the Registry tab: Agents > Tools > Registry > Work IQ MCP > Block.' Cite https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers#review-and-approve-mcp-requests."
+    },
+    {
+      "n": 76,
+      "where": "controls[2].api; Governance controls closing paragraph",
+      "type": "absence",
+      "claim": "No automation equivalent for blocking availability of the Work IQ MCP server is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ MCP server block availability Microsoft Graph API admin tools; Work IQ MCP block graph.microsoft.com/beta. Read manage-ai-experience-access, tooling-servers-overview and Agent 365 management excerpts; no server-block API identified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "controls[2].note; Governance controls table",
       "type": "availability",
-      "claim": "Allowing or disallowing tooling and MCP servers might not yet be available in the reader's region.",
+      "claim": "Allowing or disallowing tooling and MCP servers in the Microsoft 365 admin center might not yet be available in every region.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq",
       "quote": "The ability to allow or disallow tooling and MCP servers in the Microsoft 365 admin center might not be available in your region yet.",
@@ -821,98 +876,109 @@
       "fix": null
     },
     {
-      "n": 73,
-      "where": "controls[3].ui; controls[3].note",
+      "n": 78,
+      "where": "controls[3].ui; Governance controls table",
       "type": "admin-path",
-      "claim": "App Access setup uses Security > Identity & access > App Access Control > environment > Enable > Save, then returns to select applications to block.",
+      "claim": "The cited feature page gives Security > Identity & access > App Access Control > environment > Enable > Save in the Power Platform admin center.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access",
-      "quote": "Select **Security** > **Identity & access**.\n3. Select **App Access Control**.\n4. Select the environment in which you want to enable app access.\n5. Select **Enable**, and then select **Save**.\n6. Return to the environment and select the applications you want to block",
-      "severity": "minor",
-      "fix": "Keep the cited path, but add to this row's note: 'The general App Access article requires a Managed Environment and gives a different setup sequence: environment > Set up app access control > Access control > Enabled > application > Block > Save.' Cite https://learn.microsoft.com/power-platform/admin/control-app-access-environment."
-    },
-    {
-      "n": 74,
-      "where": "controls[0].api",
-      "type": "absence",
-      "claim": "No documented automation equivalent was found for the environment Work IQ feature switch.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Work IQ environment setting enable API PowerShell Set-TenantSettings Power Platform API pac admin. Opened manage-participation and default-settings; reviewed pac admin and Set-TenantSettings excerpts; no equivalent found.",
+      "quote": "Select **Security** > **Identity & access**.\n3. Select **App Access Control**.\n4. Select the environment in which you want to enable app access.\n5. Select **Enable**, and then select **Save**.",
       "severity": null,
       "fix": null
-    },
-    {
-      "n": 75,
-      "where": "controls[1].api",
-      "type": "absence",
-      "claim": "No documented automation equivalent was found for the Business Applications Copilot tenant-audience setting.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Business Applications data Work IQ available Copilot tenant setting Microsoft Graph API PowerShell; \"Business Applications\" \"Work IQ\" \"Graph\" settings API. Opened default-settings and manage-ai-experience-access; no setting-management call found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 76,
-      "where": "controls[2].api",
-      "type": "absence",
-      "claim": "No documented automation equivalent was found for blocking the entire Work IQ MCP server.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Work IQ MCP block server Microsoft Graph admin API tools availability; \"Work IQ MCP\" \"block\" \"Graph\" \"beta\". Opened manage-ai-experience-access and policy-governance-mcp; no server-block management endpoint found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 77,
-      "where": "controls[3].api",
-      "type": "absence",
-      "claim": "No documented automation equivalent was found for environment App Access configuration.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: App Access Control Dataverse environment block applications API PowerShell Power Platform; \"App Access Control\" \"Power Platform API\" \"PowerShell\". Opened manage-ai-experience-access and control-app-access-environment; no configuration API found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 78,
-      "where": "controls[4].ui; controls[4].note",
-      "type": "admin-path",
-      "claim": "App participation is configured in Power Apps > Apps > app > Edit > Settings > Features > Enable Microsoft 365 Copilot in model-driven apps, followed by save and publish.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
-      "quote": "Find the app that you want to manage, and then select **Edit**.\n4. On the app navigation bar, select **Settings**.\n5. Select **Features**.\n6. Set **Enable Microsoft 365 Copilot in model-driven apps** to **On** or **Off**.\n7. Select **Save**.\n8. Select **Publish**.",
-      "severity": "minor",
-      "fix": "Keep the cited path, but append to the row's note: 'The maker configuration article labels this option Microsoft Copilot in model-driven apps.' Cite https://learn.microsoft.com/power-apps/maker/model-driven-apps/add-microsoft-365-copilot#enable-microsoft-copilot-in-a-single-model-driven-app."
     },
     {
       "n": 79,
-      "where": "controls[4].api; Governance controls: final paragraph",
+      "where": "controls[3].api; Governance controls table and closing paragraph",
       "type": "absence",
-      "claim": "Microsoft documents no API for the app participation setting, so none of the listed settings can be scripted.",
+      "claim": "Microsoft has not documented automation for controlling which applications can access an environment's data.",
       "status": "contradicted",
-      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/savesettingvalue",
-      "quote": "Creates or updates app/organization level override.\nAppUniqueName: Model-driven app unique name (Optional).\nSettingName: Setting definition unique name (Required).\nValue: Overridden value that needs to be set (Required).",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/application",
+      "quote": "Entity set path: [organization URI]/api/data/v9.2/applications; Operations supported: POSTGETPATCHDELETE; access: Edm.Int32, Application Access; 0 Allowed; 1 Blocked.",
       "severity": "blocker",
-      "fix": "Replace controls[4].api with kind 'rest', call 'POST <organization-url>/api/data/v9.2/SaveSettingValue; Content-Type: application/json; body: {\"AppUniqueName\":\"<app-unique-name>\",\"SettingName\":\"m365copilotmodelappenabled\",\"Value\":\"<setting-value>\"}', and docs https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/savesettingvalue. Keep the value as a placeholder, not a guessed On/Off encoding. The feature user page names this setting; https://learn.microsoft.com/power-apps/developer/model-driven-apps/clientapi/get-update-setting-value-using-code documents setting APIs and https://learn.microsoft.com/power-apps/developer/data-platform/webapi/use-web-api-actions documents POST invocation. Replace the final Governance controls sentence with: 'Dataverse documents SaveSettingValue for app-setting overrides; no automation equivalent was found for the other listed settings in November 2026.'"
+      "fix": "Replace controls[3].api null with kind rest, call 'PATCH <organization-url>/api/data/v9.2/applications(<application-id>); Content-Type: application/json; body: {\"access\":1}', docs https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/application. Add to its note: 'This call blocks the specified application; enable App Access using the UI first. Set access to 0 to allow it.' Replace the closing automation sentence with: 'Dataverse documents SaveSettingValue for app-setting overrides and the application table API for allowing or blocking applications; no automation equivalent was found for the remaining listed settings in November 2026.'"
     },
     {
       "n": 80,
-      "where": "controls[5].ui; Scope",
-      "type": "admin-path",
-      "claim": "The per-agent preview switch is at agent > ellipsis (...) > Settings > Work IQ > Preview workloads > Enable preview workloads.",
+      "where": "controls[3].note; Governance controls table; Risk assessment",
+      "type": "applicability",
+      "claim": "After enabling App Access, administrators return to the environment and choose the applications to block.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq",
-      "quote": "In the agent designer toolbar, select the ellipsis (**...**), and then select **Settings**.\n2. In the **Agent settings** dialog, select **Work IQ**.\n3. Under **Preview workloads**, turn on **Enable preview workloads**.",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access",
+      "quote": "Return to the environment and select the applications you want to block from accessing the environment.",
       "severity": null,
       "fix": null
     },
     {
       "n": 81,
-      "where": "controls[5].note",
+      "where": "controls[4].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "App-level participation is configured in Power Apps > Apps > app > Edit > Settings > Features > Enable Microsoft 365 Copilot in model-driven apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+      "quote": "select **Apps**.\n3. Find the app that you want to manage, and then select **Edit**.\n4. On the app navigation bar, select **Settings**.\n5. Select **Features**.\n6. Set **Enable Microsoft 365 Copilot in model-driven apps** to **On** or **Off**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 82,
+      "where": "controls[4].api; Governance controls table and closing paragraph",
+      "type": "command",
+      "claim": "POST /api/data/v9.2/SaveSettingValue accepts AppUniqueName, SettingName and Value to override the app setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/savesettingvalue",
+      "quote": "Creates or updates app/organization level override.\nAppUniqueName | Edm.String | True | False | Model-driven app unique name (Optional).\nSettingName | Edm.String | False | False | Setting definition unique name (Required).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 83,
+      "where": "controls[4].note; Governance controls table",
       "type": "behaviour",
-      "claim": "Clearing Business apps (preview) under Sources on the Work IQ tool removes that workload from the agent's Work IQ configuration.",
+      "claim": "App makers save and publish the app after changing its participation setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+      "quote": "7. Select **Save**.\n8. Select **Publish**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 84,
+      "where": "controls[4].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "The maker configuration article uses the label Microsoft Copilot in model-driven apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/add-microsoft-365-copilot",
+      "quote": "To enable Microsoft Copilot, set **Microsoft Copilot in model-driven apps** to **On**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 85,
+      "where": "controls[5].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Preview workloads are enabled per agent through ellipsis (...) > Settings > Work IQ > Preview workloads > Enable preview workloads.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq",
+      "quote": "select the ellipsis (**...**), and then select **Settings**.\n2. In the **Agent settings** dialog, select **Work IQ**.\n3. Under **Preview workloads**, turn on **Enable preview workloads**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 86,
+      "where": "controls[5].api; Governance controls closing paragraph",
+      "type": "absence",
+      "claim": "No automation equivalent for the agent's Enable preview workloads setting is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio Work IQ Enable preview workloads API Dataverse agent settings; Enable preview workloads API; Work IQ preview workloads bot API. Opened add-work-iq and read returned Dataverse/Work IQ excerpts; no equivalent agent-setting call found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 87,
+      "where": "controls[5].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "Clearing Business apps (preview) under Sources on the Work IQ tool removes that workload from the agent.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq",
       "quote": "Under **Sources**, review the preview workloads, such as **Business apps (preview)**. Keep the workloads your agent needs selected, clear any it doesn't need, and then select **Done**.",
@@ -920,21 +986,21 @@
       "fix": null
     },
     {
-      "n": 82,
-      "where": "controls[5].api",
-      "type": "absence",
-      "claim": "No documented automation equivalent was found for the agent's Enable preview workloads setting.",
+      "n": 88,
+      "where": "summary; Governance controls; rationale: risk",
+      "type": "applicability",
+      "claim": "Business Applications settings cascade at tenant, environment and app levels.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Copilot Studio Work IQ Enable preview workloads agent settings API CLI; \"Work IQ\" \"preview workloads\" \"CLI\". Opened add-work-iq; reviewed Develop Copilot Studio agents with the CLI excerpt; no command or property for this setting found.",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
+      "quote": "You manage Business Applications in Work IQ through a cascading set of settings at three levels:",
       "severity": null,
       "fix": null
     },
     {
-      "n": 83,
+      "n": 89,
       "where": "Governance controls",
-      "type": "applicability",
-      "claim": "Tenant, environment and app settings cascade, and disabling tenant sharing blocks Copilot Chat/Dataverse sharing even when an app allows it.",
+      "type": "behaviour",
+      "claim": "Turning off the tenant setting prevents Copilot Chat and Dataverse data sharing even when an app is configured to share.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
       "quote": "If you turn off this setting, data isn't shared between Microsoft 365 Copilot Chat and Dataverse, even if an app is configured to share data.",
@@ -942,32 +1008,43 @@
       "fix": null
     },
     {
-      "n": 84,
-      "where": "controls[1].note",
-      "type": "absence",
-      "claim": "The tenant Copilot audience documentation does not state whether that audience setting governs the Copilot Studio tool.",
+      "n": 90,
+      "where": "Governance controls: general App Access article",
+      "type": "applicability",
+      "claim": "The general App Access article requires a managed environment.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Work IQ\" \"tenant audience\" \"Copilot Studio\"; Business Applications data Work IQ available Copilot tenant setting Microsoft Graph API PowerShell. Opened default-settings, manage-ai-experience-access and add-work-iq; no express Studio audience applicability found.",
+      "source": "https://learn.microsoft.com/power-platform/admin/control-app-access-environment",
+      "quote": "Your environment must be a managed environment.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 85,
-      "where": "Risk assessment: Autonomy & actions; Open questions",
-      "type": "absence",
-      "claim": "The documentation does not explain confirmation when a Copilot Studio agent runs without a person present.",
+      "n": 91,
+      "where": "Governance controls: general App Access article",
+      "type": "admin-path",
+      "claim": "The general article gives environment > Set up app access control > Access control > Enabled > application > Block > Save.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Business Applications\" \"confirmation\" \"autonomous\" Work IQ; Business Applications Work IQ operation credit rate licensing Copilot Studio unattended user confirmation. Opened use-business-apps-work-iq and add-work-iq; no unattended confirmation mechanism found.",
+      "source": "https://learn.microsoft.com/power-platform/admin/control-app-access-environment",
+      "quote": "Select the **Set up app access control** button.\n7. Select **Enabled** in the **Access control** dropdown list.\n8. Select a Dataverse application, then select one of these options, located above the grid:",
       "severity": null,
       "fix": null
     },
     {
-      "n": 86,
-      "where": "Open questions",
+      "n": 92,
+      "where": "Governance controls: tenant setting names",
+      "type": "behaviour",
+      "claim": "The AI-experience access article calls the audience control the setting for business applications availability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access",
+      "quote": "Open the setting for **business applications availability** in Microsoft 365 Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 93,
+      "where": "Open questions: Work IQ MCP policy",
       "type": "default",
-      "claim": "The Work IQ MCP tenant-policy documentation disallows mutation operations by default for Microsoft 365 resources.",
+      "claim": "The Work IQ MCP policy documentation describes mutation operations as disallowed by default for Microsoft 365 resource paths.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
       "quote": "By default, mutation operations aren't allowed for safety. This restriction includes create, update, delete, and action requests that modify data, such as sending email.",
@@ -975,59 +1052,48 @@
       "fix": null
     },
     {
-      "n": 87,
-      "where": "front matter: cost; rationale: cost",
-      "type": "cost",
-      "claim": "The variable cost rating is supported by metered Copilot Credits consumption.",
+      "n": 94,
+      "where": "Open questions: Work IQ MCP policy",
+      "type": "absence",
+      "claim": "Whether that default mutation policy also governs Business Applications writes is not established by the cited documentation.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
-      "quote": "Work IQ cost is variable based on usage and can be managed in the Microsoft 365 admin center.",
+      "source": null,
+      "quote": "Searched: Business Applications Work IQ policy mutation confirmation autonomous. Opened policy-governance-mcp; read tool-reference search excerpts and the Business Applications user and control pages. Policy examples concern Microsoft 365/Graph; none names Business Applications writes.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 88,
+      "n": 95,
+      "where": "Risk assessment: Autonomy & actions; Open questions",
+      "type": "absence",
+      "claim": "The documentation does not explain confirmation when a Copilot Studio agent runs without a person present.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Business Applications Work IQ autonomous unattended explicit confirmation Copilot Studio; Business Applications Work IQ policy mutation confirmation autonomous. Opened use-business-apps-work-iq and add-work-iq; neither explains unattended confirmation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 96,
       "where": "Governance guidance: Before rollout and After rollout",
       "type": "consistency",
-      "claim": "The checklist's Dataverse security-role reviews have no corresponding controls-table row.",
+      "claim": "The checklist instructs readers to review Dataverse security roles, but no controls-table row covers that control.",
       "status": "contradicted",
       "source": "page",
-      "quote": "Review Dataverse security roles for the model-driven apps involved with the Power Platform Administrator ... Repeat the role review when apps, agents or owners change.",
+      "quote": "Review Dataverse security roles for the model-driven apps involved ... Repeat the role review when apps, agents or owners change. The six table rows cover Work IQ, audience, MCP blocking, App Access, app participation and preview workloads, not Dataverse security roles.",
       "severity": "minor",
-      "fix": "The Before rollout step 'Review Dataverse security roles' and After rollout step 'Repeat the role review' name a control absent from the table. Record this checklist/table mismatch; do not add a control row as part of this correction."
-    },
-    {
-      "n": 89,
-      "where": "controls[3].note; Risk assessment; Governance guidance; Governance controls",
-      "type": "applicability",
-      "claim": "Work IQ participation settings do not prevent agentic access to environment data.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access",
-      "quote": "Work IQ participation settings serve a different purpose and don't prevent agentic access.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 90,
-      "where": "controls[0].note",
-      "type": "behaviour",
-      "claim": "Enabling Work IQ features in an environment is separate from allowing Work IQ to reason over its data.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-participation",
-      "quote": "Enabling these features in an environment is a separate decision from allowing Work IQ to reason over that environment's data.",
-      "severity": null,
-      "fix": null
+      "fix": "Remove the two role-review bullets from Governance guidance; retain the existing explanation of Dataverse permissions in Risk assessment. Do not add a control row as part of this correction."
     }
   ],
   "precheck": {
-    "at": "2026-11-18T02:52:58.598Z",
+    "at": "2026-11-18T03:37:05.583Z",
     "summary": {
-      "links": 9,
-      "unreachable": 0,
+      "links": 13,
+      "unreachable": 8,
       "uiPaths": 6,
-      "uiPathsWithMissingWords": 0,
-      "apiCalls": 0,
-      "apiCallsNotOnPage": 0,
+      "uiPathsWithMissingWords": 5,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 1,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -1038,28 +1104,28 @@
       },
       {
         "url": "https://learn.microsoft.com/power-apps/user/use-business-apps-work-iq",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-participation",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/understand-costs",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq",
@@ -1075,6 +1141,26 @@
         "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
         "ok": true,
         "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/tooling-servers-overview",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/control-app-access-environment",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/add-microsoft-365-copilot",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/savesettingvalue",
+        "ok": true,
+        "status": 200
       }
     ],
     "controlChecks": [
@@ -1083,7 +1169,7 @@
         "side": "ui",
         "governs": "Whether Work IQ features are on in an environment",
         "docs": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-participation",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Manage",
           "Settings",
@@ -1091,42 +1177,58 @@
           "Features",
           "Work IQ"
         ],
-        "missing": []
+        "missing": [
+          "Manage",
+          "Settings",
+          "Product",
+          "Features",
+          "Work IQ"
+        ]
       },
       {
         "index": 1,
         "side": "ui",
         "governs": "Who in the tenant can use Business Applications data through Copilot",
         "docs": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Copilot",
           "Settings",
           "View all",
           "Business Applications data in Work IQ available to Copilot"
         ],
-        "missing": []
+        "missing": [
+          "Copilot",
+          "Settings",
+          "View all",
+          "Business Applications data in Work IQ available to Copilot"
+        ]
       },
       {
         "index": 2,
         "side": "ui",
         "governs": "Availability of the Work IQ MCP server",
         "docs": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Agents",
           "Tools",
           "Work IQ MCP",
           "Block"
         ],
-        "missing": []
+        "missing": [
+          "Agents",
+          "Tools",
+          "Work IQ MCP",
+          "Block"
+        ]
       },
       {
         "index": 3,
         "side": "ui",
         "governs": "Which applications can access an environment's data",
         "docs": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Security",
           "Identity & access",
@@ -1134,14 +1236,20 @@
           "Enable",
           "Save"
         ],
-        "missing": []
+        "missing": [
+          "Security",
+          "Identity & access",
+          "App Access Control",
+          "Enable",
+          "Save"
+        ]
       },
       {
         "index": 4,
         "side": "ui",
         "governs": "Whether a model-driven app shares its data with Work IQ",
         "docs": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Apps",
           "Edit",
@@ -1149,7 +1257,22 @@
           "Features",
           "Enable Microsoft 365 Copilot in model-driven apps"
         ],
-        "missing": []
+        "missing": [
+          "Apps",
+          "Edit",
+          "Settings",
+          "Features",
+          "Enable Microsoft 365 Copilot in model-driven apps"
+        ]
+      },
+      {
+        "index": 4,
+        "side": "api",
+        "governs": "Whether a model-driven app shares its data with Work IQ",
+        "docs": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/savesettingvalue",
+        "reachable": true,
+        "token": "Content-Type",
+        "found": false
       },
       {
         "index": 5,
@@ -1174,6 +1297,12 @@
       "date": "2026-11-18",
       "status": "held",
       "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-18",
+      "status": "held",
+      "version": 2,
       "model": "gpt-6.1-sol"
     }
   ]

@@ -43,6 +43,9 @@ sources:
   - title: "New-DlpComplianceRule"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule"
     kind: "learn"
+  - title: "Set-FeatureConfiguration"
+    url: "https://learn.microsoft.com/powershell/module/exchange/set-featureconfiguration"
+    kind: "learn"
   - title: "MC1302905"
     url: "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1302905"
     kind: "message-center"
@@ -56,7 +59,7 @@ controls:
       kind: "powershell"
       call: "New-DlpComplianceRule -Name \"<rule>\" -Policy \"<policy>\" -ContentContainsSensitiveInformation @{Name = \"credit card number\"} -RestrictAccess @(@{setting=\"UploadText\";value=\"Block\"})"
       docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule"
-    note: "Create the policy first with New-DlpCompliancePolicy -Locations <app location> -EnforcementPlanes @(\"Application\"). Learn says the Purview portal does not currently support this for Entra-registered apps."
+    note: "Create the policy first using Example 4 in the linked New-DlpComplianceRule reference. Learn says the Purview portal does not currently support this for Entra-registered apps."
   - governs: "Whether prompts and responses from custom agents are captured and stored in Purview"
     scope: "tenant"
     ui:
@@ -77,19 +80,23 @@ changes:
     note: "First briefing for this item; notes that MC1302905 paused rollout on 19 October 2026 while Learn already documents the integration."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 67 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-18"
+    note: "Corrected the DLP policy-creation note (now points to Example 4), stated the Data Security for Gen AI Applications meter, noted Set-FeatureConfiguration is in Public Preview, and removed the unsupported audit checklist step."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 70 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-18"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 67
-  confirmed: 64
+  claims: 70
+  confirmed: 69
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "dbdae2a1ee0d14d51dbbdd466a9efff6"
+  contradicted: 1
+  attempts: 0
+  hash: "b192fe5c3d7c32c870e001f6c56aff7a"
 ---
 
 ## What's changing
@@ -128,7 +135,7 @@ The decisions land on security, compliance and FinOps teams: which DLP and colle
 
 Licence: the Agent Framework page lists a Microsoft 365 subscription with an E5 licence and pay-as-you-go billing as prerequisites, along with an Azure subscription with Microsoft Purview configured. The Learn page for Entra-registered AI apps also says managing these interactions with Purview requires pay-as-you-go billing.
 
-Meter: the Purview billing models page says pay-as-you-go charges appear on an Azure bill generated at the end of the month. Its table lists "Data Security for Gen AI Applications" with a unit of requests or messages for non-Microsoft 365 AI interactions (prompts or responses). Which meter line a Purview SDK call for a custom agent falls under is not stated on the pages cited. The billing page points to Azure pricing pages for rates and none is quoted here.
+Meter: the Purview billing models page says pay-as-you-go charges appear on an Azure bill generated at the end of the month. Its table lists "Data Security for Gen AI Applications" with a unit of requests or messages for non-Microsoft 365 AI interactions (prompts or responses). Classification and protection of non-Microsoft 365 custom-agent interactions fall under Data Security for Gen AI Applications, measured in requests or messages. The billing page points to Azure pricing pages for rates and none is quoted here.
 
 Indirect costs: developer time to add and test the middleware, and compliance time to write DLP policies in PowerShell. The pages cited state no spending cap for this integration.
 
@@ -155,7 +162,6 @@ Prerequisites on Learn: an Azure subscription with Purview configured, a Microso
 
 ### After rollout
 - Review DSPM for AI (classic) reports for the Enterprise AI apps category, and allow at least a day for data to appear.
-- Confirm unified audit logging stays on; Learn says Microsoft Purview auditing is enabled by default but should be confirmed.
 - Watch Message center for the announcement that ends the rollout pause.
 
 ## Governance controls
@@ -165,21 +171,21 @@ Prerequisites on Learn: an Azure subscription with Purview configured, a Microso
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether DLP blocks sensitive prompts for a custom Entra-registered agent</strong><br><small>App</small><br><small class="controls__note">Create the policy first with New-DlpCompliancePolicy -Locations &lt;app location&gt; -EnforcementPlanes @(&quot;Application&quot;). Learn says the Purview portal does not currently support this for Entra-registered apps.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpComplianceRule -Name &quot;&lt;rule&gt;&quot; -Policy &quot;&lt;policy&gt;&quot; -ContentContainsSensitiveInformation @{Name = &quot;credit card number&quot;} -RestrictAccess @(@{setting=&quot;UploadText&quot;;value=&quot;Block&quot;})</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether DLP blocks sensitive prompts for a custom Entra-registered agent</strong><br><small>App</small><br><small class="controls__note">Create the policy first using Example 4 in the linked New-DlpComplianceRule reference. Learn says the Purview portal does not currently support this for Entra-registered apps.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpComplianceRule -Name &quot;&lt;rule&gt;&quot; -Policy &quot;&lt;policy&gt;&quot; -ContentContainsSensitiveInformation @{Name = &quot;credit card number&quot;} -RestrictAccess @(@{setting=&quot;UploadText&quot;;value=&quot;Block&quot;})</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether prompts and responses from custom agents are captured and stored in Purview</strong><br><small>Tenant</small><br><small class="controls__note">The call turns ingestion off; New-FeatureConfiguration creates the policy. Learn's example of a suitable account is a member of the Microsoft Entra Compliance Administrator group role.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › DSPM for AI (classic) › Recommendations › Secure interactions from enterprise apps <a href="https://learn.microsoft.com/purview/ai-entra-registered" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-FeatureConfiguration &quot;DSPM for AI - Collection policy for enterprise AI apps&quot; -ScenarioConfig '{&quot;Activities&quot;:[&quot;UploadText&quot;,&quot;DownloadText&quot;],&quot;EnforcementPlanes&quot;:[&quot;Application&quot;],&quot;SensitiveTypeIds&quot;:[&quot;All&quot;],&quot;IsIngestionEnabled&quot;:false}'</code> <a href="https://learn.microsoft.com/purview/developer/configurepurview" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
 The two rows cover the policy that blocks content and the policy that captures interactions. Microsoft Learn says the Microsoft Purview portal does not currently support creating DLP policies for Entra-registered applications, which is why the DLP row has no portal path. Learn gives that DLP support as a policy that blocks prompts based on sensitive information types.
 
-The PowerShell example for the collection policy uses the name "DSPM for AI - Collection policy for enterprise AI apps", while the one-click recommendation in the portal is named "DSPM for AI - Capture interactions for enterprise AI apps"; check the actual name before running Set-FeatureConfiguration.
+The PowerShell example for the collection policy uses the name "DSPM for AI - Collection policy for enterprise AI apps", while the one-click recommendation in the portal is named "DSPM for AI - Capture interactions for enterprise AI apps"; check the actual name before running Set-FeatureConfiguration. Set-FeatureConfiguration is in Public Preview, is not available in all organisations, and is subject to change.
 
 The interactions can also be retained: Learn says to go to Data Lifecycle Management > Policies > Retention Policies and select the location Enterprise AI apps. The controls table does not list this because its automation was not read. Both policy types are tenant-level Purview settings; the middleware choice itself sits in agent code, not in an admin centre.
 
 ## Open questions
 
 - When will Microsoft end the rollout pause announced in MC1302905, and does the March CY2027 roadmap target still stand? Watch Message center and the roadmap item.
-- Which pay-as-you-go meter and rate apply to a Purview SDK call from a custom agent? Watch the Purview billing models page.
+- What rate applies to Data Security for Gen AI Applications for our custom-agent usage? Check the Azure pricing page linked from the Purview billing models page.
 - Is there a tenant-level way to see or require which custom agents use the Purview middleware? None is described in the Learn pages cited; watch the Agent Framework and Purview developer documentation.
 - What Microsoft Graph permissions and Entra app registration settings does the middleware need in production, and who consents to them? The Learn page shows a client ID but does not describe the permissions.
 
@@ -189,12 +195,8 @@ cost: Variable. Microsoft Learn lists a Microsoft 365 E5 licence and pay-as-you-
 impact: Low. Developers and the security and compliance teams notice it; the Message Center post says there is no change to user experiences in Microsoft 365 services.
 -->
 
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].note; Governance controls: first row note / command: New-DlpCompliancePolicy -Locations <app location> -EnforcementPlanes @("Application") is the prerequisite policy-creation call. | Found: The Name parameter specifies the unique name of the DLP policy. If the value contains spaces, enclose the value in quotation marks. Position: 1 Mandatory: True | Fix: The printed call omits mandatory Name. Replace it in the first control's note with 'Create the policy first using Example 4 in the linked New-DlpComplianceRule reference.' Retain the following sentence about the portal not supporting this scenario. Example 4 includes Name and the Application enforcement plane. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy
-- [contradicted, blocker] Cost and licensing; Open questions / absence: The cited pages do not state which meter applies to a Purview SDK call for a custom agent. | Found: Data Security for Gen AI Applications | Applies to classification and protection of sensitive content for non-M365 AI interactions (prompts/responses) | Number of requests or messages for non-Microsoft 365 AI interactions (prompts or responses) | Fix: Replace the sentence beginning 'Which meter line' with 'Classification and protection of non-Microsoft 365 custom-agent interactions fall under Data Security for Gen AI Applications, measured in requests or messages.' Replace the corresponding Open questions bullet with 'What rate applies to Data Security for Gen AI Applications for our custom-agent usage? Check the Azure pricing page linked from the Purview billing models page.' The general billing rule explicitly covers this class of interaction; keep only the rate question open. | Source: https://learn.microsoft.com/purview/purview-billing-models
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].api; Governance controls / command: The printed Set-FeatureConfiguration call sets the collection policy's IsIngestionEnabled value to false. | Found: Set-FeatureConfiguration "DSPM for AI - Collection policy for enterprise AI apps" -ScenarioConfig '{"Activities": ["UploadText", "DownloadText"], "EnforcementPlanes": ["Application"], "SensitiveTypeIds": ["All"], "IsIngestionEnabled": false}' | Fix: Append to controls[1].note: 'Set-FeatureConfiguration is in Public Preview, is not available in all organisations, and is subject to change.' Add https://learn.microsoft.com/powershell/module/exchange/set-featureconfiguration to sources; that reference explicitly states this qualification. | Source: https://learn.microsoft.com/purview/developer/configurepurview
-- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The governance checklist asks readers to check auditing, but the controls table has no auditing row. | Found: Confirm unified audit logging stays on; Learn says Microsoft Purview auditing is enabled by default but should be confirmed. The two rows cover the policy that blocks content and the policy that captures interactions. | Fix: Remove the 'Confirm unified audit logging stays on' checklist bullet, which has no corresponding controls-table row. This correction does not require adding a row.
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: Every control the governance checklist asks readers to check has a corresponding controls-table row. | Found: Checklist: "Confirm pay-as-you-go billing is set up and budgeted against an Azure subscription before the middleware is deployed." The table contains only a DLP rule and a collection policy, with no billing-enablement row. | Fix: Replace that Before rollout bullet with: "Review expected pay-as-you-go consumption with FinOps before the middleware is deployed." This retains the budgeting advice without directing readers to check an unlisted configuration control.
 -->

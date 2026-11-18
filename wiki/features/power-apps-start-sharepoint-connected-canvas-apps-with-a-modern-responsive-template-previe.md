@@ -12,12 +12,12 @@ platforms: ["Web"]
 targetDate: "February CY2027"
 previewDate: "November CY2026"
 risk: "low"
-cost: "low"
+cost: "variable"
 impact: "low"
 defaultState: "unknown"
 action: "review"
 licensing:
-  model: "unknown"
+  model: "mixed"
   notes: "Microsoft has not published template-specific licensing terms. General Power Apps rules apply: building canvas apps does not require a licence, while running apps requires appropriate entitlements."
 audiences: ["power-platform-admin","maker","service-owner"]
 tags: ["power-apps","canvas-apps","sharepoint","modern-controls","connectors","data-policies"]
@@ -81,19 +81,23 @@ changes:
     note: "Corrected licensing and cost: general Power Apps licence rules and the per-app pay-as-you-go meter now replace the unpublished-licensing statements; the first pre-rollout step no longer asks for an early-release inventory."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 76 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-18"
+    note: "Corrected the licensing model to mixed and the cost rating to variable, naming the general Power Apps per-app pay-as-you-go meter."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 77 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-18"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 76
-  confirmed: 74
+  claims: 77
+  confirmed: 77
   unconfirmed: 0
-  contradicted: 2
-  attempts: 2
-  hash: "e0c0f8f77fe73c0cd55fba4fbaecfc7b"
+  contradicted: 0
+  attempts: 0
+  hash: "2132ab1cf81dea90e7a6a666877d1d15"
 ---
 
 ## What's changing
@@ -188,13 +192,6 @@ The PowerShell cmdlet in the table creates a policy from a policy object; Get-Dl
 
 <!-- rationale
 risk: Low. The template generates a standalone canvas app over a list the maker can already reach, and the roadmap says connector and formula delegation limits still apply; no admin switch or new data access is described.
-cost: Low. Microsoft has published no template-specific licensing or meter; the cost the sources show is maker and admin time, though the general Power Apps per-app pay-as-you-go meter ($10 per active user/app/month) can apply where enabled.
+cost: Variable. The general Power Apps per-app pay-as-you-go meter can apply where enabled at $10 per active user/app/month; qualifying licensed users are excluded. Microsoft documents no separate template-specific meter.
 impact: Low. Makers who start an app from a SharePoint or Lists list will notice the new screens; other users see a change only when a maker publishes an app built from the template.
--->
-
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.model / consistency: The licensing model is unknown, meaning licensing has not yet been published. | Found: Microsoft Power Platform capabilities can be licensed through standalone licenses, use rights included with other Microsoft products, capacity add-ons, or pay-as-you-go meters. | Fix: Set licensing.model to "mixed". Retain the existing notes explaining general canvas-app entitlements and the absence of separate template-specific terms; published general licensing applies to these canvas apps. Source: https://learn.microsoft.com/power-platform/admin/pricing-billing-skus. | Source: https://learn.microsoft.com/power-platform/admin/pricing-billing-skus
-- [contradicted, blocker] front matter: cost; rationale: cost / consistency: The cost rating is low, which the standard defines as indirect cost only. | Found: cost: "low"; "the general Power Apps per-app pay-as-you-go meter ($10 per active user/app/month) can apply where enabled." | Fix: Set cost to "variable" and replace the cost rationale with: "Variable. The general Power Apps per-app pay-as-you-go meter can apply where enabled at $10 per active user/app/month; qualifying licensed users are excluded. Microsoft documents no separate template-specific meter." Source: https://learn.microsoft.com/power-platform/admin/pay-as-you-go-meters.
 -->

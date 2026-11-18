@@ -1,7 +1,7 @@
 ---
 title: "Copilot Studio: agent node runs an AI agent as a workflow step"
 slug: "microsoft-copilot-studio-invoke-agents-as-workflow-steps-with-the-agent-node"
-roadmapId: 566998
+roadmapId: 562222
 topic: "copilot-studio"
 products: ["Microsoft Copilot (Microsoft 365)","Microsoft Copilot Studio"]
 summary: "Makers can add an agent node to a Copilot Studio workflow so an AI agent decides and acts mid-flow. It uses Copilot Credits and no switch dedicated to the node is documented, so administrators should review credit and tool controls."
@@ -22,8 +22,8 @@ licensing:
 audiences: ["power-platform-admin","finops","maker","service-owner"]
 tags: ["copilot-studio","agents","automation","tools","mcp","knowledge-grounding","work-iq","human-in-the-loop","agent-evaluation","copilot-credits","usage-based-billing","copilot-harness"]
 sources:
-  - title: "Microsoft 365 Roadmap 566998"
-    url: "https://www.microsoft.com/microsoft-365/roadmap?id=566998"
+  - title: "Microsoft 365 Roadmap 562222"
+    url: "https://www.microsoft.com/microsoft-365/roadmap?id=562222"
     kind: "roadmap"
   - title: "Add an agent node to a workflow (Microsoft Copilot)"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-node-workflow"
@@ -99,7 +99,7 @@ controls:
 confidence: "medium"
 created: "2026-11-16"
 updated: "2026-11-18"
-roadmapModified: "2026-10-26T23:15:50"
+roadmapModified: "2026-11-17T00:31:56"
 changes:
   - date: "2026-11-16"
     note: "First briefing for this item: documents the agent node, its credit billing and the environment-level cost controls; no agent-node admin switch is documented."
@@ -149,19 +149,23 @@ changes:
     note: "Re-read the Learn pages on 18 November 2026: status, dates, credit billing, controls and default state are unchanged."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 96 statements confirmed"
-version: 14
+  - date: "2026-11-18"
+    note: "Re-read the Learn pages on 18 November 2026: status, dates, credit billing, controls and default state are unchanged."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 95 statements not yet confirmed"
+version: 15
 verification:
-  status: "verified"
+  status: "verified-with-gaps"
   date: "2026-11-18"
-  version: 14
+  version: 15
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 96
-  confirmed: 96
+  claims: 95
+  confirmed: 94
   unconfirmed: 0
-  contradicted: 0
+  contradicted: 1
   attempts: 0
-  hash: "cf3226fab2ba4197ae18ea32b9736c75"
+  hash: "dec0fac52fba4e93101563cf01fdf3d9"
 ---
 
 ## What's changing
@@ -267,4 +271,10 @@ Three platform controls exist outside the table. Data policies govern Power Plat
 risk: Medium. The agent picks at run time which attached tools and connector actions to call, and Microsoft Learn documents no switch dedicated to the node itself.
 cost: Variable. Workflow actions and the agent node's use consume Copilot Credits, billed to the environment, and no rate specific to the agent node is published.
 impact: Medium. Makers who build workflows notice it first; the people who feed or receive the workflow's output see decisions made by an agent instead of a fixed rule.
+-->
+
+<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [contradicted, minor] Governance guidance: At rollout; Governance controls / consistency: The checklist instructs makers to use Test and Evaluate, but neither testing nor evaluation has a controls-table row. | Found: Checklist: "test each agent node before publishing using the Test tab, and evaluate new inline agents using Evaluate". Table: prepaid credits, credit consumption, human assistance and a dedicated off switch; no testing or evaluation row. | Fix: Remove the At rollout checklist bullet beginning 'Ask makers to test each agent node before publishing': it instructs use of Test and Evaluate controls that have no corresponding controls-table row.
 -->

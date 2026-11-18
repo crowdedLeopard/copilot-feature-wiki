@@ -4,7 +4,7 @@ slug: "microsoft-teams-automatic-recording-and-transcription-for-teams-call-queu
 roadmapId: 565215
 topic: "modern-work"
 products: ["Microsoft Teams"]
-summary: "Admins can have Teams call queue calls recorded and transcribed automatically once a representative answers, with files kept in SharePoint. Nothing records until an admin assigns a template; Queues app users need Teams Premium."
+summary: "Admins can have Teams call queue calls recorded and transcribed automatically once a representative answers, with files kept in SharePoint. Nothing records until an admin assigns a template; Queues app users need Teams Phone and Teams Premium."
 status: "launched"
 releasePhase: ["General Availability","Targeted Release"]
 clouds: ["Worldwide (Standard Multi-Tenant)","GCC"]
@@ -18,7 +18,7 @@ defaultState: "admin-opt-in"
 action: "review"
 licensing:
   model: "add-on"
-  notes: "Microsoft Learn lists no extra Teams Phone licensing for Automatic Recording for Call Queue and points to the SharePoint service description. All Queues app users require a Teams Premium licence."
+  notes: "Microsoft Learn lists no extra Teams Phone licensing for Automatic Recording for Call Queue and points to the SharePoint service description. Queues app users need both a Teams Phone licence and a Teams Premium licence."
 audiences: ["m365-admin","compliance","service-owner","change-adoption"]
 tags: ["teams","teams-phone","call-queues","transcripts","sharepoint","licensing","privacy","powershell","quality-assurance","gcc"]
 sources:
@@ -37,6 +37,12 @@ sources:
   - title: "Setup - Shared Call History template for Call Queue"
     url: "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-shared-history"
     kind: "learn"
+  - title: "Manage Queues app for Microsoft Teams in your organization"
+    url: "https://learn.microsoft.com/microsoftteams/manage-queues-app"
+    kind: "learn"
+  - title: "Microsoft Teams Premium licensing"
+    url: "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams"
+    kind: "learn"
   - title: "New-CsAutoRecordingTemplate"
     url: "https://learn.microsoft.com/powershell/module/microsoftteams/new-csautorecordingtemplate"
     kind: "learn"
@@ -46,7 +52,7 @@ sources:
   - title: "Set-CsCallQueue"
     url: "https://learn.microsoft.com/powershell/module/microsoftteams/set-cscallqueue"
     kind: "learn"
-  - title: "MC1401299"
+  - title: "MC1401299: (Updated) Automatic recording and transcription for Teams Call Queues"
     url: "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1401299"
     kind: "message-center"
 videos: []
@@ -82,7 +88,7 @@ controls:
       docs: "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic"
     api:
       kind: "powershell"
-      call: "New-CsAutoRecordingTemplate -AgentViewPermission All"
+      call: "New-CsAutoRecordingTemplate -Name <n> -Description <d> -SharePointHostName <host> -SharePointSiteName <site> -RecordingDocumentOwner <id> -RecordingEnabled $true -TranscriptionEnabled $true -AgentViewPermission All"
       docs: "https://learn.microsoft.com/powershell/module/microsoftteams/new-csautorecordingtemplate"
     note: "Supported values None or All. The admin center setting can't be modified once the template is created. Needs Queues app with Shared Call History."
   - governs: "The recording announcement callers hear"
@@ -93,7 +99,7 @@ controls:
       docs: "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic"
     api:
       kind: "powershell"
-      call: "New-CsAutoRecordingTemplate -AutoRecordingAnnouncementTextToSpeechPrompt <text> (or -AutoRecordingAnnouncementAudioFileId <audio file id>)"
+      call: "New-CsAutoRecordingTemplate -Name <n> -Description <d> -SharePointHostName <host> -SharePointSiteName <site> -RecordingDocumentOwner <id> -RecordingEnabled $true -TranscriptionEnabled $true -AutoRecordingAnnouncementTextToSpeechPrompt <t>"
       docs: "https://learn.microsoft.com/powershell/module/microsoftteams/new-csautorecordingtemplate"
     note: "Text-to-speech text must be in the language set for the call queue."
   - governs: "Shared Call History, which lets users reach recordings in the Queues app"
@@ -106,7 +112,7 @@ controls:
       kind: "powershell"
       call: "Set-CsCallQueue -Identity <queue GUID> -SharedCallQueueHistoryTemplateId <template id>"
       docs: "https://learn.microsoft.com/powershell/module/microsoftteams/set-cscallqueue"
-    note: "Learn lists Shared Call History as a prerequisite for automatic recording. Queues app users need Teams Premium."
+    note: "Learn lists Shared Call History as a prerequisite for automatic recording. Queues app users need Teams Phone and Teams Premium."
 confidence: "high"
 created: "2026-11-18"
 updated: "2026-11-18"
@@ -116,19 +122,23 @@ changes:
     note: "First briefing for this item: per-queue automatic recording and transcription, its template controls, prerequisites and the Teams Premium requirement for the Queues app."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 5 of 83 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-18"
+    note: "Corrected after verification: Queues app users need Teams Phone and Teams Premium; template cmdlet calls now show the required parameters; removed the storage open question and checklist items without table rows."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 94 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-18"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 83
-  confirmed: 77
-  unconfirmed: 1
-  contradicted: 5
-  attempts: 1
-  hash: "9ea183093e4a1c8e58677b6f0f36de10"
+  claims: 94
+  confirmed: 93
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 0
+  hash: "e5f4608e3af58c843f60c6f67b24eaec"
 ---
 
 ## What's changing
@@ -161,15 +171,15 @@ Because the sources describe it as something an admin enables per queue, the wik
 
 **Change & support**
 - Callers hear an announcement. The Teams admin center default is `This call will be recorded.`; a custom announcement can be configured.
-- Learn lists prerequisites that will block a queue: explicit recording consent must be Off, conference mode must be enabled, call answering must use a group or channel (Users and Shifts are not supported), and Shared Call History must be enabled.
+- Learn lists prerequisites that will block a queue: explicit recording consent must be Off, conference mode must be enabled, call answering must use a group or channel (Users and Shifts are not supported), and Shared Call History must be enabled. The prerequisites and licensing reference instead says to use Microsoft 365 security groups to assign representatives; the two Learn pages differ on this prerequisite.
 - The SharePoint host and site name can't be modified after the template is created, so a wrong value means a new template.
 - Set-CsCallQueue marks `-AutoRecordingTemplateId` as for Voice applications private preview customers and says saving a call queue in the Teams admin center removes that setting; see Open questions.
 
 ## Cost and licensing
 
-Queues app: Microsoft Learn states that all Queues app users require a Teams Premium licence (Reference - Voice applications prerequisites and licensing). Authorized users and representatives need the Queues app to reach recordings, so the Teams Premium cost scales with the people who open them.
+Queues app: each user needs both a Teams Phone licence and a Teams Premium licence (Manage Queues app for Microsoft Teams in your organization). Authorized users and representatives need the Queues app to reach recordings, so the Teams Premium cost scales with the people who open them.
 
-Automatic Recording for Call Queue: the same page says no extra Teams Phone licensing is required, and points to the SharePoint service description. The base licensing for call queues is at least one Teams Phone licence and a free Teams Phone Resource Account licence for each resource account.
+Automatic Recording for Call Queue: the Reference - Voice applications prerequisites and licensing page says no extra Teams Phone licensing is required, and points to the SharePoint service description. The base licensing for call queues is at least one Teams Phone licence and a free Teams Phone Resource Account licence for each resource account.
 
 No meter, price or SharePoint storage charge for recordings and transcripts is stated on the pages read at the time of writing (November 2026). Expect admin time to design templates, brief representatives and manage the SharePoint site.
 
@@ -179,15 +189,13 @@ Who is affected: callers to a configured queue, its representatives and any auth
 
 Clouds and platforms as the roadmap item lists them: Worldwide (Standard Multi-Tenant) and GCC; Desktop and Mac; Targeted Release and General Availability.
 
-Prerequisites on the Learn setup page: SharePoint site creation enabled in the tenant (default is on), the SharePoint host visited at least once before the template is created, conference mode on the queue, a group or channel for call answering, Shared Call History enabled, and explicit recording consent Off. Compliance Recording for Call Queue is a separate third-party option and is not covered here.
+Prerequisites on the Learn setup page: SharePoint site creation enabled in the tenant (default is on), the SharePoint host visited at least once before the template is created, conference mode on the queue, a group or channel for call answering, Shared Call History enabled, and explicit recording consent Off. The prerequisites and licensing reference instead says to use Microsoft 365 security groups to assign representatives; the two Learn pages differ on this prerequisite. Compliance Recording for Call Queue is a separate third-party option and is not covered here.
 
 ## Governance guidance
 
 ### Before rollout
 - Decide which queues should record and review your call recording and transcription policy, as MC1401299 recommends.
-- Check each chosen queue against the prerequisites: conference mode on, call answering by group or channel, Shared Call History enabled and explicit recording consent Off.
-- Confirm that the SharePoint host exists and has been opened in a browser, and plan to make every Teams administrator who will manage the queues a SharePoint site admin of the template's site, as Learn recommends.
-- Assign Teams Premium to the users who need the Queues app, and decide whether representatives may view recordings, since that setting can't be changed after the template is created.
+- Assign Teams Phone and Teams Premium to the users who need the Queues app, and decide whether representatives may view recordings, since that setting can't be changed after the template is created.
 
 ### At rollout
 - Create the Automatic Recording template with the announcement wording and Recording Document Owner you have agreed.
@@ -195,7 +203,6 @@ Prerequisites on the Learn setup page: SharePoint site creation enabled in the t
 - Tell representatives and helpdesk teams that calls on those queues are recorded.
 
 ### After rollout
-- Review who can open the template's SharePoint site and watch for the access or permission errors Learn warns about.
 - Ask your compliance team how recordings and transcripts are handled for retention, eDiscovery and access requests.
 - Re-check the template with Get-CsAutoRecordingTemplate and the queue assignment after any change made in the Teams admin center.
 
@@ -208,9 +215,9 @@ Prerequisites on the Learn setup page: SharePoint site creation enabled in the t
 <tbody>
 <tr><td data-label="Control"><strong>Which queues record and transcribe, and where files are stored (Automatic Recording template)</strong><br><small>Tenant</small><br><small class="controls__note">Teams admin center configuration is dated 30 September 2026 and PowerShell 13 August 2026 on Learn. SharePoint host and site can't be changed after creation.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Voice › Templates and resources › Templates › Automatic Recording › Add <a href="https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-CsAutoRecordingTemplate -Name &lt;string&gt; -Description &lt;string&gt; -SharePointHostName &lt;host&gt; -SharePointSiteName &lt;site&gt; -RecordingDocumentOwner &lt;id&gt; -RecordingEnabled $true -TranscriptionEnabled $true</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/new-csautorecordingtemplate" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which call queue uses an automatic recording template</strong><br><small class="controls__note">Reference marks the parameter for Voice applications private preview customers only; saving the queue in the Teams admin center removes this setting. Teams admin must be a SharePoint site admin of the template's site.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Voice › Call queue › call queue › Templates › Automatic recording template <a href="https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsCallQueue -Identity &lt;queue GUID&gt; -AutoRecordingTemplateId &lt;template id&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-cscallqueue" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether representatives can view recordings and transcripts</strong><br><small>Agent</small><br><small class="controls__note">Supported values None or All. The admin center setting can't be modified once the template is created. Needs Queues app with Shared Call History.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Voice › Templates and resources › Templates › Automatic Recording › Add <a href="https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-CsAutoRecordingTemplate -AgentViewPermission All</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/new-csautorecordingtemplate" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>The recording announcement callers hear</strong><br><small class="controls__note">Text-to-speech text must be in the language set for the call queue.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Voice › Templates and resources › Templates › Automatic Recording › Add <a href="https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-CsAutoRecordingTemplate -AutoRecordingAnnouncementTextToSpeechPrompt &lt;text&gt; (or -AutoRecordingAnnouncementAudioFileId &lt;audio file id&gt;)</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/new-csautorecordingtemplate" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Shared Call History, which lets users reach recordings in the Queues app</strong><br><small class="controls__note">Learn lists Shared Call History as a prerequisite for automatic recording. Queues app users need Teams Premium.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Voice › Call queues › call queue › General info › Shared call history template <a href="https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-shared-history" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsCallQueue -Identity &lt;queue GUID&gt; -SharedCallQueueHistoryTemplateId &lt;template id&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-cscallqueue" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether representatives can view recordings and transcripts</strong><br><small>Agent</small><br><small class="controls__note">Supported values None or All. The admin center setting can't be modified once the template is created. Needs Queues app with Shared Call History.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Voice › Templates and resources › Templates › Automatic Recording › Add <a href="https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-CsAutoRecordingTemplate -Name &lt;n&gt; -Description &lt;d&gt; -SharePointHostName &lt;host&gt; -SharePointSiteName &lt;site&gt; -RecordingDocumentOwner &lt;id&gt; -RecordingEnabled $true -TranscriptionEnabled $true -AgentViewPermission All</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/new-csautorecordingtemplate" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>The recording announcement callers hear</strong><br><small class="controls__note">Text-to-speech text must be in the language set for the call queue.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Voice › Templates and resources › Templates › Automatic Recording › Add <a href="https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-CsAutoRecordingTemplate -Name &lt;n&gt; -Description &lt;d&gt; -SharePointHostName &lt;host&gt; -SharePointSiteName &lt;site&gt; -RecordingDocumentOwner &lt;id&gt; -RecordingEnabled $true -TranscriptionEnabled $true -AutoRecordingAnnouncementTextToSpeechPrompt &lt;t&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/new-csautorecordingtemplate" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Shared Call History, which lets users reach recordings in the Queues app</strong><br><small class="controls__note">Learn lists Shared Call History as a prerequisite for automatic recording. Queues app users need Teams Phone and Teams Premium.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Voice › Call queues › call queue › General info › Shared call history template <a href="https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-shared-history" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsCallQueue -Identity &lt;queue GUID&gt; -SharedCallQueueHistoryTemplateId &lt;template id&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-cscallqueue" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -222,25 +229,19 @@ Microsoft Learn's setup page requires the Teams administrator to be a SharePoint
 
 - Is `Set-CsCallQueue -AutoRecordingTemplateId` generally available? The cmdlet reference still says private preview customers only, while the setup page dates PowerShell configuration to 13 August 2026. Watch the Set-CsCallQueue reference.
 - How are recordings and transcripts in the template's SharePoint site covered by retention, eDiscovery and audit policies? MC1401299 says they may be, depending on configuration, without giving settings.
-- Is there a storage charge or quota for the SharePoint site? Learn points to the SharePoint service description and states no extra Teams Phone licensing.
 - Do the GCC rollout and Teams admin center experience match Worldwide? The roadmap lists GCC; the Learn pages read do not give cloud-specific differences.
 
 <!-- rationale
 risk: Medium. Once an admin assigns a template to a queue, customer calls are recorded and transcribed into SharePoint, which creates new personal data to protect; nothing is stated to record before an admin configures it.
-cost: Medium. Microsoft Learn says every Queues app user needs a Teams Premium licence, which is an add-on for the people who open recordings; it lists no extra Teams Phone licence for automatic recording itself.
-impact: Medium. Callers hear a recording announcement and representatives and supervisors in each configured queue are recorded, but only queues that an admin configures are affected.
+cost: Medium. Microsoft Learn says Queues app users need both a Teams Phone and a Teams Premium licence, with Teams Premium an add-on for the people who open recordings; it lists no extra Teams Phone licence for automatic recording itself.
+impact: Medium. Callers hear a recording announcement and representative-answered inbound calls in configured queues are recorded; only queues an admin configures are affected.
 -->
 
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Cost and licensing: Queues app; Governance guidance: Before rollout / licensing: The user-licensing guidance specifies Teams Premium for Queues app users but omits their individual Teams Phone requirement. | Found: Users must have a Teams Phone and a Teams Premium license to use Queues app. | Fix: Replace the first Cost and licensing sentence with 'Queues app: each user needs both a Teams Phone licence and a Teams Premium licence.' Change the checklist instruction to 'Assign Teams Phone and Teams Premium to the users who need the Queues app.' Cite https://learn.microsoft.com/microsoftteams/manage-queues-app. | Source: https://learn.microsoft.com/microsoftteams/manage-queues-app
-- [contradicted, blocker] controls[2].api; Governance controls: third row API / command: New-CsAutoRecordingTemplate -AgentViewPermission All is the complete displayed call for configuring representative access. | Found: New-CsAutoRecordingTemplate -Name <String> -Description <String> -SharePointHostName <String> -SharePointSiteName <String> -RecordingDocumentOwner <String> | Fix: Replace the call with 'New-CsAutoRecordingTemplate -Name <string> -Description <string> -SharePointHostName <host> -SharePointSiteName <site> -RecordingDocumentOwner <id> -RecordingEnabled $true -TranscriptionEnabled $true -AgentViewPermission All -AutoRecordingAnnouncementTextToSpeechPrompt <text>'. This creates a template with representative access; it does not update an existing template. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/new-csautorecordingtemplate
-- [contradicted, blocker] controls[3].api; Governance controls: fourth row API / command: The displayed New-CsAutoRecordingTemplate announcement line is a runnable command after replacing its placeholders. | Found: -Name <String> -Description <String> -SharePointHostName <String> -SharePointSiteName <String> -RecordingDocumentOwner <String> [-TranscriptionEnabled <Boolean>] [-RecordingEnabled <Boolean>] | Fix: Replace the line with 'New-CsAutoRecordingTemplate -Name <string> -Description <string> -SharePointHostName <host> -SharePointSiteName <site> -RecordingDocumentOwner <id> -RecordingEnabled $true -TranscriptionEnabled $true -AutoRecordingAnnouncementTextToSpeechPrompt <text>'. Remove the parenthesised '(or ...)' prose from the executable call. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/new-csautorecordingtemplate
-- [contradicted, blocker] Open questions: storage charge or quota / absence: Whether the template's SharePoint site has a storage quota or storage-capacity charge remains an unpublished question. | Found: Max storage per site (site collection) | 25 TB | 25 TB | 25 TB | 25 TB | 25 TB | You can purchase an unlimited amount of more SharePoint storage. | Fix: Remove the Open questions bullet 'Is there a storage charge or quota for the SharePoint site? Learn points to the SharePoint service description and states no extra Teams Phone licensing.' General SharePoint site and tenant storage limits are published; the absence of a feature-specific price does not make those limits unknown. | Source: https://learn.microsoft.com/office365/servicedescriptions/sharepoint-online-service-description/sharepoint-online-limits
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model; cost; rationale: cost / licensing: Teams Premium is an add-on licence, supporting the add-on licensing model and medium cost rating. | Found: Microsoft Teams Premium is a Teams add-on license that allows organizations with Microsoft 365 subscriptions to enhance their Teams experience | Fix: Add https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams to sources for the Teams Premium add-on classification. | Source: https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams
-- [supported, minor] Risk assessment: Change & support; Scope; Governance guidance: Before rollout / behaviour: Call answering must use a group or channel. | Found: Call answering must use a group or channel. | Fix: After this prerequisite, add 'The prerequisites and licensing reference instead says to use Microsoft 365 security groups to assign representatives; the two Learn pages differ on this prerequisite.' Both https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic and https://learn.microsoft.com/microsoftteams/aa-cq-reference-prerequisites-licensing are already cited. | Source: https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic
-- [unsupported, minor] rationale: impact / behaviour: Representatives and supervisors in each configured queue are recorded. | Found: Searched: "automatic recording" "call queue" "supervisors" recording calls. Read aa-cq-plan-recording and manage-queues-app; no passage says supervisors are recorded just because they belong to the queue. | Fix: Replace the impact rationale with 'Medium. Callers hear a recording announcement and representative-answered inbound calls in configured queues are recorded; only queues an admin configures are affected.'
-- [contradicted, minor] Governance guidance: Before rollout and After rollout; Governance controls / consistency: The checklist names controls that have no corresponding controls-table row. | Found: Checklist: 'conference mode on, call answering by group or channel ... explicit recording consent Off'; 'make every Teams administrator ... a SharePoint site admin'; 'Review who can open ... SharePoint site'. No table rows cover these controls. | Fix: Remove the checklist instructions to check conference mode, call-answering membership and explicit recording consent, to configure SharePoint site administrators, and to review SharePoint site access. Keep the verified prerequisite and role descriptions in Scope and Risk assessment; these checklist controls have no table rows.
+- [supported, minor] controls[0].api / command: The printed New-CsAutoRecordingTemplate call supplies the template's name, description, SharePoint location, document owner and enabled recording and transcription settings. | Found: -Name <String> -Description <String> -SharePointHostName <String> -SharePointSiteName <String> -RecordingDocumentOwner <String> [-TranscriptionEnabled <Boolean>] [-RecordingEnabled <Boolean>] | Fix: Add to the notes accompanying the template-creation calls: 'The New-CsAutoRecordingTemplate syntax lists the announcement parameters as optional, but the parameter tables mark both as mandatory; Microsoft documentation is inconsistent.' The conflicting sections are on https://learn.microsoft.com/powershell/module/microsoftteams/new-csautorecordingtemplate. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/new-csautorecordingtemplate
+- [supported, minor] controls[4].api / command: Set-CsCallQueue -Identity <queue GUID> -SharedCallQueueHistoryTemplateId <template id> applies a Shared Call History template. | Found: The SharedCallQueueHistoryTemplateId parameter indicates the Shared Call History template to apply to the call queue. ... Shared call history is not availble when using a Teams channel for queue membership | Fix: Add to controls[4].note: 'The Set-CsCallQueue reference says Shared Call History is unavailable with Teams-channel queue membership, whereas the automatic-recording setup page permits group or channel membership and requires Shared Call History; these pages disagree.' Both reference pages are already cited. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/set-cscallqueue
+- [supported, minor] Cost and licensing / absence: The pages cited in the briefing state no SharePoint storage charge specifically for these recordings and transcripts. | Found: Searched: "call queue" "automatic recording" "storage" "cost"; "SharePoint" "storage" "purchase additional storage" files. Read cited recording/licensing pages and SharePoint service description storage passages; SharePoint storage planning documents general additional-capacity costs. | Fix: Replace the absence sentence with: 'No recording-specific meter or price is stated on the cited feature pages at the time of writing (November 2026). General SharePoint storage capacity rules still matter: Microsoft says tenants exceeding their storage quota might need to purchase additional storage or reduce existing storage.' Add https://learn.microsoft.com/sharepoint/sharepoint-storage-planning#purchase-additional-storage to sources.
+- [contradicted, minor] Governance guidance: After rollout / consistency: The checklist's instruction to re-check the template with Get-CsAutoRecordingTemplate has a corresponding controls-table row. | Found: Checklist: 'Re-check the template with Get-CsAutoRecordingTemplate'. The table's five rows cover creation, queue assignment, agent access, announcements and Shared Call History; none lists Get-CsAutoRecordingTemplate. | Fix: Replace that checklist bullet with 'Re-check the queue assignment after any change made in the Teams admin center.' Keep the separately documented Get-CsAutoRecordingTemplate explanation in Governance controls.
 -->
