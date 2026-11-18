@@ -12,18 +12,21 @@ platforms: ["Web"]
 targetDate: "November CY2026"
 previewDate: "November CY2025"
 risk: "low"
-cost: "none"
+cost: "variable"
 impact: "low"
 defaultState: "user-opt-in"
 action: "review"
 licensing:
   model: "included"
-  notes: "Express mode is available only for flows under the Copilot Studio plan, with no added cost. Actions are still billed under Copilot Studio metering. No separate licence is documented."
+  notes: "Express mode is available only for flows under the Copilot Studio plan, with no added cost. Actions are still billed under Copilot Studio metering; the billing reference exempts test runs and qualifying agent-triggered runs for authenticated Microsoft 365 Copilot licensed users, not autonomous-agent runs. No separate licence is documented."
 audiences: ["maker","power-platform-admin","service-owner"]
 tags: ["agent-flows","copilot-studio","power-automate","performance","automation"]
 sources:
   - title: "Speed up agent flow execution with express mode (preview)"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/agent-flow-express-mode"
+    kind: "learn"
+  - title: "Billing rates and management"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management#overage-enforcement"
     kind: "learn"
   - title: "Power Automate environments move to new architecture"
     url: "https://learn.microsoft.com/power-automate/environment-architecture"
@@ -76,19 +79,23 @@ changes:
     note: "New briefing: express mode for agent flows, documented on Learn as preview with per-flow limits, no added cost and no administrator switch."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 65 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-18"
+    note: "Correction: cost rating changed to variable (actions stay metered), unsupported 'actions unchanged' claim replaced, billing exemptions and the 100-action safe limit qualified."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 69 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-18"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 65
-  confirmed: 63
-  unconfirmed: 1
-  contradicted: 1
-  attempts: 1
-  hash: "fa2a2498f35448a806bc31520f7d146c"
+  claims: 69
+  confirmed: 69
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "ad94704fa0f3f029de6826520d745a9a"
 ---
 
 ## What's changing
@@ -116,11 +123,11 @@ Microsoft has not stated a default for the toggle on arrival, and the Learn page
 - The page does not describe any change to the connections or identity a flow runs under. Confirm that with the maker's test results before relying on it for flows that act on sensitive systems.
 
 **Autonomy & actions**
-- Express mode changes how quickly a flow responds to a calling agent or app, not what the flow does. A faster flow means an agent receives its response sooner or avoids a timeout failure; the actions in the flow are unchanged.
+- Express mode can help an agent flow respond faster and avoid a timeout failure.
 - **Delay** and webhook actions are not supported with express mode on, and errors appear when the flow is saved.
 
 **Change & support**
-- Documented limits give support teams specific causes to look for: no more than 100 actions in a flow run (loops count one per iteration), 100 items in an **Apply to each** loop, 100 iterations in a **Do until** loop, and the 64 KB and 1,024-character limits above.
+- Documented limits give support teams specific causes to look for: no more than 100 actions in a flow run (loops count one per iteration), 100 items in an **Apply to each** loop, 100 iterations in a **Do until** loop, and the 64 KB and 1,024-character limits above. Microsoft calls 100 actions a safe limit; more may work depending on flow size and data processing.
 - Troubleshooting is harder: automatic testing does not work in the flow designer, loop iterations may not appear in **Run details** when a connector response exceeds the memory limit, and live activity does not display during a run.
 - The toggle appears only in environments on the new architecture. A maker in an environment that has not been upgraded will not see it.
 
@@ -128,7 +135,7 @@ Microsoft has not stated a default for the toggle on arrival, and the Learn page
 
 Express mode is available only for flows under the Copilot Studio plan, and the Learn page says there is no added cost to run flows in this mode. The page adds that you are still billed for the number of actions used under Copilot Studio metering. Its prerequisites list a Copilot Studio plan associated with the flow and no separate licence.
 
-The meter is therefore the one Copilot Studio flows already use, counted per action. Microsoft has not published a rate for express mode; the page states none. No cap or budget control specific to express mode is documented at the time of writing (November 2026). Indirect costs are maker and admin time to test flows, and the support time spent on flows that exceed the limits.
+The meter is therefore the one Copilot Studio flows already use, counted per action. The billing reference exempts test runs and qualifying agent-triggered runs for authenticated Microsoft 365 Copilot licensed users; autonomous-agent runs are not exempt. AI tools inside flows are metered separately. Microsoft has not published a rate for express mode; the page states none. No cap or budget control specific to express mode is documented at the time of writing (November 2026). Indirect costs are maker and admin time to test flows, and the support time spent on flows that exceed the limits.
 
 ## Scope
 
@@ -149,7 +156,7 @@ The meter is therefore the one Copilot Studio flows already use, counted per act
 ### At rollout
 - Tell makers to test each flow in a development environment before turning express mode on, because a failed test points to variable size or memory limits that production would hit too.
 - Tell makers to keep Delay and webhook actions, flows without a Response action and data-heavy flows off express mode.
-- Point makers to the documented limits: 100 actions per run, 100 items or iterations per loop, 1,024-character variables and 64 KB per connector response.
+- Point makers to the documented limits: the recommended safe limit of 100 actions per run, 100 items or iterations per loop, 1,024-character variables and 64 KB per connector response.
 
 ### After rollout
 - Review failed runs of flows with express mode on; the runtime error message names the limit that was hit, and the page advises running such flows with express mode off.
@@ -181,16 +188,6 @@ The nearest existing administrator control stops a whole flow, so it is a blunt 
 
 <!-- rationale
 risk: Low. Makers choose it flow by flow, and Microsoft's page describes no new data access; the exposure is flows failing at the documented express mode limits.
-cost: None. Microsoft's page says there is no added cost to run flows in express mode; actions are still billed under Copilot Studio metering, as they are today.
-impact: Low. Makers who build agent flows notice it; Microsoft documents it as a per-flow toggle, and an agent's users see only faster or failed responses.
--->
-
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Risk assessment: Autonomy & actions; rationale: impact / behaviour: Express mode changes only response speed or failure, not what the flow does, and leaves its actions unchanged. | Found: Searched: express mode flow actions unchanged identity connections data access. Opened agent-flow-express-mode; it describes faster execution and action restrictions but does not state unchanged action semantics or exhaustively limit user-visible effects. | Fix: Replace the Autonomy & actions bullet with 'Express mode can help an agent flow respond faster and avoid a timeout failure.' In the impact rationale, replace 'an agent's users see only faster or failed responses' with 'flow response failures can affect the calling agent or app'.
-- [contradicted, blocker] front matter: cost; rationale: cost / consistency: The cost rating is none despite the page documenting continuing action-based metering. | Found: cost: "none" ... Actions are still billed under Copilot Studio metering. ... The meter is therefore the one Copilot Studio flows already use, counted per action. | Fix: Set cost to 'variable' under the schema's metered-cost definition. Replace the cost rationale with 'Variable. Express mode adds no surcharge, but flow actions remain subject to Copilot Studio metering and its documented exemptions.' Retain the accurate statement that enabling express mode itself adds no cost.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] licensing.notes; Cost and licensing; Governance guidance; rationale: cost / cost: Flow actions remain billed by action count under Copilot Studio metering. | Found: You're still billed for the number of actions used under Copilot Studio metering. | Fix: Qualify the billing statement with: 'The billing reference exempts test runs and qualifying agent-triggered runs for authenticated Microsoft 365 Copilot licensed users; autonomous-agent runs are not exempt. AI tools inside flows are metered separately.' Cite https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management#overage-enforcement, which gives these exceptions to the express-mode page's general billing statement. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agent-flow-express-mode
-- [supported, minor] Risk assessment: Change & support; Governance guidance: At rollout; Open questions / behaviour: Microsoft advises no more than 100 actions in an express-mode flow run. | Found: Don't include more than 100 actions in a flow run. ... 100 actions is a safe limit for flow size. In practice, you might be able to include more than 100 actions, depending on how large the flow is, and on how much data processing the flow does. | Fix: Describe 100 actions as Microsoft's recommended safe limit rather than an absolute maximum. Add to its first occurrence: 'Microsoft calls 100 actions a safe limit; more may work depending on flow size and data processing.' Use 'recommended safe limit of 100 actions per run' in the rollout checklist. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agent-flow-express-mode
+cost: Variable. Express mode adds no surcharge, but flow actions remain subject to Copilot Studio metering and its documented exemptions.
+impact: Low. Makers who build agent flows notice it; Microsoft documents it as a per-flow toggle, and flow response failures can affect the calling agent or app.
 -->

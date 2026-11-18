@@ -34,6 +34,9 @@ sources:
   - title: "Adaptive scopes"
     url: "https://learn.microsoft.com/purview/purview-adaptive-scopes"
     kind: "learn"
+  - title: "Use the Insights tab to analyze auto-labeling policies in Microsoft Purview"
+    url: "https://learn.microsoft.com/purview/auto-label-insights-tab"
+    kind: "learn"
 videos: []
 related: ["microsoft-purview-adaptive-scope-evaluation-control-with-recipient-and-site-owner-lifecycl","microsoft-purview-unified-classification-management-experience","microsoft-purview-information-protection-sensitivity-labels-for-microsoft-entra-security-g"]
 controls:
@@ -68,19 +71,23 @@ changes:
     note: "New briefing: higher auto-labeling simulation, SharePoint site and adaptive scope limits, plus new reporting, per roadmap item 570445 and MC1469958."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 61 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-18"
+    note: "Corrected the After rollout reporting step: SIT summaries are on the Insights tab, while the 30-day Labeling activity overview chart is in Overview under View details."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 67 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-18"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 61
-  confirmed: 59
+  claims: 67
+  confirmed: 66
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "b9160f39706b1fa923765e260cc9350e"
+  contradicted: 1
+  attempts: 0
+  hash: "34dd52855bdf3f3be377634262d19c2b"
 ---
 
 ## What's changing
@@ -141,7 +148,7 @@ The notice says the enhancements arrive automatically as the rollout reaches an 
 - Confirm auditing is on for Microsoft 365, since Learn lists it as required for simulation.
 
 ### After rollout
-- Review each policy's details panel, including the Insights tab, for the SIT summaries and the 30-day chart.
+- For an enabled policy targeting SharePoint or OneDrive, review the policy details panel's Insights tab for SIT summaries. For the 30-day Labeling activity overview chart, select View details and open Overview in the newer full review experience.
 - Update reporting and operations procedures that rely on earlier views, as the notice recommends.
 - Watch the Message center and the Learn auto-labeling page for further timeline changes.
 
@@ -174,10 +181,9 @@ cost: Low. The only cost the sources show is admin time to revisit policies. Mic
 impact: Low. Compliance and information protection admins notice the new limits and reports; Microsoft's notice expects no impact on end users.
 -->
 
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance guidance: After rollout, first bullet / admin-path: Review each policy's details panel, including Insights, for both the SIT summaries and the 30-day chart. | Found: For the daily trend, select View details and open Overview in the newer full review experience. ... This chart isn't part of the newer Insights layout. | Fix: Replace the bullet with: 'For an enabled policy targeting SharePoint or OneDrive, review the policy details panel's Insights tab for SIT summaries. For the 30-day Labeling activity overview chart, select View details and open Overview in the newer full review experience.' Cite https://learn.microsoft.com/purview/auto-label-insights-tab. | Source: https://learn.microsoft.com/purview/auto-label-insights-tab
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance; Governance controls table / consistency: Every control the governance checklist asks readers to check is represented in the controls table. | Found: Confirm that the roles you need are assigned ... Confirm auditing is on for Microsoft 365 ... Review each policy's details panel ... Table: explicit SharePoint selection; dynamic SharePoint targeting. | Fix: The role-assignment check, auditing check and reporting-review step have no corresponding controls-table rows. Keep this as a coverage note; do not add rows as part of this correction.
+- [supported, minor] front matter: licensing.notes; Cost and licensing; rationale: cost / licensing: The cited Learn page includes service-side auto-labeling with standalone Azure Information Protection Premium P2. | Found: Azure Information Protection Premium P2 (standalone) ... Service-side auto-labeling (SharePoint, OneDrive, Exchange) ... Same E5 / P2-tier SKUs as above | Fix: After the licensing paragraph, add: 'Microsoft documentation differs: the Microsoft Purview service description says automatic or policy-based labeling requires Microsoft 365 E5 or Microsoft 365 Information Protection and Governance, while the auto-labeling page also lists standalone Azure Information Protection Premium P2. The service description also requires AIP P1 to be assigned when AIP P2 is assigned.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-purview-information-protection-sensitivity-labeling. | Source: https://learn.microsoft.com/purview/apply-sensitivity-label-automatically
+- [contradicted, minor] Governance guidance; Governance controls / consistency: The governance checklist checks controls not represented by rows in the controls table. | Found: Checklist: 'Confirm that the roles you need are assigned'; 'Check whether any policy ... uses administrative units'; 'Test any enlarged policy in simulation'; 'Confirm auditing is on'. Table rows cover only explicit SharePoint selection and adaptive scopes. | Fix: The role-assignment, administrative-unit, simulation and auditing checklist steps have no corresponding control rows. To reconcile the checklist without adding rows, remove those four checklist bullets; retain their already documented prerequisites and advice in Risk assessment.
 -->

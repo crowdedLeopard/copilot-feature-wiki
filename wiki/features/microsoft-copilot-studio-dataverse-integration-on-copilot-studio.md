@@ -18,7 +18,7 @@ defaultState: "user-opt-in"
 action: "review"
 licensing:
   model: "mixed"
-  notes: "Copilot Studio usage is metered in Copilot Credits; the billing page lists no Dataverse-specific rate. Learn also notes extra Dataverse capacity cost for the search index. Microsoft 365 Copilot licensed users may incur no charge in some employee-facing cases."
+  notes: "Copilot Studio usage is metered in Copilot Credits; the billing page lists no Dataverse-specific rate. Learn also notes extra Dataverse capacity cost for the search index. Standard-harness employee-facing usage may be included in the Microsoft Copilot user subscription licence; Microsoft Copilot harness usage is not."
 audiences: ["power-platform-admin","maker","finops","security"]
 tags: ["copilot-studio","dataverse","knowledge-grounding","copilot-credits","power-platform-admin-center","agents"]
 sources:
@@ -31,6 +31,12 @@ sources:
   - title: "Add Dataverse tables to your agent as a knowledge source (Microsoft Copilot)"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-add-dataverse-tables"
     kind: "learn"
+  - title: "Knowledge sources summary"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio"
+    kind: "learn"
+  - title: "Configure data policies for agents"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention"
+    kind: "learn"
   - title: "Configure Dataverse search for your environment"
     url: "https://learn.microsoft.com/power-platform/admin/configure-relevance-search-organization"
     kind: "learn"
@@ -39,6 +45,9 @@ sources:
     kind: "learn"
   - title: "Billing rates and management"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management"
+    kind: "learn"
+  - title: "Overview of usage-based billing"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview"
     kind: "learn"
   - title: "Manage Copilot Credits and capacity for Copilot Studio"
     url: "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity"
@@ -83,19 +92,23 @@ changes:
     note: "First briefing: Learn already documents Dataverse knowledge for Copilot Studio agents while the roadmap still shows In development; covers the Dataverse search dependency, Copilot Credit cost and per-agent limits."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 6 of 65 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-18"
+    note: "Corrected after verification: users' own access governs what Dataverse knowledge returns, data policies apply to agents in scope, billing qualified by harness, and Dataverse search storage counts towards tenant entitlements."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 71 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-18"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 65
-  confirmed: 59
+  claims: 71
+  confirmed: 71
   unconfirmed: 0
-  contradicted: 6
-  attempts: 1
-  hash: "a6f3dcefc5bd1fa1a7178717b3d5e005"
+  contradicted: 0
+  attempts: 0
+  hash: "46edaf9d093820d7a2e10dbc7f166477"
 ---
 
 ## What's changing
@@ -117,12 +130,12 @@ Expect two practical effects. Makers will ask for Dataverse search to be turned 
 ## Risk assessment
 
 **Data exposure**
-- A maker can add up to 15 Dataverse tables per knowledge source, and the agent then grounds its answers in them. Learn says makers need appropriate permissions on the underlying data to see and select tables, and that Dataverse search respects Dataverse security roles and permissions. Microsoft Learn does not say whose permissions apply when an end user asks the agent a question; confirm this before exposing sensitive tables.
+- A maker can add up to 15 Dataverse tables per knowledge source, and the agent then grounds its answers in them. Learn says makers need appropriate permissions on the underlying data to see and select tables, and that Dataverse search respects Dataverse security roles and permissions. For Dataverse knowledge, Learn lists the agent user's Microsoft Entra ID authentication and says the agent only surfaces content that the asking user can access.
 - Learn says Dataverse search deprovisions and removes its index within 12 hours of being turned off, and a fresh index needs a full sync when it is turned back on.
 
 **Security & identity**
 - Dataverse knowledge needs the agent's authentication set to **Authenticate with Microsoft**. Agents set to **No authentication** or **Authenticate manually** cannot use it, according to Learn.
-- The **Knowledge sources for agents** admin setting (preview) lists SharePoint + OneDrive, Public websites and Documents. Dataverse is not among the listed types, and Learn does not confirm that data policies cover Dataverse knowledge.
+- The **Knowledge sources for agents** admin setting (preview) lists SharePoint + OneDrive, Public websites and Documents. Dataverse is not among the listed types. Data policies apply to Copilot Studio agents in the environments within their scope; the cited knowledge-source settings do not document a Dataverse-specific source-type option.
 
 **Autonomy & actions**
 - Learn describes the source as grounding for the agent's answers and describes no write action for it. Dataverse tools are a separate feature that the Dataverse search page lists alongside it.
@@ -135,11 +148,13 @@ Expect two practical effects. Makers will ask for Dataverse search to be turned 
 
 **Licence.** The Learn pages for Dataverse knowledge list prerequisites (Dataverse search, Authenticate with Microsoft, data permissions) and name no licence. Copilot Studio usage is metered in Copilot Credits; see [Copilot Credits](/concepts/copilot-credits/).
 
-**Meter.** Microsoft's billing page lists a generative answer at 2 Copilot Credits and an example in which an agent grounded in a tenant graph uses 12 credits (10 for tenant graph grounding and 2 for generative answers). It lists no separate rate for Dataverse knowledge, and does not say whether answers grounded in Dataverse tables bill as generative answers. The same page says employee-facing usage is included in the Microsoft Copilot user subscription licence when the user is licensed with Microsoft Copilot and the agent operates using that user's authenticated identity.
+**Meter.** Microsoft's billing page lists a generative answer at 2 Copilot Credits and an example in which an agent grounded in a tenant graph uses 12 credits (10 for tenant graph grounding and 2 for generative answers). It lists no separate rate for Dataverse knowledge. For standard-harness agents, Dataverse is a supported generative-answers knowledge source. The published generative-answer feature rate is 2 Copilot Credits; other applicable feature or reasoning-model charges can also apply. Microsoft Copilot harness agents use a different usage-based billing structure.
+
+For standard-harness agents, eligible employee-facing usage is included in the Microsoft Copilot user subscription licence when the agent uses that licensed user's authenticated identity, subject to fair usage limits. Usage by agents powered by the Microsoft Copilot harness is not included with a user's Microsoft 365 Copilot licence.
 
 **Caps.** Admins can set a monthly consumption limit per Copilot Studio agent in the Power Platform admin center, with notifications and a hard stop that turns the agent off. Learn notes that limits are not applied instantly. See the second row of the controls table.
 
-**Indirect cost.** Learn says creating a Dataverse search index incurs extra Dataverse capacity costs; that warning sits in the preview section on multiline text and file columns. Admins can see which tables are indexed and how much capacity each consumes, per the Dataverse search page. Any price specific to this feature is not yet published.
+**Indirect cost.** Learn says creating a Dataverse search index incurs extra Dataverse capacity costs; that warning sits in the preview section on multiline text and file columns. Dataverse search also counts towards tenant storage entitlements and is part of database storage consumption; this platform rule is not limited to the multiline-text and file preview. Admins can see which tables are indexed and how much capacity each consumes, per the Dataverse search page. Any price specific to this feature is not yet published.
 
 ## Scope
 
@@ -153,17 +168,14 @@ Expect two practical effects. Makers will ask for Dataverse search to be turned 
 
 ### Before rollout
 - Check which production and non-production environments have Dataverse search turned on, and decide where Dataverse tables may ground agents.
-- Identify the Dataverse security roles that cover the tables makers are likely to add, and confirm with Microsoft's documentation whose permissions an agent uses at answer time.
+- Verify the intended users can access the selected records in the tables makers are likely to add.
 - Decide the monthly Copilot Credit limits for agents that will use Dataverse knowledge, and who approves increases.
 
 ### At rollout
 - Turn Dataverse search on only in environments where the data owners accept the index and its Dataverse capacity use.
-- Tell makers that the agent must use **Authenticate with Microsoft** and that the table list shows only tables they can access.
 - Set per-agent monthly limits on the first agents that use Dataverse knowledge.
 
 ### After rollout
-- Review Copilot Studio consumption reports for the **Knowledge sources / Tool used** column to see which agents drive credits.
-- Re-check Dataverse search capacity per table after makers add large tables.
 - Watch Message center and the Learn pages for the roadmap item's launch status and for any control specific to Dataverse knowledge.
 
 ## Governance controls
@@ -180,17 +192,14 @@ Expect two practical effects. Makers will ask for Dataverse search to be turned 
 
 Dataverse search is the control Learn names for availability: if it is off, makers cannot add Dataverse tables as a source. Turning it off removes the index and also affects global search and other AI experiences in the environment that share the index, according to the Dataverse search page. The page names a **System administrator** sign-in for the steps, and the developer page documents reading the `isexternalsearchindexenabled` flag through the Web API; it shows no call to change it.
 
-The **Knowledge sources for agents** setting (Power Platform admin center > Security > Data and privacy) is a preview control at environment and environment group level. It lists SharePoint + OneDrive, Public websites and Documents; Dataverse is not among them. Microsoft has not confirmed that it or data policies govern Dataverse knowledge, so do not treat them as a control over this feature.
+The **Knowledge sources for agents** setting (Power Platform admin center > Security > Data and privacy) is a preview control at environment and environment group level. It lists SharePoint + OneDrive, Public websites and Documents; Dataverse is not among them. Microsoft has not confirmed that it governs Dataverse knowledge, so do not treat it as a control over this feature. Data policies apply to Copilot Studio agents in the environments within their scope; the cited knowledge-source settings do not document a Dataverse-specific source-type option.
 
 Per-agent limits apply to the agent, not the table. Microsoft Learn documents no API for setting the limit at the time of writing (November 2026); the Power Platform API reference lists consumption read operations (entitlement insight).
 
 ## Open questions
 
 - When does the roadmap change reach makers in Worldwide, and is it on for all makers or opt-in? Watch the roadmap item and Message center; the roadmap still shows In development after its September CY2026 target.
-- Whose permissions apply when an end user asks an agent grounded in Dataverse tables: the user's security roles, the maker's, or another identity? Watch the Dataverse knowledge page on Learn.
-- Do answers grounded in Dataverse tables bill as generative answers at 2 Copilot Credits, or at another rate? Watch Billing rates and management.
-- Do the Knowledge sources for agents setting or data policies get a Dataverse option? Watch the admin centre pages for that setting.
-- Is the extra Dataverse capacity cost for the search index limited to the preview multiline text and file columns, or does it apply to every Dataverse knowledge source?
+- Does the Knowledge sources for agents setting get a Dataverse option? Watch the admin centre pages for that setting.
 
 <!-- rationale
 risk: Medium. Agents can answer from business records held in Dataverse tables once a maker adds them, and Learn ties the source to Dataverse search and Dataverse security permissions rather than a feature switch of its own.
@@ -198,14 +207,8 @@ cost: Variable. Copilot Studio bills agent answers in Copilot Credits (generativ
 impact: Medium. Makers who build agents over Dataverse data and the users who ask those agents notice it; admins who own Dataverse environments need to know the search setting it depends on.
 -->
 
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Data exposure; Governance guidance; Open questions / absence: Learn does not say whose permissions apply when an end user asks an agent about Dataverse knowledge. | Found: Agent user authentication for knowledge sources means that when a specific user asks a question of the agent, the agent only surfaces content that the specific user can access. | Fix: Replace the uncertainty with: 'For Dataverse knowledge, Learn lists the agent user's Microsoft Entra ID authentication and says the agent only surfaces content that the asking user can access.' Cite https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio#supported-knowledge-sources. Remove the corresponding open question; change the checklist's permission-confirmation clause to 'verify the intended users can access the selected records'. | Source: https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio
-- [contradicted, blocker] Risk assessment: Security & identity; Governance controls; Open questions / absence: Microsoft has not confirmed that data policies govern this feature, so they should not be treated as a control over it. | Found: These data policies apply to Copilot Studio agents in the environments included in the policy's scope. | Fix: Replace the broad data-policy caveat with: 'Data policies apply to Copilot Studio agents in the environments within their scope; the cited knowledge-source settings do not document a Dataverse-specific source-type option.' Cite https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention. Remove 'or data policies' from the instruction not to treat the Knowledge sources setting as a control, and from the open question about a Dataverse option. | Source: https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention
-- [contradicted, blocker] Cost and licensing: Meter; Open questions / absence: Whether answers grounded in Dataverse tables bill as generative answers remains undocumented. | Found: All knowledge sources that you add at the agent level are added to the generative answers node in the Conversational boosting system topic. | Fix: Replace the billing uncertainty and its open question with: 'For standard-harness agents, Dataverse is a supported generative-answers knowledge source. The published generative-answer feature rate is 2 Copilot Credits; other applicable feature or reasoning-model charges can also apply. Microsoft Copilot harness agents use a different usage-based billing structure.' Cite https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio, https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management and https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview. | Source: https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio
-- [contradicted, blocker] Cost and licensing: Meter; licensing.notes / licensing: Employee-facing usage is included when the user has Microsoft Copilot and the agent uses that authenticated identity, without distinguishing harnesses. | Found: Usage by agents powered by the Microsoft Copilot harness isn't included with a user's Microsoft 365 Copilot license. | Fix: Qualify the body and licensing notes: 'For standard-harness agents, eligible employee-facing usage is included in the Microsoft Copilot user subscription licence when the agent uses that licensed user's authenticated identity, subject to fair usage limits. Usage by agents powered by the Microsoft Copilot harness is not included with a user's Microsoft 365 Copilot licence.' Cite the existing Billing rates and management and Govern Copilot Credit consumption sources. | Source: https://learn.microsoft.com/microsoft-copilot-studio/guidance/govern-credit-consumption
-- [contradicted, blocker] Open questions: search-index capacity / absence: It remains unresolved whether Dataverse search index capacity consumption is limited to preview multiline-text and file retrieval. | Found: Dataverse search is part of database storage consumption in the Summary and Dataverse tabs. Dataverse search counts towards the different storage entitlements you have in the tenant. | Fix: Remove the final open question and replace the preview-only implication in Cost and licensing with: 'Dataverse search counts towards tenant storage entitlements and is part of database storage consumption; this platform rule is not limited to the multiline-text and file preview.' Cite the existing Configure Dataverse search source. Retain the feature guide's warning about extra capacity costs. | Source: https://learn.microsoft.com/power-platform/admin/configure-relevance-search-organization
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance; Governance controls table / consistency: Every control the governance checklist asks readers to review is represented in the controls table. | Found: Identify the Dataverse security roles; Tell makers that the agent must use Authenticate with Microsoft; Review Copilot Studio consumption reports; Re-check Dataverse search capacity per table. The table contains only Dataverse search availability and per-agent monthly limits. | Fix: The security-role review, agent authentication setting, consumption reporting and per-table storage checks have no corresponding controls-table rows. Do not add rows as part of this correction; remove those checklist bullets or their control-setting/review clauses to keep the checklist aligned with the two recorded controls.
+- [supported, minor] Governance controls / behaviour: The Power Platform API Entitlement Insight reference lists consumption read operations. | Found: Get Tenant Resource Consumption By User | Get resource consumption by entitlement and user ID (deprecated). | Fix: Add https://learn.microsoft.com/en-us/rest/api/power-platform/licensing/entitlement-insight to sources and link 'entitlement insight' to it in Governance controls. | Source: https://learn.microsoft.com/en-us/rest/api/power-platform/licensing/entitlement-insight
 -->

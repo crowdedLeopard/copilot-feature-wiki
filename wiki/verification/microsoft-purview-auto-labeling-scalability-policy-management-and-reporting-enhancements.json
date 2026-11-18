@@ -2,31 +2,25 @@
   "slug": "microsoft-purview-auto-labeling-scalability-policy-management-and-reporting-enhancements",
   "roadmapId": 570445,
   "title": "Microsoft Purview: higher auto-labeling limits for SharePoint sites and simulation, plus new reporting",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-18",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
-  "verifierVerdict": "hold",
+  "attempts": 0,
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-18",
-    "reasons": [
-      "1 blocking finding (claim 45)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 61,
-    "confirmed": 59,
+    "claims": 67,
+    "confirmed": 66,
     "unconfirmed": 0,
-    "contradicted": 2,
-    "blocker": 1,
+    "contradicted": 1,
+    "blocker": 0,
     "major": 0,
-    "minor": 1
+    "minor": 2
   },
-  "summary": "Hold for a correction to the reporting instructions: the daily trend chart is on the full Overview page, not in the policy details panel or its Insights tab. The rollout, limits, licensing background and listed controls are otherwise supported.",
+  "summary": "The briefing passes: the rollout facts, increased limits and corrected reporting navigation are supported. Minor corrections should acknowledge differing Microsoft licensing guidance and reconcile the governance checklist with the controls table.",
   "claims": [
     {
       "n": 1,
@@ -65,7 +59,7 @@
       "n": 4,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "Worldwide (Standard Multi-Tenant) is the only listed cloud, with GCC, GCC High and DoD not listed.",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) only, not GCC, GCC High or DoD.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -76,7 +70,7 @@
       "n": 5,
       "where": "front matter: platforms; Scope",
       "type": "record",
-      "claim": "The listed platform is Web.",
+      "claim": "The roadmap platform is Web.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Web\"]",
@@ -87,7 +81,7 @@
       "n": 6,
       "where": "front matter: releasePhase",
       "type": "record",
-      "claim": "The listed release phases are General Availability and Preview.",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
@@ -96,17 +90,28 @@
     },
     {
       "n": 7,
-      "where": "title; front matter: products, roadmapModified; summary; What's changing",
+      "where": "title; front matter: products; summary",
       "type": "record",
-      "claim": "This Microsoft Purview roadmap item concerns auto-labeling scalability, policy management and reporting enhancements.",
+      "claim": "This Microsoft Purview change expands auto-labeling scale, SharePoint targeting and reporting.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"title\": \"Microsoft Purview: Auto-labeling scalability, policy management, and reporting enhancements\"; \"modified\": \"2026-11-11T00:52:46\"",
+      "quote": "These enhancements expand support for larger SharePoint scopes, improve policy management flexibility, and provide richer visibility into auto-labeling activity.",
       "severity": null,
       "fix": null
     },
     {
       "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 11 November 2026 at 00:52:46.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-11T00:52:46\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
       "where": "What's changing; summary",
       "type": "record",
       "claim": "The notice increases simulation capacity from 4 million to 20 million items.",
@@ -117,7 +122,7 @@
       "fix": null
     },
     {
-      "n": 9,
+      "n": 10,
       "where": "What's changing; summary",
       "type": "record",
       "claim": "The notice permits selecting up to 1,000 individual SharePoint sites when configuring policies.",
@@ -128,10 +133,10 @@
       "fix": null
     },
     {
-      "n": 10,
+      "n": 11,
       "where": "What's changing; summary",
       "type": "record",
-      "claim": "The notice raises adaptive scope support to 50,000 SharePoint sites per policy.",
+      "claim": "The notice increases adaptive scope support to 50,000 SharePoint sites per policy.",
       "status": "supported",
       "source": "Message Center post MC1469958",
       "quote": "Adaptive scopes will support up to 50,000 SharePoint sites per policy.",
@@ -139,10 +144,10 @@
       "fix": null
     },
     {
-      "n": 11,
-      "where": "What's changing",
+      "n": 12,
+      "where": "What's changing; Governance guidance: At rollout; Open questions",
       "type": "record",
-      "claim": "The notice adds SiteTemplate filtering for SharePoint sites during policy configuration.",
+      "claim": "The notice announces SiteTemplate filtering of SharePoint sites during policy configuration.",
       "status": "supported",
       "source": "Message Center post MC1469958",
       "quote": "SharePoint sites can be filtered using the SiteTemplate property during policy configuration.",
@@ -150,10 +155,10 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 13,
       "where": "What's changing; Why it matters",
       "type": "record",
-      "claim": "The notice adds summaries of sensitive information types detected when labels are applied.",
+      "claim": "The notice adds audit and reporting summaries of sensitive information types detected when labels are applied.",
       "status": "supported",
       "source": "Message Center post MC1469958",
       "quote": "Audit and reporting experiences will provide additional visibility, including summaries of the Sensitive Information Types (SITs) detected when labels are applied.",
@@ -161,10 +166,10 @@
       "fix": null
     },
     {
-      "n": 13,
+      "n": 14,
       "where": "What's changing; Why it matters; Open questions",
       "type": "record",
-      "claim": "The notice describes a new 30-day chart showing the number of files processed each day.",
+      "claim": "The notice announces a 30-day chart showing files processed each day.",
       "status": "supported",
       "source": "Message Center post MC1469958",
       "quote": "A new 30-day processing chart will display the number of files processed each day, helping administrators monitor policy throughput and activity over time.",
@@ -172,29 +177,29 @@
       "fix": null
     },
     {
-      "n": 14,
+      "n": 15,
       "where": "front matter: defaultState; summary; What's changing",
       "type": "default",
       "claim": "The enhancements are on by default.",
       "status": "supported",
       "source": "Message Center post MC1469958",
-      "quote": "These enhancements are on by default",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "What's changing; Scope",
-      "type": "record",
-      "claim": "The enhancements arrive automatically as rollout reaches the organisation.",
-      "status": "supported",
-      "source": "Message Center post MC1469958",
-      "quote": "will be available automatically as the rollout reaches your organization.",
+      "quote": "These enhancements are on by default and will be available automatically as the rollout reaches your organization.",
       "severity": null,
       "fix": null
     },
     {
       "n": 16,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The enhancements become available automatically as rollout reaches an organisation.",
+      "status": "supported",
+      "source": "Message Center post MC1469958",
+      "quote": "These enhancements are on by default and will be available automatically as the rollout reaches your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
       "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
       "type": "record",
       "claim": "Existing auto-labeling policies continue functioning without modification.",
@@ -205,7 +210,7 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 18,
       "where": "summary; What's changing; front matter: action",
       "type": "record",
       "claim": "Microsoft says no action is required.",
@@ -216,10 +221,10 @@
       "fix": null
     },
     {
-      "n": 18,
+      "n": 19,
       "where": "What's changing; rationale: impact",
       "type": "record",
-      "claim": "Microsoft expects no impact on end users.",
+      "claim": "Microsoft expects no impact to end users.",
       "status": "supported",
       "source": "Message Center post MC1469958",
       "quote": "There is no expected impact to end users.",
@@ -227,10 +232,10 @@
       "fix": null
     },
     {
-      "n": 19,
+      "n": 20,
       "where": "What's changing",
       "type": "record",
-      "claim": "The notice gives public preview beginning early September 2026 and expected to complete by mid-September 2026.",
+      "claim": "The notice gives public preview as beginning early September 2026 and expected to complete by mid-September 2026.",
       "status": "supported",
       "source": "Message Center post MC1469958",
       "quote": "Public Preview: Available beginning early September 2026 and expected to complete by mid-September 2026.",
@@ -238,10 +243,10 @@
       "fix": null
     },
     {
-      "n": 20,
-      "where": "What's changing",
+      "n": 21,
+      "where": "What's changing; Open questions",
       "type": "record",
-      "claim": "The notice gives worldwide general availability beginning and expected to complete in mid-November 2026.",
+      "claim": "Worldwide general availability is scheduled to begin and complete in mid-November 2026, previously late October.",
       "status": "supported",
       "source": "Message Center post MC1469958",
       "quote": "General Availability (Worldwide): Rollout will begin in mid-November 2026 (previously late October) and is expected to complete by mid-November 2026 (previously late October).",
@@ -249,21 +254,21 @@
       "fix": null
     },
     {
-      "n": 21,
-      "where": "What's changing; Open questions",
+      "n": 22,
+      "where": "What's changing",
       "type": "record",
-      "claim": "The 3 November 2026 notice update moved general availability from late October to mid-November.",
+      "claim": "Microsoft updated the notice's timeline on 3 November 2026.",
       "status": "supported",
       "source": "Message Center post MC1469958",
-      "quote": "Updated November 3, 2026: We have updated the timeline. Thank you for your patience. ... mid-November 2026 (previously late October)",
+      "quote": "Updated November 3, 2026: We have updated the timeline.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 22,
+      "n": 23,
       "where": "Risk assessment: Data exposure; rationale: risk",
       "type": "record",
-      "claim": "The notice says the change expands processing capacity rather than changing labeling behaviour.",
+      "claim": "Microsoft describes increased processing capacity rather than a change to labeling behaviour.",
       "status": "supported",
       "source": "Message Center post MC1469958",
       "quote": "The change expands processing capacity rather than changing labeling behavior.",
@@ -271,7 +276,7 @@
       "fix": null
     },
     {
-      "n": 23,
+      "n": 24,
       "where": "What's changing; Risk assessment: Data exposure",
       "type": "behaviour",
       "claim": "Learn documents simulation support for up to 20,000,000 matched files.",
@@ -282,10 +287,10 @@
       "fix": null
     },
     {
-      "n": 24,
+      "n": 25,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "A policy matching more than 20,000,000 files cannot be turned on until it is narrowed and simulation rerun.",
+      "claim": "A policy matching more than 20,000,000 files in simulation cannot be turned on until it is narrowed and simulation rerun.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
       "quote": "If more than this number of files are matched from an auto-labeling policy, you can't turn on the policy to apply the labels. In this case, you must reconfigure the auto-labeling policy so that fewer files are matched, and rerun simulation.",
@@ -293,7 +298,7 @@
       "fix": null
     },
     {
-      "n": 25,
+      "n": 26,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
       "claim": "The 20,000,000 matched-file maximum applies only to simulation, not an already enabled policy.",
@@ -304,19 +309,19 @@
       "fix": null
     },
     {
-      "n": 26,
-      "where": "controls[0].note; What's changing; Governance guidance; Governance controls",
+      "n": 27,
+      "where": "What's changing; controls[0].note; Governance guidance; Governance controls",
       "type": "behaviour",
-      "claim": "In the portal, a policy can explicitly include or exclude up to 1,000 SharePoint sites.",
+      "claim": "Portal policies can explicitly include or exclude up to 1,000 SharePoint sites per policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
-      "quote": "In the portal, each policy can target up to 1,000 explicitly included or excluded SharePoint sites",
+      "quote": "In the portal, each policy can target up to 1,000 explicitly included or excluded SharePoint sites, or up to 100 explicitly included or excluded OneDrive individual users or groups.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 27,
-      "where": "controls[1].note; What's changing",
+      "n": 28,
+      "where": "What's changing; controls[1].note",
       "type": "behaviour",
       "claim": "For auto-labeling policies, a SharePoint adaptive scope supports up to 50,000 sites per policy.",
       "status": "supported",
@@ -326,18 +331,18 @@
       "fix": null
     },
     {
-      "n": 28,
+      "n": 29,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Learn describes a Labeling activity overview chart with separate successful and failed series covering the last 30 days.",
+      "claim": "Learn's Labeling activity overview chart covers the last 30 days with separate successful and failed series.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
-      "quote": "The Overview tab shows labeled and failed file counts and Top 15 sites. Its Labeling activity overview chart has separate successful and failed series for the last 30 days.",
+      "quote": "Its Labeling activity overview chart has separate successful and failed series for the last 30 days.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 29,
+      "n": 30,
       "where": "Risk assessment: Security & identity; Governance guidance; Governance controls",
       "type": "role",
       "claim": "Turning a policy on after simulation requires Compliance Administrator or Compliance Data Administrator.",
@@ -348,8 +353,8 @@
       "fix": null
     },
     {
-      "n": 30,
-      "where": "Risk assessment: Security & identity; Governance guidance",
+      "n": 31,
+      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
       "type": "role",
       "claim": "Review pages require Compliance Administrator, Compliance Data Administrator, Information Protection Admin or Information Protection Analyst.",
       "status": "supported",
@@ -359,10 +364,10 @@
       "fix": null
     },
     {
-      "n": 31,
-      "where": "Risk assessment: Security & identity; Governance guidance",
+      "n": 32,
+      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
       "type": "behaviour",
-      "claim": "Policies using administrative units must use All for SharePoint and cannot use Included or Excluded.",
+      "claim": "When administrative units are selected in a policy, SharePoint must use All rather than Included or Excluded.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
       "quote": "For organizations that are using administrative units and selected in the policy:\n\n- For SharePoint, you can't use the Included or Excluded options and must use the All default selection.",
@@ -370,10 +375,10 @@
       "fix": null
     },
     {
-      "n": 32,
+      "n": 33,
       "where": "Risk assessment: Autonomy & actions; Why it matters",
       "type": "behaviour",
-      "claim": "Service-side auto-labeling applies labels without the user interacting with the process.",
+      "claim": "Service-side auto-labeling applies labels without user interaction.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
       "quote": "Because the user doesn't interact with the labeling process, auto-labeling policies don't support recommended labeling",
@@ -381,241 +386,142 @@
       "fix": null
     },
     {
-      "n": 33,
+      "n": 34,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "The aggregate tenant-wide maximum is 500,000 automatically labeled SharePoint and OneDrive files per day, not a guaranteed rate.",
+      "claim": "The tenant-wide throughput ceiling is 500,000 automatically labeled SharePoint and OneDrive files per day across all policies.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
-      "quote": "The absolute maximum throughput is 500,000 automatically labeled SharePoint and OneDrive files per tenant per day, in aggregate across all auto-labeling policies. This ceiling isn't a guaranteed or consistently expected daily processing rate; actual throughput can be lower.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
-      "where": "Risk assessment: Change & support; Governance guidance",
-      "type": "applicability",
-      "claim": "Microsoft 365 auditing must be turned on for simulation.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
-      "quote": "Auditing is turned on for Microsoft 365. Required for simulation.",
+      "quote": "The absolute maximum throughput is 500,000 automatically labeled SharePoint and OneDrive files per tenant per day, in aggregate across all auto-labeling policies.",
       "severity": null,
       "fix": null
     },
     {
       "n": 35,
-      "where": "controls[0].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Create an auto-labeling policy in Microsoft Purview portal under Solutions > Information Protection > Policies > Auto-labeling policies > Create auto-labeling policy.",
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The daily throughput ceiling is not a guaranteed rate.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
-      "quote": "Sign in to the Microsoft Purview portal > Solutions > Information Protection > Policies > Auto-labeling policies. ... Select + Create auto-labeling policy.",
+      "quote": "This ceiling isn't a guaranteed or consistently expected daily processing rate; actual throughput can be lower.",
       "severity": null,
       "fix": null
     },
     {
       "n": 36,
-      "where": "controls[0].api; Governance controls table",
-      "type": "command",
-      "claim": "Security & Compliance PowerShell supports Set-AutoSensitivityLabelPolicy -Identity <AutoLabelingPolicyName> -AddSharePointLocation $spoLocations -ApplySensitivityLabel <Label> -Mode TestWithoutNotifications to add sites.",
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Simulation requires auditing for Microsoft 365 to be turned on.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
-      "quote": "Set-AutoSensitivityLabelPolicy -Identity <AutoLabelingPolicyName> -AddSharePointLocation $spoLocations -ApplySensitivityLabel <Label> -Mode TestWithoutNotifications",
+      "quote": "Simulation mode:\n\n- Auditing for Microsoft 365 must be turned on.",
       "severity": null,
       "fix": null
     },
     {
       "n": 37,
-      "where": "controls[1].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Adaptive scopes are under Microsoft Purview portal > Settings > Roles and scopes > Adaptive scopes.",
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The cited Learn page includes service-side auto-labeling with Microsoft 365 E5.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
-      "quote": "Sign in to the Microsoft Purview portal > Settings > Roles and scopes > Adaptive scopes.",
+      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
+      "quote": "Client-side auto-labeling (Office apps) | Sensitivity label configuration → Auto-labeling for files and emails page | Microsoft 365 E5, Microsoft 365 E5 Compliance, Microsoft 365 E5 Information Protection & Governance, Azure Information Protection Premium P2 (standalone)",
       "severity": null,
       "fix": null
     },
     {
       "n": 38,
-      "where": "controls[1].api; Governance controls table",
-      "type": "command",
-      "claim": "Security & Compliance PowerShell supports New-AutoSensitivityLabelPolicy -Name <AutoLabelingPolicyName> -SharePointAdaptiveScopes <AdaptiveScope> -ApplySensitivityLabel <Label> -Mode TestWithoutNotifications.",
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The cited Learn page includes service-side auto-labeling with Microsoft 365 E5 Compliance.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
-      "quote": "associate an existing SharePoint adaptive scope with the policy by using the -SharePointAdaptiveScopes parameter (or -SharePointAdaptiveScopesException for exclusions) with New-AutoSensitivityLabelPolicy.",
+      "quote": "Microsoft 365 E5, Microsoft 365 E5 Compliance, Microsoft 365 E5 Information Protection & Governance, Azure Information Protection Premium P2 (standalone)",
       "severity": null,
       "fix": null
     },
     {
       "n": 39,
-      "where": "controls[1].note; Governance controls",
-      "type": "role",
-      "claim": "The Scope Manager role permits creating adaptive scopes and is included in the Compliance Administrator role group.",
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The cited Learn page includes service-side auto-labeling with Microsoft 365 E5 Information Protection & Governance.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
-      "quote": "Any role group with the Scope Manager role can create an adaptive scope. The Scope Manger role is included in the following built-in role groups:\n\n- Compliance Administrator",
+      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
+      "quote": "Service-side auto-labeling (SharePoint, OneDrive, Exchange) | Microsoft Purview portal → Information Protection → Policies → Auto-labeling policies | Same E5 / P2-tier SKUs as above",
       "severity": null,
       "fix": null
     },
     {
       "n": 40,
-      "where": "Governance guidance: At rollout; Open questions",
-      "type": "applicability",
-      "claim": "An adaptive scope can filter SharePoint site types using SiteTemplate.",
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The cited Learn page includes service-side auto-labeling with standalone Azure Information Protection Premium P2.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
-      "quote": "an adaptive scope can use the SiteTemplate property to include or exclude communication sites, group-connected sites, Teams private channel sites, classic team sites, or OneDrive sites.",
-      "severity": null,
-      "fix": null
+      "quote": "Azure Information Protection Premium P2 (standalone) ... Service-side auto-labeling (SharePoint, OneDrive, Exchange) ... Same E5 / P2-tier SKUs as above",
+      "severity": "minor",
+      "fix": "After the licensing paragraph, add: 'Microsoft documentation differs: the Microsoft Purview service description says automatic or policy-based labeling requires Microsoft 365 E5 or Microsoft 365 Information Protection and Governance, while the auto-labeling page also lists standalone Azure Information Protection Premium P2. The service description also requires AIP P1 to be assigned when AIP P2 is assigned.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-purview-information-protection-sensitivity-labeling."
     },
     {
       "n": 41,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "Associating an adaptive scope by PowerShell replaces static enumeration with dynamic membership without increasing the portal limit.",
+      "where": "front matter: licensing.model; Cost and licensing",
+      "type": "licensing",
+      "claim": "The included licensing model refers to service-side auto-labeling being included in the listed eligible licences.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
-      "quote": "This doesn't increase the portal limit; instead, it replaces static site enumeration with dynamic adaptive-scope membership.",
+      "quote": "Surface | Configured in | Included with ... Service-side auto-labeling (SharePoint, OneDrive, Exchange) ... Same E5 / P2-tier SKUs as above",
       "severity": null,
       "fix": null
     },
     {
       "n": 42,
-      "where": "Governance controls; Governance guidance: Before rollout",
-      "type": "admin-path",
-      "claim": "Open review pages through Solutions > Information Protection > Policies > Auto-labeling policies > policy > View details.",
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Separate licensing for these enhancements is not published.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
-      "quote": "To open the newer review pages, go to Solutions > Information Protection > Policies > Auto-labeling policies. Select a policy, then select View details in the policy details panel.",
+      "source": null,
+      "quote": "Searched: Purview auto-labeling reporting Insights licensing requirements license meter pay as you go; opened apply-sensitivity-label-automatically, auto-label-insights-tab, purview-billing-models and Microsoft Purview service description. No separate enhancement licence stated.",
       "severity": null,
       "fix": null
     },
     {
       "n": 43,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "Learn describes Overview, Labeled items and Labeling failures tabs in the newer review page.",
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No separate meter is published for these Microsoft 365 auto-labeling enhancements.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
-      "quote": "The newer review page has separate Overview, Labeled items, and Labeling failures tabs.",
+      "source": null,
+      "quote": "Searched: Purview auto-labeling reporting Insights licensing requirements license meter pay as you go; opened purview-billing-models and apply-sensitivity-label-automatically. No enhancement meter stated; Information Protection PAYG covers non-Microsoft 365 sources.",
       "severity": null,
       "fix": null
     },
     {
       "n": 44,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "The policy details panel has an Insights tab summarising sensitive information types detected in labeled files.",
+      "where": "Cost and licensing",
+      "type": "record",
+      "claim": "The supplied notice mentions no charge.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
-      "quote": "The policy details panel's Insights tab summarizes the sensitive information types detected in labeled files.",
+      "source": "Message Center post MC1469958",
+      "quote": "These enhancements are on by default and will be available automatically as the rollout reaches your organization. Existing auto-labeling policies will continue to function without modification.",
       "severity": null,
       "fix": null
     },
     {
       "n": 45,
-      "where": "Governance guidance: After rollout, first bullet",
-      "type": "admin-path",
-      "claim": "Review each policy's details panel, including Insights, for both the SIT summaries and the 30-day chart.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/purview/auto-label-insights-tab",
-      "quote": "For the daily trend, select View details and open Overview in the newer full review experience. ... This chart isn't part of the newer Insights layout.",
-      "severity": "blocker",
-      "fix": "Replace the bullet with: 'For an enabled policy targeting SharePoint or OneDrive, review the policy details panel's Insights tab for SIT summaries. For the 30-day Labeling activity overview chart, select View details and open Overview in the newer full review experience.' Cite https://learn.microsoft.com/purview/auto-label-insights-tab."
+      "where": "Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "A different licence requirement specifically for the new reports has not been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview auto-labeling reporting Insights licensing requirements license meter pay as you go; opened auto-label-insights-tab, apply-sensitivity-label-automatically and Microsoft Purview service description. No distinct licence for these policy-level reports stated.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 46,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "Service-side auto-labeling is included with Microsoft 365 E5.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
-      "quote": "Microsoft 365 E5, Microsoft 365 E5 Compliance, Microsoft 365 E5 Information Protection & Governance, Azure Information Protection Premium P2 (standalone) ... Service-side auto-labeling (SharePoint, OneDrive, Exchange) ... Same E5 / P2-tier SKUs as above",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "Service-side auto-labeling is included with Microsoft 365 E5 Compliance.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
-      "quote": "Microsoft 365 E5 Compliance ... Service-side auto-labeling (SharePoint, OneDrive, Exchange) ... Same E5 / P2-tier SKUs as above",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 48,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "Service-side auto-labeling is included with Microsoft 365 E5 Information Protection & Governance.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
-      "quote": "Microsoft 365 E5 Information Protection & Governance ... Service-side auto-labeling (SharePoint, OneDrive, Exchange) ... Same E5 / P2-tier SKUs as above",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 49,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "Service-side auto-labeling is included with Azure Information Protection Premium P2 standalone.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
-      "quote": "Azure Information Protection Premium P2 (standalone) ... Service-side auto-labeling (SharePoint, OneDrive, Exchange) ... Same E5 / P2-tier SKUs as above",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 50,
-      "where": "front matter: licensing.model; Cost and licensing",
-      "type": "licensing",
-      "claim": "The licensing model is included in the named underlying auto-labeling licences, with Learn pointing to the per-SKU guidance.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
-      "quote": "Service-side auto-labeling (SharePoint, OneDrive, Exchange) ... Same E5 / P2-tier SKUs as above ... For the authoritative, per-SKU feature matrix ... see Microsoft 365 licensing guidance for security and compliance.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 51,
-      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
-      "type": "absence",
-      "claim": "Separate licensing for these enhancements, including the new reports, has not been published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"auto-labeling\" \"reporting\" \"license\" \"Insights\". Opened learn.microsoft.com/purview/apply-sensitivity-label-automatically, auto-label-insights-tab and purview-billing-models; no separate enhancement/report licence found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 52,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "No separate meter is published for these enhancements.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Purview auto-labeling new SIT reporting Insights licensing additional license pay as you go meter. Opened learn.microsoft.com/purview/purview-billing-models and apply-sensitivity-label-automatically; no meter for these auto-labeling enhancements found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 53,
-      "where": "Cost and licensing",
-      "type": "record",
-      "claim": "The notice does not mention a charge.",
-      "status": "supported",
-      "source": "Message Center post MC1469958",
-      "quote": "No action is required. ... Review existing auto-labeling policies that were previously constrained by simulation or scope limits.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 54,
       "where": "Scope",
       "type": "availability",
-      "claim": "Auto-labeling is not available in all regions because of a backend Azure dependency.",
+      "claim": "Auto-labeling is unavailable in some regions because of a backend Azure dependency.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
       "quote": "Auto-labeling isn't currently available in all regions because of a backend Azure dependency.",
@@ -623,10 +529,10 @@
       "fix": null
     },
     {
-      "n": 55,
+      "n": 47,
       "where": "Scope",
       "type": "availability",
-      "claim": "The Auto-labeling page is not visible in the Purview portal when a tenant cannot support the functionality.",
+      "claim": "The Auto-labeling page is hidden in the Purview portal where a tenant cannot support auto-labeling.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
       "quote": "If your tenant can't support this functionality, the Auto-labeling page isn't visible in the Microsoft Purview portal.",
@@ -634,10 +540,98 @@
       "fix": null
     },
     {
+      "n": 48,
+      "where": "Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "Auto-labeling policies are listed under Solutions > Information Protection > Policies > Auto-labeling policies in the Microsoft Purview portal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
+      "quote": "Sign in to the Microsoft Purview portal > Solutions > Information Protection > Policies > Auto-labeling policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "The policy creation path is Microsoft Purview portal > Solutions > Information Protection > Policies > Auto-labeling policies > Create auto-labeling policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
+      "quote": "Sign in to the Microsoft Purview portal > Solutions > Information Protection > Policies > Auto-labeling policies. ... Select + Create auto-labeling policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "Security & Compliance PowerShell supports the printed Set-AutoSensitivityLabelPolicy call to add explicitly selected SharePoint sites in test mode.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
+      "quote": "Set-AutoSensitivityLabelPolicy -Identity <AutoLabelingPolicyName> -AddSharePointLocation $spoLocations -ApplySensitivityLabel <Label> -Mode TestWithoutNotifications",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Adaptive scopes are configured in Microsoft Purview portal > Settings > Roles and scopes > Adaptive scopes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+      "quote": "Sign in to the Microsoft Purview portal > Settings > Roles and scopes > Adaptive scopes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "Security & Compliance PowerShell supports New-AutoSensitivityLabelPolicy -Name <AutoLabelingPolicyName> -SharePointAdaptiveScopes <AdaptiveScope> -ApplySensitivityLabel <Label> -Mode TestWithoutNotifications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
+      "quote": "To target more than 1,000 SharePoint sites, associate an existing SharePoint adaptive scope with the policy by using the -SharePointAdaptiveScopes parameter (or -SharePointAdaptiveScopesException for exclusions) with New-AutoSensitivityLabelPolicy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[1].note; Governance controls",
+      "type": "role",
+      "claim": "Creating an adaptive scope requires the Scope Manager role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+      "quote": "Any role group with the Scope Manager role can create an adaptive scope.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Compliance Administrator is among the role groups containing Scope Manager.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+      "quote": "The Scope Manger role is included in the following built-in role groups:\n\n- Compliance Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance controls; Governance guidance: At rollout; Open questions",
+      "type": "behaviour",
+      "claim": "Associating an adaptive scope replaces static enumeration with dynamic membership rather than increasing the portal limit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
+      "quote": "This doesn't increase the portal limit; instead, it replaces static site enumeration with dynamic adaptive-scope membership.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 56,
       "where": "Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "Learn advises preserving needed results before editing or rerunning simulation.",
+      "claim": "Microsoft advises preserving simulation results needed for comparison before editing or rerunning a policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
       "quote": "Before you edit an auto-labeling policy or run simulation again, export any available results that you need for later comparison.",
@@ -646,64 +640,130 @@
     },
     {
       "n": 57,
-      "where": "Risk assessment: Security & identity",
-      "type": "absence",
-      "claim": "No new role is described for these enhancements.",
+      "where": "Governance guidance: After rollout",
+      "type": "availability",
+      "claim": "For enabled policies, Insights is available when SharePoint or OneDrive is included.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Purview auto-labeling reporting Insights enable disable tenant switch permissions new role. Opened apply-sensitivity-label-automatically and auto-label-insights-tab; no enhancement-specific new role found.",
+      "source": "https://learn.microsoft.com/purview/auto-label-insights-tab",
+      "quote": "Enforcement: The tab is available only when the policy includes SharePoint or OneDrive. ... The tab isn't available for disabled policies or Exchange-only policies that are turned on.",
       "severity": null,
       "fix": null
     },
     {
       "n": 58,
-      "where": "Governance controls",
-      "type": "absence",
-      "claim": "Microsoft has not stated a separate tenant switch for the new reporting.",
+      "where": "Governance guidance: After rollout; Governance controls",
+      "type": "admin-path",
+      "claim": "SIT summaries are shown on Insights in the policy details panel.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"auto-labeling\" \"reporting\" \"disable\" \"tenant\". Opened learn.microsoft.com/purview/apply-sensitivity-label-automatically and auto-label-insights-tab; no separate reporting tenant switch found.",
+      "source": "https://learn.microsoft.com/purview/auto-label-insights-tab",
+      "quote": "In the policy details panel, select Insights. ... Top 10 sensitive info types ... The table lists the sensitive information types (SITs) most frequently detected when this policy applied labels during the last 30 days.",
       "severity": null,
       "fix": null
     },
     {
       "n": 59,
-      "where": "Governance controls",
-      "type": "applicability",
-      "claim": "The table lists general auto-labeling targeting controls, not switches for the enhancement rollout.",
+      "where": "Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "View details > Overview opens the daily 30-day Labeling activity overview chart in the newer full review experience.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
-      "quote": "For the SharePoint location, you can explicitly select up to 1,000 individual sites. To dynamically target sites, use a SharePoint adaptive scope.",
+      "source": "https://learn.microsoft.com/purview/auto-label-insights-tab",
+      "quote": "For the daily trend, select View details and open Overview in the newer full review experience. Labeling activity overview shows separate successful and failed operation counts for the last 30 days, not distinct-file counts.",
       "severity": null,
       "fix": null
     },
     {
       "n": 60,
-      "where": "Governance guidance: After rollout",
-      "type": "record",
-      "claim": "Microsoft recommends updating reporting and operational processes to use the new reporting details and throughput metrics.",
+      "where": "Governance controls",
+      "type": "admin-path",
+      "claim": "The policy review path is Solutions > Information Protection > Policies > Auto-labeling policies > policy > View details.",
       "status": "supported",
-      "source": "Message Center post MC1469958",
-      "quote": "Update reporting and operational processes to leverage the new Sensitive Information Type reporting details and processing throughput metrics.",
+      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
+      "quote": "To open the newer review pages, go to Solutions > Information Protection > Policies > Auto-labeling policies. Select a policy, then select View details in the policy details panel.",
       "severity": null,
       "fix": null
     },
     {
       "n": 61,
-      "where": "Governance guidance; Governance controls table",
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The newer label-application review experience has Overview, Labeled items and Labeling failures tabs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
+      "quote": "The newer review page has separate Overview, Labeled items, and Labeling failures tabs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "Microsoft has not documented a separate tenant switch for the new reporting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview auto-labeling new reporting Insights enable disable tenant setting switch PowerShell; opened auto-label-insights-tab, apply-sensitivity-label-automatically, New-AutoSensitivityLabelPolicy and Set-AutoSensitivityLabelPolicy. No separate reporting switch documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "No new role is described for these enhancements.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview auto-labeling scalability reporting enhancements Insights roles permissions new role; read role prerequisites in apply-sensitivity-label-automatically and auto-label-insights-tab, plus MC1469958. No new enhancement-specific role described.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "The table covers general policy targeting controls rather than rollout switches.",
+      "status": "supported",
+      "source": "Message Center post MC1469958",
+      "quote": "Administrators can utilize expanded SharePoint site selection limits, adaptive scope limits, and SiteTemplate filtering during policy configuration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Governance guidance; Governance controls",
       "type": "consistency",
-      "claim": "Every control the governance checklist asks readers to check is represented in the controls table.",
+      "claim": "The governance checklist checks controls not represented by rows in the controls table.",
       "status": "contradicted",
       "source": "page",
-      "quote": "Confirm that the roles you need are assigned ... Confirm auditing is on for Microsoft 365 ... Review each policy's details panel ... Table: explicit SharePoint selection; dynamic SharePoint targeting.",
+      "quote": "Checklist: 'Confirm that the roles you need are assigned'; 'Check whether any policy ... uses administrative units'; 'Test any enlarged policy in simulation'; 'Confirm auditing is on'. Table rows cover only explicit SharePoint selection and adaptive scopes.",
       "severity": "minor",
-      "fix": "The role-assignment check, auditing check and reporting-review step have no corresponding controls-table rows. Keep this as a coverage note; do not add rows as part of this correction."
+      "fix": "The role-assignment, administrative-unit, simulation and auditing checklist steps have no corresponding control rows. To reconcile the checklist without adding rows, remove those four checklist bullets; retain their already documented prerequisites and advice in Risk assessment."
+    },
+    {
+      "n": 66,
+      "where": "Governance guidance: At rollout; Open questions",
+      "type": "behaviour",
+      "claim": "Learn documents SiteTemplate as an adaptive-scope property for including or excluding site types.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+      "quote": "you can use the indexed site property SiteTemplate to include or exclude specific site types.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Governance guidance: After rollout",
+      "type": "record",
+      "claim": "Microsoft recommends updating reporting and operational processes to use the new reporting.",
+      "status": "supported",
+      "source": "Message Center post MC1469958",
+      "quote": "Update reporting and operational processes to leverage the new Sensitive Information Type reporting details and processing throughput metrics.",
+      "severity": null,
+      "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-18T06:03:20.316Z",
+    "at": "2026-11-18T06:52:42.434Z",
     "summary": {
-      "links": 4,
+      "links": 5,
       "unreachable": 0,
       "uiPaths": 2,
       "uiPathsWithMissingWords": 0,
@@ -729,6 +789,11 @@
       },
       {
         "url": "https://learn.microsoft.com/purview/purview-adaptive-scopes",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/auto-label-insights-tab",
         "ok": true,
         "status": 200
       }
@@ -783,5 +848,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-18",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

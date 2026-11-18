@@ -4,145 +4,68 @@
   "title": "Microsoft Viva: Interactive insights in Agent 365 Business Analytics",
   "status": "held",
   "date": "2026-11-18",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 2,
   "verifierVerdict": "hold",
   "notes": [],
   "hold": {
     "reason": "failed",
     "since": "2026-11-18",
     "reasons": [
-      "1 blocking finding (claim 67)"
+      "1 blocking finding (claim 75)"
     ]
   },
   "counts": {
-    "claims": 83,
-    "confirmed": 82,
+    "claims": 85,
+    "confirmed": 84,
     "unconfirmed": 0,
     "contradicted": 1,
     "blocker": 1,
     "major": 0,
-    "minor": 2
+    "minor": 0
   },
-  "summary": "Hold: the Viva feature-access navigation omits the initial Settings menu in the Microsoft 365 admin center. The roadmap details and substantive feature descriptions are supported, and the cited Learn pages opened successfully despite the earlier rate-limit responses.",
+  "summary": "Hold: the briefing incorrectly says Microsoft has not confirmed that Viva feature access management governs Interactive insights. Microsoft documents a User-level export and insights setting that restricts its responses to aggregated insights for leaders and managers when turned off; analysts are exempt. The cited navigation paths, PowerShell call and roadmap details are supported.",
   "claims": [
     {
       "n": 1,
-      "where": "front matter: status; What's changing",
+      "where": "title; summary; What's changing",
       "type": "record",
-      "claim": "The roadmap status is In development.",
+      "claim": "Interactive insights is an AI-powered feature in Agent 365 Business Analytics.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "quote": "Interactive Insights is an AI-powered feature in A365 Business Analytics",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
-      "where": "front matter: targetDate; What's changing; Open questions",
+      "where": "summary; What's changing",
       "type": "record",
-      "claim": "The roadmap targets general availability for March CY2027.",
+      "claim": "Users ask natural-language questions about AI adoption, engagement and consumption.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"targetDate\": \"March CY2027\"",
+      "quote": "lets users ask natural-language questions to explore AI adoption, engagement and consumption data",
       "severity": null,
       "fix": null
     },
     {
       "n": 3,
-      "where": "front matter: previewDate; What's changing",
+      "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap targets preview for November CY2026.",
+      "claim": "The feature produces summaries.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"previewDate\": \"November CY2026\"",
+      "quote": "It produces summaries, visualizations and reports",
       "severity": null,
       "fix": null
     },
     {
       "n": 4,
-      "where": "front matter: clouds; What's changing; Scope",
-      "type": "record",
-      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "front matter: platforms; What's changing; Scope",
-      "type": "record",
-      "claim": "The roadmap lists the Web platform.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\"Web\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
-      "where": "front matter: releasePhase",
-      "type": "record",
-      "claim": "The roadmap lists General Availability and Preview release phases.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
-      "where": "front matter: roadmapModified",
-      "type": "record",
-      "claim": "The roadmap item was last modified on November 17, 2026 at 19:05:12.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"modified\": \"2026-11-17T19:05:12\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
-      "where": "summary; What's changing",
-      "type": "record",
-      "claim": "Interactive insights is an AI-powered Business Analytics feature for natural-language questions about AI adoption, engagement and consumption.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Interactive Insights is an AI-powered feature in A365 Business Analytics that lets users ask natural-language questions to explore AI adoption, engagement and consumption data.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "Responses are grounded in data within the user's authorised scope.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Responses are grounded in available AI adoption, engagement, and consumption data within the user’s authorized scope.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
       "where": "What's changing; rationale: risk",
-      "type": "record",
-      "claim": "Interactive insights produces summaries.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "It produces summaries, visualizations and reports that breakout patterns, highlight trends, explain usage and cost drivers, and support business decisions.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
-      "where": "What's changing",
       "type": "behaviour",
-      "claim": "Interactive insights can generate charts.",
+      "claim": "Answers can include charts, a web report or a PowerPoint presentation.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/interactive-insights",
       "quote": "Ask Interactive insights a business question and get an answer with charts, a web report, or a PowerPoint presentation.",
@@ -150,29 +73,18 @@
       "fix": null
     },
     {
-      "n": 12,
-      "where": "What's changing; Why it matters; rationale: risk",
-      "type": "behaviour",
-      "claim": "Interactive insights can generate downloadable web reports.",
+      "n": 5,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap says responses are grounded in data within the user's authorised scope.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/a365-business-analytics/interactive-insights",
-      "quote": "Workspace collects generated charts, web reports, and data files as Interactive insights produces them. ... Select Download to save a copy.",
+      "source": "roadmap record",
+      "quote": "Responses are grounded in available AI adoption, engagement, and consumption data within the user’s authorized scope.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 13,
-      "where": "What's changing; rationale: risk",
-      "type": "behaviour",
-      "claim": "Interactive insights can generate downloadable PowerPoint presentations.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/a365-business-analytics/interactive-insights",
-      "quote": "PowerPoint presentations are available through the download link in the response.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
+      "n": 6,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "Interactive insights prepares analysis and recommendations.",
@@ -183,7 +95,7 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 7,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "Interactive insights does not change budgets.",
@@ -194,7 +106,7 @@
       "fix": null
     },
     {
-      "n": 16,
+      "n": 8,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "Interactive insights does not change billing.",
@@ -205,7 +117,7 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 9,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "Interactive insights does not change policies.",
@@ -216,8 +128,8 @@
       "fix": null
     },
     {
-      "n": 18,
-      "where": "What's changing; Risk assessment: Security & identity",
+      "n": 10,
+      "where": "What's changing",
       "type": "behaviour",
       "claim": "Interactive insights does not change licences.",
       "status": "supported",
@@ -227,7 +139,7 @@
       "fix": null
     },
     {
-      "n": 19,
+      "n": 11,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "Interactive insights does not change permissions.",
@@ -238,21 +150,32 @@
       "fix": null
     },
     {
-      "n": 20,
-      "where": "summary; What's changing; Scope; changes[0]",
+      "n": 12,
+      "where": "summary; What's changing; Scope",
       "type": "availability",
-      "claim": "Learn documents Interactive insights as a Frontier preview and calls the phase Public Preview.",
+      "claim": "Learn documents Interactive insights as part of the Frontier preview program.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/interactive-insights",
-      "quote": "This feature is part of the Frontier preview program. ... For other tenants, a tenant administrator must enable it during Public Preview.",
-      "severity": "minor",
-      "fix": "In What's changing, replace \"under the heading 'Public Preview'\" with \"described in the text as 'Public Preview'\": the page's heading is Availability, not Public Preview."
+      "quote": "This feature is part of the Frontier preview program.",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 21,
+      "n": 13,
+      "where": "What's changing",
+      "type": "availability",
+      "claim": "The feature documentation also calls the preview Public Preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/a365-business-analytics/interactive-insights",
+      "quote": "For other tenants, a tenant administrator must enable it during Public Preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
       "where": "What's changing; Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Interactive insights can use scenario metrics subject to the user's access.",
+      "claim": "Interactive insights can use the metrics underlying Business Analytics scenarios, subject to access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/interactive-insights",
       "quote": "Scenario metrics: the metrics data underlying the Business Analytics scenarios, subject to your access.",
@@ -260,10 +183,10 @@
       "fix": null
     },
     {
-      "n": 22,
+      "n": 15,
       "where": "What's changing; Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Interactive insights can use an allowlist of organisational attributes including Organization, Function, Group and Location.",
+      "claim": "Available organisational attributes come from an allowlist including Organization, Function, Group and Location.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/interactive-insights",
       "quote": "Approved organizational and employee attributes: an allowlist of well-known attributes such as Organization, Function, Group, and Location.",
@@ -271,10 +194,21 @@
       "fix": null
     },
     {
-      "n": 23,
+      "n": 16,
+      "where": "What's changing; controls[2].note; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Uploaded files can provide additional context when an administrator enables file uploads.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/a365-business-analytics/interactive-insights",
+      "quote": "Contextual files you upload: additional data or business context, when your administrator has enabled file uploads.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Sensitive and custom organisational data attributes are unavailable during Public Preview.",
+      "claim": "Sensitive and custom organisational data attributes are unavailable during the preview.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/interactive-insights",
       "quote": "Sensitive and custom organizational data attributes aren't available during Public Preview; support is planned for a later release.",
@@ -282,29 +216,18 @@
       "fix": null
     },
     {
-      "n": 24,
-      "where": "What's changing; Risk assessment: Data exposure; controls[2].note",
-      "type": "behaviour",
-      "claim": "Using uploaded files depends on an administrator enabling file uploads.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/a365-business-analytics/interactive-insights",
-      "quote": "If your administrator has enabled file uploads, you can attach files to supply additional data or business context.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
+      "n": 18,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The Business Analytics plug-in for Copilot Cowork is another experience of the same capability.",
+      "claim": "The Business Analytics plug-in for Copilot Cowork is another experience covered by Interactive insights documentation.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/reference/interactive-insights-data-privacy-security",
-      "quote": "In this article, \"Interactive insights\" refers to three experiences that use the same Viva Insights data, metric definitions, permissions, and privacy controls:",
+      "quote": "The Microsoft Agent 365 Business Analytics plugin for Copilot Cowork (A365 Analytics plugin).",
       "severity": null,
       "fix": null
     },
     {
-      "n": 26,
+      "n": 19,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "The Business Analytics MCP experience supports clients such as GitHub Copilot CLI and Visual Studio Code.",
@@ -315,10 +238,87 @@
       "fix": null
     },
     {
+      "n": 20,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview target is November CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"November CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "front matter: targetDate; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap general availability target is March CY2027.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"March CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [ \"Worldwide (Standard Multi-Tenant)\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists the Web platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [ \"Web\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The roadmap release phases are General Availability and Preview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [ \"General Availability\", \"Preview\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap item was modified on 2026-11-17T19:05:12.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-17T19:05:12\", \"products\": [ \"Microsoft Viva\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 27,
       "where": "Why it matters",
       "type": "behaviour",
-      "claim": "Interactive insights offers custom question-driven analysis rather than only predefined dashboard views.",
+      "claim": "Interactive insights performs custom analysis rather than only retrieving predefined dashboard views.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/reference/interactive-insights-data-privacy-security",
       "quote": "Unlike a dashboard that retrieves predefined views like the Copilot Dashboard, Interactive insights can plan and perform custom analysis against data available to the user.",
@@ -327,6 +327,28 @@
     },
     {
       "n": 28,
+      "where": "Why it matters; rationale: risk",
+      "type": "behaviour",
+      "claim": "Generated files can be downloaded from the app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/a365-business-analytics/interactive-insights",
+      "quote": "PowerPoint presentations are available through the download link in the response.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Why it matters; Risk assessment: Autonomy & actions; Governance guidance",
+      "type": "behaviour",
+      "claim": "Interactive insights is not designed to evaluate or rank individual employees.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/a365-business-analytics/reference/interactive-insights-data-privacy-security",
+      "quote": "Interactive insights is not designed or evaluated to: Evaluate or rank an individual's performance, productivity, suitability, or value.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
       "where": "summary; Why it matters; Governance guidance: Before rollout",
       "type": "default",
       "claim": "Interactive insights is automatically enabled for tenants in Frontier.",
@@ -337,10 +359,10 @@
       "fix": null
     },
     {
-      "n": 29,
+      "n": 31,
       "where": "summary; Why it matters; controls[2].note; Governance controls",
       "type": "default",
-      "claim": "A tenant administrator must enable Interactive insights for other tenants during Public Preview.",
+      "claim": "Outside Frontier, a tenant administrator must enable Interactive insights during Public Preview.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/interactive-insights",
       "quote": "For other tenants, a tenant administrator must enable it during Public Preview.",
@@ -348,46 +370,24 @@
       "fix": null
     },
     {
-      "n": 30,
-      "where": "front matter: defaultState; Why it matters; Open questions; changes[0]",
+      "n": 32,
+      "where": "front matter: defaultState; Why it matters; Open questions",
       "type": "absence",
-      "claim": "The default at general availability is not stated; the unknown field is qualified in the body as a GA documentation gap.",
+      "claim": "The default at general availability is not stated; the page's unknown field refers to that gap.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Interactive insights\" \"general availability\" default enabled. Opened roadmap record, a365-business-analytics/interactive-insights and reference/interactive-insights-data-privacy-security; only preview enablement is specified.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
-      "where": "Risk assessment: Data exposure; Governance guidance: At rollout",
-      "type": "behaviour",
-      "claim": "The View as setting establishes a session's scope when its first request is submitted.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/a365-business-analytics/interactive-insights",
-      "quote": "The session's data access scope is fixed when you submit its first request, including by selecting a suggested prompt. If you change the View as setting later, that doesn't update that session's scope.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Supported uploads include CSV, Excel, text, Markdown and Word files.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/a365-business-analytics/interactive-insights",
-      "quote": "You can add text and data files, such as .csv or Excel spreadsheets, text or Markdown files, and Word documents.",
+      "quote": "Searched: \"Interactive insights\" retention uploads audit general availability default GCC. Opened Interactive insights, its privacy page and Business Analytics introduction; only preview enablement is specified.",
       "severity": null,
       "fix": null
     },
     {
       "n": 33,
-      "where": "Risk assessment: Data exposure",
+      "where": "Risk assessment: Data exposure; Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "An attachment does not grant additional access to organisational data.",
+      "claim": "View as can select the user's own, delegated or other authorised role-based scope for a new session.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/interactive-insights",
-      "quote": "An attachment supplies input for the session; it doesn't grant additional access to organizational data or permanently add a source to Business Analytics.",
+      "quote": "For a new session, select View as before submitting your first request. Depending on your access, you can choose your own view, delegated views, or other available data access roles.",
       "severity": null,
       "fix": null
     },
@@ -395,21 +395,21 @@
       "n": 34,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "An attachment supplies session input rather than adding a persistent Business Analytics data source.",
+      "claim": "A session's data access scope becomes fixed when its first request is submitted.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/interactive-insights",
-      "quote": "An attachment supplies input for the session; it doesn't grant additional access to organizational data or permanently add a source to Business Analytics.",
+      "quote": "The session's data access scope is fixed when you submit its first request, including by selecting a suggested prompt.",
       "severity": null,
       "fix": null
     },
     {
       "n": 35,
-      "where": "Risk assessment: Data exposure; Open questions",
-      "type": "absence",
-      "claim": "The feature documentation does not specify how long uploaded files are retained.",
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Supported contextual attachments include CSV, Excel, text, Markdown and Word files.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Interactive insights\" \"retention\" uploaded files days. Opened a365-business-analytics/interactive-insights and reference/interactive-insights-data-privacy-security; no uploaded-file retention period found.",
+      "source": "https://learn.microsoft.com/a365-business-analytics/interactive-insights",
+      "quote": "You can add text and data files, such as .csv or Excel spreadsheets, text or Markdown files, and Word documents.",
       "severity": null,
       "fix": null
     },
@@ -417,10 +417,10 @@
       "n": 36,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Plug-in and MCP responses returned to a client are handled under that client's terms, retention and compliance settings.",
+      "claim": "Attaching a file does not grant additional access to organisational data.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/a365-business-analytics/reference/interactive-insights-data-privacy-security",
-      "quote": "Responses returned to a client are stored and handled according to that client's terms, retention, and compliance settings.",
+      "source": "https://learn.microsoft.com/a365-business-analytics/interactive-insights",
+      "quote": "An attachment supplies input for the session; it doesn't grant additional access to organizational data or permanently add a source to Business Analytics.",
       "severity": null,
       "fix": null
     },
@@ -428,7 +428,40 @@
       "n": 37,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Users can combine returned responses with other content in the client.",
+      "claim": "An attachment does not become an additional Business Analytics data source.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/a365-business-analytics/interactive-insights",
+      "quote": "An attachment supplies input for the session; it doesn't grant additional access to organizational data or permanently add a source to Business Analytics.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not specified a retention duration for Interactive insights uploads.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Interactive insights\" retention uploads audit general availability default GCC. Opened the Interactive insights usage and privacy pages; neither states an upload retention duration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Responses returned by the plug-in or MCP experience are handled under the receiving client's terms, retention and compliance settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/a365-business-analytics/reference/interactive-insights-data-privacy-security",
+      "quote": "Responses returned to a client are stored and handled according to that client's terms, retention, and compliance settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Users can combine returned responses with content from other sources in the client.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/reference/interactive-insights-data-privacy-security",
       "quote": "Users can also combine these responses with content from other sources in the client.",
@@ -436,21 +469,21 @@
       "fix": null
     },
     {
-      "n": 38,
-      "where": "Risk assessment: Security & identity; Governance controls",
+      "n": 41,
+      "where": "Risk assessment: Security & identity",
       "type": "applicability",
-      "claim": "Business Analytics access uses permission sets, partitions and access policies.",
+      "claim": "Business Analytics permissions and partitions determine access to product data used by Interactive insights.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/a365-business-analytics/manage/access",
-      "quote": "Access in Business Analytics is built from three components: permission sets, partitions, and access policies.",
+      "source": "https://learn.microsoft.com/a365-business-analytics/interactive-insights",
+      "quote": "Available analysis depends on the data and permissions for your selected perspective.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 39,
+      "n": 42,
       "where": "Risk assessment: Security & identity; Scope; rationale: impact",
-      "type": "role",
-      "claim": "Leaders in the top three organisational layers have default tenant-level Business Analytics access.",
+      "type": "default",
+      "claim": "Leaders in the top three organisational layers have default Business Analytics access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/manage/introduction",
       "quote": "Access by default | - Leaders in the top three layers of your organization, with tenant-level access",
@@ -458,9 +491,9 @@
       "fix": null
     },
     {
-      "n": 40,
+      "n": 43,
       "where": "Risk assessment: Security & identity; Scope; rationale: impact",
-      "type": "role",
+      "type": "default",
       "claim": "Managers whose teams meet the minimum size of 10 people have default Business Analytics access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/manage/introduction",
@@ -469,9 +502,9 @@
       "fix": null
     },
     {
-      "n": 41,
+      "n": 44,
       "where": "Risk assessment: Security & identity; Scope; rationale: impact",
-      "type": "role",
+      "type": "default",
       "claim": "Global admins have default Business Analytics access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/introduction",
@@ -480,18 +513,29 @@
       "fix": null
     },
     {
-      "n": 42,
+      "n": 45,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Broadening Chief Officer or Group Manager policy assignments broadens the set of users receiving those permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/a365-business-analytics/manage/access",
+      "quote": "Users receive access only when they're assigned to an access policy. The capabilities in the policy's permission set apply only within the data boundary of the policy's partition",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
       "claim": "Interactive insights does not browse the open web.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/reference/interactive-insights-data-privacy-security",
-      "quote": "Interactive insights does not: - Browse the open web.",
+      "quote": "Interactive insights does not: Browse the open web.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 43,
+      "n": 47,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
       "claim": "Interactive insights does not call arbitrary external services.",
@@ -502,10 +546,10 @@
       "fix": null
     },
     {
-      "n": 44,
+      "n": 48,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "Interactive insights does not write back to user assets or identity.",
+      "claim": "Interactive insights does not write back to user assets, identity or licensing.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/reference/interactive-insights-data-privacy-security",
       "quote": "Write back to user assets, identity, licensing, or other source systems.",
@@ -513,10 +557,10 @@
       "fix": null
     },
     {
-      "n": 45,
+      "n": 49,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "Autonomy is limited to analysis and content generation in an authorised sandboxed product environment.",
+      "claim": "Autonomy is limited to analysis and content generation in an authorised, sandboxed product environment.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/reference/interactive-insights-data-privacy-security",
       "quote": "Interactive insights' autonomy is limited to analysis and content generation within the user's authorized, sandboxed product environment.",
@@ -524,32 +568,32 @@
       "fix": null
     },
     {
-      "n": 46,
-      "where": "Risk assessment: Autonomy & actions; Governance guidance: Before rollout",
+      "n": 50,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance",
       "type": "behaviour",
-      "claim": "Outputs are returned for human review and require review before consequential use or broad sharing.",
+      "claim": "Outputs are returned for human review rather than automatically applied downstream.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/reference/interactive-insights-data-privacy-security",
-      "quote": "Generated outputs require human review before consequential use or broad distribution.",
+      "quote": "Human oversight - Outputs are returned to the user for review and aren't automatically applied to downstream organizational systems.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 47,
-      "where": "Why it matters; Risk assessment: Autonomy & actions; Governance guidance: Before rollout",
-      "type": "behaviour",
-      "claim": "Interactive insights is not designed to evaluate, rank or monitor individual employees.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/a365-business-analytics/reference/interactive-insights-data-privacy-security",
-      "quote": "Interactive insights is not designed or evaluated to: - Evaluate or rank an individual's performance, productivity, suitability, or value. ... Monitor or score individual employees.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 48,
+      "n": 51,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "Customers remain responsible for their use of generated outputs.",
+      "claim": "The feature is designed to refuse prohibited requests, including individual employee evaluation and monitoring.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/a365-business-analytics/reference/interactive-insights-data-privacy-security",
+      "quote": "Monitor or score individual employees. [...] Interactive insights is designed to refuse prohibited requests.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Customers remain responsible for their interpretation, sharing and use of generated outputs.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/reference/interactive-insights-data-privacy-security",
       "quote": "However, customers remain responsible for how they interpret, share, and use generated outputs.",
@@ -557,10 +601,10 @@
       "fix": null
     },
     {
-      "n": 49,
+      "n": 53,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "Interactive insights can select an inappropriate measure.",
+      "claim": "The feature can select inappropriate measures.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/reference/interactive-insights-data-privacy-security",
       "quote": "It can select an inappropriate measure, population, comparison, or analytical approach.",
@@ -568,21 +612,43 @@
       "fix": null
     },
     {
-      "n": 50,
-      "where": "Risk assessment: Change & support; Scope",
-      "type": "availability",
-      "claim": "The feature and surrounding Business Analytics admin documentation are Frontier preview and may change.",
+      "n": 54,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The feature can overstate relationships in data.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/a365-business-analytics/manage/configurations",
-      "quote": "This feature is part of the Frontier preview program. ... As these features are still in development, their availability and capabilities might change over time.",
+      "source": "https://learn.microsoft.com/a365-business-analytics/reference/interactive-insights-data-privacy-security",
+      "quote": "It can misinterpret data, overstate a relationship, or produce a recommendation that's not adequately supported.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 51,
+      "n": 55,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The model can sound confident when evidence is weak.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/a365-business-analytics/reference/interactive-insights-data-privacy-security",
+      "quote": "The model can produce confident language even when evidence is weak.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Risk assessment: Change & support",
+      "type": "availability",
+      "claim": "Preview availability and capabilities may change.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/a365-business-analytics/interactive-insights",
+      "quote": "As these features are still in development, their availability and capabilities might change over time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
       "where": "Risk assessment: Change & support; Cost and licensing",
       "type": "behaviour",
-      "claim": "A fair use limitation can apply, with users directed to the experience's guidance or to continue in Copilot Chat or Cowork.",
+      "claim": "Users may encounter a fair use limitation and are directed to guidance in the experience or analysis in Copilot Chat or Cowork.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/interactive-insights",
       "quote": "You reach a fair use limitation | Follow the guidance shown in the experience. You can also continue analysis in Copilot Chat or Cowork, subject to the data and capabilities available there.",
@@ -590,21 +656,21 @@
       "fix": null
     },
     {
-      "n": 52,
+      "n": 58,
       "where": "Risk assessment: Change & support; Cost and licensing; Open questions",
       "type": "absence",
       "claim": "Microsoft has not published the Interactive insights fair use threshold.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Interactive insights\" \"fair use\" threshold limit. Opened a365-business-analytics/interactive-insights and its privacy reference; the troubleshooting row names fair use but gives no numeric threshold.",
+      "quote": "Searched: \"Interactive insights\" licensing pricing Copilot Credits fair use limit. Opened Interactive insights, its privacy page, Business Analytics introduction and the Copilot Credits billing overview; no numerical threshold was stated.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 53,
+      "n": 59,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Calculator changes do not recalculate existing Interactive insights sessions; rerunning or refreshing is needed.",
+      "claim": "Existing Interactive insights sessions are not recalculated following calculator changes and must be rerun or refreshed.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/manage/configurations",
       "quote": "Previously completed queries and existing Interactive insights sessions aren't recalculated; rerun or refresh them to use the updated configuration.",
@@ -612,21 +678,21 @@
       "fix": null
     },
     {
-      "n": 54,
-      "where": "front matter: licensing.model, licensing.notes; Cost and licensing; rationale: cost; changes[0]",
+      "n": 60,
+      "where": "front matter: licensing.model; Cost and licensing; rationale: cost; Open questions",
       "type": "absence",
-      "claim": "Feature-specific licensing, pricing and metering are not yet published on the Interactive insights pages.",
+      "claim": "A licence, price or meter specifically for the in-app Interactive insights capability has not been published.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Interactive insights\" \"license\" pricing metering Copilot Credits. Opened a365-business-analytics/interactive-insights, its privacy reference and introduction; no feature-specific licence, price or meter found.",
+      "quote": "Searched: \"Interactive insights\" licensing pricing Copilot Credits fair use limit. Opened its usage/privacy pages, Business Analytics introduction and Copilot Credits billing overview; no in-app feature licence, price or meter is specified.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 55,
+      "n": 61,
       "where": "front matter: licensing.notes; Cost and licensing; Scope",
       "type": "licensing",
-      "claim": "Business Analytics lists at least 50 assigned Copilot licences as an app prerequisite.",
+      "claim": "Business Analytics requires at least 50 assigned Copilot licences.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/introduction",
       "quote": "Tenant must have at least 50 Copilot licenses assigned.",
@@ -634,10 +700,10 @@
       "fix": null
     },
     {
-      "n": 56,
+      "n": 62,
       "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "cost",
-      "claim": "Spending policies for usage-based services must be configured for users to use those services and receive cost insights.",
+      "type": "licensing",
+      "claim": "Spending policies are prerequisites for using usage-based services and receiving their cost insights.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/introduction",
       "quote": "Spending policies for usage-based services must be set up for users to use these services and get cost insights.",
@@ -645,10 +711,10 @@
       "fix": null
     },
     {
-      "n": 57,
+      "n": 63,
       "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "Billing must be turned on in the Microsoft 365 admin center for usage-based cost-related metrics.",
+      "type": "behaviour",
+      "claim": "The described usage-based cost insights depend on billing being turned on in the Microsoft 365 admin center.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/introduction",
       "quote": "The admin must turn on billing in the Microsoft 365 admin center for users to see usage-based services and agents metrics.",
@@ -656,7 +722,7 @@
       "fix": null
     },
     {
-      "n": 58,
+      "n": 64,
       "where": "Scope; controls[0].note",
       "type": "role",
       "claim": "Interactive insights requires eligible access in the Global Partition.",
@@ -667,10 +733,10 @@
       "fix": null
     },
     {
-      "n": 59,
+      "n": 65,
       "where": "Scope",
       "type": "role",
-      "claim": "Insights analysts, Insights admins and other leaders not detected automatically receive access assigned by a Global admin.",
+      "claim": "Insights analysts, Insights admins and other leaders not identified automatically receive access assigned by a Global admin.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/manage/introduction",
       "quote": "Access assigned by a Global admin | - Insights analysts - Insights admins - Other leaders or GMs who aren't detected automatically",
@@ -678,10 +744,10 @@
       "fix": null
     },
     {
-      "n": 60,
+      "n": 66,
       "where": "Scope",
       "type": "role",
-      "claim": "Delegate access is assigned by a leader.",
+      "claim": "Leaders assign access to delegates.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/manage/introduction",
       "quote": "Access assigned by a leader | Delegates",
@@ -689,7 +755,7 @@
       "fix": null
     },
     {
-      "n": 61,
+      "n": 67,
       "where": "Scope",
       "type": "behaviour",
       "claim": "Existing Viva Insights role assignments transfer to Business Analytics.",
@@ -700,21 +766,21 @@
       "fix": null
     },
     {
-      "n": 62,
+      "n": 68,
       "where": "Scope",
       "type": "absence",
-      "claim": "Learn does not specify other cloud availability for Interactive insights.",
+      "claim": "Learn does not specify additional clouds for Interactive insights.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Interactive insights\" \"cloud\" GCC availability. Read the feature and privacy pages and supported-environments search excerpts; no Interactive insights cloud matrix or additional cloud commitment found.",
+      "quote": "Searched: \"Interactive insights\" retention uploads audit general availability default GCC. Opened its usage/privacy pages and Business Analytics introduction; no additional cloud availability was specified.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 63,
+      "n": 69,
       "where": "Scope",
       "type": "availability",
-      "claim": "The documented Viva feature access controls are unavailable in GCC-High and DoD.",
+      "claim": "Viva feature access controls are unavailable in GCC-High and DoD.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/feature-access-management",
       "quote": "The access controls described in this document aren't available in GCC-High or DoD.",
@@ -722,87 +788,98 @@
       "fix": null
     },
     {
-      "n": 64,
+      "n": 70,
       "where": "controls[0].ui; Governance controls table",
       "type": "admin-path",
-      "claim": "Business Analytics access policies are created at Manage > Access management > New access policy.",
+      "claim": "Business Analytics access policy creation starts at Manage > Access management > New access policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/manage/access",
-      "quote": "In Business Analytics, on the left, under Manage, select Access management. ... On the Access management home page, at the top, select New access policy.",
+      "quote": "In Business Analytics, on the left, under Manage, select Access management. [...] On the Access management home page, at the top, select New access policy.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 65,
+      "n": 71,
       "where": "controls[0].note; Governance controls",
       "type": "role",
       "claim": "Global administrators, AI administrators and Viva Insights administrators can manage Business Analytics access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/manage/access",
-      "quote": "Global administrators, AI administrators, and Viva Insights administrators can use the Access management page to control which capabilities people can use in the app and whose data they can see",
+      "quote": "The following admin roles can view and manage access policies, permission sets, and partitions in Business Analytics: Global administrator; AI administrator; Viva Insights administrator",
       "severity": null,
       "fix": null
     },
     {
-      "n": 66,
+      "n": 72,
       "where": "controls[0].api; Governance controls",
       "type": "absence",
-      "claim": "Microsoft Learn documents no API for the Business Analytics access policies described in the first control row.",
+      "claim": "An API for Business Analytics access policies is not documented at the time of writing.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Business Analytics\" \"access policies\" API PowerShell. Opened a365-business-analytics/manage/access and viva/manage-access-policies; found UI policy management and separate VFAM cmdlets, not an API for these permission-set/partition policies.",
+      "quote": "Searched: \"Business Analytics\" \"access policies\" API Graph PowerShell permission sets. Opened Business Analytics manage/access and Viva manage-access-policies; found UI policy management and general VFAM commands, not an API for these access policies.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 67,
+      "n": 73,
       "where": "controls[1].ui; Governance controls table",
       "type": "admin-path",
-      "claim": "The Microsoft 365 admin center path starts at Viva > Settings > Manage feature access > Create a policy.",
-      "status": "contradicted",
+      "claim": "The general Viva policy creation path is Microsoft 365 admin center > Settings > Viva > Settings > Manage feature access > Create a policy.",
+      "status": "supported",
       "source": "https://learn.microsoft.com/viva/control-access-admin-center",
-      "quote": "From the Microsoft 365 admin center, select Viva from the settings menu. ... Select the Settings tab and select Manage feature access. ... Select Create a policy.",
-      "severity": "blocker",
-      "fix": "Replace controls[1].ui.path and the corresponding rendered table path with 'Settings > Viva > Settings > Manage feature access > Create a policy'. The first Settings is the admin-center menu; the second is the Viva Settings tab, as documented at https://learn.microsoft.com/viva/control-access-admin-center."
+      "quote": "From the Microsoft 365 admin center, select Viva from the settings menu. Select the Settings tab and select Manage feature access. Select Create a policy.",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 68,
+      "n": 74,
       "where": "controls[1].api; Governance controls table",
       "type": "command",
-      "claim": "Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId <featureId> -Name <policyName> -IsFeatureEnabled $false -Everyone creates a tenant-wide default disabling a supported feature.",
+      "claim": "Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId <featureId> -Name <policyName> -IsFeatureEnabled $false -Everyone creates a tenant-wide policy disabling a supported feature.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/manage-access-policies",
-      "quote": "Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId Reflection -Name UsersAndGroups -IsFeatureEnabled $false -GroupIds group1@contoso.com,group2@contoso.com -UserIds user1@contoso.com,user2@contoso.com ... use the -Everyone parameter instead.",
+      "quote": "Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId Reflection -Name UsersAndGroups -IsFeatureEnabled $false [...] If you want to disable the feature for all users, use the -Everyone parameter instead.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 69,
+      "n": 75,
+      "where": "controls[1].note; Governance controls; Governance guidance: At rollout; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not confirmed that Viva Feature Access Management policies govern Interactive insights.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/export-copilot-metrics",
+      "quote": "When off, leaders and managers can't export user-level data or view user-level insights on specific cards, and Interactive insights provides aggregated insights only.",
+      "severity": "blocker",
+      "fix": "Replace the unqualified applicability caveat in the row name, note, governance prose, rollout checklist and open question with: 'Microsoft documents User-level export and insights as controlling user-level insights from Interactive insights for leaders and managers: turning it off leaves aggregated insights only. The setting is always on for analysts and cannot be changed for that role. A dedicated Interactive insights enablement policy is not yet documented.' Cite https://learn.microsoft.com/viva/insights/org-team-insights/export-copilot-metrics#admin-management. Keep the existing generic path and placeholder command; do not invent a feature ID."
+    },
+    {
+      "n": 76,
+      "where": "controls[2].ui; controls[2].api; Governance controls; Governance guidance: Before rollout",
+      "type": "absence",
+      "claim": "No admin UI path or automation call is documented for enabling Interactive insights outside Frontier or enabling its file uploads.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Interactive insights\" enable administrator file uploads setting PowerShell Microsoft Graph. Opened Interactive insights, privacy, manage/access, manage/introduction, manage/configurations and VFAM pages; no enablement path or call is supplied.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
       "where": "controls[1].note; Governance guidance: At rollout",
       "type": "command",
-      "claim": "Get-VivaModuleFeature -ModuleId VivaInsights lists features supporting access policies.",
+      "claim": "Get-VivaModuleFeature -ModuleId VivaInsights lists features that can be managed with access policies.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/manage-access-policies",
-      "quote": "Run the Get-VivaModuleFeature cmdlet to see the features that you can manage by using an access policy. ... Get-VivaModuleFeature -ModuleId VivaInsights",
+      "quote": "Run the Get-VivaModuleFeature cmdlet to see the features that you can manage by using an access policy. [...] Get-VivaModuleFeature -ModuleId VivaInsights",
       "severity": null,
       "fix": null
     },
     {
-      "n": 70,
-      "where": "Governance guidance: After rollout",
+      "n": 78,
+      "where": "Governance controls; Governance guidance: After rollout",
       "type": "behaviour",
-      "claim": "VFAM policy creation, updates and deletions have change logs in Microsoft Purview.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/control-access-admin-center",
-      "quote": "For a history of policy creation, updates, and deletions, see the Viva Feature Access Management (VFAM) change logs for your organization in Microsoft Purview.",
-      "severity": "minor",
-      "fix": "Remove the checklist bullet 'Review the Viva Feature Access Management change logs in Microsoft Purview after any policy change.' It instructs readers to check an audit control with no controls-table row; do not add a new row in this correction."
-    },
-    {
-      "n": 71,
-      "where": "Governance guidance: After rollout; Governance controls",
-      "type": "behaviour",
-      "claim": "A user's effective Business Analytics access combines valid assignments, so one assignment cannot remove access another grants.",
+      "claim": "Business Analytics effective access combines valid assignments, so one assignment does not revoke a capability another assignment grants.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/manage/access",
       "quote": "A capability that's turned on by any assignment is available to the user, and one assignment never removes access that another assignment grants.",
@@ -810,65 +887,21 @@
       "fix": null
     },
     {
-      "n": 72,
-      "where": "controls[1].note; Governance controls; Open questions; rationale: risk",
-      "type": "absence",
-      "claim": "The cited VFAM table does not list Interactive insights by name or confirm a feature-wide Interactive insights enablement policy.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Interactive insights\" \"feature access\" enable admin. Read viva/feature-access-management and manage-access-policies; no feature-wide switch identified. Export-copilot-metrics search result covers user-level insights, not enabling the feature.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 73,
-      "where": "Governance controls",
-      "type": "applicability",
-      "claim": "Microsoft says VFAM settings apply to Agent 365 Business Analytics where applicable.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/feature-access-management",
-      "quote": "The settings described below also apply to Agent 365 Business Analytics (Frontier preview) where applicable.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 74,
-      "where": "controls[2].ui; controls[2].api; Governance controls; Open questions; changes[0]",
-      "type": "absence",
-      "claim": "Microsoft has not documented a UI path or command to enable Interactive insights outside Frontier.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Interactive insights\" \"feature access\" enable admin. Opened a365-business-analytics/interactive-insights, manage/access, manage/introduction, manage/configurations and viva/feature-access-management; no enablement path or call found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 75,
-      "where": "controls[2].ui; controls[2].api; Governance guidance: Before rollout; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not documented a UI path or command for administrators to enable Interactive insights file uploads.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Interactive insights\" \"file uploads\" \"PowerShell\" configure. Opened a365-business-analytics/interactive-insights, manage/access, manage/introduction and manage/configurations; no upload-enablement path or call found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 76,
+      "n": 79,
       "where": "Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "The Reasoning component can show work summaries and tool activity for auditing an approach.",
+      "claim": "The Reasoning component lets users inspect work summaries and tool activity to audit a response.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/interactive-insights",
-      "quote": "The Reasoning component is an optional view of work summaries and tool activity associated with a response. You don't need to follow it while Interactive insights works. Use it to check progress or audit how a request was carried out.",
+      "quote": "The Reasoning component is an optional view of work summaries and tool activity associated with a response. [...] Use it to check progress or audit how a request was carried out.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 77,
+      "n": 80,
       "where": "Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "Microsoft suggests asking for a summary of the data sources, methods and assumptions used for a comparison.",
+      "claim": "Microsoft provides the suggested audit prompt asking for data sources, methods and assumptions used in a comparison.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/interactive-insights",
       "quote": "To audit an approach, ask: \"Summarize the data sources, methods, and assumptions you used for this comparison.\"",
@@ -876,21 +909,43 @@
       "fix": null
     },
     {
-      "n": 78,
-      "where": "Governance guidance: Before rollout; Risk assessment: Data exposure",
-      "type": "role",
-      "claim": "View as can expose the user's own view, delegated views or other available data-access roles according to their access.",
+      "n": 81,
+      "where": "Scope; controls[0].note",
+      "type": "availability",
+      "claim": "The surrounding Business Analytics admin documentation is marked Frontier preview.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/a365-business-analytics/interactive-insights",
-      "quote": "For a new session, select View as before submitting your first request. Depending on your access, you can choose your own view, delegated views, or other available data access roles.",
+      "source": "https://learn.microsoft.com/a365-business-analytics/manage/introduction",
+      "quote": "Introduction to the Admin section in Agent 365 Business Analytics (Frontier) [...] This feature is part of the Frontier preview program.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 79,
+      "n": 82,
       "where": "Governance controls",
       "type": "applicability",
-      "claim": "Applicable Microsoft 365 and Viva Insights controls can govern Interactive insights access and capabilities.",
+      "claim": "The VFAM documentation says its settings apply to Agent 365 Business Analytics where applicable.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/feature-access-management",
+      "quote": "The settings described below also apply to Agent 365 Business Analytics (Frontier preview) where applicable.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 83,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "The general VFAM page's feature table does not list Interactive insights by name.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Interactive insights\" \"feature access\" \"Viva\" enable. Opened learn.microsoft.com/viva/feature-access-management and read its complete feature table; Interactive insights is not listed by name.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 84,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Microsoft says organisations can govern Interactive insights access and capabilities through applicable Microsoft 365 and Viva Insights controls.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/reference/interactive-insights-data-privacy-security",
       "quote": "Administrative controls - Organizations can govern access and available capabilities through applicable Microsoft 365 and Viva Insights controls.",
@@ -898,59 +953,26 @@
       "fix": null
     },
     {
-      "n": 80,
-      "where": "front matter: products; title",
+      "n": 85,
+      "where": "front matter: products",
       "type": "record",
-      "claim": "The roadmap associates this feature with Microsoft Viva.",
+      "claim": "The roadmap record lists Microsoft Viva as the product.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"products\": [\"Microsoft Viva\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 81,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "Interactive insights is designed to refuse prohibited requests.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/a365-business-analytics/reference/interactive-insights-data-privacy-security",
-      "quote": "Interactive insights is designed to refuse prohibited requests.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 82,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "Interactive insights can overstate a relationship.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/a365-business-analytics/reference/interactive-insights-data-privacy-security",
-      "quote": "It can misinterpret data, overstate a relationship, or produce a recommendation that's not adequately supported.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 83,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "The model can sound confident when evidence is weak.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/a365-business-analytics/reference/interactive-insights-data-privacy-security",
-      "quote": "The model can produce confident language even when evidence is weak.",
+      "quote": "\"products\": [ \"Microsoft Viva\" ]",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-18T06:03:23.977Z",
+    "at": "2026-11-18T06:52:46.455Z",
     "summary": {
       "links": 10,
-      "unreachable": 9,
+      "unreachable": 6,
       "uiPaths": 2,
-      "uiPathsWithMissingWords": 2,
+      "uiPathsWithMissingWords": 1,
       "apiCalls": 1,
-      "apiCallsNotOnPage": 1,
+      "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -991,18 +1013,18 @@
       },
       {
         "url": "https://learn.microsoft.com/viva/feature-access-management",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/viva/control-access-admin-center",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/viva/manage-access-policies",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       }
     ],
     "controlChecks": [
@@ -1028,31 +1050,34 @@
         "side": "ui",
         "governs": "Feature access policy for Viva Insights features (general control, may not cover Interactive insights)",
         "docs": "https://learn.microsoft.com/viva/control-access-admin-center",
-        "reachable": false,
+        "reachable": true,
         "segments": [
+          "Settings",
           "Viva",
           "Settings",
           "Manage feature access",
           "Create a policy"
         ],
-        "missing": [
-          "Viva",
-          "Settings",
-          "Manage feature access",
-          "Create a policy"
-        ]
+        "missing": []
       },
       {
         "index": 1,
         "side": "api",
         "governs": "Feature access policy for Viva Insights features (general control, may not cover Interactive insights)",
         "docs": "https://learn.microsoft.com/viva/manage-access-policies",
-        "reachable": false,
+        "reachable": true,
         "token": "Add-VivaModuleFeaturePolicy",
-        "found": false
+        "found": true
       }
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-18",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

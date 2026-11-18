@@ -1,34 +1,31 @@
 # Lint report
 
-Generated 2026-11-18T06:29:17.040Z. 223 briefings, 9 concepts, 0 quarantined.
-Independent check: 95 verified, 137 verified with gaps, 0 awaiting correction (live under grace), 0 not yet checked, 0 stale; 21 held and not published.
+Generated 2026-11-18T07:16:00.620Z. 232 briefings, 9 concepts, 0 quarantined.
+Independent check: 101 verified, 140 verified with gaps, 0 awaiting correction (live under grace), 0 not yet checked, 0 stale; 18 held and not published.
 
 ## Errors (0)
 
-## Warnings (21)
+## Warnings (18)
 - _held/agent-365-control-plane-for-agents.md: held (parked since 2026-11-16, 5 attempts): 3 blocking findings (claims 33, 48, 73)
 - _held/copilot-studio-computer-use-for-web-browsing-on-microsoft-copilot-harness.md: held (parked since 2026-11-16, 5 attempts): 2 blocking findings (claims 71, 73)
 - _held/copilot-studio-mcp-tools-in-agents.md: held (parked since 2026-11-16, 5 attempts): 3 blocking findings (claims 71, 72, 73)
 - _held/dataverse-agent-users-entra-agent-identity.md: held (parked since 2026-11-16, 5 attempts): 3 blocking findings (claims 20, 23, 36)
 - _held/m365-admin-center-cross-tenant-orchestrated-migration.md: held (parked since 2026-11-16, 5 attempts): 6 blocking findings (claims 16, 40, 55, 74, 75, 76)
-- _held/m365-copilot-copilot-extensibility-users-in-gcc-h-will-be-able-to-use-custom-engine-agents.md: held (failed since 2026-11-18, 1 attempt): 2 blocking findings (claims 33, 53)
-- _held/m365-copilot-federated-copilot-connectors-in-m365-copilot.md: held (failed since 2026-11-18, 1 attempt): 4 blocking findings (claims 20, 25, 54, 59)
-- _held/m365-create-full-workload-backup-policies-for-m365-backup.md: held (failed since 2026-11-18, 2 attempts): 2 blocking findings (claims 21, 27)
-- _held/microsoft-copilot-studio-dataverse-integration-on-copilot-studio.md: held (failed since 2026-11-18, 1 attempt): 5 blocking findings (claims 25, 37, 44, 45, 64)
-- _held/microsoft-copilot-studio-enable-express-mode-for-flows-invoked-by-an-agent-or-app.md: held (failed since 2026-11-18, 1 attempt): 1 blocking finding (claim 62)
-- _held/microsoft-copilot-studio-sql-server-support-in-microsoft-copilot-studio.md: held (failed since 2026-11-18, 1 attempt): 2 blocking findings (claims 46, 55)
-- _held/microsoft-dataverse-finance-and-operations-cross-application-integration-monitor-data-mana.md: held (failed since 2026-11-18, 1 attempt): 3 blocking findings (claims 50, 58, 62)
-- _held/microsoft-dataverse-improved-enterprise-experiences-in-power-platform-improve-bulk-delete.md: held (failed since 2026-11-18, 1 attempt): 1 blocking finding (claim 12)
-- _held/microsoft-purview-auto-labeling-scalability-policy-management-and-reporting-enhancements.md: held (failed since 2026-11-18, 1 attempt): 1 blocking finding (claim 45)
-- _held/microsoft-purview-compliance-portal-data-loss-prevention-restrict-access-action-support-fo.md: held (failed since 2026-11-18, 1 attempt): 1 blocking finding (claim 35)
-- _held/microsoft-viva-interactive-insights-in-the-a365-business-analytics-app.md: held (failed since 2026-11-18, 1 attempt): 1 blocking finding (claim 67)
+- _held/m365-copilot-federated-copilot-connectors-in-m365-copilot.md: held (failed since 2026-11-18, 2 attempts): 1 blocking finding (claim 38)
+- _held/microsoft-agent-365-registry-sync.md: held (failed since 2026-11-18, 1 attempt): 2 blocking findings (claims 48, 54)
+- _held/microsoft-copilot-studio-sql-server-support-in-microsoft-copilot-studio.md: held (failed since 2026-11-18, 2 attempts): 2 blocking findings (claims 57, 58)
+- _held/microsoft-dataverse-improved-enterprise-experiences-in-power-platform-enhance-dataverse-re.md: held (failed since 2026-11-18, 1 attempt): 1 blocking finding (claim 39)
+- _held/microsoft-purview-compliance-portal-data-loss-prevention-restrict-access-action-support-fo.md: held (failed since 2026-11-18, 2 attempts): 2 blocking findings (claims 69, 72)
+- _held/microsoft-purview-information-protection-auto-labeling-per-policy-coverage-report.md: held (failed since 2026-11-18, 1 attempt): 2 blocking findings (claims 44, 56)
+- _held/microsoft-viva-ability-for-leaders-to-publish-power-bi-reports.md: held (failed since 2026-11-18, 1 attempt): 1 blocking finding (claim 67)
+- _held/microsoft-viva-interactive-insights-in-the-a365-business-analytics-app.md: held (failed since 2026-11-18, 2 attempts): 1 blocking finding (claim 75)
 - _held/power-apps-manage-model-driven-app-ai-features-from-consolidated-settings.md: held (parked since 2026-11-18, 5 attempts): 7 blocking findings (claims 32, 35, 36, 40, 54, 56, 70)
-- _held/power-automate-process-mining-analyze-your-processes-in-the-process-intelligence-experienc.md: held (failed since 2026-11-18, 2 attempts): 1 blocking finding (claim 74)
-- _held/power-automate-process-mining-create-and-visualize-custom-kpis-in-the-process-intelligence.md: held (failed since 2026-11-18, 2 attempts): 1 blocking finding (claim 52)
+- _held/power-automate-process-mining-analyze-your-processes-in-the-process-intelligence-experienc.md: held (failed since 2026-11-18, 3 attempts): 1 blocking finding (claim 78)
 - _held/power-pages-administration-and-governance-enable-self-service-site-ownership-transfer.md: held (parked since 2026-11-16, 5 attempts): 1 blocking finding (claim 14)
-- _held/power-pages-design-studio-support-power-bi-embed-token-v2-for-power-pages.md: held (failed since 2026-11-18, 1 attempt): 1 blocking finding (claim 32)
+- _held/powerapps-building-modern-apps-use-cli-to-discover-create-and-wire-connectors-in-code-apps.md: held (failed since 2026-11-18, 1 attempt): 5 blocking findings (claims 21, 28, 42, 47, 50)
+- _held/retention.md: held (failed since 2026-11-18, 1 attempt): 3 blocking findings (claims 85, 92, 95)
 
-## Info (249)
+## Info (254)
 - features/copilot-studio-purview-information-protection-labelled-files.md: control "Separate tenant or agent switch for labelled-file uploads" has neither an admin UI nor an API documented
 - features/copilot-studio-require-human-approval-for-tool-calls.md: control "The per-tool, per-agent approval toggle described on the roadmap" has neither an admin UI nor an API documented
 - features/copilot-studio-require-human-approval-for-tool-calls.md: control "Tenant or environment enforcement of approval for tool calls" has neither an admin UI nor an API documented
@@ -53,6 +50,7 @@ Independent check: 95 verified, 137 verified with gaps, 0 awaiting correction (l
 - features/microsoft-copilot-studio-agent-readiness-in-microsoft-copilot-studio.md: control "Switch to hide or turn off the Review panel" has neither an admin UI nor an API documented
 - features/microsoft-copilot-studio-agent-sharing-amongst-makers.md: control "Tenant-wide switch that turns maker-to-maker agent sharing off" has neither an admin UI nor an API documented
 - features/microsoft-copilot-studio-discover-and-use-shared-plugins-in-copilot-studio.md: control "Copilot Studio switch for the shared plugin registry connection" has neither an admin UI nor an API documented
+- features/microsoft-copilot-studio-enable-express-mode-for-flows-invoked-by-an-agent-or-app.md: control "Tenant or environment switch for express mode" has neither an admin UI nor an API documented
 - features/microsoft-copilot-studio-introducing-an-app-and-intent-first-agent-creation-experience.md: low confidence, roadmap text only
 - features/microsoft-copilot-studio-invoke-agents-as-workflow-steps-with-the-agent-node.md: control "Switch dedicated to turning the agent node off" has neither an admin UI nor an API documented
 - features/microsoft-copilot-studio-persistent-identity-for-copilot-studio-agents.md: control "Shared memory of an agent with an account" has neither an admin UI nor an API documented
@@ -140,6 +138,7 @@ Independent check: 95 verified, 137 verified with gaps, 0 awaiting correction (l
 - features/power-pages-design-studio-configure-authentication-with-security-agent.md: control "Switch specific to the security agent" has neither an admin UI nor an API documented
 - features/power-pages-design-studio-enhance-openid-connect-with-encrypted-token-support.md: control "Switch or setting for accepting encrypted ID tokens" has neither an admin UI nor an API documented
 - features/power-pages-design-studio-enhance-openid-connect-with-encrypted-token-support.md: low confidence, roadmap text only
+- features/power-pages-design-studio-support-power-bi-embed-token-v2-for-power-pages.md: control "Which Embed Token version (v1 or v2) a site's Power BI embeds use" has neither an admin UI nor an API documented
 - features/power-pages-design-studio-unify-power-pages-authorization-by-merging-web-role-with-dataver.md: control "Tenant or environment enforcement of enhanced authorization" has neither an admin UI nor an API documented
 - features/power-pages-first-class-support-for-connector-apis-in-power-pages.md: control "Power Pages-specific control for connector APIs" has neither an admin UI nor an API documented
 - features/power-pages-first-class-support-for-connector-apis-in-power-pages.md: low confidence, roadmap text only
@@ -171,16 +170,14 @@ Independent check: 95 verified, 137 verified with gaps, 0 awaiting correction (l
 - features/dynamics-365-customer-insights-journeys-create-journeys-in-minutes-with-journey-creation-a.md: orphan (no inbound related links)
 - features/dynamics-365-customer-insights-journeys-improve-engagement-and-message-timing-with-outreac.md: orphan (no inbound related links)
 - features/dynamics-365-customer-service-manage-intraday-operations-with-ai-agent.md: orphan (no inbound related links)
-- features/dynamics-365-finance-and-operations-cross-app-migrate-finance-and-operations-environments.md: orphan (no inbound related links)
 - features/m365-admin-center-usage-reports-m365-copilot-connectors.md: orphan (no inbound related links)
 - features/m365-app-inventory-update-repair.md: orphan (no inbound related links)
-- features/m365-backup-activity-logs.md: orphan (no inbound related links)
 - features/m365-copilot-agent-365-business-analytics-experience.md: orphan (no inbound related links)
 - features/m365-copilot-ai-and-copilot-upskilling-nudges-in-microsoft-teams-by-learning-agent.md: orphan (no inbound related links)
 - features/m365-copilot-build-interactive-reports-and-dashboards-with-pages.md: orphan (no inbound related links)
 - features/m365-copilot-chat-usage-based-billing-models-model-selector.md: orphan (no inbound related links)
 - features/m365-copilot-copilot-code.md: orphan (no inbound related links)
-- features/m365-copilot-copilot-extensibility-users-will-be-able-to-upload-files-stored-locally-or-in.md: orphan (no inbound related links)
+- features/m365-copilot-copilot-extensibility-users-in-gcc-h-will-be-able-to-use-custom-engine-agents.md: orphan (no inbound related links)
 - features/m365-copilot-copilot-in-sharepoint.md: orphan (no inbound related links)
 - features/m365-copilot-copilot-people-connectors-introduces-people-data-ingestions-with-differentiat.md: orphan (no inbound related links)
 - features/m365-copilot-federated-connectors-write-update-delete.md: orphan (no inbound related links)
@@ -189,13 +186,16 @@ Independent check: 95 verified, 137 verified with gaps, 0 awaiting correction (l
 - features/m365-copilot-service-agent-in-m365-your-dedicated-service-specialist.md: orphan (no inbound related links)
 - features/m365-copilot-structured-document-generation-with-forms.md: orphan (no inbound related links)
 - features/m365-copilot-use-agent-365-agents-within-m365-copilot-chat-and-declarative-agents.md: orphan (no inbound related links)
+- features/m365-create-full-workload-backup-policies-for-m365-backup.md: orphan (no inbound related links)
 - features/m365-the-next-generation-of-file-and-folder-sharing.md: orphan (no inbound related links)
 - features/microsoft-copilot-microsoft-m365-delegated-prompt-publishing-for-organization-prompts.md: orphan (no inbound related links)
 - features/microsoft-copilot-studio-agent-readiness-in-microsoft-copilot-studio.md: orphan (no inbound related links)
 - features/microsoft-copilot-studio-cost-visibility-in-preview-chat-and-history.md: orphan (no inbound related links)
+- features/microsoft-copilot-studio-dataverse-integration-on-copilot-studio.md: orphan (no inbound related links)
 - features/microsoft-copilot-studio-deliver-rich-interactive-app-experiences-in-copilot-studio-agents.md: orphan (no inbound related links)
 - features/microsoft-copilot-studio-discover-and-add-skills-from-the-skill-catalog.md: orphan (no inbound related links)
 - features/microsoft-copilot-studio-discover-and-use-shared-plugins-in-copilot-studio.md: orphan (no inbound related links)
+- features/microsoft-copilot-studio-enable-express-mode-for-flows-invoked-by-an-agent-or-app.md: orphan (no inbound related links)
 - features/microsoft-copilot-studio-improvements-to-agent-evaluations-experience.md: orphan (no inbound related links)
 - features/microsoft-copilot-studio-invoke-agents-as-workflow-steps-with-the-agent-node.md: orphan (no inbound related links)
 - features/microsoft-copilot-studio-persistent-identity-for-copilot-studio-agents.md: orphan (no inbound related links)
@@ -204,6 +204,8 @@ Independent check: 95 verified, 137 verified with gaps, 0 awaiting correction (l
 - features/microsoft-dataverse-add-users-without-licenses-to-activity-recipient-fields.md: orphan (no inbound related links)
 - features/microsoft-dataverse-build-your-low-code-hyperscale-backend-on-dataverse-build-your-agentic.md: orphan (no inbound related links)
 - features/microsoft-dataverse-enable-ai-powered-business-workflows-in-work-iq-with-dataverse-build-d.md: orphan (no inbound related links)
+- features/microsoft-dataverse-finance-and-operations-cross-application-integration-monitor-data-mana.md: orphan (no inbound related links)
+- features/microsoft-dataverse-improved-enterprise-experiences-in-power-platform-improve-bulk-delete.md: orphan (no inbound related links)
 - features/microsoft-edge-expanded-enforcement-controls-for-data-loss-prevention-connectors.md: orphan (no inbound related links)
 - features/microsoft-edge-improved-website-compatibility-with-site-troubleshooting-controls.md: orphan (no inbound related links)
 - features/microsoft-edge-notifications-unsubscribe-user-action.md: orphan (no inbound related links)
@@ -211,16 +213,15 @@ Independent check: 95 verified, 137 verified with gaps, 0 awaiting correction (l
 - features/microsoft-edge-security-update-alerts-in-the-edge-management-service.md: orphan (no inbound related links)
 - features/microsoft-power-platform-governance-and-administration-security-and-compliance-prevent-sen.md: orphan (no inbound related links)
 - features/microsoft-purview-archive-sharepoint-files-under-retention-policies.md: orphan (no inbound related links)
+- features/microsoft-purview-auto-labeling-scalability-policy-management-and-reporting-enhancements.md: orphan (no inbound related links)
 - features/microsoft-purview-compliance-portal-communication-compliance-alert-improvements.md: orphan (no inbound related links)
 - features/microsoft-purview-data-lifecycle-management-increase-in-expansion-limit-for-auto-expanding.md: orphan (no inbound related links)
 - features/microsoft-purview-data-lifecycle-management-legacy-teams-retention-policies-covering-copil.md: orphan (no inbound related links)
 - features/microsoft-purview-data-loss-prevention-new-guided-experience-to-diagnose-and-resolve-dlp-i.md: orphan (no inbound related links)
 - features/microsoft-purview-data-loss-prevention-unmanaged-cloud-app-discovery-and-protection-with-m.md: orphan (no inbound related links)
 - features/microsoft-purview-endpoint-data-loss-prevention-ability-to-protect-files-stored-in-the-exc.md: orphan (no inbound related links)
-- features/microsoft-purview-information-protection-sensitivity-labels-for-microsoft-entra-security-g.md: orphan (no inbound related links)
 - features/microsoft-purview-permissions-audit-log-improvements.md: orphan (no inbound related links)
 - features/microsoft-purview-purview-sdk-embedded-in-agent-framework-sdk.md: orphan (no inbound related links)
-- features/microsoft-purview-unified-classification-management-experience.md: orphan (no inbound related links)
 - features/microsoft-teams-ability-to-separate-out-the-townhall-attendee-invites.md: orphan (no inbound related links)
 - features/microsoft-teams-adaptive-card-based-app-and-copilot-agent-link-unfurling-in-teams.md: orphan (no inbound related links)
 - features/microsoft-teams-admins-can-control-profanity-filtering-in-meeting-transcripts.md: orphan (no inbound related links)
@@ -257,7 +258,6 @@ Independent check: 95 verified, 137 verified with gaps, 0 awaiting correction (l
 - features/power-apps-form-fill-assistance-in-apps-can-provide-suggestions-for-existing-values.md: orphan (no inbound related links)
 - features/power-apps-model-driven-applications-in-business-apps-in-work-iq.md: orphan (no inbound related links)
 - features/power-apps-model-driven-apps-use-row-summaries-in-us-government-clouds.md: orphan (no inbound related links)
-- features/power-apps-monitor-generative-pages-with-out-of-the-box-application-insights-telemetry.md: orphan (no inbound related links)
 - features/power-apps-start-sharepoint-connected-canvas-apps-with-a-modern-responsive-template-previe.md: orphan (no inbound related links)
 - features/power-apps-use-power-platform-connectors-in-generative-pages.md: orphan (no inbound related links)
 - features/power-automate-bring-your-own-connection-in-attended-unattended-cloud-triggered-runs.md: orphan (no inbound related links)
@@ -267,8 +267,10 @@ Independent check: 95 verified, 137 verified with gaps, 0 awaiting correction (l
 - features/power-automate-desktop-flows-measure-time-and-cost-savings-for-desktop-flows.md: orphan (no inbound related links)
 - features/power-automate-direct-triggers-for-desktop-flows.md: orphan (no inbound related links)
 - features/power-automate-process-mining-analyze-processes-using-object-centric-process-mining.md: orphan (no inbound related links)
+- features/power-automate-process-mining-create-and-visualize-custom-kpis-in-the-process-intelligence.md: orphan (no inbound related links)
 - features/power-automate-self-healing.md: orphan (no inbound related links)
 - features/power-pages-design-studio-enhance-openid-connect-with-encrypted-token-support.md: orphan (no inbound related links)
+- features/power-pages-design-studio-support-power-bi-embed-token-v2-for-power-pages.md: orphan (no inbound related links)
 - features/power-pages-plugin-support-for-github-copilot-cli-and-claude-code-to-create-and-edit-tradi.md: orphan (no inbound related links)
 - features/power-pages-sdk-software-development-kit.md: orphan (no inbound related links)
 - features/viva-engage-my-team-audiences-and-flexible-targeting-for-leader-communications.md: orphan (no inbound related links)

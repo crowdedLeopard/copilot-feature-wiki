@@ -2,125 +2,31 @@
   "slug": "microsoft-dataverse-finance-and-operations-cross-application-integration-monitor-data-mana",
   "roadmapId": 576817,
   "title": "Dynamics 365 finance and operations: data management framework telemetry in Application Insights",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-18",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
-  "verifierVerdict": "hold",
+  "attempts": 0,
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-18",
-    "reasons": [
-      "3 blocking findings (claims 50, 58, 62)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 68,
-    "confirmed": 64,
+    "claims": 72,
+    "confirmed": 71,
     "unconfirmed": 0,
-    "contradicted": 4,
-    "blocker": 3,
+    "contradicted": 1,
+    "blocker": 0,
     "major": 0,
-    "minor": 2
+    "minor": 1
   },
-  "summary": "Hold: the daily-cap automation entry is an operation description, not an executable REST request, and the claim that the cap stops all billable data omits the Auxiliary-table exception. The feature-enablement row also reports automation as undocumented although Microsoft documents importing Feature management settings.",
+  "summary": "The briefing's roadmap facts, telemetry configuration paths and Azure ingestion controls are supported. One minor checklist inconsistency remains: feature enablement is an instruction without a corresponding controls-table row.",
   "claims": [
     {
       "n": 1,
-      "where": "front matter: products",
+      "where": "summary; What's changing; Why it matters; rationale: risk",
       "type": "record",
-      "claim": "The roadmap categorizes this item under Microsoft Dataverse.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"products\": [\"Microsoft Dataverse\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 2,
-      "where": "front matter: status; What's changing",
-      "type": "record",
-      "claim": "The roadmap status is Launched.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"status\": \"Launched\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 3,
-      "where": "front matter: releasePhase",
-      "type": "record",
-      "claim": "The record lists General Availability and Preview release phases.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
-      "where": "front matter: clouds; What's changing; Scope",
-      "type": "availability",
-      "claim": "Worldwide (Standard Multi-Tenant) is the cloud listed in the roadmap.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "front matter: platforms; What's changing; Scope",
-      "type": "record",
-      "claim": "The roadmap lists the Web platform.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\"Web\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
-      "where": "front matter: targetDate; What's changing",
-      "type": "record",
-      "claim": "The general availability target is June CY2026.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"targetDate\": \"June CY2026\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
-      "where": "front matter: previewDate; What's changing",
-      "type": "record",
-      "claim": "The preview target is April CY2026.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": \"April CY2026\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
-      "where": "front matter: roadmapModified",
-      "type": "record",
-      "claim": "The roadmap modification timestamp is 2026-10-16T19:09:27.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"modified\": \"2026-10-16T19:09:27\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
-      "where": "summary; What's changing; rationale: risk",
-      "type": "record",
-      "claim": "Finance and operations DMF import and export telemetry streams to the customer's own Application Insights instance.",
+      "claim": "DMF import and export telemetry streams into the customer's own Azure Application Insights instance.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "This integration streams telemetry directly into the customer's own Azure Application Insights instance.",
@@ -128,10 +34,10 @@
       "fix": null
     },
     {
-      "n": 10,
+      "n": 2,
       "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap describes monitoring import and export start and end times.",
+      "claim": "The integration supports monitoring import and export start and end times.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Monitor import and export data management functions with start and end times.",
@@ -139,10 +45,10 @@
       "fix": null
     },
     {
-      "n": 11,
+      "n": 3,
       "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap describes job-status monitoring from source to staging and staging to target.",
+      "claim": "Job status can be monitored from source to staging and staging to target.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Monitor job status from source to staging and staging to target.",
@@ -150,10 +56,10 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 4,
       "where": "What's changing; Why it matters",
       "type": "record",
-      "claim": "The roadmap describes monitoring failures with granular error messages.",
+      "claim": "The integration exposes granular failures with error messages.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Monitor failures with error messages at a granular level.",
@@ -161,7 +67,7 @@
       "fix": null
     },
     {
-      "n": 13,
+      "n": 5,
       "where": "What's changing; Why it matters; Risk assessment: Autonomy & actions",
       "type": "record",
       "claim": "Customers can set up alerts and dashboards for proactive monitoring.",
@@ -172,10 +78,87 @@
       "fix": null
     },
     {
-      "n": 14,
+      "n": 6,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The general availability target is June CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"June CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The preview target is April CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"April CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: releasePhase; Open questions",
+      "type": "record",
+      "claim": "The roadmap lists both General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists Worldwide (Standard Multi-Tenant), without listing GCC, GCC High or DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap categorises the item under Microsoft Dataverse.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Dataverse\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
       "where": "Scope; Why it matters",
       "type": "record",
-      "claim": "The roadmap describes enablement by admins, makers or marketers for end users.",
+      "claim": "The record describes enablement by admins, makers or marketers for end users.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Enabled by admins/makers/marketers for end users",
@@ -183,21 +166,10 @@
       "fix": null
     },
     {
-      "n": 15,
-      "where": "front matter: defaultState; summary; Why it matters",
-      "type": "default",
-      "claim": "Telemetry requires administrative configuration of an environment and destination before it is sent.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-getting-started",
-      "quote": "To configure your environments to send telemetry to Azure Application Insights, follow these steps:",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
+      "n": 14,
       "where": "What's changing; Open questions",
       "type": "record",
-      "claim": "The roadmap's more-info URL uses an anchor named dmf-telemetry-preview.",
+      "claim": "The roadmap's more-info URL has a preview-named DMF telemetry anchor.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "https://learn.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-available-telemetry#dmf-telemetry-preview",
@@ -205,43 +177,109 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 15,
       "where": "What's changing",
-      "type": "absence",
-      "claim": "The current Available telemetry section is titled DMF telemetry and does not label that section preview.",
+      "type": "availability",
+      "claim": "The current Learn section is titled DMF telemetry and does not label that section as preview.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: DMF telemetry preview; opened the full cited monitoring-available-telemetry page and read its DMF telemetry and DMF errors sections; neither labels DMF preview. The version 10.0.46 platform-update search result separately describes the earlier April 2026 preview.",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-available-telemetry",
+      "quote": "## DMF telemetry\n\nImportant\n\nThis feature is available in Microsoft Dynamics 365 finance and operations versions PU71/10.0.47",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Scope; Governance guidance: Before rollout",
+      "type": "availability",
+      "claim": "Learn lists availability in PU71/10.0.47 at build 7.0.7858.68 or later.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-available-telemetry",
+      "quote": "PU71/10.0.47 (build >= 7.0.7858.68)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Scope; Governance guidance: Before rollout",
+      "type": "availability",
+      "claim": "Learn lists availability in PU70/10.0.46 at build 7.0.7778.87 or later.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-available-telemetry",
+      "quote": "PU70/10.0.46 (build >= 7.0.7778.87)",
       "severity": null,
       "fix": null
     },
     {
       "n": 18,
-      "where": "What's changing; Governance guidance: After rollout",
-      "type": "behaviour",
-      "claim": "DMFJob Start logs when a DMF job starts.",
+      "where": "What's changing; Scope; Governance guidance: Before rollout",
+      "type": "availability",
+      "claim": "Learn lists availability in PU69/10.0.45 at build 7.0.7690.137 or later.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-available-telemetry",
-      "quote": "DMFJob Start - Logs when a DMF job starts.",
+      "quote": "PU69/10.0.45 (build >= 7.0.7690.137)",
       "severity": null,
       "fix": null
     },
     {
       "n": 19,
-      "where": "What's changing; Governance guidance: After rollout",
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "DMFJob End logs when a DMF job ends.",
+      "claim": "DMFTelemetryConfigurationFlight is one of the two flights controlling DMF telemetry.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-available-telemetry",
-      "quote": "DMFJob End - Logs when a DMF job ends.",
+      "quote": "Two flights control DMF telemetry, and they're enabled by default:\n\n- DMFTelemetryConfigurationFlight",
       "severity": null,
       "fix": null
     },
     {
       "n": 20,
-      "where": "What's changing; Governance guidance: After rollout",
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "DMFJob Status logs status from source to staging tables and staging to target tables.",
+      "claim": "DMFEnableAppInsightsLogsAndErrors is the other flight controlling DMF telemetry.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-available-telemetry",
+      "quote": "Two flights control DMF telemetry, and they're enabled by default:\n\n- DMFTelemetryConfigurationFlight\n- DMFEnableAppInsightsLogsAndErrors",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "default",
+      "claim": "The two DMF flights are enabled by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-available-telemetry",
+      "quote": "Two flights control DMF telemetry, and they're enabled by default:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; controls[1].note; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "DMFJob Start appears under Configure when the flights are enabled and logs job starts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-available-telemetry",
+      "quote": "When you enable the flights, new telemetry signals appear under the Configure tab:\n\n- DMFJob Start - Logs when a DMF job starts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; controls[1].note; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "DMFJob End appears under Configure when the flights are enabled and logs job endings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-available-telemetry",
+      "quote": "When you enable the flights, new telemetry signals appear under the Configure tab:\n\n- DMFJob Start - Logs when a DMF job starts.\n- DMFJob End - Logs when a DMF job ends.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; controls[1].note; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "DMFJob Status appears under Configure when the flights are enabled and logs the two staging transitions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-available-telemetry",
       "quote": "DMFJob Status - Logs job status from source to staging tables and staging to target tables.",
@@ -249,19 +287,8 @@
       "fix": null
     },
     {
-      "n": 21,
-      "where": "What's changing; controls[2].note",
-      "type": "behaviour",
-      "claim": "The DMF signals appear on Configure when the DMF flights are enabled.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-available-telemetry",
-      "quote": "When you enable the flights, new telemetry signals appear under the Configure tab:",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "What's changing; Risk assessment: Data exposure; Governance controls",
+      "n": 25,
+      "where": "What's changing; Risk assessment: Data exposure; Governance guidance: After rollout",
       "type": "behaviour",
       "claim": "DMF errors are logged to the Custom Events table in Application Insights.",
       "status": "supported",
@@ -271,7 +298,7 @@
       "fix": null
     },
     {
-      "n": 23,
+      "n": 26,
       "where": "What's changing; Risk assessment: Data exposure",
       "type": "behaviour",
       "claim": "Exceptions reaching the X++ layer go to the Exceptions table.",
@@ -282,65 +309,10 @@
       "fix": null
     },
     {
-      "n": 24,
-      "where": "What's changing; Scope; Governance guidance: Before rollout",
-      "type": "availability",
-      "claim": "DMF telemetry is documented for PU71/10.0.47 at build 7.0.7858.68 or later.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-available-telemetry",
-      "quote": "PU71/10.0.47 (build >= 7.0.7858.68)",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "What's changing; Scope; Governance guidance: Before rollout",
-      "type": "availability",
-      "claim": "DMF telemetry is documented for PU70/10.0.46 at build 7.0.7778.87 or later.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-available-telemetry",
-      "quote": "PU70/10.0.46 (build >= 7.0.7778.87)",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "What's changing; Scope; Governance guidance: Before rollout",
-      "type": "availability",
-      "claim": "DMF telemetry is documented for PU69/10.0.45 at build 7.0.7690.137 or later.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-available-telemetry",
-      "quote": "PU69/10.0.45 (build >= 7.0.7690.137)",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 27,
-      "where": "What's changing",
+      "where": "controls[1].note; Risk assessment: Change & support; Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "DMFTelemetryConfigurationFlight and DMFEnableAppInsightsLogsAndErrors control DMF telemetry.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-available-telemetry",
-      "quote": "Two flights control DMF telemetry, and they're enabled by default:\n- DMFTelemetryConfigurationFlight\n- DMFEnableAppInsightsLogsAndErrors",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
-      "where": "What's changing",
-      "type": "default",
-      "claim": "The two DMF telemetry flights are enabled by default.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-available-telemetry",
-      "quote": "Two flights control DMF telemetry, and they're enabled by default:",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 29,
-      "where": "Risk assessment: Change & support; controls[2].note; Governance guidance: At rollout",
-      "type": "behaviour",
-      "claim": "Microsoft says to contact support if the DMF flights are not enabled.",
+      "claim": "Microsoft instructs customers to contact support if the DMF flights are not enabled.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-available-telemetry",
       "quote": "If these flights aren't enabled in your environments, contact Microsoft support.",
@@ -348,18 +320,414 @@
       "fix": null
     },
     {
-      "n": 30,
-      "where": "Risk assessment: Data exposure; Open questions",
+      "n": 28,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The resource registry is at System administration > Monitoring and Telemetry parameters > Monitoring settings > Application Insights Registry in Finance and Supply Chain Management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-getting-started",
+      "quote": "go to System administration > Monitoring and Telemetry parameters.\n2. On the Monitoring settings page, on the Environments tab, create a record for each environment\n3. On the Application Insights Registry tab, create a record for each environment mode that is used.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[0].api; Governance controls",
       "type": "absence",
-      "claim": "The cited telemetry pages do not describe the customer-data field contents of DMF events or error messages.",
+      "claim": "Microsoft Learn documents no automation for configuring this finance and operations environment-to-resource registry.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: DMF telemetry fields error; DMF telemetry Application Insights licensing license admin role event fields entity file names volume cost per job. Read Available telemetry, getting-started and overview; checked dm-error-descriptions for telemetry and fields; no DMF telemetry payload schema.",
+      "quote": "Searched: \"Monitoring and Telemetry parameters\" API Dataverse Web API PowerShell configuration; \"Monitoring settings\" \"Application Insights Registry\" \"API\"; finance/operations telemetry parameters OData. Opened monitoring-getting-started; no registry API found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[1].ui; Governance controls table; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "Telemetry types are turned on at System administration > Monitoring and Telemetry parameters > Monitoring settings > Configure.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-getting-started",
+      "quote": "go to System administration > Monitoring and Telemetry parameters.\n2. On the Monitoring settings page, on the Configure tab, turn on the option for each type of telemetry that must be emitted.",
       "severity": null,
       "fix": null
     },
     {
       "n": 31,
+      "where": "controls[1].api; Governance controls",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no API or script for the Monitoring and Telemetry parameters' telemetry-type switches.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Monitoring and Telemetry parameters\" API Dataverse Web API PowerShell configuration; site:learn.microsoft.com/power-platform \"Monitoring and Telemetry\" API CLI PowerShell. Opened monitoring-getting-started and monitoring-available-telemetry; no switch automation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[0].note; Governance controls table; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "Environment records are created on Environments before per-mode records on Application Insights Registry.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-getting-started",
+      "quote": "on the Environments tab, create a record for each environment that you want to emit telemetry for.\n3. On the Application Insights Registry tab, create a record for each environment mode that is used.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[0].note; Governance guidance: Before rollout; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Development, test and production environment modes separate telemetry into the corresponding Application Insights instances.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-getting-started",
+      "quote": "This field is used to separate telemetry in different Application Insight instances that are intended for development, test, or production.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[0].note; Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The registry stores an instrumentation key or connection string per environment mode.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-getting-started",
+      "quote": "On the Application Insights Registry tab, create a record for each environment mode that is used.\nInstrumentation Key | The instrumentation key that is used to connect to Application Insights.\nConnection String | The connection string that is used to connect to Application Insights.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The instrumentation key is ignored when a connection string is specified.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-getting-started",
+      "quote": "If a connection string is specified, the instrumentation key is ignored.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Scope; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Sending telemetry requires setting up or choosing an Application Insights resource in Azure.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-getting-started",
+      "quote": "To get started, create a Azure Application Insights resource in Azure if you don't already have one.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Scope; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "Monitoring and Telemetry is enabled by selecting the feature and Enable in the Feature management workspace.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-getting-started",
+      "quote": "open the Feature management workspace.\n2. Filter the feature list to find the Monitoring and Telemetry feature. Select the feature, and then select Enable.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "front matter: defaultState; summary; Why it matters",
+      "type": "default",
+      "claim": "Telemetry export is admin-opt-in, requiring resource linkage and telemetry configuration before sending.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-getting-started",
+      "quote": "To configure your environments to send telemetry to Azure Application Insights, follow these steps:\n1. Set up an Application Insights resource in Azure.\n2. Enable the Monitoring and Telemetry feature in Finance and Supply Chain Management.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope; rationale: cost",
+      "type": "absence",
+      "claim": "The cited finance and operations telemetry pages name no DMF telemetry licence requirement.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"DMF\" \"telemetry\" pricing volume license role error fields; \"finance and operations\" \"Monitoring and Telemetry\" \"role\" license. Read monitoring-overview, monitoring-getting-started, monitoring-available-telemetry and monitoring-understanding-and-controlling-cost; no DMF licence named.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "The telemetry setup pages read do not name a finance and operations administrator role for those steps.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"finance and operations\" \"Monitoring and Telemetry\" \"role\" license. Opened monitoring-getting-started, monitoring-overview and monitoring-available-telemetry; none specifies a finance and operations setup role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "summary; Why it matters; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Sending this telemetry to Azure Application Insights incurs Azure charges.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-understanding-and-controlling-cost",
+      "quote": "sending data to Azure Application Insights incurs charges based on many factors.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "front matter: licensing.notes; Cost and licensing; Risk assessment: Change & support; rationale: cost",
+      "type": "cost",
+      "claim": "Ingestion is a main Azure Monitor cost driver, so telemetry volume affects spend.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-understanding-and-controlling-cost",
+      "quote": "Although many factors drive the cost of Azure Monitor, the main drivers are the ingestion and retention of data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Retention is the other main Azure Monitor cost driver named by the telemetry cost page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-understanding-and-controlling-cost",
+      "quote": "the main drivers are the ingestion and retention of data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The known charging model for this telemetry is consumption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-understanding-and-controlling-cost",
+      "quote": "sending data to Azure Application Insights incurs charges based on many factors.\nAlthough many factors drive the cost of Azure Monitor, the main drivers are the ingestion and retention of data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "The cost is variable because Azure ingestion and retention determine charges.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-understanding-and-controlling-cost",
+      "quote": "Production environment focus – Configure Application Insights to collect only essential telemetry in production environments. This approach reduces data volume and associated costs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "Microsoft recommends collecting only essential telemetry in production.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-understanding-and-controlling-cost",
+      "quote": "Configure Application Insights to collect only essential telemetry in production environments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "The telemetry cost page recommends sampling as a cost-control strategy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-understanding-and-controlling-cost",
+      "quote": "Use sampling to collect a representative subset of telemetry data. This approach reduces data ingestion volumes and costs without significantly compromising insights.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "The cost page recommends adjusting retention to organisational requirements.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-understanding-and-controlling-cost",
+      "quote": "Adjust data retention settings in Application Insights to align them with your organization's compliance and analysis requirements.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "Microsoft recommends Cost Management alerts for unusual Application Insights spending.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-understanding-and-controlling-cost",
+      "quote": "Use Microsoft Cost Management tools to monitor Application Insights usage and set up alerts for unusual spending patterns.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "The cost page suggests considering daily ingestion caps and warns of data loss.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-understanding-and-controlling-cost",
+      "quote": "To prevent unexpected cost overruns, consider setting daily caps on data ingestion. Be careful, because data loss might occur if the cap is reached.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[2].ui; Governance controls table; Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "A workspace cap is enabled in Azure portal at Log Analytics workspaces > workspace > Usage and estimated costs > Daily Cap > ON.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/azure-monitor/logs/daily-cap",
+      "quote": "From the Log Analytics workspaces menu, select your workspace, and then Usage and estimated costs.\n2. Select Daily Cap at the top of the page.\n3. Select ON and then set the data volume limit in GB/day.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[2].api; Governance controls table",
+      "type": "command",
+      "claim": "The shown PUT workspace request at api-version=2026-03-01 accepts location and properties.workspaceCapping.dailyQuotaGb to set the ingestion cap.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/rest/api/loganalytics/workspaces/createorupdate",
+      "quote": "PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}?api-version=2026-03-01\nlocation | True | string\nproperties.workspaceCapping | The daily volume cap for ingestion.\ndailyQuotaGb",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[2].note; Governance controls table; Governance controls",
+      "type": "applicability",
+      "claim": "The workspace cap applies to billable Analytics and Basic table ingestion, rather than only DMF telemetry.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/azure-monitor/logs/daily-cap",
+      "quote": "stopping collection of billable log data for tables in the Analytics or Basic table plans for the rest of a 24-hour period whenever your specified threshold is reached.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[2].note; Governance controls table; Governance controls",
+      "type": "applicability",
+      "claim": "Auxiliary tables are exempt from the workspace daily cap.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/azure-monitor/logs/daily-cap",
+      "quote": "Tables in the Auxiliary table plan are not subject to any daily cap.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Reaching the cap stops covered collection for the remainder of the daily period.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/azure-monitor/logs/daily-cap",
+      "quote": "stopping collection of billable log data for tables in the Analytics or Basic table plans for the rest of a 24-hour period whenever your specified threshold is reached.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Monitoring and alerts relying on capped ingestion are impaired once collection stops.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/azure-monitor/logs/daily-cap",
+      "quote": "once the daily cap is reached, data collection stops. This will impact your ability to monitor resources, receive alerts, and maintain the health and functionality of dependent services and solutions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Data collected above the daily cap is still billed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/azure-monitor/logs/daily-cap",
+      "quote": "If data is collected above the cap, it's still billed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "For workspace-based Application Insights, the effective daily cap is the smaller of the Application Insights and Log Analytics caps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/azure-monitor/logs/daily-cap",
+      "quote": "For workspace-based Application Insights resources, the effective daily cap is the minimum of the two settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Setting a workspace cap requires Microsoft.OperationalInsights/workspaces/write, provided for example by Log Analytics Contributor.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/azure-monitor/logs/daily-cap",
+      "quote": "Microsoft.OperationalInsights/workspaces/write permissions to the Log Analytics workspaces you set the daily cap on, as provided by the Log Analytics Contributor built-in role, for example.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "The daily-cap page lists Application Insights Component Contributor for setting caps on classic Application Insights resources.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/azure-monitor/logs/daily-cap",
+      "quote": "microsoft.insights/components/CurrentBillingFeatures/write permissions to the classic Application Insights resources you set the daily cap on, as provided by the Application Insights Component Contributor built-in role, for example.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not published an approximate DMF telemetry data volume or cost per job.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: site:learn.microsoft.com \"DMF telemetry\" \"cost\" \"job\"; \"DMF\" \"telemetry\" pricing volume license role error fields. Opened monitoring-available-telemetry, monitoring-understanding-and-controlling-cost and Azure Monitor cost-usage; no DMF per-job estimate found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "front matter: licensing.notes",
+      "type": "absence",
+      "claim": "No DMF-specific telemetry price is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"DMF\" \"telemetry\" pricing volume license role error fields; site:learn.microsoft.com \"DMF telemetry\" \"cost\" \"job\". Opened monitoring-understanding-and-controlling-cost and Azure Monitor cost-usage; found Azure usage pricing, no DMF-specific price.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "The pages read document no separate DMF-only off switch besides Configure.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"DMF telemetry\" \"disable\" control; \"DMFTelemetryConfigurationFlight\" \"DMFEnableAppInsightsLogsAndErrors\" disable telemetry. Opened monitoring-available-telemetry and monitoring-getting-started; flights and support are described, but no additional DMF-only off procedure.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "The telemetry pages read do not describe the customer-data field contents of DMF error messages.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"DMF\" \"telemetry\" pricing volume license role error fields. Opened monitoring-available-telemetry, monitoring-overview and monitoring-getting-started; error codes and destination tables are stated, but customer-data fields in the telemetry payload are not described.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
       "where": "Risk assessment: Data exposure; rationale: risk",
       "type": "behaviour",
       "claim": "Microsoft does not collect the emitted telemetry for support or operational reporting.",
@@ -370,10 +738,10 @@
       "fix": null
     },
     {
-      "n": 32,
-      "where": "Risk assessment: Data exposure; Why it matters; rationale: risk",
+      "n": 66,
+      "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "The telemetry data is customer-owned and customer-driven.",
+      "claim": "The emitted telemetry data is customer-owned and customer-driven.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-overview",
       "quote": "Instead, the data is customer-owned and customer-driven.",
@@ -381,153 +749,21 @@
       "fix": null
     },
     {
-      "n": 33,
-      "where": "Risk assessment: Security & identity; Why it matters; Governance guidance: After rollout",
+      "n": 67,
+      "where": "Risk assessment: Security & identity; Why it matters",
       "type": "role",
-      "claim": "Access to the emitted telemetry is governed on the Azure monitoring resource and workspace rather than by a finance and operations role.",
+      "claim": "Access to the exported Application Insights telemetry is governed by Azure monitoring resource permissions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/azure/azure-monitor/fundamentals/roles-permissions-security",
-      "quote": "Roles can be assigned at the subscription, resource group, or resource level.\nPeople assigned the Monitoring Reader role can view all monitoring data in a subscription",
-      "severity": "minor",
-      "fix": "Add https://learn.microsoft.com/azure/azure-monitor/fundamentals/roles-permissions-security to sources for the Azure access-control statement."
-    },
-    {
-      "n": 34,
-      "where": "Risk assessment: Security & identity; controls[1].note",
-      "type": "behaviour",
-      "claim": "The Application Insights Registry records an instrumentation key or connection string per environment mode.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-getting-started",
-      "quote": "On the Application Insights Registry tab, create a record for each environment mode that is used.\nInstrumentation Key\nConnection String",
+      "quote": "Roles can be assigned at the subscription, resource group, or resource level.\nPeople assigned the Monitoring Reader role can view all monitoring data in a subscription\nAccess Application Insights data.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 35,
-      "where": "Risk assessment: Security & identity",
-      "type": "behaviour",
-      "claim": "A connection string takes precedence over the instrumentation key.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-getting-started",
-      "quote": "If a connection string is specified, the instrumentation key is ignored.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "The three DMF signals report job start, end and status.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-available-telemetry",
-      "quote": "DMFJob Start - Logs when a DMF job starts.\nDMFJob End - Logs when a DMF job ends.\nDMFJob Status - Logs job status from source to staging tables and staging to target tables.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "absence",
-      "claim": "The sources read do not document telemetry changing the jobs.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: DMF telemetry read-only jobs; DMF telemetry disable. Read the roadmap description, Available telemetry, Monitoring and telemetry overview and getting-started; they describe logging and monitoring, not job modification.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
+      "n": 68,
       "where": "Why it matters",
       "type": "behaviour",
-      "claim": "Application Insights telemetry is also available for batch processing and forms.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-available-telemetry",
-      "quote": "Form run telemetry captures detailed information about application forms.\nThree flights control batch telemetry and are enabled by default:",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "summary; front matter: licensing.model; cost; Cost and licensing; rationale: cost",
-      "type": "cost",
-      "claim": "Sending telemetry to Application Insights incurs Azure consumption charges, consistent with consumption licensing and variable cost.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-understanding-and-controlling-cost",
-      "quote": "sending data to Azure Application Insights incurs charges based on many factors.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "front matter: licensing.notes; Cost and licensing; Risk assessment: Change & support; rationale: cost",
-      "type": "cost",
-      "claim": "Data ingestion and retention are the main Azure Monitor cost drivers.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-understanding-and-controlling-cost",
-      "quote": "Although many factors drive the cost of Azure Monitor, the main drivers are the ingestion and retention of data.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "front matter: licensing.notes; Cost and licensing; Scope; rationale: cost",
-      "type": "absence",
-      "claim": "The finance and operations telemetry pages read do not name a DMF telemetry licence requirement.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: DMF telemetry price licensing; DMF telemetry Application Insights licensing license admin role event fields entity file names volume cost per job. Read Available telemetry, getting-started, overview and Understand and control costs; no DMF licence requirement is named.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "front matter: licensing.notes",
-      "type": "absence",
-      "claim": "A DMF-specific telemetry price is not published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: DMF telemetry price licensing; DMF telemetry cost job. Read Available telemetry and Understand and control costs; results describe Azure ingestion and retention, not a separate DMF price.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "Cost and licensing; Open questions",
-      "type": "absence",
-      "claim": "A data-volume or cost estimate per DMF job is not published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: DMF telemetry cost job; DMF telemetry Application Insights licensing license admin role event fields entity file names volume cost per job. Read Available telemetry and Understand and control costs; no DMF per-job estimate was found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "Cost and licensing",
-      "type": "behaviour",
-      "claim": "Microsoft recommends collecting only essential production telemetry.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-understanding-and-controlling-cost",
-      "quote": "Configure Application Insights to collect only essential telemetry in production environments.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "Cost and licensing; Governance guidance: After rollout",
-      "type": "behaviour",
-      "claim": "Microsoft recommends sampling as a telemetry-volume and cost-control strategy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-understanding-and-controlling-cost",
-      "quote": "Use sampling to collect a representative subset of telemetry data. This approach reduces data ingestion volumes and costs without significantly compromising insights.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "Cost and licensing; Why it matters; Governance guidance: After rollout",
-      "type": "behaviour",
-      "claim": "Retention settings can be adjusted in Application Insights to meet compliance and analysis requirements.",
+      "claim": "Retention for the exported telemetry is configured in Application Insights.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-understanding-and-controlling-cost",
       "quote": "Adjust data retention settings in Application Insights to align them with your organization's compliance and analysis requirements.",
@@ -535,257 +771,59 @@
       "fix": null
     },
     {
-      "n": 47,
-      "where": "Cost and licensing; Governance guidance: Before rollout",
+      "n": 69,
+      "where": "Risk assessment: Autonomy & actions; rationale: impact",
       "type": "behaviour",
-      "claim": "Microsoft recommends Cost Management monitoring and alerts for unusual Application Insights spending.",
+      "claim": "The three DMF signals report job start, end and status rather than providing job-execution actions.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-understanding-and-controlling-cost",
-      "quote": "Use Microsoft Cost Management tools to monitor Application Insights usage and set up alerts for unusual spending patterns.",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-available-telemetry",
+      "quote": "DMFJob Start - Logs when a DMF job starts.\nDMFJob End - Logs when a DMF job ends.\nDMFJob Status - Logs job status from source to staging tables and staging to target tables.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 48,
-      "where": "Cost and licensing",
-      "type": "behaviour",
-      "claim": "The finance and operations cost page suggests daily caps and warns that reaching them can cause data loss.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-understanding-and-controlling-cost",
-      "quote": "To prevent unexpected cost overruns, consider setting daily caps on data ingestion. Be careful, because data loss might occur if the cap is reached.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 49,
-      "where": "Risk assessment: Change & support",
-      "type": "behaviour",
-      "claim": "Reaching a daily cap stops affected log collection until reset and impairs monitoring and alerts.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/azure/azure-monitor/logs/daily-cap",
-      "quote": "Data collection resumes at the reset time which is a different hour of the day for each workspace.\nThis will impact your ability to monitor resources, receive alerts",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 50,
-      "where": "controls[3].note; Governance controls",
-      "type": "applicability",
-      "claim": "The workspace daily cap stops collection of all billable data, not only DMF signals.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/azure/azure-monitor/logs/daily-cap",
-      "quote": "stopping collection of billable log data for tables in the Analytics or Basic table plans\nTables in the Auxiliary table plan are not subject to any daily cap.",
-      "severity": "blocker",
-      "fix": "Replace the row note and matching governance sentence with: 'The workspace daily cap stops collection of billable log data in Analytics and Basic tables, not only DMF signals; Auxiliary tables are exempt.'"
-    },
-    {
-      "n": 51,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "Data ingested above the cap is still billed.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/azure/azure-monitor/logs/daily-cap",
-      "quote": "If data is collected above the cap, it's still billed.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 52,
-      "where": "Cost and licensing",
-      "type": "behaviour",
-      "claim": "For workspace-based Application Insights, the effective cap is the minimum of the Application Insights and Log Analytics settings.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/azure/azure-monitor/logs/daily-cap",
-      "quote": "For workspace-based Application Insights resources, the effective daily cap is the minimum of the two settings.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 53,
-      "where": "Scope; Governance guidance: Before rollout",
-      "type": "behaviour",
-      "claim": "Setup requires an Application Insights resource in Azure.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-getting-started",
-      "quote": "Set up an Application Insights resource in Azure.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 54,
-      "where": "Scope; controls[1].note; Governance guidance: At rollout",
-      "type": "behaviour",
-      "claim": "Setup links environments to development, test or production modes and registers an Application Insights destination per used mode.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-getting-started",
-      "quote": "Environments are categorized into one of the following environment modes: development, test, or production.\nOn the Application Insights Registry tab, create a record for each environment mode that is used.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 55,
-      "where": "controls[0].ui; Scope; Governance guidance: At rollout",
-      "type": "admin-path",
-      "claim": "Enable Monitoring and Telemetry in Finance and Supply Chain Management through Feature management > Monitoring and Telemetry > Enable.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-getting-started",
-      "quote": "In Finance and Supply Chain Management, open the Feature management workspace.\nFilter the feature list to find the Monitoring and Telemetry feature. Select the feature, and then select Enable.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 56,
-      "where": "controls[1].ui; Governance guidance: At rollout",
-      "type": "admin-path",
-      "claim": "The registry path is System administration > Monitoring and Telemetry parameters > Monitoring settings > Application Insights Registry.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-getting-started",
-      "quote": "go to System administration > Monitoring and Telemetry parameters.\nOn the Monitoring settings page, on the Environments tab, create a record\nOn the Application Insights Registry tab, create a record for each environment mode",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 57,
-      "where": "controls[2].ui; Scope; Governance guidance: At rollout",
-      "type": "admin-path",
-      "claim": "Select emitted telemetry at System administration > Monitoring and Telemetry parameters > Monitoring settings > Configure.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-getting-started",
-      "quote": "go to System administration > Monitoring and Telemetry parameters.\nOn the Monitoring settings page, on the Configure tab, turn on the option for each type of telemetry that must be emitted.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 58,
-      "where": "controls[0].api",
+      "n": 70,
+      "where": "Why it matters",
       "type": "absence",
-      "claim": "Automation for enabling the Monitoring and Telemetry feature through Feature management is not documented.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/fin-ops/get-started/feature-management/feature-management-overview#data-entities",
-      "quote": "A data entity with the name Feature management lets you export the Feature management settings from one environment and then import them into another environment.\nIf you change the value of the Enabled field to Yes, the feature is enabled",
-      "severity": "blocker",
-      "fix": "Remove controls[0] and its rendered table row rather than presenting automation as undocumented. Keep the existing Feature management enablement instructions in At rollout; Microsoft documents importing the Feature management entity to enable features, but this briefing supplies no executable automation call."
-    },
-    {
-      "n": 59,
-      "where": "controls[1].api; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "An API or script for registering the finance and operations telemetry destination is not documented.",
+      "claim": "No administrator enablement deadline is published for this optional telemetry integration.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Monitoring and Telemetry parameters API; finance operations Application Insights Registry Configure telemetry types PowerShell API automation Monitoring settings. Read getting-started and overview; results document UI setup, not an API for the registry.",
+      "quote": "Searched: \"DMF telemetry\" deadline mandatory enable. Opened monitoring-available-telemetry and monitoring-getting-started and read the roadmap record; no act-by deadline found and no Message Center post was supplied.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 60,
-      "where": "controls[2].api; Governance controls; Open questions",
+      "n": 71,
+      "where": "Risk assessment: Autonomy & actions",
       "type": "absence",
-      "claim": "An API or script for the Monitoring settings Configure telemetry switches is not documented.",
+      "claim": "The sources read do not say that the telemetry feature changes jobs.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: finance operations Application Insights Registry Configure telemetry types PowerShell API automation Monitoring settings; Monitoring and Telemetry parameters API. Read getting-started and overview; no API for the Configure switches was found.",
+      "quote": "Searched: \"finance and operations\" \"DMF\" \"telemetry\" \"read-only\" jobs. Opened monitoring-available-telemetry, monitoring-getting-started and monitoring-overview and read the roadmap record; descriptions cover logging and monitoring, not job-changing actions.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 61,
-      "where": "controls[3].ui",
-      "type": "admin-path",
-      "claim": "The workspace cap path is Azure portal > Log Analytics workspaces > workspace > Usage and estimated costs > Daily Cap > ON.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/azure/azure-monitor/logs/daily-cap",
-      "quote": "From the Log Analytics workspaces menu, select your workspace, and then Usage and estimated costs.\nSelect Daily Cap at the top of the page.\nSelect ON and then set the data volume limit in GB/day.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 62,
-      "where": "controls[3].api",
-      "type": "command",
-      "claim": "Workspaces - Create Or Update with dailyQuotaGb under WorkspaceCapping is a runnable REST daily-cap call.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/rest/api/loganalytics/workspaces/createorupdate",
-      "quote": "PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}?api-version=2026-03-01",
-      "severity": "blocker",
-      "fix": "Replace controls[3].api.call with 'PUT https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>?api-version=2026-03-01; JSON body: {\"location\":\"<workspace-region>\",\"properties\":{\"workspaceCapping\":{\"dailyQuotaGb\":<GB-per-day>}}}'. Set its docs to https://learn.microsoft.com/rest/api/loganalytics/workspaces/createorupdate and update the rendered API cell to match. The existing text gives neither an HTTP method nor a path, version or request body."
-    },
-    {
-      "n": 63,
-      "where": "Governance controls",
-      "type": "role",
-      "claim": "Setting a workspace daily cap requires Microsoft.OperationalInsights/workspaces/write, provided for example by Log Analytics Contributor.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/azure/azure-monitor/logs/daily-cap",
-      "quote": "Microsoft.OperationalInsights/workspaces/write permissions to the Log Analytics workspaces you set the daily cap on, as provided by the Log Analytics Contributor built-in role, for example.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 64,
-      "where": "Governance controls",
-      "type": "absence",
-      "claim": "The pages read do not document a separate DMF-only off control beyond Configure.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: DMF telemetry disable. Read Available telemetry and getting-started, including the flights and Configure instructions; no separate customer DMF-only off control is documented.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 65,
-      "where": "Governance guidance: Before rollout and After rollout",
+      "n": 72,
+      "where": "Governance guidance: At rollout; Governance controls table",
       "type": "consistency",
-      "claim": "Every control the governance checklist asks readers to set or review appears in the controls table.",
+      "claim": "The checklist instructs readers to enable Monitoring and Telemetry, but that control has no table row.",
       "status": "contradicted",
       "source": "page",
-      "quote": "Set a daily cap and a Cost Management alert\nadjust sampling or retention if needed\nReview who can read the Application Insights resource\nThe table covers feature enablement, destination registration, telemetry types and daily caps only.",
+      "quote": "Checklist: Enable the Monitoring and Telemetry feature in the Feature management workspace. Table: resource registry, telemetry types and workspace daily ingestion cap only.",
       "severity": "minor",
-      "fix": "The Cost Management alert, sampling, retention and resource-access review instructions have no matching controls rows. Remove those checklist instructions; retain their existing discussion in Cost and licensing and Risk assessment rather than adding control rows."
-    },
-    {
-      "n": 66,
-      "where": "Governance controls",
-      "type": "role",
-      "claim": "Application Insights Component Contributor is an example role permitting daily-cap configuration on classic Application Insights resources.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/azure/azure-monitor/logs/daily-cap",
-      "quote": "microsoft.insights/components/CurrentBillingFeatures/write permissions to the classic Application Insights resources you set the daily cap on, as provided by the Application Insights Component Contributor built-in role, for example.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 67,
-      "where": "Scope",
-      "type": "absence",
-      "claim": "The telemetry setup pages read do not name an administrative role required for the finance and operations setup steps.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: DMF telemetry Application Insights licensing license admin role event fields entity file names volume cost per job. Read getting-started, Available telemetry and overview; no setup role named there. Feature management overview separately names Feature manager and system administrators.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 68,
-      "where": "Scope",
-      "type": "record",
-      "claim": "The roadmap record does not list GCC, GCC High or DoD; the page does not claim those clouds are unavailable.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
-      "severity": null,
-      "fix": null
+      "fix": "Remove the At rollout checklist bullet 'Enable the **Monitoring and Telemetry** feature in the **Feature management** workspace.' Keep the documented prerequisite in Scope; do not add a controls row."
     }
   ],
   "precheck": {
-    "at": "2026-11-18T06:03:20.000Z",
+    "at": "2026-11-18T06:52:41.985Z",
     "summary": {
-      "links": 6,
+      "links": 8,
       "unreachable": 0,
-      "uiPaths": 4,
+      "uiPaths": 3,
       "uiPathsWithMissingWords": 0,
       "apiCalls": 1,
-      "apiCallsNotOnPage": 0,
+      "apiCallsNotOnPage": 1,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -818,24 +856,21 @@
         "url": "https://learn.microsoft.com/azure/azure-monitor/logs/daily-cap",
         "ok": true,
         "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/azure/azure-monitor/fundamentals/roles-permissions-security",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/rest/api/loganalytics/workspaces/createorupdate",
+        "ok": true,
+        "status": 200
       }
     ],
     "controlChecks": [
       {
         "index": 0,
-        "side": "ui",
-        "governs": "Whether the Monitoring and Telemetry feature is enabled",
-        "docs": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-getting-started",
-        "reachable": true,
-        "segments": [
-          "Feature management",
-          "Monitoring and Telemetry",
-          "Enable"
-        ],
-        "missing": []
-      },
-      {
-        "index": 1,
         "side": "ui",
         "governs": "Which Application Insights resource each environment sends telemetry to",
         "docs": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-getting-started",
@@ -849,7 +884,7 @@
         "missing": []
       },
       {
-        "index": 2,
+        "index": 1,
         "side": "ui",
         "governs": "Which telemetry types are emitted, including DMFJob Start, End and Status",
         "docs": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-getting-started",
@@ -863,7 +898,7 @@
         "missing": []
       },
       {
-        "index": 3,
+        "index": 2,
         "side": "ui",
         "governs": "Daily ingestion cap on the Log Analytics workspace behind Application Insights",
         "docs": "https://learn.microsoft.com/azure/azure-monitor/logs/daily-cap",
@@ -876,16 +911,23 @@
         "missing": []
       },
       {
-        "index": 3,
+        "index": 2,
         "side": "api",
         "governs": "Daily ingestion cap on the Log Analytics workspace behind Application Insights",
-        "docs": "https://learn.microsoft.com/azure/azure-monitor/logs/daily-cap",
+        "docs": "https://learn.microsoft.com/rest/api/loganalytics/workspaces/createorupdate",
         "reachable": true,
-        "token": "Workspaces -",
-        "found": true
+        "token": "management.azure.com/subscriptions/<sub>/resourceGroups/<rg>/providers/Microsoft.OperationalInsights/workspaces/<ws>",
+        "found": false
       }
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-18",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

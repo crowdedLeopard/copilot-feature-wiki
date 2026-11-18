@@ -68,19 +68,23 @@ changes:
     note: "New briefing: roadmap says Power Pages supports Power BI Embed Token v2; Learn still describes v1 and no paginated report support."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 48 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-18"
+    note: "Correction: Apply roles now qualified to the Embed for your customers access type, and three checklist bullets without matching control rows removed."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 54 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-18"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 48
-  confirmed: 46
+  claims: 54
+  confirmed: 54
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "bb5d1cf1cb94aa67b8f7869539e227dd"
+  contradicted: 0
+  attempts: 0
+  hash: "65154837924d27c8928ba7e34d345596"
 ---
 
 ## What's changing
@@ -108,7 +112,7 @@ Microsoft has not stated what happens on arrival or whether existing embeds chan
 
 **Security & identity**
 
-- Learn documents an Apply roles field in the Power BI component, which must hold the Power BI row-level security roles for a report that has them; a report with row-level security and no roles passed produces a configuration error. Check that new reports pass their roles.
+- For the Embed for your customers access type, Learn documents an Apply roles field in the Power BI component, which must hold the Power BI row-level security roles for a report that has them; a report with row-level security and no roles passed produces a configuration error. Check that new reports using that access type pass their roles.
 - The Embed content in apps setting in the Power BI developer settings must be Enabled, or a portal can't render embedded Power BI dashboards or reports.
 
 **Autonomy & actions**
@@ -139,13 +143,10 @@ People affected are makers who add Power BI components or Liquid tags to Power P
 ### Before rollout
 
 - Inventory Power Pages sites that have Power BI visualization or Power BI Embedded enabled (Power Platform admin center, site Manage > Services; first row of the table).
-- Check that anonymous pages carrying Embed for your customers content have the page permissions you intend.
-- Confirm with the Power BI administrator that Embed content in apps is Enabled and that capacity for any paginated report is in place.
 
 ### At rollout
 
 - Ask makers to pilot one paginated or multi-report embed on a non-production site and record which Access type and roles they used.
-- Test that row-level security roles are passed for reports that use them.
 - Treat the token version choice as unconfirmed until Microsoft documents where it is set (second table row).
 
 ### After rollout
@@ -182,12 +183,4 @@ The Power BI Embed content in apps tenant setting sits in Fabric's developer ten
 risk: Medium. The roadmap says one v2 token can grant access to several reports and datasets, and Learn says an Embed for your customers report on an anonymous page can be viewed by anyone; page permissions and Power BI roles are the documented limits.
 cost: Medium. Learn says the Power BI Embedded service needs an appropriate Power BI Embedded licence and points to capacity planning and pricing; Microsoft has not published any separate charge for Embed Token v2 itself.
 impact: Medium. Makers who embed Power BI content and the visitors of those pages notice it; nothing on the roadmap item or on Learn changes the experience for users of sites that do not embed Power BI.
--->
-
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Security & identity; Governance guidance: At rollout / applicability: Reports with Power BI roles must have those roles entered in Apply roles, without restricting that instruction to an access type. | Found: Apply roles: If you have defined roles in Power BI and assigned them to reports, you must enter the appropriate roles in this field. ... This option is only available for the access type Embed for your customers. | Fix: Add the qualification 'For the Embed for your customers access type' to the Apply roles instruction and to the checklist instruction to test passed roles. Microsoft documents Apply roles only for that access type at https://learn.microsoft.com/power-pages/getting-started/add-power-bi. | Source: https://learn.microsoft.com/power-pages/getting-started/add-power-bi
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout and At rollout / consistency: Checklist instructions to check page permissions, Embed content in apps, capacity and passed RLS roles lack corresponding controls-table rows. | Found: Checklist: 'Check that anonymous pages ... have the page permissions you intend'; 'Confirm ... Embed content in apps is Enabled and ... capacity'; 'Test that row-level security roles are passed'. Table: site Power BI enablement and token version only. | Fix: The Before rollout page-permissions and tenant-setting/capacity checks, and the At rollout passed-roles check, have no table rows. Remove those three checklist bullets; retain the supported explanatory coverage elsewhere. Do not add unverified control rows as part of this correction.
 -->

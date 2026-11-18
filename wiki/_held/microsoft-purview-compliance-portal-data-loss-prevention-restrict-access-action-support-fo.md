@@ -37,6 +37,12 @@ sources:
   - title: "Learn about Microsoft Purview billing models"
     url: "https://learn.microsoft.com/purview/purview-billing-models"
     kind: "learn"
+  - title: "Troubleshoot issues with restricted access"
+    url: "https://learn.microsoft.com/fabric/governance/troubleshoot-restricted-access"
+    kind: "learn"
+  - title: "What's new in Microsoft Fabric?"
+    url: "https://learn.microsoft.com/fabric/fundamentals/whats-new#generally-available-features"
+    kind: "learn"
   - title: "Restrict access action in a DLP rule for Fabric items (PowerShell)"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule"
     kind: "learn"
@@ -77,26 +83,30 @@ changes:
     note: "New briefing: the DLP restrict access action for Fabric semantic models and lakehouses, with Learn's preview label, billing and limitations."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 74 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-18"
+    note: "Correction: advanced-classifier limit narrowed to Learn's wording, troubleshooting and What's new statements added, impact rationale and checklist trimmed to match the controls table."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 77 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-18"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 74
-  confirmed: 71
+  claims: 77
+  confirmed: 75
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "d0dce3436a87d4b555add933e0d0fc85"
+  contradicted: 2
+  attempts: 2
+  hash: "4994b07fa984e1715f483f77ab0012f7"
 ---
 
 ## What's changing
 
 The roadmap item says Microsoft Purview Data Loss Prevention (DLP) policies for Fabric can now include a restrict access action for semantic models and lakehouses. A policy can block guest users or all users, depending on which sensitivity labels or sensitive information types match the item. This sits alongside the audit and Policy Tip (a notice shown on the item) actions that DLP policies already support for these items.
 
-Microsoft Learn describes the behaviour: when a policy with the restrict access action matches, it restricts access to the data owners or to members of the organisation, depending on the policy configuration, and all other users lose access to the item. For DLP, a member of the organisation is a user with UserType = Member, which includes people who sign in with an external account; UserType = Guest users are external, and the **Block only people outside your organization** setting applies to them. At the time of writing (November 2026) the Learn overview still labels the restrict access action "(preview)".
+Microsoft Learn describes the behaviour: when a policy with the restrict access action matches, it restricts access to the data owners or to members of the organisation, depending on the policy configuration, and all other users lose access to the item. Microsoft's troubleshooting page describes the all-users case as blocking everyone except workspace admins. For DLP, a member of the organisation is a user with UserType = Member, which includes people who sign in with an external account; UserType = Guest users are external, and the **Block only people outside your organization** setting applies to them. At the time of writing (November 2026) the Learn overview still labels the restrict access action "(preview)". The Fabric What’s new page instead lists DLP restrict access as generally available in September 2026.
 
 The roadmap record gives status Launched, a target of October CY2026, a preview date of April CY2024 and the release phases General Availability and Preview, for Worldwide (Standard Multi-Tenant) on the web. Microsoft's notice MC937920 (last updated 26 March 2026) says semantic-model restrict access has been in public preview since November 2024, lakehouse preview began rolling out in mid-April 2025 and was expected to finish in late April 2025, and general availability starts rolling out in late October 2026 and is expected to finish in late November 2026. The post's end date is 28 December 2026 and it sets no act-by date.
 
@@ -110,7 +120,7 @@ Microsoft's notice says the rollout needs no admin action and that a security or
 
 **Data exposure**
 
-- Items stay open if a policy does not evaluate them. Learn says DLP is not evaluated for a semantic model when a service principal initiates the publish, republish or refresh, or owns the model. It also lists unsupported cases: DirectQuery or live-connection semantic models, non-Delta table data, and advanced classifiers such as exact data match and trainable classifiers, where a policy returns no results.
+- Items stay open if a policy does not evaluate them. Learn says DLP is not evaluated for a semantic model when a service principal initiates the publish, republish or refresh, or owns the model. It also lists unsupported cases: DirectQuery or live-connection semantic models and non-Delta table data. Advanced classifiers such as exact data match and trainable classifiers are unsupported and return no matches; other classifiers specified in the same policy can still return results.
 
 **Security & identity**
 
@@ -153,13 +163,10 @@ The account that creates the policy must be in the Compliance administrator, Com
 ### At rollout
 
 - Create or update a custom DLP policy for Fabric and add the restrict access action, starting with a limited set of workspaces (see the restrict access and workspace scope rows).
-- Turn on user notifications so item owners see a policy tip explaining the restriction.
-- Decide which override options to allow, since user overrides are automatically allowed once the action is enabled.
 
 ### After rollout
 
-- Review matches on the data loss prevention Alerts page in the Microsoft Purview portal and in Activity explorer, which Compliance administrators, Security administrators and Compliance data administrators can open.
-- Check for items that should have matched but did not, for example because they use DirectQuery, an advanced classifier or a service principal refresh.
+- Check for items that should have matched but did not, for example because they use DirectQuery, an advanced classifier condition or a service principal refresh.
 - Watch Message Center post MC937920 and the Learn overview for the end of the preview label on the restrict access action.
 
 ## Governance controls
@@ -188,16 +195,12 @@ User overrides are part of the rule: Learn says they are automatically allowed o
 <!-- rationale
 risk: Low. Microsoft's notice MC937920 says the action is available for admins to configure and needs no admin action; nothing is restricted until a policy includes it, so the exposure is a policy that locks out the wrong people.
 cost: Variable. Microsoft documents that DLP evaluation for Fabric affects capacity consumption, and its pay-as-you-go page counts assets in workspaces a DLP policy covers per day. No rate is quoted here.
-impact: Low. Security and compliance admins configure it; users notice only once a policy match removes their access to a semantic model or lakehouse.
+impact: Low. Security and compliance admins configure it; policy matches can remove user access or show owners policy tips.
 -->
 
 <!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Data exposure; Governance guidance: After rollout / behaviour: Using unsupported advanced classifiers such as exact data match or trainable classifiers means a policy returns no results. | Found: Other classifiers specified in the policy return results if any. | Fix: Replace the advanced-classifier clause with: 'Advanced classifiers such as exact data match and trainable classifiers are unsupported and return no matches; other classifiers specified in the same policy can still return results.' | Source: https://learn.microsoft.com/fabric/governance/data-loss-prevention-overview
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; Why it matters / behaviour: A matching policy restricts access to data owners or organisation members, with all other users losing access. | Found: the policy restricts access to the data owners or to members of the organization, depending on the policy configuration. All other users lose access to the item. | Fix: Add: 'Microsoft's troubleshooting page describes the all-users case as blocking everyone except workspace admins.' Cite https://learn.microsoft.com/fabric/governance/troubleshoot-restricted-access, which says 'DLP policies block all users except workspace admins'; retain the overview's different wording. | Source: https://learn.microsoft.com/fabric/governance/data-loss-prevention-overview
-- [supported, minor] What's changing; controls[0].note; Open questions / availability: The Learn overview still labels restrict access as preview. | Found: Restrict access (preview). | Fix: Add: 'The Fabric What’s new page instead lists DLP restrict access as generally available in September 2026.' Cite https://learn.microsoft.com/fabric/fundamentals/whats-new#generally-available-features, whose table says 'September 2026' and 'DLP restrict access (Generally Available)'. | Source: https://learn.microsoft.com/fabric/governance/data-loss-prevention-overview
-- [contradicted, minor] rationale: impact / behaviour: Users notice the feature only once a match removes their access. | Found: For semantic models, opening the details page shows a policy tip that explains the policy violation and how to handle the type of sensitive information detected. | Fix: Replace the impact rationale with: 'Low. Security and compliance admins configure it; policy matches can remove user access or show owners policy tips.' The Low impact judgement itself does not need changing. | Source: https://learn.microsoft.com/fabric/governance/data-loss-prevention-overview
-- [contradicted, minor] Governance guidance: At rollout and After rollout / consistency: The checklist instructs readers to configure notifications and override options and review monitoring surfaces, but the controls table covers only restriction and workspace scope. | Found: Checklist: 'Turn on user notifications'; 'Decide which override options to allow'; 'Review matches ... Alerts page ... Activity explorer'. Table: 'Restrict access action in a DLP rule for Fabric items'; 'Which Fabric workspaces a DLP policy covers'. | Fix: The user-notification, user-override and monitoring checklist instructions have no corresponding controls-table rows. Remove those checklist instructions if retaining the current two-row table.
+- [contradicted, blocker] controls[0].ui; Governance controls table / admin-path: The printed creation path gives the intervening pages and sections needed to reach the restrict access action. | Found: The Define policy settings page appears. Choose Create or customize advanced DLP rules ... On the Customize advanced DLP rules page ... Select Create rule. | Fix: Replace the path in front matter and the rendered table with 'Data loss prevention > Policies > + Create policy > Custom > Custom policy > Assign admin units > Fabric and Power BI workspaces > Define policy settings > Create or customize advanced DLP rules > Customize advanced DLP rules > Create rule > Actions > Restrict access or encrypt the content in Microsoft 365 locations'. State in the row note: 'Name and describe the policy after choosing Custom policy, then select Next; on Assign admin units, select Next without assigning units.' These intermediate pages are documented at https://learn.microsoft.com/fabric/governance/data-loss-prevention-configure. | Source: https://learn.microsoft.com/fabric/governance/data-loss-prevention-configure
+- [contradicted, blocker] controls[1].ui; Governance controls table / admin-path: The printed workspace-scoping creation path proceeds directly from Custom policy to Fabric and Power BI workspaces and Edit. | Found: Name the policy and provide a meaningful description. When done, select Next. ... Select Next when you get to the Assign admin units page. ... Select Fabric and Power BI workspaces as the location | Fix: Replace the path in front matter and the rendered table with 'Data loss prevention > Policies > + Create policy > Custom > Custom policy > Assign admin units > Fabric and Power BI workspaces > Edit'. State in the row note: 'Name and describe the policy after choosing Custom policy, then select Next; on Assign admin units, select Next without assigning units.' See https://learn.microsoft.com/fabric/governance/data-loss-prevention-configure. | Source: https://learn.microsoft.com/fabric/governance/data-loss-prevention-configure
 -->

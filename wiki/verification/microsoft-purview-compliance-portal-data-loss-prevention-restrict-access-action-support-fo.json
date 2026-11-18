@@ -4,37 +4,35 @@
   "title": "Microsoft Purview DLP: restrict access to Fabric semantic models and lakehouses",
   "status": "held",
   "date": "2026-11-18",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 2,
   "verifierVerdict": "hold",
-  "notes": [
-    "claim 71: severity blocker on a rationale: impact rating lowered to minor; ratings are judgements and cannot hold a page"
-  ],
+  "notes": [],
   "hold": {
     "reason": "failed",
     "since": "2026-11-18",
     "reasons": [
-      "1 blocking finding (claim 35)"
+      "2 blocking findings (claims 69, 72)"
     ]
   },
   "counts": {
-    "claims": 74,
-    "confirmed": 71,
+    "claims": 77,
+    "confirmed": 75,
     "unconfirmed": 0,
-    "contradicted": 3,
-    "blocker": 1,
+    "contradicted": 2,
+    "blocker": 2,
     "major": 0,
-    "minor": 4
+    "minor": 0
   },
-  "summary": "The briefing overstates an evaluation limitation: unsupported advanced classifiers do not prevent other classifiers in the same policy from returning matches. Its impact rationale also incorrectly says users notice the change only after losing access, although owners can receive policy tips without losing access.",
+  "summary": "Hold: both portal paths omit intermediate wizard pages named in Microsoft's configuration instructions. The roadmap dates, opt-in default, licensing, billing explanation and documented limitations are supported; the differing preview and general availability statements are reported rather than silently reconciled.",
   "claims": [
     {
       "n": 1,
-      "where": "title; What's changing; summary",
+      "where": "title; summary; What's changing",
       "type": "record",
-      "claim": "The change adds a DLP restrict access action for Fabric semantic models and lakehouses.",
+      "claim": "The roadmap describes a DLP restrict access action for Fabric semantic models and lakehouses.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "DLP restrict access action allows you to block access to guest users or all users depending on what labels or sensitive information types matches your semantic models or lakehouses.",
@@ -45,37 +43,26 @@
       "n": 2,
       "where": "summary; What's changing; Why it matters",
       "type": "record",
-      "claim": "The action can block guest users or all users.",
+      "claim": "The action can block guests or all users based on matching sensitivity labels.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "DLP restrict access action allows you to block access to guest users or all users",
+      "quote": "DLP restrict access action allows you to block access to guest users or all users depending on what labels or sensitive information types matches your semantic models or lakehouses.",
       "severity": null,
       "fix": null
     },
     {
       "n": 3,
-      "where": "summary; What's changing",
+      "where": "summary; What's changing; Why it matters",
       "type": "record",
-      "claim": "Sensitivity label matches can determine the restriction.",
+      "claim": "The action can block guests or all users based on matching sensitive information types.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "depending on what labels or sensitive information types matches your semantic models or lakehouses",
+      "quote": "DLP restrict access action allows you to block access to guest users or all users depending on what labels or sensitive information types matches your semantic models or lakehouses.",
       "severity": null,
       "fix": null
     },
     {
       "n": 4,
-      "where": "summary; What's changing",
-      "type": "record",
-      "claim": "Sensitive information type matches can determine the restriction.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "depending on what labels or sensitive information types matches your semantic models or lakehouses",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
       "where": "What's changing",
       "type": "record",
       "claim": "DLP policies already supported auditing sensitive content in these items.",
@@ -86,18 +73,106 @@
       "fix": null
     },
     {
-      "n": 6,
-      "where": "What's changing",
+      "n": 5,
+      "where": "What's changing; rationale: impact",
       "type": "record",
-      "claim": "DLP policies already supported notifying users through Policy Tips for these items.",
+      "claim": "DLP already supported notifying users through Policy Tips on these items.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "the ability already supported by DLP policies to audit and notify users via Policy Tips based on sensitive content within Fabric semantic models and lakehouses",
+      "quote": "This is in addition to the ability already supported by DLP policies to audit and notify users via Policy Tips based on sensitive content within Fabric semantic models and lakehouses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "The overview describes one restriction option as retaining access for data owners while other users lose access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/fabric/governance/data-loss-prevention-overview",
+      "quote": "the policy restricts access to the data owners or to members of the organization, depending on the policy configuration. All other users lose access to the item.",
       "severity": null,
       "fix": null
     },
     {
       "n": 7,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The overview describes another restriction option as retaining access for organisation members.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/fabric/governance/data-loss-prevention-overview",
+      "quote": "the policy restricts access to the data owners or to members of the organization, depending on the policy configuration. All other users lose access to the item.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing",
+      "type": "role",
+      "claim": "The troubleshooting page describes the all-users restriction as exempting workspace admins.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/fabric/governance/troubleshoot-restricted-access",
+      "quote": "All users in the tenant: When applied to this group, DLP policies block all users except workspace admins, who can troubleshoot and fix the data, where relevant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "DLP defines organisation members by UserType = Member.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/fabric/governance/data-loss-prevention-overview",
+      "quote": "For DLP policies, a member of the organization means a user with UserType = Member.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Risk assessment: Security & identity; Governance guidance",
+      "type": "behaviour",
+      "claim": "External accounts with UserType = Member are treated as internal and are not blocked by the outsiders-only option.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/fabric/governance/data-loss-prevention-overview",
+      "quote": "This includes users who sign in with an external account. Because their UserType is Member, they’re treated as internal users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Block only people outside your organization applies to UserType = Guest.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/fabric/governance/data-loss-prevention-overview",
+      "quote": "users with UserType = Guest are considered external. The Block only people outside your organization setting applies to these Guest users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; controls[0].note; Open questions",
+      "type": "availability",
+      "claim": "The Learn overview still labels restrict access as preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/fabric/governance/data-loss-prevention-overview",
+      "quote": "Restrict access (preview).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "date",
+      "claim": "Fabric What's new lists DLP restrict access as generally available in September 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/fabric/fundamentals/whats-new#generally-available-features",
+      "quote": "| September 2026 | **DLP restrict access (Generally Available)** |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
       "where": "front matter: status; What's changing; Open questions",
       "type": "record",
       "claim": "The roadmap status is Launched.",
@@ -108,7 +183,7 @@
       "fix": null
     },
     {
-      "n": 8,
+      "n": 15,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
       "claim": "The roadmap target is October CY2026.",
@@ -119,7 +194,7 @@
       "fix": null
     },
     {
-      "n": 9,
+      "n": 16,
       "where": "front matter: previewDate; What's changing",
       "type": "record",
       "claim": "The roadmap preview date is April CY2024.",
@@ -130,7 +205,7 @@
       "fix": null
     },
     {
-      "n": 10,
+      "n": 17,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
       "claim": "The roadmap release phases are General Availability and Preview.",
@@ -141,7 +216,7 @@
       "fix": null
     },
     {
-      "n": 11,
+      "n": 18,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
@@ -152,10 +227,10 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 19,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap platform is Web.",
+      "claim": "The roadmap lists the Web platform.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Web\"]",
@@ -163,21 +238,10 @@
       "fix": null
     },
     {
-      "n": 13,
-      "where": "Scope",
-      "type": "record",
-      "claim": "The roadmap does not list US Government clouds.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
+      "n": 20,
       "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "The roadmap modification timestamp is 2026-11-11T00:53:22.",
+      "claim": "The roadmap record was modified at 2026-11-11T00:53:22.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"modified\": \"2026-11-11T00:53:22\"",
@@ -185,7 +249,7 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 21,
       "where": "What's changing",
       "type": "record",
       "claim": "MC937920 was last updated on 26 March 2026.",
@@ -196,7 +260,7 @@
       "fix": null
     },
     {
-      "n": 16,
+      "n": 22,
       "where": "What's changing",
       "type": "record",
       "claim": "MC937920 says semantic-model restrict access has been in public preview since November 2024.",
@@ -207,10 +271,10 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 23,
       "where": "What's changing",
       "type": "record",
-      "claim": "MC937920 gives mid-April 2025 as the lakehouse preview rollout start.",
+      "claim": "The notice gives mid-April 2025 as the lakehouse preview rollout start.",
       "status": "supported",
       "source": "Message Center post MC937920",
       "quote": "For Fabric lakehouse, public preview of restrict access will begin rollout mid-April 2025",
@@ -218,21 +282,21 @@
       "fix": null
     },
     {
-      "n": 18,
+      "n": 24,
       "where": "What's changing",
       "type": "record",
-      "claim": "MC937920 expected lakehouse preview rollout to finish in late April 2025.",
+      "claim": "The notice expected lakehouse preview rollout completion by late April 2025.",
       "status": "supported",
       "source": "Message Center post MC937920",
-      "quote": "is expected to complete by late April 2025",
+      "quote": "For Fabric lakehouse, public preview of restrict access will begin rollout mid-April 2025 and is expected to complete by late April 2025.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 19,
+      "n": 25,
       "where": "What's changing",
       "type": "record",
-      "claim": "MC937920 gives late October 2026 as the general availability rollout start.",
+      "claim": "The notice gives late October 2026 as the general availability rollout start.",
       "status": "supported",
       "source": "Message Center post MC937920",
       "quote": "General Availability: We will begin rolling out late October 2026 (previously June)",
@@ -240,21 +304,21 @@
       "fix": null
     },
     {
-      "n": 20,
+      "n": 26,
       "where": "What's changing; Open questions",
       "type": "record",
-      "claim": "MC937920 expects general availability rollout to finish in late November 2026.",
+      "claim": "The notice expects general availability rollout completion by late November 2026.",
       "status": "supported",
       "source": "Message Center post MC937920",
-      "quote": "expect to complete by late November 2026 (previously end of June)",
+      "quote": "expect to complete by late November 2026 (previously end of June).",
       "severity": null,
       "fix": null
     },
     {
-      "n": 21,
+      "n": 27,
       "where": "What's changing",
       "type": "record",
-      "claim": "The Message Center post end date is 28 December 2026.",
+      "claim": "The post's end date is 28 December 2026.",
       "status": "supported",
       "source": "Message Center post MC937920",
       "quote": "Microsoft's end date 2026-12-28",
@@ -262,10 +326,10 @@
       "fix": null
     },
     {
-      "n": 22,
+      "n": 28,
       "where": "What's changing",
       "type": "record",
-      "claim": "MC937920 sets no act-by date.",
+      "claim": "The supplied notice sets no act-by date.",
       "status": "supported",
       "source": "Message Center post MC937920",
       "quote": "Act by: none",
@@ -273,43 +337,10 @@
       "fix": null
     },
     {
-      "n": 23,
-      "where": "front matter: defaultState; summary; Why it matters; rationale: risk",
-      "type": "default",
-      "claim": "The new restrict access control is admin-opt-in and applies no new restriction until an administrator configures it.",
-      "status": "supported",
-      "source": "Message Center post MC937920",
-      "quote": "If your organization does not wish to start using the Restrict access action for Fabric, no additional action is required.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "Why it matters; rationale: risk",
-      "type": "record",
-      "claim": "The rollout itself requires no administrator action.",
-      "status": "supported",
-      "source": "Message Center post MC937920",
-      "quote": "This rollout will happen automatically by the specified date with no admin action required before the rollout.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "Why it matters; rationale: impact",
-      "type": "record",
-      "claim": "A security or compliance administrator must create or update a Fabric DLP policy to use the action.",
-      "status": "supported",
-      "source": "Message Center post MC937920",
-      "quote": "your security or compliance admin will need to update or create new DLP policies for Fabric to include the new Restrict access action",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
+      "n": 29,
       "where": "Why it matters",
       "type": "record",
-      "claim": "MC937920 specifically identifies preventing accidental guest access to sensitive information as a use case.",
+      "claim": "MC937920 highlights preventing guests from accidentally accessing sensitive information.",
       "status": "supported",
       "source": "Message Center post MC937920",
       "quote": "This action is especially valuable when your organization has guest users, and you want to enforce proper restrictions to ensure these users do not accidentally access sensitive information.",
@@ -317,54 +348,43 @@
       "fix": null
     },
     {
-      "n": 27,
-      "where": "What's changing; Why it matters",
-      "type": "behaviour",
-      "claim": "A matching policy restricts access to data owners or organisation members, with all other users losing access.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/fabric/governance/data-loss-prevention-overview",
-      "quote": "the policy restricts access to the data owners or to members of the organization, depending on the policy configuration. All other users lose access to the item.",
-      "severity": "minor",
-      "fix": "Add: 'Microsoft's troubleshooting page describes the all-users case as blocking everyone except workspace admins.' Cite https://learn.microsoft.com/fabric/governance/troubleshoot-restricted-access, which says 'DLP policies block all users except workspace admins'; retain the overview's different wording."
-    },
-    {
-      "n": 28,
-      "where": "What's changing; Risk assessment: Security & identity; Governance guidance",
-      "type": "behaviour",
-      "claim": "UserType = Member users are internal for DLP even when they sign in with external accounts.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/fabric/governance/data-loss-prevention-overview",
-      "quote": "a member of the organization means a user with UserType = Member. This includes users who sign in with an external account. Because their UserType is Member, they’re treated as internal users.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 29,
-      "where": "What's changing; Risk assessment: Security & identity; controls[0].note",
-      "type": "applicability",
-      "claim": "Block only people outside your organization targets UserType = Guest rather than external accounts with UserType = Member.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/fabric/governance/data-loss-prevention-overview",
-      "quote": "users with UserType = Guest are considered external. The Block only people outside your organization setting applies to these Guest users.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 30,
-      "where": "What's changing; controls[0].note; Open questions",
-      "type": "availability",
-      "claim": "The Learn overview still labels restrict access as preview.",
+      "where": "Why it matters; rationale: risk",
+      "type": "record",
+      "claim": "The rollout requires no administrator action before rollout.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/fabric/governance/data-loss-prevention-overview",
-      "quote": "Restrict access (preview).",
-      "severity": "minor",
-      "fix": "Add: 'The Fabric What’s new page instead lists DLP restrict access as generally available in September 2026.' Cite https://learn.microsoft.com/fabric/fundamentals/whats-new#generally-available-features, whose table says 'September 2026' and 'DLP restrict access (Generally Available)'."
+      "source": "Message Center post MC937920",
+      "quote": "This rollout will happen automatically by the specified date with no admin action required before the rollout.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 31,
+      "where": "summary; Why it matters; rationale: impact",
+      "type": "record",
+      "claim": "A security or compliance administrator must create or update a Fabric DLP policy to start using restrict access.",
+      "status": "supported",
+      "source": "Message Center post MC937920",
+      "quote": "your security or compliance admin will need to update or create new DLP policies for Fabric to include the new Restrict access action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "The control is admin-opt-in: arrival alone does not apply the new restriction.",
+      "status": "supported",
+      "source": "Message Center post MC937920",
+      "quote": "If your organization does not wish to start using the Restrict access action for Fabric, no additional action is required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
       "where": "Risk assessment: Data exposure; Governance guidance: After rollout",
       "type": "behaviour",
-      "claim": "A service-principal-initiated publish, republish or refresh does not trigger semantic-model DLP evaluation.",
+      "claim": "Semantic-model DLP evaluation is skipped for publish, republish or refresh initiated using service principal authentication.",
       "status": "supported",
       "source": "https://learn.microsoft.com/fabric/governance/data-loss-prevention-overview",
       "quote": "DLP evaluation of the semantic model doesn't occur if either of the following is true: An account using service principal authentication initiates the event (publish, republish, on-demand refresh, scheduled refresh).",
@@ -372,10 +392,10 @@
       "fix": null
     },
     {
-      "n": 32,
-      "where": "Risk assessment: Data exposure",
+      "n": 34,
+      "where": "Risk assessment: Data exposure; Open questions",
       "type": "behaviour",
-      "claim": "DLP does not evaluate a semantic model whose owner is a service principal.",
+      "claim": "Semantic-model DLP evaluation is skipped when the owner is a service principal.",
       "status": "supported",
       "source": "https://learn.microsoft.com/fabric/governance/data-loss-prevention-overview",
       "quote": "DLP evaluation of the semantic model doesn't occur if either of the following is true: ... The semantic model owner is a service principal.",
@@ -383,21 +403,32 @@
       "fix": null
     },
     {
-      "n": 33,
+      "n": 35,
       "where": "Risk assessment: Data exposure; Governance guidance: After rollout",
-      "type": "availability",
-      "claim": "DirectQuery and live-connection semantic models are unsupported.",
+      "type": "behaviour",
+      "claim": "DirectQuery semantic models are unsupported.",
       "status": "supported",
       "source": "https://learn.microsoft.com/fabric/governance/data-loss-prevention-overview",
-      "quote": "DLP policies for Fabric aren't supported for sample semantic models, streaming datasets, or semantic models that connect to their data source via DirectQuery or live connection.",
+      "quote": "DLP policies for Fabric aren't supported for ... semantic models that connect to their data source via DirectQuery or live connection.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 34,
+      "n": 36,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Live-connection semantic models are unsupported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/fabric/governance/data-loss-prevention-overview",
+      "quote": "DLP policies for Fabric aren't supported for ... semantic models that connect to their data source via DirectQuery or live connection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
       "where": "Risk assessment: Data exposure; Scope",
-      "type": "availability",
-      "claim": "Fabric DLP supports only table data stored in Delta format.",
+      "type": "behaviour",
+      "claim": "Fabric DLP applies only to data in tables stored in Delta format.",
       "status": "supported",
       "source": "https://learn.microsoft.com/fabric/governance/data-loss-prevention-overview",
       "quote": "DLP policies for Fabric apply only on data in tables stored in Delta format.",
@@ -405,21 +436,32 @@
       "fix": null
     },
     {
-      "n": 35,
+      "n": 38,
       "where": "Risk assessment: Data exposure; Governance guidance: After rollout",
       "type": "behaviour",
-      "claim": "Using unsupported advanced classifiers such as exact data match or trainable classifiers means a policy returns no results.",
-      "status": "contradicted",
+      "claim": "Advanced classifiers, including exact data match and trainable classifiers, are unsupported and do not return matches.",
+      "status": "supported",
       "source": "https://learn.microsoft.com/fabric/governance/data-loss-prevention-overview",
-      "quote": "Other classifiers specified in the policy return results if any.",
-      "severity": "blocker",
-      "fix": "Replace the advanced-classifier clause with: 'Advanced classifiers such as exact data match and trainable classifiers are unsupported and return no matches; other classifiers specified in the same policy can still return results.'"
+      "quote": "Advanced classifiers, such as exact data match (EDM), trainable classifiers, credential classifiers, and named entities aren't supported by DLP for Fabric.",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 36,
+      "n": 39,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Other classifiers in the same policy can still return results when an unsupported advanced classifier is selected.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/fabric/governance/data-loss-prevention-overview",
+      "quote": "Other classifiers specified in the policy return results if any.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "Semantic models are evaluated on publish, republish, on-demand refresh and scheduled refresh, subject to the stated service-principal exceptions.",
+      "claim": "Semantic models are evaluated on publish, republish, on-demand refresh and scheduled refresh.",
       "status": "supported",
       "source": "https://learn.microsoft.com/fabric/governance/data-loss-prevention-overview",
       "quote": "DLP policies evaluate a semantic model whenever one of the following events occurs: Publish; Republish; On-demand refresh; Scheduled refresh",
@@ -427,7 +469,7 @@
       "fix": null
     },
     {
-      "n": 37,
+      "n": 41,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
       "claim": "Lakehouses and other Fabric items are evaluated when their data changes.",
@@ -438,19 +480,19 @@
       "fix": null
     },
     {
-      "n": 38,
-      "where": "Risk assessment: Autonomy & actions",
+      "n": 42,
+      "where": "Risk assessment: Autonomy & actions; rationale: impact",
       "type": "behaviour",
-      "claim": "A matching policy automatically applies its configured restriction without a separate human approval.",
+      "claim": "Configured actions run automatically on a policy match, so an ordinary refresh can cause access restrictions without a new approval.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/fabric/governance/data-loss-prevention-overview",
-      "quote": "When DLP policies evaluate a supported item type, they check if it matches the conditions in a DLP policy. If it does, the policy's specified actions take place.",
+      "source": "Message Center post MC937920",
+      "quote": "admins will be able to configure DLP policies that automatically detect sensitive information in sematic models and lakehouses and then restrict access to this data to internal users or data owners",
       "severity": null,
       "fix": null
     },
     {
-      "n": 39,
-      "where": "Risk assessment: Autonomy & actions; Governance guidance; Governance controls",
+      "n": 43,
+      "where": "Risk assessment: Autonomy & actions; Governance controls",
       "type": "default",
       "claim": "Enabling restrict access automatically allows user overrides.",
       "status": "supported",
@@ -460,10 +502,10 @@
       "fix": null
     },
     {
-      "n": 40,
+      "n": 44,
       "where": "Risk assessment: Autonomy & actions; Governance controls",
       "type": "behaviour",
-      "claim": "Item owners can override restrictions according to options configured in the rule's User overrides section.",
+      "claim": "Item owners may override restrictions, with response options configured in the rule's User overrides section.",
       "status": "supported",
       "source": "https://learn.microsoft.com/fabric/governance/data-loss-prevention-configure",
       "quote": "The selection of response options they have depends on the choices you make in the User overrides section.",
@@ -471,18 +513,7 @@
       "fix": null
     },
     {
-      "n": 41,
-      "where": "Risk assessment: Change & support; Scope; controls[1].note; Governance guidance",
-      "type": "availability",
-      "claim": "Fabric DLP policies apply to workspaces hosted on Fabric or Premium capacities.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/fabric/governance/data-loss-prevention-overview",
-      "quote": "DLP policies apply to workspaces. Only workspaces hosted in Fabric or Premium capacities are supported.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
+      "n": 45,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
       "claim": "Onboarding a new tenant to DLP can take a few hours.",
@@ -493,10 +524,21 @@
       "fix": null
     },
     {
-      "n": 43,
+      "n": 46,
+      "where": "Risk assessment: Change & support; Scope; controls[1].note; Governance guidance",
+      "type": "licensing",
+      "claim": "Only workspaces hosted in Fabric or Premium capacities support these DLP policies and actions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/fabric/governance/data-loss-prevention-configure",
+      "quote": "DLP actions are supported only for workspaces hosted in Fabric or Premium capacities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
       "where": "front matter: licensing.notes; Cost and licensing; Governance guidance",
       "type": "licensing",
-      "claim": "The configuration page requires the admin account to have Microsoft 365 E5, E5 Compliance, E5 Information Protection & Governance or Purview capacities.",
+      "claim": "The setup admin must hold Microsoft 365 E5, Microsoft 365 E5 Compliance, Microsoft 365 E5 Information Protection & Governance, or Purview capacities.",
       "status": "supported",
       "source": "https://learn.microsoft.com/fabric/governance/data-loss-prevention-configure",
       "quote": "The admin account that sets up the DLP rules must be assigned one of the following licenses: Microsoft 365 E5; Microsoft 365 E5 Compliance; Microsoft 365 E5 Information Protection & Governance; Purview capacities",
@@ -504,21 +546,21 @@
       "fix": null
     },
     {
-      "n": 44,
+      "n": 48,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "The cited configuration page names no licence requirement for restricted users.",
+      "claim": "The configuration page does not name a licence for users who are restricted.",
       "status": "supported",
       "source": "https://learn.microsoft.com/fabric/governance/data-loss-prevention-configure",
-      "quote": "The admin account that sets up the DLP rules must be assigned one of the following licenses",
+      "quote": "The admin account that sets up the DLP rules must be assigned one of the following licenses:",
       "severity": null,
       "fix": null
     },
     {
-      "n": 45,
+      "n": 49,
       "where": "front matter: licensing.model",
       "type": "licensing",
-      "claim": "The licensing model is mixed, combining administrator licensing prerequisites with consumption billing.",
+      "claim": "The licensing model is mixed, combining the documented account licensing with consumption billing.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/purview-billing-models",
       "quote": "The pay-as-you-go billing model builds on the per-user licensing model. The two are complementary, not mutually exclusive.",
@@ -526,21 +568,21 @@
       "fix": null
     },
     {
-      "n": 46,
+      "n": 50,
       "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "cost",
-      "claim": "DLP evaluation workloads affect capacity consumption.",
+      "claim": "Fabric DLP evaluation workloads affect capacity consumption.",
       "status": "supported",
       "source": "https://learn.microsoft.com/fabric/governance/data-loss-prevention-overview",
-      "quote": "DLP evaluation workloads impact capacity consumption.",
+      "quote": "DLP evaluation workloads impact capacity consumption. For information about how this consumption is metered and billed, see Learn about Microsoft Purview billing models.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 47,
-      "where": "Cost and licensing; front matter: cost; rationale: cost",
+      "n": 51,
+      "where": "front matter: cost; Cost and licensing; rationale: cost",
       "type": "cost",
-      "claim": "Microsoft Fabric DLP is covered by Purview pay-as-you-go asset billing, supporting the variable cost rating.",
+      "claim": "Fabric DLP is covered by the pay-as-you-go asset meter, supporting the variable cost rating.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/purview-billing-models",
       "quote": "| Azure | Fabric | Supported item types | Microsoft Purview Data Loss Prevention |",
@@ -548,21 +590,21 @@
       "fix": null
     },
     {
-      "n": 48,
-      "where": "Cost and licensing; Governance guidance: Before rollout",
+      "n": 52,
+      "where": "Cost and licensing; Governance guidance",
       "type": "cost",
-      "claim": "Purview pay-as-you-go is an Azure-billed consumption model.",
+      "claim": "Pay-as-you-go consumption is billed through Azure.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/purview-billing-models",
-      "quote": "The pay-as-you-go billing model is a consumption billing model. ... An Azure bill is generated at the end of the month for the total number of pay-as-you-go charges across all Microsoft solutions.",
+      "quote": "The billing mechanisms are Azure based, so you must associate your Microsoft 365 tenant with an active Azure subscription.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 49,
+      "n": 53,
       "where": "Cost and licensing; rationale: cost",
       "type": "cost",
-      "claim": "An asset is charged for each day a policy covers it.",
+      "claim": "Assets incur charges for each day they are covered by a policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/purview-billing-models",
       "quote": "You're charged for each day that a policy covers an asset.",
@@ -570,10 +612,10 @@
       "fix": null
     },
     {
-      "n": 50,
+      "n": 54,
       "where": "Cost and licensing",
       "type": "cost",
-      "claim": "Assets in an in-scope location count whether or not they match policy conditions.",
+      "claim": "An asset in an in-scope location counts whether or not it matches policy conditions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/purview-billing-models",
       "quote": "The asset doesn't have to match a policy's conditions to be counted, it just has to be in a location that's in the scope of a policy.",
@@ -581,101 +623,57 @@
       "fix": null
     },
     {
-      "n": 51,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "The billing example counts 250 assets when a policy covers five of ten Fabric workspaces containing 50 assets each.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/purview-billing-models",
-      "quote": "A tenant has 10 Fabric workspaces, each with 50 assets. The policy only applies to five of these Fabric workspaces. The asset count for this policy is 250.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 52,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "The cited Fabric overview, configuration page and Purview billing-model page quote no Fabric DLP monetary rate.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Microsoft Purview Fabric DLP restrict access action additional charge pricing rate per asset day'; opened the cited Fabric overview, Fabric configuration and Purview billing-model pages in full; none quotes a monetary rate.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 53,
-      "where": "Cost and licensing; Open questions",
-      "type": "absence",
-      "claim": "A separate charge specific to the restrict access action beyond policy asset counting is not published in the documentation found.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Microsoft Purview Fabric DLP restrict access action additional charge pricing rate per asset day' and '\"Purview\" \"restrict access\" \"charge\"'; read Fabric overview/configuration and Purview billing models; found no action-specific charge.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 54,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "Excluding workspaces changes which assets the DLP policy covers for billing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/purview-billing-models",
-      "quote": "The policy only applies to five of these Fabric workspaces. The asset count for this policy is 250.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 55,
-      "where": "Scope",
-      "type": "availability",
-      "claim": "Fabric DLP is unsupported in China North.",
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Microsoft's example counts 250 assets when a DLP policy covers five of ten Fabric workspaces containing 50 assets each.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/fabric/governance/data-loss-prevention-overview",
-      "quote": "DLP policies for Fabric aren't supported in the China North region.",
+      "source": "https://learn.microsoft.com/purview/purview-billing-models",
+      "quote": "Data Loss Prevention policy: A tenant has 10 Fabric workspaces, each with 50 assets. The policy only applies to five of these Fabric workspaces. The asset count for this policy is 250.",
       "severity": null,
       "fix": null
     },
     {
       "n": 56,
-      "where": "Scope",
-      "type": "availability",
-      "claim": "Supported item types include semantic models, lakehouses, warehouses, KQL databases, mirrored databases, SQL databases and Cosmos databases.",
+      "where": "Cost and licensing; front matter: licensing.notes; rationale: cost",
+      "type": "absence",
+      "claim": "The cited configuration, overview and billing-model pages quote no Fabric DLP monetary rate.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/fabric/governance/data-loss-prevention-overview",
-      "quote": "Semantic models; Lakehouses; Warehouses; KQL databases; Mirrored databases; SQL databases; Cosmos databases",
+      "source": null,
+      "quote": "Searched: Fabric DLP restrict access action additional charge pricing rate per asset per day; opened the cited Fabric DLP overview, configuration and Purview billing-model pages in full; none quotes a monetary rate for Fabric DLP.",
       "severity": null,
       "fix": null
     },
     {
       "n": 57,
-      "where": "Scope",
-      "type": "availability",
-      "claim": "Sample semantic models and streaming datasets are unsupported.",
+      "where": "Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "No separate charge for the restrict access action beyond asset counting is documented.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/fabric/governance/data-loss-prevention-overview",
-      "quote": "DLP policies for Fabric aren't supported for sample semantic models, streaming datasets",
+      "source": null,
+      "quote": "Searched: Fabric DLP restrict access action additional charge pricing rate per asset per day; \"Fabric\" \"restrict access\" \"charge\". Opened Fabric DLP overview, configuration and Purview billing models; found no action-specific charge.",
       "severity": null,
       "fix": null
     },
     {
       "n": 58,
-      "where": "Scope; Governance guidance: Before rollout",
-      "type": "role",
-      "claim": "Policy creators must belong to one of the five role groups listed in the briefing.",
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Excluding workspaces changes which assets a policy covers.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/fabric/governance/data-loss-prevention-configure",
-      "quote": "Compliance administrator; Compliance data administrator; Information Protection; Information Protection Admin; Security administrator",
+      "source": "https://learn.microsoft.com/purview/purview-billing-models",
+      "quote": "Assets are counted based on the number of items that are in the scope of a policy.",
       "severity": null,
       "fix": null
     },
     {
       "n": 59,
-      "where": "Scope; Governance guidance: At rollout",
-      "type": "behaviour",
-      "claim": "Fabric DLP requires the Custom category and Custom policy rather than other policy templates.",
+      "where": "Scope",
+      "type": "record",
+      "claim": "The roadmap record does not list US Government clouds.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/fabric/governance/data-loss-prevention-configure",
-      "quote": "Choose the Custom category and then the Custom policy template. ... No other categories or templates are currently supported.",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
       "severity": null,
       "fix": null
     },
@@ -683,29 +681,117 @@
       "n": 60,
       "where": "Scope",
       "type": "availability",
-      "claim": "Admin units are unsupported for Fabric DLP.",
+      "claim": "Fabric DLP is not supported in China North.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/fabric/governance/data-loss-prevention-configure",
-      "quote": "Admin units are not supported for DLP in Fabric and Power BI.",
+      "source": "https://learn.microsoft.com/fabric/governance/data-loss-prevention-overview",
+      "quote": "DLP policies for Fabric aren't supported in the China North region.",
       "severity": null,
       "fix": null
     },
     {
       "n": 61,
-      "where": "controls[0].ui; Governance controls",
-      "type": "admin-path",
-      "claim": "The portal exposes the restrict access action through custom Fabric DLP policy creation and advanced rule configuration.",
+      "where": "Scope",
+      "type": "applicability",
+      "claim": "The overview lists semantic models, lakehouses, warehouses, KQL databases, mirrored databases, SQL databases and Cosmos databases as supported item types.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/fabric/governance/data-loss-prevention-configure",
-      "quote": "Choose Create or customize advanced DLP rules ... Select Create rule. ... expand the Restrict access or encrypt the content in Microsoft 365 locations section",
+      "source": "https://learn.microsoft.com/fabric/governance/data-loss-prevention-overview",
+      "quote": "DLP policies for Fabric and Power BI currently support the following item types. Semantic models; Lakehouses; Warehouses; KQL databases; Mirrored databases; SQL databases; Cosmos databases",
       "severity": null,
       "fix": null
     },
     {
       "n": 62,
-      "where": "controls[0].api",
+      "where": "Scope; Governance controls",
+      "type": "behaviour",
+      "claim": "DLP policies apply to workspaces, selected through the policy location setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/fabric/governance/data-loss-prevention-configure",
+      "quote": "By default the policy will apply to all workspaces. However, you can specify particular workspaces to include in the policy as well as workspaces to exclude from the policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Sample semantic models are unsupported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/fabric/governance/data-loss-prevention-overview",
+      "quote": "DLP policies for Fabric aren't supported for sample semantic models, streaming datasets, or semantic models that connect to their data source via DirectQuery or live connection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Streaming datasets are unsupported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/fabric/governance/data-loss-prevention-overview",
+      "quote": "DLP policies for Fabric aren't supported for sample semantic models, streaming datasets, or semantic models that connect to their data source via DirectQuery or live connection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Scope; Governance guidance: Before rollout",
+      "type": "role",
+      "claim": "Policy creation requires membership in one of the five named compliance, information protection or security role groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/fabric/governance/data-loss-prevention-configure",
+      "quote": "The account you use to create DLP policies must be a member of one of these role groups: Compliance administrator; Compliance data administrator; Information Protection; Information Protection Admin; Security administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Fabric DLP does not support the predefined policy templates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/fabric/governance/data-loss-prevention-overview",
+      "quote": "DLP policy templates aren't supported for Fabric DLP policies. When creating a DLP policy for Fabric, choose the custom policy option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Admin units are unsupported for Fabric DLP.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/fabric/governance/data-loss-prevention-configure",
+      "quote": "Select Next when you get to the Assign admin units page. Admin units are not supported for DLP in Fabric and Power BI.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Scope; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "Creation uses the Custom category and Custom policy template.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/fabric/governance/data-loss-prevention-configure",
+      "quote": "Choose the Custom category and then the Custom policy template. When done, select Next. ... No other categories or templates are currently supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The printed creation path gives the intervening pages and sections needed to reach the restrict access action.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/fabric/governance/data-loss-prevention-configure",
+      "quote": "The Define policy settings page appears. Choose Create or customize advanced DLP rules ... On the Customize advanced DLP rules page ... Select Create rule.",
+      "severity": "blocker",
+      "fix": "Replace the path in front matter and the rendered table with 'Data loss prevention > Policies > + Create policy > Custom > Custom policy > Assign admin units > Fabric and Power BI workspaces > Define policy settings > Create or customize advanced DLP rules > Customize advanced DLP rules > Create rule > Actions > Restrict access or encrypt the content in Microsoft 365 locations'. State in the row note: 'Name and describe the policy after choosing Custom policy, then select Next; on Assign admin units, select Next without assigning units.' These intermediate pages are documented at https://learn.microsoft.com/fabric/governance/data-loss-prevention-configure."
+    },
+    {
+      "n": 70,
+      "where": "controls[0].api; Governance controls table",
       "type": "command",
-      "claim": "The printed New-DlpComplianceRule call is a documented general DLP rule example, explicitly not presented as confirmed Fabric-specific automation.",
+      "claim": "The printed New-DlpComplianceRule call is a documented general DLP rule creation call with a sensitive-information condition and BlockAccess action, not a confirmed Fabric-specific example.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule",
       "quote": "New-DlpComplianceRule -Name \"SocialSecurityRule\" -Policy \"USFinancialChecks\" -ContentContainsSensitiveInformation @{Name=\"U.S. Social Security Number (SSN)\"} -BlockAccess $True",
@@ -713,32 +799,32 @@
       "fix": null
     },
     {
-      "n": 63,
-      "where": "controls[0].note",
+      "n": 71,
+      "where": "controls[0].note; Governance controls",
       "type": "command",
-      "claim": "New-DlpComplianceRule is available in Security & Compliance PowerShell.",
+      "claim": "New-DlpComplianceRule belongs to Security & Compliance PowerShell and its cited blocking example is generic rather than Fabric-specific.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule",
-      "quote": "This cmdlet is available only in Security & Compliance PowerShell.",
+      "quote": "This cmdlet is available only in Security & Compliance PowerShell. ... The rule checks for social security numbers and blocks access if it finds them.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 64,
-      "where": "controls[1].ui; Governance controls",
+      "n": 72,
+      "where": "controls[1].ui; Governance controls table",
       "type": "admin-path",
-      "claim": "Edit under the Fabric and Power BI workspaces policy location selects workspace inclusions and exclusions.",
-      "status": "supported",
+      "claim": "The printed workspace-scoping creation path proceeds directly from Custom policy to Fabric and Power BI workspaces and Edit.",
+      "status": "contradicted",
       "source": "https://learn.microsoft.com/fabric/governance/data-loss-prevention-configure",
-      "quote": "Select Fabric and Power BI workspaces as the location for the DLP policy. ... To specify specific workspaces for inclusion or exclusion, select Edit.",
-      "severity": null,
-      "fix": null
+      "quote": "Name the policy and provide a meaningful description. When done, select Next. ... Select Next when you get to the Assign admin units page. ... Select Fabric and Power BI workspaces as the location",
+      "severity": "blocker",
+      "fix": "Replace the path in front matter and the rendered table with 'Data loss prevention > Policies > + Create policy > Custom > Custom policy > Assign admin units > Fabric and Power BI workspaces > Edit'. State in the row note: 'Name and describe the policy after choosing Custom policy, then select Next; on Assign admin units, select Next without assigning units.' See https://learn.microsoft.com/fabric/governance/data-loss-prevention-configure."
     },
     {
-      "n": 65,
-      "where": "controls[1].api",
+      "n": 73,
+      "where": "controls[1].api; Governance controls table",
       "type": "command",
-      "claim": "The printed New-DlpCompliancePolicy call enables a policy for all qualifying Power BI workspaces except the specified workspace.",
+      "claim": "The New-DlpCompliancePolicy call enables a policy for all qualifying Power BI workspaces with a workspace-ID exception, subject to the row's documented Premium Gen2 qualification.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy",
       "quote": "New-DlpCompliancePolicy -Name \"PowerBIPolicy\" -Comment \"Primary policy\" -PowerBIDlpLocation \"All\" -PowerBIDlpLocationException \"workspaceID1\",\"workspaceID2\",\"workspaceID3\" -Mode Enable",
@@ -746,43 +832,21 @@
       "fix": null
     },
     {
-      "n": 66,
-      "where": "controls[1].note",
-      "type": "availability",
-      "claim": "The policy cmdlet reference describes the supported workspaces as Premium Gen2 workspaces.",
+      "n": 74,
+      "where": "controls[1].note; Governance controls; Open questions",
+      "type": "command",
+      "claim": "The policy cmdlet reference describes Premium Gen2 Power BI workspaces, while neither cited cmdlet reference names Fabric lakehouses or semantic models.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy",
-      "quote": "The PowerBIDlpLocation parameter specifies the Power BI workspace IDs to include in the DLP policy. Only workspaces hosted in Premium Gen2 capacities are permitted.",
+      "quote": "The PowerBIDlpLocation parameter specifies the Power BI workspace IDs to include in the DLP policy. Only workspaces hosted in Premium Gen2 capacities are permitted. You can use the value All to include all supported workspaces.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 67,
-      "where": "Governance controls; Open questions; controls[1].note",
-      "type": "absence",
-      "claim": "The two cited cmdlet references do not explicitly name Fabric lakehouses or semantic models.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Fabric, semantic and lakehouse across the fetched full New-DlpComplianceRule and New-DlpCompliancePolicy references; no matches. Also searched Learn for '\"Fabric\" \"restrict access\" \"BlockAccess\" PowerShell'.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 68,
-      "where": "Governance guidance: At rollout; What's changing; Risk assessment: Change & support",
+      "n": 75,
+      "where": "Governance controls",
       "type": "behaviour",
-      "claim": "User notifications can display policy tips to owners explaining a policy match.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/fabric/governance/data-loss-prevention-configure",
-      "quote": "The user notifications section is where you configure your policy tip. Turn on the toggle, select the Notify users in Office 365 service with a policy tip or email notifications check box, and then select the Policy tips checkbox.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 69,
-      "where": "Governance guidance: After rollout; Governance controls",
-      "type": "admin-path",
-      "claim": "Fabric DLP alerts can be reviewed on the data loss prevention Alerts page in the Microsoft Purview portal.",
+      "claim": "Administrators can monitor Fabric DLP policy-match alerts on the Alerts page in the Microsoft Purview portal.",
       "status": "supported",
       "source": "https://learn.microsoft.com/fabric/governance/data-loss-prevention-overview",
       "quote": "If you enable alerts in the policy, an alert records on the data loss prevention Alerts page in the Microsoft Purview portal.",
@@ -790,65 +854,32 @@
       "fix": null
     },
     {
-      "n": 70,
-      "where": "Governance guidance: After rollout; Governance controls",
-      "type": "role",
-      "claim": "Compliance administrators, Security administrators and Compliance data administrators can view Fabric DLP data in Activity explorer.",
+      "n": 76,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Activity explorer can display Fabric and Power BI DLP data.",
       "status": "supported",
       "source": "https://learn.microsoft.com/fabric/governance/data-loss-prevention-overview",
-      "quote": "To view the Activity explorer, your account must be a member of any of the following roles: Compliance administrator; Security administrator; Compliance data administrator",
+      "quote": "You can view data from DLP for Fabric and Power BI in Activity explorer.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 71,
-      "where": "rationale: impact",
-      "type": "behaviour",
-      "claim": "Users notice the feature only once a match removes their access.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/fabric/governance/data-loss-prevention-overview",
-      "quote": "For semantic models, opening the details page shows a policy tip that explains the policy violation and how to handle the type of sensitive information detected.",
-      "severity": "minor",
-      "fix": "Replace the impact rationale with: 'Low. Security and compliance admins configure it; policy matches can remove user access or show owners policy tips.' The Low impact judgement itself does not need changing."
-    },
-    {
-      "n": 72,
-      "where": "Governance guidance: At rollout and After rollout",
-      "type": "consistency",
-      "claim": "The checklist instructs readers to configure notifications and override options and review monitoring surfaces, but the controls table covers only restriction and workspace scope.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Checklist: 'Turn on user notifications'; 'Decide which override options to allow'; 'Review matches ... Alerts page ... Activity explorer'. Table: 'Restrict access action in a DLP rule for Fabric items'; 'Which Fabric workspaces a DLP policy covers'.",
-      "severity": "minor",
-      "fix": "The user-notification, user-override and monitoring checklist instructions have no corresponding controls-table rows. Remove those checklist instructions if retaining the current two-row table."
-    },
-    {
-      "n": 73,
+      "n": 77,
       "where": "Open questions",
       "type": "absence",
-      "claim": "The overview documents service-principal evaluation exceptions for semantic models but does not state a lakehouse-specific service-principal exception.",
+      "claim": "The documentation does not explicitly settle whether service-principal changes to lakehouses receive restrict access evaluation.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: '\"lakehouse\" \"DLP\" \"service principal\"'; read the overview's Semantic models, Fabric Items and limitations sections and the troubleshooting page. The explicit skipped-evaluation exceptions concern semantic models, not lakehouses.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 74,
-      "where": "controls[0].note; Governance guidance: Before rollout",
-      "type": "admin-path",
-      "claim": "After expanding the restriction section, administrators select the Block users option and choose everyone or people outside the organisation.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/fabric/governance/data-loss-prevention-configure",
-      "quote": "select Block users from receiving email, or accessing shared SharePoint, OneDrive, and Teams files, and Power BI items. Then choose whether to block everyone or only people outside your organization.",
+      "quote": "Searched: Fabric lakehouse DLP service principal evaluation restrict access; \"Fabric\" \"DLP\" \"lakehouse\" \"service principal\" evaluation. Read overview and troubleshooting: semantic-model exceptions and a mirrored-database SPN case, but no lakehouse-specific SPN rule.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-18T06:03:21.734Z",
+    "at": "2026-11-18T06:52:44.593Z",
     "summary": {
-      "links": 7,
+      "links": 9,
       "unreachable": 0,
       "uiPaths": 2,
       "uiPathsWithMissingWords": 0,
@@ -879,6 +910,16 @@
       },
       {
         "url": "https://learn.microsoft.com/purview/purview-billing-models",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/fabric/governance/troubleshoot-restricted-access",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/fabric/fundamentals/whats-new#generally-available-features",
         "ok": true,
         "status": 200
       },
@@ -952,5 +993,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-18",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

@@ -40,17 +40,15 @@ sources:
   - title: "Set daily cap on Log Analytics workspace"
     url: "https://learn.microsoft.com/azure/azure-monitor/logs/daily-cap"
     kind: "learn"
+  - title: "Roles, permissions, and security in Azure Monitor"
+    url: "https://learn.microsoft.com/azure/azure-monitor/fundamentals/roles-permissions-security"
+    kind: "learn"
+  - title: "Daily ingestion cap on the Log Analytics workspace behind Application Insights (REST API)"
+    url: "https://learn.microsoft.com/rest/api/loganalytics/workspaces/createorupdate"
+    kind: "learn"
 videos: []
 related: ["power-apps-monitor-generative-pages-with-out-of-the-box-application-insights-telemetry","dynamics-365-finance-and-operations-cross-app-migrate-finance-and-operations-environments"]
 controls:
-  - governs: "Whether the Monitoring and Telemetry feature is enabled"
-    scope: "environment"
-    ui:
-      surface: "Finance and Supply Chain Management"
-      path: "Feature management > Monitoring and Telemetry > Enable"
-      docs: "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-getting-started"
-    api: null
-    note: "Feature management workspace; finance and operations apps only."
   - governs: "Which Application Insights resource each environment sends telemetry to"
     scope: "environment"
     ui:
@@ -75,9 +73,9 @@ controls:
       docs: "https://learn.microsoft.com/azure/azure-monitor/logs/daily-cap"
     api:
       kind: "rest"
-      call: "Workspaces - Create Or Update with dailyQuotaGb=<GB per day> under WorkspaceCapping"
-      docs: "https://learn.microsoft.com/azure/azure-monitor/logs/daily-cap"
-    note: "General Azure Monitor control, not specific to DMF. Collection stops for all billable data once reached."
+      call: "PUT https://management.azure.com/subscriptions/<sub>/resourceGroups/<rg>/providers/Microsoft.OperationalInsights/workspaces/<ws>?api-version=2026-03-01 body {\"location\":\"<region>\",\"properties\":{\"workspaceCapping\":{\"dailyQuotaGb\":<GB>}}}"
+      docs: "https://learn.microsoft.com/rest/api/loganalytics/workspaces/createorupdate"
+    note: "The workspace daily cap stops collection of billable log data in Analytics and Basic tables, not only DMF signals; Auxiliary tables are exempt."
 confidence: "medium"
 created: "2026-11-18"
 updated: "2026-11-18"
@@ -87,19 +85,23 @@ changes:
     note: "New briefing on data management framework telemetry for finance and operations apps in Application Insights, with setup steps and Azure cost controls."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 68 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-18"
+    note: "Corrected the daily cap scope (Analytics and Basic tables only) and its REST call, removed the feature-enablement controls row, and trimmed checklist steps that had no controls row."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 72 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-18"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 68
-  confirmed: 64
+  claims: 72
+  confirmed: 71
   unconfirmed: 0
-  contradicted: 4
-  attempts: 1
-  hash: "121d7fa94ca3d727a2963abac5637795"
+  contradicted: 1
+  attempts: 0
+  hash: "3bcb04ea55a7c35e0a12fd9a5ee8c16c"
 ---
 
 ## What's changing
@@ -156,7 +158,7 @@ Prerequisites from Learn's getting-started page: an Application Insights resourc
 ### Before rollout
 
 - Create or choose the Azure Application Insights resource for each environment mode (development, test, production) and name its owner.
-- Set a daily cap and a Cost Management alert on that resource, using the daily-cap row in the controls table, and decide who is told when it is reached.
+- Set a daily cap on that resource, using the daily-cap row in the controls table, and decide who is told when it is reached.
 - Check the finance and operations environment build against the PU69, PU70 and PU71 builds above.
 
 ### At rollout
@@ -168,8 +170,7 @@ Prerequisites from Learn's getting-started page: an Application Insights resourc
 ### After rollout
 
 - Confirm that **DMFJob Start**, **DMFJob End** and **DMFJob Status** records arrive in Application Insights, and that a failed test import appears with its error.
-- Review ingestion volume against the daily cap after the first full import and export cycle, and adjust sampling or retention if needed.
-- Review who can read the Application Insights resource, because it now holds job error messages.
+- Review ingestion volume against the daily cap after the first full import and export cycle.
 
 ## Governance controls
 
@@ -178,16 +179,15 @@ Prerequisites from Learn's getting-started page: an Application Insights resourc
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether the Monitoring and Telemetry feature is enabled</strong><br><small>Environment</small><br><small class="controls__note">Feature management workspace; finance and operations apps only.</small></td><td data-label="Admin UI"><strong>Finance and Supply Chain Management</strong><br>Feature management › Monitoring and Telemetry › Enable <a href="https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-getting-started" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Which Application Insights resource each environment sends telemetry to</strong><br><small>Environment</small><br><small class="controls__note">Link environments on the Environments tab first, then register an instrumentation key or connection string per environment mode.</small></td><td data-label="Admin UI"><strong>Finance and Supply Chain Management</strong><br>System administration › Monitoring and Telemetry parameters › Monitoring settings › Application Insights Registry <a href="https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-getting-started" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Which telemetry types are emitted, including DMFJob Start, End and Status</strong><br><small>Environment</small><br><small class="controls__note">DMF signals appear here once the two DMF flights are enabled; Learn says to contact Microsoft support if they are not.</small></td><td data-label="Admin UI"><strong>Finance and Supply Chain Management</strong><br>System administration › Monitoring and Telemetry parameters › Monitoring settings › Configure <a href="https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-getting-started" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Daily ingestion cap on the Log Analytics workspace behind Application Insights</strong><br><small class="controls__note">General Azure Monitor control, not specific to DMF. Collection stops for all billable data once reached.</small></td><td data-label="Admin UI"><strong>Azure portal</strong><br>Log Analytics workspaces › workspace › Usage and estimated costs › Daily Cap › ON <a href="https://learn.microsoft.com/azure/azure-monitor/logs/daily-cap" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>Workspaces - Create Or Update with dailyQuotaGb=&lt;GB per day&gt; under WorkspaceCapping</code> <a href="https://learn.microsoft.com/azure/azure-monitor/logs/daily-cap" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Daily ingestion cap on the Log Analytics workspace behind Application Insights</strong><br><small class="controls__note">The workspace daily cap stops collection of billable log data in Analytics and Basic tables, not only DMF signals; Auxiliary tables are exempt.</small></td><td data-label="Admin UI"><strong>Azure portal</strong><br>Log Analytics workspaces › workspace › Usage and estimated costs › Daily Cap › ON <a href="https://learn.microsoft.com/azure/azure-monitor/logs/daily-cap" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>PUT https://management.azure.com/subscriptions/&lt;sub&gt;/resourceGroups/&lt;rg&gt;/providers/Microsoft.OperationalInsights/workspaces/&lt;ws&gt;?api-version=2026-03-01 body {&quot;location&quot;:&quot;&lt;region&gt;&quot;,&quot;properties&quot;:{&quot;workspaceCapping&quot;:{&quot;dailyQuotaGb&quot;:&lt;GB&gt;}}}</code> <a href="https://learn.microsoft.com/rest/api/loganalytics/workspaces/createorupdate" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
 Microsoft Learn documents no API or automation for the Monitoring and Telemetry parameters at the time of writing (November 2026), so those rows show the application path only. The telemetry steps are performed inside finance and operations; the cost rows are performed in Azure and need Azure roles. Azure Monitor's daily cap page lists the Log Analytics Contributor role (Microsoft.OperationalInsights/workspaces/write) for workspaces and, for classic Application Insights resources, the Application Insights Component Contributor role.
 
-The daily cap limits cost, not scope: it stops collection of all billable data in the resource once reached, not only DMF signals. No control that turns off DMF signals on their own other than the **Configure** tab is documented in the pages read.
+The daily cap limits cost, not scope: it stops collection of billable log data in Analytics and Basic tables, not only DMF signals; Auxiliary tables are exempt. No control that turns off DMF signals on their own other than the **Configure** tab is documented in the pages read.
 
 ## Open questions
 
@@ -202,13 +202,8 @@ cost: Variable. Learn says sending telemetry to Azure Application Insights incur
 impact: Low. Administrators, integration owners and support teams who watch data management import and export jobs notice it; end users see no change.
 -->
 
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[3].note; Governance controls / applicability: The workspace daily cap stops collection of all billable data, not only DMF signals. | Found: stopping collection of billable log data for tables in the Analytics or Basic table plans Tables in the Auxiliary table plan are not subject to any daily cap. | Fix: Replace the row note and matching governance sentence with: 'The workspace daily cap stops collection of billable log data in Analytics and Basic tables, not only DMF signals; Auxiliary tables are exempt.' | Source: https://learn.microsoft.com/azure/azure-monitor/logs/daily-cap
-- [contradicted, blocker] controls[0].api / absence: Automation for enabling the Monitoring and Telemetry feature through Feature management is not documented. | Found: A data entity with the name Feature management lets you export the Feature management settings from one environment and then import them into another environment. If you change the value of the Enabled field to Yes, the feature is enabled | Fix: Remove controls[0] and its rendered table row rather than presenting automation as undocumented. Keep the existing Feature management enablement instructions in At rollout; Microsoft documents importing the Feature management entity to enable features, but this briefing supplies no executable automation call. | Source: https://learn.microsoft.com/dynamics365/fin-ops-core/fin-ops/get-started/feature-management/feature-management-overview#data-entities
-- [contradicted, blocker] controls[3].api / command: Workspaces - Create Or Update with dailyQuotaGb under WorkspaceCapping is a runnable REST daily-cap call. | Found: PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}?api-version=2026-03-01 | Fix: Replace controls[3].api.call with 'PUT https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>?api-version=2026-03-01; JSON body: {"location":"<workspace-region>","properties":{"workspaceCapping":{"dailyQuotaGb":<GB-per-day>}}}'. Set its docs to https://learn.microsoft.com/rest/api/loganalytics/workspaces/createorupdate and update the rendered API cell to match. The existing text gives neither an HTTP method nor a path, version or request body. | Source: https://learn.microsoft.com/rest/api/loganalytics/workspaces/createorupdate
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Security & identity; Why it matters; Governance guidance: After rollout / role: Access to the emitted telemetry is governed on the Azure monitoring resource and workspace rather than by a finance and operations role. | Found: Roles can be assigned at the subscription, resource group, or resource level. People assigned the Monitoring Reader role can view all monitoring data in a subscription | Fix: Add https://learn.microsoft.com/azure/azure-monitor/fundamentals/roles-permissions-security to sources for the Azure access-control statement. | Source: https://learn.microsoft.com/azure/azure-monitor/fundamentals/roles-permissions-security
-- [contradicted, minor] Governance guidance: Before rollout and After rollout / consistency: Every control the governance checklist asks readers to set or review appears in the controls table. | Found: Set a daily cap and a Cost Management alert adjust sampling or retention if needed Review who can read the Application Insights resource The table covers feature enablement, destination registration, telemetry types and daily caps only. | Fix: The Cost Management alert, sampling, retention and resource-access review instructions have no matching controls rows. Remove those checklist instructions; retain their existing discussion in Cost and licensing and Risk assessment rather than adding control rows.
+- [contradicted, minor] Governance guidance: At rollout; Governance controls table / consistency: The checklist instructs readers to enable Monitoring and Telemetry, but that control has no table row. | Found: Checklist: Enable the Monitoring and Telemetry feature in the Feature management workspace. Table: resource registry, telemetry types and workspace daily ingestion cap only. | Fix: Remove the At rollout checklist bullet 'Enable the **Monitoring and Telemetry** feature in the **Feature management** workspace.' Keep the documented prerequisite in Scope; do not add a controls row.
 -->

@@ -49,6 +49,15 @@ sources:
   - title: "PM Inferred Task (msdyn_pminferredtask) table/entity reference (Microsoft Dataverse)"
     url: "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/msdyn_pminferredtask"
     kind: "learn"
+  - title: "msdyn_pminferredtask EntityType (Microsoft.Dynamics.CRM)"
+    url: "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/msdyn_pminferredtask"
+    kind: "learn"
+  - title: "Update and delete table rows using the Web API (Microsoft Dataverse)"
+    url: "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/update-delete-entities-using-web-api"
+    kind: "learn"
+  - title: "Associate and Disassociate Table Rows Using the Dataverse Web API"
+    url: "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/associate-disassociate-entities-using-web-api"
+    kind: "learn"
 videos: []
 related: ["power-automate-process-mining-enable-process-intelligence-studio-in-object-centric-process","power-automate-process-mining-get-support-for-normalized-schema-import-for-data-ingestion","power-automate-process-mining-export-object-centric-process-mining-data-to-microsoft-fabri"]
 controls:
@@ -60,8 +69,8 @@ controls:
       docs: "https://learn.microsoft.com/power-automate/process-mining-share"
     api:
       kind: "rest"
-      call: "PATCH /msdyn_pminferredtasks(<msdyn_pminferredtaskid>) to update the ownerid property"
-      docs: "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/msdyn_pminferredtask"
+      call: "PATCH <organization-uri>/api/data/v9.2/msdyn_pminferredtasks(<msdyn_pminferredtaskid>) with header Content-Type: application/json and body {\"ownerid@odata.bind\":\"systemusers(<new-owner-systemuserid>)\"}"
+      docs: "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/msdyn_pminferredtask"
     note: "Existing control for process ownership, not a control over custom KPIs. Target user needs privileges on the process mining entities; Environment Maker is sufficient. Reassign records transfers all of the user's records, not one process."
 confidence: "medium"
 created: "2026-11-18"
@@ -76,19 +85,23 @@ changes:
     note: "Corrected after the independent check: the experience enhances (not replaces) the process overview; fixed the Reassign records path; clarified security roles and the Process Mining add-on."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 60 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-18"
+    note: "Corrected the ownership reassignment REST call to the full versioned PATCH with JSON header and ownerid@odata.bind body."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 60 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-18"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 60
-  confirmed: 59
+  confirmed: 60
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "774614ff3a42ffa79fb8d8b5765e1a08"
+  contradicted: 0
+  attempts: 0
+  hash: "5520f7cfb43433b33ac5d95c679aaf51"
 ---
 
 ## What's changing
@@ -158,7 +171,7 @@ Prerequisites: a Power Platform environment with a Dataverse database, and the l
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which user owns a process mining process</strong><br><small>Environment</small><br><small class="controls__note">Existing control for process ownership, not a control over custom KPIs. Target user needs privileges on the process mining entities; Environment Maker is sufficient. Reassign records transfers all of the user's records, not one process.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>environment › Settings › Users + permissions › Users › user › Reassign records <a href="https://learn.microsoft.com/power-automate/process-mining-share" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>PATCH /msdyn_pminferredtasks(&lt;msdyn_pminferredtaskid&gt;) to update the ownerid property</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/msdyn_pminferredtask" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which user owns a process mining process</strong><br><small>Environment</small><br><small class="controls__note">Existing control for process ownership, not a control over custom KPIs. Target user needs privileges on the process mining entities; Environment Maker is sufficient. Reassign records transfers all of the user's records, not one process.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>environment › Settings › Users + permissions › Users › user › Reassign records <a href="https://learn.microsoft.com/power-automate/process-mining-share" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>PATCH &lt;organization-uri&gt;/api/data/v9.2/msdyn_pminferredtasks(&lt;msdyn_pminferredtaskid&gt;) with header Content-Type: application/json and body {&quot;ownerid@odata.bind&quot;:&quot;systemusers(&lt;new-owner-systemuserid&gt;)&quot;}</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/msdyn_pminferredtask" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -178,10 +191,4 @@ Microsoft Learn documents no switch that turns custom KPIs on or off, and no way
 risk: Low. Custom KPIs are calculated from process data already imported into the process, and no new data source, connector or autonomous action is described in the roadmap item.
 cost: Low. Process mining is licensed as part of Power Automate, and no separate price or meter for custom KPIs is published; the known cost is admin time and process mining capacity already in use.
 impact: Medium. Makers and analysts who build process mining dashboards see a new formula editor and new metrics in their cards.
--->
-
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].api; Governance controls table; Governance guidance: After rollout / command: PATCH /msdyn_pminferredtasks(<msdyn_pminferredtaskid>) to update the ownerid property is the ownership reassignment call an administrator can use as printed. | Found: Update operations use the HTTP PATCH verb. Pass a JSON object containing the properties you want to update to the URI that represents the record. ... PATCH [Organization URI]/api/data/v9.2/accounts(00000000-0000-0000-0000-000000000001) HTTP/1.1 | Fix: Replace the incomplete call, including its rendered table copy, with 'PATCH <organization-uri>/api/data/v9.2/msdyn_pminferredtasks(<msdyn_pminferredtaskid>)' and specify Content-Type: application/json and the request body {"ownerid@odata.bind":"systemusers(<new-owner-systemuserid>)"}. The versioned entity path and ownerid navigation property are documented at https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/msdyn_pminferredtask; binding syntax is documented at https://learn.microsoft.com/power-apps/developer/data-platform/webapi/associate-disassociate-entities-using-web-api. Cite these alongside the existing table reference. Remove 'to update the ownerid property' from the executable call and retain it only as explanation. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/webapi/update-delete-entities-using-web-api
 -->
